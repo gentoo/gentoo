@@ -1,11 +1,11 @@
 DEFINED_PHASES=install unpack
-DEPEND=>=sys-apps/sed-4.2.2 dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-devel/gettext >=dev-vcs/git-1.8.2.1
+DEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-devel/gettext >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Restart daemons after library updates
 EAPI=6
 HOMEPAGE=https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/liske/needrestart
 LICENSE=GPL-2+
-RDEPEND=>=sys-apps/sed-4.2.2 dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey
+RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=e7bed8658f001c8878e6f6b8646e5e82
+_md5_=73b2b6328d94c183cc27ec20fecd4d94
