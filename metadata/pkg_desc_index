@@ -9755,7 +9755,7 @@ dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
 dev-util/bbe 0.2.2: Sed-like editor for binary files
-dev-util/bcc 0.1.8-r2: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.1.8-r2 0.2.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
 dev-util/bdelta 0.3.1: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
