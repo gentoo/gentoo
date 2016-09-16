@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/liske/${PN}/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/liske/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -22,6 +22,7 @@ LICENSE="GPL-2+"
 
 RDEPEND="
 	>=sys-apps/sed-4.2.2
+	dev-lang/perl:=
 	dev-perl/libintl-perl
 	dev-perl/Module-Find
 	dev-perl/Module-ScanDeps

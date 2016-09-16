@@ -22,6 +22,7 @@ LICENSE="GPL-2+"
 
 RDEPEND="
 	>=sys-apps/sed-4.2.2
+	dev-lang/perl:=
 	dev-perl/libintl-perl
 	dev-perl/Module-Find
 	dev-perl/Module-ScanDeps
