@@ -10982,7 +10982,7 @@ games-simulation/crrcsim 0.9.12-r1: model-airplane flight simulation program
 games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
 games-simulation/flightgear 3.4.0 2016.1.1 2016.2.1 9999: Open Source Flight Simulator
 games-simulation/flightgear-data 3.4.0 2016.1.1 2016.2.1 9999: FlightGear data files
-games-simulation/gl117 1.3.2: An action flight simulator
+games-simulation/gl117 1.3.2 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0 1.0-r1: Free version of the well-known city building simulation
