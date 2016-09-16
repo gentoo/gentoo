@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 MY_P=apache-${P}
 
-DESCRIPTION="Library of C++ classes for flexible logging to files, syslog and other destinations"
+DESCRIPTION="Library of C++ classes for logging to files, syslog and other destinations"
 HOMEPAGE="http://logging.apache.org/log4cxx/"
 SRC_URI="mirror://apache/logging/${PN}/${PV}/${MY_P}.tar.gz"
 
@@ -16,14 +15,26 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~ppc-macos"
 IUSE="iodbc unicode odbc smtp"
 
-DEPEND="dev-libs/apr:1
+RDEPEND="dev-libs/apr:1
 	dev-libs/apr-util:1
 	odbc? (
 		iodbc? ( >=dev-db/libiodbc-3.52.4 )
 		!iodbc? ( dev-db/unixODBC ) )
 	smtp? ( net-libs/libesmtp )"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+# test suite fails
+RESTRICT="test"
+
+HTML_DOCS=( site/. )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.10.0-missing_includes.patch"
+	"${FILESDIR}/${PN}-0.10.0-gcc44.patch"
+	"${FILESDIR}/${PN}-0.10.0-unixODBC.patch"
+	"${FILESDIR}/${PN}-0.10.0-fix-c++14.patch"
+)
 
 pkg_setup() {
 	if use iodbc && ! use odbc; then
@@ -31,35 +42,23 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PV}-missing_includes.patch \
-		"${FILESDIR}"/${P}-gcc44.patch \
-		"${FILESDIR}"/${P}-unixODBC.patch
-}
-
 src_configure() {
-	local myconf
-	use smtp && myconf="${myconf} --with-SMTP=libesmtp"
-	if use odbc; then
-		if use iodbc; then
-			myconf="${myconf} --with-ODBC=iODBC"
-		else
-			myconf="${myconf} --with-ODBC=unixODBC"
-		fi
-	fi
-	use unicode && myconf="${myconf} --with-charset=utf-8"
-
 	econf \
 		--disable-doxygen \
 		--disable-html-docs \
 		--with-apr-util="${SYSROOT:-${EPREFIX}}/usr" \
-		${myconf}
+		$(use_with smtp SMTP libesmtp) \
+		$(use_with odbc ODBC $(usex iodbc iODBC unixODBC)) \
+		--with-charset=$(usex unicode utf-8 auto)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dohtml -r site/*
+	default
 
-	insinto /usr/share/doc/${PF}/examples
-	doins src/examples/cpp/*.cpp
+	docinto examples
+	dodoc src/examples/cpp/*.cpp
+	docompress -x /usr/share/doc/${PF}/examples
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }
