@@ -2639,7 +2639,7 @@ app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by sc
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
 app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
 app-vim/tcomment 3.08: vim plugin: an extensible and universal comment toggler
-app-vim/thlnk 1.2.1 1.2.1-r1: vim plugin: linking in plaintext
+app-vim/thlnk 1.2.1-r1: vim plugin: linking in plaintext
 app-vim/tlib 1.20: vim plugin: a library of utility functions
 app-vim/tmpl 0.1-r1: vim plugin: Syntax for Sam Tregar's HTML::Template
 app-vim/toggle 0.5-r1: vim plugin: quickly toggle boolean-type keywords
