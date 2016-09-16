@@ -73,8 +73,16 @@ check_rebuild() {
 		ewarn "UPDATE THE PERL MODULES:"
 		ewarn "After updating dev-lang/perl the installed Perl modules"
 		ewarn "have to be re-installed. In most cases, this is done automatically"
-		ewarn "by the package manager, but you should still call perl-cleaner to"
-		ewarn "make sure your system is consistent."
+		ewarn "by the package manager, but subsequent steps are still recommended"
+		ewarn "to ensure system consistency."
+		ewarn
+		ewarn "You should start with a depclean to remove any unused perl dependencies"
+		ewarn "that may confuse portage in future. Regular depcleans are also encouraged"
+		ewarn "as part of your regular update cycle, as that will keep perl upgrades working."
+		ewarn "Recommended: emerge --depclean -va"
+		ewarn
+		ewarn "You should then call perl-cleaner to clean up any old files and trigger any"
+		ewarn "remaining rebuilds portage may have missed."
 		ewarn "Use: perl-cleaner --all"
 	elif has_version dev-lang/perl ; then
 		if (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
