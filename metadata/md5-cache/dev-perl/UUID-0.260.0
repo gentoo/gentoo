@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker >=dev-perl/Devel-CheckLib-1.20.0 dev-lang/perl:=
+DESCRIPTION=Perl extension for using UUID interfaces as defined in e2fsprogs
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/UUID/
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JR/JRM/UUID-0.26.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=e43d752d0f56436982e5dccc1bac9f01

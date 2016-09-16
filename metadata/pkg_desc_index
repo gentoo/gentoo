@@ -6517,10 +6517,10 @@ dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from p
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
 dev-perl/URI 1.710.0: Uniform Resource Identifiers (absolute and relative)
-dev-perl/URI-Encode 1.1.0 1.1.1: Simple percent Encoding/Decoding
-dev-perl/URI-Fetch 0.110.0 0.130.0: Smart URI fetching/caching
-dev-perl/URI-Find 20111103.0.0-r1 20140709.0.0: Find URIs in plain text
-dev-perl/UUID 0.50.0 0.250.0: Perl extension for using UUID interfaces as defined in e2fsprogs
+dev-perl/URI-Encode 1.1.1: Simple percent Encoding/Decoding
+dev-perl/URI-Fetch 0.130.0: Smart URI fetching/caching
+dev-perl/URI-Find 20140709.0.0 20160806.0.0: Find URIs in plain text
+dev-perl/UUID 0.250.0 0.260.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r1: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
@@ -6534,12 +6534,12 @@ dev-perl/Unicode-UTF8 0.600.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the system logger
-dev-perl/User-Identity 0.930.0-r1 0.940.0: Maintains info about a physical person
+dev-perl/User-Identity 0.940.0: Maintains info about a physical person
 dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB services
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
-dev-perl/Validate-Tiny 1.015 1.551: Minimalistic data validation
-dev-perl/Variable-Magic 0.580.0 0.590.0: Associate user-defined magic to variables from Perl
+dev-perl/Validate-Tiny 1.551: Minimalistic data validation
+dev-perl/Variable-Magic 0.580.0 0.590.0 0.600.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
