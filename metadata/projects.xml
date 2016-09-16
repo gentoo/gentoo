@@ -504,7 +504,7 @@
     </member>
   </project>
   <project>
-    <email>k_f@gentoo.org</email>
+    <email>cinnamon@gentoo.org</email>
     <name>Cinnamon</name>
     <url>https://wiki.gentoo.org/wiki/Project:Cinnamon</url>
     <description>The goal of the Cinnamon project is to maintain Cinnamon related packages in the main Gentoo repository.</description>
