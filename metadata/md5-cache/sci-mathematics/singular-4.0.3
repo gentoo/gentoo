@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure postinst postrm prepare setup
+DEPEND=dev-libs/gmp:0 >=dev-libs/ntl-5.5.1 emacs? ( >=virtual/emacs-22 ) sci-mathematics/flint sci-mathematics/4ti2 sci-libs/cddlib dev-lang/perl boost? ( dev-libs/boost ) readline? ( sys-libs/readline ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Computer algebra system for polynomial computations
+EAPI=6
+HOMEPAGE=http://www.singular.uni-kl.de/
+IUSE=boost doc emacs examples python +readline
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-linux ~x86-macos
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmp:0 >=dev-libs/ntl-5.5.1 emacs? ( >=virtual/emacs-22 ) sci-mathematics/flint sci-mathematics/4ti2 sci-libs/cddlib
+SLOT=0
+SRC_URI=http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-0-3/singular-4.0.3.tar.gz http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-0-3/singular-4.0.3-share.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=abdfcdd57768f61a82931e2f3fde27c1

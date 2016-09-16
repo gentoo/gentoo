@@ -16238,7 +16238,7 @@ sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random 
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903: IDE for the R language
 sci-mathematics/rw 0.7-r1: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
-sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
+sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/snns 4.2-r8 4.2-r9 4.3-r2: Stuttgart Neural Network Simulator
 sci-mathematics/spass 3.7: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of distributed software systems
