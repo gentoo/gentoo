@@ -20,6 +20,10 @@ RDEPEND="openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/librhash-symlink.patch
+)
+
 src_prepare() {
 	default
 
@@ -46,11 +50,20 @@ multilib_src_compile() {
 		  $(use static-libs && echo lib-static)
 }
 
+myemake() {
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr LIBDIR='$(PREFIX)'/$(get_libdir) "${@}"
+}
+
 multilib_src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr LIBDIR='$(PREFIX)'/$(get_libdir) \
-		  install-lib-shared $(multilib_is_native_abi && echo install-shared) \
-		  $(use static-libs && echo install-lib-static) \
-		  $(use nls && multilib_is_native_abi && echo install-gmo)
+	myemake install-lib-shared
+	multilib_is_native_abi && myemake install-shared
+	use static-libs && myemake install-lib-static
+}
+
+multilib_src_install_all() {
+	myemake -C librhash install-headers
+	use nls && myemake install-gmo
+	einstalldocs
 }
 
 multilib_src_test() {
