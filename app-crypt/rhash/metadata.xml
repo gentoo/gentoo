@@ -9,11 +9,18 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">rhash</remote-id>
 		<remote-id type="github">rhash/RHash</remote-id>
 		<bugs-to>https://github.com/rhash/RHash/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name='openssl'>Add support for hashes from dev-libs/openssl</flag>
+	</use>
 	<longdescription lang="en">
 		RHash is a console utility for calculation and verification of magnet links and a wide range of hash sums like CRC32, MD4, MD5, SHA1, SHA256, SHA512, SHA3, AICH, ED2K, Tiger, DC++ TTH, BitTorrent BTIH, GOST R 34.11-94, RIPEMD-160, HAS-160, EDON-R, Whirlpool and Snefru.
 	</longdescription>
