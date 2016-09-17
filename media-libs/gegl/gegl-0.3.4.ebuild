@@ -28,7 +28,7 @@ LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
-REQUIRED_IUSE="
+REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
 "

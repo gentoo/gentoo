@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pacho Ramos <pacho@gentoo.org> (17 Sep 2016)
+# Unmask when needed versions are in the tree
+>=net-misc/modemmanager-1.6.2 mbim qmi
+
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # Requires unreleased dependency dev-qt/qtspeech.
 kde-apps/kpimtextedit speech

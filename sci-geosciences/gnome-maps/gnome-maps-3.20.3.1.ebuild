@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/clutter-gtk:1.0[introspection]
 	media-libs/clutter:1.0[introspection]
 	media-libs/cogl:1.0[introspection]
-	>=media-libs/libchamplain-0.12.13:0.12[gtk,introspection]
+	>=media-libs/libchamplain-0.12.14:0.12[gtk,introspection]
 	net-libs/libgfbgraph
 	net-libs/libsoup:2.4[introspection]
 	net-libs/rest:0.7
