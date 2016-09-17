@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib >=dev-libs/boost-1.46:= sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Library parsing many pre-OSX MAC text formats
+EAPI=6
+HOMEPAGE=http://sourceforge.net/p/libmwaw/wiki/Home/
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/libmwaw/libmwaw-0.3.8.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=00e632e1c47e9e21c433a863f5ac6df5

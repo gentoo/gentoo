@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=dev-libs/boost:= dev-libs/libxml2 net-misc/curl virtual/pkgconfig man? ( app-text/docbook2X dev-libs/libxslt ) test? ( dev-util/cppcheck dev-util/cppunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C++ client library for the CMIS interface
+EAPI=6
+HOMEPAGE=https://github.com/tdf/libcmis
+IUSE=static-libs man test
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( GPL-2 LGPL-2 MPL-1.1 )
+RDEPEND=dev-libs/boost:= dev-libs/libxml2 net-misc/curl !<dev-cpp/libcmis-0.5.0
+SLOT=0.5
+SRC_URI=https://github.com/tdf/libcmis/archive/da8c3fdc281a0cb3753a6bb9eaa63ac6385e2963.tar.gz -> libcmis-0.5.2_pre20160820.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=848b68a073f6b5c3021801e1a017320b

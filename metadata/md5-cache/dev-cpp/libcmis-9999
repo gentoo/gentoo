@@ -5,8 +5,8 @@ EAPI=6
 HOMEPAGE=https://github.com/tdf/libcmis
 IUSE=static-libs man test
 LICENSE=|| ( GPL-2 LGPL-2 MPL-1.1 )
-RDEPEND=dev-libs/boost:= dev-libs/libxml2 net-misc/curl !dev-cpp/libcmis:0 !dev-cpp/libcmis:0.2 !dev-cpp/libcmis:0.3 !dev-cpp/libcmis:0.4
+RDEPEND=dev-libs/boost:= dev-libs/libxml2 net-misc/curl !<dev-cpp/libcmis-0.5.0
 SLOT=0.5
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=cd7588b1b17fa9fb4b54da86ef831c47
+_md5_=c9f63457947c7e2758e04c5080e8e3d1

@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare unpack
+DEFINED_PHASES=configure install prepare
 DEPEND=virtual/opengl dev-libs/boost media-libs/glew:= media-libs/glm sys-devel/libtool virtual/pkgconfig
 DESCRIPTION=C++ Library for rendering OpenGL models stored in glTF format
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.libreoffice.org
 IUSE=debug test
 KEYWORDS=amd64 x86
@@ -10,6 +10,6 @@ RDEPEND=virtual/opengl
 RESTRICT=test
 SLOT=0
 SRC_URI=http://dev-www.libreoffice.org/src/libgltf/libgltf-0.0.2.tar.bz2
-_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=02ff50226ae40a5ef63a9d3434c6e74a
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=d8c7eedc1243bfd49880ca45f8dae87b
