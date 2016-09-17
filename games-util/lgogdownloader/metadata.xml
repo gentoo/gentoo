@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Sude-/lgogdownloader</remote-id>
+	</upstream>
+	<longdescription>
+	  LGOGDownloader is open source downloader to GOG.com for Linux
+	  users using the same API as the official GOGDownloader.
+
+	  Features:
+	  * List available games
+	  * Resume downloads
+	  * Batch downloading
+	  * Repair downloaded files
+	  * Read/create XML files used by the official GOG Downloader
+	  * Download cover art
+	  * Check for orphaned files
+	  * Check status of files
+	  * Download individual files by id number
+	  * List/download updated files
+	  * Blacklist unwanted files
+	  * Perl regular expressions for filtering games
+	</longdescription>
+</pkgmetadata>
