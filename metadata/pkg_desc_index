@@ -2847,6 +2847,7 @@ dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1: C++ interface for GTK+
 dev-cpp/gtkmm-utils 0.4.1: Utility functions, classes and widgets written on top of gtkmm and glibmm.
 dev-cpp/gtksourceviewmm 2.10.3 2.10.3-r1 3.12.0 3.18.0: C++ bindings for gtksourceview
+dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbackend-elements 1.7.2: A collection of elementary building blocks for implementing compiler backends in c++
