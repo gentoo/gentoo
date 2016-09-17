@@ -15063,7 +15063,7 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2 1.3.10-r3: A great client/server software package allowing remote network access to graphical desktops
 net-misc/tinc 1.0.28 1.1_pre14: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)

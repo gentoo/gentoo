@@ -4,11 +4,11 @@ DESCRIPTION=Driver for Synaptics touchpads
 EAPI=5
 HOMEPAGE=https://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/
 IUSE=kernel_linux
-KEYWORDS=~amd64 arm ~mips ~ppc ~ppc64 x86
+KEYWORDS=amd64 arm ~mips ~ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=kernel_linux? ( >=dev-libs/libevdev-0.4 ) >=x11-base/xorg-server-1.14 >=x11-libs/libXi-1.2 >=x11-libs/libXtst-1.1.0 x11-base/xorg-server:= x11-base/xorg-server[xorg]
 SLOT=0
 SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.8.3.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:linux-info src_unpack:xorg-2 src_prepare:xorg-2 src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	b41f09eee8d441f780b7413dba7e120b
-_md5_=896b57ccb3a22e26e1978b226edc466c
+_md5_=3d79d6adff0cdda9973b82f675747366
