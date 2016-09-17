@@ -14,10 +14,12 @@ version</longdescription>
     <flag name="coinmp">Use sci-libs/coinor-mp as alternative solver</flag>
     <flag name="collada">Enable Collada for rendering 3D models stored in *.dae and *.kmz format</flag>
     <flag name="gltf">Use media-libs/libgltf for inserting 3D models in the glTF format into presentations</flag>
-    <flag name="google">Enable support for remote files on Google Drive</flag>
+    <flag name="google">Enable support for remote files on Google Drive (LibreOffice 5.2.1 and earlier)</flag>
+    <flag name="googledrive">Enable support for remote files on Google Drive</flag>
     <flag name="gtk3">Enable highly experimental gtk3 frontend</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
     <flag name="odk">Build the Office Development Kit</flag>
+    <flag name="pdfimport">Enable PDF import via the Poppler library</flag>
     <flag name="quickstarter">Build the system tray quickstarter</flag>
     <flag name="telepathy">Enable document colaboration features using telepathy communication framework.</flag>
     <flag name="vlc">Use <pkg>media-video/vlc</pkg> for video embedding</flag>
