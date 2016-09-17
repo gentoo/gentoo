@@ -20,7 +20,10 @@ DEPEND="
 	>=app-crypt/keybase-1.0.17
 	"
 RDEPEND="
-	app-crypt/gnupg"
+	app-crypt/gnupg
+	sys-fs/fuse
+	"
+
 
 S="${WORKDIR}/src/github.com/keybase/kbfs"
 
