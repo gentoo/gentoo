@@ -1136,7 +1136,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.29 1.31: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.31: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
