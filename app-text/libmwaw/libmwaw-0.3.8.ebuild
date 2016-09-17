@@ -4,28 +4,29 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libfreehand/"
+EGIT_REPO_URI="git://git.code.sf.net/p/libmwaw/libmwaw"
 inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
-DESCRIPTION="Library for import of FreeHand drawings"
-HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libfreehand"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+DESCRIPTION="Library parsing many pre-OSX MAC text formats"
+HOMEPAGE="http://sourceforge.net/p/libmwaw/wiki/Home/"
+[[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
-LICENSE="MPL-2.0"
+LICENSE="LGPL-2.1"
 SLOT="0"
+
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~x86"
+
 IUSE="doc static-libs"
 
 RDEPEND="
 	dev-libs/librevenge
+	dev-libs/libxml2
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	dev-libs/icu:=
-	dev-util/gperf
-	media-libs/lcms
+	>=dev-libs/boost-1.46:=
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -33,15 +34,17 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	[[ -d m4 ]] || mkdir "m4"
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
+	# zip is hard enabled as the zlib is dep on the rdeps anyway
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable static-libs static) \
+		--with-sharedptr=boost \
+		--enable-zip \
 		--disable-werror \
+		$(use_enable static-libs static) \
 		$(use_with doc docs)
 }
 

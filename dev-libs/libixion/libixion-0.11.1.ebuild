@@ -19,8 +19,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 LICENSE="MIT"
 SLOT="0/0.11" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS=""
-# KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python static-libs"
 
 RDEPEND="
