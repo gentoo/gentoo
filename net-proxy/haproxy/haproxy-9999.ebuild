@@ -55,66 +55,69 @@ src_prepare() {
 }
 
 src_compile() {
-	local args="TARGET=linux2628 USE_GETADDRINFO=1"
+	local -a args=(
+		TARGET=linux2628
+		USE_GETADDRINFO=1
+	)
 
 	if use crypt ; then
-		args="${args} USE_LIBCRYPT=1"
+		args+=( USE_LIBCRYPT=1 )
 	else
-		args="${args} USE_LIBCRYPT="
+		args+=( USE_LIBCRYPT= )
 	fi
 
 # bug 541042
 #	if use lua; then
-#		args="${args} USE_LUA=1"
+#		args+=( USE_LUA=1 )
 #	else
-		args="${args} USE_LUA="
+		args+=( USE_LUA= )
 #	fi
 
 	if use net_ns; then
-		args="${args} USE_NS=1"
+		args+=( USE_NS=1 )
 	else
-		args="${args} USE_NS="
+		args+=( USE_NS= )
 	fi
 
 	if use pcre ; then
-		args="${args} USE_PCRE=1"
+		args+=( USE_PCRE=1 )
 	else
-		args="${args} USE_PCRE="
+		args+=( USE_PCRE= )
 	fi
 
 	if use pcre-jit; then
-		args="${args} USE_PCRE_JIT=1"
+		args+=( USE_PCRE_JIT=1 )
 	else
-		args="${args} USE_PCRE_JIT="
+		args+=( USE_PCRE_JIT= )
 	fi
 
 #	if use kernel_linux; then
-#		args="${args} USE_LINUX_SPLICE=1 USE_LINUX_TPROXY=1"
+#		args+=( USE_LINUX_SPLICE=1 USE_LINUX_TPROXY=1 )
 #	else
-#		args="${args} USE_LINUX_SPLICE= USE_LINUX_TPROXY="
+#		args+=( USE_LINUX_SPLICE= USE_LINUX_TPROXY= )
 #	fi
 
 	if use ssl ; then
-		args="${args} USE_OPENSSL=1"
+		args+=( USE_OPENSSL=1 )
 	else
-		args="${args} USE_OPENSSL="
+		args+=( USE_OPENSSL= )
 	fi
 
 	if use zlib ; then
-		args="${args} USE_ZLIB=1"
+		args+=( USE_ZLIB=1 )
 	else
-		args="${args} USE_ZLIB="
+		args+=( USE_ZLIB= )
 	fi
 
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args}
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 
 	if use tools ; then
 		for contrib in halog iprange ; do
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args}
+				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
