@@ -35,6 +35,12 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS )
 
+haproxy_use() {
+	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
+
+	usex "${1}" "USE_${2}=1" "USE_${2}="
+}
+
 pkg_setup() {
 	enewgroup haproxy
 	enewuser haproxy -1 -1 -1 haproxy
@@ -60,54 +66,20 @@ src_compile() {
 		USE_GETADDRINFO=1
 	)
 
-	if use crypt ; then
-		args+=( USE_LIBCRYPT=1 )
-	else
-		args+=( USE_LIBCRYPT= )
-	fi
+	args+=( $(haproxy_use crypt LIBCRYPT) )
 
 # bug 541042
-#	if use lua; then
-#		args+=( USE_LUA=1 )
-#	else
-		args+=( USE_LUA= )
-#	fi
+#	args+=( $(haproxy_use lua LUA) )
 
-	if use net_ns; then
-		args+=( USE_NS=1 )
-	else
-		args+=( USE_NS= )
-	fi
+	args+=( $(haproxy_use net_ns NS) )
+	args+=( $(haproxy_use pcre PCRE) )
+	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
 
-	if use pcre ; then
-		args+=( USE_PCRE=1 )
-	else
-		args+=( USE_PCRE= )
-	fi
+#	args+=( $(haproxy_use kernel_linux LINUX_SPLICE) )
+#	args+=( $(haproxy_use kernel_linux LINUX_TPROXY) )
 
-	if use pcre-jit; then
-		args+=( USE_PCRE_JIT=1 )
-	else
-		args+=( USE_PCRE_JIT= )
-	fi
-
-#	if use kernel_linux; then
-#		args+=( USE_LINUX_SPLICE=1 USE_LINUX_TPROXY=1 )
-#	else
-#		args+=( USE_LINUX_SPLICE= USE_LINUX_TPROXY= )
-#	fi
-
-	if use ssl ; then
-		args+=( USE_OPENSSL=1 )
-	else
-		args+=( USE_OPENSSL= )
-	fi
-
-	if use zlib ; then
-		args+=( USE_ZLIB=1 )
-	else
-		args+=( USE_ZLIB= )
-	fi
+	args+=( $(haproxy_use ssl OPENSSL) )
+	args+=( $(haproxy_use zlib ZLIB) )
 
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
