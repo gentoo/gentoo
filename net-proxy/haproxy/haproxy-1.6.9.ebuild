@@ -16,6 +16,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="+crypt doc examples libressl net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
+REQUIRED_USE="pcre-jit? ( pcre )"
 
 DEPEND="
 	pcre? (
@@ -77,13 +78,14 @@ src_compile() {
 
 	if use pcre ; then
 		args="${args} USE_PCRE=1"
-		if use pcre-jit; then
-			args="${args} USE_PCRE_JIT=1"
-		else
-			args="${args} USE_PCRE_JIT="
-		fi
 	else
-		args="${args} USE_PCRE= USE_PCRE_JIT="
+		args="${args} USE_PCRE="
+	fi
+
+	if use pcre-jit; then
+		args="${args} USE_PCRE_JIT=1"
+	else
+		args="${args} USE_PCRE_JIT="
 	fi
 
 #	if use kernel_linux; then
