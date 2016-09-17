@@ -68,7 +68,13 @@ dual_scripts() {
 }
 
 check_rebuild() {
-	if has_version "<dev-lang/perl-${SHORT_PV}" ; then
+	# Fresh install
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		return 0;
+	# Major Upgrade
+	# doesn't matter if there's multiple copies, it still needs a rebuild
+	# if the string is anything other than "5.CURRENTMAJOR"
+	elif [[ "${REPLACING_VERSIONS%.*}" != "${PV%.*}" ]]; then
 		echo ""
 		ewarn "UPDATE THE PERL MODULES:"
 		ewarn "After updating dev-lang/perl the installed Perl modules"
@@ -84,17 +90,18 @@ check_rebuild() {
 		ewarn "You should then call perl-cleaner to clean up any old files and trigger any"
 		ewarn "remaining rebuilds portage may have missed."
 		ewarn "Use: perl-cleaner --all"
-	elif has_version dev-lang/perl ; then
-		if (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
-		   ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
-		   (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
-		   ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
-			echo ""
-			ewarn "TOGGLED USE-FLAGS WARNING:"
-			ewarn "You changed one of the use-flags ithreads or debug."
-			ewarn "You must rebuild all perl-modules installed."
-			ewarn "Use: perl-cleaner --modules ; perl-cleaner --force --libperl"
-		fi
+		return 0;
+
+	# Reinstall w/ USE Change
+	elif (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
+	     ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+	     (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
+	     ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
+		echo ""
+		ewarn "TOGGLED USE-FLAGS WARNING:"
+		ewarn "You changed one of the use-flags ithreads or debug."
+		ewarn "You must rebuild all perl-modules installed."
+		ewarn "Use: perl-cleaner --modules ; perl-cleaner --force --libperl"
 	fi
 }
 
@@ -469,6 +476,10 @@ src_install() {
 	[[ -d ${ED}/usr/local ]] && rm -r "${ED}"/usr/local
 
 	dual_scripts
+}
+
+pkg_preinst() {
+	check_rebuild
 }
 
 pkg_postinst() {
