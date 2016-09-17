@@ -2,7 +2,7 @@ DEFINED_PHASES=postinst postrm
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Baselayout for Java
 EAPI=5
-HOMEPAGE=https://www.gentoo.org/proj/en/java/
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Java
 KEYWORDS=amd64 ~arm ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=!<dev-java/java-config-2.2
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~sera/distfiles/baselayout-java-0.1.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=902abd76d6efbe6bd6aa56cf64f72377
+_md5_=6ada5a0ceec8488ceded681b94f5a550

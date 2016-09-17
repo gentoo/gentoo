@@ -2,7 +2,7 @@ DEFINED_PHASES=postinst prepare
 DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A set of eselect modules for Java
 EAPI=5
-HOMEPAGE=https://www.gentoo.org/proj/en/java/
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Java
 KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=!app-eselect/eselect-ecj !app-eselect/eselect-maven !<dev-java/java-config-2.2 app-admin/eselect
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/eselect-java.git/snapshot/eselect-java-0.2.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=75b2eaced9bb2824a3cf57eaca0c72ed
+_md5_=060b23f821b63c977c18d43263b09492
