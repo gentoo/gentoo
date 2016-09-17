@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=app-text/enchant-1.4 app-text/iso-codes >=dev-cpp/cairomm-1.12 >=dev-cpp/glibmm-2.46:2 >=dev-cpp/gtkmm-3.18:3.0 >=dev-cpp/gstreamermm-1.0:1.0 >=dev-cpp/libxmlpp-2.40:2.6 dev-libs/glib:2 >=dev-libs/libsigc++-2.6:2 media-libs/gst-plugins-base:1.0[X,pango] media-libs/gst-plugins-good:1.0 media-libs/gstreamer:1.0 media-plugins/gst-plugins-meta:1.0 x11-libs/gtk+:3 virtual/libintl >=dev-util/intltool-0.40 virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GTK+3 subtitle editing tool
+EAPI=6
+HOMEPAGE=http://home.gna.org/subtitleeditor/
+IUSE=debug nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=app-text/enchant-1.4 app-text/iso-codes >=dev-cpp/cairomm-1.12 >=dev-cpp/glibmm-2.46:2 >=dev-cpp/gtkmm-3.18:3.0 >=dev-cpp/gstreamermm-1.0:1.0 >=dev-cpp/libxmlpp-2.40:2.6 dev-libs/glib:2 >=dev-libs/libsigc++-2.6:2 media-libs/gst-plugins-base:1.0[X,pango] media-libs/gst-plugins-good:1.0 media-libs/gstreamer:1.0 media-plugins/gst-plugins-meta:1.0 x11-libs/gtk+:3 virtual/libintl
+SLOT=0
+SRC_URI=http://download.gna.org/subtitleeditor/0.53/subtitleeditor-0.53.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:gnome2 src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=8a1ff7ed81f81ae1def01c071bbafae9
