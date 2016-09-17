@@ -8,7 +8,7 @@ inherit elisp-common flag-o-matic multilib readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="mirror://gnu-alpha/emacs/pretest/emacs-${PV/_/-}.tar.xz"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
