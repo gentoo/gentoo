@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare unpack
-DEPEND=virtual/pkgconfig media-sound/pulseaudio sys-libs/ncurses:0=[unicode?] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=sys-devel/autoconf-archive virtual/pkgconfig media-sound/pulseaudio sys-libs/ncurses:0=[unicode?] !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A PulseAudio NCurses mixer
 EAPI=6
 HOMEPAGE=https://github.com/patroclos/PAmix
@@ -9,4 +9,4 @@ RDEPEND=media-sound/pulseaudio sys-libs/ncurses:0=[unicode?]
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=f5222c669d45cfb1b5e258ba6b719ff5
+_md5_=4106ab058623b130cce34fe8ce2563ef

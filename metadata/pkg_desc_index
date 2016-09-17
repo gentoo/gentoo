@@ -2867,7 +2867,7 @@ dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema de
 dev-cpp/luabind 0.9.1 0.9.1-r1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
-dev-cpp/mm-common 0.9.8 0.9.9 0.9.10: Build infrastructure and utilities for GNOME C++ bindings
+dev-cpp/mm-common 0.9.10: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.3: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.36.0 2.38.1 2.40.0 2.40.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
@@ -11106,7 +11106,7 @@ games-util/xgame-gtk2 2.0.2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0 0.26.0: Simple low-level configuration system
-gnome-base/dconf-editor 3.16.1 3.18.2 3.20.3: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.18.2 3.20.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.18.3 3.20.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0 3.18.0 3.20.0: Meta package for GNOME 3, merge this package to install
@@ -12317,7 +12317,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnai
 media-gfx/gnome-screenshot 3.18.0 3.20.1: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.8 2.5.9 2.5.10: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.10: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
