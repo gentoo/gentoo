@@ -31,7 +31,9 @@ RDEPEND="
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 	ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.23[${MULTILIB_USEDEP}] )
-	opus? ( >=media-libs/opus-1.1[${MULTILIB_USEDEP}] )
+	opus? (
+		>=media-libs/opus-1.1[${MULTILIB_USEDEP}]
+		!<media-plugins/gst-plugins-opus-1.8:${SLOT} )
 	pango? ( >=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}] )
 	theora? ( >=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
