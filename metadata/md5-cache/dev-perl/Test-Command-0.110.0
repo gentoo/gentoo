@@ -3,11 +3,11 @@ DEPEND=>=virtual/perl-Test-Simple-0.620.0 dev-perl/Module-Build dev-lang/perl:=
 DESCRIPTION=Test routines for external commands
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test-Command/
-KEYWORDS=alpha amd64 ~arm ~mips ppc ~ppc64 ~sparc x86
+KEYWORDS=alpha amd64 ~arm ~mips ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Test-Simple-0.620.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DANBOO/Test-Command-0.11.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=3150057e57e1c0b28a6708e7dcd799f7
+_md5_=0d1167e33faec19c6d7ed7b737e8083c

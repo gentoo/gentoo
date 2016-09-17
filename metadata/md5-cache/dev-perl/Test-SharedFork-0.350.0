@@ -4,11 +4,11 @@ DESCRIPTION=fork test
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test-SharedFork/
 IUSE=test
-KEYWORDS=alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.880.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=922a11dd17981c9762723ba5a26ba477
+_md5_=453c1b76def5bcef9d5ff6e9de848b0f
