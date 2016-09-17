@@ -229,7 +229,7 @@
 +  return (MiniSat_ptr)s;
 +}
 +
-+extern "C"void MiniSat_Delete(MiniSat_ptr ms)
++extern "C" void MiniSat_Delete(MiniSat_ptr ms)
 +{
 +  delete (Minisat::SimpSolver *)ms;
 +}
