@@ -4024,6 +4024,7 @@ media-libs/leptonica:utils - Install command-line utilities
 media-libs/leptonica:webp - Adds support for the WebP image format
 media-libs/libafterimage:shaping - Use MIT shaped X windows extention.
 media-libs/libafterimage:shm - Use MIT shared memory extention for X image transfer.
+media-libs/libaom:svc - Enable spatial-svc support (experimental)
 media-libs/libass:enca - Enables support for charset discovery and conversion.
 media-libs/libass:harfbuzz - Enables OpenType shaping via media-libs/harfbuzz.
 media-libs/libbdplus:aacs - Add support for decryption of AACS
@@ -4073,6 +4074,7 @@ media-libs/libsdl2:sound - Control audio support (disable at your own risk)
 media-libs/libsdl2:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl2:video - Control video support (disable at your own risk)
 media-libs/libvisio:tools - Build conversion tools
+media-libs/libvpx:highbitdepth - Enable 10 and 12 bit support for VP9.
 media-libs/libvpx:postproc - Enable additional post processing filters
 media-libs/libvpx:svc - Enable spatial-svc support (experimental)
 media-libs/libwebp:experimental - Build with -DWEBP_EXPERIMENTAL_FEATURES
