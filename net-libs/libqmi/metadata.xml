@@ -9,4 +9,7 @@
 	<email>chainsaw@gentoo.org</email>
 	<name>Tony Vroon</name>
 </maintainer>
+<use>
+  <flag name="mbim">Support QMI over MBIM</flag>
+</use>
 </pkgmetadata>
