@@ -6966,7 +6966,7 @@ dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of t
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7: django CMS plugins for bootstrap3 markup
 dev-python/aldryn-common 1.0.3: django CMS plugins with common utilities
 dev-python/aldryn-search 0.2.12: An extension to django CMS to provide multilingual Haystack indexes
-dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6 0.8.7: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6 0.8.7 0.8.8: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
@@ -7295,7 +7295,7 @@ dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4 3.0.4-r1: A wrap
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
-dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
+dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0 1.4.2: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0 0.11.1: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-bootstrap 3.3.6.0 3.3.7.0: An extension that includes Bootstrap in your project, without boilerplate code
