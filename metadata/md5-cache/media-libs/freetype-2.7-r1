@@ -14,4 +14,4 @@ SLOT=2
 SRC_URI=mirror://sourceforge/freetype/freetype-2.7.tar.bz2 mirror://nongnu/freetype/freetype-2.7.tar.bz2 utils? ( mirror://sourceforge/freetype/ft2demos-2.7.tar.bz2 mirror://nongnu/freetype/ft2demos-2.7.tar.bz2 ) doc? ( mirror://sourceforge/freetype/freetype-doc-2.7.tar.bz2 mirror://nongnu/freetype/freetype-doc-2.7.tar.bz2 )
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=e81fb7f64484e5298263f1447ea2d520
+_md5_=f36a6351afbf08872626bc72f92266f1
