@@ -11081,6 +11081,7 @@ games-util/gslist 0.8.11a 0.8.11a-r1: A GameSpy server browser
 games-util/gtkevemon 1.8-r1 1.10 9999: A standalone skill monitoring application for EVE Online
 games-util/higan-purify 03: Rom purifier for higan
 games-util/joystick 1.4.8 1.4.8-r1 1.5.1: joystick testing utilities
+games-util/lgogdownloader 2.28: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux

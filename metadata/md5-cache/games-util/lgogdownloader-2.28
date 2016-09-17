@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-crypt/rhash-1.3.3-r2:= dev-cpp/htmlcxx:= dev-libs/boost:= >=dev-libs/jsoncpp-1.7:= dev-libs/tinyxml:= net-libs/liboauth:= >=net-misc/curl-7.32:=[ssl] sys-apps/help2man virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.0.0
+DESCRIPTION=Unofficial GOG.com downloader for Linux
+EAPI=6
+HOMEPAGE=https://sites.google.com/site/gogdownloader/
+IUSE=+debug
+KEYWORDS=~amd64 ~x86
+LICENSE=WTFPL-2
+RDEPEND=>=app-crypt/rhash-1.3.3-r2:= dev-cpp/htmlcxx:= dev-libs/boost:= >=dev-libs/jsoncpp-1.7:= dev-libs/tinyxml:= net-libs/liboauth:= >=net-misc/curl-7.32:=[ssl]
+SLOT=0
+SRC_URI=https://sites.google.com/site/gogdownloader/lgogdownloader-2.28.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=6b102a59559b3d7299f2fdd0890d749f
