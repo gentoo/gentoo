@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-util/ninja python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+DESCRIPTION=Open source build system
+EAPI=6
+HOMEPAGE=http://mesonbuild.com/
+IUSE=python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-util/ninja python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
+SLOT=0
+SRC_URI=mirror://pypi/m/meson/meson-0.34.0.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=8c5077854faeda7f8191f8c1d228197c

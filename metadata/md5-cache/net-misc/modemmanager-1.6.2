@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.36.0:2 >=virtual/libgudev-230:= introspection? ( >=dev-libs/gobject-introspection-0.9.6:= ) mbim? ( >=net-libs/libmbim-1.14.0 ) policykit? ( >=sys-auth/polkit-0.106[introspection] ) systemd? ( >=sys-apps/systemd-183 ) qmi? ( >=net-libs/libqmi-1.16.0:= ) dev-util/gdbus-codegen >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.32[vapigen(+)] dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] ) ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig
+DESCRIPTION=Modem and mobile broadband management libraries
+EAPI=6
+HOMEPAGE=https://cgit.freedesktop.org/ModemManager/ModemManager/
+IUSE=+introspection mbim policykit systemd +qmi qmi-newest vala
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.36.0:2 >=virtual/libgudev-230:= introspection? ( >=dev-libs/gobject-introspection-0.9.6:= ) mbim? ( >=net-libs/libmbim-1.14.0 ) policykit? ( >=sys-auth/polkit-0.106[introspection] ) systemd? ( >=sys-apps/systemd-183 ) qmi? ( >=net-libs/libqmi-1.16.0:= )
+REQUIRED_USE=qmi-newest? ( qmi ) vala? ( introspection )
+SLOT=0/1
+SRC_URI=https://www.freedesktop.org/software/ModemManager/ModemManager-1.6.2.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:- src_prepare:- src_configure:- src_compile:gnome2 src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	udev	73058269b3e70e34e084fa3981282338	user	80aaa71614ced86f02ee1a513821dc87	vala	764817a25b405b65269d8619e203a52f	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=c69580862d3ce2dcab17fb52bba37a0c

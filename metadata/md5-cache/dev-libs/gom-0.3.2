@@ -7,8 +7,9 @@ IUSE=+introspection python debug python_targets_python3_4 python_targets_python3
 KEYWORDS=~alpha amd64 ~ppc ~ppc64 ~sparc x86
 LICENSE=LGPL-2+
 RDEPEND=>=dev-db/sqlite-3.7:3 >=dev-libs/glib-2.36:2 introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) python? ( python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)] >=dev-python/pygobject-3.16:3[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)] )
+REQUIRED_USE=python? ( || ( python_targets_python3_4 python_targets_python3_5 ) introspection )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gom/0.3/gom-0.3.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:- src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=31334bcc7d7d74809a809d5bce4be3e2
+_md5_=c827dbfc77dfd7b7f77efab2f4e0900b

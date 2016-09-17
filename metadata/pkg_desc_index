@@ -4485,7 +4485,7 @@ dev-lang/ocaml 3.12.1 4.02.3 4.02.3-r1 4.03.0 4.04.0_beta2: Fast modern type-inf
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
 dev-lang/opendylan-bin 2011.1 2012.1 2013.1 2013.2 2014.1: OpenDylan language runtime environment (prebuilt)
-dev-lang/orc 0.4.23 0.4.24 0.4.25: The Oil Runtime Compiler, a just-in-time compiler for array operations
+dev-lang/orc 0.4.25 0.4.26: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
@@ -4633,7 +4633,7 @@ dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE k
 dev-libs/go-usb 9999: CGO bindings for libusb
 dev-libs/gobject-introspection 1.44.0 1.46.0 1.48.0: Introspection system for GObject-based libraries
 dev-libs/gobject-introspection-common 1.44.0 1.46.0 1.48.0: Build infrastructure for GObject Introspection
-dev-libs/gom 0.3.0 0.3.1 0.3.2: GObject to SQLite object mapper library
+dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.1.0 0.2.1 0.2.3.1 0.3.0: A development library for elementary development
 dev-libs/grantlee 0.4.0 5.1.0: C++ string template engine based on the Django template system
 dev-libs/grok 0.9.2: DRY and RAD for regular expressions
@@ -9941,7 +9941,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 0.12.1 1.2.0 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.0 3.16.1 3.16.2: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.33.0: Open source build system
+dev-util/meson 0.33.0 0.34.0: Open source build system
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
@@ -14901,7 +14901,7 @@ net-misc/minissdpd 1.5.20160301: MiniSSDP Daemon
 net-misc/miniupnpd 2.0: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
-net-misc/modemmanager 1.4.12 1.4.14: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.4.12 1.4.14 1.6.2: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.4 1.2.5 1.2.5-r1 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
@@ -15874,7 +15874,7 @@ sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gp
 sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
-sci-geosciences/gnome-maps 3.18.2 3.18.4 3.20.1 3.20.2 3.20.3: A map application for GNOME
+sci-geosciences/gnome-maps 3.18.2 3.18.4 3.20.3 3.20.3.1: A map application for GNOME
 sci-geosciences/googleearth 7.1.4.1529: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
@@ -18237,7 +18237,7 @@ x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening 
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.30 2.24.31 3.16.7 3.18.9 3.20.8 3.20.9: Gimp ToolKit +
-x11-libs/gtk+extra 3.0.5 3.2.0: Useful Additional GTK+ widgets
+x11-libs/gtk+extra 3.2.0 3.3.0: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
 x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
@@ -18397,7 +18397,7 @@ x11-misc/cbatticon 1.3.2 1.6.3 1.6.4: A lightweight and fast battery icon that s
 x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
-x11-misc/colord 1.2.12 1.3.2: System service to accurately color manage input and output devices
+x11-misc/colord 1.2.12 1.3.2 1.3.3: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta1 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
 x11-misc/denu 2.3.2-r1: A menu generation program for fluxbox, waimea, openbox, icewm, gnome and kde
