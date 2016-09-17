@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://launchpad.net/ical-tcl/3.x/3.0/+download/ical-3.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=1f55f7b8d57448e49533783cef7672f5
+_md5_=d69fe0f4290a2a3afc461f7b9a42e432
