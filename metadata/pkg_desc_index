@@ -2086,7 +2086,7 @@ app-pda/jpilot-backup 0.60: Backup plugin for jpilot
 app-pda/jpilot-mail 0.1.7: jpilot-Mail is a jpilot plugin to deliver mail from the pilot and upload mail to it
 app-pda/jpilot-plucker 0.02: Plucker plugin for jpilot
 app-pda/jpilot-syncmal 0.81: Syncmal plugin for jpilot
-app-pda/libimobiledevice 1.1.6 1.1.6-r1 1.2.0: Support library to communicate with Apple iPhone/iPod Touch devices
+app-pda/libimobiledevice 1.2.0: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 1.11 1.11-r1 1.11-r2 1.12: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/orange 0.4: A tool and library for extracting cabs from executable installers

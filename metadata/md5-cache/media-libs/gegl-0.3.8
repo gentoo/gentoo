@@ -4,11 +4,11 @@ DESCRIPTION=A graph based image processing framework
 EAPI=6
 HOMEPAGE=http://www.gegl.org/
 IUSE=cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
 LICENSE=|| ( GPL-3 LGPL-3 )
 RDEPEND=>=dev-libs/glib-2.36:2 dev-libs/json-glib >=media-libs/babl-0.1.14 sys-libs/zlib >=x11-libs/gdk-pixbuf-2.18:2 x11-libs/pango cairo? ( x11-libs/cairo ) ffmpeg? ( >=media-video/ffmpeg-2.8:0= ) introspection? ( >=dev-libs/gobject-introspection-1.32:= ) virtual/jpeg:0= jpeg2k? ( >=media-libs/jasper-1.900.1 ) lcms? ( >=media-libs/lcms-2.2:2 ) lensfun? ( >=media-libs/lensfun-0.2.5 ) openexr? ( media-libs/openexr ) media-libs/libpng:0= raw? ( >=media-libs/libraw-0.15.4 ) sdl? ( media-libs/libsdl ) svg? ( >=gnome-base/librsvg-2.14:2 ) tiff? ( >=media-libs/tiff-4:0 ) umfpack? ( sci-libs/umfpack ) v4l? ( >=media-libs/libv4l-1.0.1 ) webp? ( media-libs/libwebp )
 SLOT=0.3
 SRC_URI=http://download.gimp.org/pub/gegl/0.3/gegl-0.3.8.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vala	764817a25b405b65269d8619e203a52f	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=0e2ab176068481ef82a199a91cc98904
+_md5_=73bffdcadbb7fde0a546114ca8ce0441

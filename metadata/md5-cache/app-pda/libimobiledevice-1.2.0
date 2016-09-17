@@ -4,7 +4,7 @@ DESCRIPTION=Support library to communicate with Apple iPhone/iPod Touch devices
 EAPI=5
 HOMEPAGE=http://www.libimobiledevice.org/
 IUSE=gnutls python static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=app-pda/libplist-1.11:= >=app-pda/libusbmuxd-1.0.9:= gnutls? ( dev-libs/libgcrypt:0 >=dev-libs/libtasn1-1.1 >=net-libs/gnutls-2.2.0 ) !gnutls? ( dev-libs/openssl:0 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] app-pda/libplist[python(-),python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] )
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
@@ -12,4 +12,4 @@ SLOT=0/6
 SRC_URI=http://www.libimobiledevice.org/downloads/libimobiledevice-1.2.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=9f4e4bc1953e350dbd38001a6c7b7f8e
+_md5_=4b994d2ef7d5bf499bca63efa68479a3
