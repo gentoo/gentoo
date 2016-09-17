@@ -1,0 +1,67 @@
+From 807081583ea58b07a5ff2e0659f4173492befb8a Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 14 Sep 2016 22:56:35 +0100
+Subject: [PATCH 2/3] Update css_syntax.y for use with less ancient Bison
+
+New pregenerated css_syntax.c to follow.
+---
+ css/css_syntax.y | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/css/css_syntax.y b/css/css_syntax.y
+index e75720d..0d9b177 100644
+--- a/css/css_syntax.y
++++ b/css/css_syntax.y
+@@ -4,13 +4,13 @@
+ #include "css_lex.h"
+ #include "parser.h"
+ 
+-#define YYPARSE_PARAM yyparam
+ #define YYERROR_VERBOSE 1
+ //#define YYDEBUG 1
+ 
+ %}
+ 
+-%pure_parser
++%parse-param {void *yyparam}
++%pure-parser
+ 
+ %union {
+ 	char *lexeme;
+@@ -22,6 +22,19 @@
+ 	int pseudo_element;
+ }
+ 
++%{
++
++int yylex(YYSTYPE *lvalp);
++
++int yyerror(void *yyparam, const char *s) {
++#if YYDEBUG
++	fprintf(stderr, "Error: %s\n", s);
++#endif
++	return 0;
++}
++
++%}
++
+ %token IMPORT_SYM
+ %token IMPORTANT_SYM
+ %token IDENT
+@@ -571,13 +584,6 @@ hexcolor
+ 
+ %%
+ 
+-int yyerror(char *s) {
+-#if YYDEBUG
+-	fprintf(stderr, "Error: %s\n", s);
+-#endif
+-	return 0;
+-}
+-
+ struct selector_list_t* css_parse(const char *buffer, int buf_len) {
+ 	struct selector_list_t *ret = NULL;
+ 	//yydebug = 1;
+-- 
+2.8.2
+
