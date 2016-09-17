@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test unpack
+DEPEND=>=dev-libs/libinput-1.2.0:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-proto/inputproto x11-proto/kbproto x11-proto/xproto x11-base/xorg-server[xorg]
+DESCRIPTION=X.org input driver based on libinput
+EAPI=5
+HOMEPAGE=http://xorg.freedesktop.org/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libinput-1.2.0:0= x11-base/xorg-server:= x11-base/xorg-server[xorg]
+SLOT=0
+SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-0.19.1.tar.bz2
+_eclass_exported_funcs=pkg_pretend:- pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:linux-info src_unpack:xorg-2 src_prepare:xorg-2 src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	b41f09eee8d441f780b7413dba7e120b
+_md5_=7254aaa2782dbbf9cefd08bbaf4b2c75
