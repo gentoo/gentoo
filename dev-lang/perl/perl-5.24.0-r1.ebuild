@@ -471,6 +471,10 @@ src_install() {
 	dual_scripts
 }
 
+pkg_preinst() {
+	check_rebuild
+}
+
 pkg_postinst() {
 	dual_scripts
 
