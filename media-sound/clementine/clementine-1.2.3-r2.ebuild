@@ -42,8 +42,8 @@ COMMON_DEPEND="
 	dev-libs/libxml2
 	dev-libs/protobuf:=
 	dev-libs/qjson
-	media-libs/libechonest:=
-	>=media-libs/libmygpo-qt-1.0.7
+	media-libs/libechonest:=[qt4(+)]
+	>=media-libs/libmygpo-qt-1.0.7[qt4(+)]
 	>=media-libs/chromaprint-0.6
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
