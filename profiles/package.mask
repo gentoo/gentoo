@@ -236,10 +236,6 @@ www-apps/389-dsgw
 app-editors/gobby
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Unmaintained, broken, bug #466870. Removal in a month.
-sys-boot/plymouth-openrc-plugin
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Upstream dead, relies on a lot of obsolete libs, bug #471458.
 # Removal in a month.
 media-sound/listen

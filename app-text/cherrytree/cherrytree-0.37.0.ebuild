@@ -5,6 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=true
 
 inherit xdg distutils-r1
