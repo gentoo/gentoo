@@ -549,8 +549,9 @@ app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC
 app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
+app-crypt/kbfs 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs 1.6.2: GUI frontend for encfs
-app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17: Client for keybase.io
+app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17 1.0.17-r1: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
