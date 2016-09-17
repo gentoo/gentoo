@@ -4,11 +4,11 @@ DESCRIPTION=AMD Geode GX2 and LX video driver
 EAPI=5
 HOMEPAGE=http://xorg.freedesktop.org/
 IUSE=ztv
-KEYWORDS=~x86
+KEYWORDS=x86
 LICENSE=MIT
 RDEPEND=x11-base/xorg-server:= x11-base/xorg-server[xorg] x11-libs/libpciaccess
 SLOT=0
 SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-video-geode-2.11.18.tar.bz2
 _eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:xorg-2 src_unpack:xorg-2 src_prepare:xorg-2 src_configure:- src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xorg-2	b41f09eee8d441f780b7413dba7e120b
-_md5_=d647e54b8695f6f87b9fed7cec1b3ccc
+_md5_=da1754f4e865514b8c78edf10c80cd1c

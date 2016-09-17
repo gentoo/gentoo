@@ -4,7 +4,7 @@ DESCRIPTION=Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and new
 EAPI=5
 HOMEPAGE=http://www.amd.com
 IUSE=debug +modules qt4 static-libs pax_kernel gdm-hack abi_x86_32 abi_x86_64 kernel_linux
-KEYWORDS=-* ~amd64 ~x86
+KEYWORDS=-* ~amd64 x86
 LICENSE=AMD GPL-2 QPL-1.0
 RDEPEND=<=x11-base/xorg-server-1.17.49[-minimal] >=app-eselect/eselect-opengl-1.0.7 app-eselect/eselect-opencl sys-power/acpid x11-apps/xauth !x11-libs/xvba-video virtual/glu[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libX11[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXext[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXinerama[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrandr[abi_x86_32(-)?,abi_x86_64(-)?] x11-libs/libXrender[abi_x86_32(-)?,abi_x86_64(-)?] qt4? ( x11-libs/libICE x11-libs/libSM x11-libs/libXcursor x11-libs/libXfixes x11-libs/libXxf86vm dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] ) gdm-hack? ( x11-base/xorg-server:= ) !x11-drivers/ati-drivers:legacy kernel_linux? ( virtual/modutils )
 REQUIRED_USE=|| ( abi_x86_32 abi_x86_64 )
@@ -13,4 +13,4 @@ SLOT=1
 SRC_URI=mirror://gentoo/radeon-crimson-15.12-15.302-151217a-297685e.zip http://developer.amd.com/wordpress/media/2012/10/xvba-sdk-0.74-404001.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	pax-utils	4c2654a34ebe732e85fda354f6ee642f	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e25205146ced8084f9b2c3a05ab787ba
+_md5_=29aeb24d536c3364894eb2050eb4a896
