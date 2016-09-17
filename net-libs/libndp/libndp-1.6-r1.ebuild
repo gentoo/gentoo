@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="Library for Neighbor Discovery Protocol"
@@ -15,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=""
 RDEPEND=""
@@ -25,4 +23,8 @@ multilib_src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		--enable-logging
+}
+
+multilib_src_install() {
+	gnome2_src_install
 }
