@@ -77,7 +77,7 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome google
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
 gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres quickstarter telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
@@ -467,8 +467,8 @@ src_configure() {
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
 		$(use_with gltf system-libgltf) \
-		$(use_with google gdrive-client-id ${google_default_client_id}) \
-		$(use_with google gdrive-client-secret ${google_default_client_secret}) \
+		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
+		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
