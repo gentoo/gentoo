@@ -1017,8 +1017,8 @@ app-editors/editra 0.7.20 0.7.20-r1: Multi-platform text editor supporting over 
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5 24.5-r1 24.5-r3 25.1_rc1 25.1_rc2: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 25.0.50_pre20151113 25.0.93 25.0.94 25.0.95 25.0.9999-r2 25.1.9999-r1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5 24.5-r1 24.5-r3 25.1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 25.0.50_pre20151113 25.0.9999-r2 25.1.9999-r1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
@@ -17582,7 +17582,7 @@ virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0: Virtual for the device filesystem manager
 virtual/editor 0: Virtual for editor
 virtual/eject 0: Virtual for the eject command
-virtual/emacs 23 24: Virtual for GNU Emacs
+virtual/emacs 23 24 25: Virtual for GNU Emacs
 virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Emacs)
 virtual/fam 0 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executable implementation
