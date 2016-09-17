@@ -25,7 +25,8 @@ fi
 
 RDEPEND="media-sound/pulseaudio
 	sys-libs/ncurses:0=[unicode?]"
-DEPEND="virtual/pkgconfig
+DEPEND="sys-devel/autoconf-archive
+	virtual/pkgconfig
 	${RDEPEND}"
 
 src_prepare() {
