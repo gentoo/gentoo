@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm >=x11-libs/motif-2.3:0 virtual/opengl virtual/glu szip? ( virtual/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff:0 ) imagemagick? ( media-gfx/imagemagick ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=3D data visualization tool
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.opendx.org/
 IUSE=hdf cdf netcdf tiff imagemagick szip smp
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=IBM
 RDEPEND=x11-libs/libXmu x11-libs/libXi x11-libs/libXp x11-libs/libXpm >=x11-libs/motif-2.3:0 virtual/opengl virtual/glu szip? ( virtual/szip ) hdf? ( sci-libs/hdf ) cdf? ( sci-libs/cdf ) netcdf? ( sci-libs/netcdf ) tiff? ( media-libs/tiff:0 ) imagemagick? ( media-gfx/imagemagick )
 SLOT=0
-SRC_URI=http://opendx.sdsc.edu/source/dx-4.4.4.tar.gz
+SRC_URI=http://opendx.sdsc.edu/source/dx-4.4.4.tar.gz https://dev.gentoo.org/~soap/distfiles/opendx-4.4.4_p20160917-fix-c++14.patch.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=9c39ff6984602252536e8e9db23c22cc
+_md5_=ab21ef50c31279930a424ffc08929270
