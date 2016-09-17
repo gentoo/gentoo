@@ -15,8 +15,9 @@ EGIT_REPO_URI="http://master.formilux.org/git/people/willy/haproxy.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="+crypt doc examples libressl net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
-REQUIRED_USE="pcre-jit? ( pcre )"
+IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
+REQUIRED_USE="pcre-jit? ( pcre )
+	?? ( slz zlib )"
 
 DEPEND="
 	pcre? (
@@ -27,6 +28,7 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0=[zlib?] )
 		libressl? ( dev-libs/libressl:0= )
 	)
+	slz? ( dev-libs/libslz:= )
 	zlib? ( sys-libs/zlib )"
 # lua? ( dev-lang/lua:5.3 )
 RDEPEND="${DEPEND}"
@@ -79,6 +81,7 @@ src_compile() {
 #	args+=( $(haproxy_use kernel_linux LINUX_TPROXY) )
 
 	args+=( $(haproxy_use ssl OPENSSL) )
+	args+=( $(haproxy_use slz SLZ) )
 	args+=( $(haproxy_use zlib ZLIB) )
 
 	# For now, until the strict-aliasing breakage will be fixed
