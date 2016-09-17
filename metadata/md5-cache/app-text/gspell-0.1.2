@@ -7,8 +7,9 @@ IUSE=+introspection vala
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=app-text/enchant-1.6.0 >=app-text/iso-codes-0.35 >=dev-libs/glib-2.44:2 >=dev-libs/libxml2-2.5.0:2 >=x11-libs/gtk+-3.16:3[introspection?] >=x11-libs/gtksourceview-3.16:3.0[introspection?] introspection? ( >=dev-libs/gobject-introspection-1.42.0:= ) vala? ( || ( dev-lang/vala:0.32[vapigen(+)] dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] ) )
+REQUIRED_USE=vala? ( introspection )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gspell/0.1/gspell-0.1.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vala	764817a25b405b65269d8619e203a52f	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=b242274a55603e928e7ff274d10bd9c1
+_md5_=4af716bdb7cc2aad60442a5c196afd9f
