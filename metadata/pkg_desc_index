@@ -5025,7 +5025,7 @@ dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
 dev-libs/xmlsec 1.2.20: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
-dev-libs/xqilla 2.2.4 2.3.0: An XQuery and XPath 2 library and command line utility written in C++
+dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility written in C++
 dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and asset management
 dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.50 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
