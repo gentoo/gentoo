@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
-inherit autotools base
+inherit autotools
 
 MY_P="XQilla-${PV}"
 
@@ -12,7 +12,7 @@ DESCRIPTION="An XQuery and XPath 2 library and command line utility written in C
 HOMEPAGE="http://xqilla.sourceforge.net/HomePage"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 BSD"
-SLOT="0"
+SLOT="0/3"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples faxpp htmltidy static-libs"
 
@@ -34,7 +34,8 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	base_src_prepare
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -49,24 +50,23 @@ src_configure() {
 
 src_compile() {
 	default
-
-	if use doc; then
-		emake docs || die "emake docs failed"
-		emake devdocs || die "emake devdocs failed"
-	fi
+	use doc && emake docs devdocs
 }
 
 src_install () {
+	use doc && HTML_DOCS=( docs/{dev-api,dom3-api,simple-api} )
 	default
 
-	use static-libs || rm -rf "${ED}"/usr/lib*/*.la
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 
-	if use doc; then
-		cd docs
-		dohtml -r dev-api dom3-api simple-api
+	if use examples; then
+		docinto examples
+		dodoc -r "${S}"/src/samples/.
 	fi
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r "${S}"/src/samples/*
-	fi
+
+	# remove unnecessary files previously filtered by dohtml
+	find "${ED%/}/usr/share/doc/${PF}" \
+		\( -name '*.map' -o -name '*.md5' \) -delete || die
 }
