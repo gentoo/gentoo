@@ -7052,7 +7052,7 @@ dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and 
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0: Amazon Web Services API
 dev-python/boto3 1.3.0 1.3.1 1.4.0: The AWS SDK for Python
-dev-python/botocore 1.4.48 1.4.49 1.4.51: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.4.49 1.4.51 1.4.53: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.14 0.14.2 0.15 0.15-r1: Syntax highlighting and autocompletion for the Python interpreter
@@ -14483,7 +14483,7 @@ net-libs/libkpeople 0.3.0: KDE contact person abstraction library
 net-libs/libktorrent 1.3.1 2.0.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
-net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 9999: MBIM modem protocol helper library
+net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrohttpd 0.9.47 0.9.48 0.9.49 0.9.50 0.9.51: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
@@ -14521,7 +14521,7 @@ net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packet
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.8 2.0.9: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.11-r2 0.4.13-r1: Library for automatic proxy configuration management
-net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 9999: QMI modem protocol helper library
+net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 1.16.0 9999: QMI modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
 net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
@@ -17380,7 +17380,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.63 3.12.9999 3.14.58-r1 3.14.73 3.14.74 3.14.75 3.14.76 3.14.77 3.14.78 3.14.79 3.18.25-r1 3.18.36 3.18.38 3.18.39 3.18.40 4.1.15-r1 4.1.27 4.1.29 4.1.30 4.1.31 4.4.6 4.4.19 4.4.20 4.4.21 4.7.2 4.7.3 4.7.4: Full sources including the Gentoo patchset for the 4.7 kernel tree
 sys-kernel/git-sources 4.8_rc1 4.8_rc2 4.8_rc3 4.8_rc4 4.8_rc5 4.8_rc6: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1 4.7.3: Hardened kernel sources (kernel series 4.7)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1 4.7.3 4.7.4: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
