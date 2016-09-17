@@ -1,0 +1,25 @@
+From edbeee650287a4a36837e090eafed90a760bad83 Mon Sep 17 00:00:00 2001
+From: Sandro Santilli <strk@keybit.net>
+Date: Mon, 7 Mar 2016 10:21:33 +0000
+Subject: [PATCH] Look for isnan in std:: namespace
+
+Tested with gcc 4.8.4
+
+git-svn-id: http://svn.osgeo.org/geos/trunk@4169 5242fede-7e19-0410-aef8-94bd7d2200fb
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7fdc579..8976a6a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,7 +197,7 @@ dnl of isnan().
+ AC_LANG_PUSH([C++])
+ AC_CACHE_CHECK([for isnan], ac_cv_isnan,
+  [AC_TRY_LINK([#include <cmath>],
+- [double x; int y; y = isnan(x);],
++ [double x; int y; y = std::isnan(x);],
+  ac_cv_isnan=yes,
+  ac_cv_isnan=no
+ )])
