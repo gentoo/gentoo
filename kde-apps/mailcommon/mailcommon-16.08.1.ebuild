@@ -52,3 +52,5 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 "
 RDEPEND="${COMMON_DEPEND}"
+
+RESTRICT+=" test"
