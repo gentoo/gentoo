@@ -16,9 +16,8 @@ LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="+introspection mbim policykit systemd +qmi qmi-newest vala"
+IUSE="+introspection mbim policykit +qmi systemd vala"
 REQUIRED_USE="
-	qmi-newest? ( qmi )
 	vala? ( introspection )
 "
 
@@ -28,13 +27,14 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	mbim? ( >=net-libs/libmbim-1.14.0 )
 	policykit? ( >=sys-auth/polkit-0.106[introspection] )
-	systemd? ( >=sys-apps/systemd-183 )
 	qmi? ( >=net-libs/libqmi-1.16.0:= )
+	systemd? ( >=sys-apps/systemd-183 )
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.40
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.3
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
@@ -66,7 +66,6 @@ src_configure() {
 		$(use_with policykit polkit) \
 		$(usex systemd --with-suspend-resume=systemd --with-suspend-resume=no) \
 		$(use_with qmi) \
-		$(use_with qmi-newest newest-qmi-commands) \
 		$(use_enable vala)
 }
 
