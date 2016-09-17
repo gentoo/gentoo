@@ -14931,7 +14931,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.0.12-r1 1.2.4 1.4.0: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.0.12-r1 1.2.4 1.4.0 1.4.0-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4: NetworkManager OpenVPN plugin
