@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+GNOME2_LA_PUNT="yes"
 VALA_MIN_API_VERSION="0.28"
 
 inherit gnome2 multilib toolchain-funcs vala versionator
@@ -15,15 +16,6 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
-
-CORE_SUPPORTED_LANGUAGES="
-	af ar as ast bg bn bn_IN bs ca cs da de el en_GB eo es et eu fi fr gd gl gu
-	he hi hr hu ia id it ja kk km kn ko ky lt lv mk ml mr nb nl nn or pa pl pt
-	pt_BR ro ru sk sl sr sr@latin sv ta te th tr uk vi zh_CN zh_HK zh_TW"
-
-for x in ${CORE_SUPPORTED_LANGUAGES}; do
-	IUSE+="linguas_${x} "
-done
 
 RDEPEND="
 	app-text/gnome-doc-utils
@@ -43,13 +35,14 @@ RDEPEND="
 	>=media-libs/libgphoto2-2.5:=
 	>=media-libs/libraw-0.13.2:=
 	>=net-libs/libsoup-2.26.0:2.4
-	>=net-libs/rest-0.7:0.7
 	net-libs/webkit-gtk:4
 	virtual/libgudev:=[introspection]
 	>=x11-libs/gtk+-3.12.2:3[X]
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
+	dev-util/itstool
+	>=sys-devel/gettext-0.19.7
 	>=sys-devel/m4-1.4.13
 "
 
@@ -59,39 +52,10 @@ DEPEND="${RDEPEND}
 QA_FLAGS_IGNORED="/usr/libexec/${PN}/${PN}-video-thumbnailer"
 
 src_prepare() {
-	local x
-	local linguas="en_GB ${LINGUAS}"
-
 	vala_src_prepare
-
-	sed \
-		-e 's|CFLAGS :|CFLAGS +|g' \
-		-i plugins/Makefile.plugin.mk || die
-
-	# remove disabled lenguages from build
-	for x in ${CORE_SUPPORTED_LANGUAGES}; do
-		if ! has ${x} ${linguas}; then
-			sed -i "/^${x}$/d" "${S}"/po/LINGUAS || die
-		fi
-	done
-
 	gnome2_src_prepare
 }
 
 src_configure() {
-	# Not a normal configure
-	./configure \
-		--disable-schemas-compile \
-		--disable-desktop-update \
-		--disable-icon-update \
-		--prefix=/usr \
-		--lib=$(get_libdir) || die
-}
-
-src_compile() {
-	tc-export CC
-	local valaver="$(vala_best_api_version)"
-
-	# Parallel build fixed in next version
-	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_compile VALAC="$(type -p valac-${valaver})"
+	gnome2_src_configure --disable-static
 }
