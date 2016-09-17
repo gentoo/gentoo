@@ -12776,7 +12776,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.2 12.0.3 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
