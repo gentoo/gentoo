@@ -68,11 +68,11 @@ src_prepare() {
 	if use infinality; then
 		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
-	fi
-
-	if use cleartype_hinting; then
+	elif use cleartype_hinting; then
 		# Will be the new default for >=freetype-2.7.0
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
+	else
+		disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
 
 	if ! use bindist; then
