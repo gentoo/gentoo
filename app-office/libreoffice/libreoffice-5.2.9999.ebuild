@@ -78,7 +78,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres quickstarter telepathy test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -102,7 +102,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
 	app-text/mythes
-	app-text/poppler:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
@@ -169,6 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
+	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 	telepathy? ( net-libs/telepathy-glib )
 "
@@ -460,6 +460,7 @@ src_configure() {
 		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
+		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
 		$(use_enable quickstarter systray) \
 		$(use_enable telepathy) \
