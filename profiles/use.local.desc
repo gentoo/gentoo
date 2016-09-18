@@ -823,7 +823,6 @@ app-i18n/imsettings:gconf - Enable GConf support
 app-i18n/imsettings:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/imsettings:xfconf - Enable integration in the Xfce desktop environment with xfce-base/xfconf
 app-i18n/kimera:anthy - Support for Anthy input method
-app-i18n/libtomoe-gtk:gucharmap - Enable gucharmap dictionary plugin
 app-i18n/mozc:fcitx - Enable support for app-i18n/fcitx
 app-i18n/mozc:ibus - Enable support for app-i18n/ibus
 app-i18n/mozc:renderer - Enable native candidate window.
@@ -833,7 +832,6 @@ app-i18n/pyzy:opencc - Use app-i18n/opencc for input
 app-i18n/scim:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:kasumi - Use Anthy dictionary maintenance tool (app-dicts/kasumi)
-app-i18n/scim-tomoe:gucharmap - Enable gucharmap dictionary plugin
 app-i18n/tomoe:hyperestraier - Enable support for app-text/hyperestraier
 app-i18n/translate-shell:fribidi - Enable RTL language support
 app-i18n/translate-shell:tts - Enable text-to-speech support

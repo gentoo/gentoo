@@ -1570,7 +1570,7 @@ app-i18n/scim-sayura 0.3.3: Sayura Sinhala input method for SCIM
 app-i18n/scim-skk 0.5.2-r1: Japanese input method SKK IMEngine for SCIM
 app-i18n/scim-sunpinyin 2.0.3-r2: The SunPinyin IMEngine for Smart Common Input Method (SCIM)
 app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Input Method Server
-app-i18n/scim-tomoe 0.6.0 0.6.0-r2: Japanese input method Tomoe IMEngine for SCIM
+app-i18n/scim-tomoe 0.6.0 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
 app-i18n/scim-uim 0.2.0-r2: scim-uim is an input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
 app-i18n/scim-wnn 0.2.4 1.0.0-r1: Japanese input method Wnn IMEngine for SCIM
