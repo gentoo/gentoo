@@ -2021,7 +2021,7 @@ app-office/geierlein 0.8.0 0.9.1 0.9.4 0.9.5: Submit tax forms (Umsatzsteuervora
 app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.6.12 2.6.13: A personal finance manager
 app-office/gnumeric 1.12.29 1.12.31 1.12.32: The GNOME Spreadsheet
-app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
+app-office/grisbi 1.0.0 1.0.0-r1: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.1: A small Gtk+ application for keeping track of your time
 app-office/hamster-time-tracker 9999: Time tracking for the masses
@@ -2847,7 +2847,7 @@ dev-cpp/gtest 1.6.0 1.6.0-r1 1.6.0-r2 1.7.0 1.7.0-r1: Google C++ Testing Framewo
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1: C++ interface for GTK+
 dev-cpp/gtkmm-utils 0.4.1: Utility functions, classes and widgets written on top of gtkmm and glibmm.
-dev-cpp/gtksourceviewmm 2.10.3 2.10.3-r1 3.12.0 3.18.0: C++ bindings for gtksourceview
+dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
@@ -4855,7 +4855,7 @@ dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libunicode 0.4-r1: Unicode library
-dev-libs/libunique 1.1.6-r1 3.0.2: a library for writing single instance application
+dev-libs/libunique 1.1.6-r1 1.1.6-r2 3.0.2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.6: Library for manipulating Unicode strings and C strings according to the Unicode standard
 dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
@@ -7613,7 +7613,7 @@ dev-python/nagiosplugin 1.2.3 1.2.4: A class library for writing nagios-compatib
 dev-python/naima 0.7.1: Python package for gamma-ray astronomy
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
-dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
+dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0: Converting Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
@@ -13457,7 +13457,7 @@ media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Rub
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
 media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1: Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
-media-sound/potamus 0.12 14 16: a lightweight audio player with a simple interface and an emphasis on high audio quality
+media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
 media-sound/pragha 1.3.1-r1: A lightweight music player (with support for the Xfce desktop environment)
 media-sound/projectm-jack 2.0.1 2.1.0: A Qt based GUI for projectM that visualizes your JACK output
 media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes your pulseaudio output
@@ -13483,7 +13483,7 @@ media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
 media-sound/qtractor 0.7.7 0.7.8: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
-media-sound/quark 3.21 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
+media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.5.1 3.6.2: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles

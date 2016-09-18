@@ -462,7 +462,6 @@ app-crypt/zuluCrypt:udev - Whether udev will be consulted when deciding if a vol
 app-dicts/aspell-be:classic - Support classic spelling by default
 app-dicts/gwaei:hunspell - Enable app-text/hunspell spellchecking and morphological analysis
 app-dicts/gwaei:mecab - Enable app-text/mecab support
-app-dicts/gwaei:unique - Enable single instance support using dev-libs/libunique.
 app-dicts/myspell-pt:preao - Use the pre ortographic agreement version of the dictionary
 app-doc/clsync-docs:api - Install doxygen generated API docs.
 app-doc/csound-manual:html - Install HTML documentation

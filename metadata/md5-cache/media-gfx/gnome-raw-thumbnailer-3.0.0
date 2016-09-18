@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=>=media-libs/libopenraw-0.0.9[gtk] >=x11-libs/gdk-pixbuf-2 >=dev-libs/glib-2.26 !media-gfx/raw-thumbnailer dev-util/intltool virtual/pkgconfig sys-devel/gettext app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/libopenraw-0.0.9[gtk] >=x11-libs/gdk-pixbuf-2:2 >=dev-libs/glib-2.26:2 !media-gfx/raw-thumbnailer dev-util/intltool virtual/pkgconfig sys-devel/gettext app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A lightweight and fast raw image thumbnailer for GNOME
-EAPI=4
+EAPI=6
 HOMEPAGE=https://libopenraw.freedesktop.org/wiki/RawThumbnailer
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=media-libs/libopenraw-0.0.9[gtk] >=x11-libs/gdk-pixbuf-2 >=dev-libs/glib-2.26 !media-gfx/raw-thumbnailer
+RDEPEND=>=media-libs/libopenraw-0.0.9[gtk] >=x11-libs/gdk-pixbuf-2:2 >=dev-libs/glib-2.26:2 !media-gfx/raw-thumbnailer
 SLOT=0
 SRC_URI=https://libopenraw.freedesktop.org/download/raw-thumbnailer-3.0.0.tar.bz2
-_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:- src_unpack:gnome2 src_prepare:gnome2 src_configure:gnome2 src_compile:gnome2 src_install:gnome2
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:gnome2 src_configure:gnome2 src_compile:gnome2 src_install:gnome2
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=271e1eb648b28a1e7ad27b74ab305410
+_md5_=144cf8b0eec3a4a6ee387de7cb95f668
