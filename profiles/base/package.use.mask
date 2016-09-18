@@ -143,10 +143,6 @@ dev-java/icedtea cacao jamvm
 # Mask raspberry-pi USE globally, unmask on arm.
 media-video/mpv raspberry-pi
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
-# System ffmpeg build is broken in recent chromium (bug #576372).
-<www-client/chromium-51.0.2704.19 system-ffmpeg
-
 # Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
 # Experimental cairo-qt backend (see bug #568000).
 app-text/poppler cairo-qt
@@ -180,10 +176,6 @@ net-im/ayttm webcam
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (19 Nov 2015)
-# GN build for Chromium is still experimental.
-<www-client/chromium-53.0.2767.4 gn
 
 # Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
 # MMAL is only available on the Raspberry Pi:
@@ -505,10 +497,6 @@ media-sound/podcatcher bittorrent
 # Upstream says to not use this for now.
 dev-libs/elfutils threads
 
-# Mike Gilbert <floppym@gentoo.org> (01 Feb 2014)
-# Build failures (bug 499072)
-=www-client/chromium-33* aura
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
 # Mask until dependencies are keyworded (bug 497068)
 dev-vcs/git mediawiki
@@ -640,11 +628,6 @@ media-sound/google-musicmanager log
 # Experimental, masked until it compiles and works.
 media-libs/avidemux-core system-ffmpeg
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Mar 2013)
-# Experimental, breaks WebSQL. Please report sites broken
-# by enabling this flag.
-www-client/chromium system-sqlite
-
 # Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
 # cuda only works on x86 and amd64
 sci-libs/cholmod cuda
@@ -702,10 +685,6 @@ net-libs/gnutls dane
 dev-ml/tyxml ocamlduce
 www-servers/ocsigen ocamlduce
 dev-ml/eliom ocamlduce
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (28 Sep 2012)
-# Causes problems with old NVidia drivers, bug #413637.
-<www-client/chromium-32.0.1700.19 tcmalloc
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.
@@ -825,11 +804,6 @@ dev-lang/path64 debugger
 # Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
 # Mask libbluray support here, and enable it per arch instead
 gnome-base/gvfs bluray
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Oct 2011)
-# Upstream support before 27.x not ready:
-# https://code.google.com/p/chromium/issues/detail?id=32757
-<www-client/chromium-27.0.1448.0 pulseaudio
 
 # Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
 # Systemtap is not keyworded on anything except amd64/x86
