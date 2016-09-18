@@ -15537,7 +15537,7 @@ sci-astronomy/xfitsview 2.2-r2: Viewer for astronomical images in FITS format
 sci-biology/ApE 2.0.7-r1: A Plasmid Editor
 sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Generic Genome Browser
 sci-biology/aaindex 9.1: Amino acid indices and similarity matrices
-sci-biology/abyss 1.3.3 1.3.6-r1: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+sci-biology/abyss 1.3.3 1.3.6-r1 1.9.0: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 sci-biology/allpathslg 42337 52488-r2: De novo assembly of whole-genome shotgun microreads
 sci-biology/amap 2.2-r2: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0 3.1.0-r1: A Modular, Open-Source whole genome assembler
