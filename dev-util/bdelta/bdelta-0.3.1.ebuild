@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,6 +28,7 @@ IUSE=""
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-soname.patch
+	epatch "${FILESDIR}"/${P}-gcc-6.patch
 }
 
 src_compile() {
