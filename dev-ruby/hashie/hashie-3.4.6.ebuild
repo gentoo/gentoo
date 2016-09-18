@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -18,7 +18,7 @@ HOMEPAGE="http://intridea.com/posts/hashie-the-hash-toolkit"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/activesupport )"
@@ -27,7 +27,8 @@ all_ruby_prepare() {
 	# Remove bundler and fix one spec that depends on its requires
 	#rm Gemfile || die
 	sed -i -e '/[Bb]undler/d' Rakefile || die
-	sed -e '/pry/ s:^:#:' -i spec/spec_helper.rb || die
+	sed -e '/pry/ s:^:#:' \
+		-e '1irequire "pathname"; require "tempfile"' -i spec/spec_helper.rb || die
 
 	# Avoid dependency on rspec-pending_for and its dependencies
 	sed -i -e '/pending_for/ s:^:#:' \
