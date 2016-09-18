@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (18 Sep 2016)
+# Masked for failing to build with GCC 6, still using ancient
+# distutils.eclass, tightly coupled to dev-libs/xqilla-2.2*.
+# Purged by Debian and Fedora more than 5 years ago.
+# Mask for removal in 30 days.
+# Bug #594236
+dev-libs/dbxml
+
 # Lars Wendler <polynomial-c@gentoo.org> (15 Sep 2016)
 # Masked for testing
 =app-shells/bash-4.4*
