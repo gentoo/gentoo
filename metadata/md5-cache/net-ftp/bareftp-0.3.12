@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/gnome-sharp-2.20 >=dev-dotnet/gnomevfs-sharp-2.20 >=dev-dotnet/gconf-sharp-2.20 gnome-keyring? ( >=dev-dotnet/gnome-keyring-sharp-1.0.0-r2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Mono based file transfer client
+EAPI=6
+HOMEPAGE=http://www.bareftp.org/
+IUSE=gnome-keyring
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/gnome-sharp-2.20 >=dev-dotnet/gnomevfs-sharp-2.20 >=dev-dotnet/gconf-sharp-2.20 gnome-keyring? ( >=dev-dotnet/gnome-keyring-sharp-1.0.0-r2 )
+SLOT=0
+SRC_URI=http://www.bareftp.org/release/bareftp-0.3.12.tar.gz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:mono-env src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=ec9ace1db4a0d45b9a9ef320bc84f36e

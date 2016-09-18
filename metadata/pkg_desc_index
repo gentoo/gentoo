@@ -692,7 +692,7 @@ app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
 app-dicts/gjiten 2.6-r3: A Japanese dictionary program for Gnome
 app-dicts/gnome-dictionary 3.18.1 3.20.0: Dictionary utility for GNOME
-app-dicts/gwaei 3.0.2 3.2.0 3.6.2: Japanese-English Dictionary for GNOME
+app-dicts/gwaei 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/hunspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
@@ -3021,7 +3021,7 @@ dev-dotnet/gkeyfile-sharp 0.1 0.1-r1: C# binding for gkeyfile
 dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
 dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
 dev-dotnet/gnome-desktop-sharp 2.26.0-r1: GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball
-dev-dotnet/gnome-keyring-sharp 1.0.2 1.0.2-r1 1.0.2-r2: C# implementation of gnome-keyring
+dev-dotnet/gnome-keyring-sharp 1.0.2-r1 1.0.2-r2: C# implementation of gnome-keyring
 dev-dotnet/gnome-sharp 2.24.2 2.24.2-r1: gnome bindings for mono
 dev-dotnet/gnomevfs-sharp 2.24.2: GtkSharp's gnomevfs module of the gnome-sharp tarball
 dev-dotnet/google-gdata-sharp 1.4.0.2-r2: C# bindings for the Google GData API
@@ -14260,7 +14260,7 @@ net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
-net-ftp/bareftp 0.3.9 0.3.10: Mono based file transfer client
+net-ftp/bareftp 0.3.12: Mono based file transfer client
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.12.0.2 3.14.1 3.20.1 3.21.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r4 0.7.18-r5: A transparent ftp proxy

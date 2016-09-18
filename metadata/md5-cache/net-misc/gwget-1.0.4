@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=net-misc/wget >=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.16.0:2 >=gnome-base/gconf-2:2 >=gnome-base/libgnomeui-2 >=dev-libs/dbus-glib-0.70 epiphany? ( >=www-client/epiphany-1.4 ) libnotify? ( >=x11-libs/libnotify-0.2.2 ) virtual/pkgconfig >=dev-util/intltool-0.35.0 >=sys-devel/gettext-0.10.4 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GTK2 WGet Frontend
-EAPI=4
+EAPI=6
 HOMEPAGE=https://gnome.org/projects/gwget/
 IUSE=epiphany libnotify
 KEYWORDS=amd64 ppc x86
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=net-misc/wget >=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.16.0:2 >=gnome-base/gconf-2:2 >=gnome-base/libgnomeui-2 >=dev-libs/dbus-glib-0.70 epiphany? ( >=www-client/epiphany-1.4 ) libnotify? ( >=x11-libs/libnotify-0.2.2 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gwget/1.0/gwget-1.0.4.tar.bz2
-_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:- src_unpack:gnome2 src_prepare:- src_configure:gnome2 src_compile:gnome2 src_install:-
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:gnome2 src_configure:- src_compile:gnome2 src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=bd91a04a8706733adb481dcbcc52b68e
+_md5_=9c230a7ed3a7eee1ac9cff28faf468f2
