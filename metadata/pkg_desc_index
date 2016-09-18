@@ -9050,7 +9050,7 @@ dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes 
 dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2-r1 3.4.3 3.4.4 3.4.4-r1: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0 3.2.1: A simple pluggable Hierarchical Database
@@ -9194,7 +9194,7 @@ dev-ruby/origin 2.2.0: Origin is a simple DSL for generating MongoDB selectors a
 dev-ruby/ox 2.4.3 2.4.4 2.4.5: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
-dev-ruby/parser 2.3.0.7 2.3.1.0 2.3.1.2: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.3.1.2 2.3.1.3: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/pathutil 0.14.0: Like Pathname but a little less insane
