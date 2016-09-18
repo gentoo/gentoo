@@ -14662,7 +14662,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1 0.22.2: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1 0.22.2 0.22.2-r1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
