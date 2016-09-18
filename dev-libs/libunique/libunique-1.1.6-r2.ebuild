@@ -46,7 +46,7 @@ PATCHES=(
 	# Remove G_CONST_RETURN usage, now that its gone in glib
 	"${FILESDIR}/${PN}-1.1.6-G_CONST_RETURN.patch"
 )
-	
+
 src_configure() {
 	gnome2_src_configure \
 		--disable-maintainer-flags \
