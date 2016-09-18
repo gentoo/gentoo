@@ -1,0 +1,103 @@
+Fix building with C++14, which errors out due to ambiguity as a result of crappy implicit
+conversion operators running astray with new std::string and iostream interfaces.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594152
+
+--- a/source/Bot.C
++++ b/source/Bot.C
+@@ -111,7 +111,7 @@
+   dccConnections = new DCCManager ();
+ 
+   // Let's read the alias file
+-  std::ifstream initFile(initFileName);
++  std::ifstream initFile(static_cast<const char*>(initFileName));
+ 
+   if (initFile) 
+     {
+@@ -217,7 +217,7 @@
+ void
+ Bot::readConfig()
+ {
+-  std::ifstream file(configFileName);
++  std::ifstream file(static_cast<const char*>(configFileName));
+   String temp;
+   int line = 1;
+ 
+@@ -736,11 +736,12 @@
+   logFileName = name;
+   logFile.close ();
+   logFile.clear ();
++  String myTempLogFileName(logs_dir + logFileName);
+ #if HAVE_IOSBASE
+-  logFile.open(logs_dir + logFileName, std::ios_base::out | 
++  logFile.open(static_cast<const char*>(myTempLogFileName), std::ios_base::out | 
+ 	       std::ios_base::ate | std::ios_base::app);
+ #else
+-  logFile.open(logs_dir + logFileName, ios::out | ios::ate 
++  logFile.open(static_cast<const char*>(myTempLogFileName), ios::out | ios::ate 
+ 	      | ios::app);
+ #endif
+ 
+--- a/source/Bot.H
++++ b/source/Bot.H
+@@ -43,8 +43,8 @@
+ #include <libguile.h>
+ #endif
+ 
+-#define VERSION_STRING PACKAGE" version "VERSION" by unknown_lamer@FreeNode <clinton@unknownlamer.org>\n1.97 and below by eb@IRCNet <eb@via.ecp.fr>"
+-#define COPYRIGHT_STRING PACKAGE" version "VERSION", Copyright (C) 1997-2000 Etienne BERNARD\nCopyright (C) 2002,2003,2004,2005,2008 Clinton Ebadi"
++#define VERSION_STRING PACKAGE " version " VERSION " by unknown_lamer@FreeNode <clinton@unknownlamer.org>\n1.97 and below by eb@IRCNet <eb@via.ecp.fr>"
++#define COPYRIGHT_STRING PACKAGE " version " VERSION ", Copyright (C) 1997-2000 Etienne BERNARD\nCopyright (C) 2002,2003,2004,2005,2008 Clinton Ebadi"
+ 
+ class Channel;
+ class DCCConnection;
+--- a/source/ShitList.C
++++ b/source/ShitList.C
+@@ -45,7 +45,7 @@
+ void
+ ShitList::read()
+ {
+-  std::ifstream file(listFileName);
++  std::ifstream file(static_cast<const char*>(listFileName));
+   String temp;
+   int line = 1;
+ 
+@@ -74,7 +74,7 @@
+ ShitList::save()
+ {
+   std::list<ShitEntry *>::iterator it = l.begin();
+-  std::ofstream file(listFileName);
++  std::ofstream file(static_cast<const char*>(listFileName));
+ 
+   if (!file)
+     return;
+--- a/source/UserCommands.C
++++ b/source/UserCommands.C
+@@ -612,7 +612,7 @@
+ 
+   StringTokenizer st(rest);
+   String command = Utils::to_upper (st.next_token());
+-  std::ifstream helpFile(cnx->bot->helpFileName);
++  std::ifstream helpFile(static_cast<const char*>(cnx->bot->helpFileName));
+ 
+   if (!helpFile) {
+     from->sendNotice(String("\002Error: I can not find the "
+--- a/source/UserList.C
++++ b/source/UserList.C
+@@ -39,7 +39,7 @@
+ void
+ UserList::read()
+ {
+-  std::ifstream file(listFilename);
++  std::ifstream file(static_cast<const char*>(listFilename));
+   String temp, empty = "";
+   int line = 1;
+ 
+@@ -88,7 +88,7 @@
+ UserList::save()
+ {
+   std::list<UserListItem *>::iterator it = l.begin();
+-  std::ofstream file(listFilename);
++  std::ofstream file(static_cast<const char*>(listFilename));
+   
+   if (!file)
+     return;
