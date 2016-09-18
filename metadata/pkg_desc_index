@@ -16233,7 +16233,7 @@ sci-mathematics/polymake 2.13 2.14 2.14-r1: research tool for polyhedral geometr
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1 0.10.2: Program for statistical analysis of sampled data
-sci-mathematics/pymc 2.2 9999: Markov chain Monte Carlo for Python
+sci-mathematics/pymc 2.2 2.3.6 9999: Markov chain Monte Carlo for Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4: Educational tool for relational algebra
