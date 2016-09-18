@@ -52,7 +52,7 @@ src_prepare() {
 	epatch "${PATCHES[@]}"
 
 	sed -i \
-		-e '/^CC =/d' \
+		-e '/^CC :=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \
 		-e "s:-O2:${CFLAGS} ${CPPFLAGS}:" \
 		-e "/^HOSTCC/s:=.*:= $(tc-getBUILD_CC):" \

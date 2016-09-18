@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic user
+inherit autotools eutils flag-o-matic user
 
 MY_PV=${PV/_pre/-r}
 MY_P=${PN}-${PV/_pre/-testing-r}
@@ -13,7 +13,7 @@ DESCRIPTION="A command-line based binary newsgrabber supporting .nzb files"
 HOMEPAGE="http://nzbget.net/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses parcheck ssl test zlib"
@@ -42,6 +42,8 @@ pkg_pretend() {
 
 src_prepare() {
 	default
+	eautoreconf
+
 	sed -i 's:^ScriptDir=.*:ScriptDir=/usr/share/nzbget/ppscripts:' nzbget.conf || die
 
 	sed \
