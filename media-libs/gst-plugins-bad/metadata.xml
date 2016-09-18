@@ -6,6 +6,7 @@
 		<name>GStreamer package maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="bzip2">Enable bzip2 encoder/decoder plugin</flag>
 		<flag name="egl">Enable EGL support</flag>
 		<flag name="gles2">Enable GLES2 support</flag>
 	</use>

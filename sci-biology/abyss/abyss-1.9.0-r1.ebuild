@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-cpp/sparsehash
-	dev-libs/boost
+	dev-libs/boost:=
 	misc-haskell? ( dev-libs/gmp:0=
 			virtual/libffi:0=
 	)
