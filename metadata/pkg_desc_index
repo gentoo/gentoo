@@ -7810,6 +7810,7 @@ dev-python/pycairo 1.10.0-r4 1.10.0-r5: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.5.9-r1: Python wrapping of the Cap'n Proto library
+dev-python/pycares 2.1.0: Python interface for c-ares
 dev-python/pycdf 0.6.3-r1: Python interface to scientific netCDF library
 dev-python/pycdio 0.20-r1: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychart 1.39-r1: Python library for creating charts
