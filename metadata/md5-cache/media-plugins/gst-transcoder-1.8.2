@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure postinst postrm preinst prepare setup
+DEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.2:1.0[introspection] >=media-libs/gst-plugins-base-1.8.2:1.0[introspection] || ( dev-lang/python:3.5 dev-lang/python:3.4 ) >=dev-util/meson-0.28.0 virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GStreamer Transcoding API
+EAPI=6
+HOMEPAGE=https://github.com/pitivi/gst-transcoder
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.2:1.0[introspection] >=media-libs/gst-plugins-base-1.8.2:1.0[introspection]
+SLOT=0
+SRC_URI=https://github.com/pitivi/gst-transcoder/archive/1.8.2.tar.gz -> gst-transcoder-1.8.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg pkg_setup:python-any-r1 src_prepare:xdg src_configure:- src_compile:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=2d9eda1928e0f9996d98519b92f4b166

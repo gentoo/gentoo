@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure prepare
-DEPEND=dev-cpp/sparsehash dev-libs/boost misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi ) misc-haskell? ( dev-lang/ghc dev-haskell/mmap ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi ) misc-haskell? ( dev-lang/ghc dev-haskell/mmap ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 EAPI=6
 HOMEPAGE=http://www.bcgsc.ca/platform/bioinfo/software/abyss/
 IUSE=+mpi openmp misc-haskell
 KEYWORDS=~amd64 ~x86
 LICENSE=abyss
-RDEPEND=dev-cpp/sparsehash dev-libs/boost misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi )
+RDEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi )
 SLOT=0
 SRC_URI=https://github.com/bcgsc/abyss/archive/1.9.0.tar.gz -> abyss-1.9.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=3761a248863d8802bf81723c6073dd4d
+_md5_=7c301b474921cb47df2fdbb12ccd1417
