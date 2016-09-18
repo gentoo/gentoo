@@ -4,7 +4,7 @@ DESCRIPTION=a Rhythmbox-like PyGTK+ client for Music Player Daemon
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/pympd
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.6:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] gnome-base/libglade:2.0 x11-libs/gdk-pixbuf:2[jpeg] x11-themes/adwaita-icon-theme
 REQUIRED_USE=python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/pympd/pympd-0.08.1.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=598cc292aeda609bae003f95ab0edc83
+_md5_=8442432003480bbeec8d4b527d6781de
