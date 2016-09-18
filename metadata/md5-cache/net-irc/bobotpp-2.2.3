@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install postinst prepare test
+DEFINED_PHASES=configure install postinst prepare
 DEPEND=guile? ( dev-scheme/guile ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A flexible IRC bot scriptable in scheme
-EAPI=4
+EAPI=6
 HOMEPAGE=http://unknownlamer.org/code/bobot.html
 IUSE=guile
 KEYWORDS=amd64 ppc x86
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=guile? ( dev-scheme/guile )
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/bobotpp/bobotpp-2.2.3.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=67d0a6845fe1f295c5803ef90ae6ab19
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=e8eb897ae8ba9a23f977bcf050125565
