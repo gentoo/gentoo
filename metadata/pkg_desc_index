@@ -14722,7 +14722,7 @@ net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-misc/apt-cacher-ng 0.9.3.1 0.9.3.2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
-net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0 1.26.0 1.26.1: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0 1.26.0 1.26.1 1.27.1: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
