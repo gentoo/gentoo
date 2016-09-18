@@ -1,15 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit autotools-utils python-single-r1
+inherit eutils python-single-r1
 
-DESCRIPTION="Tools and bindings for kernel input event device emulation, data capture, and replay"
+DESCRIPTION="tools and bindings for kernel evdev device emulation, data capture, and replay"
 HOMEPAGE="https://www.freedesktop.org/wiki/Evemu/"
 SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
@@ -24,13 +22,10 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 DEPEND="app-arch/xz-utils
 	${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2.0-install-man.patch )
-
-src_prepare() {
-	if ! use python ; then
-		sed '/SUBDIRS/s/python//' -i Makefile.am || die
-	fi
-	autotools-utils_src_prepare
+src_configure() {
+	econf \
+		$(use_enable static-libs static) \
+		$(use_enable python python-bindings)
 }
 
 src_test() {
@@ -41,4 +36,9 @@ src_test() {
 			emake check
 		fi
 	fi
+}
+
+src_install() {
+	default
+	prune_libtool_files
 }
