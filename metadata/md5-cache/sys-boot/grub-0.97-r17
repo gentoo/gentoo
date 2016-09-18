@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://gentoo/grub-0.97.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz mirror://gentoo/splash.xpm.gz mirror://gentoo/grub-0.97-patches-1.14.tar.bz2
 _eclass_exported_funcs=pkg_pretend:mount-boot pkg_prerm:mount-boot pkg_preinst:mount-boot pkg_postrm:mount-boot pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9cc6235096b5851717aa648086164a78
+_md5_=4f5612b5bac7595c41e2d152743df0eb
