@@ -73,6 +73,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/grub-0.97-Add-esp-to-list-of-clobbered-registers.patch
 	epatch "${FILESDIR}"/grub-0.97-ncurses-pkgconfig.patch
 
+	epatch_user
+
 	rm -f "${S}"/aclocal.m4 # seems to keep bug 418287 away
 	eautoreconf
 }
