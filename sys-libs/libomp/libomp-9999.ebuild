@@ -5,8 +5,9 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib git-r3
+inherit cmake-multilib git-r3 python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="http://openmp.llvm.org"
@@ -17,9 +18,26 @@ EGIT_REPO_URI="http://llvm.org/git/openmp.git
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
-DEPEND="dev-lang/perl"
+# tests:
+# - dev-python/lit provides the test runner
+# - sys-devel/llvm provide test utils (e.g. FileCheck)
+# - sys-devel/clang provides the compiler to run tests
+DEPEND="dev-lang/perl
+	test? (
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+		sys-devel/llvm
+		sys-devel/clang[${MULTILIB_USEDEP}]
+	)"
+
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 multilib_src_configure() {
 	local libdir="$(get_libdir)"
@@ -29,6 +47,12 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
+		-DLIBOMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
+		-DLIBOMP_TEST_COMPILER="${EPREFIX}/usr/bin/${CHOST}-clang"
 	)
 	cmake-utils_src_configure
+}
+
+multilib_src_test() {
+	cmake-utils_src_make check-libomp
 }
