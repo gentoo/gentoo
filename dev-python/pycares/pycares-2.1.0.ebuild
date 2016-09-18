@@ -5,7 +5,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Python interface for c-ares"
 HOMEPAGE="https://github.com/saghul/pycares/"
