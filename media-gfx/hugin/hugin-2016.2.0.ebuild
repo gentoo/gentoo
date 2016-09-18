@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit python-single-r1 wxwidgets versionator cmake-utils
 
@@ -23,7 +23,7 @@ IUSE="debug lapack python sift $(echo ${LANGS//\ /\ l10n_})"
 CDEPEND="
 	!!dev-util/cocom
 	dev-db/sqlite:3
-	>=dev-libs/boost-1.49.0-r1:0=
+	dev-libs/boost:=
 	dev-libs/zthread
 	>=media-gfx/enblend-4.0
 	media-gfx/exiv2:=
@@ -34,7 +34,7 @@ CDEPEND="
 	media-libs/openexr:=
 	media-libs/tiff:0
 	>=media-libs/vigra-1.9.0[openexr]
-	sci-libs/fftw:=
+	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
@@ -52,27 +52,32 @@ DEPEND="${CDEPEND}
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+DOCS=( authors.txt README TODO )
+
 S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
 
 pkg_setup() {
-	DOCS="authors.txt README TODO"
-	mycmakeargs=(
-		-DBUILD_HSI=$(usex python ON OFF)
-		-DENABLE_LAPACK=$(usex lapack ON OFF)
-	)
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	rm CMakeModules/{FindLAPACK,FindPkgConfig}.cmake || die
-
 	cmake-utils_src_prepare
+	rm CMakeModules/{FindLAPACK,FindPkgConfig}.cmake || die
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_HSI=$(usex python)
+		-DENABLE_LAPACK=$(usex lapack)
+	)
+	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
 	use python && python_optimize
 
+	local lang
 	for lang in ${LANGS} ; do
 		case ${lang} in
 			ca) dir=ca_ES;;
@@ -80,6 +85,8 @@ src_install() {
 			cs) dir=cs_CZ;;
 			*) dir=${lang/-/_};;
 		esac
-		use l10n_${lang} || rm -r "${D}"/usr/share/locale/${dir}
+		if ! use l10n_${lang} ; then
+			rm -r "${ED%/}"/usr/share/locale/${dir} || die
+		fi
 	done
 }
