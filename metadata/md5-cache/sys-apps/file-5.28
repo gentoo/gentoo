@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=ftp://ftp.astron.com/pub/file/file-5.28.tar.gz ftp://ftp.gw.com/mirrors/pub/unix/file/file-5.28.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=63bad1f6738c9f9aff7dbf8801d4587d
+_md5_=ebae910859e213434683e762d5e4662b
