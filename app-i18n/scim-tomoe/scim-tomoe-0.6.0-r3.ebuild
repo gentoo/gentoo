@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+inherit eutils
 
 DESCRIPTION="Japanese input method Tomoe IMEngine for SCIM"
 HOMEPAGE="http://tomoe.sourceforge.net/"
@@ -24,3 +25,12 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}"/${P}-gcc43.patch )
+
+src_configure() {
+	econf --disable-static
+}
+
+src_install() {
+	default
+	prune_libtool_files --modules
+}
