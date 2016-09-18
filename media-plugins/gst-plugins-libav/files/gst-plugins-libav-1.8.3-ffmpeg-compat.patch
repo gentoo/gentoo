@@ -1,0 +1,51 @@
+From f48282d442689f7559bfefd70929634a0bde3b84 Mon Sep 17 00:00:00 2001
+From: Iain Lane <iain@orangesquash.org.uk>
+Date: Fri, 2 Sep 2016 16:55:46 +0100
+Subject: [PATCH] Only use AV_CODEC_ID_WRAPPED_AVFRAME on new enough
+ libavcodecs
+
+https://bugzilla.gnome.org/show_bug.cgi?id=770753
+---
+ ext/libav/gstavviddec.c | 7 +++++--
+ ext/libav/gstavvidenc.c | 7 +++++--
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index 8aabcb1..71310ec 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -2044,8 +2044,11 @@ gst_ffmpegviddec_register (GstPlugin * plugin)
+         || in_plugin->id == AV_CODEC_ID_Y41P
+         || in_plugin->id == AV_CODEC_ID_012V
+         || in_plugin->id == AV_CODEC_ID_YUV4
+-        || in_plugin->id == AV_CODEC_ID_ZLIB
+-        || in_plugin->id == AV_CODEC_ID_WRAPPED_AVFRAME) {
++#if AV_VERSION_INT (LIBAVCODEC_VERSION_MAJOR, LIBAVCODEC_VERSION_MINOR, LIBAVCODEC_VERSION_MICRO) >= \
++        AV_VERSION_INT (57,4,0)
++        || in_plugin->id == AV_CODEC_ID_WRAPPED_AVFRAME
++#endif
++        || in_plugin->id == AV_CODEC_ID_ZLIB) {
+       goto next;
+     }
+ 
+diff --git a/ext/libav/gstavvidenc.c b/ext/libav/gstavvidenc.c
+index 9fb7f64..2ec32d8 100644
+--- a/ext/libav/gstavvidenc.c
++++ b/ext/libav/gstavvidenc.c
+@@ -966,8 +966,11 @@ gst_ffmpegvidenc_register (GstPlugin * plugin)
+         || in_plugin->id == AV_CODEC_ID_Y41P
+         || in_plugin->id == AV_CODEC_ID_012V
+         || in_plugin->id == AV_CODEC_ID_YUV4
+-        || in_plugin->id == AV_CODEC_ID_ZLIB
+-        || in_plugin->id == AV_CODEC_ID_WRAPPED_AVFRAME) {
++#if AV_VERSION_INT (LIBAVCODEC_VERSION_MAJOR, LIBAVCODEC_VERSION_MINOR, LIBAVCODEC_VERSION_MICRO) >= \
++        AV_VERSION_INT (57,4,0)
++        || in_plugin->id == AV_CODEC_ID_WRAPPED_AVFRAME
++#endif
++        || in_plugin->id == AV_CODEC_ID_ZLIB) {
+       goto next;
+     }
+ 
+-- 
+2.7.4
+
