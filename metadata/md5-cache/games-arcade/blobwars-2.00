@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=media-libs/libsdl2 media-libs/sdl2-mixer media-libs/sdl2-ttf media-libs/sdl2-image media-libs/sdl2-net sys-libs/zlib virtual/libintl sys-devel/gettext >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Platform game about a blob and his quest to rescue MIAs from an alien invader
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/blobwars/ https://sourceforge.net/apps/mediawiki/blobwars/index.php?title=Main_Page
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD CC-BY-SA-3.0 CC-BY-3.0 GPL-2 LGPL-2.1 fairuse public-domain
+RDEPEND=media-libs/libsdl2 media-libs/sdl2-mixer media-libs/sdl2-ttf media-libs/sdl2-image media-libs/sdl2-net sys-libs/zlib virtual/libintl
+SLOT=0
+SRC_URI=mirror://sourceforge/blobwars/blobwars-2.00.tar.gz
+_eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=bd0ede7ccd388688d0efe38c90ddb911
