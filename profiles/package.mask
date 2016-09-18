@@ -673,11 +673,6 @@ dev-ruby/metasploit-model:1.0
 # https://bugs.gentoo.org/590780
 ~sys-power/cpupower-4.7.0
 
-# Pacho Ramos <pacho@gentoo.org> (7 Aug 2016)
-# Upstream dead, depends on old gstreamer, old webkit, many unresolved bug
-# reports... Removal in a month (#581052)
-media-video/miro
-
 # Michał Górny <mgorny@gentoo.org> (7 Aug 2016)
 # Issue with thunar detailed view
 # Masked for more restrictive testing.
