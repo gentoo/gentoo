@@ -15161,7 +15161,7 @@ net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzb 0.3: A binary news grabber
-net-nntp/nzbget 14.1 16.4 17.0_pre1726 17.0: A command-line based binary newsgrabber supporting .nzb files
+net-nntp/nzbget 14.1 16.4 17.0 17.1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.139-r1 0.139-r2 0.140: A newsreader for GNOME
 net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20 1.0.3: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
