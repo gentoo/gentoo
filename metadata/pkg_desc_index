@@ -5351,7 +5351,7 @@ dev-perl/CDB_File 0.980.0 0.990.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0 4.250.0 4.310.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.220.0 4.250.0 4.310.0 4.330.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.210.0: Compile .cgi scripts to a code reference like ModPerl::Registry
@@ -6547,23 +6547,23 @@ dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.150.0-r1 4.170.0: Perl extension interface for libcurl
-dev-perl/WWW-Dict-Leo-Org 1.360.0 1.370.0 1.390.0 1.400.0: Commandline interface to http://dict.leo.org/
-dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0: Handy web browsing in a Perl object
+dev-perl/WWW-Dict-Leo-Org 1.400.0: Commandline interface to http://dict.leo.org/
+dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0 1.790.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.100.0-r1 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 1.3.0-r1: Paste on www.pastebin.com without API keys
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
-dev-perl/WWW-Shorten 3.30.0-r1 3.93.0: Interface to URL shortening sites
-dev-perl/Want 0.210.0-r1 0.260.0 0.290.0: A generalisation of wantarray
+dev-perl/WWW-Shorten 3.93.0: Interface to URL shortening sites
+dev-perl/Want 0.210.0-r1 0.290.0: A generalisation of wantarray
 dev-perl/WattsUp-Daemon 0.4-r1: Watt's Up Monitoring Daemon
 dev-perl/WeakRef 0.10.0-r1: An API to the Perl weak references
 dev-perl/Weather-Com 2.0.0: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
-dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
+dev-perl/WebService-MusicBrainz 0.930.0-r1 0.940.0: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
 dev-perl/Wx 0.992.700-r1 0.992.800: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
 dev-perl/Wx-Perl-ProcessStream 0.320.0-r2: access IO of external processes via events
-dev-perl/Wx-Scintilla 0.390.0-r1 0.390.0-r2: Scintilla source code editing component for wxWidgets
+dev-perl/Wx-Scintilla 0.390.0-r2: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r1: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol

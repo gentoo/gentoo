@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Class-Accessor-0.300.0 dev-perl/libwww-perl >=dev-perl/URI-1.350.0 >=dev-perl/XML-LibXML-1.630.0 >=dev-perl/Module-Build-0.420.0 dev-lang/perl:=
+DESCRIPTION=Web service API to MusicBrainz database
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/WebService-MusicBrainz/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Class-Accessor-0.300.0 dev-perl/libwww-perl >=dev-perl/URI-1.350.0 >=dev-perl/XML-LibXML-1.630.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BF/BFAIST/WebService-MusicBrainz-0.94.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=308cd730afb03e7626ef9bae1a536061
