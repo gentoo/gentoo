@@ -6,16 +6,16 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-#NEOMUTT="neomutt-20160710"
-NEOMUTT="gentoo-${PVR}"
+PATCHREV="r4"
+PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
+MUTT_G_PATCHES="mutt-gentoo-1.7.0-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.0-patches-r4.tar.xz"
-	#https://github.com/neomutt/integration/archive/${NEOMUTT}.tar.gz -> ${P}-patches-${NEOMUTT}.tar.gz"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
+	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
+IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet vanilla"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~x86 ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -84,40 +84,37 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	#local PATCHDIR="${WORKDIR}"/integration-${NEOMUTT}
 	local PATCHDIR="${WORKDIR}"/gentoo-mutt-1.7.0-patches
 
-	# apply NeoMutt patches
-	export EPATCH_FORCE="yes"
-	export EPATCH_SUFFIX="patch"
-	# order of patches from README.md
-	local patches=(
-		patches-mutt
-		#bugs-common
-		bugs-gentoo
-		features-common
-		features-extra
-		#bugs-neomutt
-		gentoo
-	)
-	local patchset
-	for patchset in "${patches[@]}" ; do
-		einfo "Applying NeoMutt ${NEOMUTT} patchset ${patchset}"
-		EPATCH_SOURCE="${PATCHDIR}"/${patchset} epatch \
-			|| die "NeoMutt patchset ${patchset} failed"
-	done
-	# add some explanation as to why not going to upstream
-	sed -i \
-		-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched by NeoMutt patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor directly to the NeoMutt project.\\n"' \
-		version.c || die "Failed to add bug instructions"
+	if use !vanilla ; then
+		# apply patches
+		export EPATCH_FORCE="yes"
+		export EPATCH_SUFFIX="patch"
+		local patches=(
+			patches-mutt
+			bugs-gentoo
+			features-common
+			features-extra
+			gentoo
+		)
+		local patchset
+		for patchset in "${patches[@]}" ; do
+			einfo "Applying ${PATCHSET} patchset ${patchset}"
+			EPATCH_SOURCE="${PATCHDIR}"/${patchset} epatch \
+				|| die "patchset ${patchset} failed"
+		done
+		# add some explanation as to why not to go upstream
+		sed -i \
+			-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n"' \
+			version.c || die "Failed to add bug instructions"
+	fi
 
 	local upatches=
 	# allow user patches
 	eapply_user && upatches=" with user patches"
 
 	# patch version string for bug reports
-	#rm VERSION.neo || die  # we already flag it appropriate
-	sed -i -e 's/"Mutt %s (%s)"/"Mutt %s (%s, Gentoo '"${PVR}${upatches}, NeoMutt ${NEOMUTT})"'"/' \
+	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s, '"${PATCHSET}${upatches}"')"|' \
 		muttlib.c || die "failed patching in Gentoo version"
 
 	# many patches touch the buildsystem, we always need this
@@ -253,12 +250,17 @@ pkg_postinst() {
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
 	else
-		echo
-		elog "This version of Mutt is entirely based on NeoMutt patches."
-		elog "Please visit http://www.neomutt.org/ to learn more about this project."
-		elog "As a result, SmartTime functionality has been replaced with"
-		elog "CondDate feature.  To mimic SmartTime, use this CondDate formatter:"
-		elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y]>"
-		echo
+		local ver
+		local preconddate=
+		for ver in ${REPLACING_VERSIONS} ; do
+			[[ ${ver} == "1.5"* || ${ver} == "1.6"* ]] && preconddate=true
+		done
+		if [[ -n ${preconddate} ]] ; then
+			echo
+			elog "The SmartTime functionality has been replaced with"
+			elog "CondDate feature.  To mimic SmartTime, use this CondDate formatter:"
+			elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y]>"
+			echo
+		fi
 	fi
 }
