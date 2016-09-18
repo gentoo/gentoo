@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/pkgconfig iconv? ( virtual/libiconv ) qt4? ( dev-qt/qtcore:4 )
+DESCRIPTION=C++ port of the Log for Java (log4j) logging library
+EAPI=6
+HOMEPAGE=http://log4cplus.sourceforge.net/
+IUSE=iconv test threads working-locale working-c-locale qt4
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Apache-2.0 BSD-2 )
+RDEPEND=iconv? ( virtual/libiconv ) qt4? ( dev-qt/qtcore:4 )
+REQUIRED_USE=?? ( iconv working-locale working-c-locale )
+SLOT=0/1.1-9
+SRC_URI=mirror://sourceforge/project/log4cplus/log4cplus-stable/1.1.3/log4cplus-1.1.3-rc7.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_md5_=7657828bcd37b61cff0d54deb90877ec

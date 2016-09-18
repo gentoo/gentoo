@@ -4884,7 +4884,7 @@ dev-libs/libzip 1.0.1 1.1.3: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.7 5.3.9 5.3.10: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
-dev-libs/log4cplus 1.1.2: C++ port of the Log for Java (log4j) logging library
+dev-libs/log4cplus 1.1.3_rc7 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.0 1.1: Library of C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.2.5-r1 1.4.2: A flexible logging framework for shell scripts
