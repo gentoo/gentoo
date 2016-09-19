@@ -4590,7 +4590,7 @@ dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.26-r11: The Cyrus SASL (Simple Auth
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
-dev-libs/dbus-glib 0.102 0.104 0.106: D-Bus bindings for glib
+dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
 dev-libs/dbxml 2.5.16-r2: BerkeleyDB XML, a native XML database from the BerkeleyDB team
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
 dev-libs/dee 1.2.7: Provide objects allowing to create Model-View-Controller type programs across DBus
@@ -4754,7 +4754,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.1.0 1.1.5 1.3.0 1.3.1 1.3.3 1.4.0 1.4.2: Library to handle input devices in Wayland
+dev-libs/libinput 1.1.0 1.1.5 1.3.0 1.3.1 1.3.3 1.4.0 1.4.2 1.5.0: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.3.8 1.4.2 1.4.4: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.2 1.4.4: Open-source library for reading, mastering and writing optical discs
@@ -5011,7 +5011,7 @@ dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an 
 dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0: SIMD Vector Class Library for C++
 dev-libs/vrb 0.5.1-r1: Library for a virtual ring buffer
 dev-libs/wayland 1.6.1 1.7.0 1.8.1 1.9.0 1.10.0-r1 1.11.0 9999: Wayland protocol libraries
-dev-libs/wayland-protocols 1.3 1.4 1.5 9999: Wayland protocol files
+dev-libs/wayland-protocols 1.3 1.4 1.5 1.7 9999: Wayland protocol files
 dev-libs/weston 1.6.1 1.7.0 1.8.0 1.9.0 1.10.0 1.11.0 9999: Wayland reference compositor
 dev-libs/wlc 0.0.3-r1 0.0.5 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
@@ -7004,6 +7004,7 @@ dev-python/astropy-helpers 1.1.2 1.2: Helpers for Astropy and Affiliated package
 dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astronomical resources
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
+dev-python/async_timeout 1.0.0: Timeout context manager for asyncio programs
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5: Atomic file writes.
@@ -15247,7 +15248,7 @@ net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.0.3 2.0.4 2.1.3-r1 2.1.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.8.3 1.11.1 1.11.2 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.8.3 1.11.1 1.11.2 1.11.3 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
