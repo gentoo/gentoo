@@ -20,6 +20,7 @@ KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 IUSE="cjk"
 
 DEPEND="cjk? ( app-arch/unzip )"
+RDEPEND="cjk? ( !media-fonts/noto-cjk )"
 RESTRICT="binchecks strip"
 
 S=${WORKDIR}

@@ -19,6 +19,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
+RDEPEND="!<media-fonts/noto-20160531[cjk(+)]"
+
 RESTRICT="binchecks strip"
 
 S="${WORKDIR}"
