@@ -13925,7 +13925,7 @@ net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
 net-analyzer/mtr 0.86 0.87 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.0.0-r1 9999: a fork of multimon, decodes multiple digital transmission modes
-net-analyzer/munin 2.0.19 2.0.19-r1 2.0.25 2.0.25-r1 2.1.9999: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.19 2.0.19-r2 2.0.25 2.0.25-r2 2.1.9999: Munin Server Monitoring Tool
 net-analyzer/nagios 3.5.1 4.0.8 4.0.8-r1 4.1.1: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban daemon
