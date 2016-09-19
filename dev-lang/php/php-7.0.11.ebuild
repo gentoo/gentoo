@@ -80,7 +80,7 @@ COMMON_DEPEND="
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
 	postgres? ( dev-db/postgresql:* )
 	qdbm? ( dev-db/qdbm )
-	readline? ( sys-libs/readline:0 )
+	readline? ( sys-libs/readline:0= )
 	recode? ( app-text/recode )
 	sharedmem? ( dev-libs/mm )
 	simplexml? ( >=dev-libs/libxml2-2.6.8 )
