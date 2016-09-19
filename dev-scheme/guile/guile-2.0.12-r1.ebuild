@@ -21,7 +21,8 @@ RDEPEND="
 	dev-libs/libltdl:=
 	dev-libs/libunistring
 	sys-devel/libtool
-	sys-libs/ncurses:="
+	sys-libs/ncurses:0=
+	sys-libs/readline:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-apps/texinfo
