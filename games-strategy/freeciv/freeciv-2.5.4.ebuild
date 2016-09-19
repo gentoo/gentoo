@@ -24,7 +24,7 @@ RDEPEND="app-arch/bzip2
 		sqlite? ( dev-db/sqlite:3 )
 		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
 	)
-	readline? ( sys-libs/readline:0 )
+	readline? ( sys-libs/readline:0= )
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
 	!dedicated? (
 		media-libs/libpng:0
