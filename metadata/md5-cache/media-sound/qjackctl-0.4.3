@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure
+DEPEND=virtual/jack qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) alsa? ( media-libs/alsa-lib ) dbus? ( qt5? ( dev-qt/qtdbus:5 ) !qt5? ( dev-qt/qtdbus:4 ) ) portaudio? ( media-libs/portaudio ) qt5? ( dev-qt/linguist-tools:5 )
+DESCRIPTION=A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections
+EAPI=5
+HOMEPAGE=http://qjackctl.sourceforge.net/
+IUSE=alsa dbus debug portaudio +qt5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/jack qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) alsa? ( media-libs/alsa-lib ) dbus? ( qt5? ( dev-qt/qtdbus:5 ) !qt5? ( dev-qt/qtdbus:4 ) ) portaudio? ( media-libs/portaudio )
+SLOT=0
+SRC_URI=mirror://sourceforge/qjackctl/qjackctl-0.4.3.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=848d1885d791dfd64708a2f15647e249

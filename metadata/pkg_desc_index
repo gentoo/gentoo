@@ -5174,7 +5174,7 @@ dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) 
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
-dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1: Regular expression library for OCaml
+dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1 1.7.0: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.0 0.3.1 0.3.2: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
@@ -13345,7 +13345,7 @@ media-sound/ifp-gnome 0.7: Gnome front-end for file management on iRiver iFP MP3
 media-sound/imp3sh 0.2.4: flexible playlist manipulation shell and song player/streamer
 media-sound/jaaa 0.4.2 0.6.0 0.8.4: The JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 media-sound/jack 3.1.1-r1: A frontend for several cd-rippers and mp3 encoders
-media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1-r1: A low-latency audio server
+media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1-r1 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
@@ -13478,7 +13478,7 @@ media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
 media-sound/qastools 0.18.1-r1 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.3.10 0.4.0 0.4.1-r2 0.4.2: A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.3.10 0.4.0 0.4.1-r2 0.4.2 0.4.3: A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.3.9 0.6.1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.9.2 0.9.8 0.9.10 0.10.2 0.10.3 1.0.7 1.0.10 1.1.2 1.1.3 9999: Qt5-based audio player with winamp/xmms skins support
