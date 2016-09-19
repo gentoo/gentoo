@@ -1,8 +1,0 @@
-diff -r -U1 PyGUI-2.2.orig/setup.py PyGUI-2.2/setup.py
---- PyGUI-2.2.orig/setup.py	2009-04-12 07:36:14.000000000 +0200
-+++ PyGUI-2.2/setup.py	2010-02-21 00:52:21.000000000 +0100
-@@ -15,3 +15,3 @@
- dst_rsrc_dir = os.path.join(dst_gui_dir, "Resources", "cursors")
--src_rsrc_files = glob(os.path.join("GUI", "Resources", "Cursors", "*"))
-+src_rsrc_files = glob(os.path.join("GUI", "Resources", "cursors", "*"))
- 
