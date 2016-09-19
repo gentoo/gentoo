@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	net-libs/libndp
 	>=net-libs/libsoup-2.40:2.4=
 	net-misc/iputils
-	sys-libs/readline:0
+	sys-libs/readline:0=
 	>=virtual/libgudev-165:=[${MULTILIB_USEDEP}]
 	audit? ( sys-process/audit )
 	bluetooth? ( >=net-wireless/bluez-5 )
