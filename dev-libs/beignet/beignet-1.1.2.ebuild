@@ -29,6 +29,7 @@ COMMON="${PYTHON_DEPS}
 	media-libs/mesa
 	sys-devel/clang
 	>=sys-devel/llvm-3.5
+	<sys-devel/llvm-3.8
 	x11-libs/libdrm[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"
