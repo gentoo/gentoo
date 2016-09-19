@@ -10,5 +10,6 @@
 	</maintainer>
 	<use>
 		<flag name="minisat">Enable support for MiniSat</flag>
+		<flag name="zchaff">Enable support for zChaff</flag>
 	</use>
 </pkgmetadata>
