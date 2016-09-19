@@ -4627,7 +4627,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0 1.45.4: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2: The GLib library of C routines
+dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2 2.50.0: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -9879,7 +9879,7 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2 2.50.0: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.26 1.27 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26 1.28: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
@@ -11990,7 +11990,7 @@ mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
 mail-mta/courier 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
-mail-mta/exim 4.87: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.87 4.87-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
