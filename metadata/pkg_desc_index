@@ -10180,7 +10180,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.1.1 2.2 9999: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.7.3 3.8.4 3.9 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.7.3 3.8.4 3.9 3.9.1 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20150502 1.20151229: Manage config files in $HOME via fake bare git repositories
 dev-vcs/veracity 1.0.0.10517 1.1.0.10565: A modern and featureful DVCS (distributed version control system)
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
@@ -14199,7 +14199,7 @@ net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backen
 net-dns/pdns-recursor 3.6.4 3.7.3 4.0.0-r1 4.0.1 4.0.2 4.0.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r1: DNS server designed to serve blacklist zones
-net-dns/resolv_wrapper 1.1.3 1.1.4: A wrapper for DNS name resolving or DNS faking
+net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
