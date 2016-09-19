@@ -16279,7 +16279,7 @@ sci-misc/ncview 2.1.1 2.1.2: X-based viewer for netCDF files
 sci-misc/netlogo-bin 3.0.2 4.0.4 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
-sci-misc/repsnapper 2.2.0b_p3 2.3.2a_p3 2.4a_p0 9999: Host software for controlling the RepRap open source 3D printer
+sci-misc/repsnapper 2.3.2a_p3 2.4a_p0 9999: Host software for controlling the RepRap open source 3D printer
 sci-misc/vitables 2.1: A graphical tool for browsing and editing files in both PyTables and HDF5 formats
 sci-physics/bullet 2.83.4 2.83.5: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
