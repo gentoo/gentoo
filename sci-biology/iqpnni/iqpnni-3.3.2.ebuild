@@ -4,6 +4,8 @@
 
 EAPI=4
 
+inherit eutils
+
 DESCRIPTION="Important Quartet Puzzling and NNI Operation"
 HOMEPAGE="http://www.cibiv.at/software/iqpnni/"
 SRC_URI="http://www.cibiv.at/software/iqpnni/${P}.tar.gz"
@@ -15,6 +17,10 @@ IUSE="doc"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-cpp14.patch" # bug #594332
+}
 
 src_install() {
 	dobin src/iqpnni
