@@ -28,7 +28,7 @@ RDEPEND="
 	>=virtual/perl-Perl-OSType-1
 	>=virtual/perl-Test-Harness-3.290.0
 	virtual/perl-Text-ParseWords
-	>=virtual/perl-podlators-2.170.0
+	>=virtual/perl-podlators-2.1.0
 	>=virtual/perl-version-0.870.0
 "
 DEPEND="${RDEPEND}
