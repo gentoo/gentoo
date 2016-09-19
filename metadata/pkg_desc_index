@@ -7996,6 +7996,7 @@ dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1: py.test plugin for coverage r
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6: Py.test plugin to test server connections locally
+dev-python/pytest-mock 1.2: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-runner 2.6.2 2.8: Adds support for tests during installation of setup.py files
