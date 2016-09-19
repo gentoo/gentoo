@@ -1474,7 +1474,7 @@ app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two convenience Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-input software
-app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.18: ENCA detects the character coding of a file and converts it if desired
+app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.19: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.8.5 4.2.8.6 4.2.9 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
@@ -8028,7 +8028,7 @@ dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Di
 dev-python/python-discid 1.1.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.33 2.33-r1 2.37-r1 2.38: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9: Set of Python bindings for the DjVuLibre library
-dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3: HTML documentation for Python
+dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
