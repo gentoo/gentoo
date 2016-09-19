@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=apparmor? ( sys-libs/libapparmor )
+DESCRIPTION=Security sandbox for any type of processes
+EAPI=6
+HOMEPAGE=https://firejail.wordpress.com/
+IUSE=apparmor +bind +busybox +chroot +file-transfer +network network-restricted +seccomp +userns x11
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=apparmor? ( sys-libs/libapparmor ) x11? ( x11-wm/xpra[client,server] )
+SLOT=0
+SRC_URI=mirror://sourceforge/firejail/firejail-0.9.42.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=5cc499282890161916d62c4b7291fa8c
