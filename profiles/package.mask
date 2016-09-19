@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Gnome Team <gnome@gentoo.org> (19 sep 2016)
+# Gnome 3.22 mask
+>=dev-util/gdbus-codegen-2.50.0
+>=dev-libs/glib-2.50.0
+
 # David Seifert <soap@gentoo.org> (18 Sep 2016)
 # Masked for failing to build with GCC 6, still using ancient
 # distutils.eclass, tightly coupled to dev-libs/xqilla-2.2*.
