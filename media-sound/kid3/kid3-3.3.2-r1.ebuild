@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtdbus:4
 	dev-qt/qtdeclarative:4
 	dev-qt/qtgui:4
-	sys-libs/readline:0
+	sys-libs/readline:0=
 	acoustid? (
 		media-libs/chromaprint
 		virtual/ffmpeg

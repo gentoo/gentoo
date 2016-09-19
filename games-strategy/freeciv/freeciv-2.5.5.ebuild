@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils gnome2-utils games
+EAPI=6
+inherit eutils gnome2-utils
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
@@ -29,7 +29,7 @@ RDEPEND="app-arch/bzip2
 	!dedicated? (
 		media-libs/libpng:0
 		gtk? ( x11-libs/gtk+:2 )
-		mapimg? ( media-gfx/imagemagick )
+		mapimg? ( media-gfx/imagemagick:= )
 		modpack? ( x11-libs/gtk+:2 )
 		nls? ( virtual/libintl )
 		qt5? (
@@ -64,10 +64,10 @@ pkg_setup() {
 		ewarn "to start local games, but you will still be able to"
 		ewarn "join multiplayer games."
 	fi
-	games_pkg_setup
 }
 
 src_prepare() {
+	default
 
 	# install the .desktop in /usr/share/applications
 	# install the icons in /usr/share/pixmaps
@@ -115,8 +115,7 @@ src_configure() {
 	fi
 
 	# disabling shared libs will break aimodules USE flag
-	egamesconf \
-		--docdir="/usr/share/doc/${P}" \
+	econf \
 		--localedir=/usr/share/locale \
 		$(use_enable ipv6) \
 		$(use_enable mapimg) \
@@ -146,7 +145,8 @@ src_install() {
 			# Note: to have it localized, it should be ran from _postinst, or
 			# something like that, but then it's a PITA to avoid orphan files...
 			./tools/freeciv-manual || die
-			dohtml manual*.html
+			docinto html
+			dodoc manual*.html
 		fi
 		if use sdl ; then
 			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
@@ -157,10 +157,8 @@ src_install() {
 	fi
 	find "${D}" -name "freeciv-manual*" -delete
 
-	rm -f "${D}$(games_get_libdir)"/*.a
+	rm -f "${D}/usr/$(get_libdir)"/*.a
 	prune_libtool_files
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
