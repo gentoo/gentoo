@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="
 	>=dev-cpp/gtkglextmm-1.2
 	dev-cpp/gtkmm:2.4
-	dev-cpp/libxmlpp
+	dev-cpp/libxmlpp:2.6
 	dev-libs/libzip
 	virtual/opengl
 "
