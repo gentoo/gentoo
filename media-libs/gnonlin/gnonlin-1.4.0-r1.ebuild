@@ -5,7 +5,7 @@
 EAPI=6
 inherit eutils
 
-DESCRIPTION="Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors"
+DESCRIPTION="Set of GStreamer elements to ease the creation of non-linear multimedia editors"
 HOMEPAGE="http://gnonlin.sourceforge.net"
 SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
