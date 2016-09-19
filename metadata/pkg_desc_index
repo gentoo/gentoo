@@ -14319,7 +14319,7 @@ net-im/kadu 0.12.3 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
-net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 1.0.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 0.10.2_p20131025 1.0.2 1.0.3 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.0.2 4.0.3: Openfire (formerly wildfire) real time collaboration (RTC) server
