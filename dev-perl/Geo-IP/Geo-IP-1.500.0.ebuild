@@ -18,4 +18,8 @@ DEPEND="dev-libs/geoip"
 RDEPEND="${DEPEND}"
 
 SRC_TEST=do
-myconf="LIBS=-L/usr/$(get_libdir)"
+
+src_configure() {
+	myconf="LIBS=-L/usr/$(get_libdir)"
+	perl-module_src_configure
+}

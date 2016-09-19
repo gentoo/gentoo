@@ -3,9 +3,14 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (10 Sep 2016)
+# revbump for adding libcxx dependency, which we already have, so avoid
+# the hassle
+=sys-devel/llvm-3.8.1-r2
+
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)
 # fails to compile due to some missing compilerrt stuff, hints at asan,
-# not sure what the problem actually is
+# not sure what the problem actually is, 3.7 and 3.8 compile just fine
 =sys-devel/llvm-3.6*
 =sys-devel/clang-3.6*
 

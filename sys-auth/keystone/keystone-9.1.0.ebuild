@@ -79,7 +79,7 @@ RDEPEND="
 	>=dev-python/jsonschema-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
-	~dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	memcached? (

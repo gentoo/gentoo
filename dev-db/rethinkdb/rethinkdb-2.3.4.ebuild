@@ -130,5 +130,5 @@ pkg_config() {
 	einfo "${instance_config}"
 	einfo " "
 	einfo "To start your instance, run:"
-	einfo "/etc/init.d/rethinkdb.${instance_name}"
+	einfo "/etc/init.d/rethinkdb.${instance_name} start"
 }

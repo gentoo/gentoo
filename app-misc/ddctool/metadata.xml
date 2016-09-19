@@ -17,16 +17,16 @@
 		support for monitors (such as Apple displays) that implement MCCS using
 		a USB connection.
 	</longdescription>
+
 	<use>
-		<flag name="udev-i2c">
-			Adds a udev rule to allow non-root users in the i2c group to
-			access the /dev/i2c-* devices. Otherwise, only root will be
-			able to use ddctool.
+		<flag name="user-permissions">
+			Adds a udev rules to allow non-root users in the i2c group to
+			access the /dev/i2c-* devices. If usb-monitor is selected, users
+			will need to be added to the video group to access the USB monitor.
+			Otherwise, only root will be able to use ddctool.
 		</flag>
-		<flag name="udev-usb">
-			Adds a udev rule to allow non-root users in the video group to
-			access USB connected monitors. Otherwise, only root will be
-			able to use ddctool.
+		<flag name="usb-monitor">
+			Adds support for monitors attached via USB.
 		</flag>
 	</use>
 </pkgmetadata>

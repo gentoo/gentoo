@@ -13,7 +13,7 @@ SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
+KEYWORDS="amd64 ~arm ~m68k ~mips ~s390 ~sh x86"
 IUSE="caps systemd tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )

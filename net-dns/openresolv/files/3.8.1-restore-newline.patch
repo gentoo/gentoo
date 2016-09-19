@@ -1,0 +1,16 @@
+--- a/libc.in
++++ b/libc.in
+@@ -214,11 +214,11 @@
+ # If the old file does not have our signature, back it up.
+ # If the new file just has our signature, restore the backup.
+ if $backup; then
+ 	if [ "$newconf" = "$signature$NL" ]; then
+ 		if [ -e "$resolv_conf.bak" ]; then
+-			newconf="$(cat "$resolv_conf.bak")"
++			newconf="$(cat "$resolv_conf.bak")$NL"
+ 		fi
+ 	elif [ -e "$resolv_conf" ]; then
+ 		read line <"$resolv_conf"
+ 		if [ "$line" != "$signature" ]; then
+ 			cp "$resolv_conf" "$resolv_conf.bak"
+

@@ -1,0 +1,23 @@
+diff --git a/src/Misc.hs b/src/Misc.hs
+index 1aa0699..c514ae9 100644
+--- a/src/Misc.hs
++++ b/src/Misc.hs
+@@ -1,9 +1,12 @@
++{-# LANGUAGE CPP #-}
+ module Misc where
+ 
+ import Test.QuickCheck
+ import Data.Map
+ import Data.Monoid
+ 
++#if ! MIN_VERSION_QuickCheck(2,9,0)
++
+ instance Arbitrary a => Arbitrary (Last a) where
+        arbitrary = do
+            ga <- arbitrary
+@@ -43,3 +46,5 @@ instance (Arbitrary a, Arbitrary b, Arbitrary c, Arbitrary d, Arbitrary e, Arbit
+      x6 <- arbitrary
+      x7 <- arbitrary
+      return (x1,x2,x3,x4,x5,x6,x7)
++
++#endif

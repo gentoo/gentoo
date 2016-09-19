@@ -10,7 +10,7 @@ SRC_URI="http://git.zx2c4.com/${PN}/snapshot/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm ~arm64"
+KEYWORDS="amd64 x86 arm arm64"
 IUSE=""
 
 DEPEND=""

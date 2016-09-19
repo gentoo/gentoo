@@ -49,10 +49,9 @@ REQUIRED_USE="soundtouch? ( midi )"
 
 S=${WORKDIR}/${MY_P}
 
-#src_prepare() {
-#	epatch "${FILESDIR}"/${P}-automagic.patch
-#	AT_M4DIR="${S}/m4" eautoreconf
-#}
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-2.1.2-fix-c++14.patch"
+}
 
 src_configure() {
 	WX_GTK_VER="3.0"

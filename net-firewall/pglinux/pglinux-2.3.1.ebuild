@@ -26,7 +26,7 @@ COMMON_DEPEND="
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
-		|| ( kde-apps/kdesu x11-libs/gksu x11-misc/ktsuss )
+		|| ( kde-apps/kdesu x11-misc/ktsuss )
 	)"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig

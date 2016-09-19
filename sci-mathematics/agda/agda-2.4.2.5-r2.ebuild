@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -72,7 +72,8 @@ src_prepare() {
 
 	cabal_chdeps \
 		'zlib >= 0.4.0.1 && < 0.6.1' 'zlib >= 0.4.0.1' \
-		'transformers-compat >= 0.3.3.3 && < 0.5' 'transformers-compat >= 0.3.3.3'
+		'transformers-compat >= 0.3.3.3 && < 0.5' 'transformers-compat >= 0.3.3.3' \
+		'build-tools: cpphs >= 1.19 && < 1.20' 'build-tools: cpphs >= 1.19'
 }
 
 src_configure() {

@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="5"
 
 inherit eutils toolchain flag-o-matic autotools prefix
 
@@ -16,25 +16,8 @@ SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE
 		fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 )"
 LICENSE="GPL-2 GPL-3"
 
-case ${CHOST} in
-	*-darwin1*|i?86-*-darwin9|powerpc-*-darwin9)
-		LIBSTDCXX_APPLE_VERSION=39
-	;;
-	*)
-		# pre Leopard has no dtrace, which is required by 37.11 and above
-		# Leopard only has 32-bits version of dtrace
-		LIBSTDCXX_APPLE_VERSION=16
-	;;
-esac
-
-if is_crosscompile; then
-	SLOT="${CTARGET}-42"
-else
-	SLOT="42"
-fi
-
+SLOT="42"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-
 IUSE="fortran nls +openmp objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
@@ -56,14 +39,6 @@ S=${WORKDIR}/gcc-${APPLE_VERS}
 # TPREFIX is the prefix of the CTARGET installation
 export TPREFIX=${TPREFIX:-${EPREFIX}}
 
-LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
-if is_crosscompile ; then
-	BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
-else
-	BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
-fi
-STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
-
 src_unpack() {
 	# override toolchain.eclass func
 	unpack ${A}
@@ -79,6 +54,16 @@ src_prepare() {
 	fi
 
 	# move in libstdc++
+	case ${CHOST} in
+		*-darwin1*|i?86-*-darwin9|powerpc-*-darwin9)
+			LIBSTDCXX_APPLE_VERSION=39
+		;;
+		*)
+			# pre Leopard has no dtrace, which is required by 37.11 and above
+			# Leopard only has 32-bits version of dtrace
+			LIBSTDCXX_APPLE_VERSION=16
+		;;
+	esac
 	mv "${WORKDIR}"/libstdcxx-${LIBSTDCXX_APPLE_VERSION}/libstdcxx/libstdc++-v3 .
 	if [[ ${LIBSTDCXX_APPLE_VERSION} == 16 ]] ; then
 		epatch "${FILESDIR}"/libstdc++-${LIBSTDCXX_APPLE_VERSION}.patch # does it apply on 37?
@@ -145,6 +130,14 @@ src_configure() {
 	use objc && langs="${langs},objc"
 	use objc++ && langs="${langs/,objc/},objc,obj-c++" # need objc with objc++
 	use fortran && langs="${langs},fortran"
+
+	LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
+	if is_crosscompile ; then
+		BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
+	else
+		BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
+	fi
+	STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
 
 	local myconf="${myconf} \
 		--prefix=${EPREFIX}/usr \

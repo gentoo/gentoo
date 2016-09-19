@@ -14,7 +14,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0/22" # subslot = libgdata soname version
 
 IUSE="+crypt gnome-online-accounts +introspection static-libs test vala"
-REQUIRED_IUSE="
+REQUIRED_USE="
 	gnome-online-accounts? ( crypt )
 	vala? ( introspection )
 "

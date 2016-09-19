@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		TagShare supplies a monad for sharing values based on tags
+		and types. Each tag and type is bound to at most one value
+		in a dynamic map.
+		
+		The principal use of this package is to ensure that
+		constant class members or other overloaded values are
+		shared.
+	</longdescription>
+</pkgmetadata>

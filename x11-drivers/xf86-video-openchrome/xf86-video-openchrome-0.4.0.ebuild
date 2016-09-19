@@ -10,7 +10,7 @@ DESCRIPTION="X.Org driver for VIA/S3G cards"
 HOMEPAGE="https://www.freedesktop.org/wiki/Openchrome/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug viaregtool"
 
 RDEPEND=">=x11-base/xorg-server-1.9"

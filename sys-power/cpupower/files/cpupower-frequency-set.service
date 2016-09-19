@@ -6,4 +6,4 @@ Type=oneshot
 ExecStart=/usr/bin/cpupower frequency-set $OPTS
 
 [Install]
-WantedBy=multiuser.target
+WantedBy=multi-user.target

@@ -10,6 +10,7 @@ geo - This module creates variables, whose values depend on the IP-address of th
 geoip - This module creates variables based on the IP-address of the client matched against the MaxMind GeoIP binary files.
 limit_conn - This module is used to limit the number of connections per the defined key.
 map - This module allows you to classify, or map a set of values into a different set of values and store the result in a variable.
+realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
 return - This module allows sending a specified value to the client and then closing the connection.
 split_clients - This module provides A/B testing support.
 upstream - This module is used to define groups of servers that can be referenced by the proxy_pass directive.

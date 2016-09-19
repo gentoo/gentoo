@@ -30,6 +30,114 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (18 Sep 2016)
+# Masked for failing to build with GCC 6, still using ancient
+# distutils.eclass, tightly coupled to dev-libs/xqilla-2.2*.
+# Purged by Debian and Fedora more than 5 years ago.
+# Mask for removal in 30 days.
+# Bug #594236
+dev-libs/dbxml
+
+# Lars Wendler <polynomial-c@gentoo.org> (15 Sep 2016)
+# Masked for testing
+=app-shells/bash-4.4*
+=sys-libs/readline-7.0*
+
+# Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
+# KDE PIM 5 masked for wider testing.
+~kde-apps/akonadi-16.08.1
+~kde-apps/akonadi-calendar-16.08.1
+~kde-apps/akonadi-contacts-16.08.1
+~kde-apps/akonadi-import-wizard-16.08.1
+~kde-apps/akonadi-mime-16.08.1
+~kde-apps/akonadi-notes-16.08.1
+~kde-apps/akonadi-search-16.08.1
+~kde-apps/akonadiconsole-16.08.1
+~kde-apps/akregator-16.08.1
+~kde-apps/blogilo-16.08.1
+~kde-apps/calendarjanitor-16.08.1
+~kde-apps/calendarsupport-16.08.1
+~kde-apps/eventviews-16.08.1
+~kde-apps/grantlee-editor-16.08.1
+~kde-apps/grantleetheme-16.08.1
+~kde-apps/incidenceeditor-16.08.1
+~kde-apps/kaddressbook-16.08.1
+~kde-apps/kalarm-16.08.1
+~kde-apps/kalarmcal-16.08.1
+~kde-apps/kblog-16.08.1
+~kde-apps/kcalutils-16.08.1
+~kde-apps/kdepim-addons-16.08.1
+~kde-apps/kdepim-apps-libs-16.08.1
+~kde-apps/kdepim-meta-16.08.1
+~kde-apps/kdepim-runtime-16.08.1
+~kde-apps/kidentitymanagement-16.08.1
+~kde-apps/kimap-16.08.1
+~kde-apps/kldap-16.08.1
+~kde-apps/kmail-16.08.1
+~kde-apps/kmail-account-wizard-16.08.1
+~kde-apps/kmailtransport-16.08.1
+~kde-apps/kmbox-16.08.1
+~kde-apps/knotes-16.08.1
+~kde-apps/konsolekalendar-16.08.1
+~kde-apps/kontact-16.08.1
+~kde-apps/kontactinterface-16.08.1
+~kde-apps/korganizer-16.08.1
+~kde-apps/ktnef-16.08.1
+~kde-apps/libgravatar-16.08.1
+~kde-apps/libkdepim-16.08.1
+~kde-apps/libksieve-16.08.1
+~kde-apps/libktnef-16.08.1
+~kde-apps/mailcommon-16.08.1
+~kde-apps/mailimporter-16.08.1
+~kde-apps/mbox-importer-16.08.1
+~kde-apps/messagelib-16.08.1
+~kde-apps/pim-data-exporter-16.08.1
+~kde-apps/pim-sieve-editor-16.08.1
+~kde-apps/pim-storage-service-manager-16.08.1
+~kde-apps/pimcommon-16.08.1
+~kde-apps/syndication-16.08.1
+
+# Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
+# Masked for testing, see bug #588894.
+=x11-misc/light-locker-1.7.0-r1
+
+# James Le Cuirot <chewi@gentoo.org> (12 Sep 2016)
+# Now only available on Steam. Binaries were removed by the publisher
+# and Humble Bundle over 2 years ago. Removal in 60 days. Bug #588110.
+games-action/awesomenauts
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. Uses deprecated conduit-1.0*
+# Upstream suggests using dev-haskell/conduit-combinators
+# instead.
+dev-haskell/base64-conduit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. >=sci-mathematics/agda-2.4
+# now provides 'agda' binary.
+sci-mathematics/agda-executable
+
+# Patrice Clement <monsieurp@gentoo.org> (10 Sep 2016)
+# Upstream dead. This package tries very hard to outsmart autotools and
+# reinvent the wheel by coming up with its own configure script. A complete
+# disaster resulting in a gigantic wave of QA errors.
+# Masked for removal in 30 days.
+dev-libs/vrb
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-55
+
+# Martin Gysel <me@bearsh.org> via g-p-m (09 Sep 2016)
+# Versions currently in Portage are old and block removal of other
+# packages. Current versions require building against modified versions
+# of dev-libs/libdivecomputer and kde-apps/marble which must be fetched
+# from Git, and which are not versioned (upstream uses branch tags).
+# Finally, upstream considers distribution-maintained packages deprecated.
+# Removal in 30 days.
+app-misc/subsurface
+
 # Alon Bar-Lev <alonbl@gentoo.org (09 Sep 2016)
 # No upstream, no maintainer (bug #592164)
 # Package will be removed from Gentoo in 30 days.
@@ -59,11 +167,6 @@ dev-lang/python:3.3
 # No reverse deps, only supports python3.3.
 # Removal in 30 days.
 dev-python/simpletal
-
-# Patrick McLean <chutzpah@gentoo.org> (2 Sep 2016)
-# Forward port of HPN patchset masked for testing.
-# See bug #577768 for more info on test failures with HPN
-=net-misc/openssh-7.3_p1-r3
 
 # Rick Farina <zerochaos@gentoo.org> (2 Sep 2016)
 # All variants of hashcat have now been merged upstream,
@@ -133,10 +236,6 @@ www-apps/389-dsgw
 # Unmaintained, all versions broken in several ways, bug #465604
 # Removal in a month.
 app-editors/gobby
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Unmaintained, broken, bug #466870. Removal in a month.
-sys-boot/plymouth-openrc-plugin
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Upstream dead, relies on a lot of obsolete libs, bug #471458.
@@ -499,11 +598,6 @@ sci-physics/mpb
 # Mask new MariaDB alphas for testing
 >=dev-db/mariadb-10.2.0
 
-# Michael Palimaka <kensington@gentoo.org> (14 Aug 2016)
-# Requires API that is no longer functional.
-# Masked for removal in 30 days.
-net-libs/libkfbapi
-
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2016)
 
 # Unfixed security problems, bug 576068. No longer supported by
@@ -573,46 +667,13 @@ dev-ruby/metasploit-model:1.0
 ~dev-qt/qtx11extras-5.7.0
 ~dev-qt/qtxml-5.7.0
 ~dev-qt/qtxmlpatterns-5.7.0
-
-# Michael Palimaka <kensington@gentoo.org> (11 Aug 2016)
-# No longer works. Masked for removal in 30 days.
-app-text/kpaste
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug 443812.
-net-misc/quickshare
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug 543154.
-net-im/indicator-messages
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Requires vulnerable version of webkit-gtk. Dead upstream.
-# Masked for removal in 30 days. Bug 584176.
-media-plugins/gmpc-wikipedia
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Interface to an API that has been shut down.
-# Masked for removal in 30 days. Bug 587976.
-dev-python/pyechonest
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Requires insecure SSLv3. Unmaintained. Upstream disappeared.
-# Masked for removal in 30 days. Bug 590732.
-app-mobilephone/smssend
-dev-libs/skyutils
+=dev-qt/qt-docs-5.7*
+>=kde-apps/minuet-16.08.0
 
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
 # https://bugs.gentoo.org/590780
 ~sys-power/cpupower-4.7.0
-
-# Pacho Ramos <pacho@gentoo.org> (7 Aug 2016)
-# Upstream dead, depends on old gstreamer, old webkit, many unresolved bug
-# reports... Removal in a month (#581052)
-media-video/miro
 
 # Michał Górny <mgorny@gentoo.org> (7 Aug 2016)
 # Issue with thunar detailed view
@@ -624,11 +685,6 @@ media-video/miro
 # Doesn't honour USE=static-libs.
 # Bugs #590272, #590270, #590268, #590266 etc.
 =sci-libs/fftw-3.3.5
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (01 Aug 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-54
 
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all

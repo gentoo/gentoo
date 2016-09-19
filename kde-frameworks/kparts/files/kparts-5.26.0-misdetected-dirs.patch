@@ -1,0 +1,62 @@
+From: David Faure <faure@kde.org>
+Date: Tue, 06 Sep 2016 15:53:48 +0000
+Subject: Fix URLs with a trailing slash being always assumed to be directories.
+X-Git-Url: http://quickgit.kde.org/?p=kparts.git&a=commitdiff&h=7d99562257cc44f63fff32a160810d9c0d7dda4c
+---
+Fix URLs with a trailing slash being always assumed to be directories.
+
+Testcase: `konqueror gopher://gopher.quux.org/1/`
+
+QMimeDatabase can't differenciate between KIO protocols, so we do it here.
+---
+
+
+--- a/src/browserrun.cpp
++++ b/src/browserrun.cpp
+@@ -113,21 +113,23 @@
+ 
+ void BrowserRun::scanFile()
+ {
+-    // qDebug() << KRun::url();
++    const QUrl url = KRun::url();
++    // qDebug() << url;
+ 
+     // Let's check for well-known extensions
+     // Not when there is a query in the URL, in any case.
+     // Optimization for http/https, findByURL doesn't trust extensions over http.
+-    QString protocol = KRun::url().scheme();
++    QString protocol = url.scheme();
+ 
+     if (!KProtocolInfo::proxiedBy(protocol).isEmpty()) {
+         QString dummy;
+-        protocol = KProtocolManager::slaveProtocol(KRun::url(), dummy);
+-    }
+-
+-    if (!KRun::url().hasQuery() && !protocol.startsWith(QLatin1String("http"))) {
++        protocol = KProtocolManager::slaveProtocol(url, dummy);
++    }
++
++    if (!url.hasQuery() && !protocol.startsWith(QLatin1String("http")) &&
++           (!url.path().endsWith(QLatin1Char('/')) || KProtocolManager::supportsListing(url))) {
+         QMimeDatabase db;
+-        QMimeType mime = db.mimeTypeForUrl(KRun::url());
++        QMimeType mime = db.mimeTypeForUrl(url);
+         if (!mime.isDefault() || isLocalFile()) {
+             // qDebug() << "MIME TYPE is" << mime.name();
+             mimeTypeDetermined(mime.name());
+@@ -155,11 +157,11 @@
+     }
+ 
+     KIO::TransferJob *job;
+-    if (d->m_browserArgs.doPost() && KRun::url().scheme().startsWith(QLatin1String("http"))) {
+-        job = KIO::http_post(KRun::url(), d->m_browserArgs.postData, KIO::HideProgressInfo);
++    if (d->m_browserArgs.doPost() && url.scheme().startsWith(QLatin1String("http"))) {
++        job = KIO::http_post(url, d->m_browserArgs.postData, KIO::HideProgressInfo);
+         job->addMetaData(QStringLiteral("content-type"), d->m_browserArgs.contentType());
+     } else {
+-        job = KIO::get(KRun::url(),
++        job = KIO::get(url,
+                        d->m_args.reload() ? KIO::Reload : KIO::NoReload,
+                        KIO::HideProgressInfo);
+     }
+

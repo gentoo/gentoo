@@ -18,3 +18,7 @@ move sys-fs/s3ql net-fs/s3ql
 move sys-fs/s3backer net-fs/s3backer
 move sys-fs/sshfs net-fs/sshfs
 move app-vim/rust-mode app-vim/rust-vim
+move dev-perl/data-buffer dev-perl/Data-Buffer
+move dev-perl/dbix-searchbuilder dev-perl/DBIx-SearchBuilder
+move dev-perl/digest-bubblebabble dev-perl/Digest-BubbleBabble
+move dev-perl/digest-md2 dev-perl/Digest-MD2

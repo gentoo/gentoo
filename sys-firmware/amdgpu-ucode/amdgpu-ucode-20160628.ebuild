@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="radeon-ucode"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="legacy"
 
 RDEPEND="legacy? ( !sys-firmware/radeon-ucode )

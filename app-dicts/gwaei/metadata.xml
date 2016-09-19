@@ -12,10 +12,6 @@
     for it.
   </longdescription>
 	<use>
-		<flag name="unique">
-      Enable single instance support using
-      <pkg>dev-libs/libunique</pkg>.
-    </flag>
 		<flag name="mecab">
 	  Enable <pkg>app-text/mecab</pkg> support
 	</flag>

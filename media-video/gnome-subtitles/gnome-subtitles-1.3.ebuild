@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit mono-env gnome2
@@ -17,17 +16,21 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND=">=dev-lang/mono-1.1
+RDEPEND="
+	>=dev-lang/mono-1.1
 	>=dev-dotnet/glade-sharp-2.12
 	>=dev-dotnet/gtk-sharp-2.12
 	>=dev-dotnet/gconf-sharp-2.12
 	media-libs/gstreamer:1.0
 	>=app-text/gtkspell-2.0:2
 	>=app-text/enchant-1.3
-	media-libs/gst-plugins-base:1.0"
+	media-libs/gst-plugins-base:1.0
+"
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
 	virtual/pkgconfig
-	app-text/gnome-doc-utils"
+	app-text/gnome-doc-utils
+"
 
-DOCS="AUTHORS ChangeLog NEWS README"
+src_compile() {
+	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_compile #508842
+}

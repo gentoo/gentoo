@@ -1,0 +1,34 @@
+diff --git a/Megadeth/Prim.hs b/Megadeth/Prim.hs
+index eb969a5..ad1782c 100644
+--- a/bundled/megadeth/Megadeth/Prim.hs
++++ b/bundled/megadeth/Megadeth/Prim.hs
+@@ -3,2 +3,3 @@
+ {-# LANGUAGE ViewPatterns    #-}
++{-# LANGUAGE CPP             #-}
+ module Megadeth.Prim where
+@@ -137,3 +138,7 @@ getDeps t ban = do
+       case tip of
++#if MIN_VERSION_template_haskell(2,11,0)
++                    TyConI (DataD _ _ _ _mkind constructors _) -> do
++#else
+                     TyConI (DataD _ _ _ constructors _) -> do
++#endif
+                           let innerTypes = nub $ concat [ findLeafTypes ty | (simpleConView t -> SimpleCon _ _ tys) <- constructors, ty <- tys, not (isVarT ty) ]
+@@ -146,3 +151,7 @@ getDeps t ban = do
+                           mapM_ getDeps' hof
++#if MIN_VERSION_template_haskell(2,11,0)
++                    TyConI (NewtypeD _ nm _  _mkind constructor _) -> do
++#else
+                     TyConI (NewtypeD _ nm _ constructor _) -> do
++#endif
+                           let (SimpleCon _ 0 ts )= simpleConView nm constructor
+@@ -187,4 +196,9 @@ isinsName className n = do
+         case inf of
++#if MIN_VERSION_template_haskell(2,11,0)
++            TyConI (DataD _ _ preq _mkind _ _) -> doPreq className n preq
++            TyConI (NewtypeD _ _ preq _mkind _ _) -> doPreq className n preq
++#else
+             TyConI (DataD _ _ preq _ _) -> doPreq className n preq
+             TyConI (NewtypeD _ _ preq _ _) -> doPreq className n preq
++#endif
+             TyConI (TySynD _ preq _ ) -> doPreq className n preq

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit cmake-utils multilib
+inherit cmake-utils multilib qmake-utils
 
 MY_P=Kst-${PV}
 
@@ -15,14 +15,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-2 FDL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +qt4 qt5 test"
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
+IUSE="debug qt5 test"
 
 RESTRICT="test"
 
 RDEPEND="
-	qt4? (
+	!qt5? (
 		dev-qt/designer:4
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -46,12 +44,16 @@ RDEPEND="
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qttest:4 )
+	test? (
+		!qt5? ( dev-qt/qttest:4 )
+		qt5? ( dev-qt/qttest:5 )
+	)
 "
 
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS README.kstScript )
+PATCHES=( "${FILESDIR}/${P}-includes.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -63,5 +65,8 @@ src_configure() {
 		$(cmake-utils_use test kst_test)
 		$(cmake-utils_use qt5 kst_qt5)
 	)
+
+	use !qt5 && mycmakeargs+=( -DQT_LCONVERT_EXECUTABLE="$(qt4_get_bindir)/lconvert" )
+
 	cmake-utils_src_configure
 }

@@ -34,11 +34,6 @@ app-emulation/ganeti monitoring
 # it's ready for the next stable mpv release after the one below.
 =media-video/mpv-0.9.2-r1 libcaca
 
-# Mike Gilbert <floppym@gentoo.org> (02 Dec 2015)
-# Needs unstable ffmpeg.
-=www-client/chromium-47* system-ffmpeg
-=www-client/chromium-48* system-ffmpeg
-
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask python3.5 for python-exec
 dev-lang/python-exec -python_targets_python3_5

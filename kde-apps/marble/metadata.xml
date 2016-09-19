@@ -7,8 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="aprs">Enable support for APRS data sources</flag>
+		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="designer-plugin">Enable designer plugin</flag>
 		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg></flag>
+		<flag name="positioning">Enable position information via <pkg>dev-qt/qtpositioning</pkg> and <pkg>dev-qt/qtlocation</pkg></flag>
 		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
 		<flag name="zip">Enable support for reading and displaying .kmz files</flag>
 	</use>

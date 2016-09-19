@@ -1,0 +1,11 @@
+diff --git a/bundled/ttasm/TTFInstructions.hs b/bundled/ttasm/TTFInstructions.hs
+index 6eb9378..8db99cd 100644
+--- a/bundled/ttasm/TTFInstructions.hs
++++ b/bundled/ttasm/TTFInstructions.hs
+@@ -128,4 +128,4 @@ tableChecksum table =
+     let tc = do
+-        e <- remaining
+-        if e < 4
++         e <- remaining
++         if e < 4
+             then return 0

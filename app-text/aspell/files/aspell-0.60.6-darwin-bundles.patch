@@ -5,8 +5,8 @@ Apple suggests using .bundle.  libtool on Gentoo generates .bundle files
 for modules on Darwin, so we need aspell to actually look for .bundle,
 not .so.
 
---- lib/new_filter.cpp
-+++ lib/new_filter.cpp
+--- a/lib/new_filter.cpp
++++ b/lib/new_filter.cpp
 @@ -458,11 +458,23 @@
        module->file.assign(option_file.str(), slash + 1 - option_file.str());
        //module->file += "lib";

@@ -1,0 +1,11 @@
+--- wv-1.2.9/wvRTF.c.orig	2013-12-12 17:03:41.635612853 -0500
++++ wv-1.2.9/wvRTF.c	2013-12-12 17:04:05.528003832 -0500
+@@ -192,7 +192,7 @@
+     rtf_output_char ('{');
+ 
+     /* font color */
+-    rtf_output (rtfColors[ud->cCol]);
++    rtf_output ("%s", rtfColors[ud->cCol]);
+ 
+     /* font face */
+     rtf_output ("\\f%d", ud->cFont);

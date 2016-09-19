@@ -30,7 +30,7 @@ DEPEND="
 	dev-perl/Crypt-IDEA
 	dev-perl/Crypt-OpenSSL-RSA
 	dev-perl/Crypt-RSA
-	dev-perl/digest-bubblebabble"
+	dev-perl/Digest-BubbleBabble"
 RDEPEND="${DEPEND}"
 
 #src_compile() {

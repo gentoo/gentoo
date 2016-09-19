@@ -75,7 +75,7 @@ pkg_postinst() {
 		elog " # x2godbadmin --createdb"
 	fi
 	if use postgres ; then
-		elog "To use a PostgreSQL databse, more information is availabe here:"
+		elog "To use a PostgreSQL database, more information is availabe here:"
 		elog "http://www.x2go.org/doku.php/wiki:advanced:multi-node:x2goserver-pgsql"
 	fi
 

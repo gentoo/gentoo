@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1 eutils libtool multilib multilib-minimal
 
@@ -11,7 +11,7 @@ LIBNL_P=${P/_/-}
 LIBNL_DIR=${PV/_/}
 LIBNL_DIR=${LIBNL_DIR//./_}
 
-DESCRIPTION="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
+DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="
 	https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
@@ -21,20 +21,27 @@ SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="static-libs python utils"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="
+	python? ( ${PYTHON_DEPS} )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
 	python? ( dev-lang/swig )
-	sys-devel/flex
 	sys-devel/bison
+	sys-devel/flex
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
-DOCS=( ChangeLog )
+DOCS=(
+	ChangeLog
+)
 
 S=${WORKDIR}/${LIBNL_P}
 

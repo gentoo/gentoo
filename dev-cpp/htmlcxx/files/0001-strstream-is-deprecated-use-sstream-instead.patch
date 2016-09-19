@@ -1,0 +1,56 @@
+From 04fbe8cb7d933699f2a8ac06d89b205d933070c1 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 14 Sep 2016 22:56:14 +0100
+Subject: [PATCH 1/3] strstream is deprecated, use sstream instead
+
+---
+ html/Uri.cc   | 2 +-
+ html/utils.cc | 5 ++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/html/Uri.cc b/html/Uri.cc
+index 4ddb3dd..034d29a 100644
+--- a/html/Uri.cc
++++ b/html/Uri.cc
+@@ -1,7 +1,7 @@
+ #include "Uri.h"
+ 
+ #include "wincstring.h"
+-#include <strstream>
++#include <sstream>
+ #include <cstdlib>
+ #include <cassert>
+ #include "tld.h"
+diff --git a/html/utils.cc b/html/utils.cc
+index 37ee889..e56cbaf 100644
+--- a/html/utils.cc
++++ b/html/utils.cc
+@@ -1,7 +1,7 @@
+ #include <algorithm>
+ #include <cctype>
+ #include <cstring>
+-#include <strstream>
++#include <sstream>
+ #include "Uri.h"
+ 
+ #include "utils.h"
+@@ -509,7 +509,7 @@ namespace htmlcxx {
+ 		string __serialize_gml(const tree<HTML::Node> &tr, tree<HTML::Node>::iterator it, tree<HTML::Node>::iterator end, unsigned int parent_id, unsigned int& label) {
+ 
+ 			using namespace std;
+-			ostrstream ret;
++			ostringstream ret;
+ 			tree<HTML::Node>::sibling_iterator sib = tr.begin(it);
+ 			while(sib != tr.end(it)) {
+ 				ret << "node [ id " << ++label << "\n label \"" << label << "\"\n]\n";
+@@ -519,7 +519,6 @@ namespace htmlcxx {
+ 			}	
+ 			ret << ends;
+ 			string str = ret.str();
+-			ret.freeze(0);
+ 			return str;
+ 		}
+ 
+-- 
+2.8.2
+

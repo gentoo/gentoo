@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.11-collision.patch
 	epatch "${FILESDIR}"/${PN}-2.8.7-mmedia.patch              # Bug #174874
 	epatch "${FILESDIR}"/${PN}-2.8.10.1-odbc-defines.patch     # Bug #310923
+	epatch "${FILESDIR}"/${PN}-2.8.12.1-fix-c++14.patch        # Bug #592442
 
 	# Bug #421851
 	epatch "${FILESDIR}"/${P}-libdir.patch

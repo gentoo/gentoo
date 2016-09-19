@@ -1,0 +1,193 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 11 Sep 2016 21:36:27 +0000
+Subject: Open baloo lmdb database read-only beside in baloo_file/baloo_file_extractor + balooctl (for some commands) + unit tests
+X-Git-Url: http://quickgit.kde.org/?p=baloo.git&a=commitdiff&h=02047b524a176da447d8c96e15c7e2abae8339ae
+---
+Open baloo lmdb database read-only beside in baloo_file/baloo_file_extractor + balooctl (for some commands) + unit tests
+
+At the moment, any application that uses baloo can corrupt the db.
+Now, only the things that need to write to it open it with read-write.
+This only works as long as the library exposes only read-only things like Query/...
+
+REVIEW: 128892
+---
+
+
+--- a/src/engine/database.cpp
++++ b/src/engine/database.cpp
+@@ -79,7 +79,7 @@
+     }
+     QFileInfo indexInfo(dir, QStringLiteral("index"));
+ 
+-    if (mode == OpenDatabase && !indexInfo.exists()) {
++    if ((mode != CreateDatabase) && !indexInfo.exists()) {
+         return false;
+     }
+ 
+@@ -117,7 +117,7 @@
+ 
+     // The directory needs to be created before opening the environment
+     QByteArray arr = QFile::encodeName(indexInfo.absoluteFilePath());
+-    rc = mdb_env_open(m_env, arr.constData(), MDB_NOSUBDIR | MDB_NOMEMINIT, 0664);
++    rc = mdb_env_open(m_env, arr.constData(), MDB_NOSUBDIR | MDB_NOMEMINIT | ((mode == ReadOnlyDatabase) ? MDB_RDONLY : 0), 0664);
+     if (rc) {
+         mdb_env_close(m_env);
+         m_env = nullptr;
+@@ -136,7 +136,7 @@
+     // Individual Databases
+     //
+     MDB_txn* txn;
+-    if (mode == OpenDatabase) {
++    if (mode != CreateDatabase) {
+         int rc = mdb_txn_begin(m_env, NULL, MDB_RDONLY, &txn);
+         Q_ASSERT_X(rc == 0, "Database::transaction ro begin", mdb_strerror(rc));
+         if (rc) {
+
+--- a/src/engine/database.h
++++ b/src/engine/database.h
+@@ -49,8 +49,20 @@
+      * Database open mode
+      */
+     enum OpenMode {
++        /**
++         * Create + open read-write dabase.
++         */
+         CreateDatabase,
+-        OpenDatabase
++
++        /**
++         * Read-Write Database, only works if database exists.
++         */
++        ReadWriteDatabase,
++
++        /**
++         * Read-Only Database, only works if database exists.
++         */
++        ReadOnlyDatabase
+     };
+ 
+     /**
+
+--- a/src/file/extractor/app.cpp
++++ b/src/file/extractor/app.cpp
+@@ -55,7 +55,7 @@
+ void App::slotNewInput()
+ {
+     Database *db = globalDatabaseInstance();
+-    if (!db->open(Database::OpenDatabase)) {
++    if (!db->open(Database::ReadWriteDatabase)) {
+         qCritical() << "Failed to open the database";
+         exit(1);
+     }
+
+--- a/src/lib/file.cpp
++++ b/src/lib/file.cpp
+@@ -96,7 +96,7 @@
+     }
+ 
+     Database *db = globalDatabaseInstance();
+-    if (!db->open(Database::OpenDatabase)) {
++    if (!db->open(Database::ReadOnlyDatabase)) {
+         return false;
+     }
+ 
+
+--- a/src/lib/searchstore.cpp
++++ b/src/lib/searchstore.cpp
+@@ -48,7 +48,7 @@
+     : m_db(0)
+ {
+     m_db = globalDatabaseInstance();
+-    if (!m_db->open(Database::OpenDatabase)) {
++    if (!m_db->open(Database::ReadOnlyDatabase)) {
+         m_db = 0;
+     }
+ 
+
+--- a/src/lib/taglistjob.cpp
++++ b/src/lib/taglistjob.cpp
+@@ -46,7 +46,7 @@
+ void TagListJob::start()
+ {
+     Database *db = globalDatabaseInstance();
+-    if (!db->open(Database::OpenDatabase)) {
++    if (!db->open(Database::ReadOnlyDatabase)) {
+         setError(UserDefinedError);
+         setErrorText(QStringLiteral("Failed to open the database"));
+         emitResult();
+
+--- a/src/qml/experimental/monitor.cpp
++++ b/src/qml/experimental/monitor.cpp
+@@ -126,7 +126,7 @@
+ void Monitor::fetchTotalFiles()
+ {
+     Baloo::Database *db = Baloo::globalDatabaseInstance();
+-    if (db->open(Baloo::Database::OpenDatabase)) {
++    if (db->open(Baloo::Database::ReadOnlyDatabase)) {
+         Baloo::Transaction tr(db, Baloo::Transaction::ReadOnly);
+         m_totalFiles = tr.size();
+         m_filesIndexed = tr.size() - tr.phaseOneSize();
+
+--- a/src/tools/balooctl/main.cpp
++++ b/src/tools/balooctl/main.cpp
+@@ -191,7 +191,7 @@
+         }
+ 
+         Database *db = globalDatabaseInstance();
+-        if (!db->open(Database::OpenDatabase)) {
++        if (!db->open(Database::ReadWriteDatabase)) {
+             out << "Baloo Index could not be opened\n";
+             return 1;
+         }
+@@ -230,7 +230,7 @@
+         }
+ 
+         Database *db = globalDatabaseInstance();
+-        if (!db->open(Database::OpenDatabase)) {
++        if (!db->open(Database::ReadWriteDatabase)) {
+             out << "Baloo Index could not be opened\n";
+             return 1;
+         }
+@@ -260,7 +260,7 @@
+ 
+     if (command == QStringLiteral("indexSize")) {
+         Database *db = globalDatabaseInstance();
+-        if (!db->open(Database::OpenDatabase)) {
++        if (!db->open(Database::ReadOnlyDatabase)) {
+             out << "Baloo Index could not be opened\n";
+             return 1;
+         }
+@@ -311,7 +311,7 @@
+ 
+     if (command == QStringLiteral("checkDb")) {
+         Database *db = globalDatabaseInstance();
+-        if (!db->open(Database::OpenDatabase)) {
++        if (!db->open(Database::ReadOnlyDatabase)) {
+             out << "Baloo Index could not be opened\n";
+             return 1;
+         }
+
+--- a/src/tools/balooctl/statuscommand.cpp
++++ b/src/tools/balooctl/statuscommand.cpp
+@@ -56,7 +56,7 @@
+     }
+ 
+     Database *db = globalDatabaseInstance();
+-    if (!db->open(Database::OpenDatabase)) {
++    if (!db->open(Database::ReadOnlyDatabase)) {
+         out << i18n("Baloo Index could not be opened") << endl;
+         return 1;
+     }
+
+--- a/src/tools/balooshow/main.cpp
++++ b/src/tools/balooshow/main.cpp
+@@ -101,7 +101,7 @@
+     QString text;
+ 
+     Baloo::Database *db = Baloo::globalDatabaseInstance();
+-    if (!db->open(Baloo::Database::OpenDatabase)) {
++    if (!db->open(Baloo::Database::ReadOnlyDatabase)) {
+         stream << i18n("The Baloo index could not be opened. Please run \"balooctl status\" to see if Baloo is enabled and working.")
+                << endl;
+         return 1;
+
