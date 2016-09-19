@@ -981,7 +981,7 @@ app-doc/linux-gazette 01 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 2
 app-doc/linux-gazette-all 182: Linux Gazette - all issues
 app-doc/linux-gazette-base 182: Linux Gazette - common files
 app-doc/linux-kernel-in-a-nutshell 1: Linux Kernel in a Nutshell: A Desktop Quick Reference
-app-doc/linuxfromscratch 7.4 7.7 7.9: LFS documents building a Linux system entirely from source
+app-doc/linuxfromscratch 7.9 7.10: LFS documents building a Linux system entirely from source
 app-doc/mkdoxy 1.0.0: mkDoxy generates Doxygen-compatible HTML documentation for makefiles
 app-doc/motif-reference-manual 2.3.0-r1: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
