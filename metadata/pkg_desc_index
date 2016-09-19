@@ -568,7 +568,7 @@ app-crypt/md5deep 4.3 4.4: Expanded md5sum program with recursive and comparison
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mdcrack 1.2: A MD4/MD5/NTML hashes bruteforcer
 app-crypt/mhash 0.9.9.9-r1: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.14.2 1.14.3: MIT Kerberos V
+app-crypt/mit-krb5 1.14.2 1.14.3 1.14.4: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
