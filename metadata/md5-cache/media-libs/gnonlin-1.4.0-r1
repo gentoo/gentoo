@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.32:2 >=media-libs/gstreamer-1.4.0:1.0 >=media-libs/gst-plugins-base-1.4.0:1.0 virtual/pkgconfig >=dev-util/gtk-doc-am-1.13 test? ( dev-libs/check >=media-libs/gst-plugins-good-1.4.0:1.0 )
+DESCRIPTION=Set of GStreamer elements to ease the creation of non-linear multimedia editors
+EAPI=6
+HOMEPAGE=http://gnonlin.sourceforge.net
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=>=dev-libs/glib-2.32:2 >=media-libs/gstreamer-1.4.0:1.0 >=media-libs/gst-plugins-base-1.4.0:1.0
+SLOT=1.0
+SRC_URI=https://gstreamer.freedesktop.org/src/gnonlin/gnonlin-1.4.0.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=f271bbe183a61bd4147bb5e09e61bb16

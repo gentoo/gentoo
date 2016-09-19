@@ -12575,7 +12575,7 @@ media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
-media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
+media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2 1.8.3: Less plugins for GStreamer
@@ -16033,7 +16033,7 @@ sci-libs/grib_api 1.11.0 1.14.5: Library for encoding and decoding WMO FM-92 GRI
 sci-libs/gsl 1.14 1.16 2.1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.8.14-r1 1.8.15_p1 1.8.17: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
