@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=Act on upper scopes
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Scope-Upper/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/V/VP/VPIT/Scope-Upper-0.29.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=f8ad7c2d9acfc2f2a82065face31ca56
