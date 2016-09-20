@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ IUSE=""
 RDEPEND="
 	|| ( dev-python/matplotlib[${PYTHON_USEDEP}] dev-python/pyqwt:5[${PYTHON_USEDEP}] )
 	dev-python/rospkg[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-ros/qt_gui_py_common[${PYTHON_USEDEP}]
 	dev-ros/rosgraph[${PYTHON_USEDEP}]
 	dev-ros/rostopic[${PYTHON_USEDEP}]
