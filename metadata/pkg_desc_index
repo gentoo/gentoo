@@ -13865,7 +13865,7 @@ net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security informati
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
 net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r9: library and programs to process reports from NetFlow data
-net-analyzer/flowgrind 0.7.1: Network performance measurement tool
+net-analyzer/flowgrind 0.7.1 0.8.0: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.10 3.13: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1 1.1-r2: A libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6: Testing of network intrusion detection systems, firewalls and TCP/IP stacks

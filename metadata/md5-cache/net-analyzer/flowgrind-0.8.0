@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/xmlrpc-c[abyss,curl] gsl? ( sci-libs/gsl ) pcap? ( net-libs/libpcap ) doc? ( app-doc/doxygen )
+DESCRIPTION=Network performance measurement tool
+EAPI=6
+HOMEPAGE=http://flowgrind.net/ https://github.com/flowgrind/flowgrind/
+IUSE=debug doc gsl pcap
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/xmlrpc-c[abyss,curl] gsl? ( sci-libs/gsl ) pcap? ( net-libs/libpcap )
+SLOT=0
+SRC_URI=https://github.com/flowgrind/flowgrind/releases/download/flowgrind-0.8.0/flowgrind-0.8.0.tar.bz2
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=9953a65f903d5fed238e3de242a4d5c2
