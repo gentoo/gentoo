@@ -1,0 +1,48 @@
+Fix problems with compilation in C++14 (GCC 6.x). Changes in iostream library
+caused that comparison of istream to 0 or NULL is unavailable.
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=594332
+
+--- a/src/interface.cpp
++++ b/src/interface.cpp
+@@ -1340,7 +1340,7 @@
+ 
+ 
+ 	int isExistedFile_ = 1;
+-	if (existedFile_ == 0)
++	if (!existedFile_)
+ 		isExistedFile_ = 0;
+ 
+ 	existedFile_.close ();
+--- a/src/iqp.cpp
++++ b/src/iqp.cpp
+@@ -508,7 +508,7 @@
+ 		if (in_pam.tree_file != NULL) {
+ 			std::ifstream userTreeFile_;
+ 			userTreeFile_.open (in_pam.tree_file);
+-			if (userTreeFile_ != 0) {
++			if (userTreeFile_) {
+ 				initialTree_.readFile (in_pam.tree_file);
+ 				initialTree_.createUrTree ();
+ 				hasInitTree = true;
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -118,7 +118,7 @@
+ 
+ 	ifstream in;
+ 	in.open (boottree_file_name.c_str());
+-	if (in == 0)
++	if (!in)
+ 		Utl::announceError ("Cannot open the user tree file ...");
+ 
+ 	int num_tree = 0;
+--- a/src/usertree.cpp
++++ b/src/usertree.cpp
+@@ -94,7 +94,7 @@
+ void UserTree::readFile (const char *userTreeFile) {
+ 	ifstream in;
+ 	in.open (userTreeFile);
+-	if (in == 0)
++	if (!in)
+ 		Utl::announceError ("Cannot open the user tree file ...");
+ 
+ 	readFile(in);

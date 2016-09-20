@@ -1,5 +1,5 @@
---- reduce_src/Makefile	2009-08-09 10:11:29.000000000 +0200
-+++ reduce_src/Makefile.new	2009-08-09 10:13:31.000000000 +0200
+--- a/reduce_src/Makefile
++++ b/reduce_src/Makefile
 @@ -34,7 +34,7 @@
  all:    reduce
  
