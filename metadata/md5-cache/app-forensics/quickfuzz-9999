@@ -9,4 +9,4 @@ RDEPEND=dev-haskell/abstract-par:= dev-haskell/argparser:= dev-haskell/derive:= 
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_unpack:- src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	git-r3	00f60a84fc7b499c99edfe99caea9f95	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=569c7443e33b8099d41d051db7811136
+_md5_=f052a1be65cc000ca32c3fbf566e0050

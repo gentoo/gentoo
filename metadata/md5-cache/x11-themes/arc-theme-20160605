@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=gtk3? ( >=x11-libs/gtk+-3.14:3 virtual/pkgconfig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+EAPI=6
+HOMEPAGE=https://github.com/horst3180/arc-theme
+IUSE=cinnamon gnome-shell +gtk2 +gtk3 mate xfce
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gtk2? ( x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine )
+SLOT=0
+SRC_URI=https://github.com/horst3180/arc-theme/archive/20160605.tar.gz -> arc-theme-20160605.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=e2785d8ecf71bff7b75d5c3e8f84ceb1

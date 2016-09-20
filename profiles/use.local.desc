@@ -8444,6 +8444,12 @@ x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/notify-python
 x11-terms/xterm:openpty - Use openpty() in preference to posix_openpt()
 x11-terms/xterm:toolbar - Enable the xterm toolbar to be built
+x11-themes/arc-theme:cinnamon - Install theme for gnome-extra/cinnamon
+x11-themes/arc-theme:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/arc-theme:gtk2 - Install GTK+2 theme
+x11-themes/arc-theme:gtk3 - Install GTK+3 theme
+x11-themes/arc-theme:mate - Install Metacity theme for mate-base/mate
+x11-themes/arc-theme:xfce - Install theme for xfce-base/xfwm4
 x11-themes/bespin:windeco - Enable window decoration for KWin.
 x11-themes/comix-xcursors:lefthanded - Install lefthanded version of theme in addition to default one
 x11-themes/comix-xcursors:opaque - Install non-transparent version of theme in addition to default one
