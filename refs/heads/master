@@ -1,13 +1,15 @@
 certificate version 0.1
-pusher 0xA792A613 1474398376 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1474398376-a7dde0d6ea5d97406aee
+pusher 0x5713AA03D1BBFDA0 1474399343 -0400
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1474399343-91ec8cb0ca9de4add6cd
 
-88077e4430a2fb29519f0bd596cbbc038231dd87 bce59da383ae921ad961833244ad12d2ea6491b8 refs/heads/master
+bce59da383ae921ad961833244ad12d2ea6491b8 a4efd65aaf5b2c8d0532943dcfd00584f2bfbc9a refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Version: GnuPG v2.0
 
-iEYEABECAAYFAlfhiKgACgkQVWmRsqeSphP5ywCeM+pyGY2lOo1rttBJASHZKqmd
-0OoAnA6PKluY1B4LvAQm2BOHY/G3LoGd
-=Oilj
+iL4EABEKAGYFAlfhjG9fFIAAAAAALgAoaXNzdWVyLWZwckBub3RhdGlvbnMub3Bl
+bnBncC5maWZ0aGhvcnNlbWFuLm5ldDRGNEVENDM2QzYzRDAwQTdCNDYzQTQwMDI4
+OTc2MzczNjFENjJENUQACgkQKJdjc2HWLV25cQD/d/a0Qh73OlAlVR8FDb0gWJtA
+82eR6VEuaNwwGC2/DIYA/AzSy+UNkM/G3AKzMHcRmctq1rCIofWFAFhUshGniHr3
+=COE+
 -----END PGP SIGNATURE-----
