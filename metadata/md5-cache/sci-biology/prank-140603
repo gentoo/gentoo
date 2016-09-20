@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Probabilistic Alignment Kit
-EAPI=4
+EAPI=6
 HOMEPAGE=http://wasabiapp.org/software/prank/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://wasabiapp.org/download/prank/prank.source.140603.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=a78b8fe781e96a7748fe5d249d518725
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=9614f3ce8158ee42a3cb810943e01473

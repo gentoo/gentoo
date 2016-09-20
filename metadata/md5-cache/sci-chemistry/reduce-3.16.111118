@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile install
 DEPEND=app-arch/unzip
 DESCRIPTION=Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
-EAPI=4
+EAPI=6
 HOMEPAGE=http://kinemage.biochem.duke.edu/software/reduce.php
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=richardson
 SLOT=0
 SRC_URI=http://kinemage.biochem.duke.edu/downloads/software/reduce31/reduce.3.16.111118.src.zip
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=65b56e363e76bac7e652282e9575223e
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=1538906ce409a6cef34e66b4b75a595c

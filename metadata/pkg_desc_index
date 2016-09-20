@@ -7498,7 +7498,7 @@ dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema val
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.0 4.1.1 5.0.0: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.0.6 4.1.0: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.0.6 4.1.0 4.2.0: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
 dev-python/kaa-imlib2 0.2.3-r1 0.2.3-r2: Imlib2 wrapper for Python
@@ -7650,7 +7650,7 @@ dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.0: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 4.0.6 4.1.0 4.2.0 4.2.1: Jupyter Interactive Notebook
+dev-python/notebook 4.0.6 4.1.0 4.2.0 4.2.1 4.2.3: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
@@ -8158,7 +8158,7 @@ dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config ex
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
-dev-python/rebulk 0.7.2 0.7.4 9999: Python library that performs advanced searches in strings
+dev-python/rebulk 0.7.2 0.7.6 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/reconfigure 0.1.50 0.1.72 0.1.75 0.1.79: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
@@ -8359,7 +8359,7 @@ dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.8.4 9999: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
-dev-python/traitlets 4.0.0 4.1.0 4.2.1 4.2.2: A configuration system for Python applications
+dev-python/traitlets 4.0.0 4.1.0 4.2.1 4.2.2 4.3.0: A configuration system for Python applications
 dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
 dev-python/translate-toolkit 1.12.0: Toolkit to convert between many translation formats
@@ -15654,7 +15654,7 @@ sci-biology/piler 1.0: Analysis of repetitive DNA found in genome sequences
 sci-biology/pilercr 1.0: Analysis of Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs)
 sci-biology/plink 1.07-r1 1.90_pre140514: Whole genome association analysis toolset
 sci-biology/poa 2-r1: Fast multiple sequence alignments using partial-order graphs
-sci-biology/prank 100701 111130 140603: Probabilistic Alignment Kit
+sci-biology/prank 140603: Probabilistic Alignment Kit
 sci-biology/primer3 2.3.5 2.3.6 2.3.7: Primer Design for PCR reactions
 sci-biology/prints 39.0: A protein motif fingerprint database
 sci-biology/probcons 1.12-r1: Probabilistic Consistency-based Multiple Alignment of Amino Acid Sequences
@@ -16069,7 +16069,7 @@ sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
 sci-libs/libctl 3.1 3.2: Guile-based library for scientific simulations
 sci-libs/libdap 3.11.3 3.17.0: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
-sci-libs/libgenome 1.3-r1 9999: Library for sci-biology/mauve
+sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
 sci-libs/libgeodecomp 0.3.1: An auto-parallelizing library to speed up computer simulations
 sci-libs/libgeotiff 1.4.0 1.4.1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libghemical 2.00 2.99.1 3.0.0: Chemical quantum mechanics and molecular mechanics
