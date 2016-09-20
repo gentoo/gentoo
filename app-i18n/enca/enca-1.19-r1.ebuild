@@ -74,6 +74,7 @@ multilib_src_compile() {
 multilib_src_install() {
 	if ! multilib_is_native_abi; then
 		emake -C lib DESTDIR="${D}" install
+		emake DESTDIR="${D}" install-pkgconfigDATA
 	else
 		emake DESTDIR="${D}" install
 		use doc && emake -C devel-docs DESTDIR="${D}" install
