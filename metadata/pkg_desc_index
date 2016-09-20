@@ -18469,7 +18469,7 @@ x11-misc/idesk-extras 1.37-r1: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0: A themable desktop pager for fluxbox and other window managers
-x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track of your hours
+x11-misc/kapow 1.4.4 1.5.0: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
