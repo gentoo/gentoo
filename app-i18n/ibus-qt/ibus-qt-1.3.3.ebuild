@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,11 @@ DOCS="AUTHORS README TODO"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.3-doc.patch )
 
-mycmakeargs="-DLIBDIR=$(get_libdir) all"
+src_configure() {
+	local mycmakeargs=( -DLIBDIR=$(get_libdir) all )
+
+	cmake-utils_src_configure
+}
 
 src_compile() {
 	cmake-utils_src_compile
