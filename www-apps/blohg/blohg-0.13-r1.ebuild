@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ REQUIRED_USE="|| ( git mercurial )
 	test? ( git mercurial )"
 
 RDEPEND="
-	=dev-python/click-2.0
+	>=dev-python/click-2.0
 	=dev-python/docutils-0.11*
 	>=dev-python/flask-0.10.1
 	>=dev-python/flask-babel-0.7
