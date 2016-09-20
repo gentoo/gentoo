@@ -1,0 +1,16 @@
+diff -Naurp openssh-7.3p1.orig/configure.ac openssh-7.3p1/configure.ac
+--- openssh-7.3p1.orig/configure.ac	2016-07-27 22:54:27.000000000 +0000
++++ openssh-7.3p1/configure.ac	2016-08-17 15:58:11.531465000 +0000
+@@ -816,10 +816,10 @@ main() { if (NSVersionOfRunTimeLibrary("
+ 		seccomp_audit_arch=AUDIT_ARCH_MIPSEL
+ 		;;
+ 	mips64-*)
+-		seccomp_audit_arch=AUDIT_ARCH_MIPS64
++		seccomp_audit_arch=AUDIT_ARCH_MIPS64N32
+ 		;;
+ 	mips64el-*)
+-		seccomp_audit_arch=AUDIT_ARCH_MIPSEL64
++		seccomp_audit_arch=AUDIT_ARCH_MIPSEL64N32
+ 		;;
+ 	esac
+ 	if test "x$seccomp_audit_arch" != "x" ; then
