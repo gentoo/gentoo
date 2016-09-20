@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:4 )"
 
 DOCS=( AUTHORS README )
+PATCHES=( ${FILESDIR}/${P}-fix-JsonCreatorTest-failure.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
