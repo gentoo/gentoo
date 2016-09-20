@@ -12894,7 +12894,7 @@ media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 0.0.20160523 0.0.20160712
 media-libs/x265 1.5 1.7 1.8 1.8-r3 1.9 2.0 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
-media-libs/zimg 2.0.1 2.0.2 2.0.3 2.0.4 9999: Scaling, colorspace conversion, and dithering library
+media-libs/zimg 2.0.1 2.0.2 2.0.3 2.0.4 2.2.1 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0 2.0.0-r1 3.1.0: C++ library implementing a real-time convolution matrix
 media-libs/zvbi 0.2.35 0.2.35-r1: VBI Decoding Library for Zapping
