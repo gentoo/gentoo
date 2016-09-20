@@ -9743,7 +9743,7 @@ dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 2.1.2.0.143.2915827 2.1.3.0.143.3101438: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 2.1.2.0.143.2915827 2.1.3.0.143.3101438 2.2.0.12.145.3276617: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.18.2 3.20.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
@@ -13495,7 +13495,7 @@ media-sound/qtractor 0.7.7 0.7.8: Qtractor is an Audio/MIDI multi-track sequence
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.5.1 3.6.2: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 3.5.1 3.6.2 3.7.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.15 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
