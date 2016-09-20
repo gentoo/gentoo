@@ -1003,7 +1003,7 @@ app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
 app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/atom 1.7.4-r3 1.8.0: A hackable text editor for the 21st Century
+app-editors/atom 1.7.4-r4 1.8.0-r1 1.10.2: A hackable text editor for the 21st Century
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
 app-editors/bluefish 2.2.6 2.2.8 2.2.9: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.3.2-r2 1.4.0_alpha: display-oriented editor for binary files, based on the vi texteditor
@@ -1394,6 +1394,7 @@ app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-chuck 1.0.1: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
+app-eselect/eselect-electron 1.0.0: Utility to select the default Electron slot
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5 1.5-r1: gnat module for eselect
@@ -9865,7 +9866,7 @@ dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memo
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r3: Cross platform application development framework based on web technologies
+dev-util/electron 0.36.12-r4 0.37.8 1.3.5: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 4.5.25-r1 5.5.2 6.1.7: A full featured Python IDE using PyQt and QScintilla
@@ -17144,7 +17145,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (y
 sys-devel/bmake 20160315 20160606 20160818: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 3.9.0-r100 9999: C language family frontend for LLVM
+sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 3.9.0-r101 9999: C language family frontend for LLVM
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
