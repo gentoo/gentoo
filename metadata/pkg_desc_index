@@ -1078,7 +1078,7 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 7.4.769 7.4.2102 8.0.0005 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 7.4.769 7.4.2102 8.0.0005 9999: vim and gvim shared files
+app-editors/vim-core 7.4.769 7.4.2102 8.0.0005 8.0.0005-r1 9999: vim and gvim shared files
 app-editors/vim-qt 20150102-r1: Qt GUI version of the Vim text editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
@@ -10428,7 +10428,7 @@ games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
 games-board/gnome-mines 3.18.2 3.20.1: Clear hidden mines from a minefield
 games-board/gnono 1.9.1 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.04.000 1.05.000 1.05.000-r1: GNU BackGammon
-games-board/gnuchess 6.2.2-r1: Console based chess interface
+games-board/gnuchess 6.2.2-r1 6.2.3: Console based chess interface
 games-board/gnuchess-book 1.02: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/gnushogi 1.4.1 1.4.1-r1: Japanese version of chess (commandline + X-Version)

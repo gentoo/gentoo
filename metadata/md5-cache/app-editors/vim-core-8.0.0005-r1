@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=sys-devel/autoconf
+DESCRIPTION=vim and gvim shared files
+EAPI=6
+HOMEPAGE=http://www.vim.org/ https://github.com/vim/vim
+IUSE=nls acl minimal
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=vim
+PDEPEND=!minimal? ( app-vim/gentoo-syntax )
+SLOT=0
+SRC_URI=https://github.com/vim/vim/archive/v8.0.0005.tar.gz -> vim-8.0.0005.tar.gz https://dev.gentoo.org/~radhermit/vim/vim-7.4.2102-gentoo-patches.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf
+_md5_=fdf539f6ff6dc77996a8e815ed39b89a
