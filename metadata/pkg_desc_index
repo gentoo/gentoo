@@ -1090,6 +1090,7 @@ app-editors/zile 2.3.24-r1 2.4.11: Zile is a small Emacs clone
 app-editors/znotes 0.4.5: Simple Notes
 app-editors/zoinks 0.4.1: programmer's text editor and development environment
 app-emacs/actionscript-mode 7.2.2_p20120405 7.2.2_p20140605: A major mode for GNU Emacs for editing Actionscript 3 files
+app-emacs/adaptive-wrap 0.5: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/anything 1.3.2: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
@@ -1475,7 +1476,7 @@ app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
 app-i18n/canna 3.7_p3-r1 3.7_p3-r2: A client-server based Kana-Kanji conversion system
 app-i18n/cstools 3.42: A charset conversion tool cstocs and two convenience Perl modules for Czech language
 app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-input software
-app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.19: Detect and convert encoding of text files
+app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1: Fast terminal emulator for the Linux framebuffer
 app-i18n/fcitx 4.2.8.5 4.2.8.6 4.2.9 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
