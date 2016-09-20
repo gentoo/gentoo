@@ -94,19 +94,16 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-PATCHES=(
-	# bundled libs:
-	"${FILESDIR}"/${P}-megadeth-ghc-8.patch
-	"${FILESDIR}"/${P}-megadeth-better-erroro.patch
-	"${FILESDIR}"/${P}-megadeth-ghc-8-gadt.patch
-
-	"${FILESDIR}"/${P}-ttasm-layout.patch
-
-	# package itself:
-	"${FILESDIR}"/${PN}-0.1-QC-2.9.patch
-	"${FILESDIR}"/${P}-th-2.11-1.patch
-	"${FILESDIR}"/${P}-th-2.11-2.patch
-)
+# $1 - target tarball name (not including extension)
+make_snapshot() {
+	ln -s "${S}" "${WORKDIR}"/"$1" || die
+	tar \
+		--dereference \
+		--directory="${WORKDIR}" \
+		--exclude="$1"/bundled/Juicy.Pixels/tests \
+		-zcvvf \
+		"${WORKDIR}"/"$1".tar.gz "$1"/ || die
+}
 
 # As of 2016-09-10 QuickFuzz forks a few hackage packages
 # without renames:
@@ -114,7 +111,7 @@ PATCHES=(
 # - hogg: more functions are exported directly
 # - juicypixels: more functions and modules are exported,
 #                unsafe functions are changed to safe
-# - svg-tree: expose internal modules
+# - svg-tree: upstream, build agains patched juicypixels
 # - x509: stabilised handling of corrupterd data
 # - megadeth: not a fork but has no releases
 # - ttasm: cabalised, renamed module
@@ -129,7 +126,6 @@ src_unpack() {
 		hogg
 		hs-asn1-encoding
 		hs-certificate-x509
-		svg-tree
 		ttasm
 
 		# not exactly fork. just unreleased upstream library
@@ -143,6 +139,11 @@ src_unpack() {
 		git-r3_fetch    https://github.com/CIFASIS/${repo_name}.git
 		git-r3_checkout https://github.com/CIFASIS/${repo_name}.git "${repo_subdir}/${repo_name}"
 	done
+
+	git-r3_fetch    https://github.com/Twinside/svg-tree.git
+	git-r3_checkout https://github.com/Twinside/svg-tree.git "${repo_subdir}/svg-tree"
+
+	make_snapshot quickfuzz-0.1_p$(date "+%Y%m%d")
 }
 
 src_prepare() {
