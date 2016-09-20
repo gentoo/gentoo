@@ -14114,7 +14114,7 @@ net-dialup/dtrace 2.01-r3: DTRACE traces ISDN messages with AVM ISDN-controllers
 net-dialup/dwun 0.96e-r2 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/fcpci 0.1-r3: AVM kernel modules for Fritz!Card PCI
-net-dialup/freeradius 2.2.9-r1 3.0.11-r1: Highly configurable free RADIUS server
+net-dialup/freeradius 2.2.9-r2 3.0.11-r2: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gnuradius 1.6.1-r1: GNU radius authentication server
