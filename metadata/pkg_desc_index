@@ -17288,7 +17288,7 @@ sys-fs/e2fsprogs 1.42.13 1.43.1 1.43.2 1.43.3: Standard EXT2/EXT3/EXT4 filesyste
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.3-r1 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
-sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9: An implementation of encrypted filesystem in user-space using FUSE
+sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9 1.9.1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 3.2 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.3 1.2.4: exFAT filesystem utilities
