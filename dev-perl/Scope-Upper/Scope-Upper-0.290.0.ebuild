@@ -2,20 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR="VPIT"
-MODULE_VERSION="0.29"
+DIST_AUTHOR="VPIT"
+DIST_VERSION="0.29"
 
 inherit perl-module
 
 DESCRIPTION="Act on upper scopes"
 
-LICENSE="Artistic GPL-1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=""
 RDEPEND=""
-
-SRC_TEST="do"
