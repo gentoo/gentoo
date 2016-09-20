@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:4 )"
 
 DOCS=( AUTHORS README )
+PATCHES=( ${FILESDIR}/${PN}-1.0.8-fix-JsonCreatorTest-failure.patch )
 
 src_configure() {
 	local mycmakeargs=(
