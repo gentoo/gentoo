@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Data-Page-2.0.0 dev-perl/Class-Accessor dev-perl/Module-Build test? ( dev-perl/Test-Exception ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=change long page list to be shorter and well navigate
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Data-Page-Pageset/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Artistic GPL-1
+RDEPEND=>=dev-perl/Data-Page-2.0.0 dev-perl/Class-Accessor dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CH/CHUNZI/Data-Page-Pageset-1.02.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=5bd1b3e270ab986cdb0f102e3787badb

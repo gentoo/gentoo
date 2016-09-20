@@ -5343,6 +5343,7 @@ dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int m
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
+dev-perl/Business-Hours 0.120.0: Calculate business hours in a time period
 dev-perl/Business-ISBN 2.50.0-r1 2.90.200_rc: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.2.0 20140910.3.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
@@ -5373,6 +5374,7 @@ dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
+dev-perl/CSS-Minifier-XS 0.90.0: XS based CSS minifier
 dev-perl/CSS-Packer 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
@@ -5544,6 +5546,7 @@ dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-ObjectDriver 0.90.0-r1: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
+dev-perl/Data-Page-Pageset 1.20.0: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0: A module used to generate random data
 dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
@@ -5891,6 +5894,7 @@ dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
 dev-perl/JSON-XS 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
 dev-perl/JavaScript-Minifier 1.140.0: Perl extension for minifying JavaScript code
+dev-perl/JavaScript-Minifier-XS 0.110.0: XS based JavaScript minifier
 dev-perl/JavaScript-Packer 2.0.0: Perl version of Dean Edward's Packer.js
 dev-perl/JavaScript-SpiderMonkey 0.210.0-r1: Perl interface to the JavaScript Engine
 dev-perl/Jcode 2.70.0-r1: Japanese transcoding module for Perl
@@ -6292,6 +6296,7 @@ dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' command
 dev-perl/Schedule-Cron-Events 1.950.0: Take a line from a crontab and find out when events will occur
 dev-perl/Scope-Guard 0.210.0: Lexically scoped resource management
+dev-perl/Scope-Upper 0.290.0: Act on upper scopes
 dev-perl/Search-Xapian 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ search library
 dev-perl/Server-Starter 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
@@ -12312,7 +12317,7 @@ media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to 
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.8.18 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.6.5.0 1.6.5.1: GREYC's Magic Image Converter
@@ -17930,7 +17935,7 @@ www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 3.2.1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.4.20 1.4.21 1.5.0: Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces
-www-apps/rt 4.2.12-r1: RT is an enterprise-grade ticketing system
+www-apps/rt 4.2.12-r1 4.4.1: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14: A Python package for implementing SCGI servers
 www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Use

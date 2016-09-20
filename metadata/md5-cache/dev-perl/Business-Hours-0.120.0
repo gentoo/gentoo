@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Set-IntSpan-1.120.0 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Calculate business hours in a time period
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Business-Hours/
+KEYWORDS=~amd64
+LICENSE=Artistic GPL-1
+RDEPEND=>=dev-perl/Set-IntSpan-1.120.0 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RU/RUZ/Business-Hours-0.12.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=982c498e92ba2eb9176eaea92d20a55f
