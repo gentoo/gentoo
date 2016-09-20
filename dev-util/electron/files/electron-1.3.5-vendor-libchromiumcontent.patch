@@ -1,0 +1,78 @@
+From 0448735817b941e5039616144aa836c2f08c9c54 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 8 Feb 2016 15:12:12 -0500
+Subject: [PATCH] libchromiumcontent build fixes
+
+---
+ chromiumcontent/chromiumcontent.gyp  |  7 ++++---
+ chromiumcontent/chromiumcontent.gypi | 21 ---------------------
+ 2 files changed, 4 insertions(+), 24 deletions(-)
+
+diff --git a/chromiumcontent/chromiumcontent.gyp b/chromiumcontent/chromiumcontent.gyp
+index 5278324..41e7de3 100644
+--- a/chromiumcontent/chromiumcontent.gyp
++++ b/chromiumcontent/chromiumcontent.gyp
+@@ -24,11 +24,11 @@
+     },
+     {
+       'target_name': 'chromiumcontent',
+-      # Build chromiumcontent as shared_library otherwise some static libraries
+-      # will not build.
+-      'type': 'shared_library',
++      'type': 'static_library',
+       'dependencies': [
+         '<(DEPTH)/components/prefs/prefs.gyp:prefs',
++        '<(DEPTH)/chrome/chrome_resources.gyp:packed_extra_resources',
++        '<(DEPTH)/chrome/chrome_resources.gyp:packed_resources',
+         '<(DEPTH)/components/components.gyp:cdm_renderer',
+         '<(DEPTH)/components/components.gyp:devtools_discovery',
+         '<(DEPTH)/components/components.gyp:devtools_http_handler',
+@@ -41,6 +41,7 @@
+         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_proxy',
+         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_ipc',
+         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_shared',
++        '<(DEPTH)/third_party/WebKit/Source/config.gyp:config',
+         '<(DEPTH)/third_party/webrtc/modules/modules.gyp:desktop_capture',
+         '<(DEPTH)/third_party/widevine/cdm/widevine_cdm.gyp:widevinecdmadapter',
+         '<(DEPTH)/third_party/widevine/cdm/widevine_cdm.gyp:widevine_cdm_version_h',
+diff --git a/chromiumcontent/chromiumcontent.gypi b/chromiumcontent/chromiumcontent.gypi
+index 6d605a2..bd28a21 100644
+--- a/chromiumcontent/chromiumcontent.gypi
++++ b/chromiumcontent/chromiumcontent.gypi
+@@ -1,17 +1,5 @@
+ {
+   'variables': {
+-    # Don't use nacl.
+-    'disable_nacl': 1,
+-    # Enable using proprietary codecs.
+-    'proprietary_codecs': 1,
+-    # Build ffmpeg as shared library.
+-    'ffmpeg_component': 'shared_library',
+-    # Enable support for Widevine CDM.
+-    'enable_widevine': 1,
+-    # Using libc++ requires building for >= 10.7.
+-    'mac_deployment_target': '10.8',
+-    # Use the standard way of linking with msvc runtime.
+-    'win_use_allocator_shim': 0,
+     # The V8 libraries.
+     'v8_libraries': '["v8", "v8_snapshot", "v8_nosnapshot", "v8_external_snapshot", "v8_base", "v8_libbase", "v8_libplatform"]',
+     # The icu libraries.
+@@ -22,15 +10,6 @@
+         'v8_use_external_startup_data': 1,
+       }],
+       ['OS=="linux"', {
+-        # Enable high DPI support on Linux.
+-        'enable_hidpi': 1,
+-        # Use Dbus.
+-        'use_dbus': 1,
+-        # Make Linux build contain debug symbols, this flag will add '-g' to
+-        # cflags.
+-        'linux_dump_symbols': 1,
+-        # Force using gold linker.
+-        'linux_use_bundled_gold': 1,
+         'conditions': [
+           ['target_arch=="arm"', {
+             'arm_version': 7,
+-- 
+2.7.3
+
