@@ -33,7 +33,7 @@ RESTRICT="firebird? ( bindist )"
 RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
 	sys-devel/libtool
-	dev-lang/perl
+	dev-lang/perl:=
 	sys-libs/gdbm
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )

@@ -31,7 +31,7 @@ RESTRICT="test firebird? ( bindist )"
 RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
 	sys-devel/libtool
-	dev-lang/perl
+	dev-lang/perl:=
 	sys-libs/gdbm
 	sys-libs/talloc
 	python? ( ${PYTHON_DEPS} )
