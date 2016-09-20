@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An experimental grammar fuzzer in Haskell using QuickCheck"
 HOMEPAGE="http://quickfuzz.org/"
-SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -95,19 +95,16 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
 "
 
-PATCHES=(
-	# bundled libs:
-	"${FILESDIR}"/${PN}-0.1_p20160909-megadeth-ghc-8.patch
-	"${FILESDIR}"/${PN}-0.1_p20160909-megadeth-better-erroro.patch
-	"${FILESDIR}"/${PN}-0.1_p20160909-megadeth-ghc-8-gadt.patch
-
-	"${FILESDIR}"/${PN}-0.1_p20160909-ttasm-layout.patch
-
-	# package itself:
-	"${FILESDIR}"/${PN}-0.1-QC-2.9.patch
-	"${FILESDIR}"/${PN}-0.1_p20160909-th-2.11-1.patch
-	"${FILESDIR}"/${PN}-0.1_p20160909-th-2.11-2.patch
-)
+# $1 - target tarball name (not including extension)
+make_snapshot() {
+	ln -s "${S}" "${WORKDIR}"/"$1" || die
+	tar \
+		--dereference \
+		--directory="${WORKDIR}" \
+		--exclude="$1"/bundled/Juicy.Pixels/tests \
+		-zcvvf \
+		"${WORKDIR}"/"$1".tar.gz "$1"/ || die
+}
 
 # As of 2016-09-10 QuickFuzz forks a few hackage packages
 # without renames:
@@ -115,7 +112,7 @@ PATCHES=(
 # - hogg: more functions are exported directly
 # - juicypixels: more functions and modules are exported,
 #                unsafe functions are changed to safe
-# - svg-tree: expose internal modules
+# - svg-tree: upstream, build agains patched juicypixels
 # - x509: stabilised handling of corrupterd data
 # - megadeth: not a fork but has no releases
 # - ttasm: cabalised, renamed module

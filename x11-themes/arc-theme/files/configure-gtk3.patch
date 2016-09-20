@@ -1,0 +1,26 @@
+From f416c04a979a6616bb5471c5982555bcac5bf346 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 20 Sep 2016 13:29:44 +0100
+Subject: [PATCH] Don't require GTK+3 at configure time when it's not needed
+
+It's not needed when --disable-gtk3 --disable-gnome-shell is given.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b27f5cd..dc8098b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,7 +24,7 @@ ARC_ENABLE([UNITY],         [unity],         [Unity],         [disable])
+ ARC_ENABLE([XFWM],          [xfwm],          [XFWM],          [disable])
+ ARC_ENABLE([TRANSPARENCY],  [transparency],  [transparency],  [disable])
+ 
+-ARC_GNOME
++AS_IF([test "x$ENABLE_GNOME_SHELL$ENABLE_GTK3" != xnono], [ARC_GNOME])
+ 
+ AC_CONFIG_FILES([
+     common/Makefile
+-- 
+2.10.0
+
