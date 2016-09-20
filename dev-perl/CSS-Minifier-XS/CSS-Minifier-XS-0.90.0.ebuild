@@ -2,22 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR="GTERMARS"
-MODULE_VERSION="0.09"
+DIST_AUTHOR="GTERMARS"
+DIST_VERSION="0.09"
 
 inherit perl-module
 
 DESCRIPTION="XS based CSS minifier"
 
-LICENSE="Artistic GPL-1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-perl/Module-Build
 	virtual/perl-ExtUtils-CBuilder"
 RDEPEND=""
-
-SRC_TEST="do"
