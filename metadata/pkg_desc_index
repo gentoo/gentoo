@@ -15856,7 +15856,7 @@ sci-electronics/gtkwave 3.3.68 3.3.73: A wave viewer for LXT, LXT2, VZT, GHW and
 sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.1-r1 4.0.2-r1 4.0.2-r2 4.0.2-r3 4.0.2-r4: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.1-r1 4.0.2-r1 4.0.2-r2 4.0.2-r3 4.0.2-r4 4.0.4: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28 0.99.30: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
