@@ -1378,7 +1378,7 @@ app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-r4 11.1.3.3206955-r3 11.1.3.3206955-r4 12.1.0.3272444-r2: Emulate a complete PC without the performance overhead of most emulators
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
-app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19-r1 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
@@ -4514,7 +4514,7 @@ dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in 
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3: Stand-alone JavaScript C library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.23 7.3.24 7.3.25 7.3.26: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.26 7.3.27: free, small, and standard compliant Prolog compiler
 dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tool Command Language
@@ -4777,7 +4777,7 @@ dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful 
 dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
 dev-libs/libmail 0.3-r3: A mail handling library
 dev-libs/libmal 0.44.1: convenience library of the functions malsync distribution
-dev-libs/libmateweather 1.10.0 1.12.1-r2: MATE library to access weather information from online services
+dev-libs/libmateweather 1.10.0 1.12.1-r2 1.12.2: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.2.0: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
