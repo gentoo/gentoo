@@ -22,7 +22,7 @@ IUSE="cairo camera doc examples garden gstreamer +sdl spell test"
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	cairo? ( dev-python/pycairo[${PYTHON_USEDEP}] )
-	camera? ( media-libs/opencv[${PYTHON_USEDEP}] )
+	camera? ( media-libs/opencv:0/2.4[$(python_gen_usedep 'python2_7')] )
 	garden? ( dev-python/kivy-garden[${PYTHON_USEDEP}] )
 	gstreamer? ( dev-python/gst-python:1.0[${PYTHON_USEDEP}] )
 	sdl? ( media-libs/libsdl2
