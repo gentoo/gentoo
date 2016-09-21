@@ -7809,11 +7809,13 @@ sys-fs/ntfs3g:external-fuse - Use external FUSE library instead of internal one.
 sys-fs/ntfs3g:ntfsdecrypt - Build and install the ntfsdecrypt application.
 sys-fs/ntfs3g:ntfsprogs - Include internal version of ntfsprogs.
 sys-fs/ocfs2-tools:external - Enable external locking
+sys-fs/owfs:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
 sys-fs/owfs:ftpd - Enable building the OWFS FTP server (owftpd)
 sys-fs/owfs:fuse - Enable building the FUSE-based OWFS client (owfs)
 sys-fs/owfs:httpd - Enable building the OWFS web server (owhttpd)
 sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
+sys-fs/owfs:zeroconf - Enables support for zero-configuration networking via net-dns/avahi
 sys-fs/quota:netlink - Compile daemon receiving quota messages via netlink
 sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
