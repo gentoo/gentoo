@@ -10986,8 +10986,8 @@ games-server/ut2004-ded 3369.3-r1: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3 1.3-r1: design and build bridges and then stress test them with trains
 games-simulation/cannonsmash 0.6.6: 3D tabletennis game
 games-simulation/corsix-th 0.30: Open source clone of Theme Hospital
-games-simulation/crashtest 1.1: Educational car crash simulator
-games-simulation/crrcsim 0.9.12-r1: model-airplane flight simulation program
+games-simulation/crashtest 1.1 1.1-r1: Educational car crash simulator
+games-simulation/crrcsim 0.9.12-r1 0.9.12-r2: model-airplane flight simulation program
 games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
 games-simulation/flightgear 3.4.0 2016.1.1 2016.2.1 9999: Open Source Flight Simulator
 games-simulation/flightgear-data 3.4.0 2016.1.1 2016.2.1 9999: FlightGear data files
