@@ -17298,7 +17298,7 @@ sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1 1.9 1.9.1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 3.2 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.3 1.2.4: exFAT filesystem utilities
+sys-fs/exfat-utils 1.2.1 1.2.4: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
@@ -17307,7 +17307,7 @@ sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio pl
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.5 2.9.6 2.9.7: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
-sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.3 1.2.4: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.0.1 1.2.4: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
