@@ -75,10 +75,7 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test"
 # see bug 366471
 
-PATCHES=(
-	"${FILESDIR}/${PN}-ninja-optional.patch"
-	"${FILESDIR}/${P}-fix-cpp.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-ninja-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
