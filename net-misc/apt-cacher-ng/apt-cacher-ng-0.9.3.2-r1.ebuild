@@ -90,7 +90,7 @@ src_install() {
 	fi
 
 	# Documentation
-	dodoc README TODO VERSION INSTALL ChangeLog
+	dodoc doc/README TODO VERSION INSTALL ChangeLog
 	if use doc; then
 		dodoc doc/*.pdf
 		dohtml doc/html/*
