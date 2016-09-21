@@ -248,15 +248,6 @@ www-apps/389-dsgw
 app-editors/gobby
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Upstream dead, relies on a lot of obsolete libs, bug #471458.
-# Removal in a month.
-media-sound/listen
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Broken, unmaintained, bug #473376. Removal in a month.
-x11-plugins/prpltwtr
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Unmaintained, pending major version bump, doesn't integrate well with
 # portage, bug #477798. Removal in a month.
 app-benchmarks/phoronix-test-suite
@@ -388,11 +379,6 @@ dev-lang/io
 net-libs/libsoup-gnome
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Upstream inactive, still relies on vulnerable and obsolete webkit-gtk
-# versions, bug #553088. Removal in a month.
-www-client/dwb
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Fails to build (#555568). Removal in a month.
 app-i18n/scim-skk
 
@@ -438,51 +424,12 @@ media-sound/gnaural
 app-misc/slashtime
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Collides with newer obexftp (#578916), removal in a month.
-sys-fs/obexfs
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Replaced by filebeat-bin, bug #579690. Removal in a month.
 app-admin/logstash-forwarder
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Fails to build (#583334), unmaintained, removal in a month.
 app-benchmarks/ltp
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Upstream dead for a long time, needs multiple fixes (#583786). Removal in
-# a month.
-app-cdr/burncenter
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Unmaintained, relies on obsolete and vulnerable webkit-gtk versions
-# (#584192). Removal in a month.
-www-client/vimprobable2
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Dead for ages, nothing needs it (#587262). Removal in a month.
-dev-libs/libgringotts
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Calls prepstrip, nothing needs it in the tree (#587312). Removal in a
-# month.
-dev-util/nsis
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Fails to build (#587804), upstream dead. Removal in a month.
-net-nntp/nzb
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Fails to build (#588402), nothing needs this. Removal in a month.
-dev-libs/libxr
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Upstream dead for ages, it doesn't work (#588880). Removal in a month.
-app-emulation/vboxgtk
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Dead for ages, broken in several ways (#589808). Removal in a month.
-net-misc/jigdo
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Dead since 2010, unmaintained (#590142). Removal in a month.
@@ -545,11 +492,6 @@ net-misc/gnome-rdp
 # Multiple unresolved bugs (#368997), upstream doesn't take care of -1
 # branch for a long time. Use tigervnc instead.
 net-misc/tightvnc
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Dead for ages, relies on obsolete and vulnerable webkit-gtk versions
-# (#572984). Removal in a month.
-gnome-extra/gnome-web-photo
 
 # Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
 # codecs are not usable, also really obsolete, bug #181959
