@@ -8,4 +8,4 @@ RDEPEND=>=dev-cpp/gtkglextmm-1.2 dev-cpp/gtkmm:2.4 dev-cpp/libxmlpp:2.6 dev-libs
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	7af5d170bfc02983b4bcd3167dc5edd4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=10e1209a587b6543e571b3dc9bd203b4
+_md5_=1fc4a0651866a28d1390d951e4b77466
