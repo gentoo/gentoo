@@ -438,7 +438,6 @@ app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.1 3.12.1-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.0: Console app for copying burning audio cds
-app-cdr/burncenter 3.2.1: A Perl module and a collection of easy-to-use text based interfaces to the UNIX CD burning tools
 app-cdr/ccd2iso 0.3: Converts CloneCD images (popular under Windows) to ISOs
 app-cdr/cdck 0.7.0-r1 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
@@ -1358,7 +1357,6 @@ app-emulation/spim 8.0-r1: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.8.1 1.8.4 1.8.5: A tool for building and distributing development environments
-app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r1: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.3.2 1.4.0-r1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 3.1: Graphical console client for connecting to virtual machines
@@ -4744,7 +4742,6 @@ dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and c
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handling functions used by GnuPG software
-dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.18.1 3.18.2 3.20.1 3.20.3: Library to access weather information from online services
@@ -4879,7 +4876,6 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.2-r4 2.9.3 2.9.4: Version 2 of the library to manipulate XML files
-dev-libs/libxr 1.0 1.0-r1: Cross-platform XML-RPC client/server library written in C
 dev-libs/libxslt 1.1.28-r5 1.1.29: XSLT libraries and tools
 dev-libs/libyaml 0.1.6 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
@@ -9973,7 +9969,6 @@ dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
-dev-util/nsis 2.51: Nullsoft Scriptable Install System
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)
@@ -11204,7 +11199,6 @@ gnome-extra/gnome-user-docs 3.18.1 3.20.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1 3.18.2: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
-gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0: Unicode character map viewer and library
@@ -13384,7 +13378,6 @@ media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPon
 media-sound/lilypond 2.18.2 2.18.2-r2 2.19.46 2.19.47 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
-media-sound/listen 0.6.5-r1: A music management and playback for GTK+ based desktops
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.0.2 1.0.3 1.1.3: Free alternative to popular programs such as Fruityloops, Cubase and Logic
@@ -14876,7 +14869,6 @@ net-misc/ipv6calc 0.94.1 0.97.4 0.99.0 0.99.1: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
-net-misc/jigdo 0.7.3-r2: Jigsaw Download is a tool designed to ease the distribution of large files, for example DVD images
 net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
@@ -17344,7 +17336,6 @@ sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2: Device mapper target au
 sys-fs/ncdu 1.11 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
-sys-fs/obexfs 0.11 0.12: FUSE filesystem interface for ObexFTP
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
 sys-fs/owfs 2.7_p21-r4 3.1_p1 3.1_p4: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
@@ -17958,12 +17949,11 @@ www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
-www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.18.7 3.20.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 38.8.0 45.3.0 48.0.1: Firefox Web Browser
-www-client/firefox-bin 45.3.0 48.0.1: Firefox Web Browser
+www-client/firefox 38.8.0 45.4.0 49.0: Firefox Web Browser
+www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 53.0.2785.116: The web browser from Google
 www-client/google-chrome-beta 54.0.2840.27: The web browser from Google
 www-client/google-chrome-unstable 55.0.2859.0: The web browser from Google
@@ -17992,7 +17982,6 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
 www-client/vivaldi 1.2.490.35_p1 1.3.551.30_p1 1.4.589.11_p1 1.5.604.4_p1 1.5.609.8_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
@@ -18750,7 +18739,6 @@ x11-plugins/pidgin-skypeweb 1.1 1.2 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
-x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
 x11-plugins/purple-facebook 20160107 20160118 20160409: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
