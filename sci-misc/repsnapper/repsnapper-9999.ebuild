@@ -25,5 +25,8 @@ DEPEND="
 RDEPEND=${DEPEND}
 
 src_prepare() {
+	epatch "${FILESDIR}/std-c11.patch"
+	epatch "${FILESDIR}/std_abs.patch"
 	eautoreconf
+	append-cxxflags -std=c++11
 }
