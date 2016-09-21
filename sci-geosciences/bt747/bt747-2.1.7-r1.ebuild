@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils java-pkg-2 java-ant-2
 
@@ -15,21 +15,25 @@ LICENSE="GPL-3"
 SLOT="1"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/commons-imaging:0
 	dev-java/jcalendar:1.2
 	dev-java/jchart2d:0
-	dev-java/jopt-simple:4.4
+	dev-java/jopt-simple:0
 	>=dev-java/rxtx-2.2_pre2:2
 	dev-java/swing-layout:1
 	dev-java/swingx:1.6
 	dev-java/swingx-ws:bt747
 "
-RDEPEND="${COMMON_DEP}
+
+RDEPEND="
+	${CDEPEND}
 	dev-libs/glib:2[dbus]
 	>=virtual/jre-1.7
 "
-DEPEND="${COMMON_DEP}
+
+DEPEND="
+	${CDEPEND}
 	>=virtual/jdk-1.7
 	app-arch/unzip
 "
@@ -51,6 +55,8 @@ java_prepare() {
 	# GraphicsUtilities moved in later SwingX versions.
 	sed -i "s:org\.jdesktop\.swingx\.graphics\.GraphicsUtilities:org.jdesktop.swingx.util.GraphicsUtilities:g" \
 		src_j2se/net/sf/bt747/j2se/app/list/FileListCellRenderer.java || die
+
+	eapply_user
 }
 
 src_install() {
@@ -62,5 +68,4 @@ src_install() {
 
 	doicon "${DISTDIR}/${PN}.gif"
 	make_desktop_entry ${PN} BT747 bt747.gif
-
 }

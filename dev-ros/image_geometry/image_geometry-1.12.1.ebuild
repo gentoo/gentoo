@@ -21,3 +21,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-cpp/gtest )"
+PATCHES=("${FILESDIR}"/${PN}-1.12.0-gcc-6.patch)
