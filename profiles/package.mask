@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Christoph Junghans <ottxor@gentoo.org> (20 Sep 2016)
+# Switch to a non-stable scheme  following google-chrome
+# please unmask latest version yourself
+=www-plugins/google-talkplugin-5.4.2.0
+
 # Gnome Team <gnome@gentoo.org> (19 sep 2016)
 # Gnome 3.22 mask
 >=dev-util/gdbus-codegen-2.50.0
