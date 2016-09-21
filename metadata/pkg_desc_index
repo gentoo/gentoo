@@ -9928,14 +9928,14 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, prov
 dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.22: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
-dev-util/kdevelop 4.7.2 4.7.3 5.0.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 4.7.2 4.7.3 5.0.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0 2.0.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 1.7.2 1.7.3 5.0.0: PHP plugin for KDevelop
+dev-util/kdevelop-php 1.7.2 1.7.3 5.0.1: PHP plugin for KDevelop
 dev-util/kdevelop-php-docs 1.7.2 1.7.3: PHP documentation plugin for KDevelop 4
-dev-util/kdevelop-python 1.7.2 1.7.3 5.0.0: Python plugin for KDevelop
+dev-util/kdevelop-python 1.7.2 1.7.3 5.0.1: Python plugin for KDevelop
 dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
-dev-util/kdevplatform 1.7.2-r1 1.7.3 5.0.0: KDE development support libraries and apps
+dev-util/kdevplatform 1.7.2-r1 1.7.3 5.0.1: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
 dev-util/kscope 1.9.4-r1: Source Editing Environment based on Qt
@@ -18534,7 +18534,7 @@ x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/p
 x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
-x11-misc/qt5ct 0.25 0.26: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.27: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.5.12-r1: A BBS client for Linux
 x11-misc/qtfm 5.5: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
