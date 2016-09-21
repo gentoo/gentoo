@@ -28,6 +28,7 @@ RDEPEND="dev-haskell/abstract-par:=
 	dev-haskell/mtl:=
 	dev-haskell/parallel-io:=
 	dev-haskell/primitive:=
+	dev-haskell/process-extras:=
 	dev-haskell/quickcheck:2=
 	dev-haskell/quickcheck-unicode:=
 	dev-haskell/random:=
