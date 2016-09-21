@@ -551,11 +551,6 @@ net-misc/tightvnc
 # (#572984). Removal in a month.
 gnome-extra/gnome-web-photo
 
-# Michael Palimaka <kensington@gentoo.org> (20 Aug 2016)
-# Deprecated. Use kde-plasma/kwallet-pam[oldwallet] instead.
-# Masked for removal in 30 days.
-kde-apps/kwalletd-pam
-
 # Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
 # codecs are not usable, also really obsolete, bug #181959
 # Removal in a month.
