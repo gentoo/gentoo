@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,3 +21,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-cpp/gtest )"
+PATCHES=("${FILESDIR}"/${PN}-1.12.0-gcc-6.patch)

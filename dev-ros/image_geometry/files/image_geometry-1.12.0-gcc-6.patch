@@ -1,0 +1,22 @@
+commit ead421b85eeb750cbf7988657015296ed6789bcf
+Author: Hodorgasm <nsane457@gmail.com>
+Date:   Mon Sep 19 20:27:51 2016 -0400
+
+    Fix "stdlib.h: No such file or directory" errors in GCC-6
+    
+    Including '-isystem /usr/include' breaks building with GCC-6.
+    See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+diff --git a/image_geometry/CMakeLists.txt b/image_geometry/CMakeLists.txt
+index 3c9cb30..e7c9eea 100644
+--- a/image_geometry/CMakeLists.txt
++++ b/image_geometry/CMakeLists.txt
+@@ -12,7 +12,7 @@ catkin_package(CATKIN_DEPENDS sensor_msgs
+ 
+ catkin_python_setup()
+ 
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS}
++include_directories(${catkin_INCLUDE_DIRS}
+                            ${OpenCV_INCLUDE_DIRS}
+ )
+ include_directories(include)
