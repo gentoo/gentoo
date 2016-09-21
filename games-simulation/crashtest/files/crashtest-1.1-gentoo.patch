@@ -1,6 +1,6 @@
-diff -ru crashtest-1.1.orig/src-crashtest/Makefile crashtest-1.1/src-crashtest/Makefile
---- crashtest-1.1.orig/src-crashtest/Makefile	2009-02-15 17:11:31.000000000 -0500
-+++ crashtest-1.1/src-crashtest/Makefile	2009-10-14 01:00:13.900627555 -0400
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2009-02-15 17:11:31.000000000 -0500
++++ b/Makefile	2009-10-14 01:00:13.900627555 -0400
 @@ -1,34 +1,12 @@
 -# EDIT THESE SETTINGS
 -
@@ -69,9 +69,9 @@ diff -ru crashtest-1.1.orig/src-crashtest/Makefile crashtest-1.1/src-crashtest/M
  	# Models
  	install -m 644 models/testground.3ds $(GAMEDIR)/models/testground.3ds
  	install -m 644 models/biped_torso.3ds $(GAMEDIR)/models/biped_torso.3ds
-diff -ru crashtest-1.1.orig/src-crashtest/crashtest.cxx crashtest-1.1/src-crashtest/crashtest.cxx
---- crashtest-1.1.orig/src-crashtest/crashtest.cxx	2009-02-15 17:08:24.000000000 -0500
-+++ crashtest-1.1/src-crashtest/crashtest.cxx	2009-10-14 01:01:25.822753522 -0400
+diff -ru a/crashtest.cxx b/crashtest.cxx
+--- a/crashtest.cxx	2009-02-15 17:08:24.000000000 -0500
++++ b/crashtest.cxx	2009-10-14 01:01:25.822753522 -0400
 @@ -615,13 +615,7 @@
  
  int main(int argc, char *argv[]) 
