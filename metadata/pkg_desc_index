@@ -7890,7 +7890,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyicu 1.9.3: Python bindings for dev-libs/icu
+dev-python/pyicu 1.9.3 1.9.3-r1: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r1 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyinotify 0.9.4-r1 0.9.5 0.9.6: Python module used for monitoring filesystems events
