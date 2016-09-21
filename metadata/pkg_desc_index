@@ -13323,6 +13323,7 @@ media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Port
 media-sound/gnome-music 3.18.2 3.20.2-r1: Music management for Gnome
 media-sound/gnome-sound-recorder 3.18.2-r1 3.20.2: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
+media-sound/gogglesmm 1.1.0: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116_beta: An application for adding music to your Google Music library
 media-sound/gpodder 3.6.0 3.7.0 3.8.3: A free cross-platform podcast aggregator
