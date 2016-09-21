@@ -3,12 +3,13 @@ DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:=
 DESCRIPTION=Multipurpose relay (SOcket CAT)
 EAPI=6
 HOMEPAGE=http://www.dest-unreach.org/socat/
-IUSE=libressl ssl readline ipv6 tcpd
+IUSE=bindist libressl ssl readline ipv6 tcpd
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) readline? ( sys-libs/readline:= ) tcpd? ( sys-apps/tcp-wrappers )
 RESTRICT=test ssl? ( readline? ( bindist ) )
 SLOT=0
-SRC_URI=http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.bz2
+SRC_URI=http://www.dest-unreach.org/socat/download/socat-1.7.3.1.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=30b4cbbd47f1e9e845f15c799a0bc641
+_md5_=49e2ca9ac2142f075c9fbe3eca954bc3
