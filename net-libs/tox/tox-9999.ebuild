@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,11 +20,11 @@ IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox st
 REQUIRED_USE="^^ ( no-log log-trace log-debug log-info log-warn log-error )"
 
 RDEPEND="
-	av? ( media-libs/libvpx
+	av? ( media-libs/libvpx:=
 		media-libs/opus )
 	daemon? ( dev-libs/libconfig )
-	ntox? ( sys-libs/ncurses )
-	>=dev-libs/libsodium-0.6.1[asm,urandom]"
+	ntox? ( sys-libs/ncurses:0= )
+	>=dev-libs/libsodium-0.6.1:=[asm,urandom]"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	virtual/pkgconfig"
@@ -68,9 +68,9 @@ pkg_postinst() {
 		if [[ -f ${EROOT}var/lib/tox-dht-bootstrap/key ]]; then
 			ewarn "Backwards compatability with the bootstrap daemon might have been"
 			ewarn "broken a while ago. To resolve this issue, REMOVE the following files:"
-			ewarn "    /var/lib/tox-dht-bootstrap/key"
-			ewarn "    /etc/tox-bootstrapd.conf"
-			ewarn "    /run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
+			ewarn "    ${EROOT}var/lib/tox-dht-bootstrap/key"
+			ewarn "    ${EROOT}etc/tox-bootstrapd.conf"
+			ewarn "    ${EROOT}run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
 			ewarn "Then just re-emerge net-libs/tox"
 		fi
 	fi
