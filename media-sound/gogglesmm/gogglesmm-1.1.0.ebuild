@@ -33,7 +33,6 @@ RDEPEND="x11-libs/fox:=
 		opengl? ( media-libs/libepoxy virtual/glu )"
 DEPEND="dev-util/cmake ${RDEPEND}"
 
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_DBUS="$(usex dbus)"
