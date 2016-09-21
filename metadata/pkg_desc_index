@@ -9754,7 +9754,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1 4.12.1 4.12.2: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1 4.12.1 4.12.2 4.13.0: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
@@ -17859,6 +17859,7 @@ www-apps/browser-config 1.1: A lightweight modular configurable http url handler
 www-apps/bugzilla 4.4.11 4.4.12 5.0.2 5.0.3: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 0.12 9999: a fast web-interface for git repositories
+www-apps/chromedriver-bin 2.24: WebDriver for Chrome
 www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
 www-apps/curator 3.0_p20110120: Gallery generator
 www-apps/cvsweb 1.112 3.0.5 3.0.6 3.0.6-r1: WWW interface to a CVS tree
