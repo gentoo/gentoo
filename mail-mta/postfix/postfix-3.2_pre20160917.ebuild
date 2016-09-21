@@ -286,8 +286,6 @@ src_install () {
 }
 
 pkg_postinst() {
-	#[ "${EROOT}" == "/" ] && pkg_config
-
 	if [[ ! -e /etc/mail/aliases.db ]] ; then
 		ewarn
 		ewarn "You must edit /etc/mail/aliases to suit your needs"
