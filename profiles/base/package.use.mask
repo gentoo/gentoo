@@ -925,7 +925,7 @@ media-video/vlc media-library
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
 
-# Magnus Granberg <zorry@gentoo.org> (13 Sep 2016)
-# ssp and pie is not ready.
->=sys-devel/gcc-6.2.0 ssp pie
+# Magnus Granberg <zorry@gentoo.org> (21 Sep 2016)
+# pie is not ready.
+>=sys-devel/gcc-6.2.0 pie
 

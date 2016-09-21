@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils git-r3 user systemd
+inherit autotools systemd user vcs-snapshot
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/irungentoo/toxcore.git
-	git://github.com/irungentoo/toxcore.git"
+EGIT_COMMIT="755f084e8720b349026c85afbad58954cb7ff1d4"
+SRC_URI="https://github.com/irungentoo/toxcore/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
 
 REQUIRED_USE="^^ ( no-log log-trace log-debug log-info log-warn log-error )"
@@ -30,7 +29,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }
 
@@ -58,7 +57,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/tox-bootstrapd.service
 	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
