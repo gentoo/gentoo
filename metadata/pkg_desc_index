@@ -11751,7 +11751,7 @@ kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
 kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
-kde-misc/kdeconnect 0.8-r1 0.9g 1.0: Adds communication between KDE and your smartphone
+kde-misc/kdeconnect 0.8-r1 0.9g 1.0 1.0.1: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 3.0-r1: Nice KDE replacement to the du command
@@ -17061,7 +17061,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.94.7 9.2.1-r2 10.2.2-r1 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 8.1.0 2016.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 8.1.0 8.1.1 2016.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
