@@ -12768,7 +12768,7 @@ media-libs/libsvgtiny 0.1.4: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1 1.1.1-r1: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4: A rendering library for Kate streams using Pango and Cairo
-media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
+media-libs/libtimidity 0.1.0-r2 0.2.0: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.0 1.10.1: Separate libraries ebuild from upstream v4l-utils package

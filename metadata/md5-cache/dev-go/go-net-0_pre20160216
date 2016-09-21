@@ -3,10 +3,10 @@ DEPEND=dev-go/go-crypto:= dev-go/go-text:= >=dev-lang/go-1.4.2:=
 DESCRIPTION=Go supplementary network libraries
 EAPI=5
 HOMEPAGE=https://godoc.org/golang.org/x/net
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
 SLOT=0/0_pre20160216
 SRC_URI=https://github.com/golang/net/archive/b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed.tar.gz -> go-net-0_pre20160216.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_test:golang-build src_install:golang-build
 _eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=eadd6ec90b043c0c3b3f2964f89c9bef
+_md5_=a73a32bc4b45554efeff3b43f96697c4
