@@ -33,10 +33,12 @@
 		<flag name="collectd_plugins_bind">Build the bind input plugin (collects statistics from bind instances)</flag>
 		<flag name="collectd_plugins_ceph">Build the Ceph input plugin (collects statistics from the Ceph distributed storage system)</flag>
 		<flag name="collectd_plugins_cgroups">Build the cgroups input plugin (collects CPU accounting information for processes in a cgroup)</flag>
+		<flag name="collectd_plugins_chrony">Build the chrony input plugin (collects statistics from a chrony NTP server)</flag>
 		<flag name="collectd_plugins_conntrack">Build the conntrack input plugin (tracks the number of entries in Linux's connection tracking table)</flag>
 		<flag name="collectd_plugins_contextswitch">Build the contextswitch input plugin (collects the number of context switches done by the operating system)</flag>
 		<flag name="collectd_plugins_cpu">Build the cpu input plugin (collects the amount of time spent by the CPU in various states)</flag>
 		<flag name="collectd_plugins_cpufreq">Build the cpufreq input plugin (collects the current CPU's frequency)</flag>
+		<flag name="collectd_plugins_cpusleep">Build the cpusleep input plugin (measures time spent by CPU in deep sleep mode)</flag>
 		<flag name="collectd_plugins_csv">Build the csv output plugin (writes to comma separated values (CSV) files)</flag>
 		<flag name="collectd_plugins_curl">Build the curl input plugin (reads streams using <pkg>net-misc/curl</pkg> and then parses them according to the configuration)</flag>
 		<flag name="collectd_plugins_curl_json">Build the curl_json input plugin (queries JavaScript Object Notation (JSON) data using <pkg>net-misc/curl</pkg> and parses it according to the user's configuration using <pkg>dev-libs/yajl</pkg>)</flag>
@@ -55,6 +57,7 @@
 		<flag name="collectd_plugins_fscache">Build the fscache input plugin (collects information about the file-system based caching infrastructure for network file-systems and other slow media)</flag>
 		<flag name="collectd_plugins_genericjmx">Build the GenericJMX input plugin (reads Managed Beans (MBeans) from an MBeanServer using JMX input plugin; Requires JAVA)</flag>
 		<flag name="collectd_plugins_gmond">Build the gmond input plugin (receives data from gmond, the client daemon of the Ganglia project)</flag>
+		<flag name="collectd_plugins_gps">Build the gps input plugin (collects number of satellites seen by a GPS receiver using <pkg>sci-geosciences/gpsd</pkg>)</flag>
 		<flag name="collectd_plugins_hddtemp">Build the hddtemp input plugin (collects the temperature of disks from hddtemp daemon)</flag>
 		<flag name="collectd_plugins_interface">Build the interface input plugin (collects information about the traffic, packets per second and errors of interfaces)</flag>
 		<flag name="collectd_plugins_ipc">Build the IPC input plugin (collects information related to shared memory)</flag>
@@ -66,6 +69,7 @@
 		<flag name="collectd_plugins_load">Build the load input plugin (collects the system load)</flag>
 		<flag name="collectd_plugins_logfile">Build the logfile output plugin (receives log messages from collectd and writes them to a text file)</flag>
 		<flag name="collectd_plugins_log_logstash">Build the Logstash output plugin (writes collectd logs and events as Logstash JSON formatted events)</flag>
+		<flag name="collectd_plugins_lua">Build the LUA language binding plugin (uses <pkg>dev-lang/lua</pkg>) for writing plugins</flag>
 		<flag name="collectd_plugins_lvm">Build the LVM input plugin (collects the size of logical volumes (LV) and free space inside a volume group (VG) from Linux' Logical Volume Manager (LVM))</flag>
 		<flag name="collectd_plugins_madwifi">Build the madwifi input plugin (collects information about Atheros wireless LAN chipsets from the MadWifi driver)</flag>
 		<flag name="collectd_plugins_match_empty_counter">Build the match_empty_counter filter plugin</flag>
@@ -79,6 +83,7 @@
 		<flag name="collectd_plugins_memcached">Build the memcached input plugin (collects statistics from memcached daemon)</flag>
 		<flag name="collectd_plugins_memory">Build the memory input plugin (collects physical memory utilization)</flag>
 		<flag name="collectd_plugins_modbus">Build the Modbus input plugin (reads register values from a Modbus "slave" via Modbus/TCP)</flag>
+		<flag name="collectd_plugins_mqtt">Build the MQTT plugin (sends metrics to and/or receives metrics from an MQTT broker using <pkg>app-misc/mosquitto</pkg>)</flag>
 		<flag name="collectd_plugins_multimeter">Build the multimeter input plugin (reads a voltage or current from a multimeter connected to a serial bus)</flag>
 		<flag name="collectd_plugins_mysql">Build the mysql input plugin (collects values from 'SHOW STATUS' command of a MySQL server)</flag>
 		<flag name="collectd_plugins_netlink">Build the netlink input plugin (collects statistics for interfaces, qdiscs, classes and filters using netlink socket)</flag>
@@ -87,6 +92,7 @@
 		<flag name="collectd_plugins_nginx">Build the nginx input plugin (collects number of requests handled and the number of current connections by connection state by the nginx daemon)</flag>
 		<flag name="collectd_plugins_notify_desktop">Build the notify_desktop output plugin (uses <pkg>x11-libs/libnotify</pkg> to display notifications to the user)</flag>
 		<flag name="collectd_plugins_notify_email">Build the notify_email output plugin (uses <pkg>net-libs/libesmtp</pkg> to send notifications to a configured email address)</flag>
+		<flag name="collectd_plugins_notify_nagios">Build the notify_nagios output plugin (sends notifications to Nagios as a passive check result)</flag>
 		<flag name="collectd_plugins_ntpd">Build the ntpd input plugin (collects statistics from a NTP server)</flag>
 		<flag name="collectd_plugins_numa">Build the numa input plugin (collects statistics of the Linux Non-Uniform Memory Access (NUMA) subsystem)</flag>
 		<flag name="collectd_plugins_nut">Build the nut input plugin (collects UPS statistics using the Network UPS Tools)</flag>
@@ -145,6 +151,7 @@
 		<flag name="collectd_plugins_write_riemann">Build the Riemann output plugin (stores values in Riemann, a stream processing and monitoring system)</flag>
 		<flag name="collectd_plugins_write_sensu">Build the Sensu output plugin (sends metrics to Sensu Core, an open-source monitoring project)</flag>
 		<flag name="collectd_plugins_write_tsdb">Build the TSDB output plugin (writes metrics to OpenTSDB, an open-source distributed time-series database based on Apache HBase)</flag>
+		<flag name="collectd_plugins_xencpu">Build the XEN CPU input plugin (collects XEN Hypervisor CPU stats using <pkg>app-emulation/xen-tools</pkg>)</flag>
 		<flag name="collectd_plugins_zfs_arc">Build the ZFS ARC input plugin (reports information such as the cache size, the various hits and misses (also as a ratio) and the transferred data)</flag>
 		<flag name="collectd_plugins_zookeeper">Build the zookeeper input plugin (reads data from Apache Zookeeper MNTR command)</flag>
 		<flag name="contrib">Install user-contributed files in the doc directory</flag>

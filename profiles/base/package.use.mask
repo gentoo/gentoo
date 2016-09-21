@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
+# Dependency is only keyworded on amd64 and x86
+app-admin/collectd collectd_plugins_mqtt
+
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # Requires unreleased dependency dev-qt/qtspeech.
 kde-apps/kpimtextedit speech
