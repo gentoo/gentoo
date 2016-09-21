@@ -2540,6 +2540,7 @@ app-vim/command-t 1.11.4 1.13 3.0.2 4.0: vim plugin: fast file navigation for vi
 app-vim/conque 2.3 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
 app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
 app-vim/csound-syntax 20160804: set of tools for editing Csound files with vim
+app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
 app-vim/csv 0.31-r1: vim plugin: display and alter csv files
 app-vim/ctrlp 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
