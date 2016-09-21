@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/go-1.4.2:=
 DESCRIPTION=Go implementation of SipHash-2.4
 EAPI=6
 HOMEPAGE=https://github.com/dchest/siphash
-KEYWORDS=~amd64 ~arm
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=CC0-1.0
 SLOT=0
 SRC_URI=https://github.com/dchest/siphash/archive/v1.0.0.tar.gz -> siphash-1.0.0.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:golang-build src_test:golang-build src_install:golang-build
 _eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=fabadc01c800b9d5de9b0b9598fd7d54
+_md5_=9b5a0885e623d29149e4970bf3cd10ed
