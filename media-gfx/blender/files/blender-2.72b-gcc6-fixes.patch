@@ -1,0 +1,126 @@
+diff -purN a/source/blender/imbuf/intern/dds/ColorBlock.cpp b/source/blender/imbuf/intern/dds/ColorBlock.cpp
+--- a/source/blender/imbuf/intern/dds/ColorBlock.cpp	2014-10-20 08:58:23.000000000 +0100
++++ b/source/blender/imbuf/intern/dds/ColorBlock.cpp	2016-09-22 15:50:25.359318967 +0100
+@@ -86,8 +86,8 @@ void ColorBlock::init(const Image *img,
+ 
+ void ColorBlock::init(uint w, uint h, const uint *data, uint x, uint y)
+ {
+-	const uint bw = min(w - x, 4U);
+-	const uint bh = min(h - y, 4U);
++	const uint bw = MIN(w - x, 4U);
++	const uint bh = MIN(h - y, 4U);
+ 
+ 	// Blocks that are smaller than 4x4 are handled by repeating the pixels.
+ 	// @@ Thats only correct when block size is 1, 2 or 4, but not with 3. :(
+@@ -107,8 +107,8 @@ void ColorBlock::init(uint w, uint h, co
+ 
+ void ColorBlock::init(uint w, uint h, const float *data, uint x, uint y)
+ {
+-	const uint bw = min(w - x, 4U);
+-	const uint bh = min(h - y, 4U);
++	const uint bw = MIN(w - x, 4U);
++	const uint bh = MIN(h - y, 4U);
+ 
+ 	// Blocks that are smaller than 4x4 are handled by repeating the pixels.
+ 	// @@ Thats only correct when block size is 1, 2 or 4, but not with 3. :(
+@@ -124,10 +124,10 @@ void ColorBlock::init(uint w, uint h, co
+ 			const uint idx = ((y + by) * w + x + bx);
+ 			
+ 			Color32 & c = color(e, i);
+-			c.r = uint8(255 * clamp(data[idx + 0 * srcPlane], 0.0f, 1.0f)); // @@ Is this the right way to quantize floats to bytes?
+-			c.g = uint8(255 * clamp(data[idx + 1 * srcPlane], 0.0f, 1.0f));
+-			c.b = uint8(255 * clamp(data[idx + 2 * srcPlane], 0.0f, 1.0f));
+-			c.a = uint8(255 * clamp(data[idx + 3 * srcPlane], 0.0f, 1.0f));
++			c.r = uint8(255 * CLAMP(data[idx + 0 * srcPlane], 0.0f, 1.0f)); // @@ Is this the right way to quantize floats to bytes?
++			c.g = uint8(255 * CLAMP(data[idx + 1 * srcPlane], 0.0f, 1.0f));
++			c.b = uint8(255 * CLAMP(data[idx + 2 * srcPlane], 0.0f, 1.0f));
++			c.a = uint8(255 * CLAMP(data[idx + 3 * srcPlane], 0.0f, 1.0f));
+ 		}
+ 	}
+ }
+diff -purN a/source/blender/imbuf/intern/dds/Common.h b/source/blender/imbuf/intern/dds/Common.h
+--- a/source/blender/imbuf/intern/dds/Common.h	2014-10-20 08:58:23.000000000 +0100
++++ b/source/blender/imbuf/intern/dds/Common.h	2016-09-22 15:47:31.327081239 +0100
+@@ -28,14 +28,14 @@
+ #ifndef __COMMON_H__
+ #define __COMMON_H__
+ 
+-#ifndef min
+-#define min(a,b) ((a) <= (b) ? (a) : (b))
++#ifndef MIN
++#define MIN(a,b) ((a) <= (b) ? (a) : (b))
+ #endif
+-#ifndef max
+-#define max(a,b) ((a) >= (b) ? (a) : (b))
++#ifndef MAX
++#define MAX(a,b) ((a) >= (b) ? (a) : (b))
+ #endif
+-#ifndef clamp
+-#define clamp(x,a,b) min(max((x), (a)), (b))
++#ifndef CLAMP
++#define CLAMP(x,a,b) MIN(MAX((x), (a)), (b))
+ #endif
+ 
+ template<typename T>
+diff -purN a/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp b/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp
+--- a/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp	2014-10-20 08:58:23.000000000 +0100
++++ b/source/blender/imbuf/intern/dds/DirectDrawSurface.cpp	2016-09-22 16:10:53.985775837 +0100
+@@ -1102,8 +1102,8 @@ void DirectDrawSurface::mipmap(Image *im
+ 	// Compute width and height.
+ 	for (uint m = 0; m < mipmap; m++)
+ 	{
+-		w = max(1U, w / 2);
+-		h = max(1U, h / 2);
++		w = MAX(1U, w / 2);
++		h = MAX(1U, h / 2);
+ 	}
+ 	
+ 	img->allocate(w, h);
+@@ -1223,9 +1223,9 @@ void DirectDrawSurface::readBlockImage(I
+ 			readBlock(&block);
+ 			
+ 			// Write color block.
+-			for (uint y = 0; y < min(4U, h-4*by); y++)
++			for (uint y = 0; y < MIN(4U, h-4*by); y++)
+ 			{
+-				for (uint x = 0; x < min(4U, w-4*bx); x++)
++				for (uint x = 0; x < MIN(4U, w-4*bx); x++)
+ 				{
+ 					img->pixel(4*bx+x, 4*by+y) = block.color(x, y);
+ 				}
+@@ -1240,7 +1240,7 @@ static Color32 buildNormal(uint8 x, uint
+ 	float ny = 2 * (y / 255.0f) - 1;
+ 	float nz = 0.0f;
+ 	if (1 - nx*nx - ny*ny > 0) nz = sqrt(1 - nx*nx - ny*ny);
+-	uint8 z = clamp(int(255.0f * (nz + 1) / 2.0f), 0, 255);
++	uint8 z = CLAMP(int(255.0f * (nz + 1) / 2.0f), 0, 255);
+ 	
+ 	return Color32(x, y, z);
+ }
+@@ -1379,9 +1379,9 @@ uint DirectDrawSurface::mipmapSize(uint
+ 	
+ 	for (uint m = 0; m < mipmap; m++)
+ 	{
+-		w = max(1U, w / 2);
+-		h = max(1U, h / 2);
+-		d = max(1U, d / 2);
++		w = MAX(1U, w / 2);
++		h = MAX(1U, h / 2);
++		d = MAX(1U, d / 2);
+ 	}
+ 
+ 	if (header.pf.flags & DDPF_FOURCC)
+diff -purN a/source/blender/imbuf/intern/dds/FlipDXT.cpp b/source/blender/imbuf/intern/dds/FlipDXT.cpp
+--- a/source/blender/imbuf/intern/dds/FlipDXT.cpp	2014-10-20 08:58:23.000000000 +0100
++++ b/source/blender/imbuf/intern/dds/FlipDXT.cpp	2016-09-22 16:11:35.626829002 +0100
+@@ -246,8 +246,8 @@ int FlipDXTCImage(unsigned int width, un
+ 
+ 		// mip levels are contiguous.
+ 		data += block_bytes * blocks;
+-		mip_width = max(1U, mip_width >> 1);
+-		mip_height = max(1U, mip_height >> 1);
++		mip_width = MAX(1U, mip_width >> 1);
++		mip_height = MAX(1U, mip_height >> 1);
+ 	}
+ 
+ 	return 1;
