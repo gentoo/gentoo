@@ -28,7 +28,6 @@ RESTRICT="test"
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.17-version-deps.patch"
 	"${FILESDIR}/${PN}-1.18-version-deps.patch"
 	"${FILESDIR}/${PN}-1.18-systemd-generator.patch"
 )
