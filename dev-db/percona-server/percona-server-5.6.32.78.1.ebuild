@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="6"
-MY_EXTRAS_VER="20160307-1854Z"
+MY_EXTRAS_VER="20160818-1822Z"
 SUBSLOT="18"
 PYTHON_COMPAT=( python2_7 )
 inherit linux-info python-any-r1 mysql-multilib-r1
