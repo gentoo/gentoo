@@ -1,9 +1,0 @@
---- a/guile/src/Makefile.am
-+++ b/guile/src/Makefile.am
-@@ -124,4 +124,7 @@
- 
- .c.x: $(BUILT_SOURCES)
- 	$(guile_snarf) -o $@ $< $(snarfcppopts)
-+core.x: core.c enums.h enum-map.i.c priorities.i.c smobs.h smob-types.i.c
-+errors.x: errors.c enums.h
-+extra.x: extra.c enums.h extra-enums.h extra-enum-map.i.c extra-smobs.h extra-smob-types.i.c smobs.h
