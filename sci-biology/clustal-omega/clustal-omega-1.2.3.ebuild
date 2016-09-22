@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Scalable multiple alignment of protein sequences"
 HOMEPAGE="http://www.clustal.org/omega/"
@@ -18,6 +18,8 @@ IUSE="static-libs"
 DEPEND="dev-libs/argtable"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-1.2.2-fix-c++14.patch" )
+
 src_prepare() {
 	sed \
 		-e "s:-O3::g" \
@@ -26,7 +28,13 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf \
+		--enable-shared \
+		$(use_enable static-libs static)
+}
+
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

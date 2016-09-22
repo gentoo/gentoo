@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-seqan-samtools.patch"
+	"${FILESDIR}/${P}-fix-c++14.patch"
 )
 
 src_prepare() {
