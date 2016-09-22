@@ -1,13 +1,15 @@
-make sure the files using version.h depend on it being generated first
+Make sure the files using version.h depend on it being generated first.
+
+Gentoo-bug: 594586
 
 --- a/Makefile
 +++ b/Makefile
-@@ -78,7 +78,7 @@
- systemd-sslh-generator: systemd-sslh-generator.o
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o systemd-sslh-generator systemd-sslh-generator.o -lconfig
+@@ -59,7 +59,7 @@
  
--echosrv: $(OBJS) echosrv.o
-+echosrv: version.h $(OBJS) echosrv.o
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o echosrv echosrv.o probe.o common.o tls.o $(LIBS)
+ all: sslh $(MAN) echosrv
  
- $(MAN): sslh.pod Makefile
+-.c.o: *.h
++%.o: %.c *.h version.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ version.h:
