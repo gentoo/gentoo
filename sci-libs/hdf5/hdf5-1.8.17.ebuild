@@ -18,11 +18,11 @@ SRC_URI="https://support.hdfgroup.org/ftp/HDF5/releases/${MY_P}/src/${MY_P}.tar.
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="cxx debug examples fortran fortran2003 mpi static-libs szip threads zlib"
+IUSE="cxx debug examples fortran fortran2003 +hl mpi static-libs szip threads zlib"
 
 REQUIRED_USE="
 	cxx? ( !mpi ) mpi? ( !cxx )
-	threads? ( !cxx !mpi !fortran )
+	threads? ( !cxx !mpi !fortran !hl )
 	fortran2003? ( fortran )"
 
 RDEPEND="
@@ -94,6 +94,7 @@ src_configure() {
 		$(use_enable cxx)
 		$(use_enable fortran)
 		$(use_enable fortran2003)
+		$(use_enable hl)
 		$(use_enable mpi parallel)
 		$(use_enable threads threadsafe)
 		$(use_with szip szlib)
