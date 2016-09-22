@@ -2585,6 +2585,7 @@ app-vim/indentpython 0.3: vim plugin: Indent Python code according to PEP8
 app-vim/info 1.7-r2: vim plugin: GNU info documentation browser
 app-vim/json 20150511: vim plugin: a better JSON for Vim
 app-vim/l9 1.1: vim plugin: library for vim scripts
+app-vim/lightline 9999: vim plugin: A light and configurable statusline/tabline
 app-vim/locateopen 1.3-r1: vim plugin: open a file without supplying a path
 app-vim/lustyexplorer 4.1 4.3: vim plugin: dynamic filesystem and buffer explorer
 app-vim/matrix 1.10-r1: vim plugin: Screensaver inspired by the Matrix
@@ -15250,7 +15251,7 @@ net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.0.3 2.0.4 2.1.3-r1 2.1.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.8.3 1.11.1 1.11.2 1.11.3 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.8.3 1.11.3 1.11.4 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
