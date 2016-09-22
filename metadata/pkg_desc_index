@@ -15571,7 +15571,7 @@ sci-biology/blossoc 1.4.0: A linkage disequilibrium association mapping tool
 sci-biology/bowtie 1.1.2 1.1.2-r1 2.2.6 2.2.9: Popular short read aligner for Next-generation sequencing data
 sci-biology/bwa 0.7.12 0.7.15: Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 sci-biology/cd-hit 4.5.1 4.5.4 4.6: Clustering Database at High Identity with Tolerance
-sci-biology/clustal-omega 1.2.1 1.2.2-r1: Scalable multiple alignment of protein sequences
+sci-biology/clustal-omega 1.2.1 1.2.3: Scalable multiple alignment of protein sequences
 sci-biology/clustalw 1.83-r3 2.1: General purpose multiple alignment program for DNA and proteins
 sci-biology/clustalw-mpi 0.13-r1: A parallel (MPI) implemention of the Clustal-W general purpose multiple alignment algorithm
 sci-biology/clustalx 2.1-r1: Graphical interface for the ClustalW multiple alignment program
@@ -17967,7 +17967,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9: An excellent console-
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
-www-client/opera 12.16_p1860-r1 39.0.2256.71 40.0.2308.54: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 39.0.2256.71 40.0.2308.54 40.0.2308.62: A fast and secure web browser
 www-client/opera-beta 40.0.2308.44 40.0.2308.52: A fast and secure web browser
 www-client/opera-developer 41.0.2340.0 41.0.2349.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
