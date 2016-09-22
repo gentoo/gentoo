@@ -11003,9 +11003,9 @@ games-simulation/searchandrescue 1.5.0 1.5.0-r1: Helicopter based air rescue fli
 games-simulation/senken 0.3.0 0.3.0-r1: city simulation game
 games-simulation/simutrans 0.120.0.1 0.120.1.3 0.120.1.3-r1: A free Transport Tycoon clone
 games-simulation/singularity 0.30c-r1 0.30c-r2: A simulation of a true AI. Go from computer to computer, pursued by the entire world
-games-sports/billardgl 1.75-r1: an OpenGL billards game
-games-sports/bygfoot 2.3.2: GTK+2 Soccer Management Game
-games-sports/dustrac 1.11.0: Tile-based, cross-platform 2D racing game
+games-sports/billardgl 1.75-r1 1.75-r2: an OpenGL billards game
+games-sports/bygfoot 2.3.2 2.3.2-r1: GTK+2 Soccer Management Game
+games-sports/dustrac 1.11.0 1.11.0-r1: Tile-based, cross-platform 2D racing game
 games-sports/foobillard 3.0a: 8ball, 9ball, snooker and carambol game
 games-sports/gracer 0.1.5: 3D motor sports simulator
 games-sports/miniracer 1.04: an OpenGL car racing game, based on ID's famous Quake engine
