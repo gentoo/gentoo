@@ -1,0 +1,26 @@
+From 60ec28dd104bdeef4c5ed6882fb2b663ca9da2eb Mon Sep 17 00:00:00 2001
+From: Florian Forster <octo@collectd.org>
+Date: Sun, 11 Sep 2016 20:31:31 +0200
+Subject: [PATCH] apache plugin: End statements with semi-colons.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If only I knew why this wasn't considered a syntax error …
+---
+ src/apache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/apache.c b/src/apache.c
+index c515e3c..5b6914c 100644
+--- a/src/apache.c
++++ b/src/apache.c
+@@ -250,7 +250,7 @@ static int config_add (oconfig_item_t *ci)
+ 		ssnprintf (callback_name, sizeof (callback_name),
+ 				"apache/%s/%s",
+ 				(st->host != NULL) ? st->host : hostname_g,
+-				(st->name != NULL) ? st->name : "default"),
++				(st->name != NULL) ? st->name : "default");
+ 
+ 		status = plugin_register_complex_read (/* group = */ NULL,
+ 				/* name      = */ callback_name,
