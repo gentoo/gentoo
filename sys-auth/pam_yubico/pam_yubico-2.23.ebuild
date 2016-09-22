@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit multilib
 
@@ -13,21 +13,17 @@ SRC_URI="http://opensource.yubico.com/yubico-pam/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ldap"
+IUSE="ldap test"
 
 RDEPEND="
 	virtual/pam
 	sys-auth/libyubikey
-	>=sys-auth/ykclient-2.12
+	>=sys-auth/ykclient-2.15
 	>=sys-auth/ykpers-1.6
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}
-	app-text/asciidoc"
-
-#src_prepare() {
-#	epatch "${FILESDIR}/2.11-drop_privs.patch"
-#	eautoreconf
-#}
+	app-text/asciidoc
+	test? ( dev-perl/Net-LDAP-Server )"
 
 src_configure() {
 	#challenge response could be optional but that seems horribly dangerous to me
