@@ -1,0 +1,9 @@
+--- a/ParaView-v4.1.0/VTK/Rendering/OpenGL/vtkXOpenGLRenderWindow.cxx_orig	2014-01-11 15:02:10.000000000 +0100
++++ b/ParaView-v4.1.0/VTK/Rendering/OpenGL/vtkXOpenGLRenderWindow.cxx	2014-11-11 13:12:25.000000000 +0100
+@@ -28,5 +28,5 @@
+ // define GLX_GLXEXT_LEGACY to prevent glx.h to include glxext.h provided by
+ // the system
+-//#define GLX_GLXEXT_LEGACY
++#define GLX_GLXEXT_LEGACY
+ #include "GL/glx.h"
+ 
