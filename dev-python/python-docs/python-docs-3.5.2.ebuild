@@ -6,7 +6,9 @@ EAPI="5"
 
 DESCRIPTION="HTML documentation for Python"
 HOMEPAGE="http://www.python.org/doc/"
-SRC_URI="https://docs.python.org/${PV%.*}/archives/python-${PV}-docs-html.tar.bz2"
+SRC_URI="mirror://gentoo/python-${PV}-docs-html.tar.bz2"
+# The upstream digest is unstable, see https://bugs.python.org/issue25170
+#SRC_URI="https://docs.python.org/${PV%.*}/archives/python-${PV}-docs-html.tar.bz2"
 
 LICENSE="PSF-2"
 SLOT="3.5"

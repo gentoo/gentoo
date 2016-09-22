@@ -3,6 +3,8 @@
 # $Id$
 
 EAPI=5
+
+# ruby22: fails tests
 USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_TEST="none"

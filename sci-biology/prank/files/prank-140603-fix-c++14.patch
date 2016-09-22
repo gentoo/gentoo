@@ -1,0 +1,14 @@
+Fix building with C++14, which errors out due to changing operator void* -> operator bool.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594060
+
+--- a/hmmodel.cpp
++++ b/hmmodel.cpp
+@@ -1499,7 +1499,7 @@
+     }
+     else
+     {
+-        cout<<"HMModel::alignmentModel: impossible 'as'"<<cout;
++        cout<<"HMModel::alignmentModel: impossible 'as'"<<bool(cout);
+         exit(-1);
+     }
+ 

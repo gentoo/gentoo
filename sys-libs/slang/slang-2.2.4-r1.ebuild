@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,11 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~
 IUSE="cjk pcre png readline static-libs zlib"
 
 # ncurses for ncurses5-config to get terminfo directory
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0=
 	pcre? ( >=dev-libs/libpcre-8.33-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
 	cjk? ( >=dev-libs/oniguruma-5.9.5[${MULTILIB_USEDEP}] )
-	readline? ( >=sys-libs/readline-6.2_p5-r1:0[${MULTILIB_USEDEP}] )
+	readline? ( >=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]

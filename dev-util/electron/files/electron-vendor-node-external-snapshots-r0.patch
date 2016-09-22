@@ -1,0 +1,116 @@
+From 820cb5ce8e1aa08e68fe0f2e3cbbe74972e7af84 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Sat, 11 Jun 2016 18:27:19 -0400
+Subject: [PATCH] Add support for external V8 snapshots
+
+---
+ src/node.cc | 86 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+
+diff --git a/src/node.cc b/src/node.cc
+index 961abc2..4dac94b 100644
+--- a/src/node.cc
++++ b/src/node.cc
+@@ -4188,6 +4188,90 @@ Environment* CreateEnvironment(Isolate* isolate,
+   return env;
+ }
+ 
++#include <sys/mman.h>
++
++const char kProcSelfExe[] = "/proc/self/exe";
++const char kNativesFileName[] = "natives_blob.bin";
++const char kSnapshotFileName[] = "snapshot_blob.bin";
++const char *g_mapped_natives = nullptr;
++const char *g_mapped_snapshot = nullptr;
++
++static char* SnapshotPath(const char* filename) {
++  char *path;
++  char *dir;
++  ssize_t r;
++
++  path = reinterpret_cast<char*>(malloc(4096 + strlen(filename) + 2));
++  if (path == nullptr) {
++    fprintf(stderr, "out of memory\n");
++    ABORT();
++  }
++
++  r = readlink(kProcSelfExe, path, 4096 + 1);
++  if (r == -1) {
++    perror("could not determine node executable directory");
++    ABORT();
++  }
++
++  path[r] = '\0';
++
++  dir = strrchr(path, '/');
++
++  strcpy(dir + 1, filename);
++
++  return path;
++}
++
++static void LoadV8Snapshot(const char* name, const char** addr, size_t *size) {
++  char *path = SnapshotPath(name);
++  int fd;
++  struct stat sb;
++
++  fd = open(path, O_RDONLY);
++
++  if (fd == -1) {
++    fprintf(stderr, "could not open snapshot file '%s': %s\n",
++            path, sys_errlist[errno]);
++    ABORT();
++  }
++
++  if (fstat(fd, &sb) == -1) {
++    fprintf(stderr, "could not stat snapshot file '%s': %s\n",
++            path, sys_errlist[errno]);
++    ABORT();
++  }
++
++  *size = sb.st_size;
++
++  *addr = reinterpret_cast<const char*>(
++            mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0));
++  if (*addr == MAP_FAILED) {
++    fprintf(stderr, "could not read snapshot file '%s': %s\n",
++            path, sys_errlist[errno]);
++    ABORT();
++  }
++
++  close(fd);
++  free(path);
++}
++
++static void LoadV8Snapshots() {
++  size_t natives_size;
++  size_t snapshot_size;
++
++  LoadV8Snapshot(kNativesFileName, &g_mapped_natives, &natives_size);
++  LoadV8Snapshot(kSnapshotFileName, &g_mapped_snapshot, &snapshot_size);
++
++  v8::StartupData natives;
++  natives.data = g_mapped_natives;
++  natives.raw_size = natives_size;
++  V8::SetNativesDataBlob(&natives);
++
++  v8::StartupData snapshot;
++  snapshot.data = g_mapped_snapshot;
++  snapshot.raw_size = snapshot_size;
++  V8::SetSnapshotDataBlob(&snapshot);
++}
+ 
+ // Entry point for new node instances, also called directly for the main
+ // node instance.
+@@ -4301,6 +4385,8 @@ int Start(int argc, char** argv) {
+   const char** exec_argv;
+   Init(&argc, const_cast<const char**>(argv), &exec_argc, &exec_argv);
+ 
++  LoadV8Snapshots();
++
+ #if HAVE_OPENSSL
+ #ifdef NODE_FIPS_MODE
+   // In the case of FIPS builds we should make sure
+-- 
+2.7.3
+

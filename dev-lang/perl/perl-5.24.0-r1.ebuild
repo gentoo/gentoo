@@ -380,6 +380,10 @@ src_configure() {
 
 	myconf -Dnoextensions="${disabled_extensions}"
 
+	[[ -n "${EXTRA_ECONF}" ]] && ewarn During Perl build, EXTRA_ECONF=${EXTRA_ECONF}
+	# allow fiddling via EXTRA_ECONF, bug 558070
+	eval "local -a EXTRA_ECONF=(${EXTRA_ECONF})"
+
 	sh Configure \
 		-des \
 		-Duseshrplib \
@@ -419,7 +423,8 @@ src_configure() {
 		-Dsh="${EPREFIX}"/bin/sh \
 		-Dtargetsh="${EPREFIX}"/bin/sh \
 		-Uusenm \
-		"${myconf[@]}" || die "Unable to configure"
+		"${myconf[@]}" \
+		"${EXTRA_ECONF[@]}" || die "Unable to configure"
 }
 
 src_test() {

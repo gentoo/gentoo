@@ -1,4 +1,4 @@
-From d8e2b7e0fabdb4604063071f7f3a4a24e49daca7 Mon Sep 17 00:00:00 2001
+From 19f9a5c6f8be7b4df069f728d9ea037a36bc03d2 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Thu, 5 May 2016 17:23:35 -0400
 Subject: [PATCH] Unbundle electron
@@ -8,7 +8,7 @@ Subject: [PATCH] Unbundle electron
  1 file changed, 5 insertions(+), 7 deletions(-)
 
 diff --git a/atom.sh b/atom.sh
-index b68716b..d89587f 100755
+index b68716b..e119cbd 100755
 --- a/atom.sh
 +++ b/atom.sh
 @@ -87,11 +87,9 @@ elif [ $OS == 'Linux' ]; then
@@ -20,7 +20,7 @@ index b68716b..d89587f 100755
 -  else
 -    ATOM_PATH="$USR_DIRECTORY/share/atom/atom"
 -  fi
-+  export NPM_CONFIG_NODEDIR="/usr/include/electron/node/"
++  export NPM_CONFIG_NODEDIR="{{NPM_CONFIG_NODEDIR}}"
 +  export ATOM_RESOURCE_PATH="{{ATOM_RESOURCE_PATH}}"
 +  ATOM_PATH="{{ATOM_PATH}}"
  

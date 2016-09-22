@@ -11,7 +11,8 @@ HOMEPAGE="http://clang.llvm.org/"
 SRC_URI=""
 
 LICENSE="UoI-NCSA"
-SLOT="0/3.8"
+# keep in sync with sys-devel/llvm!
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="debug multitarget python +static-analyzer"
 

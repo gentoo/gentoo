@@ -6,7 +6,7 @@ EAPI=5
 
 XORG_DRI=dri
 XORG_EAUTORECONF=yes
-inherit linux-info xorg-2
+inherit linux-info xorg-2 flag-o-matic
 
 DESCRIPTION="X.Org driver for Intel cards"
 
@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 	x11-proto/resourceproto"
 
 src_configure() {
+	replace-flags -Os -O2
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable debug)
 		$(use_enable dri)

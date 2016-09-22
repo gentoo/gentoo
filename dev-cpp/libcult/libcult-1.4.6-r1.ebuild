@@ -26,6 +26,7 @@ src_prepare() {
 		makefile || die "sed failed"
 
 	epatch "${FILESDIR}/${PV}-fix-compilation-with-gcc-4.7.patch"
+	epatch "${FILESDIR}/${P}-cpp14.patch" # bug #593928
 }
 
 src_configure() {

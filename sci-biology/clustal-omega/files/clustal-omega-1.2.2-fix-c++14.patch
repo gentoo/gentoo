@@ -1,0 +1,25 @@
+Fix building with C++14, which errors out due to collisions with the
+internal log2 and log10 functions, which are now part of C++11.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594692
+
+--- a/src/hhalign/util-C.h
++++ b/src/hhalign/util-C.h
+@@ -27,6 +27,7 @@
+ #include <cstdio>     // printf
+ #include <stdlib.h>   // exit
+ #include <time.h>     // clock
++#include <math.h>
+ #endif
+ #include <sys/time.h>
+ //#include "new_new.h" /* memory tracking */
+@@ -50,10 +51,6 @@
+ //// Generalized mean: d=0: sqrt(x*y)  d=1: (x+y)/2  d->-inf: min(x,y)  d->+inf: max(x,y)  
+ inline double fmean(double x, double y, double d) { return pow( (pow(x,d)+pow(y,d))/2 ,1./d);}
+ 
+-// log base 2
+-inline float log2(float x)  {return (x<=0? (float)(-100000):1.442695041*log(x));}
+-inline float log10(float x) {return (x<=0? (float)(-100000):0.434294481*log(x));}
+-
+ 
+ /////////////////////////////////////////////////////////////////////////////////////
+ // fast log base 2

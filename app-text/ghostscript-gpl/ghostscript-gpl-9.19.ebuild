@@ -132,14 +132,16 @@ src_prepare() {
 
 	# search path fix
 	# put LDFLAGS after BINDIR, bug #383447
-	sed -i -e "s:\$\(gsdatadir\)/lib:/usr/share/ghostscript/${PVM}/$(get_libdir):" \
-		-e "s:exdir=.*:exdir=/usr/share/doc/${PF}/examples:" \
-		-e "s:docdir=.*:docdir=/usr/share/doc/${PF}/html:" \
-		-e "s:GS_DOCDIR=.*:GS_DOCDIR=/usr/share/doc/${PF}/html:" \
+	sed -i -e "s:\$\(gsdatadir\)/lib:@datarootdir@/ghostscript/${PVM}/$(get_libdir):" \
+		-e "s:exdir=.*:exdir=@datarootdir@/doc/${PF}/examples:" \
+		-e "s:docdir=.*:docdir=@datarootdir@/doc/${PF}/html:" \
+		-e "s:GS_DOCDIR=.*:GS_DOCDIR=@datarootdir@/doc/${PF}/html:" \
 		-e 's:-L$(BINDIR):& $(LDFLAGS):g' \
 		"${S}"/Makefile.in "${S}"/base/*.mak || die "sed failed"
 
 	cd "${S}" || die
+	# remove incorrect symlink, bug 590384
+	rm -f ijs/ltmain.sh || die
 	eautoreconf
 
 	cd "${S}/ijs" || die
@@ -158,7 +160,7 @@ src_configure() {
 		/usr/share/poppler/cMap/Adobe-Japan2 \
 		/usr/share/poppler/cMap/Adobe-Korea1
 	do
-		FONTPATH="$FONTPATH${FONTPATH:+:}$path"
+		FONTPATH="$FONTPATH${FONTPATH:+:}${EPREFIX}$path"
 	done
 
 	# We force the endian configure flags until this is fixed:

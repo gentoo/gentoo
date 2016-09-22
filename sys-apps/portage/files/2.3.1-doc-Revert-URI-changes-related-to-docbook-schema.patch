@@ -1,0 +1,39 @@
+From 35863a80b915939aac3ce6bf017d942cac879df8 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 20 Jul 2016 12:30:05 -0400
+Subject: [PATCH] doc: Revert URI changes related to docbook schema
+
+This partially reverts b5365341dad167e314023df95d2c5e0f955962f0.
+
+X-Gentoo-Bug: 589210
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/589210
+---
+ doc/custom.xsl      | 2 +-
+ doc/portage.docbook | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/custom.xsl b/doc/custom.xsl
+index 11a2b9e..a7763ec 100644
+--- a/doc/custom.xsl
++++ b/doc/custom.xsl
+@@ -1,4 +1,4 @@
+-<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
++<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+ <xsl:param name="toc.section.depth" select="20"/>
+ <xsl:param name="chunk.section.depth" select="2"/>
+ <xsl:param name="generate.section.toc.level" select="2"/>
+diff --git a/doc/portage.docbook b/doc/portage.docbook
+index f7d539a..811544f 100644
+--- a/doc/portage.docbook
++++ b/doc/portage.docbook
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-	"https://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
++	"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+ 
+ 	<!ENTITY date SYSTEM "fragment/date">
+ 	<!ENTITY version SYSTEM "fragment/version">
+-- 
+2.10.0
+

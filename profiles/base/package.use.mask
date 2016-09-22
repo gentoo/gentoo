@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
+# Dependency is only keyworded on amd64 and x86
+app-admin/collectd collectd_plugins_mqtt
+
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # Requires unreleased dependency dev-qt/qtspeech.
 kde-apps/kpimtextedit speech
@@ -925,7 +929,7 @@ media-video/vlc media-library
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
 
-# Magnus Granberg <zorry@gentoo.org> (13 Sep 2016)
-# ssp and pie is not ready.
->=sys-devel/gcc-6.2.0 ssp pie
+# Magnus Granberg <zorry@gentoo.org> (21 Sep 2016)
+# pie is not ready.
+>=sys-devel/gcc-6.2.0 pie
 

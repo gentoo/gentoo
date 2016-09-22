@@ -318,7 +318,7 @@ if [[ ${PN} != kdelibs ]]; then
 		optional) _kdelibsuse="webkit?" ;;
 		*) ;;
 	esac
-	kdecommondepend+=" || ( $(add_kdebase_dep kdelibs "${_kdelibsuse}" 4.14.22) <kde-base/kdelibs-4.14.22 )"
+	kdecommondepend+=" $(add_kdebase_dep kdelibs "${_kdelibsuse}" 4.14.22)"
 	unset _kdelibsuse
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then

@@ -78,7 +78,9 @@ TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}/2.3.1-doc-Revert-URI-changes-related-to-docbook-schema.patch"
+)
 
 pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )

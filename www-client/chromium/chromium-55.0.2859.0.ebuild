@@ -536,6 +536,9 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
+	# Define a custom toolchain for GN
+	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
+
 	# Tools for building programs to be executed on the build system, bug #410883.
 	if tc-is-cross-compiler; then
 		export AR_host=$(tc-getBUILD_AR)

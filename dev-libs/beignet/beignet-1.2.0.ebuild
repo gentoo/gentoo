@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 CMAKE_BUILD_TYPE="Release"
 
-inherit python-any-r1 cmake-multilib toolchain-funcs
+inherit python-any-r1 cmake-multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="OpenCL implementation for Intel GPUs"
 HOMEPAGE="https://01.org/beignet"
@@ -29,6 +29,7 @@ COMMON="${PYTHON_DEPS}
 	media-libs/mesa
 	sys-devel/clang
 	>=sys-devel/llvm-3.5
+	<sys-devel/llvm-3.9
 	x11-libs/libdrm[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"
@@ -64,6 +65,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# See Bug #593968
+	append-flags -fPIC
+
 	cmake-utils_src_prepare
 	# We cannot run tests because they require permissions to access
 	# the hardware, and building them is very time-consuming.

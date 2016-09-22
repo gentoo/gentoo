@@ -181,7 +181,10 @@ multilib_src_configure() {
 			-DLLVM_BUILD_DOCS=$(usex doc)
 			# note: this is used only when OCaml is enabled, so we can
 			# set it to 'yes' even without OCaml around
-			-DLLVM_ENABLE_OCAMLDOC=$(usex doc)
+			# note 2: disable for now since it installs
+			# to /usr/docs/ocaml/html/html which is kinda wrong
+			# bother to fix it when somebody starts to care
+			-DLLVM_ENABLE_OCAMLDOC=OFF
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
@@ -209,8 +212,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
-	# TODO: not sure why this target is not correctly called
-	multilib_is_native_abi && use doc && use ocaml && cmake-utils_src_make docs/ocaml_doc
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli

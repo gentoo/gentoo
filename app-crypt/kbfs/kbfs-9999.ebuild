@@ -24,7 +24,6 @@ RDEPEND="
 	sys-fs/fuse
 	"
 
-
 S="${WORKDIR}/src/github.com/keybase/kbfs"
 
 src_unpack() {

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
 HOMEPAGE="http://www.dest-unreach.org/socat/"
@@ -15,24 +15,42 @@ SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="ssl readline ipv6 tcpd"
+IUSE="libressl ssl readline ipv6 tcpd"
 
 DEPEND="
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT="test"
+RESTRICT="test
+	ssl? ( readline? ( bindist ) )"
 
 DOCS=(
 	BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
+	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
+	"${FILESDIR}"/${PN}-2.0.0_beta9-libressl.patch
+)
+
+pkg_setup() {
+	# bug #587740
+	if use readline && use ssl; then
+		elog "You are enabling both readline and openssl USE flags, the licenses"
+		elog "for these packages conflict. You may not be able to legally"
+		elog "redistribute the resulting binary."
+	fi
+}
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
-	epatch "${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
+	default
 
 	touch doc/${PN}.1 || die
 
@@ -52,5 +70,6 @@ src_configure() {
 src_install() {
 	default
 
-	dohtml doc/*.html doc/*.css
+	docinto html
+	dodoc doc/*.html doc/*.css
 }

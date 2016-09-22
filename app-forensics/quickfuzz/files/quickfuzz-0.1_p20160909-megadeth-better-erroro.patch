@@ -1,9 +1,0 @@
-diff --git a/Megadeth/Prim.hs b/Megadeth/Prim.hs
-index ad1782c..2f39336 100644
---- a/bundled/megadeth/Megadeth/Prim.hs
-+++ b/bundled/megadeth/Megadeth/Prim.hs
-@@ -82,3 +82,3 @@ simpleConView tyName c =
-   ForallC _ _ innerCon -> simpleConView tyName innerCon
--
-+  _ -> error $ "simpleConView: failed on " ++ show c
- 

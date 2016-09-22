@@ -1,0 +1,11 @@
+diff -Naur firejail-0.9.42/etc/disable-devel.inc firejail-0.9.42.new/etc/disable-devel.inc
+--- firejail-0.9.42/etc/disable-devel.inc	2016-09-06 20:48:23.000000000 +0100
++++ firejail-0.9.42.new/etc/disable-devel.inc	2016-09-19 22:21:14.579410841 +0100
+@@ -2,7 +2,6 @@
+ 
+ # GCC
+ blacklist /usr/include
+-blacklist /usr/lib/gcc
+ blacklist /usr/bin/gcc*
+ blacklist /usr/bin/cpp*
+ blacklist /usr/bin/c9*
