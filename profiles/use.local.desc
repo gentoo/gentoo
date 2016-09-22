@@ -7003,6 +7003,7 @@ sci-libs/grib_api:aec - Build with Adaptive Entropy Coding compression, needs sc
 sci-libs/grib_api:jasper - Use media-libs/jasper instead of media-libs/openjpeg for JPEG 2000 support
 sci-libs/gsl:cblas-external - Link gsl with external cblas provided by (virtual/cblas) instead of shipped internal version
 sci-libs/hdf5:fortran2003 - Enable new features that require Fortran 2003 (http://www.hdfgroup.org/HDF5/doc/fortran/NewFeatures_F2003.pdf)
+sci-libs/hdf5:hl - Enable high level API (https://support.hdfgroup.org/HDF5/doc/HL/index.html)
 sci-libs/ipopt:hsl - hsl
 sci-libs/ipopt:mumps - Enable sci-libs/mumps support
 sci-libs/lemon:coin - Enable the sci-libs/coinor-clp and sci-libs/coinor-cbc graph algorithms
