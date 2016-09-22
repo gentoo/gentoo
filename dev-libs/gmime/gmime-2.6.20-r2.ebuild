@@ -13,7 +13,7 @@ HOMEPAGE="http://spruce.sourceforge.net/gmime/ https://developer.gnome.org/gmime
 
 SLOT="2.6"
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="doc mono smime static-libs vala"
 
 RDEPEND="
