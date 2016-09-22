@@ -280,12 +280,10 @@ src_prepare() {
 
 	# There's some strange prefix handling in the default config file, resulting in
 	# paths like "/usr/var/..."
-	#sed -i -e "s:@prefix@/var:/var:g" src/collectd.conf.in || die
-
-	#sed -i -e "s:/etc/collectd/collectd.conf:/etc/collectd.conf:g" contrib/collectd.service || die
+	sed -i -e "s:@prefix@/var:/var:g" src/collectd.conf.in || die
 
 	# fix installdirs for perl, bug 444360
-	#sed -i -e 's/INSTALL_BASE=$(DESTDIR)$(prefix) //' bindings/Makefile.am || die
+	sed -i -e 's/INSTALL_BASE=$(DESTDIR)$(prefix) //' bindings/Makefile.am || die
 
 	if use collectd_plugins_java; then
 		# Set javac -source and -target flags according to (R)DEPEND.
@@ -450,7 +448,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
-	systemd_dounit "contrib/systemd.${PN}.service"
+	systemd_newunit "contrib/systemd.${PN}.service" ${PN}.service
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
