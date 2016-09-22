@@ -27,21 +27,19 @@ RDEPEND="
 	<=dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy )
 	"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( ${PDEPEND}
-	    dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
-	    $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
-	    >=dev-python/mccabe-0.2.1[${PYTHON_USEDEP}]
-	        <dev-python/mccabe-0.5[${PYTHON_USEDEP}]
-	)"
 PDEPEND="
 	>=dev-python/mccabe-0.5.0[${PYTHON_USEDEP}]
 	<dev-python/mccabe-0.6[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.0.0[${PYTHON_USEDEP}]
 	<=dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
 	"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( ${PDEPEND}
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 python_prepare_all() {
 	# Gentoo has flake8 support restored in >=pep8-1.6.2-r1.
