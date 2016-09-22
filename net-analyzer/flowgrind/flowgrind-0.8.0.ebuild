@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc gsl pcap"
 
 RDEPEND="
+	sys-apps/util-linux
 	dev-libs/xmlrpc-c[abyss,curl]
 	gsl? ( sci-libs/gsl )
 	pcap? ( net-libs/libpcap )
