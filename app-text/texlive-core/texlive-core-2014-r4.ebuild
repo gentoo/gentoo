@@ -328,7 +328,7 @@ pkg_postinst() {
 	elog
 	ewarn "If you are migrating from an older TeX distribution"
 	ewarn "Please make sure you have read:"
-	ewarn "https://www.gentoo.org/proj/en/tex/texlive-migration-guide.xml"
+	ewarn "https://wiki.gentoo.org/wiki/Project:TeX/Tex_Live_Migration_Guide"
 	ewarn "in order to avoid possible problems"
 	elog
 	elog "TeXLive has been split in various ebuilds. If you are missing a"
