@@ -16,6 +16,11 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}.vim-${PV}"
 
-src_compile() {
+src_prepare() {
+	default
 	rm -v config.mk || die
+}
+
+src_compile() {
+	:;
 }
