@@ -172,7 +172,7 @@ src_install() {
 	# default vimrc is installed by vim-core since it applies to
 	# both vim and gvim
 	insinto /etc/vim/
-	newins "${FILESDIR}"/vimrc-r4 vimrc
+	newins "${FILESDIR}"/vimrc-r5 vimrc
 	eprefixify "${ED}"/etc/vim/vimrc
 
 	if use minimal ; then
