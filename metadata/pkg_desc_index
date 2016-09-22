@@ -14152,7 +14152,7 @@ net-dialup/ueagle4-atm 1.0: Firmware and configuration instructions for Eagle US
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
-net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32: System which facilitates service discovery on a local network
+net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1: System which facilitates service discovery on a local network
 net-dns/bind 9.10.3_p4 9.10.4_p2: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.10.3_p2 9.10.3_p4 9.10.4_p2: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
