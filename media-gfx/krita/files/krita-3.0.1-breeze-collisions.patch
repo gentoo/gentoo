@@ -1,0 +1,16 @@
+Avoid installing files that collide with kde-plasma/breeze.
+
+Gentoo-bug: 594594
+KDE-bug: 368093
+
+--- a/krita/data/themes/CMakeLists.txt
++++ b/krita/data/themes/CMakeLists.txt
+@@ -1,8 +1,6 @@
+ ########### install files ###############
+ 
+ install(FILES
+-BreezeDark.colors
+-BreezeHighContrast.colors
+ BreezeLight.colors
+ KritaNeutral.colors
+ KritaBlender.colors
