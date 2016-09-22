@@ -46,8 +46,7 @@ src_prepare() {
 
 	if ! use vanilla ; then
 		epatch "${FILESDIR}"/${PN}-1.0.0a-ldflags.patch #327421
-		epatch "${FILESDIR}"/${PN}-1.0.0d-windres.patch #373743
-		epatch "${FILESDIR}"/${PN}-1.0.2g-parallel-build.patch
+		epatch "${FILESDIR}"/${PN}-1.0.2i-parallel-build.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-obj-headers.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-install-dirs.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-symlinking.patch #545028
