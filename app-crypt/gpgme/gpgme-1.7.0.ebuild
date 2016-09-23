@@ -43,7 +43,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local languages=( "cl" )
+	local languages=()
+	use common-lisp && languages+=( "cl" )
 	use cxx && languages+=( "cpp" )
 	if use qt5; then
 		languages+=( "qt" )
@@ -60,6 +61,4 @@ src_configure() {
 src_install() {
 	default
 	prune_libtool_files
-
-	use common-lisp || rm -fr "${ED}usr/share/common-lisp"
 }
