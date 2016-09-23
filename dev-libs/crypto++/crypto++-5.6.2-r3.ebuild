@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,6 +23,7 @@ S="${WORKDIR}"
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-r1-make.patch
 	epatch "${FILESDIR}"/${P}-cve-2015-2141.patch
+	epatch "${FILESDIR}"/${P}-c++11.patch
 
 	# Generate our own libtool script for building.
 	cat <<-EOF > configure.ac
