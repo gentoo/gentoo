@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 #inherit eutils rpm pax-utils
 inherit eutils rpm
@@ -12,8 +12,8 @@ HOMEPAGE="http://www.skype.com/"
 SRC_URI="https://repo.skype.com/rpm/stable/skypeforlinux_${PV}-1.x86_64.rpm"
 
 LICENSE="Skype-TOS no-source-code"
-SLOT="1"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64"
 #IUSE="pax_kernel selinux"
 IUSE=""
 
@@ -21,12 +21,36 @@ S="${WORKDIR}"
 QA_PREBUILT=opt/skypeforlinux/skypeforlinux
 RESTRICT="mirror bindist strip" #299368
 
-RDEPEND="
-	!${CATEGORY}/${PN}:0
-	virtual/ttf-fonts
-	gnome-base/libgnome-keyring
-	gnome-base/gnome-keyring
-	gnome-base/gconf"
+RDEPEND="virtual/ttf-fonts
+	!net-im/skype:1
+	dev-libs/atk
+	dev-libs/expat
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	gnome-base/gconf:2
+	media-libs/alsa-lib
+	media-libs/fontconfig:1.0
+	media-libs/freetype:2
+	net-print/cups
+	sys-apps/dbus
+	sys-devel/gcc
+	sys-libs/glibc
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	x11-libs/libXScrnSaver
+	x11-libs/libXtst
+	x11-libs/pango"
 #	selinux? ( sec-policy/selinux-skype )"
 
 src_unpack () {
@@ -39,10 +63,10 @@ src_prepare() {
 	sed -e "s!^Exec=.*!Exec=${EROOT}opt/bin/skypeforlinux!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
 		-i usr/share/applications/skypeforlinux.desktop
+	eapply_user
 }
 
 src_install() {
-
 	insinto /opt/skypeforlinux/locales
 	doins usr/share/skypeforlinux/locales/*.pak
 
