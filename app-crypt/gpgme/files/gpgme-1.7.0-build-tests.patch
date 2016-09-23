@@ -1,0 +1,82 @@
+From c2f352363615a4581e01999eb4230f4921cc6f9f Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 23 Sep 2016 23:05:35 +0300
+Subject: [PATCH] build: avoid build tests if not required
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ lang/qt/tests/Makefile.am  | 2 +-
+ tests/Makefile.am          | 2 +-
+ tests/gpg/Makefile.am      | 2 +-
+ tests/gpgsm/Makefile.am    | 2 +-
+ tests/opassuan/Makefile.am | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lang/qt/tests/Makefile.am b/lang/qt/tests/Makefile.am
+index 36ecfe4..63186e7 100644
+--- a/lang/qt/tests/Makefile.am
++++ b/lang/qt/tests/Makefile.am
+@@ -62,7 +62,7 @@ nodist_t_keylist_SOURCES = $(moc_files)
+ 
+ BUILT_SOURCES = $(moc_files)
+ 
+-noinst_PROGRAMS = t-keylist t-keylocate t-ownertrust t-tofuinfo t-encrypt \
++check_PROGRAMS = t-keylist t-keylocate t-ownertrust t-tofuinfo t-encrypt \
+     run-keyformailboxjob t-wkspublish
+ 
+ CLEANFILES = secring.gpg pubring.gpg pubring.kbx trustdb.gpg dirmngr.conf \
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index c71914f..b698e11 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -31,7 +31,7 @@ LDADD = ../src/libgpgme.la @GPG_ERROR_LIBS@
+ 
+ noinst_HEADERS = run-support.h
+ 
+-noinst_PROGRAMS = $(TESTS) run-keylist run-export run-import run-sign \
++check_PROGRAMS = $(TESTS) run-keylist run-export run-import run-sign \
+ 		  run-verify run-encrypt run-identify run-decrypt run-genkey \
+ 		  run-keysign run-tofu
+ 
+diff --git a/tests/gpg/Makefile.am b/tests/gpg/Makefile.am
+index 90a1dfd..671a2f3 100644
+--- a/tests/gpg/Makefile.am
++++ b/tests/gpg/Makefile.am
+@@ -64,7 +64,7 @@ LDADD = ../../src/libgpgme.la
+ t_thread1_LDADD = ../../src/libgpgme-pthread.la -lpthread
+ 
+ # We don't run t-genkey in the test suite, because it takes too long
+-noinst_PROGRAMS = $(c_tests) t-genkey
++check_PROGRAMS = $(c_tests) t-genkey
+ 
+ clean-local:
+ 	-$(top_srcdir)/tests/start-stop-agent --stop
+diff --git a/tests/gpgsm/Makefile.am b/tests/gpgsm/Makefile.am
+index 41645b6..1bdb712 100644
+--- a/tests/gpgsm/Makefile.am
++++ b/tests/gpgsm/Makefile.am
+@@ -40,7 +40,7 @@ LDADD = ../../src/libgpgme.la
+ 
+ # We don't run t-genkey in the test suite, because it takes too long
+ # and needs a working pinentry.
+-noinst_PROGRAMS = $(c_tests) t-genkey cms-keylist cms-decrypt
++check_PROGRAMS = $(c_tests) t-genkey cms-keylist cms-decrypt
+ 
+ key_id = 32100C27173EF6E9C4E9A25D3D69F86D37A4F939
+ 
+diff --git a/tests/opassuan/Makefile.am b/tests/opassuan/Makefile.am
+index 31d26ed..608b608 100644
+--- a/tests/opassuan/Makefile.am
++++ b/tests/opassuan/Makefile.am
+@@ -27,7 +27,7 @@ EXTRA_DIST =
+ AM_CPPFLAGS = -I$(top_builddir)/src @GPG_ERROR_CFLAGS@
+ LDADD = ../../src/libgpgme.la
+ 
+-noinst_PROGRAMS = $(TESTS) t-command
++check_PROGRAMS = $(TESTS) t-command
+ 
+ DISTCLEANFILES =
+ 
+-- 
+2.7.3
+
