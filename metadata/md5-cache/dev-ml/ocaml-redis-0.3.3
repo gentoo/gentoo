@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/ocaml-re:= dev-ml/uuidm:= lwt? ( dev-ml/lwt:= ) test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DESCRIPTION=Redis bindings for OCaml
+EAPI=5
+HOMEPAGE=http://0xffea.github.io/ocaml-redis/
+IUSE=+lwt +ocamlopt debug doc test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ml/ocaml-re:= dev-ml/uuidm:= lwt? ( dev-ml/lwt:= ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/0.3.3
+SRC_URI=https://github.com/0xffea/ocaml-redis/archive/0.3.3.tar.gz -> ocaml-redis-0.3.3.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=1edbc0a7911e9bfb6f2ea702e43f9ece
