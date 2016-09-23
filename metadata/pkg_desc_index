@@ -14340,7 +14340,8 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
-net-im/skype 1.7.0.1 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
+net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.8.0.2: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/telegram-desktop-bin 0.10.1 0.10.6: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
