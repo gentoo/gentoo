@@ -15062,7 +15062,7 @@ net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.4 5.5.0: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-misc/stunnel 5.24 5.30 5.34-r1 5.35: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.24 5.30 5.34-r1 5.35 5.36: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
@@ -15082,7 +15082,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.7.6 0.2.8.6 0.2.8.7 0.2.9.1_alpha 0.2.9.2_alpha: Anonymizing overlay network for TCP
+net-misc/tor 0.2.7.6 0.2.8.7 0.2.8.8 0.2.9.2_alpha 0.2.9.3_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
