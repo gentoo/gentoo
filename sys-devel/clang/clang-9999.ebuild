@@ -158,7 +158,7 @@ multilib_src_configure() {
 			-DLLVM_ENABLE_DOXYGEN=OFF
 		)
 		use doc && mycmakeargs+=(
-			-DCLANG_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/clang"
+			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
 	else
