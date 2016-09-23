@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 
 RDEPEND="${PYTHON_DEPS}"
 
