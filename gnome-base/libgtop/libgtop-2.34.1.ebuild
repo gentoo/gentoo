@@ -10,7 +10,7 @@ HOMEPAGE="https://git.gnome.org/browse/libgtop"
 
 LICENSE="GPL-2"
 SLOT="2/10" # libgtop soname version
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="+introspection"
 
 RDEPEND="
