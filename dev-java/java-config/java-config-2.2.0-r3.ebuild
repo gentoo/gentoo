@@ -26,6 +26,8 @@ RDEPEND="
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.2.0-prefix.patch )
+
 python_install_all() {
 	distutils-r1_python_install_all
 
