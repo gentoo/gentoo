@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit eutils qmake-utils
+inherit autotools eutils
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -33,14 +33,13 @@ REQUIRED_USE="qt5? ( cxx )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch
+	"${FILESDIR}"/${P}-build-tests.patch
+	"${FILESDIR}"/${P}-build-tests-disable.patch
 )
 
 src_prepare() {
 	default
-
-	# remove non working tests
-	sed -i 's/\tt-sig-notation\$(EXEEXT)/\t/' tests/gpg/Makefile.in || die
-	sed -i 's/ t-encrypt\$(EXEEXT)//' lang/qt/tests/Makefile.in || die
+	eautoreconf
 }
 
 src_configure() {
