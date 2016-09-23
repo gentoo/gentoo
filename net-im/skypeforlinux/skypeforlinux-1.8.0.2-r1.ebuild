@@ -29,6 +29,7 @@ RDEPEND="virtual/ttf-fonts
 	dev-libs/nspr
 	dev-libs/nss
 	gnome-base/gconf:2
+	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
