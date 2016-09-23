@@ -9,7 +9,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="Genealogical Research and Analysis Management Programming System"
-HOMEPAGE="http://www.gramps.org/"
+HOMEPAGE="https://gramps-project.org/"
 SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
