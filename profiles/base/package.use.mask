@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alon Bar-Lev <alonbl@gentoo.org> (23 Sep 2016)
+# Mask qt5 until kde ports
+app-crypt/gpgme qt5
+
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Dependency is only keyworded on amd64 and x86
 app-admin/collectd collectd_plugins_mqtt
