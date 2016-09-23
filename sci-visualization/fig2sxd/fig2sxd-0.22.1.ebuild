@@ -19,9 +19,8 @@ IUSE=""
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.20-phony-check.patch )
-
 DOCS=( changelog )
+PATCHES=( "${FILESDIR}"/${PN}-0.20-phony-check.patch )
 
 src_compile() {
 	emake CXXFLAGS="${CXXFLAGS}" CXX="$(tc-getCXX)"
