@@ -1,0 +1,12 @@
+diff -Nuar a/muttprint b/muttprint
+--- a/muttprint	2016-09-23 10:03:48.870030157 +0200
++++ b/muttprint	2016-09-23 10:08:39.310036004 +0200
+@@ -1635,7 +1635,7 @@
+ 	open (AUX, "$auxfile") or fatalError "Could not open $auxfile:\n$!";
+ 	
+ 	while (<AUX>) {
+-		($numberOfPages) = /\\newlabel{LastPage}{{}{(\d+)}}/;
++		($numberOfPages) = /\\newlabel\{LastPage}\{\{}\{(\d+)}}/;
+ 	}
+ 	
+ 	close AUX or fatalError "Could not close $auxfile:\n$!";
