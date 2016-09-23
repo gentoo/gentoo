@@ -96,6 +96,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
+		sh scripts/version
 		eautoreconf
 	else
 		default
