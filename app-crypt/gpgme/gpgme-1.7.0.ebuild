@@ -4,7 +4,10 @@
 
 EAPI="6"
 
-inherit autotools eutils
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
+DISTUTILS_OPTIONAL=1
+
+inherit autotools distutils-r1 eutils
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -13,7 +16,7 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="common-lisp static-libs cxx qt5 test"
+IUSE="common-lisp static-libs cxx python qt5 test"
 
 RDEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
@@ -22,7 +25,8 @@ RDEPEND="app-crypt/gnupg
 		dev-qt/qtcore:5
 		!kde-apps/gpgmepp:4
 		!kde-apps/kdepimlibs:4
-	)"
+	)
+	python? ( ${PYTHON_DEPS} )"
 		#doc? ( app-doc/doxygen[dot] )
 DEPEND="${RDEPEND}
 	qt5? (
@@ -35,11 +39,21 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.8-et_EE.patch
 	"${FILESDIR}"/${P}-build-tests.patch
 	"${FILESDIR}"/${P}-build-tests-disable.patch
+	"${FILESDIR}"/${P}-build-python.patch
 )
+
+do_python() {
+	if use python; then
+		pushd lang/python > /dev/null || die
+		binary_builddir="${S}" distutils-r1_src_${EBUILD_PHASE}
+		popd > /dev/null
+	fi
+}
 
 src_prepare() {
 	default
 	eautoreconf
+	do_python
 }
 
 src_configure() {
@@ -56,9 +70,26 @@ src_configure() {
 		--includedir="${EPREFIX}/usr/include/gpgme" \
 		--enable-languages="${languages[*]}" \
 		$(use_enable static-libs static)
+
+	python_conf() {
+		econf --enable-languages=
+	}
+	use python && python_foreach_impl python_conf
+	do_python
+}
+
+src_compile() {
+	default
+
+	python_build() {
+		make -C lang/python prepare
+	}
+	use python && python_foreach_impl python_build
+	do_python
 }
 
 src_install() {
 	default
+	do_python
 	prune_libtool_files
 }
