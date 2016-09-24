@@ -1,0 +1,30 @@
+From b9767792b97fe56b37bb59ee3d207ae359f1651c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 22 Sep 2016 09:52:58 -0400
+Subject: [PATCH 2/6] docs: fix sphinx format warning
+
+build/lib.linux-x86_64-3.5/systemd/journal.py:docstring of systemd.journal.stream:15: WARNING: Literal block expected; none found.
+---
+ systemd/journal.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/systemd/journal.py b/systemd/journal.py
+index e930164..a74d62f 100644
+--- a/systemd/journal.py
++++ b/systemd/journal.py
+@@ -461,9 +461,9 @@ def stream(identifier, priority=LOG_DEBUG, level_prefix=False):
+ 
+     will produce the following message in the journal::
+ 
+-    PRIORITY=7
+-    SYSLOG_IDENTIFIER=myapp
+-    MESSAGE=message...
++      PRIORITY=7
++      SYSLOG_IDENTIFIER=myapp
++      MESSAGE=message...
+ 
+     Using the interface with print might be more convenient:
+ 
+-- 
+2.10.0
+

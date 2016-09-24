@@ -1,0 +1,27 @@
+From 911591a1188e03942e60f2ab1abf91562904f49e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 22 Sep 2016 20:24:31 -0400
+Subject: [PATCH 6/6] build-sys: import "pytest" instead of "py.test"
+
+Fixes the following error in rawhide:
+/usr/bin/python3: loader for pytest cannot handle py.test
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 23b452e..b10d6d9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -51,7 +51,7 @@ sphinx-%: build
+ 	@echo Output has been generated in build/$*
+ 
+ check: build
+-	(cd $(builddir) && $(PYTHON) -m py.test . ../../docs $(TESTFLAGS))
++	(cd $(builddir) && $(PYTHON) -m pytest . ../../docs $(TESTFLAGS))
+ 
+ www_target = www.freedesktop.org:/srv/www.freedesktop.org/www/software/systemd/python-systemd
+ doc-sync:
+-- 
+2.10.0
+
