@@ -8098,7 +8098,7 @@ dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
 dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18 0.1.19 0.2.1: A non-validating SQL parser module for Python
 dev-python/python-stdnum 0.9 1.1 1.3 1.4: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.0.0: Python bindings to the OpenStack Object Storage API
-dev-python/python-systemd 230 231: Python module for native access to the systemd facilities
+dev-python/python-systemd 230 231 232: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 1.3.0: This is a client for the OpenStack Trove API, a scalable relational database service
 dev-python/python-tvrage 0.4.1: Python client for the tvrage.com XML API
@@ -17473,7 +17473,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.12 1.1.14 1.1.14-r2 1.1.15 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.12 1.1.14 1.1.14-r2 1.1.15 1.1.15-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
