@@ -10,6 +10,7 @@
     <flag name="halfword">Enable halfword emulator</flag>
     <flag name="kpoll">Enable kernel polling support</flag>
     <flag name="compat-ethread">Enable compatibility with pre-pentium 4 CPUs in the ethread library.</flag>
+    <flag name="dirty-schedulers">Enable dirty schedulers</flag>
   </use>
 <longdescription>
 Erlang is a programming language designed at the Ericsson 
