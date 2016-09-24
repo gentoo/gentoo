@@ -7238,7 +7238,7 @@ dev-python/djangocms-video 0.1 1.0.0: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.8.1 1.9.0_rc2 1.9.0: Python client for Docker
+dev-python/docker-py 1.2.2 1.9.0_rc2 1.9.0 1.10.3: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.3.3 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
@@ -15797,7 +15797,7 @@ sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 1.7.6.0 1.7.7.2: A Python-extensible molecular graphics system
+sci-chemistry/pymol 1.7.6.0 1.7.7.2 1.8.2.1: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.25.1 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430 110430-r1: DSSP Plugin for PyMOL
