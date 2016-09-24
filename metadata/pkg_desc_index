@@ -18420,7 +18420,7 @@ x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for 
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r1: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dsx 0.1: command line selection of your X desktop environment
-x11-misc/dunst 0.5.0 1.0.0 1.0.0-r1 1.1.0: customizable and lightweight notification-daemon
+x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r1: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
 x11-misc/e16keyedit 0.7: Key binding editor for enlightenment 16
