@@ -7,9 +7,9 @@ IUSE=aac aacplus alsa debug jack libsamplerate mp3 opus pulseaudio twolame vorbi
 KEYWORDS=amd64 hppa ppc sparc x86
 LICENSE=GPL-3
 RDEPEND=aac? ( media-libs/faac ) aacplus? ( >=media-libs/libaacplus-2.0.0 ) alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mp3? ( media-sound/lame ) opus? ( media-libs/opus ) pulseaudio? ( media-sound/pulseaudio ) twolame? ( media-sound/twolame ) vorbis? ( media-libs/libvorbis )
-REQUIRED_USE=|| ( aac aacplus mp3 opus twolame vorbis ) || ( alsa jack pulseaudio )
+REQUIRED_USE=|| ( aac aacplus mp3 twolame vorbis ) || ( alsa jack pulseaudio )
 SLOT=0
 SRC_URI=https://darkice.googlecode.com/files/darkice-1.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=f37512acd96f2e153e15d7e83e71fc58
+_md5_=40b179428d1d9c93d504a19f7a7a1be8
