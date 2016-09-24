@@ -2,22 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 RESTRICT="test"
 
-inherit elisp-common eutils multilib pax-utils toolchain-funcs
+inherit git-r3 elisp-common eutils multilib pax-utils toolchain-funcs
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="http://julialang.org/"
-SRC_URI="
-	https://github.com/JuliaLang/${PN}/releases/download/v${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~tamiko/distfiles/${P}-bundled.tar.gz
-"
+SRC_URI=""
+EGIT_REPO_URI="git://github.com/JuliaLang/julia.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE="emacs"
 
 RDEPEND="
@@ -39,7 +37,7 @@ RDEPEND="
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
-	virtual/blas
+	>=virtual/blas-1.1
 	virtual/lapack
 	emacs? ( app-emacs/ess )"
 
@@ -48,22 +46,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.3-fix_build_system.patch
-	"${FILESDIR}"/${P}-llvm-3.8.patch
+	"${FILESDIR}"/${PN}-9999-fix_build_system.patch
 )
 
 src_prepare() {
-	mv "${WORKDIR}"/bundled/dsfmt-2.2.3.tar.gz deps/ || die
-	mv "${WORKDIR}"/bundled/libuv-efb40768b7c7bd9f173a7868f74b92b1c5a61a0e.tar.gz deps/ || die
-	mv "${WORKDIR}"/bundled/pcre2-10.20.tar.bz2 deps/ || die
-	mv "${WORKDIR}"/bundled/Rmath-julia-0.1.tar.gz deps/ || die
-	mv "${WORKDIR}"/bundled/utf8proc-85789180158ac7fff85b9f008828d6ac44f072ea.tar.gz deps/ || die
-	rmdir "${WORKDIR}"/bundled || die
-
 	epatch "${PATCHES[@]}"
 
+	eapply_user
+
 	# Sledgehammer:
-	# - prevent fetching of bundled stuff in compile and install phase
 	# - respect CFLAGS
 	# - respect EPREFIX and Gentoo specific paths
 	# - fix BLAS and LAPACK link interface
@@ -139,6 +130,10 @@ src_configure() {
 }
 
 src_compile() {
+
+	# Julia accesses /proc/self/mem on Linux
+	addpredict /proc/self/mem
+
 	emake cleanall
 	emake julia-release \
 		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"

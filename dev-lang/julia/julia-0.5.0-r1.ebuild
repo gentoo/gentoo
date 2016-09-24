@@ -39,7 +39,7 @@ RDEPEND="
 	>=sys-libs/libunwind-1.1:7=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
-	virtual/blas
+	>=virtual/blas-3.6
 	virtual/lapack
 	emacs? ( app-emacs/ess )"
 
@@ -171,7 +171,7 @@ src_install() {
 	rmdir "${ED}"/usr/etc || die
 	rmdir "${ED}"/usr/libexec || die
 	mv "${ED}"/usr/share/doc/julia/{examples,html} \
-		"${ED}"/usr/share/doc/${P} || die
+		"${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
 	if [[ $(get_libdir) != lib ]]; then
 		mkdir -p "${ED}"/usr/$(get_libdir) || die
