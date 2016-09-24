@@ -6057,6 +6057,7 @@ dev-perl/MooseX-Getopt 0.680.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
 dev-perl/MooseX-MultiInitArg 0.20.0: Attributes with aliases for constructor arguments
 dev-perl/MooseX-Object-Pluggable 0.1.400: Make your classes pluggable
+dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
 dev-perl/MooseX-Role-Parameterized 1.80.0: Roles with composition parameters
 dev-perl/MooseX-Role-WithOverloading 0.160.0: Roles which support overloading
 dev-perl/MooseX-SimpleConfig 0.110.0: A Moose role for setting attributes from a simple configfile
@@ -6409,6 +6410,7 @@ dev-perl/Test-Exception 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
+dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
