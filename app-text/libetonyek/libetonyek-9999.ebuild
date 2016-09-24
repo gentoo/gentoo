@@ -26,7 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-util/mdds:1
+	>=dev-util/mdds-1.2.2:1
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
@@ -55,7 +55,8 @@ src_configure() {
 		$(use_enable static-libs static) \
 		--disable-werror \
 		$(use_enable test tests) \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		--with-mdds=1.2
 }
 
 src_install() {
