@@ -1,6 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_ARM
+sys-devel/llvm llvm_targets_ARM
 
 # Anthony G. Basile <blueness@gentoo.org> (11 Nov 2012)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-base/kdm
