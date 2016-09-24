@@ -17,14 +17,20 @@ SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
+# Keep in sync with sys-devel/llvm
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
+ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
+
 LICENSE="UoI-NCSA"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget python
-	+static-analyzer test xml video_cards_radeon elibc_musl kernel_FreeBSD"
+	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}:=[debug=,multitarget?,video_cards_radeon?,${MULTILIB_USEDEP}]
+	~sys-devel/llvm-${PV}:=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
 	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	!<sys-devel/llvm-${PV}
@@ -39,7 +45,9 @@ PDEPEND="
 	default-compiler-rt? ( sys-libs/compiler-rt )
 	default-libcxx? ( sys-libs/libcxx )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( ${ALL_LLVM_TARGETS[*]} )
+	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
 pkg_pretend() {
 	local build_size=650
@@ -114,14 +122,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local targets
-	if use multitarget; then
-		targets=all
-	else
-		targets='host;BPF'
-		use video_cards_radeon && targets+=';AMDGPU'
-	fi
-
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
@@ -131,7 +131,7 @@ multilib_src_configure() {
 		-DCLANG_GOLD_LIBDIR_SUFFIX="${NATIVE_LIBDIR#lib}"
 
 		-DBUILD_SHARED_LIBS=ON
-		-DLLVM_TARGETS_TO_BUILD="${targets}"
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		# TODO: get them properly conditional
 		#-DLLVM_BUILD_TESTS=$(usex test)
 
