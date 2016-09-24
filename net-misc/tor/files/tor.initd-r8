@@ -7,6 +7,8 @@ command=/usr/bin/tor
 pidfile=/var/run/tor/tor.pid
 command_args="--hush --runasdaemon 1 --pidfile \"${pidfile}\""
 retry=${GRACEFUL_TIMEOUT:-60}
+stopsig=INT
+command_progress=yes
 
 extra_commands="checkconfig"
 extra_started_commands="reload"
@@ -26,12 +28,6 @@ checkconfig() {
 start_pre() {
 	checkconfig || return 1
 	checkpath -d -m 0755 -o tor:tor /var/run/tor
-}
-
-stop() {
-        ebegin "Stopping Tor (waiting up to ${retry} seconds)"
-	start-stop-daemon -K -s INT -R ${retry} -P -p ${pidfile}
-        eend $?
 }
 
 reload() {
