@@ -1207,7 +1207,7 @@ python_fix_shebang() {
 # Check whether the specified locale sanely maps between lowercase
 # and uppercase ASCII characters.
 _python_check_locale_sanity() {
-	local -x LC_CTYPE=${1}
+	local -x LC_ALL=${1}
 	local IFS=
 
 	local lc=( {a..z} )
