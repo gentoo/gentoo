@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=SHLOMIF
-DIST_VERSION=2.0124
+DIST_VERSION=2.0128
 DIST_EXAMPLES=("example/*")
 inherit perl-module
 
@@ -18,6 +18,7 @@ IUSE="test minimal"
 RDEPEND="
 	>=dev-perl/XML-SAX-0.120.0
 	>=dev-libs/libxml2-2.6.21
+	dev-perl/XML-SAX-Base
 	>=dev-perl/XML-NamespaceSupport-1.70.0
 "
 DEPEND="${RDEPEND}

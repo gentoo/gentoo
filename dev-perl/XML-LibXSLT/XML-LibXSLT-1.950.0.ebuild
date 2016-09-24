@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=SHLOMIF
-MODULE_VERSION=1.92
+DIST_AUTHOR=SHLOMIF
+DIST_VERSION=1.95
 inherit perl-module
 
 DESCRIPTION="A Perl module to parse XSL Transformational sheets using gnome's libXSLT"
@@ -15,11 +15,11 @@ KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/libxslt-1.1.28
+	virtual/perl-Encode
 	>=dev-perl/XML-LibXML-1.700.0
+	>=dev-libs/libxslt-1.1.28
 "
 DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
 	virtual/pkgconfig
 "
-
-SRC_TEST="do"
