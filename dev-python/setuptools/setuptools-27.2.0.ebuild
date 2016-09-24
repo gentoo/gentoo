@@ -39,7 +39,7 @@ PDEPEND="
 # Force in-source build because build system modifies sources.
 DISTUTILS_IN_SOURCE_BUILD=1
 
-DOCS=( README.rst docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
+DOCS=( {CHANGES,README}.rst docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
 python_prepare_all() {
 	if [[ ${PV} == "9999" ]]; then
