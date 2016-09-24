@@ -1,0 +1,70 @@
+diff --git a/Make.inc b/Make.inc
+index 651c9df..ff01872 100644
+--- a/Make.inc
++++ b/Make.inc
+@@ -389,7 +389,7 @@ ifneq ($(OS), WINNT)
+ JCXXFLAGS += -pedantic
+ endif
+ DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -ggdb2 -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECLANG),1)
+@@ -400,7 +400,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS := -fasynchronous-unwind-tables
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g
++SHIPFLAGS := GENTOOCFLAGS
+ ifeq ($(OS), Darwin)
+ ifeq ($(USE_LIBCPP), 1)
+ CC += -stdlib=libc++ -mmacosx-version-min=10.7
+@@ -427,7 +427,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS :=
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECCACHE), 1)
+diff --git a/doc/Makefile b/doc/Makefile
+index 0749d73..f4d49ec 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -62,7 +62,7 @@ help:
+ 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+ 
+ clean:
+-	-rm -rf _build/*
++	@echo "Do not clean doc/_build/html. Just use it..."
+ 
+ cleanall: clean
+ 
+diff --git a/src/Makefile b/src/Makefile
+index d7ec864..61d2470 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -66,20 +66,8 @@ HEADERS := $(addprefix $(SRCDIR)/,julia.h julia_threads.h julia_internal.h optio
+ 
+ # In LLVM < 3.4, --ldflags includes both options and libraries, so use it both before and after --libs
+ # In LLVM >= 3.4, --ldflags has only options, and --system-libs has the libraries.
+-ifneq ($(USE_LLVM_SHLIB),1)
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --libs $(LLVM_LIBS)) $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --system-libs 2> /dev/null)
+-else
+-ifeq ($(LLVM_USE_CMAKE),1)
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM
+-else
+-ifeq ($(OS),WINNT)
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM-$(LLVM_VER_SHORT)
+-else
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM-$(shell $(LLVM_CONFIG_HOST) --version)
+-endif # OS == WINNT
+-endif # LLVM_USE_CMAKE == 1
++LLVMLINK = $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --libs) $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --system-libs)
+ FLAGS += -DLLVM_SHLIB
+-endif # USE_LLVM_SHLIB == 1
+ 
+ COMMON_LIBS := -L$(build_shlibdir) -L$(build_libdir) $(LIBUV) $(LIBUTF8PROC) $(NO_WHOLE_ARCHIVE) $(LLVMLINK) $(OSLIBS)
+ DEBUG_LIBS := $(WHOLE_ARCHIVE) $(BUILDDIR)/flisp/libflisp-debug.a $(WHOLE_ARCHIVE) $(BUILDDIR)/support/libsupport-debug.a $(COMMON_LIBS)
