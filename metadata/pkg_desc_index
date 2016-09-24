@@ -15564,7 +15564,7 @@ sci-biology/ariadne 1.3-r1 1.3-r2: Protein sequences and profiles comparison
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
 sci-biology/bamtools 1.0.2-r1 2.3.0: A programmer's API and an end-user's toolkit for handling BAM files
 sci-biology/beast-mcmc 1.7.5-r1 9999: Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences
-sci-biology/bedtools 2.16.2 2.20.1: Tools for manipulation and analysis of BED, GFF/GTF, VCF, and SAM/BAM file formats
+sci-biology/bedtools 2.26.0: Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0 1.0-r1: Multithreading application for matching large sets of patternsagainst biosequence dbs
 sci-biology/biopandas 0.1.4: Molecular Structures in Pandas DataFrames
