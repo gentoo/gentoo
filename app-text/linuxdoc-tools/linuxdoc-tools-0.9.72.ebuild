@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/agmartin/${PN}/repository/archive.tar.gz?ref=v${PV} 
 
 LICENSE="GPL-3+ MIT SGMLUG"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ~ppc ~x86 ~x86-fbsd"
 IUSE="doc"
 
 RDEPEND="

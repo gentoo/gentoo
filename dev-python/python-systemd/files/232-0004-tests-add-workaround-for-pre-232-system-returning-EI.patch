@@ -1,0 +1,58 @@
+From 35a5b281adea321ea3f7b7d688a994e735366fb0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 22 Sep 2016 20:12:15 -0400
+Subject: [PATCH 4/6] tests: add workaround for pre-232 system returning EINVAL
+ on some flags
+
+---
+ systemd/test/test_journal.py | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/systemd/test/test_journal.py b/systemd/test/test_journal.py
+index 0902183..dceec3f 100644
+--- a/systemd/test/test_journal.py
++++ b/systemd/test/test_journal.py
+@@ -21,6 +21,13 @@ def skip_enosys():
+             pytest.skip()
+         raise
+ 
++@contextlib.contextmanager
++def skip_valueerror():
++    try:
++        yield
++    except ValueError:
++        pytest.skip()
++
+ def test_priorities():
+     p = journal.JournalHandler.mapPriority
+ 
+@@ -62,10 +69,12 @@ def test_reader_init_flags():
+ def test_reader_os_root(tmpdir):
+     with pytest.raises(ValueError):
+         journal.Reader(journal.OS_ROOT)
+-    j1 = journal.Reader(path=tmpdir.strpath,
+-                        flags=journal.OS_ROOT)
+-    j2 = journal.Reader(path=tmpdir.strpath,
+-                        flags=journal.OS_ROOT | journal.CURRENT_USER)
++    with skip_valueerror():
++        j1 = journal.Reader(path=tmpdir.strpath,
++                            flags=journal.OS_ROOT)
++    with skip_valueerror():
++        j2 = journal.Reader(path=tmpdir.strpath,
++                            flags=journal.OS_ROOT | journal.CURRENT_USER)
+     j3 = journal.Reader(path=tmpdir.strpath,
+                         flags=journal.OS_ROOT | journal.SYSTEM_ONLY)
+ 
+@@ -91,7 +100,8 @@ def test_reader_init_path_fd(tmpdir):
+         j1 = journal.Reader(path=fd)
+     assert list(j1) == []
+ 
+-    j2 = journal.Reader(journal.SYSTEM, path=fd)
++    with skip_valueerror():
++        j2 = journal.Reader(journal.SYSTEM, path=fd)
+     assert list(j2) == []
+ 
+     j3 = journal.Reader(journal.CURRENT_USER, path=fd)
+-- 
+2.10.0
+
