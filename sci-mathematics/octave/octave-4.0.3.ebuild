@@ -54,7 +54,7 @@ RDEPEND="
 		sci-libs/cxsparse:0=
 		sci-libs/umfpack:0= )
 	X? ( x11-libs/libX11:0= )
-	zlib? ( sys-libs/zlib:0= )"
+	sys-libs/zlib"
 
 DEPEND="${RDEPEND}
 	qrupdate? ( app-misc/pax-utils )
@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.3-imagemagick.patch
 	"${FILESDIR}"/${PN}-3.8.1-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.0.3-ncurses-pkgconfig.patch
+	"${FILESDIR}"/${PN}-4.0.3-zlib-underlinking.patch
 )
 
 src_prepare() {
@@ -98,6 +99,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# [QA] detect underlinking #593670
+	append-ldflags $(test-flags-CXX -Wl,-z,defs)
+
 	# unfortunate dependency on mpi from hdf5 (bug #302621)
 	use hdf5 && has_version sci-libs/hdf5[mpi] && \
 		export CXX=mpicxx CC=mpicc FC=mpif77 F77=mpif77
@@ -118,6 +122,7 @@ src_configure() {
 		--disable-64 \
 		--disable-jit \
 		--enable-shared \
+		--with-z \
 		$(use_enable static-libs static) \
 		$(use_enable doc docs) \
 		$(use_enable java) \
@@ -138,8 +143,7 @@ src_configure() {
 		$(use_with sparse ccolamd) \
 		$(use_with sparse cholmod) \
 		$(use_with sparse cxsparse) \
-		$(use_with X x) \
-		$(use_with zlib z)
+		$(use_with X x)
 }
 
 src_compile() {
@@ -160,7 +164,7 @@ src_install() {
 	fi
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
 	use java && \
-		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
-	echo "LDPATH=${EROOT}usr/$(get_libdir)/${PN}/${PV}" > 99octave
+		java-pkg_regjar "${ED%/}/usr/share/${PN}/${PV}/m/java/octave.jar"
+	echo "LDPATH=${EROOT%/}/usr/$(get_libdir)/${PN}/${PV}" > 99octave || die
 	doenvd 99octave
 }

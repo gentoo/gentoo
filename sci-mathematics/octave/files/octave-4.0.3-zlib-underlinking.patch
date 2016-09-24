@@ -1,0 +1,13 @@
+Fix underlinking caused by missing -lz link.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=593670
+
+--- a/libinterp/corefcn/module.mk
++++ b/libinterp/corefcn/module.mk
+@@ -361,6 +361,7 @@
+                                  $(HDF5_CPPFLAGS) \
+                                  $(LLVM_CPPFLAGS) \
+                                  $(Z_CPPFLAGS)
++corefcn_libcorefcn_la_LIBADD = $(Z_LIBS)
+ 
+ corefcn_libcorefcn_la_CXXFLAGS = $(AM_CXXFLAGS) $(LLVM_CXXFLAGS)
+ 
