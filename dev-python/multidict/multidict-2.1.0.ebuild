@@ -18,6 +18,7 @@ IUSE="doc test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
