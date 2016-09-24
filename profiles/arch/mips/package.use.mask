@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
+# net-libs/libnetfilter_conntrack is not keyworded on mips
+net-dns/dnsmasq conntrack
+
 # Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
 # net-libs/openpgm is not keyworded on mips
 net-libs/zeromq pgm
