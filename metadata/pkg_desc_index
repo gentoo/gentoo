@@ -9610,7 +9610,7 @@ dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTe
 dev-tex/hyphen_show 20000425: Show hyphenations in DVI files
 dev-tex/isotope 20040401: Typeset isotopes correctly in LaTeX documents
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
-dev-tex/latex-beamer 3.33 3.36: LaTeX class for creating presentations using a video projector
+dev-tex/latex-beamer 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2008 2008-r1 2015: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.2.1b 2.3.8 2.3.11: LaTeX to RTF converter
@@ -12419,7 +12419,7 @@ media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
-media-gfx/pngcrush 1.8.0 1.8.2 1.8.4 1.8.5: Portable Network Graphics (PNG) optimizing utility
+media-gfx/pngcrush 1.8.5 1.8.6: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngquant 2.5.2 2.7.2: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.3.0 1.4.0: A utility which reduces large palettes in PNG images
