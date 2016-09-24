@@ -22,6 +22,7 @@ DEPEND="${PYTHON_DEPS}
 		sci-libs/htslib
 		sci-biology/samtools
 	)"
+RDEPEND="sys-libs/zlib"
 
 S="${WORKDIR}/${PN}2"
 
