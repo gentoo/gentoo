@@ -6579,17 +6579,17 @@ dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
 dev-perl/XML-Catalog 0.20.0-r1 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-CompactTree-XS 0.20.0-r1: a fast builder of compact tree structures from XML documents
-dev-perl/XML-DOM 1.440.0-r1 1.450.0: A Perl module for an DOM Level 1 compliant interface
+dev-perl/XML-DOM 1.440.0-r1 1.450.0 1.460.0: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
-dev-perl/XML-DT 0.660.0 0.670.0 0.680.0: A perl XML down translate module
+dev-perl/XML-DT 0.660.0 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Directory 1.0.0: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: an XML::Parser style and generic classes for simplistic and perlish handling of XML data
 dev-perl/XML-Encoding 2.80.0-r1 2.90.0: Perl Module that parses encoding map XML files
-dev-perl/XML-Entities 1.0.100 1.0.200: Decode strings with XML entities
+dev-perl/XML-Entities 1.0.200: Decode strings with XML entities
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
-dev-perl/XML-Feed 0.520.0 0.530.0: Syndication feed parser and auto-discovery
+dev-perl/XML-Feed 0.530.0: Syndication feed parser and auto-discovery
 dev-perl/XML-FeedPP 0.430.0: Parse/write/merge/edit RSS/RDF/Atom syndication feeds
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
 dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM processing of selected subtrees
