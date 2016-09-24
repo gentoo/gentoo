@@ -12,15 +12,15 @@ if [[ "${PV}" != "9999" ]]; then
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/lab-measurement.git"
 	EGIT_BRANCH="master"
-	S=${WORKDIR}/${P}/Measurement
 	inherit perl-module git-r3
+	S=${WORKDIR}/${P}/Measurement
 fi
 
 DESCRIPTION="Measurement control and automation with Perl"
 HOMEPAGE="http://www.labmeasurement.de/"
 
 SLOT="0"
-IUSE="+xpression"
+IUSE="test +xpression"
 
 RDEPEND="
 	dev-perl/Class-ISA
@@ -31,6 +31,9 @@ RDEPEND="
 	>=dev-perl/Exception-Class-1
 	dev-perl/Hook-LexWrap
 	dev-perl/List-MoreUtils
+	>=dev-perl/Moose-2.121.300
+	>=dev-perl/MooseX-Params-Validate-0.180.0
+	>=dev-perl/namespace-autoclean-0.200.0
 	>=dev-perl/Role-Tiny-1.3.4
 	dev-perl/Term-ANSIScreen
 	>=dev-perl/TermReadKey-2.320.0
@@ -52,6 +55,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-perl/Module-Build
+	test? ( dev-perl/Test-Files )
 "
 
 pkg_postinst() {
