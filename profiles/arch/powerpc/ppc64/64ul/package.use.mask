@@ -10,10 +10,6 @@
 # Mask because requires a lot of unstable depends not ready for the stabilization
 gnome-extra/nm-applet bluetooth
 
-# Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
-# mask conntrack USE flag for dnsmasq as dep is not keyworded
-net-dns/dnsmasq conntrack
-
 # Brent Baude <ranger@gentoo.org> (06 Jan 2010)
 # masking toolame for mplayer bug 280281
 media-video/mplayer toolame

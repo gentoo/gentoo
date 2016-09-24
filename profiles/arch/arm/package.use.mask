@@ -471,10 +471,6 @@ dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
-# mask conntrack USE flag for dnsmasq as dep is not keyworded
-net-dns/dnsmasq conntrack
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (03 Nov 2011)
 # Missing keywords in gst-plugins-{faac,lame,speex,twolame}, bug #389433
 gnome-extra/gnome-media aac mp3 speex twolame
