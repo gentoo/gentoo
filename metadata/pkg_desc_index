@@ -6598,26 +6598,26 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM p
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.100 2.12.400 2.12.600: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
-dev-perl/XML-LibXML-Simple 0.950.0 0.970.0: XML::LibXML based XML::Simple clone
-dev-perl/XML-LibXSLT 1.810.0-r1 1.870.0 1.920.0 1.940.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
+dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
+dev-perl/XML-LibXSLT 1.870.0 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.110.0-r1: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.410.0-r2 2.440.0: A Perl extension interface to James Clark's XML parser, expat
-dev-perl/XML-Parser-Lite 0.720.0 0.721.0: Lightweight regexp-based XML parser
+dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
 dev-perl/XML-RAI 1.303.100-r1: RSS Abstraction Interface
-dev-perl/XML-RSS 1.540.0-r1 1.560.0 1.590.0: a basic framework for creating and maintaining RSS files
+dev-perl/XML-RSS 1.540.0-r1 1.590.0: a basic framework for creating and maintaining RSS files
 dev-perl/XML-RSS-Feed 2.400.0-r1: Persistant XML RSS Encapsulation
 dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
 dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
 dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
 dev-perl/XML-SAX-Base 1.80.0-r1: Base class SAX Drivers and Filters
-dev-perl/XML-SAX-Expat 0.400.0 0.500.0 0.510.0: SAX2 Driver for Expat
+dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
-dev-perl/XML-SAX-Writer 0.530.0-r1 0.540.0 0.560.0: SAX2 Writer
+dev-perl/XML-SAX-Writer 0.540.0 0.560.0: SAX2 Writer
 dev-perl/XML-Simple 2.200.0-r1: XML::Simple - Easy API to read/write XML (esp config files)
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
@@ -7525,7 +7525,7 @@ dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.11.1: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
 dev-python/libbonobo-python 2.28.1-r1: Python bindings for the Bonobo framework
-dev-python/libcloud 0.14.1 0.15.0 0.15.1 0.17.0: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 0.14.1 0.15.0 0.15.1 0.17.0 1.2.1: Unified Interface to the Cloud - python support libs
 dev-python/libextractor-python 0.6-r1: A library used to extract metadata from files of arbitrary type
 dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME libraries
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
