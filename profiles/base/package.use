@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Enable the BPF target by default
+sys-devel/clang llvm_targets_BPF
+sys-devel/llvm llvm_targets_BPF
+
 # Michael Palimaka <kensington@gentoo.org> (31 Aug 2016)
 dev-python/kdevelop-python:5 python_targets_python3_5
 
