@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit vim-plugin eutils
+inherit vim-plugin
 
 MY_PN=LanguageTool
 DESCRIPTION="grammar checker for various languages"
