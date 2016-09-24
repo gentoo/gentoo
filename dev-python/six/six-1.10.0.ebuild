@@ -68,6 +68,10 @@ pkg_preinst() {
 			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
 		fi
 	}
-	cd / # Bug 585146
+	# https://bugs.gentoo.org/585146
+	local tmpdir="$(mktemp -d)"
+	[[ -n ${tmpdir} ]] || die
+	cd "${tmpdir}" || die
 	python_foreach_impl _cleanup
+	rmdir "${tmpdir}"
 }
