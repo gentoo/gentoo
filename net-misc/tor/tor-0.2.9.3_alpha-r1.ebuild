@@ -67,7 +67,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r7 tor
+	newinitd "${FILESDIR}"/tor.initd-r8 tor
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
 
