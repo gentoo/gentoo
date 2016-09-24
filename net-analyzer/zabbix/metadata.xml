@@ -5,6 +5,10 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <maintainer type="person">
+    <email>alicef@gentoo.org</email>
+    <name>Alice Ferrazzi</name>
+  </maintainer>
 	<longdescription>
 ZABBIX is software for monitoring of your applications, network and servers.
 ZABBIX supports both polling and trapping techniques to collect data from
