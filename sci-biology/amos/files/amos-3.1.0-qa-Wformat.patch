@@ -1,0 +1,136 @@
+Fix QA warnings, due to using incorrect format specifiers in printf:
+* contig-cmp.cc:237:50: warning: format ‘%u’ expects argument of type ‘unsigned int’,
+* but argument 3 has type ‘std::vector<Contig_t>::size_type {aka long unsigned int}’ [-Wformat=]
+*     fprintf (stderr, "%u b contigs\n", b . size ());
+
+--- a/src/Align/align.cc
++++ b/src/Align/align.cc
+@@ -1936,7 +1936,7 @@
+    n = align . size ();
+    con = consensus . c_str ();
+ 
+-   fprintf (fp, "\nConsensus len = %d\n", consensus . length ());
++   fprintf (fp, "\nConsensus len = %zu\n", consensus . length ());
+ 
+    for  (i = 0;  i < n;  i ++)
+      {
+@@ -3936,7 +3936,7 @@
+         }
+ 
+       // Array of sum of quality scores in the slice for A,C,G,T,- resp.
+-      for (j = 0; j < 6; j ++)
++      for (j = 0; j < 5; j ++)
+         qvsum [j] = 0;
+ 
+       int nof_ambiguities = 0;
+--- a/src/Align/align_poly.cc
++++ b/src/Align/align_poly.cc
+@@ -1761,7 +1761,7 @@
+    n = align . size ();
+    con = consensus . c_str ();
+ 
+-   fprintf (fp, "\nConsensus len = %d\n", consensus . length ());
++   fprintf (fp, "\nConsensus len = %zu\n", consensus . length ());
+    for  (i = 0;  i < n;  i ++)
+      {
+       fprintf (fp, "\nString #%d:\n", i);
+--- a/src/Align/count-qmers.cc
++++ b/src/Align/count-qmers.cc
+@@ -191,8 +191,8 @@
+ 
+     PrintMers(mer_table, min_count);
+ 
+-    fprintf(stderr, "reporter:counter:asm,reads_total,%ld\n", COUNT);
+-    fprintf(stderr, "reporter:counter:asm,reads_bp,%ld\n",    LEN);
++    fprintf(stderr, "reporter:counter:asm,reads_total,%lld\n", COUNT);
++    fprintf(stderr, "reporter:counter:asm,reads_bp,%lld\n",    LEN);
+   }
+   catch (Exception_t & e)
+   {
+--- a/src/Align/kmer-cov.cc
++++ b/src/Align/kmer-cov.cc
+@@ -485,7 +485,7 @@
+           Kmer_Len = s . length ();
+       else if  (Kmer_Len != int (s . length ()))
+           {
+-           sprintf (Clean_Exit_Msg_Line, "New kmer \"%s\" length is %d instead of %d",
++           sprintf (Clean_Exit_Msg_Line, "New kmer \"%s\" length is %zu instead of %d",
+                 s . c_str (), s . length (), Kmer_Len);
+            Clean_Exit (Clean_Exit_Msg_Line, __FILE__, __LINE__);
+           }
+--- a/src/Align/kmer-cov-plot.cc
++++ b/src/Align/kmer-cov-plot.cc
+@@ -316,7 +316,7 @@
+     }
+     else if  (Kmer_Len != int (s . length ()))
+     {
+-      sprintf (Clean_Exit_Msg_Line, "New kmer \"%s\" length is %d instead of %d",
++      sprintf (Clean_Exit_Msg_Line, "New kmer \"%s\" length is %zu instead of %d",
+                s . c_str (), s . length (), Kmer_Len);
+       Clean_Exit (Clean_Exit_Msg_Line, __FILE__, __LINE__);
+     }
+--- a/src/Align/make-consensus.cc
++++ b/src/Align/make-consensus.cc
+@@ -303,7 +303,7 @@
+             break;
+         }
+ 
+-        sprintf (sid, "%ld", ++layout_id);
++        sprintf (sid, "%u", ++layout_id);
+         cid = string (sid);
+         ID_t lid = layout.getIID ();
+         if (lid == 0)
+--- a/src/Align/make-consensus_poly.cc
++++ b/src/Align/make-consensus_poly.cc
+@@ -279,7 +279,7 @@
+ 		   break;
+ 	       }
+ 		 
+-	       sprintf(sid, "%ld", ++layout_id);
++	       sprintf(sid, "%u", ++layout_id);
+ 	       cid = string(sid);
+ 	       ID_t lid = layout.getIID();
+ 	       if (lid == 0) {
+--- a/src/Align/simple-overlap.cc
++++ b/src/Align/simple-overlap.cc
+@@ -422,7 +422,7 @@
+            "Options:\n"
+            "  -a       Also show alignments of overlaps \n"
+            "  -E <x>   Maximum error rate for overlaps is <x>\n"
+-           "           e.g., -E 0.06 for 6% error rate\n"
++           "           e.g., -E 0.06 for 6%% error rate\n"
+            "  -F       Input is a fasta file\n"
+            "  -h       Print this usage message\n"
+            "  -o <n>   Set minimum overlap length to <n>\n"
+--- a/src/Compare/contig-cmp.cc
++++ b/src/Compare/contig-cmp.cc
+@@ -145,7 +145,7 @@
+ 
+    fclose (fp);
+ 
+-   fprintf (stderr, "%u a contigs\n", a . size ());
++   fprintf (stderr, "%zu a contigs\n", a . size ());
+    vector <Unitig_t>  a_contig (max_id + 1);
+    n = a . size ();
+    for  (i = 0;  i < n;  i ++)
+@@ -234,7 +234,7 @@
+ 
+    fclose (fp);
+ 
+-   fprintf (stderr, "%u b contigs\n", b . size ());
++   fprintf (stderr, "%zu b contigs\n", b . size ());
+    vector <Unitig_t>  b_contig (max_id + 1);
+    n = b . size ();
+    for  (i = 0;  i < n;  i ++)
+--- a/src/Staden/progs/trace_convert.c
++++ b/src/Staden/progs/trace_convert.c
+@@ -6,6 +6,9 @@
+ #include "traceType.h"
+ #include "seqIOABI.h"
+ 
++#include <fcntl.h>
++#include <unistd.h>
++
+ static char fileIdentifier[] = "$Id$";
+ 
+ struct opts {
