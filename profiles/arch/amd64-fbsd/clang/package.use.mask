@@ -5,7 +5,7 @@
 # Build libcxxrt over libgcc_s since that is what clang defaults to.
 sys-libs/libcxxrt libunwind
 
-# Needs to be fixed: cxx useflag enables plugins and gold. 
+# Needs to be fixed: cxx useflag enables plugins and gold.
 # gold fails to build with clang:
 # https://bugs.gentoo.org/show_bug.cgi?id=427344
 # http://llvm.org/bugs/show_bug.cgi?id=12299
@@ -14,3 +14,7 @@ sys-devel/binutils cxx
 # Force openssl on curl since cmakes needs it and is in @system because of
 # libcxx on this profile. Mask the other ssl providers.
 net-misc/curl curl_ssl_axtls curl_ssl_gnutls curl_ssl_nss curl_ssl_polarssl
+
+# Needs to be fixed: build fails with clang++
+# https://bugs.gentoo.org/show_bug.cgi?id=578506
+sys-libs/db cxx
