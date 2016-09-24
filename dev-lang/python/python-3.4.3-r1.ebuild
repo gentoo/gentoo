@@ -115,10 +115,6 @@ src_configure() {
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
-	# Ensure sed works as expected
-	# https://bugs.gentoo.org/594768
-	export LC_COLLATE=C
-
 	if [[ "$(gcc-major-version)" -ge 4 ]]; then
 		append-flags -fwrapv
 	fi
@@ -177,6 +173,10 @@ src_configure() {
 }
 
 src_compile() {
+	# Ensure sed works as expected
+	# https://bugs.gentoo.org/594768
+	local -x LC_ALL=C
+
 	# Avoid invoking pgen for cross-compiles.
 	touch Include/graminit.h Python/graminit.c || die
 
