@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="ASN.1 library"
 HOMEPAGE="https://www.gnu.org/software/libtasn1/"
@@ -29,16 +29,20 @@ PATCHES=(
 )
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
+pkg_setup() {
+	if use doc; then
+		DOCS+=( doc/libtasn1.pdf )
+		HTML_DOCS=( doc/reference/html/. )
+	fi
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 multilib_src_configure() {
 	local myeconfargs
 	[[ "${VALGRIND_TESTS}" == "0" ]] && myeconfargs+=( --disable-valgrind-tests )
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	if use doc ; then
-		dodoc doc/libtasn1.pdf
-		dohtml doc/reference/html/*
-	fi
 }
