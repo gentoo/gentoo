@@ -15622,7 +15622,7 @@ sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management fra
 sci-biology/hmmer 2.3.2-r3 3.0: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.04 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
-sci-biology/iqpnni 3.2 3.3.1 3.3.2: Important Quartet Puzzling and NNI Operation
+sci-biology/iqpnni 3.3.1 3.3.2-r1: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03 2.03-r1: Global and progressive multiple sequence alignment
 sci-biology/lagan 2.0-r3: The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
 sci-biology/last 230 299: Genome-scale comparison of biological sequences
