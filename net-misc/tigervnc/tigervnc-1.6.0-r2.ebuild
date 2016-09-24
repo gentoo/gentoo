@@ -18,7 +18,7 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86"
-IUSE="gnutls java +opengl pam server +xorgmodule"
+IUSE="+drm gnutls java +opengl pam server +xorgmodule"
 
 RDEPEND="virtual/jpeg:0
 	sys-libs/zlib
@@ -39,6 +39,7 @@ RDEPEND="virtual/jpeg:0
 		>=x11-misc/xkeyboard-config-2.4.1-r3
 		opengl? ( >=app-eselect/eselect-opengl-1.3.1-r1 )
 		xorgmodule? ( =x11-base/xorg-server-${XSERVER_VERSION%.*}* )
+		drm? ( x11-libs/libdrm )
 	)
 	!net-misc/vnc
 	!net-misc/tightvnc
@@ -108,6 +109,7 @@ src_configure() {
 		cd unix/xserver || die
 		econf \
 			$(use_enable opengl glx) \
+			$(use_enable drm libdrm) \
 			--disable-config-hal \
 			--disable-config-udev \
 			--disable-devel-docs \
@@ -145,7 +147,7 @@ src_compile() {
 	if use server; then
 		# deps of the vnc module and the module itself
 		local d subdirs=(
-			fb xfixes Xext dbe glx randr render damageext miext Xi xkb
+			fb xfixes Xext dbe $(usex opengl glx "") randr render damageext miext Xi xkb
 			composite dix mi os hw/vnc
 		)
 		for d in "${subdirs[@]}"; do
