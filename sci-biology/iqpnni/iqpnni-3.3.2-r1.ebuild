@@ -1,6 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 DESCRIPTION="Important Quartet Puzzling and NNI Operation"
 HOMEPAGE="http://www.cibiv.at/software/iqpnni/"
@@ -14,13 +16,16 @@ IUSE="doc"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cpp14.patch" # bug #594332
+)
+
 src_install() {
 	dobin src/iqpnni
 
-	dodoc ChangeLog AUTHORS README NEWS TODO
 	if use doc ; then
-		dohtml manual/iqpnni-manual.html
-		insinto /usr/share/doc/${P}
-		doins manual/iqpnni-manual.pdf
+		HTML_DOCS+=( manual/iqpnni-manual.html )
+		dodoc manual/iqpnni-manual.pdf
 	fi
+	einstalldocs
 }
