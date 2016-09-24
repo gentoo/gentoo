@@ -7144,6 +7144,7 @@ sci-mathematics/minisat:extended-solver - Build extended version of SAT solver w
 sci-mathematics/msieve:ecm - Enable support for the GMP-ECM library
 sci-mathematics/normaliz:extras - Install sci-mathematics/Macaulay2 and sci-mathematics/singular packages as shipped by upstream
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
+sci-mathematics/nusmv:zchaff - Enable support for zChaff
 sci-mathematics/octave:glpk - Add support for sci-mathematics/glpk for linear programming
 sci-mathematics/octave:graphicsmagick - Add support for media-gfx/graphicsmagick
 sci-mathematics/octave:gui - Enable the graphical user interface

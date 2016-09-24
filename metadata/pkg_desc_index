@@ -16236,7 +16236,7 @@ sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraph
 sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
-sci-mathematics/nusmv 2.3.1 2.5.0 2.5.2 2.5.3 2.5.4: NuSMV: new symbolic model checker
+sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
 sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2-r1 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r2 4.0.3: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
@@ -16247,7 +16247,7 @@ sci-mathematics/polymake 2.13 2.14 2.14-r1: research tool for polyhedral geometr
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1 0.10.2: Program for statistical analysis of sampled data
-sci-mathematics/pymc 2.2 2.3.6 9999: Markov chain Monte Carlo for Python
+sci-mathematics/pymc 2.3.6: Markov Chain Monte Carlo sampling toolkit
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4: Educational tool for relational algebra
@@ -16274,10 +16274,10 @@ sci-misc/cdfplayer 10.4.0: Wolfram Player for the interactive Computable Documen
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17 4.18: FITS file format checker
 sci-misc/flashdot 1.1.4 1.1.4-r1: Generator for psychophysical experiments
-sci-misc/gato 1.1.2: Graph Animation Toolbox
-sci-misc/gt-itm 19961004-r1: Routines to generate and analyze graphs using different models for internetwork topology
+sci-misc/gato 1.2.2: Graph Animation Toolbox
+sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
-sci-misc/lttoolbox 3.1.0 3.2.0: Toolbox for lexical processing, morphological analysis and generation of words
+sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
 sci-misc/mendeleydesktop 1.16.3: Research management tool for desktop and web
 sci-misc/nco 3.9.9 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.1 2.1.2: X-based viewer for netCDF files
@@ -16322,7 +16322,7 @@ sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.10 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
-sci-visualization/fig2sxd 0.21: Utility to convert files in xfig format to OpenOffice.org Draw format
+sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
 sci-visualization/fityk 1.2.1 1.2.9: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1: Java Mathematical Graphing System
