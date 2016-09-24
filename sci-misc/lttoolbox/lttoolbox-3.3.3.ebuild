@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils autotools
+EAPI=6
+inherit autotools
 
 DESCRIPTION="Toolbox for lexical processing, morphological analysis and generation of words"
-HOMEPAGE="http://apertium.sourceforge.net"
+HOMEPAGE="https://www.apertium.org"
 SRC_URI="mirror://sourceforge/apertium/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-flags.patch
+	default
 	eautoreconf
 }
 
