@@ -45,7 +45,7 @@ PATCHES=(
 do_python() {
 	if use python; then
 		pushd lang/python > /dev/null || die
-		binary_builddir="${S}" distutils-r1_src_${EBUILD_PHASE}
+		distutils-r1_src_${EBUILD_PHASE}
 		popd > /dev/null
 	fi
 }
@@ -71,20 +71,13 @@ src_configure() {
 		--enable-languages="${languages[*]}" \
 		$(use_enable static-libs static)
 
-	python_conf() {
-		econf --enable-languages=
-	}
-	use python && python_foreach_impl python_conf
+	use python && make -C lang/python prepare
+
 	do_python
 }
 
 src_compile() {
 	default
-
-	python_build() {
-		make -C lang/python prepare
-	}
-	use python && python_foreach_impl python_build
 	do_python
 }
 
