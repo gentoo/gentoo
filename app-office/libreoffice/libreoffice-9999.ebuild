@@ -98,6 +98,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
+	app-text/libstaroffice
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
@@ -106,11 +107,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	dev-lang/perl
-	>=dev-libs/boost-1.55:=
+	dev-libs/boost:=
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	>=dev-libs/liborcus-0.11.2
+	>=dev-libs/liborcus-0.12.1
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
@@ -128,6 +129,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
+	media-libs/libzmf
 	net-libs/neon
 	net-misc/curl
 	net-nds/openldap
@@ -141,7 +143,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
-	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
+	collada? ( media-libs/opencollada )
 	cups? ( net-print/cups )
 	dbus? ( dev-libs/dbus-glib )
 	eds? (
@@ -162,7 +164,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
-		>=x11-libs/gtk+-3.8:3
+		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
@@ -205,7 +207,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.0:1=
+	>=dev-util/mdds-1.2.2:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
