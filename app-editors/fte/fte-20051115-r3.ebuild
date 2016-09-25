@@ -47,7 +47,8 @@ src_prepare() {
 		"${FILESDIR}"/fte-gcc34 \
 		"${FILESDIR}"/${PN}-new_keyword.patch \
 		"${FILESDIR}"/${PN}-slang.patch \
-		"${FILESDIR}"/${PN}-interix.patch
+		"${FILESDIR}"/${PN}-interix.patch \
+		"${FILESDIR}"/${PN}-cpp14.patch # bug #595048
 
 	[[ -e /usr/include/linux/keyboard.h ]] && \
 		sed /usr/include/linux/keyboard.h -e '/wait.h/d' > src/hacked_keyboard.h
