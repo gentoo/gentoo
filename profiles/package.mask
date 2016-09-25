@@ -214,11 +214,6 @@ app-crypt/hashcat-gui
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Michael Palimaka <kensington@gentoo.org> (24 Aug 2016)
-# No longer produced by upstream and no longer used by anything.
-# Masked for removal in 30 days.
-kde-apps/libkdeedu
-
 # Christian Tietz <christian.tietz@mailbox.org> (23 Aug 2016)
 # Depends on masked xfce-base/exo-0.11.1
 =xfce-extra/xfce4-whiskermenu-plugin-2.0.1

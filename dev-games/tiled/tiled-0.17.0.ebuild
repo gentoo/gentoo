@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bjorn/tiled/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
