@@ -8491,7 +8491,7 @@ dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
 dev-python/yubiotp 0.2.1: Python library for verifying YubiKey OTP tokens, both locally and through a Yubico web service
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
-dev-python/zc-buildout 2.3.1: System for managing development buildouts
+dev-python/zc-buildout 2.3.1 2.5.3: System for managing development buildouts
 dev-python/zeroconf 0.17.4 0.17.5: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zfec 1.4.24: Fast erasure codec which can be used with the command-line, C, Python, or Haskell
 dev-python/zope-component 4.2.2 4.3.0: Zope Component Architecture
