@@ -7,6 +7,8 @@ EAPI=6
 inherit kde4-base
 
 DESCRIPTION="A library for image plugins accross KDE applications"
+SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
+
 KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
