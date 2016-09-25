@@ -139,7 +139,7 @@ app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for 
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
-app-admin/lsyncd 2.1.5 2.1.6: Live Syncing (Mirror) Daemon
+app-admin/lsyncd 2.1.5 2.1.6 2.1.6-r1: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
@@ -11225,7 +11225,7 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.18.0 3.20.0: A quick previewer for Nautilus, the GNOME file manager
-gnome-extra/synapse 0.2.99.1: A program launcher in the style of GNOME Do
+gnome-extra/synapse 0.2.99.1 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.18.1-r1 3.20.1: Help browser for GNOME
 gnome-extra/yelp-xsl 3.16.1 3.18.1 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
@@ -11439,7 +11439,7 @@ kde-apps/kglobalaccel 16.04.3: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 16.04.3 16.08.1: Game of action and puzzle solving by KDE
 kde-apps/kgpg 16.04.3 16.08.1: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 16.04.3 16.08.1: Classical hangman game by KDE
-kde-apps/khelpcenter 5.5.5-r1 5.6.2-r1 16.04.3 16.08.1: The KDE Help Center
+kde-apps/khelpcenter 16.04.3 16.08.1: The KDE Help Center
 kde-apps/kholidays 16.04.3 16.08.1: Library to determine holidays and other special events for a geographical region
 kde-apps/kiconfinder 16.04.3: Finds an icon based on its name
 kde-apps/kidentitymanagement 16.08.1: Library for managing identitites
@@ -11829,47 +11829,47 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
-kde-plasma/bluedevil 5.6.5 5.7.4 5.7.5: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.6.5-r1 5.7.4 5.7.5: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.6.5 5.7.4 5.7.5: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.6.5 5.7.4 5.7.5: Official GTK+ port of KDE's Breeze widget style
-kde-plasma/breeze-plymouth 5.6.5 5.7.4 5.7.5: Breeze theme for Plymouth
-kde-plasma/kactivitymanagerd 5.6.5 5.7.4 5.7.5: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.6.5 5.7.4 5.7.5: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.6.5 5.7.4-r1 5.7.5: KDE Plasma systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.6.5 5.7.4 5.7.5: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.6.5 5.7.4 5.7.5: Extra Plasma applets and engines
-kde-plasma/kgamma 5.6.5 5.7.4 5.7.5: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.6.5 5.7.4 5.7.5: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.6.5 5.7.4 5.7.5: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.6.5 5.7.4 5.7.5: KDE Plasma menu editor
-kde-plasma/kscreen 5.6.5-r1 5.7.4 5.7.5: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.6.5 5.7.4 5.7.5: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 0.5.3-r1 5.6.5 5.7.4 5.7.5: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.6.5 5.7.4 5.7.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.6.5-r1 5.7.4 5.7.5: KWallet PAM module to not enter password again
-kde-plasma/kwayland-integration 5.6.5 5.7.4 5.7.5: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.6.5-r1 5.7.4 5.7.5: KDE window manager
-kde-plasma/kwrited 5.6.5 5.7.4 5.7.5: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.6.5 5.6.5-r1 5.7.4 5.7.5: Plasma screen management library
-kde-plasma/libksysguard 5.6.5 5.7.4 5.7.5: Task management and system monitoring library
-kde-plasma/milou 5.6.5 5.7.4 5.7.5: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.6.5 5.7.4 5.7.5: Oxygen visual style for the Plasma desktop
+kde-plasma/bluedevil 5.6.5 5.7.5: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.6.5-r1 5.7.5: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.6.5 5.7.5: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.6.5 5.7.5: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/breeze-plymouth 5.6.5 5.7.5: Breeze theme for Plymouth
+kde-plasma/kactivitymanagerd 5.6.5 5.7.5: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.6.5 5.7.5: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.6.5 5.7.5: KDE Plasma systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.6.5 5.7.5: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.6.5 5.7.5: Extra Plasma applets and engines
+kde-plasma/kgamma 5.6.5 5.7.5: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.6.5 5.7.5: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.6.5 5.7.5: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.6.5 5.7.5: KDE Plasma menu editor
+kde-plasma/kscreen 5.6.5-r1 5.7.5: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.6.5 5.7.5: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 0.5.3-r1 5.6.5 5.7.5: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.6.5 5.7.5: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.6.5-r1 5.7.5: KWallet PAM module to not enter password again
+kde-plasma/kwayland-integration 5.6.5 5.7.5: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.6.5-r1 5.7.5: KDE window manager
+kde-plasma/kwrited 5.6.5 5.7.5: KDE daemon listening for wall and write messages
+kde-plasma/libkscreen 5.6.5 5.6.5-r1 5.7.5: Plasma screen management library
+kde-plasma/libksysguard 5.6.5 5.7.5: Task management and system monitoring library
+kde-plasma/milou 5.6.5 5.7.5: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.6.5 5.7.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.6.5 5.7.4 5.7.5: KDE Plasma desktop
-kde-plasma/plasma-integration 5.6.5 5.7.4 5.7.5: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-desktop 5.6.5 5.7.5: KDE Plasma desktop
+kde-plasma/plasma-integration 5.6.5 5.7.5: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-mediacenter 5.6.5 5.7.3 5.7.5: Unified media experience for any device capable of running KDE Plasma
-kde-plasma/plasma-meta 5.6.5 5.7.4 5.7.5: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.6.5 5.7.4 5.7.5: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.6.5 5.7.4 5.7.5: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.6.5 5.7.4 5.7.5: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.6.5.1-r2 5.7.4 5.7.5: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.6.5 5.7.4 5.7.5: Additional wallpapers for the Plasma workspace
-kde-plasma/polkit-kde-agent 5.6.5 5.7.4 5.7.5: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.6.5 5.7.4 5.7.4-r1 5.7.5: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.6.5 5.7.4 5.7.5: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.6.5 5.7.4 5.7.5: System settings utility
-kde-plasma/user-manager 5.6.5 5.7.4 5.7.5: Simple system settings module to manage the users of your system
+kde-plasma/plasma-meta 5.6.5 5.7.5: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.6.5 5.7.5: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.6.5 5.7.5: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.6.5 5.7.5: Useful applications for Plasma development
+kde-plasma/plasma-workspace 5.6.5.1-r2 5.7.5: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.6.5 5.7.5: Additional wallpapers for the Plasma workspace
+kde-plasma/polkit-kde-agent 5.6.5 5.7.5: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.6.5 5.7.5: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.6.5 5.7.5: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.6.5 5.7.5: System settings utility
+kde-plasma/user-manager 5.6.5 5.7.5: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
