@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
@@ -15,18 +15,22 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="media-libs/libpng
+RDEPEND="media-libs/libpng:0=
 	>=sci-libs/netcdf-4.1[hdf5]
 	x11-libs/libXaw
 	sci-libs/udunits"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	default
+
 	doman data/${PN}.1
+
 	insinto /usr/share/X11/app-defaults
 	newins Ncview-appdefaults Ncview
+
 	insinto /usr/share/${PN}
 	doins *.ncmap
+
 	make_desktop_entry ${PN}
 }
