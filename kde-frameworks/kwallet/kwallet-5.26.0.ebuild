@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 	man? ( $(add_frameworks_dep kdoctools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-boost-header.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package gpg Gpgme)
