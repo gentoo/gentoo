@@ -2014,7 +2014,7 @@ app-office/akonadi-server 1.13.1_pre20160203-r1: The server part of Akonadi
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0 4.1.0: a text-based calendar and scheduling application
 app-office/calligra 2.9.11: KDE Office Suite
-app-office/calligra-l10n 2.9.11: Calligra localization package
+app-office/calligra-l10n 2.9.11 2.9.11-r1: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
