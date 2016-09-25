@@ -1,8 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
 VIM_PLUGIN_VIM_VERSION="7.2"
 
 inherit vim-plugin
@@ -16,8 +17,8 @@ IUSE=""
 
 VIM_PLUGIN_HELPFILES="txtfmt.txt"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_prepare() {
-	rm indent_patch.txt
+	rm indent_patch.txt || die
 }
