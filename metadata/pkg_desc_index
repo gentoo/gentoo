@@ -16030,7 +16030,7 @@ sci-libs/fftw 2.1.5-r8 2.1.5-r9 3.3.4 3.3.5-r1 3.3.5-r2 9999: Fast C library for
 sci-libs/flann 1.8.4-r1 1.9.1 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
 sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
-sci-libs/galib 2.4.6 2.4.7: Library for genetic algorithms in C++ programs
+sci-libs/galib 2.4.6 2.4.7 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0-r1 2.0.1 2.0.2: Translator library for raster geospatial data formats (includes OGR support)
