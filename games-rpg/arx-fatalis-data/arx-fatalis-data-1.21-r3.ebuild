@@ -14,7 +14,7 @@ SRC_URI="cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFat
 
 LICENSE="cdinstall? ( ArxFatalis-EULA-JoWooD ) gog? ( GOG-EULA )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gog"
 REQUIRED_USE="^^ ( cdinstall gog )"
 RESTRICT="binchecks mirror gog? ( fetch )"
