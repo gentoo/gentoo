@@ -29,6 +29,7 @@ RDEPEND="app-crypt/gnupg
 	python? ( ${PYTHON_DEPS} )"
 		#doc? ( app-doc/doxygen[dot] )
 DEPEND="${RDEPEND}
+	python? ( dev-lang/swig )
 	qt5? (
 		test? ( dev-qt/qttest:5 )
 	)"
