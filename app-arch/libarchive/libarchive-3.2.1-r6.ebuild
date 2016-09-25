@@ -12,25 +12,28 @@ SRC_URI="http://www.libarchive.org/downloads/${P}.tar.gz"
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl +bzip2 +e2fsprogs expat +iconv kernel_linux libressl lz4 +lzma lzo nettle static-libs +threads xattr +zlib"
+IUSE="acl +bzip2 +e2fsprogs expat +iconv kernel_linux libressl lz4 +lzma lzo nettle static static-libs +threads xattr +zlib"
+REQUIRED_USE="static? ( static-libs )"
 
-RDEPEND="
-	acl? ( virtual/acl[${MULTILIB_USEDEP}] )
-	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
-	expat? ( dev-libs/expat[${MULTILIB_USEDEP}] )
-	!expat? ( dev-libs/libxml2[${MULTILIB_USEDEP}] )
-	iconv? ( virtual/libiconv[${MULTILIB_USEDEP}] )
+LIB_DEPEND="
+	acl? ( virtual/acl[${MULTILIB_USEDEP},static-libs(+)] )
+	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP},static-libs(+)] )
+	expat? ( dev-libs/expat[${MULTILIB_USEDEP},static-libs(+)] )
+	!expat? ( dev-libs/libxml2[${MULTILIB_USEDEP},static-libs(+)] )
+	iconv? ( virtual/libiconv[${MULTILIB_USEDEP},static-libs(+)] )
 	kernel_linux? (
-		xattr? ( sys-apps/attr[${MULTILIB_USEDEP}] )
+		xattr? ( sys-apps/attr[${MULTILIB_USEDEP},static-libs(+)] )
 	)
-	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
-	lzma? ( app-arch/xz-utils[threads=,${MULTILIB_USEDEP}] )
-	lzo? ( >=dev-libs/lzo-2[${MULTILIB_USEDEP}] )
-	nettle? ( dev-libs/nettle:0=[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
+	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP},static-libs(+)] )
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs(+)] )
+	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP},static-libs(+)] )
+	lzma? ( app-arch/xz-utils[threads=,${MULTILIB_USEDEP},static-libs(+)] )
+	lzo? ( >=dev-libs/lzo-2[${MULTILIB_USEDEP},static-libs(+)] )
+	nettle? ( dev-libs/nettle:0=[${MULTILIB_USEDEP},static-libs(+)] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP},static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//,static-libs(+)} )"
 DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )
 	kernel_linux? (
 		virtual/os-headers
 		e2fsprogs? ( sys-fs/e2fsprogs )
@@ -40,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-tests-gnu99.patch"
 	"${FILESDIR}/${P}-osx-fix-acl.patch" #587890
 	"${FILESDIR}/${P}-xz-utils-thread-detection.patch" #589654
+	"${FILESDIR}/${P}-static.patch" #591096
 )
 
 src_prepare() {
@@ -65,11 +69,15 @@ multilib_src_configure() {
 		$(use_with nettle)
 		$(use_with zlib)
 	)
-	if multilib_is_native_abi ; then myconf+=(
-		--enable-bsdcat=$(tc-is-static-only && echo static || echo shared)
-		--enable-bsdcpio=$(tc-is-static-only && echo static || echo shared)
-		--enable-bsdtar=$(tc-is-static-only && echo static || echo shared)
-	); else myconf+=(
+	if multilib_is_native_abi ; then
+		local link=shared
+		use static || tc-is-static-only && link=static
+		myconf+=(
+		--enable-bsdcat=${link}
+		--enable-bsdcpio=${link}
+		--enable-bsdtar=${link}
+		)
+	else myconf+=(
 		--disable-bsdcat
 		--disable-bsdcpio
 		--disable-bsdtar
@@ -103,6 +111,7 @@ multilib_src_install() {
 
 		# Create symlinks for FreeBSD
 		if ! use prefix && [[ ${CHOST} == *-freebsd* ]]; then
+			local bin
 			# Exclude cat for the time being #589876
 			for bin in cpio tar; do
 				dosym bsd${bin} /usr/bin/${bin}
