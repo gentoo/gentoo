@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="lapack"
 
-RDEPEND="dev-lang/perl:=
+RDEPEND="sys-libs/zlib
+	dev-lang/perl:=
 	lapack? ( virtual/lapack )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
