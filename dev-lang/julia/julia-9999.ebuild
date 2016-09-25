@@ -125,6 +125,7 @@ src_configure() {
 		USE_SYSTEM_SUITESPARSE=1
 		USE_SYSTEM_ZLIB=1
 		VERBOSE=1
+		libdir="${EROOT}/usr/$(get_libdir)"
 	EOF
 
 }
