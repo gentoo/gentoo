@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
+# Mask Exim RCs
+=mail-mta/exim-4.88_rc1
+
 # Christoph Junghans <ottxor@gentoo.org> (20 Sep 2016)
 # Switch to a non-stable scheme  following google-chrome
 # please unmask latest version yourself
