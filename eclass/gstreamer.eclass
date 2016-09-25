@@ -171,7 +171,7 @@ gstreamer_get_plugin_dir() {
 # @USAGE: gstreamer_system_link gst-libs/gst/audio:gstreamer-audio [...]
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
-# librairies.
+# libraries.
 # Takes a list of path fragments and corresponding pkgconfig libraries
 # separated by colon (:). Will replace the path fragment by the output of
 # pkgconfig.
