@@ -7,6 +7,8 @@ EAPI=6
 inherit kde4-base
 
 DESCRIPTION="SANE Library interface for KDE"
+SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
+
 KEYWORDS="amd64 x86"
 IUSE="debug"
 LICENSE="LGPL-2"
