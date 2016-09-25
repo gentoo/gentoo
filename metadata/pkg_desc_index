@@ -16264,7 +16264,7 @@ sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomi
 sci-mathematics/snns 4.2-r8 4.2-r9 4.3-r2: Stuttgart Neural Network Simulator
 sci-mathematics/spass 3.7: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of distributed software systems
-sci-mathematics/topcom 0.17.4-r1: Computing Triangulations Of Point Configurations and Oriented Matroids
+sci-mathematics/topcom 0.17.4-r1 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/wxmaxima 13.04.2 15.08.2 16.04.1 16.04.2: Graphical frontend to Maxima, using the wxWidgets toolkit
