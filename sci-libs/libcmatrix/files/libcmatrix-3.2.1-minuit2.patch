@@ -1,5 +1,5 @@
---- configure-libraries.ac	2008-03-04 00:48:46.000000000 +0100
-+++ configure-libraries.ac.new	2009-03-19 18:22:21.000000000 +0100
+--- a/configure-libraries.ac
++++ b/configure-libraries.ac
 @@ -14,8 +14,8 @@
  	fi
  	if test x$FOUNDMINUIT = xyes; then

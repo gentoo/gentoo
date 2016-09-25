@@ -1,18 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils
+inherit autotools
 
 MY_P="${PN}${PV}_lite"
 
 DESCRIPTION="lite version of pNMRsim"
 HOMEPAGE="http://www.dur.ac.uk/paul.hodgkinson/pNMRsim/"
-#SRC_URI="${HOMEPAGE}/${MY_P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
@@ -25,19 +22,24 @@ DEPEND="${RDEPEND}"
 
 RESTRICT=mirror
 
-S="${WORKDIR}"/${PN}R3
+S="${WORKDIR}/${PN}R3"
 
+DOCS=( CHANGES docs/cmatrix.pdf )
 PATCHES=(
-	"${FILESDIR}"/${PV}-shared.patch
-	"${FILESDIR}"/3.2.1-minuit2.patch
-	"${FILESDIR}"/3.2.1-gcc4.4.patch
-	"${FILESDIR}"/3.2.1-gcc4.6.patch
-	"${FILESDIR}"/3.2.1-gcc4.7.patch
-	"${FILESDIR}"/3.9.0-atlas.patch
-	"${FILESDIR}"/${P}-gcc5.2.patch
-	)
+	"${FILESDIR}/${PN}-3.11.0-shared.patch"
+	"${FILESDIR}/${PN}-3.2.1-minuit2.patch"
+	"${FILESDIR}/${PN}-3.2.1-gcc4.4.patch"
+	"${FILESDIR}/${PN}-3.2.1-gcc4.6.patch"
+	"${FILESDIR}/${PN}-3.2.1-gcc4.7.patch"
+	"${FILESDIR}/${PN}-3.9.0-atlas.patch"
+	"${FILESDIR}/${PN}-3.11.0-gcc5.2.patch"
+	"${FILESDIR}/${PN}-3.11.0-fix-c++14.patch"
+)
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
@@ -52,7 +54,7 @@ src_install() {
 	dolib.so lib/*.so*
 
 	insinto /usr/include/${PN}R3
-	doins include/*
+	doins -r include/.
 
-	dodoc CHANGES docs/*
+	einstalldocs
 }
