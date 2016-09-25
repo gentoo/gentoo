@@ -15693,7 +15693,7 @@ sci-biology/ucsc-genome-browser 260: The UCSC genome browser suite, also known a
 sci-biology/unafold 3.8 3.8-r1: Unified Nucleic Acid Folding and hybridization package
 sci-biology/update-blastdb 12.0.0: update_blastdb.pl for local blast db maintainance
 sci-biology/vaal 46233 46233-r2: Algorithm for detecting SNPs, indels, and other polymorphisms
-sci-biology/vcftools 0.1.12b: Tools for working with VCF (Variant Call Format) files
+sci-biology/vcftools 0.1.14: Tools for working with VCF (Variant Call Format) files
 sci-biology/velvet 1.0.18-r1 1.2.10: A sequence assembler for very short reads
 sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 5.4 6.1 7.0 7.0-r1: A de novo whole-genome shotgun DNA sequence assembler, also known as the Celera Assembler and CABOG
