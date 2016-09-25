@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Boosting Algorithm for Classification of Trees"
 HOMEPAGE="http://chasen.org/~taku/software/bact/"
@@ -17,6 +17,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-cpp14.patch" # bug #594312
+}
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
