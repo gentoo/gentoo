@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ src_prepare() {
 
 	ESELECT_PROF=reference
 
-	cp "${FILESDIR}"/eselect.blas.reference "${T}"/eselect.blas.reference || die
+	cp "${FILESDIR}"/eselect.blas.reference-r1 "${T}"/eselect.blas.reference || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.blas.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
