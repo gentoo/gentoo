@@ -4,18 +4,16 @@
 
 EAPI="5"
 
-inherit depend.apache eutils git-2 multilib user
+inherit depend.apache eutils multilib user
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="http://www.icinga.org/"
-EGIT_REPO_URI="https://github.com/Icinga/icingaweb2.git"
-EGIT_BRANCH="master"
-
+SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 ldap mysql nginx postgres"
 REQUIRED_USE="^^ ( apache2 nginx )"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
@@ -71,6 +69,7 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
+	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {
