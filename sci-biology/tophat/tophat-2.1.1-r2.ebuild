@@ -19,12 +19,13 @@ IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost:=
+	dev-libs/boost:=[threads]
 	sci-biology/samtools:0.1-legacy
 	sci-biology/bowtie:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	sci-biology/seqan:1.4"
+	sci-biology/seqan:1.4
+	>=sys-devel/autoconf-archive-2016.09.16"
 
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-seqan-samtools.patch"
@@ -51,6 +52,10 @@ src_prepare() {
 	# innocuous non-security flags, prevent log pollution
 	append-cflags -Wno-unused-but-set-variable -Wno-unused-variable
 	append-cppflags "$($(tc-getPKG_CONFIG) --cflags seqan-1.4)"
+
+	# remove ancient autoconf archive macros, wreaking havoc,
+	# depend on sys-devel/autoconf-archive instead, bug #594810
+	rm {ax_boost_thread,ax_boost_base}.m4 || die
 
 	eautoreconf
 }

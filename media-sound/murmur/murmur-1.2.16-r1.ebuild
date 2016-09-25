@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND=">=dev-libs/openssl-1.0.0b:0=
-	>=dev-libs/protobuf-2.2.0
+	>=dev-libs/protobuf-2.2.0:=
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dev-qt/qtcore:4[ssl]
