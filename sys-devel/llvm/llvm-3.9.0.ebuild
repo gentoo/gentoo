@@ -21,12 +21,17 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( http://dev.gentoo.org/~mgorny/dist/${PN}-3.9.0_rc3-manpages.tar.bz2 )"
 
+# Keep in sync with CMakeLists.txt
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Mips MSP430
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
+ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="clang debug default-compiler-rt default-libcxx doc gold libedit +libffi
 	lldb multitarget ncurses ocaml python +sanitize +static-analyzer test xml
-	video_cards_radeon elibc_musl kernel_Darwin kernel_FreeBSD"
+	elibc_musl kernel_Darwin kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
@@ -78,7 +83,9 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	lldb? ( clang xml )"
+	lldb? ( clang xml )
+	|| ( ${ALL_LLVM_TARGETS[*]} )
+	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
 S=${WORKDIR}/${P/_}.src
 
@@ -233,14 +240,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local targets
-	if use multitarget; then
-		targets=all
-	else
-		targets='host;BPF'
-		use video_cards_radeon && targets+=';AMDGPU'
-	fi
-
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
 		ffi_cflags=$(pkg-config --cflags-only-I libffi)
@@ -252,7 +251,7 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=ON
-		-DLLVM_TARGETS_TO_BUILD="${targets}"
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		-DLLVM_ENABLE_FFI=$(usex libffi)
