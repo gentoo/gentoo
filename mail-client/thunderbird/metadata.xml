@@ -12,8 +12,8 @@
 	<flag name="mozdom">Enable Mozilla's DOM inspector</flag>
 	<flag name="lightning">Enable app-global calendar support
 		(note 38.0 and above bundles calendar support when this flag is off)</flag>
-	<flag name="custom-optimization">Fine-tune custom compiler optimizations
-		(-Os, -O0, -O1, -O2, -O3)</flag>
+	<flag name="custom-optimization">Build with user-specified compiler optimizations
+		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
 	<flag name="jemalloc3">Enable or disable jemalloc3 (forced-on when supported prior to 38.0)</flag>
 	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>

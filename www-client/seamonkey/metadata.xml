@@ -11,8 +11,8 @@
   </maintainer>
 <use>
 	<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>
-	<flag name="custom-optimization">Fine-tune custom compiler
-		optimizations (-Os, -O0, -O1, -O2, -O3)</flag>
+	<flag name="custom-optimization">Build with user-specified compiler optimizations
+		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
