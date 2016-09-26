@@ -11,7 +11,7 @@ SRC_URI="http://linux.dell.com/biosdevname/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 CDEPEND="virtual/udev"
