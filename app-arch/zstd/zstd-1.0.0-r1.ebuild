@@ -12,3 +12,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
+src_compile() {
+	emake PREFIX="/usr" zstd
+	cd lib && emake PREFIX="/usr" libzstd
+}
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX="/usr" install
+}
