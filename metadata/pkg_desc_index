@@ -347,7 +347,7 @@ app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2: Featureful client/server netwo
 app-backup/borgbackup 1.0.7 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup system
 app-backup/btrbk 0.23.3 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 1.3.48-r1 1.4.40-r1 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
+app-backup/burp 1.3.48-r1 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -11888,7 +11888,7 @@ lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.6 0.1.7: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
-lxqt-base/liblxqt 0.10.0: Common base library for the LXQt desktop environment
+lxqt-base/liblxqt 0.10.0 0.11.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.1: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.10.0: LXQt about dialog
 lxqt-base/lxqt-admin 0.10.0: LXQt system administration tool
@@ -14682,7 +14682,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1 0.22.2 0.22.2-r1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22.2 0.22.2-r1: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6 7.0.7: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
@@ -16682,7 +16682,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.22 5.25 5.26-r1 5.27 5.28 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.36 0.9.38 0.9.38.2 0.9.40 0.9.40-r2 0.9.42: Security sandbox for any type of processes
+sys-apps/firejail 0.9.38 0.9.38.2 0.9.40-r2 0.9.42: Security sandbox for any type of processes
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
