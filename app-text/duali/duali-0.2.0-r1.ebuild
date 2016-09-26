@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/arabeyes/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
