@@ -3,7 +3,10 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>masterzorag@gmail.com</email>
-		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="additions">Install Guest System Tools ISO</flag>
