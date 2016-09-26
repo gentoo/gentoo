@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ DEPEND="app-eselect/eselect-opencascade
 	gl2ps? ( x11-libs/gl2ps )
 	java? ( >=virtual/jdk-0:= )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( =sci-libs/${MY_VTK}* )"
+	vtk? ( || ( =sci-libs/${MY_VTK}*[imaging] =sci-libs/${MY_VTK}*[qt4] =sci-libs/${MY_VTK}*[rendering] =sci-libs/${MY_VTK}*[views] =sci-libs/${MY_VTK}*[all-modules] ) )"
 RDEPEND="${DEPEND}"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
