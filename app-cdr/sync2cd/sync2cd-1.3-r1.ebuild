@@ -14,7 +14,7 @@ SRC_URI="http://www.calins.ch/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="cdr dvdr"
 
 RDEPEND="virtual/eject
