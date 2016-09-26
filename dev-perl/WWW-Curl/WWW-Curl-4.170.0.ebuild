@@ -12,7 +12,7 @@ DESCRIPTION="Perl extension interface for libcurl"
 
 LICENSE="|| ( MPL-1.0 MPL-1.1 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="net-misc/curl"
