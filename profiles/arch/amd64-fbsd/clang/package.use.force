@@ -14,4 +14,4 @@ sys-libs/libcxx static-libs abi_x86_32
 net-misc/curl ssl curl_ssl_openssl
 
 # We obviously need clang
-sys-devel/llvm clang static-analyzer
+sys-devel/llvm clang static-analyzer default-compiler-rt default-libcxx
