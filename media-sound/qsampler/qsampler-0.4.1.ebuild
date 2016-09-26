@@ -7,33 +7,33 @@ inherit eutils qmake-utils
 
 DESCRIPTION="A graphical frontend to the LinuxSampler engine"
 HOMEPAGE="http://www.linuxsampler.org/"
-SRC_URI="http://download.linuxsampler.org/packages/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +libgig qt4 +qt5"
-REQUIRED_USE="^^ ( qt4 qt5 )"
+IUSE="debug +libgig"
 
 DEPEND="media-libs/alsa-lib
 	>=media-libs/liblscp-0.5.6:=
 	x11-libs/libX11
 	libgig? ( >=media-libs/libgig-3.3.0:= )
-	qt4? ( dev-qt/qtcore:4
-		dev-qt/qtgui:4 )
-	qt5? ( dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5 )"
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}
 	>=media-sound/linuxsampler-0.5"
 DEPEND="${DEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )"
+	dev-qt/linguist-tools:5"
 
 src_configure() {
-	econf $(use_enable debug) \
+	ac_qmake="$(qt5_get_bindir)/qmake" \
+		econf $(use_enable debug) \
 		$(use_enable libgig) \
-		$(use_enable qt4) \
-		$(use_enable qt5)
+		--disable-qt4
+	cd "${S}/src"
+	eqmake5 src.pro -o Makefile
 }
 
 src_install() {

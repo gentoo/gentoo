@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable debug) \
-		$(use_enable qt5) \
+		$(use_enable !qt5 qt4) \
 		--with-qt"$(usex qt5 "5=$(qt5_get_bindir)/.." "4=$(qt4_get_bindir)/..")"
 
 	# Emulate what the Makefile does, so that we can get the correct

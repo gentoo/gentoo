@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,12 +6,12 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/pluginlib"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit ros-catkin
 
 DESCRIPTION="Provides tools for writing and dynamically loading plugins using the ROS build infrastructure"
-LICENSE="BSD Boost-1.0"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
