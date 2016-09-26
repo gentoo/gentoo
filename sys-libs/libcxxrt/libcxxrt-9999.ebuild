@@ -28,8 +28,8 @@ else
 fi
 IUSE="libunwind +static-libs"
 
-RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?]
-		sys-libs/llvm-libunwind[static-libs?] ) )"
+RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
+		sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}] ) )"
 DEPEND="${RDEPEND}
 	${DEPEND}"
 

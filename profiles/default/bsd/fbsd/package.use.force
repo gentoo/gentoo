@@ -1,3 +1,8 @@
 # Naohiro Aota <naota@gentoo.org> (08 Nov 2011)
 # Always enable hardened not to depend glibc
 app-emulation/wine hardened
+
+# app-arch/xz-utils[threads=] required by app-arch/libarchive
+# https://bugs.gentoo.org/show_bug.cgi?id=594980
+app-arch/libarchive threads
+app-arch/xz-utils threads
