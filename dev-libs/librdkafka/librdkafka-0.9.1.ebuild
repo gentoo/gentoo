@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/edenhill/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm hppa ~x86"
+	KEYWORDS="amd64 ~arm hppa ~x86"
 fi
 
 LICENSE="BSD-2"
