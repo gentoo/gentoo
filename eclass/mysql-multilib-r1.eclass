@@ -918,7 +918,7 @@ mysql-multilib-r1_pkg_config() {
 
 	local cmd
 	local initialize_options
-        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && mysql_version_is_at_least "5.7.6" ; then
+        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && version_is_at_least "5.7.6" ; then
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
 		cmd="${EROOT}usr/sbin/mysqld"
