@@ -11162,7 +11162,7 @@ gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types databas
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
-gnome-extra/chrome-gnome-shell 7: GNOME Shell integration for Chrome/Chromium, Vivaldi, Opera browsers
+gnome-extra/chrome-gnome-shell 7.1: GNOME Shell integration for Chrome/Chromium, Vivaldi, Opera browsers
 gnome-extra/cinnamon 2.8.8 3.0.6 3.0.7: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.8.1 3.0.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2: A collection of libraries and utilites used by Cinnamon
@@ -14351,7 +14351,7 @@ net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transpa
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.8.0.2-r1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/telegram-desktop-bin 0.10.1 0.10.6: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 0.10.1 0.10.6 0.10.7: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.3 5.16.3-r1 5.16.4: An account manager and channel dispatcher for the Telepathy framework
