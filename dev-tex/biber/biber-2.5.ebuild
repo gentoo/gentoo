@@ -22,8 +22,10 @@ RDEPEND=">=dev-lang/perl-5.16
 	dev-perl/Business-ISBN
 	dev-perl/Business-ISMN
 	dev-perl/Business-ISSN
+	dev-perl/Class-Accessor
 	dev-perl/Data-Compare
 	dev-perl/Data-Dump
+	dev-perl/Data-Uniqid
 	dev-perl/Date-Simple
 	dev-perl/Encode-EUCJPASCII
 	dev-perl/Encode-HanExtra
@@ -31,6 +33,7 @@ RDEPEND=">=dev-lang/perl-5.16
 	dev-perl/File-Slurp-Unicode
 	dev-perl/IPC-Run3
 	dev-perl/libwww-perl[ssl]
+	>=dev-perl/Lingua-Translit-0.25
 	dev-perl/List-AllUtils
 	>=dev-perl/List-MoreUtils-0.408.0
 	dev-perl/Log-Log4perl
@@ -39,15 +42,16 @@ RDEPEND=">=dev-lang/perl-5.16
 	dev-perl/Readonly
 	dev-perl/Readonly-XS
 	dev-perl/Text-Roman
-	>=dev-perl/Text-BibTeX-0.700.0
+	>=dev-perl/Text-BibTeX-0.720.0
 	dev-perl/URI
 	dev-perl/Unicode-LineBreak
 	>=virtual/perl-Unicode-Normalize-1.230.0
+	dev-perl/XML-LibXML
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-SAX-Base
 	dev-perl/XML-Writer
-	>=dev-tex/biblatex-3.2
+	~dev-tex/biblatex-3.4
 	virtual/perl-IPC-Cmd
 	>=virtual/perl-Unicode-Collate-1.140.0"
 DEPEND="${RDEPEND}
@@ -61,7 +65,7 @@ DEPEND="${RDEPEND}
 SRC_TEST="parallel"
 
 src_prepare(){
-	epatch "${FILESDIR}"/${PN}-2.1-drop-mozilla-ca.patch
+	epatch "${FILESDIR}"/${PN}-2.4-drop-mozilla-ca.patch
 }
 
 src_install(){
