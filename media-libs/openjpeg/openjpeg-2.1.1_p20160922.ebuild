@@ -59,9 +59,9 @@ multilib_src_configure() {
 	if use static-libs; then
 		mycmakeargs=(
 			-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
-			$(cmake-utils_use_build test TESTING)
+			-DBUILD_TESTING="$(usex test)"
 			-DBUILD_SHARED_LIBS=OFF
-			-DBUILD_CODEC=OFF
+			-DBUILD_CODEC="$(usex test)"
 			)
 		BUILD_DIR=${BUILD_DIR}_static cmake-utils_src_configure
 	fi
