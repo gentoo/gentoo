@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+src_prepare() {
+	eapply "${FILESDIR}/findassimp-${PV}.patch"
+	eapply_user
+}
+
 src_configure() {
 	mycmakeargs=(
 		-DASSIMP_BUILD_SAMPLES=$(usex samples) \
