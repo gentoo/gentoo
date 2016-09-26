@@ -14,7 +14,7 @@ SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gnuplot pyx crypt graphviz imagemagick visual tcpreplay"
 
 RDEPEND="
