@@ -27,6 +27,8 @@ multilib_src_configure() {
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
+		# disable unnecessary hack copying stuff back to srcdir
+		-DLIBOMP_COPY_EXPORTS=OFF
 	)
 	cmake-utils_src_configure
 }
