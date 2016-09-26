@@ -13,7 +13,7 @@ DESCRIPTION="A Date/Time Parsing Perl Module"
 
 LICENSE="Time-modules public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND=""
