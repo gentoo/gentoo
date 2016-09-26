@@ -10,7 +10,7 @@ SRC_URI="https://shunit2.googlecode.com/files/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 src_install() {
