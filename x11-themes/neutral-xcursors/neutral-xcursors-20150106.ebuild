@@ -39,7 +39,7 @@ SRC_URI="
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="x11-apps/xcursorgen"

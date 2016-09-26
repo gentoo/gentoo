@@ -12,7 +12,7 @@ DESCRIPTION="SAX Filter allowing DOM processing of selected subtrees"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-perl/XML-LibXML-1.53"

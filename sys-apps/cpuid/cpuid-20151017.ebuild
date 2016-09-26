@@ -11,7 +11,7 @@ CPUID instruction"
 HOMEPAGE="http://www.etallen.com/cpuid.html"
 SRC_URI="http://www.etallen.com/${PN}/${P}.src.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

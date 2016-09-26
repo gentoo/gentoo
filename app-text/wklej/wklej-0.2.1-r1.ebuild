@@ -14,7 +14,7 @@ SRC_URI="http://wklej.org/m/apps/wklej-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~x86 ~x86-fbsd"
 IUSE="+vim"
 
 DEPEND=""

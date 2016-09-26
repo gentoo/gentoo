@@ -15,7 +15,7 @@ SRC_URI="http://www.codesourcery.com/public/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips ~x86"
 IUSE=""
 
 DEPEND=""
