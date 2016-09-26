@@ -6453,7 +6453,7 @@ dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
 dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
-dev-perl/Text-BibTeX 0.720.0 0.760.0: A Perl library for reading, parsing, and processing BibTeX files
+dev-perl/Text-BibTeX 0.720.0 0.760.0 0.770.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.330.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 0.950.0 1.230.0: Comma-separated values manipulation routines
@@ -11889,12 +11889,12 @@ lxde-base/lxtask 0.1.6 0.1.7: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.10.0 0.11.0: Common base library for the LXQt desktop environment
-lxqt-base/libsysstat 0.3.1: A Qt-based interface to system statistics
-lxqt-base/lxqt-about 0.10.0: LXQt about dialog
+lxqt-base/libsysstat 0.3.1 0.3.2: A Qt-based interface to system statistics
+lxqt-base/lxqt-about 0.10.0 0.11.0: LXQt about dialog
 lxqt-base/lxqt-admin 0.10.0: LXQt system administration tool
 lxqt-base/lxqt-common 0.10.0: LXQt common resources
-lxqt-base/lxqt-config 0.10.0: LXQt system configuration control center
-lxqt-base/lxqt-globalkeys 0.10.0: Daemon and library for global keyboard shortcuts registration
+lxqt-base/lxqt-config 0.10.0 0.11.0: LXQt system configuration control center
+lxqt-base/lxqt-globalkeys 0.10.0 0.11.0: Daemon and library for global keyboard shortcuts registration
 lxqt-base/lxqt-meta 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.10.0: LXQt notification daemon and library
 lxqt-base/lxqt-openssh-askpass 0.10.0: LXQt OpenSSH user password prompt tool
@@ -18908,7 +18908,7 @@ x11-proto/xf86miscproto 0.9.3: X.Org XF86Misc protocol headers
 x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
-x11-proto/xproto 7.0.27 7.0.28 7.0.29: X.Org xproto protocol headers
+x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
