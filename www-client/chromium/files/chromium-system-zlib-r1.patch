@@ -1,0 +1,9 @@
+--- a/extensions/browser/api/cast_channel/BUILD.gn.orig	2016-09-23 21:35:47.685867065 +0000
++++ b/extensions/browser/api/cast_channel/BUILD.gn	2016-09-23 21:36:29.986723126 +0000
+@@ -27,5 +27,6 @@
+   deps = [
+     "//extensions/common/api",
+     "//extensions/common/api/cast_channel:cast_channel_proto",
++    "//third_party/zlib",
+   ]
+ }

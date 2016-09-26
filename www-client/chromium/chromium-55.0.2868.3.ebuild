@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
 	dev-libs/glib:=
+	dev-libs/icu:=
 	>=dev-libs/jsoncpp-0.5.0-r1:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
@@ -73,7 +74,6 @@ COMMON_DEPEND="
 	x11-libs/libXtst:=
 	x11-libs/pango:=
 	app-arch/snappy:=
-	>=dev-libs/libevent-1.4.13:=
 	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt:=
 	media-libs/flac:=
@@ -83,6 +83,7 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	!gn? (
 		>=app-accessibility/speech-dispatcher-0.8:=
+		>=dev-libs/libevent-1.4.13:=
 	)
 "
 # For nvidia-drivers blocker, see bug #413637 .
@@ -164,7 +165,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/chromium-54-ffmpeg2compat.patch"
+	"${FILESDIR}/${PN}-54-ffmpeg2compat.patch"
+	"${FILESDIR}/${PN}-gn-r6.patch"
+	"${FILESDIR}/${PN}-system-zlib-r1.patch"
 )
 
 pkg_pretend() {
@@ -234,7 +237,6 @@ src_prepare() {
 		third_party/cld_2
 		third_party/cld_3
 		third_party/cros_system_api
-		third_party/cython/python_flags.py
 		third_party/devscripts
 		third_party/dom_distiller_js
 		third_party/fips181
@@ -245,7 +247,6 @@ src_prepare() {
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
 		third_party/hunspell
 		third_party/iccjpeg
-		third_party/icu
 		third_party/jstemplate
 		third_party/khronos
 		third_party/leveldatabase
@@ -339,7 +340,6 @@ src_configure() {
 
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
-	# TODO: use_system_icu (bug #576370).
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
@@ -365,10 +365,11 @@ src_configure() {
 		-Duse_system_xdg_utils=1
 		-Duse_system_zlib=1"
 
+	# libevent: https://bugs.gentoo.org/593458
 	local gn_system_libraries="
 		flac
 		harfbuzz-ng
-		libevent
+		icu
 		libjpeg
 		libpng
 		libvpx
@@ -383,9 +384,6 @@ src_configure() {
 		gn_system_libraries+=" ffmpeg"
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries} || die
-
-	# Needed for system icu - we don't need additional data files.
-	# myconf_gyp+=" -Dicu_use_data_file_flag=0"
 
 	# TODO: patch gyp so that this arm conditional is not needed.
 	if ! use arm; then
@@ -451,11 +449,12 @@ src_configure() {
 		-Dlinux_use_gold_flags=0
 		-Dsysroot="
 	# Trying to use gold results in linker crash.
-	myconf_gn+=" use_gold=false use_sysroot=false"
+	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf_gyp+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
-	myconf_gn+=" proprietary_codecs=true ffmpeg_branding=\"${ffmpeg_branding}\""
+	myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
+	myconf_gn+=" ffmpeg_branding=\"${ffmpeg_branding}\""
 
 	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
 	# Note: these are for Gentoo use ONLY. For your own distribution,
@@ -535,6 +534,9 @@ src_configure() {
 
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
+
+	# Define a custom toolchain for GN
+	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
 
 	# Tools for building programs to be executed on the build system, bug #410883.
 	if tc-is-cross-compiler; then
@@ -665,8 +667,6 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	doins out/Release/*.bin || die
 	doins out/Release/*.pak || die
-
-	doins out/Release/icudtl.dat || die
 
 	doins -r out/Release/locales || die
 	doins -r out/Release/resources || die
