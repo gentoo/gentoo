@@ -21,7 +21,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linu
 IUSE="cxx debug examples fortran fortran2003 +hl mpi static-libs szip threads zlib"
 
 REQUIRED_USE="
-	cxx? ( !mpi ) mpi? ( !cxx )
 	threads? ( !cxx !mpi !fortran !hl )
 	fortran2003? ( fortran )"
 
@@ -56,6 +55,11 @@ pkg_setup() {
 		fi
 		export CC=mpicc
 		use fortran && export FC=mpif90
+		if use cxx ; then
+			export CXX=mpicxx
+			ewarn "USE='mpi cxx' requires a configuration unsupported by upstream. Use at your own risk."
+			ewarn "In particular, the C++ API is not parallel safe."
+		fi
 	elif has_version 'sci-libs/hdf5[mpi]'; then
 		ewarn "Installing hdf5 with mpi disabled while having hdf5 installed with mpi enabled may fail."
 		ewarn "Try to uninstall the current hdf5 prior to disabling mpi support."
@@ -100,6 +104,7 @@ src_configure() {
 		$(use_with szip szlib)
 		$(use_with threads pthread)
 		$(use_with zlib)
+		$(use mpi && use cxx && echo --enable-unsupported)
 	)
 	autotools-utils_src_configure
 }
