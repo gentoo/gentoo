@@ -12,7 +12,7 @@ SRC_URI="http://howm.sourceforge.jp/a/${P}.tar.gz"
 
 LICENSE="GPL-1+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 SITEFILE="50${PN}-gentoo.el"
 
