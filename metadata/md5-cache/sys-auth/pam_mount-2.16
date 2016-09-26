@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-libs/pam-0.99 >=sys-libs/libhx-3.12.1 >=dev-libs/libxml2-2.6 crypt? ( >=sys-fs/cryptsetup-1.1.0 ) ssl? ( dev-libs/openssl:0= ) selinux? ( sys-libs/libselinux ) virtual/pkgconfig
+DESCRIPTION=A PAM module that can mount volumes for a user session
+EAPI=6
+HOMEPAGE=http://pam-mount.sourceforge.net
+IUSE=crypt ssl selinux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/pam-0.99 >=sys-libs/libhx-3.12.1 >=dev-libs/libxml2-2.6 crypt? ( >=sys-fs/cryptsetup-1.1.0 ) ssl? ( dev-libs/openssl:0= ) selinux? ( sys-libs/libselinux ) >=sys-apps/util-linux-2.20
+SLOT=0
+SRC_URI=mirror://sourceforge/pam-mount/pam_mount-2.16.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=9d3e7cb6e40a0cff6ed1cf53e7ba8778
