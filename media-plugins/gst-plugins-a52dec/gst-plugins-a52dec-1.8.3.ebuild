@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-ugly
 inherit gstreamer
 
 DESCRIPTION="ATSC A/52 audio decoder plugin for GStreamer"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="+orc"
 
 RDEPEND="
