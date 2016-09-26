@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 
 # openssl-1.1.0 patches
-SRC_URI+=" 
+SRC_URI+="
 	https://github.com/Cyp/warzone2100/commit/d29cacac856882b153fa206c49091188af5d95aa.patch -> ${PN}-3.2.1-openssl110.patch
 	https://github.com/Cyp/warzone2100/commit/efe8bf60ec56565b96a26b041a965c925bc58c3b.patch -> ${PN}-3.2.1-openssl110_v2.patch"
 
