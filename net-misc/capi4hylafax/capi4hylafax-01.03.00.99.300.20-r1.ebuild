@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-svn"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 DEPEND="net-dialup/capi4k-utils
 	app-shells/bash:0
