@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils confutils flag-o-matic
 
-KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
