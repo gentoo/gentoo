@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
+EAPI=6
 
 inherit autotools eutils flag-o-matic perl-module toolchain-funcs
 
@@ -40,11 +40,12 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch"
+)
+
 src_prepare() {
-	pushd m4 > /dev/null || die
-	eapply "${FILESDIR}/${PN}-0.8.15-tinfo.patch"
-	popd > /dev/null || die
-	eapply_user
+	default
 	eautoreconf
 }
 
