@@ -154,9 +154,9 @@ app-admin/needrestart 2.8-r1 2.9-r1 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
-app-admin/packagekit 0.8.15 1.0.11-r1 1.1.1: PackageKit Package Manager interface (meta package)
-app-admin/packagekit-base 0.8.15-r1 1.0.11 1.1.1: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1: Gtk3 PackageKit backend library
+app-admin/packagekit 0.8.15 1.0.11-r1 1.1.1 1.1.4: PackageKit Package Manager interface (meta package)
+app-admin/packagekit-base 0.8.15-r1 1.0.11 1.1.1 1.1.4: Manage packages in a secure way using a cross-distro and cross-architecture API
+app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1 1.1.4: Gtk3 PackageKit backend library
 app-admin/packagekit-qt 0.8.8 0.9.5: Qt PackageKit backend library
 app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
@@ -13721,7 +13721,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.10.1: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.10.2: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.73 0.7.85 0.7.86 0.7.87 0.7.88: MediaInfo supplies technical and tag information about media files
