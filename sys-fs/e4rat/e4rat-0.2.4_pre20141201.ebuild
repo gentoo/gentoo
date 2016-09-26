@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${PN}-0.2.4_pre20141201.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
