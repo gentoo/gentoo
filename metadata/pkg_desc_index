@@ -11897,14 +11897,14 @@ lxqt-base/lxqt-config 0.10.0 0.11.0: LXQt system configuration control center
 lxqt-base/lxqt-globalkeys 0.10.0 0.11.0: Daemon and library for global keyboard shortcuts registration
 lxqt-base/lxqt-meta 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.10.0: LXQt notification daemon and library
-lxqt-base/lxqt-openssh-askpass 0.10.0: LXQt OpenSSH user password prompt tool
+lxqt-base/lxqt-openssh-askpass 0.10.0 0.11.0: LXQt OpenSSH user password prompt tool
 lxqt-base/lxqt-panel 0.10.0-r1: LXQt desktop panel and plugins
-lxqt-base/lxqt-policykit 0.10.0: LXQt PolKit authentication agent
-lxqt-base/lxqt-powermanagement 0.10.0: LXQt daemon for power management and auto-suspend
-lxqt-base/lxqt-qtplugin 0.10.0: LXQt system integration plugin for Qt
+lxqt-base/lxqt-policykit 0.10.0 0.11.0: LXQt PolKit authentication agent
+lxqt-base/lxqt-powermanagement 0.10.0 0.11.0: LXQt daemon for power management and auto-suspend
+lxqt-base/lxqt-qtplugin 0.10.0 0.11.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.10.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.10.0: LXQT session manager
-lxqt-base/lxqt-sudo 0.10.0: LXQt GUI frontend for sudo
+lxqt-base/lxqt-sudo 0.10.0 0.11.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
