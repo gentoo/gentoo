@@ -13,7 +13,7 @@ SRC_URI="http://www.dwheeler.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
