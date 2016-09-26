@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils webapp
 
@@ -16,17 +16,13 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,postgres?,session,simplexml,sqlite?,xmlwriter,zip]
+RDEPEND="dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
 	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
 
 pkg_setup() {
 	webapp_pkg_setup
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_install() {
@@ -42,4 +38,11 @@ src_install() {
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	elog "Additional applications (calendar, ...) are no longer provided by default."
+	elog "You can install them after login via the applications management page"
+	elog "(check the recommended tab). No application data is lost."
+	webapp_pkg_postinst
 }
