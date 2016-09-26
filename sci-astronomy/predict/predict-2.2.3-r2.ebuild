@@ -17,7 +17,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.orig.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc gtk nls xforms xplanet"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="sys-libs/ncurses:0=
 	gtk? ( x11-libs/gtk+:2 )
