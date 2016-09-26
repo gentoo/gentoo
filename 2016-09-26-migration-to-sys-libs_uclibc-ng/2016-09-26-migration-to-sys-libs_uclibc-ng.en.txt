@@ -1,0 +1,47 @@
+Title: Migration to sys-libs/uclibc-ng
+Author: Anthony G. Basile <blueness@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-09-26
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: sys-libs/uclibc
+Display-If-Profile: default/linux/uclibc/amd64
+Display-If-Profile: hardened/linux/uclibc/amd64
+Display-If-Profile: default/linux/uclibc/arm/armv7a
+Display-If-Profile: hardened/linux/uclibc/arm/armv7a
+Display-If-Profile: default/linux/uclibc/mips
+Display-If-Profile: hardened/linux/uclibc/mips
+Display-If-Profile: default/linux/uclibc/mips/mipsel
+Display-If-Profile: hardened/linux/uclibc/mips/mipsel
+Display-If-Profile: default/linux/uclibc/ppc
+Display-If-Profile: hardened/linux/uclibc/ppc
+Display-If-Profile: default/linux/uclibc/x86
+Display-If-Profile: hardened/linux/uclibc/x86
+
+Upstream development of uClibc has been stalled since July 2015 and
+there hasn't been a proper release since May 2012 [1].  New patches
+addressing important issues have been submitted but these have not been
+reviewed nor have they been committed to the master branch.  Also,
+backporting even those patches which have been committed to master is
+now impractical as too many intermediate layers of patches conflict.
+For all intents and purposes, upstream uClibc is dead.
+
+Fortunately, a fork called uClibc-ng [2] was begun by Waldemar Brodkorb
+in February 2015 and is actively being maintained.  Accordingly,
+Gentoo's Hardened uClibc project will be migrating to uClibc-ng as its
+libc provider.  Currently stage3 tarballs based on sys-libs/uclibc-ng
+are available for all supported arches at [3] and these will become the
+default after October 5, 2016.  Older stage3s based on sys-libs/uclibc
+will be removed.
+
+Unfortunately, migrating a production system from uclibc to uclibc-ng
+is not straightforward owing to the central role played by libc.  A
+migration guide is provided at [4].  This has been tested on live
+systems with success, but the user is cautioned to plan a backup and
+recovery plan should something go wrong.
+
+Refs.
+[1] https://git.uclibc.org/uClibc/log/
+[2] http://uclibc-ng.org/
+[3] http://distfiles.gentoo.org/experimental/
+[4] https://wiki.gentoo.org/wiki/Project:Hardened_uClibc#Migration_to_uClibc-ng
