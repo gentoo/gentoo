@@ -14,7 +14,7 @@ SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 # Crashes w/ debug build of wxGTK (#201315)
