@@ -74,6 +74,7 @@ src_prepare() {
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
 	eapply -p0 "${FILESDIR}/${PN}-libressl.patch"
+	eapply -p0 "${FILESDIR}/${PN}-libressl-runtime.patch"
 }
 
 src_configure() {
