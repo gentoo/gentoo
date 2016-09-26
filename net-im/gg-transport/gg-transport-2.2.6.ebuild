@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Jajcus/jggtrans/releases/download/v${PV}/jggtrans-${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
