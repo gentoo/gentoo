@@ -12807,7 +12807,7 @@ media-libs/opencollada 1.2.2_p20150207 1.6.18-r1 1.6.25 1.6.31: Stream based rea
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.12 2.4.12-r1 3.0.0 3.1.0-r4: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.12 2.4.12-r1 3.0.0 3.1.0-r4 3.1.0-r5: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
@@ -14762,7 +14762,7 @@ net-misc/batman-adv 2013.4.0 2014.2.0: Better approach to mobile Ad-Hoc networki
 net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
 net-misc/bgpq 1.0.9.9: Generate access-lists for Cisco/Juniper routers
 net-misc/bgpq3 0.1.21 0.1.22: Generate access-lists for Cisco/Juniper routers, successor of bgpq
-net-misc/bird 1.3.9 1.4.3 1.4.4 1.4.5 1.5.0 1.6.0: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
+net-misc/bird 1.3.9 1.4.3 1.4.4 1.4.5 1.5.0 1.6.0 1.6.1: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
 net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays BlinkenLight movies
 net-misc/bopm 3.1.3-r3: Blitzed Open Proxy Monitor
 net-misc/bridge-utils 1.5: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
