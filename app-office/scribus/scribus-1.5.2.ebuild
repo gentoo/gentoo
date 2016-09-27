@@ -95,6 +95,10 @@ src_prepare() {
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
 
+	if has_version ">=dev-qt/qtcore-5.7.0" ; then
+		append-cxxflags "-std=c++11" #bug 591948
+	fi
+
 	cmake-utils_src_prepare
 }
 
