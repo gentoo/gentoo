@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst preinst unpack
+DEPEND=x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libXtst x11-libs/pango x11-libs/cairo[xcb] media-libs/alsa-lib media-libs/harfbuzz[graphite] media-libs/libcanberra[gtk] dev-libs/nss dev-libs/glib:2 dev-libs/atk gnome-base/libgnome-keyring gnome-base/gconf:2 sys-apps/dbus net-print/cups[ssl] net-misc/curl virtual/udev virtual/libc virtual/libffi >=sys-apps/sed-4
+DESCRIPTION=Team collaboration tool
+EAPI=6
+HOMEPAGE=http://www.slack.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT Apache-2.0 BSD ISC LGPL-2 AFL-2.1 public-domain WTFPL-2 Artistic-2 no-source-code
+RDEPEND=x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libXtst x11-libs/pango x11-libs/cairo[xcb] media-libs/alsa-lib media-libs/harfbuzz[graphite] media-libs/libcanberra[gtk] dev-libs/nss dev-libs/glib:2 dev-libs/atk gnome-base/libgnome-keyring gnome-base/gconf:2 sys-apps/dbus net-print/cups[ssl] net-misc/curl virtual/udev virtual/libc virtual/libffi
+RESTRICT=mirror
+SLOT=0
+SRC_URI=x86? ( https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.2-i386.deb ) amd64? ( https://downloads.slack-edge.com/linux_releases/slack-desktop-2.1.2-amd64.deb )
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_unpack:unpacker src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=af61b7a3ae34ef1a028a7a114f280d97

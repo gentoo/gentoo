@@ -230,7 +230,7 @@ app-admin/whowatch 1.8.5: interactive who-like program that displays information
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
-app-admin/yadm 1.04: A dotfile manager for the config files in your home folder
+app-admin/yadm 1.04 1.05: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 5.4.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.5-r2 0.6: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -14351,6 +14351,7 @@ net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transpa
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.8.0.2-r1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
+net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.6 0.10.7: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
