@@ -1,5 +1,5 @@
---- CMakeLists.txt.orig
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -329,7 +329,7 @@
  endif(COMPILER_SUPPORTS_CXX11)
  
