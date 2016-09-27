@@ -15017,7 +15017,7 @@ net-misc/quagga 1.0.20160315-r2 1.0.20160315-r3: A free routing daemon replacing
 net-misc/r8168 8.040.00 8.042.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 2.12 2.13 2.14: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 1.9.8 2.13 2.14 2.15: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
@@ -16791,7 +16791,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8 0.9: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
