@@ -1,0 +1,22 @@
+Title: OpenRC 0.22 updates
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-09-27
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <=sys-apps/openrc-0.22
+
+OpenRC 0.22 introduces the following changes:
+
+- In previous versions of OpenRC, configuration information was processed
+  so that service-specific configuration stored in /etc/conf.d/* was
+  overridden by global configuration stored in /etc/rc.conf. OpenRC 0.22
+  reverses that. Global configuration stored in /etc/rc.conf is read first
+  then overridden by configuration stored in /etc/conf.d/*.
+
+- The swapfiles service, which was basically a copy of the swap service,
+  has been removed. If you are only using local swap partitions, as
+  described in the handbook for example, this change will not affect you.
+  If you are using swap files or swap partitions on network-backed devices
+  such as iSCSI, please adjust the dependencies of the swap
+  service as shown in /etc/conf.d/swap to reflect your situation.
