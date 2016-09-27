@@ -210,7 +210,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.2.6 11.4.0: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.2.6 11.4.0 11.4.1 11.5.1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -10025,7 +10025,7 @@ dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machine
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
-dev-util/radare2 0.10.3 0.10.4 0.10.5 9999: Advanced command line hexadecimal editor and more
+dev-util/radare2 0.10.3 0.10.4 0.10.5 0.10.6 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6: Command line tools for use with Review Board
