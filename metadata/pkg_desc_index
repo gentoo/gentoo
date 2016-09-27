@@ -16626,7 +16626,7 @@ sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just l
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.10.1: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.10.1: Additional userspace utils to assist with AppArmor profile management
-sys-apps/apply-default-acl 0.0.4: Apply default POSIX ACLs to files and directories
+sys-apps/apply-default-acl 0.0.4 0.0.5: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
