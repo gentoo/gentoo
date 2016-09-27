@@ -2446,7 +2446,7 @@ app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
 app-text/tabler 2: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped or otherwise humorous dialect
-app-text/teckit 2.5.1 2.5.3: Text Encoding Conversion toolkit
+app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: a tool for analyzing files that contain control characters and terminal control sequences
 app-text/tesseract 3.03_rc1 3.04.00-r2 3.04.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
