@@ -1,0 +1,100 @@
+C++11 changed destructor semantics to be noexcept(true)
+by default, leading to potentially changed semantics.
+
+--- a/HTTPResponse.h
++++ b/HTTPResponse.h
+@@ -115,6 +115,9 @@
+     temp_file and headers are deleted. If the tmp file name is "", it is
+     not deleted. */
+     virtual ~HTTPResponse()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+         DBG(cerr << "Freeing HTTPConnect resources (" + d_file + ")... ");
+ 
+--- a/MarshallerThread.cc
++++ b/MarshallerThread.cc
+@@ -106,6 +106,9 @@
+  * Unlock the mutex
+  */
+ Locker::~Locker()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+ {
+     DBG(cerr << "Unlocking the mutex! (" << pthread_self() << ")" << endl);
+ 
+@@ -140,6 +143,9 @@
+ }
+ 
+ ChildLocker::~ChildLocker()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+ {
+     DBG(cerr << "Unlocking the mutex! (" << pthread_self() << ")" << endl);
+ 
+@@ -164,6 +170,9 @@
+ }
+ 
+ MarshallerThread::~MarshallerThread()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+ {
+     int status = pthread_mutex_lock(&d_out_mutex);
+     if (status != 0) throw InternalErr(__FILE__, __LINE__, "Could not lock m_mutex");
+--- a/MarshallerThread.h
++++ b/MarshallerThread.h
+@@ -52,7 +52,11 @@
+ class Locker {
+ public:
+     Locker(pthread_mutex_t &lock, pthread_cond_t &cond, int &count);
+-    virtual ~Locker();
++    virtual ~Locker()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
++    ;
+ 
+ private:
+     pthread_mutex_t& m_mutex;
+@@ -74,7 +78,11 @@
+ class ChildLocker {
+ public:
+     ChildLocker(pthread_mutex_t &lock, pthread_cond_t &cond, int &count);
+-    virtual ~ChildLocker();
++    virtual ~ChildLocker()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
++    ;
+ 
+ private:
+     pthread_mutex_t& m_mutex;
+@@ -144,7 +152,11 @@
+ 
+ public:
+     MarshallerThread();
+-    virtual ~MarshallerThread();
++    virtual ~MarshallerThread()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
++    ;
+ 
+     pthread_mutex_t &get_mutex() { return d_out_mutex; }
+     pthread_cond_t &get_cond() { return d_out_cond; }
+--- a/Response.h
++++ b/Response.h
+@@ -93,6 +93,9 @@
+ 
+     /** Close the stream. */
+     virtual ~Response()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+         if (d_stream)
+             fclose(d_stream);
