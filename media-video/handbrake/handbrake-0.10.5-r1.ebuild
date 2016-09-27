@@ -65,7 +65,7 @@ RDEPEND="
 		virtual/libgudev:=
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-1.7 )
+	x265? ( >=media-libs/x265-1.7:0= )
 	"
 
 DEPEND="${RDEPEND}
