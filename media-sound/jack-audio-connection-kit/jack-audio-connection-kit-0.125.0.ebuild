@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_3dnow altivec alsa coreaudio doc debug examples oss cpu_flag
 # libsndfile: ditto for jackrec
 RDEPEND="
 	sys-libs/db[${MULTILIB_USEDEP}]
-	sys-libs/readline
+	sys-libs/readline:0=
 	>=media-libs/libsndfile-1.0.0
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	>=media-libs/libsamplerate-0.1.8-r1[${MULTILIB_USEDEP}]
