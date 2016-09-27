@@ -11891,7 +11891,7 @@ lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create a
 lxqt-base/liblxqt 0.10.0 0.11.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.1 0.3.2: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.10.0 0.11.0: LXQt about dialog
-lxqt-base/lxqt-admin 0.10.0: LXQt system administration tool
+lxqt-base/lxqt-admin 0.10.0 0.11.0: LXQt system administration tool
 lxqt-base/lxqt-common 0.10.0: LXQt common resources
 lxqt-base/lxqt-config 0.10.0 0.11.0: LXQt system configuration control center
 lxqt-base/lxqt-globalkeys 0.10.0 0.11.0: Daemon and library for global keyboard shortcuts registration
