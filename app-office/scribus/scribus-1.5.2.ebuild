@@ -167,7 +167,7 @@ src_install() {
 	EOF
 	dodoc "${T}"/COPYING
 	docompress -x /usr/share/doc/${PF}/en /usr/share/doc/${PF}/{AUTHORS,TRANSLATION,LINKS,COPYING}
-	doicon resources/iconsets/1_5_0/scribus.png
+	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
 }
 
