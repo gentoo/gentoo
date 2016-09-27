@@ -22,3 +22,4 @@ move dev-perl/data-buffer dev-perl/Data-Buffer
 move dev-perl/dbix-searchbuilder dev-perl/DBIx-SearchBuilder
 move dev-perl/digest-bubblebabble dev-perl/Digest-BubbleBabble
 move dev-perl/digest-md2 dev-perl/Digest-MD2
+move app-admin/swatch app-admin/swatchdog
