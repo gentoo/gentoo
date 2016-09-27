@@ -131,9 +131,14 @@ RDEPEND="${RDEPEND}
 	video_cards_radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
 "
 
+# FIXME: kill the sys-devel/llvm[video_cards_radeon] compat once
+# LLVM < 3.9 is out of the game
 DEPEND="${RDEPEND}
 	llvm? (
-		video_cards_radeonsi? ( sys-devel/llvm[video_cards_radeon] )
+		video_cards_radeonsi? ( || (
+			sys-devel/llvm[llvm_targets_AMDGPU]
+			sys-devel/llvm[video_cards_radeon]
+		) )
 	)
 	opencl? (
 				>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]

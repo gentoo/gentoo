@@ -130,7 +130,10 @@ RDEPEND="${RDEPEND}
 
 DEPEND="${RDEPEND}
 	llvm? (
-		video_cards_radeonsi? ( sys-devel/llvm[video_cards_radeon] )
+		video_cards_radeonsi? ( || (
+			sys-devel/llvm[llvm_targets_AMDGPU]
+			sys-devel/llvm[video_cards_radeon]
+		) )
 	)
 	opencl? (
 				>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
