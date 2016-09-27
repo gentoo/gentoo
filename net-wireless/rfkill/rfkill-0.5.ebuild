@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -18,11 +18,8 @@ IUSE=""
 RDEPEND=""
 DEPEND=""
 
-CC=$(tc-getCC)
-LD=$(tc-getLD)
-
 src_compile() {
-	emake V=1 || die "Failed to compile"
+	emake CC=$(tc-getCC) LD=$(tc-getLD) V=1 || die "Failed to compile"
 }
 
 src_install() {
