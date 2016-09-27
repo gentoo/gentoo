@@ -4909,7 +4909,7 @@ dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5: A high-p
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
-dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4: library for multiple-precision floating-point computations with exact rounding
+dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
@@ -10384,7 +10384,7 @@ games-arcade/spacerider 0.13: space-shooter written in C++, using the SDL
 games-arcade/spout 1.3: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7: An ncurses-based space shooter
 games-arcade/supertransball2 1.5: Thrust clone
-games-arcade/supertux 0.4.0: A game similar to Super Mario Bros.
+games-arcade/supertux 0.4.0 0.5.0: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r2: tank combat game with lighthearted, fast paced pandemonium
@@ -13429,7 +13429,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18: The Music Playe
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.4 1.23.6 1.23.7: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.6 1.23.7 1.23.8: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
