@@ -1,0 +1,33 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: Disable network tests, as network not available on
+ most build systems
+Last-Updated: 2016-02-06
+Forwarded: not-needed
+
+Index: libdap-3.18.0/tests/Makefile.am
+===================================================================
+--- libdap-3.18.0.orig/tests/Makefile.am
++++ libdap-3.18.0/tests/Makefile.am
+@@ -30,8 +30,7 @@ endif
+ 
+ # TESTS = DASTest DDSTest EXPRTest DMRTest getdapTest
+ 
+-check_SCRIPTS = $(DASTESTSUITE) $(DDSTESTSUITE) $(EXPRTESTSUITE) \
+-	$(GETDAPTESTSUITE)
++check_SCRIPTS = $(DASTESTSUITE) $(DDSTESTSUITE) $(EXPRTESTSUITE) 
+ 
+ # Build the test drivers. The drivers all use the
+ # subclassed types in Test*.cc and the TestTypesFactory.
+@@ -107,11 +106,10 @@ DMRTESTSUITE = $(srcdir)/DMRTest
+ GETDAPTESTSUITE = $(srcdir)/getdapTest
+ 
+ check-local: atconfig atlocal $(DASTESTSUITE) $(DDSTESTSUITE) \
+-$(EXPRTESTSUITE)  $(GETDAPTESTSUITE) 
++$(EXPRTESTSUITE) 
+ 	$(SHELL) '$(DASTESTSUITE)' $(TESTSUITEFLAGS)
+ 	$(SHELL) '$(DDSTESTSUITE)' $(TESTSUITEFLAGS)
+ 	$(SHELL) '$(EXPRTESTSUITE)' $(TESTSUITEFLAGS)
+-	$(SHELL) '$(GETDAPTESTSUITE)' $(TESTSUITEFLAGS)
+ 
+ # Make sure there are no spaces after the DASTESTSUITE names. jhrg 3/16/15
+ # Delete the scripts here and not using CLEANFILES because this target is
