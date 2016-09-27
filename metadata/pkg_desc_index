@@ -7908,7 +7908,7 @@ dev-python/pylast 1.0.0: Python interface to last.fm and other api-compatible we
 dev-python/pyldap 2.4.20-r1 2.4.20-r2 2.4.21 2.4.25: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
-dev-python/pylibmc 1.4.3 1.5.0: Libmemcached wrapper written as a Python extension
+dev-python/pylibmc 1.4.3 1.5.0 1.5.1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3 1.5.4 1.5.5-r1 1.5.6: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
