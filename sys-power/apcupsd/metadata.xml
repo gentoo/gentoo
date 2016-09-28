@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
+	<maintainer type="person">
+		<email>k_f@gentoo.org</email>
+		<name>Kristian Fiskerstrand</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 <longdescription lang="en">
 Apcupsd can be used for power mangement and controlling most of 
 APC's UPS models on Unix and Windows machines. Apcupsd works with 
