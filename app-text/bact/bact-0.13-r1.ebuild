@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -18,9 +18,14 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-cpp14.patch" # bug #594312
-}
+PATCHES=(
+	"${FILESDIR}/${P}-cpp14.patch" # bug #594312
+)
+
+HTML_DOCS=(
+	index.html
+	bact.css
+)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
@@ -32,7 +37,5 @@ src_test() {
 
 src_install() {
 	dobin bact_learn bact_mkmodel bact_classify
-
-	dohtml index.html bact.css
-	dodoc README AUTHORS
+	einstalldocs
 }
