@@ -13102,7 +13102,7 @@ media-plugins/vdr-graphtft 0.3.7 0.3.7-r1: VDR plugin: GraphTFT
 media-plugins/vdr-image 0.3.1 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
 media-plugins/vdr-imonlcd 0.0.5-r1 1.0.1: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-infosatepg 0.0.12: VDR Plugin: Reads the contents of infosat and writes the data into the EPG
-media-plugins/vdr-iptv 2.0.0 2.0.3 2.1.3 2.2.0 2.2.1: VDR plugin: Add a logical device capable of receiving IPTV
+media-plugins/vdr-iptv 2.0.0 2.0.3 2.1.3 2.2.0 2.2.1 2.2.1-r1: VDR plugin: Add a logical device capable of receiving IPTV
 media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remote control for VDR
 media-plugins/vdr-kvdrmon 0.6: VDR Plugin: monitors on KDE Kickerapplet kvdrmon
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
