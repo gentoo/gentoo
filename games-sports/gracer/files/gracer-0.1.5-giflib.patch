@@ -1,4 +1,4 @@
---- gracer-0.1.5.orig/common/gr_texture.c
+--- gracer-0.1.5/common/gr_texture.c
 +++ gracer-0.1.5/common/gr_texture.c
 @@ -274,7 +274,11 @@
    int index;
