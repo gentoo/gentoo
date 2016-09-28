@@ -1696,7 +1696,7 @@ app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
 app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36: A spaced-repetition memory training program (flash cards)
-app-misc/asciinema 0.9.8 1.3.0: Command line recorder for asciinema.org service
+app-misc/asciinema 1.3.0: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r1 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r1: Terminal locking program with few additional features
@@ -2199,7 +2199,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.0 2.1 2.2: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.0 2.1 2.2 2.3: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
