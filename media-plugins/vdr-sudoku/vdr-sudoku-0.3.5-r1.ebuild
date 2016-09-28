@@ -14,8 +14,10 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.6.0"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}_gcc6.patch" )
