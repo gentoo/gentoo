@@ -16020,7 +16020,7 @@ sci-libs/coinor-symphony 5.5.7: COIN-OR solver for mixed-integer linear programs
 sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
-sci-libs/colpack 1.0.6 1.0.8 1.0.9: C++ algorithms for specialized vertex coloring problems
+sci-libs/colpack 1.0.6 1.0.9-r1: C++ algorithms for specialized vertex coloring problems
 sci-libs/coot-data 3: Data for the Crystallographic Object-Oriented Toolkit
 sci-libs/cqrlib 1.1.2-r1 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2: Extended sparse matrix package
