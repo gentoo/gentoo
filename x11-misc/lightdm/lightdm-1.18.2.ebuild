@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils pam qmake-utils readme.gentoo-r1 systemd versionator xdg-utils
+inherit autotools eutils flag-o-matic pam qmake-utils readme.gentoo-r1 systemd versionator xdg-utils
 
 TRUNK_VERSION="$(get_version_component_range 1-2)"
 DESCRIPTION="A lightweight display manager"
@@ -86,6 +86,8 @@ src_configure() {
 	einfo "Default greeter: ${_greeter}"
 	einfo "Default session: ${_session}"
 	einfo "Greeter user: ${_user}"
+
+	use qt5 && append-cxxflags -std=c++11
 
 	# also disable tests because libsystem.c does not build. Tests are
 	# restricted so it does not matter anyway.
