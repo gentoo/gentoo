@@ -32,6 +32,14 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	# Add forgotten source files, bug #593438
+	# upstream commit 8ed992e and 829add8
+	cp "${FILESDIR}"/data-${PV}/* "${S}"/data/ || die
+
+	gnome2_src_prepare
+}
+
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \

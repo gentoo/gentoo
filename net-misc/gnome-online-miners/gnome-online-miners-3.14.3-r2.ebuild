@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=net-libs/gnome-online-accounts-3.13.3
 	>=net-libs/libgfbgraph-0.2.2:0.2
 	>=net-libs/libzapojit-0.0.2
-	flickr? ( media-plugins/grilo-plugins[flickr] )
+	flickr? ( media-plugins/grilo-plugins:0.2[flickr] )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

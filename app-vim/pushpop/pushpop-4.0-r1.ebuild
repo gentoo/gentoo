@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: pushd / popd from the vim commandline"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=129"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 mips ppc sparc x86"
 IUSE=""
 
 RDEPEND="

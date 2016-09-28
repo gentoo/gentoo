@@ -18,7 +18,6 @@
 	<flag name="celt">Adds Xiph CELT audio decoding support via <pkg>media-libs/celt</pkg></flag>
 	<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg>.</flag>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
-	<flag name="dcadec">Enables DCA decoding with <pkg>media-sound/dcadec</pkg>.</flag>
 	<flag name="ebur128">Enables EBU R128 loudness normalization filter via <pkg>media-libs/libebur128</pkg></flag>
 	<flag name="faac">Use external faac library for AAC encoding</flag>
 	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>

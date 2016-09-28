@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Collection of packages to access online astronomical resources"
 HOMEPAGE="https://github.com/astropy/astroquery"
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	sed -i -e '/auto_use/s/True/False/' setup.cfg || die
 	sed -i -e "s/= 'APLpy'/= 'aplpy'/" astroquery/conftest.py || die
+	xdg_environment_reset
 	distutils-r1_python_prepare_all
 }
 

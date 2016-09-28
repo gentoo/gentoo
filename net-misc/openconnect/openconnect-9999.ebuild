@@ -16,7 +16,7 @@ else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20140806
+VPNC_VER=20160829
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
@@ -25,13 +25,12 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi java libproxy nls smartcard static-libs stoken"
 
 DEPEND="dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] )
-		libressl? ( dev-libs/libressl[static-libs?] )
+		>=dev-libs/openssl-1.0.1h:0[static-libs?]
 	)
 	gnutls? (
 		>=net-libs/gnutls-3:0=[static-libs?] dev-libs/nettle

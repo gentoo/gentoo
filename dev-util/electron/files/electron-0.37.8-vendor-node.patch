@@ -1,0 +1,105 @@
+From ee5dd0d41e8426d6915c4b2b9095674ab4175fee Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Wed, 10 Feb 2016 14:45:13 -0500
+Subject: [PATCH] Build fixes
+
+---
+ lib/internal/bootstrap_node.js | 2 ++
+ node.gyp                       | 5 +++--
+ src/node.cc                    | 8 ++++----
+ src/node_main.cc               | 2 ++
+ 4 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/lib/internal/bootstrap_node.js b/lib/internal/bootstrap_node.js
+index f2edf80..dd2fdb4 100644
+--- a/lib/internal/bootstrap_node.js
++++ b/lib/internal/bootstrap_node.js
+@@ -53,7 +53,9 @@
+     setupGlobalConsole();
+     }  // not isRenderer
+ 
++    if (!process.env.ELECTRON_NODE_DISABLE_ASAR_SUPPORT) {
+     setupAsarSupport();
++    }
+ 
+     const _process = NativeModule.require('internal/process');
+ 
+diff --git a/node.gyp b/node.gyp
+index df3bb6a..fbe21d8 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -1,6 +1,7 @@
+ {
+   'variables': {
+     'v8_use_snapshot%': 'false',
++    'v8_gyp_path%': 'deps/v8/tools/gyp/v8.gyp',
+     'node_use_dtrace%': 'false',
+     'node_use_lttng%': 'false',
+     'node_use_etw%': 'false',
+@@ -107,8 +108,8 @@
+       'dependencies': [
+         'node_js2c#host',
+         'deps/cares/cares.gyp:cares',
+-        # 'deps/v8/tools/gyp/v8.gyp:v8',
+-        # 'deps/v8/tools/gyp/v8.gyp:v8_libplatform'
++        '<(v8_gyp_path):v8',
++        '<(v8_gyp_path):v8_libplatform'
+       ],
+ 
+       'include_dirs': [
+diff --git a/src/node.cc b/src/node.cc
+index 66f31d0..961abc2 100644
+--- a/src/node.cc
++++ b/src/node.cc
+@@ -4240,13 +4240,13 @@ static void StartNodeInstance(void* arg) {
+       SealHandleScope seal(isolate);
+       bool more;
+       do {
+-#if 0
++#if 1
+         v8::platform::PumpMessageLoop(default_platform, isolate);
+ #endif
+         more = uv_run(env->event_loop(), UV_RUN_ONCE);
+ 
+         if (more == false) {
+-#if 0
++#if 1
+           v8::platform::PumpMessageLoop(default_platform, isolate);
+ #endif
+           EmitBeforeExit(env);
+@@ -4312,7 +4312,7 @@ int Start(int argc, char** argv) {
+   V8::SetEntropySource(crypto::EntropySource);
+ #endif
+ 
+-#if 0
++#if 1
+   default_platform = v8::platform::CreateDefaultPlatform(v8_thread_pool_size);
+   V8::InitializePlatform(default_platform);
+   V8::Initialize();
+@@ -4332,7 +4332,7 @@ int Start(int argc, char** argv) {
+   }
+   V8::Dispose();
+ 
+-#if 0
++#if 1
+   delete default_platform;
+   default_platform = nullptr;
+ #endif
+diff --git a/src/node_main.cc b/src/node_main.cc
+index dce72af..e567cc4 100644
+--- a/src/node_main.cc
++++ b/src/node_main.cc
+@@ -48,8 +48,10 @@ int wmain(int argc, wchar_t *wargv[]) {
+ }
+ #else
+ // UNIX
++#include <stdlib.h>
+ int main(int argc, char *argv[]) {
+   setvbuf(stderr, NULL, _IOLBF, 1024);
++  putenv("ELECTRON_NODE_DISABLE_ASAR_SUPPORT=1");
+   return node::Start(argc, argv);
+ }
+ #endif
+-- 
+2.7.3
+

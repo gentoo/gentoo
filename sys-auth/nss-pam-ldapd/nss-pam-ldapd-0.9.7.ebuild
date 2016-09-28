@@ -13,7 +13,7 @@ SRC_URI="http://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug kerberos +pam sasl test +utils"
 
 COMMON_DEP="

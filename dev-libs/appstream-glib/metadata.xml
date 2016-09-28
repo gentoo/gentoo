@@ -5,4 +5,7 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>	
+</use>
 </pkgmetadata>

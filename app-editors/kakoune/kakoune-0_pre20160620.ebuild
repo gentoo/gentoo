@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mawww/${PN}/tarball/${REF} -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="

@@ -1,0 +1,136 @@
+commit 27c69ac5dfbc26744e304232bb8c0cf22d396082
+Author: Vasilis Papavasileiou <git@vasilis.airpost.net>
+Date:   Thu May 5 11:14:02 2016 -0400
+
+    Fix PPX for 4.03 (empty let bindings)
+
+diff --git a/src/ppx/ppx_eliom_client.ml b/src/ppx/ppx_eliom_client.ml
+index 580d2b5..fb2d263 100644
+--- a/src/ppx/ppx_eliom_client.ml
++++ b/src/ppx/ppx_eliom_client.ml
+@@ -89,21 +89,25 @@ module Pass = struct
+     ]
+ 
+   let define_client_functions ~loc client_value_datas =
+-    let bindings =
+-      List.map
+-        (fun (_num, id, expr, args) ->
+-           let patt = Pat.var id in
+-           let typ = find_fragment id in
+-           let args = List.map Pat.var args in
+-           let expr =
+-             [%expr
+-               fun [%p pat_args args] -> ([%e expr] : [%t typ])
+-             ] [@metaloc loc]
+-           in
+-           Vb.mk ~loc patt expr)
+-        client_value_datas
+-    in
+-    Str.value ~loc Nonrecursive bindings
++    match client_value_datas with
++    | [] ->
++      []
++    | _ ->
++      let bindings =
++        List.map
++          (fun (_num, id, expr, args) ->
++             let patt = Pat.var id in
++             let typ = find_fragment id in
++             let args = List.map Pat.var args in
++             let expr =
++               [%expr
++                 fun [%p pat_args args] -> ([%e expr] : [%t typ])
++               ] [@metaloc loc]
++             in
++             Vb.mk ~loc patt expr)
++          client_value_datas
++      in
++      [Str.value ~loc Nonrecursive bindings]
+ 
+   (* For injections *)
+ 
+@@ -139,8 +143,8 @@ module Pass = struct
+     let client_expr_data = flush_client_value_datas () in
+     open_client_section loc ::
+     register_client_closures client_expr_data @
+-    [ define_client_functions loc client_expr_data ;
+-      item ;
++    define_client_functions loc client_expr_data @
++    [ item ;
+       close_server_section loc ;
+     ]
+ 
+@@ -155,11 +159,13 @@ module Pass = struct
+     push_client_value_data num id expr
+       (List.map fst escaped_bindings);
+ 
+-    match context with
+-    | `Server ->
++    match context, escaped_bindings with
++    | `Server, _ ->
+       (* We are in a server fragment, this code should always be discarded. *)
+       Exp.extension @@ AM.extension_of_error @@ Location.errorf "Eliom: ICE"
+-    | `Shared ->
++    | `Shared, [] ->
++      [%expr [%e frag_eid] ()][@metaloc loc]
++    | `Shared, _ ->
+       let bindings =
+         List.map
+           (fun (gen_id, expr) ->
+diff --git a/src/ppx/ppx_eliom_server.ml b/src/ppx/ppx_eliom_server.ml
+index 97f0b53..b5238ad 100644
+--- a/src/ppx/ppx_eliom_server.ml
++++ b/src/ppx/ppx_eliom_server.ml
+@@ -85,6 +85,7 @@ module Pass = struct
+      let $gen_id$ = $orig_expr$ and ...
+      (Necessary for injections in shared section) *)
+   let bind_injected_idents injections =
++    assert (injections <> []);
+     let bindings =
+       List.map
+         (fun (txt, expr,_) ->
+@@ -134,10 +135,15 @@ module Pass = struct
+ 
+   let client_str item =
+     let all_injections = flush_injections () in
+-    let loc = item.pstr_loc in
+-    [ bind_injected_idents all_injections;
++    let ccs =
++      let loc = item.pstr_loc in
+       close_client_section loc all_injections
+-    ]
++    in
++    match all_injections with
++    | [] ->
++      [ ccs ]
++    | l ->
++      [ bind_injected_idents l ; ccs ]
+ 
+   let server_str item = [
+     item ;
+@@ -146,12 +152,19 @@ module Pass = struct
+ 
+   let shared_str item =
+     let all_injections = flush_injections () in
+-    let loc = item.pstr_loc in
+-    [ bind_injected_idents all_injections ;
+-      item ;
+-      close_server_section loc ;
+-      close_client_section loc all_injections ;
+-    ]
++    let cl =
++      let loc = item.pstr_loc in
++      [
++        item;
++        close_server_section loc ;
++        close_client_section loc all_injections ;
++      ]
++    in
++    match all_injections with
++    | [] ->
++      cl
++    | l ->
++      bind_injected_idents l :: cl
+ 
+   let fragment ?typ ~context:_ ~num ~id expr =
+     let typ =

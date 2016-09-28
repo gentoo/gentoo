@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}-player/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="audioscrobbler dbus debug +idle libnotify nls python taglib zeroconf"
 
 RDEPEND=">=dev-libs/glib-2.14:2

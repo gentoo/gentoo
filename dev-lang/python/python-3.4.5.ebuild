@@ -72,6 +72,7 @@ src_prepare() {
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
+	epatch "${FILESDIR}/${PN}-3.4.5-cross.patch"
 
 	epatch_user
 
@@ -168,6 +169,10 @@ src_configure() {
 }
 
 src_compile() {
+	# Ensure sed works as expected
+	# https://bugs.gentoo.org/594768
+	local -x LC_ALL=C
+
 	# Avoid invoking pgen for cross-compiles.
 	touch Include/graminit.h Python/graminit.c || die
 

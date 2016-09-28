@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-perl/String-CRC32-1.200.0
 	!minimal? (
 		>=dev-perl/Module-Signature-0.500.0
-		dev-perl/digest-bubblebabble
+		dev-perl/Digest-BubbleBabble
 		dev-perl/Crypt-RSA
 		dev-perl/TermReadKey
 	)

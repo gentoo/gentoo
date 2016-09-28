@@ -1,0 +1,11 @@
+--- idiotseditor/idiotseditor.cpp.dist	2016-09-18 10:47:58.933319888 +0200
++++ idiotseditor/idiotseditor.cpp	2016-09-18 10:48:28.852321336 +0200
+@@ -2538,7 +2538,7 @@
+ 
+ #define BAR_COLOR 0, 0, 0
+ #define NOMINATOR_COLOR 0, 0, 204
+-#define HALF_COLOR 0.0, 26, 153
++#define HALF_COLOR 0, 26, 153
+ #define QUARTER_COLOR  0, 51, 127
+ #define EIGHTS_COLOR 127, 77, 102
+ #define COLOR_16 0, 102, 77

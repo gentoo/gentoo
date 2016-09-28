@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs multilib flag-o-matic
 
 MY_P="js-${PV}"
 DESCRIPTION="Stand-alone JavaScript C library"
-HOMEPAGE="http://www.mozilla.org/js/spidermonkey/"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.gz"
 
 LICENSE="NPL-1.1"

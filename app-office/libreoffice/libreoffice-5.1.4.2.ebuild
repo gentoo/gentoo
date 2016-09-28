@@ -25,7 +25,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -265,9 +265,7 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check-reqs_pkg_pretend
 
-		if [[ $(tc-getCC) == clang ]] ; then
-			: # ignore clang, which works
-		elif [[ $(gcc-major-version) -lt 4 ]] || {
+		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
 				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
 			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
@@ -290,6 +288,7 @@ pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
+	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && check-reqs_pkg_setup
 }

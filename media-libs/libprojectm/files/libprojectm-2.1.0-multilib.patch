@@ -1,6 +1,5 @@
-diff -urN projectM-complete-2.1.0-Source/src/libprojectM/CMakeLists.txt projectM-complete-2.1.0-Source.new/src/libprojectM/CMakeLists.txt
---- projectM-complete-2.1.0-Source/src/libprojectM/CMakeLists.txt	2012-05-20 05:43:26.000000000 +0200
-+++ projectM-complete-2.1.0-Source.new/src/libprojectM/CMakeLists.txt	2013-01-21 21:07:49.097541426 +0100
+--- libprojectM/CMakeLists.txt
++++ libprojectM/CMakeLists.txt
 @@ -35,7 +35,7 @@
  
  ADD_DEFINITIONS(-DCMAKE_INSTALL_PREFIX="\\\"${CMAKE_INSTALL_PREFIX}\\\"")

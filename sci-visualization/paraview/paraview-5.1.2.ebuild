@@ -27,7 +27,7 @@ REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 
 RDEPEND="
 	dev-libs/expat
-	>=dev-libs/jsoncpp-0.10.1
+	<dev-libs/jsoncpp-1.7.5
 	dev-libs/libxml2:2
 	dev-libs/protobuf
 	media-libs/freetype
@@ -78,7 +78,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=dev-util/cmake-3.3.1
+	>=dev-util/cmake-3.4
 	boost? ( >=dev-libs/boost-1.40.0[mpi?,${PYTHON_USEDEP}] )
 	doc? ( app-doc/doxygen )"
 

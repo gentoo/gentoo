@@ -33,7 +33,7 @@ HOMEPAGE="http://www.open-mpi.org"
 SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
 IUSE="cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 java mpi-threads numa romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
@@ -57,6 +57,7 @@ MPI_UNCLASSED_DEP_STR="
 CDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
+	!sys-cluster/nullmpi
 	!sys-cluster/mpiexec
 	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
@@ -79,6 +80,7 @@ DEPEND="${CDEPEND}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/mpi.h
+	/usr/include/openmpi/ompi/mpi/java/mpiJava.h
 )
 
 pkg_setup() {

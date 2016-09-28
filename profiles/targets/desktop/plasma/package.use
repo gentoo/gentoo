@@ -45,7 +45,7 @@ dev-qt/qtcore icu
 media-libs/mesa egl wayland
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 kdenlive melt -kde -qt4
+>=media-libs/mlt-0.9.8-r2 kdenlive melt
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
@@ -81,5 +81,4 @@ net-p2p/transmission -qt4
 >=net-print/hplip-3.16.5 -qt4
 >=net-wireless/wpa_supplicant-2.5 -qt4
 >=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
-sci-visualization/kst -qt4
 www-client/qupzilla -kde -qt4

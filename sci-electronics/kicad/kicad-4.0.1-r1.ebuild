@@ -21,7 +21,7 @@ SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug doc examples github i18n minimal +python webkit"
 LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh_CN"
 for lang in ${LANGS} ; do
@@ -42,7 +42,7 @@ CDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit?]
 	<dev-libs/boost-1.61[context,nls,threads,python?]
 	>=dev-libs/boost-1.56[context,nls,threads,python?]
 	github? ( dev-libs/openssl:0 )
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/freeglut
 	media-libs/mesa
 	sys-libs/zlib

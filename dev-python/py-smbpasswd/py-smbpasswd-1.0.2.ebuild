@@ -16,7 +16,7 @@ SRC_URI="https://barryp.org/static/media/software/download/${PN}/${PV}/${MY_P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND=""

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="5.2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="+deprecated emacs readline static"
 
-RDEPEND="readline? ( sys-libs/readline )
+RDEPEND="readline? ( sys-libs/readline:0= )
 	app-eselect/eselect-lua
 	!dev-lang/lua:0"
 DEPEND="${RDEPEND}

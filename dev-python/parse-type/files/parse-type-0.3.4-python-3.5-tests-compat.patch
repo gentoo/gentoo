@@ -1,0 +1,40 @@
+From 8f7ce32dc6bd466f1ea6ccc9260917016061bb4e Mon Sep 17 00:00:00 2001
+From: David King <dking@redhat.com>
+Date: Tue, 15 Dec 2015 08:52:26 +0000
+Subject: [PATCH] Adapt bundled parse for Python 3.5
+
+As the upstream pull request:
+
+https://github.com/r1chardj0n3s/parse/pull/34
+---
+ tests/test_parse_type_parse.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_parse_type_parse.py b/tests/test_parse_type_parse.py
+index 4151d37..cab6143 100644
+--- a/tests/test_parse_type_parse.py
++++ b/tests/test_parse_type_parse.py
+@@ -11,6 +11,7 @@
+ 
+ import unittest
+ from datetime import datetime, time
++import re
+ # XXX-ADAPT:
+ # ORIG: import parse
+ from parse_type import parse
+@@ -611,8 +612,13 @@ def test_mixed_type_variant(self):
+         self.assertEqual(r.fixed[21], 'spam')
+ 
+     def test_too_many_fields(self):
+-        p = parse.compile('{:ti}' * 15)
+-        self.assertRaises(parse.TooManyFields, p.parse, '')
++        # Python 3.5 removed the limit of 100 named groups in a regular expression,
++        # so only test for the exception if the limit exists.
++        try:
++            re.compile("".join("(?P<n{n}>{n}-)".format(n=i) for i in range(101)))
++        except AssertionError:
++            p = parse.compile('{:ti}' * 15)
++            self.assertRaises(parse.TooManyFields, p.parse, '')
+ 
+ 
+ class TestSearch(unittest.TestCase):

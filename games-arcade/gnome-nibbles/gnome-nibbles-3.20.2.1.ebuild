@@ -18,8 +18,7 @@ IUSE=""
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2
 	dev-libs/libgee:0.8=
-	dev-libs/libgames-support
-	>=gnome-base/librsvg-2.32:2
+	>=dev-libs/libgames-support-1
 	>=media-libs/clutter-1.22.0:1.0
 	>=media-libs/clutter-gtk-1.4.0:1.0
 	>=media-libs/libcanberra-0.26[gtk3]
@@ -29,7 +28,7 @@ DEPEND="${RDEPEND}
 	$(vala_depend)
 	app-text/yelp-tools
 	dev-libs/appstream-glib
-	>=dev-util/intltool-0.50
+	>=dev-util/intltool-0.50.2
 	sys-devel/gettext
 	virtual/pkgconfig
 "

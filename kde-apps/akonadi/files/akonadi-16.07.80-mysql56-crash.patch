@@ -1,0 +1,42 @@
+Gentoo-bug: 530012
+
+diff --git a/src/server/storage/dbconfigmysql.cpp b/src/server/storage/dbconfigmysql.cpp
+index db0c100..cdd8c6b 100644
+--- a/src/server/storage/dbconfigmysql.cpp
++++ b/src/server/storage/dbconfigmysql.cpp
+@@ -80,6 +80,7 @@ bool DbConfigMysql::init(QSettings &settings)
+                                          << QStringLiteral("/usr/local/sbin")
+                                          << QStringLiteral("/usr/local/libexec")
+                                          << QStringLiteral("/usr/libexec")
++                                         << QStringLiteral("/usr/share/mysql/scripts")
+                                          << QStringLiteral("/opt/mysql/libexec")
+                                          << QStringLiteral("/opt/local/lib/mysql5/bin")
+                                          << QStringLiteral("/opt/mysql/sbin");
+@@ -500,7 +501,8 @@ bool DbConfigMysql::initializeMariaDBDatabase(const QString &confFile, const QSt
+     return 0 == execute(mMysqlInstallDbPath,
+                         { QStringLiteral("--defaults-file=%1").arg(confFile),
+                           QStringLiteral("--force"),
+-                          QStringLiteral("--datadir=%1/").arg(dataDir) });
++                          QStringLiteral("--datadir=%1/").arg(dataDir),
++                          QStringLiteral("--basedir=/usr") });
+ }
+ 
+ /**
+@@ -512,7 +514,8 @@ bool DbConfigMysql::initializeMySQL5_7_6Database(const QString &confFile, const
+     return 0 == execute(mMysqldPath,
+                         { QStringLiteral("--defaults-file=%1").arg(confFile),
+                           QStringLiteral("--initialize"),
+-                          QStringLiteral("--datadir=%1/").arg(dataDir) });
++                          QStringLiteral("--datadir=%1/").arg(dataDir),
++                          QStringLiteral("--basedir=/usr") });
+ }
+ 
+ bool DbConfigMysql::initializeMySQLDatabase(const QString &confFile, const QString &dataDir) const
+@@ -520,5 +523,6 @@ bool DbConfigMysql::initializeMySQLDatabase(const QString &confFile, const QStri
+     // Don't use --force, it has been removed in MySQL 5.7.5
+     return 0 == execute(mMysqlInstallDbPath,
+                         {  QStringLiteral("--defaults-file=%1").arg(confFile),
+-                           QStringLiteral("--datadir=%1/").arg(dataDir) });
++                           QStringLiteral("--datadir=%1/").arg(dataDir),
++                           QStringLiteral("--basedir=/usr") });
+ }

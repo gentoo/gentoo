@@ -3,6 +3,8 @@
 # $Id$
 
 EAPI=5
+
+# ruby23: fails tests
 USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc"

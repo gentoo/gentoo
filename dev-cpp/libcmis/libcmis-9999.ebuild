@@ -11,7 +11,14 @@ unset SCM_ECLASS
 
 DESCRIPTION="C++ client library for the CMIS interface"
 HOMEPAGE="https://github.com/tdf/libcmis"
-[[ ${PV} == 9999 ]] || SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} = *_pre* ]]; then
+	snapshot=d2054a12e3f52fff8e96341e8c48f0dcd75e2e2a
+	SRC_URI="https://github.com/tdf/${PN}/archive/${snapshot}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${snapshot}"
+	unset snapshot
+elif [[ ${PV} != 9999 ]] ; then
+	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
 SLOT="0.5"
@@ -39,15 +46,12 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-cpp/libcmis:0
-	!dev-cpp/libcmis:0.2
-	!dev-cpp/libcmis:0.3
-	!dev-cpp/libcmis:0.4
+	!<dev-cpp/libcmis-0.5.0
 "
 
 src_prepare() {
-	eapply_user
-	[[ ${PV} == 9999 ]] && eautoreconf
+	default
+	[[ ${PV} = *_pre* || ${PV} = 9999 ]] && eautoreconf
 }
 
 src_configure() {

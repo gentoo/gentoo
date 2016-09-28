@@ -13,7 +13,7 @@ SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 IUSE=""
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 CDEPEND="
 	$(add_frameworks_dep kauth)

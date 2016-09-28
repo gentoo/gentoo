@@ -1,0 +1,41 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Thu, 08 Sep 2016 22:00:40 +0000
+Subject: fix baloo_file crash with corrupted database
+X-Git-Url: http://quickgit.kde.org/?p=baloo.git&a=commitdiff&h=a03b0caa4ca1fbfc249bfc0c2730aac340bbf929
+---
+fix baloo_file crash with corrupted database
+
+CHANGELOG: Handle corruption of index database for baloo_file, try to recreate the database or abort if that fails.
+
+REVIEW: 128865
+---
+
+
+--- a/src/file/main.cpp
++++ b/src/file/main.cpp
+@@ -82,7 +82,23 @@
+     QFile::remove(path + "/index-lock");
+ 
+     Baloo::Database *db = Baloo::globalDatabaseInstance();
+-    db->open(Baloo::Database::CreateDatabase);
++
++    /**
++     * try to open, if that fails, try to unlink the index db and retry
++     */
++    if (!db->open(Baloo::Database::CreateDatabase)) {
++        // delete old stuff, set to initial run!
++        qWarning() << "Failed to create database, removing corrupted database.";
++        QFile::remove(path + "/index");
++        QFile::remove(path + "/index-lock");
++        indexerConfig.setInitialRun(true);
++
++        // try to create now after cleanup, if still no works => fail
++        if (!db->open(Baloo::Database::CreateDatabase)) {
++            qWarning() << "Failed to create database after deleting corrupted one.";
++            return 1;
++        }
++    }
+ 
+     Baloo::MainHub hub(db, &indexerConfig);
+     return app.exec();
+

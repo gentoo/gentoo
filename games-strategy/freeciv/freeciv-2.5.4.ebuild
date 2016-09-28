@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/freeciv/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
 
 # postgres isn't yet really supported by upstream
@@ -24,7 +24,7 @@ RDEPEND="app-arch/bzip2
 		sqlite? ( dev-db/sqlite:3 )
 		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
 	)
-	readline? ( sys-libs/readline:0 )
+	readline? ( sys-libs/readline:0= )
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
 	!dedicated? (
 		media-libs/libpng:0

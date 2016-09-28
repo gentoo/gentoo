@@ -12,7 +12,7 @@ HOMEPAGE="http://www.octave.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java jit opengl
+IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl
 	postscript +qhull +qrupdate readline +sparse static-libs X zlib"
 REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
@@ -32,9 +32,6 @@ RDEPEND="
 	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	imagemagick? ( media-gfx/imagemagick:=[cxx] )
 	java? ( >=virtual/jre-1.6.0:* )
-	jit? (
-		>=sys-devel/autoconf-archive-2015.02.04
-		>=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -57,7 +54,7 @@ RDEPEND="
 		sci-libs/cxsparse:0=
 		sci-libs/umfpack:0= )
 	X? ( x11-libs/libX11:0= )
-	zlib? ( sys-libs/zlib:0= )"
+	sys-libs/zlib"
 
 DEPEND="${RDEPEND}
 	qrupdate? ( app-misc/pax-utils )
@@ -78,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.3-imagemagick.patch
 	"${FILESDIR}"/${PN}-3.8.1-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.0.3-ncurses-pkgconfig.patch
+	"${FILESDIR}"/${PN}-4.0.3-zlib-underlinking.patch
 )
 
 src_prepare() {
@@ -86,12 +84,6 @@ src_prepare() {
 		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
-
-	# Octave fails to build with LLVM 3.5 https://savannah.gnu.org/bugs/?41061
-	use jit && has_version ">=sys-devel/llvm-3.5" && \
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch
-		)
 
 	# Fix bug 501756
 	sed -i \
@@ -107,6 +99,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# [QA] detect underlinking #593670
+	append-ldflags $(test-flags-CXX -Wl,-z,defs)
+
 	# unfortunate dependency on mpi from hdf5 (bug #302621)
 	use hdf5 && has_version sci-libs/hdf5[mpi] && \
 		export CXX=mpicxx CC=mpicc FC=mpif77 F77=mpif77
@@ -125,12 +120,13 @@ src_configure() {
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		--disable-64 \
+		--disable-jit \
 		--enable-shared \
+		--with-z \
 		$(use_enable static-libs static) \
 		$(use_enable doc docs) \
 		$(use_enable java) \
 		$(use_enable gui) \
-		$(use_enable jit) \
 		$(use_enable readline) \
 		$(use_with curl) \
 		$(use_with fftw fftw3) \
@@ -147,13 +143,12 @@ src_configure() {
 		$(use_with sparse ccolamd) \
 		$(use_with sparse cholmod) \
 		$(use_with sparse cxsparse) \
-		$(use_with X x) \
-		$(use_with zlib z)
+		$(use_with X x)
 }
 
 src_compile() {
 	default
-	if use java || use jit ; then
+	if use java; then
 		pax-mark m "${S}/src/.libs/octave-cli"
 	fi
 }
@@ -169,7 +164,7 @@ src_install() {
 	fi
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
 	use java && \
-		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
-	echo "LDPATH=${EROOT}usr/$(get_libdir)/${PN}/${PV}" > 99octave
+		java-pkg_regjar "${ED%/}/usr/share/${PN}/${PV}/m/java/octave.jar"
+	echo "LDPATH=${EROOT%/}/usr/$(get_libdir)/${PN}/${PV}" > 99octave || die
 	doenvd 99octave
 }

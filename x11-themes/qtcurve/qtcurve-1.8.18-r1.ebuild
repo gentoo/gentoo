@@ -55,6 +55,7 @@ PATCHES=(
 	"${DISTDIR}/${P}-dont_use_c++11.patch"
 	"${FILESDIR}/${P}-remove_qt_filedialog_api.patch"
 	"${FILESDIR}/${P}-gtk2_segfault.patch"
+	"${FILESDIR}/${P}-std_isnan.patch"
 	)
 
 pkg_setup() {

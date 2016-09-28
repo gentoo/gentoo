@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc44.patch \
 		"${FILESDIR}"/${P}-newtcl.patch \
-		"${FILESDIR}"/${P}-makefile.patch
+		"${FILESDIR}"/${P}-makefile.patch \
+		"${FILESDIR}"/${P}-fix-c++14.patch
 
 	sed -i \
 		-e 's:8.4 8.3:8.6 8.5 8.4 8.3:g' \

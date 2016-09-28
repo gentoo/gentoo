@@ -1,47 +1,57 @@
-From 7dc941862819398db2ac4ae4239c8ed05431f928 Mon Sep 17 00:00:00 2001
-From: Mike Gilbert <floppym@gentoo.org>
-Date: Sun, 8 May 2016 11:54:00 -0400
-Subject: [PATCH] Substitute includedir and libdir in re2.pc
+From ac62674fa16b5a086f02dd208667ba65e22ec09d Mon Sep 17 00:00:00 2001
+From: Paul Wankadia <junyer@google.com>
+Date: Mon, 9 May 2016 14:42:37 +1000
+Subject: [PATCH] Plumb more variables from Makefile to re2.pc.
 
+Change-Id: I35509c273b0bd90242db127121c71be1f628c06f
+Reviewed-on: https://code-review.googlesource.com/4710
+Reviewed-by: Paul Wankadia <junyer@google.com>
 ---
- Makefile            | 5 ++++-
- re2.pc => re2.pc.in | 5 ++---
- 2 files changed, 6 insertions(+), 4 deletions(-)
- rename re2.pc => re2.pc.in (71%)
+ Makefile | 8 +++++---
+ re2.pc   | 6 +++---
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index d0e2090..4a8d8a6 100644
+index d0e2090..411e551 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -273,7 +273,10 @@ install: obj/libre2.a obj/so/libre2.$(SOEXT)
+@@ -28,11 +28,9 @@ NMFLAGS?=-p
+ # http://www.gnu.org/prep/standards/standards.html
+ prefix=/usr/local
+ exec_prefix=$(prefix)
+-bindir=$(exec_prefix)/bin
+ includedir=$(prefix)/include
+ libdir=$(exec_prefix)/lib
+ INSTALL=install
+-INSTALL_PROGRAM=$(INSTALL)
+ INSTALL_DATA=$(INSTALL) -m 644
+ 
+ # ABI version
+@@ -273,7 +271,11 @@ install: obj/libre2.a obj/so/libre2.$(SOEXT)
  	$(INSTALL) obj/so/libre2.$(SOEXT) $(DESTDIR)$(libdir)/libre2.$(SOEXTVER00)
  	ln -sf libre2.$(SOEXTVER00) $(DESTDIR)$(libdir)/libre2.$(SOEXTVER)
  	ln -sf libre2.$(SOEXTVER00) $(DESTDIR)$(libdir)/libre2.$(SOEXT)
 -	sed -e "s#@prefix@#${prefix}#" re2.pc >$(DESTDIR)$(libdir)/pkgconfig/re2.pc
-+	sed -e "s#@prefix@#$(prefix)#" \
-+		-e "s#@includedir@#$(includedir)#" \
-+		-e "s#@libdir@#$(libdir)#" \
-+		re2.pc.in >$(DESTDIR)$(libdir)/pkgconfig/re2.pc
++	$(INSTALL_DATA) re2.pc $(DESTDIR)$(libdir)/pkgconfig/re2.pc
++	sed -i \
++	  -e "s#@prefix@#${prefix}#" -e "s#@exec_prefix@#${exec_prefix}#" \
++	  -e "s#@includedir@#${includedir}#" -e "s#@libdir@#${libdir}#" \
++	  $(DESTDIR)$(libdir)/pkgconfig/re2.pc
  
  testinstall: static-testinstall shared-testinstall
  	@echo
-diff --git a/re2.pc b/re2.pc.in
-similarity index 71%
-rename from re2.pc
-rename to re2.pc.in
-index 91ba181..a04a70a 100644
+diff --git a/re2.pc b/re2.pc
+index 91ba181..d66cf51 100644
 --- a/re2.pc
-+++ b/re2.pc.in
-@@ -1,7 +1,6 @@
++++ b/re2.pc
+@@ -1,7 +1,7 @@
  prefix=@prefix@
 -exec_prefix=${prefix}
 -includedir=${prefix}/include
 -libdir=${exec_prefix}/lib
++exec_prefix=@exec_prefix@
 +includedir=@includedir@
 +libdir=@libdir@
  
  Name: re2
  Description: RE2 is a fast, safe, thread-friendly regular expression engine.
--- 
-2.8.2
-

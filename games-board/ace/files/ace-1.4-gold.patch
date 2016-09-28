@@ -5,8 +5,8 @@ Subject: build system
 fix gold linker compilation
 https://bugs.gentoo.org/show_bug.cgi?id=435826
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -44,6 +44,9 @@
  AC_PROG_INSTALL
  AC_PROG_LN_S
@@ -96,8 +96,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=435826
  AC_SUBST(PDA)
  
  AC_OUTPUT(Makefile lib/Makefile games/Makefile tests/Makefile)
---- lib/Makefile.am
-+++ lib/Makefile.am
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
 @@ -5,18 +5,19 @@
  
  CLEANFILES = images.c images.d
@@ -121,8 +121,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=435826
  # table_ai.c table_ck.c table_dc.c table_dg.c \
  #table_dp.c table_in.c table_ky.c table_rd.c table_rs.c
  
---- games/Makefile.am
-+++ games/Makefile.am
+--- a/games/Makefile.am
++++ b/games/Makefile.am
 @@ -30,8 +30,7 @@
  
  STRIP = @STRIP@

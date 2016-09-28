@@ -1,0 +1,11 @@
+--- a/tuned/plugins/plugin_sysctl.py
++++ b/tuned/plugins/plugin_sysctl.py
+@@ -67,7 +67,7 @@
+ 			self._write_sysctl(option, value)
+ 
+ 	def _execute_sysctl(self, arguments):
+-		execute = ["/sbin/sysctl"] + arguments
++		execute = ["sysctl"] + arguments
+ 		log.debug("executing %s" % execute)
+ 		return self._cmd.execute(execute)
+ 

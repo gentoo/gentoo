@@ -85,6 +85,7 @@ multilib_src_compile() {
 
 src_compile() {
 	if tc-is-cross-compiler && ! ROOT=/ has_version "~${CATEGORY}/${P}" ; then
+		emake -C "${WORKDIR}"/build/src magic.h #586444
 		emake -C "${WORKDIR}"/build/src file
 		PATH="${WORKDIR}/build/src:${PATH}"
 	fi

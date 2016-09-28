@@ -90,6 +90,8 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
+has "${EAPI:-0}" 0 1 2 3 4 5 || die "kernel-2.eclass is unsupported for EAPI ${EAPI}"
+
 PYTHON_COMPAT=( python{2_6,2_7} )
 
 inherit eutils toolchain-funcs versionator multilib python-any-r1

@@ -173,6 +173,10 @@ src_configure() {
 }
 
 src_compile() {
+	# Ensure sed works as expected
+	# https://bugs.gentoo.org/594768
+	local -x LC_ALL=C
+
 	# Avoid invoking pgen for cross-compiles.
 	touch Include/graminit.h Python/graminit.c || die
 

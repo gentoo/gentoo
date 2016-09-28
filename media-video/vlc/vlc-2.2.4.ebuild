@@ -63,15 +63,13 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
 	avcodec? (
 		!libav? (
-			>=media-video/ffmpeg-2.2:0=
-			<=media-video/ffmpeg-2.9:0=
+			>=media-video/ffmpeg-2.8:0=
 		)
 		libav? ( >=media-video/libav-11:0= )
 	)
 	avformat? (
 		!libav? (
-			>=media-video/ffmpeg-2.2:0=
-			<=media-video/ffmpeg-2.9:0=
+			>=media-video/ffmpeg-2.8:0=
 		)
 		libav? ( media-video/libav:0= )
 	)
@@ -157,7 +155,7 @@ RDEPEND="
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
 		x11-libs/libva:0[X,drm]
-		!libav? ( <=media-video/ffmpeg-2.9:0=[vaapi] )
+		!libav? ( >=media-video/ffmpeg-2.8:0=[vaapi] )
 		libav? ( media-video/libav:0=[vaapi] )
 	)
 	vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
@@ -170,8 +168,7 @@ RDEPEND="${RDEPEND}
 	vdpau? (
 		>=x11-libs/libvdpau-0.6:0
 		!libav? (
-					>=media-video/ffmpeg-2.2:0=
-					<=media-video/ffmpeg-2.9:0=
+					>=media-video/ffmpeg-2.8:0=
 		)
 		libav? ( >=media-video/libav-10:0= )
 	)
@@ -234,6 +231,10 @@ PATCHES=(
 
 	# Allow QT5.5 since Gentoo has a patched QTwidgets
 	"${FILESDIR}"/${PN}-2.2.2-qt5widgets.patch
+
+	# Bug #575072
+	"${FILESDIR}"/${PN}-2.2.4-relax_ffmpeg.patch
+	"${FILESDIR}"/${PN}-2.2.4-ffmpeg3.patch
 )
 
 S="${WORKDIR}/${MY_P}"

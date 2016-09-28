@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils fdo-mime flag-o-matic subversion
+EAPI=6
+inherit autotools fdo-mime flag-o-matic multilib-minimal subversion
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
@@ -17,17 +17,22 @@ KEYWORDS=""
 IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
-	>=media-libs/libpng-1.2:0
-	virtual/jpeg:0
-	sys-libs/zlib
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libXext
-	x11-libs/libXt
-	cairo? ( x11-libs/cairo[X] )
-	opengl? ( virtual/glu virtual/opengl )
-	xinerama? ( x11-libs/libXinerama )
-	xft? ( x11-libs/libXft )
+	>=media-libs/libpng-1.2:0=[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/jpeg:0=[${MULTILIB_USEDEP}]
+	x11-libs/libICE[${MULTILIB_USEDEP}]
+	x11-libs/libSM[${MULTILIB_USEDEP}]
+	x11-libs/libXcursor[${MULTILIB_USEDEP}]
+	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	x11-libs/libXt[${MULTILIB_USEDEP}]
+	cairo? ( x11-libs/cairo[${MULTILIB_USEDEP},X] )
+	opengl? (
+		virtual/glu[${MULTILIB_USEDEP}]
+		virtual/opengl[${MULTILIB_USEDEP}]
+	)
+	xft? ( x11-libs/libXft[${MULTILIB_USEDEP}] )
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}
@@ -36,25 +41,43 @@ DEPEND="
 	xinerama? ( x11-proto/xineramaproto )
 "
 
+DOCS=(
+	ANNOUNCEMENT
+	CHANGES
+	CREDITS
+	README
+)
+
+FLTK_GAMES="
+	blocks
+	checkers
+	sudoku
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.0-share.patch
+	"${FILESDIR}"/${PN}-1.3.2-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
+	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
+)
+
+pkg_setup() {
+	unset FLTK_LIBDIRS
+}
+
 src_prepare() {
+	default
+
 	rm -rf zlib jpeg png || die
-	epatch \
-		"${FILESDIR}"/${PN}-1.3.2-desktop.patch \
-		"${FILESDIR}"/${PN}-1.3.0-share.patch \
-		"${FILESDIR}"/${PN}-1.3.2-conf-tests.patch \
-		"${FILESDIR}"/${PN}-1.3.2-jpeg-9a.patch \
-		"${FILESDIR}"/${PN}-1.3.3-visibility.patch
 
 	sed -i \
 		-e 's:@HLINKS@::g' FL/Makefile.in || die
 	sed -i \
+		-e '/x-fluid/d' fluid/Makefile || die
+	sed -i \
 		-e '/C\(XX\)\?FLAGS=/s:@C\(XX\)\?FLAGS@::' \
 		-e '/^LDFLAGS=/d' \
 		"${S}/fltk-config.in" || die
-	# some fixes introduced because slotting
-	sed -i \
-		-e '/RANLIB/s:$(libdir)/\(.*LIBNAME)\):$(libdir)/`basename \1`:g' \
-		src/Makefile || die
 	# docs in proper docdir
 	sed -i \
 		-e "/^docdir/s:fltk:${PF}/html:" \
@@ -65,17 +88,20 @@ src_prepare() {
 		> CMake/FLTKConfig.cmake || die
 	sed -e 's:-Os::g' -i configure.in || die
 
-	use prefix && append-ldflags -Wl,-rpath -Wl,"${FLTK_LIBDIR}"
-
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
 
 	eautoconf
+	multilib_copy_sources
 }
 
-src_configure() {
-	FLTK_INCDIR=${EPREFIX}/usr/include/fltk
-	FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
+multilib_src_configure() {
+	local FLTK_INCDIR=${EPREFIX}/usr/include/fltk
+	local FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
+	FLTK_LIBDIRS+=${FLTK_LIBDIRS+:}${FLTK_LIBDIR}
+
+	multilib_is_native_abi && use prefix &&
+		append-ldflags -Wl,-rpath -Wl,"${FLTK_LIBDIR}"
 
 	econf \
 		$(use_enable cairo) \
@@ -90,52 +116,53 @@ src_configure() {
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--enable-largefile \
 		--enable-shared \
+		--enable-xcursor \
 		--enable-xdbe \
+		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
 		--libdir=${FLTK_LIBDIR}
 }
 
-src_compile() {
+multilib_src_compile() {
+	# Prevent reconfigure on non-native ABIs.
+	touch -r makeinclude config.{guess,sub} || die
+
 	default
 
-	if use doc; then
-		emake -C documentation html
-	fi
-
-	if use games; then
-		emake -C test blocks checkers sudoku
+	if multilib_is_native_abi; then
+		emake -C fluid
+		use doc && emake -C documentation html
+		use games && emake -C test ${FLTK_GAMES}
 	fi
 }
 
-src_test() {
+multilib_src_test() {
+	emake -C fluid
 	emake -C test
 }
 
-src_install() {
+multilib_src_install() {
 	default
 
-	emake -C fluid \
-			DESTDIR="${D}" install-linux
-	if use doc; then
-		emake -C documentation \
-			DESTDIR="${D}" install
-	fi
+	if multilib_is_native_abi; then
+		emake -C fluid \
+			  DESTDIR="${D}" install-linux
 
-	local apps="fluid"
-	if use games; then
-		emake -C test \
-			DESTDIR="${D}" install-linux
-		emake -C documentation \
-			DESTDIR="${D}" install-linux
-		apps+=" sudoku blocks checkers"
-	fi
+		use doc &&
+			emake -C documentation \
+				  DESTDIR="${D}" install
 
-	for app in ${apps}; do
+		use games &&
+			emake -C test \
+				  DESTDIR="${D}" install-linux
+	fi
+}
+
+multilib_src_install_all() {
+	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
 		dosym /usr/share/icons/hicolor/32x32/apps/${app}.png \
-			/usr/share/pixmaps/${app}.png
+			  /usr/share/pixmaps/${app}.png
 	done
-
-	dodoc CHANGES README CREDITS ANNOUNCEMENT
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
@@ -145,8 +172,8 @@ src_install() {
 	insinto /usr/share/cmake/Modules
 	doins CMake/FLTK*.cmake
 
-	echo "LDPATH=${FLTK_LIBDIR}" > 99fltk
-	echo "FLTK_DOCDIR=${EPREFIX}/usr/share/doc/${PF}/html" >> 99fltk
+	echo "LDPATH=${FLTK_LIBDIRS}" > 99fltk || die
+	echo "FLTK_DOCDIR=${EPREFIX}/usr/share/doc/${PF}/html" >> 99fltk || die
 	doenvd 99fltk
 
 	# FIXME: This is bad, but building only shared libraries is hardly supported

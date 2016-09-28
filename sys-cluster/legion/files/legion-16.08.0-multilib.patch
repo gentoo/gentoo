@@ -1,0 +1,131 @@
+From f9b71c86098c16436c3a51d8706f52f720ef008d Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Fri, 2 Sep 2016 15:54:49 -0600
+Subject: [PATCH] cmake: support multilib
+
+---
+ CMakeLists.txt         | 26 ++++++++++++++++----------
+ runtime/CMakeLists.txt |  8 ++++----
+ 2 files changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 726e8e4..181a2bd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,12 +20,18 @@ project(Legion)
+ #------------------------------------------------------------------------------#
+ # Some boilerplate to setup nice output directories
+ #------------------------------------------------------------------------------#
++
++#for multilib distros
++if (NOT DEFINED LIB)
++  set(LIB "lib")
++endif(NOT DEFINED LIB)
++
+ list(INSERT CMAKE_MODULE_PATH 0 "${Legion_SOURCE_DIR}/cmake")
+ if(NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Legion_BINARY_DIR}/lib)
++  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Legion_BINARY_DIR}/${LIB})
+ endif()
+ if(NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Legion_BINARY_DIR}/lib)
++  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Legion_BINARY_DIR}/${LIB})
+ endif()
+ if(NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Legion_BINARY_DIR}/bin)
+@@ -50,7 +56,7 @@ option(Legion_USE_HWLOC "Use hwloc for topology awareness" OFF)
+ if(Legion_USE_HWLOC)
+   find_package(HWLOC REQUIRED)
+   install(FILES ${Legion_SOURCE_DIR}/cmake/FindHWLOC.cmake
+-    DESTINATION lib/cmake/Legion
++    DESTINATION ${LIB}/cmake/Legion
+   )
+ endif()
+ 
+@@ -69,7 +75,7 @@ if(Legion_USE_GASNet)
+   mark_as_advanced(GASNet_CONDUIT)
+   find_package(GASNet REQUIRED)
+   install(FILES ${Legion_SOURCE_DIR}/cmake/FindGASNet.cmake
+-    DESTINATION lib/cmake/Legion
++    DESTINATION ${LIB}/cmake/Legion
+   )
+ endif()
+ 
+@@ -81,7 +87,7 @@ if(Legion_USE_LLVM)
+   set(Legion_LLVM_COMPONENTS irreader jit mcjit x86)
+   find_package(LLVM REQUIRED COMPONENTS ${Legion_LLVM_COMPONENTS})
+   install(FILES ${Legion_SOURCE_DIR}/cmake/FindLLVM.cmake
+-    DESTINATION lib/cmake/Legion
++    DESTINATION ${LIB}/cmake/Legion
+   )
+ endif()
+ 
+@@ -97,10 +103,10 @@ if(Legion_USE_CUDA)
+   endif()
+   find_package(CUDA REQUIRED)
+   install(FILES ${Legion_SOURCE_DIR}/cmake/FindCUDA.cmake
+-    DESTINATION lib/cmake/Legion
++    DESTINATION ${LIB}/cmake/Legion
+   )
+   install(FILES ${Legion_SOURCE_DIR}/cmake/newcmake/FindCUDA.cmake
+-    DESTINATION lib/cmake/Legion/newcmake
++    DESTINATION ${LIB}/cmake/Legion/newcmake
+   )
+ endif()
+ 
+@@ -128,7 +134,7 @@ export(EXPORT LegionTargets
+ install(EXPORT LegionTargets
+   NAMESPACE Legion::
+   FILE LegionTargets.cmake
+-  DESTINATION lib/cmake/Legion
++  DESTINATION ${LIB}/cmake/Legion
+ )
+ 
+ configure_file(
+@@ -137,7 +143,7 @@ configure_file(
+   @ONLY
+ )
+ install(FILES ${Legion_BINARY_DIR}/LegionConfigCommon.cmake
+-  DESTINATION lib/cmake/Legion
++  DESTINATION ${LIB}/cmake/Legion
+ )
+ 
+ configure_file(
+@@ -147,7 +153,7 @@ configure_file(
+ )
+ 
+ install(FILES cmake/LegionConfig-install.cmake
+-  DESTINATION lib/cmake/Legion
++  DESTINATION ${LIB}/cmake/Legion
+   RENAME LegionConfig.cmake
+ )
+ 
+diff --git a/runtime/CMakeLists.txt b/runtime/CMakeLists.txt
+index e21e141..91f6a03 100644
+--- a/runtime/CMakeLists.txt
++++ b/runtime/CMakeLists.txt
+@@ -176,8 +176,8 @@ target_include_directories(LowLevelRuntime
+ )
+ 
+ install(TARGETS LowLevelRuntime EXPORT LegionTargets
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib
++  LIBRARY DESTINATION ${LIB}
++  ARCHIVE DESTINATION ${LIB}
+   RUNTIME DESTINATION bin
+ )
+ 
+@@ -244,8 +244,8 @@ target_include_directories(HighLevelRuntime
+ )
+ 
+ install(TARGETS HighLevelRuntime EXPORT LegionTargets
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib
++  LIBRARY DESTINATION ${LIB}
++  ARCHIVE DESTINATION ${LIB}
+   RUNTIME DESTINATION bin
+ )
+ 
+-- 
+2.7.3
+

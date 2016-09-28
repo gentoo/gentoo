@@ -307,7 +307,7 @@ src_unpack() {
 
 			if [[ "${CURRENT_WINE_COMMIT}" != "${COMPAT_WINE_COMMIT}" ]]; then
 				einfo "The current Staging patchset is not guaranteed to apply on this WINE commit."
-				einfo "If src_prepare fails, try emerging with the env var EGIT_COMMIT."
+				einfo "If src_prepare fails, try emerging with the env var WINE_COMMIT."
 				einfo "Example: WINE_COMMIT=${COMPAT_WINE_COMMIT} emerge -1 wine"
 			fi
 		fi

@@ -1,5 +1,5 @@
---- scourge-0.21.1.src/scourge/configure.in
-+++ scourge-0.21.1.src/scourge/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -4,7 +4,7 @@
  dnl Process this file with autoconf to produce a configure script.
  AC_INIT(src/scourge.h)

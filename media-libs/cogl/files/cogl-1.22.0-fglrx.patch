@@ -1,5 +1,5 @@
---- 122/cogl/driver/gl/gl/cogl-driver-gl.c	2015-09-02 18:39:02.000000000 +0200
-+++ 122b/cogl/driver/gl/gl/cogl-driver-gl.c	2015-10-18 10:37:14.052350142 +0200
+--- a/cogl/driver/gl/gl/cogl-driver-gl.c	2015-09-02 18:39:02.000000000 +0200
++++ b/cogl/driver/gl/gl/cogl-driver-gl.c	2015-10-18 10:37:14.052350142 +0200
 @@ -419,7 +419,7 @@
    if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 2))
      /* We want to use version 120 if it is available so that the

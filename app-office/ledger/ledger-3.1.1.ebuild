@@ -13,7 +13,7 @@ HOMEPAGE="http://ledger-cli.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc emacs python"
 

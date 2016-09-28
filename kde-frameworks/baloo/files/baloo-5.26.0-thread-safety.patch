@@ -1,0 +1,253 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 11 Sep 2016 18:24:40 +0000
+Subject: Make e.g. Baloo::Query thread safe.
+X-Git-Url: http://quickgit.kde.org/?p=baloo.git&a=commitdiff&h=e34da150d82a57cf417a59b8b632b2fecb32a6f7
+---
+Make e.g. Baloo::Query thread safe.
+
+lmdb itself is thread safe (e.g. you can use the same env in multiple threads).
+Unfortunately, the Baloo:atabase itself not, as open() might race against other open calls (we have one unique db object in baloo).
+
+=> add non-recursive mutex (recursive mutex not needed, one just must avoid to call isOpen() or path() inside open, that is done, else no unit test works).
+
+REVIEW: 128890
+---
+Merged with commits
+988e5feb5de64ed25337fe2ff9b494eb30b15b47
+54f7363048c7db41f63c85f637911a5598c30e9e
+377e62b0307839edb0245d65381a3f55f594ae4e
+---
+
+--- a/src/engine/database.cpp
++++ b/src/engine/database.cpp
+@@ -1,6 +1,7 @@
+ /*
+    This file is part of the KDE Baloo project.
+  * Copyright (C) 2015  Vishesh Handa <vhanda@kde.org>
++ * Copyright (C) 2016  Christoph Cullmann <cullmann@kde.org>
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -43,23 +44,31 @@
+ #include <QFile>
+ #include <QFileInfo>
+ #include <QDir>
++#include <QMutexLocker>
+ 
+ using namespace Baloo;
+ 
+ Database::Database(const QString& path)
+     : m_path(path)
+-    , m_env(0)
++    , m_env(nullptr)
+ {
+ }
+ 
+ Database::~Database()
+ {
+-    mdb_env_close(m_env);
++    // try only to close if we did open the DB successfully
++    if (m_env) {
++        mdb_env_close(m_env);
++        m_env = nullptr;
++    }
+ }
+ 
+ bool Database::open(OpenMode mode)
+ {
+-    if (isOpen()) {
++    QMutexLocker locker(&m_mutex);
++
++    // nop if already open!
++    if (m_env) {
+         return true;
+     }
+ 
+@@ -89,7 +98,7 @@
+ 
+     int rc = mdb_env_create(&m_env);
+     if (rc) {
+-        m_env = 0;
++        m_env = nullptr;
+         return false;
+     }
+ 
+@@ -110,7 +119,8 @@
+     QByteArray arr = QFile::encodeName(indexInfo.absoluteFilePath());
+     rc = mdb_env_open(m_env, arr.constData(), MDB_NOSUBDIR | MDB_NOMEMINIT, 0664);
+     if (rc) {
+-        m_env = 0;
++        mdb_env_close(m_env);
++        m_env = nullptr;
+         return false;
+     }
+ 
+@@ -118,6 +128,7 @@
+     Q_ASSERT_X(rc == 0, "Database::open reader_check", mdb_strerror(rc));
+     if (rc) {
+         mdb_env_close(m_env);
++        m_env = nullptr;
+         return false;
+     }
+ 
+@@ -129,9 +140,8 @@
+         int rc = mdb_txn_begin(m_env, NULL, MDB_RDONLY, &txn);
+         Q_ASSERT_X(rc == 0, "Database::transaction ro begin", mdb_strerror(rc));
+         if (rc) {
+-            mdb_txn_abort(txn);
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+ 
+@@ -157,7 +167,7 @@
+         if (!m_dbis.isValid()) {
+             mdb_txn_abort(txn);
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+ 
+@@ -165,16 +175,15 @@
+         Q_ASSERT_X(rc == 0, "Database::transaction ro commit", mdb_strerror(rc));
+         if (rc) {
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+     } else {
+         int rc = mdb_txn_begin(m_env, NULL, 0, &txn);
+         Q_ASSERT_X(rc == 0, "Database::transaction begin", mdb_strerror(rc));
+         if (rc) {
+-            mdb_txn_abort(txn);
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+ 
+@@ -200,7 +209,7 @@
+         if (!m_dbis.isValid()) {
+             mdb_txn_abort(txn);
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+ 
+@@ -208,16 +217,24 @@
+         Q_ASSERT_X(rc == 0, "Database::transaction commit", mdb_strerror(rc));
+         if (rc) {
+             mdb_env_close(m_env);
+-            m_env = 0;
++            m_env = nullptr;
+             return false;
+         }
+     }
+ 
++    Q_ASSERT(m_env);
+     return true;
+ }
+ 
++bool Database::isOpen() const
++{
++    QMutexLocker locker(&m_mutex);
++    return m_env != 0;
++}
++
+ QString Database::path() const
+ {
++    QMutexLocker locker(&m_mutex);
+     return m_path;
+ }
+ 
+--- a/src/engine/database.h
++++ b/src/engine/database.h
+@@ -1,6 +1,7 @@
+ /*
+    This file is part of the KDE Baloo project.
+  * Copyright (C) 2015  Vishesh Handa <vhanda@kde.org>
++ * Copyright (C) 2016  Christoph Cullmann <cullmann@kde.org>
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -21,6 +22,8 @@
+ #ifndef BALOO_DATABASE_H
+ #define BALOO_DATABASE_H
+ 
++#include <QMutex>
++
+ #include "document.h"
+ #include "databasedbis.h"
+ 
+@@ -31,21 +34,56 @@
+ class BALOO_ENGINE_EXPORT Database
+ {
+ public:
++    /**
++     * Init database for given DB path, will not open it.
++     * @param path db path
++     */
+     explicit Database(const QString& path);
++
++    /**
++     * Destruct db, might close it, if opened.
++     */
+     ~Database();
+ 
+-    QString path() const;
+-
++    /**
++     * Database open mode
++     */
+     enum OpenMode {
+         CreateDatabase,
+         OpenDatabase
+     };
++
++    /**
++     * Open database in given mode.
++     * Nop after open was done (even if mode differs).
++     * There is no close as this would invalidate the database for all threads using it.
++     * @param mode create or open only?
++     * @return success?
++     */
+     bool open(OpenMode mode);
+ 
+-    bool isOpen() const { return m_env != 0; }
++    /**
++     * Is database open?
++     * @return database open?
++     */
++    bool isOpen() const;
++
++    /**
++     * Path to database.
++     * @return database path
++     */
++    QString path() const;
+ 
+ private:
+-    QString m_path;
++    /**
++     * serialize access, as open might be called from multiple threads
++     */
++    mutable QMutex m_mutex;
++
++    /**
++     * database path
++     */
++    const QString m_path;
+ 
+     MDB_env* m_env;
+     DatabaseDbis m_dbis;
+@@ -56,6 +94,5 @@
+ };
+ }
+ 
+-
+ #endif // BALOO_DATABASE_H
+ 

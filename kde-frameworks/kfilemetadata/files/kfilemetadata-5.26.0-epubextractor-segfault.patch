@@ -1,0 +1,149 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 11 Sep 2016 17:14:51 +0000
+Subject: Improve epub extractor, less segfaults
+X-Git-Url: http://quickgit.kde.org/?p=kfilemetadata.git&a=commitdiff&h=47f6e57b2fa3768feb4f1f4a2cd3ce46660d90f2
+---
+Improve epub extractor, less segfaults
+
+Improve epub extractor:
+
+1) check for more nullpointers (e.g. data can be null for some fields, iterators, ...)
+2) actually close the epub file again at all
+3) iterator seems to handle clink as stated in docs, fix double free
+
+e.g. see bug 361727
+could be the double freed clink in the last iterator
+
+BUG: 361727
+REVIEW: 128888
+---
+
+
+--- a/src/extractors/epubextractor.cpp
++++ b/src/extractors/epubextractor.cpp
+@@ -1,5 +1,6 @@
+ /*
+     Copyright (C) 2013  Vishesh Handa <me@vhanda.in>
++    Copyright (C) 2016  Christoph Cullmann <cullmann@kde.org>
+ 
+     This library is free software; you can redistribute it and/or
+     modify it under the terms of the GNU Lesser General Public
+@@ -46,11 +47,14 @@
+ QString fetchMetadata(struct epub* e, const epub_metadata& type)
+ {
+     int size = 0;
+-
+     unsigned char** data = epub_get_metadata(e, type, &size);
+     if (data) {
+         QStringList strList;
+         for (int i = 0; i < size; i++) {
++            // skip nullptr entries, can happen for broken xml files
++            if (!data[i])
++                continue;
++
+             strList << QString::fromUtf8((char*)data[i]);
+             free(data[i]);
+         }
+@@ -65,7 +69,8 @@
+ 
+ void EPubExtractor::extract(ExtractionResult* result)
+ {
+-    struct epub* ePubDoc = epub_open(result->inputUrl().toUtf8().constData(), 1);
++    // open epub, return on exit, file will be closed again at end of function
++    auto ePubDoc = epub_open(result->inputUrl().toUtf8().constData(), 1);
+     if (!ePubDoc) {
+         qWarning() << "Invalid document";
+         return;
+@@ -138,49 +143,49 @@
+     //
+     // Plain Text
+     //
+-    if (!(result->inputFlags() & ExtractionResult::ExtractPlainText)) {
+-        return;
++    if (result->inputFlags() & ExtractionResult::ExtractPlainText) {
++        if (auto iter = epub_get_iterator(ePubDoc, EITERATOR_SPINE, 0)) {
++            do {
++                char* curr = epub_it_get_curr(iter);
++                if (!curr)
++                    continue;
++
++                QString html = QString::fromUtf8(curr);
++                html.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
++                result->append(html);
++            } while (epub_it_get_next(iter));
++
++            epub_free_iterator(iter);
++        }
++
++        auto tit = epub_get_titerator(ePubDoc, TITERATOR_NAVMAP, 0);
++        if (!tit) {
++            tit = epub_get_titerator(ePubDoc, TITERATOR_GUIDE, 0);
++        }
++        if (tit) {
++            if (epub_tit_curr_valid(tit)) {
++                do {
++                    // get link, iterator handles freeing of it
++                    char* clink = epub_tit_get_curr_link(tit);
++
++                    // epub_get_data returns -1 on failure
++                    char* data = nullptr;
++                    const int size = epub_get_data(ePubDoc, clink, &data);
++                    if (size >= 0 && data) {
++                        QString html = QString::fromUtf8(data, size);
++                        // strip html tags
++                        html.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
++
++                        result->append(html);
++                        free(data);
++                    }
++                } while (epub_tit_next(tit));
++            }
++            epub_free_titerator(tit);
++        }
+     }
+ 
+-    struct eiterator* iter = epub_get_iterator(ePubDoc, EITERATOR_SPINE, 0);
+-    do {
+-        char* curr = epub_it_get_curr(iter);
+-        if (!curr)
+-            continue;
+-        QString html = QString::fromUtf8(curr);
+-        html.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
+-
+-        result->append(html);
+-    } while (epub_it_get_next(iter));
+-
+-    epub_free_iterator(iter);
+-
+-    struct titerator* tit;
+-
+-    tit = epub_get_titerator(ePubDoc, TITERATOR_NAVMAP, 0);
+-    if (!tit) {
+-        tit = epub_get_titerator(ePubDoc, TITERATOR_GUIDE, 0);
+-    }
+-
+-    if (epub_tit_curr_valid(tit)) {
+-        do {
+-            char* clink = epub_tit_get_curr_link(tit);
+-
+-            char* data;
+-            int size = epub_get_data(ePubDoc, clink, &data);
+-            free(clink);
+-
+-            // epub_get_data returns -1 on failure
+-            if (size > 0 && data) {
+-                QString html = QString::fromUtf8(data, size);
+-                // strip html tags
+-                html.remove(QRegularExpression(QStringLiteral("<[^>]*>")));
+-
+-                result->append(html);
+-                free(data);
+-            }
+-        } while (epub_tit_next(tit));
+-    }
+-    epub_free_titerator(tit);
++    // close epub file again
++    epub_close(ePubDoc);
+ }
+ 
+

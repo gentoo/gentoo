@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
+EAPI=6
 inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hard disk drive health inspection tool"
@@ -15,25 +14,28 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
 
-COMMON_DEPEND="dev-cpp/gtkmm:2.4
-	dev-libs/libpcre
-	sys-apps/smartmontools"
+COMMON_DEPEND="
+	dev-cpp/gtkmm:2.4
+	dev-libs/libpcre:3
+	sys-apps/smartmontools
+"
 RDEPEND="${COMMON_DEPEND}
-	x11-apps/xmessage"
+	x11-apps/xmessage
+"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	test? ( dev-util/gtk-builder-convert )"
+	test? ( dev-util/gtk-builder-convert )
+"
 
 DOCS="TODO" # See 'dist_doc_DATA' value in Makefile.am
 
 src_prepare() {
+	default
 	append-cxxflags -std=c++11
 }
 
 src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF} \
-		$(use test tests)
+	econf $(use test tests)
 }
 
 src_install() {

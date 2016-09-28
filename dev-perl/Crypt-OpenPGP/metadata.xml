@@ -32,6 +32,10 @@
     <remote-id type="cpan-module">Crypt::OpenPGP::Digest::MD5</remote-id>
     <remote-id type="cpan-module">Crypt::OpenPGP::Digest::RIPEMD160</remote-id>
     <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA1</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA224</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA256</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA384</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA512</remote-id>
     <remote-id type="cpan-module">Crypt::OpenPGP::ElGamal::Private</remote-id>
     <remote-id type="cpan-module">Crypt::OpenPGP::ElGamal::Public</remote-id>
     <remote-id type="cpan-module">Crypt::OpenPGP::ErrorHandler</remote-id>

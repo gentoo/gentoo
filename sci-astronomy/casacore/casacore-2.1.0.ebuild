@@ -34,7 +34,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( sci-astronomy/casa-data sci-astronomy/sofa_c )"
 
-PATCHES=( "${FILESDIR}/${PN}-disable-tpath-test.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-tpath-test.patch"
+	"${FILESDIR}/${PN}-2.1.0-fix-c++14.patch"
+)
 
 pkg_pretend() {
 	if [[ $(tc-getCC)$ == *gcc* ]] && [[ ${MERGE_TYPE} != binary ]]; then

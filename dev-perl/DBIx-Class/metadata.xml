@@ -7,18 +7,18 @@
   </maintainer>
   <use>
     <flag name="admin">
-			Modules required for the DBIx::Class administrative library
-		</flag>
+      Modules required for the DBIx::Class administrative library
+    </flag>
     <flag name="admin_script">
-			Modules required for the CLI DBIx::Class interface dbicadmin
-		</flag>
+      Modules required for the CLI DBIx::Class interface dbicadmin
+    </flag>
     <flag name="deploy">
-			Modules required for "deploy" in DBIx::Class::Storage::DBI and
-			"deploymen_statements" in DBIx::Class::Storage::DBI
-		</flag>
+      Modules required for "deploy" in DBIx::Class::Storage::DBI and
+      "deploymen_statements" in DBIx::Class::Storage::DBI
+    </flag>
     <flag name="replicated">
-			Modules required for DBIx::Class::Storage::DBI::Replicated
-		</flag>
+      Modules required for DBIx::Class::Storage::DBI::Replicated
+    </flag>
   </use>
   <upstream>
     <remote-id type="cpan">DBIx-Class</remote-id>

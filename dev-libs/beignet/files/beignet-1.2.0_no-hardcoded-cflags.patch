@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt	2016-08-30 10:06:31.000000000 +0000
++++ b/CMakeLists.txt	2016-09-16 06:55:28.975772954 +0000
+@@ -89,8 +89,7 @@
+ elseif (COMPILER STREQUAL "ICC")
+   set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS}  -wd2928 -Wall -fPIC -fstrict-aliasing -fp-model fast -msse4.1 -Wl,-E")
+ endif ()
+-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_CXX_FLAGS} -std=c++0x -Wno-invalid-offsetof")
+-set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_CXX_FLAGS}")
++set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wno-invalid-offsetof")
+ set (CMAKE_CXX_FLAGS_DEBUG          "-O0 -g -DGBE_DEBUG=1")
+ set (CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DGBE_DEBUG=1")
+ set (CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG -DGBE_DEBUG=0")

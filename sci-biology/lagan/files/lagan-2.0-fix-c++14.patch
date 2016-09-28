@@ -1,0 +1,473 @@
+Fix building with C++14, which errors out due to namespace collisions with std::end
+in C++14 mode, due to crappy 'using namespace std' declared everywhere.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594148
+
+--- a/src/ancseq.cpp
++++ b/src/ancseq.cpp
+@@ -30,7 +30,6 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-using namespace std;
+ 
+ #include "util.cpp"
+ #include "faindex.cpp"
+--- a/src/ancseqrest.cpp
++++ b/src/ancseqrest.cpp
+@@ -31,7 +31,6 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-using namespace std;
+ 
+ #define fastaRowLength 50
+ typedef char* pchar;
+--- a/src/cutmfa.cpp
++++ b/src/cutmfa.cpp
+@@ -45,7 +45,6 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-using namespace std;
+ 
+ // TODO refactor in classes and normal make project
+ 
+--- a/src/glocal/glocal.cpp
++++ b/src/glocal/glocal.cpp
+@@ -7,9 +7,9 @@
+ }
+ 
+ //vectors that would be needed globally
+-vector<Fragment> fragments;
+-vector<Point>startPoints;
+-vector<Point>endPoints;
++std::vector<Fragment> fragments;
++std::vector<Point>startPoints;
++std::vector<Point>endPoints;
+ long long int numFragments;
+ InterPoint inter;
+ 
+@@ -19,7 +19,7 @@
+ RI RI_regions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ LI LI_regions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ 
+-vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
++std::vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ 
+ Name allNames;
+ 
+--- a/src/glocal/io.cpp
++++ b/src/glocal/io.cpp
+@@ -3,9 +3,9 @@
+ #include<io.h>
+ #include<algorithm>
+ 
+-extern vector <Fragment> fragments;
+-extern vector <Point> startPoints;
+-extern vector <Point> endPoints;
++extern std::vector <Fragment> fragments;
++extern std::vector <Point> startPoints;
++extern std::vector <Point> endPoints;
+ extern Name allNames;
+ 
+ bool PointCompare(const Point &f1, const Point &f2) {
+@@ -223,8 +223,8 @@
+ 		startPoints.push_back(startPoint);
+ 		endPoints.push_back(endPoint);
+ 	}
+-	sort(startPoints.begin(), startPoints.end(), PointCompare);
+-	sort(endPoints.begin(), endPoints.end(), PointCompare);
++	std::sort(startPoints.begin(), startPoints.end(), PointCompare);
++	std::sort(endPoints.begin(), endPoints.end(), PointCompare);
+ }
+ 
+ 
+--- a/src/glocal/leftinfluence.cpp
++++ b/src/glocal/leftinfluence.cpp
+@@ -154,8 +154,8 @@
+ 
+ 	if (second->score == -1) { return TRUE; }
+ 
+-	dummy.seq1Start = max(first->seq1End, second->seq1End) + 2;
+-	dummy.seq2Start = max(first->getSeq2End(LeftInfluence->reflectFlag), second->getSeq2End(LeftInfluence->reflectFlag)) + 1;
++	dummy.seq1Start = std::max(first->seq1End, second->seq1End) + 2;
++	dummy.seq2Start = std::max(first->getSeq2End(LeftInfluence->reflectFlag), second->getSeq2End(LeftInfluence->reflectFlag)) + 1;
+ 
+ 	if (first->getSeq2End(LeftInfluence->reflectFlag) > second->getSeq2End(LeftInfluence->reflectFlag)) {
+ 		dummy.nameIter = first->nameIter;
+@@ -444,7 +444,7 @@
+ 	temp.seq1 = col - diag;
+ 	temp.seq2 = col;
+ 
+-	pair<Point,LI*> pairp(temp, LeftInfluence);
++	std::pair<Point,LI*> pairp(temp, LeftInfluence);
+ 	tempinter = inter.insert(pairp);
+ 
+ 	colInter->second = tempinter;
+--- a/src/glocal/leftinfluence.h
++++ b/src/glocal/leftinfluence.h
+@@ -39,15 +39,15 @@
+ 
+ 
+ 
+-typedef list<Fragment*> Owner;
+-typedef map <long long int ,Owner::iterator,longlongCompare2> CBound;
++typedef std::list<Fragment*> Owner;
++typedef std::map <long long int ,Owner::iterator,longlongCompare2> CBound;
+ 
+-typedef multimap <Point ,struct LI *,paircomp> InterPoint;
++typedef std::multimap <Point ,struct LI *,paircomp> InterPoint;
+ 
+-typedef map <long long int ,InterPoint::iterator,longlongCompare2> CInter;
+-typedef map <long long int,Owner::iterator,longlongCompare2> DBound;
++typedef std::map <long long int ,InterPoint::iterator,longlongCompare2> CInter;
++typedef std::map <long long int,Owner::iterator,longlongCompare2> DBound;
+ 
+-typedef map <long long int,InterPoint::iterator,longlongCompare2> DInter;
++typedef std::map <long long int,InterPoint::iterator,longlongCompare2> DInter;
+ 
+ 
+ 
+--- a/src/glocal/rightinfluence.h
++++ b/src/glocal/rightinfluence.h
+@@ -17,7 +17,7 @@
+ };
+ 
+ 
+-typedef  map<const long long int , Fragment*,longlongCompare> Active;
++typedef  std::map<const long long int , Fragment*,longlongCompare> Active;
+ 
+ typedef struct RI {
+   //List of active regions
+--- a/src/glocal/score.cpp
++++ b/src/glocal/score.cpp
+@@ -4,7 +4,7 @@
+ #include<rightinfluence.h>
+ #include<fstream>
+ 
+-extern vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
++extern std::vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ 
+ 
+ float Score::getScore(Fragment *up, Fragment * down) {
+@@ -36,7 +36,7 @@
+ 
+ 
+ void initScoreFunctionPointers(char * scoreFileName) {
+-	ifstream SFP;
++	std::ifstream SFP;
+ 	char line[255];
+ 
+ 	SFP.open(scoreFileName);
+--- a/src/glocal/structs.h
++++ b/src/glocal/structs.h
+@@ -12,7 +12,6 @@
+ #include <list>
+ #include <string.h>
+ 
+-using namespace std;
+ 
+ #define RIGHT 0
+ #define LEFT 1
+@@ -49,7 +48,7 @@
+ };
+ 
+ 
+-typedef map<const char*,long long int ,ltstr> Name;
++typedef std::map<const char*,long long int ,ltstr> Name;
+ 
+ 
+ typedef struct Fragment {
+--- a/src/lagan2mfa.cpp
++++ b/src/lagan2mfa.cpp
+@@ -6,7 +6,6 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-using namespace std;
+ 
+ // TODO refactor in classes and normal make project
+ 
+--- a/src/makecons.cpp
++++ b/src/makecons.cpp
+@@ -18,7 +18,6 @@
+ #include <ctype.h>
+ #include <time.h>
+ 
+-using namespace std;
+ 
+ #define fastaRowLength 50
+ #define bufSize 2000
+--- a/src/utils/Glue.cpp
++++ b/src/utils/Glue.cpp
+@@ -170,7 +170,7 @@
+ }
+ 
+ void printCoordinates (int seq, int begin, int end){
+-  cout << seqs[seq].getID() << ":" << getSeqCoord(seq, begin) << "-" << getSeqCoord(seq, end) << " ";
++  std::cout << seqs[seq].getID() << ":" << getSeqCoord(seq, begin) << "-" << getSeqCoord(seq, end) << " ";
+ }
+ 
+ int printRegion (int begin, int end){
+@@ -183,7 +183,7 @@
+       score += rescoreRegion (seqs[i], seqs[j], begin, end);
+     }
+   }
+-  cout << score << endl;
++  std::cout << score << std::endl;
+   return score;
+ }
+ 
+@@ -223,7 +223,7 @@
+     }    
+   }
+ 
+-  cout << "= score=" << score << endl;
++  std::cout << "= score=" << score << std::endl;
+ }
+ 
+ int countLets (SafeVector<char> &data){
+@@ -355,7 +355,7 @@
+   FILE* outfile;
+   
+   if (argc < 2 || argc > 3){
+-    cerr << "Usage: Glue align.mfa \n" << endl;
++    std::cerr << "Usage: Glue align.mfa \n" << std::endl;
+     exit (1);
+   }
+   
+@@ -375,7 +375,7 @@
+   SafeVector<int> merged1label, merged2label;
+   int begin1 = 1, end1 = 1;
+ 
+-  ifstream data (argv[1]);
++  std::ifstream data (argv[1]);
+   int alignNum = 0;
+   strand.push_back ('?'); // nothing for alignNum 0
+ 
+@@ -452,7 +452,7 @@
+   SafeVector<char> temp1 (begin1 - 1, 'N');
+   SafeVector<char> temp2 (begin1 - 1, '-');
+ 
+-  for (int i = 0; i < min ((int) temp2.size(), CNTG_BRK_N); i++)
++  for (int i = 0; i < std::min ((int) temp2.size(), CNTG_BRK_N); i++)
+     temp2[i] = 'N';
+ 
+   merged1 = merge (temp1, merged1);
+@@ -471,12 +471,12 @@
+       if (isalpha(merged2[j])) pos2++;
+       
+       if (merged1label[j] == i){
+-	min1 = min (min1, pos1);
+-	max1 = max (max1, pos1);
++	min1 = std::min (min1, pos1);
++	max1 = std::max (max1, pos1);
+       }
+       if (merged2label[j] == i){
+-	min2 = min (min2, pos2);
+-	max2 = max (max2, pos2);
++	min2 = std::min (min2, pos2);
++	max2 = std::max (max2, pos2);
+       }
+     }
+ 
+@@ -489,6 +489,6 @@
+       fprintf (outfile, "%d %d %d 0 0 0 0 %c 0 %d %d\n", i, min1, max1, strand[i], min2, max2);
+   }
+   
+-  printMFA (cout, merged1, string ("first"), 60);
+-  printMFA (cout, merged2, string ("second"), 60);
++  printMFA (std::cout, merged1, std::string ("first"), 60);
++  printMFA (std::cout, merged2, std::string ("second"), 60);
+ }
+--- a/src/utils/MultiSequence.h
++++ b/src/utils/MultiSequence.h
+@@ -12,7 +12,6 @@
+ #include "Sequence.h"
+ #include "SafeVector.h"
+ 
+-using namespace std;
+ 
+ class MultiSequence {
+  private:
+@@ -54,10 +53,10 @@
+ 
+   // Read in all of the Sequences in an MFA file and append them to the
+   // existing MultiSequence object.
+-  void addRawFromMFA (const string& filename){
++  void addRawFromMFA (const std::string& filename){
+     
+     // open up file for reading
+-    ifstream infile (filename.c_str());
++    std::ifstream infile (filename.c_str());
+     
+     // check for error
+     assert (!infile.fail());
+@@ -75,7 +74,7 @@
+ 
+   // Read in all of the Sequences in an MFA file and append them to the
+   // existing MultiSequence object.
+-  void addRawFromMFA (ifstream &infile){
++  void addRawFromMFA (std::ifstream &infile){
+     
+     // check for error
+     assert (!infile.fail());
+@@ -89,7 +88,7 @@
+   }
+ 
+   // Writes sequences to outfile in XMFA format.
+-  void writeToXMFA (ostream &outfile, int numColumns) const {
++  void writeToXMFA (std::ostream &outfile, int numColumns) const {
+     for (int i = 0; i < (int) sequences.size(); ++i){
+       sequences[i].writeToXMFA (outfile, numColumns);
+     }
+--- a/src/utils/Output.h
++++ b/src/utils/Output.h
+@@ -2,18 +2,18 @@
+ #define OUTPUT_H
+ 
+ // print reversed string in MFA format
+-void printMFA (ostream &outfile, SafeVector<char> &data, string comment, int numColumns){
++void printMFA (std::ostream &outfile, SafeVector<char> &data, std::string comment, int numColumns){
+ 
+   int charsWritten = 0;
+ 
+-  outfile << ">" << comment << endl;
++  outfile << ">" << comment << std::endl;
+   for (int i = 0; i < (int) data.size(); i++){
+     outfile << data[i];
+     charsWritten++;
+-    if (charsWritten % numColumns == 0) outfile << endl;
++    if (charsWritten % numColumns == 0) outfile << std::endl;
+   }
+   
+-  if (charsWritten % numColumns != 0) outfile << endl;
++  if (charsWritten % numColumns != 0) outfile << std::endl;
+ }
+ 
+ 
+--- a/src/utils/SafeVector.h
++++ b/src/utils/SafeVector.h
+@@ -10,7 +10,6 @@
+ #include <assert.h>
+ #include <vector>
+ 
+-using namespace std;
+ 
+ // class derived from the STL std::vector
+ template<class TYPE>
+@@ -19,9 +18,9 @@
+ 
+   // miscellaneous constructors
+   SafeVector () {} 
+-  SafeVector (size_t size) : vector<TYPE>(size) {} 
+-  SafeVector (size_t size, const TYPE &value) : vector<TYPE>(size, value) {} 
+-  SafeVector (const SafeVector &source) : vector<TYPE>(source) {}
++  SafeVector (size_t size) : std::vector<TYPE>(size) {} 
++  SafeVector (size_t size, const TYPE &value) : std::vector<TYPE>(size, value) {} 
++  SafeVector (const SafeVector &source) : std::vector<TYPE>(source) {}
+ 
+ #ifdef ENABLE_CHECKS
+ 
+--- a/src/utils/Sequence.h
++++ b/src/utils/Sequence.h
+@@ -8,15 +8,14 @@
+ #include <string>
+ #include "SafeVector.h"
+ 
+-using namespace std;
+ 
+ class Sequence {
+ 
+  private:
+ 
+   // Read header of MFA/XMFA file.
+-  bool readHeader (ifstream &infile, bool &isXMFA){
+-    string header;
++  bool readHeader (std::ifstream &infile, bool &isXMFA){
++    std::string header;
+     
+     while (true){
+       
+@@ -24,7 +23,7 @@
+       if (infile.fail() || infile.eof()) return false;
+       
+       // get new header line
+-      getline (infile, header);
++      std::getline (infile, header);
+       
+       // check that header line is not empty
+       if (header.length() != 0) break;
+@@ -64,7 +63,7 @@
+   int startCoord;            // sequence position of first character
+   int endCoord;              // sequence position of last character
+   char direction;            // + or -
+-  string comment;            // comments                             
++  std::string comment;            // comments                             
+ 
+  public:
+ 
+@@ -77,7 +76,7 @@
+   }
+ 
+   // Constructor.  Reads in a sequence from the input file.
+-  Sequence (ifstream &infile){
++  Sequence (std::ifstream &infile){
+ 
+     bool isXMFA = true;
+     
+@@ -147,7 +146,7 @@
+   }
+ 
+   // Constructor.  Gets sequence from array data.
+-  Sequence (SafeVector<char> data, string comment) : data(data), comment(comment) {
++  Sequence (SafeVector<char> data, std::string comment) : data(data), comment(comment) {
+     length = data.size() - 1;
+     id = 0;
+     startCoord = 1;
+@@ -165,7 +164,7 @@
+     return temp;
+   }
+ 
+-  const string getComment () const {
++  const std::string getComment () const {
+     return comment;
+   }
+ 
+@@ -197,9 +196,9 @@
+   const int getEndCoord () const { assert (isValid); return endCoord; }
+ 
+   // Print XMFA header only.
+-  void writeXMFAHeader (ostream &outfile) const {
++  void writeXMFAHeader (std::ostream &outfile) const {
+     assert (isValid);
+-    outfile << '>' << id << ':' << startCoord << '-' << endCoord << ' ' << direction << ' ' << comment << endl;
++    outfile << '>' << id << ':' << startCoord << '-' << endCoord << ' ' << direction << ' ' << comment << std::endl;
+   }
+ 
+   // Return sequence ID.
+@@ -209,20 +208,20 @@
+   void setID (int id) { assert (isValid); this->id = id; }
+ 
+   // Writes sequence to XMFA format.
+-  void writeToXMFA (ostream &outfile, int numColumns) const {
++  void writeToXMFA (std::ostream &outfile, int numColumns) const {
+ 
+     assert (isValid);
+     
+     // print XMFA header
+-    outfile << ">" << comment << endl;
++    outfile << ">" << comment << std::endl;
+     //  outfile << '>' << id << ':' << startCoord << '-' << endCoord << ' ' << direction << ' ' << comment << endl;
+     
+     // print character data
+     for (int i = 1; i <= length; ++i){
+       outfile << data[i];      
+-      if (i % numColumns == 0) outfile << endl;
++      if (i % numColumns == 0) outfile << std::endl;
+     }
+-    if (length % numColumns != 0) outfile << endl;
++    if (length % numColumns != 0) outfile << std::endl;
+   }
+ };
+ 

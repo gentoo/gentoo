@@ -31,19 +31,18 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 
-	media-libs/gstreamer:1.0[introspection?]
-	media-libs/gst-plugins-base:1.0[introspection?,ogg,pango,theora,vorbis,X]
+	>=media-libs/gstreamer-1.4:1.0[introspection?]
+	>=media-libs/gst-plugins-base-1.4:1.0[introspection?,ogg,pango,theora,vorbis,X]
 
-	virtual/libgudev:=
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	>=media-libs/gst-plugins-bad-1.4:1.0
-	media-libs/gst-plugins-good:1.0
+	>=media-libs/gst-plugins-good-1.4:1.0
 
-	media-plugins/gst-plugins-jpeg:1.0
-	media-plugins/gst-plugins-v4l2:1.0
-	media-plugins/gst-plugins-vpx:1.0
+	>=media-plugins/gst-plugins-jpeg-1.4:1.0
+	>=media-plugins/gst-plugins-v4l2-1.4:1.0
+	>=media-plugins/gst-plugins-vpx-1.4:1.0
 "
 DEPEND="${COMMON_DEPEND}
 	$(vala_depend)

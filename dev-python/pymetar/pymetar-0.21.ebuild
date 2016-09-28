@@ -12,7 +12,7 @@ HOMEPAGE="http://www.schwarzvogel.de/software-pymetar.shtml"
 SRC_URI="http://www.schwarzvogel.de/pkgs/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND=""

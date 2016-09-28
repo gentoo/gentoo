@@ -1,5 +1,5 @@
---- src/FbTk/ImagePNG.cc
-+++ src/FbTk/ImagePNG.cc
+--- a/src/FbTk/ImagePNG.cc
++++ b/src/FbTk/ImagePNG.cc
 @@ -88,7 +88,7 @@
      // check header
      unsigned char tag[4];

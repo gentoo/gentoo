@@ -11,8 +11,8 @@
   </maintainer>
 <use>
 	<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>
-	<flag name="custom-optimization">Fine-tune custom compiler
-		optimizations (-Os, -O0, -O1, -O2, -O3)</flag>
+	<flag name="custom-optimization">Build with user-specified compiler optimizations
+		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
@@ -22,11 +22,15 @@
 		(forced-on when supported prior to 38.0)</flag>
 	<flag name="roaming">Build roaming extension support (default on)</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
-		Use system cairo instead of bundled.</flag>
+		instead of bundled.</flag>
+	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
+		instead of bundled.</flag>
 	<flag name="system-icu">Use the sytem-wide <pkg>dev-libs/icu</pkg>
-		Use system icu indead of bundled.</flag>
+		instead of bundled.</flag>
 	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
-		Use system jpeg instead of bundled.</flag>
+		instead of bundled.</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
 	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>

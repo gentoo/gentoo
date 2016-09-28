@@ -43,8 +43,7 @@ COMMON_DEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	ocaml? (
 		>=dev-lang/ocaml-4.00.0:0=
-		dev-ml/findlib
-		dev-ml/ocaml-ctypes
+		dev-ml/ocaml-ctypes:=
 		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
@@ -56,21 +55,22 @@ DEPEND="${COMMON_DEPEND}
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
 	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-${PV%_rc*}.9999 )
 	clang? ( xml? ( virtual/pkgconfig ) )
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	lldb? ( dev-lang/swig )
 	!!<dev-python/configparser-3.3.0.2
-	ocaml? ( test? ( dev-ml/ounit ) )
+	ocaml? ( dev-ml/findlib
+		test? ( dev-ml/ounit ) )
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
-	default-libcxx? ( sys-libs/libcxx )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
-PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
+PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
+	default-libcxx? ( sys-libs/libcxx )
+	kernel_Darwin? ( =sys-libs/libcxx-${PV%.*}* )"
 
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
@@ -149,7 +149,7 @@ src_prepare() {
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
-	eapply "${FILESDIR}"/9999/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
+	eapply "${FILESDIR}"/3.9.0/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
 
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,17 +29,4 @@ PATCHES=( "${FILESDIR}"/${P}-distutils.patch )
 
 python_test() {
 	py.test --capture=no --strict -v || die
-}
-
-pkg_preinst() {
-	# Remove this in the next version bump
-	_cleanup() {
-		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
-		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
-		if [[ -d ${egginfo} ]]; then
-			echo rm -r "${egginfo}"
-			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
-		fi
-	}
-	python_foreach_impl _cleanup
 }

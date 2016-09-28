@@ -13,7 +13,7 @@ SRC_URI="https://github.com/asciinema/asciinema/archive/v1.3.0.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 DEPEND="

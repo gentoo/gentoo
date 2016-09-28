@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package is written in 100% Haskell and enables you to
+		write PPM (\&quot;Portable Pixel Map\&quot;) images in human-readable
+		text format as well as the more efficient binary format.
+		It uses the ByteString library for maximum efficiency.
+		For those that don&#39;t know, PPM is an image file format
+		which is trivially simple, but therefore horribly inefficient.
+		None the less, many programs can read PPM files, so this
+		package represents an easy way to write Haskell code that
+		generates images, without having to depend on any external
+		C code.
+	</longdescription>
+</pkgmetadata>

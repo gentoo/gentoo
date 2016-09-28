@@ -21,7 +21,7 @@ REQUIRED_USE="cgi? ( !minimal ) apache? ( cgi )"
 # Some of the postgres plugins use DBD::Pg, while others call psql directly.
 # Some of the mysql plugins use DBD::mysql, while others call mysqladmin directly.
 # We replace the original ipmi plugins with the freeipmi_ plugin which at least works.
-DEPEND_COM="dev-lang/perl[berkdb]
+DEPEND_COM="dev-lang/perl:=[berkdb]
 			sys-process/procps
 			doc? ( dev-python/sphinx )
 			irc? ( dev-perl/Net-IRC )

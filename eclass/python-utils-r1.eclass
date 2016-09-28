@@ -1207,7 +1207,7 @@ python_fix_shebang() {
 # Check whether the specified locale sanely maps between lowercase
 # and uppercase ASCII characters.
 _python_check_locale_sanity() {
-	local -x LC_CTYPE=${1}
+	local -x LC_ALL=${1}
 	local IFS=
 
 	local lc=( {a..z} )
@@ -1232,7 +1232,7 @@ python_export_utf8_locale() {
 
 	if [[ $(locale charmap) != UTF-8 ]]; then
 		# Try English first, then everything else.
-		local lang locales="en_US.UTF-8 $(locale -a)"
+		local lang locales="C.UTF-8 en_US.UTF-8 en_GB.UTF-8 $(locale -a)"
 
 		for lang in ${locales}; do
 			if [[ $(LC_ALL=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then

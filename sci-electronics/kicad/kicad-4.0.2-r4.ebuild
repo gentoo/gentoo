@@ -48,7 +48,7 @@ CDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit?]
 		libressl? ( dev-libs/libressl:0 )
 		!libressl? ( dev-libs/openssl:0 )
 	)
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/freeglut
 	media-libs/mesa
 	sys-libs/zlib
@@ -74,9 +74,9 @@ src_prepare() {
 	cp "${WORKDIR}/${PN}-libcontext/libcontext.h" "${S}/include/system/libcontext.h" || die "cp failed"
 	# Path source to use new "built in" libcontext. Also patch libcontext.cpp to have correct include file.
 	# Path must be applied after new libcontext files have been copied to the kicad source directory.
-	epatch "${FILESDIR}/${PN}-boost-context.patch"
+	epatch "${FILESDIR}/${P}-boost-context.patch"
 	# Patch python swig import fixer build script
-	epatch "${FILESDIR}/${PN}-swig-import-helper.patch"
+	epatch "${FILESDIR}/${P}-swig-import-helper.patch"
 
 	# remove all the non unix file endings
 	edos2unix $(find "${S}" -type f -name "*.desktop")

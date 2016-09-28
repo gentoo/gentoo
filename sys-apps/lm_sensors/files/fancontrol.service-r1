@@ -1,0 +1,9 @@
+[Unit]
+Description=Fan control daemon
+
+[Service]
+PIDFile=/run/fancontrol.pid
+ExecStart=/usr/sbin/fancontrol
+
+[Install]
+WantedBy=multi-user.target

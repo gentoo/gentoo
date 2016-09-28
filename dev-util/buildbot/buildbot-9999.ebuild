@@ -41,24 +41,33 @@ RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
 	)
 	irc? (
+		dev-python/txrequests[${PYTHON_USEDEP}]
 		|| ( >=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 	)
 	mail? (
 		|| ( >=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-			<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 	)
 	manhole? (
 		|| ( >=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-			<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 	)
 	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-	>=dev-python/autobahn-0.10.2[${PYTHON_USEDEP}]
-	<dev-python/autobahn-0.13.0[${PYTHON_USEDEP}]
+	|| (
+		( !<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+			>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
+		)
+		( || ( <dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+				dev-python/twisted-core[${PYTHON_USEDEP}]
+			)
+			dev-python/autobahn[${PYTHON_USEDEP}]
+		)
+	)
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
@@ -73,7 +82,7 @@ DEPEND="${RDEPEND}
 				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
 			)
-			<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]

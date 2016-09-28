@@ -23,7 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		~dev-python/nose-exclude-0.1.9[${PYTHON_USEDEP}] )
+	>=dev-python/nose-exclude-0.1.9[${PYTHON_USEDEP}] )
 	"
 
 python_test() {

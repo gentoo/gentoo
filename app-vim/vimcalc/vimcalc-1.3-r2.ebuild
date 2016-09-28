@@ -12,7 +12,7 @@ DESCRIPTION="vim plugin: provides an interactive calculator inside vim"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3329"
 SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=15317 -> ${P}.zip"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="vimcalc"
 

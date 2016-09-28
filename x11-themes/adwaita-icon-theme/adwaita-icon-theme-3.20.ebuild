@@ -18,7 +18,7 @@ LICENSE="
 "
 SLOT="0"
 IUSE="branding"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 COMMON_DEPEND="
 	>=x11-themes/hicolor-icon-theme-0.10
@@ -28,7 +28,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<x11-themes/gnome-themes-standard-3.14
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig
 "

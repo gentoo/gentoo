@@ -28,5 +28,5 @@ src_prepare() {
 	rebar_fix_include_path stun
 
 	# ebin contains lonely .gitignore file asking for removal.
-	rm -r "${S}/ebin"
+	rm -r "${S}/ebin" || die
 }

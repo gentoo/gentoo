@@ -17,6 +17,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=""
+RDEPEND=">=dev-lang/ocaml-4.03:="
 DEPEND="${RDEPEND}"
 DOCS=( "README.md" "CHANGELOG.md" )

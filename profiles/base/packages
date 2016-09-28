@@ -64,7 +64,7 @@
 #*sys-devel/libtool
 #*sys-devel/m4
 *sys-devel/make
-*>=sys-devel/patch-2.6.1
+*>=sys-devel/patch-2.7
 *sys-fs/e2fsprogs
 *virtual/dev-manager
 *virtual/editor

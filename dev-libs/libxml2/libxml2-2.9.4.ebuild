@@ -85,6 +85,11 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=760458
 	eapply "${FILESDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
 
+	# Avoid final linking arguments for python modules
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
+	fi
+
 	# Please do not remove, as else we get references to PORTAGE_TMPDIR
 	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
 	# We now need to run eautoreconf at the end to prevent maintainer mode.

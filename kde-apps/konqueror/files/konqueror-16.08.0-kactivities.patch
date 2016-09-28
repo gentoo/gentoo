@@ -1,0 +1,15 @@
+Make sure KActivities headers aren't used either if disabled.
+
+--- a/dolphin/src/CMakeLists.txt	2016-08-24 22:25:42.603345565 +0200
++++ b/dolphin/src/CMakeLists.txt	2016-08-24 22:27:39.921317927 +0200
+@@ -27,7 +27,9 @@
+ macro_bool_to_01(X11_Xrender_FOUND HAVE_XRENDER)
+ configure_file(config-X11.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-X11.h )
+ 
+-include_directories( ${KACTIVITIES_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR} )
++if (KActivities_FOUND)
++  include_directories( ${KACTIVITIES_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR} )
++endif (KActivities_FOUND)
+ 
+ if(HAVE_BALOO)
+   include_directories(${BALOO_INCLUDE_DIR} ${BALOO_WIDGETS_INCLUDE_DIR} ${KFILEMETADATA_INCLUDE_DIR})

@@ -1,0 +1,29 @@
+Fix building with C++14, which errors out due to differing semantics between C++98
+and C++14 with regards to allowing destructors to throw exceptions.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=593966
+
+--- a/blockwise_sa.h
++++ b/blockwise_sa.h
+@@ -87,7 +87,11 @@
+ 	_logger(__logger)
+ 	{ }
+ 
+-	virtual ~BlockwiseSA() { }
++	virtual ~BlockwiseSA()
++#if __cplusplus >= 201103L
++	noexcept(false)
++#endif
++	{ }
+ 
+ 	/**
+ 	 * Get the next suffix; compute the next bucket if necessary.
+@@ -216,6 +220,9 @@
+     { _randomSrc.init(__seed); reset(); }
+     
+     ~KarkkainenBlockwiseSA()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+ #ifdef WITH_TBB
+ 		    tbb_grp.wait();

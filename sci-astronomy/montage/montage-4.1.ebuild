@@ -52,7 +52,7 @@ src_prepare() {
 	if use mpi; then
 		sed -e 's:# MPICC:MPICC:' \
 			-e 's:# BINS:BINS:' \
-			-i Montage/Makefile || die
+			-i Montage/Makefile.* || die
 	fi
 }
 

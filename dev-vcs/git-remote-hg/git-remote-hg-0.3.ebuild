@@ -13,9 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-vcs/git
+CDEPEND="dev-vcs/git
 		dev-vcs/mercurial"
-RDEPEND="${DEPEND}"
+
+DEPEND="${CDEPEND}
+		app-text/asciidoc"
+RDEPEND="${CDEPEND}"
 
 # Most (21/25) tests fail:
 RESTRICT="test"

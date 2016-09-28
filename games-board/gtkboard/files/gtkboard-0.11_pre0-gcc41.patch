@@ -1,7 +1,7 @@
 gcc-4.1 patch from debian.
 
---- src/board.c
-+++ src/board.c
+--- a/src/board.c
++++ b/src/board.c
 @@ -74,7 +74,7 @@
  //! default background
  char board_default_colors [9] = {215, 215, 215, 215, 215, 215, 0, 0, 0};
@@ -11,8 +11,8 @@ gcc-4.1 patch from debian.
  
  extern void ui_make_human_move (byte *move, int *rmove);
  
---- src/menu.c
-+++ src/menu.c
+--- a/src/menu.c
++++ b/src/menu.c
 @@ -829,7 +829,7 @@
  	
  	{

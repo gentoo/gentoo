@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,4 +18,8 @@ DEPEND="dev-libs/geoip"
 RDEPEND="${DEPEND}"
 
 SRC_TEST=do
-myconf="LIBS=-L/usr/$(get_libdir)"
+
+src_configure() {
+	myconf="LIBS=-L/usr/$(get_libdir)"
+	perl-module_src_configure
+}

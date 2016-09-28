@@ -1,0 +1,45 @@
+From 3a45f84ccb6f08270fd6fd299eaf1b5401199d77 Mon Sep 17 00:00:00 2001
+From: Tammo Jan Dijkema <T.J.Dijkema@gmail.com>
+Date: Fri, 18 Mar 2016 10:43:13 +0100
+Subject: [PATCH] Add std to isinf and isnan, fixes #337
+
+---
+ casa/BasicMath/Math.cc          | 4 ++--
+ casa/BasicMath/test/tMathNaN.cc | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/casa/BasicMath/Math.cc b/casa/BasicMath/Math.cc
+index d1bd984..00659e3 100644
+--- a/casa/BasicMath/Math.cc
++++ b/casa/BasicMath/Math.cc
+@@ -178,7 +178,7 @@ Bool isInf(Float val) {
+   // infinite. I can only have access to Solaris, Linux and SGI machines to
+   // determine this.
+ #if defined(AIPS_LINUX)
+-  return (isinf(Double(val)));
++  return (std::isinf(Double(val)));
+ #elif defined(AIPS_DARWIN)
+   return (std::isinf(Double(val)));
+ #elif defined(AIPS_SOLARIS) || defined(AIPS_IRIX)
+@@ -212,7 +212,7 @@ Bool isInf(Double val) {
+   // infinite. I can only have access to Solaris, Linux and SGI machines to
+   // determine this.
+ #if defined(AIPS_LINUX)
+-  return (isinf(Double(val)));
++  return (std::isinf(Double(val)));
+ #elif defined(AIPS_DARWIN)
+   return (std::isinf(Double(val)));
+ #elif defined(AIPS_SOLARIS) || defined(AIPS_IRIX)
+diff --git a/casa/BasicMath/test/tMathNaN.cc b/casa/BasicMath/test/tMathNaN.cc
+index f1a73bc..0c330d1 100644
+--- a/casa/BasicMath/test/tMathNaN.cc
++++ b/casa/BasicMath/test/tMathNaN.cc
+@@ -43,7 +43,7 @@
+ 			    ((*(Int *)(x) & 0x007fffff) != 0x00000000))
+ 
+ inline Bool isNaN_isnan(Float val) {
+-  return (isnan(Double(val)));
++  return (std::isnan(Double(val)));
+ }
+ 
+ inline Bool isNaN_isnanf(const Float& val) {

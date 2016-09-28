@@ -1,5 +1,5 @@
---- CMakeLists.txt.orig
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -571,7 +571,7 @@
  
    SET(APPS "\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/${INSTALL_SUBDIR_BIN}/supertux2")

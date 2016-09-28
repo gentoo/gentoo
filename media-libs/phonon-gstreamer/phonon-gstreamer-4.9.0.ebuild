@@ -9,7 +9,7 @@ MY_P=${MY_PN}-${PV}
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+	KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3

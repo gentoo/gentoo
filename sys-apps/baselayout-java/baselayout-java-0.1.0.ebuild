@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit fdo-mime gnome2-utils
 
 DESCRIPTION="Baselayout for Java"
-HOMEPAGE="https://www.gentoo.org/proj/en/java/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
 SRC_URI="https://dev.gentoo.org/~sera/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

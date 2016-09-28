@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-  <longdescription>Skype is the next phenomenon from the people who
-	brought you KaZaA. Just like KaZaA, Skype uses P2P (peer-to-peer)
-	technology to connect you to other users  not to share files this
-	time, but to talk and chat with your friends.
-	</longdescription>
-  <use>
-    <flag name="apulse">Use <pkg>media-sound/apulse</pkg> for PulseAudio emulation</flag>
-    <flag name="pax_kernel">Triggers a paxmarking of the main skype binary</flag>
-  </use>
+	<maintainer type="person">
+		<email>shentino@gmail.com</email>
+		<name>Raymond Jennings</name>
+		<description>Proxy maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="apulse">Use <pkg>media-sound/apulse</pkg> for PulseAudio emulation</flag>
+		<flag name="pax_kernel">Triggers a paxmarking of the main skype binary</flag>
+	</use>
+	<longdescription>Skype is for doing things together, whenever you’re apart. Skype’s text, voice and video make it simple to share experiences with the people that matter to you, wherever they are.</longdescription>
 </pkgmetadata>

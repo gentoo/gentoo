@@ -12,12 +12,10 @@ SRC_URI="https://github.com/DaveDavenport/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="i3 windowmode"
-REQUIRED_USE="i3? ( windowmode )"
+IUSE="windowmode"
 
 RDEPEND="
 	dev-libs/glib:2
-	i3? ( x11-wm/i3 )
 	media-libs/freetype
 	x11-libs/cairo[xcb]
 	x11-libs/libX11
@@ -33,9 +31,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-proto/xineramaproto
 	x11-proto/xproto
-	virtual/pkgconfig
 "
 
 src_prepare() {
@@ -48,8 +46,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	econf \
-		$(use_enable windowmode) \
-		$(usex i3 '' --disable-i3support)
+		$(use_enable windowmode)
 }
 
 src_test() {

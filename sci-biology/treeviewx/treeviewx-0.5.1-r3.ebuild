@@ -13,7 +13,7 @@ HOMEPAGE="http://darwin.zoology.gla.ac.uk/~rpage/treeviewx/"
 SRC_URI="http://darwin.zoology.gla.ac.uk/~rpage/${PN}/download/0.5/tv-${PV}.tar.gz"
 LICENSE="GPL-2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 IUSE=""
 

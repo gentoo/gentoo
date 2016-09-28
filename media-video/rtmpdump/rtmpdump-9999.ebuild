@@ -4,9 +4,9 @@
 
 EAPI="4"
 
-inherit git-2 multilib toolchain-funcs multilib-minimal
+inherit git-2 multilib toolchain-funcs multilib-minimal flag-o-matic
 
-DESCRIPTION="Open source command-line RTMP client intended to stream audio or video flash content"
+DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
 EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
 

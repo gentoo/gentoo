@@ -12,6 +12,7 @@ bitflags-0.1.1
 bufstream-0.1.1
 cmake-0.1.16
 crossbeam-0.2.8
+cfg-if-0.1.0
 curl-0.3.0
 curl-sys-0.2.0
 docopt-0.6.78
@@ -61,6 +62,7 @@ user32-sys-0.1.2
 utf8-ranges-0.1.3
 winapi-0.2.6
 winapi-build-0.1.1
+ws2_32-sys-0.2.1
 "
 
 inherit cargo bash-completion-r1

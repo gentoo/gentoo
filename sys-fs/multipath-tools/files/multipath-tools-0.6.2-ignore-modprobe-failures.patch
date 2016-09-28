@@ -1,0 +1,25 @@
+From 100588046ad59176b9779c73212aea63be5aace4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 12 Sep 2016 17:26:38 -0400
+Subject: [PATCH] multipathd.service: ignore modprobe failures
+
+---
+ multipathd/multipathd.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/multipathd/multipathd.service b/multipathd/multipathd.service
+index e3d6f91..d26577f 100644
+--- a/multipathd/multipathd.service
++++ b/multipathd/multipathd.service
+@@ -11,7 +11,7 @@ Conflicts=shutdown.target
+ Type=notify
+ NotifyAccess=main
+ LimitCORE=infinity
+-ExecStartPre=/sbin/modprobe -a scsi_dh_alua scsi_dh_emc scsi_dh_rdac dm-multipath
++ExecStartPre=-/sbin/modprobe -a scsi_dh_alua scsi_dh_emc scsi_dh_rdac dm-multipath
+ ExecStart=/sbin/multipathd -d -s
+ ExecReload=/sbin/multipathd reconfigure
+ 
+-- 
+2.10.0
+

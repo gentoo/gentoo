@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		MemoTrie provides a basis for memoized functions over some domains,
+		using tries.  It's based on some code I got from Spencer Janssen.
+		
+		Project wiki page: &lt;http://haskell.org/haskellwiki/MemoTrie&gt;
+		
+		&amp;#169; 2008,2009,2010 by Conal Elliott; BSD3 license.
+	</longdescription>
+</pkgmetadata>

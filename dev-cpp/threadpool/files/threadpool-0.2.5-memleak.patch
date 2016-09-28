@@ -10,8 +10,8 @@ memory.
 
 Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
 
---- threadpool-0_2_5-src/threadpool/boost/threadpool/detail/pool_core.hpp	2012-09-27 22:33:21.098626892 -0700
-+++ threadpool-0_2_5-src/threadpool/boost/threadpool/detail/pool_core.hpp	2012-09-27 22:51:12.291997839 -0700
+--- threadpool/boost/threadpool/detail/pool_core.hpp
++++ threadpool/boost/threadpool/detail/pool_core.hpp
 @@ -150,6 +150,7 @@
      /// Destructor.
      ~pool_core()

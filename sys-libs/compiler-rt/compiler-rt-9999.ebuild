@@ -22,10 +22,10 @@ KEYWORDS=""
 IUSE="+sanitize test"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-${PV}
 	sanitize? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
+	~sys-devel/llvm-${PV}
 	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
 
@@ -45,13 +45,6 @@ src_unpack() {
 			"${WORKDIR}"/llvm
 	fi
 	git-r3_checkout
-}
-
-src_prepare() {
-	# Support setting LLVM_MAIN_SRC_DIR and other llvm-config overrides
-	eapply "${FILESDIR}"/9999/0001-compiler-rt-cmake-Support-overriding-llvm-config-que.patch
-
-	default
 }
 
 src_configure() {
@@ -99,8 +92,9 @@ src_configure() {
 }
 
 src_test() {
-	# sandbox fiddles with memory error reporting and breaks tests
-	local -x SANDBOX_ON=0
+	# sandbox breaks libasan tests... and is hard to kill
+	# so abuse the fail in its algorithms
+	local -x LD_PRELOAD=${LD_PRELOAD/libsandbox/nolibsandbox}
 
 	cmake-utils_src_make check-all
 }

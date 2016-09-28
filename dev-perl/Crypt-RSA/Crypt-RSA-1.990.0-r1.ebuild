@@ -20,8 +20,8 @@ DEPEND="dev-perl/Class-Loader
 	dev-perl/Crypt-CBC
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-Random
-	dev-perl/data-buffer
-	dev-perl/digest-md2
+	dev-perl/Data-Buffer
+	dev-perl/Digest-MD2
 	virtual/perl-Digest-MD5
 	dev-perl/Digest-SHA1
 	>=dev-perl/Math-Pari-2.010603

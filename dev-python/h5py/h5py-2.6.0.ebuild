@@ -48,7 +48,6 @@ python_compile_all() {
 	if use doc; then
 		cd "${S}"/docs || die
 		sed '/html_theme/s:default:alabaster:g' -i conf.py || die
-		rm -r _build || die
 		emake html
 	fi
 }

@@ -14,7 +14,7 @@ DESCRIPTION="ed25519 for Go"
 HOMEPAGE="https://github.com/agl/ed25519/"
 SRC_URI="https://github.com/agl/ed25519/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="BSD"
 SLOT="0"

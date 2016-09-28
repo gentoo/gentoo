@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cairo doc emacs examples gtk ncurses nls perl postgres static-libs"
 
 RDEPEND="

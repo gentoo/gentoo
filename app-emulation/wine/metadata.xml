@@ -40,6 +40,7 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 		http://wiki.winehq.org/NtlmSigningAndSealing</flag>
 		<flag name="staging">Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet</flag>
 		<flag name="themes">Support GTK+:3 window theming through Wine-Staging</flag>
+		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">wine-compholio/wine-staging</remote-id>

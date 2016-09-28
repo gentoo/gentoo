@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,8 @@ IUSE="+spell"
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/markups[${PYTHON_USEDEP}]
+	>=dev-python/markups-2.0[${PYTHON_USEDEP}]
+	>=dev-python/chardet-2.3[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,printsupport,webkit,widgets,${PYTHON_USEDEP}]
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )

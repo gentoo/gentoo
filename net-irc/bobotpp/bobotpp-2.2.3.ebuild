@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit autotools autotools-utils eutils
+inherit autotools
 
 DESCRIPTION="A flexible IRC bot scriptable in scheme"
 HOMEPAGE="http://unknownlamer.org/code/bobot.html"
@@ -18,34 +18,30 @@ IUSE="guile"
 DEPEND="guile? ( dev-scheme/guile )"
 RDEPEND="${DEPEND}"
 
+HTML_DOCS=( documentation/index.html )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.2-asneeded.patch
+	"${FILESDIR}"/${PN}-2.2.3-stdout.patch
+	"${FILESDIR}"/${PN}-2.2.3-fix-c++14.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2.2-asneeded.patch \
-		"${FILESDIR}"/${P}-stdout.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--enable-crypt
+	econf \
+		--enable-crypt \
 		$(use_enable guile scripting)
-	)
-
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+	docinto examples
+	dodoc -r examples/config examples/scripts
 
 	dosym bobot++.info /usr/share/info/bobotpp.info
-
-	dodoc AUTHORS ChangeLog NEWS README TODO
-	dohtml documentation/index.html
-
-	docinto examples/config
-	dodoc examples/config/*
-
-	docinto examples/scripts
-	dodoc examples/scripts/*
 }
 
 pkg_postinst() {

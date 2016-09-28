@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit linux-info pam
+inherit libtool linux-info pam
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
@@ -66,6 +66,7 @@ src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
 	default
+	elibtoolize # bug 593314
 }
 
 src_configure() {

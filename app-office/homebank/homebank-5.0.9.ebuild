@@ -12,7 +12,7 @@ SRC_URI="http://homebank.free.fr/public/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+ofx"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND=">=dev-libs/glib-2.28
 	x11-libs/cairo

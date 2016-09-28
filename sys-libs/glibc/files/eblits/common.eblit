@@ -318,8 +318,9 @@ setup_env() {
 	unset LD_RUN_PATH
 	unset LD_ASSUME_KERNEL
 
-	multilib_env ${CTARGET_OPT:-${CTARGET}}
 	if is_crosscompile || tc-is-cross-compiler ; then
+		multilib_env ${CTARGET_OPT:-${CTARGET}}
+
 		if ! use multilib ; then
 			MULTILIB_ABIS=${DEFAULT_ABI}
 		else

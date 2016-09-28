@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -154,7 +154,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
 	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
-	tc_version_is_at_least 6.0 && IUSE+=" pie +ssp"
+	tc_version_is_at_least 6.0 && IUSE+=" pie ssp +pch"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
@@ -626,6 +626,50 @@ do_gcc_PIE_patches() {
 
 # configure to build with the hardened GCC specs as the default
 make_gcc_hard() {
+
+	local gcc_hard_flags=""
+	# Gcc >= 6.X we can use configurations options to turn pie/ssp on as default
+	if tc_version_is_at_least 6.0 ; then
+		if use pie ; then
+			einfo "Updating gcc to use automatic PIE building ..."
+		fi
+		if use ssp ; then
+			einfo "Updating gcc to use automatic SSP building ..."
+		fi
+		if use hardened ; then
+			# Will add some optimatizion as default.
+			gcc_hard_flags+=" -DEXTRA_OPTIONS"
+			# rebrand to make bug reports easier
+			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
+		fi
+	else
+		if use hardened ; then
+			# rebrand to make bug reports easier
+			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
+			if hardened_gcc_works ; then
+				einfo "Updating gcc to use automatic PIE + SSP building ..."
+				gcc_hard_flags+=" -DEFAULT_PIE_SSP"
+			elif hardened_gcc_works pie ; then
+				einfo "Updating gcc to use automatic PIE building ..."
+				ewarn "SSP has not been enabled by default"
+				gcc_hard_flags+=" -DEFAULT_PIE"
+			elif hardened_gcc_works ssp ; then
+				einfo "Updating gcc to use automatic SSP building ..."
+				ewarn "PIE has not been enabled by default"
+				gcc_hard_flags+=" -DEFAULT_SSP"
+			else
+				# do nothing if hardened isn't supported, but don't die either
+				ewarn "hardened is not supported for this arch in this gcc version"
+				return 0
+			fi
+		else
+			if hardened_gcc_works ssp ; then
+				einfo "Updating gcc to use automatic SSP building ..."
+				gcc_hard_flags+=" -DEFAULT_SSP"
+			fi
+		fi
+	fi
+
 	# we want to be able to control the pie patch logic via something other
 	# than ALL_CFLAGS...
 	sed -e '/^ALL_CFLAGS/iHARD_CFLAGS = ' \
@@ -634,36 +678,8 @@ make_gcc_hard() {
 	# Need to add HARD_CFLAGS to ALL_CXXFLAGS on >= 4.7
 	if tc_version_is_at_least 4.7 ; then
 		sed -e '/^ALL_CXXFLAGS/iHARD_CFLAGS = ' \
-                        -e 's|^ALL_CXXFLAGS = |ALL_CXXFLAGS = $(HARD_CFLAGS) |' \
-                        -i "${S}"/gcc/Makefile.in
-	fi
-
-	# defaults to enable for all toolchains
-	local gcc_hard_flags=""
-	if use hardened ; then
-		if hardened_gcc_works ; then
-			einfo "Updating gcc to use automatic PIE + SSP building ..."
-			gcc_hard_flags+=" -DEFAULT_PIE_SSP"
-		elif hardened_gcc_works pie ; then
-			einfo "Updating gcc to use automatic PIE building ..."
-			ewarn "SSP has not been enabled by default"
-			gcc_hard_flags+=" -DEFAULT_PIE"
-		elif hardened_gcc_works ssp ; then
-			einfo "Updating gcc to use automatic SSP building ..."
-			ewarn "PIE has not been enabled by default"
-			gcc_hard_flags+=" -DEFAULT_SSP"
-		else
-			# do nothing if hardened isn't supported, but don't die either
-			ewarn "hardened is not supported for this arch in this gcc version"
-			return 0
-		fi
-		# rebrand to make bug reports easier
-		BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
-	else
-		if hardened_gcc_works ssp ; then
-			einfo "Updating gcc to use automatic SSP building ..."
-			gcc_hard_flags+=" -DEFAULT_SSP"
-		fi
+			-e 's|^ALL_CXXFLAGS = |ALL_CXXFLAGS = $(HARD_CFLAGS) |' \
+			-i "${S}"/gcc/Makefile.in
 	fi
 
 	sed -i \
@@ -897,6 +913,11 @@ toolchain_src_configure() {
 	# going to link in -lrt to all C++ apps.  #411681
 	if tc_version_is_at_least 4.4 && is_cxx ; then
 		confgcc+=( --enable-libstdcxx-time )
+	fi
+
+	# Support to disable pch when building libstdcxx
+	if tc_version_is_at_least 6.0 && ! use pch ; then
+		confgcc+=( --disable-libstdcxx-pch )
 	fi
 
 	# The jit language requires this.
@@ -1962,6 +1983,11 @@ create_gcc_env_entry() {
 }
 
 copy_minispecs_gcc_specs() {
+	# on gcc 6 we don't need minispecs
+	if tc_version_is_at_least 6.0 ; then
+		return 0
+	fi
+
 	# setup the hardenedno* specs files and the vanilla specs file.
 	if hardened_gcc_works ; then
 		create_gcc_env_entry hardenednopiessp
@@ -2302,6 +2328,10 @@ hardened_gcc_is_stable() {
 }
 
 want_minispecs() {
+	# on gcc 6 we don't need minispecs
+	if tc_version_is_at_least 6.0 ; then
+		return 0
+	fi
 	if tc_version_is_at_least 4.3.2 && use hardened ; then
 		if ! want_pie ; then
 			ewarn "PIE_VER or SPECS_VER is not defined in the GCC ebuild."

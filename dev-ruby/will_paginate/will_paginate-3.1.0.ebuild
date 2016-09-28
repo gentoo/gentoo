@@ -20,8 +20,15 @@ SLOT="3"
 KEYWORDS="~amd64 ~x86 ~x86-macos"
 IUSE=""
 
+all_ruby_prepare() {
+	sed -i -e '1igem "rails", "<5"' spec/spec_helper.rb || die
+
+	# Remove tests for unpackaged ORMs
+	rm -f spec/finders/{sequel,mongoid,data_mapper}* || die
+}
+
 ruby_add_bdepend "
 	test? (
-		dev-ruby/rails
+		<dev-ruby/rails-5
 		dev-ruby/mocha
 	)"

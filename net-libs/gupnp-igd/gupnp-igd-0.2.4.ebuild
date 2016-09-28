@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 AUTOTOOLS_AUTORECONF=true
 
-inherit eutils gnome.org python-r1 multilib-minimal
+inherit eutils gnome.org python-r1 multilib-minimal xdg-utils
 
 DESCRIPTION="Library to handle UPnP IGD port mapping for GUPnP"
 HOMEPAGE="http://gupnp.org"
@@ -40,6 +40,8 @@ PATCHES=(
 )
 
 multilib_src_configure() {
+	xdg_environment_reset
+
 	local myconf=(
 		--disable-static
 		--disable-gtk-doc

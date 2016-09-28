@@ -14,7 +14,7 @@ SRC_URI="https://batti-gtk.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="libnotify"
 
 RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]

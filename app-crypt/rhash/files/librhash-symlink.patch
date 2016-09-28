@@ -1,0 +1,38 @@
+From 30c5897a7533b746388f44f3999ad2e23c529364 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 16 Sep 2016 22:53:51 +0100
+Subject: [PATCH] Handle librhash.so symlink in shared Makefile rules, not
+ static
+
+---
+ librhash/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/librhash/Makefile b/librhash/Makefile
+index a38073f..fc5e5c3 100644
+--- a/librhash/Makefile
++++ b/librhash/Makefile
+@@ -46,18 +46,18 @@ dist-clean: clean
+ install-lib-static: $(LIBRARY) install-headers
+ 	$(INSTALL) -d $(DESTDIR)$(LIBDIR)
+ 	$(INSTALL_DATA) $(LIBRARY) $(DESTDIR)$(LIBDIR)/
+-	ln -s $(SONAME) $(DESTDIR)$(LIBDIR)/$(SOLINK)
+ 
+ install-lib-shared: $(SONAME)
+ 	$(INSTALL) -d $(DESTDIR)$(LIBDIR)
+ 	$(INSTALL_SHARED) $(SONAME) $(DESTDIR)$(LIBDIR)/
++	ln -s $(SONAME) $(DESTDIR)$(LIBDIR)/$(SOLINK)
+ 
+ uninstall-lib-static: uninstall-headers
+ 	rm -f $(DESTDIR)$(LIBDIR)/$(LIBRARY)
+-	rm -f $(DESTDIR)$(LIBDIR)/$(SOLINK)
+ 
+ uninstall-lib-shared:
+ 	rm -f $(DESTDIR)$(LIBDIR)/$(SONAME)
++	rm -f $(DESTDIR)$(LIBDIR)/$(SOLINK)
+ 
+ install-headers:
+ 	$(INSTALL) -d $(DESTDIR)$(INCDIR)
+-- 
+2.8.2
+

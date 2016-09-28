@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,6 +40,7 @@ PATCHES=(
 		"${WORKDIR}"/debian/patches/fix_zinc_german_translation.patch
 		"${WORKDIR}"/debian/patches/ftbfs_missing_limits.patch
 		"${WORKDIR}"/debian/patches/lp673285_link_in_about.patch
+		"${FILESDIR}"/${PN}-1.2.0-fix-c++14.patch
 	)
 
 AUTOTOOLS_IN_SOURCE_BUILD=1

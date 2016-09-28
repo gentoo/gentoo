@@ -1,0 +1,17 @@
+Avoid automagic CXXFLAG detection courtesy of dev-libs/vc.
+
+Gentoo-bug: 584118
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -525,10 +525,6 @@
+     endif()
+     endmacro()
+ 
+-    if (NOT PACKAGERS_BUILD)
+-        # Optimize everything for the current architecture
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Vc_DEFINITIONS}")
+-    endif ()
+ endif()
+ set(CMAKE_MODULE_PATH ${OLD_CMAKE_MODULE_PATH} )
+ 

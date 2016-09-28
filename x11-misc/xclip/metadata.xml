@@ -6,6 +6,6 @@
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">xclip</remote-id>
+    <remote-id type="github">astrand/xclip</remote-id>
   </upstream>
 </pkgmetadata>

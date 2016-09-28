@@ -1,0 +1,38 @@
+From 4ce9c9241f5707917e87e93a055f757cea5fb84d Mon Sep 17 00:00:00 2001
+From: Jon DeVree <nuxi@vault24.org>
+Date: Mon, 19 Sep 2016 21:00:18 -0400
+Subject: [PATCH] Add Content-Length header to mimic official pulse client
+
+The official pulse client sends in a fixed "Content-Length: 256" header
+with these two HTTP requests. Some versions of the VPN server will
+reject requests with an HTTP 400 error if they do not have this header.
+
+Signed-off-by: Jon DeVree <nuxi@vault24.org>
+Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
+---
+ oncp.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/oncp.c b/oncp.c
+index cc9a223..2bf1571 100644
+--- a/oncp.c
++++ b/oncp.c
+@@ -562,6 +562,7 @@ int oncp_connect(struct openconnect_info *vpninfo)
+ 
+  	buf_append(reqbuf, "POST /dana/js?prot=1&svc=1 HTTP/1.1\r\n");
+ 	oncp_common_headers(vpninfo, reqbuf);
++	buf_append(reqbuf, "Content-Length: 256\r\n");
+ 	buf_append(reqbuf, "\r\n");
+ 
+ 	if (buf_error(reqbuf)) {
+@@ -606,6 +607,7 @@ int oncp_connect(struct openconnect_info *vpninfo)
+ 	buf_truncate(reqbuf);
+ 	buf_append(reqbuf, "POST /dana/js?prot=1&svc=4 HTTP/1.1\r\n");
+ 	oncp_common_headers(vpninfo, reqbuf);
++	buf_append(reqbuf, "Content-Length: 256\r\n");
+ 	buf_append(reqbuf, "\r\n");
+ 
+ 	if (buf_error(reqbuf)) {
+-- 
+2.7.3
+

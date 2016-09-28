@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Apache C++ XML security libraries"
 HOMEPAGE="http://santuario.apache.org/"
@@ -25,11 +23,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( CHANGELOG.txt NOTICE.txt )
-
-src_prepare() {
-	epatch "${FILESDIR}/1.6.1-nss-compilation-fix.patch"
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.1-nss-compilation-fix.patch"
+	"${FILESDIR}/${PN}-1.7.3-fix-c++14.patch"
+)
 
 src_configure() {
 	econf \
@@ -43,7 +40,7 @@ src_configure() {
 src_install() {
 	default
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins xsec/samples/*.cpp
+		docinto examples
+		dodoc xsec/samples/*.cpp
 	fi
 }

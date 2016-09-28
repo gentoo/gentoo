@@ -21,6 +21,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
 	>=dev-util/intltool-0.50

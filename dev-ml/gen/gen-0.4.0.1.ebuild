@@ -20,6 +20,6 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? ( dev-ml/ounit dev-ml/qcheck )
+	test? ( dev-ml/ounit dev-ml/iTeML )
 "
 DOCS=( "README.md" "CHANGELOG.md" )

@@ -35,9 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs="-DWITH_AUDIO=$(usex alsa)
+	local mycmakeargs=(-DWITH_AUDIO=$(usex alsa)
 		-DENABLE_CLIENT=$(usex !dedicated)
-		-DWITH_DEBUG=$(usex debug)"
+		-DWITH_DEBUG=$(usex debug))
 	cmake-utils_src_configure
 }
 

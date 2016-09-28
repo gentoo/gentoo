@@ -20,13 +20,14 @@ SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 INTRINSIC_FLAGS="cpu_flags_x86_sse neon"
-IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
+IUSE="ambisonics custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable custom-modes)
+		$(use_enable ambisonics)
 		$(use_enable doc)
 	)
 	for i in ${INTRINSIC_FLAGS} ; do

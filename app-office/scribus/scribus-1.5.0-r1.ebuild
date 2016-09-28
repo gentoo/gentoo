@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -96,6 +96,10 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
+
+	if has_version ">=dev-qt/qtcore-5.7.0" ; then
+		append-cxxflags "-std=c++11" #bug 591948
+	fi
 
 	cmake-utils_src_prepare
 }

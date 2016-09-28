@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="the UCL Compression Library"
 HOMEPAGE="http://www.oberhumer.com/opensource/ucl/"
@@ -32,6 +32,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #585632
+	append-cflags -std=c90
+
 	econf \
 		--enable-shared \
 		$(use_enable static-libs static)

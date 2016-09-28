@@ -1,6 +1,6 @@
 diff -up bin/url_handler.sh.orig bin/url_handler.sh
---- bin/url_handler.sh.orig	2009-05-02 23:21:08.000000000 +1200
-+++ bin/url_handler.sh	2009-05-02 23:24:25.000000000 +1200
+--- a/bin/url_handler.sh
++++ b/bin/url_handler.sh
 @@ -27,21 +27,7 @@ case $method in
  	mailto)	mutt `echo "$url" | sed 's;^[^:]*:\(.*\);\1;'`
  		;;

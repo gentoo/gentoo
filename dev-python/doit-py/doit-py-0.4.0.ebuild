@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE="doc test"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/singledispatch[${PYTHON_USEDEP}]
+		virtual/python-singledispatch[${PYTHON_USEDEP}]
 		app-text/hunspell )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 RDEPEND="

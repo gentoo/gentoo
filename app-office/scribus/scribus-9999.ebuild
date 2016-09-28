@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	hunspell? ( app-text/hunspell )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	osg? ( dev-games/openscenegraph )
-	pdf? ( app-text/podofo )
+	pdf? ( app-text/podofo:0= )
 	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
 	tk? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
 "
@@ -74,7 +74,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.5.0-docdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
+	)
 
 src_prepare() {
 	rm -r codegen/cheetah || die
@@ -96,6 +98,10 @@ src_prepare() {
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
 
+	if has_version ">=dev-qt/qtcore-5.7.0" ; then
+		append-cxxflags "-std=c++11" #bug 591948
+	fi
+
 	cmake-utils_src_prepare
 	subversion_src_prepare
 }
@@ -103,9 +109,9 @@ src_prepare() {
 src_configure() {
 	local lang langs
 	for lang in ${IUSE_LINGUAS}; do
-		if use linguas_${lang}; then
+		if use linguas_${lang} || [[ ${lang} == "en" ]]; then
 			# From the CMakeLists.txt
-			# "#Bit of a hack, preprocess all the filenames to generate our language string, needed for -DWANT_GUI_LANG=en_GB,de_DE , etc"
+			# "#Bit of a hack, preprocess all the filenames to generate our language string, needed for -DWANT_GUI_LANG=en_GB;de_DE , etc"
 			langs+=";${lang}"
 		else
 			# Don't install localized documentation
@@ -123,7 +129,7 @@ src_configure() {
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="/usr/share/doc/${PF}/"
-		-DWANT_GUI_LANG=${langs#;}
+		-DWANT_GUI_LANG="${langs#;};en"
 		$(cmake-utils_use_with pdf PODOFO)
 		$(cmake-utils_use_with boost)
 		$(cmake-utils_use_want graphicsmagick)
@@ -180,21 +186,22 @@ pkg_postrm() {
 }
 
 safe_delete () {
-	if path_exists $2; then
-		case $1 in
-			dir)
+	case $1 in
+		dir)
+			if [[ -d "${2}" ]]; then
 				ebegin "Deleting ${2} recursively"
 				rm -r "${2}" || die
 				eend $?
-				;;
-			file)
+			fi
+			;;
+		file)
+			if [[ -f "${2}" ]]; then
 				ebegin "Deleting ${2}"
 				rm "${2}" || die
 				eend $?
-				;;
-			*)
-				die "Wrong usage"
-				;;
-		esac
-	fi
+			fi
+			;;
+		*)
+			die "Wrong usage"
+	esac
 }

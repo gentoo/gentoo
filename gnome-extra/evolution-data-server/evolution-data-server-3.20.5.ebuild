@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use flag-o-matic gnome2 python-any-r1 vala virtualx
+inherit db-use flag-o-matic gnome2 python-any-r1 systemd vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
@@ -107,6 +107,7 @@ src_configure() {
 		$(use_enable weather) \
 		--enable-largefile \
 		--enable-smime \
+		--with-systemduserunitdir="$(systemd_get_userunitdir)" \
 		--without-phonenumber \
 		--disable-examples \
 		--disable-uoa

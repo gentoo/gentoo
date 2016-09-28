@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,10 +21,10 @@ RESTRICT="test"
 #It'll take a larger patching effort to get it extracted, since upstream integrated it
 #more tightly this time. Probably for the better since upstream xplc seems dead.
 
-RDEPEND="sys-libs/readline
+RDEPEND="sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 	pam? ( virtual/pam )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -48,7 +48,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-parallel-make.patch \
 		"${FILESDIR}"/${P}-openssl-1.0.0.patch \
 		"${FILESDIR}"/${P}-glibc212.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
+		"${FILESDIR}"/${P}-gcc47.patch \
+		"${FILESDIR}"/${P}-fix-c++14.patch
 
 	sed -i \
 		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \

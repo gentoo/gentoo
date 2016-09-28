@@ -1,0 +1,109 @@
+commit fa473a1c4572ef3c2614318b0ce7090613878005
+Author: Jason A. Donenfeld <Jason@zx2c4.com>
+Date:   Tue Sep 13 04:13:47 2016 +0200
+
+    cursor model: look for cursors in correct place
+    
+    plasma-desktop's cursor theme kcm does the right thing, by consulting
+    the libXcursor library for the right search paths. Unfortunately, the
+    kcm here does a pretty butchered job of it. So, we copy, more or less,
+    the same algorithm used by plasma-desktop. Now there's parity in cursor
+    selection.
+    
+    For reference, please see line 165 of:
+    https://quickgit.kde.org/?p=plasma-desktop.git&a=blob&f=kcms%2Fcursortheme%2Fxcursor%2Fthememodel.cpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07d313c..88f5a47 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_P
+ 
+ find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Widgets Test)
+ find_package(KF5 REQUIRED COMPONENTS I18n KIO ConfigWidgets NewStuff Archive KCMUtils IconThemes)
++find_package(X11 REQUIRED)
+ 
+ include_directories(
+     ${CMAKE_SOURCE_DIR} 
+@@ -54,7 +55,7 @@ ki18n_wrap_ui(kcm_SRCS
+ )
+ add_library(kcm_kdegtkconfig MODULE ${kcm_SRCS})
+ target_compile_definitions(kcm_kdegtkconfig PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
+-target_link_libraries(kcm_kdegtkconfig KF5::I18n KF5::KIOWidgets KF5::NewStuff KF5::Archive KF5::NewStuff KF5::ConfigWidgets KF5::IconThemes)
++target_link_libraries(kcm_kdegtkconfig ${X11_Xcursor_LIB} KF5::I18n KF5::KIOWidgets KF5::NewStuff KF5::Archive KF5::NewStuff KF5::ConfigWidgets KF5::IconThemes)
+ 
+ kcoreaddons_desktop_to_json(kcm_kdegtkconfig kde-gtk-config.desktop)
+ 
+diff --git a/src/cursorthemesmodel.cpp b/src/cursorthemesmodel.cpp
+index 5238714..0e58230 100644
+--- a/src/cursorthemesmodel.cpp
++++ b/src/cursorthemesmodel.cpp
+@@ -24,12 +24,14 @@
+ #include <QDir>
+ #include <QDirIterator>
+ #include <QSet>
+-#include <KIconTheme>
+ #include <QStandardPaths>
++#include <KIconTheme>
++#include <KShell>
++
++#include <X11/Xcursor/Xcursor.h>
+ 
+-CursorThemesModel::CursorThemesModel(bool onlyHome, QObject* parent)
++CursorThemesModel::CursorThemesModel(QObject* parent)
+     : IconThemesModel(parent)
+-    , m_onlyHome(onlyHome)
+ {
+     reload();
+ }
+@@ -37,13 +39,11 @@ CursorThemesModel::CursorThemesModel(bool onlyHome, QObject* parent)
+ QList<QDir> CursorThemesModel::installedThemesPaths()
+ {
+     QList<QDir> availableIcons;
++    QStringList dirs(QString(XcursorLibraryPath()).split(':', QString::SkipEmptyParts));
++
++    std::transform(dirs.begin(), dirs.end(), dirs.begin(), KShell::tildeExpand);
++    dirs.removeDuplicates();
+ 
+-    QSet<QString> dirs;
+-    dirs += QDir::home().filePath(".icons");
+-    if(!m_onlyHome) {
+-        dirs += QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "icons", QStandardPaths::LocateDirectory).toSet();
+-    }
+-    
+     foreach(const QString& dir, dirs) {
+         QDir userIconsDir(dir);
+         QDirIterator it(userIconsDir.path(), QDir::NoDotAndDotDot|QDir::AllDirs|QDir::NoSymLinks);
+diff --git a/src/cursorthemesmodel.h b/src/cursorthemesmodel.h
+index 7658bd5..4acfa4b 100644
+--- a/src/cursorthemesmodel.h
++++ b/src/cursorthemesmodel.h
+@@ -29,14 +29,13 @@ class QDir;
+ class CursorThemesModel : public IconThemesModel
+ {
+     public:
+-        explicit CursorThemesModel(bool onlyHome=false, QObject* parent = 0);
++        explicit CursorThemesModel(QObject* parent = 0);
+ 
+         void reload();
+         
+     private:
+         static void fillItem(const QDir& dir, QStandardItem* item);
+         QList<QDir> installedThemesPaths();
+-        bool m_onlyHome;
+ };
+ 
+ #endif // CURSORTHEMESMODEL_H
+diff --git a/src/gtkconfigkcmodule.cpp b/src/gtkconfigkcmodule.cpp
+index 7afe698..d36c6a3 100644
+--- a/src/gtkconfigkcmodule.cpp
++++ b/src/gtkconfigkcmodule.cpp
+@@ -71,7 +71,7 @@ GTKConfigKCModule::GTKConfigKCModule(QWidget* parent, const QVariantList& args )
+     setButtons(KCModule::Default | KCModule::Apply);
+     ui->setupUi(this);
+     appareance = new AppearenceGTK;
+-    m_cursorsModel = new CursorThemesModel(false, this);
++    m_cursorsModel = new CursorThemesModel(this);
+     ui->cb_cursor->setModel(m_cursorsModel);
+     m_iconsModel = new IconThemesModel(false, this);
+     ui->cb_icon->setModel(m_iconsModel);

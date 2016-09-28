@@ -25,7 +25,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -57,7 +57,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/ce12af00283eb90d9281956524250d6e-xmlsec1-1.2.20.tar.gz" # modifies source code
+	"${ADDONS_URI}/0fb1bb06d60d7708abc4797008209bcc-xmlsec1-1.2.22.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -77,8 +77,8 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome google
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres quickstarter telepathy test vlc
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -102,7 +102,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
 	app-text/mythes
-	app-text/poppler:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
@@ -169,6 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
+	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 	telepathy? ( net-libs/telepathy-glib )
 "
@@ -241,7 +241,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 )
 
 CHECKREQS_MEMORY="512M"
@@ -259,9 +259,7 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check-reqs_pkg_pretend
 
-		if [[ $(tc-getCC) == clang ]] ; then
-			: # ignore clang, which works
-		elif [[ $(gcc-major-version) -lt 4 ]] || {
+		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
 				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
 			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
@@ -284,6 +282,7 @@ pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
+	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && check-reqs_pkg_setup
 }
@@ -424,7 +423,6 @@ src_configure() {
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
-		--disable-hardlink-deliver \
 		--disable-online-update \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
@@ -443,7 +441,6 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--without-sun-templates \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
@@ -462,6 +459,7 @@ src_configure() {
 		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
+		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
 		$(use_enable quickstarter systray) \
 		$(use_enable telepathy) \
@@ -469,8 +467,8 @@ src_configure() {
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
 		$(use_with gltf system-libgltf) \
-		$(use_with google gdrive-client-id ${google_default_client_id}) \
-		$(use_with google gdrive-client-secret ${google_default_client_secret}) \
+		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
+		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
@@ -540,10 +538,6 @@ src_install() {
 
 	# Remove desktop files to support old installs that can't parse mime
 	rm -r "${ED}"usr/share/mimelnk/ || die
-
-	# FIXME: Hack add missing file
-	exeinto /usr/$(get_libdir)/${PN}/program
-	doexe "${S}"/instdir/program/libsaxlo.so
 
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin

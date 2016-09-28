@@ -1,0 +1,26 @@
+From a9bb3ed34e71f5f9d1d1b0bc3044555a0b3b932c Mon Sep 17 00:00:00 2001
+From: Sandro Santilli <strk@keybit.net>
+Date: Thu, 14 Jul 2016 10:38:35 +0000
+Subject: [PATCH] Fully qualify isnan call when HAVE_ISNAN is defined
+
+Fixes build with GCC-5.3.0 and higher.
+Closes #784
+
+git-svn-id: http://svn.osgeo.org/geos/trunk@4224 5242fede-7e19-0410-aef8-94bd7d2200fb
+---
+ include/geos/platform.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/geos/platform.h.in b/include/geos/platform.h.in
+index d8d4558..c3bc9c8 100644
+--- a/include/geos/platform.h.in
++++ b/include/geos/platform.h.in
+@@ -86,7 +86,7 @@ extern "C"
+ #endif
+ 
+ #if defined(HAVE_ISNAN)
+-# define ISNAN(x) (isnan(x))
++# define ISNAN(x) (std::isnan(x))
+ #else
+ # if defined(_MSC_VER)
+ #  define ISNAN(x) _isnan(x)

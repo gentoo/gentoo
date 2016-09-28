@@ -18,7 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="dev-ml/camlp4:="
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )"
 DOCS=( "README.md" "TODO" "CHANGES.txt" )

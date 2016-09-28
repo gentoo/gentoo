@@ -4,8 +4,8 @@ https://github.com/fcitx/fcitx/commit/353683e29be4ef26409b9a05e0cb647a5180fa8c
 https://github.com/fcitx/fcitx/commit/fe2732db27a1c2e183400ceeb3283559e10a4ca8
 https://github.com/fcitx/fcitx/commit/440c431d29876a8e4871159d289bc9a573f9a41b
 
---- src/module/notificationitem/notificationitem.c
-+++ src/module/notificationitem/notificationitem.c
+--- /src/module/notificationitem/notificationitem.c
++++ /src/module/notificationitem/notificationitem.c
 @@ -565,8 +565,17 @@
  
  boolean FcitxNotificationItemEnable(FcitxNotificationItem* notificationitem, FcitxNotificationItemAvailableCallback callback, void* data)
@@ -25,8 +25,8 @@ https://github.com/fcitx/fcitx/commit/440c431d29876a8e4871159d289bc9a573f9a41b
      if (notificationitem->serviceName) {
          FcitxLog(ERROR, "This should not happen, please report bug.");
          return false;
---- src/ui/classic/TrayWindow.c
-+++ src/ui/classic/TrayWindow.c
+--- /src/ui/classic/TrayWindow.c
++++ /src/ui/classic/TrayWindow.c
 @@ -48,7 +48,7 @@
      Display *dpy = classicui->dpy;
      int iScreen = classicui->iScreen;
@@ -100,8 +100,8 @@ https://github.com/fcitx/fcitx/commit/440c431d29876a8e4871159d289bc9a573f9a41b
      }
      return false;
  }
---- src/ui/classic/classicui.c
-+++ src/ui/classic/classicui.c
+--- /src/ui/classic/classicui.c
++++ /src/ui/classic/classicui.c
 @@ -168,7 +168,7 @@
  void ClassicUIDelayedInitTray(void* arg) {
      FcitxClassicUI* classicui = (FcitxClassicUI*) arg;
@@ -120,8 +120,8 @@ https://github.com/fcitx/fcitx/commit/440c431d29876a8e4871159d289bc9a573f9a41b
          return;
  
      if (!classicui->trayWindow->bTrayMapped) {
---- src/ui/classic/tray.c
-+++ src/ui/classic/tray.c
+--- /src/ui/classic/tray.c
++++ /src/ui/classic/tray.c
 @@ -106,8 +106,9 @@
  
      XWindowAttributes attr;

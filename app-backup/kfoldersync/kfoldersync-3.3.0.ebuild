@@ -11,7 +11,7 @@ DESCRIPTION="Folder synchronization and backup tool for KDE"
 HOMEPAGE="https://www.linux-apps.com/p/1127677/"
 SRC_URI="https://dl.opendesktop.org/api/files/download/id/1472295821/${P}.tar.xz"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 

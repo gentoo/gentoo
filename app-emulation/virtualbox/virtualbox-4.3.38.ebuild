@@ -140,6 +140,10 @@ pkg_setup() {
 	fi
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
+
+	tc-ld-disable-gold #bug 488176
+	tc-export CC CXX LD AR RANLIB
+	export HOST_CC="$(tc-getBUILD_CC)"
 }
 
 src_prepare() {
@@ -157,6 +161,10 @@ src_prepare() {
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
 		-i Config.kmk src/libs/xpcom18a4/Config.kmk || die
+
+	# Do not use hard-coded ld (related to bug #488176)
+	sed -e '/QUIET)ld /s/ld /$(LD) /' \
+		-i src/VBox/Devices/PC/ipxe/Makefile.kmk || die
 
 	# Use PAM only when pam USE flag is enbaled (bug #376531)
 	if ! use pam ; then

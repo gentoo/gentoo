@@ -1,0 +1,50 @@
+* Add prefix in Makefiles, not the configure script
+* Use AC_SEARCH_LIBS instead of AC_CHECK_LIB,
+  as it is more flexible and helps us with LAPACK
+* Use correct ZLIB_CFLAGS instead of non-existent ZLIB_CPPFLAGS
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,7 +34,7 @@
+       [--with-pmdir=DIR],
+       [install Perl modules in DIR]),
+     [PMDIR=${withval}],
+-    [PMDIR='${prefix}'/"$pmdir_relative_path"])
++    [PMDIR="$pmdir_relative_path"])
+ 
+ AC_SUBST([PMDIR])
+ 
+@@ -73,9 +73,9 @@
+               [pca=${enableval}],
+               [pca=no])
+ 
+-if test "x${pca}" = "xyes" ; then
+-  AC_CHECK_LIB(lapack, dgeev_)
+-fi
++AS_IF([test "x${pca}" = "xyes"],[
++  AC_SEARCH_LIBS([dgeev_], [lapack])
++])
+ 
+ # Generate output.
+ AC_CONFIG_FILES([Makefile
+--- a/src/cpp/Makefile.am
++++ b/src/cpp/Makefile.am
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = vcftools
+ 
+-vcftools_CPPFLAGS = $(ZLIB_CPPFLAGS)
++vcftools_CPPFLAGS = $(ZLIB_CFLAGS)
+ vcftools_LDADD = $(ZLIB_LIBS)
+ 
+ vcftools_SOURCES = \
+--- a/src/perl/Makefile.am
++++ b/src/perl/Makefile.am
+@@ -24,7 +24,7 @@
+ 	vcf-tstv \
+ 	vcf-validator
+ 
+-pmdir = $(PMDIR)
++pmdir = $(exec_prefix)/$(PMDIR)
+ 
+ dist_pm_DATA = \
+ 	FaSlice.pm \

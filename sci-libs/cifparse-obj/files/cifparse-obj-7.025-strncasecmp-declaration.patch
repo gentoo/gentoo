@@ -1,0 +1,16 @@
+Remove incorrect prototypes of the 'strcasecmp' and 'strncasecmp' functions.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594054
+
+--- a/misclib-v2.2/include/ndb_misclib.h
++++ b/misclib-v2.2/include/ndb_misclib.h
+@@ -167,10 +167,6 @@
+ #define NDB_MSG_BUFFER_LEN    200000
+ 
+ 
+-#if !defined(HAVE_STRCASECMP)
+-int strcasecmp (const char *s1, const char *s2);
+-int strncasecmp (const char *s1, const char *s2, unsigned int n);
+-#endif 
+ /*
+  *   ndb_misclib.c prototypes
+  */

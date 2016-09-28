@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/sparklemotion/http-cookie"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/domain_name-0.5:0"

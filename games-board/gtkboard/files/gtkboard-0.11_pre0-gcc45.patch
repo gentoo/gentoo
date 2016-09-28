@@ -1,5 +1,5 @@
---- src/menu.c.old	2010-05-24 12:35:15.000000000 +0200
-+++ src/menu.c	2010-05-24 12:35:48.000000000 +0200
+--- a/src/menu.c	2010-05-24 12:35:15.000000000 +0200
++++ b/src/menu.c	2010-05-24 12:35:48.000000000 +0200
 @@ -176,7 +176,7 @@
  {
  #if GTK_MAJOR_VERSION == 2
@@ -9,8 +9,8 @@
  	static char pixbufs [7][size*(size+1)];
  	char **pixmap_data;
  	static GdkPixmap *pixmaps[7];
---- src/wordtris.c.old	2010-05-24 12:36:50.000000000 +0200
-+++ src/wordtris.c	2010-05-24 12:38:30.000000000 +0200
+--- a/src/wordtris.c	2010-05-24 12:36:50.000000000 +0200
++++ b/src/wordtris.c	2010-05-24 12:38:30.000000000 +0200
 @@ -122,7 +122,7 @@
  
  // TODO: change this so that we only need to specify pixmaps for individual squares

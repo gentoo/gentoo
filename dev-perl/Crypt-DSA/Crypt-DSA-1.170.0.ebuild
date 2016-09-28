@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc sparc x86 ~x86-solaris"
 IUSE="test"
 
-RDEPEND="dev-perl/data-buffer
+RDEPEND="dev-perl/Data-Buffer
 	dev-perl/Digest-SHA1
 	virtual/perl-File-Spec
 	dev-perl/File-Which

@@ -1,5 +1,5 @@
---- src/systray.c
-+++ src/systray.c
+--- a/src/systray.c
++++ b/src/systray.c
 @@ -6,6 +6,12 @@
  #include "systray.h"
  #include "main_window_cb.h"

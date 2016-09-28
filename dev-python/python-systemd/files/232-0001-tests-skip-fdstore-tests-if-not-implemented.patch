@@ -1,0 +1,63 @@
+From 177ac6d894e362b0d22a2765db280abed71cc07f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 22 Sep 2016 07:46:59 -0400
+Subject: [PATCH 1/6] tests: skip fdstore tests if not implemented
+
+Should fix #12.
+---
+ systemd/test/test_daemon.py | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/systemd/test/test_daemon.py b/systemd/test/test_daemon.py
+index 215f1f8..e827e1d 100644
+--- a/systemd/test/test_daemon.py
++++ b/systemd/test/test_daemon.py
+@@ -16,6 +16,15 @@ from systemd.daemon import (booted,
+ import pytest
+ 
+ @contextlib.contextmanager
++def skip_enosys():
++    try:
++        yield
++    except OSError as e:
++        if e.errno == errno.ENOSYS:
++            pytest.skip()
++        raise
++
++@contextlib.contextmanager
+ def closing_socketpair(family):
+     pair = socket.socketpair(family)
+     try:
+@@ -200,7 +209,8 @@ def test_listen_fds_default_unset():
+ 
+ def test_notify_no_socket():
+     assert notify('READY=1') == False
+-    assert notify('FDSTORE=1', fds=[]) == False
++    with skip_enosys():
++        assert notify('FDSTORE=1', fds=[]) == False
+     assert notify('FDSTORE=1', fds=[1,2]) == False
+     assert notify('FDSTORE=1', pid=os.getpid()) == False
+     assert notify('FDSTORE=1', pid=os.getpid(), fds=(1,)) == False
+@@ -216,7 +226,8 @@ def test_notify_bad_socket():
+     with pytest.raises(connection_error):
+         notify('READY=1')
+     with pytest.raises(connection_error):
+-        notify('FDSTORE=1', fds=[])
++        with skip_enosys():
++            notify('FDSTORE=1', fds=[])
+     with pytest.raises(connection_error):
+         notify('FDSTORE=1', fds=[1,2])
+     with pytest.raises(connection_error):
+@@ -234,7 +245,8 @@ def test_notify_with_socket(tmpdir):
+     os.environ['NOTIFY_SOCKET'] = path
+ 
+     assert notify('READY=1') == True
+-    assert notify('FDSTORE=1', fds=[]) == True
++    with skip_enosys():
++        assert notify('FDSTORE=1', fds=[]) == True
+     assert notify('FDSTORE=1', fds=[1,2]) == True
+     assert notify('FDSTORE=1', pid=os.getpid()) == True
+     assert notify('FDSTORE=1', pid=os.getpid(), fds=(1,)) == True
+-- 
+2.10.0
+

@@ -1,0 +1,14 @@
+Fix building with C++14, which errors out due to bool -> T* conversions
+See also: https://bugs.gentoo.org/show_bug.cgi?id=593994
+
+--- a/src/dialogs.cc
++++ b/src/dialogs.cc
+@@ -255,7 +255,7 @@
+ 	const Gtk::TreePath& tpath, bool)
+ {
+ 	Gtk::TreeIter iter = store->get_iter (tpath);
+-	return iter ? iter->get_value (cols.property) : false;
++	return iter ? iter->get_value (cols.property) : NULL;
+ }
+ 
+ 

@@ -1,0 +1,29 @@
+From c3c412f90e481b88ca897e8542ced207c445c757 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 22 Sep 2016 09:59:04 -0400
+Subject: [PATCH 3/6] build-sys: add doc-sync target
+
+---
+ Makefile | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index df0555c..23b452e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -53,7 +53,11 @@ sphinx-%: build
+ check: build
+ 	(cd $(builddir) && $(PYTHON) -m py.test . ../../docs $(TESTFLAGS))
+ 
++www_target = www.freedesktop.org:/srv/www.freedesktop.org/www/software/systemd/python-systemd
++doc-sync:
++	rsync -rlv --delete --omit-dir-times build/html/ $(www_target)/
++
+ TAGS: $(shell git ls-files systemd/*.[ch])
+ 	$(ETAGS) $+
+ 
+-.PHONY: build install dist clean distclean TAGS
++.PHONY: build install dist clean distclean TAGS doc-sync
+-- 
+2.10.0
+

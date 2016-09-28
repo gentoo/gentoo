@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples extra"
 
 RDEPEND="
+	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=

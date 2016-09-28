@@ -14,12 +14,12 @@ LICENSE="LGPL-2.1+"
 SLOT="0/22" # subslot = libgdata soname version
 
 IUSE="+crypt gnome-online-accounts +introspection static-libs test vala"
-REQUIRED_IUSE="
+REQUIRED_USE="
 	gnome-online-accounts? ( crypt )
 	vala? ( introspection )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # configure checks for gtk:3, but only uses it for demos which are not installed
 RDEPEND="

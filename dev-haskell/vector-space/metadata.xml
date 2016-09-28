@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		/vector-space/ provides classes and generic operations for vector
+		spaces and affine spaces.  It also defines a type of infinite towers
+		of generalized derivatives.  A generalized derivative is a linear
+		transformation rather than one of the common concrete representations
+		(scalars, vectors, matrices, ...).
+		
+		/Warning/: this package depends on type families working fairly well,
+		and requires ghc version at least 6.9.
+		
+		Project wiki page: &lt;http://haskell.org/haskellwiki/vector-space&gt;
+		
+		&amp;#169; 2008-2012 by Conal Elliott; BSD3 license.
+	</longdescription>
+</pkgmetadata>

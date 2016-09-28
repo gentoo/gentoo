@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.93-latin-update.patch # 130466 + make liberation default
 )
 
-MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache )
+MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
 
 pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using

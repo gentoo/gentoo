@@ -817,11 +817,29 @@ mysql-multilib-r1_pkg_config() {
 	local maxtry=15
 
 	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
-		MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval 'client mysql' password)"
+		local tmp_mysqld_password_source=
+
+		for tmp_mysqld_password_source in mysql client; do
+			einfo "Trying to get password for mysql 'root' user from '${tmp_mysqld_password_source}' section ..."
+			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval "${tmp_mysqld_password_source}" password)"
+			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]]; then
+				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]]; then
+					ewarn "Ignoring password from '${tmp_mysqld_password_source}' section due to newline character (do you have multiple password options set?)!"
+					MYSQL_ROOT_PASSWORD=
+					continue
+				fi
+
+				einfo "Found password in '${tmp_mysqld_password_source}' section!"
+				break
+			fi
+		done
+
 		# Sometimes --show is required to display passwords in some implementations of my_print_defaults
 		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]]; then
-			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval 'client mysql' password --show)"
+			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval "${tmp_mysqld_password_source}" password --show)"
 		fi
+
+		unset tmp_mysqld_password_source
 	fi
 	MYSQL_TMPDIR="$(mysql-multilib-r1_getoptval mysqld tmpdir)"
 	# These are dir+prefix
@@ -918,7 +936,7 @@ mysql-multilib-r1_pkg_config() {
 
 	local cmd
 	local initialize_options
-        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && mysql_version_is_at_least "5.7.6" ; then
+        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && version_is_at_least "5.7.6" ; then
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
 		cmd="${EROOT}usr/sbin/mysqld"

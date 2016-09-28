@@ -1,0 +1,26 @@
+From 7eac42b467723a83a951218be53785411be3dbc4 Mon Sep 17 00:00:00 2001
+From: jgmbenoit <quatermaster@rezozer.net>
+Date: Thu, 28 Apr 2016 05:47:53 +0000
+Subject: [PATCH] automake: install-data-local: missing DESTDIR prefix
+
+---
+ Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 32778f7..24dd251 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,9 +17,9 @@ dist-hook:
+ 	$(srcdir)/git-version-gen $(srcdir)/.tarball-git-version > $(distdir)/.tarball-git-version
+ 
+ install-data-local:
+-	-cat ${top_srcdir}/doc/doc.tbz2| (cd $(datadir)/singular;tar jxf -)
+-	-mkdir $(datadir)/info
+-	-mv  $(datadir)/singular/singular.hlp  $(datadir)/info/.
++	-cat ${top_srcdir}/doc/doc.tbz2| (cd $(DESTDIR)$(datadir)/singular; tar jxf -)
++	-mkdir $(DESTDIR)$(datadir)/info
++	-mv  $(DESTDIR)$(datadir)/singular/singular.hlp  $(DESTDIR)$(datadir)/info/.
+ 
+ configheaderdir = ${includedir}/singular
+ nodist_configheader_HEADERS = singularconfig.h

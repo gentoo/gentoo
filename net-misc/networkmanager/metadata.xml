@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
@@ -13,16 +13,19 @@
 		<flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for
 			getting ip</flag>
 		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting ip</flag>
+		<flag name="json">Enable JSON validation via <pkg>dev-libs/jansson</pkg>
+			in libnm.</flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices
 			using <pkg>net-misc/modemmanager</pkg></flag>
 		<flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
+		<flag name="ofono">Use <pkg>net-misc/ofono</pkg> for telephony support.</flag>
 		<flag name="ppp">Enable support for mobile broadband and PPPoE
 			connections using <pkg>net-dialup/ppp</pkg></flag>
 		<flag name="resolvconf">Use <pkg>net-dns/openresolv</pkg> for managing
 			DNS information</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
 		<flag name="wifi">Enable support for wifi and 802.1x security using
-		    <pkg>net-wireless/wpa_supplicant</pkg></flag>
+			<pkg>net-wireless/wpa_supplicant</pkg></flag>
 		<flag name="wext">Enable support for the deprecated Wext (Wireless
 			Extensions) API; needed for some older drivers (e.g. ipw2200,
 			ndiswrapper)</flag>

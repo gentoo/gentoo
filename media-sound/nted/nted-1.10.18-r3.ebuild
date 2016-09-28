@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-lilypond-tremolo.patch" # bug #437540
 	"${FILESDIR}/${P}-automake-1.12.patch" # bug #459466
 	"${FILESDIR}/${P}-freetype.patch" # bug #514522
+	"${FILESDIR}/${P}-cpp14.patch" # bug #594056
 )
 
 src_prepare() {

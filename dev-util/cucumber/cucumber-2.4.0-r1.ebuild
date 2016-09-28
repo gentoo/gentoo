@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""

@@ -12,7 +12,7 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 libressl p2p ps3 qt4 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="fasteap? ( !gnutls !ssl ) smartcard? ( ssl ) ?? ( qt4 qt5 )"
 
@@ -36,10 +36,10 @@ CDEPEND="dbus? ( sys-apps/dbus )
 	)
 	readline? (
 		sys-libs/ncurses:0=
-		sys-libs/readline:0
+		sys-libs/readline:0=
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
 	!ssl? (

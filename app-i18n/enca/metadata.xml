@@ -3,15 +3,17 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>itumaykin+gentoo@gmail.com</email>
-		<description>Proxy maintainer</description>
 		<name>Coacher</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">nijel/enca</remote-id>
+	</upstream>
 </pkgmetadata>

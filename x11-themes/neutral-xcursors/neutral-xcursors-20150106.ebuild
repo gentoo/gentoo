@@ -39,7 +39,7 @@ SRC_URI="
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="x11-apps/xcursorgen"
@@ -55,6 +55,7 @@ src_prepare() {
 }
 
 src_compile() {
+	local cursor_dir
 	for cursor_dir in ${NEUTRAL_P} ${PLUS_P} ${PLUSPLUS_P} ${WHITE_P}; do
 		pushd ${cursor_dir}/source > /dev/null || die
 			sh make.sh || die

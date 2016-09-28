@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Feat (Functional Enumeration of Abstract Types) provides
+		enumerations as functions from natural numbers to values
+		(similar to @toEnum@ but for any algebraic data type). This
+		can be used for SmallCheck-style systematic testing,
+		QuickCheck style random testing, and hybrids of the two.
+		
+		The enumerators are defined in a very boilerplate manner
+		and there is a Template Haskell script for deriving the
+		class instance for most types.
+		"Test.Feat" contain a subset of the other modules that
+		should be sufficient for most test usage. There
+		are some small and large example in the tar
+		ball.
+	</longdescription>
+</pkgmetadata>

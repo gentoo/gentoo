@@ -13,7 +13,7 @@ SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
+KEYWORDS="amd64 ~arm ~m68k ~mips ~s390 ~sh x86"
 IUSE="caps systemd tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )
@@ -28,7 +28,6 @@ RESTRICT="test"
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.17-version-deps.patch"
 	"${FILESDIR}/${PN}-1.18-version-deps.patch"
 	"${FILESDIR}/${PN}-1.18-systemd-generator.patch"
 )

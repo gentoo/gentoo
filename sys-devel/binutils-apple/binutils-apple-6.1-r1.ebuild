@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -34,30 +34,11 @@ DEPEND="${RDEPEND}
 	|| ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm )
 	libcxx? ( sys-devel/llvm )"
 
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
-	fi
-fi
-is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
-
-if is_cross ; then
-	SLOT="${CTARGET}-6"
-else
-	SLOT="6"
-fi
-
-LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
-INCPATH=${LIBPATH}/include
-DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
-if is_cross ; then
-	BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
-else
-	BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
-fi
+SLOT="6"
 
 S=${WORKDIR}
+
+is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
 src_prepare() {
 	if use multitarget ; then
@@ -201,6 +182,22 @@ src_prepare() {
 src_configure() {
 	ENABLE_LTO=0
 	use lto && ENABLE_LTO=1
+
+	export CTARGET=${CTARGET:-${CHOST}}
+	if [[ ${CTARGET} == ${CHOST} ]] ; then
+		if [[ ${CATEGORY} == cross-* ]] ; then
+			export CTARGET=${CATEGORY#cross-}
+		fi
+	fi
+
+	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
+	INCPATH=${LIBPATH}/include
+	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
+	if is_cross ; then
+		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
+	else
+		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
+	fi
 
 	if [ "${CXX/*clang*/yes}" = "yes" ] ; then
 		if use libcxx ; then

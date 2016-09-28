@@ -1,12 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-GCONF_DEBUG=no
+EAPI=6
 inherit gnome2
 
-MY_P=${PN/gnome-}-${PV}
+MY_P="${PN/gnome-}-${PV}"
 
 DESCRIPTION="A lightweight and fast raw image thumbnailer for GNOME"
 HOMEPAGE="https://libopenraw.freedesktop.org/wiki/RawThumbnailer"
@@ -17,17 +16,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=media-libs/libopenraw-0.0.9[gtk]
-	>=x11-libs/gdk-pixbuf-2
-	>=dev-libs/glib-2.26
-	!media-gfx/raw-thumbnailer"
+RDEPEND="
+	>=media-libs/libopenraw-0.0.9[gtk]
+	>=x11-libs/gdk-pixbuf-2:2
+	>=dev-libs/glib-2.26:2
+	!media-gfx/raw-thumbnailer
+"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 
-S=${WORKDIR}/${MY_P}
-
-pkg_setup() {
-	DOCS="AUTHORS ChangeLog NEWS"
-}
+S="${WORKDIR}/${MY_P}"

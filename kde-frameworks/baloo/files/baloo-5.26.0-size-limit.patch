@@ -1,0 +1,118 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 11 Sep 2016 16:54:58 +0000
+Subject: Increase size limit of baloo index for 64-bit machines
+X-Git-Url: http://quickgit.kde.org/?p=baloo.git&a=commitdiff&h=b0890aca71aa4f0fdabe65ee7b7fbd0bc844d8b8
+---
+Increase size limit of baloo index for 64-bit machines
+
+CHANGELOG: On 64-bit systems baloo allows now > 5 GB index storage.
+
+Increase size limit of baloo index for 64-bit machines to avoid crashs after > 5GB of index size.
+(Better would be additional out-of-space handling, but ATM baloo has zero checks for that)
+
+The size limit for 32-bit is still 1GB, like before (there was a silent overflow from 5GB to 1GB in the computation), people with large homes will still get random segfaults on 32-bit.
+
+Patch based on patch from Hao Zhang, Bug 364475
+
+REVIEW: 128885
+BUG: 364475
+---
+
+
+--- a/src/engine/database.cpp
++++ b/src/engine/database.cpp
+@@ -93,8 +93,18 @@
+         return false;
+     }
+ 
++    /**
++     * maximal number of allowed named databases, must match number of databases we create below
++     * each additional one leads to overhead
++     */
+     mdb_env_set_maxdbs(m_env, 12);
+-    mdb_env_set_mapsize(m_env, static_cast<size_t>(1024) * 1024 * 1024 * 5); // 5 gb
++
++    /**
++     * size limit for database == size limit of mmap
++     * use 1 GB on 32-bit, use 256 GB on 64-bit
++     */
++    const size_t maximalSizeInBytes = size_t((sizeof(size_t) == 4) ? 1 : 256) * size_t(1024) * size_t(1024) * size_t(1024);
++    mdb_env_set_mapsize(m_env, maximalSizeInBytes);
+ 
+     // The directory needs to be created before opening the environment
+     QByteArray arr = QFile::encodeName(indexInfo.absoluteFilePath());
+
+--- a/src/engine/databasesize.h
++++ b/src/engine/databasesize.h
+@@ -31,30 +31,30 @@
+      * This is the size which is computed with all the pages used from all the
+      * individual database pages
+      */
+-    uint expectedSize;
++    size_t expectedSize;
+ 
+     /**
+      * This is the size based on the MDB_env and the total number of pages used
+      */
+-    uint actualSize;
++    size_t actualSize;
+ 
+-    uint postingDb;
+-    uint positionDb;
++    size_t postingDb;
++    size_t positionDb;
+ 
+-    uint docTerms;
+-    uint docFilenameTerms;
+-    uint docXattrTerms;
++    size_t docTerms;
++    size_t docFilenameTerms;
++    size_t docXattrTerms;
+ 
+-    uint idTree;
+-    uint idFilename;
++    size_t idTree;
++    size_t idFilename;
+ 
+-    uint docTime;
+-    uint docData;
++    size_t docTime;
++    size_t docData;
+ 
+-    uint contentIndexingIds;
+-    uint failedIds;
++    size_t contentIndexingIds;
++    size_t failedIds;
+ 
+-    uint mtimeDb;
++    size_t mtimeDb;
+ };
+ 
+ }
+
+--- a/src/engine/transaction.cpp
++++ b/src/engine/transaction.cpp
+@@ -402,7 +402,7 @@
+ //
+ // File Size
+ //
+-static uint dbiSize(MDB_txn* txn, MDB_dbi dbi)
++static size_t dbiSize(MDB_txn* txn, MDB_dbi dbi)
+ {
+     MDB_stat stat;
+     mdb_stat(txn, dbi, &stat);
+
+--- a/src/tools/balooctl/statuscommand.cpp
++++ b/src/tools/balooctl/statuscommand.cpp
+@@ -92,8 +92,8 @@
+ 
+         const QString path = fileIndexDbPath();
+ 
+-        QFileInfo indexInfo(path + QLatin1String("/index"));
+-        quint32 size = indexInfo.size();
++        const QFileInfo indexInfo(path + QLatin1String("/index"));
++        const auto size = indexInfo.size();
+         KFormat format(QLocale::system());
+         if (size) {
+             out << "Current size of index is " << format.formatByteSize(size, 2) << endl;
+
