@@ -62,10 +62,8 @@ pkg_setup() {
 	# REQUIRED_USE above guarantees that ${DB_COUNT} cannot be zero
 	#if [[ ${DB_COUNT} -eq 0 ]]; then
 	#	eerror
-	#	eerror "\033[1;31m**************************************************\033[00m"
 	#	eerror "No database selected in your USE flags,"
 	#	eerror "You must select at least one."
-	#	eerror "\033[1;31m**************************************************\033[00m"
 	#	eerror
 	#	die
 	#fi
@@ -73,10 +71,8 @@ pkg_setup() {
 	if [[ ${DB_COUNT} -gt 1 ]]; then
 		MYDB=""
 		ewarn
-		ewarn "\033[1;33m**************************************************\033[00m"
 		ewarn "Multiple databases selected in your USE flags,"
 		ewarn "You will have to choose your database manually."
-		ewarn "\033[1;33m**************************************************\033[00m"
 		ewarn
 	fi
 }
@@ -117,12 +113,10 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "\033[1;32m**************************************************\033[00m"
 	einfo
 	einfo "To see the post install instructions, do"
 	einfo
 	einfo "    webapp-config --show-postinst ${PN} ${PVR}"
 	einfo
-	einfo "\033[1;32m**************************************************\033[00m"
 	einfo
 }
