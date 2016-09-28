@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils pam readme.gentoo-r1 systemd versionator
+inherit autotools eutils pam readme.gentoo-r1 systemd versionator xdg-utils
 
 TRUNK_VERSION="$(get_version_component_range 1-2)"
 DESCRIPTION="A lightweight display manager"
@@ -50,6 +50,8 @@ DOCS=( NEWS )
 RESTRICT="test"
 
 src_prepare() {
+	xdg_environment_reset
+
 	sed -i -e 's:getgroups:lightdm_&:' tests/src/libsystem.c || die #412369
 	sed -i -e '/minimum-uid/s:500:1000:' data/users.conf || die
 
