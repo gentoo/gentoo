@@ -1,0 +1,27 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Tue, 06 Sep 2016 20:47:41 +0000
+Subject: fix eol setting in mode lines
+X-Git-Url: http://quickgit.kde.org/?p=ktexteditor.git&a=commitdiff&h=07b003e5a87b44d4618204bbcff257c59a446025
+---
+fix eol setting in mode lines
+turn off auto-detection if set
+BUG: 365705
+---
+
+
+--- a/src/document/katedocument.cpp
++++ b/src/document/katedocument.cpp
+@@ -4578,7 +4578,12 @@
+                 QStringList l;
+                 l << QStringLiteral("unix") << QStringLiteral("dos") << QStringLiteral("mac");
+                 if ((n = l.indexOf(val.toLower())) != -1) {
++                    /**
++                     * set eol + avoid that it is overwritten by auto-detection again!
++                     * this fixes e.g. .kateconfig files with // kate: eol dos; to work, bug 365705
++                     */
+                     m_config->setEol(n);
++                    m_config->setAllowEolDetection(false);
+                 }
+             } else if (var == QLatin1String("bom") || var == QLatin1String("byte-order-marker")) {
+                 if (checkBoolValue(val, &state)) {
+

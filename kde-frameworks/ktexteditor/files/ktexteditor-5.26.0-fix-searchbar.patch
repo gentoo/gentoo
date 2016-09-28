@@ -1,0 +1,58 @@
+From: Roman Gilg <subdiff@gmail.com>
+Date: Thu, 08 Sep 2016 10:51:51 +0000
+Subject: KateNormalInputMode needs to rerun SearchBar enter methods
+X-Git-Url: http://quickgit.kde.org/?p=ktexteditor.git&a=commitdiff&h=2c4feeb0c9107732399f8ae3dacea3124572f345
+---
+KateNormalInputMode needs to rerun SearchBar enter methods
+
+This is a fix for a regression resulting from commit
+9223ac51c9453017c9b11718eed858050697cfbd.
+
+REVIEW: 128859
+---
+
+
+--- a/src/inputmode/katenormalinputmode.cpp
++++ b/src/inputmode/katenormalinputmode.cpp
+@@ -184,7 +184,7 @@
+     const bool wantPowerMode = (mode == PowerSearchBar);
+ 
+     /**
+-     * create search bar as not there? use right mode
++     * create search bar is not there? use right mode
+      */
+     if (!m_searchBar) {
+         m_searchBar = new KateSearchBar(wantPowerMode, view(), KateViewConfig::global());
+@@ -193,11 +193,12 @@
+     /**
+      * else: switch mode if needed!
+      */
+-    else if ((mode != IncrementalSearchBarOrKeepMode) && (wantPowerMode != m_searchBar->isPower())) {
+-        if (wantPowerMode)
++    else if (mode != IncrementalSearchBarOrKeepMode) {
++        if (wantPowerMode) {
+             m_searchBar->enterPowerMode();
+-        else
++        } else {
+             m_searchBar->enterIncrementalMode();
++        }
+     }
+ 
+     return m_searchBar;
+
+--- a/src/inputmode/katenormalinputmode.h
++++ b/src/inputmode/katenormalinputmode.h
+@@ -78,9 +78,9 @@
+ private:
+     /**
+      * Search bar mode:
+-     *   - Incremental mode
+-     *   - Power mode, aka find & replace
+-     *   - Incremental mode, but don't change mode if already there
++     *   - Setup Incremental mode, among other things: potential new search pattern
++     *   - Setup Power mode, aka find & replace: Also potential new search pattern
++     *   - Use current mode and current search pattern or if no Search bar exists, launch Incremental mode
+      */
+     enum SearchBarMode {
+         IncrementalSearchBar,
+
