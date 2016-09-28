@@ -27,7 +27,7 @@ RDEPEND=">=sci-libs/fftw-3.3.4:3.0=
 	portaudio? ( media-libs/portaudio )"
 
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools"
+	dev-qt/linguist-tools:5"
 
 src_prepare() {
 	# Fix the path to readme file to prevent errors on start up
