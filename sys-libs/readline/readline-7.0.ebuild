@@ -151,3 +151,12 @@ multilib_src_install_all() {
 	docinto ps
 	dodoc doc/*.ps
 }
+pkg_preinst() {
+	# bug #29865
+	# Reappeared in #595324 with paludis so keeping this for now...
+	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5,6}
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5,6}
+}
