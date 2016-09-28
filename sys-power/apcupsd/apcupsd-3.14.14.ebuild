@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils linux-info flag-o-matic systemd udev
 
@@ -17,7 +17,6 @@ IUSE="snmp +usb cgi nls gnome kernel_linux"
 
 DEPEND="
 	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
-		  <=sys-apps/sysvinit-2.88-r4
 		  sys-freebsd/freebsd-ubin
 		)
 	cgi? ( >=media-libs/gd-1.8.4 )
@@ -27,7 +26,6 @@ DEPEND="
 		dev-libs/glib:2
 		>=gnome-base/gconf-2.0 )"
 RDEPEND="${DEPEND}
-	sys-apps/openrc
 	virtual/mailx"
 
 CONFIG_CHECK="~USB_HIDDEV ~HIDRAW"
@@ -65,7 +63,7 @@ src_configure() {
 		--with-nis-port=3551 \
 		--enable-net --enable-pcnet \
 		--with-distname=gentoo \
-		$(use_enable snmp net-snmp) \
+		$(use_enable snmp) \
 		$(use_enable gnome gapcmon) \
 		${myconf} \
 		APCUPSD_MAIL=/bin/mail
@@ -76,12 +74,12 @@ src_compile() {
 	# the text files in the distribution, but I wouldn't count on them
 	# doing that anytime soon.
 	MANPAGER=$(type -p cat) \
-		emake || die "emake failed"
+		emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "installed failed"
-	rm -f "${D}"/etc/init.d/halt
+	emake DESTDIR="${D}" install
+	rm -f "${D}"/etc/init.d/halt || die
 
 	insinto /etc/apcupsd
 	newins examples/safe.apccontrol safe.apccontrol
@@ -92,7 +90,7 @@ src_install() {
 
 	dohtml -r doc/manual/*
 
-	rm "${D}"/etc/init.d/apcupsd
+	rm "${D}"/etc/init.d/apcupsd || die
 	newinitd "${FILESDIR}/${PN}.init.4" "${PN}"
 	newinitd "${FILESDIR}/${PN}.powerfail.init" "${PN}".powerfail
 
@@ -100,7 +98,7 @@ src_install() {
 	systemd_dotmpfilesd "${FILESDIR}"/${PN}-tmpfiles.conf
 
 	# remove hal settings, we don't really want to have it around still.
-	rm -r "${D}"/usr/share/hal
+	rm -r "${D}"/usr/share/hal || die
 
 	# replace it with our udev rules if we're in Linux
 	if use kernel_linux; then
