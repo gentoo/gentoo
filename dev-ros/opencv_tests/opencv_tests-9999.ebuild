@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
-	media-libs/opencv[python,python_single_target_python2_7]
+	media-libs/opencv[python,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
