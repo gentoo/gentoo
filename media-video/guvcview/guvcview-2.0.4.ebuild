@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils qmake-utils
+inherit autotools eutils flag-o-matic qmake-utils
 
 MY_P=${PN}-src-${PV}
 
@@ -48,6 +48,7 @@ src_prepare() {
 
 src_configure() {
 	export MOC="$(qt5_get_bindir)/moc"
+	use qt5 && append-cxxflags -std=c++11
 	econf \
 		--disable-debian-menu \
 		$(use_enable gsl) \
