@@ -21,6 +21,7 @@ Its event-driven architecture allows it to easily handle thousands of simultaneo
 	<use>
 		<flag name="net_ns">Enable network namespace support (CONFIG_NET_NS)</flag>
 		<flag name="pcre-jit">Use JIT support for PCRE</flag>
+		<flag name="slz">Use <pkg>dev-libs/libslz</pkg> compression library</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
 	</use>
 </pkgmetadata>
