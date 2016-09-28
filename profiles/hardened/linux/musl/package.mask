@@ -3,6 +3,7 @@
 # $Id$
 
 sys-libs/uclibc
+sys-libs/uclibc-ng
 sys-libs/glibc
 
 # Hopelessly broken, bug #525136
