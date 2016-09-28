@@ -123,8 +123,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	einfo "\033[1;32m**************************************************\033[00m"
-
 	# We make use of the fact that later flags override earlier ones
 	# So start with all ssl providers off until proven otherwise
 	local myconf=()
@@ -161,7 +159,6 @@ multilib_src_configure() {
 	else
 		einfo "SSL disabled"
 	fi
-	einfo "\033[1;32m**************************************************\033[00m"
 
 	# These configuration options are organized alphabetically
 	# within each category.  This should make it easier if we
