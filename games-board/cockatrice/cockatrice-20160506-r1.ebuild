@@ -20,10 +20,10 @@ IUSE="dedicated server"
 DEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf
-	dev-qt/linguist-tools
-	dev-qt/qtconcurrent
+	dev-qt/linguist-tools:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtprintsupport
+	dev-qt/qtprintsupport:5
 	!dedicated? (
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5

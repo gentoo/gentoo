@@ -18,7 +18,7 @@ RDEPEND="dev-qt/qtwebkit:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtdbus:5
 	dev-qt/qttest:5
-	dev-qt/qtnetwork[ssl]
+	dev-qt/qtnetwork:5[ssl]
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/gdal
 	sci-libs/proj"
