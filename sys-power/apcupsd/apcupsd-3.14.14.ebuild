@@ -74,12 +74,12 @@ src_compile() {
 	# the text files in the distribution, but I wouldn't count on them
 	# doing that anytime soon.
 	MANPAGER=$(type -p cat) \
-		emake || die "emake failed"
+		emake
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm -f "${D}"/etc/init.d/halt
+	rm -f "${D}"/etc/init.d/halt || die
 
 	insinto /etc/apcupsd
 	newins examples/safe.apccontrol safe.apccontrol
@@ -90,7 +90,7 @@ src_install() {
 
 	dohtml -r doc/manual/*
 
-	rm "${D}"/etc/init.d/apcupsd
+	rm "${D}"/etc/init.d/apcupsd || die
 	newinitd "${FILESDIR}/${PN}.init.4" "${PN}"
 	newinitd "${FILESDIR}/${PN}.powerfail.init" "${PN}".powerfail
 
@@ -98,7 +98,7 @@ src_install() {
 	systemd_dotmpfilesd "${FILESDIR}"/${PN}-tmpfiles.conf
 
 	# remove hal settings, we don't really want to have it around still.
-	rm -r "${D}"/usr/share/hal
+	rm -r "${D}"/usr/share/hal || die
 
 	# replace it with our udev rules if we're in Linux
 	if use kernel_linux; then
