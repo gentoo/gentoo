@@ -1980,6 +1980,7 @@ dev-libs/libsecp256k1:endomorphism - Enable endomorphism
 dev-libs/libsecp256k1:experimental - Allow experimental USE flags
 dev-libs/libsecp256k1:recovery - Enable ECDSA pubkey recovery module
 dev-libs/libsecp256k1:schnorr - Enable Schnorr signature module
+dev-libs/libslz:tools - Install additional tools (zenc, zdec)
 dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libsolv:rpm - Enable support for RPM files
@@ -6508,6 +6509,7 @@ net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic P
 net-print/magicfilter:lprng-failsafe - Refuse options for compability with certain LPRng versions.
 net-proxy/haproxy:net_ns - Enable network namespace support (CONFIG_NET_NS)
 net-proxy/haproxy:pcre-jit - Use JIT support for PCRE
+net-proxy/haproxy:slz - Use dev-libs/libslz compression library
 net-proxy/haproxy:tools - Install additional tools (halog, iprange)
 net-proxy/privoxy:editor - Enable the web-based actions file editor
 net-proxy/privoxy:external-filters - Allow to filter content with scripts and programs. Experimental
