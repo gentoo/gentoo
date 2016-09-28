@@ -615,6 +615,7 @@ dev-ruby/metasploit-model:1.0
 ~dev-qt/qtxmlpatterns-5.7.0
 =dev-qt/qt-docs-5.7*
 >=kde-apps/minuet-16.08.0
+>=media-sound/drumstick-1.1.0
 
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
