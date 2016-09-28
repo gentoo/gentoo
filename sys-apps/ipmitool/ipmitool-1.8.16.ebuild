@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
 LICENSE="BSD"
 
-RDEPEND="dev-libs/openssl:0="
+RDEPEND="dev-libs/openssl:0=
+	sys-libs/readline:0="
 DEPEND="${RDEPEND}
 		openipmi? ( sys-libs/openipmi )
 		virtual/os-headers"
