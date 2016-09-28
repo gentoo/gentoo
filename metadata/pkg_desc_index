@@ -13164,7 +13164,7 @@ media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
 media-plugins/vdr-span 0.0.7: VDR plugin: Spectrum Analyzer (SpAn)
 media-plugins/vdr-spider 0.2.2: VDR plugin: Spider patience game
 media-plugins/vdr-streamdev 0.6.1 0.6.1_p20160320: VDR Plugin: Client/Server and http streaming plugin
-media-plugins/vdr-sudoku 0.3.5: VDR plugin: to generate and solve Number Place puzzles, so called Sudokus
+media-plugins/vdr-sudoku 0.3.5 0.3.5-r1: VDR plugin: to generate and solve Number Place puzzles, so called Sudokus
 media-plugins/vdr-suspendoutput 2.0.1: VDR Plugin: Show still image instead of live tv to safe cpu
 media-plugins/vdr-svdrposd 1.0.0: VDR plugin: export OSD via TCP to vdr-remoteosd
 media-plugins/vdr-svdrpservice 1.0.0: VDR Plugin: offers SVDRP connections as a service to other plugins
