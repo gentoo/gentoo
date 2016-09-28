@@ -21,9 +21,9 @@ DEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf
 	dev-qt/qtcore:5
-	dev-qt/qtconcurrent
-	dev-qt/linguist-tools
-	dev-qt/qtprintsupport
+	dev-qt/qtconcurrent:5
+	dev-qt/linguist-tools:5
+	dev-qt/qtprintsupport:5
 	!dedicated? (
 		dev-qt/qtmultimedia:5
 		dev-qt/qtsvg:5
