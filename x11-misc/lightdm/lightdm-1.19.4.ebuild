@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils pam readme.gentoo-r1 systemd versionator xdg-utils
+inherit autotools eutils pam qmake-utils readme.gentoo-r1 systemd versionator xdg-utils
 
 TRUNK_VERSION="$(get_version_component_range 1-2)"
 DESCRIPTION="A lightweight display manager"
@@ -59,6 +59,10 @@ src_prepare() {
 	sed -i -e \
 		"/session-wrapper/s@^.*@session-wrapper=/etc/${PN}/Xsession@" \
 		data/lightdm.conf || die "Failed to fix lightdm.conf"
+
+	# use correct version of qmake. bug #566950
+	sed -i -e "/AC_CHECK_TOOLS(MOC4/a AC_SUBST(MOC4,$(qt4_get_bindir)/moc)" configure.ac || die
+	sed -i -e "/AC_CHECK_TOOLS(MOC5/a AC_SUBST(MOC5,$(qt5_get_bindir)/moc)" configure.ac || die
 
 	default
 
