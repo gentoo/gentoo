@@ -1,0 +1,20 @@
+commit 1cc82e71749a907f9345a9b969d3d1e124ed9753
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed Aug 17 17:58:17 2016 +0200
+
+    liblegacytaskmanager: Drop unused X11_Xcomposite
+
+diff --git a/liblegacytaskmanager/CMakeLists.txt b/liblegacytaskmanager/CMakeLists.txt
+index dab11b3..f13880b 100644
+--- a/liblegacytaskmanager/CMakeLists.txt
++++ b/liblegacytaskmanager/CMakeLists.txt
+@@ -65,9 +65,6 @@ if (X11_FOUND)
+     if (X11_Xrender_FOUND)
+     target_link_libraries(legacytaskmanager PRIVATE ${X11_Xrender_LIB})
+     endif ()
+-    if (X11_Xcomposite_FOUND)
+-    target_link_libraries(legacytaskmanager PRIVATE ${X11_Xcomposite_LIB})
+-    endif ()
+ endif()
+ 
+ set_target_properties(legacytaskmanager PROPERTIES

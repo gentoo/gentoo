@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils systemd user python-any-r1
@@ -21,21 +21,13 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	srv? ( net-dns/c-ares )"
 
-LIBDIR=$(get_libdir)
-QA_PRESTRIPPED="/usr/sbin/mosquitto
-	/usr/bin/mosquitto_passwd
-	/usr/bin/mosquitto_sub
-	/usr/bin/mosquitto_pub
-	/usr/${LIBDIR}/libmosquittopp.so.1
-	/usr/${LIBDIR}/libmosquitto.so.1"
-
 pkg_setup() {
 	enewgroup mosquitto
 	enewuser mosquitto -1 -1 -1 mosquitto
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.4.9-conditional-tests.patch"
+	epatch "${FILESDIR}/${P}-conditional-tests.patch"
 	if use persistence; then
 		sed -i -e "s:^#autosave_interval:autosave_interval:" \
 			-e "s:^#persistence false$:persistence true:" \
@@ -48,6 +40,14 @@ src_prepare() {
 }
 
 src_configure() {
+	LIBDIR=$(get_libdir)
+	QA_PRESTRIPPED="/usr/sbin/mosquitto
+		/usr/bin/mosquitto_passwd
+		/usr/bin/mosquitto_sub
+		/usr/bin/mosquitto_pub
+		/usr/${LIBDIR}/libmosquittopp.so.1
+		/usr/${LIBDIR}/libmosquitto.so.1"
+
 	makeopts=(
 		"LIB_SUFFIX=${LIBDIR:3}"
 		"WITH_BRIDGE=$(usex bridge)"
@@ -56,7 +56,6 @@ src_configure() {
 		"WITH_TLS=$(usex ssl)"
 		"WITH_WRAP=$(usex tcpd)"
 	)
-	einfo "${makeopts[@]}"
 }
 
 src_compile() {

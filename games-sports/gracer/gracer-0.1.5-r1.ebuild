@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="3D motor sports simulator"
 HOMEPAGE="http://gracer.sourceforge.net/"
