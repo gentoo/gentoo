@@ -1,0 +1,16 @@
+still use function typeof,
+this was never defined part of c++ and is
+not supported in c++11 anymore
+so we revert back to gnu++03 as it is not fixed by upstream
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/sep/28)
+diff -Naur rssreader-2.2.1.orig/Makefile rssreader-2.2.1/Makefile
+--- rssreader-2.2.1.orig/Makefile	2016-09-28 11:49:11.239051376 +0200
++++ rssreader-2.2.1/Makefile	2016-09-28 11:49:55.982051376 +0200
+@@ -28,6 +28,7 @@
+ 
+ export CFLAGS   = $(call PKGCFG,cflags)
+ export CXXFLAGS = $(call PKGCFG,cxxflags)
++export CXXFLAGS += -std=gnu++03
+ STRIP           ?= /bin/true
+ 
+ ### The version number of VDR's plugin API:
