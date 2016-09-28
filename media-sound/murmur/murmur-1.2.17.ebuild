@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils qmake-utils systemd user readme.gentoo-r1
 
-MY_P="${PN/murmur/mumble}-${PV/_/~}"
+MY_P="mumble-${PV/_/~}"
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="http://mumble.sourceforge.net/"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND=">=dev-libs/openssl-1.0.0b:0=
-	>=dev-libs/protobuf-2.2.0
+	>=dev-libs/protobuf-2.2.0:=
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dev-qt/qtcore:4[ssl]
@@ -116,6 +116,11 @@ src_install() {
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
 	fperms 750 /var/lib/murmur /var/log/murmur
+
+	# Fix permissions on config file as it might contain passwords.
+	# (bug #559362)
+	fowners root:murmur /etc/murmur/murmur.ini
+	fperms 640 /etc/murmur/murmur.ini
 
 	doman man/murmurd.1
 

@@ -12,10 +12,10 @@ PARCH=${P/_}
 HPN_PV="${PV}"
 HPN_VER="14.10"
 
-HPN_PATCH="${PN}-${HPN_PV}-hpn-14.10.patch"
+HPN_PATCH="${PN}-${HPN_PV}-hpn-14.10-r1.patch"
 SCTP_PATCH="${PN}-7.3_p1-sctp.patch.xz"
 LDAP_PATCH="${PN}-lpk-7.3p1-0.3.14.patch.xz"
-X509_VER="9.1" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
+X509_VER="9.2" X509_PATCH="${PN}-${PV/_}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
@@ -122,13 +122,18 @@ src_prepare() {
 		pushd .. >/dev/null
 		if use hpn ; then
 			pushd "${WORKDIR}" >/dev/null
-			epatch "${FILESDIR}"/${P}-hpn-x509-glue.patch
+			epatch "${FILESDIR}"/${P}-hpn-x509-9.2-glue.patch
 			popd >/dev/null
 		fi
 		epatch "${FILESDIR}"/${PN}-7.3_p1-sctp-x509-glue.patch
+		sed -i 's:PKIX_VERSION:SSH_X509:g' "${WORKDIR}"/${X509_PATCH%.*} || die
 		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
+		epatch "${FILESDIR}"/${P}-x509-9.2-warnings.patch
 		save_version X509
+	else
+		# bug #592122, fixed by X509 patch
+		epatch "${FILESDIR}"/${P}-fix-ssh1-with-no-ssh1-host-key.patch
 	fi
 	if use ldap ; then
 		epatch "${WORKDIR}"/${LDAP_PATCH%.*}
@@ -162,6 +167,14 @@ src_prepare() {
 		-e '/OSSH_CHECK_CFLAG_LINK.*-ftrapv/d'
 	)
 	sed -i "${sed_args[@]}" configure{.ac,} || die
+
+	# 7.3 added seccomp support to MIPS, but failed to handled the N32
+	# case.  This patch is temporary until upstream fixes.  See
+	# Gentoo bug #591392 or upstream #2590.
+	[[ ${CHOST} == mips64*-linux-* && ${ABI} == "n32" ]] \
+		&& epatch "${FILESDIR}"/${PN}-7.3-mips-seccomp-n32.patch
+
+	epatch "${FILESDIR}"/${P}-NEWKEYS_null_deref.patch # 595342
 
 	epatch_user #473004
 
