@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils pam readme.gentoo-r1 systemd versionator
+inherit autotools eutils flag-o-matic pam qmake-utils readme.gentoo-r1 systemd versionator xdg-utils
 
 TRUNK_VERSION="$(get_version_component_range 1-2)"
 DESCRIPTION="A lightweight display manager"
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
 REQUIRED_USE="|| ( gtk kde )"
 
@@ -50,6 +50,8 @@ DOCS=( NEWS )
 RESTRICT="test"
 
 src_prepare() {
+	xdg_environment_reset
+
 	sed -i -e 's:getgroups:lightdm_&:' tests/src/libsystem.c || die #412369
 	sed -i -e '/minimum-uid/s:500:1000:' data/users.conf || die
 
@@ -57,6 +59,10 @@ src_prepare() {
 	sed -i -e \
 		"/session-wrapper/s@^.*@session-wrapper=/etc/${PN}/Xsession@" \
 		data/lightdm.conf || die "Failed to fix lightdm.conf"
+
+	# use correct version of qmake. bug #566950
+	sed -i -e "/AC_CHECK_TOOLS(MOC4/a AC_SUBST(MOC4,$(qt4_get_bindir)/moc)" configure.ac || die
+	sed -i -e "/AC_CHECK_TOOLS(MOC5/a AC_SUBST(MOC5,$(qt5_get_bindir)/moc)" configure.ac || die
 
 	default
 
@@ -80,6 +86,8 @@ src_configure() {
 	einfo "Default greeter: ${_greeter}"
 	einfo "Default session: ${_session}"
 	einfo "Greeter user: ${_user}"
+
+	use qt5 && append-cxxflags -std=c++11
 
 	# also disable tests because libsystem.c does not build. Tests are
 	# restricted so it does not matter anyway.
