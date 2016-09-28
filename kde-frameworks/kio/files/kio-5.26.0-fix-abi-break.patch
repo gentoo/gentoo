@@ -1,0 +1,64 @@
+From: José Manuel Santamaría Lema <panfaust@gmail.com>
+Date: Wed, 28 Sep 2016 07:53:08 +0000
+Subject: Fix ABI break in kio
+X-Git-Url: http://quickgit.kde.org/?p=kio.git&a=commitdiff&h=89f8bcf00fc2fc17527d7bb4e0e2aea51f8776cb
+---
+Fix ABI break in kio
+
+From the binary compatibility page "Do's and Don'ts":
+https://community.kde.org/Policies/Binary_Compatibility_Issues_With_C%2B%2B#The_Do.27s_and_Don.27ts
+You cannot...
+[...]
+For existing functions of any type:
+[...]
+inline it (this includes moving a member function's body to the class definition, even without the inline keyword).
+
+REVIEW: 129032
+---
+
+
+--- a/src/widgets/kpropertiesdialog.cpp
++++ b/src/widgets/kpropertiesdialog.cpp
+@@ -500,6 +500,11 @@
+             KPreviewPropsPlugin::supports( _items )*/;
+ }
+ 
++void KPropertiesDialog::slotOk()
++{
++    accept();
++}
++
+ void KPropertiesDialog::accept()
+ {
+     QList<KPropertiesDialogPlugin *>::const_iterator pageListIt;
+@@ -541,6 +546,11 @@
+         deleteLater(); // somewhat like Qt::WA_DeleteOnClose would do.
+         KPageDialog::accept();
+     } // else, keep dialog open for user to fix the problem.
++}
++
++void KPropertiesDialog::slotCancel()
++{
++    reject();
+ }
+ 
+ void KPropertiesDialog::reject()
+
+--- a/src/widgets/kpropertiesdialog.h
++++ b/src/widgets/kpropertiesdialog.h
+@@ -341,12 +341,12 @@
+      * Called when the user presses 'Ok'.
+      * @deprecated since 5.25, use accept()
+      */
+-    KIOWIDGETS_DEPRECATED virtual void slotOk() { accept(); }
++    KIOWIDGETS_DEPRECATED virtual void slotOk();
+     /**
+      * Called when the user presses 'Cancel'.
+      * @deprecated since 5.25, use reject()
+      */
+-    KIOWIDGETS_DEPRECATED virtual void slotCancel() { reject(); }
++    KIOWIDGETS_DEPRECATED virtual void slotCancel();
+ 
+     /**
+      * Called when the user presses 'Ok'.
+
