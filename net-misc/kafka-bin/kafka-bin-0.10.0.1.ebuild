@@ -36,8 +36,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e 's:/tmp/zookeeper:/var/lib/kafka/zookeeper:' "config/zookeeper.properties"
-	sed -i -e 's:/tmp/kafka-logs:/var/lib/kafka/logs:' "config/server.properties"
+	sed -i -e 's:/tmp/zookeeper:/var/lib/kafka/zookeeper:' "config/zookeeper.properties" || die
+	sed -i -e 's:/tmp/kafka-logs:/var/lib/kafka/logs:' "config/server.properties" || die
 }
 
 src_install() {
