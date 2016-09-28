@@ -7,7 +7,7 @@ inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="stateless, zlib-compatible, and very fast compression library"
 HOMEPAGE="http://1wt.eu/projects/libslz"
-SRC_URI="http://git.1wt.eu/web?p=${PN}.git;a=snapshot;h=v${PV};sf=tgz -> ${P}.tar.gz"
+SRC_URI="http://git.1wt.eu/web?p=${PN}.git;a=snapshot;h=v${PV};sf=tbz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0/1"
@@ -48,7 +48,7 @@ multilib_src_install() {
 		STRIP=":" \
 		DESTDIR="${ED}" \
 		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="$(get_libdir)" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		install-headers
 		install-shared \
 		$(usex static-libs install-static '')
