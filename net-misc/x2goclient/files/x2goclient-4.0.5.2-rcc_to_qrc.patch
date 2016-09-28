@@ -1,0 +1,293 @@
+diff -Naur x2goclient-4.0.5.2.orig/res/changelog.qrc x2goclient-4.0.5.2/res/changelog.qrc
+--- x2goclient-4.0.5.2.orig/res/changelog.qrc	1970-01-01 01:00:00.000000000 +0100
++++ x2goclient-4.0.5.2/res/changelog.qrc	2016-09-19 06:17:43.000000000 +0200
+@@ -0,0 +1,5 @@
++<RCC>
++   <qresource>
++       <file>txt/changelog</file>
++   </qresource>
++</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/res/changelog.rcc x2goclient-4.0.5.2/res/changelog.rcc
+--- x2goclient-4.0.5.2.orig/res/changelog.rcc	2016-09-19 06:17:43.000000000 +0200
++++ x2goclient-4.0.5.2/res/changelog.rcc	1970-01-01 01:00:00.000000000 +0100
+@@ -1,5 +0,0 @@
+-<RCC>
+-   <qresource>
+-       <file>txt/changelog</file>
+-   </qresource>
+-</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/res/git.qrc x2goclient-4.0.5.2/res/git.qrc
+--- x2goclient-4.0.5.2.orig/res/git.qrc	1970-01-01 01:00:00.000000000 +0100
++++ x2goclient-4.0.5.2/res/git.qrc	2016-09-19 06:17:43.000000000 +0200
+@@ -0,0 +1,5 @@
++<RCC>
++   <qresource>
++       <file>txt/git-info</file>
++   </qresource>
++</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/res/git.rcc x2goclient-4.0.5.2/res/git.rcc
+--- x2goclient-4.0.5.2.orig/res/git.rcc	2016-09-19 06:17:43.000000000 +0200
++++ x2goclient-4.0.5.2/res/git.rcc	1970-01-01 01:00:00.000000000 +0100
+@@ -1,5 +0,0 @@
+-<RCC>
+-   <qresource>
+-       <file>txt/git-info</file>
+-   </qresource>
+-</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/res/resources.qrc x2goclient-4.0.5.2/res/resources.qrc
+--- x2goclient-4.0.5.2.orig/res/resources.qrc	1970-01-01 01:00:00.000000000 +0100
++++ x2goclient-4.0.5.2/res/resources.qrc	2016-09-19 06:17:44.000000000 +0200
+@@ -0,0 +1,113 @@
++<RCC>
++   <qresource>
++       <file>img/svg/bg.svg</file>
++       <file>img/svg/bg_hildon.svg</file>
++       <file>img/svg/line.svg</file>
++       <file>img/svg/onlogo.svg</file>
++       <file>img/svg/x2gologo.svg</file>
++       <file>img/svg/passform.svg</file>
++       <file>img/svg/sessionbut.svg</file>
++       <file>img/svg/folder.svg</file>
++       <file>img/svg/folder_grey.svg</file>
++       <file>img/svg/sessionbut_grey.svg</file>
++       <file>img/png/ico.png</file>
++       <file>img/png/ico_mini.png</file>
++       <file>img/png/sess_ico.png</file>
++       <file>img/png/ico_440x180.png</file>
++       <file>img/png/power-button.png</file>
++       <file>img/icons/128x128/x2go.png</file>
++       <file>img/icons/128x128/folder.png</file>
++       <file>img/icons/128x128/x2gosession.png</file>
++       <file>img/icons/128x128/create_file.png</file>
++       <file>img/icons/128x128/lxde.png</file>
++       <file>img/icons/128x128/preferences.png</file>
++       <file>img/icons/128x128/rdp.png</file>
++       <file>img/icons/64x64/audio.png</file>
++       <file>img/icons/64x64/personal.png</file>
++       <file>img/icons/64x64/create_file.png</file>
++       <file>img/icons/64x64/lxde.png</file>
++       <file>img/icons/64x64/preferences.png</file>
++       <file>img/icons/64x64/rdp.png</file>
++       <file>img/icons/32x32/edit.png</file>
++       <file>img/icons/32x32/edit_settings.png</file>
++       <file>img/icons/32x32/exit.png</file>
++       <file>img/icons/32x32/file-open.png</file>
++       <file>img/icons/32x32/new_file.png</file>
++       <file>img/icons/32x32/create_file.png</file>
++       <file>img/icons/32x32/lxde.png</file>
++       <file>img/icons/32x32/preferences.png</file>
++       <file>img/icons/32x32/rdp.png</file>
++       <file>img/icons/32x32/reconnect.png</file>
++       <file>img/icons/32x32/tbhide.png</file>
++       <file>img/icons/32x32/tbshow.png</file>
++       <file>img/icons/32x32/attach.png</file>
++       <file>img/icons/32x32/detach.png</file>
++       <file>img/icons/32x32/suspend.png</file>
++       <file>img/icons/32x32/stop.png</file>
++       <file>img/icons/32x32/auth.png</file>
++       <file>img/icons/32x32/x2goclient.png</file>
++       <file>img/icons/32x32/resolution.png</file>
++       <file>img/icons/32x32/contest.png</file>
++       <file>img/icons/32x32/apps.png</file>
++       <file>img/icons/32x32/open_dir.png</file>
++       <file>img/icons/32x32/suspend_session.png</file>
++       <file>img/icons/32x32/stop_session.png</file>
++       <file>img/icons/16x16/audio.png</file>
++       <file>img/icons/16x16/file-open.png</file>
++       <file>img/icons/16x16/delete.png</file>
++       <file>img/icons/16x16/edit.png</file>
++       <file>img/icons/16x16/gnome.png</file>
++       <file>img/icons/16x16/unity.png</file>
++       <file>img/icons/16x16/xfce.png</file>
++       <file>img/icons/16x16/mate.png</file>
++       <file>img/icons/16x16/kde.png</file>
++       <file>img/icons/16x16/cinnamon.png</file>
++       <file>img/icons/16x16/trinity.png</file>
++       <file>img/icons/16x16/openbox.png</file>
++       <file>img/icons/16x16/icewm.png</file>
++       <file>img/icons/16x16/new_file.png</file>
++       <file>img/icons/16x16/resolution.png</file>
++       <file>img/icons/16x16/session.png</file>
++       <file>img/icons/16x16/x2go.png</file>
++       <file>img/icons/16x16/tbshow.png</file>
++       <file>img/icons/16x16/X.png</file>
++       <file>img/icons/16x16/create_file.png</file>
++       <file>img/icons/16x16/lxde.png</file>
++       <file>img/icons/16x16/preferences.png</file>
++       <file>img/icons/16x16/rdp.png</file>
++       <file>img/icons/22x22/applications-development.png</file>
++       <file>img/icons/22x22/applications-education.png</file>
++       <file>img/icons/22x22/applications-games.png</file>
++       <file>img/icons/22x22/applications-graphics.png</file>
++       <file>img/icons/22x22/applications-internet.png</file>
++       <file>img/icons/22x22/applications-multimedia.png</file>
++       <file>img/icons/22x22/applications-office.png</file>
++       <file>img/icons/22x22/applications-other.png</file>
++       <file>img/icons/22x22/applications-system.png</file>
++       <file>img/icons/22x22/applications-utilities.png</file>
++       <file>img/icons/22x22/preferences-system.png</file>
++       <file>txt/packs</file>
++       <file>txt/encodings</file>
++       <file>i18n/x2goclient_da.qm</file>
++       <file>i18n/x2goclient_de.qm</file>
++       <file>i18n/x2goclient_es.qm</file>
++       <file>i18n/x2goclient_et.qm</file>
++       <file>i18n/x2goclient_fi.qm</file>
++       <file>i18n/x2goclient_fr.qm</file>
++       <file>i18n/x2goclient_nb_no.qm</file>
++       <file>i18n/x2goclient_nl.qm</file>
++       <file>i18n/x2goclient_pt.qm</file>
++       <file>i18n/x2goclient_ru.qm</file>
++       <file>i18n/x2goclient_sv.qm</file>
++       <file>i18n/x2goclient_tr.qm</file>
++       <file>i18n/x2goclient_zh_tw.qm</file>
++       <file>i18n/qt_da.qm</file>
++       <file>i18n/qt_de.qm</file>
++       <file>i18n/qt_es.qm</file>
++       <file>i18n/qt_fr.qm</file>
++       <file>i18n/qt_pt.qm</file>
++       <file>i18n/qt_ru.qm</file>
++       <file>i18n/qt_sv.qm</file>
++       <file>i18n/qt_zh_tw.qm</file>
++   </qresource>
++</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/res/resources.rcc x2goclient-4.0.5.2/res/resources.rcc
+--- x2goclient-4.0.5.2.orig/res/resources.rcc	2016-09-19 06:17:44.000000000 +0200
++++ x2goclient-4.0.5.2/res/resources.rcc	1970-01-01 01:00:00.000000000 +0100
+@@ -1,113 +0,0 @@
+-<RCC>
+-   <qresource>
+-       <file>img/svg/bg.svg</file>
+-       <file>img/svg/bg_hildon.svg</file>
+-       <file>img/svg/line.svg</file>
+-       <file>img/svg/onlogo.svg</file>
+-       <file>img/svg/x2gologo.svg</file>
+-       <file>img/svg/passform.svg</file>
+-       <file>img/svg/sessionbut.svg</file>
+-       <file>img/svg/folder.svg</file>
+-       <file>img/svg/folder_grey.svg</file>
+-       <file>img/svg/sessionbut_grey.svg</file>
+-       <file>img/png/ico.png</file>
+-       <file>img/png/ico_mini.png</file>
+-       <file>img/png/sess_ico.png</file>
+-       <file>img/png/ico_440x180.png</file>
+-       <file>img/png/power-button.png</file>
+-       <file>img/icons/128x128/x2go.png</file>
+-       <file>img/icons/128x128/folder.png</file>
+-       <file>img/icons/128x128/x2gosession.png</file>
+-       <file>img/icons/128x128/create_file.png</file>
+-       <file>img/icons/128x128/lxde.png</file>
+-       <file>img/icons/128x128/preferences.png</file>
+-       <file>img/icons/128x128/rdp.png</file>
+-       <file>img/icons/64x64/audio.png</file>
+-       <file>img/icons/64x64/personal.png</file>
+-       <file>img/icons/64x64/create_file.png</file>
+-       <file>img/icons/64x64/lxde.png</file>
+-       <file>img/icons/64x64/preferences.png</file>
+-       <file>img/icons/64x64/rdp.png</file>
+-       <file>img/icons/32x32/edit.png</file>
+-       <file>img/icons/32x32/edit_settings.png</file>
+-       <file>img/icons/32x32/exit.png</file>
+-       <file>img/icons/32x32/file-open.png</file>
+-       <file>img/icons/32x32/new_file.png</file>
+-       <file>img/icons/32x32/create_file.png</file>
+-       <file>img/icons/32x32/lxde.png</file>
+-       <file>img/icons/32x32/preferences.png</file>
+-       <file>img/icons/32x32/rdp.png</file>
+-       <file>img/icons/32x32/reconnect.png</file>
+-       <file>img/icons/32x32/tbhide.png</file>
+-       <file>img/icons/32x32/tbshow.png</file>
+-       <file>img/icons/32x32/attach.png</file>
+-       <file>img/icons/32x32/detach.png</file>
+-       <file>img/icons/32x32/suspend.png</file>
+-       <file>img/icons/32x32/stop.png</file>
+-       <file>img/icons/32x32/auth.png</file>
+-       <file>img/icons/32x32/x2goclient.png</file>
+-       <file>img/icons/32x32/resolution.png</file>
+-       <file>img/icons/32x32/contest.png</file>
+-       <file>img/icons/32x32/apps.png</file>
+-       <file>img/icons/32x32/open_dir.png</file>
+-       <file>img/icons/32x32/suspend_session.png</file>
+-       <file>img/icons/32x32/stop_session.png</file>
+-       <file>img/icons/16x16/audio.png</file>
+-       <file>img/icons/16x16/file-open.png</file>
+-       <file>img/icons/16x16/delete.png</file>
+-       <file>img/icons/16x16/edit.png</file>
+-       <file>img/icons/16x16/gnome.png</file>
+-       <file>img/icons/16x16/unity.png</file>
+-       <file>img/icons/16x16/xfce.png</file>
+-       <file>img/icons/16x16/mate.png</file>
+-       <file>img/icons/16x16/kde.png</file>
+-       <file>img/icons/16x16/cinnamon.png</file>
+-       <file>img/icons/16x16/trinity.png</file>
+-       <file>img/icons/16x16/openbox.png</file>
+-       <file>img/icons/16x16/icewm.png</file>
+-       <file>img/icons/16x16/new_file.png</file>
+-       <file>img/icons/16x16/resolution.png</file>
+-       <file>img/icons/16x16/session.png</file>
+-       <file>img/icons/16x16/x2go.png</file>
+-       <file>img/icons/16x16/tbshow.png</file>
+-       <file>img/icons/16x16/X.png</file>
+-       <file>img/icons/16x16/create_file.png</file>
+-       <file>img/icons/16x16/lxde.png</file>
+-       <file>img/icons/16x16/preferences.png</file>
+-       <file>img/icons/16x16/rdp.png</file>
+-       <file>img/icons/22x22/applications-development.png</file>
+-       <file>img/icons/22x22/applications-education.png</file>
+-       <file>img/icons/22x22/applications-games.png</file>
+-       <file>img/icons/22x22/applications-graphics.png</file>
+-       <file>img/icons/22x22/applications-internet.png</file>
+-       <file>img/icons/22x22/applications-multimedia.png</file>
+-       <file>img/icons/22x22/applications-office.png</file>
+-       <file>img/icons/22x22/applications-other.png</file>
+-       <file>img/icons/22x22/applications-system.png</file>
+-       <file>img/icons/22x22/applications-utilities.png</file>
+-       <file>img/icons/22x22/preferences-system.png</file>
+-       <file>txt/packs</file>
+-       <file>txt/encodings</file>
+-       <file>i18n/x2goclient_da.qm</file>
+-       <file>i18n/x2goclient_de.qm</file>
+-       <file>i18n/x2goclient_es.qm</file>
+-       <file>i18n/x2goclient_et.qm</file>
+-       <file>i18n/x2goclient_fi.qm</file>
+-       <file>i18n/x2goclient_fr.qm</file>
+-       <file>i18n/x2goclient_nb_no.qm</file>
+-       <file>i18n/x2goclient_nl.qm</file>
+-       <file>i18n/x2goclient_pt.qm</file>
+-       <file>i18n/x2goclient_ru.qm</file>
+-       <file>i18n/x2goclient_sv.qm</file>
+-       <file>i18n/x2goclient_tr.qm</file>
+-       <file>i18n/x2goclient_zh_tw.qm</file>
+-       <file>i18n/qt_da.qm</file>
+-       <file>i18n/qt_de.qm</file>
+-       <file>i18n/qt_es.qm</file>
+-       <file>i18n/qt_fr.qm</file>
+-       <file>i18n/qt_pt.qm</file>
+-       <file>i18n/qt_ru.qm</file>
+-       <file>i18n/qt_sv.qm</file>
+-       <file>i18n/qt_zh_tw.qm</file>
+-   </qresource>
+-</RCC>
+diff -Naur x2goclient-4.0.5.2.orig/x2goclient.pro x2goclient-4.0.5.2/x2goclient.pro
+--- x2goclient-4.0.5.2.orig/x2goclient.pro	2016-09-19 06:17:44.000000000 +0200
++++ x2goclient-4.0.5.2/x2goclient.pro	2016-09-28 22:03:41.830790244 +0200
+@@ -167,16 +167,16 @@
+ TEMPLATE = app
+ DEPENDPATH += .
+ INCLUDEPATH += src
+-RESOURCES += res/resources.rcc
++RESOURCES += res/resources.qrc
+ 
+ exists(res/txt/git-info) {
+   message("Configuring with --git-info")
+-  RESOURCES += res/git.rcc
++  RESOURCES += res/git.qrc
+ }
+ 
+ exists(res/txt/changelog) {
+   message("Configuring with --changelog")
+-  RESOURCES += res/changelog.rcc
++  RESOURCES += res/changelog.qrc
+ }
+ 
+ linux-g++ {
