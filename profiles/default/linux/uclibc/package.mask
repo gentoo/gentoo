@@ -6,9 +6,6 @@ sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
 
-# DT_RUNPATH is broken on uclibc, bug #561684
->sys-devel/binutils-config-4-r2
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev
