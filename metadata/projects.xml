@@ -2379,7 +2379,7 @@
     <email>ops@gentoo.org</email>
     <name>The #gentoo Operators Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ops</url>
-    <description>The #gentoo Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the freenode network.</description>
+    <description>The &lt;span style="font-family: monospace; font-size: 95%;"&gt;[irc://irc.gentoo.org/gentoo #gentoo]&lt;/span&gt; Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the Freenode network.</description>
     <member>
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>

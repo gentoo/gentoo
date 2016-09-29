@@ -9875,7 +9875,7 @@ dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
-dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
+dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -16012,7 +16012,7 @@ sci-libs/coinor-dylp 1.9.4: COIN-OR using the dynamic simplex linear programming
 sci-libs/coinor-flopcpp 1.1.7: COIN-OR algebraic modeling language for linear optimization
 sci-libs/coinor-mp 1.7.6: COIN-OR lightweight API for COIN-OR libraries CLP, CBC, and CGL
 sci-libs/coinor-netlib 1.2.6: COIN-OR netlib models
-sci-libs/coinor-os 2.8.3: COIN-OR Optimization Services
+sci-libs/coinor-os 2.10.1: COIN-OR Optimization Services
 sci-libs/coinor-osi 0.106.6: COIN-OR Open Solver Interface
 sci-libs/coinor-sample 1.2.9: COIN-OR Sample models
 sci-libs/coinor-smi 0.93.4: COIN-OR Stochastic modelling interface
