@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for threads-shared
 EAPI=5
-KEYWORDS=alpha amd64 ~hppa ~ia64 ~ppc ppc64 sparc x86
+KEYWORDS=alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/threads-shared-1.480.0 ) !<perl-core/threads-shared-1.480.0 !>perl-core/threads-shared-1.480.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=1addf6fe2272b7764fc0e284140eec70
+_md5_=a183390ad77fbb6fb54623157c87c7a4
