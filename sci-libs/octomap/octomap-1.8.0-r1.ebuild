@@ -31,7 +31,7 @@ RDEPEND="
 		virtual/opengl
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
-		x11-libs/libQGLViewer
+		x11-libs/libQGLViewer:=
 	)
 "
 DEPEND="${RDEPEND}
