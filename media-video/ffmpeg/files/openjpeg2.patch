@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/show_bug.cgi?id=595318
+https://trac.ffmpeg.org/ticket/5694
+
+diff -rupN ffmpeg-3.1.1/configure ffmpeg-3.1.1-new/configure
+--- ffmpeg-3.1.1/configure	2016-06-27 01:54:28.000000000 +0200
++++ ffmpeg-3.1.1-new/configure	2016-07-27 22:25:36.585141648 +0200
+@@ -5669,7 +5669,7 @@ enabled libopencv         && { check_hea
+                                  require opencv opencv2/core/core_c.h cvCreateImageHeader -lopencv_core -lopencv_imgproc; } ||
+                                require_pkg_config opencv opencv/cxcore.h cvCreateImageHeader; }
+ enabled libopenh264       && require_pkg_config openh264 wels/codec_api.h WelsGetCodecVersion
+-enabled libopenjpeg       && { check_lib openjpeg-2.1/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC ||
++enabled libopenjpeg       && { check_lib openjpeg-2.1/openjpeg.h opj_version -lopenjp2 ||
+                                check_lib openjpeg-2.0/openjpeg.h opj_version -lopenjp2 -DOPJ_STATIC ||
+                                check_lib openjpeg-1.5/openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC ||
+                                check_lib openjpeg.h opj_version -lopenjpeg -DOPJ_STATIC ||
+diff -rupN ffmpeg-3.1.1/libavcodec/libopenjpegdec.c ffmpeg-3.1.1-new/libavcodec/libopenjpegdec.c
+--- ffmpeg-3.1.1/libavcodec/libopenjpegdec.c	2016-06-27 01:54:29.000000000 +0200
++++ ffmpeg-3.1.1-new/libavcodec/libopenjpegdec.c	2016-07-27 22:25:45.509327071 +0200
+@@ -24,8 +24,6 @@
+  * JPEG 2000 decoder using libopenjpeg
+  */
+
+-#define  OPJ_STATIC
+-
+ #include "libavutil/common.h"
+ #include "libavutil/imgutils.h"
+ #include "libavutil/intreadwrite.h"
+diff -rupN ffmpeg-3.1.1/libavcodec/libopenjpegenc.c ffmpeg-3.1.1-new/libavcodec/libopenjpegenc.c
+--- ffmpeg-3.1.1/libavcodec/libopenjpegenc.c	2016-06-27 01:54:29.000000000 +0200
++++ ffmpeg-3.1.1-new/libavcodec/libopenjpegenc.c	2016-07-27 22:25:40.298218807 +0200
+@@ -24,8 +24,6 @@
+  * JPEG 2000 encoder using libopenjpeg
+  */
+
+-#define  OPJ_STATIC
+-
+ #include "libavutil/avassert.h"
+ #include "libavutil/common.h"
+ #include "libavutil/imgutils.h"

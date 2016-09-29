@@ -294,6 +294,7 @@ src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
+	epatch "${FILESDIR}/openjpeg2.patch" #595318
 	default
 }
 
