@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org (09 Nov 2016)
+# Requires Plasma 4 which is being removed
+net-p2p/ktorrent:4 plasma shutdown
+
 # Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
 # Enable gambit and scm only on supported arches
 >=dev-scheme/slib-3.2.5 gambit scm
