@@ -49,8 +49,6 @@ src_prepare() {
 src_configure() {
 	 # --disable-examples prevents COMPILING the examples.
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
-		--htmldir="/usr/share/doc/${PF}" \
 		--disable-examples \
 		$(use_enable doc doc-dot) \
 		$(use_enable doc doc-tagfile) \
