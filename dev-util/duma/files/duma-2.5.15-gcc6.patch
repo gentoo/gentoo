@@ -1,0 +1,22 @@
+--- duma_2_5_15/dumapp.cpp.old	2016-09-21 19:28:01.286332961 -0400
++++ duma_2_5_15/dumapp.cpp	2016-09-21 19:28:06.722907238 -0400
+@@ -190,7 +190,9 @@
+  * (11) = (a) ; ASW
+  */
+ void * DUMA_CDECL operator new( DUMA_SIZE_T size )
++#if __cplusplus < 201103L
+ throw(std::bad_alloc)
++#endif
+ {
+   return duma_new_operator(size, EFA_NEW_ELEM, true  DUMA_PARAMS_UK);
+ }
+@@ -254,7 +256,9 @@
+  * (21) = (a) ; AAW
+  */
+ void * DUMA_CDECL operator new[]( DUMA_SIZE_T size )
++#if __cplusplus < 201103L
+ throw(std::bad_alloc)
++#endif
+ {
+   return duma_new_operator(size, EFA_NEW_ARRAY, true  DUMA_PARAMS_UK);
+ }

@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit eutils flag-o-matic multilib toolchain-funcs versionator
+EAPI=6
+inherit toolchain-funcs versionator
 
 MY_P=${PN}_$(replace_all_version_separators '_')
 
@@ -17,19 +17,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples"
 
-RDEPEND="app-shells/bash"
-DEPEND="${RDEPEND}"
-
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${DISTDIR}"/${P}-GNUmakefile.patch.bz2
-}
+PATCHES=(
+	"${WORKDIR}"/${P}-GNUmakefile.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
-src_compile() {
-	# strip-flags
-	replace-flags O? O0
-	append-flags -Wall -Wextra -U_FORTIFY_SOURCE
+src_configure() {
+	# other flags will break duma
+	export CFLAGS="-O0 -Wall -Wextra -U_FORTIFY_SOURCE"
 	tc-export AR CC CXX LD RANLIB
 
 	case "${CHOST}" in
@@ -56,14 +53,17 @@ src_compile() {
 		elog "Exported DUMA_ALIGNMENT=${DUMA_ALIGNMENT} for x86_64,"
 	fi
 
-	make reconfig || die "make config failed"
-	# The above must be run first if distcc is enabled, otherwise
+}
+
+src_compile() {
+	# The below must be run first if distcc is enabled, otherwise
 	# the real build breaks on parallel makes.
-	emake || die "emake failed"
+	emake reconfig
+	emake
 }
 
 src_test() {
-	emake test || die "emake test failed"
+	emake test
 
 	elog "Please, see the output above to verify all tests have passed."
 	elog "Both static and dynamic confidence tests should say PASSED."
@@ -71,16 +71,16 @@ src_test() {
 
 src_install(){
 	emake prefix="${D}/usr" libdir="${D}/usr/$(get_libdir)" \
-		docdir="${D}/usr/share/doc/${PF}" install || die "emake install failed"
+		docdir="${D}/usr/share/doc/${PF}" install
 
-	dosed "s|LD_PRELOAD=./libduma|LD_PRELOAD=libduma|" /usr/bin/duma \
-		|| die "dosed failed"
+	sed -i "s|LD_PRELOAD=./libduma|LD_PRELOAD=libduma|" "${D}"/usr/bin/duma \
+		|| die "sed failed"
 
 	dodoc CHANGELOG TODO GNUmakefile
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins example[1-6].cpp example_makes/ex6/Makefile || die "doins failed"
+		doins example[1-6].cpp example_makes/ex6/Makefile
 	fi
 }
 
