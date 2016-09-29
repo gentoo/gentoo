@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/fix-bashism.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 
