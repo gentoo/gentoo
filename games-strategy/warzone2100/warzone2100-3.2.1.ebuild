@@ -22,14 +22,16 @@ LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 # upstream requested debug support
-IUSE="debug nls qt5 videos"
+IUSE="debug nls sdl videos"
 
 # TODO: unbundle miniupnpc and quesoglc
 # quesoglc-0.7.2 is buggy: http://developer.wz2100.net/ticket/2828
 RDEPEND=">=dev-games/physfs-2[zip]
 	dev-libs/fribidi
 	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtscript:5
+	dev-qt/qtwidgets:5
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/glew:=
@@ -44,13 +46,11 @@ RDEPEND=">=dev-games/physfs-2[zip]
 	x11-libs/libX11
 	x11-libs/libXrandr
 	nls? ( virtual/libintl )
-	qt5? (
-		dev-qt/qtgui:5
+	!sdl? (
 		dev-qt/qtopengl:5
-		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
 	)
-	!qt5? ( media-libs/libsdl[opengl,video,X] )"
+	sdl? ( media-libs/libsdl2[opengl,video,X] )"
 DEPEND="${RDEPEND}
 	app-arch/zip
 	virtual/pkgconfig
@@ -80,7 +80,7 @@ src_configure() {
 		--with-applicationdir=/usr/share/applications \
 		$(use_enable debug debug relaxed) \
 		$(use_enable nls) \
-		--with-backend=$(usex qt5 "qt" "sdl")
+		--with-backend=$(usex sdl "sdl" "qt")
 }
 
 src_compile() {
