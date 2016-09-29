@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="A library for image plugins accross KDE applications"
 SLOT="5/31"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="
