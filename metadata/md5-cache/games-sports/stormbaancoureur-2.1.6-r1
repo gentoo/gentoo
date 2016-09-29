@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=dev-games/ode-0.8 media-libs/alsa-lib media-libs/freeglut >=media-libs/plib-1.8.4 virtual/glu virtual/opengl
+DESCRIPTION=Simulated obstacle course for automobiles
+EAPI=6
+HOMEPAGE=http://www.stolk.org/stormbaancoureur/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-games/ode-0.8 media-libs/alsa-lib media-libs/freeglut >=media-libs/plib-1.8.4 virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=http://www.stolk.org/stormbaancoureur/download/stormbaancoureur-2.1.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=eedafd87a0341f4db0c5d69a87ca444e
