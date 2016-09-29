@@ -4683,7 +4683,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libarcus 1.0.0_pre20160307: This library facilitates communication between Cura and its backend
 dev-libs/libassuan 2.1.1 2.1.2 2.1.3 2.2.0 2.2.1 2.3.0 2.4.1 2.4.2 2.4.3: IPC library used by GnuPG and GPGME
-dev-libs/libatasmart 0.19 0.19-r1: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
+dev-libs/libatasmart 0.19-r1: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
@@ -4740,7 +4740,7 @@ dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented inter
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
-dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
+dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.6.5 1.7.1 1.7.2 1.7.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5: GLib-based library for accessing online service APIs using the GData protocol
@@ -4805,7 +4805,7 @@ dev-libs/libnsfb 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1 0.4.1-r1: C Implementation of NTRUEncrypt
 dev-libs/libofx 0.9.10: A library to support the Open Financial eXchange XML format
-dev-libs/liboil 0.3.17 0.3.17-r1 0.3.17-r2: Library of simple functions that are optimized for various CPUs
+dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
 dev-libs/liborcus 0.7.1 0.7.1-r1 0.9.2-r1 0.11.2 9999: Standalone file import filter library for spreadsheet documents
@@ -12551,7 +12551,7 @@ media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and g
 media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
-media-libs/exempi 2.2.0 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
+media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.25 10.27: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
@@ -14796,7 +14796,7 @@ net-misc/connman-gtk 1.0 1.0-r1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.49.0 7.49.1 7.50.0 7.50.1 7.50.2 7.50.3: A Client that groks URLs
+net-misc/curl 7.50.3: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
@@ -17607,7 +17607,7 @@ virtual/editor 0: Virtual for editor
 virtual/eject 0: Virtual for the eject command
 virtual/emacs 23 24 25: Virtual for GNU Emacs
 virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Emacs)
-virtual/fam 0 0-r1: A virtual package to choose between gamin and fam
+virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0: A virtual to choose between different icon themes
@@ -18325,7 +18325,7 @@ x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libkscreen 1.0.5_p20150822: KDE screen management library
-x11-libs/libnotify 0.7.6-r1 0.7.6-r3: A library for sending desktop notifications
+x11-libs/libnotify 0.7.6-r3: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
@@ -18366,7 +18366,7 @@ x11-libs/qwtpolar 0.1.0-r1 1.0.0 1.1.0 1.1.1: Library for displaying values on a
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
-x11-libs/startup-notification 0.12 0.12-r1: Application startup notification and feedback library
+x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.5 0.44.2: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r3 3.0.2.0-r300 3.0.2.0-r301: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
