@@ -8,5 +8,8 @@
 	<maintainer type="project">
 		<email>llvm@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name='hwloc'>Enable CPU affinity support via hwloc</flag>
+	</use>
 	<longdescription>The OpenMP subproject of LLVM is intended to contain all of the components required to build an executing OpenMP program that are outside the compiler itself.</longdescription>
 </pkgmetadata>
