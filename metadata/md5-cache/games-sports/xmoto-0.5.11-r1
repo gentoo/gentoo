@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-games/ode dev-lang/lua:0[deprecated] dev-libs/libxdg-basedir dev-libs/libxml2 media-fonts/dejavu media-libs/libpng:0 media-libs/libsdl[joystick,opengl] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf net-misc/curl virtual/jpeg:0 virtual/opengl virtual/glu nls? ( virtual/libintl ) app-arch/xz-utils nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A challenging 2D motocross platform game
+EAPI=6
+HOMEPAGE=http://xmoto.tuxfamily.org
+IUSE=editor nls
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-games/ode dev-lang/lua:0[deprecated] dev-libs/libxdg-basedir dev-libs/libxml2 media-fonts/dejavu media-libs/libpng:0 media-libs/libsdl[joystick,opengl] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf net-misc/curl virtual/jpeg:0 virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape )
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/xmoto/xmoto/0.5.11/xmoto-0.5.11-src.tar.gz mirror://debian/pool/main/x/xmoto/xmoto_0.5.11+dfsg-6.debian.tar.xz editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/0.7.0/inksmoto-0.7.0.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=e6e04dbc33dde61fa2b688b3360ef522
