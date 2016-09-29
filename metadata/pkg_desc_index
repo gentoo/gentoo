@@ -4674,7 +4674,7 @@ dev-libs/kirigami 1.1.0: Lightweight user interface framework for mobile and con
 dev-libs/klibc 1.5.25 2.0.4: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r1: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
-dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.2 0.7.3 0.7.4 0.7.5-r2 0.8.1 0.9.0 0.9.1: A C++ toolkit
+dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.2 0.7.3 0.7.4 0.8.1 0.9.0 0.9.1: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14 0.8.14-r2: CORBA tree builder
@@ -11838,7 +11838,7 @@ kde-plasma/breeze-grub 5.6.5 5.7.5: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.6.5 5.7.5: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/breeze-plymouth 5.6.5 5.7.5: Breeze theme for Plymouth
 kde-plasma/kactivitymanagerd 5.6.5 5.7.5: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.6.5 5.7.5: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-cli-tools 5.6.5 5.6.5-r1 5.7.5: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.6.5 5.7.5: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.6.5 5.7.5: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 5.6.5 5.7.5: Extra Plasma applets and engines
