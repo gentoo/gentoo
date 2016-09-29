@@ -21,6 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${WORKDIR}"/${P}-GNUmakefile.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_configure() {
