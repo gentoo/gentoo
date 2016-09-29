@@ -46,7 +46,7 @@ virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
 pam? ( virtual/pam )
-perl? ( >=dev-lang/perl-5.8 )
+perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 ssl? (

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,7 +49,7 @@ virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
 pam? ( virtual/pam )
-perl? ( >=dev-lang/perl-5.8 )
+perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 ssl? (
