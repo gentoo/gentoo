@@ -5285,15 +5285,15 @@ dev-perl/AnyEvent 7.80.0 7.120.0 7.130.0: Provides a uniform interface to variou
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.230.0 3.240.0: Perl Authentication and Authorization via cookies
+dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
-dev-perl/Apache-LogFormat-Compiler 0.320.0 0.330.0: Compile an Apache log format string to perl-code
+dev-perl/Apache-LogFormat-Compiler 0.330.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
-dev-perl/Apache-Test 1.380.0-r1 1.390.0: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
