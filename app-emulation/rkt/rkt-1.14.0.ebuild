@@ -17,7 +17,7 @@ PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
 
 SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
-rkt_stage1_kvm? (
+rkt_stage1_kvm_lkvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
 	mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
 	${PXE_URI} -> ${PXE_FILE}
@@ -29,8 +29,8 @@ HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src +actool systemd"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src ) rkt_stage1_host? ( systemd )"
+IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_kvm_lkvm rkt_stage1_src +actool systemd"
+REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_src ) rkt_stage1_host? ( systemd ) !rkt_stage1_kvm"
 
 DEPEND=">=dev-lang/go-1.5
 	app-arch/cpio
@@ -124,7 +124,7 @@ src_configure() {
 	use rkt_stage1_src && flavors+=",src"
 	use rkt_stage1_coreos && flavors+=",coreos"
 	use rkt_stage1_fly && flavors+=",fly"
-	use rkt_stage1_kvm && flavors+=",kvm"
+	use rkt_stage1_kvm_lkvm && flavors+=",kvm"
 	myeconfargs+=( --with-stage1-flavors="${flavors#,}" )
 
 	if use rkt_stage1_src; then
@@ -134,7 +134,7 @@ src_configure() {
 		)
 	fi
 
-	if use rkt_stage1_coreos || use rkt_stage1_kvm; then
+	if use rkt_stage1_coreos || use rkt_stage1_kvm_lkvm; then
 		myeconfargs+=(
 			--with-coreos-local-pxe-image-path="${DISTDIR}/${PXE_FILE}"
 			--with-coreos-local-pxe-image-systemd-version="${PXE_SYSTEMD_VERSION}"
@@ -186,7 +186,7 @@ src_install() {
 		dosym stage1-coreos.aci "${STAGE1_DEFAULT_LOCATION}"
 	elif use rkt_stage1_fly; then
 		dosym stage1-fly.aci "${STAGE1_DEFAULT_LOCATION}"
-	elif use rkt_stage1_kvm; then
+	elif use rkt_stage1_kvm_lkvm; then
 		dosym stage1-kvm.aci "${STAGE1_DEFAULT_LOCATION}"
 	fi
 
