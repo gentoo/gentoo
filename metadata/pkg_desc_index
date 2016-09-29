@@ -13896,7 +13896,7 @@ net-analyzer/httping 2.4 2.4-r1 2.5: http protocol ping-like program
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1 8.1-r1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
-net-analyzer/icinga 1.13.3-r1: Nagios Fork - Check daemon, CGIs, docs, IDOutils
+net-analyzer/icinga 1.13.3-r2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
 net-analyzer/icinga2 2.4.1-r4 2.4.4-r1 2.4.10-r1 2.5.4 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
