@@ -51,6 +51,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc-4.9-non-ppc.patch"
 	epatch "${FILESDIR}/${P}-gcc-4.9-unused.patch"
 	epatch "${FILESDIR}/${PN}-1.0.0-athlon.patch"
+	epatch "${FILESDIR}/${PN}-1.1.0-gcc6.patch"
 	eautoreconf
 }
 

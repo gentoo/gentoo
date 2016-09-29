@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-inherit java-pkg-opt-2 linux-info multilib user
+inherit eutils java-pkg-opt-2 linux-info multilib user
 
 MY_P=${PN}-${PV/_/-}
 DESCRIPTION="A transparent low-overhead system-wide profiler"
@@ -41,6 +41,11 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 
 	use java && java-pkg_init
+}
+
+src_prepare() {
+	# fix bug #594178
+	epatch "${FILESDIR}/${PN}-1.1.0-gcc6.patch"
 }
 
 src_configure() {
