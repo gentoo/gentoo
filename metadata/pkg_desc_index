@@ -5274,7 +5274,7 @@ dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
-dev-perl/Algorithm-C3 0.90.0 0.100.0: A module for merging hierarchies using the C3 algorithm
+dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
@@ -5282,9 +5282,9 @@ dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment p
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.80.0 7.120.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.80.0 7.120.0 7.130.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
-dev-perl/AnyEvent-HTTP 2.220.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
@@ -14955,7 +14955,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.0.12-r1 1.4.0-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.0.12-r1 1.2.4 1.4.0 1.4.0-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4: NetworkManager OpenVPN plugin
