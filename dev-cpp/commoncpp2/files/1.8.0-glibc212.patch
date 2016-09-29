@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/334135
 
---- src/applog.cpp
-+++ src/applog.cpp
+--- a/src/applog.cpp
++++ b/src/applog.cpp
 @@ -44,6 +44,7 @@
  #include <cstdio>
  #include <stdarg.h>
