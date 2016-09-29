@@ -246,11 +246,6 @@ app-admin/389-admin-console
 www-apps/389-dsgw
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Unmaintained, all versions broken in several ways, bug #465604
-# Removal in a month.
-app-editors/gobby
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Unmaintained, pending major version bump, doesn't integrate well with
 # portage, bug #477798. Removal in a month.
 app-benchmarks/phoronix-test-suite
@@ -320,10 +315,6 @@ www-servers/webfs
 # Dead for ages, broken, bug #527268. Removal in a month.
 app-misc/ddccontrol
 app-misc/ddccontrol-db
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Broken, unmaintained, bug #528514. Removal in a month.
-net-libs/libzrtpcpp
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Broken (#530756), removal in a month.
@@ -917,11 +908,6 @@ dev-python/south
 # disabling GLX indirect rendering protocol support on the X server.
 <x11-drivers/nvidia-drivers-304
 
-# Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
-# Causes undefined references few layers down (in mediastreamer),
-# someone needs to investigate.
->=net-libs/libzrtpcpp-4
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Aug 2014)
 # Security mask, wrt bug #519650
 # If your application is broken due to this mask,
@@ -1067,10 +1053,6 @@ app-text/cuneiform
 # Added <sys-fs/e2fsprogs as well (halcy0n)
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
-# pre-releases
->=app-editors/gobby-0.4.91
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead
