@@ -18,7 +18,7 @@ EGIT_REPO_URI="http://llvm.org/git/openmp.git
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="hwloc test"
+IUSE="hwloc ompt test"
 
 RDEPEND="hwloc? ( sys-apps/hwloc:0= )"
 # tests:
@@ -46,6 +46,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
+		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
