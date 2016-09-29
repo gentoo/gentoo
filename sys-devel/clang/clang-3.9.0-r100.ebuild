@@ -10,13 +10,23 @@ DESCRIPTION="C language family frontend for LLVM (meta-ebuild)"
 HOMEPAGE="http://clang.llvm.org/"
 SRC_URI=""
 
+# Keep in sync with sys-devel/llvm
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Mips MSP430
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
+ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
+
 LICENSE="UoI-NCSA"
 # keep in sync with sys-devel/llvm!
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="debug multitarget python +static-analyzer"
+IUSE="debug multitarget python +static-analyzer ${ALL_LLVM_TARGETS[*]}"
 
-RDEPEND="~sys-devel/llvm-${PV}[clang(-),debug=,multitarget?,python?,static-analyzer?,${MULTILIB_USEDEP}]"
+RDEPEND="~sys-devel/llvm-${PV}[clang(-),debug=,python?,static-analyzer?,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]"
+
+REQUIRED_USE="
+	|| ( ${ALL_LLVM_TARGETS[*]} )
+	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
 # Please keep this package around since it's quite likely that we'll
 # return to separate LLVM & clang ebuilds when the cmake build system

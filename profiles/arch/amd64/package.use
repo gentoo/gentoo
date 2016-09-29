@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Enable the GPU targets matching the default VIDEO_CARDS
+sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
+sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
+
 # James Le Cuirot <chewi@gentoo.org> (01 Aug 2016)
 # Most users don't need a multilib JVM.
 dev-java/icedtea-bin -multilib

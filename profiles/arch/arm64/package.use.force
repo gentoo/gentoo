@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_AArch64
+sys-devel/llvm llvm_targets_AArch64
+
 # James Le Cuirot <chewi@gentoo.org> (16 May 2016)
 # For reasons best known to themselves, Oracle do not ship the
 # libawt_xawt.so library on arm64 even though they do on arm32.
