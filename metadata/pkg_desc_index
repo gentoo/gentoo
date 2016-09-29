@@ -14104,7 +14104,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.4 2.0.6 2.2.0 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.6 2.2.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -18597,7 +18597,7 @@ x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/util-macros 1.17.1 1.18.0 1.19.0: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.0: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.3.3 2.4.1 2.4.1-r1 2.4.1-r2 2.4.1-r3: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.4.1-r3: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.3.22 2.3.24 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2: Wayv is hand-writing/gesturing recognition software for X
