@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ CDEPEND="icu? ( dev-libs/icu:= )
 		odbc? ( !iodbc? ( dev-db/unixODBC )
 			iodbc? ( dev-db/libiodbc ) )
 		slp? ( net-libs/openslp )
-		perl? ( dev-lang/perl[-build(-)] )
+		perl? ( dev-lang/perl:=[-build(-)] )
 		samba? ( dev-libs/openssl )
 		berkdb? (
 			<sys-libs/db-6.0:=

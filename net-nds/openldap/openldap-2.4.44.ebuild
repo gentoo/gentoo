@@ -57,7 +57,7 @@ CDEPEND="icu? ( dev-libs/icu:= )
 		odbc? ( !iodbc? ( dev-db/unixODBC )
 			iodbc? ( dev-db/libiodbc ) )
 		slp? ( net-libs/openslp )
-		perl? ( dev-lang/perl[-build(-)] )
+		perl? ( dev-lang/perl:=[-build(-)] )
 		samba? (
 			!libressl? ( dev-libs/openssl:0 )
 			libressl? ( dev-libs/libressl )

@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa x86"
 IUSE="+apache2 contrib eventhandler +idoutils lighttpd +mysql perl +plugins postgres ssl +vim-syntax +web"
 DEPEND="idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	virtual/mailx
 	web? (
 		media-libs/gd[jpeg,png]
