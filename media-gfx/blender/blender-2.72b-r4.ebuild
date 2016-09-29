@@ -68,7 +68,6 @@ RDEPEND="
 	media-libs/glew
 	media-libs/libpng:0
 	media-libs/libsamplerate
-	sci-libs/ldl
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
@@ -112,6 +111,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.70-sse2.patch
 	"${FILESDIR}"/${PN}-2.72-T42797.diff
 	"${FILESDIR}"/${P}-fix-util_simd.patch
+	"${FILESDIR}"/${P}-gcc6-fixes.patch
 )
 
 pkg_pretend() {
