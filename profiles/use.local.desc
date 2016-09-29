@@ -564,7 +564,9 @@ app-emulation/rkt:actool - Install the actool for ACI manipulation
 app-emulation/rkt:rkt_stage1_coreos - Download and use a prebuilt stage1.aci from CoreOS
 app-emulation/rkt:rkt_stage1_fly - Build stage1-fly.aci
 app-emulation/rkt:rkt_stage1_host - Assemble stage1.aci from host binaries
-app-emulation/rkt:rkt_stage1_kvm - Build stage1-kvm.aci
+app-emulation/rkt:rkt_stage1_kvm - This flag has been replaced by the rkt_stage1_kvm_* flags
+app-emulation/rkt:rkt_stage1_kvm_lkvm - Build stage1-kvm-lkvm.aci
+app-emulation/rkt:rkt_stage1_kvm_qemu - Build stage1-kvm-qemu.aci
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/runc:apparmor - Enable AppArmor support.
 app-emulation/spice:lz4 - Enable support for LZ4 compression using app-arch/lz4
