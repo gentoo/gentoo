@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+btrfs ext4 lvm pam xattr"
 
-RDEPEND="dev-libs/boost[threads]
+RDEPEND="dev-libs/boost:=[threads]
 	dev-libs/libxml2
 	dev-libs/icu:=
 	sys-apps/acl

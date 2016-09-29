@@ -23,7 +23,7 @@ IUSE="editor +lobby nvtt pch sound test"
 RESTRICT="test"
 
 RDEPEND="
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/icu:=
 	dev-libs/libxml2
 	dev-libs/nspr
