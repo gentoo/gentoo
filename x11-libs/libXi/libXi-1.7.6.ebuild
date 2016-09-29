@@ -29,10 +29,3 @@ src_configure() {
 	)
 	xorg-2_src_configure
 }
-
-pkg_postinst() {
-	xorg-2_pkg_postinst
-
-	ewarn "Some special keys and keyboard layouts may stop working."
-	ewarn "To fix them, recompile xorg-server."
-}
