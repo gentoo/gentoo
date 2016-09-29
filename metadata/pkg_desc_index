@@ -2837,7 +2837,7 @@ dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.5.0 1.5.6 1.5.7 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
-dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
+dev-cpp/commoncpp2 1.8.1-r1 1.8.1-r2: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.2: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
 dev-cpp/eigen 2.0.17 3.2.8-r2: C++ template library for linear algebra
@@ -6631,17 +6631,17 @@ dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML do
 dev-perl/XML-Twig 3.460.0 3.490.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
 dev-perl/XML-Writer 0.624.0 0.625.0: XML Writer Perl Module
-dev-perl/XML-XPath 1.130.0-r1 1.360.0: A XPath Perl Module
+dev-perl/XML-XPath 1.130.0-r1 1.360.0 1.370.0: A XPath Perl Module
 dev-perl/XML-XPathEngine 0.130.0-r1 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
-dev-perl/YAML 0.840.0-r1 1.150.0: YAML Ain't Markup Language (tm)
-dev-perl/YAML-LibYAML 0.590.0 0.620.0: Perl YAML Serialization using XS and libyaml
-dev-perl/YAML-Syck 1.200.0-r1 1.270.0 1.290.0: Fast, lightweight YAML loader and dumper
-dev-perl/YAML-Tiny 1.510.0-r1 1.660.0 1.670.0 1.690.0: Read/Write YAML files with as little code as possible
-dev-perl/ZMQ-Constants 1.20.0 1.30.0 1.40.0: Constants for libzmq
+dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0: YAML Ain't Markup Language (tm)
+dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
+dev-perl/YAML-Syck 1.200.0-r1 1.290.0: Fast, lightweight YAML loader and dumper
+dev-perl/YAML-Tiny 1.510.0-r1 1.690.0: Read/Write YAML files with as little code as possible
+dev-perl/ZMQ-Constants 1.30.0 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.40.0 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0: Use shorter versions of class names
