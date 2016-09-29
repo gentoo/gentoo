@@ -5,6 +5,13 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Johannes Huber <johu@gentoo.org> (29 Sep 2016)
+# No released version available
+kde-plasma/plasma-workspace prison
+<kde-apps/akonadi-contacts-16.08.49:5 prison
+<kde-apps/kaddressbook-16.08.49:5 prison
+<kde-apps/kdepim-apps-libs-16.08.49:5 prison
+
 # Alon Bar-Lev <alonbl@gentoo.org> (23 Sep 2016)
 # Mask qt5 until kde ports
 app-crypt/gpgme qt5
@@ -283,10 +290,6 @@ dev-java/oracle-jre-bin javafx nsplugin
 # app-text/migemo is masked because it fails for ruby20
 app-text/cmigemo emacs
 www-client/w3m migemo
-
-# Johannes Huber <johu@gentoo.org> (31 Nay 2015)
-# No released version available
-kde-plasma/plasma-workspace prison
 
 # Matthias Maier <tamiko@gentoo.org> (27 May 2015)
 # mask lcms use flag for old dcraw versions that depends on lcms:0

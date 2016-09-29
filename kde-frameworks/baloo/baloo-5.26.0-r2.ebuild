@@ -40,6 +40,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-dont-corrupt.patch"
 )
 
+src_prepare() {
+	kde5_src_prepare
+	# upstream commit e73849e052c1a2ca174efe18d4a4958c6576fc33
+	sed -e "/^X-KDE-autostart-condition/ s/Enabled/Indexing-Enabled/" \
+		-i src/file/baloo_file.desktop || die
+}
+
 pkg_postinst() {
 	kde5_pkg_postinst
 	if use x86; then
