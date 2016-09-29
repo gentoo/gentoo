@@ -42,6 +42,7 @@ COMMON_DEPEND="
 	net-libs/libndp
 	>=net-libs/libsoup-2.40:2.4=
 	net-misc/iputils
+	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
 	>=virtual/libgudev-165:=[${MULTILIB_USEDEP}]
 	audit? ( sys-process/audit )
