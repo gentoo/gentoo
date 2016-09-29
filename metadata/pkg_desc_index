@@ -6622,15 +6622,15 @@ dev-perl/XML-SAX-Base 1.80.0-r1: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
 dev-perl/XML-SAX-Writer 0.540.0 0.560.0: SAX2 Writer
-dev-perl/XML-Simple 2.200.0-r1: XML::Simple - Easy API to read/write XML (esp config files)
+dev-perl/XML-Simple 2.200.0-r1 2.220.0: An API for simple XML files
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Smart 1.790.0: A smart, easy and powerful way to access or create XML from fiels, data and URLs.
 dev-perl/XML-Stream 1.230.0 1.240.0: Creates and XML Stream connection and parses return data
 dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML documents
-dev-perl/XML-Twig 3.460.0 3.480.0 3.490.0: Process huge XML documents in tree mode
+dev-perl/XML-Twig 3.460.0 3.490.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
-dev-perl/XML-Writer 0.623.0-r1 0.624.0 0.625: XML Writer Perl Module
+dev-perl/XML-Writer 0.624.0 0.625.0: XML Writer Perl Module
 dev-perl/XML-XPath 1.130.0-r1 1.360.0: A XPath Perl Module
 dev-perl/XML-XPathEngine 0.130.0-r1 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
