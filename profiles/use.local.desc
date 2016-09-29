@@ -3258,7 +3258,6 @@ kde-apps/kstars:indi - Enable support for Astronomical control library using lib
 kde-apps/kstars:wcs - Enable support for World Coordinate System library using wcslib
 kde-apps/kstars:xplanet - Enable support for Xplanet
 kde-apps/ktp-accounts-kcm:experimental - Enables disabled telepathy services (currently only steam)
-kde-apps/ktp-accounts-kcm:modemmanager - Enable support for mobile broadband devices
 kde-apps/ktp-common-internals:otr - Enable support for encrypted conversations using Off-The-Records messaging
 kde-apps/ktp-common-internals:sso - Enable support for Single sign-on through KAccounts
 kde-apps/ktp-text-ui:speech - Enable incoming messages to be read out using text-to-speech
