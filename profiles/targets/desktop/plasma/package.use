@@ -47,38 +47,40 @@ media-libs/mesa egl wayland
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 kdenlive melt
 
+# Required by app-office/libreoffice
+media-libs/phonon designer
+
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
-kde-apps/kde4-l10n minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 net-p2p/ktorrent:4 -plasma
 sys-auth/polkit-kde-agent minimal
 
-# Required by app-office/libreoffice
-media-libs/phonon designer
+# FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
+>=app-office/texmaker-4.4.1 -qt4
+>=app-office/texstudio-2.9.4 -qt4
+dev-db/sqlitebrowser -qt4
+>=dev-libs/quazip-0.7.1 -qt4
+>=media-sound/mixxx-2.0.0-r1 -qt4
+net-misc/owncloud-client -qt4
+>=net-misc/x2goclient-4.0.5.2 -qt4
+net-news/rssguard -qt4
+net-p2p/bitcoin-qt -qt4
+<net-p2p/qbittorrent-3.3.4-r1 -qt4
+>=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
->=app-office/texmaker-4.4.1 -qt4
->=app-office/texstudio-2.9.4 -qt4
-app-text/qpdfview -qt4
-dev-db/sqlitebrowser -qt4
+<app-text/qpdfview-0.4.16 -qt4
 >=dev-games/openscenegraph-3.2.1-r1 -qt4
->=dev-libs/quazip-0.7.1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-2.4.12-r1 -qt4
 >=media-sound/cantata-2.0.1 -kde
->=media-sound/mixxx-2.0.0-r1 -qt4
->=media-video/smplayer-14.9.0.6690 -qt4
+<media-video/smplayer-16.4.0-r2 -qt4
 media-video/vlc -qt4
 net-analyzer/wireshark -qt4
-net-misc/owncloud-client -qt4
-net-news/rssguard -qt4
-net-p2p/bitcoin-qt -qt4
->=net-p2p/qbittorrent-3.2.0 -qt4
 net-p2p/transmission -qt4
 >=net-print/hplip-3.16.5 -qt4
 >=net-wireless/wpa_supplicant-2.5 -qt4
->=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
-www-client/qupzilla -kde -qt4
+<www-client/qupzilla-2.0.0 -kde -qt4
