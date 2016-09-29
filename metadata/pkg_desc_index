@@ -8208,7 +8208,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.4.4 0.4.5 0.4.7 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.0.38 1.0.39 1.0.40 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.0.38 1.0.39 1.0.40 1.0.41 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8: Python interface to the R Programming Language
@@ -8610,7 +8610,7 @@ dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with ru
 dev-ros/dwa_local_planner 1.13.0 1.13.1 1.14.0 9999: Dynamic Window Approach to local robot navigation on a plane
 dev-ros/dynamic_reconfigure 1.5.43 1.5.44 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
-dev-ros/eigen_stl_containers 0.1.4 0.1.5 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
+dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.13.0 1.13.1 1.14.0 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.7.4 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 9999: Message and service data structures for interacting with Gazebo from ROS
@@ -16125,7 +16125,7 @@ sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for ar
 sci-libs/nfft 3.2.3: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
-sci-libs/octomap 1.6.8 1.8.0 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
+sci-libs/octomap 1.8.0-r1 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
 sci-libs/opencascade 6.7.1 6.8.0 6.9.0 6.9.1: Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
@@ -18274,7 +18274,7 @@ x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tas
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.8-r1 1.0.9: X.Org Inter-Client Exchange library
-x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3: C++ library based on Qt that eases the creation of OpenGL 3D viewers
+x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
 x11-libs/libX11 1.6.2 1.6.3: X.Org X11 library
 x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
