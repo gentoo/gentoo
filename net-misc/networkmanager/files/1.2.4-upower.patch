@@ -1,0 +1,67 @@
+From f864c58cfe87533c69dcf00e3ea236809392a8e0 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Thu, 4 Aug 2016 16:25:30 +0200
+Subject: build: fix build with '--with-suspend-resume=upower'
+
+Now we have a single file for all suspend APIs and the selection is
+done through the preprocessor: remove stale AM_CONDITIONALs and define
+SUSPEND_RESUME_UPOWER when needed.
+
+Fixes: c76eb3e8f7a80b69c570b513ee3eb16bea1b34bd
+(cherry picked from commit e4b2c989dc51818e52906b5120ea6a0659274631)
+
+diff --git a/configure.ac b/configure.ac
+index 46775c3..7869f07 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -472,7 +472,9 @@ if test "z$with_suspend_resume" = "z"; then
+ fi
+ 
+ case $with_suspend_resume in
+-    upower) ;;
++    upower)
++        AC_DEFINE([SUSPEND_RESUME_UPOWER], 1, [Define to 1 to use UPower suspend api])
++	;;
+     systemd)
+         PKG_CHECK_MODULES(SYSTEMD_INHIBIT, [libsystemd >= 209],,
+                           [PKG_CHECK_MODULES(SYSTEMD_INHIBIT, [libsystemd-login >= 183])])
+@@ -485,9 +487,6 @@ case $with_suspend_resume in
+         AC_MSG_ERROR(--with-suspend-resume must be one of [upower, systemd, consolekit])
+         ;;
+ esac
+-AM_CONDITIONAL(SUSPEND_RESUME_UPOWER, test "x$with_suspend_resume" = "xupower")
+-AM_CONDITIONAL(SUSPEND_RESUME_SYSTEMD, test "x$with_suspend_resume" = "xsystemd")
+-AM_CONDITIONAL(SUSPEND_RESUME_CONSOLEKIT, test "x$with_suspend_resume" = "xconsolekit")
+ 
+ # SELinux support
+ AC_ARG_WITH(selinux, AS_HELP_STRING([--with-selinux=yes|no|auto], [Build with SELinux (default: auto)]),,[with_selinux=auto])
+-- 
+cgit v0.10.2
+
+--- a/config.h.in
++++ b/config.h.in
+@@ -216,6 +216,9 @@
+ /* Define to 1 to use systemd suspend api */
+ #undef SUSPEND_RESUME_SYSTEMD
+ 
++/* Define to 1 to use UPower suspend api */
++#undef SUSPEND_RESUME_UPOWER
++
+ /* Define to 1 if libsystemd-journald is available */
+ #undef SYSTEMD_JOURNAL
+ 
+--- a/configure
++++ b/configure
+@@ -22776,7 +22776,11 @@
+ fi
+ 
+ case $with_suspend_resume in
+-    upower) ;;
++    upower)
++
++$as_echo "#define SUSPEND_RESUME_UPOWER 1" >>confdefs.h
++
++       ;;
+     systemd)
+ 
+ pkg_failed=no
