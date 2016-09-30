@@ -4948,6 +4948,7 @@ net-analyzer/echoping:priority - enable socket priority support.
 net-analyzer/echoping:smtp - enable support for SMTP protocol.
 net-analyzer/echoping:tos - enable support for TOS (TYpe Of Service).
 net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
+net-analyzer/flent:plots - Enable drawing plots
 net-analyzer/flowgrind:pcap - Enable packet capturing support using net-libs/libpcap
 net-analyzer/fprobe:messages - enable console messages
 net-analyzer/goaccess:btree - Enable Tokyo Cabinet's on-disk B+ Tree database backend
