@@ -24,9 +24,7 @@ REQUIRED_USE="
 "
 
 DEPEND="virtual/pkgconfig"
-RDEPEND="
-	=app-admin/clsync-0.4*[control-socket]
-	=app-doc/clsync-docs-0.4*"
+RDEPEND="=app-doc/clsync-docs-0.4*"
 
 src_prepare() {
 	eapply_user
@@ -69,4 +67,9 @@ src_install() {
 
 	# docs go into clsync-docs
 	rm -rf "${ED}/usr/share/doc" || die
+}
+
+pkg_postinst() {
+	einfo "clsync instances you are going to use _must_ be compiled"
+	einfo "with control-socket support"
 }
