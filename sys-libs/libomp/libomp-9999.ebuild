@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="hwloc ompt test"
 
-RDEPEND="hwloc? ( sys-apps/hwloc:0= )"
+RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
