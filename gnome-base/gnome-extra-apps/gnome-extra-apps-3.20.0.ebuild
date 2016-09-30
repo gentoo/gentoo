@@ -12,7 +12,7 @@ IUSE="+games +share +shotwell +tracker"
 
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Note to developers:
 # This is a wrapper for the extra apps integrated with GNOME 3
