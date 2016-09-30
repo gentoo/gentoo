@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic systemd toolchain-funcs user
+inherit bash-completion-r1 autotools flag-o-matic systemd toolchain-funcs user
 
 KEYWORDS="~amd64"
 
@@ -197,6 +197,7 @@ src_compile() {
 		amd64) arch=x86_64;;
 	esac
 	ARCH=${arch} emake
+	ARCH=${arch} emake bash-completion
 }
 
 src_install() {
@@ -229,6 +230,8 @@ src_install() {
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.timer
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.service
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.socket
+
+	newbashcomp "${S}"/dist/bash_completion/rkt.bash rkt
 
 	keepdir /etc/${PN}
 	fowners :rkt-admin /etc/${PN}
