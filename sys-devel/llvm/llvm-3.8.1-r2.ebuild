@@ -143,7 +143,7 @@ src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
-	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
+	eapply "${FILESDIR}"/3.9.0/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
 	eapply "${FILESDIR}"/3.9.0/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
