@@ -16252,7 +16252,7 @@ sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
 sci-mathematics/pari 2.3.5 2.5.0-r3 2.5.1 2.5.1-r1 2.5.2 2.5.3 2.5.4 2.7.0 2.7.1: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20120726: Data sets for pari
-sci-mathematics/polymake 2.13 2.14 2.14-r1: research tool for polyhedral geometry and combinatorics
+sci-mathematics/polymake 2.14-r1 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1 0.10.2: Program for statistical analysis of sampled data
@@ -17953,7 +17953,7 @@ www-apps/trac 1.0.9 1.0.10 1.0.11 1.0.12 1.0.13: Enhanced wiki and issue trackin
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
 www-apps/trac-mercurial 0.12.0.29_pre10899 1.0.0.3_pre20130206: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6: Tags plugin for Trac
-www-apps/tt-rss 20160124 20160527: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
+www-apps/tt-rss 20160527 20160930: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911: A feed aggregator application
 www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV
