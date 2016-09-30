@@ -2412,7 +2412,7 @@ app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct 
 app-text/qpdf 5.1.1 5.1.2 5.1.3 6.0.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.13-r1 0.4.15 0.4.16: A tabbed document viewer
 app-text/queequeg 0.91: A checker for English grammar, for people who are not native English
-app-text/rarian 0.8.1-r2: A documentation metadata library
+app-text/rarian 0.8.1-r2 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.5: Web-based solution for managing scientific literature, references and citations
@@ -5293,7 +5293,7 @@ dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
-dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
