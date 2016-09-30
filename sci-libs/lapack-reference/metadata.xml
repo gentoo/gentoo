@@ -12,5 +12,8 @@ linear sets of equations, eigenvector analysis, singular value
 decomposition, etc. It is a very comprehensive and reputable package
 that has found extensive use in the scientific community.
 This package installs the reference FORTRAN 77 implementation from Netlib.
-</longdescription>
+  </longdescription>
+  <use>
+    <flag name="deprecated">Build deprecated routines</flag>
+  </use>
 </pkgmetadata>

@@ -1,0 +1,92 @@
+--- lapack-3.6.0/BLAS/blas.pc.in
++++ lapack-3.6.0/BLAS/blas.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: blas
+ Description: Basic Linear Algebra Subprograms F77 reference implementations
+--- lapack-3.6.0/BLAS/CMakeLists.txt
++++ lapack-3.6.0/BLAS/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ if(BUILD_TESTING)
+ add_subdirectory(TESTING)
+ endif(BUILD_TESTING)
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/blas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/blas.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/blas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/blas.pc @ONLY)
+ install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/blas.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+--- lapack-3.6.0/CBLAS/cblas.pc.in
++++ lapack-3.6.0/CBLAS/cblas.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: lapacke
+ Description: C Standard Interface to BLAS Linear Algebra PACKage
+--- lapack-3.6.0/CBLAS/CMakeLists.txt
++++ lapack-3.6.0/CBLAS/CMakeLists.txt
+@@ -71,7 +71,7 @@
+   ${LAPACK_BINARY_DIR}/cblas-config.cmake @ONLY)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cblas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cblas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc @ONLY)
+   install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+--- lapack-3.6.0/CMakeLists.txt
++++ lapack-3.6.0/CMakeLists.txt
+@@ -333,7 +333,7 @@
+   ${LAPACK_BINARY_DIR}/lapack-config.cmake @ONLY)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc @ONLY)
+   install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+--- lapack-3.6.0/LAPACKE/CMakeLists.txt
++++ lapack-3.6.0/LAPACKE/CMakeLists.txt
+@@ -65,7 +65,7 @@
+ endif(BUILD_TESTING)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapacke.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapacke.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc @ONLY)
+  install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+--- lapack-3.6.0/LAPACKE/lapacke.pc.in
++++ lapack-3.6.0/LAPACKE/lapacke.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: lapacke
+ Description: C Standard Interface to LAPACK Linear Algebra PACKage
+--- lapack-3.6.0/lapack.pc.in
++++ lapack-3.6.0/lapack.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: lapack
+ Description: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
