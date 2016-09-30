@@ -18,10 +18,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
-DEPEND="app-eselect/eselect-cblas"
-RDEPEND="${DEPEND}
+DEPEND="app-eselect/eselect-cblas
 	>=virtual/blas-3.6
 	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${LPN}-${LPV}"
 PATCHES=( "${FILESDIR}/lapack-fix-build-system.patch" )
