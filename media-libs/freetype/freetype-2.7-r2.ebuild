@@ -41,8 +41,6 @@ RDEPEND="${CDEPEND}
 	abi_x86_32? ( utils? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] ) )"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
-REQUIRED_USE="?? ( cleartype_hinting infinality )"
-
 PATCHES=(
 	# This is the same as the 01 patch from infinality
 	"${FILESDIR}"/${PN}-2.7-enable-valid.patch
@@ -52,27 +50,28 @@ PATCHES=(
 
 src_prepare() {
 	enable_option() {
-		sed -i -e "/#define $1/a #define $1" \
+		sed -i -e "/#define $1/ { s:/\* ::; s: \*/:: }" \
 			include/${PN}/config/ftoption.h \
 			|| die "unable to enable option $1"
 	}
 
 	disable_option() {
-		sed -i -e "/#define $1/ { s:^:/*:; s:$:*/: }" \
+		sed -i -e "/#define $1/ { s:^:/* :; s:$: */: }" \
 			include/${PN}/config/ftoption.h \
 			|| die "unable to disable option $1"
 	}
 
 	default
 
-	if use infinality; then
-		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
+	# Will be the new default for >=freetype-2.7.0
+	disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
+
+	if use infinality && use cleartype_hinting; then
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )"
+	elif use infinality; then
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
 	elif use cleartype_hinting; then
-		# Will be the new default for >=freetype-2.7.0
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
-	else
-		disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
 
 	if ! use bindist; then
