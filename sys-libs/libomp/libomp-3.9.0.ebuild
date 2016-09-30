@@ -16,9 +16,11 @@ SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 LICENSE="UoI-NCSA"
 SLOT="0/3.9"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="hwloc ompt"
 
-DEPEND="dev-lang/perl"
+RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
+	dev-lang/perl"
 
 S="${WORKDIR}/${MY_P}.src"
 
@@ -31,6 +33,8 @@ multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
+		-DLIBOMP_USE_HWLOC=$(usex hwloc)
+		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
