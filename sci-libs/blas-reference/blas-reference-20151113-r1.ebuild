@@ -42,15 +42,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local FCFLAGS="${FCFLAGS}"
-	append-fflags $($(tc-getPKG_CONFIG) --cflags ${blas_profname})
-	append-fflags $(get_abi_CFLAGS)
-	append-fflags $(numeric-int64_get_fortran_int64_abi_fflags)
-
 	local mycmakeargs=(
 		-Wno-dev
 		-DUSE_OPTIMIZED_BLAS=OFF
-		-DCMAKE_Fortran_FLAGS="${FCFLAGS}"
+		-DCMAKE_Fortran_FLAGS="$(get_abi_CFLAGS) ${FCFLAGS}"
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_STATIC_LIBS=ON
 	)
@@ -59,10 +54,7 @@ src_configure() {
 }
 
 src_compile() {
-	local each target_dirs=( BLAS )
-	for each in ${target_dirs[@]}; do
-		cmake-utils_src_compile -C ${each}
-	done
+	cmake-utils_src_compile -C BLAS
 }
 
 src_install() {
