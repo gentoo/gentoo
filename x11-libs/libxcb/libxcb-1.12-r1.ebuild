@@ -57,7 +57,8 @@ src_configure() {
 	xorg-2_src_configure
 }
 
-pkg_preinst() {
+src_install() {
+	xorg-2_src_install
 	if ! use doc; then
 		rm -r "${D}"/usr/share/man || die
 	fi
