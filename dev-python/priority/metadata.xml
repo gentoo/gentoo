@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>cory@lukasa.co.uk</email>
+			<name>Cory Benfield</name>
+		</maintainer>
+		<remote-id type="pypi">priority</remote-id>
+	</upstream>
+	<longdescription>Priority is a pure-Python implementation of the priority
+		logic for HTTP/2, set out in RFC 7540 Section 5.3 (Stream Priority).
+		This logic allows for clients to express a preference for how the
+		server allocates its (limited) resources to the many outstanding HTTP
+		requests that may be running over a single HTTP/2 connection.
+	</longdescription>
+</pkgmetadata>
