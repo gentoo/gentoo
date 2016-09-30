@@ -96,9 +96,6 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# Fix libdir for ocaml bindings install, bug #559134
-	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
-
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
 	eapply "${FILESDIR}"/9999/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
