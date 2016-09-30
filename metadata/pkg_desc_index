@@ -17401,7 +17401,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.27 4.1.29 4.1.30 4.1.31 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.7.2 4.7.3 4.7.4 4.7.5: Full sources including the Gentoo patchset for the 4.7 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.7.2 4.7.3 4.7.4 4.7.5: Full sources including the Gentoo patchset for the 4.7 kernel tree
 sys-kernel/git-sources 4.8_rc1 4.8_rc2 4.8_rc3 4.8_rc4 4.8_rc5 4.8_rc6 4.8_rc7 4.8_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1 4.7.4-r1 4.7.5: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17548,7 +17548,7 @@ sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.4 2.5 2.6: utility to checkpoint/restore a process tree
-sys-process/cronbase 0.3.7-r2: base for all cron ebuilds
+sys-process/cronbase 0.3.7-r3: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
