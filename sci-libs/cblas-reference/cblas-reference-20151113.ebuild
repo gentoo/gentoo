@@ -9,18 +9,18 @@ inherit eutils fortran-2 cmake-utils multilib flag-o-matic toolchain-funcs
 LPN=lapack
 LPV=3.6.0
 
-DESCRIPTION="Basic Linear Algebra Subprograms F77 reference implementations"
-HOMEPAGE="http://www.netlib.org/blas/"
+DESCRIPTION="C wrapper interface to the F77 reference BLAS implementation"
+HOMEPAGE="http://www.netlib.org/cblas/"
 SRC_URI="http://www.netlib.org/${LPN}/${LPN}-${LPV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="doc"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+IUSE=""
 
-DEPEND="app-eselect/eselect-blas"
+DEPEND="app-eselect/eselect-cblas"
 RDEPEND="${DEPEND}
-	doc? ( app-doc/blas-docs )
+	>=virtual/blas-3.6
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${LPN}-${LPV}"
@@ -33,19 +33,26 @@ src_prepare() {
 
 	ESELECT_PROF=reference
 
-	cp "${FILESDIR}"/eselect.blas.reference-r1 "${T}"/eselect.blas.reference || die
-	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.blas.reference || die
+	cp "${FILESDIR}"/eselect.cblas.reference-r1 "${T}"/eselect.cblas.reference || die
+	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.cblas.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
-			"${T}"/eselect.blas.reference || die
+			"${T}"/eselect.cblas.reference || die
 	fi
+
+	sed -i \
+		-e 's:/CMAKE/:/cmake/:g' \
+		CBLAS/CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-Wno-dev
-		-DUSE_OPTIMIZED_BLAS=OFF
-		-DCMAKE_Fortran_FLAGS="$(get_abi_CFLAGS) ${FCFLAGS}"
+		-DCBLAS=ON
+		-DUSE_OPTIMIZED_BLAS=ON
+		-DBLAS_LIBRARIES="$($(tc-getPKG_CONFIG) --libs blas)"
+		-DCMAKE_C_FLAGS="$($(tc-getPKG_CONFIG) --cflags blas) ${CFLAGS}"
+		-DCMAKE_Fortran_FLAGS="$($(tc-getPKG_CONFIG) --cflags blas) $(get_abi_CFLAGS) ${FCFLAGS}"
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_STATIC_LIBS=ON
 	)
@@ -54,22 +61,26 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile -C BLAS
+	cmake-utils_src_compile -C CBLAS
 }
 
 src_install() {
-	cmake-utils_src_install -C BLAS
+	cmake-utils_src_install -C CBLAS
 
 	mkdir -p "${ED}/usr/$(get_libdir)/blas/reference" || die
-	mv "${ED}/usr/$(get_libdir)"/lib* "${ED}/usr/$(get_libdir)/pkgconfig"/* \
+	mv "${ED}/usr/$(get_libdir)"/lib* "${ED}/usr/include"/cblas* \
+		"${ED}/usr/$(get_libdir)/pkgconfig"/* \
 		"${ED}/usr/$(get_libdir)/blas/reference" || die
-	rmdir "${ED}/usr/$(get_libdir)/pkgconfig" || die
 
-	eselect blas add $(get_libdir) "${T}"/eselect.blas.reference ${ESELECT_PROF}
+	rmdir "${ED}/usr/$(get_libdir)/pkgconfig" || die
+	rmdir "${ED}/usr/include" || die
+	rm -rf "${ED}"/usr/lib/ || die
+
+	eselect cblas add $(get_libdir) "${T}"/eselect.cblas.reference ${ESELECT_PROF}
 }
 
 pkg_postinst() {
-	local p=blas
+	local p=cblas
 	local current_lib=$(eselect ${p} show | cut -d' ' -f2)
 	if [[ ${current_lib} == ${ESELECT_PROF} || -z ${current_lib} ]]; then
 		# work around eselect bug #189942
