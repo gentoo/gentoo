@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 
-DIST_AUTHOR=SHAY
-DIST_VERSION=1.40
+MODULE_AUTHOR=SHAY
+MODULE_VERSION=1.40
 inherit depend.apache perl-module
 
 DESCRIPTION="Test.pm wrapper with helpers for testing Apache"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
 
 # interactive, requires interaction with the live filesystem
-DIST_TEST="skip"
+SRC_TEST="skip"
 
 need_apache
 
