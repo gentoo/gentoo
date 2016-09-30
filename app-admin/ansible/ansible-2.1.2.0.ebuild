@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -10,7 +10,7 @@ inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-BLAKE2B_HASH="26/6e/3974858f047641de6ceffad0f51ab7cafa5f2c09d1474c6221ec96434f58"
+BLAKE2B_HASH="5f/51/9f54f20180eb323a80451c9f48f508bd5bbe03008c136e125b4ce3946fcf"
 SRC_URI="https://pypi.python.org/packages/${BLAKE2B_HASH}/${P}.tar.gz"
 
 LICENSE="GPL-3"
