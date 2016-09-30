@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
-	dev-util/ninja
+	>=dev-util/ninja-1.6.0
 "
 RDEPEND="${DEPEND}"
 
