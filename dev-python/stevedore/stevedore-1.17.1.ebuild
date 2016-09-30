@@ -43,8 +43,7 @@ RDEPEND="
 
 python_prepare_all() {
 	# Delete spurious data in requirements.txt
-	sed -e '/^pbr/d' -e '/^argparse/d' \
-		-i requirements.txt || die
+	sed -e '/^pbr/d' -i requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 

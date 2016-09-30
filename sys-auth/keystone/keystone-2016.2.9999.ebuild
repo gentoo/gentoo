@@ -4,14 +4,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 git-r3 user
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
 EGIT_REPO_URI="https://github.com/openstack/keystone.git"
-EGIT_BRANCH="stable/mitaka"
+EGIT_BRANCH="stable/newton"
 
 LICENSE="Apache-2.0"
 SLOT="0"
