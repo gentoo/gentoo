@@ -17,10 +17,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="api +examples"
 
-DEPEND="
-	virtual/pkgconfig
-	api? ( app-doc/doxygen )
-"
+DEPEND="api? ( app-doc/doxygen )"
 
 src_configure() {
 	: # doxygen doesn't depend on configuration
