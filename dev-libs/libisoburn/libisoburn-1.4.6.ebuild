@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -18,8 +18,8 @@ IUSE="acl cdio debug external-filters external-filters-setuid frontend-optional
 
 REQUIRED_USE="frontend-optional? ( || ( launch-frontend launch-frontend-setuid ) )"
 
-RDEPEND=">=dev-libs/libburn-1.4.2
-	>=dev-libs/libisofs-1.4.2
+RDEPEND=">=dev-libs/libburn-1.4.6
+	>=dev-libs/libisofs-1.4.6
 	readline? ( sys-libs/readline:0= )
 	!readline? ( libedit? ( dev-libs/libedit ) )
 	acl? ( virtual/acl )
@@ -60,7 +60,6 @@ src_install() {
 	dodoc frontend/README-tcltk
 	docinto xorriso
 	dodoc xorriso/{changelog.txt,README_gnu_xorriso}
-	docinto xorriso/html
 
 	prune_libtool_files --all
 }
