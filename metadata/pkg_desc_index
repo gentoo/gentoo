@@ -2894,7 +2894,7 @@ dev-db/aerospike-server-community 3.8.2.4 3.8.3 3.8.4 3.9.0.2 3.9.0.3 3.9.1 3.9.
 dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: Another PostgreSQL Diff Tool is a simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
-dev-db/cdb 0.75-r3 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
+dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/couchdb 1.6.1 1.6.1-r2: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
@@ -2930,7 +2930,7 @@ dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for li
 dev-db/libiodbc 3.52.8-r2 3.52.12: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: C++ class library that provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1: A thread safe high level multi-database connection pool library
-dev-db/lmdb 0.9.14 0.9.17 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
+dev-db/lmdb 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
