@@ -56,8 +56,10 @@ grab_lock() {
 
 		# This is better than kill -0 because we can verify that it's really
 		# another run-crons process.
-		cmdline1=$(cat "/proc/${cronpid}/cmdline" 2>/dev/null) || :
-		cmdline2=$(cat /proc/$$/cmdline)
+		# The tr call deletes null bytes so newer bash versions do not complain
+		# about them.
+		cmdline1=$(tr -d '\0'  < "/proc/${cronpid}/cmdline" 2>/dev/null) || :
+		cmdline2=$(tr -d '\0'  < /proc/$$/cmdline)
 		if [ "${cmdline1}" = "${cmdline2}" ] ; then
 			# Whoa, another run-crons is really running.
 			return 1
