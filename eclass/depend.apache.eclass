@@ -48,7 +48,7 @@ case ${EAPI:-0} in
 	6)
 		ewarn
 		ewarn "EAPI=${EAPI} is not supported by depend.apache.eclass."
-		ewarn "This means that ${CATEGORY}/${PVR} is most likely buggy."
+		ewarn "This means that ${CATEGORY}/${PF} is most likely buggy."
 		ewarn "Please file a report on https://bugs.gentoo.org/"
 		ewarn
 		;;
