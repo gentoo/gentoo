@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="JPEG image encoder/decoder plugin for GStreamer"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}]"

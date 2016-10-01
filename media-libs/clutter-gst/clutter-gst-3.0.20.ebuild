@@ -13,7 +13,7 @@ DESCRIPTION="GStreamer integration library for Clutter"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="X debug examples +introspection udev"
 
 # >=cogl-1.18 provides cogl-2.0-experimental

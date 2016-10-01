@@ -29,7 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
 "
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2

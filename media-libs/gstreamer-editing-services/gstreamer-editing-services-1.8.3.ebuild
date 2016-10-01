@@ -13,7 +13,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="+introspection"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

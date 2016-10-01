@@ -17,7 +17,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Anjuta"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-fbsd"
 
 IUSE="debug devhelp glade +introspection packagekit subversion terminal test vala"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

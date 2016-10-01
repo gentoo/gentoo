@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug doc pam systemd"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]

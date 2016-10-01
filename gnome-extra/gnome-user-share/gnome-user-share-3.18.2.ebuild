@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-user-share"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # FIXME: could libnotify be made optional ?

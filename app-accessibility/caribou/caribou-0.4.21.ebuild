@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Caribou"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

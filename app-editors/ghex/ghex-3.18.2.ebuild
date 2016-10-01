@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Ghex"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc x86 ~x86-interix ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

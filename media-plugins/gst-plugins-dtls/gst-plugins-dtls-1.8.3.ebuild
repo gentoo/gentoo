@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="DTLS encoder/decoder with SRTP support plugin for GStreamer"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="libressl"
 
 RDEPEND="

@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X +introspection +sqlite tracker test transcode"
 
 # The deps for tracker? and transcode? are just the earliest available

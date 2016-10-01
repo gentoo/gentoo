@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gftp.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="gtk libressl ssl"
 
 RDEPEND="

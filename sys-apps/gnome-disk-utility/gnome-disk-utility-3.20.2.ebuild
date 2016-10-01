@@ -13,7 +13,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-disk-utility"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="fat gnome systemd"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.31:2[dbus]

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Maps"
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=app-misc/geoclue-0.12.99:2.0
