@@ -69,7 +69,7 @@ src_prepare() {
 	perl-module_src_prepare
 
 	# chainsaw unbundling
-	rm -rf Apache-{Test,Reload,SizeLimit}/ lib/Bundle/
+	rm -rf Apache-{Test,Reload,SizeLimit}/ lib/Bundle/ || die
 }
 
 src_configure() {
@@ -92,7 +92,7 @@ src_test() {
 
 	# IF YOU SUDO TO EMERGE AND HAVE !env_reset set testing will fail!
 	if [[ "$(id -u)" == "0" ]]; then
-		chown nobody:nobody "${WORKDIR}" "${T}"
+		chown nobody:nobody "${WORKDIR}" "${T}" || die
 	fi
 
 	# We force verbose tests for now to get meaningful bug reports.
@@ -124,9 +124,10 @@ src_install() {
 		-e "s,${S}\(/[^[:space:]\"\']\+\)\?,/,g" \
 		"${D}/${VENDOR_ARCH}/Apache2/BuildConfig.pm" || die
 
+	local fname
 	for fname in $(find "${D}" -type f -not -name '*.so'); do
 		grep -q "\(${D}\|${S}\)" "${fname}" && ewarn "QA: File contains a temporary path ${fname}"
-		sed -i -e "s:\(${D}\|${S}\):/:g" ${fname}
+		sed -i -e "s:\(${D}\|${S}\):/:g" ${fname} || die
 	done
 
 	perl_remove_temppath
