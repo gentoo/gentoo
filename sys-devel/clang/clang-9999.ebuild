@@ -243,7 +243,7 @@ src_install() {
 	done
 
 	# Remove unnecessary headers on FreeBSD, bug #417171
-	if use kernel_FreeBSD && use clang; then
+	if use kernel_FreeBSD; then
 		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
 	fi
 }
