@@ -12590,7 +12590,7 @@ media-libs/imlib 1.9.15-r4: Image loading and rendering library
 media-libs/imlib2 1.4.9 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
 media-libs/jasper 1.900.1-r9: software-based implementation of the codec specified in the JPEG-2000 Part-1 standard
-media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compression format
+media-libs/jbig2dec 0.11-r1 0.13: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
