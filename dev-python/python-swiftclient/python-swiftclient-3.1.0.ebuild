@@ -39,9 +39,9 @@ RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]
 
 #PATCHES=( "${FILESDIR}/CVE-2013-6396.patch" )
 
-python_prepare() {
+python_prepare_all() {
 	sed -i '/hacking/d' "${S}/test-requirements.txt" || die "sed failed"
-	distutils-r1_python_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
