@@ -1,0 +1,80 @@
+diff -ruN mod_perl-2.0.10-rc1.orig/Makefile.PL mod_perl-2.0.10-rc1/Makefile.PL
+--- mod_perl-2.0.10-rc1.orig/Makefile.PL	2016-09-30 14:45:23.000000000 +0200
++++ mod_perl-2.0.10-rc1/Makefile.PL	2016-10-01 00:35:17.140862642 +0200
+@@ -25,7 +25,7 @@
+ 
+ }
+ 
+-use lib qw(lib Apache-Test/lib);
++use lib qw(lib);
+ 
+ use Config;
+ use File::Spec::Functions;
+@@ -122,15 +122,6 @@
+ 
+ sub configure {
+ 
+-    # mod_perl test suite relies on having Apache-Test bundled with
+-    # the mod_perl source, since any pre-installed version may not do
+-    # the right thing
+-    unless (-d "Apache-Test") {
+-        error "Can't find a sub-directory Apache-Test. " .
+-            "Make sure that you are using a complete source distribution";
+-        exit 1;
+-    }
+-
+     set_modperl_version();
+ 
+     if ($old_modperl_version) {
+@@ -853,14 +844,9 @@
+ run_subtests ::
+ 	cd ModPerl-Registry && $(MAKE) test
+ 
+-run_subtests ::
+-	cd Apache-Reload && $(MAKE) test
+-
+ EOF
+ 
+     $preamble .= <<'EOF' unless $build->mpm_is_threaded();
+-run_subtests ::
+-	cd Apache-SizeLimit && $(MAKE) test
+ 
+ EOF
+ 
+diff -ruN mod_perl-2.0.10-rc1.orig/lib/ModPerl/BuildMM.pm mod_perl-2.0.10-rc1/lib/ModPerl/BuildMM.pm
+--- mod_perl-2.0.10-rc1.orig/lib/ModPerl/BuildMM.pm	2016-09-30 14:45:23.000000000 +0200
++++ mod_perl-2.0.10-rc1/lib/ModPerl/BuildMM.pm	2016-10-01 00:35:17.140862642 +0200
+@@ -39,12 +39,10 @@
+ ModPerl::MM::override_eu_mm_mv_all_methods(@methods);
+ use strict 'refs';
+ 
+-my $apache_test_dir = catdir Cwd::getcwd(), "Apache-Test", "lib";
+-
+ #to override MakeMaker MOD_INSTALL macro
+ sub mod_install {
+     q{$(PERL) -I$(INST_LIB) -I$(PERL_LIB) \\}."\n" .
+-    qq{-I$apache_test_dir -MModPerl::BuildMM \\}."\n" .
++    qq{-MModPerl::BuildMM \\}."\n" .
+     q{-e "ExtUtils::Install::install({@ARGV},'$(VERBINST)',0,'$(UNINST)');"}."\n";
+ }
+ 
+@@ -271,7 +269,7 @@
+ 
+                 push @target,
+                     '$(FULLPERL) -I$(INST_LIB) ' .
+-                    "-I$apache_test_dir -MModPerl::BuildMM " .
++                    "-MModPerl::BuildMM " .
+                     "-e ModPerl::BuildMM::glue_pod $pm $podpath $blib";
+ 
+                 # Win32 doesn't normally install man pages
+diff -ruN mod_perl-2.0.10-rc1.orig/lib/ModPerl/Manifest.pm mod_perl-2.0.10-rc1/lib/ModPerl/Manifest.pm
+--- mod_perl-2.0.10-rc1.orig/lib/ModPerl/Manifest.pm	2016-09-30 14:45:23.000000000 +0200
++++ mod_perl-2.0.10-rc1/lib/ModPerl/Manifest.pm	2016-10-01 00:35:17.140862642 +0200
+@@ -119,7 +119,6 @@
+ t/apr-ext/perlio
+ # PAUSE breaks if a dist has more than one META.yml. the top-level
+ # META.yml already excludes Apache-Test from indexing
+-Apache-Test/META.yml
+ # exclude Apache-Test/MANIFEST since it confuses the mp2 build (e.g it
+ # wants Apache-Test/META.yml which we don't supply, see above)
+ Apache-Test/MANIFEST
