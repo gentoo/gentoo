@@ -5373,6 +5373,7 @@ dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.40.0-r1 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.6-r1: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
+dev-perl/Chatbot-Eliza 1.60.0: A clone of the classic Eliza program
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
@@ -17449,7 +17450,7 @@ sys-libs/tdb 1.3.8 1.3.10 1.3.11: A simple database API
 sys-libs/tevent 0.9.26 0.9.28 0.9.29 0.9.30: Samba tevent library
 sys-libs/timezone-data 2016e 2016f: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
-sys-libs/uclibc-ng 1.0.16 1.0.17 9999: C library for developing embedded Linux systems
+sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
