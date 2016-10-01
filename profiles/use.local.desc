@@ -1088,6 +1088,8 @@ app-text/groonga:zeromq - Enable net-libs/zeromq used for suggestion
 app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/jmupdf:system-mupdf - Link against system version of app-text/mupdf
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
+app-text/libstaroffice:tools - Build conversion tools
+app-text/libstaroffice:zlib - Enable support for compressed data
 app-text/libwpd:tools - Build miscellaneous tools
 app-text/mathtex:png - Generate png images by default instead of gif
 app-text/mupdf:openssl - Use dev-libs/openssl crypto backend
@@ -3947,6 +3949,7 @@ media-libs/libyami:glx - Add support for OpenGL/GLX instead of EGL.
 media-libs/libyami:md5 - Add support for generating md5 sums for each frame.
 media-libs/libyami:tools - Build and install command line tools. Useful for testing.
 media-libs/libyami:v4l - Add support for V4L2 hardware codecs.
+media-libs/libzmf:tools - Build conversion tools
 media-libs/lilv:dyn-manifest - Add LV2 Dynamic Manifest support. See http://lv2plug.in/ns/ext/dynmanifest/
 media-libs/lv2:plugins - Enables examples plugins.
 media-libs/lvtk:gtk2 - Enable x11-libs/gtk+:2 based GUI support
