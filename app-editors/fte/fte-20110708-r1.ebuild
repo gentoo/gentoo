@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -20,7 +20,7 @@ IUSE="gpm slang X"
 S="${WORKDIR}/${PN}"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.2
+	sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXdmcp
 		x11-libs/libXau
@@ -31,6 +31,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	slang? ( >=sys-libs/slang-2.1.3 )
 	app-arch/unzip"
+
+HTML_DOCS=( doc/. )
 
 set_targets() {
 	export TARGETS=""
@@ -48,9 +50,12 @@ src_prepare() {
 	# epatch "${FILESDIR}"/${PN}-new_keyword.patch
 	# epatch "${FILESDIR}"/${PN}-slang.patch
 	# epatch "${FILESDIR}"/${PN}-interix.patch
+	default
 
-	[[ -e /usr/include/linux/keyboard.h ]] && \
-		sed /usr/include/linux/keyboard.h -e '/wait.h/d' > src/hacked_keyboard.h
+	if [[ -e /usr/include/linux/keyboard.h ]]; then
+		sed /usr/include/linux/keyboard.h \
+			-e '/wait.h/d'>src/hacked_keyboard.h || die
+	fi
 
 	sed \
 		-e "s:<linux/keyboard.h>:\"hacked_keyboard.h\":" \
@@ -109,8 +114,7 @@ src_install() {
 
 	dobin "${FILESDIR}"/${PN}
 
-	dodoc BUGS README TODO
-	dohtml doc/*
+	einstalldocs
 
 	insinto /usr/share/${PN}
 	doins -r config/*
