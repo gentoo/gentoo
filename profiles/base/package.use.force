@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Maciej Mrozowski <reavertm@gentoo.org> (1 Sept 2016)
+# Workaround until resolved upstream (bug #586840)
+>=dev-games/simgear-2016.2.1 dns
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (20 Aug 2016)
 # Chromium GYP build is no longer supported - always use GN.
 >=www-client/chromium-54 gn
