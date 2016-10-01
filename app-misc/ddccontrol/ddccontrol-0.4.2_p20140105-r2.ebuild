@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/${COMMIT_ID}.tar.gz ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc gtk nls +pci static-libs video_cards_fglrx"
 S=${WORKDIR}/${PN}-${COMMIT_ID}
 
@@ -60,9 +60,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# amdadl broken, bug #527268
 	econf \
 		--htmldir='$(datarootdir)'/doc/${PF}/html \
 		--disable-gnome-applet \
+		--disable-amdadl \
 		$(use_enable doc) \
 		$(use_enable gtk gnome) \
 		$(use_enable nls) \
