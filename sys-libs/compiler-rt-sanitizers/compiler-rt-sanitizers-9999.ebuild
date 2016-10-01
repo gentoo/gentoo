@@ -25,7 +25,9 @@ RDEPEND="${PYTHON_DEPS}
 	!<sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
-	test? ( dev-python/lit[${PYTHON_USEDEP}]
+	test? (
+		app-portage/unsandbox
+		dev-python/lit[${PYTHON_USEDEP}]
 		~sys-devel/clang-${PV}
 		~sys-libs/compiler-rt-${PV} )
 	${PYTHON_DEPS}"
@@ -70,7 +72,7 @@ src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+			-DLIT_COMMAND="${EPREFIX}/usr/bin/unsandbox;${EPREFIX}/usr/bin/lit"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/bin/clang"
@@ -102,9 +104,6 @@ src_configure() {
 }
 
 src_test() {
-	# sandbox breaks libasan tests... and is hard to kill
-	# so abuse the fail in its algorithms
-	local -x LD_PRELOAD=${LD_PRELOAD/libsandbox/nolibsandbox}
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 
