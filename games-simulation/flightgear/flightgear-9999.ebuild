@@ -72,6 +72,7 @@ src_configure() {
 		-DEVENT_INPUT=$(usex udev)
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
+		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
 		-DSIMGEAR_SHARED=ON
 		-DSP_FDMS=ON
 		-DSYSTEM_FLITE=ON
@@ -79,6 +80,7 @@ src_configure() {
 		-DSYSTEM_SPEEX=ON
 		-DSYSTEM_GSM=ON
 		-DSYSTEM_SQLITE=ON
+		-DUSE_AEONWAVE=OFF
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)

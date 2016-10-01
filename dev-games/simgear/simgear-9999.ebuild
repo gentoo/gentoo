@@ -33,10 +33,6 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
-PATCHES=(
-	"${FILESDIR}/simgear-2016.2.1-unbundle-udns.patch"
-)
-
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
@@ -50,6 +46,8 @@ src_configure() {
 		-DSIMGEAR_SHARED=ON
 		-DSYSTEM_EXPAT=ON
 		-DSYSTEM_UDNS=ON
+		-DUSE_AEONWAVE=OFF
+		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO perhaps track it
 	)
 	cmake-utils_src_configure
 }
