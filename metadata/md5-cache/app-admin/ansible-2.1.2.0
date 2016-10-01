@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/packaging-16.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( keyczar? ( dev-python/keyczar[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) dev-python/paramiko[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/jinja[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pycrypto-2.6[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/httplib2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/six[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/sshpass virtual/ssh dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/mock-1.0.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] <dev-python/mock-1.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/passlib[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/coverage[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/unittest2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/git ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Model-driven deployment, config management, and command execution framework
-EAPI=5
+EAPI=6
 HOMEPAGE=http://ansible.com/
 IUSE=keyczar test python_targets_python2_7
 KEYWORDS=~amd64 ~x86 ~x64-macos
@@ -10,7 +10,7 @@ RDEPEND=keyczar? ( dev-python/keyczar[python_targets_python2_7(-)?,-python_singl
 REQUIRED_USE=|| ( python_targets_python2_7 )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://pypi.python.org/packages/26/6e/3974858f047641de6ceffad0f51ab7cafa5f2c09d1474c6221ec96434f58/ansible-2.1.0.0.tar.gz
+SRC_URI=https://pypi.python.org/packages/5f/51/9f54f20180eb323a80451c9f48f508bd5bbe03008c136e125b4ce3946fcf/ansible-2.1.2.0.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=1e4416dd2579983c0bc3ecbce8079595
+_md5_=c4a56a1e8c2936d92766a78e1132ea1b
