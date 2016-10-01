@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (01 Oct 2016)
+# Masked for failing to build with C++11, ancient codebase,
+# dead upstream, no updates in 5 years. No revdeps.
+# Mask for removal in 30 days. Bug #595754
+net-libs/socket++
+
 # Pacho Ramos <pacho@gentoo.org> (29 Sep 2016)
 # Makes gst-transcoder to fail on building, bug #594172
 =dev-util/meson-0.34.0
