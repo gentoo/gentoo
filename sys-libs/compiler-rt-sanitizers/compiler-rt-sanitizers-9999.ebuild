@@ -25,7 +25,8 @@ RDEPEND="${PYTHON_DEPS}
 	!<sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
-	test? ( ~sys-devel/clang-${PV}
+	test? ( dev-python/lit[${PYTHON_USEDEP}]
+		~sys-devel/clang-${PV}
 		~sys-libs/compiler-rt-${PV} )
 	${PYTHON_DEPS}"
 
@@ -69,6 +70,7 @@ src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+			-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/bin/clang"
