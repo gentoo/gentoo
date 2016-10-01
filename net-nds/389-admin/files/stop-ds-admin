@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-# Copyright (c) 2007-2009, Mario Fetka <mario-fetka@gmx.at>
-#
-# Licensed under the GNU General Public License, v2
-
-rc-config stop 389-admin

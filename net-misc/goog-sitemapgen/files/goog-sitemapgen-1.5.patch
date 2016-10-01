@@ -1,8 +1,0 @@
---- setup.py~	2007-07-19 05:51:20.000000000 +0200
-+++ setup.py	2012-03-20 11:47:32.218963792 +0100
-@@ -9,4 +9,5 @@
-       author='Google Inc.',
-       author_email='opensource@google.com',
-       url='http://code.google.com/p/sitemap-generators/',
-+      scripts=['sitemap_gen'],
-      )
