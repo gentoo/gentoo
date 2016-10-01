@@ -167,8 +167,8 @@ src_install() {
 
 	if use server; then
 		insinto /etc/zabbix
-		doins "${FILESDIR}/2.4"/zabbix_server.conf
-		doinitd "${FILESDIR}/2.4"/init.d/zabbix-server
+		doins "${FILESDIR}/2.2"/zabbix_server.conf
+		doinitd "${FILESDIR}/2.2"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
 		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
@@ -180,12 +180,12 @@ src_install() {
 
 	if use proxy; then
 		doinitd \
-			"${FILESDIR}/2.4"/init.d/zabbix-proxy
+			"${FILESDIR}/2.2"/init.d/zabbix-proxy
 		dosbin \
 			src/zabbix_proxy/zabbix_proxy
 		insinto /etc/zabbix
 		doins \
-			"${FILESDIR}/2.4"/zabbix_proxy.conf
+			"${FILESDIR}/2.2"/zabbix_proxy.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
 		systemd_dounit "${FILESDIR}/zabbix-proxy.service"
@@ -195,9 +195,9 @@ src_install() {
 	if use agent; then
 		insinto /etc/zabbix
 		doins \
-			"${FILESDIR}/2.4"/zabbix_agent.conf \
-			"${FILESDIR}/2.4"/zabbix_agentd.conf
-		doinitd "${FILESDIR}/2.4"/init.d/zabbix-agentd
+			"${FILESDIR}/2.2"/zabbix_agent.conf \
+			"${FILESDIR}/2.2"/zabbix_agentd.conf
+		doinitd "${FILESDIR}/2.2"/init.d/zabbix-agentd
 		dosbin \
 			src/zabbix_agent/zabbix_agent \
 			src/zabbix_agent/zabbix_agentd

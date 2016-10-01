@@ -57,5 +57,8 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# respect TMPDIR!
+	local -x LIT_PRESERVES_TMP=1
+
 	cmake-utils_src_make check-libomp
 }

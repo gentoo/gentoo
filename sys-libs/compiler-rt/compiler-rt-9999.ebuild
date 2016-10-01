@@ -8,9 +8,10 @@ EAPI=6
 CMAKE_MIN_VERSION=3.4.3
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 python-single-r1
+# TODO: fix unnecessary dep on Python upstream
+inherit cmake-utils flag-o-matic git-r3 python-any-r1 toolchain-funcs
 
-DESCRIPTION="Compiler runtime libraries for clang"
+DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="http://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
@@ -19,37 +20,30 @@ EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 LICENSE="UoI-NCSA"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
-IUSE="+sanitize test"
+IUSE=""
 
 RDEPEND="
-	!<sys-devel/llvm-${PV}
-	sanitize? ( ${PYTHON_DEPS} )"
+	!<sys-devel/llvm-4.0"
 DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
-	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( sanitize )"
-
-src_unpack() {
-	if use test; then
-		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
-	git-r3_fetch
-
-	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
-	fi
-	git-r3_checkout
+test_compiler() {
+	$(tc-getCC) ${CFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c - \
+		<<<'int main() { return 0; }' &>/dev/null
 }
 
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
+
+	if ! test_compiler; then
+		local extra_flags=( -nodefaultlibs -lc )
+		if test_compiler "${extra_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
+			ewarn "${CC} seems to lack runtime, trying with ${extra_flags[*]}"
+		fi
+	fi
 
 	local clang_version=4.0.0
 	local libdir=$(get_libdir)
@@ -61,46 +55,18 @@ src_configure() {
 		# this makes it possible to easily deploy test-friendly clang
 		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${clang_version}"
 
-		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
-		-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+		# currently lit covers only sanitizer tests
+		-DCOMPILER_RT_INCLUDE_TESTS=OFF
+		-DCOMPILER_RT_BUILD_SANITIZERS=OFF
+		-DCOMPILER_RT_BUILD_XRAY=OFF
 	)
-	if use test; then
-		mycmakeargs+=(
-			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-
-			# they are created during src_test()
-			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/bin/clang++"
-		)
-
-		# same flags are passed for build & tests, so we need to strip
-		# them down to a subset supported by clang
-		filter-flags -msahf -frecord-gcc-switches
-	fi
 
 	cmake-utils_src_configure
-
-	if use test; then
-		# copy clang over since resource_dir is located relatively to binary
-		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/{bin,lib/clang/"${clang_version}"/include} || die
-		cp "${EPREFIX}/usr/bin/clang" "${EPREFIX}/usr/bin/clang++" \
-			"${BUILD_DIR}"/bin/ || die
-		cp "${EPREFIX}/usr/lib/clang/${clang_version}/include"/*.h \
-			"${BUILD_DIR}/lib/clang/${clang_version}/include/" || die
-	fi
-}
-
-src_test() {
-	# sandbox breaks libasan tests... and is hard to kill
-	# so abuse the fail in its algorithms
-	local -x LD_PRELOAD=${LD_PRELOAD/libsandbox/nolibsandbox}
-
-	cmake-utils_src_make check-all
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	use sanitize && python_doscript "${S}"/lib/asan/scripts/asan_symbolize.py
+	# includes are mistakenly installed for all sanitizers and xray
+	rm -rf "${ED}"usr/lib/clang/*/include || die
 }
