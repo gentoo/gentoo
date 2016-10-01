@@ -258,10 +258,6 @@ app-backup/tsm:tsm_cit - IBM Tivoli Common Inventory Technology
 app-backup/tsm:tsm_hw - Difference snapshot support for NetApp and N-Series file servers
 app-benchmarks/filebench:auto-completion - Enable command-line autocompletion using dev-libs/libtecla.
 app-benchmarks/jmeter:beanshell - Enable BeanShell scripting support
-app-benchmarks/ltp:expect - Build against the expect library for interactive testing
-app-benchmarks/ltp:open-posix - Build and install the POSIX testsuite
-app-benchmarks/ltp:pm - Build and install the power management testsuite
-app-benchmarks/ltp:rt - Build and install the realtime testsuite
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support
 app-cdr/backlite:mplayer - Add support for mplayer preview in addition to X11 and phonon
@@ -278,7 +274,6 @@ app-cdr/dvdisaster:debug - Enable memory debugging.
 app-cdr/gaffitter:scripts - Install additional gaffitter scripts for external programs
 app-cdr/k3b:emovix - Enable burning support for eMoviX images
 app-cdr/mirage2iso:pinentry - Support app-crypt/pinentry password input backend.
-app-cdr/mybashburn:normalize - Add support for normalizing audio file volume levels
 app-crypt/aespipe:asm - Enable assebly modules
 app-crypt/aespipe:cpu_flags_x86_padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 app-crypt/ccid:kobil-midentity - Build and install Kobil_mIDentity_switch tool
@@ -1094,7 +1089,6 @@ app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/jmupdf:system-mupdf - Link against system version of app-text/mupdf
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
 app-text/libwpd:tools - Build miscellaneous tools
-app-text/lodgeit:vim - Install a vim plugin allowing to paste and download from within vim
 app-text/mathtex:png - Generate png images by default instead of gif
 app-text/mupdf:openssl - Use dev-libs/openssl crypto backend
 app-text/pandoc:embed_data_files - Embed data files in binary for relocatable executable.
@@ -1721,16 +1715,6 @@ dev-lang/ghc:llvm - Enable llvm code generator for ghc (-fllvm).
 dev-lang/gnat-gcc:acats - Installs ACATS source under LIBPATH.
 dev-lang/go:gccgo - Enable bootstrapping using gccgo
 dev-lang/icon:iplsrc - install the icon programming library source
-dev-lang/io:clutter - Build add-on for media-libs/clutter
-dev-lang/io:editline - Build add-on for dev-libs/libedit
-dev-lang/io:google - Build the google search add-on
-dev-lang/io:gui - Build the Flux GUI add-on
-dev-lang/io:http - Build http client add-on
-dev-lang/io:image - Build add-on for images support (jpeg, png, tiff)
-dev-lang/io:libxml2 - Build add-on for dev-libs/libxml2
-dev-lang/io:md5sum - Build md5sum add-on
-dev-lang/io:sha1 - Build sha1 add-on
-dev-lang/io:twitter - Build twitter add-on
 dev-lang/lazarus:minimal - Don't build extra packages from the bigide component
 dev-lang/logtalk:fop - Support for generating pdf documentation using fop
 dev-lang/logtalk:gnupl - Support GNU Prolog back-end compiler
@@ -2686,9 +2670,6 @@ dev-util/kdevplatform:welcomepage - Enable welcome page, requires dev-qt/qtdecla
 dev-util/ltrace:unwind - Use sys-libs/libunwind for frame unwinding support
 dev-util/lttng-tools:ust - Support LTTng-UST (Userspace Tracing)
 dev-util/mdds:valgrind - Add support for memory debugging using dev-util/valgrind
-dev-util/metro:ccache - Enable support for ccache
-dev-util/metro:git - Enable support for git snapshots
-dev-util/metro:threads - Enable support for pbzip2 tarball packing/unpacking
 dev-util/mingw64-runtime:idl - Install idl files.
 dev-util/mingw64-runtime:libraries - Build extra libraries.
 dev-util/mingw64-runtime:tools - Build extra tools.
@@ -4614,15 +4595,12 @@ media-tv/xmltv:za - South Africa tv listing grabber
 media-video/aegisub:uchardet - Enable charset discovery via dev-libs/uchardet
 media-video/aravis:X - Build the GTK+-based video viewer for aravis. This requires GStreamer and a few plugins but technically not the GST plugin for aravis.
 media-video/aravis:gstreamer - Build the GStreamer plugin for aravis, but not the video viewer.
-media-video/arista:faac - Use external faac library for AAC encoding
-media-video/arista:nautilus - Add an entry in the Nautilus context menu to transcode media files for a specified device.
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/clive:clipboard - Support reading from X clipboard
 media-video/clive:pager - Support pager!?
 media-video/clive:password - Support password controlled sites
 media-video/devede:mencoder - Prefer MPlayer mencoder over Libav avconv or FFmpeg ffmpeg for encoding.
 media-video/dv2sub:kino - install kino plugin
-media-video/dvd-slideshow:themes - Install theme pack
 media-video/dvdauthor:graphicsmagick - Use media-gfx/graphicsmagick instead of media-gfx/imagemagick
 media-video/dvdrip:fping - Enables fping support for cluster rendering
 media-video/dvdrip:subtitles - Enables support for subtitle ripping
@@ -4797,7 +4775,6 @@ media-video/obs-studio:imagemagick - Use ImageMagick for image loading instead o
 media-video/ogmrip:ogm - Support for OGM container format
 media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/parole:clutter - Compile in Clutter GTK+ support
-media-video/pgcedit:video - Add support for video preview
 media-video/qgifer:imagemagick - Use imagemagick for image operations
 media-video/qgifer:opencv3 - Use media-libs/opencv:0/3.0 for video operations instead media-libs/opencv:0/2.4
 media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
@@ -5819,11 +5796,6 @@ net-libs/webkit-gtk:egl - Enable EGL support.
 net-libs/webkit-gtk:geoloc - Enable geolocation support through app-misc/geoclue
 net-libs/webkit-gtk:gles2 - Enable GLESv2 support.
 net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API using virtual/opengl
-net-libs/wt:extjs - Build Wt Ext library with JavaScript-only widgets (http://extjs.com/)
-net-libs/wt:fcgi - Compile in FCGI connector
-net-libs/wt:graphicsmagick - Enable GraphicsMagick, for supporting painting to raster images (PNG, GIF, ...) (WRasterImage)
-net-libs/wt:resources - Install resources directory
-net-libs/wt:server - Compile in stand-alone httpd connector
 net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-libs/xrootd:fuse - Enable the sys-fs/fuse filesystem driver
 net-libs/xrootd:http - Enable http protocol support
@@ -6320,7 +6292,6 @@ net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled wine
 net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
-net-misc/tightvnc:server - Build TightVNC server
 net-misc/tinc:gui - Add GUI support, using dev-python/wxpython
 net-misc/tinc:uml - Enable support for User Mode Linux Sockets
 net-misc/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
@@ -7744,7 +7715,6 @@ sys-kernel/gentoo-sources:experimental - Apply experimental patches; for more in
 sys-kernel/gentoo-sources:kdbus - Apply the kdbus patch. This also requires the "experimental" use flag.
 sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
-sys-kernel/linux-firmware:savedconfig - Allows individual selection of firmware files
 sys-kernel/mips-sources:cobalt - Enables support for Cobalt Microserver hardware (Qube2/RaQ2)
 sys-kernel/mips-sources:ip27 - Enables support for SGI Origin (IP27)
 sys-kernel/mips-sources:ip28 - Enables support for SGI Indigo2 Impact R10000 (IP28)
@@ -7898,7 +7868,6 @@ www-apache/mod_security:jit - Add support for the PCRE Just-in-Time optimisation
 www-apache/pwauth:domain-aware - Ignore leading domain names in username (Windows compat)
 www-apache/pwauth:faillog - Log failed login attempts
 www-apache/pwauth:ignore-case - Ignore string case in username (mostly Windows compat)
-www-apps/389-dsgw:adminserver - Install DSGW with Admin Server
 www-apps/ampache:transcode - Install optional dependencies for transcoding support
 www-apps/bitten:server - Install master instance that integrates itself with Trac
 www-apps/blohg:git - Enable Git support
@@ -8228,7 +8197,6 @@ x11-libs/vte:glade - Provide integration with dev-util/glade.
 x11-libs/wxGTK:gnome - Use gnome-base/libgnomeprintui for printing tasks.
 x11-libs/wxGTK:gstreamer - Enable the wxMediaCtrl class for playing audio and video through gstreamer.
 x11-libs/wxGTK:sdl - Use Simple Directmedia Layer (media-libs/libsdl) for audio.
-x11-misc/ardesia:cwiid - cwiid support: collection of Linux tools written in C for interfacing to the Nintendo Wiimote.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-power/bbswitch for PM feature
 x11-misc/cdm:consolekit - Enable native consolekit support
 x11-misc/colord:argyllcms - Enable ArgyllCMS sensor
