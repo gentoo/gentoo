@@ -12,7 +12,7 @@ SRC_URI="http://delta.affinix.com/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm hppa ~ppc ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+qt4 qt5"
 
 RDEPEND="

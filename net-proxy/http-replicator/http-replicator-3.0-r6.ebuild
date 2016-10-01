@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 hppa ~ppc ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}/http-replicator-3.0-sighup.patch"
