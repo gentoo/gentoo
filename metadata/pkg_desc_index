@@ -7718,7 +7718,7 @@ dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
-dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
+dev-python/pdoc 0.3.1 0.3.2: Simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/pecan 1.0.4: A WSGI object-dispatching web framework, designed to be lean and fast, with few dependencies.
 dev-python/peewee 2.6.2 2.7.4 2.8.0 2.8.1: Small python ORM
@@ -9941,7 +9941,7 @@ dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.12.1 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.16.0 3.16.1 3.16.2: A graphical diff and merge tool
+dev-util/meld 3.16.2 3.16.3: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.33.0 0.34.0: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
@@ -10043,6 +10043,7 @@ dev-util/spec-cleaner 0.8.9 9999: SUSE spec file cleaner and formatter
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
+dev-util/staruml-bin 2.7.0: A sophisticated software modeler
 dev-util/strace 4.9 4.10 4.11 4.12 4.13 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
