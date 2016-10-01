@@ -9092,7 +9092,7 @@ dev-ruby/hpricot 0.8.6-r2 0.8.6-r3 0.8.6-r5: A fast and liberal HTML parser for 
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.6.3-r1 0.9.8 1.0.2 2.0.0 2.0.1 2.0.2 2.0.3: An easy-to-use client library for making requests from Ruby
-dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
+dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1 1.0.1-r1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.7 0.14.0: Makes http fun! Also, makes consuming restful web services dead easy
@@ -9326,7 +9326,7 @@ dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driv
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.4.2 3.5.0 3.5.1 3.5.2: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.4.5 0.5.0: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.5.0 0.5.1: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.3.0 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.0 0.70.7: RSpec support and matchers
 dev-ruby/ruby-atk 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Atk bindings
@@ -9495,7 +9495,7 @@ dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant 
 dev-ruby/websocket 1.2.2 1.2.3: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.3.4 0.6.2 0.6.3 0.6.4: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
-dev-ruby/wikicloth 0.8.1 0.8.2 0.8.3: A mediawiki parser
+dev-ruby/wikicloth 0.8.3: A mediawiki parser
 dev-ruby/will_paginate 3.1.0 3.1.0-r1: Most awesome pagination solution for Ruby
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
@@ -15141,7 +15141,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.15 2016.09.19 2016.09.24 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.09.24 2016.09.27 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
