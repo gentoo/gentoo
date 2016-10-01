@@ -198,7 +198,7 @@ app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizab
 app-admin/sudo 1.8.15-r1 1.8.16 1.8.17_p1 1.8.18 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supernova 2.0.9 2.1.0 2.2.0: novaclient wrapper for multiple nova environments
-app-admin/supervisor 3.1.3 3.2.1 3.2.2 3.2.3 3.3.0: A system for controlling process state under UNIX
+app-admin/supervisor 3.1.3 3.2.1 3.2.2 3.2.3 3.3.0 3.3.1: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4: Simple log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1: Standard log daemons
@@ -1014,7 +1014,7 @@ app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Em
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.5.5 1.5.6 1.5.7 1.6.0: A fullscreen and distraction-free word processor
-app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
+app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3 3.20.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0 3.20.0: Official plugins for gedit
 app-editors/ghex 3.18.1 3.18.2: GNOME hexadecimal editor
@@ -2390,7 +2390,7 @@ app-text/pstotext 1.9-r3: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r2: PostScript Utilities
 app-text/pybookreader 0.5.0 0.5.0-r1: A book reader for .fb2 .html and plain text (possibly gzipped)
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
-app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
+app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
 app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 5.1.1 5.1.2 5.1.3 6.0.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.13-r1 0.4.15 0.4.16: A tabbed document viewer
@@ -6983,7 +6983,7 @@ dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arpeggio 1.5: Parser interpreter based on PEG grammars
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
-dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4 0.6.10: A package resource and symbol loading helper library
+dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4 0.6.10 0.6.11: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manipulation
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
@@ -7008,7 +7008,7 @@ dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1 0.16.0: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 1.2.2 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/awscli 1.10.51 1.10.53 1.10.59: Universal Command Line Environment for AWS
+dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0: Universal Command Line Environment for AWS
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7023,7 +7023,7 @@ dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
 dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed data containers
-dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0: Modern password hashing for software and servers
+dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0 3.1.1: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1 4.5.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -8206,7 +8206,7 @@ dev-python/rtslib-fb 2.1.57 2.1.58: A Python object API for managing the Linux L
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.1.2 0.1.3 0.1.4: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.1.2 0.1.3 0.1.4 0.1.5: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
@@ -10043,7 +10043,6 @@ dev-util/spec-cleaner 0.8.9 9999: SUSE spec file cleaner and formatter
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
-dev-util/staruml-bin 2.7.0: A sophisticated software modeler
 dev-util/strace 4.9 4.10 4.11 4.12 4.13 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
