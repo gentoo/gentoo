@@ -103,6 +103,8 @@ src_test() {
 	# sandbox breaks libasan tests... and is hard to kill
 	# so abuse the fail in its algorithms
 	local -x LD_PRELOAD=${LD_PRELOAD/libsandbox/nolibsandbox}
+	# respect TMPDIR!
+	local -x LIT_PRESERVES_TMP=1
 
 	cmake-utils_src_make check-all
 }
