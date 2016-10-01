@@ -28,7 +28,7 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/isodate-0.5.4[${PYTHON_USEDEP}]
-	>=dev-python/oauthlib-0.6.3[${PYTHON_USEDEP}]
+	<=dev-python/oauthlib-1.0.3[${PYTHON_USEDEP}]
 	>=dev-python/pydispatcher-2.0.5[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.4.0[${PYTHON_USEDEP}]
@@ -37,7 +37,7 @@ RDEPEND="
 "
 
 python_compile_all() {
-	use doc && emake -C docs html
+	esetup.py docs
 }
 
 python_test() {
