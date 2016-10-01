@@ -110,7 +110,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	>=dev-libs/liborcus-0.11.2
+	=dev-libs/liborcus-0.11*
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
