@@ -62,3 +62,4 @@ move sys-infiniband/perftest sys-fabric/perftest
 move sys-infiniband/qperf sys-fabric/qperf
 move sys-infiniband/rds-tools sys-fabric/rds-tools
 move sys-infiniband/srptools sys-fabric/srptools
+move sys-block/btrace sys-block/blktrace
