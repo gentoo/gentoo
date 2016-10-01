@@ -20,7 +20,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/libxcb"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc selinux test xkb"
-SLOT="0/${PV}"
+SLOT="0/1.12" # Locked down for now to 1.12 to avoid further rebuilds on no ABI changes (e.g with any upcoming 1.12.1 bugfix release), bug 576890
 
 RDEPEND=">=dev-libs/libpthread-stubs-0.3-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXau-1.0.7-r1[${MULTILIB_USEDEP}]
@@ -55,11 +55,4 @@ src_configure() {
 		--enable-xinput
 	)
 	xorg-2_src_configure
-}
-
-src_install() {
-	xorg-2_src_install
-	if ! use doc; then
-		rm -r "${D}"/usr/share/man || die
-	fi
 }
