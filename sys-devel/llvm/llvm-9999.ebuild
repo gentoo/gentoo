@@ -51,12 +51,18 @@ DEPEND="${RDEPEND}
 	libffi? ( virtual/pkgconfig )
 	ocaml? ( dev-ml/findlib
 		test? ( dev-ml/ounit ) )
+	test? ( $(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+
+python_check_deps() {
+	! use test \
+		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
 
 pkg_pretend() {
 	# in megs
@@ -167,6 +173,10 @@ multilib_src_configure() {
 			-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
 		)
 #	fi
+
+	use test && mycmakeargs+=(
+		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
