@@ -91,7 +91,9 @@ python_install_all() {
 	newins youtube-dl.zsh _youtube-dl
 
 	insinto /usr/share/fish/completions
-	doins youtube-dl.fish
+	oins youtube-dl.fish
 
 	distutils-r1_python_install_all
+
+	rm -r "${D}"/usr/etc || die
 }
