@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/alanxz/rabbitmq-c.git"
 else
 	SRC_URI="https://github.com/alanxz/rabbitmq-c/archive/v${PV}.zip -> ${PN}-v${PV}.zip"
-	KEYWORDS="amd64 ~arm ~hppa ~x86"
+	KEYWORDS="amd64 ~arm hppa ~x86"
 fi
 
 LICENSE="MIT"

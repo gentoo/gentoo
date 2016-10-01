@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-devel/llvm-3.7:=
+RDEPEND=">=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
 	sys-devel/clang
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"

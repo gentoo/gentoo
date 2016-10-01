@@ -38,6 +38,7 @@ RDEPEND="
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
+	test? ( dev-python/lit[${PYTHON_USEDEP}] )
 	xml? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -48,6 +49,17 @@ PDEPEND="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+
+# Multilib notes:
+# 1. ABI_* flags control ABIs libclang* is built for only.
+# 2. clang is always capable of compiling code for all ABIs for enabled
+#    target. However, you will need appropriate crt* files (installed
+#    e.g. by sys-devel/gcc and sys-libs/glibc).
+# 3. ${CHOST}-clang wrappers are always installed for all ABIs included
+#    in the current profile (i.e. alike supported by sys-devel/gcc).
+#
+# Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
+# multilib clang* libraries (not runtime, not wrappers).
 
 pkg_pretend() {
 	local build_size=650
@@ -149,6 +161,9 @@ multilib_src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+	fi
+
 	)
 
 	if multilib_is_native_abi; then
@@ -190,37 +205,16 @@ multilib_src_test() {
 }
 
 src_install() {
-	# note: magic applied in multilib_src_install()!
-	CLANG_VERSION=4.0
-
-	MULTILIB_CHOST_TOOLS=(
-		/usr/bin/clang
-		/usr/bin/clang++
-		/usr/bin/clang-cl
-		/usr/bin/clang-${CLANG_VERSION}
-		/usr/bin/clang++-${CLANG_VERSION}
-		/usr/bin/clang-cl-${CLANG_VERSION}
-	)
-
 	MULTILIB_WRAPPED_HEADERS=(
 		/usr/include/clang/Config/config.h
 	)
 
 	multilib-minimal_src_install
 
-	# Remove unnecessary headers on FreeBSD, bug #417171
-	if use kernel_FreeBSD && use clang; then
-		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
-	fi
-}
-
-multilib_src_install() {
-	cmake-utils_src_install
-
-	# apply CHOST and CLANG_VERSION to clang executables
-	# they're statically linked so we don't have to worry about the lib
+	# Apply CHOST and version suffix to clang tools
+	local clang_version=4.0
 	local clang_tools=( clang clang++ clang-cl )
-	local i
+	local abi i
 
 	# cmake gives us:
 	# - clang-X.Y
@@ -230,25 +224,36 @@ multilib_src_install() {
 	# - clang-X.Y
 	# - clang++-X.Y, clang-cl-X.Y -> clang-X.Y
 	# - clang, clang++, clang-cl -> clang*-X.Y
-	# so we need to fix the two tools
+	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
 		rm "${ED%/}/usr/bin/${i}" || die
-		dosym "clang-${CLANG_VERSION}" "/usr/bin/${i}-${CLANG_VERSION}"
-		dosym "${i}-${CLANG_VERSION}" "/usr/bin/${i}"
+		dosym "clang-${clang_version}" "/usr/bin/${i}-${clang_version}"
+		dosym "${i}-${clang_version}" "/usr/bin/${i}"
 	done
 
-	# now prepend ${CHOST} and let the multilib-build.eclass symlink it
-	if ! multilib_is_native_abi; then
-		# non-native? let's replace it with a simple wrapper
+	# now create wrappers for all supported ABIs
+	for abi in $(get_all_abis); do
+		local abi_flags=$(get_abi_CFLAGS "${abi}")
+		local abi_chost=$(get_abi_CHOST "${abi}")
 		for i in "${clang_tools[@]}"; do
-			rm "${ED%/}/usr/bin/${i}-${CLANG_VERSION}" || die
-			cat > "${T}"/wrapper.tmp <<-_EOF_
+			cat > "${T}"/wrapper.tmp <<-_EOF_ || die
 				#!${EPREFIX}/bin/sh
-				exec "${i}-${CLANG_VERSION}" $(get_abi_CFLAGS) "\${@}"
+				exec "${i}-${clang_version}" ${abi_flags} "\${@}"
 			_EOF_
-			newbin "${T}"/wrapper.tmp "${i}-${CLANG_VERSION}"
+			newbin "${T}"/wrapper.tmp "${abi_chost}-${i}-${clang_version}"
+			dosym "${abi_chost}-${i}-${clang_version}" \
+				"/usr/bin/${abi_chost}-${i}"
 		done
+	done
+
+	# Remove unnecessary headers on FreeBSD, bug #417171
+	if use kernel_FreeBSD; then
+		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
 	fi
+}
+
+multilib_src_install() {
+	cmake-utils_src_install
 }
 
 multilib_src_install_all() {
