@@ -1,0 +1,39 @@
+From 024a8628e698e8c90f7876a35c820f30c6957031 Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Sun, 2 Oct 2016 02:06:35 +0800
+Subject: [PATCH] libselinux: versioned ruby pkg-config and query vendorarchdir
+ properly
+
+Gentoo and Arch have pkg-config entries for "ruby-$(RUBYLIBVER)" but not
+for "ruby". Check if that exists first then fall back to plain ruby if
+it does not.
+
+The ruby install paths were incorrect. Fedora 20 installed to
+/usr/lib64/ruby/vendor_ruby/, Arch needs it to be vendor_ruby as well,
+site_ruby does not work. Thanks to Nicolas Iooss for the correct way to
+query for the path.
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ libselinux/src/Makefile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/libselinux/src/Makefile b/libselinux/src/Makefile
+index 7169230..f9e3de1 100644
+--- libselinux/src/Makefile
++++ libselinux/src/Makefile
+@@ -16,9 +16,8 @@ PYLIBVER ?= $(shell $(PYTHON) -c 'import sys;print("python%d.%d" % sys.version_i
+ PYINC ?= $(shell $(PKG_CONFIG) --cflags $(PYPREFIX))
+ PYLIBDIR ?= $(LIBDIR)/$(PYLIBVER)
+ RUBYLIBVER ?= $(shell $(RUBY) -e 'print RUBY_VERSION.split(".")[0..1].join(".")')
+-RUBYPLATFORM ?= $(shell $(RUBY) -e 'print RUBY_PLATFORM')
+-RUBYINC ?= $(shell $(PKG_CONFIG) --cflags ruby)
+-RUBYINSTALL ?= $(LIBDIR)/ruby/site_ruby/$(RUBYLIBVER)/$(RUBYPLATFORM)
++RUBYINC ?= $(shell $(PKG_CONFIG) --exists ruby-$(RUBYLIBVER) && $(PKG_CONFIG) --cflags ruby-$(RUBYLIBVER) || $(PKG_CONFIG) --cflags ruby)
++RUBYINSTALL ?= $(DESTDIR)$(shell $(RUBY) -e 'puts RbConfig::CONFIG["vendorarchdir"]')
+ LIBBASE ?= $(shell basename $(LIBDIR))
+ 
+ VERSION = $(shell cat ../VERSION)
+-- 
+2.7.3
+
