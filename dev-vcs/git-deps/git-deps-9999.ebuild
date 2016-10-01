@@ -7,9 +7,9 @@ EAPI=6
 EGIT_REPO_URI="https://github.com/aspiers/git-deps"
 EGIT_BRANCH=master
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils git-r3 python-r1
+inherit eutils git-r3 python-single-r1
 
 DESCRIPTION="git commit dependency analysis tool"
 HOMEPAGE="https://github.com/aspiers/git-deps"
@@ -18,20 +18,22 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	dev-python/flask
-	dev-python/pygit2
+	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/pygit2[${PYTHON_USEDEP}]
 	net-libs/nodejs
 	${PYTHON_DEPS}
 	"
 DEPEND="${RDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES="${FILESDIR}/html_location.patch"
-
 HTML_DOCS="html/."
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+}
+
 src_install() {
-	python_foreach_impl python_newexe git-deps.py git-deps
+	python_newscript git-deps.py git-deps
 	einstalldocs
 }
 
