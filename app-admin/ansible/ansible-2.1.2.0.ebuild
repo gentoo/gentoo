@@ -52,7 +52,6 @@ python_test() {
 }
 
 python_install_all() {
-	EXAMPLES=( examples )
 	distutils-r1_python_install_all
 
 	doman docs/man/man1/*.1
