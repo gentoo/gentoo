@@ -132,7 +132,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.9.1-r1 3.9.2 3.9.2-r2 3.10.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 2.3.4 2.4.0-r2: Tool for managing events and logs
+app-admin/logstash-bin 2.3.4 2.4.0-r2 5.0.0_beta1: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
@@ -1755,7 +1755,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2 2.3.3 2.3.4 2.3.5 2.4.0: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2 2.3.3 2.3.4 2.3.5 2.4.0 2.4.1 5.0.0_beta1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
@@ -2133,6 +2133,7 @@ app-portage/smart-live-rebuild 1.3.3 1.3.4 1.3.4.1 9999: Check live packages for
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
+app-portage/unsandbox 1: The Sandbox escapist tool
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.3_p46 4.3_p46-r1 4.4_rc2 4.4: The standard GNU Bourne again shell
 app-shells/bash-completion 2.1_p20141224-r1 2.3-r2 2.4: Programmable Completion for bash
@@ -9913,7 +9914,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.22: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.22 2.23: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3 5.0.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -14073,7 +14074,7 @@ net-analyzer/wireshark 2.0.6 2.2.0 99999999: A network protocol analyzer formerl
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
-net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.4.5 2.4.7 2.4.8 3.0.3-r1 3.0.4 3.2.0: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.2.15 3.0.3-r1 3.0.4 3.0.5 3.2.0 3.2.1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
@@ -17369,7 +17370,8 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
-sys-libs/compiler-rt 9999: Compiler runtime libraries for clang
+sys-libs/compiler-rt 9999: Compiler runtime library for clang (built-in part)
+sys-libs/compiler-rt-sanitizers 9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.1-r1 2.9.4 2.9.5 2.9.6 2.9.6-r1: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r1 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.35 6.1.26 6.2.23: Oracle Berkeley DB
@@ -17837,7 +17839,7 @@ www-apps/jekyll-sass-converter 1.4.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
-www-apps/kibana-bin 4.1.11 4.5.4 4.6.1: Explore and visualize data
+www-apps/kibana-bin 4.1.11 4.5.4 4.6.1 5.0.0_beta1: Explore and visualize data
 www-apps/klaus 0.9.1 1.0.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
