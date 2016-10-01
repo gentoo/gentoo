@@ -9,10 +9,10 @@ if [[ ${PV} == 99999999* ]]; then
 	inherit git-2
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
-	KEYWORDS="alpha amd64 arm ppc x86"
+	KEYWORDS="alpha amd64 arm hppa ppc ppc64 x86"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"
