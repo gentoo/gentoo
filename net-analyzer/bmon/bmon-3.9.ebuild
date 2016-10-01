@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.3-r2:=
