@@ -1,0 +1,100 @@
+* Fix perl shebang to be portable
+* Make build system honour LDFLAGS
+
+--- a/makefile
++++ b/makefile
+@@ -25,9 +25,8 @@
+ # Makefile for swat, phrap, cross_match, phrapview; also swprobs (currently inactivated)
+ #CC= icc
+ #CFLAGS= -O2 -wd266,880
+-CC= cc
+-CFLAGS= -O2
+-LFLAGS= -lm
++CC ?= cc
++LIBS = -lm
+ 
+ SWATOBJS= swat.o weibull.o
+ 
+@@ -96,46 +95,46 @@
+ 	chmod a+x phrapview
+ 
+ swat: makefile $(SWATOBJS) $(SWOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(SWATOBJS) $(SWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(SWATOBJS) $(SWOBJS) $(LIBS)
+ 	chmod o-r swat
+ 
+ alpha_swat: makefile $(ALPHOBJS) $(SWOBJS) 
+-	$(CC) $(CFLAGS) -o $@ $(ALPHOBJS) $(SWOBJS) $(LFLAGS) 
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(ALPHOBJS) $(SWOBJS) $(LIBS) 
+ 	chmod o-r alpha_swat
+ 
+ swat_counts: makefile $(COUNOBJS) $(SWOBJS) 
+-	$(CC) $(CFLAGS) -o $@ $(COUNOBJS) $(SWOBJS) $(LFLAGS) 
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(COUNOBJS) $(SWOBJS) $(LIBS) 
+ 	chmod o-r swat_counts
+ 
+ swprobs: makefile $(PROBOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(PROBOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(PROBOBJS) $(LIBS)
+ 
+ phrap: makefile phrap.o call_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS)
+-	$(CC) $(CFLAGS) -o $@ phrap.o call_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ phrap.o call_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS) $(LIBS)
+ 	chmod o-r phrap
+ 
+ gcphrap: makefile gcphrap.o gccall_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS)
+-	$(CC) $(CFLAGS) -o $@ gcphrap.o gccall_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ gcphrap.o gccall_subs.o $(PHOBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS) $(LIBS)
+ 	chmod o-r gcphrap
+ 
+ cross_match: makefile cross_match.o call_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS)
+-	$(CC) $(CFLAGS) -o $@ cross_match.o call_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ cross_match.o call_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS) $(LIBS)
+ 	chmod o-r cross_match
+ 
+ gccross_match: makefile gccross_match.o gccall_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS)
+-	$(CC) $(CFLAGS) -o $@ gccross_match.o gccall_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ gccross_match.o gccall_subs.o $(CROBJS) $(SCANOBJS) $(SWOBJS) $(JKBSWOBJS) $(LIBS)
+ 	chmod o-r gccross_match
+ 
+ cluster: makefile $(CLOBJS) call_subs.o $(SCANOBJS) $(SWOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(CLOBJS) call_subs.o $(SCANOBJS) $(SWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(CLOBJS) call_subs.o $(SCANOBJS) $(SWOBJS) $(LIBS)
+ 	chmod o-r cluster
+ 
+ loco: makefile $(LOCOOBJS) $(SWOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(LOCOOBJS) $(SWOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(LOCOOBJS) $(SWOBJS) $(LIBS)
+ 	chmod o-r loco
+ 
+ erf_test: $(ERFOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(ERFOBJS) $(LFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(ERFOBJS) $(LIBS)
+ 
+ loco.o: swat.h
+ 
+@@ -228,7 +227,7 @@
+ anomalies.o: swat.h 
+ 
+ fast_smith_wat.s: fast_smith_wat.c
+-	cc -S -machine_code -source_listing -O3 fast_smith_wat.c
++	$(CC) $(CFLAGS) -S -machine_code -source_listing fast_smith_wat.c
+ #N.B. fast_smith_wat.s MUST BE EDITTED BEFORE USE!!!
+ 
+ tig_node.o: swat.h
+--- a/phrapview
++++ b/phrapview
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/env perl
+ 
+ 
+ #/*****************************************************************************
+@@ -25,6 +25,7 @@
+ #                                                                         
+ #*****************************************************************************/
+ 
++use warnings;
+ use strict;
+ use Tk;
+ #phrapview version 0.960731
