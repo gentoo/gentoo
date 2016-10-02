@@ -454,16 +454,12 @@ src_install() {
 			dosym "${i}-${clang_version}" "/usr/bin/${i}"
 		done
 
-		# now create wrappers for all supported ABIs
+		# now create target symlinks for all supported ABIs
 		for abi in $(get_all_abis); do
-			local abi_flags=$(get_abi_CFLAGS "${abi}")
 			local abi_chost=$(get_abi_CHOST "${abi}")
 			for i in "${clang_tools[@]}"; do
-				cat > "${T}"/wrapper.tmp <<-_EOF_ || die
-					#!${EPREFIX}/bin/sh
-					exec "${i}-${clang_version}" ${abi_flags} "\${@}"
-				_EOF_
-				newbin "${T}"/wrapper.tmp "${abi_chost}-${i}-${clang_version}"
+				dosym "${i}-${clang_version}" \
+					"/usr/bin/${abi_chost}-${i}-${clang_version}"
 				dosym "${abi_chost}-${i}-${clang_version}" \
 					"/usr/bin/${abi_chost}-${i}"
 			done
