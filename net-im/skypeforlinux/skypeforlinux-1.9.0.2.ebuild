@@ -9,7 +9,7 @@ inherit eutils rpm
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
 HOMEPAGE="http://www.skype.com/"
-SRC_URI="https://repo.skype.com/rpm/stable/skypeforlinux_${PV}-1.x86_64.rpm"
+SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
 
 LICENSE="Skype-TOS no-source-code"
 SLOT="0"
@@ -35,8 +35,6 @@ RDEPEND="virtual/ttf-fonts
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
-	sys-devel/gcc
-	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
@@ -59,12 +57,12 @@ src_unpack () {
 }
 
 src_prepare() {
-	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EROOT}opt/skypeforlinux/skypeforlinux!" \
-		-i usr/bin/skypeforlinux
-	sed -e "s!^Exec=.*!Exec=${EROOT}opt/bin/skypeforlinux!" \
+	default
+	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EROOT%/}/opt/skypeforlinux/skypeforlinux!" \
+		-i usr/bin/skypeforlinux || die
+	sed -e "s!^Exec=.*!Exec=${EROOT%/}/opt/bin/skypeforlinux!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
-		-i usr/share/applications/skypeforlinux.desktop
-	eapply_user
+		-i usr/share/applications/skypeforlinux.desktop || die
 }
 
 src_install() {
@@ -93,11 +91,7 @@ src_install() {
 #	insinto /etc/dbus-1/system.d
 #	doins ${PN}.conf
 
-	dodoc usr/share/doc/skypeforlinux/* usr/share/skypeforlinux/*.html
-	dodoc usr/share/skypeforlinux/*.txt usr/share/skypeforlinux/LICENSE
-
-	# create compat symlink
-	dosym ${P} /usr/share/doc/skypeforlinux
+	dodoc -r usr/share/doc/skypeforlinux/.
 
 	doicon usr/share/pixmaps/skypeforlinux.png
 
