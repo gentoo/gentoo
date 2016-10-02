@@ -19,6 +19,8 @@ RDEPEND="iconv? ( virtual/libiconv )
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-1.2.0-fix-c++14.patch" )
+
 src_configure() {
 	econf \
 		--disable-static \
