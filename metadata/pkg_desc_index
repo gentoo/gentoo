@@ -15054,7 +15054,7 @@ net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of C
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 3.7 3.7.1: Encrypted UDP based FTP with multicast
-net-misc/unison 2.27.157 2.32.52 2.40.102 2.45.4 2.48.3: Two-way cross-platform file synchronizer
+net-misc/unison 2.27.157 2.32.52 2.40.102 2.40.128 2.45.4 2.45.28 2.48.3 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
