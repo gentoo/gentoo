@@ -32,9 +32,6 @@ DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
 FILECAPS=( cap_net_raw /usr/sbin/mtr )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.80-impl-dec.patch
-	"${FILESDIR}"/${PN}-9999-ipv6.patch
-	"${FILESDIR}"/${PN}-9999-strings.patch
-	"${FILESDIR}"/${PN}-9999-tinfo.patch
 )
 
 src_unpack() {
@@ -44,8 +41,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	sed -i -e "/^\s*xver=/s|$.*)|${EGIT_VERSION:0:8}|" Makefile.am || die
 
 	# Keep this comment and following mv, even in case ebuild does not need
 	# it: kept gtk-2.0.m4 in SRC_URI but you'll have to mv it before autoreconf

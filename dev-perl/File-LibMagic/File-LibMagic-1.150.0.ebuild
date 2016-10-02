@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Perl wrapper for libmagic"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
