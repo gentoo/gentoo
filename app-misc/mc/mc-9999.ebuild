@@ -15,7 +15,7 @@ inherit eutils flag-o-matic ${LIVE_ECLASSES}
 MY_P=${P/_/-}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
-	SRC_URI="http://www.midnight-commander.org/downloads/${MY_P}.tar.xz"
+	SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
