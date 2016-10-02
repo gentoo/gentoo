@@ -76,6 +76,7 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	elog "XDMCP support requires x11-base/xorg-server[xephyr]."
+	elog "Encrypted VNC connections require net-libs/libvncserver[gcrypt]."
 }
 
 pkg_postrm() {
