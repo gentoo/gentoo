@@ -1,0 +1,39 @@
+From 73e9e18ea09ffffcaac50237def0d9728a213c02 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Sat, 20 Feb 2016 00:08:14 -0500
+Subject: [PATCH] Fix STC compilation with GCC6
+
+Use std::abs() from <cmath> instead of abs() from <math.h> to avoid problems
+with ambiguous overloads.
+
+Closes #17147.
+
+Closes https://github.com/wxWidgets/wxWidgets/pull/222
+---
+ src/stc/scintilla/src/Editor.cxx | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/stc/scintilla/src/Editor.cxx b/src/stc/scintilla/src/Editor.cxx
+index cd72953..2081df2 100644
+--- a/src/stc/scintilla/src/Editor.cxx
++++ b/src/stc/scintilla/src/Editor.cxx
+@@ -11,6 +11,7 @@
+ #include <ctype.h>
+ #include <assert.h>
+ 
++#include <cmath>
+ #include <string>
+ #include <vector>
+ #include <map>
+@@ -5841,9 +5842,9 @@ void Editor::GoToLine(int lineNo) {
+ }
+ 
+ static bool Close(Point pt1, Point pt2) {
+-	if (abs(pt1.x - pt2.x) > 3)
++	if (std::abs(pt1.x - pt2.x) > 3)
+ 		return false;
+-	if (abs(pt1.y - pt2.y) > 3)
++	if (std::abs(pt1.y - pt2.y) > 3)
+ 		return false;
+ 	return true;
+ }
