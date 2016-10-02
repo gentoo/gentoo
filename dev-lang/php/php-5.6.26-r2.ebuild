@@ -485,7 +485,7 @@ src_configure() {
 		# the files that autotools creates. This was all originally
 		# based on the autotools-utils eclass.
 		BUILD_DIR="${WORKDIR}/sapis-build/${one_sapi}"
-		cp -r "${S}" "${BUILD_DIR}" || die
+		cp -a "${S}" "${BUILD_DIR}" || die
 		cd "${BUILD_DIR}" || die
 
 		local sapi_conf=(
