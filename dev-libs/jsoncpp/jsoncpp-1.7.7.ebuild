@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
 SRC_URI="https://github.com/open-source-parsers/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( public-domain MIT )"
-SLOT="0/1"
+SLOT="0/11"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc test"
 
