@@ -39,6 +39,17 @@ DEPEND="${RDEPEND}
 
 DOCS=( CREDITS.TXT )
 
+PATCHES=(
+	# Enhancements to the original cmake system:
+	#  - allow building shared and static libs in one run
+	#  - add link option "-Wl,-z,defs" when building shared lib
+	"${FILESDIR}/${PN}-3.8.1-cmake.patch"
+
+	# back-port of https://reviews.llvm.org/D21637, fixing a compile error
+	# on musl-libc
+	"${FILESDIR}/${PN}-3.8.1-pthread-initializer.patch"
+)
+
 pkg_setup() {
 	if use libsupc++ && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
@@ -75,7 +86,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLLVM_CONFIG_PATH=OFF
+		-DLLVM_CONFIG=OFF
 		-DLIBCXX_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBCXX_ENABLE_SHARED=ON
 		-DLIBCXX_ENABLE_STATIC=$(usex static-libs)

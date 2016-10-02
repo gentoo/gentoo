@@ -1,0 +1,15 @@
+diff --git a/include/__config b/include/__config
+index db5a832..f463557 100644
+--- a/include/__config
++++ b/include/__config
+@@ -11,6 +11,10 @@
+ #ifndef _LIBCPP_CONFIG
+ #define _LIBCPP_CONFIG
+ 
++// Normally this definition is handled by cmake; but since we're not using
++// cmake, we have to hardcode it here.
++#define _LIBCPP_HAS_MUSL_LIBC
++
+ #if defined(_MSC_VER) && !defined(__clang__)
+ #define _LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER
+ #endif

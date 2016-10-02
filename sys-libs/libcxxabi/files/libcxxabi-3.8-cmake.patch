@@ -1,0 +1,65 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d77f784..209c3d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+     set(LLVM_CMAKE_PATH "${LLVM_BINARY_DIR}/share/llvm/cmake")
+     set(LLVM_LIT_PATH "${LLVM_PATH}/utils/lit/lit.py")
+-  else()
++  elseif(NOT LIBCXXABI_BUILT_STANDALONE)
+     message(FATAL_ERROR "llvm-config not found and LLVM_MAIN_SRC_DIR not defined. "
+                         "Reconfigure with -DLLVM_CONFIG=path/to/llvm-config "
+                         "or -DLLVM_PATH=path/to/llvm-source-root.")
+@@ -59,7 +59,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_PATH}")
+     include("${LLVM_CMAKE_PATH}/AddLLVM.cmake")
+     include("${LLVM_CMAKE_PATH}/HandleLLVMOptions.cmake")
+-  else()
++  elseif(NOT LIBCXXABI_BUILT_STANDALONE)
+     message(FATAL_ERROR "Not found: ${LLVM_CMAKE_PATH}")
+   endif()
+ 
+@@ -194,7 +194,7 @@ macro(append_if list condition var)
+ endmacro()
+ 
+ set(LIBCXXABI_C_FLAGS "")
+-set(LIBCXXABI_CXX_FLAGS "")
++set(LIBCXXABI_CXX_FLAGS "-std=c++11")
+ set(LIBCXXABI_COMPILE_FLAGS "")
+ set(LIBCXXABI_LINK_FLAGS "")
+ 
+@@ -326,12 +326,13 @@ if (LIBCXXABI_USE_LLVM_UNWINDER OR LLVM_NATIVE_ARCH MATCHES ARM)
+   )
+ 
+   if (LIBCXXABI_LIBUNWIND_SOURCES STREQUAL "LIBCXXABI_LIBUNWIND_SOURCES-NOTFOUND")
+-    message(WARNING "LIBCXXABI_LIBCXX_PATH was not specified and couldn't be infered.")
++    message(WARNING "LIBCXXABI_LIBUNWIND_SOURCES was not specified and couldn't be infered.")
+     set(LIBCXXABI_LIBUNWIND_SOURCES "")
++  else()
++    include_directories("${LIBCXXABI_LIBUNWIND_SOURCES}")
+   endif()
+ 
+   include_directories("${LIBCXXABI_LIBUNWIND_INCLUDES_INTERNAL}")
+-  include_directories("${LIBCXXABI_LIBUNWIND_SOURCES}")
+ endif ()
+ 
+ # Add source code. This also contains all of the logic for deciding linker flags
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index f77637e..a09c02c 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -30,7 +30,9 @@ if (LIBCXXABI_USE_LLVM_UNWINDER)
+   list(APPEND LIBCXXABI_TEST_DEPS unwind)
+ endif()
+ 
+-add_lit_testsuite(check-libcxxabi "Running libcxxabi tests"
+-  ${CMAKE_CURRENT_BINARY_DIR}
+-  DEPENDS ${LIBCXXABI_TEST_DEPS}
+-  )
++if (LLVM_MAIN_SRC_DIR)
++  add_lit_testsuite(check-libcxxabi "Running libcxxabi tests"
++    ${CMAKE_CURRENT_BINARY_DIR}
++    DEPENDS ${LIBCXXABI_TEST_DEPS}
++    )
++endif()

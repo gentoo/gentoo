@@ -73,6 +73,7 @@ multilib_src_configure() {
 		--enable-coredump \
 		--enable-ptrace \
 		--enable-setjmp \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(use_enable debug-frame) \
 		$(use_enable doc documentation) \
 		$(use_enable lzma minidebuginfo) \
