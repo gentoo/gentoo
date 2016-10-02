@@ -16,13 +16,12 @@ SRC_URI="https://distcc.googlecode.com/files/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="avahi crossdev gnome gssapi gtk hardened ipv6 selinux xinetd"
+IUSE="crossdev gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
 RESTRICT="test"
 
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt
-	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	gnome? (
 		>=gnome-base/libgnome-2
 		>=gnome-base/libgnomeui-2
@@ -30,7 +29,9 @@ CDEPEND="${PYTHON_DEPS}
 		x11-libs/pango
 	)
 	gssapi? ( net-libs/libgssglue )
-	gtk? ( x11-libs/gtk+:2 )"
+	gtk? ( x11-libs/gtk+:2 )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
+"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -91,10 +92,10 @@ src_configure() {
 	use ipv6 && myconf="${myconf} --enable-rfc2553"
 
 	econf \
-		$(use_with avahi) \
 		$(use_with gtk) \
 		$(use_with gnome) \
 		$(use_with gssapi auth) \
+		$(use_with zeroconf avahi) \
 		${myconf}
 }
 
@@ -107,7 +108,7 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/distccd.service.conf"
 
 	cp "${FILESDIR}/3.2/conf" "${T}/distccd" || die
-	if use avahi; then
+	if use zeroconf; then
 		cat >> "${T}/distccd" <<-EOF
 
 		# Enable zeroconf support in distccd
