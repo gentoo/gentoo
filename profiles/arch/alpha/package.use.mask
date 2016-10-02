@@ -3,9 +3,9 @@
 # $Id$
 
 # Tobias Klausmann <klausman@gentoo.org> (02 Oct 2016)
-# For version before 10, the ebuild does not correctly pull in fakeroot as a
-# test dependcy.
-<dev-util/debhelper-10 test
+# For the one single version noted hereunder, the ebuild does not pull in
+# sys-apps/fakeroot as a test dependency (bug #593768).
+=dev-util/debhelper-9.20160814 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
 # networkmanager USE masked due to missing keywords
