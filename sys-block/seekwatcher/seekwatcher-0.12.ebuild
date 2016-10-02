@@ -13,7 +13,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=">=dev-python/matplotlib-0.90.1
-		>=sys-block/btrace-0.0.20070730162628"
+	>=sys-block/blktrace-0.0.20070730162628"
 
 src_install() {
 	dobin seekwatcher

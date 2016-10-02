@@ -21,7 +21,7 @@ DEPEND="dev-python/pyrex"
 RDEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	>=sys-block/btrace-0.0.20070730162628
+	>=sys-block/blktrace-0.0.20070730162628
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
