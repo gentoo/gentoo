@@ -209,7 +209,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.2.6 11.4.0 11.4.1 11.5.1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -18394,7 +18394,7 @@ x11-misc/grsync 1.2.4 1.2.5 1.2.6: A gtk frontend to rsync
 x11-misc/grub2-theme-preview 1.1 1.2 1.2.1 1.3.0 1.3.1: Preview a GRUB 2.x theme using KVM/QEMU
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1: A font selection tool similar to xfontsel
-x11-misc/gtkdialog 0.8.2 0.8.3-r1: A small utility for fast and easy GUI building
+x11-misc/gtkdialog 0.8.2 0.8.3-r2: A small utility for fast and easy GUI building
 x11-misc/gxmessage 2.20.1 2.20.3 3.4.2 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r1: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
@@ -18857,7 +18857,7 @@ x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9.22 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.2.0 3.2.1 3.3.0 3.3.2 3.3.3 3.3.4: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.3.4: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.6-r1 0.7 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98: Multiple GNOME terminals in one window
 x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
