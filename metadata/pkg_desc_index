@@ -16270,7 +16270,7 @@ sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 2015
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
-sci-physics/meep 1.1.1 1.2: Simulation software to model electromagnetic systems
+sci-physics/meep 1.1.1 1.2-r1: Simulation software to model electromagnetic systems
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10: Lund Monte Carlo high-energy physics event generator
 sci-physics/reduze 2.0.9: Program for reducing Feynman integrals
