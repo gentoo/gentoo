@@ -436,20 +436,20 @@ src_install() {
 	if use clang; then
 		# Apply CHOST and version suffix to clang tools
 		local clang_version=${PV%.*}
-		local clang_tools=( clang clang++ clang-cl )
+		local clang_tools=( clang clang++ clang-cl clang-cpp )
 		local abi i
 
 		# cmake gives us:
 		# - clang-X.Y
 		# - clang -> clang-X.Y
-		# - clang++, clang-cl -> clang
+		# - clang++, clang-cl, clang-cpp -> clang
 		# we want to have:
 		# - clang-X.Y
-		# - clang++-X.Y, clang-cl-X.Y -> clang-X.Y
-		# - clang, clang++, clang-cl -> clang*-X.Y
+		# - clang++-X.Y, clang-cl-X.Y, clang-cpp-X.Y -> clang-X.Y
+		# - clang, clang++, clang-cl, clang-cpp -> clang*-X.Y
 		# also in CHOST variant
 		for i in "${clang_tools[@]:1}"; do
-			rm "${ED%/}/usr/bin/${i}" || die
+			rm -f "${ED%/}/usr/bin/${i}" || die
 			dosym "clang-${clang_version}" "/usr/bin/${i}-${clang_version}"
 			dosym "${i}-${clang_version}" "/usr/bin/${i}"
 		done
