@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 
 LICENSE="GPL-2 BSD"
 SLOT="0/17.0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
-IUSE="acl avahi cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl static-libs tracker tcpd +utils"
+IUSE="acl cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
 	!app-editors/yudit
@@ -30,7 +30,6 @@ CDEPEND="
 		sys-apps/attr
 		sys-apps/acl
 	)
-	avahi? ( net-dns/avahi[dbus] )
 	cracklib? ( sys-libs/cracklib )
 	dbus? ( sys-apps/dbus dev-libs/dbus-glib )
 	kerberos? ( virtual/krb5 )
@@ -40,7 +39,8 @@ CDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 	tracker? ( app-misc/tracker )
 	utils? ( ${PYTHON_DEPS} )
-	"
+	zeroconf? ( net-dns/avahi[dbus] )
+"
 RDEPEND="${CDEPEND}
 	utils? (
 		dev-lang/perl
@@ -80,7 +80,6 @@ src_configure() {
 	# TODO:
 	# systemd : --with-init-style=systemd
 	myeconfargs+=(
-		$(use_enable avahi zeroconf)
 		$(use_enable debug)
 		$(use_enable debug debugging)
 		$(use_enable pgp pgp-uam)
@@ -88,6 +87,7 @@ src_configure() {
 		$(use_enable kerberos krbV-uam)
 		$(use_enable quota)
 		$(use_enable tcpd tcp-wrappers)
+		$(use_enable zeroconf)
 		$(use_with acl acls)
 		$(use_with cracklib)
 		$(use_with dbus afpstats)
@@ -117,7 +117,7 @@ src_configure() {
 src_install() {
 	autotools-utils_src_install
 
-	if use avahi; then
+	if use zeroconf; then
 		sed -i -e '/avahi-daemon/s:use:need:g' "${D}"/etc/init.d/${PN} || die
 	else
 		sed -i -e '/avahi-daemon/d' "${D}"/etc/init.d/${PN} || die

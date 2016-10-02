@@ -24,9 +24,9 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE="alsa altivec avahi libass autostart bluray cec crystalhd debug dvb dvd \
+IUSE="alsa altivec libass autostart bluray cec crystalhd debug dvb dvd \
 egl fftw +hls ieee1394 jack lcd lirc +mythlogserver perl pulseaudio python systemd +theora \
-vaapi vdpau +vorbis +wrapper +xml xmltv +xvid ${IUSE_INPUT_DEVICES}"
+vaapi vdpau +vorbis +wrapper +xml xmltv +xvid zeroconf ${IUSE_INPUT_DEVICES}"
 
 REQUIRED_USE="
 	bluray? ( xml )
@@ -54,10 +54,6 @@ COMMON="
 	virtual/mysql
 	virtual/opengl:=
 	alsa? ( >=media-libs/alsa-lib-1.0.24:= )
-	avahi? (
-		dev-libs/openssl:0=
-		net-dns/avahi[mdnsresponder-compat]
-	)
 	bluray? (
 		dev-libs/libcdio:=
 		media-libs/libbluray:=
@@ -114,7 +110,11 @@ COMMON="
 	media-libs/taglib:=
 	dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )
-	"
+	zeroconf? (
+	        dev-libs/openssl:0=
+		net-dns/avahi[mdnsresponder-compat]
+	)
+"
 
 RDEPEND="${COMMON}
 	media-fonts/corefonts
@@ -190,7 +190,7 @@ src_configure() {
 	myconf="${myconf} --enable-nonfree"
 	myconf="${myconf} --enable-libmp3lame"
 	use cec || myconf="${myconf} --disable-libcec"
-	use avahi || myconf="${myconf} --disable-libdns-sd"
+	use zeroconf || myconf="${myconf} --disable-libdns-sd"
 	myconf="${myconf} $(use_enable theora libtheora)"
 	myconf="${myconf} $(use_enable vorbis libvorbis)"
 

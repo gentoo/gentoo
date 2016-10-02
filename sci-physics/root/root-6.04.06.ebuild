@@ -16,10 +16,11 @@ SRC_URI="https://root.cern.ch/download/${PN}_v${PV}.source.tar.gz"
 SLOT="0/$(get_version_component_range 1-3 ${PV})"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+X afs avahi doc emacs examples fits fftw gdml geocad
+IUSE="+X afs doc emacs examples fits fftw gdml geocad
 	graphviz http kerberos ldap +math +memstat mpi mysql odbc
 	+opengl openmp oracle postgres prefix pythia6 pythia8
-	python qt4 R shadow sqlite ssl table +tiff xinetd xml xrootd"
+	python qt4 R shadow sqlite ssl table +tiff xinetd xml xrootd
+	zeroconf"
 
 # TODO: add support for: davix
 # TODO: ROOT-6 supports x32 ABI, but half of its dependencies doesn't
@@ -64,7 +65,6 @@ CDEPEND="
 		x11-libs/libXft:0=
 	)
 	afs? ( net-fs/openafs )
-	avahi? ( net-dns/avahi:0= )
 	emacs? ( virtual/emacs )
 	fits? ( sci-libs/cfitsio:0= )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -91,6 +91,7 @@ CDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( >=net-libs/xrootd-3.3.5:0= )
+	zeroconf? ( net-dns/avahi:0= )
 "
 
 # TODO: ruby is not yet ported to ROOT-6, reenable when (if?) ready
@@ -343,7 +344,6 @@ src_configure() {
 		$(use_enable X asimage)
 		$(use_enable X xft)
 		$(use_enable afs)
-		$(use_enable avahi bonjour)
 		$(use_enable fits fitsio)
 		$(use_enable fftw fftw3)
 		$(use_enable gdml)
@@ -382,6 +382,7 @@ src_configure() {
 		$(use_enable tiff astiff)
 		$(use_enable xml)
 		$(use_enable xrootd)
+		$(use_enable zeroconf bonjour)
 		${EXTRA_ECONF}
 	)
 
