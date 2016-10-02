@@ -102,7 +102,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	opengl? (
 		virtual/glu
 		virtual/opengl
-		>=media-libs/glew-1.5.6
+		>=media-libs/glew-1.5.6:0=
 	)
 	gles? (
 		media-libs/mesa[gles2]
