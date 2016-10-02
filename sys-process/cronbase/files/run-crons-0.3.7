@@ -58,8 +58,8 @@ grab_lock() {
 		# another run-crons process.
 		# The tr call deletes null bytes so newer bash versions do not complain
 		# about them.
-		cmdline1=$([ -r "/proc/${cronpid}/cmdline" ] && tr -d '\0'  < "/proc/${cronpid}/cmdline" 2>/dev/null) || :
-		cmdline2=$(tr -d '\0'  < /proc/$$/cmdline)
+		cmdline1=$(sed -e 's/\0/ /g' "/proc/${cronpid}/cmdline" 2>/dev/null) || :
+		cmdline2=$(sed -e 's/\0/ /g' /proc/$$/cmdline)
 		if [ "${cmdline1}" = "${cmdline2}" ] ; then
 			# Whoa, another run-crons is really running.
 			return 1
