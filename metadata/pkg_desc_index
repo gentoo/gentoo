@@ -13249,7 +13249,7 @@ media-sound/cmusfm 0.2.5 0.3.1: Last.fm scrobbler for cmus music player
 media-sound/codecgraph 20120114: Generates a graph based on the ALSA description of an HD Audio codec
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
-media-sound/cplay 1.49: A Curses front-end for various audio players
+media-sound/cplay 1.50: A Curses front-end for various audio players
 media-sound/csound 6.06.0 6.07.0: A sound design and signal processing system providing facilities for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513 0.513-r1: fixed point cd ripper
@@ -13521,7 +13521,7 @@ media-sound/soundkonverter 2.2.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
-media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
+media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.38: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365-r1 1.1_p381-r1: A lightweight streaming audio player for Logitech Media Server
