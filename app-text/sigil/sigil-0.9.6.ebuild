@@ -39,7 +39,7 @@ RDEPEND="
 	>=dev-qt/qtprintsupport-5.4:5
 	>=dev-qt/qtwebkit-5.4:5
 	>=dev-qt/qtwidgets-5.4:5
-	>=dev-qt/qtwidgets-5.4:5
+	>=dev-qt/qtxmlpatterns-5.4:5
 	sys-libs/zlib[minizip]
 "
 DEPEND="${RDEPEND}
