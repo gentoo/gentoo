@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/apalmblad/ruby-shadow http://ttsky.net"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~sparc x86"
+KEYWORDS="amd64 hppa ppc ~sparc x86"
 IUSE=""
 
 each_ruby_configure() {
