@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A small utility for fast and easy GUI building"
 HOMEPAGE="https://code.google.com/p/gtkdialog/"
@@ -17,7 +17,7 @@ IUSE="glade vte"
 RDEPEND="
 	x11-libs/gtk+:2
 	glade? ( gnome-base/libglade )
-	vte? ( x11-libs/vte:= )
+	vte? ( x11-libs/vte:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -26,11 +26,18 @@ DEPEND="
 	virtual/yacc
 "
 
-DOCS=( AUTHORS ChangeLog TODO )
+DOCS=(
+	AUTHORS
+	ChangeLog
+	TODO
+)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.3-optdeps.patch
+)
 
 src_prepare() {
 	mv configure.{in,ac} || die
-	epatch "${FILESDIR}"/${PN}-0.8.3-optdeps.patch
+	default
 	eautoreconf
 }
 
