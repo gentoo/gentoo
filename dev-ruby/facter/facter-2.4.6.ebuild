@@ -18,7 +18,7 @@ HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+dmi +pciutils +virt"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 hppa ~ppc ~ppc64 ~sparc ~x86"
 
 CDEPEND="
 	app-emulation/virt-what
