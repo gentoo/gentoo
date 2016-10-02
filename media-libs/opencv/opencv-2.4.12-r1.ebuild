@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4.8-javamagic.patch"
 	"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch"
 	"${FILESDIR}/${P}-git-autodetect.patch"
+	 "${FILESDIR}/${PN}-3.0.0-gles.patch"
 	)
 
 pkg_setup() {
