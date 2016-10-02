@@ -94,4 +94,6 @@ python_install_all() {
 	doins youtube-dl.fish
 
 	distutils-r1_python_install_all
+
+	rm -r "${D}"/usr/etc || die
 }
