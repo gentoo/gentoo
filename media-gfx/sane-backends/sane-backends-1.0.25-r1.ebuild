@@ -94,7 +94,7 @@ IUSE_SANE_BACKENDS="
 	umax_pp
 	xerox_mfp"
 
-IUSE="avahi doc gphoto2 ipv6 nls snmp systemd threads usb v4l xinetd"
+IUSE="doc gphoto2 ipv6 nls snmp systemd threads usb v4l xinetd zeroconf"
 
 for backend in ${IUSE_SANE_BACKENDS}; do
 	case ${backend} in
@@ -149,7 +149,6 @@ RDEPEND="
 		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
 	)
-	avahi? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
@@ -162,6 +161,7 @@ RDEPEND="
 	xinetd? ( sys-apps/xinetd )
 	snmp? ( net-analyzer/net-snmp )
 	systemd? ( sys-apps/systemd:0= )
+	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}
@@ -258,10 +258,10 @@ multilib_src_configure() {
 		$(use_with gphoto2) \
 		$(multilib_native_use_with systemd) \
 		$(use_with v4l) \
-		$(use_enable avahi) \
 		$(use_enable ipv6) \
 		$(use_enable nls translations) \
 		$(use_enable threads pthread) \
+		$(use_enable zeroconf avahi) \
 		"${myconf[@]}"
 }
 
