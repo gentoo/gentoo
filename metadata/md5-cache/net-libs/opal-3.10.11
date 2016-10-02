@@ -3,7 +3,7 @@ DEPEND=>=net-libs/ptlib-2.10.10:=[stun,debug=,dtmf,http,ipv6?,ldap?,sound?,ssl?,
 DESCRIPTION=C++ class library normalising numerous telephony protocols
 EAPI=5
 HOMEPAGE=http://www.opalvoip.org/
-IUSE=capi celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc ipv6 ivr ixj java ldap lid +plugins sbc sip sipim +sound srtp ssl static-libs stats swig theora +video vpb vxml wav x264 x264-static xml elibc_FreeBSD java
+IUSE=capi celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc ipv6 ivr ixj java ldap lid +plugins sbc +sip +sipim +sound srtp ssl static-libs stats swig theora +video vpb vxml +wav x264 x264-static +xml elibc_FreeBSD java
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=MPL-1.0
 RDEPEND=>=net-libs/ptlib-2.10.10:=[stun,debug=,dtmf,http,ipv6?,ldap?,sound?,ssl?,video?,vxml?,wav?,xml?] >=media-libs/speex-1.2_beta fax? ( net-libs/ptlib[asn] ) h323? ( net-libs/ptlib[asn] ) ivr? ( net-libs/ptlib[http,xml,vxml] ) java? ( >=virtual/jre-1.4 ) plugins? ( media-sound/gsm capi? ( net-dialup/capi4k-utils ) celt? ( media-libs/celt ) ffmpeg? ( virtual/ffmpeg[encode] ) ixj? ( sys-kernel/linux-headers ) ilbc? ( dev-libs/ilbc-rfc3951 ) sbc? ( media-libs/libsamplerate ) theora? ( media-libs/libtheora ) x264? ( virtual/ffmpeg media-libs/x264 ) ) srtp? ( net-libs/libsrtp ) vxml? ( net-libs/ptlib[http,vxml] ) java? ( >=dev-java/java-config-2.2.0-r3 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/opalvoip/opal-3.10.11.tar.bz2 doc? ( mirror://sourceforge/opalvoip/opal-3.10.11-htmldoc.tar.bz2 )
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c138ff36d63bbdfb4abf670c03c51d1d
+_md5_=5afe7eee754fc818b75c0163261df767
