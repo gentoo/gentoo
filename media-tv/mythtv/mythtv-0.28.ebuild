@@ -112,7 +112,7 @@ COMMON="
 	systemd? ( sys-apps/systemd:= )
 	zeroconf? (
 	        dev-libs/openssl:0=
-                net-dns/avahi[mdnsresponder-compat]
+		net-dns/avahi[mdnsresponder-compat]
 	)
 "
 
