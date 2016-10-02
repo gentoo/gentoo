@@ -4,8 +4,8 @@ EAPI=0
 HOMEPAGE=http://oss.oracle.com/~mason/seekwatcher/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-python/matplotlib-0.90.1 >=sys-block/btrace-0.0.20070730162628
+RDEPEND=>=dev-python/matplotlib-0.90.1 >=sys-block/blktrace-0.0.20070730162628
 SLOT=0
 SRC_URI=http://oss.oracle.com/~mason/seekwatcher/seekwatcher-0.12.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=8213efa3d30b15946b2ff28c2b51c75a
+_md5_=ebac06c46fca29a841e5885c60892f8f
