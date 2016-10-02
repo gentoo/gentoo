@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://ab-initio.mit.edu/meep/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples hdf5 guile mpb mpi"
+IUSE="examples hdf5 guile mpi"
 
 RDEPEND="
 	sci-libs/fftw
@@ -22,7 +22,6 @@ RDEPEND="
 	sci-physics/harminv
 	guile? ( >=sci-libs/libctl-3.2 )
 	hdf5? ( sci-libs/hdf5 )
-	mpb? ( sci-physics/mpb )
 	mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -34,7 +33,7 @@ PATCHES=(
 
 src_configure() {
 	local myeconfargs=(
-		$(use_with mpb)
+		--disable-mpb
 		$(use_with mpi)
 		$(use_with hdf5)
 		$(use_with guile libctl)

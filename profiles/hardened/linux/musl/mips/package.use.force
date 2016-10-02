@@ -1,2 +1,7 @@
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_Mips
+sys-devel/llvm llvm_targets_Mips
+
 # The only working option
 dev-util/pkgconf pkg-config
