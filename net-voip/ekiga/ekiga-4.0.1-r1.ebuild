@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/boost-1.49:0=
 	dev-libs/libxml2:2
 	>=gnome-base/gconf-2.6.0:2
-	
+
 	>=net-libs/opal-3.10.9:0=[sip,sound,video,debug=,h323?,xml]
 	<net-libs/opal-3.12
 	>=net-libs/ptlib-2.10.9:0=[ldap?,stun,v4l?,video,wav,debug=,dtmf,pulseaudio?,xml]
@@ -74,9 +74,9 @@ src_prepare() {
 		sed -i -e "s/V4L=\"enabled\"/V4L=\"disabled\"/" configure || die "sed failed"
 	fi
 
-        gnome2_src_prepare
+	gnome2_src_prepare
 }
-	
+
 src_configure() {
 	# dbus-service: always enable if dbus is enabled, no reason to disable it
 	# Upstream doesn't support experimental stuff:
