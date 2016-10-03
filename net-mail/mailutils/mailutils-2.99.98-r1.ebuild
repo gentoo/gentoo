@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,23 +23,23 @@ RDEPEND="!mail-client/nmh
 	!mail-filter/libsieve
 	!mail-client/mailx
 	!mail-client/nail
-	sys-libs/ncurses:*
-	sys-libs/readline:*
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
 	virtual/mta
-	berkdb? ( sys-libs/db:* )
+	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
 	gdbm? ( sys-libs/gdbm )
-	guile? ( dev-scheme/guile:* )
+	guile? ( dev-scheme/guile:= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	nls? ( sys-devel/gettext )
 	pam? ( virtual/pam )
-	postgres? ( dev-db/postgresql:* )
+	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tokyocabinet? ( dev-db/tokyocabinet )"
 
