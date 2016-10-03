@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="A console player for AdLib music"
 HOMEPAGE="http://adplug.sourceforge.net"
@@ -20,14 +20,13 @@ RDEPEND=">=media-libs/adplug-2.2.1
 	sdl? ( media-libs/libsdl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+PATCHES=( "${FILESDIR}/${PN}-1.7-fix-c++14.patch" )
 
 src_configure() {
 	econf \
+		--disable-output-esound \
 		$(use_enable alsa output-alsa) \
 		$(use_enable ao output-ao) \
-		--disable-output-esound \
 		$(use_enable oss output-oss) \
 		$(use_enable sdl output-sdl)
 }
