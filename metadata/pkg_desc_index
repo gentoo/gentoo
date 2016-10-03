@@ -1142,7 +1142,7 @@ app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.4 9999: Emacs major mode for editing eselect files
 app-emacs/ess 14.09 15.03.1 15.09.2 16.04: Emacs Speaks Statistics
 app-emacs/evil 1.0.8: Extensible vi layer for Emacs
-app-emacs/f 0.18.2: Modern API for working with files and directories in Emacs
+app-emacs/f 0.18.2 0.19.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
