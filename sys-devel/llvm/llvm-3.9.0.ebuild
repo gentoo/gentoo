@@ -76,7 +76,11 @@ RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
-PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
+PDEPEND="
+	clang? (
+		=sys-devel/clang-${PV}-r100
+		~sys-devel/clang-runtime-${PV}
+	)
 	default-libcxx? ( sys-libs/libcxx )
 	kernel_Darwin? ( =sys-libs/libcxx-${PV%.*}* )"
 
