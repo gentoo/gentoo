@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils flag-o-matic python-single-r1 toolchain-funcs
+inherit autotools flag-o-matic python-single-r1 toolchain-funcs
 
 DESCRIPTION="Python-based splice junction mapper for RNA-Seq reads using bowtie2"
 HOMEPAGE="https://ccb.jhu.edu/software/tophat/"
@@ -70,7 +70,7 @@ src_install() {
 	local i
 	# install scripts properly
 	for i in bed_to_juncs contig_to_chr_coords sra_to_solid tophat tophat-fusion-post; do
-		python_doscript "${ED%/}/usr/bin/${i}"
+		python_fix_shebang "${ED%/}/usr/bin/${i}"
 	done
 
 	# install python modules properly

@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Shotgun assembly and alignment utilities"
 HOMEPAGE="http://www.phrap.org/"
@@ -21,6 +23,7 @@ RDEPEND="
 S="${WORKDIR}"
 
 RESTRICT="fetch"
+PATCHES=( "${FILESDIR}/${PN}-1.080812-fix-build-system.patch" )
 
 pkg_nofetch() {
 	einfo "Please visit http://www.phrap.org/phredphrapconsed.html and obtain the file"
@@ -28,15 +31,18 @@ pkg_nofetch() {
 	einfo "and put it in ${DISTDIR}"
 }
 
-src_prepare() {
-	sed -i 's/CFLAGS=/#CFLAGS=/' makefile || die
-	sed -i 's|#!/usr/local/bin/perl|#!/usr/bin/env perl|' phrapview || die
+src_compile() {
+	emake CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
 	dobin cross_match loco phrap phrapview swat
 	newbin cluster cluster_phrap
-	for i in {general,phrap,swat}.doc ; do
+
+	local i
+	for i in {general,phrap,swat}.doc; do
 		newdoc ${i} ${i}.txt
 	done
 }
