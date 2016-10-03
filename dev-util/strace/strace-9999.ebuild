@@ -6,7 +6,8 @@ EAPI="5"
 inherit flag-o-matic eutils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://strace.git.sourceforge.net/gitroot/strace/strace"
+	EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
+	EGIT_PROJECT="${PN}"
 	inherit git-2 autotools
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
