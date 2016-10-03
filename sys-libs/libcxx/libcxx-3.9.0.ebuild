@@ -54,6 +54,10 @@ PATCHES=(
 	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
 	# out-of-tree build.
 	"${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
+
+	# Back-port of https://reviews.llvm.org/D23232, allowing building both
+	# shared and static libs in one run.
+	"${FILESDIR}/${PN}-3.9-cmake-static-lib.patch"
 )
 
 pkg_setup() {
