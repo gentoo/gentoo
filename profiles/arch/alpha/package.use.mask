@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (03 Oct 2016)
+# Pulls in dev-db/redis which is not keyworded on alpha.
+>=dev-libs/hiredis-0.13.1 test
+
 # Tobias Klausmann <klausman@gentoo.org> (02 Oct 2016)
 # For the one single version noted hereunder, the ebuild does not pull in
 # sys-apps/fakeroot as a test dependency (bug #593768).
