@@ -1,26 +1,13 @@
 certificate version 0.1
-pusher 0x93EB5F4DAA5832A1 1475506090 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1475506090-e8bd34d0f51ad102b27c
+pusher 0xA792A613 1475506508 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1475506508-a1305ce01b9720dbfb03
 
-85dda04f3d2b88f8e6e6f3d1e267e941422bca08 bb049ede808e173d26807a0fc93e7fc15eb086b1 refs/heads/master
+bb049ede808e173d26807a0fc93e7fc15eb086b1 2d27d4cc81cad683d5f55fafc09f7aafd6ebbbca refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.1
-Comment: Signed-off-by: Jörg Bornkessel <hd_brummy@gentoo.org>
+Version: GnuPG v2
 
-iQJ8BAABCgBmBQJX8m+qXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25zLm9w
-ZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXQwRTBBQTFFRTFERjQ0MUQ3QTNGNTIxQzI5
-M0VCNUY0REFBNTgzMkExAAoJEJPrX02qWDKhBjsP/2AscnWRBe/8xcgSVUnd7g8k
-zfHyIecH150uDBG9N3x4uPqEz+kp4IZU4rZFmeAlkHE4mwDGwdlpEjseX4l+d0e1
-n/gJxq1GernNZpdjs0Ln8+lMDdtZnkNKOusKwfKU7pa14qrYTDa+QLx0mphmFSdM
-9upj4V5rViE0Ve1Y5+ufokwPMPurb42bPYLwoHGzhWaz7X0ZibOA1/t9nC/VoOsT
-oa/nl+oTeFxZ9AS0draE0JS/en+pY+C/mYTE9SNl/Moeo+rrByXzJhncP1s/xM1F
-luvp5IXR5R09PnGaG9JbE1TUNN47q/6ewJ4pRuItbwc7TtAEUPQqVKHfCGQlJG+G
-og0zGlcALHqTQ312J94SNzyarS0Zfbzqc1NzPehtEiaawmfOGKbGK0IjGNYx/upb
-ar8jR/qgNR+GaR7VjHgL57u3GXZi4Ddr6TSvqOGYszcfLQzquYiZO3NrAwEJpP0d
-bhwVqx/l35M0gkjFK+v/XebvIU/gTY747TZhjrQ7uaDW1tzulY9ETcFkXS0izMal
-o19Q+YlR0EWy9UMHF3iIJuV2PgS565aecFMsHBHElZl3a89prJmA1BcT9NwHIHuK
-npcmlmTd0rBRurgy7gLvoyxr6CV2lB2slRyQgOBJVZDYEGkdk2aokX0wIBx6zoDZ
-MsfIUkSty9TvZNOORj4x
-=u5Bt
+iEYEABECAAYFAlfycUwACgkQVWmRsqeSphNCcwCdGh1A2BMD5cdW953tJAaZN1zd
+hBQAnAuJCENrQ5pProeZn/WIi7MQIsfZ
+=f0mN
 -----END PGP SIGNATURE-----
