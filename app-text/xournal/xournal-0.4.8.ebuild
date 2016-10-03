@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,8 @@ else
 	inherit git-2
 	SRC_URI=""
 	KEYWORDS=""
-	EGIT_REPO_URI="git://xournal.git.sourceforge.net/gitroot/xournal/xournal"
+	EGIT_REPO_URI="git://git.code.sf.net/p/xournal/code"
+	EGIT_PROJECT="${PN}"
 fi
 
 COMMONDEPEND="
