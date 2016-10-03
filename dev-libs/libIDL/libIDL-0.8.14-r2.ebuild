@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.44.1-r1:2[${MULTILIB_USEDEP}]"
