@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 toolchain-funcs
+inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://samtools.sourceforge.net/"
@@ -16,10 +16,10 @@ LICENSE="MIT"
 SLOT="0.1-legacy"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="examples"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="${PYTHON_DEPS}
+	sys-libs/ncurses:0=
 	dev-lang/perl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -30,7 +30,8 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -i 's~/software/bin/python~/usr/bin/env python~' "${S}"/misc/varfilter.py || die
+	# required, otherwise python_fix_shebang errors out
+	sed -i 's~/software/bin/python~/usr/bin/env python~' misc/varfilter.py || die
 	tc-export CC AR
 }
 
@@ -41,24 +42,24 @@ src_compile() {
 }
 
 src_install() {
-	dobin samtools $(find bcftools misc -type f -executable)
-	mv "${ED}"/usr/{bin,${PN}-${SLOT}} || die
-	mkdir "${ED}"/usr/bin || die
-	mv "${ED}"/usr/{${PN}-${SLOT},bin/} || die
+	# install executables and hide them away from sight
+	dobin samtools bcftools/{bcftools,vcfutils.pl} misc/{*.py,*.pl,wgsim,ace2sam} \
+		misc/{md5sum-lite,maq2sam-short,bamcheck,maq2sam-long,md5fa,plot-bamcheck}
+	mv "${ED%/}"/usr/{bin,${PN}-${SLOT}} || die
+	mkdir "${ED%/}"/usr/bin || die
+	mv "${ED%/}"/usr/{${PN}-${SLOT},bin/} || die
 
-	mv "${ED}"/usr/bin/${PN}-${SLOT}/varfilter{,-${SLOT}}.py || die
-	python_replicate_script "${ED}"/usr/bin/${PN}-${SLOT}/varfilter-${SLOT}.py
+	# ... do the same with the python script, but also fix the shebang
+	mv "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter{,-${SLOT}}.py || die
+	python_fix_shebang "${ED%/}"/usr/bin/${PN}-${SLOT}/varfilter-${SLOT}.py
 
 	# fix perl shebangs
-	pushd "${ED}"usr/bin/"${PN}-${SLOT}"/ >> /dev/null
+	pushd "${ED%/}"/usr/bin/${PN}-${SLOT} >/dev/null || die
 		local i
 		for i in plot-bamcheck *.pl; do
 			sed -e '1s:.*:#!/usr/bin/env perl:' -i "${i}" || die
 		done
-
-		# remove lua scripts
-		rm -f r2plot.lua vcfutils.lua || die
-	popd >> /dev/null
+	popd >/dev/null || die
 
 	dolib.so libbam-${SLOT}$(get_libname 1)
 	dosym libbam-${SLOT}$(get_libname 1) /usr/$(get_libdir)/libbam-${SLOT}$(get_libname)
@@ -68,9 +69,12 @@ src_install() {
 
 	mv ${PN}{,-${SLOT}}.1 || die
 	doman ${PN}-${SLOT}.1
-	dodoc AUTHORS NEWS
+	einstalldocs
 
-	use examples && dodoc -r examples
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
 
 pkg_postinst() {
