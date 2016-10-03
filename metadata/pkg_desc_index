@@ -10117,7 +10117,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, and more
-dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
+dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.4 2.9.3 2.10.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 0.2015.09.08 9999: Bugzilla subcommand for git
@@ -13658,7 +13658,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.1: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.8.6 2.8.7 2.8.8 3.1.3 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.8.6 2.8.7 2.8.8 3.1.3 3.1.4 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0 2.1.1: Lightweight video thumbnailer that can be used by file managers
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
@@ -16654,7 +16654,7 @@ sys-apps/gnome-disk-utility 3.18.3.1 3.20.2: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201507191652 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
-sys-apps/grep 2.21-r1 2.24 2.25: GNU regular expression matcher
+sys-apps/grep 2.21-r1 2.25 2.26: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
@@ -17399,7 +17399,7 @@ sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
-sys-libs/libcxx 3.7.0 3.7.1 3.8.0 3.8.1 9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxx 3.7.0 3.7.1 3.8.0 3.8.1 3.9.0 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423-r1 0.0_p20160922 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
