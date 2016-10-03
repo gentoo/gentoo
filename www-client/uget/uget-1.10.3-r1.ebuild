@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-2
 	KEYWORDS=""
 	SRC_URI=""
-	EGIT_REPO_URI="git://urlget.git.sourceforge.net/gitroot/urlget/uget"
+	EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget"
 else
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 	SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
