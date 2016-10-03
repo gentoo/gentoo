@@ -530,8 +530,6 @@ app-crypt/gpgme 1.5.5 1.6.0 1.7.0: GnuPG Made Easy is a library for making GnuPG
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
-app-crypt/hashcat-bin 0.49: An multi-threaded multihash cracker
-app-crypt/hashcat-gui 0.5.1: A gui for the *hashcat* suite of tools
 app-crypt/heimdal 1.5.3-r2: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
@@ -565,8 +563,6 @@ app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39: Leverage the OpenPGP web 
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
 app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
-app-crypt/oclhashcat-lite-bin 0.15: An opencl hash cracker
-app-crypt/oclhashcat-plus-bin 0.15: An opencl multihash cracker
 app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
 app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware

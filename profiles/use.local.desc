@@ -291,8 +291,6 @@ app-crypt/gnupg:tofu - Enable support for Trust of First use trust model; requir
 app-crypt/gnupg:tools - Install extra tools.
 app-crypt/gnupg:usb - Build direct CCID access for scdaemon; requires dev-libs/libusb.
 app-crypt/gpgme:common-lisp - Install common-lisp files
-app-crypt/hashcat-gui:cuda - Install oclhashcat-{plus,lite}-bin to take advantage of hardware cuda support.
-app-crypt/hashcat-gui:opencl - Install oclhashcat-{plus,lite}-bin to take advantage of hardware opencl support.
 app-crypt/heimdal:hdb-ldap - Adds support for LDAP as a database backend
 app-crypt/heimdal:otp - Adds support for one-time passwords
 app-crypt/heimdal:pkinit - Adds support for PKINIT for the initial ticket
@@ -306,8 +304,6 @@ app-crypt/mit-krb5:doc - Creates and installs the API and implementation documen
 app-crypt/mit-krb5:keyutils - Enable for the keyring ccache using keyutils.
 app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend.
 app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket.
-app-crypt/oclhashcat-lite-bin:virtualcl - Support for Mosix VirtualCL Clustering Platform
-app-crypt/oclhashcat-plus-bin:virtualcl - Support for Mosix VirtualCL Clustering Platform
 app-crypt/ophcrack:tables - Require the additional tables used to carry out cracking (app-crypt/ophcrack-tables)
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
