@@ -13131,7 +13131,7 @@ media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs f
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote
 media-plugins/vdr-serial 0.0.6a-r1: VDR Plugin: attach some buttons with diodes to the serial port
 media-plugins/vdr-skincurses 2.0.0 2.2.0: VDR plugin: show content of menu in a shell window
-media-plugins/vdr-skinelchi 0.2.7 0.2.7-r1: VDR Skin Plugin: skinelchi
+media-plugins/vdr-skinelchi 0.2.7 0.2.7-r1 0.3.0: VDR Skin Plugin: skinelchi
 media-plugins/vdr-skinenigmang 0.1.2 0.1.2_p20120618 0.1.2_p20130302: VDR - Skin Plugin: enigma-ng
 media-plugins/vdr-skinnopacity 1.1.1 1.1.3: VDR Skin Plugin: highly customizable native true color skin for the Video Disc Recorder
 media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0 2.2.1: VDR Skin Plugin: soppalusikka
@@ -16581,7 +16581,7 @@ sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just l
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.10.1: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.10.1: Additional userspace utils to assist with AppArmor profile management
-sys-apps/apply-default-acl 0.0.4 0.0.5: Apply default POSIX ACLs to files and directories
+sys-apps/apply-default-acl 0.0.4 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
