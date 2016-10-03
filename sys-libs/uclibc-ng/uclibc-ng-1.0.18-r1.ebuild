@@ -379,6 +379,15 @@ src_install() {
 		return 0
 	fi
 
+	dosym libc.so.0 "${DESTDIR}"/lib/libcrypt.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libdl.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libm.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libpthread.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/librt.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libresolv.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libubacktrace.so.0
+	dosym libc.so.0 "${DESTDIR}"/lib/libutil.so.0
+
 	emake DESTDIR="${D}" install_utils
 	dobin extra/scripts/getent
 	dodoc README docs/*.txt
