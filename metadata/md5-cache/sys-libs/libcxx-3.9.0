@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) test? ( sys-devel/clang[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) app-arch/xz-utils >=sys-devel/llvm-3.9.0 dev-util/ninja >=dev-util/cmake-3.4.3
+DEPEND=libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) test? ( >=sys-devel/clang-3.9.0 || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) app-arch/xz-utils >=sys-devel/llvm-3.9.0 dev-util/ninja >=dev-util/cmake-3.4.3
 DESCRIPTION=New implementation of the C++ standard library, targeting C++11
 EAPI=6
 HOMEPAGE=http://libcxx.llvm.org/
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://llvm.org/releases/3.9.0/libcxx-3.9.0.src.tar.xz test? ( http://llvm.org/releases/3.9.0/llvm-3.9.0.src.tar.xz )
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-multilib src_test:cmake-multilib src_install:cmake-multilib
 _eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=202f7af287abea62be0725b841a6f684
+_md5_=ea8c173797fa3159039cdb7ef20a816e
