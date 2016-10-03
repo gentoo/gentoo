@@ -9179,7 +9179,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1 1.2.1-r1: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.6.2 1.6.6.4 1.6.7.2 1.6.8: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.6.2 1.6.6.4 1.6.7.2 1.6.8 1.6.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -9298,7 +9298,7 @@ dev-ruby/rr 1.1.2-r1 1.2.0: A double framework featuring a selection of double t
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r2 2.14.1-r1 2.99.0 3.3.0 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.3 3.4.4 3.5.0 3.5.1 3.5.2 3.5.3: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.4 3.5.3 3.5.4: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
@@ -9353,7 +9353,7 @@ dev-ruby/ruby-shout 2.2.1-r2 2.2.2: A Ruby interface to libshout2
 dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
 dev-ruby/ruby-termios 1.0.0-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby vte bindings
-dev-ruby/ruby-vte3 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby VTE bindings
+dev-ruby/ruby-vte3 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1 3.0.8 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit-gtk 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby WebKitGtk bindings
 dev-ruby/ruby-webkit-gtk2 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby WebKitGtk+ for Gtk 2.0 bindings
 dev-ruby/ruby-webkit2-gtk 3.0.7 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
@@ -13403,7 +13403,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18 0.19.19: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
