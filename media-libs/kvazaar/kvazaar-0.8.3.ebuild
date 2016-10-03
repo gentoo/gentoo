@@ -39,7 +39,7 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_compile() {
+multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 		econf \
 			--docdir "/usr/share/doc/${PF}" \
