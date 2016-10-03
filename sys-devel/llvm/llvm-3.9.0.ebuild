@@ -527,9 +527,3 @@ multilib_src_install_all() {
 		fi
 	fi
 }
-
-pkg_postinst() {
-	if use clang && ! has_version 'sys-libs/libomp'; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp."
-	fi
-}

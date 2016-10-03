@@ -268,9 +268,3 @@ multilib_src_install_all() {
 		python_optimize "${ED}"usr/share/scan-view
 	fi
 }
-
-pkg_postinst() {
-	if ! has_version 'sys-libs/libomp'; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp."
-	fi
-}
