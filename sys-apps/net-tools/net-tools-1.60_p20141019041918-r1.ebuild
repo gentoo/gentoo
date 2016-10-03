@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,8 @@ EAPI="3"
 inherit flag-o-matic toolchain-funcs eutils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://net-tools.git.sourceforge.net/gitroot/net-tools/net-tools"
+	EGIT_REPO_URI="git://git.code.sf.net/p/net-tools/code"
+	EGIT_PROJECT="${PN}"
 	inherit git-2
 else
 	PATCH_VER="1"
