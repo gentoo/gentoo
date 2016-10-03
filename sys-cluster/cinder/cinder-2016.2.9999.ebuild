@@ -90,12 +90,13 @@ RDEPEND="
 		<dev-python/sqlalchemy-1.1.0[sqlite,${PYTHON_USEDEP}]
 	)
 	mysql? (
-		dev-python/mysql-python
+		>=dev-python/pymysql-0.6.2[${PYTHON_USEDEP}]
+		!~dev-python/pymysql-0.7.7[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 	)
 	postgres? (
-		dev-python/psycopg:2
+		>=dev-python/psycopg-2.5.0
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 	)
