@@ -58,8 +58,11 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
+# Remove pkg_preinst in the next version bump
 pkg_preinst() {
-	# Remove this in the next version bump
+	# https://bugs.gentoo.org/585146
+	cd "${HOME}" || die
+
 	_cleanup() {
 		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
 		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
@@ -68,10 +71,5 @@ pkg_preinst() {
 			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
 		fi
 	}
-	# https://bugs.gentoo.org/585146
-	local tmpdir="$(mktemp -d)"
-	[[ -n ${tmpdir} ]] || die
-	cd "${tmpdir}" || die
 	python_foreach_impl _cleanup
-	rmdir "${tmpdir}"
 }
