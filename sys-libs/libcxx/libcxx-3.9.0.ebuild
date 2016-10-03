@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 	test? ( sys-devel/clang[${MULTILIB_USEDEP}]
 		${PYTHON_DEPS} )
 	app-arch/xz-utils
-	>=sys-devel/llvm-3.9.0[${MULTILIB_USEDEP}]"
+	>=sys-devel/llvm-3.9.0"
 
 DOCS=( CREDITS.TXT )
 
@@ -94,6 +94,11 @@ src_unpack() {
 	git-r3_checkout
 }
 
+src_configure() {
+	NATIVE_LIBDIR=$(get_libdir)
+	cmake-multilib_src_configure
+}
+
 multilib_src_configure() {
 	local cxxabi cxxabi_incs
 	if use libcxxrt; then
@@ -107,7 +112,10 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
+		# LLVM_LIBDIR_SUFFIX is used to find CMake files
+		# and we are happy to use the native set
+		-DLLVM_LIBDIR_SUFFIX=${NATIVE_LIBDIR#lib}
+		-DLIBCXX_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBCXX_ENABLE_SHARED=ON
 		-DLIBCXX_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXX_CXX_ABI=${cxxabi}
