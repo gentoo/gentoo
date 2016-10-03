@@ -15,10 +15,11 @@ KEYWORDS="amd64 x86 ~arm-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.20:2
+	x11-libs/gtk+:3[X]
 	x11-libs/vte:2.91
-	x11-libs/gtk+:3
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=dev-lang/perl-5.10.1
 	virtual/pkgconfig
 "
