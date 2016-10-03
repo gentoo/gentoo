@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 PDEPEND="
+	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( sys-libs/compiler-rt )
 	default-libcxx? ( sys-libs/libcxx )"
 
