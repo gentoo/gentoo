@@ -7423,6 +7423,7 @@ sys-cluster/glusterfs:qemu-block - Transparently create files as QCow2/QED image
 sys-cluster/glusterfs:rsyslog - Install configuration snippet for app-admin/rsyslog
 sys-cluster/glusterfs:systemtap - Enable support for dev-util/systemtap
 sys-cluster/glusterfs:tiering - Enable support for data classification/tiering (requires dev-db/sqlite SLOT 3)
+sys-cluster/heat:memcached - Installs the memcached server
 sys-cluster/hpx:jemalloc - Use dev-libs/jemalloc for memory allocation
 sys-cluster/hpx:papi - Use dev-libs/papi for NaCl
 sys-cluster/hpx:perftools - Use dev-util/google-perftools for memory allocation
@@ -7465,6 +7466,7 @@ sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
 sys-cluster/openmpi:vt - Enable bundled VampirTrace support
 sys-cluster/openstack-meta:cinder - Installs Openstack Cinder
 sys-cluster/openstack-meta:glance - Installs Openstack Glance
+sys-cluster/openstack-meta:heat - Installs Openstack Heat
 sys-cluster/openstack-meta:keystone - Installs Openstack Keystone
 sys-cluster/openstack-meta:neutron - Installs Openstack Neutron
 sys-cluster/openstack-meta:nova - Installs Openstack Nova
