@@ -4719,7 +4719,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.6.5 1.7.1 1.7.2 1.7.3: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 9999: A linkable library for Git
@@ -5109,7 +5109,7 @@ dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values 
 dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 113.24.00 113.33.03: Folding over record fields
-dev-ml/findlib 1.4 1.5.6 1.6.1 1.6.1-r1 1.6.2: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.4 1.5.6 1.6.1 1.6.1-r1 1.6.2 1.6.3: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -17496,7 +17496,7 @@ sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.4 2.5 2.6: utility to checkpoint/restore a process tree
-sys-process/cronbase 0.3.7-r4: base for all cron ebuilds
+sys-process/cronbase 0.3.7-r5: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
