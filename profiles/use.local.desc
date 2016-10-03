@@ -7508,6 +7508,10 @@ sys-devel/clang:default-compiler-rt - Use compiler-rt instead of libgcc as the d
 sys-devel/clang:default-libcxx - Use libc++ instead of libstdc++ as the default stdlib for clang
 sys-devel/clang:multitarget - Build all host targets (default: host only)
 sys-devel/clang:static-analyzer - Install the Clang static analyzer
+sys-devel/clang-runtime:compiler-rt - Install sys-libs/compiler-rt for -rtlib=compiler-rt
+sys-devel/clang-runtime:libcxx - Install sys-libs/libcxx for -stdlib=libc++
+sys-devel/clang-runtime:openmp - Install sys-libs/libomp for -fopenmp support
+sys-devel/clang-runtime:sanitize - Enable compiler-rt sanitizer (-fsanitize*) support
 sys-devel/distcc:crossdev - Enable support for sys-devel/crossdev
 sys-devel/distcc:gssapi - Enable support for net-libs/libgssglue
 sys-devel/gcc:awt - Useful only when building GCJ, this enables Abstract Window Toolkit (AWT) peer support on top of GTK+
