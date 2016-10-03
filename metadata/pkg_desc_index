@@ -13145,7 +13145,7 @@ media-plugins/vdr-sudoku 0.3.5 0.3.5-r1: VDR plugin: to generate and solve Numbe
 media-plugins/vdr-suspendoutput 2.0.1: VDR Plugin: Show still image instead of live tv to safe cpu
 media-plugins/vdr-svdrposd 1.0.0: VDR plugin: export OSD via TCP to vdr-remoteosd
 media-plugins/vdr-svdrpservice 1.0.0: VDR Plugin: offers SVDRP connections as a service to other plugins
-media-plugins/vdr-systeminfo 0.1.1 0.1.3: VDR Plugin: systeminfo
+media-plugins/vdr-systeminfo 0.1.1 0.1.3 0.1.4: VDR Plugin: systeminfo
 media-plugins/vdr-text2skin 1.3.2: VDR text2skin PlugIn
 media-plugins/vdr-ttxtsubs 0.3.0: VDR Plugin: displaying, recording and replaying teletext based subtitles
 media-plugins/vdr-tvguide 1.2.1 1.2.2: VDR Plugin: highly customizable 2D EPG viewer
@@ -17905,7 +17905,7 @@ www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.18.7 3.20.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 38.8.0 45.3.0 45.4.0 49.0: Firefox Web Browser
+www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 53.0.2785.143: The web browser from Google
 www-client/google-chrome-beta 54.0.2840.41: The web browser from Google

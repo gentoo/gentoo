@@ -4,7 +4,7 @@ DESCRIPTION=A persistent caching system, key-value and data structures database
 EAPI=5
 HOMEPAGE=http://redis.io/
 IUSE=+jemalloc tcmalloc test
-KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ~arm hppa ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=BSD
 RDEPEND=>=dev-lang/lua-5.1:* tcmalloc? ( dev-util/google-perftools ) jemalloc? ( >=dev-libs/jemalloc-3.2 )
 REQUIRED_USE=?? ( tcmalloc jemalloc )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://download.redis.io/releases/redis-3.0.4.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=b64cdfccf9d84dfb549d5e15a027c7a2
+_md5_=4f2045fa5ef23b937f57f2dff8fe7feb

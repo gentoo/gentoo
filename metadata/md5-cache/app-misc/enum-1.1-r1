@@ -1,10 +1,10 @@
 DEFINED_PHASES=configure install prepare
 DESCRIPTION=Replacement for GNU seq and BSD jot
 EAPI=6
-HOMEPAGE=https://fedorahosted.org/enum/
+HOMEPAGE=https://github.com/hartwork/enum
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/e/n/enum/enum-1.1.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_md5_=19671fc68d1bdd36f025da07f512bfec
+_md5_=1c8d7722c7622a0a21b5aa6534f7aefa
