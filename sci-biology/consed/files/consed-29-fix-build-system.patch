@@ -1,0 +1,197 @@
+Make build system semi-sane:
+* Respect CC, CXX, CFLAGS, CXXFLAGS, CPPFLAGS, LDFLAGS and LIBS
+* Remove default optimisation flags
+* Remove -fpermissive from DEFS (as source builds fine now)
+* Add large file support (LFS) via CPPFLAGS and not in Makefile
+
+--- a/makefile
++++ b/makefile
+@@ -47,23 +47,20 @@
+ #
+ # compilation
+ #
+-CXX= g++
+-KRCC= gcc
+-CC=gcc 
++CXX ?= g++
++CC ?= gcc 
+ 
+ #
+ #
+-CFLGS= -w -DINLINE_RWTPTRORDEREDVECTOR -DINLINE_RWTVALORDEREDVECTOR -DINLINE_MBTVALVECTOR -DLINUX_COMPILE -DSOCKLEN_T_DEFINED -D__BOOL_DEFINED -DANSI_C -DOFSTREAM_OPEN_WITHOUT_PERMISSIONS -fpermissive -DNO_POUND_POUND_MACROS -DUSE_USING_IN_PUBLIC_TEMPLATE_CLASSES -DINT_CHAR_OPERATOR -D_FILE_OFFSET_BITS=64 -DSAMTOOLS_AVAILABLE
++DEFS = -DINLINE_RWTPTRORDEREDVECTOR -DINLINE_RWTVALORDEREDVECTOR -DINLINE_MBTVALVECTOR -DLINUX_COMPILE -DSOCKLEN_T_DEFINED -D__BOOL_DEFINED -DANSI_C -DOFSTREAM_OPEN_WITHOUT_PERMISSIONS -DNO_POUND_POUND_MACROS -DUSE_USING_IN_PUBLIC_TEMPLATE_CLASSES -DINT_CHAR_OPERATOR -DSAMTOOLS_AVAILABLE
+ 
+-OPT= -O
+ #
+ # Include directory for template classes must be included
+ # in both compilation & link lines, even if .h file is
+ # found in default path.  C front, gotta love it.
+ #
+-INC=  -I/usr/X11R6/include -I/me1/gordon/samtools/samtools-0.1.18
++INCLUDES = $(SAMTOOLS_CPPFLAGS)
+ 
+-DEPENDENCIES=
+ #
+ #
+ # Linking
+@@ -80,12 +77,9 @@
+ #         /lib/ld-linux.so.2 (0x003ee000)
+ # 
+ # To fix cut/paste bug, I've made X11 always dynamic.
+-CLIBS= -lX11
+-LPATH= -L/usr/X11R6/lib
+-ARCHIVES= /usr/X11R6/lib/libXm.a \
+-/usr/X11R6/lib/libXt.a /usr/X11R6/lib/libSM.a \
+-/usr/X11R6/lib/libICE.a /usr/X11R6/lib/libXext.a /usr/X11R6/lib/libXmu.a \
+-/usr/X11R6/lib/libXp.a /usr/lib/libm.a /me1/gordon/samtools/samtools-0.1.18/libbam.a /me1/gordon/samtools/samtools-0.1.18/bcftools/libbcf.a /me1/gordon/zlib/zlib-1.2.5/libz.a
++
++MOTIF_LIBS ?= -lXt -lXm
++ALL_LIBS = $(LIBS) $(MOTIF_LIBS) $(X11_LIBS) $(SAMTOOLS_LIBS)
+ 
+ 
+ 
+@@ -94,7 +88,6 @@
+ #
+ #LDFLGS=	-g
+ # static linking
+-LDFLGS=	-g -rdynamic
+ 
+ # 
+ # the subdirectory used by cfront compilers gets cleaned
+@@ -112,10 +105,10 @@
+ # general compilation rules for .cpp, .cxx, .c  files
+ #
+ .cpp.o:		
+-	$(CXX) $(CFLGS) $(OPT) $(INC) -c $<
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEFS) -c $<
+            
+ .c.o:	   
+-	$(CXX) $(CFLGS) $(OPT) $(INC) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEFS) -c $<
+ 
+ #
+ # targets file included in generated makefile
+@@ -593,17 +586,23 @@
+    writeToRewriteReferenceFile.o \
+    xsynchronize.o
+ 
++SUBDIRS := misc/454 misc/mktrace misc/phd2fasta
++
++all: consed $(SUBDIRS)
++
++$(SUBDIRS):
++	$(MAKE) -C $@
++
++.PHONY: all $(SUBDIRS)
++
+ consed:	$(CONSED_OBJS) makefile checkLicenseKeyStub.o
+-	$(CXX) $(INC) $(LDFLGS) -o consed $(CONSED_OBJS) checkLicenseKeyStub.o \
+-		$(ARCHIVES) $(LPATH) $(WARNINGS) $(CLIBS) $(XLIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o consed $(CONSED_OBJS) checkLicenseKeyStub.o $(ALL_LIBS)
+ 
+ trial_consed: 	$(CONSED_OBJS) makefile checkLicenseKey.o
+-	$(CXX) $(INC) $(LDFLGS) -o trial_consed $(CONSED_OBJS) checkLicenseKey.o \
+-		$(ARCHIVES) $(LPATH) $(WARNINGS) $(CLIBS) $(XLIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o trial_consed $(CONSED_OBJS) checkLicenseKey.o $(ALL_LIBS)
+ 
+ pure:	$(CONSED_OBJS) makefile checkLicenseKeyStub.o
+-	$(PURIFY) $(CXX) $(INC) $(LDFLGS) -o consed $(CONSED_OBJS) checkLicenseKeyStub.o \
+-		$(ARCHIVES) $(LPATH) $(WARNINGS) $(CLIBS) $(XLIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o consed $(CONSED_OBJS) checkLicenseKeyStub.o $(ALL_LIBS)
+ 
+ clean:	
+ 	rm -rf *.o core $(TEMPLATE_DIR)
+@@ -613,15 +612,15 @@
+ # the Solaris 5.x compiler cannot optimize the following
+ 
+ consedResources.o:
+-	$(CXX) $(WARNINGS) $(CFLGS) $(INC) $(DEPENDENCIES) -c consedResources.cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEFS) -c consedResources.cpp
+ 
+ consedResources2.o:
+-	$(CXX) $(WARNINGS) $(CFLGS) $(INC) $(DEPENDENCIES) -c consedResources2.cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEFS) -c consedResources2.cpp
+ 
+ # tlingit cannot optimize the following:
+ 
+ guiEditResources.o:
+-	$(CXX) $(WARNINGS) $(CFLGS) $(INC) $(DEPENDENCIES) -c guiEditResources.cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEFS) -c guiEditResources.cpp
+ 
+ guiEditResources.o : \
+ 	 assemblyViewTagTypeAndLine.h assert.h bIsNumericDouble.h \
+--- a/misc/454/Makefile
++++ b/misc/454/Makefile
+@@ -0,0 +1,16 @@
++CC ?= cc
++LIBM = -lm
++
++DEFS = -DANSI_C
++
++OBJS= sff2scf.c
++
++sff2scf: $(OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBM)
++
++.c.o:	   
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFS) -c $<
++
++clean:
++	rm -f $(OBJS) sff2scf
++
+--- a/misc/mktrace/Makefile
++++ b/misc/mktrace/Makefile
+@@ -1,13 +1,17 @@
+-CC= cc
+-CFLAGS= -g
+-CLIB= -lm
++CC ?= cc
++LIBM = -lm
++
++DEFS = -DANSI_C
+ 
+ OBJS= mktrace.o readFASTA.o writeSCF.o synTrace.o \
+       freeTrace.o rwUtil.o writePhd.o getTime.o \
+       readQUAL.o
+ 
+ mktrace: $(OBJS)
+-	$(CC) $(CFLAGS) -o mktrace $(OBJS) $(CLIB)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBM)
++
++.c.o:	   
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFS) -c $<
+ 
+ clean:
+ 	rm -f $(OBJS) mktrace
+--- a/misc/phd2fasta/Makefile
++++ b/misc/phd2fasta/Makefile
+@@ -1,8 +1,9 @@
+-CC=cc
+-CFLAGS=-O -w
+-CLIB=-lm
++CC ?= cc
++LIBM = -lm
+ 
+-OBJ= phd2fasta.o \
++DEFS = -DANSI_C
++
++OBJS= phd2fasta.o \
+      readParam.o initParam.o checkParam.o \
+      freeParam.o helpParam.o \
+      readFOF.o readDIR.o readFOX.o \
+@@ -15,10 +16,11 @@
+ 
+ INC= phd2fasta.h
+ 
+-SRC = $(OBJ:.o=.c)
+-
+-phd2fasta: $(OBJ)
+-	$(CC) $(CFLAGS) -o phd2fasta $(OBJ) $(CLIB)
++phd2fasta: $(OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBM)
++           
++.c.o:	   
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFS) -c $<
+ 
+ clean:
+ 	rm -f $(OBJ) phd2fasta
