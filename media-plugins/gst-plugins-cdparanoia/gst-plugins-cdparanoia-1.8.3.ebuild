@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-base
 inherit gstreamer
 
 DESCRIPTION="CD Audio Source (cdda) plugin for GStreamer"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND=">=media-sound/cdparanoia-3.10.2-r6[${MULTILIB_USEDEP}]"
