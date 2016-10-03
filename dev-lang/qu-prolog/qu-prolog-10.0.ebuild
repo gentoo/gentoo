@@ -28,6 +28,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-configure.patch
+	epatch "${FILESDIR}"/${P}-associated-item.patch
+}
+
 src_configure() {
 	econf \
 		--libdir=/usr/$(get_libdir) \
