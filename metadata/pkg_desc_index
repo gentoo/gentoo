@@ -8054,6 +8054,7 @@ dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information
 dev-python/python-ly 0.9.2 0.9.3 0.9.4: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.08-r1: Python interface to lzo
 dev-python/python-magic 0.4.10 0.4.12: Access the libmagic file type identification library
+dev-python/python-magnumclient 2.3.0: A client for the OpenStack Magnum API
 dev-python/python-memcached 1.53-r1 1.54 1.57 1.58: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
@@ -14381,7 +14382,7 @@ net-irc/smuxi 0.8.10.1 0.8.11 0.11.1: A flexible, irssi-like and user-friendly I
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.4 3.2.10.7 4.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.4-r1 1.5 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.4-r1 1.5 1.6 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.1-r1 1.6.3 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
