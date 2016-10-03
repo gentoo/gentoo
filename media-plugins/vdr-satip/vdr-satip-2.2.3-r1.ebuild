@@ -10,7 +10,7 @@ DESCRIPTION="VDR Plugin: integrates SAT>IP network devices seamlessly into VDR"
 HOMEPAGE="http://www.saunalahti.fi/~rahrenbe/vdr/satip/"
 SRC_URI="http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
