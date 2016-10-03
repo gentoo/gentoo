@@ -11,7 +11,7 @@ SRC_URI="http://www.jpilot.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="nls"
 
 RDEPEND=">=app-pda/pilot-link-0.12.5
