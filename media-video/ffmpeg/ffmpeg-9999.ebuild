@@ -91,7 +91,7 @@ FFMPEG_FLAG_MAP=(
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
-	faac:libfaac kvazaar:libkvazaar nvenc:nvenc
+	kvazaar:libkvazaar nvenc:nvenc
 	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
 	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
@@ -165,7 +165,6 @@ RDEPEND="
 	ebur128? ( >=media-libs/libebur128-1.1.0[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
-		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 		nvenc? ( media-video/nvidia_video_sdk )
@@ -280,7 +279,6 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	encode? ( faac? ( bindist ) )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
@@ -311,9 +309,6 @@ multilib_src_configure() {
 		# Licensing.
 		if use amrenc ; then
 			myconf+=( --enable-version3 )
-		fi
-		if use faac ; then
-			myconf+=( --enable-nonfree )
 		fi
 	else
 		myconf+=( --disable-encoders )
