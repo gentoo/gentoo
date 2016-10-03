@@ -19,13 +19,10 @@ inherit ${SCM} cmake-multilib python-any-r1 toolchain-funcs
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="http://libcxx.llvm.org/"
 if [[ ${PV} != 9999 ]] ; then
-	SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
-		test? ( http://llvm.org/releases/${PV}/llvm-${PV}.src.tar.xz )"
+	SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz"
 	S="${WORKDIR}/${P}.src"
-	LLVM_S="${WORKDIR}/llvm-${PV}.src"
 else
 	SRC_URI=""
-	LLVM_S="${WORKDIR}/llvm"
 fi
 
 LICENSE="|| ( UoI-NCSA MIT )"
@@ -46,7 +43,7 @@ RDEPEND="libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP
 # which removes the need for MULTILIB_USEDEP
 DEPEND="${RDEPEND}
 	test? ( >=sys-devel/clang-3.9.0
-		${PYTHON_DEPS} )
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	app-arch/xz-utils
 	>=sys-devel/llvm-3.9.0"
 
@@ -62,8 +59,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.9-cmake-static-lib.patch"
 )
 
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
-	use test && python_setup
+	use test && python-any-r1_pkg_setup
 
 	if ! use libcxxrt && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
@@ -77,23 +78,6 @@ pkg_setup() {
 		eerror "gcc-4.7 or later version."
 		die
 	fi
-}
-
-src_unpack() {
-	[[ ${PV} != 9999 ]] && default && return
-
-	if use test; then
-		# needed for tests
-		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
-	fi
-	git-r3_fetch
-
-	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
-	fi
-	git-r3_checkout
 }
 
 src_configure() {
@@ -131,7 +115,9 @@ multilib_src_configure() {
 	)
 	if use test; then
 		mycmakeargs+=(
-			-DLLVM_MAIN_SRC_DIR=${LLVM_S}
+			# this can be any directory, it just needs to exist...
+			-DLLVM_MAIN_SRC_DIR="${T}"
+			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
 		)
 	fi
 	cmake-utils_src_configure
