@@ -55,7 +55,9 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 	)
 	audit? ( >=sys-process/audit-1.5.1 )
 	pam? ( sys-libs/pam:= )
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+	!<sec-policy/selinux-base-policy-2.20151208-r6"
+# 2.20151208-r6 has perms for new setfiles
 
 ### libcgroup -> seunshare
 ### dbus -> restorecond
