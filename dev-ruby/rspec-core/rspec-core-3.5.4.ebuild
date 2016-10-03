@@ -60,7 +60,7 @@ all_ruby_prepare() {
 
 	# Avoid aruba dependency so that we don't end up in dependency hell.
 	sed -i -e '/ArubaLoader/,/^end/ s:^:#:' -e '/Aruba/ s:^:#:' spec/spec_helper.rb || die
-	rm spec/integration/{failed_line_detection,filtering,order,persistence_failures}_spec.rb spec/support/aruba_support.rb || die
+	rm spec/integration/{failed_line_detection,filtering,order,persistence_failures,suite_hooks_errors}_spec.rb spec/support/aruba_support.rb || die
 
 	# Avoid a spec failing due to path issues
 	sed -i -e '/does not load files in the default path when run by ruby/,/end/ s:^:#:' \
