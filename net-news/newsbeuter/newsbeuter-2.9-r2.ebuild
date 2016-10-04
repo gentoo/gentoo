@@ -4,15 +4,21 @@
 
 EAPI=6
 
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/akrennmair/newsbeuter.git"
+else
+	KEYWORDS="~amd64 ~ppc ~x86"
+	SRC_URI="http://www.newsbeuter.org/downloads/${P}.tar.gz"
+fi
+
 inherit toolchain-funcs
 
 DESCRIPTION="A RSS/Atom feed reader for the text console"
 HOMEPAGE="http://www.newsbeuter.org/index.html"
-SRC_URI="http://www.${PN}.org/downloads/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -32,6 +38,7 @@ DEPEND="${RDEPEND}
 		sys-devel/bc
 	)
 "
+[[ ${PV} == 9999 ]] && DEPEND+=" app-text/asciidoc"
 
 # tests require network access
 RESTRICT="test"
@@ -53,16 +60,17 @@ src_configure() {
 
 src_compile() {
 	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
+	[[ ${PV} == 9999 ]] && emake doc
 }
 
 src_test() {
 	emake test
 	# Tests fail if in ${S} rather than in ${S}/test
-	cd "${S}"/test
+	cd "${S}"/test || die
 	./test || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="/usr" PACKAGE="${PF}" install
+	emake DESTDIR="${D}" prefix="/usr" docdir="/usr/share/doc/${PF}" install
 	dodoc AUTHORS README CHANGES
 }
