@@ -72,6 +72,7 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
+	eapply "${FILESDIR}/${PN}-2.6-0001-libsemanage-Fixes-bug-preventing-the-installation-of.patch"
 	eapply "${FILESDIR}"/${PN}-2.6-build-paths.patch
 
 	eapply_user
