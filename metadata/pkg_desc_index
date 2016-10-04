@@ -9275,7 +9275,7 @@ dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev even
 dev-ruby/rex-arch 0.1.1: architecture specific information for Rex
 dev-ruby/rex-java 0.1.2: Ruby Exploitation(Rex) library for parsing Java serialized streams
 dev-ruby/rex-ole 0.1.2: Ruby Exploitation(Rex) library gem for reading/writing OLE files and streams
-dev-ruby/rex-powershell 0.1.1-r1 0.1.64: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
+dev-ruby/rex-powershell 0.1.1-r1 0.1.64 0.1.65: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
 dev-ruby/rex-random_identifier 0.1.0-r1: Ruby Exploitation(Rex) library for generating Random identifier strings
 dev-ruby/rex-registry 0.1.0-r1: Rex library for parsing offline registry files from a Windows machine
 dev-ruby/rex-struct2 0.1.0: Ruby Exploitation(Rex) library for generating/manipulating C-Style structs
