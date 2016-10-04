@@ -4126,7 +4126,7 @@ dev-java/jnr-x86asm 1.0.2-r1: A pure-java port of asmjit
 dev-java/joda-convert 1.3.1: Java library for conversion between Object and String
 dev-java/joda-time 2.7: A quality open-source replacement for the Java Date and Time classes
 dev-java/joni 2.1.0: Java port of the Oniguruma regular expression engine
-dev-java/jopt-simple 4.8: A Java library for parsing command line options
+dev-java/jopt-simple 4.8 4.9: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
 dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version, build number or other info
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
