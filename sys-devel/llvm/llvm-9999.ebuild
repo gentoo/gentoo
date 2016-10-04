@@ -102,10 +102,6 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# Prevent race conditions with parallel Sphinx runs
-	# https://llvm.org/bugs/show_bug.cgi?id=23781
-	eapply "${FILESDIR}"/9999/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
-
 	# Allow custom cmake build types (like 'Gentoo')
 	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
