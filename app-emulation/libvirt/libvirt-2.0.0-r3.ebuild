@@ -114,8 +114,7 @@ RDEPEND="
 		virtual/udev
 		>=x11-libs/libpciaccess-0.10.9
 	)
-	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-"
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )"
 
 DEPEND="${RDEPEND}
 	app-text/xhtml1
