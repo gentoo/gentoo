@@ -25,7 +25,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux static-libs"
+IUSE="acl +kmod kvm selinux static-libs"
 
 RESTRICT="test"
 
@@ -62,6 +62,8 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 
 S=${WORKDIR}/systemd-${PV}
 
+KVM_RULES="65-kvm.rules"
+
 check_default_rules() {
 	# Make sure there are no sudden changes to upstream rules file
 	# (more for my own needs than anything else ...)
@@ -94,6 +96,7 @@ pkg_setup() {
 			ewarn "If you need firmware support, you need to upgrade kernel at least to 3.7"
 		fi
 	fi
+	use kvm && enewgroup kvm 36
 }
 
 src_prepare() {
@@ -140,6 +143,10 @@ src_prepare() {
 		echo '#define secure_getenv(x) NULL' >> config.h.in
 		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
 	fi
+
+	use kvm && \
+		echo 'KERNEL=="kvm", NAME="%k", GROUP="kvm", MODE="0660"' \
+			> ${KVM_RULES}
 }
 
 src_configure() {
@@ -309,6 +316,8 @@ multilib_src_install_all() {
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
 	doins "${T}"/40-gentoo.rules
+
+	use kvm && doins ${KVM_RULES}
 
 	# maintainer note: by not letting the upstream build-sys create the .so
 	# link, you also avoid a parallel make problem
