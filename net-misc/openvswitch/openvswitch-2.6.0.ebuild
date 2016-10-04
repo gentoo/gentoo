@@ -48,7 +48,6 @@ pkg_setup() {
 		CONFIG_CHECK+=" ~OPENVSWITCH"
 		linux-info_pkg_setup
 	fi
-	use monitor && python-r1_pkg_setup
 }
 
 src_prepare() {
@@ -69,7 +68,7 @@ src_configure() {
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"
 
-	PYTHON=python2.7 econf ${linux_config} \
+	econf ${linux_config} \
 		--with-rundir=/var/run/openvswitch \
 		--with-logdir=/var/log/openvswitch \
 		--with-pkidir=/etc/ssl/openvswitch \
@@ -81,26 +80,22 @@ src_configure() {
 src_compile() {
 	default
 
-#	use monitor && python_fix_shebang \
-#		utilities/ovs-{pcap,tcpundump,test,vlan-test} \
-#		utilities/bugtool/ovs-bugtool
-	if use monitor; then
-		sed -i \
-			's/^#\!\ python2\.7/#\!\/usr\/bin\/env\ python2\.7/' \
-			utilities/ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpundump,test,vlan-test} \
-			utilities/bugtool/ovs-bugtool || die "sed died :("
-	fi
-
 	use modules && linux-mod_src_compile
 }
 
 src_install() {
 	default
+	for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
+		python_replicate_script utilities/"${SCRIPT}"
+	done
 
 	if use monitor ; then
-		python_domodule "${ED}"/usr/share/openvswitch/python/*
+		python_install() {
+			python_domodule "${ED}"/usr/share/openvswitch/python/*
+			python_optimize "${ED}/usr/share/ovsdbmonitor"
+		}
+		python_foreach_impl python_install
 		rm -r "${ED}/usr/share/openvswitch/python"
-		python_optimize "${ED}/usr/share/ovsdbmonitor"
 	fi
 	# not working without the brcompat_mod kernel module which did not get
 	# included in the kernel and we can't build it anymore
