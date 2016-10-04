@@ -7716,7 +7716,7 @@ dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0: Inject some useful and sensible defa
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1 0.3.2: Simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
-dev-python/pecan 1.0.4: A WSGI object-dispatching web framework, designed to be lean and fast, with few dependencies.
+dev-python/pecan 1.0.4 1.1.2: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 2.6.2 2.7.4 2.8.0 2.8.1: Small python ORM
 dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1 1.7.0: Python style guide checker
 dev-python/peppercorn 0.4-r1 0.5: A library for converting a token stream into a data structure for use in web form posts
