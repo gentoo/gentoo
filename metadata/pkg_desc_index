@@ -14766,7 +14766,7 @@ net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools t
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
-net-misc/dhcp 4.3.1-r2 4.3.3_p1 4.3.4: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.3.3_p1 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
@@ -18251,7 +18251,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.6.4 0.7.0 0.7.1 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.59 2.4.65 2.4.66 2.4.67 2.4.68 2.4.69 2.4.70 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.59 2.4.65 2.4.68 2.4.70 2.4.71 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 9999: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4: A library for file management
