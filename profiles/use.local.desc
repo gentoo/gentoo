@@ -7748,7 +7748,7 @@ sys-libs/libcxxrt:libunwind - Use libunwind instead of libgcc_s for unwinding. T
 sys-libs/libhugetlbfs:perl - Install the cpupcstat tool and some perl modules
 sys-libs/libomp:hwloc - Enable CPU affinity support via hwloc
 sys-libs/libomp:ompt - Enable OpenMP Tools Interface support
-sys-libs/libselinux:pcre2 - Use sys-libs/pcre2 for fcontext regexes
+sys-libs/libselinux:pcre2 - Use dev-libs/libpcre2 for fcontext regexes
 sys-libs/libunwind:debug-frame - Adds support for DWARF .debug_frame section: Use the information from this section if available
 sys-libs/libunwind:libatomic - Use libatomic instead of builtin atomic operations
 sys-libs/musl-nscd:minimal - Only installs the header files
