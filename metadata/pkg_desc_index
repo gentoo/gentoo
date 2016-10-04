@@ -331,7 +331,7 @@ app-arch/zoo 2.10-r4: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0_p20140705 1.0.1-r2: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.13-r1: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.0.0-r1: zstd fast compression library
+app-arch/zstd 1.1.0: zstd fast compression library
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
@@ -14218,7 +14218,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.7.2 5.0.10.1 5.0.11: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.7.2 5.0.11 5.0.12: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10 2.11: iptables extensions not yet accepted in the main kernel
