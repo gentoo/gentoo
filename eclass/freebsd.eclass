@@ -206,6 +206,9 @@ freebsd_src_unpack() {
 			export CPP="${WORKDIR}/workaround_clang-cpp/clang-cpp"
 		fi
 	fi
+
+	# Add a special CFLAGS required for multilib support.
+	use amd64-fbsd && export CFLAGS_x86_fbsd="${CFLAGS_x86_fbsd} -DCOMPAT_32BIT -B/usr/lib32 -L/usr/lib32"
 }
 
 freebsd_src_compile() {
