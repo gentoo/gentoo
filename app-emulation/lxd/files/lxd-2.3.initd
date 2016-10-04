@@ -1,0 +1,50 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+DAEMON=/usr/sbin/lxd
+PIDFILE=/run/lxd.pid
+
+extra_commands="stopall"
+
+depend() {
+    need net
+    use lxcfs
+
+    # remove with 2.0 release
+    need cgmanager
+}
+
+start() {
+    ebegin "Starting lxd server"
+
+    start-stop-daemon --start \
+		      --pidfile ${PIDFILE} \
+		      --exec ${DAEMON} \
+		      --background \
+		      --make-pidfile \
+		      -- \
+		      ${LXD_OPTIONS}
+
+    eend $?
+}
+
+stop() {
+    if [[ $RC_GOINGDOWN = YES ]] || [[ $RC_REBOOT = YES ]]; then
+	stopall
+    else
+	ebegin "Stopping lxd service (but not containers)"
+	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	eend $?
+    fi
+}
+
+stopall() {
+    ebegin "Stopping lxd service and containers"
+    if "${DAEMON}" shutdown; then
+	/etc/init.d/lxd zap
+	rm -f ${PIDFILE}
+    fi
+    eend $?
+}
