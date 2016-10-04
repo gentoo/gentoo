@@ -189,4 +189,7 @@ pkg_postinst() {
 	einfo
 	einfo "Since these features can't be disabled at build-time they are"
 	einfo "not USE-conditional."
+	einfo
+	einfo "Networks with bridge.mode=fan are unsupported due to requiring"
+	einfo "a patched kernel and iproute2."
 }
