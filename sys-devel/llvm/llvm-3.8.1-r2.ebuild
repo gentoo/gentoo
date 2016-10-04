@@ -168,7 +168,7 @@ src_prepare() {
 
 	# Restore SOVERSIONs for shared libraries
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
-	eapply "${FILESDIR}"/9999/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
+	eapply "${FILESDIR}"/3.8.1/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
 
 	# support building llvm against musl-libc
 	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
