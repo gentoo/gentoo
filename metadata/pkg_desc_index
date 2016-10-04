@@ -9796,7 +9796,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.6 2.16.7: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.7 2.16.8: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
