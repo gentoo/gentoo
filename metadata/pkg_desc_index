@@ -144,7 +144,7 @@ app-admin/mcollective 2.8.0 2.8.8 2.9.0: Framework to build server orchestration
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.0.10 3.0.12 3.2.8 3.2.9: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.0.10 3.0.12 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.17.1 5.18 5.19.0: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/needrestart 2.8-r1 2.9-r1 9999: Restart daemons after library updates
@@ -2917,7 +2917,7 @@ dev-db/mariadb 5.5.52 10.0.25 10.0.26 10.0.27 10.1.16 10.1.17 10.2.1_alpha: An e
 dev-db/mariadb-galera 10.0.26 10.0.27: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.2.8 3.2.9: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
@@ -14755,7 +14755,7 @@ net-misc/cmst 2016.04.03: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.32 1.33: Provides a daemon for managing internet connections
-net-misc/connman-gtk 1.0 1.0-r1: GTK GUI for Connman
+net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
