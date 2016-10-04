@@ -10,7 +10,8 @@ PATCHSET_VER="0"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
+SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz
+	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="BSD-2 LGPL-2.1"
 SLOT="0"
