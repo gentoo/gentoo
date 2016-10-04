@@ -4195,7 +4195,7 @@ dev-java/maven-hawtjni-plugin 1.11: Maven plugin for the HawtJNI code generator 
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.8.1: Access the metadata in digital images and video via a simple Java API
-dev-java/metainf-services 1.6: Generates META-INF/services files automatically
+dev-java/metainf-services 1.6 1.7: Generates META-INF/services files automatically
 dev-java/microba 0.4.4.3: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.7.1.3: Milton WebDav library
@@ -4244,7 +4244,7 @@ dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
 dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
+dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.101 1.8.0.102: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.102: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
@@ -4266,7 +4266,7 @@ dev-java/protobuf-java 3.0.0_beta3_p1: Google's Protocol Buffers - official Java
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
-dev-java/reflectasm 1.11.0: High performance Java reflection
+dev-java/reflectasm 1.11.0 1.11.1: High performance Java reflection
 dev-java/reflections 0.9.10: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r3: RELAX NG Compiler Compiler
