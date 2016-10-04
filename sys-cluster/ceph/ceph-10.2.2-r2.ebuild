@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	dev-libs/leveldb[snappy]
 	nss? ( dev-libs/nss )
 	libatomic? ( dev-libs/libatomic_ops )
-	cryptopp? ( dev-libs/crypto++ )
+	cryptopp? ( dev-libs/crypto++:= )
 	sys-apps/keyutils
 	sys-apps/util-linux
 	dev-libs/libxml2
