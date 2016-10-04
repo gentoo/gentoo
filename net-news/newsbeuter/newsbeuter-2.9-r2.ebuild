@@ -43,6 +43,12 @@ DEPEND="${RDEPEND}
 # tests require network access
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9-ncurses6.patch
+	"${FILESDIR}"/${PN}-2.9-fix-mem-leak.patch
+	"${FILESDIR}"/${PN}-2.9-fix-segfault.patch
+)
+
 src_prepare() {
 	default
 	sed -i 's:-ggdb::' Makefile || die
@@ -66,5 +72,5 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" prefix="/usr" docdir="/usr/share/doc/${PF}" install
-	dodoc AUTHORS CHANGES README.md TODO
+	dodoc AUTHORS README CHANGES
 }
