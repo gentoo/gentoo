@@ -327,6 +327,13 @@ src_configure() {
 src_test() {
 	cd "${BUILD_DIR}"
 
+	# remove problematic tests, bug #591416, bug #591418
+	sed -i -e 's#commandtest$(EXEEXT) # #' \
+		-e 's#virfirewalltest$(EXEEXT) # #' \
+		-e 's#nwfilterebiptablestest$(EXEEXT) # #' \
+		-e 's#nwfilterxml2firewalltest$(EXEEXT)$##' \
+		tests/Makefile
+
 	export VIR_TEST_DEBUG=1
 	HOME="${T}" emake check || die "tests failed"
 }
