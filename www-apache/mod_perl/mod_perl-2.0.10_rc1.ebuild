@@ -7,7 +7,7 @@ EAPI=5
 inherit depend.apache apache-module perl-module eutils
 
 DESCRIPTION="An embedded Perl interpreter for Apache2"
-HOMEPAGE="https://perl.apache.org/"
+HOMEPAGE="https://perl.apache.org/ https://projects.apache.org/project.html?perl-mod_perl"
 #SRC_URI="mirror://apache/perl/${P}.tar.gz"
 SRC_URI="https://dist.apache.org/repos/dist/dev/perl/mod_perl-2.0.10-rc1.tar.gz"
 
