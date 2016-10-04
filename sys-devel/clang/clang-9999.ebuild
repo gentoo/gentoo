@@ -115,8 +115,6 @@ src_unpack() {
 src_prepare() {
 	python_setup
 
-	# fix race condition between sphinx targets
-	eapply "${FILESDIR}"/9999/0001-cmake-Add-ordering-dep-between-HTML-Sphinx-docs-and-.patch
 	# automatically select active system GCC's libraries, bugs #406163 and #417913
 	# TODO: cross-linux tests broken by this one
 	eapply "${FILESDIR}"/9999/0002-driver-Support-obtaining-active-toolchain-from-gcc-c.patch
