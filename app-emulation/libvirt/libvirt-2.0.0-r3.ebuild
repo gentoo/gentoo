@@ -114,8 +114,7 @@ RDEPEND="
 		virtual/udev
 		>=x11-libs/libpciaccess-0.10.9
 	)
-	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-"
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )"
 
 DEPEND="${RDEPEND}
 	app-text/xhtml1
@@ -327,6 +326,13 @@ src_configure() {
 
 src_test() {
 	cd "${BUILD_DIR}"
+
+	# remove problematic tests, bug #591416, bug #591418
+	sed -i -e 's#commandtest$(EXEEXT) # #' \
+		-e 's#virfirewalltest$(EXEEXT) # #' \
+		-e 's#nwfilterebiptablestest$(EXEEXT) # #' \
+		-e 's#nwfilterxml2firewalltest$(EXEEXT)$##' \
+		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
 	HOME="${T}" emake check || die "tests failed"

@@ -17,9 +17,9 @@ if [[ ${PV} = *9999* ]]; then
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
@@ -32,10 +32,10 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm
+	apparmor audit +caps firewalld fuse glusterfs iscsi +libvirtd lvm
 	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
 	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
-	xen elibc_glibc
+	xen zeroconf elibc_glibc
 "
 
 REQUIRED_USE="
@@ -71,7 +71,6 @@ RDEPEND="
 	sys-libs/readline:=
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
-	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	caps? ( sys-libs/libcap-ng )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
@@ -114,7 +113,8 @@ RDEPEND="
 	udev? (
 		virtual/udev
 		>=x11-libs/libpciaccess-0.10.9
-	)"
+	)
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )"
 
 DEPEND="${RDEPEND}
 	app-text/xhtml1
@@ -237,7 +237,7 @@ src_prepare() {
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex avahi 'use avahi-daemon' '')/" \
+		-e "s/USE_FLAG_AVAHI/$(usex zeroconf 'use avahi-daemon' '')/" \
 		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
 		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
@@ -251,7 +251,6 @@ src_configure() {
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
 		$(use_with audit)
-		$(use_with avahi)
 		$(use_with caps capng)
 		$(use_with firewalld)
 		$(use_with fuse)
@@ -284,6 +283,7 @@ src_configure() {
 		$(use_with xen)
 		$(use_with xen xen-inotify)
 		$(usex xen --with-libxl '')
+		$(use_with zeroconf avahi)
 
 		--without-hal
 		--without-netcf
@@ -322,6 +322,13 @@ src_configure() {
 
 src_test() {
 	cd "${BUILD_DIR}"
+
+	# remove problematic tests, bug #591416, bug #591418
+	sed -i -e 's#commandtest$(EXEEXT) # #' \
+		-e 's#virfirewalltest$(EXEEXT) # #' \
+		-e 's#nwfilterebiptablestest$(EXEEXT) # #' \
+		-e 's#nwfilterxml2firewalltest$(EXEEXT)$##' \
+		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
 	HOME="${T}" emake check || die "tests failed"
