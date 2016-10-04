@@ -5,7 +5,7 @@
 EAPI=6
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="4.7.3"
+MOZ_LIGHTNING_VER="4.7.4"
 MOZ_LIGHTNING_GDATA_VER="2.6"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
@@ -16,11 +16,6 @@ uk vi zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}"
-# ESR releases have slightly version numbers
-if [[ ${MOZ_ESR} == 1 ]]; then
-	MOZ_PV="${MOZ_PV}esr"
-fi
-MOZ_P="${PN}-${MOZ_PV}"
 
 # Enigmail version
 EMVER="1.9.1"
@@ -30,6 +25,12 @@ PATCH="thunderbird-38.0-patches-0.1"
 PATCHFF="firefox-45.0-patches-06"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
+
+# ESR releases have slightly version numbers
+if [[ ${MOZ_ESR} == 1 ]]; then
+	MOZ_PV="${MOZ_PV}esr"
+fi
+MOZ_P="${PN}-${MOZ_PV}"
 
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit flag-o-matic toolchain-funcs mozconfig-v6.45 makeedit autotools pax-utils check-reqs nsplugins mozlinguas-v2 fdo-mime gnome2-utils
@@ -46,7 +47,7 @@ RESTRICT="!bindist? ( bindist )"
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
-	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.repack.tar.xz
+	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
 	lightning? ( https://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}-r1.tar.xz )
 	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )
 	${PATCH_URIS[@]}"
@@ -129,7 +130,8 @@ src_prepare() {
 
 	# Apply our patchset from firefox to thunderbird as well
 	pushd "${S}"/mozilla &>/dev/null || die
-	eapply "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/firefox-45-gcc6.patch
 	popd &>/dev/null || die
 
 	# Ensure that are plugins dir is enabled as default
