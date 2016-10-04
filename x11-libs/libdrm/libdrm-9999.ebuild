@@ -11,13 +11,12 @@ DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/"
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/git/mesa/drm"
-	KEYWORDS=""
 else
 	SRC_URI="https://dri.freedesktop.org/${PN}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
-VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vmware"
+KEYWORDS=""
+VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -53,6 +52,7 @@ src_configure() {
 		$(use_enable video_cards_radeon radeon)
 		$(use_enable video_cards_tegra tegra-experimental-api)
 		$(use_enable video_cards_vc4 vc4)
+		$(use_enable video_cards_vivante etnaviv-experimental-api)
 		$(use_enable video_cards_vmware vmwgfx)
 		$(use_enable libkms)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch

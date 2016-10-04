@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils systemd toolchain-funcs user
 
@@ -18,8 +18,8 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="+client ipv6 kernel_linux ldap selinux +server ssl vim-syntax"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE="+client ipv6 kernel_linux ldap libressl selinux +server ssl vim-syntax"
 
 DEPEND="
 	client? (
@@ -30,7 +30,10 @@ DEPEND="
 	)
 	ldap? (
 		net-nds/openldap
-		ssl? ( dev-libs/openssl )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0 )
+			libressl? ( dev-libs/libressl )
+		)
 	)"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
@@ -45,23 +48,31 @@ src_unpack() {
 	unpack ./bind.tar.gz
 }
 
-src_prepare() {
+PATCHES=(
 	# Gentoo patches - these will probably never be accepted upstream
 	# Fix some permission issues
-	epatch "${FILESDIR}"/${PN}-3.0-fix-perms.patch
+	"${FILESDIR}/${PN}-3.0-fix-perms.patch"
+
 	# Enable dhclient to equery NTP servers
-	epatch "${FILESDIR}"/${PN}-4.0-dhclient-ntp.patch
-	epatch "${FILESDIR}"/${PN}-4.3.1-dhclient-resolvconf.patch
+	"${FILESDIR}/${PN}-4.3.4-dhclient-ntp.patch"
+	"${FILESDIR}/${PN}-4.3.1-dhclient-resolvconf.patch"
+
 	# Stop downing the interface on Linux as that breaks link daemons
 	# such as wpa_supplicant and netplug
-	epatch "${FILESDIR}"/${PN}-3.0.3-dhclient-no-down.patch
+	"${FILESDIR}/${PN}-3.0.3-dhclient-no-down.patch"
+
 	# Enable dhclient to get extra configuration from stdin
-	epatch "${FILESDIR}"/${PN}-4.2.2-dhclient-stdin-conf.patch
-	epatch "${FILESDIR}"/${PN}-4.2.2-nogateway.patch #265531
-	epatch "${FILESDIR}"/${PN}-4.2.4-quieter-ping.patch #296921
-	epatch "${FILESDIR}"/${PN}-4.2.4-always-accept-4.patch #437108
-	epatch "${FILESDIR}"/${PN}-4.2.5-iproute2-path.patch #480636
-	epatch "${FILESDIR}"/${PN}-4.2.5-bindtodevice-inet6.patch #471142
+	"${FILESDIR}/${PN}-4.2.2-dhclient-stdin-conf.patch"
+	"${FILESDIR}/${PN}-4.2.2-nogateway.patch" #265531
+	"${FILESDIR}/${PN}-4.2.4-quieter-ping.patch" #296921
+	"${FILESDIR}/${PN}-4.2.4-always-accept-4.patch" #437108
+	"${FILESDIR}/${PN}-4.2.5-iproute2-path.patch" #480636
+	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch" #471142
+	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch" #559832
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
 
 	# Brand the version with Gentoo
 	sed -i \
@@ -100,12 +111,12 @@ src_prepare() {
 		# Install Japanese man pages
 		if [[ " ${LINGUAS} " == *" ja "* && -d doc/ja_JP.eucJP ]]; then
 			einfo "Installing Japanese documention"
-			cp doc/ja_JP.eucJP/dhclient* client
-			cp doc/ja_JP.eucJP/dhcp* common
+			cp doc/ja_JP.eucJP/dhclient* client || die
+			cp doc/ja_JP.eucJP/dhcp* common || die
 		fi
 	fi
 	# Now remove the non-english docs so there are no errors later
-	rm -rf doc/ja_JP.eucJP
+	rm -r doc/ja_JP.eucJP || die
 
 	# make the bind build work
 	binddir=${S}/bind
@@ -114,10 +125,9 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	epatch "${FILESDIR}"/${PN}-4.2.2-bind-disable.patch
-	cd bind-*/
+	epatch "${FILESDIR}"/${PN}-4.3.4-bind-disable.patch
+	cd bind-*/ || die
 	epatch "${FILESDIR}"/${PN}-4.2.2-bind-parallel-build.patch #380717
-	epatch "${FILESDIR}"/${PN}-4.2.2-bind-build-flags.patch
 }
 
 src_configure() {
@@ -160,7 +170,7 @@ src_configure() {
 	# perl and we don't want to require that #383837.
 	cd bind/bind-*/ || die
 	eval econf \
-		$(sed -n '/ [.].configure /{s:^[^-]*::;s:>.*::;p}' ../Makefile) \
+		$(sed -n '/^bindconfig =/,/^$/{:a;N;$!ba;s,^[^-]*,,;s,\\\s*\n\s*--,--,g;s, @[[:upper:]]\+@,,g;P;D}' ../Makefile.in) \
 		--disable-symtable \
 		--without-make-clean
 }

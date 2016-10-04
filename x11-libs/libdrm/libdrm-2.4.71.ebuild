@@ -16,7 +16,7 @@ else
 fi
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
-VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vmware"
+VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -52,6 +52,7 @@ src_configure() {
 		$(use_enable video_cards_radeon radeon)
 		$(use_enable video_cards_tegra tegra-experimental-api)
 		$(use_enable video_cards_vc4 vc4)
+		$(use_enable video_cards_vivante etnaviv-experimental-api)
 		$(use_enable video_cards_vmware vmwgfx)
 		$(use_enable libkms)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
