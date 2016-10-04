@@ -116,7 +116,6 @@ src_prepare() {
 	python_setup
 
 	# automatically select active system GCC's libraries, bugs #406163 and #417913
-	# TODO: cross-linux tests broken by this one
 	eapply "${FILESDIR}"/9999/0002-driver-Support-obtaining-active-toolchain-from-gcc-c.patch
 	# support overriding clang runtime install directory
 	eapply "${FILESDIR}"/9999/0005-cmake-Supporting-overriding-runtime-libdir-via-CLANG.patch
