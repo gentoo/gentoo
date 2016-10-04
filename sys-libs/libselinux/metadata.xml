@@ -11,7 +11,7 @@
 		decisions.  Required for any applications that use the SELinux API.
 	</longdescription>
 	<use>
-		<flag name="pcre2">Use <pkg>sys-libs/pcre2</pkg> for fcontext regexes</flag>
+		<flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg> for fcontext regexes</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>
