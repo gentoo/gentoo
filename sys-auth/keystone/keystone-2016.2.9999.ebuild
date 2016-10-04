@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3-r1[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0[${PYTHON_USEDEP}]
-	<=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
+	dev-python/paste[${PYTHON_USEDEP}]
 	>=dev-python/routes-1.12.3[${PYTHON_USEDEP}]
 	!~dev-python/routes-2.0[${PYTHON_USEDEP}]
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
