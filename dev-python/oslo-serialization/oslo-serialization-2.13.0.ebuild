@@ -49,6 +49,7 @@ RDEPEND="
 
 python_prepare_all() {
 	use doc && esetup.py build_sphinx
+	distutils-r1_python_prepare_all
 }
 
 # Note: Tests fail due to requiring installation.
