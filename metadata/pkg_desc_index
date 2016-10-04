@@ -11913,7 +11913,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.0 1.2.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.3.0-r2: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.4.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.8.0 45.3.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -18211,7 +18211,7 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.8-r1 1.0.9: X.Org Inter-Client Exchange library
 x11-libs/libQGLViewer 2.6.1 2.6.2 2.6.3 2.6.4: C++ library based on Qt that eases the creation of OpenGL 3D viewers
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
-x11-libs/libX11 1.6.2 1.6.3: X.Org X11 library
+x11-libs/libX11 1.6.2 1.6.3 1.6.4: X.Org X11 library
 x11-libs/libXCalibrate 0.1_pre20081207-r1: X.Org Calibrate client-side protocol library
 x11-libs/libXScrnSaver 1.2.2-r1: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1: X.Org XTrap library
@@ -18229,7 +18229,7 @@ x11-libs/libXfont 1.4.9 1.5.1 1.5.2: X.Org Xfont library
 x11-libs/libXfont2 2.0.1: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
-x11-libs/libXi 1.7.4 1.7.5 1.7.6: X.Org Xi library
+x11-libs/libXi 1.7.4 1.7.5 1.7.6 1.7.7: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
@@ -18239,8 +18239,8 @@ x11-libs/libXrender 0.9.8 0.9.9 0.9.10: X.Org Xrender library
 x11-libs/libXres 1.0.7: X.Org XRes library
 x11-libs/libXt 1.1.4 1.1.5: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.2 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD extensions library
-x11-libs/libXv 1.0.10: X.Org Xv library
-x11-libs/libXvMC 1.0.8 1.0.9: X.Org XvMC library
+x11-libs/libXv 1.0.10 1.0.11: X.Org Xv library
+x11-libs/libXvMC 1.0.8 1.0.9 1.0.10: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.4: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.3: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.3 1.1.4: X.Org Xxf86vm library
