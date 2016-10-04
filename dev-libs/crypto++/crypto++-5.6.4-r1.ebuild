@@ -18,6 +18,10 @@ IUSE="static-libs"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
+PATCHES=(
+	# Building with -march=native breaks when one wants to build for older CPUs.
+	"${FILESDIR}/${P}-nonative.patch"
+)
 
 src_configure() {
 	cp config.recommend config.h || die
