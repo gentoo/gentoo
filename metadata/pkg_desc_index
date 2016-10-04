@@ -13447,6 +13447,7 @@ media-sound/picard 1.3.1 1.3.2-r1: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.0.1 1.1.1 9999: Pandora.com client for the GNOME desktop
+media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pms 0.42-r2 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
 media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
