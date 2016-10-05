@@ -318,10 +318,6 @@ src_configure() {
 		# bug #377279
 		(cd .gnulib && git reset --hard > /dev/null)
 	fi
-
-	# Workaround: Sometimes this subdirectory is missing and leads to a
-	# build failure.
-	mkdir -p "${BUILD_DIR}"/docs/internals
 }
 
 src_test() {

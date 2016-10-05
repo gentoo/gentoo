@@ -155,7 +155,6 @@ pkg_setup() {
 		~CGROUPS
 		~CGROUP_SCHED
 		~CPUSETS
-		~DEVPTS_MULTIPLE_INSTANCES
 		~IPC_NS
 		~MACVLAN
 		~NAMESPACES
@@ -172,14 +171,9 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_PIVOT
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
-	# Handle specific kernel versions for different features
-	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
-	if $(kernel_is ge 3 6); then
-		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
-		if $(kernel_is lt 4 5); then
-			CONFIG_CHECK+=" ~MEMCG_KMEM "
-		fi
-	fi
+
+	kernel_is lt 4 7 && use lxc && CONFIG_CHECK+="
+		~DEVPTS_MULTIPLE_INSTANCES"
 
 	use macvtap && CONFIG_CHECK+="
 		~MACVTAP"
@@ -200,6 +194,13 @@ pkg_setup() {
 		~NET_SCH_HTB
 		~NET_SCH_INGRESS
 		~NET_SCH_SFQ"
+
+	# Handle specific kernel versions for different features
+	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
+	if kernel_is ge 3 6; then
+		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
+		kernel_is lt 4 5 && CONFIG_CHECK+=" ~MEMCG_KMEM "
+	fi
 
 	ERROR_USER_NS="Optional depending on LXC configuration."
 
