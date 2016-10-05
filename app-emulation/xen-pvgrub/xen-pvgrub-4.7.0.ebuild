@@ -91,6 +91,8 @@ src_prepare() {
 	#Substitute for internal downloading. pciutils copied only due to the only .bz2
 	cp "${DISTDIR}"/pciutils-2.2.9.tar.bz2 ./stubdom/ || die "pciutils not copied to stubdom"
 	retar-externals || die "re-tar procedure failed"
+
+	epatch_user
 }
 
 src_configure() {
