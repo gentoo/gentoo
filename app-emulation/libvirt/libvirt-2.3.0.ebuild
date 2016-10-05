@@ -172,7 +172,7 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 
-    kernel_is lt 4 7 && use lxc && CONFIG_CHECK+="
+	kernel_is lt 4 7 && use lxc && CONFIG_CHECK+="
 		~DEVPTS_MULTIPLE_INSTANCES"
 
 	use macvtap && CONFIG_CHECK+="
@@ -319,10 +319,6 @@ src_configure() {
 		# bug #377279
 		(cd .gnulib && git reset --hard > /dev/null)
 	fi
-
-	# Workaround: Sometimes this subdirectory is missing and leads to a
-	# build failure.
-	mkdir -p "${BUILD_DIR}"/docs/internals
 }
 
 src_test() {
