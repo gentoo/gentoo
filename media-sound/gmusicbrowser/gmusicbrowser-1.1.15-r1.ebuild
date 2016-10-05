@@ -4,16 +4,16 @@
 
 EAPI=5
 
-inherit eutils fdo-mime git-2 gnome2-utils
+inherit fdo-mime gnome2-utils
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
 HOMEPAGE="http://gmusicbrowser.org/"
-EGIT_REPO_URI="git://github.com/squentin/${PN}.git"
+SRC_URI="http://${PN}.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 GSTREAMER_DEPEND="
 	dev-perl/GStreamer
@@ -37,12 +37,7 @@ RDEPEND="dev-lang/perl
 		( ${MPV_DEPEND} )
 		( ${OTHER_DEPEND} )
 	)"
-DEPEND="sys-devel/gettext
-	doc? ( dev-perl/Text-Markdown )"
-
-src_compile() {
-	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
-}
+DEPEND="sys-devel/gettext"
 
 src_install() {
 	emake \
@@ -51,7 +46,7 @@ src_install() {
 		iconsdir="${D}/usr/share/icons/hicolor" \
 		install
 
-	use doc && dohtml layout_doc.html
+	dohtml layout_doc.html
 }
 
 pkg_preinst() {
