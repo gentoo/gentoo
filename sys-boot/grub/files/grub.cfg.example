@@ -35,7 +35,7 @@ menuentry "Gentoo Linux 4.7.2" {
 	#insmod btrfs
 	insmod ext2
 	#insmod xfs
-	#inmod zfs
+	#insmod zfs
 
 	# Search all block devices for a matching UUID (for /boot)
 	search --set=root --fs-uuid 33d4013a-ec25-4462-a540-8078aeb8ed17
