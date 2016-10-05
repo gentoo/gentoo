@@ -95,5 +95,5 @@ python_install_all() {
 
 	distutils-r1_python_install_all
 
-	rm -r "${D}"/usr/etc || die
+	rm -r "${ED}"/usr/etc || die
 }
