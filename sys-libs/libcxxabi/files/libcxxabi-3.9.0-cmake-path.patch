@@ -1,0 +1,34 @@
+From 8d4d9af454a985d8c10ffdb0c56e87efec25ddff Mon Sep 17 00:00:00 2001
+From: Logan Chien <tzuhsiang.chien@gmail.com>
+Date: Mon, 3 Oct 2016 11:08:17 +0000
+Subject: [PATCH] [CMake] Fix libc++abi standalone cmake build.
+
+The cmake files install directory has been changed to
+${prefix}/lib/cmake/llvm since r259821.  Searching cmake modules in
+${prefix}/share/llvm/cmake will result in fatal errors.
+
+This commit fixes the out-of-tree build by changing the CMake module
+search path to: "$(llvm-config --obj-root)/lib/cmake/llvm"
+
+
+git-svn-id: https://llvm.org/svn/llvm-project/libcxxabi/trunk@283100 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a33cf48..e75c0b8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     set(LLVM_INCLUDE_DIR ${INCLUDE_DIR} CACHE PATH "Path to llvm/include")
+     set(LLVM_BINARY_DIR ${LLVM_OBJ_ROOT} CACHE PATH "Path to LLVM build tree")
+     set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+-    set(LLVM_CMAKE_PATH "${LLVM_BINARY_DIR}/share/llvm/cmake")
++    set(LLVM_CMAKE_PATH "${LLVM_BINARY_DIR}/lib${LLVM_LIBDIR_SUFFIX}/cmake/llvm")
+     set(LLVM_LIT_PATH "${LLVM_PATH}/utils/lit/lit.py")
+   else()
+     message(FATAL_ERROR "llvm-config not found and LLVM_MAIN_SRC_DIR not defined. "
+-- 
+2.10.1
+
