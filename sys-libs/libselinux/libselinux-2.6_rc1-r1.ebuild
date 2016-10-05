@@ -47,6 +47,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live builds, place them in /etc/portage/patches
+		eapply "${FILESDIR}/libselinux-2.6-0001-libselinux-selinux_restorecon-fix-realpath-logic.patch"
 		eapply "${FILESDIR}/libselinux-2.6-0005-use-ruby-include-with-rubylibver.patch"
 		eapply "${FILESDIR}/libselinux-2.6-0007-build-related-fixes-bug-500674.patch"
 	fi

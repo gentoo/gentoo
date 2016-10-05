@@ -4,9 +4,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils linux-info linux-mod python-r1 systemd autotools
+inherit autotools eutils linux-info linux-mod python-r1 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="http://openvswitch.org"
@@ -22,7 +22,7 @@ RDEPEND="
 		>=sys-apps/openrc-0.10.5
 		sys-apps/systemd
 	)
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	monitor? (
 		${PYTHON_DEPS}
 		dev-python/twisted-core
@@ -60,6 +60,7 @@ src_prepare() {
 	eautoreconf
 	default
 }
+
 src_configure() {
 	set_arch_to_kernel
 	use monitor || export ovs_cv_python="no"
@@ -86,32 +87,34 @@ src_compile() {
 
 src_install() {
 	default
+
+	local SCRIPT
 	for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
 		python_replicate_script utilities/"${SCRIPT}"
 	done
 
 	if use monitor ; then
 		python_install() {
-			python_domodule "${ED}"usr/share/openvswitch/python/*
-			python_optimize "${ED}usr/share/ovsdbmonitor"
+			python_domodule "${ED%/}"/usr/share/openvswitch/python/*
+			python_optimize "${ED%/}"/usr/share/ovsdbmonitor
 		}
 		python_foreach_impl python_install
-		rm -r "${ED}usr/share/openvswitch/python" || die "rm failed"
+		rm -r "${ED%/}"/usr/share/openvswitch/python || die
 	fi
 	# not working without the brcompat_mod kernel module which did not get
 	# included in the kernel and we can't build it anymore
-	rm "${ED}usr/sbin/ovs-brcompatd" "${ED}usr/share/man/man8/ovs-brcompatd.8"
+	rm "${ED%/}"/usr/sbin/ovs-brcompatd "${ED%/}"/usr/share/man/man8/ovs-brcompatd.8 || die
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	rm -rf "${ED}var/run" || die "rm failed"
+	rm -rf "${ED%/}"/var/run || die
 	if ! use monitor ; then
-		rmdir "${ED}usr/share/ovsdbmonitor" || die "rm failed"
+		rm -r "${ED%/}"/usr/share/ovsdbmonitor || die
 	fi
 	if ! use debug ; then
-		rm "${ED}usr/bin/ovs-parse-leaks" die "rm failed"
+		rm "${ED%/}"/usr/bin/ovs-parse-leaks || die
 	fi
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
@@ -132,6 +135,7 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
+	local pv
 	for pv in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 1.9.0 ${pv} ; then
 			ewarn "The configuration database for Open vSwitch got moved in version 1.9.0 from"
@@ -150,13 +154,15 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
+	local db="${EROOT%/}"/var/lib/openvswitch/conf.db
 	if [[ -e "${db}" ]] ; then
 		einfo "Database '${db}' already exists, doing schema migration..."
 		einfo "(if the migration fails, make sure that ovsdb-server is not running)"
-		"${EPREFIX}/usr/bin/ovsdb-tool" convert "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "converting database failed"
+		ovsdb-tool convert "${db}" \
+			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
 	else
 		einfo "Creating new database '${db}'..."
-		"${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
+		ovsdb-tool create "${db}" \
+			"${EROOT%/}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
 	fi
 }
