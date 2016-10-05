@@ -18,6 +18,9 @@ IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
+	>=dev-python/simplejson-2.1.1[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	dev-python/ordereddict[$(python_gen_usedep 'python2_7')]
 	>=dev-python/webob-1.4[${PYTHON_USEDEP}]
 	>=dev-python/mako-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/webtest-1.3.1[${PYTHON_USEDEP}]
