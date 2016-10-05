@@ -7104,7 +7104,7 @@ dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
 dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
-dev-python/configargparse 0.9.3 0.10.0: A drop-in replacement for argparse that adds support for config files and/or environment variables
+dev-python/configargparse 0.9.3 0.10.0 0.11.0: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 4.7.2-r2 5.0.5 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2 3.5.0: Backport of Python-3 built-in configparser
