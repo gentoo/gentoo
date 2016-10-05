@@ -10046,7 +10046,7 @@ dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and prog
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
 dev-util/staruml-bin 2.7.0: A sophisticated software modeler
-dev-util/strace 4.9 4.10 4.11 4.12 4.13 9999: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.9 4.13 4.14 9999: A useful diagnostic, instructional, and debugging tool
 dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Application Test
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
