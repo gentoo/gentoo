@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc64 x86 ~x86-fbsd"
 
 IUSE="+launcher"
 
