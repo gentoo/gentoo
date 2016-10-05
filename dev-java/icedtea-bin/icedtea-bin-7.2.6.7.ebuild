@@ -4,10 +4,10 @@
 
 EAPI="5"
 
-inherit java-vm-2 multilib-build prefix toolchain-funcs
-
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 KEYWORDS="-* amd64 x86"
+
+inherit java-vm-2 multilib-build prefix toolchain-funcs
 
 BASE_URI="https://dev.gentoo.org/~chewi/distfiles"
 SRC_URI="doc? ( ${BASE_URI}/${PN}-doc-${PV}.tar.xz )

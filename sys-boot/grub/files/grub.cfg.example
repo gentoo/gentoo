@@ -70,21 +70,3 @@ menuentry "FreeBSD" {
 	set kFreeBSD.vfs.root.mountfrom=zfs:freepool/freebsd
 	set kFreeBSD.hw.psm.synaptics_support=1
 }
-
-menuentry "Fedora 16 installer" {
-	search --set=root --label GRUB --hint hd0,msdos5
-	linux /fedora/vmlinuz lang=en_US keymap=sg resolution=1280x800
-	initrd /fedora/initrd.img
-}
-
-menuentry "Fedora rawhide installer" {
-	search --set=root --label GRUB --hint hd0,msdos5
-	linux /fedora/vmlinuz repo=ftp://mirror.switch.ch/mirror/fedora/linux/development/rawhide/x86_64 lang=en_US keymap=sg resolution=1280x800
-	initrd /fedora/initrd.img
-}
-
-menuentry "Debian sid installer" {
-	search --set=root --label GRUB --hint hd0,msdos5
-	linux /debian/dists/sid/main/installer-amd64/current/images/hd-media/vmlinuz
-	initrd /debian/dists/sid/main/installer-amd64/current/images/hd-media/initrd.gz
-}

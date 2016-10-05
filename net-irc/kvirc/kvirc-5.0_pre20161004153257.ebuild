@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,9 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	inherit vcs-snapshot
 
-	KVIRC_GIT_REVISION="d1e304ba1fdd27645af53573f9ed96b44199dfd3"
+	KVIRC_GIT_REVISION="bc0aa5b07c31d6d95fb184a06cea328141d0bc69"
 	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
-	KVIRC_GIT_SOURCES_DATE="$(printf "%04u-%02u-%02u" ${KVIRC_GIT_SOURCES_DATE:0:4} ${KVIRC_GIT_SOURCES_DATE:4:2} ${KVIRC_GIT_SOURCES_DATE:6:2})"
+	KVIRC_GIT_SOURCES_DATE="${KVIRC_GIT_SOURCES_DATE:0:4}-${KVIRC_GIT_SOURCES_DATE:4:2}-${KVIRC_GIT_SOURCES_DATE:6:2}"
 fi
 
 DESCRIPTION="Advanced IRC Client"
@@ -31,8 +31,8 @@ fi
 
 LICENSE="kvirc"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -56,7 +56,7 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kwindowsystem:5
 		kde-frameworks/kxmlgui:5
 	)
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:0= )
 	phonon? ( media-libs/phonon:0[qt5] )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl:0= )
@@ -86,6 +86,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if [[ "${PV}" == "9999" ]]; then
 		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
 		KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
@@ -102,33 +104,35 @@ src_configure() {
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
 		-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
-		-DWANT_CRYPT=1
-		-DWANT_ENV_FLAGS=1
-		-DWANT_VERBOSE=1
-		$(cmake-utils_use_want audiofile AUDIOFILE)
-		$(cmake-utils_use_want dbus QTDBUS)
-		$(cmake-utils_use_want dcc_video DCC_VIDEO)
-		$(cmake-utils_use_want dcc_voice DCC_VOICE)
-		$(cmake-utils_use_want debug DEBUG)
-		$(cmake-utils_use_want doc DOXYGEN)
-		$(cmake-utils_use_want gsm GSM)
-		$(cmake-utils_use_want ipc IPC)
-		$(cmake-utils_use_want ipv6 IPV6)
-		$(cmake-utils_use_want kde KDE)
-		$(cmake-utils_use_want nls GETTEXT)
-		$(cmake-utils_use_want oss OSS)
-		$(cmake-utils_use_want perl PERL)
-		$(cmake-utils_use_want phonon PHONON)
-		$(cmake-utils_use_want profile MEMORY_PROFILE)
-		$(cmake-utils_use_want python PYTHON)
-		$(cmake-utils_use_want spell SPELLCHECKER)
-		$(cmake-utils_use_want ssl OPENSSL)
-		$(cmake-utils_use_want theora OGG_THEORA)
-		$(cmake-utils_use_want transparency TRANSPARENCY)
-		$(cmake-utils_use_want webkit QTWEBKIT)
+		-DWANT_ENV_FLAGS=yes
+		-DWANT_VERBOSE=yes
+
+		-DWANT_CRYPT=yes
+		-DWANT_DCC_VOICE=yes
+		-DWANT_IPC=yes
+		-DWANT_IPV6=yes
+		-DWANT_TRANSPARENCY=yes
+
+		-DWANT_AUDIOFILE=$(usex audiofile)
+		-DWANT_DCC_VIDEO=$(usex dcc_video)
+		-DWANT_DEBUG=$(usex debug)
+		-DWANT_DOXYGEN=$(usex doc)
+		-DWANT_GETTEXT=$(usex nls)
+		-DWANT_GSM=$(usex gsm)
+		-DWANT_KDE=$(usex kde)
+		-DWANT_MEMORY_PROFILE=$(usex profile)
+		-DWANT_OGG_THEORA=$(usex theora)
+		-DWANT_OPENSSL=$(usex ssl)
+		-DWANT_OSS=$(usex oss)
+		-DWANT_PERL=$(usex perl)
+		-DWANT_PHONON=$(usex phonon)
+		-DWANT_PYTHON=$(usex python)
+		-DWANT_QTDBUS=$(usex dbus)
+		-DWANT_QTWEBKIT=$(usex webkit)
+		-DWANT_SPELLCHECKER=$(usex spell)
 
 		# COMPILE_SVG_SUPPORT not used in source code.
-		-DWANT_QTSVG=OFF
+		-DWANT_QTSVG=no
 	)
 
 	cmake-utils_src_configure
