@@ -35,11 +35,14 @@ if [[ ${PV} != 9999 ]] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="elibc_glibc elibc_musl +libcxxrt libunwind +static-libs test"
-REQUIRED_USE="libunwind? ( libcxxrt )"
+IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libunwind +static-libs test"
+REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
+	?? ( libcxxabi libcxxrt )"
 
-RDEPEND="libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
-	!libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] )"
+RDEPEND="
+	libcxxabi? ( sys-libs/libcxxabi[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
+	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
+	!libcxxabi? ( !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) )"
 # llvm-3.9.0 needed because its cmake files installation path changed, which is
 # needed by libcxx
 # clang-3.9.0 installs necessary target symlinks unconditionally
@@ -61,7 +64,7 @@ PATCHES=(
 pkg_setup() {
 	use test && python_setup
 
-	if ! use libcxxrt && ! tc-is-gcc ; then
+	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
 		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
 		eerror "and try again."
@@ -99,7 +102,10 @@ src_configure() {
 
 multilib_src_configure() {
 	local cxxabi cxxabi_incs
-	if use libcxxrt; then
+	if use libcxxabi; then
+		cxxabi=libcxxabi
+		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
+	elif use libcxxrt; then
 		cxxabi=libcxxrt
 		cxxabi_incs="${EPREFIX}/usr/include/libcxxrt"
 	else
@@ -159,7 +165,7 @@ END_LDSCRIPT
 
 gen_static_ldscript() {
 	local libdir=$(get_libdir)
-	local cxxabi_lib=$(usex libcxxrt "libcxxrt.a" "libsupc++.a")
+	local cxxabi_lib=$(usex libcxxabi "libc++abi.a" "$(usex libcxxrt "libcxxrt.a" "libsupc++.a")")
 
 	# Move it first.
 	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
@@ -178,7 +184,7 @@ gen_static_ldscript() {
 gen_shared_ldscript() {
 	local libdir=$(get_libdir)
 	# libsupc++ doesn't have a shared version
-	local cxxabi_lib=$(usex libcxxrt "libcxxrt.so" "libsupc++.a")
+	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "$(usex libcxxrt "libcxxrt.so" "libsupc++.a")")
 
 	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
 	local deps="libc++_shared.so ${cxxabi_lib}"
