@@ -52,6 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	pm-utils? ( sys-power/pm-utils )
 	gnome-shell? ( gnome-base/gnome-shell )
+	net-wireless/rfkill
 	"
 PATCHES=(
 	"${FILESDIR}"/${PN}-init-sve-start.patch
