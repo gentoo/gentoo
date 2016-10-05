@@ -107,8 +107,12 @@ src_install() {
 	fperms 0750 /etc/ssl/openvswitch
 
 	rm -rf "${ED}var/run" || die "rm failed"
-	! use monitor && rmdir "${ED}usr/share/ovsdbmonitor" || die "rm failed"
-	! use debug && rm "${ED}usr/bin/ovs-parse-leaks" die "rm failed"
+	if ! use monitor ; then
+		rmdir "${ED}usr/share/ovsdbmonitor" || die "rm failed"
+	fi
+	if ! use debug ; then
+		rm "${ED}usr/bin/ovs-parse-leaks" die "rm failed"
+	fi
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd

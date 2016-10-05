@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 )
+# still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
 inherit distutils-r1 git-r3 linux-info user
 
