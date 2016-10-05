@@ -4212,26 +4212,26 @@ dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nailgun 0.7.1-r1: a client, protocol, and server for running Java apps without incurring the JVM startup overhead
 dev-java/nanoxml 2.2.3-r3: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
-dev-java/netbeans-apisupport 8.0.2 8.1: Netbeans API Support Cluster
-dev-java/netbeans-cnd 8.0.2 8.1: Netbeans CND Cluster
-dev-java/netbeans-dlight 8.0.2 8.1: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1: Netbeans Enterprise cluster
-dev-java/netbeans-ergonomics 8.0.2 8.1: Netbeans Ergonomics Cluster
-dev-java/netbeans-extide 8.0.2 8.1: Netbeans ExtIDE Cluster
-dev-java/netbeans-groovy 8.0.2 8.1: Netbeans Groovy Cluster
-dev-java/netbeans-harness 8.0.2 8.1: Netbeans Harness
-dev-java/netbeans-ide 8.0.2-r2 8.1-r2: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r5 8.1-r2: Netbeans Java Cluster
-dev-java/netbeans-javacard 8.0.2 8.1: Netbeans JavaCard Cluster
-dev-java/netbeans-javadoc 8.0.2 8.1: Netbeans JavaDocs
-dev-java/netbeans-javafx 8.0.2 8.1: Netbeans JavaFX Cluster
-dev-java/netbeans-mobility 8.0.2 8.1: Netbeans Mobility Cluster
-dev-java/netbeans-nb 8.0.2 8.1: Netbeans IDE Branding
-dev-java/netbeans-php 8.0.2 8.1: Netbeans PHP Cluster
-dev-java/netbeans-platform 8.0.2 8.1: Netbeans Platform
-dev-java/netbeans-profiler 8.0.2 8.1: Netbeans Profiler Cluster
-dev-java/netbeans-webcommon 8.0.2 8.1: Netbeans Web Services Cluster
-dev-java/netbeans-websvccommon 8.0.2 8.1: Netbeans Web Services Common Cluster
+dev-java/netbeans-apisupport 8.0.2 8.1 8.2: Netbeans API Support Cluster
+dev-java/netbeans-cnd 8.0.2 8.1 8.2: Netbeans CND Cluster
+dev-java/netbeans-dlight 8.0.2 8.1 8.2: Netbeans D-Light Cluster
+dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1 8.2: Netbeans Enterprise cluster
+dev-java/netbeans-ergonomics 8.0.2 8.1 8.2: Netbeans Ergonomics Cluster
+dev-java/netbeans-extide 8.0.2 8.1 8.2: Netbeans ExtIDE Cluster
+dev-java/netbeans-groovy 8.0.2 8.1 8.2: Netbeans Groovy Cluster
+dev-java/netbeans-harness 8.0.2 8.1 8.2: Netbeans Harness
+dev-java/netbeans-ide 8.0.2-r2 8.1-r2 8.2: Netbeans IDE Cluster
+dev-java/netbeans-java 8.0.2-r5 8.1-r2 8.2: Netbeans Java Cluster
+dev-java/netbeans-javacard 8.0.2 8.1 8.2: Netbeans JavaCard Cluster
+dev-java/netbeans-javadoc 8.0.2 8.1 8.2: Netbeans JavaDocs
+dev-java/netbeans-javafx 8.0.2 8.1 8.2: Netbeans JavaFX Cluster
+dev-java/netbeans-mobility 8.0.2 8.1 8.2: Netbeans Mobility Cluster
+dev-java/netbeans-nb 8.0.2 8.1 8.2: Netbeans IDE Branding
+dev-java/netbeans-php 8.0.2 8.1 8.2: Netbeans PHP Cluster
+dev-java/netbeans-platform 8.0.2 8.1 8.2: Netbeans Platform
+dev-java/netbeans-profiler 8.0.2 8.1 8.2: Netbeans Profiler Cluster
+dev-java/netbeans-webcommon 8.0.2 8.1 8.2: Netbeans Web Services Cluster
+dev-java/netbeans-websvccommon 8.0.2 8.1 8.2: Netbeans Web Services Common Cluster
 dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-common 4.0.21 4.0.36: Async event-driven framework for high performance network applications
@@ -9960,7 +9960,7 @@ dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
-dev-util/netbeans 8.0.2 8.1: Netbeans IDE
+dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
