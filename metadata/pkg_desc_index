@@ -8179,7 +8179,7 @@ dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
 dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.3.1 0.4.1: Validating URI References per RFC 3986
-dev-python/rfc3987 1.3.6: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
+dev-python/rfc3987 1.3.6 1.3.7: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/rnc2rng 2.4: RELAX NG Compact to regular syntax conversion library
 dev-python/robotframework 2.9 3.0: test automation framework for acceptance testing & test-driven development
