@@ -1,0 +1,48 @@
+Index: libyami-libyami-1.0.0/common/Makefile.am
+===================================================================
+--- libyami-libyami-1.0.0.orig/common/Makefile.am
++++ libyami-libyami-1.0.0/common/Makefile.am
+@@ -31,6 +31,7 @@ libyami_common_ldflags = \
+ libyami_common_cppflags = \
+ 	$(LIBVA_CFLAGS) \
+ 	-I$(top_srcdir)/interface \
++	-I$(top_srcdir) \
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES            = libyami_common.la
+Index: libyami-libyami-1.0.0/common/Makefile.unittest
+===================================================================
+--- libyami-libyami-1.0.0.orig/common/Makefile.unittest
++++ libyami-libyami-1.0.0/common/Makefile.unittest
+@@ -22,6 +22,7 @@ unittest_CPPFLAGS = \
+ 	$(LIBVA_CFLAGS) \
+ 	$(AM_CPPFLAGS) \
+ 	-I$(top_srcdir)/interface \
++	-I$(top_srcdir) \
+ 	$(NULL)
+ 
+ unittest_CXXFLAGS = \
+Index: libyami-libyami-1.0.0/codecparsers/Makefile.am
+===================================================================
+--- libyami-libyami-1.0.0.orig/codecparsers/Makefile.am
++++ libyami-libyami-1.0.0/codecparsers/Makefile.am
+@@ -113,6 +113,7 @@ libyami_codecparser_cppflags = \
+ 	-Dvp8dx_start_decode=libyami_vp8dx_start_decode \
+ 	-Dvp8dx_bool_decoder_fill=libyami_vp8dx_bool_decoder_fill \
+ 	-I$(top_srcdir)/interface \
++	-I$(top_srcdir) \
+ 	$(NULL)
+ 
+ noinst_LTLIBRARIES                 = libyami_codecparser.la
+Index: libyami-libyami-1.0.0/codecparsers/Makefile.unittest
+===================================================================
+--- libyami-libyami-1.0.0.orig/codecparsers/Makefile.unittest
++++ libyami-libyami-1.0.0/codecparsers/Makefile.unittest
+@@ -58,6 +58,7 @@ unittest_CPPFLAGS = \
+ 	$(GTEST_CPPFLAGS) \
+ 	$(AM_CPPFLAGS) \
+ 	-I$(top_srcdir)/interface \
++	-I$(top_srcdir) \
+ 	$(NULL)
+ 
+ unittest_CXXFLAGS = \
