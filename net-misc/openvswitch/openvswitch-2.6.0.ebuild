@@ -22,7 +22,7 @@ RDEPEND="
 		>=sys-apps/openrc-0.10.5
 		sys-apps/systemd
 	)
-	ssl? ( dev-libs/openssl:= )
+	ssl? ( dev-libs/openssl:0 )
 	monitor? (
 		${PYTHON_DEPS}
 		dev-python/twisted-core
@@ -33,6 +33,8 @@ RDEPEND="
 	debug? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES="${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
 MODULE_NAMES="openvswitch(net:${S}/datapath/linux)"
@@ -55,7 +57,6 @@ src_prepare() {
 	sed -i \
 		-e '/^SUBDIRS/d' \
 		datapath/Makefile.in || die "sed failed"
-	epatch "${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
 	eautoreconf
 	default
 }
@@ -91,23 +92,23 @@ src_install() {
 
 	if use monitor ; then
 		python_install() {
-			python_domodule "${ED}"/usr/share/openvswitch/python/*
-			python_optimize "${ED}/usr/share/ovsdbmonitor"
+			python_domodule "${ED}"usr/share/openvswitch/python/*
+			python_optimize "${ED}usr/share/ovsdbmonitor"
 		}
 		python_foreach_impl python_install
-		rm -r "${ED}/usr/share/openvswitch/python"
+		rm -r "${ED}usr/share/openvswitch/python" || die "rm failed"
 	fi
 	# not working without the brcompat_mod kernel module which did not get
 	# included in the kernel and we can't build it anymore
-	rm "${D}/usr/sbin/ovs-brcompatd" "${D}/usr/share/man/man8/ovs-brcompatd.8"
+	rm "${ED}usr/sbin/ovs-brcompatd" "${ED}usr/share/man/man8/ovs-brcompatd.8"
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	rm -rf "${ED}/var/run"
-	use monitor || rmdir "${ED}/usr/share/ovsdbmonitor"
-	use debug || rm "${ED}/usr/bin/ovs-parse-leaks"
+	rm -rf "${ED}var/run" || die "rm failed"
+	! use monitor && rmdir "${ED}usr/share/ovsdbmonitor" || die "rm failed"
+	! use debug && rm "${ED}usr/bin/ovs-parse-leaks" die "rm failed"
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
@@ -146,7 +147,7 @@ pkg_postinst() {
 
 pkg_config() {
 	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
-	if [ -e "${db}" ] ; then
+	if [[ -e "${db}" ]] ; then
 		einfo "Database '${db}' already exists, doing schema migration..."
 		einfo "(if the migration fails, make sure that ovsdb-server is not running)"
 		"${EPREFIX}/usr/bin/ovsdb-tool" convert "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "converting database failed"
