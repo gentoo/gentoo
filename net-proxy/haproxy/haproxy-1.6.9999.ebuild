@@ -23,6 +23,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
+	device-atlas? ( pcre )
 	?? ( slz zlib )"
 
 DEPEND="
