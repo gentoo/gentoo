@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@
 # - If people want to add/remove certs, tell them to file w/mozilla:
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
-EAPI="4"
+EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit eutils python-any-r1
@@ -59,16 +59,16 @@ LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE=""
-${PRECOMPILED} || IUSE+=" +cacert"
+${PRECOMPILED} || IUSE+=" cacert"
 
 DEPEND=""
 if ${PRECOMPILED} ; then
 	DEPEND+=" !<sys-apps/portage-2.1.10.41"
 fi
-# c_rehash: we run `c_rehash`; newer version for alt-cert-paths #552540
+# c_rehash: we run `c_rehash`
 # debianutils: we run `run-parts`
 RDEPEND="${DEPEND}
-	>=app-misc/c_rehash-1.7-r1
+	app-misc/c_rehash
 	sys-apps/debianutils"
 
 if ! ${PRECOMPILED}; then
@@ -128,9 +128,8 @@ src_compile() {
 		# Now move the files to the same places that the precompiled would.
 		mkdir -p etc/ssl/certs etc/ca-certificates/update.d usr/share/ca-certificates/mozilla
 		if use cacert ; then
-			mkdir -p usr/share/ca-certificates/{cacert.org,spi-inc.org}
+			mkdir -p usr/share/ca-certificates/cacert.org
 			mv "${d}"/CAcert_Inc..crt usr/share/ca-certificates/cacert.org/cacert.org_root.crt || die
-			mv "${d}"/SPI_Inc..crt usr/share/ca-certificates/spi-inc.org/spi-cacert-2008.crt || die
 		fi
 		mv "${d}"/*.crt usr/share/ca-certificates/mozilla/ || die
 	else
@@ -169,12 +168,7 @@ pkg_postinst() {
 		"${EROOT}"/usr/sbin/update-ca-certificates --root "${ROOT}"
 	fi
 
-	local c badcerts=0
-	for c in $(find -L "${EROOT}"etc/ssl/certs/ -type l) ; do
-		ewarn "Broken symlink for a certificate at $c"
-		badcerts=1
-	done
-	if [ ${badcerts} -eq 1 ]; then
+	if [ -n "$(find -L "${EROOT}"etc/ssl/certs/ -type l)" ] ; then
 		ewarn "Removing the following broken symlinks:"
 		ewarn "$(find -L "${EROOT}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
 	fi
