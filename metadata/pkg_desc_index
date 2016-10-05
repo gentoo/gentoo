@@ -17404,6 +17404,7 @@ sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 3.8.0 3.8.1 3.9.0 9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxxabi 9999: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423-r1 0.0_p20160922 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
