@@ -1,99 +1,71 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-RUNDIR=/var/run/sabnzbd
+PIDFILE="/run/sabnzbd/sabnzbd.pid"
 
 depend() {
-    need net
+	need net
 }
 
 get_var() {
-    echo $(sed -n \
-        '/^\[misc]/,/^'$1'/ s/^'$1' = \([[:alnum:].]\+\)[\r|\n|\r\n]*$/\1/p' \
-        "${SABNZBD_CONFIGFILE}")
-}
-
-get_port() {
-    if [ "$(get_var 'enable_https')" -eq 1 ]; then
-        echo $(get_var 'https_port')
-    else
-        echo $(get_var 'port')
-    fi
-}
-
-get_addr() {
-    local host=$(get_var 'host')
-    local protocol='http'
-
-    [ "${host}" == "0.0.0.0" ] && host=localhost
-    [ "$(get_var 'enable_https')" -eq 1 ] && protocol='https'
-
-    echo "${protocol}://${host}:$(get_port)"
-}
-
-get_pidfile() {
-    echo "${RUNDIR}/sabnzbd-$(get_port).pid"
+	grep -P -o -m 1 "(?<=^${1} = ).*" "${SABNZBD_CONFIGFILE}" || echo 0
 }
 
 start() {
-    ebegin "Starting SABnzbd"
+	ebegin "Starting SABnzbd"
 
-    checkpath -q -d -o ${SABNZBD_USER}:${SABNZBD_GROUP} -m 0770 "${RUNDIR}"
+	checkpath -q -d -o ${SABNZBD_USER}:${SABNZBD_GROUP} -m 0770 "$(dirname "${PIDFILE}")"
 
-    start-stop-daemon \
-        --quiet \
-        --start \
-        --user ${SABNZBD_USER} \
-        --group ${SABNZBD_GROUP} \
-        --name sabnzbd \
-        --background \
-        --pidfile "$(get_pidfile)" \
-        --exec /usr/bin/sabnzbd \
-        -- \
-        --config-file "${SABNZBD_CONFIGFILE}" \
-        --logging "${SABNZBD_LOGGING}" \
-        --daemon \
-        --pid "${RUNDIR}"
+	start-stop-daemon \
+		--quiet \
+		--start \
+		--user ${SABNZBD_USER} \
+		--group ${SABNZBD_GROUP} \
+		--pidfile "${PIDFILE}" \
+		--wait 1000 \
+		--exec /usr/bin/sabnzbd \
+		-- \
+		--config-file "${SABNZBD_CONFIGFILE}" \
+		--logging "${SABNZBD_LOGGING}" \
+		--daemon \
+		--pidfile "${PIDFILE}"
 
-    eend $?
-}
-
-start_pre() {
-    if [ "$RC_CMD" == "restart" ]; then
-        local pidfile=$(get_pidfile)
-        while [ -e ${pidfile} ]; do
-            sleep 1
-        done
-    fi
-
-    return 0
+	eend $?
 }
 
 stop() {
-    local api_key=$(get_var 'api_key')
-    local addr=$(get_addr)
-    local rc=1
+	local protocol="http"
+	local host="$(get_var "host")"
+	local port="$(get_var "port")"
 
-    ebegin "Stopping SABnzbd @ ${addr}"
-    # This can only work if we have enabled the API
-    if [ -n "${api_key}" -a "$(get_var 'disable_api_key')" -ne 1 ]; then
-        local ret
-        einfo "Attempting web-based shutdown @ ${addr}"
+	if [ $(get_var "enable_https") -eq 1 ]; then
+		protocol="https"
+		port="$(get_var "https_port")"
+	fi
 
-        # SABnzbd will return "ok" if shutdown is successful
-        ret=$(/usr/bin/curl -k -s "${addr}/sabnzbd/api?mode=shutdown&apikey=${api_key}")
-        [ "${ret}" == "ok" ] && rc=0
-    fi
+	case "${host}" in
+		*:*) host="[${host}]" ;;
+	esac
 
-    if [ "${rc}" -ne 0 ]; then
-        einfo "Falling back to SIGTERM, this may not work if you restarted via the web interface"
-        start-stop-daemon \
-            --stop \
-            --pidfile $(get_pidfile) \
-            --retry SIGTERM/1/SIGKILL/5
-        rc=$?
-    fi
+	local url="${protocol}://${host}:${port}/sabnzbd/api?mode=shutdown"
 
-    eend ${rc}
+	if [ $(get_var "disable_api_key") -eq 0 ]; then
+		url="${url}&apikey=$(get_var "api_key")"
+	fi
+
+	local signals="TERM/1/KILL/1"
+
+	ebegin "Stopping SABnzbd"
+
+	if [ "$(wget -q -t 1 -O - -T 10 "${url}")" = "ok" ]; then
+		signals="CONT/5/${signals}"
+	fi
+
+	start-stop-daemon \
+		--stop \
+		--pidfile "${PIDFILE}" \
+		--retry "${signals}"
+
+	eend $?
 }
