@@ -37,7 +37,7 @@ REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
 
 RDEPEND="
-	libcxxabi? ( sys-libs/libcxxabi[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
+	libcxxabi? ( ~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxabi? ( !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) )"
 # llvm-3.9.0 needed because its cmake files installation path changed, which is
