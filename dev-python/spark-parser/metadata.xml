@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>rb@dustyfeet.com</email>
+			<name>Rocky Bernstein</name>
+		</maintainer>
+		<remote-id type="pypi">spark_parser</remote-id>
+	</upstream>
+	<longdescription>SPARK stands for Scanning, Parsing, and Rewriting Kit.
+		It uses Jay Early’s algorithm for parsing context free grammars, and
+		comes with some generic Abstract Syntax Tree routines. There is also a
+		prototype scanner which does its job by combining Python regular
+		expressions.
+	</longdescription>
+</pkgmetadata>
