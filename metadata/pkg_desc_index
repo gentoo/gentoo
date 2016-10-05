@@ -3927,7 +3927,7 @@ dev-java/eclipsito 0_pre20130713: A small subset of Eclipse core libraries for m
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
 dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
-dev-java/emma 2.0.5312-r2: a free Java code coverage tool
+dev-java/emma 2.0.5312-r3: Free Java code coverage tool
 dev-java/ezmorph 1.0.6: A simple Java library for transforming an Object to another Object
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
 dev-java/fastutil 7.0.10: Provides faster type-specific maps, sets and lists with a small memory footprint
