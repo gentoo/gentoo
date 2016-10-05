@@ -294,9 +294,10 @@ multilib_src_install_all() {
 	fi
 
 	if use doc; then
-		find libs/*/* -iname "test" -or -iname "src" -delete || die
-		find doc -name Jamfile.v2 -or -name build -or -name *.manifest -delete || die
-		find tools -name Jamfile.v2 -or -name src -or -name *.cpp -or -name *.hpp -delete || die
+		find libs/*/* -depth \( -iname 'test' -o -iname 'src' \) -delete || die
+		find doc -depth \( -name 'Jamfile.v2' -o -name 'build' -o -name '*.manifest' \) -delete || die
+		find tools -depth \( -name 'Jamfile.v2' -o -name 'src' -o -name '*.cpp' -o -name '*.hpp' \) -delete || die
+
 		docinto html
 		dodoc *.{htm,html,png,css}
 		dodoc -r doc libs more tools
