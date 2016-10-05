@@ -7009,7 +7009,7 @@ dev-python/axiom 0.6.0-r1 0.7.2 0.7.3 0.7.5: Object database implemented on top 
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4: Backport of Python 3.5's 'collections.abc' module
-dev-python/backports-functools-lru-cache 1.2.1: Backport of functools.lru_cache from Python 3.3
+dev-python/backports-functools-lru-cache 1.2.1 1.3: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.6: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
