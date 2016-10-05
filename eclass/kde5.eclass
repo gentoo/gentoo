@@ -31,7 +31,7 @@ if [[ -v KDE_GCC_MINIMAL ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
@@ -117,6 +117,14 @@ fi
 # For any other value, add selinux to IUSE, and depending on that useflag
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
 : ${KDE_SELINUX_MODULE:=none}
+
+# @ECLASS-VARIABLE: KDE_UNRELEASED
+# @INTERNAL
+# @DESCRIPTION
+# An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
+# Any package matching this will have fetch restriction enabled, and receive
+# a proper error message via pkg_nofetch.
+KDE_UNRELEASED=( )
 
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
@@ -241,6 +249,17 @@ if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; 
 	fi
 fi
 
+_kde_is_unreleased() {
+	local pair
+	for pair in "${KDE_UNRELEASED[@]}" ; do
+		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
+			return 0
+		fi
+	done
+
+	return 1
+}
+
 # Determine fetch location for released tarballs
 _calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -328,6 +347,10 @@ _calculate_src_uri() {
 			esac
 		done
 	fi
+
+	if _kde_is_unreleased ; then
+		RESTRICT+=" fetch"
+	fi
 }
 
 # Determine fetch location for live sources
@@ -393,6 +416,36 @@ kde5_pkg_pretend() {
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
+}
+
+# @FUNCTION: kde5_pkg_nofetch
+# @DESCRIPTION:
+# Display package publication status
+kde5_pkg_nofetch() {
+	if ! _kde_is_unreleased ; then
+		return
+	fi
+
+	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
+	eerror "| | | | \ | |  _ \| ____| |   | ____|  / \  / ___|| ____|  _ \ "
+	eerror "| | | |  \| | |_) |  _| | |   |  _|   / _ \ \___ \|  _| | | | |"
+	eerror "| |_| | |\  |  _ <| |___| |___| |___ / ___ \ ___) | |___| |_| |"
+	eerror " \___/|_| \_|_| \_\_____|_____|_____/_/   \_\____/|_____|____/ "
+	eerror "                                                               "
+	eerror " ____   _    ____ _  __    _    ____ _____ "
+	eerror "|  _ \ / \  / ___| |/ /   / \  / ___| ____|"
+	eerror "| |_) / _ \| |   | ' /   / _ \| |  _|  _|  "
+	eerror "|  __/ ___ \ |___| . \  / ___ \ |_| | |___ "
+	eerror "|_| /_/   \_\____|_|\_\/_/   \_\____|_____|"
+	eerror
+	eerror "${CATEGORY}/${P} has not been released to the public yet"
+	eerror "and is only available to packagers right now."
+	eerror ""
+	eerror "This is not a bug. Please do not file bugs or contact upstream about this."
+	eerror ""
+	eerror "Please consult the upstream release schedule to see when this "
+	eerror "package is scheduled to be released:"
+	eerror "https://community.kde.org/Schedules"
 }
 
 # @FUNCTION: kde5_src_unpack
