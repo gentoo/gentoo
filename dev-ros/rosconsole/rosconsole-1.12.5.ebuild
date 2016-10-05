@@ -24,6 +24,7 @@ RDEPEND="
 	!log4cxx? ( glog? ( dev-cpp/glog ) )
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/vector.patch" )
 
 src_configure() {
 	local ROSCONSOLE_BACKEND=""

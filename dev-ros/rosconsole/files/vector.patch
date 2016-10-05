@@ -1,0 +1,20 @@
+commit 74674c49a64abbdcdd5aeea016997af2959c6f05
+Author: Hodorgasm <nsane457@gmail.com>
+Date:   Mon Oct 3 20:32:20 2016 -0400
+
+    Add '#Include <vector>' to fix building on GCC-6
+    
+    Don't rely on transitive header inclusion to declare std::vector as building with GCC-6 fails due to no '#Include <vector>' statement.
+
+diff --git a/tools/rosconsole/include/ros/console.h b/tools/rosconsole/include/ros/console.h
+index 4d2a86b..28901d7 100644
+--- a/tools/rosconsole/include/ros/console.h
++++ b/tools/rosconsole/include/ros/console.h
+@@ -40,6 +40,7 @@
+ #include <cstdarg>
+ #include <ros/macros.h>
+ #include <map>
++#include <vector>
+ 
+ #ifdef ROSCONSOLE_BACKEND_LOG4CXX
+ #include "log4cxx/level.h"
