@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.8[dbus]
