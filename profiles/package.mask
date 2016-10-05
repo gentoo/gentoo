@@ -197,6 +197,7 @@ dev-python/simpletal
 ~sys-devel/clang-runtime-3.9.0
 ~sys-devel/llvm-3.9.0
 ~sys-libs/libcxx-3.9.0
+~sys-libs/libcxxabi-3.9.0
 ~sys-libs/llvm-libunwind-3.9.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
