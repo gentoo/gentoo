@@ -15,8 +15,8 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtnetwork)
 	|| (
-		>=net-misc/networkmanager-0.9.10.0[consolekit,teamd=]
-		>=net-misc/networkmanager-0.9.10.0[systemd,teamd=]
+		<net-misc/networkmanager-1.4.0[consolekit,teamd=]
+		<net-misc/networkmanager-1.4.0[systemd,teamd=]
 	)
 	!kde-frameworks/libnm-qt
 	!kde-plasma/libnm-qt
