@@ -20,7 +20,7 @@ Example applications of the OpenCV library are Human-Computer Interaction (HCI);
 Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
 </longdescription>
 	<use>
-		<flag name="contrib">Install user contributed scripts from opencv_contrib</flag>
+		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
