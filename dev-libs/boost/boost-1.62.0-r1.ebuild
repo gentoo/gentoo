@@ -12,7 +12,7 @@ MAJOR_V="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Boost Libraries for C++"
 HOMEPAGE="http://www.boost.org/"
-SRC_URI="mirror://sourceforge/boost/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/boost/${PN}/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead ${MAJOR_V} due to bug 486122
