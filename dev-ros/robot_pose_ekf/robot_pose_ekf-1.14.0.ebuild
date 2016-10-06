@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	sci-libs/orocos-bfl
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	sci-libs/orocos-bfl
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
