@@ -4536,7 +4536,7 @@ dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0: Boost Libraries for C++
+dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.12 1.11.29: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files

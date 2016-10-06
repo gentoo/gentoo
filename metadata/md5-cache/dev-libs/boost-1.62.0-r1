@@ -10,7 +10,7 @@ RDEPEND=icu? ( >=dev-libs/icu-3.6:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)
 REQUIRED_USE=mpi? ( threads ) python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) )
 RESTRICT=test
 SLOT=0/1.62.0
-SRC_URI=mirror://sourceforge/boost/boost_1_62_0.tar.bz2
+SRC_URI=https://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=cb042f8d394f222785f6b4a51e3875b8
+_md5_=20c4f2dc9734e89e760955bedd000028
