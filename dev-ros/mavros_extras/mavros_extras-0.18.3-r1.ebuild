@@ -27,5 +27,6 @@ RDEPEND="
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/urdf
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
