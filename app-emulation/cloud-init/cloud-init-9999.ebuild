@@ -9,8 +9,7 @@ inherit distutils-r1 eutils git-r3 multilib systemd
 
 DESCRIPTION="cloud initialisation magic"
 HOMEPAGE="https://launchpad.net/cloud-init"
-EGIT_REPO_URI="https://github.com/prometheanfire/cloud-init.git"
-EGIT_BRANCH="gentoo-integration"
+EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -48,7 +47,7 @@ RDEPEND="
 	virtual/logger
 "
 
-PATCHES=( "${FILESDIR}/cloud-init-0.7.7-gentooinit.patch" )
+PATCHES=( "${FILESDIR}/cloud-init-0.7.8-gentooinit.patch" )
 
 python_prepare_all() {
 	sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
