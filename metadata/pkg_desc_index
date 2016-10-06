@@ -18185,7 +18185,7 @@ x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
 x11-libs/compizconfig-backend-kconfig4 0.8.8: Compizconfig Kconfig Backend
 x11-libs/dnd 1.1-r1: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
-x11-libs/fltk 1.3.3-r3 1.3.3-r4 1.3.9999: C++ user interface toolkit for X and OpenGL
+x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0: Image loading library for GTK+
