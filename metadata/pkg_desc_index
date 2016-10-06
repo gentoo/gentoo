@@ -14753,7 +14753,7 @@ net-misc/clipgrab 3.5.6: Download from various internet video services like Yout
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2016.04.03: Qt GUI for Connman with system tray icon
+net-misc/cmst 2016.04.03 2016.10.03: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.32 1.33: Provides a daemon for managing internet connections
