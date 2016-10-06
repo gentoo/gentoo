@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,7 @@ RDEPEND="
 	sci-libs/pcl
 	x11-libs/fltk
 	media-libs/netpbm
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )

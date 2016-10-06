@@ -30,6 +30,7 @@ RDEPEND="
 	sci-libs/pcl
 	x11-libs/fltk
 	media-libs/netpbm
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
