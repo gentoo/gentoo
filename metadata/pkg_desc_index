@@ -18295,7 +18295,7 @@ x11-libs/pango 1.36.8-r1 1.38.1 1.40.1 1.40.2 1.40.3: Internationalized text lay
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9.2 2.9.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
-x11-libs/qtermwidget 0.6.0-r1 9999: Qt terminal emulator widget
+x11-libs/qtermwidget 0.6.0-r1 0.7.0 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
@@ -18860,7 +18860,7 @@ x11-terms/mlterm 3.4.5 3.7.1 3.7.2: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
-x11-terms/qterminal 0.6.0-r1 9999: Qt-based multitab terminal emulator
+x11-terms/qterminal 0.6.0-r1 0.7.0 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
