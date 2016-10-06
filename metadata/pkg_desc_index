@@ -7875,6 +7875,7 @@ dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
+dev-python/pygtkspellcheck 4.0.5: a simple but quite powerful spellchecking library for GTK written in pure Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
@@ -18482,7 +18483,7 @@ x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.1 3.0.2: Program that can get information from a PnP monitor
-x11-misc/rednotebook 1.8.0: Graphical journal with calendar, templates, tags and keyword searching
+x11-misc/rednotebook 1.8.0 1.14: Graphical journal with calendar, templates, tags and keyword searching
 x11-misc/redshift 1.10 1.11: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
