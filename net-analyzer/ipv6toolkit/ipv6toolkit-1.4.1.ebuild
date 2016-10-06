@@ -6,7 +6,7 @@ EAPI=4
 
 inherit eutils
 
-DESCRIPTION="Set of IPv6 security/trouble-shooting tools, that can send arbitrary IPv6-based packets"
+DESCRIPTION="Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets"
 HOMEPAGE="http://www.si6networks.com/tools/ipv6toolkit/"
 MY_PN="ipv6toolkit"
 MY_P="${MY_PN}-v${PV}"
@@ -26,8 +26,9 @@ S="${WORKDIR}/${MY_P}"
 HWIDS_OUI_PATH=/usr/share/misc/oui.txt
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.1-oui-path.patch
-	cd "${S}"
+	#patch it not needed per upstream
+	#https://github.com/fgont/ipv6toolkit/issues/44
+	#epatch "${FILESDIR}"/${PN}-1.4.1-oui-path.patch
 	sed -i "s,/usr/share/[^[:space:]\"']*/?oui.txt,${HWIDS_OUI_PATH},g" \
 		manuals/ipv6toolkit.conf.5 \
 		|| die "failed to sed out oui path"
