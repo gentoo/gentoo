@@ -9772,7 +9772,7 @@ dev-util/bitcoin-tx 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.12.0 0.12.1 0.13.0 9999
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
-dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.9: A massively-parallel software build system implemented on top of GNU make
