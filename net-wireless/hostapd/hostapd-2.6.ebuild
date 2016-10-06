@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 S="${S}/${PN}"
 
 src_prepare() {
+	default
+
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
 }
