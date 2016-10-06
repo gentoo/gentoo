@@ -5,19 +5,18 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit distutils-r1 eutils git-r3 linux-info user
+inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
 SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/newton/cinder.conf.sample -> newton-cinder.conf.sample
 https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/newton/policy.json -> newton-cinder-policy.json
-https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/newton/volume.filters -> newton-cinder-volume.filters"
-EGIT_REPO_URI="https://github.com/openstack/cinder.git"
-EGIT_BRANCH="stable/newton"
+https://dev.gentoo.org/~prometheanfire/dist/openstack/cinder/newton/volume.filters -> newton-cinder-volume.filters
+https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+api +scheduler +volume infiniband iscsi lvm mysql +memcached postgres rdma sqlite +tcp test +tgt"
 REQUIRED_USE="|| ( mysql postgres sqlite ) iscsi? ( tgt ) infiniband? ( rdma )"
 
