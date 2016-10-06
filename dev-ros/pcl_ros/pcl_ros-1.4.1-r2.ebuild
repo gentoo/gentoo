@@ -31,6 +31,7 @@ RDEPEND="
 	dev-ros/nodelet_topic_tools
 	sci-libs/pcl:=[qhull]
 	>=dev-ros/pcl_conversions-0.2.1-r1
+	dev-libs/boost:=[threads]
 	dev-ros/pcl_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
