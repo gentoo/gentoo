@@ -1,0 +1,26 @@
+From fe362543de00806a3d69ddd0de33caf0cae2e57e Mon Sep 17 00:00:00 2001
+From: GaveUp <gaveup@gaveup.net>
+Date: Tue, 4 Oct 2016 10:56:07 -0500
+Subject: [PATCH] Revert change to osalloc.nim from commit 8d7a45f.
+
+Change caused MAP_ANONYMOUS to have an incorrect value when compiling
+for mipsel.
+
+Fixes #4852.
+---
+ lib/system/osalloc.nim | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/lib/system/osalloc.nim b/lib/system/osalloc.nim
+index b07a362..316dd74 100644
+--- a/lib/system/osalloc.nim
++++ b/lib/system/osalloc.nim
+@@ -87,8 +87,6 @@ elif defined(posix):
+     const MAP_ANONYMOUS = 0x1000
+   elif defined(solaris):
+     const MAP_ANONYMOUS = 0x100
+-  elif defined(linux):
+-    const MAP_ANONYMOUS = 0x20
+   else:
+     var
+       MAP_ANONYMOUS {.importc: "MAP_ANONYMOUS", header: "<sys/mman.h>".}: cint
