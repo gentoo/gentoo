@@ -15,9 +15,10 @@
 		<description>Proxied maintainer. Copy on bugs.</description>
 	</maintainer>
 	<use>
-		<flag name="gssapi">Build GSSAPI support.</flag>
+		<flag name="gssapi">Build GSSAPI support</flag>
 		<flag name="java">Build JNI bindings using jni.h</flag>
-		<flag name="libproxy">Enable proxy support.</flag>
-		<flag name="stoken">Enable stoken support.</flag>
+		<flag name="libproxy">Enable proxy support</flag>
+		<flag name="lz4">Enable support for lz4 compression</flag>
+		<flag name="stoken">Enable stoken support</flag>
 	</use>
 </pkgmetadata>
