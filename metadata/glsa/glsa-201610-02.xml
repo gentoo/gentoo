@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-02">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache, the worst of
+    which could allow HTTP request smuggling attacks or a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>October 06, 2016</announced>
+  <revised>October 06, 2016: 1</revised>
+  <bug>524680</bug>
+  <bug>536684</bug>
+  <bug>554948</bug>
+  <bug>557198</bug>
+  <bug>583276</bug>
+  <bug>588138</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="rgt">2.2.31</unaffected>
+      <unaffected range="ge">2.4.23</unaffected>
+      <vulnerable range="lt">2.4.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache HTTP Server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache HTTP Server.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could bypass intended access restrictions, conduct HTTP
+      request smuggling attacks, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.4.23"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3581">CVE-2014-3581</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3183">CVE-2015-3183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1546">CVE-2016-1546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4979">CVE-2016-4979</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 13 Sep 2015 13:17:03 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 06 Oct 2016 17:20:25 +0000">b-man</metadata>
+</glsa>
