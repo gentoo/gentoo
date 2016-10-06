@@ -77,7 +77,6 @@ src_compile() {
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
 
-#	args+=( $(haproxy_use kernel_linux LINUX_SPLICE) )
 #	args+=( $(haproxy_use kernel_linux LINUX_TPROXY) )
 
 	args+=( $(haproxy_use ssl OPENSSL) )
