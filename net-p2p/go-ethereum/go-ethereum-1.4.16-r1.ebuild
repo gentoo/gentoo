@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="evm"
 
-DEPEND="dev-lang/go"
+DEPEND="dev-lang/go:="
 RDEPEND="${DEPEND}"
 
 src_compile() {
