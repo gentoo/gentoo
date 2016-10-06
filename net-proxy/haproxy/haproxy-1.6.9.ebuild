@@ -15,7 +15,7 @@ SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/$
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
+IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit ssl tools vim-syntax +zlib"
 REQUIRED_USE="pcre-jit? ( pcre )
 	?? ( slz zlib )"
 
@@ -30,7 +30,6 @@ DEPEND="
 	)
 	slz? ( dev-libs/libslz:= )
 	zlib? ( sys-libs/zlib )"
-# lua? ( dev-lang/lua:5.3 )
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -69,10 +68,6 @@ src_compile() {
 	)
 
 	args+=( $(haproxy_use crypt LIBCRYPT) )
-
-# bug 541042
-#	args+=( $(haproxy_use lua LUA) )
-
 	args+=( $(haproxy_use net_ns NS) )
 	args+=( $(haproxy_use pcre PCRE) )
 	args+=( $(haproxy_use pcre-jit PCRE_JIT) )
