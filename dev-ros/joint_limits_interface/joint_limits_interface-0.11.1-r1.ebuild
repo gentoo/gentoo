@@ -18,7 +18,8 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/hardware_interface
-	dev-libs/urdfdom
+	>=dev-libs/urdfdom-1
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest dev-cpp/gtest )"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )

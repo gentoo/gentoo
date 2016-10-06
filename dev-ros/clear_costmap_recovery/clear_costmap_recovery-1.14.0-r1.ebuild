@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,13 +15,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/costmap_2d
+	>=dev-ros/costmap_2d-1.13.1
 	dev-ros/nav_core
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/tf
 	dev-cpp/eigen:3
 	sci-libs/pcl
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules

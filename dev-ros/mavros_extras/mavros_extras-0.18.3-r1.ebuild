@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,5 +27,6 @@ RDEPEND="
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/urdf
 	dev-cpp/eigen:3
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,5 +26,6 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
