@@ -4,15 +4,10 @@
 
 EAPI=6
 
-PLOCALES="ar_SA bg_BG ca_ES cs_CZ da_DK de_DE el_GR es_ES es_MX es_VE eu_ES
-	fa_IR fi_FI fr_FR gl_ES he_IL hr_HR hu_HU id_ID it_IT ja_JP ka_GE lg
-	lt lv_LV nl_NL nqo pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sr
-	sr@ijekavian sr@ijekavianlatin sr@latin sv_SE tr_TR uk_UA uz@Latn
-	zh_CN zh_TW"
 PLUGINS_HASH='c332d306c0f6cf645c75eaf198d2fc5e12339e9e'
 PLUGINS_VERSION='2016.05.02' # if there are no updates, we can use the older archive
 
-inherit l10n qmake-utils
+inherit qmake-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -69,20 +64,11 @@ src_prepare() {
 	# get extra plugins into qupzilla build tree
 	mv "${WORKDIR}"/${PN}-plugins-${PLUGINS_HASH}/plugins/* "${S}"/src/plugins/ || die
 
-	rm_loc() {
-		# remove localizations the user has not specified
-		sed -i -e "/${1}.ts/d" translations/translations.pri || die
-		rm translations/${1}.ts || die
-	}
-
 	# remove outdated prebuilt localizations
 	rm -rf bin/locale || die
 
 	# remove empty locale
 	rm translations/empty.ts || die
-
-	l10n_find_plocales_changes translations '' .ts
-	l10n_for_each_disabled_locale_do rm_loc
 
 	default
 }
