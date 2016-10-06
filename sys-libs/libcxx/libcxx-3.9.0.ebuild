@@ -161,12 +161,10 @@ gen_static_ldscript() {
 	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
 	# Generate libc++.a ldscript for inclusion of its dependencies so that
 	# clang++ -stdlib=libc++ -static works out of the box.
-	local deps="libc++_static.a ${cxxabi_lib}"
+	local deps="libc++_static.a ${cxxabi_lib} $(usex libunwind libunwind.a libgcc_eh.a)"
 	# On Linux/glibc it does not link without libpthread or libdl. It is
 	# fine on FreeBSD.
 	use elibc_glibc && deps+=" libpthread.a libdl.a"
-	# unlike libgcc_s, libunwind is not implicitly linked
-	use libunwind && deps+=" libunwind.a"
 
 	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.a" || die
 }
@@ -177,8 +175,7 @@ gen_shared_ldscript() {
 	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "$(usex libcxxrt "libcxxrt.so" "libsupc++.a")")
 
 	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
-	local deps="libc++_shared.so ${cxxabi_lib}"
-	use libunwind && deps+=" libunwind.so"
+	local deps="libc++_shared.so ${cxxabi_lib} $(usex libunwind libunwind.so libgcc_s.so)"
 
 	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.so" || die
 }
