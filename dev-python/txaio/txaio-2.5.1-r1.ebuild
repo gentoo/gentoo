@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Compatibility API between asyncio/Twisted/Trollius"
-HOMEPAGE="https://github.com/crossbario/txaio"
+HOMEPAGE="https://github.com/crossbario/txaio https://pypi.python.org/pypi/txaio"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
