@@ -35,3 +35,10 @@ multilib_src_configure() {
 
 	cmake-utils_src_configure
 }
+
+multilib_src_install() {
+	cmake-utils_src_install
+
+	# install headers like sys-libs/libunwind
+	doheader "${S}"/include/*.h
+}
