@@ -8828,14 +8828,14 @@ dev-ros/test_rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1
 dev-ros/test_rosservice 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rospy
 dev-ros/test_tf2 0.5.12-r1 0.5.13 9999: TF2 unit tests
 dev-ros/tf 1.11.7 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
-dev-ros/tf2 0.5.12 0.5.13 9999: The second generation Transform Library in ROS
+dev-ros/tf2 0.5.13 9999: The second generation Transform Library in ROS
 dev-ros/tf2_bullet 0.5.12 0.5.13 9999: TF2 bullet support
 dev-ros/tf2_eigen 0.5.13 9999: TF2 eigen support
 dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 9999: The second generation Transform Library in ROS
 dev-ros/tf2_kdl 0.5.12 0.5.13 9999: KDL binding for tf2
 dev-ros/tf2_msgs 0.5.12 0.5.13 9999: TF2 messages
 dev-ros/tf2_py 0.5.12 0.5.13 9999: TF2 python bindings
-dev-ros/tf2_ros 0.5.12 0.5.13 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_ros 0.5.13-r1 9999: ROS bindings for the tf2 library, for both Python and C++
 dev-ros/tf2_sensor_msgs 0.5.12 0.5.13 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
 dev-ros/tf2_tools 0.5.12 0.5.13 9999: TF2 tools
 dev-ros/tf_conversions 1.11.7 1.11.8 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
