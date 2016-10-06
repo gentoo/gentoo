@@ -48,6 +48,8 @@ src_prepare() {
 
 	# backport cmake path fix for llvm-3.9+
 	eapply "${FILESDIR}/${P}-cmake-path.patch"
+	# kill stray unwind test dep in stand-alone builds
+	eapply "${FILESDIR}/${P}-test-unwind.patch"
 }
 
 src_configure() {
