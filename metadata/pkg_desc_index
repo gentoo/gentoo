@@ -106,7 +106,7 @@ app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsyn
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1: Backup and recovery utilities for GitHub Enterprise
 app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.8: Single process stack of various system monitors
-app-admin/glance 12.0.0 2016.1.9999 2016.2.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 12.0.0 13.0.0 2016.1.9999 2016.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.2: Graphical tool to show free disk space like df
@@ -16852,7 +16852,7 @@ sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libf
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 9.1.0 9.2.0 2016.1.9999 2016.2.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 9.1.0 9.2.0 10.0.0 2016.1.9999 2016.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
