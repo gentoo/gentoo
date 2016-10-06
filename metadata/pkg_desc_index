@@ -4347,7 +4347,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.4 1.2.7 1.2.8: Native APR library for Tomcat
+dev-java/tomcat-native 1.2.4 1.2.7 1.2.8 1.2.10: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.67 7.0.68 7.0.69 7.0.70 8.0.32 8.0.33 8.0.35 8.0.36 8.0.37 8.5.3 8.5.4 8.5.5 9.0.0_alpha10: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
