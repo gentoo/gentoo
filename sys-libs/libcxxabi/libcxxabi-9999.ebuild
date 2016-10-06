@@ -25,7 +25,7 @@ RDEPEND="
 	libunwind? (
 		|| (
 			>=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
-			sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}]
+			>=sys-libs/llvm-libunwind-3.9.0-r1[static-libs?,${MULTILIB_USEDEP}]
 		)
 	)"
 DEPEND="${RDEPEND}
@@ -69,6 +69,12 @@ multilib_src_configure() {
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 
 		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		# upstream is omitting standard search path for this
+		# probably because gcc & clang are bundling their own unwind.h
+		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
+		# this only needs to exist, it does not have to make sense
+		# FIXME: remove this once https://reviews.llvm.org/D25314 is merged
+		-DLIBCXXABI_LIBUNWIND_SOURCES="${T}"
 	)
 	if use test; then
 		mycmakeargs+=(
