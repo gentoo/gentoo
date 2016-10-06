@@ -33,7 +33,7 @@ HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa avahi bluetooth bluray caps cec dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X"
+IUSE="airplay alsa bluetooth bluray caps cec dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
 # gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
 REQUIRED_USE="
 	|| ( gles opengl )
@@ -82,7 +82,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-sound/wavpack
 	>=media-video/ffmpeg-2.6:=[encode]
 	rtmp? ( media-video/rtmpdump )
-	avahi? ( net-dns/avahi )
 	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -112,7 +111,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 		x11-libs/libXrender
-	)"
+	)
+	zeroconf? ( net-dns/avahi )
+"
 RDEPEND="${COMMON_DEPEND}
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
@@ -207,7 +208,6 @@ src_configure() {
 		--with-ffmpeg=shared \
 		$(use_enable alsa) \
 		$(use_enable airplay) \
-		$(use_enable avahi) \
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
@@ -231,7 +231,8 @@ src_configure() {
 		$(use_enable vaapi) \
 		$(use_enable vdpau) \
 		$(use_enable webserver) \
-		$(use_enable X x11)
+		$(use_enable X x11) \
+		$(use_enable zeroconf avahi)
 }
 
 src_compile() {

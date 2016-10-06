@@ -44,7 +44,7 @@ JAVA_GENTOO_CLASSPATH="
 
 java_prepare() {
 	java-pkg_clean
-	rm -rv test src/test || die
+	rm -rv src/test || die
 }
 
 src_install() {

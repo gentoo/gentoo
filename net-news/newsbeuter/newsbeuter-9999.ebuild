@@ -65,6 +65,6 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="/usr" PACKAGE="${PF}" install
+	emake DESTDIR="${D}" prefix="/usr" docdir="/usr/share/doc/${PF}" install
 	dodoc AUTHORS CHANGES README.md TODO
 }

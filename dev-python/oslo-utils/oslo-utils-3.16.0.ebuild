@@ -63,6 +63,7 @@ RDEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {

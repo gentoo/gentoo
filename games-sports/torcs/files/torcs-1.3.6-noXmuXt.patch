@@ -1,5 +1,5 @@
---- configure.in.old
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -116,12 +116,8 @@
  AC_CHECK_LIB(ICE, IceSetIOErrorHandler,,AC_MSG_ERROR([Can't find libICE. Please check config.log and if you can't solve the problem send the file to torcs-users@lists.sourceforge.net with the subject \"torcs compilation problem\"]))
  dnl Replace `main' with a function in -lSM:

@@ -86,6 +86,12 @@ src_unpack() {
 src_prepare() {
 	eapply_user
 
+	# avoid sdjournal include for bug 595874
+	if ! use systemd; then
+		sed -e "s/^\\(LOCAL_DIST_SRC_FILTER := .*\\)'$/\\1|api_service'/" \
+			-i rkt/rkt.mk || die
+	fi
+
 	sed -e 's|^RKT_REQ_PROG(\[GIT\],.*|#\0|' -i configure.ac || die
 
 	# disable git fetch of systemd

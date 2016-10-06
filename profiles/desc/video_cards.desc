@@ -69,5 +69,6 @@ vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
+vivante - VIDEO_CARDS setting to build etnaviv driver for vivante video cards
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
 voodoo - VIDEO_CARDS setting to build driver for voodoo video cards

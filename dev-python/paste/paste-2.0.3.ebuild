@@ -44,7 +44,6 @@ python_prepare_all() {
 	rm -f tests/test_proxy.py || die
 
 	local PATCHES=(
-		"${FILESDIR}"/${PN}-1.7.5.1-fix-tests-for-pypy.patch
 		"${FILESDIR}"/${P}-unbundle-tempita.patch
 		)
 

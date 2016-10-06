@@ -5,7 +5,7 @@
 EAPI=6
 
 DESCRIPTION="Replacement for GNU seq and BSD jot"
-HOMEPAGE="https://fedorahosted.org/enum/"
+HOMEPAGE="https://github.com/hartwork/enum"
 SRC_URI="https://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"

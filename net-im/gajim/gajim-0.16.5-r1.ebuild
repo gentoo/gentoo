@@ -23,13 +23,14 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
-IUSE="avahi crypt dbus gnome gnome-keyring kde idle jingle libnotify networkmanager nls spell +srv test X xhtml"
+IUSE="crypt dbus gnome gnome-keyring kde idle jingle libnotify networkmanager nls spell +srv test X xhtml zeroconf"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	libnotify? ( dbus )
-	avahi? ( dbus )
-	gnome? ( gnome-keyring )"
+	gnome? ( gnome-keyring )
+	zeroconf? ( dbus )
+"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -51,7 +52,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-libs/dbus-glib
 		libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )
-		avahi? ( net-dns/avahi[dbus,gtk,python,${PYTHON_USEDEP}] )
+		zeroconf? ( net-dns/avahi[dbus,gtk,python,${PYTHON_USEDEP}] )
 		)
 	gnome? (
 		dev-python/libgnome-python[${PYTHON_USEDEP}]
@@ -63,7 +64,7 @@ RDEPEND="${COMMON_DEPEND}
 	kde? ( kde-apps/kwalletmanager )
 	networkmanager? (
 			dev-python/dbus-python[${PYTHON_USEDEP}]
-			net-misc/networkmanager
+			net-misc/networkmanager:=
 		)
 	spell? ( app-text/gtkspell:2 )
 	srv? (

@@ -1,0 +1,10 @@
+diff -r -U2 clisp-2.49.orig/modules/readline/readline.lisp clisp-2.49/modules/readline/readline.lisp
+--- clisp-2.49.orig/modules/readline/readline.lisp	2010-01-07 04:18:03.000000000 +0600
++++ clisp-2.49/modules/readline/readline.lisp	2016-09-29 22:23:53.837631568 +0700
+@@ -425,5 +425,5 @@
+ (def-c-var gnu-readline-p (:name "rl_gnu_readline_p") (:type int)
+   (:documentation "True if this is real GNU readline."))
+-(def-c-var readline-state (:name "rl_readline_state") (:type int)
++(def-c-var readline-state (:name "rl_readline_state") (:type ulong)
+   (:documentation "Flags word encapsulating the current readline state."))
+ (def-c-var editing-mode (:name "rl_editing_mode") (:type int)

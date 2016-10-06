@@ -20,10 +20,10 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha ~amd64 ~ppc ~x86"
 
-IUSE="aac airplay +alsa ao asf avahi cdda curl cxx ffmpeg flac gvfs ices
+IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac gvfs ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa oss
-perl phonehome pulseaudio python ruby
-samba +server sid sndfile speex test valgrind +vorbis vocoder wavpack xml"
+perl phonehome pulseaudio python ruby samba +server sid sndfile speex
+test valgrind +vorbis vocoder wavpack xml zeroconf"
 
 RDEPEND="server? (
 		>=dev-db/sqlite-3.3.4
@@ -32,7 +32,6 @@ RDEPEND="server? (
 		airplay? ( dev-libs/openssl:0= )
 		alsa? ( media-libs/alsa-lib )
 		ao? ( media-libs/libao )
-		avahi? ( net-dns/avahi[mdnsresponder-compat] )
 		cdda? ( dev-libs/libcdio-paranoia
 			>=media-libs/libdiscid-0.1.1
 			>=media-sound/cdparanoia-3.9.8 )
@@ -63,6 +62,7 @@ RDEPEND="server? (
 		vocoder? ( sci-libs/fftw:3.0= media-libs/libsamplerate )
 		wavpack? ( media-sound/wavpack )
 		xml? ( dev-libs/libxml2 )
+		zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	)
 
 	>=dev-libs/glib-2.12.9
@@ -192,7 +192,7 @@ src_configure() {
 					"DISABLED	coreaudio" # MacOS only?
 					"		curl"
 					"ENABLED	cue"
-					"avahi		daap"
+					"zeroconf	daap"
 					"ENABLED	diskwrite"
 					"ENABLED	equalizer"
 					"aac		faad"

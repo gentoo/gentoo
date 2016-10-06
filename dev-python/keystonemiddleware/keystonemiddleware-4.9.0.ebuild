@@ -54,7 +54,6 @@ RDEPEND="
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/python-keystoneclient-2.1.0[${PYTHON_USEDEP}]
-	<dev-python/python-keystoneclient-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.10.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]"

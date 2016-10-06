@@ -11,7 +11,7 @@ inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20160223"
+MY_RELEASEDATE="20160930"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -29,10 +29,11 @@ fi
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
+IUSE="pcre2 python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
 
-RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
-	>=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
+	!pcre2? ( >=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}] )
+	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
@@ -46,8 +47,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live builds, place them in /etc/portage/patches
-		eapply "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
-		eapply "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
+		eapply "${FILESDIR}/libselinux-2.6-0005-use-ruby-include-with-rubylibver.patch"
+		eapply "${FILESDIR}/libselinux-2.6-0007-build-related-fixes-bug-500674.patch"
 	fi
 
 	eapply_user
@@ -56,30 +57,24 @@ src_prepare() {
 }
 
 multilib_src_compile() {
-	tc-export PKG_CONFIG RANLIB
-	local PCRE_CFLAGS=$(${PKG_CONFIG} libpcre --cflags)
-	local PCRE_LIBS=$(${PKG_CONFIG} libpcre --libs)
-	export PCRE_{CFLAGS,LIBS}
+	tc-export AR CC PKG_CONFIG RANLIB
 
 	emake \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
+		USE_PCRE2="$(usex pcre2 y n)" \
 		all
 
 	if multilib_is_native_abi && use python; then
 		building() {
 			python_export PYTHON_INCLUDEDIR PYTHON_LIBPATH
 			emake \
-				CC="$(tc-getCC)" \
 				PYINC="-I${PYTHON_INCLUDEDIR}" \
-				PYTHONLIBDIR="${PYTHON_LIBPATH}" \
-				PYPREFIX="${EPYTHON##*/}" \
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+				USE_PCRE2="$(usex pcre2 y n)" \
 				pywrap
 		}
 		python_foreach_impl building
@@ -91,12 +86,11 @@ multilib_src_compile() {
 			# Clean up .lo file to force rebuild
 			rm -f src/selinuxswig_ruby_wrap.lo || die
 			emake \
-				CC="$(tc-getCC)" \
 				RUBY=${1} \
-				RUBYINSTALL=$(${1} -e 'print RbConfig::CONFIG["vendorarchdir"]') \
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+				USE_PCRE2="$(usex pcre2 y n)" \
 				rubywrap
 		}
 		for RUBYTARGET in ${USE_RUBY}; do
@@ -108,12 +102,18 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	LIBDIR="\$(PREFIX)/$(get_libdir)" SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
-		emake DESTDIR="${D}" install
+		emake DESTDIR="${D}" \
+			LIBDIR="\$(PREFIX)/$(get_libdir)" \
+			SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+			USE_PCRE2="$(usex pcre2 y n)" \
+			install
 
 	if multilib_is_native_abi && use python; then
 		installation() {
-			LIBDIR="\$(PREFIX)/$(get_libdir)" emake DESTDIR="${D}" install-pywrap
+			emake DESTDIR="${D}" \
+				LIBDIR="\$(PREFIX)/$(get_libdir)" \
+				USE_PCRE2="$(usex pcre2 y n)" \
+				install-pywrap
 			python_optimize # bug 531638
 		}
 		python_foreach_impl installation
@@ -124,9 +124,10 @@ multilib_src_install() {
 			einfo "Calling install-rubywrap for ${1}"
 			# Forcing (re)build here as otherwise the resulting SO file is used for all ruby versions
 			rm src/selinuxswig_ruby_wrap.lo
-			LIBDIR="\$(PREFIX)/$(get_libdir)" emake DESTDIR="${D}" \
+			emake DESTDIR="${D}" \
+				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				RUBY=${1} \
-				RUBYINSTALL="${D}/$(${1} -e 'print RbConfig::CONFIG["vendorarchdir"]')" \
+				USE_PCRE2="$(usex pcre2 y n)" \
 				install-rubywrap
 		}
 		for RUBYTARGET in ${USE_RUBY}; do

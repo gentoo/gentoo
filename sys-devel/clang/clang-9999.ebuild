@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 PDEPEND="
+	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( sys-libs/compiler-rt )
 	default-libcxx? ( sys-libs/libcxx )"
 
@@ -114,10 +115,7 @@ src_unpack() {
 src_prepare() {
 	python_setup
 
-	# fix race condition between sphinx targets
-	eapply "${FILESDIR}"/9999/0001-cmake-Add-ordering-dep-between-HTML-Sphinx-docs-and-.patch
 	# automatically select active system GCC's libraries, bugs #406163 and #417913
-	# TODO: cross-linux tests broken by this one
 	eapply "${FILESDIR}"/9999/0002-driver-Support-obtaining-active-toolchain-from-gcc-c.patch
 	# support overriding clang runtime install directory
 	eapply "${FILESDIR}"/9999/0005-cmake-Supporting-overriding-runtime-libdir-via-CLANG.patch
@@ -213,17 +211,17 @@ src_install() {
 
 	# Apply CHOST and version suffix to clang tools
 	local clang_version=4.0
-	local clang_tools=( clang clang++ clang-cl )
+	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
 	# cmake gives us:
 	# - clang-X.Y
 	# - clang -> clang-X.Y
-	# - clang++, clang-cl -> clang
+	# - clang++, clang-cl, clang-cpp -> clang
 	# we want to have:
 	# - clang-X.Y
-	# - clang++-X.Y, clang-cl-X.Y -> clang-X.Y
-	# - clang, clang++, clang-cl -> clang*-X.Y
+	# - clang++-X.Y, clang-cl-X.Y, clang-cpp-X.Y -> clang-X.Y
+	# - clang, clang++, clang-cl, clang-cpp -> clang*-X.Y
 	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
 		rm "${ED%/}/usr/bin/${i}" || die
@@ -231,16 +229,12 @@ src_install() {
 		dosym "${i}-${clang_version}" "/usr/bin/${i}"
 	done
 
-	# now create wrappers for all supported ABIs
+	# now create target symlinks for all supported ABIs
 	for abi in $(get_all_abis); do
-		local abi_flags=$(get_abi_CFLAGS "${abi}")
 		local abi_chost=$(get_abi_CHOST "${abi}")
 		for i in "${clang_tools[@]}"; do
-			cat > "${T}"/wrapper.tmp <<-_EOF_ || die
-				#!${EPREFIX}/bin/sh
-				exec "${i}-${clang_version}" ${abi_flags} "\${@}"
-			_EOF_
-			newbin "${T}"/wrapper.tmp "${abi_chost}-${i}-${clang_version}"
+			dosym "${i}-${clang_version}" \
+				"/usr/bin/${abi_chost}-${i}-${clang_version}"
 			dosym "${abi_chost}-${i}-${clang_version}" \
 				"/usr/bin/${abi_chost}-${i}"
 		done
@@ -269,11 +263,5 @@ multilib_src_install_all() {
 	python_fix_shebang "${ED}"
 	if use static-analyzer; then
 		python_optimize "${ED}"usr/share/scan-view
-	fi
-}
-
-pkg_postinst() {
-	if ! has_version 'sys-libs/libomp'; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,11 +14,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
+IUSE="capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zeroconf zlib"
 
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
-	avahi? ( net-dns/avahi )
 	dbus? ( sys-apps/dbus )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3:= )
@@ -26,6 +25,7 @@ RDEPEND="dev-libs/openssl:=
 	)
 	hdhomerun? ( media-libs/libhdhomerun )
 	uriparser? ( dev-libs/uriparser )
+	zeroconf? ( net-dns/avahi )
 	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
@@ -57,7 +57,6 @@ src_configure() {
 		--disable-ffmpeg_static \
 		--disable-ccache \
 		--disable-dvbscan \
-		$(use_enable avahi) \
 		$(use_enable capmt) \
 		$(use_enable constcw) \
 		$(use_enable cwc) \
@@ -72,6 +71,7 @@ src_configure() {
 		$(use_enable satip satip_client) \
 		$(use_enable timeshift) \
 		$(use_enable uriparser) \
+		$(use_enable zeroconf avahi) \
 		$(use_enable zlib)
 }
 

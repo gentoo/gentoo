@@ -1,5 +1,5 @@
---- cmake/XRootDOSDefs.cmake.orig	2014-06-04 20:31:15.000000000 +0400
-+++ cmake/XRootDOSDefs.cmake	2014-08-21 12:12:55.397368485 +0400
+--- a/cmake/XRootDOSDefs.cmake
++++ b/cmake/XRootDOSDefs.cmake
 @@ -15,7 +15,7 @@
  # GCC
  #-------------------------------------------------------------------------------

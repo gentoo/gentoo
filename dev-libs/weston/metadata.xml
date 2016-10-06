@@ -9,7 +9,6 @@
 	<flag name="colord">Allow setting color managment</flag>
 	<flag name="drm">Enable drm compositor support</flag>
 	<flag name="editor">Install wayland-editor example application</flag>
-	<flag name="egl">Enable egl acceleration</flag>
 	<flag name="fbdev">Enable fbdev compositor support</flag>
 	<flag name="gles2">Use GLESv2 cairo instead of full GL</flag>
 	<flag name="headless">Headless backend and a noop renderer, mainly for testing purposes</flag>

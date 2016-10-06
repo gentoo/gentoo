@@ -31,7 +31,7 @@ if [[ -v KDE_GCC_MINIMAL ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
@@ -118,6 +118,14 @@ fi
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
 : ${KDE_SELINUX_MODULE:=none}
 
+# @ECLASS-VARIABLE: KDE_UNRELEASED
+# @INTERNAL
+# @DESCRIPTION
+# An array of $CATEGORY-$PV pairs of packages that are unreleased upstream.
+# Any package matching this will have fetch restriction enabled, and receive
+# a proper error message via pkg_nofetch.
+KDE_UNRELEASED=( )
+
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
 elif [[ ${KDEBASE} = kdel10n ]]; then
@@ -151,15 +159,18 @@ case ${KDE_AUTODEPS} in
 			esac
 		fi
 
+		if [[ ${CATEGORY} = kde-plasma ]]; then
+			if ! [[ $(get_version_component_range 2) -le 7 && $(get_version_component_range 3) -lt 50 ]]; then
+				FRAMEWORKS_MINIMAL=5.26.0
+			fi
+		fi
+
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
-			RDEPEND+="
-				!kde-apps/kde4-l10n[-minimal(+)]
-				!<kde-apps/kde4-l10n-15.12.3-r1
-			"
+			RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
 		fi
 
 		if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
@@ -225,7 +236,7 @@ if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
 fi
 
-# Drop this when kdepim is finally split upstream
+# FIXME: Drop this when kdepim-16.08.x is no more
 if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
 	S="${S}/${PN}"
 fi
@@ -237,6 +248,17 @@ if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; 
 		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
 	fi
 fi
+
+_kde_is_unreleased() {
+	local pair
+	for pair in "${KDE_UNRELEASED[@]}" ; do
+		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
+			return 0
+		fi
+	done
+
+	return 1
+}
 
 # Determine fetch location for released tarballs
 _calculate_src_uri() {
@@ -325,6 +347,10 @@ _calculate_src_uri() {
 			esac
 		done
 	fi
+
+	if _kde_is_unreleased ; then
+		RESTRICT+=" fetch"
+	fi
 }
 
 # Determine fetch location for live sources
@@ -390,6 +416,36 @@ kde5_pkg_pretend() {
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 	_check_gcc_version
+}
+
+# @FUNCTION: kde5_pkg_nofetch
+# @DESCRIPTION:
+# Display package publication status
+kde5_pkg_nofetch() {
+	if ! _kde_is_unreleased ; then
+		return
+	fi
+
+	eerror " _   _ _   _ ____  _____ _     _____    _    ____  _____ ____  "
+	eerror "| | | | \ | |  _ \| ____| |   | ____|  / \  / ___|| ____|  _ \ "
+	eerror "| | | |  \| | |_) |  _| | |   |  _|   / _ \ \___ \|  _| | | | |"
+	eerror "| |_| | |\  |  _ <| |___| |___| |___ / ___ \ ___) | |___| |_| |"
+	eerror " \___/|_| \_|_| \_\_____|_____|_____/_/   \_\____/|_____|____/ "
+	eerror "                                                               "
+	eerror " ____   _    ____ _  __    _    ____ _____ "
+	eerror "|  _ \ / \  / ___| |/ /   / \  / ___| ____|"
+	eerror "| |_) / _ \| |   | ' /   / _ \| |  _|  _|  "
+	eerror "|  __/ ___ \ |___| . \  / ___ \ |_| | |___ "
+	eerror "|_| /_/   \_\____|_|\_\/_/   \_\____|_____|"
+	eerror
+	eerror "${CATEGORY}/${P} has not been released to the public yet"
+	eerror "and is only available to packagers right now."
+	eerror ""
+	eerror "This is not a bug. Please do not file bugs or contact upstream about this."
+	eerror ""
+	eerror "Please consult the upstream release schedule to see when this "
+	eerror "package is scheduled to be released:"
+	eerror "https://community.kde.org/Schedules"
 }
 
 # @FUNCTION: kde5_src_unpack
@@ -648,6 +704,23 @@ kde5_pkg_postinst() {
 
 	gnome2_icon_cache_update
 	xdg_pkg_postinst
+
+	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			echo
+			einfo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
+			einfo "Use it at your own risk."
+			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
+		fi
+		# for kf5-based applications tell user that he SHOULD NOT be using kde-base/plasma-workspace
+		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
+				has_version 'kde-base/plasma-workspace'; then
+			echo
+			ewarn "WARNING! Your system configuration still contains \"kde-base/plasma-workspace\","
+			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
+			ewarn "Please consider upgrading to Plasma 5."
+		fi
+	fi
 }
 
 # @FUNCTION: kde5_pkg_postrm

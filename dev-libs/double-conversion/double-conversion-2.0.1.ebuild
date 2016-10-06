@@ -12,7 +12,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 S="${WORKDIR}"

@@ -17,7 +17,7 @@ DEFAULT_ABI="amd64_fbsd"
 ABI="amd64_fbsd"
 
 # 32bit specific settings.
-CFLAGS_x86_fbsd="-m32 -DCOMPAT_32BIT -B/usr/lib32 -L/usr/lib32"
+CFLAGS_x86_fbsd="-m32"
 LDFLAGS_x86_fbsd="-m elf_i386_fbsd -L/usr/lib32"
 
 USE="mmx mmxext sse sse2"

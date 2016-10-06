@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 )
+# still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
 inherit distutils-r1 git-r3 linux-info user
 
@@ -108,6 +109,7 @@ RDEPEND="
 	>=dev-python/python-novaclient-2.29.0[${PYTHON_USEDEP}]
 	!~dev-python/python-novaclient-2.33.0[${PYTHON_USEDEP}]
 	>=dev-python/python-designateclient-1.5.0[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	dev-python/pyudev[${PYTHON_USEDEP}]
 	sys-apps/iproute2
 	net-misc/bridge-utils

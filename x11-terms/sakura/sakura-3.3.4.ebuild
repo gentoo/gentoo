@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,14 +11,15 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~arm-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.20:2
+	x11-libs/gtk+:3[X]
 	x11-libs/vte:2.91
-	x11-libs/gtk+:3
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=dev-lang/perl-5.10.1
 	virtual/pkgconfig
 "

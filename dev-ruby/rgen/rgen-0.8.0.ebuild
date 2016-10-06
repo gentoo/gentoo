@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/mthiede/rgen"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 hppa ~ppc ~sparc ~x86"
 
 ruby_add_rdepend "dev-ruby/nokogiri"
 

@@ -19,8 +19,8 @@ IUSE=""
 
 DEPEND="dev-python/pyrex"
 RDEPEND="dev-python/matplotlib
-		dev-python/numpy
-		>=sys-block/btrace-0.0.20070730162628"
+	dev-python/numpy
+	>=sys-block/blktrace-0.0.20070730162628"
 
 S=${WORKDIR}/${PN}-b392aeaf693b # hg snapshot
 

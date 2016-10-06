@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc64 ~x86 ~x86-fbsd ~x64-solaris"
+KEYWORDS="alpha amd64 hppa ppc64 ~x86 ~x86-fbsd ~x64-solaris"
 IUSE="examples static-libs test"
 
 DEPEND="test? ( dev-db/redis )"

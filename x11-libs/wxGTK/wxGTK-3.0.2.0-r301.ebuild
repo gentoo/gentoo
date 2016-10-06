@@ -69,13 +69,15 @@ LICENSE="wxWinLL-3
 		doc?	( wxWinFDL-3 )"
 
 S="${WORKDIR}/wxPython-src-${PV}"
+PATCHES=(
+	"${FILESDIR}"/${P}-webview-fixes.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
-	PATCHES=( "${FILESDIR}"/${P}-webview-fixes.patch )
+	default
 
-	eapply "${PATCHES[@]}"
-	eapply_user
-
+	local f
 	for f in $(find "${S}" -name configure.in); do
 		mv "${f}" "${f/in/ac}" || die
 	done

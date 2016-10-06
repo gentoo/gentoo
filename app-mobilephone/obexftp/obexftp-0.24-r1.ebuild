@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openobex/${P}-Source.tar.gz"
 SLOT="0"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 hppa ~ppc ~x86"
 
 # bluetooth support is not really optional, bug #529068
 IUSE="perl python ruby tcl" #bluetooth

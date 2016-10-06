@@ -72,7 +72,7 @@ src_prepare() {
 	# rubygems, but remove the bits that would cause a file collision.
 	einfo "Unbundling gems..."
 	cd "$S"
-	rm -r \
+	rm -rf \
 		{bin,lib}/rake lib/rake.rb man/rake.1 \
 		bin/gem || die "removal failed"
 
@@ -193,9 +193,9 @@ src_install() {
 	emake V=1 DESTDIR="${D}" install || die "make install failed"
 
 	# Remove installed rubygems copy
-	rm -r "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
-	rm -r "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}"/rdoc* || die "rm rdoc failed"
-	rm -r "${D}/usr/bin/"{ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
+	rm -rf "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
+	rm -rf "${D}/usr/$(get_libdir)/ruby/${RUBYVERSION}"/rdoc* || die "rm rdoc failed"
+	rm -rf "${D}/usr/bin/"{ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
 
 	if use doc; then
 		make DESTDIR="${D}" install-doc || die "make install-doc failed"

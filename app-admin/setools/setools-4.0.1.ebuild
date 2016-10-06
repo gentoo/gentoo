@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/TresysTechnology/setools.git"
 else
 	SRC_URI="https://github.com/TresysTechnology/setools/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
 fi
 
 LICENSE="GPL-2 LGPL-2.1"

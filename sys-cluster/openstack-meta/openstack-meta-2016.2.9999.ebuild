@@ -10,7 +10,7 @@ HOMEPAGE="https://openstack.org"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="keystone swift neutron glance cinder nova"
+IUSE="cinder glance heat keystone neutron nova swift"
 
 DEPEND=""
 RDEPEND="
@@ -20,4 +20,5 @@ RDEPEND="
 	glance? ( ~app-admin/glance-${PV} )
 	cinder? ( ~sys-cluster/cinder-${PV} )
 	nova? ( ~sys-cluster/nova-${PV} )
+	heat? ( ~sys-cluster/heat-${PV} )
 "

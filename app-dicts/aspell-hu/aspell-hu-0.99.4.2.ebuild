@@ -9,7 +9,7 @@ inherit aspell-dict
 
 LICENSE="GPL-2"
 
-KEYWORDS="alpha ~amd64 ~arm hppa ~ia64 ~m68k ~ppc ppc64 ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha ~amd64 arm hppa ~ia64 ~m68k ~ppc ppc64 ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 FILENAME="aspell6-hu-0.99.4.2-0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
-IUSE="avahi cgi ipmi snmp +usb selinux ssl tcpd xml"
-CDEPEND="avahi? ( net-dns/avahi )
+IUSE="cgi ipmi snmp +usb selinux ssl tcpd xml zeroconf"
+CDEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
 	snmp? ( net-analyzer/net-snmp )
 	usb? ( virtual/libusb:0 )
@@ -26,6 +26,7 @@ CDEPEND="avahi? ( net-dns/avahi )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xml? ( >=net-libs/neon-0.25.0 )
 	ipmi? ( sys-libs/freeipmi )
+	zeroconf? ( net-dns/avahi )
 	virtual/udev"
 DEPEND="$CDEPEND
 	>=sys-apps/sed-4
@@ -142,7 +143,6 @@ src_configure() {
 		--with-dev \
 		--with-serial \
 		--without-powerman \
-		$(use_with avahi) \
 		$(use_with cgi) \
 		$(use_with ipmi) \
 		$(use_with ipmi freeipmi) \
@@ -151,6 +151,7 @@ src_configure() {
 		$(use_with tcpd wrap) \
 		$(use_with usb) \
 		$(use_with xml neon) \
+		$(use_with zeroconf avahi) \
 		$(systemd_with_unitdir) \
 		${myconf}
 }

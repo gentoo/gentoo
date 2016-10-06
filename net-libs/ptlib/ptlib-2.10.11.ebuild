@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86"
 IUSE="alsa +asn debug doc +dtmf examples ffmpeg ftp +http ipv6
 xmpp ldap lua mail odbc oss pch pulseaudio qos remote sasl sdl serial
 shmvideo snmp soap socks +sound ssl static-libs +stun telnet tts v4l +video
-vxml wav xml xmlrpc"
+vxml +wav +xml xmlrpc"
 
 CDEPEND="
 	ldap? ( net-nds/openldap )

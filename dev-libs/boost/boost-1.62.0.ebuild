@@ -16,7 +16,9 @@ SRC_URI="mirror://sourceforge/boost/${MY_P}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead ${MAJOR_V} due to bug 486122
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh \
+	~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos \
+	~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris ~x86-winnt"
 
 IUSE="context debug doc icu +nls mpi python static-libs +threads tools"
 
@@ -292,9 +294,10 @@ multilib_src_install_all() {
 	fi
 
 	if use doc; then
-		find libs/*/* -iname "test" -or -iname "src" -delete || die
-		find doc -name Jamfile.v2 -or -name build -or -name *.manifest -delete || die
-		find tools -name Jamfile.v2 -or -name src -or -name *.cpp -or -name *.hpp -delete || die
+		find libs/*/* -depth \( -iname 'test' -o -iname 'src' \) -delete || die
+		find doc -depth \( -name 'Jamfile.v2' -o -name 'build' -o -name '*.manifest' \) -delete || die
+		find tools -depth \( -name 'Jamfile.v2' -o -name 'src' -o -name '*.cpp' -o -name '*.hpp' \) -delete || die
+
 		docinto html
 		dodoc *.{htm,html,png,css}
 		dodoc -r doc libs more tools

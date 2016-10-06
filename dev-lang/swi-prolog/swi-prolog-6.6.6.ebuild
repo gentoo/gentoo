@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
@@ -18,16 +18,16 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test zlib X"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
 	zlib? ( sys-libs/zlib )
 	odbc? ( dev-db/unixODBC )
-	readline? ( sys-libs/readline )
-	gmp? ( dev-libs/gmp )
-	ssl? ( dev-libs/openssl )
-	java? ( >=virtual/jdk-1.4 )
+	readline? ( sys-libs/readline:= )
+	gmp? ( dev-libs/gmp:0 )
+	ssl? ( dev-libs/openssl:0 )
+	java? ( >=virtual/jdk-1.4:= )
 	X? (
-		virtual/jpeg
+		virtual/jpeg:0
 		x11-libs/libX11
 		x11-libs/libXft
 		x11-libs/libXpm
