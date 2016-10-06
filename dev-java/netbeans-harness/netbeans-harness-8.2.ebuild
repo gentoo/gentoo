@@ -61,19 +61,6 @@ src_prepare() {
 
 	epatch netbeans-8.2-build.xml.patch
 
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
-
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into apisupport.harness/external javahelp jsearch.jar jsearch-2.0_05.jar
@@ -90,6 +77,7 @@ src_prepare() {
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_install() {

@@ -232,19 +232,6 @@ src_prepare() {
 
 	epatch netbeans-8.2-build.xml.patch
 
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
-
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --into c.jcraft.jsch/external jsch jsch.jar jsch-0.1.53.jar
 	java-pkg_jar-from --into db.drivers/external jdbc-mysql jdbc-mysql.jar mysql-connector-java-5.1.23-bin.jar
@@ -289,6 +276,7 @@ src_prepare() {
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_compile() {

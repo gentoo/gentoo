@@ -13,7 +13,7 @@ MY_PV="$(replace_all_version_separators _)"
 
 DESCRIPTION="A system for large project software construction, simple to use and powerful"
 HOMEPAGE="http://www.boost.org/doc/tools/build/index.html"
-SRC_URI="mirror://sourceforge/boost/boost_${MY_PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/boost/boost/${PV}/boost_${MY_PV}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0"

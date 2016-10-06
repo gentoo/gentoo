@@ -53,13 +53,13 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/beansbinding:0
 	dev-java/cglib:3
 	dev-java/jdom:0"
-DEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
+DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/json-simple:0
 	dev-java/junit:4"
-RDEPEND=">=virtual/jdk-1.7
+RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
 	${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
@@ -163,19 +163,6 @@ src_prepare() {
 
 	epatch netbeans-8.2-build.xml.patch
 
-	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
-
-		if [ -n "${files}" ] ; then
-			einfo "Applying custom patches:"
-
-			for file in ${files} ; do
-				epatch "${file}"
-			done
-		fi
-	fi
-
 	einfo "Symlinking external libraries..."
 	java-pkg_jar-from --build-only --into javahelp/external javahelp jhall.jar jhall-2.0_05.jar
 	java-pkg_jar-from --into libs.cglib/external cglib-3 cglib.jar cglib-2.2.jar
@@ -211,6 +198,7 @@ src_prepare() {
 	popd >/dev/null || die
 
 	java-pkg-2_src_prepare
+	default
 }
 
 src_install() {
