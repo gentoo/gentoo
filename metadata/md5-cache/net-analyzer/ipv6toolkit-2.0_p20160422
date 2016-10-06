@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=net-libs/libpcap[ipv6(+)] sys-apps/hwids
 SLOT=0
-SRC_URI=https://github.com/fgont/ipv6toolkit/archive/d14d90969e88a455e4ca8ea0ea7d88c9b7fb5c9f.tar.gz -> ipv6toolkit-2.0_pre20160422.tar.gz
+SRC_URI=https://github.com/fgont/ipv6toolkit/archive/d14d90969e88a455e4ca8ea0ea7d88c9b7fb5c9f.tar.gz -> ipv6toolkit-2.0_p20160422.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=beda37626c529c20ccbf1ce2f3edf0f2

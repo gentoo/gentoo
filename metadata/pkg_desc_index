@@ -13887,7 +13887,7 @@ net-analyzer/ippl 1.4.14-r3 1.4.14-r5: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85: Simple TCP/IP Dump summarizer/analyzer
 net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.5: IP Tables State displays states being kept by iptables in a top-like format
-net-analyzer/ipv6toolkit 1.4.1 2.0_pre20160422: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
+net-analyzer/ipv6toolkit 1.4.1 2.0_p20160422: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
 net-analyzer/jffnms 0.9.4: Network Management and Monitoring System
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
