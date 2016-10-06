@@ -5,15 +5,15 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit distutils-r1 eutils git-r3 multilib systemd
+inherit distutils-r1 eutils multilib systemd
 
 DESCRIPTION="cloud initialisation magic"
 HOMEPAGE="https://launchpad.net/cloud-init"
-EGIT_REPO_URI="https://git.launchpad.net/cloud-init"
+SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="
@@ -50,7 +50,6 @@ RDEPEND="
 PATCHES=( "${FILESDIR}/cloud-init-0.7.8-gentooinit.patch" )
 
 python_prepare_all() {
-	sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
 	sed -i '/^argparse/d' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
