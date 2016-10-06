@@ -8567,7 +8567,7 @@ dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Ro
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.3 0.3.4 0.3.5 9999: ROS-independent package for loading plugins
-dev-ros/clear_costmap_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
+dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.3-r1 1.12.4 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.3-r2 1.12.4 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
@@ -8602,7 +8602,7 @@ dev-ros/filters 1.7.4 9999: Standardized interface for processing data as a sequ
 dev-ros/gazebo_msgs 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 9999: Message and service data structures for interacting with Gazebo from ROS
 dev-ros/gazebo_plugins 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
 dev-ros/gazebo_ros 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
-dev-ros/gazebo_ros_control 2.5.7-r1 2.6.0 9999: ROS control plugins for gazebo
+dev-ros/gazebo_ros_control 2.6.0-r1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 0.5.4 0.5.5 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
@@ -8630,7 +8630,7 @@ dev-ros/hector_pose_estimation 0.2.0 0.2.1 0.3.0 9999: hector_pose_estimation no
 dev-ros/hector_pose_estimation_core 0.2.0 0.2.1 0.3.0 9999: Extended Kalman Filter (EKF) that estimates the 6DOF pose of the robot
 dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 0.3.5 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
-dev-ros/image_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from ROS images
+dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.12.0-r1 1.12.1 1.12.2 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Single image rectification and color processing
 dev-ros/image_publisher 1.12.19 9999: Publish an image stream from single image file or avi file.
@@ -8643,7 +8643,7 @@ dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutor
 dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.13 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
-dev-ros/joint_limits_interface 0.11.0-r1 0.11.1 9999: Interface for enforcing joint limits
+dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.13 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
@@ -8660,7 +8660,7 @@ dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 1.14.0 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2016.4.4 2016.6.24 2016.7.7: MAVLink message marshaling library
 dev-ros/mavros 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_extras 0.18.3-r1 9999: Extra nodes and plugins for mavros
 dev-ros/mavros_msgs 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Messages for MAVROS
 dev-ros/message_filters 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 0.4.0 9999: Build-time dependencies for generating language bindings of messages
@@ -8668,13 +8668,13 @@ dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies 
 dev-ros/message_to_tf 0.2.0 0.2.1 0.3.0 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
-dev-ros/move_base 1.13.0 1.13.1 1.14.0 9999: Given a goal in the world, will attempt to reach it with a mobile base
+dev-ros/move_base 1.14.0 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 9999: Move slow and clear
 dev-ros/moveit_msgs 0.8.0 0.8.1 0.8.3 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.13.0 1.13.1 1.14.0 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.3 1.12.4 1.12.5 9999: Common messages used to interact with the navigation stack
-dev-ros/navfn 1.13.1-r1 1.14.0 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
+dev-ros/navfn 1.14.0-r1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
 dev-ros/nodelet 1.9.3 1.9.4 1.9.5 1.9.6 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.9.3 1.9.3-r1 1.9.4 1.9.5 1.9.6 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
@@ -8688,7 +8688,7 @@ dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera driv
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 0.2.1-r1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
-dev-ros/pcl_ros 1.4.1-r1 9999: PCL (Point Cloud Library) ROS interface stack
+dev-ros/pcl_ros 1.4.1-r2 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.3 1.10.4 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
@@ -8707,7 +8707,7 @@ dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point 
 dev-ros/realtime_tools 1.9.1 1.9.2 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.12.2 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 2.2.2 9999: Launch files to open an RGBD device
-dev-ros/robot_pose_ekf 1.13.0 1.13.1 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
+dev-ros/robot_pose_ekf 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.13.2-r1 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 0.7.15 0.7.16 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
@@ -8810,7 +8810,7 @@ dev-ros/sound_play 0.2.12 0.3.1 9999: ROS node that translates commands on a ROS
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
-dev-ros/stereo_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Stereo and single image rectification and disparity processing
+dev-ros/stereo_image_proc 1.12.19-r1 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 1.7.17 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.8 1.8.9 1.8.10 9999: diagnostic_aggregator tests
