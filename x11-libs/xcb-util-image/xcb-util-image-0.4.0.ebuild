@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.9.11[${MULTILIB_USEDEP}] )"
 
 src_configure() {
+	epatch "${FILESDIR}/clang.patch"
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_with doc doxygen)
 	)
