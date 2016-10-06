@@ -10508,7 +10508,7 @@ games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.38.7: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.5.0: A new Game Boy Advance emulator written in C.
+games-emulation/mgba 0.5.0 0.5.1: A new Game Boy Advance emulator written in C.
 games-emulation/mupen64plus 1.5-r1 1.5-r2 2.0 2.5: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.0-r1 2.5-r1: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -18327,7 +18327,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.10: Desktop agnostic launcher
+x11-misc/albert 0.8.10 0.8.11: Desktop agnostic launcher
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
