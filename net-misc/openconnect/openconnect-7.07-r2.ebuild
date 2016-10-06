@@ -25,7 +25,7 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libproxy nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi java libproxy lz4 nls smartcard static-libs stoken"
 
 DEPEND="dev-libs/libxml2
 	sys-libs/zlib
@@ -38,6 +38,7 @@ DEPEND="dev-libs/libxml2
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
+	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )"
@@ -99,6 +100,7 @@ src_configure() {
 		$(use_with !gnutls openssl) \
 		$(use_with gnutls ) \
 		$(use_with libproxy) \
+		$(use_with lz4) \
 		$(use_with gssapi) \
 		$(use_with smartcard libpcsclite) \
 		$(use_with stoken) \
