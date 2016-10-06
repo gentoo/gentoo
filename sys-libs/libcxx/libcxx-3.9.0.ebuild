@@ -102,6 +102,28 @@ multilib_src_configure() {
 		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
+	# we want -lgcc_s for unwinder, and for compiler runtime when using
+	# gcc, clang with gcc runtime (or any unknown compiler)
+	local extra_libs=() want_gcc_s=ON
+	if use libunwind; then
+		# work-around missing -lunwind upstream
+		extra_libs+=( -lunwind )
+		# if we're using libunwind and clang with compiler-rt, we want
+		# to link to compiler-rt instead of -lgcc_s
+		if tc-is-clang; then
+			# get the full library list out of 'pretend mode'
+			# and grep it for libclang_rt references
+			local args=( $($(tc-getCC) -### -x c - 2>&1 | tail -n 1) )
+			local i
+			for i in "${args[@]}"; do
+				if [[ ${i} == *libclang_rt* ]]; then
+					want_gcc_s=OFF
+					extra_libs+=( "${i}" )
+				fi
+			done
+		fi
+	fi
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		# LLVM_LIBDIR_SUFFIX is used to find CMake files
@@ -115,10 +137,11 @@ multilib_src_configure() {
 		# we're using our own mechanism for generating linker scripts
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
-		-DLIBCXX_HAS_GCC_S_LIB=$(usex !libunwind)
+		-DLIBCXX_HAS_GCC_S_LIB=${want_gcc_s}
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
-		-DCMAKE_SHARED_LINKER_FLAGS=$(usex libunwind "-lunwind" "")
+		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
+
 	if use test; then
 		mycmakeargs+=(
 			# this can be any directory, it just needs to exist...
