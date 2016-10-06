@@ -21,6 +21,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=("${FILESDIR}"/${P}-fix-mips-build.patch)
+
 nim_use_enable() {
 	[[ -z $2 ]] && die "usage: nim_use_enable <USE flag> <compiler flag>"
 	use $1 && echo "-d:$2"
