@@ -26,5 +26,6 @@ RDEPEND="
 	dev-ros/urdf
 	sci-electronics/gazebo
 	dev-libs/urdfdom:=
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
