@@ -107,12 +107,12 @@ __EOF__
 
 pkg_setup() {
 	# Bail out on unsupported build configuration, bug #456792
-	if [[ -f "${EROOT}etc/site-config.jam" ]]; then
-		grep -q gentoorelease "${EROOT}etc/site-config.jam" && grep -q gentoodebug "${EROOT}etc/site-config.jam" ||
+	if [[ -f "${EROOT%/}/etc/site-config.jam" ]]; then
+		grep -q gentoorelease "${EROOT%/}/etc/site-config.jam" && grep -q gentoodebug "${EROOT%/}/etc/site-config.jam" ||
 		(
-			eerror "You are using custom ${EROOT}etc/site-config.jam without defined gentoorelease/gentoodebug targets."
+			eerror "You are using custom ${EROOT%/}/etc/site-config.jam without defined gentoorelease/gentoodebug targets."
 			eerror "Boost can not be built in such configuration."
-			eerror "Please, either remove this file or add targets from ${EROOT}usr/share/boost-build/site-config.jam to it."
+			eerror "Please, either remove this file or add targets from ${EROOT%/}/usr/share/boost-build/site-config.jam to it."
 			die
 		)
 	fi
@@ -139,7 +139,7 @@ ejam() {
 
 src_configure() {
 	# Workaround for too many parallel processes requested, bug #506064
-	[ "$(makeopts_jobs)" -gt 64 ] && MAKEOPTS="${MAKEOPTS} -j64"
+	[[ "$(makeopts_jobs)" -gt 64 ]] && MAKEOPTS="${MAKEOPTS} -j64"
 
 	OPTIONS=(
 		$(usex debug gentoodebug gentoorelease)
@@ -294,9 +294,11 @@ multilib_src_install_all() {
 	fi
 
 	if use doc; then
-		find libs/*/* -depth \( -iname 'test' -o -iname 'src' \) -delete || die
-		find doc -depth \( -name 'Jamfile.v2' -o -name 'build' -o -name '*.manifest' \) -delete || die
-		find tools -depth \( -name 'Jamfile.v2' -o -name 'src' -o -name '*.cpp' -o -name '*.hpp' \) -delete || die
+		# find extraneous files that shouldn't be installed
+		# as part of the documentation and remove them.
+		find libs/*/* \( -iname 'test' -o -iname 'src' \) -exec rm -rf '{}' + || die
+		find doc \( -name 'Jamfile.v2' -o -name 'build' -o -name '*.manifest' \) -exec rm -rf '{}' + || die
+		find tools \( -name 'Jamfile.v2' -o -name 'src' -o -name '*.cpp' -o -name '*.hpp' \) -exec rm -rf '{}' + || die
 
 		docinto html
 		dodoc *.{htm,html,png,css}
