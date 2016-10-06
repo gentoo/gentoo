@@ -141,7 +141,7 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi; then
-		emake -C fluid DESTDIR="${D}" install-linux
+		emake -C fluid DESTDIR="${D}" install-linux install
 
 		use doc && \
 			emake -C documentation DESTDIR="${D}" install
