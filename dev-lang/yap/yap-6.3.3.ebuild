@@ -57,6 +57,7 @@ src_configure() {
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		--disable-prism \
+		--disable-gecode \
 		$(use_enable !static dynamic-loading) \
 		$(use_enable threads) \
 		$(use_enable threads pthread-locking) \
