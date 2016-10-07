@@ -23,6 +23,8 @@ RDEPEND="
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geographic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"
+PATCHES=( "${FILESDIR}/includes.patch" )
