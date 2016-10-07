@@ -128,6 +128,7 @@ python_prepare_all() {
 
 python_install() {
 	distutils-r1_python_install
+	diropts -m0750 -o heat -g heat
 	keepdir /etc/heat
 	dodir /etc/heat/environment.d
 	dodir /etc/heat/templates
