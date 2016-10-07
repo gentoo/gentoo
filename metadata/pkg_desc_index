@@ -4408,7 +4408,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that ta
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.10.0-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3: The Crystal Programming Language
+dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3 0.19.4: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -9743,7 +9743,7 @@ dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
-dev-util/abi-compliance-checker 1.99.21 1.99.22 1.99.23 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 1.99.21 1.99.22 1.99.23 1.99.25 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15: Dump ABI of an ELF object containing DWARF debug info
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
@@ -9785,13 +9785,13 @@ dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.9: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_rc1-r2 0.9.0_rc2 0.9.0_rc3 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.0_rc1 0.9.0_rc2 0.9.0_rc3: Buildbot console-view plugin
-dev-util/buildbot-pkg 0.9.0_rc1 0.9.0_rc2 0.9.0_rc3: BuildBot common www build tools for packaging releases
+dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_rc3 0.9.0_p1 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.0_rc3 0.9.0_p1: Buildbot console-view plugin
+dev-util/buildbot-pkg 0.9.0_rc3 0.9.0_p1: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.0_rc1 0.9.0_rc2 0.9.0_rc3: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.0_rc1 0.9.0_rc2 0.9.0_rc3 9999: BuildBot Slave Daemon
-dev-util/buildbot-www 0.9.0_rc1 0.9.0_rc2 0.9.0_rc3: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot-waterfall-view 0.9.0_rc3 0.9.0_p1: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.0_rc3 0.9.0_p1 9999: BuildBot Slave Daemon
+dev-util/buildbot-www 0.9.0_rc3 0.9.0_p1: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
