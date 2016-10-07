@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>nvinson234@gmail.com</email>
+		<name>Nicholas Vinson</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+		<description>Proxy maintainer for Nicholas</description>
+	</maintainer>
 	<use>
 		<flag name="ntlm">Enable NTLM authentication</flag>
 		<flag name="libcanberra">Enable sound event support using
