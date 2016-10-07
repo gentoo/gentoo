@@ -4,7 +4,7 @@
 
 EAPI=5
 
-DESCRIPTION="OCamlbuild"
+DESCRIPTION="Generic build tool with built-in rules for building OCaml library and programs"
 HOMEPAGE="https://github.com/ocaml/ocamlbuild"
 SRC_URI="https://github.com/ocaml/ocamlbuild/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
