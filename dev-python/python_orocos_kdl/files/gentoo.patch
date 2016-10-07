@@ -1,0 +1,11 @@
+Index: python_orocos_kdl/CMakeLists.txt
+===================================================================
+--- python_orocos_kdl.orig/CMakeLists.txt
++++ python_orocos_kdl/CMakeLists.txt
+@@ -21,4 +21,4 @@ set(SIP_EXTRA_OPTIONS "-o")
+ set(PYTHON_SITE_PACKAGES_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/${PYTHON_SITE_PACKAGES})
+ add_sip_python_module(PyKDL PyKDL/PyKDL.sip ${orocos_kdl_LIBRARIES})
+ 
+-install(FILES package.xml DESTINATION share/python_orocos_kdl)
+\ No newline at end of file
++install(FILES package.xml DESTINATION share/ros_packages/python_orocos_kdl)
