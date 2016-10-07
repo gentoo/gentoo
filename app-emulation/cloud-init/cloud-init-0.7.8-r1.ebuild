@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 CDEPEND="
@@ -83,4 +83,11 @@ python_install_all() {
 	systemd_dounit "${S}"/systemd/cloud-final.service
 	systemd_dounit "${S}"/systemd/cloud-init-local.service
 	systemd_dounit "${S}"/systemd/cloud-init.service
+}
+
+pkg_postinst() {
+	elog "cloud-init-local needs to be run in the boot runlevel because it"
+	elog "modifies services in the default runlevel.  When a runlevel is started"
+	elog "it is cached, so modifications that happen to the current runlevel"
+	elog "while you are in it are not acted upon."
 }
