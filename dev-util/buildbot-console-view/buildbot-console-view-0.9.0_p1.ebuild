@@ -14,7 +14,7 @@ inherit distutils-r1
 DESCRIPTION="Buildbot console-view plugin"
 HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
 
-MY_V="0.9.0rc2"
+MY_V="0.9.0.post1"
 MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
