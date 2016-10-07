@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for reading and writing configuration"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="nls"
 
 RDEPEND="
