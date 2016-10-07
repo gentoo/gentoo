@@ -40,6 +40,7 @@ PATCHES=(
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+	epatch_user
 }
 
 src_configure() {
