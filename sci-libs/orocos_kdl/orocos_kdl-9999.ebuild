@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="examples? ( models )"
 
 DOCS=( README )
+PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/orocos_kdl

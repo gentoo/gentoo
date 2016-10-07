@@ -37,9 +37,9 @@ RDEPEND="
 	dev-ml/camlp4:=
 	dev-ml/cppo:=
 	dev-ml/uchar:=
+	dev-ml/ocamlbuild:=
 	deriving? ( >=dev-ml/deriving-0.6:= )"
-DEPEND="${RDEPEND}
-	dev-ml/ocamlbuild"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	printf "\n\n" >> Makefile.conf

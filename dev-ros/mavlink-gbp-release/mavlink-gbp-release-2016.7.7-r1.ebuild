@@ -20,3 +20,4 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${PN}-${EGIT_BRANCH//\//-}"
+PATCHES=( "${FILESDIR}/gentoo.patch" )

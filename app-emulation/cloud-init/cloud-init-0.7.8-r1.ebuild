@@ -84,3 +84,10 @@ python_install_all() {
 	systemd_dounit "${S}"/systemd/cloud-init-local.service
 	systemd_dounit "${S}"/systemd/cloud-init.service
 }
+
+pkg_postinst() {
+	elog "cloud-init-local needs to be run in the boot runlevel because it"
+	elog "modifies services in the default runlevel.  When a runlevel is started"
+	elog "it is cached, so modifications that happen to the current runlevel"
+	elog "while you are in it are not acted upon."
+}

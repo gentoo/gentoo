@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,7 @@ RDEPEND="
 	dev-python/sip[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl

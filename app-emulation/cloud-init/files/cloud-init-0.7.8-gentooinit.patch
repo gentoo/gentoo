@@ -11,3 +11,28 @@ index bbadd7b..1578a3d 100755
      scripts=['tools/cloud-init-per'],
      license='GPLv3',
      data_files=data_files,
+diff --git a/sysvinit/gentoo/cloud-init b/sysvinit/gentoo/cloud-init
+index 5afc0f2..531a715 100644
+--- a/sysvinit/gentoo/cloud-init
++++ b/sysvinit/gentoo/cloud-init
+@@ -2,6 +2,7 @@
+ # add depends for network, dns, fs etc
+ depend() {
+   after cloud-init-local
++  after net
+   before cloud-config
+   provide cloud-init
+ }
+diff --git a/sysvinit/gentoo/cloud-init-local b/sysvinit/gentoo/cloud-init-local
+index 9bd0b56..0f8cf65 100644
+--- a/sysvinit/gentoo/cloud-init-local
++++ b/sysvinit/gentoo/cloud-init-local
+@@ -2,7 +2,7 @@
+ 
+ depend() {
+   after localmount
+-  after netmount
++  before net
+   before cloud-init
+   provide cloud-init-local
+ }

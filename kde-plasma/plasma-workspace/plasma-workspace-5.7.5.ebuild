@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5 multilib qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+calendar geolocation gps prison qalculate"
 
 # drop kde-frameworks/plasma subslot operator when FRAMEWORKS_MINIMAL >= 5.24.0

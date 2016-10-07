@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for pseudo terminal devices and running child processes"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

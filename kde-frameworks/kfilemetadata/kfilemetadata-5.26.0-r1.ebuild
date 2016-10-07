@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils kde5
 
 DESCRIPTION="Library for extracting file metadata"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="epub exif ffmpeg libav pdf taglib"
 
 RDEPEND="
