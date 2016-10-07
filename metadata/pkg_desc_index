@@ -3829,7 +3829,7 @@ dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.9.2: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
 dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
-dev-java/antlr 2.7.7-r7 3.2 3.5.2 4.4 4.5.1: A parser generator for many languages
+dev-java/antlr 2.7.7-r7 3.2 3.5.2 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r4: A small set of Java classes that simplify building desktop applications
 dev-java/apple-java-extensions-bin 1.5-r1: Apple eAWT and eIO APIs for Java on Mac OS X
