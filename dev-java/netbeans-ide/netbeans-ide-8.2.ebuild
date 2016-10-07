@@ -89,7 +89,7 @@ S="${WORKDIR}"
 
 CDEPEND="~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
-	dev-java/antlr:4
+	>=dev-java/antlr-4.5:4
 	dev-java/commons-compress:0
 	dev-java/commons-httpclient:3
 	dev-java/commons-logging:0
