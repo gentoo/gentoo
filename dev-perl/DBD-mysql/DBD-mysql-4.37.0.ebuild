@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=MICHIELB
-DIST_VERSION=4.036
+DIST_VERSION=4.037
 inherit eutils perl-module
 
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
@@ -19,7 +19,8 @@ REQUIRED_USE="?? ( embedded ssl )"
 IUSE="embedded test +ssl"
 
 RDEPEND=">=dev-perl/DBI-1.609.0
-	virtual/mysql[embedded?]
+	virtual/libmysqlclient:=
+	embedded? ( virtual/mysql[embedded] )
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
