@@ -39,18 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 	)
 "
-PATCHES=(
-	"${FILESDIR}/norecurse.patch"
-)
 
 python_test() {
 	nosetests --with-coverage --cover-package=rospkg --with-xunit test || die
-}
-
-src_install() {
-	distutils-r1_src_install
-
-	# Avoid recursing into /usr/share when looking for packages.
-	dodir /usr/share
-	touch "${ED}/usr/share/rospack_norecurse"
 }

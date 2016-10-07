@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,18 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 	)
 "
-PATCHES=(
-	"${FILESDIR}/norecurse.patch"
-)
 
 python_test() {
 	nosetests --with-coverage --cover-package=rospkg --with-xunit test || die
-}
-
-src_install() {
-	distutils-r1_src_install
-
-	# Avoid recursing into /usr/share when looking for packages.
-	dodir /usr/share
-	touch "${ED}/usr/share/rospack_norecurse"
 }
