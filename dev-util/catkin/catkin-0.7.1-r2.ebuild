@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/catkin_prefix_path.patch"
 	"${FILESDIR}/gnuinstalldirs.patch"
 	"${FILESDIR}/catkin_prefix_path_util_py.patch"
+	"${FILESDIR}/package_xml.patch"
 )
 
 src_prepare() {
@@ -97,4 +98,13 @@ src_install() {
 
 	# needed to be considered as a workspace
 	touch "${ED}/usr/.catkin"
+}
+
+pkg_postinst() {
+	ewarn "Starting from version 0.7.1-r2, dev-util/catkin changed the"
+	ewarn "installation path for package.xml files on Gentoo."
+	ewarn "In order for ROS to work properly, you will need to reinstall ROS"
+	ewarn "packages that have it installed in the old location:"
+	ewarn "		emerge -1O /usr/share/*/package.xml"
+	ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=595004 for more details."
 }

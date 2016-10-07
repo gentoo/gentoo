@@ -13,8 +13,8 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="gdm jpeg new-login opengl pam +perl selinux suid xinerama"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+IUSE="gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
 
 COMMON_DEPEND="
 	>=gnome-base/libglade-2
@@ -78,15 +78,16 @@ src_prepare() {
 			configure{,.in} || die
 	fi
 
-	epatch \
-		"${FILESDIR}"/${PN}-5.33-gentoo.patch \
+	eapply \
 		"${FILESDIR}"/${PN}-5.05-interix.patch \
 		"${FILESDIR}"/${PN}-5.20-blurb-hndl-test-passwd.patch \
 		"${FILESDIR}"/${PN}-5.20-test-passwd-segv-tty.patch \
 		"${FILESDIR}"/${PN}-5.20-tests-miscfix.patch \
 		"${FILESDIR}"/${PN}-5.28-comment-style.patch \
 		"${FILESDIR}"/${PN}-5.31-pragma.patch \
-		"${FILESDIR}"/${PN}-5.35-comments.patch
+		"${FILESDIR}"/${PN}-5.35-gentoo.patch
+
+	use offensive || eapply "${FILESDIR}"/${PN}-5.35-offensive.patch
 
 	eapply_user
 
