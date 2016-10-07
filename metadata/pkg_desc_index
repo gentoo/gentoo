@@ -68,7 +68,7 @@ app-admin/cli53 0.8.4 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
-app-admin/collectd 5.5.2 5.6.0: Collects system statistics and provides mechanisms to store the values
+app-admin/collectd 5.5.2 5.6.0 5.6.1: Collects system statistics and provides mechanisms to store the values
 app-admin/conky 1.9.0-r3 1.10.4: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
@@ -11400,7 +11400,7 @@ kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.04.3 16.08.1: KDE PIM internationa
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.08.1: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.11_pre20160211 16.08.1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
-kde-apps/kdepimlibs 4.14.10 4.14.10-r1 4.14.11_pre20160211 4.14.11_pre20160211-r1: Common library for KDE PIM apps
+kde-apps/kdepimlibs 4.14.10-r1 4.14.11_pre20160211-r1: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.04.3 16.08.1: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.04.3 16.08.1: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.04.3 16.08.1: Thumbnail generator for PO files
@@ -14825,7 +14825,7 @@ net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/i2pd 2.6.0-r3 2.7.0 2.8.0 2.9.0-r1: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 13.3.0.344519-r1: ICA Client for Citrix Presentation servers
+net-misc/icaclient 13.3.0.344519-r1 13.4.0.10109380: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
