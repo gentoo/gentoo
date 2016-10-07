@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,9 @@ IUSE="embedded test"
 
 RDEPEND="dev-perl/DBI
 	dev-perl/Test-Deep
-	virtual/mysql[embedded?]"
+	virtual/libmysqlclient:=
+	embedded? ( virtual/mysql[embedded] )
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

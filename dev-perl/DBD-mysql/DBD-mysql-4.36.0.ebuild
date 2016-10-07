@@ -19,7 +19,8 @@ REQUIRED_USE="?? ( embedded ssl )"
 IUSE="embedded test +ssl"
 
 RDEPEND=">=dev-perl/DBI-1.609.0
-	virtual/mysql[embedded?]
+	virtual/libmysqlclient:=
+	embedded? ( virtual/mysql[embedded] )
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
