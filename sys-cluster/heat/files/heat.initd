@@ -12,7 +12,6 @@ depend() {
 checkconfig() {
     if [ ! -r /etc/conf.d/$BASENAME ]; then
         eerror "No heat conf.d file found: /etc/conf.d/$BASENAME)"
-        return 1
     else
         . /etc/conf.d/$BASENAME
     fi
