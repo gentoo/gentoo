@@ -1,0 +1,16 @@
+Author:  Eric Timmons 
+https://bugs.gentoo.org/show_bug.cgi?id=586104
+
+Index: catkin-0.6.16/cmake/templates/_setup_util.py.in
+===================================================================
+--- catkin-0.6.16.orig/cmake/templates/_setup_util.py.in
++++ catkin-0.6.16/cmake/templates/_setup_util.py.in
+@@ -262,7 +262,7 @@
+             sys.exit(1)
+ 
+         # environment at generation time
+-        CMAKE_PREFIX_PATH = '@CMAKE_PREFIX_PATH_AS_IS@'.split(';')
++        CMAKE_PREFIX_PATH = '@CATKIN_PREFIX_PATH@;@CMAKE_PREFIX_PATH_AS_IS@'.split(';')
+         # prepend current workspace if not already part of CPP
+         base_path = os.path.dirname(__file__)
+         if base_path not in CMAKE_PREFIX_PATH:

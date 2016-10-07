@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/distutils.patch"
 	"${FILESDIR}/catkin_prefix_path.patch"
 	"${FILESDIR}/gnuinstalldirs.patch"
+	"${FILESDIR}/catkin_prefix_path_util_py.patch"
 )
 
 src_prepare() {
