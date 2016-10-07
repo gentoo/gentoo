@@ -13,7 +13,7 @@ inherit readme.gentoo user distutils-r1
 DESCRIPTION="BuildBot Slave Daemon"
 HOMEPAGE="http://trac.buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-slave"
 
-MY_V="0.9.0rc2"
+MY_V="0.9.0.post1"
 MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
@@ -57,6 +57,7 @@ python_install_all() {
 
 	newconfd "${FILESDIR}/buildbot_worker.confd" buildbot_worker
 	newinitd "${FILESDIR}/buildbot_worker.initd" buildbot_worker
+	systemd_dounit "${FILESDIR}/buildbot_worker.service"
 
 	readme.gentoo_create_doc
 }

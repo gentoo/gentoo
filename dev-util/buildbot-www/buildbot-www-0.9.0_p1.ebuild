@@ -11,11 +11,11 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-MY_V="0.9.0rc2"
-MY_P="${PN}-${MY_V}"
-
-DESCRIPTION="BuildBot common www build tools for packaging releases"
+DESCRIPTION="BuildBot base web interface, use with buildbot-{console-view,waterfall-view}..."
 HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+
+MY_V="0.9.0.post1"
+MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -27,16 +27,17 @@ else
 	KEYWORDS="~amd64"
 fi
 
-RDEPEND="
-	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
 "
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+#[[ ${PV} == *9999 ]] && S=${S}/www/base
 
 python_install_all() {
 	distutils-r1_python_install_all
