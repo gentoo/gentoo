@@ -30,7 +30,7 @@ COMMON="${PYTHON_DEPS}
 	sys-devel/clang
 	>=sys-devel/llvm-3.5
 	<sys-devel/llvm-3.9
-	x11-libs/libdrm[video_cards_intel]
+	<x11-libs/libdrm-2.4.71[video_cards_intel]
 	x11-libs/libXext
 	x11-libs/libXfixes"
 RDEPEND="${COMMON}
