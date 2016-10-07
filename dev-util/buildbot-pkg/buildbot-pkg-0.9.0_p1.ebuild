@@ -11,7 +11,7 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-MY_V="0.9.0rc2"
+MY_V="0.9.0.post1"
 MY_P="${PN}-${MY_V}"
 
 DESCRIPTION="BuildBot common www build tools for packaging releases"
