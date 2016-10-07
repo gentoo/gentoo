@@ -21,10 +21,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	# remove OpenBSD specific easter egg
-	sed -i -e 's/theo\.o//' GNUmakefile || die
-	sed -i -e '/theo_init/d' main.c || die
-
 	# fix path to tutorial in man page
 	sed -i -e "s:doc/mg/:doc/${PF}/:" mg.1 || die
 
