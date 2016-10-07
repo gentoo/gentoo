@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-broken-constness.patch
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-fix-c++14.patch
+	"${FILESDIR}"/${P}-boost-1.62-type-traits.patch
 )
 
 src_prepare() {
@@ -40,6 +41,15 @@ src_configure() {
 	econf \
 		--enable-shared \
 		$(use_enable static-libs static)
+}
+
+src_compile() {
+	default
+
+	if use doc; then
+		doxygen doxygen.am || die
+		HTML_DOCS+=( html/. )
+	fi
 }
 
 src_install() {
