@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit eutils flag-o-matic multilib prefix python-single-r1 toolchain-funcs
+inherit flag-o-matic prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="Graphical NMR assignment and integration program for large polymers"
 HOMEPAGE="http://www.cgl.ucsf.edu/home/sparky/"
@@ -17,7 +17,6 @@ LICENSE="sparky"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -35,7 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-wrapper-r1.patch
 	"${FILESDIR}"/${PV}-paths.patch
 	"${FILESDIR}"/${PV}-makefile.patch
-	)
+	"${FILESDIR}"/${PV}-fix-c++14.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -44,7 +44,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	default
 
 	sed -i \
 		-e "s:^\(set PYTHON =\).*:\1 ${PYTHON}:g" \
@@ -92,7 +92,6 @@ src_compile() {
 
 src_install() {
 	# The symlinks are needed to avoid hacking the complete code to fix the locations
-
 	dobin c++/{{bruk,matrix,peaks,pipe,vnmr}2ucsf,ucsfdata,sparky-no-python} bin/${PN}
 
 	insinto /usr/share/${PN}/
@@ -100,22 +99,20 @@ src_install() {
 	dosym ../../share/${PN}/print-prolog.ps /usr/$(get_libdir)/${PN}/print-prolog.ps
 	dosym ../../share/${PN}/Sparky /usr/$(get_libdir)/${PN}/Sparky
 
-	dohtml -r manual/*
-	dosym ../../share/doc/${PF}/html /usr/$(get_libdir)/${PN}/manual
-
 	python_moduleinto ${PN}
 	python_domodule python/*.py c++/{spy.so,_tkinter.so}
-
-	python_optimize
-
 	dosym ../${EPYTHON}/site-packages /usr/$(get_libdir)/${PN}/python
 
+	rm manual/{pkzip.cfg,Makefile} || die
+	mv {manual/,}manual.ps || die
+	local DOCS=( README manual.ps )
+	local HTML_DOCS=( manual/. )
+	einstalldocs
+	newdoc python/README README.python
+	dosym ../../share/doc/${PF}/html /usr/$(get_libdir)/${PN}/manual
+
 	if use examples; then
-		insinto /usr/share/doc/${PF}/
-		doins -r example || die
+		dodoc -r example
 		dosym ../../share/doc/${PF}/example /usr/$(get_libdir)/${PN}/example
 	fi
-
-	dodoc README
-	newdoc python/README README.python
 }
