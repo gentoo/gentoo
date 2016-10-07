@@ -2961,7 +2961,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.0.10.17 4.4.15.5 4.4.15.8 4.6.4: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.1.23 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.2.18 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.3.14 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.4.9 9.5.1 9.5.2 9.5.3 9.5.4 9.6.0 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.1.21 9.1.23 9.2.16 9.2.18 9.3.12 9.3.14 9.4.7 9.4.9 9.5.2 9.5.4 9.6.0 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
@@ -8681,7 +8681,7 @@ dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.2 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: OpenCV applications for ROS
+dev-ros/opencv_apps 1.11.14 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.12.1-r1 1.12.2 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.7-r1 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
