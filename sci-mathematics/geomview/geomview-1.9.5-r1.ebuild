@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit elisp-common eutils flag-o-matic fdo-mime
+inherit elisp-common eutils fdo-mime flag-o-matic
 
 DESCRIPTION="Interactive Geometry Viewer"
 HOMEPAGE="http://geomview.sourceforge.net"
@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="motionaveraging debug emacs zlib"
 
-DEPEND=">=x11-libs/motif-2.3:0
+DEPEND="x11-libs/motif:0
 	virtual/glu
 	virtual/opengl
 	emacs? ( virtual/emacs )
@@ -25,10 +25,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${P/_/-}"
 
-SITEFILE=50${PN}-gentoo.el
+SITEFILE="50${PN}-gentoo.el"
+PATCHES=( "${FILESDIR}/${PN}-1.9.5-zlib.patch" )
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF} \
+	econf \
 		--with-htmlbrowser=xdg-open \
 		--with-pdfviewer=xdg-open \
 		$(use_enable debug d1debug) \
@@ -38,16 +39,17 @@ src_configure() {
 
 src_compile() {
 	default
+
 	if use emacs; then
-		cp "${FILESDIR}/gvcl-mode.el" "${S}"
+		cp "${FILESDIR}/gvcl-mode.el" . || die
 		elisp-compile *.el
 	fi
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS INSTALL.Geomview || die
-	doicon "${WORKDIR}"/geomview.png || die
+	default
+
+	doicon "${WORKDIR}"/geomview.png
 	make_desktop_entry ${PN} "GeomView ${PV}" \
 		/usr/share/pixmaps/${PN}.png \
 		"Science;Math;Education"
