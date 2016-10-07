@@ -15798,7 +15798,7 @@ sci-chemistry/votca-csg 1.2.4-r1 1.3-r1 1.3.1 1.4_rc1 9999: Votca coarse-grainin
 sci-chemistry/votca-csgapps 1.2.4 1.3 1.3.1 1.4_rc1 9999: Extra applications for votca-csg
 sci-chemistry/votca-xtp 1.4_rc1 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.4.2 7.5 7.5-r1: Chemical 3D graphics program with GAMESS input builder
-sci-chemistry/xds-bin 20151019: X-ray Detector Software for processing single-crystal monochromatic diffraction data
+sci-chemistry/xds-bin 20170430: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
 sci-chemistry/xdsstat-bin 140225: Prints various statistics (that are not available from XDS itself)
 sci-chemistry/xyza2pipe 20101129 20121001: Cross conversion environment of NMR spectra
@@ -16186,7 +16186,7 @@ sci-mathematics/fricas 1.2.7-r3 1.3.0: FriCAS is a fork of Axiom computer algebr
 sci-mathematics/frobby 0.9.0-r1: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.17 1.0.19: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
-sci-mathematics/geomview 1.9.5: Interactive Geometry Viewer
+sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.7 28.9: The Great Internet Mersenne Prime Search
