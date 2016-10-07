@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/procps-ng-3.3.10.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=69640cce7e8052ad0ad34564ad58909c
+_md5_=93536f30fc211a4d71f2cfaf6565b0c7
