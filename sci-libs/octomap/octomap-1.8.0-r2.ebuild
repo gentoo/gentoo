@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz
 	)
 "
+PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 src_prepare() {
 	sed -e 's/DESTINATION lib/DESTINATION ${CMAKE_INSTALL_LIBDIR}/' \
