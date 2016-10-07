@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-ros/roscpp
+	dev-libs/boost:=[threads]
 	dev-ros/pluginlib"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/tests.patch" )
+PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/rostest.patch" )

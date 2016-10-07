@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -41,14 +41,20 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline vanilla"
 
-DEPEND=">=sys-libs/ncurses-5.2-r2
-	readline? ( >=sys-libs/readline-${READLINE_VER} )
+DEPEND=">=sys-libs/ncurses-5.2-r2:0=
+	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1
 	!<sys-apps/paludis-0.26.0_alpha5"
 # we only need yacc when the .y files get patched (bash42-005)
 DEPEND+=" virtual/yacc"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3-mapfile-improper-array-name-validation.patch
+	"${FILESDIR}"/${PN}-4.3-arrayfunc.patch
+	"${FILESDIR}"/${PN}-4.3-protos.patch
+)
 
 S=${WORKDIR}/${MY_P}
 
@@ -83,10 +89,7 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
 
-	epatch "${FILESDIR}"/${PN}-4.3-compat-lvl.patch
-	epatch "${FILESDIR}"/${PN}-4.3-append-process-segfault.patch
-	epatch "${FILESDIR}"/${PN}-4.3-mapfile-improper-array-name-validation.patch
-	epatch "${FILESDIR}"/${PN}-4.3-arrayfunc.patch
+	epatch "${PATCHES[@]}"
 
 	epatch_user
 }
