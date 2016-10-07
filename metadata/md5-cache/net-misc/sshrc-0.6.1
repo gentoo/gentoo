@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
+EAPI=6
+HOMEPAGE=https://github.com/Russell91/sshrc
+IUSE=mosh
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=virtual/ssh:0= mosh? ( net-misc/mosh:0[client] )
+SLOT=0
+SRC_URI=https://github.com/Russell91/sshrc/archive/0.6.1.tar.gz -> sshrc-0.6.1.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=bf7dc0243bea2e07740a6f9837c95ac9
