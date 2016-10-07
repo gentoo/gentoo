@@ -15,7 +15,7 @@ LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="nsplugin linguas_de linguas_es linguas_fr linguas_ja linguas_zh_CN"
-RESTRICT="mirror strip fetch"
+RESTRICT="mirror strip userpriv fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
 
@@ -83,6 +83,8 @@ src_unpack() {
 }
 
 src_install() {
+	local tmpl
+
 	dodir "${ICAROOT}"
 
 	exeinto "${ICAROOT}"
@@ -99,12 +101,17 @@ src_install() {
 
 	insinto "${ICAROOT}"
 	doins nls/en.UTF-8/eula.txt
+	doins -r usb
 
 	insinto "${ICAROOT}"/nls/en
 	doins nls/en.UTF-8/eula.txt
 
 	insinto "${ICAROOT}"/config
 	doins config/* config/.* nls/en/*.ini
+	for tmpl in {appsrv,wfclient}.template ; do
+		newins nls/en/${tmpl} ${tmpl/template/ini}
+	done
+	touch "${ED}/${ICAROOT}"/config/.server || die
 
 	insinto "${ICAROOT}"/gtk
 	doins gtk/*
@@ -139,6 +146,12 @@ src_install() {
 
 		insinto "${ICAROOT}"/nls/${lang}
 		dosym UTF-8 "${ICAROOT}"/nls/${lang}/utf8
+
+		for tmpl in {appsrv,wfclient}.template ; do
+			cp "${ED}/${ICAROOT}"/nls/${lang}/${tmpl} \
+				"${ED}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
+				|| die
+		done
 	done
 
 	insinto "${ICAROOT}"/nls
