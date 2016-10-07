@@ -3237,7 +3237,7 @@ dev-haskell/base64-bytestring 0.1.1.3 1.0.0.1: Fast base64 encoding and decoding
 dev-haskell/base64-conduit 1.0.0.1: Base64-encode and decode streams of bytes. (deprecated)
 dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.5-r1 0.6.0.0: Parser and printer for bencoded data
-dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5: Bifunctors
+dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5: Haskell 98 bifunctors, bifoldables and bitraversables
 dev-haskell/binary 0.5.1.1 0.7.1.0 0.7.2.3 0.7.5.0 0.7.6.1: Binary serialisation for Haskell values using lazy ByteStrings
 dev-haskell/bio 0.5.3-r2: A bioinformatics library
 dev-haskell/biocore 0.3.1: A bioinformatics library
@@ -4178,7 +4178,7 @@ dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
 dev-java/laf-plugin 0.2-r1: A generic plugin framework for look-and-feels
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
-dev-java/leiningen-bin 2.7.0: Automate Clojure projects without setting your hair on fire
+dev-java/leiningen-bin 2.7.0 2.7.1: Automate Clojure projects without setting your hair on fire
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
 dev-java/libmatthew-java 0.7.2-r1: A selection of libraries for Java
 dev-java/libmso 0.1: Java library to detect printers
@@ -5161,7 +5161,7 @@ dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1 0.5.2: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.1-r1 1.9.2: RFC3986 URI parsing library for OCaml
-dev-ml/ocamlbuild 0.9.2 0.9.3: OCamlbuild
+dev-ml/ocamlbuild 0.9.2 0.9.3: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6 1.8.7: O'Caml Graph library
@@ -8194,7 +8194,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.4.4 0.4.5 0.4.7 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.0.38 1.0.39 1.0.40 1.0.41 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.0.41-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2 2.3.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8: Python interface to the R Programming Language
@@ -8658,7 +8658,7 @@ dev-ros/libmavconn 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink communicatio
 dev-ros/librviz_tutorial 0.9.2 0.10.1 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 1.14.0 9999: Offers map data as a ROS service
-dev-ros/mavlink-gbp-release 2016.4.4 2016.6.24 2016.7.7: MAVLink message marshaling library
+dev-ros/mavlink-gbp-release 2016.7.7: MAVLink message marshaling library
 dev-ros/mavros 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 0.18.3-r1 9999: Extra nodes and plugins for mavros
 dev-ros/mavros_msgs 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Messages for MAVROS
@@ -8740,7 +8740,7 @@ dev-ros/rosmaster 1.12.1 1.12.2 1.12.4 1.12.5 9999: ROS Master implementation
 dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.3.0 2.3.1 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.3.1 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
@@ -9789,7 +9789,7 @@ dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc
 dev-util/cargo 0.12.0 0.13.0 0.13.0-r1: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/catkin 0.7.1-r1 9999: Cmake macros and associated python code used to build some parts of ROS
+dev-util/catkin 0.7.1-r2 0.7.2 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 3.2.4 3.2.5 3.2.7: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
@@ -11652,7 +11652,7 @@ kde-frameworks/kcodecs 5.23.0 5.26.0: Framework for manipulating strings using v
 kde-frameworks/kcompletion 5.23.0 5.26.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.23.0 5.26.0: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.23.0 5.26.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.23.0 5.26.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcoreaddons 5.23.0 5.26.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.23.0 5.26.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.23.0 5.26.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.23.0 5.26.0: Framework providing integration of QML and KDE work spaces
@@ -18599,7 +18599,7 @@ x11-misc/xplanetFX 2.6.7 2.6.12: GUI to configure, run or daemonize xplanet with
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.34 5.35 5.35-r1: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.34 5.35-r2: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0: XSel is a command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors
