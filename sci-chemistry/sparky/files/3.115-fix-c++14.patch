@@ -1,0 +1,32 @@
+Fix the custom new/new[] operators in order to account for changed
+noexcept semantics in C++11.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=596012
+
+Patch by Peter Levine
+
+--- a/c++/memalloc.cc
++++ b/c++/memalloc.cc
+@@ -39,7 +39,10 @@
+ 
+ // ----------------------------------------------------------------------------
+ //
+-void *operator new(size_t size) throw(std::bad_alloc)
++void *operator new(size_t size)
++#if __cplusplus < 201103L
++throw(std::bad_alloc)
++#endif
+ {
+   void *value = allocate(size);
+   if (tracking_memory)
+@@ -72,7 +75,10 @@
+ 
+ // ----------------------------------------------------------------------------
+ //
+-void *operator new[](size_t size) throw(std::bad_alloc)
++void *operator new[](size_t size)
++#if __cplusplus < 201103L
++throw(std::bad_alloc)
++#endif
+ {
+   void *value = allocate(size);
+   if (tracking_memory)
