@@ -2969,7 +2969,7 @@ dev-db/redis 2.8.17-r1 2.8.21 2.8.23 3.0.4 3.0.5 3.0.6 3.0.7 3.2.0: A persistent
 dev-db/repmgr 3.0.1: PostgreSQL Replication Manager
 dev-db/rethinkdb 2.3.4: The open-source database for the realtime web.
 dev-db/rqlite 2.1 3.0.1 9999: Replicated SQLite using the Raft consensus protocol
-dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4: A replication system for the PostgreSQL Database Management System
+dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4 2.2.5: A replication system for the PostgreSQL Database Management System
 dev-db/soci 3.2.2 3.2.3: A db access library for C++ that makes the illusion of embedding SQL queries in the regular C++ code
 dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
@@ -7393,6 +7393,7 @@ dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Py
 dev-python/hgtools 6.0 6.5.1: Classes and setuptools plugin for Mercurial repositories
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
+dev-python/hpack 2.3.0: Pure-Python HPACK header compression
 dev-python/html2text 2014.4.5-r1 2016.5.29: Turn HTML into equivalent Markdown-structured text
 dev-python/html5lib 0.9999999 0.9999999-r1: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
@@ -7406,7 +7407,9 @@ dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 1.44.1 1.44.3 1.44.7: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hypothesis 1.19.0 3.4.2: A library for property based testing
+dev-python/hyper-h2 2.4.0: HTTP/2 State-Machine based protocol implementation
+dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
+dev-python/hypothesis 1.19.0 3.4.2 3.5.3: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -7757,6 +7760,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 15.5.7 15.6.3 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/priority 1.2.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
@@ -7983,12 +7987,12 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2 0.5.2-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 3.0.3 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.1 1.2.0 1.2.1 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
-dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1: py.test plugin for coverage reporting
+dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6: Py.test plugin to test server connections locally
@@ -7997,7 +8001,7 @@ dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH fro
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-runner 2.6.2 2.8: Adds support for tests during installation of setup.py files
 dev-python/pytest-timeout 0.4 1.0.0: py.test plugin to abort hanging tests
-dev-python/pytest-xdist 1.13.1 1.14 1.14-r1: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.13.1 1.14 1.14-r1 1.15.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1: Manage external processes across test runs
 dev-python/python-application 1.5.0: Basic building blocks for python applications
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
@@ -8265,12 +8269,14 @@ dev-python/socketio-client 0.6.5 0.6.6: A socket.io client library for Python
 dev-python/socketpool 0.5.3: A simple Python socket pool
 dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1: A high-level 3D engine for Python, designed with games in mind
+dev-python/spark-parser 1.4.0: An Early-Algorithm Context-free grammar Parser
 dev-python/sparql-wrapper 1.6.0 1.6.4 1.7.6: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
 dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1 1.3.5: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.5 0.4.6 0.4.7 0.4.9: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
+dev-python/sphinx-py3doc-enhanced-theme 2.3.2: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-asyncio 0.2.0: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-cheeseshop 0.2 0.2-r1: Sphinx extension cheeseshop
@@ -8369,6 +8375,7 @@ dev-python/tvdb_api 1.9: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
+dev-python/twisted 16.2.0 16.3.2: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 12.3.0-r1 13.0.0-r3 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: An asynchronous networking framework written in Python
 dev-python/twisted-lore 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twisted documentation system
@@ -8391,6 +8398,7 @@ dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
+dev-python/uncompyle6 2.8.3: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.18 0.04.19: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
@@ -8460,6 +8468,7 @@ dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.4.0 0.4.2: A drop in replacement for xpyb, an XCB python binding
+dev-python/xdis 2.3.1: Python cross-version byte-code disassembler and marshal routines
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.8 0.8.4 0.9.2: Python module for creating Excel XLSX files
