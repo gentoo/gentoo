@@ -1275,7 +1275,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.8.2-r2 0.8.2-r3 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 app-emulation/bochs 2.6 2.6.8: LGPL-ed pc emulator
-app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.7 0.7.8 9999: cloud initialisation magic
+app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.7 0.7.8-r1 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.0 0.2.2 0.2.3 0.2.4 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
@@ -5118,7 +5118,7 @@ dev-ml/incremental 113.24.00 113.33.00: Library for incremental computations
 dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.5.1 1.6.0: IO memory page library for Mirage backends
 dev-ml/js-build-tools 113.33.03 113.33.04: Collection of tools to help building Jane Street Packages
-dev-ml/js_of_ocaml 2.8.1 2.8.2 9999: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.8.2-r1 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
@@ -8105,7 +8105,7 @@ dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python3-openid 3.0.4_p1: Python 3 port of the python-openid library
-dev-python/python_orocos_kdl 1.3.0-r1 9999: Python bindings for KDL
+dev-python/python_orocos_kdl 1.3.0-r2 9999: Python bindings for KDL
 dev-python/pythondialog 3.2.2 3.3.0 3.3.0-r200: A Python module for making simple text/console-mode user interfaces
 dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment for Python
 dev-python/pythonmagick 0.9.12 0.9.14: Python bindings for ImageMagick
@@ -8658,7 +8658,7 @@ dev-ros/libmavconn 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink communicatio
 dev-ros/librviz_tutorial 0.9.2 0.10.1 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 1.14.0 9999: Offers map data as a ROS service
-dev-ros/mavlink-gbp-release 2016.7.7: MAVLink message marshaling library
+dev-ros/mavlink-gbp-release 2016.7.7-r1: MAVLink message marshaling library
 dev-ros/mavros 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 0.18.3-r1 9999: Extra nodes and plugins for mavros
 dev-ros/mavros_msgs 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Messages for MAVROS
@@ -16083,14 +16083,14 @@ sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for ar
 sci-libs/nfft 3.2.3: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
-sci-libs/octomap 1.8.0-r1 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
+sci-libs/octomap 1.8.0-r2 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
 sci-libs/opencascade 6.7.1 6.8.0 6.9.0 6.9.1: Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openfoam-bin 1.6: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openlibm 0.2 0.3: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
-sci-libs/orocos_kdl 1.3.0 9999: Kinematics and Dynamics Library (KDL)
+sci-libs/orocos_kdl 1.3.0-r1 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear systems
@@ -17915,8 +17915,8 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 53.0.2785.143: The web browser from Google
-www-client/google-chrome-beta 54.0.2840.41: The web browser from Google
-www-client/google-chrome-unstable 55.0.2873.0: The web browser from Google
+www-client/google-chrome-beta 54.0.2840.50: The web browser from Google
+www-client/google-chrome-unstable 55.0.2882.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17969,7 +17969,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.635 23.0.0.162: Adobe Flash Player
-www-plugins/chrome-binary-plugins 53.0.2785.143 54.0.2840.41_beta 55.0.2873.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 53.0.2785.143 54.0.2840.50_beta 55.0.2882.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.2 0.3.5 0.3.5-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
