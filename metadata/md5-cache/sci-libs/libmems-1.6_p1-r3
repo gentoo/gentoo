@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=compile configure install prepare
 DEPEND=dev-libs/boost:= sci-libs/libgenome sci-libs/libmuscle doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Library for sci-biology/mauve
 EAPI=6
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost:= sci-libs/libgenome sci-libs/libmuscle
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/libmems-1.6_p1.tar.xz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=69e03e1c68ca71090dc2b0fce3e5509d
+_md5_=817bc1b2f139f382c6561175b1685353
