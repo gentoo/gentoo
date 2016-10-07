@@ -1,0 +1,37 @@
+Index: catkin-0.7.1/cmake/catkin_package.cmake
+===================================================================
+--- catkin-0.7.1.orig/cmake/catkin_package.cmake
++++ catkin-0.7.1/cmake/catkin_package.cmake
+@@ -518,6 +518,6 @@ function(_catkin_package)
+ 
+   # install package.xml
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/package.xml
+-    DESTINATION share/${PROJECT_NAME}
++    DESTINATION share/ros_packages/${PROJECT_NAME}
+   )
+ endfunction()
+Index: catkin-0.7.1/cmake/all.cmake
+===================================================================
+--- catkin-0.7.1.orig/cmake/all.cmake
++++ catkin-0.7.1/cmake/all.cmake
+@@ -156,7 +156,7 @@ foreach(filename
+ endforeach()
+ 
+ # output catkin version for debugging
+-_catkin_package_xml(${CMAKE_BINARY_DIR}/catkin/catkin_generated/version DIRECTORY ${catkin_EXTRAS_DIR}/..)
++#_catkin_package_xml(${CMAKE_BINARY_DIR}/catkin/catkin_generated/version DIRECTORY ${catkin_EXTRAS_DIR}/../../ros_packages/catkin)
+ message(STATUS "catkin ${catkin_VERSION}")
+ # ensure that no current package name is set
+ unset(_CATKIN_CURRENT_PACKAGE)
+Index: catkin-0.7.1/cmake/catkin_metapackage.cmake
+===================================================================
+--- catkin-0.7.1.orig/cmake/catkin_metapackage.cmake
++++ catkin-0.7.1/cmake/catkin_metapackage.cmake
+@@ -40,6 +40,6 @@ function(catkin_metapackage)
+ 
+   # install package.xml
+   install(FILES ${ARG_DIRECTORY}/package.xml
+-    DESTINATION share/${PROJECT_NAME}
++    DESTINATION share/ros_packages/${PROJECT_NAME}
+   )
+ endfunction()
