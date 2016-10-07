@@ -85,7 +85,6 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-5.20-tests-miscfix.patch \
 		"${FILESDIR}"/${PN}-5.28-comment-style.patch \
 		"${FILESDIR}"/${PN}-5.31-pragma.patch \
-		"${FILESDIR}"/${PN}-5.35-comments.patch \
 		"${FILESDIR}"/${PN}-5.35-gentoo.patch
 
 	use offensive || eapply "${FILESDIR}"/${PN}-5.35-offensive.patch
