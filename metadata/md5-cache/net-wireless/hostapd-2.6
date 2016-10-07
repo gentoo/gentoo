@@ -4,11 +4,11 @@ DESCRIPTION=IEEE 802.11 wireless LAN Host AP daemon
 EAPI=6
 HOMEPAGE=http://hostap.epitest.fi
 IUSE=ipv6 logwatch netlink sqlite +ssl +wps +crda
-KEYWORDS=amd64 ~arm ~mips ~ppc ~x86
+KEYWORDS=amd64 ~arm ~mips ~ppc x86
 LICENSE=|| ( GPL-2 BSD )
 RDEPEND=ssl? ( dev-libs/openssl:*[-bindist] ) kernel_linux? ( dev-libs/libnl:3 crda? ( net-wireless/crda ) ) netlink? ( net-libs/libnfnetlink ) sqlite? ( >=dev-db/sqlite-3 )
 SLOT=0
 SRC_URI=http://hostap.epitest.fi/releases/hostapd-2.6.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=56a853a0bfcd2161a52c1da954a36aad
+_md5_=a26a63b01e6ab64d75c04be7431b24dc
