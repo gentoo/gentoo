@@ -1,1 +1,2 @@
 move net-analyzer/ipv6-toolkit net-analyzer/ipv6toolkit
+move dev-ml/qcheck dev-ml/iTeML

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,12 +16,12 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="
-	test? ( dev-ml/qcheck[ounit(-)] )
-	>=dev-lang/ocaml-4:=
-"
 RDEPEND="
 	>=dev-lang/ocaml-4:=
+"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-ml/iTeML )
 "
 
 DOCS=( README.md )
