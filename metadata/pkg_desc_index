@@ -9789,7 +9789,7 @@ dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc
 dev-util/cargo 0.12.0 0.13.0 0.13.0-r1: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/catkin 0.6.16-r2 0.7.0 0.7.1 9999: Cmake macros and associated python code used to build some parts of ROS
+dev-util/catkin 0.7.1-r1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 3.2.4 3.2.5 3.2.7: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
