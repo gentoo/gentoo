@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20160930"
+MY_RELEASEDATE="20161006"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -72,7 +72,6 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
-	eapply "${FILESDIR}/${PN}-2.6-0001-libsemanage-Fixes-bug-preventing-the-installation-of.patch"
 	eapply "${FILESDIR}"/${PN}-2.6-build-paths.patch
 
 	eapply_user

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit python-r1
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20160930"
+MY_RELEASEDATE="20161006"
 
 DESCRIPTION="SELinux policy generation library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
