@@ -102,6 +102,28 @@ multilib_src_configure() {
 		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
+	# we want -lgcc_s for unwinder, and for compiler runtime when using
+	# gcc, clang with gcc runtime (or any unknown compiler)
+	local extra_libs=() want_gcc_s=ON
+	if use libunwind; then
+		# work-around missing -lunwind upstream
+		extra_libs+=( -lunwind )
+		# if we're using libunwind and clang with compiler-rt, we want
+		# to link to compiler-rt instead of -lgcc_s
+		if tc-is-clang; then
+			# get the full library list out of 'pretend mode'
+			# and grep it for libclang_rt references
+			local args=( $($(tc-getCC) -### -x c - 2>&1 | tail -n 1) )
+			local i
+			for i in "${args[@]}"; do
+				if [[ ${i} == *libclang_rt* ]]; then
+					want_gcc_s=OFF
+					extra_libs+=( "${i}" )
+				fi
+			done
+		fi
+	fi
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		# LLVM_LIBDIR_SUFFIX is used to find CMake files
@@ -115,10 +137,11 @@ multilib_src_configure() {
 		# we're using our own mechanism for generating linker scripts
 		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
-		-DLIBCXX_HAS_GCC_S_LIB=$(usex !libunwind)
+		-DLIBCXX_HAS_GCC_S_LIB=${want_gcc_s}
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
-		-DCMAKE_SHARED_LINKER_FLAGS=$(usex libunwind "-lunwind" "")
+		-DCMAKE_SHARED_LINKER_FLAGS="${extra_libs[*]} ${LDFLAGS}"
 	)
+
 	if use test; then
 		mycmakeargs+=(
 			# this can be any directory, it just needs to exist...
@@ -161,12 +184,10 @@ gen_static_ldscript() {
 	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
 	# Generate libc++.a ldscript for inclusion of its dependencies so that
 	# clang++ -stdlib=libc++ -static works out of the box.
-	local deps="libc++_static.a ${cxxabi_lib}"
+	local deps="libc++_static.a ${cxxabi_lib} $(usex libunwind libunwind.a libgcc_eh.a)"
 	# On Linux/glibc it does not link without libpthread or libdl. It is
 	# fine on FreeBSD.
 	use elibc_glibc && deps+=" libpthread.a libdl.a"
-	# unlike libgcc_s, libunwind is not implicitly linked
-	use libunwind && deps+=" libunwind.a"
 
 	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.a" || die
 }
@@ -177,8 +198,7 @@ gen_shared_ldscript() {
 	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "$(usex libcxxrt "libcxxrt.so" "libsupc++.a")")
 
 	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
-	local deps="libc++_shared.so ${cxxabi_lib}"
-	use libunwind && deps+=" libunwind.so"
+	local deps="libc++_shared.so ${cxxabi_lib} $(usex libunwind libunwind.so libgcc_s.so)"
 
 	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.so" || die
 }
