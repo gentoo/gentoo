@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>rb@dustyfeet.com</email>
+			<name>Rocky Bernstein</name>
+		</maintainer>
+		<remote-id type="pypi">spark_parser</remote-id>
+	</upstream>
+	<longdescription>This Python module allows you to disassemble bytecode from
+		different versions of Python than you are running on. It can marshal
+		load Python bytecodes from different versions of Python. The
+		command-line routine pydisasm will show disassembly output using Python
+		3.5 disassembly conventions
+	</longdescription>
+</pkgmetadata>
