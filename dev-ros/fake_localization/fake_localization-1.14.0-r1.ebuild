@@ -16,6 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-libs/boost:=
 	dev-ros/angles
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_USEDEP}]
