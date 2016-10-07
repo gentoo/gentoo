@@ -27,5 +27,6 @@ RDEPEND="
 	dev-ros/tf
 	dev-cpp/eigen:3
 	sci-libs/pcl
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
