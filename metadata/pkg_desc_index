@@ -15785,7 +15785,7 @@ sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of pro
 sci-chemistry/reduce 3.13.080428-r1 3.14.080821 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/relax 3.3.8 3.3.9 4.0.0 4.0.0-r1: Molecular dynamics by NMR data analysis
 sci-chemistry/shelx 20141228: Programs for crystal structure determination from single-crystal diffraction data
-sci-chemistry/sparky 3.115-r1: Graphical NMR assignment and integration program for large polymers
+sci-chemistry/sparky 3.115-r2: Graphical NMR assignment and integration program for large polymers
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology Consortium consensus RNA backbone nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
 sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
