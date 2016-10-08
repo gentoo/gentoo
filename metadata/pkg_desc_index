@@ -12452,7 +12452,7 @@ media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D print
 media-gfx/ristretto 0.8.0-r1: A fast and lightweight picture viewer for the Xfce desktop environment
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.2: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.24-r6 1.0.25-r1 9999: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.24-r6 1.0.25-r1: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
@@ -12674,7 +12674,7 @@ media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files an
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.8 2.5.10: Library that implements support for numerous digital cameras
-media-libs/libgpod 0.8.3-r1: Shared library to access the contents of an iPod
+media-libs/libgpod 0.8.3-r1 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libhdhomerun 20140121 20150826: SiliconDust HDHomeRun Utilties
@@ -15276,7 +15276,7 @@ net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.5.14 1.5.18 1.6.9 9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/http-replicator 3.0-r4 3.0-r6 4.0_alpha2-r5: Proxy cache for Gentoo packages
+net-proxy/http-replicator 3.0-r4 3.0-r6 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
