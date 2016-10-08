@@ -49,7 +49,7 @@ SRC_URI="
 	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1920x1200.png
 "
 
-LICENSE="CC-BY-SA-2.5 CC-BY-NC-SA-2.5"
+LICENSE="CC-BY-SA-2.5"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
