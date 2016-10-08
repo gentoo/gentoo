@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Personal cloud that runs on your own server
+EAPI=6
+HOMEPAGE=http://nextcloud.com
+IUSE=+curl mysql postgres +sqlite vhosts
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=AGPL-3
+RDEPEND=dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip] virtual/httpd-php >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=|| ( mysql postgres sqlite )
+SLOT=9.0.54
+SRC_URI=http://download.nextcloud.com/server/releases/nextcloud-9.0.54.tar.bz2
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=a5b8029236bf56deca805925a22a2091
