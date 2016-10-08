@@ -29,8 +29,8 @@
 </longdescription>
 <use>
 <flag name="adns">Use the GNU <pkg>net-dns/c-ares</pkg> library to resolve DNS names</flag>
-<flag name="androiddump">Install androiddump</flag>
-<flag name="ciscodump">Install ciscodump</flag>
+<flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
+<flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
 <flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
 <flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
 <flag name="gtk3">Build the wireshark executable with a GTK+ UI version 3.</flag>
@@ -38,11 +38,11 @@
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
 <flag name="qt4">Build the wireshark executable with an experimental Qt UI instead of GTK+.</flag>
-<flag name="randpkt">Install randpkt</flag>
-<flag name="randpktdump">Install randpktdump</flag>
+<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
+<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 <flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
 <flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
-<flag name="sshdump">Install sshdump</flag>
-<flag name="tfshark">Install tfshark</flag>
+<flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
+<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
 </use>
 </pkgmetadata>
