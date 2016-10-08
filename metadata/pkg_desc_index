@@ -16729,7 +16729,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.2 2.7.4 2.7.5: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 4.05 4.06 4.07: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 4.06 4.07 4.08: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20150503 1.3.4_p20160615: an (often faster than gawk) awk-interpreter
