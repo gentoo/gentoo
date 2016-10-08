@@ -30,6 +30,261 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Multiple QA problems for a long time, all ADA stuff is heavily broken.
+# (#251873). Removal in a month.
+dev-ada/cbind
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Links statically always (#273333), consumer of the completely dead
+# capi4kutils package. Removal in a month.
+net-dialup/dtrace
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2012 and not compatible with mono-4 (#330203). Removal in a
+# month.
+net-nds/lat
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Ignores CFLAGS, dead and upstream suggested to remove it (#428114).
+# Removal in a month.
+app-pda/jpilot-mail
+
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead for ages, multiple QA issues (#448476), relies on dead capi4kutils.
+# Removal in a month.
+net-dialup/drdsl
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Not compatible with itcl-4 (needed for tcktk 8.6), needs lots of patching
+# and a dedicated maintainer. Removal in a month.
+dev-util/insight
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead, relies in obsolete and vulnerable gksu (#486444). Removal
+# in a month.
+app-laptop/configure-trackpoint
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2012, relies on obsolete and vulnerable gksu (#486462), uses
+# precompiled jars (#388517). Removal in a month.
+x11-misc/lxmed
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Doesn't work properly (#501612), needs migration to new python eclasses, a
+# newer snapshot would also be needed. Removal in a month.
+dev-util/ketchup
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead, multiple issues (#505914), needs migration to new python
+# eclasses. Removal in a month.
+media-gfx/skencil
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2006, broken in several ways (#510850). Removal in a month.
+net-wireless/chillispot
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Fails to build (#515294), nothing needs it, relies on obsolete capi4kutils. 
+# Removal in a month.
+net-dialup/fcpci
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken in several ways (#529282), completely dead. Removal in a month.
+media-plugins/vdr-channelblocker
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead for ages, probably not working anymore (#533806), not needed
+# by anything in the tree. Removal in a month.
+app-mobilephone/sms
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead for ages, not ported to current nautilus (#541466). Removal in a
+# month.
+gnome-extra/nautilus-share
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Doesn't run by default (#544710), broken for a long time. Removal in a
+# month.
+dev-lang/pocl
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with mono-4 (#546056), nothing needs it in the tree. Removal in a
+# month.
+dev-dotnet/nant
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Nothing needs it in the tree, relies on old reportlab-2 (#548218). Removal
+# in a month.
+dev-python/xhtml2pdf
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Nothing requires this, it relies in completely broken ada stuff, has
+# multiple issues (#554966). Removal in a month.
+dev-ada/glade
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead for ages, done for kernel 2.4, nothing needs it (#555344). Removal in
+# a month.
+sys-fs/siefs
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with mono-4 (#561186), nothing needs it. Removal in a month.
+dev-util/mono-debugger
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with mono-4 (#562474), nothing needs it. Removal in a month.
+dev-dotnet/mono-nat
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with mono-4 (#562550), nothing needs it. Removal in a month.
+dev-dotnet/monotorrent
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with recent ffmpeg, upstream dead (#575274). Removal in a month.
+x11-misc/electricsheep
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Broken with recent ffmpeg, upstream dead (#576094). Removal in a month.
+media-sound/squeezeslave
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Doesn't work with mono-4 (#581140). Removal in a month.
+media-gfx/paint-mono
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Relies on obsolete libs, vulnerable webkit-gtk, upstream is dead for ages,
+# needs porting to new python eclasses (#584174). Removal in a month.
+gnome-extra/avant-window-navigator
+gnome-extra/avant-window-navigator-extras
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Relies in dead and vulnerable webkit-gtk:{2,3} versions (#584184). Removal in
+# a month.
+www-client/jumanji
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Removal in a month (#585726)
+# Anthony G. Basile <blueness@gentoo.org> (29 Jun 2016)
+# Masked for bug #585726
+net-dns/namecoind
+net-dns/namecoin-qt
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Fails to build, dead since 2012 (#587804). Removal in a month
+net-nntp/nzb
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Fails to build (#588316), current kernels shouldn't need this. Removal in
+# a month.
+app-laptop/easy-slow-down-manager
+app-laptop/samsung-tools
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2008, not compatible with guile-2 (#592084). Removal in a
+# month.
+net-dialup/gnuradius
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Not compatible with current ffmpeg, needs someone to try to update it
+# (#592700). Removal in a month.
+games-simulation/corsix-th
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Fails to build (#592994). Nothing needs it. Removal in a month.
+sci-geosciences/osgearth
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Uses get_libdir at global scope (#593382). Dead for ages. Removal in a
+# month.
+app-cdr/nero
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream is dead for a long time, and it is one of the last apps still
+# requiring all the deprecated/obsolete gnome2-python bindings (#593592).
+# Removal in a month.
+x11-plugins/screenlets
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream is dead since 2010, also, it is one of the last apps still
+# needing the obsolete gnome2-python bindings (#593594). Removal in a month.
+x11-misc/gdevilspie
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead for a long time, nothing needs it (#594210). Removal in a month.
+media-libs/mash
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# It is one of the last consumers of old slot for gnonlin, also relies on
+# completely obsolete libs and gstreamer-0.10 and upstream looks dead
+# (#594350). Removal in a month.
+media-sound/jokosher
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Removal in a month (#594562)
+# Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
+# Mask all unfetchable versions and those with tons of random
+# bugs and segfaults (all). Don't ask for a version bump unless
+# there is a working release.
+sci-geosciences/googleearth
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Replaced by dev-dotnet/xsp (#594596). Removal in a month.
+www-apache/mod_mono
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# This relies on gst-plugins-ffmpeg that is dead for ages and broken with ffmpeg-3.
+# Also relies on gstreamer-0.10, pygobject:2 and some other deprecated/dead
+# libs, upstream looks dead (#594880). Removal in a month.
+media-radio/radiotray
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Homepage tagged as "dangerous" by Google, looks dead for ages, relies on
+# dead capi4kutils (#595666). Removal in a month.
+app-mobilephone/yaps
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead for a long time, relies on dead capi4k-utils (#595668).
+# Removal in a month.
+net-dialup/capidivert
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead for a long time, relies on dead capi4k-utils (#595670).
+# Removal in a month.
+net-dialup/capifwd
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2006, relies on dead capi4k-utils (#595672). Removal in a
+# month.
+net-dialup/itund
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2005, relies on dead capi4k-utils (#595676). Removal in a
+# month.
+net-misc/capiisdnmon
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead for a long time, even upstream asked other distributions to remove it
+# (#595680). Removal in a month.
+app-pda/jpilot-plucker
+app-pda/jpilot-backup
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Upstream dead since 2009, relies on obsolete libs and buggy (#595888).
+# Removal in a month.
+app-editors/mlview
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2006, relies on obsolete libs, nothing needs it (#595898).
+# Removal in a month.
+dev-tcltk/tcl-gtk
+
+# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
+# Dead since 2013, we only provide a live ebuild, unmaintained, needs
+# porting to vte:2.91 (#595914). Removal in a month.
+x11-terms/terra
+
 # David Seifert <soap@gentoo.org> (01 Oct 2016)
 # Masked for failing to build with C++11, ancient codebase,
 # dead upstream, no updates in 5 years. No revdeps.
@@ -215,17 +470,11 @@ dev-lang/regina-rexx
 # Security issues (#562898)
 =app-admin/lsyncd-2.1.5
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Packages added without a maintainer:
-#591110
-dev-vcs/git-deps
-
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Mask new MariaDB alphas for testing
 >=dev-db/mariadb-10.2.0
 
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2016)
-
 # Unfixed security problems, bug 576068. No longer supported by
 # upstream. Use Rails 4.2 instead. Masked for removal in 30 days.
 dev-ruby/rails:4.0
@@ -345,11 +594,6 @@ net-dns/namecoin-qt
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
 www-apps/egroupware
-
-# Anthony G. Basile <blueness@gentoo.org> (29 Jun 2016)
-# Masked for bug #585726
-net-dns/namecoind
-net-dns/namecoin-qt
 
 # Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
 # (on behalf of QA & proxy-maint)
@@ -680,12 +924,6 @@ www-plugins/chrome-binary-plugins:unstable
 # - do not compile in some USE-flag combinations
 # - requires at least gcc 4.7(and possibly even 4.8 for some features)
 >=dev-libs/botan-1.11.0
-
-# Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
-# Mask all unfetchable versions and those with tons of random
-# bugs and segfaults (all). Don't ask for a version bump unless
-# there is a working release.
-sci-geosciences/googleearth
 
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
