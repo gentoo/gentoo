@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -18,27 +18,27 @@ SRC_URI="https://github.com/mitchellh/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+virtualbox"
 
 RDEPEND="${RDEPEND}
 	app-arch/libarchive
 	net-misc/curl
-	virtualbox? ( || ( <app-emulation/virtualbox-5.1 <app-emulation/virtualbox-bin-5.1 ) )"
+	virtualbox? ( || ( app-emulation/virtualbox app-emulation/virtualbox-bin ) )"
 
 ruby_add_rdepend "
-	>=dev-ruby/bundler-1.5.2 <=dev-ruby/bundler-1.10.6
+	>=dev-ruby/bundler-1.12.5
 	>=dev-ruby/childprocess-0.5.0
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/i18n-0.6.0:* <dev-ruby/i18n-0.8.0:*
-	>=dev-ruby/listen-3.0.2
+	>=dev-ruby/listen-3.1.5
 	>=dev-ruby/hashicorp-checkpoint-0.1.1
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
 	>=dev-ruby/net-ssh-3.0.1
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.1.0
-	>=dev-ruby/rest-client-1.6.0:0
-	>=dev-ruby/nokogiri-1.6.3.1
+	|| ( >=dev-ruby/rest-client-1.6.0:0 dev-ruby/rest-client:2 )
+	>=dev-ruby/nokogiri-1.6.7.1
 	>=dev-ruby/mime-types-2.6.2:* <dev-ruby/mime-types-3:*
 "
 
@@ -53,7 +53,8 @@ all_ruby_prepare() {
 
 	# loosen dependencies
 	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp/s/~>/>=/' \
-		-e '/nokogiri/s/=/>=/' \
+		-e '/ruby_dep/s/<=/>=/' \
+		-e '/nokogiri\|bundler/s/=/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
@@ -65,13 +66,13 @@ all_ruby_prepare() {
 		-i ${PN}.gemspec || die
 
 	# see https://github.com/mitchellh/vagrant/pull/5877
-	epatch "${FILESDIR}"/${P}-install-plugins-in-isolation.patch
+	epatch "${FILESDIR}"/${PN}-1.8.4-install-plugins-in-isolation.patch
 
 	# disable embedded CA certs and use system ones
-	epatch "${FILESDIR}"/${P}-disable-embedded-cacert.patch
+	epatch "${FILESDIR}"/${PN}-1.8.1-disable-embedded-cacert.patch
 
 	# fix rvm issue (bug #474476)
-	epatch "${FILESDIR}"/${P}-rvm.patch
+	epatch "${FILESDIR}"/${PN}-1.8.1-rvm.patch
 }
 
 all_ruby_install() {
