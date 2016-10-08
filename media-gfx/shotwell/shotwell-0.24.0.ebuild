@@ -17,15 +17,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-CORE_SUPPORTED_LANGUAGES="
-	af ar as ast bg bn bn-IN bs ca cs da de el en-GB eo es et eu fi fr gd gl gu
-	he hi hr hu ia id it ja kk km kn ko ky lt lv mk ml mr nb nl nn or pa pl pt
-	pt-BR ro ru sk sl sr sr-Latn sv ta te th tr uk vi zh-CN zh-HK zh-TW"
-
-for x in ${CORE_SUPPORTED_LANGUAGES}; do
-	IUSE+="l10n_${x} "
-done
-
 RDEPEND="
 	app-text/gnome-doc-utils
 	>=dev-db/sqlite-3.5.9:3
@@ -44,13 +35,14 @@ RDEPEND="
 	>=media-libs/libgphoto2-2.5:=
 	>=media-libs/libraw-0.13.2:=
 	>=net-libs/libsoup-2.26.0:2.4
-	>=net-libs/rest-0.7:0.7
 	net-libs/webkit-gtk:4
 	virtual/libgudev:=[introspection]
 	>=x11-libs/gtk+-3.12.2:3[X]
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
+	dev-util/itstool
+	>=sys-devel/gettext-0.19.7
 	>=sys-devel/m4-1.4.13
 "
 
@@ -60,17 +52,10 @@ DEPEND="${RDEPEND}
 QA_FLAGS_IGNORED="/usr/libexec/${PN}/${PN}-video-thumbnailer"
 
 src_prepare() {
-	local x
-	local linguas="en_GB ${LINGUAS}"
-
 	vala_src_prepare
-
-	# remove disabled languages from build
-	for x in ${CORE_SUPPORTED_LANGUAGES}; do
-		if ! has ${x} ${linguas}; then
-			sed -i "/^${x}$/d" "${S}"/po/LINGUAS || die
-		fi
-	done
-
 	gnome2_src_prepare
+}
+
+src_configure() {
+	gnome2_src_configure --disable-static
 }

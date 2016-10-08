@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Playlist parsing library"
@@ -13,7 +11,7 @@ HOMEPAGE="https://developer.gnome.org/totem-pl-parser/stable/"
 LICENSE="LGPL-2+"
 SLOT="0/18"
 IUSE="archive crypt +introspection +quvi test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.31:2
@@ -60,5 +58,5 @@ src_configure() {
 
 src_test() {
 	# This is required as told by upstream in bgo#629542
-	GVFS_DISABLE_FUSE=1 dbus-launch emake check || die "emake check failed"
+	GVFS_DISABLE_FUSE=1 dbus-run-session emake check || die "emake check failed"
 }

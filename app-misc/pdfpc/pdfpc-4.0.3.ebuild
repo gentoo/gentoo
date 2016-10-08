@@ -5,7 +5,7 @@
 EAPI=5
 
 VALA_MIN_API_VERSION="0.26"
-VALA_MAX_API_VERSION="0.30" # fix sed line if you increase this
+VALA_MAX_API_VERSION="0.32" # fix sed line if you increase this
 
 inherit vala cmake-utils
 
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	$(vala_depend)"
 
 src_prepare() {
-	sed -i -e "s/valac-0.20/valac-0.30 valac-0.28 valac-0.26/" cmake/vala/FindVala.cmake || die
+	sed -i -e "s/valac-0.20/valac-0.32 valac-0.30 valac-0.28 valac-0.26/" cmake/vala/FindVala.cmake || die
 	vala_src_prepare
 }
 

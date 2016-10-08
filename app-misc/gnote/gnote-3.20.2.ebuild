@@ -2,33 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 readme.gentoo
+inherit gnome2 readme.gentoo-r1
 
 DESCRIPTION="Desktop note-taking application"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gnote"
 
 LICENSE="GPL-3+ FDL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="debug X"
+KEYWORDS="~amd64 ~x86"
+IUSE="debug"
 
 # Automagic glib-2.32 dep
 COMMON_DEPEND="
 	>=app-crypt/libsecret-0.8
 	>=app-text/gtkspell-3.0:3
 	>=dev-cpp/glibmm-2.32:2
-	>=dev-cpp/gtkmm-3.10:3.0
-	>=dev-libs/boost-1.34
+	>=dev-cpp/gtkmm-3.18:3.0
+	>=dev-libs/boost-1.34:=
 	>=dev-libs/glib-2.32:2[dbus]
 	>=dev-libs/libxml2-2:2
 	dev-libs/libxslt
 	>=sys-apps/util-linux-2.16:=
-	>=x11-libs/gtk+-3.10:3
-	X? ( x11-libs/libX11 )
+	>=x11-libs/gtk+-3.16:3
 "
 RDEPEND="${COMMON_DEPEND}
 	gnome-base/gsettings-desktop-schemas
@@ -42,18 +40,9 @@ DEPEND="${DEPEND}
 "
 
 src_prepare() {
-	# Fix x11-support switch
-	# https://bugzilla.gnome.org/show_bug.cgi?id=758636
-	epatch "${FILESDIR}"/${PN}-3.18.2-x11-support-switch.patch
-
 	# Do not alter CFLAGS
 	sed 's/-DDEBUG -g/-DDEBUG/' -i configure.ac configure || die
 
-	# Prevent m4_copy error when running aclocal, bug #581308
-	# m4_copy: won't overwrite defined macro: glib_DEFUN
-	rm m4/glib-gettext.m4 || die
-
-	eautoreconf
 	gnome2_src_prepare
 
 	if has_version net-fs/wdfs; then
@@ -69,8 +58,7 @@ src_prepare() {
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
-		$(use_enable debug) \
-		$(use_with X x11-support)
+		$(use_enable debug)
 }
 
 src_install() {

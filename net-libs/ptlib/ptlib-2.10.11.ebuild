@@ -222,9 +222,4 @@ pkg_postinst() {
 		ewarn "Most audio/video have been disabled silently even if enabled via USE flags."
 		ewarn "Having a feature enabled via use flag but disabled can lead to issues."
 	fi
-
-	ewarn "If you've just removed pwlib to install ptlib, some packages will be broken."
-	ewarn "Please use 'revdep-rebuild' from app-portage/gentoolkit to check."
-	ewarn "If some packages need pwlib, consider removing ptlib and re-installing pwlib"
-	ewarn "or help us to make them live together."
 }
