@@ -18,10 +18,16 @@ IUSE="static-libs"
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
+
 PATCHES=(
-	# Building with -march=native breaks when one wants to build for older CPUs.
 	"${FILESDIR}/${P}-nonative.patch"
 )
+
+pkg_setup() {
+	export CXX="$(tc-getCXX)"
+	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+	export PREFIX="${EPREFIX}/usr"
+}
 
 src_configure() {
 	cp config.recommend config.h || die
@@ -33,11 +39,7 @@ src_compile() {
 	# ASM isn't Darwin/Mach-O ready, #479554, buildsys doesn't grok CPPFLAGS
 	[[ ${CHOST} == *-darwin* ]] && append-flags -DCRYPTOPP_DISABLE_X86ASM
 
-	CXX="$(tc-getCXX)" \
-	emake -f GNUmakefile \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		PREFIX="${EPREFIX}/usr" \
-		all shared
+	emake -f GNUmakefile all shared
 }
 
 src_test() {
@@ -47,7 +49,7 @@ src_test() {
 		edos2unix "${file}"
 	done
 
-	if ! CXX="$(tc-getCXX)" emake test ; then
+	if ! emake test; then
 		eerror "Crypto++ self-tests failed."
 		eerror "Try to remove some optimization flags and reemerge Crypto++."
 		die "emake test failed"
@@ -55,11 +57,7 @@ src_test() {
 }
 
 src_install() {
-	emake \
-		DESTDIR="${ED}" \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		install
+	emake DESTDIR="${ED}" install
 
 	# remove leftovers as build system sucks
 	rm -fr "${ED}"/usr/bin "${ED}"/usr/share/cryptopp
