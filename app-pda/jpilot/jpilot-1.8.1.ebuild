@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.jpilot.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ~arm ~ia64 ~ppc x86"
 IUSE="nls"
 
 RDEPEND=">=app-pda/pilot-link-0.12.5
