@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-libs/openssl:* dev-util/cargo
+DESCRIPTION=A CLI development tool for WebSocket APIs
+EAPI=6
+HOMEPAGE=https://github.com/esphen/wsta/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/openssl:*
+SLOT=0
+SRC_URI=https://github.com/esphen/wsta/archive/0.4.1.tar.gz -> wsta-0.4.1.tar.gz
+_eclass_exported_funcs=src_unpack:cargo src_compile:- src_test:- src_install:-
+_eclasses_=cargo	21eab25085b426f4d1a975b85f624423
+_md5_=a9251631308b7e11c0f8ba53aff32e8c
