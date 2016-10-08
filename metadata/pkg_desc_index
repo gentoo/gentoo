@@ -14879,7 +14879,7 @@ net-misc/linux-identd 1.3-r2: A real IDENT daemon for linux
 net-misc/linuxptp 1.5 1.6 1.7: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r1: Live Source Client For IceCast
 net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
-net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Transmission Protocol implementation
+net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1 0.9.3-r1 0.9.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
@@ -18959,7 +18959,7 @@ x11-themes/iceicons 0.10.0: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 
 x11-themes/icewm-themes 0.0.1-r1 0.0.2: Collection of IceWM themes
 x11-themes/kfaenza 0.8.9-r1: Faenza-Cupertino icon theme for KDE
 x11-themes/korilla 1.3.5: Kool Gorilla Icon Set for KDE
-x11-themes/larry-backgrounds 20110822: Wallpapers featuring Gentoo mascot Larry the cow
+x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3: Fedora official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2: Fedora official background artwork
 x11-themes/light-themes 0.1.93-r4 15.04_p20150410: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
