@@ -8251,7 +8251,6 @@ dev-python/simplekv 0.9.2 0.9.3 0.10.0: A key-value storage for binary data, sup
 dev-python/simpleparse 2.1.1 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simples3 1.0: A fairly simple, decently quick python interface to Amazon's S3 storage service
 dev-python/simplesettings 0.5-r1: Simple settings initialization
-dev-python/simpletal 4.2-r1 5.1-r1 5.2: Stand alone Python implementation of the Zope TAL, TALES and METAL specs for HTML/XML templates
 dev-python/simpy 2.3.1-r1 3.0.3 3.0.8: Simulation in Python is an object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.16.2 4.16.9 4.18 4.18.1 4.9999: Python extension module generator for C and C++ libraries
@@ -16931,7 +16930,6 @@ sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
 sys-block/devio 1.2: correctly read (or write) a region of a block device
 sys-block/di 4.35 4.42 4.43: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
-sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
 sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
