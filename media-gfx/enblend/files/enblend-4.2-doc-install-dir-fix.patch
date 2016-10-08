@@ -1,0 +1,30 @@
+diff -purN a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+--- a/doc/CMakeLists.txt	2016-09-24 11:31:04.268134026 +0100
++++ b/doc/CMakeLists.txt	2016-09-24 11:35:23.148376807 +0100
+@@ -386,7 +386,7 @@ add_dependencies(doc ps)
+ install(FILES
+         "${CMAKE_BINARY_DIR}/doc/enblend.ps"
+         "${CMAKE_BINARY_DIR}/doc/enfuse.ps"
+-    DESTINATION ${DocumentsDirectory}
++    DESTINATION ${DocumentsDirectory}/ps
+ )
+ endif()
+ 
+@@ -395,7 +395,7 @@ add_dependencies(doc pdf)
+ install(FILES
+         "${CMAKE_BINARY_DIR}/doc/enblend.pdf"
+         "${CMAKE_BINARY_DIR}/doc/enfuse.pdf"
+-    DESTINATION ${DocumentsDirectory}
++    DESTINATION ${DocumentsDirectory}/pdf
+ )
+ endif()
+ 
+@@ -406,7 +406,7 @@ install(FILES
+         "${CMAKE_BINARY_DIR}/doc/enfuse.html"
+         ${ENBLEND_PNGFILES}
+         ${ENFUSE_PNGFILES}
+-    DESTINATION ${DocumentsDirectory}
++    DESTINATION ${DocumentsDirectory}/html
+ )
+ endif()
+ 
