@@ -19,12 +19,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/12"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
-IUSE="ada cairo cxx doc +dynamic examples fortran gd java jpeg latex lua
+IUSE="cairo cxx doc +dynamic examples fortran gd java jpeg latex lua
 	ocaml octave pdf pdl png python qhull qt4 shapefile svg tcl test
 	threads tk truetype wxwidgets X"
 
 RDEPEND="
-	ada? ( virtual/gnat:* )
 	cairo? ( x11-libs/cairo:0=[svg?,X?] )
 	gd? ( media-libs/gd:2=[jpeg?,png?] )
 	java? ( >=virtual/jre-1.5:* )
@@ -139,6 +138,7 @@ src_configure() {
 		-DPLD_cgm=ON
 		-DTEST_DYNDRIVERS=OFF
 		-DCMAKE_INSTALL_LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		-DENABLE_ada=OFF
 		-DENABLE_d=OFF
 		-DBUILD_DVI=OFF
 		-DDOX_DOC=OFF
@@ -150,7 +150,6 @@ src_configure() {
 		$(cmake-utils_use_has python NUMPY)
 		$(cmake-utils_use_has shapefile SHAPELIB)
 		$(cmake-utils_use_with truetype FREETYPE)
-		$(cmake-utils_use_enable ada)
 		$(cmake-utils_use_enable cxx)
 		$(cmake-utils_use_enable dynamic DYNDRIVERS)
 		$(cmake-utils_use_enable fortran f77)
