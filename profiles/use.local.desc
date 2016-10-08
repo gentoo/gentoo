@@ -6900,7 +6900,6 @@ sci-libs/pcl:pcap - Adds pcap file capabilities in some drivers.
 sci-libs/pcl:qhull - Adds convex-hull operation support via media-libs/qhull.
 sci-libs/pcl:tutorials - Builds and installs tutorials.
 sci-libs/pcl:vtk - Adds support for VTK-Visualizations.
-sci-libs/plplot:ada - Add bindings for the ADA programming language
 sci-libs/plplot:dynamic - Build with dynamic drivers
 sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
 sci-libs/plplot:pdl - Add bindings for dev-perl/PDL
