@@ -12,6 +12,6 @@
 		<flag name="subtitles">Support conversion between po and sub files</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">translate</remote-id>
+		<remote-id type="github">translate</remote-id>
 	</upstream>
 </pkgmetadata>
