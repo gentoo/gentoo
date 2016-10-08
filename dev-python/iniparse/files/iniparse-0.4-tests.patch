@@ -1,0 +1,27 @@
+From b3d6ea5ed88b0e6cf9fdb411a14e725665ded92e Mon Sep 17 00:00:00 2001
+From: Tim Lauridsen <timlau@fedoraproject.org>
+Date: Fri, 7 Mar 2014 19:06:40 +0100
+Subject: [PATCH] Fix handling of REM xxxxxxxx as a comment, but REMXXXX is not
+ (upstream issue #28)
+
+---
+ tests/test_ini.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/tests/test_ini.py b/tests/test_ini.py
+index 07d4f4e..6d974f0 100644
+--- a/tests/test_ini.py
++++ b/tests/test_ini.py
+@@ -144,8 +144,7 @@ class test_comment_line(unittest.TestCase):
+         '#this is a comment',
+         ';; this is also a comment',
+         '; so is this   ',
+-        'Rem and this',
+-        'remthis too!'
++        'Rem and this'
+     ]
+     def test_parsing(self):
+         for l in self.lines:
+-- 
+1.8.5.3
+
