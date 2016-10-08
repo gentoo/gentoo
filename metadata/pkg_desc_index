@@ -1606,7 +1606,7 @@ app-leechcraft/lc-aggregator 0.6.60 0.6.65 0.6.70 9999: Full-featured RSS/Atom f
 app-leechcraft/lc-anhero 0.6.60 0.6.65 0.6.70 9999: AnHero, crash handler for LeechCraft
 app-leechcraft/lc-auscrie 0.6.60 0.6.65 0.6.70 9999: Auscrie, LeechCraft auto screenshooter
 app-leechcraft/lc-azoth 0.6.60 0.6.65 0.6.70 9999: Azoth, the modular IM client for LeechCraft
-app-leechcraft/lc-bittorrent 0.6.60 0.6.65 0.6.70 9999: Full-featured BitTorrent client plugin for LeechCraft
+app-leechcraft/lc-bittorrent 0.6.60 0.6.65 0.6.70 0.6.70-r1 9999: Full-featured BitTorrent client plugin for LeechCraft
 app-leechcraft/lc-blasq 0.6.60 0.6.65 0.6.70 9999: Cloud image storage services client (like Flickr or Picasa)
 app-leechcraft/lc-blogique 0.6.60 0.6.65 0.6.70 9999: Blogging client for LeechCraft
 app-leechcraft/lc-certmgr 0.6.65 0.6.70 9999: SSL certificates manager for LeechCraft
@@ -17042,7 +17042,7 @@ sys-cluster/crmsh 2.1.1: Pacemaker command line interface for management and con
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
-sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3 8.4.3-r1: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3 8.4.3-r1 8.4.3-r2: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-kernel 8.0.16 8.3.6 8.3.8.1: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a LAN
