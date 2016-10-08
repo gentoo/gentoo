@@ -8339,6 +8339,13 @@ x11-themes/redhat-artwork:icons - Install Bluecurve icons
 x11-themes/redhat-artwork:kdm - Install Bluecurve kde-base/kdm theme
 x11-themes/redhat-artwork:nautilus - Install Bluecurve gnome-base/nautilus icons
 x11-themes/skinenigmang-logos:dxr3 - Install logos for lower osd color depth on dxr3 cards
+x11-themes/vertex-theme:cinnamon - Install theme for gnome-extra/cinnamon
+x11-themes/vertex-theme:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/vertex-theme:mate - Install Metacity theme for mate-base/mate
+x11-themes/vertex-theme:xfce - Install theme for xfce-base/xfwm4
+x11-themes/zuki-themes:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
+x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
 x11-wm/compiz:gconf - Enable the GConf-based configuration backend; it is not required to work with GNOME, and might actually be faster if it's not used.

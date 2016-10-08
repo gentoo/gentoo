@@ -17368,7 +17368,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.7.2 4.7.3 4.7.4 4.7.5 4.7.6 4.7.7 4.8.0: Full sources including the Gentoo patchset for the 4.8 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.7.2 4.7.3 4.7.4 4.7.5 4.7.6 4.7.7 4.8.0 4.8.1: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.8_rc1 4.8_rc2 4.8_rc3 4.8_rc4 4.8_rc5 4.8_rc6 4.8_rc7 4.8_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1 4.7.4-r1 4.7.5 4.7.6: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -19014,6 +19014,7 @@ x11-themes/vdrgraphtft-deepblue 0.3.1: GraphTFT theme: Deep Blue
 x11-themes/vdrgraphtft-deeppurple 0.3.2: GraphTFT theme: Alien vs Predator
 x11-themes/vdrgraphtft-poetter 0.3.2: GraphTFT theme: Poetter
 x11-themes/verne-backgrounds 15.91.0.1: Fedora official background artwork
+x11-themes/vertex-theme 20160329: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1 0.4.0: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
@@ -19021,9 +19022,10 @@ x11-themes/xfce-gant-icon-theme 3.9_p6: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
+x11-themes/zuki-themes 3.20: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
-x11-themes/zukitwo 2013.12.10 2014.10.22: Theme for GNOME 2 and 3
-x11-themes/zukitwo-shell 2013.12.10 2014.10.22: Zukitwo theme for GNOME Shell
+x11-themes/zukitwo 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
+x11-themes/zukitwo-shell 2013.12.10 2014.10.22 2016.08.08: Transition package to zuki-themes
 x11-wm/aewm 1.3.12: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm but with the same look and feel
 x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
