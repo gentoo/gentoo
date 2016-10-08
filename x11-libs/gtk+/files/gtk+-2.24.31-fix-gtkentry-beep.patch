@@ -1,0 +1,42 @@
+From debba4d14155a9e5736de069c2b693ab6f6e21aa Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 5 Oct 2016 12:20:14 -0400
+Subject: [PATCH] entry: Fix a corner case of overwrite mode
+
+We currently beep when a character is appended at the end in
+overwrite mode. That is obviously not right. Patch based on
+a patch by Ian MacDonald.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=772389
+---
+ gtk/gtkentry.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gtk/gtkentry.c b/gtk/gtkentry.c
+index b522039..bc33754 100644
+--- a/gtk/gtkentry.c
++++ b/gtk/gtkentry.c
+@@ -5224,6 +5224,7 @@ gtk_entry_enter_text (GtkEntry       *entry,
+   GtkEditable *editable = GTK_EDITABLE (entry);
+   gint tmp_pos;
+   gboolean old_need_im_reset;
++  guint text_length;
+ 
+   old_need_im_reset = entry->need_im_reset;
+   entry->need_im_reset = FALSE;
+@@ -5233,7 +5234,11 @@ gtk_entry_enter_text (GtkEntry       *entry,
+   else
+     {
+       if (entry->overwrite_mode)
+-        gtk_entry_delete_from_cursor (entry, GTK_DELETE_CHARS, 1);
++        {
++          text_length = gtk_entry_buffer_get_length (get_buffer (entry));
++          if (entry->current_pos < text_length)
++            gtk_entry_delete_from_cursor (entry, GTK_DELETE_CHARS, 1);
++        }
+     }
+ 
+   tmp_pos = entry->current_pos;
+-- 
+2.10.0
+
