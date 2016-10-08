@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sebastian Pipping <sping@gentoo.org> (08 Oct 2016)
+# Dead upstream for years, ebuild needs work, 5 open bugs
+# Masked for removal in 30 days.
+media-gfx/drqueue
+
 # Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
 # Multiple QA problems for a long time, all ADA stuff is heavily broken.
 # (#251873). Removal in a month.
