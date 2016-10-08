@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=QupZilla-${PV}
 	SRC_URI="https://github.com/QupZilla/${PN}/releases/download/v${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S=${WORKDIR}/${MY_P}
 fi
 

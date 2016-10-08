@@ -8,10 +8,13 @@
 	<use>
 		<flag name="display-manager">Pull in a graphical display manager</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
+		<flag name="gtk">Enable Breeze widget style and KCM for GTK2 and GTK3</flag>
 		<flag name="mediacenter">Pull in <pkg>kde-plasma/plasma-mediacenter</pkg></flag>
+		<flag name="pam">Enable support for kwallet auto-unlocking</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
+		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and KCM</flag>
-		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg></flag>
-		<flag name="wallpapers">Install the KDE wallpapers</flag>
+		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
+		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
 	</use>
 </pkgmetadata>
