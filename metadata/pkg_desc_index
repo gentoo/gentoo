@@ -1784,7 +1784,7 @@ app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6: A index/query system to search a large set of files quickly
 app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
-app-misc/gnote 3.18.1 3.20.1: Desktop note-taking application
+app-misc/gnote 3.20.1 3.20.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5: GNU Student's Timetable for polish users
 app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cellular automata
@@ -4595,7 +4595,7 @@ dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13 3.0.13-r1: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
-dev-libs/folks 0.11.1 0.11.2: Library for aggregating people from multiple sources
+dev-libs/folks 0.11.2 0.11.3: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
@@ -4606,7 +4606,7 @@ dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a user interface that focuses on simplicity and minimalism
-dev-libs/gjs 1.44.0 1.45.4: Javascript bindings for GNOME
+dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2 2.50.0: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
@@ -4718,7 +4718,7 @@ dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
-dev-libs/libgdata 0.17.4-r1 0.17.5: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
@@ -4965,7 +4965,7 @@ dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, re
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded webapplicationserver extensible with C++
-dev-libs/totem-pl-parser 3.10.5 3.10.6: Playlist parsing library
+dev-libs/totem-pl-parser 3.10.6 3.10.7: Playlist parsing library
 dev-libs/tre 0.8.0: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
@@ -9752,7 +9752,7 @@ dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Hand
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 2.1.2.0.143.2915827 2.1.3.0.143.3101438 2.2.0.12.145.3276617-r1: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
-dev-util/anjuta 3.18.2 3.20.0: A versatile IDE for GNOME
+dev-util/anjuta 3.20.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/apitrace 4.0 5.0 6.0 6.1 7.1: A tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards compliance and to the style guide
@@ -11184,7 +11184,7 @@ gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.18.0 3.20.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.18.1 3.20.0: GNOME contact management application
-gnome-extra/gnome-directory-thumbnailer 0.1.6 0.1.7: Thumbnail generator for directories
+gnome-extra/gnome-directory-thumbnailer 0.1.6 0.1.7 0.1.8: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
 gnome-extra/gnome-do-plugins 0.8.5: Plugins to put the Do in Gnome Do
 gnome-extra/gnome-documents 3.18.3 3.20.0 3.20.1: A document manager application for GNOME
@@ -11198,17 +11198,17 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.18.4 3.20.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 28 28-r1: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-software 3.18.3 3.20.4: Gnome install & update software
+gnome-extra/gnome-software 3.20.4 3.20.5: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.18.2 3.20.1: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.18.1 3.20.2: GNOME end user documentation
-gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1 3.18.2: Personal file sharing for the GNOME desktop
+gnome-extra/gnome-user-share 3.18.2 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0: Unicode character map viewer and library
-gnome-extra/libgda 5.2.4 5.2.4-r1: GNOME database access library
+gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0 9.0.1: Unicode character map viewer and library
+gnome-extra/libgda 5.2.4-r1 5.2.4-r2: GNOME database access library
 gnome-extra/libgsf 1.14.34 1.14.36 1.14.39 1.14.40: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
@@ -12321,7 +12321,7 @@ media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.6.5.0 1.6.5.1: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.16.2 3.20.2: Font viewer for GNOME
-media-gfx/gnome-photos 3.18.3-r1 3.20.2 3.20.3: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.20.3 3.20.4: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.18.0 3.20.1: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
@@ -12457,7 +12457,7 @@ media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.23.1 0.23.4 0.23.7: Open source photo manager for GNOME
+media-gfx/shotwell 0.23.7 0.24.0: Open source photo manager for GNOME
 media-gfx/simple-scan 3.18.2 3.20.0: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
@@ -14928,9 +14928,9 @@ net-misc/networkmanager 1.0.12-r1 1.2.4 1.4.0 1.4.0-r1 1.4.2: A set of co-operat
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4 1.2.6: NetworkManager OpenVPN plugin
-net-misc/networkmanager-pptp 1.0.8 1.2.2: NetworkManager PPTP plugin
+net-misc/networkmanager-pptp 1.0.8 1.2.2 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-misc/networkmanager-vpnc 1.0.8 1.2.2: NetworkManager VPNC plugin
+net-misc/networkmanager-vpnc 1.0.8 1.2.2 1.2.4: NetworkManager VPNC plugin
 net-misc/nextcloud-client 2.2.3: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
@@ -19148,7 +19148,7 @@ xfce-extra/xfce4-systemload-plugin 1.1.1-r1 1.1.2 1.1.99: System load plug-in fo
 xfce-extra/xfce4-taskmanager 1.0.1 1.1.0: Task Manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.6.0: A simple timer plug-in for the Xfce desktop environment
-xfce-extra/xfce4-vala 4.10.3-r2: Vala bindings for the Xfce desktop environment
+xfce-extra/xfce4-vala 4.10.3-r2 4.10.3-r3: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 1.0.1 1.1.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
 xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.1 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
