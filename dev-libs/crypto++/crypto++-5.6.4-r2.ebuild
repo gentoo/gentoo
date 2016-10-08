@@ -30,6 +30,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	default
 	cp config.recommend config.h || die
 }
 
@@ -37,7 +38,7 @@ src_compile() {
 	# higher optimizations cause problems
 	replace-flags -O3 -O2
 	# ASM isn't Darwin/Mach-O ready, #479554, buildsys doesn't grok CPPFLAGS
-	[[ ${CHOST} == *-darwin* ]] && append-flags -DCRYPTOPP_DISABLE_X86ASM
+	[[ ${CHOST} == *-darwin* ]] && append-cxxflags -DCRYPTOPP_DISABLE_ASM
 
 	emake -f GNUmakefile all shared
 }
@@ -57,7 +58,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	default
 
 	# remove leftovers as build system sucks
 	rm -fr "${ED}"/usr/bin "${ED}"/usr/share/cryptopp
@@ -68,4 +69,11 @@ src_install() {
 	for f in "${ED}${EPREFIX}"/usr/$(get_libdir)/*; do
 		ln -s "$(basename "${f}")" "$(echo "${f}" | sed 's/cryptopp/crypto++/')" || die
 	done
+}
+
+pkg_preinst() {
+	# we switched directory to symlink
+	# make sure portage digests that
+	rm -fr "${EROOT}/usr/include/crypto++"
+	rm -fr "${EROOT}/usr/include/cryptopp"
 }
