@@ -1,0 +1,20 @@
+--- a/scripts/block-drbd	2014-07-30 17:19:59.000000000 -0700
++++ b/scripts/block-drbd	2014-07-31 09:54:56.000000000 -0700
+@@ -248,7 +248,7 @@
+     fi
+ 
+     case $t in 
+-      drbd)
++      drbd|phy)
+         drbd_resource=$p
+         drbd_role="$(/sbin/drbdadm role $drbd_resource)"
+         drbd_lrole="${drbd_role%%/*}"
+@@ -276,7 +276,7 @@
+ 
+   remove)
+     case $t in 
+-      drbd)
++      drbd|phy)
+         p=$(xenstore_read "$XENBUS_PATH/params")
+         drbd_resource=$p
+         drbd_role="$(/sbin/drbdadm role $drbd_resource)"
