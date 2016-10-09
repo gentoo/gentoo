@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit cmake-utils python-single-r1 vcs-snapshot
 
@@ -30,7 +30,7 @@ RDEPEND="dev-libs/boost:=[python?]
 	virtual/jpeg:0
 	colorio? ( >=media-libs/opencolorio-1.0.7:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:0= )
 	jpeg2k? ( >=media-libs/openjpeg-1.5:0= )
 	opencv? (
 		>=media-libs/opencv-2.3:=

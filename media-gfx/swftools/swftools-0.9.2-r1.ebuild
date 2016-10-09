@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,10 @@ IUSE=""
 
 RDEPEND="
 	app-text/poppler
-	>=media-libs/t1lib-1.3.1
-	media-libs/freetype
-	virtual/jpeg
+	media-libs/freetype:2
+	media-libs/giflib:0=
+	>=media-libs/t1lib-1.3.1:5
+	virtual/jpeg:0
 "
 DEPEND="${RDEPEND}
 	!<media-libs/ming-0.4.0_rc2
@@ -28,6 +29,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}_nopdf.patch
 	epatch "${FILESDIR}"/${P}_general.patch
 	epatch "${FILESDIR}"/${P}_giflib.patch
+	epatch "${FILESDIR}"/${P}_giflib5.patch
 }
 
 src_configure() {

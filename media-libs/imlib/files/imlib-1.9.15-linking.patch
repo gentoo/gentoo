@@ -1,0 +1,9 @@
+gentoo bug #499268
+--- a/Imlib/Makefile.am
++++ b/Imlib/Makefile.am
+@@ -43,4 +43,4 @@
+
+ check_PROGRAMS = t-load
+
+-t_load_LDADD = libImlib.la
++t_load_LDADD = libImlib.la -lX11
