@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib:0=
 	>=media-libs/t1lib-1.3.1:5
-	virtual/jpeg
+	virtual/jpeg:0
 "
 DEPEND="${RDEPEND}
 	!<media-libs/ming-0.4.0_rc2
