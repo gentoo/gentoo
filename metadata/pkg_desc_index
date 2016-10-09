@@ -997,7 +997,7 @@ app-editors/dav 0.8.5-r1 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
-app-editors/editra 0.7.20 0.7.20-r1: Multi-platform text editor supporting over 50 programming languages
+app-editors/editra 0.7.20-r1: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
@@ -1210,7 +1210,7 @@ app-emacs/prom-wl 2.7.0-r1: Procmail reader for Wanderlust
 app-emacs/proofgeneral 4.2: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
 app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
-app-emacs/pymacs 0.23-r1 0.25-r1 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
+app-emacs/pymacs 0.25-r1 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 5.2.0 6.0.12 6.1.1 6.1.2 6.2.0: An Emacs major mode for editing Python source
 app-emacs/quack 0.47: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.48.0: Quilt mode for Emacs
@@ -1477,20 +1477,20 @@ app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including 
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5: Vietnamese Unikey module for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13 1.5.14: Intelligent Input Bus for Linux / Unix OS
-app-i18n/ibus-anthy 1.2.7-r1 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
+app-i18n/ibus-anthy 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.4.7: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
-app-i18n/ibus-handwrite 2.1.4 2.1.4-r1: hand write recognition/input using ibus IM engine
-app-i18n/ibus-hangul 1.4.0 1.4.1 1.4.2 1.4.2-r1 1.5.0: The Hangul engine for IBus input platform
+app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
+app-i18n/ibus-hangul 1.4.2 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-libpinyin 1.6.92 1.7.4: ibus-libpinyin - pinyin chinese input for ibus using libpinyin
 app-i18n/ibus-m17n 1.3.2 1.3.3 1.3.4: The M17N engine IMEngine for IBus Framework
-app-i18n/ibus-pinyin 1.4.0 1.4.0-r1 1.5.0 1.5.0-r1 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
+app-i18n/ibus-pinyin 1.5.0-r1 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
 app-i18n/ibus-qt 1.3.1 1.3.2 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-rime 0.9.9 1.1 1.2: Rime Input Method Engine for IBus Framework
-app-i18n/ibus-skk 1.3.9 1.4.0 1.4.1 1.4.1-r1: Japanese input method Anthy IMEngine for IBus Framework
-app-i18n/ibus-sunpinyin 2.0.3-r2 2.0.4_pre20130108-r1 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
-app-i18n/ibus-table 1.2.0.20100111 1.3.0.20100621 1.3.9.20110827-r1 1.5.0 1.5.0-r1: The Table Engine for IBus Framework
+app-i18n/ibus-skk 1.3.9 1.4.1-r1: Japanese input method Anthy IMEngine for IBus Framework
+app-i18n/ibus-sunpinyin 2.0.4_pre20130108-r2: The SunPinYin IMEngine for IBus Framework
+app-i18n/ibus-table 1.2.0.20100111 1.5.0-r1: The Table Engine for IBus Framework
 app-i18n/ibus-table-chinese 1.4.6: Chinese input tables for ibus-table
 app-i18n/ibus-table-code 1.2.0.20100305: The code tables for IBus-Table
 app-i18n/ibus-table-cyrillic 1.2.0.20100305: Translit, Russian Traditional, Yawerty tables for IBus-Table
@@ -1539,7 +1539,7 @@ app-i18n/nkf 2.1.3 2.1.3-r1: Network Kanji code conversion Filter with UTF-8/16 
 app-i18n/opencc 0.3.0_pre20120819-r1 0.4.3 1.0.4: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 1.5.5 1.8.5 1.8.7: GUI editor for gettext translations files
 app-i18n/pology 0.11-r1 0.12 9999: A framework for custom processing of PO files
-app-i18n/pyzy 0.1.0 0.1.0-r1 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
+app-i18n/pyzy 0.1.0 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.22 0.32 0.35: Data resources for Rime Input Method Engine
@@ -1565,7 +1565,7 @@ app-i18n/sunpinyin 2.0.3-r1 2.0.4_pre20130108: A Statistical Language Model base
 app-i18n/sunpinyin-data 20121025 20130220: Data sets for Sunpinyin
 app-i18n/tagainijisho 1.0.3-r1: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
-app-i18n/tomoe 0.6.0-r1 0.6.0-r2: Japanese handwriting recognition engine
+app-i18n/tomoe 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.12.2: A command line interface for Transifex
 app-i18n/translate-shell 0.9.4: Online command-line translator
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
@@ -1731,7 +1731,7 @@ app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintend
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
 app-misc/dateutils 0.3.5 0.4.0: command line date and time utilities
-app-misc/datovka 3.0.3 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
+app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
@@ -1853,6 +1853,7 @@ app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r3 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
+app-misc/neofetch 1.8.1 9999: Simple information system script
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
@@ -9849,7 +9850,7 @@ dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160814 10 10-r1 10.2.1: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.82 1.0.83: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.83 1.0.84: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
@@ -12516,7 +12517,7 @@ media-libs/alure 1.2: The OpenAL Utility Toolkit
 media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3 3.3.1: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1 0.4.2 0.4.3: Library for audio labelling
-media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
+media-libs/audiofile 0.3.6-r1: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.8 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.8 9999: Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/babl 0.1.10-r1 0.1.12 0.1.14 0.1.16 0.1.18 9999: A dynamic, any to any, pixel format conversion library
