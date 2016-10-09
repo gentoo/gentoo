@@ -4,11 +4,11 @@ DESCRIPTION=a C# client implementation for Desktop Notifications
 EAPI=5
 HOMEPAGE=http://www.ndesk.org/NotifySharp
 IUSE=doc
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ppc x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/mono-1.1.13 >=dev-dotnet/gtk-sharp-2.10.1 >=dev-dotnet/dbus-sharp-0.6:1.0 >=dev-dotnet/dbus-sharp-glib-0.4:1.0 >=x11-libs/libnotify-0.4.5
 SLOT=0
 SRC_URI=mirror://gentoo/notify-sharp-20090305.tar.bz2
 _eclass_exported_funcs=pkg_setup:mono-env src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=be87e376a2445636290d3d28d90a62a8
+_md5_=73ed0516471280400669f8d93e7528ec

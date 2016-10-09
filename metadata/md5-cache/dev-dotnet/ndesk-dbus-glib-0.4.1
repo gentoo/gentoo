@@ -1,14 +1,13 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=prepare setup
 DEPEND=>=dev-lang/mono-1.2.4 >=dev-dotnet/ndesk-dbus-0.4 virtual/pkgconfig
 DESCRIPTION=glib integration for DBus-Sharp
-EAPI=3
+EAPI=6
 HOMEPAGE=http://www.ndesk.org/DBusSharp
-IUSE=debug
 KEYWORDS=amd64 ppc x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/mono-1.2.4 >=dev-dotnet/ndesk-dbus-0.4
 SLOT=0
 SRC_URI=http://www.ndesk.org/archive/dbus-sharp/ndesk-dbus-glib-0.4.1.tar.gz
-_eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=cbfbab6f936562ba3c6b38a63a99b88e
+_eclass_exported_funcs=pkg_setup:mono-env src_prepare:-
+_eclasses_=mono-env	10809200679bcceefebac9e72bebb6e6
+_md5_=2934e15b34711af4a944b2247d51ddd4

@@ -206,7 +206,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.2.6 11.4.0 11.4.1 11.5.1: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.4.0 11.4.1 11.5.1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -1786,7 +1786,7 @@ app-misc/glimpse 4.18.5 4.18.6: A index/query system to search a large set of fi
 app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
 app-misc/gnote 3.20.1 3.20.2: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
-app-misc/gnutu 2.5: GNU Student's Timetable for polish users
+app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
@@ -2995,8 +2995,8 @@ dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.4.4: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
 dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
-dev-dotnet/dbus-sharp 0.7.0-r1 0.7.0-r2 0.8.1: D-Bus for .NET
-dev-dotnet/dbus-sharp-glib 0.5.0 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
+dev-dotnet/dbus-sharp 0.7.0-r2 0.8.1: D-Bus for .NET
+dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
 dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
 dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
 dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
@@ -3005,7 +3005,7 @@ dev-dotnet/gkeyfile-sharp 0.1 0.1-r1: C# binding for gkeyfile
 dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
 dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
 dev-dotnet/gnome-desktop-sharp 2.26.0-r1: GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball
-dev-dotnet/gnome-keyring-sharp 1.0.2-r1 1.0.2-r2: C# implementation of gnome-keyring
+dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
 dev-dotnet/gnome-sharp 2.24.2 2.24.2-r1: gnome bindings for mono
 dev-dotnet/gnomevfs-sharp 2.24.2: GtkSharp's gnomevfs module of the gnome-sharp tarball
 dev-dotnet/google-gdata-sharp 1.4.0.2-r2: C# bindings for the Google GData API
@@ -3029,7 +3029,7 @@ dev-dotnet/nant 0.92 0.93_pre20130131: .NET build tool
 dev-dotnet/ndesk-dbus 0.6.1a: Managed D-Bus Implementation for .NET
 dev-dotnet/ndesk-dbus-glib 0.4.1: glib integration for DBus-Sharp
 dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
-dev-dotnet/notify-sharp 0.4.0_pre20090305 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
+dev-dotnet/notify-sharp 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
 dev-dotnet/nuget 2.8.3 2.8.7 2.8.7-r1: Nuget - .NET Package Manager
 dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
 dev-dotnet/pe-format 2.1.2 2.1.2-r1 9999: Intelligent PE executable wrapper for binfmt_misc
@@ -4420,7 +4420,7 @@ dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4 3.0.0: Free Pascal Compiler
-dev-lang/fsharp 3.1.1.31 4.0.1.1: The F# Compiler
+dev-lang/fsharp 4.0.1.1: The F# Compiler
 dev-lang/gdl 0.9.6-r1: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
@@ -4454,7 +4454,7 @@ dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Addit
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2016.03 2016.04 2016.04-r2 2016.05 2016.06 2016.07 2016.08 2016.09 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.4.0.148 4.4.1.0 4.6.1.3: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.3: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
@@ -9850,7 +9850,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160814 10 10-r1 10.2.1: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160814 10.2.1 10.2.2: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.83 1.0.84: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -13682,7 +13682,7 @@ media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially su
 media-video/gaupol 0.91 0.92: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1 9999: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
-media-video/gnome-subtitles 1.2 1.3: Video subtitling for the Gnome desktop
+media-video/gnome-subtitles 1.2 1.3-r1: Video subtitling for the Gnome desktop
 media-video/gnome-video-effects 0.4.1: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 0.6.1-r1 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
