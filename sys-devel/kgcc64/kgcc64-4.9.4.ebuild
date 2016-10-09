@@ -24,7 +24,7 @@ inherit eutils toolchain
 DESCRIPTION="64bit kernel compiler"
 
 # Works on mips and sparc; all other archs, refer to bug #228115
-KEYWORDS="~hppa ~mips"
+KEYWORDS="hppa ~mips"
 
 RDEPEND=">=dev-libs/gmp-4.3.2
 	>=dev-libs/mpfr-2.4.2
