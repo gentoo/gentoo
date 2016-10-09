@@ -25,5 +25,5 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	# mono-4 compat
-	sed -i "s#gmcs#mcs#g" configure
+	sed -i "s#gmcs#mcs#g" configure || die
 }
