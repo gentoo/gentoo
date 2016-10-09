@@ -111,6 +111,7 @@ RDEPEND="
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	dev-python/pyudev[${PYTHON_USEDEP}]
 	sys-apps/iproute2
+	net-misc/iputils[arping]
 	net-misc/bridge-utils
 	net-firewall/ipset
 	net-firewall/iptables
