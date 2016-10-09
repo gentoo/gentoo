@@ -1,0 +1,331 @@
+Fix perl shebangs to be portable and usable on Prefix.
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/easel/demotic/infernal_tab2gff.pl
++++ b/easel/demotic/infernal_tab2gff.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w -I/groups/eddy/home/jonest/Demotic
++#!/usr/bin/env perl
+ 
+ # TAJ 6/23/08 last mod 7/10/08
+ # Purpose: flexibly convert "cmsearch --tabfile TAB.out" output to GFF format
+--- a/easel/demotic/test.pl
++++ b/easel/demotic/test.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use demotic_blast;
+ 
+--- a/easel/devkit/rmanprocess.pl
++++ b/easel/devkit/rmanprocess.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # rmanprocess.pl <rman LaTeX2e output>
+ # 
+--- a/easel/miniapps/esl-afetch.itest.pl
++++ b/easel/miniapps/esl-afetch.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Testing the esl-afetch miniapp
+ #
+--- a/easel/miniapps/esl-alimanip.itest.pl
++++ b/easel/miniapps/esl-alimanip.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-alimanip miniapp.
+ #
+--- a/easel/miniapps/esl-alimap.itest.pl
++++ b/easel/miniapps/esl-alimap.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-alimap miniapp.
+ #
+--- a/easel/miniapps/esl-alimask.itest.pl
++++ b/easel/miniapps/esl-alimask.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of esl-alimask miniapp.
+ #
+--- a/easel/miniapps/esl-alimerge.itest.pl
++++ b/easel/miniapps/esl-alimerge.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of esl-alimerge miniapp.
+ #
+--- a/easel/miniapps/esl-alistat.itest.pl
++++ b/easel/miniapps/esl-alistat.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-alistat miniapp.
+ #
+--- a/easel/miniapps/esl-compalign.itest.pl
++++ b/easel/miniapps/esl-compalign.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-compalign miniapp.
+ #
+--- a/easel/miniapps/esl-construct.itest.pl
++++ b/easel/miniapps/esl-construct.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-construct miniapp.
+ #
+--- a/easel/miniapps/esl-mask.itest.pl
++++ b/easel/miniapps/esl-mask.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of esl-mask miniapp.
+ #
+--- a/easel/miniapps/esl-seqrange.itest.pl
++++ b/easel/miniapps/esl-seqrange.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-seqrange miniapp.
+ #
+--- a/easel/miniapps/esl-shuffle.itest.pl
++++ b/easel/miniapps/esl-shuffle.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of esl-shuffle miniapp
+ #
+--- a/easel/miniapps/esl-ssdraw.itest.pl
++++ b/easel/miniapps/esl-ssdraw.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of the esl-ssdraw miniapp.
+ #
+--- a/easel/testsuite/coverage_report.pl
++++ b/easel/testsuite/coverage_report.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Measures testsuite coverage (as percentage of source lines),
+ # using gcov.
+--- a/easel/testsuite/driver_report.pl
++++ b/easel/testsuite/driver_report.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Make sure that all drivers compile.
+ # (Eventually, we should also make sure they run! But that 
+--- a/easel/testsuite/i1-degen-residues.pl
++++ b/easel/testsuite/i1-degen-residues.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integration tests of reading all valid protein sequence residue characters.
+ #
+--- a/easel/testsuite/i2-ncbi-indices.pl
++++ b/easel/testsuite/i2-ncbi-indices.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Testing that we can read FASTA files, even if they have NCBI
+ # formatted BLAST databases in the same directory.
+--- a/easel/testsuite/i3-blank-gf.pl
++++ b/easel/testsuite/i3-blank-gf.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Bug #e5: blank text line following #=GF <tag> handled improperly.
+ #
+--- a/easel/testsuite/valgrind_report.pl
++++ b/easel/testsuite/valgrind_report.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Run the testsuite under Valgrind, to check for memory leakage.
+ #
+--- a/profmark/pmark-master.pl
++++ b/profmark/pmark-master.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # The top level script that runs a pmark benchmark.
+ #
+--- a/profmark/rocplot.pl
++++ b/profmark/rocplot.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $nsearches = 2809;
+ 
+--- a/src/hmmpress.itest.pl
++++ b/src/hmmpress.itest.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Integrated test of hmmpress 
+ #
+--- a/testsuite/i10-duplicate-names.pl
++++ b/testsuite/i10-duplicate-names.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Check that we can deal with profiles and sequences that contain
+ # duplicate names, both as queries and targets. 
+--- a/testsuite/i11-hmmalign-mapali.pl
++++ b/testsuite/i11-hmmalign-mapali.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Another test of the hmmalign --mapali option, after Elena reports
+ # bug #h73 in bad interaction of checksum calculation and marking
+--- a/testsuite/i12-delete-corruption.pl
++++ b/testsuite/i12-delete-corruption.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Bug #h77: hmmalign corrupts column preceding an all-delete column
+ #
+--- a/testsuite/i13-msa-integrity.pl
++++ b/testsuite/i13-msa-integrity.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Look for any problems in hmmalign that corrupt the input sequences.
+ #
+--- a/testsuite/i14-hmmemit-consensus.pl
++++ b/testsuite/i14-hmmemit-consensus.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Tests hmmemit -c and hmmemit -C consensus-generating options.
+ #
+--- a/testsuite/i15-hmmconvert.pl
++++ b/testsuite/i15-hmmconvert.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Bug #h80: hmmconvert can't read H2 Nucleic files
+ #
+--- a/testsuite/i16-build-allins.pl
++++ b/testsuite/i16-build-allins.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Bug #h82: hmmbuild corrupts resave alignment on all-insert seq
+ #
+--- a/testsuite/i17-stdin.pl
++++ b/testsuite/i17-stdin.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test that programs accept and reject argument of '-' (for reading
+ # data from stdin, rather than from files) as they're supposed to.
+--- a/testsuite/i18-nhmmer-generic.pl
++++ b/testsuite/i18-nhmmer-generic.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test of hmmbuild/nhmmer as used to build a DNA model, then query a  
+ # a database of long (1MB).
+--- a/testsuite/i19-hmmpgmd-ga.pl
++++ b/testsuite/i19-hmmpgmd-ga.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test that hmmpgmd is correctly applying bit score thresholds;
+ # in this case, the --cut_ga threshold, using an example that
+--- a/testsuite/i20-fmindex-core.pl
++++ b/testsuite/i20-fmindex-core.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test of makenhmmerdb and the core fm-index search functionality, using extactmatch  
+ # 
+--- a/testsuite/i5-hmmbuild-naming.pl
++++ b/testsuite/i5-hmmbuild-naming.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test that HMM naming in hmmbuild works as advertised.
+ # Written to test for #h50.
+--- a/testsuite/i6-hmmalign-mapali.pl
++++ b/testsuite/i6-hmmalign-mapali.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test the hmmalign --mapali option.
+ # 
+--- a/testsuite/i7-hmmbuild-fragments.pl
++++ b/testsuite/i7-hmmbuild-fragments.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test the ability of hmmbuild to deal with crappy alignments
+ # of lots of sequence fragments.
+--- a/testsuite/i8-nonresidues.pl
++++ b/testsuite/i8-nonresidues.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Regression test of handling a nonresidue '*' character. By design,
+ # '*' residues score 0 in insert states and N,C,J; and -inf in match
+--- a/testsuite/i9-optional-annotation.pl
++++ b/testsuite/i9-optional-annotation.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Check that we can deal with HMMs with no optional annotation, in either
+ # hmmscan or hmmsearch mode.
+--- a/testsuite/test-make.pl
++++ b/testsuite/test-make.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # Usage:   test-make.pl <builddir> <srcdir> <tmppfx>
+ # 

@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 CMAKE_REQUIRED="never"
 KDE_REQUIRED="optional"
 AT_M4DIR="cygnal"
 # won't build with python-3, bug #392969
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils kde4-base multilib nsplugins python-any-r1 flag-o-matic
+inherit autotools eutils kde4-base multilib nsplugins python-any-r1 flag-o-matic xdg-utils
 
 DESCRIPTION="GNU Flash movie player that supports many SWF v7,8,9 features"
 HOMEPAGE="https://www.gnu.org/software/gnash/"
@@ -27,8 +27,9 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="X +agg cairo cygnal dbus directfb doc dump egl fbcon +ffmpeg gconf gnome gstreamer gtk harden jemalloc kde lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
-REQUIRED_USE="dump? ( agg ffmpeg )
+IUSE="X +agg cairo cygnal dbus directfb doc dump egl fbcon +ffmpeg libav libressl gnome gtk harden jemalloc kde lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
+REQUIRED_USE="
+	dump? ( agg ffmpeg )
 	fbcon? ( agg )
 	nsplugin? ( gtk )
 	openvg? ( egl )
@@ -36,19 +37,20 @@ REQUIRED_USE="dump? ( agg ffmpeg )
 	vaapi? ( agg ffmpeg )
 	|| ( agg cairo opengl openvg )
 	|| ( dump fbcon gtk kde sdl )
-	"
+"
 
-RDEPEND=">=dev-libs/boost-1.41.0:0=
+RDEPEND="
+	>=dev-libs/boost-1.41.0:0=
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	virtual/jpeg:0
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	net-misc/curl
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libXmu
 	x11-libs/libXt
-	media-libs/giflib
+	media-libs/giflib:=
 	x11-proto/xproto
 	agg? ( x11-libs/agg )
 	cairo? ( x11-libs/cairo )
@@ -65,17 +67,9 @@ RDEPEND=">=dev-libs/boost-1.41.0:0=
 	fbcon? (
 		x11-libs/tslib
 	)
-	ffmpeg? ( || (
-		!vaapi? ( media-video/libav )
-		media-video/ffmpeg[vaapi?]
-	) )
-	gconf? (
-		gnome-base/gconf
-	)
-	gstreamer? (
-		media-plugins/gst-plugins-ffmpeg:*
-		media-plugins/gst-plugins-mad:*
-		media-plugins/gst-plugins-meta:*
+	ffmpeg? (
+		libav? ( media-video/libav:0=[vaapi?] )
+		!libav? ( media-video/ffmpeg:0=[vaapi?] )
 	)
 	gtk? (
 		x11-libs/gtk+:2
@@ -103,7 +97,10 @@ RDEPEND=">=dev-libs/boost-1.41.0:0=
 	lirc? ( app-misc/lirc )
 	dbus? ( sys-apps/dbus )
 	ssh?  ( >=net-libs/libssh-0.4[server] )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? (
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
+	)
 	vaapi? ( x11-libs/libva[opengl?] )
 	"
 DEPEND="${RDEPEND}
@@ -111,7 +108,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	gnome? ( app-text/rarian )
 	nsplugin? ( net-misc/npapi-sdk )
-	test? ( dev-util/dejagnu )"
+	test? ( dev-util/dejagnu )
+"
 # Tests hang with sandbox, bug #321017
 RESTRICT="test"
 
@@ -119,7 +117,7 @@ pkg_setup() {
 	kde4-base_pkg_setup
 	python-any-r1_pkg_setup
 
-	if use !ffmpeg && use !gstreamer; then
+	if use !ffmpeg; then
 		ewarn "You are trying to build Gnash without choosing a media handler."
 		ewarn "Sound and video playback will not work."
 	fi
@@ -132,29 +130,28 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
+	xdg_environment_reset # 591014
+
 	# Fix paths for klash, bug #339610
-	epatch "${FILESDIR}"/${PN}-0.8.9-klash.patch
+	eapply "${FILESDIR}"/${PN}-0.8.9-klash.patch
 
 	# Use external dejagnu for tests, bug #321017
-	epatch "${FILESDIR}"/${PN}-0.8.9-external-dejagnu.patch
+	eapply "${FILESDIR}"/${PN}-0.8.9-external-dejagnu.patch
 
 	# Fix building on ppc64, bug #342535
 	use ppc64 && append-flags -mminimal-toc
 
 	# Fix kde multilib library path, bug #391283
-	epatch "${FILESDIR}"/${PN}-0.8.9-kde4-libdir.patch
+	eapply "${FILESDIR}"/${PN}-0.8.9-kde4-libdir.patch
 
 	# Fix libamf includes
-	epatch "${FILESDIR}"/${PN}-0.8.10-amf-include.patch
+	eapply "${FILESDIR}"/${PN}-0.8.10-amf-include.patch
 
 	# Fix new adjacent_tokens_only() in >=boost-1.59 (bug 579142)
 	# See https://savannah.gnu.org/bugs/?46148
-	epatch "${FILESDIR}"/${P}-boost-1.60.patch
-
-	# Fix vaapi build, bug #546584
-	# See https://savannah.gnu.org/bugs/?44636
-	epatch "${FILESDIR}"/${PN}-0.8.10-libva-1.6_0000.patch
-	epatch "${FILESDIR}"/${PN}-0.8.10-libva-1.6_0001.patch
+	eapply "${FILESDIR}"/${PN}-0.8.10_p20150316-boost-1.60.patch
 
 	eautoreconf
 }
@@ -192,16 +189,15 @@ src_configure() {
 	fi
 
 	# Set media handler.
-	use ffmpeg || use gstreamer || media+=",none"
+	use ffmpeg || media+=",none"
 	use ffmpeg && media+=",ffmpeg"
-	use gstreamer && media+=",gst"
 
 	# Set gui.
-	use dump && gui="${gui},dump"
-	use fbcon && gui="${gui},fb"
-	use gtk && gui=",gtk"
-	use kde && gui="${gui},kde4"
-	use sdl && gui="${gui},sdl"
+	use dump && gui+=",dump"
+	use fbcon && gui+=",fb"
+	use gtk && gui+=",gtk"
+	use kde && gui+=",kde4"
+	use sdl && gui+=",sdl"
 
 	if use sdl-sound; then
 		myconf="${myconf} --enable-sound=sdl"
@@ -217,15 +213,14 @@ src_configure() {
 
 	# Strip extra comma from gui, myext, hwaccel and renderers.
 	device=$( echo $device | sed -e 's/,//' )
-	gui=$( echo $gui | sed -e 's/,//' )
+	gui=$( echo $gui | sed -e 's/^,//' )
 	myext=$( echo $myext | sed -e 's/,//' )
 	renderers=$( echo $renderers | sed -e 's/,//' )
 	media=$( echo $media | sed -e 's/,//' )
 
 	econf \
-		--docdir=/usr/share/doc/${PF} \
-		--disable-dependency-tracking \
 		--disable-kparts3 \
+		--without-gconf \
 		$(use_enable cygnal) \
 		$(use_enable cygnal cgibins) \
 		$(use_enable doc docbook) \
@@ -239,7 +234,6 @@ src_configure() {
 		$(use_enable ssh) \
 		$(use_enable ssl) \
 		$(use_enable test testsuite) \
-		$(use_with gconf) \
 		--enable-gui=${gui} \
 		--enable-device=${device} \
 		--enable-extensions=${myext} \
@@ -276,15 +270,15 @@ src_install() {
 		rm -f "${D}"/usr/bin/eglinfo || die
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
+	einstalldocs
 }
 pkg_postinst() {
-	if use !gnome || use !gstreamer && use !ffmpeg ; then
+	if use !gnome || use !ffmpeg ; then
 		ewarn ""
 		ewarn "Gnash was built without a media handler and or http handler !"
 		ewarn ""
 		ewarn "If you want Gnash to support video then you will need to"
-		ewarn "rebuild Gnash with either the ffmpeg or gstreamer and gnome use flags set."
+		ewarn "rebuild Gnash with the ffmpeg and gnome use flags set."
 		ewarn ""
 	fi
 	ewarn "${PN} is still in heavy development"
