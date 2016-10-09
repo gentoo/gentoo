@@ -13,15 +13,13 @@ LICENSE="LGPL-2.1"
 SLOT="0/9"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
 
-IUSE="debug doc examples ipv6 libressl minimal ntp-timestamp ssl srtp zrtp"
-REQUIRED_USE="zrtp? ( srtp )"
+IUSE="debug doc examples ipv6 libressl minimal ntp-timestamp ssl srtp"
 
 RDEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= ) )
 	srtp? ( net-libs/libsrtp:0= )
-	zrtp? ( >=net-libs/libzrtpcpp-4.0.0:0= )
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -51,13 +49,14 @@ src_configure() {
 		--enable-libtool-lock
 		# this is fine as long as we do not link to polarssl
 		--enable-broken-srtp
+		# zrtp removed from the tree
+		--disable-zrtp
 
 		$(use_enable debug)
 		$(use_enable ipv6)
 		$(use_enable minimal perf)
 		$(use_enable ntp-timestamp)
 		$(use_enable ssl ssl-hmac)
-		$(use_enable zrtp)
 
 		--with-srtp=$(usex srtp "${EPREFIX}"/usr none)
 		$(use doc || echo ac_cv_path_DOXYGEN=false)
