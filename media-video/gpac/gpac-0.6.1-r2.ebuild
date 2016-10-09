@@ -15,7 +15,7 @@ fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
 
-DESCRIPTION="GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C"
+DESCRIPTION="Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C"
 HOMEPAGE="http://gpac.wp.mines-telecom.fr/"
 
 LICENSE="GPL-2"
