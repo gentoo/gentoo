@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>herdiansyah@openmailbox.org</email>
+		<name>Muhammad Herdiansyah</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		neofetch is a script that gathers information about your system and
+		prints it to the terminal next to an image, a distro's logo or any
+		ASCII art of your choice.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dylanaraps/neofetch</remote-id>
+	</upstream>
+</pkgmetadata>
