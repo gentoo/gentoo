@@ -76,7 +76,7 @@ src_prepare() {
 		-i src/osdep/unix/Makefile || die "Respecting build flags"
 
 	use topal && eapply "${FILESDIR}/${P}-topal.patch"
-	use chappa && eapply "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
+	use chappa && epatch "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
 
 	elibtoolize
 }

@@ -21,6 +21,8 @@ RDEPEND="
 	$(add_qt_dep qtxml)
 "
 DEPEND="${RDEPEND}
+	sys-devel/bison
+	sys-devel/flex
 	man? ( $(add_frameworks_dep kdoctools) )
 	test? ( $(add_qt_dep qtconcurrent) )
 "
