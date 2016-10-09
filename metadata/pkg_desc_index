@@ -13714,7 +13714,7 @@ media-video/makemkv 1.10.2: Tool for ripping and streaming Blu-ray, HD-DVD and D
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.73 0.7.85 0.7.86 0.7.87 0.7.88 0.7.89: MediaInfo supplies technical and tag information about media files
-media-video/minitube 2.0 2.4 2.5.2: Qt5 YouTube Client
+media-video/minitube 2.0 2.4 2.5.2 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
@@ -14780,7 +14780,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.3_p1 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -15598,7 +15598,7 @@ sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
 sci-biology/gmap 2011.10.07 2012.07.20 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
 sci-biology/goby 1.9.7.3-r1 1.9.8.1-r1: A DNA sequencing data management framework
 sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
-sci-biology/hmmer 2.3.2-r3 3.0: Sequence analysis using profile hidden Markov models
+sci-biology/hmmer 2.3.2-r3 2.3.2-r4 3.0 3.1_beta2: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.04 1.05-r1: A subset seed design tool for DNA sequence alignment
 sci-biology/infernal 1.0.2-r1: Inference of RNA alignments
 sci-biology/iqpnni 3.3.1 3.3.2-r1: Important Quartet Puzzling and NNI Operation
@@ -17983,7 +17983,7 @@ www-plugins/adobe-flash 11.2.202.635 23.0.0.162: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.143 54.0.2840.50_beta 55.0.2882.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.2 0.3.5 0.3.5-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
-www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
+www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
 www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/kaffeine-mozilla-plugin 0.2-r1: The Kaffeine Mozilla starter plugin
 www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to embed file viewers into non-KDE browsers
