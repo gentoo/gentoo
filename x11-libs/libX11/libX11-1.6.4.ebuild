@@ -4,6 +4,8 @@
 
 EAPI=5
 
+# bogus commit to force manifest regeneration #596462
+
 XORG_DOC=doc
 # needs automake-1.14 without eautoreconf
 XORG_EAUTORECONF=yes
