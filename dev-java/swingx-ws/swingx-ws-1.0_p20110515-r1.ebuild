@@ -16,23 +16,25 @@ LICENSE="LGPL-2.1"
 SLOT="bt747"
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="dev-java/commons-httpclient:3
-	dev-java/jdom:1.0
+CDEPEND="
+	dev-java/jdom:0
 	dev-java/json:0
-	dev-java/jtidy:0
 	dev-java/rome:0
-	dev-java/swing-layout:1
-	dev-java/swingx:1.6
-	dev-java/swingx-beaninfo:0
+	dev-java/jtidy:0
 	dev-java/xerces:2
+	dev-java/swingx:1.6
+	dev-java/swing-layout:1
+	dev-java/swingx-beaninfo:0
+	dev-java/commons-httpclient:3
 	dev-java/xml-commons-external:1.4"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-
-DEPEND=">=virtual/jdk-1.6
+RDEPEND="
 	${CDEPEND}
-	app-arch/unzip"
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${MY_P}/src"
 JAVA_SRC_DIR="beaninfo java"
