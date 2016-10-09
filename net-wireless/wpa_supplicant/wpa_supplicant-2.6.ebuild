@@ -127,6 +127,9 @@ src_prepare() {
 	# SO WOULD BE NICE TO JUST DROP IT, IF IT IS NOT NEEDED.
 	# bug (374089)
 	#epatch "${FILESDIR}/${P}-dbus-WPAIE-fix.patch"
+
+	# bug (596332)
+	epatch "${FILESDIR}/${P}-libressl.patch"
 }
 
 src_configure() {
