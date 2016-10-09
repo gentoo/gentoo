@@ -540,7 +540,7 @@ EOF
 				if [[ -e CMakeLists.txt ]] ; then
 					cmake_comment_add_subdirectory ${lang}
 				fi
-			elif ! has ${lang/.po/} ${LINGUAS} ; then
+			elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
 				if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
 					rm ${lang} || die
 				fi
