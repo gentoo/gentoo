@@ -4,9 +4,12 @@
 
 EAPI=6
 
+MY_PV="5.27.0"
 inherit kde5
 
 DESCRIPTION="NetworkManager bindings for Qt"
+SRC_URI="mirror://kde/stable/frameworks/${MY_PV%.0}/${PN}-${MY_PV}.tar.xz"
+
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="teamd"
@@ -26,4 +29,12 @@ RDEPEND="${COMMON_DEPEND}
 	!net-libs/libnm-qt:5
 "
 
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 PATCHES=( "${FILESDIR}/${PN}-5.27.0-tests.patch" )
+
+src_prepare(){
+	sed -e "s/${MY_PV}/${PV}/" \
+		-i CMakeLists.txt || die "Failed to lower ECM version requirement"
+	kde5_src_prepare
+}
