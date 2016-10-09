@@ -2304,7 +2304,7 @@ app-text/jist 1.5.1 1.5.1-r1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6: BibTeX editor for KDE to edit bibliographies used with LaTeX
-app-text/kchmviewer 7.5-r1: Feature rich chm file viewer, based on Qt
+app-text/kchmviewer 7.5-r1 7.7: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
