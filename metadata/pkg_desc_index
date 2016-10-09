@@ -593,7 +593,7 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
-app-crypt/signing-party 1.1.4 1.1.11-r1 2.2 2.4: A collection of several tools related to OpenPGP
+app-crypt/signing-party 1.1.4 2.4: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -18659,7 +18659,7 @@ x11-plugins/gkrellm-bluez 0.2-r1: GKrellm plugin for monitoring bluetooth (Linux
 x11-plugins/gkrellm-countdown 0.1.2 0.1.2-r1: A simple countdown clock for GKrellM2
 x11-plugins/gkrellm-cpupower 0.1.6-r1: A Gkrellm2 plugin for displaying and manipulating CPU frequency
 x11-plugins/gkrellm-imonc 0.2 0.2-r1: A GKrellM2 plugin to control a fli4l router
-x11-plugins/gkrellm-leds 0.8.1 0.8.2-r1: GKrellM2 plugin for monitoring keyboard LEDs
+x11-plugins/gkrellm-leds 0.8.2-r1: GKrellM2 plugin for monitoring keyboard LEDs
 x11-plugins/gkrellm-mailwatch 2.4.3-r1: A GKrellM2 plugin that shows the status of additional mail boxes
 x11-plugins/gkrellm-plugins 2.0: emerge this package to install all of the gkrellm plugins
 x11-plugins/gkrellm-radio 2.0.4: A minimalistic GKrellM2 plugin to control radio tuners
