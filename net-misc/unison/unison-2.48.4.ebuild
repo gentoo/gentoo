@@ -80,4 +80,5 @@ pkg_postinst() {
 	elog "Unison now uses SLOTs, so you can specify servercmd=/usr/bin/unison-${SLOT}"
 	elog "in your profile files to access exactly this version over ssh."
 	elog "Or you can use 'eselect unison' to set the version."
+	eselect unison update
 }

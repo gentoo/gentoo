@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="github">gentoo/java-ebuilder</remote-id>
+  </upstream>
+  <maintainer type="person">
+     <email>heroxbd@gentoo.org</email>
+     <name>Benda Xu</name>
+  </maintainer>
+</pkgmetadata>
