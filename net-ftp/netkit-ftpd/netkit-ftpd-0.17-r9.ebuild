@@ -15,9 +15,12 @@ SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${MY_P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 s390 sh sparc x86"
-IUSE="ssl"
+IUSE="libressl ssl"
 
-DEPEND="ssl? ( dev-libs/openssl:0= )"
+DEPEND="ssl? ( 
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= ) )
+"
 RDEPEND="${DEPEND}
 	virtual/inetd
 	!www-servers/publicfile"

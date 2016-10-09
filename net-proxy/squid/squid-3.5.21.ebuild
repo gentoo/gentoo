@@ -12,7 +12,7 @@ SRC_URI="http://www.squid-cache.org/Versions/v3/3.5/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="caps ipv6 pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test \
+IUSE="caps ipv6 pam ldap libressl samba sasl kerberos nis radius ssl snmp selinux logrotate test \
 	ecap esi ssl-crtd \
 	mysql postgres sqlite \
 	qos tproxy \
@@ -25,7 +25,10 @@ COMMON_DEPEND="caps? ( >=sys-libs/libcap-2.16 )
 	ldap? ( net-nds/openldap )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
-	ssl? ( dev-libs/openssl:0 dev-libs/nettle >=net-libs/gnutls-3.1.5 )
+	ssl? (
+		libressl? ( dev-libs/libressl:0 )
+		!libressl? ( dev-libs/openssl:0 )
+		dev-libs/nettle >=net-libs/gnutls-3.1.5 )
 	sasl? ( dev-libs/cyrus-sasl )
 	ecap? ( net-libs/libecap:1 )
 	esi? ( dev-libs/expat dev-libs/libxml2 )

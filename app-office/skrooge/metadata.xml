@@ -8,5 +8,6 @@
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="crypt">Enable encryption using <pkg>dev-db/sqlcipher</pkg></flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 	</use>
 </pkgmetadata>
