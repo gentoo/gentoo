@@ -18,9 +18,11 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	>=dev-lang/mono-1.1
-	>=dev-dotnet/glade-sharp-2.12
-	>=dev-dotnet/gtk-sharp-2.12
-	>=dev-dotnet/gconf-sharp-2.12
+	|| ( (
+		>=dev-dotnet/glade-sharp-2.12
+		>=dev-dotnet/gtk-sharp-2.12
+		>=dev-dotnet/gconf-sharp-2.12 )
+	>=dev-dotnet/gtk-sharp-2.12.21 )
 	media-libs/gstreamer:1.0
 	>=app-text/gtkspell-2.0:2
 	>=app-text/enchant-1.3
