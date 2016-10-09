@@ -6844,6 +6844,7 @@ dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.5: Stripped down version of APC supp
 dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
+dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r1: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.7-r2: Direct I/O functions for PHP
@@ -17938,7 +17939,7 @@ www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 40.0.2308.62 40.0.2308.81: A fast and secure web browser
 www-client/opera-beta 40.0.2308.52 41.0.2353.10: A fast and secure web browser
 www-client/opera-developer 41.0.2349.0 42.0.2372.0: A fast and secure web browser
-www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
@@ -18684,6 +18685,7 @@ x11-plugins/pidgin-birthday-reminder 1.7 1.7-r1: Plugin for Pidgin that reminds 
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
 x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
 x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but not are not considered worthy of inclusion in Pidgin itself
+x11-plugins/pidgin-funyahoo-plusplus 9999: Yahoo! (2016) Protocol Plugin for Pidgin
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
 x11-plugins/pidgin-gpg 0.9 0.9.3: Pidgin GPG/OpenPGP (XEP-0027) plugin
 x11-plugins/pidgin-hotkeys 0.2.4: Pidgin plugin to define global hotkeys for various actions

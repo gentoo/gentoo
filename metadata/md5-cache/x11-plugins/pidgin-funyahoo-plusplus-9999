@@ -1,0 +1,11 @@
+DEFINED_PHASES=unpack
+DEPEND=net-im/pidgin dev-libs/json-glib virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Yahoo! (2016) Protocol Plugin for Pidgin
+EAPI=6
+HOMEPAGE=https://github.com/EionRobb/funyahoo-plusplus
+LICENSE=GPL-3+
+RDEPEND=net-im/pidgin dev-libs/json-glib
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=b31487939eba8a642fd322288a3f7a4e
