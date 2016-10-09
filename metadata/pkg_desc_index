@@ -18612,7 +18612,7 @@ x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipu
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
 x11-misc/xscreensaver 5.34 5.35-r2: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
-x11-misc/xsel 1.2.0: XSel is a command-line program for getting and setting the contents of the X selection
+x11-misc/xsel 1.2.0 9999: command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3 0.1.3-r1: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsnap 1.5.10 1.5.11 1.5.15: Program to interactively take a 'snapshot' of a region of the screen
