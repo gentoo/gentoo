@@ -4550,7 +4550,7 @@ dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of c
 dev-libs/cereal 1.2.1: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs
-dev-libs/check 0.9.8-r1 0.9.11 0.10.0-r1: A unit test framework for C
+dev-libs/check 0.9.8-r1 0.9.11 0.10.0-r1 0.10.0-r2: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/cl 1.2.1-r1 9999: OpenCL bindings for Erlang
