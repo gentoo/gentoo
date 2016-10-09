@@ -52,8 +52,6 @@ src_test() {
 src_install() {
 	java-pkg_dojar dist/${PN}.jar
 	java-pkg_dojar dist/2p.jar
-	java-pkg_dojar lib/autocomplete.jar
-	java-pkg_dojar lib/rsyntaxtextarea.jar
 
 	if use doc ; then
 		java-pkg_dohtml -r docs/* || die
