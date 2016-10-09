@@ -4,8 +4,8 @@ an error...
 
 Adding include is necessary for gcc-4.3.
 
---- configure.in	2008-07-16 09:18:35 +0000
-+++ configure.in	2008-07-16 09:18:43 +0000
+--- a/configure.in	2008-07-16 09:18:35 +0000
++++ b/configure.in	2008-07-16 09:18:43 +0000
 @@ -61,6 +61,7 @@
    AC_TRY_RUN([
  #include <glib.h>

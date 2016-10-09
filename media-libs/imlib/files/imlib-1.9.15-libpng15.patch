@@ -1,5 +1,5 @@
---- gdk_imlib/io-png.c
-+++ gdk_imlib/io-png.c
+--- a/gdk_imlib/io-png.c
++++ b/gdk_imlib/io-png.c
 @@ -40,13 +40,13 @@
        return NULL;
      }
@@ -67,8 +67,8 @@
  	    {
  	      fclose(f);
  	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
---- Imlib/load.c
-+++ Imlib/load.c
+--- a/Imlib/load.c
++++ b/Imlib/load.c
 @@ -197,12 +197,12 @@
        png_destroy_read_struct(&png_ptr, NULL, NULL);
        return NULL;
@@ -110,8 +110,8 @@
    else
      {
        for (y = 0; y < *h; y++)
---- Imlib/save.c
-+++ Imlib/save.c
+--- a/Imlib/save.c
++++ b/Imlib/save.c
 @@ -342,7 +342,7 @@
  	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
  	      return 0;
@@ -121,8 +121,8 @@
  	    {
  	      fclose(f);
  	      png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
---- Imlib/utils.c
-+++ Imlib/utils.c
+--- a/Imlib/utils.c
++++ b/Imlib/utils.c
 @@ -1981,14 +1981,13 @@
        png_destroy_read_struct(&png_ptr, NULL, NULL);
        return NULL;
