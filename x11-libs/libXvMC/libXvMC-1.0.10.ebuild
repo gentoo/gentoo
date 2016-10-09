@@ -4,6 +4,8 @@
 
 EAPI=5
 
+# bogus commit to force manifest regeneration #596462
+
 XORG_MULTILIB=yes
 inherit xorg-2
 
