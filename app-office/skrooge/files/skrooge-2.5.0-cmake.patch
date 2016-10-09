@@ -1,0 +1,28 @@
+commit 7c8d47023fc34e02b6d2564696d8dc0d51f019f9
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sat Oct 8 23:17:54 2016 +0200
+
+    KF5DocTools -> KF5Runner conditional
+    
+    REVIEW: 129129
+
+diff --git a/plugins/krunner/skrooge_add_operation/CMakeLists.txt b/plugins/krunner/skrooge_add_operation/CMakeLists.txt
+index 6faec90..f9c41bf 100644
+--- a/plugins/krunner/skrooge_add_operation/CMakeLists.txt
++++ b/plugins/krunner/skrooge_add_operation/CMakeLists.txt
+@@ -20,7 +20,7 @@ PROJECT(plugin_add_operation)
+ 
+ FIND_PACKAGE(KF5Runner)
+ 
+-IF(KF5DOCTOOLS_FOUND)
++IF(KF5Runner_FOUND)
+   LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
+ 
+   ADD_LIBRARY(skrooge_add_operation MODULE skgaddoperation.cpp)
+@@ -29,4 +29,4 @@ IF(KF5DOCTOOLS_FOUND)
+   ########### install files ###############
+   INSTALL(TARGETS skrooge_add_operation DESTINATION ${KDE_INSTALL_QTPLUGINDIR})
+   INSTALL(FILES ${PROJECT_SOURCE_DIR}/org.kde.plasma-runner-skrooge-add-operation.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+-ENDIF()
+\ No newline at end of file
++ENDIF()
