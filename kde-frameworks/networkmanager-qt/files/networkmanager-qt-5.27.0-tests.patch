@@ -1,0 +1,111 @@
+commit cc9d198676e8c8afae9e55286bd401f40634ce6b
+Author: Jan Grulich <jgrulich@redhat.com>
+Date:   Wed Oct 5 11:46:01 2016 +0200
+
+    Fix unit tests
+    
+    In case we build against NetworkManager 1.4.x, we have to avoid using
+    o.f.DBus.Properties interface for monitoring property changes, because
+    our FakeNetwork doesn't support that yet.
+    
+    BUG:369881
+
+diff --git a/src/activeconnection.cpp b/src/activeconnection.cpp
+index 6601d74..22ab7d0 100644
+--- a/src/activeconnection.cpp
++++ b/src/activeconnection.cpp
+@@ -66,12 +66,19 @@ NetworkManager::ActiveConnection::ActiveConnection(const QString &path, QObject
+         d->propertiesChanged(initialProperties);
+     }
+ 
++#ifndef NMQT_STATIC
+ #if NM_CHECK_VERSION(1, 4, 0)
+     QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
+                                          QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
+ #else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerConnectionActiveInterface::PropertiesChanged, d, &ActiveConnectionPrivate::propertiesChanged);
+ #endif
++#endif
++    
++#ifdef NMQT_STATIC
++    connect(&d->iface, &OrgFreedesktopNetworkManagerConnectionActiveInterface::PropertiesChanged, d, &ActiveConnectionPrivate::propertiesChanged);
++#endif
++    
+     /*
+      * Workaround: Re-check connection state before we watch changes in case it gets changed too quickly
+      * BUG:352326
+diff --git a/src/manager.cpp b/src/manager.cpp
+index 4cd3353..6565299 100644
+--- a/src/manager.cpp
++++ b/src/manager.cpp
+@@ -97,6 +97,9 @@ NetworkManager::NetworkManagerPrivate::NetworkManagerPrivate()
+             this, &NetworkManagerPrivate::onDeviceAdded);
+     connect(&iface, &OrgFreedesktopNetworkManagerInterface::DeviceRemoved,
+             this, &NetworkManagerPrivate::onDeviceRemoved);
++
++
++#ifndef NMQT_STATIC
+ #if NM_CHECK_VERSION(1, 4, 0)
+     QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, NetworkManagerPrivate::DBUS_DAEMON_PATH, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
+                                          QLatin1String("PropertiesChanged"), this, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
+@@ -104,6 +107,13 @@ NetworkManager::NetworkManagerPrivate::NetworkManagerPrivate()
+     connect(&iface, &OrgFreedesktopNetworkManagerInterface::PropertiesChanged,
+             this, &NetworkManagerPrivate::propertiesChanged);
+ #endif
++#endif
++
++#ifdef NMQT_STATIC
++    connect(&iface, &OrgFreedesktopNetworkManagerInterface::PropertiesChanged,
++            this, &NetworkManagerPrivate::propertiesChanged);
++#endif
++   
+     connect(&watcher, &QDBusServiceWatcher::serviceRegistered,
+             this, &NetworkManagerPrivate::daemonRegistered);
+     connect(&watcher, &QDBusServiceWatcher::serviceUnregistered,
+diff --git a/src/wireddevice.cpp b/src/wireddevice.cpp
+index 8e66299..e64492f 100644
+--- a/src/wireddevice.cpp
++++ b/src/wireddevice.cpp
+@@ -53,12 +53,18 @@ NetworkManager::WiredDevice::WiredDevice(const QString &path, QObject *parent)
+         d->propertiesChanged(initialProperties);
+     }
+ 
++#ifndef NMQT_STATIC
+ #if NM_CHECK_VERSION(1, 4, 0)
+     QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
+                                          QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
+ #else
+     connect(&d->wiredIface, &OrgFreedesktopNetworkManagerDeviceWiredInterface::PropertiesChanged, d, &WiredDevicePrivate::propertiesChanged);
+ #endif
++#endif
++    
++#ifdef NMQT_STATIC
++    connect(&d->wiredIface, &OrgFreedesktopNetworkManagerDeviceWiredInterface::PropertiesChanged, d, &WiredDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::WiredDevice::~WiredDevice()
+diff --git a/src/wirelessdevice.cpp b/src/wirelessdevice.cpp
+index 1f47c28..10c47da 100644
+--- a/src/wirelessdevice.cpp
++++ b/src/wirelessdevice.cpp
+@@ -66,12 +66,19 @@ NetworkManager::WirelessDevice::WirelessDevice(const QString &path, QObject *par
+         d->propertiesChanged(initialProperties);
+     }
+ 
++#ifndef NMQT_STATIC
+ #if NM_CHECK_VERSION(1, 4, 0)
+     QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
+                                          QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
+ #else
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::PropertiesChanged, d, &WirelessDevicePrivate::propertiesChanged);
+ #endif
++#endif
++    
++#ifdef NMQT_STATIC
++    connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::PropertiesChanged, d, &WirelessDevicePrivate::propertiesChanged);
++#endif
++    
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::AccessPointAdded, d, &WirelessDevicePrivate::accessPointAdded);
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::AccessPointRemoved, d, &WirelessDevicePrivate::accessPointRemoved);
+ }
