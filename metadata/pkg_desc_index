@@ -12414,7 +12414,7 @@ media-gfx/photoqt 1.4.1: Simple but powerful Qt-based image viewer
 media-gfx/phototonic 1.6.17: Image viewer and organizer
 media-gfx/pictureflow 0.1.0: Qt widget to display images with animated transition effect
 media-gfx/picturewall 1.0-r1: Qt4 picture viewer and image searching tool using google.com
-media-gfx/pinta 1.4 1.6 1.6-r1 1.6-r2 9999: Simple Painting for Gtk
+media-gfx/pinta 1.6-r2 9999: Simple Painting for Gtk
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
@@ -12676,7 +12676,7 @@ media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files an
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.8 2.5.10: Library that implements support for numerous digital cameras
-media-libs/libgpod 0.8.3-r1 0.8.3-r2: Shared library to access the contents of an iPod
+media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libhdhomerun 20140121 20150826: SiliconDust HDHomeRun Utilties
@@ -18891,6 +18891,7 @@ x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
 x11-themes/adwaita-icon-theme 3.16.2.2 3.18.0 3.20: GNOME default icon theme
+x11-themes/arc-icon-theme 20160605: Vertex icon theme
 x11-themes/arc-theme 20160605: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
 x11-themes/bespin 0_p20140225: Very configurable Qt4/KDE4 style derived from the Oxygen project
@@ -19017,6 +19018,7 @@ x11-themes/vdrgraphtft-deepblue 0.3.1: GraphTFT theme: Deep Blue
 x11-themes/vdrgraphtft-deeppurple 0.3.2: GraphTFT theme: Alien vs Predator
 x11-themes/vdrgraphtft-poetter 0.3.2: GraphTFT theme: Poetter
 x11-themes/verne-backgrounds 15.91.0.1: Fedora official background artwork
+x11-themes/vertex-icon-theme 20150506: Vertex icon theme
 x11-themes/vertex-theme 20160329: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1 0.4.0: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
