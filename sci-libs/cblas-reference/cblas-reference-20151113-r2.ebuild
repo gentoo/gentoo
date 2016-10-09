@@ -33,7 +33,7 @@ src_prepare() {
 
 	ESELECT_PROF=reference
 
-	cp "${FILESDIR}"/eselect.cblas.reference-r1 "${T}"/eselect.cblas.reference || die
+	cp "${FILESDIR}"/eselect.cblas.reference-r2 "${T}"/eselect.cblas.reference || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.cblas.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
