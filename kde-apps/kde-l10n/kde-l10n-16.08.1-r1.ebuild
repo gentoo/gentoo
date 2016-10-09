@@ -15,7 +15,7 @@ inherit kde5
 
 DESCRIPTION="KDE internationalization package"
 
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
@@ -26,9 +26,17 @@ DEPEND="
 RDEPEND="
 	!<kde-apps/kde4-l10n-${PV}
 	!<kde-apps/kdepim-l10n-${PV}:5
-	!<kde-apps/khelpcenter-5.5.5-r1
-	!=kde-apps/khelpcenter-5.6.2
-	!<kde-apps/ktp-l10n-${PV}
+	!<=kde-apps/khelpcenter-5.6.2
+	!kde-apps/ktp-accounts-kcm:4
+	!kde-apps/ktp-approver:4
+	!kde-apps/ktp-auth-handler:4
+	!kde-apps/ktp-common-internals:4
+	!kde-apps/ktp-contact-list:4
+	!kde-apps/ktp-filetransfer-handler:4
+	!kde-apps/ktp-kded-module:4
+	!kde-apps/ktp-l10n
+	!kde-apps/ktp-send-file:4
+	!kde-apps/ktp-text-ui:4
 "
 
 pkg_setup() {
@@ -60,13 +68,6 @@ src_prepare() {
 		find -mindepth 5 -maxdepth 5 -type f -name CMakeLists.txt -exec \
 			sed -i -e "/add_subdirectory( *${subdir} *)/ s/^/#DONT/" {} + || die
 	done
-
-	# Remove ktp translations (part of kde-apps/ktp-l10n)
-	# Drop that hack (and kde-apps/ktp-l10n) after ktp:4 removal
-	find ./*/5/*/messages/kdenetwork -type f \
-		\( -name kaccounts*po -o -name kcm_ktp*po -o -name kcmtelepathy*po \
-		-o -name kded_ktp*po -o -name ktp*po -o -name plasma*ktp*po \) \
-		-delete
 }
 
 src_configure() {
