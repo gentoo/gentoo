@@ -13,7 +13,7 @@ HOMEPAGE="http://heim.ifi.uio.no/~oyvinha/gkleds/"
 SRC_URI="http://heim.ifi.uio.no/~oyvinha/e107_files/downloads/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="alpha amd64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~ppc ~sparc x86"
 IUSE=""
 
 COMMON_DEPEND="app-admin/gkrellm[X]"
