@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (09 Oct 2016)
+# Abandoned and declared dead by upstream. Not recommended for use with recent
+# versions of kaffeine. Masked for removal in 30 days.
+www-plugins/kaffeine-mozilla-plugin
+
 # Patrice Clement <monsieurp@gentoo.org> (09 Oct 2016)
 # Although still available for download, the JMF API is a dead project which
 # hasn't been updated in years and hence very old.
