@@ -2037,7 +2037,7 @@ app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.0-r1 1.5.2 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.4.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.4.0 2.5.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
@@ -13685,7 +13685,7 @@ media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-subtitles 1.2 1.3-r1: Video subtitling for the Gnome desktop
 media-video/gnome-video-effects 0.4.1: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
-media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 0.6.1-r1 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+media-video/gpac 0.5.2 0.6.1-r1 0.6.1-r2 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3 2.0.4: GTK+ UVC Viewer
@@ -13697,7 +13697,7 @@ media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using 
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 2.0.4: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.4 2.0.5: Media player with digital TV support by KDE
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2: Application to take pictures and videos from your webcam by KDE
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
@@ -14266,7 +14266,7 @@ net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/bareftp 0.3.12: Mono based file transfer client
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.12.0.2 3.14.1 3.21.0 3.22.0 3.22.1: FTP client with lots of useful features and an intuitive interface
-net-ftp/frox 0.7.18-r4 0.7.18-r5: A transparent ftp proxy
+net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r2 2.0.19-r3: Gnome based FTP Client
@@ -14411,7 +14411,7 @@ net-libs/axtls 1.5.3 1.5.4 2.0.0 2.0.1: Embedded client/server TLSv1 SSL library
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2: A multicast protocol to support Bible software shared co-navigation
-net-libs/c-client 2007f-r4: UW IMAP c-client library
+net-libs/c-client 2007f-r4 2007f-r5: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccrtp 2.0.9 2.1.2: GNU ccRTP is an implementation of RTP, the real-time transport protocol from the IETF
 net-libs/courier-authlib 0.65.0-r3 0.66.3 0.66.4 0.66.4-r1: Courier authentication library
@@ -14564,7 +14564,7 @@ net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony p
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0 2.0.0-r1: An open-source implementation of Service Location Protocol
-net-libs/ortp 0.20.0 0.22.0 0.23.0: Open Real-time Transport Protocol (RTP, RFC3550) stack
+net-libs/ortp 0.20.0 0.22.0 0.23.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/osptoolkit 3.5.0 4.1.5: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.1: Library to parse proxy auto-config files
 net-libs/phodav 2.0-r1: WebDav server implementation using libsoup
@@ -15060,7 +15060,7 @@ net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2: Remote desktop viewer display system
-net-misc/tinc 1.0.28 1.1_pre14: tinc is an easy to configure VPN implementation
+net-misc/tinc 1.0.28 1.0.29 1.1_pre14: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
