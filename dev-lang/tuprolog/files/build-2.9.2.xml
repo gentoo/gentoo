@@ -48,7 +48,9 @@
 		<jar basedir="${build.dir}" jarfile="${dist.dir}/2p.jar">
 			<manifest>
 				<attribute name="Main-Class" value="alice.tuprologx.ide.GUILauncher"/>
+				<attribute name="Class-Path" value="."/>
 			</manifest>
+			<zipgroupfileset dir="lib" includes="*.jar"/>
 		</jar>
 	</target>
 
