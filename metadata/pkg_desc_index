@@ -545,7 +545,7 @@ app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tic
 app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
-app-crypt/libu2f-host 1.0.0 1.0.0-r1 1.1.0 1.1.1: Yubico Universal 2nd Factor (U2F) Host C Library
+app-crypt/libu2f-host 1.1.1 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.0.1: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
 app-crypt/loop-aes-losetup 2.21 2.26: Various useful Linux utilities
