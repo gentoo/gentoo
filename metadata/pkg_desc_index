@@ -8106,7 +8106,7 @@ dev-python/python-urljr 1.0.1-r1: JanRain's URL Utilities
 dev-python/python-virtkey 0.60.0-r1: Python module to simulate keypresses and get current keyboard layout
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xcaplib 1.1.0: Python library for managing XML documents on XCAP server
-dev-python/python-xlib 0.15_rc1 0.15_rc1-r2: A fully functional X client library for Python, written in Python
+dev-python/python-xlib 0.15_rc1 0.15_rc1-r2 0.17: A fully functional X client library for Python, written in Python
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
