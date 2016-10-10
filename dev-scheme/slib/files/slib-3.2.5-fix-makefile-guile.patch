@@ -1,0 +1,23 @@
+--- slib-3b5/~Makefile	2016-10-10 23:54:01.461733550 +0200
++++ slib-3b5/Makefile	2016-10-10 23:59:33.806035867 +0200
+@@ -13,9 +13,9 @@ SHELL = /bin/sh
+ INSTALL = install
+ INSTALL_PROGRAM = ${INSTALL}
+ INSTALL_DATA = ${INSTALL} -m 644
+-INSTALL_INFO = ginstall-info
++INSTALL_INFO = install-info
+ 
+-SCHEME = scm
++SCHEME = guile
+ CHPAT = $(HOME)/bin/chpat
+ MAKEDEV = $(MAKE) -f $(HOME)/makefile.dev
+ TEXI2HTML = /usr/local/bin/texi2html -split -verbose
+@@ -183,7 +183,7 @@ slib.html: slib.texi
+ 	$(MAKEINFO) --html --no-split --no-warn --force $<
+ 
+ slib-$(VERSION).info: slib.texi version.txi $(txifiles) $(texifiles)
+-	$(MAKEINFO) $< --no-warn --no-split -o slib-$(VERSION).info
++	$(MAKEINFO) $< --no-warn --no-split --force -o slib-$(VERSION).info
+ slib.info: slib-$(VERSION).info
+ 	if [ -f $(prevdocsdir)slib.info ];\
+ 	  then infobar $(prevdocsdir)slib.info slib-$(VERSION).info \
