@@ -8,6 +8,7 @@ command_args="${NTPD_OPTS}"
 pidfile="/var/run/ntpd.pid"
 
 depend() {
-	use net dns logger
+	need net
+	use dns logger
 	after ntp-client
 }
