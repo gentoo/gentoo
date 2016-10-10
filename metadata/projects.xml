@@ -2943,6 +2943,7 @@
     <description>The Public Relations Team improves Gentoo's visibility towards the rest of the world.</description>
     <subproject ref="gmn@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
+    <subproject ref="pr@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
     <member>
       <email>a3li@gentoo.org</email>
