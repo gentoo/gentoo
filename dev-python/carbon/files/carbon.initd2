@@ -5,13 +5,13 @@
 export GRAPHITE_CONF_DIR=/etc/carbon
 export GRAPHITE_STORAGE_DIR=/var/lib/carbon
 
-INSTANCE=${SVCNAME/#*.}
-if [ "${INSTANCE}" == "${SVCNAME}" ]; then
+INSTANCE=${SVCNAME#*.}
+if [ "${INSTANCE}" = "${SVCNAME}" ]; then
 	INSTANCE="a"
 fi
 
 PIDFILE="/var/run/${SVCNAME}.pid"
-PROGRAMNAME=${SVCNAME/.*}
+PROGRAMNAME=${SVCNAME%%.*}
 
 CARBON_CONFIG=${CARBON_CONFIG:-/etc/carbon/carbon.conf}
 
