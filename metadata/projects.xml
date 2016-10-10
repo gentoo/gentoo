@@ -832,21 +832,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Documentation</url>
     <description>The Gentoo Documentation Project (GDP) is responsible for the creation and maintenance of all general Gentoo documentation.</description>
     <member>
-      <email>jkt@gentoo.org</email>
-      <name>Jan Kundrát</name>
-      <role>Editor</role>
-    </member>
-    <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Author, Editor</role>
     </member>
-    <member>
-      <email>nightmorph@gentoo.org</email>
-      <name>Joshua Saddler</name>
-      <role>Author, Editor</role>
-    </member>
-    <member>
+    <member is-lead="1">
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Author, Editor</role>
