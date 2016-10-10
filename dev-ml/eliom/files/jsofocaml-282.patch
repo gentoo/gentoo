@@ -1,0 +1,361 @@
+Backported from:
+
+commit 4edaf2275e2f7a027f3c7dc52e1e295a6e56b19a
+Author: Vasilis Papavasileiou <git@vasilis.airpost.net>
+Date:   Thu Aug 18 19:40:56 2016 +0200
+
+    Fix ocsigen/js_of_ocaml#518
+
+upstream.
+
+Index: eliom-5.0.0/src/lib/eliom_client.client.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_client.client.ml
++++ eliom-5.0.0/src/lib/eliom_client.client.ml
+@@ -461,23 +461,29 @@ let raw_event_handler value =
+ 
+ let closure_name_prefix = Eliom_lib_base.RawXML.closure_name_prefix
+ let closure_name_prefix_len = String.length closure_name_prefix
+-let reify_caml_event name node ce : string * (#Dom_html.event Js.t -> bool) =
++let reify_caml_event name node ce =
+   match ce with
+-  | Xml.CE_call_service None -> name,(fun _ -> true)
++  | Xml.CE_call_service None -> name, `Other (fun _ -> true)
+   | Xml.CE_call_service (Some (`A, cookies_info, tmpl)) ->
+-    name, (fun ev ->
++    name, `Other (fun ev ->
+       let node = Js.Opt.get (Dom_html.CoerceTo.a node)
+           (fun () -> Lwt_log.raise_error ~section "not an anchor element")
+       in
+       raw_a_handler node cookies_info tmpl ev)
+   | Xml.CE_call_service
+       (Some ((`Form_get | `Form_post) as kind, cookies_info, tmpl)) ->
+-    name, (fun ev ->
++    name, `Other (fun ev ->
+       let form = Js.Opt.get (Dom_html.CoerceTo.form node)
+           (fun () -> Lwt_log.raise_error ~section "not a form element") in
+       raw_form_handler form kind cookies_info tmpl ev)
+   | Xml.CE_client_closure f ->
+-      name, (fun ev -> try f ev; true with False -> false)
++      name, `Other (fun ev -> try f ev; true with False -> false)
++  | Xml.CE_client_closure_keyboard f ->
++      name,
++      `Keyboard (fun ev -> try f ev; true with Eliom_lib.False -> false)
++  | Xml.CE_client_closure_mouse f ->
++      name,
++      `Mouse (fun ev -> try f ev; true with Eliom_lib.False -> false)
+   | Xml.CE_registered_closure (_, cv) ->
+     let name =
+       let len = String.length name in
+@@ -485,16 +491,27 @@ let reify_caml_event name node ce : stri
+       then String.sub name closure_name_prefix_len
+           (len - closure_name_prefix_len)
+       else name in
+-    name, raw_event_handler cv
++    name, `Other (raw_event_handler cv)
+ 
+ let register_event_handler, flush_load_script =
+   let add, _, flush = create_buffer () in
+   let register node (name, ev) =
+-    let name,f = reify_caml_event name node ev in
+-    if name = "onload"
+-    then add f
+-    else Js.Unsafe.set node (Js.bytestring name)
+-        (Dom_html.handler (fun ev -> Js.bool (f ev)))
++     match reify_caml_event name node ev with
++     | "onload", `Other f ->
++       add f
++     | "onload", `Keyboard _ ->
++       failwith "keyboard event handler for onload"
++     | "onload", `Mouse _ ->
++       failwith "keyboard event handler for onload"
++     | name, `Other f ->
++       Js.Unsafe.set node (Js.bytestring name)
++         (Dom_html.handler (fun ev -> Js.bool (f ev)))
++     | name, `Keyboard f ->
++       Js.Unsafe.set node (Js.bytestring name)
++         (Dom_html.handler (fun ev -> Js.bool (f ev)))
++     | name, `Mouse f ->
++       Js.Unsafe.set node (Js.bytestring name)
++         (Dom_html.handler (fun ev -> Js.bool (f ev)))
+   in
+   let flush () =
+     let fs = flush () in
+Index: eliom-5.0.0/src/lib/eliom_content.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content.server.mli
++++ eliom-5.0.0/src/lib/eliom_content.server.mli
+@@ -114,7 +114,7 @@ module Xml : sig
+       example {% <<a_api project="js_of_ocaml" | type
+       Dom_html.mouseEvent>>%} or {% <<a_api project="js_of_ocaml" | type
+       Dom_html.keyboardEvent >>%}. *)
+-  type -'a caml_event_handler constraint 'a = #Dom_html.event
++  type caml_event_handler
+ 
+   (**/**)
+ 
+@@ -129,18 +129,14 @@ module Xml : sig
+   val make_event_handler_table : elt -> Eliom_lib.RawXML.event_handler_table
+   val make_client_attrib_table : elt -> Eliom_lib.RawXML.client_attrib_table
+ 
+-  val caml_event_handler : ((#Dom_html.event as 'a) Js.t -> unit) Eliom_lib.client_value -> 'a caml_event_handler
+-
+-  class type biggest_event = object
+-    inherit Dom_html.event
+-    inherit Dom_html.mouseEvent
+-    inherit Dom_html.keyboardEvent
+-  end
++  val caml_event_handler :
++  	(Dom_html.event Js.t -> unit) Eliom_lib.client_value ->
++	    caml_event_handler
+ 
+   type racontent =
+     | RA of acontent
+     | RAReact of acontent option React.signal
+-    | RACamlEventHandler of biggest_event caml_event_handler
++    | RACamlEventHandler of caml_event_handler
+     | RALazyStr of string Eliom_lazy.request
+     | RALazyStrL of separator * string Eliom_lazy.request list
+     | RAClient of string * attrib option * Eliom_lib.poly
+Index: eliom-5.0.0/src/lib/eliom_content_core.client.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.client.ml
++++ eliom-5.0.0/src/lib/eliom_content_core.client.ml
+@@ -87,21 +87,19 @@ module Xml = struct
+   let node ?(a = []) name children = make (Node (name, a, children))
+   let lazy_node ?a name children = node ?a name (Eliom_lazy.force children)
+ 
+-  type biggest_event_handler = biggest_event Js.t -> unit
+-
+   type event_handler = Dom_html.event Js.t -> unit
+   type mouse_event_handler = Dom_html.mouseEvent Js.t -> unit
+   type keyboard_event_handler = Dom_html.keyboardEvent Js.t -> unit
+ 
+   let event_handler_attrib name (value : event_handler) =
+     internal_event_handler_attrib name
+-      (Caml (CE_client_closure (value :> biggest_event_handler)))
++      (Caml (CE_client_closure value))
+   let mouse_event_handler_attrib name (value : mouse_event_handler) =
+     internal_event_handler_attrib name
+-      (Caml (CE_client_closure (value :> biggest_event_handler)))
++      (Caml (CE_client_closure_mouse value))
+   let keyboard_event_handler_attrib name (value : keyboard_event_handler) =
+     internal_event_handler_attrib name
+-      (Caml (CE_client_closure (value :> biggest_event_handler)))
++      (Caml (CE_client_closure_keyboard value))
+ 
+   let node_react_children ?(a = []) name children =
+     {elt = Lazy.from_val (ReactChildren (Node (name,a,[]),children)); node_id=NoId}
+Index: eliom-5.0.0/src/lib/eliom_content_core.client.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.client.mli
++++ eliom-5.0.0/src/lib/eliom_content_core.client.mli
+@@ -35,24 +35,21 @@ module Xml : sig
+   type aname = string
+   type attrib
+ 
+-  type -'a caml_event_handler =
++  type caml_event_handler =
+     | CE_registered_closure of string * Eliom_lib.poly
+                                     (* 'a Js.t -> unit) client_value_server *)
+-    | CE_client_closure of ((#Dom_html.event as 'a) Js.t -> unit)
++    | CE_client_closure of
++        (Dom_html.event Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_mouse of
++        (Dom_html.mouseEvent Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_keyboard of
++        (Dom_html.keyboardEvent Js.t -> unit) (* Client side-only *)
+     | CE_call_service of
+         ([ `A | `Form_get | `Form_post] * (bool * string list) option * string option) option Eliom_lazy.request
+ 
+-  (* Inherit from all events.
+-     Necessary for subtyping since caml_event_handler is contravariant. *)
+-  class type biggest_event = object
+-    inherit Dom_html.event
+-    inherit Dom_html.mouseEvent
+-    inherit Dom_html.keyboardEvent
+-  end
+-
+   type internal_event_handler =
+     | Raw of string
+-    | Caml of biggest_event caml_event_handler
++    | Caml of caml_event_handler
+   type event_handler = Dom_html.event Js.t -> unit
+   type mouse_event_handler = Dom_html.mouseEvent Js.t -> unit
+   type keyboard_event_handler = Dom_html.keyboardEvent Js.t -> unit
+@@ -89,7 +86,7 @@ module Xml : sig
+   type racontent =
+     | RA of acontent
+     | RAReact of acontent option React.signal
+-    | RACamlEventHandler of biggest_event caml_event_handler
++    | RACamlEventHandler of caml_event_handler
+     | RALazyStr of string Eliom_lazy.request
+     | RALazyStrL of separator * string Eliom_lazy.request list
+     | RAClient of string * attrib option * Eliom_lib.poly
+Index: eliom-5.0.0/src/lib/eliom_content_core.server.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.server.ml
++++ eliom-5.0.0/src/lib/eliom_content_core.server.ml
+@@ -114,7 +114,6 @@ module Xml = struct
+   let lazy_node ?(a = []) name children =
+     make_lazy (Eliom_lazy.from_fun (fun () -> (Node (name, a, Eliom_lazy.force children))))
+ 
+-  type biggest_event_handler = (biggest_event Js.t -> unit) Eliom_lib.client_value
+   type event_handler = (Dom_html.event Js.t -> unit) Eliom_lib.client_value
+   type mouse_event_handler = (Dom_html.mouseEvent Js.t -> unit) Eliom_lib.client_value
+   type keyboard_event_handler = (Dom_html.keyboardEvent Js.t -> unit) Eliom_lib.client_value
+@@ -133,11 +132,11 @@ module Xml = struct
+   let biggest_event_handler_attrib name cf =
+     internal_event_handler_attrib name (event_handler cf)
+   let event_handler_attrib name (cf : event_handler) =
+-    biggest_event_handler_attrib name (cf :> biggest_event_handler)
++    biggest_event_handler_attrib name cf
+   let mouse_event_handler_attrib name (cf : mouse_event_handler) =
+-    biggest_event_handler_attrib name (cf :> biggest_event_handler)
++    biggest_event_handler_attrib name cf
+   let keyboard_event_handler_attrib name (cf : keyboard_event_handler) =
+-    biggest_event_handler_attrib name (cf :> biggest_event_handler)
++    biggest_event_handler_attrib name cf
+ 
+   let client_attrib ?init (x : attrib Eliom_lib.client_value) =
+     let crypto = make_cryptographic_safe_string () in
+Index: eliom-5.0.0/src/lib/eliom_content_core.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.server.mli
++++ eliom-5.0.0/src/lib/eliom_content_core.server.mli
+@@ -28,7 +28,7 @@ module Xml : sig
+      and type mouse_event_handler = (Dom_html.mouseEvent Js.t -> unit) Eliom_lib.client_value
+      and type keyboard_event_handler = (Dom_html.keyboardEvent Js.t -> unit) Eliom_lib.client_value
+ 
+-  type -'a caml_event_handler constraint 'a = #Dom_html.event
++  type caml_event_handler
+ 
+   (**/**)
+ 
+@@ -43,15 +43,9 @@ module Xml : sig
+   val make_event_handler_table : elt -> Eliom_lib.RawXML.event_handler_table
+   val make_client_attrib_table : elt -> Eliom_lib.RawXML.client_attrib_table
+ 
+-  class type biggest_event = object
+-    inherit Dom_html.event
+-    inherit Dom_html.mouseEvent
+-    inherit Dom_html.keyboardEvent
+-  end
+-
+   type internal_event_handler =
+     | Raw of string
+-    | Caml of biggest_event caml_event_handler
++    | Caml of caml_event_handler
+ 
+   val internal_event_handler_attrib : aname -> internal_event_handler -> attrib
+   val internal_event_handler_of_service :
+@@ -59,12 +53,14 @@ module Xml : sig
+       * (bool * string list) option
+       * string option) option Eliom_lazy.request -> internal_event_handler
+ 
+-  val caml_event_handler : ((#Dom_html.event as 'a) Js.t -> unit) Eliom_lib.client_value -> 'a caml_event_handler
++  val caml_event_handler :
++      (Dom_html.event Js.t -> unit) Eliom_lib.client_value ->
++      caml_event_handler
+ 
+   type racontent =
+     | RA of acontent
+     | RAReact of acontent option React.signal
+-    | RACamlEventHandler of biggest_event caml_event_handler
++    | RACamlEventHandler of caml_event_handler
+     | RALazyStr of string Eliom_lazy.request
+     | RALazyStrL of separator * string Eliom_lazy.request list
+     | RAClient of string * attrib option * Eliom_lib.poly
+Index: eliom-5.0.0/src/lib/eliom_lib_base.shared.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_lib_base.shared.ml
++++ eliom-5.0.0/src/lib/eliom_lib_base.shared.ml
+@@ -70,26 +70,22 @@ module RawXML = struct
+ 
+   type cookie_info = (bool * string list) deriving (Json)
+ 
+-  type -'a caml_event_handler =
++  type caml_event_handler =
+     | CE_registered_closure of
+         string * poly (* 'a Js.t -> unit) client_value *)
+     | CE_client_closure of
+-        ((#Dom_html.event as 'a) Js.t -> unit) (* Client side-only *)
++         (Dom_html.event Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_mouse of
++        (Dom_html.mouseEvent Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_keyboard of
++        (Dom_html.keyboardEvent Js.t -> unit) (* Client side-only *)
+     | CE_call_service of
+         ([ `A | `Form_get | `Form_post] * (cookie_info option) * string option)
+           option Eliom_lazy.request
+ 
+-  (* Inherit from all events.
+-     Necessary for subtyping since caml_event_handler is contravariant. *)
+-  class type biggest_event = object
+-    inherit Dom_html.event
+-    inherit Dom_html.mouseEvent
+-    inherit Dom_html.keyboardEvent
+-  end
+-
+   type internal_event_handler =
+     | Raw of string
+-    | Caml of biggest_event caml_event_handler
++    | Caml of caml_event_handler
+ 
+   type uri = string Eliom_lazy.request
+   let string_of_uri = Eliom_lazy.force
+@@ -128,7 +124,7 @@ module RawXML = struct
+   type racontent =
+     | RA of acontent
+     | RAReact of acontent option React.signal
+-    | RACamlEventHandler of biggest_event caml_event_handler
++    | RACamlEventHandler of caml_event_handler
+     | RALazyStr of string Eliom_lazy.request
+     | RALazyStrL of separator * string Eliom_lazy.request list
+     | RAClient of string * attrib option * poly (*attrib client_value *)
+Index: eliom-5.0.0/src/lib/eliom_lib_base.shared.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_lib_base.shared.mli
++++ eliom-5.0.0/src/lib/eliom_lib_base.shared.mli
+@@ -73,24 +73,21 @@ module RawXML : sig
+ 
+   type cookie_info = (bool * string list) deriving (Json)
+ 
+-  type -'a caml_event_handler =
++  type caml_event_handler =
+     | CE_registered_closure of
+         string * poly (* 'a Js.t -> unit) client_value *)
+-    | CE_client_closure of ((#Dom_html.event as 'a) Js.t -> unit)
++    | CE_client_closure of
++          (Dom_html.event Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_mouse of
++          (Dom_html.mouseEvent Js.t -> unit) (* Client side-only *)
++    | CE_client_closure_keyboard of
++          (Dom_html.keyboardEvent Js.t -> unit) (* Client side-only *)
+     | CE_call_service of
+         ([ `A | `Form_get | `Form_post] * (cookie_info option) * string option) option Eliom_lazy.request
+ 
+-  (* Inherit from all events.
+-     Necessary for subtyping since caml_event_handler is contravariant. *)
+-  class type biggest_event = object
+-    inherit Dom_html.event
+-    inherit Dom_html.mouseEvent
+-    inherit Dom_html.keyboardEvent
+-  end
+-
+   type internal_event_handler =
+     | Raw of string
+-    | Caml of biggest_event caml_event_handler
++    | Caml of caml_event_handler
+ 
+   type uri = string Eliom_lazy.request
+   val string_of_uri : uri -> string
+@@ -127,7 +124,7 @@ module RawXML : sig
+   type racontent =
+     | RA of acontent
+     | RAReact of acontent option React.signal
+-    | RACamlEventHandler of biggest_event caml_event_handler
++    | RACamlEventHandler of caml_event_handler
+     | RALazyStr of string Eliom_lazy.request
+     | RALazyStrL of separator * string Eliom_lazy.request list
+     | RAClient of string * attrib option * poly (* attrib client_value *)
