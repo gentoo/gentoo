@@ -6,13 +6,13 @@ EAPI=5
 
 XORG_DRI=dri
 XORG_EAUTORECONF=yes
-inherit linux-info xorg-2
+inherit linux-info xorg-2 flag-o-matic
 
 DESCRIPTION="X.Org driver for Intel cards"
 
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd -x86-fbsd"
 IUSE="debug dri3 +sna +udev uxa xvmc"
-COMMIT_ID="c8fc7f5e4bdd5b1e3212a226a2873393b5745f14"
+COMMIT_ID="696f58f69f2bac5717d19f7a1a2278fee50a083e"
 SRC_URI="https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
 
 S=${WORKDIR}/${COMMIT_ID}
@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 	x11-proto/resourceproto"
 
 src_configure() {
+	replace-flags -Os -O2
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable debug)
 		$(use_enable dri)
