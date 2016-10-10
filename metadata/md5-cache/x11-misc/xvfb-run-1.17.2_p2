@@ -9,4 +9,4 @@ RDEPEND=x11-apps/xauth x11-base/xorg-server[xvfb]
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xorg-server/xorg-server_1.17.2-2.diff.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=b03f473b55ae7d6b8f942ba2a3009576
+_md5_=95f2df3ff01357ffb0802212e2dd29dc
