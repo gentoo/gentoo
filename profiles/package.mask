@@ -853,13 +853,6 @@ dev-python/south
 # please file a separate bug report
 <net-dialup/ppp-2.4.7
 
-# Samuli Suominen <ssuominen@gentoo.org> (23 Aug 2014)
-# Some compile problems with media-libs/openexr >= 2.2.0
-# See https://bugs.gentoo.org/520240 for more information
->=media-libs/ilmbase-2.2.0
->=media-libs/openexr-2.2.0
->=media-gfx/openexr_viewers-2.2.0
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
