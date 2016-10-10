@@ -15,10 +15,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="doc +ocamlopt +ppx"
 
-RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
-	>=dev-ml/js_of_ocaml-2.5-r1:=
+RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]
+	>=dev-ml/js_of_ocaml-2.8.2:=
 	>=www-servers/ocsigenserver-2.5:=
-	>=dev-ml/tyxml-3.6:=
+	>=dev-ml/tyxml-4:=
 	>=dev-ml/deriving-0.6:=
 	>=dev-ml/reactiveData-0.2:=
 	dev-ml/ocaml-ipaddr:=
@@ -33,10 +33,9 @@ DEPEND="${RDEPEND}
 	dev-ml/opam"
 
 src_prepare() {
-	if has_version '>=dev-lang/ocaml-4.03' ; then
-		epatch "${FILESDIR}/"{camlp4,oc43,oc43-2}.patch
-	fi
-	has_version '>=dev-ml/tyxml-4' && epatch "${FILESDIR}/tyxml4.patch"
+	epatch "${FILESDIR}/"{camlp4,oc43,oc43-2}.patch \
+		"${FILESDIR}/tyxml4.patch" \
+		"${FILESDIR}/jsofocaml-282.patch"
 }
 
 src_compile() {
