@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-04">
+  <title>libgcrypt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been fixed in libgcrypt,the worst of
+    which results in predictable output from the random number generator.
+  </synopsis>
+  <product type="ebuild">libgcrypt</product>
+  <announced>October 10, 2016</announced>
+  <revised>October 10, 2016: 1</revised>
+  <bug>541564</bug>
+  <bug>559942</bug>
+  <bug>574268</bug>
+  <bug>591534</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libgcrypt" auto="yes" arch="*">
+      <unaffected range="ge">1.7.3</unaffected>
+      <vulnerable range="lt">1.7.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libgcrypt is a general purpose cryptographic library derived out of
+      GnuPG.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libgcrypt. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Side-channel attacks can leak private key information. A separate
+      critical bug allows an attacker who obtains 4640 bits from the RNG to
+      trivially predict the next 160 bits of output.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libgcrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgcrypt-1.7.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7511">CVE-2015-7511</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
+    <uri link="https://securityblog.redhat.com/2015/09/02/factoring-rsa-keys-with-tls-perfect-forward-secrecy/">
+      Factoring RSA Keys With TLS Perfect Forward Secrecy
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Dec 2015 21:25:17 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Oct 2016 11:04:11 +0000">K_F</metadata>
+</glsa>
