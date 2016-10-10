@@ -9,5 +9,5 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/libspe/spu-tools-2.3.0.136.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=649acfbc93b2e3a4782a9ebf1dd628fd
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=75f7f63b525bbed7fdbea468d0a80585
