@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (10 Oct 2016)
+# Note from upstream (https://github.com/Pylons/pylons):
+# Pylons has merged with repoze.bfg, and is now in maintenance-only mode. It's
+# highly recommended that new projects start with the new merged web framework,
+# pyramid. Masked for removal in 30 days.
+dev-python/pylons-sphinx-themes
+dev-python/pylons
+
 # Michael Palimaka <kensington@gentoo.org> (09 Oct 2016)
 # Abandoned and declared dead by upstream. Not recommended for use with recent
 # versions of kaffeine. Masked for removal in 30 days.
