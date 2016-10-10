@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201610-03">
+  <title>Quagga: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in Quagga might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">quagga</product>
+  <announced>October 10, 2016</announced>
+  <revised>October 10, 2016: 1</revised>
+  <bug>577156</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/quagga" auto="yes" arch="*">
+      <unaffected range="ge">1.0.20160315</unaffected>
+      <vulnerable range="lt">1.0.20160315</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quagga is a free routing daemon replacing Zebra supporting RIP, OSPF and
+      BGP.
+    </p>
+  </background>
+  <description>
+    <p>A memcpy function in the VPNv4 NLRI parser of bgp_mplsvpn.c does not
+      properly check the upper-bound length of received Labeled-VPN SAFI routes
+      data, which may allow for arbitrary code execution on the stack.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted packet, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quagga users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/quagga-1.0.20160315"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2342">CVE-2016-2342</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 06 Oct 2016 14:23:47 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 10 Oct 2016 08:11:56 +0000">
+    pinkbyte
+  </metadata>
+</glsa>
