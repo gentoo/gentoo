@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/TeXstudio%20${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="video qt4 +qt5"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
@@ -54,14 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/${P/-/}
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.4-hunspell-quazip.patch
-	"${FILESDIR}"/${PN}-2.8.2-desktop.patch
-# Get it from fedora
-	"${FILESDIR}"/${PN}-2.5-viewers-use-xdg-open.patch
-	)
+S=${WORKDIR}
 
 src_prepare() {
 	find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
@@ -71,10 +64,7 @@ src_prepare() {
 	fi
 
 	sed \
-		-e '/hunspell.pri/d' \
-		-e '/quazip.pri/d' \
 		-e '/qtsingleapplication.pri/d' \
-		-e '/QUAZIP_STATIC/d' \
 		-i ${PN}.pro || die
 
 #	cat >> ${PN}.pro <<- EOF
@@ -83,22 +73,20 @@ src_prepare() {
 
 	cp "${FILESDIR}"/texmakerx_my.pri ${PN}.pri || die
 	eprefixify ${PN}.pri
-
-	epatch ${PATCHES[@]}
 }
 
 src_configure() {
 	if use qt5; then
-		eqmake5
+		eqmake5 USE_SYSTEM_HUNSPELL=1 USE_SYSTEM_QUAZIP=1
 	else
-		eqmake4
+		eqmake4 USE_SYSTEM_HUNSPELL=1 USE_SYSTEM_QUAZIP=1
 	fi
 }
 
 src_install() {
 	local i
 	for i in 16x16 22x22 32x32 48x48 64x64 128x128; do
-		insinto /usr/share/icons/hicolor/${i}
+		insinto /usr/share/icons/hicolor/${i}/apps
 		newins utilities/${PN}${i}.png ${PN}.png
 	done
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
