@@ -17362,8 +17362,8 @@ sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 9999: Userland utilities for ZFS Linux kernel module
-sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 3.18.36 3.18.38 3.18.39 3.18.40 4.4.6 4.4.20 4.7.3: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
@@ -17384,7 +17384,7 @@ sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 4.1.31_p35 4.1.33_p37 4.4.19_p27 4.4.21_p30 4.6.7_p11 4.6.7_p14: Full Linux 4.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
+sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.82 3.4.112 3.10.103 3.12.63 3.14.79 3.16.37 3.18.42 4.1.33 4.4.23 4.7.6 4.8.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
