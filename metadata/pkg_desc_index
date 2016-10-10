@@ -16705,7 +16705,7 @@ sys-apps/inxi 2.2.14 2.2.19 2.3.0_p20160807: Commandline script to print hardwar
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.16 1.8.17: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 2.8.5 2.9.9 3.0.0: IPMI Management Utilities
-sys-apps/iproute2 2.6.38 3.3.0 3.8.0 3.17.0 3.19.0 4.0.0-r2 4.1.1 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 2.6.38 3.3.0 3.8.0 3.17.0 3.19.0 4.0.0-r2 4.1.1 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 0.56 1.0.4 1.0.5-r1 1.0.6 1.0.7 1.0.7-r1 1.0.9 1.0.9-r1 1.1.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 1.3 1.5 2.0: tool to manipulate Intel X86 and X86-64 processor microcode update collections
