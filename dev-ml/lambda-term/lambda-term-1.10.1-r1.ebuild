@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-ml/lwt-2.4.0:=[react]
 	>=dev-ml/zed-1.2:=
 	>=dev-ml/camomile-0.8:=
-	dev-ml/react:=
+	>=dev-ml/react-1.2:=
 "
 RDEPEND="${DEPEND}"
 
