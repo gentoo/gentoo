@@ -16,7 +16,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 hppa ~ppc ~sparc ~x86"
 IUSE="augeas diff doc emacs ldap minimal rrdtool selinux shadow sqlite vim-syntax xemacs"
 
 ruby_add_rdepend "
