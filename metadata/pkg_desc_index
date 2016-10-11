@@ -18482,7 +18482,7 @@ x11-misc/pcmanfm-qt 0.10.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
-x11-misc/py3status 3.1: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 3.2: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/png images
