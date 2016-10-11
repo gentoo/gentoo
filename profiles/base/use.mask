@@ -179,6 +179,7 @@ video_cards_omap
 video_cards_omapfb
 video_cards_tegra
 video_cards_vc4
+video_cards_vivante
 
 # linux-only drivers
 video_cards_qxl
