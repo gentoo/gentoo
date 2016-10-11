@@ -7225,8 +7225,6 @@ sys-apps/pkgcore:doc - Build and install API docs.
 sys-apps/policycoreutils:audit - Enable support for sys-process/audit and use the audit_* functions (like audit_getuid instead of getuid())
 sys-apps/portage:epydoc - Build html API documentation with epydoc.
 sys-apps/portage:ipc - Use inter-process communication between portage and running ebuilds.
-sys-apps/portage:python2 - Use python2 as Python interpreter.
-sys-apps/portage:python3 - Use python3 as Python interpreter.
 sys-apps/portage:xattr - Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.
 sys-apps/proot:care - Build dynamic CARE binary (more info - http://reproducible.io/)
 sys-apps/pyrenamer:music - Enable support for renaming music
