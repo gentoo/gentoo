@@ -1366,7 +1366,7 @@ app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to w
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.6.3-r2 4.6.3-r3 4.7.0-r2 4.7.0-r3: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.6.3 4.7.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-pvgrub 4.6.3 4.7.0 4.7.0-r1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.6.3-r1 4.6.3-r2 4.7.0-r1 4.7.0-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
@@ -7894,7 +7894,7 @@ dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.5 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.4.0 1.4.1 1.5.0 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylast 1.0.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 1.0.0 1.6.0: Python interface to last.fm and other api-compatible websites
 dev-python/pyldap 2.4.20-r1 2.4.20-r2 2.4.21 2.4.25 2.4.25.1: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
@@ -14927,6 +14927,7 @@ net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.0.12-r1 1.2.4 1.4.0 1.4.0-r1 1.4.2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager-fortisslvpn 1.2.2: NetworkManager Fortinet SSLVPN compatible plugin
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4 1.2.6: NetworkManager OpenVPN plugin
@@ -14947,6 +14948,7 @@ net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.6.4-r1 0.9.0.2: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.1_p2: A robust, high-performance CORBA 2 ORB
 net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07-r1 7.07-r2 9999: Free client for Cisco AnyConnect SSL VPN software
+net-misc/openfortivpn 1.2.0: A Fortinet compatible VPN client
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
@@ -15186,7 +15188,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.4.16-r1: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.4.17: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.9-r1 1.1.10: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
