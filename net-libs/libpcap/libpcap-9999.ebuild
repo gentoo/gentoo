@@ -6,13 +6,16 @@ EAPI=6
 inherit autotools eutils git-r3 multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
-HOMEPAGE="http://www.tcpdump.org/"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	${EGIT_REPO_URI}
+"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="bluetooth dbus netlink static-libs canusb"
+KEYWORDS=""
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
