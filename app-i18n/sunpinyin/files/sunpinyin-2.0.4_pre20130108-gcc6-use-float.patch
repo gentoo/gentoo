@@ -1,0 +1,17 @@
+--- sunpinyin-2.0.4_pre20130108/src/slm/tslmpack/common.h.old	2016-09-20 02:54:15.046257131 -0400
++++ sunpinyin-2.0.4_pre20130108/src/slm/tslmpack/common.h	2016-09-20 02:55:48.041124978 -0400
+@@ -53,10 +53,10 @@
+ typedef std::map<float, int> RealIndexMap;  // map real values to their indices
+ typedef std::map<std::string, unsigned int> TLexicon; // map word to wid
+ 
+-#define EffectivePr(a)  (float((usingLogPr) ? ((a) / log(2.0)) : (-log2((a)))))
+-#define OriginalPr(b)   (float((usingLogPr) ? ((b) * log(2.0)) : (exp2(-(b)))))
+-#define EffectiveBow(a) (float((usingLogPr) ? (exp(-(a))) : ((a))))
+-#define OriginalBow(b)  (float((usingLogPr) ? (-log((b))) : ((b))))
++#define EffectivePr(a)  (float((usingLogPr) ? ((a) / logf(2.0f)) : (-log2f((a)))))
++#define OriginalPr(b)   (float((usingLogPr) ? ((b) * logf(2.0f)) : (exp2f(-(b)))))
++#define EffectiveBow(a) (float((usingLogPr) ? (expf(-(a))) : ((a))))
++#define OriginalBow(b)  (float((usingLogPr) ? (-logf((b))) : ((b))))
+ 
+ #endif //_SLM_PACK_COMMON_H
+ 
