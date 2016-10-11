@@ -1,0 +1,19 @@
+With newer versions of javadoc (since JDK-1.8), "make doc-javahl"
+reports many errors, causing build failures. Add "-Xdoclint:none"
+option to restore old, sloppy behavior.
+
+Patch created for subversion-1.8.16, should work for other other
+versions, too.
+See <https://bugs.gentoo.org/show_bug.cgi?id=551094>
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -650,7 +650,7 @@
+ 
+ # Generate API documentation for the JavaHL package.
+ doc-javahl:
+-	$(JAVADOC) -d $(abs_builddir)/doc/javadoc \
++	$(JAVADOC) -Xdoclint:none -d $(abs_builddir)/doc/javadoc \
+ 	  -sourcepath $(top_srcdir)/subversion/bindings/javahl/src \
+ 	  -link http://java.sun.com/javase/6/docs/api/ \
+ 	  org.tigris.subversion.javahl \
