@@ -1,0 +1,62 @@
+diff --git a/lib/libproc/Makefile b/lib/libproc/Makefile
+index 2dedf11..275f4c3 100644
+--- a/lib/libproc/Makefile
++++ b/lib/libproc/Makefile
+@@ -15,6 +15,7 @@ SRCS=	proc_bkpt.c		\
+ INCS=	libproc.h
+ 
+ CFLAGS+=	-I${.CURDIR}
++CFLAGS+=	-I${.CURDIR}/../libelf
+ 
+ .if ${MK_CXX} == "no"
+ CFLAGS+=	-DNO_CXA_DEMANGLE
+@@ -28,6 +29,9 @@ LIBADD+=	elf rtld_db util
+ 
+ .if ${MK_CDDL} != "no"
+ LIBADD+=	ctf
++LDADD+=		-lelf
++LDFLAGS+=	-L${.OBJDIR}/../libelf
++
+ IGNORE_PRAGMA=	YES
+ CFLAGS+=	-I${.CURDIR}/../../cddl/contrib/opensolaris/lib/libctf/common \
+ 		-I${.CURDIR}/../../sys/cddl/contrib/opensolaris/uts/common \
+diff --git a/lib/libprocstat/Makefile b/lib/libprocstat/Makefile
+index 1829883..d0065a3 100644
+--- a/lib/libprocstat/Makefile
++++ b/lib/libprocstat/Makefile
+@@ -17,6 +17,8 @@ VERSION_DEF=	${.CURDIR}/Versions.def
+ SYMBOL_MAPS=	${.CURDIR}/Symbol.map
+ 
+ INCS=		libprocstat.h
++CFLAGS+=	-I${.CURDIR}/../libelf
++LDFLAGS+=       -L${.OBJDIR}/../libelf
+ CFLAGS+=	-I. -I${.CURDIR} -D_KVM_VNODE
+ SHLIB_MAJOR=	1
+ 
+diff --git a/lib/librtld_db/Makefile b/lib/librtld_db/Makefile
+index 0a8ed95..11baf5b 100644
+--- a/lib/librtld_db/Makefile
++++ b/lib/librtld_db/Makefile
+@@ -11,6 +11,9 @@ SRCS=		rtld_db.c
+ INCS=		rtld_db.h
+ 
+ CFLAGS+= -I${.CURDIR}
++CFLAGS+= -I${.CURDIR}/../libelf
++LDADD+= -lutil -lproc
++LDFLAGS+= -L${.OBJDIR}/../libutil -L${.OBJDIR}/../libproc
+ # Avoid circular dependency, we only need the libproc.h header here.
+ CFLAGS+= -I${.CURDIR:H}/libproc
+ 
+diff --git a/lib/libtelnet/Makefile b/lib/libtelnet/Makefile
+index f84aee3..c36ade9 100644
+--- a/lib/libtelnet/Makefile
++++ b/lib/libtelnet/Makefile
+@@ -14,6 +14,8 @@ INTERNALLIB=
+ SRCS=		genget.c getent.c misc.c
+ CFLAGS+=	-I${TELNETDIR}
+ 
++CFLAGS+=	-I${.CURDIR}/../libmp
++
+ WARNS?=		2
+ 
+ .if ${MK_OPENSSL} != "no"

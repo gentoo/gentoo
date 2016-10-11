@@ -1,0 +1,14 @@
+diff --git a/sys/boot/i386/boot2/Makefile b/sys/boot/i386/boot2/Makefile
+index ead9ad1..af5e021 100644
+--- a/sys/boot/i386/boot2/Makefile
++++ b/sys/boot/i386/boot2/Makefile
+@@ -45,6 +45,9 @@ CFLAGS.gcc+=	-Os \
+ .if ${COMPILER_TYPE} == "gcc" && ${COMPILER_VERSION} <= 40201
+ CFLAGS.gcc+=   -mno-align-long-strings
+ .endif
++.if ${COMPILER_TYPE} == "gcc" && ${COMPILER_VERSION} >= 40600
++CFLAGS.gcc+=	-fno-asynchronous-unwind-tables
++.endif
+ 
+ CFLAGS.clang+=	-Oz ${CLANG_OPT_SMALL}
+ 

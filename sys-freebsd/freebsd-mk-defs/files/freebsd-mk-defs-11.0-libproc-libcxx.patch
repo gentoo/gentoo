@@ -1,0 +1,13 @@
+diff --git a/share/mk/src.libnames.mk b/share/mk/src.libnames.mk
+index 14489a8..c993f7c 100644
+--- a/share/mk/src.libnames.mk
++++ b/share/mk/src.libnames.mk
+@@ -245,7 +245,7 @@ _DP_radius=	crypto
+ .endif
+ _DP_procstat=	kvm util elf
+ .if ${MK_CXX} == "yes"
+-.if ${MK_LIBCPLUSPLUS} != "no"
++.if ${COMPILER_TYPE} == "clang"
+ _DP_proc=	cxxrt
+ .else
+ _DP_proc=	supcplusplus
