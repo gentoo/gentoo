@@ -8371,7 +8371,7 @@ dev-python/ttystatus 0.22 0.23 0.32: Terminal progress bar and status output for
 dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah templates
 dev-python/turbojson 1.3.2-r1: TurboGears JSON file format support plugin
 dev-python/turbokid 1.0.5-r1: Python template plugin that supports Kid templates
-dev-python/turbolift 2.0.5: Openstack Swift sync/backup utility
+dev-python/turbolift 2.0.5 2.1.3: Openstack Swift sync/backup utility
 dev-python/tvdb_api 1.9: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0 3.5.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
@@ -13882,7 +13882,7 @@ net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the 
 net-analyzer/hydra 8.1 8.1-r1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
-net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
+net-analyzer/icinga-web 1.11.2 1.12.0: Icinga Web - new Web Interface
 net-analyzer/icinga2 2.4.1-r4 2.4.4-r1 2.4.10-r1 2.5.4 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
@@ -17085,7 +17085,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 8.2.0 9.0.0 2016.1.9999 2016.2.9999: A virtual network service for Openstack
+sys-cluster/neutron 8.2.0 8.3.0 9.0.0 2016.1.9999 2016.2.9999: A virtual network service for Openstack
 sys-cluster/nova 13.1.1 13.1.2 14.0.0 2016.1.9999 2016.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
@@ -17981,7 +17981,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.635 23.0.0.162: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.635 11.2.202.637 23.0.0.185: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.143 54.0.2840.50_beta 55.0.2882.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.2 0.3.5 0.3.5-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
