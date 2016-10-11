@@ -11,12 +11,16 @@ SRC_URI="https://github.com/ethereum/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="evm"
+IUSE="evm opencl"
 
-DEPEND="dev-lang/go:="
+DEPEND="dev-lang/go:=
+	opencl? ( virtual/opencl )
+"
 RDEPEND="${DEPEND}"
 
 src_compile() {
+	use opencl && export GO_OPENCL=true
+
 	emake geth
 	use evm && emake evm
 }

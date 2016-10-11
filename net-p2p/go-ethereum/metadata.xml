@@ -11,5 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="evm">Build Ethereum Virtual Machine (EVM)</flag>
+		<flag name="opencl">Add OpenCL GPU mining support</flag>
 	</use>
 </pkgmetadata>
