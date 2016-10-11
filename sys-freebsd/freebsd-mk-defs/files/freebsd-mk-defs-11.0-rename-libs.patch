@@ -1,0 +1,16 @@
+diff --git a/share/mk/src.libnames.mk b/share/mk/src.libnames.mk
+index 249ac52..14489a8 100644
+--- a/share/mk/src.libnames.mk
++++ b/share/mk/src.libnames.mk
+@@ -343,6 +343,11 @@ LIBATF_CXX=	${DESTDIR}${LIBDIR}/libprivateatf-c++.a
+ LDADD_atf_c=	-lprivateatf-c
+ LDADD_atf_cxx=	-lprivateatf-c++
+ 
++LDADD_bsdxml=	-lexpat
++LDADD_l=	-lfl
++LDADD_termcap=	-lncurses
++LDADD_termcapw=	-lncursesw
++
+ .for _l in ${_PRIVATELIBS}
+ LIB${_l:tu}?=	${DESTDIR}${LIBDIR}/libprivate${_l}.a
+ .endfor
