@@ -6,7 +6,10 @@ EAPI=6
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
-HOMEPAGE="http://www.tcpdump.org/"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	https://github.com/the-tcpdump-group/libpcap
+"
 SRC_URI="
 	https://github.com/the-tcpdump-group/${PN}/archive/${P}.tar.gz
 "

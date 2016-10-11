@@ -6,7 +6,10 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-HOMEPAGE="http://www.tcpdump.org/"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	https://github.com/the-tcpdump-group/tcpdump
+"
 SRC_URI="
 	https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz
 "
