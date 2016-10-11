@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Elias Pipping <pipping@gentoo.org> (30 Sep 2007)
+# compiles with -aqua, doesn't work, though
+media-video/mplayer aqua
