@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -28,22 +28,16 @@ RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	"${PYTHON}" mimeparse_test.py || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" mimeparse_test.py || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
 	distutils-r1_python_install
 
-	if [[ ${EPYTHON} == pypy ]]; then
-		local pyver=2.7
-	elif [[ ${EPYTHON} == pypy3 ]]; then
-		local pyver=3.2
-	else
-		local pyver=${EPYTHON#python}
-	fi
+	local pyver=$("${EPYTHON}" -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_version())")
 	python_export PYTHON_SITEDIR
 
 	# Previous versions were just called 'mimeparse'
 	ln -sf python_mimeparse-${PV}-py${pyver}.egg-info \
-		"${D%/}${PYTHON_SITEDIR}/mimeparse-${PV}-py${pyver}.egg-info" || die
+		"${D%/}${PYTHON_SITEDIR}/mimeparse-${PV}-py${pyver}.egg-info" || die "Could not create mimeparse link"
 }
