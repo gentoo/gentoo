@@ -5,18 +5,17 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit distutils-r1 git-r3 linux-info user
+inherit distutils-r1 linux-info user
 
 DESCRIPTION="A virtual network service for Openstack"
 HOMEPAGE="https://launchpad.net/neutron"
-SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/mitaka/configs.tar.gz -> neutron-configs-${PV}.tar.gz
+SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/mitaka/configs.tar.gz -> neutron-configs-${PV}.tar.gz
 	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/mitaka/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz"
-EGIT_REPO_URI="https://github.com/openstack/neutron.git"
-EGIT_BRANCH="stable/mitaka"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="compute-only dhcp ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server

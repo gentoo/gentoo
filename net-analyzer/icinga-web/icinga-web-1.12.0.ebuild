@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,13 +8,15 @@ inherit depend.apache eutils user multilib
 
 DESCRIPTION="Icinga Web - new Web Interface"
 HOMEPAGE="http://www.icinga.org/"
-SRC_URI="mirror://sourceforge/icinga/${P}.tar.gz"
+SRC_URI="https://github.com/icinga/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="apache2 mysql pnp postgres"
 DEPEND="dev-php/phing
-		dev-lang/php[apache2?,cli,json,mysql?,pdo,postgres?,sockets,xslt,xml]
+		dev-db/libdbi-drivers[mysql?,postgres?]
+		|| ( >=net-analyzer/icinga-1.10.0 >=net-analyzer/icinga2-2.1.1 )
+		dev-lang/php:=[apache2?,cli,json,mysql?,pdo,postgres?,sockets,xslt,xml]
 		pnp? ( net-analyzer/pnp4nagios )"
 RDEPEND="${DEPEND}"
 
@@ -78,7 +80,7 @@ src_install() {
 	dodoc README
 	rm -f README
 
-	emake DESTDIR="${D}" install
+	emake -j1 DESTDIR="${D}" install
 
 	emake DESTDIR="${D}" install-javascript
 
@@ -86,7 +88,8 @@ src_install() {
 		dodir ${APACHE_MODULES_CONFDIR}
 		emake DESTDIR="${D}" install-apache-config
 		echo '<IfDefine ICINGA_WEB>' > "${D}/${APACHE_MODULES_CONFDIR}/99_icinga-web.conf"
-		cat "${D}/${APACHE_MODULES_CONFDIR}/icinga-web.conf" >> "${D}/${APACHE_MODULES_CONFDIR}/99_icinga-web.conf"
+		cat "${WORKDIR}/${P}/etc/apache2/icinga-web.conf" >> "${D}/${APACHE_MODULES_CONFDIR}/99_icinga-web.conf"
+		rm "${D}/${APACHE_MODULES_CONFDIR}/icinga-web.conf" || die "rm failed"
 		echo '</IfDefine>' >> "${D}/${APACHE_MODULES_CONFDIR}/99_icinga-web.conf"
 	fi
 
@@ -189,7 +192,7 @@ pkg_postinst() {
 	if use apache2 ; then
 		einfo
 		einfo "apache config was installed into"
-		einfo "/etc/apache2/modules.d//99_icinga-web.conf"
+		einfo "/etc/apache2/modules.d/99_icinga-web.conf"
 		einfo
 		einfo "The apache config value for \'ServerTokens\' must be set to at"
 		einfo "least \'Min\'."
