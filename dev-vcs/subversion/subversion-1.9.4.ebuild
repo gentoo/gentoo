@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0-hpux-dso.patch
 	"${FILESDIR}"/${PN}-fix-parallel-build-support-for-perl-bindings.patch
 	"${FILESDIR}"/${PN}-1.8.1-revert_bdb6check.patch
+	"${FILESDIR}"/${PN}-1.8.16-javadoc-nolint.patch
 )
 
 want_apache
