@@ -1561,7 +1561,7 @@ app-i18n/skk-jisyo 201101 201605 999999: Jisyo (dictionary) files for the SKK Ja
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20150901: SKK utilities to manage dictionaries
-app-i18n/sunpinyin 2.0.3-r1 2.0.4_pre20130108: A Statistical Language Model based Chinese input method library
+app-i18n/sunpinyin 2.0.3-r1 2.0.4_pre20130108 2.0.4_pre20130108-r1: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20121025 20130220: Data sets for Sunpinyin
 app-i18n/tagainijisho 1.0.3-r1: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
@@ -17034,7 +17034,7 @@ sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loa
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 0.94.7 9.2.1-r2 10.2.2-r2 9999: Ceph distributed filesystem
+sys-cluster/ceph 0.94.7 9.2.1-r2 10.2.2-r2 10.2.3 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 8.1.0 8.1.1 9.0.0 2016.1.9999 2016.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
