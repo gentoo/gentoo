@@ -12,7 +12,7 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI} in
 	6) ;;
@@ -228,6 +228,18 @@ php-ext-source-r3_src_install() {
 	done
 	einstalldocs
 	php-ext-source-r3_createinifiles
+}
+
+# @FUNCTION: php-ext-source-r3_src_test
+# @DESCRIPTION:
+# Run tests delivered with the standalone PHP extension. Phpize will have generated
+# a run-tests.php file to be executed by `make test`. We only need to
+# force the test suite to run in non-interactive mode.
+php-ext-source-r3_src_test() {
+	for slot in $(php_get_slots); do
+		php_init_slot_env "${slot}"
+		NO_INTERACTION="yes" emake test
+	done
 }
 
 # @FUNCTION: php_get_slots
