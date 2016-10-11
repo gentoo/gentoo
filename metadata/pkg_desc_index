@@ -10708,8 +10708,8 @@ games-kids/tuxtype 1.8.1 1.8.1-r1: Typing tutorial with lots of eye-candy
 games-misc/OilWar 1.2.1-r1 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
 games-misc/bsd-games 2.17-r5: collection of games from NetBSD
-games-misc/bsod 0.1: This program will let you UNIX user experience the authentic microsoft windows experience
-games-misc/c++robots 0: ongoing 'King of the Hill' (KotH) tournament
+games-misc/bsod 0.1 0.1-r1: This program will let your UNIX user experience the authentic Microsoft Windows experience
+games-misc/c++robots 0 0-r1: ongoing 'King of the Hill' (KotH) tournament
 games-misc/cowsay 3.03-r2: configurable talking ASCII cow (and other characters)
 games-misc/doge 3.5.0: wow very terminal doge
 games-misc/dont-starve 2: Wilderness survival game full of science and magic
@@ -10757,31 +10757,31 @@ games-misc/fortune-mod-thomas-ogrisegg 20030120: Quotes from Thomas Ogrisegg
 games-misc/fortune-mod-woody-allen-it 0.1: Fortune database for Woody Allen quotes (in Italian)
 games-misc/fortune-mod-zx-error 1.0: Sinclair ZX Spectrum BASIC error Fortunes
 games-misc/funny-manpages 1.3_rc5-r1: funny manpages collected from various sources
-games-misc/gBhed 0.17: An Al Bhed translator
+games-misc/gBhed 0.17 0.17-r1: An Al Bhed translator
 games-misc/games-envd 0: Environment file for gentoo games
 games-misc/ggencoder 0.91a: Utility to encode and decode Game Genie (tm) codes
-games-misc/gtklife 5.1: A Conway's Life simulator for Unix
+games-misc/gtklife 5.1 5.1-r1: A Conway's Life simulator for Unix
 games-misc/katawa-shoujo 1.3 1.3.1: bishoujo-style visual novel by Four Leaf Studios
 games-misc/little-inferno 20130509: Throw your toys into your fire, and play with them as they burn
 games-misc/lolcat 42.1.43: Rainbows and unicorns!
-games-misc/lucidlife 0.9.2: A Conway's Life simulator written in GTK+2 - fork from Gtklife
-games-misc/nyancat 1.2.1: Nyan Cat Telnet Server
+games-misc/lucidlife 0.9.2 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
+games-misc/nyancat 1.2.1 1.5.1: Nyan Cat Telnet Server
 games-misc/opengfx 0.5.3 0.5.4: OpenGFX data files for OpenTTD
 games-misc/openmsx 0.3.1-r1: An ambiguously named music replacement set for OpenTTD
 games-misc/opensfx 0.2.3: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
-games-misc/qlife 1.1: Simulates the classical Game of Life invented by John Conway
-games-misc/rfksay 0.1: Like cowsay, but different because it involves robots and kittens
-games-misc/robotfindskitten 2.7182818.701: Help robot find kitten
+games-misc/qlife 1.1 1.1-r1: Simulates the classical Game of Life invented by John Conway
+games-misc/rfksay 0.1 0.1-r1: Like cowsay, but different because it involves robots and kittens
+games-misc/robotfindskitten 2.7182818.701 2.7182818.701-r1: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
-games-misc/sex 1.0: Spouts silly mad-lib-style porn-like text
-games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107: Visualization and Audibilization of Sorting Algorithms
+games-misc/sex 1.0 1.0-r1: Spouts silly mad-lib-style porn-like text
+games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107 0.6.6_pre20151107-r1: Visualization and Audibilization of Sorting Algorithms
 games-misc/typespeed 0.6.5: Test your typing speed, and get your fingers CPS
 games-misc/wtf 20090924: translates acronyms for you
-games-misc/wumpus 1.4: Classic Hunt the Wumpus Adventure Game
+games-misc/wumpus 1.4 1.4-r1: Classic Hunt the Wumpus Adventure Game
 games-misc/xcowsay 1.3: configurable talking graphical cow (inspired by cowsay)
 games-misc/xcruiser 0.30: Fly about 3D-formed file system
-games-misc/xpenguins 2.2-r1: Cute little penguins invading your desktop
+games-misc/xpenguins 2.2-r1 2.2-r2: Cute little penguins invading your desktop
 games-misc/yadex 1.7.0: A Doom level (wad) editor
 games-mud/circlemud 3.1: a multi-user dungeon game system server
 games-mud/crystal 0.2.4 0.2.4-r1: The crystal MUD client
@@ -17373,7 +17373,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.7.2 4.7.3 4.7.4 4.7.5 4.7.6 4.7.7 4.8.0 4.8.1: Full sources including the Gentoo patchset for the 4.8 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 4.1.15-r1 4.1.33 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.7.7 4.8.0 4.8.1: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.8_rc1 4.8_rc2 4.8_rc3 4.8_rc4 4.8_rc5 4.8_rc6 4.8_rc7 4.8_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1 4.7.4-r1 4.7.5 4.7.6 4.7.7: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17389,7 +17389,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 4.1.31_p35 4.1.33_p37 4.4.19_p27 4.4.21_p30 4.6.7_p11 4.6.7_p14: Full Linux 4.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.82 3.4.112 3.10.103 3.12.63 3.14.79 3.16.37 3.18.42 4.1.33 4.4.23 4.7.6 4.8.1: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.82 3.4.112 3.10.103 3.12.64 3.16.37 3.18.42 4.1.33 4.4.24 4.7.7 4.8.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc

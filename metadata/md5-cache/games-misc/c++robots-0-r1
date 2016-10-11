@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=ongoing 'King of the Hill' (KotH) tournament
+EAPI=6
+HOMEPAGE=http://www.gamerz.net/c++robots/
+IUSE=static
+KEYWORDS=~x86 ~ppc
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.gamerz.net/c++robots/c++robots.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=c18d15091f9cfa622e6df0adf50d822d

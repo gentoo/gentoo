@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 )
+DESCRIPTION=An Al Bhed translator
+EAPI=6
+HOMEPAGE=http://liquidchile.net/software/gbhed/
+IUSE=gtk
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 )
+SLOT=0
+SRC_URI=http://liquidchile.net/software/gbhed/gBhed-0.17.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=99d745168b1e2b8089c63c175abf81aa

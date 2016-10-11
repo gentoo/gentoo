@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Like cowsay, but different because it involves robots and kittens
+EAPI=6
+HOMEPAGE=http://www.robotfindskitten.org/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://gentoo/rfksay.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=3b38415d62f312ee32b7a091bd54e31b

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-apps/less
+DESCRIPTION=Classic Hunt the Wumpus Adventure Game
+EAPI=6
+HOMEPAGE=http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wump/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=sys-apps/less
+SLOT=0
+SRC_URI=ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.c ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.6 ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.info
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=e8aed37ebe9189f960ec94b09847312e
