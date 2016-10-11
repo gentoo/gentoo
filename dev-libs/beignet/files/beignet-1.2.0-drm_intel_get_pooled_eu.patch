@@ -1,0 +1,23 @@
+diff --git a/src/intel/intel_driver.c b/src/intel/intel_driver.c
+index 5f4afda..cf8f829 100644
+--- a/src/intel/intel_driver.c
++++ b/src/intel/intel_driver.c
+@@ -958,14 +958,14 @@ intel_update_device_info(cl_device_id device)
+ 
+ #ifdef HAS_POOLED_EU
+   /* BXT pooled eu, 3*6 to 2*9, like sub slice count is 2 */
+-  unsigned int has_pooled_eu = 0;
+-  if(!drm_intel_get_pooled_eu(driver->fd, &has_pooled_eu) && has_pooled_eu)
++  int has_pooled_eu;
++  if((has_pooled_eu = drm_intel_get_pooled_eu(driver->fd)) > 0)
+     device->sub_slice_count = 2;
+ 
+ #ifdef HAS_MIN_EU_IN_POOL
+-  unsigned int min_eu;
++  int min_eu;
+   /* for fused down 2x6 devices, beignet don't support. */
+-  if (has_pooled_eu && !drm_intel_get_min_eu_in_pool(driver->fd, &min_eu)) {
++  if (has_pooled_eu > 0 && (min_eu = drm_intel_get_min_eu_in_pool(driver->fd)) > 0) {
+     assert(min_eu == 9); //don't support fuse down device.
+   }
+ #endif //HAS_MIN_EU_IN_POOL
