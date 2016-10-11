@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+
+# Patrice Clement <monsieurp@gentoo.org> (11 Oct 2016)
+# Upstream's homepage is dead and nowhere to be found.
+# Masked for removal in 30 days.
+dev-python/oosuite
+
 # Patrice Clement <monsieurp@gentoo.org> (10 Oct 2016)
 # Note from upstream (https://github.com/Pylons/pylons):
 # Pylons has merged with repoze.bfg, and is now in maintenance-only mode. It's
