@@ -51,7 +51,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	tar xjpf "${DISTDIR}/${A}" boost_${MY_PV}/tools/build || die "unpacking tar failed"
+	tar xjf "${DISTDIR}/${A}" boost_${MY_PV}/tools/build || die "unpacking tar failed"
 }
 
 src_prepare() {
