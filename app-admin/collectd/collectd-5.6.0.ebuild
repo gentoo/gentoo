@@ -461,9 +461,15 @@ src_install() {
 
 pkg_postinst() {
 	local caps=()
-	use collectd_plugins_ping      && caps+=('cap_net_raw')
+	use collectd_plugins_ceph      && caps+=('cap_dac_override')
+	use collectd_plugins_exec      && caps+=('cap_setuid' 'cap_setgid')
 	use collectd_plugins_iptables  && caps+=('cap_net_admin')
 	use collectd_plugins_filecount && caps+=('cap_dac_read_search')
+	use collectd_plugins_turbostat && caps+=('cap_sys_rawio')
+
+	if use collectd_plugins_dns || use collectd_plugins_ping; then
+		caps+=('cap_net_raw')
+	fi
 
 	if [ ${#caps[@]} -gt 0 ]; then
 		local caps_str=$(IFS=","; echo "${caps[*]}")
