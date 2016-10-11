@@ -1,0 +1,9 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+MACOSX_DEPLOYMENT_TARGET="10.12"
+
+# sandbox is working with use of Mac OS X's seatbelt (since 10.5)
+# but it generates problems, #456234
+#FEATURES="sandbox"

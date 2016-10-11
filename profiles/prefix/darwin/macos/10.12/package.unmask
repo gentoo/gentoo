@@ -1,0 +1,8 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# Recent releases are supported in >10.10.
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin

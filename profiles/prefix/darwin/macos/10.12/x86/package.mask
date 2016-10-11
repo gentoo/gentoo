@@ -1,0 +1,10 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# The Carbon interface has been removed entirely in Lion, only tk-8.6
+# will come with Cocoa support.  If you must have tk, you'll have to
+# force USE=-aqua, but don't report bugs for incompatabilities you might
+# encounter.
+# NOTE: keep this mask synced with arch/x64
+<dev-lang/tk-8.6
