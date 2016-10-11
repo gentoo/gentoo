@@ -2957,11 +2957,6 @@
       <role>Lead</role>
     </member>
     <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>lordvan@gentoo.org</email>
       <name>Thomas R</name>
       <role>Member</role>
@@ -3198,17 +3193,12 @@
       <name>Markos Chandras</name>
       <role>Recruiter</role>
     </member>
-    <member is-lead="1">
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
-      <role>Recruiter</role>
-    </member>
     <member>
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
       <role>Recruiter</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Recruiter</role>
@@ -3648,10 +3638,6 @@
     <member>
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
-    </member>
-    <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
     </member>
     <member>
       <email>monsieurp@gentoo.org</email>
