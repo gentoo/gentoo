@@ -4358,6 +4358,7 @@ dev-java/trove 2.1.0 3.0.2 3.0.2-r1 3.0.2-r2: GNU Trove: High performance collec
 dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
 dev-java/typesafe-config 1.2.1 1.3.0-r2: A library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
+dev-java/upnplib 1.0.7: UPnP port mapping library for Java based on sbbi-upnplib
 dev-java/validation-api 1.1.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7-r2: Java framework for easy creation/rendering of documents
@@ -11069,7 +11070,7 @@ games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
 games-strategy/spaz 1.605: Space Pirates and Zombies
 games-strategy/tornado 1.4: Clone of a C64 game - destroy the opponent's house
-games-strategy/triplea 1.8.0.9: An open source clone of the popular Axis and Allies boardgame
+games-strategy/triplea 1.8.0.9 1.8.0.9-r1: An open source clone of the popular Axis and Allies boardgame
 games-strategy/ufo-ai 2.4: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine

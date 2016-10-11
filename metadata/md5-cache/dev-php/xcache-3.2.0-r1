@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare unpack
+DEFINED_PHASES=compile configure install postinst prepare test unpack
 DEPEND=!dev-php/eaccelerator !dev-php/pecl-apc virtual/httpd-php:* php_targets_php5-5? ( !dev-lang/php:5.5[opcache] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
 DESCRIPTION=A fast and stable PHP opcode cacher
 EAPI=6
@@ -11,6 +11,6 @@ REQUIRED_USE=|| ( php_targets_php5-5 php_targets_php5-6 )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.bz2
-_eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:- src_compile:php-ext-source-r3 src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	3772105f27fbde7de9a8b3bfb48e1e41	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-source-r3 src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	8b5fc87e3e35f5ff0c11b535ac7459fb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=e71da1e43d7c379e605d31510b61c078
