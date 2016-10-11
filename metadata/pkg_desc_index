@@ -5097,7 +5097,7 @@ dev-ml/core_extended 113.24.00 113.33.00: Jane Street's alternative to the stand
 dev-ml/core_kernel 113.24.00 113.33.00 113.33.01: System-independent part of Core
 dev-ml/core_profiler 113.24.00 113.33.00: Jane Street's profiling library
 dev-ml/cppo 1.3.1-r1 1.3.2 1.4.0: An equivalent of the C preprocessor for OCaml programs
-dev-ml/cryptokit 1.10: Cryptographic primitives library for Objective Caml
+dev-ml/cryptokit 1.10 1.11: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.4.2 1.5: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.6.2 0.7 0.7.1: A deriving library for Ocsigen
@@ -6852,7 +6852,7 @@ dev-php/pecl-eio 1.2.5-r1 2.0.0: PHP wrapper for libeio library
 dev-php/pecl-event 1.11.1-r1 2.1.0: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r1: PHP extension for using gearmand
 dev-php/pecl-geoip 1.1.0 1.1.0-r1: PHP extension to map IP address to geographic places
-dev-php/pecl-gnupg 1.3.3 1.3.6 1.4.0_rc1: PHP wrapper around the gpgme library
+dev-php/pecl-gnupg 1.4.0: PHP wrapper around the gpgme library
 dev-php/pecl-haru 1.0.4-r1: An interface to libharu, a PDF generator
 dev-php/pecl-htscanner 1.0.1-r2: Enables .htaccess options for php-scripts running as cgi
 dev-php/pecl-http 1.7.6-r2 1.7.6-r3 2.5.6 3.0.1: Extended HTTP Support for PHP
