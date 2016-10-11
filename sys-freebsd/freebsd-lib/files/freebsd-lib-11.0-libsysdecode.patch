@@ -1,0 +1,22 @@
+diff --git a/lib/libsysdecode/Makefile b/lib/libsysdecode/Makefile
+index e3bfe00..51fc5f0 100644
+--- a/lib/libsysdecode/Makefile
++++ b/lib/libsysdecode/Makefile
+@@ -8,7 +8,7 @@ LIB=	sysdecode
+ SRCS=	errno.c ioctl.c syscallnames.c utrace.c
+ INCS=	sysdecode.h
+ 
+-CFLAGS+= -I${.CURDIR}/../../sys
++CFLAGS+= -I${.CURDIR}/../../sys -I${.CURDIR}
+ 
+ MAN+=	sysdecode.3 \
+ 	sysdecode_abi_to_freebsd_errno.3 \
+@@ -37,7 +37,7 @@ CFLAGS.gcc+=	${CFLAGS.gcc.${.IMPSRC}}
+ 
+ ioctl.c: mkioctls
+ 	env MACHINE=${MACHINE} CPP="${CPP}" \
+-		/bin/sh ${.CURDIR}/mkioctls ${DESTDIR}${INCLUDEDIR} > ${.TARGET}
++		/bin/sh ${.CURDIR}/mkioctls ${.CURDIR}/../../include > ${.TARGET}
+ 
+ beforedepend: ioctl.c
+ 

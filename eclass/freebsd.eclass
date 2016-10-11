@@ -102,7 +102,15 @@ doperiodic() {
 freebsd_get_bmake() {
 	local bmake
 	bmake=$(get_bmake)
-	[[ ${CBUILD} == *-freebsd* ]] || bmake="${bmake} -m /usr/share/mk/freebsd"
+	if version_is_at_least 11.0 ${RV} ; then
+		if [[ ${CBUILD} == *-freebsd* ]] ; then
+			bmake="${bmake} -m /usr/share/mk/system"
+		else
+			bmake="${bmake} -m /usr/share/mk/freebsd/system"
+		fi
+	else
+		[[ ${CBUILD} == *-freebsd* ]] || bmake="${bmake} -m /usr/share/mk/freebsd"
+	fi
 
 	echo "${bmake}"
 }
@@ -187,13 +195,18 @@ freebsd_src_unpack() {
 	dummy_mk ${REMOVE_SUBDIRS}
 
 	freebsd_do_patches
-	freebsd_rename_libraries
+	if ! version_is_at_least 11.0 ${RV} ; then
+		freebsd_rename_libraries
+	fi
 
 	# Starting from FreeBSD 9.2, its install command supports the -l option and
 	# they now use it. Emulate it if we are on a system that does not have it.
 	if version_is_at_least 9.2 ${RV} && ! has_version '>=sys-freebsd/freebsd-ubin-9.2_beta1' ; then
 		export INSTALL_LINK="ln -f"
 		export INSTALL_SYMLINK="ln -fs"
+	fi
+	if version_is_at_least 11.0 ${RV} ; then
+		export RSYMLINK=" -l s"
 	fi
 
 	# When CC=clang, force use clang-cpp #478810, #595878
@@ -213,9 +226,24 @@ freebsd_src_unpack() {
 
 freebsd_src_compile() {
 	use profile && filter-flags "-fomit-frame-pointer"
-	use profile || mymakeopts="${mymakeopts} NO_PROFILE= "
+	if version_is_at_least 11.0 ${RV} ; then
+		if ! use profile ; then
+			mymakeopts="${mymakeopts} WITHOUT_PROFILE= "
+		fi
+		# Disable debugging info, use FEATURES=splitdebug instead.
+		mymakeopts="${mymakeopts} WITHOUT_DEBUG_FILES= "
+		# Test does not support yet.
+		mymakeopts="${mymakeopts} WITHOUT_TESTS= "
+		# Force set SRCTOP.
+		mymakeopts="${mymakeopts} SRCTOP=${WORKDIR} "
+		# Set common option.
+		mymakeopts="${mymakeopts} WITHOUT_MANCOMPRESS= WITHOUT_INFOCOMPRESS= "
+	else
+		use profile || mymakeopts="${mymakeopts} NO_PROFILE= "
+		mymakeopts="${mymakeopts} NO_MANCOMPRESS= NO_INFOCOMPRESS= "
+	fi
 
-	mymakeopts="${mymakeopts} NO_MANCOMPRESS= NO_INFOCOMPRESS= NO_FSCHG="
+	mymakeopts="${mymakeopts} NO_FSCHG="
 
 	# Make sure to use FreeBSD definitions while crosscompiling
 	[[ -z "${BMAKE}" ]] && BMAKE="$(freebsd_get_bmake)"
@@ -274,11 +302,26 @@ freebsd_multilib_multibuild_wrapper() {
 }
 
 freebsd_src_install() {
-	use profile || mymakeopts="${mymakeopts} NO_PROFILE= "
+	if version_is_at_least 11.0 ${RV} ; then
+		if ! use profile ; then
+			mymakeopts="${mymakeopts} WITHOUT_PROFILE= "
+		fi
+		# Disable debugging info, use FEATURES=splitdebug instead.
+		mymakeopts="${mymakeopts} WITHOUT_DEBUG_FILES= "
+		# Test does not support yet.
+		mymakeopts="${mymakeopts} WITHOUT_TESTS= "
+		# Force set SRCTOP.
+		mymakeopts="${mymakeopts} SRCTOP=${WORKDIR} "
+		# Set common option.
+		mymakeopts="${mymakeopts} WITHOUT_MANCOMPRESS= WITHOUT_INFOCOMPRESS= "
+	else
+		use profile || mymakeopts="${mymakeopts} NO_PROFILE= "
+		mymakeopts="${mymakeopts} NO_MANCOMPRESS= NO_INFOCOMPRESS= "
+	fi
 
-	mymakeopts="${mymakeopts} NO_MANCOMPRESS= NO_INFOCOMPRESS= NO_FSCHG="
+	mymakeopts="${mymakeopts} NO_FSCHG="
 
 	[[ -z "${BMAKE}" ]] && BMAKE="$(freebsd_get_bmake)"
 
-	bsdmk_src_install
+	bsdmk_src_install "$@"
 }
