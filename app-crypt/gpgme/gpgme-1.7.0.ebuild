@@ -42,7 +42,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-build-tests.patch
 	"${FILESDIR}"/${P}-build-tests-disable.patch
 	"${FILESDIR}"/${P}-build-python.patch
-	"${T}"/${P}-build-32bit.patch
 )
 
 do_python() {
@@ -55,6 +54,9 @@ do_python() {
 
 src_prepare() {
 	sed -e '/a\/lang\/cpp\/src\/context_glib.cpp/,+30d' "${DISTDIR}/gpgme-1.7.0-build-32bit.patch" > "${T}/gpgme-1.7.0-build-32bit.patch"
+	PATCHES+=(
+		"${T}"/${P}-build-32bit.patch
+	)
 	default
 	eautoreconf
 	do_python
