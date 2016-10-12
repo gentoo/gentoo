@@ -30,8 +30,8 @@ IUSE="crypt doc examples irc mail manhole test"
 
 RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	|| (
-		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 	)
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
@@ -43,18 +43,18 @@ RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
-		|| ( >=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	mail? (
-		|| ( >=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	manhole? (
-		|| ( >=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	dev-python/future[${PYTHON_USEDEP}]
@@ -68,12 +68,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		|| (
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 			(
 				>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
 				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
 			)
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
