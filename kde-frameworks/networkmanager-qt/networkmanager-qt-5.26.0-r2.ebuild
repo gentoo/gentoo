@@ -11,7 +11,7 @@ DESCRIPTION="NetworkManager bindings for Qt"
 SRC_URI="mirror://kde/stable/frameworks/${MY_PV%.0}/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="teamd"
 
 COMMON_DEPEND="
