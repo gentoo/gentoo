@@ -4,9 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
-
-PYTHON_REQ_USE="ncurses"
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -20,8 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/curtsies-0.1.18[${PYTHON_USEDEP}]
-	<dev-python/curtsies-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/curtsies-0.2.10[${PYTHON_USEDEP}]
 	dev-python/greenlet[${PYTHON_USEDEP}]
 	dev-python/jedi[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]

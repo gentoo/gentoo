@@ -21,7 +21,11 @@ IUSE="hdaps"
 DEPEND="sys-apps/dmidecode"
 RDEPEND="${DEPEND}"
 
-pkg_pretend() {
+# This code is factored out of both pkg_pretend() and pkg_setup()
+# because the PMS states that ebuilds may not call phase functions
+# directly (see the "List of functions" section). This was bug #596616
+# and #596622.
+tp_smapi_pkg_pretend() {
 	linux-mod_pkg_setup
 
 	MODULE_NAMES="thinkpad_ec(extra:) tp_smapi(extra:)"
@@ -43,9 +47,13 @@ pkg_pretend() {
 	fi
 }
 
+pkg_pretend() {
+	tp_smapi_pkg_pretend
+}
+
 pkg_setup() {
 	# run again as pkg_pretend is not var safe
-	pkg_pretend
+	tp_smapi_pkg_pretend
 }
 
 src_compile() {
