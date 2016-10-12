@@ -51,7 +51,7 @@
     <!ELEMENT bugs-to (#PCDATA)>
     <!-- specify a type of package identification tracker -->
     <!ELEMENT remote-id (#PCDATA)>
-      <!ATTLIST remote-id type (bitbucket|cpan|cpan-module|cpe|cran|ctan|freecode|freshmeat|github|gitlab|gitorious|google-code|launchpad|pear|pecl|pypi|rubyforge|rubygems|sourceforge|sourceforge-jp|vim) #REQUIRED>
+      <!ATTLIST remote-id type (bitbucket|cpan|cpan-module|cpe|cran|ctan|freecode|freshmeat|gentoo|github|gitlab|gitorious|google-code|launchpad|pear|pecl|pypi|rubyforge|rubygems|sourceforge|sourceforge-jp|vim) #REQUIRED>
 
   <!-- category/package information for cross-linking in descriptions
     and useflag descriptions -->
