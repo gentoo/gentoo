@@ -11967,7 +11967,7 @@ mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizabl
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3 2.10.3-r2: A milter-based application to provide DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.0 1.3.1: Open source DMARC implementation
-mail-filter/opensmtpd-extras 5.9.2.201606062304: Extra tables, filters, and various other addons for OpenSMTPD
+mail-filter/opensmtpd-extras 5.9.2.201606062304 5.9.2.201609141255: Extra tables, filters, and various other addons for OpenSMTPD
 mail-filter/p3scan 2.3.1 2.3.2-r1 2.3.2-r2: This is a full-transparent proxy-server for POP3-Clients
 mail-filter/policyd 1.82-r1 1.82-r2: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r1: Weighted Policy daemon for Postfix
@@ -12004,7 +12004,7 @@ mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail vi
 mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0: Simple relay-only local mail transport agent
-mail-mta/opensmtpd 5.9.2_p1-r1 5.9.2_p1-r2 5.9.2.201607021504_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
+mail-mta/opensmtpd 5.9.2_p1-r1 5.9.2_p1-r2 5.9.2.201607021504_p1-r1 6.0.1_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r1 3.1.3 3.2_pre20161008: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
