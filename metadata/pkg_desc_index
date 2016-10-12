@@ -10359,7 +10359,7 @@ games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet
 games-arcade/pacmanarena 0.15: a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound
 games-arcade/penguin-command 1.6.11: A clone of the classic Missile Command game
 games-arcade/pengupop 2.2.5: Networked multiplayer-only Puzzle Bubble clone
-games-arcade/performous 1.0 1.1: SingStar GPL clone
+games-arcade/performous 1.1: SingStar GPL clone
 games-arcade/primateplunge 1.1-r1: Help poor Monkey navigate his way down through treacherous areas
 games-arcade/pycadia 0.5.1: Pycadia. Home to vector gaming, python style
 games-arcade/pydance 1.1.0: a DDR clone for linux written in Python
@@ -10774,7 +10774,7 @@ games-misc/qlife 1.1 1.1-r1: Simulates the classical Game of Life invented by Jo
 games-misc/rfksay 0.1 0.1-r1: Like cowsay, but different because it involves robots and kittens
 games-misc/robotfindskitten 2.7182818.701 2.7182818.701-r1: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
-games-misc/sex 1.0 1.0-r1: Spouts silly mad-lib-style porn-like text
+games-misc/sex 1.0 1.0-r1 1.0-r2: Spouts silly mad-lib-style porn-like text
 games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107 0.6.6_pre20151107-r1: Visualization and Audibilization of Sorting Algorithms
 games-misc/typespeed 0.6.5: Test your typing speed, and get your fingers CPS
 games-misc/wtf 20090924: translates acronyms for you
@@ -14296,7 +14296,7 @@ net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
 net-im/bitlbee 3.4.1 3.4.2-r1 9999: irc to IM gateway that support multiple IM protocols
 net-im/bitlbee-steam 1.2.0 9999: Steam protocol plugin for BitlBee
 net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
-net-im/choqok 1.5 1.5-r1: Free/Open Source micro-blogging client by KDE
+net-im/choqok 1.5-r1 1.6.0: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
@@ -15517,7 +15517,7 @@ sci-astronomy/predict 2.2.3-r1 2.2.3-r2: Satellite tracking and orbital predicti
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
-sci-astronomy/sextractor 2.19.5: Extract catalogs of sources from astronomical FITS images
+sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astronomical FITS images
 sci-astronomy/skycat 3.1.2-r2: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images

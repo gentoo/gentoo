@@ -5368,6 +5368,8 @@ net-im/centerim:gadu - Enable support for the Gadu-Gadu protocol
 net-im/centerim:irc - Enable support for the IRC protocol
 net-im/centerim:lj - Enable support for the LiveJournal weblog system
 net-im/centerim:otr - Enable encrypted conversations
+net-im/choqok:attica - Build Open Collaboration Services plugin using dev-libs/libattica
+net-im/choqok:konqueror - Build Konqueror Choqok plugin
 net-im/choqok:telepathy - Enable support for the real-time communication framework telepathy
 net-im/climm:otr - Enable encrypted conversations
 net-im/corebird:glade - Install glade catalogs for corebird
