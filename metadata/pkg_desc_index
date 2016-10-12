@@ -1597,7 +1597,7 @@ app-laptop/radeontool 1.6.3: Manage the backlight, external video output and reg
 app-laptop/samsung-tools 2.1 2.3.1: Tools for Samsung laptops
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
 app-laptop/thinkfan 0.8.1-r1 0.9_beta2 0.9.2 0.9.2-r1: simple fan control program for thinkpads
-app-laptop/tp_smapi 0.41 0.42: IBM ThinkPad SMAPI BIOS driver
+app-laptop/tp_smapi 0.41 0.42-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 1.1-r1 2.1 3.0 3.0-r1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/laretz 9999: The Laretz sync server
@@ -7048,7 +7048,7 @@ dev-python/boto3 1.3.0 1.3.1 1.4.0: The AWS SDK for Python
 dev-python/botocore 1.4.55 1.4.56 1.4.58: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
-dev-python/bpython 0.13.2 0.14 0.14.2 0.15 0.15-r1 0.15-r2: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.2.6 3.2.7: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
@@ -7126,7 +7126,7 @@ dev-python/cssselect 0.9.1 0.9.2: parses CSS3 Selectors and translates them to X
 dev-python/cssutils 0.9.10-r1 0.9.10-r2 1.0 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1: Cursive implements OpenStack-specific validation of digital signatures.
-dev-python/curtsies 0.1.18 0.1.23 0.1.23-r1 0.2.3 0.2.4 0.2.6 0.2.9: Curses-like terminal wrapper, with colored strings
+dev-python/curtsies 0.1.23-r1 0.2.9 0.2.10: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
 dev-python/cx_Freeze 4.3.3 4.3.4: Create standalone executables from Python scripts
 dev-python/cycler 0.9.0 0.10.0: Composable style cycles
@@ -17983,7 +17983,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.635 11.2.202.637 23.0.0.185: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.637 23.0.0.185: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.143 54.0.2840.50_beta 55.0.2882.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.2 0.3.5 0.3.5-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
