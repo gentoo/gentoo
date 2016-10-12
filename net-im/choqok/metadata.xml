@@ -6,9 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="attica">Build Open Collaboration Services plugin using <pkg>dev-libs/libattica</pkg></flag>
+		<flag name="konqueror">Build Konqueror Choqok plugin</flag>
 		<flag name="telepathy">Enable support for the real-time communication framework telepathy</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">choqok</remote-id>
-	</upstream>
 </pkgmetadata>
