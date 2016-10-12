@@ -7271,7 +7271,7 @@ dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4: Highly concurrent networking library
+dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4 0.19.0: Highly concurrent networking library
 dev-python/execnet 1.2.0-r2 1.4.1: Rapid multi-Python deployment
 dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc5 0.8.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
