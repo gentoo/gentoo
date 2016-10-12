@@ -14046,7 +14046,7 @@ net-analyzer/smokeping 2.6.9 2.6.10 2.6.11: A powerful latency measurement tool
 net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
 net-analyzer/snips 1.2-r2 1.2-r3: System & Network Integrated Polling Software
 net-analyzer/snmptt 1.2 1.4: SNMP Trap Translator
-net-analyzer/snort 2.9.4.6-r1 2.9.7.0 2.9.7.2 2.9.7.3 2.9.7.5 2.9.8.0 2.9.8.2 2.9.8.3: The de facto standard for intrusion detection/prevention
+net-analyzer/snort 2.9.4.6-r1 2.9.7.0 2.9.7.2 2.9.7.3 2.9.7.5 2.9.8.0 2.9.8.2 2.9.8.3 2.9.8.3-r1: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
