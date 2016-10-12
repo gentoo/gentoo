@@ -8034,7 +8034,7 @@ dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation fo
 dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
-dev-python/python-engineio 0.8.1 0.8.6 0.8.8 0.9.1: Python implementation of the Engine.IO realtime server.
+dev-python/python-engineio 0.9.1 1.0.3: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3: A python client for etcd
 dev-python/python-ethtool 0.11: Ethernet settings python bindings
 dev-python/python-evdev 0.4.3 0.4.5 0.6.1: Python library for evdev bindings
