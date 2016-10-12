@@ -1,5 +1,5 @@
---- src/interface.c.orig	2007-03-23 13:29:40.000000000 +0000
-+++ src/interface.c	2007-03-23 13:30:05.000000000 +0000
+--- a/src/interface.c
++++ b/src/interface.c
 @@ -89,6 +89,10 @@
  
  interface_status_t interface_detect_beat_mii(int fd, char *iface) {
