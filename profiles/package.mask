@@ -30,7 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-
 # Patrice Clement <monsieurp@gentoo.org> (11 Oct 2016)
 # Upstream's homepage is dead and nowhere to be found.
 # Masked for removal in 30 days.
@@ -425,13 +424,6 @@ dev-haskell/base64-conduit
 # Mask for removal in 30 days. >=sci-mathematics/agda-2.4
 # now provides 'agda' binary.
 sci-mathematics/agda-executable
-
-# Patrice Clement <monsieurp@gentoo.org> (10 Sep 2016)
-# Upstream dead. This package tries very hard to outsmart autotools and
-# reinvent the wheel by coming up with its own configure script. A complete
-# disaster resulting in a gigantic wave of QA errors.
-# Masked for removal in 30 days.
-dev-libs/vrb
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
 # Dev channel releases are only for people who are developers or want more

@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Readily merge Pull Requests from the Gentoo Github repository"
 HOMEPAGE="https://github.com/monsieurp/Gentoo-App-Pram"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="test"
 
 RDEPEND=""
