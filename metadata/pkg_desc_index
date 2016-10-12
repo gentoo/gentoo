@@ -9044,7 +9044,7 @@ dev-ruby/ffi 1.9.6-r2 1.9.10 1.9.10-r1 1.9.12 1.9.14: Ruby extension for program
 dev-ruby/file-tail 1.1.0 1.1.1: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/fivemat 1.3.2: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
-dev-ruby/flexmock 1.3.3-r1 2.0.5 2.1.0 2.2.1: Simple mock object library for Ruby unit testing
+dev-ruby/flexmock 1.3.3-r1 2.0.5 2.1.0 2.2.1 2.3.0: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.8 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
@@ -9302,7 +9302,7 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.4: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/roadie 3.1.1: Making HTML emails comfortable for the Rails rockstars
+dev-ruby/roadie 3.1.1 3.2.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.11.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
@@ -9383,7 +9383,7 @@ dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 0.9.9-r2 1.1.7-r1 1.2.0: A ruby library for reading and writing zip files
-dev-ruby/safe_yaml 1.0.4 1.0.4-r2: Parse YAML safely, alternative implementation of YAML.load
+dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.2.0 4.3.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22 3.4.22-r1: An extension of CSS3, adding nested rules, variables, mixins, and more
