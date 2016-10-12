@@ -29,6 +29,7 @@ CDEPEND="!app-admin/augeas
 DEPEND="
 	${CDEPEND}"
 RDEPEND="${CDEPEND}
+	app-portage/eix
 	sys-apps/dmidecode
 	selinux? (
 		sys-libs/libselinux[ruby]
