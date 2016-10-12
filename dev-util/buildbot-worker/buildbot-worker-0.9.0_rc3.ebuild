@@ -27,8 +27,8 @@ fi
 IUSE="test"
 
 RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	|| ( >=dev-python/twisted-core-8.0.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		>=dev-python/twisted-core-8.0.0[${PYTHON_USEDEP}]
 	)
 	dev-python/future[${PYTHON_USEDEP}]
 	!<dev-util/buildbot-0.9.0_rc1"
