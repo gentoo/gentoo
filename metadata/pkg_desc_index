@@ -4492,6 +4492,7 @@ dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
+dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3: Stand-alone JavaScript C library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
@@ -7312,7 +7313,7 @@ dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.5-r1: Si
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4 1.7.5: Simple security for Flask apps
-dev-python/flask-socketio 2.0 2.1 2.2: Socket.IO integration for Flask applications.
+dev-python/flask-socketio 2.2 2.7.1: Socket.IO integration for Flask applications.
 dev-python/flask-sqlalchemy 1.0 1.0-r1 2.0 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.1 0.4.2 0.6.1: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
@@ -7569,7 +7570,7 @@ dev-python/micawber 0.3.2 0.3.3: A small library for extracting rich content fro
 dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion headers
 dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
-dev-python/mimeparse 0.1.4-r1 1.5.1 1.5.2: Basic functions for handling mime-types in python
+dev-python/mimeparse 0.1.4-r1 0.1.4-r2 1.5.2-r1: Basic functions for handling mime-types in python
 dev-python/mimerender 0.5.4 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
@@ -11126,9 +11127,9 @@ gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.18.3 3.20.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0 3.18.0 3.20.0: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.14.0-r1 3.18.0: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.18.2 3.20.1 3.20.1-r1: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-control-center 3.18.2 3.20.1 3.20.1-r1 3.20.2: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.14.0 3.16.0 3.18.0 3.20.0: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0 3.20.0: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0 3.20.0 3.20.0-r1: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.18.2 3.20.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.16.0 3.18.0 3.18.0-r1 3.20.0: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1 3.20.0: Password and keyring managing daemon
@@ -11136,7 +11137,7 @@ gnome-base/gnome-light 3.16.0 3.18.0 3.20.0: Meta package for GNOME-Light, merge
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.18.1.2 3.20.1 3.20.2: Gnome session manager
-gnome-base/gnome-settings-daemon 3.18.3 3.20.1: Gnome Settings Daemon
+gnome-base/gnome-settings-daemon 3.18.3 3.20.1 3.20.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.18.5 3.20.2-r1 3.20.3 3.20.4: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1 3.20.0: Collection of GSettings schemas for GNOME desktop
@@ -12285,7 +12286,7 @@ media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.1.3-r1 4.2.0_p20161007: Image Blending with Multiresolution Splines
 media-gfx/engauge 5.2: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
-media-gfx/eog 3.18.3 3.20.4: The Eye of GNOME image viewer
+media-gfx/eog 3.18.3 3.20.4 3.20.5: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.3 3.16.4: Eye of GNOME plugins
 media-gfx/eom 1.10.5-r3 1.12.2-r3: The MATE image viewer
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
@@ -14333,7 +14334,7 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.9.0.2: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.9.0.2 1.10.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.7 0.10.11: Official desktop client for Telegram (binary package)
@@ -15189,7 +15190,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.4.17: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.4.17-r1: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.9-r1 1.1.10: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
