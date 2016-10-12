@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="nls +zinnia"
 
 RDEPEND="zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe )
 	>=app-i18n/ibus-1.3.0
-	>=x11-libs/gtk+-2.10
+	>=x11-libs/gtk+-2.10:2
 	x11-libs/gtkglext"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
