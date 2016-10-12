@@ -7950,8 +7950,8 @@ dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 4.0.1 5.0.0 5.1.1 5.3.0 5.3.1 5.4.0-r1 5.4.1 9999: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-bin 4.0.1-r1 5.0.0 5.1.1 5.3.0 5.3.1-r1 5.4.0-r1 5.4.1: Pre-built version of PyPy
-dev-python/pypy3 2.4.0-r2 5.2.0_alpha1 9999: A fast, compliant alternative implementation of Python 3
-dev-python/pypy3-bin 2.4.0-r4 5.2.0_alpha1-r1: A fast, compliant alternative implementation of Python 3.3 (binary package)
+dev-python/pypy3 2.4.0-r2 5.2.0_alpha1 5.5.0_alpha 9999: A fast, compliant alternative implementation of Python 3
+dev-python/pypy3-bin 2.4.0-r4 5.2.0_alpha1-r1 5.5.0_alpha: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
 dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
@@ -17736,7 +17736,7 @@ virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 0: Virtual for BSD-like make
 virtual/podofo-build 0.9.2 0.9.3 0.9.4: Virtual package for building against PoDoFo
 virtual/pypy 4.0.1 5.0.0 5.1.1 5.3.0 5.3.1 5.4.0-r1 5.4.1: A virtual for PyPy Python implementation
-virtual/pypy3 2.4.0 5.2.0_alpha1: A virtual for PyPy3 Python implementation
+virtual/pypy3 2.4.0 5.2.0_alpha1 5.5.0_alpha: A virtual for PyPy3 Python implementation
 virtual/python-asyncio 0: A virtual for the Python 3.4+ asyncio module
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-dnspython 1: A virtual for dnspython, for Python 2 & 3
