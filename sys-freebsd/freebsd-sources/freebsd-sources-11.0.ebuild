@@ -136,7 +136,7 @@ src_install() {
 
 	insinto "/usr/src/sys"
 	doins -r "${S}/".
-	if use zfs ; then
+	if use dtrace ; then
 		insinto "/usr/src/cddl"
 		doins -r "${WORKDIR}/cddl/".
 	fi
