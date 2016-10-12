@@ -144,13 +144,14 @@ setup_multilib_vars() {
 }
 
 src_compile() {
+	local MULTIBUILD_VARIANTS="${DEFAULT_ABI}"
 	# Preparing to build addr2line, elfcopy, m4
 	for dir in libelftc libpe libopenbsd ; do
 		cd "${WORKDIR}/lib/${dir}" || die
-		freebsd_src_compile -j1
+		multibuild_foreach_variant freebsd_multilib_multibuild_wrapper freebsd_src_compile -j1
 	done
 
-	local MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abis) )
+	MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abis) )
 	multibuild_foreach_variant freebsd_multilib_multibuild_wrapper setup_multilib_vars freebsd_src_compile -j1
 }
 
