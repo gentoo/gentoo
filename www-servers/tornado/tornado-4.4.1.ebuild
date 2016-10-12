@@ -23,10 +23,10 @@ CDEPEND="
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
 	dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]
 	|| (
+		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		(	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
 			$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
 		)
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	)
 	virtual/python-backports_abc[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
