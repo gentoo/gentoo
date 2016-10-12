@@ -19,8 +19,8 @@ IUSE=""
 RDEPEND="
 	>=dev-python/requests-1.2.0[${PYTHON_USEDEP}]
 	|| (
-		>=dev-python/twisted-core-9.0.0[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
+		>=dev-python/twisted-core-9.0.0[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
