@@ -10141,7 +10141,7 @@ dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool
-dev-vcs/git-flow 1.9.1 1.10.0: Git extensions to provide high-level repository operations
+dev-vcs/git-flow 1.9.1 1.10.2: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 0.7.0 0.7.0-r1: Incremental merge for git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
@@ -18009,7 +18009,7 @@ www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 9999: Li
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.1 1.10.1-r2 1.10.1-r3 1.11.3-r1 1.11.3-r2 1.11.4: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.1 1.10.1-r3 1.10.1-r4 1.11.4 1.11.5: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.7-r1 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
