@@ -15,7 +15,7 @@ DESCRIPTION="Free/Open Source micro-blogging client by KDE"
 HOMEPAGE="http://choqok.gnufolks.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="4"
 IUSE="ayatana debug telepathy"
