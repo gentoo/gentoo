@@ -1,0 +1,13 @@
+diff --git a/src/upnp.c b/src/upnp.c
+index abd2f92..3bfc770 100644
+--- a/src/upnp.c
++++ b/src/upnp.c
+@@ -57,7 +57,7 @@ static struct UPNPDev *upnp_discover(int delay, int *error) {
+ 
+ #elif MINIUPNPC_API_VERSION <= 14
+ 
+-	return upnpDiscover(delay, NULL NULL, false, false, 2, error);
++	return upnpDiscover(delay, NULL, NULL, false, false, 2, error);
+ 
+ #else
+ 

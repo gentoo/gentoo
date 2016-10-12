@@ -38,6 +38,10 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-upnp.patch
+}
+
 src_configure() {
 	econf \
 		--enable-jumbograms \
