@@ -38,7 +38,7 @@ src_prepare() {
 	# Customize config.php-dist so that the right 'DB_TYPE' is already set (according to the USE flag)
 	einfo "Customizing config.php-dist..."
 
-	if use mysql && ! use postgres; then
+	if use mysqli && ! use postgres; then
 			sed -i \
 				-e "/define('DB_TYPE',/{s:pgsql:mysql:}" \
 				config.php-dist || die
