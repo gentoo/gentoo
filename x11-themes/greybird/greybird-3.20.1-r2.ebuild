@@ -14,12 +14,12 @@ SRC_URI="https://github.com/shimmerproject/${MY_PN}/archive/v${PV}.tar.gz -> ${P
 # README says "dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana gnome"
 
 RDEPEND="
 	>=x11-themes/gtk-engines-murrine-0.90
-	>=x11-libs/gtk+-3.20.0
+	>=x11-libs/gtk+-3.20.0:3
 "
 DEPEND="${RDEPEND}
 	dev-ruby/sass
@@ -41,4 +41,15 @@ src_install() {
 	use ayatana || rm -rf unity
 	use gnome || rm -rf metacity-1
 	popd > /dev/null || die
+}
+
+pkg_postinst() {
+	if ! has_version x11-themes/elementary-xfce-icon-theme ; then
+		elog "For upstream's default icon theme, please emerge"
+		elog "x11-themes/elementary-xfce-icon-theme"
+	fi
+	if ! has_version x11-themes/vanilla-dmz-xcursors ; then
+		elog "For upstream's default cursor theme, please emerge"
+		elog "x11-themes/vanilla-dmz-xcursors"
+	fi
 }

@@ -19,7 +19,7 @@ IUSE="ayatana gnome"
 
 RDEPEND="
 	>=x11-themes/gtk-engines-murrine-0.90
-	>=x11-libs/gtk+-3.20.0
+	>=x11-libs/gtk+-3.20.0:3
 "
 DEPEND="${RDEPEND}
 	dev-ruby/sass
