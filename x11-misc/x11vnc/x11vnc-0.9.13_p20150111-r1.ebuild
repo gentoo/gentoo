@@ -27,7 +27,7 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	>=net-libs/libvncserver-0.9.8
+	>=net-libs/libvncserver-0.9.8[ssl=]
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
 	x11-libs/libXt
