@@ -15304,7 +15304,7 @@ net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshuttle 0.78.0 0.78.1: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
-net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
+net-proxy/torsocks 1.2-r2 2.1.0-r1: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r5 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid internet proxy
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
