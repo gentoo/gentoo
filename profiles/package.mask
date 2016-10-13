@@ -30,7 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Michael Palimamka <kensington@gentoo.org> 12 Oct 2016)
+# Mike Gilbert <floppym@gentoo.org> (13 Oct 2016)
+# google-chrome no longer installs pepper flash.
+<www-plugins/freshplayerplugin-0.3.5-r1
+
+# Michael Palimamka <kensington@gentoo.org> (12 Oct 2016)
 # Dead upstream. Requires dead and vulnerable qtwebkit4.
 # Consider www-client/qupzilla or www-client/otter instead.
 # Masked for removal in 30 days.
