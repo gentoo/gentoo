@@ -8986,7 +8986,7 @@ dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.13.0 0.14.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.2: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
-dev-ruby/crack 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
+dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.7.0: Cri is a library for building easy-to-use commandline tools
@@ -8999,7 +8999,7 @@ dev-ruby/daemons 1.2.3 1.2.4: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.4 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.5.1 1.5.2 1.5.3: Strategies for cleaning databases
 dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4 3.0.5 3.0.6 3.0.7: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 2.0.8 2.0.13 3.0.5 3.0.7 3.0.8: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1 1.1.1: A simple set of utility functions for Hash
@@ -9262,7 +9262,7 @@ dev-ruby/railties 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1-r1: Tools for
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.1.2 11.2.2-r1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 0.9.2-r1 0.9.9 1.0.0: Provide a standard and simplified way to build and package Ruby extensions
-dev-ruby/rake-remote_task 2.3.1 2.4.0: Extends Rake with remote task goodness
+dev-ruby/rake-remote_task 2.3.1 2.4.0 2.4.1: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.6: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.9.5-r1 0.9.6 0.9.7 0.9.7-r1: A thorough inotify wrapper for Ruby using FFI
