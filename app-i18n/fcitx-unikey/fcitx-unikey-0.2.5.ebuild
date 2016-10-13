@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-c++11.patch"
+)
+
 DOCS=()
 
 src_configure() {
