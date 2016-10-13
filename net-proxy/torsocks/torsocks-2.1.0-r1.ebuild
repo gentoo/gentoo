@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils multilib versionator
+inherit autotools versionator
 
 MY_PV="$(replace_version_separator 3 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -23,6 +23,9 @@ IUSE="static-libs"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+DOCS=( ChangeLog README.md TODO doc/notes/DEBUG doc/socks/{SOCKS5,socks-extensions.txt} )
+
 src_prepare() {
 	sed -i -e "/dist_doc_DATA/s/^/#/" Makefile.am doc/Makefile.am || die
 
@@ -30,6 +33,7 @@ src_prepare() {
 	sed -i -e '/^\.\/test_dns$/d' tests/test_list || \
 		die "failed to disable network tests"
 
+	default
 	eautoreconf
 }
 
@@ -40,9 +44,6 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc ChangeLog README.md TODO doc/notes/DEBUG doc/socks/{SOCKS5,socks-extensions.txt}
-
-	#Remove libtool .la files
-	cd "${D}"/usr/$(get_libdir)/torsocks || die
-	rm -f *.la
+	# Remove libtool .la files
+	find "${D}" -name '*.la' -delete || die
 }
