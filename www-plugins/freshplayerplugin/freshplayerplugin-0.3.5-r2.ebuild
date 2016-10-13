@@ -56,13 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	"
 RDEPEND="${COMMON_DEPEND}
-	|| (
-		www-plugins/chrome-binary-plugins[flash]
-		www-client/google-chrome
-		www-client/google-chrome-beta
-		www-client/google-chrome-unstable
-		www-plugins/adobe-flash:22
-	)
+	www-plugins/adobe-flash:22
 	"
 
 PATCHES=( "${FILESDIR}/0.3.5-cmake.patch" "${FILESDIR}/0.3.4-git-revision.patch" )
