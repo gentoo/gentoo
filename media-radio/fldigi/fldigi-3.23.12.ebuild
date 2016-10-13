@@ -29,6 +29,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+# backported from coming 3.23.15 alpha. Fixes bug #595220
+src_prepare() {
+	sed -i -e "s/memset(src/memset(\&src/" src/main.cxx
+}
+
 src_configure() {
 	econf $(use_with sndfile) \
 		$(use_with portaudio) \
