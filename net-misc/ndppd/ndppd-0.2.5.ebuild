@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Proxies NDP messages between interfaces"
-HOMEPAGE="http://priv.nu/projects/ndppd/"
-SRC_URI="http://priv.nu/projects/ndppd/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/DanielAdolfsson/ndppd"
+SRC_URI="https://github.com/DanielAdolfsson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
