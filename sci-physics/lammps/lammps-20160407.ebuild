@@ -116,6 +116,7 @@ src_prepare() {
 	# Patch python.
 	epatch "${FILESDIR}/lammps-python3-r2.patch"
 	epatch "${FILESDIR}/python-shebang.patch"
+	epatch "${FILESDIR}/gcc-6.patch"
 }
 
 src_compile() {
