@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 DOCS=(ChangeLog README)
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.9.13-fix-compiler-detection.patch
 	eautoreconf
 }
 
