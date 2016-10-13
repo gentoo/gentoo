@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) lzo? ( dev-libs/lzo:2 ) ncurses? ( sys-libs/ncurses:= ) readline? ( sys-libs/readline:= ) upnp? ( net-libs/miniupnpc ) zlib? ( sys-libs/zlib )
+DESCRIPTION=tinc is an easy to configure VPN implementation
+EAPI=5
+HOMEPAGE=http://www.tinc-vpn.org/
+IUSE=+lzo +ncurses gui libressl +readline +ssl uml vde upnp +zlib
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) lzo? ( dev-libs/lzo:2 ) ncurses? ( sys-libs/ncurses:= ) readline? ( sys-libs/readline:= ) upnp? ( net-libs/miniupnpc ) zlib? ( sys-libs/zlib ) vde? ( net-misc/vde ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) gui? ( || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/wxpython[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) )
+SLOT=0
+SRC_URI=http://www.tinc-vpn.org/packages/tinc-1.1pre14.tar.gz https://dev.gentoo.org/~dlan/distfiles/tinc-1.1-upstream-patches-0.tar.xz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=0b8711c169eee45dcbbdef139ed570b6

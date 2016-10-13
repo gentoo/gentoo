@@ -1479,7 +1479,7 @@ app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanj
 app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13 1.5.14: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
-app-i18n/ibus-chewing 1.4.7: The Chewing IMEngine for IBus Framework
+app-i18n/ibus-chewing 1.4.7 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
 app-i18n/ibus-handwrite 2.1.4-r1: hand write recognition/input using ibus IM engine
 app-i18n/ibus-hangul 1.4.2 1.5.0: The Hangul engine for IBus input platform
@@ -15065,7 +15065,7 @@ net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2: Remote desktop viewer display system
-net-misc/tinc 1.0.28 1.0.29 1.1_pre14: tinc is an easy to configure VPN implementation
+net-misc/tinc 1.0.28 1.0.29 1.1_pre14 1.1_pre14-r1: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
