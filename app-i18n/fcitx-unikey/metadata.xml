@@ -9,4 +9,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="macro-editor">Install macro editor</flag>
+	</use>
 </pkgmetadata>

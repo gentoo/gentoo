@@ -22,11 +22,10 @@ fi
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS=""
 IUSE="+macro-editor"
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	virtual/libiconv
 	virtual/libintl
 	macro-editor? (
 		>=app-i18n/fcitx-4.2.8[qt4]
@@ -36,10 +35,6 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-c++11.patch"
-)
 
 DOCS=()
 
