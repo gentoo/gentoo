@@ -9,7 +9,7 @@ PYTHON_COMPAT=(
 	python3_3 python3_4 python3_5
 	python2_7
 )
-PYTHON_REQ_USE='bzip2(+)'
+PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 git-r3 multilib
 

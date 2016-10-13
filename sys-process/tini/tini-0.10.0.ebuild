@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static"
 
+# vim-core is needed just for the xxd program
+DEPEND="app-editors/vim-core"
+
 src_compile() {
 	append-cflags -DPR_SET_CHILD_SUBREAPER=36 -DPR_GET_CHILD_SUBREAPER=37
 	cmake-utils_src_compile
