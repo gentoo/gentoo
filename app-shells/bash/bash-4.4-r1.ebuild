@@ -29,7 +29,7 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="7.0_rc2"
+READLINE_VER="7.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1
 	!<sys-apps/paludis-0.26.0_alpha5"
 # we only need yacc when the .y files get patched (bash42-005)
-DEPEND+=" virtual/yacc"
+#DEPEND+=" virtual/yacc"
 
 S=${WORKDIR}/${MY_P}
 
@@ -73,6 +73,9 @@ src_unpack() {
 src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
+
+	# bug 597006: large HISTFILESIZE value may result in upfront memory exhaustion
+	epatch "${FILESDIR}"/${PN}-4.4-history-alloclist.patch
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
