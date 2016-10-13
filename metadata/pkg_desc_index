@@ -1461,7 +1461,7 @@ app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-inp
 app-i18n/enca 1.13-r3 1.14-r1 1.14-r2 1.19-r1: Detect and convert encoding of text files
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1 1.7-r2: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.8.5 4.2.8.6 4.2.9 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.1 9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2: Japanese Anthy module for Fcitx
 app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
@@ -1509,7 +1509,7 @@ app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement w
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
-app-i18n/kcm-fcitx 0.4.2 0.4.3 0.4.9999 0.5.3 9999: KDE configuration module for Fcitx
+app-i18n/kcm-fcitx 0.4.3 0.4.9999 0.5.3 9999: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1: A Japanese input method which supports the XIM protocol
 app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM protocol
