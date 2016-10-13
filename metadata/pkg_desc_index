@@ -17988,7 +17988,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.637 23.0.0.185: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.59_beta 54.0.2840.59 55.0.2883.9_alpha: Binary plugins from Google Chrome for use in Chromium
-www-plugins/freshplayerplugin 0.3.5-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
+www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
 www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
