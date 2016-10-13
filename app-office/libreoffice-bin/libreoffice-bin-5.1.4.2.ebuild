@@ -58,6 +58,7 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 
 BIN_COMMON_DEPEND="
+	app-text/hunspell:0/0
 	=app-text/libexttextcat-3.4*
 	=app-text/libmwaw-0.3*
 	app-text/poppler:0/62
@@ -83,7 +84,6 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	app-text/hunspell:0/0
 	>=app-text/libabw-0.1.0
 	>=app-text/libebook-0.1
 	>=app-text/libetonyek-0.1
