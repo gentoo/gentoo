@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Gilbert <floppym@gentoo.org> (13 Oct 2016)
+# Python without threads breaks in many ways.
+dev-lang/python threads
+
 # Maciej Mrozowski <reavertm@gentoo.org> (1 Sept 2016)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
