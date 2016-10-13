@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ DEPEND="wato? ( app-admin/sudo )
 	xinetd? ( sys-apps/xinetd )
 	!agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) )
 	!agent-only? ( www-servers/apache www-apache/mod_python )
-	media-libs/libpng"
+	media-libs/libpng:0"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="
