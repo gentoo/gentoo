@@ -22,6 +22,7 @@ RDEPEND="x11-libs/libXtst
 	x11-libs/gtk+:2
 	dev-util/gob:2"
 DEPEND="${RDEPEND}
+	gnome-base/gconf
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
