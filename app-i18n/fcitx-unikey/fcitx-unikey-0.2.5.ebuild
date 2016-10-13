@@ -23,11 +23,16 @@ fi
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+qt4"
+IUSE="+macro-editor"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8[qt4?]
+RDEPEND=">=app-i18n/fcitx-4.2.8
 	virtual/libiconv
-	virtual/libintl"
+	virtual/libintl
+	macro-editor? (
+		>=app-i18n/fcitx-4.2.8[qt4]
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
@@ -40,7 +45,7 @@ DOCS=()
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_QT=$(usex qt4)
+		-DENABLE_QT=$(usex macro-editor)
 	)
 
 	cmake-utils_src_configure
