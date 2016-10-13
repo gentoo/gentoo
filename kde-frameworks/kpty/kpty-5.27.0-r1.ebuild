@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DUTEMPTER_EXECUTABLE=/usr/sbin/utempter
+		-DUTEMPTER_EXECUTABLE="${EPREFIX}/usr/sbin/utempter"
 	)
 
 	kde5_src_configure
