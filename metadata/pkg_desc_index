@@ -14907,7 +14907,7 @@ net-misc/mulk 0.6.0 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncp 1.2.4: utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 0.9.9 0.9.9-r2 1.0.2 1.0.2-r1 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
-net-misc/ndppd 0.2.3: Proxies NDP messages between interfaces
+net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
