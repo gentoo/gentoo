@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -295,21 +295,5 @@ pkg_postinst() {
 		ewarn "and then run /usr/bin/newaliases. Postfix will not"
 		ewarn "work correctly without it."
 		ewarn
-	fi
-
-	if [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 9 ]]; then
-		elog "If you are using old style postfix instances by symlinking"
-		elog "startup scripts in ${ROOT}etc/init.d, please consider"
-		elog "upgrading your config for postmulti support. For more info:"
-		elog "http://www.postfix.org/MULTI_INSTANCE_README.html"
-		if ! use berkdb; then
-			ewarn "\nPostfix is installed without BerkeleyDB support."
-			ewarn "Please turn on berkdb USE flag if you need hash or"
-			ewarn "btree table lookups.\n"
-		fi
-		ewarn "Postfix daemons now live under /usr/libexec/postfix"
-		ewarn "Please adjust your main.cf accordingly by running"
-		ewarn "etc-update/dispatch-conf or similar and accepting the new"
-		ewarn "daemon_directory setting."
 	fi
 }
