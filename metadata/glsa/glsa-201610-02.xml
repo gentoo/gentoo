@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>October 06, 2016</announced>
-  <revised>October 06, 2016: 1</revised>
+  <revised>October 13, 2016: 2</revised>
   <bug>524680</bug>
   <bug>536684</bug>
   <bug>554948</bug>
@@ -18,7 +18,7 @@
   <access>remote</access>
   <affected>
     <package name="www-servers/apache" auto="yes" arch="*">
-      <unaffected range="rgt">2.2.31</unaffected>
+      <unaffected range="rge">2.2.31</unaffected>
       <unaffected range="ge">2.4.23</unaffected>
       <vulnerable range="lt">2.4.23</vulnerable>
     </package>
@@ -58,5 +58,5 @@
   <metadata tag="requester" timestamp="Sun, 13 Sep 2015 13:17:03 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 06 Oct 2016 17:20:25 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Oct 2016 07:21:58 +0000">b-man</metadata>
 </glsa>
