@@ -27,7 +27,7 @@ LICENSE="AdobeFlash-11.x"
 RESTRICT="strip mirror"
 
 RDEPEND="
-	!www-plugins/chrome-binary-plugins[flash]
+	!www-plugins/chrome-binary-plugins[flash(-)]
 "
 
 S="${WORKDIR}"
