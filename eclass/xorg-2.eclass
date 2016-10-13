@@ -73,7 +73,7 @@ HOMEPAGE="https://www.x.org/wiki/"
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
-: ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual/"}
+: ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
 # @ECLASS-VARIABLE: XORG_MODULE
 # @DESCRIPTION:

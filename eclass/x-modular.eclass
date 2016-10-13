@@ -78,7 +78,7 @@ HOMEPAGE="https://www.x.org/wiki/"
 : ${SNAPSHOT:=no}
 
 # Set up SRC_URI for individual modular releases
-BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual/"
+BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"
 # @ECLASS-VARIABLE: MODULE
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
