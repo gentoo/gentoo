@@ -80,7 +80,7 @@ COMMON_DEPEND="
 	collectd_plugins_amqp?			( net-libs/rabbitmq-c )
 	collectd_plugins_apache?		( net-misc/curl:0= )
 	collectd_plugins_ascent?		( net-misc/curl:0= dev-libs/libxml2:2= )
-	collectd_plugins_bind?			( dev-libs/libxml2:2= )
+	collectd_plugins_bind?			( net-misc/curl:0= dev-libs/libxml2:2= )
 	collectd_plugins_ceph?			( dev-libs/yajl:= )
 	collectd_plugins_curl?			( net-misc/curl:0= )
 	collectd_plugins_curl_json?		( net-misc/curl:0= dev-libs/yajl:= )
@@ -115,14 +115,14 @@ COMMON_DEPEND="
 	collectd_plugins_rrdcached?		( net-analyzer/rrdtool:= )
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm_sensors )
-	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4 )
+	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4 dev-libs/glib:2 )
 	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
 	collectd_plugins_varnish?		( www-servers/varnish )
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
-	collectd_plugins_write_http?		( net-misc/curl:0= )
-	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= )
+	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
+	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
 	collectd_plugins_xencpu?		( app-emulation/xen-tools )
 
@@ -152,8 +152,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
-	"${FILESDIR}"/${PN}-5.6.0-issue-1896.patch
-	"${FILESDIR}"/${PN}-5.6.0-fix-apache-plugin.patch
+	"${FILESDIR}"/${PN}-5.6.0-use-_LINUX_CAPABILITY_VERSION_3.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -284,6 +283,14 @@ src_prepare() {
 
 	# fix installdirs for perl, bug 444360
 	sed -i -e 's/INSTALL_BASE=$(DESTDIR)$(prefix) //' bindings/Makefile.am || die
+
+	# Adjust upstream's systemd unit
+	#   - Get rid of EnvironmentFile directive; These files don't exist on Gentoo!
+	#   - Add User=collectd to run collectd as user "collectd" per default
+	sed -i \
+		-e '/^EnvironmentFile=.*/d' \
+		-e '/^\[Service\]/aUser=collectd' \
+		contrib/systemd.${PN}.service || die
 
 	if use collectd_plugins_java; then
 		# Set javac -source and -target flags according to (R)DEPEND.
@@ -460,23 +467,36 @@ src_install() {
 }
 
 pkg_postinst() {
-	local caps=()
-	use collectd_plugins_ceph      && caps+=('cap_dac_override')
-	use collectd_plugins_exec      && caps+=('cap_setuid' 'cap_setgid')
-	use collectd_plugins_iptables  && caps+=('cap_net_admin')
-	use collectd_plugins_filecount && caps+=('cap_dac_read_search')
-	use collectd_plugins_turbostat && caps+=('cap_sys_rawio')
+	if use filecaps; then
+		local caps=()
+		use collectd_plugins_ceph      && caps+=('CAP_DAC_OVERRIDE')
+		use collectd_plugins_exec      && caps+=('CAP_SETUID' 'CAP_SETGID')
+		use collectd_plugins_iptables  && caps+=('CAP_NET_ADMIN')
+		use collectd_plugins_filecount && caps+=('CAP_DAC_READ_SEARCH')
+		use collectd_plugins_turbostat && caps+=('CAP_SYS_RAWIO')
 
-	if use collectd_plugins_dns || use collectd_plugins_ping; then
-		caps+=('cap_net_raw')
-	fi
+		if use collectd_plugins_dns || use collectd_plugins_ping; then
+			caps+=('CAP_NET_RAW')
+		fi
 
-	if [ ${#caps[@]} -gt 0 ]; then
-		local caps_str=$(IFS=","; echo "${caps[*]}")
-		fcaps ${caps_str} usr/sbin/collectd
-		elog "Capabilities for ${EROOT}usr/sbin/collectd set to:"
-		elog "  ${caps_str}+ep"
-		elog
+		if [ ${#caps[@]} -gt 0 ]; then
+			local caps_str=$(IFS=","; echo "${caps[*]}")
+			fcaps ${caps_str} usr/sbin/collectd
+			elog "Capabilities for ${EROOT}usr/sbin/collectd set to:"
+			elog "  ${caps_str}+EP"
+			elog
+
+			local systemd_unit="${EROOT}usr/lib/systemd/system/collectd.service"
+			if [[ -e "${systemd_unit}" ]]; then
+				caps_str="${caps[*]}"
+				sed -i -e "s:^CapabilityBoundingSet=.*:CapabilityBoundingSet=${caps_str}:" "${systemd_unit}" || \
+					die "Failed to set CapabilityBoundingSet in '${systemd_unit}'"
+
+				elog "CapabilityBoundingSet in '${systemd_unit}'"
+				elog "updated to match capabilities set above."
+				elog
+			fi
+		fi
 	fi
 
 	elog "Note: Collectd is only the collector."
