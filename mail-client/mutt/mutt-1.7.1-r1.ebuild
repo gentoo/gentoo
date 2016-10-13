@@ -27,7 +27,7 @@ CDEPEND="
 		qdbm?  ( dev-db/qdbm )
 		!qdbm? (
 			gdbm?  ( sys-libs/gdbm )
-			!gdbm? ( berkdb? ( >=sys-libs/db-4 ) )
+			!gdbm? ( berkdb? ( >=sys-libs/db-4:= ) )
 		)
 	)
 	imap?    (
