@@ -132,74 +132,85 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="
-		$(use_enable crypt pgp) \
-		$(use_enable debug) \
-		$(use_enable gpg gpgme) \
-		$(use_enable imap) \
-		$(use_enable nls) \
-		$(use_enable nntp) \
-		$(use_enable pop) \
-		$(use_enable sidebar) \
-		$(use_enable smime) \
-		$(use_enable smtp) \
-		$(use_enable notmuch) \
-		$(use_with idn) \
-		$(use_with kerberos gss) \
-		$(use slang && echo --with-slang=${EPREFIX}/usr) \
-		$(use !slang && echo --with-curses=${EPREFIX}/usr) \
-		--enable-compressed \
-		--enable-external-dotlock \
-		--enable-nfs-fix \
-		--sysconfdir=${EPREFIX}/etc/${PN} \
-		--with-docdir=${EPREFIX}/usr/share/doc/${PN}-${PVR} \
-		--with-regex \
-		--with-exec-shell=${EPREFIX}/bin/sh"
+	local myconf=(
+		"$(use_enable crypt pgp)"
+		"$(use_enable debug)"
+		"$(use_enable gpg gpgme)"
+		"$(use_enable imap)"
+		"$(use_enable nls)"
+		"$(use_enable nntp)"
+		"$(use_enable pop)"
+		"$(use_enable sidebar)"
+		"$(use_enable smime)"
+		"$(use_enable smtp)"
+		"$(use_enable notmuch)"
+		"$(use_with idn)"
+		"$(use_with kerberos gss)"
+		"--with-$(use slang && echo slang || echo curses)=${EPREFIX}/usr"
+		"--enable-compressed"
+		"--enable-external-dotlock"
+		"--enable-nfs-fix"
+		"--sysconfdir=${EPREFIX}/etc/${PN}"
+		"--with-docdir=${EPREFIX}/usr/share/doc/${PN}-${PVR}"
+		"--with-regex"
+		"--with-exec-shell=${EPREFIX}/bin/sh"
+	)
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# arrows in index view do not show when using wchar_t
-		myconf+=" --without-wc-funcs"
+		myconf+=( "--without-wc-funcs" )
 	fi
 
 	# mutt prioritizes gdbm over bdb, so we will too.
 	# hcache feature requires at least one database is in USE.
-	if use tokyocabinet; then
-		myconf="${myconf} --enable-hcache \
-			--with-tokyocabinet --without-qdbm --without-gdbm --without-bdb"
-	elif use qdbm; then
-		myconf="${myconf} --enable-hcache \
-			--without-tokyocabinet --with-qdbm --without-gdbm --without-bdb"
-	elif use gdbm ; then
-		myconf="${myconf} --enable-hcache \
-			--without-tokyocabinet --without-qdbm --with-gdbm --without-bdb"
-	elif use berkdb; then
-		myconf="${myconf} --enable-hcache \
-			--without-tokyocabinet --without-qdbm --without-gdbm --with-bdb"
+	local hcaches=(
+		"tokyocabinet"
+		"qdbm"
+		"gdbm"
+		"berkdb:bdb"
+	)
+	local ucache hcache lcache
+	for hcache in "${hcaches[@]}" ; do
+		if use ${hcache%%:*} ; then
+			ucache=${hcache}
+			break
+		fi
+	done
+	if [[ -n ${ucache} ]] ; then
+		myconf+=( "--enable-hcache" )
 	else
-		myconf="${myconf} --disable-hcache \
-			--without-tokyocabinet --without-qdbm --without-gdbm --without-bdb"
+		myconf+=( "--disable-hcache" )
 	fi
+	for hcache in "${hcaches[@]}" ; do
+		[[ ${hcache} == ${ucache} ]] \
+			&& myconf+=( "--with-${hcache#*:}" ) \
+			|| myconf+=( "--without-${hcache#*:}" )
+	done
 
 	# there's no need for gnutls, ssl or sasl without socket support
 	if use pop || use imap || use smtp ; then
 		if use gnutls; then
-			myconf="${myconf} --with-gnutls"
+			myconf+=( "--with-gnutls" )
 		elif use ssl; then
-			myconf="${myconf} --with-ssl"
+			myconf+=( "--with-ssl" )
 		fi
 		# not sure if this should be mutually exclusive with the other two
-		myconf="${myconf} $(use_with sasl)"
+		myconf+=( "$(use_with sasl)" )
 	else
-		myconf="${myconf} --without-gnutls --without-ssl --without-sasl"
+		myconf+=(
+			"--without-gnutls"
+			"--without-ssl"
+			"--without-sasl"
+		)
 	fi
 
 	if use mbox; then
-		myconf="${myconf} --with-mailpath=${EPREFIX}/var/spool/mail"
+		myconf+=( "--with-mailpath=${EPREFIX}/var/spool/mail" )
 	else
-		myconf="${myconf} --with-homespool=Maildir"
+		myconf+=( "--with-homespool=Maildir" )
 	fi
 
-	econf ${myconf} || die "configure failed"
+	econf "${myconf[@]}" || die "configure failed"
 }
 
 src_install() {
