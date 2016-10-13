@@ -25,10 +25,6 @@ DEPEND="gtk3? ( >=x11-libs/gtk+-3.14:3
 RDEPEND="gtk2? ( x11-themes/gnome-themes-standard
 	x11-themes/gtk-engines-murrine )"
 
-PATCHES=(
-	"${FILESDIR}"/configure-gtk3.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf
