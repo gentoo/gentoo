@@ -11702,7 +11702,7 @@ kde-frameworks/kpackage 5.26.0 5.27.0: Framework to install and load packages of
 kde-frameworks/kparts 5.26.0-r1 5.27.0: Framework providing elaborate user-interface components
 kde-frameworks/kpeople 5.26.0 5.27.0: KDE contact person abstraction library
 kde-frameworks/kplotting 5.26.0 5.27.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.26.0 5.27.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kpty 5.26.0 5.27.0 5.27.0-r1: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kross 5.26.0 5.27.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.26.0 5.27.0: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.26.0 5.27.0: Advanced plugin and service introspection
