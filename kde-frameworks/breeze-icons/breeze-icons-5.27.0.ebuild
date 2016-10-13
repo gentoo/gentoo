@@ -18,11 +18,3 @@ DEPEND="
 	$(add_qt_dep qtcore)
 "
 RDEPEND="!<kde-plasma/breeze-5.4.3:5"
-
-src_configure() {
-	local mycmakeargs=(
--DBINARY_ICONS_RESOURCE=ON
-	)
-
-	kde5_src_configure
-}
