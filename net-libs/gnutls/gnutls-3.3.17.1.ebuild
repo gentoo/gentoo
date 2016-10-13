@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND=">=dev-libs/libtasn1-4.3[${MULTILIB_USEDEP}]
 	sys-devel/autogen
 	crywrap? ( net-dns/libidn )
 	dane? ( >=net-dns/unbound-1.4.20[${MULTILIB_USEDEP}] )
-	guile? ( >=dev-scheme/guile-1.8:*[networking] )
+	guile? ( >=dev-scheme/guile-1.8[networking] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.20.7[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
