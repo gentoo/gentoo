@@ -14,7 +14,7 @@ LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test +tls-heartbeat +tools zlib ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx +crywrap dane doc examples guile idn nls +openssl pkcs11 static-libs test +tls-heartbeat +tools zlib ${IUSE_LINGUAS// / linguas_}"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
@@ -28,6 +28,7 @@ RDEPEND=">=dev-libs/libtasn1-4.3[${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	idn? ( net-dns/libidn[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140508
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
@@ -108,6 +109,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with pkcs11 p11-kit) \
 		$(use_with zlib) \
+		$(use_with idn) \
 		--without-tpm \
 		--with-unbound-root-key-file=/etc/dnssec/root-anchors.txt \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
