@@ -1,5 +1,5 @@
---- src/py_adonthell_wrap.cc.old	2014-10-20 14:21:57.495642785 +0200
-+++ src/py_adonthell_wrap.cc	2014-10-20 14:22:35.019293237 +0200
+--- a/src/py_adonthell_wrap.cc	2014-10-20 14:21:57.495642785 +0200
++++ b/src/py_adonthell_wrap.cc	2014-10-20 14:22:35.019293237 +0200
 @@ -867,7 +867,7 @@
      Py_DECREF(old_str);
      Py_DECREF(value);

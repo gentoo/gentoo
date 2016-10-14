@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -13,7 +13,7 @@
  AM_INIT_AUTOMAKE([])
  AM_CONFIG_HEADER(config.h)
