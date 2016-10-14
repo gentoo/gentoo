@@ -154,7 +154,7 @@ app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit 0.8.15 1.0.11-r1 1.1.1 1.1.4: PackageKit Package Manager interface (meta package)
 app-admin/packagekit-base 0.8.15-r1 1.0.11 1.1.1 1.1.4: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1 1.1.4: Gtk3 PackageKit backend library
-app-admin/packagekit-qt 0.8.8 0.9.5: Qt PackageKit backend library
+app-admin/packagekit-qt 0.8.8 0.9.5 0.9.6: Qt PackageKit backend library
 app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 0.99_beta 1.00_beta: Password manager with wxGTK based frontend
