@@ -7906,7 +7906,7 @@ dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
 dev-python/pylons-sphinx-themes 0.3.1: Pylons Sphinx themes for documentation styling
 dev-python/pylzma 0.4.4-r1 0.4.5 0.4.6 0.4.8: Python bindings for the LZMA compression library
-dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
+dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 2.1.4 2.1.5: A wrapper around the mediainfo library
 dev-python/pymetar 0.19-r1 0.21: Downloads, decodes and provides access to the weather report for a given station ID
