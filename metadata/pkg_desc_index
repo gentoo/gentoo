@@ -5235,7 +5235,7 @@ dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0 4.0.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.19.2-r1 1.19.3: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.19.3: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 113.24.00 113.33.03: OCaml variants as first class values
@@ -8760,7 +8760,7 @@ dev-ros/rosserial_client 0.7.1 0.7.2 0.7.3 0.7.4 9999: Generalized client side s
 dev-ros/rosserial_embeddedlinux 0.7.1 0.7.2 0.7.3 0.7.4 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
 dev-ros/rosserial_msgs 0.7.1 0.7.2 0.7.3 0.7.4 9999: Messages for automatic topic configuration using rosserial
 dev-ros/rosserial_python 0.7.1 0.7.2 0.7.3 0.7.4 9999: A Python-based implementation of the ROS serial protocol
-dev-ros/rosserial_server 0.7.1 0.7.2 0.7.3 0.7.4 9999: C++ implementation of the rosserial server side
+dev-ros/rosserial_server 0.7.4 9999: C++ implementation of the rosserial server side
 dev-ros/rosserial_tivac 0.7.2 0.7.3 0.7.4 9999: Definitions for rosserial_client targets for TivaC Launchpad evaluation boards.
 dev-ros/rosserial_windows 0.7.1 0.7.2 0.7.3 0.7.4 9999: Libraries and examples for ROSserial usage on Windows Platforms
 dev-ros/rosserial_xbee 0.7.1 0.7.2 0.7.3 0.7.4 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
@@ -12899,7 +12899,7 @@ media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 0.0.20160523 0.0.20160712
 media-libs/x265 1.5 1.7 1.8 1.8-r3 1.9 2.0 2.1 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
-media-libs/zimg 2.0.1 2.0.2 2.0.3 2.0.4 2.2.1 9999: Scaling, colorspace conversion, and dithering library
+media-libs/zimg 2.3 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0 2.0.0-r1 3.1.0: C++ library implementing a real-time convolution matrix
 media-libs/zvbi 0.2.35 0.2.35-r1: VBI Decoding Library for Zapping
