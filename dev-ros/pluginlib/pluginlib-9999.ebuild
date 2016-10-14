@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/class_loader
+	>=dev-ros/class_loader-0.3.5
 	dev-ros/rosconsole
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-libs/boost:=

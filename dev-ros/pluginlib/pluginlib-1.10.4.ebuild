@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/class_loader
+	>=dev-ros/class_loader-0.3.5
 	dev-ros/rosconsole
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-libs/boost:=
