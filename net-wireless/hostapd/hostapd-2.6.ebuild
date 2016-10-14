@@ -6,6 +6,8 @@ EAPI="6"
 
 inherit toolchain-funcs eutils systemd
 
+# bogus commit to force manifest regeneration #596462
+
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://hostap.epitest.fi"
 SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
