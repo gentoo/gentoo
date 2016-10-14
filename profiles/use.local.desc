@@ -3339,7 +3339,7 @@ kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and KCM for GTK2 and GTK3
-kde-plasma/plasma-meta:mediacenter - Pull in kde-plasma/plasma-mediacenter
+kde-plasma/plasma-meta:mediacenter - Pull in media-video/plasma-mediacenter
 kde-plasma/plasma-meta:pam - Enable support for kwallet auto-unlocking
 kde-plasma/plasma-meta:plymouth - Pull in Breeze theme for sys-boot/plymouth
 kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume management

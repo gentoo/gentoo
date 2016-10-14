@@ -11860,7 +11860,6 @@ kde-plasma/oxygen 5.7.5 5.8.1: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.7.5 5.8.1: KDE Plasma desktop
 kde-plasma/plasma-integration 5.7.5 5.8.1: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-mediacenter 5.7.3 5.7.5: Unified media experience for any device capable of running KDE Plasma
 kde-plasma/plasma-meta 5.7.5 5.8.1: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.7.5 5.8.1: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.7.5 5.8.1: Plasma applet for audio volume management using PulseAudio
@@ -13746,7 +13745,7 @@ media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer 
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1 2.1.0: Movie slideshow creator using Ken Burns effect
 media-video/pitivi 0.95 0.96-r1: A non-linear video editor using the GStreamer multimedia framework
-media-video/plasma-mediacenter 1.3.0: Unified media experience for any device capable of running KDE
+media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
 media-video/qgifer 0.2.1-r2 0.2.1-r3: A video-based animated GIF creator

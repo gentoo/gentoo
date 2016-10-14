@@ -2922,6 +2922,54 @@
     </member>
   </project>
   <project>
+    <email>pr@gentoo.org</email>
+    <name>Gentoo Public Relations Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
+    <description>The Public Relations Team improves Gentoo's visibility towards the rest of the world.</description>
+    <subproject ref="gmn@gentoo.org" inherit-members="1"/>
+    <subproject ref="planet@gentoo.org"/>
+    <subproject ref="www@gentoo.org"/>
+    <member>
+      <email>a3li@gentoo.org</email>
+      <name>Alex Legler</name>
+    </member>
+    <member>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
+    </member>
+    <member>
+      <email>dabbott@gentoo.org</email>
+      <name>David Abbott</name>
+    </member>
+    <member>
+      <email>dastergon@gentoo.org</email>
+      <name>Pavlos Ratis</name>
+      <role>Facebook</role>
+    </member>
+    <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>Facebook</role>
+    </member>
+    <member>
+      <email>k_f@gentoo.org</email>
+      <name>Kristian Fiskerstrand</name>
+    </member>
+    <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
+      <role>Facebook, G+, Twitter</role>
+    </member>
+    <member>
+      <email>nightmorph@gentoo.org</email>
+      <name>Joshua Saddler</name>
+    </member>
+    <member>
+      <email>sping@gentoo.org</email>
+      <name>Sebastian Pipping</name>
+    </member>
+  </project>
+  <project>
     <email>python@gentoo.org</email>
     <name>Python</name>
     <url>https://wiki.gentoo.org/wiki/Project:Python</url>
