@@ -28,6 +28,7 @@ LICENSE="LGPL-2.1"
 # subslot = libkvazaar major
 SLOT="0/3"
 IUSE="static-libs test"
+REQUIRED_USE="test? ( static-libs )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -38,6 +39,7 @@ DEPEND="${DEPEND}
 	abi_x86_64? ( ${ASM_DEP} )"
 
 src_prepare() {
+	epatch "${FILESDIR}/multilib.patch"
 	eautoreconf
 	if use test ; then
 		# https://bugs.gentoo.org/show_bug.cgi?id=595932

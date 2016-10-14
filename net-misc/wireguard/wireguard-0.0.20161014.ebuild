@@ -53,6 +53,8 @@ src_install() {
 	dodoc -r contrib/examples
 	linux-mod_src_install
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
+	insinto /$(get_libdir)/netifrc/net
+	newins "${FILESDIR}"/wireguard-openrc.sh wireguard.sh
 }
 
 pkg_postinst() {
