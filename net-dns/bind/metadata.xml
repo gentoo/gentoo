@@ -7,6 +7,7 @@
 	</maintainer>
 	<longdescription>ISC's bind dns server, used the world 'round.</longdescription>
 	<use>
+		<flag name="dnstap">Enables dnstap packet logging</flag>
 		<flag name="dlz">Enables dynamic loaded zones, 3rd party extension</flag>
 		<flag name="fetchlimit">Recursive fetch limits for DoS attack mitigation</flag>
 		<flag name="filter-aaaa">Enable filtering of AAAA records over IPv4</flag>
@@ -14,6 +15,7 @@
 		<flag name="gost">Enables gost OpenSSL engine support</flag>
 		<flag name="gssapi">Enable gssapi support</flag>
 		<flag name="json">Enable JSON statistics channel</flag>
+		<flag name="lmdb">Enable LMDB support to store configuration for 'addzone' zones</flag>
 		<flag name="nslint">Build and install the nslint util</flag>
 		<flag name="rpz">Enable response policy rewriting (rpz)</flag>
 		<flag name="sit">Source Identity Token support (sit)</flag>
