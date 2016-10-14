@@ -63,7 +63,6 @@ python_test() {
 
 python_compile_all(){
 	use doc && emake -C doc/en html
-	distutils-r1_python_compile_all
 }
 
 python_install_all() {
