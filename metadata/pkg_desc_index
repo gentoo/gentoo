@@ -8810,7 +8810,7 @@ dev-ros/rviz_plugin_tutorials 0.9.2 0.10.1 9999: Tutorials showing how to write 
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.3 1.12.4 1.12.5 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
-dev-ros/settlerlib 0.10.13 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
+dev-ros/settlerlib 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.12.3 1.12.4 1.12.5 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
 dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex robot behavior
@@ -8824,7 +8824,7 @@ dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.19-r1 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 1.7.17 9999: Tests for bond, bondpy and bondcpp
-dev-ros/test_diagnostic_aggregator 1.8.8 1.8.9 1.8.10 9999: diagnostic_aggregator tests
+dev-ros/test_diagnostic_aggregator 1.8.10 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.9.3 1.9.4 1.9.5 1.9.6 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rosbag
