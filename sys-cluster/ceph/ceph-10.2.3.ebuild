@@ -130,8 +130,8 @@ check-reqs_export_vars() {
 }
 
 user_setup() {
-	enewgroup ceph
-	enewuser ceph -1 -1 /var/lib/ceph ceph
+	enewgroup ceph ${CEPH_GID}
+	enewuser ceph "${CEPH_UID:--1}" -1 /var/lib/ceph ceph
 }
 
 emake_python_bindings() {
