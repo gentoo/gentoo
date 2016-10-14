@@ -15110,7 +15110,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.02-r1 2016.10.07 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.07 2016.10.12 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17944,7 +17944,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 40.0.2308.62 40.0.2308.81: A fast and secure web browser
-www-client/opera-beta 40.0.2308.52 41.0.2353.10: A fast and secure web browser
+www-client/opera-beta 41.0.2353.10 41.0.2353.23: A fast and secure web browser
 www-client/opera-developer 41.0.2349.0 42.0.2372.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
@@ -18435,7 +18435,7 @@ x11-misc/idesk-extras 1.37-r1: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0: A themable desktop pager for fluxbox and other window managers
-x11-misc/kapow 1.4.4 1.5.0: A punch clock program designed to easily keep track of your hours
+x11-misc/kapow 1.4.4 1.5.0 1.5.1: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
