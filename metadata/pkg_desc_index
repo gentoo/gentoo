@@ -8946,7 +8946,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.7.1 2.8.1 2.9.1 2.9.2: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.8.1 2.9.2 2.10.1: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
@@ -8984,7 +8984,7 @@ dev-ruby/concurrent-ruby 1.0.0 1.0.1 1.0.2 1.0.2-r1: Modern concurrency tools in
 dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.13.0 0.14.0: provides contracts for Ruby
-dev-ruby/coolio 1.4.2: A high performance event framework for Ruby which uses the libev C library
+dev-ruby/coolio 1.4.2 1.4.5: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
 dev-ruby/crack 0.4.2-r1 0.4.3 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
@@ -9391,7 +9391,7 @@ dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1 0.4.2: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.6: Advanced seed data handling for Rails
-dev-ruby/selenium-webdriver 2.52.0 2.53.0 2.53.1 2.53.3 2.53.4 2.53.4-r1: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.53.4 2.53.4-r1 3.0.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.3: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
