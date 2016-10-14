@@ -11765,7 +11765,7 @@ kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
 kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
-kde-misc/kio-gdrive 1.0.2: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.0.2 1.0.3: KIO Slave for Google Drive service
 kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
@@ -12613,7 +12613,7 @@ media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
 media-libs/kodi-platform 16_p20150805 16.9999: Kodi platform support library
-media-libs/kvazaar 0.8.3 9999: An open-source HEVC encoder
+media-libs/kvazaar 0.8.3 1.0.0 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1: C++ library for postscript stream output
@@ -17953,7 +17953,7 @@ www-client/qupzilla 2.0.1: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.6.2 0.7.0 0.8.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.39 2.40 2.42.3.0_p0: Seamonkey Web Browser
+www-client/seamonkey 2.39 2.40 2.42.3.0_p0 2.42.4.0_p1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.39 2.44_pre20160608 2.45_pre20160812: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
