@@ -16,11 +16,10 @@ SRC_URI="https://www.opensmtpd.org/archives/${MY_P/_}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="libressl pam +mta"
+KEYWORDS="amd64 x86"
+IUSE="pam +mta"
 
-DEPEND="!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+DEPEND="dev-libs/openssl:0
 		sys-libs/zlib
 		pam? ( virtual/pam )
 		sys-libs/db:=
