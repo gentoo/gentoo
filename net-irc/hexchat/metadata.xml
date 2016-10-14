@@ -6,6 +6,11 @@
 		<name>Nicholas Vinson</name>
 		<description>Proxied maintainer</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>anthonyryan1@gmail.com</email>
+		<name>Anthony Ryan</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
