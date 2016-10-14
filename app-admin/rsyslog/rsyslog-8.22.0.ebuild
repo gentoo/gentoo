@@ -97,7 +97,7 @@ RDEPEND="
 		>=net-libs/czmq-3.0.0
 	)"
 DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-archive-2015.02.04
+	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
 	test? ( sys-libs/libfaketime )"
 
