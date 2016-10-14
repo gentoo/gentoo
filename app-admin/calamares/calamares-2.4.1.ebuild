@@ -47,7 +47,7 @@ RDEPEND="${DEPEND}
 	net-misc/rsync
 	sys-apps/gptfdisk
 	>=sys-block/parted-3.0
-	|| ( sys-boot/grub:2 sys-boot/gummiboot )
+	|| ( sys-boot/grub:2 sys-boot/systemd-boot )
 	sys-boot/os-prober
 	sys-fs/squashfs-tools
 	sys-fs/udisks:2[systemd]
