@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2 autotools-utils
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
 	inherit autotools-utils
 fi
 
@@ -20,7 +20,7 @@ DESCRIPTION="Client library for accessing NFS shares over a network"
 HOMEPAGE="https://github.com/sahlberg/libnfs"
 
 LICENSE="LGPL-2.1 GPL-3"
-SLOT="0"
+SLOT="0/8"  # sub-slot matches SONAME major
 IUSE="examples static-libs"
 
 RDEPEND=""
@@ -28,11 +28,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${P}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-headers.patch
-	"${FILESDIR}"/${PN}-1.8.0-makefile.patch
-)
 
 src_install() {
 	autotools-utils_src_install
