@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rhinstaller/lorax/archive/${P}-1.tar.gz -> ${P}-1.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+#KEYWORDS="~amd64 ~x86"
 IUSE=test
 
 #ImportError: No module named 'pocketlint'
@@ -21,8 +21,9 @@ RESTRICT=test
 
 S="${WORKDIR}"/"${PN}-${P}-1"
 
-DEPEND="test? ( dev-python/pylint )"
-RDEPEND=""
+RDEPEND="sys-libs/libselinux[python,${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+		test? ( dev-python/pylint[${PYTHON_USEDEP}] )"
 
 src_test() {
 	emake check
