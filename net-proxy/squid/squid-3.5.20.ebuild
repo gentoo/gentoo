@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools linux-info pam toolchain-funcs user versionator
+inherit autotools linux-info pam toolchain-funcs user
 
 DESCRIPTION="A full-featured web proxy cache"
 HOMEPAGE="http://www.squid-cache.org/"
@@ -235,13 +235,4 @@ src_install() {
 
 	diropts -m0750 -o squid -g squid
 	keepdir /var/log/squid /etc/ssl/squid /var/lib/squid
-}
-
-pkg_postinst() {
-	if [[ $(get_version_component_range 1 ${REPLACING_VERSIONS}) -lt 3 ]] || \
-		[[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 5 ]]; then
-		elog "Please read the release notes at:"
-		elog "  http://www.squid-cache.org/Versions/v3/3.5/RELEASENOTES.html"
-		echo
-	fi
 }
