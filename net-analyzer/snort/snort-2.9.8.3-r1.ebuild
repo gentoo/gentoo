@@ -196,12 +196,6 @@ src_install() {
 	sed -i -e 's|^include $RULE_PATH|# include $RULE_PATH|g' \
 		"${D}etc/snort/snort.conf.distrib" || die
 
-	# Disable normalizer preprocessor config if normalizer USE flag not set.
-	if ! use normalizer; then
-		sed -i -e 's|^preprocessor normalize|#preprocessor normalize|g' \
-			"${D}etc/snort/snort.conf.distrib" || die
-	fi
-
 	# Set the configured DAQ to afpacket
 	sed -i -e 's|^# config daq: <type>|config daq: afpacket|g' \
 		"${D}etc/snort/snort.conf.distrib" || die
