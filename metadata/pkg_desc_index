@@ -3895,7 +3895,7 @@ dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementat
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2 1.3-r3: Applies XPath expressions to graphs of objects of all kinds
-dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2: Commons components to manipulate core java classes
+dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2 3.4: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2 1.2-r1: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
@@ -14153,7 +14153,7 @@ net-dns/avahi 0.6.31-r10 0.6.31-r11 0.6.32 0.6.32-r1: System which facilitates s
 net-dns/bind 9.10.3_p4 9.10.4_p3: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.10.3_p4 9.10.4_p3: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
-net-dns/c-ares 1.10.0-r1 1.11.0: C library that resolves names asynchronously
+net-dns/c-ares 1.10.0-r1 1.11.0 1.12.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r29 1.05-r30 1.05-r31: Collection of DNS client/server software
