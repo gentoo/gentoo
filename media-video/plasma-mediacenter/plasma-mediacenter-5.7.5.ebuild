@@ -8,6 +8,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Unified media experience for any device capable of running KDE Plasma"
+SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
 KEYWORDS="amd64 ~arm x86"
 IUSE="semantic-desktop"
 
@@ -35,7 +36,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
 	$(add_qt_dep qtmultimedia 'qml')
-	!media-video/plasma-mediacenter
+	!media-video/plasma-mediacenter:0
 "
 
 src_configure() {
