@@ -54,7 +54,7 @@ app-admin/aws-iam-tools 1.3.0: The Command Line Interface (CLI) for the AWS Iden
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 2.3 2.4: Distribution-independent installer framework
+app-admin/calamares 2.4 2.4.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 3.1.9 3.1.13: A usable configuration management system
