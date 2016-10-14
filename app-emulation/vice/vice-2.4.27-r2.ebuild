@@ -103,14 +103,14 @@ src_prepare() {
 		-e "/^docdir =/s:=.*:=/usr/share/doc/${PF}/html:" \
 		doc/html/Makefile.am || die
 	sed -i \
-		-e "s:/usr/local/lib/VICE:/$(get_libdir)/${PN}:" \
+		-e "s:/usr/local/lib/VICE:/usr/$(get_libdir)/${PN}:" \
 		man/vice.1 \
 		$(grep -rl --exclude="*texi" /usr/local/lib doc) || die
 	sed -i \
-		-e "/VICEDIR=/s:=.*:=\"/$(get_libdir)/${PN}\";:" \
+		-e "/VICEDIR=/s:=.*:=\"/usr/$(get_libdir)/${PN}\";:" \
 		configure.ac || die
 	sed -i \
-		-e "s:\(#define LIBDIR \).*:\1\"$(get_libdir)/${PN}\":" \
+		-e "s:\(#define LIBDIR \).*:\1\"/usr/$(get_libdir)/${PN}\":" \
 		-e "s:\(#define DOCDIR \).*:\1\"/usr/share/doc/${PF}\":" \
 		src/arch/unix/archdep.h \
 		src/arch/sdl/archdep_unix.h || die
