@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # NOTE: this package contains precompiled code. It appears that all
 # source code can be found at https://code.google.com/p/selenium/ but the
@@ -25,8 +25,8 @@ DESCRIPTION="This gem provides Ruby bindings for WebDriver"
 HOMEPAGE="http://gemcutter.org/gems/selenium-webdriver"
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
+SLOT="3"
+KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/childprocess-0.5.0
