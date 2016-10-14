@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug dnstap doc caps +fastparser idn systemd"
 
 RDEPEND="
-	>=net-libs/gnutls-3.0
+	>=net-libs/gnutls-3.3
 	>=dev-libs/jansson-2.3
 	>=dev-db/lmdb-0.9.15
 	>=dev-libs/userspace-rcu-0.5.4
@@ -35,10 +35,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 "
 
-PATCHES=(
-	"${FILESDIR}/2.3.0-added-conversion-to-wire-format-when-writing-FNV64-hash-values.patch"
-)
-
 S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
@@ -53,7 +49,7 @@ src_configure() {
 		$(use_enable dnstap) \
 		$(use_enable doc documentation) \
 		$(use_with idn libidn) \
-		$(usex systemd --enable-systemd=yes --enable-systemd=no)
+		--enable-systemd=$(usex systemd)
 }
 
 src_compile() {
