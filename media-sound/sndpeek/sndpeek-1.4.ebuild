@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="real-time audio visualization"
@@ -25,18 +25,12 @@ RDEPEND="media-libs/freeglut
 	alsa? ( media-libs/alsa-lib )
 	app-eselect/eselect-sndpeek"
 DEPEND="${RDEPEND}"
+REQUIRED_USE="|| ( alsa jack oss )"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.3-makefile.patch \
 		"${FILESDIR}"/${P}-gcc.patch \
 		"${FILESDIR}"/${P}-ldflags.patch
-}
-
-pkg_setup() {
-	if ! use alsa && ! use jack && ! use oss; then
-		eerror "One of the following USE flags is needed: jack, alsa or oss"
-		die "Please set one audio engine type"
-	fi
 }
 
 compile_backend() {
