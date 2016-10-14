@@ -6658,6 +6658,7 @@ sci-astronomy/predict:xplanet - Project predict data onto world maps generated b
 sci-astronomy/psfex:plplot - Build with sci-libs/plplot to allow diagnostic plots during processing
 sci-astronomy/scamp:plplot - Build with sci-libs/plplot to allow diagnostic plots during processing
 sci-astronomy/sextractor:modelfit - Enable profile model fitting, needs sci-libs/atlas and sci-libs/fftw
+sci-astronomy/stellarium:media - Enable sound and video support
 sci-astronomy/stellarium:sound - Enable sound support
 sci-astronomy/stellarium:stars - Install extra star catalogs
 sci-astronomy/wcslib:fits - Enable support for the FITS format through sci-libs/cfitsio
