@@ -9,7 +9,7 @@
 		<flag name="display-manager">Pull in a graphical display manager</flag>
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and KCM for GTK2 and GTK3</flag>
-		<flag name="mediacenter">Pull in <pkg>kde-plasma/plasma-mediacenter</pkg></flag>
+		<flag name="mediacenter">Pull in <pkg>media-video/plasma-mediacenter</pkg></flag>
 		<flag name="pam">Enable support for kwallet auto-unlocking</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
