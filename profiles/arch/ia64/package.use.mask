@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Christian Ruppert <idl0r@gentoo.org> (14 Oct 2016)
+# dnstap USE masked due to missing keywords
+net-dns/bind dnstap
+
 # Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
