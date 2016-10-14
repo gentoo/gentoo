@@ -8838,7 +8838,7 @@ dev-ros/test_rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.
 dev-ros/test_rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rospy
 dev-ros/test_tf2 0.5.12-r1 0.5.13 9999: TF2 unit tests
-dev-ros/tf 1.11.7 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
+dev-ros/tf 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
 dev-ros/tf2 0.5.13 9999: The second generation Transform Library in ROS
 dev-ros/tf2_bullet 0.5.12 0.5.13 9999: TF2 bullet support
 dev-ros/tf2_eigen 0.5.13 9999: TF2 eigen support
@@ -12884,7 +12884,7 @@ media-libs/tiff 3.9.7-r1 4.0.6 4.0.6-r1: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20120120 0_pre20130223 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
-media-libs/vamp-plugin-sdk 2.5 2.6 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
+media-libs/vamp-plugin-sdk 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.10.0 1.11.0: C++ computer vision library with emphasis on customizable algorithms and data structures
 media-libs/vips 7.26.3 7.26.7 7.26.7-r1 7.38.5: VIPS Image Processing Library
