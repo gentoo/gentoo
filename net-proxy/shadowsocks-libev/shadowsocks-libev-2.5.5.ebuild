@@ -24,6 +24,7 @@ RDEPEND="openssl? ( dev-libs/openssl:= )
 		dev-libs/libev
 		net-libs/udns
 	)
+	dev-libs/libpcre
 	"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers

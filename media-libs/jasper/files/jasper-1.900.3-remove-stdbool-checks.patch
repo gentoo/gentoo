@@ -1,0 +1,47 @@
+Remove undefining of true/false macros, this is not 1998.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=513240
+
+--- a/src/libjasper/include/jasper/jas_types.h
++++ b/src/libjasper/include/jasper/jas_types.h
+@@ -93,8 +93,6 @@
+ #endif
+ 
+ #if defined(HAVE_STDLIB_H)
+-#undef false
+-#undef true
+ #include <stdlib.h>
+ #endif
+ #if defined(HAVE_STDDEF_H)
+@@ -104,32 +102,11 @@
+ #include <sys/types.h>
+ #endif
+ 
+-#ifndef __cplusplus
+-#if defined(HAVE_STDBOOL_H)
+ /*
+  * The C language implementation does correctly provide the standard header
+  * file "stdbool.h".
+  */
+ #include <stdbool.h>
+-#else
+-
+-/*
+- * The C language implementation does not provide the standard header file
+- * "stdbool.h" as required by ISO/IEC 9899:1999.  Try to compensate for this
+- * braindamage below.
+- */
+-#if !defined(bool)
+-#define	bool	int
+-#endif
+-#if !defined(true)
+-#define true	1
+-#endif
+-#if !defined(false)
+-#define	false	0
+-#endif
+-#endif
+-
+-#endif
+ 
+ #if defined(HAVE_STDINT_H)
+ /*
