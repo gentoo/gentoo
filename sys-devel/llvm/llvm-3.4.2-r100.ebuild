@@ -11,7 +11,7 @@ inherit eutils check-reqs flag-o-matic multilib pax-utils prefix \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
 SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-3.4.src.tar.gz
+	clang? ( http://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
 	https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2"
 
