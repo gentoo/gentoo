@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ AUTOTOOLS_AUTORECONF=yes
 
 inherit autotools-multilib
 
-DESCRIPTION="software-based implementation of the codec specified in the JPEG-2000 Part-1 standard"
+DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
 SRC_URI="
 	http://www.ece.uvic.ca/~mdadams/${PN}/software/${P}.zip
