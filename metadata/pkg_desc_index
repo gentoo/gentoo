@@ -10926,7 +10926,7 @@ games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b 0.8.0b-r1: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
-games-rpg/adonthell 0.3.5-r1: roleplaying game engine
+games-rpg/adonthell 0.3.5-r1 0.3.5-r2: roleplaying game engine
 games-rpg/arx-fatalis-data 1.21-r2 1.21-r3: Arx Fatalis data files
 games-rpg/arx-fatalis-demo 0: Arx Fatalis demo
 games-rpg/arx-libertatis 1.1.2: Cross-platform port of Arx Fatalis, a first-person role-playing game
