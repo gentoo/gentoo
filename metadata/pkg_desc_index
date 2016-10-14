@@ -8700,7 +8700,7 @@ dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
 dev-ros/pcl_conversions 0.2.1-r1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
 dev-ros/pcl_ros 1.4.1-r2 9999: PCL (Point Cloud Library) ROS interface stack
-dev-ros/pluginlib 1.10.3 1.10.4 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
+dev-ros/pluginlib 1.10.4 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
@@ -16624,7 +16624,7 @@ sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/cobalt-panel-utils 1.0.2: LCD and LED panel utilities for the Sun Cobalts
-sys-apps/collectl 3.7.4 4.0.4 4.0.5: light-weight performance monitoring tool capable of reporting interactively and logging to disk
+sys-apps/collectl 3.7.4 4.0.5 4.1.0: light-weight performance monitoring tool capable of reporting interactively and logging to disk
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.23 8.24 8.25: Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
 sys-apps/cpint 1.1.6 2.5.3: Linux/390 Interface to z/VM's Control Program
