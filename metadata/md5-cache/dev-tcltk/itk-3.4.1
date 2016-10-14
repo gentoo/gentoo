@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=<dev-lang/tk-8.6 =dev-tcltk/itcl-3.4* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=<dev-lang/tk-8.6:= =dev-tcltk/itcl-3.4* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Object Oriented Enhancements for Tcl/Tk
 EAPI=5
 HOMEPAGE=http://incrtcl.sourceforge.net/
 IUSE=test
 KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=<dev-lang/tk-8.6 =dev-tcltk/itcl-3.4*
+RDEPEND=<dev-lang/tk-8.6:= =dev-tcltk/itcl-3.4*
 SLOT=0
 SRC_URI=mirror://sourceforge/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/3.4.1/itk3.4.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=cb25af2374d7b068e609996abd3c2b60
+_md5_=970fba21a10d4ab248ac863e0cca9528

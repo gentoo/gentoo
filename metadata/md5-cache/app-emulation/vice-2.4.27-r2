@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/vice-emu/releases/vice-2.4.27.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=b6bf6551e93fe06f05c67f5b340fb8b3
+_md5_=b9b8f05c1fccf6a50ba8eae0e9491008
