@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils flag-o-matic toolchain-funcs
 
@@ -19,8 +19,8 @@ IUSE="doc examples +threads test"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="
-	>=dev-libs/libxml2-2.9.2
-	>=dev-libs/libxslt-1.1.28"
+	>=dev-libs/libxml2-2.7.2
+	>=dev-libs/libxslt-1.1.23"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/cssselect[${PYTHON_USEDEP}] )
@@ -28,7 +28,15 @@ DEPEND="${RDEPEND}
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=( "${FILESDIR}"/${PN}-3.5.0-cross-compile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cross-compile.patch
+
+	# This patch removes a testcase that fails because of issues
+	# in libxml2.
+	#
+	# Upstream bug: https://bugs.launchpad.net/lxml/+bug/1608479
+	"${FILESDIR}"/${PN}-3.6.4-fix-test_xmlschema.patch
+)
 
 python_prepare_all() {
 	# avoid replacing PYTHONPATH in tests.
@@ -39,7 +47,7 @@ python_prepare_all() {
 
 python_compile() {
 	if [[ ${EPYTHON} != python3* ]]; then
-		local CFLAGS=${CFLAGS}
+		local -x CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
 	tc-export PKG_CONFIG
@@ -51,15 +59,19 @@ python_test() {
 	cp -r -l src/lxml/html/tests "${BUILD_DIR}"/lib/lxml/html/ || die
 	ln -s "${S}"/doc "${BUILD_DIR}"/ || die
 
-	"${PYTHON}" test.py -vv --all-levels -p || die "Test ${test} fails with ${EPYTHON}"
+	"${EPYTHON}" test.py -vv --all-levels -p || die "Test ${test} fails with ${EPYTHON}"
 }
 
 python_install_all() {
 	if use doc; then
-		local DOCS=( *.txt doc/*.txt )
-		local HTML_DOCS=( doc/html/. )
+		local -x DOCS=( *.txt doc/*.txt )
+		local -x HTML_DOCS=( doc/html/. )
 	fi
-	use examples && local EXAMPLES=( samples/. )
+
+	if use examples; then
+		docinto examples
+		dodoc -r samples/.
+	fi
 
 	distutils-r1_python_install_all
 }
