@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -53,7 +53,7 @@ python_test() {
 	for test_file in ${BROKENTESTS[@]}; do
 		test_file="test/${test_file}.py"
 		einfo "Removing dubious test \"${test_file}\""
-		rm ${test_file}
+		rm ${test_file} || die "can't remove ${test_file}"
 		eend $?
 	done
 
