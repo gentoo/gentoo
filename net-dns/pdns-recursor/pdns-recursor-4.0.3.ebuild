@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit toolchain-funcs flag-o-matic eutils versionator
 
@@ -29,6 +29,10 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
+
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.61-fcontext.patch
+)
 
 pkg_setup() {
 	filter-flags -ftree-vectorize
