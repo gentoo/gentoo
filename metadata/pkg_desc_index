@@ -8074,7 +8074,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 4.1.1 6.0.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 3.3.0 3.3.2 6.0.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 3.3.2 6.0.0: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -14888,7 +14888,7 @@ net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1 0.9.3-r1 0.9.4: Implementation of IEEE 802
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25 1.4.26 1.4.27 1.4.29 1.4.30 1.4.31: High-performance, distributed memory object caching system
+net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25 1.4.26 1.4.27 1.4.29 1.4.30 1.4.31 1.4.32: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.3.5 3.4.2 9999: Simple, powerful and moeful twitter client
