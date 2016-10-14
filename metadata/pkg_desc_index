@@ -8652,7 +8652,7 @@ dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
 dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communication library for RViz and similar tools
-dev-ros/interval_intersection 0.10.13 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
+dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 9999: Tool for setting and publishing joint state values for a given URDF
