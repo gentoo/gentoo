@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+ LGPL-3+
 RDEPEND=dev-lang/go:= opencl? ( virtual/opencl )
 SLOT=0
-SRC_URI=https://github.com/ethereum/go-ethereum/archive/v1.4.17.tar.gz -> go-ethereum-1.4.17.tar.gz
+SRC_URI=https://github.com/ethereum/go-ethereum/archive/v1.4.18.tar.gz -> go-ethereum-1.4.18.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _md5_=6b0e502011cb293b65e5114f45993c2b

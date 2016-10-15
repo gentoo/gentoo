@@ -2849,7 +2849,7 @@ dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
 dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 0.7.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.0: C++ wrapper for the libxml2 XML parser library
-dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema definition language
+dev-cpp/libxsd-frontend 1.18.0-r3 2.0.0: A compiler frontend for the W3C XML Schema definition language
 dev-cpp/luabind 0.9.1 0.9.1-r1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
@@ -2867,7 +2867,7 @@ dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arg
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
 dev-cpp/websocketpp 0.6.0 0.7.0: C++/Boost Asio based websocket client/server library
-dev-cpp/xsd 3.3.0-r3: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
+dev-cpp/xsd 3.3.0-r3 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.3.0 0.5.1 0.5.2 0.5.3: A YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2: MySQL Schema Versioning and Migration Utility
@@ -5001,7 +5001,7 @@ dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.23 1.2.24 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.22 1.2.23 1.2.24 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
-dev-libs/xerces-c 3.1.2 3.1.3 3.1.4: A validating XML parser written in a portable subset of C++
+dev-libs/xerces-c 3.1.2 3.1.3 3.1.4-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
@@ -9788,7 +9788,7 @@ dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
-dev-util/build 0.3.9: A massively-parallel software build system implemented on top of GNU make
+dev-util/build 0.3.9 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_rc3 0.9.0_p1 9999: BuildBot build automation system
 dev-util/buildbot-console-view 0.9.0_rc3 0.9.0_p1: Buildbot console-view plugin
 dev-util/buildbot-pkg 0.9.0_rc3 0.9.0_p1: BuildBot common www build tools for packaging releases
@@ -15192,7 +15192,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.4.17-r1: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.4.18: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.9-r1 1.1.10: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
