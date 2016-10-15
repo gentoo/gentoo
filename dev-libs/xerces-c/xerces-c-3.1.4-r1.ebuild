@@ -100,7 +100,10 @@ src_install () {
 	find "${D}" -name '*.la' -delete || die
 
 	if use examples; then
-		rm -f samples/Makefile* || die
+		# clean out object files, executables, Makefiles
+		# and the like before installing examples
+		find samples/ \( -type f -executable -o -iname 'runConfigure' -o -iname '*.o' \
+			-o -iname '.libs' -o -iname 'Makefile*' \) -exec rm -rf '{}' + || die
 		docinto examples
 		dodoc -r samples/.
 		docompress -x /usr/share/doc/${PF}/examples
