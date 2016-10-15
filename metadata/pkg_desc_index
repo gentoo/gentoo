@@ -8941,7 +8941,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.3.0 2.3.1 2.4.0 2.5.0 2.5.1: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.5.0 2.5.1 2.6.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
@@ -9372,7 +9372,7 @@ dev-ruby/ruby-webkit-gtk2 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby WebKitGtk+ for 
 dev-ruby/ruby-webkit2-gtk 3.0.7 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
 dev-ruby/ruby-xslt 0.9.9-r3: A Ruby class for processing XSLT
 dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discovery
-dev-ruby/ruby2ruby 2.1.4 2.2.0 2.3.0: Generates readable ruby from ParseTree
+dev-ruby/ruby2ruby 2.1.4 2.2.0 2.3.0 2.3.1: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.2 3.7.3 3.8.1 3.8.2 3.8.3: A ruby parser written in pure ruby
@@ -17881,7 +17881,7 @@ www-apps/moodle 2.7.16 2.9.8 3.0.6 3.1.2: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.27.5 0.28: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 4.2.4 4.3.2 4.3.3: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 4.2.4 4.3.2 4.3.3 4.3.5: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 9.0.53 9.0.54 10.0.0 10.0.1: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3 7.6.3-r1: A static website and blog generator
 www-apps/novnc 0.6.1 9999: noVNC is a VNC client implemented using HTML5 technologies
