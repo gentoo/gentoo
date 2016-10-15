@@ -28,7 +28,11 @@ PATCHES=( "${FILESDIR}/${P}-remove-deprecated-have.diff" )
 src_compile() {
 	if use nls; then
 		strip-linguas -i .
-		emake -C po MOFILES="${LINGUAS// /.po }.po"
+		if [ -n "$LINGUAS" ]; then
+			emake -C po MOFILES="${LINGUAS// /.po }.po"
+		else
+			emake -C po
+		fi
 	fi
 }
 
@@ -40,6 +44,10 @@ src_install() {
 	dobashcomp bash_completion.d/unp
 
 	if use nls; then
-		emake -C po MOFILES="${LINGUAS// /.mo }.mo" DESTDIR="${D}" install
+		if [ -n "$LINGUAS" ]; then
+			emake -C po MOFILES="${LINGUAS// /.mo }.mo" DESTDIR="${D}" install
+		else
+			emake -C po DESTDIR="${D}" install
+		fi
 	fi
 }
