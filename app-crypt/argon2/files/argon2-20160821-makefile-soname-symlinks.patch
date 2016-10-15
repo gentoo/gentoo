@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index 1838c13..85aa710 100644
+--- a/Makefile
++++ b/Makefile
+@@ -87,8 +87,10 @@ endif
+ endif
+ 
+ LIB_SH := lib$(LIB_NAME).$(LIB_EXT)
++LIB_SH_VERSION := $(LIB_SH).0
+ LIB_ST := lib$(LIB_NAME).a
+ LIBRARIES = $(LIB_SH) $(LIB_ST)
++INSTALL_LIBRARIES = $(LIBRARIES) $(LIB_SH_VERSION)
+ HEADERS = include/argon2.h
+ 
+ INSTALL = install
+@@ -153,9 +155,11 @@ format:
+ 			-i include/*.h src/*.c src/*.h src/blake2/*.c src/blake2/*.h
+ 
+ install: $(RUN) libs
++	mv $(LIB_SH) $(LIB_SH_VERSION)
++	ln -sf $(LIB_SH_VERSION) $(LIB_SH)
+ 	$(INSTALL) -d $(INST_INCLUDE)
+ 	$(INSTALL) $(HEADERS) $(INST_INCLUDE)
+ 	$(INSTALL) -d $(INST_LIBRARY)
+-	$(INSTALL) $(LIBRARIES) $(INST_LIBRARY)
++	$(INSTALL) $(INSTALL_LIBRARIES) $(INST_LIBRARY)
+ 	$(INSTALL) -d $(INST_BINARY)
+ 	$(INSTALL) $(RUN) $(INST_BINARY)
