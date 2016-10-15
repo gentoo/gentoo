@@ -6,8 +6,7 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
-HOMEPAGE="http://cuecue.berlios.de/"
-#SRC_URI="mirror://berlios/cuecue/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -28,14 +27,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-namespace.patch
 	"${FILESDIR}"/${P}-unused.patch
 )
-DOCS="CHANGES README TODO"
 
 src_configure() {
 	econf \
 		$(use_enable flac) \
 		$(use_enable mp3) \
 		$(use_enable vorbis ogg) \
-		--disable-dependency-tracking \
 		--disable-libFLACtest \
 		--disable-oggtest \
 		--disable-vorbistest
