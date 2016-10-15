@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
@@ -24,8 +24,7 @@ RDEPEND="
 	>=dev-libs/popt-1.5
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
-	>=dev-scheme/guile-1.8.3:12[deprecated,regex]
-	<dev-scheme/guile-2:12
+	>=dev-scheme/guile-2.0.0:12[deprecated,regex]
 	dev-scheme/guile-www
 	gnome-base/libgnomecanvas
 	>=net-libs/webkit-gtk-1.2:2
@@ -88,19 +87,13 @@ src_configure() {
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
 		--disable-error-on-warning \
-		--with-guile=1.8 \
+		--with-guile=2.0 \
 		${myconf}
-}
-
-src_test() {
-	GUILE_WARN_DEPRECATED=no \
-	GNC_DOT_DIR="${T}"/.gnucash \
-	emake check
 }
 
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
-	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
+	gnome2_src_install -j1 GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
 
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
