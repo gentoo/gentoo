@@ -1,6 +1,5 @@
 * Fix build system when USE="-threads"
 * Add DESTDIR in order to prevent sandbox failure
-* Don't build samples
 
 --- a/configure.ac
 +++ b/configure.ac
@@ -12,14 +11,6 @@
  
  # Checks for library functions.
  #AC_FUNC_ERROR_AT_LINE
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -1,4 +1,4 @@
--SUBDIRS = src tests samples
-+SUBDIRS = src tests
- 
- EXTRA_DIST = version.incl \
-              xerces-c.spec \
 --- a/src/xercesc/util/MsgLoaders/MsgCatalog/Makefile.in
 +++ b/src/xercesc/util/MsgLoaders/MsgCatalog/Makefile.in
 @@ -5,7 +5,7 @@
