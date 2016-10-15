@@ -31,6 +31,7 @@ IUSE="static-libs test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+REQUIRED_USE="test? ( static-libs )"
 
 ASM_DEP=">=dev-lang/yasm-1.2.0"
 DEPEND="${DEPEND}
@@ -39,7 +40,7 @@ DEPEND="${DEPEND}
 
 src_prepare() {
 	eautoreconf
-	if use test ; then
+	if use test && [ "${PV#9999}" = "${PV}" ]; then
 		# https://bugs.gentoo.org/show_bug.cgi?id=595932
 		rmdir "${S}/greatest" || die
 		mv "${WORKDIR}/greatest-${GREATEST_PV}" "${S}/greatest" || die
