@@ -4,11 +4,11 @@ DESCRIPTION=MATE session manager
 EAPI=6
 HOMEPAGE=http://mate-desktop.org/
 IUSE=debug elibc_FreeBSD gnome-keyring gtk3 ipv6 systemd upower
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2 LGPL-2 FDL-1.1
 RDEPEND=>=dev-libs/dbus-glib-0.76 >=dev-libs/glib-2.36:2 dev-libs/libxslt sys-apps/dbus x11-apps/xdpyinfo x11-libs/gdk-pixbuf:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango x11-libs/xtrans x11-misc/xdg-user-dirs x11-misc/xdg-user-dirs-gtk virtual/libintl elibc_FreeBSD? ( dev-libs/libexecinfo ) gnome-keyring? ( gnome-base/gnome-keyring ) !gtk3? ( >=x11-libs/gtk+-2.14:2 ) gtk3? ( >=x11-libs/gtk+-3.0:3 ) systemd? ( sys-apps/systemd ) upower? ( || ( >=sys-power/upower-0.9.23 >=sys-power/upower-pm-utils-0.9.23 ) )
 SLOT=0
 SRC_URI=http://pub.mate-desktop.org/releases/1.12/mate-session-manager-1.12.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:mate pkg_postrm:mate pkg_postinst:mate src_prepare:mate src_configure:- src_compile:gnome2 src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	mate	deba441b42c68cba7b817dd8b441788e	mate-desktop.org	69a0f50dcb300b04a513d60bc326029c	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=9b8e71ad5c30064a421778aed15ecf95
+_md5_=8335dbde3b4aac0634c10c3352e42545

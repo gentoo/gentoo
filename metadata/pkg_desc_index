@@ -12013,7 +12013,7 @@ mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system 
 mate-base/caja 1.10.4 1.12.7-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.10.1 1.12.1-r2: MATE keyboard configuration library
 mate-base/mate 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.10.4-r1 1.10.4-r2 1.12.1-r1: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.10.4-r1 1.10.4-r2 1.12.1-r4: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10 1.12: Meta package for MATE panel applets
 mate-base/mate-common 1.10.0 1.12.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.10.2 1.12.1-r1: The MATE Desktop configuration tool
