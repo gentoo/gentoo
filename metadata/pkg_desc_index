@@ -313,7 +313,7 @@ app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/undms 1.3-r1: Decompress Amiga DMS disk images to ADF
 app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
-app-arch/unp 2.0_pre7 2.0_pre7_p1: Script for unpacking various file formats
+app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various file formats
 app-arch/unrar 5.3.11 5.4.4 5.4.5: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
