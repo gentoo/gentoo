@@ -1,0 +1,79 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands="reload"
+
+NETS="/etc/conf.d/tinc.networks"
+DAEMON="/usr/sbin/tincd"
+
+depend() {
+	use logger dns
+	need net
+}
+
+checkconfig() {
+	if [ "${RC_SVCNAME}" = "tincd" ] ; then
+		ALL_NETNAME="$(awk '/^ *NETWORK:/ { print $2 }' "${NETS}")"
+	else
+		ALL_NETNAME="${RC_SVCNAME#*.}"
+	fi
+	# warn this if still not found
+	if [ -z "${ALL_NETNAME}" ] ; then
+		eerror "No VPN networks configured in ${NETS}"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	ebegin "Starting tinc VPN networks"
+	checkconfig || return 1
+	for NETNAME in ${ALL_NETNAME}
+	do
+		CONFIG="/etc/tinc/${NETNAME}/tinc.conf"
+		PIDFILE="/run/tinc.${NETNAME}.pid"
+		if [ ! -f "${CONFIG}" ]; then
+			eerror "Cannot start network ${NETNAME}."
+			eerror "Please set up ${CONFIG} !"
+		else
+			ebegin "Starting tinc network ${NETNAME}"
+			if [ "${SYSLOG}" = "yes" ]; then
+				LOG=""
+			else
+				LOG="--logfile=/var/log/tinc.${NETNAME}.log"
+			fi
+			start-stop-daemon --start --exec "${DAEMON}" --pidfile "${PIDFILE}" -- --net="${NETNAME}" ${LOG} --pidfile "${PIDFILE}" --debug="${DEBUG_LEVEL}" ${EXTRA_OPTS}
+			eend $?
+		fi
+	done
+}
+
+stop() {
+	ebegin "Stopping tinc VPN networks"
+	checkconfig || return 1
+	for NETNAME in ${ALL_NETNAME}
+	do
+		PIDFILE="/run/tinc.${NETNAME}.pid"
+		if [ -f "${PIDFILE}" ]; then
+			ebegin "Stopping tinc network ${NETNAME}"
+			start-stop-daemon --stop --pidfile "${PIDFILE}"
+			eend $?
+		fi
+	done
+}
+
+reload() {
+	ebegin "Reloading configuration for tinc VPN networks"
+	checkconfig || return 1
+	for NETNAME in ${ALL_NETNAME}
+	do
+		PIDFILE="/run/tinc.${NETNAME}.pid"
+		if [ -f "${PIDFILE}" ]; then
+			ebegin "Reloading tinc network ${NETNAME}"
+			start-stop-daemon --signal HUP --pidfile ${PIDFILE}
+			eend $?
+		fi
+	done
+}
