@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit mate multilib python-single-r1 virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Pluma text editor for the MATE desktop"

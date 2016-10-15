@@ -7,7 +7,7 @@ EAPI=6
 inherit mate versionator
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="MATE indicator applet"

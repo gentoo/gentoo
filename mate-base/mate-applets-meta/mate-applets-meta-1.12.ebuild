@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	inherit versionator
 	MATE_BRANCH="$(get_version_component_range 1-2)"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Meta package for MATE panel applets"

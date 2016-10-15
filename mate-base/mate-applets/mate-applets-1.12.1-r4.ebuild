@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit mate python-single-r1
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Applets for the MATE Desktop and Panel"
@@ -19,6 +19,7 @@ SLOT="0"
 IUSE="X gtk3 ipv6 policykit +upower"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+#cpupower #593470
 RDEPEND="${PYTHON_DEPS}
 	app-text/rarian:0
 	dev-libs/atk:0
@@ -32,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=mate-base/mate-panel-1.7[gtk3(-)=]
 	>=mate-base/mate-settings-daemon-1.6
 	>=sys-apps/dbus-1.1.2:0
-	sys-power/cpupower
+	<sys-power/cpupower-4.7
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/libX11:0
