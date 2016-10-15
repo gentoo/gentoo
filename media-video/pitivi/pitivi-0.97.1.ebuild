@@ -19,9 +19,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="v4l test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# some of the tests fail with timeouts, others with VA errors
-RESTRICT="test"
-
 # XXX: recommends gst-plugins-libav and frei0r-plugins
 
 # Do not forget to check pitivi/check.py for dependencies!!!
