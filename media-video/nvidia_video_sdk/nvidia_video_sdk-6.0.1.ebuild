@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://developer.nvidia.com/video-sdk-$(replace_all_version_separators
 
 LICENSE="MIT tools? ( NVIDIA-CODEC-SDK )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="tools"
 
 RDEPEND="
