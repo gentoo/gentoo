@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 
 inherit gnome2
 
@@ -12,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libgee"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.8/2"
-KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 ~sh ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-linux"
 IUSE="+introspection"
 
 # FIXME: add doc support, requires valadoc
@@ -25,7 +24,6 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	DOCS="AUTHORS ChangeLog* MAINTAINERS NEWS README"
 	gnome2_src_configure \
 		$(use_enable introspection)
 		VALAC="$(type -P false)"
