@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/celldee/bunny"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/amq-protocol-2.0.1:2"
