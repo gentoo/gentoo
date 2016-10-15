@@ -237,8 +237,8 @@ done
 IUSE="${IUSE} nginx_modules_http_spdy"
 
 CDEPEND="
-	pcre? ( >=dev-libs/libpcre-4.2 )
-	pcre-jit? ( >=dev-libs/libpcre-8.20[jit] )
+	pcre? ( dev-libs/libpcre:= )
+	pcre-jit? ( dev-libs/libpcre:=[jit] )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -257,21 +257,27 @@ CDEPEND="
 	nginx_modules_http_gunzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
-	nginx_modules_http_image_filter? ( media-libs/gd[jpeg,png] )
-	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
-	nginx_modules_http_rewrite? ( >=dev-libs/libpcre-4.2 )
+	nginx_modules_http_image_filter? ( media-libs/gd:=[jpeg,png] )
+	nginx_modules_http_perl? ( >=dev-lang/perl-5.8:= )
+	nginx_modules_http_rewrite? ( dev-libs/libpcre:= )
 	nginx_modules_http_secure_link? (
 		userland_GNU? (
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:= )
 		)
 	)
-	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
+	nginx_modules_http_xslt? ( dev-libs/libxml2:= dev-libs/libxslt )
 	nginx_modules_http_lua? ( !luajit? ( dev-lang/lua:0= ) luajit? ( dev-lang/luajit:2= ) )
 	nginx_modules_http_auth_pam? ( virtual/pam )
-	nginx_modules_http_metrics? ( dev-libs/yajl )
+	nginx_modules_http_metrics? ( dev-libs/yajl:= )
 	nginx_modules_http_dav_ext? ( dev-libs/expat )
-	nginx_modules_http_security? ( >=dev-libs/libxml2-2.7.8 dev-libs/apr-util www-servers/apache )
+	nginx_modules_http_security? (
+		dev-libs/apr:=
+		dev-libs/apr-util:=
+		dev-libs/libxml2:=
+		net-misc/curl
+		www-servers/apache
+	)
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
@@ -369,6 +375,8 @@ src_configure() {
 		fi
 		./configure \
 			--enable-standalone-module \
+			--disable-mlogc \
+			--with-ssdeep=no \
 			$(use_enable pcre-jit) \
 			$(use_with nginx_modules_http_lua lua) || die "configure failed for mod_security"
 	fi
