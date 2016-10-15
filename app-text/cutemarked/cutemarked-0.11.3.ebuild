@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,11 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtwebkit:5
+	dev-qt/linguist-tools:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qttest:5
 	app-text/discount
 	app-text/hunspell
 "
