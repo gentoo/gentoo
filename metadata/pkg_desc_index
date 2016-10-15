@@ -594,7 +594,7 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
-app-crypt/signing-party 1.1.4 2.4: A collection of several tools related to OpenPGP
+app-crypt/signing-party 1.1.4 2.4 2.5: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -11904,7 +11904,7 @@ lxqt-base/lxqt-panel 0.10.0-r1 0.11.0: LXQt desktop panel and plugins
 lxqt-base/lxqt-policykit 0.10.0 0.11.0: LXQt PolKit authentication agent
 lxqt-base/lxqt-powermanagement 0.10.0 0.11.0: LXQt daemon for power management and auto-suspend
 lxqt-base/lxqt-qtplugin 0.10.0 0.11.0: LXQt system integration plugin for Qt
-lxqt-base/lxqt-runner 0.10.0: LXQt quick launcher
+lxqt-base/lxqt-runner 0.10.0 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.10.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0 0.11.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
@@ -18282,7 +18282,7 @@ x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libkscreen 1.0.5_p20150822: KDE screen management library
-x11-libs/libnotify 0.7.6-r3: A library for sending desktop notifications
+x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
