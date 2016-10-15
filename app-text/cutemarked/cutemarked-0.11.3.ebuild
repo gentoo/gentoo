@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/CuteMarkEd-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}"-respect-destdir.patch
+	epatch "${FILESDIR}/${PN}"-0.11.1-respect-destdir.patch
 }
 
 src_configure() {
