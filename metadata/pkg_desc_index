@@ -1002,7 +1002,7 @@ app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
 app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5 24.5-r1 24.5-r3 25.1: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 25.0.50_pre20151113 25.1.9999-r2 26.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 25.1.50_pre20160923 25.1.9999-r2 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
@@ -2839,6 +2839,7 @@ dev-cpp/libbackend-elements 1.7.2: A collection of elementary building blocks fo
 dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.0-r1 0.5.1 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
 dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
+dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
 dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
@@ -4999,7 +5000,7 @@ dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.23 1.2.24 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.22 1.2.23 1.2.24 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
-dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable subset of C++
+dev-libs/xerces-c 3.1.2 3.1.3 3.1.4: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
@@ -9958,7 +9959,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 0.12.1 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.2 3.16.3: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.33.0 0.34.0: Open source build system
+dev-util/meson 0.33.0 0.34.0 0.35.0: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
