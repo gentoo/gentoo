@@ -21,7 +21,7 @@ HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
-	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64"
+	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
