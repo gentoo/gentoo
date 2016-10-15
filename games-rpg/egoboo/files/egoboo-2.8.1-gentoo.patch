@@ -1,5 +1,5 @@
---- src/game/platform/file_linux.c.old	2012-04-29 21:45:29.627419281 +0200
-+++ src/game/platform/file_linux.c	2012-04-29 21:45:29.628419211 +0200
+--- a/src/game/platform/file_linux.c	2012-04-29 21:45:29.627419281 +0200
++++ b/src/game/platform/file_linux.c	2012-04-29 21:45:29.628419211 +0200
 @@ -79,9 +79,9 @@
      strncpy( linux_dataPath,   PREFIX "/share/games/egoboo-2.x", SDL_arraysize( linux_dataPath ) );
  #else
@@ -12,8 +12,8 @@
  #endif
  
      // the log file cannot be started until there is a user data path to dump the file into
---- src/game/network.c.old	2012-04-29 20:14:31.482179973 +0200
-+++ src/game/network.c	2012-04-29 20:14:52.077730184 +0200
+--- a/src/game/network.c	2012-04-29 20:14:31.482179973 +0200
++++ b/src/game/network.c	2012-04-29 20:14:52.077730184 +0200
 @@ -37,7 +37,7 @@
  #include "egoboo_setup.h"
  #include "egoboo.h"
@@ -23,8 +23,8 @@
  #include "file_common.h"
  
  #include <stdarg.h>
---- src/game/Makefile.old	2012-04-29 20:17:09.303070070 +0200
-+++ src/game/Makefile	2012-04-29 20:18:21.047023847 +0200
+--- a/src/game/Makefile	2012-04-29 20:17:09.303070070 +0200
++++ b/src/game/Makefile	2012-04-29 20:18:21.047023847 +0200
 @@ -33,8 +33,7 @@
  # the compiler options
  
