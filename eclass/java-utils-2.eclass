@@ -2900,14 +2900,15 @@ java-pkg_clean() {
 java-pkg_gen-cp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${CP_DEPEND} ]]; then
-		local cp="${!1}"
-		local p
-		for p in ${CP_DEPEND}; do
-			p="${p/-[0-9]*:/-}"
-			cp="${cp} ${p#*/}"
-		done
-		cp="${cp//:/-}"
-		[[ ${cp} ]] && export ${1}="${cp//-0/}"
-	fi
+	local atom
+	for atom in ${CP_DEPEND}; do
+		if [[ ${atom} =~ /(([[:alnum:]+_-]+)-[0-9]+(\.[0-9]+)*[a-z]?(_[[:alnum:]]+)?(-r[0-9]*)?|[[:alnum:]+_-]+):([[:alnum:]+_.-]+) ]]; then
+			atom=${BASH_REMATCH[2]:-${BASH_REMATCH[1]}}
+			[[ ${BASH_REMATCH[6]} != 0 ]] && atom+=-${BASH_REMATCH[6]}
+			local regex="(^|\s|,)${atom}($|\s|,)"
+			[[ ${!1} =~ ${regex} ]] || declare -g ${1}+=${!1:+,}${atom}
+		else
+			die "Invalid CP_DEPEND atom ${atom}, ensure a SLOT is included"
+		fi
+	done
 }
