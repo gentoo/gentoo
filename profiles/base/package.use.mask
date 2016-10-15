@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ulrich Müller <ulm@gentoo.org> (15 Oct 2016)
+# The --with-cairo option is considered as experimental by upstream
+# and causes problems with updating the X window, bug #592238
+app-editors/emacs cairo
+app-editors/emacs-vcs cairo
+
 # Johannes Huber <johu@gentoo.org> (29 Sep 2016)
 # No released version available
 kde-plasma/plasma-workspace prison
