@@ -2586,7 +2586,7 @@ app-vim/pam-syntax 20060424: vim plugin: PAM configuration syntax highlighting
 app-vim/pathogen 2.4: vim plugin: manage your runtimepath
 app-vim/pdv 1.0.1-r1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 5.3.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
-app-vim/perlomni 2.5: vim plugin: Perl omni completion
+app-vim/perlomni 2.5: vim plugin: a vim plugin with Perl omni completion functions
 app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax highlighting
 app-vim/phpdocs 0.26: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
@@ -2611,7 +2611,7 @@ app-vim/searchcomplete 1.1-r1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
 app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syntax
 app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
-app-vim/showmarks 2.2 2.2-r1: vim plugin: show location marks visually
+app-vim/showmarks 2.2-r1: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
 app-vim/snipmate 0.83 0.87-r1: vim plugin: TextMate-style snippets
@@ -2638,7 +2638,7 @@ app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugi
 app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function and cache file automatically
 app-vim/vim-flake8 1.6: vim plugin: runs the currently open file through flake8
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
-app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
+app-vim/vim-misc 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
 app-vim/vim-rest-console 2.3.0 2.4.0 2.5.0: a REST console for vim
 app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)

@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst postrm prepare
 DEPEND=app-arch/unzip dev-lang/perl || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-DESCRIPTION=vim plugin: Perl omni completion
+DESCRIPTION=vim plugin: a vim plugin with Perl omni completion functions
 EAPI=6
 HOMEPAGE=https://github.com/c9s/perlomni.vim
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=vim.org
-RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RDEPEND=app-arch/unzip dev-lang/perl || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/c9s/perlomni.vim/archive/v2.5.zip -> perlomni-2.5.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_compile:- src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=6c3ac0224f9d3d57ce3b862e3bf88c79
+_md5_=12d22c4758257ff764a29f534d3138f0
