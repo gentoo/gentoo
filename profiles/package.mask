@@ -335,10 +335,6 @@ x11-terms/terra
 # Mask for removal in 30 days. Bug #595754
 net-libs/socket++
 
-# Pacho Ramos <pacho@gentoo.org> (29 Sep 2016)
-# Makes gst-transcoder to fail on building, bug #594172
-=dev-util/meson-0.34.0
-
 # Michael Palimaka <kensington@gentoo.org> (26 Sep 2016)
 # No longer maintained by upstream. Unused.
 # Masked for removal in 30 days.
