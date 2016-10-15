@@ -2218,7 +2218,7 @@ app-text/crf++ 0.54 0.58: Yet Another CRF toolkit for segmenting/labelling seque
 app-text/crm114 20100106: A powerful text processing tool, mainly used for spam filtering
 app-text/csvfix 1.3 1.6: A stream editor for manipulating CSV files
 app-text/cuneiform 1.1.0-r1: An enterprise quality optical character recognition (OCR) engine by Cognitive Technologies
-app-text/cutemarked 0.11.1: Qt5 markdown editor
+app-text/cutemarked 0.11.3: Qt5 markdown editor
 app-text/cwtext 0.96: Text to Morse Code converter
 app-text/dbacl 1.14: Digramic Bayesian text classifier
 app-text/dblatex 0.3.7: Transform DocBook using TeX macros
