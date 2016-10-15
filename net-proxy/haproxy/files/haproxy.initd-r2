@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ extra_commands="checkconfig"
 extra_started_commands="reload"
 
 command="/usr/bin/haproxy"
-pidfile="/var/run/${SVCNAME}.pid"
+pidfile="/run/${SVCNAME}.pid"
 
 if [ -z "${CONFFILE}" -a -d "/etc/haproxy" -a -f "/etc/haproxy/${SVCNAME}.cfg" ]; then
 	CONFFILE=/etc/haproxy/${SVCNAME}.cfg

@@ -12,7 +12,7 @@ SRC_URI="https://www.opensmtpd.org/archives/${PN}-$(get_version_component_range 
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 MY_COMPONENTS="
 	filter-monkey
 	filter-stub
