@@ -10493,7 +10493,7 @@ games-emulation/atari800 3.1.0: Atari 800 emulator
 games-emulation/caps 20071115: Support library that allows third party applications access and use C.A.P.S. images
 games-emulation/daphne 1.0: Laserdisc Arcade Game Emulator
 games-emulation/dboxfe 0.1.3 0.1.3-r1: Creates and manages configuration files for DOSBox
-games-emulation/desmume 0.9.8 0.9.9 0.9.10 0.9.11: Nintendo DS emulator
+games-emulation/desmume 0.9.8 0.9.9 0.9.10 0.9.11 0.9.11-r1: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74 0.74_p20160629 9999: DOS emulator

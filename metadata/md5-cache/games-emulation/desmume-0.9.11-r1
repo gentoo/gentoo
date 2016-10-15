@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=>=x11-libs/gtk+-2.8.0:2 gnome-base/libglade x11-libs/gtkglext virtual/opengl sys-libs/zlib dev-libs/zziplib media-libs/libsdl[joystick,opengl,video] x11-libs/agg virtual/pkgconfig dev-util/intltool
+DESCRIPTION=Nintendo DS emulator
+EAPI=6
+HOMEPAGE=http://desmume.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.8.0:2 gnome-base/libglade x11-libs/gtkglext virtual/opengl sys-libs/zlib dev-libs/zziplib media-libs/libsdl[joystick,opengl,video] x11-libs/agg
+SLOT=0
+SRC_URI=mirror://sourceforge/desmume/desmume-0.9.11.tar.gz
+_eclass_exported_funcs=-
+_md5_=c97d8cbd0972ed9019795a14b52c69b6
