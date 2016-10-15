@@ -43,7 +43,7 @@ CDEPEND="
 	npp? (
 		dev-libs/dbus-glib
 		dev-libs/glib:2
-		www-plugins/adobe-flash
+		www-plugins/adobe-flash:*
 		>=x11-libs/gtk+-2.10.14:2
 	)
 "
