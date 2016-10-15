@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils gnome.org multilib-minimal xdg-utils
+EAPI=6
+
+inherit gnome.org multilib-minimal xdg-utils
 
 DESCRIPTION="A library for sending desktop notifications"
 HOMEPAGE="https://git.gnome.org/browse/libnotify"
@@ -28,20 +29,16 @@ DEPEND="${RDEPEND}
 PDEPEND="virtual/notification-daemon"
 
 src_prepare() {
+	default
 	xdg_environment_reset
-	sed -i -e 's:noinst_PROG:check_PROG:' tests/Makefile.am || die
-
-	if ! use test; then
-		sed -i -e '/PKG_CHECK_MODULES(TESTS/d' configure.ac || die
-	fi
-
-	eautoreconf
 }
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} econf \
+		--disable-gtk-doc \
 		--disable-static \
-		$(multilib_native_use_enable introspection)
+		$(multilib_native_use_enable introspection) \
+		$(use_enable test tests)
 
 	# work-around gtk-doc out-of-source brokedness
 	if multilib_is_native_abi; then
