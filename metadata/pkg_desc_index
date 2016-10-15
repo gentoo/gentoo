@@ -1012,7 +1012,7 @@ app-editors/focuswriter 1.5.5 1.5.6 1.5.7 1.6.0: A fullscreen and distraction-fr
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3 3.20.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0 3.20.0: Official plugins for gedit
-app-editors/ghex 3.18.1 3.18.2: GNOME hexadecimal editor
+app-editors/ghex 3.18.2 3.18.3: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5: A cross-platform, aesthetic, distraction-free Markdown editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.769 7.4.2102 8.0.0005 9999: GUI version of the Vim text editor
@@ -4724,7 +4724,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
-dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
+dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handling functions used by GnuPG software
@@ -13675,7 +13675,7 @@ media-video/dvdstyler 2.9.6-r1 3.0.2: A cross-platform free DVD authoring applic
 media-video/dvgrab 3.5: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
-media-video/ffcast 2.4.1: Record screencasts using ffmpeg
+media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
 media-video/ffmpeg 2.8.6 2.8.7 2.8.8 3.1.4 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2 0.30: A simple converter to create Ogg Theora files
@@ -13746,7 +13746,7 @@ media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1 2.1.0: Movie slideshow creator using Ken Burns effect
-media-video/pitivi 0.95 0.96-r1: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.95 0.96-r1 0.97.1: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
@@ -18107,7 +18107,7 @@ x11-apps/xpr 1.0.4: X.Org xpr application
 x11-apps/xprop 1.2.2: property displayer for X
 x11-apps/xrandr 1.4.3 1.5.0: primitive command line interface to RandR extension
 x11-apps/xrdb 1.1.0: X server resource database utility
-x11-apps/xrectsel 0.3.1: Print the geometry of a rectangular screen region
+x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
 x11-apps/xrefresh 1.0.5: refresh all or part of an X screen
 x11-apps/xset 1.2.3: X.Org xset application
 x11-apps/xsetroot 1.1.1: X.Org xsetroot application
