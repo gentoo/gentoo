@@ -437,7 +437,7 @@ app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel 
 app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting it
 app-cdr/cdemu 3.0.0 3.0.1: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.0.2 3.0.4: Daemon of the CDEmu optical media image mounting suite
-app-cdr/cdlabelgen 4.0.0 4.1.0 4.3.0: CD cover, tray card and envelope generator
+app-cdr/cdlabelgen 4.1.0 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2 1.2.3-r3: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdrtools 3.01_alpha17 3.01_alpha17-r1 3.01_alpha24 3.02_alpha06 3.02_alpha06-r1: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -10937,21 +10937,21 @@ games-rpg/coe2 2007-r1: Precursor to the Dominions series
 games-rpg/daimonin-client 0.10.5 0.10.5-r1: a graphical 2D tile-based MMORPG
 games-rpg/dear-esther 20130608: Ghost story, told using first-person gaming technologies
 games-rpg/draci-historie 2012: Bert the little dragon searches for his father
-games-rpg/dragonhunt 3.56-r1: A simple graphical RPG
+games-rpg/dragonhunt 3.56-r1 3.56-r2: A simple graphical RPG
 games-rpg/drascula 1.0-r2: Drascula: The Vampire Strikes Back
 games-rpg/dreamweb 1.1: Top-down adventure game set in a gritty futuristic/dystopian city
 games-rpg/dungeon-defenders 20130305: A hybrid of two hot genres: Tower Defense and cooperative online Action-RPG
-games-rpg/egoboo 2.8.1: A 3d dungeon crawling adventure in the spirit of NetHack
-games-rpg/eschalon-book-1-demo 106: A classic role-playing game
+games-rpg/egoboo 2.8.1 2.8.1-r1: A 3d dungeon crawling adventure in the spirit of NetHack
+games-rpg/eschalon-book-1-demo 106 106-r1: A classic role-playing game
 games-rpg/eternal-lands 1.9.2 1.9.2-r1 1.9.3 1.9.3-r2: An online MMORPG written in C and SDL
 games-rpg/eternal-lands-bloodsucker 3.0 3.0_p20110618: Non-official map pack for Eternal Lands
 games-rpg/eternal-lands-data 1.9.2-r1 1.9.3 1.9.3-r1: An online MMORPG written in C and SDL
 games-rpg/freedink 108.4: Dink Smallwood is an adventure/role-playing game, similar to Zelda (2D top view)
 games-rpg/freedink-data 1.08.20140901: Freedink game data
-games-rpg/freedroid 1.0.2: Freedroid - a Paradroid clone
-games-rpg/freedroidrpg 0.16: A modification of the classical Freedroid engine into an RPG
+games-rpg/freedroid 1.0.2 1.0.2-r1: Freedroid - a Paradroid clone
+games-rpg/freedroidrpg 0.16 0.16-r1: A modification of the classical Freedroid engine into an RPG
 games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling RPG + modding engine
-games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
+games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
@@ -13549,7 +13549,7 @@ media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media stream
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
-media-sound/tagtool 0.12.3 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
+media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10: Command line CD player
 media-sound/tap-reverbed 0 0-r1: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio
