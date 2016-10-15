@@ -90,7 +90,7 @@ src_configure() {
 	#fi
 
 	myconf+=( --without-tkinter )
-	myconf+=( --with-glib --with-swig )
+	myconf+=( --with-glib --with-glibver=2.0 --with-glib12=no --with-swig )
 	# these binaries are for root!
 	econf ${myconf[@]} --bindir=/usr/sbin
 }
