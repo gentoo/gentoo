@@ -82,6 +82,7 @@ app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins th
 app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2: dio - Device I/O monitoring tool
 app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
+app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.5.0 6.7.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
@@ -14177,7 +14178,7 @@ net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.3.0: High-performance authoritative-only DNS server
+net-dns/knot 2.3.1: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.30 1.32-r1 1.33: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.10: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
