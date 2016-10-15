@@ -10952,7 +10952,7 @@ games-rpg/freedroid 1.0.2 1.0.2-r1: Freedroid - a Paradroid clone
 games-rpg/freedroidrpg 0.16 0.16-r1: A modification of the classical Freedroid engine into an RPG
 games-rpg/grimrock 20130515: Legend of Grimrock: The Ultimate dungeon crawling RPG + modding engine
 games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
-games-rpg/kqlives 0.99: A console-style role playing game
+games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
 games-rpg/manaplus 1.5.11.21 1.6.3.26 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
@@ -10964,8 +10964,8 @@ games-rpg/nwn-data 1.29-r5: Neverwinter Nights Data Files
 games-rpg/nwn-penultima 1-r1: A parodic fantasy module for Neverwinter Nights
 games-rpg/nwn-penultimarerolled 1: A parodic fantasy module for Neverwinter Nights
 games-rpg/nwn-shadowlordsdreamcatcherdemon 1: The bundled Shadowlords, Dreamcatcher, and Demon campaigns by Hall-of-Famer Adam Miller
-games-rpg/openglad 0.98: An SDL clone of Gladiator, a classic RPG game
-games-rpg/pcgen 6.04.01: D&D character generator
+games-rpg/openglad 0.98 0.98-r1: An SDL clone of Gladiator, a classic RPG game
+games-rpg/pcgen 6.04.01 6.04.01-r1: D&D character generator
 games-rpg/penumbra-collection 1.1: Scary first-person adventure game trilogy which focuses on story, immersion and puzzles
 games-rpg/queen 1: Flight of the Amazon Queen - a 2D point-and-click adventure game set in the 1940s
 games-rpg/runescape-launcher 2.2.2: Official RuneScape NXT client launcher
