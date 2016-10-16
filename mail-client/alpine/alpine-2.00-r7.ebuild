@@ -20,7 +20,7 @@ IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl th
 
 DEPEND="virtual/pam
 	>=net-libs/c-client-2007f-r4[topal=,chappa=]
-	>=sys-libs/ncurses-5.1
+	>=sys-libs/ncurses-5.1:0=
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
