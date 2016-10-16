@@ -16,9 +16,9 @@ SRC_URI="ftp://ftp.cac.washington.edu/alpine/${P}.tar.bz2
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads topal +chappa"
+IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine pam passfile smime spell ssl threads topal +chappa"
 
-DEPEND="virtual/pam
+DEPEND="pam? ( virtual/pam )
 	>=net-libs/c-client-2007f-r4[topal=,chappa=]
 	>=sys-libs/ncurses-5.1:0=
 	ssl? (
@@ -54,7 +54,11 @@ src_prepare() {
 	done < <(find "${S}" -name "*.c" -o -name "*.h")
 	eend $?
 
-	eapply "${FILESDIR}"/2.00-lpam.patch
+	if use pam ; then
+		eapply "${FILESDIR}"/2.00-lpam.patch
+	fi
+	sed -ie 's/AC_CHECK_LIB[^(]*([^,]*pam[^,]*,[^,]*,/AS_IF(['$(
+		usex pam true false)'],/' -- "${S}"/configure.ac
 	eapply "${FILESDIR}"/2.00-lcrypto.patch
 	eapply -p0 "${FILESDIR}"/2.00-c-client.patch
 	eapply -p0 "${FILESDIR}"/2.00-qa.patch
