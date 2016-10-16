@@ -4,13 +4,11 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit autotools vcs-snapshot multilib-minimal
 
 DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
-SRC_URI="
-	https://github.com/mdadams/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${PN}-1.900.3_p20161014-patches.tar.bz2"
+SRC_URI="https://github.com/mdadams/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="JasPer2.0"
 SLOT="0/1"
@@ -27,15 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
-S="${WORKDIR}/${PN}-version-${PV}"
-PATCHES=(
-	"${WORKDIR}/${PN}-1.900.3-libjasper-stepsizes-overflow.patch"
-	"${WORKDIR}/${PN}-1.900.3-CVE-2008-3520.patch"
-	"${WORKDIR}/${PN}-1.900.3-CVE-2011-4516-CVE-2011-4517-CERT-VU-887409.patch"
-	"${WORKDIR}/${PN}-1.900.3-Coverity-NULL_RETURNS.patch"
-	"${WORKDIR}/${PN}-1.900.3-Coverity-RESOURCE_LEAK.patch"
-	"${FILESDIR}/${PN}-1.900.3-remove-stdbool-checks.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-1.900.3-remove-stdbool-checks.patch" )
 
 src_prepare() {
 	default
