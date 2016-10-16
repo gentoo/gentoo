@@ -18487,6 +18487,7 @@ x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 1.2.4 9999: Fast lightweight tabbed fi
 x11-misc/pcmanfm-qt 0.10.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
+x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
 x11-misc/py3status 3.2: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
