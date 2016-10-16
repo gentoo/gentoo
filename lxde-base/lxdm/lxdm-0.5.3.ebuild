@@ -33,6 +33,7 @@ src_prepare() {
 
 	# Fix consolekit and selinux
 	eapply "${FILESDIR}/${P}-pam_console-disable.patch"
+	eapply "${FILESDIR}/${PN}-0.4.1-fix-execinfo.patch"
 
 	eapply_user
 
