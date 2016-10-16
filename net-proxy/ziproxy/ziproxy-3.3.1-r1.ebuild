@@ -15,17 +15,17 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="jpeg2k sasl xinetd"
 
 RDEPEND="
-	media-libs/giflib
+	media-libs/giflib:0=
 	media-libs/libpng:0=
-	virtual/jpeg
+	virtual/jpeg:0
 	sys-libs/zlib
 	jpeg2k? ( media-libs/jasper )
 	sasl? ( dev-libs/cyrus-sasl )
 	xinetd? ( virtual/inetd )
 "
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-giflib5.patch )
 
 pkg_setup() {
 	enewgroup ziproxy
@@ -57,7 +57,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	dodir /usr/sbin
 	mv -vf "${D}"usr/{,s}bin/ziproxy || die
@@ -67,7 +67,6 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
-	dodoc ChangeLog CREDITS README README.tools
 	use jpeg2k && dodoc JPEG2000.txt
 
 	insinto /etc
