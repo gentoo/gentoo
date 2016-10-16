@@ -14,7 +14,7 @@ SRC_URI="https://github.com/JukkaL/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc examples test"
+IUSE="doc test"
 
 DEPEND="
 	test? ( dev-python/flake8[${PYTHON_USEDEP}] )
@@ -37,7 +37,6 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	use examples && local EXAMPLES=( samples/. )
 
 	distutils-r1_python_install_all
 }
