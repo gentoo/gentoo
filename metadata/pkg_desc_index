@@ -9282,7 +9282,7 @@ dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r3 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/redis 3.0.7 3.2.2 3.3.0 3.3.1: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
-dev-ruby/regexp_parser 0.3.1 0.3.2: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 0.3.2 0.3.6: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.3.0 1.3.1: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0 1.8.0-r1 1.8.0-r2 1.8.0-r3 2.0.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
@@ -11618,7 +11618,7 @@ kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
-kde-base/kdelibs 4.14.24: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.24 4.14.25: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
