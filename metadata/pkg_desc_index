@@ -12266,7 +12266,7 @@ media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
 media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
-media-gfx/clockphoto 1.0: Adjusts photo timestamps based on clock photos.
+media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4 0.6.8: Batch image converter and resizer based on ImageMagick
@@ -13168,7 +13168,7 @@ media-plugins/vdr-text2skin 1.3.2: VDR text2skin PlugIn
 media-plugins/vdr-ttxtsubs 0.3.0: VDR Plugin: displaying, recording and replaying teletext based subtitles
 media-plugins/vdr-tvguide 1.2.1 1.2.2: VDR Plugin: highly customizable 2D EPG viewer
 media-plugins/vdr-undelete 0.0.7 0.0.7-r1: VDR Plugin: Recover deleted recordings of VDR
-media-plugins/vdr-vcd 0.9-r1 0.9-r2: VDR plugin: play video cds
+media-plugins/vdr-vcd 0.9-r1 0.9-r2 0.9-r3: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.12 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 media-plugins/vdr-videosystem 0.0.1: VDR plugin: Switch OSD resolution depending on signal-videosystem (PAL/NTSC)
 media-plugins/vdr-vodcatcher 0.2.2: VDR plugin: Downloads rss-feeds and passes video enclosures to the mplayer plugin
