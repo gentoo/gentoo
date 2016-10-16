@@ -40,7 +40,13 @@ COMMON_DEPEND="dev-libs/glib:2
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	theme-manager? ( dev-lang/mono )"
+	theme-manager? (
+		|| (
+			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			dev-lang/mono[-minimal]
+		)
+	)"
+
 RDEPEND="${COMMON_DEPEND}
 	spell? ( app-text/enchant )"
 DEPEND="${COMMON_DEPEND}

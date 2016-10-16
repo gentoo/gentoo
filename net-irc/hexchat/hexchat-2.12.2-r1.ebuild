@@ -40,7 +40,13 @@ COMMON_DEPEND="dev-libs/glib:2
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	theme-manager? ( dev-lang/mono )"
+	theme-manager? (
+		|| (
+			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			dev-lang/mono[-minimal]
+		)
+	)"
+
 RDEPEND="${COMMON_DEPEND}
 	spell? ( app-text/enchant )"
 DEPEND="${COMMON_DEPEND}
@@ -49,11 +55,13 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	theme-manager? ( dev-util/monodevelop )"
 
+PATCHES=(
+	"${FILESDIR}/hexchat-2.12.2-configure.ac-remove-werror.patch"
+)
+
 src_prepare() {
-	if [[ ${PV} == "9999" ]]; then
-		eautoreconf
-	fi
 	default
+	eautoreconf
 }
 
 pkg_setup() {
