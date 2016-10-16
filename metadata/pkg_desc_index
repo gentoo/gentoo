@@ -9488,7 +9488,7 @@ dev-ruby/websocket 1.2.2 1.2.3: Universal Ruby library to handle WebSocket proto
 dev-ruby/websocket-driver 0.3.4 0.6.2 0.6.3 0.6.4: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
 dev-ruby/wikicloth 0.8.3: A mediawiki parser
-dev-ruby/will_paginate 3.1.0 3.1.0-r1: Most awesome pagination solution for Ruby
+dev-ruby/will_paginate 3.1.0 3.1.0-r1 3.1.5: Most awesome pagination solution for Ruby
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
 dev-ruby/xpath 0.1.4-r1 2.0.0-r1: XPath is a Ruby DSL around a subset of XPath 1.0
