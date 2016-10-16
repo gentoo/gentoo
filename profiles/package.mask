@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hanno Böck <hanno@gentoo.org> (16 Oct 2016)
+# The current package is broken (depends on perl modules
+# not in the tree) and there is probably no interest in
+# keeping it, as mp is irrelevant these days.
+# Masked for removal in 30 days.
+sci-geosciences/osm2mp
+
 # Hanno Böck <hanno@gentoo.org> (14 Oct 2016)
 # Both haven't been updated in years and are likely not
 # usable in their current form in the tree. Upstream
