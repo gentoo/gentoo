@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${DEPEND}
 	virtual/pkgconfig
 	test? (
+		git? ( dev-vcs/git )
 		dev-util/cmocka )"
 
 src_prepare() {
