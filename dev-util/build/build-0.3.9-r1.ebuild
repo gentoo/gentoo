@@ -9,7 +9,7 @@ inherit versionator
 DESCRIPTION="A massively-parallel software build system implemented on top of GNU make"
 HOMEPAGE="http://kolpackov.net/projects/build/"
 SLOT="0"
-SRC_URI="http://www.codesynthesis.com/download/${PN}/${SLOT}/${P}.tar.bz2"
+SRC_URI="http://www.codesynthesis.com/download/${PN}/$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="examples"
