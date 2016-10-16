@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python{3_3,3_4,3_5} )
 
@@ -14,12 +13,13 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome/Plugins"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="+exif +flickr map +picasa +python"
+IUSE="+exif +flickr map picasa +python"
 REQUIRED_USE="
 	map? ( exif )
-	python? ( ^^ ( $(python_gen_useflags '*') ) )"
+	python? ( ^^ ( $(python_gen_useflags '*') ) )
+"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2

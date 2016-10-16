@@ -208,6 +208,11 @@ mozconfig_init() {
 		;;
 	esac
 
+	# We need to append flags for gcc-6 support
+	if [[ $(gcc-major-version) -ge 6 ]]; then
+		append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2
+	fi
+
 	# Go a little faster; use less RAM
 	append-flags "$MAKEEDIT_FLAGS"
 

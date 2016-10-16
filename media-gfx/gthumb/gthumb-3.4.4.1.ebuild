@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit gnome2
@@ -13,8 +12,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="cdr exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="cdr debug exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.36.0:2[dbus]
@@ -38,7 +37,7 @@ COMMON_DEPEND="
 	slideshow? (
 		>=media-libs/clutter-1.12.0:1.0
 		>=media-libs/clutter-gtk-1:1.0 )
-	svg? ( >=gnome-base/librsvg-2.34 )
+	svg? ( >=gnome-base/librsvg-2.34:2 )
 	tiff? ( media-libs/tiff:= )
 	raw? ( >=media-libs/libraw-0.14:= )
 	!raw? ( media-gfx/dcraw )
@@ -74,6 +73,7 @@ src_configure() {
 		--disable-static \
 		--disable-libchamplain \
 		$(use_enable cdr libbrasero) \
+		$(use_enable debug) \
 		$(use_enable exif exiv2) \
 		$(use_enable gnome-keyring libsecret) \
 		$(use_enable gstreamer) \

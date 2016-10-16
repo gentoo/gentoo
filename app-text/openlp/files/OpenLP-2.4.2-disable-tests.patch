@@ -1,0 +1,22 @@
+diff -urN a/setup.cfg b/setup.cfg
+--- a/setup.cfg	2016-06-25 13:20:56.000000000 -0500
++++ b/setup.cfg	2016-09-08 22:30:54.606413547 -0500
+@@ -2,3 +2,5 @@
+ exclude=resources.py,vlc.py
+ max-line-length = 120
+ ignore = E402
++[install] 
++install_scripts=/usr/bin
+\ No newline at end of file
+diff -urN a/setup.py b/setup.py
+--- a/setup.py	2016-06-25 13:20:56.000000000 -0500
++++ b/setup.py	2016-09-08 22:30:50.523413394 -0500
+@@ -157,7 +157,7 @@
+     author_email='raoulsnyman@openlp.org',
+     url='http://openlp.org/',
+     license='GNU General Public License',
+-    packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
++    packages=find_packages(exclude=['ez_setup', 'examples', 'tests', 'tests.*']),
+     scripts=['openlp.py'],
+     include_package_data=True,
+     zip_safe=False,
