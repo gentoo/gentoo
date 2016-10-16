@@ -12,7 +12,7 @@ SRC_URI="https://git.zx2c4.com/clockphoto/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5"
