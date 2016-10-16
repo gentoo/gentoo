@@ -14814,8 +14814,8 @@ net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.14.3-r2 3.20.0 3.20.1: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
-net-misc/gns3-gui 1.5.1-r1 1.5.2: Graphical Network Simulator
-net-misc/gns3-server 1.5.1-r1 1.5.2: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 1.5.1-r1 1.5.2 1.5.2-r1: Graphical Network Simulator
+net-misc/gns3-server 1.5.1-r1 1.5.2 1.5.2-r1: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pre20160114: An open source Linux client for Google Drive
@@ -15111,7 +15111,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.07 2016.10.12 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.12 2016.10.16 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
