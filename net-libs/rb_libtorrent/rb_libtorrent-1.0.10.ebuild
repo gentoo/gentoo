@@ -9,75 +9,81 @@ PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit autotools distutils-r1 versionator
+inherit distutils-r1 eutils versionator
 
-MY_PV=$(replace_all_version_separators '_' )
-S=${WORKDIR}/libtorrent-libtorrent-${MY_PV}
+MY_P=libtorrent-rasterbar-${PV} # TODO: rename, bug 576126
+MY_PV=$(replace_all_version_separators _)
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://libtorrent.org"
-SRC_URI="https://github.com/arvidn/libtorrent/archive/libtorrent-${MY_PV}.tar.gz -> rb_libtorrent-${PV}.tar.gz"
+SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/8"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="debug +dht doc examples python +ssl static-libs test"
+IUSE="debug +dht doc examples +geoip libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/boost-1.53:=[threads]
-	sys-libs/zlib
+	dev-libs/boost:=[threads]
 	virtual/libiconv
 	examples? ( !net-p2p/mldonkey )
-	ssl? ( dev-libs/openssl:0= )
+	geoip? ( dev-libs/geoip )
 	python? (
 		${PYTHON_DEPS}
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
-	)"
+	)
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
+"
 DEPEND="${RDEPEND}
-	>=sys-devel/libtool-2.2"
+	sys-devel/libtool
+"
 
-RESTRICT="test"
+S=${WORKDIR}/${MY_P}
+
+PATCHES=( "${FILESDIR}/${PN}-1.0.9-test_torrent_parse.patch" )
 
 src_prepare() {
 	default
 
-	# make sure lib search dir points to the main `S` dir and not to python copies
-	sed -i "s|-L[^ ]*/src/\.libs|-L${S}/src/.libs|" \
-		-- 'bindings/python/link_flags.in' || die
+	# bug 578026
+	# prepend -L${S}/... to ensure bindings link against the lib we just built
+	sed -i -e "s|^|-L${S}/src/.libs |" bindings/python/compile_flags.in || die
 
-	# needed or else eautoreconf fails
-	mkdir build-aux && cp {m4,build-aux}/config.rpath || die
-
-	eautoreconf
-
-	use python && python_copy_sources
+	use python && distutils-r1_src_prepare
 }
 
 src_configure() {
 	local myeconfargs=(
-		--disable-silent-rules # bug 441842
-		--with-boost-system=mt
-		--with-libiconv
 		$(use_enable debug)
-		$(usex debug "--enable-logging=verbose" "")
-		$(use_enable dht)
+		$(use_enable debug logging)
+		$(use_enable debug statistics)
+		$(use_enable debug disk-stats)
+		$(use_enable dht dht $(usex debug logging yes))
 		$(use_enable examples)
+		$(use_enable geoip)
+		$(use_with   geoip libgeoip)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
+		--with-libiconv
 	)
 	econf "${myeconfargs[@]}"
 
-	python_configure() {
-		local myeconfargs+=(
+	if use python; then
+		myeconfargs+=(
 			--enable-python-binding
-			--with-boost-python=yes
+			--with-boost-python
 		)
-		econf "${myeconfargs[@]}"
-	}
-	use python && distutils-r1_src_configure
+		python_configure() {
+			econf "${myeconfargs[@]}"
+		}
+		distutils-r1_src_configure
+	fi
 }
 
 src_compile() {
@@ -100,4 +106,6 @@ src_install() {
 		distutils-r1_python_install
 	}
 	use python && distutils-r1_src_install
+
+	prune_libtool_files
 }
