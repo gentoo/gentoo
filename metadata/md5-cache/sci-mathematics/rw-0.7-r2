@@ -6,8 +6,8 @@ HOMEPAGE=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw.shtm
 IUSE=+executable
 KEYWORDS=~amd64 ~amd64-linux ~x86 ~x86-linux ~ppc-macos ~x86-macos ~x64-macos
 LICENSE=GPL-2+
-RDEPEND=executable? ( >=dev-libs/igraph-0.6 )
+RDEPEND=executable? ( >=dev-libs/igraph-0.6 ) !media-gfx/xpaint
 SLOT=0
-SRC_URI=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp//software/rw-0.7.tar.gz
+SRC_URI=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw-0.7.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=e8dff464705c1ec445a19b865c2fbb44
+_md5_=8f53b2660c1df8714d16e2fd9fd740b9

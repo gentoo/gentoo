@@ -15255,7 +15255,7 @@ net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
 net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported printers
 net-print/gtklp 1.3.0 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.9 5.2.10 5.2.11: Ghostscript and cups printer drivers
-net-print/hplip 3.14.10 3.16.3 3.16.8 3.16.9: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.14.10 3.16.3 3.16.8 3.16.9 3.16.9-r1: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.14.10 3.16.3 3.16.8 3.16.9: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
@@ -16240,7 +16240,7 @@ sci-mathematics/relational 2.4: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903: IDE for the R language
-sci-mathematics/rw 0.7-r1: Compute rank-width decompositions of graphs
+sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/snns 4.2-r8 4.2-r9 4.3-r2: Stuttgart Neural Network Simulator

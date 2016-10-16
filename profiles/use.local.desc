@@ -4289,7 +4289,6 @@ media-sound/gmpc:unique - Enable single instance support using dev-libs/libuniqu
 media-sound/gmpc:xspf - Enable support for reading and saving XSPF playlists
 media-sound/gogglesmm:opus - Enable support for opus codec
 media-sound/google-musicmanager:log - Enables advanced logging through dev-libs/log4cxx
-media-sound/gpodder:webkit - Enable the webkit rendering engine for HTML episode shownotes
 media-sound/herrie:http - Enable http streaming
 media-sound/herrie:xspf - Enable support for reading and saving XSPF playlists
 media-sound/hydrogen:archive - Use libarchive instead of libtar
