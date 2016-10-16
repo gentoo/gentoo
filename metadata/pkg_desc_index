@@ -9788,7 +9788,7 @@ dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
-dev-util/build 0.3.9 0.3.10: A massively-parallel software build system implemented on top of GNU make
+dev-util/build 0.3.9-r1 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_rc3 0.9.0_p1 9999: BuildBot build automation system
 dev-util/buildbot-console-view 0.9.0_rc3 0.9.0_p1: Buildbot console-view plugin
 dev-util/buildbot-pkg 0.9.0_rc3 0.9.0_p1: BuildBot common www build tools for packaging releases
@@ -13325,7 +13325,7 @@ media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and ot
 media-sound/gogglesmm 1.1.1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116_beta: An application for adding music to your Google Music library
-media-sound/gpodder 3.6.0 3.7.0 3.8.3: A free cross-platform podcast aggregator
+media-sound/gpodder 3.9.1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6-r1 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 3.3.1-r3: GTK+ based Audio CD Player/Ripper
@@ -14830,7 +14830,7 @@ net-misc/haeredes 0.4.4: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
 net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
-net-misc/hotot 0.9.8.14 0.9.8.14_p20130514 9999: lightweight & open source microblogging client
+net-misc/hotot 0.9.8.14 0.9.8.14_p20130514 0.9.8.14_p20130514-r1 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
