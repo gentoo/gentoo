@@ -1036,7 +1036,7 @@ app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lfhex 0.42: A fast, efficient hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20150323 20160421 20160912 20161005: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20150323 20160421 20161005: MicroGnuEmacs, a port from the BSDs
 app-editors/mlview 0.9.0-r1: XML editor for the GNOME environment
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
@@ -2169,7 +2169,7 @@ app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanc
 app-shells/thefuck 3.11-r1: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 9999: UNIX Shell similar to the Korn shell
-app-shells/zsh-completions 0.18.0 0.19.0 0.20.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-completions 0.18.0 0.19.0 0.20.0 0.21.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r3 4.14-r4: Any to PostScript filter
