@@ -2886,3 +2886,28 @@ java-pkg_clean() {
 		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
 	fi
 }
+
+# @FUNCTION: java-pkg_gen-cp
+# @INTERNAL
+# @DESCRIPTION:
+# Java package generate classpath will create a classpath based on
+# special variable CP_DEPEND in the ebuild.
+#
+# @CODE
+# Parameters:
+# $1 - classpath variable either EANT_GENTOO_CLASSPATH or JAVA_GENTOO_CLASSPATH
+# @CODE
+java-pkg_gen-cp() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ ${CP_DEPEND} ]]; then
+		local cp="${!1}"
+		local p
+		for p in ${CP_DEPEND}; do
+			p="${p/-[0-9]*:/-}"
+			cp="${cp} ${p#*/}"
+		done
+		cp="${cp//:/-}"
+		[[ ${cp} ]] && export ${1}="${cp//-0/}"
+	fi
+}
