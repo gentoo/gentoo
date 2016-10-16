@@ -8941,7 +8941,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 1.12.0 3.2.6 4.1.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5 1.12.6: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.5.0 2.5.1 2.6.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
@@ -9163,7 +9163,7 @@ dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.4.0: Adds around and before_all/after_all/around_all hooks for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.2.5 2.2.6: Run external commands on Unix or Windows
-dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0: Mocking and stubbing using a syntax like that of JMock and SchMock
+dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
