@@ -5567,7 +5567,7 @@ dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime stri
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0: Datetime sets and set math
-dev-perl/DateTime-TimeZone 1.930.0 1.940.0: Time zone object base class and factory
+dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.010.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
 dev-perl/Debug-Client 0.290.0: Client side code for perl debugger
@@ -14725,7 +14725,7 @@ net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-misc/apt-cacher-ng 0.9.3.1 0.9.3.2-r1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
-net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0 1.26.0 1.26.1 1.27.1: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0 1.26.0 1.26.1 1.27.1 1.28.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
