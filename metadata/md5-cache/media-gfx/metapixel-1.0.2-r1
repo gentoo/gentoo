@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/perl >=media-libs/giflib-5:0= >=media-libs/libpng-1.4:0= virtual/jpeg:0
+DESCRIPTION=a program for generating photomosaics
+EAPI=6
+HOMEPAGE=http://www.complang.tuwien.ac.at/schani/metapixel
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=media-libs/giflib-5:0= >=media-libs/libpng-1.4:0= virtual/jpeg:0
+SLOT=0
+SRC_URI=http://www.complang.tuwien.ac.at/schani/metapixel/files/metapixel-1.0.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=b901730dddbd9e7862f0bf0142346d96

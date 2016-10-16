@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=media-libs/giflib media-libs/libpng:0= virtual/jpeg sys-libs/zlib jpeg2k? ( media-libs/jasper ) sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd ) app-arch/xz-utils
+DEPEND=media-libs/giflib:0= media-libs/libpng:0= virtual/jpeg:0 sys-libs/zlib jpeg2k? ( media-libs/jasper ) sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd )
 DESCRIPTION=A forwarding, non-caching, compressing web proxy server
 EAPI=6
 HOMEPAGE=http://ziproxy.sourceforge.net/
 IUSE=jpeg2k sasl xinetd
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=media-libs/giflib media-libs/libpng:0= virtual/jpeg sys-libs/zlib jpeg2k? ( media-libs/jasper ) sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd )
+RDEPEND=media-libs/giflib:0= media-libs/libpng:0= virtual/jpeg:0 sys-libs/zlib jpeg2k? ( media-libs/jasper ) sasl? ( dev-libs/cyrus-sasl ) xinetd? ( virtual/inetd )
 SLOT=0
 SRC_URI=mirror://sourceforge/ziproxy/ziproxy-3.3.1.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=b225e75279fa7ec3d23473ad2937b086
+_md5_=3b056e62219f434c13be7b36fe9f8fdc
