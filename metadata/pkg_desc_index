@@ -2200,7 +2200,7 @@ app-text/blogc 0.11.1 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 1.20 2.35.0-r2 2.47.0 2.55.0 2.63.0 2.66.0 2.68.0: Ebook management application
+app-text/calibre 1.20 2.35.0-r2 2.47.0 2.55.0 2.68.0 2.70.0: Ebook management application
 app-text/catdoc 0.94.4 0.94.4-r1 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
@@ -14361,7 +14361,7 @@ net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
-net-irc/hexchat 2.10.2 2.10.2-r1 2.12.2 9999: Graphical IRC client based on XChat
+net-irc/hexchat 2.10.2 2.12.2-r1 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
