@@ -13707,7 +13707,7 @@ media-video/kamoso 3.2: Application to take pictures and videos from your webcam
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.11.3d-r3 0.11.5 0.12.0a: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.9999 12_pre20160529 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.9999 12_beta1 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
