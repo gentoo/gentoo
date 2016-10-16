@@ -18,12 +18,12 @@ IUSE="+cxx dane doc examples guile idn nls +openssl pkcs11 sslv2 +sslv3 static-l
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
-RDEPEND=">=dev-libs/libtasn1-4.3[${MULTILIB_USEDEP}]
+RDEPEND=">=dev-libs/libtasn1-4.3:=[${MULTILIB_USEDEP}]
 	>=dev-libs/nettle-3.1:=[gmp,${MULTILIB_USEDEP}]
-	>=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]
+	>=dev-libs/gmp-5.1.3-r1:=[${MULTILIB_USEDEP}]
 	tools? ( sys-devel/autogen )
 	dane? ( >=net-dns/unbound-1.4.20[${MULTILIB_USEDEP}] )
-	guile? ( >=dev-scheme/guile-1.8[networking] )
+	guile? ( >=dev-scheme/guile-1.8:=[networking] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
