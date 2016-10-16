@@ -18312,7 +18312,7 @@ x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.36.8-r1 1.38.1 1.40.1 1.40.2 1.40.3: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
-x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
+x11-libs/pixman 0.32.8 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9.2 2.9.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.6.0-r1 0.7.0 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
@@ -18551,7 +18551,7 @@ x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/util-macros 1.17.1 1.18.0 1.19.0: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.0: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.4.1-r3: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.4.1-r3 2.5.1: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.3.22 2.3.24 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2: Wayv is hand-writing/gesturing recognition software for X
