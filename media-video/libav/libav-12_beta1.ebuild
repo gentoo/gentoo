@@ -20,10 +20,11 @@ if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 	SRC_URI="https://dev.gentoo.org/~lu_zero/libav/${P}.tar.xz"
-	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-12_pre20160522.tar.xz )"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV}.tar.xz )"
 else # Official release
 	SRC_URI="https://libav.org/releases/${P}.tar.xz"
-	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV%%.*}.tar.xz )"
+	FATE_VER=${PV%%_*}
+	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${FATE_VER%%.*}.tar.xz )"
 fi
 # 9999 does not have fate-*.tar.xz
 
