@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.logilab.fr/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~x86-linux"
+KEYWORDS="alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~x86-linux"
 IUSE=""
 
 DEPEND="dev-python/pyxml[${PYTHON_USEDEP}]"
