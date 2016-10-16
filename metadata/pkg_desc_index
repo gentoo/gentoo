@@ -10017,8 +10017,8 @@ dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2016.1.3 2016.1.4 2016.2.1 2016.2.2: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 2016.1.3 2016.1.4 2016.2.1 2016.2.2: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.5 1.5.2 1.6.0: Cross-platform build tool
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
@@ -13172,7 +13172,7 @@ media-plugins/vdr-vcd 0.9-r1 0.9-r2 0.9-r3: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.12 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 media-plugins/vdr-videosystem 0.0.1: VDR plugin: Switch OSD resolution depending on signal-videosystem (PAL/NTSC)
 media-plugins/vdr-vodcatcher 0.2.2: VDR plugin: Downloads rss-feeds and passes video enclosures to the mplayer plugin
-media-plugins/vdr-vompserver 0.3.1-r1 0.4.0 0.4.1: VDR Plugin: server part for MediaMVP device
+media-plugins/vdr-vompserver 0.4.1 0.4.1-r1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-wapd 0.9 0.9_p1 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests to allow remote control by WML enabled browsers
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
@@ -18165,7 +18165,7 @@ x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4: Matrox video driver
 x11-drivers/xf86-video-modesetting 0.8.1 0.9.0: Unaccelerated generic driver for kernel modesetting
 x11-drivers/xf86-video-neomagic 1.2.9: Neomagic video driver
 x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
-x11-drivers/xf86-video-nouveau 1.0.11 1.0.12: Accelerated Open Source driver for nVidia cards
+x11-drivers/xf86-video-nouveau 1.0.11 1.0.12 1.0.13: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.20-r1: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4: OMAP video driver
 x11-drivers/xf86-video-omapfb 0.1.1.1_p1: X.org driver for TI OMAP framebuffers
