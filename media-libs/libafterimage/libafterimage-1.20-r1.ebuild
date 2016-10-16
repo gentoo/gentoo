@@ -20,11 +20,11 @@ RDEPEND="
 	X?		( x11-libs/libSM
 			  x11-libs/libXext
 			  x11-libs/libXrender )
-	gif?	( media-libs/giflib )
-	jpeg?	( virtual/jpeg:= )
+	gif?	( media-libs/giflib:0= )
+	jpeg?	( virtual/jpeg:0 )
 	opengl?	( virtual/opengl )
-	png?	( >=media-libs/libpng-1.4:0 )
-	svg?	( gnome-base/librsvg )
+	png?	( >=media-libs/libpng-1.4:0= )
+	svg?	( gnome-base/librsvg:2 )
 	tiff?	( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
