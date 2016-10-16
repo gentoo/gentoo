@@ -17,7 +17,7 @@ IUSE="jpeg2k sasl xinetd"
 RDEPEND="
 	media-libs/giflib:0=
 	media-libs/libpng:0=
-	virtual/jpeg
+	virtual/jpeg:0
 	sys-libs/zlib
 	jpeg2k? ( media-libs/jasper )
 	sasl? ( dev-libs/cyrus-sasl )
