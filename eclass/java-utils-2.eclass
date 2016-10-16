@@ -2182,10 +2182,6 @@ java-pkg_init() {
 		I_WANT_GLOBAL_JAVA_OPTIONS="true"
 	fi
 
-	if java-pkg_func-exists ant_src_unpack; then
-		java-pkg_announce-qa-violation "Using old ant_src_unpack. Should be src_unpack"
-	fi
-
 	java-pkg_switch-vm
 	PATH=${JAVA_HOME}/bin:${PATH}
 
