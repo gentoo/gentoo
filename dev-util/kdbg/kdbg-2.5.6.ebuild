@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_LINGUAS="cs da de es fr hr hu it ja nb nn pl pt ro ru sk sr sv tr zh_CN"
 KDE_HANDBOOK="optional"
 inherit kde4-base
 
-DESCRIPTION="A graphical debugger interface"
+DESCRIPTION="Graphical debugger interface"
 HOMEPAGE="http://www.kdbg.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -20,7 +20,6 @@ IUSE="debug"
 RDEPEND="sys-devel/gdb"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )
 DOCS=( BUGS README ReleaseNotes-${PV} TODO )
 
 src_prepare() {
