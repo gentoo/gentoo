@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="examples"
 
 RDEPEND=">=dev-cpp/libcult-1.4.6-r1"
 DEPEND="${RDEPEND}
-	dev-util/build:0.3"
+	dev-util/build"
 
 src_prepare() {
 	# never build the examples

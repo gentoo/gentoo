@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 # Required for python_fix_shebang:
@@ -17,30 +17,36 @@ SRC_URI="http://gpodder.org/src/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+dbus bluetooth gstreamer ipod kernel_linux mtp test webkit"
+IUSE="+dbus bluetooth gstreamer ipod kernel_linux mtp test"
 
-#TODO: add QML UI deps (USE=qt4) and make pygtk optional, see README
-COMMON_DEPEND=">=dev-python/eyeD3-0.7
+#TODO: Make pygtk optional, see README
+COMMON_DEPEND="
+	>=dev-python/eyeD3-0.7
 	>=dev-python/feedparser-5.1.2
+	dev-python/html5lib
 	>=dev-python/mygpoclient-1.7
 	>=dev-python/pygtk-2.16:2
 	dbus? ( dev-python/dbus-python )
 	bluetooth? ( net-wireless/bluez )
 	gstreamer? ( dev-python/gst-python:0.10 )
 	ipod? ( media-libs/libgpod[python] )
-	mtp? ( >=media-libs/libmtp-1.0.0 )
-	webkit? ( dev-python/pywebkitgtk )"
+	mtp? ( >=media-libs/libmtp-1.0.0:= )
+"
 RDEPEND="${COMMON_DEPEND}
-	kernel_linux? ( sys-apps/iproute2 )"
+	kernel_linux? ( sys-apps/iproute2 )
+"
 DEPEND="${COMMON_DEPEND}
+	dev-util/desktop-file-utils
 	dev-util/intltool
 	sys-apps/help2man
 	test? (
 		dev-python/minimock
 		dev-python/coverage
-	)"
+	)
+"
 
 src_prepare() {
+	default
 	sed -i -e '/setup.py.*install/d' makefile || die
 	# Fix for "AttributeError: 'gPodder' object has no attribute 'toolbar'":
 	python_fix_shebang .
