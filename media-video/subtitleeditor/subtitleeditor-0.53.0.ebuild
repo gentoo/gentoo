@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/gstreamer:1.0
 	media-plugins/gst-plugins-meta:1.0
 	x11-libs/gtk+:3
-	virtual/libintl
+	nls? ( virtual/libintl )
 "
 #	opengl? (
 #		>=dev-cpp/gtkglextmm-1.2.0-r2:1.0
@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.52.1-disable-nls-fix.patch
+)
 
 src_configure() {
 	# Avoid using --enable-debug as it mocks with CXXFLAGS and LDFLAGS
