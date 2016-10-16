@@ -12609,7 +12609,7 @@ media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
-media-libs/jasper 1.900.1-r9 1.900.3: Implementation of the codec specified in the JPEG-2000 Part-1 standard
+media-libs/jasper 1.900.1-r9 1.900.5: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1 0.13: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
