@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEPEND=>=media-video/vdr-1.7.41 >=net-libs/c-client-2002e-r1 >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR plugin: MailBox provides access to multiple e-mail accounts
+EAPI=6
+HOMEPAGE=http://alex.vdr-developer.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-video/vdr-1.7.41 >=net-libs/c-client-2002e-r1 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=http://alex.vdr-developer.org/download/vdr-mailbox-0.7.0.tgz
+_eclass_exported_funcs=pkg_postrm:vdr-plugin-2 pkg_postinst:vdr-plugin-2 pkg_setup:vdr-plugin-2 src_unpack:vdr-plugin-2 src_prepare:vdr-plugin-2 src_compile:vdr-plugin-2 src_install:vdr-plugin-2
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be	vdr-plugin-2	793155a4c77b7ce10630747d0afcac0c
+_md5_=b649194179decefef704fefaace3b9a8
