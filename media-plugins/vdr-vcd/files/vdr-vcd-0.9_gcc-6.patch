@@ -1,0 +1,24 @@
+compile fix gcc-6
+https://bugs.gentoo.org/show_bug.cgi?id=594274
+provided by P.Levine
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/Oct/16)
+--- vcd-0.9/functions.h.old	2016-09-23 23:59:29.151668778 -0400
++++ vcd-0.9/functions.h	2016-09-23 23:59:33.842225407 -0400
+@@ -167,7 +167,7 @@
+      __u16  playing_time;
+      __u8   play_item_wait_time;
+      __u8   auto_pause_wait_time;
+-     __u16  play_item[];
++     __u16  play_item[1];
+   } play;
+   struct {
+      __u8   header;
+@@ -183,7 +183,7 @@
+      __u8   timeout_wait_time;
+      __u8   loop_count;
+      __u16  play_item;
+-     __u16  selection_offset[];
++     __u16  selection_offset[1];
+   } selection;
+ };
+ 
