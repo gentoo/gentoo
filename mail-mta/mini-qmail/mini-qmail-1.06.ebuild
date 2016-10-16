@@ -17,7 +17,7 @@ SRC_URI="mirror://qmail/netqmail-${PV}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 arm hppa ~mips ~ppc ~x86"
+KEYWORDS="amd64 arm hppa ~mips ~ppc x86"
 IUSE=""
 
 DEPEND=""
