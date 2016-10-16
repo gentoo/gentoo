@@ -1,0 +1,80 @@
+commit 6860bfda90c4be1b0b7337eb39b348d08b325999
+Author: Matthew Dawson <matthew@mjdsystems.ca>
+Date:   Sun Oct 16 18:29:50 2016 -0400
+
+    Use the algorithm header from the stl for min/max when available.
+    
+    Also avoid defining __min/__max, as those are reserved names.
+
+diff --git a/bonnie++.cpp b/bonnie++.cpp
+index 8c5a43a..7fc86f7 100644
+--- a/bonnie++.cpp
++++ b/bonnie++.cpp
+@@ -73,7 +73,7 @@ public:
+   void set_io_chunk_size(int size)
+     { delete m_buf; pa_new(size, m_buf, m_buf_pa); m_io_chunk_size = size; }
+   void set_file_chunk_size(int size)
+-    { delete m_buf; m_buf = new char[__max(size, m_io_chunk_size)]; m_file_chunk_size = size; }
++    { delete m_buf; m_buf = new char[max(size, m_io_chunk_size)]; m_file_chunk_size = size; }
+ 
+   // Return the page-aligned version of the local buffer
+   char *buf() { return m_buf_pa; }
+@@ -138,7 +138,7 @@ CGlobalItems::CGlobalItems(bool *exitFlag)
+  , m_buf(NULL)
+  , m_buf_pa(NULL)
+ {
+-  pa_new(__max(m_io_chunk_size, m_file_chunk_size), m_buf, m_buf_pa);
++  pa_new(max(m_io_chunk_size, m_file_chunk_size), m_buf, m_buf_pa);
+   SetName(".");
+ }
+ 
+@@ -393,8 +393,8 @@ int main(int argc, char *argv[])
+     usage();
+   }
+ #endif
+-  globals.byte_io_size = __min(file_size, globals.byte_io_size);
+-  globals.byte_io_size = __max(0, globals.byte_io_size);
++  globals.byte_io_size = min(file_size, globals.byte_io_size);
++  globals.byte_io_size = max(0, globals.byte_io_size);
+ 
+   if(machine == NULL)
+   {
+diff --git a/duration.cpp b/duration.cpp
+index efa3fd3..f943155 100644
+--- a/duration.cpp
++++ b/duration.cpp
+@@ -38,7 +38,7 @@ double Duration_Base::stop()
+   getTime(&tv);
+   double ret;
+   ret = tv - m_start;
+-  m_max = __max(m_max, ret);
++  m_max = max(m_max, ret);
+   return ret;
+ }
+ 
+diff --git a/port.h.in b/port.h.in
+index 69c8f24..f389b3f 100644
+--- a/port.h.in
++++ b/port.h.in
+@@ -4,8 +4,10 @@
+ #include "conf.h"
+ 
+ #ifndef HAVE_MIN_MAX
+-#if defined(HAVE_ALGO_H) || defined(HAVE_ALGO)
+-#ifdef HAVE_ALGO
++#if defined(HAVE_ALGO_H) || defined(HAVE_ALGO) || defined(HAVE_ALGORITHM)
++#ifdef HAVE_ALGORITHM
++#include <algorithm>
++#elif defined(HAVE_ALGO)
+ #include <algo>
+ #else
+ #include <algo.h>
+@@ -49,8 +51,6 @@ typedef struct timeval TIMEVAL_TYPE;
+ #endif
+ 
+ typedef int FILE_TYPE;
+-#define __min min
+-#define __max max
+ typedef unsigned int UINT;
+ typedef unsigned long ULONG;
+ typedef const char * PCCHAR;
