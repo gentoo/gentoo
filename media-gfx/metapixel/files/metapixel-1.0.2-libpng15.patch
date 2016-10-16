@@ -1,5 +1,5 @@
---- rwimg/rwpng.c
-+++ rwimg/rwpng.c
+--- a/rwimg/rwpng.c
++++ b/rwimg/rwpng.c
 @@ -42,6 +42,7 @@
  open_png_file_reading (const char *filename, int *width, int *height)
  {
