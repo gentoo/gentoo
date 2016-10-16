@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="examples"
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="!dev-util/build:0.3"
 
 src_install() {
 	emake install_prefix="${ED%/}/usr" install
