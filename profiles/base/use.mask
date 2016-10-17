@@ -188,9 +188,6 @@ video_cards_qxl
 input_devices_synaptics
 input_devices_wacom
 
-# awaiting keywording, bug #538828
-input_devices_libinput
-
 # psyco only works on x86
 psyco
 
