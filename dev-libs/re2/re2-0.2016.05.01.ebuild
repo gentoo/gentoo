@@ -20,7 +20,7 @@ SLOT="0/0.2016.05.01"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="icu"
 
-RDEPEND="icu? ( dev-libs/icu:0= )"
+RDEPEND="icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	icu? ( virtual/pkgconfig )"
 
