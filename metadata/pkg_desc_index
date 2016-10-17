@@ -13104,7 +13104,7 @@ media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remot
 media-plugins/vdr-kvdrmon 0.6: VDR Plugin: monitors on KDE Kickerapplet kvdrmon
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
 media-plugins/vdr-lcdproc 0.0.10.9: VDR plugin: use LCD device for additional output
-media-plugins/vdr-lcr 0.0.9: VDR Plugin: informe about Least Cost Routing (LCR)
+media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
 media-plugins/vdr-live 0.3.0_p20130504-r1 0.3.0_p20130504-r2: VDR Plugin: Web Access To Settings
 media-plugins/vdr-loadepg 0.2.3 0.2.5: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
 media-plugins/vdr-mailbox 0.6.0 0.7.0 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
