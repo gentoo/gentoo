@@ -14493,7 +14493,7 @@ net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of socia
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.47 0.9.48 0.9.49 0.9.50 0.9.51: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.47 0.9.49 0.9.51 0.9.52: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
