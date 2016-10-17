@@ -1,0 +1,69 @@
+diff --git a/icons/Makefile b/icons/Makefile
+index 4e5a43d..8622b38 100644
+--- a/icons/Makefile
++++ b/icons/Makefile
+@@ -31,7 +31,7 @@ PS_ICONS=$(patsubst %,bluecube/%,$(notdir $(GEN_PS_ICONS)))
+ # ----------------------------------------------------
+ # FLAGS
+ # ----------------------------------------------------
+-ERL_FLAGS += 
++ERL_FLAGS += -pa ../ebin
+ ERL_COMPILE_FLAGS += -Werror +debug_info
+ 
+ # ----------------------------------------------------
+diff --git a/icons/collect_bmp.erl b/icons/collect_bmp.erl
+index 073fe73..e29d232 100644
+--- a/icons/collect_bmp.erl
++++ b/icons/collect_bmp.erl
+@@ -13,23 +13,21 @@
+ 
+ -module(collect_bmp).
+ -export([start/0,start/1]).
+--import(lists, [reverse/1]).
++
++-include_lib("wings/e3d/e3d_image.hrl").
+ 
+ start() ->
+     start(["icons","wings_icon.bundle"]).
+ 
+ start(Args) ->
+-    io:put_chars("Loading"),
+     do_start(Args, []).
+ 
+ do_start([InDir|[_|_]=T], Files) ->
+     do_start(T, add_files(InDir, Files));
+ do_start([OutFile], Files) ->
+-    wx:new(),
+     Icons = load_icons(Files),
+-    io:nl(),
+     Bin = term_to_binary(Icons, [compressed]),
+-    io:format("Writing ~s\n", [OutFile]),
++    %% io:format("Writing ~s\n", [OutFile]),
+     ok = file:write_file(OutFile, Bin).
+ 
+ add_files(Dir, Acc) ->
+@@ -42,14 +40,16 @@ load_icons([Name|Ns]) ->
+ load_icons([]) -> [].
+ 
+ load_icon(Name) ->
+-    Image = wxImage:new(Name),
+-    wxImage:ok(Image) orelse exit({failed_to_load, Name}),
+-    W = wxImage:getWidth(Image),
+-    H = wxImage:getHeight(Image),
+-    RGB = wxImage:getData(Image),
+-    case wxImage:hasAlpha(Image) of
+-	true ->  {4,W,H,RGB,wxImage:getAlpha(Image)};
+-	false -> {3,W,H,RGB, <<>>}
++    case e3d_image:load(Name) of
++        #e3d_image{bytes_pp=4, width=W, height=H} = I ->
++            #e3d_image{image=RGB} = e3d_image:convert(I, r8g8b8, 1, upper_left),
++            #e3d_image{image=Alpha} = e3d_image:convert(I, a8, 1, upper_left),
++            {4,W,H,RGB,Alpha};
++        #e3d_image{bytes_pp=3, width=W, height=H} = I ->
++            #e3d_image{image=RGB} = e3d_image:convert(I, r8g8b8, 1, upper_left),
++            {3,W,H,RGB,<<>>};
++        _ ->
++            exit({failed_to_load, Name})
+     end.
+ 
+ 
