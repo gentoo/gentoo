@@ -76,6 +76,9 @@ java-pkg-2_src_prepare() {
 
 java-pkg-2_src_compile() {
 	if [[ -e "${EANT_BUILD_XML:=build.xml}" ]]; then
+		# auto generate classpath
+		java-pkg_gen-cp EANT_GENTOO_CLASSPATH
+
 		[[ "${EANT_FILTER_COMPILER}" ]] && \
 			java-pkg_filter-compiler ${EANT_FILTER_COMPILER}
 		local antflags="${EANT_BUILD_TARGET:=jar}"
