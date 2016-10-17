@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 
 SITEFILE=50${PN}-gentoo.el
 
+PATCHES=( "${FILESDIR}/${P}-gccv6-fix.patch" )
+
 src_prepare() {
 	sed -e 's#prefix=@prefix@#prefix=$(patsubst %/,%,$(DESTDIR))@prefix@#' \
 		-e 's#libdir=@libdir@#libdir=$(patsubst %/,%,$(DESTDIR))@libdir@#' \
