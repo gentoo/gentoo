@@ -1590,6 +1590,7 @@ app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r3: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.66 1.69.2 1.70: Linux kernel laptop_mode user-space utilities
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
+app-laptop/mbpfan 1.9.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4: Handles power management and special keys on laptops
 app-laptop/pommed 1.39-r1: Manage special features such as screen and keyboard backlight on Apple MacBook Pro/PowerBook
