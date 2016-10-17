@@ -3727,6 +3727,7 @@ media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
 media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 media-gfx/geeqie:map - Enable items map display - experimental
 media-gfx/gimp:smp - Enable support for multiprocessors
+media-gfx/gimp:vector-icons - Enable support for vector icons (experimental)
 media-gfx/gmic:graphicsmagick - Enable support for many common image file formats using the GraphicsMagick++ library
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
 media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx
