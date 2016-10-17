@@ -1,0 +1,29 @@
+From 7f8c896c0e4d7e65b94a23e4e75fc6d1545c3cfd Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 17 Oct 2016 10:41:10 -0400
+Subject: [PATCH] gn: bootstrap: always use cxx for linking
+
+LD may be set to something like "ld.bfd" or "ld.gold". We want to let
+the compiler invoke the linker instead of calling these directly.
+
+Bug: https://bugs.gentoo.org/597218
+---
+ tools/gn/bootstrap/bootstrap.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index b86757a..d66da12 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -288,7 +288,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+   else:
+     cc = os.environ.get('CC', 'cc')
+     cxx = os.environ.get('CXX', 'c++')
+-    ld = os.environ.get('LD', cxx)
++    ld = cxx
+     ar = os.environ.get('AR', 'ar')
+ 
+   cflags = os.environ.get('CFLAGS', '').split()
+-- 
+2.10.1
+
