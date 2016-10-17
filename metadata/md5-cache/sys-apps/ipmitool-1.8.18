@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=dev-libs/openssl:0= sys-libs/readline:0=
 SLOT=0
-SRC_URI=mirror://sourceforge/ipmitool/ipmitool-1.8.16.tar.gz https://launchpad.net/ubuntu/+archive/primary/+files/ipmitool_1.8.16-3.debian.tar.xz
+SRC_URI=mirror://sourceforge/ipmitool/ipmitool-1.8.18.tar.gz http://http.debian.net/debian/pool/main/i/ipmitool/ipmitool_1.8.18-1.debian.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=7b2c8d37e618d9d1106cbb6f390c40e4
+_md5_=0457d3ad918ac58c50454786289106d9
