@@ -1,0 +1,44 @@
+--- okio/src/main/java/okio/DeflaterSink.java	2016-08-22 12:01:19.828823222 -0500
++++ okio/src/main/java/okio/DeflaterSink.java	2016-08-22 12:01:25.039823574 -0500
+@@ -17,7 +17,6 @@
+ 
+ import java.io.IOException;
+ import java.util.zip.Deflater;
+-import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
+ 
+ import static okio.Util.checkOffsetAndCount;
+ 
+@@ -79,7 +78,6 @@
+     }
+   }
+ 
+-  @IgnoreJRERequirement
+   private void deflate(boolean syncFlush) throws IOException {
+     Buffer buffer = sink.buffer();
+     while (true) {
+--- okio/src/main/java/okio/Okio.java	2016-08-22 12:03:23.819831591 -0500
++++ okio/src/main/java/okio/Okio.java	2016-08-22 12:03:34.874832337 -0500
+@@ -30,7 +30,6 @@
+ import java.nio.file.Path;
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+-import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
+ 
+ import static okio.Util.checkOffsetAndCount;
+ 
+@@ -167,7 +166,6 @@
+   }
+ 
+   /** Returns a source that reads from {@code path}. */
+-  @IgnoreJRERequirement // Should only be invoked on Java 7+.
+   public static Source source(Path path, OpenOption... options) throws IOException {
+     if (path == null) throw new IllegalArgumentException("path == null");
+     return source(Files.newInputStream(path, options));
+@@ -186,7 +184,6 @@
+   }
+ 
+   /** Returns a sink that writes to {@code path}. */
+-  @IgnoreJRERequirement // Should only be invoked on Java 7+.
+   public static Sink sink(Path path, OpenOption... options) throws IOException {
+     if (path == null) throw new IllegalArgumentException("path == null");
+     return sink(Files.newOutputStream(path, options));
