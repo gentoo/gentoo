@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}_xgettext.diff"
 		"${FILESDIR}/${P}_vdr-1.7.2.diff"
-		"${FILESDIR}/${P}_devicetrickspeed.patch" 
+		"${FILESDIR}/${P}_devicetrickspeed.patch"
 		"${FILESDIR}/${P}_gcc-6.patch" )
 
 src_prepare() {
