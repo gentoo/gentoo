@@ -23,6 +23,8 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 	>=www-apps/icingaweb2-2.0.0"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/patch-unquote-service.patch" )
+
 src_install() {
 	insinto "/usr/share/icingaweb2/modules/graphite/"
 	doins -r "${S}"/*
