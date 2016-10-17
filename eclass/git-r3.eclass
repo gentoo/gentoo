@@ -593,13 +593,18 @@ git-r3_fetch() {
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
 
-			if [[ ${r} == https://* ]] && ! ROOT=/ has_version 'dev-vcs/git[curl]'; then
-				eerror "git-r3: fetching from https:// requested. In order to support https,"
-				eerror "dev-vcs/git needs to be built with USE=curl. Example solution:"
-				eerror
-				eerror "	echo dev-vcs/git curl >> /etc/portage/package.use"
-				eerror "	emerge -1v dev-vcs/git"
-				die "dev-vcs/git built with USE=curl required."
+			if [[ ${r} == http://* || ${r} == https://* ]] &&
+					[[ ! ${EGIT_CURL_WARNED} ]] &&
+					! ROOT=/ has_version 'dev-vcs/git[curl]'
+			then
+				ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
+				ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
+				ewarn
+				ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
+				ewarn "	emerge -1v dev-vcs/git"
+				ewarn
+				ewarn "HTTP(S) URIs will be skipped."
+				EGIT_CURL_WARNED=1
 			fi
 
 			if [[ ${clone_type} == mirror ]]; then
