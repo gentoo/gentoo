@@ -8,7 +8,7 @@ inherit eutils systemd user cmake-utils
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
 SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="cpu_flags_x86_aes i2p-hardening libressl pch static +upnp"
