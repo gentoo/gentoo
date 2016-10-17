@@ -14818,7 +14818,7 @@ net-misc/gns3-gui 1.5.1-r1 1.5.2 1.5.2-r1: Graphical Network Simulator
 net-misc/gns3-server 1.5.1-r1 1.5.2 1.5.2-r1: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
-net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pre20160114: An open source Linux client for Google Drive
+net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pre20160114 0.5.1_pre20160706: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.18 4.19 4.20: command line tool for interacting with cloud storage services
 net-misc/guacamole-server 0.9.9: This is the proxy-daemon used by www-apps/guacamole
