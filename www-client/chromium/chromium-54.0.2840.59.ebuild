@@ -537,6 +537,10 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
+	# Work around people setting LD in make.conf, bug 597218.
+	# gn's bootstrap.py looks at the environment first.
+	export LD=${CXX}
+
 	# Define a custom toolchain for GN
 	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
 
