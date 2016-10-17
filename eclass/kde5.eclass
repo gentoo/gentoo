@@ -160,6 +160,14 @@ case ${KDE_AUTODEPS} in
 			fi
 		fi
 
+		if [[ ${CATEGORY} = kde-apps ]]; then
+			local vcr2=$((10#$(get_version_component_range 2)))
+			if ! [[ $(get_version_component_range 1) -le 16 && ${vcr2} -lt 9 ]]; then
+				FRAMEWORKS_MINIMAL=5.27.0
+			fi
+			unset vcr2
+		fi
+
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
