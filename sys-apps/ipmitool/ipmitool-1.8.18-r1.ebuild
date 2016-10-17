@@ -14,12 +14,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	http://http.debian.net/debian/pool/main/i/${PN}/${DEBIAN_PF}.tar.xz"
 	# https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz
 #IUSE="freeipmi openipmi status"
-IUSE="openipmi static"
+IUSE="libressl openipmi static"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
 LICENSE="BSD"
 
-RDEPEND="dev-libs/openssl:0=
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/readline:0="
 DEPEND="${RDEPEND}
 		openipmi? ( sys-libs/openipmi )
