@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic systemd toolchain-funcs user
+inherit bash-completion-r1 autotools flag-o-matic systemd toolchain-funcs user
 
 KEYWORDS="~amd64"
 
@@ -12,15 +12,23 @@ PXE_VERSION="1151.0.0"
 PXE_SYSTEMD_VERSION="v231"
 KVM_LINUX_VERSION="4.3.1"
 KVMTOOL_VERSION="d62653e177597251c24494a6dda60acd6d846671"
+QEMU_VERSION="v2.6.1"
 PXE_URI="http://alpha.release.core-os.net/amd64-usr/${PXE_VERSION}/coreos_production_pxe_image.cpio.gz"
 PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
+
+SRC_URI_KVM="mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
+	${PXE_URI} -> ${PXE_FILE}
+"
 
 SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm_lkvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
-	mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
-	${PXE_URI} -> ${PXE_FILE}
+	${SRC_URI_KVM}
+)
+rkt_stage1_kvm_qemu? (
+	http://wiki.qemu-project.org/download/qemu-${QEMU_VERSION#v}.tar.bz2
+	${SRC_URI_KVM}
 )
 rkt_stage1_src? ( https://github.com/systemd/systemd/archive/${PXE_SYSTEMD_VERSION}.tar.gz -> systemd-${PXE_SYSTEMD_VERSION#v}.tar.gz )"
 
@@ -29,15 +37,20 @@ HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_kvm_lkvm rkt_stage1_src +actool systemd"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_src ) rkt_stage1_host? ( systemd ) !rkt_stage1_kvm"
+# The rkt_stage1_kvm flag has been replaced by the rkt_stage1_kvm_lkvm and rkt_stage1_kvm_qemu flags
+IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src +actool systemd"
+REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src ) rkt_stage1_host? ( systemd ) !rkt_stage1_kvm"
 
 DEPEND=">=dev-lang/go-1.5
 	app-arch/cpio
 	app-crypt/trousers
 	sys-fs/squashfs-tools
 	dev-perl/Capture-Tiny
-	rkt_stage1_src? ( >=sys-apps/util-linux-2.27 )"
+	rkt_stage1_src? ( >=sys-apps/util-linux-2.27 )
+	rkt_stage1_kvm_qemu? (
+		sys-libs/libcap[static-libs(+)]
+		>=x11-libs/pixman-0.28.0[static-libs(+)]
+	)"
 
 RDEPEND="!app-emulation/rocket
 	rkt_stage1_host? ( systemd? (
@@ -73,6 +86,12 @@ src_unpack() {
 src_prepare() {
 	eapply_user
 
+	# avoid sdjournal include for bug 595874
+	if ! use systemd; then
+		sed -e "s/^\\(LOCAL_DIST_SRC_FILTER := .*\\)'$/\\1|api_service'/" \
+			-i rkt/rkt.mk || die
+	fi
+
 	sed -e 's|^RKT_REQ_PROG(\[GIT\],.*|#\0|' -i configure.ac || die
 
 	# disable git fetch of systemd
@@ -98,6 +117,20 @@ src_prepare() {
 '\t\0\n'\
 'endif~' -i stage1/usr_from_kvm/lkvm.mk || die
 
+	# disable git fetch of qemu
+	sed -e 's~^include makelib/git.mk$~'\
+'ifneq ($(wildcard $(shell echo "$${WORKDIR}/qemu-'${QEMU_VERSION#v}'")),)\n\n'\
+'$(call forward-vars, get_qemu_sources, QEMU_SRCDIR)\n'\
+'get_qemu_sources: | $(QEMU_TMPDIR)\n'\
+'\tmv "$${WORKDIR}/qemu-'${QEMU_VERSION#v}'" "$(QEMU_SRCDIR)"\n\n'\
+'$(QEMU_CLONE_STAMP): get_qemu_sources\n\n'\
+'else ifneq ($(wildcard $(QEMU_SRCDIR)),)\n\n'\
+'else\n'\
+'\t\0\n'\
+'endif~' \
+	-e 's|QEMU_CONFIGURATION_OPTS :=|\0 --disable-opengl|' \
+	-i stage1/usr_from_kvm/qemu.mk || die
+
 	# disable fetch of kernel sources
 	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
 		-i stage1/usr_from_kvm/kernel.mk || die
@@ -112,7 +145,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local flavors myeconfargs=(
+	local flavors hypervisors myeconfargs=(
 		--with-stage1-default-images-directory="/usr/share/rkt"
 		--with-stage1-default-location="${STAGE1_DEFAULT_LOCATION}"
 	)
@@ -124,7 +157,7 @@ src_configure() {
 	use rkt_stage1_src && flavors+=",src"
 	use rkt_stage1_coreos && flavors+=",coreos"
 	use rkt_stage1_fly && flavors+=",fly"
-	use rkt_stage1_kvm_lkvm && flavors+=",kvm"
+	{ use rkt_stage1_kvm_lkvm || use rkt_stage1_kvm_qemu; } && flavors+=",kvm"
 	myeconfargs+=( --with-stage1-flavors="${flavors#,}" )
 
 	if use rkt_stage1_src; then
@@ -134,11 +167,17 @@ src_configure() {
 		)
 	fi
 
-	if use rkt_stage1_coreos || use rkt_stage1_kvm_lkvm; then
+	if use rkt_stage1_coreos || use rkt_stage1_kvm_lkvm || use rkt_stage1_kvm_qemu; then
 		myeconfargs+=(
 			--with-coreos-local-pxe-image-path="${DISTDIR}/${PXE_FILE}"
 			--with-coreos-local-pxe-image-systemd-version="${PXE_SYSTEMD_VERSION}"
 		)
+	fi
+
+	if use rkt_stage1_kvm_lkvm || use rkt_stage1_kvm_qemu; then
+		use rkt_stage1_kvm_lkvm && hypervisors+=",lkvm"
+		use rkt_stage1_kvm_qemu && hypervisors+=",qemu"
+		myeconfargs+=( --with-stage1-kvm-hypervisors="${hypervisors#,}" )
 	fi
 
 	# Go's 6l linker does not support PIE, disable so cgo binaries
@@ -164,6 +203,7 @@ src_compile() {
 		amd64) arch=x86_64;;
 	esac
 	ARCH=${arch} emake
+	ARCH=${arch} emake bash-completion
 }
 
 src_install() {
@@ -187,13 +227,19 @@ src_install() {
 	elif use rkt_stage1_fly; then
 		dosym stage1-fly.aci "${STAGE1_DEFAULT_LOCATION}"
 	elif use rkt_stage1_kvm_lkvm; then
-		dosym stage1-kvm.aci "${STAGE1_DEFAULT_LOCATION}"
+		dosym stage1-kvm-lkvm.aci "${STAGE1_DEFAULT_LOCATION}"
+	elif use rkt_stage1_kvm_qemu; then
+		dosym stage1-kvm-qemu.aci "${STAGE1_DEFAULT_LOCATION}"
 	fi
 
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.service
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.timer
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.service
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.socket
+	systemd_dounit "${S}"/dist/init/systemd/*.service \
+		"${S}"/dist/init/systemd/*.timer \
+		"${S}"/dist/init/systemd/*.socket
+
+	insinto /usr/lib/tmpfiles.d
+	doins "${S}"/dist/init/systemd/tmpfiles.d/*
+
+	newbashcomp "${S}"/dist/bash_completion/rkt.bash rkt
 
 	keepdir /etc/${PN}
 	fowners :rkt-admin /etc/${PN}
