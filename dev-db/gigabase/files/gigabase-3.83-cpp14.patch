@@ -1,5 +1,5 @@
-This patch fixes GCC6 (C++14) compilation errors. It repleces two invalid macro
-call with correct code in one place. It also removes redefinitions of fmax and
+This patch fixes GCC6 (C++14) compilation errors. It replaces two invalid macro
+calls with correct code in one place. It also removes redefinitions of fmax and
 fmin functions which exist in standard library since C++11.
 Gentoo-bug: https://bugs.gentoo.org/show_bug.cgi?id=594550
 

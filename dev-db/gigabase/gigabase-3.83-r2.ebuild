@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-inherit eutils multilib
+EAPI=6
 
 DESCRIPTION="OO-DBMS with interfaces for C/C++/Java/PHP/Perl"
 HOMEPAGE="http://www.garret.ru/~knizhnik/gigabase.html"
@@ -11,7 +10,7 @@ SRC_URI="mirror://sourceforge/gigabase/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
 DEPEND="doc? ( app-doc/doxygen )"
@@ -19,43 +18,40 @@ RDEPEND=""
 
 S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-dereferencing.patch"
-	epatch "${FILESDIR}/${P}-cpp14.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-fix-dereferencing.patch"
+	"${FILESDIR}/${P}-cpp14.patch" # fix #594550
+)
+
+HTML_DOCS=( GigaBASE.htm docs/html/. )
 
 src_configure() {
-	mf="${S}/Makefile"
-
 	econf $(use_enable static-libs static)
-	sed -r -i -e 's/subsql([^\.]|$)/subsql-gdb\1/' ${mf} || die
+	sed -r -i -e 's/subsql([^\.]|$)/subsql-gdb\1/' Makefile || die
 }
 
 src_compile() {
 	emake
-	use doc && { doxygen doxygen.cfg || die; }
+	if use doc; then
+		doxygen doxygen.cfg || die
+	fi
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 src_test() {
 	pwd
 	cd "${S}"
 	local TESTS
-	local -i failcnt=0
 	TESTS="testddl testidx testidx2 testiref testleak testperf testperf2 testspat testtl testsync testtimeseries"
 
+	local t
 	for t in ${TESTS}; do
-		./${t} || { ewarn "$t fails"; failcnt+=1; }
+		./${t} || die
 	done
-	[[ $failcnt != 0 ]] && die "See warnings above for tests that failed"
-}
-
-src_install() {
-	einstall
-	prune_libtool_files
-
-	dodoc CHANGES
-	use doc && dohtml GigaBASE.htm
-	use doc && dohtml -r docs/html/*
 }
 
 pkg_postinst() {
