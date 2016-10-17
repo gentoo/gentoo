@@ -8895,7 +8895,7 @@ dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate ol
 dev-ruby/activeresource 4.0.0 4.1.0: Think Active Record for web resources
 dev-ruby/activesupport 4.0.13-r1 4.1.15 4.1.16 4.2.6 4.2.6-r1 4.2.7 4.2.7.1 5.0.0.1: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.7.7 0.8.1 0.8.2: Capabilities for sorting and reordering a number of objects in a list
-dev-ruby/addressable 2.3.6 2.3.8 2.4.0 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
+dev-ruby/addressable 2.3.6 2.3.8 2.3.8-r1 2.4.0 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
