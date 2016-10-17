@@ -1,5 +1,5 @@
---- u4.orig/src/u4.c
-+++ u4/src/u4.c
+--- a/src/u4.c
++++ b/src/u4.c
 @@ -3,6 +3,8 @@
   */
  
@@ -9,8 +9,8 @@
  #include <stdlib.h>
  #include <stdarg.h>
  #include <string.h>
---- u4.orig/u4.desktop
-+++ u4/u4.desktop
+--- a/u4.desktop
++++ b/u4.desktop
 @@ -1,9 +1,8 @@
  [Desktop Entry]
 -Encoding=UTF-8
