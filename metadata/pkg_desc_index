@@ -12495,7 +12495,7 @@ media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.4 1.6: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/wally 2.4.5: A Qt4/KDE4 wallpaper changer
-media-gfx/wings 1.1.1 1.5.4-r2 2.0.5: Wings 3D is an advanced subdivision modeler
+media-gfx/wings 1.1.1 1.5.4-r2 2.0.5 2.1: Wings 3D is an advanced subdivision modeler
 media-gfx/wkhtmltopdf 0.12.1.2 0.12.2.1: Convert html to pdf (and various image formats) using webkit
 media-gfx/xdot 0.5 0.6 0.7 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
