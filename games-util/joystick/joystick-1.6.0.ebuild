@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils toolchain-funcs
 
 MY_P="linuxconsoletools-${PV}"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/linuxconsole/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="sdl udev"
 
 DEPEND="sdl? ( media-libs/libsdl:0[video] )
@@ -22,10 +22,14 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-build.patch
+	"${FILESDIR}"/${PN}-1.4.8-udev.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-udev.patch
+	default
+
 	export PREFIX=/usr
 	tc-export CC PKG_CONFIG
 	export USE_SDL=$(usex sdl)
@@ -34,6 +38,6 @@ src_prepare() {
 src_install() {
 	default
 	if use !udev ; then
-		rm -f "${D}"/usr/bin/jscal-{re,}store || die
+		rm "${D}"/usr/bin/jscal-{re,}store || die
 	fi
 }

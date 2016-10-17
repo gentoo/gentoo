@@ -7,11 +7,12 @@ inherit autotools eutils
 
 DESCRIPTION="Utility for controlling IPMI enabled devices."
 HOMEPAGE="http://ipmitool.sf.net/"
-DEBIAN_PR="3.debian"
+DEBIAN_PR="1.debian"
 DEBIAN_P="${P/-/_}"
 DEBIAN_PF="${DEBIAN_P}-${DEBIAN_PR}"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz"
+	http://http.debian.net/debian/pool/main/i/${PN}/${DEBIAN_PF}.tar.xz"
+	# https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz
 #IUSE="freeipmi openipmi status"
 IUSE="openipmi static"
 SLOT="0"
@@ -31,7 +32,7 @@ src_prepare() {
 	default
 	[ -d "${S}"/debian ] && mv "${S}"/debian{,.package}
 	ln -s "${WORKDIR}"/debian "${S}"
-	for p in $(cat debian/patches/series) ; do
+	for p in $(grep -v "^#" debian/patches/series) ; do
 		eapply debian/patches/$p
 	done
 
@@ -58,15 +59,15 @@ src_configure() {
 		--disable-intf-imb \
 		--disable-intf-lipmi \
 		--disable-internal-md5 \
-		--with-kerneldir=/usr --bindir=/usr/sbin \
-		|| die "econf failed"
+		--with-kerneldir=/usr --bindir=/usr/sbin
+
 	# Fix linux/ipmi.h to compile properly. This is a hack since it doesn't
 	# include the below file to define some things.
 	echo "#include <asm/byteorder.h>" >>config.h
 }
 
 src_install() {
-	emake DESTDIR="${D}" PACKAGE="${PF}" install || die "emake install failed"
+	emake DESTDIR="${D}" PACKAGE="${PF}" install
 
 	into /usr
 	dosbin contrib/bmclanconf

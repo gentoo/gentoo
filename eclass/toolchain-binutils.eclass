@@ -89,7 +89,7 @@ else
 	LICENSE="|| ( GPL-2 LGPL-2 )"
 fi
 IUSE="cxx multitarget nls static-libs test vanilla"
-if version_is_at_least 2.19 ; then
+if ! version_is_at_least 2.26 ; then
 	IUSE+=" zlib"
 fi
 SLOT="${BVER}"
@@ -263,6 +263,8 @@ toolchain-binutils_src_configure() {
 		# older versions did not have an explicit configure flag
 		export ac_cv_search_zlibVersion=$(usex zlib -lz no)
 		myconf+=( $(use_with zlib) )
+	else
+		myconf+=( --with-system-zlib )
 	fi
 
 	# For bi-arch systems, enable a 64bit bfd.  This matches
