@@ -275,7 +275,7 @@ java-pkg_addres() {
 # be it a unit test or a regular java class.
 #
 # You can use this function by either:
-# - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
+# - calling it yourself in src_prepare() and feeding java-pkg_rm_files with
 # the list of files you wish to remove.
 # - defining an array in the ebuild named JAVA_RM_FILES with the list of files
 # you wish to remove.
@@ -1867,7 +1867,14 @@ ejunit4() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	java-pkg_func-exists java_prepare && java_prepare
+	case ${EAPI:-0} in
+		[0-5])
+			java-pkg_func-exists java_prepare && java_prepare ;;
+		*)
+			java-pkg_func-exists java_prepare &&
+				eqawarn "java_prepare is no longer called, define src_prepare instead."
+			eapply_user ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
