@@ -22,7 +22,8 @@ COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
 	>=x11-misc/lightdm-1.2.2"
 
 DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext"
+	sys-devel/gettext
+	xfce-base/exo"
 
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-themes-standard
