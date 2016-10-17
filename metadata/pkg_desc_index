@@ -17245,10 +17245,10 @@ sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulator
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
-sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
-sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010: User space headers for aufs3
+sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010: Utilities are always necessary for aufs
+sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815 3_p20160822: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
@@ -17371,7 +17371,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.36 3.18.38 3.18.39 3.18.40 4.4.6 4.4.20 4.7.3: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.43 4.4.6 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.4.25 4.7.7 4.7.8 4.8.0 4.8.1 4.8.2: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
