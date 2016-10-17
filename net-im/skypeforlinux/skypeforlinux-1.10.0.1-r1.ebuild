@@ -8,21 +8,19 @@ EAPI=6
 inherit eutils rpm
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
-HOMEPAGE="http://www.skype.com/"
+HOMEPAGE="https://www.skype.com/"
 SRC_URI="https://repo.skype.com/rpm/stable/${PN}_${PV}-1.x86_64.rpm"
 
 LICENSE="Skype-TOS no-source-code"
 SLOT="0"
 KEYWORDS="~amd64"
-#IUSE="pax_kernel selinux"
-IUSE=""
+IUSE="pax_kernel"
 
 S="${WORKDIR}"
 QA_PREBUILT=opt/skypeforlinux/skypeforlinux
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="virtual/ttf-fonts
-	!net-im/skype:1
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
@@ -35,6 +33,8 @@ RDEPEND="virtual/ttf-fonts
 	media-libs/freetype:2
 	net-print/cups
 	sys-apps/dbus
+	sys-devel/gcc[cxx]
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
@@ -50,9 +50,8 @@ RDEPEND="virtual/ttf-fonts
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango"
-#	selinux? ( sec-policy/selinux-skype )"
 
-src_unpack () {
+src_unpack() {
 	rpm_src_unpack ${A}
 }
 
@@ -86,7 +85,6 @@ src_install() {
 
 	into /opt
 	dobin usr/bin/skypeforlinux
-	fowners root:audio /opt/bin/skypeforlinux /opt/skypeforlinux/skypeforlinux
 
 #	insinto /etc/dbus-1/system.d
 #	doins ${PN}.conf
@@ -102,18 +100,14 @@ src_install() {
 
 	domenu usr/share/applications/skypeforlinux.desktop
 
-#	if use pax_kernel; then
-#		if use apulse; then
-#			pax-mark Cm "${ED}"/opt/bin/${PN}-bin || die
-#		else
-#			pax-mark Cm "${ED}"/opt/bin/${PN} || die
-#		fi
-#		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
-#		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
-#		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
-#		eqawarn "you suspect that ${PN} is being broken by this modification,"
-#		eqawarn "please open a bug."
-#	fi
+	if use pax_kernel; then
+		paxctl -Cm "${ED%/}"/opt/skypeforlinux/skypeforlinux || die
+		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
+		eqawarn "${PN} under a PaX enabled kernel. To do so, we must modify"
+		eqawarn "the ${PN} binary itself and this *may* lead to breakage! If"
+		eqawarn "you suspect that ${PN} is being broken by this modification,"
+		eqawarn "please open a bug."
+	fi
 
 #	echo PRELINK_PATH_MASK=/opt/bin/${PN} > ${T}/99${PN}
 #	doenvd "${T}"/99${PN} #430142
