@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
+PATCHES=( "${FILESDIR}/${P}-gccv6-fix.patch" )
+
 src_prepare() {
 	default
 
