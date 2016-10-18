@@ -1,0 +1,87 @@
+Include the the correct path for the produced jas_config.h header,
+in order to enable VPATH builds.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=597208
+
+--- a/src/appl/Makefile.am
++++ b/src/appl/Makefile.am
+@@ -78,7 +78,7 @@
+ man_MANS = imgcmp.1 imginfo.1 jasper.1 jiv.1
+ EXTRA_DIST = $(man_MANS)
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+ 
+ MYLDFLAGS = ../libjasper/libjasper.la
+ jasper_LDADD = $(MYLDFLAGS)
+--- a/src/libjasper/base/Makefile.am
++++ b/src/libjasper/base/Makefile.am
+@@ -73,4 +73,4 @@
+ 	jas_tvp.c \
+ 	jas_version.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/bmp/Makefile.am
++++ b/src/libjasper/bmp/Makefile.am
+@@ -64,4 +64,4 @@
+ 	bmp_dec.c \
+ 	bmp_enc.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/jp2/Makefile.am
++++ b/src/libjasper/jp2/Makefile.am
+@@ -64,4 +64,4 @@
+ 	jp2_dec.c \
+ 	jp2_enc.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/jpc/Makefile.am
++++ b/src/libjasper/jpc/Makefile.am
+@@ -102,4 +102,4 @@
+ 	jpc_t2enc.c \
+ 	jpc_util.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/jpg/Makefile.am
++++ b/src/libjasper/jpg/Makefile.am
+@@ -76,4 +76,4 @@
+ 	jpg_enc.c \
+ 	jpg_dummy.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/mif/Makefile.am
++++ b/src/libjasper/mif/Makefile.am
+@@ -63,4 +63,4 @@
+ 	mif_cod.h \
+ 	mif_cod.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/pgx/Makefile.am
++++ b/src/libjasper/pgx/Makefile.am
+@@ -64,4 +64,4 @@
+ 	pgx_dec.c \
+ 	pgx_enc.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/pnm/Makefile.am
++++ b/src/libjasper/pnm/Makefile.am
+@@ -64,4 +64,4 @@
+ 	pnm_dec.c \
+ 	pnm_enc.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
+--- a/src/libjasper/ras/Makefile.am
++++ b/src/libjasper/ras/Makefile.am
+@@ -64,4 +64,4 @@
+ 	ras_dec.c \
+ 	ras_enc.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/src/libjasper/include
++AM_CPPFLAGS = -I$(top_builddir)/src/libjasper/include -I$(top_srcdir)/src/libjasper/include
