@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
-PATCHES=( "${FILESDIR}/${PN}-1.900.3-remove-stdbool-checks.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.900.6-fix-build-system.patch" )
 
 src_prepare() {
 	default
