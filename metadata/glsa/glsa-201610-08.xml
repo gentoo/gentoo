@@ -15,12 +15,12 @@
   <access>remote</access>
   <affected>
     <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
-      <vulnerable range="lt">1.8.0.102</vulnerable>
-      <vulnerable range="lt">1.8.0.102</vulnerable>
+      <vulnerable range="lt">1.8.0.101</vulnerable>
+      <vulnerable range="lt">1.8.0.101</vulnerable>
     </package>
     <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
-      <unaffected range="ge">1.8.0.102</unaffected>
-      <unaffected range="ge">1.8.0.102</unaffected>
+      <unaffected range="ge">1.8.0.101</unaffected>
+      <unaffected range="ge">1.8.0.101</unaffected>
     </package>
   </affected>
   <background>
