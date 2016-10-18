@@ -38,6 +38,11 @@ IUSE="crosscompile_opts_headers-only"
 QA_SONAME="/usr/lib/libc.so"
 QA_DT_NEEDED="/usr/lib/libc.so"
 
+PATCHES=(
+	"${FILESDIR}/${P}-assert.patch"
+	"${FILESDIR}/${P}-CVE.patch"
+	)
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
