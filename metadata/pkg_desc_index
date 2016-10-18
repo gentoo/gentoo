@@ -397,7 +397,7 @@ app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolution
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6 2.0.6-r1: Performance Test of Filesystem I/O using standard C library calls
-app-benchmarks/bonnie++ 1.96 1.97-r1: Hard drive bottleneck testing benchmark suite
+app-benchmarks/bonnie++ 1.96 1.97-r1 1.97.2: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of the system boot process
 app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]

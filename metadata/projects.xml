@@ -1999,6 +1999,10 @@
     <name>Gentoo MATE Desktop</name>
     <url>https://wiki.gentoo.org/wiki/Project:MATE</url>
     <description>The Gentoo MATE Project aims to bring the current and complete MATE Desktop Environment to Gentoo.</description>
+    <member>
+      <email>mudler@gentoo.org</email>
+      <name>Ettore Di Giacinto</name>
+    </member>
     <member is-lead="1">
       <email>NP-Hardass@gentoo.org</email>
       <name>NP-Hardass</name>
