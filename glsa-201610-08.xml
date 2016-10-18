@@ -56,8 +56,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose
-      "&gt;=dev-java/oracle-jdk-bin-1.8.0.102"
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/oracle-jdk-bin-1.8.0.102"
     </code>
   </resolution>
   <references>
