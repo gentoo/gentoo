@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	$(add_kdeapps_dep gpgmepp)
 	$(add_kdeapps_dep grantleetheme)
 	$(add_kdeapps_dep kcontacts)
+	$(add_kdeapps_dep kdepim-apps-libs)
 	$(add_kdeapps_dep kontactinterface)
 	$(add_kdeapps_dep libgravatar)
 	$(add_kdeapps_dep libkdepim)

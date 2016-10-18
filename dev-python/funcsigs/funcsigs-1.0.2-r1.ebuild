@@ -22,6 +22,13 @@ DEPEND="
 	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
+PATCHES=(
+	# This patch disables some tests for pypy as they do not work as expected.
+	# This has been reported upstream
+	# https://github.com/testing-cabal/funcsigs/issues/10
+	"${FILESDIR}/${P}-fix-pypy3-tests.patch"
+)
+
 python_test() {
 	esetup.py test
 }

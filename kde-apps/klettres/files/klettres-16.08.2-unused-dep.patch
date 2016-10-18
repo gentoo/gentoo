@@ -1,0 +1,30 @@
+commit 0d8568c27cc7acbe4ef87551c5e7688012eb7059
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Oct 16 10:29:50 2016 +0200
+
+    Drop unused dependency
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 45d7b3f..0529757 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,7 +33,6 @@ find_package(KF5 REQUIRED COMPONENTS
+   Crash
+   DocTools
+   Emoticons
+-  ItemModels
+   I18n
+   NewStuff
+   WidgetsAddons
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 40f625a..7489d54 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -29,7 +29,6 @@ target_link_libraries(klettres
+   KF5::Emoticons
+   KF5::NewStuff
+   KF5::I18n
+-  KF5::ItemModels
+   Qt5::Svg
+   ${PHONON_LIBRARY}
+   Qt5::Xml)

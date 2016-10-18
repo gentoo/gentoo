@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Viewer for TNEF attachments (proprietary MS Outlook/Exchange Server format)"
 HOMEPAGE="https://www.kde.org/"
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="

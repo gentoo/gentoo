@@ -1,0 +1,26 @@
+commit ea2c4cbf799294a64b108d0b91d66cd3506ed64d
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Tue Oct 11 21:30:27 2016 +0200
+
+    Drop unused dep: KF5Syndication
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3cfb906..e68a594 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,7 +67,6 @@ set(CALENDARUTILS_LIB_VERSION "5.2.90")
+ set(KIMAP_LIB_VERSION "5.2.90")
+ set(KMBOX_LIB_VERSION "5.2.90")
+ set(AKONADICALENDAR_LIB_VERSION "5.2.90")
+-set(SYNDICATION_LIB_VERSION "5.2.90")
+ set(KONTACTINTERFACE_LIB_VERSION "5.2.90")
+ set(AKONADIKALARM_LIB_VERSION "5.2.90")
+ set(KMIME_LIB_VERSION "5.2.90")
+@@ -121,7 +120,6 @@ find_package(KF5CalendarUtils ${CALENDARUTILS_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5Mbox ${KMBOX_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5PimTextEdit ${KPIMTEXTEDIT_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5IMAP ${KIMAP_LIB_VERSION} CONFIG REQUIRED)
+-find_package(KF5Syndication ${SYNDICATION_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF5AkonadiNotes ${AKONADINOTE_LIB_VERSION} CONFIG REQUIRED)
+ 
+ option(KDEPIM_RUN_ISOLATED_TESTS "Run the isolated tests." FALSE)

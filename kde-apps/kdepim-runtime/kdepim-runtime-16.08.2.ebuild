@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Runtime plugin collection to extend the functionality of KDE PIM"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="google ssl"
 
 # TODO kolab, Qt5TextToSpeech
@@ -74,6 +74,8 @@ RDEPEND="${CDEPEND}
 "
 
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-unused-dep.patch" )
 
 src_configure() {
 	local mycmakeargs=(
