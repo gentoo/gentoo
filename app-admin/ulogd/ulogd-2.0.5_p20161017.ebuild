@@ -4,7 +4,7 @@
 
 EAPI=6
 
-COMMIT_ID="2c3dbe92b5eab4702ced403e4f6c030249a308c2"
+COMMIT_ID="62064f6a9e054739ecbdda010dbe9c3fd69bbaa2"
 
 inherit autotools eutils flag-o-matic linux-info readme.gentoo-r1 systemd user vcs-snapshot
 
