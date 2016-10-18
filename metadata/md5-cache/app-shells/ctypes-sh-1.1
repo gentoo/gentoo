@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare test
+DEPEND=virtual/libffi virtual/libelf app-arch/xz-utils app-arch/bzip2 app-shells/bash[plugins] virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Foreign function interface for bash
+EAPI=6
+HOMEPAGE=http://ctypes.sh/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=virtual/libffi virtual/libelf app-arch/xz-utils app-arch/bzip2 app-shells/bash[plugins]
+SLOT=0
+SRC_URI=https://github.com/taviso/ctypes.sh/releases/download/v1.1/ctypes-sh-1.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_test:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=e27dc8aad0cb671f585a0ecf5734ad20
