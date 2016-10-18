@@ -15,9 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="virtual/libffi
+	virtual/libelf
+	app-arch/xz-utils
+	app-arch/bzip2
 	app-shells/bash[plugins]"
 DEPEND="${RDEPEND}
-	virtual/libelf
 	virtual/pkgconfig"
 
 PATCHES=(
