@@ -15001,7 +15001,7 @@ net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
-net-misc/quagga 1.0.20160315-r3: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+net-misc/quagga 1.0.20160315-r3 1.0.20160315-r4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.040.00 8.042.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
