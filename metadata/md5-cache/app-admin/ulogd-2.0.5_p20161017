@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~ia64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=|| ( net-firewall/iptables net-firewall/nftables ) >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( virtual/mysql ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 )
 SLOT=0
-SRC_URI=http://git.netfilter.org/ulogd2/snapshot/2c3dbe92b5eab4702ced403e4f6c030249a308c2.tar.gz -> ulogd-2.0.5_p20160331.tar.gz
+SRC_URI=http://git.netfilter.org/ulogd2/snapshot/62064f6a9e054739ecbdda010dbe9c3fd69bbaa2.tar.gz -> ulogd-2.0.5_p20161017.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=64b27e2b2119ca6005c0531aedc9f8a5
+_md5_=0ce18f3f0764bd84f1321bfa5a09d6c9

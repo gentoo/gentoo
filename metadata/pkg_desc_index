@@ -216,7 +216,7 @@ app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r1 2.11-r2: Files which haven't been accessed in a given period of time are removed from specified directories
 app-admin/tripwire 2.4.2.2-r4 2.4.3.1: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.5_p20160205 2.0.5_p20160331: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.5_p20160205 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 0.4.1 0.5.2 0.5.3 9999: A tool for managing secrets
 app-admin/verynice 1.1-r2 1.1-r3: A tool for dynamically adjusting the nice-level of processes
@@ -15230,7 +15230,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.13.10 0.14.5 0.14.6 0.14.7: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.5 0.14.6 0.14.7 0.14.9: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.92: A Fast, Easy and Free BitTorrent client
