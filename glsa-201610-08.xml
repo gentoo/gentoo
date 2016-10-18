@@ -16,10 +16,10 @@
   <affected>
     <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
       <vulnerable range="lt">1.8.0.101</vulnerable>
-      <vulnerable range="lt">1.8.0.101</vulnerable>
+      <unaffected range="ge">1.8.0.101</unaffected>
     </package>
     <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
-      <unaffected range="ge">1.8.0.101</unaffected>
+      <vulnerable range="lt">1.8.0.101</vulnerable>
       <unaffected range="ge">1.8.0.101</unaffected>
     </package>
   </affected>
