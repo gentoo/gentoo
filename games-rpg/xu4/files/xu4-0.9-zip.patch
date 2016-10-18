@@ -1,5 +1,5 @@
---- src/unzip.c.orig
-+++ src/unzip.c
+--- a/src/unzip.c
++++ b/src/unzip.c
 @@ -493,7 +493,7 @@
  /*
    Get Info about the current file in the zipfile, with internal only info
@@ -9,8 +9,8 @@
                                                    unz_file_info *pfile_info,
                                                    unz_file_info_internal 
                                                    *pfile_info_internal,
---- src/unzip.h.orig
-+++ src/unzip.h
+--- a/src/unzip.h
++++ b/src/unzip.h
 @@ -8,7 +8,7 @@
     Encryption and multi volume ZipFile (span) are not supported.
     Old compressions used by old PKZip 1.x are not supported
