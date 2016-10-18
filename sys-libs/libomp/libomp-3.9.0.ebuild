@@ -27,6 +27,8 @@ S="${WORKDIR}/${MY_P}.src"
 PATCHES=(
 	# backport of https://reviews.llvm.org/D24563
 	"${FILESDIR}"/${PN}-3.9.0-optional-aliases.patch
+	# backport of https://reviews.llvm.org/D25071
+	"${FILESDIR}"/${PN}-3.9.0-musl-strerror_r.patch
 )
 
 multilib_src_configure() {

@@ -1,0 +1,35 @@
+From 4fa7d5e207a4f7ef79b423b7d9658b7625795f5c Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Tue, 18 Oct 2016 16:38:44 +0000
+Subject: [PATCH] Fix a compile error on musl-libc due to strerror_r()
+ prototype
+
+Function strerror_r() has different signatures in different
+implementations of libc: glibc's version returns a char*, while BSDs
+and musl return a int. libomp unconditionally assumes glibc on Linux
+and thus fails to compile against musl-libc. This patch addresses this
+issue.
+
+Differential Revision: https://reviews.llvm.org/D25071
+
+git-svn-id: https://llvm.org/svn/llvm-project/openmp/trunk@284492 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ runtime/src/kmp_i18n.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/runtime/src/kmp_i18n.c b/runtime/src/kmp_i18n.c
+index 546e693..e008d1f 100644
+--- a/runtime/src/kmp_i18n.c
++++ b/runtime/src/kmp_i18n.c
+@@ -809,7 +809,7 @@ sys_error(
+                 int    strerror_r( int, char *, size_t );  // XSI version
+         */
+ 
+-        #if KMP_OS_LINUX
++        #if defined(__GLIBC__) && defined(_GNU_SOURCE)
+ 
+             // GNU version of strerror_r.
+ 
+-- 
+2.10.1
+
