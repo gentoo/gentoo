@@ -6919,7 +6919,7 @@ dev-php/xdebug 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: A PHP debugging and profiling exte
 dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4_p20150226: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
-dev-python/APScheduler 3.1.0: In-process task scheduler with Cron-like capabilities
+dev-python/APScheduler 3.1.0 3.2.0: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.0 2.1.1 2.2.0 2.3.4: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2 3.4.4: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.6 0.11.7: The httplib2 caching algorithms packaged up for use with requests
@@ -15072,7 +15072,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.7.6 0.2.8.7 0.2.8.8-r1 0.2.9.2_alpha 0.2.9.3_alpha-r1: Anonymizing overlay network for TCP
+net-misc/tor 0.2.7.6 0.2.8.9 0.2.9.4_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
