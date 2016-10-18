@@ -49,7 +49,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-java/oracle-jdk-bin-1.8.0.101"
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/oracle-jre-bin-1.8.0.101"
     </code>
     
     <p>All Oracle JDK Users users should upgrade to the latest version:</p>
