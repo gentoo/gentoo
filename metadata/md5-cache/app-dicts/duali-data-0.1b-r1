@@ -3,9 +3,9 @@ DEPEND=>=app-text/duali-0.2.0-r1
 DESCRIPTION=Dictionary data for the Arab dictionary project duali
 EAPI=6
 HOMEPAGE=http://www.arabeyes.org/project.php?proj=Duali
-KEYWORDS=alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86
+KEYWORDS=alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/arabeyes/duali-data-0.1b.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=7b277a3e9444cd58ef0a70f8da258ccc
+_md5_=d2e3b96d6571892b6ce003ea083e5c7c

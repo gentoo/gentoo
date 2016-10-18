@@ -666,7 +666,7 @@ app-dicts/dictd-vera 1.22 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms 
 app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/dikt 2l: A dictionary for KDE
-app-dicts/duali-data 0.1b 0.1b-r1: Dictionary data for the Arab dictionary project duali
+app-dicts/duali-data 0.1b-r1: Dictionary data for the Arab dictionary project duali
 app-dicts/eblook 1.6.1: Interactive search utility for electronic dictionaries
 app-dicts/edictionary 2.6: Command line dictionary and thesaurus
 app-dicts/freedict-deu-eng 1.0: Freedict for language translation from German to English
@@ -1876,8 +1876,8 @@ app-misc/pipeworks 0.4: a small utility that measures throughput between stdin a
 app-misc/plod 1.9: PLOD is a tool designed to help administrators (and others) keep track of their daily activities.
 app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line password manager
-app-misc/pysmssend 1.48 1.48-r1 9999: Python Application for sending sms over multiple ISPs
-app-misc/pystopwatch 2012.12.24.1 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
+app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
+app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qlcplus 4.10.2b 4.10.3 4.10.4: QLC+ - Q Light Controller Plus to control DMX interfaces
 app-misc/ranger 1.7.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r3: Unofficial tool for controlling the Razer Copperhead mouse
@@ -1948,14 +1948,14 @@ app-misc/vittk 1.3: A front end for Taskwarrior (app-misc/task)
 app-misc/vlock 2.2.3: A console screen locker
 app-misc/vzstats 0.3.2 0.4 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 5.2.7 5.3.2 5.3.3: Wherever Change Directory
-app-misc/webcomics-collector 0.7.3 0.7.3-r1: python script for downloading webcomics
+app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
 app-misc/when 1.1.33 1.1.35 1.1.36: Extremely simple personal calendar program aimed at the Unix geek who wants something minimalistic
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.8 1.10.15: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/wyrd 1.4.6-r1: Text-based front-end to Remind
 app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2 3.6.1-r1: A brainstorming and mind mapping software tool
-app-misc/yagtd 0.3.4 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
+app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/ytree 1.98-r1: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.6 1.0.8: User utilities for zisofs
@@ -1965,7 +1965,7 @@ app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX440
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
-app-mobilephone/gammu 1.33.0 1.33.0-r1 1.36.8: A tool to handle your cellular phone
+app-mobilephone/gammu 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31 9999: user space driver and tools for use with mobile phones
@@ -1987,7 +1987,7 @@ app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phon
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
-app-mobilephone/wammu 0.35 0.40: Front-end for gammu to access mobile phones easily
+app-mobilephone/wammu 0.40: Front-end for gammu to access mobile phones easily
 app-mobilephone/yaps 0.96-r5: Yet Another Pager Software (optional with CAPI support)
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1: Fully featured yet light and fast cross platform word processor
@@ -2026,7 +2026,7 @@ app-office/mdbtools 0.7.1 0.7.1-r1: A set of libraries and utilities for reading
 app-office/multitalk 1.4: A new type of presentation program
 app-office/odeskteam 3.6.1 3.12.9 3.12.19: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
-app-office/openerp 6.1.1-r1 7.0.20130219-r5 7.0.20140125 8.0.20140125: Open Source ERP & CRM
+app-office/openerp 7.0.20140125 8.0.20140125: Open Source ERP & CRM
 app-office/openoffice-bin 4.1.1 4.1.2: Apache OpenOffice productivity suite
 app-office/openproj-bin 1.4 1.4-r1: A free and open source desktop alternative to Microsoft Project
 app-office/orage 4.12.1: A time managing application (and panel plug-in) for the Xfce desktop environment
@@ -2040,12 +2040,12 @@ app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.6 1.5.0-r1 1.5.2 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.4.0 2.5.0: Personal finances manager, aiming at being simple and intuitive
-app-office/taskcoach 1.3.18 1.4.3: Simple personal tasks and todo lists manager
+app-office/taskcoach 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.4.1-r1 4.5: A nice LaTeX-IDE
 app-office/texstudio 2.10.8 2.11.0 2.11.2: Free cross-platform LaTeX editor (fork from texmakerX)
-app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
+app-office/unoconv 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.1.134: Project collaboration and tracking software for upwork.com
 app-office/wps-office 10.1.0.5672_alpha21: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
@@ -2119,7 +2119,7 @@ app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
 app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.56 0.60 0.61 0.62 0.63: small and fast portage helper tools written in C
-app-portage/porthole 0.6.1-r1 0.6.1-r2 0.6.1-r3 0.6.1-r4: A GTK+-based frontend to Portage
+app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.0.25 2.1.9 2.1.18 2.1.19 2.1.20 2.1.20-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
@@ -2208,7 +2208,7 @@ app-text/cb2bib 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.37.0: A hierarchical note taking application
-app-text/chm2pdf 0.9.1-r1 0.9.1-r2: A script that converts a CHM file into a single PDF file
+app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
 app-text/clara 20031214 20031214-r1: An OCR (Optical Character Recognition) program
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
@@ -2245,7 +2245,7 @@ app-text/docbook-xsl-stylesheets 1.78.0-r1 1.79.0 1.79.1-r1: XSL Stylesheets for
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3-r1 7.3.3 7.3.4: Convert DOS or MAC text files to UNIX format or vice versa
-app-text/duali 0.2.0 0.2.0-r1: Arabic dictionary based on the DICT protocol
+app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
@@ -2311,7 +2311,7 @@ app-text/kchmviewer 7.5-r1 7.7: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
-app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
+app-text/landslide 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 3.4: a proof-reading tool for many languages
 app-text/lcdf-typetools 2.97 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
@@ -2370,7 +2370,7 @@ app-text/pdfgrep 1.3.2 1.4.1-r1: A tool similar to grep which searches text in P
 app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20131113 20140328 20140328-r1: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
-app-text/pdfshuffler 0.6.0 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
+app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
 app-text/pelican 3.6.0 3.6.3 9999: A tool to generate a static blog, with restructured text or markdown input files
@@ -2387,7 +2387,7 @@ app-text/pspdftool 0.03 9999: Tool for prepress preparation of PDF and PostScrip
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
 app-text/pstotext 1.9-r3: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r2: PostScript Utilities
-app-text/pybookreader 0.5.0 0.5.0-r1: A book reader for .fb2 .html and plain text (possibly gzipped)
+app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (possibly gzipped)
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
 app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct execution of SQL-like queries on text
@@ -2418,7 +2418,7 @@ app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGM
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
 app-text/sigil 0.8.7-r1 0.9.5-r2 0.9.6: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
-app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
+app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r2: A international dictionary supporting fuzzy and glob style matching
@@ -2445,7 +2445,7 @@ app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/tuxcards 2.2.1: A hierarchical notebook
 app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
-app-text/txt2tags 2.6 2.6-r1: A tool for generating marked up documents (HTML, SGML, ...) from a plain text file with markup
+app-text/txt2tags 2.6-r1: A tool for generating marked up documents (HTML, SGML, ...) from a plain text file with markup
 app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-8
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 5.1 6.1 6.1-r1 9999: Post-processor for scanned and photocopied book pages
@@ -2459,7 +2459,7 @@ app-text/webgen 1.3.0 1.4.0: A template-based static website generator
 app-text/wgetpaste 2.25-r3 2.28: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/winefish 1.3.3-r1 1.3.3-r2: LaTeX editor based on Bluefish
-app-text/wklej 0.2.0 0.2.1-r1: A wklej.org submitter
+app-text/wklej 0.2.1-r1: A wklej.org submitter
 app-text/writerperfect 0.9.2 0.9.4 0.9.5: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r1 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
@@ -2820,7 +2820,7 @@ dev-cpp/catch 1.5.0 1.5.6 1.5.7 9999: Modern C++ header-only framework for unit-
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1 1.8.1-r2: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.2: Provides C++ support for the HOCON configuration file format
-dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
+dev-cpp/ctemplate 2.2_p129 2.3: A simple but powerful template language for C++
 dev-cpp/eigen 2.0.17 3.2.8-r2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
@@ -2830,7 +2830,7 @@ dev-cpp/glog 0.3.3-r1 0.3.4: Google's C++ logging library
 dev-cpp/gmock 1.4.0 1.5.0 1.6.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
-dev-cpp/gtest 1.6.0 1.6.0-r1 1.6.0-r2 1.7.0 1.7.0-r1: Google C++ Testing Framework
+dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1: C++ interface for GTK+
 dev-cpp/gtkmm-utils 0.4.1: Utility functions, classes and widgets written on top of gtkmm and glibmm.
@@ -4543,7 +4543,7 @@ dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atk 2.16.0-r1 2.18.0 2.20.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
-dev-libs/beecrypt 4.2.1 4.2.1-r3: general-purpose cryptography library
+dev-libs/beecrypt 4.2.1-r3: general-purpose cryptography library
 dev-libs/beignet 1.1.2 1.2.0 1.2.0-r1: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
@@ -4657,7 +4657,7 @@ dev-libs/json-glib 1.0.4 1.2.0 1.2.2: Library providing GLib serialization and d
 dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.6.5 1.7.2 1.7.4 1.7.5 1.7.7: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
-dev-libs/keybinder 0.3.0-r200 0.3.0-r201 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
+dev-libs/keybinder 0.3.0-r200 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 1.5.25 2.0.4: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r1: Library implementing generic path searching, configuration, and TeX-specific file searching
@@ -4950,7 +4950,7 @@ dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
 dev-libs/re2 0_p20130115 0_p20130115-r1 0_p20130712 0_p20140304 0.2016.05.01: An efficent, principled regular expression library
 dev-libs/redland 1.0.15 1.0.16 1.0.17 1.0.17-r1: High-level interface for the Resource Description Framework
-dev-libs/redland-bindings 1.0.14.1 1.0.14.1-r2: Language bindings for Redland
+dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
@@ -4970,7 +4970,7 @@ dev-libs/softhsm 1.3.6 1.3.7 2.0.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0: Library for storing RDF data in memory
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multicore architectures
-dev-libs/stfl 0.22-r2 0.23 0.24: A library which implements a curses-based widget set for text terminals
+dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/sway 0.8 0.9 9999: i3-compatible Wayland window manager
@@ -5023,7 +5023,7 @@ dev-libs/yaz 3.0.50 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
-dev-libs/zziplib 0.13.60-r1 0.13.62 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
+dev-libs/zziplib 0.13.60-r1 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
 dev-lisp/asdf 1.86-r1 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
@@ -7830,7 +7830,7 @@ dev-python/pycdio 0.20-r1: Python OO interface to libcdio (CD Input and Control 
 dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.1 0.2.3: A Python API for interacting with a Chef server
-dev-python/pychm 0.8.4 0.8.4-r1: Python bindings for the chmlib library
+dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
 dev-python/pychroot 0.9.13 0.9.15 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
@@ -15343,7 +15343,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 4.101-r9 5.39 5.41 5.42: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.39 5.42: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
