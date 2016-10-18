@@ -1,16 +1,16 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=|| ( dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0:= gtk? ( x11-libs/gtk+:2 ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.5 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig test? ( dev-util/cunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=|| ( dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0:= gtk? ( x11-libs/gtk+:2 ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.5 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig test? ( dev-util/cunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Geographic Objects for PostgreSQL
 EAPI=5
 HOMEPAGE=http://postgis.net
 IUSE=doc gtk static-libs test
 KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=|| ( dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] dev-db/postgresql:9.0[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0:= gtk? ( x11-libs/gtk+:2 )
+RDEPEND=|| ( dev-db/postgresql:9.4[server] dev-db/postgresql:9.3[server] dev-db/postgresql:9.2[server] dev-db/postgresql:9.1[server] ) dev-libs/json-c dev-libs/libxml2:2 >=sci-libs/geos-3.4.2 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0:= gtk? ( x11-libs/gtk+:2 )
 REQUIRED_USE=test? ( doc )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.1.8.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5e9538d892c22c915a9d5ad975363b7d
+_md5_=627dbcf82cc8db42107d1e0eb0939ad1
