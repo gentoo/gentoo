@@ -3,6 +3,10 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Brian Evans <grknight@gentoo.org> (18 Oct 2016)
+# Remove when bug #538828 is keyworded
+input_devices_libinput
+
 # Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
 # no LibreSSL support yet
 curl_ssl_libressl
