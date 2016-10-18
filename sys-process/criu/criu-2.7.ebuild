@@ -19,6 +19,7 @@ IUSE="python setproctitle"
 
 RDEPEND="dev-libs/protobuf-c
 	dev-libs/libnl:3
+	sys-libs/libcap
 	python? ( ${PYTHON_DEPS} )
 	setproctitle? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
@@ -39,7 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
 	"${FILESDIR}"/2.4/${PN}-2.4-makefile.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
-	"${FILESDIR}"/2.0/${PN}-2.0-automagic-libbsd.patch
+	"${FILESDIR}"/2.5/${PN}-2.5-automagic-libbsd.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-aarch64.patch
 )
