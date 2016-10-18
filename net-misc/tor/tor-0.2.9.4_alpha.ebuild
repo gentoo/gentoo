@@ -17,13 +17,12 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-IUSE="-bufferevents libressl scrypt seccomp selinux systemd tor-hardening test web"
+IUSE="libressl scrypt seccomp selinux systemd tor-hardening test web"
 
 DEPEND="
 	app-text/asciidoc
-	dev-libs/libevent
+	dev-libs/libevent[ssl]
 	sys-libs/zlib
-	bufferevents? ( dev-libs/libevent[ssl] )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	scrypt? ( app-crypt/libscrypt )
@@ -52,7 +51,6 @@ src_configure() {
 		--enable-system-torrc \
 		--enable-asciidoc \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		$(use_enable bufferevents) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
@@ -67,7 +65,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r7 tor
+	newinitd "${FILESDIR}"/tor.initd-r8 tor
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
 
