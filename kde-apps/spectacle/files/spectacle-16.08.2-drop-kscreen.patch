@@ -1,0 +1,175 @@
+From: Peter Wu <peter@lekensteyn.nl>
+Date: Sat, 08 Oct 2016 20:16:06 +0000
+Subject: Replace KScreen by QScreen for current window grab
+X-Git-Url: http://quickgit.kde.org/?p=spectacle.git&a=commitdiff&h=e4c2e564a5b91497132d9a20d8f521af405286bd
+---
+Replace KScreen by QScreen for current window grab
+
+libkscreen is overkill for querying purposes, rely on QScreen to find
+the current screen under cursor.
+
+REVIEW: 129127
+---
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,7 +75,6 @@
+ set(XCB_COMPONENTS_ERRORS FALSE)
+ if (XCB_FOUND)
+ 	find_package(Qt5X11Extras ${QT_MIN_VERSION} REQUIRED)
+-	find_package(KF5Screen ${PLASMA_MIN_VERSION} REQUIRED)
+ endif()
+ set(XCB_COMPONENTS_FOUND TRUE)
+ if(NOT XCB_XFIXES_FOUND)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -83,7 +83,6 @@
+             XCB::CURSOR
+             XCB::UTIL
+             Qt5::X11Extras
+-            KF5::Screen
+     )
+ endif()
+ 
+
+--- a/src/PlatformBackends/X11ImageGrabber.cpp
++++ b/src/PlatformBackends/X11ImageGrabber.cpp
+@@ -38,17 +38,13 @@
+ 
+ #include <KWindowSystem>
+ #include <KWindowInfo>
+-#include <KScreen/Config>
+-#include <KScreen/GetConfigOperation>
+-#include <KScreen/Output>
+ 
+ #include <xcb/xcb_cursor.h>
+ #include <xcb/xcb_util.h>
+ #include <xcb/xfixes.h>
+ 
+ X11ImageGrabber::X11ImageGrabber(QObject *parent) :
+-    ImageGrabber(parent),
+-    mScreenConfigOperation(nullptr)
++    ImageGrabber(parent)
+ {
+     mNativeEventFilter = new OnClickEventFilter(this);
+ }
+@@ -85,7 +81,6 @@
+ 
+             {
+                 xcb_button_release_event_t *ev2 = static_cast<xcb_button_release_event_t *>(message);
+-                qDebug() << ev2->detail;
+                 if (ev2->detail == 1) {
+                     QMetaObject::invokeMethod(mImageGrabber, "doImageGrab", Qt::QueuedConnection);
+                 } else if (ev2->detail < 4) {
+@@ -349,53 +344,6 @@
+     emit pixmapChanged(mPixmap);
+ }
+ 
+-void X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op)
+-{
+-    KScreen::ConfigPtr config = qobject_cast<KScreen::GetConfigOperation *>(op)->config();
+-
+-    if (!config)           { return grabFullScreen(); }
+-    if (!config->screen()) { return grabFullScreen(); }
+-
+-    // we'll store the cursor position first
+-
+-    QPoint cursorPosition = QCursor::pos();
+-
+-    // next, we'll get all our outputs and figure out which one has the cursor
+-
+-    const KScreen::OutputList outputs = config->outputs();
+-    for (auto output: outputs) {
+-        if (!(output->isConnected())) { continue; }
+-        if (!(output->currentMode())) { continue; }
+-
+-        QPoint screenPosition = output->pos();
+-        QSize  screenSize     = output->currentMode()->size();
+-        QRect  screenRect     = QRect(screenPosition, screenSize);
+-
+-        if (!(screenRect.contains(cursorPosition))) {
+-            continue;
+-        }
+-
+-        // bingo, we've found an output that contains the cursor. Now
+-        // to take a shot
+-
+-        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer);
+-        mPixmap = mPixmap.copy(screenPosition.x(), screenPosition.y(), screenSize.width(), screenSize.height());
+-        emit pixmapChanged(mPixmap);
+-
+-        mScreenConfigOperation->disconnect();
+-        mScreenConfigOperation->deleteLater();
+-        mScreenConfigOperation = nullptr;
+-
+-        return;
+-    }
+-
+-    mScreenConfigOperation->disconnect();
+-    mScreenConfigOperation->deleteLater();
+-    mScreenConfigOperation = nullptr;
+-
+-    return grabFullScreen();
+-}
+-
+ void X11ImageGrabber::rectangleSelectionCancelled()
+ {
+     QObject *sender = QObject::sender();
+@@ -621,9 +569,20 @@
+ 
+ void X11ImageGrabber::grabCurrentScreen()
+ {
+-    mScreenConfigOperation = new KScreen::GetConfigOperation;
+-    connect(mScreenConfigOperation, &KScreen::GetConfigOperation::finished,
+-            this, &X11ImageGrabber::KScreenCurrentMonitorScreenshotHelper);
++    QPoint cursorPosition = QCursor::pos();
++    for (auto screen : QGuiApplication::screens()) {
++        const QRect screenRect = screen->geometry();
++        if (!screenRect.contains(cursorPosition)) {
++            continue;
++        }
++
++        mPixmap = getWindowPixmap(QX11Info::appRootWindow(), mCapturePointer).copy(screenRect);
++        emit pixmapChanged(mPixmap);
++        return;
++    }
++
++    // No screen found with our cursor, fallback to capturing full screen
++    grabFullScreen();
+ }
+ 
+ void X11ImageGrabber::grabRectangularRegion()
+
+--- a/src/PlatformBackends/X11ImageGrabber.h
++++ b/src/PlatformBackends/X11ImageGrabber.h
+@@ -28,11 +28,6 @@
+ #include "ImageGrabber.h"
+ 
+ class X11ImageGrabber;
+-namespace KScreen
+-{
+-    class GetConfigOperation;
+-    class ConfigOperation;
+-}
+ 
+ class OnClickEventFilter : public QAbstractNativeEventFilter
+ {
+@@ -70,7 +65,6 @@
+     private slots:
+ 
+     void KWinDBusScreenshotHelper(quint64 window);
+-    void KScreenCurrentMonitorScreenshotHelper(KScreen::ConfigOperation *op);
+     void rectangleSelectionConfirmed(const QPixmap &pixmap, const QRect &region);
+     void rectangleSelectionCancelled();
+ 
+@@ -90,7 +84,6 @@
+     QPixmap              convertFromNative(xcb_image_t *xcbImage);
+ 
+     OnClickEventFilter          *mNativeEventFilter;
+-    KScreen::GetConfigOperation *mScreenConfigOperation;
+ };
+ 
+ template <typename T> using CScopedPointer = QScopedPointer<T, QScopedPointerPodDeleter>;
+
