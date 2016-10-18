@@ -2020,7 +2020,7 @@ app-office/libreoffice 5.1.4.2 5.2.1.2 5.2.2.2 5.2.9999 9999: A full office prod
 app-office/libreoffice-bin 5.1.4.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.1.4.2 5.2.1.2 5.2.2.2: Translations for the Libreoffice suite
-app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.0 2.2.1: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.1 2.2.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1 0.7.1-r1: A set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/multitalk 1.4: A new type of presentation program
@@ -2827,7 +2827,7 @@ dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.44.0 2.46.3 2.46.4 2.48.1: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4: Google's C++ logging library
-dev-cpp/gmock 1.4.0 1.5.0 1.6.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
+dev-cpp/gmock 1.4.0 1.5.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
@@ -17532,7 +17532,7 @@ sys-process/at 3.1.16 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.4 2.5 2.6: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.6 2.7: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r5: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
