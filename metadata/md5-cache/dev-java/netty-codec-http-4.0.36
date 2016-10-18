@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.7 ~dev-java/netty-buffer-4.0.36:0 ~dev-java/netty-codec-4.0.36:0 ~dev-java/netty-common-4.0.36:0 ~dev-java/netty-handler-4.0.36:0 ~dev-java/netty-transport-4.0.36:0 dev-java/jboss-marshalling:0 dev-java/jzlib:1.1.3 dev-libs/protobuf:0[java] test? ( dev-java/hamcrest-core:1.3 dev-java/hamcrest-library:1.3 dev-java/jboss-marshalling-river:0 dev-java/jboss-marshalling-serial:0 dev-java/junit:4 ) >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+DESCRIPTION=Async event-driven framework for high performance network applications
+EAPI=5
+HOMEPAGE=http://netty.io/
+IUSE=test elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.7 ~dev-java/netty-buffer-4.0.36:0 ~dev-java/netty-codec-4.0.36:0 ~dev-java/netty-common-4.0.36:0 ~dev-java/netty-handler-4.0.36:0 ~dev-java/netty-transport-4.0.36:0 dev-java/jboss-marshalling:0 dev-java/jzlib:1.1.3 dev-libs/protobuf:0[java] >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=https://github.com/netty/netty/archive/netty-4.0.36.Final.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_test:- src_install:java-pkg-simple
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-pkg-simple	88558e9b1185c8404cf95c1ea077592c	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0e86c5424fb44d744cd5e9985d1e1972

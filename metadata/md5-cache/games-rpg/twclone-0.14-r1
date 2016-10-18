@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Clone of BBS Door game Trade Wars 2002
+EAPI=6
+HOMEPAGE=http://twclone.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/twclone/twclone-source-0.14.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=2cd2a41a81da6ca3ca3b146bfdc26c2d

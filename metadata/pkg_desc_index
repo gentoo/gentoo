@@ -3805,6 +3805,8 @@ dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (depr
 dev-haskell/zlib-conduit 1.0.0 1.1.0: Streaming compression/decompression via conduits. (deprecated)
 dev-haskell/zlib-enum 0.2.3.1: Enumerator interface for zlib compression
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
+dev-java/airline 0.7: Java annotation-based framework for parsing Git like command line structures
+dev-java/android-util 4.1.1.4: Library providing APIs for applications written for Google Android
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
 dev-java/ant 1.9.2: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-antlr 1.9.2-r1: Apache Ant's optional tasks for Antlr
@@ -4116,6 +4118,7 @@ dev-java/jlibeps 0.1-r1: Library to create EPS graphics from a Graphics2D
 dev-java/jline 1.0 2.12.1-r1: A Java library for handling console input
 dev-java/jmdns 3.4.1-r1: JmDNS is an implementation of multi-cast DNS in Java
 dev-java/jmf-bin 2.1.1e-r2: The Java Media Framework API (JMF)
+dev-java/jmh-core 1.4.1: Harness for building, running, and analysing nano/micro/milli/macro benchmarks
 dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Interface
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
 dev-java/jna 3.4.0 3.4.1 4.2.2: Java Native Access (JNA)
@@ -4130,7 +4133,7 @@ dev-java/jnr-x86asm 1.0.2-r1: A pure-java port of asmjit
 dev-java/joda-convert 1.3.1: Java library for conversion between Object and String
 dev-java/joda-time 2.7: A quality open-source replacement for the Java Date and Time classes
 dev-java/joni 2.1.0: Java port of the Oniguruma regular expression engine
-dev-java/jopt-simple 4.8 4.9: A Java library for parsing command line options
+dev-java/jopt-simple 4.6 4.8 4.9: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
 dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version, build number or other info
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
@@ -4209,6 +4212,7 @@ dev-java/mina-core 1.1.7 2.0.7: MINA (Multipurpose Infrastructure for Network Ap
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
+dev-java/moshi 1.1.0: A modern JSON library for Android and Java
 dev-java/msv 20130601: Multi-Schema XML Validator, a Java tool for validating XML documents
 dev-java/myfaces-api 2.2.8: Apache MyFaces API - Core package
 dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotations package
@@ -4238,6 +4242,7 @@ dev-java/netbeans-webcommon 8.0.2 8.1 8.2: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 8.0.2 8.1 8.2: Netbeans Web Services Common Cluster
 dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
+dev-java/netty-codec-http 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-common 4.0.21 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-handler 4.0.36: Async event-driven framework for high performance network applications
 dev-java/netty-tcnative 1.1.33.15: Fork of Tomcat Native that incorporates various patches
@@ -4247,6 +4252,7 @@ dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a 
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
 dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
+dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.101 1.8.0.102: Oracle's Java SE Development Kit
@@ -10976,12 +10982,12 @@ games-rpg/soltys 1.0-r1: Classic adventure game
 games-rpg/sumwars 0.5.8 0.5.8-r1: a multi-player, 3D action role-playing game
 games-rpg/tmw 20130201: Branding for the Mana client for server.themanaworld.org
 games-rpg/to-the-moon 0: Indie Adventure RPG, two doctors traversing the memories of a dying man to fulfill his last wish
-games-rpg/twclone 0.14: Clone of BBS Door game Trade Wars 2002
+games-rpg/twclone 0.14 0.14-r1: Clone of BBS Door game Trade Wars 2002
 games-rpg/valyriatear 1.0.0: A free 2D J-RPG based on the Hero of Allacrost engine
-games-rpg/vendetta-online-bin 1.8.296: Space-based MMORPG
+games-rpg/vendetta-online-bin 1.8.296 1.8.296-r1: Space-based MMORPG
 games-rpg/wasteland2 1.9.0.13: Direct sequel to 1988's Wasteland, the first-ever post-apocalyptic computer RPG and the inspiration behind the Fallout series
 games-rpg/wastesedge 0.3.5: role playing game to showcase the adonthell engine
-games-rpg/xu4 0.9: A remake of the computer game Ultima IV
+games-rpg/xu4 0.9 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0: A free 2D Zelda fangame parody
 games-server/bf1942-lnxded 1.61 1.61-r1: dedicated server for Battlefield 1942
