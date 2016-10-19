@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -27,7 +27,7 @@ python_compile_all() {
 	cp docutils/writers/html4css1/html4css1.css . || die
 
 	cd tools || die
-	"${PYTHON}" buildhtml.py --input-encoding=utf-8 \
+	"${EPYTHON}" buildhtml.py --input-encoding=utf-8 \
 		--stylesheet-path=../html4css1.css, --traceback ../docs || die
 }
 
@@ -37,7 +37,7 @@ python_test() {
 	else
 		pushd test > /dev/null || die
 	fi
-	"${PYTHON}" alltests.py || die "Testing failed with ${EPYTHON}"
+	"${EPYTHON}" alltests.py || die "Testing failed with ${EPYTHON}"
 	popd > /dev/null || die
 }
 
