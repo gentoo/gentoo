@@ -21,6 +21,10 @@ IUSE="common-lisp static-libs cxx python qt5"
 RDEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
 	>=dev-libs/libgpg-error-1.11
+	cxx? (
+		!kde-apps/gpgmepp:4
+		!kde-apps/kdepimlibs:4
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		!kde-apps/gpgmepp:4
