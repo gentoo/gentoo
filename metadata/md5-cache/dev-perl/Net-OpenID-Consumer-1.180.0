@@ -4,11 +4,11 @@ DESCRIPTION=Library for consumers of OpenID identities
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Net-OpenID-Consumer/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Digest-SHA dev-perl/HTTP-Message dev-perl/JSON dev-perl/libwww-perl virtual/perl-MIME-Base64 >=dev-perl/Net-OpenID-Common-1.190.0 virtual/perl-Storable virtual/perl-Time-Local dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/W/WR/WROG/Net-OpenID-Consumer-1.18.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=8d68a61be9c7e87d7f8a12b05a219ca3
+_md5_=80d60e8edef295c4f28c27e2ca5a6f0b

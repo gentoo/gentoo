@@ -14559,7 +14559,7 @@ net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
-net-libs/mbedtls 2.2.1 2.3.0 2.3.0-r1: Cryptographic library for embedded systems
+net-libs/mbedtls 2.2.1 2.3.0 2.3.0-r1 2.4.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1 1.9.20151008: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
