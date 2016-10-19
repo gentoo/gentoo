@@ -19,10 +19,6 @@ RDEPEND=""
 
 EGIT_REPO_URI="https://github.com/raspberrypi/userland"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DVMCS_INSTALL_PREFIX="/usr"
