@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -55,7 +55,7 @@ check_old_modules() {
 		eerror "not be installed."
 		eerror "Please replace pam_stack usage with proper include directive usage,"
 		eerror "following the PAM Upgrade guide at the following URL"
-		eerror "  https://www.gentoo.org/proj/en/base/pam/upgrade-0.99.xml"
+		eerror "  https://wiki.gentoo.org/wiki/Project:PAM/Upgrade_to_0.99"
 		eerror ""
 
 		retval=1
@@ -70,7 +70,7 @@ check_old_modules() {
 		eerror "of PAM through https://bugs.gentoo.org/ providing information about its"
 		eerror "use cases."
 		eerror "Please also make sure to read the PAM Upgrade guide at the following URL:"
-		eerror "  https://www.gentoo.org/proj/en/base/pam/upgrade-0.99.xml"
+		eerror "  https://wiki.gentoo.org/wiki/Project:PAM/Upgrade_to_0.99"
 		eerror ""
 
 		retval=1
