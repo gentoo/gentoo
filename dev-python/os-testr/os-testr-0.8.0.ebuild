@@ -29,7 +29,7 @@ DEPEND="
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.4[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-3.7.00[${PYTHON_USEDEP}]
+		>=dev-python/oslo-sphinx-3.7.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
