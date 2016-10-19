@@ -20,6 +20,7 @@ RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/tzlocal-1.2[${PYTHON_USEDEP}]
+	virtual/python-funcsigs[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
