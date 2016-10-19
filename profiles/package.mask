@@ -605,7 +605,7 @@ dev-lang/python:3.3
 
 # Christian Tietz <christian.tietz@mailbox.org> (23 Aug 2016)
 # Depends on masked xfce-base/exo-0.11.1
-=xfce-extra/xfce4-whiskermenu-plugin-2.0.1
+>=xfce-extra/xfce4-whiskermenu-plugin-2.0.1
 
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # PHP 5.5 has reached end of life and will no longer receive security updates.
