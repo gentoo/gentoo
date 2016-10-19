@@ -526,7 +526,7 @@ app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.5.5 1.6.0 1.7.1: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.5.5 1.6.0 1.7.1-r1: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
