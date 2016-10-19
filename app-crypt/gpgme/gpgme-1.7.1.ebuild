@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{3,4} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 eutils qmake-utils
+inherit distutils-r1 eutils qmake-utils
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -16,7 +16,7 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="common-lisp static-libs cxx python qt5 test"
+IUSE="common-lisp static-libs cxx python qt5"
 
 RDEPEND="app-crypt/gnupg
 	>=dev-libs/libassuan-2.0.2
@@ -30,9 +30,7 @@ RDEPEND="app-crypt/gnupg
 		#doc? ( app-doc/doxygen[dot] )
 DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
-	qt5? (
-		test? ( dev-qt/qttest:5 )
-	)"
+	qt5? ( dev-qt/qttest:5 )"
 
 REQUIRED_USE="qt5? ( cxx )"
 
@@ -50,7 +48,6 @@ do_python() {
 
 src_prepare() {
 	default
-	eautoreconf
 	do_python
 }
 
@@ -61,7 +58,7 @@ src_configure() {
 	if use qt5; then
 		languages+=( "qt" )
 		#use doc ||
-		export DOXYGEN=
+		export DOXYGEN=true
 		export MOC="$(qt5_get_bindir)/moc"
 	fi
 
