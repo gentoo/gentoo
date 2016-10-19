@@ -27,10 +27,9 @@ DEPEND="
 	${CDEPEND}
 	test? ( ${RDEPEND}
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
-		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
+		<dev-python/sphinx-1.4[${PYTHON_USEDEP}]
+		>=dev-python/oslo-sphinx-3.7.00[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
@@ -39,6 +38,5 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	sed -i '/^discover/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
