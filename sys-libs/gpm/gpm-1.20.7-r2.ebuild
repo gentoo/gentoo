@@ -62,6 +62,8 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	# make sure nothing compiled is left - Bug #586880
+	emake clean
 	emake EMACS=: $(multilib_is_native_abi || echo "PROG= ")
 }
 
