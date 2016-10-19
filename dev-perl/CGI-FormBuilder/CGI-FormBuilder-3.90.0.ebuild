@@ -13,7 +13,7 @@ DESCRIPTION="Extremely fast, reliable form generation and processing module"
 HOMEPAGE="http://www.formbuilder.org/ ${HOMEPAGE}"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 PATCHES=(
