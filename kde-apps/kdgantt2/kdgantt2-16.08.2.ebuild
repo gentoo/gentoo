@@ -18,3 +18,9 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	kde5_src_prepare
+
+	sed -i -e "/find_package(Qt5/s/Test//" CMakeLists.txt || die
+}
