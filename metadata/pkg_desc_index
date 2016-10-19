@@ -4040,7 +4040,7 @@ dev-java/java-config 2.2.0-r3: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1 0.4: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
-dev-java/java-sdk-docs 1.7.0.80 1.8.0.102: Oracle's documentation bundle (including API) for Java SE
+dev-java/java-sdk-docs 1.7.0.80 1.8.0.112: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r2: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
@@ -4256,8 +4256,8 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.101 1.8.0.102: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.102: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.8.0.102 1.8.0.111 1.8.0.112: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.102 1.8.0.112: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
