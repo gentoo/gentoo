@@ -3,11 +3,11 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: Cscope based source-code browser and code flow analysis tool
 EAPI=6
 HOMEPAGE=https://sites.google.com/site/vimcctree/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=bufexplorer.vim
 RDEPEND=dev-util/cscope || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/cctree-1.61.tar.bz2 https://dev.gentoo.org/~radhermit/vim/cctree-1.61.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=dc70c1c19c96ca1f49b6bc1986c7b310
+_md5_=d0bfa48b0b59024bd08c70c36b2e243d
