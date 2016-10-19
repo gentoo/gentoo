@@ -63,7 +63,6 @@ src_configure() {
 	fi
 
 	econf \
-		--includedir="${EPREFIX}/usr/include/gpgme" \
 		--enable-languages="${languages[*]}" \
 		$(use_enable static-libs static)
 
@@ -81,4 +80,9 @@ src_install() {
 	default
 	do_python
 	prune_libtool_files
+
+	# backward compatibility for gentoo
+	# in the past we had slots
+	dodir /usr/include/gpgme
+	dosym ../gpgme.h /usr/include/gpgme/gpgme.h
 }
