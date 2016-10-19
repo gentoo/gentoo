@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">Arkq/bluez-alsa</remote-id>
   </upstream>
+  <use>
+    <flag name="hcitop">Enable top-like monitoring tool for HCI</flag>
+  </use>
 </pkgmetadata>

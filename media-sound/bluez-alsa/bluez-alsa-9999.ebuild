@@ -18,12 +18,16 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug"
+IUSE="aac debug hcitop"
 
 RDEPEND=">=dev-libs/glib-2.16[dbus]
 	>=media-libs/alsa-lib-1.0
 	>=media-libs/sbc-1.2
-	>=net-wireless/bluez-5"
+	>=net-wireless/bluez-5
+	hcitop? (
+		dev-libs/libbsd
+		sys-libs/ncurses:0=
+	)"
 DEPEND="${RDEPEND}
 	net-libs/ortp
 	aac? ( >=media-libs/fdk-aac-0.1.1 )
@@ -37,7 +41,8 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable aac) \
-		$(use_enable debug)
+		$(use_enable debug) \
+		$(use_enable hcitop)
 }
 
 src_install() {
