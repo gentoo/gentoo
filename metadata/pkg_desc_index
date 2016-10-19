@@ -7507,7 +7507,7 @@ dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 8.6 9.3.1: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1 1.1.1: Alternate keyring implementations
-dev-python/keystoneauth 2.4.1 2.12.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 2.4.1 2.4.2 2.12.2: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.4.1 4.9.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers

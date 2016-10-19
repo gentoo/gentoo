@@ -3871,6 +3871,11 @@
     <name>Theology</name>
     <url>https://wiki.gentoo.org/wiki/Project:Theology</url>
     <description>The theology project maintains religious, genealogy, and humanities-related packages</description>
+    <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
