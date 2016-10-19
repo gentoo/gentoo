@@ -13,7 +13,6 @@
 		<flag name="egl">Enable EGL support.</flag>
 		<flag name="gallium">Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.</flag>
 		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>
-		<flag name="gles">Enable GLES (both v1 and v2) support.</flag>
 		<flag name="gles1">Enable GLESv1 support.</flag>
 		<flag name="gles2">Enable GLESv2 support.</flag>
 		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
