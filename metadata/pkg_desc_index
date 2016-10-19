@@ -7675,10 +7675,10 @@ dev-python/os-brick 1.2.0 1.6.1: OpenStack Cinder brick library for managing loc
 dev-python/os-client-config 1.16.0 1.21.1: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.25 0.26: Adds network extension support to python-novaclient
-dev-python/os-testr 0.6.0 0.7.0: A testr wrapper to provide functionality for OpenStack projects
+dev-python/os-testr 0.6.0 0.8.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-vif 1.2.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.19 0.20: Adds Virtual Interfaces support to python-novaclient
-dev-python/os-win 0.4.0 1.2.0: Windows / Hyper-V library for OpenStack projects.
+dev-python/os-win 0.4.0 1.2.1: Windows / Hyper-V library for OpenStack projects.
 dev-python/osc-lib 1.1.0: A package of common support modules for writing OSC plugins.
 dev-python/oslo-cache 1.6.0 1.14.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.7.1 3.14.0: library for running multi-thread, multi-process applications
