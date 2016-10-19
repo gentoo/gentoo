@@ -1786,7 +1786,7 @@ app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6: A index/query system to search a large set of files quickly
 app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
-app-misc/gnote 3.20.1 3.20.2: Desktop note-taking application
+app-misc/gnote 3.20.1 3.20.2 3.22.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cellular automata
@@ -10840,8 +10840,8 @@ games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.18.2 3.20.2: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.20.5 3.22.0: Test your logic skills in this number grid puzzle
-games-puzzle/gnome-taquin 3.18.2 3.20.2: Move tiles so that they reach their places
-games-puzzle/gnome-tetravex 3.18.0 3.20.0: Complete the puzzle by matching numbered tiles
+games-puzzle/gnome-taquin 3.20.2 3.22.0: Move tiles so that they reach their places
+games-puzzle/gnome-tetravex 3.20.0 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.66: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.0.6: A tetris clone based on Qt4
@@ -10853,7 +10853,7 @@ games-puzzle/gweled 0.9.1-r1: Bejeweled clone game
 games-puzzle/hangman 0.9.2: The classic word guessing game
 games-puzzle/hexalate 1.0.3: A color matching game
 games-puzzle/hexamine 0.2.1: Hexagonal Minesweeper
-games-puzzle/hitori 3.16.2 3.20.0: Logic puzzle game for GNOME
+games-puzzle/hitori 3.20.0 3.22.0: Logic puzzle game for GNOME
 games-puzzle/hoh-bin 1.01: PC remake of the spectrum game, Head Over Heels
 games-puzzle/icebreaker 1.9.6: Trap and capture penguins on Antarctica
 games-puzzle/jag 0.3.2: Arcade 2D Puzzle Game
@@ -10861,7 +10861,7 @@ games-puzzle/jools 0.20-r2: clone of Bejeweled, a popular pattern-matching game
 games-puzzle/kiki 1.0.2-r2: Fun 3D puzzle game using SDL/OpenGL
 games-puzzle/ksokoban 0.5.0_pre20120725 9999: The japanese warehouse keeper game
 games-puzzle/larry 1-r1: Leisure Suit Larry Reloaded
-games-puzzle/lightsoff 3.18.0 3.20.0: Turn off all the lights
+games-puzzle/lightsoff 3.20.0 3.22.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4: A classical memory game
 games-puzzle/ltris 1.0.19: very polished Tetris clone
@@ -10883,7 +10883,7 @@ games-puzzle/pingus 0.7.6: free Lemmings clone
 games-puzzle/pipepanic 0.1.3: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.18.0 3.20.0: Fit falling blocks together
+games-puzzle/quadrapassel 3.20.0 3.22.0: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1: Swap and match 3 or more jewels in a line in order to score points
@@ -10892,7 +10892,7 @@ games-puzzle/sgt-puzzles 20160315 99999999: Simon Tatham's Portable Puzzle Colle
 games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
-games-puzzle/swell-foop 3.18.1 3.20.0: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.20.0 3.22.0: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.2.1 1.3.1: A single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11: console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2: An ncurses-based maze solving game written in Perl
