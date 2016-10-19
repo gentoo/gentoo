@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Crypt::DH Using GMP Directly"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
