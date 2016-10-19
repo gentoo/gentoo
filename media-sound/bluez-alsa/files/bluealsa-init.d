@@ -14,5 +14,5 @@ depend() {
 }
 
 start_pre() {
-	checkpath -q -D -m 0700 -o :audio /var/run/bluealsa
+	checkpath -q -D -m 0770 -o :audio /var/run/bluealsa
 }
