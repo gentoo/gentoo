@@ -16694,7 +16694,7 @@ sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
-sys-apps/hdparm 9.39 9.45 9.47 9.48: Utility to change hard drive performance parameters
+sys-apps/hdparm 9.45 9.48 9.49: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715: Heirloom toolchest - original Unix tools
 sys-apps/help2man 1.46.6 1.47.3 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
