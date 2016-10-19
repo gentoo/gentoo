@@ -2927,7 +2927,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.52 5.6.33 5.6.34: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.53 5.6.33 5.6.34: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
@@ -2949,7 +2949,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Tra
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.6.32.78.1: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.32.78.1 5.6.33.79.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.4: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
@@ -15692,7 +15692,7 @@ sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition con
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/calculator 1.6.43 1.7.49 1.7.54: Scientific calculator based on the FOX Toolkit
 sci-calculators/galculator 2.1.3 2.1.4: GTK+ based algebraic and RPN calculator
-sci-calculators/gonvert 0.2.25 0.2.32: Unit conversion utility written in PyGTK
+sci-calculators/gonvert 0.2.25 0.2.32 0.2.39: Unit conversion utility written in PyGTK
 sci-calculators/grpn 1.3.4 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
 sci-calculators/hcalc 1.0-r1 1.2: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r2: A simple hex calculator for X

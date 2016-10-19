@@ -60,7 +60,6 @@ app-admin/conky:weather-metar - Enable support for metar weather service
 app-admin/conky:weather-xoap - Enable support for metar and xoap weather service
 app-admin/conky:webserver - Enable support to act as a webserver serving conkys output using net-libs/libmicrohttpd
 app-admin/conky:xmms2 - Enable monitoring of music played by media-sound/xmms2
-app-admin/consul:web - Build the web UI.
 app-admin/diamond:mongo - Enable MongoDB support
 app-admin/diamond:redis - Enable Redis support
 app-admin/diradm:automount - Support for automount data in LDAP
