@@ -1,23 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.22"
-
-inherit gnome-games vala
+EAPI=6
+inherit gnome2 vala
 
 DESCRIPTION="Turn off all the lights"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lightsoff"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/glib:2
+	>=dev-libs/glib-2.38:2
 	>=gnome-base/librsvg-2.32:2
 	>=media-libs/clutter-1.14:1.0
 	>=media-libs/clutter-gtk-1.5.5:1.0
@@ -33,6 +30,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	gnome-games_src_prepare
+	gnome2_src_prepare
 	vala_src_prepare
 }
