@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/expat
 	>=dev-libs/json-c-0.11-r1:=
 	dev-libs/libgcrypt:0=
-	net-misc/curl[curl_ssl_gnutls]
+	|| ( net-misc/curl[curl_ssl_openssl] net-misc/curl[curl_ssl_gnutls] )
 	sys-libs/binutils-libs:0=
 	sys-libs/glibc
 	dev-libs/yajl
