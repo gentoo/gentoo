@@ -10831,7 +10831,7 @@ games-puzzle/enigma 1.21-r2: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
-games-puzzle/five-or-more 3.18.0 3.20.0 3.20.1 3.20.2: Five or More Game for GNOME
+games-puzzle/five-or-more 3.20.2 3.22.0: Five or More Game for GNOME
 games-puzzle/flobopuyo 0.20-r1: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 0.92: Console Minesweeper
 games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little Macintosh freeware game Galaxis
@@ -10839,7 +10839,7 @@ games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the scr
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.18.2 3.20.2: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.18.2 3.20.2 3.20.4 3.20.5: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-sudoku 3.20.5 3.22.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.18.2 3.20.2: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.18.0 3.20.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
@@ -14554,7 +14554,7 @@ net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for 
 net-libs/libtrace 3.0.22 4.0.0_beta: A library and tools for trace processing
 net-libs/libupnp 1.6.18-r1 1.6.18-r2 1.6.19-r1 1.6.20: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
-net-libs/libwebsockets 1.7.8 2.0.2: canonical libwebsockets.org websocket library
+net-libs/libwebsockets 1.7.8 1.7.9 2.0.2: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
@@ -15706,7 +15706,7 @@ sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
-sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
+sci-calculators/wcalc 2.4 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
 sci-chemistry/acpype 389: AnteChamber PYthon Parser interfacE
