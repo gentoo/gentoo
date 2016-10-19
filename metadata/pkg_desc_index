@@ -5148,7 +5148,7 @@ dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
-dev-ml/ocaml-containers 0.18 0.19: A modular standard library focused on data structures
+dev-ml/ocaml-containers 0.18 0.19 0.20: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.1.0 2.2.0 2.3.0: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.9.2 0.10.0 0.10.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
