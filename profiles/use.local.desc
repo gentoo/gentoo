@@ -4222,6 +4222,7 @@ media-sound/beets:mpdstats - Enable support for collecting statistic about liste
 media-sound/beets:opus - Enable opus support in gstreamer-based replaygain
 media-sound/beets:replaygain - Enable support for Replay Gain metadata calculation during import
 media-sound/beets:web - Enable embedded webserver support through dev-python/flask
+media-sound/bluez-alsa:hcitop - Enable top-like monitoring tool for HCI
 media-sound/cantata:http-server - Enable internal HTTP server to play non-MPD files
 media-sound/cantata:replaygain - Enable ReplayGain support, for relative volume adjustments
 media-sound/clementine:amazoncloud - Enable Amazon cloud drive support

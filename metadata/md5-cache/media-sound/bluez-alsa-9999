@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=>=dev-libs/glib-2.16[dbus] >=media-libs/alsa-lib-1.0 >=media-libs/sbc-1.2 >=net-wireless/bluez-5 net-libs/ortp aac? ( >=media-libs/fdk-aac-0.1.1 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=>=dev-libs/glib-2.16[dbus] >=media-libs/alsa-lib-1.0 >=media-libs/sbc-1.2 >=net-wireless/bluez-5 hcitop? ( dev-libs/libbsd sys-libs/ncurses:0= ) net-libs/ortp aac? ( >=media-libs/fdk-aac-0.1.1 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Bluetooth Audio ALSA Backend
 EAPI=6
 HOMEPAGE=https://github.com/Arkq/bluez-alsa
-IUSE=aac debug
+IUSE=aac debug hcitop
 LICENSE=MIT
-RDEPEND=>=dev-libs/glib-2.16[dbus] >=media-libs/alsa-lib-1.0 >=media-libs/sbc-1.2 >=net-wireless/bluez-5
+RDEPEND=>=dev-libs/glib-2.16[dbus] >=media-libs/alsa-lib-1.0 >=media-libs/sbc-1.2 >=net-wireless/bluez-5 hcitop? ( dev-libs/libbsd sys-libs/ncurses:0= )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=5bcacc1a12290cfe0c04fe292cd6f7ab
+_md5_=bf8e200972ce1c76cc56c019a4b989d4
