@@ -40,7 +40,7 @@ CDEPEND="
 	media-libs/phonon[qt5]
 	x11-libs/libX11
 	x11-libs/libxcb
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[xcb] )
 	npp? (
 		dev-libs/dbus-glib
 		dev-libs/glib:2
