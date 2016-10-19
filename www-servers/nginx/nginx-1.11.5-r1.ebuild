@@ -140,8 +140,9 @@ HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
+AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
+inherit autotools ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://nginx.org"
@@ -283,6 +284,7 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
 	!www-servers/nginx:0"
 DEPEND="${CDEPEND}
+	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
 PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
@@ -342,6 +344,28 @@ src_prepare() {
 		sed -i -e 's/-llua5.1/-llua/' "${HTTP_LUA_MODULE_WD}/config" || die
 	fi
 
+	if use nginx_modules_http_security; then
+		cd "${HTTP_SECURITY_MODULE_WD}" || die
+
+		eapply "${FILESDIR}"/http_security-pr_1158.patch
+
+		eautoreconf
+
+		if use luajit ; then
+			sed -i \
+				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
+				configure || die
+		fi
+
+		cd "${S}" || die
+	fi
+
+	if use nginx_modules_http_upload_progress; then
+		cd "${HTTP_UPLOAD_PROGRESS_MODULE_WD}" || die
+		eapply "${FILESDIR}"/http_uploadprogress-issue_50.patch
+		cd "${S}" || die
+	fi
+
 	find auto/ -type f -print0 | xargs -0 sed -i 's:\&\& make:\&\& \\$(MAKE):' || die
 	# We have config protection, don't rename etc files
 	sed -i 's:.default::' auto/install || die
@@ -363,20 +387,16 @@ src_configure() {
 	# mod_security needs to generate nginx/modsecurity/config before including it
 	if use nginx_modules_http_security; then
 		cd "${HTTP_SECURITY_MODULE_WD}" || die
-		if use luajit ; then
-			sed -i \
-				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
-				configure || die
-		fi
+
 		./configure \
 			--enable-standalone-module \
 			--disable-mlogc \
 			--with-ssdeep=no \
 			$(use_enable pcre-jit) \
 			$(use_with nginx_modules_http_lua lua) || die "configure failed for mod_security"
-	fi
 
-	cd "${S}" || die
+		cd "${S}" || die
+	fi
 
 	local myconf=() http_enabled= mail_enabled= stream_enabled=
 

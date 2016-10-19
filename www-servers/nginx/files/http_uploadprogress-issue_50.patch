@@ -1,0 +1,32 @@
+From edd7e026fa992f58b04ea9d00b56239f37b3e320 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@whissi.de>
+Date: Wed, 19 Oct 2016 15:05:27 +0200
+Subject: [PATCH] config: Only build as dynamic module when really requested
+
+Since commit 37182ce2f3b6 the module was always build as dynamic module.
+Probably because following a bad skeleton [1].
+
+With this change we will only build a dynamic module when requested. Otherwise
+we will fall back to static build.
+
+Link: https://trac.nginx.org/nginx/ticket/1115
+Gentoo-Bug: https://bugs.gentoo.org/593450
+Fixes: https://github.com/masterzen/nginx-upload-progress-module/issues/50
+---
+ config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config b/config
+index 364af8c..d704460 100644
+--- a/config
++++ b/config
+@@ -1,5 +1,5 @@
+ ngx_addon_name=ngx_http_uploadprogress_module
+-if test -n "$ngx_module_link"; then
++if [ $ngx_module_link = DYNAMIC ] ; then
+     ngx_module_type=FILTER
+     ngx_module_name=ngx_http_uploadprogress_module
+     ngx_module_srcs="$ngx_addon_dir/ngx_http_uploadprogress_module.c"
+-- 
+2.10.1
+

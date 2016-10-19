@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils multilib scons-utils toolchain-funcs
+inherit eutils flag-o-matic multilib scons-utils toolchain-funcs
 
 DESCRIPTION="A advanced Digital DJ tool based on Qt"
 HOMEPAGE="http://www.mixxx.org/"
@@ -95,6 +95,11 @@ src_configure() {
 	local myqtdir=qt5
 	if use qt4 ; then
 		myqtdir="qt4"
+	fi
+
+	if use qt5 ; then
+		# Required for >=qt-5.7.0 (bug #590690)
+		append-cxxflags -std=c++11
 	fi
 
 	myesconsargs=(
