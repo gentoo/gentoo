@@ -20,6 +20,14 @@ IUSE=""
 DEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# Upstream patch to fix tests
+	"${FILESDIR}/${P}-fix-tests-pygments.patch"
+
+	# Patch to fix pypyp tests
+	"${FILESDIR}/${P}-fix-tests-pypy.patch"
+)
+
 python_compile_all() {
 	# Generate html docs from reStructured text sources.
 
