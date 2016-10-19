@@ -73,7 +73,7 @@ app-admin/conky 1.9.0-r3 1.10.4 1.10.5: An advanced, highly configurable system 
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
-app-admin/consul 0.6.4 9999: A tool for service discovery, monitoring and configuration
+app-admin/consul 0.6.4 0.7.0: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.9.0-r1 0.12.2 9999: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
@@ -2927,7 +2927,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.52 5.6.33: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.52 5.6.33 5.6.34: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
@@ -7235,7 +7235,7 @@ dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials stor
 dev-python/dockerpty 0.3.3 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.9.1-r1 0.10 0.11 0.12: Python Documentation Utilities
+dev-python/docutils 0.11 0.12 0.12-r1: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.1 0.6.2: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value

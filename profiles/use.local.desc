@@ -2251,7 +2251,6 @@ dev-python/django-tastypie:digest - Library to aid in implementing HTTP Digest A
 dev-python/django-tastypie:lxml - An optional serialiser dev-python/lxml
 dev-python/django-tastypie:yaml - An optional serialiser dev-python/yaml
 dev-python/django-two-factor-auth:yubikey - Adds support for Yubikeys via django-otp-yubikey
-dev-python/docutils:glep - Install support for GLEPs
 dev-python/falcon:cython - Build cython-based python modules
 dev-python/flask-restful:paging - Enable resource paging support
 dev-python/geopy:timezone - Enables localized date support
