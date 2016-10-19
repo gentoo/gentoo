@@ -5,7 +5,7 @@
 EAPI=6
 
 EGIT_BRANCH="0.12"
-KDE_HANDBOOK="optional"
+KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
