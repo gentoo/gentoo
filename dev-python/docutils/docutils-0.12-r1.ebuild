@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3} pypy )
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -13,16 +14,18 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-3 public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="glep"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE=""
 
 DEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
-	glep? ( dev-python/docutils-glep[${PYTHON_USEDEP}] )"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
-	# fix buildhtml.py option parsing
-	"${FILESDIR}"/${P}-optparser.patch
+	# Upstream patch to fix tests
+	"${FILESDIR}/${P}-fix-tests-pygments.patch"
+
+	# Patch to fix pypyp tests
+	"${FILESDIR}/${P}-fix-tests-pypy.patch"
 )
 
 python_compile_all() {
@@ -32,17 +35,18 @@ python_compile_all() {
 	cp docutils/writers/html4css1/html4css1.css . || die
 
 	cd tools || die
-	"${PYTHON}" buildhtml.py --input-encoding=utf-8 \
+	"${EPYTHON}" buildhtml.py --input-encoding=utf-8 \
 		--stylesheet-path=../html4css1.css, --traceback ../docs || die
 }
 
 python_test() {
-	local tests=test
-	[[ ${EPYTHON} == python3* ]] && tests=test3
-
-	cp -r -l ${tests} "${BUILD_DIR}"/test || die
-	ln -s "${S}"/docs "${BUILD_DIR}"/ || die
-	"${PYTHON}" "${BUILD_DIR}"/test/alltests.py || die "Tests fail with ${EPYTHON}"
+	if python_is_python3; then
+		pushd test3 > /dev/null || die
+	else
+		pushd test > /dev/null || die
+	fi
+	"${EPYTHON}" alltests.py || die "Testing failed with ${EPYTHON}"
+	popd > /dev/null || die
 }
 
 python_install() {
