@@ -73,7 +73,7 @@ app-admin/conky 1.9.0-r3 1.10.4 1.10.5: An advanced, highly configurable system 
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
-app-admin/consul 0.5.2-r2 0.6.3-r1 0.6.4 9999: A tool for service discovery, monitoring and configuration
+app-admin/consul 0.6.4 9999: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.9.0-r1 0.12.2 9999: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
