@@ -24,18 +24,21 @@ KEYWORDS="~amd64" # qemu-kvm[spice] is 64bit-only
 # FIXME: use vala.eclass but only because of libgd not being able
 #        to use its pre-generated files so do not copy all the
 #        vala deps like live ebuild has.
+# FIXME: qemu probably needs to depend on spice[smartcard]
+#        directly with USE=spice
 RDEPEND="
 	>=app-arch/libarchive-3:=
 	>=dev-libs/glib-2.38:2
 	>=dev-libs/gobject-introspection-0.9.6:=
 	>=dev-libs/libxml2-2.7.8:2
 	>=sys-libs/libosinfo-0.2.12
-	>=app-emulation/qemu-1.3.1[spice]
+	>=app-emulation/qemu-1.3.1[spice,smartcard,usbredir]
 	>=app-emulation/libvirt-0.9.3[libvirtd,qemu]
 	>=app-emulation/libvirt-glib-0.2.3
 	>=x11-libs/gtk+-3.19.4:3
 	>=net-libs/gtk-vnc-0.4.4[gtk3]
-	>=net-misc/spice-gtk-0.27[gtk3]
+	app-emulation/spice[smartcard]
+	>=net-misc/spice-gtk-0.27[gtk3,smartcard,usbredir]
 	virtual/libusb:1
 
 	>=app-misc/tracker-0.16:0=[iso]
