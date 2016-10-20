@@ -836,10 +836,6 @@ dev-libs/glib systemtap
 # incompatible with >=sci-mathematics/octave-3.4.0
 sci-libs/mathgl octave
 
-# Luca Barbato <lu_zero@gentoo.org> (28 Mar 2011)
-# Mask mplayer2 arch specific flags
-media-video/mplayer2 bluray
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
 #
 # Mask pdnsd's Linux-specific USE flags.
