@@ -1,0 +1,8 @@
+/var/log/consul-template/consul-template.log {
+	su consul-template consul-template
+	missingok
+	size 5M
+	rotate 3
+	compress
+	copytruncate
+}
