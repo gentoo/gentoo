@@ -469,10 +469,6 @@ dev-java/jboss-logging doc
 mate-base/mate bluetooth
 mate-extra/mate-user-share bluetooth
 
-# Pacho Ramos <pacho@gentoo.org> (26 Apr 2014)
-# Depends on long time obsolete goi, bug #508742
-=x11-misc/lightdm-1.4* introspection
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
 # It's only supported on amd64
 dev-db/mariadb tokudb
