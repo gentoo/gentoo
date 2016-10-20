@@ -545,10 +545,6 @@ dev-python/pypy3 sandbox
 # luajit is in ~arch, prepare for minetest stabilization
 games-action/minetest luajit
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Oct 2013)
-# Masked for security bug #472280, CVE 2013-1872
-<=media-libs/mesa-9.0.3 video_cards_intel video_cards_i965
-
 # Tom Wijsman <TomWij@gentoo.org> (7 Sep 2013)
 # Dependency (www-servers/mongrel) currently only
 # works with Ruby 1.8; so, masking Ruby 1.9 USE flag
@@ -626,10 +622,6 @@ dev-python/pyocr cuneiform
 # Michael Weber <xmw@gentoo.org> (23 Mar 2013)
 # Does not build.
 =media-libs/oyranos-0.9.4* fltk
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (19 Mar 2013)
-# Depends on special llvm-3.2 branch from tstellar
-=media-libs/mesa-9.1* r600-llvm-compiler video_cards_radeonsi
 
 # Christoph Junghans <ottxor@gentoo.org> (10 Mar 2013)
 # log4cxx has known memory leaking issues wrt bug #287697,
