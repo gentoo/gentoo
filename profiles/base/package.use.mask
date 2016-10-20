@@ -831,11 +831,6 @@ net-dns/pdnsd isdn urandom
 # This feature is marked as experimental by upstream.
 dev-lang/ruby-enterprise fastthreading
 
-# Nirbheek Chauhan <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox ipc
-
 # Tomas Touceda <chiiph@gentoo.org> (13 Apr 2010)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
