@@ -31,6 +31,7 @@ S="${WORKDIR}"/${MY_P}
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-configure.patch
 	epatch "${FILESDIR}"/${P}-associated-item.patch
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_configure() {

@@ -362,7 +362,7 @@ src_prepare() {
 
 	if use nginx_modules_http_upload_progress; then
 		cd "${HTTP_UPLOAD_PROGRESS_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http_uploadprogress-issue_50.patch
+		eapply "${FILESDIR}"/http_uploadprogress-issue_50-r1.patch
 		cd "${S}" || die
 	fi
 

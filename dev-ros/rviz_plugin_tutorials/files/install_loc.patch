@@ -1,0 +1,24 @@
+Install ressources in ros_packages subdir. We force catkin to install packages
+there, so move them too.
+
+Index: rviz_plugin_tutorials/CMakeLists.txt
+===================================================================
+--- rviz_plugin_tutorials.orig/CMakeLists.txt
++++ rviz_plugin_tutorials/CMakeLists.txt
+@@ -73,13 +73,13 @@ install(TARGETS
+ 
+ install(FILES
+   plugin_description.xml
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
++  DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME})
+ 
+ install(DIRECTORY media/
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/media)
++  DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}/media)
+ 
+ install(DIRECTORY icons/
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/icons)
++  DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}/icons)
+ 
+ install(PROGRAMS scripts/send_test_msgs.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

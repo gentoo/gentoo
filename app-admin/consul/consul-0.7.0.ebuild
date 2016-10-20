@@ -80,7 +80,7 @@ src_prepare() {
 }
 
 src_compile() {
-	export GOPATH="${WORKDIR}:$(get_golibdir_gopath)"
+	export GOPATH="${WORKDIR}"
 	go install -v -work -x ${EGO_BUILD_FLAGS} "github.com/mitchellh/gox/..." || die
 	go install -v -work -x ${EGO_BUILD_FLAGS} "${GO_PN}/..." || die
 	PATH=${PATH}:${WORKDIR}/bin XC_ARCH=$(go env GOARCH) XC_OS=$(go env GOOS) emake
@@ -104,6 +104,8 @@ src_install() {
 
 	newinitd "${FILESDIR}/consul.initd" "${PN}"
 	newconfd "${FILESDIR}/consul.confd" "${PN}"
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
 
 	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
