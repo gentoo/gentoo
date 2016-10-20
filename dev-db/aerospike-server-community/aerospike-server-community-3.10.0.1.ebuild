@@ -26,7 +26,7 @@ pkg_setup() {
 
 src_prepare() {
 	local server_deb="${P}.debian7.x86_64.deb"
-	local tools_deb="aerospike-tools-3.8.3.debian7.x86_64.deb"
+	local tools_deb="aerospike-tools-3.10.2.debian7.x86_64.deb"
 
 	ar x "${server_deb}" || die
 	tar xzf data.tar.gz && rm data.tar.gz || die
