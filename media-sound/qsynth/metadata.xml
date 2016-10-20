@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription>
 QSynth is a fluidsynth GUI front-end application written in C++ around the
-Qt3 toolkit using Qt Designer. Eventually it may evolve into a softsynth
+Qt toolkit using Qt Designer. Eventually it may evolve into a softsynth
 management application allowing the user to control and manage a variety of
 command line softsynth but for the moment it wraps the excellent FluidSynth.
 FluidSynth is a command line software synthesiser based on the Soundfont
