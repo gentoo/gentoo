@@ -7,11 +7,11 @@ EAPI=6
 WX_GTK_VER=3.0
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 
-inherit autotools fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-r3
+inherit autotools flag-o-matic gnome2-utils l10n wxwidgets xdg-utils git-r3
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/ https://github.com/Aegisub/Aegisub"
-EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
+EGIT_REPO_URI=( {https,git}://github.com/${PN^}/${PN^}.git )
 # Submodules are used to pull bundled libraries.
 EGIT_SUBMODULES=()
 
@@ -132,11 +132,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
