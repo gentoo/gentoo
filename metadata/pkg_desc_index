@@ -2528,7 +2528,7 @@ app-vim/ctrlp 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with re
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0 1.0-r1: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
-app-vim/dbext 23.0 24.0: vim plugin: easy access to databases
+app-vim/dbext 24.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 6.1: vim plugin: highlight the exact differences, based on characters and words
