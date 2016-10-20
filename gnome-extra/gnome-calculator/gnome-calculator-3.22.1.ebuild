@@ -26,8 +26,8 @@ RDEPEND="${COMMON_DEPEND}
 	!gnome-extra/gcalctool
 "
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.50
-	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
