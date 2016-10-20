@@ -33,8 +33,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 
-PATCHES="${FILESDIR}/${P}-setup.patch
-	${FILESDIR}/${P}-EWMH.patch"
+PATCHES="${FILESDIR}/${PN}-2.0-setup.patch"
 
 src_prepare() {
 	default_src_prepare
