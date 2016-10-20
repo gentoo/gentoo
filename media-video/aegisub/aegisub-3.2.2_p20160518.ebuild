@@ -62,10 +62,18 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-support-system-gtest.patch"
 )
 
-pkg_pretend() {
+aegisub_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11; then
 		die "Your compiler lacks C++11 support. Use GCC>=4.7.0 or Clang>=3.3."
 	fi
+}
+
+pkg_pretend() {
+	aegisub_check_compiler
+}
+
+pkg_setup() {
+	aegisub_check_compiler
 }
 
 src_prepare() {
