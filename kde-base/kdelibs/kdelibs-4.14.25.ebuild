@@ -132,6 +132,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
 	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
+	"${FILESDIR}/${PN}-4.14.25-gcc62.patch"
 )
 
 pkg_pretend() {

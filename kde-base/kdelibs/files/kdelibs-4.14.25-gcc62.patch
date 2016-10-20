@@ -1,0 +1,51 @@
+From: Albert Astals Cid <aacid@kde.org>
+Date: Wed, 19 Oct 2016 12:44:03 +0000
+Subject: Fix HAVE_TRUNC cmake check
+X-Git-Url: http://quickgit.kde.org/?p=kdelibs.git&a=commitdiff&h=0c642ae95dacf894e50630ffcc1961ad1e4e0322
+---
+Fix HAVE_TRUNC cmake check
+
+On newer distros the check fails because trunc is ambiguous, so tell sizeof exactly which trunc we're speaking about.
+
+REVIEW: 129119
+---
+
+
+--- a/ConfigureChecks.cmake
++++ b/ConfigureChecks.cmake
+@@ -244,7 +244,7 @@
+ check_prototype_exists(usleep unistd.h              HAVE_USLEEP_PROTO)
+ check_prototype_exists(initgroups "unistd.h;sys/types.h;unistd.h;grp.h" HAVE_INITGROUPS_PROTO)
+ check_prototype_exists(setreuid unistd.h            HAVE_SETREUID_PROTO)
+-check_prototype_exists(trunc math.h                 HAVE_TRUNC)
++check_prototype_exists(trunc math.h                 HAVE_TRUNC "(double (*)(double))")
+ 
+ # check for existing datatypes
+ 
+
+--- a/cmake/modules/CheckPrototypeExists.cmake
++++ b/cmake/modules/CheckPrototypeExists.cmake
+@@ -21,6 +21,13 @@
+ INCLUDE(CheckCXXSourceCompiles)
+ 
+ MACRO (CHECK_PROTOTYPE_EXISTS _SYMBOL _HEADER _RESULT)
++   SET(extra_macro_args ${ARGN})
++   LIST(LENGTH extra_macro_args num_extra_args)
++   SET(_PROTOTYPE "")
++   IF (${num_extra_args} EQUAL 1)
++      LIST(GET extra_macro_args 0 _PROTOTYPE)
++   ENDIF ()
++
+    SET(_INCLUDE_FILES)
+    FOREACH (it ${_HEADER})
+       SET(_INCLUDE_FILES "${_INCLUDE_FILES}#include <${it}>\n")
+@@ -31,7 +38,7 @@
+ int main()
+ {
+ #ifndef ${_SYMBOL}
+-   int i = sizeof(&${_SYMBOL});
++   int i = sizeof(${_PROTOTYPE}&${_SYMBOL});
+ #endif
+   return 0;
+ }
+
