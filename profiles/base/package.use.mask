@@ -587,7 +587,6 @@ media-sound/clementine ios
 # GL/GLES support in cairo is mutually exclusive, bug #428770.
 x11-libs/cairo gles2
 dev-libs/weston rpi
-<dev-libs/weston-1.9.0 gles2
 
 # Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2013)
 # mask because requires unstable depends not ready for the stabilization
