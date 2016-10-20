@@ -42,7 +42,7 @@ CDEPEND="
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	>=media-libs/opencv-2.4.9
+	>=media-libs/opencv-2.4.9[-qt5]
 	media-libs/tiff
 	virtual/jpeg
 	dev-qt/qtgui:4
