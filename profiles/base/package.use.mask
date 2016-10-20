@@ -867,10 +867,6 @@ media-gfx/k3d cuda
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (10 Sep 2009)
-# quakeforge has video_cards_tdfx enabled only for x86
-games-fps/quakeforge video_cards_tdfx
-
 # Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
 # mask cuda for boinc. Works only on amd64 and x86
 sci-misc/boinc cuda
