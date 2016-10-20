@@ -218,7 +218,7 @@ app-admin/tmpwatch 2.11 2.11-r1 2.11-r2: Files which haven't been accessed in a 
 app-admin/tripwire 2.4.2.2-r4 2.4.3.1: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20160205 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 0.4.1 0.5.2 0.5.3 9999: A tool for managing secrets
+app-admin/vault 0.5.3: A tool for managing secrets
 app-admin/verynice 1.1-r2 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
