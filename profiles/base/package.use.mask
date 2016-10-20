@@ -339,11 +339,6 @@ media-libs/libbluray bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (18 Feb 2015)
-# Experimental backend, plus it requires openvg support in mesa which is
-# now disabled in >=mesa-10.4 (bug #536434)
-x11-libs/cairo openvg
-
 # Andrew Savchenko <bircoph@gentoo.org> (11 Feb 2015)
 # Cluster code is still under development, only base functionality
 # is implemented. Masking for testing and evaluation.
@@ -474,10 +469,6 @@ dev-java/jboss-logging doc
 mate-base/mate bluetooth
 mate-extra/mate-user-share bluetooth
 
-# Pacho Ramos <pacho@gentoo.org> (26 Apr 2014)
-# Depends on long time obsolete goi, bug #508742
-=x11-misc/lightdm-1.4* introspection
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
 # It's only supported on amd64
 dev-db/mariadb tokudb
@@ -550,10 +541,6 @@ dev-python/pypy3 sandbox
 # luajit is in ~arch, prepare for minetest stabilization
 games-action/minetest luajit
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Oct 2013)
-# Masked for security bug #472280, CVE 2013-1872
-<=media-libs/mesa-9.0.3 video_cards_intel video_cards_i965
-
 # Tom Wijsman <TomWij@gentoo.org> (7 Sep 2013)
 # Dependency (www-servers/mongrel) currently only
 # works with Ruby 1.8; so, masking Ruby 1.9 USE flag
@@ -600,7 +587,6 @@ media-sound/clementine ios
 # GL/GLES support in cairo is mutually exclusive, bug #428770.
 x11-libs/cairo gles2
 dev-libs/weston rpi
-<dev-libs/weston-1.9.0 gles2
 
 # Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2013)
 # mask because requires unstable depends not ready for the stabilization
@@ -631,10 +617,6 @@ dev-python/pyocr cuneiform
 # Michael Weber <xmw@gentoo.org> (23 Mar 2013)
 # Does not build.
 =media-libs/oyranos-0.9.4* fltk
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (19 Mar 2013)
-# Depends on special llvm-3.2 branch from tstellar
-=media-libs/mesa-9.1* r600-llvm-compiler video_cards_radeonsi
 
 # Christoph Junghans <ottxor@gentoo.org> (10 Mar 2013)
 # log4cxx has known memory leaking issues wrt bug #287697,
@@ -744,10 +726,6 @@ dev-db/firebird client
 # Requires icc which does not emerge (distfile unavailable)
 media-libs/opencv ipp
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 May 2012)
-# Causes crashes and build failures, not needed by any package, bug #412177
-x11-libs/cairo qt4
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
@@ -836,10 +814,6 @@ dev-libs/glib systemtap
 # incompatible with >=sci-mathematics/octave-3.4.0
 sci-libs/mathgl octave
 
-# Luca Barbato <lu_zero@gentoo.org> (28 Mar 2011)
-# Mask mplayer2 arch specific flags
-media-video/mplayer2 bluray
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
 #
 # Mask pdnsd's Linux-specific USE flags.
@@ -856,11 +830,6 @@ net-dns/pdnsd isdn urandom
 # Alex Legler <a3li@gentoo.org> (1 Sep 2010)
 # This feature is marked as experimental by upstream.
 dev-lang/ruby-enterprise fastthreading
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox ipc
 
 # Tomas Touceda <chiiph@gentoo.org> (13 Apr 2010)
 # Masked because libsvm module is broken with this release on every arch.
@@ -881,10 +850,6 @@ media-sound/pulseaudio system-wide
 # 299674
 >net-misc/wicd-1.6.2.2 ioctl
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (6 Jan 2010)
-# Still not really functional, upstream requires not building it.
-x11-libs/cairo gallium
-
 # Alexey Shvetsov <alexxy@gentoo.org> (3 Dec 2009)
 # Mask very experimental mpi use flag dfor gamess
 sci-chemistry/gamess mpi
@@ -901,10 +866,6 @@ media-gfx/k3d cuda
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (10 Sep 2009)
-# quakeforge has video_cards_tdfx enabled only for x86
-games-fps/quakeforge video_cards_tdfx
 
 # Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
 # mask cuda for boinc. Works only on amd64 and x86

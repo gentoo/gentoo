@@ -237,8 +237,6 @@ app-emulation/xen-tools system-qemu
 # Markus Meier <maekke@gentoo.org> (25 Feb 2014)
 # stable reverse deps of media-libs/libquvi, bug #495254
 =dev-libs/totem-pl-parser-2.32.6-r3 quvi
-=media-video/mplayer2-2.0_p20130126 quvi
-=media-video/mplayer2-2.0_p20130428-r1 quvi
 
 # Markus Meier <maekke@gentoo.org> (23 Feb 2014)
 # Needs sci-physics/bullet tested #499974
