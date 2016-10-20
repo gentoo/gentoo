@@ -4,15 +4,15 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic git-r3
+inherit autotools eutils flag-o-matic vcs-snapshot
 
 DESCRIPTION="A libav/ffmpeg based source library for easy frame accurate access"
 HOMEPAGE="https://github.com/FFMS/ffms2"
-EGIT_REPO_URI=( {https,git}://github.com/FFMS/ffms2.git )
+SRC_URI="https://github.com/FFMS/ffms2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="libav"
 
 RDEPEND="
