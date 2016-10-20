@@ -1,0 +1,30 @@
+Install ressources in ros_packages subdir. We force catkin to install packages
+there, so move them too.
+
+Index: rviz-1.12.3/CMakeLists.txt
+===================================================================
+--- rviz-1.12.3.orig/CMakeLists.txt
++++ rviz-1.12.3/CMakeLists.txt
+@@ -220,17 +220,17 @@ include_directories(src ${catkin_INCLUDE
+ add_subdirectory(src)
+ 
+ install(DIRECTORY ogre_media
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
++	DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}
+ )
+ install(DIRECTORY icons
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
++	DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}
+ )
+ install(DIRECTORY images
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
++	DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}
+ )
+ install(FILES default.rviz
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
++	DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}
+ )
+ install(FILES plugin_description.xml
+-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
++	DESTINATION ${CATKIN_GLOBAL_SHARE_DESTINATION}/ros_packages/${PROJECT_NAME}
+ )

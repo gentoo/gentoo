@@ -60,7 +60,7 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_USEDEP}]
 		dev-cpp/gtest
 	)"
-PATCHES=( "${FILESDIR}/urdfdom1-2.patch" )
+PATCHES=( "${FILESDIR}/urdfdom1-2.patch" "${FILESDIR}/install_loc.patch" )
 
 src_configure() {
 	local mycatkincmakeargs=( "-DUseQt5=ON" )
