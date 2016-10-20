@@ -339,11 +339,6 @@ media-libs/libbluray bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (18 Feb 2015)
-# Experimental backend, plus it requires openvg support in mesa which is
-# now disabled in >=mesa-10.4 (bug #536434)
-x11-libs/cairo openvg
-
 # Andrew Savchenko <bircoph@gentoo.org> (11 Feb 2015)
 # Cluster code is still under development, only base functionality
 # is implemented. Masking for testing and evaluation.
@@ -744,10 +739,6 @@ dev-db/firebird client
 # Requires icc which does not emerge (distfile unavailable)
 media-libs/opencv ipp
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 May 2012)
-# Causes crashes and build failures, not needed by any package, bug #412177
-x11-libs/cairo qt4
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
@@ -876,10 +867,6 @@ media-sound/pulseaudio system-wide
 # will eventually be removed unless the backend is re-written by upstream. bug
 # 299674
 >net-misc/wicd-1.6.2.2 ioctl
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (6 Jan 2010)
-# Still not really functional, upstream requires not building it.
-x11-libs/cairo gallium
 
 # Alexey Shvetsov <alexxy@gentoo.org> (3 Dec 2009)
 # Mask very experimental mpi use flag dfor gamess
