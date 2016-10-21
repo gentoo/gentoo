@@ -5164,7 +5164,7 @@ dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) 
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
-dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1 1.7.0: Regular expression library for OCaml
+dev-ml/ocaml-re 1.7.0 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.0 0.3.1 0.3.2 0.3.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
