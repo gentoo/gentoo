@@ -20,7 +20,7 @@ SRC_URI="http://c591116.r16.cf2.rackcdn.com/${PN}/nightly/Linux/${INSTALLER}"
 LICENSE="all-rights-reserved"
 SLOT="0/${MY_PV}"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="mpich openmpi openmpi2"
 
 DEPEND="!!app-arch/rpm"
 RDEPEND="!dev-lang/ekopath:${MY_PV}"
@@ -71,4 +71,15 @@ src_install() {
 	rm -r "${ED}/opt/${MY_P}"/uninstall* || die
 	dosym ${MY_P} /opt/${PN}
 	doenvd 99${PN}
+
+	# cleanup
+	if ! use mpich; then
+		rm -r "${ED}/opt/${MY_P}/mpi/mpich" || die
+	fi
+	if ! use openmpi; then
+		rm -r "${ED}/opt/${MY_P}/mpi"/openmpi-1.* || die
+	fi
+	if ! use openmpi2; then
+		rm -r "${ED}/opt/${MY_P}/mpi"/openmpi-2.* || die
+	fi
 }
