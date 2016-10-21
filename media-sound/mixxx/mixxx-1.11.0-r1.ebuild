@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="aac debug doc hid mp3 mp4 pulseaudio shout vamp wavpack"
 
 RDEPEND="
 	dev-libs/protobuf:=
-	dev-libs/libusb:1
+	virtual/libusb:1
 	>=media-libs/fidlib-0.9.10-r1
 	media-libs/flac
 	media-libs/libid3tag
@@ -37,11 +37,11 @@ RDEPEND="
 	dev-qt/qtsql:4
 	aac? (
 		media-libs/faad2
-		media-libs/libmp4v2:0
+		media-libs/libmp4v2:0=
 	)
 	hid? ( dev-libs/hidapi )
 	mp3? ( media-libs/libmad )
-	mp4? ( media-libs/libmp4v2 )
+	mp4? ( media-libs/libmp4v2:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	shout? ( media-libs/libshout )
 	wavpack? ( media-sound/wavpack )
