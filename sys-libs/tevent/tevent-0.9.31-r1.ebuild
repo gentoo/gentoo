@@ -54,3 +54,8 @@ multilib_src_install() {
 
 	multilib_is_native_abi && use python && python_domodule tevent.py
 }
+
+multilib_src_install_all() {
+	insinto /usr/include
+	doins tevent_internal.h
+}

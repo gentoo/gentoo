@@ -572,7 +572,9 @@ sci-mathematics/agda-executable
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
+# Masked the possible fixed samba version until more testing has been performed.
 >=sys-libs/tevent-0.9.30
+>=net-fs/samba-4.5.0-r1
 
 # Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
 # Python 3.3 will be removed from Gentoo in 30 days.
