@@ -7437,7 +7437,7 @@ dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/inflect 0.2.5: Correctly inflect words and numbers
 dev-python/inflection 0.3.1: A port of Ruby on Rails inflector to Python
 dev-python/influxdb 2.12.0: InfluxDB client
-dev-python/iniparse 0.4-r1: Better INI parser for Python
+dev-python/iniparse 0.4-r1 0.4-r2: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
 dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
 dev-python/into 0.1.3 0.2.1 0.2.2: Data migration utilities
@@ -8373,7 +8373,7 @@ dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.2 4.3.1: A configuration system for Python applications
 dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
-dev-python/translate-toolkit 1.12.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 1.12.0 2.0.0_beta6: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 0.2.1: Python requests like API built on top of Twisted's HTTP client.
@@ -8422,7 +8422,7 @@ dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
 dev-python/urllib3 1.10.4 1.12 1.13.1-r1 1.14 1.16: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.0 1.3.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.1.1: Tree widgets for urwid
-dev-python/utidylib 0.2-r2: TidyLib Python wrapper
+dev-python/utidylib 0.2-r2 0.3: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.4.20 0.5.3: Ultra-fast implementation of asyncio event loop on top of libuv.
 dev-python/vatnumber 1.1: Module to validate VAT numbers
@@ -8440,7 +8440,7 @@ dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-rel
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
 dev-python/visual 5.74-r1: Real-time 3D graphics library for Python
-dev-python/vobject 0.8.1c-r1: A full featured Python package for parsing and generating vCard and vCalendar files
+dev-python/vobject 0.8.1c-r1 0.9.3: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.9.3: A Python data validation library.
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
 dev-python/w3lib 1.11.0 1.13.0: Python library of web-related functions
