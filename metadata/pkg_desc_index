@@ -5072,7 +5072,7 @@ dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/luvit 0.7.0 0.8.2 9999: Takes node.js' architecture and dependencies and fits it in the Lua language
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
-dev-lua/mpack 1.0.2: Lua bindings for libmpack
+dev-lua/mpack 1.0.2 1.0.3: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
