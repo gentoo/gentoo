@@ -1,7 +1,7 @@
 DEFINED_PHASES=prepare
 DEPEND=x11-libs/gtk+:2
 DESCRIPTION=Microwave and RF transmission line calculator
-EAPI=4
+EAPI=6
 HOMEPAGE=http://transcalc.sourceforge.net
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -9,5 +9,4 @@ RDEPEND=x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://transcalc.sourceforge.net/transcalc-0.14.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=9bfe2fdba341f0b2d44f5b40a1856026
+_md5_=6c4b1e979abee7f63df62a6978717b64

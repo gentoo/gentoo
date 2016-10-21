@@ -2813,7 +2813,7 @@ dev-ada/charles 20050913: Posix bindings for Ada
 dev-ada/glade 2006.0: An implementation of the Distributed Systems Annex for the GNAT compiler
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
-dev-cpp/asio 1.4.5 1.4.8-r1 1.10.6: Asynchronous Network Library
+dev-cpp/asio 1.4.5 1.4.8-r1 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.5.0 1.5.6 1.5.7 9999: Modern C++ header-only framework for unit-tests
@@ -4421,7 +4421,7 @@ dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: Java
 dev-lang/coffee-script 1.9.3-r1 1.10.0-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3 0.19.4: The Crystal Programming Language
-dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100: PathScale EKOPath Compiler Suite
+dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 17.5 18.3 19.0 19.1: Erlang programming language, runtime environment and libraries (OTP)
@@ -14346,7 +14346,7 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.9.0.2 1.10.0.1: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.9.0.2 1.10.0.1-r1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.7 0.10.11: Official desktop client for Telegram (binary package)
@@ -15694,19 +15694,19 @@ sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition con
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/calculator 1.6.43 1.7.49 1.7.54: Scientific calculator based on the FOX Toolkit
 sci-calculators/galculator 2.1.3 2.1.4: GTK+ based algebraic and RPN calculator
-sci-calculators/gonvert 0.2.25 0.2.32 0.2.39: Unit conversion utility written in PyGTK
-sci-calculators/grpn 1.3.4 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
-sci-calculators/hcalc 1.0-r1 1.2: DJ's Hex Calculator
-sci-calculators/hexcalc 1.11-r2: A simple hex calculator for X
+sci-calculators/gonvert 0.2.32 0.2.39: Unit conversion utility written in PyGTK
+sci-calculators/grpn 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
+sci-calculators/hcalc 1.0-r1 1.2-r1: DJ's Hex Calculator
+sci-calculators/hexcalc 1.11-r2 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.2.3: A universal currency converter and calculator
 sci-calculators/orpie 1.5.1 1.5.1-r1 1.5.2 1.5.2-r1: A fullscreen RPN calculator for the console
-sci-calculators/pcalc 2 3: the programmers calculator
+sci-calculators/pcalc 2 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calculator
-sci-calculators/qalculator 0.4b: A Qt4 based small calculator application
+sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
 sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator for power users
-sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
+sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
-sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
+sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.4 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
@@ -17388,7 +17388,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 4.1.15-r1 4.1.33 4.1.34 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.4.25 4.4.26 4.7.7 4.7.8 4.7.9 4.8.0 4.8.1 4.8.2 4.8.3: Full sources including the Gentoo patchset for the 4.8 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.63 3.12.66 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 4.1.15-r1 4.1.33 4.1.34 4.4.6 4.4.19 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.4.25 4.4.26 4.7.7 4.7.8 4.7.9 4.8.0 4.8.1 4.8.2 4.8.3: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.9_rc1: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
