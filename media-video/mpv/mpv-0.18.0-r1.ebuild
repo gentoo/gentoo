@@ -95,7 +95,7 @@ COMMON_DEPEND="
 		media-libs/mesa[egl,gles2]
 	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba )
+	samba? ( net-fs/samba[smbclient(+)] )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
 	vaapi? ( >=x11-libs/libva-1.4.0[drm?,X?,wayland?] )
