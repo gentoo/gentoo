@@ -14873,7 +14873,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 0.10.0.1 0.10.1.0: A high-throughput distributed messaging system
-net-misc/kea 1.0.0: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.1.0: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.7.7: The KDE Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
