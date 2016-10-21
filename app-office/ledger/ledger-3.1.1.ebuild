@@ -35,7 +35,10 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/utfcpp
-	doc? ( sys-apps/texinfo )
+	doc? (
+		sys-apps/texinfo
+		dev-texlive/texlive-texinfo
+	)
 "
 
 DOCS=(README.md)
@@ -44,7 +47,7 @@ DOCS=(README.md)
 # RAM(!)  Since the memory check in check-reqs doesn't count swap, it
 # may be unfair to fail the build entirely on the memory test alone.
 # Therefore check-reqs_pkg_pretend is deliberately omitted so that we
-# ewarn but not not eerror.
+# ewarn but not eerror.
 pkg_pretend() {
 	:
 }
