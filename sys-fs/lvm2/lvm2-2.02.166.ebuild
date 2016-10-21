@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils linux-info multilib systemd toolchain-funcs udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
@@ -12,14 +12,22 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd clvm cman lvm1 lvm2create_initrd selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !clvm !cman !lvm1 !lvm2create_initrd !thin )
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="readline static static-libs systemd clvm cman corosync lvm1 lvm2create_initrd openais selinux +udev +thin device-mapper-only"
+REQUIRED_USE="device-mapper-only? ( !clvm !cman !corosync !lvm1 !lvm2create_initrd !openais !thin )
 	systemd? ( udev )
-	static? ( !udev )" #520450
+	clvm? ( !systemd )"
 
-DEPEND_COMMON="clvm? ( cman? ( =sys-cluster/cman-3* ) =sys-cluster/libdlm-3* )
+DEPEND_COMMON="
+	clvm? (
+		cman? ( =sys-cluster/cman-3* )
+		corosync? ( sys-cluster/corosync )
+		openais? ( sys-cluster/openais )
+		=sys-cluster/libdlm-3*
+	)
+
 	readline? ( sys-libs/readline:0= )
+	systemd? ( >=sys-apps/systemd-205:0= )
 	udev? ( >=virtual/libudev-208:=[static-libs?] )"
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
@@ -34,16 +42,34 @@ RDEPEND="${DEPEND_COMMON}
 	lvm2create_initrd? ( sys-apps/makedev )
 	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
+# USE 'static' currently only works with eudev, bug 520450
 DEPEND="${DEPEND_COMMON}
 	virtual/pkgconfig
 	>=sys-devel/binutils-2.20.1-r1
+	sys-devel/autoconf-archive
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
-		udev? ( >=virtual/libudev-208:=[static-libs] )
+		udev? ( >=sys-fs/eudev-3.1.2[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
 	)"
 
 S=${WORKDIR}/${PN/lvm/LVM}.${PV}
+
+PATCHES=(
+	# Gentoo specific modification(s):
+	"${FILESDIR}"/${PN}-2.02.129-example.conf.in.patch
+
+	# For upstream -- review and forward:
+	"${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch
+	"${FILESDIR}"/${PN}-2.02.56-lvm2create_initrd.patch
+	"${FILESDIR}"/${PN}-2.02.67-createinitrd.patch #301331
+	"${FILESDIR}"/${PN}-2.02.99-locale-muck.patch #330373
+	"${FILESDIR}"/${PN}-2.02.70-asneeded.patch # -Wl,--as-needed
+	"${FILESDIR}"/${PN}-2.02.139-dynamic-static-ldflags.patch #332905
+	"${FILESDIR}"/${PN}-2.02.129-static-pkgconfig-libs.patch #370217, #439414 + blkid
+	"${FILESDIR}"/${PN}-2.02.130-pthread-pkgconfig.patch #492450
+	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~SYSVIPC"
@@ -70,8 +96,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Gentoo specific modification(s):
-	epatch "${FILESDIR}"/${PN}-2.02.108-example.conf.in.patch
+	default
 
 	sed -i \
 		-e "1iAR = $(tc-getAR)" \
@@ -89,16 +114,6 @@ src_prepare() {
 
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
 
-	# For upstream -- review and forward:
-	epatch "${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch
-	epatch "${FILESDIR}"/${PN}-2.02.56-lvm2create_initrd.patch
-	epatch "${FILESDIR}"/${PN}-2.02.67-createinitrd.patch #301331
-	epatch "${FILESDIR}"/${PN}-2.02.99-locale-muck.patch #330373
-	epatch "${FILESDIR}"/${PN}-2.02.70-asneeded.patch # -Wl,--as-needed
-	epatch "${FILESDIR}"/${PN}-2.02.92-dynamic-static-ldflags.patch #332905
-	epatch "${FILESDIR}"/${PN}-2.02.108-static-pkgconfig-libs.patch #370217, #439414 + blkid
-	epatch "${FILESDIR}"/${PN}-2.02.106-pthread-pkgconfig.patch #492450
-
 	# Without thin-privision-tools, there is nothing to install for target install_man7:
 	use thin || { sed -i -e '/^install_lvm2/s:install_man7::' man/Makefile.in || die; }
 
@@ -107,15 +122,15 @@ src_prepare() {
 
 src_configure() {
 	filter-flags -flto
-	local myconf
+	local myconf=()
 	local buildmode
 
-	myconf="${myconf} $(use_enable !device-mapper-only dmeventd)"
-	myconf="${myconf} $(use_enable !device-mapper-only cmdlib)"
-	myconf="${myconf} $(use_enable !device-mapper-only applib)"
-	myconf="${myconf} $(use_enable !device-mapper-only fsadm)"
-	myconf="${myconf} $(use_enable !device-mapper-only lvmetad)"
-	use device-mapper-only && myconf="${myconf} --disable-udev-systemd-background-jobs"
+	myconf+=( $(use_enable !device-mapper-only dmeventd) )
+	myconf+=( $(use_enable !device-mapper-only cmdlib) )
+	myconf+=( $(use_enable !device-mapper-only applib) )
+	myconf+=( $(use_enable !device-mapper-only fsadm) )
+	myconf+=( $(use_enable !device-mapper-only lvmetad) )
+	use device-mapper-only && myconf+=( --disable-udev-systemd-background-jobs )
 
 	# Most of this package does weird stuff.
 	# The build options are tristate, and --without is NOT supported
@@ -123,7 +138,7 @@ src_configure() {
 	if use static; then
 		buildmode="internal"
 		# This only causes the .static versions to become available
-		myconf="${myconf} --enable-static_link"
+		myconf+=( --enable-static_link )
 	else
 		buildmode="shared"
 	fi
@@ -131,30 +146,30 @@ src_configure() {
 
 	# dmeventd requires mirrors to be internal, and snapshot available
 	# so we cannot disable them
-	myconf="${myconf} --with-mirrors=${dmbuildmode}"
-	myconf="${myconf} --with-snapshots=${dmbuildmode}"
+	myconf+=( --with-mirrors=${dmbuildmode} )
+	myconf+=( --with-snapshots=${dmbuildmode} )
 	if use thin; then
-		myconf="${myconf} --with-thin=internal --with-cache=internal"
+		myconf+=( --with-thin=internal --with-cache=internal )
 		local texec
 		for texec in check dump repair restore; do
-			myconf="${myconf} --with-thin-${texec}=${EPREFIX}/sbin/thin_${texec}"
-			myconf="${myconf} --with-cache-${texec}=${EPREFIX}/sbin/cache_${texec}"
+			myconf+=( --with-thin-${texec}="${EPREFIX}"/sbin/thin_${texec} )
+			myconf+=( --with-cache-${texec}="${EPREFIX}"/sbin/cache_${texec} )
 		done
 	else
-		myconf="${myconf} --with-thin=none --with-cache=none"
+		myconf+=( --with-thin=none --with-cache=none )
 	fi
 
 	if use lvm1; then
-		myconf="${myconf} --with-lvm1=${buildmode}"
+		myconf+=( --with-lvm1=${buildmode} )
 	else
-		myconf="${myconf} --with-lvm1=none"
+		myconf+=( --with-lvm1=none )
 	fi
 
 	# disable O_DIRECT support on hppa, breaks pv detection (#99532)
-	use hppa && myconf="${myconf} --disable-o_direct"
+	use hppa && myconf+=( --disable-o_direct )
 
 	if use clvm; then
-		myconf="${myconf} --with-cluster=${buildmode}"
+		myconf+=( --with-cluster=${buildmode} )
 		# 4-state! Make sure we get it right, per bug 210879
 		# Valid options are: none, cman, gulm, all
 		#
@@ -168,11 +183,13 @@ src_configure() {
 		local clvmd=""
 		use cman && clvmd="cman"
 		#clvmd="${clvmd/cmangulm/all}"
+		use corosync && clvmd="${clvmd:+$clvmd,}corosync"
+		use openais && clvmd="${clvmd:+$clvmd,}openais"
 		[ -z "${clvmd}" ] && clvmd="none"
-		myconf="${myconf} --with-clvmd=${clvmd}"
-		myconf="${myconf} --with-pool=${buildmode}"
+		myconf+=( --with-clvmd=${clvmd} )
+		myconf+=( --with-pool=${buildmode} )
 	else
-		myconf="${myconf} --with-clvmd=none --with-cluster=none"
+		myconf+=( --with-clvmd=none --with-cluster=none )
 	fi
 
 	econf \
@@ -193,8 +210,8 @@ src_configure() {
 		$(use_enable udev udev_sync) \
 		$(use_with udev udevdir "$(get_udevdir)"/rules.d) \
 		$(use_enable systemd udev-systemd-background-jobs) \
-		"$(systemd_with_unitdir)" \
-		${myconf} \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		${myconf[@]} \
 		CLDFLAGS="${LDFLAGS}"
 }
 
@@ -213,7 +230,9 @@ src_compile() {
 
 src_install() {
 	local inst
-	INSTALL_TARGETS="install install_systemd_units install_systemd_generators install_tmpfiles_configuration"
+	INSTALL_TARGETS="install install_tmpfiles_configuration"
+	# install systemd related files only when requested, bug #522430
+	use systemd && INSTALL_TARGETS="${INSTALL_TARGETS} install_systemd_units install_systemd_generators"
 	use device-mapper-only && INSTALL_TARGETS="install_device-mapper"
 	for inst in ${INSTALL_TARGETS}; do
 		emake DESTDIR="${D}" ${inst}
@@ -224,11 +243,11 @@ src_install() {
 
 	if use !device-mapper-only ; then
 		newinitd "${FILESDIR}"/dmeventd.initd-2.02.67-r1 dmeventd
-		newinitd "${FILESDIR}"/lvm.rc-2.02.105-r2 lvm
+		newinitd "${FILESDIR}"/lvm.rc-2.02.116-r6 lvm
 		newconfd "${FILESDIR}"/lvm.confd-2.02.28-r2 lvm
 
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-2.02.105-r2 lvm-monitoring
-		newinitd "${FILESDIR}"/lvmetad.initd-2.02.105-r2 lvmetad
+		newinitd "${FILESDIR}"/lvmetad.initd-2.02.116-r3 lvmetad
 	fi
 
 	if use clvm; then
