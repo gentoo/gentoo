@@ -44,6 +44,8 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 	dodir /var/lib/${PN}
 	fowners ${PN}:${PN} /var/lib/${PN}
 	fperms 755 /var/lib/${PN}
