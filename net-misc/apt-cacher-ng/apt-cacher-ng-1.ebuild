@@ -55,16 +55,16 @@ pkg_setup() {
 }
 
 src_configure(){
-	mycmakeargs="-DCMAKE_INSTALL_PREFIX=/usr"
+	mycmakeargs=( "-DCMAKE_INSTALL_PREFIX=/usr" )
 	if use fuse; then
-		mycmakeargs="-DHAVE_FUSE_25=yes ${mycmakeargs}"
+		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )
 	else
-		mycmakeargs="-DHAVE_FUSE_25=no ${mycmakeargs}"
+		mycmakeargs+=( "-DHAVE_FUSE_25=no" )
 	fi
 	if use tcpd; then
-		mycmakeargs="-DHAVE_LIBWRAP=yes ${mycmakeargs}"
+		mycmakeargs=( "-DHAVE_LIBWRAP=yes" )
 	else
-		mycmakeargs="-DHAVE_LIBWRAP=no ${mycmakeargs}"
+		mycmakeargs=( "-DHAVE_LIBWRAP=no" )
 	fi
 
 	cmake-utils_src_configure
@@ -90,7 +90,7 @@ src_install() {
 	fi
 
 	# Documentation
-	dodoc README TODO VERSION INSTALL ChangeLog
+	dodoc doc/README TODO VERSION INSTALL ChangeLog
 	if use doc; then
 		dodoc doc/*.pdf
 		dohtml doc/html/*
