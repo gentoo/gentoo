@@ -7872,6 +7872,7 @@ www-apache/mod_musicindex:archive - Add archive support
 www-apache/mod_musicindex:cache - Add File cache support
 www-apache/mod_musicindex:mysql - Add MySQL cache support
 www-apache/mod_nss:ecc - enable Elliptical Curve Cyptography
+www-apache/mod_perl:ithreads - Build for use with thread-capable perl, needs same setting as in dev-lang/perl
 www-apache/mod_security:curl - Build the ModSecurity Audit Log Collector (mlogc) that depends on net-misc/curl.
 www-apache/mod_security:geoip - Configure ModSecurity to query the GeoIP database from MaxMind, provided by dev-libs/geoip. This flag only controls the default configuration, as the GeoIP query code is part of ModSecurity's source code.
 www-apache/mod_security:jit - Add support for the PCRE Just-in-Time optimisation, as enabled by dev-libs/libpcre with jit USE flag enabled. Might not be available on hardened systems.

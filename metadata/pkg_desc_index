@@ -17817,7 +17817,7 @@ www-apache/mod_mono 2.10: Apache module for Mono
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.12 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
-www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601 2.0.10_rc1: An embedded Perl interpreter for Apache2
+www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601 2.0.10_rc1-r1: An embedded Perl interpreter for Apache2
 www-apache/mod_python 3.5.0 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6 0.6-r1: Reverse proxy add forward module
