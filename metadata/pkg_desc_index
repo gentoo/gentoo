@@ -17327,7 +17327,7 @@ sys-fs/loop-aes 3.7b 3.7c 3.7e 3.7f 3.7h: Linux kernel module to encrypt disk pa
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2 2.02.166: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 2.0.3 2.0.4: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.2.6-r1 3.3.1-r2 3.3.4 3.4: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
