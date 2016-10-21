@@ -12497,7 +12497,7 @@ media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.20-r1 0.21 0.21-r1 0.22: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1: Commandline tool for popular vector formats convertion
-media-gfx/valentina 0.4.2-r3 9999: Cloth patternmaking software
+media-gfx/valentina 0.4.2-r3 0.4.5 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.4 1.6: Fast and simple image viewer
