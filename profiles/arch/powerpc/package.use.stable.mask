@@ -17,6 +17,10 @@
 #
 
 #--- END OF EXAMPLES ---
+# Michael Palimaka <kensington@gentoo.org> (21 Oct 2016)
+# Requires media-libs/opencv which is not stable
+media-plugins/frei0r-plugins facedetect
+media-video/vlc opencv
 
 # Michael Palimaka <kensington@gentoo.org> (25 May 2016)
 # Dependencies not stable
