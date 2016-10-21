@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib scons-utils toolchain-funcs
+inherit flag-o-matic scons-utils toolchain-funcs
 
 DESCRIPTION="A advanced Digital DJ tool based on Qt"
 HOMEPAGE="http://www.mixxx.org/"
@@ -23,7 +23,7 @@ REQUIRED_USE="^^ ( qt4 qt5 )"
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
 RDEPEND="dev-db/sqlite
-	dev-libs/libusb:1
+	virtual/libusb:1
 	dev-libs/protobuf
 	media-libs/chromaprint
 	media-libs/flac
@@ -93,6 +93,8 @@ src_prepare() {
 
 src_configure() {
 	local myqtdir=qt5
+	local myoptimize=0
+
 	if use qt4 ; then
 		myqtdir="qt4"
 	fi
@@ -101,6 +103,15 @@ src_configure() {
 		# Required for >=qt-5.7.0 (bug #590690)
 		append-cxxflags -std=c++11
 	fi
+
+	# Try to get cpu type based on CFLAGS.
+	# Bug #591968
+	for i in $(get-flag mcpu) $(get-flag march) ; do
+		if [[ ${i} = native ]] ; then
+			myoptimize="native"
+			break
+		fi
+	done
 
 	myesconsargs=(
 		prefix="${EPREFIX}/usr"
@@ -111,7 +122,7 @@ src_configure() {
 		hifieq=1
 		m4a="$(usex mp4 1 0)"
 		mad="$(usex mp3 1 0)"
-		optimize=native
+		optimize="${myoptimize}"
 		qdebug="$(usex debug 1 0)"
 		qt5="$(usex qt5 1 0)"
 		shoutcast="$(usex shout 1 0)"
