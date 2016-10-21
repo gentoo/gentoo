@@ -7446,7 +7446,7 @@ dev-python/ioflo 1.0.2 1.2.1 1.5.0: Automated Reasoning Engine and Flow Based Pr
 dev-python/ip-associations-python-novaclient-ext 0.2: Disk Config extension for python-novaclient
 dev-python/ipaddr 2.1.10-r1 2.1.11: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.16: IPv4/IPv6 manipulation library, backport of the ipaddress module
-dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
+dev-python/ipcalc 1.1.3: IP subnet calculator
 dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
@@ -8265,7 +8265,7 @@ dev-python/simplekv 0.9.2 0.9.3 0.10.0: A key-value storage for binary data, sup
 dev-python/simpleparse 2.1.1 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simples3 1.0: A fairly simple, decently quick python interface to Amazon's S3 storage service
 dev-python/simplesettings 0.5-r1: Simple settings initialization
-dev-python/simpy 2.3.1-r1 3.0.3 3.0.8: Simulation in Python is an object-oriented, process-based discrete-event simulation language
+dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.16.2 4.16.9 4.18 4.18.1 4.9999: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0: Python 2 and 3 compatibility library
