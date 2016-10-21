@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="http://cryptopp.com"
@@ -20,6 +20,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}"
 
 src_configure() {
+	append-flags -fPIC # bug#597514
+
 	local mycmakeargs=(
 		-DBUILD_SHARED=ON
 		-DBUILD_STATIC=$(usex static-libs ON $(usex test ON OFF))
