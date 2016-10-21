@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dagwieers/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="wifi doc examples"
 
 RDEPEND="wifi? ( net-wireless/python-wifi )"
