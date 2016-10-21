@@ -14,7 +14,7 @@ SRC_URI="https://dist.apache.org/repos/dist/dev/perl/mod_perl-2.0.10-rc1.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug test apache2_mpms_event apache2_mpms_worker apache2_mpms_prefork"
+IUSE="debug ithreads test"
 
 S=${WORKDIR}/${P/_rc1/-rc1}
 
@@ -29,11 +29,10 @@ SRC_TEST=do
 # default one, which will likely need threading...
 
 RDEPEND="
+	dev-lang/perl[ithreads=]
 	>=dev-perl/Apache-Test-1.400.0
 	>=www-servers/apache-2.0.47
-	apache2_mpms_event? ( dev-lang/perl[ithreads] )
-	apache2_mpms_worker? ( dev-lang/perl[ithreads] )
-	!apache2_mpms_event? ( !apache2_mpms_worker? ( !apache2_mpms_prefork? ( dev-lang/perl[ithreads] ) ) )
+	!ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] )
 "
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
@@ -74,12 +73,14 @@ src_prepare() {
 
 src_configure() {
 	local debug=$(usex debug 1 0)
+	local nothreads=$(usex ithreads 0 1)
 	myconf=(
 		MP_USE_DSO=1
 		MP_APXS=${APXS}
 		MP_APR_CONFIG=/usr/bin/apr-1-config
 		MP_TRACE=${debug}
 		MP_DEBUG=${debug}
+		MP_NO_THREADS=${nothreads}
 	)
 
 	perl-module_src_configure
