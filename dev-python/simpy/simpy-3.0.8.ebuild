@@ -11,7 +11,7 @@ inherit distutils-r1
 
 MY_P="${P/simpy/SimPy}"
 
-DESCRIPTION="Simulation in Python is an object-oriented, process-based discrete-event simulation language"
+DESCRIPTION="Object-oriented, process-based discrete-event simulation language"
 HOMEPAGE="http://simpy.readthedocs.org/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
