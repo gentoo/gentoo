@@ -15896,7 +15896,7 @@ sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-res
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
 sci-geosciences/harmonics-dwf-free 20121224 20131228: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
-sci-geosciences/josm 8800 9060 9900 10327 99999: Java-based editor for the OpenStreetMap project
+sci-geosciences/josm 10327 10966 99999: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
