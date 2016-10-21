@@ -16323,7 +16323,7 @@ sci-visualization/gcalc 3.1_rc1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.8 2.1.9-r1 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
-sci-visualization/gnuplot 4.6.5 5.0.1-r1 5.0.3 5.0.4 5.0.9999 5.1.9999: Command-line driven interactive plotting program
+sci-visualization/gnuplot 4.6.5 5.0.1-r1 5.0.4 5.0.9999 5.1.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.22-r2 5.1.22-r3 5.1.23 5.1.23-r1: Motif based XY-plotting tool
 sci-visualization/gri 2.12.19 2.12.23: Language for scientific graphics programming
 sci-visualization/gwyddion 2.39 2.44: Framework for Scanning Mode Microscopy data analysis
