@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils qt4-r2
+EAPI=6
+inherit eutils qmake-utils
 
 DESCRIPTION="A Qt4 based small calculator application"
 HOMEPAGE="http://www.qt-apps.org/content/show.php/Qalculator?content=101326"
@@ -14,9 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-qt/qtgui:4"
+RDEPEND="dev-qt/qtgui:4"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${P}-src
+S="${WORKDIR}/${P}-src"
+
+src_configure() {
+	eqmake4 Qalculator.pro
+}
 
 src_install() {
 	dobin Qalculator

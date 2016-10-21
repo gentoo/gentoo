@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -19,6 +19,7 @@ DEPEND="sys-devel/flex"
 RDEPEND=""
 
 src_prepare() {
+	default
 	sed -i -e "s:/usr:${EPREFIX}/usr:g" Makefile || die
 }
 

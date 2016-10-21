@@ -1,9 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Microwave and RF transmission line calculator"
 HOMEPAGE="http://transcalc.sourceforge.net"
@@ -15,14 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-DEPEND="x11-libs/gtk+:2"
-RDEPEND="${DEPEND}"
+RDEPEND="x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
+
+# patch from debian
+PATCHES=( "${FILESDIR}"/${P}-fd-perm.patch )
 
 src_prepare() {
 	# respect flags
 	sed -i -e 's|^CFLAGS=|#CFLAGS=|g' configure || die
-	# patch from debian
-	epatch "${FILESDIR}"/${P}-fd-perm.patch
+	default
 	# syntax errors
 	sed -i \
 		-e 's/ythesize/ynthesize/g' \

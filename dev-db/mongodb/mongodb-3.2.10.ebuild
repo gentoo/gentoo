@@ -31,7 +31,7 @@ RDEPEND=">=app-arch/snappy-1.1.2
 	mms-agent? ( app-admin/mms-agent )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1g:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/gcc-4.8.2:*
@@ -101,8 +101,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.2.0-fix-scons.patch" \
-		"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch"
+	epatch \
+		"${FILESDIR}/${PN}-3.2.0-fix-scons.patch" \
+		"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch" \
+		"${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
 	epatch_user
 }
 

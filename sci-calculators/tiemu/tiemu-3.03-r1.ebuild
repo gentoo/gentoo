@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Texas Instruments hand-helds emulator"
@@ -30,11 +30,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	xinerama? ( x11-proto/xineramaproto )"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-remove_depreciated_gtk_calls.patch \
-		"${FILESDIR}"/${P}-r2820.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-remove_depreciated_gtk_calls.patch
+	"${FILESDIR}"/${P}-r2820.patch
+)
 
+src_prepare() {
+	default
 	# Don't use GTK_DISABLE_DEPRECATED flags
 	sed 's:-DGTK_DISABLE_DEPRECATED::g' -i configure.ac configure || die
 }
@@ -55,7 +57,7 @@ src_configure() {
 
 src_install() {
 	default
-	rm -f "${ED}"usr/share/tiemu/{Manpage.txt,COPYING,RELEASE,AUTHORS,LICENSES}
+	rm -f "${ED%/}"/usr/share/tiemu/{Manpage.txt,COPYING,RELEASE,AUTHORS,LICENSES} || die
 	make_desktop_entry tiemu "TiEmu Calculator" \
 		"${EPREFIX}"/usr/share/tiemu/pixmaps/icon.xpm
 }
