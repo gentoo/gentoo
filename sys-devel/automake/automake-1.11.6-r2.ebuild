@@ -30,6 +30,7 @@ src_prepare() {
 	chmod a+rx tests/*.test
 	export HELP2MAN=true
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
+	export TZ="UTC"  #589138
 }
 
 src_configure() {
