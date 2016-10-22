@@ -11,5 +11,5 @@ RDEPEND=>=dev-perl/Apache-Test-1.360 >=dev-perl/CGI-3.08 dev-lang/perl[ithreads]
 SLOT=1
 SRC_URI=mirror://apache/perl/mod_perl-2.0.8.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_unpack:perl-module src_prepare:- src_configure:- src_compile:perl-module src_test:- src_install:-
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=6fb32b5a114e7110bcd0897720917723

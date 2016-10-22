@@ -9,5 +9,5 @@ LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=GentiumPlus-5.000.zip&filename=GentiumPlus-5.000.zip -> sil-gentium-5.000.zip compact? ( http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=GentiumPlusCompact-5.000b.zip&filename=GentiumPlusCompact-5.000.zip -> GentiumPlusCompact-5.000.zip )
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=01f3a281187e3571b8a3641c5767cc07

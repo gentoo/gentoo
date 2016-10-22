@@ -8,5 +8,5 @@ RDEPEND=net-print/foomatic-db-engine !net-print/foo2zjs[hp2600n]
 SLOT=0
 SRC_URI=http://www.openprinting.org/download/foomatic/foomatic-db-4.0-20150819.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=231c086a12c931c219bb4d36f2194fb8

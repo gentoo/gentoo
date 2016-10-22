@@ -10,5 +10,5 @@ RDEPEND=dev-lang/python:2.7[sqlite] dev-python/apsw dev-python/feedparser dev-py
 SLOT=0
 SRC_URI=https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler_6.3.3_all.deb x86? ( https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler-swift_6.3.3_i386.deb ) amd64? ( https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler-swift_6.3.3_amd64.deb )
 _eclass_exported_funcs=src_unpack:unpacker src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=11843ca302e23554c1a4b9233b982667

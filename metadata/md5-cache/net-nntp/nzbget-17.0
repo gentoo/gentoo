@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libxml2 ncurses? ( sys-libs/ncurses:0 ) ssl? ( gnutls? ( net-li
 SLOT=0
 SRC_URI=https://github.com/nzbget/nzbget/releases/download/v17.0/nzbget-17.0-src.tar.gz -> nzbget-17.0.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=e657947b49a1d048c89b1b1edc425dbd

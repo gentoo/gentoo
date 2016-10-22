@@ -8,5 +8,5 @@ LICENSE=ZLIB
 RDEPEND=>=dev-libs/girara-0.2.5:3= >=dev-libs/glib-2.32:2= x11-libs/cairo:= >=x11-libs/gtk+-3.6:3 magic? ( sys-apps/file:= ) sqlite? ( dev-db/sqlite:3= ) synctex? ( >=app-text/texlive-core-2015 )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:git-2 src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
 _md5_=87a6499794a7456d6972a8b7901ea757

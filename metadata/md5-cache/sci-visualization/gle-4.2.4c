@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jp
 SLOT=0
 SRC_URI=mirror://sourceforge/glx/gle-graphics-4.2.4cf-src.tar.gz doc? ( mirror://sourceforge/glx/gle-manual-4.2.2.pdf mirror://sourceforge/glx/GLEusersguide.pdf )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=1716e42678a747835c0126711bd85fe5

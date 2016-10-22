@@ -10,5 +10,5 @@ RDEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*[ldap] 
 SLOT=0
 SRC_URI=http://horde.net/~jwm/software/mod_ldap_userdir/mod_ldap_userdir-1.1.19.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:apache-module src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=266431c5bb124fef48986cc8280e5ab4

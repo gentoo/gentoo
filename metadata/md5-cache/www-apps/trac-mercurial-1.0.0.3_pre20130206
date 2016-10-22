@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=www-apps/trac-1.0 >=dev-vcs/mercurial-1.1 =dev-lang/python-2*
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:python src_unpack:mercurial src_prepare:distutils src_compile:distutils src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	mercurial	789038b352d112bcff9dff083aa40d8d	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	mercurial	789038b352d112bcff9dff083aa40d8d	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=7f51eaed95de42e056cd44ef1e6c6614

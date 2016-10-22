@@ -9,5 +9,5 @@ RDEPEND=www-apache/mod_dnsbl_lookup =www-servers/apache-2*
 SLOT=0
 SRC_URI=http://www.apacheconsultancy.com/modules/mod_access_dnsbl/mod_access_dnsbl-0.02.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:apache-module src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=19b8bc55778c9e9b743591891107792d

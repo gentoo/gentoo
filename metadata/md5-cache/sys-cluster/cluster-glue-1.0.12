@@ -10,5 +10,5 @@ RDEPEND=app-text/asciidoc app-arch/bzip2 app-text/docbook-xml-dtd:4.4 dev-libs/g
 SLOT=0
 SRC_URI=http://hg.linux-ha.org/glue/archive/glue-1.0.12.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=ff59f4a5c05ee1c2fb333ab040d57ccd

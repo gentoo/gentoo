@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2.1 Princeton myspell-en_CA-KevinAtkinson
 SLOT=0
 SRC_URI=mirror://gentoo/myspell-en_AU-20081002.zip mirror://gentoo/myspell-en_GB-20081002.zip mirror://gentoo/myspell-en_US-20081002.zip mirror://gentoo/myspell-en_CA-20081002.zip mirror://gentoo/myspell-en_NZ-20081002.zip mirror://gentoo/myspell-en_ZA-20081002.zip mirror://gentoo/myspell-en_GB-oed-20081002.zip mirror://gentoo/myspell-hyph_en_GB-20081002.zip mirror://gentoo/myspell-thes_en_US_v2-20081002.zip
 _eclass_exported_funcs=pkg_preinst:myspell pkg_postinst:myspell src_install:myspell
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	myspell	bebd79c331f14a7d5d7c27fc7c6e12a0	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	myspell	bebd79c331f14a7d5d7c27fc7c6e12a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=f5d1866984385cc63c82fdceec21a926

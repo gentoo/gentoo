@@ -10,5 +10,5 @@ RDEPEND=app-shells/bash dmi? ( sys-apps/dmidecode )
 SLOT=0
 SRC_URI=https://people.redhat.com/~rjones/virt-what/files/virt-what-1.12.tar.gz
 _eclass_exported_funcs=-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=39c859f5f94f79956a15ef6cddca30e2

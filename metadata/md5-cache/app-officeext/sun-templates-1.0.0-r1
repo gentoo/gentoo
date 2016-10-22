@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openof
 SLOT=0
 SRC_URI=http://ooo.itc.hu/oxygenoffice/download/libreoffice/472ffb92d82cf502be039203c606643d-Sun-ODF-Template-Pack-en-US_1.0.0.oxt http://ooo.itc.hu/oxygenoffice/download/libreoffice/53ca5e56ccd4cab3693ad32c6bd13343-Sun-ODF-Template-Pack-de_1.0.0.oxt http://ooo.itc.hu/oxygenoffice/download/libreoffice/4ad003e7bbda5715f5f38fde1f707af2-Sun-ODF-Template-Pack-es_1.0.0.oxt http://ooo.itc.hu/oxygenoffice/download/libreoffice/a53080dc876edcddb26eb4c3c7537469-Sun-ODF-Template-Pack-fr_1.0.0.oxt http://ooo.itc.hu/oxygenoffice/download/libreoffice/09ec2dac030e1dcd5ef7fa1692691dc0-Sun-ODF-Template-Pack-hu_1.0.0.oxt http://ooo.itc.hu/oxygenoffice/download/libreoffice/b33775feda3bcf823cad7ac361fd49a6-Sun-ODF-Template-Pack-it_1.0.0.oxt
 _eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=4ea42d6496f125ff79d2c61b380bfe19

@@ -10,5 +10,5 @@ RDEPEND=>=dev-ml/type-conv-109.60:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocam
 SLOT=0/113.00.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.00/files/pipebang-113.00.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=3358def815bee70308c3ac91055e93bc

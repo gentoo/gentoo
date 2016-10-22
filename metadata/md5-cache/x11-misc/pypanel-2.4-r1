@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libXft dev-python/python-xlib sys-apps/sed media-libs/imlib2[X]
 SLOT=0
 SRC_URI=mirror://sourceforge/pypanel/PyPanel-2.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:- src_prepare:distutils src_compile:distutils src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=2285a9c1f7263f7ab7fcfc2046162c68

@@ -9,5 +9,5 @@ RDEPEND=floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )
 SLOT=0
 SRC_URI=http://www.memtest.org/download/4.20/memtest86+-4.20.tar.gz
 _eclass_exported_funcs=pkg_pretend:mount-boot pkg_prerm:mount-boot pkg_preinst:mount-boot pkg_postrm:mount-boot pkg_postinst:- src_prepare:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=2da9ae227c724deefedc74a00384d6f4

@@ -11,5 +11,5 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://kernel/linux/libs/klibc/1.5/klibc-1.5.25.tar.bz2 mirror://kernel/linux/kernel/v2.6/linux-2.6.39.tar.bz2 mirror://kernel/linux/kernel/v2.6/testing/linux-2.6.39.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=3254babd279697575c27d72d9403b484

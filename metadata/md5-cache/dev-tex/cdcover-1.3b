@@ -9,5 +9,5 @@ RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/cdcover-1.3b.tar.gz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_compile:latex-package src_install:latex-package
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=80890d292667cfd4effe24d700829061

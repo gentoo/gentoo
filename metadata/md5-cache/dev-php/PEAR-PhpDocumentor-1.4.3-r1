@@ -10,5 +10,5 @@ RDEPEND=!minimal? ( >=dev-php/PEAR-XML_Beautifier-1.1-r1 ) >=dev-php/smarty-2.6.
 SLOT=0
 SRC_URI=http://pear.php.net/get/PhpDocumentor-1.4.3.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_prepare:- src_install:php-pear-r1
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=42b346ef61cec0239170c150cc4ee445

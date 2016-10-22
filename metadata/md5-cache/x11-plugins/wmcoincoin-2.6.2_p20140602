@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:2 media-libs/imlib2 x11-libs/libXext x11-libs/libXpm x11-l
 SLOT=0
 SRC_URI=https://github.com/d-torrance/wmcoincoin/archive/debian/2.6.2+20140602-1.tar.gz -> wmcoincoin-2.6.2_p20140602.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=6496ed8d1a27b598e1923e0b54eff542

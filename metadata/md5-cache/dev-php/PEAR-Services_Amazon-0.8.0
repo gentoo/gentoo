@@ -10,5 +10,5 @@ RDEPEND=>=dev-php/PEAR-HTTP_Request-1.2.4-r1 >=dev-php/PEAR-XML_Serializer-0.17.
 SLOT=0
 SRC_URI=http://pear.php.net/get/Services_Amazon-0.8.0.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=356b1836d3a7ca3eb8601cdf47a2a7e8

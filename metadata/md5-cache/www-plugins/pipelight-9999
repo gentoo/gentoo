@@ -8,5 +8,5 @@ LICENSE=|| ( GPL-2+ LGPL-2.1+ MPL-1.1 )
 RDEPEND=app-emulation/wine[X,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?,pipelight] app-arch/cabextract app-crypt/gnupg media-fonts/corefonts || ( gnome-extra/zenity kde-apps/kdialog )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=2eca19002092dffcacf51a3591570f97

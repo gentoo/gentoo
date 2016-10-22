@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:3 x11-libs/vte:2.90
 SLOT=0
 SRC_URI=https://github.com/jpdeplaix/valatermarchive/0.6.tar.gz -> valaterm-0.6.tar.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vala	764817a25b405b65269d8619e203a52f	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vala	764817a25b405b65269d8619e203a52f	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=9ba12b1801ce71adf0c2f93fd81d2c42

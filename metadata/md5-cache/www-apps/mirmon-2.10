@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/perl-5.8.5-r2:0 dev-perl/File-Tempdir dev-perl/Socket6 >=app-
 SLOT=0
 SRC_URI=https://www.staff.science.uu.nl/~penni101/mirmon/mirmon-2.10.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=a3e43bd755f0791e1e74c0e926136cf8

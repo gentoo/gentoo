@@ -9,5 +9,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.dustismo.com/fonts/Domestic_Manners.zip http://www.dustismo.com/fonts/PenguinAttack.zip http://www.dustismo.com/fonts/Dustismo.zip http://www.dustismo.com/fonts/El_Abogado_Loco.zip http://www.dustismo.com/fonts/Progenisis.zip http://www.dustismo.com/fonts/flatline.zip http://www.dustismo.com/fonts/MarkedFool.zip http://www.dustismo.com/fonts/ItWasntMe.zip http://www.dustismo.com/fonts/balker.zip http://www.dustismo.com/fonts/Swift.zip http://www.dustismo.com/fonts/Wargames.zip http://www.dustismo.com/fonts/Winks.zip
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_install:font
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b20b307f896d426c1d42bb9d94aa0fb2

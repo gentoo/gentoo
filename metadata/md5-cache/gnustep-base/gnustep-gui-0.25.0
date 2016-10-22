@@ -10,5 +10,5 @@ RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) app-text
 SLOT=0
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.25.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:gnustep-base pkg_setup:gnustep-base src_prepare:- src_configure:- src_compile:gnustep-base src_install:gnustep-base
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnustep-base	63e3d261394d84127e82e8de711e85a8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnustep-base	63e3d261394d84127e82e8de711e85a8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=91c8032c591734ed2f0d7b783772e7e6

@@ -9,5 +9,5 @@ LICENSE=mplus-fonts IPAfont
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-1m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-1p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-2m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-2p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1c-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-2m-20111002.zip
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_prepare:- src_install:font
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=79ef4c9ca4f3d1259dc5855f11b68fd5

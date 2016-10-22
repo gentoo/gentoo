@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=sys-libs/ncurses:0=[unicode] dev-libs/glib:2 media-libs/libmpdclient virtual/libintl
 SLOT=0
 _eclass_exported_funcs=pkg_pretend:- src_unpack:git-r3 src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	86ff3e88fc8a07b4f595afa27e416341	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	86ff3e88fc8a07b4f595afa27e416341	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=90cf6a941689798f93e8ebc95706ad61

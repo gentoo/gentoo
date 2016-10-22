@@ -9,5 +9,5 @@ RDEPEND=>=x11-libs/gtk+-2.4:2 >=dev-python/pygtk-2.4:2 x11-apps/xdriinfo =dev-la
 SLOT=0
 SRC_URI=https://freedesktop.org/~fxkuehl/driconf/driconf-0.9.1.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=10281cc60b3fce10e62a5eede85ae624

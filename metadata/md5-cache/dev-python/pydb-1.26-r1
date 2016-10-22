@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/bashdb/pydb-1.26.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python src_prepare:- src_configure:- src_compile:python src_test:python src_install:-
-_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=17bb6f1e5abbf9a935dbcaaf0f6aefc4

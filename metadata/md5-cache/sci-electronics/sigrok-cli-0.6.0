@@ -11,5 +11,5 @@ REQUIRED_USE=decode? ( ^^ ( python_single_target_python3_3 python_single_target_
 SLOT=0
 SRC_URI=http://sigrok.org/download/source/sigrok-cli/sigrok-cli-0.6.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=ada1fdcac3a80d63545dd475df7f43a4

@@ -7,5 +7,5 @@ IUSE=static
 LICENSE=BSD
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:cvs src_compile:- src_test:- src_install:-
-_eclasses_=cvs	e94c89c58918dff87fa3db1e817c25be	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=cvs	e94c89c58918dff87fa3db1e817c25be	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=37a4d0ef68b58336f26c2b830a9ac9d4

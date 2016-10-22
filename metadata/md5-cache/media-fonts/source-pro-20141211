@@ -11,5 +11,5 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/adobe-fonts/source-sans-pro/archive/2.010R-ro/1.065R-it.tar.gz -> source-sans-pro-20141211.tar.gz https://github.com/adobe-fonts/source-serif-pro/archive/1.017R.tar.gz -> source-serif-pro-20141211.tar.gz https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz -> source-code-pro-20141211.tar.gz
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=524739d72ae8069848e8bd735b7a215e

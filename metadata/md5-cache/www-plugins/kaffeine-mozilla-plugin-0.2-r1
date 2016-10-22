@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/
 SLOT=0
 SRC_URI=mirror://sourceforge/kaffeine/kaffeine-mozilla-0.2.tar.bz2
 _eclass_exported_funcs=src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	165fc17c38d1b11dac2008280dab6e80	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	165fc17c38d1b11dac2008280dab6e80	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=090b9949192da8b33cece541703218ea

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/smartirc4net-0.4.5.1 >=dev-dotnet/nini-
 SLOT=0
 SRC_URI=http://www.smuxi.org/jaws/data/files/smuxi-0.8.11.tar.gz
 _eclass_exported_funcs=pkg_setup:mono-env src_configure:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=22cc04ea4d2b38c351d891fd70828f50

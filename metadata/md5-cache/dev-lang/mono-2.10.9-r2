@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://download.mono-project.com/sources/mono/mono-2.10.9.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_unpack:go-mono src_prepare:- src_configure:- src_compile:go-mono src_test:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	go-mono	490cd8a8a7ed91e201f6c30ced655926	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	go-mono	490cd8a8a7ed91e201f6c30ced655926	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0ffd45437c47d452202e5fb285a979ea

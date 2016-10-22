@@ -9,5 +9,5 @@ RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo-syntax-1.19.tar.bz2
 _eclass_exported_funcs=src_unpack:xemacs-elisp src_compile:- src_install:xemacs-elisp
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xemacs-elisp	1a77d556938e284b87fa2fbd3113ce68	xemacs-elisp-common	7f4f0cd4db5971a415fe6d9208c64116
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xemacs-elisp	1a77d556938e284b87fa2fbd3113ce68	xemacs-elisp-common	7f4f0cd4db5971a415fe6d9208c64116
 _md5_=87947636e439013d3629071a8861fa68

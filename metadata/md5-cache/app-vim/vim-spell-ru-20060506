@@ -9,5 +9,5 @@ RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
 SLOT=0
 SRC_URI=mirror://gentoo/vim-spell-ru-20060506.tar.bz2
 _eclass_exported_funcs=pkg_postinst:vim-spell src_install:vim-spell
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vim-spell	6c91871b45cfd154516bfb173a8a615a
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vim-spell	6c91871b45cfd154516bfb173a8a615a
 _md5_=e00872a5f94523806f40b1381ed96155

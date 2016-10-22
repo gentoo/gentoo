@@ -9,5 +9,5 @@ RDEPEND=>=media-libs/imlib2-1.0.3 >=media-libs/giblib-1.2.3
 SLOT=0
 SRC_URI=http://www.linuxbrit.co.uk/downloads/scrot-0.8.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b4b4d7d1eed98338e58ed8c6038b7f18

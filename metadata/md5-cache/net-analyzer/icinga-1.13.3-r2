@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/icinga/icinga-core/releases/download/v1.13.3/icinga-1.13.3.tar.gz https://dev.gentoo.org/~prometheanfire/dist/patches/CVEs/CVE-2015-8010_1.13.3.patch
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=depend.apache	d86176876ab66b0d5239c0097903a1b2	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=depend.apache	d86176876ab66b0d5239c0097903a1b2	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=798b2509e8e1efbe9ed11286c6f91e18

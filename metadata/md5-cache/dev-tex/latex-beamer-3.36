@@ -10,5 +10,5 @@ RDEPEND=>=dev-tex/pgf-1.10 dev-tex/xcolor !dev-tex/translator virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~radhermit/dist/latex-beamer-3.36.zip
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:base src_configure:base src_compile:latex-package src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=fa838a820199cddba3be1a53780343d1

@@ -10,5 +10,5 @@ RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) virtual/qmail
 SLOT=0
 SRC_URI=http://www.ezmlm.org/archive/7.0.0/ezmlm-idx-7.0.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	qmail	b5cb479953f486ad5e0d7f5a428f5913	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	qmail	b5cb479953f486ad5e0d7f5a428f5913	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=ce6ad2c2a3c81417ee434deffe689842

@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-source-r3 src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	8b5fc87e3e35f5ff0c11b535ac7459fb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	8b5fc87e3e35f5ff0c11b535ac7459fb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=e71da1e43d7c379e605d31510b61c078

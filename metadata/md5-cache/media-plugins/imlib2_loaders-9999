@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=media-libs/imlib2-9999 eet? ( dev-libs/efl ) nls? ( sys-devel/gettext )
 SLOT=0
 _eclass_exported_funcs=src_unpack:enlightenment src_prepare:enlightenment src_configure:- src_compile:enlightenment src_install:enlightenment
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	enlightenment	614557d78f201966d7600f6b5733098c	eutils	b83a2420b796f7c6eff682679d08fe25	git-2	7af5d170bfc02983b4bcd3167dc5edd4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	enlightenment	614557d78f201966d7600f6b5733098c	eutils	b83a2420b796f7c6eff682679d08fe25	git-2	7af5d170bfc02983b4bcd3167dc5edd4	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b83bc597efce6c6a93460148698fcd3d

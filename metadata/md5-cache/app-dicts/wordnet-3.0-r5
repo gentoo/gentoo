@@ -10,5 +10,5 @@ RDEPEND=dev-lang/tcl:0= dev-lang/tk:0=
 SLOT=0
 SRC_URI=http://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz mirror://gentoo/wordnet-3.0-patchset-1.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=a1eee1d3a58a63c6d4d864d6186496bf

@@ -10,5 +10,5 @@ RDEPEND=>=games-emulation/mupen64plus-core-2.0-r1:0= media-libs/libpng:0= media-
 SLOT=0
 SRC_URI=https://github.com/mupen64plus/mupen64plus-video-rice/releases/download/2.0/mupen64plus-video-rice-src-2.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=e5b6e7fc29c4aaa0b55d5a1d8269ace3

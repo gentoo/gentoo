@@ -7,5 +7,5 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://debian/pool/main/o/os-prober/os-prober_1.70.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b0e189671b17fcb3ab7964b3fcb24143

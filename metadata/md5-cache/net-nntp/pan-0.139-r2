@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.16:2 dev-libs/gmime:2.6 gnome-k
 SLOT=0
 SRC_URI=http://pan.rebelbase.com/download/releases/0.139/source/pan-0.139.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=c7341f5682960d0d5a1e798bf53dd5f7

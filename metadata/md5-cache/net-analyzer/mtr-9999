@@ -9,5 +9,5 @@ RDEPEND=sys-libs/ncurses:0= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=mirror://gentoo/gtk-2.0-for-mtr.m4.bz2
 _eclass_exported_funcs=pkg_postinst:fcaps src_unpack:- src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	86ff3e88fc8a07b4f595afa27e416341	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	86ff3e88fc8a07b4f595afa27e416341	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=7e3458e7eb275cf185c2108731965330

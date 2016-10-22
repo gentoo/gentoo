@@ -8,5 +8,5 @@ LICENSE=W3C
 SLOT=0
 SRC_URI=http://www.w3.org/TR/xhtml1/xhtml1.tgz
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- src_unpack:base src_prepare:- src_configure:base src_compile:sgml-catalog src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=16d85f55f2978a51e01d5826bb963698

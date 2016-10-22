@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://gentoo/myspell-zu_ZA-20060316.zip
 _eclass_exported_funcs=pkg_preinst:myspell pkg_postinst:myspell src_install:myspell
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	myspell	bebd79c331f14a7d5d7c27fc7c6e12a0	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	myspell	bebd79c331f14a7d5d7c27fc7c6e12a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=167542114522e42e0ae73debdb5f242d

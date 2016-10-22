@@ -9,5 +9,5 @@ RDEPEND=media-libs/glew media-libs/libsdl2 media-libs/libjpeg-turbo media-libs/l
 SLOT=0
 SRC_URI=https://github.com/endless-sky/endless-sky/archive/v0.8.11.tar.gz -> endless-sky-0.8.11.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=8b93e73550c50e29b3bb49c16da8fa12

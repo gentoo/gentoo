@@ -9,5 +9,5 @@ RDEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
 SLOT=0
 SRC_URI=http://dl.suckless.org/farbfeld/farbfeld-1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=2305d5d4eb475637ad32d79265f45154

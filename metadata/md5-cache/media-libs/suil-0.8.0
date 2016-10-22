@@ -10,5 +10,5 @@ RDEPEND=media-libs/lv2 gtk? ( x11-libs/gtk+:2 ) qt4? ( dev-qt/qtgui:4 )
 SLOT=0
 SRC_URI=http://download.drobilla.net/suil-0.8.0.tar.bz2
 _eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:waf-utils src_install:waf-utils
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=a5b23124ba029a8aec23045ef8b3e6e7

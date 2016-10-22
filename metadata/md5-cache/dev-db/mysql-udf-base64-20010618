@@ -9,5 +9,5 @@ RDEPEND=>=virtual/mysql-5.1
 SLOT=0
 SRC_URI=http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.c -> mysql-udf-base64-20010618.c http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.readme -> mysql-udf-base64-20010618.readme
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=0ae656c19b46ba7ecfe0aba1a2068c0e

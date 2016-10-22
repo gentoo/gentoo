@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://v3.sk/~lkundrak/dev86/bin86-0.16.20.tar.gz https://github.com/lkundrak/dev86/commit/2c95336f19eeff761ecb858c5a2a58484bb3ceeb.patch -> bin86-0.16.20-fix_lilo_build.patch
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=a2cdb917d3d8d9487240b37412f965ec

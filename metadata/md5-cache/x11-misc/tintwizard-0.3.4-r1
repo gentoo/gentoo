@@ -9,5 +9,5 @@ RDEPEND=x11-misc/tint2 dev-python/pygtk:2 =dev-lang/python-2*
 SLOT=0
 SRC_URI=https://tintwizard.googlecode.com/files/tintwizard-0.3.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=644d60467c4d9ee68fe46b41476652f5

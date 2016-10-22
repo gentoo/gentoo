@@ -9,5 +9,5 @@ RDEPEND=sci-chemistry/dssp sci-biology/stride sci-chemistry/pymol =dev-lang/pyth
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/pymol-plugins-dssp-110430.py.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=73dbbf0b62319c7cb6c561a86ca320a1

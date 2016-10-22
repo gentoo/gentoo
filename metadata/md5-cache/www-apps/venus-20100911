@@ -10,5 +10,5 @@ RDEPEND=django? ( dev-python/django ) genshi? ( dev-python/genshi ) redland? ( d
 SLOT=0
 SRC_URI=mirror://gentoo/venus-20100911.tar.bz2
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postrm:- pkg_postinst:- pkg_setup:webapp src_prepare:- src_test:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=c8cca195117ce97d1fae851ec1bc06f2

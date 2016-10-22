@@ -10,5 +10,5 @@ RDEPEND=X? ( x11-libs/libXaw3d ) python? ( =dev-lang/python-2* )
 SLOT=0
 SRC_URI=http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.tar.gz mirror://gentoo/snns-4.2-20040227.patch.gz doc? ( http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf ) python? ( mirror://gentoo/PySNNS-20040605.tar.gz mirror://gentoo/PythonFunctionSupport-20050210.patch.gz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=08f4179d01ec0f11886f5a76cb611176

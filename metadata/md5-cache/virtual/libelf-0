@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~sparc-fbsd 
 RDEPEND=>=dev-libs/libelf-0.8.13-r2:0/0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0/0
 _eclass_exported_funcs=-
-_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=c464cac2c863e7c4223a2f860dd3592f

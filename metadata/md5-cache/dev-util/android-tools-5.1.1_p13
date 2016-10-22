@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/
 SLOT=0
 SRC_URI=https://projects.archlinux.org/svntogit/community.git/snapshot/community-caa300cf262afcf5bdb4dcc923dee54e3715fd5c.tar.gz -> android-tools-5.1.1_r13-arch.tar.gz https://github.com/android/platform_system_core/archive/android-5.1.1_r13.tar.gz -> android-tools-5.1.1_r13-core.tar.gz mirror://gentoo/android-tools-5.1.1_r13-extras.tar.gz mirror://gentoo/android-tools-5.1.1_r13-libselinux.tar.gz mirror://gentoo/android-tools-5.1.1_r13-f2fs-tools.tar.gz
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=8baa53d810cc31413b7a5ec7217dd4ad

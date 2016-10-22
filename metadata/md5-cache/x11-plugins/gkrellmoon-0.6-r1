@@ -9,5 +9,5 @@ RDEPEND=media-libs/imlib2 =app-admin/gkrellm-2*
 SLOT=2
 SRC_URI=mirror://sourceforge/gkrellmoon/gkrellmoon-0.6.tar.gz
 _eclass_exported_funcs=pkg_setup:gkrellm-plugin src_prepare:- src_compile:- src_install:gkrellm-plugin
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=9f2f3d494aa8d7c23bd9649625ade5ff

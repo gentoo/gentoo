@@ -10,5 +10,5 @@ RDEPEND=perl? ( dev-lang/perl:= )
 SLOT=0
 SRC_URI=https://github.com/libhugetlbfs/libhugetlbfs/archive/2.20.tar.gz -> libhugetlbfs-2.20.tar.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	perl-functions	aac50de73be0a80ebe780e0b20850130	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	perl-functions	aac50de73be0a80ebe780e0b20850130	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b173ad306eab4e418896cbb21cce018b

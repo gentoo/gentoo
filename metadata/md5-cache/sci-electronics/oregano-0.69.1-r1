@@ -9,5 +9,5 @@ RDEPEND=dev-libs/libxml2:2 x11-libs/gtk+:2 gnome-base/libglade:2.0 gnome-base/li
 SLOT=0
 SRC_URI=mirror://debian/pool/main/o/oregano/oregano_0.69.1.orig.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=625bf858c2616fafd0e98a99c2553576

@@ -9,5 +9,5 @@ RDEPEND=dev-lang/mono
 SLOT=0
 SRC_URI=http://download.banshee-project.org/taglib-sharp/2.0.4.0/taglib-sharp-2.0.4.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=bc0e685d527d0dadecbf7a9ac33e8ece

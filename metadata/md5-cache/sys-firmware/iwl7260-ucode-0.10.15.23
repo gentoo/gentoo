@@ -9,5 +9,5 @@ RDEPEND=bluetooth? ( sys-firmware/iwl3160-7260-bt-ucode ) !sys-kernel/linux-firm
 SLOT=10
 SRC_URI=https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-7260-ucode-23.15.10.0.tgz -> iwl7260-ucode-0.10.15.23.tgz
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:linux-info src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=3dbad6703a4689f86713df949802662f

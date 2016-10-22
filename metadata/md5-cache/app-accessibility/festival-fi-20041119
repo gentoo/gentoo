@@ -9,5 +9,5 @@ RDEPEND=>=app-accessibility/festival-1.96_beta
 SLOT=0
 SRC_URI=http://www.ling.helsinki.fi/suopuhe/download/hy_fi_mv_diphone-20041119.tgz http://phon.joensuu.fi/suopuhe/tulosaineisto/suo_fi_lj-1.0g-20051204.tgz http://www.ling.helsinki.fi/suopuhe/download/lavennin-20041119.tgz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=bb1bfc364f8a50f9ccc7ccd5511bd6b6

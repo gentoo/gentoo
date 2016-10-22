@@ -10,5 +10,5 @@ RDEPEND=dev-python/setuptools server? ( www-apps/trac ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://ftp.edgewall.com/pub/bitten/Bitten-0.6.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:- pkg_setup:- src_prepare:distutils src_compile:distutils src_test:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=52eca81f2c4ad7aa7bfb9fb0a593efd1

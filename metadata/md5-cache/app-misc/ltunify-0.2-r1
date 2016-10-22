@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://git.lekensteyn.nl/ltunify/snapshot/ltunify-0.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338
 _md5_=be68adc52357be44d87629f09fe5ea88

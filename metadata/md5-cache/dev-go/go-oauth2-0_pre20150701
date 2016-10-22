@@ -8,5 +8,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://github.com/golang/oauth2/archive/8914e5017ca260f2a3a1575b1e6868874050d95e.tar.gz -> go-oauth2-0_pre20150701.tar.gz https://github.com/GoogleCloudPlatform/gcloud-golang/archive/e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz -> gcloud-golang-e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=314d4e80e70a87c6441c212d5d3f0e60

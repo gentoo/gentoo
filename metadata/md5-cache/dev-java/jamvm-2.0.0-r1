@@ -10,5 +10,5 @@ RDEPEND=dev-java/gnu-classpath:0.98 || ( dev-java/eclipse-ecj:* dev-java/ecj-gcj
 SLOT=0
 SRC_URI=mirror://sourceforge/jamvm/jamvm-2.0.0.tar.gz
 _eclass_exported_funcs=pkg_prerm:java-vm-2 pkg_postrm:java-vm-2 pkg_postinst:java-vm-2 pkg_setup:java-vm-2 src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-vm-2	c8b4e8309c59dc750e862fc8a2fec671	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-vm-2	c8b4e8309c59dc750e862fc8a2fec671	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=ad4288f650dffd4382042a47600864c7

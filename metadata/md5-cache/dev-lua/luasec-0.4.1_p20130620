@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/lua-5.1:0[deprecated] dev-lua/luasocket dev-libs/openssl:0
 SLOT=0
 SRC_URI=https://github.com/brunoos/luasec/tarball/063e8a8a5c57858cdc845f8d51b994426edd37ab -> luasec-0.4.1_p20130620.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_compile:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
 _md5_=4012f9dae453f510c7ca4527992ee741

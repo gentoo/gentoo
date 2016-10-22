@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib media-libs/libpng:0= virtual/jpeg:0 media-libs/tiff:0 sdl?
 SLOT=0
 SRC_URI=https://iulib.googlecode.com/files/iulib-0.4.tgz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=015e84b80cad19ccf2ce86b2f67917bf

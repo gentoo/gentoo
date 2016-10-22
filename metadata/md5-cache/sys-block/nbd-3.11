@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.0 zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/nbd/nbd-3.11.tar.xz
 _eclass_exported_funcs=src_configure:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=d78b786ae6571d97a6c789e9038e882c

@@ -8,5 +8,5 @@ RDEPEND=!sys-boot/raspberrypi-loader
 RESTRICT=binchecks strip
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:readme.gentoo src_unpack:git-r3 src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=64ebffa87944b97370485efc8fa10c29

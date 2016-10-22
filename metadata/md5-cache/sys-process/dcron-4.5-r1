@@ -9,5 +9,5 @@ RDEPEND=>=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/bcron 
 SLOT=0
 SRC_URI=http://www.jimpryor.net/linux/releases/dcron-4.5.tar.gz
 _eclass_exported_funcs=pkg_postinst:cron src_prepare:- src_install:-
-_eclasses_=cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=3b1f40d1471a35c07e480a087a757605

@@ -7,5 +7,5 @@ LICENSE=ZLIB
 RDEPEND=>=app-text/djvu-3.5.24-r1:= >=app-text/zathura-0.3.1 dev-libs/glib:2= x11-libs/cairo:=
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=11cc4458eb9afa430560856a9b0c7400

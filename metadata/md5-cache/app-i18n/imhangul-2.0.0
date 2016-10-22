@@ -9,5 +9,5 @@ RDEPEND=>=app-i18n/libhangul-0.0.12 >=x11-libs/gtk+-2.2:2 virtual/libintl
 SLOT=0
 SRC_URI=http://kldp.net/frs/download.php/5924/imhangul-2.0.0.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=c818f79c238e7d43204f3d41deedec02

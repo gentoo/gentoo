@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openof
 SLOT=0
 SRC_URI=mirror://sourceforge/texmaths/TexMaths-0.41.oxt
 _eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=71183ed511232169ff5b9f6ed58bdca2

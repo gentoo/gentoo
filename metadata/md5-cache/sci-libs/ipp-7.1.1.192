@@ -11,5 +11,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=amd64? ( multilib? ( http://registrationcenter-download.intel.com/irc_nas/3266/parallel_studio_xe_2013_update4.tgz ) ) amd64? ( !multilib? ( http://registrationcenter-download.intel.com/irc_nas/3266/parallel_studio_xe_2013_update4_intel64.tgz ) ) x86? ( http://registrationcenter-download.intel.com/irc_nas/3266/parallel_studio_xe_2013_update4_ia32.tgz )
 _eclass_exported_funcs=pkg_pretend:intel-sdp pkg_postrm:intel-sdp pkg_postinst:intel-sdp pkg_setup:intel-sdp src_unpack:intel-sdp src_install:intel-sdp
-_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	b83a2420b796f7c6eff682679d08fe25	intel-sdp	ccb50a70601488ab9efd86bb9b4ca3a9	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	b83a2420b796f7c6eff682679d08fe25	intel-sdp	ccb50a70601488ab9efd86bb9b4ca3a9	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7b42d5d5ae5f8bbd25ded96a6111ba35

@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( mysqli postgres )
 SLOT=20160930
 SRC_URI=https://dev.gentoo.org/~tomka/files/tt-rss-20160930.tar.bz2
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=f8c28d142de6f50f0238c9c460409c7c

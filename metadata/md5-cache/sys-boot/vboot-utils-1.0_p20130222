@@ -9,5 +9,5 @@ RDEPEND=app-arch/xz-utils:= dev-libs/libyaml:= dev-libs/openssl:0= sys-apps/util
 SLOT=0
 SRC_URI=http://kojipkgs.fedoraproject.org/packages/vboot-utils/20130222gite6cf2c2/3.fc19/src/vboot-utils-20130222gite6cf2c2-3.fc19.src.rpm
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=8057f42f2a7229c08e4ab899e86779f5

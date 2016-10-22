@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-sound/jack-audio-connection-kit lv2? ( media-libs/lv2 ) osc? ( media-libs/liblo ) nls? ( dev-qt/qttranslations:5 ) virtual/pkgconfig
+DESCRIPTION=An arpeggiator, sequencer and MIDI LFO for ALSA
+EAPI=6
+HOMEPAGE=http://qmidiarp.sourceforge.net/
+IUSE=nls lv2 osc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-sound/jack-audio-connection-kit lv2? ( media-libs/lv2 ) osc? ( media-libs/liblo )
+SLOT=0
+SRC_URI=mirror://sourceforge/qmidiarp/qmidiarp-0.6.3.tar.bz2
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=5d0ee3f1e1d6a40bd1d8e8e2c64ce5fc

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lisp/asdf-2.33-r3:= x11-libs/motif:0
 SLOT=0
 SRC_URI=http://common-lisp.net/project/cmucl/downloads/release/21a/cmucl-src-21a.tar.bz2 http://common-lisp.net/project/cmucl/downloads/release/21a/cmucl-21a-x86-linux.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=00f420027a60b11081dce70c06a9ae23

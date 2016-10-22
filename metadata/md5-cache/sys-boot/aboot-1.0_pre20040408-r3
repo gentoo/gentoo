@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://aboot.sourceforge.net/tarballs/aboot-1.0_pre20040408.tar.bz2 mirror://gentoo/gentoo-headers-base-2.6.22.tar.bz2 mirror://gentoo/aboot_gentoo.diff.bz2 https://dev.gentoo.org/~armin76/dist/aboot_gentoo.diff.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=39cb520c1e6daa046cec46b5578420a4

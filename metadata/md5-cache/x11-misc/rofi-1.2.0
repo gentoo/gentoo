@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 media-libs/freetype x11-libs/cairo[xcb] x11-libs/libX11 
 SLOT=0
 SRC_URI=https://github.com/DaveDavenport/rofi/releases/download/1.2.0/rofi-1.2.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=b65b9973d7155cc26f5ed2100e3dfa0f

@@ -10,5 +10,5 @@ RDEPEND=cvs? ( dev-vcs/rcs ) subversion? ( >=dev-vcs/subversion-1.3.1[python] ) 
 SLOT=0
 SRC_URI=http://viewvc.tigris.org/files/documents/3330/49275/viewvc-1.1.20.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
-_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=6a19f9d1e6057e0b697de987fc9b9a6e

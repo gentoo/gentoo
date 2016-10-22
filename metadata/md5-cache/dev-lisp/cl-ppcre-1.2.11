@@ -9,5 +9,5 @@ RDEPEND=dev-lisp/common-lisp-controller virtual/commonlisp
 SLOT=0
 SRC_URI=mirror://gentoo/cl-ppcre_1.2.11.orig.tar.gz
 _eclass_exported_funcs=pkg_preinst:common-lisp pkg_postrm:common-lisp pkg_postinst:common-lisp src_install:-
-_eclasses_=common-lisp	60cbcaf2eeb26263fb81076645ff2c49	common-lisp-common	d7eda29a66502c59f79e6ad32047963f	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=common-lisp	60cbcaf2eeb26263fb81076645ff2c49	common-lisp-common	d7eda29a66502c59f79e6ad32047963f	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=1cd0203004b7be18456dd016de6c5553

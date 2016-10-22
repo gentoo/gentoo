@@ -10,5 +10,5 @@ RDEPEND=x11-libs/gtk+:2 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/l/lletters/lletters_0.1.95+gtk2.orig.tar.gz mirror://debian/pool/main/l/lletters/lletters_0.1.95+gtk2-3.diff.gz mirror://sourceforge/lln/lletters-media-0.1.9a.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=7099567927106d81a332e1a74c7f6a90

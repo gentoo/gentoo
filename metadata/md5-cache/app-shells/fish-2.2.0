@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses sys-devel/bc sys-devel/gettext X? ( x11-misc/xsel )
 SLOT=0
 SRC_URI=http://fishshell.com/files/2.2.0/fish-2.2.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:base src_configure:- src_compile:base src_test:- src_install:base
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=bfafc11061e44efa09df85af19ff8ba1

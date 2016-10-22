@@ -9,5 +9,5 @@ RDEPEND=dev-lang/php >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://sabreamf.googlecode.com/files/SabreAMF-1.3.234.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:php-pear-r1
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=350d1e380f98a2cbfa2ca3b439bbd212

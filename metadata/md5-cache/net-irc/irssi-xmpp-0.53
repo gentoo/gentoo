@@ -9,5 +9,5 @@ RDEPEND=>=net-irc/irssi-0.8.13 >=net-libs/loudmouth-1.4.0
 SLOT=0
 SRC_URI=https://github.com/cdidier/irssi-xmpp/archive/v0.53.tar.gz -> irssi-xmpp-0.53.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=37a0d3eeace0b884b1c86ee61f5ce82a

@@ -10,5 +10,5 @@ RDEPEND=app-eselect/eselect-fontconfig app-eselect/eselect-infinality app-eselec
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/fontconfig-infinality-20130404.tar.xz nyx? ( https://dev.gentoo.org/~yngwin/distfiles/fontconfig-nyx-2.tar.xz )
 _eclass_exported_funcs=pkg_postinst:readme.gentoo src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=8e5ee7e56fa9732908ba145bdb879a9d

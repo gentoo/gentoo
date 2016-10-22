@@ -10,5 +10,5 @@ RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0
 SLOT=stable
 SRC_URI=amd64? ( http://static.rust-lang.org/dist/rust-1.5.0-x86_64-unknown-linux-gnu.tar.gz ) x86? ( http://static.rust-lang.org/dist/rust-1.5.0-i686-unknown-linux-gnu.tar.gz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=0d0988fc07ceabe2787d72cc290e9843

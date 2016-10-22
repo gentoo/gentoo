@@ -9,5 +9,5 @@ RDEPEND=sys-apps/pcsc-lite
 SLOT=0
 SRC_URI=http://yubico.github.io/ykneo-ccid-tools/releases/ykneo-ccid-tools-0.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338
 _md5_=10a1692e062a5e06e22a87916569f6e6

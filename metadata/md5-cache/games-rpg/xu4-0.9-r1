@@ -9,5 +9,5 @@ RDEPEND=dev-libs/libxml2 media-libs/libsdl[sound,video] media-libs/sdl-mixer[tim
 SLOT=0
 SRC_URI=mirror://sourceforge/xu4/xu4-0.9.tar.gz mirror://sourceforge/xu4/ultima4-1.01.zip mirror://sourceforge/xu4/u4upgrad.zip
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=71af78cdcc11513aff53525eb2212d91

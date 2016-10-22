@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0/7.11.0
 SRC_URI=ftp://ftp.parrot.org/pub/parrot/releases/all/7.11.0/parrot-7.11.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=f72106c2e572c59ab5c8c46002f75c85

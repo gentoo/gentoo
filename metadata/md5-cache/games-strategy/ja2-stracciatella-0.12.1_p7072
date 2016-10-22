@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( linguas_de linguas_en linguas_fr linguas_it linguas_nl linguas
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/ja2-stracciatella-0.12.1_p7072.tar.xz http://tron.homeunix.org/ja2/editor.slf.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=1dc566c387947c2d190873d8b29acb2d

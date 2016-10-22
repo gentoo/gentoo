@@ -10,5 +10,5 @@ RDEPEND=net-dialup/ppp dev-lang/perl tk? ( >=dev-lang/tk-8.3.4 )
 SLOT=0
 SRC_URI=http://eciadsl.flashtux.org/download/eciadsl-usermode-0.11.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=aa73ce08ec387c8f02e72d471af358dc

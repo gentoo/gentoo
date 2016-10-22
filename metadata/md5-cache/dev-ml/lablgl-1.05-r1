@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] x11-libs/libXext x11-libs/libXmu x1
 SLOT=0/1.05
 SRC_URI=http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/lablgl-1.05.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=06887bb138c879722be7da8336bb1a61

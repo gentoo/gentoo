@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] dev-ml/cppo:=
 SLOT=0/1.7.0
 SRC_URI=https://github.com/ygrek/ocaml-extlib/archive/1.7.0.tar.gz -> extlib-1.7.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=47c5069c5da3e17f0d49d37a6c5e7264

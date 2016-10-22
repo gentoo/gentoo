@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses X? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoema
 SLOT=0
 SRC_URI=http://www.jasspa.com/release_20090909/jasspa-mesrc-20091011.tar.gz !nanoemacs? ( http://www.jasspa.com/release_20090909/jasspa-memacros-20091017.tar.gz http://www.jasspa.com/release_20090909/jasspa-mehtml-20091011.tar.gz http://www.jasspa.com/release_20060909/meicons-extra.tar.gz )
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=da92f6587e682c389ec960d3feebe93b

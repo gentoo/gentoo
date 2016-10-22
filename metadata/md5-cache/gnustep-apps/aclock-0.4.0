@@ -10,5 +10,5 @@ RDEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-deve
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/gap/AClock-0.4.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:gnustep-base pkg_setup:gnustep-base src_prepare:gnustep-base src_configure:gnustep-base src_compile:gnustep-base src_install:gnustep-base
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	63e3d261394d84127e82e8de711e85a8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	63e3d261394d84127e82e8de711e85a8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=96bc4fa34d8608645ae47240a4323043

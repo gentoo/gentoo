@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libltdl:0 bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) 
 SLOT=0
 SRC_URI=mirror://sourceforge/graphicsmagick/GraphicsMagick-1.3.24.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=23c48ddd9b9b5512b3adeb486c0d3263
