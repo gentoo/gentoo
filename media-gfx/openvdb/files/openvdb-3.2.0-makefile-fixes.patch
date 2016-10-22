@@ -1,0 +1,93 @@
+diff --git a/Makefile b/Makefile
+index fba4fb6..0054f64 100644
+--- a/Makefile
++++ b/Makefile
+@@ -158,6 +158,9 @@ PYCONFIG_INCL_DIR := $(PYTHON_INCL_DIR)
+ # The directory containing libpython
+ PYTHON_LIB_DIR := $(HFS)/python/lib
+ PYTHON_LIB := -lpython$(PYTHON_VERSION)
++# The Directory to install the python module and includes to.
++PYTHON_INSTALL_INCL_DIR := $(DESTDIR)/python/include/python$(PYTHON_VERSION)
++PYTHON_INSTALL_LIB_DIR := $(DESTDIR)/python/lib/python$(PYTHON_VERSION)
+ # The directory containing libboost_python
+ BOOST_PYTHON_LIB_DIR := /rel/depot/third_party_build/boost/rhel6-1.46.1-0/lib
+ BOOST_PYTHON_LIB := -lboost_python-gcc41-mt-python26-1_46_1
+@@ -179,7 +182,6 @@ PYTHON_WRAP_ALL_GRID_TYPES := no
+ # (leave blank if Doxygen is unavailable)
+ DOXYGEN := doxygen
+ 
+-
+ #
+ # Ideally, users shouldn't need to change anything below this line.
+ #
+@@ -717,8 +719,13 @@ $(DOC_PDF): doxygen-config $(INCLUDE_NAMES) $(SRC_NAMES) $(DOC_FILES)
+ 	@echo "Generating documentation because of $(list_deps)"
+ 	echo -e 'OUTPUT_DIRECTORY=./doc\nGENERATE_LATEX=YES\nGENERATE_HTML=NO' \
+ 	    | cat doxygen-config - | $(DOXYGEN) - $(QUIET) \
+-	    && cd ./doc/latex && make refman.pdf $(QUIET) \
++	    && cd ./doc/latex && $(MAKE) refman.pdf $(QUIET) \
+ 	    && echo 'Created doc/latex/refman.pdf'
++	@#
++	    mkdir -p $(DESTDIR)/share/doc/openvdb/pdf; \
++	    echo "Created $(DESTDIR)/share/doc/openvdb/pdf"; \
++	    cp -r -f doc/latex/refman.pdf $(DESTDIR)/share/doc/openvdb/pdf/; \
++	    echo "Copied documentation to $(DESTDIR)/share/doc/openvdb/pdf/"; \
+ 
+ ifneq (,$(strip $(DOXYGEN)))
+ doc: $(DOC_INDEX)
+@@ -782,6 +789,22 @@ $(PYTHON_MODULE): $(LIBOPENVDB) $(PYTHON_OBJ_NAMES)
+ 	    -Wl,-rpath,$(BOOST_PYTHON_LIB_DIR) -L$(BOOST_PYTHON_LIB_DIR) $(BOOST_PYTHON_LIB) \
+ 	    $(LIBOPENVDB_RPATH) -L$(CURDIR) $(LIBOPENVDB) \
+ 	    $(LIBS_RPATH) $(CONCURRENT_MALLOC_LIB)
++	@echo "Installing the python module and includes"
++	@#
++	    mkdir -p $(PYTHON_INSTALL_INCL_DIR); \
++	    echo "Created $(PYTHON_INSTALL_INCL_DIR)"; \
++	    cp -f $(PYTHON_PUBLIC_INCLUDE_NAMES) $(PYTHON_INSTALL_INCL_DIR)/; \
++	    echo "Copied Python header files to $(PYTHON_INSTALL_INCL_DIR)"; \
++	    mkdir -p $(PYTHON_INSTALL_LIB_DIR); \
++	    echo "Created $(PYTHON_INSTALL_LIB_DIR)"; \
++	    cp -f $(PYTHON_MODULE) $(PYTHON_INSTALL_LIB_DIR)/; \
++	    pushd $(PYTHON_INSTALL_LIB_DIR) > /dev/null; \
++	    ln -f -s $(PYTHON_MODULE) $(PYTHON_SONAME); \
++	    popd > /dev/null; \
++	    echo "Copied Python module to $(PYTHON_INSTALL_LIB_DIR)"
++	@echo "Clean the Python modules so the next one will compile"
++	@#
++	    $(RM) $(PYTHON_OBJ_NAMES)
+ 
+ ifeq (yes,$(has_python))
+ ifneq (,$(strip $(EPYDOC)))
+@@ -833,7 +856,7 @@ test:
+ 	@echo "$@"': $$(CPPUNIT_INCL_DIR) is undefined'
+ endif
+ 
+-install: lib python vdb_print vdb_render vdb_view doc pydoc
++install: lib vdb_print vdb_render vdb_view doc pydoc
+ 	mkdir -p $(DESTDIR)/include/openvdb
+ 	@echo "Created $(DESTDIR)/include/openvdb"
+ 	pushd $(DESTDIR)/include/openvdb > /dev/null; \
+@@ -870,23 +893,6 @@ install: lib python vdb_print vdb_render vdb_view doc pydoc
+ 	    echo "Copied libopenvdb_viewer to $(DESTDIR)/lib/"; \
+ 	fi
+ 	@#
+-	if [ -f $(PYTHON_MODULE) ]; \
+-	then \
+-	    installdir=$(DESTDIR)/python/include/python$(PYTHON_VERSION); \
+-	    mkdir -p $${installdir}; \
+-	    echo "Created $${installdir}"; \
+-	    cp -f $(PYTHON_PUBLIC_INCLUDE_NAMES) $${installdir}/; \
+-	    echo "Copied Python header files to $${installdir}"; \
+-	    installdir=$(DESTDIR)/python/lib/python$(PYTHON_VERSION); \
+-	    mkdir -p $${installdir}; \
+-	    echo "Created $${installdir}"; \
+-	    cp -f $(PYTHON_MODULE) $${installdir}/; \
+-	    pushd $${installdir} > /dev/null; \
+-	    ln -f -s $(PYTHON_MODULE) $(PYTHON_SONAME); \
+-	    popd > /dev/null; \
+-	    echo "Copied Python module to $${installdir}"; \
+-	fi
+-	@#
+ 	mkdir -p $(DESTDIR)/bin
+ 	@echo "Created $(DESTDIR)/bin/"
+ 	cp -f vdb_print $(DESTDIR)/bin
