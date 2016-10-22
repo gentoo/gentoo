@@ -15,7 +15,7 @@ SRC_URI="https://github.com/SpamExperts/${PN}/archive/release-${MY_PV}.tar.gz ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha ~amd64 ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc gevent mysql pyzord redis test"
 
