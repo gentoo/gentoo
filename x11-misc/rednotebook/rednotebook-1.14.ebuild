@@ -12,7 +12,7 @@ DESCRIPTION="Graphical journal with calendar, templates, tags and keyword search
 HOMEPAGE="http://rednotebook.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="libyaml spell"
