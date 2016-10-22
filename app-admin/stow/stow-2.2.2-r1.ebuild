@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit perl-functions
+
 DESCRIPTION="GNU Stow is a symlink farm manager"
 HOMEPAGE="https://www.gnu.org/software/stow/"
 SRC_URI="mirror://gnu/stow/${P}.tar.gz"
@@ -18,4 +20,9 @@ DEPEND="dev-lang/perl
 		virtual/perl-Test-Harness
 		dev-perl/Test-Output
 	)"
-RDEPEND="dev-lang/perl"
+RDEPEND="dev-lang/perl:="
+
+src_configure() {
+	perl_set_version
+	econf "--with-pmdir=${VENDOR_LIB}"
+}

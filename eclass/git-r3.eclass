@@ -253,6 +253,7 @@ _git-r3_env_setup() {
 
 	local esc_pn livevar
 	esc_pn=${PN//[-+]/_}
+	[[ ${esc_pn} == [0-9]* ]] && esc_pn=_${esc_pn}
 
 	livevar=${esc_pn}_LIVE_REPO
 	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
