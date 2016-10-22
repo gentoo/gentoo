@@ -1422,7 +1422,7 @@ app-eselect/eselect-vi 1.1.7-r1 1.1.8 1.1.9: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4 3.7.7 3.7.8: Library that implements the AFF image standard
-app-forensics/afl 2.12b 2.19b 2.32b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.12b 2.19b 2.32b 2.35b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.14.2 0.15.1: AIDE (Advanced Intrusion Detection Environment) is a replacement for Tripwire
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
