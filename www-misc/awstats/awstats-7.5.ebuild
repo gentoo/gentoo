@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
@@ -37,7 +37,7 @@ RDEPEND=">=dev-lang/perl-5.6.1
 DEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-7.1-gentoo.diff
+	eapply "${FILESDIR}"/${PN}-7.1-gentoo.diff
 
 	# change default installation directory
 	find . -type f -exec sed \
@@ -65,11 +65,16 @@ src_prepare() {
 	fi
 
 	find "${S}" '(' -type f -not -name '*.pl' ')' -exec chmod -x {} + || die
+
+	eapply_user
 }
 
+HTML_DOCS="docs/"
+DOCS="README.md"
+
 src_install() {
-	dohtml -r docs/*
-	dodoc README.TXT
+	einstalldocs
+
 	newdoc wwwroot/cgi-bin/plugins/example/example.pm example_plugin.pm
 	dodoc -r tools/xslt
 
