@@ -230,6 +230,10 @@ PATCHES=(
 	# Bug #575072
 	"${FILESDIR}"/${PN}-2.2.4-relax_ffmpeg.patch
 	"${FILESDIR}"/${PN}-2.2.4-ffmpeg3.patch
+
+	# Bug #589396
+	"${FILESDIR}"/${PN}-2.2.4-qt57.patch
+	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )

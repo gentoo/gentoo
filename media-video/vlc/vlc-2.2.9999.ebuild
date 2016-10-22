@@ -221,6 +221,9 @@ PATCHES=(
 
 	# Allow QT5.5 since Gentoo has a patched QTwidgets
 	"${FILESDIR}"/${PN}-2.2.2-qt5widgets.patch
+
+	# Bug #589396
+	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )

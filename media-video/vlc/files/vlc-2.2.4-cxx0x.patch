@@ -1,0 +1,11 @@
+--- a/configure.ac	2016-09-21 07:10:58.885508665 +0200
++++ b/configure.ac	2016-09-21 07:19:17.835725004 +0200
+@@ -3746,7 +3746,7 @@
+     PKG_CHECK_MODULES([QT], [Qt5Core >= 5.1.0 Qt5Widgets Qt5Gui], [
+       PKG_CHECK_MODULES([QTX11], [Qt5X11Extras], [
+           VLC_ADD_LIBS([qt4],[${QTX11_LIBS}])
+-          VLC_ADD_CXXFLAGS([qt4],[${QTX11_CFLAGS} -DQT5_HAS_X11])
++          VLC_ADD_CXXFLAGS([qt4],[${QTX11_CFLAGS} -DQT5_HAS_X11 -std=c++0x])
+           PKG_CHECK_MODULES([XI], [xi], [
+             VLC_ADD_LIBS([qt4], [${XI_LIBS}])
+             VLC_ADD_CXXFLAGS([qt4], [${XI_CFLAGS} -DHAVE_XI])
