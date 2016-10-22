@@ -13992,7 +13992,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 7.01 7.12 7.30 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 7.01 7.12 7.30 7.31 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
@@ -17980,7 +17980,7 @@ www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring to
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
 www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated security features designed-in
-www-misc/awstats 7.1_p20121017 7.1.1 7.3 7.4: AWStats is short for Advanced Web Statistics
+www-misc/awstats 7.1_p20121017 7.4 7.5: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/gurlchecker 0.13.1-r1 0.13.1-r2: Gnome tool that checks links on web pages/sites
