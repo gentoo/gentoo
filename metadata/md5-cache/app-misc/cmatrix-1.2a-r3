@@ -4,11 +4,11 @@ DESCRIPTION=An ncurses based app to show a scrolling screen from the Matrix
 EAPI=6
 HOMEPAGE=http://www.asty.org/cmatrix
 IUSE=X
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=X? ( x11-apps/mkfontdir ) sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://www.asty.org/cmatrix/dist/cmatrix-1.2a.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=533a1f3141932aa53a36d260f579e113
+_md5_=03c567e77314db962da8141c0e73566d
