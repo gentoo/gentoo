@@ -3666,17 +3666,28 @@ media-gfx/asymptote:sigsegv - Enables using dev-libs/libsigsegv
 media-gfx/blender:boost - Enable features depending on boost.
 media-gfx/blender:bullet - Enable Bullet (Physics Engine).
 media-gfx/blender:collada - Add support for Collada interchange format through media-libs/opencollada.
-media-gfx/blender:colorio - Enable OpenColorIO color management.
+media-gfx/blender:colorio - Enable OpenColorIO color management through media-libs/opencolorio.
+media-gfx/blender:cuda - Build cycles renderer with nVidia CUDA support.
 media-gfx/blender:cycles - Build cycles renderer (requires media-libs/openimageio and dev-libs/boost).
 media-gfx/blender:dds - Adds DDS textures support to Blender.
 media-gfx/blender:doc - Build C and Python API documentation directly from the source code.
 media-gfx/blender:elbeem - Adds surface fluid simulation to Blender using El'Beem library.
 media-gfx/blender:game-engine - Adds Game Engine support to Blender.
+media-gfx/blender:headless - Build without graphical support (renderfarm, server mode only).
+media-gfx/blender:jemalloc - Use dev-libs/jemalloc for memory allocation.
+media-gfx/blender:llvm - Enable features depending on llvm.
+media-gfx/blender:man - Build and install man pages.
 media-gfx/blender:ndof - Enable NDOF input devices (SpaceNavigator and friends).
+media-gfx/blender:opencl - Build cycles renderer with OpenCL GPU enhancements.
 media-gfx/blender:openimageio - Enable OpenImageIO Support
 media-gfx/blender:opennl - Enable use of Open Numerical Library
+media-gfx/blender:opensubdiv - Add rendering support form OpenSubdiv from Dreamworks Animation through media-libs/opensubdiv.
+media-gfx/blender:openvdb - Add GPU preview rendering. Only works with nVidia cards.
+media-gfx/blender:openvdb-compression - Support optional compression used by OpenVDB (requires media-gfx/openvdb).
 media-gfx/blender:player - Build the Blender Player. THis requires the Game engine.
 media-gfx/blender:redcode - This flag add support for RED CODE camera digital format (5K HD images *.r3d) - EXPERIMENTAL.
+media-gfx/blender:test - Build the provided unit tests.
+media-gfx/blender:valgrind - Add support for memory debugging using dev-util/valgrind
 media-gfx/brlcad:benchmarks - Run benchmarks during test phase (need test option enabled)
 media-gfx/comix:rar - Pulls app-arch/unrar for rar file support
 media-gfx/cura:usb - Access 3D printers via USB
@@ -3789,6 +3800,7 @@ media-gfx/nvidia-texture-tools:cuda - Enable NVIDIA CUDA toolkit support
 media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wrangler Library (media-libs/glew)
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
+media-gfx/openvdb:openvdb-compression - Adds enhanced compression to files through dev-libs/c-blosc. Very useful so enabled by dfault.
 media-gfx/photoqt:exiv2 - Use media-gfx/exiv2 as optional dependency
 media-gfx/photoqt:graphicsmagick - Use media-gfx/graphicsmagick as optional dependency
 media-gfx/pngcrush:system-libs - Use libpng and libz provided by system
@@ -4006,6 +4018,11 @@ media-libs/openh264:utils - Install the CLI encoder and decoder utilities
 media-libs/openimageio:colorio - Use media-libs/opencolorio
 media-libs/openimageio:opencv - Use media-libs/opencv
 media-libs/openimageio:tbb - Use dev-cpp/tbb
+media-libs/opensubdiv:cuda - Enable NVIDIA CUDA Toolkit support through dev-util/nvidia-cuda-toolkit.
+media-libs/opensubdiv:opencl - Enable OpenCL support through virtual/opencl.
+media-libs/opensubdiv:ptex - Adds support for faster per-face texture mapping through media-libs/ptex.
+media-libs/opensubdiv:tbb - Enable multithreading with the Intel Threads Building Blocks through dev-cpp/tbb.
+media-libs/opensubdiv:tutorials - 
 media-libs/opus:ambisonics - Enable ambisonics support (experimental).
 media-libs/opus:custom-modes - Build with custom-modes.
 media-libs/opusfile:fixed-point - Enable fixed-point arithmetic operations
