@@ -4438,7 +4438,7 @@ dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the AN
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnu-smalltalk 3.2.4 3.2.4-r1 3.2.5: GNU Smalltalk
-dev-lang/go 1.6.3 1.7 1.7.1 1.7.3 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.6.3 1.7.1 1.7.3 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
@@ -6966,9 +6966,9 @@ dev-python/aioeventlet 0.5.1: asyncio event loop scheduling callbacks in eventle
 dev-python/aiohttp 0.21.5 1.0.1 1.0.2 1.0.3 1.0.4: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7 0.7.8: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
-dev-python/aldryn-bootstrap3 0.5.1 1.0.7: django CMS plugins for bootstrap3 markup
-dev-python/aldryn-common 1.0.3: django CMS plugins with common utilities
-dev-python/aldryn-search 0.2.12: An extension to django CMS to provide multilingual Haystack indexes
+dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
+dev-python/aldryn-common 1.0.3 1.0.4: django CMS plugins with common utilities
+dev-python/aldryn-search 0.2.12 0.3.0: An extension to django CMS to provide multilingual Haystack indexes
 dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6 0.8.7 0.8.8: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
@@ -7172,8 +7172,8 @@ dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration d
 dev-python/django-auth-ldap 1.2.2 1.2.6 1.2.7: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.16 3.1.17: Celery Integration for Django
-dev-python/django-classy-tags 0.6.2 0.7.1 0.7.2: Class based template tags for Django
-dev-python/django-cms 3.1.2 3.1.3 3.2.0 3.3.0: A Django application for managing hierarchical pages of content
+dev-python/django-classy-tags 0.6.2 0.7.1 0.7.2 0.8.0: Class based template tags for Django
+dev-python/django-cms 3.1.2 3.1.3 3.2.0 3.3.0 3.4.1: A Django application for managing hierarchical pages of content
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
 dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1 1.5.2 1.6.0: Best way to have Django DRY forms
 dev-python/django-debug-toolbar 1.3.2 1.4 1.5: A configurable set of panels that display debug information
@@ -7207,7 +7207,7 @@ dev-python/django-sekizai 0.8.2 0.9.0: Django Template Blocks with extra functio
 dev-python/django-select2 4.2.2 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
-dev-python/django-sortedm2m 1.3.0: Drop-in replacement for django's many to many field with sorted relations
+dev-python/django-sortedm2m 1.3.0 1.3.2: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-spurl 0.6.4: A Django template library for manipulating URLs
 dev-python/django-standard-form 1.1.1: Quick and simple django templatetags for displaying forms
 dev-python/django-tables2 1.1.0 1.1.1 1.1.2: Table/data-grid framework for Django
@@ -7218,16 +7218,16 @@ dev-python/django-treebeard 3.0 4.0: Efficient tree implementations for Django 1
 dev-python/django-two-factor-auth 1.2.1 1.3.0: User-friendly Two-Factor Authentication for Django
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/django_polymorphic 0.7.2 0.9.2: Seamless Polymorphic Inheritance for Django Models
-dev-python/djangocms-admin-style 0.2.8 1.1.0 1.2.2: Adds pretty CSS styles for the django CMS admin interface.
-dev-python/djangocms-file 0.1 1.0: File plugin for django CMS
+dev-python/djangocms-admin-style 0.2.8 1.1.0 1.2.2 1.2.5: Adds pretty CSS styles for the django CMS admin interface.
+dev-python/djangocms-file 0.1 1.0 2.0.1: File plugin for django CMS
 dev-python/djangocms-flash 0.2.0 0.3.0: Flash plugin for django CMS
-dev-python/djangocms-inherit 0.1 0.2.1: Inherit plugin for django CMS
-dev-python/djangocms-link 1.7.1 1.7.2: Link plugin for django CMS
-dev-python/djangocms-picture 0.1 1.0.0: Picture plugin for django CMS
-dev-python/djangocms-snippet 1.5 1.8.1: Snippet plugin for django CMS
+dev-python/djangocms-inherit 0.1 0.2.1 0.2.2: Inherit plugin for django CMS
+dev-python/djangocms-link 1.7.1 1.7.2 2.0.1: Link plugin for django CMS
+dev-python/djangocms-picture 0.1 1.0.0 2.0.2: Picture plugin for django CMS
+dev-python/djangocms-snippet 1.5 1.8.1 1.9.1: Snippet plugin for django CMS
 dev-python/djangocms-teaser 0.1 0.2.0: Teaser plugin for django CMS
-dev-python/djangocms-text-ckeditor 2.6.0 2.8.1 3.0.0: Text Plugin for django CMS with CKEditor support
-dev-python/djangocms-video 0.1 1.0.0: Video plugin for django CMS
+dev-python/djangocms-text-ckeditor 2.6.0 2.8.1 3.0.0 3.3.0: Text Plugin for django CMS with CKEditor support
+dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
