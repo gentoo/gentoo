@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer restrict="&gt;=media-gfx/blender-2.72b-r4" type="person">
+	<maintainer restrict="&gt;=media-gfx/blender-2.77" type="person">
 		<email>j.scruggs@gmail.com</email>
 		<name>Jonathan Scruggs</name>
-		<description>Proxy maintainer</description>
 	</maintainer>
-	<maintainer restrict="&gt;=media-gfx/blender-2.72b-r4" type="person">
+	<maintainer restrict="&gt;=media-gfx/blender-2.77" type="person">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
-		<description>Proxy maintainer</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
 	</maintainer>
 
 	<longdescription>
@@ -26,12 +24,22 @@
 	</longdescription>
 
 	<use>
-		<flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
-			Adds Game Engine support to Blender.
+		<flag name="boost">
+			Enable features depending on boost.
+		</flag>
+		<flag name="bullet">
+			Enable Bullet (Physics Engine).
 		</flag>
 		<flag name="collada">
 			Add support for Collada interchange format through
 			<pkg>media-libs/opencollada</pkg>.
+		</flag>
+		<flag name="colorio">
+			Enable OpenColorIO color management through
+			<pkg>media-libs/opencolorio</pkg>.
+		</flag>
+		<flag name="cuda">
+			Build cycles renderer with nVidia CUDA support.
 		</flag>
 		<flag name="cycles">
 			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
@@ -40,32 +48,61 @@
 		<flag name="dds">
 			Adds DDS textures support to Blender.
 		</flag>
-		<flag name="player">
-			Build the Blender Player. THis requires the Game engine.
+		<flag name="doc">
+			Build C and Python API documentation directly from the source code.
 		</flag>
 		<flag name="elbeem">
 			Adds surface fluid simulation to Blender using El'Beem library.
 		</flag>
-		<flag name="doc">
-			Build C and Python API documentation directly from the source code.
+		<flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
+			Adds Game Engine support to Blender.
 		</flag>
-		<flag name="redcode">
-			This flag add support for RED CODE camera digital format (5K HD
-			images *.r3d) - EXPERIMENTAL.
+		<flag name="headless" restrict="&gt;=media-gfx/blender-2.77">
+			Build without graphical support (renderfarm, server mode only).
 		</flag>
-		<flag name="boost">
-			Enable features depending on boost.
+		<flag name="jemalloc" restrict="&gt;=media-gfx/blender-2.77">
+			Use <pkg>dev-libs/jemalloc</pkg> for memory allocation.
 		</flag>
-		<flag name="bullet">
-			Enable Bullet (Physics Engine).
+		<flag name="llvm" restrict="&gt;=media-gfx/blender-2.77">
+			Enable features depending on llvm.
 		</flag>
-		<flag name="colorio">
-			Enable OpenColorIO color management.
+		<flag name="man" restrict="&gt;=media-gfx/blender-2.77">
+			Build and install man pages.
 		</flag>
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
+		<flag name="opencl">
+			Build cycles renderer with OpenCL GPU enhancements.
+		</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
-		<flag name="opennl">Enable use of Open Numerical Library</flag>
+		<flag name="opennl" restrict="&lt;=media-gfx/blender-2.73">
+			Enable use of Open Numerical Library
+		</flag>
+		<flag name="opensubdiv" restrict="&gt;=media-gfx/blender-2.77">
+			Add rendering support form OpenSubdiv from Dreamworks Animation
+			through <pkg>media-libs/opensubdiv</pkg>.
+		</flag>
+		<flag name="openvdb" restrict="&gt;=media-gfx/blender-2.77">
+			Add GPU preview rendering. Only works with nVidia cards.
+		</flag>
+		<flag name="openvdb-compression" restrict="&gt;=media-gfx/blender-2.77">
+			Support optional compression used by OpenVDB (requires
+			<pkg>media-gfx/openvdb</pkg>).
+		</flag>
+		<flag name="player">
+			Build the Blender Player. THis requires the Game engine.
+		</flag>
+		<flag name="redcode" restrict="&lt;=media-gfx/blender-2.73">
+			This flag add support for RED CODE camera digital format (5K HD
+			images *.r3d) - EXPERIMENTAL.
+		</flag>
+		<flag name="test" restrict="&gt;=media-gfx/blender-2.77">
+			Build the provided unit tests.
+		</flag>
+		<flag name="valgrind" restrict="&gt;=media-gfx/blender-2.77">
+			Add support for memory debugging using
+			<pkg>dev-util/valgrind</pkg>
+		</flag>
 	</use>
 </pkgmetadata>
