@@ -1,0 +1,11 @@
+diff -purN a/source/blender/render/intern/raytrace/rayobject_rtbuild.cpp b/source/blender/render/intern/raytrace/rayobject_rtbuild.cpp
+--- a/source/blender/render/intern/raytrace/rayobject_rtbuild.cpp	2016-09-28 10:26:55.000000000 +0100
++++ b/source/blender/render/intern/raytrace/rayobject_rtbuild.cpp	2016-10-04 11:13:46.489404123 +0100
+@@ -34,6 +34,7 @@
+ #include <math.h>
+ #include <stdlib.h>
+ #include <algorithm>
++#include <cmath>
+ 
+ #include "rayobject_rtbuild.h"
+ 
