@@ -1,0 +1,22 @@
+--- a/diff/diff3.c
++++ b/diff/diff3.c
+@@ -1503,7 +1503,7 @@
+ 	      line = 0;
+ 	      do
+ 		{
+-		  printf_output (line_prefix);
++		  printf_output ("%s", line_prefix);
+ 		  cp = D_RELNUM (ptr, realfile, line);
+ 		  length = D_RELLEN (ptr, realfile, line);
+ 		  write_output (cp, length);
+--- a/src/main.c
++++ b/src/main.c
+@@ -1375,7 +1375,7 @@
+ {
+     (void) fprintf (stderr, *cpp++, program_name, cvs_cmd_name);
+     for (; *cpp; cpp++)
+-	(void) fprintf (stderr, *cpp);
++	(void) fprintf (stderr, "%s", *cpp);
+     exit (EXIT_FAILURE);
+ }
+ 

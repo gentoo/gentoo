@@ -3,8 +3,8 @@ https://bugs.gentoo.org/570208
 
 update mktime check to latest autoconf version which is less buggy
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -5299,26 +6059,25 @@
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
