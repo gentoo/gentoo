@@ -13,21 +13,23 @@ SRC_URI="http://libsound.io/release/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/1"
 KEYWORDS="~amd64"
-IUSE="alsa coreaudio examples pulseaudio static-libs"
+IUSE="alsa coreaudio examples jack pulseaudio static-libs"
 
+# Build fails with <=media-sound/jack2-1.9.10
+# See https://github.com/andrewrk/libsoundio/issues/7
+# Only jack1 is supported for the time being
 DEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	jack? ( >=media-sound/jack-audio-connection-kit-0.125.0[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}_missing_include.patch" )
 
-# ENABLE_JACK does not support the current version of jack1
-# See https://github.com/andrewrk/libsoundio/issues/11
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_COREAUDIO=$(usex coreaudio)
-		-DENABLE_JACK=no
+		-DENABLE_JACK=$(usex jack)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_WASAPI=no
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
