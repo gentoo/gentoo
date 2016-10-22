@@ -4,7 +4,7 @@ DESCRIPTION=A distributed, collaborative spam detection and filtering network
 EAPI=5
 HOMEPAGE=https://github.com/SpamExperts/pyzor/
 IUSE=doc gevent mysql pyzord redis test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=alpha ~amd64 ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=mysql? ( python_targets_python2_7? ( >=dev-python/mysql-python-1.2.5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) redis? ( ~dev-python/redis-py-2.9.1[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) gevent? ( python_targets_python2_7? ( ~dev-python/gevent-1.0.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=test? ( mysql redis ) || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/SpamExperts/pyzor/archive/release-1-0-0.tar.gz -> pyzor-1.0.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=33ef0d35d3e7e2727eb155ed3131ce01
+_md5_=f5f1a69b6590e3b082dae0f68aa0f323
