@@ -4552,7 +4552,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.11.29: A C++ crypto library
+dev-libs/botan 1.10.12 1.10.13 1.11.29 1.11.32: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -7057,7 +7057,7 @@ dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive H
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0 2.42.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1: The AWS SDK for Python
 dev-python/botocore 1.4.56 1.4.58 1.4.60: Low-level, data-driven core of boto 3.
-dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.2.6 3.2.7: A Python 3 implementation for client-side web programming
