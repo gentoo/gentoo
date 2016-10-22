@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/3.4.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
-IUSE="opencv raw tiff zip"
+IUSE="+jpeg opencv raw tiff zip"
 
 REQUIRED_USE="
 	raw? ( opencv )
@@ -23,7 +23,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg?]
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${P}/ImageLounge"
+
+PATCHES=( "${FILESDIR}/${P}-no-opencv.patch" ) # bug 592134
 
 src_configure() {
 	local mycmakeargs=(
