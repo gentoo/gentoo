@@ -18,4 +18,4 @@ DEPEND="dev-lang/perl
 		virtual/perl-Test-Harness
 		dev-perl/Test-Output
 	)"
-RDEPEND="dev-lang/perl"
+RDEPEND="dev-lang/perl:="
