@@ -17,7 +17,7 @@ PHP_EXT_OPTIONAL_USE=php
 
 USE_PHP="php7-0"
 
-inherit toolchain-funcs versionator php-ext-source-r2 python-r1 mono-env ruby-ng db-use
+inherit db-use eutils mono-env php-ext-source-r2 python-r1 ruby-ng toolchain-funcs versionator
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
 HOMEPAGE="http://www.zeroc.com/"
@@ -56,9 +56,14 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/I/i}"
 PHP_EXT_S="${S}/php"
 
+PATCHES=(
+	"${FILESDIR}/${P}-no-arch-opts.patch"
+	"${FILESDIR}/${P}-csharp.patch"
+)
+
 pkg_setup() {
 	# prevent ruby-ng.eclass from messing with pkg_setup
-	:;
+	return
 }
 
 src_unpack() {
@@ -67,8 +72,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-no-arch-opts.patch"
-	epatch "${FILESDIR}/${P}-csharp.patch"
+	epatch -p1 "${PATCHES[@]}"
+
 	sed -i \
 		-e 's|\(install_configdir[[:space:]]*\):=|\1?=|' \
 		-e 's|-L\$\(libdir\)||' \
@@ -124,32 +129,33 @@ src_prepare() {
 		ruby/Makefile || die "sed failed"
 }
 
-suitable_db_version() {
-	local tested_slots="5.3 5.1"
-	for ver in ${tested_slots}; do
-		if [[ -n $(db_findver sys-libs/db:${ver}) ]]; then
-			echo ${ver}
-			return 0
-		fi
-	done
-	die "No suitable BerkDB versions found, aborting"
-}
-
 src_configure() {
-	MAKE_RULES="prefix=\"${ED}/usr\"
-		install_docdir=\"${ED}/usr/share/doc/${PF}\"
-		install_configdir=\"${ED}/usr/share/${P}/config\"
-		install_mandir=\"${ED}/usr/share/man\"
-		embedded_runpath_prefix=\"${EPREFIX}/usr\"
-		LP64=yes
-		new_dtags=yes
-		NOTEST=$(usex test no yes)"
+	suitable_db_version() {
+		local ver tested_slots=(5.3 5.1)
+		for ver in "${tested_slots[@]}"; do
+			if [[ -n $(db_findver sys-libs/db:${ver}) ]]; then
+				echo "${ver}"
+				return 0
+			fi
+		done
+		die "No suitable BerkDB versions found, aborting"
+	}
 
-	use ncurses && OPTIONS="${MAKE_RULES} USE_READLINE=yes" || MAKE_RULES="${MAKE_RULES} USE_READLINE=no"
-	use debug && OPTIONS="${MAKE_RULES} OPTIMIZE=no" || MAKE_RULES="${MAKE_RULES} OPTIMIZE=yes"
+	MAKE_RULES=(
+		"prefix=\"${ED%/}/usr\""
+		"install_docdir=\"${ED%/}/usr/share/doc/${PF}\""
+		"install_configdir=\"${ED%/}/usr/share/${P}/config\""
+		"install_mandir=\"${ED%/}/usr/share/man\""
+		"embedded_runpath_prefix=\"${EPREFIX}/usr\""
+		"LP64=yes"
+		"new_dtags=yes"
+		"NOTEST=$(usex !test)"
+		"USE_READLINE=$(usex ncurses)"
+		"OPTIMIZE=$(usex !debug)"
+	)
 
 	local BERKDB_VERSION="$(suitable_db_version)"
-	MAKE_RULES="${MAKE_RULES} DB_FLAGS=-I$(db_includedir ${BERKDB_VERSION})"
+	MAKE_RULES+=("DB_FLAGS=-I$(db_includedir ${BERKDB_VERSION})")
 	sed -i \
 		-e "s|g++|$(tc-getCXX)|" \
 		-e "s|\(CFLAGS[[:space:]]*=\)|\1 ${CFLAGS}|" \
@@ -158,14 +164,17 @@ src_configure() {
 		-e "s|\(DB_LIBS[[:space:]]*=\) \-ldb_cxx|\1 -ldb_cxx-$(db_findver sys-libs/db:${BERKDB_VERSION})|" \
 		cpp/config/Make.rules{,.Linux} python/config/Make.rules || die "sed failed"
 
-	if use python ; then
-		S=${S}/python python_copy_sources
+	if use python; then
+		local S="${S}/python"
+		python_copy_sources
 	fi
 
-	if use ruby ; then
-		SITERUBY="$(ruby22 -r rbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
-		MAKE_RULES_RB="install_rubydir=\"${ED}/${SITERUBY}\"
-			install_libdir=\"${ED}/${SITERUBY}\""
+	if use ruby; then
+		SITERUBY="$(ruby22 -r rbconfig -e 'print RbConfig::CONFIG[\"sitelibdir\"]')"
+		MAKE_RULES_RUBY=(
+			"install_rubydir=\"${ED%/}/${SITERUBY}\""
+			"install_libdir=\"${ED%/}/${SITERUBY}\""
+		)
 
 		# make it use ruby22 only
 		sed -i \
@@ -182,11 +191,16 @@ src_configure() {
 			scripts/TestUtil.py || die "sed failed"
 	fi
 
-	MAKE_RULES_CS="GACINSTALL=yes GAC_ROOT=\"${ED}/usr/$(get_libdir)\" GAC_DIR=${EPREFIX}/usr/$(get_libdir)
-		install_libdir=\"${ED}/usr/$(get_libdir)\"
-		install_pkgconfigdir=\"${ED}/usr/$(get_libdir)/pkgconfig\""
+	MAKE_RULES_MONO=(
+		"GACINSTALL=yes"
+		"GAC_ROOT=\"${ED%/}/usr/$(get_libdir)\""
+		"GAC_DIR=\"${EPREFIX}/usr/$(get_libdir)\""
+		"install_libdir=\"${ED%/}/usr/$(get_libdir)\""
+		"install_pkgconfigdir=\"${ED%/}/usr/$(get_libdir)/pkgconfig\""
+	)
+
 	if has_version ">dev-lang/mono-4"; then
-		MAKE_RULES_CS="${MAKE_RULES_CS} MCS=mcs"
+		MAKE_RULES_MONO+=("MCS=mcs")
 	fi
 
 	use test && python_setup
@@ -196,121 +210,136 @@ src_compile() {
 	# Do not remove this export or build will break!
 	tc-export CXX
 
-	emake -C cpp ${MAKE_RULES} || die "emake failed"
+	emake -C cpp "${MAKE_RULES[@]}"
 
 	if use php; then
-		local slot
-		for slot in $(php_get_slots); do
-			mkdir -p "${WORKDIR}/${slot}"
-			cp -r "${PHP_EXT_S}" "${WORKDIR}/${slot}/" || die "Failed to copy source ${PHP_EXT_S} to PHP target directory"
-			cd "${WORKDIR}/${slot}"
-			ln -s "${S}/cpp"
-			ln -s "${S}/config"
-			ln -s "${S}/slice"
-			ln -s "${S}/Makefile"
+		local i
+		for i in $(php_get_slots); do
+			mkdir -p "${WORKDIR}/${i}" || die
+			cp -r "${PHP_EXT_S}" "${WORKDIR}/${i}/" || die "Failed to copy source ${PHP_EXT_S} to PHP target directory"
 
-			emake -C php ${MAKE_RULES} USE_NAMESPACES=yes PHP_CONFIG="${EPREFIX}/usr/$(get_libdir)/${slot}/bin/php-config" || die "emake php failed"
+			pushd "${WORKDIR}/${i}" >/dev/null || die
+			ln -s "${S}/cpp" || die
+			ln -s "${S}/config" || die
+			ln -s "${S}/slice" || die
+			ln -s "${S}/Makefile" || die
+
+			emake -C php "${MAKE_RULES[@]}" USE_NAMESPACES=yes "PHP_CONFIG=\"${EPREFIX}/usr/$(get_libdir)/${i}/bin/php-config\""
+			popd >/dev/null || die
 		done
-		cd "${S}"
 	fi
 
-	if use python ; then
+	if use python; then
 		building() {
-			emake -C "${BUILD_DIR}" ${MAKE_RULES} PYTHON=${EPYTHON} || die "emake python-${EPYTHON} failed"
+			emake -C "${BUILD_DIR}" "${MAKE_RULES[@]}" PYTHON="${EPYTHON}"
 		}
-		S=${S}/python python_foreach_impl building
+		local S="${S}/python"
+		python_foreach_impl building
 	fi
 
-	if use ruby ; then
-		emake -C ruby ${MAKE_RULES} ${MAKE_RULES_RB} || die "emake rb failed"
+	if use ruby; then
+		emake -C ruby "${MAKE_RULES[@]}" "${MAKE_RULES_RUBY[@]}"
 	fi
 
-	if use mono ; then
-		emake -C csharp ${MAKE_RULES} ${MAKE_RULES_CS} || die "emake csharp failed"
+	if use mono; then
+		emake -C csharp "${MAKE_RULES[@]}" "${MAKE_RULES_MONO[@]}"
 	fi
 }
 
 src_test() {
-	export LD_LIBRARY_PATH="${S}/cpp/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-	emake -C cpp ${MAKE_RULES} test || die "emake cpp test failed"
+	local -x LD_LIBRARY_PATH="${S}/cpp/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+	emake -C cpp "${MAKE_RULES[@]}" test
 
 	# php tests require the extension loaded and are therefore skipped
 
-	if use python ; then
+	if use python; then
 		testing() {
-			emake -C "${BUILD_DIR}" ${MAKE_RULES} PYTHON=${EPYTHON} \
-				install_pythondir="\"${D}/$(python_get_sitedir)\"" \
-				install_libdir="\"${D}/$(python_get_sitedir)\"" \
-				test || die "emake python-${EPYTHON} test failed"
+			emake -C "${BUILD_DIR}" \
+				"${MAKE_RULES[@]}" \
+				PYTHON="${EPYTHON}" \
+				install_pythondir="\"${D%/}/$(python_get_sitedir)\"" \
+				install_libdir="\"${D%/}/$(python_get_sitedir)\"" test
 		}
-		S=${S}/python python_foreach_impl testing
+		local S="${S}/python"
+		python_foreach_impl testing
 	fi
 
-	if use ruby ; then
-		emake -C ruby ${MAKE_RULES} ${MAKE_RULES_RB} test || die "emake ruby test failed"
+	if use ruby; then
+		emake -C ruby "${MAKE_RULES[@]}" "${MAKE_RULES_RUBY[@]}" test
 	fi
 
-	if use mono ; then
+	if use mono; then
 		# skip mono tests, bug #498484
 		ewarn "Tests for C# are currently disabled."
-#		emake -C csharp ${MAKE_RULES} ${MAKE_RULES_CS} test || die "emake csharp test failed"
+		#emake -C csharp "${MAKE_RULES[@]}" "${MAKE_RULES_MONO[@]}" test
 	fi
 }
 
 src_install() {
-	dodoc CHANGELOG*.md README.md
+	local DOCS=( CHANGELOG*.md README.md )
+	use doc && DOCS+=( "${DISTDIR}/${P}.pdf" )
+	einstalldocs
 
 	insinto /usr/share/${P}
 	doins -r slice
 
-	emake -C cpp ${MAKE_RULES} install || die "emake install failed"
+	emake -C cpp "${MAKE_RULES[@]}" install
 
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples-cpp
-		doins cpp/config/*.cfg
+	if use examples; then
+		docinto examples-cpp
+		dodoc cpp/config/*.cfg
+		docompress -x /usr/share/doc/${PF}/examples-cpp
 	fi
 
-	if use doc ; then
-		dodoc "${DISTDIR}/${P}.pdf"
-	fi
-
-	if use php ; then
+	if use php; then
 		insinto "/usr/share/php/${PN}"
-		doins $(cd php/lib; find "${S}"/php/lib/ -name '*.php' -print)
-		for dir in $( cd "${D}/usr/share/${P}/slice" ; ls -1 ); do
-			mkdir -p "${D}/usr/share/php/${dir}"
-			LD_LIBRARY_PATH="${D}/usr/$(get_libdir):${LD_LIBRARY_PATH}" ${D}/usr/bin/slice2php -I${D}/usr/share/${P}/slice/ --all --output-dir ${D}/usr/share/php/${dir} --ice ${D}/usr/share/${P}/slice/${dir}/*
+
+		local i
+		while IFS="" read -d $'\0' -r i; do
+			doins "${i}"
+		done < <(find "${S}/php/lib/" -name '*.php' -print0)
+
+		pushd "${ED%/}/usr/share/${P}/slice" >/dev/null || die
+
+		local -x LD_LIBRARY_PATH="${ED%/}/usr/$(get_libdir):${LD_LIBRARY_PATH}"
+		for i in *; do
+			mkdir -p "${ED%/}/usr/share/php/${i}" || die
+			"${ED%/}"/usr/bin/slice2php \
+				-I"${ED%/}/usr/share/${P}/slice/" --all \
+				--output-dir "${ED%/}/usr/share/php/${i}" \
+				--ice "${ED%/}/usr/share/${P}/slice/${i}"/*
 		done
 
-		local slot
-		for slot in $(php_get_slots); do
-			php_init_slot_env ${slot}
+		for i in $(php_get_slots); do
+			php_init_slot_env "${i}"
 			insinto "${EXT_DIR}"
-			newins "php/lib/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so" || die "Unable to install extension"
+			newins "php/lib/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so"
 		done
 		php-ext-source-r2_createinifiles
 
-		cd "${S}"
+		popd >/dev/null || die
 	fi
 
-	if use python ; then
+	if use python; then
 		installation() {
-			mkdir -p "${D}/$(python_get_sitedir)" || die
+			mkdir -p "${D%/}/$(python_get_sitedir)" || die
 
-			emake -C "${BUILD_DIR}" ${MAKE_RULES} \
-				install_pythondir="\"${D}/$(python_get_sitedir)\"" \
-				install_libdir="\"${D}/$(python_get_sitedir)\"" \
-				install || die "emake python-${EPYTHON} install failed"
+			emake -C "${BUILD_DIR}" \
+				"${MAKE_RULES[@]}" \
+				install_pythondir="\"${D%/}/$(python_get_sitedir)\"" \
+				install_libdir="\"${D%/}/$(python_get_sitedir)\"" \
+				install
 		}
-		S=${S}/python python_foreach_impl installation
+		local S="${S}/python"
+		python_foreach_impl installation
 	fi
 
-	if use ruby ; then
+	if use ruby; then
 		dodir "${SITERUBY}"
-		emake -C ruby ${MAKE_RULES} ${MAKE_RULES_RB} install || die "emake ruyb install failed"
+		emake -C ruby "${MAKE_RULES[@]}" "${MAKE_RULES_RUBY[@]}" install
 	fi
 
-	if use mono ; then
-		emake -C csharp ${MAKE_RULES} ${MAKE_RULES_CS} install || die "emake csharp install failed"
+	if use mono; then
+		emake -C csharp "${MAKE_RULES[@]}" "${MAKE_RULES_MONO[@]}" install
 	fi
 }
