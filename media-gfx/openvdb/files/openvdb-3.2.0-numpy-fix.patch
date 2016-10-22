@@ -1,0 +1,17 @@
+diff --git a/python/pyOpenVDBModule.cc b/openvdb/python/pyOpenVDBModule.cc
+index 508c787..dd069e0 100644
+--- a/python/pyOpenVDBModule.cc
++++ b/python/pyOpenVDBModule.cc
+@@ -592,8 +592,12 @@ BOOST_PYTHON_MODULE(PY_OPENVDB_MODULE_NAME)
+ 
+ #ifdef PY_OPENVDB_USE_NUMPY
+     // Initialize NumPy.
++#if PY_MAJOR_VERSION >= 3
++    if (_import_array()) { };
++#else
+     import_array();
+ #endif
++#endif
+ 
+     using namespace openvdb::OPENVDB_VERSION_NAME;
+ 

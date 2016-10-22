@@ -1,0 +1,33 @@
+diff -purN a/doxygen-config b/doxygen-config
+--- a/doxygen-config	2016-08-10 16:59:33.000000000 +0100
++++ b/doxygen-config	2016-10-12 12:19:06.124785164 +0100
+@@ -2257,7 +2257,7 @@ DIRECTORY_GRAPH        = YES
+ # The default value is: png.
+ # This tag requires that the tag HAVE_DOT is set to YES.
+ 
+-DOT_IMAGE_FORMAT       = png
++DOT_IMAGE_FORMAT       = svg
+ 
+ # If DOT_IMAGE_FORMAT is set to svg, then this option can be set to YES to
+ # enable generation of interactive SVG images that allow zooming and panning.
+diff -purN a/Makefile b/Makefile
+--- a/Makefile	2016-08-10 16:59:33.000000000 +0100
++++ b/Makefile	2016-10-12 12:18:32.434773635 +0100
+@@ -678,7 +678,7 @@ ALL_PRODUCTS := \
+ 	@echo "Building $@ because of $(call list_deps)"
+ 	$(CXX) -c $(CXXFLAGS) -fPIC -o $@ $<
+ 
+-all: lib python vdb_print vdb_render vdb_test depend
++all: lib python vdb_print vdb_render vdb_view vdb_test depend
+ 
+ $(OBJ_NAMES): %.o: %.cc
+ 	@echo "Building $@ because of $(call list_deps)"
+@@ -794,7 +794,7 @@ pydoc: $(PYTHON_MODULE) $(LIBOPENVDB_SON
+ 	echo "Created $${pydocdir}"; \
+ 	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(CURDIR); \
+ 	export PYTHONPATH=${PYTHONPATH}:$(CURDIR); \
+-	    $(EPYDOC) --html -o $${pydocdir} $(PYTHON_MODULE_NAME) $(QUIET)
++	    $(EPYDOC) --html --html-dir $${pydocdir} $(PYTHON_MODULE_NAME) $(QUIET)
+ else
+ pydoc:
+ 	@echo "$@"': $$EPYDOC is undefined'
