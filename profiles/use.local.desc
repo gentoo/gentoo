@@ -8077,8 +8077,6 @@ www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool
 www-servers/lighttpd:uploadprogress - Apply experimental patch for upload progress module
 www-servers/lighttpd:webdav - Enable webdav properties
 www-servers/monkeyd:debug - Enable lots of debugging info
-www-servers/monkeyd:jemalloc - Use dev-libs/jemalloc for allocations
-www-servers/monkeyd:minimal - Do not install shared lib and include files
 www-servers/monkeyd:static-plugins - Build statically linked plugins
 www-servers/nginx:aio - Enables file AIO support
 www-servers/nginx:http - Enable HTTP core support

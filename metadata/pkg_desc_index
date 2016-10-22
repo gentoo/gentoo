@@ -18024,7 +18024,7 @@ www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 1.4.42 9999: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
-www-servers/monkeyd 1.5.6-r1 1.6.9-r1 9999: A small, fast, and scalable web server
+www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.10.1 1.10.1-r3 1.10.1-r4 1.10.2-r1 1.11.4 1.11.5-r1: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.7-r1 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
