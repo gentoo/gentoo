@@ -4575,7 +4575,7 @@ dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for lo
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/cryptlib 3.4.0-r1 3.4.0-r2 3.4.3: Powerful security toolkit for adding encryption to software
-dev-libs/crypto++ 5.6.2-r3 5.6.4-r2 5.6.4-r4: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.2-r3 5.6.4-r2 5.6.4-r4 5.6.5: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p09: REINER SCT cyberJack pinpad/e-com USB user space driver library
