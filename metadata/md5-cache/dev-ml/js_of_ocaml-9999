@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:= async? ( dev-ml/async_kernel:= ) react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= ) ppx-deriving? ( dev-ml/ppx_deriving:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= deriving? ( >=dev-ml/deriving-0.6:= )
 SLOT=0/9999
 _eclass_exported_funcs=src_unpack:git-r3 src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	git-r3	86ff3e88fc8a07b4f595afa27e416341	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=af1a3f835ea5414a18d269eb32418824

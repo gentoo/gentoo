@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) zsh-completion? ( app-shells/zsh ) !<net-irc/ninja-1.5.9_pre14-r1
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-any-r1 src_unpack:git-r3 src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=cf07f6b0a217c7de35ad062bfbca3de5

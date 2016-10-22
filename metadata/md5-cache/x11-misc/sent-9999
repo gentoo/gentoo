@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft !savedconfig? ( media-gfx/farbfeld )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:savedconfig src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	86ff3e88fc8a07b4f595afa27e416341	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=ca9f434dcc26b4c5d33061b7537d9e45
