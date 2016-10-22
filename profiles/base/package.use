@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Only python3 supported
+dev-libs/libixion python_single_target_python3_4
+dev-libs/liborcus python_single_target_python3_4
+
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the BPF target by default
 sys-devel/clang llvm_targets_BPF
