@@ -4525,7 +4525,7 @@ dev-libs/389-adminutil 1.1.15: 389 adminutil
 dev-libs/9libs 1.0-r2: A package of Plan 9 compatibility libraries
 dev-libs/DFB++ 1.2.0: C++ bindings for DirectFB
 dev-libs/DirectFB 1.4.9-r1 1.7.6: Thin library on top of the Linux framebuffer devices
-dev-libs/Ice 3.5.1: ICE middleware C++ library and generator tools
+dev-libs/Ice 3.5.1 3.6.3: ICE middleware C++ library and generator tools
 dev-libs/MicroJSON 0.3.1 0.3.2: Small and simple to use JSON generation and parsing library
 dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
