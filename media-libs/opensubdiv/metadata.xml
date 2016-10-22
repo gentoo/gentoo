@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer restrict="&gt;=media-libs/opensubdiv-3.0.5" type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+        </maintainer>
+	<maintainer restrict="&gt;=media-libs/opensubdiv-3.0.5" type="person">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		An Open-Source subdivision surface library.
+	</longdescription>
+	<use>
+		<flag name="ptex">
+			Adds support for faster per-face texture mapping through
+			<pkg>media-libs/ptex</pkg>.
+		</flag>
+		<flag name="cuda">
+			Enable NVIDIA CUDA Toolkit support through
+			<pkg>dev-util/nvidia-cuda-toolkit</pkg>.
+		</flag>
+		<flag name="tbb">
+			Enable multithreading with the Intel Threads Building Blocks through
+			<pkg>dev-cpp/tbb</pkg>.
+		</flag>
+		<flag name="opencl">
+			Enable OpenCL support through
+			<pkg>virtual/opencl</pkg>.
+		</flag>
+		<flag name="tutorials">
+		</flag>
+	</use>
+</pkgmetadata>
