@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20161006"
+MY_RELEASEDATE="20161014"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
