@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Resolve public identifiers and remap system identifiers"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/XML-Parser
