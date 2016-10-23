@@ -15161,7 +15161,7 @@ net-news/liferea 1.10.8 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20: Rawdog - RSS Aggregator Without Delusions Of Grandeur
-net-news/rssguard 2.4.0: A tiny RSS and Atom feed reader
+net-news/rssguard 2.4.0 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader

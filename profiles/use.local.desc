@@ -6366,6 +6366,7 @@ net-nds/tac_plus:finger - Adds support for checking user counts via fingering th
 net-nds/tac_plus:maxsess - Enforce a limit on maximum sessions per user
 net-news/liferea:libnotify - Enable popup notifications
 net-news/quiterss:phonon - Enable sound support via media-libs/phonon or dev-qt/qtphonon
+net-news/rssguard:webengine - Use dev-qt/qtwebengine for embedded web browser
 net-nntp/inn:innkeywords - Enable automatic keyword generation support
 net-nntp/inn:inntaggedhash - Use tagged hash table for history (disables large file support)
 net-nntp/nzbget:parcheck - Enable support for checking PAR archives
