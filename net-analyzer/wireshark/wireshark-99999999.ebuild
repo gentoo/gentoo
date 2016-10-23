@@ -69,9 +69,7 @@ DEPEND="
 		doc-pdf? ( dev-java/fop )
 		www-client/lynx
 	)
-	qt5? (
-		dev-qt/linguist-tools:5
-	)
+	qt5? ( dev-qt/linguist-tools:5 )
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -125,12 +123,7 @@ src_configure() {
 		myconf+=( "--disable-wireshark" )
 	fi
 
-	if ! use qt5; then
-		myconf+=( "--with-qt=no" )
-	fi
-
 	if use qt5; then
-		export QT_MIN_VERSION=5.3.0
 		append-cxxflags -fPIC -DPIC
 	fi
 
@@ -165,7 +158,7 @@ src_configure() {
 		$(use_with zlib) \
 		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
 		$(usex netlink --with-libnl=3 --without-libnl) \
-		$(usex qt5 --with-qt=5 '') \
+		$(usex qt5 --with-qt=5 --with-qt=no) \
 		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '') \
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
