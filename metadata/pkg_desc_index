@@ -14262,7 +14262,7 @@ net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributi
 net-fs/davfs2 1.5.2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/libnfs 1.9.5 1.9.7 1.9.8 1.10.0 1.11.0 9999: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3: Provides Access to Netware services using the NCP protocol
-net-fs/netatalk 3.1.6 3.1.7 3.1.7-r1 3.1.8: Open Source AFP server
+net-fs/netatalk 3.1.6 3.1.7-r1 3.1.8 3.1.10: Open Source AFP server
 net-fs/nfs-utils 1.2.9-r3 1.3.1-r4 1.3.1-r5 1.3.2-r6 1.3.3 1.3.4: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
