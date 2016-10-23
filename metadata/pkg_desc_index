@@ -106,7 +106,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1: Backup and recovery utilities for GitHub Enterprise
-app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.8 2.3.9: Single process stack of various system monitors
+app-admin/gkrellm 2.3.5-r4 2.3.7 2.3.8 2.3.9 2.3.10: Single process stack of various system monitors
 app-admin/glance 12.0.0 13.0.0 2016.1.9999 2016.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1 1.28-r2: Simple Tool to configure Grub-Bootloader
@@ -4685,7 +4685,7 @@ dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.3.8 1.4.4 1.4.6: Open-source library for reading, mastering and writing optical discs
 dev-libs/libcaldav 0.6.2: C library implementing client support for CalDAV
-dev-libs/libcdio 0.92 0.93: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 0.92 0.93 0.94: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1: an advanced CDDA reader with error correction
 dev-libs/libcec 2.1.3 2.1.4 2.2.0 3.0.1 3.1.0: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
@@ -12435,7 +12435,7 @@ media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
-media-gfx/pngcrush 1.8.5 1.8.7 1.8.8: Portable Network Graphics (PNG) optimizing utility
+media-gfx/pngcrush 1.8.5 1.8.7 1.8.8 1.8.9: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngquant 2.5.2 2.7.2: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.3.0 1.4.0: A utility which reduces large palettes in PNG images
@@ -14375,7 +14375,7 @@ net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
-net-irc/hexchat 2.10.2 2.12.2-r1 9999: Graphical IRC client based on XChat
+net-irc/hexchat 2.10.2 2.12.2-r1 2.12.3 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
