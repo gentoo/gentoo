@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="The Gnome System Monitor"
@@ -13,7 +11,7 @@ HOMEPAGE="https://help.gnome.org/users/gnome-system-monitor/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="systemd X"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.37.3:2
@@ -28,14 +26,15 @@ RDEPEND="
 "
 # eautoreconf requires gnome-base/gnome-common
 DEPEND="${RDEPEND}
-	>=app-text/gnome-doc-utils-0.20
+	app-text/yelp-tools
 	>=dev-util/intltool-0.41.0
-	dev-util/itstool
 	virtual/pkgconfig
 "
 
 src_configure() {
+	# XXX: appdata is deprecated by appstream-glib, upstream must upgrade
 	gnome2_src_configure \
 		$(use_enable systemd) \
-		$(use_enable X wnck)
+		$(use_enable X wnck) \
+		APPDATA_VALIDATE="$(type -P true)"
 }

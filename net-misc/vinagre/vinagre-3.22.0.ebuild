@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2 linux-info vala
 
 DESCRIPTION="VNC client for the GNOME desktop"
@@ -12,13 +10,13 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Vinagre"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="rdp +ssh spice +telepathy zeroconf"
 
 # cairo used in vinagre-tab
 # gdk-pixbuf used all over the place
 RDEPEND="
-	>=dev-libs/glib-2.28.0:2
+	>=dev-libs/glib-2.32.0:2
 	>=x11-libs/gtk+-3.9.6:3
 	app-crypt/libsecret
 	>=dev-libs/libxml2-2.6.31:2
@@ -38,13 +36,12 @@ RDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.26[dbus,gtk3] )
 "
 DEPEND="${RDEPEND}
-	>=dev-lang/perl-5
+	$(vala_depend)
+	app-text/yelp-tools
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
-	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
-	$(vala_depend)
 "
 
 pkg_pretend() {
@@ -59,7 +56,6 @@ src_prepare() {
 }
 
 src_configure() {
-	DOCS="AUTHORS ChangeLog ChangeLog.pre-git NEWS README"
 	gnome2_src_configure \
 		$(use_enable rdp) \
 		$(use_enable ssh) \

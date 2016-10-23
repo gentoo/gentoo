@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 VALA_MIN_API_VERSION="0.26"
 
 inherit gnome2 vala virtualx
@@ -14,9 +13,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Cheese"
 LICENSE="GPL-2+"
 SLOT="0/8" # subslot = libcheese soname version
 IUSE="+introspection test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-# using clutter-gst-2.0.0 results in GLSL errors; bug #478702
 COMMON_DEPEND="
 	>=dev-libs/glib-2.39.90:2
 	>=x11-libs/gtk+-3.13.4:3[introspection?]
@@ -32,19 +30,18 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 
-	media-libs/gstreamer:1.0[introspection?]
-	media-libs/gst-plugins-base:1.0[introspection?,ogg,pango,theora,vorbis,X]
+	>=media-libs/gstreamer-1.4:1.0[introspection?]
+	>=media-libs/gst-plugins-base-1.4:1.0[introspection?,ogg,pango,theora,vorbis,X]
 
-	virtual/libgudev:=
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	>=media-libs/gst-plugins-bad-1.4:1.0
-	media-libs/gst-plugins-good:1.0
+	>=media-libs/gst-plugins-good-1.4:1.0
 
-	media-plugins/gst-plugins-jpeg:1.0
-	media-plugins/gst-plugins-v4l2:1.0
-	media-plugins/gst-plugins-vpx:1.0
+	>=media-plugins/gst-plugins-jpeg-1.4:1.0
+	>=media-plugins/gst-plugins-v4l2-1.4:1.0
+	>=media-plugins/gst-plugins-vpx-1.4:1.0
 "
 DEPEND="${COMMON_DEPEND}
 	$(vala_depend)
@@ -74,13 +71,6 @@ src_configure() {
 		--disable-static
 }
 
-src_compile() {
-	# Clutter-related sandbox violations when USE="doc introspection" and
-	# FEATURES="-userpriv" (see bug #385917).
-	unset DISPLAY
-	gnome2_src_compile
-}
-
 src_test() {
-	Xemake check
+	virtx emake check
 }

@@ -1,11 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
-inherit eutils gnome2 virtualx
+EAPI=6
+inherit gnome2 virtualx
 
 DESCRIPTION="GNOME power management service"
 HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
@@ -13,7 +11,7 @@ HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.45.8:2
@@ -22,7 +20,7 @@ COMMON_DEPEND="
 	>=sys-power/upower-0.99:=
 "
 RDEPEND="${COMMON_DEPEND}
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-sgml-dtd:4.1
@@ -54,6 +52,5 @@ src_configure() {
 }
 
 src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
-	Xemake check
+	virtx emake check
 }

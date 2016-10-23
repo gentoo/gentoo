@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="CD ripper for GNOME"
@@ -12,19 +10,19 @@ HOMEPAGE="https://wiki.gnome.org/Apps/SoundJuicer"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
-IUSE="flac test vorbis"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+IUSE="debug flac test vorbis"
 
 COMMON_DEPEND="
 	app-text/iso-codes
-	>=dev-libs/glib-2.38:2[dbus]
-	>=x11-libs/gtk+-3.4:3
+	>=dev-libs/glib-2.49.5:2[dbus]
+	>=x11-libs/gtk+-3.21.6:3
 	media-libs/libcanberra[gtk3]
 	>=app-cdr/brasero-2.90
 	sys-apps/dbus
 	gnome-base/gsettings-desktop-schemas
 
-	>=media-libs/libdiscid-0.3.0
+	>=media-libs/libdiscid-0.4.0
 	>=media-libs/musicbrainz-5.0.1:5
 
 	media-libs/gstreamer:1.0
@@ -39,13 +37,13 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 "
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	dev-libs/appstream-glib
-	>=dev-util/intltool-0.50
-	dev-util/itstool
+	gnome-base/gnome-common
+	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 	test? ( ~app-text/docbook-xml-dtd-4.3 )
 "
-# eautoreconf needs gnome-common
 
 src_prepare() {
 	gnome2_src_prepare
@@ -56,4 +54,9 @@ src_prepare() {
 	# /dev/card*/dri
 	sed -e "s|\(gstinspect=\).*|\1$(type -P true)|" \
 		-i configure || die
+}
+
+src_configure() {
+	gnome2_src_configure \
+		$(usex debug --enable-debug=yes ' ')
 }

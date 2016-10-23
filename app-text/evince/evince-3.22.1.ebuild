@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit gnome2 systemd
 
 DESCRIPTION="Simple document viewer for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evince"
@@ -15,13 +14,10 @@ LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
 SLOT="0/evd3.4-evv3.3"
 IUSE="djvu dvi gstreamer gnome gnome-keyring +introspection nautilus nsplugin +postscript t1lib tiff xps"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris"
 
-# Since 2.26.2, can handle poppler without cairo support. Make it optional ?
-# not mature enough
 # atk used in libview
 # gdk-pixbuf used all over the place
-# libX11 used for totem-screensaver
 COMMON_DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.36:2[dbus]
@@ -31,8 +27,8 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.16.0:3[introspection?]
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/cairo-1.10:=
-	>=app-text/poppler-0.24[cairo]
-	djvu? ( >=app-text/djvu-3.5.17:= )
+	>=app-text/poppler-0.33:=[cairo]
+	djvu? ( >=app-text/djvu-3.5.22:= )
 	dvi? (
 		virtual/tex-base
 		dev-libs/kpathsea:=
@@ -54,7 +50,6 @@ RDEPEND="${COMMON_DEPEND}
 	gnome-base/librsvg
 	|| (
 		>=x11-themes/adwaita-icon-theme-2.17.1
-		( >=x11-themes/gnome-icon-theme-2.17.1 x11-themes/gnome-icon-theme-symbolic )
 		>=x11-themes/hicolor-icon-theme-0.10 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -99,5 +94,6 @@ src_configure() {
 		$(use_enable t1lib) \
 		$(use_enable tiff) \
 		$(use_enable xps) \
-		BROWSER_PLUGIN_DIR="${EPREFIX}"/usr/$(get_libdir)/nsbrowser/plugins
+		BROWSER_PLUGIN_DIR="${EPREFIX}"/usr/$(get_libdir)/nsbrowser/plugins \
+		--with-systemduserunitdir="$(systemd_get_userunitdir)"
 }

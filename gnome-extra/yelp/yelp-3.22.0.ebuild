@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 GNOME2_LA_PUNT="yes"
-GCONF_DEBUG="no"
 
-inherit autotools eutils gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Help browser for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Yelp"
@@ -14,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Yelp"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="
 	app-arch/bzip2:=
@@ -26,7 +25,7 @@ RDEPEND="
 	>=gnome-extra/yelp-xsl-3.12
 	>=net-libs/webkit-gtk-2.7.2:4
 	>=x11-libs/gtk+-3.13.3:3
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.13
@@ -39,7 +38,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Fix compatibility with Gentoo's sys-apps/man
 	# https://bugzilla.gnome.org/show_bug.cgi?id=648854
-	epatch "${FILESDIR}"/${PN}-3.16.0-man-compatibility.patch
+	eapply "${FILESDIR}"/${PN}-3.20.0-man-compatibility.patch
+
 	eautoreconf
 	gnome2_src_prepare
 }

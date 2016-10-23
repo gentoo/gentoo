@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 
 inherit gnome2
 
@@ -13,13 +12,13 @@ HOMEPAGE="https://git.gnome.org/browse/dconf-editor"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~arm-linux ~x86-linux"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.39.3:2
-	dev-libs/libxml2
-	>=gnome-base/dconf-0.23.2
-	>=x11-libs/gtk+-3.14.0:3
+	dev-libs/appstream-glib
+	>=dev-libs/glib-2.46.0:2
+	>=gnome-base/dconf-0.25.1
+	>=x11-libs/gtk+-3.21.6:3
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50
@@ -29,3 +28,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!<gnome-base/dconf-0.22[X]
 "
+
+src_configure() {
+	gnome2_src_configure \
+		VALAC="$(type -P true)"
+}
