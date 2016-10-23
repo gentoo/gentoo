@@ -8445,7 +8445,7 @@ dev-python/vobject 0.8.1c-r1 0.9.3: Python package for parsing and generating vC
 dev-python/voluptuous 0.9.3: A Python data validation library.
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
 dev-python/w3lib 1.11.0 1.13.0: Python library of web-related functions
-dev-python/waitress 0.8.9 0.8.10-r2: A pure-Python WSGI server
+dev-python/waitress 0.8.9 0.8.10-r2 1.0.1: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3 0.8.3-r1: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8 0.9: Framework for plotting astronomical and geospatial data
@@ -15160,7 +15160,7 @@ net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.10.8 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
-net-news/rawdog 2.19 2.20: Rawdog - RSS Aggregator Without Delusions Of Grandeur
+net-news/rawdog 2.19 2.20 2.22: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 2.4.0 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
