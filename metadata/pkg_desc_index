@@ -17386,7 +17386,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.43-r1 4.4.6 4.4.20 4.4.21 4.4.22 4.4.23 4.4.24 4.4.25 4.7.7 4.7.8 4.8.0 4.8.1 4.8.2: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.43-r1 4.4.26 4.4.27 4.7.9 4.7.10 4.8.3 4.8.4: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
@@ -17603,7 +17603,7 @@ virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Em
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
-virtual/freedesktop-icon-theme 0: A virtual to choose between different icon themes
+virtual/freedesktop-icon-theme 0-r1: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
 virtual/gnat 3.4 4.1 4.2 4.3 4.4 4.6 4.9: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.22.0 0.23.0 0.24.0 0.24.1 0.25.0: Virtual for back-end component for the GNUstep GUI Library
