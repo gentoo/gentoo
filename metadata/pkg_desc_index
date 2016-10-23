@@ -13412,7 +13412,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6 3.2.7: A console MOD-Player based on libmikmod
 media-sound/milkytracker 0.90.86: FastTracker 2 inspired music tracker
-media-sound/mixxx 1.10.1 1.11.0-r1 2.0.0-r2: A advanced Digital DJ tool based on Qt
+media-sound/mixxx 1.10.1 1.11.0-r1 2.0.0-r3: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.0 2.5.1 2.6_alpha1 2.6_alpha1-r1 2.6_alpha2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1 0.5.3: libmodplug based module players modplug123 and modplugplay
