@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="http://cryptopp.com"
-SRC_URI="mirror://sourceforge/cryptopp/cryptopp${PV//.}.zip"
+SRC_URI="https://www.cryptopp.com/cryptopp${PV//.}.zip"
 
 LICENSE="Boost-1.0"
 SLOT="0/5.6" # subslot is so version
