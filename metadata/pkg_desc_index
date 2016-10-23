@@ -6569,16 +6569,16 @@ dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
-dev-perl/XML-Catalog 0.20.0-r1 1.30.0: Resolve public identifiers and remap system identifiers
+dev-perl/XML-Catalog 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-CompactTree-XS 0.20.0-r1: a fast builder of compact tree structures from XML documents
 dev-perl/XML-DOM 1.450.0 1.460.0: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
-dev-perl/XML-DT 0.660.0 0.680.0: A perl XML down translate module
+dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Directory 1.0.0: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: an XML::Parser style and generic classes for simplistic and perlish handling of XML data
-dev-perl/XML-Encoding 2.80.0-r1 2.90.0: Perl Module that parses encoding map XML files
+dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
 dev-perl/XML-Entities 1.0.200: Decode strings with XML entities
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
 dev-perl/XML-Feed 0.530.0: Syndication feed parser and auto-discovery
@@ -6598,7 +6598,7 @@ dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.410.0-r2 2.440.0: A Perl extension interface to James Clark's XML parser, expat
 dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
 dev-perl/XML-RAI 1.303.100-r1: RSS Abstraction Interface
-dev-perl/XML-RSS 1.540.0-r1 1.590.0: a basic framework for creating and maintaining RSS files
+dev-perl/XML-RSS 1.590.0: a basic framework for creating and maintaining RSS files
 dev-perl/XML-RSS-Feed 2.400.0-r1: Persistant XML RSS Encapsulation
 dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
