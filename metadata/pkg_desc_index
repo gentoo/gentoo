@@ -6963,7 +6963,7 @@ dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aiodns 1.1.1: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.21.5 1.0.1 1.0.2 1.0.3 1.0.4: http client/server for asyncio
+dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7 0.7.8: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
@@ -7056,7 +7056,7 @@ dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and 
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0 2.42.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1: The AWS SDK for Python
-dev-python/botocore 1.4.56 1.4.58 1.4.60: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.4.58 1.4.60 1.4.62: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
