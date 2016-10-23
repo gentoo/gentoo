@@ -1,0 +1,25 @@
+Remove these dependencies that are not used.
+
+--- a/rssguard.pro
++++ b/rssguard.pro
+@@ -164,7 +164,7 @@ message(rssguard: Prefix directory: \"$$PREFIX\".)
+ message(rssguard: Build revision: \"$$APP_REVISION\".)
+ message(rssguard: lrelease executable name: \"$$LRELEASE_EXECUTABLE\".)
+ 
+-QT += core gui widgets sql network xml printsupport
++QT += core gui widgets sql network xml
+ 
+ CONFIG *= c++11 debug_and_release warn_on
+ DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
+diff --git a/src/miscellaneous/systemfactory.cpp b/src/miscellaneous/systemfactory.cpp
+index da35aba..1d6b2cd 100755
+--- a/src/miscellaneous/systemfactory.cpp
++++ b/src/miscellaneous/systemfactory.cpp
+@@ -35,7 +35,6 @@
+ #include <QFileInfo>
+ #include <QDir>
+ #include <QFutureWatcher>
+-#include <QtConcurrent/QtConcurrentRun>
+ #include <QDesktopServices>
+ 
+ 

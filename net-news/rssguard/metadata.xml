@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="bitbucket">skunkos/rssguard</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>yngwin@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">martinrotter/rssguard</remote-id>
+	</upstream>
+	<use>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
+	</use>
 </pkgmetadata>
