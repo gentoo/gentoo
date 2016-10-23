@@ -82,7 +82,7 @@ src_test() {
 src_install() {
 	default
 
-	if python; then
+	if use python; then
 		rm -f "${D%/}$(python_get_sitedir)"/_bc.*a || die
 	fi
 	if ! use static-libs; then
