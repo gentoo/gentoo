@@ -17371,7 +17371,7 @@ sys-fs/udev 216 225-r1 228 229-r2 230-r1 9999: Linux dynamic and persistent devi
 sys-fs/udev-init-scripts 27 29 30 31 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1 1.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.4 2.1.6 2.1.7: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.4 2.1.6 2.1.7 2.1.7-r1: Daemon providing interfaces to work with storage devices
 sys-fs/udisks-glue 1.3.5: A tool to associate udisks events to user-defined actions
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 9999: Self-syncing tree-merging file system based on FUSE
