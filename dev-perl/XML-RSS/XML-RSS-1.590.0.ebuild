@@ -13,7 +13,7 @@ DESCRIPTION="a basic framework for creating and maintaining RSS files"
 HOMEPAGE="http://perl-rss.sourceforge.net/"
 
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
