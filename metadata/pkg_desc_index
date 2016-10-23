@@ -2465,7 +2465,7 @@ app-text/writerperfect 0.9.2 0.9.4 0.9.5: Various formats to Open document forma
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r1 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
-app-text/xapian-omega 1.2.22 1.2.23-r2 1.2.24 1.3.7-r1 1.4.0: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.2.22 1.2.24 1.4.1: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
@@ -4945,7 +4945,7 @@ dev-libs/qrosscore 0.3.1 9999: KDE-free version of Kross (core libraries and Qt 
 dev-libs/qrosspython 0.3.1 9999: Python scripting backend for Qross
 dev-libs/qtkeychain 0.6.2 0.7.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6 1.7.1: A comprehensive software framework for quantitative finance
-dev-libs/quazip 0.7.1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/quazip 0.7.1 0.7.2: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
@@ -5008,8 +5008,8 @@ dev-libs/weston 1.9.0 1.11.0 9999: Wayland reference compositor
 dev-libs/wlc 0.0.3-r1 0.0.5 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.22 1.2.23 1.2.24 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.22 1.2.23 1.2.24 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
+dev-libs/xapian 1.2.22 1.2.24 1.4.1: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian-bindings 1.2.22 1.2.24 1.4.1: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.2 3.1.3 3.1.4-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
@@ -15709,7 +15709,7 @@ sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calcula
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
 sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
-sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
+sci-calculators/tilp2 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.4 2.5: A flexible command-line scientific calculator
@@ -15910,7 +15910,7 @@ sci-geosciences/mapnik 3.0.9: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.0.1-r1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.18.1-r2 0.18.2 0.18.3 9999: A Qt4 based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.18.1-r2 0.18.2 0.18.3-r1 9999: A Qt based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0: a free, open source software for marine navigation
