@@ -9534,7 +9534,7 @@ dev-scheme/schoca 0.3.0: Schoca is a Scheme implementation in OCaml
 dev-scheme/scm 5.5.6 5.5.6-r1 5.5.6-r2: SCM is a Scheme implementation from the author of slib
 dev-scheme/scmxlate 20090410: Scmxlate is a configuration tool for software packages written in Scheme
 dev-scheme/sigscheme 0.8.5: SigScheme is an R5RS Scheme interpreter for embedded use
-dev-scheme/slib 3.1.5-r1 3.2.1 3.2.2: library providing functions for Scheme implementations
+dev-scheme/slib 3.1.5-r1 3.2.1 3.2.2 3.2.5: Portable Scheme library for all standard Scheme implementations
 dev-scheme/stalin 0.11: An aggressively optimizing Scheme compiler
 dev-scheme/stklos 1.10: fast and light Scheme implementation
 dev-scheme/termite 0.15: Erlang-style concurrency for Gambit Scheme
@@ -15239,7 +15239,7 @@ net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
 net-p2p/syncthing 0.14.5 0.14.6 0.14.7 0.14.9: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
-net-p2p/transmission 2.84-r4 2.92: A Fast, Easy and Free BitTorrent client
+net-p2p/transmission 2.84-r4 2.92 2.92-r1: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.7.0 1.7.1: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
@@ -17269,7 +17269,7 @@ sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
-sys-fs/bindfs 1.12.6 1.13.0 1.13.1 1.13.2: FUSE filesystem for mounting a directory to another location and altering permissions
+sys-fs/bindfs 1.12.6 1.13.0 1.13.1 1.13.2 1.13.4: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.2 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
