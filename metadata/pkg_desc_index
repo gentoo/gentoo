@@ -2258,7 +2258,7 @@ app-text/enchant 1.6.0: Spellchecker wrapping library
 app-text/enscript 1.6.6: powerful text-to-postscript converter
 app-text/epspdf 0.5.3 0.6.0 0.6.1 0.6.2 0.6.3: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes,converts to bitmaps
-app-text/evince 3.18.2 3.20.1: Simple document viewer for GNOME
+app-text/evince 3.20.1 3.22.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r1: Expander is a utility that acts as a filter for text editors
 app-text/fbless 0.2.2-r1 9999: Python-based console fb2 reader with less-like interface
 app-text/fbpdf 0_p20160409: framebuffer pdf and djvu viewer
@@ -2321,6 +2321,7 @@ app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.1.3 0.1.6 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
+app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.3.2 0.2.4: Library for handling and rendering XPS documents
 app-text/liblangtag 0.5.6 0.5.8 0.6.1: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
@@ -9908,7 +9909,7 @@ dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for 
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a specified object in various sources
-dev-util/gnome-devel-docs 3.18.1 3.20.2: Documentation for developing for the GNOME desktop environment
+dev-util/gnome-devel-docs 3.20.2 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 1.8.3 2.0-r2 2.5: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.44: A software version control visualization tool
@@ -11135,7 +11136,7 @@ games-util/xgame-gtk2 2.0.2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0 0.26.0 0.26.0-r1: Simple low-level configuration system
-gnome-base/dconf-editor 3.18.2 3.20.3: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.20.3 3.22.1: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.18.3 3.20.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0 3.18.0 3.20.0: Meta package for GNOME 3, merge this package to install
@@ -11197,27 +11198,27 @@ gnome-extra/gnome-calendar 3.18.3 3.20.3 3.20.4: Manage your online calendars wi
 gnome-extra/gnome-characters 3.20.1 3.22.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.18.0 3.20.1 3.20.2 3.22.1: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
-gnome-extra/gnome-color-manager 3.18.0 3.20.0: Color profile manager for the GNOME desktop
+gnome-extra/gnome-color-manager 3.20.0 3.22.1: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.20.0 3.22.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6 0.1.7 0.1.8: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
 gnome-extra/gnome-do-plugins 0.8.5: Plugins to put the Do in Gnome Do
-gnome-extra/gnome-documents 3.18.3 3.20.0 3.20.1: A document manager application for GNOME
+gnome-extra/gnome-documents 3.20.1 3.22.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.18.2 3.20.0: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.20.0 3.22.0: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.20.1 3.22.1: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.18.0 3.20.0: PackageKit client for the GNOME desktop
-gnome-extra/gnome-power-manager 3.18.0 3.20.0: GNOME power management service
+gnome-extra/gnome-power-manager 3.20.0 3.22.1: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.18.4 3.20.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 28 28-r1: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.20.4 3.20.5: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.18.2 3.20.1: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.20.1 3.22.0: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
-gnome-extra/gnome-user-docs 3.18.1 3.20.2: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.20.2 3.22.0: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.2 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
@@ -11237,9 +11238,9 @@ gnome-extra/nm-applet 1.0.10 1.2.2 1.2.4 1.4.0 1.4.2: GNOME applet for NetworkMa
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.18.0 3.20.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.20.0 3.21.91: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.1 0.2.99.2: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.18.1-r1 3.20.1: Help browser for GNOME
+gnome-extra/yelp 3.20.1 3.22.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.16.1 3.18.1 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
@@ -12336,10 +12337,10 @@ media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arr
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.6.5.0 1.6.5.1: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.16.2 3.20.2: Font viewer for GNOME
-media-gfx/gnome-photos 3.20.3 3.20.4: Access, organize and share your photos on GNOME
+media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
+media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.18.0 3.20.1: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.20.1 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.10: Free, redistributable digital camera software application
@@ -12475,7 +12476,7 @@ media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for sca
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.23.7 0.24.0: Open source photo manager for GNOME
-media-gfx/simple-scan 3.18.2 3.20.0: Simple document scanning utility
+media-gfx/simple-scan 3.20.0 3.22.0.1: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
@@ -13334,7 +13335,7 @@ media-sound/gmusicbrowser 1.1.13 1.1.15 1.1.15-r1 9999: An open-source jukebox f
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.18.2 3.20.2-r1: Music management for Gnome
-media-sound/gnome-sound-recorder 3.18.2-r1 3.20.2: Simple sound recorder
+media-sound/gnome-sound-recorder 3.20.2 3.21.92: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.1.1: Fast and light music player
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
@@ -13549,7 +13550,7 @@ media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practic
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sonic-visualiser 1.9 2.3 2.4.1 2.5: Music audio files viewer and analiser
 media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
-media-sound/sound-juicer 3.18.2 3.20.0: CD ripper for GNOME
+media-sound/sound-juicer 3.20.0 3.22.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.2.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
@@ -13668,7 +13669,7 @@ media-video/camorama 0.19-r2: A webcam application featuring various image filte
 media-video/ccextractor 0.59 0.68 0.69: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r1: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r1: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.18.1-r1 3.20.2: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.20.2 3.22.1: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 20120707 20140710: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
@@ -13796,7 +13797,7 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/syncplay 1.4.0_rc2: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.18.1 3.20.1: Media player for GNOME
+media-video/totem 3.18.1 3.20.1 3.22.0: Media player for GNOME
 media-video/tovid 0.35.2: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
@@ -14401,7 +14402,7 @@ net-irc/ngircd 23-r1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.18.1-r1 3.20.2 3.20.3 3.20.3-r1: An IRC client for Gnome
+net-irc/polari 3.20.3-r1 3.22.1: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
@@ -15100,8 +15101,8 @@ net-misc/utelnetd 0.1.9-r2 0.1.11-r1: A small Telnet daemon, derived from the Ax
 net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2 2.3.2-r3: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
-net-misc/vinagre 3.18.2 3.20.2: VNC client for the GNOME desktop
-net-misc/vino 3.18.1 3.20.2: An integrated VNC server for GNOME
+net-misc/vinagre 3.20.2 3.22.0: VNC client for the GNOME desktop
+net-misc/vino 3.20.2 3.22.0: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r1: VNC session recorder and player
@@ -16623,7 +16624,7 @@ sys-apps/apply-default-acl 0.0.4 0.0.6: Apply default POSIX ACLs to files and di
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.18.1 3.20.1: Disk usage browser for GNOME
+sys-apps/baobab 3.20.1 3.22.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2 2.2-r1 2.3: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
