@@ -11795,7 +11795,7 @@ kde-misc/krecipes 2.0.0: A recipe application by KDE
 kde-misc/krename 4.0.9-r3 4.0.9-r4: KRename - a very powerful batch file renamer
 kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
 kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open conversation with your contact
-kde-misc/krusader 2.4.0_beta3-r2: An advanced twin-panel (commander-style) file-manager for KDE with many extras
+kde-misc/krusader 2.4.0_beta3-r2 2.5.0: An advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kscreen 1.0.71_p20150824: Alternative KDE screen management
 kde-misc/kshutdown 3.2 4.0: A shutdown manager for KDE
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
