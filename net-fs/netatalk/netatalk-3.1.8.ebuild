@@ -138,40 +138,43 @@ src_install() {
 }
 
 pkg_postinst() {
-	local fle
-	if [[ ${REPLACING_VERSIONS} < 3 ]]; then
-		for fle in afp_signature.conf afp_voluuid.conf; do
-			if [[ -f "${ROOT}"etc/netatalk/${fle} ]]; then
-				if [[ ! -f "${ROOT}"var/lib/netatalk/${fle} ]]; then
-					mv \
-						"${ROOT}"etc/netatalk/${fle} \
-						"${ROOT}"var/lib/netatalk/
+	local fle v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 3 ${v}; then
+			for fle in afp_signature.conf afp_voluuid.conf; do
+				if [[ -f "${ROOT}"etc/netatalk/${fle} ]]; then
+					if [[ ! -f "${ROOT}"var/lib/netatalk/${fle} ]]; then
+						mv \
+							"${ROOT}"etc/netatalk/${fle} \
+							"${ROOT}"var/lib/netatalk/
+					fi
 				fi
-			fi
-		done
+			done
 
-		echo ""
-		elog "Starting from version 3.0 only uses a single init script again"
-		elog "Please update your runlevels accordingly"
-		echo ""
-		elog "Dependencies should be resolved automatically depending on settings"
-		elog "but please report issues with this on https://bugs.gentoo.org/ if"
-		elog "you find any."
-		echo ""
-		elog "Following config files are obsolete now:"
-		elog "afpd.conf, netatalk.conf, AppleVolumes.default and afp_ldap.conf"
-		elog "in favour of"
-		elog "/etc/afp.conf"
-		echo ""
-		elog "Please convert your existing configs before you restart your daemon"
-		echo ""
-		elog "The new AppleDouble default backend is appledouble = ea"
-		elog "Existing entries will be updated on access, but can do an offline"
-		elog "conversion with"
-		elog "dbd -ruve /path/to/Volume"
-		echo ""
-		elog "For general notes on the upgrade, please visit"
-		elog "http://netatalk.sourceforge.net/3.0/htmldocs/upgrade.html"
-		echo ""
-	fi
+			echo ""
+			elog "Starting from version 3.0 only uses a single init script again"
+			elog "Please update your runlevels accordingly"
+			echo ""
+			elog "Dependencies should be resolved automatically depending on settings"
+			elog "but please report issues with this on https://bugs.gentoo.org/ if"
+			elog "you find any."
+			echo ""
+			elog "Following config files are obsolete now:"
+			elog "afpd.conf, netatalk.conf, AppleVolumes.default and afp_ldap.conf"
+			elog "in favour of"
+			elog "/etc/afp.conf"
+			echo ""
+			elog "Please convert your existing configs before you restart your daemon"
+			echo ""
+			elog "The new AppleDouble default backend is appledouble = ea"
+			elog "Existing entries will be updated on access, but can do an offline"
+			elog "conversion with"
+			elog "dbd -ruve /path/to/Volume"
+			echo ""
+			elog "For general notes on the upgrade, please visit"
+			elog "http://netatalk.sourceforge.net/3.0/htmldocs/upgrade.html"
+			echo ""
+			break
+		fi
+	done
 }
