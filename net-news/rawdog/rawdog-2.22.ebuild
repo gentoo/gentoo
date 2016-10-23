@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 python_test() {
 	# pypy fails half way through; meh
