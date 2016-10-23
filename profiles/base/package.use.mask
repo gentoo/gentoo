@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
+# Enable gambit and scm only on supported arches
+>=dev-scheme/slib-3.2.5 gambit scm
+
 # Ulrich Müller <ulm@gentoo.org> (15 Oct 2016)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238
