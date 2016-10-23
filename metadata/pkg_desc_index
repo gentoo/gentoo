@@ -2039,7 +2039,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.6 1.5.0-r1 1.5.2 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.4.0 2.5.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -10093,7 +10093,7 @@ dev-util/uncrustify 0.59 0.61 0.61-r1 0.62 0.63 9999: C/C++/C#/D/Java/Pawn code 
 dev-util/unifdef 2.10 2.11: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/universalindentgui 1.2.0-r1: Cross platform GUI for several code formatters, beautifiers and indenters
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.10.1 3.11.0: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.10.1 3.11.0 3.12.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
@@ -15795,7 +15795,7 @@ sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
-sci-chemistry/pymol 1.7.6.0 1.7.7.2 1.8.2.1: A Python-extensible molecular graphics system
+sci-chemistry/pymol 1.7.6.0 1.7.7.2 1.8.2.1 1.8.4.0: A Python-extensible molecular graphics system
 sci-chemistry/pymol-plugins-bni-tools 0.25.1 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430 110430-r1: DSSP Plugin for PyMOL
