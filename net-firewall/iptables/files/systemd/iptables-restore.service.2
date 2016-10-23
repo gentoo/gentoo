@@ -1,0 +1,14 @@
+[Unit]
+Description=Store and restore iptables firewall rules
+ConditionPathExists=/var/lib/iptables/rules-save
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/iptables-restore /var/lib/iptables/rules-save
+ExecStop=/bin/sh -c "/sbin/iptables-save --counters > /var/lib/iptables/rules-save"
+
+[Install]
+WantedBy=basic.target
