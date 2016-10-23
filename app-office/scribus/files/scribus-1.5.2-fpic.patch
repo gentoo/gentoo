@@ -1,0 +1,16 @@
+ scribus/third_party/prc/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/scribus/third_party/prc/CMakeLists.txt b/scribus/third_party/prc/CMakeLists.txt
+index 5f7c2c6..1da7177 100644
+--- a/scribus/third_party/prc/CMakeLists.txt
++++ b/scribus/third_party/prc/CMakeLists.txt
+@@ -5,6 +5,8 @@ ${OPENGL_INCLUDE_DIR}
+ ${FREETYPE_INCLUDE_DIRS}
+ )
+ 
++SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_FPIC}")
++
+ SET(SCRIBUS_PRC_LIB_SOURCES
+     oPRCFile.cc
+     PRCbitStream.cc
