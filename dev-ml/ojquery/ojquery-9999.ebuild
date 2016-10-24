@@ -7,7 +7,7 @@ EAPI=5
 inherit oasis
 
 DESCRIPTION="jQuery Binding for Eliom."
-HOMEPAGE="jQuery Binding for Eliom."
+HOMEPAGE="https://github.com/ocsigen/ojquery"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
