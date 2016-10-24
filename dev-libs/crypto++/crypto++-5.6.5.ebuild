@@ -38,20 +38,6 @@ src_compile() {
 	emake -f GNUmakefile all shared
 }
 
-src_test() {
-	# ensure that all test vectors have Unix line endings
-	local file
-	for file in TestVectors/* ; do
-		edos2unix "${file}"
-	done
-
-	if ! emake test; then
-		eerror "Crypto++ self-tests failed."
-		eerror "Try to remove some optimization flags and reemerge Crypto++."
-		die "emake test failed"
-	fi
-}
-
 src_install() {
 	default
 
