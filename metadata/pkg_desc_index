@@ -5329,7 +5329,7 @@ dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
-dev-perl/Bio-SamTools 1.410.0 1.420.0: Read SAM/BAM database files
+dev-perl/Bio-SamTools 1.420.0: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
@@ -14930,7 +14930,7 @@ net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UN
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netfleet 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
-net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 9999: Gentoo Network Interface Management Scripts
+net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
