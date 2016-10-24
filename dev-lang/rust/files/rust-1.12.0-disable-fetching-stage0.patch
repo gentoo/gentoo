@@ -1,0 +1,36 @@
+From b6a4c78ef7b4bc6c32145f27e8a679d5baf36f90 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Mon, 24 Oct 2016 00:01:37 -0500
+Subject: [PATCH] disable fetching stage0 and use whats there
+
+In Gentoo and Yocto alike we do not allow build environments network
+access and as a result the package manager is responsible for fetching
+down all the files necessary. In both they are configured to fetch down
+the compiler and unpack it and place the stage0 tarball inside of the
+'dl' directory for the build system to use. Unfortunately it
+unconditionally attempts to fetch down the files and ignores what is
+already available so this avoids that behavior and just uses what's in
+the 'dl' directory.
+
+Upstream-Status: Not upstreamable
+Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
+---
+ src/etc/get-stage0.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/etc/get-stage0.py b/src/etc/get-stage0.py
+index 127251c..2889c07 100644
+--- a/src/etc/get-stage0.py
++++ b/src/etc/get-stage0.py
+@@ -31,7 +31,7 @@ def main(triple):
+     filename = 'rustc-{}-{}.tar.gz'.format(channel, triple)
+     url = 'https://static.rust-lang.org/dist/{}/{}'.format(date, filename)
+     dst = dl_dir + '/' + filename
+-    bootstrap.get(url, dst)
++    #bootstrap.get(url, dst)
+ 
+     stage0_dst = triple + '/stage0'
+     if os.path.exists(stage0_dst):
+-- 
+2.7.3
+

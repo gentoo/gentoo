@@ -55,6 +55,8 @@ PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=("${FILESDIR}/rust-1.12.0-disable-fetching-stage0.patch")
+
 src_unpack() {
 	unpack "rustc-${PV}-src.tar.gz" || die
 	mkdir "${MY_P}/dl" || die
