@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-
+EAPI=6
 inherit autotools eutils systemd user
 
 DESCRIPTION="A free socks4,5 and msproxy implementation"
@@ -16,27 +15,36 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug kerberos pam selinux static-libs tcpd upnp"
 
-CDEPEND="kerberos? ( virtual/krb5 )
+CDEPEND="
+	kerberos? ( virtual/krb5 )
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
-	upnp? ( net-libs/miniupnpc )
-	userland_GNU? ( virtual/shadow )"
+	upnp? ( net-libs/miniupnpc:= )
+	userland_GNU? ( virtual/shadow )
+"
 DEPEND="${CDEPEND}
 	sys-devel/bison
-	sys-devel/flex"
+	sys-devel/flex
+"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-dante )
 "
+
 DOCS="BUGS CREDITS NEWS README SUPPORT doc/README* doc/*.txt doc/SOCKS4.protocol"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0-socksify.patch
+	"${FILESDIR}"/${PN}-1.4.0-osdep-format-macro.patch
+	"${FILESDIR}"/${PN}-1.4.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.4.0-HAVE_SENDBUF_IOCTL.patch
+	"${FILESDIR}"/${PN}-1.4.1-sigpwr-siginfo.patch #517528
+	"${FILESDIR}"/${PN}-1.4.1-miniupnp14.patch #564680
+)
+
 src_prepare() {
-	epatch	\
-		"${FILESDIR}"/${PN}-1.4.0-socksify.patch \
-		"${FILESDIR}"/${PN}-1.4.0-osdep-format-macro.patch \
-		"${FILESDIR}"/${PN}-1.4.0-cflags.patch \
-		"${FILESDIR}"/${PN}-1.4.0-HAVE_SENDBUF_IOCTL.patch
+	default
 
 	sed -i \
 		-e 's:/etc/socks\.conf:"${EPREFIX}"/etc/socks/socks.conf:' \
@@ -66,7 +74,7 @@ src_configure() {
 		$(use_with pam) \
 		$(use_with upnp) \
 		$(use_enable static-libs static) \
-		$(use_enable tcpd libwrap)
+		$(use_with tcpd libwrap)
 }
 
 src_install() {
