@@ -11210,13 +11210,13 @@ gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV
 gnome-extra/gnome-getting-started-docs 3.20.0 3.22.0: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.20.1 3.22.1: Log messages and event viewer
-gnome-extra/gnome-packagekit 3.18.0 3.20.0: PackageKit client for the GNOME desktop
+gnome-extra/gnome-packagekit 3.20.0 3.22.1: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.20.0 3.22.1: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.18.4 3.20.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 28 28-r1: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-software 3.20.4 3.20.5: Gnome install & update software
+gnome-extra/gnome-software 3.20.5 3.22.1: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.20.1 3.22.0: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.20.2 3.22.0: GNOME end user documentation
@@ -11246,7 +11246,7 @@ gnome-extra/yelp-xsl 3.16.1 3.18.1 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
-gnome-extra/zenity 3.18.1.1 3.20.0: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.20.0 3.22.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.7 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r3: Affiche allows people to 'stick' notes
@@ -16690,7 +16690,7 @@ sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.18.3.1 3.20.2: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.20.2 3.22.0: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201507191652 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
