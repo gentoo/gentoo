@@ -22,7 +22,8 @@ KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/redcarpet )"
-ruby_add_rdepend "dev-ruby/redcarpet"
+ruby_add_rdepend "dev-ruby/redcarpet
+	!!dev-ruby/rouge:2"
 
 RESTRICT="test"
 # Depends on dev-ruby/wrong, which is not packaged yet.
