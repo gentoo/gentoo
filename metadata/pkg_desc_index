@@ -9218,7 +9218,7 @@ dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
-dev-ruby/origin 2.2.0 2.2.1: Origin is a simple DSL for generating MongoDB selectors and options
+dev-ruby/origin 2.2.0 2.2.1 2.2.2: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.4.3 2.4.4 2.4.5: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
