@@ -497,7 +497,7 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.18 1.4.24 1.4.25: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
-app-crypt/certbot 0.8.1 0.8.1-r2 0.9.3 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.8.1 0.8.1-r2 0.9.3-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -6586,7 +6586,7 @@ dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
 dev-perl/XML-Feed 0.530.0: Syndication feed parser and auto-discovery
 dev-perl/XML-FeedPP 0.430.0: Parse/write/merge/edit RSS/RDF/Atom syndication feeds
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
-dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM processing of selected subtrees
+dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
@@ -15011,7 +15011,7 @@ net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
 net-misc/quagga 1.0.20160315-r3 1.0.20160315-r4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
-net-misc/r8168 8.040.00 8.042.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
+net-misc/r8168 8.040.00 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
 net-misc/radvd 1.9.8 2.13 2.14 2.15: Linux IPv6 Router Advertisement Daemon
@@ -17880,7 +17880,7 @@ www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configur
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20140227 3.20140916 3.20150107 3.20160905: A wiki compiler
-www-apps/jekyll 3.1.6 3.2.1-r1: A simple, blog aware, static site generator
+www-apps/jekyll 3.1.6-r1 3.2.1-r2: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.0.1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sites
 www-apps/jekyll-paginate 1.1.0: Default pagination generator for Jekyll
