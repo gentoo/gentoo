@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils cuda
 
@@ -16,32 +16,19 @@ SLOT="0"
 LICENSE="Boost-1.0"
 IUSE="cuda doc"
 
-DEPEND="${RDEPEND}
+DEPEND="
 	doc? ( app-doc/doxygen )
 	cuda? ( dev-util/nvidia-cuda-toolkit )"
 
 src_prepare() {
-	if use cuda; then
-		cuda_src_prepare
-	fi
+	use cuda && cuda_src_prepare
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with cuda CUDA) -DWITH_SILO=false
+		-DWITH_CUDA=$(usex cuda)
+		-DWITH_SILO=false
 	)
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	DOCS=( README )
-	cmake-utils_src_install
-}
-
-src_test() {
-	cmake-utils_src_make test
 }
