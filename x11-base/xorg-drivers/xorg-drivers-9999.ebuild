@@ -45,6 +45,7 @@ IUSE_VIDEO_CARDS="
 	video_cards_glint
 	video_cards_i128
 	video_cards_i740
+	video_cards_i965
 	video_cards_intel
 	video_cards_mach64
 	video_cards_mga
@@ -117,7 +118,8 @@ PDEPEND="
 	video_cards_glint?         ( x11-drivers/xf86-video-glint )
 	video_cards_i128?          ( x11-drivers/xf86-video-i128 )
 	video_cards_i740?          ( x11-drivers/xf86-video-i740 )
-	video_cards_intel?         ( x11-drivers/xf86-video-intel )
+	video_cards_i965?          ( ~x11-base/xorg-server-${PV}[glamor] )
+	video_cards_intel?         ( !video_cards_i965? ( x11-drivers/xf86-video-intel ) )
 	video_cards_mach64?        ( x11-drivers/xf86-video-mach64 )
 	video_cards_mga?           ( x11-drivers/xf86-video-mga )
 	video_cards_neomagic?      ( x11-drivers/xf86-video-neomagic )
