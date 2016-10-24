@@ -10,7 +10,7 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20161006"
+MY_RELEASEDATE="20161014"
 EXTRAS_VER="1.34"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
