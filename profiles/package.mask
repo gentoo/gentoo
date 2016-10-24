@@ -589,16 +589,6 @@ dev-lang/python:3.3
 ~mail-client/thunderbird-31.8.0
 ~mail-client/thunderbird-38.8.0
 
-# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
-# Masked for testing, and porting revdeps. Please do not unmask before
-# media-libs/mesa release supports it.
-~sys-devel/clang-3.9.0
-~sys-devel/clang-runtime-3.9.0
-~sys-devel/llvm-3.9.0
-~sys-libs/libcxx-3.9.0
-~sys-libs/libcxxabi-3.9.0
-~sys-libs/llvm-libunwind-3.9.0
-
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
