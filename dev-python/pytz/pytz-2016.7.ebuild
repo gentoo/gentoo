@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
@@ -20,12 +20,12 @@ IUSE=""
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=sys-libs/timezone-data-2015g"
+	|| ( >=sys-libs/timezone-data-2015g sys-libs/glibc[vanilla] )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	# Use timezone-data zoneinfo.
-	"${FILESDIR}"/${PN}-2009j-zoneinfo.patch
+	"${FILESDIR}"/2016.6.1-zoneinfo.patch
 	# ...and do not install a copy of it.
 	"${FILESDIR}"/${PN}-2009h-zoneinfo-noinstall.patch
 )
