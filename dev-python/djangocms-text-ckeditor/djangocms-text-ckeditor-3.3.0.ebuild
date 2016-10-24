@@ -18,11 +18,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND=""
-
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools
 "
+PDEPEND=">=dev-python/django-cms-3.2.0"
 
 src_prepare() {
 	sed -i 's/find_packages()/find_packages(exclude=["tests"])/g' "${S}/setup.py"
