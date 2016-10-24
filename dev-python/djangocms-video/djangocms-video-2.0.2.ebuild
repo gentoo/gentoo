@@ -17,11 +17,15 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="
+	>=dev-python/djangocms-attributes-field-0.1.1
+	>=dev-python/django-filer-1.2.4
+"
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools
 "
+PDEPEND=">=dev-python/django-cms-3.2.0"
 
 src_prepare() {
 	sed -i 's/find_packages()/find_packages(exclude=["tests"])/g' "${S}/setup.py"
