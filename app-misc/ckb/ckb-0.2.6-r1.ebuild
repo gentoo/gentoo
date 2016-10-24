@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-libs/quazip[qt5]
+DEPEND=">=dev-libs/quazip-0.7.2[qt5]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -26,7 +26,7 @@ DOCS=( README.md BUILD.md DAEMON.md )
 
 src_prepare() {
 	sed -i -e "s/-Werror=all//" src/ckb-daemon/ckb-daemon.pro || die
-	sed -i -e "/quazip/d" -e "s/^.*QUAZIP_STATIC/LIBS += -lquazip/" src/ckb/ckb.pro || die
+	sed -i -e "/quazip/d" -e "s/^.*QUAZIP_STATIC/LIBS += -lquazip5/" src/ckb/ckb.pro || die
 }
 
 src_configure() {
