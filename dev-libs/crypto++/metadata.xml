@@ -5,7 +5,11 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>noloader@gmail.com</email>
+		<name>Jeffrey Walton</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">cryptopp</remote-id>
+		<remote-id type="github">weidai11/cryptopp</remote-id>
 	</upstream>
 </pkgmetadata>
