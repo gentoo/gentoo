@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (24 Oct 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-56
+
 # Hanno Böck <hanno@gentoo.org> (16 Oct 2016)
 # The current package is broken (depends on perl modules
 # not in the tree) and there is probably no interest in
@@ -570,11 +575,6 @@ dev-haskell/base64-conduit
 # Mask for removal in 30 days. >=sci-mathematics/agda-2.4
 # now provides 'agda' binary.
 sci-mathematics/agda-executable
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-55
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
