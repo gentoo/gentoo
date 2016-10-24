@@ -4474,7 +4474,7 @@ dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distrib
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202 0_p20160504: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
-dev-lang/nim 0.14.2 0.15.0-r1: compiled, garbage-collected systems programming language
+dev-lang/nim 0.14.2 0.15.0-r1 0.15.2: compiled, garbage-collected systems programming language
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.03 2016.04 2016.04-r3 2016.05 2016.06 2016.07 2016.08.1 2016.09 2016.10 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
