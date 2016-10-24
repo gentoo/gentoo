@@ -58,6 +58,8 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+=" sys-devel/gnuconfig"
 fi
 
+PATCHES=("${FILESDIR}"/${P}-fix-ioctl.h)
+
 src_prepare() {
 	default
 	if [[ ${PV} == 9999 ]]; then
