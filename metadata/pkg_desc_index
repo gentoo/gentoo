@@ -9320,7 +9320,7 @@ dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM
 dev-ruby/roadie 3.1.1 3.2.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 1.11.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 1.11.1-r1 2.0.6: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
 dev-ruby/rr 1.1.2-r1 1.2.0: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
