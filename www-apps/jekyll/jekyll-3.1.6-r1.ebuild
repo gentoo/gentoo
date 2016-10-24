@@ -24,7 +24,7 @@ ruby_add_rdepend "<dev-ruby/colorator-1.0
 	>=dev-ruby/liquid-3.0:3
 	>=dev-ruby/mercenary-0.3.3
 	>=dev-ruby/safe_yaml-1.0
-	>=dev-ruby/rouge-1.7
+	>=dev-ruby/rouge-1.7:0
 	>=www-apps/jekyll-sass-converter-1.0
 	>=www-apps/jekyll-watch-1.1"
 
