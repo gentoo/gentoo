@@ -24,6 +24,7 @@
 		<flag name="hfs">Builds the EFI binary hfs filesystem driver</flag>
 		<flag name="btrfs">Builds the EFI binary btrfs filesystem driver</flag>
 		<flag name="ntfs">Builds the EFI binary ntfs filesystem driver</flag>
+		<flag name="gnuefi">Compile using GNU-EFI instead of Tianocore</flag>
 		<flag name="doc">Install document files</flag>
 	</use>
 	<use lang="fr">
@@ -34,6 +35,7 @@
 		<flag name="hfs">Construire le gestionnaire EFI pour le système de fichier hfs</flag>
 		<flag name="btrfs">Construire le gestionnaire EFI pour le système de fichier btrfs</flag>
 		<flag name="ntfs">Construire le gestionnaire EFI pour le système de fichier ntfs</flag>
+		<flag name="gnuefi">Compiler en utilisant GNU-EFI au lieu de Tianocore</flag>
 		<flag name="doc">Installer les fichiers de documentation</flag>
 	</use>
 	<upstream>
