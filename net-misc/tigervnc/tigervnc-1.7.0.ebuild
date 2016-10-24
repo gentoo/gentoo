@@ -24,7 +24,7 @@ RDEPEND="virtual/jpeg:0
 	sys-libs/zlib
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( =net-libs/gnutls-3* )
 	java? ( >=virtual/jre-1.5 )
 	pam? ( virtual/pam )
 	server? (
@@ -75,14 +75,16 @@ DEPEND="${RDEPEND}
 
 CMAKE_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${WORKDIR}"/patches/010_libvnc-os.patch
+	"${WORKDIR}"/patches/030_manpages.patch
+	"${WORKDIR}"/patches/055_xstartup.patch
+	)
+
 src_prepare() {
 	if use server ; then
-		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver
+		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
 	fi
-
-	eapply "${WORKDIR}"/patches/010_libvnc-os.patch
-	eapply "${WORKDIR}"/patches/030_manpages.patch
-	eapply "${WORKDIR}"/patches/055_xstartup.patch
 
 	default
 
@@ -162,11 +164,11 @@ src_install() {
 	make_desktop_entry vncviewer vncviewer vncviewer Network
 
 	if use server ; then
-		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
+		emake -C unix/xserver/hw/vnc DESTDIR="${ED}" install
 		if ! use xorgmodule; then
-			rm -r "${D}"/usr/$(get_libdir)/xorg || die
+			rm -r "${ED%/}"/usr/$(get_libdir)/xorg || die
 		else
-			rm "${D}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
+			rm "${ED%/}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
@@ -174,7 +176,7 @@ src_install() {
 		systemd_douserunit contrib/systemd/user/vncserver@.service
 	else
 		local f
-		cd "${D}" || die
+		cd "${ED}" || die
 		for f in vncserver vncpasswd x0vncserver vncconfig; do
 			rm usr/bin/$f || die
 			rm usr/share/man/man1/$f.1 || die
