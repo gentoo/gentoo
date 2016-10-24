@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	# Bad permissions in tarball
-	chmod -R g+rX,o+rX "${S}" || die
+	chmod -R go+rX "${S}" || die
 	distutils-r1_python_prepare_all
 }
 
