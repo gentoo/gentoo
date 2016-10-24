@@ -12,22 +12,24 @@ HOMEPAGE="http://wiki.gnome.org/Apps/Software"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="test"
+KEYWORDS="~amd64 ~x86"
+IUSE="gnome spell test udev"
 
 RDEPEND="
 	>=app-admin/packagekit-base-1.1.0
-	app-text/gtkspell:3
+	app-crypt/libsecret
 	dev-db/sqlite:3
-	>=dev-libs/appstream-glib-0.5.12:0
+	>=dev-libs/appstream-glib-0.6.1:0
 	>=dev-libs/glib-2.46:2
 	>=dev-libs/json-glib-1.1.1
-	>=gnome-base/gnome-desktop-3.17.92:3=
 	>=gnome-base/gsettings-desktop-schemas-3.11.5
 	>=net-libs/libsoup-2.51.92:2.4
 	sys-auth/polkit
 	>=x11-libs/gdk-pixbuf-2.31.5
-	>=x11-libs/gtk+-3.18.2:3
+	>=x11-libs/gtk+-3.20:3
+	gnome? ( >=gnome-base/gnome-desktop-3.17.92:3= )
+	spell? ( app-text/gtkspell:3 )
+	udev? ( virtual/libgudev )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
@@ -62,10 +64,16 @@ src_configure() {
 		--enable-man \
 		--enable-packagekit \
 		--enable-polkit \
-		--disable-xdg-app \
 		--disable-firmware \
 		--disable-limba \
-		$(use_enable test dogtail)
+		--disable-ostree \
+		--disable-rpm \
+		--disable-steam \
+		--disable-xdg-app \
+		$(use_enable spell gtkspell) \
+		$(use_enable test dogtail) \
+		$(use_enable test tests) \
+		$(use_enable udev gudev)
 }
 
 src_test() {

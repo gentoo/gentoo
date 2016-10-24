@@ -413,8 +413,12 @@ kde-apps/kdeartwork-emoticons
 >=gnome-base/gdm-3.21
 >=gnome-base/gnome-3.21
 >=gnome-base/gnome-control-center-3.21
+>=gnome-base/gnome-core-apps-3.21
+>=gnome-base/gnome-core-libs-3.21
 >=gnome-base/gnome-desktop-3.21
+>=gnome-base/gnome-extra-apps-3.21
 >=gnome-base/gnome-keyring-3.21
+>=gnome-base/gnome-light-3.21
 >=gnome-base/gnome-session-3.21
 >=gnome-base/gnome-settings-daemon-3.21
 >=gnome-base/gnome-shell-3.21
@@ -432,8 +436,10 @@ kde-apps/kdeartwork-emoticons
 >=gnome-extra/gnome-contacts-3.21
 >=gnome-extra/gnome-documents-3.21
 >=gnome-extra/gnome-logs-3.21
+>=gnome-extra/gnome-packagekit-3.21
 >=gnome-extra/gnome-power-manager-3.21
 >=gnome-extra/gnome-shell-extensions-3.21
+>=gnome-extra/gnome-software-3.21
 >=gnome-extra/gnome-system-monitor-3.21
 >=gnome-extra/gnome-tweak-tool-3.21
 >=gnome-extra/gnome-user-docs-3.21
