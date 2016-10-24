@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.4.3
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 python-single-r1
+inherit cmake-utils flag-o-matic git-r3 python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="http://llvm.org/"
@@ -21,13 +21,12 @@ SLOT="0/${PV%.*}"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="${PYTHON_DEPS}
-	!<sys-devel/llvm-${PV}"
+RDEPEND="!<sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
 	test? (
 		app-portage/unsandbox
-		dev-python/lit[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 		~sys-devel/clang-${PV}
 		~sys-libs/compiler-rt-${PV} )
 	${PYTHON_DEPS}"
@@ -108,10 +107,4 @@ src_test() {
 	local -x LIT_PRESERVES_TMP=1
 
 	cmake-utils_src_make check-all
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	python_doscript "${S}"/lib/asan/scripts/asan_symbolize.py
 }
