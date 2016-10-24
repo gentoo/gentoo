@@ -22,7 +22,7 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -e ${FILEBEAT_CONFIG} ]; then
+	if [[ ! -e ${FILEBEAT_CONFIG} ]]; then
 		eend "Please create a configuration file at ${FILEBEAT_CONFIG}"
 		return 1
 	fi

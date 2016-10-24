@@ -13,21 +13,21 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="dev-lang/go"
+RDEPEND="!app-admin/filebeat-bin"
 
 ELASTIC="${WORKDIR}/src/github.com/elastic"
 BEATS="${ELASTIC}/beats"
 S="${BEATS}"
 
 src_unpack() {
-	mkdir -p "${ELASTIC}"
+	mkdir -p "${ELASTIC}" || die
 	unpack ${P}.tar.gz
-	mv beats-${PV} "${BEATS}"
+	mv beats-${PV} "${BEATS}" || die
 }
 
 src_compile() {
-	export GOPATH="${WORKDIR}"
-
-	cd ${BEATS}/filebeat && emake
+	cd ${BEATS}/filebeat || die
+	GOPATH="${WORKDIR}" emake
 }
 
 src_install() {
