@@ -31,7 +31,10 @@ python_configure() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( test/* )
+	if use examples; then
+		docinto examples
+		dodoc -r test/*
+	fi
 
 	distutils-r1_python_install_all
 }
