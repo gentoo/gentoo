@@ -7845,7 +7845,7 @@ dev-python/pycodestyle 2.0.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 1.18 1.19 1.20: Database of countries, subdivisions, languages, currencies and script
-dev-python/pycparser 2.14 2.16: C parser and AST generator written in Python
+dev-python/pycparser 2.14 2.16-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDIA CUDA
