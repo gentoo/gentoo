@@ -22,6 +22,12 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
+python_prepare_all() {
+	# Bad permissions in tarball
+	chmod -R g+rX,o+rX "${S}" || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	distutils-r1_python_compile
 	pushd "${BUILD_DIR}/lib/pycparser" > /dev/null || die
