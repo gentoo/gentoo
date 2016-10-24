@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE='tk?,threads(+)'
@@ -40,16 +40,13 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
 		<dev-python/sphinx_rtd_theme-0.2[${PYTHON_USEDEP}]
 	)
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? (	dev-python/nose[${PYTHON_USEDEP}] )
 	"
-RDEPEND+=" !dev-python/imaging"
 
 S="${WORKDIR}/${MY_P}"
 
 # See _render and _clean in Tests/test_imagefont.py
 DISTUTILS_IN_SOURCE_BUILD=1
-
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 python_prepare_all() {
 	# Disable all the stuff we don't want.
@@ -68,7 +65,7 @@ python_prepare_all() {
 
 	sed \
 		-e "/required/s:=.*:= set():g" \
-		-e "/if feature in/s:'jpeg', 'libz'::g" \
+		-e "/if f in/s:'jpeg', 'libz'::g" \
 		-i setup.py || die
 
 	distutils-r1_python_prepare_all
@@ -80,8 +77,7 @@ python_compile_all() {
 
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
-	VIRTUALX_COMMAND=nosetests
-	virtualmake -vx Tests/test_*.py || die "Testing failed with ${EPYTHON}"
+	virtx nosetests -vx Tests/test_*.py
 }
 
 python_install() {
