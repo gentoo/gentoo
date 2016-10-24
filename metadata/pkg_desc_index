@@ -17089,7 +17089,7 @@ sys-cluster/hpx 0.9.8 0.9.9 0.9.10 0.9.99 9999: C++ runtime system for parallel 
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.2-r4 1.2.15 1.2.19 1.2.22 1.2.23: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/legion 16.08.0-r1: A data-centric parallel programming system
+sys-cluster/legion 16.08.0-r1 16.10.0: A data-centric parallel programming system
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: an API for distributing embarrassingly parallel workloads using self-stabilization
