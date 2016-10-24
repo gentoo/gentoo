@@ -32,7 +32,6 @@ RDEPEND="
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/psutil-2.2.1[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/pythondialog-3.2.2:python-2' python2_7)
