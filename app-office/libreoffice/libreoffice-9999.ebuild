@@ -57,7 +57,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/0fb1bb06d60d7708abc4797008209bcc-xmlsec1-1.2.22.tar.gz" # modifies source code
+	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -122,7 +122,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=media-libs/glew-1.10:=
-	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
+	media-libs/harfbuzz:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libfreehand-0.1.0
