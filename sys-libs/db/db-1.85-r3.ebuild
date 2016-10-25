@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit eutils toolchain-funcs multilib multilib
 
 DESCRIPTION="old berk db kept around for really old packages"
-HOMEPAGE="http://www.oracle.com/technology/software/products/berkeley-db/db/index.html"
+HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
 SRC_URI="http://download.oracle.com/berkeley-db/db.${PV}.tar.gz
 		 mirror://gentoo/${PF}.1.patch.bz2"
 # The patch used by Gentoo is from Fedora, and includes all 5 patches found on
