@@ -5,14 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>elizabeth@interlinked.me</email>
-		<name>Elizabeth Myers</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
 		<flag name="strict">Adhere to POSIX pkg-config specification. Useful for finding uses of
