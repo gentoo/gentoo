@@ -52,6 +52,11 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	if use examples ; then
+		docinto examples
+		dodoc -r examples/*
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
 	distutils-r1_python_install_all
 }
