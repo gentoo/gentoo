@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit fdo-mime gnome2-utils
 
@@ -13,7 +13,7 @@ SRC_URI="http://${PN}.org/download/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbus extras gstreamer libnotify mplayer"
+IUSE="dbus doc extras gstreamer libnotify mplayer"
 
 GSTREAMER_DEPEND="
 	dev-perl/GStreamer
@@ -41,12 +41,12 @@ DEPEND="sys-devel/gettext"
 
 src_install() {
 	emake \
-		DOCS="AUTHORS NEWS README" \
 		DESTDIR="${D}" \
-		iconsdir="${D}/usr/share/icons/hicolor" \
+		iconsdir="${D%/}/usr/share/icons/hicolor" \
 		install
 
-	dohtml layout_doc.html
+	use doc && local HTML_DOCS=( layout_doc.html )
+	einstalldocs
 }
 
 pkg_preinst() {

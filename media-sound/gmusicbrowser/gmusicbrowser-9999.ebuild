@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils fdo-mime git-2 gnome2-utils
+inherit eutils fdo-mime git-r3 gnome2-utils
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
 HOMEPAGE="http://gmusicbrowser.org/"
@@ -46,12 +46,12 @@ src_compile() {
 
 src_install() {
 	emake \
-		DOCS="AUTHORS NEWS README" \
 		DESTDIR="${D}" \
-		iconsdir="${D}/usr/share/icons/hicolor" \
+		iconsdir="${D%/}/usr/share/icons/hicolor" \
 		install
 
-	use doc && dohtml layout_doc.html
+	use doc && local HTML_DOCS=( layout_doc.html )
+	einstalldocs
 }
 
 pkg_preinst() {
