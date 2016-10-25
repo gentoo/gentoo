@@ -88,7 +88,11 @@ python_install() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( Scripts/. )
+	if use examples ; then
+		docinto examples
+		dodoc Scripts/*
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 
 	distutils-r1_python_install_all
 }
