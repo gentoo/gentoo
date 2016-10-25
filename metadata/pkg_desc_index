@@ -4500,7 +4500,7 @@ dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.3.1: An object-oriented scripting language
 dev-lang/rust 1.11.0 1.12.0 1.12.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: Systems programming language from Mozilla
+dev-lang/rust-bin 1.12.1: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
@@ -4558,7 +4558,7 @@ dev-libs/botan 1.10.12 1.10.13 1.11.29 1.11.32: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.4-r2: disassembly/disassembler framework + bindings
@@ -18358,7 +18358,7 @@ x11-libs/xforms 1.0.93_p1-r1 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
 x11-libs/xpa 2.1.15 2.1.17: Messaging system providing communication between programs
 x11-libs/xpyb 1.3.1-r2 1.3.1-r3: XCB-based Python bindings for the X Window System
-x11-libs/xtrans 1.3.3 1.3.4 1.3.5: X.Org xtrans library
+x11-libs/xtrans 1.3.5: X.Org xtrans library
 x11-libs/xvba-video 0.8.0-r3 9999: XVBA Backend for Video Acceleration (VA) API
 x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
