@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=The iconic font
+EAPI=6
+HOMEPAGE=http://fontawesome.io
+IUSE=+otf +ttf X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=CC-BY-3.0 OFL-1.1
+REQUIRED_USE=|| ( otf ttf )
+SLOT=0
+SRC_URI=https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.tar.gz -> fontawesome-4.7.0.tar.gz
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_configure:- src_install:font
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=581037bf41d86d507258d056f2eb16f3
