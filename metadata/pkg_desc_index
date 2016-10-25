@@ -8573,7 +8573,7 @@ dev-qt/qtwidgets 5.5.1-r1 5.6.1 5.6.2 5.7.0: Set of components for creating clas
 dev-qt/qtx11extras 5.5.1 5.6.1 5.6.2 5.7.0: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.5.1 5.6.1 5.6.2 5.7.0: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.5.1-r1 5.6.1 5.6.2 5.7.0: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
-dev-ros/actionlib 1.11.5 1.11.6 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.11.5 1.11.6 1.11.7 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.3 1.12.4 1.12.5 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
@@ -8582,9 +8582,9 @@ dev-ros/audio_capture 0.2.12 0.3.1 9999: Transports audio from a source to a des
 dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Messages for transmitting audio via ROS
 dev-ros/audio_play 0.2.12 0.3.1 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
-dev-ros/bond 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
-dev-ros/bondcpp 1.7.16 1.7.17 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
-dev-ros/bondpy 1.7.16 1.7.17 9999: Python implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/bond 1.7.16 1.7.17 1.7.18 9999: A bond allows two processes, A and B, to know when the other has terminated
+dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/bondpy 1.7.16 1.7.17 1.7.18 9999: Python implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
 dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
@@ -8593,7 +8593,7 @@ dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Calibra
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
-dev-ros/class_loader 0.3.3 0.3.4 0.3.5 9999: ROS-independent package for loading plugins
+dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.3-r1 1.12.4 9999: C++ parser for the Collada robot description format
@@ -8635,7 +8635,7 @@ dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 1.0.3 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.6.0 0.6.2 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.2 0.6.3 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.1 0.5.2 9999: Generic definitions of geometric shapes and bodies
@@ -8702,8 +8702,8 @@ dev-ros/moveit_msgs 0.8.0 0.8.1 0.8.3 9999: Messages, services and actions used 
 dev-ros/nav_core 1.13.0 1.13.1 1.14.0 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.3 1.12.4 1.12.5 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.14.0-r1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
-dev-ros/nodelet 1.9.3 1.9.4 1.9.5 1.9.6 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
-dev-ros/nodelet_topic_tools 1.9.3 1.9.3-r1 1.9.4 1.9.5 1.9.6 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/nodelet 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet_topic_tools 1.9.3 1.9.3-r1 1.9.4 1.9.5 1.9.6 1.9.7 9999: Common nodelet tools such as a mux, demux and throttle
 dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.2 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
@@ -8752,7 +8752,7 @@ dev-ros/rosconsole_bridge 0.4.2 0.4.3 0.4.4 9999: Connects console_bridge-based 
 dev-ros/roscpp 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.5.6 0.5.7 0.6.0 0.6.1 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 0.5.7 0.6.0 0.6.1 9999: Message traits code
-dev-ros/roscpp_tutorials 0.6.1 0.7.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
+dev-ros/roscpp_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosgraph 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.1 1.11.2 9999: Messages relating to ROS comm
@@ -8770,7 +8770,7 @@ dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.
 dev-ros/rospack 2.3.1 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Python client library for ROS
-dev-ros/rospy_tutorials 0.6.1 0.7.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
+dev-ros/rospy_tutorials 0.6.1 0.7.0 0.7.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosserial_arduino 0.7.1 0.7.2 0.7.3 0.7.4 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
 dev-ros/rosserial_client 0.7.1 0.7.2 0.7.3 0.7.4 9999: Generalized client side source for rosserial
 dev-ros/rosserial_embeddedlinux 0.7.1 0.7.2 0.7.3 0.7.4 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
@@ -8832,17 +8832,17 @@ dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
 dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex robot behavior
 dev-ros/smach_msgs 2.0.0 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
-dev-ros/smclib 1.7.16 1.7.17 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
+dev-ros/smclib 1.7.16 1.7.17 1.7.18 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
 dev-ros/sound_play 0.2.12 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.19-r1 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 1.12.5 9999: Messages specific to stereo processing, such as disparity images
-dev-ros/test_bond 1.7.16 1.7.17 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_bond 1.7.16 1.7.17 1.7.18 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.10 9999: diagnostic_aggregator tests
-dev-ros/test_nodelet 1.9.3 1.9.4 1.9.5 1.9.6 9999: Nodelet unit tests
-dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 9999: Nodelet topic tools unit tests
+dev-ros/test_nodelet 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Nodelet unit tests
+dev-ros/test_nodelet_topic_tools 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: Unit tests for roscpp
@@ -8874,7 +8874,7 @@ dev-ros/transmission_interface 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 9999: Transmiss
 dev-ros/turtle_actionlib 0.1.8 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and listener with the turtlesim
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
-dev-ros/turtlesim 0.6.1 0.7.0 9999: Tool made for teaching ROS and ROS packages
+dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
 dev-ros/urdf 1.12.3-r1 1.12.4 9999: C++ parser for the Unified Robot Description Format (URDF)
 dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 9999: C++ base class for URDF parsers
@@ -15465,7 +15465,7 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/audio_common 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Common code for working with audio in ROS
-ros-meta/bond_core 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
+ros-meta/bond_core 1.7.16 1.7.17 1.7.18 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 1.12.5 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 9999: Metapackage that contains common tutorials
@@ -15488,7 +15488,7 @@ ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU me
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.16.3 0.16.4 0.16.5 0.16.6 0.17.0 0.17.1 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Metapackage for mavros packages
 ros-meta/navigation 1.13.0 1.13.1 1.14.0 9999: 2D navigation stack
-ros-meta/nodelet_core 1.9.3 1.9.4 1.9.5 1.9.6 9999: Nodelet Core Metapackage
+ros-meta/nodelet_core 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Nodelet Core Metapackage
 ros-meta/perception 1.2.0 1.3.0 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: URDF description and 3D models of robot components of the PR2 robot
@@ -15500,7 +15500,7 @@ ros-meta/ros_base 1.2.0 1.3.0 9999: Metapackage which extends ros_core and inclu
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 9999: ROS communications-related packages
 ros-meta/ros_control 0.11.0 0.11.1 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 1.3.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
-ros-meta/ros_tutorials 0.6.1 0.7.0 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
+ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 9999: Metapackage for core of rosserial
