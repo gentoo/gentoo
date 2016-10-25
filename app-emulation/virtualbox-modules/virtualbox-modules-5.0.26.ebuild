@@ -28,10 +28,14 @@ BUILD_TARGET_ARCH="${ARCH}"
 MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
 
 pkg_setup() {
+	enewgroup vboxusers
+
+	CONFIG_CHECK="!TRIM_UNUSED_KSYMS"
+	ERROR_TRIM_UNUSED_KSYMS="This option removed kernel symbols that are needed by ${PN} to load correctly."
+
 	linux-mod_pkg_setup
 
 	BUILD_PARAMS="KERN_DIR=${KV_DIR} KERNOUT=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
-	enewgroup vboxusers
 }
 
 src_prepare() {
