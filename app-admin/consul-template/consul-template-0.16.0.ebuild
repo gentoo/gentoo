@@ -23,8 +23,6 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
 "
 
-STRIP_MASK="*.a"
-
 pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 -1 ${PN}
@@ -70,9 +68,6 @@ src_prepare() {
 src_compile() {
 	export GOPATH=${S}
 	go install -v -work -x ${EGO_BUILD_FLAGS} "github.com/mitchellh/gox/..." || die
-	go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
-	# the previous command returns 2 on success...
-	#[[ -d ${S}/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*} ]] || die
 	cd "${S}"/src/${EGO_PN%/*} || die
 	PATH=${PATH}:${S}/bin \
 	XC_ARCH=$(go env GOARCH) \
@@ -101,19 +96,4 @@ src_install() {
 	keepdir /etc/${PN}.d
 	insinto /etc/${PN}.d
 	doins "${FILESDIR}/"*.json.example
-
-	rm -rf "${S}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/${EGO_PN%/*}/vendor
-	find "${S}"/src/${EGO_PN%/*} -mindepth 1 -maxdepth 1 -type f -delete || die
-
-	while read -r -d '' x; do
-		x=${x#${S}/src}
-		[[ -d ${S}/pkg/$(go env GOOS)_$(go env GOARCH)/${x} ||
-			-f ${S}/pkg/$(go env GOOS)_$(go env GOARCH)/${x}.a ]] && continue
-		rm -rf "${S}"/src/${x}
-	done < <(find "${S}"/src/${EGO_PN%/*} -mindepth 1 -maxdepth 1 -type d -print0)
-	insopts -m0644 -p # preserve timestamps for bug 551486
-	insinto $(dirname "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
-	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
-	insinto $(dirname "$(get_golibdir)/src/${EGO_PN%/*}")
-	doins -r "${S}"/src/${EGO_PN%/*}
 }
