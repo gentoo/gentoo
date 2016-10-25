@@ -4468,7 +4468,7 @@ dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Addit
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2016.03 2016.04 2016.04-r2 2016.05 2016.06 2016.07 2016.08 2016.09 2016.10 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.3: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
