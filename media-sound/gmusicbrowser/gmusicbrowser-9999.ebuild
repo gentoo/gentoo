@@ -13,9 +13,10 @@ EGIT_REPO_URI="git://github.com/squentin/${PN}.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dbus doc extras gstreamer libnotify mplayer"
+IUSE="dbus doc extras gstreamer gstreamer-0 libnotify mplayer"
 
-GSTREAMER_DEPEND="
+GSTREAMER_DEPEND="dev-perl/Glib-Object-Introspection"
+GSTREAMER0_DEPEND="
 	dev-perl/GStreamer
 	dev-perl/GStreamer-Interfaces
 	media-plugins/gst-plugins-meta:0.10"
@@ -33,8 +34,9 @@ RDEPEND="dev-lang/perl
 	|| ( net-misc/wget dev-perl/AnyEvent-HTTP )
 	dbus? ( dev-perl/Net-DBus )
 	gstreamer? ( ${GSTREAMER_DEPEND} )
+	gstreamer-0? ( ${GSTREAMER0_DEPEND} )
 	mplayer? ( || ( ${MPLAYER_DEPEND} ${MPV_DEPEND} ) )
-	!gstreamer? ( !mplayer? ( ${OTHER_DEPEND} ) )
+	!gstreamer? ( !gstreamer-0? ( !mplayer? ( ${OTHER_DEPEND} ) ) )
 	extras? ( dev-perl/gnome2-wnck )
 	libnotify? ( dev-perl/Gtk2-Notify )"
 DEPEND="sys-devel/gettext
@@ -65,6 +67,7 @@ pkg_postinst() {
 	elog "Gmusicbrowser supports gstreamer, mplayer, mpv and mpg123/ogg123..."
 	elog "for audio playback. Needed dependencies:"
 	elog "  Gstreamer: ${GSTREAMER_DEPEND}"
+	elog "  Gstreamer-0.10: ${GSTREAMER0_DEPEND}"
 	elog "  mplayer: ${MPLAYER_DEPEND}"
 	elog "  mpv: ${MPV_DEPEND}"
 	elog "  mpg123/ogg123...: ${OTHER_DEPEND}"
