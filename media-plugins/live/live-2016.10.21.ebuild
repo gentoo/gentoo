@@ -28,7 +28,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-recursive2.patch"
+	epatch "${FILESDIR}/${PN}-recursive3.patch"
 
 	if use static-libs ; then
 		cp -pPR live live-shared
