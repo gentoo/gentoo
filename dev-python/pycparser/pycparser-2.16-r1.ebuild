@@ -22,6 +22,15 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
+pkg_pretend() {
+	if has_version "=dev-python/pycparser-2.16"; then
+		eerror "You have a broken version of dev-python/pycparser installed."
+		eerror "Please remove the broken version before continuing."
+		eerror "eg. emerge --unmerge =dev-python/pycparser-2.16"
+		die "Broken dev-python/pycparser"
+	fi
+}
+
 python_prepare_all() {
 	# Bad permissions in tarball
 	chmod -R go+rX "${S}" || die
