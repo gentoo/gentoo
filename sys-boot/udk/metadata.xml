@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sveyret@gmail.com</email>
+		<name>Stéphane Veyret</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tianocore UEFI Development Kit, a stable release of portions of the
+		EDK II project.
+	</longdescription>
+	<longdescription lang="fr">
+		Kit de développement UEFI Tianocore, une version stable de portions du
+		projet EDK II.
+	</longdescription>
+	<use lang="en">
+		<flag name="doc">Install EDK II documentation.</flag>
+		<flag name="examples">Install usage examples.</flag>
+	</use>
+	<use lang="fr">
+		<flag name="doc">Installer la documentation EDK II.</flag>
+		<flag name="examples">Installer les exemples d'utilisation.</flag>
+	</use>
+</pkgmetadata>
