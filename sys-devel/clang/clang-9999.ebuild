@@ -145,6 +145,10 @@ multilib_src_configure() {
 		# TODO: get them properly conditional
 		#-DLLVM_BUILD_TESTS=$(usex test)
 
+		# these are not propagated reliably, so redefine them
+		-DLLVM_ENABLE_EH=ON
+		-DLLVM_ENABLE_RTTI=ON
+
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
