@@ -17,6 +17,10 @@ PHP_EXT_OPTIONAL_USE=php
 
 USE_PHP="php7-0"
 
+# This variable does not belong to any eclass. It is solely used in this ebuild
+# db:6.2 breaks the build process
+BERKDB_SLOTS=( 6.1 5.3 5.1 4.8 )
+
 inherit db-use eutils mono-env php-ext-source-r2 python-r1 ruby-ng toolchain-funcs versionator
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
@@ -33,8 +37,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	|| (
-		sys-libs/db:5.3[cxx]
-		sys-libs/db:5.1[cxx]
+		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}[cxx]" ; done)
 	)
 	dev-cpp/libmcpp
 	python? ( ${PYTHON_DEPS} )
@@ -131,8 +134,8 @@ src_prepare() {
 
 src_configure() {
 	suitable_db_version() {
-		local ver tested_slots=(5.3 5.1)
-		for ver in "${tested_slots[@]}"; do
+		local ver
+		for ver in "${BERKDB_SLOTS[@]}"; do
 			if [[ -n $(db_findver sys-libs/db:${ver}) ]]; then
 				echo "${ver}"
 				return 0
