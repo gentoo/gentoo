@@ -18269,7 +18269,7 @@ x11-libs/libXdmcp 1.1.1-r1 1.1.2 1.1.2-r1: X.Org X Display Manager Control Proto
 x11-libs/libXext 1.3.2 1.3.3: X.Org Xext library
 x11-libs/libXfixes 5.0.1 5.0.2 5.0.3: X.Org Xfixes library
 x11-libs/libXfont 1.4.9 1.5.1 1.5.2: X.Org Xfont library
-x11-libs/libXfont2 2.0.1: X.Org Xfont library
+x11-libs/libXfont2 2.0.1 9999: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
 x11-libs/libXi 1.7.4 1.7.5 1.7.6 1.7.7 1.7.8: X.Org Xi library
