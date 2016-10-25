@@ -16678,7 +16678,7 @@ sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring
 sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/file 5.22 5.25 5.26-r1 5.27 5.28 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.22 5.25 5.28 5.29 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
 sys-apps/firejail 0.9.38.2 0.9.42: Security sandbox for any type of processes
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
@@ -16741,7 +16741,7 @@ sys-apps/kmod 22 23 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
-sys-apps/less 481 483-r1: Excellent text file viewer
+sys-apps/less 481 483-r1 487: Excellent text file viewer
 sys-apps/likwid 4.1.1: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
