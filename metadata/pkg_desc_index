@@ -8216,7 +8216,7 @@ dev-python/rope 0.10.3: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.4.4 0.4.5 0.4.7 9999: Tools to work with catkinized rosdistro files
+dev-python/rosdistro 0.4.7 0.5.0 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.41-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2 2.3.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
@@ -13051,7 +13051,7 @@ media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV 
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.05.20 2016.06.26 2016.07.19 2016.08.27 2016.09.05 2016.09.12 2016.09.22 2016.10.11: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.10.11 2016.10.21: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
