@@ -17041,7 +17041,7 @@ sys-boot/quik 2.1.6: OldWorld PowerMac Bootloader
 sys-boot/raincoat 0.5 0.11: Flash the Xbox boot chip
 sys-boot/raspberrypi-firmware 1_pre20130807 1.20160209 1.20160309 9999: Raspberry PI boot loader and firmware
 sys-boot/raspberrypi-mkimage 0_p20120201: Raspberry Pi kernel mangling tool mkimage/imagetool-uncompressed.py
-sys-boot/refind 0.9.0-r1 0.9.2 0.10.0 0.10.2: The rEFInd UEFI Boot Manager by Rod Smith
+sys-boot/refind 0.9.0-r1 0.9.2 0.10.0 0.10.2 0.10.2-r1 0.10.3 0.10.4: The rEFInd UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
@@ -17049,6 +17049,7 @@ sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, E
 sys-boot/systemd-boot 231: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.4-r1: Performs a measured and verified boot using Intel Trusted Execution Technology
+sys-boot/udk 2015: Tianocore UEFI Development kit
 sys-boot/unetbootin 608 619 625: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427: Chrome OS verified boot tools
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
