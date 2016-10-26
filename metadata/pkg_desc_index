@@ -11745,7 +11745,7 @@ kde-misc/basket 1.81: A DropDrawers clone. Multiple information organizer
 kde-misc/bkodama 0.3.1: A friendly, yet very simple-minded Kodama (Japanese ghost) wandering on your desktop
 kde-misc/chromi 0.2 0.2_p20141209: Titlebar-less decoration inspired by Google Chrome and Nitrogen minimal mod
 kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
-kde-misc/colord-kde 0.3.0: Provides interfaces and session daemon to colord
+kde-misc/colord-kde 0.3.0 0.5.0: Provides interfaces and session daemon to colord
 kde-misc/commandwatch 0.1.1: KDE4 plasmoid which periodically runs a system command and displays its output
 kde-misc/cpuload 0.3.2: KDE4 plasmoid that shows CPU load on the screen
 kde-misc/customizable-weather 1.12.1: KDE Plasma 4 weather plasmoid. It aims to be highly customizable.
