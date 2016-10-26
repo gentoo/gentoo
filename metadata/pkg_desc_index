@@ -7660,7 +7660,7 @@ dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
-dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5 2.6.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -12624,7 +12624,7 @@ media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
-media-libs/jasper 1.900.6 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
+media-libs/jasper 1.900.6 1.900.15 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1 0.13: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
@@ -14931,7 +14931,7 @@ net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UN
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netfleet 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
-net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 9999: Gentoo Network Interface Management Scripts
+net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 0.5.1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
