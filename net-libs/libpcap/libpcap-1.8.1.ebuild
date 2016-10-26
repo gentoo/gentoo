@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.1-cross-compile.patch
 	"${FILESDIR}"/${PN}-1.8.1-darwin.patch
 	"${FILESDIR}"/${PN}-1.8.1-libnl.patch
+	"${FILESDIR}"/${PN}-1.8.1-usbmon.patch
 )
 
 src_prepare() {
