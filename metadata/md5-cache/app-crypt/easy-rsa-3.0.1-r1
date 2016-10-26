@@ -4,11 +4,11 @@ DESCRIPTION=Small RSA key management package, based on OpenSSL
 EAPI=5
 HOMEPAGE=http://openvpn.net/
 IUSE=libressl
-KEYWORDS=~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=~alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=!libressl? ( >=dev-libs/openssl-0.9.6:0 ) libressl? ( dev-libs/libressl ) !<net-misc/openvpn-2.3
 SLOT=0
 SRC_URI=https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz
 _eclass_exported_funcs=src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=963d658906400c11ee3bf93cf663e955
+_md5_=3d163aacf797c1eed9054c65df780910
