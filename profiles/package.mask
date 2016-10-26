@@ -352,11 +352,6 @@ x11-terms/terra
 # Mask for removal in 30 days. Bug #595754
 net-libs/socket++
 
-# Michael Palimaka <kensington@gentoo.org> (26 Sep 2016)
-# No longer maintained by upstream. Unused.
-# Masked for removal in 30 days.
-kde-apps/kdeartwork-emoticons
-
 # Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc2
