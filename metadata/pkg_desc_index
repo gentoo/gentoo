@@ -9484,7 +9484,7 @@ dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Array
 dev-ruby/typhoeus 0.6.9 1.0.1 1.0.2 1.1.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.43 0.3.44 0.3.48 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
-dev-ruby/uglifier 2.7.2 3.0.0 3.0.1 3.0.2: Ruby wrapper for UglifyJS JavaScript compressor
+dev-ruby/uglifier 2.7.2 3.0.2 3.0.3: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
