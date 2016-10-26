@@ -4599,6 +4599,7 @@ media-tv/xmltv:no_gf - Norway Gfeed tv listing grabber
 media-tv/xmltv:pt - Portugal tv listing grabber
 media-tv/xmltv:pt_meo - Grabber for Portugal (MEO)
 media-tv/xmltv:re - Reunion Island (France) tv listing grabber
+media-tv/xmltv:sd_json - Grabber for schedulesDirect.org SD-JSON service (many countries)
 media-tv/xmltv:se_swedb - Sweden tv listing grabber
 media-tv/xmltv:se_tvzon - Sweden (tvzon.se) tv listing grabber
 media-tv/xmltv:tr - Turkey (Digiturk) tv listing grabber
