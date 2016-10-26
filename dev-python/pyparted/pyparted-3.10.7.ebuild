@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{3,4}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for sys-block/parted"
-HOMEPAGE="https://github.com/dcantrell/pyparted/"
-SRC_URI="${HOMEPAGE}archive/${P}.tar.gz"
+HOMEPAGE="https://github.com/rhinstaller/pyparted/"
+SRC_URI="${HOMEPAGE}archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -29,11 +29,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-S=${WORKDIR}/${PN}-${P}
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.10.3-greater.patch
-	"${FILESDIR}"/${PN}-3.10.3-sbin-parted.patch
 )
 
 python_test() {
