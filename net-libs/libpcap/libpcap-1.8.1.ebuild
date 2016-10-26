@@ -23,9 +23,9 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
-	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
 	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
@@ -44,8 +44,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	mkdir bluetooth || die
-	cp "${FILESDIR}"/mgmt.h bluetooth/ || die
+#	mkdir bluetooth || die
+#	cp "${FILESDIR}"/mgmt.h bluetooth/ || die
 
 	eapply_user
 
