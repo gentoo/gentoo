@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="http://sshguard.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,15 +28,22 @@ RDEPEND="
 	virtual/logger
 "
 
-DOCS=( ChangeLog README.rst scripts/sshguard_backendgen.sh )
+DOCS=(
+	CHANGELOG.rst
+	README.rst
+	examples/sshguard.service
+	examples/whitelistfile.example
+)
 
 src_prepare() {
+	default
+
 	sed -i -e '/OPTIMIZER_CFLAGS=/d' configure || die
 }
 
 src_configure() {
 	# Needed for usleep(3), see "nasty" in src/sshguard_logsuck.c
-	append-cppflags -D_BSD_SOURCE
+	append-cppflags -D_DEFAULT_SOURCE
 
 	local myconf
 	if use kernel_linux; then
@@ -54,8 +61,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	dodoc -r examples/
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
