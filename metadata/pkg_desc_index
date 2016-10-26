@@ -7951,7 +7951,7 @@ dev-python/pyopenssl 0.15.1-r1 16.1.0 16.2.0: Python interface to the OpenSSL li
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 1.5.6-r2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.1.0 2.1.5 2.1.8 2.1.9: Easy-to-use Python module for text parsing
+dev-python/pyparsing 1.5.6-r2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.1.0 2.1.5 2.1.8 2.1.9 2.1.10: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.3-r1 3.10.5 3.10.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.2 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.1.3 1.1.4 1.1.5: Simplified object-oriented Python extension module for libpcap
@@ -8256,7 +8256,7 @@ dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
 dev-python/setuptools 18.4 20.6.7 24.0.2 26.1.1 27.1.2 27.2.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1 1.15.0: package to manage versions by scm tags via setuptools
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.11 1.11-r1: Python subprocess interface
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
@@ -12911,7 +12911,7 @@ media-libs/virglrenderer 0.2.0 0.5.0 9999: library used implement a virtual 3D G
 media-libs/vo-aacenc 0.1.2 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7: Volume rendering library
-media-libs/waffle 1.5.1 1.5.2 9999: Library that allows selection of GL API and of window system at runtime
+media-libs/waffle 1.5.2 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.1-r1 0.2 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.1.13 1.4.2 1.5.4 1.5.4-r1 1.5.5 1.5.9: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 0.0.20160523 0.0.20160712 9999: A free library for encoding X264/AVC streams
@@ -13228,8 +13228,8 @@ media-sound/a2jmidid 8 8-r1: Daemon for exposing legacy ALSA sequencer applicati
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2: A command line CD encoder
-media-sound/abcm2ps 8.8.4 8.12.1 8.12.3: A program to convert abc files to Postscript files
-media-sound/abcmidi 2015.08.25 2016.05.05 2016.07.20 2016.09.20: Programs for processing ABC music notation files
+media-sound/abcm2ps 8.8.4 8.12.1 8.12.3 8.12.4: A program to convert abc files to Postscript files
+media-sound/abcmidi 2015.08.25 2016.05.05 2016.07.20 2016.09.20 2016.09.25: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -18008,7 +18008,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.637 23.0.0.185: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.637 11.2.202.643 23.0.0.185 23.0.0.205: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.71 55.0.2883.21_beta 56.0.2897.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
