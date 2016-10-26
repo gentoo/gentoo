@@ -11190,8 +11190,8 @@ gnome-extra/cinnamon-translations 2.8.3 3.0.3: Translation data for Cinnamon
 gnome-extra/cjs 2.8.0 3.0.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.18.5 3.20.4 3.20.5: Evolution groupware backend
-gnome-extra/evolution-ews 3.18.5 3.20.4 3.20.5: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-data-server 3.20.5 3.22.1: Evolution groupware backend
+gnome-extra/evolution-ews 3.20.5 3.22.1: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.20.2 3.22.1: Simple GNOME 3 application to access remote or virtual systems
@@ -11930,7 +11930,7 @@ mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preference
 mail-client/cone 0.89 0.90 0.90-r1 0.92: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
-mail-client/evolution 3.18.5.2 3.20.4 3.20.5: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.20.5 3.22.1: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.11.0 0.11.1: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/mail-notification 5.4-r8 5.4-r9: Status icon informing about new mail
@@ -14622,7 +14622,7 @@ net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11 2.4.11-r1 2.4.11-r200 2.10.9 2.12.3 2.12.5: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.12.5 2.14.1: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.5-r1: A brokerless kernel
@@ -18345,7 +18345,7 @@ x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
-x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.5 0.44.2: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.5 0.44.2 0.46.0: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r3 3.0.2.0-r300 3.0.2.0-r301: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0: X C-language Bindings sample implementations
@@ -18894,7 +18894,7 @@ x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
-x11-terms/gnome-terminal 3.16.2-r2 3.18.2 3.18.3 3.20.2: The Gnome Terminal
+x11-terms/gnome-terminal 3.20.2 3.22.0: The Gnome Terminal
 x11-terms/guake 0.8.3 0.8.5 0.8.7 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
