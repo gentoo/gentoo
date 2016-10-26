@@ -17,6 +17,9 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.gz
 	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.gz
 	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
 
+# Fix for bug #598100
+SRC_URI+=" http://git.kernel.org/cgit/fs/ext2/e2fsprogs.git/patch/?id=d33e690fe7a6cbeb51349d9f2c7fb16a6ebec9c2 -> ${PN}-1.43.3-missing_uninit_bg.patch"
+
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint"
@@ -38,6 +41,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 	"${FILESDIR}"/${PN}-1.43-sysmacros.patch
+
+	# Upstream patches (can usually removed with next version bump)
+	"${DISTDIR}"/${P}-missing_uninit_bg.patch
 )
 
 src_prepare() {
