@@ -1,0 +1,68 @@
+From be1d302200fb3f3f2ef9cf41c34cb4ac5d970df2 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sat, 22 Oct 2016 21:46:18 +1100
+Subject: [PATCH] Remove unused dependencies.
+
+REVIEW: 129240
+---
+ CMakeLists.txt              | 4 ++--
+ colord-kcm/CMakeLists.txt   | 1 -
+ icc-importer/CMakeLists.txt | 2 --
+ icc-importer/main.cpp       | 1 -
+ 4 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fcace67..6d6093a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,8 +28,8 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+ find_package(X11)
+ find_package(XCB COMPONENTS XCB RANDR)
+ 
+-find_package(KF5 REQUIRED Config ConfigWidgets CoreAddons DBusAddons IconThemes I18n KCMUtils KIO
+-             Notifications Plasma WidgetsAddons WindowSystem ItemViews)
++find_package(KF5 REQUIRED ConfigWidgets CoreAddons DBusAddons I18n KCMUtils
++             WidgetsAddons WindowSystem)
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"colord-kde\")
+ 
+diff --git a/colord-kcm/CMakeLists.txt b/colord-kcm/CMakeLists.txt
+index a078ed3..712bf1a 100644
+--- a/colord-kcm/CMakeLists.txt
++++ b/colord-kcm/CMakeLists.txt
+@@ -53,7 +53,6 @@ target_link_libraries(kcm_colord
+     Qt5::DBus
+     KF5::CoreAddons
+     KF5::I18n
+-    KF5::IconThemes
+     KF5::KCMUtils
+     ${LCMS2_LIBRARIES}
+ )
+diff --git a/icc-importer/CMakeLists.txt b/icc-importer/CMakeLists.txt
+index af3cee0..a6ac1f9 100644
+--- a/icc-importer/CMakeLists.txt
++++ b/icc-importer/CMakeLists.txt
+@@ -18,8 +18,6 @@ target_link_libraries(colord-kde-icc-importer
+     KF5::CoreAddons
+     KF5::I18n
+     KF5::WidgetsAddons
+-    KF5::IconThemes
+-    KF5::ConfigCore
+     ${LCMS2_LIBRARIES}
+ )
+ 
+diff --git a/icc-importer/main.cpp b/icc-importer/main.cpp
+index 2af0e85..bb72f32 100644
+--- a/icc-importer/main.cpp
++++ b/icc-importer/main.cpp
+@@ -31,7 +31,6 @@
+ #include <QCommandLineParser>
+ 
+ #include <KMessageBox>
+-#include <KConfig>
+ #include <KAboutData>
+ #include <KLocalizedString>
+ 
+-- 
+2.7.3
+
