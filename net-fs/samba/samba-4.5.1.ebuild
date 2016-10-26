@@ -55,7 +55,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.8[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.10[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.29[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.31-r1[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam )
 	acl? ( virtual/acl )
@@ -107,6 +107,9 @@ src_prepare() {
 
 	# install the patches from tarball(s)
 	eapply "${WORKDIR}/patches/"
+
+	# ugly hackaround for bug #592502
+	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
 
 	multilib_copy_sources
 }
