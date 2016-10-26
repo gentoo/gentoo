@@ -4692,7 +4692,7 @@ dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1: an advanced CDDA reader with error
 dev-libs/libcec 2.1.3 2.1.4 2.2.0 3.0.1 3.1.0: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
 dev-libs/libchewing 0.3.3 0.3.3-r1 0.4.0-r1: Library for Chinese Phonetic input method
-dev-libs/libclc 0.0.1_pre20140101-r1 0.0.1_pre20141027 0.1.0_pre20150305 0.2.0_pre20151006 0.2.0_pre20160209: OpenCL C library
+dev-libs/libclc 0.0.1_pre20140101-r1 0.0.1_pre20141027 0.1.0_pre20150305 0.2.0_pre20151006 0.2.0_pre20160209 0.2.0_pre20160921: OpenCL C library
 dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface library
 dev-libs/libclsync 0.4.1 0.4.2: Control and monitoring library for clsync
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
