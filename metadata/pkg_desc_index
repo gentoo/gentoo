@@ -4855,7 +4855,7 @@ dev-libs/libucl 0.7.3: Universal configuration library parser
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r1 1.1.6-r2 3.0.2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.6: Library for manipulating Unicode strings and C strings according to the Unicode standard
-dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20: Userspace access to USB devices
+dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 1.3.1 1.3.1_p2: mapping tool for UTF-8 strings
@@ -7085,7 +7085,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20 3.1.24: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
-dev-python/certifi 2015.11.20 2016.8.8 2016.8.31: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2015.11.20 2016.8.8 2016.8.31 2016.9.26: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.2 1.8.3: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -7793,7 +7793,7 @@ dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0 4.
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1 2.6.2: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
-dev-python/pudb 2013.3.6 2013.5.1 2014.1 2015.1 2015.2 2015.3 2016.1: A full-screen, console-based Python debugger
+dev-python/pudb 2013.3.6 2013.5.1 2014.1 2015.1 2015.2 2015.3 2016.1 2016.2: A full-screen, console-based Python debugger
 dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using Restructured Text
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to prettify and colorize XML
@@ -10582,8 +10582,8 @@ games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1: Reimplementation of the SCUMM game e
 games-engines/scummvm-tools 1.7.0-r1 1.8.0: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.3.0: A realtime strategy game engine
-games-engines/xzip 1.8.2-r2: X interface to Z-code based text games
-games-engines/zoom 1.1.5: A fast, clean, modern Z-code interpreter for X
+games-engines/xzip 1.8.2-r2 1.8.2-r3: X interface to Z-code based text games
+games-engines/zoom 1.1.5 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
 games-fps/aaquake2 0.1: text mode Quake II
 games-fps/aaut 1: ascii mode unreal tournament
 games-fps/alephone 20150620: An enhanced version of the game engine from the classic Mac game, Marathon
