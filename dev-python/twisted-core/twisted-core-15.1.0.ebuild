@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,10 @@ RDEPEND=">=dev-python/zope-interface-3.6.0[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}] )
 	gtk? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	serial? ( dev-python/pyserial[${PYTHON_USEDEP}] )"
-DEPEND="test? ( ${RDEPEND} )"
+DEPEND="
+	!dev-python/twisted
+	test? ( ${RDEPEND} )
+"
 
 PATCHES=(
 	# Give a load-sensitive test a better chance of succeeding.
