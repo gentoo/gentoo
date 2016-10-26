@@ -194,7 +194,7 @@ app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.10 2015.8.8 2015.8.10 2015.8.11 2015.8.12 2016.3.1 2016.3.2 2016.3.3 9999: Salt is a remote execution and configuration manager
 app-admin/setools 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
-app-admin/sshguard 1.5-r1 1.6.2 1.6.4 1.7.0: protects hosts from brute force attacks against ssh
+app-admin/sshguard 1.5-r1 1.7.0 1.7.1: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
 app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizable) privileges in a nosuid environment
 app-admin/sudo 1.8.15-r1 1.8.16 1.8.17_p1 1.8.18 1.8.18_p1 9999: Allows users or groups to run commands as other users
@@ -11401,7 +11401,6 @@ kde-apps/kde-meta 16.04.3 16.08.2: Merge this to pull in all KDE Plasma and Appl
 kde-apps/kde4-l10n 16.04.3 16.08.2: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 16.04.3 16.08.2: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 16.04.3 16.08.2: KDE administration tools - merge this to pull in all kdeadmin-derived packages
-kde-apps/kdeartwork-emoticons 15.08.3: EmotIcons (icons for things like smilies :-) for kde
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 16.04.3: Oxygen Plasma 4 desktop theme
 kde-apps/kdebase-kioslaves 16.04.3-r1: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
