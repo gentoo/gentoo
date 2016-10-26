@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="The Fast Lexical Analyzer"
-HOMEPAGE="http://flex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/flex/${P}.tar.xz"
+HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
+SRC_URI="https://github.com/westes/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="FLEX"
 SLOT="0"
@@ -23,9 +23,6 @@ DEPEND="${RDEPEND}
 	test? ( sys-devel/bison )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-out-of-tree-build.patch #567332
-	epatch "${FILESDIR}"/${P}-out-of-tree-test.patch #567332
-
 	# Disable running in the tests/ subdir as it has a bunch of built sources
 	# that cannot be made conditional (automake limitation). #568842
 	if ! use test ; then
@@ -76,6 +73,6 @@ multilib_src_install_all() {
 	einstalldocs
 	dodoc ONEWS
 	prune_libtool_files --all
-	rm "${ED}"/usr/share/doc/${PF}/{COPYING,flex.pdf} || die
+	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
 	dosym flex /usr/bin/lex
 }
