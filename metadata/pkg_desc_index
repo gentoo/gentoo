@@ -2314,7 +2314,7 @@ app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
 app-text/landslide 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
-app-text/languagetool 3.4: a proof-reading tool for many languages
+app-text/languagetool 3.4 3.5: a proof-reading tool for many languages
 app-text/lcdf-typetools 2.97 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
@@ -2570,7 +2570,7 @@ app-vim/indentpython 0.3: vim plugin: Indent Python code according to PEP8
 app-vim/info 1.7-r2: vim plugin: GNU info documentation browser
 app-vim/json 20150511: vim plugin: a better JSON for Vim
 app-vim/l9 1.1: vim plugin: library for vim scripts
-app-vim/languagetool 1.29: grammar checker for various languages
+app-vim/languagetool 1.29 1.30: grammar checker for various languages
 app-vim/lightline 9999: vim plugin: A light and configurable statusline/tabline
 app-vim/locateopen 1.3-r1: vim plugin: open a file without supplying a path
 app-vim/lustyexplorer 4.1 4.3: vim plugin: dynamic filesystem and buffer explorer
@@ -10122,7 +10122,7 @@ dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1: A graphical file and directories c
 dev-util/yacc 1.9.1-r4 1.9.1-r5 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
-dev-vcs/bfg 1.12.12 1.12.13: a faster alternative to git-filter-branch for removing bad data from git repos
+dev-vcs/bfg 1.12.12 1.12.13 1.12.14: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/bzr 2.4.2 2.5.1 2.5.1-r1 2.6.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-explorer 1.3.0 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
@@ -12564,7 +12564,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.25 10.27 10.28: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.25 10.27 10.28 10.31: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1: Fraunhofer AAC codec library
@@ -13399,7 +13399,7 @@ media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2 2.18.2-r2 2.19.46 2.19.47 2.19.48 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2 2.18.2-r2 2.19.46 2.19.47 2.19.48 2.19.49 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
