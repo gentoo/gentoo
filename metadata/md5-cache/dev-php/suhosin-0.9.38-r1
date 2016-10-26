@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=php_targets_php5-6? ( dev-lang/php:5.6[unicode] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 )
+DESCRIPTION=Suhosin is an advanced protection system for PHP installations
+EAPI=6
+HOMEPAGE=http://www.suhosin.org/
+IUSE=php_targets_php5-6
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=PHP-3.01
+RDEPEND=php_targets_php5-6? ( dev-lang/php:5.6[unicode] ) php_targets_php5-6? ( dev-lang/php:5.6 )
+REQUIRED_USE=|| ( php_targets_php5-6 )
+SLOT=0
+SRC_URI=http://download.suhosin.org/suhosin-0.9.38.tar.gz
+_eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	8b5fc87e3e35f5ff0c11b535ac7459fb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ea209b582bd316c0e01bb76bee8740ad
