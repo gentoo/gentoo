@@ -17294,7 +17294,7 @@ sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.28 4.0-r1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
-sys-fs/e2fsprogs 1.42.13 1.43.1 1.43.2 1.43.3: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.42.13 1.43.1 1.43.2 1.43.3-r1: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.3-r1 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
