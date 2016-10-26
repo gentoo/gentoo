@@ -10818,7 +10818,7 @@ games-puzzle/amoebax 0.2.1: a cute and addictive action-puzzle game, similar to 
 games-puzzle/anagramarama 0.2: Create as many words as you can before the time runs out
 games-puzzle/angrydd 1.0.1-r1: Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter
 games-puzzle/arrows 0.6: simple maze-like game where you navigate around and destroy arrows
-games-puzzle/atomix 3.18.0 3.18.0-r1 3.20.0: Build molecules, from simple inorganic to extremely complex organic ones
+games-puzzle/atomix 3.18.0 3.18.0-r1 3.20.0 3.22.0: Build molecules, from simple inorganic to extremely complex organic ones
 games-puzzle/bastet 0.43: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b: An ncurses-based mastermind clone
@@ -16239,7 +16239,7 @@ sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive model
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
-sci-mathematics/normaliz 2.12.2 3.1.1 3.1.2: Tool for computations in affine monoids and more
+sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
 sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2-r1 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r2 4.0.3: High-level interactive language for numerical computations
@@ -17950,7 +17950,7 @@ www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web b
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.18.7 3.20.3: GNOME webbrowser based on Webkit
+www-client/epiphany 3.20.3 3.22.1: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
