@@ -25,7 +25,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	dev-libs/boost
+	>=dev-libs/boost-1.56
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
