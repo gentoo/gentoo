@@ -30,10 +30,6 @@ src_prepare() {
 	# Changing Makefile.all.am to disable SSP
 	epatch "${FILESDIR}"/${PN}-3.7.0-fno-stack-protector.patch
 
-	# Don't build in empty assembly files for other platforms or we'll get a QA
-	# warning about executable stacks.
-	epatch "${FILESDIR}"/${PN}-3.12.0-non-exec-stack.patch
-
 	# Allow users to test their own patches
 	epatch_user
 
