@@ -35,6 +35,7 @@ RDEPEND="
 	>=dev-perl/MooseX-Params-Validate-0.180.0
 	>=dev-perl/namespace-autoclean-0.200.0
 	>=dev-perl/Role-Tiny-1.3.4
+	dev-perl/Statistics-Descriptive
 	dev-perl/Term-ANSIScreen
 	>=dev-perl/TermReadKey-2.320.0
 	dev-perl/TeX-Encode
