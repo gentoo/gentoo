@@ -437,6 +437,7 @@ kde-apps/kdeartwork-emoticons
 >=gnome-base/libgtop-2.35
 >=gnome-base/nautilus-3.21
 >=gnome-extra/evolution-data-server-3.21
+>=gnome-extra/evolution-ews-3.21
 >=gnome-extra/gnome-boxes-3.21
 >=gnome-extra/gnome-calculator-3.21
 >=gnome-extra/gnome-calendar-3.21

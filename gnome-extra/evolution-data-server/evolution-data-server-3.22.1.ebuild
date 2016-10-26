@@ -7,16 +7,16 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use flag-o-matic gnome2 python-any-r1 vala virtualx
+inherit db-use flag-o-matic gnome2 python-any-r1 systemd vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 # Note: explicitly "|| ( LGPL-2 LGPL-3 )", not "LGPL-2+".
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
-SLOT="0/57" # subslot = libcamel-1.2 soname version
+SLOT="0/59" # subslot = libcamel-1.2 soname version
 
-IUSE="api-doc-extras +berkdb +gnome-online-accounts +gtk google +introspection ipv6 ldap kerberos vala +weather"
+IUSE="api-doc-extras berkdb +gnome-online-accounts +gtk google +introspection ipv6 ldap kerberos vala +weather"
 REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris"
@@ -28,7 +28,7 @@ RDEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-crypt/libsecret-0.5[crypt]
 	>=dev-db/sqlite-3.7.17:=
-	>=dev-libs/glib-2.40:2
+	>=dev-libs/glib-2.46:2
 	>=dev-libs/libgdata-0.10:=
 	>=dev-libs/libical-0.43:=
 	>=dev-libs/libxml2-2
@@ -48,7 +48,7 @@ RDEPEND="
 	google? (
 		>=dev-libs/json-glib-1.0.4
 		>=dev-libs/libgdata-0.15.1:=
-		>=net-libs/webkit-gtk-2.4.9:3
+		>=net-libs/webkit-gtk-2.11.91:4
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
@@ -62,13 +62,11 @@ DEPEND="${RDEPEND}
 	dev-util/gperf
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.35.5
+	>=gnome-base/gnome-common-2
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
-
-# eautoreconf needs:
-#	>=gnome-base/gnome-common-2
 
 # Some tests fail due to missings locales.
 # Also, dbus tests are flacky, bugs #397975 #501834
@@ -107,6 +105,7 @@ src_configure() {
 		$(use_enable weather) \
 		--enable-largefile \
 		--enable-smime \
+		--with-systemduserunitdir="$(systemd_get_userunitdir)" \
 		--without-phonenumber \
 		--disable-examples \
 		--disable-uoa
@@ -125,13 +124,5 @@ src_install() {
 		insinto /etc/openldap/schema
 		doins "${FILESDIR}"/calentry.schema
 		dosym /usr/share/${PN}/evolutionperson.schema /etc/openldap/schema/evolutionperson.schema
-	fi
-}
-
-pkg_postinst() {
-	gnome2_pkg_postinst
-	if ! use berkdb; then
-		ewarn "You will need to enable berkdb USE for migrating old"
-		ewarn "(pre-3.12 evolution versions) addressbook data"
 	fi
 }
