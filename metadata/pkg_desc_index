@@ -1706,7 +1706,7 @@ app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
-app-misc/byobu 5.94 5.111 5.112: A set of profiles for the GNU Screen console window manager (app-misc/screen)
+app-misc/byobu 5.112: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20151214.3.21 20160104.3.23 20160104.3.27.1 20160104.3.27.1-r1: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
@@ -7789,7 +7789,7 @@ dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lin
 dev-python/protobuf-python 3.0.0_beta3_p1: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
-dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0 4.3.1: Retrieve information on running processes and system utilization
+dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0 4.3.1 4.4.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1 2.6.2: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
@@ -15383,7 +15383,7 @@ net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IE
 net-wireless/hostapd 2.5 2.6: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4 0.9.18-r6: IrDA management and handling utilities
-net-wireless/iw 3.17 4.0 4.3 4.7: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
+net-wireless/iw 3.17 4.0 4.3 4.7 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 2016.01.1 2016.07.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames

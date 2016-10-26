@@ -3,11 +3,11 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: show differences for recovered files
 EAPI=5
 HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3068 https://github.com/chrisbra/Recover.vim
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/recover-0.18.tar.bz2 https://dev.gentoo.org/~radhermit/vim/recover-0.18.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=1f0722092544f3a0ae648f2bcefa08ca
+_md5_=dc3364d80cea204e2d75a9fbda29aeae
