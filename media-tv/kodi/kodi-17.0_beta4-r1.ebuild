@@ -10,6 +10,9 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
 
+LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
+LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
+LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
 CODENAME="Krypton"
 case ${PV} in
 9999)
@@ -23,6 +26,9 @@ case ${PV} in
 	MY_PV=${MY_PV//_rc/rc}
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
+		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
+		https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
+		https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
 		!java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
 	KEYWORDS="~amd64 ~x86"
 
@@ -153,6 +159,9 @@ pkg_setup() {
 
 src_unpack() {
 	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
+	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
+	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
+	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
 }
 
 src_prepare() {
