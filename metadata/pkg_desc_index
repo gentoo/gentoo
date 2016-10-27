@@ -4435,7 +4435,7 @@ dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4 3.0.0: Free Pascal Compiler
-dev-lang/fsharp 4.0.1.13: The F# Compiler
+dev-lang/fsharp 4.0.1.15: The F# Compiler
 dev-lang/gdl 0.9.6-r1: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
