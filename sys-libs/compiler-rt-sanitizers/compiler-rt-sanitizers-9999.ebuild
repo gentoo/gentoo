@@ -16,7 +16,7 @@ SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
-LICENSE="UoI-NCSA"
+LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
 IUSE="test"

@@ -15,7 +15,16 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
 	https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend (disabled): ARM.
+# 3. MD5 code: public-domain.
+# 4. autoconf (not installed): some undefined M.I.T. license.
+# 5. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain"
 SLOT="0/3.4"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang +libffi"
