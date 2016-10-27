@@ -12722,7 +12722,7 @@ media-libs/liblscp 0.5.5 0.5.6 0.5.7: C++ library for the Linux Sampler control 
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.10.1 1.12.1-r1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.2.0 1.3.0 1.4.4 1.4.5: Extensible multimedia container format based on EBML
-media-libs/libmediaart 0.7.0 1.9.0: Manages, extracts and handles media art caches
+media-libs/libmediaart 0.7.0 1.9.0 1.9.0-r1: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.73 0.7.85 0.7.86 0.7.87 0.7.88 0.7.89: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.7 3.3.8 3.3.9 3.3.10: A library to play a wide range of module formats
