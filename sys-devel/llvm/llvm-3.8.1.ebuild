@@ -19,7 +19,19 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend: LLVM Software Grant by ARM.
+# 3. MD5 code: public-domain.
+# 4. autoconf (not used): some undefined M.I.T. license.
+# 5. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain
+	arm? ( LLVM-Grant )
+	arm64? ( LLVM-Grant )
+	multitarget? ( LLVM-Grant )"
 SLOT="0/3.8.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml

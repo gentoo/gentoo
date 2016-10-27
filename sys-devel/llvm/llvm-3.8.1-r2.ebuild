@@ -19,7 +19,17 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend: LLVM Software Grant by ARM.
+# 3. MD5 code: public-domain.
+# 4. autoconf (not used): some undefined M.I.T. license.
+# 5. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain
+	multitarget? ( LLVM-Grant )"
 SLOT="0/3.8.0"
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="clang debug default-compiler-rt default-libcxx doc gold libedit +libffi
