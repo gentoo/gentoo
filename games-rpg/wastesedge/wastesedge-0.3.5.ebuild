@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="nls"
 RESTRICT="userpriv"
 
 RDEPEND="${PYTHON_DEPS}
-	>=games-rpg/adonthell-0.3.5-r1[${PYTHON_USEDEP}]
+	=games-rpg/adonthell-0.3.5-r1[${PYTHON_USEDEP}]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
