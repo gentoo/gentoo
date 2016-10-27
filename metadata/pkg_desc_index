@@ -523,7 +523,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 1.4.20 1.4.21 2.0.28 2.0.29-r1 2.0.30 2.1.15: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 1.4.20 1.4.21 2.0.28 2.0.29-r1 2.0.30 2.1.15 2.1.15-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -12276,7 +12276,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/autotrace 0.31.1-r7: A program for converting bitmaps to vector graphics
 media-gfx/aview 1.3.0_rc1-r1 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.15.5: free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts
-media-gfx/blender 2.72b-r4 2.78: 3D Creation/Animation/Publishing System
+media-gfx/blender 2.72b-r4 2.78 2.78a: 3D Creation/Animation/Publishing System
 media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
