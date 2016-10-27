@@ -15,7 +15,11 @@ SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# - MIT-licensed Intel code,
+# - LLVM Software Grant from Intel.
+
+LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
 IUSE="hwloc ompt test"
