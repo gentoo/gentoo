@@ -9091,7 +9091,7 @@ dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hike 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
-dev-ruby/hipchat 1.5.3: Ruby library to interact with HipChat
+dev-ruby/hipchat 1.5.3 1.5.4: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3 1.2.4: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.rb
@@ -15130,7 +15130,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.21.1 2016.10.25 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.25 2016.10.26 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17574,7 +17574,7 @@ sys-process/procenv 0.45 0.46: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.10-r1 3.3.11-r3 3.3.12: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
-sys-process/psmisc 22.16 22.20 22.21-r2: A set of tools that use the proc filesystem
+sys-process/psmisc 22.21-r3: A set of tools that use the proc filesystem
 sys-process/rtirq 20150216: Modify realtime scheduling policy and priority of IRQ handlers
 sys-process/runit 2.1.1-r1 2.1.2: A UNIX init scheme with service supervision
 sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling policy
@@ -17965,9 +17965,9 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9: An excellent console-
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
-www-client/opera 12.16_p1860-r1 40.0.2308.90: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 40.0.2308.90 41.0.2353.46: A fast and secure web browser
 www-client/opera-beta 41.0.2353.23 41.0.2353.30: A fast and secure web browser
-www-client/opera-developer 41.0.2349.0 42.0.2372.0: A fast and secure web browser
+www-client/opera-developer 42.0.2372.0 42.0.2392.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
