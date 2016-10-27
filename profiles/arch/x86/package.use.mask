@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Jonathan Scruggs <j.scruggs@gmail.com> (27 Oct 2016)
+# Blender needs newer versions of CUDA which no longer support x86
+media-gfx/blender cuda
+
 # Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
 # Enable gambit and scm only on supported architectures
 >=dev-scheme/slib-3.2.5 -gambit -scm
