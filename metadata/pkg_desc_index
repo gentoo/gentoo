@@ -2537,7 +2537,7 @@ app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 6.1: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
-app-vim/easy-align 2.9.4 2.9.6 2.10.0: vim plugin: a simple alignment plugin
+app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r1 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
@@ -13938,7 +13938,7 @@ net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.10.2 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/metasploit 4.12.7 4.12.16 9999: Advanced framework for developing, testing, and using vulnerability exploit code
-net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker that allows quick/direct access to your status data
+net-analyzer/mk-livestatus 1.2.8_p10: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
