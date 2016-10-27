@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Oct 2016)
+# Breaks build of some packages. See tracker bug #598186
+=sys-devel/flex-2.6.2
+
 # Craig Andrews <candrews@integralblue.com> (25 Oct 2016)
 # >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
 # which is hard masked see #574788
