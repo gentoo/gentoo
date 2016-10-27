@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $id$
 
-EAPI="6"
+EAPI=6
+
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils python-r1
+inherit eutils python-r1 toolchain-funcs
 
 DESCRIPTION="Libs for the efficient manipulation of volumetric data"
 HOMEPAGE="http://www.openvdb.org"
@@ -43,9 +44,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P}/${PN}"
 
-PATCHES=( "${FILESDIR}"/${P}-numpy-fix.patch
-	  "${FILESDIR}"/${P}-makefile-fixes.patch
-	  "${FILESDIR}"/${P}-build-fixes.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy-fix.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+)
 
 python_module_compile() {
 	mypythonargs=(
@@ -54,15 +56,15 @@ python_module_compile() {
 		PYCONFIG_INCL_DIR="$(python_get_includedir)"
 		PYTHON_LIB_DIR="$(python_get_library_path)"
 		PYTHON_LIB="$(python_get_LIBS)"
-		PYTHON_INSTALL_INCL_DIR="${D}$(python_get_includedir)"
-		PYTHON_INSTALL_LIB_DIR="${D}$(python_get_sitedir)"
+		PYTHON_INSTALL_INCL_DIR="${D%/}$(python_get_includedir)"
+		PYTHON_INSTALL_LIB_DIR="${D%/}$(python_get_sitedir)"
 		NUMPY_INCL_DIR="$(python_get_sitedir)"/numpy/core/include/numpy
 		BOOST_PYTHON_LIB_DIR="${myprefixlibdir}"
 		BOOST_PYTHON_LIB=-lboost_python-${EPYTHON/python/}
 	)
 
 	einfo "Compiling module for ${EPYTHON}."
-	emake python "${myemakeargs[@]}" "${mypythonargs[@]}" EPYDOC=""
+	emake python "${myemakeargs[@]}" "${mypythonargs[@]}" EPYDOC="" CXX="$(tc-getCXX)"
 
 	# This is so the correct version of pdoc is used
 	mypyscriptdir=$(python_get_scriptdir)
@@ -84,7 +86,9 @@ src_install() {
 	# So individule targets can be called without duplication
 	# Common depends:
 	local myemakeargs=(
-		rpath=no shared=yes
+		rpath=no
+		shared=yes
+		libdir="$(get_libdir)"
 		LIBOPENVDB_RPATH=
 		DESTDIR="${D}"
 		HFS="${myprefix}"
@@ -154,5 +158,5 @@ src_install() {
 	fi
 
 	einfo "Compiling the main components."
-	emake install "${myemakeargs[@]}" "${mypythonargs[@]}"
+	emake install "${myemakeargs[@]}" "${mypythonargs[@]}" CXX="$(tc-getCXX)"
 }
