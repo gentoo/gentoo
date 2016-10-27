@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/CDrummond/cantata"
 SRC_URI="https://github.com/CDrummond/cantata/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="4"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdda cddb http-server kde mtp musicbrainz qt5 replaygain taglib udisks"
 REQUIRED_USE="
