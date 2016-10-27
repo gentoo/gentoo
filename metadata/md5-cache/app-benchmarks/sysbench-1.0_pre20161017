@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare test
+DEPEND=aio? ( dev-libs/libaio ) lua? ( dev-lang/lua:= ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) sys-devel/libtool:= dev-libs/libxslt test? ( dev-util/cram )
+DESCRIPTION=System performance benchmark
+EAPI=6
+HOMEPAGE=https://github.com/akopytov/sysbench
+IUSE=aio lua mysql postgres test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=aio? ( dev-libs/libaio ) lua? ( dev-lang/lua:= ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= )
+REQUIRED_USE=mysql? ( lua ) postgres? ( lua )
+SLOT=0
+SRC_URI=https://github.com/akopytov/sysbench/archive/48124f838b00ff83a044fbf046a9d8d0b1602d90.tar.gz -> sysbench-48124f838b00ff83a044fbf046a9d8d0b1602d90.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:-
+_md5_=6f86020b1db2154f71a2d8278512f081
