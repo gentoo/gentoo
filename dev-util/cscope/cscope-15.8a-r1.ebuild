@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit autotools elisp-common eutils toolchain-funcs
+inherit autotools elisp-common toolchain-funcs
 
 DESCRIPTION="Interactively examine a C program"
 HOMEPAGE="http://cscope.sourceforge.net/"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="emacs"
 
-RDEPEND=">=sys-libs/ncurses-5.2
+RDEPEND=">=sys-libs/ncurses-5.2:0
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
 	sys-devel/flex
@@ -25,7 +25,9 @@ DEPEND="${RDEPEND}
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-15.7a-ocs-sysdir.patch" #269305
+	eapply "${FILESDIR}/${PN}-15.7a-ocs-sysdir.patch" #269305
+	eapply_user
+	mv configure.{in,ac} || die
 	eautoreconf		  # prevent maintainer mode later on
 }
 
