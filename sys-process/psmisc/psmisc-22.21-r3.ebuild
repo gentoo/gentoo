@@ -1,21 +1,21 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils
 
 DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/psmisc/${P}.tar.gz -> ${P}-r1.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux"
 IUSE="ipv6 nls selinux X"
 
-RDEPEND=">=sys-libs/ncurses-5.7-r7
+RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
 	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
@@ -24,8 +24,13 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fuser_typo_fix.patch"
+	"${FILESDIR}/${P}-sysmacros.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-22.16-fuser-pic.patch #394443
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {
@@ -50,7 +55,7 @@ src_install() {
 	[[ -s ${ED}/usr/bin/peekfd ]] || rm -f "${ED}"/usr/bin/peekfd
 	[[ -e ${ED}/usr/bin/peekfd ]] || rm -f "${ED}"/usr/share/man/man1/peekfd.1
 
-	# fuser is needed by init.d scripts
+	# fuser is needed by init.d scripts; use * wildcard for #458250
 	dodir /bin
-	mv "${ED}"/usr/bin/fuser "${ED}"/bin || die
+	mv "${ED}"/usr/bin/*fuser "${ED}"/bin || die
 }
