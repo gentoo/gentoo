@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Layer Four Traceroute (LFT) and WhoB"
 HOMEPAGE="http://pwhois.org/lft/"
-SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
+SRC_URI="http://pwhois.org/get/${P}.tar.gz"
 
 LICENSE="VOSTROM"
 SLOT="0"
@@ -22,5 +22,6 @@ RDEPEND="
 DOCS=( CHANGELOG README TODO )
 
 src_prepare() {
+	default
 	sed -i Makefile.in -e 's:strip:true:g' || die
 }
