@@ -365,6 +365,10 @@ bitcoincore_prepare() {
 			;;
 		esac
 	done
+
+	echo '#!/bin/true' >share/genbuild.sh
+	mkdir -p src/obj
+	echo "#define BUILD_SUFFIX gentoo${PVR#${PV}}" >src/obj/build.h
 }
 
 bitcoincore_autoreconf() {
