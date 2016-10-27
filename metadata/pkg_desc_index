@@ -18008,7 +18008,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.637 11.2.202.643 23.0.0.185 23.0.0.205: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.643 23.0.0.205: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.71 55.0.2883.21_beta 56.0.2897.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
