@@ -1,6 +1,6 @@
 diff -purN a/doxygen-config b/doxygen-config
 --- a/doxygen-config	2016-08-10 16:59:33.000000000 +0100
-+++ b/doxygen-config	2016-10-12 12:19:06.124785164 +0100
++++ b/doxygen-config	2016-10-27 13:02:28.900869989 +0100
 @@ -2257,7 +2257,7 @@ DIRECTORY_GRAPH        = YES
  # The default value is: png.
  # This tag requires that the tag HAVE_DOT is set to YES.
@@ -12,7 +12,35 @@ diff -purN a/doxygen-config b/doxygen-config
  # enable generation of interactive SVG images that allow zooming and panning.
 diff -purN a/Makefile b/Makefile
 --- a/Makefile	2016-08-10 16:59:33.000000000 +0100
-+++ b/Makefile	2016-10-12 12:18:32.434773635 +0100
++++ b/Makefile	2016-10-27 13:04:55.163018422 +0100
+@@ -242,12 +242,12 @@ ifneq (,$(and $(PYTHON_VERSION),$(PYTHON
+     has_python := yes
+ endif
+ 
+-INCLDIRS := -I . -I .. -isystem $(BOOST_INCL_DIR) -isystem $(ILMBASE_INCL_DIR) -isystem $(TBB_INCL_DIR)
++INCLDIRS := -I . -I .. -I$(BOOST_INCL_DIR) -I$(ILMBASE_INCL_DIR) -I$(TBB_INCL_DIR)
+ ifeq (yes,$(has_blosc))
+-    INCLDIRS += -isystem $(BLOSC_INCL_DIR)
++    INCLDIRS += -I$(BLOSC_INCL_DIR)
+ endif
+ ifeq (yes,$(has_log4cplus))
+-    INCLDIRS += -isystem $(LOG4CPLUS_INCL_DIR)
++    INCLDIRS += -I$(LOG4CPLUS_INCL_DIR)
+ endif
+ 
+ CXXFLAGS += -std=c++0x
+@@ -565,9 +565,9 @@ PYTHON_SRC_NAMES := \
+     python/pyTransform.cc \
+     python/pyVec3Grid.cc \
+ #
+-PYCXXFLAGS := -fPIC -isystem python -isystem $(PYTHON_INCL_DIR) -isystem $(PYCONFIG_INCL_DIR)
++PYCXXFLAGS := -fPIC -Ipython -I$(PYTHON_INCL_DIR) -I$(PYCONFIG_INCL_DIR)
+ ifneq (,$(strip $(NUMPY_INCL_DIR)))
+-PYCXXFLAGS += -isystem $(NUMPY_INCL_DIR) -DPY_OPENVDB_USE_NUMPY
++PYCXXFLAGS += -I$(NUMPY_INCL_DIR) -DPY_OPENVDB_USE_NUMPY
+ endif
+ ifneq (no,$(strip $(PYTHON_WRAP_ALL_GRID_TYPES)))
+ PYCXXFLAGS += -DPY_OPENVDB_WRAP_ALL_GRID_TYPES
 @@ -678,7 +678,7 @@ ALL_PRODUCTS := \
  	@echo "Building $@ because of $(call list_deps)"
  	$(CXX) -c $(CXXFLAGS) -fPIC -o $@ $<
@@ -22,6 +50,24 @@ diff -purN a/Makefile b/Makefile
  
  $(OBJ_NAMES): %.o: %.cc
  	@echo "Building $@ because of $(call list_deps)"
+@@ -741,7 +741,7 @@ vdb_print: $(LIBOPENVDB) cmd/openvdb_pri
+ vdb_render: $(LIBOPENVDB) cmd/openvdb_render/main.cc
+ 	@echo "Building $@ because of $(list_deps)"
+ 	$(CXX) $(CXXFLAGS) -o $@ cmd/openvdb_render/main.cc -I . \
+-	    -isystem $(EXR_INCL_DIR) -isystem $(ILMBASE_INCL_DIR) \
++	    -I$(EXR_INCL_DIR) -I$(ILMBASE_INCL_DIR) \
+ 	    -Wl,-rpath,$(EXR_LIB_DIR) -L$(EXR_LIB_DIR) $(EXR_LIB) \
+ 	    -Wl,-rpath,$(ILMBASE_LIB_DIR) -L$(ILMBASE_LIB_DIR) $(ILMBASE_LIB) \
+ 	    $(LIBOPENVDB_RPATH) -L$(CURDIR) $(LIBOPENVDB) \
+@@ -761,7 +761,7 @@ $(LIBVIEWER_INCLUDE_NAMES): openvdb_view
+ $(LIBVIEWER_OBJ_NAMES): $(LIBVIEWER_INCLUDE_NAMES)
+ $(LIBVIEWER_OBJ_NAMES): %.o: %.cc
+ 	@echo "Building $@ because of $(list_deps)"
+-	$(CXX) -c $(CXXFLAGS) -I . -isystem $(GLFW_INCL_DIR) -DGL_GLEXT_PROTOTYPES=1 -fPIC -o $@ $<
++	$(CXX) -c $(CXXFLAGS) -I . -I$(GLFW_INCL_DIR) -DGL_GLEXT_PROTOTYPES=1 -fPIC -o $@ $<
+ 
+ vdb_view: $(LIBOPENVDB) $(LIBVIEWER_OBJ_NAMES) cmd/openvdb_view/main.cc
+ 	@echo "Building $@ because of $(list_deps)"
 @@ -794,7 +794,7 @@ pydoc: $(PYTHON_MODULE) $(LIBOPENVDB_SON
  	echo "Created $${pydocdir}"; \
  	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$(CURDIR); \
@@ -31,3 +77,21 @@ diff -purN a/Makefile b/Makefile
  else
  pydoc:
  	@echo "$@"': $$EPYDOC is undefined'
+@@ -815,7 +815,7 @@ endif
+ 
+ $(UNITTEST_OBJ_NAMES): %.o: %.cc
+ 	@echo "Building $@ because of $(list_deps)"
+-	$(CXX) -c $(CXXFLAGS) -isystem $(CPPUNIT_INCL_DIR) -fPIC -o $@ $<
++	$(CXX) -c $(CXXFLAGS) -I$(CPPUNIT_INCL_DIR) -fPIC -o $@ $<
+ 
+ ifneq (,$(strip $(CPPUNIT_INCL_DIR)))
+ vdb_test: $(LIBOPENVDB) $(UNITTEST_OBJ_NAMES)
+@@ -924,7 +924,7 @@ $(DEPEND): $(ALL_INCLUDE_FILES) $(ALL_SR
+ 	    for f in $(UNITTEST_SRC_NAMES); \
+ 	        do $(CXX) $(CXXFLAGS) -O0 \
+ 	            -MM $$f -MT `echo $$f | sed 's%\.[^.]*%.o%'` \
+-	            -isystem $(CPPUNIT_INCL_DIR) >> $(DEPEND); \
++	            -I$(CPPUNIT_INCL_DIR) >> $(DEPEND); \
+ 	    done; \
+ 	fi
+ 
