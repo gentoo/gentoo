@@ -2184,7 +2184,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.0 2.1 2.2 2.3: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.3: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
@@ -10995,7 +10995,7 @@ games-rpg/twclone 0.14 0.14-r1: Clone of BBS Door game Trade Wars 2002
 games-rpg/valyriatear 1.0.0: A free 2D J-RPG based on the Hero of Allacrost engine
 games-rpg/vendetta-online-bin 1.8.296 1.8.296-r1: Space-based MMORPG
 games-rpg/wasteland2 1.9.0.13: Direct sequel to 1988's Wasteland, the first-ever post-apocalyptic computer RPG and the inspiration behind the Fallout series
-games-rpg/wastesedge 0.3.5: role playing game to showcase the adonthell engine
+games-rpg/wastesedge 0.3.5 0.3.5-r1: role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0: A free 2D Zelda fangame parody
@@ -17440,7 +17440,7 @@ sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries fo
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.10.1 2.10.1-r1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.10.1-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7 0.7.8: POSIX 1003.1e capabilities
