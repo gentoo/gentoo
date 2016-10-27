@@ -1,12 +1,12 @@
 DEFINED_PHASES=prepare
 DEPEND=net-libs/libpcap
 DESCRIPTION=Layer Four Traceroute (LFT) and WhoB
-EAPI=5
+EAPI=6
 HOMEPAGE=http://pwhois.org/lft/
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=VOSTROM
 RDEPEND=net-libs/libpcap
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~jer/lft-3.75.tar.gz
+SRC_URI=http://pwhois.org/get/lft-3.77.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=ffa75f25065ad1136b4b73320c9d9dc9
+_md5_=c3fe47eae618111330048c4fbf33d10d

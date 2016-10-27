@@ -13928,7 +13928,7 @@ net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
-net-analyzer/lft 3.73 3.75 3.76: Layer Four Traceroute (LFT) and WhoB
+net-analyzer/lft 3.73 3.76 3.77: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 9.3-r1 9999: Check websites for broken links
