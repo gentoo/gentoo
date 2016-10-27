@@ -14,7 +14,7 @@ SRC_URI="https://github.com/akopytov/sysbench/archive/${GITHUB_REV}.tar.gz -> ${
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="aio lua mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
