@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=dev-libs/libxml2:2 dev-libs/libpcre:3 net-misc/curl app-admin/logrotate !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=RSS downloader for Tranmission
+EAPI=6
+HOMEPAGE=https://github.com/1100101/Automatic
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2:2 dev-libs/libpcre:3 net-misc/curl
+SLOT=0
+SRC_URI=https://github.com/1100101/Automatic/archive/v0.8.3.tar.gz -> automatic-0.8.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=1a079240084f557cc865aece40e34d6c
