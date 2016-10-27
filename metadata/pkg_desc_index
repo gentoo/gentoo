@@ -14655,7 +14655,7 @@ net-mail/getmail 4.48.0 4.49.0 4.50.0 4.51.0 4.52.0: A POP3 mail retriever with 
 net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
-net-mail/imapsync 1.592-r1 1.607-r1 1.644: A tool allowing incremental and recursive imap transfer from one mailbox to another
+net-mail/imapsync 1.592-r1 1.607-r1 1.644 1.684: A tool allowing incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.39 0.39-r1 0.41: Little Brother database
@@ -14685,7 +14685,7 @@ net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Ma
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22.2 0.22.2-r1 0.23.1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6 7.0.7: Powerful IMAP/Maildir synchronization and reader support
+net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6 7.0.7 7.0.8: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
@@ -16099,7 +16099,7 @@ sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.1.3 2.1.3.1 2.3.3 2.3.3-r1 2.3.4: Math Graphics Library
-sci-libs/matio 1.5.1 1.5.2 1.5.7 1.5.8: Library for reading and writing matlab files
+sci-libs/matio 1.5.1 1.5.2 1.5.7 1.5.8 1.5.9: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3 5.1.0-r2: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
