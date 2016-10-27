@@ -14651,7 +14651,7 @@ net-mail/fastforward 0.51-r1: handle qmail forwarding according to a cdb databas
 net-mail/fdm 1.7 1.8 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2: the legendary remote-mail retrieval and forwarding utility
 net-mail/gensig 2.3: Random ~/.signature generator
-net-mail/getmail 4.48.0 4.49.0 4.50.0 4.51.0: A POP3 mail retriever with reliable Maildir and mbox delivery
+net-mail/getmail 4.48.0 4.49.0 4.50.0 4.51.0 4.52.0: A POP3 mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
