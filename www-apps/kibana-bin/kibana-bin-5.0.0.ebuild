@@ -7,7 +7,7 @@ EAPI=6
 inherit pax-utils user
 
 MY_PN="kibana"
-MY_P=${MY_PN}-${PV/_/-}
+MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Explore and visualize data"
 HOMEPAGE="https://www.elastic.co/products/kibana"
@@ -16,7 +16,7 @@ SRC_URI="amd64? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/kibana/node/bin/node"
@@ -58,7 +58,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "This version of Kibana is compatible with Elasticsearch 2.4+"
+	elog "This version of Kibana is compatible with Elasticsearch 5.0+"
 	elog
 	elog "Be sure to point ES_INSTANCE to your Elasticsearch instance"
 	elog "in /etc/conf.d/${MY_PN}."
