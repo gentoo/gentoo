@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 >=media-gfx/exiv2-0.25:= opencv? ( media-libs/opencv:=[-qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) zip? ( >=dev-libs/quazip-0.7.2[qt5] ) dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Qt-based image viewer
+EAPI=6
+HOMEPAGE=http://www.nomacs.org/
+IUSE=+jpeg opencv raw tiff zip
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=GPL-3+
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 >=media-gfx/exiv2-0.25:= opencv? ( media-libs/opencv:=[-qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) zip? ( >=dev-libs/quazip-0.7.2[qt5] )
+REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
+SLOT=0
+SRC_URI=https://github.com/nomacs/nomacs/archive/3.4.tar.gz -> nomacs-3.4.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=5a70cdd2f4feddbb0e70752d9a1d75a4

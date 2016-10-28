@@ -2922,7 +2922,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.52 10.0.27 10.1.17 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.52 10.0.27 10.0.28 10.1.17 10.2.1_alpha: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.26 10.0.27: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -12412,7 +12412,7 @@ media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.0.0-r1 1.1.0 1.1.0-r1 1.1.0-r2 1.2.0: fast and easy graphics application for digital painters
 media-gfx/nip2 7.26.4 7.38.1: VIPS Image Processing Graphical User Interface
-media-gfx/nomacs 2.4.6 3.0.0 3.2.0 3.4: Qt-based image viewer
+media-gfx/nomacs 2.4.6 3.0.0 3.2.0 3.4 3.4-r1: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r2: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
