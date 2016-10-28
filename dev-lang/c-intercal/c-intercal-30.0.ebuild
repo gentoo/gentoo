@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit elisp-common
+inherit autotools elisp-common
 
 # C-INTERCAL uses minor-major ordering of version components and
 # negative version numbers. We map version components -1, -2, ...
@@ -38,6 +38,12 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 SITEFILE="50${PN}-gentoo.el"
+
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-version.patch
+	eapply_user
+	eautoreconf
+}
 
 src_compile() {
 	emake
