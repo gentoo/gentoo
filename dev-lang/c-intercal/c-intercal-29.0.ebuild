@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,10 +25,10 @@ get_intercal_version() {
 MY_PN="${PN#c-}"
 MY_PV="$(get_intercal_version)"
 DESCRIPTION="C-INTERCAL - INTERCAL to binary (via C) compiler"
-HOMEPAGE="http://c.intercal.org.uk"
+HOMEPAGE="http://c.intercal.org.uk/"
 SRC_URI="http://overload.intercal.org.uk/c/${MY_PN}-${MY_PV}.pax.gz"
 
-LICENSE="GPL-2 FDL-1.2"
+LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
