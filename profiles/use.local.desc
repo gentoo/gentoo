@@ -5503,6 +5503,8 @@ net-im/telepathy-connection-managers:yahoo - Enable Yahoo! messaging support.
 net-im/telepathy-connection-managers:zeroconf - Enable Link-Local Messaging via the zeroconf or Bonjour protocol.
 net-im/telepathy-mission-control:systemd - Rely on systemd's logind to detect suspend and resume
 net-im/tkabber:plugins - Enables installation the extra plugins
+net-im/toxic:av - Enables audio calling and/or audio notifications
+net-im/toxic:notifications - Enables desktop notifications with libnotify
 net-im/vacuum:adiummessagestyle - Use UI styles created for Adium
 net-im/vacuum:annotations - Enable adding comments to the contacts in the roster
 net-im/vacuum:aspell - Select app-text/aspell spell checker backend
