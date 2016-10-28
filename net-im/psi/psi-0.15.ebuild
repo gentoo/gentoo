@@ -42,9 +42,9 @@ PDEPEND="
 	crypt? ( app-crypt/qca:2[gpg] )
 	jingle? (
 		net-im/psimedia
-		app-crypt/qca:2[openssl]
+		app-crypt/qca:2[ssl]
 	)
-	ssl? ( app-crypt/qca:2[openssl] )
+	ssl? ( app-crypt/qca:2[ssl] )
 "
 
 DOC_CONTENTS='Psi+ support(USE="extras") was removed from ebuild since 0.15'

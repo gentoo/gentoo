@@ -35,7 +35,7 @@ DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
-	>=app-crypt/qca-2.1.0:2[qt5,openssl]
+	>=app-crypt/qca-2.1.0:2[qt5,ssl]
 	x11-libs/libfakekey
 	x11-libs/libX11
 	x11-libs/libXtst

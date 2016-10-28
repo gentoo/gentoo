@@ -53,7 +53,7 @@ DEPEND="${CDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 RDEPEND="${CDEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 "
 
 DOCS=( AUTHORS ChangeLog README.md )

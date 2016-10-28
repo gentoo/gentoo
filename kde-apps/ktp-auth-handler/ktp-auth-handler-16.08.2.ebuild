@@ -35,6 +35,6 @@ DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kdewebkit)
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 	!kde-apps/ktp-auth-handler:4
 "

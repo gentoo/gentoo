@@ -34,7 +34,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_kdebase_dep plasma-workspace)
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 "
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
