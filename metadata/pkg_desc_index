@@ -9946,7 +9946,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.22 2.23 2.26 2.27: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.22 2.23 2.26 2.27: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.6: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3 5.0.1 5.0.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -17417,7 +17417,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 3.18.43_p46 4.1.31_p35 4.1.33_p37 4.1.34_p39 4.4.19_p27 4.4.21_p30 4.4.25_p35 4.6.7_p11 4.6.7_p14 4.8.2_p2: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.83 3.4.112 3.10.104 3.12.66 3.16.38 3.18.44 4.1.35 4.4.27 4.7.10 4.8.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.83 3.4.113 3.10.104 3.12.66 3.16.38 3.18.44 4.1.35 4.4.28 4.7.10 4.8.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
