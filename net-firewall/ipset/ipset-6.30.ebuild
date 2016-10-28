@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 MODULES_OPTIONAL_USE=modules
 inherit linux-info linux-mod
 
@@ -40,7 +40,6 @@ pkg_setup() {
 
 	build_modules=0
 	if use modules; then
-		kernel_is -lt 2 6 35 && die "${PN} requires kernel greater then 2.6.35."
 		if linux_config_src_exists && linux_chkconfig_builtin "MODULES" ; then
 			if linux_chkconfig_present "IP_NF_SET" || \
 				linux_chkconfig_present "IP_SET"; then #274577
