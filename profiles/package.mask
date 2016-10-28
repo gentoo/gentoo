@@ -587,11 +587,6 @@ sci-mathematics/agda-executable
 >=sys-libs/tevent-0.9.30
 >=net-fs/samba-4.5.0-r1
 
-# Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
-# Python 3.3 will be removed from Gentoo in 30 days.
-# dev-lang/python:3.3 will be available in the python overlay.
-dev-lang/python:3.3
-
 # Ian Stakenvicius <axs@gentoo.org> (31 Aug 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
