@@ -316,7 +316,6 @@ app-crypt/qca:gcrypt - Enable gcrypt plugin
 app-crypt/qca:gpg - Enable GnuPG plugin
 app-crypt/qca:logger - Enable logger plugin
 app-crypt/qca:nss - Enable NSS plugin
-app-crypt/qca:openssl - Enable OpenSSL plugin
 app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
 app-crypt/qca:sasl - Enable SASL plugin
 app-crypt/qca:softstore - Enable softstore plugin
