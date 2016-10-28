@@ -7,19 +7,18 @@ EAPI=5
 inherit eutils systemd user
 
 MY_PN="${PN%-bin}"
-MY_PV="${PV/_/-}"
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
-SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
+SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 RESTRICT="strip"
 
 RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 pkg_preinst() {
 	if has_version '<app-misc/elasticsearch-2.3.2'; then
