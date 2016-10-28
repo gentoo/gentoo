@@ -4350,7 +4350,7 @@ dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
 dev-java/swingx-beaninfo 1.6.4: SwingX Beaninfo
 dev-java/swingx-ws 1.0_p20110515-r1: Utilities and widgets to integrate Swing GUIs with web applications
-dev-java/swt 3.5.2 3.7.1 3.7.2 3.7.2-r1 3.8.2 3.8.2-r1 4.2 4.2-r1 4.2-r2: GTK based SWT Library
+dev-java/swt 3.5.2 3.7.2-r1 3.8.2-r1 4.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
