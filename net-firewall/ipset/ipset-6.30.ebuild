@@ -4,7 +4,7 @@
 
 EAPI="6"
 MODULES_OPTIONAL_USE=modules
-inherit autotools linux-info linux-mod
+inherit linux-info linux-mod
 
 DESCRIPTION="IPset tool for iptables, successor to ippool"
 HOMEPAGE="http://ipset.netfilter.org/"
