@@ -1010,7 +1010,7 @@ app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.5.5 1.5.6 1.5.7 1.6.0: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.5.5 1.5.6 1.5.7 1.6.0 1.6.2: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3 3.20.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0 3.20.0: Official plugins for gedit
