@@ -13,7 +13,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 
 SLOT="$(get_version_component_range 1-2)"
 
-SRC_URI="mirror://postgresql/source/v${PV}/postgresql-${PV}.tar.bz2"
+MY_PV=${PV/_/}
+S="${WORKDIR}/${PN}-${MY_PV}"
+
+SRC_URI="mirror://postgresql/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
@@ -117,7 +120,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || epatch "${FILESDIR}/${PN}-9.5.5-no-server.patch"
+	use server || epatch "${FILESDIR}/${PN}-${SLOT}.1-no-server.patch"
 
 	# Fix bug 486556 where the server would crash at start up because of
 	# an infinite loop caused by a self-referencing symlink.
@@ -163,7 +166,6 @@ src_configure() {
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
-		$(use_enable !alpha spinlocks) \
 		$(use_enable !pg_legacytimestamp integer-datetimes) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
@@ -247,11 +249,6 @@ src_install() {
 
 pkg_postinst() {
 	postgresql-config update
-
-	if use alpha && use server ; then
-		ewarn "PostgreSQL 9.5+ no longer has native spinlock support on Alpha platforms."
-		ewarn "As a result, performance will be extremely degraded."
-	fi
 
 	elog "If you need a global psqlrc-file, you can place it in:"
 	elog "    ${EROOT%/}/etc/postgresql-${SLOT}/"
