@@ -4,11 +4,11 @@ DESCRIPTION=My TraceRoute, an Excellent network diagnostic tool
 EAPI=6
 HOMEPAGE=http://www.bitwizard.nl/mtr/
 IUSE=gtk ipv6 +filecaps
-KEYWORDS=alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=ftp://ftp.bitwizard.nl/mtr/mtr-0.87.tar.gz
 _eclass_exported_funcs=pkg_postinst:fcaps src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e66860bca21506273eb9548851dbd334
+_md5_=3cf46c66d96b345400fcb1e77831b920
