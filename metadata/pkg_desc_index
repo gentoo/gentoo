@@ -10581,7 +10581,7 @@ games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
 games-engines/residualvm 0.2.1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.7.0-r1 1.8.0: utilities for the SCUMM game engine
-games-engines/solarus 1.3.1: An open-source Zelda-like 2D game engine
+games-engines/solarus 1.3.1 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.3.0: A realtime strategy game engine
 games-engines/xzip 1.8.2-r2 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
@@ -10998,7 +10998,7 @@ games-rpg/wasteland2 1.9.0.13: Direct sequel to 1988's Wasteland, the first-ever
 games-rpg/wastesedge 0.3.5 0.3.5-r1: role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0: A free 2D Zelda fangame
-games-rpg/zsxd 1.9.0: A free 2D Zelda fangame parody
+games-rpg/zsxd 1.9.0 1.9.0-r1: A free 2D Zelda fangame parody
 games-server/bf1942-lnxded 1.61 1.61-r1: dedicated server for Battlefield 1942
 games-server/crossfire-server 1.70.0 1.71.0: server for the crossfire clients
 games-server/cyphesis 0.6.2 0.6.2-r1: WorldForge server running small games
@@ -17986,7 +17986,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.3.551.30_p1 1.4.589.29_p1 1.5.633.16_p1 1.5.638.3_p1 1.5.644.7_p1: A new browser for our friends
+www-client/vivaldi 1.4.589.29_p1 1.5.644.7_p1 1.5.648.6_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
