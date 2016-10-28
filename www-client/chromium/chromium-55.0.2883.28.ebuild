@@ -166,8 +166,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-54-ffmpeg2compat.patch"
-	"${FILESDIR}/${PN}-gn-r7.patch"
-	"${FILESDIR}/${PN}-system-zlib-r1.patch"
 	"${FILESDIR}/${PN}-gn-bootstrap-ld.patch"
 )
 
