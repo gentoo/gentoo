@@ -4416,7 +4416,7 @@ dev-lang/bas 2.4: An interpreter for the classic dialect of the programming lang
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
 dev-lang/bff 1.0.3.1: a brainfuck interpreter
 dev-lang/blassic 0.10.2 0.10.3: classic Basic interpreter
-dev-lang/c-intercal 29.0: C-INTERCAL - INTERCAL to binary (via C) compiler
+dev-lang/c-intercal 29.0 30.0: C-INTERCAL - INTERCAL to binary (via C) compiler
 dev-lang/cfortran 4.4-r2 4.4-r3: Header file allowing to call Fortran routines from C and C++
 dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming based on ANSI C
 dev-lang/cll1h 0.6-r1: C<<1 programming language system

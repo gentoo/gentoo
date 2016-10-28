@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=emacs? ( virtual/emacs ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C-INTERCAL - INTERCAL to binary (via C) compiler
+EAPI=6
+HOMEPAGE=http://www.catb.org/~esr/intercal/
+IUSE=emacs examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ FDL-1.2+
+RDEPEND=emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=http://www.catb.org/~esr/intercal/intercal-0.30.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ee305127b8ae7b5fc2bc835546268732
