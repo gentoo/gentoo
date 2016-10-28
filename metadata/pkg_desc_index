@@ -1291,7 +1291,7 @@ app-emulation/docker 1.11.0 1.12.0 1.12.1 1.12.2 9999: The core functions you ne
 app-emulation/docker-compose 1.8.0_rc2 1.8.0 1.8.1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
-app-emulation/docker-registry 2.5.0: Docker Registry 2.0
+app-emulation/docker-registry 2.5.0 2.5.1: Docker Registry 2.0
 app-emulation/docker-swarm 1.1.3 1.2.0: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20091009 1.4.1_pre20130107-r3: DOS Emulator
