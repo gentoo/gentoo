@@ -1,0 +1,130 @@
+diff -Naruw a/contrib/Makefile b/contrib/Makefile
+--- a/contrib/Makefile	2016-10-24 16:08:51.000000000 -0400
++++ b/contrib/Makefile	2016-10-28 11:41:00.450589656 -0400
+@@ -5,58 +5,9 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-		adminpack	\
+-		auth_delay	\
+-		auto_explain	\
+-		bloom		\
+-		btree_gin	\
+-		btree_gist	\
+-		chkpass		\
+-		citext		\
+-		cube		\
+-		dblink		\
+-		dict_int	\
+-		dict_xsyn	\
+-		earthdistance	\
+-		file_fdw	\
+-		fuzzystrmatch	\
+-		hstore		\
+-		intagg		\
+-		intarray	\
+-		isn		\
+-		lo		\
+-		ltree		\
+ 		oid2name	\
+-		pageinspect	\
+-		passwordcheck	\
+-		pg_buffercache	\
+-		pg_freespacemap \
+-		pg_prewarm	\
+-		pg_standby	\
+-		pg_stat_statements \
+-		pg_trgm		\
+-		pgcrypto	\
+-		pgrowlocks	\
+-		pgstattuple	\
+-		pg_visibility	\
+-		postgres_fdw	\
+-		seg		\
+-		spi		\
+-		tablefunc	\
+-		tcn		\
+-		test_decoding	\
+-		tsm_system_rows \
+-		tsm_system_time \
+-		tsearch2	\
+-		unaccent	\
+ 		vacuumlo
+ 
+-ifeq ($(with_openssl),yes)
+-SUBDIRS += sslinfo
+-else
+-ALWAYS_SUBDIRS += sslinfo
+-endif
+-
+ ifneq ($(with_uuid),no)
+ SUBDIRS += uuid-ossp
+ else
+diff -Naruw a/src/backend/Makefile b/src/backend/Makefile
+--- a/src/backend/Makefile	2016-10-24 16:08:51.000000000 -0400
++++ b/src/backend/Makefile	2016-10-28 11:48:58.571353118 -0400
+@@ -51,7 +51,7 @@
+ 
+ ##########################################################################
+ 
+-all: submake-libpgport submake-schemapg postgres $(POSTGRES_IMP)
++all: someheaders
+ 
+ ifneq ($(PORTNAME), cygwin)
+ ifneq ($(PORTNAME), win32)
+@@ -110,7 +110,7 @@
+ endif # aix
+ 
+ # Update the commonly used headers before building the subdirectories
+-$(SUBDIRS:%=%-recursive): | generated-headers
++someheaders $(SUBDIRS:%=%-recursive): | generated-headers
+ 
+ # src/port needs a convenient way to force just errcodes.h to get built
+ submake-errcodes: $(top_builddir)/src/include/utils/errcodes.h
+diff -Naruw a/src/bin/Makefile b/src/bin/Makefile
+--- a/src/bin/Makefile	2016-10-24 16:08:51.000000000 -0400
++++ b/src/bin/Makefile	2016-10-28 11:42:26.000129832 -0400
+@@ -14,19 +14,8 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-	initdb \
+-	pg_archivecleanup \
+-	pg_basebackup \
+ 	pg_config \
+-	pg_controldata \
+-	pg_ctl \
+ 	pg_dump \
+-	pg_resetxlog \
+-	pg_rewind \
+-	pg_test_fsync \
+-	pg_test_timing \
+-	pg_upgrade \
+-	pg_xlogdump \
+ 	pgbench \
+ 	psql \
+ 	scripts
+diff -Naruw a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2016-10-24 16:08:51.000000000 -0400
++++ b/src/Makefile	2016-10-28 11:41:00.453922971 -0400
+@@ -15,19 +15,11 @@
+ SUBDIRS = \
+ 	common \
+ 	port \
+-	timezone \
+ 	backend \
+-	backend/utils/mb/conversion_procs \
+-	backend/snowball \
+ 	include \
+ 	interfaces \
+-	backend/replication/libpqwalreceiver \
+-	fe_utils \
+ 	bin \
+-	pl \
+-	makefiles \
+-	test/regress \
+-	test/perl
++	makefiles
+ 
+ # There are too many interdependencies between the subdirectories, so
+ # don't attempt parallel make here.
