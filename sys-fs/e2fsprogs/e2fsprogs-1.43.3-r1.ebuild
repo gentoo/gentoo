@@ -22,7 +22,7 @@ SRC_URI+=" http://git.kernel.org/cgit/fs/ext2/e2fsprogs.git/patch/?id=d33e690fe7
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint"
+KEYWORDS="alpha ~amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint"
 IUSE="fuse nls static-libs elibc_FreeBSD"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
