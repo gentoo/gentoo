@@ -4,11 +4,11 @@ DESCRIPTION=Qt GUI configuration tool for Wine
 EAPI=6
 HOMEPAGE=http://q4wine.brezblock.org.ua/
 IUSE=+dbus debug +ico +iso qt5 +wineappdb
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsingleapplication[qt5,X] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 dev-qt/qtxml:5 dbus? ( dev-qt/qtdbus:5 ) ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4,X] dev-qt/qtsql:4[sqlite] dbus? ( dev-qt/qtdbus:4 ) ) app-admin/sudo >=sys-apps/which-2.19 ico? ( >=media-gfx/icoutils-0.26.0 ) iso? ( sys-fs/fuseiso )
 SLOT=0
 SRC_URI=mirror://sourceforge/q4wine/q4wine-1.3.1.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=36ebead6e420478980fca7391a6bde45
+_md5_=c054f95fe93edf845fee9f31dfb2d97c

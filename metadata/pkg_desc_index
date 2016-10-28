@@ -1325,7 +1325,7 @@ app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: 
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8 4.2.10: Set of scripts to easily install and use Windows games and software
-app-emulation/q4wine 1.0-r3 1.2_p2 1.3 1.3.1 1.3.3: Qt GUI configuration tool for Wine
+app-emulation/q4wine 1.3.1 1.3.3: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.7.0-r5 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
@@ -13726,7 +13726,7 @@ media-video/kamoso 3.2: Application to take pictures and videos from your webcam
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0a: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.9999 12_beta1 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12_beta1 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -14115,7 +14115,7 @@ net-analyzer/wireshark 2.0.6 2.0.7 2.2.1 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
-net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.2.15 3.0.3-r1 3.0.4 3.0.5 3.2.0 3.2.1: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.2.15 3.0.3-r1 3.0.4 3.0.5 3.2.0 3.2.1 3.2.1-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
@@ -14883,7 +14883,7 @@ net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 0.10.0.1 0.10.1.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1: A high-throughput distributed messaging system
 net-misc/kea 1.1.0: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.7.7: The KDE Network Monitor
@@ -15182,7 +15182,7 @@ net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzb 0.3: A binary news grabber
 net-nntp/nzbget 14.1 16.4 17.0 17.1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.139-r1 0.139-r2 0.140: A newsreader for GNOME
-net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20 1.0.3 1.1.0: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 1.1.0: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
