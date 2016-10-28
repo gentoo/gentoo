@@ -13696,7 +13696,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.8.6 2.8.7 2.8.8 3.1.5 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.8.6 2.8.7 2.8.8 3.1.5 3.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0 2.1.1: Lightweight video thumbnailer that can be used by file managers
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
@@ -14115,7 +14115,7 @@ net-analyzer/wireshark 2.0.6 2.0.7 2.2.1 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
-net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.2.15 3.0.3-r1 3.0.4 3.0.5 3.2.0 3.2.1 3.2.1-r1: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.2.14 2.2.15 3.0.3-r1 3.0.4 3.0.5 3.2.0 3.2.1-r2: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
