@@ -26,7 +26,7 @@ DOC_CONTENTS="
 	This package tries to automatically use some sensible default
 	directories for your documents, music, video and other stuff.
 	If you want to change those directories to your needs, see
-	the settings in ~/.config/user-dir.dirs
+	the settings in ~/.config/user-dirs.dirs
 "
 
 src_prepare() {
