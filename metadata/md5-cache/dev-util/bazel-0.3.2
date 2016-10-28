@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=virtual/jdk:1.8 >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Bazel build system
+EAPI=6
+HOMEPAGE=https://bazel.io/
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=virtual/jdk:1.8 >=dev-java/java-config-2.2.0-r3
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/bazelbuild/bazel/archive/0.3.2.tar.gz -> bazel-0.3.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1d773195f306bcd995c53152f0c971d0

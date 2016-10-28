@@ -4803,7 +4803,7 @@ dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based 
 dev-libs/liborcus 0.7.1 0.7.1-r1 0.9.2-r1 0.11.2 0.12.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
-dev-libs/libp11 0.2.8-r3 0.2.8-r4: Abstraction layer to simplify PKCS#11 API
+dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.38-r1 8.39: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
@@ -9790,6 +9790,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
+dev-util/bazel 0.3.2: Bazel build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.1.8-r2 0.2.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
