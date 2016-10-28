@@ -15844,7 +15844,7 @@ sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logic minimization tool
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
-sci-electronics/fritzing 0.8.7b 0.9.2b 0.9.2b-r1: Electronic Design Automation
+sci-electronics/fritzing 0.8.7b 0.9.2b 0.9.2b-r1 0.9.2b-r2: Electronic Design Automation
 sci-electronics/gazebo 7.2.0 7.3.1 7.4.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.1 1.8.2 1.9.1 1.9.2: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
