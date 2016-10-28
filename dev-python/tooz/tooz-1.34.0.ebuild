@@ -23,7 +23,7 @@ RDEPEND="${CDEPEND}
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	dev-python/enum34[$(python_gen_usedep 'python2_7'),$(python_gen_usedep 'python3_3')]
+	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
 	>=dev-python/zake-0.1.6[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.8.6[${PYTHON_USEDEP}]
