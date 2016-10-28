@@ -17403,7 +17403,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.12.52-r1 3.12.63 3.12.66 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 4.1.15-r1 4.1.33 4.1.34 4.4.26 4.4.27 4.7.9 4.7.10 4.8.3 4.8.4: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.9_rc1 4.9_rc2: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10: Hardened kernel sources (kernel series 4.7)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10 4.7.10-r1: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
@@ -17959,8 +17959,8 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 54.0.2840.71: The web browser from Google
-www-client/google-chrome-beta 55.0.2883.21: The web browser from Google
-www-client/google-chrome-unstable 56.0.2897.0: The web browser from Google
+www-client/google-chrome-beta 55.0.2883.28: The web browser from Google
+www-client/google-chrome-unstable 56.0.2902.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -18013,7 +18013,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.643 23.0.0.205: Adobe Flash Player
-www-plugins/chrome-binary-plugins 54.0.2840.71 55.0.2883.21_beta 56.0.2897.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 54.0.2840.71 55.0.2883.28_beta 56.0.2902.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
