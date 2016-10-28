@@ -7,8 +7,7 @@ EAPI=6
 inherit user
 
 MY_PN="${PN/-bin}"
-MY_PV="${PV/_/-}"
-MY_P="${MY_PN}-${MY_PV}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
@@ -16,7 +15,7 @@ SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 RESTRICT="strip"
@@ -47,7 +46,7 @@ src_install() {
 	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
 
 	newconfd "${FILESDIR}/${MY_PN}.confd" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd2" "${MY_PN}"
 }
 
 pkg_postinst() {
