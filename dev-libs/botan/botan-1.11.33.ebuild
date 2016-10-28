@@ -16,7 +16,7 @@ SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 SLOT="0"
 LICENSE="BSD"
-IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib test"
+IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -32,12 +32,7 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 		libressl? ( dev-libs/libressl )
 	)"
 DEPEND="${RDEPEND}
-	test? ( app-misc/datefudge )
 	doc? ( dev-python/sphinx )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-urandom.patch"
-)
 
 pkg_pretend() {
 	# Botan 1.11 requires -std=c++11
@@ -114,7 +109,7 @@ src_compile() {
 }
 
 src_test() {
-	LD_LIBRARY_PATH="${S}" datefudge "2016-10-01 00:00" ./botan-test || die "Validation tests failed"
+	LD_LIBRARY_PATH="${S}" ./botan-test || die "Validation tests failed"
 }
 
 src_install() {
