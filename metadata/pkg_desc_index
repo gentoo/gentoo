@@ -7989,7 +7989,7 @@ dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a 
 dev-python/pyscard 1.9.2: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
-dev-python/pyserial 2.7-r1 3.1.1: Python Serial Port extension
+dev-python/pyserial 2.7-r1 3.1.1 3.2.1: Python Serial Port extension
 dev-python/pyshark 0.3.4 0.3.5 0.3.6: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
