@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-python/gconf-python gnome-base/gconf[introspection] dev-python/pyxdg >=x11-libs/gtk+-3.10 sys-devel/gettext
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_configure:waf-utils src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=9ce39700e19e0621771fe9c41123e8fb

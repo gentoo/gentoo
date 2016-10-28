@@ -1,5 +1,5 @@
 DEFINED_PHASES=postinst prepare setup
-DEPEND=>=virtual/udev-208 || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) virtual/pkgconfig
+DEPEND=>=virtual/udev-208 || ( dev-lang/python:3.4 ) virtual/pkgconfig
 DESCRIPTION=A repository of data files describing media player capabilities
 EAPI=5
 HOMEPAGE=https://cgit.freedesktop.org/media-player-info/
@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/media-player-info/media-player-info-21.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_prepare:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=4247f7012bde2e2b5d42d129c93077e6

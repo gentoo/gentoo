@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=>=dev-libs/serd-0.14.0 || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEPEND=>=dev-libs/serd-0.14.0 || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
 DESCRIPTION=Library for storing RDF data in memory
 EAPI=4
 HOMEPAGE=http://drobilla.net/software/sord/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/serd-0.14.0
 SLOT=0
 SRC_URI=http://download.drobilla.net/sord-0.12.2.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:waf-utils src_test:- src_install:waf-utils
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=e8e263a74f57478b46b599477ef6b86d

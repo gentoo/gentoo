@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure install postinst postrm prepare setup
-DEPEND=virtual/mta dev-perl/MIME-tools sys-libs/pam sys-libs/zlib kerberos? ( virtual/krb5 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( dev-libs/openssl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) berkdb? ( sys-libs/db ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
+DEPEND=virtual/mta dev-perl/MIME-tools sys-libs/pam sys-libs/zlib kerberos? ( virtual/krb5 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( dev-libs/openssl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) berkdb? ( sys-libs/db ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
 DESCRIPTION=The Internet News daemon, fully featured NNTP server
 EAPI=5
 HOMEPAGE=https://www.isc.org/software/inn
 IUSE=berkdb innkeywords inntaggedhash ipv6 kerberos perl python sasl ssl python_targets_python2_7 ssl
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=ISC GPL-2+ public-domain BSD-4 BSD-2 RSA BSD MIT GPL-2
-RDEPEND=virtual/mta dev-perl/MIME-tools sys-libs/pam sys-libs/zlib kerberos? ( virtual/krb5 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( dev-libs/openssl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) berkdb? ( sys-libs/db )
+RDEPEND=virtual/mta dev-perl/MIME-tools sys-libs/pam sys-libs/zlib kerberos? ( virtual/krb5 ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( dev-libs/openssl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) berkdb? ( sys-libs/db )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=ftp://ftp.isc.org/isc/inn/inn-2.5.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=51ea84b9e7d9c3bb939cd3ec7d1a377f

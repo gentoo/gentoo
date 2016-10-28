@@ -8,5 +8,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/dshieldpy/dshieldpy-3.2.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=3ebf48211cc39ff03d97d54b6b6d66a6

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=virtual/libgudev:= virtual/libudev:= >=dev-libs/glib-2.32:2 test? ( || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) ) app-arch/xz-utils virtual/pkgconfig
+DEPEND=virtual/libgudev:= virtual/libudev:= >=dev-libs/glib-2.32:2 test? ( || ( dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) ) app-arch/xz-utils virtual/pkgconfig
 DESCRIPTION=Mock hardware devices for creating unit tests
 EAPI=5
 HOMEPAGE=https://github.com/martinpitt/umockdev/
@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://launchpad.net/umockdev/trunk/0.8.11/+download/umockdev-0.8.11.tar.xz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=47be4a986a2f29faf781f02639e0c039

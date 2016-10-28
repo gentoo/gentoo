@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure install setup
-DEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=sys-devel/libtool-2.2.6b
+DEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=sys-devel/libtool-2.2.6b
 DESCRIPTION=Library to check account numbers and bank codes of German banks
 EAPI=5
 HOMEPAGE=http://ktoblzcheck.sourceforge.net/
 IUSE=python python_targets_python2_7
 KEYWORDS=amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
-RDEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
+RDEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/ktoblzcheck/ktoblzcheck-1.48.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=03960d85d7926b74ad998a81fda6a159

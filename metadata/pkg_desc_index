@@ -4492,7 +4492,7 @@ dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0-r1 5.24.0-r2: Larry W
 dev-lang/php 5.5.37 5.5.38 5.6.26 5.6.27 7.0.12: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.10-r1 2.7.12 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.5 3.5.2: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.10-r1 2.7.12 3.4.3-r1 3.4.5 3.5.2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.03 2016.04 2016.04-r2 2016.05 2016.06 2016.07.1 2016.08.1 2016.09 2016.10 9999: A compiler for the Perl 6 programming language
@@ -7010,7 +7010,6 @@ dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astro
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
 dev-python/async_timeout 1.0.0: Timeout context manager for asyncio programs
-dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
@@ -7427,7 +7426,7 @@ dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 1.44.1 1.44.3 1.44.7: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hyper-h2 2.4.0 2.4.1: HTTP/2 State-Machine based protocol implementation
+dev-python/hyper-h2 2.4.0 2.4.1 2.5.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
 dev-python/hypothesis 1.19.0 3.4.2 3.5.3: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
@@ -7781,7 +7780,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 15.5.7 15.6.3 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
-dev-python/priority 1.2.0: A pure-Python implementation of the HTTP/2 priority tree
+dev-python/priority 1.2.0 1.2.1: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
@@ -7972,7 +7971,7 @@ dev-python/pypy3 2.4.0-r2 5.2.0_alpha1 5.5.0_alpha 9999: A fast, compliant alter
 dev-python/pypy3-bin 2.4.0-r4 5.2.0_alpha1-r1 5.5.0_alpha: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
-dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
+dev-python/pyquery 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4 1.9.7: Python language bindings for OpenStack Clouds
@@ -8412,7 +8411,7 @@ dev-python/twython 3.0.0 3.2.0 3.3.0: An easy (and up to date) way to access Twi
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 1.0.0 2.2.0 2.2.1 2.3.1 2.5.1-r1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0: GitHub API client implemented using Twisted
-dev-python/txrequests 0.9.2: Asynchronous Python HTTP for Humans
+dev-python/txrequests 0.9.2 0.9.5: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/typing 3.5.0.1: Type Hints for Python
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
@@ -14040,7 +14039,7 @@ net-analyzer/prelude-correlator 3.0.1-r1: Real time correlator of events receive
 net-analyzer/prelude-lml 3.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
-net-analyzer/pypacker 2.4 2.9: Fast and simple packet creation and parsing library for Python
+net-analyzer/pypacker 2.9: Fast and simple packet creation and parsing library for Python
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
@@ -18401,7 +18400,7 @@ x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
 x11-misc/colord 1.2.12 1.3.2 1.3.3: System service to accurately color manage input and output devices
-x11-misc/compton 0.1_beta1 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
+x11-misc/compton 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
 x11-misc/devilspie 0.22: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.36 0.37 0.39 0.41: Devilspie like window matching utility, using LUA for scripting

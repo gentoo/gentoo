@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare prerm setup unpack
-DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-text/sgml-common app-text/docbook-sgml-dtd:3.1 app-text/docbook-dsssl-stylesheets app-text/openjade jadetex? ( app-text/jadetex ) || ( www-client/w3m www-client/lynx ) >=app-text/sgml-common-0.6.3-r2
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-text/sgml-common app-text/docbook-sgml-dtd:3.1 app-text/docbook-dsssl-stylesheets app-text/openjade jadetex? ( app-text/jadetex ) || ( www-client/w3m www-client/lynx ) >=app-text/sgml-common-0.6.3-r2
 DESCRIPTION=Python interface to SGML software in a DocBook/OpenJade env
 EAPI=5
 HOMEPAGE=http://sgmltools-lite.sourceforge.net/
 IUSE=jadetex python_targets_python2_7
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-text/sgml-common app-text/docbook-sgml-dtd:3.1 app-text/docbook-dsssl-stylesheets app-text/openjade jadetex? ( app-text/jadetex ) || ( www-client/w3m www-client/lynx )
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-text/sgml-common app-text/docbook-sgml-dtd:3.1 app-text/docbook-dsssl-stylesheets app-text/openjade jadetex? ( app-text/jadetex ) || ( www-client/w3m www-client/lynx )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/sgmltools-lite/sgmltools-lite-3.0.3.tar.gz mirror://sourceforge/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_unpack:base src_prepare:- src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=876a1e5a8ada1a8133480f8788a63d76

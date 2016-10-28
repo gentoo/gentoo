@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install setup
-DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
+DEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= dev-libs/libxslt:= graphicsmagick? ( media-gfx/graphicsmagick:= ) dev-cpp/pstreams virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
 DESCRIPTION=A tool to create DjVu files from PDF files
 EAPI=5
 HOMEPAGE=http://jwilk.net/software/pdf2djvu
@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( graphicsmagick python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://bitbucket.org/jwilk/pdf2djvu/downloads/pdf2djvu-0.9.4.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=74c41b393674996b78e07c090e62f71f

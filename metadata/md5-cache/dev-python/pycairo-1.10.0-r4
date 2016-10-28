@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb ) virtual/pkgconfig test? ( dev-python/pytest[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] )
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb ) virtual/pkgconfig test? ( dev-python/pytest[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] )
 DESCRIPTION=Python bindings for the cairo library
 EAPI=5
 HOMEPAGE=http://cairographics.org/pycairo/ https://pypi.python.org/pypi/pycairo
-IUSE=doc examples +svg test xcb python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+IUSE=doc examples +svg test xcb python_targets_python2_7 python_targets_python3_4
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LGPL-3 || ( LGPL-2.1 MPL-1.1 )
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb )
-REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb )
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 )
 SLOT=0
 SRC_URI=http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2 http://cairographics.org/releases/pycairo-1.10.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=b95bec063dcea73d66994facf45de91c

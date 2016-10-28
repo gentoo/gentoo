@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare setup test
-DEPEND=!static? ( idn? ( net-dns/libidn ) pcre? ( dev-libs/libpcre ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) ) app-arch/xz-utils virtual/pkgconfig static? ( idn? ( net-dns/libidn[static-libs(+)] ) pcre? ( dev-libs/libpcre[static-libs(+)] ) ssl? ( gnutls? ( net-libs/gnutls:0=[static-libs(+)] ) !gnutls? ( !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) uuid? ( sys-apps/util-linux[static-libs(+)] ) zlib? ( sys-libs/zlib[static-libs(+)] ) ) test? ( || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) dev-lang/perl dev-perl/HTTP-Daemon dev-perl/HTTP-Message dev-perl/IO-Socket-SSL ) nls? ( sys-devel/gettext )
+DEPEND=!static? ( idn? ( net-dns/libidn ) pcre? ( dev-libs/libpcre ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) ) uuid? ( sys-apps/util-linux ) zlib? ( sys-libs/zlib ) ) app-arch/xz-utils virtual/pkgconfig static? ( idn? ( net-dns/libidn[static-libs(+)] ) pcre? ( dev-libs/libpcre[static-libs(+)] ) ssl? ( gnutls? ( net-libs/gnutls:0=[static-libs(+)] ) !gnutls? ( !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) uuid? ( sys-apps/util-linux[static-libs(+)] ) zlib? ( sys-libs/zlib[static-libs(+)] ) ) test? ( || ( dev-lang/python:3.4 ) dev-lang/perl dev-perl/HTTP-Daemon dev-perl/HTTP-Message dev-perl/IO-Socket-SSL ) nls? ( sys-devel/gettext )
 DESCRIPTION=Network utility to retrieve files from the WWW
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/wget/
@@ -11,5 +11,5 @@ REQUIRED_USE=ntlm? ( !gnutls ssl ) gnutls? ( ssl )
 SLOT=0
 SRC_URI=mirror://gnu/wget/wget-1.18.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=e1dcabdc3f87632e98768dc2c3d4a8b2

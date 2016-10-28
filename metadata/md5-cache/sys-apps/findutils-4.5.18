@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure prepare setup
-DEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) test? ( || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) ) nls? ( sys-devel/gettext )
+DEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) test? ( || ( dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) ) nls? ( sys-devel/gettext )
 DESCRIPTION=GNU utilities for finding files
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/findutils/
@@ -10,5 +10,5 @@ RDEPEND=selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://gnu-alpha/findutils/findutils-4.5.18.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=68fc26c7852a28a9893de9dc7a29dc3c

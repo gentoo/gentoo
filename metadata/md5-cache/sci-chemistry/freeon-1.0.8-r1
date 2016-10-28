@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=sci-libs/hdf5 virtual/blas virtual/lapack || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
+DEPEND=sci-libs/hdf5 virtual/blas virtual/lapack || ( dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
 DESCRIPTION=An experimental suite of programs for linear scaling quantum chemistry
 EAPI=5
 HOMEPAGE=http://www.freeon.org
@@ -9,5 +9,5 @@ RDEPEND=sci-libs/hdf5 virtual/blas virtual/lapack virtual/fortran
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/freeon/freeon-1.0.8.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=5ec70bbf53b93b72082448d3af2fec26

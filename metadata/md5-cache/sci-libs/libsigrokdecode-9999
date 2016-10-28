@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare setup test unpack
-DEPEND=>=dev-libs/glib-2.24.0 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] virtual/pkgconfig >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2.24.0 dev-lang/python:3.4 >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),python_single_target_python3_4(+)] virtual/pkgconfig >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=provide (streaming) protocol decoding functionality
 EAPI=6
 HOMEPAGE=http://sigrok.org/wiki/Libsigrokdecode
-IUSE=static-libs python_targets_python3_3 python_targets_python3_4 python_single_target_python3_3 python_single_target_python3_4
+IUSE=static-libs python_targets_python3_4
 LICENSE=GPL-3
-RDEPEND=>=dev-libs/glib-2.24.0 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?]
-REQUIRED_USE=^^ ( python_single_target_python3_3 python_single_target_python3_4 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 )
+RDEPEND=>=dev-libs/glib-2.24.0 dev-lang/python:3.4 >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_5(-),python_single_target_python3_4(+)]
+REQUIRED_USE=python_targets_python3_4
 SLOT=0
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_unpack:git-r3 src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=dfc05f3a72adccf9642748a5efb91b09

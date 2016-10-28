@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm setup test
-DEPEND=|| ( dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
+DEPEND=|| ( dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
 DESCRIPTION=A small build system similar to make
 EAPI=5
 HOMEPAGE=https://ninja-build.org/
@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/
 SLOT=0
 SRC_URI=https://github.com/ninja-build/ninja/archive/v1.7.1.tar.gz -> ninja-1.7.1.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-any-r1 src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=cf07f6b0a217c7de35ad062bfbca3de5

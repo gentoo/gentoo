@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install setup
-DEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 gtk2? ( dev-cpp/gtkmm:2.4 ) >=dev-lang/python-2.7.5-r2:2.7[threads(+)] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] doc? ( app-doc/doxygen media-gfx/graphviz ) virtual/pkgconfig
+DEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 gtk2? ( dev-cpp/gtkmm:2.4 ) >=dev-lang/python-2.7.5-r2:2.7[threads(+)] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] doc? ( app-doc/doxygen media-gfx/graphviz ) virtual/pkgconfig
 DESCRIPTION=A set of C++ wrappers around the LV2 C API
 EAPI=6
 HOMEPAGE=http://lvtoolkit.org/
@@ -10,5 +10,5 @@ RDEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 gtk2? ( dev-cpp/gtkmm:2.4 )
 SLOT=0
 SRC_URI=https://github.com/lvtk/lvtk/archive/1.2.0.tar.gz -> lvtk-1.2.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_configure:- src_compile:waf-utils src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=76709177464918474ba2e12875030f68

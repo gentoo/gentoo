@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) virtual/pkgconfig
+DEPEND=app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) virtual/pkgconfig
 DESCRIPTION=Submission tools for IRC notifications
 EAPI=6
 HOMEPAGE=http://www.catb.org/esr/irker/
@@ -9,5 +9,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://www.catb.org/esr/irker/irker-2.18.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=c5f5682b3ca24c1d2fbeb1dee5c7d4f1

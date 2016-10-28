@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install setup
-DEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) qt4? ( dev-qt/qtgui:4 ) || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig
+DEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) qt4? ( dev-qt/qtgui:4 ) || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig
 DESCRIPTION=Simple but fully featured LV2 host for Jack
 EAPI=4
 HOMEPAGE=http://drobilla.net/software/jalv/
@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >
 SLOT=0
 SRC_URI=http://download.drobilla.net/jalv-1.4.4.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:- src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	1797277ea0e7cee5c7de7ce74cf8acd8	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=65932d5a9de20a8c6dd9e333ac0aaa32
