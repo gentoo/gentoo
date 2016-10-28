@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/pam !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=PAM module for executing scripts during authorization, password changes, and sessions
+EAPI=6
+HOMEPAGE=https://github.com/jeroennijhof/pam_script/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/pam
+SLOT=0
+SRC_URI=https://github.com/jeroennijhof/pam_script/archive/1.1.8.tar.gz -> pam-script-1.1.8.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8fcae294f5026fd88dbd588c31e517df
