@@ -100,7 +100,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	doc? (
 		app-doc/doxygen[-nodot(-),dot(+),latex]
-		dev-python/sphinx[latex] 
+		dev-python/sphinx[latex]
 	)"
 
 PATCHES=( "${FILESDIR}"/${PN}-fix-install-rules.patch )
