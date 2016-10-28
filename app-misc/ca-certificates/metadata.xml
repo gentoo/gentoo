@@ -10,5 +10,8 @@
     Include root certs from CAcert (http://www.cacert.org/) and
     Software in the Public Interest (http://www.spi-inc.org/)
   </flag>
+  <flag name="insecure_certs">
+    Install certs which are known to *not* being trustworthy.
+  </flag>
 </use>
 </pkgmetadata>
