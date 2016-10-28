@@ -1708,7 +1708,7 @@ app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.112: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20151214.3.21 20160104.3.23 20160104.3.27.1 20160104.3.27.1-r1: Common CA Certificates PEM files
+app-misc/ca-certificates 20151214.3.21 20160104.3.23 20160104.3.27.1 20160104.3.27.1-r2: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 2.0 2.1 2.2: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -2970,7 +2970,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.0.10.17 4.4.15.5 4.4.15.8 4.6.4: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.1.21 9.1.23 9.2.16 9.2.18 9.3.12 9.3.14 9.4.7 9.4.9 9.5.2 9.5.4 9.6.0 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.1.21 9.1.23 9.1.24 9.2.16 9.2.18 9.2.19 9.3.12 9.3.14 9.3.15 9.4.7 9.4.9 9.4.10 9.5.2 9.5.4 9.5.5 9.6.0 9.6.1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases

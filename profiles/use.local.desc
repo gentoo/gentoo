@@ -788,6 +788,7 @@ app-misc/blink1:server - Build and install REST API server (currently hard-coded
 app-misc/blink1:tool - Build and install command-line tool blink1-tool
 app-misc/byobu:screen - Use app-misc/screen as the default backend
 app-misc/ca-certificates:cacert - Include root certs from CAcert (http://www.cacert.org/) and Software in the Public Interest (http://www.spi-inc.org/)
+app-misc/ca-certificates:insecure_certs - Install certs which are known to *not* being trustworthy.
 app-misc/ddccontrol:pci - enable direct PCI memory access (the setuid ddcpci util)
 app-misc/ddctool:usb-monitor - Adds support for monitors attached via USB.
 app-misc/ddctool:user-permissions - Adds a udev rules to allow non-root users in the i2c group to access the /dev/i2c-* devices. If usb-monitor is selected, users will need to be added to the video group to access the USB monitor. Otherwise, only root will be able to use ddctool.
