@@ -1291,7 +1291,7 @@ app-emulation/docker 1.11.0 1.12.0 1.12.1 1.12.2 9999: The core functions you ne
 app-emulation/docker-compose 1.8.0_rc2 1.8.0 1.8.1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
-app-emulation/docker-registry 2.4.0 2.5.0: Docker Registry 2.0
+app-emulation/docker-registry 2.5.0: Docker Registry 2.0
 app-emulation/docker-swarm 1.1.3 1.2.0: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20091009 1.4.1_pre20130107-r3: DOS Emulator
@@ -4556,7 +4556,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.10.13 1.11.29 1.11.32: A C++ crypto library
+dev-libs/botan 1.10.12 1.10.13 1.11.29 1.11.33: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
