@@ -17,7 +17,7 @@ SRC_URI="http://gpodder.org/src/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="+dbus bluetooth gstreamer ipod kernel_linux mtp test"
+IUSE="+dbus bluetooth ipod kernel_linux mtp test"
 
 #TODO: Make pygtk optional, see README
 COMMON_DEPEND="
@@ -28,7 +28,6 @@ COMMON_DEPEND="
 	>=dev-python/pygtk-2.16:2
 	dbus? ( dev-python/dbus-python )
 	bluetooth? ( net-wireless/bluez )
-	gstreamer? ( dev-python/gst-python:0.10 )
 	ipod? ( media-libs/libgpod[python] )
 	mtp? ( >=media-libs/libmtp-1.0.0:= )
 "
