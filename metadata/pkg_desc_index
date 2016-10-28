@@ -8069,7 +8069,7 @@ dev-python/python-gnutls 2.0.1: High level object oriented wrapper around libgnu
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
 dev-python/python-heatclient 0.8.0 1.5.0: OpenStack Orchestration API Client Library
-dev-python/python-iptables 0.8.0 0.9.0 0.10.0: Python bindings for iptables
+dev-python/python-iptables 0.8.0 0.9.0 0.10.0 0.11.0: Python bindings for iptables
 dev-python/python-ironicclient 0.9.0: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-keystoneclient 2.3.1 3.5.0: Client Library for OpenStack Identity
