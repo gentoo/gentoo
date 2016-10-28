@@ -43,8 +43,8 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
-	proxy? ( net-analyzer/fping )
-	server? ( net-analyzer/fping
+	proxy? ( net-analyzer/fping[suid] )
+	server? ( net-analyzer/fping[suid]
 		app-admin/webapp-config )
 	java?	(
 		>=virtual/jre-1.4
@@ -239,27 +239,24 @@ src_install() {
 	fi
 
 	if use java; then
-	   dodir \
-	   	/${ZABBIXJAVA_BASE} \
-		/${ZABBIXJAVA_BASE}/bin \
-		/${ZABBIXJAVA_BASE}/lib
-	   keepdir /${ZABBIXJAVA_BASE}
-	   exeinto /${ZABBIXJAVA_BASE}/bin
-	   doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
-	   exeinto /${ZABBIXJAVA_BASE}/lib
-	   doexe \
-	   	src/zabbix_java/lib/logback-classic-0.9.27.jar \
-		src/zabbix_java/lib/logback-console.xml \
-		src/zabbix_java/lib/logback-core-0.9.27.jar \
-		src/zabbix_java/lib/logback.xml \
-		src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-		src/zabbix_java/lib/slf4j-api-1.6.1.jar
-	   exeinto /${ZABBIXJAVA_BASE}/
-	   doexe \
-	   	src/zabbix_java/settings.sh \
-		src/zabbix_java/startup.sh \
-		src/zabbix_java/shutdown.sh
-	   fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
+		dodir \
+			/${ZABBIXJAVA_BASE} \
+			/${ZABBIXJAVA_BASE}/bin \
+			/${ZABBIXJAVA_BASE}/lib
+		keepdir /${ZABBIXJAVA_BASE}
+		exeinto /${ZABBIXJAVA_BASE}/bin
+		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
+		exeinto /${ZABBIXJAVA_BASE}/lib
+		doexe \
+			src/zabbix_java/lib/logback-classic-0.9.27.jar \
+			src/zabbix_java/lib/logback-console.xml \
+			src/zabbix_java/lib/logback-core-0.9.27.jar \
+			src/zabbix_java/lib/logback.xml \
+			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
+			src/zabbix_java/lib/slf4j-api-1.6.1.jar
+		fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
+		doinitd "${FILESDIR}"/3.0/init.d/zabbix-jmx-proxy
+		doconfd "${FILESDIR}"/3.0/conf.d/zabbix-jmx-proxy
 	fi
 }
 
