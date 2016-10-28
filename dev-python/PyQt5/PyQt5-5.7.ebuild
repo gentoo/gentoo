@@ -96,6 +96,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( "${S}"/{ChangeLog,NEWS} )
+PATCHES=( "${FILESDIR}/${P}-qt-5.6.2.patch" )
 
 pyqt_use_enable() {
 	use "$1" || return
