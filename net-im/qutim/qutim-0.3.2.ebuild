@@ -91,7 +91,7 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	xmpp? ( app-crypt/qca:2[gpg] )
-	oscar? ( app-crypt/qca:2[openssl] )
+	oscar? ( app-crypt/qca:2[ssl] )
 	kde-frameworks/oxygen-icons
 "
 

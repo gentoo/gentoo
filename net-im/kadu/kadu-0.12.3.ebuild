@@ -56,7 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 	>=dev-qt/qtsvg-4.7.0:4
 	speech? ( app-accessibility/powiedz )
 "

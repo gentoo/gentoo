@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=app-crypt/qca-2.1.0.3:2[openssl,qt4]
+	>=app-crypt/qca-2.1.0.3:2[qt4,ssl]
 	dev-libs/qjson
 	dev-libs/qoauth:0
 	dev-qt/qtcore:4[ssl]

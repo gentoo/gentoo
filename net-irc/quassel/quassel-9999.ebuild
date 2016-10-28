@@ -20,7 +20,7 @@ IUSE="+breeze crypt +dbus debug kde monolithic oxygen postgres +server snorenoti
 
 SERVER_RDEPEND="
 	dev-qt/qtscript:5
-	crypt? ( app-crypt/qca:2[openssl,qt5] )
+	crypt? ( app-crypt/qca:2[qt5,ssl] )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )

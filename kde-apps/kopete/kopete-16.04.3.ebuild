@@ -107,7 +107,7 @@ RDEPEND="${COMMONDEPEND}
 		)
 		virtual/latex-base
 	)
-	ssl? ( app-crypt/qca:2[openssl] )
+	ssl? ( app-crypt/qca:2[ssl] )
 	winpopup? ( net-fs/samba )
 "
 DEPEND="${COMMONDEPEND}
@@ -150,7 +150,7 @@ pkg_postinst() {
 
 	if ! use ssl; then
 		if use xmpp ; then # || use irc; then
-			if ! has_version "app-crypt/qca:2[openssl]" ; then
+			if ! has_version "app-crypt/qca:2[ssl]" ; then
 				elog "In order to use ssl in xmpp you'll need to"
 				elog "install app-crypt/qca package with USE=openssl."
 			fi
