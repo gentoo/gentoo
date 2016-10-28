@@ -32,5 +32,5 @@ src_install() {
 	distutils-r1_src_install
 
 	keepdir /etc/target /etc/target/backup
-	doman "${PN%%-*}"
+	doman targetcli.8
 }
