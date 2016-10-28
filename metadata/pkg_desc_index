@@ -1058,7 +1058,7 @@ app-editors/retext 4.1.3 5.3.1 6.0.1 6.0.2 9999: Simple editor for Markdown and 
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
-app-editors/tea 41.1.1 42.0.0: Small, lightweight Qt text editor
+app-editors/tea 42.0.0 43.1.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
@@ -2396,7 +2396,7 @@ app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.2.1 2.2.2 2.3.2-r1 2.3.3: A Python implementation of Textile, Dean Allen's Human Text Generator for creating (X)HTML
 app-text/q-text-as-data 1.5.0: q: Text as Data is a CLI tool that allows direct execution of SQL-like queries on text
 app-text/qpdf 5.1.1 5.1.2 5.1.3 6.0.0: Command-line tool for structural, content-preserving transformation of PDF files
-app-text/qpdfview 0.4.13-r1 0.4.15 0.4.16: A tabbed document viewer
+app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/queequeg 0.91: A checker for English grammar, for people who are not native English
 app-text/rarian 0.8.1-r2 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
