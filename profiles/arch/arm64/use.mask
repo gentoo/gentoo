@@ -226,8 +226,5 @@ clvm
 # virtual/opencl is not keyworded
 opencl
 
-# This one we need to test ...
-python_targets_python3_3
-
 # No arm64 java support yet.
 java

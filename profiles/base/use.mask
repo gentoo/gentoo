@@ -394,8 +394,3 @@ php_targets_php5-4
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # php 5.5 is end of life, masked for removal
 php_targets_php5-5
-
-# Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
-# Python 3.3 is being removed from Gentoo.
-python_targets_python3_3
-python_single_target_python3_3
