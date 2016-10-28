@@ -30,6 +30,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Oct 2016)
+# Breaks build of some packages. See tracker bug #598186
+=sys-devel/flex-2.6.2
+
+# Craig Andrews <candrews@integralblue.com> (25 Oct 2016)
+# >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
+# which is hard masked see #574788
+>=media-tv/kodi-17.0_beta3
+
+# Mike Gilbert <floppym@gentoo.org> (24 Oct 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-56
+
 # Hanno Böck <hanno@gentoo.org> (16 Oct 2016)
 # The current package is broken (depends on perl modules
 # not in the tree) and there is probably no interest in
@@ -342,11 +356,6 @@ x11-terms/terra
 # Mask for removal in 30 days. Bug #595754
 net-libs/socket++
 
-# Michael Palimaka <kensington@gentoo.org> (26 Sep 2016)
-# No longer maintained by upstream. Unused.
-# Masked for removal in 30 days.
-kde-apps/kdeartwork-emoticons
-
 # Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc2
@@ -413,8 +422,12 @@ kde-apps/kdeartwork-emoticons
 >=gnome-base/gdm-3.21
 >=gnome-base/gnome-3.21
 >=gnome-base/gnome-control-center-3.21
+>=gnome-base/gnome-core-apps-3.21
+>=gnome-base/gnome-core-libs-3.21
 >=gnome-base/gnome-desktop-3.21
+>=gnome-base/gnome-extra-apps-3.21
 >=gnome-base/gnome-keyring-3.21
+>=gnome-base/gnome-light-3.21
 >=gnome-base/gnome-session-3.21
 >=gnome-base/gnome-settings-daemon-3.21
 >=gnome-base/gnome-shell-3.21
@@ -423,6 +436,7 @@ kde-apps/kdeartwork-emoticons
 >=gnome-base/libgtop-2.35
 >=gnome-base/nautilus-3.21
 >=gnome-extra/evolution-data-server-3.21
+>=gnome-extra/evolution-ews-3.21
 >=gnome-extra/gnome-boxes-3.21
 >=gnome-extra/gnome-calculator-3.21
 >=gnome-extra/gnome-calendar-3.21
@@ -432,8 +446,10 @@ kde-apps/kdeartwork-emoticons
 >=gnome-extra/gnome-contacts-3.21
 >=gnome-extra/gnome-documents-3.21
 >=gnome-extra/gnome-logs-3.21
+>=gnome-extra/gnome-packagekit-3.21
 >=gnome-extra/gnome-power-manager-3.21
 >=gnome-extra/gnome-shell-extensions-3.21
+>=gnome-extra/gnome-software-3.21
 >=gnome-extra/gnome-system-monitor-3.21
 >=gnome-extra/gnome-tweak-tool-3.21
 >=gnome-extra/gnome-user-docs-3.21
@@ -565,11 +581,6 @@ dev-haskell/base64-conduit
 # now provides 'agda' binary.
 sci-mathematics/agda-executable
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-55
-
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
 # Masked the possible fixed samba version until more testing has been performed.
@@ -588,16 +599,6 @@ dev-lang/python:3.3
 ~mail-client/thunderbird-24.8.0
 ~mail-client/thunderbird-31.8.0
 ~mail-client/thunderbird-38.8.0
-
-# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
-# Masked for testing, and porting revdeps. Please do not unmask before
-# media-libs/mesa release supports it.
-~sys-devel/clang-3.9.0
-~sys-devel/clang-runtime-3.9.0
-~sys-devel/llvm-3.9.0
-~sys-libs/libcxx-3.9.0
-~sys-libs/libcxxabi-3.9.0
-~sys-libs/llvm-libunwind-3.9.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible

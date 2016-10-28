@@ -13,7 +13,11 @@ DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="http://openmp.llvm.org"
 SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# - MIT-licensed Intel code,
+# - LLVM Software Grant from Intel.
+
+LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0/3.9"
 KEYWORDS="~amd64 ~x86"
 IUSE="hwloc ompt"

@@ -1,0 +1,24 @@
+From 034d808c4d4042cf9944450bc45efc23aa868fdd Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppymaster@gmail.com>
+Date: Mon, 24 Oct 2016 10:43:11 -0400
+Subject: [PATCH] gn: fix bootstrap script
+
+---
+ tools/gn/bootstrap/bootstrap.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index d66da12..6059741 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -450,7 +450,6 @@ def write_gn_ninja(path, root_gen_dir, options):
+       'base/task_scheduler/post_task.cc',
+       'base/task_scheduler/priority_queue.cc',
+       'base/task_scheduler/scheduler_lock_impl.cc',
+-      'base/task_scheduler/scheduler_service_thread.cc',
+       'base/task_scheduler/scheduler_worker.cc',
+       'base/task_scheduler/scheduler_worker_pool_impl.cc',
+       'base/task_scheduler/scheduler_worker_stack.cc',
+-- 
+2.10.1
+

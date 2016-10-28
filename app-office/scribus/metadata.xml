@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>jlec@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>
     <flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg></flag>

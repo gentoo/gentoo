@@ -20,11 +20,11 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x8
 
 IUSE="bzip2 gif jpeg cpu_flags_x86_mmx cpu_flags_x86_sse2 mp3 png static-libs tiff X zlib"
 
-RDEPEND="=media-libs/freetype-2*[${MULTILIB_USEDEP}]
+RDEPEND="media-libs/freetype:2[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	gif? ( >=media-libs/giflib-4.1.6-r3[${MULTILIB_USEDEP}] )
-	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
+	gif? ( >=media-libs/giflib-4.1.6-r3:0=[${MULTILIB_USEDEP}] )
+	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.3-r6:0[${MULTILIB_USEDEP}] )
 	X? (

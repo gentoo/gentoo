@@ -7,8 +7,8 @@ Add giflib-5.1.0 compatibility
 
 Index: src/plugins/gif_extractor.c
 ===================================================================
---- src/plugins/gif_extractor.c	(revision 34094)
-+++ src/plugins/gif_extractor.c	(revision 34095)
+--- a/src/plugins/gif_extractor.c	(revision 34094)
++++ b/src/plugins/gif_extractor.c	(revision 34095)
 @@ -78,7 +78,11 @@ EXTRACTOR_gif_extract_method (struct EXT
    if (gif_file == NULL || gif_error != 0)
    {

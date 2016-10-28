@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/popt-1.5
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
-	>=dev-scheme/guile-2.0.0:12[deprecated,regex]
+	>=dev-scheme/guile-2.0.0:12=[deprecated,regex]
 	dev-scheme/guile-www
 	gnome-base/libgnomecanvas
 	>=net-libs/webkit-gtk-1.2:2

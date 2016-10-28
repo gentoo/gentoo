@@ -28,8 +28,6 @@ DEPEND="
 	>=dev-go/go-tools-0_pre20160121"
 RDEPEND=""
 
-STRIP_MASK="*.a"
-
 S="${WORKDIR}/src/${GO_PN}"
 
 pkg_setup() {
@@ -82,7 +80,6 @@ src_prepare() {
 src_compile() {
 	export GOPATH="${WORKDIR}"
 	go install -v -work -x ${EGO_BUILD_FLAGS} "github.com/mitchellh/gox/..." || die
-	go install -v -work -x ${EGO_BUILD_FLAGS} "${GO_PN}/..." || die
 	PATH=${PATH}:${WORKDIR}/bin XC_ARCH=$(go env GOARCH) XC_OS=$(go env GOOS) emake
 }
 
@@ -90,12 +87,10 @@ src_install() {
 	local x
 
 	dobin "${WORKDIR}/bin/${PN}"
-	rm -rf bin || die
 
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
 	doins "${FILESDIR}/"*.json.example
-	rm "${ED}etc/consul.d/ui-dir.json.example" || die
 
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"
@@ -107,19 +102,4 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
-
-	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
-	rm -rf "${WORKDIR}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/${GO_PN}/vendor
-
-	while read -r -d '' x; do
-		x=${x#${WORKDIR}/src}
-		[[ -d ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x} ||
-			-f ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x}.a ]] && continue
-		rm -rf "${WORKDIR}"/src/${x}
-	done < <(find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type d -print0)
-	insopts -m0644 -p # preserve timestamps for bug 551486
-	insinto "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}"
-	doins -r "${WORKDIR}"/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN}
-	insinto "$(get_golibdir)/src/${GO_PN%/*}"
-	doins -r "${WORKDIR}"/src/${GO_PN}
 }

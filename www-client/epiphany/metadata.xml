@@ -5,7 +5,4 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<use>
-	<flag name="nss">Import passwords from older gecko based <pkg>www-client/epiphany</pkg> keyring.</flag>
-</use>
 </pkgmetadata>

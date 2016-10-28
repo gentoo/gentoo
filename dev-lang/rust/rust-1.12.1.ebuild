@@ -23,6 +23,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+CARGO_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).0"
 RUST_STAGE0_amd64="rustc-${STAGE0_VERSION}-x86_64-unknown-linux-gnu"
 RUST_STAGE0_x86="rustc-${STAGE0_VERSION}-i686-unknown-linux-gnu"
@@ -51,9 +52,12 @@ DEPEND="${RDEPEND}
 	clang? ( sys-devel/clang )
 "
 
-PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425"
+PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+	>=dev-util/cargo-${CARGO_VERSION}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=("${FILESDIR}/rust-1.12.0-disable-fetching-stage0.patch")
 
 src_unpack() {
 	unpack "rustc-${PV}-src.tar.gz" || die
@@ -67,7 +71,7 @@ src_prepare() {
 	find mk -name '*.mk' -exec \
 		 sed -i -e "s/-Werror / /g" {} \; || die
 
-	eapply_user
+	default
 }
 
 src_configure() {

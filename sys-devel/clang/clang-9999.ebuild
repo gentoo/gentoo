@@ -115,8 +115,6 @@ src_unpack() {
 src_prepare() {
 	python_setup
 
-	# automatically select active system GCC's libraries, bugs #406163 and #417913
-	eapply "${FILESDIR}"/9999/0002-driver-Support-obtaining-active-toolchain-from-gcc-c.patch
 	# support overriding clang runtime install directory
 	eapply "${FILESDIR}"/9999/0005-cmake-Supporting-overriding-runtime-libdir-via-CLANG.patch
 	# support overriding LLVMgold.so plugin directory
@@ -144,6 +142,10 @@ multilib_src_configure() {
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		# TODO: get them properly conditional
 		#-DLLVM_BUILD_TESTS=$(usex test)
+
+		# these are not propagated reliably, so redefine them
+		-DLLVM_ENABLE_EH=ON
+		-DLLVM_ENABLE_RTTI=ON
 
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I

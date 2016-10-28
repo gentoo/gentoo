@@ -21,6 +21,9 @@
       Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable
       scdaemon.
     </flag>
+	<flag name="system-cert-store">
+	  Use gnutls system TLS cert store for hkps access
+	</flag>
     <flag name="usb">
       Build direct CCID access for scdaemon; requires
       <pkg>dev-libs/libusb</pkg>.

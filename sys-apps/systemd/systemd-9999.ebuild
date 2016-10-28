@@ -55,7 +55,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	nat? ( net-firewall/iptables:0= )
 	pam? ( virtual/pam:= )
 	qrcode? ( media-gfx/qrencode:0= )
-	seccomp? ( sys-libs/libseccomp:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	sysv-utils? (
 		!sys-apps/systemd-sysv-utils

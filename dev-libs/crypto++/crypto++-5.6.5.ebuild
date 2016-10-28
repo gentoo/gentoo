@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="http://cryptopp.com"
-SRC_URI="mirror://sourceforge/cryptopp/cryptopp${PV//.}.zip"
+SRC_URI="https://www.cryptopp.com/cryptopp${PV//.}.zip"
 
 LICENSE="Boost-1.0"
 SLOT="0/5.6" # subslot is so version
@@ -36,20 +36,6 @@ src_compile() {
 	[[ ${CHOST} == *-darwin* ]] && append-cxxflags -DCRYPTOPP_DISABLE_ASM
 
 	emake -f GNUmakefile all shared
-}
-
-src_test() {
-	# ensure that all test vectors have Unix line endings
-	local file
-	for file in TestVectors/* ; do
-		edos2unix "${file}"
-	done
-
-	if ! emake test; then
-		eerror "Crypto++ self-tests failed."
-		eerror "Try to remove some optimization flags and reemerge Crypto++."
-		die "emake test failed"
-	fi
 }
 
 src_install() {

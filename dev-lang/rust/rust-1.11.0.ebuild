@@ -67,7 +67,7 @@ src_prepare() {
 	find mk -name '*.mk' -exec \
 		 sed -i -e "s/-Werror / /g" {} \; || die
 
-	eapply_user
+	default
 }
 
 src_configure() {

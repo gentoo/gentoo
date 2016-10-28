@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
+# Enable gambit and scm only on supported architectures
+>=dev-scheme/slib-3.2.5 -gambit -scm
+
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
 app-admin/collectd -collectd_plugins_mqtt
