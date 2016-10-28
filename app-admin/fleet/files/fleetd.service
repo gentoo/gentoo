@@ -1,9 +1,0 @@
-[Unit]
-Description=fleet
-Wants=etcd.service
-
-[Service]
-ExecStart=/usr/bin/fleetd
-
-[Install]
-WantedBy=multi-user.target
