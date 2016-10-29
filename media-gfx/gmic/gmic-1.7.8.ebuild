@@ -83,8 +83,10 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-
 	dodoc README
-	doman man/${PN}.1
-	use cli && newbashcomp resources/${PN}_bashcompletion.sh ${PN}
+
+	if use cli; then
+		doman man/${PN}.1
+		newbashcomp resources/${PN}_bashcompletion.sh ${PN}
+	fi
 }
