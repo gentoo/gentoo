@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare unpack
 DEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= magic? ( sys-apps/file ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang ) ) ) nls? ( sys-devel/gettext ) virtual/pkgconfig static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0=[static-libs(+)] magic? ( sys-apps/file[static-libs(+)] ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) ) ) >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU GPL'd Pico clone with more functionality
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_Guide
 IUSE=debug justify +magic minimal ncurses nls slang +spell static unicode
 LICENSE=GPL-3
@@ -9,4 +9,4 @@ RDEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= ma
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ddfe055fda31409229e983c1c9293954
+_md5_=89882e8eccef417d5d449800cb5c0a0b
