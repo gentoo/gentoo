@@ -16213,7 +16213,7 @@ sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) imple
 sci-mathematics/calc 2.12.2.2 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.8-r1: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.5 8.5_p1 8.5_p2: Proof assistant written in O'Caml
-sci-mathematics/cvc3 2.4.1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
+sci-mathematics/cvc3 2.4.1 2.4.1-r1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/drgeo 1.1.0: Interactive geometry package
