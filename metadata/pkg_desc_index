@@ -4604,7 +4604,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.12.2 1.15.2 1.16.1 1.17.0 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
 dev-libs/elfutils 0.163 0.164 0.165 0.166: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
+dev-libs/engine_pkcs11 0.1.8 0.1.8-r1 0.2.2: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.1.1-r2 2.1.1-r3 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 7.0.1-r2: C++ wrapper for fam
