@@ -2,35 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-
-# for live ebuilds uncomment inherit git-2, comment SRC_URI and empty KEYWORDS
+EAPI="6"
 
 inherit eutils pax-utils
-#inherit git-2
 
 DESCRIPTION="General purpose, multi-paradigm programming language in the Lisp-Scheme family."
 HOMEPAGE="http://racket-lang.org/"
 SRC_URI="minimal? ( http://download.racket-lang.org/installers/${PV}/${PN}-minimal-${PV}-src-builtpkgs.tgz ) !minimal? ( http://download.racket-lang.org/installers/${PV}/${P}-src-builtpkgs.tgz )"
-#SRC_URI="http://pre.racket-lang.org/installers/plt-${PV}-src-unix.tgz"
-EGIT_REPO_URI="git://git.racket-lang.org/plt.git"
-
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +futures +jit minimal +places +threads +X"
 REQUIRED_USE="futures? ( jit )"
 
 # see bug 426316: racket/draw (which depends on cairo) is sometimes used in compile-time code or when rendering documentation
-RDEPEND="dev-db/sqlite:3 x11-libs/cairo[X?] virtual/libffi"
+RDEPEND="dev-db/sqlite:3
+	x11-libs/cairo[X?]
+	virtual/libffi"
 DEPEND="${RDEPEND}"
 
-EGIT_SOURCEDIR="${WORKDIR}/${P}"
 S="${WORKDIR}/${P}/src"
 
 src_prepare() {
+	default
 	#remove bundled libraries
-	rm -rf foreign/libffi/ || die
+	rm -rf foreign/libffi/ || die "Bundled libraries libffi was not removed"
 }
 
 src_configure() {
@@ -45,6 +41,8 @@ src_configure() {
 		--enable-foreign \
 		$(use_enable places) \
 		$(use_enable futures) \
+		--enable-float \
+		--enable-libffi \
 		$(use_enable threads pthread)
 }
 
@@ -61,10 +59,13 @@ src_compile() {
 }
 
 src_install() {
-	#racket now comes with desktop files, but DESTDIR is mishandled
-	for f in /usr/share/applications/{drracket,slideshow}.desktop; do
-		sed -ie "s|${D}||" "${D}/${f}"
-	done
-
 	emake DESTDIR="${D}" install
+
+	if ! use minimal; then
+		#racket now comes with desktop files, but DESTDIR is mishandled
+		for f in /usr/share/applications/{drracket,slideshow}.desktop; do
+			sed -e "s|${D}||g" \
+				-i "${D}/${f}" || die "Failed to patch '${f}'"
+		done
+	fi
 }
