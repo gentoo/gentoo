@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="X svga gpm debug alsa sndfile fluidsynth"
 
 RDEPEND="X? ( x11-libs/libX11
@@ -45,6 +45,7 @@ S="${WORKDIR}/${PN}-code-${COMMIT}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-fortify.patch
+	epatch "${FILESDIR}"/${PN}-1.4.1_pre20091009-dash.patch
 
 	# Has problems with -O3 on some systems
 	replace-flags -O[3-9] -O2
