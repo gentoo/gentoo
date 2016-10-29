@@ -236,6 +236,7 @@ php-ext-source-r3_src_install() {
 # a run-tests.php file to be executed by `make test`. We only need to
 # force the test suite to run in non-interactive mode.
 php-ext-source-r3_src_test() {
+	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"
 		NO_INTERACTION="yes" emake test
