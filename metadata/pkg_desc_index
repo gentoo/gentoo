@@ -354,7 +354,7 @@ app-backup/dar 2.4.9 2.4.20 2.4.22 2.5.5-r2 2.5.6: A full featured backup tool, 
 app-backup/deja-dup 34.0 34.1 34.2: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.26 0.7.07.1 0.7.10: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.11.2 1.11.3: A shell frontend for duplicity
+app-backup/duply 1.9.2 1.11.2 1.11.3 2.0: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19 0.6.21: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
@@ -11808,7 +11808,7 @@ kde-misc/krusader 2.4.0_beta3-r2 2.5.0: An advanced twin-panel (commander-style)
 kde-misc/kscreen 1.0.71_p20150824: Alternative KDE screen management
 kde-misc/kshutdown 3.2 4.0: A shutdown manager for KDE
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
-kde-misc/ktoshiba 5.3: Function key (FN) monitoring for Toshiba laptops
+kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
 kde-misc/kvkbd 0.6-r1: A virtual keyboard for KDE
 kde-misc/kwebkitpart 1.3.4-r1: A WebKit KPart for Konqueror
