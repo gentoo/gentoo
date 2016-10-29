@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="Abstraction layer to simplify PKCS#11 API"
 HOMEPAGE="https://github.com/opensc/libp11/wiki"
@@ -13,14 +13,23 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="libressl doc static-libs"
+IUSE="libressl bindist doc static-libs"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
+	!libressl? ( dev-libs/openssl:0=[bindist] )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
