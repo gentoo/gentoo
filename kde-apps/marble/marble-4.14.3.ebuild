@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ RDEPEND="
 		kde? ( $(add_kdebase_dep pykde4 "${PYTHON_USEDEP}" ) )
 	)
 	shapefile? ( sci-libs/shapelib )
-	zip? ( dev-libs/quazip )
+	zip? ( dev-libs/quazip[qt4] )
 "
 DEPEND="
 	${RDEPEND}
