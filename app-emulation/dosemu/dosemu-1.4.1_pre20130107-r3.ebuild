@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="X svga gpm debug alsa sndfile fluidsynth"
 
 RDEPEND="X? ( x11-libs/libX11
