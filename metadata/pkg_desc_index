@@ -11824,7 +11824,6 @@ kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
 kde-misc/plasma-lionmail 0_p20121020: A Plasma widget displaying new and important email
 kde-misc/plasma-mpd-nowplaying 0.3: Plasmoid attached to MPD displaying currently played item
 kde-misc/plasma-network-status 0.1.1: KDE applet to monitor the network interface status
-kde-misc/plasma-nm 0.9.3.6: KDE Plasma applet for NetworkManager
 kde-misc/plasma-photooftheday 2.1.1: Photo of the Day plasmoid
 kde-misc/plasma-widget-menubar 0.2.0: A Plasma widget to display menubar of application windows
 kde-misc/plasma-widget-message-indicator 0.5.8: Plasmoid for displaying Ayatana indications
@@ -11882,7 +11881,7 @@ kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with t
 kde-plasma/plasma-desktop 5.7.5 5.8.2: KDE Plasma desktop
 kde-plasma/plasma-integration 5.7.5 5.8.2: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.7.5 5.8.2: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.7.5 5.8.2: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-nm 0.9.3.6 5.7.5 5.8.2: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.7.5 5.8.2: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.7.5 5.8.2: Useful applications for Plasma development
 kde-plasma/plasma-workspace 5.7.5 5.8.2: KDE Plasma workspace

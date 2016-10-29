@@ -3318,8 +3318,6 @@ kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/kio-gdrive:dolphin - Enable integration with kde-apps/dolphin
 kde-misc/krusader:bookmarks - Add dependency on bookmark package.
 kde-misc/networkmanagement:openconnect - Build support for the OpenConnect VPN client
-kde-misc/plasma-nm:modemmanager - Enable support for mobile broadband devices
-kde-misc/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kde-gtk-config:gtk3 - Add support for gtk+3-based applications.
