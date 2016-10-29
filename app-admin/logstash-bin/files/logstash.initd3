@@ -15,7 +15,7 @@ LS_OPEN_FILES=${LS_OPEN_FILES:-16384}
 KILL_ON_STOP_TIMEOUT=${KILL_ON_STOP_TIMEOUT:-0}
 
 command="/opt/logstash/bin/logstash"
-command_args="--config ${LS_CONF_DIR} --log ${LS_LOG_FILE} ${LS_OPTS}"
+command_args="--path.config ${LS_CONF_DIR} --path.logs ${LS_LOG_FILE} ${LS_OPTS}"
 command_background="true"
 pidfile=${LS_PIDFILE:-"/run/logstash/logstash.pid"}
 
@@ -36,7 +36,7 @@ checkconfig() {
 	fi
 
 	ebegin "Checking your configuration"
-	${command} ${command_args} --configtest
+	${command} ${command_args} --config.test_and_exit
 	eend $? "Configuration error. Please fix your configuration files."
 }
 
