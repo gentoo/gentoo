@@ -6012,6 +6012,7 @@ dev-perl/Module-Build 0.420.500 0.421.600 0.421.800: Build and install Perl modu
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
 dev-perl/Module-Build-XSUtil 0.160.0: A Module::Build class for building XS modules
+dev-perl/Module-Compile 0.350.0: Perl Module Compilation
 dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Info 0.350.0-r1 0.370.0-r1: Information about Perl modules
@@ -6162,7 +6163,7 @@ dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.27.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.290.0: Create PDF documents in Perl
-dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
+dev-perl/PDL 2.4.11 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
 dev-perl/POE 1.367: A framework for creating multitasking programs in Perl
