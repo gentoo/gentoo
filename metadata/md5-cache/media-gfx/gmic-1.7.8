@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=fftw? ( sci-libs/fftw:3.0[threads] ) gimp? ( >=media-gfx/gimp-2.4.0 ) graphicsmagick? ( media-gfx/graphicsmagick ) jpeg? ( virtual/jpeg:0 ) opencv? ( >=media-libs/opencv-2.3.1a-r1 ) openexr? ( media-libs/ilmbase media-libs/openexr ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libX11 x11-libs/libXext ) zlib? ( sys-libs/zlib ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=GREYC's Magic Image Converter
+EAPI=6
+HOMEPAGE=http://gmic.eu/ https://github.com/dtschump/gmic
+IUSE=+cli ffmpeg fftw gimp graphicsmagick jpeg opencv openexr openmp png static-libs tiff X zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=CeCILL-2 FDL-1.3
+RDEPEND=fftw? ( sci-libs/fftw:3.0[threads] ) gimp? ( >=media-gfx/gimp-2.4.0 ) graphicsmagick? ( media-gfx/graphicsmagick ) jpeg? ( virtual/jpeg:0 ) opencv? ( >=media-libs/opencv-2.3.1a-r1 ) openexr? ( media-libs/ilmbase media-libs/openexr ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libX11 x11-libs/libXext ) zlib? ( sys-libs/zlib ) ffmpeg? ( media-video/ffmpeg:0 ) gimp? ( !media-plugins/gimp-gmic )
+REQUIRED_USE=|| ( cli gimp )
+SLOT=0
+SRC_URI=http://gmic.eu/files/source/gmic_1.7.8.tar.gz
+_eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8c670f0e9c0ba4b718d8b60aa160586b

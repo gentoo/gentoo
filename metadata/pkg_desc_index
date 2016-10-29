@@ -12343,7 +12343,7 @@ media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.8.18 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 2.9.4-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
-media-gfx/gmic 1.6.5.0 1.6.5.1: GREYC's Magic Image Converter
+media-gfx/gmic 1.6.5.0 1.6.5.1 1.7.8: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1: Access, organize and share your photos on GNOME
