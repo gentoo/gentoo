@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>martin@mvath.de</email>
+    <name>Martin Väth</name>
+    <description>Upstream developer, assign bugs</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>axs@gentoo.org</email>
+    <description>Proxy committer, CC bugs</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>martin@mvath.de</email>
+      <name>Martin Väth</name>
+    </maintainer>
+    <bugs-to>mailto:martin@mvath.de</bugs-to>
+    <remote-id type="github">vaeth/quoter</remote-id>
+  </upstream>
+</pkgmetadata>
