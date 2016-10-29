@@ -6954,7 +6954,7 @@ dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4-r1 4.12_pre1606101416-r1: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
-dev-python/PySocks 1.5.6: SOCKS client module
+dev-python/PySocks 1.5.6 1.5.7: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
