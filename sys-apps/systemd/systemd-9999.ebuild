@@ -279,7 +279,7 @@ multilib_src_compile() {
 	else
 		echo 'gentoo: $(BUILT_SOURCES)' | \
 		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
-		echo 'gentoo: $(lib_LTLIBRARIES) $(pkgconfiglib_DATA)' | \
+		echo 'gentoo: $(lib_LTLIBRARIES) $(rootlib_LTLIBRARIES) $(pkgconfiglib_DATA)' | \
 		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
 	fi
 }
@@ -305,6 +305,7 @@ multilib_src_install() {
 	else
 		mymakeopts+=(
 			install-libLTLIBRARIES
+			install-rootlibLTLIBRARIES
 			install-pkgconfiglibDATA
 			install-includeHEADERS
 			# safe to call unconditionally, 'installs' empty list
