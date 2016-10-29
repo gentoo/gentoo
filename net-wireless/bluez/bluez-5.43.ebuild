@@ -16,7 +16,11 @@ SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
 
 IUSE="cups doc debug deprecated extra-tools experimental +obex +readline selinux systemd test test-programs +udev"
+# Since this release all remaining extra-tools need readline support, but this could
+# change in the future, hence, this REQUIRED_USE constraint could be dropped
+# again in the future.
 REQUIRED_USE="
+	extra-tools? ( readline )
 	test? ( ${PYTHON_REQUIRED_USE} )
 	test-programs? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -181,7 +185,6 @@ multilib_src_install() {
 				dobin attrib/gatttool
 				dobin tools/btmgmt
 			fi
-			dobin tools/hex2hcd
 		fi
 
 		# Unittests are not that useful once installed, so make them optional

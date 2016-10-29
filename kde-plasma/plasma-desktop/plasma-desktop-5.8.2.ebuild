@@ -88,7 +88,7 @@ COMMON_DEPEND="
 		x11-libs/xcb-util-keysyms
 	)
 	input_devices_synaptics? ( x11-drivers/xf86-input-synaptics )
-	packagekit? ( app-admin/packagekit-qt[qt5] )
+	packagekit? ( >=app-admin/packagekit-qt-0.9.6 )
 	pulseaudio? (
 		dev-libs/glib:2
 		media-libs/libcanberra

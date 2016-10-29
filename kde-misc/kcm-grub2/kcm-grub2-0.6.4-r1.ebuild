@@ -16,12 +16,11 @@ LICENSE="GPL-3"
 
 KEYWORDS="amd64 x86"
 SLOT="4"
-IUSE="+hwinfo imagemagick packagekit"
+IUSE="+hwinfo imagemagick"
 
 COMMON_DEPEND="
 	hwinfo? ( sys-apps/hwinfo )
 	imagemagick? ( media-gfx/imagemagick )
-	packagekit? ( <app-admin/packagekit-qt-0.9 )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-util/automoc
@@ -33,6 +32,7 @@ RDEPEND="${COMMON_DEPEND}
 src_configure() {
 	local mycmakeargs=(
 		"-DWITHQApt=OFF"
+		"-DWITH_QPackageKit=OFF"
 		"-DGRUB_INSTALL_EXE=/usr/sbin/grub2-install"
 		"-DGRUB_MKCONFIG_EXE=/usr/sbin/grub2-mkconfig"
 		"-DGRUB_PROBE_EXE=/usr/sbin/grub2-probe"
@@ -41,7 +41,6 @@ src_configure() {
 		"-DGRUB_CONFIG=/etc/default/grub"
 		"-DGRUB_ENV=/boot/grub/grubenv"
 		"-DGRUB_MEMTEST=/etc/grub.d/39_memtest86+"
-		$(cmake-utils_use_with packagekit QPackageKit)
 		$(cmake-utils_use_with imagemagick ImageMagick)
 		$(cmake-utils_use_with hwinfo HD)
 	)

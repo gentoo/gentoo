@@ -22,7 +22,6 @@ REQUIRED_USE="qrcode? ( !qt5 )"
 
 RDEPEND="
 	!qt5? (
-		>=dev-libs/quazip-0.7[qt4(+)]
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 		dev-qt/qtsingleapplication[qt4]
@@ -30,7 +29,6 @@ RDEPEND="
 		dev-qt/qtwebkit:4
 	)
 	qt5? (
-		>=dev-libs/quazip-0.7.1[qt5]
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -92,7 +90,6 @@ src_configure() {
 		TRANSDIR_MERKAARTOR="${ED}usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations" \
 		SYSTEM_QTSA=1 \
-		SYSTEM_QUAZIP=1 \
 		NODEBUG="$(usex debug '0' '1')" \
 		GEOIMAGE="$(usex exif '1' '0')" \
 		GPSDLIB="$(usex gps '1' '0')" \
@@ -106,7 +103,6 @@ src_configure() {
 		TRANSDIR_MERKAARTOR="${ED}usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt4/translations" \
 		SYSTEM_QTSA=1 \
-		SYSTEM_QUAZIP=1 \
 		NODEBUG="$(usex debug '0' '1')" \
 		GEOIMAGE="$(usex exif '1' '0')" \
 		GPSDLIB="$(usex gps '1' '0')" \
