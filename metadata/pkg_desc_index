@@ -7295,7 +7295,7 @@ dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1 1.11.1 1.12.0: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
-dev-python/fasteners 0.13.0: A python package that provides useful locks
+dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.6 1.7 1.8: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
@@ -7649,6 +7649,7 @@ dev-python/nose 1.3.7-r1 1.3.7-r2 1.3.7-r3 9999: Unittest extension with automat
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-descriptionfixer 0.0.4: Fix the way tests are described when the verbose flag is used
 dev-python/nose-exclude 0.4.1: Exclude specific directories from nosetests runs
+dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.9 0.10: Test Configuration plugin for nosetests
 dev-python/nose2 0.6.4 0.6.5: nose2 is the next generation of nicer testing for Python
@@ -7727,6 +7728,7 @@ dev-python/passwordmeter 0.1.7-r1 0.1.8: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2 2.0.3: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
+dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
@@ -9790,7 +9792,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
-dev-util/bazel 0.3.2: Bazel build system
+dev-util/bazel 0.3.2 0.3.2-r1: Fast and correct automated build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.1.8-r2 0.2.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
@@ -9844,6 +9846,7 @@ dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.5 2.9 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.5 1.10: a tool designed for analyzing the complexity of C program functions
+dev-util/conan 0.14.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cppcheck 1.72 1.73 1.74 1.75 9999: static analyzer of C/C++ code
