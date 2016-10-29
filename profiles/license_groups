@@ -73,7 +73,7 @@ FREE @FREE-SOFTWARE @FREE-DOCUMENTS
 # - IF (and only if) there is an explicit inclusion requirement,
 #   USE=bindist MUST cause a copy of the license to be installed
 #   in a file location compliant with the license
-BINARY-REDISTRIBUTABLE @FREE bh-luxi Broadcom Dina hashcat intel-ucode ipw2100-fw ipw2200-fw ipw3945 MicroChip-SDCC no-source-code NVIDIA-r1 qlogic-fibre-channel-firmware radeon-ucode shmux SmartLabs sun-jlfgr
+BINARY-REDISTRIBUTABLE @FREE bh-luxi Broadcom Dina intel-ucode ipw2100-fw ipw2200-fw ipw3945 MicroChip-SDCC no-source-code NVIDIA-r1 qlogic-fibre-channel-firmware radeon-ucode shmux SmartLabs sun-jlfgr
 
 ######################################################################
 
