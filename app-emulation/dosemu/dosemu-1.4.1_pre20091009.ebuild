@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils flag-o-matic
+inherit autotools eutils flag-o-matic
 
 P_FD="dosemu-freedos-1.0-bin"
 DESCRIPTION="DOS Emulator"
@@ -36,6 +36,9 @@ S="${WORKDIR}/${PN}"
 src_compile() {
 	epatch "${FILESDIR}"/${P}-flex.patch #437074
 	epatch "${FILESDIR}"/${P}-dash.patch
+	epatch "${FILESDIR}"/${P}-fix-glibc.patch #597880
+
+	eautoreconf
 
 	# Has problems with -O3 on some systems
 	replace-flags -O[3-9] -O2
