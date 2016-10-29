@@ -7526,7 +7526,7 @@ dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
-dev-python/kombu 3.0.24 3.0.26 3.0.29 3.0.30 3.0.32 3.0.33 3.0.34 3.0.37: AMQP Messaging Framework for Python
+dev-python/kombu 3.0.34 3.0.37: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
 dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
 dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2 1.0.1 1.0.2 1.0.3 1.4.0: A strictly RFC 4511 conforming LDAP V3 pure Python client
@@ -10986,7 +10986,7 @@ games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.6.3.26 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.6.3.26 1.6.10.22 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons

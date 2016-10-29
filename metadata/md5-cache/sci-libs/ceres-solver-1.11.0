@@ -7,9 +7,9 @@ IUSE=cxsparse c++11 doc examples gflags lapack openmp +schur sparse test abi_x86
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=sparse? ( BSD ) !sparse? ( LGPL-2.1 ) cxsparse? ( BSD )
 RDEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= )
-REQUIRED_USE=test? ( gflags ) sparse? ( lapack ) doc? ( )
+REQUIRED_USE=test? ( gflags ) sparse? ( lapack )
 SLOT=0/1
 SRC_URI=http://ceres-solver.org//ceres-solver-1.11.0.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-multilib src_test:cmake-multilib src_install:-
 _eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e2c030d14864c83531503044dc6cea04
+_md5_=b504741dda037140056950d525135e83

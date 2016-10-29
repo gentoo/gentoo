@@ -7,9 +7,9 @@ IUSE=cxsparse doc examples gflags lapack openmp protobuf +schur sparse static-li
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= )
-REQUIRED_USE=test? ( gflags ) sparse? ( lapack ) doc? ( )
+REQUIRED_USE=test? ( gflags ) sparse? ( lapack )
 SLOT=0/1
 SRC_URI=http://ceres-solver.org//ceres-solver-1.9.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=937a1dc184ae95b4d0c72a3c393dc9f1
+_md5_=b00b3664ff9d7be2a95a1ce614663e3d
