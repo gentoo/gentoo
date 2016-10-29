@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,7 @@ S="${WORKDIR}/${PN}"
 
 src_compile() {
 	epatch "${FILESDIR}"/${P}-flex.patch #437074
+	epatch "${FILESDIR}"/${P}-dash.patch
 
 	# Has problems with -O3 on some systems
 	replace-flags -O[3-9] -O2
