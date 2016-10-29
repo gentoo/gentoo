@@ -9053,7 +9053,7 @@ dev-ruby/facter 2.4.1 2.4.1-r1 2.4.6 3.1.4-r1 3.1.8 3.4.1 3.5.0: A cross-platfor
 dev-ruby/factory_girl 4.7.0: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.6.0-r1 0.8.1 0.9.0 0.9.2 0.9.3: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0-r1 1.3.0-r2: Helper for faking web requests in Ruby
-dev-ruby/faraday 0.9.2-r1: HTTP/REST API client library with pluggable components
+dev-ruby/faraday 0.9.2-r1 0.9.2-r2: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.9.2 0.10.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6: Response JSON parser using MultiJson and FaradayMiddleware
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
@@ -15831,9 +15831,9 @@ sci-chemistry/tinker 7.1.2: Molecular modeling package that includes force field
 sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/viewmol 2.4.1-r2: Open-source graphical front end for computational chemistry programs
 sci-chemistry/vmd 1.9.2: Visual Molecular Dynamics
-sci-chemistry/votca-csg 1.2.4-r1 1.3-r1 1.3.1 1.4_rc1 9999: Votca coarse-graining engine
-sci-chemistry/votca-csgapps 1.2.4 1.3 1.3.1 1.4_rc1 9999: Extra applications for votca-csg
-sci-chemistry/votca-xtp 1.4_rc1 9999: Votca excitation and charge properties module
+sci-chemistry/votca-csg 1.2.4-r1 1.3-r1 1.3.1 1.4 9999: Votca coarse-graining engine
+sci-chemistry/votca-csgapps 1.2.4 1.3 1.3.1 1.4 9999: Extra applications for votca-csg
+sci-chemistry/votca-xtp 1.4 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.4.2 7.5 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170430: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
@@ -16187,7 +16187,7 @@ sci-libs/ufconfig 3.5.0 3.6.1 3.7.0 3.7.1: Common configuration scripts for the 
 sci-libs/umfpack 5.2.0 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
-sci-libs/votca-tools 1.2.4 1.3 1.3.1 1.4_rc1 9999: Votca tools library
+sci-libs/votca-tools 1.2.4 1.3 1.3.1 1.4 9999: Votca tools library
 sci-libs/vtk 6.0.0 6.1.0 6.1.0-r1 6.1.0-r2 6.1.0-r3: The Visualization Toolkit
 sci-libs/vtkdata 6.0.0 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r2: eXtensible Data Model and Format
