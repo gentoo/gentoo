@@ -261,11 +261,6 @@ games-simulation/corsix-th
 sci-geosciences/osgearth
 
 # Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
-# Uses get_libdir at global scope (#593382). Dead for ages. Removal in a
-# month.
-app-cdr/nero
-
-# Pacho Ramos <pacho@gentoo.org> (08 Oct 2016)
 # Upstream is dead for a long time, and it is one of the last apps still
 # requiring all the deprecated/obsolete gnome2-python bindings (#593592).
 # Removal in a month.
