@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
 		<flag name="pugixml">Use <pkg>dev-libs/pugixml</pkg> for XML parsing isntead of <pkg>dev-libs/libxml2</pkg></flag>
 		<flag name="mumble">Enable support for voice chat</flag>
 	</use>
