@@ -30,6 +30,22 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (29 Oct 2016)
+# Unmaintained, broken, do not work with GCC 6
+# Bugs #594506, #597780, removal in 30 days.
+<dev-cpp/xsd-4.0.0
+<dev-cpp/libxsd-frontend-2.0.0
+dev-cpp/libfrontend-elements
+dev-cpp/libbackend-elements
+dev-cpp/libcult
+<dev-util/build-0.3.10
+
+# David Seifert <soap@gentoo.org> (29 Oct 2016)
+# Unmaintained, depends on ancient and broken C++ libraries
+# Removal in 30 days.
+net-libs/libkolab
+net-libs/libkolabxml
+
 # Lars Wendler <polynomial-c@gentoo.org> (27 Oct 2016)
 # Breaks build of some packages. See tracker bug #598186
 =sys-devel/flex-2.6.2
