@@ -1,0 +1,76 @@
+--- gmic-1.7.8/CMakeLists.txt
++++ gmic-1.7.8/CMakeLists.txt
+@@ -3,9 +3,11 @@
+ project(gmic CXX C)
+ 
+ find_package(PkgConfig)
++include(GNUInstallDirs)
+ 
+ # options controlling the build process
+ option(BUILD_LIB "Build the GMIC shared library" ON)
++option(BUILD_LIB_STATIC "Build the GMIC static library" ON)
+ option(BUILD_CLI "Build the CLI interface" ON)
+ option(BUILD_PLUGIN "Build the GIMP plug-in" ON)
+ option(ENABLE_X "Add support for X11" ON)
+@@ -44,7 +46,7 @@
+ if(ENABLE_OPENMP)
+   if(NOT APPLE)
+     set(COMPILE_FLAGS " ${COMPILE_FLAGS} -fopenmp -Dcimg_use_openmp ")
+-    set(EXTRA_LIBRARIES "-lgomp ${EXTRA_LIBRARIES}")
++	set(EXTRA_LIBRARIES "${EXTRA_LIBRARIES} -lgomp")
+   endif(NOT APPLE)
+ endif(ENABLE_OPENMP)
+ 
+@@ -187,9 +189,9 @@
+     "Choose the type of build, options are: Debug Release RelWithDebInfo."
+     FORCE)
+ endif(NOT CMAKE_BUILD_TYPE)
+-SET(CMAKE_CXX_FLAGS_DEBUG " -O0 -g -ansi -pedantic -Dcimg_verbosity=3 ${COMPILE_FLAGS}") 
+-SET(CMAKE_CXX_FLAGS_RELEASE " -O3 -mtune=generic ${COMPILE_FLAGS}") 
+-SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO " -O3 -g -mtune=generic ${COMPILE_FLAGS}") 
++SET(CMAKE_CXX_FLAGS_DEBUG " -ansi -pedantic -Dcimg_verbosity=3 ${COMPILE_FLAGS}") 
++SET(CMAKE_CXX_FLAGS_RELEASE " ${COMPILE_FLAGS}") 
++SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO " ${COMPILE_FLAGS}") 
+ 
+ 
+ # source files
+@@ -220,7 +222,7 @@
+ if(BUILD_LIB)
+   add_library(libgmic SHARED ${CLI_Includes} ${CLI_Sources})
+   add_dependencies(libgmic gmic_extra_headers)
+-  set_target_properties(libgmic PROPERTIES OUTPUT_NAME "gmic")
++  set_target_properties(libgmic PROPERTIES SOVERSION "1" OUTPUT_NAME "gmic")
+   IF(NOT APPLE)
+     set_target_properties(libgmic PROPERTIES LINK_FLAGS "-Wl,-soname,libgmic.so.1")
+   ENDIF(NOT APPLE)
+@@ -236,7 +238,13 @@
+     ${FFTW3_LIBRARIES}
+     ${EXTRA_LIBRARIES}
+     )
+-  
++
++  INSTALL(TARGETS libgmic LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++  INSTALL(FILES src/gmic.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++endif(BUILD_LIB)
++
++
++if(BUILD_LIB_STATIC)
+   add_library(libgmicstatic STATIC ${CLI_Includes} ${CLI_Sources})
+   add_dependencies(libgmicstatic gmic_extra_headers)
+   set_target_properties(libgmicstatic PROPERTIES OUTPUT_NAME "gmic")
+@@ -252,11 +260,10 @@
+     ${FFTW3_LIBRARIES}
+     ${EXTRA_LIBRARIES}
+     )
+-  
+-  INSTALL(TARGETS libgmic LIBRARY DESTINATION lib)
+-  INSTALL(TARGETS libgmicstatic ARCHIVE DESTINATION lib)
+-  INSTALL(FILES src/gmic.h DESTINATION include)
+-endif(BUILD_LIB)
++
++  INSTALL(TARGETS libgmicstatic ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++  INSTALL(FILES src/gmic.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++endif(BUILD_LIB_STATIC)
+ 
+ 
+ if(BUILD_CLI)
