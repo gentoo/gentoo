@@ -15,6 +15,7 @@
         </maintainer>
 	<use>
 	<flag name="npm">Enable NPM package manager</flag>
+	<flag name="bundled-openssl">Use bundled OpenSSL instead of system-wide</flag>
 	<flag name="snapshot">Enable snapshot creation for faster startup</flag>
 	</use>
 </pkgmetadata>

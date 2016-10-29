@@ -16,13 +16,13 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test"
+IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl bundled-openssl test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
 	npm? ( ${PYTHON_DEPS} )
 	>=net-libs/http-parser-2.6.2:=
 	>=dev-libs/libuv-1.9.0:=
-	>=dev-libs/openssl-1.0.2g:0=[-bindist]
+	!bundled-openssl? ( >=dev-libs/openssl-1.0.2g:0=[-bindist] )
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -86,11 +86,12 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
+	local myconf=( --shared-libuv --shared-http-parser --shared-zlib )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
 	use ssl || myconf+=( --without-ssl )
+	use bundled-openssl || myconf+=( --shared-openssl )
 	use debug && myconf+=( --debug )
 
 	case ${ABI} in
