@@ -34,7 +34,7 @@ pkg_setup() {
 	enewgroup vboxusers
 
 	CONFIG_CHECK="!TRIM_UNUSED_KSYMS"
-	ERROR_TRIM_UNUSED_KSYMS="This option removed kernel symbols that are needed by ${PN} to load correctly."
+	ERROR_TRIM_UNUSED_KSYMS="The kernel option CONFIG_TRIM_UNUSED_KSYMS removed kernel symbols that are needed by ${PN} to load correctly."
 
 }
 
