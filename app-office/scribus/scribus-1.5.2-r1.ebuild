@@ -6,6 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
+CMAKE_MAKEFILE_GENERATOR=ninja
 
 inherit cmake-utils fdo-mime flag-o-matic multilib python-single-r1
 
@@ -19,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts templates tk"
 
 #a=$((ls resources/translations/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'; ls resources/loremipsum/*xml | sed -e 's:\.: :g' -e 's:loremipsum\/: :g'| awk '{print $2}'; ls resources/dicts/hyph*dic | sed -e 's:\.: :g' -e 's:hyph_: :g' | awk '{print $2}'; ls resources/dicts/README_*txt | sed -e 's:_hyph::g' -e 's:\.: :g' -e 's:README_: :g' | awk '{print $2}') | sort | uniq); echo $a
-IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de_1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fi fi_FI fr gl he hr hu hu_HU ia id id_ID is is_IS it ja ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU_0 sa sk sk_SK sl sl_SI sq sr sv sv_SE th_TH tr uk uk_UA zh_CN zh_TW"
+IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de@1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fi fi_FI fr gl he hr hu hu_HU ia id id_ID is is_IS it ja ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU sa sk sk_SK sl sl_SI sq sr sv sv_SE th_TH tr uk uk_UA zh_CN zh_TW"
 IUSE+=" ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
@@ -157,7 +158,6 @@ src_install() {
 			_lang=$(translate_lang)
 			safe_delete "${ED}"/usr/share/man/${_lang}
 		fi
-			safe_delete "${ED}"/usr/share/man/${_lang}
 	done
 
 	if ! use scripts; then
@@ -211,6 +211,7 @@ safe_delete () {
 
 translate_lang() {
 	_lang=${1}
-#	[[ ${1} == "ru_RU" ]] && _lang+=_0
+	[[ ${1} == "ru_RU" ]] && _lang+=_0
+	[[ ${1} == "de@1901" ]] && _lang=de_1901
 	echo ${_lang}
 }

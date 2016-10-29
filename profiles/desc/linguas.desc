@@ -48,7 +48,7 @@ cy_GB - Welsh locale
 da - Danish locale
 da_DK - Danish locale for Denmark
 de - German locale
-de_1901 - German locale with old spelling
+de@1901 - German locale with old spelling
 de_CH - German locale for Switzerland
 de_DE - German locale for Germany
 dgo - Dogri locale for India
@@ -201,7 +201,6 @@ ro - Romanian locale
 ro_RO - Romanian locale for Romania
 ru - Russian locale
 ru_RU - Russian locale for Russia
-ru_RU_0 - Russian locale for Russia
 rue - Rusyn locale
 rw - Kinyarwanda locale
 sa - Sanskrit locale
