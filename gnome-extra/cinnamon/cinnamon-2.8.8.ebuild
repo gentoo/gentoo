@@ -26,7 +26,7 @@ IUSE="+nls +networkmanager" #+bluetooth
 # We need *both* python 2.7 and 3.x
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	python_targets_python2_7
-	|| ( python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
+	|| ( python_targets_python3_4 python_targets_python3_5 )
 "
 
 KEYWORDS="amd64 x86"
