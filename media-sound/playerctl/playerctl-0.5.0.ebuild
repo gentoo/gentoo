@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools xdg-utils
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
@@ -35,6 +35,8 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset # 596166
+
 	econf \
 		$(use_enable doc gtk-doc) \
 		$(use_enable doc gtk-doc-html) \
