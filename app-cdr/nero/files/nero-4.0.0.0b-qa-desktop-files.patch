@@ -1,0 +1,23 @@
+Fix QA issues caused by outdated .desktop files:
+* QA Notice: This package installs one or more .desktop files that do not
+* pass validation.
+*
+*  /usr/share/applications/nerolinux.desktop: warning:
+*  key "Categories" in group "Desktop Entry" contains a deprecated value "Application"
+
+--- a/usr/share/applications/nerolinux.desktop
++++ b/usr/share/applications/nerolinux.desktop
+@@ -53,4 +53,4 @@
+ Icon=nerolinux
+ MimeType=application/x-cd-image;application/x-iso;application/x-cue;application/x-nero-disc-image;application/x-nero-linux-compilation
+ Terminal=false
+-Categories=Application;AudioVideo;DiscBurning;Recorder;
++Categories=AudioVideo;DiscBurning;Recorder;
+--- a/usr/share/applications/nerolinuxexpress.desktop
++++ b/usr/share/applications/nerolinuxexpress.desktop
+@@ -53,4 +53,4 @@
+ Icon=nerolinuxexpress
+ MimeType=application/x-cd-image;application/x-iso;application/x-cue;application/x-nero-disc-image;application/x-nero-linux-compilation
+ Terminal=false
+-Categories=Application;AudioVideo;DiscBurning;Recorder;
++Categories=AudioVideo;DiscBurning;Recorder;
