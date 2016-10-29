@@ -52,7 +52,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
-	!kde-misc/plasma-nm
+	!kde-plasma/plasma-nm:4
 "
 
 src_configure() {

@@ -2,3 +2,4 @@ move net-analyzer/ipv6-toolkit net-analyzer/ipv6toolkit
 move dev-ml/qcheck dev-ml/iTeML
 move x11-apps/xvfb-run x11-misc/xvfb-run
 move kde-plasma/plasma-mediacenter media-video/plasma-mediacenter
+move kde-misc/plasma-nm kde-plasma/plasma-nm
