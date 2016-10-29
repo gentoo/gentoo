@@ -2,14 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
+EAPI=6
 
 PHP_EXT_NAME="geoip"
-PHP_EXT_INI="yes"
-PHP_EXT_ZENDEXT="no"
 DOCS="README ChangeLog"
-
-USE_PHP="php7-0 php5-6 php5-5"
+USE_PHP="php5-5 php5-6 php7-0"
 
 inherit php-ext-pecl-r3
 
@@ -20,9 +17,5 @@ LICENSE="PHP-3"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=dev-libs/geoip-1.4.0"
+DEPEND="dev-libs/geoip"
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/${PV}-public-init.patch"
-	"${FILESDIR}/${PV}-php7-support.patch" )
