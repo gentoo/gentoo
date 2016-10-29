@@ -34,6 +34,9 @@ src_prepare() {
 	# Fix consolekit and selinux
 	eapply "${FILESDIR}/${P}-pam_console-disable.patch"
 
+	# Fix compile with musl #597260
+	eapply "${FILESDIR}/${P}-fix-execinfo.patch"
+
 	eapply_user
 
 	# this replaces the bootstrap/autogen script in most packages
