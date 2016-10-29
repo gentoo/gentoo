@@ -17,7 +17,7 @@ SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="cxsparse c++11 doc examples gflags lapack openmp +schur sparse test"
-REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) doc? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="test? ( gflags ) sparse? ( lapack )"
 
 RDEPEND="
 	dev-cpp/glog[gflags?]
