@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts templates tk"
 
 #a=$((ls resources/translations/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'; ls resources/loremipsum/*xml | sed -e 's:\.: :g' -e 's:loremipsum\/: :g'| awk '{print $2}'; ls resources/dicts/hyph*dic | sed -e 's:\.: :g' -e 's:hyph_: :g' | awk '{print $2}'; ls resources/dicts/README_*txt | sed -e 's:_hyph::g' -e 's:\.: :g' -e 's:README_: :g' | awk '{print $2}') | sort | uniq); echo $a
-IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de_1901 de_CH de_DE el en_AU en_EN en_GB en_US eo es es_ES et eu fi fi_FI fr gl he hr hu hu_HU ia id id_ID is is_IS it ja ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU_0 sa sk sk_SK sl sl_SI sq sr sv sv_SE th_TH tr uk uk_UA zh_CN zh_TW"
+IUSE_LINGUAS=" af ar bg br ca ca_ES cs cs_CZ cy cy_GB da da_DK de de@1901 de_CH de_DE el en_AU en_GB en_US eo es es_ES et eu fi fi_FI fr gl he hr hu hu_HU ia id id_ID is is_IS it ja ko ku la lt lt_LT nb_NO nl nn_NO pl pl_PL pt pt_BR pt_PT ro ro_RO ru ru_RU sa sk sk_SK sl sl_SI sq sr sv sv_SE th_TH tr uk uk_UA zh_CN zh_TW"
 IUSE+=" ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
@@ -105,20 +105,28 @@ src_prepare() {
 }
 
 src_configure() {
-	local lang langs
+	local _lang lang langs
 	for lang in ${IUSE_LINGUAS}; do
+		_lang=$(translate_lang ${lang})
 		if use linguas_${lang} || [[ ${lang} == "en" ]]; then
 			# From the CMakeLists.txt
 			# "#Bit of a hack, preprocess all the filenames to generate our language string, needed for -DWANT_GUI_LANG=en_GB;de_DE , etc"
-			langs+=";${lang}"
+			langs+=";${_lang}"
 		else
 			# Don't install localized documentation
-			sed -e "/${lang}/d" -i doc/CMakeLists.txt || die
-			safe_delete file ./resources/dicts/README_${lang}.txt
-			safe_delete file ./resources/dicts/README_hyph_${lang}.txt
-			safe_delete file ./resources/dicts/hyph_${lang}.dic
-			safe_delete file ./resources/loremipsum/${lang}.xml
+			sed -e "/${_lang}/d" -i doc/CMakeLists.txt || die
+			safe_delete \
+				./resources/dicts/README_${_lang}.txt \
+				./resources/dicts/README_hyph_${_lang}.txt \
+				./resources/dicts/hyph_${_lang}.dic \
+				./resources/loremipsum/${_lang}.xml
 		fi
+		sed -e "/en_EN/d" -i doc/CMakeLists.txt || die
+		safe_delete \
+			./resources/dicts/README_en_EN.txt \
+			./resources/dicts/README_hyph_en_EN.txt \
+			./resources/dicts/hyph_en_EN.dic \
+			./resources/loremipsum/en_EN.xml
 	done
 
 	local mycmakeargs=(
@@ -144,10 +152,12 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	local lang
+	local lang _lang
+	# en_EN can be deleted always
 	for lang in ${IUSE_LINGUAS}; do
 		if ! use linguas_${lang}; then
-			safe_delete dir "${ED}"/usr/share/man/${lang}
+			_lang=$(translate_lang)
+			safe_delete "${ED}"/usr/share/man/${_lang}
 		fi
 	done
 
@@ -184,22 +194,25 @@ pkg_postrm() {
 }
 
 safe_delete () {
-	case $1 in
-		dir)
-			if [[ -d "${2}" ]]; then
-				ebegin "Deleting ${2} recursively"
-				rm -r "${2}" || die
-				eend $?
-			fi
-			;;
-		file)
-			if [[ -f "${2}" ]]; then
-				ebegin "Deleting ${2}"
-				rm "${2}" || die
-				eend $?
-			fi
-			;;
-		*)
-			die "Wrong usage"
-	esac
+	local x
+	for x in ${@}; do
+		if [[ -d "${x}" ]]; then
+			ebegin "Deleting ${x} recursively"
+			rm -r "${x}" || die
+			eend $?
+		elif [[ -f "${x}" ]]; then
+			ebegin "Deleting ${x}"
+			rm "${x}" || die
+			eend $?
+		else
+			ewarn "${x} not found"
+		fi
+	done
+}
+
+translate_lang() {
+	_lang=${1}
+	[[ ${1} == "ru_RU" ]] && _lang+=_0
+	[[ ${1} == "de@1901" ]] && _lang=de_1901
+	echo ${_lang}
 }
