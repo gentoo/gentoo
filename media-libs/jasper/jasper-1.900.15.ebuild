@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Implementation of the codec specified in the JPEG-2000 Part-1 standard"
 HOMEPAGE="http://www.ece.uvic.ca/~mdadams/jasper/"
@@ -40,6 +40,13 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# bug 598418
+	append-cflags -std=gnu11
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
