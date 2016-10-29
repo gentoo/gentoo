@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">cimg</remote-id>
-		<bugs-to>https://sourceforge.net/tracker/?group_id=96492</bugs-to>
+		<remote-id type="github">dtschump/CImg</remote-id>
 	</upstream>
 </pkgmetadata>
