@@ -4,7 +4,6 @@
 
 EAPI=6
 
-#inherit eutils rpm pax-utils
 inherit eutils rpm
 
 DESCRIPTION="P2P Internet Telephony (VoiceIP) client"
@@ -20,8 +19,7 @@ S="${WORKDIR}"
 QA_PREBUILT=opt/skypeforlinux/skypeforlinux
 RESTRICT="mirror bindist strip" #299368
 
-RDEPEND="virtual/ttf-fonts
-	dev-libs/atk
+RDEPEND="dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -35,10 +33,12 @@ RDEPEND="virtual/ttf-fonts
 	sys-apps/dbus
 	sys-devel/gcc[cxx]
 	sys-libs/glibc
+	virtual/ttf-fonts
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
+	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
 	x11-libs/libXdamage
@@ -47,7 +47,6 @@ RDEPEND="virtual/ttf-fonts
 	x11-libs/libXi
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango"
 
@@ -86,9 +85,6 @@ src_install() {
 	into /opt
 	dobin usr/bin/skypeforlinux
 
-#	insinto /etc/dbus-1/system.d
-#	doins ${PN}.conf
-
 	dodoc -r usr/share/doc/skypeforlinux/.
 
 	doicon usr/share/pixmaps/skypeforlinux.png
@@ -108,9 +104,6 @@ src_install() {
 		eqawarn "you suspect that ${PN} is being broken by this modification,"
 		eqawarn "please open a bug."
 	fi
-
-#	echo PRELINK_PATH_MASK=/opt/bin/${PN} > ${T}/99${PN}
-#	doenvd "${T}"/99${PN} #430142
 }
 
 pkg_postinst() {

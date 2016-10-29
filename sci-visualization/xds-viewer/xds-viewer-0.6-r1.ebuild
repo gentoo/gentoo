@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="Viewing X-ray diffraction and control images in the context of data processing by the XDS"
+DESCRIPTION="X-ray diffraction/control image viewer in the context of data processing by XDS"
 HOMEPAGE="http://xds-viewer.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -17,9 +17,9 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
-	media-libs/libpng
+	media-libs/libpng:0=
 	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
 
-DOCS="README"
-HTML_DOCS="src/doc/*"
+HTML_DOCS=( src/doc/. )
+PATCHES=( "${FILESDIR}"/${P}-fix-c++14.patch )
