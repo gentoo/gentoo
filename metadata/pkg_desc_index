@@ -1298,7 +1298,7 @@ app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
 app-emulation/e-uae 0.8.29_rc4-r2: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/edumips64 1.1 1.2: A visual and cross-platform MIPS64 CPU Simulator
-app-emulation/flannel 0.5.5: An etcd backed network fabric for containers
+app-emulation/flannel 0.5.5 0.6.2: An etcd backed network fabric for containers
 app-emulation/free42 1.5.7 1.5.8 1.5.10: An HP-42S Calculator Simulator
 app-emulation/fuse 1.0.0 1.1.1: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.1.1: Utils for the Free Unix Spectrum Emulator by Philip Kendall
