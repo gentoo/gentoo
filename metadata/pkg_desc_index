@@ -14361,7 +14361,7 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.9.0.2 1.10.0.1-r1: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.11.0.1: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.16 0.10.19: Official desktop client for Telegram (binary package)
@@ -16362,7 +16362,7 @@ sci-visualization/spyview 20111018 20130823: Interactive plotting program
 sci-visualization/veusz 1.11 1.24: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0 2.9.2 2.10.3: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
-sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
+sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
 sci-visualization/xgraph 12.1-r2 12.1-r3: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1: Tool for extracting data points from graphs
 sci-visualization/yt 3.2.3 3.3.2: Astrophysical Simulation Analysis and Vizualization package
