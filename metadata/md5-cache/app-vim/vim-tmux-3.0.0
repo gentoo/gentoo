@@ -3,11 +3,11 @@ DEPEND=app-misc/tmux app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvi
 DESCRIPTION=vim plugin: tmux support for vim
 EAPI=6
 HOMEPAGE=https://github.com/tmux-plugins/vim-tmux
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=vim.org
 RDEPEND=app-misc/tmux app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/tmux-plugins/vim-tmux/archive/v3.0.0.zip -> vim-tmux-3.0.0.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_compile:- src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=d0daf5cd871129cfb9cb5499a4134954
+_md5_=a092792cde2446bff755b914a62c27d2
