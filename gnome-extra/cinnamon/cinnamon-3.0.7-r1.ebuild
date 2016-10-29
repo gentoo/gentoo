@@ -23,10 +23,10 @@ SLOT="0"
 # bluetooth support dropped due to bug #511648
 IUSE="+nls +networkmanager" #+bluetooth
 
-# We need *both* python 2.7 and 3.x
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	python_targets_python2_7
-	|| ( python_targets_python3_4 python_targets_python3_5 )
+# We need *both* python 2.x and 3.x
+REQUIRED_USE="
+	|| ( $(python_gen_useflags 'python2*') )
+	|| ( $(python_gen_useflags 'python3*') )
 "
 
 KEYWORDS="~amd64 ~x86"
