@@ -43,11 +43,6 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
-src_prepare() {
-	default
-	gunzip man/${PN}.1.gz || die
-}
-
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -56,6 +51,11 @@ pkg_pretend() {
 	if ! test-flag-CXX -std=c++11 ; then
 		die "You need at least GCC 4.7.x or Clang >= 3.3 for C++11-specific compiler flags"
 	fi
+}
+
+src_prepare() {
+	default
+	gunzip man/${PN}.1.gz || die
 }
 
 src_configure() {
