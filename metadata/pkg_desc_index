@@ -8476,6 +8476,7 @@ dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twist
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10.4 0.11.8 0.11.9 0.11.10 0.11.11: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0 0.29.0: A built-package format for Python
+dev-python/whichcraft 0.4.0: This package provides cross-platform cross-python shutil.which functionality
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.3 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
