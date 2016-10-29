@@ -16,7 +16,7 @@ REQUIRED_USE="oxygen? ( icons )"
 
 RDEPEND="
 	>=lxde-base/lxmenu-data-0.1.2
-	=lxqt-base/lxqt-common-0.10*
+	~lxqt-base/lxqt-common-${PV}
 	~lxqt-base/lxqt-config-${PV}
 	~lxqt-base/lxqt-globalkeys-${PV}
 	~lxqt-base/lxqt-notificationd-${PV}
