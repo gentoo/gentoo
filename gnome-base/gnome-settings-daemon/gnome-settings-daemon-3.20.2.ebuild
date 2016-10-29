@@ -17,7 +17,6 @@ IUSE="+colord +cups debug input_devices_wacom -openrc-force networkmanager polic
 REQUIRED_USE="
 	input_devices_wacom? ( udev )
 	smartcard? ( udev )
-	test? ( ${PYTHON_REQUIRED_USE} )
 "
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
