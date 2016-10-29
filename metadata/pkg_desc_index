@@ -156,7 +156,7 @@ app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit 0.8.15 1.0.11-r1 1.1.1 1.1.4: PackageKit Package Manager interface (meta package)
 app-admin/packagekit-base 0.8.15-r1 1.0.11 1.1.1 1.1.4: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1 1.1.4: Gtk3 PackageKit backend library
-app-admin/packagekit-qt 0.8.8 0.9.5 0.9.6: Qt PackageKit backend library
+app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
 app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 0.99_beta 1.00_beta: Password manager with wxGTK based frontend
@@ -468,7 +468,7 @@ app-cdr/mkcdtoc 1.0: command-line utility to create toc-files for cdrdao
 app-cdr/mode2cdmaker 1.5.1: Utility to create mode-2 CDs, for example XCDs
 app-cdr/mp3burn 0.4.2: Burn mp3s without filling up your disk with .wav files
 app-cdr/multicd 1.7.5-r1: Tool for making direct copies of your files to multiple cd's
-app-cdr/nero 4.0.0.0b-r1: Nero Burning ROM for Linux
+app-cdr/nero 4.0.0.0b-r2: Nero Burning ROM for Linux
 app-cdr/nrg2iso 0.4-r1: Converts Nero nrg CD-images to iso
 app-cdr/pburn 3.4.3: A burning tool with GTK+ frontend
 app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM drive
@@ -15360,7 +15360,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 4.101-r9 5.39 5.42: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.39 5.43: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
