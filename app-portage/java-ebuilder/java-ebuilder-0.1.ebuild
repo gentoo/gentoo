@@ -20,7 +20,9 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=virtual/jdk-1.8"
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND=">=virtual/jre-1.8
+	sys-process/parallel
+	>=dev-java/maven-bin-3"
 
 S="${WORKDIR}/${P}"
 
@@ -39,7 +41,7 @@ Main-Class: ${MAIN_CLASS}" \
 }
 
 src_prepare() {
-	hprefixify scripts/{{tree,meta}.sh,movl}
+	hprefixify scripts/{{tree,meta}.sh,movl} java-ebuilder.conf
 	eapply_user
 }
 
@@ -49,7 +51,7 @@ src_install() {
 
 	insinto /var/lib/${PN}
 	doins -r maven
-	dodir /var/lib/${PN}o/{poms,cache}
+	dodir /var/lib/${PN}/{poms,cache}
 
 	dodoc README maven.conf
 
@@ -57,4 +59,7 @@ src_install() {
 	doexe scripts/{tree,meta}.sh
 
 	dobin scripts/movl
+
+	insinto /etc
+	doins java-ebuilder.conf
 }
