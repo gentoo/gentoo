@@ -9304,7 +9304,7 @@ dev-ruby/regexp_parser 0.3.2 0.3.6: A library for tokenizing, lexing, and parsin
 dev-ruby/request_store 1.0.5 1.3.0 1.3.1: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0 1.8.0-r1 1.8.0-r2 1.8.0-r3 2.0.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
-dev-ruby/rex-arch 0.1.1: architecture specific information for Rex
+dev-ruby/rex-arch 0.1.1 0.1.2: architecture specific information for Rex
 dev-ruby/rex-java 0.1.2: Ruby Exploitation(Rex) library for parsing Java serialized streams
 dev-ruby/rex-ole 0.1.2: Ruby Exploitation(Rex) library gem for reading/writing OLE files and streams
 dev-ruby/rex-powershell 0.1.1-r1 0.1.64 0.1.65: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
@@ -9405,7 +9405,7 @@ dev-ruby/rubytter 1.5.1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 0.9.9-r2 1.1.7-r1 1.2.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
-dev-ruby/sanitize 2.1.0 4.2.0 4.3.0: Sanitize is a whitelist-based HTML sanitizer
+dev-ruby/sanitize 2.1.0 4.2.0 4.3.0 4.4.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22 3.4.22-r1: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
