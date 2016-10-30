@@ -23,6 +23,11 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+# @ECLASS-VARIABLE: QT_MINIMAL
+# @DESCRIPTION:
+# Minimal Qt version to require for the package.
+: ${QT_MINIMAL:=5.6.1}
+
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
