@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( php_targets_php5-6 )
 SLOT=0
 SRC_URI=http://download.suhosin.org/suhosin-0.9.38.tar.gz
 _eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	8b5fc87e3e35f5ff0c11b535ac7459fb	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=ea209b582bd316c0e01bb76bee8740ad
