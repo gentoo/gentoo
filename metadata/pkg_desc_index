@@ -12256,7 +12256,7 @@ media-fonts/ubuntu-font-family 0.71.2 0.71.2-r1 0.80 0.83: A set of matching lib
 media-fonts/umeplus-fonts 20130511 20131109 20150115 20160402: UmePlus fonts are modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
-media-fonts/unifont 8.0.01 9.0.01 9.0.02: GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font
+media-fonts/unifont 8.0.01 9.0.04: GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font
 media-fonts/urw-fonts 2.4.9: free good quality fonts gpl'd by URW++
 media-fonts/urwvn-fonts 3.05: fonts gpl'd by Han The Thanh, based on URW++ fonts with Vietnamese glyphs added
 media-fonts/vc-fonts 20020207-r2: Vico bitmap Fonts
