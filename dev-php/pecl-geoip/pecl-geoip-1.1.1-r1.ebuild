@@ -19,3 +19,5 @@ IUSE=""
 
 DEPEND="dev-libs/geoip"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/fix-failing-tests-1.1.1.patch" )
