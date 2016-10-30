@@ -7800,7 +7800,7 @@ dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lin
 dev-python/protobuf-python 3.0.0_beta3_p1: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
-dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0 4.3.1 4.4.1: Retrieve information on running processes and system utilization
+dev-python/psutil 1.2.1 2.1.3 4.4.1 4.4.2: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1 2.6.2: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
