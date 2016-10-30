@@ -60,7 +60,7 @@ app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 3.1.9 3.1.13: A usable configuration management system
 app-admin/cgmanager 0.39 0.41: Control Group manager daemon
 app-admin/checkrestart 0.47-r3 0.47-r4: the sysadmin's rolling upgrade tool
-app-admin/checksec 1.7.2 1.7.3 1.7.4: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
+app-admin/checksec 1.7.2 1.7.3 1.7.4 1.7.5: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3 1.3-r1: run a network service at low privilege level and with restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
