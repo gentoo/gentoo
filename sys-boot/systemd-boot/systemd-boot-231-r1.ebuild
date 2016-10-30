@@ -85,6 +85,7 @@ src_compile() {
 		libsystemd-shared.la
 		bootctl
 		man/bootctl.1
+		man/kernel-install.8
 		linux$(efi-mt).efi.stub
 		systemd-boot$(efi-mt).efi
 	)
@@ -105,8 +106,13 @@ src_install() {
 		bin_PROGRAMS=bootctl
 		install-binPROGRAMS
 
-		man_MANS=man/bootctl.1
+		# kernel-install
+		install-dist_binSCRIPTS
+		install-dist_kernelinstallSCRIPTS
+
+		man_MANS="man/bootctl.1 man/kernel-install.8"
 		install-man1
+		install-man8
 
 		install-bootlibDATA
 	)
