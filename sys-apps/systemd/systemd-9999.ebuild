@@ -159,6 +159,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 		"${FILESDIR}/228-noclean-tmp.patch"
+		"${FILESDIR}/232-systemd-user-pam.patch"
 	)
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
