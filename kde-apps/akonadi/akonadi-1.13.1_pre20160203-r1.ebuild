@@ -5,12 +5,13 @@
 EAPI=6
 
 if [[ ${PV} = *_pre* ]]; then
-	COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c64"
-	SRC_URI="https://quickgit.kde.org/?p=akonadi.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN/-server/}"
+	# KDE quickgit https certificate issue
+	# COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c64"
+	# SRC_URI="https://quickgit.kde.org/?p=${PN}.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.gz"
+	S="${WORKDIR}/${PN}"
 else
-	SRC_URI="mirror://kde/stable/${PN/-server/}/src/${P/-server/}.tar.bz2"
-	S="${WORKDIR}/${P/-server/}"
+	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.bz2"
 fi
 inherit cmake-utils
 

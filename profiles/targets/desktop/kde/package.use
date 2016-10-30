@@ -33,7 +33,7 @@ dev-libs/libgit2 threads
 # Required by kde-base/pykde4
 dev-python/PyQt4 script sql webkit
 
-# Required by app-office/akonadi-server
+# Required by kde-apps/akonadi
 dev-qt/qtsql mysql
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind

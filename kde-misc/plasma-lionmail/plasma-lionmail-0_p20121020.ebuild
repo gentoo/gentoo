@@ -18,7 +18,7 @@ IUSE="debug"
 DEPEND="
 	$(add_kdebase_dep kdelibs)
 	$(add_kdeapps_dep kdepimlibs)
-	app-office/akonadi-server:4
+	kde-apps/akonadi:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4

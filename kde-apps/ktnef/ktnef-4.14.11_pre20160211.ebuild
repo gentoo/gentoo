@@ -18,8 +18,8 @@ LICENSE="LGPL-2.1"
 IUSE="debug"
 
 DEPEND="
-	app-office/akonadi-server:4
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
+	kde-apps/akonadi:4
 "
 RDEPEND="${DEPEND}"
 

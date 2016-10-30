@@ -8,7 +8,7 @@ dev-util/cmake -qt4 -qt5
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
 
-# Required by app-office/akonadi-server
+# Required by kde/akonadi
 dev-qt/qtsql mysql
 
 # Required by dev-qt/qtcore
