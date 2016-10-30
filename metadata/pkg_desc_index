@@ -4095,7 +4095,7 @@ dev-java/jettison 1.3.7: A JSON StAX implementation
 dev-java/jetty-alpn-api 1.1.2: Jetty's ALPN API
 dev-java/jetty-npn-api 1.1.1: Jetty's NPN API
 dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
-dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
+dev-java/jffi 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.19-r1: JFreeChart is a free Java class library for generating charts
@@ -4129,11 +4129,11 @@ dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Inter
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
 dev-java/jna 3.4.0 3.4.1 4.2.2: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
-dev-java/jnr-constants 0.8.3-r1 0.8.6: A set of platform constants (e.g. errno values)
+dev-java/jnr-constants 0.8.6: A set of platform constants (e.g. errno values)
 dev-java/jnr-enxio 0.7-r1: Java Native Runtime Enhanced X-platform I/O
-dev-java/jnr-ffi 0.5.10 0.6.0 0.7.11-r1 1.0.10 2.0.2: An abstracted interface to invoking native functions from java
+dev-java/jnr-ffi 2.0.2: An abstracted interface to invoking native functions from java
 dev-java/jnr-netdb 1.1.4: Network services database access for java
-dev-java/jnr-posix 1.1.8-r1 2.4.0 3.0.10: Lightweight cross-platform POSIX emulation layer for Java
+dev-java/jnr-posix 3.0.10: Lightweight cross-platform POSIX emulation layer for Java
 dev-java/jnr-unixsocket 0.6-r1: Unix sockets for Java
 dev-java/jnr-x86asm 1.0.2-r1: A pure-java port of asmjit
 dev-java/joda-convert 1.3.1: Java library for conversion between Object and String
@@ -4350,7 +4350,7 @@ dev-java/swing-layout 1.0.4 1.0.4-r1: Professional cross platform layouts with S
 dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
 dev-java/swingx-beaninfo 1.6.4: SwingX Beaninfo
-dev-java/swingx-ws 1.0_p20110515-r1: Utilities and widgets to integrate Swing GUIs with web applications
+dev-java/swingx-ws 1.0-r1 1.0_p20110515-r1: Utilities and widgets to integrate Swing GUIs with web applications
 dev-java/swt 3.5.2 3.7.2-r1 3.8.2-r1 4.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
