@@ -37,6 +37,5 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	!app-mobilephone/obexd
 	!app-mobilephone/obex-data-server
-	!net-wireless/bluedevil
-	!net-wireless/kbluetooth
+	!kde-plasma/bluedevil:4
 "
