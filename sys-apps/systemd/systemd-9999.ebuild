@@ -157,10 +157,16 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
-		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-		"${FILESDIR}/228-noclean-tmp.patch"
-		"${FILESDIR}/232-systemd-user-pam.patch"
 	)
+
+	if ! use vanilla; then
+		PATCHES+=(
+			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/228-noclean-tmp.patch"
+			"${FILESDIR}/232-systemd-user-pam.patch"
+		)
+	fi
+
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
 	default
