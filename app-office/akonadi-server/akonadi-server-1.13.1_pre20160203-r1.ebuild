@@ -4,30 +4,22 @@
 
 EAPI=6
 
-if [[ ${PV} = *9999* ]]; then
-	scm_eclass=git-r3
-	EGIT_REPO_URI=( "git://anongit.kde.org/akonadi" )
-	SRC_URI=""
-	KEYWORDS=""
+if [[ ${PV} = *_pre* ]]; then
+	COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c64"
+	SRC_URI="https://quickgit.kde.org/?p=akonadi.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN/-server/}"
 else
-	if [[ ${PV} = *_pre* ]]; then
-		COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c64"
-		SRC_URI="https://quickgit.kde.org/?p=akonadi.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN/-server/}"
-	else
-		SRC_URI="mirror://kde/stable/${PN/-server/}/src/${P/-server/}.tar.bz2"
-		S="${WORKDIR}/${P/-server/}"
-	fi
-	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	SRC_URI="mirror://kde/stable/${PN/-server/}/src/${P/-server/}.tar.bz2"
+	S="${WORKDIR}/${P/-server/}"
 fi
-
-inherit cmake-utils ${scm_eclass}
+inherit cmake-utils
 
 DESCRIPTION="The server part of Akonadi"
 HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="4"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
