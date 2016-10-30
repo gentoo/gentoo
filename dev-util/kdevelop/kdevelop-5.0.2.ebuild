@@ -76,7 +76,7 @@ RESTRICT+=" test"
 # see bug 366471
 
 PATCHES=(
-	"${FILESDIR}/${PN}-ninja-optional.patch"
+	"${FILESDIR}/${P}-ninja-optional.patch"
 	"${FILESDIR}/${P}-github-crash.patch"
 )
 
