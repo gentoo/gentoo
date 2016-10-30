@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug hardened iconv ipv6 rpc crosscompile_opts_headers-only"
+IUSE="debug hardened iconv ipv6 rpc symlink-compat crosscompile_opts_headers-only"
 RESTRICT="strip"
 
 # 1) We can't upgrade from uclibc to uclibc-ng via a soft blocker since portage
@@ -379,14 +379,16 @@ src_install() {
 		return 0
 	fi
 
-	dosym libc.so.0 "${DESTDIR}"/lib/libcrypt.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libdl.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libm.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libpthread.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/librt.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libresolv.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libubacktrace.so.0
-	dosym libc.so.0 "${DESTDIR}"/lib/libutil.so.0
+	if use symlink-compat; then
+		dosym libc.so.0 "${DESTDIR}"/lib/libcrypt.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libdl.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libm.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libpthread.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/librt.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libresolv.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libubacktrace.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libutil.so.0
+	fi
 
 	emake DESTDIR="${D}" install_utils
 	dobin extra/scripts/getent
