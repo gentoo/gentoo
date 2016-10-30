@@ -20,7 +20,6 @@
 		<flag name="apparmor">Enable support for custom AppArmor
 			profiles</flag>
 		<flag name="bind">Enable custom bind mounts</flag>
-		<flag name="busybox">Enable support (workaround) for busybox</flag>
 		<flag name="chroot">Enable chrooting to custom directory</flag>
 		<flag name="file-transfer">Enable file transfers between sandboxes and
 			the host system</flag>
