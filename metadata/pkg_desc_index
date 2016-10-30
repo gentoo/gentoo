@@ -17062,7 +17062,7 @@ sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/systemd-boot 231: UEFI boot manager from systemd (formerly gummiboot)
+sys-boot/systemd-boot 231-r1: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.4-r1: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
