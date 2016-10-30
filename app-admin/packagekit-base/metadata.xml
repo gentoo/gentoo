@@ -11,6 +11,10 @@
 		<name>Fabio Erculiani</name>
 		<description>CC on bugs</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
 	<use>
 		<flag name="command-not-found">Enable packagekit support on shell "command not found"</flag>
 		<flag name="cron">Install cron script for auto-update</flag>
