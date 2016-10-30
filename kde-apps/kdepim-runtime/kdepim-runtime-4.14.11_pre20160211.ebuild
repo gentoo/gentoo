@@ -21,10 +21,10 @@ RESTRICT="test"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)' ${PV})
-	>=app-office/akonadi-server-1.12.90
 	dev-libs/boost:=
 	dev-libs/libxml2:2
 	dev-libs/libxslt
+	kde-apps/akonadi:4
 	x11-misc/shared-mime-info
 	google? ( >=net-libs/libkgapi-2.0:4 )
 "

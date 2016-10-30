@@ -18,14 +18,13 @@ IUSE="debug ldap prison"
 RESTRICT="test"
 
 DEPEND="
-	!kde-misc/akonadi-social-utils
 	>=app-crypt/gpgme-1.1.6
-	>=app-office/akonadi-server-1.12.90[qt4(+)]
 	>=dev-libs/boost-1.35.0-r5:=
 	dev-libs/libgpg-error
 	>=dev-libs/libical-0.48-r2:=
 	dev-libs/cyrus-sasl
 	>=dev-libs/qjson-0.8.1
+	kde-apps/akonadi:4
 	media-libs/phonon[qt4]
 	x11-misc/shared-mime-info
 	prison? ( media-libs/prison:4 )

@@ -21,8 +21,8 @@ DEPEND="
 	$(add_kdebase_dep baloo '' 4.14.3)
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
 	app-crypt/gpgme
-	>=app-office/akonadi-server-1.12.90
 	dev-libs/grantlee:0
+	kde-apps/akonadi:4
 	google? ( net-libs/libkgapi:4 )
 "
 RDEPEND="${DEPEND}

@@ -51,7 +51,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql )
-	!app-office/akonadi-server
 	!kde-apps/kdepimlibs
 "
 
