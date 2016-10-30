@@ -239,7 +239,6 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Anthony G. Basile <blueness@gentoo.org> (15 Nove 2012)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
-kde-apps/krdc telepathy
 kde-apps/krfb telepathy
 net-im/choqok telepathy
 
@@ -310,10 +309,6 @@ media-sound/amarok upnp
 # Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
 # Missing keywords on dependencies
 app-cdr/brasero vcd
-
-# Brent Baude <ranger@gentoo.org> (25 June 2011)
-# kde-base/krossjava fails to build on ppc
-kde-apps/kdebindings-meta java
 
 # Doug Goldstein <cardoe@gentoo.org> (27 May 2011)
 # app-emulation/spice, app-emulation/xen, and sys-cluster/ceph

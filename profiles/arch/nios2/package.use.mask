@@ -152,15 +152,12 @@ app-accessibility/speech-dispatcher flite
 # mask kde-base/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/krdc rdesktop
-kde-apps/kopete jingle msn sms
+kde-apps/kopete jingle msn
 kde-base/kdeplasma-addons fcitx oauth qwt scim
 kde-apps/okular ebook chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
-kde-base/smokeqt qscintilla qwt
-kde-base/qtruby qscintilla qwt
-kde-base/perlqt qscintilla qwt
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
 # media-video/coherence not keyworded
