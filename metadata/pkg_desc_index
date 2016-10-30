@@ -1996,7 +1996,6 @@ app-mobilephone/yaps 0.96-r5: Yet Another Pager Software (optional with CAPI sup
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
-app-office/akonadi-server 1.13.1_pre20160203-r1: The server part of Akonadi
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0 4.1.0: a text-based calendar and scheduling application
 app-office/calligra 2.9.11: KDE Office Suite
@@ -11339,7 +11338,7 @@ java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r1 3.0-r1 3.1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 16.08.2: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi 1.13.1_pre20160203-r1 16.08.2: Storage service for PIM data and libraries for PIM apps
 kde-apps/akonadi-calendar 16.08.2: Library for akonadi calendar integration
 kde-apps/akonadi-contacts 16.08.2: Library for akonadi contact integration
 kde-apps/akonadi-import-wizard 16.08.2: Assistant to import PIM data from other applications into Akonadi
@@ -11831,7 +11830,7 @@ kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that 
 kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
 kde-misc/plasma-applet-redshift-control 1.0.17: Plasma 5 applet for controlling redshift
 kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
-kde-misc/plasma-lionmail 0_p20121020: A Plasma widget displaying new and important email
+kde-misc/plasma-lionmail 0_p20121020: Plasma widget displaying new and important email
 kde-misc/plasma-mpd-nowplaying 0.3: Plasmoid attached to MPD displaying currently played item
 kde-misc/plasma-network-status 0.1.1: KDE applet to monitor the network interface status
 kde-misc/plasma-photooftheday 2.1.1: Photo of the Day plasmoid
