@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 MY_P="${PN}-2011_05_15-src"
 JAVA_PKG_IUSE="doc source"
@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="bt747"
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="
+CP_DEPEND="
 	dev-java/jdom:0
 	dev-java/json:0
 	dev-java/rome:0
@@ -29,18 +29,19 @@ CDEPEND="
 	dev-java/xml-commons-external:1.4"
 
 RDEPEND="
-	${CDEPEND}
+	${CP_DEPEND}
 	>=virtual/jre-1.6"
 
 DEPEND="
-	${CDEPEND}
-	>=virtual/jdk-1.6"
+	${CP_DEPEND}
+	>=virtual/jdk-1.6
+	app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}/src"
 JAVA_SRC_DIR="beaninfo java"
-JAVA_GENTOO_CLASSPATH="commons-httpclient-3,jdom-1.0,json,jtidy,rome,swing-layout-1,swingx-1.6,swingx-beaninfo,xerces-2,xml-commons-external-1.4"
 
-java_prepare() {
+src_prepare() {
+	default
 	java-pkg_clean "${WORKDIR}"
 
 	# SwingWorker has been built-in since Java 6.
@@ -53,6 +54,8 @@ java_prepare() {
 	# GraphicsUtilities moved in later SwingX versions.
 	sed -i "s:org\.jdesktop\.swingx\.graphics\.GraphicsUtilities:org.jdesktop.swingx.util.GraphicsUtilities:g" \
 		java/org/jdesktop/swingx/mapviewer/AbstractTileFactory.java || die
+
+	java-pkg-2_src_prepare
 }
 
 src_compile() {
