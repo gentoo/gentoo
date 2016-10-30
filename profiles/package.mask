@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (30 Oct 2016)
+# This was renamed by upstream years ago to jnr-ffi, which we have
+# long had a package for. Removal in 30 days.
+dev-java/jaffl
+
 # David Seifert <soap@gentoo.org> (29 Oct 2016)
 # Unmaintained, broken, do not work with GCC 6
 # Bugs #594506, #597780, removal in 30 days.
