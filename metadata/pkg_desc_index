@@ -14570,7 +14570,7 @@ net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1: An HTTP library implementation in C
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
+net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
