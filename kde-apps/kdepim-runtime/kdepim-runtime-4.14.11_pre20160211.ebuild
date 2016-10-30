@@ -21,7 +21,7 @@ RESTRICT="test"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)' ${PV})
-	>=app-office/akonadi-server-1.12.90
+	>=app-office/akonadi-server-1.12.90:4
 	dev-libs/boost:=
 	dev-libs/libxml2:2
 	dev-libs/libxslt
