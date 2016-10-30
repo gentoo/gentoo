@@ -6,7 +6,8 @@ EAPI=5
 
 inherit git-2 perl-module
 
-EGIT_REPO_URI="git://clusterssh.git.sourceforge.net/gitroot/clusterssh/clusterssh"
+EGIT_REPO_URI="git://git.code.sf.net/p/clusterssh/code"
+EGIT_PROJECT="${PN}"
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
 HOMEPAGE="http://clusterssh.sourceforge.net"

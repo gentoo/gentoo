@@ -5,7 +5,7 @@
 EAPI="2"
 
 MY_TAG="mauve-2-3-0-release"
-#ESVN_REPO_URI="https://mauve.svn.sourceforge.net/svnroot/mauve/muscle/tags/${MY_TAG}"
+#ESVN_REPO_URI="https://svn.code.sf.net/p/mauve/code/muscle/tags/${MY_TAG}"
 
 #inherit subversion autotools
 inherit autotools

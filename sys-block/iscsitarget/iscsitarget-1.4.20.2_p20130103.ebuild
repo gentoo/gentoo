@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit linux-mod eutils flag-o-matic
 
 if [ ${PV} == "9999" ] ; then
 	inherit subversion
-	ESVN_REPO_URI="http://svn.code.sf.net/p/iscsitarget/code/trunk"
+	ESVN_REPO_URI="https://svn.code.sf.net/p/iscsitarget/code/trunk"
 else
 	SRC_URI="https://dev.gentoo.org/~ryao/dist/${P}.tar.gz"
 	KEYWORDS="amd64 ~ppc x86"
