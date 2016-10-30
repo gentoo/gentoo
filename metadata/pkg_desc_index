@@ -17518,7 +17518,7 @@ sys-libs/tdb 1.3.8 1.3.10 1.3.11: A simple database API
 sys-libs/tevent 0.9.26 0.9.28 0.9.29 0.9.31-r1: Samba tevent library
 sys-libs/timezone-data 2016e 2016f 2016g 2016h: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
-sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 9999: C library for developing embedded Linux systems
+sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
