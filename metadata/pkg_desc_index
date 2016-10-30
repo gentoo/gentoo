@@ -2202,7 +2202,7 @@ app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integr
 app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
-app-text/blogc 0.11.1 9999: A blog compiler
+app-text/blogc 0.12.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
