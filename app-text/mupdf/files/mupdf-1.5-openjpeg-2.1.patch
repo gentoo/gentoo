@@ -1,6 +1,47 @@
---- mupdf-1.5/source/fitz/load-jpx.c
-+++ mupdf-1.5/source/fitz/load-jpx.c
-@@ -116,7 +116,7 @@
+From: =?utf-8?q?=22Kan-Ru_Chen_=28=E9=99=B3=E4=BE=83=E5=A6=82=29=22?=
+ <koster@debian.org>
+Date: Sat, 20 Sep 2014 12:33:08 +0800
+Subject: Fix build with libopenjp2
+
+---
+ Makerules              |  4 ++--
+ source/fitz/load-jpx.c | 10 +---------
+ 2 files changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/Makerules b/Makerules
+index 766ad53..a93b9cf 100644
+--- a/Makerules
++++ b/Makerules
+@@ -105,8 +105,8 @@ SYS_HARFBUZZ_CFLAGS = $(shell pkg-config --cflags harfbuzz)
+ SYS_HARFBUZZ_LIBS = $(shell pkg-config --libs harfbuzz)
+ SYS_FREETYPE_CFLAGS = $(shell pkg-config --cflags freetype2)
+ SYS_FREETYPE_LIBS = $(shell pkg-config --libs freetype2)
+-SYS_OPENJPEG_CFLAGS = $(shell pkg-config --cflags libopenjp2)
+-SYS_OPENJPEG_LIBS = $(shell pkg-config --libs libopenjp2)
++SYS_OPENJPEG_CFLAGS = -I/usr/include/openjpeg-2.1
++SYS_OPENJPEG_LIBS = -lopenjp2
+ SYS_JBIG2DEC_LIBS = -ljbig2dec
+ SYS_JPEG_LIBS = -ljpeg
+ SYS_ZLIB_LIBS = -lz
+diff --git a/source/fitz/load-jpx.c b/source/fitz/load-jpx.c
+index 6b92e5c..72dea50 100644
+--- a/source/fitz/load-jpx.c
++++ b/source/fitz/load-jpx.c
+@@ -1,13 +1,5 @@
+ #include "mupdf/fitz.h"
+ 
+-/* Without the definition of OPJ_STATIC, compilation fails on windows
+- * due to the use of __stdcall. We believe it is required on some
+- * linux toolchains too. */
+-#define OPJ_STATIC
+-#ifndef _MSC_VER
+-#define OPJ_HAVE_STDINT_H
+-#endif
+-
+ #include <openjpeg.h>
+ 
+ static void fz_opj_error_callback(const char *msg, void *client_data)
+@@ -117,7 +109,7 @@ fz_load_jpx(fz_context *ctx, unsigned char *data, int size, fz_colorspace *defcs
  	opj_stream_set_read_function(stream, fz_opj_stream_read);
  	opj_stream_set_skip_function(stream, fz_opj_stream_skip);
  	opj_stream_set_seek_function(stream, fz_opj_stream_seek);
@@ -8,4 +49,3 @@
 +	opj_stream_set_user_data(stream, &sb, NULL);
  	/* Set the length to avoid an assert */
  	opj_stream_set_user_data_length(stream, size);
- 

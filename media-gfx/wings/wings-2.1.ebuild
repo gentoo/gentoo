@@ -25,12 +25,12 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/include_lib/s|"wings/|"../|' \
 		$(find . -name '*'.erl) \
 		|| die
-
-	default
 }
 
 src_configure() {

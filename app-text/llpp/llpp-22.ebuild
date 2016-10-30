@@ -12,7 +12,7 @@ SRC_URI="http://repo.or.cz/w/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b3
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+ocamlopt static"
 #IUSE="egl +ocamlopt static"
 
