@@ -9,7 +9,7 @@ KMNAME="kdepim"
 EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
-DESCRIPTION="A viewer for TNEF attachments"
+DESCRIPTION="Viewer for TNEF attachments"
 COMMIT_ID="2aec255c6465676404e4694405c153e485e477d9"
 SRC_URI="https://quickgit.kde.org/?p=kdepim.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${KMNAME}-${PV}.tar.gz"
 
@@ -18,7 +18,7 @@ LICENSE="LGPL-2.1"
 IUSE="debug"
 
 DEPEND="
-	app-office/akonadi-server
+	app-office/akonadi-server:4
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
 "
 RDEPEND="${DEPEND}"
