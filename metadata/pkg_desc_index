@@ -11861,7 +11861,7 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
-kde-plasma/bluedevil 5.7.5 5.8.2: Bluetooth stack for KDE Plasma
+kde-plasma/bluedevil 2.1.1 5.7.5 5.8.2: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.7.5 5.8.2: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.7.5 5.8.2: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.7.5 5.8.2: Official GTK+ port of KDE's Breeze widget style
@@ -15367,7 +15367,6 @@ net-wireless/bcm43xx-fwcutter 006: Firmware Tool for Broadcom 43xx based wireles
 net-wireless/bladerf 2015.02 2015.07 2016.01_rc1 2016.06 9999: Libraries for supporing the BladeRF hardware from Nuand
 net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
-net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 4.101-r9 5.39 5.43: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
