@@ -4742,6 +4742,7 @@ dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing onli
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
+dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
@@ -10351,7 +10352,7 @@ games-arcade/funnyboat 1.5-r1: A side scrolling shooter game starring a steamboa
 games-arcade/gav 0.9.0: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b: An ncurses-based Nibbles clone
-games-arcade/gnome-nibbles 3.18.2 3.20.2.1: Nibbles clone for Gnome
+games-arcade/gnome-nibbles 3.18.2 3.20.2.1 3.22.1: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.18.1 3.20.2: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8: Xjump clone with added features
 games-arcade/grande-KXL 0.6: ZANAC type game
@@ -15041,7 +15042,7 @@ net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
-net-misc/rygel 0.28.3 0.30.3: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.28.3 0.30.3 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.0.1 1.5.2-r1 1.6.0 1.6.1: Command line client for Amazon S3
 net-misc/samplicator 1.3.6 1.3.7_beta6: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
