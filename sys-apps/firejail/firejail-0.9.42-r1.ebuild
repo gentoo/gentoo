@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="apparmor +bind +busybox +chroot +file-transfer +network
+IUSE="apparmor +bind +chroot +file-transfer +network
 	network-restricted +seccomp +userns x11"
 
 DEPEND="apparmor? ( sys-libs/libapparmor )"
@@ -35,7 +35,6 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable apparmor)
 		$(use_enable bind)
-		$(use_enable busybox busybox-workaround)
 		$(use_enable chroot)
 		$(use_enable file-transfer)
 		$(use_enable network)
