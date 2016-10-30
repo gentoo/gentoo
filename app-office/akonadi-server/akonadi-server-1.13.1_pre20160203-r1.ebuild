@@ -27,7 +27,7 @@ DESCRIPTION="The server part of Akonadi"
 HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="4"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
