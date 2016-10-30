@@ -9,4 +9,4 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/glu virtual/opengl ) deb
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:subversion src_unpack:subversion src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	750f91bd0705a41b26ba01bcee93aaad	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=a17ec49cb4b4562fd52b73295609fc5b
+_md5_=f41e204b64fa926d8d800e7c3180b2c4

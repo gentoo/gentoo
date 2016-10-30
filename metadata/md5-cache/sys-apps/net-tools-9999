@@ -10,4 +10,4 @@ REQUIRED_USE=nis? ( hostname )
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f307b890288a838391c58ba0f0c9c9d4
+_md5_=6adc8de419c2fa95cfc2dd700a412411

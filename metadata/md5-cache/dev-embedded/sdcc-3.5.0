@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.5.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-3.5.0.tar.bz2 )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=468327c79c37be185e777c534945ccd2
+_md5_=95cec034f5d685224f04017424f71c9f

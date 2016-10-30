@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/urlget/uget-1.10.3.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9c58f89c7a7a8318c70f89192d1c4e0d
+_md5_=082f1d4b3a4ae678470836eb8bab7a18

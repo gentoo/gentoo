@@ -9495,7 +9495,7 @@ dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.13.3 1.13.4 1.14.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.0.1 1.0.2 1.1.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 0.3.43 0.3.44 0.3.48 1.2.2: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.44 0.3.48 0.3.52 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.2 3.0.3: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow

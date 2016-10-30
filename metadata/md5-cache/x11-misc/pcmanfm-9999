@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.16:2 >=lxde-base/menu-cache-0.3
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:readme.gentoo
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	e928b84a9f6f1d9076d1d27687876dc6	l10n	e26ea0642846685782f1813642e7ff0f	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9fb7a89220b7c5df0a43a04cb2badb14
+_md5_=fdfd510f38b0f256c0b2ee3c2c63f425
