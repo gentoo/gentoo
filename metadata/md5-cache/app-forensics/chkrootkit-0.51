@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Tool to locally check for signs of a rootkit
+EAPI=6
+HOMEPAGE=http://www.chkrootkit.org/
+IUSE=+cron
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD-2
+RDEPEND=cron? ( virtual/cron )
+SLOT=0
+SRC_URI=ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit-0.51.tar.gz -> chkrootkit-0.51.tar https://dev.gentoo.org/~polynomial-c/chkrootkit-0.51-gentoo.diff.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4bc9fff6342e25414ad31a56ce562caf

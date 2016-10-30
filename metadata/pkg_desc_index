@@ -1428,7 +1428,7 @@ app-forensics/afl 2.12b 2.19b 2.32b 2.35b: american fuzzy lop - compile-time ins
 app-forensics/aide 0.14.2 0.15.1: AIDE (Advanced Intrusion Detection Environment) is a replacement for Tripwire
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
-app-forensics/chkrootkit 0.49 0.50: Tool to locally check for signs of a rootkit
+app-forensics/chkrootkit 0.49 0.50 0.51: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
