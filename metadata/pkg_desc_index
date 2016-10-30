@@ -8965,7 +8965,7 @@ dev-ruby/bones 3.8.3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
-dev-ruby/bson 1.12.0 3.2.6 4.1.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/bson 3.2.6 4.1.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5 1.12.6: An easy way to vendor gem dependencies
@@ -9376,7 +9376,7 @@ dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.17 0.9.18 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.8 0.8.9: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.14.0 0.15.0: Pure ruby LDAP client implementation
-dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1 2.2.2: A Ruby library for Oracle OCI8
+dev-ruby/ruby-oci8 2.1.8 2.2.1 2.2.2: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.10.1: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12: Ruby library for easy read/write access to OLE compound documents
@@ -17297,7 +17297,7 @@ sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.1 1.7.2: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.2 1.7.3: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors
