@@ -48,7 +48,7 @@ ruby_add_bdepend "ruby? ( dev-ruby/rake
 			dev-ruby/rdoc )"
 ruby_add_rdepend "ruby? ( virtual/rubygems )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( README )
 S="${WORKDIR}/${P}"
