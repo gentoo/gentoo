@@ -33,11 +33,6 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
-# @ECLASS-VARIABLE: QT_MINIMAL
-# @DESCRIPTION:
-# Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.6.1}
-
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
 # If set to "false", do nothing.
