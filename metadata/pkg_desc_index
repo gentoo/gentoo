@@ -7869,7 +7869,7 @@ dev-python/pydecomp 0.1 9999: A python library of common (de)compression and con
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydl 0.5.2: Library of IDL astronomy routines converted to Python
-dev-python/pydns 2.3.6-r1 3.1.0: Python DNS (Domain Name System) library
+dev-python/pydns 2.3.6-r1 3.1.0 3.1.1: Python DNS (Domain Name System) library
 dev-python/pyds 0.7.3-r1: Python Desktop Server
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
