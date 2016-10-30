@@ -26,21 +26,16 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="git httpd test"
 
-CDEPEND="
-	httpd? (
-		dev-libs/libevent
-		sys-apps/file )"
-
-RDEPEND="${CDEPEND}
+RDEPEND="
 	git? (
 		dev-vcs/git )
 	!dev-vcs/blogc-git-receiver
 	!www-servers/blogc-runserver"
 
 DEPEND="${DEPEND}
-	${CDEPEND}
 	virtual/pkgconfig
 	test? (
+		git? ( dev-vcs/git )
 		dev-util/cmocka )"
 
 src_prepare() {
