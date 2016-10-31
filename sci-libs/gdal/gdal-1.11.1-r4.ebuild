@@ -38,7 +38,7 @@ RDEPEND="
 	hdf5? ( >=sci-libs/hdf5-1.6.4[szip] )
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf )
 	odbc?   ( dev-db/unixODBC )

@@ -18,7 +18,7 @@ SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/2"
 LICENSE="BSD Info-ZIP MIT"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python spatialite sqlite threads xls"
 
 RDEPEND="
@@ -33,12 +33,12 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio )
 	geos?   ( >=sci-libs/geos-2.2.1 )
-	gif? ( media-libs/giflib:= )
+	gif? ( media-libs/giflib )
 	gml? ( >=dev-libs/xerces-c-3 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4[szip] )
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf )
 	odbc?   ( dev-db/unixODBC )
@@ -58,11 +58,12 @@ RDEPEND="
 	xls? ( dev-libs/freexl )
 "
 
+SWIG_DEP=">=dev-lang/swig-2.0.2 <=dev-lang/swig-3.0.4"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.6 )
-	perl? ( dev-lang/swig:0 )
-	python? ( dev-lang/swig:0 )"
+	perl? ( ${SWIG_DEP} )
+	python? ( ${SWIG_DEP} )"
 
 AT_M4DIR="${S}/m4"
 MAKEOPTS+=" -j1"
@@ -78,6 +79,8 @@ pkg_setup() {
 
 src_prepare() {
 	java-pkg-opt-2_src_prepare
+
+	epatch "${FILESDIR}"/${P}-glibc-2.22-backport.patch
 
 	# fix datadir and docdir placement
 	sed -i \

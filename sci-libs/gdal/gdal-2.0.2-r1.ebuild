@@ -18,7 +18,7 @@ SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/2"
 LICENSE="BSD Info-ZIP MIT"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python spatialite sqlite threads xls"
 
 RDEPEND="
@@ -38,7 +38,7 @@ RDEPEND="
 	hdf5? ( >=sci-libs/hdf5-1.6.4[szip] )
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf )
 	odbc?   ( dev-db/unixODBC )
