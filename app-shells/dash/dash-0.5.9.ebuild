@@ -10,7 +10,7 @@ MY_PV="$(get_version_component_range 1-3)"
 DEB_PATCH="$(get_version_component_range 4)"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell) and is POSIX compliant"
+DESCRIPTION="Debian Almquist Shell"
 HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"
 SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${MY_P}.tar.gz"
 if [[ -n "${DEB_PATCH}" ]] ; then

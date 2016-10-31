@@ -11,4 +11,8 @@
 	<use>
 		<flag name="dumb-echo">Disable echo -n for added fun</flag>
 	</use>
+	<longdescription lang="en">
+		DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell)
+		and is POSIX compliant.
+	</longdescription>
 </pkgmetadata>
