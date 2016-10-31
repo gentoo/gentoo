@@ -984,7 +984,7 @@ app-doc/single-unix-specification 3 4-r1 4-r2: The Single UNIX Specification, Ve
 app-doc/tldp-howto 20100701 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
-app-doc/zeal 0.2.1: Offline documentation browser inspired by Dash
+app-doc/zeal 0.2.1 0.3.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
 app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: Text editor based on the FOX Toolkit
@@ -3244,7 +3244,6 @@ dev-haskell/base-orphans 0.3.2 0.5.4: Backwards-compatible orphan instances for 
 dev-haskell/base-unicode-symbols 0.2.2.4: Unicode alternatives for common functions and operators
 dev-haskell/base16-bytestring 0.1.1.6: Fast base16 (hex) encoding and decoding for ByteStrings
 dev-haskell/base64-bytestring 0.1.1.3 1.0.0.1: Fast base64 encoding and decoding for ByteStrings
-dev-haskell/base64-conduit 1.0.0.1: Base64-encode and decode streams of bytes. (deprecated)
 dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.5-r1 0.6.0.0: Parser and printer for bencoded data
 dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5: Haskell 98 bifunctors, bifoldables and bitraversables
@@ -4591,7 +4590,6 @@ dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA bli
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
 dev-libs/dbus-glib 0.102 0.104 0.106 0.108: D-Bus bindings for glib
-dev-libs/dbxml 2.5.16-r2: BerkeleyDB XML, a native XML database from the BerkeleyDB team
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
 dev-libs/dee 1.2.7: Provide objects allowing to create Model-View-Controller type programs across DBus
 dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
@@ -12822,7 +12820,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 13.0.0_rc1 13.0.0_rc2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 13.0.0_rc1 13.0.0_rc2 13.0.0_rc3 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
@@ -14620,7 +14618,6 @@ net-libs/serf 1.3.8 1.3.8-r1: HTTP client library
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15: Signon UI
 net-libs/signond 8.58: Signon daemon for libaccounts-glib
-net-libs/socket++ 1.12.12-r2 1.12.13: C++ Socket Library
 net-libs/socket_wrapper 1.1.6 1.1.7: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/stem 1.3.0 1.4.0 1.4.1: Stem is a Python controller library for Tor
