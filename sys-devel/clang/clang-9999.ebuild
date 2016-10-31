@@ -117,16 +117,11 @@ src_prepare() {
 
 	# support overriding clang runtime install directory
 	eapply "${FILESDIR}"/9999/0005-cmake-Supporting-overriding-runtime-libdir-via-CLANG.patch
-	# support overriding LLVMgold.so plugin directory
-	eapply "${FILESDIR}"/9999/0006-cmake-Add-CLANG_GOLD_LIBDIR_SUFFIX-to-specify-loc-of.patch
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
 	# User patches
 	eapply_user
-
-	# Native libdir is used to hold LLVMgold.so
-	NATIVE_LIBDIR=$(get_libdir)
 }
 
 multilib_src_configure() {
@@ -135,8 +130,6 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		# install clang runtime straight into /usr/lib
 		-DCLANG_LIBDIR_SUFFIX=""
-		# specify host's binutils gold plugin path
-		-DCLANG_GOLD_LIBDIR_SUFFIX="${NATIVE_LIBDIR#lib}"
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
