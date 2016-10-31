@@ -876,10 +876,6 @@ x11-plugins/echievements
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
 
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Unbuildable for a long time, bug #522916. Removal in a month.
-net-im/silc-server
-
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
