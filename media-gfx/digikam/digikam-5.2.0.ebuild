@@ -20,16 +20,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble semantic-desktop mysql opengl openmp +panorama scanner video X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-${MY_PV}
-
 	SRC_BRANCH=stable
 	[[ ${PV} =~ beta[0-9]$ ]] && SRC_BRANCH=unstable
 	SRC_URI="mirror://kde/${SRC_BRANCH}/digikam/${MY_P}.tar.xz"
-
 	S="${WORKDIR}/${MY_P}/core"
-
 fi
 
 COMMON_DEPEND="
@@ -147,6 +143,7 @@ src_prepare() {
 src_configure() {
 	# LQR = only allows to choose between bundled/external
 	local mycmakeargs=(
+		-DENABLE_APPSTYLES=ON
 		-DENABLE_AKONADICONTACTSUPPORT=$(usex addressbook)
 		-DENABLE_MYSQLSUPPORT=$(usex mysql)
 		-DENABLE_MEDIAPLAYER=$(usex video)

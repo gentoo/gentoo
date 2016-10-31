@@ -15,7 +15,7 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse svg udev vector-icons webkit wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webkit wmf xpm"
 
 for lang in ${LANGS}; do
 	IUSE+=" linguas_${lang}"
@@ -59,7 +59,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
 	)
 	>=media-libs/tiff-3.5.7:0
-	svg? ( >=gnome-base/librsvg-2.36.0:2 )
+	>=gnome-base/librsvg-2.36.0:2
 	wmf? ( >=media-libs/libwmf-0.2.8 )
 	x11-libs/libXcursor
 	sys-libs/zlib
@@ -81,7 +81,7 @@ DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 
 S="${WORKDIR}"/${PF}
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) vector-icons? ( svg )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 	G2CONF="--enable-default-binary \
@@ -100,7 +100,7 @@ pkg_setup() {
 		$(use_enable python) \
 		$(use_enable smp mp) \
 		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_with svg librsvg) \
+		--with-librsvg \
 		$(use_with udev gudev) \
 		$(use_with wmf) \
 		--with-xmc \
