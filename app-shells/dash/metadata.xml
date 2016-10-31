@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:dash:dash</remote-id>
 	</upstream>
+	<use>
+		<flag name="dumb-echo">Disable echo -n for added fun</flag>
+	</use>
 </pkgmetadata>
