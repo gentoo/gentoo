@@ -4922,7 +4922,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2h-r2 1.0.2i 1.0.2j 1.1.0b: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2j 1.1.0b: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -9781,7 +9781,7 @@ dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 2.1.2.0.143.2915827 2.1.3.0.143.3101438 2.2.0.12.145.3276617-r1: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 2.2.0.12.145.3276617-r1 2.2.2.0.145.3360264: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.20.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
@@ -15130,7 +15130,7 @@ net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.17.1-r1 1.18: Network utility to retrieve files from the WWW
+net-misc/wget 1.18: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.11 5.2.12: improved Whois Client
