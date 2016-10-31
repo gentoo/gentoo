@@ -13715,7 +13715,7 @@ media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0 2.1.1: Lightweight video thumbn
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 0.91 0.92: A subtitle editor for text-based subtitles
+media-video/gaupol 0.91 0.92 1.0: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1 9999: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-subtitles 1.2 1.3-r1: Video subtitling for the Gnome desktop
