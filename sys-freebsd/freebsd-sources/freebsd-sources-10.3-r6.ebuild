@@ -8,12 +8,24 @@ inherit bsdmk freebsd flag-o-matic toolchain-funcs
 
 DESCRIPTION="FreeBSD kernel sources"
 SLOT="0"
-LICENSE="BSD dtrace? ( CDDL ) zfs? ( CDDL )"
+LICENSE="BSD zfs? ( CDDL )"
 
 IUSE="+build-kernel debug dtrace zfs"
 
 # Security Advisory and Errata patches.
-# UPSTREAM_PATCHES=()
+UPSTREAM_PATCHES=( "SA-16:15/sysarch-01.patch"
+	"SA-16:18/atkbd.patch"
+	"SA-16:19/sendmsg.patch"
+	"SA-16:20/linux.patch"
+	"SA-16:21/stat.patch"
+	"EN-16:07/ipi.patch"
+	"EN-16:08/zfs.patch"
+	"EN-16:11/vmbus.patch"
+	"EN-16:12/hv_storvsc.patch"
+	"EN-16:13/vmbus.patch"
+	"EN-16:14/hv_storvsc.patch"
+	"EN-16:15/vmbus.patch"
+	"EN-16:16/hv_storvsc.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
@@ -45,22 +57,21 @@ S="${WORKDIR}/sys"
 KERN_BUILD=GENTOO
 
 PATCHES=( "${FILESDIR}/${PN}-9.0-disable-optimization.patch"
+	"${FILESDIR}/${PN}-10.0-gentoo.patch"
 	"${FILESDIR}/${PN}-6.0-flex-2.5.31.patch"
 	"${FILESDIR}/${PN}-8.0-subnet-route-pr40133.patch"
 	"${FILESDIR}/${PN}-7.1-includes.patch"
 	"${FILESDIR}/${PN}-9.0-sysctluint.patch"
-	"${FILESDIR}/${PN}-11.0-gentoo.patch"
-	"${FILESDIR}/${PN}-11.0-gentoo-gcc.patch"
+	"${FILESDIR}/${PN}-9.2-gentoo-gcc.patch"
 	"${FILESDIR}/${PN}-10.1-gcc48.patch" )
 
 pkg_setup() {
 	# Add the required source files.
-	use dtrace && EXTRACTONLY+="cddl/ "
+	use zfs && EXTRACTONLY+="cddl/ "
 
 	# WITHOUT_SSP= is required to boot kernel that compiled with newer gcc, bug #477914
-	[[ $(tc-getCC) == *gcc* ]] && mymakeopts="${mymakeopts} WITHOUT_SSP= WITHOUT_FORMAT_EXTENSIONS="
-	use dtrace || mymakeopts="${mymakeopts} WITHOUT_CDDL="
-	use zfs || mymakeopts="${mymakeopts} WITHOUT_ZFS="
+	[[ $(tc-getCC) == *gcc* ]] && mymakeopts="${mymakeopts} WITHOUT_SSP="
+	use zfs || mymakeopts="${mymakeopts} WITHOUT_CDDL="
 }
 
 src_prepare() {
@@ -77,9 +88,9 @@ src_prepare() {
 		"${S}/conf/newvers.sh"
 
 	# __FreeBSD_cc_version comes from FreeBSD's gcc.
-	# on 11.0-RELEASE it's 1100001.
+	# on 10.0-RELEASE it's 1000001.
 	# FYI, can get it from gnu/usr.bin/cc/cc_tools/freebsd-native.h.
-	sed -e "s:-D_KERNEL:-D_KERNEL -D__FreeBSD_cc_version=1100001:g" \
+	sed -e "s:-D_KERNEL:-D_KERNEL -D__FreeBSD_cc_version=1000001:g" \
 		-i "${S}/conf/kern.pre.mk" \
 		-i "${S}/conf/kmod.mk" || die "Couldn't set __FreeBSD_cc_version"
 
@@ -92,12 +103,6 @@ src_prepare() {
 	cp -f "${FILESDIR}/config-GENTOO" "${conf}" || die
 	use debug || echo 'nomakeoptions DEBUG' >> "${conf}"
 	use dtrace || echo 'nomakeoptions WITH_CTF' >> "${conf}"
-
-	# hyperv fails to compile on x86-fbsd.
-	if use x86-fbsd && [[ $(tc-getCC) == *gcc* ]] ; then
-		echo 'nodevice hyperv' >> "${conf}"
-		dummy_mk modules/hyperv
-	fi
 
 	# Only used with USE=build-kernel, let the kernel build with its own flags, its safer.
 	unset LDFLAGS CFLAGS CXXFLAGS ASFLAGS KERNEL
@@ -136,7 +141,7 @@ src_install() {
 
 	insinto "/usr/src/sys"
 	doins -r "${S}/".
-	if use dtrace ; then
+	if use zfs ; then
 		insinto "/usr/src/cddl"
 		doins -r "${WORKDIR}/cddl/".
 	fi
