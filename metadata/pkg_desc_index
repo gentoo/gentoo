@@ -17993,7 +17993,7 @@ www-client/qupzilla 2.0.1 2.0.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.6.2 0.7.0 0.8.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.39 2.40 2.42.3.0_p0 2.42.4.0_p1: Seamonkey Web Browser
+www-client/seamonkey 2.40 2.42.4.0_p1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.39 2.44_pre20160608 2.45_pre20160812: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
