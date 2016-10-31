@@ -14365,7 +14365,6 @@ net-im/qtox 1.3.0 1.4.0 1.5.0 9999: Most feature-rich GUI for net-libs/tox using
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.11.0.1: P2P Internet Telephony (VoiceIP) client
