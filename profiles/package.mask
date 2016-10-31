@@ -624,11 +624,6 @@ dev-php/pecl-http:0
 =dev-php/pecl-mailparse-2.1.6-r1
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Needs fixing (#515944), nothing needs this in the tree. Removal in a
-# month.
-dev-lang/regina-rexx
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Security issues (#562898)
 =app-admin/lsyncd-2.1.5
 
