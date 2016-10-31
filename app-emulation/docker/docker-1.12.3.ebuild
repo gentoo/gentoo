@@ -265,7 +265,7 @@ src_install() {
 	dobashcomp contrib/completion/bash/*
 
 	insinto /usr/share/zsh/site-functions
-	doins contrib/completion/zsh/*
+	doins contrib/completion/zsh/_*
 
 	insinto /usr/share/vim/vimfiles
 	doins -r contrib/syntax/vim/ftdetect
