@@ -586,12 +586,6 @@ dev-libs/dbxml
 # and Humble Bundle over 2 years ago. Removal in 60 days. Bug #588110.
 games-action/awesomenauts
 
-# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
-# Mask for removal in 30 days. Uses deprecated conduit-1.0*
-# Upstream suggests using dev-haskell/conduit-combinators
-# instead.
-dev-haskell/base64-conduit
-
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
 # Masked the possible fixed samba version until more testing has been performed.
