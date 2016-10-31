@@ -46,7 +46,7 @@ media-libs/mesa egl wayland
 
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui egl
-dev-qt/qtwayland eql
+dev-qt/qtwayland egl
 
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 kdenlive melt
