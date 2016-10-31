@@ -366,12 +366,6 @@ dev-tcltk/tcl-gtk
 # porting to vte:2.91 (#595914). Removal in a month.
 x11-terms/terra
 
-# David Seifert <soap@gentoo.org> (01 Oct 2016)
-# Masked for failing to build with C++11, ancient codebase,
-# dead upstream, no updates in 5 years. No revdeps.
-# Mask for removal in 30 days. Bug #595754
-net-libs/socket++
-
 # Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc2
@@ -515,14 +509,6 @@ net-libs/socket++
 >=x11-themes/gnome-themes-standard-3.21
 >=x11-wm/mutter-3.21
 
-# David Seifert <soap@gentoo.org> (18 Sep 2016)
-# Masked for failing to build with GCC 6, still using ancient
-# distutils.eclass, tightly coupled to dev-libs/xqilla-2.2*.
-# Purged by Debian and Fedora more than 5 years ago.
-# Mask for removal in 30 days.
-# Bug #594236
-dev-libs/dbxml
-
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # KDE PIM 5 masked for wider testing.
 =kde-apps/akonadi-16.08*
@@ -585,12 +571,6 @@ dev-libs/dbxml
 # Now only available on Steam. Binaries were removed by the publisher
 # and Humble Bundle over 2 years ago. Removal in 60 days. Bug #588110.
 games-action/awesomenauts
-
-# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
-# Mask for removal in 30 days. Uses deprecated conduit-1.0*
-# Upstream suggests using dev-haskell/conduit-combinators
-# instead.
-dev-haskell/base64-conduit
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
