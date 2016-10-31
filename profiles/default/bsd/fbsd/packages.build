@@ -40,6 +40,7 @@ virtual/editor
 virtual/libc
 virtual/os-headers
 virtual/package-manager
+virtual/pkgconfig
 sys-freebsd/freebsd-mk-defs
 sys-freebsd/freebsd-lib
 sys-freebsd/freebsd-libexec
@@ -48,3 +49,4 @@ sys-freebsd/freebsd-sbin
 sys-freebsd/freebsd-ubin
 sys-freebsd/freebsd-usbin
 sys-freebsd/freebsd-contrib
+sys-libs/timezone-data
