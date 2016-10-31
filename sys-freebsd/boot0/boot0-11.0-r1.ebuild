@@ -11,8 +11,13 @@ SLOT="0"
 
 IUSE="bzip2 ieee1394 tftp zfs"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "EN-16:18/loader.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	SRC_URI="${SRC_URI}
+		$(freebsd_upstream_patches)"
 fi
 
 EXTRACTONLY="
