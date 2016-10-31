@@ -9977,6 +9977,7 @@ dev-util/kup 0.3.4: kernel.org uploader tool
 dev-util/lcov 1.9-r1 1.10 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r2: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
+dev-util/lldb 9999: The LLVM debugger
 dev-util/lockrun 20120508: Lockrun - runs cronjobs with overrun protection
 dev-util/lorax 26.0: Redhat Tools for creating disk, filesystem, and iso images
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
