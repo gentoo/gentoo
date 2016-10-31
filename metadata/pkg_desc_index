@@ -4499,7 +4499,7 @@ dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7 10.0: Extended Prolog supporting quant
 dev-lang/rakudo 2016.03 2016.04 2016.04-r2 2016.05 2016.06 2016.07.1 2016.08.1 2016.09 2016.10 9999: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
-dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
+dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.3.1: An object-oriented scripting language
 dev-lang/rust 1.11.0 1.12.0 1.12.1: Systems programming language from Mozilla
@@ -16203,7 +16203,6 @@ sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.2.5-r2: A dependently typed functional programming language and proof assistant
-sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5: Agda standard library
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
@@ -17413,7 +17412,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.12.52-r1 3.12.63 3.12.66 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 4.1.15-r1 4.1.35 4.4.26 4.4.27 4.4.28 4.7.9 4.7.10 4.8.3 4.8.4 4.8.5 4.8.6: Full sources including the Gentoo patchset for the 4.8 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.12.52-r1 3.12.63 3.12.66 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 4.1.15-r1 4.1.35 4.4.26 4.4.27 4.4.28 4.4.29 4.7.9 4.7.10 4.8.3 4.8.4 4.8.5 4.8.6: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.9_rc1 4.9_rc2 4.9_rc3: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10 4.7.10-r1: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -18933,7 +18932,7 @@ x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator usi
 x11-terms/terra 9999: Terminal emulator with split-screen support
 x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/valaterm 0.6 0.6-r1: A lightweight vala based terminal
-x11-terms/xfce4-terminal 0.6.3 0.6.90 0.6.92 0.8.0: A terminal emulator for the Xfce desktop environment
+x11-terms/xfce4-terminal 0.6.3 0.6.90 0.6.92 0.8.0 0.8.1: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 314 320 325 326 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
