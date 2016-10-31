@@ -4,7 +4,7 @@
 # System-wide defaults for the G/FBSD Portage system
 
 ARCH="x86-fbsd"
-CFLAGS="-march=i486 -O2 -pipe"
+CFLAGS="-march=i686 -O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
