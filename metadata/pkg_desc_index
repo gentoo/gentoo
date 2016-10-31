@@ -12492,7 +12492,7 @@ media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.23.7 0.24.0: Open source photo manager for GNOME
+media-gfx/shotwell 0.23.7 0.24.0 0.24.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.20.0 3.22.0.1: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
