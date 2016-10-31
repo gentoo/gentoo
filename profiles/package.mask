@@ -366,12 +366,6 @@ dev-tcltk/tcl-gtk
 # porting to vte:2.91 (#595914). Removal in a month.
 x11-terms/terra
 
-# David Seifert <soap@gentoo.org> (01 Oct 2016)
-# Masked for failing to build with C++11, ancient codebase,
-# dead upstream, no updates in 5 years. No revdeps.
-# Mask for removal in 30 days. Bug #595754
-net-libs/socket++
-
 # Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc2
