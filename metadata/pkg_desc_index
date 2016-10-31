@@ -2623,7 +2623,7 @@ app-vim/showmarks 2.2-r1: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
 app-vim/snipmate 0.87-r1: vim plugin: TextMate-style snippets
-app-vim/splice 1.0.1: vim plugin: resolve conflicts during three-way merges
+app-vim/splice 1.0.1 1.1.0: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
 app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-tags/much more
