@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="libressl bindist doc static-libs"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0=[bindist] )
+	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
