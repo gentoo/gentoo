@@ -2626,7 +2626,7 @@ app-vim/snipmate 0.87-r1: vim plugin: TextMate-style snippets
 app-vim/splice 1.0.1 1.1.0: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
-app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-tags/much more
+app-vim/surround 2.1-r1: vim plugin: Delete/change/add parentheses/quotes/XML-tags & much more
 app-vim/syntastic 3.7.0 3.8.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
@@ -9093,7 +9093,7 @@ dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
-dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
+dev-ruby/hashicorp-checkpoint 0.1.4 0.1.4-r1: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
