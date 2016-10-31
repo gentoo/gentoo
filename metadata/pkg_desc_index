@@ -341,7 +341,7 @@ app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line ba
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r2 3.3.1-r2: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r4 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.0 7.4.0-r1 7.4.1 7.4.2 7.4.3 7.4.4: Featureful client/server network backup suite
-app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2: Featureful client/server network backup suite
+app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.7 1.0.8 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup system
 app-backup/btrbk 0.23.3 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
@@ -9573,7 +9573,7 @@ dev-tcltk/snack 2.2.10-r5 2.2.10-r6: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8: Multi-Column Listbox Package
 dev-tcltk/tcl-gtk 0.08: GTK bindings for TCL
 dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
-dev-tcltk/tcl3d 0.4.0 0.4.0-r1: Tcl bindings to OpenGL and other 3D libraries
+dev-tcltk/tcl3d 0.4.0 0.4.0-r1 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.15-r2 1.16: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 4.1-r4 4.1-r6: Python package for Tcl
