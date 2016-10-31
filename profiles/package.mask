@@ -515,14 +515,6 @@ net-libs/socket++
 >=x11-themes/gnome-themes-standard-3.21
 >=x11-wm/mutter-3.21
 
-# David Seifert <soap@gentoo.org> (18 Sep 2016)
-# Masked for failing to build with GCC 6, still using ancient
-# distutils.eclass, tightly coupled to dev-libs/xqilla-2.2*.
-# Purged by Debian and Fedora more than 5 years ago.
-# Mask for removal in 30 days.
-# Bug #594236
-dev-libs/dbxml
-
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # KDE PIM 5 masked for wider testing.
 =kde-apps/akonadi-16.08*
