@@ -3202,7 +3202,7 @@ dev-go/go-sys 0_pre20150729 0_pre20160204 9999: Go packages for low-level intera
 dev-go/go-text 0_pre20150806 0_pre20160211 9999: Go text processing support
 dev-go/go-tools 0_pre20150823-r1 0_pre20150902 0_pre20160121 0_pre20160220 9999: Go Tools
 dev-go/go-tour 0_p20160209: A Tour of Go
-dev-go/godep 50 51 52 60 63 74 9999: dependency tool for go
+dev-go/godep 74 9999: dependency tool for go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/goptlib 0.5 0.6: Go Tor pluggable transports library
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
