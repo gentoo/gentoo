@@ -2557,7 +2557,7 @@ app-vim/gentoo-syntax 20160530 99999999: Gentoo and portage related syntax highl
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.2: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
-app-vim/gitgutter 20160316 20160916 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
+app-vim/gitgutter 20160316 20160916 20161027 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3 9999: vim plugin: gitk for vim
@@ -2627,7 +2627,7 @@ app-vim/splice 1.0.1: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
 app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-tags/much more
-app-vim/syntastic 3.7.0 9999: vim plugin: syntax checking using external tools
+app-vim/syntastic 3.7.0 3.8.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
 app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
