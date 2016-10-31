@@ -7104,7 +7104,7 @@ dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/chump 1.5.1: API wrapper for Pushover
-dev-python/cliapp 1.20130808 1.20140315 1.20150305: Framework for Unix-like command line programs
+dev-python/cliapp 1.20140315 1.20150305 1.20160724: Framework for Unix-like command line programs
 dev-python/click 6.6: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3 0.1.4: Logging integration for Click.
 dev-python/click-threading 0.1.2 0.3.0: Multithreaded Click apps made easy.
@@ -8384,7 +8384,7 @@ dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2 2.3.1 2.4.1: virtualenv-based automation 
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.8.4 9999: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
+dev-python/tracing 0.8 0.10: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.2 4.3.1: A configuration system for Python applications
 dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
