@@ -25,7 +25,8 @@ UPSTREAM_PATCHES=( "SA-16:15/sysarch-01.patch"
 	"EN-16:13/vmbus.patch"
 	"EN-16:14/hv_storvsc.patch"
 	"EN-16:15/vmbus.patch"
-	"EN-16:16/hv_storvsc.patch" )
+	"EN-16:16/hv_storvsc.patch"
+	"EN-16:17/vm.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
