@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README )
 
-PATCHES=( "${FILESDIR}"/${PN}-1.4.2-pkgconfig.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.8.0-libgcrypt-prefix.patch )
 
 src_prepare() {
 	sed -i -e 's|mansyntax.sh||g' tests/Makefile.am || die

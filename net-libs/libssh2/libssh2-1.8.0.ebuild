@@ -32,6 +32,8 @@ DOCS=(
 	README
 )
 
+PATCHES=( "${FILESDIR}"/${PN}-1.8.0-libgcrypt-prefix.patch )
+
 src_prepare() {
 	sed -i -e 's|mansyntax.sh||g' tests/Makefile.am || die
 	autotools-multilib_src_prepare
