@@ -2536,7 +2536,7 @@ app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 24.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
-app-vim/diffchar 6.1 6.4: vim plugin: highlight the exact differences, based on characters and words
+app-vim/diffchar 6.4: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
