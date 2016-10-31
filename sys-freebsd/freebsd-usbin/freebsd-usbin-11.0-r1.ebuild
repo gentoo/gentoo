@@ -10,6 +10,9 @@ DESCRIPTION="FreeBSD /usr/sbin tools"
 SLOT="0"
 LICENSE="BSD zfs? ( CDDL )"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "SA-16:32/bhyve.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
