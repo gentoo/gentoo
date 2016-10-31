@@ -15928,7 +15928,7 @@ sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.1-r2 0.18.2 0.18.3-r1 9999: A Qt based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
-sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0: a free, open source software for marine navigation
+sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0 4.4.0: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0-r1 9999: Climatology Plugin for OpenCPN (includes CL-DATA)
 sci-geosciences/opencpn-plugin-iacfleet 0.8 9999: IAC Fleetcode Plugin for OpenCPN
@@ -16045,7 +16045,7 @@ sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
 sci-libs/galib 2.4.6 2.4.7 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0-r1 2.0.1 2.0.2: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 1.11.1-r4 1.11.2-r1 2.0.0-r2 2.0.1-r1 2.0.2-r1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.5.0 3.5.0-r2: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data

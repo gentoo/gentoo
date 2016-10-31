@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=app-arch/bzip2 dev-libs/tinyxml media-libs/freetype:2 media-libs/portaudio sys-libs/zlib opengl? ( virtual/opengl ) x11-libs/gtk+:2 x11-libs/wxGTK:3.0[X] gps? ( sci-geosciences/gpsd ) !sci-geosciences/opencpn-plugin-wmm sys-devel/gettext sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=a free, open source software for marine navigation
+EAPI=5
+HOMEPAGE=http://opencpn.org/
+IUSE=doc gps opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-arch/bzip2 dev-libs/tinyxml media-libs/freetype:2 media-libs/portaudio sys-libs/zlib opengl? ( virtual/opengl ) x11-libs/gtk+:2 x11-libs/wxGTK:3.0[X] gps? ( sci-geosciences/gpsd ) !sci-geosciences/opencpn-plugin-wmm
+SLOT=0
+SRC_URI=https://github.com/OpenCPN/OpenCPN/archive/v4.4.0.tar.gz -> opencpn-4.4.0.tar.gz doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/opencpn/+files/opencpn-doc_4.0.0.orig.tar.xz )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=8e19285687029c32990661c15a4b3998
