@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=configure prepare test unpack
+DEPEND=aio? ( dev-libs/libaio ) lua? ( dev-lang/lua:= ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) sys-devel/libtool:= dev-libs/libxslt test? ( dev-util/cram ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=System performance benchmark
 EAPI=6
 HOMEPAGE=https://github.com/akopytov/sysbench
-IUSE=aio mysql
-LICENSE=GPL-2
-RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient )
+IUSE=aio lua mysql postgres test
+LICENSE=GPL-2+
+RDEPEND=aio? ( dev-libs/libaio ) lua? ( dev-lang/lua:= ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= )
+REQUIRED_USE=mysql? ( lua ) postgres? ( lua )
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_test:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=625fa995655aa6a418529b6e8ec94fa1
+_md5_=03cde61971329b9a6236ce709df6c8cc
