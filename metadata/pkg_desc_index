@@ -14827,7 +14827,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.8.1: Google Drive client for the commandline
 net-misc/dropbear 2016.73 2016.74: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 5.3.18 6.3.13: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 6.3.13 14.3.17: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3 2.5.4 2.6.4: User friendly Bitcoin client
