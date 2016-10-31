@@ -21,7 +21,7 @@ IUSE="doc test"
 RDEPEND="
 	>=dev-python/jsonschema-2.4.0[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
-	dev-python/traitlets[${PYTHON_USEDEP}]
+	>=dev-python/traitlets-4.1[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
@@ -30,8 +30,9 @@ DEPEND="${RDEPEND}
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 	)
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/testpath[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 	)
 	"
 
@@ -51,7 +52,7 @@ python_compile_all() {
 python_test() {
 	distutils_install_for_testing
 	cd "${TEST_DIR}"/lib || die
-	nosetests --with-coverage --cover-package=nbformat nbformat || die
+	py.test -v --cov nbformat nbformat || die
 }
 
 python_install_all() {
