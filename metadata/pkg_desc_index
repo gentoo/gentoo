@@ -2536,7 +2536,7 @@ app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 24.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
-app-vim/diffchar 6.1: vim plugin: highlight the exact differences, based on characters and words
+app-vim/diffchar 6.1 6.4: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
@@ -2555,13 +2555,13 @@ app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20160530 99999999: Gentoo and portage related syntax highlighting, filetype, and indent settings
 app-vim/genutils 2.5: vim plugin: library with various useful functions
-app-vim/gist 7.2: vim plugin: interact with gists (gist.github.com)
+app-vim/gist 7.2 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
 app-vim/gitgutter 20160316 20160916 20161027 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3 9999: vim plugin: gitk for vim
-app-vim/gnupg 2.5 2.6: transparent editing of gpg encrypted files
+app-vim/gnupg 2.6: transparent editing of gpg encrypted files
 app-vim/greputils 2.8-r1: vim plugin: interface with grep, find and id-utils
 app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
 app-vim/gundo 2.6.1: vim plugin: visualize your vim undo tree
@@ -2583,7 +2583,7 @@ app-vim/multiplesearch 1.3: vim plugin: allows multiple highlighted searches
 app-vim/multvals 3.10-r1: vim plugin: library for helping with arrays
 app-vim/nagios-syntax 20050105: vim plugin: Nagios configuration files syntax
 app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
-app-vim/nerdcommenter 2.3.0: vim plugin: easy commenting of code for many filetypes
+app-vim/nerdcommenter 2.3.0 2.4.0: vim plugin: easy commenting of code for many filetypes
 app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.6: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
