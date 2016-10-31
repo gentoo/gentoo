@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst postrm prepare
-DEPEND=|| ( >=app-editors/vim-7.2 >=app-editors/gvim-7.2 )
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: rich text highlighting in vim
 EAPI=6
 HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2208
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
-RDEPEND=|| ( >=app-editors/vim-7.2 >=app-editors/gvim-7.2 )
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=http://www.vim.org/scripts/download_script.php?src_id=13856 -> txtfmt-2.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=0a733787e47dbf3b342f3edaf6f24044
+_md5_=237eb8135df18f2bfbbb7ba30c0158e4
