@@ -16,10 +16,10 @@ DESCRIPTION="Translator library for raster geospatial data formats (includes OGR
 HOMEPAGE="http://www.gdal.org/"
 SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
-SLOT="0"
+SLOT="0/2"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python ruby spatialite sqlite threads xls"
+IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python spatialite sqlite threads xls"
 
 RDEPEND="
 	dev-libs/expat
@@ -33,12 +33,12 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio )
 	geos?   ( >=sci-libs/geos-2.2.1 )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4[szip] )
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf )
 	odbc?   ( dev-db/unixODBC )
@@ -53,19 +53,16 @@ RDEPEND="
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	ruby? ( dev-lang/ruby:1.9 )
 	sqlite? ( dev-db/sqlite:3 )
 	spatialite? ( dev-db/spatialite )
 	xls? ( dev-libs/freexl )
 "
 
-SWIG_DEP=">=dev-lang/swig-2.0.2"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.6 )
-	perl? ( ${SWIG_DEP} )
-	python? ( ${SWIG_DEP} )
-	ruby? ( ${SWIG_DEP} )"
+	perl? ( dev-lang/swig:0 )
+	python? ( dev-lang/swig:0 )"
 
 AT_M4DIR="${S}/m4"
 MAKEOPTS+=" -j1"
@@ -94,8 +91,6 @@ src_prepare() {
 		-e "s:--prefix=\$(DESTDIR):--prefix=:" \
 		"${S}"/swig/python/GNUmakefile || die
 
-	epatch "${FILESDIR}"/${PN}-1.10.0-ruby-makefile.patch
-
 	# -soname is only accepted by GNU ld/ELF
 	[[ ${CHOST} == *-darwin* ]] \
 		&& epatch "${FILESDIR}"/${PN}-1.5.0-install_name.patch \
@@ -118,12 +113,6 @@ src_prepare() {
 	sed \
 		-e 's:^ar:$(AR):g' \
 		-i ogr/ogrsf_frmts/sdts/install-libs.sh || die
-
-	# bug 540132
-	epatch "${FILESDIR}"/${PN}-1.11.1-poppler-0.31.0-support.patch
-
-	# Fix swig-3.0.6 problem, https://trac.osgeo.org/gdal/ticket/6045
-	epatch "${FILESDIR}"/${PN}-1.11-swig-3.0.6.patch
 
 	tc-export AR RANLIB
 
@@ -148,11 +137,6 @@ src_prepare() {
 
 gdal_src_configure() {
 	local myopts=""
-
-	if use ruby; then
-		RUBY_MOD_DIR="$(ruby19 -r rbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')"
-		echo "Ruby module dir is: $RUBY_MOD_DIR"
-	fi
 
 	if use java; then
 		myopts+="
@@ -226,7 +210,6 @@ gdal_src_configure() {
 		$(use_with png) \
 		$(use_with postgres pg) \
 		$(use_with python) \
-		$(use_with ruby) \
 		$(use_with spatialite) \
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr) \
 		$(use_with threads) \
@@ -265,13 +248,10 @@ src_configure() {
 }
 
 src_compile() {
-	local i
-	for i in perl ruby; do
-		if use $i; then
-			rm "${S}"/swig/$i/*_wrap.cpp
-			emake -C "${S}"/swig/$i generate
-		fi
-	done
+	if use perl; then
+		rm "${S}"/swig/perl/*_wrap.cpp || die
+		emake -C "${S}"/swig/perl generate
+	fi
 
 	default
 
@@ -285,7 +265,7 @@ src_compile() {
 	use doc && emake docs
 
 	compile_python() {
-		rm -f swig/python/*_wrap.cpp
+		rm -f swig/python/*_wrap.cpp || die
 		emake -C swig/python generate
 		emake -C swig/python build
 	}
@@ -299,31 +279,17 @@ src_install() {
 		pushd "${S}"/swig/perl > /dev/null
 		perl-module_src_install
 		popd > /dev/null
-		sed -i \
-			-e "s:BINDINGS        =       python ruby perl:BINDINGS        =       python ruby:g" \
-			GDALmake.opt || die
+		sed -e 's:BINDINGS        =       \(.*\) perl:BINDINGS        =       \1:g' \
+			-i GDALmake.opt || die
 	fi
 
 	default
-
-	if use ruby ; then
-		# weird reinstall collision; needs manual intervention...
-		pushd "${S}"/swig/ruby > /dev/null
-		rm -rf "${D}"${RUBY_MOD_DIR}/gdal
-		exeinto ${RUBY_MOD_DIR}/gdal
-		doexe *.so || die "doins ruby modules failed"
-		popd > /dev/null
-	fi
 
 	use perl && perl_delete_localpod
 
 	dodoc Doxyfile HOWTO-RELEASE NEWS
 
-	if use doc ; then
-		dohtml html/*
-		docinto ogr
-		dohtml ogr/html/*
-	fi
+	use doc && dohtml html/*
 
 	install_python() {
 		emake -C swig/python DESTDIR="${D}" install
