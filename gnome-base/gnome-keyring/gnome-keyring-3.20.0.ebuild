@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-libs/libgcrypt-1.2.2:0=
 	caps? ( sys-libs/libcap-ng )
 	pam? ( virtual/pam )
+	selinux? ( sec-policy/selinux-gnome )
 	>=app-crypt/gnupg-2.0.28:=
 "
 DEPEND="${RDEPEND}
