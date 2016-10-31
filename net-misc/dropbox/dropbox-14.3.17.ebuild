@@ -4,7 +4,8 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils pax-utils systemd
+PYTHON_COMPAT=( python2_7 )
+inherit eutils gnome2-utils pax-utils systemd python-single-r1
 
 DESCRIPTION="Dropbox daemon (pretends to be GUI-less)"
 HOMEPAGE="http://dropbox.com/"
@@ -14,19 +15,21 @@ SRC_URI="
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/.*"
 QA_EXECSTACK="opt/dropbox/dropbox"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="librsync-bundled? ( dev-util/patchelf )"
 
 # Be sure to have GLIBCXX_3.4.9, #393125
 # USE=X require wxGTK's dependencies. system-library cannot be used due to
 # missing symbol (CtlColorEvent). #443686
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	X? (
 		dev-libs/glib:2
 		dev-qt/qtcore:5
@@ -52,7 +55,6 @@ RDEPEND="
 	!librsync-bundled? ( <net-libs/librsync-2 )
 	selinux? ( sec-policy/selinux-dropbox )
 	app-arch/bzip2
-	dev-lang/python:2.7
 	dev-libs/popt
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
@@ -77,7 +79,6 @@ src_prepare() {
 		dropbox_sqlite_ext-0.0-py2.7.egg
 		psutil-3.1.1-py2.7-*.egg
 		setuptools-20.3-py2.7.egg
-		tornado-4.2-py2.7-*.egg
 	)
 
 	eapply_user
