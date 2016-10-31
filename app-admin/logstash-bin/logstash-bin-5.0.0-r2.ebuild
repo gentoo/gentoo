@@ -40,7 +40,7 @@ src_install() {
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
-	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby"
+	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby" "/opt/${MY_PN}/bin/logstash-plugin"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
