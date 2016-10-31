@@ -8243,6 +8243,7 @@ dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Funct
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.4 0.1.5 0.1.7 0.1.8 0.1.9: An Amazon S3 Transfer Manager
+dev-python/safety 0.3.0: Checks your installed dependencies for known security vulnerabilities
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
