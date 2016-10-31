@@ -10,7 +10,7 @@ inherit eutils flag-o-matic toolchain-funcs versionator
 DEB_PATCH="" #$(get_version_component_range 4)
 #MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell) and is POSIX compliant"
+DESCRIPTION="Debian Almquist Shell"
 HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"
 SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${P}.tar.gz"
 if [[ -n "${DEB_PATCH}" ]] ; then
@@ -21,7 +21,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="libedit static"
+IUSE="dumb-echo libedit static"
 
 RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
 DEPEND="${RDEPEND}
@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 #S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.5.9.1-dumb-echo.patch #337329 #527848
 	"${FILESDIR}"/${PN}-0.5.8.1-eval-warnx.patch
 )
 
@@ -41,6 +40,9 @@ src_prepare() {
 		epatch */debian/diff/*
 	fi
 	epatch "${PATCHES[@]}"
+
+	#337329 #527848
+	use dumb-echo && epatch "${FILESDIR}"/${PN}-0.5.9.1-dumb-echo.patch
 
 	# Fix the invalid sort
 	sed -i -e 's/LC_COLLATE=C/LC_ALL=C/g' src/mkbuiltins
