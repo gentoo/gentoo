@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-util/cargo
+DESCRIPTION=a command line search tool that combines usability with raw speed
+EAPI=6
+HOMEPAGE=https://github.com/BurntSushi/ripgrep
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Unlicense )
+SLOT=0
+SRC_URI=https://github.com/BurntSushi/ripgrep/archive/0.2.5.tar.gz -> ripgrep-0.2.5.tar.gz
+_eclass_exported_funcs=src_unpack:cargo src_compile:- src_test:- src_install:-
+_eclasses_=cargo	21eab25085b426f4d1a975b85f624423
+_md5_=a081157e85bfe9f319a9d1c5583d175e
