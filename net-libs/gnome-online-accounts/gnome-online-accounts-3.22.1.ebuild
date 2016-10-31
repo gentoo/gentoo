@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
+VALA_USE_DEPEND="vapigen"
 
-inherit gnome2
+inherit gnome2 vala
 
 DESCRIPTION="GNOME framework for accessing online accounts"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-IUSE="gnome +introspection kerberos" # telepathy"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+IUSE="debug gnome +introspection kerberos" # telepathy"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # pango used in goaeditablelabel
 # libsoup used in goaoauthprovider
@@ -30,7 +30,7 @@ RDEPEND="
 	net-libs/rest:0.7
 	net-libs/telepathy-glib
 	>=net-libs/webkit-gtk-2.7.2:4
-	>=x11-libs/gtk+-3.11.1:3
+	>=x11-libs/gtk+-3.19.12:3
 	x11-libs/pango
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
@@ -43,6 +43,7 @@ RDEPEND="
 PDEPEND="gnome? ( >=gnome-base/gnome-control-center-3.2[gnome-online-accounts(+)] )"
 
 DEPEND="${RDEPEND}
+	$(vala_depend)
 	dev-libs/libxslt
 	>=dev-util/gtk-doc-am-1.3
 	>=dev-util/gdbus-codegen-2.30.0
@@ -58,9 +59,14 @@ DEPEND="${RDEPEND}
 # Due to sub-configure
 QA_CONFIGURE_OPTIONS=".*"
 
+src_prepare() {
+	gnome2_src_prepare
+	vala_src_prepare
+}
+
 src_configure() {
 	# TODO: Give users a way to set the G/FB/Windows Live secrets
-	# telepathy optional support is really a badly done, bug #494456
+	# telepathy optional support is really a badly one, bug #494456
 	gnome2_src_configure \
 		--disable-static \
 		--enable-backend \
@@ -76,6 +82,7 @@ src_configure() {
 		--enable-pocket \
 		--enable-telepathy \
 		--enable-windows-live \
+		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable kerberos)
 		#$(use_enable telepathy)
 	# gudev & cheese from sub-configure is overriden
