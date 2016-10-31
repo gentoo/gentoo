@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=sci-libs/fftw:3.0= sci-libs/gsl:= sci-physics/harminv guile? ( >=sci-libs/libctl-3.2 ) hdf5? ( sci-libs/hdf5:= ) mpi? ( virtual/mpi ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Simulation software to model electromagnetic systems
+EAPI=6
+HOMEPAGE=http://ab-initio.mit.edu/meep/
+IUSE=examples hdf5 guile mpi
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw:3.0= sci-libs/gsl:= sci-physics/harminv guile? ( >=sci-libs/libctl-3.2 ) hdf5? ( sci-libs/hdf5:= ) mpi? ( virtual/mpi )
+SLOT=0
+SRC_URI=http://ab-initio.mit.edu/meep/meep-1.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=d33e91175d1c0e2e7c11515e8ace4f81

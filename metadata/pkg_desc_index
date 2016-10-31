@@ -16328,7 +16328,7 @@ sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 2015
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1 1.2a-r2: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
-sci-physics/meep 1.1.1 1.2-r1: Simulation software to model electromagnetic systems
+sci-physics/meep 1.1.1 1.2-r1 1.3: Simulation software to model electromagnetic systems
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10: Lund Monte Carlo high-energy physics event generator
 sci-physics/reduze 2.0.9: Program for reducing Feynman integrals
@@ -16338,7 +16338,7 @@ sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massi
 sci-physics/siscone 2.0.6: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0: Toolkit for High Energy Physics Event Generation
 sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
-sci-physics/yoda 1.4.0: Yet more Objects for (High Energy Physics) Data Analysis
+sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.10 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
