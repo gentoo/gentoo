@@ -22,6 +22,7 @@ RDEPEND="
 	media-libs/libsdl
 	media-libs/ftgl
 	virtual/opengl
+	x11-libs/libXmu
 "
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-1.3.19"

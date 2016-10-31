@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ RDEPEND="
 	media-libs/libsdl
 	media-libs/ftgl
 	virtual/opengl
+	x11-libs/libXmu
 "
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-1.3.19"
