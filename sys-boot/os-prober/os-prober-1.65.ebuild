@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,11 +21,6 @@ S=${WORKDIR}/${PN}
 src_prepare() {
 	# use default GNU rules
 	rm Makefile || die 'rm Makefile failed'
-	# Fix references to grub-mount
-	sed -i -e 's:grub-mount:grub2-mount:g' \
-		common.sh \
-		linux-boot-probes/common/50mounted-tests \
-		os-probes/common/50mounted-tests
 }
 
 src_compile() {
