@@ -8,7 +8,7 @@ KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
 
-inherit ros-catkin
+inherit ros-catkin flag-o-matic
 
 DESCRIPTION="C++ parser for the Unified Robot Description Format (URDF)"
 LICENSE="BSD"
@@ -17,9 +17,9 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=[threads]
-	dev-libs/urdfdom
+	>=dev-libs/urdfdom-1
 	dev-libs/urdfdom_headers
-	dev-ros/urdf_parser_plugin
+	>=dev-ros/urdf_parser_plugin-1.12.3-r1
 	dev-ros/pluginlib
 	dev-ros/rosconsole_bridge
 	dev-ros/roscpp
@@ -28,3 +28,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" "${FILESDIR}/ns.patch" )
+
+src_configure() {
+	append-cxxflags -std=c++11
+	ros-catkin_src_configure
+}
