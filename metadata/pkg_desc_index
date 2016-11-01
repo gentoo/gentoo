@@ -9120,8 +9120,8 @@ dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internation
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
-dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
-dev-ruby/introspection 0.0.3: Dynamic inspection of the hierarchy of method definitions on a Ruby object
+dev-ruby/instantiator 0.0.6 0.0.7: Instantiate an arbitrary Ruby class
+dev-ruby/introspection 0.0.3 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.5.2 1.5.3 1.5.4: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jeweler 2.0.1-r2: Rake tasks to manage gems, versioning and generate new projects
