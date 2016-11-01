@@ -11779,7 +11779,7 @@ kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kbstateapplet 0_p1268845: Plasmoid that shows the state of keyboard leds
 kde-misc/kcaldav 1.2.0: CalDAV support plugin for KDE Kontact
-kde-misc/kcm-grub2 0.6.4-r1: KCModule for configuring the GRUB2 bootloader
+kde-misc/kcm-grub2 0.6.4-r2: KCModule for configuring the GRUB2 bootloader
 kde-misc/kcm-touchpad 1.1: KCM, daemon and applet for touchpad
 kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
