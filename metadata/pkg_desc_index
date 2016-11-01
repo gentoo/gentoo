@@ -54,7 +54,7 @@ app-admin/aws-iam-tools 1.3.0: The Command Line Interface (CLI) for the AWS Iden
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 2.4.1 2.4.2: Distribution-independent installer framework
+app-admin/calamares 2.4.2 2.4.3: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 3.1.9 3.1.13: A usable configuration management system
@@ -14482,7 +14482,7 @@ net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.3
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 1.3.0 1.4.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
-net-libs/jreen 1.2.1: Qt XMPP library
+net-libs/jreen 1.2.1 1.3.0: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.21-r2: Accounts SSO (Single Sign-On) management library for GLib applications
