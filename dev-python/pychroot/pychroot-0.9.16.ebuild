@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	SRC_URI="https://github.com/pkgcore/${PN}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
 DESCRIPTION="a python library and cli tool that simplify chroot handling"
@@ -22,11 +22,10 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.7.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	$(python_gen_cond_dep 'dev-python/3to2[${PYTHON_USEDEP}]' python2_7)
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -34,7 +33,7 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" dev-python/sphinx[${PYTHON_USEDEP}]"
 
 python_compile_all() {
-	[[ ${PV} == *9999 ]] && emake -C doc man
+	esetup.py build_man
 }
 
 python_test() {
@@ -42,10 +41,7 @@ python_test() {
 }
 
 python_install_all() {
+	local DOCS=( NEWS.rst README.rst )
+	distutils-r1_python_install install_man
 	distutils-r1_python_install_all
-	if [[ ${PV} == *9999 ]]; then
-		emake -C doc PREFIX=/usr DESTDIR="${D}" install_man
-	else
-		doman man/*
-	fi
 }
