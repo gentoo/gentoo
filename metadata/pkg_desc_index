@@ -7846,7 +7846,7 @@ dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.1 0.2.3: A Python API for interacting with a Chef server
 dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
-dev-python/pychroot 0.9.13 0.9.15 9999: a python library and cli tool that simplify chroot handling
+dev-python/pychroot 0.9.15 0.9.16 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r1 1.2.2-r2: Climate Data Analysis Module for Python
