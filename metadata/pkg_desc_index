@@ -7461,7 +7461,7 @@ dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0 0.10.1: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.0 4.2.1 4.2.2 4.3.0 4.3.1 4.4.1 4.5.0: IPython Kernel for Jupyter
-dev-python/ipyparallel 4.1.0 5.0.0 5.0.1 5.1.1: Interactive Parallel Computing with IPython
+dev-python/ipyparallel 4.1.0 5.0.1 5.1.1 5.2.0: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.1 4.1.2 4.2.0-r1 5.1.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1 5.1.4 5.1.5 5.2.2: IPython HTML widgets for Jupyter
