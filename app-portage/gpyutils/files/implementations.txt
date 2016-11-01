@@ -12,7 +12,7 @@ python2_7	2.7	current	2.7
 python3_0	3.0	dead	3.0
 python3_1	3.1	dead	3.1
 python3_2	3.2	dead	3.2
-python3_3	3.3	supported	3.3
+python3_3	3.3	dead	3.3
 python3_4		current	3.4
 python3_5		supported	3.5
 
