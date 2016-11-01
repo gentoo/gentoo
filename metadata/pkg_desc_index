@@ -1354,7 +1354,7 @@ app-emulation/virtualbox 4.3.38 4.3.40 5.0.16-r1 5.0.26 5.1.6 5.1.8: Family of p
 app-emulation/virtualbox-additions 4.3.38 4.3.40 5.0.16 5.0.26 5.1.6 5.1.8: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-bin 4.3.38.106717 4.3.40.110317 5.0.16.105871-r1 5.0.26.108824 5.1.6.110634 5.1.8.111374: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-extpack-oracle 4.3.38.106717 4.3.40.110317 5.0.16.105871 5.0.26.108824 5.1.6.110634 5.1.8.111374: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 4.3.38 4.3.40 5.0.16 5.0.20: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-guest-additions 4.3.38 4.3.40 5.0.16 5.0.20 5.1.6 5.1.8: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 4.3.38 4.3.40 5.0.16 5.0.26 5.1.6 5.1.8: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
@@ -4654,7 +4654,7 @@ dev-libs/injeqt 1.0.1: Dependency injection framework for Qt5
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.11.1 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/jansson 2.7: C library for encoding, decoding and manipulating JSON data
-dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.0.4 4.1.0 4.2.1: Jemalloc is a general-purpose scalable concurrent allocator
+dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.0.4 4.1.0 4.2.1-r1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.9-r1 0.10-r1 0.11 0.11-r1 0.12: A JSON implementation in C
 dev-libs/json-glib 1.0.4 1.2.0 1.2.2: Library providing GLib serialization and deserialization for the JSON format
@@ -8319,7 +8319,7 @@ dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include progr
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
 dev-python/sphinxtogithub 1.0.0 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 2.3.4 2.3.5.2 2.3.8 2.3.9: Python IDE with matlab-like features
-dev-python/sqlalchemy 0.7.10 0.9.8 1.0.8 1.0.9 1.0.10 1.0.11 1.0.12 1.0.14 1.0.15 1.1.2 1.1.3: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 0.7.10 0.9.8 1.0.12 1.0.15 1.1.2 1.1.3: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.9.5 0.10.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlite3dbm 0.1.4-r1: An sqlite-backed dictionary
@@ -18227,7 +18227,7 @@ x11-drivers/xf86-video-trident 1.3.7: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 4.3.38 4.3.40 5.0.16 5.0.20-r1: VirtualBox video driver
+x11-drivers/xf86-video-virtualbox 4.3.38 4.3.40 5.0.16 5.0.20-r1 5.1.6 5.1.8: VirtualBox video driver
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
