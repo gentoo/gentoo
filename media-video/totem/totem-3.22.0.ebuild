@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes" # plugins are dlopened
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads"
 
-inherit autotools eutils gnome2 multilib python-single-r1
+inherit autotools gnome2 python-single-r1
 
 DESCRIPTION="Media player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Videos"

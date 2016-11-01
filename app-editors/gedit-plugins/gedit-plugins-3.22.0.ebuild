@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
 PYTHON_COMPAT=( python3_{3,4,5} )
 PYTHON_REQ_USE="xml"
@@ -15,7 +14,7 @@ DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 IUSE_plugins="charmap git terminal vala zeitgeist"
@@ -34,7 +33,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/libpeas-1.7.0[gtk,python?]
 	>=x11-libs/gtk+-3.9:3
-	>=x11-libs/gtksourceview-3.17.3:3.0
+	>=x11-libs/gtksourceview-3.21.3:3.0
 	python? (
 		${PYTHON_DEPS}
 		>=app-editors/gedit-3.16[introspection,${PYTHON_USEDEP}]
@@ -54,9 +53,9 @@ RDEPEND="
 	zeitgeist? ( >=gnome-extra/zeitgeist-0.9.12[introspection] )
 "
 DEPEND="${RDEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.40.0
-	dev-util/itstool
-	sys-devel/gettext
+	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
 
