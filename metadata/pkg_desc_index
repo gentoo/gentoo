@@ -1288,7 +1288,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0 1.21.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.0 1.12.1 1.12.2 1.12.3 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.3 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.0 1.8.1 1.9.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
@@ -9790,7 +9790,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1 4.12.1 4.12.2 4.13.0 4.13.1 4.13.2 4.14.0: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1 4.12.1 4.12.2 4.13.0 4.13.1 4.13.2 4.14.0 4.14.0-r1: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
