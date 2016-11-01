@@ -1,0 +1,17 @@
+Index: urdf/urdfdom_compatibility.h.in
+===================================================================
+--- urdf.orig/urdfdom_compatibility.h.in
++++ urdf/urdfdom_compatibility.h.in
+@@ -75,9 +75,9 @@ URDF_TYPEDEF_CLASS_POINTER(ModelInterfac
+ 
+ #else // urdfdom <= 0.4
+ 
+-typedef std::shared_ptr<ModelInterface> ModelInterfaceSharedPtr;
+-typedef std::shared_ptr<const ModelInterface> ModelInterfaceConstSharedPtr;
+-typedef std::weak_ptr<ModelInterface> ModelInterfaceWeakPtr;
++typedef std::shared_ptr<urdf::ModelInterface> ModelInterfaceSharedPtr;
++typedef std::shared_ptr<const urdf::ModelInterface> ModelInterfaceConstSharedPtr;
++typedef std::weak_ptr<urdf::ModelInterface> ModelInterfaceWeakPtr;
+ 
+ #endif // urdfdom > 0.4
+ 
