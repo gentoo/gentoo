@@ -18,7 +18,7 @@ COMMON_DEPEND="
 	app-crypt/libsecret[introspection]
 	>=dev-libs/gjs-1.45.3
 	>=dev-libs/glib-2.43.4:2
-	>=dev-libs/gobject-introspection-0.9.6:=
+	>=dev-libs/gobject-introspection-1.50:=
 	net-im/telepathy-logger[introspection]
 	net-libs/libsoup:2.4[introspection]
 	net-libs/telepathy-glib[introspection]
