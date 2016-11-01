@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-01">
+  <title>UnZip: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in UnZip allowing remote
+    attackers to execute arbitrary code and cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>November 01, 2016</announced>
+  <revised>November 01, 2016: 1</revised>
+  <bug>528082</bug>
+  <bug>533748</bug>
+  <bug>537424</bug>
+  <bug>560416</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unzip" auto="yes" arch="*">
+      <unaffected range="ge">6.0_p20</unaffected>
+      <vulnerable range="lt">6.0_p20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Info-ZIP’s UnZip is a tool to list and extract files inside PKZIP
+      compressed files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities were found in UnZip. Please review the
+      referenced CVE’s for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code or cause Denial of
+      Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All UnZip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/unzip-6.0_p20"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8139">CVE-2014-8139</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8140">CVE-2014-8140</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8141">CVE-2014-8141</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9636">CVE-2014-9636</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 09 Jul 2016 02:22:34 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 01 Nov 2016 13:18:35 +0000">b-man</metadata>
+</glsa>
