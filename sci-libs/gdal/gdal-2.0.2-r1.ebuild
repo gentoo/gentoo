@@ -7,7 +7,7 @@ EAPI=5
 WANT_AUTOCONF="2.5"
 
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 DISTUTILS_OPTIONAL=1
 
 inherit autotools eutils libtool perl-module distutils-r1 python-r1 toolchain-funcs java-pkg-opt-2

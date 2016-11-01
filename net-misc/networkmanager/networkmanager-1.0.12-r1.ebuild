@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 GNOME_ORG_MODULE="NetworkManager"
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit autotools bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 systemd \
 	user readme.gentoo toolchain-funcs vala versionator virtualx udev multilib-minimal

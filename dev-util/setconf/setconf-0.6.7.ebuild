@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4}} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 inherit python-single-r1
 
 DESCRIPTION="A small python based utility used to change configuration files"
