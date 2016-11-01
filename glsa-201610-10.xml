@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>October 29, 2016</announced>
-  <revised>October 29, 2016: 1</revised>
+  <revised>November 01, 2016: 2</revised>
   <bug>593684</bug>
   <bug>596896</bug>
   <bug>598152</bug>
@@ -16,6 +16,7 @@
     <package name="www-plugins/adobe-flash" auto="yes" arch="*">
       <unaffected range="ge">23.0.0.205</unaffected>
       <unaffected range="rge">11.2.202.635</unaffected>
+      <unaffected range="rge">11.2.202.643</unaffected>
       <vulnerable range="lt">23.0.0.205</vulnerable>
     </package>
   </affected>
@@ -101,5 +102,5 @@
   <metadata tag="requester" timestamp="Thu, 15 Sep 2016 22:34:48 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sat, 29 Oct 2016 13:23:42 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 01 Nov 2016 18:13:05 +0000">b-man</metadata>
 </glsa>
