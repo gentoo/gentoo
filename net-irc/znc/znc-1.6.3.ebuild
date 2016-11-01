@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 inherit eutils python-single-r1 readme.gentoo-r1 systemd user
 
 MY_PV=${PV/_/-}

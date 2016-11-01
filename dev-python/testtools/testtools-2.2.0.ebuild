@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1

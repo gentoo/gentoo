@@ -4,7 +4,7 @@
 
 EAPI="5"
 # A few tests fail with python3.3/3.4 :(
-PYTHON_COMPAT=( python{3_3,3_4} pypy3 )
+PYTHON_COMPAT=( python3_4 pypy3 )
 
 inherit distutils-r1 eutils
 

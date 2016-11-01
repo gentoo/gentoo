@@ -14,7 +14,7 @@ SRC_URI="http://gasnet.lbl.gov/${MY_P}.tar.gz"
 SOVER="${PV%%.*}"
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="mpi test threads"
 
 DEPEND="mpi? ( virtual/mpi )"

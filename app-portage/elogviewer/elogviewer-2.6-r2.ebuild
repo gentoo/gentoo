@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{3,4}} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 DISABLE_AUTOFORMATTING=true
 

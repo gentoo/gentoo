@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{1..5} )
+PYTHON_COMPAT=( python2_7 python3_{4..5} )
 inherit eutils python-r1
 
 DESCRIPTION="Assorted git-related scripts"

@@ -8,7 +8,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit autotools-utils toolchain-funcs fortran-2 python-single-r1
 

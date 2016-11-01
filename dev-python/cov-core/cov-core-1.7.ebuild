@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_4} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="plugin core for use by pytest-cov, nose-cov and nose2-cov"
