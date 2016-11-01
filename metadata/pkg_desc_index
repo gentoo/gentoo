@@ -8608,8 +8608,8 @@ dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place
 dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
-dev-ros/collada_parser 1.12.3-r1 1.12.4 9999: C++ parser for the Collada robot description format
-dev-ros/collada_urdf 1.12.3-r2 1.12.4 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
+dev-ros/collada_parser 1.12.3-r1 1.12.4 1.12.5 9999: C++ parser for the Collada robot description format
+dev-ros/collada_urdf 1.12.3-r2 1.12.4 1.12.5 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.11.0 0.11.1 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 1.9.5 9999: Plugin to image_transport for transparently sending depth images using PNG compression
@@ -8633,7 +8633,7 @@ dev-ros/diagnostic_msgs 1.12.3 1.12.4 1.12.5 9999: Standardized interface for th
 dev-ros/diagnostic_updater 1.8.8 1.8.9 1.8.10 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.14.0-r1 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.43 1.5.44 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.5.43 1.5.44 1.5.45 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
@@ -8683,11 +8683,11 @@ dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communicat
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 9999: Interface for enforcing joint limits
-dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 9999: Tool for setting and publishing joint state values for a given URDF
+dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.13 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
-dev-ros/kdl_parser 1.12.3-r1 1.12.4 9999: Constructs a KDL tree from an XML robot representation in URDF
-dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser 1.12.3-r1 1.12.4 1.12.5 9999: Constructs a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.3 9999: Assorted filters designed to operate on 2D planar laser scanners
@@ -8833,7 +8833,7 @@ dev-ros/rqt_tf_tree 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin for visualizi
 dev-ros/rqt_top 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 9999: Simple web content viewer for rqt
-dev-ros/rviz 1.12.1-r1 1.12.3-r1 9999: 3D visualization tool for ROS
+dev-ros/rviz 1.12.1-r1 1.12.3-r1 1.12.4 9999: 3D visualization tool for ROS
 dev-ros/rviz_plugin_tutorials 0.10.1-r1 9999: Tutorials showing how to write plugins for RViz
 dev-ros/rviz_python_tutorial 0.9.2 0.10.1 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 1.8.10 9999: Robot self-test node
@@ -8888,8 +8888,8 @@ dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and lis
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
-dev-ros/urdf 1.12.3-r1 1.12.4 9999: C++ parser for the Unified Robot Description Format (URDF)
-dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 9999: C++ base class for URDF parsers
+dev-ros/urdf 1.12.3-r1 1.12.4 1.12.5 9999: C++ parser for the Unified Robot Description Format (URDF)
+dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 1.12.5 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
@@ -15507,7 +15507,7 @@ ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 9999: PCL (Point Cloud Library) ROS in
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 1.3.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
-ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 9999: Packages for modeling various aspects of robot information
+ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 1.3.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: ROS communications-related packages
