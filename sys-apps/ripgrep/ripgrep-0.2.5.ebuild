@@ -27,4 +27,5 @@ src_test() {
 src_install() {
 	dobin target/release/rg
 	doman doc/rg.1
+	dodoc CHANGELOG.md README.md
 }
