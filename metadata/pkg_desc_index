@@ -9945,7 +9945,7 @@ dev-util/huc 0.1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
-dev-util/icmake 7.22.01 9.00.00: Hybrid between a make utility and a shell scripting language
+dev-util/icmake 7.22.01 9.00.00 9.02.02: Hybrid between a make utility and a shell scripting language
 dev-util/idea-ultimate 14.1.7.141.3058.30 15.0.6.143.2370.31 2016.1.2.145.972.3 2016.1.3.145.1616.11_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
