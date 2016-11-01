@@ -17,6 +17,11 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
+# net-misc/libteam is now ~ppc ~ppc64
+net-misc/networkmanager teamd
+
 # Michael Palimaka <kensington@gentoo.org> (21 Oct 2016)
 # Requires media-libs/opencv which is not stable
 media-plugins/frei0r-plugins facedetect
