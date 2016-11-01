@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-util/cargo
+DESCRIPTION=a command line search tool that combines usability with raw speed
+EAPI=6
+HOMEPAGE=https://github.com/BurntSushi/ripgrep
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Unlicense )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~radhermit/dist/ripgrep-0.2.5.tar.xz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_md5_=2a3e3c622147531b28b9c91709e5f50a
