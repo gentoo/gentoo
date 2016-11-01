@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://znc.in/releases/znc-1.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=42fbdcefcf8004991193a834940fd0de
+_md5_=980bca166b5a06341947c5531d80e2ab

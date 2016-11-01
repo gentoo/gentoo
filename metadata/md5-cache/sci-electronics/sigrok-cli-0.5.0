@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://sigrok.org/download/source/sigrok-cli/sigrok-cli-0.5.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=699db1784f58979b02298c96734cdf25
+_md5_=e1023b96a14f1575f758a68c23c64d80

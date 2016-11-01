@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=!binary? ( http://code.coreboot.org/p/seabios/downloads/get/seabios-1.7.5.tar.gz ) binary? ( http://code.coreboot.org/p/seabios/downloads/get/bios.bin-1.7.5.gz seavgabios? ( mirror://debian/pool/main/s/seabios/seabios_1.7.5-1_all.deb ) )
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8101250cf5f0af734b2e67505f839fb9
+_md5_=f6d15e946c575af378fa4f7133622fb8

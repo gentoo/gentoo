@@ -12,4 +12,4 @@ SLOT=0/6
 SRC_URI=http://www.libimobiledevice.org/downloads/libimobiledevice-1.2.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4b994d2ef7d5bf499bca63efa68479a3
+_md5_=99d28290f8c3f63985df1ec7cbc15da8

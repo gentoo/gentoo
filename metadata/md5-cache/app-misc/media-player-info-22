@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://www.freedesktop.org/software/media-player-info/media-player-info-22.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=5d808f4cd830b475cf0d9e726ce89752
+_md5_=15751ff29ebb0e04c760268283168fee

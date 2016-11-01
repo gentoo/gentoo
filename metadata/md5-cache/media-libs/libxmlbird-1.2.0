@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://birdfont.org/xmlbird-releases/libxmlbird-1.2.0.tar.xz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vala	764817a25b405b65269d8619e203a52f
-_md5_=678f05cbfdc61224d69c5ea6f47acd01
+_md5_=f7a367e013b436988fbf82351bbf4b41
