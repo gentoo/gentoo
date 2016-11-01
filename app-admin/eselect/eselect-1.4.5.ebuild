@@ -22,7 +22,6 @@ RDEPEND="sys-apps/sed
 		app-misc/realpath
 	)"
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	doc? ( dev-python/docutils )"
 RDEPEND="${RDEPEND}
 	sys-apps/file
