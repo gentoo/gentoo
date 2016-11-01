@@ -4,11 +4,11 @@ DESCRIPTION=An Apache module for logging to an SQL (MySQL) database
 EAPI=5
 HOMEPAGE=http://www.outoforder.cc/projects/apache/mod_log_sql/
 IUSE=dbi ssl
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=Artistic
 RDEPEND=virtual/mysql dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openssl:0 ) =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=http://www.outoforder.cc/downloads/mod_log_sql/mod_log_sql-1.101.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	d86176876ab66b0d5239c0097903a1b2	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4cf266f2c05664d8e63581c6fc8fb59a
+_md5_=bf2f57fbccc675a41d554ad7bfb15bb8
