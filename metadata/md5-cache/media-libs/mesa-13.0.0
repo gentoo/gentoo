@@ -10,7 +10,7 @@ RDEPEND=!<x11-base/xorg-server-1.7 !<=x11-proto/xf86driproto-2.0.3 abi_x86_32? (
 REQUIRED_USE=d3d9? ( dri3 gallium ) llvm? ( gallium ) opencl? ( gallium llvm ) openmax? ( gallium ) gles1? ( egl ) gles2? ( egl ) vaapi? ( gallium ) vdpau? ( gallium ) wayland? ( egl gbm ) xa? ( gallium ) video_cards_freedreno? ( gallium ) video_cards_intel? ( classic ) video_cards_i915? ( || ( classic gallium ) ) video_cards_i965? ( classic ) video_cards_ilo? ( gallium ) video_cards_nouveau? ( || ( classic gallium ) ) video_cards_radeon? ( || ( classic gallium ) gallium? ( x86? ( llvm ) amd64? ( llvm ) ) ) video_cards_r100? ( classic ) video_cards_r200? ( classic ) video_cards_r300? ( gallium x86? ( llvm ) amd64? ( llvm ) ) video_cards_r600? ( gallium ) video_cards_radeonsi? ( gallium llvm ) video_cards_vmware? ( gallium )
 RESTRICT=!bindist? ( bindist )
 SLOT=0
-SRC_URI=ftp://ftp.freedesktop.org/pub/mesa/13.0.0/mesa-13.0.0-rc3.tar.xz
+SRC_URI=ftp://ftp.freedesktop.org/pub/mesa/13.0.0/mesa-13.0.0.tar.xz
 _eclass_exported_funcs=pkg_prerm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	pax-utils	4c2654a34ebe732e85fda354f6ee642f	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=e5d029210f690979fc74b480f7baba39
