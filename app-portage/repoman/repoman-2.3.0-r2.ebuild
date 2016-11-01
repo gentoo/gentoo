@@ -2,59 +2,42 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=(
-	pypy
-	python3_3 python3_4 python3_5
-	python2_7
-)
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1 eutils multilib
+inherit distutils-r1
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/repoman/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
-DEPEND="dev-lang/python-exec:2"
-
-RDEPEND="
-	dev-lang/python-exec:2
+DEPEND="
 	!<sys-apps/portage-2.3.0_rc
-	>=dev-python/lxml-3.6.0
-	"
+	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
+"
+RDEPEND="${DEPEND}"
 
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/repoman"
-
-prefix_src_archives() {
-	local x y
-	for x in ${@}; do
-		for y in ${SRC_ARCHIVES}; do
-			echo ${y}/${x}
-		done
-	done
-}
-
-TARBALL_PV=${PV}
-SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
-	https://gitweb.gentoo.org/proj/portage.git/patch/?id=ef33db45a0c1d462411d4ced1857a322c0ab28f6 -> repoman-2.3.0-bug-586864.patch"
+PATCHES=( "${FILESDIR}"/${P}-bug-586864.patch )
 
 python_prepare_all() {
-	epatch "${DISTDIR}/repoman-2.3.0-bug-586864.patch"
 	distutils-r1_python_prepare_all
 
-	if [[ -n ${EPREFIX} ]] ; then
+	if [[ -n "${EPREFIX}" ]] ; then
 		einfo "Prefixing shebangs ..."
-		while read -r -d $'\0' ; do
-			local shebang=$(head -n1 "$REPLY")
+
+		local file
+		while read -r -d $'\0' file; do
+			local shebang=$(head -n1 "${file}")
+			echo ${shebang}
 			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
+				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "${file}" || \
 					die "sed failed"
 			fi
 		done < <(find . -type f -print0)
