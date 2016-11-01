@@ -9802,7 +9802,7 @@ dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
 dev-util/bazel 0.3.2 0.3.2-r1: Fast and correct automated build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
-dev-util/bcc 0.1.8-r2 0.2.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.1.8-r2 0.2.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
 dev-util/bdelta 0.3.1: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
@@ -16869,7 +16869,7 @@ sys-apps/the_silver_searcher 0.32.0 0.33.0: A code-searching tool similar to ack
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.7.0 2.7.1 2.7.1-r1: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.7.0 2.7.1 2.7.1-r1 2.7.1-r2: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
