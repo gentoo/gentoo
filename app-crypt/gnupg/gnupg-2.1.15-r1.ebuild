@@ -52,7 +52,7 @@ src_prepare() {
 	# This provides use of gnutls system cert store for hkps://
 	# Gentoo-Bug: 597934
 	if use system-cert-store; then
-		sed -i 's/HTTP_FLAG_TRUST_DEF/HTTP_FLAG_TRUST_SYS/g' \
+		sed -i 's/HTTP_FLAG_TRUST_DEF/HTTP_FLAG_TRUST_DEF | HTTP_FLAG_TRUST_SYS/g' \
            "${S}/dirmngr/ks-engine-hkp.c" || die
 		einfo "Using system TLS certificate store"
 	fi
