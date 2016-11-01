@@ -13,7 +13,7 @@ SRC_URI="http://iguanaworks.net/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
 # sys-apps/lsb-release is used by the init script for detecting Gentoo
