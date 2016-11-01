@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-libs/elfutils:=
+RDEPEND=">=dev-libs/elfutils-0.166:=
 	sys-devel/clang:=
 	>=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}"
