@@ -8,7 +8,7 @@ dev-util/cmake -qt4 -qt5
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
 
-# Required by kde/akonadi
+# Required by kde-apps/akonadi
 dev-qt/qtsql mysql
 
 # Required by dev-qt/qtcore
@@ -45,8 +45,8 @@ dev-qt/qtcore icu
 media-libs/mesa egl wayland
 
 # Required by kde-frameworks/kwayland
-dev-qt/qtgui egl
-dev-qt/qtwayland egl
+dev-qt/qtgui:5 egl
+dev-qt/qtwayland:5 egl
 
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 kdenlive melt
