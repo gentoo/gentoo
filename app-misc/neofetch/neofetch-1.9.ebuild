@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=6
-inherit git-r3
+
 DESCRIPTION="Simple information system script"
 HOMEPAGE="https://github.com/dylanaraps/neofetch"
-EGIT_REPO_URI="https://github.com/dylanaraps/neofetch.git"
+SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 IUSE="X"
