@@ -475,7 +475,7 @@ app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM dr
 app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image files
 app-cdr/qpxtool 0.7.2: CD/DVD quality checking utilities
 app-cdr/recorder 1.4.5-r1: A simple GTK+ disc burner
-app-cdr/sync2cd 1.3 1.3-r1: An incremental archiving tool to CD/DVD
+app-cdr/sync2cd 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c: Converts MagicISO CD-images to iso
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
@@ -1886,7 +1886,7 @@ app-misc/qlcplus 4.10.2b 4.10.3 4.10.4: QLC+ - Q Light Controller Plus to contro
 app-misc/ranger 1.7.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r3: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.17.3-r1 1.19.5-r1: A personal full text search package
+app-misc/recoll 1.19.5-r1: A personal full text search package
 app-misc/regex-markup 0.10.0 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
