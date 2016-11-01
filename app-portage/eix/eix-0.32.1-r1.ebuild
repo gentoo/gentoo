@@ -75,15 +75,15 @@ src_install() {
 	default
 	dobashcomp bash/eix
 	systemd_dotmpfilesd tmpfiles.d/eix.conf
+
+	keepdir /var/cache/eix
 }
 
 pkg_postinst() {
-	local cache=${EROOT%/}/var/cache/${PN}
-	if [[ ! -d ${cache} ]]; then
-		mkdir "${cache}" || die
-		if ! use prefix; then
-			chown portage:portage "${cache}" || die
-		fi
+	if ! use prefix; then
+		# note: if this is done in src_install(), portage:portage
+		# ownership may be reset to root
+		fowners portage:portage "${EROOT%/}"/var/cache/eix
 	fi
 
 	local obs=${EROOT%/}/var/cache/eix.previous
