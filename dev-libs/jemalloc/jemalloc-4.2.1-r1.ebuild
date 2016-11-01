@@ -17,6 +17,8 @@ IUSE="debug static-libs stats"
 HTML_DOCS=( doc/jemalloc.html )
 PATCHES=( "${FILESDIR}/${PN}-3.5.1-strip-optimization.patch"
 	"${FILESDIR}/${PN}-3.5.1_fix_html_install.patch"
+	"${FILESDIR}/${PN}-4.2-issue_399.patch"
+	"${FILESDIR}/${PN}-4.2-issue_443.patch"
 )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jemalloc/jemalloc.h )
 # autotools-utils.eclass auto-adds configure options when static-libs is in IUSE
