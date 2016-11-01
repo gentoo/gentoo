@@ -294,9 +294,7 @@ pkg_postinst() {
 		ewarn "work correctly without it."
 		ewarn
 	fi
-}
 
-pkg_postinst() {
 	# configure tls
 	if use ssl ; then
 		if "${EROOT}"/usr/sbin/postfix tls all-default-client; then
