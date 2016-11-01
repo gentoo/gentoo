@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
@@ -14,7 +13,8 @@ HOMEPAGE="https://developer.gnome.org/libpeas/stable/"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
+
 IUSE="+gtk glade jit lua +python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ?? ( $(python_gen_useflags 'python3*') ) )"
 
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Gentoo uses unversioned lua - lua.pc instad of lua5.1.pc, /usr/bin/lua instead of /usr/bin/lua5.1
-	epatch "${FILESDIR}"/${PN}-1.14.0-lua.pc.patch
+	eapply "${FILESDIR}"/${PN}-1.14.0-lua.pc.patch
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -86,11 +86,13 @@ src_configure() {
 }
 
 src_test() {
+	# This looks fixed since 1.18.0:
+	#
 	# FIXME: Tests fail because of some bug involving Xvfb and Gtk.IconTheme
 	# DO NOT REPORT UPSTREAM, this is not a libpeas bug.
 	# To reproduce:
 	# >>> from gi.repository import Gtk
 	# >>> Gtk.IconTheme.get_default().has_icon("gtk-about")
 	# This should return True, it returns False for Xvfb
-	Xemake check
+	virtx emake check
 }
