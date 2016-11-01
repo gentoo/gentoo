@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -25,13 +25,18 @@ RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	!<dev-python/ipython-4.0.0[smp]
 	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
+	dev-python/notebook[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	www-servers/tornado[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
+	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' python2_7)
+	>=dev-python/setuptools-18.5[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	"
 
@@ -49,7 +54,7 @@ python_compile_all() {
 }
 
 python_test() {
-	iptest ipyparallel.tests -- -vsx || die
+	iptest --coverage xml ipyparallel.tests -- -vsx || die
 }
 
 python_install_all() {
