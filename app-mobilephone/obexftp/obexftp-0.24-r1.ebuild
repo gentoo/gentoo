@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit cmake-utils python-single-r1 python-utils-r1 eutils multilib
 
 DESCRIPTION="File transfer over OBEX for mobile phones"

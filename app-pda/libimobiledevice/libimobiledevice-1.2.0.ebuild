@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit eutils python-r1
 
 DESCRIPTION="Support library to communicate with Apple iPhone/iPod Touch devices"

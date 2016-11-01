@@ -4,7 +4,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{3,4,5} )
+PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils gnome2 python-r1 multilib virtualx

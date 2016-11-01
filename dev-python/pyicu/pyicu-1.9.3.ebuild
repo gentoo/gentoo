@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 DISTUTILS_IN_SOURCE_BUILD=1 # setup.py applies 2to3 to tests
 
 inherit distutils-r1
