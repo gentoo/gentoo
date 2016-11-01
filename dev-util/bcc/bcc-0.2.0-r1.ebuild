@@ -20,8 +20,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
-	sys-devel/clang
+RDEPEND=">=dev-libs/elfutils-0.166:=
+	sys-devel/clang:=
+	>=sys-devel/llvm-3.7:=[llvm_targets_BPF(+)]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
