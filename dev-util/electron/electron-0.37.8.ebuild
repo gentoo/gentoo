@@ -55,7 +55,7 @@ LIBCC_S="${BRIGHTRAY_S}/vendor/libchromiumcontent"
 LICENSE="BSD"
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~amd64"
-IUSE="custom-cflags cups debug gnome gnome-keyring hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
+IUSE="custom-cflags cups debug gnome gnome-keyring bundled-openssl hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -121,7 +121,7 @@ RDEPEND="!<dev-util/electron-0.36.12-r4
 	x11-libs/pango:=
 	kerberos? ( virtual/krb5 )
 	>=net-libs/http-parser-2.6.2:=
-	>=dev-libs/openssl-1.0.2g:0=[-bindist]"
+	!bundled-openssl? ( >=dev-libs/openssl-1.0.2g:0=[-bindist] )"
 DEPEND="${RDEPEND}
 	!arm? (
 		dev-lang/yasm
@@ -643,7 +643,7 @@ src_configure() {
 	echo '#!/usr/bin/env python' > tools/gyp_node.py || die
 	# --shared-libuv cannot be used as electron's node fork
 	# patches uv_loop structure.
-	./configure --shared-openssl --shared-http-parser \
+	./configure $(usex bundled-openssl "--shared-openssl" "") --shared-http-parser \
 				--shared-zlib --without-npm --with-intl=system-icu \
 				--without-dtrace --dest-cpu=${target_arch} \
 				--prefix="" || die
