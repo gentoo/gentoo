@@ -207,6 +207,10 @@ src_install() {
 
 	multilib-minimal_src_install
 
+	# Move runtime headers to /usr/lib/clang, where they belong
+	dodir /usr/lib
+	mv "${ED}usr/include/clangrt" "${ED}usr/lib/clang" || die
+
 	# Apply CHOST and version suffix to clang tools
 	local clang_version=4.0
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
@@ -247,9 +251,10 @@ src_install() {
 multilib_src_install() {
 	cmake-utils_src_install
 
-	# move headers to the correct directory
-	dodir /usr/lib/clang
-	cp -pR "${ED}usr/$(get_libdir)/clang"/* "${ED}usr/lib/clang/" || die
+	# move headers to include/ to get them checked for ABI mismatch
+	# (then to the correct directory in src_install())
+	insinto /usr/include/clangrt
+	doins -r "${ED}usr/$(get_libdir)/clang"/.
 	rm -r "${ED}usr/$(get_libdir)/clang" || die
 }
 
