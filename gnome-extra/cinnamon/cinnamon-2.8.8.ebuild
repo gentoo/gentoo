@@ -4,7 +4,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="xml"
 
 inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1

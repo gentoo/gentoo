@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3} pypy pypy3 )  # Do NOT add python3_4—see DESCRIPTION
+PYTHON_COMPAT=( python2_7 pypy pypy3 )  # Do NOT add python3_4—see DESCRIPTION
 
 inherit distutils-r1
 

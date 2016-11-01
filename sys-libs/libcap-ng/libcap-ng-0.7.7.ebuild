@@ -6,7 +6,7 @@ EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit autotools-utils flag-o-matic python-r1
 

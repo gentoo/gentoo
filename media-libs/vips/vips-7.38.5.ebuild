@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 inherit eutils versionator python-single-r1
 
 DESCRIPTION="VIPS Image Processing Library"
