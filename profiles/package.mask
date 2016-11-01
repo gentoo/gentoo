@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (01 Nov 2016)
+# Project is dead.
+# Please migrate to it's successor - net-misc/bgpq3
+net-misc/bgpq
+
 # James Le Cuirot <chewi@gentoo.org> (30 Oct 2016)
 # This was renamed by upstream years ago to jnr-ffi, which we have
 # long had a package for. Removal in 30 days.
