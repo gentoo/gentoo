@@ -8239,7 +8239,7 @@ dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using 
 dev-python/rtf2xml 1.33-r1: Converts a Microsoft RTF file to structured XML
 dev-python/rtgraph 0.70-r1: Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs
 dev-python/rtslib 3.0_pre4 9999: RTSLib Community Edition for target_core_mod/ConfigFS
-dev-python/rtslib-fb 2.1.57 2.1.58: A Python object API for managing the Linux LIO kernel target
+dev-python/rtslib-fb 2.1.57 2.1.58 2.1.61: A Python object API for managing the Linux LIO kernel target
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5: Component-based Software-defined Networking Framework
@@ -15232,7 +15232,7 @@ net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.9-r1 1.1.10: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/i2p 0.9.26: A privacy-centric, anonymous network.
-net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
+net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 4.3.1-r1 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4 0.10.4.0: Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted.
