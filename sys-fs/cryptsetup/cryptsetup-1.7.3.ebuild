@@ -46,6 +46,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
+PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
 	local WARNING_DM_CRYPT="CONFIG_DM_CRYPT:\tis not set (required for cryptsetup)\n"
@@ -57,6 +59,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
+	epatch "${PATCHES[@]}"
 	epatch_user && eautoreconf
 
 	if use python ; then
