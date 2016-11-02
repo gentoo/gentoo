@@ -9884,7 +9884,7 @@ dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160814 10.2.1 10.2.2: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.84 1.0.85: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.85 1.0.86: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
@@ -15144,7 +15144,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.25 2016.10.26 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.10.26 2016.11.02 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17997,7 +17997,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.4.589.29_p1 1.5.648.6_p1 1.5.651.10_p1: A new browser for our friends
+www-client/vivaldi 1.4.589.29_p1 1.5.651.10_p1 1.5.652.8_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18161,7 +18161,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 340.93-r1 340.96 340.96-r5 340.98 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.00.27 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 367.18 367.27 367.35-r1 367.44 367.57 370.28: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 340.93-r1 340.96 340.96-r5 340.98 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.00.27 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 367.18 367.27 367.35-r1 367.44 367.57 370.28 375.10: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
