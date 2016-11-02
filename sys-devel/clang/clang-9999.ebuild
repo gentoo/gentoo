@@ -155,8 +155,6 @@ multilib_src_configure() {
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
-	fi
-
 	)
 
 	if multilib_is_native_abi; then

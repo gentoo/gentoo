@@ -19,7 +19,7 @@ EGIT_REPO_URI="http://llvm.org/git/lldb.git
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="libedit ncurses python"
+IUSE="libedit ncurses python test"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
@@ -33,9 +33,25 @@ RDEPEND="
 # upstream: https://github.com/swig/swig/issues/769
 DEPEND="${RDEPEND}
 	python? ( <dev-lang/swig-3.0.9 )
+	test? ( dev-python/lit[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
+src_unpack() {
+	if use test; then
+		# needed for patched gtest
+		git-r3_fetch "http://llvm.org/git/llvm.git
+			https://github.com/llvm-mirror/llvm.git"
+	fi
+	git-r3_fetch
+
+	if use test; then
+		git-r3_checkout http://llvm.org/git/llvm.git \
+			"${WORKDIR}"/llvm
+	fi
+	git-r3_checkout
+}
 
 src_configure() {
 	local libdir=$(get_libdir)
@@ -48,6 +64,10 @@ src_configure() {
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
+		# compilers for tests
+		-DLLDB_TEST_C_COMPILER="${EPREFIX}/usr/bin/clang"
+		-DLLDB_TEST_CXX_COMPILER="${EPREFIX}/usr/bin/clang++"
+
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
 		-DHAVE_LIBPTHREAD=ON
@@ -58,8 +78,16 @@ src_configure() {
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
 	)
+	use test && mycmakeargs+=(
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	cmake-utils_src_make check-lldb-lit
 }
 
 src_install() {
