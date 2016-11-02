@@ -11,7 +11,7 @@ DESCRIPTION="KDE image scanning application"
 HOMEPAGE="http://www.kde.org/applications/graphics/skanlite/"
 SRC_URI="mirror://kde/stable/${PN}/2.0/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="|| ( GPL-2 GPL-3 ) handbook? ( FDL-1.2+ )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
