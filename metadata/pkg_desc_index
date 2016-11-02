@@ -11698,7 +11698,7 @@ kde-frameworks/kcodecs 5.26.0 5.27.0: Framework for manipulating strings using v
 kde-frameworks/kcompletion 5.26.0 5.27.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.26.0 5.27.0: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.26.0 5.27.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.26.0-r1 5.27.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcoreaddons 5.26.0-r1 5.26.0-r2 5.27.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.26.0 5.27.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.26.0 5.27.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.26.0 5.27.0: Framework providing integration of QML and KDE work spaces

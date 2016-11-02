@@ -6347,6 +6347,8 @@ net-misc/wicd:ioctl - Installs additional python libraries to use as a backend. 
 net-misc/wicd:mac4lin - Change default icons to mac4lin icon set
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
+net-misc/wireguard:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.
+net-misc/wireguard:kmod-src - Do not compile the kernel module. Instead install the kernel module source code to /usr/src/wireguard.
 net-misc/x2goserver:fuse - Use net-fs/sshfs to allow shared folders
 net-misc/xrdp:fuse - Enable clipboard file / device redirection via sys-fs/fuse
 net-misc/youtube-viewer:gtk - Install the gtk GUI, called gtk-youtube-viewer
