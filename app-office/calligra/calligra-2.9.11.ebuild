@@ -41,7 +41,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
-+glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw kde +kdepim +lcms
++glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +kdepim +lcms
 marble mysql +okular openexr +pdf postgres spacenav sybase test tiff +threads
 +truetype vc xbase +xml"
 
@@ -93,7 +93,6 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	kdcraw? ( $(add_kdeapps_dep libkdcraw) )
-	kde? ( $(add_kdebase_dep kactivities) )
 	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	lcms? (
 		media-libs/lcms:2
@@ -182,6 +181,7 @@ src_configure() {
 		"-DCREATIVEONLY=OFF"
 		"-DPACKAGERS_BUILD=OFF"
 		"-DWITH_Soprano=OFF"
+		"-DWITH_KActivities=OFF"	# deprecated Plasma 4 activities integration
 	)
 
 	# regular options
@@ -206,7 +206,6 @@ src_configure() {
 		$(cmake-utils_use_with jpeg JPEG)
 		$(cmake-utils_use_with jpeg2k OpenJPEG)
 		$(cmake-utils_use_with kdcraw Kdcraw)
-		$(cmake-utils_use_with kde KActivities)
 		$(cmake-utils_use_with kdepim KdepimLibs)
 		$(cmake-utils_use_with lcms LCMS2)
 		$(cmake-utils_use_with marble CalligraMarble)
