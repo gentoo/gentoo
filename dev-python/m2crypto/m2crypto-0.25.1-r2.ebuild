@@ -23,7 +23,7 @@ IUSE="libressl"
 RDEPEND="
 	!libressl? ( >=dev-libs/openssl-0.9.8:0= )
 	libressl? ( dev-libs/libressl:0= )
-	dev-python/typing
+	dev-python/typing[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-1.3.28:0
