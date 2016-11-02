@@ -1939,7 +1939,7 @@ app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko sm
 app-misc/tpconfig 3.1.3-r1: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 1.6.2 1.8.0: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.8.0 1.10.1: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
 app-misc/ttyrec 1.0.8-r1: tty recorder
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
@@ -2831,14 +2831,14 @@ dev-cpp/eigen 2.0.17 3.2.8-r2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
-dev-cpp/glibmm 2.44.0 2.46.3 2.46.4 2.48.1: C++ interface for glib2
+dev-cpp/glibmm 2.44.0 2.46.4 2.48.1 2.50.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4: Google's C++ logging library
 dev-cpp/gmock 1.4.0 1.5.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
-dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1: C++ interface for GTK+
+dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1 3.22.0: C++ interface for GTK+
 dev-cpp/gtkmm-utils 0.4.1: Utility functions, classes and widgets written on top of gtkmm and glibmm.
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
@@ -4521,7 +4521,7 @@ dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.5-r1 8.6.6: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2 3.0.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/ucblogo 6.0-r2: a reflective, functional programming language
-dev-lang/vala 0.26.2 0.28.1 0.30.1 0.32.1: Compiler for the GObject type system
+dev-lang/vala 0.26.2 0.28.1 0.30.1 0.32.1 0.34.2: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.3.6 3.3.7 3.5.0 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.2.2 6.3.2 6.3.3: YAP is a high-performance Prolog compiler
@@ -4546,7 +4546,7 @@ dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
-dev-libs/atk 2.16.0-r1 2.18.0 2.20.0: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.16.0-r1 2.18.0 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beecrypt 4.2.1-r3 4.2.1-r4: General-purpose cryptography library
@@ -4618,14 +4618,14 @@ dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
-dev-libs/gdl 3.18.0 3.20.0: GNOME docking library
+dev-libs/gdl 3.18.0 3.20.0 3.22.0: GNOME docking library
 dev-libs/gecode 3.7.3 4.4.0 4.4.0-r1: An environment for developing constraint-based applications
 dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2 2.50.0: The GLib library of C routines
+dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2 2.50.0 2.50.1: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -4833,7 +4833,7 @@ dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM d
 dev-libs/librtfcomp 1.2: Library for handling compressed RTF documents
 dev-libs/libsecp256k1 0.0.0_pre20141212 0.0.0_pre20150423 0.0.0_pre20151118 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
-dev-libs/libsigc++ 1.2.7 2.4.1 2.6.2 2.8.0: Typesafe callback system for standard C++
+dev-libs/libsigc++ 1.2.7 2.4.1 2.6.2 2.8.0 2.10.0: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10: library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.2 1.0.8 1.0.10 1.0.11: A portable fork of NaCl, a higher-level cryptographic library
@@ -5003,7 +5003,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.28.1 0.30.1 0.32.1: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.28.1 0.30.1 0.32.1 0.34.2: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0: SIMD Vector Class Library for C++
@@ -7359,7 +7359,7 @@ dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in P
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
-dev-python/future 0.15.2: Easy, clean, reliable Python 2/3 compatibility
+dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 0.13.0: Useful additions to futures, from the future
 dev-python/fuzzywuzzy 0.11.0 0.11.1 0.12.0: Fuzzy string matching in python
@@ -7896,7 +7896,7 @@ dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.20.3 0.21.4-r1 0.22.1 0.23.3 0.24.1: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.0.2-r2 2.1 2.1.1 2.1.3: Pygments is a syntax highlighting package written in Python
-dev-python/pygobject 2.28.6-r55 3.16.2 3.18.2 3.20.1: GLib's GObject library bindings for Python
+dev-python/pygobject 2.28.6-r55 3.16.2 3.18.2 3.20.1 3.22.0: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygooglevoice 0.5-r2: Python Bindings for the Google Voice API
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
@@ -9921,7 +9921,7 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2 2.50.0: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2 2.50.0 2.50.1: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.26 1.27 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26 1.28: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
@@ -11175,7 +11175,7 @@ gnome-base/gnome-settings-daemon 3.18.3 3.20.1 3.20.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.18.5 3.20.2-r1 3.20.3 3.20.4 3.22.1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1 3.20.0 3.22.0: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.3-r1: Virtual filesystem implementation for gio
+gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.3-r1 1.30.1.1: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -11252,7 +11252,7 @@ gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched whe
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.3 3.8.4: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
-gnome-extra/nautilus-tracker-tags 1.6.2 1.8.0: Nautilus extension to tag files for Tracker
+gnome-extra/nautilus-tracker-tags 1.8.0 1.10.1: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.0.10 1.2.2 1.2.4 1.4.0 1.4.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
@@ -13352,7 +13352,7 @@ media-sound/gmtp 1.3.10: A simple MTP client for MP3 players
 media-sound/gmusicbrowser 1.1.13 1.1.15 1.1.15-r1 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.18.2 3.20.2-r1: Music management for Gnome
+media-sound/gnome-music 3.20.2-r1 3.22.1: Music management for Gnome
 media-sound/gnome-sound-recorder 3.20.2 3.21.92: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gogglesmm 1.1.1: Fast and light music player
@@ -14235,7 +14235,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.5.1-r2 1.5.7 1.5.8 1.5.9: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.5.1-r2 1.5.7 1.5.8 1.5.9 1.5.10: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6 2.6-r1: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
@@ -14465,7 +14465,7 @@ net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.1.2-r2 0.2.7 0.2.8 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
-net-libs/glib-networking 2.44.0 2.46.1 2.48.2: Network-related giomodules for glib
+net-libs/glib-networking 2.44.0 2.46.1 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.16-r1 1.0.17: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.22.1: GNOME framework for accessing online accounts
@@ -14568,7 +14568,7 @@ net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1: An HTTP library implementation in C
+net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1 2.56.0: An HTTP library implementation in C
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
@@ -14844,7 +14844,7 @@ net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed caption
 net-misc/geoipupdate 2.2.1 2.2.2: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.14.3-r2 3.20.0 3.20.1: Crawls through your online content
+net-misc/gnome-online-miners 3.20.1 3.22.0: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
 net-misc/gns3-gui 1.5.1-r1 1.5.2 1.5.2-r1: Graphical Network Simulator
 net-misc/gns3-server 1.5.1-r1 1.5.2 1.5.2-r1: GNS3 server to asynchronously manage emulators
@@ -18244,7 +18244,7 @@ x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and 
 x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0 2.36.0: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
