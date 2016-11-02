@@ -37,11 +37,6 @@ pkg_setup() {
 	kernel_is -lt 4 1 0 && die "This version of ${PN} requires Linux >= 4.1"
 }
 
-src_prepare() {
-	default
-	sed -i 's/install -s/install/' src/tools/Makefile
-}
-
 src_compile() {
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	linux-mod_src_compile
