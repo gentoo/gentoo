@@ -3258,7 +3258,6 @@ kde-apps/marble:zip - Enable support for reading and displaying .kmz files
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:dpi - DPI detection support for PDF rendering via x11-libs/libkscreen
 kde-apps/okular:ebook - Add E-Book support
-kde-apps/okular:kde - Enable kactivities support
 kde-apps/okular:mobi - Add mobipocket support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface

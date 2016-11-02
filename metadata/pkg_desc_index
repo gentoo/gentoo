@@ -6067,7 +6067,7 @@ dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 0.970.0-r1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
-dev-perl/Mozilla-CA 20160104: Mozilla's CA cert bundle in PEM format
+dev-perl/Mozilla-CA 20160104 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
