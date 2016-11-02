@@ -1,0 +1,11 @@
+--- a/nvidia-application-profiles-375.10-rc
++++ b/nvidia-application-profiles-375.10-rc
+@@ -44,7 +44,7 @@
+         {
+           "name" : "NamedVertexAttributesApplyDivisor",
+           "settings" : [ "GL23cd0e", 1 ]
+-        },
++        }
+     ],
+     "rules" : [
+         {
