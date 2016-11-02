@@ -18028,7 +18028,7 @@ www-plugins/adobe-flash 11.2.202.643 23.0.0.205: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.90 55.0.2883.28_beta 56.0.2906.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
-www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
+www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
 www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/kaffeine-mozilla-plugin 0.2-r1: The Kaffeine Mozilla starter plugin
 www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to embed file viewers into non-KDE browsers
@@ -18531,7 +18531,7 @@ x11-misc/py3status 3.2: py3status is an extensible i3status wrapper written in p
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/png images
-x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
+x11-misc/qlipper 2.0.2 5.0.0: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
 x11-misc/qt5ct 0.27: Qt5 configuration tool, similar to qtconfig for Qt4
