@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jiixyj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://tech.ebu.ch/files/live/sites/tech/files/shared/testmaterial/ebu-loudness-test-setv05.zip )"
 
 LICENSE="MIT"
-SLOT="0/2"
+SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs test"
 
