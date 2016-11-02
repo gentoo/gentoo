@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2[dbus]
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=x11-libs/gtk+-3.22.0:3[X,wayland?]
-	>=gnome-base/gsettings-desktop-schemas-3.19.3
+	>=gnome-base/gsettings-desktop-schemas-3.21.4
 	>=gnome-base/gnome-desktop-3.21.2:3=
 	>=gnome-base/gnome-settings-daemon-3.19.1[colord?,policykit]
 
@@ -127,13 +127,13 @@ DEPEND="${COMMON_DEPEND}
 src_prepare() {
 	# Make some panels and dependencies optional; requires eautoreconf
 	# https://bugzilla.gnome.org/686840, 697478, 700145
-	eapply "${FILESDIR}"/${PN}-3.20.0-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.16.0-make-wayland-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.18.0-keep-panels-optional.patch
-	eapply "${FILESDIR}"/${PN}-3.16.0-networkmanager.patch
+	eapply "${FILESDIR}"/${PN}-3.22.0-optional.patch
+	eapply "${FILESDIR}"/${PN}-3.22.0-make-wayland-optional.patch
+	eapply "${FILESDIR}"/${PN}-3.22.0-keep-panels-optional.patch
+	eapply "${FILESDIR}"/${PN}-3.22.0-make-networkmanager-optional.patch
 
 	# Fix some absolute paths to be appropriate for Gentoo
-	eapply "${FILESDIR}"/${PN}-3.10.2-gentoo-paths.patch
+	eapply "${FILESDIR}"/${PN}-3.22.0-gentoo-paths.patch
 
 	eautoreconf
 	gnome2_src_prepare
