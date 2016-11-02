@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug"
+IUSE="debug kmod-src"
 
 DEPEND="net-libs/libmnl"
 RDEPEND="${DEPEND}"
@@ -33,27 +33,43 @@ WARNING_PADATA="If you're running a multicore system you likely should enable CO
 WARNING_IP6_NF_IPTABLES="If your kernel has CONFIG_IPV6, you need CONFIG_IP6_NF_IPTABLES; otherwise WireGuard will not insert."
 
 pkg_setup() {
+	use kmod-src && return
 	linux-mod_pkg_setup
 	kernel_is -lt 4 1 0 && die "This version of ${PN} requires Linux >= 4.1"
 }
 
 src_compile() {
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
-	linux-mod_src_compile
+	use kmod-src || linux-mod_src_compile
 	emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
 }
 
 src_install() {
 	dodoc README.md
 	dodoc -r contrib/examples
-	linux-mod_src_install
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
+	if use kmod-src; then
+		dodir /usr/src
+		rm -r "${S}"/src/tools || die
+		mv -v "${S}"/src "${ED}"usr/src/wireguard || die
+	else
+		linux-mod_src_install
+	fi
 	insinto /$(get_libdir)/netifrc/net
 	newins "${FILESDIR}"/wireguard-openrc.sh wireguard.sh
 }
 
 pkg_postinst() {
-	linux-mod_pkg_postinst
+	if use kmod-src; then
+		einfo
+		einfo "You have enabled the kmod-src USE flag. This means that sources"
+		einfo "are installed to ${ROOT}usr/src/wireguard instead of having the"
+		einfo "kernel module compiled. You will need to compile the module"
+		einfo "yourself. Most likely, you don't want this USE flag."
+		einfo
+	else
+		linux-mod_pkg_postinst
+	fi
 	ewarn
 	ewarn "This software is experimental and has not yet been released."
 	ewarn "As such, it may contain significant issues. Please do not file"
