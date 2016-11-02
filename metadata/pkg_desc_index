@@ -11830,7 +11830,9 @@ kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
 kde-misc/nvdevmon 0.1.2: A device monitor for NVIDIA cards
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
+kde-misc/plasma-applet-network-monitor 1.7.3: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-redshift-control 1.0.17: Plasma 5 applet for controlling redshift
+kde-misc/plasma-applet-weather-widget 1.6.7: Plasma 5 applet for weather forecasts
 kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
 kde-misc/plasma-lionmail 0_p20121020: Plasma widget displaying new and important email
 kde-misc/plasma-mpd-nowplaying 0.3: Plasmoid attached to MPD displaying currently played item
