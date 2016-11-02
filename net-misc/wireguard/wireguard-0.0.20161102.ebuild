@@ -50,8 +50,8 @@ src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
 	if use kmod-src; then
 		dodir /usr/src
-		rm -r "${WORKDIR}"/*/src/tools || die
-		mv "${WORKDIR}"/*/src "${ED}"usr/src/wireguard || die
+		rm -r "${S}"/src/tools || die
+		mv -v "${S}"/src "${ED}"usr/src/wireguard || die
 	else
 		linux-mod_src_install
 	fi
