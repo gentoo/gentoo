@@ -64,9 +64,11 @@ src_configure() {
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
-		# compilers for tests
+		# compilers for lit tests
 		-DLLDB_TEST_C_COMPILER="${EPREFIX}/usr/bin/clang"
 		-DLLDB_TEST_CXX_COMPILER="${EPREFIX}/usr/bin/clang++"
+		# compiler for ole' python tests
+		-DLLDB_TEST_COMPILER="${EPREFIX}/usr/bin/clang"
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
@@ -88,6 +90,7 @@ src_configure() {
 
 src_test() {
 	cmake-utils_src_make check-lldb-lit
+	use python && cmake-utils_src_make check-lldb
 }
 
 src_install() {
