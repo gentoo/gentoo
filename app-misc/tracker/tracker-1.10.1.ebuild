@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,11 +13,11 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/100"
-IUSE="cue eds elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
+IUSE="cue elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
 gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager
 pdf playlist rss stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	?? ( gstreamer ffmpeg )
@@ -31,7 +30,8 @@ REQUIRED_USE="
 # glibc-2.12 needed for SCHED_IDLE (see bug #385003)
 RDEPEND="
 	>=app-i18n/enca-1.9
-	>=dev-libs/glib-2.40:2
+	>dev-db/sqlite-3.8.4.2:=
+	>=dev-libs/glib-2.44:2
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
 	|| (
@@ -43,11 +43,6 @@ RDEPEND="
 	sys-apps/util-linux
 
 	cue? ( media-libs/libcue )
-	eds? (
-		>=mail-client/evolution-3.3.5:=
-		>=gnome-extra/evolution-data-server-3.3.5:=
-		<mail-client/evolution-3.5.3
-		<gnome-extra/evolution-data-server-3.5.3 )
 	elibc_glibc? ( >=sys-libs/glibc-2.12 )
 	exif? ( >=media-libs/libexif-0.6 )
 	ffmpeg? (
@@ -71,7 +66,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	upower? ( || ( >=sys-power/upower-0.9 sys-power/upower-pm-utils ) )
 	mp3? ( >=media-libs/taglib-1.6 )
-	networkmanager? ( >=net-misc/networkmanager-0.8 )
+	networkmanager? ( >=net-misc/networkmanager-0.8:= )
 	pdf? (
 		>=x11-libs/cairo-1:=
 		>=app-text/poppler-0.16:=[cairo,utils]
@@ -94,7 +89,6 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(vala_depend)
 	dev-util/gdbus-codegen
-	>=dev-libs/libxslt-1
 	>=dev-util/gtk-doc-am-1.8
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
@@ -132,18 +126,6 @@ src_prepare() {
 	create_version_script "www-client/firefox" "Mozilla Firefox" firefox-version.sh
 	create_version_script "mail-client/thunderbird" "Mozilla Thunderbird" thunderbird-version.sh
 
-	# Looks like sorting got fixed but not test reference files
-	sort "${S}"/tests/libtracker-data/functions/functions-tracker-1.out \
-		-o "${S}"/tests/libtracker-data/functions/functions-tracker-1.out || die
-	sort "${S}"/tests/libtracker-data/functions/functions-tracker-2.out \
-		-o "${S}"/tests/libtracker-data/functions/functions-tracker-2.out || die
-
-	# Ensure embedded sqlite.h is in the include path (from 1.6 branch)
-	epatch "${FILESDIR}"/${P}-include-path.patch
-
-	# embedded sqlite underlinking, https://bugzilla.gnome.org/show_bug.cgi?id=766487
-	epatch "${FILESDIR}"/${P}-sqlite-underlinking.patch
-
 	eautoreconf # See bug #367975
 	gnome2_src_prepare
 	vala_src_prepare
@@ -169,13 +151,14 @@ src_configure() {
 	# According to NEWS, introspection is required
 	# is not being generated
 	# nautilus extension is in a separate package, nautilus-tracker-tags
+	# miner-evolution disabled as it's incompatible with current eds
 	gnome2_src_configure \
 		--disable-hal \
+		--disable-miner-evolution \
 		--disable-nautilus-extension \
 		--disable-static \
 		--enable-abiword \
 		--enable-artwork \
-		--enable-cfg-man-pages \
 		--enable-dvi \
 		--enable-enca \
 		--enable-guarantee-metadata \
@@ -187,11 +170,11 @@ src_configure() {
 		--enable-miner-user-guides \
 		--enable-ps \
 		--enable-text \
+		--enable-tracker-fts \
 		--enable-tracker-writeback \
 		--with-unicode-support=libicu \
 		--with-bash-completion-dir="$(get_bashcompdir)" \
 		$(use_enable cue libcue) \
-		$(use_enable eds miner-evolution) \
 		$(use_enable exif libexif) \
 		$(use_enable firefox-bookmarks miner-firefox) \
 		$(use_with firefox-bookmarks firefox-plugin-dir "${EPREFIX}"/usr/$(get_libdir)/firefox/extensions) \
@@ -228,7 +211,7 @@ src_configure() {
 
 src_test() {
 	# G_MESSAGES_DEBUG, upstream bug #699401#c1
-	Xemake check TESTS_ENVIRONMENT="dbus-run-session" G_MESSAGES_DEBUG="all"
+	virtx emake check TESTS_ENVIRONMENT="dbus-run-session" G_MESSAGES_DEBUG="all"
 }
 
 src_install() {

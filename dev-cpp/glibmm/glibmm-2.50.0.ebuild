@@ -1,23 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
-inherit eutils gnome2 multilib-minimal
+EAPI=6
+inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="http://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+ GPL-2+" # GPL-2+ applies only to the build system
 SLOT="2"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="doc debug examples test"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="doc debug test"
 
 RDEPEND="
-	>=dev-libs/libsigc++-2.6.0:2[${MULTILIB_USEDEP}]
-	>=dev-libs/glib-2.46.0:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libsigc++-2.9.1:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.50.0:2[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -62,12 +60,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 
-	if ! use doc && ! use examples; then
-		rm -fr "${ED}usr/share/doc/glibmm*"
-	fi
-
-	if use examples; then
-		find examples -type d -name '.deps' -exec rm -rf {} \; 2>/dev/null
-		dodoc -r examples
-	fi
+	find examples -type d -name '.deps' -exec rm -rf {} \; 2>/dev/null
+	find examples -type f -name 'Makefile*' -exec rm -f {} \; 2>/dev/null
+	dodoc -r examples
 }
