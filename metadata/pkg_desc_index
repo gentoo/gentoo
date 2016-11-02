@@ -11446,7 +11446,7 @@ kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.04.3 16.08.2: KDE PIM internationa
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.08.2: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.11_pre20160211 16.08.2: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
-kde-apps/kdepimlibs 4.14.10-r1 4.14.11_pre20160211-r1: Common library for KDE PIM apps
+kde-apps/kdepimlibs 4.14.10-r1 4.14.10-r2 4.14.11_pre20160211-r1 4.14.11_pre20160211-r2: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.04.3 16.08.2: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.04.3 16.08.2: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.04.3 16.08.2: Thumbnail generator for PO files
