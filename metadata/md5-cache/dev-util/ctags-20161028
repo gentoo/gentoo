@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare
-DEPEND=json? ( dev-libs/jansson ) xml? ( dev-libs/libxml2:2 ) yaml? ( dev-libs/libyaml ) virtual/pkgconfig
+DEPEND=json? ( dev-libs/jansson ) xml? ( dev-libs/libxml2:2 ) yaml? ( dev-libs/libyaml ) dev-python/docutils virtual/pkgconfig
 DESCRIPTION=Exuberant Ctags creates tags files for code browsing in editors
 EAPI=6
 HOMEPAGE=https://ctags.io/ https://github.com/universal-ctags/ctags
@@ -10,4 +10,4 @@ RDEPEND=json? ( dev-libs/jansson ) xml? ( dev-libs/libxml2:2 ) yaml? ( dev-libs/
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~radhermit/vim/ctags-20161028.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_md5_=9dac052ba20af7b9886291d68f4acd24
+_md5_=90aa0961049f34d353259ee6ddfb56e0
