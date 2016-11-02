@@ -12,6 +12,7 @@
 		environment.</flag>
 		<flag name="packagekit">Enable support for installing via <pkg>app-admin/packagekit</pkg>
 		based on mimetype</flag>
+		<flag name="unique">Enable single instance support using <pkg>dev-libs/libunique</pkg>.</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/caja</remote-id>
