@@ -12,5 +12,5 @@ REQUIRED_USE=apache2_modules_http2? ( ssl )
 SLOT=2
 SRC_URI=mirror://apache/httpd/httpd-2.4.23.tar.bz2 https://dev.gentoo.org/~polynomial-c/dist/apache/gentoo-apache-2.4.18-r1-20160303.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:apache-2 src_configure:- src_compile:- src_install:-
-_eclasses_=apache-2	d6aa6adb26a2cae934a099a0c82c6128	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	ssl-cert	b031e94f4c7c34e1d677376b8929821a	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=apache-2	cb2335622612ccc2bec51e8af570c958	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	ssl-cert	b031e94f4c7c34e1d677376b8929821a	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cdda04ee9d15f5d84fc89cdaf614c227

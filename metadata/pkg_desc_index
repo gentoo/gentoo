@@ -18036,7 +18036,7 @@ www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netsc
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.0 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31 2.4.23 2.4.23-r1: The Apache Web Server
+www-servers/apache 2.2.31 2.2.31-r1 2.4.23 2.4.23-r1 2.4.23-r2: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r2: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
