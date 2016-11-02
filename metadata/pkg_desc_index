@@ -4631,8 +4631,8 @@ dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary pr
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
-dev-libs/gobject-introspection 1.44.0 1.46.0 1.48.0: Introspection system for GObject-based libraries
-dev-libs/gobject-introspection-common 1.44.0 1.46.0 1.48.0: Build infrastructure for GObject Introspection
+dev-libs/gobject-introspection 1.44.0 1.46.0 1.48.0 1.50.0: Introspection system for GObject-based libraries
+dev-libs/gobject-introspection-common 1.44.0 1.46.0 1.48.0 1.50.0: Build infrastructure for GObject Introspection
 dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.1.0 0.2.1 0.2.3.1 0.3.0: A development library for elementary development
 dev-libs/grantlee 0.4.0 5.1.0: C++ string template engine based on the Django template system
@@ -9783,7 +9783,7 @@ dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Hand
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 2.2.0.12.145.3276617-r1 2.2.2.0.145.3360264: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
-dev-util/anjuta 3.20.0: A versatile IDE for GNOME
+dev-util/anjuta 3.20.0 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/apitrace 4.0 5.0 6.0 6.1 7.1: A tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards compliance and to the style guide
@@ -17414,7 +17414,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.113 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.12.52-r1 3.12.63 3.12.66 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 3.18.44 4.1.15-r1 4.1.35 4.4.26 4.4.27 4.4.28 4.4.29 4.4.30 4.7.9 4.7.10 4.8.3 4.8.4 4.8.5 4.8.6: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.9_rc1 4.9_rc2 4.9_rc3: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10 4.7.10-r1: Hardened kernel sources (kernel series 4.7)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10 4.7.10-r1 4.7.10-r2: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
