@@ -174,7 +174,7 @@ pkg_setup() {
 
 src_prepare() {
 	if use tools; then
-		cp "${DISTDIR}"/nvml.h-${PV} "${S}"/nvidia-settings-${PV}/src/ || die
+		cp "${DISTDIR}"/nvml.h-${PV} "${S}"/nvidia-settings-${PV}/src/nvml.h || die
 		sed -i -e 's|-lnvidia-ml|-L../../ &|g' nvidia-settings-${PV}/src/Makefile || die
 	fi
 
