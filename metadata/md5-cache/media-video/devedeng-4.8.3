@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+DESCRIPTION=DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
+EAPI=6
+HOMEPAGE=http://www.rastersoft.com/programas/devede.html
+IUSE=libav python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-python/pycairo[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-python/pygobject:3[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)] x11-libs/gtk+:3 || ( media-video/vlc media-video/mpv media-video/mplayer ) !libav? ( media-video/ffmpeg ) libav? ( media-video/libav ) media-video/dvdauthor media-video/vcdimager virtual/cdrtools || ( app-cdr/brasero app-cdr/k3b ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 python_targets_python3_5 )
+SLOT=0
+SRC_URI=https://github.com/rastersoft/devedeng/archive/4.8.3.tar.gz -> devedeng-4.8.3.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=96f0a768a6080d98ce259a8533e37a7d
