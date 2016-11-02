@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-KDE_REQUIRED="optional"
-inherit kde4-base
+inherit cmake-utils
 
 DESCRIPTION="A set of widget styles for Qt and GTK2"
 HOMEPAGE="https://github.com/QtCurve/qtcurve"
@@ -20,9 +19,8 @@ fi
 
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="+X gtk kde nls +qt4 qt5 windeco"
+IUSE="+X gtk nls +qt4 qt5"
 REQUIRED_USE="gtk? ( X )
-	windeco? ( kde X )
 	|| ( gtk qt4 qt5 )"
 
 RDEPEND="X? ( x11-libs/libxcb
@@ -38,9 +36,6 @@ RDEPEND="X? ( x11-libs/libxcb
 		dev-qt/qtwidgets:5
 		X? ( dev-qt/qtdbus:5
 			dev-qt/qtx11extras:5 )
-	)
-	kde? ( $(add_kdebase_dep systemsettings)
-		windeco? ( $(add_kdebase_dep kwin) )
 	)
 	!x11-themes/gtk-engines-qtcurve"
 DEPEND="${RDEPEND}
@@ -63,19 +58,16 @@ pkg_setup() {
 	if ! version_is_at_least 4.7 $(gcc-version) ; then
 		append-cxxflags -Doverride=
 	fi
-
-	use kde && kde4-base_pkg_setup
 }
 
 src_configure() {
-	local mycmakeargs
-	mycmakeargs=(
+	local mycmakeargs=(
+		-DQTC_QT4_ENABLE_KDE=OFF
+		-DQTC_QT4_ENABLE_KWIN=OFF
 		$(cmake-utils_use_enable gtk GTK2)
 		$(cmake-utils_use_enable qt4 QT4)
 		$(cmake-utils_use_enable qt5 QT5)
 		$(cmake-utils_use X QTC_ENABLE_X11 )
-		$(cmake-utils_use kde QTC_QT4_ENABLE_KDE )
-		$(cmake-utils_use windeco QTC_QT4_ENABLE_KWIN )
 		$(cmake-utils_use nls QTC_INSTALL_PO )
 	)
 	cmake-utils_src_configure
