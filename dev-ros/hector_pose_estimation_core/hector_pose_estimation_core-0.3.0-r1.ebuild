@@ -27,4 +27,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"
-PATCHES=( "${FILESDIR}/includes.patch" )
+PATCHES=( "${FILESDIR}/includes.patch" "${FILESDIR}/gcc6.patch" )
