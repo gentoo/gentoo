@@ -31,6 +31,9 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdesdk-kioslaves:4[subversion(+)]
 "
 
+# bug #583286: needs network access
+RESTRICT="test"
+
 src_configure() {
 	append-cppflags -DQT_THREAD_SUPPORT
 
