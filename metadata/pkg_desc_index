@@ -17985,7 +17985,7 @@ www-client/opera-beta 41.0.2353.23 41.0.2353.30: A fast and secure web browser
 www-client/opera-developer 42.0.2372.0 42.0.2392.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
-www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
+www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 2.0.1 2.0.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.6.2 0.7.0 0.8.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
