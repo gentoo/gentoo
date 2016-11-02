@@ -9097,7 +9097,7 @@ dev-ruby/hashicorp-checkpoint 0.1.4 0.1.4-r1: Internal HashiCorp service to chec
 dev-ruby/hashie 2.1.2-r1 3.4.4 3.4.4-r1 3.4.6: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0 3.2.1: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0 3.2.1 3.2.2: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.1.0: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
@@ -9519,7 +9519,7 @@ dev-ruby/will_paginate 3.1.0 3.1.0-r1 3.1.5: Most awesome pagination solution fo
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
 dev-ruby/xpath 0.1.4-r1 2.0.0-r1: XPath is a Ruby DSL around a subset of XPath 1.0
-dev-ruby/yajl-ruby 1.1.0-r1 1.2.1: Ruby C bindings to the Yajl JSON stream-based parser library
+dev-ruby/yajl-ruby 1.1.0-r1 1.2.1 1.3.0: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.8.7.3 0.8.7.6 0.9.0 0.9.4: Documentation generation tool for the Ruby programming language
 dev-ruby/zentest 4.11.0 4.11.1: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/c-wrapper 0.6.1: Foreign function interface for C and Objective-C libraries
