@@ -4795,6 +4795,7 @@ media-video/obs-studio:fdk - Enable libfdk support for AAC encoding.
 media-video/obs-studio:imagemagick - Use ImageMagick for image loading instead of FFmpeg.
 media-video/ogmrip:ogm - Support for OGM container format
 media-video/ogmrip:srt - Support for SRT subtitle format
+media-video/orion:mpv - Use the media-video/mpv player (upstream default) instead of the dev-qt/qtmultimedia one
 media-video/parole:clutter - Compile in Clutter GTK+ support
 media-video/qgifer:imagemagick - Use imagemagick for image operations
 media-video/qgifer:opencv3 - Use media-libs/opencv:0/3.0 for video operations instead media-libs/opencv:0/2.4

@@ -12602,7 +12602,7 @@ media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.0-r1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.2 2.2.3: A graphics library for fast image creation
+media-libs/gd 2.2.3: A graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.3.0 0.3.4 0.3.8 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.2 0.10.3 0.10.4: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
@@ -13775,6 +13775,7 @@ media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.15.3 0.16.2 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1 2.1.0: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/orion 1.3.5: Cross-platform Twitch client
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
