@@ -3,13 +3,11 @@
 # $Id$
 
 EAPI=6
-CMAKE_REQUIRED="never"
-KDE_REQUIRED="optional"
 AT_M4DIR="cygnal"
 # won't build with python-3, bug #392969
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils kde4-base multilib nsplugins python-any-r1 flag-o-matic xdg-utils
+inherit autotools eutils multilib nsplugins python-any-r1 flag-o-matic xdg-utils
 
 DESCRIPTION="GNU Flash movie player that supports many SWF v7,8,9 features"
 HOMEPAGE="https://www.gnu.org/software/gnash/"
@@ -27,7 +25,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
-IUSE="X +agg cairo cygnal dbus directfb doc dump egl fbcon +ffmpeg libav libressl gnome gtk harden jemalloc kde lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
+IUSE="X +agg cairo cygnal dbus directfb doc dump egl fbcon +ffmpeg libav libressl gnome gtk harden jemalloc lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
 REQUIRED_USE="
 	dump? ( agg ffmpeg )
 	fbcon? ( agg )
@@ -36,7 +34,7 @@ REQUIRED_USE="
 	python? ( gtk )
 	vaapi? ( agg ffmpeg )
 	|| ( agg cairo opengl openvg )
-	|| ( dump fbcon gtk kde sdl )
+	|| ( dump fbcon gtk sdl )
 "
 
 RDEPEND="
@@ -76,10 +74,6 @@ RDEPEND="
 		python? ( dev-python/pygtk:2 )
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	kde? (
-		$(add_kdebase_dep kdebase-startkde)
-		dev-qt/qtwebkit:4
-	)
 	opengl? (
 		virtual/glu
 		virtual/opengl
@@ -114,7 +108,6 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 pkg_setup() {
-	kde4-base_pkg_setup
 	python-any-r1_pkg_setup
 
 	if use !ffmpeg; then
@@ -175,19 +168,6 @@ src_configure() {
 	use opengl && renderers+=",opengl"
 	use openvg && renderers+=",openvg"
 
-	# Set kde and konqueror plugin directories.
-	if use kde; then
-		myconf="${myconf}
-			--with-plugins-install=system
-			--with-kde4-incl=${KDEDIR}/include
-			--with-kde4-configdir=${KDEDIR}/share/config
-			--with-kde4-prefix=${KDEDIR}
-			--with-kde4-lib=${KDEDIR}/$(get_libdir)
-			--with-kde-appsdatadir=${KDEDIR}/share/apps/klash
-			--with-kde4-servicesdir=${KDEDIR}/share/kde4/services
-			--with-kde4-plugindir=${KDEDIR}/$(get_libdir)/kde4"
-	fi
-
 	# Set media handler.
 	use ffmpeg || media+=",none"
 	use ffmpeg && media+=",ffmpeg"
@@ -196,7 +176,6 @@ src_configure() {
 	use dump && gui+=",dump"
 	use fbcon && gui+=",fb"
 	use gtk && gui+=",gtk"
-	use kde && gui+=",kde4"
 	use sdl && gui+=",sdl"
 
 	if use sdl-sound; then
@@ -220,6 +199,7 @@ src_configure() {
 
 	econf \
 		--disable-kparts3 \
+		--disable-kparts4 \
 		--without-gconf \
 		$(use_enable cygnal) \
 		$(use_enable cygnal cgibins) \
@@ -227,7 +207,6 @@ src_configure() {
 		$(use_enable gnome ghelp) \
 		$(use_enable harden) \
 		$(use_enable jemalloc) \
-		$(use_enable kde kparts4) \
 		$(use_enable nls) \
 		$(use_enable nsplugin npapi) \
 		$(use_enable python) \
@@ -256,12 +235,6 @@ src_install() {
 		emake DESTDIR="${D}" install-plugin || die "install plugins failed"
 	fi
 
-	# Install kde konqueror plugin.
-	if use kde; then
-		pushd "${S}/plugin/klash4" >& /dev/null || die
-		emake DESTDIR="${D}" install-plugin || die "install kde plugins failed"
-		popd >& /dev/null
-	fi
 	# Create a symlink in /usr/$(get_libdir)/nsbrowser/plugins to the nsplugin install directory.
 	use nsplugin && inst_plugin /usr/$(get_libdir)/gnash/npapi/libgnashplugin.so
 
@@ -284,5 +257,4 @@ pkg_postinst() {
 	ewarn "${PN} is still in heavy development"
 	ewarn "Please first report bugs on upstream gnashdevs and deal with them"
 	ewarn "And then report a Gentoo bug to the maintainer"
-	use kde && kde4-base_pkg_postinst
 }
