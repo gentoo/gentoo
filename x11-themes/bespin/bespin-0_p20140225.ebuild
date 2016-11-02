@@ -18,17 +18,12 @@ else
 	KEYWORDS=""
 fi
 
-DESCRIPTION="Very configurable Qt4/KDE4 style derived from the Oxygen project"
+DESCRIPTION="Very configurable Qt4 style derived from the Oxygen project"
 HOMEPAGE="http://cloudcity.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="debug kde plasma windeco"
-
-REQUIRED_USE="
-	windeco? ( kde )
-	plasma? ( kde )
-"
+IUSE="debug"
 
 RDEPEND="
 	dev-qt/qt3support:4
@@ -37,7 +32,6 @@ RDEPEND="
 	dev-qt/qtgui:4
 	x11-libs/libX11
 	x11-libs/libXrender
-	windeco? ( $(add_kdebase_dep kwin) )
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
@@ -51,32 +45,13 @@ src_prepare() {
 }
 
 src_configure() {
-	if use kde ; then
-		local mycmakeargs=(
-			$(cmake-utils_use_enable kde KDE)
-			$(cmake-utils_use_enable windeco KWIN)
-			$(cmake-utils_use_enable plasma XBAR)
-			-DENABLE_ARGB=ON
-		)
-
-		kde4-base_src_configure
-	else
-		eqmake4
-	fi
+	eqmake4
 }
 
 src_compile() {
-	if use kde ; then
-		kde4-base_src_compile
-	else
-		default
-	fi
+	default
 }
 
 src_install() {
-	if use kde ; then
-		kde4-base_src_install
-	else
-		emake INSTALL_ROOT="${D}" install
-	fi
+	emake INSTALL_ROOT="${D}" install
 }
