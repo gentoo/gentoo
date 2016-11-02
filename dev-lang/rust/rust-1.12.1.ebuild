@@ -43,7 +43,7 @@ REQUIRED_USE="libcxx? ( clang )"
 
 RDEPEND="libcxx? ( sys-libs/libcxx )
 	system-llvm? ( >=sys-devel/llvm-3.8.1-r2
-		<sys-devel/llvm-3.9.0 )
+		<sys-devel/llvm-3.10.0 )
 "
 
 DEPEND="${RDEPEND}
