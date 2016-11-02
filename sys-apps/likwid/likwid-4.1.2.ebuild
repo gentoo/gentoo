@@ -6,7 +6,7 @@ EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit fcaps linux-info fortran-2
+inherit fcaps linux-info toolchain-funcs fortran-2
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
 HOMEPAGE="https://github.com/rrze-likwid/likwid"
@@ -77,6 +77,10 @@ src_prepare() {
 		sed -i '/^FCFLAGS/c\FCFLAGS = -J ./ -fsyntax-only' make/include_GCC.mk \
 			|| die "Failed to set GCC flags for fortran"
 	fi
+
+	# Respect CC
+	sed -e "s:^CC.*:CC = $(tc-getCC):" \
+		-i make/include_GCC.mk || die
 
 	default
 
