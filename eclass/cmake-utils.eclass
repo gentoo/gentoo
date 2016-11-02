@@ -526,12 +526,12 @@ enable_cmake-utils_src_configure() {
 
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
 	cat > ${toolchain_file} <<- _EOF_ || die
-		SET (CMAKE_C_COMPILER $(tc-getCC))
-		SET (CMAKE_CXX_COMPILER $(tc-getCXX))
-		SET (CMAKE_Fortran_COMPILER $(tc-getFC))
 		SET (CMAKE_AR $(type -P $(tc-getAR)) CACHE FILEPATH "Archive manager" FORCE)
 		SET (CMAKE_RANLIB $(type -P $(tc-getRANLIB)) CACHE FILEPATH "Archive index generator" FORCE)
 	_EOF_
+
+	# Bug 542530, export those instead of setting paths in toolchain file
+	local -x CC=$(tc-getCC) CXX=$(tc-getCXX) FC=$(tc-getFC)
 
 	if tc-is-cross-compiler; then
 		local sysname
