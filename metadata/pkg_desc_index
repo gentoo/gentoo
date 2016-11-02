@@ -14812,7 +14812,7 @@ net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.50.3: A Client that groks URLs
+net-misc/curl 7.50.3 7.51.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
@@ -16233,7 +16233,7 @@ sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 28.7 28.9: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 28.9 28.10: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
