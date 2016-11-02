@@ -8359,8 +8359,6 @@ x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right t
 x11-themes/kfaenza:additional - Install additional KFaenza icons. See third homepage for details
 x11-themes/light-themes:gtk3 - Support GTK 3.x, too
 x11-themes/mate-themes-meta:gtk2-only - Allow dependency-resolution for a system without GTK+3
-x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
-x11-themes/qtcurve:windeco - Enable window decoration for KWin
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
 x11-themes/redhat-artwork:cursors - Install Bluecurve cursors
 x11-themes/redhat-artwork:gdm - Install Bluecurve gnome-base/gdm theme
