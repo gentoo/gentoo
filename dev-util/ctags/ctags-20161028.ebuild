@@ -24,6 +24,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	dev-python/docutils
 	virtual/pkgconfig
 "
 
