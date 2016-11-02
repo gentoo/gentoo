@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit pax-utils systemd
 
@@ -14,7 +14,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GIMPS"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 # Since there are no statically linked binaries for this version of mprime,
@@ -28,6 +28,8 @@ I="/opt/gimps"
 
 QA_PREBUILT="opt/gimps/mprime"
 
+DOCS="license.txt readme.txt stress.txt whatsnew.txt undoc.txt"
+
 src_install() {
 	dodir ${I} /var/lib/gimps
 	pax-mark m mprime
@@ -36,7 +38,7 @@ src_install() {
 	fowners root:0 "${I}"
 	fowners root:0 "${I}/mprime"
 
-	dodoc license.txt readme.txt stress.txt whatsnew.txt undoc.txt
+	einstalldocs
 
 	newinitd "${FILESDIR}/${PN}-26.6-r1-init.d" gimps
 	newconfd "${FILESDIR}/${PN}-25.6-conf.d" gimps
