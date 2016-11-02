@@ -5,7 +5,6 @@
 		<flag name="chm">Enable support for Microsoft Compiled HTML Help files</flag>
 		<flag name="dpi">DPI detection support for PDF rendering via <pkg>x11-libs/libkscreen</pkg></flag>
 		<flag name="ebook">Add E-Book support</flag>
-		<flag name="kde">Enable kactivities support</flag>
 		<flag name="mobi">Add mobipocket support</flag>
 	</use>
 	<maintainer type="project">
