@@ -18942,7 +18942,7 @@ x11-themes/adwaita-icon-theme 3.16.2.2 3.18.0 3.20 3.22.0: GNOME default icon th
 x11-themes/arc-icon-theme 20160605: Vertex icon theme
 x11-themes/arc-theme 20161005: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
-x11-themes/bespin 0_p20140225: Very configurable Qt4/KDE4 style derived from the Oxygen project
+x11-themes/bespin 0_p20140225: Very configurable Qt4 style derived from the Oxygen project
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
