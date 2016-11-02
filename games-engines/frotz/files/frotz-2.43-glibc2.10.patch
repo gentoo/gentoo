@@ -1,5 +1,5 @@
---- src/dumb/dumb_input.c
-+++ src/dumb/dumb_input.c
+--- a/src/dumb/dumb_input.c
++++ b/src/dumb/dumb_input.c
 @@ -79,7 +79,7 @@
  /* Read one line, including the newline, into s.  Safely avoids buffer
   * overruns (but that's kind of pointless because there are several
