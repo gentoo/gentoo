@@ -12,11 +12,11 @@ SRC_URI="https://github.com/acrisci/playerctl/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc introspection"
+IUSE="doc"
 
 RDEPEND="
 	dev-libs/glib:2
-	introspection? ( dev-libs/gobject-introspection )
+	dev-libs/gobject-introspection
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
@@ -39,8 +39,7 @@ src_configure() {
 
 	econf \
 		$(use_enable doc gtk-doc) \
-		$(use_enable doc gtk-doc-html) \
-		$(use_enable introspection)
+		$(use_enable doc gtk-doc-html)
 }
 
 src_compile() {
