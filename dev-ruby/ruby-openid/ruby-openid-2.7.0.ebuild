@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md NOTICE UPGRADE.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A robust library for verifying and serving OpenID identities"
-HOMEPAGE="http://ruby-openid.rubyforge.org/"
+HOMEPAGE="https://github.com/openid/ruby-openid"
 SRC_URI="https://github.com/openid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
