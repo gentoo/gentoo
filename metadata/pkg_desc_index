@@ -12283,7 +12283,7 @@ media-gfx/apngasm 2.5 2.6 2.7: create an APNG from multiple PNG files
 media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
 media-gfx/apngopt 1.2 1.4: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
-media-gfx/argyllcms 1.7.0 1.8.2 1.8.3 1.9.1: Open source, ICC compatible color management system
+media-gfx/argyllcms 1.7.0 1.8.2 1.8.3 1.9.1 1.9.2: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.32 2.36 2.38: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
@@ -14970,7 +14970,7 @@ net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4 1.2.6: NetworkManager OpenVPN 
 net-misc/networkmanager-pptp 1.0.8 1.2.2 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.0.8 1.2.2 1.2.4: NetworkManager VPNC plugin
-net-misc/nextcloud-client 2.2.3 2.2.4: Nextcloud themed desktop client
+net-misc/nextcloud-client 2.2.3 2.2.4 2.2.4-r1: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
