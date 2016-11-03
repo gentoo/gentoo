@@ -4654,7 +4654,7 @@ dev-libs/iniparser 3.1 3.1-r1 4.0: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.0.1: Dependency injection framework for Qt5
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.11.1 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1: A library for manipulating integer points bounded by linear constraints
-dev-libs/jansson 2.7: C library for encoding, decoding and manipulating JSON data
+dev-libs/jansson 2.7 2.9: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.0.4 4.1.0 4.2.1-r1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.9-r1 0.10-r1 0.11 0.11-r1 0.12: A JSON implementation in C
