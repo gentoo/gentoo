@@ -43,7 +43,7 @@ RDEPEND="${COMMONDEPEND}
 	sys-libs/timezone-data
 	x11-apps/setxkbmap
 	x11-misc/xkeyboard-config
-	gtk? ( kde-misc/kde-gtk-config )
+	gtk? ( kde-plasma/kde-gtk-config:4 )
 	kscreen? ( kde-misc/kscreen:4 )
 	|| ( $(add_kdebase_dep legacy-icons) >=kde-frameworks/oxygen-icons-5.19.0:5 )
 "

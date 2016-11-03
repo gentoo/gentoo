@@ -8,7 +8,7 @@ KDE_LINGUAS="bs ca ca@valencia cs da de el es et eu fi fr ga gl hu id it ja kk
 km lt mr nb nds nl pl pt pt_BR ro ru sk sl sv uk zh_CN zh_TW"
 inherit kde4-base
 
-DESCRIPTION="KDE systemsettings kcm to set GTK application look&feel"
+DESCRIPTION="KDE Plasma systemsettings kcm to set GTK application look&feel"
 HOMEPAGE="https://projects.kde.org/kde-gtk-config"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
