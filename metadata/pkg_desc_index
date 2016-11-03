@@ -2008,7 +2008,7 @@ app-office/geierlein 0.8.0 0.9.1 0.9.4 0.9.5: Submit tax forms (Umsatzsteuervora
 app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.6.12 2.6.13 2.6.13-r1: A personal finance manager
 app-office/gnumeric 1.12.29 1.12.31 1.12.32: The GNOME Spreadsheet
-app-office/grisbi 1.0.0 1.0.0-r1: Grisbi is a personal accounting application for Linux
+app-office/grisbi 1.0.0-r1: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.1: A small Gtk+ application for keeping track of your time
 app-office/hamster-time-tracker 9999: Time tracking for the masses
@@ -3011,7 +3011,7 @@ dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - B
 dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
 dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
 dev-dotnet/gio-sharp 0.3 0.3-r1: GIO API C# binding
-dev-dotnet/gkeyfile-sharp 0.1 0.1-r1: C# binding for gkeyfile
+dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
 dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
 dev-dotnet/gnome-desktop-sharp 2.26.0-r1: GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball
@@ -11205,7 +11205,7 @@ gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.8.3 3.0.3: Translation data for Cinnamon
 gnome-extra/cjs 2.8.0 3.0.1: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/docky 2.2.1.1: Elegant, powerful, clean dock
+gnome-extra/docky 2.2.1.1 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.20.5 3.22.1: Evolution groupware backend
 gnome-extra/evolution-ews 3.20.5 3.22.1: Evolution module for connecting to Microsoft Exchange Web Services
@@ -14261,7 +14261,7 @@ net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete acc
 net-firewall/nftables 0.6-r4: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
-net-firewall/pglinux 2.2.4 2.3.1: Privacy oriented firewall application
+net-firewall/pglinux 2.3.1: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.1 2.4.2 2.4.3: Port Scanning Attack Detection daemon
 net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
@@ -15899,7 +15899,7 @@ sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
 sci-geosciences/bt747 2.1.7-r1: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2 1.6.2-r1: Generate the speeds, equilibrium arguments, and node factors of tidal constituents
-sci-geosciences/foxtrotgps 1.1.0 1.1.1 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
+sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1 2.1.0: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
 sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
