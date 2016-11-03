@@ -20,8 +20,8 @@ IUSE="gnome odbc static-libs"
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/ncurses
-	sys-libs/readline:0
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	gnome? (
 		gnome-base/libglade:2.0
 		gnome-base/libgnomeui
