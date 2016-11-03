@@ -1860,7 +1860,7 @@ app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows 
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r3 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
-app-misc/neofetch 1.8.1 9999: Simple information system script
+app-misc/neofetch 1.8.1 1.9 9999: Simple information system script
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
@@ -7751,7 +7751,7 @@ dev-python/pecan 1.0.4 1.1.2: A WSGI object-dispatching web framework, lean, fas
 dev-python/peewee 2.6.2 2.7.4 2.8.0 2.8.1: Small python ORM
 dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1 1.7.0: Python style guide checker
 dev-python/peppercorn 0.4-r1 0.5: A library for converting a token stream into a data structure for use in web form posts
-dev-python/pexpect 3.3 4.0.1: Python module for spawning child applications and responding to expected patterns
+dev-python/pexpect 3.3 4.2.1: Python module for spawning child applications and responding to expected patterns
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
@@ -14876,7 +14876,7 @@ net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (
 net-misc/iodine 0.7.0: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
-net-misc/iperf 2.0.5-r2 2.0.9 3.0.12 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement tool
+net-misc/iperf 2.0.5-r2 2.0.9 3.0.12 3.1.3 3.1.4: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/iprange 1.0.2: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -17420,7 +17420,7 @@ sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 3.18.43_p46 4.1.31_p35 4.1.33_p37 4.1.34_p39 4.4.19_p27 4.4.21_p30 4.4.25_p35 4.6.7_p11 4.6.7_p14 4.8.2_p2: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 3.18.43_p46 3.18.44_p47 4.1.31_p35 4.1.33_p37 4.1.34_p39 4.1.35_p40 4.4.19_p27 4.4.21_p30 4.4.25_p35 4.4.27_p37 4.6.7_p11 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.83 3.4.113 3.10.104 3.12.66 3.16.38 3.18.44 4.1.35 4.4.28 4.7.10 4.8.5: Full sources for the Linux kernel
