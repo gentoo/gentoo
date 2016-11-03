@@ -6,7 +6,7 @@ EAPI=6
 
 inherit kde5
 
-DESCRIPTION="KDE daemon listening for wall and write messages"
+DESCRIPTION="KDE Plasma daemon listening for wall and write messages"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
@@ -20,5 +20,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	!kde-base/kwrited:4
+	!kde-plasma/kwrited:4
 "
