@@ -9,3 +9,4 @@ move net-wireless/bluedevil kde-plasma/bluedevil
 move kde-base/kdeplasma-addons kde-plasma/kdeplasma-addons
 move kde-misc/milou kde-plasma/milou
 move kde-misc/kde-gtk-config kde-plasma/kde-gtk-config
+move kde-base/powerdevil kde-plasma/powerdevil
