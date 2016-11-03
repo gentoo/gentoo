@@ -17,7 +17,7 @@ IUSE="nls"
 RDEPEND="
 	>=dev-dotnet/dbus-sharp-0.8.0:2.0
 	>=dev-dotnet/dbus-sharp-glib-0.6.0:2.0
-	|| ( >=dev-dotnet/gtk-sharp-2.12.21:2 ( >=dev-dotnet/gnome-sharp-2.24.2-r1:2 dev-dotnet/gconf-sharp:2 dev-dotnet/glib-sharp:2 ) )
+	|| ( >=dev-dotnet/gtk-sharp-2.12.21:2 ( >=dev-dotnet/gnome-sharp-2.24.2:2 dev-dotnet/gconf-sharp:2 dev-dotnet/glib-sharp:2 ) )
 	>=dev-dotnet/gio-sharp-0.2-r1
 	dev-dotnet/gkeyfile-sharp
 	dev-dotnet/gnome-desktop-sharp:2
