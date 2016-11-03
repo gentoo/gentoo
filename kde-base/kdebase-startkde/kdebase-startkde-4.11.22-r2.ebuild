@@ -79,7 +79,6 @@ RDEPEND="
 		$(add_kdebase_dep khotkeys)
 		$(add_kdebase_dep kinfocenter)
 		$(add_kdebase_dep klipper)
-		$(add_kdebase_dep kmenuedit)
 		$(add_kdebase_dep kstyles)
 		$(add_kdebase_dep ksysguard)
 		$(add_kdebase_dep ksystraycmd)
@@ -90,6 +89,7 @@ RDEPEND="
 		$(add_kdebase_dep libtaskmanager)
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		$(add_kdebase_dep solid-actions-kcm)
+		kde-plasma/kmenuedit:4
 		kde-plasma/kwrited:4
 		kde-plasma/powerdevil:4
 	)
