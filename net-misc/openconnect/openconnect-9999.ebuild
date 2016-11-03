@@ -25,16 +25,19 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libproxy lz4 nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi java libproxy libressl lz4 nls smartcard static-libs stoken"
 
-DEPEND="dev-libs/libxml2
+DEPEND="
+	dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		>=dev-libs/openssl-1.0.1h:0[static-libs?]
+		!libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] )
+		libressl? ( dev-libs/libressl:0=[static-libs?] )
 	)
 	gnutls? (
-		>=net-libs/gnutls-3:0=[static-libs?] dev-libs/nettle
 		app-misc/ca-certificates
+		dev-libs/nettle
+		>=net-libs/gnutls-3:0=[static-libs?]
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
@@ -91,6 +94,7 @@ src_configure() {
 	# liboath not in portage
 	econf \
 		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh" \
+		--without-openssl-version-check \
 		$(use_enable static-libs static) \
 		$(use_enable nls ) \
 		$(use_with !gnutls openssl) \
