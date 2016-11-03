@@ -11,3 +11,4 @@ move kde-misc/milou kde-plasma/milou
 move kde-misc/kde-gtk-config kde-plasma/kde-gtk-config
 move kde-base/powerdevil kde-plasma/powerdevil
 move kde-base/kwrited kde-plasma/kwrited
+move kde-base/kmenuedit kde-plasma/kmenuedit
