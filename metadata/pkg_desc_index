@@ -17850,7 +17850,7 @@ www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2 4.5.7: An Apache2 module for running Pyt
 www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
-www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
+www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 4.0.60 5.0.28 5.0.29 5.0.30: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
