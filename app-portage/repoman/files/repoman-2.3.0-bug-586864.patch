@@ -1,0 +1,32 @@
+From ef33db45a0c1d462411d4ced1857a322c0ab28f6 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gentoo.org>
+Date: Thu, 23 Jun 2016 23:22:41 -0700
+Subject: repoman: skip QA checks in manifest mode (bug 586864)
+
+The relevent Scanner loop control logic broke in commit 4062c69dc27a
+because it was relying on the return value from the Manifest module's
+"check" method.
+
+Fixes: 4062c69dc27a ("repoman: Move manifest generation to modules/commit/manifest.py")
+X-Gentoo-Bug: 586864
+X-Gentoo-Bug-url: https://bugs.gentoo.org/show_bug.cgi?id=586864
+---
+ pym/repoman/scanner.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pym/repoman/scanner.py b/pym/repoman/scanner.py
+index d7cd81f..8999751 100644
+--- a/pym/repoman/scanner.py
++++ b/pym/repoman/scanner.py
+@@ -294,6 +294,8 @@ class Scanner(object):
+ 
+ 			if self.generate_manifest:
+ 				manifest.Manifest(**self.kwargs).update_manifest(checkdir)
++				if self.options.mode == 'manifest':
++					continue
+ 			checkdirlist = os.listdir(checkdir)
+ 
+ 			dynamic_data = {
+-- 
+cgit v0.12
+
