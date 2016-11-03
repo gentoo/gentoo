@@ -165,7 +165,7 @@ app-accessibility/speech-dispatcher flite
 kde-apps/kalzium editor solver
 kde-apps/krdc rdesktop
 kde-apps/kopete jingle msn
-kde-base/kdeplasma-addons fcitx oauth qwt scim
+kde-plasma/kdeplasma-addons fcitx oauth qwt scim
 kde-apps/okular ebook chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy

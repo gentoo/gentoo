@@ -6,6 +6,17 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="attica">Enable support for <pkg>dev-libs/libattica</pkg></flag>
+		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
+		<flag name="desktopglobe">Enable Desktop Globe wallpaper using <pkg>kde-apps/marble</pkg></flag>
+		<flag name="eigen">Build Mandelbrot wallpaper plugin using <pkg>dev-cpp/eigen</pkg> using SLOT 2</flag>
+		<flag name="fcitx">Use fcitx input method via <pkg>app-i18n/fcitx</pkg></flag>
+		<flag name="json">Enable JSON support via <pkg>dev-libs/qjson</pkg></flag>
+		<flag name="kdepim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
+		<flag name="oauth">Enable OAuth support via <pkg>dev-libs/qoauth</pkg></flag>
+		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
+		<flag name="qwt">Enable applets that use <pkg>x11-libs/qwt</pkg> SLOT 5</flag>
+		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
 		<flag name="share">Enable applet for quickly sharing data to a variety of sources</flag>
 	</use>
 </pkgmetadata>
