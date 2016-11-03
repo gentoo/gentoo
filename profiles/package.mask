@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (03 Nov 2016)
+# Dead for ages and broken with giflib-5.1, bug #574218. Removal in a month.
+mail-filter/spamprobe
+
 # Sergey Popov <pinkbyte@gentoo.org> (01 Nov 2016)
 # Project is dead.
 # Please migrate to it's successor - net-misc/bgpq3
