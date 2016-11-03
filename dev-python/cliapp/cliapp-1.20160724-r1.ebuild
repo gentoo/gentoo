@@ -17,8 +17,18 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
+MY_DEPEND="
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	"
+
 DEPEND="${PYTHON_DEPS}
-	test? ( dev-python/CoverageTestRunner )"
+	${MY_DEPEND}
+	test? ( dev-python/CoverageTestRunner )
+	"
+
+RDEPEND="
+	${MY_DEPEND}
+	"
 
 src_test() {
 	addwrite /proc/self/comm
