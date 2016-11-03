@@ -10874,7 +10874,7 @@ games-puzzle/gtetrinet 0.7.11-r3: Tetrinet Clone for GNOME
 games-puzzle/gtkballs 3.1.5-r1: An entertaining game based on the old DOS game lines
 games-puzzle/gweled 0.9.1-r1: Bejeweled clone game
 games-puzzle/hangman 0.9.2: The classic word guessing game
-games-puzzle/hexalate 1.0.3: A color matching game
+games-puzzle/hexalate 1.0.3 1.1.0: A color matching game
 games-puzzle/hexamine 0.2.1: Hexagonal Minesweeper
 games-puzzle/hitori 3.20.0 3.22.0: Logic puzzle game for GNOME
 games-puzzle/hoh-bin 1.01: PC remake of the spectrum game, Head Over Heels
@@ -11078,7 +11078,7 @@ games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gorky17-demo 1.0.1.0.1-r1: Horror conspiracy game mixing elements of strategy and role-playing
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.22 0.9.22-r1: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 0.9.22-r1: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat
 games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
@@ -11114,7 +11114,7 @@ games-strategy/warzone2100 3.1.5 3.1.5-r1 3.2.1: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17 0.18 0.18-r1: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
-games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
+games-util/antimicro 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.0_p20141002: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
@@ -11675,7 +11675,6 @@ kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-base/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
 kde-base/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
 kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
-kde-base/powerdevil 4.11.22: PowerDevil is an utility for KDE4 for Laptop Powermanagement
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
@@ -11897,7 +11896,7 @@ kde-plasma/plasma-sdk 5.7.5 5.8.3: Useful applications for Plasma development
 kde-plasma/plasma-workspace 5.7.5 5.8.3: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.7.5 5.8.3: Additional wallpapers for the Plasma workspace
 kde-plasma/polkit-kde-agent 5.7.5 5.8.3: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.7.5 5.8.3: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 4.11.22 5.7.5 5.8.3: Power management for KDE Plasma Shell
 kde-plasma/sddm-kcm 5.7.5 5.8.3: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.7.5 5.8.3: System settings utility
 kde-plasma/user-manager 5.7.5 5.8.3: Simple system settings module to manage the users of your system

@@ -3274,7 +3274,6 @@ kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
 kde-base/systemsettings:kscreen - Use kde-misc/kscreen for screen management
 kde-frameworks/kconfigwidgets:man - Build and install man pages
@@ -3356,6 +3355,7 @@ kde-plasma/plasma-sdk:plasmate - IDE for writing Plasma/KWin components (themes,
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
+kde-plasma/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
