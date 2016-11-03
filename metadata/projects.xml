@@ -3896,7 +3896,7 @@
     <email>tinderbox-cluster@gentoo.org</email>
     <name>Tinderbox cluster</name>
     <url>https://wiki.gentoo.org/wiki/Project:Tinderbox-cluster</url>
-    <description>A tinderbox that the guest code can run on multiply setups.</description>
+    <description>A tinderbox that the guest code can run on multiple setups.</description>
   </project>
   <project>
     <email>toolchain@gentoo.org</email>
