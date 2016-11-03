@@ -83,7 +83,7 @@ pkg_postinst() {
 	einfo "WireGuard, you may use, for testing purposes only, the insecure client.sh"
 	einfo "test example script:"
 	einfo
-	einfo "  \$ bzcat /usr/share/doc/${PF}/examples/ncat-client-server/client.sh.bz2 | sudo bash -"
+	einfo "  \$ bzcat ${ROOT}usr/share/doc/${PF}/examples/ncat-client-server/client.sh.bz2 | sudo bash -"
 	einfo
 	einfo "This will automatically setup interface wg0, through a very insecure transport"
 	einfo "that is only suitable for demonstration purposes. You can then try loading the"
