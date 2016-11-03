@@ -8,4 +8,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<use>
+		<flag name="args">Enable argument parsing.</flag>
+	</use>
 </pkgmetadata>
