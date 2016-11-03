@@ -13,7 +13,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep khotkeys)
+	kde-plasma/khotkeys:4
 "
 DEPEND=${RDEPEND}
 
