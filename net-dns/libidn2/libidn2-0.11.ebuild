@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu-alpha/libidn/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64"
+KEYWORDS="~amd64 hppa ppc64"
 IUSE="static-libs"
 
 PATCHES=(

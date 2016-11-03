@@ -1,0 +1,25 @@
+--- a/configure.in	2011-02-28 11:51:26.198614376 +0100
++++ b/configure.in	2011-02-28 11:59:10.201953304 +0100
+@@ -79,6 +79,7 @@
+ dnl ===============================================
+ dnl Helpers 
+ dnl ===============================================
++AC_PROG_LN_S
+ cc_supports_flag() {
+          local CFLAGS="$@"
+          AC_MSG_CHECKING(whether $CC supports "$@")
+--- a/Makefile.am	2011-02-28 11:51:26.188614089 +0100
++++ b/Makefile.am	2011-02-28 13:36:15.860697714 +0100
+@@ -24,6 +24,12 @@
+ install-exec-local:
+ 	$(INSTALL) -d -m 1755 $(DESTDIR)$(HA_RSCTMPDIR)
+ 
++	$(LN_S) ../../lib/heartbeat/ocf-binaries $(DESTDIR)${OCF_RA_DIR}/heartbeat/.ocf-binaries
++	$(LN_S) ../../lib/heartbeat/ocf-directories $(DESTDIR)${OCF_RA_DIR}/heartbeat/.ocf-directories
++	$(LN_S) ../../lib/heartbeat/ocf-returncodes $(DESTDIR)${OCF_RA_DIR}/heartbeat/.ocf-returncodes
++	$(LN_S) ../../lib/heartbeat/ocf-shellfuncs $(DESTDIR)${OCF_RA_DIR}/heartbeat/.ocf-shellfuncs
++	
++
+ dist-clean-local:
+ 	rm -f autoconf automake autoheader $(TARFILE)
+ 
