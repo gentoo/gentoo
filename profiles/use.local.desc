@@ -3265,17 +3265,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
 kde-base/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
-kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
-kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble
-kde-base/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-cpp/eigen using SLOT 2
-kde-base/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
-kde-base/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
-kde-base/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
-kde-base/kdeplasma-addons:kdepim - KDE PIM integration via kde-apps/kdepimlibs
-kde-base/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
-kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt SLOT 5
-kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-base/kfilemetadata:mobi - Adds support for reading MOBI ebook metadata
@@ -3324,6 +3313,17 @@ kde-misc/networkmanagement:openconnect - Build support for the OpenConnect VPN c
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kde-gtk-config:gtk3 - Add support for gtk+3-based applications.
+kde-plasma/kdeplasma-addons:attica - Enable support for dev-libs/libattica
+kde-plasma/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble
+kde-plasma/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-cpp/eigen using SLOT 2
+kde-plasma/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
+kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
+kde-plasma/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
+kde-plasma/kdeplasma-addons:kdepim - KDE PIM integration via kde-apps/kdepimlibs
+kde-plasma/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
+kde-plasma/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
+kde-plasma/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt SLOT 5
+kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
 kde-plasma/kinfocenter:egl - Retrieve information about OpenGL via EGL
 kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter

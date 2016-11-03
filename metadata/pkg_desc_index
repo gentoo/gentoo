@@ -146,7 +146,7 @@ app-admin/mcollective 2.8.0 2.8.8 2.9.0 2.9.1: Framework to build server orchest
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.0.10 3.0.12 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.0.10 3.0.12 3.0.13 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.17.1 5.19.0 5.20.0: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/needrestart 2.8-r1 2.9-r1 9999: Restart daemons after library updates
@@ -2928,7 +2928,7 @@ dev-db/mariadb 5.5.52 5.5.53 10.0.27 10.0.28 10.1.17 10.1.18 10.2.1_alpha: An en
 dev-db/mariadb-galera 10.0.26 10.0.27: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.0.13 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
@@ -11649,7 +11649,6 @@ kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdelibs 4.14.24 4.14.25: KDE libraries needed by all KDE programs
-kde-base/kdeplasma-addons 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
@@ -11873,7 +11872,7 @@ kde-plasma/kactivitymanagerd 5.7.5 5.8.3: System service to manage user's activi
 kde-plasma/kde-cli-tools 5.7.5 5.8.3: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.7.5 5.8.3: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.7.5 5.8.3: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.7.5 5.8.3: Extra Plasma applets and engines
+kde-plasma/kdeplasma-addons 4.14.3-r1 5.7.5 5.8.3: Extra Plasma applets and engines
 kde-plasma/kgamma 5.7.5 5.8.3: Screen gamma values kcontrol module
 kde-plasma/khotkeys 5.7.5 5.8.3: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.7.5 5.8.3: A utility that provides information about a computer system
