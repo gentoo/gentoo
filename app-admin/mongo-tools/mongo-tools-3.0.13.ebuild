@@ -31,8 +31,6 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	sed -e 's|go build .*|go build -o "bin/$i" -tags "$tags" "$i/main/$i.go"|g' -i build.sh || die
-
 	# ensure we use bash wrt #582906
 	sed -e 's@/bin/sh@/bin/bash@g' -i build.sh || die
 }
