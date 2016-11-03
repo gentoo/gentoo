@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1 # needed for proper man generation
 inherit autotools-utils
 
-DESCRIPTION="A set of libraries and utilities for reading Microsoft Access database (MDB) files"
+DESCRIPTION="Set of libraries and utilities for reading Microsoft Access database (MDB) files"
 HOMEPAGE="http://mdbtools.sourceforge.net"
 SRC_URI="https://github.com/brianb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
