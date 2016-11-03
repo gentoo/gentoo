@@ -11652,7 +11652,6 @@ kde-base/kdelibs 4.14.24 4.14.25: KDE libraries needed by all KDE programs
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
-kde-base/khotkeys 4.11.22: KDE: hotkey daemon
 kde-base/kinfocenter 4.11.22: The KDE Info Center
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
@@ -11869,7 +11868,7 @@ kde-plasma/kde-gtk-config 2.2.1 5.7.5 5.8.3: KDE Plasma systemsettings kcm to se
 kde-plasma/kdecoration 5.7.5 5.8.3: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 4.14.3-r1 5.7.5 5.8.3: Extra Plasma applets and engines
 kde-plasma/kgamma 5.7.5 5.8.3: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.7.5 5.8.3: KDE Plasma workspace hotkey module
+kde-plasma/khotkeys 4.11.22 5.7.5 5.8.3: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.7.5 5.8.3: A utility that provides information about a computer system
 kde-plasma/kmenuedit 4.11.22 5.7.5 5.8.3: KDE Plasma menu editor
 kde-plasma/kscreen 5.7.5 5.8.3: KDE Plasma screen management
