@@ -11655,7 +11655,6 @@ kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
 kde-base/khotkeys 4.11.22: KDE: hotkey daemon
 kde-base/kinfocenter 4.11.22: The KDE Info Center
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
-kde-base/kmenuedit 4.11.22: KDE menu editor
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/kscreensaver 4.11.22: KDE screensaver framework
@@ -11872,7 +11871,7 @@ kde-plasma/kdeplasma-addons 4.14.3-r1 5.7.5 5.8.3: Extra Plasma applets and engi
 kde-plasma/kgamma 5.7.5 5.8.3: Screen gamma values kcontrol module
 kde-plasma/khotkeys 5.7.5 5.8.3: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.7.5 5.8.3: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.7.5 5.8.3: KDE Plasma menu editor
+kde-plasma/kmenuedit 4.11.22 5.7.5 5.8.3: KDE Plasma menu editor
 kde-plasma/kscreen 5.7.5 5.8.3: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.7.5 5.8.3: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 0.5.3-r1 5.7.5 5.8.3: KDE implementation of ssh-askpass with Kwallet integration
