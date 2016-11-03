@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,6 @@ RDEPEND="
 	sys-libs/ncurses
 	sys-libs/readline:0
 	gnome? (
-		app-text/scrollkeeper
 		gnome-base/libglade:2.0
 		gnome-base/libgnomeui
 	)
@@ -32,7 +31,9 @@ DEPEND="${RDEPEND}
 	app-text/txt2man
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc"
+	virtual/yacc
+	gnome? ( app-text/rarian )
+"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
 
