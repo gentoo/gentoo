@@ -18,11 +18,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	!<sys-apps/portage-2.3.0_rc
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-bug-586864.patch )
 
