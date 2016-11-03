@@ -26,5 +26,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	!kde-misc/milou:4
+	!kde-plasma/milou:4
 "
