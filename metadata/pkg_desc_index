@@ -5874,7 +5874,7 @@ dev-perl/IPC-System-Simple 1.250.0: Run commands simply, with detailed diagnosti
 dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
-dev-perl/Image-Info 1.380.0: The Perl Image-Info Module
+dev-perl/Image-Info 1.380.0 1.390.0: The Perl Image-Info Module
 dev-perl/Image-Scale 0.110.0: Fast, high-quality fixed-point image resizing
 dev-perl/Image-Size 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.5: Import packages into other packages
