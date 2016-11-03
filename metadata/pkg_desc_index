@@ -15170,7 +15170,7 @@ net-nds/yp-tools 2.12-r1: Network Information Service tools
 net-nds/ypbind 1.37.2-r1: Multithreaded NIS bind service (ypbind-mt)
 net-nds/ypserv 2.26-r1: Network Information Service server
 net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
-net-news/blam 1.8.9 1.8.12: A RSS aggregator written in C#
+net-news/blam 1.8.12-r1: A RSS aggregator written in C#
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.10.8 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
@@ -17139,7 +17139,7 @@ sys-cluster/ploop 1.13.2 1.14.1: openvz tool and a library to control ploop bloc
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack for Heartbeat / Pacemaker
+sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
