@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/rspec/rspec"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE=""
 
 SUBVERSION="$(get_version_component_range 1-2)"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1 # needed for proper man generation
 inherit autotools-utils
 
-DESCRIPTION="A set of libraries and utilities for reading Microsoft Access database (MDB) files"
+DESCRIPTION="Set of libraries and utilities for reading Microsoft Access database (MDB) files"
 HOMEPAGE="http://mdbtools.sourceforge.net"
 SRC_URI="https://github.com/brianb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -20,8 +20,8 @@ IUSE="gnome odbc static-libs"
 
 RDEPEND="
 	dev-libs/glib:2
-	sys-libs/ncurses
-	sys-libs/readline:0
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	gnome? (
 		gnome-base/libglade:2.0
 		gnome-base/libgnomeui
@@ -31,7 +31,9 @@ DEPEND="${RDEPEND}
 	app-text/txt2man
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc"
+	virtual/yacc
+	gnome? ( app-text/rarian )
+"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
 

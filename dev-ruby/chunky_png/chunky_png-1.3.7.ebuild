@@ -22,7 +22,7 @@ HOMEPAGE="https://wiki.github.com/wvanbergen/chunky_png"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 all_ruby_prepare() {
