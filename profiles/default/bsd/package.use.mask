@@ -20,7 +20,7 @@ net-analyzer/tcpdump drop-root
 
 # Richard Yao <ryao@gentoo.org> (09 Nov 2012)
 # pm-utils is Linux-specific
-kde-base/powerdevil pm-utils
+kde-plasma/powerdevil pm-utils
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (16 Jul 2012)
 # Allow using iconv in blender

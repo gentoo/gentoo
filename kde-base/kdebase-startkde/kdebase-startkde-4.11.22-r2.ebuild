@@ -89,9 +89,9 @@ RDEPEND="
 		$(add_kdebase_dep libplasmaclock)
 		$(add_kdebase_dep libplasmagenericshell)
 		$(add_kdebase_dep libtaskmanager)
-		$(add_kdebase_dep powerdevil)
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		$(add_kdebase_dep solid-actions-kcm)
+		kde-plasma/powerdevil:4
 	)
 	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
 "
