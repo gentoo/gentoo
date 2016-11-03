@@ -1923,7 +1923,7 @@ app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.8 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
-app-misc/tasque 0.1.11 0.1.12: Simple task management app (TODO list) for the Linux Desktop
+app-misc/tasque 0.1.12: Simple task management app (TODO list) for the Linux Desktop
 app-misc/tdfsb 0.0.10 0.0.10-r1: SDL based graphical file browser
 app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/tek 1.3.0: GUI tool for upgrading the firmware of a Truly Ergonomic Keyboard
@@ -3010,7 +3010,7 @@ dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration modu
 dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
 dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
 dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
-dev-dotnet/gio-sharp 0.3 0.3-r1: GIO API C# binding
+dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
 dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
@@ -3027,7 +3027,7 @@ dev-dotnet/gtk-sharp-docs 2.12.10: GtkSharp's gtk-docs module of the gtk-sharp t
 dev-dotnet/gtk-sharp-gapi 2.12.10: GtkSharp's gtk-gapi module of the gtk-sharp tarball
 dev-dotnet/gtksourceview-sharp 2.24.0-r10: GtkSharp's gtksourceview module of the gnome-desktop-sharp tarball
 dev-dotnet/gudev-sharp 0.1: GUDEV API C# binding
-dev-dotnet/ikvm-bin 0.46.0.2 7.1.4532.2: Java VM for .NET
+dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
 dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 4.2-r2: Library for using System.Drawing with mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
@@ -11205,7 +11205,7 @@ gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.8.3 3.0.3: Translation data for Cinnamon
 gnome-extra/cjs 2.8.0 3.0.1: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/docky 2.2.1.1 2.2.1.1-r1: Elegant, powerful, clean dock
+gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.20.5 3.22.1: Evolution groupware backend
 gnome-extra/evolution-ews 3.20.5 3.22.1: Evolution module for connecting to Microsoft Exchange Web Services
@@ -17513,7 +17513,7 @@ sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.7 2.1.8: Samba talloc library
 sys-libs/tdb 1.3.8 1.3.10 1.3.11: A simple database API
 sys-libs/tevent 0.9.26 0.9.28 0.9.29 0.9.31-r1: Samba tevent library
-sys-libs/timezone-data 2016e 2016f 2016g 2016h: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2016e 2016f 2016g 2016h 2016i: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation
