@@ -66,7 +66,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-0.12.11
+	>=app-emulation/spice-protocol-0.12.12
 	dev-perl/Text-CSV
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
