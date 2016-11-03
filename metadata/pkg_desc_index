@@ -1813,7 +1813,7 @@ app-misc/hilite 1.5 1.5-r1: A utility which highlights stderr text in red
 app-misc/hivex 1.3.11-r1: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/icdiff 1.7.3: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
-app-misc/ignuit 2.20.0: Memorization aid based on the Leitner flashcard system
+app-misc/ignuit 2.20.0 2.24.2: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 0.93 1.0.1 1.0.1-r1: library for Irman control of Unix software
 app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r2 0.0.1_pre15-r1 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6: a program that can sit between a serial port and an application
@@ -2005,7 +2005,7 @@ app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.8.0 0.9.1 0.9.4 0.9.5: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
-app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
+app-office/glabels 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.6.12 2.6.13 2.6.13-r1: A personal finance manager
 app-office/gnumeric 1.12.29 1.12.31 1.12.32: The GNOME Spreadsheet
 app-office/grisbi 1.0.0-r1: Grisbi is a personal accounting application for Linux
@@ -2026,7 +2026,7 @@ app-office/libreoffice-bin-debug 5.1.4.2: LibreOffice, a full office productivit
 app-office/libreoffice-l10n 5.1.4.2 5.2.1.2 5.2.2.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.1 2.2.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
-app-office/mdbtools 0.7.1 0.7.1-r1: A set of libraries and utilities for reading Microsoft Access database (MDB) files
+app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/multitalk 1.4: A new type of presentation program
 app-office/odeskteam 3.6.1 3.12.9 3.12.19: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
