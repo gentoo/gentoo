@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,14 +12,13 @@ HOMEPAGE="https://git.gnome.org/browse/blam"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="
 	>=dev-lang/mono-2.6.0
 	dev-dotnet/dbus-sharp-glib:1.0
-	>=dev-dotnet/gtk-sharp-2.12.6
-	>=dev-dotnet/glade-sharp-2.12.6
+	|| ( >=dev-dotnet/gtk-sharp-2.12.21 ( >=dev-dotnet/gtk-sharp-2.12.6 >=dev-dotnet/glade-sharp-2.12.6 ) )
 	>=dev-dotnet/gconf-sharp-2.8.2
 	dev-dotnet/notify-sharp
 	>=dev-dotnet/webkit-sharp-0.2
