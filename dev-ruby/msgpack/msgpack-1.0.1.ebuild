@@ -17,7 +17,7 @@ HOMEPAGE="http://msgpack.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x86-fbsd"
 IUSE="doc"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
