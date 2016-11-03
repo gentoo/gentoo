@@ -16213,7 +16213,7 @@ sci-mathematics/drgeo 1.1.0: Interactive geometry package
 sci-mathematics/e 1.5 1.6 1.8: E is a theorem prover for full first-order logic with equality
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
-sci-mathematics/factmsieve 76: Convenient factorization helper script using msieve and ggnfs
+sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using msieve and ggnfs
 sci-mathematics/fann 2.1.0_beta-r1 2.2.0-r1 9999: Fast Artificial Neural Network Library
 sci-mathematics/flint 2.3 2.4.3 2.4.4-r1 2.4.5 2.5.2: Fast Library for Number Theory
 sci-mathematics/form 4.1: Symbolic Manipulation System
