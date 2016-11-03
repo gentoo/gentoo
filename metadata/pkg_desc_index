@@ -11666,7 +11666,6 @@ kde-base/kstyles 4.11.22: KDE: A set of different KDE styles
 kde-base/ksysguard 4.11.22: KSysguard is a network enabled task manager and system monitor application
 kde-base/ksystraycmd 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/kwin 4.11.22: KDE window manager
-kde-base/kwrited 4.11.22: KDE daemon listening for wall and write messages
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
 kde-base/libkgreeter 4.11.22: Conversation widgets for KDM greeter
 kde-base/libkworkspace 4.11.22: A library for KDE desktop applications
@@ -11881,7 +11880,7 @@ kde-plasma/ksysguard 5.7.5 5.8.3: Network-enabled task manager and system monito
 kde-plasma/kwallet-pam 5.7.5 5.8.3: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.7.5 5.8.3: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.7.5 5.8.3: KDE window manager
-kde-plasma/kwrited 5.7.5 5.8.3: KDE daemon listening for wall and write messages
+kde-plasma/kwrited 4.11.22 5.7.5 5.8.3: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.7.5 5.8.3: Plasma screen management library
 kde-plasma/libksysguard 5.7.5 5.8.3: Task management and system monitoring library
 kde-plasma/milou 0.1 5.7.5 5.8.3: Dedicated search application built on top of Baloo
