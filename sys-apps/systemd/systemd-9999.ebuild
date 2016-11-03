@@ -326,6 +326,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	prune_libtool_files --modules
 	einstalldocs
+	dodoc "${FILESDIR}"/nsswitch.conf
 
 	if [[ ${PV} != 9999 ]]; then
 		use doc || doman "${WORKDIR}"/man/systemd.{directives,index}.7
