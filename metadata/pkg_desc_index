@@ -7856,7 +7856,7 @@ dev-python/pycodestyle 2.0.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 1.18 1.19 1.20: Database of countries, subdivisions, languages, currencies and script
-dev-python/pycparser 2.14 2.16-r1: C parser and AST generator written in Python
+dev-python/pycparser 2.14 2.16-r1 2.17: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0 0.7.1: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDIA CUDA
@@ -10621,7 +10621,7 @@ games-fps/doom3-inhell 1.1-r1: Doom 3 In Hell - Ultimate Doom-inspired levels fo
 games-fps/doom3-lms 4: Doom 3 Last Man Standing - add co-op support and/or play against swarms of monsters
 games-fps/doom3-mitm 20070129: Doom 3 Make it to Morning - Single player maps
 games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
-games-fps/doomsday 1.14.5 1.15.8: A modern gaming engine for Doom, Heretic, and Hexen
+games-fps/doomsday 1.15.8: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/doomsday-resources 1.01-r1: Improved models & textures for doomsday
 games-fps/duke3d 20040817-r2: Port of the original Duke Nukem 3D
 games-fps/duke3d-data 1.0-r3: Duke Nukem 3D data files
@@ -10843,9 +10843,9 @@ games-puzzle/brainparty 0.61: A puzzle-solving, brain-stretching game for all ag
 games-puzzle/brainworkshop 4.8.4: Short-term-memory training N-Back game
 games-puzzle/bubble-chains 0.1.1: Arcade-puzzle game
 games-puzzle/color-lines 0.6: Color lines game written with SDL with bonus features
-games-puzzle/colorcode 0.7.2: A free advanced MasterMind clone
+games-puzzle/colorcode 0.7.2 0.8.5: A free advanced MasterMind clone
 games-puzzle/concentration 1.2-r1: The classic memory game with some new life
-games-puzzle/connectagram 1.0.1-r1 1.2.1: A word unscrambling game
+games-puzzle/connectagram 1.2.1: A word unscrambling game
 games-puzzle/construo 0.2.2: 2d construction toy with objects that react on physical forces
 games-puzzle/cutemaze 1.1.1: A simple, top-down game in which mazes are randomly generated
 games-puzzle/cuyo 2.1.1: highly addictive and remotely related to tetris
@@ -11822,7 +11822,6 @@ kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
 kde-misc/kvkbd 0.6-r1: A virtual keyboard for KDE
 kde-misc/kwebkitpart 1.3.4-r1: A WebKit KPart for Konqueror
-kde-misc/milou 0.1: Dedicated search application built on top of Baloo
 kde-misc/miniplayer 2.5-r1: Multimedia player plasmoid
 kde-misc/networkmanagement 0.9.0.12: KDE frontend for NetworkManager
 kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
@@ -11887,7 +11886,7 @@ kde-plasma/kwin 5.7.5 5.8.3: KDE window manager
 kde-plasma/kwrited 5.7.5 5.8.3: KDE daemon listening for wall and write messages
 kde-plasma/libkscreen 5.7.5 5.8.3: Plasma screen management library
 kde-plasma/libksysguard 5.7.5 5.8.3: Task management and system monitoring library
-kde-plasma/milou 5.7.5 5.8.3: Dedicated search application built on top of Baloo
+kde-plasma/milou 0.1 5.7.5 5.8.3: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.7.5 5.8.3: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.7.5 5.8.3: KDE Plasma desktop

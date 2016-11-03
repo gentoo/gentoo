@@ -4,7 +4,7 @@ DESCRIPTION=A modern gaming engine for Doom, Heretic, and Hexen
 EAPI=5
 HOMEPAGE=http://www.dengine.net/
 IUSE=dedicated fluidsynth openal snowberry +doom demo freedoom heretic hexen resources tools python_targets_python2_7
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3+ LGPL-3+
 PDEPEND=!dedicated? ( demo? ( games-fps/doom-data ) freedoom? ( games-fps/freedoom ) resources? ( games-fps/doomsday-resources ) )
 RDEPEND=dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5[-gles2] dev-qt/qtcore:5 net-misc/curl sys-libs/zlib media-libs/assimp !dedicated? ( media-libs/libsdl2[joystick,sound] media-libs/sdl2-mixer media-libs/libpng:0 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXrandr x11-libs/libXxf86vm ) fluidsynth? ( media-sound/fluidsynth ) openal? ( media-libs/openal ) tools? ( sys-libs/ncurses:0 ) !dedicated? ( snowberry? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-lang/python-exec:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) games-misc/games-envd
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/deng/Doomsday%20Engine/1.15.8/doomsday-stable-1.15.8.tar.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	games	2cf0d67d765e6358b435ccda30c13ad8	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=55b87ae50262a40285aa2f61cec06545
+_md5_=f1844981c0200df217175b8c707c5146
