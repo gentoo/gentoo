@@ -212,7 +212,7 @@ src_configure() {
 	)
 
 	# we can only use python2.7 for building at the moment
-	python_export python2.7 PYTHON EPYTHON
+	python_setup 'python2*'
 	econf "${myeconfargs[@]}"
 }
 
@@ -251,11 +251,16 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
-	python_fix_shebang "${ED}"/usr/{,s}bin/
-
 	udev_dorules udev/*.rules
 
 	readme.gentoo_create_doc
+
+	python_setup 'python2*'
+	python_fix_shebang "${ED}"/usr/{,s}bin/
+
+	# python_fix_shebang apparently is not idempotent
+	sed -i -r  's:(/usr/lib/python-exec/python[0-9]\.[0-9]/python)[0-9]\.[0-9]:\1:' \
+		"${ED}"/usr/{sbin/ceph-disk,bin/ceph-detect-init} || die "sed failed"
 }
 
 pkg_postinst() {
