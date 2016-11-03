@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Required by kde-plasma/plasma-pa
+media-sound/pulseaudio gnome
+
 # Avoid circular dependency when installing from scratch
 dev-util/cmake -qt4 -qt5
 
