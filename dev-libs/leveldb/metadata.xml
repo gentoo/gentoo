@@ -2,16 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergstroem</name>
-  </maintainer>
-  <maintainer type="person">
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="snappy">support the snappy compression library</flag>
