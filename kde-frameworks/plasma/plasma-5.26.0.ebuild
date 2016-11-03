@@ -51,7 +51,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!<kde-apps/kapptemplate-15.08.3-r1:5
-	!<kde-plasma/kdeplasma-addons-5.4.3-r1
+	!<kde-plasma/kdeplasma-addons-5.4.3-r1:5
 "
 
 RESTRICT+=" test"

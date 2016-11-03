@@ -425,7 +425,7 @@ app-accessibility/speech-dispatcher flite
 # mask kde-base/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
-kde-base/kdeplasma-addons fcitx oauth
+kde-plasma/kdeplasma-addons fcitx oauth
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp

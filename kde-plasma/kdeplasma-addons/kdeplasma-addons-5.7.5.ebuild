@@ -45,7 +45,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
-	!kde-base/kdeplasma-addons:4
+	!kde-plasma/kdeplasma-addons:4
 "
 
 src_configure() {
