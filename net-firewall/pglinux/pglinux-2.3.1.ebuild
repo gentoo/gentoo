@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=6
-
-inherit gnome2-utils linux-info systemd
+inherit eutils gnome2-utils linux-info systemd
 
 MY_P="pgl-${PV}"
 
@@ -13,9 +12,10 @@ HOMEPAGE="https://sourceforge.net/projects/peerguardian/"
 SRC_URI="mirror://sourceforge/peerguardian/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="cron dbus logrotate networkmanager qt4 zlib"
+REQUIRED_USE="qt4? ( dbus )"
 
 COMMON_DEPEND="
 	net-libs/libnetfilter_queue
@@ -27,18 +27,19 @@ COMMON_DEPEND="
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
 		|| ( kde-apps/kdesu x11-misc/ktsuss )
-	)"
+	)
+"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	sys-devel/libtool:2"
+	sys-devel/libtool:2
+"
 RDEPEND="${COMMON_DEPEND}
 	net-firewall/iptables
 	sys-apps/sysvinit
 	cron? ( virtual/cron )
 	logrotate? ( app-admin/logrotate )
-	networkmanager? ( net-misc/networkmanager )"
-
-REQUIRED_USE="qt4? ( dbus )"
+	networkmanager? ( net-misc/networkmanager:= )
+"
 
 CONFIG_CHECK="~NETFILTER_NETLINK
 	~NETFILTER_NETLINK_QUEUE
@@ -55,12 +56,16 @@ CONFIG_CHECK="~NETFILTER_NETLINK
 	~IP_NF_IPTABLES
 	~IP_NF_TARGET_REJECT"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:' pglcmd/init/pgl.gentoo.in || die
+}
 
 src_configure() {
 	econf \
 		--localstatedir=/var \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable logrotate) \
 		$(use_enable cron) \
 		$(use_enable networkmanager) \
@@ -77,6 +82,7 @@ src_install() {
 	default
 	keepdir /var/{lib,log,spool}/pgl
 	rm -rf "${ED%/}"/tmp || die
+	prune_libtool_files --modules
 }
 
 pkg_preinst() {
