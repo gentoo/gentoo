@@ -7891,6 +7891,7 @@ sys-process/systemd-cron:etc-crontab-systemd - Use dedicated /etc/crontab-system
 sys-process/systemd-cron:minutely - Support /etc/cron.minutely
 sys-process/systemd-cron:setgid - Compile setgid C helper for crontab. Needs GCC or Clang.
 sys-process/systemd-cron:yearly - Support /etc/cron.yearly
+sys-process/tini:args - Enable argument parsing.
 virtual/ffmpeg:opus - Use the external opus library for encoding and decoding.
 virtual/linux-sources:firmware - Install linux kernel firmware
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO

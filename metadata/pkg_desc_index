@@ -17591,7 +17591,7 @@ sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling p
 sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed services
 sys-process/systemd-cron 1.5.3 1.5.4: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r1 1.7-r2: displays info about resources used by a program
-sys-process/tini 0.10.0: A tiny but valid init for containers
+sys-process/tini 0.10.0 0.11.0: A tiny but valid init for containers
 sys-process/tiptop 2.2 2.3: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
