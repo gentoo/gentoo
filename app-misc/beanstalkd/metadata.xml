@@ -5,10 +5,6 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergstroem</name>
-  </maintainer>
   <longdescription lang="en">
 beanstalked is a fast distributed workqueue service
 </longdescription>
