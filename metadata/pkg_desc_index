@@ -10591,7 +10591,7 @@ games-engines/nazghul 0.7.1: A computer role-playing game (CRPG) engine with gam
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
 games-engines/openmw 0.39.0: An open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
-games-engines/qtads 2.1.6 2.1.7: Multimedia interpreter for TADS text adventures
+games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
 games-engines/residualvm 0.2.1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1: Reimplementation of the SCUMM game engine used in Lucasarts adventures
@@ -10916,7 +10916,7 @@ games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
 games-puzzle/swell-foop 3.20.0 3.22.0: Clear the screen by removing groups of colored and shaped tiles
-games-puzzle/tanglet 1.2.1 1.3.1: A single player word finding game based on Boggle
+games-puzzle/tanglet 1.3.1: A single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11: console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2: An ncurses-based maze solving game written in Perl
 games-puzzle/tint 0.03b: Tint Is Not Tetris, a ncurses based clone of the original Tetris(tm) game
@@ -17443,7 +17443,7 @@ sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1
 sys-libs/e2fsprogs-libs 1.42.13 1.43.1 1.43.2 1.43.3: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 0.21 0.23 27 30: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
-sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.3 1.5.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
+sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.4 1.5.5: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 9999: GNU libc6 (also called glibc2) C library
