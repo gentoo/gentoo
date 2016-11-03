@@ -15,7 +15,7 @@ SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/prod/local_installers/
 LICENSE="CUDPP"
 SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
-IUSE="+cuda debug +doc +examples opencl"
+IUSE="+cuda debug +doc +examples opencl mpi"
 
 RDEPEND="
 	~dev-util/nvidia-cuda-toolkit-${PV}
@@ -23,8 +23,8 @@ RDEPEND="
 	examples? (
 		media-libs/freeimage
 		media-libs/glew:=
-		virtual/mpi
 		>=x11-drivers/nvidia-drivers-367.44[uvm]
+		mpi? ( virtual/mpi )
 		)"
 DEPEND="${RDEPEND}"
 
@@ -139,6 +139,6 @@ src_install() {
 				insinto /opt/cuda/sdk/"${t}"
 				doins "${f}"
 			fi
-		done < <(find -type f . -print0)
+		done < <(find . -type f -print0)
 	eend
 }
