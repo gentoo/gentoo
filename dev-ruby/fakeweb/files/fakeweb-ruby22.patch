@@ -1,0 +1,24 @@
+From 1647ca210691429a75eb159814f42e68c3c1ce4c Mon Sep 17 00:00:00 2001
+From: Josef Stribny <jstribny@redhat.com>
+Date: Thu, 19 Mar 2015 09:32:50 +0100
+Subject: [PATCH] Fix tests by expecting TypeError for Ruby 2.2
+
+---
+ test/test_fake_web.rb | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_fake_web.rb b/test/test_fake_web.rb
+index f344612..682c43d 100644
+--- a/test/test_fake_web.rb
++++ b/test/test_fake_web.rb
+@@ -35,7 +35,9 @@ def test_response_for_with_wrong_number_of_arguments
+   end
+ 
+   def test_register_uri_without_domain_name
+-    assert_raises URI::InvalidURIError do
++    # Ruby 2.1 and lower raises URI::InvalidURIError
++    # Ruby 2.2 and higher raises TypeError
++    assert_raises URI::InvalidURIError, TypeError do
+       FakeWeb.register_uri(:get, 'test_example2.txt', fixture_path("test_example.txt"))
+     end
+   end
