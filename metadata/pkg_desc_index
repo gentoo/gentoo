@@ -7565,7 +7565,7 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.4.4 3.4.4-r1 3.5.0 3.5.0-r1 3.6.0 3.6.4-r1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.8.2: LZ4 Bindings for Python
-dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r1: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2 1.0.3: A Python templating language
@@ -17850,7 +17850,7 @@ www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
-www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2: An Apache2 module for running Python WSGI applications
+www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2 4.5.7: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
