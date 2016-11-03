@@ -18,7 +18,7 @@ HOMEPAGE="http://puppet-lint.com/"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 ruby_add_bdepend "test? (
 	dev-ruby/rspec-its:1
