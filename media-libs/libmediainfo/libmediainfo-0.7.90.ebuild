@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic multilib
+inherit autotools eutils flag-o-matic
 
 MY_PN="MediaInfo"
 DESCRIPTION="MediaInfo libraries"
@@ -31,10 +31,11 @@ RESTRICT="test"
 S=${WORKDIR}/${MY_PN}Lib/Project/GNU/Library
 
 src_prepare() {
+	eapply -p4 "${FILESDIR}"/${PN}-0.7.63-pkgconfig.patch
+	eapply_user
+
 	sed -i 's:-O2::' configure.ac || die
 	append-cppflags -DMEDIAINFO_LIBMMS_DESCRIBE_SUPPORT=0
-
-	epatch "${FILESDIR}"/${PN}-0.7.63-pkgconfig.patch
 
 	eautoreconf
 }
@@ -59,6 +60,10 @@ src_compile() {
 }
 
 src_install() {
+	if use doc; then
+		local HTML_DOCS=( "${WORKDIR}"/${MY_PN}Lib/Doc/*.html )
+	fi
+
 	default
 
 	edos2unix ${PN}.pc #414545
@@ -74,9 +79,6 @@ src_install() {
 	doins "${WORKDIR}"/${MY_PN}Lib/Source/${MY_PN}DLL/*.h
 
 	dodoc "${WORKDIR}"/${MY_PN}Lib/*.txt
-	if use doc; then
-		dohtml -r "${WORKDIR}"/${MY_PN}Lib/Doc/*
-	fi
 
 	prune_libtool_files
 }

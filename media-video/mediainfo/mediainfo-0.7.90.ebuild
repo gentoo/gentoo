@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 WX_GTK_VER="3.0"
 
-inherit eutils autotools wxwidgets multilib
+inherit eutils autotools wxwidgets
 
 DESCRIPTION="MediaInfo supplies technical and tag information about media files"
 HOMEPAGE="http://mediaarea.net/mediainfo/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.bz2"
+SRC_URI="http://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="sys-libs/zlib
@@ -31,6 +31,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply_user
+
 	local target
 	for target in ${TARGETS}; do
 		cd "${S}"/Project/GNU/${target}
