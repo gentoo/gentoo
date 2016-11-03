@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergström</name>
-    <description>Co-maintainer, CC on bugs.</description>
-  </maintainer>
-
+  <!-- maintainer-needed -->
   <longdescription>UCL is heavily infused by nginx configuration as the example
     of a convenient configuration system. However, UCL is fully compatible with
     JSON format and is able to parse json files. It can also emit UCL objects
