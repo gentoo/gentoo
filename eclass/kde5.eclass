@@ -145,10 +145,11 @@ case ${KDE_AUTODEPS} in
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
 			case ${CATEGORY} in
 				kde-frameworks)
-					FRAMEWORKS_MINIMAL=9999
+					: ${FRAMEWORKS_MINIMAL:=9999}
 				;;
 				kde-plasma)
-					FRAMEWORKS_MINIMAL=9999
+
+					: ${FRAMEWORKS_MINIMAL:=9999}
 				;;
 				*) ;;
 			esac
@@ -156,14 +157,14 @@ case ${KDE_AUTODEPS} in
 
 		if [[ ${CATEGORY} = kde-plasma && ${FRAMEWORKS_MINIMAL} != 9999 ]]; then
 			if ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
-				FRAMEWORKS_MINIMAL=5.27.0
+				: ${FRAMEWORKS_MINIMAL:=5.27.0}
 			fi
 		fi
 
 		if [[ ${CATEGORY} = kde-apps ]]; then
 			local vcr2=$((10#$(get_version_component_range 2)))
 			if ! [[ $(get_version_component_range 1) -le 16 && ${vcr2} -lt 9 ]]; then
-				FRAMEWORKS_MINIMAL=5.28.0
+				: ${FRAMEWORKS_MINIMAL:=5.28.0}
 			fi
 			unset vcr2
 		fi
