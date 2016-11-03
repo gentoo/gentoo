@@ -21,8 +21,8 @@ DEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )"
 
 src_prepare() {
-	use cuda && cuda_src_prepare
 	cmake-utils_src_prepare
+	use cuda && cuda_src_prepare
 }
 
 src_configure() {
