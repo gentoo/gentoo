@@ -53,7 +53,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
-	pam? ( virtual/pam:= )
+	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
@@ -241,7 +241,7 @@ multilib_src_configure() {
 		$(use_enable lz4)
 		$(use_enable lzma xz)
 		$(multilib_native_use_enable nat libiptc)
-		$(multilib_native_use_enable pam)
+		$(use_enable pam)
 		$(multilib_native_use_enable policykit polkit)
 		$(multilib_native_use_enable qrcode qrencode)
 		$(multilib_native_use_enable seccomp)
@@ -284,10 +284,14 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		emake "${mymakeopts[@]}"
 	else
-		echo 'gentoo: $(BUILT_SOURCES)' | \
-		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
-		echo 'gentoo: $(lib_LTLIBRARIES) $(rootlib_LTLIBRARIES) $(pkgconfiglib_DATA)' | \
-		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
+		emake built-sources
+		local targets=(
+			'$(rootlib_LTLIBRARIES)'
+			'$(lib_LTLIBRARIES)'
+			'$(pamlib_LTLIBRARIES)'
+			'$(pkgconfiglib_DATA)'
+		)
+		echo "gentoo: ${targets[*]}" | emake "${mymakeopts[@]}" -f Makefile -f - gentoo
 	fi
 }
 
@@ -311,11 +315,11 @@ multilib_src_install() {
 		emake "${mymakeopts[@]}" install
 	else
 		mymakeopts+=(
-			install-libLTLIBRARIES
 			install-rootlibLTLIBRARIES
+			install-libLTLIBRARIES
+			install-pamlibLTLIBRARIES
 			install-pkgconfiglibDATA
 			install-includeHEADERS
-			# safe to call unconditionally, 'installs' empty list
 			install-pkgincludeHEADERS
 		)
 
