@@ -43,6 +43,13 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# Restricting to one job because multiple tests are using the same port.
+	# Upstream knows the problem and says it doesn't support parallel test
+	# execution, see ${S}/INSTALL.
+	emake -j1 check
+}
+
 src_install() {
 	default
 	prune_libtool_files
