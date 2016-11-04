@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG=no
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="A graphical network monitor for Unix modeled after etherman"
@@ -20,13 +19,9 @@ RDEPEND="
 	gnome-base/libgnomecanvas[glade]
 	net-libs/libpcap
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.11.5
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/gnome-doc-utils
-	app-text/scrollkeeper
 	virtual/pkgconfig
 "
-
-DOCS="AUTHORS ChangeLog FAQ NEWS README* TODO"
