@@ -14916,7 +14916,7 @@ net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Contro
 net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1 0.9.3-r1 0.9.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
-net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for accessing Mega cloud storage
+net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25 1.4.26 1.4.27 1.4.29 1.4.30 1.4.31 1.4.32 1.4.33: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
@@ -16865,7 +16865,7 @@ sys-apps/the_silver_searcher 0.32.0 0.33.0: A code-searching tool similar to ack
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.7.0 2.7.1 2.7.1-r1 2.7.1-r2: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.7.0 2.7.1-r2: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
@@ -17068,7 +17068,7 @@ sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loa
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 0.94.7 9.2.1-r2 10.2.2-r2 10.2.3 10.2.3-r2 9999: Ceph distributed filesystem
+sys-cluster/ceph 0.94.9 9.2.1-r2 10.2.3-r2 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 8.1.1 9.0.0 2016.1.9999 2016.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
