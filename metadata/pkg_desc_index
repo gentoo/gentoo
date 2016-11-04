@@ -3177,7 +3177,7 @@ dev-games/physfs 2.0.3-r1: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
-dev-games/simgear 3.4.0 2016.2.1 2016.3.1 9999: Development library for simulation games
+dev-games/simgear 3.4.0 2016.3.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.17.0: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
@@ -11031,8 +11031,8 @@ games-simulation/corsix-th 0.30: Open source clone of Theme Hospital
 games-simulation/crashtest 1.1 1.1-r1: Educational car crash simulator
 games-simulation/crrcsim 0.9.12-r1 0.9.12-r2: model-airplane flight simulation program
 games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
-games-simulation/flightgear 3.4.0 2016.2.1 2016.3.1 9999: Open Source Flight Simulator
-games-simulation/flightgear-data 3.4.0 2016.2.1 2016.3.1 9999: FlightGear data files
+games-simulation/flightgear 3.4.0 2016.3.1 9999: Open Source Flight Simulator
+games-simulation/flightgear-data 3.4.0 2016.3.1 9999: FlightGear data files
 games-simulation/gl117 1.3.2 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
@@ -16721,7 +16721,7 @@ sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwdata-redhat 0.217: Hardware identification and configuration data
-sys-apps/hwids 20150717 20150717-r1 20160306 20160421 20160801 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20150717 20150717-r1 20160306 20160421 20160801 20161103 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.6.1 1.6.2 1.7.2 1.8.1 1.9 1.10.0 1.10.0-r2 1.10.1-r1 1.11.2: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
