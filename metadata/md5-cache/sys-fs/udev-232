@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=sys-apps/util-linux-2.27.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] sys-libs/libcap[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] acl? ( sys-apps/acl ) kmod? ( >=sys-apps/kmod-16 ) selinux? ( >=sys-libs/libselinux-2.1.9 ) !<sys-libs/glibc-2.11 !sys-apps/gentoo-systemd-integration !sys-apps/systemd abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) dev-util/gperf >=dev-util/intltool-0.50 >=sys-apps/coreutils-8.16 virtual/os-headers virtual/pkgconfig >=sys-devel/make-3.82-r4 >=sys-kernel/linux-headers-3.9 app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Linux dynamic and persistent device naming support (aka userspace devfs)
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd
+IUSE=acl +kmod selinux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2.1 MIT GPL-2
+PDEPEND=>=sys-apps/hwids-20140304[udev] >=sys-fs/udev-init-scripts-26
+RDEPEND=>=sys-apps/util-linux-2.27.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] sys-libs/libcap[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] acl? ( sys-apps/acl ) kmod? ( >=sys-apps/kmod-16 ) selinux? ( >=sys-libs/libselinux-2.1.9 ) !<sys-libs/glibc-2.11 !sys-apps/gentoo-systemd-integration !sys-apps/systemd abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r7 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) !<sys-fs/lvm2-2.02.103 !<sec-policy/selinux-base-2.20120725-r10
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/systemd/systemd/archive/v232.tar.gz -> systemd-232.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=fc49db6a85808682b5cf204bfc6b36ca
