@@ -16,7 +16,7 @@ SRC_URI="http://www.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
 openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets
 xine xrandr zlib"
