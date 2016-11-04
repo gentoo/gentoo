@@ -14,11 +14,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="acoustid flac mp3 mp4 +taglib vorbis"
+IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
 
 DEPEND="
+	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
@@ -34,6 +35,13 @@ DEPEND="
 	flac? (
 		media-libs/flac[cxx]
 		media-libs/libvorbis
+	)
+	kde? (
+		$(add_frameworks_dep kconfig)
+		$(add_frameworks_dep kconfigwidgets)
+		$(add_frameworks_dep kcoreaddons)
+		$(add_frameworks_dep kwidgetsaddons)
+		$(add_frameworks_dep kxmlgui)
 	)
 	mp3? ( media-libs/id3lib )
 	mp4? ( media-libs/libmp4v2:0 )
@@ -63,17 +71,22 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_QT5=ON
-		-DWITH_QT4=OFF
 		-DWITH_PHONON=OFF
+		-DWITH_QT4=OFF
+		-DWITH_QT5=ON
 		-DWITH_CHROMAPRINT=$(usex acoustid)
 		-DWITH_FLAC=$(usex flac)
 		-DWITH_ID3LIB=$(usex mp3)
 		-DWITH_MP4V2=$(usex mp4)
 		-DWITH_TAGLIB=$(usex taglib)
 		-DWITH_VORBIS=$(usex vorbis)
-		"-DWITH_APPS=Qt;CLI"
 	)
+
+	if use kde ; then
+		mycmakeargs+=( "-DWITH_APPS=KDE;CLI" )
+	else
+		mycmakeargs+=( "-DWITH_APPS=Qt;CLI" )
+	fi
 
 	kde5_src_configure
 }
