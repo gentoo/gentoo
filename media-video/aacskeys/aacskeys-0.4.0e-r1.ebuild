@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils java-pkg-2
 
 DESCRIPTION="Decrypt keys from an AACS source (HD DVD / Blu-Ray)"
@@ -14,22 +14,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/openssl[-bindist]"
+RDEPEND="dev-libs/openssl:0=[-bindist]"
 DEPEND=">=virtual/jdk-1.6
 	${RDEPEND}"
 
+DOCS=(
+	HostKeyCertificate.txt
+	ProcessingDeviceKeysSimple.txt
+	README.txt
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.4.0c-aacskeys-makefile.patch"
+	"${FILESDIR}/${PN}-0.4.0c-libaacskeys-makefile.patch"
+)
+
+# overriding src_* functions from java-pkg-2 eclass.
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.4.0c-aacskeys-makefile.patch"
-	epatch "${FILESDIR}/${PN}-0.4.0c-libaacskeys-makefile.patch"
+	default
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 }
 
 src_install() {
-	dobin bin/linux/aacskeys || die
-	dolib lib/linux/libaacskeys.so || die
-	dodoc HostKeyCertificate.txt ProcessingDeviceKeysSimple.txt \
-		README.txt || die
+	dobin bin/linux/aacskeys
+	dolib lib/linux/libaacskeys.so
+	einstalldocs
 }
