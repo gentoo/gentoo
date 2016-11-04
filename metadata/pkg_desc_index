@@ -13891,7 +13891,7 @@ net-analyzer/fail2ban 0.9.3-r1 0.9.4 0.9.5 99999999: scans log files and bans IP
 net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
-net-analyzer/flent 0.14.0: The FLExible Network Tester
+net-analyzer/flent 0.15.0: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r9: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.7.1 0.8.0: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.10 3.13: A utility to ping multiple hosts at once
@@ -13997,7 +13997,7 @@ net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance 
 net-analyzer/nethogs 0.8.0-r4 0.8.1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32: a network benchmarking tool that measures net throughput with NetBIOS and TCP/IP protocols
-net-analyzer/netperf 2.6.0-r1 2.7.0 2.7.0-r1: Network performance benchmark
+net-analyzer/netperf 2.6.0-r1 2.7.0 2.7.0-r1 2.7.0-r2: Network performance benchmark
 net-analyzer/netselect 0.3-r3 0.3-r4: Ultrafast implementation of ping
 net-analyzer/netsniff-ng 0.6.0 0.6.1 9999: high performance network sniffer for packet inspection
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
@@ -17056,7 +17056,7 @@ sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/systemd-boot 231-r1: UEFI boot manager from systemd (formerly gummiboot)
+sys-boot/systemd-boot 231-r1 232: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.9.4-r1: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
@@ -17992,7 +17992,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.4.589.29_p1 1.5.653.3_p1 1.5.654.3_p1: A new browser for our friends
+www-client/vivaldi 1.4.589.29_p1 1.5.654.3_p1 1.5.655.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
