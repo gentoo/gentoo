@@ -113,8 +113,9 @@ RDEPEND="
 	>=dev-python/webob-1.2.3-r1[${PYTHON_USEDEP}]
 	>=dev-python/yaql-1.1.0[${PYTHON_USEDEP}]"
 
-#PATCHES=(
-#)
+PATCHES=(
+	"${FILESDIR}/CVE-2016-9185.patch"
+)
 
 pkg_setup() {
 	enewgroup heat
