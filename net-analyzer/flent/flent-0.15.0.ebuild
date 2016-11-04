@@ -20,5 +20,6 @@ IUSE="+qt4 +plots"
 RDEPEND="qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
 		plots? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 		net-analyzer/netperf[demo]
-		net-misc/iperf"
+		net-misc/iperf
+		net-analyzer/fping"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
