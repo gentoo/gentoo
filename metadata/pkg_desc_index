@@ -14634,7 +14634,7 @@ net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.12.5 2.14.1: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1 4.4.0: Extended ROOT remote file server
-net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.5-r1: A brokerless kernel
+net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.5-r1 4.1.6: A brokerless kernel
 net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03: A log analyzer for amavisd-new
