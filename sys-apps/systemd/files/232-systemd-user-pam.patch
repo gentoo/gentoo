@@ -1,8 +1,16 @@
 --- a/src/login/systemd-user.m4
 +++ b/src/login/systemd-user.m4
-@@ -9,4 +9,5 @@
- session  required pam_selinux.so nottys open
- )m4_dnl
- session  required pam_loginuid.so
-+session required pam_limits.so
+@@ -2,11 +2,7 @@
+ #
+ # Used by systemd --user instances.
+ 
+-account required pam_unix.so
++account include system-services
+ 
+-m4_ifdef(`HAVE_SELINUX',
+-session  required pam_selinux.so close
+-session  required pam_selinux.so nottys open
+-)m4_dnl
+-session  required pam_loginuid.so
++session include system-services
  session optional pam_systemd.so
