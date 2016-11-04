@@ -16,20 +16,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
-RDEPEND="dev-libs/wlc[systemd=]
-		dev-libs/json-c
-		dev-libs/libpcre
-		dev-libs/libinput
-		x11-libs/libxkbcommon
-		dev-libs/wayland
-		x11-libs/pango
-		x11-libs/cairo
-		swaylock? ( virtual/pam )
-		gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
+RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
+	dev-libs/json-c
+	dev-libs/libpcre
+	dev-libs/libinput
+	x11-libs/libxkbcommon
+	dev-libs/wayland
+	x11-libs/pango
+	x11-libs/cairo
+	swaylock? ( virtual/pam )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-		app-text/asciidoc"
+	app-text/asciidoc"
 
 src_prepare() {
 	default
@@ -69,4 +69,5 @@ pkg_postinst() {
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
 		optfeature "swaygrab video capture support" virtual/ffmpeg
 	fi
+	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
 }
