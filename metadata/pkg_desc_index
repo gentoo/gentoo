@@ -8424,7 +8424,7 @@ dev-python/txaio 1.0.0 2.2.0 2.2.1 2.3.1 2.5.1-r1: Compatibility API between asy
 dev-python/txgithub 15.0.0: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.2 0.9.5: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
-dev-python/typing 3.5.0.1: Type Hints for Python
+dev-python/typing 3.5.0.1 3.5.2.2: Type Hints for Python
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.1 2.3.0: A portable, lightweight MessagePack serializer and deserializer
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
@@ -11447,7 +11447,7 @@ kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.04.3 16.08.2: KDE PIM internationa
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.08.2: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.11_pre20160211 16.08.2: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
-kde-apps/kdepimlibs 4.14.10-r1 4.14.10-r2 4.14.11_pre20160211-r1 4.14.11_pre20160211-r2: Common library for KDE PIM apps
+kde-apps/kdepimlibs 4.14.10-r2 4.14.11_pre20160211-r2: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.04.3 16.08.2: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 16.04.3 16.08.2: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-thumbnailers 16.04.3 16.08.2: Thumbnail generator for PO files
@@ -11693,7 +11693,7 @@ kde-frameworks/kcodecs 5.26.0 5.27.0: Framework for manipulating strings using v
 kde-frameworks/kcompletion 5.26.0 5.27.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.26.0 5.27.0: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.26.0 5.27.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.26.0-r1 5.26.0-r2 5.27.0-r1: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcoreaddons 5.26.0-r2 5.27.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.26.0 5.27.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.26.0 5.27.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.26.0 5.27.0: Framework providing integration of QML and KDE work spaces
@@ -12555,7 +12555,7 @@ media-libs/bio2jack 0.9-r1: A library for porting blocked I/O OSS/ALSA audio app
 media-libs/blib 1.1.7-r1: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/ccaudio2 2.1.3: C++ class framework for manipulating audio data
-media-libs/celt 0.5.1.3 0.11.1-r1: CELT is a very low delay audio codec designed for high-quality communications
+media-libs/celt 0.5.1.3 0.11.1-r1 0.11.3: CELT is a very low delay audio codec designed for high-quality communications
 media-libs/chromaprint 1.2 1.2-r1 1.3.1 1.3.2: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/cimg 1.5.2 1.7.8: C++ template image processing toolkit
 media-libs/clutter 1.24.2 1.26.0: Clutter is a library for creating graphical user interfaces
@@ -14465,7 +14465,7 @@ net-libs/glib-networking 2.44.0 2.46.1 2.48.2 2.50.0: Network-related giomodules
 net-libs/gloox 1.0.9 1.0.16-r1 1.0.17: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.22.1: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.5.5: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.5.5 3.5.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.36 2.8.37: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.14 0.14.15 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
