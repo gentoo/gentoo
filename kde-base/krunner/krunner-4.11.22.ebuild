@@ -17,9 +17,9 @@ DEPEND="
 	$(add_kdebase_dep kcheckpass)
 	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep ksmserver)
-	$(add_kdebase_dep ksysguard)
 	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmagenericshell)
+	kde-plasma/ksysguard:4
 	!aqua? (
 		x11-libs/libX11
 		x11-libs/libXcursor

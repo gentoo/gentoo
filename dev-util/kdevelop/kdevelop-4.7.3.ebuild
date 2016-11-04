@@ -22,8 +22,8 @@ DEPEND="
 	dev-libs/qjson
 	dev-qt/qtdeclarative:4[webkit]
 	gdbui? (
-		$(add_kdebase_dep ksysguard)
 		$(add_kdebase_dep libkworkspace)
+		kde-plasma/ksysguard:4
 	)
 	okteta? ( $(add_kdeapps_dep okteta) )
 	qthelp? ( dev-qt/qthelp:4 )

@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
-DESCRIPTION="KSysguard is a network enabled task manager and system monitor application"
+DESCRIPTION="Network-enabled task manager and system monitor"
 HOMEPAGE+=" https://userbase.kde.org/KSysGuard"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug lm_sensors test"
