@@ -11661,7 +11661,6 @@ kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the stan
 kde-base/ksplash 4.11.22: KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)
 kde-base/kstartupconfig 4.11.22: KDE: Utility to launch applications with special window properties
 kde-base/kstyles 4.11.22: KDE: A set of different KDE styles
-kde-base/ksysguard 4.11.22: KSysguard is a network enabled task manager and system monitor application
 kde-base/ksystraycmd 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/kwin 4.11.22: KDE window manager
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
@@ -11874,7 +11873,7 @@ kde-plasma/kmenuedit 4.11.22 5.7.5 5.8.3: KDE Plasma menu editor
 kde-plasma/kscreen 5.7.5 5.8.3: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.7.5 5.8.3: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 0.5.3-r1 5.7.5 5.8.3: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.7.5 5.8.3: Network-enabled task manager and system monitor
+kde-plasma/ksysguard 4.11.22 5.7.5 5.8.3: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.7.5 5.8.3: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.7.5 5.8.3: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.7.5 5.8.3: KDE window manager
@@ -17424,7 +17423,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.40_p42 3.18.42_p44 3.18.43_p46 3.18.44_p47 4.1.31_p35 4.1.33_p37 4.1.34_p39 4.1.35_p40 4.4.19_p27 4.4.21_p30 4.4.25_p35 4.4.27_p37 4.6.7_p11 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.83 3.4.113 3.10.104 3.12.66 3.16.38 3.18.44 4.1.35 4.4.28 4.7.10 4.8.5: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.83 3.4.113 3.10.104 3.12.66 3.16.38 3.18.44 4.1.35 4.4.30 4.7.10 4.8.6: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
