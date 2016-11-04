@@ -7237,7 +7237,7 @@ dev-python/djangocms-link 1.7.1 1.7.2 2.0.1: Link plugin for django CMS
 dev-python/djangocms-picture 0.1 1.0.0 2.0.2: Picture plugin for django CMS
 dev-python/djangocms-snippet 1.5 1.8.1 1.9.1: Snippet plugin for django CMS
 dev-python/djangocms-teaser 0.1 0.2.0: Teaser plugin for django CMS
-dev-python/djangocms-text-ckeditor 2.6.0 2.8.1 3.0.0 3.3.0: Text Plugin for django CMS with CKEditor support
+dev-python/djangocms-text-ckeditor 2.6.0 2.8.1 3.0.0 3.3.0 3.3.1: Text Plugin for django CMS with CKEditor support
 dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
