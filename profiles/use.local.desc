@@ -2049,6 +2049,7 @@ dev-libs/weston:webp - Add support for the WebP image format
 dev-libs/weston:xwayland - Enable ability support native X11 applications
 dev-libs/wlc:X - Enable X11 backend and XWayland support.
 dev-libs/wlc:systemd - Enable support for systemd-logind.
+dev-libs/wlc:xwayland - Enable XWayland support.
 dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
 dev-libs/xapian:glass - Enabled glass backend db support

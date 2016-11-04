@@ -2543,6 +2543,7 @@ app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r1 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
+app-vim/editorconfig-vim 0.3.3: vim plugin: Support EditorConfig files
 app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
 app-vim/enhancedcommentify 2.3 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
@@ -4980,7 +4981,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.8 0.9 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.9 0.10 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
@@ -5011,7 +5012,7 @@ dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0 1.3.0: SIMD Vector Class Library for C++
 dev-libs/wayland 1.7.0 1.9.0 1.11.0 1.12.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.3 1.4 1.5 1.7 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 9999: Wayland reference compositor
-dev-libs/wlc 0.0.3-r1 0.0.5 9999: A helper library for Wayland compositors
+dev-libs/wlc 0.0.5 0.0.6 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.24 1.4.1: Xapian Probabilistic Information Retrieval library

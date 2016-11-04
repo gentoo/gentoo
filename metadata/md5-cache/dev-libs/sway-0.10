@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-libs/wlc[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] ) virtual/pkgconfig app-text/asciidoc sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=>=dev-libs/wlc-0.0.5[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] ) virtual/pkgconfig app-text/asciidoc sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=i3-compatible Wayland window manager
 EAPI=6
 HOMEPAGE=http://swaywm.org/
 IUSE=+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=dev-libs/wlc[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )
+RDEPEND=>=dev-libs/wlc-0.0.5[systemd=] dev-libs/json-c dev-libs/libpcre dev-libs/libinput x11-libs/libxkbcommon dev-libs/wayland x11-libs/pango x11-libs/cairo swaylock? ( virtual/pam ) gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )
 SLOT=0
-SRC_URI=https://github.com/SirCmpwn/sway/archive/0.8.tar.gz -> sway-0.8.tar.gz
+SRC_URI=https://github.com/SirCmpwn/sway/archive/0.10.tar.gz -> sway-0.10.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e17953a579ca224b96f858c9ec39c65b
+_md5_=b308691d629f278b1ff77f51609e9385
