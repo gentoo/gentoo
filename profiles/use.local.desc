@@ -239,6 +239,7 @@ app-backup/bareos:storage-daemon - Install storage daemon (bareos-sd)
 app-backup/borgbackup:fuse - Mount archive as a FUSE filesystem.
 app-backup/boxbackup:client-only - Disable server support, and just build a client
 app-backup/btrbk:pv - Use sys-apps/pv to enable progress bar functionality
+app-backup/bup:web - Support browsing backups via a web interface
 app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite by 32 bit integers
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
 app-backup/dar:gcrypt - Enables strong encryption support
