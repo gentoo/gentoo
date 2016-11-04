@@ -2619,7 +2619,7 @@ app-vim/screen 1.5: vim plugin: simulate a split shell with screen or tmux
 app-vim/searchcomplete 1.1-r1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
 app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syntax
-app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
+app-vim/session 2.12 2.13.1: vim plugin: extended session management for vim
 app-vim/showmarks 2.2-r1: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
@@ -13237,8 +13237,8 @@ media-sound/a2jmidid 8 8-r1: Daemon for exposing legacy ALSA sequencer applicati
 media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1 2.7.2: A command line CD encoder
-media-sound/abcm2ps 8.8.4 8.12.1 8.12.3 8.12.4: A program to convert abc files to Postscript files
-media-sound/abcmidi 2015.08.25 2016.05.05 2016.07.20 2016.09.20 2016.09.25: Programs for processing ABC music notation files
+media-sound/abcm2ps 8.12.3 8.12.4 8.12.9: A program to convert abc files to Postscript files
+media-sound/abcmidi 2016.09.25: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
