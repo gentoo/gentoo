@@ -17977,7 +17977,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 40.0.2308.90 41.0.2353.46: A fast and secure web browser
-www-client/opera-beta 41.0.2353.23 41.0.2353.30: A fast and secure web browser
+www-client/opera-beta 42.0.2393.14: A fast and secure web browser
 www-client/opera-developer 42.0.2372.0 42.0.2392.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
