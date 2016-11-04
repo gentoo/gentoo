@@ -15,7 +15,7 @@ SRC_URI="http://websvn.tigris.org/files/documents/1380/${DOWNLOAD_NUMBER}/${MY_P
 
 LICENSE="GPL-2"
 IUSE="enscript"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 
 DEPEND=""
 RDEPEND="dev-lang/php:*[xml]
