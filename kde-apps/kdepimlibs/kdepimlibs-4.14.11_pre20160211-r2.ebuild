@@ -14,7 +14,7 @@ COMMIT_ID="a791b69599c3571ff2f4b1cc9033d8fb30f1bc33"
 SRC_URI="https://quickgit.kde.org/?p=kdepimlibs.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
 S=${WORKDIR}/${PN}
 
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="debug ldap prison"
 
