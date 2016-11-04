@@ -11933,7 +11933,7 @@ lxqt-base/lxqt-session 0.10.0 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0 0.11.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
-mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
+mail-client/balsa 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.13.2 3.14.0: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preferences
@@ -11943,7 +11943,7 @@ mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on l
 mail-client/evolution 3.20.5 3.22.1: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.11.0 0.11.1: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
-mail-client/mail-notification 5.4-r8 5.4-r9: Status icon informing about new mail
+mail-client/mail-notification 5.4-r8 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.5.23-r7 1.5.24-r2 1.7.1-r2: A small but very powerful text-based mail client
@@ -12366,7 +12366,7 @@ media-gfx/graphviz 2.26.3-r4 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gthumb 3.4.3 3.4.4.1: Image viewer and browser for Gnome
-media-gfx/gtkam 0.2.0 1.0: A frontend for gPhoto 2
+media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
 media-gfx/hugin 2015.0.0-r1 2016.0.0 2016.2.0 9999: GUI for the creation & processing of panoramic images
