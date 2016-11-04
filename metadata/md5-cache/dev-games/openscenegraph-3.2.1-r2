@@ -4,7 +4,7 @@ DESCRIPTION=Open source high performance 3D graphics toolkit
 EAPI=5
 HOMEPAGE=http://www.openscenegraph.org/projects/osg/
 IUSE=asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets xine xrandr zlib
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ppc x86
 LICENSE=wxWinLL-3 LGPL-2.1
 RDEPEND=x11-libs/libSM x11-libs/libXext virtual/glu virtual/opengl asio? ( dev-cpp/asio ) curl? ( net-misc/curl ) examples? ( fltk? ( x11-libs/fltk:1[opengl] ) fox? ( x11-libs/fox:1.6[opengl] ) glut? ( media-libs/freeglut ) gtk? ( x11-libs/gtkglext ) sdl? ( media-libs/libsdl ) wxwidgets? ( x11-libs/wxGTK:3.0[opengl,X] ) ) ffmpeg? ( virtual/ffmpeg ) gdal? ( sci-libs/gdal ) gif? ( media-libs/giflib:= ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper ) openexr? ( media-libs/ilmbase media-libs/openexr ) openinventor? ( media-libs/coin ) pdf? ( app-text/poppler[cairo] ) png? ( media-libs/libpng:0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 ) svg? ( gnome-base/librsvg x11-libs/cairo ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 ) vnc? ( net-libs/libvncserver ) xine? ( media-libs/xine-lib ) xrandr? ( x11-libs/libXrandr ) zlib? ( sys-libs/zlib )
 REQUIRED_USE=qt4? ( !qt5 ) qt5? ( !qt4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.openscenegraph.org/downloads/developer_releases/OpenSceneGraph-3.2.1.zip
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
-_md5_=9d724b3c856cb3e754be56059375a084
+_md5_=aa757aea7aa016efb71fd50764fa5d05
