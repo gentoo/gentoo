@@ -16855,7 +16855,7 @@ sys-apps/stroke 0.1.3-r1: A powerful tool to change file timestamps (including c
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 218-r5 226-r2 228-r1 229 230-r2 231 9999: System and service manager for Linux
+sys-apps/systemd 218-r5 226-r2 228-r1 229 230-r2 231 232 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
@@ -17284,7 +17284,7 @@ sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
-sys-fs/bindfs 1.12.6 1.13.0 1.13.1 1.13.2 1.13.4 1.13.5: FUSE filesystem for bind mounting with altered permissions
+sys-fs/bindfs 1.13.4 1.13.5: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0.1 4.1.2 4.2.2 4.3.1 4.4.1 4.5.3 4.6.1 4.7.3 4.8.1-r1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17318,7 +17318,7 @@ sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an 
 sys-fs/f2fs-tools 1.6.0 1.6.1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
-sys-fs/fuse 2.9.4 2.9.5 2.9.6 2.9.7: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.4 2.9.5 2.9.6 2.9.7 3.0.0_rc1: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.0.1 1.2.4: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
