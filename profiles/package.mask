@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (04 Nov 2016)
+# Masked for reomval in 30 days. Superseded by kde-plasma/plasma-nm.
+# Only support for deprecated Plasma 4. Exported to kde-sunset overlay.
+kde-misc/networkmanagement
+
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
 =sys-fs/fuse-3.0.0*
