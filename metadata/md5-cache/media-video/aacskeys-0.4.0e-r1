@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install preinst prepare setup
-DEPEND=>=virtual/jdk-1.6 dev-libs/openssl[-bindist] >=dev-java/java-config-2.2.0-r3
+DEPEND=>=virtual/jdk-1.6 dev-libs/openssl:0=[-bindist] >=dev-java/java-config-2.2.0-r3
 DESCRIPTION=Decrypt keys from an AACS source (HD DVD / Blu-Ray)
-EAPI=5
+EAPI=6
 HOMEPAGE=http://forum.doom9.org/showthread.php?t=123311
 IUSE=elibc_FreeBSD
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
-RDEPEND=dev-libs/openssl[-bindist] >=dev-java/java-config-2.2.0-r3
+RDEPEND=dev-libs/openssl:0=[-bindist] >=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=http://bluray.beandog.org/aacskeys/aacskeys-0.4.0e.tar.gz
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=efb2c8a0b07acd5442f5974d2ddd23f9
+_md5_=3b1386f0a4152d23b5b6d48d1c75f1c3
