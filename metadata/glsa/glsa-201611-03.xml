@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-03">
+  <title>LibreOffice, OpenOffice: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in both LibreOffice and
+    OpenOffice, the worst of which allows for the remote execution of arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>November 04, 2016</announced>
+  <revised>November 04, 2016: 1</revised>
+  <bug>565026</bug>
+  <bug>587566</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/libreoffice" auto="yes" arch="*">
+      <unaffected range="ge">5.1.4.2</unaffected>
+      <vulnerable range="lt">5.1.4.2</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">5.1.4.2</unaffected>
+      <vulnerable range="lt">5.1.4.2</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.1.2</unaffected>
+      <vulnerable range="lt">4.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibreOffice is a powerful office suite; its clean interface and powerful
+      tools let you unleash your creativity and grow your productivity.
+    </p>
+    
+    <p>Apache OpenOffice is the leading open-source office software suite for
+      word processing, spreadsheets, presentations, graphics, databases and
+      more.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in both LibreOffice and
+      OpenOffice.  Please review the referenced CVE’s for specific
+      information regarding each.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could obtain sensitive information, cause a Denial of
+      Service condition, or execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibreOffice users should upgrade their respective packages to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/libreoffice-5.1.4.2"
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-debug-5.1.4.2" <code></code>
+    </code>
+    
+    <p>All OpenOffice users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-4.1.2"<code></code>
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4551">
+      CVE-2015-4551
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5212">
+      CVE-2015-5212
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5213">
+      CVE-2015-5213
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5214">
+      CVE-2015-5214
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4324">CVE-2016-4324</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Sep 2016 07:32:58 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2016 07:55:31 +0000">b-man</metadata>
+</glsa>
