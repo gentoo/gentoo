@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sysctl.patch
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${P}-makefile-rpm.patch
 
 	sed -i \
 		-e "/\$(DESTDIR)\/run\/tuned/d" \

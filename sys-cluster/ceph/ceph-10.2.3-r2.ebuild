@@ -241,7 +241,7 @@ src_install() {
 
 	keepdir /var/lib/${PN}{,/tmp} /var/log/${PN}/stat
 
-	fowners ceph:ceph /var/lib/ceph
+	fowners -R ceph:ceph /var/lib/ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}

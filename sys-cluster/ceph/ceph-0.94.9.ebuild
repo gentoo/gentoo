@@ -78,7 +78,6 @@ STRIP_MASK="/usr/lib*/rados-classes/*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.79-libzfs.patch
-	"${FILESDIR}"/${P}-monitor-security.patch
 )
 CHECKREQS_DISK_BUILD="1400M"
 
@@ -163,7 +162,7 @@ src_install() {
 
 	python_fix_shebang \
 		"${ED}"/usr/sbin/{ceph-disk,ceph-create-keys} \
-		"${ED}"/usr/bin/{ceph,ceph-rest-api}
+		"${ED}"/usr/bin/{ceph,ceph-rest-api,ceph-brag}
 
 	#install udev rules
 	udev_dorules udev/50-rbd.rules
