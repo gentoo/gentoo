@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-04">
+  <title>Oracle JRE/JDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JRE and JDK
+    software suites allowing remote attackers to remotely execute arbitrary
+    code, obtain information, and cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>November 04, 2016</announced>
+  <revised>November 04, 2016: 1</revised>
+  <bug>597516</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.111</unaffected>
+      <vulnerable range="lt">1.8.0.111</vulnerable>
+    </package>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.111</unaffected>
+      <vulnerable range="lt">1.8.0.111</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities exist in both Oracle’s JRE and JDK. Please
+      review the referenced CVE’s for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could gain access to information, remotely execute
+      arbitrary code, or cause Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JRE Users users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.111"
+    </code>
+    
+    <p>All Oracle JDK Users users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.111"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5542">CVE-2016-5542</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5554">CVE-2016-5554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5556">CVE-2016-5556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5568">CVE-2016-5568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5573">CVE-2016-5573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5582">CVE-2016-5582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5597">CVE-2016-5597</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 19 Oct 2016 12:41:06 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Fri, 04 Nov 2016 08:28:05 +0000">b-man</metadata>
+</glsa>
