@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!kde-base/ksysguard:4
+	!kde-plasma/ksysguard:4
 	!kde-base/libksysguard:4
 "
 DEPEND="${COMMON_DEPEND}

@@ -15,8 +15,8 @@ IUSE="debug"
 DEPEND="
 	$(add_kdebase_dep kactivities)
 	$(add_kdebase_dep kephal)
-	$(add_kdebase_dep ksysguard)
 	$(add_kdebase_dep libkworkspace)
+	kde-plasma/ksysguard:4
 	x11-libs/libX11
 "
 RDEPEND="${DEPEND}"
