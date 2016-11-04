@@ -1,23 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
-inherit gnome2 eutils multilib flag-o-matic toolchain-funcs
+EAPI=6
+inherit gnome2 multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Status icon informing about new mail"
 HOMEPAGE="http://www.nongnu.org/mailnotify/ https://github.com/epienbroek/mail-notification"
 
-GIT_REVISION="eab5c13" # Same as Fedora
+GIT_REVISION="9ae8768" # Same as Fedora
 SRC_URI="https://github.com/epienbroek/${PN}/tarball/${GIT_REVISION} -> ${PN}-${GIT_REVISION}.tar.gz"
 S="${WORKDIR}/epienbroek-${PN}-${GIT_REVISION}"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-linux"
 SLOT="0"
 LICENSE="GPL-3"
-IUSE="+gnome-keyring libressl sasl +sound ssl sylpheed"
+IUSE="+gnome-keyring libressl sasl ssl sylpheed"
 
 LANGS="bg ca cs de es fr ja nl pl pt pt_BR ru sr sr@Latn sv"
 for lang in ${LANGS}; do
@@ -38,15 +36,14 @@ RDEPEND="
 	>=x11-libs/libnotify-0.4.1
 	gnome-keyring? ( gnome-base/libgnome-keyring )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
-	sound? ( media-libs/gstreamer:0.10 )
 	sylpheed? ( mail-client/sylpheed )
 "
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
+	app-text/rarian
 	dev-util/gob
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -68,15 +65,17 @@ src_prepare() {
 	sed -i -e 's/ -Werror//' jb jbsrc/jb.c || die
 
 	# We are not Ubuntu, and this could be the cause of #215281
-	epatch "${FILESDIR}/${P}-remove-ubuntu-special-case.patch"
+	eapply "${FILESDIR}/${P}-remove-ubuntu-special-case.patch"
 
 	# Apply Fedora patches
 	# Fix gcc warning
-	epatch "${FILESDIR}/${PN}-jb-gcc-format.patch"
+	eapply "${FILESDIR}/${PN}-jb-gcc-format.patch"
 	# Support aarch64
-	epatch "${FILESDIR}/${PN}-aarch64.patch"
+	eapply "${FILESDIR}/${PN}-aarch64.patch"
 	# Fix build with latest libc
-	epatch "${FILESDIR}/${PN}-dont-link-against-bsd-compat.patch"
+	eapply "${FILESDIR}/${PN}-dont-link-against-bsd-compat.patch"
+
+	gnome2_src_prepare
 }
 
 src_configure() {
@@ -101,7 +100,7 @@ src_compile() {
 
 src_install() {
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1" ./jb install || die
-	dodoc NEWS README AUTHORS TODO TRANSLATING
+	einstalldocs
 	rm -rf "${ED}/var/lib/scrollkeeper"
 
 	einfo "Cleaning up locales..."
