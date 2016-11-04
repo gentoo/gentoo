@@ -10073,7 +10073,7 @@ dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
 dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing processes
 dev-util/schroot 1.6.10-r3 1.6.10-r4: Utility to execute commands in a chroot environment
-dev-util/scons 2.3.5 2.4.1 2.5.0: Extensible Python-based build utility
+dev-util/scons 2.3.5 2.4.1 2.5.0 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1: A filemanager for shell scripts
 dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
