@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r2"
+PATCHREV="r3"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
@@ -114,7 +114,9 @@ src_prepare() {
 	eapply_user && upatches=" with user patches"
 
 	# patch version string for bug reports
-	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s, '"${PATCHSET}${upatches}"')"|' \
+	local patchset=
+	use vanilla || patchset=", ${PATCHSET}"
+	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s'"${patchset}${upatches}"')"|' \
 		muttlib.c || die "failed patching in Gentoo version"
 
 	# many patches touch the buildsystem, we always need this
@@ -124,17 +126,13 @@ src_prepare() {
 	# the dotlock program, resulting in bugs like #278332
 	sed -i -e 's/@DOTLOCK_GROUP@//' \
 		Makefile.in || die "sed failed"
-
-	# don't just build documentation (lengthy process, with big dependencies)
-	if use !doc ; then
-		sed -i -e '/SUBDIRS =/s/doc//' Makefile.in || die
-	fi
 }
 
 src_configure() {
 	local myconf=(
 		"$(use_enable crypt pgp)"
 		"$(use_enable debug)"
+		"$(use_enable doc)"
 		"$(use_enable gpg gpgme)"
 		"$(use_enable imap)"
 		"$(use_enable nls)"
