@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-extra_started_commands="attach"
+extra_started_commands="attach resume suspend"
 
 
 depend() {
@@ -59,9 +59,9 @@ env_check() {
 
 
 need_passwd_arg() {
-	local vers=$(${BOINCBIN} --version | cut -d '.' --output-delimiter='' -f 1,2)
-	[ -z "$vers" ] && vers=0
-	[ $vers -lt 74 ] && return 0
+	local vers=$(${BOINCBIN} --version | tr -d .)
+	[ -z "$vers" ] && vers="00"
+	[ $(expr substr "$vers" 1 2) -lt 74 ] && return 0
 
 	# From version 7.4 on, the default is to read
 	# gui_rpc_auth.cfg for the password.
@@ -150,4 +150,18 @@ stop() {
 	ebegin "Stopping ${RC_SVCNAME}"
 	start-stop-daemon -u ${USER} -q -d "${RUNTIMEDIR}" -x boinccmd -- ${password} --quit
 	eend $?
+}
+
+
+resume() {
+	for url in $(boinccmd --get_project_status | sed -n 's/\s*master URL: //p'); do
+		boinccmd --project ${url} resume
+	done
+}
+
+
+suspend() {
+	for url in $(boinccmd --get_project_status | sed -n 's/\s*master URL: //p'); do
+		boinccmd --project ${url} suspend;
+	done
 }
