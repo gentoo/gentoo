@@ -16221,7 +16221,7 @@ sci-mathematics/form 4.1: Symbolic Manipulation System
 sci-mathematics/freemat 4.2: Environment for rapid engineering and scientific processing
 sci-mathematics/fricas 1.2.7-r3 1.3.0: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r1: Software system and project for computations with monomial ideals
-sci-mathematics/genius 1.0.17 1.0.19: Genius Mathematics Tool and the GEL Language
+sci-mathematics/genius 1.0.19 1.0.21: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
