@@ -149,7 +149,7 @@ app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.10 3.0.12 3.0.13 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.17.1 5.19.0 5.20.0: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
-app-admin/needrestart 2.8-r1 2.9-r1 9999: Restart daemons after library updates
+app-admin/needrestart 2.8-r1 2.9-r1 2.10 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
