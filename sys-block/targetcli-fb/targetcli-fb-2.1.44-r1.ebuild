@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 linux-info versionator
+inherit distutils-r1 versionator
 
 MY_PV=$(replace_version_separator 2 '.fb' ${PV})
 
@@ -22,7 +22,7 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/configshell-fb[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/rtslib-fb[${PYTHON_USEDEP}]
+	>=dev-python/rtslib-fb-2.1.61[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	!sys-block/targetcli"
 
