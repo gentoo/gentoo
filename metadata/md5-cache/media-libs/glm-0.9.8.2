@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=OpenGL Mathematics
+EAPI=6
+HOMEPAGE=http://glm.g-truc.net/
+IUSE=test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=|| ( HappyBunny MIT )
+RDEPEND=virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/g-truc/glm/archive/0.9.8.2.tar.gz -> glm-0.9.8.2.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=49cdf30b13fe24f79cb2d26d163833f9

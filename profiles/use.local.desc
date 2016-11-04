@@ -3122,7 +3122,8 @@ gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutr
 gnome-extra/gnome-commander:chm - Enable metadata support for Microsoft Compiled HTML Help files
 gnome-extra/gnome-commander:gsf - Add metadata support for OLE, OLE2 and ODF
 gnome-extra/gnome-commander:pdf - Add metadata support for PDF
-gnome-extra/gnome-commander:python - Add support for python plugins"
+gnome-extra/gnome-commander:python - Add support for python plugins
+gnome-extra/gnome-commander:samba - Add support for SAMBA (Windows File and Printer sharing)
 gnome-extra/gnome-commander:taglib - Add metadata support for ID3, Vorbis, FLAC and APE
 gnome-extra/gnome-do-plugins:banshee - Enables the Banshee (media-sound/banshee) plugin
 gnome-extra/gnome-dvb-daemon:totem - Build a plugin for media-video/totem
