@@ -7707,7 +7707,7 @@ dev-python/oslo-middleware 3.8.0-r1 3.19.0: Components injected into wsgi pipeli
 dev-python/oslo-policy 1.6.0 1.14.0: Provides support for RBAC policy enforcement across all OpenStack services.
 dev-python/oslo-privsep 1.13.0: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.7.0 1.14.0: generified reports for openstack
-dev-python/oslo-rootwrap 4.1.0 5.1.0: Allows fine filtering of shell commands to run as root from OpenStack services
+dev-python/oslo-rootwrap 4.1.0 5.1.1: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 1.11.0 2.13.0: Oslo Serialization library
 dev-python/oslo-service 1.8.0 1.16.0: Library for running OpenStack services
 dev-python/oslo-sphinx 3.0.0 4.7.0: OpenStack Sphinx Extensions and Theme
@@ -17119,7 +17119,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable 
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 8.2.0 8.3.0 9.0.0 2016.1.9999 2016.2.9999: A virtual network service for Openstack
+sys-cluster/neutron 8.2.0 8.3.0 9.1.0 2016.1.9999 2016.2.9999: A virtual network service for Openstack
 sys-cluster/nova 13.1.1 13.1.2 14.0.1 2016.1.9999 2016.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
