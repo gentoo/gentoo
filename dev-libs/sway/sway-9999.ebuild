@@ -69,4 +69,5 @@ pkg_postinst() {
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
 		optfeature "swaygrab video capture support" virtual/ffmpeg
 	fi
+	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
 }
