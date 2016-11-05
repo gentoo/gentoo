@@ -11880,7 +11880,7 @@ kde-plasma/kwallet-pam 5.7.5 5.8.3: KWallet PAM module to not enter password aga
 kde-plasma/kwayland-integration 5.7.5 5.8.3: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.7.5 5.8.3: KDE window manager
 kde-plasma/kwrited 4.11.22 5.7.5 5.8.3: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.7.5 5.8.3: Plasma screen management library
+kde-plasma/libkscreen 1.0.5_p20150822 5.7.5 5.8.3: Plasma screen management library
 kde-plasma/libksysguard 5.7.5 5.8.3: Task management and system monitoring library
 kde-plasma/milou 0.1 5.7.5 5.8.3: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.7.5 5.8.3: Oxygen visual style for the Plasma desktop
@@ -18315,7 +18315,6 @@ x11-libs/libfontenc 1.1.2 1.1.3: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
-x11-libs/libkscreen 1.0.5_p20150822: KDE screen management library
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
