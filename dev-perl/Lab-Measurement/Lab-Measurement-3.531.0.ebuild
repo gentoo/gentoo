@@ -5,7 +5,7 @@
 EAPI=6
 
 if [[ "${PV}" != "9999" ]]; then
-	DIST_VERSION=9999 # change this!!!
+	DIST_VERSION=3.531
 	DIST_AUTHOR="AKHUETTEL"
 	KEYWORDS="~amd64 ~x86"
 	inherit perl-module
