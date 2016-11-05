@@ -242,9 +242,6 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	if multilib_is_native_abi; then
-		local rootlib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
-
 		local targets=(
 			install-includeHEADERS
 			install-rootbinPROGRAMS
@@ -259,14 +256,10 @@ multilib_src_install() {
 			install-directories-hook
 			install-dist_bashcompletionDATA
 			install-dist_networkDATA
-		)
-
-		# add final values of variables:
-		targets+=(
 			rootlibexec_PROGRAMS=systemd-udevd
 			rootbin_PROGRAMS=udevadm
-			rootlib_LTLIBRARIES="${rootlib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
+			rootlib_LTLIBRARIES="libudev.la"
+			pkgconfiglib_DATA="src/libudev/libudev.pc"
 			pkgconfigdata_DATA="src/udev/udev.pc"
 			INSTALL_DIRS='$(sysconfdir)/udev/rules.d $(sysconfdir)/udev/hwdb.d $(sysconfdir)/systemd/network'
 			dist_bashcompletion_DATA="shell-completion/bash/udevadm"
@@ -280,21 +273,15 @@ multilib_src_install() {
 		dosym ../../$(get_libdir)/libudev.so.1 \
 			/usr/$(get_libdir)/libudev.so
 	else
-		local lib_LTLIBRARIES="libudev.la"
-		local pkgconfiglib_DATA="src/libudev/libudev.pc"
-		local include_HEADERS="src/libudev/libudev.h"
-
 		local targets=(
 			install-libLTLIBRARIES
 			install-includeHEADERS
 			install-pkgconfiglibDATA
+			lib_LTLIBRARIES="libudev.la"
+			pkgconfiglib_DATA="src/libudev/libudev.pc"
+			include_HEADERS="src/libudev/libudev.h"
 		)
 
-		targets+=(
-			rootlib_LTLIBRARIES="${rootlib_LTLIBRARIES}"
-			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
-			include_HEADERS="${include_HEADERS}"
-			)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 	fi
 }
