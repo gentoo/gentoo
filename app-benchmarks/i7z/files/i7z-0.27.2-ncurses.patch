@@ -1,7 +1,7 @@
 Index: Makefile
 ===================================================================
---- Makefile	(revision 109)
-+++ Makefile	(working copy)
+--- a/Makefile	(revision 109)
++++ b/Makefile	(working copy)
 @@ -19,7 +19,7 @@
  
  CC       ?= gcc
