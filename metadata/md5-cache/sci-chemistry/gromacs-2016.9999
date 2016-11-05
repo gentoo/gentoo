@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend test unpack
-DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) hwloc? ( sys-apps/hwloc ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-latex dev-texlive/texlive-latexextra media-gfx/imagemagick ) test? ( dev-libs/tinyxml2 ) dev-util/ninja >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
+DEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) blas? ( virtual/blas ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 ) fftw? ( sci-libs/fftw:3.0 ) hwloc? ( sys-apps/hwloc ) lapack? ( virtual/lapack ) mkl? ( sci-libs/mkl ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen dev-texlive/texlive-latex dev-texlive/texlive-latexextra media-gfx/imagemagick ) dev-libs/tinyxml2 dev-util/ninja >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=The ultimate molecular dynamics simulation package
 EAPI=6
 HOMEPAGE=http://www.gromacs.org/
@@ -10,4 +10,4 @@ REQUIRED_USE=|| ( single-precision double-precision ) cuda? ( single-precision )
 SLOT=0/2016.9999
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	cuda	0ecb926cd855df14e36328a247443e49	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=fecd6a626acc9dbad2e2e1a25871971e
+_md5_=f6001f941b69a294caa90c7a898a26c2
