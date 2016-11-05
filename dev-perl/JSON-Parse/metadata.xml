@@ -6,6 +6,9 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">googleads/googleads-perl-lib</remote-id>
+    <remote-id type="cpan">JSON-Parse</remote-id>
+    <remote-id type="cpan-module">JSON::Parse</remote-id>
+    <remote-id type="cpan-module">JSON::Tokenize</remote-id>
+    <remote-id type="cpan-module">JSON::Whitespace</remote-id>
   </upstream>
 </pkgmetadata>
