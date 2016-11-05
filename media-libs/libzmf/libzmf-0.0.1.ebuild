@@ -4,26 +4,30 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/fosnola/libstaroffice.git"
+EGIT_REPO_URI="git://gerrit.libreoffice.org/libzmf"
 [[ ${PV} == 9999 ]] && inherit git-r3 autotools
 
-DESCRIPTION="Import filter for old StarOffice documents"
-HOMEPAGE="https://github.com/fosnola/libstaroffice"
-[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.bz2"
+DESCRIPTION="Library for parsing Zoner Callisto/Draw documents"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libzmf"
+[[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
-LICENSE="|| ( LGPL-2.1+ MPL-2.0 )"
+LICENSE="MPL-2.0"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc tools +zlib"
+IUSE="debug doc test tools"
 
 RDEPEND="
+	dev-libs/icu:=
 	dev-libs/librevenge
-	zlib? ( sys-libs/zlib )
+	media-libs/libpng:0=
+	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
+	>=dev-libs/boost-1.56
 	doc? ( app-doc/doxygen )
+	test? ( dev-util/cppunit )
 "
 
 src_prepare() {
@@ -35,8 +39,8 @@ src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_with doc docs) \
-		$(use_enable tools) \
-		$(use_enable zlib zip)
+		$(use_enable test tests) \
+		$(use_enable tools)
 }
 
 src_install() {

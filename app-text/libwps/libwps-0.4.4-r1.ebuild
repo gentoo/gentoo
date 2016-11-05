@@ -17,7 +17,6 @@ IUSE="doc debug static-libs"
 
 RDEPEND="
 	app-text/libwpd:0.10
-	dev-libs/boost:=
 	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
@@ -28,10 +27,10 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 		--disable-werror \
-		$(use_enable static-libs static) \
-		--docdir=/usr/share/doc/${PF} \
+		--with-sharedptr=c++11 \
+		$(use_enable debug) \
 		$(use_with doc docs) \
-		$(use_enable debug)
+		$(use_enable static-libs static)
 }
 
 src_install() {

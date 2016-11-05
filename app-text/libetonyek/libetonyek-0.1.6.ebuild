@@ -34,7 +34,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
-PATCHES=( "${FILESDIR}/${P}-mdds-1.2.patch" ) # patch taken from Debian
+PATCHES=(
+	"${FILESDIR}/${P}-mdds-1.2.patch" # patch taken from Debian
+	"${FILESDIR}/${P}-drop-test.patch" # bug 595022
+)
 
 pkg_pretend() {
 	if [[ $(gcc-major-version) -lt 4 ]] || {
