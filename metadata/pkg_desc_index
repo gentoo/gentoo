@@ -409,7 +409,7 @@ app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workl
 app-benchmarks/forkbomb 1.4: Controlled fork() bomber for testing heavy system load
 app-benchmarks/gtkperf 0.40-r1: Application designed to test GTK+ performance
 app-benchmarks/httperf 0.9.0-r2 0.9.0-r3: A tool from HP for measuring web server performance
-app-benchmarks/i7z 0.27.2: A better i7 (and now i3, i5) reporting tool for Linux
+app-benchmarks/i7z 0.27.2 93_p20131012: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/ioping 0.9: Simple disk I/0 latency measuring tool
 app-benchmarks/iozone 3.397 3.408 3.430: Filesystem benchmarking program
 app-benchmarks/jmeter 2.0.1-r4 2.0.1-r5 2.0.1-r6: Load test and measure performance on HTTP/FTP services and databases
