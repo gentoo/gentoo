@@ -1,0 +1,43 @@
+From b7e0ef69e6cbddcc0c6a5a28793822cdfe97395a Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sat, 5 Nov 2016 22:00:00 +1100
+Subject: [PATCH] Remove unused KF5Notifications dependency.
+
+---
+ zuluCrypt-gui/lxqt_wallet/frontend/CMakeLists.txt | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/zuluCrypt-gui/lxqt_wallet/frontend/CMakeLists.txt b/zuluCrypt-gui/lxqt_wallet/frontend/CMakeLists.txt
+index 89c420a..0ac1c95 100644
+--- a/zuluCrypt-gui/lxqt_wallet/frontend/CMakeLists.txt
++++ b/zuluCrypt-gui/lxqt_wallet/frontend/CMakeLists.txt
+@@ -70,9 +70,8 @@ else()
+ 		find_package(Qt5Core REQUIRED)
+ 
+ 		find_package(KF5Wallet QUIET)
+-		find_package(KF5Notifications QUIET)
+ 
+-		if(KF5Wallet_FOUND AND KF5Notifications_FOUND )
++		if(KF5Wallet_FOUND)
+ 			file(APPEND  ${PROJECT_BINARY_DIR}/storage_manager.h "\n#define HAS_KWALLET_SUPPORT 1\n")
+ 			SET(KDE_SUPPORT "true")
+ 			SET(KWALLET_SUPPORT "true")
+@@ -195,13 +194,13 @@ if(KDE_SUPPORT)
+ 			target_link_libraries(lxqt-wallet secretlib)
+ 			target_link_libraries(lxqt-wallet "${Qt5Widgets_LIBRARIES}")
+ 			target_link_libraries(lxqt-wallet "${Qt5Core_LIBRARIES}")
+-			target_link_libraries(lxqt-wallet KF5::Wallet KF5::Notifications)
++			target_link_libraries(lxqt-wallet KF5::Wallet)
+ 		else()
+ 			Qt5_WRAP_CPP(MOC ${MOC_FILES_1})
+ 			add_library(lxqt-wallet ${LIBRARY_TYPE} ${UI} ${SRC_1} ${MOC})
+ 			target_link_libraries(lxqt-wallet "${Qt5Widgets_LIBRARIES}")
+ 			target_link_libraries(lxqt-wallet "${Qt5Core_LIBRARIES}")
+-			target_link_libraries(lxqt-wallet KF5::Wallet KF5::Notifications)
++			target_link_libraries(lxqt-wallet KF5::Wallet)
+ 		endif()
+ 	else()
+ 		if(SECRET_SUPPORT)
+-- 
+2.7.3
+
