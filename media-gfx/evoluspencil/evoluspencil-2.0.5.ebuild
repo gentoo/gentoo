@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit fdo-mime
 
 DESCRIPTION="A simple GUI prototyping tool to create mockups"
 HOMEPAGE="http://pencil.evolus.vn/"
-SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
