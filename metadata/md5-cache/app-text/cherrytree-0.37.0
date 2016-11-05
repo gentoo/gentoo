@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/giuspen/cherrytree/archive/0.37.0.tar.gz -> cherrytree-0.37.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:xdg pkg_postrm:xdg pkg_postinst:xdg pkg_setup:python-single-r1 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
-_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=5fd477684dd366360c17061f45c4e937

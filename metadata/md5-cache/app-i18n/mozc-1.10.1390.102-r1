@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://mozc.googlecode.com/files/mozc-1.10.1390.102.tar.bz2 https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2 test? ( https://googlemock.googlecode.com/files/gmock-1.6.0.zip https://googletest.googlecode.com/files/gtest-1.6.0.zip mirror://sourceforge/jsoncpp/jsoncpp-src-0.6.0-rc2.tar.gz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=717008c1d8448570707a1962a7cb7c33

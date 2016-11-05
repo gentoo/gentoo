@@ -9,5 +9,5 @@ RDEPEND=>=sys-apps/portage-2.1 >=dev-python/pygtk-2.0
 SLOT=0
 SRC_URI=mirror://sourceforge/elogviewer/elogviewer-0.6.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=116489b030dff38c02d6284a33fbcf49

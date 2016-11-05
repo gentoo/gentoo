@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boost:= dev-qt/qtcore:4 >=dev-qt/qtsingleapplication-2.6.1_p201
 SLOT=0
 SRC_URI=mirror://sourceforge/qbittorrent/qbittorrent-3.1.9.2.tar.xz
 _eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:qt4-r2 src_configure:- src_compile:qt4-r2 src_install:qt4-r2
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=49d0d6342f723998ea1213e6f22b9a94

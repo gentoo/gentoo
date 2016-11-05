@@ -7399,7 +7399,7 @@ dev-python/gnuplot-py 1.8-r1: A python wrapper for Gnuplot
 dev-python/google-api-python-client 1.1 1.3.1 1.4.2 1.5.0 1.5.3: Google API Client for Python
 dev-python/google-apitools 0.4.11 0.4.12 0.4.15 0.5.2 0.5.4: Python library to manipulate Google APIs
 dev-python/google-apputils 0.4.0-r1 0.4.2-r1: Collection of utilities for building Python applications
-dev-python/graph-tool 2.2.44 2.16 9999: An efficient python module for manipulation and statistical analysis of graphs
+dev-python/graph-tool 2.2.44 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.2 0.4.3 0.4.4 0.4.5 0.4.6 0.4.7 0.4.9 0.4.10: Lightweight in-process concurrent programming

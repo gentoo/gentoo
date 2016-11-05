@@ -11,5 +11,5 @@ RESTRICT=bindist test
 SLOT=0
 SRC_URI=https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-15.2.0.bin
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_unpack:- src_prepare:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=25f4039653f183d7d26e7c187d68f40e

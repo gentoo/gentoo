@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://bitbucket.org/sjl/splice.vim/get/v1.1.0.tar.gz -> splice-1.1.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin pkg_setup:python-single-r1 src_unpack:vcs-snapshot src_prepare:- src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
 _md5_=54bc773632ae5855f5fed6ed27aabb55

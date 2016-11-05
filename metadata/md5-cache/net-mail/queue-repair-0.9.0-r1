@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets
 SLOT=0
 SRC_URI=http://pyropus.ca/software/queue-repair/queue-repair-0.9.0.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_install:-
-_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=72865df1dcd272f9a15f7aa2338d8ca9
