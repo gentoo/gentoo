@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -11,12 +11,14 @@ HOMEPAGE="https://github.com/koct9i/ioping"
 SRC_URI="https://github.com/koct9i/ioping/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-3"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+PATCHES=( "${FILESDIR}"/${P}-sysmacros.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-sysmacros.patch #579982
+	default
 	sed \
 		-e 's: -g : :g' \
 		-e 's: $(LDFLAGS) : :g' \
