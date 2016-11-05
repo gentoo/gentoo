@@ -122,6 +122,8 @@ src_prepare() {
 	# stub out the am_path_libcrypt function
 	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
 
+	eapply "${FILESDIR}/systemd-${PV}-pkgconfig.patch"
+
 	# apply user patches
 	eapply_user
 
@@ -244,9 +246,9 @@ multilib_src_install() {
 		local pkgconfiglib_DATA="src/libudev/libudev.pc"
 
 		local targets=(
-			install-libLTLIBRARIES
 			install-includeHEADERS
 			install-rootbinPROGRAMS
+			install-rootlibLTLIBRARIES
 			install-rootlibexecPROGRAMS
 			install-udevlibexecPROGRAMS
 			install-dist_udevconfDATA
@@ -272,8 +274,13 @@ multilib_src_install() {
 		)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
+
+		# Compatibility symlink for software that looks for libudev.so
+		# without using pkg-config
+		dosym ../../$(get_libdir)/libudev.so.1 \
+			/usr/$(get_libdir)/libudev.so
 	else
-		local rootlib_LTLIBRARIES="libudev.la"
+		local lib_LTLIBRARIES="libudev.la"
 		local pkgconfiglib_DATA="src/libudev/libudev.pc"
 		local include_HEADERS="src/libudev/libudev.h"
 
