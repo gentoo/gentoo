@@ -3817,6 +3817,7 @@ dev-haskell/zlib-enum 0.2.3.1: Enumerator interface for zlib compression
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
 dev-java/airline 0.7: Java annotation-based framework for parsing Git like command line structures
 dev-java/android-util 4.1.1.4: Library providing APIs for applications written for Google Android
+dev-java/animal-sniffer-annotations 1.15: Java annotations for marking methods that Animal Sniffer should ignore
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
 dev-java/ant 1.9.2: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-antlr 1.9.2-r1: Apache Ant's optional tasks for Antlr
@@ -3944,6 +3945,7 @@ dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTM
 dev-java/edtftpj 2.4.0: FTP client library written in Java
 dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
 dev-java/emma 2.0.5312-r3: Free Java code coverage tool
+dev-java/error-prone-annotations 2.0.14: Java annotations for the Error Prone static analysis tool
 dev-java/ezmorph 1.0.6: A simple Java library for transforming an Object to another Object
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
 dev-java/fastutil 7.0.10: Provides faster type-specific maps, sets and lists with a small memory footprint
@@ -3987,7 +3989,7 @@ dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
-dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
+dev-java/guava 13.0.1 13.0.1-r3 14.0.1 18.0 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
@@ -4018,6 +4020,7 @@ dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
 dev-java/itext 2.1.5-r2 5.5.4-r2: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
+dev-java/j2objc-annotations 1.2: Annotations for the J2ObjC Java to Objective-C translator
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
 dev-java/jackson 1.9.13 2.5.1 2.5.2: High-performance JSON processor
