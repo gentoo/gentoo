@@ -40,8 +40,8 @@ src_configure() {
 	local extra_opts
 	use fox && guis="${guis} fox16"
 	use gtk && guis="${guis} gtk2"
-	use qt4 && guis="${guis} qt4"
-	use qt5 && guis="${guis} qt5" && extra_opts="--with-qt5-qmake="$(qt5_get_bindir)/qmake" --with-qt5-moc="$(qt5_get_bindir)/moc""
+	use qt4 && guis="${guis} qt4" && extra_opts="${extra_opts} --with-qt4-moc="$(qt4_get_bindir)/moc""
+	use qt5 && guis="${guis} qt5" && extra_opts="${extra_opts} --with-qt5-qmake="$(qt5_get_bindir)/qmake" --with-qt5-moc="$(qt5_get_bindir)/moc""
 	econf \
 		--enable-ssl \
 		$(use_enable debug) \
