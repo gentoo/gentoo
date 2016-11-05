@@ -79,18 +79,21 @@ src_configure() {
 		--localstatedir=/var \
 		--with-user=${NETDATA_USER} \
 		$(use_enable nfacct plugin-nfacct) \
-		$(use_enable cpu_flags_x86_sse2 sse) \
+		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
 }
 
 src_install() {
 	default
 
-	fowners ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
-	fowners ${NETDATA_USER}:${NETDATA_GROUP} /var/cache/netdata
+	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
+	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/cache/netdata
+	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
 
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /usr/share/${PN}
+	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}
 
 	newinitd system/netdata-openrc ${PN}
 	systemd_dounit system/netdata.service
+	insinto /etc/netdata
+	doins system/netdata.conf
 }
