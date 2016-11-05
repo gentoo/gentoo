@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
+EAPI=6
+HOMEPAGE=https://github.com/fearedbliss/bliss-initramfs
+IUSE=luks raid lvm zfs
+KEYWORDS=-* ~amd64
+LICENSE=MPL-2.0
+RDEPEND=>=dev-lang/python-3.3 app-arch/cpio virtual/udev luks? ( sys-fs/cryptsetup app-crypt/gnupg ) raid? ( sys-fs/mdadm ) lvm? ( sys-fs/lvm2 ) zfs? ( sys-kernel/spl sys-fs/zfs sys-fs/zfs-kmod )
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/fearedbliss/bliss-initramfs/archive/6.8.0.tar.gz -> bliss-initramfs-6.8.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=fadc38dc7ad28f0992c2283e0c57e9dc
