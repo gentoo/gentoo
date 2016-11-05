@@ -3279,7 +3279,7 @@ kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
-kde-base/systemsettings:kscreen - Use kde-misc/kscreen for screen management
+kde-base/systemsettings:kscreen - Use kde-plasma/kscreen for screen management
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
