@@ -45,6 +45,7 @@ RDEPEND="
 	dev-perl/XML-Generator
 	dev-perl/XML-Twig
 	dev-perl/YAML
+	dev-perl/aliased
 	>=dev-perl/YAML-LibYAML-0.410.0
 	sci-visualization/gnuplot
 	!dev-perl/Lab-Instrument
@@ -56,7 +57,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-perl/Module-Build
-	test? ( dev-perl/Test-Files )
+	test? (
+		dev-perl/File-Slurper
+		dev-perl/Test-Files
+		>=dev-perl/Test-Fatal-0.12.0
+	)
 "
 
 pkg_postinst() {
