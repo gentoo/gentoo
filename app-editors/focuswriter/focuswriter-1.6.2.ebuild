@@ -26,6 +26,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 	virtual/pkgconfig
 "
