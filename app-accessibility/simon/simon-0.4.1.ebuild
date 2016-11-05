@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ SRC_URI="mirror://kde/stable/simon/${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="kdepim libsamplerate nls opencv sphinx"
+IUSE="libsamplerate nls opencv pim sphinx"
 
 RDEPEND="
 	dev-qt/qtcore:4
@@ -32,13 +32,13 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 	x11-libs/qwt:6
-	kdepim? ( kde-apps/kdepimlibs:4 )
 	libsamplerate? ( media-libs/libsamplerate )
 	nls? (
 		kde-apps/kde4-l10n
 		virtual/libintl
 	)
 	opencv? ( media-libs/opencv )
+	pim? ( kde-apps/kdepimlibs:4 )
 	sphinx? (
 		>=app-accessibility/pocketsphinx-0.8
 		>=app-accessibility/sphinxbase-0.8
@@ -64,7 +64,7 @@ src_configure() {
 		-DBackendType=$(usex sphinx "both" "jhtk")
 		$(cmake-utils_use_with sphinx Sphinxbase)
 		$(cmake-utils_use_with sphinx Pocketsphinx)
-		$(cmake-utils_use_with kdepim KdepimLibs)
+		$(cmake-utils_use_with pim KdepimLibs)
 		$(cmake-utils_use_with libsamplerate LibSampleRate)
 		$(cmake-utils_use_with opencv OpenCV)
 		$(cmake-utils_use_enable nls NLS)

@@ -15,19 +15,18 @@ inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="debug gps json +kdepim python qalculate"
+IUSE="debug gps json +pim python qalculate"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMONDEPEND="
 	dev-libs/libdbusmenu-qt
 	>=dev-qt/qtcore-4.8.4-r3:4
-	!kde-misc/ktouchpadenabler
 	$(add_kdebase_dep kactivities)
 	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
-	kde-plasma/libplasmaclock:4[kdepim?]
+	kde-plasma/libplasmaclock:4[pim?]
 	kde-plasma/libplasmagenericshell:4
 	kde-plasma/libtaskmanager:4
 	x11-libs/libX11
@@ -39,7 +38,7 @@ COMMONDEPEND="
 	x11-libs/libXrender
 	gps? ( >=sci-geosciences/gpsd-2.37 )
 	json? ( dev-libs/qjson )
-	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
+	pim? ( $(add_kdeapps_dep kdepimlibs) )
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]
@@ -100,8 +99,8 @@ src_configure() {
 		-DWITH_Xmms=OFF
 		$(cmake-utils_use_with gps libgps)
 		$(cmake-utils_use_with json QJSON)
-		$(cmake-utils_use_with kdepim Akonadi)
-		$(cmake-utils_use_with kdepim KdepimLibs)
+		$(cmake-utils_use_with pim Akonadi)
+		$(cmake-utils_use_with pim KdepimLibs)
 		$(cmake-utils_use_with python PythonLibrary)
 		$(cmake-utils_use_with qalculate)
 	)

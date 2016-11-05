@@ -10,11 +10,11 @@ inherit kde4-meta
 
 DESCRIPTION="Libraries for KDE Plasma's clocks"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="debug +kdepim"
+IUSE="debug +pim"
 
 DEPEND="
 	kde-plasma/kephal:4
-	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
+	pim? ( $(add_kdeapps_dep kdepimlibs) )
 "
 RDEPEND="${DEPEND}"
 
@@ -26,7 +26,7 @@ KMEXTRACTONLY="
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with kdepim KdepimLibs)
+		$(cmake-utils_use_with pim KdepimLibs)
 	)
 
 	kde4-meta_src_configure

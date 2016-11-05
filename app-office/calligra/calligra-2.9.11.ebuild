@@ -41,8 +41,8 @@ if [[ ${KDE_BUILD_TYPE} == release ]] ; then
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
-+glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +kdepim +lcms
-marble mysql +okular openexr +pdf postgres spacenav sybase test tiff +threads
++glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +lcms marble mysql
++okular openexr +pdf +pim postgres spacenav sybase test tiff +threads
 +truetype vc xbase +xml"
 
 # Don't use Active, it's broken on desktops.
@@ -56,7 +56,7 @@ REQUIRED_USE="
 	calligra_features_author? ( calligra_features_words )
 	calligra_features_gemini? ( opengl )
 	calligra_features_krita? ( eigen exif lcms opengl )
-	calligra_features_plan? ( kdepim )
+	calligra_features_plan? ( pim )
 	calligra_features_sheets? ( eigen )
 	calligra_features_stage? ( webkit )
 	vc? ( calligra_features_krita )
@@ -93,7 +93,6 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	kdcraw? ( $(add_kdeapps_dep libkdcraw) )
-	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	lcms? (
 		media-libs/lcms:2
 		x11-libs/libX11
@@ -110,6 +109,7 @@ RDEPEND="
 		app-text/poppler:=
 		media-gfx/pstoedit
 	)
+	pim? ( $(add_kdeapps_dep kdepimlibs) )
 	postgres? (
 		dev-db/postgresql:*
 		dev-libs/libpqxx
@@ -206,7 +206,6 @@ src_configure() {
 		$(cmake-utils_use_with jpeg JPEG)
 		$(cmake-utils_use_with jpeg2k OpenJPEG)
 		$(cmake-utils_use_with kdcraw Kdcraw)
-		$(cmake-utils_use_with kdepim KdepimLibs)
 		$(cmake-utils_use_with lcms LCMS2)
 		$(cmake-utils_use_with marble CalligraMarble)
 		$(cmake-utils_use_with mysql MySQL)
@@ -215,6 +214,7 @@ src_configure() {
 		$(cmake-utils_use opengl USEOPENGL)
 		$(cmake-utils_use_with pdf Poppler)
 		$(cmake-utils_use_with pdf Pstoedit)
+		$(cmake-utils_use_with pim KdepimLibs)
 		$(cmake-utils_use_with postgres CalligraPostgreSQL)
 		$(cmake-utils_use_build postgres pqxx)
 		$(cmake-utils_use_with spacenav Spnav)
