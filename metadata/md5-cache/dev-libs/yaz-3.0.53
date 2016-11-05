@@ -4,11 +4,11 @@ DESCRIPTION=C/C++ toolkit for Z39.50v3 clients and servers
 EAPI=5
 HOMEPAGE=http://www.indexdata.dk/yaz
 IUSE=debug icu libressl tcpd ziffy
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=alpha amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86
 LICENSE=BSD GPL-2
 RDEPEND=dev-libs/libxml2 dev-libs/libxslt !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) icu? ( dev-libs/icu:= ) tcpd? ( sys-apps/tcp-wrappers ) ziffy? ( net-libs/libpcap )
 SLOT=0
 SRC_URI=http://ftp.indexdata.dk/pub/yaz/yaz-3.0.53.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f722b0779b6189a2c27663b75f35319e
+_md5_=da4d8fe93b8ceb5ffc98199a6d4b3672
