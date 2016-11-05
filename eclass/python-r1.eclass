@@ -75,7 +75,7 @@ inherit multibuild python-utils-r1
 #
 # Example:
 # @CODE
-# PYTHON_COMPAT=( python2_7 python3_3 python3_4} )
+# PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 # @CODE
 #
 # Please note that you can also use bash brace expansion if you like:
