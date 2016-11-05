@@ -10,5 +10,5 @@ RDEPEND=virtual/perl-Carp virtual/perl-Exporter >=virtual/perl-JSON-PP-2.273.0 d
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Params-Validate-1.22.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
 _md5_=1e2aba80c5bbf9b284737e4733939eaf

@@ -5906,7 +5906,7 @@ dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects yo
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lab-Measurement 3.410.0 3.500.0 3.514.0 3.520.0 9999: Measurement control and automation with Perl
+dev-perl/Lab-Measurement 3.531.0 9999: Measurement control and automation with Perl
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.9.0 0.10.0: Prevent leakage of lexical hints
