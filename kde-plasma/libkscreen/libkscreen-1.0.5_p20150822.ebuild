@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
-DESCRIPTION="KDE screen management library"
+DESCRIPTION="Plasma screen management library"
 HOMEPAGE="https://projects.kde.org/projects/extragear/libs/libkscreen"
 SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${P}.tar.bz2"
 

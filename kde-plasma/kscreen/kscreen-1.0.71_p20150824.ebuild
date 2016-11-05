@@ -21,7 +21,7 @@ IUSE="debug"
 
 RDEPEND="
 	>=dev-libs/qjson-0.8
-	>=x11-libs/libkscreen-1.0.4:4
+	>=kde-plasma/libkscreen-1.0.4:4
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
