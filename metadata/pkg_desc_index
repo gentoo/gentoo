@@ -8032,7 +8032,7 @@ dev-python/pytest-mock 1.2: Thin-wrapper around the mock package for easier use 
 dev-python/pytest-mpl 0.5: pytest plugin to faciliate image comparison for matplotlib figures
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
-dev-python/pytest-runner 2.6.2 2.8: Adds support for tests during installation of setup.py files
+dev-python/pytest-runner 2.6.2 2.8 2.9: Adds support for tests during installation of setup.py files
 dev-python/pytest-timeout 0.4 1.0.0: py.test plugin to abort hanging tests
 dev-python/pytest-xdist 1.13.1 1.14 1.14-r1 1.15.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.9.1: Manage external processes across test runs
@@ -9539,7 +9539,7 @@ dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3: Small process-control library for Guile
 dev-scheme/greg 2.0.0 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r1 1.8.8-r2 2.0.12-r1: GNU Ubiquitous Intelligent Language for Extensions
+dev-scheme/guile 1.8.8-r1 1.8.8-r2 2.0.12-r1 2.0.13: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
