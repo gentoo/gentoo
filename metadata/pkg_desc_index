@@ -13918,7 +13918,7 @@ net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.11.2 1.12.0: Icinga Web - new Web Interface
 net-analyzer/icinga2 2.4.1-r4 2.4.4-r1 2.4.10-r1 2.5.4 9999: Distributed, general purpose, network monitoring engine
-net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
+net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4 1.0_pre4-r2: display bandwidth usage on an interface
