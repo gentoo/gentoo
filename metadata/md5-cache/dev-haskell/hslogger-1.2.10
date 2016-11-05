@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=dev-haskell/mtl:=[profile?] dev-haskell/network:=[profile?] dev-haskell/old-locale:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Versatile logging framework
+EAPI=6
+HOMEPAGE=http://software.complete.org/hslogger
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~sparc ~x86 ~amd64-linux
+LICENSE=BSD
+RDEPEND=dev-haskell/mtl:=[profile?] dev-haskell/network:=[profile?] dev-haskell/old-locale:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/1.2.10
+SRC_URI=mirror://hackage/packages/archive/hslogger/1.2.10/hslogger-1.2.10.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ffeb3599c2205d817f66427d54a774c5

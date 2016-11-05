@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=dev-haskell/hunit:=[profile?] dev-haskell/lifted-base:=[profile?] >=dev-haskell/th-orphans-0.9:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=common functions that show file location information
+EAPI=5
+HOMEPAGE=https://github.com/gregwebs/FileLocation.hs
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-haskell/hunit:=[profile?] dev-haskell/lifted-base:=[profile?] >=dev-haskell/th-orphans-0.9:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] >=dev-lang/ghc-7.4.1:=
+RESTRICT=test
+SLOT=0/0.4.9
+SRC_URI=mirror://hackage/packages/archive/file-location/0.4.9/file-location-0.4.9.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=72ed8efced0f44ecffb454db56556243
