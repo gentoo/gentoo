@@ -146,7 +146,7 @@ app-admin/mcollective 2.8.0 2.8.8 2.9.0 2.9.1: Framework to build server orchest
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.0.10 3.0.12 3.0.13 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.0.10 3.0.12 3.0.14 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.17.1 5.19.0 5.20.0: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/needrestart 2.8-r1 2.9-r1 2.10 9999: Restart daemons after library updates
@@ -2930,7 +2930,7 @@ dev-db/mariadb 5.5.52 5.5.53 10.0.27 10.0.28 10.1.17 10.1.18 10.2.1_alpha: An en
 dev-db/mariadb-galera 10.0.26 10.0.27: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.0.13 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.8 2.6.12 3.0.12 3.0.14 3.2.8 3.2.9 3.2.10: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
@@ -9271,7 +9271,7 @@ dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.0.17 2.1.0 2.1.1-r1: A libyaml wrapper for Ruby
-dev-ruby/public_suffix 2.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
+dev-ruby/public_suffix 2.0.3-r1: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
@@ -9472,7 +9472,7 @@ dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like struct
 dev-ruby/temple 0.6.10 0.7.6 0.7.7: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2 1.4.0: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
-dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.5-r1 3.1.7 3.1.8 3.1.9 3.2.0 3.2.1: An xUnit family unit testing framework for Ruby
+dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.5-r1 3.1.7 3.1.8 3.1.9 3.2.0 3.2.1 3.2.2: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1 2.0.1-r1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit

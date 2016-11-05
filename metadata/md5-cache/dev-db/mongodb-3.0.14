@@ -6,10 +6,10 @@ HOMEPAGE=http://www.mongodb.org
 IUSE=debug kerberos libressl mms-agent ssl +tools
 KEYWORDS=~amd64 ~x86
 LICENSE=AGPL-3 Apache-2.0
-PDEPEND=tools? ( >=app-admin/mongo-tools-3.0.13 )
+PDEPEND=tools? ( >=app-admin/mongo-tools-3.0.14 )
 RDEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.57[threads(+)] >=dev-libs/libpcre-8.39[cxx] dev-libs/snowball-stemmer net-libs/libpcap sys-libs/zlib mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:= ) )
 SLOT=0
-SRC_URI=http://downloads.mongodb.org/src/mongodb-src-r3.0.13.tar.gz
+SRC_URI=http://downloads.mongodb.org/src/mongodb-src-r3.0.14.tar.gz
 _eclass_exported_funcs=pkg_pretend:check-reqs pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	scons-utils	6a35944612b7ecb18a3803359554badc	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7c92c81d6cf10037a45be694550c5145
