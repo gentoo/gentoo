@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -53,6 +53,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-openexr.patch
 	# fix clang build
 	epatch "${FILESDIR}"/${P}-clang.patch
+	# fix bug #594938
+	epatch "${FILESDIR}/${P}-cpp14.patch"
 }
 
 src_configure() {
