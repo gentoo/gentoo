@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit autotools eutils git-r3
+EAPI=6
+inherit autotools git-r3
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="http://ncmpcpp.rybczak.net/"
@@ -23,8 +22,11 @@ RDEPEND="
 	sys-libs/readline:*
 	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
-	unicode? ( dev-libs/boost:=[icu] )
-	visualizer? ( sci-libs/fftw:3.0 )
+	unicode? (
+		dev-libs/boost:=[icu]
+		dev-libs/icu:=
+	)
+	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -32,6 +34,8 @@ DEPEND="
 "
 
 src_prepare() {
+	default
+
 	sed -i -e '/^docdir/d' {,doc/}Makefile.am || die
 	sed -i -e 's|COPYING||g' Makefile.am || die
 	eautoreconf
