@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (05 Nov 2016)
+# Masked for initial testing
+=dev-libs/icu-58.1
+
 # Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
 # Masked for removal in 30 days, bug #568980
 # Unmaintained and deprecated.
