@@ -17445,7 +17445,7 @@ sys-libs/fts-standalone 0.2-r1: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3: A multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
 sys-libs/kpmcore 2.2.1: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.26 1.1.27 1.1.27-r1: An LDAP-like embedded database
