@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="control superclass method dispatch"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86 ~x86-fbsd"
 IUSE="test"
 
 RDEPEND="
