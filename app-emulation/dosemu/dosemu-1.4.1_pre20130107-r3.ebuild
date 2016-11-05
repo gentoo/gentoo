@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic pax-utils toolchain-funcs
+inherit autotools eutils flag-o-matic pax-utils toolchain-funcs
 
 P_FD="dosemu-freedos-1.0-bin"
 COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
@@ -46,6 +46,9 @@ S="${WORKDIR}/${PN}-code-${COMMIT}"
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-fortify.patch
 	epatch "${FILESDIR}"/${PN}-1.4.1_pre20091009-dash.patch
+	epatch "${FILESDIR}"/${P}-no-glibc.patch
+
+	epatch_user
 
 	# Has problems with -O3 on some systems
 	replace-flags -O[3-9] -O2
@@ -53,6 +56,8 @@ src_prepare() {
 	# This one is from media-sound/fluid-soundfont (bug #479534)
 	sed "s,/usr/share/soundfonts/default.sf2,${EPREFIX}/usr/share/sounds/sf2/FluidR3_GM.sf2,"\
 		-i src/plugin/fluidsynth/mid_o_flus.c || die
+
+	eautoreconf
 }
 
 src_configure() {
