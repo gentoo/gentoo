@@ -51,7 +51,7 @@ python_prepare_all() {
 		-e "s:/usr:${EPREFIX}/usr:g" \
 		-e 's:"hdf5-blosc/src/blosc_filter.c"::g' \
 		-i setup.py || die
-	rm -r c-blosc/{blosc,internal-complibs} hdf5-blosc || die
+	rm -r c-blosc/{blosc,internal-complibs} || die
 	distutils-r1_python_prepare_all
 }
 
