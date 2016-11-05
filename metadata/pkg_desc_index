@@ -208,7 +208,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.4.0 11.4.1 11.5.1: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.4.0 11.4.1 11.4.2 11.5.2: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -5768,6 +5768,7 @@ dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
+dev-perl/Google-Ads-AdWords-Client 2.7.3-r1 4.11.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing tool
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
@@ -5887,6 +5888,7 @@ dev-perl/Inline-Python 0.490.0-r1: Easy implementation of Python extensions
 dev-perl/JSON 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.5: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
+dev-perl/JSON-Parse 0.420.0: Read JSON into a Perl Variable
 dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
 dev-perl/JSON-XS 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
@@ -6658,7 +6660,6 @@ dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
 dev-perl/gnome2-wnck 0.160.0-r1: Perl interface to the Window Navigator Construction Kit
-dev-perl/google-api-adwords-perl 2.7.3-r1: Google AdWords API Perl Client
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
 dev-perl/gtk2-gladexml 1.7.0-r1: Create user interfaces directly from Glade XML files
 dev-perl/gtk2-perl 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
@@ -14305,7 +14306,7 @@ net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r2 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.6.5 4.7.1 4.7.2 4.7.3 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.6.5 4.7.3 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.5-r3: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support

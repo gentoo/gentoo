@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Class-Load >=dev-perl/Class-Std-Fast-0.0.5 dev-perl/Crypt-OpenSSL-RSA dev-perl/File-HomeDir virtual/perl-File-Spec dev-perl/IO-Socket-SSL dev-perl/JSON-Parse dev-perl/LWP-Protocol-https dev-perl/libwww-perl dev-perl/Log-Log4perl >=dev-perl/SOAP-WSDL-2.00.10 virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit dev-perl/URI dev-perl/XML-Simple dev-perl/XML-XPath examples? ( virtual/perl-Digest-SHA virtual/perl-File-Temp dev-perl/HTTP-Server-Simple ) >=dev-perl/Module-Build-0.400.0 test? ( dev-perl/Config-Properties dev-perl/Data-Uniqid virtual/perl-File-Temp dev-perl/Test-Deep dev-perl/Test-Exception dev-perl/Test-MockObject virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Google AdWords API Perl Client Library
+EAPI=6
+HOMEPAGE=https://github.com/googleads/googleads-perl-lib
+IUSE=test examples
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-perl/Class-Load >=dev-perl/Class-Std-Fast-0.0.5 dev-perl/Crypt-OpenSSL-RSA dev-perl/File-HomeDir virtual/perl-File-Spec dev-perl/IO-Socket-SSL dev-perl/JSON-Parse dev-perl/LWP-Protocol-https dev-perl/libwww-perl dev-perl/Log-Log4perl >=dev-perl/SOAP-WSDL-2.00.10 virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit dev-perl/URI dev-perl/XML-Simple dev-perl/XML-XPath examples? ( virtual/perl-Digest-SHA virtual/perl-File-Temp dev-perl/HTTP-Server-Simple ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SU/SUNDQUIST/Google-Ads-AdWords-Client-4.11.0.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=9a512df3cd0f975eed4a88763cdf7297
