@@ -10085,7 +10085,7 @@ dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change config
 dev-util/sgb 20030623: Stanford GraphBase
 dev-util/shards 0.6.1 0.6.2 0.6.3 0.6.4: Dependency manager for the Crystal language
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
-dev-util/shellcheck 0.4.4: Shell script analysis tool
+dev-util/shellcheck 0.4.4 0.4.5: Shell script analysis tool
 dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line programs
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
