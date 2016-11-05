@@ -36,11 +36,11 @@ RDEPEND=">=virtual/jdk-1.7
 	dev-java/log4j:0
 	>=dev-libs/expat-2.1.0-r3
 	>=dev-libs/libffi-3.0.13-r1
-	gnome-extra/zenity
 	>=media-libs/fontconfig-2.10.92
 	>=media-libs/freetype-2.5.5
 	>=media-libs/libpng-1.2.51
 	>=media-libs/mesa-10.2.8
+	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
 	|| ( >=sys-libs/ncurses-5.9-r3:5/5 >=sys-libs/ncurses-5.9-r3:0/5 )
 	>=sys-libs/zlib-1.2.8-r1
 	>=x11-libs/libX11-1.6.2
