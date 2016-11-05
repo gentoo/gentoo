@@ -75,7 +75,8 @@ DEPEND="
 	json? ( dev-libs/json-c )
 	lmdb? ( dev-db/lmdb )
 	zlib? ( sys-libs/zlib )
-	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )"
+	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
+	python? ( dev-python/ply[${PYTHON_USEDEP}] )"
 #	sdb-ldap? ( net-nds/openldap )
 
 RDEPEND="${DEPEND}
