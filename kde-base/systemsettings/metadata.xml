@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="kscreen">Use <pkg>kde-misc/kscreen</pkg> for screen management</flag>
+		<flag name="kscreen">Use <pkg>kde-plasma/kscreen</pkg> for screen management</flag>
 	</use>
 </pkgmetadata>

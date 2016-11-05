@@ -31,7 +31,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_qt_dep qtgraphicaleffects)
-	!kde-misc/kscreen
+	!kde-plasma/kscreen:4
 "
 
 # bug #580440, last checked 5.6.3
