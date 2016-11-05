@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Tool to read the contents of smartcards"
-HOMEPAGE="https://code.google.com/p/cardpeek/"
+HOMEPAGE="http://pannetrat.com/Cardpeek"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
