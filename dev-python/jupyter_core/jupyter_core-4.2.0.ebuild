@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
+	!!<dev-python/jupyter-1.0.0-r1
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
