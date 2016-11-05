@@ -4,11 +4,11 @@ DESCRIPTION=An API for simple XML files
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/XML-Simple/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Storable >=dev-perl/XML-NamespaceSupport-1.40.0 >=dev-perl/XML-SAX-0.150.0 dev-perl/XML-SAX-Expat dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GR/GRANTM/XML-Simple-2.22.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=8e47c366f0f199a69b8401aa08a51564
+_md5_=4e82e2eb7a1ff8b8e4db8c1a949c60c0
