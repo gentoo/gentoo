@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
+# Masked for removal in 30 days, bug #568980
+# Unmaintained and deprecated.
+# Use net-print/cups-filters as a replacement
+net-print/foomatic-filters
+
 # Alon Bar-Lev <alonbl@gentoo.org> (05 Nov 2016)
 # Masked for removal in 30 days, bug#598982.
 # Upstream does not publish releases, no tags, last publish is on
