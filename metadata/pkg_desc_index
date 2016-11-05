@@ -10036,7 +10036,7 @@ dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm s
 dev-util/obs-service-update_source 20130802: Open Build Service client module - update_source service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1: Make replacement
-dev-util/open-vcdiff 0.8.3 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
+dev-util/open-vcdiff 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 0.9.9-r1 0.9.9-r2 1.1.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
@@ -15010,7 +15010,7 @@ net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attemp
 net-misc/pps-tools 0.0.20110710 0.0.20120407: User-space tools for LinuxPPS
 net-misc/proxychains 4.11: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
-net-misc/ps3mediaserver 1.82.0 1.90.0 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
+net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
 net-misc/ptpd 2.3.1 2.3.1-r1: Precision Time Protocol daemon
 net-misc/puf 1.0.0: A download tool for UNIX-like systems
