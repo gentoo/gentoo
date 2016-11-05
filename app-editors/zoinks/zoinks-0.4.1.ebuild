@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
+	epatch "${FILESDIR}/${PN}-cpp14.patch"
 	sed -i -e 's:-g -Werror::g' configure* || die
 	tc-export CXX
 }
