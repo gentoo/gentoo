@@ -14355,7 +14355,7 @@ net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.0.2 4.0.3: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.11.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
-net-im/prosody 0.9.10: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody 0.9.10 0.9.11: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
 net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
