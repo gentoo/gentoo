@@ -7275,7 +7275,7 @@ dev-python/elasticsearch-py 1.4.0 2.3.0 2.4.0 5.0.0: official Python low-level c
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
-dev-python/embedly 0.4.3-r1 0.5.0: Python Library for Embedly
+dev-python/embedly 0.5.0: Python Library for Embedly
 dev-python/emcee 2.1.0: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/empy 3.3-r1 3.3.2: A powerful and robust templating system for Python
 dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction packages
