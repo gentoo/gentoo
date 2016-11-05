@@ -9041,7 +9041,7 @@ dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
 dev-ruby/did_you_mean 1.0.0 1.0.1 1.0.2: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
-dev-ruby/dnsruby 1.59.1 1.59.2 1.59.3: A pure Ruby DNS client library
+dev-ruby/dnsruby 1.59.3 1.60.0: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.20160615 0.5.20160826 0.5.20161021: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.1.0 2.1.1: Loads environment variables from .env into ENV
@@ -9268,6 +9268,7 @@ dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.0.17 2.1.0 2.1.1-r1: A libyaml wrapper for Ruby
+dev-ruby/public_suffix 2.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
