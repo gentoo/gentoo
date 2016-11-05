@@ -5029,7 +5029,7 @@ dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.3.3: An XQuery and XPath 2 library and command line utility written in C++
 dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and asset management
 dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
-dev-libs/yaz 3.0.50 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
+dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging library.
 dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
