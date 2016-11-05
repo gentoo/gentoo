@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	virtual/libffi
 	dev-libs/libltdl:=
-	dev-libs/libunistring
+	dev-libs/libunistring:0=
 	sys-devel/libtool
 	sys-libs/ncurses:0=
 	sys-libs/readline:0="
