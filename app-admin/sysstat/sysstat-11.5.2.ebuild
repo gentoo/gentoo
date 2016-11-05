@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic multilib systemd toolchain-funcs
+EAPI=6
+inherit flag-o-matic multilib systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="http://pagesperso-orange.fr/sebastien.godard/"
@@ -31,6 +31,10 @@ RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-sysstat )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.0.4-flags.patch
+	"${FILESDIR}"/${PN}-11.0.4-cron.patch
+)
 
 SYSSTAT_FAKE_RC_DIR=Gentoo-does-not-use-rc.d
 
@@ -46,9 +50,8 @@ src_prepare() {
 			fi
 		done
 	fi
-	epatch \
-		"${FILESDIR}"/${PN}-10.0.4-flags.patch \
-		"${FILESDIR}"/${PN}-11.0.4-cron.patch
+
+	default
 }
 
 src_configure() {
@@ -66,7 +69,7 @@ src_configure() {
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \
-			--with-systemdsystemunitdir=$(systemd_get_unitdir)
+			--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
 }
 
 src_compile() {
