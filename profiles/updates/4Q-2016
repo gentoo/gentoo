@@ -15,3 +15,4 @@ move kde-base/kmenuedit kde-plasma/kmenuedit
 move kde-base/khotkeys kde-plasma/khotkeys
 move kde-base/kinfocenter kde-plasma/kinfocenter
 move kde-base/ksysguard kde-plasma/ksysguard
+move dev-perl/google-api-adwords-perl dev-perl/Google-Ads-AdWords-Client
