@@ -1,14 +1,13 @@
-DEFINED_PHASES=compile install prepare setup
+DEFINED_PHASES=compile install setup unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=Convert between document formats supported by Libreoffice
-EAPI=5
+EAPI=6
 HOMEPAGE=http://dag.wieers.com/home-made/unoconv/
 IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
-KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] !app-text/odt2txt virtual/ooo
 REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
 SLOT=0
-SRC_URI=https://github.com/dagwieers/unoconv/archive/0.7.tar.gz -> unoconv-0.7.tar.gz
-_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=cf11ab8ebfb44c49426569827ae7cc32
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8cc4e84cb8b36bf7a94b2885900e96cc
