@@ -80,6 +80,7 @@ src_configure() {
 	local langs="$(l10n_get_locales)"
 
 	local mycmakeargs=(
+		-DCANTATA_HELPERS_LIB_DIR="$(get_libdir)"
 		-DCANTATA_TRANSLATIONS="${langs// /;}"
 		-DENABLE_CDPARANOIA=$(usex cdda)
 		-DENABLE_CDDB=$(usex cddb)
