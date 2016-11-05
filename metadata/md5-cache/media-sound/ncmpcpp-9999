@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] ) visualizer? ( sci-libs/fftw:3.0 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] dev-libs/icu:= ) visualizer? ( sci-libs/fftw:3.0= ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
-EAPI=5
+EAPI=6
 HOMEPAGE=http://ncmpcpp.rybczak.net/
 IUSE=clock curl outputs taglib unicode visualizer
 LICENSE=GPL-2
-RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] ) visualizer? ( sci-libs/fftw:3.0 )
+RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] dev-libs/icu:= ) visualizer? ( sci-libs/fftw:3.0= )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=65e4301889dffc889744669f3430b875
+_md5_=0195b951bf512d94966fe816b0d5101a

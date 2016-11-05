@@ -7508,7 +7508,7 @@ dev-python/jsonpointer 1.7 1.10: Identify specific nodes in a JSON document (acc
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 0.1.7 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
-dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
+dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.1 5.0.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6 4.1.0 4.2.0: Core common functionality of Jupyter projects
@@ -13471,7 +13471,7 @@ media-sound/musescore 1.1 1.2 1.3 2.0.2 2.0.2-r1: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.4: Qt4 music player
 media-sound/ncmpc 0.24 0.24-r2 0.25: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.7 0.7.4 0.7.5 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.7 0.7.4 0.7.5 0.7.7 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
@@ -14041,7 +14041,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925 1.5.3_pre20150925-r1 1.6.0: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925 1.5.3_pre20150925-r1 1.6.0 1.6.1: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.24 0.6.25 0.6.25-r1 0.6.25-r2 0.6.25-r3: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon
