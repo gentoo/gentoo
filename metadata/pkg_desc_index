@@ -15136,7 +15136,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.1.5 5.2.12 5.2.13: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20161103 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-misc/wireguard 0.0.20161105 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
