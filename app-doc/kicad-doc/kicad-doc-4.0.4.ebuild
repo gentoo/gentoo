@@ -18,6 +18,7 @@ LANGS="en fr it ja nl pl"
 for lang in ${LANGS}; do
 	IUSE+=" l10n_${lang}"
 done
+unset lang
 
 DEPEND=">=app-text/asciidoc-8.6.9
 	app-text/dblatex

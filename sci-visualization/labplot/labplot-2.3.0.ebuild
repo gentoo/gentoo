@@ -13,8 +13,8 @@ HOMEPAGE="https://www.kde.org/applications/education/labplot/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}-kf5.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
-IUSE="cantor fftw fits hdf5 netcdf"
+KEYWORDS="~amd64 ~x86"
+IUSE="cantor fftw hdf5 netcdf"
 
 [[ ${KDE_BUILD_TYPE} != live ]] && S="${WORKDIR}/${P}-kf5"
 
@@ -40,7 +40,6 @@ COMMON_DEPEND="
 	>=sci-libs/gsl-1.15:=
 	cantor? ( $(add_kdeapps_dep cantor) )
 	fftw? ( sci-libs/fftw:3.0= )
-	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
 	netcdf? ( sci-libs/netcdf:= )
 "
@@ -51,6 +50,12 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!sci-visualization/labplot:4
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-deps.patch"
+	"${FILESDIR}/${P}-options.patch"
+	"${FILESDIR}/${P}-desktop.patch"
+)
 
 src_prepare() {
 	if ! use handbook && [[ ${KDE_BUILD_TYPE} != live ]]; then
@@ -64,7 +69,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_CANTOR=$(usex cantor)
 		-DENABLE_FFTW=$(usex fftw)
-		-DENABLE_FITS=$(usex fits)
 		$(cmake-utils_use_find_package hdf5 HDF5)
 		-DENABLE_NETCDF=$(usex netcdf)
 	)

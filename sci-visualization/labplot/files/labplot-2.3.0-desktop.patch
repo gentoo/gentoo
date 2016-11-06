@@ -1,0 +1,24 @@
+commit a66226a538ae23f61eaf4b3c00efa8321504fe00
+Author: Wolfgang Bauer <wbauer@tmo.at>
+Date:   Thu Jul 28 15:20:05 2016 +0200
+
+    Fix .desktop file's Exec line
+    
+    The KF5 port uses QCommandLineParser which doesn't know the '-caption'
+    parameter.
+    The desktop file needs to use '-qwindowtitle' instead.
+    
+    REVIEW: 128532
+
+diff --git a/src/labplot2.desktop b/src/labplot2.desktop
+index 38fe9bb..8ce836c 100755
+--- a/src/labplot2.desktop
++++ b/src/labplot2.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Exec=labplot2 -caption %c %i %f
++Exec=labplot2 -qwindowtitle %c %i %f
+ Icon=labplot2
+ Name=LabPlot2
+ Name[ast]=LabPlot2
