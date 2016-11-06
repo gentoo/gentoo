@@ -600,7 +600,7 @@ app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
 app-crypt/signing-party 1.1.4 2.4 2.5: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
-app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
+app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
@@ -4134,7 +4134,7 @@ dev-java/jmf-bin 2.1.1e-r2: The Java Media Framework API (JMF)
 dev-java/jmh-core 1.4.1: Harness for building, running, and analysing nano/micro/milli/macro benchmarks
 dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Interface
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
-dev-java/jna 3.4.1 4.2.2: Java Native Access (JNA)
+dev-java/jna 3.4.1 4.2.2-r1: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
 dev-java/jnr-constants 0.8.6: A set of platform constants (e.g. errno values)
 dev-java/jnr-enxio 0.7-r1: Java Native Runtime Enhanced X-platform I/O
@@ -7320,9 +7320,10 @@ dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4 3.0.4-r2: A wrap
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
-dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0 1.4.2: Simple and extensible admin interface framework for Flask
+dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0 1.4.2 1.4.2-r1: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0 0.11.1: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-bootstrap 3.3.6.0 3.3.7.0: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
@@ -7330,18 +7331,19 @@ dev-python/flask-debug 0.4.3: Configures Flask applications in a canonical way
 dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
 dev-python/flask-login 0.2.11 0.3.2 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.0 0.9.1 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 1.2.0 1.3.0 1.3.1 1.4.0 1.7.0 1.8.0: SQLAlchemy database migrations for Flask applications using Alembic
-dev-python/flask-mongoengine 0.7.0 0.7.1: Flask support for MongoDB and with WTF model forms
+dev-python/flask-migrate 1.3.0 1.8.0 2.0.0: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-mongoengine 0.7.0 0.7.1 0.8: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.5: Easily create navigation for Flask applications.
 dev-python/flask-openid 1.2.3 1.2.4 1.2.5: OpenID support for Flask
 dev-python/flask-peewee 0.6.5 0.6.6 0.6.7: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0 0.4.0-r1: Identity management for flask
-dev-python/flask-pymongo 0.3.0 0.3.1: PyMongo support for Flask
+dev-python/flask-pymongo 0.3.0 0.3.1 0.4.1: PyMongo support for Flask
 dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.5-r1: Simple framework for creating REST APIs
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
-dev-python/flask-script 2.0.5: Flask support for writing external scripts
-dev-python/flask-security 1.7.4 1.7.5: Simple security for Flask apps
+dev-python/flask-script 2.0.5 2.0.5-r1: Flask support for writing external scripts
+dev-python/flask-security 1.7.4 1.7.5 1.7.5-r1: Simple security for Flask apps
 dev-python/flask-socketio 2.2 2.7.1: Socket.IO integration for Flask applications.
+dev-python/flask-sphinx-themes 1.0.1: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 1.0 1.0-r1 2.0 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.1 0.4.2 0.6.1: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
@@ -7378,6 +7380,7 @@ dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data 
 dev-python/gdmodule 0.56-r2: Python extensions for gd
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.2.1 1.3.0 1.3.2: Allows you to run a test with multiple data sets
+dev-python/geoalchemy2 0.3: Geospatial extension to SQLAlchemy with PostGIS support
 dev-python/geoip-python 1.3.2: Python bindings for GeoIP
 dev-python/geopy 1.8.1 1.9.1 1.10.0 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0 1.0.1 1.0.2 1.1.0 1.1.1 1.1.2: Coroutine-based network library
@@ -8278,6 +8281,7 @@ dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files 
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1 1.15.0: package to manage versions by scm tags via setuptools
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.11 1.11-r1: Python subprocess interface
+dev-python/shapely 1.5.17: Geometric objects, predicates, and operations
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
 dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shortuuid 0.4.2 0.4.3: A generator library for concise, unambiguous and URL-safe UUIDs
@@ -8503,7 +8507,7 @@ dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2 1.1.2 1.3.1: WSGI application
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
-dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5: Small python ORM
+dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.4.0 0.4.2: A drop in replacement for xpyb, an XCB python binding
@@ -17063,7 +17067,7 @@ sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPA
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 231-r1 232: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
-sys-boot/tboot 1.9.4-r1: Performs a measured and verified boot using Intel Trusted Execution Technology
+sys-boot/tboot 1.9.4-r1 1.9.4_p20161101: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
 sys-boot/unetbootin 608 619 625: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427: Chrome OS verified boot tools
