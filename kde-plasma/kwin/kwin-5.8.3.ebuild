@@ -78,7 +78,7 @@ RDEPEND="${COMMON_DEPEND}
 		)
 	)
 	!<kde-apps/kdeartwork-meta-15.08.3-r1:4
-	!kde-base/kwin:4
+	!kde-plasma/kwin:4
 	!kde-plasma/systemsettings:4
 "
 DEPEND="${COMMON_DEPEND}

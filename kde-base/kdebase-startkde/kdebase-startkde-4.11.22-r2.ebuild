@@ -58,8 +58,8 @@ RDEPEND="
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep ksplash)
 	$(add_kdebase_dep kstartupconfig)
-	$(add_kdebase_dep kwin)
 	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/kwin:4
 	kde-plasma/systemsettings:4
 	x11-apps/mkfontdir
 	x11-apps/xmessage

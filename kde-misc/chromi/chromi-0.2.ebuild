@@ -19,6 +19,6 @@ S="${WORKDIR}/kwin-deco-${P}"
 PATCHES=( "${FILESDIR}/${PN}-0.2-add-kwin-decoration-api-version.patch" )
 
 DEPEND="
-	$(add_kdebase_dep kwin)
+	kde-plasma/kwin:4
 "
 RDEPEND="${DEPEND}"
