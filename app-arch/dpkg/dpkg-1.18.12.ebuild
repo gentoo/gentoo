@@ -47,6 +47,8 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.9-strerror.patch
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch
+	"${FILESDIR}"/${PN}-1.18.12-rsyncable.patch
+	"${FILESDIR}"/${PN}-1.18.12-dpkg_buildpackage-test.patch
 )
 
 src_prepare() {
