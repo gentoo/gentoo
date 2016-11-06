@@ -258,7 +258,7 @@ src_compile() {
 
 src_install() {
 	cd "${BUILD_OBJ_DIR}" || die
-	
+
 	# Pax mark xpcshell for hardened support, only used for startupcache creation.
 	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
