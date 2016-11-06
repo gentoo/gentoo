@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kded)
 	$(add_plasma_dep kde-cli-tools)
 	!kde-plasma/khotkeys:4
-	!kde-base/systemsettings:4
+	!kde-plasma/systemsettings:4
 "
 DEPEND="${COMMON_DEPEND}
 	x11-libs/libxcb

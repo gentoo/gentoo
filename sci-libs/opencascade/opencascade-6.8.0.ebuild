@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools eutils check-reqs multilib java-pkg-opt-2 flag-o-matic
 
-DESCRIPTION="Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
+DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="http://www.opencascade.org/"
 SRC_URI="http://files.opencascade.com/OCCT/OCC_${PV}_release/opencascade-${PV}.tgz"
 
@@ -139,8 +139,7 @@ src_install() {
 		dosym "$(get_libdir)" "${my_install_dir}/lin/lib"
 	fi
 
-	insinto /etc/env.d/${PN}
-	newins 50${PN} ${PV}
+	newenvd 50${PN} ${PV}
 
 	if use examples ; then
 		insinto /usr/share/doc/${PF}/examples

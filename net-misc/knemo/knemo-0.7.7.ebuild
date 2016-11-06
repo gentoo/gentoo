@@ -18,10 +18,10 @@ KEYWORDS="amd64 x86"
 IUSE="debug wifi"
 
 DEPEND="
-	$(add_kdebase_dep systemsettings)
 	dev-libs/libnl:3
 	dev-qt/qtsql:4[sqlite]
 	kde-plasma/ksysguard:4
+	kde-plasma/systemsettings:4
 	sys-apps/net-tools
 	wifi? ( net-wireless/wireless-tools )
 "

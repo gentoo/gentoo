@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="classic">Enable classic mode plugin, requires <pkg>kde-frameworks/khtml</pkg></flag>
+		<flag name="kscreen">Use <pkg>kde-plasma/kscreen</pkg> for screen management</flag>
 	</use>
 </pkgmetadata>

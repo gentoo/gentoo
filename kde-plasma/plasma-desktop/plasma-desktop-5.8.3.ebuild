@@ -117,7 +117,7 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-base/plasma-desktop:4
 	!kde-base/plasma-workspace:4
 	!kde-base/solid-actions-kcm:4
-	!kde-base/systemsettings:4
+	!kde-plasma/systemsettings:4
 	!kde-misc/kcm_touchpad
 	!kde-misc/kcm-touchpad
 	!kde-plasma/kcm-touchpad

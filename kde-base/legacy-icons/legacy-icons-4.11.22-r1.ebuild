@@ -25,7 +25,7 @@ RDEPEND="
 	!kde-apps/libkipi:5
 	!<kde-apps/libksane-15.08.3-r1:4
 	!kde-apps/libksane:5
-	!<kde-base/systemsettings-4.11.22-r1:4
+	!<kde-plasma/systemsettings-4.11.22-r1:4
 	!=kde-frameworks/oxygen-icons-5.19.0:5
 	!=kde-frameworks/oxygen-icons-5.20.0:5
 "
