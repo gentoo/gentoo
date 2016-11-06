@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 
@@ -34,27 +34,29 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	test? (
 		dev-java/ant-junit:0
-		dev-java/guava:18
+		dev-java/guava:20
 		dev-java/javassist:3
 		dev-java/reflections:0
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-build.xml.patch
+	"${FILESDIR}"/${PV}-makefile-flags.patch
+)
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_BUILD_TARGET="native jar contrib-jars"
 EANT_EXTRA_ARGS="-Ddynlink.native=true"
 EANT_TEST_EXTRA_ARGS="-Dheadless=true -Djava.io.tmpdir=${T}"
-EANT_TEST_GENTOO_CLASSPATH="guava-18,javassist-3,reflections"
+EANT_TEST_GENTOO_CLASSPATH="guava-20,javassist-3,reflections"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	# delete bundled jars and copy of libffi
 	# except native jars because build.xml needs them all
 	find ! -path "./lib/native/*" -name "*.jar" -delete || die
 	rm -r native/libffi || die
-
-	epatch "${FILESDIR}"/${PV}-build.xml.patch
-	# respect CFLAGS, don't inhibit warnings, honour CC
-	epatch "${FILESDIR}"/${PV}-makefile-flags.patch
-	tc-export CC
 
 	if ! use awt ; then
 		sed -i -E "s/^(CDEFINES=.*)/\1 -DNO_JAWT/g" native/Makefile || die
@@ -63,6 +65,12 @@ java_prepare() {
 	if ! use nio-buffers ; then
 		sed -i -E "s/^(CDEFINES=.*)/\1 -DNO_NIO_BUFFERS/g" native/Makefile || die
 	fi
+
+	java-pkg-2_src_prepare
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
