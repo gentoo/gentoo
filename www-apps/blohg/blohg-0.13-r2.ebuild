@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -42,7 +42,7 @@ RDEPEND="
 	dev-python/pyyaml
 	dev-python/setuptools
 	dev-python/pygments
-	git? ( =dev-python/pygit2-0.20* )
+	git? ( >=dev-python/pygit2-0.21.3 )
 	mercurial? ( >=dev-vcs/mercurial-1.6 )"
 
 DEPEND="${RDEPEND}
@@ -52,6 +52,8 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	if ! use git; then
 		rm -rf blohg/vcs_backends/git || die 'rm failed'
+	else
+		local PATCHES=( "${FILESDIR}/use-recent-libgit2.patch" )
 	fi
 
 	if ! use mercurial; then
