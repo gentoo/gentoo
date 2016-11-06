@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 
-inherit cmake-utils fdo-mime flag-o-matic multilib python-single-r1
+inherit cmake-utils eutils fdo-mime flag-o-matic multilib python-single-r1
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
@@ -99,6 +99,8 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
+
+	edos2unix scribus/ui/propertiespalette_utils.cpp
 
 	cmake-utils_src_prepare
 }
