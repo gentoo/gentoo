@@ -3,16 +3,16 @@
 # $Id$
 
 EAPI=6
-inherit eutils git-r3 systemd toolchain-funcs
+inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="http://chrony.tuxfamily.org/"
-EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/chrony/chrony.git"
+SRC_URI="http://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS=""
-IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
+KEYWORDS="~amd64"
+IUSE="caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
 "
@@ -24,7 +24,7 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	dev-ruby/asciidoctor
+	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
 RDEPEND="
@@ -40,7 +40,7 @@ src_prepare() {
 	sed -i \
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
-		conf.c doc/*.adoc examples/* || die
+		conf.c doc/*.man.in examples/* || die
 
 	default
 }
@@ -90,7 +90,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake all docs
+	emake all docs $(usex html '' 'ADOC=true')
 }
 
 src_install() {
@@ -105,8 +105,10 @@ src_install() {
 	docinto examples
 	dodoc examples/*.example*
 
-	docinto html
-	dodoc doc/*.html
+	if use html; then
+		docinto html
+		dodoc doc/*.html
+	fi
 
 	keepdir /var/{lib,log}/chrony
 
