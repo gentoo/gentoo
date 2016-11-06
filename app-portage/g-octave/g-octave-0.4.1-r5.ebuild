@@ -1,15 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.5 *-jython"
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 )
 
 DB_COMMIT="bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed"
 DB_DIR="rafaelmartins-${PN}-db-${DB_COMMIT:0:7}"
 
-inherit distutils eutils
+inherit distutils-r1 eutils
 
 DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
@@ -26,44 +26,36 @@ IUSE="doc test"
 DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
 RDEPEND="sys-apps/portage"
 
-PYTHON_MODNAME="g_octave"
-
-src_prepare() {
-	distutils_src_prepare
+python_prepare_all() {
 	epatch "${FILESDIR}/${P}-add_cave_support.patch"
 	epatch "${FILESDIR}/${P}-fix-sourceforge-svn-root.patch"
 	epatch "${FILESDIR}/${P}-fix-Makefile.patch"
 	sed -i -e 's/^has_fetch.*$/has_fetch = False/' scripts/g-octave \
 		|| die 'failed to patch the g-octave main script'
+	distutils-r1_python_prepare_all
 }
 
-src_compile() {
-	distutils_src_compile
+python_compile_all() {
 	if use doc; then
 		emake -C docs html || die 'failed to compile the documentation.'
 	fi
 }
 
-src_install() {
-	distutils_src_install
-	dohtml ${PN}.html || die 'dohtml failed.'
+python_install_all() {
+	local HTML_DOCS=( ${PN}.html )
 	doman ${PN}.1 || die 'doman failed.'
 	if use doc; then
 		mv docs/_build/{html,sphinx} || die 'mv failed.'
-		dohtml -r docs/_build/sphinx || die 'dohtml failed.'
+		HTML_DOCS+=( docs/_build/sphinx )
 	fi
+	distutils-r1_python_install_all
 }
 
-src_test() {
-	testing() {
-		PYTHONPATH="build-${PYTHON_ABI}/lib" "$(PYTHON)" \
-			scripts/run_tests.py || die 'test failed.'
-	}
-	python_execute_function testing
+python_test() {
+	"${EPYTHON}" scripts/run_tests.py || die 'test failed.'
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
 	elog
 	elog 'To be able to use g-octave with the shipped package database, please'
 	elog 'edit your configuration file, clean your db directory and run:'
