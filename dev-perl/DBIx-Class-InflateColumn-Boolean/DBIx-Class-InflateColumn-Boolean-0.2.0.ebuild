@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,9 +22,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
+		virtual/perl-Test-Simple
 	)
 "
 
 SRC_TEST=do
+
+src_prepare() {
+	# Module::Install causes fun problems if these are nuked after
+	# Makefile.PL
+	use test && perl_rm_files t/pod-coverage.t t/pod.t
+	perl-module_src_prepare
+}
