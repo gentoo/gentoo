@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=dev-libs/icu-58.1
+	virtual/pkgconfig
 "
 
 src_prepare() {
