@@ -64,7 +64,6 @@ src_compile() {
 	emake || die
 }
 
-
 src_install() {
 	dobin "${S}/src/${EGO_PN%/*}/bin/${PN/kvm/driver-kvm}"
 	dodoc "${S}/src/${EGO_PN%/*}/README.md"
