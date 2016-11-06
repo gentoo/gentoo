@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=media-libs/harfbuzz dev-libs/icu !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/harfbuzz >=dev-libs/icu-58.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=ICU Layout Engine API on top of HarfBuzz shaping library
 EAPI=6
 HOMEPAGE=http://www.harfbuzz.org https://github.com/behdad/icu-le-hb
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/behdad/icu-le-hb/archive/1.0.3.tar.gz -> icu-le-hb-1.0.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9d7aeaf5d4eec5c34cdfe5f77459dd46
+_md5_=eb7b94e17689bd757765fbc58047bc5e

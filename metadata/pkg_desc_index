@@ -2089,7 +2089,7 @@ app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
-app-portage/eix 0.30.4 0.30.11 0.31.7-r1 0.31.9 0.31.10 0.32.1: Search and query ebuilds, portage incl. local settings, ext. overlays and more
+app-portage/eix 0.30.4 0.30.11 0.31.7-r1 0.31.9 0.31.10 0.32.1-r1: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2: Elog viewer for Gentoo
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
@@ -4653,6 +4653,7 @@ dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading fil
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
 dev-libs/icu 55.1 57.1 58.1: International Components for Unicode
+dev-libs/icu-layoutex 58.1: International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.3 1.4: eXtensible Markup Language parser library designed for Jabber applications
@@ -11050,7 +11051,7 @@ games-simulation/gl117 1.3.2 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0 1.0-r1: Free version of the well-known city building simulation
-games-simulation/openttd 1.5.3 1.6.0: OpenTTD is a clone of Transport Tycoon Deluxe
+games-simulation/openttd 1.6.0 1.6.1: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0 1.5.0-r1: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0 0.3.0-r1: city simulation game

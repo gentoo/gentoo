@@ -4,7 +4,7 @@ DESCRIPTION=Python modules to work with Debian-related data formats
 EAPI=6
 HOMEPAGE=http://packages.debian.org/sid/python-debian
 IUSE=test python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2 GPL-3
 RDEPEND=dev-python/chardet[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-python/six[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://debian/pool/main/p/python-debian/python-debian_0.1.28.tar.xz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=a497624fa1f6ff9661f0b59ae85ac362
+_md5_=85a05d7f4e9b9be5c6a99ea3a855263d
