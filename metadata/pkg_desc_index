@@ -4134,7 +4134,7 @@ dev-java/jmf-bin 2.1.1e-r2: The Java Media Framework API (JMF)
 dev-java/jmh-core 1.4.1: Harness for building, running, and analysing nano/micro/milli/macro benchmarks
 dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Interface
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
-dev-java/jna 3.4.0 3.4.1 4.2.2: Java Native Access (JNA)
+dev-java/jna 3.4.1 4.2.2: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
 dev-java/jnr-constants 0.8.6: A set of platform constants (e.g. errno values)
 dev-java/jnr-enxio 0.7-r1: Java Native Runtime Enhanced X-platform I/O
@@ -11660,7 +11660,6 @@ kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete K
 kde-base/kdelibs 4.14.24 4.14.25: KDE libraries needed by all KDE programs
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
-kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
@@ -11712,7 +11711,7 @@ kde-frameworks/kdnssd 5.26.0 5.27.0: Framework for network service discovery usi
 kde-frameworks/kdoctools 5.26.0 5.27.0: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.26.0 5.27.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 3 4: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.26.0-r1 5.27.0: Library for extracting file metadata
+kde-frameworks/kfilemetadata 4.14.3 5.26.0-r1 5.27.0: Library for extracting file metadata
 kde-frameworks/kglobalaccel 5.26.0 5.27.0: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.26.0 5.27.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.26.0 5.27.0: KHTML web rendering engine
