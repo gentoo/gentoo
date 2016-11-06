@@ -19,8 +19,8 @@ IUSE="debug"
 DEPEND="
 	$(add_kdeapps_dep kdepim-runtime '' 4.6.0)
 	$(add_kdeapps_dep kdepimlibs)
-	$(add_kdebase_dep baloo)
 	dev-libs/boost
+	kde-frameworks/baloo:4
 "
 RDEPEND="${DEPEND}"
 

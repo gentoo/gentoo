@@ -29,5 +29,5 @@ DEPEND="
 	>=dev-db/lmdb-0.9.17
 "
 RDEPEND="${DEPEND}
-	!kde-base/baloo:4[-minimal(-)]
+	!kde-frameworks/baloo:4[-minimal(-)]
 "
