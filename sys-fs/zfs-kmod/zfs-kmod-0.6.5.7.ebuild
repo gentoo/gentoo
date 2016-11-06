@@ -11,7 +11,7 @@ if [ ${PV} == "9999" ]; then
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	S="${WORKDIR}/zfs-${PV}"
-	KEYWORDS=""
+	KEYWORDS=" ~amd64"
 fi
 
 inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
