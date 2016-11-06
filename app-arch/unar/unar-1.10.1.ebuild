@@ -12,7 +12,7 @@ SRC_URI="https://unarchiver.c3.cx/downloads/${PN}${PV}_src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="gnustep-base/gnustep-base
