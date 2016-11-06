@@ -22,7 +22,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dev-libs/icu
+	>=dev-libs/icu-58.1
 "
 
 src_prepare() {

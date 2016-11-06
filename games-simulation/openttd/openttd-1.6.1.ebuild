@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils gnome2-utils games
+EAPI=6
+inherit eutils gnome2-utils
 
 DESCRIPTION="OpenTTD is a clone of Transport Tycoon Deluxe"
 HOMEPAGE="http://www.openttd.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://binaries.openttd.org/releases/${PV}/${P}-source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib"
 RESTRICT="test" # needs a graphics set in order to test
 
@@ -41,39 +41,38 @@ PDEPEND="
 	)
 	openmedia? ( >=games-misc/opengfx-0.4.7 )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cflags.patch
-	sed -i \
-		-e '/Keywords/s/$/;/' \
-		media/openttd.desktop.in || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-cflags.patch
+)
 
 src_configure() {
+	local myopts=()
 	# there is an allegro interface available as well as sdl, but
 	# the configure for it looks broken so the sdl interface is
 	# always built instead.
-	local myopts=" --without-allegro"
+	local myopts+=( --without-allegro )
 
 	# libtimidity not needed except for some embedded platform
 	# nevertheless, it will be automagically linked if it is
 	# installed. Hence, we disable it.
-	myopts+=" --without-libtimidity"
+	myopts+=( --without-libtimidity )
 
-	use debug && myopts+=" --enable-debug=3"
+	use debug && myopts+=( --enable-debug=3 )
 
 	if use dedicated ; then
-		myopts+=" --enable-dedicated"
+		myopts+=( --enable-dedicated )
 	else
-		use aplaymidi && myopts+=" --with-midi='/usr/bin/aplaymidi'"
-		myopts+="
+		use aplaymidi && myopts+=( --with-midi='/usr/bin/aplaymidi' )
+		myopts+=(
 			$(use_with truetype freetype)
 			$(use_with icu)
-			--with-sdl"
+			--with-sdl
+		)
 	fi
 	if use png || { use !dedicated && use truetype; } || use zlib ; then
-		myopts+=" --with-zlib"
+		myopts+=( --with-zlib )
 	else
-		myopts+=" --without-zlib"
+		myopts+=( --without-zlib )
 	fi
 
 	# configure is a hand-written bash-script, so econf will not work.
@@ -81,8 +80,8 @@ src_configure() {
 	CFLAGS="" ./configure \
 		--disable-strip \
 		--prefix-dir="${EPREFIX}" \
-		--binary-dir="${GAMES_BINDIR}" \
-		--data-dir="${GAMES_DATADIR}/${PN}" \
+		--binary-dir="/usr/bin" \
+		--data-dir="/usr/share/${PN}" \
 		--install-dir="${D}" \
 		--icon-dir=/usr/share/pixmaps \
 		--menu-dir=/usr/share/applications \
@@ -90,7 +89,7 @@ src_configure() {
 		--man-dir=/usr/share/man/man6 \
 		--doc-dir=/usr/share/doc/${PF} \
 		--menu-group="Game;Simulation;" \
-		${myopts} \
+		${myopts[@]} \
 		$(use_with iconv) \
 		$(use_with png) \
 		$(use_with cpu_flags_x86_sse sse) \
@@ -109,17 +108,14 @@ src_install() {
 		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
 	fi
 	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	games_pkg_postinst
 
 	if ! use lzo ; then
 		elog "OpenTTD was built without 'lzo' in USE. While 'lzo' is not"
