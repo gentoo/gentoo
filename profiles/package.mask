@@ -30,15 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (06 Nov 2016)
-# Masked until >=dev-libs/icu-58.1 got unmasked
-dev-libs/icu-le-hb
-dev-libs/icu-layoutex
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (05 Nov 2016)
-# Masked for initial testing
-=dev-libs/icu-58.1
-
 # Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
 # Masked for removal in 30 days, bug #568980
 # Unmaintained and deprecated.
