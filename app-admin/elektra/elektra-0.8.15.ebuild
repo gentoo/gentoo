@@ -41,7 +41,10 @@ RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/elektra/kdbconfig.h )
 
-PATCHES=( "${FILESDIR}/${P}"-conditional-glob-tests.patch )
+PATCHES=(
+	"${FILESDIR}/${P}"-conditional-glob-tests.patch
+	"${FILESDIR}/${P}"-gcc-5.4.0.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -97,13 +100,12 @@ multilib_src_configure() {
 	fi
 
 	mycmakeargs=(
+		"-DBUILD_PDF=OFF"
 		"-DBUILD_SHARED=ON"
 		"-DPLUGINS=${my_plugins}"
 		"-DTOOLS=${my_tools}"
-		"-DLATEX_COMPILER=OFF"
 		"-DTARGET_CMAKE_FOLDER=share/cmake/Modules"
-		$(multilib_is_native_abi && cmake-utils_use doc BUILD_DOCUMENTATION \
-			|| echo -DBUILD_DOCUMENTATION=OFF)
+		-DBUILD_DOCUMENTATION=$(multilib_is_native_abi && usex doc || echo no)
 		$(cmake-utils_use static-libs BUILD_STATIC)
 		$(cmake-utils_use test BUILD_TESTING)
 		$(cmake-utils_use test ENABLE_TESTING)
@@ -114,7 +116,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einfo remove test_data
-	rm -rvf "${D}/usr/share/${PN}" || die "Failed to remove test_data"
+	rm -rvf "${ED%/}/usr/share/${PN}" || die "Failed to remove test_data"
 	einfo remove tool_exec
-	rm -rvf "${D}/usr/$(get_libdir)/${PN}/tool_exec" || die "Failed to remove tool_exec"
+	rm -rvf "${ED%/}/usr/$(get_libdir)/${PN}/tool_exec" || die "Failed to remove tool_exec"
 }
