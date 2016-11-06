@@ -24,7 +24,7 @@ IUSE="debug examples semantic-desktop test"
 
 RDEPEND="
 	$(add_kdeapps_dep kdepimlibs)
-	semantic-desktop? ( $(add_kdebase_dep baloo) )
+	semantic-desktop? ( kde-frameworks/baloo:4 )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

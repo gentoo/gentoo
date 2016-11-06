@@ -60,7 +60,7 @@ media-libs/phonon designer
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/solid-runtime -bluetooth
-kde-base/baloo minimal
+kde-frameworks/baloo minimal
 net-p2p/ktorrent:4 -plasma
 sys-auth/polkit-kde-agent minimal
 

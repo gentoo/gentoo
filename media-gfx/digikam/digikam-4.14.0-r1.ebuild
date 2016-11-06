@@ -49,7 +49,7 @@ CDEPEND="
 	addressbook? ( $(add_kdeapps_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
-	semantic-desktop? ( $(add_kdebase_dep baloo '' 4.12.0) )
+	semantic-desktop? ( kde-frameworks/baloo:4 )
 "
 RDEPEND="${CDEPEND}
 	$(add_kdeapps_dep kreadconfig)

@@ -3,7 +3,7 @@
 # $Id$
 
 # Resolve conflicts with slot 5 ebuilds
-kde-base/baloo minimal
+kde-frameworks/baloo minimal
 kde-apps/kde4-l10n minimal
 
 # Required by kde-frameworks/kauth
