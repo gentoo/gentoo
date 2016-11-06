@@ -5078,7 +5078,7 @@ dev-lua/luajson 1.3.2 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727: Most comprehensive OpenSSL module in the Lua universe.
 dev-lua/luarocks 2.0.7.1 2.0.8 2.0.12 2.2.0: A deployment and management system for Lua modules
-dev-lua/luasec 0.4.1 0.4.1_p20130620 0.5 0.5.1: Lua binding for OpenSSL library to provide TLS/SSL communication
+dev-lua/luasec 0.4.1 0.4.1_p20130620 0.5 0.5.1 0.6: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 2.0.2 3.0_rc1-r3: Networking support library for the Lua language
 dev-lua/luassert 1.7.9: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
