@@ -27,9 +27,11 @@ DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
 RDEPEND="sys-apps/portage"
 
 python_prepare_all() {
-	epatch "${FILESDIR}/${P}-add_cave_support.patch"
-	epatch "${FILESDIR}/${P}-fix-sourceforge-svn-root.patch"
-	epatch "${FILESDIR}/${P}-fix-Makefile.patch"
+	local PATCHES=(
+		"${FILESDIR}/${P}-add_cave_support.patch"
+		"${FILESDIR}/${P}-fix-sourceforge-svn-root.patch"
+		"${FILESDIR}/${P}-fix-Makefile.patch"
+	)
 	sed -i -e 's/^has_fetch.*$/has_fetch = False/' scripts/g-octave \
 		|| die 'failed to patch the g-octave main script'
 	distutils-r1_python_prepare_all
@@ -70,10 +72,10 @@ pkg_postinst() {
 
 pkg_config() {
 	local db="$(g-octave --config db)"
-	mkdir -p "${db}"
+	mkdir -p "${db}" || die 'mkdir failed.'
 	einfo "Extracting g-octave database files to: ${db}"
 	tar -xzf "${DISTDIR}/${PN}-db-${DB_COMMIT:0:7}.tar.gz" -C "${db}" || die 'tar failed.'
-	rm -rf "${db}"/{patches,octave-forge,info.json,manifest.json,timestamp}
+	rm -rf "${db}"/{patches,octave-forge,info.json,manifest.json,timestamp} || die 'rm db files failed.'
 	mv -f "${db}/${DB_DIR}"/* "${db}" || die 'mv failed.'
-	rm -rf "${db}/${DB_DIR}"
+	rm -rf "${db}/${DB_DIR}" || die 'rm db dir failed.'
 }
