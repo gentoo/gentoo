@@ -31,14 +31,8 @@ DEPEND="${RDEPEND}
 # todo: --enable-maxk=N configure option
 # todo: fix automagic mpi toggling
 
-PATCHES=(
-	"${FILESDIR}"/${P}-ac_prog_ar.patch
-	"${FILESDIR}"/${P}-gcc-6.patch
-)
-
 src_prepare() {
 	default
-	tc-export AR
 	sed -i -e "s/-Werror//" configure.ac || die #365195
 	sed -i -e "/dist_pkgdoc_DATA/d" Makefile.am || die
 	eautoreconf
