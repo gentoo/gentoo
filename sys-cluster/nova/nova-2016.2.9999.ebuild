@@ -138,7 +138,7 @@ RDEPEND="
 	)
 	iscsi? (
 		sys-fs/lsscsi
-		>=sys-block/open-iscsi-2.0.873-r2
+		>=sys-block/open-iscsi-2.0.873-r1
 	)"
 
 #PATCHES=(
