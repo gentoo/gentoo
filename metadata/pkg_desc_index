@@ -250,7 +250,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.17.27 1.18.9 1.18.10: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.17.27 1.18.10 1.18.12: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.10.2 1.10.2-r1 1.12.0-r1: Engrampa archive manager for MATE
@@ -17860,7 +17860,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7 2.2.9: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.28 5.0.29 5.0.30: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.30: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
