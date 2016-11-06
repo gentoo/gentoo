@@ -2043,7 +2043,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.6 1.5.0-r1 1.5.2-r2 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.4.0 2.5.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -5511,7 +5511,7 @@ dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interf
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.480.0 1.500.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.32.0-r2 4.36.0-r1 4.37.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-mysql 4.32.0-r2 4.36.0-r1 4.37.0 4.38.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
