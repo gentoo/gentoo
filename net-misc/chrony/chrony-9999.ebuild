@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS=""
-IUSE="caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
+IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
 "
@@ -25,7 +25,7 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	html? ( dev-ruby/asciidoctor )
+	dev-ruby/asciidoctor
 "
 RDEPEND="
 	${CDEPEND}
@@ -40,7 +40,7 @@ src_prepare() {
 	sed -i \
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
-		conf.c doc/*.man.in examples/* || die
+		conf.c doc/*.adoc examples/* || die
 
 	default
 }
@@ -90,7 +90,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake all docs $(usex html '' 'ADOC=true')
+	emake all docs
 }
 
 src_install() {
@@ -105,10 +105,8 @@ src_install() {
 	docinto examples
 	dodoc examples/*.example*
 
-	if use html; then
-		docinto html
-		dodoc doc/*.html
-	fi
+	docinto html
+	dodoc doc/*.html
 
 	keepdir /var/{lib,log}/chrony
 
