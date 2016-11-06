@@ -240,6 +240,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
+	# from master branch
+	"${FILESDIR}/${PN}-5.2-icu58.patch"
+
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
 )
