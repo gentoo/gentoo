@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/twall/jna#readme"
 SRC_URI="https://github.com/twall/jna/tarball/${PV} -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+awt +nio-buffers"
 REQUIRED_USE="test? ( awt nio-buffers )"
 
