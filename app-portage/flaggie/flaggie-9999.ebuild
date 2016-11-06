@@ -5,11 +5,11 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/flaggie.git"
 inherit bash-completion-r1 distutils-r1 git-r3
 
 DESCRIPTION="A smart CLI mangler for package.* files"
-HOMEPAGE="https://bitbucket.org/mgorny/flaggie/"
+HOMEPAGE="https://github.com/mgorny/flaggie/"
 SRC_URI=""
 
 LICENSE="BSD"
