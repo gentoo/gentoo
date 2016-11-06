@@ -2089,7 +2089,7 @@ app-portage/cpuid2cpuflags 1 2: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
 app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
-app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
+app-portage/distpatch 0.1.2: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
 app-portage/eix 0.30.4 0.30.11 0.31.7-r1 0.31.9 0.31.10 0.32.1-r1: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
@@ -2104,7 +2104,7 @@ app-portage/fetchcommandwrapper 0.7.1 0.7.2: Wrapper integrating aria2 into port
 app-portage/flaggie 0.2.1 9999: A smart CLI mangler for package.* files
 app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9 9999: Autogenerate and install ebuilds for CPAN modules
-app-portage/g-octave 0.4.1-r4: A tool that generates and installs ebuilds for Octave-Forge
+app-portage/g-octave 0.4.1-r5: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9-r2 0.3.1.1 0.3.2 0.3.2-r1 9999: Collection of administration scripts for Gentoo
