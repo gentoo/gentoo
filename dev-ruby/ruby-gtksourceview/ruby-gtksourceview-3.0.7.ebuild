@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ inherit virtualx ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/gtksourceview2
 
 DESCRIPTION="Ruby bindings for gtksourceview"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND+=" x11-libs/gtksourceview:2.0"
