@@ -46,8 +46,8 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_doc=$(usex handbook)
-		$(cmake-utils_use_find_package ldap)
-		$(cmake-utils_use_find_package prison)
+		$(cmake-utils_use_find_package ldap Ldap)
+		$(cmake-utils_use_find_package prison Prison)
 	)
 
 	kde4-base_src_configure
