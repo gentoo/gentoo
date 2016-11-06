@@ -4,15 +4,15 @@
 
 EAPI=6
 
-inherit cmake-multilib eutils java-pkg-opt-2 git-r3
+inherit cmake-multilib eutils java-pkg-opt-2
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
 HOMEPAGE="https://freedesktop.org/wiki/Software/Elektra"
-EGIT_REPO_URI="git://github.com/ElektraInitiative/libelektra.git"
+SRC_URI="ftp://ftp.markus-raab.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 PLUGIN_IUSE="augeas iconv ini java simpleini syslog systemd tcl +uname xml yajl";
 IUSE="dbus doc qt5 static-libs test ${PLUGIN_IUSE}"
 
@@ -41,7 +41,10 @@ RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/elektra/kdbconfig.h )
 
-PATCHES=( "${FILESDIR}/${PN}"-0.8.15-conditional-glob-tests.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}"-0.8.15-conditional-glob-tests.patch
+	"${FILESDIR}/${PN}"-0.8.15-gcc-5.4.0.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
