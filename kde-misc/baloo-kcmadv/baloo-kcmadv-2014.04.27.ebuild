@@ -19,8 +19,8 @@ IUSE=""
 
 DEPEND="
 	$(add_kdebase_dep baloo '-minimal(-)')
-	$(add_kdebase_dep kfilemetadata)
 	dev-libs/qjson
 	dev-libs/xapian
+	kde-frameworks/kfilemetadata:4
 "
 RDEPEND="${DEPEND}"

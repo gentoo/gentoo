@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,9 +6,10 @@ EAPI=5
 
 inherit kde4-base
 
-DESCRIPTION="A library for extracting file metadata"
+DESCRIPTION="Library for extracting file metadata"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug epub exif ffmpeg mobi pdf taglib"
+SLOT="4"
 
 DEPEND="
 	epub? ( app-text/ebook-tools )
