@@ -20,6 +20,6 @@ on a memcache miss.</longdescription>
 		<flag name="slabs-reassign">Allow manual reassignment of memory slabs at the cost of slab optimizations.</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">memcached</remote-id>
+		<remote-id type="github">memcached/memcached</remote-id>
 	</upstream>
 </pkgmetadata>
