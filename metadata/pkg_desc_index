@@ -5893,7 +5893,7 @@ dev-perl/Inline-Python 0.490.0-r1: Easy implementation of Python extensions
 dev-perl/JSON 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.5: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
-dev-perl/JSON-Parse 0.420.0: Read JSON into a Perl Variable
+dev-perl/JSON-Parse 0.420.0 0.430.0: Read JSON into a Perl Variable
 dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
 dev-perl/JSON-XS 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
