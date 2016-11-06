@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sound@gentoo.org</email>
-    <name>Gentoo Sound project</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>Sergiy.Borodych@gmail.com</email>
+		<name>Sergiy Borodych</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="extras">Install some extra deps for plugins (ex. Titlebar)</flag>
+		<flag name="gstreamer-0">Enable audio support via legacy gstreamer:0.10</flag>
+	</use>
 </pkgmetadata>

@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/harfbuzz
+	media-libs/harfbuzz:=
 "
 
 DEPEND="
