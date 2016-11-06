@@ -30,12 +30,12 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="
 	all-modules aqua boost cg doc examples imaging ffmpeg gdal java json kaapi mpi
-	mysql odbc offscreen postgres python qt4 rendering smp tbb test theora tk tcl
+	mysql odbc offscreen postgres python qt5 rendering smp tbb test theora tk tcl
 	video_cards_nvidia views web xdmf2 R +X"
 
 REQUIRED_USE="
 	all-modules? ( python xdmf2 )
-	java? ( qt4 )
+	java? ( qt5 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tcl? ( rendering )
 	smp? ( ^^ ( kaapi tbb ) )
@@ -67,8 +67,8 @@ RDEPEND="
 	boost? ( >=dev-libs/boost-1.40.0[mpi?] )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	examples? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
 		sci-libs/vtkdata
 	)
 	ffmpeg? ( virtual/ffmpeg )
@@ -87,19 +87,19 @@ RDEPEND="
 		dev-python/sip[${PYTHON_USEDEP}]
 		)
 	)
-	qt4? (
-		dev-qt/designer:4
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		dev-qt/qtsql:4
-		dev-qt/qtwebkit:4
-		python? ( dev-python/PyQt4[${PYTHON_USEDEP}] )
+	qt5? (
+		dev-qt/designer:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtsql:5
+		dev-qt/qtwebkit:5
+		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 		)
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
-	video_cards_nvidia? ( media-video/nvidia-settings )
+	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
 	web? (
 		${WEBAPP_DEPEND}
 		python? (
@@ -219,7 +219,6 @@ src_configure() {
 		$(cmake-utils_use doc DOCUMENTATION_HTML_HELP)
 		$(cmake-utils_use imaging VTK_Group_Imaging)
 		$(cmake-utils_use mpi VTK_Group_MPI)
-		$(cmake-utils_use qt4 VTK_Group_Qt)
 		$(cmake-utils_use rendering VTK_Group_Rendering)
 		$(cmake-utils_use tk VTK_Group_Tk)
 		$(cmake-utils_use views VTK_Group_Views)
@@ -296,20 +295,21 @@ src_configure() {
 		)
 	fi
 
-	if use qt4; then
+	if use qt5; then
 		mycmakeargs+=(
 			-DVTK_USE_QVTK=ON
 			-DVTK_USE_QVTK_OPENGL=ON
 			-DVTK_USE_QVTK_QTOPENGL=ON
 			-DQT_WRAP_CPP=ON
 			-DQT_WRAP_UI=ON
-			-DVTK_INSTALL_QT_DIR=/$(get_libdir)/qt4/plugins/designer
-			-DDESIRED_QT_VERSION=4
-			-DVTK_QT_VERSION=4
-			-DQT_MOC_EXECUTABLE="$(qt4_get_bindir)/moc"
-			-DQT_UIC_EXECUTABLE="$(qt4_get_bindir)/uic"
-			-DQT_INCLUDE_DIR="${EPREFIX}/usr/include/qt4"
-			-DQT_QMAKE_EXECUTABLE="$(qt4_get_bindir)/qmake"
+			-DVTK_INSTALL_QT_DIR=/$(get_libdir)/qt5/plugins/designer
+			-DDESIRED_QT_VERSION=5
+			-DVTK_QT_VERSION=5
+			-DQT_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
+			-DQT_UIC_EXECUTABLE="$(qt5_get_bindir)/uic"
+			-DQT_INCLUDE_DIR="${EPREFIX}/usr/include/qt5"
+			-DQT_QMAKE_EXECUTABLE="$(qt5_get_bindir)/qmake"
+			-DVTK_Group_Qt:BOOL=ON
 		)
 	fi
 
