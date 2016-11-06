@@ -1335,6 +1335,7 @@ app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/rkt 1.16.0 1.17.0 1.18.0: rkt is an App Container runtime for Linux
 app-emulation/runc 0.0.2 0.0.5 0.1.0 0.1.1 1.0.0_rc1 1.0.0_rc2 9999: runc container cli tools
+app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator

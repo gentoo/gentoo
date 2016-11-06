@@ -557,6 +557,8 @@ app-emulation/rkt:rkt_stage1_kvm_lkvm - Build stage1-kvm-lkvm.aci
 app-emulation/rkt:rkt_stage1_kvm_qemu - Build stage1-kvm-qemu.aci
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/runc:apparmor - Enable AppArmor support.
+app-emulation/runv:libvirt - Enable support for KVM via libvirt
+app-emulation/runv:xen - Enable support for the Xen Hypervisor
 app-emulation/spice:lz4 - Enable support for LZ4 compression using app-arch/lz4
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
 app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
