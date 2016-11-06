@@ -26,6 +26,9 @@
     <remote-id type="cpan-module">DBIx::Class::AccessorGroup</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Admin</remote-id>
     <remote-id type="cpan-module">DBIx::Class::CDBICompat</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::Iterator</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::SQLTransformer</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::Tied::ColumnValue</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Core</remote-id>
     <remote-id type="cpan-module">DBIx::Class::Cursor</remote-id>
     <remote-id type="cpan-module">DBIx::Class::DB</remote-id>
