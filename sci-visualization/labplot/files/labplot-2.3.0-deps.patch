@@ -1,0 +1,49 @@
+From 41c3e23837adb8df641024901d3aee9dea2ded9d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 6 Nov 2016 00:37:36 +0100
+Subject: [PATCH 1/2] Add missing dependencies
+
+REVIEW: 129344
+---
+ CMakeLists.txt | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9dc90f7..4db135f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,8 +4,29 @@ cmake_minimum_required(VERSION 2.8.12)
+ find_package(ECM 1.3.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg Concurrent)
+-find_package(KF5 REQUIRED COMPONENTS I18n KDELibs4Support)
++find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
++	Concurrent
++	Gui
++	PrintSupport
++	Svg
++	Widgets
++)
++find_package(KF5 REQUIRED COMPONENTS
++	Archive
++	Completion
++	Config
++	ConfigWidgets
++	CoreAddons
++	DocTools
++	I18n
++	IconThemes
++	KDELibs4Support
++	KIO
++	NewStuff
++	TextWidgets
++	WidgetsAddons
++	XmlGui
++)
+ 
+ include(FeatureSummary)
+ include(ECMInstallIcons)
+-- 
+2.7.3
+
