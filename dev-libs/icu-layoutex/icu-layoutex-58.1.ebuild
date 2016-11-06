@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils flag-o-matic toolchain-funcs autotools multilib-minimal
 
-DESCRIPTION="International Components for Unicode"
+DESCRIPTION="External layout part of International Components for Unicode"
 HOMEPAGE="http://www.icu-project.org/"
 SRC_URI="http://download.icu-project.org/files/icu4c/${PV/_/}/icu4c-${PV//./_}-src.tgz"
 
