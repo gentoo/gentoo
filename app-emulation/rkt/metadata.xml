@@ -18,7 +18,9 @@
 		<flag name="actool">Install the actool for ACI manipulation</flag>
 		<flag name="rkt_stage1_coreos">Download and use a prebuilt stage1.aci from CoreOS</flag>
 		<flag name="rkt_stage1_fly">Build stage1-fly.aci</flag>
-		<flag name="rkt_stage1_kvm">This flag has been replaced by the rkt_stage1_kvm_* flags</flag>
+		<flag name="rkt_stage1_kvm" restrict="&lt;app-emulation/rkt-1.15.0">
+			This flag has been replaced by the rkt_stage1_kvm_* flags
+		</flag>
 		<flag name="rkt_stage1_kvm_lkvm">Build stage1-kvm-lkvm.aci</flag>
 		<flag name="rkt_stage1_kvm_qemu">Build stage1-kvm-qemu.aci</flag>
 		<flag name="rkt_stage1_src">Build the stage1.aci from source</flag>
