@@ -87,7 +87,7 @@ app-admin/drush 6.5.0 6.7.0: Command line shell and scripting interface for Drup
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
-app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 9999: Framework to store config parameters in hierarchical key-value pairs
+app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.14 1.15: Rebuild Emacs packages
 app-admin/entr 3.6: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
@@ -3652,7 +3652,7 @@ dev-haskell/rfc5051 0.1.0.3: Simple unicode collation as per RFC5051
 dev-haskell/riff 0.3.0.1: RIFF parser for Haskell
 dev-haskell/safe 0.3.9: Library of safe (exception free) functions
 dev-haskell/safesemaphore 0.10.1: Much safer replacement for QSemN, QSem, and SampleVar
-dev-haskell/sandi 0.3.6: Data encoding library
+dev-haskell/sandi 0.3.6 0.4.0: Data encoding library
 dev-haskell/scientific 0.3.3.8 0.3.4.4 0.3.4.6: Numbers represented using scientific notation
 dev-haskell/securemem 0.1.3 0.1.9: abstraction to an auto scrubbing and const time eq, memory chunk
 dev-haskell/semigroupoid-extras 3.0.1 4.0 5: Semigroupoids that depend on PolyKinds
@@ -10171,7 +10171,7 @@ dev-vcs/cvsq 0.4.4: A tool that enables developers to work comfortably offline w
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
@@ -11682,7 +11682,6 @@ kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
-kde-base/systemsettings 4.11.22-r2: System settings utility
 kde-frameworks/attica 5.26.0 5.27.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.26.0-r2 5.27.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.26.0 5.27.0: Qt wrapper for Bluez 5 DBus API
@@ -11901,7 +11900,7 @@ kde-plasma/plasma-workspace-wallpapers 5.7.5 5.8.3: Additional wallpapers for th
 kde-plasma/polkit-kde-agent 5.7.5 5.8.3: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 4.11.22 5.7.5 5.8.3: Power management for KDE Plasma Shell
 kde-plasma/sddm-kcm 5.7.5 5.8.3: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.7.5 5.8.3: System settings utility
+kde-plasma/systemsettings 4.11.22-r2 5.7.5 5.8.3: System settings utility
 kde-plasma/user-manager 5.7.5 5.8.3: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
@@ -16138,7 +16137,7 @@ sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.8.0-r2 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
-sci-libs/opencascade 6.7.1 6.8.0 6.9.0 6.9.1: Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 6.7.1 6.8.0 6.9.0 6.9.1: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openfoam-bin 1.6: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openlibm 0.2 0.3: High quality system independent, open source libm
