@@ -469,6 +469,8 @@ app-emulation/ganeti:multiple-users - Enable support for running VMs as differen
 app-emulation/ganeti:rbd - Enable rados block device support via sys-cluster/ceph
 app-emulation/ganeti:restricted-commands - Enable restricted commands in the node daemon
 app-emulation/ganeti:xen - Enable Xen support
+app-emulation/hyperd:libvirt - Enable support for KVM via libvirt
+app-emulation/hyperd:xen - Enable support for the Xen Hypervisor
 app-emulation/libguestfs:erlang - Build Erlang bindings
 app-emulation/libguestfs:fuse - Enable image mount support via fuse
 app-emulation/libguestfs:inspect-icons - Use media-gfx/icoutilsfor acces icon file in image and inspect it

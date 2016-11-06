@@ -1313,6 +1313,7 @@ app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.06 3.08 3.09 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
+app-emulation/hyperd 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libguestfs 1.26.1 1.28.3 1.28.5 1.28.5-r1 1.28.5-r2: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
