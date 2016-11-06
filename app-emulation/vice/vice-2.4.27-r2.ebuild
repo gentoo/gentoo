@@ -85,12 +85,18 @@ DEPEND="${RDEPEND}
 	x11-proto/videoproto
 	nls? ( sys-devel/gettext )"
 
-PATCH=(
+PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 )
 	#"${FILESDIR}"/vice_rath.txt
 
 src_prepare() {
+	if use ffmpeg && has_version ">=media-video/ffmpeg-3" ; then
+		PATCHES+=(
+			"${FILESDIR}"/${PN}-31580-ffmpeg-build.patch
+		)
+	fi
+
 	default
 	sed -i \
 		-e 's/building//' \
