@@ -14,7 +14,7 @@ LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 libressl p2p ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
-REQUIRED_USE="fasteap? ( !gnutls !ssl ) smartcard? ( ssl )"
+REQUIRED_USE="fasteap? ( !ssl ) smartcard? ( ssl )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -34,16 +34,16 @@ CDEPEND="dbus? ( sys-apps/dbus )
 		sys-libs/readline:0=
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
-	!ssl? (
 		gnutls? (
-			dev-libs/libgcrypt:*
-			net-libs/gnutls
+			dev-libs/libgcrypt:0=
+			net-libs/gnutls:=
 		)
-		!gnutls? ( dev-libs/libtommath )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
+	!ssl? ( dev-libs/libtommath )
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -72,8 +72,12 @@ Kconfig_style_config() {
 }
 
 pkg_setup() {
-	if use gnutls && use ssl ; then
-		elog "You have both 'gnutls' and 'ssl' USE flags enabled: defaulting to USE=\"ssl\""
+	if use ssl ; then
+		if use gnutls && use libressl ; then
+			elog "You have both 'gnutls' and 'libressl' USE flags enabled: defaulting to USE=\"gnutls\""
+		fi
+	else
+		elog "You have 'ssl' USE flag disabled: defaulting to internal TLS implementation"
 	fi
 }
 
@@ -204,10 +208,12 @@ src_configure() {
 
 	# SSL authentication methods
 	if use ssl ; then
-		Kconfig_style_config TLS openssl
-	elif use gnutls ; then
-		Kconfig_style_config TLS gnutls
-		Kconfig_style_config GNUTLS_EXTRA
+		if use gnutls ; then
+			Kconfig_style_config TLS gnutls
+			Kconfig_style_config GNUTLS_EXTRA
+		else
+			Kconfig_style_config TLS openssl
+		fi
 	else
 		Kconfig_style_config TLS internal
 	fi
