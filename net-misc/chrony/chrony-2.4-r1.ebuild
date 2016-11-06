@@ -20,12 +20,12 @@ REQUIRED_USE="
 CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
-	pps? ( net-misc/pps-tools )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 "
 DEPEND="
 	${CDEPEND}
 	html? ( dev-ruby/asciidoctor )
+	pps? ( net-misc/pps-tools )
 "
 RDEPEND="
 	${CDEPEND}
