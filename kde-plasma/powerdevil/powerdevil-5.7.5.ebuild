@@ -62,7 +62,7 @@ RDEPEND="${DEPEND}
 		)
 	)
 	!kde-plasma/powerdevil:4
-	!kde-base/systemsettings:4[handbook]
+	!kde-plasma/systemsettings:4[handbook]
 "
 
 PATCHES=( "${FILESDIR}/${PN}-5.6.95-wireless-optional.patch" )

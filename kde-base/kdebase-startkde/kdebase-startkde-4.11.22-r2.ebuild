@@ -60,7 +60,7 @@ RDEPEND="
 	$(add_kdebase_dep kstartupconfig)
 	$(add_kdebase_dep kwin)
 	$(add_kdebase_dep plasma-workspace)
-	$(add_kdebase_dep systemsettings)
+	kde-plasma/systemsettings:4
 	x11-apps/mkfontdir
 	x11-apps/xmessage
 	x11-apps/xprop
