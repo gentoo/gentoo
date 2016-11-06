@@ -13,7 +13,7 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+mysql +memcached postgres sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-python/croniter-0.3.4[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
 	!~dev-python/cryptography-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/debtcollector-1.2.0
+	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-2.10.0[${PYTHON_USEDEP}]
