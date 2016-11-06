@@ -1,0 +1,20 @@
+commit 05c925972224afd3fa28f34b9a762364a38f6850
+Author: Markus Raab <elektra@markus-raab.org>
+Date:   Tue May 3 14:25:54 2016 +0200
+
+    add vector kdbtimer
+    
+    fix http://build.libelektra.org:8080/job/elektra-gcc-configure-debian/lastFailedBuild/console
+
+diff --git a/src/bindings/cpp/include/kdbtimer.hpp b/src/bindings/cpp/include/kdbtimer.hpp
+index ae4c242..b7f731e 100644
+--- a/src/bindings/cpp/include/kdbtimer.hpp
++++ b/src/bindings/cpp/include/kdbtimer.hpp
+@@ -13,6 +13,7 @@
+ #include <sstream>
+ #include <string>
+ #include <sys/time.h>
++#include <vector>
+ 
+ #ifdef __GNUC__
+ #define TIMER_NOINLINE __attribute__ ((noinline))
