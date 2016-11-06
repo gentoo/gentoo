@@ -109,7 +109,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/boost-1.55:=
 	dev-libs/expat
 	dev-libs/hyphen
-	dev-libs/icu:=
+	<dev-libs/icu-58:=
 	=dev-libs/liborcus-0.11*
 	dev-libs/librevenge
 	dev-libs/nspr
