@@ -5,4 +5,8 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <maintainer type="project">
+    <email>office@gentoo.org</email>
+    <name>Gentoo Office project</name>
+  </maintainer>
 </pkgmetadata>
