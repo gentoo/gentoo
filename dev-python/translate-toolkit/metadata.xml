@@ -10,6 +10,7 @@
 		<flag name="ical">Support conversion between po and ical files</flag>
 		<flag name="ini">Support conversion between po and ini files</flag>
 		<flag name="subtitles">Support conversion between po and sub files</flag>
+		<flag name="yaml">Support YAML format</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">translate</remote-id>
