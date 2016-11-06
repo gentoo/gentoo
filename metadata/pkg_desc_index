@@ -5516,7 +5516,7 @@ dev-perl/DBD-mysql 4.32.0-r2 4.36.0-r1 4.37.0 4.38.0: MySQL driver for the Perl5
 dev-perl/DBI 1.634.0 1.636.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.700: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.700 0.82.840: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.2.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30: Auto-create NetAddr::IP objects from columns
