@@ -111,7 +111,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	[ "${EROOT}" == "/" ] && pkg_config
 	use emacs && elisp-site-regen
 }
 
