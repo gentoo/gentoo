@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="~amd64"
-IUSE="caps +cmdmon html ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns"
+IUSE="caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
 "
@@ -41,6 +41,8 @@ src_prepare() {
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
 		conf.c doc/*.man.in examples/* || die
+
+	default
 }
 
 src_configure() {
@@ -89,7 +91,6 @@ src_configure() {
 
 src_compile() {
 	emake all docs $(usex html '' 'ADOC=true')
-
 }
 
 src_install() {
