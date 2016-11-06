@@ -8943,7 +8943,7 @@ dev-ruby/amqp 1.5.1 1.6.0: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.5.4-r2: Provides POSIX tarchive management from Ruby programs
-dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.3 7.1.1 7.1.3 7.1.4: Arel is a Relational Algebra for Ruby
+dev-ruby/arel 5.0.1.20140414130214 6.0.3 7.1.1 7.1.3 7.1.4: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.3.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.4 1.5.5: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
@@ -9311,7 +9311,7 @@ dev-ruby/rbpdf-font 1.19.0-r1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3 1.15.2: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.2.0 4.2.2: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.2.0 4.2.2 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.6-r1 2.0.14-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4: A Ruby wrapper for Upskirt

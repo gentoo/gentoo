@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://www.danga.com/memcached/dist/memcached-1.2.6.tar.gz https://www.memcached.org/files/old/memcached-1.2.6.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=34902c6982af515c65969d6688590481
+_md5_=87332961679ff1cf236d0cef8cb584bf
