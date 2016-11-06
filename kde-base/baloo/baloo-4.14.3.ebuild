@@ -12,9 +12,9 @@ IUSE="debug minimal"
 
 DEPEND="
 	$(add_kdeapps_dep kdepimlibs)
-	$(add_kdebase_dep kfilemetadata)
 	dev-libs/qjson
 	=dev-libs/xapian-1.2*[chert]
+	kde-frameworks/kfilemetadata:4
 	sys-apps/attr
 	!<kde-base/nepomuk-4.12.50
 "
