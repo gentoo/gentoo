@@ -13,6 +13,22 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription lang="fr">
+Un gestionnaire d'amorçage pour ordinateur EFI ou UEFI tel que tous les Macs
+contenant un processeur Intel et les PC récents (2011 et après). rEFInd affiche
+un menu d'amorçage montrant tous les gestionnaires d'amorçage sur les
+partitions EFI accessibles et optionnellement les partitions amorçable en BIOS
+sur Macs et les entrées BIOS sur les PC UEFI avec CSM. Les systèmes
+d'exploitation compatibles EFI, incluant Linux, fournissent des gestionnaires
+d'amorçage que rEFInd détecte et démarre. rEFInd peut démarrer les
+gestionnaires d'amorçage EFI Linux tel que ELILO, GRUB Legacy, GRUB 2 ainsi que
+les noyaux 3.3.0 et suivants avec le support EFI stub. Les pilotes EFI pour les
+sytèmes de fichiers ext2/3/4fs, ReiserFS, Btrfs, NTFS, HFS+ et ISO-9660
+permettent à rEFInd de lire les gestionnaires d'amorçage également depuis ces
+systèmes de fichiers. La capacité de rEFInd à détecter les gestionnaires
+d'amorçage au moment de l'exécution le rend très facile à utiliser, en
+particulier associé à des noyau Linux qui fournissent un support EFI stub.
+	</longdescription>
 	<longdescription lang="en">
 A graphical boot manager for EFI- and UEFI-based computers, such as all
 Intel-based Macs and recent (most 2011 and later) PCs. rEFInd presents a
@@ -27,33 +43,6 @@ loaders from these filesystems, too. rEFInd's ability to detect boot
 loaders at runtime makes it very easy to use, particularly when paired with
 Linux kernels that provide EFI stub support.
 	</longdescription>
-	<longdescription lang="fr">
-Un gestionnaire d'amorçage pour ordinateur EFI ou UEFI tel que tous les Macs
-contenant un processeur Intel et les PC récents (2011 et après). rEFInd affiche
-un menu d'amorçage montrant tous les gestionnaires d'amorçage sur les
-partitions EFI accessibles et optionnellement les partitions démarrable en BIOS
-sur Macs et les entrées BIOS sur les PC UEFI avec CSM. Les systèmes
-d'exploitation compatibles EFI, incluant Linux, fournissent des gestionnaires
-d'amorçage que rEFInd détect et démarre. rEFInd peut démarrer les gestionnaires
-d'amorçage EFI Linux tel que ELILO, GRUB Legacy, GRUB 2 ainsi que les noyaux
-3.3.0 et suivants avec le support EFI stub. Les pilotes EFI pour les sytèmes de
-fichiers ext2/3/4fs, ReiserFS, Btrfs, NTFS, HFS+ et ISO-9660 permettent à
-rEFInd de lire les gestionnaires d'amorçage également depuis ces systèmes de
-fichiers. La capacité de rEFInd à détecter les gestionnaires d'amorçage au
-moment de l'exécution le rend très facile à utiliser, en particulier associé à
-des noyau Linux qui fournissent un support EFI stub.
-	</longdescription>
-	<use lang="en">
-		<flag name="ext2">Builds the EFI binary ext2 filesystem driver</flag>
-		<flag name="ext4">Builds the EFI binary ext4 filesystem driver</flag>
-		<flag name="reiserfs">Builds the EFI binary reiserfs filesystem driver</flag>
-		<flag name="iso9660">Builds the EFI binary iso9660 filesystem driver</flag>
-		<flag name="hfs">Builds the EFI binary hfs filesystem driver</flag>
-		<flag name="btrfs">Builds the EFI binary btrfs filesystem driver</flag>
-		<flag name="ntfs">Builds the EFI binary ntfs filesystem driver</flag>
-		<flag name="gnuefi">Compile using GNU-EFI instead of Tianocore</flag>
-		<flag name="doc">Install document files</flag>
-	</use>
 	<use lang="fr">
 		<flag name="ext2">Construire le gestionnaire EFI pour le système de fichier ext2</flag>
 		<flag name="ext4">Construire le gestionnaire EFI pour le système de fichier ext4</flag>
@@ -63,7 +52,16 @@ des noyau Linux qui fournissent un support EFI stub.
 		<flag name="btrfs">Construire le gestionnaire EFI pour le système de fichier btrfs</flag>
 		<flag name="ntfs">Construire le gestionnaire EFI pour le système de fichier ntfs</flag>
 		<flag name="gnuefi">Compiler en utilisant GNU-EFI au lieu de Tianocore</flag>
-		<flag name="doc">Installer les fichiers de documentation</flag>
+	</use>
+	<use lang="en">
+		<flag name="ext2">Builds the EFI binary ext2 filesystem driver</flag>
+		<flag name="ext4">Builds the EFI binary ext4 filesystem driver</flag>
+		<flag name="reiserfs">Builds the EFI binary reiserfs filesystem driver</flag>
+		<flag name="iso9660">Builds the EFI binary iso9660 filesystem driver</flag>
+		<flag name="hfs">Builds the EFI binary hfs filesystem driver</flag>
+		<flag name="btrfs">Builds the EFI binary btrfs filesystem driver</flag>
+		<flag name="ntfs">Builds the EFI binary ntfs filesystem driver</flag>
+		<flag name="gnuefi">Compile using GNU-EFI instead of Tianocore</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">refind</remote-id>
