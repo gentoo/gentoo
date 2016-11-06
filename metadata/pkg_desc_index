@@ -11651,7 +11651,6 @@ kde-apps/syndication 16.08.2: Library for parsing RSS and Atom feeds
 kde-apps/thumbnailers 16.04.3 16.08.2: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 16.04.3 16.08.2: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.2: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-base/baloo 4.14.3: Next generation of the Nepomuk project
 kde-base/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-base/kactivities 4.13.3-r2: KDE Activity Manager
 kde-base/katepart 4.14.3: KDE Editor KPart
@@ -11686,7 +11685,7 @@ kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
 kde-frameworks/attica 5.26.0 5.27.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.26.0-r2 5.27.0: Framework for searching and managing metadata
+kde-frameworks/baloo 4.14.3 5.26.0-r2 5.27.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.26.0 5.27.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.26.0 5.27.0: Breeze SVG icon theme
 kde-frameworks/extra-cmake-modules 5.26.0 5.27.0: Extra modules and scripts for CMake
