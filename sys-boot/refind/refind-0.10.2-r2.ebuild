@@ -147,7 +147,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "rEFInd has been built and installed into /usr/share/${P}"
+	elog "rEFInd has been built and installed into ${EROOT%/}/usr/share/${P}"
 	elog "You will need to use the command 'refind-install' to install"
 	elog "the binaries into your EFI System Partition"
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
@@ -158,7 +158,7 @@ pkg_postinst() {
 		elog " sys-block/parted for automatic ESP location and mount"
 		elog ""
 		elog "A sample configuration can be found at"
-		elog "/usr/share/${P}/refind/refind.conf-sample"
+		elog "${EROOT%/}/usr/share/${P}/refind/refind.conf-sample"
 	else
 		ewarn "Note that this will not update any EFI binaries on your EFI"
 		ewarn "System Partition - this needs to be done manually."

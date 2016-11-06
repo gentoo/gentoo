@@ -148,7 +148,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "rEFInd has been built and installed into /usr/share/${P}"
+	elog "rEFInd has been built and installed into ${EROOT%/}/usr/share/${P}"
 	elog "You will need to use the command 'refind-install' to install"
 	elog "the binaries into your EFI System Partition"
 	elog ""
@@ -161,7 +161,7 @@ pkg_postinst() {
 		elog "refind-mkdefault requires >=dev-lang/python-3"
 		elog ""
 		elog "A sample configuration can be found at"
-		elog "/usr/share/${P}/refind/refind.conf-sample"
+		elog "${EROOT%}/usr/share/${P}/refind/refind.conf-sample"
 	else
 		if ! version_is_at_least "0.10.3" "${REPLACING_VERSIONS}"; then
 			elog "The new refind-mkdefault script requires >=dev-lang/python-3"
