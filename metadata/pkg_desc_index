@@ -15162,7 +15162,7 @@ net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written 
 net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
-net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory services to local cache
+net-nds/nsscache 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory services to local cache
 net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43 2.4.43-r1 2.4.44: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
