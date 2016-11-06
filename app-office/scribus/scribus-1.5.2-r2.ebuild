@@ -4,6 +4,7 @@
 
 EAPI=6
 
+CMAKE_MIN_VERSION="3.2"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
@@ -32,8 +33,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	app-text/libmspub
-	>=app-text/poppler-0.19.0:=
-	dev-libs/boost
+	app-text/poppler:=
 	dev-libs/hyphen
 	dev-libs/librevenge
 	dev-libs/libxml2
@@ -50,14 +50,14 @@ COMMON_DEPEND="
 	media-libs/lcms:2
 	media-libs/libcdr
 	media-libs/libpagemaker
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	media-libs/libvisio
 	media-libs/tiff:0
 	net-print/cups
 	sys-libs/zlib[minizip]
 	virtual/jpeg:0=
 	>=x11-libs/cairo-1.10.0[X,svg]
-	boost? ( dev-libs/boost )
+	boost? ( >=dev-libs/boost-1.62:= )
 	hunspell? ( app-text/hunspell )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	osg? ( dev-games/openscenegraph )
@@ -74,11 +74,15 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
 	"${FILESDIR}"/${P}-fpic.patch
-	)
+	"${FILESDIR}"/${P}-cmake-qt57.patch
+	"${FILESDIR}"/${P}-qt57-build.patch
+	"${FILESDIR}"/${P}-cxx-build.patch
+	"${FILESDIR}"/${P}-gcc6-warn.patch
+)
 
 src_prepare() {
 	rm -r codegen/cheetah || die
-	cat > cmake/modules/FindZLIB.cmake <<- EOF
+	cat > cmake/modules/FindZLIB.cmake <<- EOF || die
 	find_package(PkgConfig)
 	pkg_check_modules(ZLIB minizip zlib)
 	SET( ZLIB_LIBRARY \${ZLIB_LIBRARIES} )
@@ -95,10 +99,6 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
-
-	if has_version ">=dev-qt/qtcore-5.7.0" ; then
-		append-cxxflags "-std=c++11" #bug 591948
-	fi
 
 	cmake-utils_src_prepare
 }
@@ -133,8 +133,9 @@ src_configure() {
 		-DPYTHON_INCLUDE_PATH="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DWANT_DISTROBUILD=ON
-		-DDOCDIR="/usr/share/doc/${PF}/"
+		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}/"
 		-DWANT_GUI_LANG="${langs#;};en"
+		-DWANT_CPP11=ON
 		-DWITH_PODOFO="$(usex pdf)"
 		-DWITH_BOOST="$(usex boost)"
 		-DWANT_GRAPHICSMAGICK="$(usex graphicsmagick)"
@@ -156,23 +157,23 @@ src_install() {
 	for lang in ${IUSE_LINGUAS}; do
 		if ! use linguas_${lang}; then
 			_lang=$(translate_lang)
-			safe_delete "${ED}"/usr/share/man/${_lang}
+			safe_delete "${ED%/}"/usr/share/man/${_lang}
 		fi
 	done
 
 	if ! use scripts; then
-		rm "${ED}"/usr/share/scribus/scripts/*.py || die
+		rm "${ED%/}"/usr/share/scribus/scripts/*.py || die
 	elif ! use tk; then
-		rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
+		rm "${ED%/}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
 	fi
 
 	use scripts && \
-		python_fix_shebang "${ED}"/usr/share/scribus/scripts && \
-		python_optimize "${ED}"/usr/share/scribus/scripts
+		python_fix_shebang "${ED%/}"/usr/share/scribus/scripts && \
+		python_optimize "${ED%/}"/usr/share/scribus/scripts
 
-	mv "${ED}"/usr/share/doc/${PF}/{en,html} || die
-	ln -sf html "${ED}"/usr/share/doc/${PF}/en || die
-	cat >> "${T}"/COPYING <<- EOF
+	mv "${ED%/}"/usr/share/doc/${PF}/{en,html} || die
+	ln -sf html "${ED%/}"/usr/share/doc/${PF}/en || die
+	cat >> "${T}"/COPYING <<- EOF || die
 	${PN} is licensed under the "${LICENSE}".
 	Please visit https://www.gnu.org/licenses/gpl-2.0.html for the complete license text.
 	EOF
