@@ -39,16 +39,17 @@ DEPEND="
 	)
 "
 
-DOCS=( ChangeLog THANKS TODO )
+DOCS=(
+	ChangeLog
+	THANKS
+	TODO
+)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18.9-strerror.patch
+	"${FILESDIR}"/${PN}-1.18.12-flags.patch
+)
 
 src_prepare() {
-	# do not expect Debian's gzip --rsyncable extension
-	eapply "${FILESDIR}"/${PN}-1.17.0-gzip-rsyncable.patch
-
-	eapply "${FILESDIR}"/${PN}-1.17.1-flags.patch
-
-	eapply "${FILESDIR}"/${PN}-1.18.9-strerror.patch
-
 	# Force the use of the running bash for get-version (this file is never
 	# installed, so no need to worry about hardcoding a temporary bash)
 	sed -i -e '1c\#!'"${BASH}" get-version || die
@@ -67,7 +68,7 @@ src_prepare() {
 
 	use nls && strip-linguas -i po
 
-	eapply_user
+	default
 
 	eautoreconf
 }
@@ -99,4 +100,6 @@ src_install() {
 
 	keepdir /usr/$(get_libdir)/db/methods/{mnt,floppy,disk}
 	keepdir /usr/$(get_libdir)/db/{alternatives,info,methods,parts,updates}
+
+	prune_libtool_files
 }
