@@ -14,7 +14,7 @@ https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
@@ -137,7 +137,7 @@ RDEPEND="
 	)
 	iscsi? (
 		sys-fs/lsscsi
-		>=sys-block/open-iscsi-2.0.873-r2
+		>=sys-block/open-iscsi-2.0.873-r1
 	)"
 
 #PATCHES=(
