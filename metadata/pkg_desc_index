@@ -7441,7 +7441,7 @@ dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hyper-h2 2.4.0 2.4.1 2.5.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
-dev-python/hypothesis 1.19.0 3.4.2 3.5.3: A library for property based testing
+dev-python/hypothesis 1.19.0 3.4.2 3.5.3 3.6.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -8241,7 +8241,7 @@ dev-python/routes 2.1-r1 2.2 2.3.1: A re-implementation of Rails routes system, 
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rsa 3.1.4-r1 3.2 3.2.3 3.2.3-r1 3.3: Pure-Python RSA implementation
+dev-python/rsa 3.1.4-r1 3.2 3.2.3 3.2.3-r1 3.3 3.4.2: Pure-Python RSA implementation
 dev-python/rst-linker 1.6 1.7: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtf2xml 1.33-r1: Converts a Microsoft RTF file to structured XML
@@ -9969,7 +9969,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.22 2.23 2.26 2.27: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.26 2.27 2.28: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.6: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3 5.0.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
