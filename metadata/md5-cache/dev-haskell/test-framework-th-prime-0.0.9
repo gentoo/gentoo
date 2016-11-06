@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/cpphs-0.2.1:=[profile?] dev-haskell/haskell-src-exts:=[profile?] dev-haskell/test-framework:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.6 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Template Haskell for test framework
+EAPI=6
+HOMEPAGE=http://hackage.haskell.org/package/test-framework-th-prime
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/cpphs-0.2.1:=[profile?] dev-haskell/haskell-src-exts:=[profile?] dev-haskell/test-framework:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.0.9
+SRC_URI=mirror://hackage/packages/archive/test-framework-th-prime/0.0.9/test-framework-th-prime-0.0.9.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a99bdf80bbb8bd379004d8287a0616db

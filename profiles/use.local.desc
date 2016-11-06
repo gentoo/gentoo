@@ -1600,6 +1600,7 @@ dev-haskell/yaml:system-libyaml - Use system libyaml instead on generic one
 dev-haskell/yesod-auth:network-uri - Get Network.URI from the network-uri package
 dev-haskell/yesod-form:network-uri - Get Network.URI from the network-uri package
 dev-haskell/zip-archive:executable - Build the Zip executable.
+dev-haskell/zlib:non-blocking-ffi - Execute FFI calls in the context of haskell thread.
 dev-java/ant:antlr - Enable ANTLR Ant tasks
 dev-java/ant:bcel - Enable bcel (bytecode manipulation) Ant tasks
 dev-java/ant:commonslogging - Enable commons-logging Ant tasks
@@ -3271,7 +3272,6 @@ kde-base/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/klipper:prison - Enable support for barcodes/QRcodes
-kde-base/kwin:gles - Enable support for GLES.
 kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
@@ -3331,6 +3331,7 @@ kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kwallet-pam:oldwallet - Enable legacy support for kde-apps/kwalletd
+kde-plasma/kwin:gles - Enable support for GLES
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
