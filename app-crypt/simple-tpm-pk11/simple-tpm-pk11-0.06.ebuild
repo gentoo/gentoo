@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Simple PKCS11 provider for TPM chips"
 HOMEPAGE="https://github.com/ThomasHabets/simple-tpm-pk11"
@@ -32,6 +32,6 @@ RDEPEND="${DEPEND}
 	net-misc/openssh[-X509]"
 
 src_prepare() {
-	epatch_user
+	eapply_user
 	eautoreconf
 }
