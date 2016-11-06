@@ -2,14 +2,14 @@ DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
 DESCRIPTION=A smart CLI mangler for package.* files
 EAPI=5
-HOMEPAGE=https://bitbucket.org/mgorny/flaggie/
+HOMEPAGE=https://github.com/mgorny/flaggie/
 IUSE=python_targets_pypy python_targets_python2_7 python_targets_python3_4
 KEYWORDS=amd64 arm ~hppa ~mips ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=sys-apps/portage[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-)] python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 python_targets_python3_4 )
 SLOT=0
-SRC_URI=https://www.bitbucket.org/mgorny/flaggie/downloads/flaggie-0.2.1.tar.bz2
+SRC_URI=https://github.com/mgorny/flaggie/releases/download/flaggie-0.2.1/flaggie-0.2.1.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=b3d32a65b3b8ededf68b738ad3568387
+_md5_=bcfdcfe63a77059b6a402a46a2bcd4ff
