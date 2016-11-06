@@ -17,12 +17,12 @@ IUSE="berkdb sqlite tokyocabinet"
 
 DEPEND="
 	virtual/libiconv
-	berkdb?  ( >=sys-libs/db-3.2 )
+	berkdb?  ( >=sys-libs/db-3.2:* )
 	!berkdb? (
 		sqlite?  ( >=dev-db/sqlite-3.6.22 )
 		!sqlite? (
 			tokyocabinet? ( dev-db/tokyocabinet )
-			!tokyocabinet? ( >=sys-libs/db-3.2 )
+			!tokyocabinet? ( >=sys-libs/db-3.2:* )
 		)
 	)
 	sci-libs/gsl:=
