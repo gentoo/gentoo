@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="High-performance, distributed memory object caching system"
 HOMEPAGE="http://memcached.org/"
 SRC_URI="http://www.danga.com/memcached/dist/${MY_P}.tar.gz
-         https://www.memcached.org/files/old/${MY_P}.tar.gz"
+	https://www.memcached.org/files/old/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc ~sparc-fbsd x86 ~x8
 IUSE="nptl test"
 
 RDEPEND=">=dev-libs/libevent-1.4
-		 dev-lang/perl"
+		dev-lang/perl"
 DEPEND="${RDEPEND}
 		test? ( virtual/perl-Test-Harness >=dev-perl/Cache-Memcached-1.24 )"
 
