@@ -338,7 +338,7 @@ app-arch/zstd 1.1.0: zstd fast compression library
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
-app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
+app-backup/backup-manager 0.7.5 0.7.10.1-r2 0.7.12: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r2 3.3.1-r2: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r4 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.0 7.4.0-r1 7.4.1 7.4.2 7.4.3 7.4.4: Featureful client/server network backup suite
