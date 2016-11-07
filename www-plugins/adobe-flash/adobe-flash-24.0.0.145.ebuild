@@ -37,7 +37,7 @@ RESTRICT="strip mirror"
 
 RDEPEND="
 	!www-plugins/chrome-binary-plugins[flash(-)]
-	npapi? ( !!www-plugins/adobe-flash:0 )
+	npapi? ( !www-plugins/adobe-flash:0 )
 "
 
 S="${WORKDIR}"
