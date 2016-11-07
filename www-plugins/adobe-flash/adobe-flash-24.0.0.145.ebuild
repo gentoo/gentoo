@@ -61,26 +61,17 @@ src_unpack() {
 	multilib_parallel_foreach_abi multilib_src_unpack
 }
 
-src_prepare() {
-	# XXX: if we find a directory named "lib" we know it should be "lib32"
-	for af_dir in $(find "${WORKDIR}" -name lib); do
-		mv -v ${af_dir} ${af_dir}32
-	done
-
-	default
-}
-
 multilib_src_install() {
+	local pkglibdir=lib
+	[[ -d usr/lib64 ]] && pkglibdir=lib64
+
 	if use npapi; then
 		# PLUGINS_DIR comes from nsplugins.eclass
 		exeinto /usr/$(get_libdir)/${PLUGINS_DIR}
-		doexe usr/$(get_libdir)/flash-plugin/libflashplayer.so
+		doexe usr/${pkglibdir}/flash-plugin/libflashplayer.so
 
 		if multilib_is_native_abi; then
 			if use kde; then
-				local pkglibdir=lib
-				[[ -d usr/lib64 ]] && pkglibdir=lib64
-
 				exeinto /usr/$(get_libdir)/kde4
 				doexe usr/${pkglibdir}/kde4/kcm_adobe_flash_player.so
 				insinto /usr/share/kde4/services
@@ -108,9 +99,9 @@ multilib_src_install() {
 
 	if use ppapi; then
 		exeinto /usr/$(get_libdir)/chromium-browser/PepperFlash
-		doexe usr/$(get_libdir)/flash-plugin/libpepflashplayer.so
+		doexe usr/${pkglibdir}/flash-plugin/libpepflashplayer.so
 		insinto /usr/$(get_libdir)/chromium-browser/PepperFlash
-		doins usr/$(get_libdir)/flash-plugin/manifest.json
+		doins usr/${pkglibdir}/flash-plugin/manifest.json
 
 		if multilib_is_native_abi; then
 			dodir /etc/chromium
