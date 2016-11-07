@@ -5522,7 +5522,7 @@ dev-perl/DBIx-Class 0.82.700 0.82.840: Extensible and flexible object <-> relati
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.2.0 0.3.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30: Auto-create NetAddr::IP objects from columns
-dev-perl/DBIx-Class-InflateColumn-Object-Enum 0.40.0: Allows a DBIx::Class user to define a Object::Enum column
+dev-perl/DBIx-Class-InflateColumn-Object-Enum 0.40.0 0.60.0: Allows a DBIx::Class user to define a Object::Enum column
 dev-perl/DBIx-Class-UserStamp 0.110.0: Automatically set update and create user id fields
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.440.0 0.450.0: Database-independent schema objects
@@ -9993,7 +9993,7 @@ dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching betwee
 dev-util/kscope 1.9.4-r1: Source Editing Environment based on Qt
 dev-util/kup 0.3.4: kernel.org uploader tool
 dev-util/lcov 1.9-r1 1.10 1.11: A graphical front-end for GCC's coverage testing tool gcov
-dev-util/leaktracer 2.4-r2: trace and analyze memory leaks in C++ programs
+dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 9999: The LLVM debugger
 dev-util/lockrun 20120508: Lockrun - runs cronjobs with overrun protection
