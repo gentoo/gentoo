@@ -6981,7 +6981,7 @@ dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aiodns 1.1.1: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5: http client/server for asyncio
+dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5 1.1.1: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7 0.7.8: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
@@ -7024,7 +7024,7 @@ dev-python/astropy-helpers 1.1.2 1.2: Helpers for Astropy and Affiliated package
 dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astronomical resources
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
-dev-python/async_timeout 1.0.0: Timeout context manager for asyncio programs
+dev-python/async_timeout 1.0.0 1.1.0: Timeout context manager for asyncio programs
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
@@ -12718,7 +12718,7 @@ media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any gra
 media-libs/libgltf 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.8 2.5.10: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
-media-libs/libgroove 4.3.0: Streaming audio processing library.
+media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libhdhomerun 20140121 20150826: SiliconDust HDHomeRun Utilties
 media-libs/libicns 0.7.1 0.8.0 0.8.1: A library for manipulating MacOS X .icns icon format
