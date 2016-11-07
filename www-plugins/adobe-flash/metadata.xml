@@ -10,5 +10,7 @@
 </maintainer>
 <use>
 <flag name="kde">Install a KCM plugin for configuring flash player preferences</flag>
+<flag name="npapi">Install the Netscape Flash API plugin (for Firefox and similar browsers</flag>
+<flag name="ppapi">Install the Pepper Flash API plugin (for Chrome and similar browsers</flag>
 </use>
 </pkgmetadata>
