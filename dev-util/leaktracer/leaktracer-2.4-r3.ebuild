@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 # Upstream-package has no version in it's name.
 # We therefore repackage it directly, together with the patches.
