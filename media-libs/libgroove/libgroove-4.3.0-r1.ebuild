@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="+chromaprint libav +loudness +sound static-libs"
 DEPEND="libav? ( media-video/libav )
 	!libav? ( media-video/ffmpeg )
 	chromaprint? ( media-libs/chromaprint )
-	loudness? ( media-libs/libebur128[speex] )
+	loudness? ( media-libs/libebur128[speex(+)] )
 	sound? ( media-libs/libsdl2[sound] )"
 RDEPEND="${DEPEND}"
 
