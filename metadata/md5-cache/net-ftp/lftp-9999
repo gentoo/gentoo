@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) verify-file? ( dev-perl/String-CRC32 virtual/perl-Digest-MD5 ) dev-libs/gnulib =sys-devel/libtool-2* app-arch/xz-utils nls? ( sys-devel/gettext ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) verify-file? ( dev-perl/String-CRC32 virtual/perl-Digest-MD5 ) dev-libs/gnulib =sys-devel/libtool-2* app-arch/xz-utils nls? ( >=sys-devel/gettext-0.19 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A sophisticated ftp/sftp/http/https/torrent client and file transfer program
-EAPI=5
-HOMEPAGE=http://lftp.yar.ru/
-IUSE=convert-mozilla-cookies +gnutls idn libressl nls socks5 +ssl verify-file linguas_cs linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_pl linguas_pt_BR linguas_ru linguas_uk linguas_zh_CN linguas_zh_HK linguas_zh_TW
+EAPI=6
+HOMEPAGE=http://lftp.tech/
+IUSE=convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file linguas_cs linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_pl linguas_pt_BR linguas_ru linguas_uk linguas_zh_CN linguas_zh_HK linguas_zh_TW
 LICENSE=GPL-3
-RDEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) verify-file? ( dev-perl/String-CRC32 virtual/perl-Digest-MD5 )
+RDEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-libs/zlib convert-mozilla-cookies? ( dev-perl/DBI ) idn? ( net-dns/libidn ) socks5? ( >=net-proxy/dante-1.1.12 virtual/pam ) ssl? ( gnutls? ( >=net-libs/gnutls-1.2.3:0= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) verify-file? ( dev-perl/String-CRC32 virtual/perl-Digest-MD5 )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9ade81ad159edec6021018f27aebb8da
+_md5_=5086a052b035c375c718ab5bf603d5de
