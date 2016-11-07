@@ -16340,7 +16340,7 @@ sci-physics/reduze 2.0.9: Program for reducing Feynman integrals
 sci-physics/rivet 2.3.0 2.5.2: Toolkit for validation of Monte Carlo HEP event generators
 sci-physics/root 5.34.26 5.34.32 5.34.36 6.04.06: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
-sci-physics/siscone 2.0.6: Hadron Seedless Infrared-Safe Cone jet algorithm
+sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0: Toolkit for High Energy Physics Event Generation
 sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data Analysis
