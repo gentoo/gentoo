@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=net-libs/libpcap test? ( dev-lang/perl ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Crackle cracks BLE Encryption (AKA Bluetooth Smart)
+EAPI=5
+HOMEPAGE=http://lacklustre.net/projects/crackle/
+IUSE=test
+LICENSE=BSD
+RDEPEND=net-libs/libpcap
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4ec2f5e3b0a4891aac4c687b104b0994
