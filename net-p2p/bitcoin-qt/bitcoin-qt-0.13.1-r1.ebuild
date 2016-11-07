@@ -108,6 +108,7 @@ src_install() {
 	if use kde; then
 		insinto /usr/share/kde4/services
 		doins contrib/debian/bitcoin-qt.protocol
+		dosym "../kde4/services/bitcoin-qt.protocol" "/usr/share/kservices5/bitcoin-qt.protocol"
 	fi
 }
 
