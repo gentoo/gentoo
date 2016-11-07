@@ -8065,6 +8065,8 @@ www-misc/zoneminder:gcrypt - ...
 www-misc/zoneminder:openssl - ...
 www-misc/zoneminder:vlc - Enable using media-libs/vlc for streaming from cameras
 www-plugins/adobe-flash:kde - Install a KCM plugin for configuring flash player preferences
+www-plugins/adobe-flash:npapi - Install the Netscape Flash API plugin (for Firefox and similar browsers
+www-plugins/adobe-flash:ppapi - Install the Pepper Flash API plugin (for Chrome and similar browsers
 www-plugins/chrome-binary-plugins:widevine - Install the Widevine DRM library
 www-plugins/freshplayerplugin:gles2 - Use system GLESv2 libraries instead of ANGLE for shader translation
 www-plugins/freshplayerplugin:gtk3 - Build with GTK+ 3 instead of GTK+ 2

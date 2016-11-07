@@ -12529,7 +12529,7 @@ media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.4 1.6: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/wally 2.4.5: A Qt4/KDE4 wallpaper changer
-media-gfx/wings 1.1.1 1.5.4-r2 2.0.5 2.1: Wings 3D is an advanced subdivision modeler
+media-gfx/wings 1.1.1 1.5.4-r2 2.0.5 2.1 2.1.2: Wings 3D is an advanced subdivision modeler
 media-gfx/wkhtmltopdf 0.12.1.2 0.12.2.1: Convert html to pdf (and various image formats) using webkit
 media-gfx/xdot 0.5 0.6 0.7 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
@@ -18031,7 +18031,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.643 23.0.0.205: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.643 23.0.0.205 24.0.0.145: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.90 55.0.2883.35_beta 56.0.2906.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
