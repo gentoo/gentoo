@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-inherit golang-build
 
 KEYWORDS="~amd64"
 EGO_PN="github.com/odeke-em/drive/..."
@@ -38,7 +37,7 @@ https://github.com/skratchdot/open-golang/archive/75fb7ed4208cf72d323d7d02fd1a59
 DESCRIPTION="Google Drive client for the commandline"
 HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
-SLOT="0/${PVR}"
+SLOT="0"
 IUSE=""
 
 get_archive_go_package() {
@@ -103,14 +102,5 @@ src_compile() {
 
 src_install() {
 	dodoc "${S}/src/${EGO_PN%/*}/README.md"
-	golang_install_pkgs
-}
-
-golang_install_pkgs() {
-	insopts -m0644 -p # preserve timestamps for bug 551486
 	dobin "${S}/bin/drive"{,-server}
-	insinto "$(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")"
-	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
-	insinto "$(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")"
-	doins -r "${S}"/src/${EGO_PN%/*}
 }
