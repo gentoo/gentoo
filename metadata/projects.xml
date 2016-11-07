@@ -649,6 +649,7 @@
     <url>https://wiki.gentoo.org/wiki/Project:ComRes</url>
     <description>Gentoo Community Resources is an umbrella project comprising the Recruiters, Retirement and Comminity Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
     <subproject ref="comrel@gentoo.org"/>
+    <subproject ref="mentors@gentoo.org"/>
     <subproject ref="recruiters@gentoo.org"/>
   </project>
   <project>
@@ -2113,6 +2114,21 @@
       <email>tomka@gentoo.org</email>
       <name>Thomas Kahle</name>
       <role>Symbolic computation</role>
+    </member>
+  </project>
+  <project>
+    <email>mentors@gentoo.org</email>
+    <name>Mentors</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Mentors</url>
+    <description>The Mentors project acts as a matchmaking service between prospective
+developers and volunteer mentors.</description>
+    <member>
+      <email>amynka@gentoo.org</email>
+      <name>Amy Winston</name>
+    </member>
+    <member>
+      <email>gokturk@gentoo.org</email>
+      <name>Göktürk Yüksek</name>
     </member>
   </project>
   <project>
