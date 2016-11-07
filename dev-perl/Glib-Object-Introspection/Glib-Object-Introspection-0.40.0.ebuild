@@ -6,7 +6,7 @@ EAPI=6
 
 DIST_AUTHOR=XAOC
 DIST_VERSION=0.040
-inherit perl-module
+inherit perl-module xdg-utils
 
 DESCRIPTION="Dynamically create Perl language bindings"
 
@@ -26,3 +26,7 @@ DEPEND="
 	>=dev-perl/extutils-pkgconfig-1.0.0
 	${RDEPEND}
 "
+
+pkg_setup() {
+	xdg_environment_reset	# bug #599128
+}
