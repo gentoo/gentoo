@@ -60,11 +60,6 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	cmake-utils_src_prepare
-	rm CMakeModules/{FindLAPACK,FindPkgConfig}.cmake || die
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_HSI=$(usex python)
