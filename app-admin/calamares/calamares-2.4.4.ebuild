@@ -45,7 +45,6 @@ RDEPEND="${DEPEND}
 	app-admin/sudo
 	dev-libs/libatasmart
 	net-misc/rsync
-	sys-apps/gptfdisk
 	>=sys-block/parted-3.0
 	|| ( sys-boot/grub:2 sys-boot/systemd-boot )
 	sys-boot/os-prober
