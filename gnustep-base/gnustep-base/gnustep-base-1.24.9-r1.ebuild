@@ -23,7 +23,6 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 			libressl? ( dev-libs/libressl:= )
 		)
 	)
-	>=dev-libs/openssl-0.9.7:=
 	icu? ( >=dev-libs/icu-4.0:= )
 	!libffi? ( dev-libs/ffcall
 		gnustep-base/gnustep-make[-native-exceptions] )

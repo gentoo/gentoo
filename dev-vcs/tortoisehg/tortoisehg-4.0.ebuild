@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-3.8 <dev-vcs/mercurial-3.10"
+	HG_DEPEND=">=dev-vcs/mercurial-3.9 <dev-vcs/mercurial-4.1"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"

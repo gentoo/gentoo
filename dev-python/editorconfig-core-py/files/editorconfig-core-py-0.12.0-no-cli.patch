@@ -1,0 +1,16 @@
+diff --git a/setup.py b/setup.py
+index 297e9cf..9702911 100644
+--- a/setup.py
++++ b/setup.py
+@@ -10,11 +10,6 @@ setup(
+     license='LICENSE.txt',
+     description='EditorConfig File Locator and Interpreter for Python',
+     long_description=open('README.rst').read(),
+-    entry_points = {
+-        'console_scripts': [
+-            'editorconfig = editorconfig.main:main',
+-        ]
+-    },
+     classifiers=[
+         'Operating System :: OS Independent',
+         'Programming Language :: Python',
