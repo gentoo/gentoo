@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils multilib toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 # Upstream-package has no version in it's name.
 # We therefore repackage it directly, together with the patches.
@@ -15,9 +16,8 @@ SRC_URI="mirror://gentoo/${P}-gentoo_p${PATCH_LEVEL}.tbz2"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND=">=dev-lang/perl-5
+DEPEND="dev-lang/perl
 	sys-devel/gdb"
 RDEPEND="${DEPEND}"
 
@@ -26,31 +26,31 @@ RDEPEND="${DEPEND}"
 # /usr/$(get_libdir) which is not possible before installation
 RESTRICT="test"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	EPATCH_SOURCE="${WORKDIR}/patches"
-	EPATCH_SUFFIX="patch"
-	epatch
+src_prepare() {
+	eapply -p1 "${WORKDIR}/patches/01_all_gcc-cflags.patch"
+	eapply -p0 "${WORKDIR}/patches/05_all_libdir.patch"
+	eapply -p1 "${WORKDIR}/patches/15_all_printf.patch"
 
 	sed -i \
 		-e "s|%LIBDIR%|$(get_libdir)|" \
 		LeakCheck || die "sed for setting lib path failed"
+
+	eapply_user
 }
 
 src_compile() {
-	emake CXX=$(tc-getCXX) || die "emake failed"
+	emake CXX=$(tc-getCXX)
 }
 
 src_install() {
-	dobin LeakCheck leak-analyze || die "dobin failed"
-	dolib.so LeakTracer.so || die "dolib.so failed"
-	dohtml README.html
+	dobin LeakCheck leak-analyze
+	dolib.so LeakTracer.so
 	dodoc README test.cc
+	docinto html
+	dodoc README.html
 }
 
 pkg_postinst() {
 	elog "To use LeakTracer, run LeakCheck my_prog and then leak-analyze my_prog leak.out"
-	elog "Please reffer to README file for more info."
+	elog "Please refer to README file for more info."
 }
