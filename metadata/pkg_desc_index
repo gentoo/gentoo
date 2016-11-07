@@ -7061,7 +7061,7 @@ dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21 3.3.0.22 3.5.0.0: Python
 dev-python/binaryornot 0.4.0: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
-dev-python/bitstring 3.1.1 3.1.5: A pure Python module for creation and analysis of binary data
+dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0 0.10.1 0.10.2: Next generation Python numpy
 dev-python/bleach 1.4.1 1.4.2 1.4.3: an easy whitelist-based HTML-sanitizing tool
