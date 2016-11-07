@@ -14303,6 +14303,7 @@ net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
 net-fs/sshfs 2.5 2.7 2.8: Fuse-filesystem utilizing the sftp service
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
+net-fs/torus 0.1.2: A distributed storage system coordinated through etcd
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
