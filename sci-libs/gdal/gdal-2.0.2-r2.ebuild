@@ -65,7 +65,6 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig:0 )"
 
 AT_M4DIR="${S}/m4"
-MAKEOPTS+=" -j1"
 
 REQUIRED_USE="
 	spatialite? ( sqlite )
@@ -90,6 +89,10 @@ src_prepare() {
 		-e "s:setup.py install:setup.py install --root=\$(DESTDIR):" \
 		-e "s:--prefix=\$(DESTDIR):--prefix=:" \
 		"${S}"/swig/python/GNUmakefile || die
+
+	if use jpeg2k; then
+		epatch "${FILESDIR}"/${P}-jasper.patch
+	fi
 
 	# -soname is only accepted by GNU ld/ELF
 	[[ ${CHOST} == *-darwin* ]] \
@@ -232,7 +235,6 @@ gdal_src_configure() {
 		sed -i \
 			-e "s:library_dirs = :library_dirs = /usr/$(get_libdir):g" \
 			swig/python/setup.cfg || die "sed python setup.cfg failed"
-#			-e "s:gdal_config=.*$:gdal_config=../../../apps/gdal-config:g" \
 	fi
 }
 
