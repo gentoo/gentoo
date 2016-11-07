@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (07 Nov 2016)
+# Masked for removal in 30 days. Dead upstream.
+# Hosted on google code, which shutdowns end of the year.
+# Support for deprecated Plasma 4 only.
+kde-misc/fsrunner
+kde-misc/kcaldav
+kde-misc/takeoff
+
 # Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
 # Masked for removal in 30 days, bug #568980
 # Unmaintained and deprecated.
