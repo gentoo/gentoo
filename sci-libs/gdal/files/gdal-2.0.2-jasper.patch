@@ -1,0 +1,13 @@
+diff -urpN gdal-2.0.2.orig/frmts/jpeg2000/jpeg2000_vsil_io.h gdal-2.0.2/frmts/jpeg2000/jpeg2000_vsil_io.h
+--- gdal-2.0.2.orig/frmts/jpeg2000/jpeg2000_vsil_io.h	2016-01-26 07:21:48.000000000 -0800
++++ gdal-2.0.2/frmts/jpeg2000/jpeg2000_vsil_io.h	2016-10-31 23:45:28.939407322 -0700
+@@ -29,7 +29,8 @@
+ 
+ #ifndef JPEG2000_VSIL_IO_H
+ #define JPEG2000_VSIL_IO_H
+- 
++
++#include <sys/types.h>
+ #include <jasper/jasper.h>
+ 
+ jas_stream_t *JPEG2000_VSIL_fopen(const char *filename, const char *mode);
