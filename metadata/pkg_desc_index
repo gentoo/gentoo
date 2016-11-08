@@ -18373,7 +18373,7 @@ x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
-x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.5 0.44.2 0.46.0: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.5 0.44.2 0.46.0 0.46.1: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r3 3.0.2.0-r300 3.0.2.0-r301: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0: X C-language Bindings sample implementations
@@ -18922,7 +18922,7 @@ x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
-x11-terms/gnome-terminal 3.20.2 3.22.0: The Gnome Terminal
+x11-terms/gnome-terminal 3.20.2 3.22.0 3.22.1: The Gnome Terminal
 x11-terms/guake 0.8.3 0.8.5 0.8.7 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
