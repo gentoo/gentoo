@@ -18,7 +18,7 @@ CDEPEND="dev-libs/libpcre:="
 DEPEND="${CDEPEND}
 	doc? ( app-doc/doxygen )"
 RDEPEND="${CDEPEND}
-	!dev-python/editorconfig-core-py[cli]"
+	cli? ( !dev-python/editorconfig-core-py[cli] )"
 
 src_prepare() {
 	sed -e 's:OUTPUT_NAME editorconfig_static:OUTPUT_NAME editorconfig:' \
