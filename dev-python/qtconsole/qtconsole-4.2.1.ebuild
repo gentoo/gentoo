@@ -29,11 +29,16 @@ DEPEND="${RDEPEND}
 	)
 	test? (
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pyside[${PYTHON_USEDEP},svg]
+			dev-python/PyQt5[${PYTHON_USEDEP},svg,testlib]
+			dev-python/PyQt4[${PYTHON_USEDEP},svg,testlib]
+		)
 	)
 	|| (
 		dev-python/pyside[${PYTHON_USEDEP},svg]
-		dev-python/PyQt4[${PYTHON_USEDEP},svg]
 		dev-python/PyQt5[${PYTHON_USEDEP},svg]
+		dev-python/PyQt4[${PYTHON_USEDEP},svg]
 	)
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-13[${PYTHON_USEDEP}]
