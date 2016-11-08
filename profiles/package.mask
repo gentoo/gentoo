@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (08 Nov 2016)
+# Masked for initial testing
+=dev-libs/icu-58.1-r1
+
 # Johannes Huber <johu@gentoo.org> (07 Nov 2016)
 # Masked for removal in 30 days. Dead upstream.
 # Hosted on google code, which shutdowns end of the year.
