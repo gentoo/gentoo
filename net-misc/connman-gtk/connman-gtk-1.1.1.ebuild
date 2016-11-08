@@ -10,7 +10,7 @@ DESCRIPTION="GTK GUI for Connman"
 HOMEPAGE="https://github.com/jgke/connman-gtk"
 SRC_URI="https://github.com/jgke/connman-gtk/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="openconnect"
