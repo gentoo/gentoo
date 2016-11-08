@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ start() {
 	ebegin "Starting upsd"
 	# clean up first
 	pkill -u root,nut -x ${bin}
-	sleep 1s
+	sleep 1
 	rm -f ${pidfile}
 	# now start up
 	start-stop-daemon --start --quiet --exec ${bin}
