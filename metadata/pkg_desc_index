@@ -1875,7 +1875,7 @@ app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows ar
 app-misc/openastro 1.1.48: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.1 1.1.1 1.1.2 1.1.3 1.1.4 1.1.5 1.1.6: ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
+app-misc/pax-utils 1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.1 1.1.1 1.1.2 1.1.3 1.1.4 1.1.5 1.1.6 1.1.6-r1: ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.2 4.0.3: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
@@ -7366,7 +7366,7 @@ dev-python/fonttools 2.4 2.5 3.0: Library for manipulating TrueType, OpenType, A
 dev-python/foolscap 0.7.0 0.8.0 0.10.1 0.11.0: RPC protocol for Twisted
 dev-python/formencode 1.2.4 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
-dev-python/freezegun 0.3.6 0.3.7: Let your Python tests travel through time
+dev-python/freezegun 0.3.6 0.3.7 0.3.8: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.12 0.13: Freezes a Flask application into a set of static files
 dev-python/fs 0.5.4: Filesystem abstraction layer
 dev-python/fudge 0.9.6-r1 1.0.3-r2 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
@@ -8263,7 +8263,7 @@ dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Funct
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 4.0 4.5: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.4 0.1.5 0.1.7 0.1.8 0.1.9: An Amazon S3 Transfer Manager
-dev-python/safety 0.3.0-r1: Checks your installed dependencies for known security vulnerabilities
+dev-python/safety 0.5.1: Checks your installed dependencies for known security vulnerabilities
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
@@ -11929,7 +11929,7 @@ lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.6 0.1.7: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0-r1: Lightweight vte-based tabbed terminal emulator for LXDE
-lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
+lxde-base/menu-cache 0.3.3 0.5.1 1.0.0-r1 1.0.1 1.0.2: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.10.0 0.11.0-r1: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.1 0.3.2: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.10.0 0.11.0: LXQt about dialog
