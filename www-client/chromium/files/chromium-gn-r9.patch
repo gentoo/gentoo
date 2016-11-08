@@ -1,0 +1,12 @@
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 6059741..78e508d 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -532,6 +532,7 @@ def write_gn_ninja(path, root_gen_dir, options):
+         'base/synchronization/read_write_lock_posix.cc',
+         'base/synchronization/waitable_event_posix.cc',
+         'base/sys_info_posix.cc',
++        'base/task_scheduler/task_tracker_posix.cc',
+         'base/threading/platform_thread_internal_posix.cc',
+         'base/threading/platform_thread_posix.cc',
+         'base/threading/thread_local_storage_posix.cc',
