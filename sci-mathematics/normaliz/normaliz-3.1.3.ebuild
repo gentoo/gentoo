@@ -10,7 +10,7 @@ MYP="Normaliz-${PV}"
 
 DESCRIPTION="Tool for computations in affine monoids and more"
 HOMEPAGE="www.mathematik.uni-osnabrueck.de/normaliz/"
-SRC_URI="https://github.com/Normaliz/Normaliz/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/Normaliz/Normaliz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
