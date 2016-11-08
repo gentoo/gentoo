@@ -19,7 +19,8 @@ IUSE="libvirt xen"
 
 RDEPEND="libvirt? ( >=app-emulation/libvirt-1.2.2 )
 	xen? ( app-emulation/xen )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-fs/lvm2"
 
 src_prepare() {
 	pushd src/${EGO_PN} || die
