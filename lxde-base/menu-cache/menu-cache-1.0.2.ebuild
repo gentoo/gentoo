@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-DESCRIPTION="A library creating and utilizing caches to speed up freedesktop.org application menus"
+DESCRIPTION="Library to create and utilize caches to speed up freedesktop application menus"
 HOMEPAGE="http://lxde.sourceforge.net/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-libs/glib:2
-	x11-libs/libfm"
+	x11-libs/libfm-extra"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
