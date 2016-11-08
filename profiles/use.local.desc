@@ -4019,11 +4019,17 @@ media-libs/mlt:ruby - Build SWIG bindings for Ruby
 media-libs/netpbm:rle - Build converters for the RLE format (utah raster toolkit)
 media-libs/opencolorio:pdf - Install extra documentation in PDF format
 media-libs/opencv:contrib - Install user contributed scripts from opencv_contrib (Experimental!)
+media-libs/opencv:contrib_cvv - CVV module requires Qt5
+media-libs/opencv:contrib_hdf - HDF module requires sci-libs/hdf5
+media-libs/opencv:contrib_sfm - SFM module requires eigen, gflags, and glog
 media-libs/opencv:cuda - Enable NVIDIA Cuda computations support
 media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
 media-libs/opencv:gdal - Enable support for sci-libs/gdal library
+media-libs/opencv:gflags - Use Google's C++ argument parsing library
+media-libs/opencv:glog - Use Google's C++ loggin library
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:opencl - Add support for OpenCL
+media-libs/opencv:tesseract - Use Google's OCR Engine
 media-libs/opencv:testprograms - Build and install programs for testing OpenCV (performance)
 media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/vtk
 media-libs/opencv:webp - Enable support for webp image format
