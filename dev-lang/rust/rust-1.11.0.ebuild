@@ -55,14 +55,6 @@ PDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425"
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	unpack "rustc-${PV}-src.tar.gz" || die
-	mkdir "${MY_P}/dl" || die
-	local stagename="RUST_STAGE0_${ARCH}"
-	local stage0="${!stagename}"
-	cp "${DISTDIR}/${stage0}.tar.gz" "${MY_P}/dl/" || die "cp stage0"
-}
-
 src_prepare() {
 	find mk -name '*.mk' -exec \
 		 sed -i -e "s/-Werror / /g" {} \; || die
@@ -72,6 +64,9 @@ src_prepare() {
 
 src_configure() {
 	export CFG_DISABLE_LDCONFIG="notempty"
+
+	local stagename="RUST_STAGE0_${ARCH}"
+	local stage0="${!stagename}"
 
 	"${ECONF_SOURCE:-.}"/configure \
 		--prefix="${EPREFIX}/usr" \
@@ -83,6 +78,8 @@ src_configure() {
 		--default-ar=$(tc-getBUILD_AR) \
 		--python=${EPYTHON} \
 		--disable-rpath \
+		--enable-local-rust \
+		--local-rust-root="${WORKDIR}/${stage0}/rustc" \
 		$(use_enable clang) \
 		$(use_enable debug) \
 		$(use_enable debug llvm-assertions) \
