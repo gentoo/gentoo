@@ -19,6 +19,12 @@ DEPEND="dev-python/editorconfig-core-py[${PYTHON_USEDEP}]
 	app-editors/gvim[python,${PYTHON_USEDEP}]
 )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-python3.patch"
+	"${FILESDIR}/${P}-max-line-length-off.patch"
+	"${FILESDIR}/${P}-fixes.patch"
+)
+
 VIM_PLUGIN_HELPFILES="${PN%-vim}.txt"
 
 src_prepare() {

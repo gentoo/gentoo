@@ -1,0 +1,20 @@
+commit 6e7011712398e53671e5a44edefeb68914562a3a
+Author: Hong Xu <hong@topbug.net>
+Date:   Wed Apr 6 00:34:26 2016 -0700
+
+    Support max_line_length=off to leave the decision to the editor settings.
+
+diff --git a/plugin/editorconfig.vim b/plugin/editorconfig.vim
+index 9abd008..0e9d647 100644
+--- a/plugin/editorconfig.vim
++++ b/plugin/editorconfig.vim
+@@ -563,7 +563,8 @@ function! s:ApplyConfig(config) " {{{1
+     endif
+ 
+     " highlight the columns following max_line_length
+-    if has_key(a:config, 'max_line_length')
++    if has_key(a:config, 'max_line_length') &&
++                \ a:config['max_line_length'] != 'off'
+         let l:max_line_length = str2nr(a:config['max_line_length'])
+ 
+         if l:max_line_length >= 0
