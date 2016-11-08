@@ -16,12 +16,20 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="gnustep-base/gnustep-base
-	>=gnustep-base/gnustep-make-2.6.0[native-exceptions]
-	dev-libs/icu:="
+	dev-libs/icu:=
+	sys-libs/zlib
+	app-arch/bzip2"
 DEPEND="${RDEPEND}
+	>=gnustep-base/gnustep-make-2.6.0[native-exceptions]
 	sys-devel/gcc[objc]"
 
 S="${WORKDIR}/The Unarchiver/XADMaster"
+
+src_prepare() {
+	# avoid jobserver warning, upstream bug:
+	# https://bitbucket.org/WAHa_06x36/theunarchiver/issues/918/dont-call-make-from-makefile
+	sed -i -e 's:make:$(MAKE):g' Makefile.linux
+}
 
 src_compile() {
 	emake -f Makefile.linux \
