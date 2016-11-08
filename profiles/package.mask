@@ -257,6 +257,7 @@ sci-geosciences/googleearth
 >=media-gfx/gnome-font-viewer-3.21
 >=media-gfx/gnome-photos-3.21
 >=media-gfx/gnome-screenshot-3.21
+>=media-gfx/shotwell-0.25
 >=media-gfx/simple-scan-3.21
 >=media-libs/clutter-1.27
 >=media-libs/clutter-gtk-1.8.2
