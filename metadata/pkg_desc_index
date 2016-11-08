@@ -5577,6 +5577,7 @@ dev-perl/Date-Manip 6.510.0 6.520.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0 1.210.0: A date and time object
+dev-perl/DateTime-Calendar-Julian 0.40.0: ???
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
@@ -7266,7 +7267,7 @@ dev-python/dogpile-cache 0.6.1 0.6.2: A locking API for expiring values while a 
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
 dev-python/doit 0.23.0-r1 0.27.0 0.28.0 0.29.0: Automation tool
 dev-python/doit-py 0.3.0 0.4.0: doit tasks for python stuff
-dev-python/dominate 2.2.0 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
+dev-python/dominate 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.7 1.8.1: Python test doubles
 dev-python/doublex-expects 0.4.0 0.7.0_rc1 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
