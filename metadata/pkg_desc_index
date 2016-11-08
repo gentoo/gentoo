@@ -2148,7 +2148,7 @@ app-shells/ctypes-sh 1.1: Foreign function interface for bash
 app-shells/dash 0.5.8.2 0.5.9 0.5.9.1-r1: Debian Almquist Shell
 app-shells/dsh 0.25.10: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
-app-shells/fish 2.1.1 2.1.2 2.2.0 2.3.0 2.3.1: fish is the Friendly Interactive SHell
+app-shells/fish 2.2.0 2.3.1 2.4.0: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
