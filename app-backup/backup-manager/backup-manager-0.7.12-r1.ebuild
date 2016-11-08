@@ -26,8 +26,9 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	sed -i "/^PERL5DIR/s/sitelib/vendorlib/" Makefile \
-		|| die "Makefile sed failed"
+	sed -e "/^PERL5DIR/s/sitelib/vendorlib/" \
+		-e "/sed/s:=\$(DESTDIR)/:=:" \
+		-i Makefile || die
 
 	default
 }
@@ -39,14 +40,8 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr install
-}
 
-pkg_postinst() {
-	elog "After installing,"
-	elog "copy ${ROOT%/}/usr/share/backup-manager/backup-manager.conf.tpl to"
-	elog "/etc/backup-manager.conf and customize it for your environment."
-	elog "You could also set-up your cron for daily or weekly backup."
-
-	ewarn "New configuration keys may have been defined."
-	ewarn "Please check the docs for info"
+	dodir /etc
+	cp -a "${D}"/usr/share/backup-manager/backup-manager.conf.tpl "${D}"/etc/backup-manager.conf || die
+	chmod 0600 "${D}"/etc/backup-manager.conf || die
 }
