@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,16 +10,18 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance, distributed memory object caching system"
 HOMEPAGE="http://memcached.org/"
-SRC_URI="http://www.memcached.org/files/${MY_P}.tar.gz"
+SRC_URI="https://www.memcached.org/files/${MY_P}.tar.gz
+		 https://www.memcached.org/files/old/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test slabs-reassign debug sasl" # hugetlbfs later
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="test slabs-reassign debug sasl selinux" # hugetlbfs later
 
 RDEPEND=">=dev-libs/libevent-1.4
 		 dev-lang/perl
-		 sasl? ( dev-libs/cyrus-sasl )"
+		 sasl? ( dev-libs/cyrus-sasl )
+		 selinux? ( sec-policy/selinux-memcached )"
 DEPEND="${RDEPEND}
 		test? ( virtual/perl-Test-Harness >=dev-perl/Cache-Memcached-1.24 )"
 
@@ -36,6 +38,18 @@ src_prepare() {
 	sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,' configure.ac || die
 	eautoreconf
 	use slabs-reassign && append-flags -DALLOW_SLABS_REASSIGN
+
+	# Tweak upstream systemd unit to use Gentoo variables/envfile.
+	# As noted by bug #587440
+	sed -i -e '/^ExecStart/{
+			s,{USER},{MEMCACHED_RUNAS},g;
+			s,{CACHESIZE},{MEMUSAGE},g;
+			s,OPTIONS,MISC_OPTS,g;
+		};
+		/Environment=/{s,OPTIONS,MISC_OPTS,g;};
+		/EnvironmentFile=/{s,/sysconfig/,/conf.d/,g;};
+		' \
+		"${S}"/scripts/memcached.service
 }
 
 src_configure() {
@@ -64,8 +78,8 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README.md doc/{CONTRIBUTORS,*.txt}
 
 	newconfd "${FILESDIR}/memcached.confd" memcached
-	newinitd "${FILESDIR}/memcached.init" memcached
-	systemd_dounit "${FILESDIR}/memcached.service"
+	newinitd "${FILESDIR}/memcached.init2" memcached
+	systemd_dounit "${S}/scripts/memcached.service"
 }
 
 pkg_postinst() {
