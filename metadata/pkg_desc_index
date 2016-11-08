@@ -16987,7 +16987,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
 sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8: Jens Axboe's Flexible IO tester
+sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8 2.15: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
@@ -17546,7 +17546,7 @@ sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0-r1 4.7.0-r1: Shows and sets pro
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20150717 20160729: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
-sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3: Network-UPS Tools
+sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3 2.7.4: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.0 1.1: read and write the WakeUp time in the BIOS
