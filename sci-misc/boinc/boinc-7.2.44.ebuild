@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER=2.8
 
-inherit autotools flag-o-matic linux-info systemd user versionator wxwidgets
+inherit autotools eutils linux-info systemd user versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -77,6 +77,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
@@ -121,7 +123,7 @@ pkg_preinst() {
 	# elog user about the need of being in video group
 	local groups="${PN}"
 	if use cuda; then
-		group+=",video"
+		groups+=",video"
 	fi
 	enewuser ${PN} -1 -1 /var/lib/${PN} "${groups}"
 }
