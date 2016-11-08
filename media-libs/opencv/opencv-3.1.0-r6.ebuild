@@ -11,29 +11,38 @@ DESCRIPTION="A collection of algorithms and sample code for
 	various computer vision problems"
 HOMEPAGE="http://opencv.org"
 
-SRC_URI="
-	mirror://sourceforge/opencvlibrary/opencv-unix/${PV}/${P}.zip
-	https://github.com/Itseez/${PN}/archive/${PV}.zip -> ${P}.zip
-	contrib? (
-		https://github.com/Itseez/${PN}_contrib/archive/cd5993c6576267875adac300b9ddd1f881bb1766.zip -> ${P}_contrib.zip )" #commit from Sun, 27 Mar 2016 17:31:51
+BASE_URI="https://github.com/${PN}/${PN}"
+#commit from Thu, 02 Jun 2016
+CONTRIB_URI="75b3ea9f72fdb083140fc63855b7677d67748376"
+CONTRIB_P="${P}_contrib-${CONTRIB_URI:0:7}"
 
+SRC_URI="${BASE_URI}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	contrib? ( ${BASE_URI}_contrib/archive/${CONTRIB_URI}.tar.gz -> ${CONTRIB_P}.tar.gz )"
 LICENSE="BSD"
 SLOT="0/3.1" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib cuda +eigen examples ffmpeg gdal gphoto2 gstreamer gtk \
+IUSE="contrib cuda +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk \
 	ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png \
-	+python qt4 qt5 testprograms threads tiff vaapi v4l vtk webp xine"
+	+python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine \
+	contrib_cvv contrib_hdf contrib_sfm"
 
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it without the user knowing, which defeats the
 # purpose of the opengl use flag.
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	?? ( qt4 qt5 )
-	opengl? ( || ( gtk qt4 qt5 ) )"
+REQUIRED_USE="
+	cuda? ( tesseract? ( opencl ) )
+	gflags? ( contrib )
+	glog? ( contrib )
+	contrib_cvv? ( contrib qt5 )
+	contrib_hdf? ( contrib )
+	contrib_sfm? ( contrib eigen gflags glog )
+	opengl? ( || ( gtk qt5 ) )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	tesseract? ( contrib )"
 
 # The following logic is intrinsic in the build system, but we do not enforce
 # it on the useflags since this just blocks emerging pointlessly:
-#	gtk? ( !qt4 )
+#	gtk? ( !qt5 )
 #	openmp? ( !threads )
 
 RDEPEND="
@@ -45,6 +54,8 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	gdal? ( sci-libs/gdal )
+	gflags? ( dev-cpp/gflags )
+	glog? ( dev-cpp/glog )
 	gphoto2? ( media-libs/libgphoto2 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -63,16 +74,12 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	ipp? ( sci-libs/ipp )
+	contrib_hdf? ( sci-libs/hdf5 )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr )
 	opengl? ( virtual/opengl virtual/glu )
 	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
-	qt4? (
-		dev-qt/qtgui:4
-		dev-qt/qttest:4
-		opengl? ( dev-qt/qtopengl:4 )
-	)
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
@@ -80,33 +87,32 @@ RDEPEND="
 		dev-qt/qtconcurrent:5
 		opengl? ( dev-qt/qtopengl:5 )
 	)
+	tesseract? ( app-text/tesseract[opencl=] )
 	threads? ( dev-cpp/tbb )
 	tiff? ( media-libs/tiff:0 )
 	v4l? ( >=media-libs/libv4l-0.8.3 )
 	vtk? ( sci-libs/vtk[rendering] )
 	webp? ( media-libs/libwebp )
-	xine? ( media-libs/xine-lib )
-"
+	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	eigen? ( dev-cpp/eigen:3 )
-	java?  ( >=virtual/jdk-1.6 )
-"
+	java?  ( >=virtual/jdk-1.6 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-gles.patch
-	"${FILESDIR}"/${PN}-3.1.0-cmake-no-opengl.patch
+	"${FILESDIR}"/${P}-cmake-no-opengl.patch
 	"${FILESDIR}"/${P}-git-autodetect.patch
 	"${FILESDIR}"/${P}-java-magic.patch
 	"${FILESDIR}"/${P}-gentooify-python.patch
+	"${FILESDIR}"/${P}-remove-graphcut-for-cuda-8.patch
+	"${FILESDIR}"/${P}-find-libraries-fix.patch
 )
 
 GLOBALCMAKEARGS=()
 
 pkg_pretend() {
-	if use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
@@ -118,17 +124,10 @@ src_prepare() {
 
 	# remove bundled stuff
 	rm -rf 3rdparty || die "Removing 3rd party components failed"
-	sed -i \
-		-e '/add_subdirectory(.*3rdparty.*)/ d' \
-		CMakeLists.txt cmake/*cmake || die
+	sed -e '/add_subdirectory(.*3rdparty.*)/ d' \
+	    -i CMakeLists.txt cmake/*cmake || die
 
 	java-pkg-opt-2_src_prepare
-
-	# Out-of-$S patching
-	if use contrib; then
-		cd "${WORKDIR}"/opencv_contrib-${PV} || die "cd failed"
-		epatch "${FILESDIR}"/${PN}-contrib-find-hdf5-fix.patch
-	fi
 }
 
 src_configure() {
@@ -162,7 +161,7 @@ src_configure() {
 		-DWITH_PNG=$(usex png)
 		-DWITH_PVAPI=OFF		# Not packaged
 		-DWITH_GIGEAPI=OFF
-		# Qt in CMakeList.txt here: See below
+		-DWITH_QT=$(usex qt5 5 OFF)
 		-DWITH_WIN32UI=OFF		# Windows only
 		-DWITH_QUICKTIME=OFF
 		-DWITH_TBB=$(usex threads)
@@ -186,7 +185,7 @@ src_configure() {
 		-DWITH_INTELPERC=OFF
 		-DWITH_JAVA=$(usex java) # Ant needed, no compile flag
 		-DWITH_IPP_A=OFF
-		-DWITH_MATLAB=ON
+		-DWITH_MATLAB=OFF
 		-DWITH_VA=$(usex vaapi)
 		-DWITH_VA_INTEL=$(usex vaapi)
 		-DWITH_GDAL=$(usex gdal)
@@ -207,6 +206,7 @@ src_configure() {
 		-DBUILD_EXAMPLES=$(usex examples)
 		-DBUILD_PERF_TESTS=OFF
 		-DBUILD_TESTS=$(usex testprograms)
+		-DOPENCV_EXTRA_MODULES_PATH=$(usex contrib "${WORKDIR}/opencv_contrib-${CONTRIB_URI}/modules" "")
 	# ===================================================
 	# OpenCV installation options
 	# ===================================================
@@ -229,17 +229,18 @@ src_configure() {
 		-DOPENCV_DOC_INSTALL_PATH=
 	)
 
-	if use qt4; then
-		GLOBALCMAKEARGS+=( -DWITH_QT=4 )
-	elif use qt5; then
-		GLOBALCMAKEARGS+=( -DWITH_QT=5 )
-	else
-		GLOBALCMAKEARGS+=( -DWITH_QT=OFF )
+	# ===================================================
+	# OpenCV Contrib Modules
+	# ===================================================
+	if use contrib; then
+		GLOBALCMAKEARGS+=(
+			-DBUILD_opencv_dnn=OFF
+			-DBUILD_opencv_dnns_easily_fooled=OFF
+			-DBUILD_opencv_cvv=$(usex contrib_cvv ON OFF)
+			-DBUILD_opencv_hdf=$(usex contrib_hdf ON OFF)
+			-DBUILD_opencv_sfm=$(usex contrib_sfm ON OFF)
+		)
 	fi
-
-	use contrib && GLOBALCMAKEARGS+=(
-		-DOPENCV_EXTRA_MODULES_PATH="${WORKDIR}/opencv_contrib-${PV}/modules"
-	)
 
 	# workaround for bug 413429
 	tc-export CC CXX
@@ -264,14 +265,9 @@ python_module_compile() {
 		-DGENTOO_PYTHON_PACKAGES_PATH="$(python_get_sitedir)"
 		-DGENTOO_PYTHON_MAJOR=${EPYTHON:6:1}
 		-DGENTOO_PYTHON_MINOR=${EPYTHON:8:1}
-		-DGENTOO_PYTHON_DEBUG_LIBRARIES="" # Absolutely no clue what this is
+		-DGENTOO_PYTHON_DEBUG_LIBRARIES=""
+		-DINSTALL_PYTHON_EXAMPLES=$(usex examples)
 	)
-
-	if use examples; then
-		mycmakeargs+=( -DINSTALL_PYTHON_EXAMPLES=ON )
-	else
-		mycmakeargs+=( -DINSTALL_PYTHON_EXAMPLES=OFF )
-	fi
 
 	# Compile and install all at once because configuration will be wiped
 	# for each impl of Python
@@ -282,8 +278,8 @@ python_module_compile() {
 	# have the Gentoo specific options.
 	rm -rf CMakeCache.txt || die "rm failed"
 	cmake-utils_src_configure
-	cmake-utils_src_compile opencv_${EPYTHON:0:7}
-	cmake-utils_src_install install/fast
+	cmake-utils_src_compile
+	cmake-utils_src_install
 
 	# Remove compiled binary so new version compiles
 	# Avoid conflicts with new module builds as build system doesn't
