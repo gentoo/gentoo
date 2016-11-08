@@ -1130,6 +1130,7 @@ app-emacs/ebuild-mode 1.31: Emacs modes for editing ebuilds and other Gentoo spe
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
+app-emacs/editorconfig-emacs 0.7.8: EditorConfig plugin for emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
 app-emacs/emacs-common-gentoo 1.5: Common files needed by all GNU Emacs versions
@@ -19112,7 +19113,7 @@ x11-wm/goomwwm 1.0.0: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.6.2-r1 0.7.0 9999: A manual tiling window manager for X
 x11-wm/i3 4.8 4.9.1 4.10.4 4.11 4.12 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.11 1.3.12: Ice Window Manager with Themes
-x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5: Very fast and lightweight still powerful window manager for X
+x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 0.8.8_p1 9999: Lumina desktop environment
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
