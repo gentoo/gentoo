@@ -9211,7 +9211,7 @@ dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.8.4 5.9.0 5.9.1: minitest/unit is
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.4.0: Adds around and before_all/after_all/around_all hooks for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
-dev-ruby/mixlib-shellout 2.2.5 2.2.6 2.2.7: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.2.7: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
