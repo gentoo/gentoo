@@ -15,8 +15,10 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-DEPEND="app-text/editorconfig-core-c:="
-RDEPEND="${DEPEND}"
+CDEPEND="app-text/editorconfig-core-c:="
+DEPEND="${CDEPEND}
+	dev-util/geany"
+RDEPEND="${CDEPEND}"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 
 src_prepare() {
