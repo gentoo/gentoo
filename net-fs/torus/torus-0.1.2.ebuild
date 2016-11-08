@@ -5,7 +5,7 @@
 EAPI=6
 
 EGO_PN="github.com/coreos/${PN}/..."
-SRC_URI="https://${EGO_PN}/releases/download/v${PV}/${PN}_v${PV}_src.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN%/*}/releases/download/v${PV}/${PN}_v${PV}_src.tar.gz -> ${P}.tar.gz
 	https://github.com/Masterminds/glide/archive/0.10.2.tar.gz -> glide-0.10.2.tar.gz
 	test? ( https://github.com/gogo/protobuf/archive/v0.3.tar.gz -> gogo-protobuf-0.3.tar.gz )"
 
