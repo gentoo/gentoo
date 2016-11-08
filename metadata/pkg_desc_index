@@ -9838,13 +9838,13 @@ dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.9-r1 0.3.10: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_rc3 0.9.0_p1 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.0_rc3 0.9.0_p1: Buildbot console-view plugin
-dev-util/buildbot-pkg 0.9.0_rc3 0.9.0_p1: BuildBot common www build tools for packaging releases
+dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_p1 0.9.1 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.0_p1 0.9.1: Buildbot console-view plugin
+dev-util/buildbot-pkg 0.9.0_p1 0.9.1: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.0_rc3 0.9.0_p1: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.0_rc3 0.9.0_p1 9999: BuildBot Slave Daemon
-dev-util/buildbot-www 0.9.0_rc3 0.9.0_p1: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot-waterfall-view 0.9.0_p1 0.9.1: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.0_p1 0.9.1 9999: BuildBot Slave Daemon
+dev-util/buildbot-www 0.9.0_p1 0.9.1: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
