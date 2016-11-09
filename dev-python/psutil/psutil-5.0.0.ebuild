@@ -10,14 +10,17 @@ inherit distutils-r1
 
 DESCRIPTION="Retrieve information on running processes and system utilization"
 HOMEPAGE="https://github.com/giampaolo/psutil https://pypi.python.org/pypi/psutil/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE=""
+IUSE="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+"
 
 RESTRICT="test"
 
