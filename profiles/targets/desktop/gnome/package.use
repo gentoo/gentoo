@@ -73,12 +73,6 @@ net-libs/ptlib wav
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
 
-# liboauth (required by evolution-data-server[gnome-online-accounts] and
-# gnome-documents in gnome-3.2) has +nss in IUSE, pulls in curl[-gnutls,nss]
-# In >=curl-7.25.0-r1, need CURL_SSL="-gnutls nss -openssl"
-net-misc/curl -curl_ssl_gnutls curl_ssl_nss -curl_ssl_openssl -gnutls nss
-dev-python/pycurl -curl_ssl_gnutls curl_ssl_nss -curl_ssl_openssl
-
 # for gnome-extra/gnome-user-share
 www-servers/apache apache2_modules_dav apache2_modules_dav_fs apache2_modules_authn_file apache2_modules_auth_digest apache2_modules_authz_groupfile
 
