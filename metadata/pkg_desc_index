@@ -12391,7 +12391,7 @@ media-gfx/icc_examin 0.54 0.55 0.55-r1 9999: Viewer for ICC and CGATS profiles, 
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.5.10 6.9.6.2 6.9.6.3 7.0.3.5: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.5.10 6.9.6.2 6.9.6.3 6.9.6.4 7.0.3.6: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 0.9.2 1.0.0 1.2.0 1.3.0: Utility for image scaling and processing
 media-gfx/imv 2.1.2 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1 0.91-r2 0.91-r3: A SVG based generic vector-drawing program
@@ -14562,7 +14562,7 @@ net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnm-qt 0.9.8.4: NetworkManager bindings for Qt
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
-net-libs/liboauth 1.0.1: C library implementing the OAuth secure authentication protocol
+net-libs/liboauth 1.0.1 1.0.3: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.7.0 1.8.0: C library and ncurses based program to generate ICMP echo requests and ping multiple hosts at once
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
