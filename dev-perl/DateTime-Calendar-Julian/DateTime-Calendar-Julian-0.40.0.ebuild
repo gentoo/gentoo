@@ -8,7 +8,7 @@ DIST_AUTHOR=PIJLL
 DIST_VERSION=0.04
 inherit perl-module
 
-DESCRIPTION=???
+DESCRIPTION="Dates in the Julian calendar"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
