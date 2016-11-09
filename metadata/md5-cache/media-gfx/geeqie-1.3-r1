@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) virtual/libintl doc? ( app-text/gnome-doc-utils ) gpu-accel? ( media-libs/clutter-gtk ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) map? ( media-libs/libchamplain:0.12 ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) ) tiff? ( media-libs/tiff:0 ) virtual/pkgconfig dev-util/intltool sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A lightweight GTK image viewer forked from GQview
+EAPI=6
+HOMEPAGE=http://www.geeqie.org
+IUSE=debug doc exif gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) virtual/libintl doc? ( app-text/gnome-doc-utils ) gpu-accel? ( media-libs/clutter-gtk ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) map? ( media-libs/libchamplain:0.12 ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) ) tiff? ( media-libs/tiff:0 )
+REQUIRED_USE=gpu-accel? ( gtk3 ) map? ( gpu-accel )
+SLOT=0
+SRC_URI=http://www.geeqie.org/geeqie-1.3.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=d9b4599a3aab0937a463ead307a065da
