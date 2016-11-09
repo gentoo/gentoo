@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs git-2
+inherit autotools git-r3
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="http://i3wm.org/"
@@ -15,7 +15,7 @@ EGIT_BRANCH="next"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="+pango"
+IUSE="doc"
 
 CDEPEND="dev-lang/perl
 	dev-libs/libev
@@ -29,39 +29,42 @@ CDEPEND="dev-lang/perl
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
-	pango? (
-		>=x11-libs/pango-1.30.0[X]
-		>=x11-libs/cairo-1.12.2[X,xcb]
-	)"
+	>=x11-libs/pango-1.30.0[X]
+	>=x11-libs/cairo-1.14.4[X,xcb]"
 DEPEND="${CDEPEND}
-	app-text/asciidoc
+	doc? ( app-text/asciidoc app-text/xmlto )
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
 
 src_prepare() {
-	if ! use pango; then
-		sed -i common.mk -e '/PANGO/d' || die
+	default
+
+	if ! use doc ; then
+		sed -e '/AC_PATH_PROG(\[PATH_ASCIIDOC/d' -i configure.ac || die
 	fi
+	eautoreconf
 
 	cat <<- EOF > "${T}"/i3wm
 		#!/bin/sh
 		exec /usr/bin/i3
 	EOF
+}
 
-	epatch_user #471716
+src_configure() {
+	local myeconfargs=( --enable-debug=no )  # otherwise injects -O0 -g
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	emake V=1 CC="$(tc-getCC)" AR="$(tc-getAR)"
-	emake mans
+	emake -C "${CBUILD}"
 }
 
 src_install() {
-	default
-	dohtml -r docs/*
-	doman man/*.1
+	emake -C "${CBUILD}" DESTDIR="${D}" install
+	einstalldocs
+
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/i3wm
 }
