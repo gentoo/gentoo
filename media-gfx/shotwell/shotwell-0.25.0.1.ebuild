@@ -18,13 +18,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
-	app-text/gnome-doc-utils
+	>=app-crypt/gcr-3[gtk]
 	>=dev-db/sqlite-3.5.9:3
 	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/json-glib-0.7.6
 	>=dev-libs/libgee-0.8.5:0.8
 	>=dev-libs/libxml2-2.6.32:2
-	>=dev-util/desktop-file-utils-0.13
 	gnome-base/dconf
 	>=media-libs/gexiv2-0.10.4
 	media-libs/gst-plugins-base:1.0
@@ -39,13 +38,14 @@ RDEPEND="
 	net-libs/webkit-gtk:4
 	virtual/libgudev:=[introspection]
 	>=x11-libs/gtk+-3.14.0:3[X]
-	>=app-crypt/gcr-3
+
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.7
 	>=sys-devel/m4-1.4.13
+	virtual/pkgconfig
 "
 
 # This probably comes from libraries that
