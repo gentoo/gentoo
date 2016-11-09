@@ -20,7 +20,7 @@ HOMEPAGE="http://runc.io"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor +seccomp"
+IUSE="apparmor hardened +seccomp"
 
 DEPEND=""
 RDEPEND="
@@ -33,7 +33,8 @@ S=${WORKDIR}/${P}/src/${EGO_PN}
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
 	export CGO_CFLAGS="-I${ROOT}/usr/include"
-	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
+	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')
+		-L${ROOT}/usr/$(get_libdir)"
 
 	# Setup GOPATH so things build
 	rm -rf .gopath
