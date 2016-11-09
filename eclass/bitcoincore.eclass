@@ -314,7 +314,7 @@ bitcoincore_prepare() {
 	fi
 	if use_if_iuse ljr; then
 		if [ "${BITCOINCORE_LJR_NAME}" = "knots" ]; then
-			epatch "$(LJR_PATCH f)"
+			bitcoincore_predelete_patch "$(LJR_PATCH f)"
 			bitcoincore_predelete_patch "$(LJR_PATCH branding)"
 			epatch "$(LJR_PATCH ts)"
 		elif [ "${BITCOINCORE_SERIES}" = "0.10.x" ]; then
@@ -365,6 +365,10 @@ bitcoincore_prepare() {
 			;;
 		esac
 	done
+
+	echo '#!/bin/true' >share/genbuild.sh
+	mkdir -p src/obj
+	echo "#define BUILD_SUFFIX gentoo${PVR#${PV}}" >src/obj/build.h
 }
 
 bitcoincore_autoreconf() {
