@@ -243,7 +243,7 @@ app-arch/bloscpack 0.5.0 0.6.0: Command line interface for Blosc compression
 app-arch/bsdsfv 1.18-r1: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r6 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
-app-arch/cfv 1.18.2 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
+app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
 app-arch/cpio 2.11-r3 2.12 2.12-r1: A file archival tool which can also read and write tar files
 app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
@@ -7373,7 +7373,7 @@ dev-python/fuzzywuzzy 0.11.0 0.11.1 0.12.0: Fuzzy string matching in python
 dev-python/gammapy 0.4: Python package for gamma-ray astronomy
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.8-r1 1.9 1.12 1.13 1.14: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
-dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
+dev-python/gdata 2.0.14 2.0.18: Python client library for Google data APIs
 dev-python/gdmodule 0.56-r2: Python extensions for gd
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.2.1 1.3.0 1.3.2: Allows you to run a test with multiple data sets
@@ -7518,8 +7518,8 @@ dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0: Jupyter protocol implementati
 dev-python/jupyter_console 4.0.3 4.1.1 5.0.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6 4.1.0 4.2.0: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
-dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
-dev-python/kaa-imlib2 0.2.3-r1 0.2.3-r2: Imlib2 wrapper for Python
+dev-python/kaa-display 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
+dev-python/kaa-imlib2 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
 dev-python/kafka-python 1.1.1 1.2.0 1.2.1: Kafka protocol support in Python
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
@@ -7617,7 +7617,7 @@ dev-python/mockredispy 2.9.3: Mock for redis-py
 dev-python/mongoengine 0.8.3 0.10.6: A Python Object-Document-Mapper for working with MongoDB
 dev-python/monotonic 0.3 0.4 0.5 1.0 1.1 1.2: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/montage-wrapper 0.9.8: Python wrapper for the Montage mosaicking toolkit
-dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
+dev-python/morbid 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.4.22 0.4.25: Mock library for boto
 dev-python/moviepy 0.2.2: Video editing with Python
@@ -7788,7 +7788,7 @@ dev-python/plyvel 0.9: Python interface to LevelDB
 dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
 dev-python/pockets 0.3: A collection of helpful Python tools
 dev-python/polib 1.0.4 1.0.7: A library to manipulate gettext files (.po and .mo files)
-dev-python/polygon 2.0.4 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
+dev-python/polygon 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/positional 1.0.1 1.1.1: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
 dev-python/potr 1.0.1: Pure Python OTR implementation
@@ -7858,7 +7858,7 @@ dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
 dev-python/pychroot 0.9.15 0.9.16 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
-dev-python/pyclimate 1.2.2-r1 1.2.2-r2: Climate Data Analysis Module for Python
+dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.1 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycodestyle 2.0.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
@@ -7871,7 +7871,7 @@ dev-python/pycuda 2012.1 2013.1.1 2014.1 2016.1.2 9999: Python wrapper for NVIDI
 dev-python/pycups 1.9.72 1.9.73: Python bindings for the CUPS API
 dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3 7.21.5 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
-dev-python/pydb 1.26-r1 1.26-r2: Extended python debugger
+dev-python/pydb 1.26-r2: Extended python debugger
 dev-python/pydecomp 0.1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
@@ -8064,7 +8064,7 @@ dev-python/python-debian 0.1.26 0.1.27 0.1.28: Python modules to work with Debia
 dev-python/python-designateclient 2.0.0 2.3.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.0: Python bindings for libdiscid
-dev-python/python-distutils-extra 2.33 2.33-r1 2.37-r1 2.38: Gettext support, themed icons and scrollkeeper-based documentation in distutils
+dev-python/python-distutils-extra 2.38: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
@@ -8143,7 +8143,7 @@ dev-python/python-urljr 1.0.1-r1: JanRain's URL Utilities
 dev-python/python-virtkey 0.60.0-r1: Python module to simulate keypresses and get current keyboard layout
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xcaplib 1.1.0: Python library for managing XML documents on XCAP server
-dev-python/python-xlib 0.15_rc1 0.15_rc1-r2 0.17: A fully functional X client library for Python, written in Python
+dev-python/python-xlib 0.15_rc1-r2 0.17: A fully functional X client library for Python, written in Python
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
@@ -8258,7 +8258,7 @@ dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system i
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schema 0.5.0: Library for validating Python data structures
-dev-python/scientificpython 2.9.1 2.9.3 2.9.4: Scientific Module for Python
+dev-python/scientificpython 2.9.4: Scientific Module for Python
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
 dev-python/sclapp 0.5.3-r1: Framework for writing simple command-line applications
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
@@ -8289,7 +8289,7 @@ dev-python/simpleeval 0.8.7 0.9.1: A simple, safe single expression evaluator li
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.8.1 3.8.2 3.9.0 3.10.0: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekv 0.9.2 0.9.3 0.10.0: A key-value storage for binary data, support many backends.
-dev-python/simpleparse 2.1.1 2.1.1-r1: A Parser Generator for mxTextTools
+dev-python/simpleparse 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simples3 1.0: A fairly simple, decently quick python interface to Amazon's S3 storage service
 dev-python/simplesettings 0.5-r1: Simple settings initialization
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
@@ -9904,7 +9904,7 @@ dev-util/dialog 1.2.20150920 1.3.20160424 1.3.20160828: tool to display dialog b
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
-dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge text files
+dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
@@ -9927,7 +9927,7 @@ dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
-dev-util/flawfinder 1.27-r2 1.31: Examines C/C++ source code for security flaws
+dev-util/flawfinder 1.31: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 100% compatible enhanced Jam implementation
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
@@ -10004,7 +10004,7 @@ dev-util/meson 0.33.0 0.34.0 0.35.0: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
-dev-util/molecule 0.9.24.6 0.9.24.8 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
+dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
@@ -10044,7 +10044,7 @@ dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Serv
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
-dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4: Userland tools for Linux Performance Counters
+dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5 0.5.1 0.5.3 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
@@ -10060,7 +10060,7 @@ dev-util/pycharm-community 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3: Intelli
 dev-util/pycharm-professional 2016.1.3 2016.1.4 2016.2.1 2016.2.2 2016.2.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.5 1.5.2 1.6.0: Cross-platform build tool
 dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
-dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
+dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
 dev-util/radare2 0.10.3 0.10.4 0.10.5 0.10.6 9999: Advanced command line hexadecimal editor and more
@@ -10425,7 +10425,7 @@ games-arcade/spacerider 0.13: space-shooter written in C++, using the SDL
 games-arcade/spout 1.3: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7: An ncurses-based space shooter
 games-arcade/supertransball2 1.5: Thrust clone
-games-arcade/supertux 0.4.0 0.5.0: A game similar to Super Mario Bros.
+games-arcade/supertux 0.4.0 0.5.0 0.5.1: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r2: tank combat game with lighthearted, fast paced pandemonium
