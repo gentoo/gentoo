@@ -23,7 +23,7 @@ CDEPEND="
 		curl? ( || ( net-misc/curl[ssl,curl_ssl_nss] net-misc/curl[-ssl] ) )
 	)
 
-	!nss? ( dev-libs/openssl
+	!nss? ( dev-libs/openssl:0=
 		curl? ( || ( net-misc/curl[ssl,curl_ssl_openssl] net-misc/curl[-ssl] ) )
 	)
 
