@@ -29,7 +29,7 @@ CDEPEND="dev-libs/libev
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
-	doc? ( app-text/asciidoc app-text/xmlto )"
+	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
@@ -38,6 +38,7 @@ RDEPEND="${CDEPEND}
 DOCS=( RELEASE-NOTES-${PV} )
 
 src_prepare() {
+	default
 	if ! use doc ; then
 		sed -e '/AC_PATH_PROG(\[PATH_ASCIIDOC/d' -i configure.ac || die
 		eautoreconf
@@ -46,7 +47,11 @@ src_prepare() {
 		#!/bin/sh
 		exec /usr/bin/i3
 	EOF
-	default
+}
+
+src_configure() {
+	local myeconfargs=( --enable-debug=no )  # otherwise injects -O0 -g
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
