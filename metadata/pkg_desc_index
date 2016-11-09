@@ -10005,8 +10005,8 @@ dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
-dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
-dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
+dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
+dev-util/molecule-plugins 1.0.2-r1: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
 dev-util/monodevelop 3.0.2-r1 6.0.0.4761: Integrated Development Environment for .NET
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
@@ -10148,7 +10148,7 @@ dev-util/yacc 1.9.1-r4 1.9.1-r5 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.12 1.12.13 1.12.14: a faster alternative to git-filter-branch for removing bad data from git repos
-dev-vcs/bzr 2.4.2 2.5.1 2.5.1-r1 2.6.0: Bazaar is a next generation distributed version control system
+dev-vcs/bzr 2.5.1 2.5.1-r1 2.6.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-explorer 1.3.0 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-git 0.6.8 0.6.8-r1: Support for Git branches in Bazaar
