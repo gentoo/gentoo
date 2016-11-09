@@ -12036,7 +12036,7 @@ mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to det
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 4.3.0-r1 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.30 2.42: spampd is a program to scan messages for possible Unsolicited Commercial E-mail content
-mail-filter/spamprobe 1.4d: Fast, intelligent, automatic spam detector using Bayesian analysis
+mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r1: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
