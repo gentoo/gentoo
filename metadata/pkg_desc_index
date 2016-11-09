@@ -10476,7 +10476,7 @@ games-board/gnome-chess 3.18.0 3.20.1 3.22.0: Play the classic two-player boardg
 games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.18.0 3.20.0 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
-games-board/gnome-mines 3.20.1 3.22.1: Clear hidden mines from a minefield
+games-board/gnome-mines 3.20.1 3.22.1 3.22.2: Clear hidden mines from a minefield
 games-board/gnono 1.9.1 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.04.000 1.05.000 1.05.000-r1: GNU BackGammon
 games-board/gnuchess 6.2.2-r1 6.2.3 6.2.4: Console based chess interface
@@ -10862,7 +10862,7 @@ games-puzzle/enigma 1.21-r2: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
-games-puzzle/five-or-more 3.20.2 3.22.0: Five or More Game for GNOME
+games-puzzle/five-or-more 3.20.2 3.22.0 3.22.2: Five or More Game for GNOME
 games-puzzle/flobopuyo 0.20-r1: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 0.92: Console Minesweeper
 games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little Macintosh freeware game Galaxis
@@ -10892,7 +10892,7 @@ games-puzzle/jools 0.20-r2: clone of Bejeweled, a popular pattern-matching game
 games-puzzle/kiki 1.0.2-r2: Fun 3D puzzle game using SDL/OpenGL
 games-puzzle/ksokoban 0.5.0_pre20120725 9999: The japanese warehouse keeper game
 games-puzzle/larry 1-r1: Leisure Suit Larry Reloaded
-games-puzzle/lightsoff 3.20.0 3.22.0: Turn off all the lights
+games-puzzle/lightsoff 3.20.0 3.22.0 3.22.2: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4: A classical memory game
 games-puzzle/ltris 1.0.19: very polished Tetris clone
@@ -10923,7 +10923,7 @@ games-puzzle/sgt-puzzles 20160315 99999999: Simon Tatham's Portable Puzzle Colle
 games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
-games-puzzle/swell-foop 3.20.0 3.22.0: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.20.0 3.22.0 3.22.2: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.3.1: A single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11: console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2: An ncurses-based maze solving game written in Perl
@@ -11241,7 +11241,7 @@ gnome-extra/gnome-shell-extensions 3.18.4 3.20.1: JavaScript extensions for GNOM
 gnome-extra/gnome-shell-extensions-topicons 28 28-r1: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.20.5 3.22.1: Gnome install & update software
-gnome-extra/gnome-system-monitor 3.20.1 3.22.0: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.20.1 3.22.0 3.22.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.20.2 3.22.0: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.2 3.18.3: Personal file sharing for the GNOME desktop
@@ -12484,7 +12484,7 @@ media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.23.7 0.24.0 0.24.1: Open source photo manager for GNOME
+media-gfx/shotwell 0.23.7 0.24.0 0.24.1 0.25.0.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.20.0 3.22.0.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
@@ -14446,7 +14446,7 @@ net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP proto
 net-libs/glib-networking 2.44.0 2.46.1 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.16-r1 1.0.17: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.20.4 3.22.1: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.20.4 3.22.1 3.22.2: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.5.5 3.5.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.36 2.8.37: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -19066,7 +19066,7 @@ x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3 9999: Fluxbox is an X11 window manager
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.6.2-r1 0.7.0 9999: A manual tiling window manager for X
-x11-wm/i3 4.8 4.9.1 4.10.4 4.11 4.12 4.13 9999: An improved dynamic tiling window manager
+x11-wm/i3 4.8 4.9.1 4.10.4 4.11 4.12 4.13-r1 9999: An improved dynamic tiling window manager
 x11-wm/icewm 1.3.8 1.3.11 1.3.12: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
