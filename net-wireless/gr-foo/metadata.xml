@@ -6,6 +6,6 @@
 		<name>Radio</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">bastibl/gr-ieee802-15-4</remote-id>
+		<remote-id type="github">bastibl/gr-foo</remote-id>
 	</upstream>
 </pkgmetadata>
