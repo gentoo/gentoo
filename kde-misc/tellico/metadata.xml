@@ -12,5 +12,6 @@
 	</longdescription>
 	<use>
 		<flag name="addressbook">Add support for kdepim addressbook (kabc)</flag>
+		<flag name="discid">Add support for reading disc IDs from audio CDs</flag>
 	 </use>
 </pkgmetadata>
