@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Fast, intelligent, automatic spam detector using Bayesian analysis"
 HOMEPAGE="http://spamprobe.sourceforge.net/"
@@ -14,17 +13,21 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="berkdb gif jpeg png"
 
-DEPEND="berkdb? ( >=sys-libs/db-3.2 )
-	gif? ( media-libs/giflib )
-	jpeg? ( virtual/jpeg )
-	png? ( media-libs/libpng )"
+RDEPEND="
+	berkdb? ( >=sys-libs/db-3.2:* )
+	gif? ( media-libs/giflib:= )
+	jpeg? ( virtual/jpeg:0 )
+	png? ( media-libs/libpng:0= )
+"
+DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4b-gcc43.patch \
-		"${FILESDIR}"/${P}-libpng14.patch \
-		"${FILESDIR}"/${P}+db-5.0.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4b-gcc43.patch
+	"${FILESDIR}"/${P}-libpng14.patch
+	"${FILESDIR}"/${P}+db-5.0.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-giflib5.patch
+)
 
 src_configure() {
 	econf \
@@ -34,9 +37,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc ChangeLog README.txt
-
+	default
 	insinto /usr/share/${PN}/contrib
-	doins contrib/* || die
+	doins contrib/*
 }
