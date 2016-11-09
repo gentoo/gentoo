@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=6
-inherit eutils
+inherit git-r3
 
 DESCRIPTION="An MPD client that submits information to Audioscrobbler"
 HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpdscribble"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.bz2"
+EGIT_REPO_URI="git://git.musicpd.org/master/mpdscribble.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS=""
 IUSE="+curl"
 
 RDEPEND="dev-libs/glib
