@@ -9217,7 +9217,7 @@ dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
-dev-ruby/neovim-ruby-client 0.3.0: Ruby bindings for Neovim
+dev-ruby/neovim-ruby-client 0.3.0 0.3.1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
