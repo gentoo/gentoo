@@ -260,6 +260,7 @@ sci-geosciences/googleearth
 >=media-gfx/simple-scan-3.21
 >=media-libs/clutter-1.27
 >=media-libs/clutter-gtk-1.8.2
+>=media-gfx/shotwell-0.25
 >=media-sound/gnome-music-3.21
 >=media-sound/gnome-sound-recorder-3.21
 >=media-sound/sound-juicer-3.21
