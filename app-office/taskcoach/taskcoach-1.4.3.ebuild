@@ -46,11 +46,3 @@ python_install_all() {
 	doicon "icons.in/${PN}.png"
 	make_desktop_entry ${PN}.py "Task Coach" ${PN} Office
 }
-
-pkg_postinst() {
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ! version_is_at_least 1.3.40 ${REPLACING_VERSIONS}; then
-			elog "Since version 1.3.40, the Task Coach executable is called ${PN}.py"
-		fi
-	fi
-}
