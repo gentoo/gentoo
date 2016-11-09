@@ -16,7 +16,7 @@ IUSE="berkdb gif jpeg png"
 RDEPEND="
 	berkdb? ( >=sys-libs/db-3.2:* )
 	gif? ( media-libs/giflib:= )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0= )
 "
 DEPEND="${RDEPEND}"
