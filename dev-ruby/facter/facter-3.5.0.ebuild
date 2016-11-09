@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 CDEPEND="
 	>=sys-devel/gcc-4.8:*
 	>=dev-libs/boost-1.54[nls]
-	>=dev-libs/leatherman-0.4.2
+	>=dev-libs/leatherman-0.9.3
 	>=dev-cpp/yaml-cpp-0.5.1
 	dev-cpp/cpp-hocon
 	dev-libs/openssl:*
