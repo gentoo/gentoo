@@ -18,7 +18,7 @@ IUSE="perl tcl unicode"
 CDEPEND=">=sys-libs/db-4.2.52_p5:=
 	>=sys-libs/ncurses-5.6-r2:=
 	perl? ( dev-lang/perl )
-	tcl? ( >=dev-lang/tcl-8.5:0 )"
+	tcl? ( >=dev-lang/tcl-8.5:0= )"
 
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
