@@ -22,7 +22,7 @@ HOMEPAGE="https://containerd.tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+seccomp"
+IUSE="hardened +seccomp"
 
 DEPEND=""
 RDEPEND=">=app-emulation/runc-1.0.0_rc2
@@ -31,12 +31,9 @@ RDEPEND=">=app-emulation/runc-1.0.0_rc2
 S=${WORKDIR}/${P}/src/${EGO_PN}
 
 src_compile() {
-	local options=( $(usex seccomp "seccomp") ) myldflags
+	local options=( $(usex seccomp "seccomp") )
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
-	if gcc-specs-pie; then
-		myldflags="-extldflags -fno-PIC"
-	fi
-	LDFLAGS=${myldflags} emake GIT_COMMIT="$EGIT_COMMIT" BUILDTAGS="${options[@]}"
+	LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '') emake GIT_COMMIT="$EGIT_COMMIT" BUILDTAGS="${options[@]}"
 }
 
 src_install() {
