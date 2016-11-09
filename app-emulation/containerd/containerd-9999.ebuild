@@ -5,6 +5,8 @@
 EAPI=6
 EGO_PN="github.com/docker/${PN}"
 
+inherit toolchain-funcs
+
 if [[ ${PV} == *9999 ]]; then
 	inherit golang-vcs
 else
@@ -23,19 +25,18 @@ SLOT="0"
 IUSE="+seccomp"
 
 DEPEND=""
-RDEPEND="app-emulation/runc
+RDEPEND=">=app-emulation/runc-1.0.0_rc2
 	seccomp? ( sys-libs/libseccomp )"
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
 
-src_prepare() {
-	eapply_user
-}
-
 src_compile() {
-	local options=( $(usex seccomp "seccomp") )
+	local options=( $(usex seccomp "seccomp") ) myldflags
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
-	LDFLAGS= emake GIT_COMMIT="$EGIT_COMMIT" BUILDTAGS="${options[@]}"
+	if gcc-specs-pie; then
+		myldflags="-extldflags -fno-PIC"
+	fi
+	LDFLAGS=${myldflags} emake GIT_COMMIT="$EGIT_COMMIT" BUILDTAGS="${options[@]}"
 }
 
 src_install() {
