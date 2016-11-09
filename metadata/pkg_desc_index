@@ -18015,7 +18015,7 @@ www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
-www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 1.4.42 9999: Lightweight high-performance web server
+www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 1.4.42 1.4.43 9999: Lightweight high-performance web server
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
@@ -18355,7 +18355,7 @@ x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
 x11-misc/albert 0.8.10 0.8.11: Desktop agnostic launcher
-x11-misc/alock 94 94-r1: locks the local X display until a password is entered
+x11-misc/alock 94 94-r1 94-r2: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r1: A simple application launcher and combined editor

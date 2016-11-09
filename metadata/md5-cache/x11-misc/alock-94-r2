@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXcursor imlib? ( media-libs/imlib2[X] ) pam? ( virtual/pam ) doc? ( app-text/asciidoc )
+DESCRIPTION=locks the local X display until a password is entered
+EAPI=6
+HOMEPAGE=http://darkshed.net/projects/alock https://github.com/mgumz/alock
+IUSE=doc imlib pam
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXcursor imlib? ( media-libs/imlib2[X] ) pam? ( virtual/pam ) doc? ( app-text/asciidoc )
+SLOT=0
+SRC_URI=https://github.com/mgumz/alock/archive/fd3ea42bda834a6b6f023291be23eb32f117f1b4.zip -> alock-94.zip
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=96ee6a0e16ec250d5cc830a843e05266
