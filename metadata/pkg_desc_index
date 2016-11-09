@@ -4668,7 +4668,7 @@ dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p2015052
 dev-libs/kproperty 3.0.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.9.0 0.9.1: A C++ toolkit
+dev-libs/leatherman 0.9.0 0.9.1 0.9.3: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14 0.8.14-r2: CORBA tree builder
