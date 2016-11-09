@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 RUBY_FAKEGEM_TASK_DOC="doc:rdoc"
@@ -20,14 +20,14 @@ SRC_URI="https://github.com/intridea/oauth2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/faraday-0.8
 	>=dev-ruby/jwt-1.0 =dev-ruby/jwt-1*
 	>=dev-ruby/multi_json-1.3 =dev-ruby/multi_json-1*
 	>=dev-ruby/multi_xml-0.5:0
-	>=dev-ruby/rack-1.2:*"
+	>=dev-ruby/rack-1.2:* <dev-ruby/rack-3:*"
 ruby_add_bdepend "test? ( >=dev-ruby/rspec-2.5.0:2 )"
 
 all_ruby_prepare() {
