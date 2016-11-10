@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils git-r3 toolchain-funcs
+
+inherit eutils git-r3 toolchain-funcs flag-o-matic
 
 DEB_VER="3"
 
@@ -15,18 +16,18 @@ EGIT_REPO_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="lz4 lzma lzo xattr +xz"
+IUSE="lz4 lzma lzo static xattr +xz"
 
-RDEPEND="
-	sys-libs/zlib
-	!xz? ( !lzo? ( sys-libs/zlib ) )
-	lz4? ( app-arch/lz4 )
-	lzma? ( app-arch/xz-utils )
-	lzo? ( dev-libs/lzo )
-	xattr? ( sys-apps/attr )
-	xz? ( app-arch/xz-utils )
-"
-DEPEND="${RDEPEND}"
+LIB_DEPEND="sys-libs/zlib[static-libs(+)]
+	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
+	lz4? ( app-arch/lz4[static-libs(+)] )
+	lzma? ( app-arch/xz-utils[static-libs(+)] )
+	lzo? ( dev-libs/lzo[static-libs(+)] )
+	xattr? ( sys-apps/attr[static-libs(+)] )
+	xz? ( app-arch/xz-utils[static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-sysmacros.patch
@@ -49,6 +50,7 @@ src_configure() {
 	)
 
 	tc-export CC
+	use static && append-ldflags -static
 }
 
 src_compile() {
