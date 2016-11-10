@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ettore Di Giacinto <mudler@gentoo.org> (10 Nov 2016)
+# Dependency has no stable keyword
+# and as for now we have only stable mate versions
+mate-base/mate bluetooth
+
 # Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
 # Enable gambit and scm only on supported arches
 >=dev-scheme/slib-3.2.5 gambit scm
