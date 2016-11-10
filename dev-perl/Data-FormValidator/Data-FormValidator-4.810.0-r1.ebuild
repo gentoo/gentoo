@@ -25,3 +25,8 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
+}
