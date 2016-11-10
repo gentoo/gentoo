@@ -472,6 +472,11 @@ multilib_src_configure() {
 		$(use_enable tcpd wrappers)
 	)
 
+	# Some cross-compiling tests don't pan out well.
+	tc-is-cross-compiler && myconf+=(
+		--with-yielding-select=yes
+	)
+
 	local ssl_lib="no"
 	if use ssl || ( ! use minimal && use samba ) ; then
 		ssl_lib="openssl"
