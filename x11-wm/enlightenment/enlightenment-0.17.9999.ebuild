@@ -43,7 +43,7 @@ IUSE_E_MODULES=(
 	${__NORM_MODS[@]/#/enlightenment_modules_}
 )
 
-IUSE="pam spell static-libs systemd +udev ukit wayland ${IUSE_E_MODULES[@]/#/+}"
+IUSE="pam spell static-libs systemd ukit wayland ${IUSE_E_MODULES[@]/#/+}"
 
 RDEPEND="
 	pam? ( sys-libs/pam )
@@ -100,7 +100,6 @@ src_configure() {
 		$(use_enable pam)
 		$(use_enable systemd)
 		--enable-device-udev
-		$(use_enable udev mount-eeze)
 		$(use_enable ukit mount-udisks)
 		$(use_enable wayland)
 	)
