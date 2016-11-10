@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-CDEPEND="dev-lang/perl
-	dev-libs/libev
+CDEPEND="dev-libs/libev
 	dev-libs/libpcre
 	>=dev-libs/yajl-2.0.3
 	x11-libs/libxcb[xkb]
@@ -29,12 +28,13 @@ CDEPEND="dev-lang/perl
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
-	>=x11-libs/pango-1.30.0[X]
-	>=x11-libs/cairo-1.14.4[X,xcb]"
+	>=x11-libs/cairo-1.14.4[X,xcb]
+	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	doc? ( app-text/asciidoc app-text/xmlto )
+	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
+	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
 
