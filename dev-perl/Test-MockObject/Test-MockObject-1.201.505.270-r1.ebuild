@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,4 +29,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
+src_prepare() {
+	cp "${FILESDIR}/${PN}-${MODULE_VERSION}-INSTALL.SKIP" \
+		"${S}/INSTALL.SKIP" || die "Cant copy INSTALL.SKIP file"
+	perl-module_src_prepare
+}
 SRC_TEST="do parallel"
