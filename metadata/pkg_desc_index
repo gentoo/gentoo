@@ -17991,7 +17991,7 @@ www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.5.1 3.8.1-r1: A lightweight system monitoring tool
 www-misc/multisort 1.1-r1: multisort takes any number of httpd logfiles in the Common Log Format and merges them together
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)
-www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM
+www-misc/profile-sync-daemon 5.45.1 6.28 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.19 2.19-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.5: A tool for monitoring webpages for updates
