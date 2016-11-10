@@ -13,7 +13,7 @@ else
 fi
 
 DESCRIPTION="A standalone utility to process systemd-style tmpfiles.d files"
-HOMEPAGE="https://github.com/openrc/tmpfiles"
+HOMEPAGE="https://github.com/openrc/opentmpfiles"
 
 LICENSE="BSD-2"
 SLOT="0"
