@@ -74,9 +74,6 @@ src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
 
-	# bug 597006: large HISTFILESIZE value may result in upfront memory exhaustion
-	epatch "${FILESDIR}"/${PN}-4.4-history-alloclist.patch
-
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
 		rm -rf lib/{readline,termcap}/*
