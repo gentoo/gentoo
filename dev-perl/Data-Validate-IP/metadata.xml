@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Data-Validate-IP</remote-id>
+    <remote-id type="cpan-module">Data::Validate::IP</remote-id>
   </upstream>
 </pkgmetadata>
