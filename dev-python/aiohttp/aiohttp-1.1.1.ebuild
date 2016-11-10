@@ -22,6 +22,7 @@ CDEPEND="
 	dev-python/async_timeout[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/multidict-2.0[${PYTHON_USEDEP}]
+	dev-python/yarl[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -38,7 +39,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/yarl[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 	)
 "
