@@ -2984,7 +2984,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nuts
 dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1 3.14.2: A SQL Database Engine in a C Library
+dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1 3.14.2 3.15.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -14113,7 +14113,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.6 2.0.7 2.2.1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.6 2.0.7 2.2.1 2.2.1-r1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -17948,7 +17948,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 54.0.2840.90: The web browser from Google
-www-client/google-chrome-beta 55.0.2883.35: The web browser from Google
+www-client/google-chrome-beta 55.0.2883.44: The web browser from Google
 www-client/google-chrome-unstable 56.0.2906.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18001,7 +18001,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.145: Adobe Flash Player
-www-plugins/chrome-binary-plugins 54.0.2840.90 55.0.2883.35_beta 56.0.2906.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 54.0.2840.90 55.0.2883.44_beta 56.0.2906.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
