@@ -456,18 +456,6 @@ net-analyzer/metasploit development test
 # Tracked in Gentoo bug #509602.
 dev-java/jboss-logging doc
 
-# Tom Wijsman <TomWij@gentoo.org> (02 May 2014)
-# Bluetooth support in MATE has incompatibilities with recent BlueZ versions.
-# If you want to try to get this working, unmask net-wireless/mate-bluetooth as
-# well as the bluetooth USE flag on mate-extra/mate-user-share; I can't support
-# this until the relevant upstreams have moved forward with their compatibility.
-#
-# https://bugs.gentoo.org/show_bug.cgi?id=508086
-# https://github.com/mate-desktop/mate-bluetooth/issues/22
-# http://mate-desktop.org/blog/2014-03-11-mate-desktop-singing-the-bluez
-mate-base/mate bluetooth
-mate-extra/mate-user-share bluetooth
-
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
 # It's only supported on amd64
 dev-db/mariadb tokudb
