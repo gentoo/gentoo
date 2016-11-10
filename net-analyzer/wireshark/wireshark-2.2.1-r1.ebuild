@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils qt4-r2 user
+inherit autotools eutils fcaps flag-o-matic multilib qmake-utils qt4-r2 user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="http://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="
 	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf
 	geoip +gtk kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi
@@ -23,6 +23,8 @@ REQUIRED_USE="
 	sshdump? ( libssh )
 	ssl? ( crypt )
 "
+
+S=${WORKDIR}/${P/_/}
 
 CDEPEND="
 	>=dev-libs/glib-2.14:2
@@ -94,14 +96,10 @@ pkg_setup() {
 	enewgroup wireshark
 }
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
-		"${FILESDIR}"/${PN}-99999999-sse4_2.patch \
+		"${FILESDIR}"/${PN}-2.1.0-sse4_2-r1.patch \
 		"${FILESDIR}"/${PN}-99999999-androiddump.patch
 
 	epatch_user
