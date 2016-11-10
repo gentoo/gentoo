@@ -301,8 +301,12 @@ pkg_setup() {
 		openldap_find_versiontags
 	fi
 
-	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	# The user/group are only used for running daemons which are
+	# disabled in minimal builds, so elide the accounts too.
+	if ! use minimal ; then
+		enewgroup ldap 439
+		enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	fi
 }
 
 src_prepare() {
@@ -473,6 +477,11 @@ multilib_src_configure() {
 		$(multilib_native_use_with sasl cyrus-sasl)
 		$(multilib_native_use_enable sasl spasswd)
 		$(use_enable tcpd wrappers)
+	)
+
+	# Some cross-compiling tests don't pan out well.
+	tc-is-cross-compiler && myconf+=(
+		--with-yielding-select=yes
 	)
 
 	local ssl_lib="no"
