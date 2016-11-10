@@ -5115,7 +5115,7 @@ dev-ml/core_bench 113.33.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00 113.33.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00 113.33.00 113.33.01: System-independent part of Core
 dev-ml/core_profiler 113.24.00 113.33.00: Jane Street's profiling library
-dev-ml/cppo 1.3.1-r1 1.3.2 1.4.0: An equivalent of the C preprocessor for OCaml programs
+dev-ml/cppo 1.3.1-r1 1.3.2 1.4.0 1.4.1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.4.2 1.5: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
@@ -5156,7 +5156,7 @@ dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
-dev-ml/ocaml-containers 0.18 0.19 0.20: A modular standard library focused on data structures
+dev-ml/ocaml-containers 0.18 0.19 0.20 0.21: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.1.0 2.2.0 2.3.0: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.10.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
@@ -5165,7 +5165,7 @@ dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
 dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-extunix 0.1.3: Thin bindings to various low-level system APIs
-dev-ml/ocaml-fileutils 0.4.5 0.5.0: Pure OCaml functions to manipulate real file (POSIX like) and filename
+dev-ml/ocaml-fileutils 0.4.5 0.5.0 0.5.1: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.5-r1: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.0 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
@@ -5177,7 +5177,7 @@ dev-ml/ocaml-redis 0.3.0 0.3.1 0.3.2 0.3.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 4.0.3 4.0.4 4.0.5 4.0.6: A package for ocaml that provides access to SQLite databases
-dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1 0.5.2: OCaml bindings for OpenSSL
+dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1 0.5.2 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.1-r1 1.9.2: RFC3986 URI parsing library for OCaml
@@ -6362,7 +6362,7 @@ dev-perl/Sys-MemInfo 0.910.0-r1 0.980.0: Memory informations
 dev-perl/Sys-Mmap 0.170.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
-dev-perl/Sys-Syscall 0.250.0-r1: Access system calls that Perl doesn't normally provide access to
+dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
@@ -6419,7 +6419,7 @@ dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
-dev-perl/Test-MockObject 1.201.505.270: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockObject 1.201.505.270-r1: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
@@ -10604,7 +10604,7 @@ games-engines/openxcom 1.0.0 9999: An open-source reimplementation of the popula
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
 games-engines/residualvm 0.2.1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
-games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1: Reimplementation of the SCUMM game engine used in Lucasarts adventures
+games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1 1.8.1-r1: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 1.7.0-r1 1.8.0: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.3.0: A realtime strategy game engine
