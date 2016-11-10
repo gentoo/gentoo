@@ -57,6 +57,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
+	epatch "${FILESDIR}/libressl.patch"
 	epatch_user && eautoreconf
 
 	if use python ; then
