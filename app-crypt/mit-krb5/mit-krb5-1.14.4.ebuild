@@ -59,6 +59,10 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	epatch "${FILESDIR}/${PN}-config_LDFLAGS.patch"
 
+	# Make sure we always use the system copies.
+	rm -rf util/{et,ss,verto}
+	sed -i 's:^[[:space:]]*util/verto$::' configure.in || die
+
 	eautoreconf
 }
 
