@@ -41,7 +41,7 @@ esac
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline vanilla"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2:0=
 	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
@@ -73,9 +73,6 @@ src_unpack() {
 src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
-
-	# bug 597006: large HISTFILESIZE value may result in upfront memory exhaustion
-	epatch "${FILESDIR}"/${PN}-4.4-history-alloclist.patch
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
