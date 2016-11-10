@@ -103,10 +103,6 @@ src_install() {
 	rm -r "${ED%/}"/usr/share/openvswitch/python || die
 	#fi
 
-	# not working without the brcompat_mod kernel module which did not get
-	# included in the kernel and we can't build it anymore
-	rm "${ED%/}"/usr/sbin/ovs-brcompatd "${ED%/}"/usr/share/man/man8/ovs-brcompatd.8 || die
-
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
@@ -116,9 +112,6 @@ src_install() {
 	#if ! use monitor ; then
 	#	rm -r "${ED%/}"/usr/share/ovsdbmonitor || die
 	#fi
-	if ! use debug ; then
-		rm "${ED%/}"/usr/bin/ovs-parse-leaks || die
-	fi
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
