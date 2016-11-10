@@ -25,17 +25,16 @@ S="${WORKDIR}"
 # These files are for remote development and debugging
 QA_PREBUILT="usr/share/netbeans-cnd-${SLOT}/bin/*"
 
-CDEPEND="~dev-java/netbeans-dlight-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	>=dev-java/jna-3.4.0
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
