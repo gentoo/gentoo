@@ -16,5 +16,5 @@ SLOT="1"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-gfx/sane-backends
-	dev-python/pillow"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
