@@ -26,9 +26,7 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r11
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
-# We need to require a newer glibc for its elf.h defs. #571814
 DEPEND="${RDEPEND}
-	!<sys-libs/glibc-2.22
 	nls? ( sys-devel/gettext )
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"
