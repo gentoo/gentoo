@@ -145,10 +145,6 @@ x11-base/xorg-drivers video_cards_sis
 # x11-drivers/xf86-video-tdfx
 x11-base/xorg-drivers video_cards_tdfx
 
-# x11-drivers/xf86-video-vmware
-# x11-libs/libdrm[libkms,video_cards_vmware]
-x11-base/xorg-drivers video_cards_vmware
-
 # >=sys-auth/polkit-qt-0.103.0
 # >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127
 # >=sys-auth/polkit-kde-agent-0.99
