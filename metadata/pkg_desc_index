@@ -2361,7 +2361,8 @@ app-text/openlp 2.4.2: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r4: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
-app-text/paperwork 0.3.2-r1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork 0.3.2-r1 1.0.1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.0.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
@@ -4547,7 +4548,7 @@ dev-libs/atk 2.16.0-r1 2.18.0 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beecrypt 4.2.1-r3 4.2.1-r4: General-purpose cryptography library
-dev-libs/beignet 1.1.2 1.2.0 1.2.0-r1: OpenCL implementation for Intel GPUs
+dev-libs/beignet 1.1.2 1.2.0 1.2.0-r1 1.2.1: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
@@ -7549,6 +7550,7 @@ dev-python/libiscsi-python 0_pre160211 9999: Python bindings for libiscsi
 dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
 dev-python/libnacl 1.4.0 1.4.3 1.4.4: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
+dev-python/libpillowfight 0.2.1: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libvirt-python 1.3.5 2.0.0 2.1.0 2.2.0 2.3.0 9999: libvirt Python bindings
@@ -13562,7 +13564,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.38 1.0.42: Spotify is a social music platform
+media-sound/spotify 1.0.42-r1: Spotify is a social music platform
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
