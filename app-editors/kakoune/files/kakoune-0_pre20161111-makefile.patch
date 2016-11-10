@@ -1,0 +1,47 @@
+diff --git a/src/Makefile b/src/Makefile
+index 966582d..cdac6ba 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,10 +4,10 @@ pedantic ?= yes
+
+ ifeq ($(debug),yes)
+     CPPFLAGS += -DKAK_DEBUG
++    CXXFLAGS += -g
+     suffix := .debug
+ else
+     ifeq ($(debug),no)
+-        CXXFLAGS += -O3
+         suffix := .opt
+     else
+         $(error debug should be either yes or no)
+@@ -27,8 +27,6 @@ mandocs := $(docs:.asciidoc=.gz)
+ PREFIX ?= /usr/local
+ DESTDIR ?= # root dir
+
+-NCURSESW_INCLUDE ?= /usr/include/ncursesw
+-
+ bindir := $(DESTDIR)$(PREFIX)/bin
+ sharedir := $(DESTDIR)$(PREFIX)/share/kak
+ docdir := $(DESTDIR)$(PREFIX)/share/doc/kak
+@@ -52,10 +50,9 @@ else ifeq ($(os),DragonFly)
+     LDFLAGS += -L/usr/local/lib
+ else ifneq (,$(findstring CYGWIN,$(os)))
+     CPPFLAGS += -D_XOPEN_SOURCE=700
+-    LIBS += -lncursesw -lboost_regex -ldbghelp
++    LIBS += -lboost_regex -ldbghelp
+ else
+-    LIBS += -lncursesw -lboost_regex
+-    CPPFLAGS += -I$(NCURSESW_INCLUDE)
++    LIBS += -lboost_regex
+     LDFLAGS += -rdynamic
+ endif
+
+@@ -64,7 +61,7 @@ ifeq ($(static),yes)
+     LDFLAGS += -static -pthread
+ endif
+
+-CXXFLAGS += -std=gnu++11 -g -Wall -Wno-reorder -Wno-sign-compare -Wno-address
++CXXFLAGS += -std=gnu++11 -Wall -Wno-reorder -Wno-sign-compare -Wno-address
+
+ all : kak
+ kak : $(objects)
