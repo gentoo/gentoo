@@ -16779,6 +16779,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8 0.9: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.3 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/opentmpfiles 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
@@ -16846,7 +16847,6 @@ sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.1 6.3: The GNU info program and utilities
 sys-apps/the_silver_searcher 0.32.0 0.33.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
-sys-apps/tmpfiles 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 0.7.2 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.7.0 2.7.1-r2: Daemon for monitoring and adaptive tuning of system devices
