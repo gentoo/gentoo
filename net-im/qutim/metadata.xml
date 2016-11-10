@@ -19,7 +19,7 @@
 </upstream>
 <use>
 	<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
-	<flag name="awn">Enable integration with <pkg>gnome-extra/avant-window-navigator</pkg></flag>
+	<flag name="awn">Enable integration with gnome-extra/avant-window-navigator</flag>
 	<flag name="crypt">Enable AES crypto plugin</flag>
 	<flag name="histman">Enable history importer plugin</flag>
 	<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
