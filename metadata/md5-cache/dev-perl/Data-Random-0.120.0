@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-ExtUtils-MakeMaker-6.360.0 test? ( >=virtual/perl-Test-Simple-0.880.0 virtual/perl-File-Temp ) dev-lang/perl:=
+DESCRIPTION=A module used to generate random data
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Data-Random/
+IUSE=test
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=virtual/perl-Time-Piece-1.160.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BA/BAREFOOT/Data-Random-0.12.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=ece6a665440e762275f07d6c6e04d02b

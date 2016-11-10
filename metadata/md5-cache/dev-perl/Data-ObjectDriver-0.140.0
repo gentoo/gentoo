@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Class-Trigger dev-perl/Class-Data-Inheritable dev-perl/Class-Accessor dev-perl/DBI virtual/perl-Scalar-List-Utils >=dev-perl/Module-Build-Tiny-0.35.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 test? ( dev-perl/Test-Exception dev-perl/DBD-SQLite virtual/perl-version ) dev-lang/perl:=
+DESCRIPTION=Simple, transparent data interface, with caching
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Data-ObjectDriver/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Trigger dev-perl/Class-Data-Inheritable dev-perl/Class-Accessor dev-perl/DBI virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SI/SIXAPART/Data-ObjectDriver-0.14.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=906d4ce568c736299fb1a1fe582edf6d

@@ -5540,12 +5540,12 @@ dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
-dev-perl/Data-ObjectDriver 0.90.0-r1: Simple, transparent data interface, with caching
+dev-perl/Data-ObjectDriver 0.90.0-r1 0.140.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
-dev-perl/Data-Random 0.80.0: A module used to generate random data
+dev-perl/Data-Random 0.80.0 0.120.0: A module used to generate random data
 dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
