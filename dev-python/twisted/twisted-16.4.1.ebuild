@@ -38,14 +38,18 @@ RDEPEND=">=dev-python/zope-interface-4.0.2[${PYTHON_USEDEP}]
 		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 		<dev-python/priority-2.0[${PYTHON_USEDEP}]
 	)
-"
-DEPEND="
-	!dev-python/twisted-core
 	!dev-python/twisted-conch
+	!dev-python/twisted-core
+	!dev-python/twisted-lore
 	!dev-python/twisted-mail
 	!dev-python/twisted-names
-	!dev-python/twisted-words
+	!dev-python/twisted-news
+	!dev-python/twisted-pair
+	!dev-python/twisted-runner
 	!dev-python/twisted-web
+	!dev-python/twisted-words
+"
+DEPEND="
 	test? (
 		dev-python/gmpy[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]

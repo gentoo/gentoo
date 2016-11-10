@@ -13,7 +13,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ia64-hp
 IUSE=""
 
 DEPEND="
-	!dev-python/twisted
 	=dev-python/twisted-core-${TWISTED_RELEASE}*[${PYTHON_USEDEP}]
 	=dev-python/twisted-names-${TWISTED_RELEASE}*[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-python/twisted
+"

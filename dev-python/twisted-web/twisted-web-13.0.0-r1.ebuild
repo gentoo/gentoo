@@ -13,10 +13,11 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-f
 IUSE="soap"
 
 DEPEND="
-	!dev-python/twisted
 	=dev-python/twisted-core-${TWISTED_RELEASE}*[${PYTHON_USEDEP}]
 	soap? ( dev-python/soappy[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-python/twisted
+"
 
 python_prepare_all() {
 	if [[ "${EUID}" -eq 0 ]]; then
