@@ -15123,7 +15123,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.19 2016.11.02 2016.11.04 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.19 2016.11.04 2016.11.08.1 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17957,8 +17957,8 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9: An excellent console-
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
-www-client/opera 12.16_p1860-r1 41.0.2353.46: A fast and secure web browser
-www-client/opera-beta 42.0.2393.14: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 41.0.2353.56: A fast and secure web browser
+www-client/opera-beta 42.0.2393.14 42.0.2393.27: A fast and secure web browser
 www-client/opera-developer 43.0.2403.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
