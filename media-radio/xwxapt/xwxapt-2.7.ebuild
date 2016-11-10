@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	net-wireless/rtl-sdr
 	media-libs/alsa-lib
 	dev-libs/glib:2
 	x11-libs/gtk+:2"
