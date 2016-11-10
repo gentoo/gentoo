@@ -3,10 +3,10 @@
 
 EAPI="5"
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 DESCRIPTION="utilities to access MS-DOS disks from Unix without mounting them"
-HOMEPAGE="http://mtools.linux.lu/"
+HOMEPAGE="https://www.gnu.org/software/mtools/ https://savannah.gnu.org/projects/mtools"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
