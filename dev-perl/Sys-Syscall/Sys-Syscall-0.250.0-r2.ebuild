@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,3 +15,10 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 SRC_TEST="do"
+
+src_prepare() {
+	# https://rt.cpan.org/Ticket/Display.html?id=118696
+	cp "${FILESDIR}/${PN}-${MODULE_VERSION}-INSTALL.SKIP" \
+		"${S}/INSTALL.SKIP" || die "Can't copy INSTALL.SKIP file"
+	perl-module_src_prepare
+}
