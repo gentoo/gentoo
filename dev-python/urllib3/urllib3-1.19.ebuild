@@ -37,7 +37,8 @@ DEPEND="
 		>=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		>=dev-python/nose-exclude-0.4.1[${PYTHON_USEDEP}]
 	)
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? ( dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}] )
 	"
 
 # Testsuite written requiring mock to be installed under all Cpythons
