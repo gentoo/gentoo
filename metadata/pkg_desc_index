@@ -2361,7 +2361,7 @@ app-text/openlp 2.4.2: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r4: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
-app-text/paperwork 0.2.5 0.3.0.1 0.3.2: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork 0.3.0.1 0.3.2: a personal document manager for scanned documents (and PDFs)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
@@ -7956,7 +7956,7 @@ dev-python/pynacl 1.0.1: Python binding to the Networking and Cryptography (NaCl
 dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.2.4 0.3.0 0.3.1 0.4.1 0.4.2: An optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.4.1 0.4.2: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
