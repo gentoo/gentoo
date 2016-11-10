@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/B-Utils virtual/perl-Data-Dumper virtual/perl-Exporter virtual/perl-IO virtual/perl-IO-Compress virtual/perl-MIME-Base64 virtual/perl-Text-Balanced dev-perl/PadWalker virtual/perl-XSLoader dev-perl/Module-Build virtual/perl-Carp virtual/perl-ExtUtils-CBuilder dev-perl/ExtUtils-Depends test? ( virtual/perl-Test-Simple dev-perl/JSON-XS ) dev-lang/perl:=
+DESCRIPTION=Accurately serialize a data structure as Perl code
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Data-Dump-Streamer/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/B-Utils virtual/perl-Data-Dumper virtual/perl-Exporter virtual/perl-IO virtual/perl-IO-Compress virtual/perl-MIME-Base64 virtual/perl-Text-Balanced dev-perl/PadWalker virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.40.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=3debc5bdfe0f9985d621203c39baa1b7

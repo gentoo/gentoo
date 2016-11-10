@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install preinst prepare setup unpack
-DEPEND=>=virtual/jdk-1.7 app-arch/unzip ~dev-java/netbeans-ide-8.2 ~dev-java/netbeans-platform-8.2 dev-java/javahelp:0 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=virtual/jdk:1.8 ~dev-java/netbeans-ide-8.2 ~dev-java/netbeans-platform-8.2 app-arch/unzip dev-java/javahelp:0 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Netbeans D-Light Cluster
 EAPI=6
 HOMEPAGE=http://netbeans.org/
 IUSE=elibc_FreeBSD elibc_FreeBSD
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( CDDL GPL-2-with-linking-exception )
-RDEPEND=|| ( virtual/jdk:1.7 virtual/jdk:1.8 ) ~dev-java/netbeans-ide-8.2 ~dev-java/netbeans-platform-8.2 >=dev-java/java-config-2.2.0-r3
+RDEPEND=virtual/jdk:1.8 ~dev-java/netbeans-ide-8.2 ~dev-java/netbeans-platform-8.2 >=dev-java/java-config-2.2.0-r3
 SLOT=8.2
 SRC_URI=http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2 http://hg.netbeans.org/binaries/18E39A0D10357B72EDB76F2070E27019317792F1-fs_server-1.0.zip
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:- src_prepare:- src_configure:java-ant-2 src_compile:java-pkg-2 src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6757c311533233482296fa860e0dac8a
+_md5_=7ca29c02fb69d56d3978629a13c0bf6f
