@@ -23,3 +23,8 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? ( dev-perl/Test-Exception )
 "
+
+src_test() {
+	perl_rm_files t/pod-coverage.t t/pod.t
+	perl-module_src_test
+}
