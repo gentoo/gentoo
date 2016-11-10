@@ -87,7 +87,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
 	>=dev-java/antlr-4.5:4
 	dev-java/commons-compress:0
@@ -120,15 +121,13 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/jzlib:0 fails with "Missing manifest tag OpenIDE-Module"
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/commons-codec:0
-	${CDEPEND}
 	dev-java/javacc:0
 	dev-java/javahelp:0
 	dev-java/jna:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

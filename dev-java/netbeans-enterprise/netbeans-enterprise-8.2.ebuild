@@ -47,7 +47,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-ide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
@@ -60,14 +61,12 @@ CDEPEND="~dev-java/netbeans-ide-${PV}
 	dev-java/commons-logging:0
 	dev-java/glassfish-deployment-api:1.2
 	dev-java/jsr181:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEnd}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	>=dev-java/junit-4.4:4
 	dev-java/tomcat-servlet-api:2.3"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/bsf:2.3
 	dev-java/cglib:3

@@ -44,11 +44,11 @@ CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/osgi-compendium:0
 	dev-java/swing-layout:1[source]
 	dev-java/testng:0"
-DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
-	app-arch/unzip
-	${CDEPEND}"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+DEPEND="${CDEPEND}
+	dev-java/oracle-jdk-bin:1.8[javafx]
+	app-arch/unzip"
+RDEPEND="${CDEPEND}
+	virtual/jdk:1.8"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
