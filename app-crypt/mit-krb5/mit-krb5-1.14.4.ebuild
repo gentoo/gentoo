@@ -63,7 +63,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cppflags "-I${EPREFIX}/usr/include/et"
 	# QA
 	append-flags -fno-strict-aliasing
 	append-flags -fno-strict-overflow
