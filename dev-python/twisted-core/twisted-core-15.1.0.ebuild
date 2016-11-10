@@ -19,9 +19,9 @@ RDEPEND=">=dev-python/zope-interface-3.6.0[${PYTHON_USEDEP}]
 	gtk? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	serial? ( dev-python/pyserial[${PYTHON_USEDEP}] )"
 DEPEND="
-	!dev-python/twisted
 	test? ( ${RDEPEND} )
 "
+RDEPEND+=" !dev-python/twisted"
 
 PATCHES=(
 	# Give a load-sensitive test a better chance of succeeding.

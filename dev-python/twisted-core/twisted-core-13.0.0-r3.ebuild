@@ -14,12 +14,13 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-f
 IUSE="crypt gtk serial"
 
 DEPEND="
-	!dev-python/twisted
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	crypt? ( >=dev-python/pyopenssl-0.10[${PYTHON_USEDEP}] )
 	gtk? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	serial? ( dev-python/pyserial[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-python/twisted
+"
 
 PATCHES=(
 	# Give a load-sensitive test a better chance of succeeding.
