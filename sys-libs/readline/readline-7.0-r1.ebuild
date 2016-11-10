@@ -54,6 +54,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.0-no_rpath.patch
 	epatch "${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch #385091
 	epatch "${FILESDIR}"/${PN}-7.0-headers.patch
+	epatch "${FILESDIR}"/${PN}-7.0-history-alloclist.patch #597006
 
 	# Force ncurses linking. #71420
 	# Use pkg-config to get the right values. #457558
