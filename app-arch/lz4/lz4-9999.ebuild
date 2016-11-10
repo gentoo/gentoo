@@ -34,7 +34,6 @@ src_prepare() {
 	if ! use valgrind; then
 		sed -i -e '/^test:/s|test-mem||g' programs/Makefile || die
 	fi
-	epatch "${FILESDIR}"/${PN}-0_p131-static-libs.patch
 	multilib_copy_sources
 }
 
