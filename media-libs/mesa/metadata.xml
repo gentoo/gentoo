@@ -16,6 +16,7 @@
 		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>
 		<flag name="gles1">Enable GLESv1 support.</flag>
 		<flag name="gles2">Enable GLESv2 support.</flag>
+		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for low level sha1 utility functions.</flag>
 		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for low level sha1 utility functions.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
