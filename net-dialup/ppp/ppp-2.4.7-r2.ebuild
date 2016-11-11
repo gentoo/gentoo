@@ -6,11 +6,11 @@ EAPI=5
 
 inherit eutils linux-info multilib pam toolchain-funcs
 
-PATCH_VER="2"
+PATCH_VER="3"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="http://www.samba.org/ppp"
 SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
-	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-patches-${PATCH_VER}.tar.xz
+	https://dev.gentoo.org/~vapier/distfiles/${P}-patches-${PATCH_VER}.tar.xz
 	http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz"
 
 LICENSE="BSD GPL-2"
