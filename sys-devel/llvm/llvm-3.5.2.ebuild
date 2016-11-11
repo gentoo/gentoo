@@ -87,7 +87,7 @@ S=${WORKDIR}/${P}.src
 # so why did it call itself ninja in the first place?
 CMAKE_MAKEFILE_GENERATOR=emake
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !clang !debug !multitarget -O2       400
 	# !clang !debug  multitarget -O2       550
@@ -135,8 +135,12 @@ pkg_pretend() {
 	fi
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_unpack() {

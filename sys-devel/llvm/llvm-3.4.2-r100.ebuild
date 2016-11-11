@@ -48,7 +48,7 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 
 S=${WORKDIR}/${P}.src
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !clang !debug !multitarget -O2       400
 	# !clang !debug  multitarget -O2       550
@@ -74,8 +74,12 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_unpack() {
