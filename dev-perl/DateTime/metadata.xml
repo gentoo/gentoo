@@ -14,5 +14,7 @@
     <remote-id type="cpan-module">DateTime::Infinite::Future</remote-id>
     <remote-id type="cpan-module">DateTime::Infinite::Past</remote-id>
     <remote-id type="cpan-module">DateTime::LeapSecond</remote-id>
+    <remote-id type="cpan-module">DateTime::PP</remote-id>
+    <remote-id type="cpan-module">DateTime::PPExtra</remote-id>
   </upstream>
 </pkgmetadata>
