@@ -24,14 +24,12 @@ RDEPEND="
 	!~dev-python/pyflakes-1.2.1
 	!~dev-python/pyflakes-1.2.2
 	>=dev-python/pycodestyle-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
+	<dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy )
 	"
 PDEPEND="
 	>=dev-python/mccabe-0.5.0[${PYTHON_USEDEP}]
 	<dev-python/mccabe-0.6[${PYTHON_USEDEP}]
-	>=dev-python/pycodestyle-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

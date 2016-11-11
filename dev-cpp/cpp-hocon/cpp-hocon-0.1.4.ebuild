@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug test"
 
 DEPEND="
-	>=sys-devel/gcc-5.0:*
-	>=dev-libs/boost-1.57[nls]
-	dev-libs/leatherman
+	>=sys-devel/gcc-4.9.3:*
+	>=dev-libs/boost-1.54[nls]
+	>=dev-libs/leatherman-0.9.3
 	"
 RDEPEND="${DEPEND}"
 

@@ -10,8 +10,4 @@
 		<flag name="opus">Enable Opus audio codec support</flag>
 		<flag name="qtmedia">Enable playback via Qt5Multimedia</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">kwave</remote-id>
-		<bugs-to>https://sourceforge.net/tracker/?group_id=6478</bugs-to>
-	</upstream>
 </pkgmetadata>
