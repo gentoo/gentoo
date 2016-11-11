@@ -16770,7 +16770,7 @@ sys-apps/msr-tools 1.3: Utilities allowing the read and write of CPU model-speci
 sys-apps/mtree 1.0 1.0.1: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r2: Brian Kernighan's pattern scanning and processing language
 sys-apps/nca 0.9.0-r1: Network Console on Acid
-sys-apps/net-tools 1.60_p20141019041918-r1 1.60_p20151124144947 1.60_p20160215155418 9999: Standard Linux networking tools
+sys-apps/net-tools 1.60_p20141019041918-r1 1.60_p20151124144947 1.60_p20160215155418 1.60_p20161110235919 9999: Standard Linux networking tools
 sys-apps/netboot-base 20050110: Baselayout for netboot systems
 sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netloc 0.5: Portable Network Locality (netloc)
@@ -17160,7 +17160,7 @@ sys-devel/flex 2.5.39-r1 2.6.1 2.6.2: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 6.2.0-r1: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
-sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 9999: GNU debugger
+sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 9999: GNU debugger
 sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.4 0.19.6-r1 0.19.7 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20150727 20151214 20160402 99999999: Updated config.sub and config.guess file from GNU
