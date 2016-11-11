@@ -62,7 +62,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
 
-pkg_pretend() {
+check_space() {
 	local build_size=650
 
 	if use debug; then
@@ -87,8 +87,12 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 
 	python-single-r1_pkg_setup
 }
