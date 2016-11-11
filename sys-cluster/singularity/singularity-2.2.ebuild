@@ -13,13 +13,16 @@ SRC_URI="https://github.com/${PN}ware/${PN}/releases/download/${PV}/${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="examples"
 
 src_configure() {
 	econf --with-userns
 }
 
 src_install() {
+	MAKEOPTS+=" -j1"
 	default
 	prune_libtool_files
+	dodoc ChangeLog
+	use examples && dodoc -r examples
 }
