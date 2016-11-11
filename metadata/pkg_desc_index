@@ -5556,17 +5556,17 @@ dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded 
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
-dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
-dev-perl/Data-Validate-IP 0.240.0: Lightweight IPv4 and IPv6 validation module
+dev-perl/Data-Validate-Domain 0.110.0 0.140.0: Domain and host name validation
+dev-perl/Data-Validate-IP 0.240.0 0.260.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
-dev-perl/Date-Extract 0.40.0: Extract probable dates from strings
+dev-perl/Date-Extract 0.40.0 0.50.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
-dev-perl/Date-Manip 6.510.0 6.520.0: Perl date manipulation routines
+dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
@@ -5582,7 +5582,7 @@ dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
-dev-perl/DateTime-Locale 0.460.0 1.20.0: Localization support for DateTime
+dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0: Localization support for DateTime
 dev-perl/DateTime-Set 0.340.0 0.360.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.010.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0: A date object, with as little code as possible
@@ -5883,6 +5883,7 @@ dev-perl/Image-Info 1.380.0 1.390.0: The Perl Image-Info Module
 dev-perl/Image-Scale 0.110.0: Fast, high-quality fixed-point image resizing
 dev-perl/Image-Size 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.5: Import packages into other packages
+dev-perl/Importer 0.24.0: Alternative interface to modules that export symbols
 dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.760.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
@@ -6203,6 +6204,7 @@ dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validation of method/function call parameters
+dev-perl/Params-ValidationCompiler 0.170.0: Build an optimized subroutine parameter validator once, use it forever
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.13: Generate Recursive-Descent Parsers
@@ -6320,6 +6322,7 @@ dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
 dev-perl/Sort-Versions 1.620.0: A perl 5 module for sorting of revision-like numbers
+dev-perl/Specio 0.310.0: Type constraints and coercions for Perl
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
 dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
@@ -6450,6 +6453,8 @@ dev-perl/Test-Warn 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
+dev-perl/Test2-Plugin-NoWarnings 0.50.0: Fail if tests warn
+dev-perl/Test2-Suite 0.0.60: A rich set of tools built upon the Test2 framework
 dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
