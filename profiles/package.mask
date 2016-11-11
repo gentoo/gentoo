@@ -477,6 +477,7 @@ dev-php/pecl-http:0
 dev-perl/Test2-Suite
 >=dev-perl/Data-Validate-Domain-0.120.0
 dev-perl/Test2-Plugin-NoWarnings
+dev-perl/Params-ValidationCompiler
 
 # Mike Pagano <mpagano@gentoo.org> (15 Jul 2016)
 # These two kernels have a serious OOM regression
