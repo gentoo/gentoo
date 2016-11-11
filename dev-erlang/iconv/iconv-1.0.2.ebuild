@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
-DEPEND=">=dev-erlang/p1_utils-1.0.4
+DEPEND=">=dev-erlang/p1_utils-1.0.5
 	>=dev-lang/erlang-17.1
 	virtual/libiconv"
 RDEPEND="${DEPEND}"
