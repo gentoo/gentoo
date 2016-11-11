@@ -44,8 +44,8 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gcrypt gles1 gles2
-	+llvm nettle +nptl opencl osmesa pax_kernel openmax +openssl pic selinux
-	vaapi valgrind vdpau wayland xvmc xa kernel_FreeBSD"
+	libressl +llvm nettle +nptl opencl osmesa pax_kernel openmax +openssl pic
+	selinux vaapi valgrind vdpau wayland xvmc xa kernel_FreeBSD"
 
 REQUIRED_USE="
 	|| ( gcrypt nettle openssl )
@@ -104,7 +104,10 @@ RDEPEND="
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
 	!nettle? (
 		gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
-		!gcrypt? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+		!gcrypt? (
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		)
 	)
 	opencl? (
 				app-eselect/eselect-opencl
