@@ -4623,7 +4623,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.1-r1 2.48.2 2.50.0 2.50.1: The GLib library of C routines
+dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.2 2.50.0 2.50.1 2.50.2: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -9939,7 +9939,7 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2 2.50.0 2.50.1: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.2 2.50.0 2.50.1 2.50.2: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.24-r1 1.25 1.28 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
@@ -10479,7 +10479,7 @@ games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
-games-board/gnome-chess 3.18.0 3.20.1 3.22.0: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.18.0 3.20.1 3.22.0 3.22.2: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.18.0 3.20.0 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
@@ -10877,7 +10877,7 @@ games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the scr
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
 games-puzzle/gnome-klotski 3.18.2 3.20.2 3.22.0 3.22.1: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.20.5 3.22.0: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-sudoku 3.20.5 3.22.0 3.22.2: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.20.2 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.20.0 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
@@ -11178,18 +11178,18 @@ gnome-base/gnome-common 3.14.0-r1 3.18.0: Common files for development of Gnome 
 gnome-base/gnome-control-center 3.20.1 3.20.1-r1 3.20.2 3.22.1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.14.0 3.16.0 3.18.0 3.20.0: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0 3.20.0 3.20.0-r1: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.1: Libraries for the gnome desktop that are not part of the UI
+gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.1 3.22.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.16.0 3.18.0 3.18.0-r1 3.20.0: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1 3.20.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.16.0 3.18.0 3.20.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.18.1.2 3.20.1 3.20.2: Gnome session manager
+gnome-base/gnome-session 3.20.2 3.22.1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.20.1 3.20.2 3.22.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.18.5 3.20.2-r1 3.20.3 3.20.4 3.22.1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1 3.20.0 3.22.0: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.3-r1 1.30.1.1: Virtual filesystem implementation for gio
+gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.3-r1 1.30.1.1 1.30.2: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -11220,7 +11220,7 @@ gnome-extra/cjs 2.8.0 3.0.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.1.1-r1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.20.5 3.22.1 3.22.2: Evolution groupware backend
-gnome-extra/evolution-ews 3.20.5 3.22.1: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-ews 3.20.5 3.22.1 3.22.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.20.2 3.22.1 3.22.2: Simple GNOME 3 application to access remote or virtual systems
@@ -11256,7 +11256,7 @@ gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0 9.0.1: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0 9.0.1 9.0.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r1 5.2.4-r2: GNOME database access library
 gnome-extra/libgsf 1.14.34 1.14.36 1.14.39 1.14.40: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
@@ -14405,7 +14405,7 @@ net-irc/ngircd 23-r1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.20.3-r1 3.22.1: An IRC client for Gnome
+net-irc/polari 3.20.3-r1 3.22.1 3.22.2: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
@@ -14621,7 +14621,7 @@ net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
-net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.12.5 2.14.1: Open source web browser engine
+net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.12.5 2.14.1 2.14.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.5-r1 4.1.6: A brokerless kernel
@@ -16623,7 +16623,7 @@ sys-apps/apply-default-acl 0.0.4 0.0.6: Apply default POSIX ACLs to files and di
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.20.1 3.22.0: Disk usage browser for GNOME
+sys-apps/baobab 3.20.1 3.22.0 3.22.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2 2.2-r1 2.3: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -17949,7 +17949,7 @@ www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web b
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.20.3 3.22.1: GNOME webbrowser based on Webkit
+www-client/epiphany 3.20.3 3.22.1 3.22.2: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
@@ -18242,7 +18242,7 @@ x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r2 1.2.0-r3: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.16.1 3.18.2 3.18.3 3.20.4 3.22.0: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.16.1 3.18.2 3.18.3 3.20.4 3.22.0 3.22.1: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tasks

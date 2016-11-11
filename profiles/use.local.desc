@@ -8470,6 +8470,7 @@ x11-wm/i3:pango - Use x11-libs/pango to render text in order to support fonts wh
 x11-wm/marco:gtk3 - Build with GTK+3 instead of GTK+2
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
+x11-wm/mutter:gles2 - Enable OpenGL ES 2.0 support
 x11-wm/mutter:kms - Enable KMS support.
 x11-wm/notion:xrandr - Add support for xrandr
 x11-wm/openbox:session - Enables support for session managers
