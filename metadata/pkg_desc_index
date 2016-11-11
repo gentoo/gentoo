@@ -1295,7 +1295,7 @@ app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-registry 2.5.0 2.5.1: Docker Registry 2.0
-app-emulation/docker-swarm 1.2.0: A Docker-native clustering system
+app-emulation/docker-swarm 1.2.0 1.2.5: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20130107-r3: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator
@@ -17881,7 +17881,7 @@ www-apps/icingaweb2 2.3.3 2.3.4-r1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
-www-apps/ikiwiki 3.20140227 3.20140916 3.20150107 3.20160905: A wiki compiler
+www-apps/ikiwiki 3.20160905: A wiki compiler
 www-apps/jekyll 3.1.6-r1 3.2.1-r2: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.0.1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sites
