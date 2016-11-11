@@ -1290,7 +1290,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0 1.21.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.3 9999: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-compose 1.8.0 1.8.1 1.9.0_rc1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.8.0 1.8.1 1.9.0_rc1 1.9.0_rc4: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-registry 2.5.0 2.5.1: Docker Registry 2.0
@@ -7251,7 +7251,7 @@ dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.9.0_rc2 1.9.0 1.10.3 1.10.4: Python client for Docker
+dev-python/docker-py 1.2.2 1.9.0_rc2 1.9.0 1.10.3 1.10.4 1.10.6: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.3.3 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
