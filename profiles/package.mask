@@ -30,6 +30,9 @@
 
 #--- END OF EXAMPLES ---
 
+# Depends on masked app-crypt/gpgme[cxx]
+=kde-apps/kwalletd-16.04.3-r1
+
 # Johannes Huber <johu@gentoo.org> (07 Nov 2016)
 # Masked for removal in 30 days. Dead upstream.
 # Hosted on google code, which shutdowns end of the year.
