@@ -17,7 +17,9 @@ IUSE="doc examples static-libs"
 # The GOBJECT_INTROSPECTION build is broken, and upstream has given up
 # on it at the moment (it's disabled in Travis). It will probably come
 # back in v2.0.1 or later.
-#RDEPEND="introspection? ( dev-libs/gobject-introspection )"
+# This snippet belongs to RDEPEND:
+# introspection? ( dev-libs/gobject-introspection )"
+RDEPEND="dev-libs/icu:="
 DEPEND="${RDEPEND}
 	dev-lang/perl"
 
