@@ -22,13 +22,8 @@ SLOT="0"
 IUSE="test"
 
 COMMONDEPEND="
-	virtual/perl-File-Path
-	virtual/perl-File-Spec
 	dev-perl/Log-Agent
-	virtual/perl-Memoize
-	virtual/perl-IO
 	dev-perl/Shell-EnvImporter
-	virtual/perl-Term-ANSIColor
 	>=dev-perl/YAML-0.60
 "
 RDEPEND="${COMMONDEPEND}
