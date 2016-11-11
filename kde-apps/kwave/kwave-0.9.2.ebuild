@@ -7,7 +7,7 @@ EAPI=6
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="A sound editor built on KDE Frameworks 5 that can edit many types of audio files"
+DESCRIPTION="Sound editor built on KDE Frameworks 5 that can edit many types of audio files"
 HOMEPAGE="http://kwave.sourceforge.net/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://sourceforge/${PN}/${P}-1.tar.bz2"
