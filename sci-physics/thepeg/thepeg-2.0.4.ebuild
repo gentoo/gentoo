@@ -25,14 +25,14 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="c++11 emacs fastjet hepmc java lhapdf rivet static-libs test zlib"
 
 RDEPEND="
-	sci-libs/gsl:=
+	sci-libs/gsl:0=
 	emacs? ( virtual/emacs )
-	fastjet? ( sci-physics/fastjet )
-	hepmc? ( sci-physics/hepmc )
+	fastjet? ( sci-physics/fastjet:0= )
+	hepmc? ( sci-physics/hepmc:0= )
 	java? ( >=virtual/jre-1.5:* )
-	lhapdf? ( >=sci-physics/lhapdf-6.0 )
-	rivet? ( sci-physics/rivet )
-	zlib? ( sys-libs/zlib )"
+	lhapdf? ( >=sci-physics/lhapdf-6.0:0= )
+	rivet? ( sci-physics/rivet:0= )
+	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	test? ( sys-process/time )"
 
