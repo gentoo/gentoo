@@ -22,7 +22,9 @@ SLOT="0"
 IUSE="test"
 
 COMMONDEPEND="
+	dev-perl/Config-Tiny
 	dev-perl/Log-Agent
+	dev-perl/Path-Tiny
 	dev-perl/Shell-EnvImporter
 	>=dev-perl/YAML-0.60
 "
