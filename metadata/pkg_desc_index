@@ -1291,6 +1291,7 @@ app-emulation/diskimage-builder 1.15.0 1.21.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.3 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.0 1.8.1 1.9.0_rc1 1.9.0_rc4: Multi-container orchestration for Docker
+app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
 app-emulation/docker-registry 2.5.0 2.5.1: Docker Registry 2.0
