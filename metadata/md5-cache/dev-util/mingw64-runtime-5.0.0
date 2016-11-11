@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.15* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Free Win64 runtime and import library definitions
+EAPI=6
+HOMEPAGE=http://mingw-w64.sourceforge.net/
+IUSE=crosscompile_opts_headers-only idl libraries tools
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v5.0.0.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8aa3eee97d0de96f9f13c270a3be9739

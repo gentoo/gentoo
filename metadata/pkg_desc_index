@@ -10011,7 +10011,7 @@ dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.33.0 0.34.0 0.35.0: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
-dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.0: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2-r1: A set fo base plugins for Molecule
@@ -16319,7 +16319,7 @@ sci-physics/rivet 2.3.0 2.5.2: Toolkit for validation of Monte Carlo HEP event g
 sci-physics/root 5.34.26 5.34.32 5.34.36 6.04.06: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
-sci-physics/thepeg 1.9.2 2.0.0: Toolkit for High Energy Physics Event Generation
+sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
 sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
