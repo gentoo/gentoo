@@ -1,4 +1,4 @@
-From 22efabdfc5e3578276943a36ef351bf22a7bd061 Mon Sep 17 00:00:00 2001
+From def3936a5353924fb7b9ffa30b8c1c96c9175ca7 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Fri, 11 Nov 2016 17:52:07 +0100
 Subject: [PATCH] Introduce --with-system-zip configure flag to use system zip
@@ -57,7 +57,7 @@ index fad1cf2..57f00fb 100644
  
  if JMA
 diff --git a/gtk/configure.ac b/gtk/configure.ac
-index 4d21792..e64fac2 100644
+index 4d21792..e3bab4e 100644
 --- a/gtk/configure.ac
 +++ b/gtk/configure.ac
 @@ -138,6 +138,12 @@ AC_ARG_WITH(zlib,
@@ -91,7 +91,7 @@ index 4d21792..e64fac2 100644
 +	if test check = "$with_system_zip"; then
 +	    AC_MSG_WARN(Cannot find SYSTEM_ZIP)
 +	else
-+	    AC_MSG_ERROR(--with-system-zip given but cannot find proper zip)
++	    AC_MSG_ERROR(--with-system-zip given but cannot find proper zlib)
 +	fi
 +    ])
 +fi
@@ -219,7 +219,7 @@ index 5849568..aecad31 100644
  CCFLAGS    = @S9XFLGS@ @S9XDEFS@ $(DEFS)
  CFLAGS     = $(CCFLAGS)
 diff --git a/unix/configure.ac b/unix/configure.ac
-index 3c851dc..dc0e7ba 100644
+index 3c851dc..47f3780 100644
 --- a/unix/configure.ac
 +++ b/unix/configure.ac
 @@ -201,16 +201,43 @@ AC_ARG_ENABLE([zip],
@@ -253,7 +253,7 @@ index 3c851dc..dc0e7ba 100644
 +			fi
 +			S9XDEFS="$S9XDEFS -DSYSTEM_ZIP",
 +			if test "x${with_system_zip}" != "xcheck"; then
-+				AC_MSG_ERROR([--with-system-zlib requested but no proper zlib found.])
++				AC_MSG_ERROR([--with-system-zip requested but no proper zlib found.])
 +			else
 +				AC_MSG_WARN([zlib not found. Build without SYSTEM_ZIP support.])
 +			fi
