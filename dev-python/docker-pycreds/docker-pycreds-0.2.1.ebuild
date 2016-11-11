@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the docker credentials store API"
-HOMEPAGE="https://github.com/shin-/docker-pycreds/"
+HOMEPAGE="https://github.com/shin-/dockerpy-creds/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
