@@ -19,8 +19,8 @@ if [[ ${PV} = *9999* || ! -z "${EGIT_COMMIT}" ]]; then
 else
 	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 	# Upstream hasn't released a new binary.  We snipe ours from Fedora for now.
-	# http://code.coreboot.org/p/seabios/downloads/get/bios.bin-${PV}.gz
-	SRC_URI="!binary? ( http://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
+	# https://code.coreboot.org/p/seabios/downloads/get/bios.bin-${PV}.gz
+	SRC_URI="!binary? ( https://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
 		binary? (
 			mirror://gentoo/bios.bin-${PV}.xz
 			seavgabios? ( mirror://gentoo/seavgabios-${PV}.tar.xz )
@@ -28,7 +28,7 @@ else
 fi
 
 DESCRIPTION="Open Source implementation of a 16-bit x86 BIOS"
-HOMEPAGE="http://www.seabios.org"
+HOMEPAGE="https://www.seabios.org/"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"
