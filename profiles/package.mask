@@ -30,10 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (11 Nov 2016)
-# Masked until available on the mirrors (bug #599434).
-=sys-apps/net-tools-1.60_p20161110235919
-
 # Johannes Huber <johu@gentoo.org> (07 Nov 2016)
 # Masked for removal in 30 days. Dead upstream.
 # Hosted on google code, which shutdowns end of the year.
