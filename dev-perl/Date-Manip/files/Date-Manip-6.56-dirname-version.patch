@@ -1,0 +1,44 @@
+From bddc157c9624a8a2a2c83efb6fe846292c9f4ca1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 11 Nov 2016 10:48:50 +1300
+Subject: [PATCH] Don't inherit test version from directory name
+
+As per RT#118705, this regex relies on extracting the version
+from the directory name for comparison, which on Gentoo, gets
+the *parent* directory, and picks up the Gentoo normalized version
+instead of upstreams version in a child path.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=118705
+---
+ t/obj.t | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/t/obj.t b/t/obj.t
+index 8a26395..1691f46 100755
+--- a/t/obj.t
++++ b/t/obj.t
+@@ -5,19 +5,9 @@ $t = new Test::Inter 'object';
+ $testdir = '';
+ $testdir = $t->testdir();
+ 
+-use Cwd;
+-my $dir  = getcwd;
+-$dir     =~ /Date-Manip-([0-9.]+)/;
+-my $vers = $1;
+-
+-# Travis-CI renames the directory to just Date-Manip (no version) so this
+-# test cannot be done.
+-if (! defined $vers) {
+-   $vers = DateManipVersion();
+-}
+-
+-$ENV{'TZ'} = 'America/Chicago';
+ use Date::Manip;
++my $vers = DateManipVersion();
++$ENV{'TZ'} = 'America/Chicago';
+ if (DateManipVersion() >= 6.00) {
+    $t->feature("DM6",1);
+ }
+-- 
+2.10.2
+

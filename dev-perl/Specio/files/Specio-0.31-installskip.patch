@@ -1,0 +1,52 @@
+From 75ac71299516640967a884f58c1c0f9176fdb16f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 11 Nov 2016 12:43:36 +1300
+Subject: [PATCH] Mark TODO.pod as "Not for installation"
+
+https://github.com/houseabsolute/Specio/pull/4
+
+Due to historical reasons, EUMM installs all files called "*.pm"
+or "*.pod" in the distributions root directory to the the install
+target.
+
+For instance,
+
+    Dist-Foo-Bar/Bar.pm   -> ${site_lib}/Dist/Foo/Bar.pm
+    Dist-Foo-Bar/TODO.pod -> ${site_lib}/Dist/Foo/TODO.pod
+    Dist-Foo/TODO.pod     -> ${site_lib}/Dist/TODO.pod
+    Dist/TODO.pod         -> ${site_lib}/TODO.pod
+
+INSTALL.SKIP is used by ExtUtils::Install to mark things as "not for
+installation" while performing "make install", and acts to filter
+things in "blib/" from landing in ${site_lib}
+
+It will still *appear* to have no impact because EUMM will still spit
+out that its copying it from Dist-Foo/ to Dist-Foo/blib/
+
+But it shouldn't end up in the install target.
+
+Additionally, this rule filters out any resulting man-pages as well,
+because TODO.pod will be manified before ExtUtils::Install gets a
+chance.
+
+And the proof is in the pudding.
+
+  cpanm -l /tmp/elib Specio-$VERSION.tar.gz
+  find /tmp/elib | grep -i TODO
+
+Now should emit nothing.
+---
+ INSTALL.SKIP | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..5d454a6
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++TODO\.(pod|0)$
+-- 
+2.10.2
+
