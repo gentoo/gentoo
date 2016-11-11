@@ -48,6 +48,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.10-posix-source-sigaction.patch"
 	epatch "${FILESDIR}/${PN}-3.11-gentoo.patch"
 	epatch "${FILESDIR}/${PN}-3.11-kmode.patch" #364941
+	epatch "${FILESDIR}/${PN}-3.12-linux-headers.patch"
 
 	epatch_user
 
