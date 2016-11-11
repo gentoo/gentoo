@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libpng:0 >=media-libs/libsdl-1.2.3[X,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[midi,vorbis,wav]
+DESCRIPTION=A computer role-playing game (CRPG) engine with game called HaximA
+EAPI=6
+HOMEPAGE=http://myweb.cableone.net/gmcnutt/nazghul.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0 >=media-libs/libsdl-1.2.3[X,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[midi,vorbis,wav]
+SLOT=0
+SRC_URI=mirror://sourceforge/nazghul/nazghul-0.7.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=7065232053effa7ce904eca8016e0e6b
