@@ -32,7 +32,7 @@ python_prepare_all() {
 			youtube_dl/version.py || die
 		# these have single line import statements
 		local xxx=(
-			alphaporno anysex behindkink camwithher chaturbate drtuber eporner
+			alphaporno anysex behindkink camwithher chaturbate eporner
 			eroprofile extremetube fourtube foxgay goshgay hellporno
 			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
 			myvidster porn91 pornhd pornotube pornovoisines pornoxo redtube
@@ -42,7 +42,7 @@ python_prepare_all() {
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			pornhub xhamster tnaflix
+			drtuber pornhub xhamster tnaflix
 		)
 		# do single line imports
 		sed -i \
