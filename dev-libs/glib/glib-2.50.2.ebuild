@@ -12,8 +12,8 @@ PYTHON_COMPAT=( python2_7 )
 # pkg-config
 GNOME2_LA_PUNT="yes"
 
-inherit autotools bash-completion-r1 gnome2 libtool eutils flag-o-matic	multilib \
-	pax-utils python-r1 toolchain-funcs versionator virtualx linux-info multilib-minimal
+inherit autotools bash-completion-r1 eutils flag-o-matic gnome2 libtool linux-info \
+	multilib multilib-minimal pax-utils python-r1  toolchain-funcs versionator virtualx
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="http://www.gtk.org/"
@@ -32,7 +32,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 RDEPEND="
 	!<dev-util/gdbus-codegen-${PV}
-	>=dev-libs/libpcre-8.13:3[${MULTILIB_USEDEP}]
+	>=dev-libs/libpcre-8.13:3[${MULTILIB_USEDEP},static-libs?]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=virtual/libffi-3.0.13-r1[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
@@ -114,7 +114,7 @@ src_prepare() {
 	fi
 
 	# gdbus-codegen is a separate package
-	eapply "${FILESDIR}"/${PN}-2.40.0-external-gdbus-codegen.patch
+	eapply "${FILESDIR}"/${PN}-2.50.0-external-gdbus-codegen.patch
 
 	# Leave python shebang alone - handled by python_replicate_script
 	# We could call python_setup and give configure a valid --with-python
