@@ -27,7 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	jpeg2k? (
-		jasper? ( media-libs/jasper )
+		jasper? ( media-libs/jasper:= )
 		!jasper? ( media-libs/openjpeg:0 )
 	)
 	netcdf? ( sci-libs/netcdf )

@@ -35,7 +35,7 @@ CDEPEND="
 	kde-apps/kcmshell:4
 	dev-qt/qtgui:4
 	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/lcms:2
 	>=media-libs/lensfun-0.2.6
 	media-libs/liblqr

@@ -73,7 +73,7 @@ COMMONDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	crypt? ( app-crypt/qca:2[qt4] )
 	fam? ( virtual/fam )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	kerberos? ( virtual/krb5 )
 	openexr? (
 		media-libs/openexr:=
@@ -82,8 +82,8 @@ COMMONDEPEND="
 	policykit? ( sys-auth/polkit-qt[qt4] )
 	spell? ( app-text/enchant )
 	ssl? (
-		libressl? ( dev-libs/libressl )
-		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
 	)
 	udev? ( virtual/udev )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )

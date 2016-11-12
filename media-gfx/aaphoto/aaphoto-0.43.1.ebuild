@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="media-libs/jasper[jpeg]
+RDEPEND="media-libs/jasper:=[jpeg]
 	media-libs/libpng:0=
 	sys-libs/zlib
 	virtual/jpeg:0"

@@ -27,7 +27,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-li
 IUSE="demosaic examples jpeg jpeg2k +lcms openmp"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/jasper-1.900.1-r6[${MULTILIB_USEDEP}] )
+	jpeg2k? ( >=media-libs/jasper-1.900.1-r6:=[${MULTILIB_USEDEP}] )
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

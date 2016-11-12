@@ -36,15 +36,15 @@ CDEPEND="
 	kde-apps/libkgeomap:4
 	kde-apps/libkipi:4
 	kde-apps/marble:4=[plasma]
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/lcms:2
 	media-libs/lensfun
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
 	>=media-libs/opencv-2.4.9[-qt5]
-	media-libs/tiff
-	virtual/jpeg
+	media-libs/tiff:0
+	virtual/jpeg:0
 	dev-qt/qtgui:4
 	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
 	addressbook? ( $(add_kdeapps_dep kdepimlibs) )

@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils readme.gentoo toolchain-funcs
 
-DESCRIPTION="Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image"
+DESCRIPTION="Command-line decoder for raw digital photos"
 HOMEPAGE="http://www.cybercom.net/~dcoffin/dcraw/"
 SRC_URI="http://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 	mirror://gentoo/parse-1.73.tar.bz2
@@ -18,9 +18,9 @@ LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
 IUSE="nls gimp jpeg jpeg2k lcms ${LANGS// / linguas_}"
 
 COMMON_DEPEND="
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	gimp? ( media-gfx/gimp )
 "
 DEPEND="${COMMON_DEPEND}

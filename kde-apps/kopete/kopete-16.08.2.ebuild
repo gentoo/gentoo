@@ -97,7 +97,7 @@ COMMONDEPEND="
 		net-dns/libidn
 		sys-libs/zlib
 	)
-	yahoo? ( media-libs/jasper )
+	yahoo? ( media-libs/jasper:= )
 "
 RDEPEND="${COMMONDEPEND}
 	latex? (

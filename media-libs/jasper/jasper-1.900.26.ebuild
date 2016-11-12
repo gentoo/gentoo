@@ -24,7 +24,7 @@ fi
 : ${JASPER_MEM_LIMIT:=134217728}
 
 LICENSE="JasPer2.0"
-SLOT="0/1"
+SLOT="0/3"
 IUSE="jpeg opengl static-libs"
 
 RDEPEND="

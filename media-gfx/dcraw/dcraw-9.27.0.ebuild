@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils readme.gentoo toolchain-funcs
 
-DESCRIPTION="command-line decoder for raw digital photos"
+DESCRIPTION="Command-line decoder for raw digital photos"
 HOMEPAGE="http://www.cybercom.net/~dcoffin/dcraw/"
 SRC_URI="http://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 	mirror://gentoo/parse-1.73.tar.bz2
@@ -20,7 +20,7 @@ IUSE="nls gimp jpeg jpeg2k lcms ${LANGS// / linguas_}"
 COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	gimp? ( media-gfx/gimp )
 "
 DEPEND="${COMMON_DEPEND}
