@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/jpeg:0
 	sys-libs/zlib
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	sasl? ( dev-libs/cyrus-sasl )
 	xinetd? ( virtual/inetd )
 "
