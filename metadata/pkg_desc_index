@@ -13408,7 +13408,7 @@ media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2 2.18.2-r2 2.19.46 2.19.47 2.19.48 2.19.49 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2 2.18.2-r2 2.19.49 2.19.50 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
@@ -17974,7 +17974,7 @@ www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a J
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 2.0.1 2.0.2: A cross-platform web browser using QtWebEngine
-www-client/qutebrowser 0.6.2 0.7.0 0.8.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
+www-client/qutebrowser 0.6.2 0.7.0 0.8.2 0.8.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.40 2.42.4.0_p1: Seamonkey Web Browser
