@@ -68,7 +68,7 @@ RDEPEND="
 	)
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	ieee1394? (
 		media-libs/libdc1394
 		sys-libs/libraw1394
