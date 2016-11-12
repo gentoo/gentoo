@@ -93,7 +93,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		)
 		!gtk2? (
 			x11-libs/gtk+:3
-			vte? ( x11-libs/vte:2.90 )
+			vte? ( x11-libs/vte:2.91 )
 		)
 	)
 	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
