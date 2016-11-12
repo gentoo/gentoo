@@ -4540,7 +4540,7 @@ dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.31.1: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15 0.5.16 0.6.3: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15 0.5.16 0.6.3 0.6.5: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -10114,7 +10114,7 @@ dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
 dev-util/sysdig 0.5.1 0.6.0 0.9.0 0.10.0 0.10.1 0.12.1: A system exploration and troubleshooting tool
-dev-util/sysprof 1.2.0: System-wide Linux Profiler
+dev-util/sysprof 1.2.0 3.22.2: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/ticpp 0_p20120423 9999: A completely new interface to TinyXML that uses MANY of the C++ strengths
@@ -11185,7 +11185,7 @@ gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1 3.20.0: Password and keyring
 gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.20.2 3.22.1: Gnome session manager
+gnome-base/gnome-session 3.20.2 3.22.1 3.22.2: Gnome session manager
 gnome-base/gnome-settings-daemon 3.20.1 3.20.2 3.22.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.20.4 3.22.1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
@@ -11248,7 +11248,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.20.1 3.22.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 28 28-r1: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-software 3.20.5 3.22.1: Gnome install & update software
+gnome-extra/gnome-software 3.20.5 3.22.1 3.22.2: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.20.1 3.22.0 3.22.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.20.1 3.22.0: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.20.2 3.22.0: GNOME end user documentation
@@ -11799,7 +11799,7 @@ kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
 kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
-kde-misc/kio-gdrive 1.0.2 1.0.3: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.0.2 1.0.3 1.0.4: KIO Slave for Google Drive service
 kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
@@ -12357,7 +12357,7 @@ media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.6.5.0 1.6.5.1 1.7.8: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
-media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1 3.22.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.20.1 3.22.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
@@ -12493,7 +12493,7 @@ media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.23.7 0.24.0 0.24.1 0.25.0.1: Open source photo manager for GNOME
+media-gfx/shotwell 0.23.7 0.24.0 0.24.1 0.24.2 0.25.0.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.20.0 3.22.0.1: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
