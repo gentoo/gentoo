@@ -73,7 +73,7 @@ python_check_deps() {
 		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !debug !multitarget -O2       400
 	# !debug  multitarget -O2       550
@@ -103,8 +103,12 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_prepare() {
