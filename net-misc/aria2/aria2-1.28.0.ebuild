@@ -7,8 +7,8 @@ EAPI="6"
 inherit bash-completion-r1
 
 DESCRIPTION="A download utility with segmented downloading with BitTorrent support"
-HOMEPAGE="http://aria2.sourceforge.net/"
-SRC_URI="https://github.com/tatsuhiro-t/${PN}/releases/download/release-${PV}/${P}.tar.xz"
+HOMEPAGE="https://aria2.github.io/"
+SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
