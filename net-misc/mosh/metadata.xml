@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>xmw@gentoo.org</email>
-	<name>Michael Weber</name>
-</maintainer>
-<maintainer type="person">
-	<email>monsieurp@gentoo.org</email>
-	<name>Patrice Clement</name>
-</maintainer>
-<use>
-	<flag name="client">Build network client</flag>
-	<flag name="examples">Include example scripts</flag>
-	<flag name="mosh-hardening">Enable compiler and linker options to frustrate memory corruption exploits</flag>
-	<flag name="server">Build network server</flag>
-	<flag name="ufw">Install net-firewall/ufw rule set</flag>
-	<flag name="utempter">Include libutempter support</flag>
-</use>
-<longdescription>
+	<maintainer type="person">
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<use>
+		<flag name="client">Build network client</flag>
+		<flag name="examples">Include example scripts</flag>
+		<flag name="mosh-hardening">Enable compiler and linker options to frustrate memory corruption exploits</flag>
+		<flag name="server">Build network server</flag>
+		<flag name="ufw">Install net-firewall/ufw rule set</flag>
+		<flag name="utempter">Include libutempter support</flag>
+	</use>
+	<longdescription>
 Mosh is a remote terminal application that supports:
   - intermittent network connectivity,
   - roaming to different IP address without dropping the connection, and
   - intelligent local echo and line editing to reduce the effects
     of "network lag" on high-latency connections.
 </longdescription>
-<upstream>
-	<bugs-to>https://github.com/keithw/mosh/issues</bugs-to>
-</upstream>
+	<upstream>
+		<bugs-to>https://github.com/keithw/mosh/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

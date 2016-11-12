@@ -17,11 +17,11 @@ IUSE="ssl"
 
 DEPEND="
 	sys-apps/groff
-	ssl? ( net-libs/gnutls )"
+	ssl? ( net-libs/gnutls:0= )"
 RDEPEND="
 	virtual/logger
 	virtual/shadow
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:0= )
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
@@ -99,8 +99,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ ! -e ${EROOT}var/spool/nullmailer/trigger ]; then
-		mkfifo "${EROOT}"var/spool/nullmailer/trigger || die
+	if [ ! -e "${EROOT}var/spool/nullmailer/trigger" ]; then
+		mkfifo "${EROOT}var/spool/nullmailer/trigger" || die
 	fi
 	chown nullmail:nullmail \
 		"${EROOT}"var/log/nullmailer \
@@ -121,18 +121,18 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e ${EROOT}var/spool/nullmailer/trigger ]]; then
-		rm "${EROOT}"var/spool/nullmailer/trigger || die
+	if [[ -e "${EROOT}var/spool/nullmailer/trigger" ]]; then
+		rm "${EROOT}var/spool/nullmailer/trigger" || die
 	fi
 }
 
 pkg_config() {
-	if [ ! -s ${EROOT}etc/nullmailer/me ]; then
+	if [ ! -s "${EROOT}etc/nullmailer/me" ]; then
 		einfo "Setting /etc/nullmailer/me"
-		hostname --fqdn > "${EROOT}"etc/nullmailer/me
+		hostname --fqdn > "${EROOT}etc/nullmailer/me"
 	fi
-	if [ ! -s ${EROOT}etc/nullmailer/defaultdomain ]; then
+	if [ ! -s "${EROOT}etc/nullmailer/defaultdomain" ]; then
 		einfo "Setting /etc/nullmailer/defaultdomain"
-		hostname --domain > "${EROOT}"etc/nullmailer/defaultdomain
+		hostname --domain > "${EROOT}etc/nullmailer/defaultdomain"
 	fi
 }

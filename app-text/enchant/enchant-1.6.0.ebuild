@@ -15,9 +15,10 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="aspell +hunspell static-libs zemberek"
 
-COMMON_DEPENDS="dev-libs/glib:2
+COMMON_DEPENDS="
+	dev-libs/glib:2
 	aspell? ( app-text/aspell )
-	hunspell? ( >=app-text/hunspell-1.2.1 )
+	hunspell? ( >=app-text/hunspell-1.2.1:0= )
 	zemberek? ( dev-libs/dbus-glib )"
 
 RDEPEND="${COMMON_DEPENDS}
