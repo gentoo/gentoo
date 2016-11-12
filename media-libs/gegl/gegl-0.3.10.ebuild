@@ -48,7 +48,7 @@ RDEPEND="
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	virtual/jpeg:0=
-	jpeg2k? ( >=media-libs/jasper-1.900.1 )
+	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr:= )
