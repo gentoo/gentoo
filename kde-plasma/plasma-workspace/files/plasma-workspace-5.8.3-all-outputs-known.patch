@@ -1,0 +1,71 @@
+From: Marco Martin <notmart@gmail.com>
+Date: Wed, 09 Nov 2016 14:54:42 +0000
+Subject: make sure all outputs are known
+X-Git-Url: http://quickgit.kde.org/?p=plasma-workspace.git&a=commitdiff&h=b8d3e09b3687082037a6d280d2032617121ae5e5
+---
+make sure all outputs are known
+
+at startup, if a screen id is missing from the screenpool mapping
+containment::screen() will return -1 for a moment in the startup
+phase even if it has a valid lastScreen
+
+populate mappings of eventual missing stuff at screenpool ctor
+
+make sure destroyed containments don't get assigned a view
+
+reviewed-by: David Edmundson
+
+CCBUG:372099
+CCBUG:371858
+CCBUG:371991
+CCBUG:371819
+CCBUG:371734
+---
+
+
+--- a/shell/screenpool.cpp
++++ b/shell/screenpool.cpp
+@@ -49,6 +49,17 @@
+             m_idForConnector[connector] = key.toInt();
+         } else if (m_idForConnector.value(connector) != key.toInt()) {
+             m_configGroup.deleteEntry(key);
++        }
++    }
++
++    // if there are already connected unknown screens, map those
++    // all needs to be populated as soon as possible, otherwise
++    // containment->screen() will return an incorrect -1
++    // at startup, if it' asked before corona::addOutput()
++    // is performed, driving to the creation of a new containment
++    for (QScreen* screen : qGuiApp->screens()) {
++        if (!m_idForConnector.contains(screen->name())) {
++            insertScreenMapping(firstAvailableId(), screen->name());
+         }
+     }
+ }
+
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -1178,7 +1178,12 @@
+ {
+     if (m_desktopContainments.contains(activity)) {
+         for (Plasma::Containment *cont : m_desktopContainments.value(activity)) {
+-            if (cont->screen() == screenNum && cont->activity() == activity) {
++            //in the case of a corrupt config file
++            //with multiple containments with same lastScreen
++            //it can happen two insertContainment happen for
++            //the same screen, leading to the old containment 
++            //to be destroyed
++            if (!cont->destroyed() && cont->screen() == screenNum && cont->activity() == activity) {
+                 return cont;
+             }
+         }
+@@ -1832,6 +1837,7 @@
+ //     qDebug() << "ShellCorona screenForContainment: " << containment << " Last screen is " << containment->lastScreen();
+ 
+     for (auto screen : qGuiApp->screens()) {
++        // containment->lastScreen() == m_screenPool->id(screen->name()) to check if the lastScreen refers to a screen that exists/it's known
+         if (containment->lastScreen() == m_screenPool->id(screen->name()) &&
+             (containment->activity() == m_activityController->currentActivity() ||
+             containment->containmentType() == Plasma::Types::PanelContainment || containment->containmentType() == Plasma::Types::CustomPanelContainment)) {
+
