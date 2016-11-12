@@ -24,7 +24,7 @@ DEPEND="dev-qt/qtcore:4[qt3support]
 	media-libs/alsa-lib
 	media-sound/pulseaudio
 	media-libs/libv4l
-	sci-libs/fftw:3.0"
+	sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 
