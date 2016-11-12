@@ -16,7 +16,7 @@ IUSE="cups +gnome-shell"
 
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 
 # XXX: Note to developers:
 # This is a wrapper for the 'light' GNOME 3 desktop, and should only consist of
@@ -30,7 +30,7 @@ RDEPEND="!gnome-base/gnome
 	>=gnome-base/gnome-settings-daemon-${PV}[cups?]
 	>=gnome-base/gnome-control-center-${PV}[cups?]
 
-	>=gnome-base/nautilus-${PV}
+	>=gnome-base/nautilus-3.20.0
 
 	gnome-shell? (
 		>=x11-wm/mutter-${PV}
