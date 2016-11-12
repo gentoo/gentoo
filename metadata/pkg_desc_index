@@ -5146,6 +5146,7 @@ dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the terminal
+dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
