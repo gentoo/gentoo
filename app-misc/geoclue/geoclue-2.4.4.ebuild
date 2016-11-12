@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.4.1-fix-GLIBC-features.patch
+
+	gnome2_src_prepare
 }
 
 src_configure() {
