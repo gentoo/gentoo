@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( media-libs/freeglut ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper ) mng? ( media-libs/libmng:= ) nvtt? ( media-gfx/nvidia-texture-tools ) openexr? ( media-libs/openexr:= ) opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) tiff? ( media-libs/tiff:0 ) xpm? ( x11-libs/libXpm ) X? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXrender ) virtual/pkgconfig X? ( x11-proto/xextproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( media-libs/freeglut ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper:= ) mng? ( media-libs/libmng:= ) nvtt? ( media-gfx/nvidia-texture-tools ) openexr? ( media-libs/openexr:= ) opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) tiff? ( media-libs/tiff:0 ) xpm? ( x11-libs/libXpm ) X? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXrender ) virtual/pkgconfig X? ( x11-proto/xextproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DevIL image library
 EAPI=5
 HOMEPAGE=http://openil.sourceforge.net/
 IUSE=allegro gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs tiff xpm X
 KEYWORDS=amd64 ~arm ~mips ppc ppc64 x86
 LICENSE=LGPL-2.1
-RDEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( media-libs/freeglut ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper ) mng? ( media-libs/libmng:= ) nvtt? ( media-gfx/nvidia-texture-tools ) openexr? ( media-libs/openexr:= ) opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) tiff? ( media-libs/tiff:0 ) xpm? ( x11-libs/libXpm ) X? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXrender )
+RDEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( media-libs/freeglut ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper:= ) mng? ( media-libs/libmng:= ) nvtt? ( media-gfx/nvidia-texture-tools ) openexr? ( media-libs/openexr:= ) opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) tiff? ( media-libs/tiff:0 ) xpm? ( x11-libs/libXpm ) X? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXrender )
 SLOT=0
 SRC_URI=mirror://sourceforge/openil/DevIL-1.7.8.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=5a83014d88fd34cabe22f0e229037b34
+_md5_=f44885022d4d7813e10f202ee3051c6c

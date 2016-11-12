@@ -5394,7 +5394,6 @@ net-ftp/yafc:ssh - Build with SFTP support
 net-im/ayttm:irc - Enable Internet Relay Chat support
 net-im/ayttm:lj - Enable livejournal.com support
 net-im/ayttm:smtp - Adds support for sending messages via RFC2821 SMTP
-net-im/ayttm:webcam - Adds webcam support for Yahoo Messenger
 net-im/bitlbee:libevent - Use libevent for event handling
 net-im/bitlbee:nss - Use NSS for SSL support in MSN and Jabber
 net-im/bitlbee:otr - Enable support for encrypted conversations

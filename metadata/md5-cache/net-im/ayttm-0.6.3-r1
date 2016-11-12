@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl:0 virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) webcam? ( media-libs/jasper ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) sys-devel/bison sys-devel/flex nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl:0= virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) sys-devel/bison sys-devel/flex nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A multi-protocol instant messaging client
 EAPI=5
 HOMEPAGE=http://ayttm.sourceforge.net/
-IUSE=crypt icq irc xmpp lj msn nls oscar smtp webcam xscreensaver yahoo
+IUSE=crypt icq irc xmpp lj msn nls oscar smtp xscreensaver yahoo
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl:0 virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) webcam? ( media-libs/jasper ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 ) webcam? ( media-tv/xawtv )
+RDEPEND=app-text/enchant dev-libs/glib:2 dev-libs/openssl:0= virtual/libiconv x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXpm x11-libs/pango crypt? ( app-crypt/gpgme ) xscreensaver? ( x11-libs/libXScrnSaver ) yahoo? ( net-libs/libyahoo2 )
 SLOT=0
 SRC_URI=mirror://sourceforge/ayttm/0.6.3/ayttm-0.6.3.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=eea75434a6a841a5d8b1b627da75d496
+_md5_=8f9bf497b928cb6b6da3bab35b685079
