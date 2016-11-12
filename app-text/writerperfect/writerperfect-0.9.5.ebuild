@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-solaris"
 IUSE="abiword +cdr debug ebook freehand gsf keynote +mspub +mwaw pagemaker +visio +wpd +wpg +wps"
 
-# FIXME: libepubgen, libeot, librvngabw
+# FIXME: libepubgen, librvngabw
 RDEPEND="
 	=app-text/libodfgen-0.1*
 	>=dev-libs/librevenge-0.0.1
@@ -35,6 +35,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
+REQUIRED_USE="
+	|| ( abiword cdr ebook freehand keynote mspub mwaw pagemaker visio wpd wpg wps )
+"
+# configure fails if no import library is selected...
 
 src_configure() {
 	econf \
