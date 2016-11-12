@@ -61,7 +61,7 @@ CDEPEND="virtual/jdk:1.8
 	dev-java/commons-logging:0
 	dev-java/glassfish-deployment-api:1.2
 	dev-java/jsr181:0"
-DEPEND="${CDEPEnd}
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/javahelp:0
 	>=dev-java/junit-4.4:4
