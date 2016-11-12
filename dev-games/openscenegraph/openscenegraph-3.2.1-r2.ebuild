@@ -46,14 +46,14 @@ RDEPEND="
 	gdal? ( sci-libs/gdal )
 	gif? ( media-libs/giflib:= )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	openexr? (
 		media-libs/ilmbase
 		media-libs/openexr
 	)
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
