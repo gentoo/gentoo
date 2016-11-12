@@ -6,8 +6,8 @@ EAPI=6
 inherit bash-completion-r1
 
 DESCRIPTION="A commandline client for Music Player Daemon (media-sound/mpd)"
-HOMEPAGE="http://www.musicpd.org"
-SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+HOMEPAGE="https://www.musicpd.org"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
