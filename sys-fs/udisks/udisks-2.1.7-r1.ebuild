@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit bash-completion-r1 eutils linux-info systemd udev
+inherit bash-completion-r1 eutils linux-info systemd udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -64,6 +64,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset
+
 	use systemd || { sed -i -e 's:libsystemd-login:&disable:' configure || die; }
 	epatch "${FILESDIR}"/${PN}-2.1.7-sysmacros.patch #580230
 
