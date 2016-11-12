@@ -13,18 +13,22 @@ MY_PV=$(get_version_component_range 1-2)
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
 SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="X cuda static-libs"
+IUSE="X cuda curl_ssl_libressl +curl_ssl_openssl static-libs"
 
+REQUIRED_USE="^^ ( curl_ssl_libressl curl_ssl_openssl ) "
+
+# libcurl must not be using an ssl backend boinc does not support.
+# If the libcurl ssl backend changes, boinc should be recompiled.
 RDEPEND="
 	!sci-misc/boinc-bin
 	!app-admin/quickswitch
 	>=app-misc/ca-certificates-20080809
-	dev-libs/openssl:0=
-	net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)]
+	net-misc/curl[-curl_ssl_gnutls(-),curl_ssl_libressl(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),-curl_ssl_polarssl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	cuda? (
