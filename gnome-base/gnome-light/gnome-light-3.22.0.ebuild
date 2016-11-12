@@ -30,7 +30,7 @@ RDEPEND="!gnome-base/gnome
 	>=gnome-base/gnome-settings-daemon-${PV}[cups?]
 	>=gnome-base/gnome-control-center-${PV}[cups?]
 
-	>=gnome-base/nautilus-${PV}
+	>=gnome-base/nautilus-3.20.0
 
 	gnome-shell? (
 		>=x11-wm/mutter-${PV}
