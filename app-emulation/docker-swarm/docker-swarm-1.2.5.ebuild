@@ -6,7 +6,7 @@ EAPI=6
 
 KEYWORDS="~amd64"
 EGO_PN=github.com/docker/${PN##*-}/...
-SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN%/*}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/gogo/protobuf/archive/v0.3.tar.gz -> gogo-protobuf-0.3.tar.gz
 	https://github.com/gemnasium/logrus-airbrake-hook/archive/v2.1.1.tar.gz -> logrus-airbrake-hook-2.1.1.tar.gz
 	https://github.com/airbrake/gobrake/archive/v2.0.8.tar.gz -> gobrake-2.0.8.tar.gz
