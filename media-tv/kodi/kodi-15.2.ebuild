@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -69,7 +69,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	bluray? ( media-libs/libbluray )
@@ -105,7 +105,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	opengl? (
 		virtual/glu
 		virtual/opengl
-		>=media-libs/glew-1.5.6
+		>=media-libs/glew-1.5.6:0=
 	)
 	gles? (
 		media-libs/mesa[gles2]
