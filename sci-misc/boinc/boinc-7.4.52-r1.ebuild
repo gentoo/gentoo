@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER=3.0
 
-inherit autotools flag-o-matic linux-info systemd user versionator wxwidgets
+inherit autotools eutils linux-info systemd user versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
-SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz
+	X? ( http://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> ${PN}.tif )"
 RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
@@ -49,7 +50,17 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
+	X? (
+		|| ( media-gfx/imagemagick[png,tiff]
+			media-gfx/graphicsmagick[imagemagick,png,tiff]
+		)
+	)
 "
+
+PATCHES=(
+	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
+	"${FILESDIR}"/fix_webview.patch
+)
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
@@ -60,7 +71,7 @@ pkg_setup() {
 		if ! linux_config_exists; then
 			ewarn "Can't check the linux kernel configuration."
 			ewarn "You might be missing vsyscall support."
-		elif   kernel_is -ge 4 4 \
+		elif kernel_is -ge 4 4 \
 		    && linux_chkconfig_present LEGACY_VSYSCALL_NONE; then
 			ewarn "You do not have vsyscall emulation enabled."
 			ewarn "This will prevent some boinc projects from running."
@@ -77,6 +88,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
@@ -103,12 +116,17 @@ src_install() {
 	keepdir /var/lib/${PN}
 
 	if use X; then
-		newicon "${S}"/packages/generic/sea/${PN}mgr.48x48.png ${PN}.png
+		# Create new icons. bug 593362
+		local s SIZES=(16 22 24 32 36 48 64 72 96 128 192 256)
+		for s in "${SIZES[@]}"; do
+			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png || die
+			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
+		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
 	fi
 
 	# cleanup cruft
-	rm -rf "${ED}"/etc || die "rm failed"
+	rm -rf "${ED%/}"/etc || die "rm failed"
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
@@ -121,13 +139,13 @@ pkg_preinst() {
 	# elog user about the need of being in video group
 	local groups="${PN}"
 	if use cuda; then
-		group+=",video"
+		groups+=",video"
 	fi
 	enewuser ${PN} -1 -1 /var/lib/${PN} "${groups}"
 }
 
 pkg_postinst() {
-	echo
+	elog
 	elog "You are using the source compiled version of boinc."
 	use X && elog "The graphical manager can be found at /usr/bin/boincmgr"
 	elog

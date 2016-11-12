@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-File-Spec
+		virtual/perl-File-Path
 		virtual/perl-File-Temp
 		virtual/perl-Storable
 		dev-perl/Test-Fatal

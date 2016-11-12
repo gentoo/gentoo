@@ -2,29 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER=3.0
 
-inherit autotools flag-o-matic linux-info systemd user versionator wxwidgets
+inherit autotools eutils linux-info systemd user versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
 SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="X cuda static-libs"
+IUSE="X cuda curl_ssl_libressl +curl_ssl_openssl static-libs"
 
+REQUIRED_USE="^^ ( curl_ssl_libressl curl_ssl_openssl ) "
+
+# libcurl must not be using an ssl backend boinc does not support.
+# If the libcurl ssl backend changes, boinc should be recompiled.
 RDEPEND="
 	!sci-misc/boinc-bin
 	!app-admin/quickswitch
 	>=app-misc/ca-certificates-20080809
-	dev-libs/openssl:0=
-	net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)]
+	net-misc/curl[-curl_ssl_gnutls(-),curl_ssl_libressl(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),-curl_ssl_polarssl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	cuda? (
@@ -46,6 +50,11 @@ DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
 "
+
+PATCHES=(
+	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
+	"${FILESDIR}"/fix_webview.patch
+)
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
@@ -73,6 +82,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
@@ -117,7 +128,7 @@ pkg_preinst() {
 	# elog user about the need of being in video group
 	local groups="${PN}"
 	if use cuda; then
-		group+=",video"
+		groups+=",video"
 	fi
 	enewuser ${PN} -1 -1 /var/lib/${PN} "${groups}"
 }
