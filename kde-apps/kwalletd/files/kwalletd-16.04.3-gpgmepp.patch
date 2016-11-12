@@ -1,0 +1,133 @@
+commit 1b80d1d0b961f8e28186928ede2b87af292c3de4
+Author: Antonio Rojas <arojas@archlinux.org>
+Date:   Thu Nov 10 16:58:10 2016 +0100
+
+    Allow building kwalletd against gpgme++ from gpgme 1.7
+    
+    REVIEW: 129339
+
+diff --git a/kwalletd/CMakeLists.txt b/kwalletd/CMakeLists.txt
+index 73aec82..ae8c745 100644
+--- a/kwalletd/CMakeLists.txt
++++ b/kwalletd/CMakeLists.txt
+@@ -5,11 +5,18 @@ find_package(Gpgme)  # Called by FindQGpgme, but since we call some gpgme
+                      # functions ourselves we need to link against it directly.
+ find_package(QGpgme) # provided by kdepimlibs
+ 
+-if (GPGME_FOUND AND QGPGME_FOUND)
++if (NOT QGPGME_FOUND)
++find_package(Gpgmepp) # provided by gpgme 1.7
++endif (NOT QGPGME_FOUND)
++
++if ((GPGME_FOUND AND QGPGME_FOUND) OR Gpgmepp_FOUND)
+     add_definitions(-DHAVE_QGPGME)
+-    include_directories(${GPGME_INCLUDES} ${QGPGME_INCLUDE_DIR})
++    include_directories(${GPGME_INCLUDES})
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+-endif(GPGME_FOUND AND QGPGME_FOUND)
++endif((GPGME_FOUND AND QGPGME_FOUND) OR Gpgmepp_FOUND)
++if (GPGME_FOUND AND QGPGME_FOUND)
++    include_directories(${QGPGME_INCLUDE_DIR})
++endif (GPGME_FOUND AND QGPGME_FOUND)
+ 
+ ########### build backends #########
+ add_subdirectory(backend)
+@@ -37,7 +44,7 @@ kde4_add_ui_files(kwalletd_KDEINIT_SRCS
+    kwalletwizardpagepassword.ui
+ )
+ 
+-if (GPGME_FOUND AND QGPGME_FOUND)
++if ((GPGME_FOUND AND QGPGME_FOUND) OR Gpgmepp_FOUND)
+     set(kwalletd_KDEINIT_SRCS
+         ${kwalletd_KDEINIT_SRCS}
+         knewwalletdialog.cpp
+@@ -48,7 +55,7 @@ if (GPGME_FOUND AND QGPGME_FOUND)
+         knewwalletdialogintro.ui
+         knewwalletdialoggpg.ui
+     )
+-endif(GPGME_FOUND AND QGPGME_FOUND)
++endif((GPGME_FOUND AND QGPGME_FOUND) OR Gpgmepp_FOUND)
+ 
+ find_file(kwallet_xml org.kde.KWallet.xml HINTS ${KDE4_DBUS_INTERFACES_DIR} )
+ 
+@@ -57,8 +64,12 @@ qt4_add_dbus_adaptor( kwalletd_KDEINIT_SRCS ${kwallet_xml} kwalletd.h KWalletD )
+ kde4_add_kdeinit_executable( kwalletd NOGUI ${kwalletd_KDEINIT_SRCS} )
+ 
+ target_link_libraries(kdeinit_kwalletd ${KDE4_KDEUI_LIBS} kwalletbackend )
+-if (GPGME_FOUND AND QGPGME_FOUND)
+-    target_link_libraries(kdeinit_kwalletd ${QGPGME_LIBRARIES} )
++if(GPGME_FOUND AND QGPGME_FOUND)
++target_link_libraries(kdeinit_kwalletd ${QGPGME_LIBRARIES} )
++else(GPGME_FOUND AND QGPGME_FOUND)
++if(Gpgmepp_FOUND)
++target_link_libraries(kdeinit_kwalletd Gpgmepp)
++endif(Gpgmepp_FOUND)
+ endif(GPGME_FOUND AND QGPGME_FOUND)
+ 
+ install(TARGETS kdeinit_kwalletd  ${INSTALL_TARGETS_DEFAULT_ARGS})
+@@ -73,4 +84,4 @@ install( FILES kwalletd.notifyrc DESTINATION  ${DATA_INSTALL_DIR}/kwalletd )
+ install( FILES kwallet-4.13.upd DESTINATION ${DATA_INSTALL_DIR}/kconf_update)
+ 
+ add_subdirectory(tests)
+-add_subdirectory(autotests)
+\ No newline at end of file
++add_subdirectory(autotests)
+diff --git a/kwalletd/backend/CMakeLists.txt b/kwalletd/backend/CMakeLists.txt
+index 4db348f..7347b12 100644
+--- a/kwalletd/backend/CMakeLists.txt
++++ b/kwalletd/backend/CMakeLists.txt
+@@ -22,6 +22,10 @@ kde4_add_library(kwalletbackend SHARED ${kwalletbackend_LIB_SRCS})
+ target_link_libraries(kwalletbackend ${KDE4_KDEUI_LIBS} ${LIBGCRYPT_LIBRARIES})
+ if(QGPGME_FOUND)
+ target_link_libraries(kwalletbackend ${QGPGME_LIBRARIES} )
++else(QGPGME_FOUND)
++if(Gpgmepp_FOUND)
++target_link_libraries(kwalletbackend Gpgmepp)
++endif(Gpgmepp_FOUND)
+ endif(QGPGME_FOUND)
+ 
+ # link with advapi32 on windows
+diff --git a/kwalletd/backend/backendpersisthandler.cpp b/kwalletd/backend/backendpersisthandler.cpp
+index b7f63f8..9608af0 100644
+--- a/kwalletd/backend/backendpersisthandler.cpp
++++ b/kwalletd/backend/backendpersisthandler.cpp
+@@ -33,6 +33,7 @@
+ #include <gpgme++/data.h>
+ #include <gpgme++/encryptionresult.h>
+ #include <gpgme++/decryptionresult.h>
++#include <boost/shared_ptr.hpp>
+ #endif
+ #include "backendpersisthandler.h"
+ #include "kwalletbackend.h"
+diff --git a/kwalletd/kwalletwizard.cpp b/kwalletd/kwalletwizard.cpp
+index 78de78d..821b666 100644
+--- a/kwalletd/kwalletwizard.cpp
++++ b/kwalletd/kwalletwizard.cpp
+@@ -40,6 +40,7 @@
+ #include <kdebug.h>
+ #include <kmessagebox.h>
+ #include <gpgme.h>
++#include <boost/shared_ptr.hpp>
+ #endif
+ 
+ class PageIntro : public QWizardPage
+commit cf28801cd34730da07a2c01704ca3114630f4fe7
+Author: Antonio Rojas <arojas@archlinux.org>
+Date:   Thu Nov 10 18:54:41 2016 +0100
+
+    Compiling against gmgpe 1.7 requires c++11
+
+diff --git a/kwalletd/CMakeLists.txt b/kwalletd/CMakeLists.txt
+index ae8c745..88d944e 100644
+--- a/kwalletd/CMakeLists.txt
++++ b/kwalletd/CMakeLists.txt
+@@ -17,6 +17,9 @@ endif((GPGME_FOUND AND QGPGME_FOUND) OR Gpgmepp_FOUND)
+ if (GPGME_FOUND AND QGPGME_FOUND)
+     include_directories(${QGPGME_INCLUDE_DIR})
+ endif (GPGME_FOUND AND QGPGME_FOUND)
++if (Gpgmepp_FOUND)
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
++endif (Gpgmepp_FOUND)
+ 
+ ########### build backends #########
+ add_subdirectory(backend)

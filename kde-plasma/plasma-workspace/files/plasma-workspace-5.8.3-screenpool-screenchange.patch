@@ -1,0 +1,95 @@
+commit 7154fb681adc73c482e862febc7ad008f77058dd
+Author: David Edmundson <kde@davidedmundson.co.uk>
+Date:   Thu Nov 10 10:29:27 2016 +0000
+
+    Load screenpool at the same time as we connect to screenchanged signals
+    
+    Summary:
+    Otherwise we have a gap during load (waiting querying kactivities))
+    between screen pool being created and us connecting to the screen
+    changed signals, which in turn are used to update screen pool.
+    
+    In particular the primary screen can get out of sync between the current
+    state and the screen pool.
+    
+    Test Plan: Based on Christopher Feck's research and initial patch
+    
+    Reviewers: #plasma
+    
+    Subscribers: mart, rwooninck, fvogt, cfeck, plasma-devel
+    
+    Tags: #plasma
+    
+    Differential Revision: https://phabricator.kde.org/D3319
+    
+        CCBUG:372099
+        CCBUG:371858
+        CBUG:371991
+        CCBUG:371819
+        CCBUG:371734
+
+diff --git a/shell/autotests/screenpooltest.cpp b/shell/autotests/screenpooltest.cpp
+index 5d0522f..5fc844a 100644
+--- a/shell/autotests/screenpooltest.cpp
++++ b/shell/autotests/screenpooltest.cpp
+@@ -51,6 +51,7 @@ void ScreenPoolTest::initTestCase()
+     cg.deleteGroup();
+     cg.sync();
+     m_screenPool = new ScreenPool(KSharedConfig::openConfig(), this);
++    m_screenPool->load();
+ }
+ 
+ void ScreenPoolTest::cleanupTestCase()
+diff --git a/shell/screenpool.cpp b/shell/screenpool.cpp
+index 011300d..b60cca1 100644
+--- a/shell/screenpool.cpp
++++ b/shell/screenpool.cpp
+@@ -30,6 +30,14 @@ ScreenPool::ScreenPool(KSharedConfig::Ptr config, QObject *parent)
+     connect(&m_configSaveTimer, &QTimer::timeout, this, [this](){
+         m_configGroup.sync();
+     });
++}
++
++void ScreenPool::load()
++{
++    m_primaryConnector = QString();
++    m_connectorForId.clear();
++    m_idForConnector.clear();
++
+     QScreen *primary = qGuiApp->primaryScreen();
+     if (primary) {
+         m_primaryConnector = primary->name();
+diff --git a/shell/screenpool.h b/shell/screenpool.h
+index 046d18b..9b3a9af 100644
+--- a/shell/screenpool.h
++++ b/shell/screenpool.h
+@@ -33,6 +33,7 @@ class ScreenPool : public QObject {
+ 
+ public:
+     ScreenPool(KSharedConfig::Ptr config, QObject *parent = nullptr);
++    void load();
+     ~ScreenPool() override;
+ 
+     QString primaryConnector() const;
+diff --git a/shell/shellcorona.cpp b/shell/shellcorona.cpp
+index 0007f0b..1475374 100644
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -627,6 +627,8 @@ void ShellCorona::load()
+ 
+     disconnect(m_activityController, &KActivities::Controller::serviceStatusChanged, this, &ShellCorona::load);
+ 
++    m_screenPool->load();
++
+     //TODO: a kconf_update script is needed
+     QString configFileName(QStringLiteral("plasma-") + m_shell + QStringLiteral("-appletsrc"));
+ 
+@@ -1184,7 +1186,7 @@ Plasma::Containment *ShellCorona::createContainmentForActivity(const QString& ac
+             //in the case of a corrupt config file
+             //with multiple containments with same lastScreen
+             //it can happen two insertContainment happen for
+-            //the same screen, leading to the old containment 
++            //the same screen, leading to the old containment
+             //to be destroyed
+             if (!cont->destroyed() && cont->screen() == screenNum && cont->activity() == activity) {
+                 return cont;

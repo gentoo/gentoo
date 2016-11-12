@@ -1,0 +1,177 @@
+From: Lindsay Roberts <m@lindsayr.com>
+Date: Mon, 10 Oct 2016 16:55:49 +0000
+Subject: Systray: Move all icon resolution to dataengine
+X-Git-Url: http://quickgit.kde.org/?p=plasma-workspace.git&a=commitdiff&h=749f60b89f4a166833fb64a5b593a801f63f9615
+---
+Systray: Move all icon resolution to dataengine
+
+Summary:
+Changes triggered by investigation into a long-running high CPU usage bug with system tray animations. The systray itself had icon name to icon resolution code, which was being triggered (twice) for every icon, every time any icon in the systray was updated. This code was spinning up a KIconLoader on each of these instances, and throwing it directly away. Each one triggered a large quantity of memory allocations and disk scans.
+
+This patch moves the extra bit of "appName" logic from the native part of the system tray to the statusnotifieritem datasource, which already had a stored 'customIconLoader' to handle icon theme paths, and removes the special lookup from the sytemtray applet completely. It also prefers icons provided by the dataengine to doing another lookup (contentious?). This removes all the extra CPU usage outside of the QML scene graph and graphics drivers locally.
+
+This is very much a looking for feedback item - there are things about the icon loading paths I almost certainly haven't appreciated yet, and perhaps preferring loading by icon name in the applet has a another purpose.
+
+BUG: 356479
+
+Test Plan: Have tested locally with kgpg and steam, the two apps I have that trigger the old code path. In neither case, however, did the appName logic produce a different result to the code with just the icon search path in statusnotifieritem.
+
+Reviewers: #plasma, davidedmundson, mart
+
+Reviewed By: #plasma, davidedmundson, mart
+
+Subscribers: davidedmundson, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D2986
+---
+
+
+--- a/applets/systemtray/package/contents/ui/ConfigEntries.qml
++++ b/applets/systemtray/package/contents/ui/ConfigEntries.qml
+@@ -75,7 +75,7 @@
+                 "index": i,
+                 "taskId": item.Id,
+                 "name": item.Title,
+-                "iconName": plasmoid.nativeInterface.resolveIcon(item.IconName, item.IconThemePath),
++                "iconName": item.IconName,
+                 "icon": item.Icon
+             });
+         }
+
+--- a/applets/systemtray/package/contents/ui/items/StatusNotifierItem.qml
++++ b/applets/systemtray/package/contents/ui/items/StatusNotifierItem.qml
+@@ -28,7 +28,7 @@
+     text: Title
+     mainText: ToolTipTitle != "" ? ToolTipTitle : Title
+     subText: ToolTipSubTitle
+-    icon: ToolTipIcon != "" ? ToolTipIcon : plasmoid.nativeInterface.resolveIcon(IconName != "" ? IconName : Icon, IconThemePath)
++    icon: ToolTipIcon != "" ? ToolTipIcon : Icon ? Icon : IconName
+     textFormat: Text.AutoText
+     category: Category
+ 
+@@ -48,7 +48,7 @@
+ 
+     PlasmaCore.IconItem {
+         id: iconItem
+-        source: plasmoid.nativeInterface.resolveIcon(IconName != "" ? IconName : Icon, IconThemePath)
++        source: Icon ? Icon : IconName
+         width: Math.min(parent.width, parent.height)
+         height: width
+         active: taskIcon.containsMouse
+
+--- a/applets/systemtray/systemtray.cpp
++++ b/applets/systemtray/systemtray.cpp
+@@ -37,36 +37,10 @@
+ #include <Plasma/PluginLoader>
+ #include <Plasma/ServiceJob>
+ 
+-#include <KIconLoader>
+-#include <KIconEngine>
+ #include <KActionCollection>
+ #include <KLocalizedString>
+ 
+ #include <plasma_version.h>
+-
+-/*
+- * An app may also load icons from their own directories, so we need a new iconloader that takes this into account
+- * This is wrapped into a subclass of iconengine so the iconloader lifespan matches the icon object
+- */
+-class AppIconEngine : public KIconEngine
+-{
+-public:
+-    AppIconEngine(const QString &variant, const QString &path, const QString &appName);
+-    ~AppIconEngine();
+-private:
+-    KIconLoader* m_loader;
+-};
+-
+-AppIconEngine::AppIconEngine(const QString &variant, const QString &path, const QString &appName) :
+-    KIconEngine(variant, m_loader = new KIconLoader(appName, QStringList()))
+-{
+-    m_loader->addAppDir(appName, path);
+-}
+-
+-AppIconEngine::~AppIconEngine()
+-{
+-    delete m_loader;
+-}
+ 
+ class PlasmoidModel: public QStandardItemModel
+ {
+@@ -167,32 +141,6 @@
+             emit appletDeleted(applet);
+         }
+     }
+-}
+-
+-QVariant SystemTray::resolveIcon(const QVariant &variant, const QString &iconThemePath)
+-{
+-    if (variant.canConvert<QString>()) {
+-        if (!iconThemePath.isEmpty()) {
+-            const QString path = iconThemePath;
+-            if (!path.isEmpty()) {
+-                // FIXME: If last part of path is not "icons", this won't work!
+-                auto tokens = path.splitRef('/', QString::SkipEmptyParts);
+-                if (tokens.length() >= 3 && tokens.takeLast() == QLatin1String("icons")) {
+-                    const QString appName = tokens.takeLast().toString();
+-
+-                    return QVariant(QIcon(new AppIconEngine(variant.toString(), path, appName)));
+-                } else {
+-                    qCWarning(SYSTEM_TRAY) << "Wrong IconThemePath" << path << ": too short or does not end with 'icons'";
+-                }
+-            }
+-
+-            //return just the string hoping that IconItem will know how to interpret it anyways as either a normal icon or a SVG from the theme
+-            return variant;
+-        }
+-    }
+-
+-    // Most importantly QIcons. Nothing to do for those.
+-    return variant;
+ }
+ 
+ void SystemTray::showPlasmoidMenu(QQuickItem *appletInterface, int x, int y)
+
+--- a/applets/systemtray/systemtray.h
++++ b/applets/systemtray/systemtray.h
+@@ -59,12 +59,6 @@
+     void cleanupTask(const QString &task);
+ 
+     //Invokable utilities
+-    /**
+-     * returns either a simple icon name or a custom path if the app is
+-     * using a custom theme
+-     */
+-    Q_INVOKABLE QVariant resolveIcon(const QVariant &variant, const QString &iconThemePath);
+-
+     /**
+      * Given an AppletInterface pointer, shows a proper context menu for it
+      */
+
+--- a/dataengines/statusnotifieritem/statusnotifieritemsource.cpp
++++ b/dataengines/statusnotifieritem/statusnotifieritemsource.cpp
+@@ -240,14 +240,19 @@
+             if (!m_customIconLoader) {
+                 m_customIconLoader = new KIconLoader(QString(), QStringList(), this);
+             }
++            // FIXME: If last part of path is not "icons", this won't work!
++            QString appName;
++            auto tokens = path.splitRef('/', QString::SkipEmptyParts);
++            if (tokens.length() >= 3 && tokens.takeLast() == QLatin1String("icons"))
++                appName = tokens.takeLast().toString();
+ 
+             //icons may be either in the root directory of the passed path or in a appdir format
+             //i.e hicolor/32x32/iconname.png
+ 
+-            m_customIconLoader->reconfigure(QString(), QStringList(path));
++            m_customIconLoader->reconfigure(appName, QStringList(path));
+ 
+             //add app dir requires an app name, though this is completely unused in this context
+-            m_customIconLoader->addAppDir(QStringLiteral("unused"), path);
++            m_customIconLoader->addAppDir(appName.size() ? appName : QStringLiteral("unused"), path);
+         }
+         setData(QStringLiteral("IconThemePath"), path);
+ 
+

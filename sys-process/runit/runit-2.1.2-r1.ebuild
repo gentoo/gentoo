@@ -44,12 +44,11 @@ src_install() {
 	dodir /sbin
 	mv "${ED}"/bin/{runit-init,runit,utmpset} "${ED}"/sbin/ || die "dosbin"
 	dosym ../etc/runit/2 /sbin/runsvdir-start
-	into /usr
 
-	cd ..
-	dodoc package/{CHANGES,README,THANKS,TODO}
-	dohtml doc/*.html
-	doman man/*.[18]
+	DOCS=( ../package/{CHANGES,README,THANKS,TODO} )
+	HTML_DOCS=( ../doc/*.html )
+	einstalldocs
+	doman ../man/*.[18]
 
 dodir /etc/runit
 	exeinto /etc/runit

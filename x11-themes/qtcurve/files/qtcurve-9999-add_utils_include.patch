@@ -1,0 +1,10 @@
+--- a/qt4/style/qtcurve_plugin.cpp	2016-10-25 10:12:41.000000000 +0200
++++ b/qt4/style/qtcurve_plugin.cpp	2016-10-25 10:21:32.446853060 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include "qtcurve_plugin.h"
+ #include "qtcurve.h"
++#include "utils.h"
+ #include "config.h"
+ 
+ #include <qtcurve-utils/qtprops.h>

@@ -48,7 +48,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	selinux vaapi valgrind vdpau wayland xvmc xa kernel_FreeBSD"
 
 REQUIRED_USE="
-	|| ( gcrypt nettle openssl )
+	|| ( gcrypt libressl nettle openssl )
 	d3d9?   ( dri3 gallium )
 	llvm?   ( gallium )
 	opencl? ( gallium llvm )
