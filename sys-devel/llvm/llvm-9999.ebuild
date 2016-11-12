@@ -35,7 +35,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
-IUSE="debug +doc gold libedit +libffi multitarget ncurses ocaml test
+IUSE="debug +doc gold libedit +libffi multitarget ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
@@ -43,10 +43,7 @@ RDEPEND="
 	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
-	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
-	ocaml? (
-		>=dev-lang/ocaml-4.00.0:0=
-		dev-ml/ocaml-ctypes:= )"
+	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	dev-lang/perl
@@ -58,8 +55,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
-	ocaml? ( dev-ml/findlib
-		test? ( dev-ml/ounit ) )
 	test? ( $(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -164,13 +159,11 @@ multilib_src_configure() {
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
 
 		-DHAVE_HISTEDIT_H=$(usex libedit)
+
+		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
+		-DOCAMLFIND=NO
 	)
 
-	if ! multilib_is_native_abi || ! use ocaml; then
-		mycmakeargs+=(
-			-DOCAMLFIND=NO
-		)
-	fi
 #	Note: go bindings have no CMake rules at the moment
 #	but let's kill the check in case they are introduced
 #	if ! multilib_is_native_abi || ! use go; then
@@ -186,11 +179,6 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DLLVM_BUILD_DOCS=$(usex doc)
-			# note: this is used only when OCaml is enabled, so we can
-			# set it to 'yes' even without OCaml around
-			# note 2: disable for now since it installs
-			# to /usr/docs/ocaml/html/html which is kinda wrong
-			# bother to fix it when somebody starts to care
 			-DLLVM_ENABLE_OCAMLDOC=OFF
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
