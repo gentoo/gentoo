@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A fast, lightweight imageviewer using imlib2"
@@ -28,7 +28,9 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		>=dev-lang/perl-5.10
 		dev-perl/Test-Command
-		)"
+	)"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.6.2-debug-cflags.patch )
 
 pkg_setup() {
 	use_feh() { usex $1 1 0; }
@@ -42,14 +44,7 @@ pkg_setup() {
 		debug=$(use_feh debug)
 		xinerama=$(use_feh xinerama)
 		exif=$(use_feh exif)
-		)
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.6.2-debug-cflags.patch
-	# fix desktop file
-	sed -i -e "s:^Icon=.*:Icon=/usr/share/feh/images/logo.svg:" \
-		share/applications/${PN}.pre || die
+	)
 }
 
 src_compile() {

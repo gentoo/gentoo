@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="ISO country, subdivision, language, currency, script definitions and their translations"
-HOMEPAGE="https://pypi.python.org/pypi/pycountry"
+DESCRIPTION="Database of countries, subdivisions, languages, currencies and script"
+HOMEPAGE="https://bitbucket.org/flyingcircus/pycountry"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -26,6 +26,6 @@ python_test() {
 	if [[ "${EPYTHON}" == pypy || "${EPYTHON}" == pypy3 ]]; then
 		sed -e 's:test_locales:_&:' -i pycountry/tests/test_general.py || die
 	fi
-		py.test ${PN}/tests/test_general.py || die
+	py.test ${PN}/tests/test_general.py || die
 	popd > /dev/null
 }
