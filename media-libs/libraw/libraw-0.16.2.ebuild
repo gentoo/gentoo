@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-
 IUSE="demosaic examples jpeg jpeg2k +lcms openmp"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/jasper-1.900.1-r6[${MULTILIB_USEDEP}] )
+	jpeg2k? ( >=media-libs/jasper-1.900.1-r6:=[${MULTILIB_USEDEP}] )
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
