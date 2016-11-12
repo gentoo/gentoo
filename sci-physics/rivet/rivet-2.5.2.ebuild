@@ -12,7 +12,7 @@ DESCRIPTION="Toolkit for validation of Monte Carlo HEP event generators"
 HOMEPAGE="http://rivet.hepforge.org/"
 
 SRC_URI="http://www.hepforge.org/archive/${PN}/${P^}.tar.bz2
-	doc? ( https://rivet.hepforge.org/trac/browser/doc/refs.bib )"
+	doc? ( https://rivet.hepforge.org/trac/export/8a05acecd26c18f368f4b748da2d5aa2db46be6c/doc/refs.bib )"
 LICENSE="GPL-2"
 
 SLOT="0"

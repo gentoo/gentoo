@@ -1,0 +1,19 @@
+--- a/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp
++++ b/plugins/grammar/linkgrammarwrap/LinkGrammarWrap.cpp
+@@ -223,6 +223,7 @@
+ 	  pErr = NULL;
+ 	}
+ 
++#ifdef DEAD_DEBUG_CODE
+ 	//	  for(i=0; i< pT->m_vecGrammarErrors.getItemCount(); i++)
+ 	// {
+ 	//    pErr = pT->m_vecGrammarErrors.getNthItem(i);
+@@ -231,6 +232,8 @@
+ 	UT_UTF8String sErr = linkage_get_violation_name(linkage);
+ 	//	UT_DEBUGMSG(("Top Level error message |%s|\n",sErr.utf8_str()));
+ 	linkage_delete(linkage);
++#endif // DEAD_DEBUG_CODE
++
+ 	for(i=0; i<  vecMapOfWords.getItemCount(); i++)
+ 	{
+ 	  AbiGrammarError * p = vecMapOfWords.getNthItem(i);

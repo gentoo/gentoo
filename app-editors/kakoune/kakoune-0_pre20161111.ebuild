@@ -6,7 +6,7 @@ EAPI=6
 
 inherit flag-o-matic toolchain-funcs vcs-snapshot versionator
 
-REF="9124851029700026bc937c81da829fbadcc5b29d"
+REF="85ce5db08a6461f5fef13cc4f6b090c858698d91"
 
 DESCRIPTION="Selection-oriented code editor inspired by vim"
 HOMEPAGE="https://github.com/mawww/kakoune"
@@ -15,10 +15,10 @@ SRC_URI="https://github.com/mawww/${PN}/tarball/${REF} -> ${P}.tar.gz"
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE="debug static"
 
 RDEPEND="
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	dev-libs/boost:=
 "
 DEPEND="
@@ -27,9 +27,9 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0_pre20161111-makefile.patch" )
 
-pkg_pretend() {
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if tc-is-gcc && ! version_is_at_least 5.0 $(gcc-version); then
 			die "Clang or GCC >=5.0 is required to build this version"
@@ -40,11 +40,11 @@ pkg_pretend() {
 src_configure() {
 	append-cppflags $($(tc-getPKG_CONFIG) --cflags ncursesw)
 	append-libs $($(tc-getPKG_CONFIG) --libs ncursesw)
-	export CXX=$(tc-getCXX)
+	tc-export CXX
 	export debug=$(usex debug)
-	S="${WORKDIR}/${P}/src"
+	export static=$(usex static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" docdir="${D}/usr/share/doc/${PF}" install
+	emake -C src DESTDIR="${D}" PREFIX="${EPREFIX}/usr" docdir="${ED%/}/usr/share/doc/${PF}" install
 }
