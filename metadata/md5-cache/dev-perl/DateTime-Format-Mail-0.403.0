@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/DateTime-1.40.0 dev-perl/Params-Validate virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Convert between DateTime and RFC2822/822 formats
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/DateTime-Format-Mail/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/DateTime-1.40.0 dev-perl/Params-Validate dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BO/BOOK/DateTime-Format-Mail-0.403.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=224817734ef584949b88e1d57469699b
