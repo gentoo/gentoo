@@ -17,6 +17,7 @@ IUSE="abiword +cdr debug ebook freehand gsf keynote +mspub +mwaw pagemaker +visi
 RDEPEND="
 	=app-text/libodfgen-0.1*
 	>=dev-libs/librevenge-0.0.1
+	media-libs/libeot
 	abiword? ( =app-text/libabw-0.1* )
 	cdr? ( =media-libs/libcdr-0.1* )
 	ebook? ( =app-text/libebook-0.1* )
