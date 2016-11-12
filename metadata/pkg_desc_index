@@ -15212,7 +15212,7 @@ net-p2p/freenet 0.7.5_p1475: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.4.18: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
-net-p2p/gtk-gnutella 1.1.8 1.1.9-r1 1.1.10: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.8 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/i2p 0.9.26: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
