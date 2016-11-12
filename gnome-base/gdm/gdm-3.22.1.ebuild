@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit autotools eutils gnome2 pam readme.gentoo-r1 systemd user versionator
@@ -24,7 +23,7 @@ SLOT="0"
 
 IUSE="accessibility audit branding fprint +introspection ipv6 plymouth selinux smartcard tcpd test wayland xinerama"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 
 # NOTE: x11-base/xorg-server dep is for X_SERVER_PATH etc, bug #295686
 # nspr used by smartcard extension
@@ -125,16 +124,15 @@ pkg_setup() {
 
 src_prepare() {
 	# ssh-agent handling must be done at xinitrc.d, bug #220603
-	epatch "${FILESDIR}/${PN}-2.32.0-xinitrc-ssh-agent.patch"
+	eapply "${FILESDIR}/${PN}-2.32.0-xinitrc-ssh-agent.patch"
 
 	# Gentoo does not have a fingerprint-auth pam stack
-	epatch "${FILESDIR}/${PN}-3.8.4-fingerprint-auth.patch"
+	eapply "${FILESDIR}/${PN}-3.8.4-fingerprint-auth.patch"
 
 	# Show logo when branding is enabled
-	use branding && epatch "${FILESDIR}/${PN}-3.8.4-logo.patch"
+	use branding && eapply "${FILESDIR}/${PN}-3.8.4-logo.patch"
 
 	eautoreconf
-
 	gnome2_src_prepare
 }
 
@@ -160,11 +158,11 @@ src_configure() {
 		--with-at-spi-registryd-directory="${EPREFIX}"/usr/libexec \
 		--without-xevie \
 		--enable-systemd-journal \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_with audit libaudit) \
 		$(use_enable ipv6) \
 		$(use_with plymouth) \
 		$(use_with selinux) \
-		$(systemd_with_unitdir) \
 		$(use_with tcpd tcp-wrappers) \
 		$(use_enable wayland wayland-support) \
 		$(use_with xinerama) \

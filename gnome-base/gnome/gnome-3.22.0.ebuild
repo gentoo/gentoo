@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Meta package for GNOME 3, merge this package to install"
 HOMEPAGE="https://www.gnome.org/"
@@ -12,7 +12,7 @@ SLOT="2.0" # Cannot be installed at the same time as gnome-2
 
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 
 IUSE="accessibility +bluetooth +classic +cdr cups +extras"
 
@@ -33,9 +33,9 @@ RDEPEND="
 	x11-themes/sound-theme-freedesktop
 
 	accessibility? (
-		>=app-accessibility/at-spi2-atk-2.16
-		>=app-accessibility/at-spi2-core-2.16
-		>=app-accessibility/caribou-0.4.18
+		>=app-accessibility/at-spi2-atk-2.22
+		>=app-accessibility/at-spi2-core-2.22
+		>=app-accessibility/caribou-0.4.21
 		>=app-accessibility/orca-${PV}
 		>=gnome-extra/mousetweaks-3.12.0 )
 	classic? ( >=gnome-extra/gnome-shell-extensions-${PV} )
@@ -44,7 +44,7 @@ RDEPEND="
 
 DEPEND=""
 
-PDEPEND=">=gnome-base/gvfs-1.24[udisks]"
+PDEPEND=">=gnome-base/gvfs-1.30[udisks]"
 
 pkg_postinst() {
 	# Remember people where to find our project information

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Sub-meta package for the applications of GNOME 3"
 HOMEPAGE="https://www.gnome.org/"
@@ -12,7 +12,7 @@ IUSE="+games +share +shotwell +tracker"
 
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # Note to developers:
 # This is a wrapper for the extra apps integrated with GNOME 3
@@ -21,8 +21,8 @@ RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}
 
 	>=app-admin/gnome-system-log-3.9.90
-	>=app-arch/file-roller-3.16.4
-	>=app-dicts/gnome-dictionary-${PV}
+	>=app-arch/file-roller-${PV}
+	>=app-dicts/gnome-dictionary-3.20.0
 	>=gnome-base/dconf-editor-${PV}
 	>=gnome-extra/gconf-editor-3
 	>=gnome-extra/gnome-calculator-${PV}
@@ -32,12 +32,12 @@ RDEPEND="
 	>=gnome-extra/gnome-search-tool-3.6
 	>=gnome-extra/gnome-system-monitor-${PV}
 	>=gnome-extra/gnome-tweak-tool-${PV}
-	>=gnome-extra/gnome-weather-${PV}
+	>=gnome-extra/gnome-weather-3.20.2
 	>=gnome-extra/gucharmap-${PV}:2.90
-	>=gnome-extra/nautilus-sendto-3.8.2
-	>=gnome-extra/sushi-${PV}
+	>=gnome-extra/nautilus-sendto-3.8.4
+	>=gnome-extra/sushi-3.21
 	>=mail-client/evolution-${PV}
-	>=media-gfx/gnome-font-viewer-3.16.2
+	>=media-gfx/gnome-font-viewer-${PV}
 	>=media-gfx/gnome-screenshot-${PV}
 	>=media-sound/sound-juicer-${PV}
 	>=media-video/cheese-${PV}
@@ -62,14 +62,14 @@ RDEPEND="
 		>=games-puzzle/gnome-sudoku-${PV}
 		>=games-puzzle/gnome-taquin-${PV}
 		>=games-puzzle/gnome-tetravex-${PV}
-		>=games-puzzle/hitori-3.16.2
+		>=games-puzzle/hitori-${PV}
 		>=games-puzzle/lightsoff-${PV}
 		>=games-puzzle/quadrapassel-${PV}
 		>=games-puzzle/swell-foop-${PV} )
-	share? ( >=gnome-extra/gnome-user-share-${PV} )
-	shotwell? ( >=media-gfx/shotwell-0.22 )
+	share? ( >=gnome-extra/gnome-user-share-3.18.3 )
+	shotwell? ( >=media-gfx/shotwell-0.24 )
 	tracker? (
-		>=app-misc/tracker-1.6
+		>=app-misc/tracker-1.10
 		>=gnome-extra/gnome-documents-${PV}
 		>=media-gfx/gnome-photos-${PV}
 		>=media-sound/gnome-music-${PV} )

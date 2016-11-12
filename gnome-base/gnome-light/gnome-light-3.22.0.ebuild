@@ -2,7 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
+
+inherit versionator
+
+P_RELEASE="$(get_version_components 2)"
 
 DESCRIPTION="Meta package for GNOME-Light, merge this package to install"
 HOMEPAGE="https://www.gnome.org/"
@@ -12,7 +16,7 @@ IUSE="cups +gnome-shell"
 
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # XXX: Note to developers:
 # This is a wrapper for the 'light' GNOME 3 desktop, and should only consist of
@@ -32,14 +36,14 @@ RDEPEND="!gnome-base/gnome
 		>=x11-wm/mutter-${PV}
 		>=gnome-base/gnome-shell-${PV} )
 
-	>=x11-themes/adwaita-icon-theme-${PV}
+	>=x11-themes/adwaita-icon-theme-${P_RELEASE}
 	>=x11-themes/gnome-themes-standard-${PV}
-	>=x11-themes/gnome-backgrounds-${PV}
+	>=x11-themes/gnome-backgrounds-${P_RELEASE}
 
 	>=x11-terms/gnome-terminal-${PV}
 "
 DEPEND=""
-PDEPEND=">=gnome-base/gvfs-1.24.0"
+PDEPEND=">=gnome-base/gvfs-1.28.0"
 S="${WORKDIR}"
 
 pkg_pretend() {
