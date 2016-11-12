@@ -333,6 +333,7 @@ dev-php/pecl-http:0
 >=app-admin/eclean-kernel-1.99
 
 # Kent Fredric <kentnl@gentoo.org> (16 Jul 2016)
+# Test2/Test-Simple-1.301 Block
 # Radically changed upstream and is critical to all Perl modules.
 # Masked for extended testing.
 # Will likely not be unmasked till equivalent versions ship in Perl itself.
@@ -343,6 +344,7 @@ dev-perl/Test2-Suite
 dev-perl/Test2-Plugin-NoWarnings
 dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Locale-1.60.0
+>=dev-perl/DateTime-TimeZone-2.20.0
 
 # Mike Pagano <mpagano@gentoo.org> (15 Jul 2016)
 # These two kernels have a serious OOM regression
