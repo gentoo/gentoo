@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils multilib-minimal
 
@@ -20,6 +20,8 @@ DEPEND="sys-devel/libtool
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 src_prepare() {
+	default
+
 	echo "m4_define([UV_EXTRA_AUTOMAKE_FLAGS], [serial-tests])" \
 		> m4/libuv-extra-automake-flags.m4 || die
 
