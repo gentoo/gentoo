@@ -52,6 +52,10 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/inputproto )
 "
 
+# Fetches data from network.
+# https://bugs.gentoo.org/575856
+RESTRICT="test"
+
 # Needs keywording on many arches.
 #	zeromq? (
 #		>=net-libs/czmq-2.2.0:0=
