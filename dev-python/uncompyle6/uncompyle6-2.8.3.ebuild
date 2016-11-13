@@ -20,11 +20,20 @@ RDEPEND=">=dev-python/xdis-2.3.0
 	>=dev-python/spark-parser-1.4.0"
 DEPEND="${RDEPEND}
 	test? (
+		>=dev-python/nose-1.0[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
 "
+
+python_prepare_all() {
+	# Fix an unconditional test only dep
+	sed \
+		-e "s/setup_requires/tests_require/" \
+		-i setup.py
+	distutils-r1_python_prepare_all
+}
 
 # Tests are somewhat sketchy...
 # the main repo has makefiles and commands that don't reflect the actual

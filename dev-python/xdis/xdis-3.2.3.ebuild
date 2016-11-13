@@ -27,9 +27,7 @@ DEPEND="
 "
 
 python_prepare_all() {
-	# Remove the 3.3 specific code from being run
-	rm -R "test_unit/3.3" || die
-	# Remove an unconditional test only dep
+	# Fix an unconditional test only dep
 	sed \
 		-e "s/setup_requires/tests_require/" \
 		-i setup.py
@@ -37,6 +35,8 @@ python_prepare_all() {
 }
 
 python_test() {
+	# Need to rm any pyc files to prevent test failures.
+	rm -R "${S}"/test/__pycache__
 	PYTHONPATH="${S}/test:${S}/test_unit:${BUILD_DIR}/lib" \
 		py.test -v || die "Tests failed under ${EPYTHON}"
 	cd test

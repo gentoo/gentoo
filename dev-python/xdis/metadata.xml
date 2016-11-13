@@ -14,7 +14,7 @@
 			<email>rb@dustyfeet.com</email>
 			<name>Rocky Bernstein</name>
 		</maintainer>
-		<remote-id type="pypi">spark_parser</remote-id>
+		<remote-id type="pypi">xdis</remote-id>
 	</upstream>
 	<longdescription>This Python module allows you to disassemble bytecode from
 		different versions of Python than you are running on. It can marshal
