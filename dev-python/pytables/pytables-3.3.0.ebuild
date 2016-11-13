@@ -40,16 +40,11 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( ANNOUNCE.txt RELEASE_NOTES.txt THANKS )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.0-blosc.patch
-	)
-
 python_prepare_all() {
 	export HDF5_DIR="${EPREFIX}"/usr
 	rm tables/*.c || die
 	sed \
 		-e "s:/usr:${EPREFIX}/usr:g" \
-		-e 's:"hdf5-blosc/src/blosc_filter.c"::g' \
 		-i setup.py || die
 	rm -r c-blosc/{blosc,internal-complibs} || die
 	distutils-r1_python_prepare_all

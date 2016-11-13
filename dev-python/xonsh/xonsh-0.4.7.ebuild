@@ -30,17 +30,16 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-destdir.patch
-)
+python_prepare_all() {
+	sed \
+		-e "/install_jupyter_hook/s:prefix=prefix:prefix=u\"${ED}/usr\":g" \
+		-i setup.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	nosetests --verbose || die
-}
-
-src_install() {
-	export "${ED}"
-	distutils-r1_src_install
 }
 
 pkg_postinst() {

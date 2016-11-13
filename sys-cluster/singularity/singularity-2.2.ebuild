@@ -11,7 +11,7 @@ HOMEPAGE="http://singularity.lbl.gov/"
 SRC_URI="https://github.com/${PN}ware/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="BSD"
+LICENSE="cctbx-2.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
