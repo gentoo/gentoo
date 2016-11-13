@@ -12618,7 +12618,7 @@ media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with co
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
-media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
+media-libs/gsound 1.0.1 1.0.2 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2 1.8.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 0.10.31-r2 1.4.5 1.6.3 1.8.2 1.8.3: Basepack of plugins for GStreamer
@@ -14533,7 +14533,7 @@ net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the k
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24 0.25 0.25-r1: NFSv4 ID <-> name mapping library
 net-libs/libnftnl 1.0.5 1.0.6: Netlink API to the in-kernel nf_tables subsystem
-net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
+net-libs/libnice 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnm-qt 0.9.8.4: NetworkManager bindings for Qt
@@ -14617,7 +14617,7 @@ net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/stem 1.3.0 1.4.0 1.4.1: Stem is a Python controller library for Tor
 net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
-net-libs/telepathy-glib 0.24.0 0.24.1: GLib bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_pre20160201 0_pre20160904 9999: Encrypted P2P, messaging, and audio/video calling platform
