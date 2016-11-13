@@ -76,7 +76,7 @@ COMMON_DEPEND="
 	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt:=
 	media-libs/flac:=
-	>=media-libs/harfbuzz-0.9.41:=[icu(+)]
+	>=media-libs/harfbuzz-1.3.1:=[icu(+)]
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
