@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
+# OpenVG support in Mesa is long gone, and the last version supporting
+# it is removed. Removal in 14 days.
+dev-qt/qtopenvg
+
 # Michael Palimaka <kensington@gentoo.org> (12 Nov 2016)
 # Depends on masked app-crypt/gpgme[cxx]
 =kde-apps/kwalletd-16.04.3-r1
