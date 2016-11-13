@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,13 +15,11 @@
 # and their incorporation into the Gentoo Linux system.
 #
 # Currently available targets are:
-#  * ruby18 - Ruby (MRI) 1.8.x
 #  * ruby19 - Ruby (MRI) 1.9.x
 #  * ruby20 - Ruby (MRI) 2.0.x
 #  * ruby21 - Ruby (MRI) 2.1.x
 #  * ruby22 - Ruby (MRI) 2.2.x
 #  * ruby23 - Ruby (MRI) 2.3.x
-#  * ree18  - Ruby Enterprise Edition 1.8.x
 #  * jruby  - JRuby
 #  * rbx    - Rubinius
 #
@@ -142,17 +140,11 @@ _ruby_atoms_samelib_generic() {
 # @RETURN: the path to the given ruby implementation
 # @DESCRIPTION:
 # Not all implementations have the same command basename as the
-# target; namely Ruby Enterprise 1.8 uses ree18 and rubyee18
-# respectively. This function translate between the two
+# target; This function translate between the two
 ruby_implementation_command() {
 	local _ruby_name=$1
 
-		# Add all USE_RUBY values where the flag name diverts from the binary here
-	case $1 in
-		ree18)
-			_ruby_name=rubyee18
-			;;
-	esac
+	# Add all USE_RUBY values where the flag name diverts from the binary here
 
 	echo $(type -p ${_ruby_name} 2>/dev/null)
 }
@@ -595,9 +587,6 @@ ruby_get_implementation() {
 	local ruby=${RUBY:-$(type -p ruby 2>/dev/null)}
 
 	case $(${ruby} --version) in
-		*Enterprise*)
-			echo "ree"
-			;;
 		*jruby*)
 			echo "jruby"
 			;;
