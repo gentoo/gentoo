@@ -22,7 +22,7 @@ SRC_URI="
 	amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64.deb )"
 SLOT="0"
 LICENSE="Plex"
-RESTRICT="mirror strip"
+RESTRICT="mirror bindist strip"
 KEYWORDS="-* ~amd64"
 
 DEPEND="
