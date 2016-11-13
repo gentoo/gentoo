@@ -78,7 +78,7 @@ index 1e07acd..19096f5 100644
 +AC_ARG_ENABLE([color],
 +              AS_HELP_STRING([--disable-color],
 +                             [disable color management panel]),
-+              []
++              [],
 +              [enable_color=auto])
 +
 +AS_IF([test "$enable_color" != "no"],
@@ -93,7 +93,7 @@ index 1e07acd..19096f5 100644
 +                           AC_DEFINE(BUILD_COLOR, 1, [Define to 1 to build the Color panel])
 +                           build_color=yes
 +                         ], [
-+                           AS_IF([test "$enable_goa" = "yes"],
++                           AS_IF([test "$enable_color" = "yes"],
 +                                 [AC_MSG_ERROR([colord support requested but not found])])
 +                         ])
 +      ])
