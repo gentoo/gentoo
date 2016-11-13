@@ -1,5 +1,5 @@
 app-accessibility/SphinxTrain 0.9.1-r1 1.0.8: Speech Recognition (Training Module)
-app-accessibility/accerciser 3.14.0 3.14.0-r1: Interactive Python accessibility explorer
+app-accessibility/accerciser 3.14.0 3.14.0-r1 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.16.0-r1 2.18.1 2.20.1 2.22.0: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.16.0 2.18.3 2.20.2 2.22.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
@@ -11200,7 +11200,7 @@ gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runti
 gnome-base/libgnome 2.32.1-r1: Essential Gnome Libraries
 gnome-base/libgnome-keyring 3.12.0: Compatibility library for accessing secrets
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
-gnome-base/libgnomekbd 3.6.0: Gnome keyboard configuration library
+gnome-base/libgnomekbd 3.6.0 3.22.0.1: Gnome keyboard configuration library
 gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
