@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=sci-mathematics/ginac-1.4.1 berkdb? ( sys-libs/db:=[cxx] ) mpi? ( virtual/mpi ) virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Program for reducing Feynman integrals
+EAPI=6
+HOMEPAGE=http://reduze.hepforge.org/
+IUSE=berkdb doc mpi
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=sci-mathematics/ginac-1.4.1 berkdb? ( sys-libs/db:=[cxx] ) mpi? ( virtual/mpi )
+SLOT=0
+SRC_URI=http://reduze.hepforge.org/download/reduze-2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=d7f92438716413b123ad8ec57ad87045
