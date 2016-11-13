@@ -1,0 +1,14 @@
+--- a/src/dee-serializable-model.c	2013-09-16 20:21:20.000000000 +0200
++++ b/src/dee-serializable-model.c	2016-05-08 16:49:03.525140126 +0200
+@@ -1326,9 +1326,10 @@
+ 
+   pos = 0;
+   _iter = dee_model_get_first_iter (self);
+-  while (!dee_model_is_last (self, iter) && iter != _iter)
++  while (!dee_model_is_last (self, iter) && iter != _iter) {
+     _iter = dee_model_next (self, _iter);
+     pos++;
++  }
+ 
+   if (iter == _iter)
+     return pos;

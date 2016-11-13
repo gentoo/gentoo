@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/icu:=
 	introspection? (
 		${PYTHON_DEPS}
-		dev-libs/gobject-introspection
+		dev-libs/gobject-introspection:=
 		)"
 DEPEND="${RDEPEND}
 	$(vala_depend)
