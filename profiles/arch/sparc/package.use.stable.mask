@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Gilles Dartiguelongue <eva@gentoo.org> (13 Nov 2016)
+# Dependency not stable on this arch, bug #542570 and bug #538828.
+xfce-base/xfce4-settings libinput
+
 # Davide Pesavento <pesa@gentoo.org> (18 Oct 2015)
 # Requires dev-python/PyQt4, which is not stable on sparc
 media-sound/pulseaudio equalizer
