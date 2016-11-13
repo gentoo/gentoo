@@ -1,0 +1,13 @@
+--- src/main.c.orig	2016-11-13 15:11:58.511021203 +0000
++++ src/main.c	2016-11-13 15:12:21.096021358 +0000
+@@ -1142,8 +1142,9 @@ static ReturnCode HandleEpochCommand(int
+ 		ShutdownMemBus(false); //We're done with membus now.
+ 		
+ 		char Compare[WARNING + 1][MEMBUS_MSGSIZE] = { MEMBUS_CODE_FAILURE " ", MEMBUS_CODE_ACKNOWLEDGED " ", MEMBUS_CODE_WARNING " "};
++		int Inc;
+ 		
+-		for (int Inc = 0; Inc < sizeof Compare / sizeof *Compare; ++Inc)
++		for (Inc = 0; Inc < sizeof Compare / sizeof *Compare; ++Inc)
+ 		{
+ 			strcat(Compare[Inc], ArgIs("merge") ? MEMBUS_CODE_CFMERGE : MEMBUS_CODE_CFUMERGE);
+ 			strcat(Compare[Inc], " ");
