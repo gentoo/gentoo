@@ -7070,7 +7070,6 @@ sci-physics/bullet:bullet3 - Build Bullet 3
 sci-physics/bullet:double-precision - Build libraries in double precision
 sci-physics/bullet:extras - Build additional libraries
 sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, newer version available in sci-physics/herwig
-sci-physics/clhep:exceptions - Enable zoom exceptions for user intervention
 sci-physics/espresso:cuda - Enable cuda support
 sci-physics/espresso:examples - Installs the examples
 sci-physics/espresso:packages - Installs extra TCL subpackages

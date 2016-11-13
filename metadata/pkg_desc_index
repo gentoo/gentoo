@@ -7004,7 +7004,7 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.11.1_p1 3.13.0_p1 3.14.1_p1 3.15.0_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 1.4.1: Bash tab completion for argparse
+dev-python/argcomplete 1.4.1 1.6.0: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1 0.26.2: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arpeggio 1.5: Parser interpreter based on PEG grammars
@@ -15937,7 +15937,7 @@ sci-geosciences/opencpn-plugin-statusbar 0.5-r1 9999: Statusbar Plugin for OpenC
 sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
-sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
+sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
@@ -16294,10 +16294,10 @@ sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
 sci-misc/repsnapper 2.3.2a_p3 2.4a_p0 9999: Host software for controlling the RepRap open source 3D printer
 sci-misc/vitables 2.1-r1: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
-sci-physics/bullet 2.83.4 2.83.5: Continuous Collision Detection and Physics Library
+sci-physics/bullet 2.83.4 2.83.5 2.85: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
-sci-physics/clhep 2.0.4.6 2.1.0.1 2.1.2.4 2.1.3.1 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5 2.3.1.0 2.3.3.1: High Energy Physics C++ library
+sci-physics/clhep 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5 2.3.1.0 2.3.3.1: High Energy Physics C++ library
 sci-physics/espresso 3.3.0 3.3.1 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/espresso++ 1.9.3 9999: A Modern Multiscale Simulation Package for Soft Matter Systems
 sci-physics/fastjet 3.0.3-r1 3.0.6-r1: Fast implementation of several recombination jet algorithms
@@ -16325,7 +16325,7 @@ sci-physics/root 5.34.26 5.34.32 5.34.36 6.04.06: C++ data analysis framework an
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
-sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
+sci-physics/xfoil 6.97-r1: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.10 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
