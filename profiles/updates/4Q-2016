@@ -25,3 +25,4 @@ move kde-base/baloo kde-frameworks/baloo
 move kde-base/kwin kde-plasma/kwin
 slotmove dev-python/pyinsane 0 1
 move media-sound/kwave kde-apps/kwave
+move app-misc/ddctool app-misc/ddcutil
