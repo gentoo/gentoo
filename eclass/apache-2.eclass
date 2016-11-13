@@ -485,9 +485,16 @@ apache-2_src_prepare() {
 
 	# This package really should upgrade to using pcre's .pc file.
 	cat <<-\EOF >"${T}"/pcre-config
-	#!/bin/sh
-	[ "${flag}" = "--version" ] && set -- --modversion
-	exec ${PKG_CONFIG} libpcre "$@"
+	#!/bin/bash
+	flags=()
+	for flag; do
+		if [[ ${flag} == "--version" ]]; then
+			flags+=( --modversion )
+		else
+			flags+=( "${flag}" )
+		fi
+	done
+	exec ${PKG_CONFIG} libpcre "${flags[@]}"
 	EOF
 	chmod a+x "${T}"/pcre-config
 }
