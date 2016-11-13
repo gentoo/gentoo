@@ -3,11 +3,11 @@ DEPEND=app-misc/ca-certificates virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Mozilla's CA cert bundle in PEM format (Gentoo stub)
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Mozilla-CA/
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha amd64 ~ppc ~ppc64 x86
 LICENSE=MPL-2.0
 RDEPEND=app-misc/ca-certificates dev-lang/perl:=
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~dilfridge/distfiles/Mozilla-CA-20999999.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=57b7604b51e9c03bffffb7ccf2dcd5ed
+_md5_=3cd98bccc7324a7207b1fb03362f41c3
