@@ -27,6 +27,7 @@ net-libs/libproxy kde
 net-voip/ekiga kde
 sys-auth/polkit kde
 sys-block/gparted kde
+virtual/notification-daemon kde
 www-plugins/gnash kde
 x11-misc/lightdm kde
 x11-themes/qtcurve kde
