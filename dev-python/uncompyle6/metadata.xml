@@ -14,7 +14,7 @@
 			<email>rb@dustyfeet.com</email>
 			<name>Rocky Bernstein</name>
 		</maintainer>
-		<remote-id type="pypi">PyQRCode</remote-id>
+		<remote-id type="pypi">uncompyle6</remote-id>
 	</upstream>
 	<longdescription></longdescription>
 </pkgmetadata>
