@@ -20,6 +20,7 @@ RDEPEND=">=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/nose-1.0[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
@@ -28,6 +29,10 @@ DEPEND="
 python_prepare_all() {
 	# Remove the 3.3 specific code from being run
 	rm -R "test_unit/3.3" || die
+	# Remove an unconditional test only dep
+	sed \
+		-e "s/setup_requires/tests_require/" \
+		-i setup.py
 	distutils-r1_python_prepare_all
 }
 
