@@ -1,5 +1,5 @@
---- makefile.in
-+++ makefile.in
+--- a/makefile.in
++++ b/makefile.in
 @@ -1,14 +1,17 @@
  BLD = build$(QUADSUFFIX)
  
@@ -68,8 +68,8 @@
  
  force: $(BLD)/timestamp
  
---- src/makefile
-+++ src/makefile
+--- a/src/makefile
++++ b/src/makefile
 @@ -1,6 +1,6 @@
 -default: frontend mma$(ML)
 +default: frontend mma$(ML) solib
