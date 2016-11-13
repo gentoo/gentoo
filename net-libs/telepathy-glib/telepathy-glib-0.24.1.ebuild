@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,6 +44,11 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	net-im/telepathy-mission-control
 "
+
+src_prepare() {
+	use vala && vala_src_prepare
+	gnome2_src_prepare
+}
 
 src_configure() {
 	gnome2_src_configure \
