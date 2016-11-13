@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.1-libwps-0.4.patch
 	"${FILESDIR}"/${PN}-3.0.1-fixwps.patch
 	"${FILESDIR}"/${PN}-3.0.2-fix-installing-readme.patch
+	"${FILESDIR}"/${PN}-3.0.2-fix-nullptr-c++98.patch
 )
 
 src_prepare() {
