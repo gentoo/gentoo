@@ -19,6 +19,12 @@ IUSE="test"
 DEPEND="test? ( dev-python/pytest-runner[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+src_prepare() {
+	# pytest-runner is not really required unless tests are enabled
+	sed -e "s:'pytest-runner',\\?::" -i setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	esetup.py test || die
 }

@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils fortran-2
+inherit fortran-2
 
 DESCRIPTION="Design and analysis of subsonic isolated airfoils"
 HOMEPAGE="http://raphael.mit.edu/xfoil/"
@@ -14,15 +14,21 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/Xfoil"
+PATCHES=( "${FILESDIR}"/${P}-overflow.patch )
+
+S="${WORKDIR}/${PN^}"
 
 src_prepare() {
+	# fix bug #147033
+	[[ $(tc-getFC) == *gfortran ]] && PATCHES+=( "${FILESDIR}"/${PN}-6.96-gfortran.patch )
+	default
+
 	sed \
 		-e '/^FC/d' \
 		-e '/^CC/d' \
@@ -32,40 +38,38 @@ src_prepare() {
 		-i {bin,plotlib,orrs/bin}/Makefile plotlib/config.make \
 		|| die "sed for flags and compilers failed"
 
-	# fix bug #147033
-	[[ $(tc-getFC) == *gfortran ]] && \
-		epatch "${FILESDIR}"/${PN}-6.96-gfortran.patch
-
-	epatch "${FILESDIR}"/${P}-overflow.patch
-
 	sed \
 		-e "s:/var/local/codes/orrs/osmap.dat:${EPREFIX}/usr/share/xfoil/orrs/osmap.dat:" \
 		-i orrs/src/osmap.f || die "sed osmap.f failed"
 }
 
 src_compile() {
-	cd "${S}"/orrs/bin
-	emake FLG="${FFLAGS}" FTNLIB="${LDFLAGS}" OS
-	cd "${S}"/orrs
+	emake -C orrs/bin FLG="${FFLAGS}" FTNLIB="${LDFLAGS}" OS
+	pushd orrs >/dev/null || die
 	bin/osgen osmaps_ns.lst
-	cd "${S}"/plotlib
-	emake CFLAGS="${CFLAGS} -DUNDERSCORE"
-	cd "${S}"/bin
+	popd >/dev/null || die
+	emake -C plotlib CFLAGS="${CFLAGS} -DUNDERSCORE"
+
+	local i
 	for i in xfoil pplot pxplot; do
-		emake \
+		emake -C bin \
 			PLTOBJ="../plotlib/libPlt.a" \
 			CFLAGS="${CFLAGS} -DUNDERSCORE" \
 			FTNLIB="${LDFLAGS}" \
-			${i}
+			$i
 	done
 }
 
 src_install() {
-	dobin bin/pplot bin/pxplot bin/xfoil
+	dobin bin/{pplot,pxplot,xfoil}
 	insinto /usr/share/xfoil/orrs
 	doins orrs/osm*.dat
-	dodoc *.txt README
-	insinto /usr/share/doc/${PF}/
-	use examples && doins -r runs
-	use doc && dodoc "${DISTDIR}"/dataflow.pdf
+
+	local DOCS=( *.txt README )
+	use doc && DOCS+=( "${DISTDIR}"/dataflow.pdf )
+	einstalldocs
+	if use examples; then
+		dodoc -r runs
+		docompress -x /usr/share/doc/${PF}/runs
+	fi
 }
