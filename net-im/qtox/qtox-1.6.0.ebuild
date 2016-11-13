@@ -7,8 +7,8 @@ EAPI=6
 inherit eutils qmake-utils
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
-HOMEPAGE="https://github.com/tux3/qtox"
-SRC_URI="https://github.com/tux3/qTox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/qTox/qTox"
+SRC_URI="https://github.com/qTox/qTox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -20,6 +20,7 @@ S="${WORKDIR}/qTox-${PV}"
 
 RDEPEND="
 	dev-db/sqlcipher
+	dev-libs/libsodium
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[gif,jpeg,png,xcb]
@@ -27,6 +28,7 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/qrencode
 	media-libs/openal
@@ -43,6 +45,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
+	virtual/pkgconfig
 "
 
 pkg_pretend() {
@@ -59,22 +62,10 @@ pkg_pretend() {
 src_configure() {
 	use gtk || local NO_GTK_SUPPORT="ENABLE_SYSTRAY_STATUSNOTIFIER_BACKEND=NO ENABLE_SYSTRAY_GTK_BACKEND=NO"
 	use X || local NO_X_SUPPORT="DISABLE_PLATFORM_EXT=YES"
-	# filter_audio is disabled since it's not available in Gentoo, and
-	# support for it in qTox at the present is ~broken anyway
+
 	eqmake5 \
+			PREFIX="${D}/usr" \
 			GIT_DESCRIBE="${PV}" \
-			DISABLE_FILTER_AUDIO=YES \
 			${NO_GTK_SUPPORT} \
 			${NO_X_SUPPORT}
-}
-
-src_install() {
-	dobin "${S}/qtox"
-	# install all png icons
-	local ICONS=(16 22 24 32 36 48 64 72 96 128 192 256 512)
-	for i in "${ICONS[@]}"; do
-		newicon -s "${i}" "${S}/img/icons/qtox-${i}x${i}.png" "qtox.png"
-	done
-	doicon -s scalable "${S}/img/icons/qtox.svg"
-	domenu "${S}/qTox.desktop"
 }
