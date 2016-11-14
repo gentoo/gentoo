@@ -9079,7 +9079,7 @@ dev-ruby/facets 2.9.3: Facets is the premier collection of extension methods for
 dev-ruby/facter 2.4.1 2.4.6 3.1.4-r1 3.1.8 3.4.1 3.5.0: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.7.0: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.6.0-r1 0.8.1 0.9.0 0.9.2 0.9.3 0.10.0: A fake filesystem. Use it in your tests
-dev-ruby/fakeweb 1.3.0-r1 1.3.0-r2 1.3.0.20131201 1.3.0.20131201-r1: Helper for faking web requests in Ruby
+dev-ruby/fakeweb 1.3.0-r2 1.3.0.20131201 1.3.0.20131201-r1: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.9.2-r1 0.9.2-r2: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.9.2 0.10.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6: Response JSON parser using MultiJson and FaradayMiddleware
@@ -9215,7 +9215,7 @@ dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
-dev-ruby/msgpack 0.7.4 0.7.5 0.7.6 1.0.0 1.0.1: Binary-based efficient data interchange format for ruby binding
+dev-ruby/msgpack 0.7.6 1.0.1 1.0.2: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.11.2 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
@@ -9286,7 +9286,7 @@ dev-ruby/prawn-table 0.2.2: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 2.0.17 2.1.0 2.1.1-r1: A libyaml wrapper for Ruby
+dev-ruby/psych 2.0.17 2.1.0 2.1.1-r1 2.2.0: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.3-r1 2.0.4: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
@@ -9435,7 +9435,7 @@ dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubyte
 dev-ruby/rubytter 1.5.1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 0.9.9-r2 1.1.7-r1 1.2.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
+dev-ruby/samuel 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.2.0 4.3.0 4.4.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22 3.4.22-r1: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2 5.0.6: Official Ruby-on-Rails Integration with Sass
