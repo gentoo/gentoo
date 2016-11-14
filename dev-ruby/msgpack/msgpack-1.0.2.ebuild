@@ -13,11 +13,11 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Binary-based efficient data interchange format for ruby binding"
-HOMEPAGE="http://msgpack.org/"
+HOMEPAGE="https://msgpack.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x86-fbsd"
 IUSE="doc"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
@@ -33,6 +33,10 @@ all_ruby_prepare() {
 
 each_ruby_configure() {
 	${RUBY} -Cext/${PN} extconf.rb || die "Configuration of extension failed."
+
+	# rb_num2int is not inlined on 32 bit arches but also not explicitly
+	# defined, bug 582968
+	sed -i -e 's:-Wl,--no-undefined::' ext/${PN}/Makefile || die
 }
 
 each_ruby_compile() {
