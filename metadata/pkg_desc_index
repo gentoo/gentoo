@@ -1744,7 +1744,7 @@ app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
 app-misc/ddccontrol-db 20061014_p20121105: DDCControl monitor database
-app-misc/ddctool 0.5.0 0.5.3: Program for querying and changing monitor settings
+app-misc/ddcutil 0.6.0: Program for querying and changing monitor settings
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
@@ -6969,6 +6969,7 @@ dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7: Python bindings for the Qt frame
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6 1.5.7: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
+dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
@@ -16307,7 +16308,7 @@ sci-physics/geant 3.21.14-r3 3.21.14-r4 4.9.4_p03 4.9.6_p02-r1 4.10.00 4.10.00_p
 sci-physics/geant-data 4.9.6_p02 4.10.00 4.10.01 4.10.02: Data files for Geant4 physical processes
 sci-physics/geant-python 4.9.6_p02 4.10.00: Python bindings for Geant4
 sci-physics/h2o-gtk 0.1 9999: GTK+ UI for libh2o -- water & steam properties
-sci-physics/harminv 1.3.1: Extraction of complex frequencies and amplitudes from time series
+sci-physics/harminv 1.3.1-r1: Extraction of complex frequencies and amplitudes from time series
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Particle Properties
 sci-physics/herwig 6.5.21: High Energy Physics Event Generator
