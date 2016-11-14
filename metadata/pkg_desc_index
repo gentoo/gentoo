@@ -7437,6 +7437,7 @@ dev-python/hgdistver 0.22 0.25: utility lib to generate python package version i
 dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hgtools 6.0 6.5.1: Classes and setuptools plugin for Mercurial repositories
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
+dev-python/hiro 0.2: Time manipulation utilities for python
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/hpack 2.3.0: Pure-Python HPACK header compression
 dev-python/html2text 2014.4.5-r1 2016.5.29: Turn HTML into equivalent Markdown-structured text
