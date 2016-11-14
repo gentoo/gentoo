@@ -345,6 +345,7 @@ dev-perl/Test2-Plugin-NoWarnings
 dev-perl/Params-ValidationCompiler
 >=dev-perl/DateTime-Locale-1.60.0
 >=dev-perl/DateTime-TimeZone-2.20.0
+>=dev-perl/DateTime-1.370.0
 
 # Mike Pagano <mpagano@gentoo.org> (15 Jul 2016)
 # These two kernels have a serious OOM regression
