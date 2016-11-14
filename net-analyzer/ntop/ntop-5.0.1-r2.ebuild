@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,29 +17,34 @@ KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="snmp ssl"
 
 COMMON_DEPEND="
-	virtual/awk
+	dev-lang/lua:=
 	dev-lang/perl
-	sys-libs/gdbm
-	dev-libs/libevent
-	net-libs/libpcap
-	media-libs/gd
-	media-libs/libpng
-	net-analyzer/rrdtool[graph]
-	ssl? ( dev-libs/openssl )
-	sys-libs/zlib
 	dev-libs/geoip
-	dev-lang/lua
-	snmp? ( net-analyzer/net-snmp[ipv6] )"
-DEPEND="${COMMON_DEPEND}
+	dev-libs/libevent
+	media-libs/gd
+	media-libs/libpng:0=
+	net-analyzer/rrdtool[graph]
+	net-libs/libpcap
+	snmp? ( net-analyzer/net-snmp[ipv6] )
+	ssl? ( dev-libs/openssl:0= )
+	sys-libs/gdbm
+	sys-libs/zlib
+	virtual/awk
+"
+DEPEND="
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
 	>=sys-devel/libtool-1.5.26
-	${PYTHON_DEPS}"
-RDEPEND="${COMMON_DEPEND}
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	app-arch/gzip
+	dev-libs/glib:2
+	dev-python/mako
 	media-fonts/corefonts
 	media-gfx/graphviz
 	net-misc/wget
-	app-arch/gzip
-	dev-libs/glib:2
-	dev-python/mako"
+"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -106,9 +111,8 @@ src_install() {
 
 	emake DESTDIR="${D}" install
 
-	keepdir /var/lib/ntop &&
-		fowners ntop:ntop /var/lib/ntop &&
-		fperms 750 /var/lib/ntop
+	keepdir /var/lib/ntop
+
 	insinto /var/lib/ntop
 	gunzip 3rd_party/GeoIPASNum.dat.gz
 	gunzip 3rd_party/GeoLiteCity.dat.gz
@@ -130,7 +134,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If this is the first time you install ntop, you need to run"
-	elog "following command before starting ntop service:"
-	elog "   ntop --set-admin-password"
+	fowners ntop:ntop /var/lib/ntop
+	fperms 750 /var/lib/ntop
 }
