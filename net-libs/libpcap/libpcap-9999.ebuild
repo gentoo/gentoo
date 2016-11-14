@@ -34,7 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-configure.patch
 	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
 	"${FILESDIR}"/${PN}-1.7.2-libnl.patch
-	)
+)
+
 src_prepare() {
 	default
 
