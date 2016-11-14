@@ -288,6 +288,8 @@ distutils_install_for_testing() {
 	PYTHONPATH=${libdir}:${PYTHONPATH}
 
 	local add_args=(
+		egg_info
+			--egg-base="${libdir}"
 		install
 			--home="${TEST_DIR}"
 			--install-lib="${libdir}"
