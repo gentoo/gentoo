@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -106,9 +106,8 @@ src_install() {
 
 	emake DESTDIR="${D}" install
 
-	keepdir /var/lib/ntop &&
-		fowners ntop:ntop /var/lib/ntop &&
-		fperms 750 /var/lib/ntop
+	keepdir /var/lib/ntop
+
 	insinto /var/lib/ntop
 	gunzip 3rd_party/GeoIPASNum.dat.gz
 	gunzip 3rd_party/GeoLiteCity.dat.gz
@@ -130,7 +129,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If this is the first time you install ntop, you need to run"
-	elog "following command before starting ntop service:"
-	elog "   ntop --set-admin-password"
+	fowners ntop:ntop /var/lib/ntop
+	fperms 750 /var/lib/ntop
 }
