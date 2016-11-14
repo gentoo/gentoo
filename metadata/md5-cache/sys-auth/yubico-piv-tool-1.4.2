@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-util/gengetopt sys-apps/help2man virtual/pkgconfig dev-libs/openssl:0= sys-apps/pcsc-lite !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Command line tool for the YubiKey PIV application
+EAPI=6
+HOMEPAGE=https://developers.yubico.com/yubico-piv-tool/ https://github.com/Yubico/yubico-piv-tool
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=dev-libs/openssl:0= sys-apps/pcsc-lite
+SLOT=0/1
+SRC_URI=https://github.com/Yubico/yubico-piv-tool/archive/yubico-piv-tool-1.4.2.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b9b0178433aa1236d987062925b4c593
