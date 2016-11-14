@@ -35,15 +35,19 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( Changelog.txt README )
+PATCHES=( "${FILESDIR}"/${PN}-0.17.2-gcc6.patch )
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_enable demosaic demosaic-pack-gpl2)
 		$(use_enable demosaic demosaic-pack-gpl3)
 		$(use_enable examples)
@@ -54,4 +58,11 @@ multilib_src_configure() {
 	)
 	ECONF_SOURCE="${S}" \
 	econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	einstalldocs
+
+	# package installs .pc files
+	find "${D}" -name '*.la' -delete || die
 }
