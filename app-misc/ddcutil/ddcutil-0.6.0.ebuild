@@ -7,9 +7,9 @@ EAPI=6
 inherit autotools linux-info udev user
 
 DESCRIPTION="Program for querying and changing monitor settings"
-HOMEPAGE="http://www.ddctool.com/"
+HOMEPAGE="http://www.ddcutil.com/"
 
-SRC_URI="https://github.com/rockowitz/ddctool/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # Binary drivers need special instructions compared to the open source counterparts.
 # If a user switches drivers, they will need to set different use flags for
@@ -22,6 +22,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="x11-libs/libXrandr
+	 x11-libs/libX11
+	 dev-libs/glib
 	 sys-apps/i2c-tools
 	 virtual/udev
 	 usb-monitor? (
@@ -47,8 +49,8 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
@@ -57,15 +59,15 @@ src_configure() {
 		$(use_enable usb-monitor usb)
 	)
 
-	econf ${myeconfargs[@]}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 	if use user-permissions; then
-		udev_dorules data/etc/udev/rules.d/45-ddctool-i2c.rules
+		udev_dorules data/etc/udev/rules.d/45-ddcutil-i2c.rules
 		if use usb-monitor; then
-			udev_dorules data/etc/udev/rules.d/45-ddctool-usb.rules
+			udev_dorules data/etc/udev/rules.d/45-ddcutil-usb.rules
 		fi
 	fi
 }
@@ -77,7 +79,7 @@ pkg_postinst() {
 		einfo "users to the i2c group: usermod -aG i2c user"
 		einfo "Restart the computer or reload the i2c-dev module to activate"
 		einfo "the new udev rule."
-		einfo "For more information read: http://www.ddctool.com/i2c_permissions/"
+		einfo "For more information read: http://www.ddcutil.com/i2c_permissions/"
 
 		if use usb-monitor; then
 			enewgroup video
@@ -85,7 +87,7 @@ pkg_postinst() {
 			einfo "to the video group: usermod -aG video user"
 			einfo "Restart the computer, reload the hiddev and hidraw modules, or replug"
 			einfo "the monitor to activate the new udev rule."
-			einfo "For more information read: http://www.ddctool.com/usb/"
+			einfo "For more information read: http://www.ddcutil.com/usb/"
 		fi
 
 		udev_reload
@@ -94,7 +96,7 @@ pkg_postinst() {
 	if use video_cards_nvidia; then
 		einfo "=================================================================="
 		einfo "Please read the following webpage on proper usage with the nVidia "
-		einfo "binary drivers, or it may not work: http://www.ddctool.com/nvidia/"
+		einfo "binary drivers, or it may not work: http://www.ddcutil.com/nvidia/"
 		einfo "=================================================================="
 	fi
 }
