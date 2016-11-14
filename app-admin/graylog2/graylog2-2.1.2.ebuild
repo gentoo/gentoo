@@ -34,24 +34,24 @@ pkg_setup() {
 src_prepare() {
 	default
 	# graylogctl is replaced by our own initd
-	rm -r "${S}/bin"
+	rm -r bin
 	# Stick to architecture of build host
 	if ! use amd64; then
-		rm -r "${S}"/lib/sigar/libsigar-amd64-*.so || die "Failed in removing AMD64 support libraries"
+		rm -r lib/sigar/libsigar-amd64-*.so || die "Failed in removing AMD64 support libraries"
 	fi
 	if ! use ppc64; then
-		rm -r "${S}"/lib/sigar/libsigar-ppc64-*.so || die "Failed in removing PPC64 support libraries"
+		rm -r lib/sigar/libsigar-ppc64-*.so || die "Failed in removing PPC64 support libraries"
 	fi
 	if ! use x86; then
-		rm -r "${S}"/lib/sigar/libsigar-x86-*.so || die "Failed in removing X86 support libraries"
+		rm -r lib/sigar/libsigar-x86-*.so || die "Failed in removing X86 support libraries"
 	fi
 	# Currently unsupported platforms
 	# QA warning galore but testing/patches welcome
-	rm -r "${S}"/lib/sigar/libsigar-ia64-*.so || die "Failed in removing IA64 support libraries"
-	rm -r "${S}"/lib/sigar/libsigar-ppc-*.so || die "Failed in removing PPC support libraries"
-	rm -r "${S}"/lib/sigar/libsigar-*-freebsd-*.so || die "Failed in removing FreeBSD support libraries"
-	rm -r "${S}"/lib/sigar/libsigar-pa-*.sl || die "Failed in removing HPPA support libraries"
-	rm -r "${S}"/lib/sigar/libsigar-*-solaris.so || die "Failed in removing Solaris support libraries"
+	rm -r lib/sigar/libsigar-ia64-*.so || die "Failed in removing IA64 support libraries"
+	rm -r lib/sigar/libsigar-ppc-*.so || die "Failed in removing PPC support libraries"
+	rm -r lib/sigar/libsigar-*-freebsd-*.so || die "Failed in removing FreeBSD support libraries"
+	rm -r lib/sigar/libsigar-pa-*.sl || die "Failed in removing HPPA support libraries"
+	rm -r lib/sigar/libsigar-*-solaris.so || die "Failed in removing Solaris support libraries"
 }
 
 src_compile() {
