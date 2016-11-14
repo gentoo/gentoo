@@ -8715,14 +8715,14 @@ dev-ros/laser_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners fr
 dev-ros/laser_filters 1.8.3 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
-dev-ros/libmavconn 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink communication library
+dev-ros/libmavconn 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 0.18.4 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.9.2 0.10.1 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 1.14.0 9999: Offers map data as a ROS service
-dev-ros/mavlink-gbp-release 2016.7.7-r1: MAVLink message marshaling library
-dev-ros/mavros 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 0.18.3-r1 9999: Extra nodes and plugins for mavros
-dev-ros/mavros_msgs 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Messages for MAVROS
+dev-ros/mavlink-gbp-release 2016.7.7-r1 2016.11.11: MAVLink message marshaling library
+dev-ros/mavros 0.18.4 9999: MAVLink extendable communication node for ROS
+dev-ros/mavros_extras 0.18.3-r1 0.18.4 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_msgs 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 0.18.4 9999: Messages for MAVROS
 dev-ros/message_filters 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 0.4.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
@@ -15491,7 +15491,7 @@ ros-meta/image_pipeline 1.12.19 9999: Fills the gap between getting raw images f
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
-ros-meta/mavros 0.16.3 0.16.4 0.16.5 0.16.6 0.17.0 0.17.1 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 9999: Metapackage for mavros packages
+ros-meta/mavros 0.16.3 0.16.4 0.16.5 0.16.6 0.17.0 0.17.1 0.17.2 0.17.3 0.18.1 0.18.2 0.18.3 0.18.4 9999: Metapackage for mavros packages
 ros-meta/navigation 1.13.0 1.13.1 1.14.0 9999: 2D navigation stack
 ros-meta/nodelet_core 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 9999: Nodelet Core Metapackage
 ros-meta/perception 1.2.0 1.3.0 9999: Metapackage for ROS perception stack
