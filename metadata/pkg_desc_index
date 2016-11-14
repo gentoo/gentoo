@@ -8834,24 +8834,24 @@ dev-ros/rqt_gui_py 0.2.14 0.3.1 9999: Enables GUI plugins to use the Python clie
 dev-ros/rqt_image_view 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for configuring the logger level of ROS nodes
-dev-ros/rqt_moveit 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: Assists monitoring tasks for MoveIt! motion planner
+dev-ros/rqt_moveit 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: Assists monitoring tasks for MoveIt! motion planner
 dev-ros/rqt_msg 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Python GUI plugin for introspecting available ROS message types
-dev-ros/rqt_nav_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: Provides a gui for viewing navigation maps and paths
+dev-ros/rqt_nav_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: Provides a gui for viewing navigation maps and paths
 dev-ros/rqt_plot 0.4.1 0.4.2 0.4.3 9999: GUI plugin visualizing numeric values in a 2D plot
-dev-ros/rqt_pose_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin for visualizing 3D poses
+dev-ros/rqt_pose_view 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: GUI plugin for visualizing 3D poses
 dev-ros/rqt_publisher 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
 dev-ros/rqt_py_common 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Common functionality for rqt plugins written in Python
 dev-ros/rqt_py_console 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Python GUI plugin providing an interactive Python console
 dev-ros/rqt_reconfigure 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
-dev-ros/rqt_robot_dashboard 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: Infrastructure for building robot dashboard plugins in rqt
-dev-ros/rqt_robot_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
-dev-ros/rqt_robot_steering 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin for steering a robot using Twist messages
-dev-ros/rqt_runtime_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin viewing DiagnosticsArray messages
-dev-ros/rqt_rviz 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin embedding RViz
+dev-ros/rqt_robot_dashboard 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: Infrastructure for building robot dashboard plugins in rqt
+dev-ros/rqt_robot_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_steering 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: GUI plugin for steering a robot using Twist messages
+dev-ros/rqt_runtime_monitor 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: GUI plugin viewing DiagnosticsArray messages
+dev-ros/rqt_rviz 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: GUI plugin embedding RViz
 dev-ros/rqt_service_caller 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for calling arbitrary services
 dev-ros/rqt_shell 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin providing an interactive shell
 dev-ros/rqt_srv 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for introspecting available ROS message types
-dev-ros/rqt_tf_tree 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_tf_tree 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: GUI plugin for visualizing the ROS TF frame tree
 dev-ros/rqt_top 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: Simple web content viewer for rqt
@@ -15511,7 +15511,7 @@ ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 9999: Underlying data libraries for
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.2.14 0.3.1 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
-ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
+ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
