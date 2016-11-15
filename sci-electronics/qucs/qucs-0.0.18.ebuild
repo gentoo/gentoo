@@ -34,3 +34,10 @@ src_configure() {
 
 	default
 }
+
+pkg_postinst() {
+	if ! has_version 'sci-electronics/freehdl'; then
+		elog "If you would like to be able to run digital simulations, please install:"
+		elog "  sci-electronics/freehdl"
+	fi
+}
