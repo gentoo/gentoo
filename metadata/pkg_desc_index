@@ -8935,7 +8935,7 @@ dev-ros/xmlrpcpp 1.11.14 1.11.15-r1 1.11.16-r1 1.11.17 1.12.0 1.12.1 1.12.2 1.12
 dev-ruby/GeoRuby 2.2.1-r2 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/actioncable 5.0.0.1: Structure many real-time application concerns into channels over a single WebSocket connection
+dev-ruby/actioncable 5.0.0.1: Integrated WebSockets for Rails
 dev-ruby/actionmailer 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Framework for designing email-service layers
 dev-ruby/actionpack 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (removed from core in Rails 4.0)
