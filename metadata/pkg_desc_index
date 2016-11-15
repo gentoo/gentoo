@@ -5585,7 +5585,7 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.100.0: Localization support for DateTime
