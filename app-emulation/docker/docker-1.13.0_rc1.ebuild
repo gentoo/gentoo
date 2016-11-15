@@ -26,7 +26,7 @@ DESCRIPTION="The core functions you need to create Docker images and run Docker 
 HOMEPAGE="https://dockerproject.org"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor aufs btrfs +device-mapper hardened overlay pkcs11 seccomp"
+IUSE="apparmor aufs btrfs +container-init +device-mapper hardened overlay pkcs11 seccomp"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 CDEPEND="
@@ -62,6 +62,7 @@ RDEPEND="
 	>app-emulation/containerd-0.2.2
 	app-emulation/runc[apparmor?,seccomp?]
 	app-emulation/docker-proxy
+	container-init? ( >=sys-process/tini-0.13.0[static] )
 "
 
 RESTRICT="installsources strip"
@@ -243,6 +244,7 @@ src_install() {
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc
+	use container-init && dosym tini-static /usr/bin/docker-init
 
 	newinitd contrib/init/openrc/docker.initd docker
 	newconfd contrib/init/openrc/docker.confd docker
