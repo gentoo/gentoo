@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+inherit eutils
 
 DESCRIPTION="Sound card based multimode software modem for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com/Fldigi.html"
@@ -29,9 +30,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-# backported from coming 3.23.15 alpha. Fixes bug #595220
+# backported from 3.23.15. Fixes bug #595220 and #599582
 src_prepare() {
-	sed -i -e "s/memset(src/memset(\&src/" src/main.cxx
+	epatch "$FILESDIR"/$P.patch
 }
 
 src_configure() {
