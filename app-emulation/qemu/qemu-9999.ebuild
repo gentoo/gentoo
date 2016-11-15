@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ncurses,readline"
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
-	user udev fcaps readme.gentoo pax-utils l10n
+	user udev fcaps readme.gentoo-r1 pax-utils l10n
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
@@ -107,7 +107,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		virtual/opengl
 		media-libs/libepoxy[static-libs(+)]
 		media-libs/mesa[static-libs(+)]
-		media-libs/mesa[egl,gles2]
+		media-libs/mesa[egl,gles2,gbm]
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
