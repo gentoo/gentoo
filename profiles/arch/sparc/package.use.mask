@@ -151,7 +151,7 @@ sys-apps/systemd xkb
 # Missing keywords on dev-libs/protobuf-c (bug 519772)
 >=net-libs/libgadu-1.12.0 gg11
 
-# Christoph Junghans <ottxor@gentoo.org> (21 Jul 2014)
+# Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
 

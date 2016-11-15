@@ -158,7 +158,7 @@ sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
 # chromium, mono work on this arch (masked in base)
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# Christoph Jungans <junghans@gentoo.org> (26 Dec 2012)
 # cuda works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -cuda -mkl
 
