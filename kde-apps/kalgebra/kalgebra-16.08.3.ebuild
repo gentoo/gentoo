@@ -4,7 +4,7 @@
 
 EAPI=6
 
-KDE_HANDBOOK="forceoptional"
+KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="MathML-based graph calculator by KDE"

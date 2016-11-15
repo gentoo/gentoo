@@ -97,7 +97,7 @@ COMMONDEPEND="
 		net-dns/libidn
 		sys-libs/zlib
 	)
-	yahoo? ( media-libs/jasper:= )
+	yahoo? ( media-libs/jasper )
 "
 RDEPEND="${COMMONDEPEND}
 	latex? (
@@ -152,7 +152,7 @@ pkg_postinst() {
 		if use xmpp ; then # || use irc; then
 			if ! has_version "app-crypt/qca:2[ssl]" ; then
 				elog "In order to use ssl in xmpp you'll need to"
-				elog "install app-crypt/qca package with USE=openssl."
+				elog "install app-crypt/qca package with USE=ssl."
 			fi
 		fi
 	fi

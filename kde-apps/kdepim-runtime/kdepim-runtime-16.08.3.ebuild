@@ -75,8 +75,6 @@ RDEPEND="${CDEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-unused-dep.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package google KF5GAPI)

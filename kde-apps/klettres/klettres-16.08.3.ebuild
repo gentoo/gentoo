@@ -30,5 +30,3 @@ DEPEND="
 	media-libs/phonon[qt5]
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-unused-dep.patch" )

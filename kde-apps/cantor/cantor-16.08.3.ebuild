@@ -7,7 +7,7 @@ EAPI=6
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 PYTHON_COMPAT=( python2_7 )
-# FIXME: PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+# FIXME: PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit kde5 python-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"

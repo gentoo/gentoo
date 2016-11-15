@@ -4,7 +4,7 @@
 
 EAPI=6
 
-KDE_HANDBOOK="forceoptional"
+KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="Non-linear video editing suite by KDE"
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kdenlive.org/"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="gles2 v4l semantic-desktop"
+IUSE="freesound gles2 jogshuttle semantic-desktop v4l"
 
 RDEPEND="
 	$(add_frameworks_dep karchive)
@@ -32,7 +32,6 @@ RDEPEND="
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep knotifyconfig)
-	$(add_frameworks_dep kplotting)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
@@ -50,6 +49,7 @@ RDEPEND="
 	>=media-libs/mlt-6.0.0[ffmpeg,kdenlive,melt,qt5,sdl,xml]
 	virtual/ffmpeg[encode,sdl,X]
 	virtual/opengl
+	freesound? ( $(add_qt_dep qtwebkit) )
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	v4l? ( media-libs/libv4l )
 "
@@ -59,8 +59,10 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package v4l LibV4L2)
+		$(cmake-utils_use_find_package freesound Qt5WebKitWidgets)
+		-DWITH_JogShuttle=$(usex jogshuttle)
 		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
+		$(cmake-utils_use_find_package v4l LibV4L2)
 	)
 
 	kde5_src_configure

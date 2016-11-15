@@ -11,10 +11,9 @@ inherit kde5 python-single-r1
 DESCRIPTION="Desktop Planetarium"
 HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
 KEYWORDS="~amd64 ~x86"
-IUSE="indi wcs xplanet"
+IUSE="fits indi wcs xplanet"
 
 # TODO: AstrometryNet requires new package
-# FIXME: doesn't build without sci-libs/cfitsio as of 15.04.0
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -34,8 +33,8 @@ COMMON_DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	>=sci-libs/cfitsio-0.390
 	sys-libs/zlib
+	fits? ( sci-libs/cfitsio )
 	indi? (
 		$(add_frameworks_dep knotifications)
 		>=sci-libs/indilib-1.2.0
@@ -57,6 +56,7 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake-utils_use_find_package fits CFitsio)
 		$(cmake-utils_use_find_package indi INDI)
 		$(cmake-utils_use_find_package wcs WCSLIB)
 		$(cmake-utils_use_find_package xplanet Xplanet)

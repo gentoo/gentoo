@@ -39,6 +39,7 @@ DEPEND="
 	share? ( dev-libs/purpose:5 )
 "
 RDEPEND="${DEPEND}
+	kipi? ( media-plugins/kipi-plugins:5 )
 	!kde-apps/ksnapshot
 "
 
