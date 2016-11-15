@@ -5572,7 +5572,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.400.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
@@ -5583,7 +5583,7 @@ dev-perl/DateTime-Format-HTTP 0.420.0: Date conversion routines
 dev-perl/DateTime-Format-ICal 0.90.0: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
-dev-perl/DateTime-Format-Natural 1.10.0-r1: Create machine readable date/time with natural parsing logic
+dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
@@ -8137,6 +8137,7 @@ dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
 dev-python/python-prctl 1.5.0-r1 1.6.0 1.6.1: Control process attributes through prctl
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
+dev-python/python-redmine 1.5.1: Python interface to the Redmine REST API
 dev-python/python-rethinkdb 2.3.0: Python driver library for the RethinkDB database server.
 dev-python/python-saharaclient 0.11.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-scsi 0_pre160211 9999: Access to SG_IO scsi devices
