@@ -9318,7 +9318,7 @@ dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method fro
 dev-ruby/railties 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1-r1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.1.2 11.2.2-r1 11.3.0: Make-like scripting in Ruby
-dev-ruby/rake-compiler 0.9.2-r1 0.9.9 1.0.0: Provide a standard and simplified way to build and package Ruby extensions
+dev-ruby/rake-compiler 0.9.2-r1 0.9.9 1.0.0 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.3.1 2.4.0 2.4.1: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.6: Ruby interface to GNU Scientific Library
@@ -9328,7 +9328,7 @@ dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C libra
 dev-ruby/rbpdf 1.19.0: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0-r1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
-dev-ruby/rcairo 1.14.3 1.15.2: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.3 1.15.2 1.15.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.2.0 4.2.2 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -17560,7 +17560,7 @@ sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5 2.6 2.7: utility to checkpoint/restore a process tree
-sys-process/cronbase 0.3.7-r5: base for all cron ebuilds
+sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
