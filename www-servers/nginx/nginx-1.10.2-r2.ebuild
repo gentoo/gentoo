@@ -30,7 +30,7 @@ HTTP_UPLOAD_PROGRESS_MODULE_URI="https://github.com/masterzen/nginx-upload-progr
 HTTP_UPLOAD_PROGRESS_MODULE_WD="${WORKDIR}/nginx-upload-progress-module-${HTTP_UPLOAD_PROGRESS_MODULE_PV}"
 
 # http_headers_more (https://github.com/agentzh/headers-more-nginx-module, BSD license)
-HTTP_HEADERS_MORE_MODULE_PV="0.31"
+HTTP_HEADERS_MORE_MODULE_PV="0.32"
 HTTP_HEADERS_MORE_MODULE_P="ngx_http_headers_more-${HTTP_HEADERS_MORE_MODULE_PV}"
 HTTP_HEADERS_MORE_MODULE_URI="https://github.com/agentzh/headers-more-nginx-module/archive/v${HTTP_HEADERS_MORE_MODULE_PV}.tar.gz"
 HTTP_HEADERS_MORE_MODULE_WD="${WORKDIR}/headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_PV}"
@@ -54,7 +54,7 @@ HTTP_FANCYINDEX_MODULE_URI="https://github.com/aperezdc/ngx-fancyindex/archive/v
 HTTP_FANCYINDEX_MODULE_WD="${WORKDIR}/ngx-fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 
 # http_lua (https://github.com/openresty/lua-nginx-module, BSD license)
-HTTP_LUA_MODULE_PV="0.10.6"
+HTTP_LUA_MODULE_PV="0.10.7"
 HTTP_LUA_MODULE_P="ngx_http_lua-${HTTP_LUA_MODULE_PV}"
 HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/v${HTTP_LUA_MODULE_PV}.tar.gz"
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
@@ -66,10 +66,10 @@ HTTP_AUTH_PAM_MODULE_URI="https://github.com/stogh/ngx_http_auth_pam_module/arch
 HTTP_AUTH_PAM_MODULE_WD="${WORKDIR}/ngx_http_auth_pam_module-${HTTP_AUTH_PAM_MODULE_PV}"
 
 # http_upstream_check (https://github.com/yaoweibin/nginx_upstream_check_module, BSD license)
-HTTP_UPSTREAM_CHECK_MODULE_PV="0.3.0-10-g10782ea"
+HTTP_UPSTREAM_CHECK_MODULE_PV="0.3.0-10-gf3bdb7b"
 HTTP_UPSTREAM_CHECK_MODULE_P="ngx_http_upstream_check-${HTTP_UPSTREAM_CHECK_MODULE_PV}"
 HTTP_UPSTREAM_CHECK_MODULE_URI="https://github.com/yaoweibin/nginx_upstream_check_module/archive/v${HTTP_UPSTREAM_CHECK_MODULE_PV}.tar.gz"
-HTTP_UPSTREAM_CHECK_MODULE_WD="${WORKDIR}/nginx_upstream_check_module-10782eaff51872a8f44e65eed89bbe286004bcb1"
+HTTP_UPSTREAM_CHECK_MODULE_WD="${WORKDIR}/nginx_upstream_check_module-f3bdb7b85a194e2ad58e3c306c1d021ee76da2f5"
 
 # http_metrics (https://github.com/zenops/ngx_metrics, BSD license)
 HTTP_METRICS_MODULE_PV="0.1.1"
@@ -78,13 +78,13 @@ HTTP_METRICS_MODULE_URI="https://github.com/madvertise/ngx_metrics/archive/v${HT
 HTTP_METRICS_MODULE_WD="${WORKDIR}/ngx_metrics-${HTTP_METRICS_MODULE_PV}"
 
 # naxsi-core (https://github.com/nbs-system/naxsi, GPLv2+)
-HTTP_NAXSI_MODULE_PV="0.54"
+HTTP_NAXSI_MODULE_PV="0.55.1"
 HTTP_NAXSI_MODULE_P="ngx_http_naxsi-${HTTP_NAXSI_MODULE_PV}"
 HTTP_NAXSI_MODULE_URI="https://github.com/nbs-system/naxsi/archive/${HTTP_NAXSI_MODULE_PV}.tar.gz"
 HTTP_NAXSI_MODULE_WD="${WORKDIR}/naxsi-${HTTP_NAXSI_MODULE_PV}/naxsi_src"
 
 # nginx-rtmp-module (https://github.com/arut/nginx-rtmp-module, BSD license)
-RTMP_MODULE_PV="1.1.9"
+RTMP_MODULE_PV="1.1.10"
 RTMP_MODULE_P="ngx_rtmp-${RTMP_MODULE_PV}"
 RTMP_MODULE_URI="https://github.com/arut/nginx-rtmp-module/archive/v${RTMP_MODULE_PV}.tar.gz"
 RTMP_MODULE_WD="${WORKDIR}/nginx-rtmp-module-${RTMP_MODULE_PV}"
@@ -115,10 +115,10 @@ HTTP_PUSH_STREAM_MODULE_URI="https://github.com/wandenberg/nginx-push-stream-mod
 HTTP_PUSH_STREAM_MODULE_WD="${WORKDIR}/nginx-push-stream-module-${HTTP_PUSH_STREAM_MODULE_PV}"
 
 # sticky-module (https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng, BSD-2)
-HTTP_STICKY_MODULE_PV="1.2.6"
+HTTP_STICKY_MODULE_PV="1.2.6-10-g08a395c66e42"
 HTTP_STICKY_MODULE_P="nginx_http_sticky_module_ng-${HTTP_STICKY_MODULE_PV}"
 HTTP_STICKY_MODULE_URI="https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/${HTTP_STICKY_MODULE_PV}.tar.bz2"
-HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-c78b7dd79d0d"
+HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-08a395c66e42"
 
 # mogilefs-module (https://github.com/vkholodkov/nginx-mogilefs-module, BSD-2)
 HTTP_MOGILEFS_MODULE_PV="1.0.4"
@@ -133,15 +133,16 @@ HTTP_MEMC_MODULE_URI="https://github.com/openresty/memc-nginx-module/archive/v${
 HTTP_MEMC_MODULE_WD="${WORKDIR}/memc-nginx-module-${HTTP_MEMC_MODULE_PV}"
 
 # nginx-ldap-auth-module (https://github.com/kvspb/nginx-auth-ldap, BSD-2)
-HTTP_LDAP_MODULE_PV="dbcef31bebb2d54b6120422d0b178bbf78bc48f7"
+HTTP_LDAP_MODULE_PV="49a8b4d28fc4a518563c82e0b52821e5f37db1fc"
 HTTP_LDAP_MODULE_P="nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 HTTP_LDAP_MODULE_URI="https://github.com/kvspb/nginx-auth-ldap/archive/${HTTP_LDAP_MODULE_PV}.tar.gz"
 HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
+AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
+inherit autotools ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://nginx.org"
@@ -171,19 +172,16 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo gzip limit_req limit_conn map memcached proxy referer
-	rewrite scgi ssi split_clients upstream_hash upstream_ip_hash
-	upstream_keepalive upstream_least_conn upstream_zone userid uwsgi"
+	rewrite scgi ssi split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition auth_request dav degradation flv geoip gunzip
 	gzip_static image_filter mp4 perl random_index realip secure_link
 	slice stub_status sub xslt"
-NGINX_MODULES_STREAM_STD="access geo limit_conn map return split_clients
-	upstream_hash upstream_least_conn upstream_zone"
-NGINX_MODULES_STREAM_OPT="geoip realip"
+NGINX_MODULES_STREAM="access limit_conn upstream"
 NGINX_MODULES_MAIL="imap pop3 smtp"
 NGINX_MODULES_3RD="
 	http_upload_progress
@@ -216,11 +214,7 @@ for mod in $NGINX_MODULES_OPT; do
 	IUSE="${IUSE} nginx_modules_http_${mod}"
 done
 
-for mod in $NGINX_MODULES_STREAM_STD; do
-	IUSE="${IUSE} nginx_modules_stream_${mod}"
-done
-
-for mod in $NGINX_MODULES_STREAM_OPT; do
+for mod in $NGINX_MODULES_STREAM; do
 	IUSE="${IUSE} nginx_modules_stream_${mod}"
 done
 
@@ -281,8 +275,9 @@ CDEPEND="
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
+	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
 PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
@@ -333,18 +328,40 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
-	if use nginx_modules_http_sticky; then
-		cd "${HTTP_STICKY_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http-sticky-nginx-1.11.2.patch
-		cd "${S}" || die
-	fi
-
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
 	fi
 
 	if use nginx_modules_http_lua; then
 		sed -i -e 's/-llua5.1/-llua/' "${HTTP_LUA_MODULE_WD}/config" || die
+	fi
+
+	if use nginx_modules_http_security; then
+		cd "${HTTP_SECURITY_MODULE_WD}" || die
+
+		eapply "${FILESDIR}"/http_security-pr_1158.patch
+
+		eautoreconf
+
+		if use luajit ; then
+			sed -i \
+				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
+				configure || die
+		fi
+
+		cd "${S}" || die
+	fi
+
+	if use nginx_modules_http_upload_progress; then
+		cd "${HTTP_UPLOAD_PROGRESS_MODULE_WD}" || die
+		eapply "${FILESDIR}"/http_uploadprogress-issue_50-r1.patch
+		cd "${S}" || die
+	fi
+
+	if use nginx_modules_http_memc; then
+		cd "${HTTP_MEMC_MODULE_WD}" || die
+		eapply "${FILESDIR}"/http_memc-0.17-issue_26.patch
+		cd "${S}" || die
 	fi
 
 	find auto/ -type f -print0 | xargs -0 sed -i 's:\&\& make:\&\& \\$(MAKE):' || die
@@ -368,20 +385,16 @@ src_configure() {
 	# mod_security needs to generate nginx/modsecurity/config before including it
 	if use nginx_modules_http_security; then
 		cd "${HTTP_SECURITY_MODULE_WD}" || die
-		if use luajit ; then
-			sed -i \
-				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
-				configure || die
-		fi
+
 		./configure \
 			--enable-standalone-module \
 			--disable-mlogc \
 			--with-ssdeep=no \
 			$(use_enable pcre-jit) \
 			$(use_with nginx_modules_http_lua lua) || die "configure failed for mod_security"
-	fi
 
-	cd "${S}" || die
+		cd "${S}" || die
+	fi
 
 	local myconf=() http_enabled= mail_enabled= stream_enabled=
 
@@ -530,18 +543,18 @@ src_configure() {
 	fi
 
 	# Stream modules
-	for mod in $NGINX_MODULES_STREAM_STD; do
+	for mod in $NGINX_MODULES_STREAM; do
 		if use nginx_modules_stream_${mod}; then
 			stream_enabled=1
 		else
-			myconf+=( --without-stream_${mod}_module )
-		fi
-	done
-
-	for mod in $NGINX_MODULES_STREAM_OPT; do
-		if use nginx_modules_stream_${mod}; then
-			stream_enabled=1
-			myconf+=( --with-stream_${mod}_module )
+			# Treat stream upstream slightly differently
+			if ! use nginx_modules_stream_upstream; then
+				myconf+=( --without-stream_upstream_hash_module )
+				myconf+=( --without-stream_upstream_least_conn_module )
+				myconf+=( --without-stream_upstream_zone_module )
+			else
+				myconf+=( --without-stream_${mod}_module )
+			fi
 		fi
 	done
 
