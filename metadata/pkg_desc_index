@@ -14681,7 +14681,7 @@ net-mail/mailbox-count 0.0.2-r1: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 0.88 0.98 1.12 1.16: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.20 2.1.20-r1: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.20 2.1.20-r1 2.1.23: A python-based mailing list server with an extensive web interface
 net-mail/mailshears 0.0.2-r1: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
 net-mail/mailutils 2.99.98 2.99.98-r1 2.99.99 3.0: A useful collection of mail servers, clients, and filters
