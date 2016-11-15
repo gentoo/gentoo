@@ -25,7 +25,7 @@ RDEPEND="virtual/jpeg:0
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.5:* )
 	pam? ( virtual/pam )
 	server? (
 		dev-lang/perl
