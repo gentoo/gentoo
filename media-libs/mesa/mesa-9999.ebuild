@@ -44,7 +44,7 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gcrypt gles1 gles2
-	libressl +llvm nettle +nptl opencl osmesa pax_kernel openmax +openssl pic
+	libressl +llvm +nettle +nptl opencl osmesa pax_kernel openmax openssl pic
 	selinux vaapi valgrind vdpau vulkan wayland xvmc xa kernel_FreeBSD"
 
 REQUIRED_USE="
