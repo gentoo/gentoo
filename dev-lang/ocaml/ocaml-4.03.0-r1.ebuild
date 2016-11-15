@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fb
 IUSE="emacs flambda latex ncurses +ocamlopt X xemacs"
 
 RDEPEND="
+	sys-libs/binutils-libs:=
 	ncurses? ( sys-libs/ncurses:0= )
 	X? ( x11-libs/libX11 x11-proto/xproto )"
 DEPEND="${RDEPEND}
