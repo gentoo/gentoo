@@ -83,7 +83,7 @@ pkg_postinst() {
 	if ! use prefix; then
 		# note: if this is done in src_install(), portage:portage
 		# ownership may be reset to root
-		fowners portage:portage "${EROOT%/}"/var/cache/eix
+		chown portage:portage "${EROOT%/}"/var/cache/eix || die
 	fi
 
 	local obs=${EROOT%/}/var/cache/eix.previous
