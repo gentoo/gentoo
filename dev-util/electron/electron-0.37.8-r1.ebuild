@@ -298,6 +298,7 @@ src_prepare() {
 	epatch "${FILESDIR}/chromium-remove-gardiner-mod-font.patch"
 	epatch "${FILESDIR}/chromium-shared-v8.patch"
 	epatch "${FILESDIR}/chromium-lto-fixes.patch"
+	epatch "${FILESDIR}/chromium-icu-58-r0.patch"
 
 	# libcc chromium patches
 	_unnest_patches "${LIBCC_S}/patches"

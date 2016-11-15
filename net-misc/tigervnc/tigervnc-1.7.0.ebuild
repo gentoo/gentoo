@@ -4,9 +4,11 @@
 
 EAPI=6
 
-inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2
+CMAKE_IN_SOURCE_BUILD=1
 
-XSERVER_VERSION="1.18.0"
+inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2 systemd
+
+XSERVER_VERSION="1.18.4"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
@@ -17,14 +19,14 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="gnutls java +opengl pam server +xorgmodule"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+IUSE="+drm gnutls java +opengl pam server +xorgmodule"
 
 RDEPEND="virtual/jpeg:0
 	sys-libs/zlib
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	java? ( >=virtual/jre-1.5:* )
 	pam? ( virtual/pam )
 	server? (
@@ -39,6 +41,7 @@ RDEPEND="virtual/jpeg:0
 		>=x11-misc/xkeyboard-config-2.4.1-r3
 		opengl? ( >=app-eselect/eselect-opengl-1.3.1-r1 )
 		xorgmodule? ( =x11-base/xorg-server-${XSERVER_VERSION%.*}* )
+		drm? ( x11-libs/libdrm )
 	)
 	!net-misc/vnc
 	!net-misc/tightvnc
@@ -72,23 +75,22 @@ DEPEND="${RDEPEND}
 		opengl? ( >=media-libs/mesa-10.3.4-r1 )
 	)"
 
-CMAKE_IN_SOURCE_BUILD=1
+PATCHES=(
+	"${WORKDIR}"/patches/010_libvnc-os.patch
+	"${WORKDIR}"/patches/030_manpages.patch
+	"${WORKDIR}"/patches/055_xstartup.patch
+)
 
 src_prepare() {
 	if use server ; then
-		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver
+		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
 	fi
-
-	eapply "${WORKDIR}"/patches/010_libvnc-os.patch
-	eapply "${WORKDIR}"/patches/030_manpages.patch
-	eapply "${WORKDIR}"/patches/055_xstartup.patch
-	eapply "${FILESDIR}"/${P}-xorg118-1.patch
 
 	default
 
 	if use server ; then
 		cd unix/xserver || die
-		eapply ../xserver117.patch
+		eapply ../xserver118.patch
 		eautoreconf
 	fi
 }
@@ -108,6 +110,7 @@ src_configure() {
 		cd unix/xserver || die
 		econf \
 			$(use_enable opengl glx) \
+			$(use_enable drm libdrm) \
 			--disable-config-hal \
 			--disable-config-udev \
 			--disable-devel-docs \
@@ -145,7 +148,7 @@ src_compile() {
 	if use server; then
 		# deps of the vnc module and the module itself
 		local d subdirs=(
-			fb xfixes Xext dbe glx randr render damageext miext Xi xkb
+			fb xfixes Xext dbe $(usex opengl glx "") randr render damageext miext Xi xkb
 			composite dix mi os hw/vnc
 		)
 		for d in "${subdirs[@]}"; do
@@ -163,15 +166,17 @@ src_install() {
 	if use server ; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		if ! use xorgmodule; then
-			rm -r "${D}"/usr/$(get_libdir)/xorg || die
+			rm -r "${ED%/}"/usr/$(get_libdir)/xorg || die
 		else
-			rm "${D}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
+			rm "${ED%/}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
 		newinitd "${FILESDIR}"/${PN}.initd ${PN}
+		systemd_douserunit contrib/systemd/user/vncserver@.service
 	else
-		cd "${D}" || die
+		local f
+		cd "${ED}" || die
 		for f in vncserver vncpasswd x0vncserver vncconfig; do
 			rm usr/bin/$f || die
 			rm usr/share/man/man1/$f.1 || die
