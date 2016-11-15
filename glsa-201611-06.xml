@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-06">
+  <title>xinetd: Privilege escalation </title>
+  <synopsis>A vulnerability in xinetd could lead to privilege escalation.</synopsis>
+  <product type="ebuild">xinetd</product>
+  <announced>November 15, 2016</announced>
+  <revised>November 15, 2016: 1</revised>
+  <bug>488158</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/xinetd" auto="yes" arch="*">
+      <unaffected range="ge">2.3.15-r2</unaffected>
+      <vulnerable range="lt">2.3.15-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>xinetd is a secure replacement for inetd.</p>
+  </background>
+  <description>
+    <p>Xinetd does not enforce the user and group configuration directives for
+      TCPMUX services, which causes these services to be run as root.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Attackers could escalate privileges outside of the running process.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All xinetd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=sys-apps/xinetd-2.3.15-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4342">CVE-2013-4342</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:25:51 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:16:41 +0000">b-man</metadata>
+</glsa>
