@@ -434,10 +434,6 @@ dev-java/spring-instrument
 # for questions.
 <=media-gfx/slic3r-1.1.9999
 
-# Patrick Lauer (30 Mar 2015)
-# Segfaults when creating directories #578582
-=sys-apps/sandbox-2.11*
-
 # José María Alonso <nimiux@gentoo.org> (24 Mar 2016)
 # Fails to build dev-lisp/sbcl-1.3.3 #563812
 =dev-lisp/asdf-3.1.7
