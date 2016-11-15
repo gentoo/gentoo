@@ -1351,7 +1351,7 @@ app-emulation/spice-vdagent 0.16.0 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
-app-emulation/vagrant 1.8.4 1.8.5-r1 1.8.6: A tool for building and distributing development environments
+app-emulation/vagrant 1.8.5-r1 1.8.6 1.8.7: A tool for building and distributing development environments
 app-emulation/vice 2.4.22 2.4.27 2.4.27-r2: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.3.2 1.4.0-r2 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 3.1 4.0: Graphical console client for connecting to virtual machines
@@ -2989,7 +2989,7 @@ dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1 3.14.2 3.15.1: A SQL Database Engine in a C Library
-dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
+dev-db/sqlitebrowser 3.8.0 3.9.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
 dev-db/sqlitestudio 3.0.7: SQLiteStudio3 is a powerful cross-platform SQLite database manager
@@ -9938,7 +9938,7 @@ dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and ot
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r4 0.37.8 1.3.5: Cross platform application development framework based on web technologies
+dev-util/electron 0.36.12-r4 0.37.8-r1 1.3.6: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 4.5.25-r1 5.5.2 6.1.7: A full featured Python IDE using PyQt and QScintilla
@@ -15098,7 +15098,7 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2: Remote desktop viewer display system
+net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2 1.7.0: Remote desktop viewer display system
 net-misc/tinc 1.0.28 1.0.29 1.1_pre14 1.1_pre14-r1 1.1_pre14-r2: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
