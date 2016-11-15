@@ -610,7 +610,7 @@ dev-python/pyocr cuneiform
 # Does not build.
 =media-libs/oyranos-0.9.4* fltk
 
-# Christoph Junghans <ottxor@gentoo.org> (10 Mar 2013)
+# Christoph Junghans <junghans@gentoo.org> (10 Mar 2013)
 # log4cxx has known memory leaking issues wrt bug #287697,
 # unmask when log4cxx is fixed and stable.
 media-sound/google-musicmanager log
@@ -649,7 +649,7 @@ gnome-extra/zeitgeist-datasources chromium tomboy
 # See bug #436460 and https://git.gnome.org/browse/tracker/log/?h=evo-new-api
 app-misc/tracker eds
 
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# Christoph Jungans <junghans@gentoo.org> (26 Dec 2012)
 # cuda/mkl only works on x86/amd64
 sci-chemistry/gromacs cuda mkl
 
@@ -746,7 +746,7 @@ www-plugins/gnash directfb
 # libobjc2/clang experimental support
 >=gnustep-base/gnustep-make-2.6.2 libobjc2
 
-# Christoph Junghans <ottxor@gentoo.org> (04 Feb 2012)
+# Christoph Junghans <junghans@gentoo.org> (04 Feb 2012)
 # mips only use flags
 >=sci-libs/fftw-3 zbus
 

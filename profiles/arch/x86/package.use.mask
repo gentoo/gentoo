@@ -109,7 +109,7 @@ media-libs/libmikmod cpu_flags_x86_sse2
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <ottxor@gentoo.org> (08 Sep 2013)
+# Christoph Junghans <junghans@gentoo.org> (08 Sep 2013)
 # restrict USE=quad for x86 as there are too less registers
 sci-libs/fftw quad
 
@@ -145,7 +145,7 @@ sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
 # chromium, mono work on this arch (masked in base)
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda/mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -cuda -mkl
 

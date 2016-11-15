@@ -152,7 +152,7 @@ sci-geosciences/googleearth
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc2
 
-# Christoph Junghans <ottxor@gentoo.org> (20 Sep 2016)
+# Christoph Junghans <junghans@gentoo.org> (20 Sep 2016)
 # Switch to a non-stable scheme  following google-chrome
 # please unmask latest version yourself
 =www-plugins/google-talkplugin-5.4.2.0

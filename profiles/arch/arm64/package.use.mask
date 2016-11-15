@@ -105,7 +105,7 @@ x11-misc/lightdm razor kde
 # dev-util/google-perftools is not keyworded for arm
 >=dev-libs/libmemcached-0.50 tcmalloc
 
-# Christoph Junghans <ottxor@gentoo.org> (29 Apr 2013)
+# Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
 
