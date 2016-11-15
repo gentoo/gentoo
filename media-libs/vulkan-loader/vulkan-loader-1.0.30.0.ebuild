@@ -32,7 +32,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_TESTS=False
-		-DBUILD_LAYERS=True
+		-DBUILD_LAYERS=False
 		-DBUILD_DEMOS=False
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
