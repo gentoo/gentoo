@@ -105,8 +105,8 @@ RDEPEND="
 	!nettle? (
 		gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
 		!gcrypt? (
-			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
-			!libressl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		)
 	)
 	opencl? (
