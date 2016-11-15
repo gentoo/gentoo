@@ -4,8 +4,8 @@
 
 EAPI=6
 
-# cmake generates make-specific code
-#: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+MODULES_OPTIONAL_USE=modules
 inherit linux-mod bash-completion-r1 cmake-utils
 
 DESCRIPTION="A system exploration and troubleshooting tool"
@@ -34,11 +34,11 @@ DEPEND="${RDEPEND}
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 pkg_pretend() {
-	use modules && linux-mod_pkg_setup
+	linux-mod_pkg_setup
 }
 
 pkg_setup() {
-	use modules && linux-mod_pkg_setup
+	linux-mod_pkg_setup
 }
 
 src_prepare() {
@@ -61,21 +61,27 @@ src_configure() {
 	cmake-utils_src_configure
 
 	# setup linux-mod ugliness
-	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver:)"
+	MODULE_NAMES="sysdig-probe(extra:${S}/driver:)"
 	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
-	BUILD_TARGETS="driver"
+	BUILD_TARGETS="all"
+
+	if use modules; then
+		cmake-utils_src_make configure_driver
+
+		cp "${BUILD_DIR}"/driver/Makefile.dkms driver/Makefile || die
+	fi
 }
 
 src_compile() {
 	cmake-utils_src_compile
 
-	use modules && linux-mod_src_compile
+	linux-mod_src_compile
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	use modules && linux-mod_src_install
+	linux-mod_src_install
 
 	# remove sources
 	rm -r "${ED%/}"/usr/src || die

@@ -22,7 +22,6 @@
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
 		<flag name="openmax">Enable OpenMAX video decode/encode acceleration for Gallium3D.</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for low level sha1 utility functions. May cause issues with games from Steam.</flag>
-		<flag name="openvg">Enable the OpenVG 2D acceleration API for Gallium3D.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
