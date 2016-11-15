@@ -7585,6 +7585,7 @@ sys-devel/gdb:lzma - Support lzma compression in ELF debug info
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
 sys-devel/gdb:python - Enable support for the new internal scripting language, as well as extended pretty printers
 sys-devel/gdb:server - Install the "gdbserver" program (useful for embedded/remote targets)
+sys-devel/gdb:xml - Support parsing XML data files needed (at least) for cpu features, memory maps, and syscall tracing
 sys-devel/gettext:cvs - When running `autopoint`, use cvs to store the internal development files; this requires cvs at runtime, but will be faster/smaller than raw archives
 sys-devel/gettext:git - When running `autopoint`, use git to store the internal development files; this requires git at runtime, but will be faster/smaller than raw archives
 sys-devel/kgcc64:regression-test - Run the testsuite and install the results (requires FEATURES=test)
