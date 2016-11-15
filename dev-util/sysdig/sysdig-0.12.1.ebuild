@@ -4,8 +4,7 @@
 
 EAPI=6
 
-# cmake generates make-specific code
-#: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 MODULES_OPTIONAL_USE=modules
 inherit linux-mod bash-completion-r1 cmake-utils
 
