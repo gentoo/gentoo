@@ -70,7 +70,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # TODO: Split out tools deps into another var.  e.g. bzip2 is only used by
 # system binaries and tools, not user binaries.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
-	dev-libs/libpcre[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	xattr? ( sys-apps/attr[static-libs(+)] )"
