@@ -42,6 +42,10 @@ src_configure() {
 	local myconf=(
 		# enables asserts and debug codepaths
 		$(use_enable debug)
+
+		# avoid automagic dep
+		# TODO: add support for it
+		--disable-mpi
 	)
 
 	# automagic default on clang++
