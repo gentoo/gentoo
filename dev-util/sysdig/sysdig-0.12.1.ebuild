@@ -61,9 +61,15 @@ src_configure() {
 	cmake-utils_src_configure
 
 	# setup linux-mod ugliness
-	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver:)"
+	MODULE_NAMES="sysdig-probe(extra:${S}/driver:)"
 	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
-	BUILD_TARGETS="driver"
+	BUILD_TARGETS="all"
+
+	if use modules; then
+		cmake-utils_src_make configure_driver
+
+		cp "${BUILD_DIR}"/driver/Makefile.dkms driver/Makefile || die
+	fi
 }
 
 src_compile() {
