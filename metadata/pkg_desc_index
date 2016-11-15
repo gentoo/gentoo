@@ -4702,7 +4702,7 @@ dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.93_p1-r1: an advanced CDDA reader
 dev-libs/libcec 2.1.3 2.1.4 2.2.0 3.0.1 3.1.0 3.1.0-r1: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41 0.41-r4: Tools and libraries to configure and manage kernel control groups
 dev-libs/libchewing 0.3.3 0.3.3-r1 0.4.0-r1: Library for Chinese Phonetic input method
-dev-libs/libclc 0.0.1_pre20140101-r1 0.0.1_pre20141027 0.1.0_pre20150305 0.2.0_pre20151006 0.2.0_pre20160209 0.2.0_pre20160921: OpenCL C library
+dev-libs/libclc 0.1.0_pre20150305 0.2.0_pre20151006 0.2.0_pre20160209 0.2.0_pre20160921: OpenCL C library
 dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface library
 dev-libs/libclsync 0.4.1 0.4.2: Control and monitoring library for clsync
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
@@ -7577,7 +7577,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0 1.1 1.1.1: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0 0.12.1 0.13.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0 0.12.1 0.13.0: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
@@ -12833,7 +12833,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 13.0.0 13.0.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 13.0.0 13.0.1 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
@@ -17171,7 +17171,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (y
 sys-devel/bmake 20160315 20160606 20160818 20160926: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 9999: C language family frontend for LLVM
+sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 9999: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.0 9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
@@ -17191,7 +17191,7 @@ sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 4.9.4 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
-sys-devel/llvm 3.4.2-r100 3.5.0 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 9999: Low Level Virtual Machine
+sys-devel/llvm 3.4.2-r100 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2-r2 4.2.1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
