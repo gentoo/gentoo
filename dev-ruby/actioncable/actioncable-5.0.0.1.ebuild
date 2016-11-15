@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="Structure many real-time application concerns into channels over a single WebSocket connection"
+DESCRIPTION="Integrated WebSockets for Rails"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
