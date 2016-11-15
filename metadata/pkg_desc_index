@@ -6563,7 +6563,7 @@ dev-perl/User-Identity 0.940.0: Maintains info about a physical person
 dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Relational DB services
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
-dev-perl/Validate-Tiny 1.551: Minimalistic data validation
+dev-perl/Validate-Tiny 1.551 1.600: Minimalistic data validation
 dev-perl/Variable-Magic 0.580.0 0.590.0 0.600.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
@@ -7085,7 +7085,7 @@ dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/brython 3.2.6 3.2.7: A Python 3 implementation for client-side web programming
+dev-python/brython 3.2.6 3.2.7 3.2.8: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
