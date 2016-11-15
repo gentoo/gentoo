@@ -3185,6 +3185,7 @@ dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
+dev-go/delve 0.11.0_alpha: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20160420: ed25519 for Go
 dev-go/go-bindata 0_pre20151023: A small utility which generates Go code from any file
 dev-go/go-bindata-assetfs 0_pre20160822: Serve embedded files from jteeuwen/go-bindata with net/http
