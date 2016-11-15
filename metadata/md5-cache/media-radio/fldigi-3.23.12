@@ -10,4 +10,5 @@ RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:
 SLOT=0
 SRC_URI=mirror://sourceforge/fldigi/fldigi-3.23.12.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_md5_=2eb16ef368816ad5531e8f7cc012fff4
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=3250afdcc63e289103a253daf39ad4b0
