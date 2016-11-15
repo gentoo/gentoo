@@ -1,0 +1,40 @@
+From 2fbc95b6ece36e01e6fea8c5691ef1611d948943 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Tue, 15 Nov 2016 18:56:30 +0100
+Subject: [PATCH] Upstream: don't consider default_port when matching
+ upstreams.
+
+Upstream changed API [Link 1] and removed ngx_http_upstream_srv_conf_t.default_port.
+
+Upstream's own changeset [Link 2] suggests that the check was not needed at
+all.
+
+Link 1: http://hg.nginx.org/nginx/rev/4dea01cf49e8
+Link 2: http://hg.nginx.org/nginx/rev/3fa5983b6b44
+Bug: https://github.com/openresty/memc-nginx-module/issues/26
+---
+ src/ngx_http_memc_util.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/ngx_http_memc_util.c b/src/ngx_http_memc_util.c
+index 090bf43..20cb877 100644
+--- a/src/ngx_http_memc_util.c
++++ b/src/ngx_http_memc_util.c
+@@ -141,12 +141,14 @@ ngx_http_memc_upstream_add(ngx_http_request_t *r, ngx_url_t *url)
+             continue;
+         }
+ 
++#if defined(nginx_version) && nginx_version < 1011006
+         if (uscfp[i]->default_port && url->default_port
+             && uscfp[i]->default_port != url->default_port)
+         {
+             dd("upstream_add: default_port not match");
+             continue;
+         }
++#endif
+ 
+         return uscfp[i];
+     }
+-- 
+2.10.2
+
