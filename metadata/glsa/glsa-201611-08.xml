@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-08">
+  <title>libpng: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libpng, the worst of
+    which may allow remote attackers to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>November 15, 2016</announced>
+  <revised>November 15, 2016: 1</revised>
+  <bug>564244</bug>
+  <bug>565678</bug>
+  <bug>568216</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="rge">1.2.56</unaffected>
+      <unaffected range="rge">1.5.26</unaffected>
+      <unaffected range="ge">1.6.21</unaffected>
+      <vulnerable range="lt">1.6.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several other programs, including web
+      browsers and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities were found in libpng. Please review the
+      referenced CVE’s for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition or have other
+      unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng 1.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.56"
+    </code>
+    
+    <p>All libpng 1.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.26"
+    </code>
+    
+    <p>All libpng 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.6.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7981">CVE-2015-7981</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8126">CVE-2015-8126</uri>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8540">
+      CVE-2015-8540
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:42:59 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:39:40 +0000">b-man</metadata>
+</glsa>

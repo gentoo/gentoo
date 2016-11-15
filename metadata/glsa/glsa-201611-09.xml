@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-09">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    allows gaining of privileges on the host system.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>November 15, 2016</announced>
+  <revised>November 15, 2016: 1</revised>
+  <bug>588780</bug>
+  <bug>593198</bug>
+  <bug>594850</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.6.3-r3</unaffected>
+      <vulnerable range="lt">4.6.3-r3</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.6.3-r2</unaffected>
+      <vulnerable range="lt">4.6.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A malicious guest administrator could escalate their privileges on the
+      host system or cause a Denial of Service.  Additionally, a malicious
+      unprivileged guest user may be able to obtain or corrupt sensitive
+      information (including cryptographic material) in other programs in the
+      same guest.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.6.3-r3"
+    </code>
+    
+    <p>All Xen tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.6.3-r2
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6258">CVE-2016-6258</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7092">CVE-2016-7092</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7093">CVE-2016-7093</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7094">CVE-2016-7094</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7777">CVE-2016-7777</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Sep 2016 06:59:48 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 15 Nov 2016 07:42:10 +0000">b-man</metadata>
+</glsa>
