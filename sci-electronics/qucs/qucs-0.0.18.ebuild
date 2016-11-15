@@ -17,8 +17,8 @@ IUSE=""
 
 RDEPEND="dev-qt/qtcore:4[qt3support]
 	dev-qt/qtgui:4[qt3support]
-	dev-qt/qtsvg:4
 	dev-qt/qtscript:4
+	dev-qt/qtsvg:4
 	dev-qt/qt3support:4
 	x11-libs/libX11:0="
 DEPEND="${RDEPEND}"
@@ -30,7 +30,7 @@ src_configure() {
 	# the package doesn't use pkg-config on Linux, only on Darwin
 	# very smart of upstream...
 	append-ldflags $( $(tc-getPKG_CONFIG) --libs-only-L \
-			QtCore QtGui QtXml Qt3Support )
+			QtCore QtGui QtScript QtSvg QtXml Qt3Support )
 
 	default
 }
