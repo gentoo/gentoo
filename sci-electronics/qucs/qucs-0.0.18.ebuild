@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="debug"
 
 RDEPEND="dev-qt/qtcore:4[qt3support]
 	dev-qt/qtgui:4[qt3support]
@@ -39,6 +39,11 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=(
+		# enables asserts and debug codepaths
+		$(use_enable debug)
+	)
+
 	# automagic default on clang++
 	tc-export CXX
 
@@ -47,7 +52,7 @@ src_configure() {
 	append-ldflags $( $(tc-getPKG_CONFIG) --libs-only-L \
 			QtCore QtGui QtScript QtSvg QtXml Qt3Support )
 
-	default
+	econf "${myconf[@]}"
 }
 
 pkg_postinst() {
