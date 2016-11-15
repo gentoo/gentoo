@@ -105,6 +105,12 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
 	virtual/yacc"
+if is_cross ; then
+	# The build assumes the host has libiberty and such when cross-compiling
+	# its build tools.  We should probably make binutils itself build a local
+	# copy to use, but until then, be lazy.
+	DEPEND+=" >=sys-libs/binutils-libs-${PV}"
+fi
 
 S=${WORKDIR}/binutils
 case ${BVER} in
