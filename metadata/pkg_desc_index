@@ -11672,7 +11672,7 @@ kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
-kde-base/kdelibs 4.14.24 4.14.25 4.14.26: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
@@ -17526,7 +17526,7 @@ sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
-sys-power/acpilight 0_pre20160724: Replacement for xbacklight that uses the ACPI interface to set brightness
+sys-power/acpilight 0_pre20160724 0_pre20161031: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
