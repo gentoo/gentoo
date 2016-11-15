@@ -44,8 +44,8 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gcrypt gles1 gles2
-	libressl +llvm nettle +nptl opencl osmesa pax_kernel openmax +openssl pic
-	selinux vaapi valgrind vdpau wayland xvmc xa kernel_FreeBSD"
+	libressl +llvm +nettle +nptl opencl osmesa pax_kernel openmax openssl pic
+	selinux vaapi valgrind vdpau vulkan wayland xvmc xa kernel_FreeBSD"
 
 REQUIRED_USE="
 	|| ( gcrypt libressl nettle openssl )
@@ -57,6 +57,7 @@ REQUIRED_USE="
 	gles2?  ( egl )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
+	vulkan? ( || ( video_cards_i965 video_cards_radeonsi ) )
 	wayland? ( egl gbm )
 	xa?  ( gallium )
 	video_cards_freedreno?  ( gallium )
@@ -76,7 +77,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.67"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.72"
 # keep correct libdrm and dri2proto dep
 # keep blocks in rdepend for binpkg
 RDEPEND="
@@ -273,6 +274,11 @@ multilib_src_configure() {
 		fi
 	fi
 
+	if use vulkan; then
+		vulkan_enable video_cards_i965 intel
+		vulkan_enable video_cards_radeonsi radeon
+	fi
+
 	# x86 hardened pax_kernel needs glx-rts, bug 240956
 	if [[ ${ABI} == x86 ]]; then
 		myconf+=" $(use_enable pax_kernel glx-read-only-text)"
@@ -311,6 +317,7 @@ multilib_src_configure() {
 		--enable-llvm-shared-libs \
 		--with-dri-drivers=${DRI_DRIVERS} \
 		--with-gallium-drivers=${GALLIUM_DRIVERS} \
+		--with-vulkan-drivers=${VULKAN_DRIVERS} \
 		--with-sha1=$(usex nettle libnettle $(usex gcrypt libgcrypt libcrypto)) \
 		PYTHON2="${PYTHON}" \
 		${myconf}
@@ -383,6 +390,9 @@ multilib_src_install_all() {
 	# Install config file for eselect mesa
 	insinto /usr/share/mesa
 	newins "${FILESDIR}/eselect-mesa.conf.9.2" eselect-mesa.conf
+
+	# Mesa should not install these
+	rm "${ED}"/usr/include/vulkan/{vulkan.h,vk_platform.h}
 }
 
 multilib_src_test() {
@@ -470,6 +480,23 @@ gallium_enable() {
 				shift
 				for i in $@; do
 					GALLIUM_DRIVERS+=",${i}"
+				done
+			fi
+			;;
+	esac
+}
+
+vulkan_enable() {
+	case $# in
+		# for enabling unconditionally
+		1)
+			VULKAN_DRIVERS+=",$1"
+			;;
+		*)
+			if use $1; then
+				shift
+				for i in $@; do
+					VULKAN_DRIVERS+=",${i}"
 				done
 			fi
 			;;

@@ -21,13 +21,14 @@
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for low level sha1 utility functions.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
 		<flag name="openmax">Enable OpenMAX video decode/encode acceleration for Gallium3D.</flag>
-		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for low level sha1 utility functions.</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for low level sha1 utility functions. May cause issues with games from Steam.</flag>
 		<flag name="openvg">Enable the OpenVG 2D acceleration API for Gallium3D.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="valgrind">Compile in valgrind memory hints</flag>
 		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
+		<flag name="vulkan">Enable Vulkan drivers</flag>
 		<flag name="wayland">Enable support for dev-libs/wayland</flag>
 		<flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
 		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
