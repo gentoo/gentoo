@@ -15,8 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 IUSE="+bzip2 +lzma nls selinux test unicode +update-alternatives +zlib"
 
 RDEPEND="
-	>=dev-lang/perl-5.6.0:=
-	dev-perl/TimeDate
+	>=dev-lang/perl-5.14.2:=
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	selinux? ( sys-libs/libselinux )
@@ -32,7 +31,6 @@ DEPEND="
 		>=sys-devel/gettext-0.18.2
 	)
 	test? (
-		dev-perl/DateTime-Format-DateParse
 		dev-perl/IO-String
 		dev-perl/Test-Pod
 		virtual/perl-Test-Harness
@@ -45,29 +43,12 @@ DOCS=(
 	TODO
 )
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.18.9-strerror.patch
+	"${FILESDIR}"/${PN}-1.18.12-dpkg_buildpackage-test.patch
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch
 	"${FILESDIR}"/${PN}-1.18.12-rsyncable.patch
-	"${FILESDIR}"/${PN}-1.18.12-dpkg_buildpackage-test.patch
 )
 
 src_prepare() {
-	# Force the use of the running bash for get-version (this file is never
-	# installed, so no need to worry about hardcoding a temporary bash)
-	sed -i -e '1c\#!'"${BASH}" get-version || die
-
-	if [[ ${CHOST} == mips64*-linux-gnu ]] ; then
-		# Debian targets use custom full tuples.  Map the default one
-		# based on the ABI we're using.
-		local abi
-		if [[ ${ABI} == "n64" ]] ; then
-			abi="mips64"
-		else
-			abi="mipsn32"
-		fi
-		printf "gnu-linux-mips64 ${abi}\ngnu-linux-mips64el ${abi}el\n" >> triplettable
-	fi
-
 	use nls && strip-linguas -i po
 
 	default
