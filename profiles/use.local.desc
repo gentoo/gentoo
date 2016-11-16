@@ -2021,6 +2021,19 @@ dev-libs/openssl:sslv2 - Support for the old/insecure SSLv2 protocol -- note: no
 dev-libs/openssl:sslv3 - Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https
 dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
+dev-libs/poco:7z - Add Support for the 7z archive format
+dev-libs/poco:apache - Enable support to write Apache modules using POCO
+dev-libs/poco:cppparser - Build and install a minimal C++ parser
+dev-libs/poco:crypto - Encryption and digital signing classes
+dev-libs/poco:data - Database abstraction layer to easily send/retrieve data to/from various databases
+dev-libs/poco:file2pagecompiler - Utility to convert ordinary files to Page Compiler source files
+dev-libs/poco:json - Add JSON support
+dev-libs/poco:mongodb - Add dev-db/mongodb support
+dev-libs/poco:net - Classes to write network clients & servers
+dev-libs/poco:pagecompiler - Simple compiler translating HTML pages containing embedded C++ code into HTTPRequestHandler classes
+dev-libs/poco:pocodoc - POCO documentation generator
+dev-libs/poco:util - Several utility classes (like logger, timer, config file parser)
+dev-libs/poco:zip - Add support for the zip & gz archive formats
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear programming problem solver
 dev-libs/protobuf:java - Builds the Java implementation. This is not needed for Java support in protoc.
 dev-libs/protobuf:python - Builds the Python implementation. This is not needed for Python support in protoc.
