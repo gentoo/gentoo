@@ -70,6 +70,13 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.7.0-fix-system-ffmpeg.patch"
+	"${FILESDIR}/${PN}-5.7.0-gcc6.patch"
+	"${FILESDIR}/${PN}-5.7.0-icu58.patch"
+	"${FILESDIR}/${PN}-5.7.0-undef-madv_free.patch"
+)
+
 src_prepare() {
 	if use system-icu; then
 		# ensuire build against system headers - bug #601264
