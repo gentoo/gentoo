@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools flag-o-matic
+inherit autotools fdo-mime flag-o-matic
 
 DESCRIPTION="A background browser and setter for X"
 HOMEPAGE="http://projects.l3ib.org/nitrogen/"
@@ -30,6 +30,8 @@ DEPEND="
 src_prepare() {
 	default
 
+	sed -i -e '/^UPDATE_DESKTOP/s#=.*#= :#g' data/Makefile.am || die
+
 	eautoreconf
 }
 
@@ -38,4 +40,12 @@ src_configure() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable xinerama)
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
 }
