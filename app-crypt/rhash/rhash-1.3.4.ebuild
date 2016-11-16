@@ -20,10 +20,6 @@ RDEPEND="openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-PATCHES=(
-	"${FILESDIR}"/librhash-symlink.patch
-)
-
 src_prepare() {
 	default
 
@@ -46,8 +42,7 @@ multilib_src_compile() {
 
 	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" \
 		  ADDCFLAGS="${ADDCFLAGS[*]}" ADDLDFLAGS="${ADDLDFLAGS[*]}" \
-		  $(multilib_is_native_abi && echo build-shared || echo lib-shared) \
-		  $(use static-libs && echo lib-static)
+		  build-shared $(use static-libs && echo lib-static)
 }
 
 myemake() {
@@ -55,7 +50,7 @@ myemake() {
 }
 
 multilib_src_install() {
-	myemake install-lib-shared
+	myemake -C librhash install-lib-shared install-so-link
 	multilib_is_native_abi && myemake install-shared
 	use static-libs && myemake install-lib-static
 }
