@@ -467,13 +467,13 @@
       <role>Chemistry</role>
     </member>
     <member>
-      <email>nicolasbock@gentoo.org</email>
-      <name>Nicolas Bock</name>
+      <email>junghans@gentoo.org</email>
+      <name>Christoph Junghans</name>
       <role>Chemistry</role>
     </member>
     <member>
-      <email>ottxor@gentoo.org</email>
-      <name>Christoph Junghans</name>
+      <email>nicolasbock@gentoo.org</email>
+      <name>Nicolas Bock</name>
       <role>Chemistry</role>
     </member>
   </project>
@@ -2584,6 +2584,11 @@ developers and volunteer mentors.</description>
       <role>High Energy Physics, General Physics</role>
     </member>
     <member>
+      <email>junghans@gentoo.org</email>
+      <name>Christoph Junghans</name>
+      <role>Physics</role>
+    </member>
+    <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
       <role>High Energy Physics</role>
@@ -2591,11 +2596,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
-      <role>Physics</role>
-    </member>
-    <member>
-      <email>ottxor@gentoo.org</email>
-      <name>Christoph Junghans</name>
       <role>Physics</role>
     </member>
   </project>
@@ -2802,7 +2802,7 @@ developers and volunteer mentors.</description>
       <role>Developer</role>
     </member>
     <member>
-      <email>ottxor@gentoo.org</email>
+      <email>junghans@gentoo.org</email>
       <name>Christoph Junghans</name>
       <role>Developer, merge with gx86</role>
     </member>
@@ -3629,6 +3629,11 @@ developers and volunteer mentors.</description>
       <role>Chemistry, Biology, *</role>
     </member>
     <member>
+      <email>junghans@gentoo.org</email>
+      <name>Christoph Junghans</name>
+      <role>Chemistry, Physics, *</role>
+    </member>
+    <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
       <role>Physics, Mathematics, Electronics, *</role>
@@ -3636,11 +3641,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
-      <role>Chemistry, Physics, *</role>
-    </member>
-    <member>
-      <email>ottxor@gentoo.org</email>
-      <name>Christoph Junghans</name>
       <role>Chemistry, Physics, *</role>
     </member>
     <member>
