@@ -1800,7 +1800,7 @@ app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cell
 app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 3.4.5-r1 4.2.4 4.2.4-r1: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 3.4.5-r1 4.2.4 4.2.4-r1 4.2.4-r2: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.5-r1 0.1.9: Graphical LCD Driver
 app-misc/grc 1.5: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper

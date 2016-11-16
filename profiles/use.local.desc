@@ -824,6 +824,7 @@ app-misc/gourmet:pdf - Enable export to PDF
 app-misc/gourmet:print - Enable pretty Python printing
 app-misc/gourmet:spell - Enable support for the spell check plugin
 app-misc/gourmet:web - Enable support for the web import plugin
+app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map.
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
 app-misc/gramps:webkit - Use Webkit-based rendering for geographical data view.
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
