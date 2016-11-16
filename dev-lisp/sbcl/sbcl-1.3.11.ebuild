@@ -101,6 +101,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
 	# bugs #560276, #561018
 	eapply "${FILESDIR}"/sb-posix-test-1.2.15.patch
+	# bug #599902
+	eapply "${FILESDIR}"/${PN}-1.3.11-config.patch
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch

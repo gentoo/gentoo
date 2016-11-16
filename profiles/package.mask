@@ -32,6 +32,7 @@
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
 # Mask until drivers are fixed or adjusted to depend on older versions #599976
+=x11-base/xorg-drivers-1.19*
 =x11-base/xorg-server-1.19*
 
 # Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
