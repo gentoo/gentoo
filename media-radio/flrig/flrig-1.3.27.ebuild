@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,11 +7,11 @@ inherit autotools eutils
 
 DESCRIPTION="Transceiver control program for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com/flrig-help/index.html"
-SRC_URI="http://www.w1hkj.com/downloads/flrig/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/fldigi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/libX11
