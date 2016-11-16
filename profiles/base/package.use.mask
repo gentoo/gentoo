@@ -641,11 +641,6 @@ sci-libs/flann cuda
 <media-sound/audacity-2.1.0 ffmpeg
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/biosdevname is keyworded only for amd64/x86
-# systemd keyworded only for amd64/arm/x86
-sys-kernel/dracut dracut_modules_biosdevname dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium and mono are keyworded only on a few arches
 gnome-extra/zeitgeist-datasources chromium tomboy
 
