@@ -12,8 +12,6 @@ IUSE="+cron nls"
 
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}
 
-# FIXME: Add back when ported
-# $(add_kdeapps_dep kuser)
 RDEPEND="
 	$(add_kdeapps_dep ksystemlog)
 	cron? ( $(add_kdeapps_dep kcron) )

@@ -10,8 +10,6 @@ DESCRIPTION="KDE administration tools - merge this to pull in all kdeadmin-deriv
 KEYWORDS="amd64 x86"
 IUSE="+cron"
 
-# FIXME: Add back when ported
-# $(add_kdeapps_dep kuser)
 RDEPEND="
 	$(add_kdeapps_dep ksystemlog)
 	cron? ( $(add_kdeapps_dep kcron) )
