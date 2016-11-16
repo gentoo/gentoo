@@ -34,6 +34,7 @@ sandbox_death_notice() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-execvpe.patch #578516
 	epatch "${FILESDIR}"/${P}-exec-hash.patch #578524
+	epatch "${FILESDIR}"/${P}-exec-prelink.patch #599894
 	epatch_user
 }
 

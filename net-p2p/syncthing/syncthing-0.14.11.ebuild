@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
 IUSE="tools"
 
-DOCS="README.md AUTHORS CONTRIBUTING.md"
+DOCS=(README.md AUTHORS CONTRIBUTING.md)
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -47,37 +47,37 @@ src_compile() {
 	# If we pass "build" to build.go, it builds only syncthing itself, and
 	# places the binary in the root folder. If we do not pass "build", all the
 	# tools are built, and all binaries are placed in folder ./bin.
-	ST_BUILD="build"
-	if use tools ; then
-		ST_BUILD=""
-	fi
-	go run build.go -version "v${PV}" -no-upgrade ${ST_BUILD} || die "build failed"
+	go run build.go -version "v${PV}" -no-upgrade $(usex tools "" "build") \
+		|| die "build failed"
 }
 
+# Tests sometimes fail, reported upstream
+# https://github.com/syncthing/syncthing/issues/3735
 src_test() {
 	cd src/${EGO_PN} || die
 	go run build.go test || die "test failed"
 }
 
 src_install() {
-	cd src/${EGO_PN} || die
+	pushd src/${EGO_PN} >& /dev/null || die
 	doman man/*.[157]
 	einstalldocs
 
 	if use tools ; then
 		dobin bin/syncthing
 		exeinto /usr/libexec/syncthing
+		local exe
 		for exe in bin/* ; do
-			[[ "${exe}" = "bin/syncthing" ]] || doexe "${exe}"
+			[[ "${exe}" == "bin/syncthing" ]] || doexe "${exe}"
 		done
 	else
 		dobin syncthing
 	fi
+	popd >& /dev/null || die
 
 	# openrc and systemd service files
-	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service \
-		"${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}-resume.service
-	systemd_douserunit "${S}"/src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
+	systemd_dounit src/${EGO_PN}/etc/linux-systemd/system/${PN}{@,-resume}.service
+	systemd_douserunit src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 
@@ -88,7 +88,7 @@ src_install() {
 
 	if use tools ; then
 		# openrc and systemd service files
-		systemd_dounit "${S}"/src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+		systemd_dounit src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
 		newconfd "${FILESDIR}/strelaysrv.confd" strelaysrv
 		newinitd "${FILESDIR}/strelaysrv.initd" strelaysrv
 
