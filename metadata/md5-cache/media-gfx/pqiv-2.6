@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure prepare setup
+DEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= ) virtual/pkgconfig
+DESCRIPTION=Modern rewrite of Quick Image Viewer
+EAPI=6
+HOMEPAGE=https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/
+IUSE=ffmpeg imagemagick kernel_linux libav pdf postscript
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/cairo-1.6 x11-libs/gtk+:3 ffmpeg? ( !libav? ( media-video/ffmpeg:0= ) libav? ( media-video/libav:0= ) ) imagemagick? ( media-gfx/imagemagick:0= ) pdf? ( app-text/poppler:0= ) postscript? ( app-text/libspectre:0= )
+SLOT=0
+SRC_URI=https://github.com/phillipberndt/pqiv/archive/2.6.tar.gz -> pqiv-2.6.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=66861186329d2e86de3bb57a34546347
