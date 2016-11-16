@@ -58,6 +58,7 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	epatch "${FILESDIR}/${PN}-config_LDFLAGS.patch"
+	epatch "${FILESDIR}/${PN}-${PV}-redeclared_ttyname_error.patch"
 
 	eautoreconf
 }
