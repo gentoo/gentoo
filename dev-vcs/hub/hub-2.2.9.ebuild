@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit bash-completion-r1 readme.gentoo
+inherit bash-completion-r1 readme.gentoo-r1
 
 DESCRIPTION="Command-line wrapper for git that makes you better at GitHub"
 HOMEPAGE="https://github.com/github/hub"
@@ -31,15 +31,17 @@ src_compile() {
 src_install() {
 	readme.gentoo_create_doc
 
-	dobin hub
+	dobin bin/hub
 
 	doman man/${PN}.1
 	dodoc README.md
 
-	# Broken with autoloader
-	# https://github.com/github/hub/issues/592
-	#newbashcomp etc/${PN}.bash_completion.sh ${PN}
+	newbashcomp etc/${PN}.bash_completion.sh ${PN}
 
 	insinto /usr/share/zsh/site-functions
 	newins etc/hub.zsh_completion _${PN}
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
