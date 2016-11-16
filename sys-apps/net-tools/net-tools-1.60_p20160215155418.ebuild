@@ -63,6 +63,9 @@ set_opt() {
 }
 
 src_configure() {
+	# Clear out env vars from the user. #599602
+	unset BASEDIR BINDIR SBINDIR
+
 	set_opt I18N use nls
 	set_opt HAVE_AFINET6 use ipv6
 	set_opt HAVE_HWIB has_version '>=sys-kernel/linux-headers-2.6'
