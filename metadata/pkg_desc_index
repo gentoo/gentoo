@@ -251,7 +251,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.17.27 1.18.13 1.18.14: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.17.27 1.18.14 1.18.15: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.10.2 1.10.2-r1 1.12.0-r1: Engrampa archive manager for MATE
@@ -9914,7 +9914,7 @@ dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160814 10.2.1 10.2.2: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.85 1.0.86: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.86 1.0.87: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
