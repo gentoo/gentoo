@@ -2323,8 +2323,6 @@ dev-python/paste:openid - enable OpenID support
 dev-python/pillow:webp - Enable support for webp image format.
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/pyhamcrest:numpy - Enable optional dependence on dev-python/numpy
-dev-python/pylons:genshi - Add optional genshi support
-dev-python/pylons:jinja - Add optional jinja support
 dev-python/pymongo:mod_wsgi - Disable the C extension to work with mod_wsgi.
 dev-python/pyocr:cuneiform - Enable support for the app-text/cuneiform OCR engine
 dev-python/pyocr:tesseract - Enable support for the app-text/tesseract OCR engine
