@@ -5155,7 +5155,7 @@ dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20160526 20160808 20160825 20161114: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20160526 20160808 20160825 20161114 20161115: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1 0.4.6 0.4.7: OASIS is a tool to integrate a configure, build and install system in OCaml project
@@ -7051,7 +7051,7 @@ dev-python/backports-lzma 0.0.6: Backport of Python 3.3's lzma module for XZ/LZM
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
 dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
-dev-python/bandit 0.13.2-r1 1.0.1 1.1.0: A security linter from OpenStack Security
+dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
@@ -7727,7 +7727,7 @@ dev-python/oslo-context 2.2.0 2.9.0: Helpers to maintain useful information abou
 dev-python/oslo-db 4.7.1 4.13.3: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0: Oslo i18n library
 dev-python/oslo-log 3.3.0 3.16.0: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 4.6.1 5.10.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 4.6.1 4.6.1-r1 5.10.0 5.10.0-r1: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.8.0-r1 3.19.0: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.6.0 1.14.0: Provides support for RBAC policy enforcement across all OpenStack services.
 dev-python/oslo-privsep 1.13.0: OpenStack library for privilege separation.
@@ -8069,7 +8069,7 @@ dev-python/python-bugzilla 1.2.2: A python module for interacting with Bugzilla 
 dev-python/python-caja 1.10.0 1.12.0-r1: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34 0.34-r1: A Python extension module for cdb
-dev-python/python-ceilometerclient 1.1.1 2.6.1: This is a client library for Ceilometer built on the Ceilometer API
+dev-python/python-ceilometerclient 1.1.1 2.6.1 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 1.6.0 1.9.0: A client for the OpenStack Cinder API
 dev-python/python-cjson 1.1.0: Fast JSON encoder/decoder for Python
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
