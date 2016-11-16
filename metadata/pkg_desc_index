@@ -5590,7 +5590,7 @@ dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0: Parse and Format Date
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.100.0: Localization support for DateTime
-dev-perl/DateTime-Set 0.340.0 0.360.0: Datetime sets and set math
+dev-perl/DateTime-Set 0.340.0 0.360.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0 1.940.0 2.10.0 2.70.0: Time zone object base class and factory
 dev-perl/DateTime-Tiny 1.40.0: A date object, with as little code as possible
 dev-perl/DateTimeX-Easy 0.89.0: Parse a date/time string using the best method available
@@ -6211,7 +6211,7 @@ dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validation of method/function call parameters
-dev-perl/Params-ValidationCompiler 0.170.0: Build an optimized subroutine parameter validator once, use it forever
+dev-perl/Params-ValidationCompiler 0.180.0: Build an optimized subroutine parameter validator once, use it forever
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.13: Generate Recursive-Descent Parsers
