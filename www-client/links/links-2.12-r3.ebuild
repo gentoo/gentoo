@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils fdo-mime
 
 DEBIAN_REVISION=2.10-2
@@ -15,7 +15,7 @@ SRC_URI="http://${PN}.twibright.com/download/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 directfb fbcon gpm ipv6 jpeg livecd lzma ssl suid svga tiff unicode X zlib"
+IUSE="bzip2 directfb fbcon gpm ipv6 jpeg libevent libressl livecd lzma ssl suid svga tiff unicode X zlib"
 
 GRAPHICS_DEPEND="media-libs/libpng:0="
 
@@ -27,13 +27,17 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	fbcon? ( ${GRAPHICS_DEPEND} )
 	gpm? ( sys-libs/gpm )
 	jpeg? ( virtual/jpeg:0 )
+	libevent? ( dev-libs/libevent:0= )
 	livecd? (
 		${GRAPHICS_DEPEND}
 		sys-libs/gpm
 		virtual/jpeg:0
 		)
 	lzma? ( app-arch/xz-utils )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	svga? (
 		${GRAPHICS_DEPEND}
 		media-libs/svgalib
@@ -56,6 +60,8 @@ REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 DOCS=( AUTHORS BRAILLE_HOWTO ChangeLog KEYS NEWS README SITES )
 
 src_prepare() {
+	default
+
 	if use unicode; then
 		pushd intl >/dev/null
 		./gen-intl || die
@@ -71,6 +77,7 @@ src_prepare() {
 
 	# Upstream configure produced by broken autoconf-2.13. This also fixes
 	# toolchain detection.
+	mv configure.in configure.ac || die
 	eautoreconf #131440 and #103483#c23
 }
 
@@ -98,12 +105,14 @@ src_configure() {
 		$(use_with X x) \
 		$(use_with fbcon fb) \
 		$(use_with directfb) \
+		$(use_with libevent) \
 		$(use_with jpeg libjpeg) \
 		$(use_with tiff libtiff) \
 		${myconf}
 }
 
 src_install() {
+	HTML_DOCS="doc/links_cal/*"
 	default
 
 	if use X; then
@@ -115,7 +124,6 @@ src_install() {
 			"${d}"/*.desktop
 	fi
 
-	dohtml doc/links_cal/*
 	use suid && fperms 4755 /usr/bin/links
 }
 

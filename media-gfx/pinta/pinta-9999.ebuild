@@ -1,43 +1,32 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit autotools fdo-mime gnome2-utils git-2 mono
+inherit fdo-mime mono-env gnome2-utils autotools git-2
 
 DESCRIPTION="Simple Painting for Gtk"
 HOMEPAGE="http://pinta-project.com"
-EGIT_REPO_URI="git://github.com/PintaProject/Pinta.git"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/PintaProject/Pinta.git"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
 KEYWORDS=""
 
-COMMON_DEPEND="dev-dotnet/atk-sharp:2
-	dev-dotnet/gdk-sharp:2
-	dev-dotnet/glib-sharp:2
-	dev-dotnet/gtk-sharp:2
-	dev-dotnet/mono-addins[gtk]
-	dev-dotnet/pango-sharp:2
-	dev-lang/mono"
+COMMON_DEPEND="dev-lang/mono
+	dev-dotnet/mono-addins[gtk]"
 RDEPEND="${COMMON_DEPEND}
 	x11-libs/cairo[X]
 	x11-libs/gdk-pixbuf[X,jpeg,tiff]
 	x11-themes/gnome-icon-theme"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	sys-devel/gettext"
 
 src_prepare() {
-	local i
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		for i in $(cd "${S}"/po ; echo *.po) ; do
-			if ! has ${i%.po} ${LINGUAS} ; then
-				sed -i -e "/po\/${i%.po}.po/{N;N;d;}" Pinta.Install.proj || die
-			fi
-		done
-	fi
 	eautoreconf
 }
 
