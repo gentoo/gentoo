@@ -92,6 +92,8 @@ na vrstni red), kar vam bo v pomoč pri vaših raziskavah, analizah in
 zapolnjevanju vrzeli v rodoslovnih podatkih.
 </longdescription>
 	<use>
+		<flag name="geo">Enable rendering of geographical data using
+			<pkg>sci-geosciences/osm-gps-map</pkg>.</flag>
 		<flag name="reports">All external software that is needed for graphical
     reports will be installed</flag>
 		<flag name="webkit">Use Webkit-based rendering for geographical
