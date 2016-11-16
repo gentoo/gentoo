@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
+# Mask until drivers are fixed or adjusted to depend on older versions #599976
+=x11-base/xorg-server-1.19*
+
 # Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
 # OpenVG support in Mesa is long gone, and the last version supporting
 # it is removed. Removal in 14 days.
@@ -127,19 +131,6 @@ sci-geosciences/osm2mp
 # Masked for removal in 30 days.
 sci-geosciences/osmosis
 sci-geosciences/mkgmap
-
-# Patrice Clement <monsieurp@gentoo.org> (11 Oct 2016)
-# Upstream's homepage is dead and nowhere to be found.
-# Masked for removal in 30 days.
-dev-python/oosuite
-
-# Patrice Clement <monsieurp@gentoo.org> (10 Oct 2016)
-# Note from upstream (https://github.com/Pylons/pylons):
-# Pylons has merged with repoze.bfg, and is now in maintenance-only mode. It's
-# highly recommended that new projects start with the new merged web framework,
-# pyramid. Masked for removal in 30 days.
-dev-python/pylons-sphinx-themes
-dev-python/pylons
 
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
@@ -656,10 +647,6 @@ app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r100
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Mar 2014)
-# Affected by multiple vulnerabilities, #445916, #471098 and #472280
-<media-libs/mesa-9.1.4
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Mar 2014)
 # Security mask of vulnerable versions, wrt bug #424167
