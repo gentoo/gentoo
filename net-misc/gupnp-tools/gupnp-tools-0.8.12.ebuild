@@ -27,3 +27,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
+
+# Fixes 598284 with upstream patch
+# https://git.gnome.org/browse/gupnp-tools/commit/?id=e9ec9634207e4c2eea6d268ee29b57e687c1f178
+PATCHES=( "${FILESDIR}/${PN}-fix-compiling-when-using-recent-gupnp-av.patch" )
