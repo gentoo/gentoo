@@ -138,10 +138,6 @@ sci-libs/cholmod -cuda
 sci-libs/flann -cuda
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/biosdevname, systemd work on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium, mono work on this arch (masked in base)
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 

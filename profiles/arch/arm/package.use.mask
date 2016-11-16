@@ -397,10 +397,6 @@ x11-misc/colord argyllcms extra-print-profiles
 gnome-extra/sushi office
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/systemd works on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # requires dev-util/bustle, which is written in haskell
 # remove mask if/when dev-lang/ghc is keywoded for arm
 dev-util/dbus-test-runner test
