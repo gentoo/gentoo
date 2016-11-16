@@ -9929,7 +9929,7 @@ dev-util/distro-info-data 0.29: Information about the Debian distributions' rele
 dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
+dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
@@ -15251,7 +15251,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.6 0.14.7 0.14.9 0.14.10: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.6 0.14.9 0.14.10 0.14.11: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.92 2.92-r1: A Fast, Easy and Free BitTorrent client
@@ -16845,7 +16845,7 @@ sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.0.2.1 0.0.3.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r2: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r3: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.5 2.6 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
