@@ -11802,7 +11802,7 @@ kde-misc/kcm-touchpad 1.1: KCM, daemon and applet for touchpad
 kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
 kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
-kde-misc/kdeconnect 0.8-r1 0.9g 1.0 1.0.1: Adds communication between KDE and your smartphone
+kde-misc/kdeconnect 0.8-r1 1.0.2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 3.0-r1: Nice KDE replacement to the du command
@@ -17673,7 +17673,7 @@ virtual/mailx 0 1: Virtual for mail implementations
 virtual/man 0-r1: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/modutils 0: Virtual for utilities to manage Linux kernel modules
-virtual/mpi 2.0-r3 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
+virtual/mpi 2.0-r3 2.0-r4: Virtual for Message Passing Interface (MPI) v2.0 implementation
 virtual/mta 0 1: Virtual for Message Transfer Agents
 virtual/mysql 5.5-r1 5.6-r6 5.6-r7 5.6-r8 5.6-r9: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
@@ -18171,9 +18171,9 @@ x11-drivers/xf86-input-evdev 2.9.1 2.9.2 2.10.3 2.10.4: Generic Linux input driv
 x11-drivers/xf86-input-fpit 1.4.0: Fujitsu Stylistic input driver
 x11-drivers/xf86-input-hyperpen 1.4.1: X.Org driver for hyperpen input devices
 x11-drivers/xf86-input-joystick 1.6.1 1.6.2: X.Org driver for joystick input devices
-x11-drivers/xf86-input-keyboard 1.8.0 1.8.1: Keyboard input driver
+x11-drivers/xf86-input-keyboard 1.8.1 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.6.0 0.14.0 0.19.0 0.19.1 0.20.0 0.22.0: X.org input driver based on libinput
-x11-drivers/xf86-input-mouse 1.8.1 1.9.0 1.9.1: X.Org driver for mouse input devices
+x11-drivers/xf86-input-mouse 1.8.1 1.9.0 1.9.1 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-mutouch 1.3.0: Microtouch input driver
 x11-drivers/xf86-input-penmount 1.5.0: PenMount input driver
