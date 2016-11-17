@@ -11751,7 +11751,7 @@ kde-frameworks/kplotting 5.26.0 5.27.0 5.28.0: Framework providing easy data-plo
 kde-frameworks/kpty 5.26.0 5.27.0 5.27.0-r1 5.28.0: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kross 5.26.0 5.27.0 5.28.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.26.0 5.27.0 5.28.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.26.0 5.27.0 5.28.0: Advanced plugin and service introspection
+kde-frameworks/kservice 5.26.0 5.27.0 5.28.0 5.28.0-r1: Advanced plugin and service introspection
 kde-frameworks/ktexteditor 5.26.0-r2 5.27.0 5.28.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.26.0 5.27.0 5.28.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.26.0 5.27.0 5.28.0: Framework for converting units
