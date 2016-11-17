@@ -12,25 +12,24 @@ MYP=${PN}.net-${PV}
 
 DESCRIPTION="Automated astrometric calibration programs and service"
 HOMEPAGE="http://astrometry.net/"
-SRC_URI="${HOMEPAGE}/downloads/${MYP}.tar.gz"
+SRC_URI="https://github.com/dstndstn/astrometry.net/releases/download/${PV}/${MYP}.tar.gz"
 
 LICENSE="BSD GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples extra"
+IUSE="examples"
 
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
+	media-libs/libpng:0
+	media-libs/netpbm
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=
 	sci-libs/gsl:0=
 	sys-libs/zlib:0=
-	extra? (
-		media-libs/libpng:0
-		media-libs/netpbm
-		virtual/jpeg:0
-		x11-libs/cairo )"
+	virtual/jpeg:0
+	x11-libs/cairo"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0
 	virtual/pkgconfig"
@@ -38,8 +37,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MYP}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-soname.patch"
-	"${FILESDIR}/${P}-dynlink.patch"
+	"${FILESDIR}"/${P}-soname.patch
+	"${FILESDIR}"/${P}-dynlink.patch
+	"${FILESDIR}"/${P}-qsortr.patch
 )
 
 src_prepare() {
@@ -54,15 +54,16 @@ src_prepare() {
 	# respect use compilation flags
 	sed -e '/-O3/d' -e '/-fomit-frame-pointer/d' -i util/makefile.common || die
 	# as-needed
-	sed -e "s|-lm|$(pkg-config --libs wcslib gsl)|" -i util/Makefile || die
+	sed -e "s|-lm|-lm $($(tc-getPKG_CONFIG) --libs wcslib gsl)|" -i util/Makefile || die
 	export SYSTEM_GSL=yes
 }
 
 src_compile() {
 	tc-export CC RANLIB AR
+	# fragile makefiles, build targets sequentially
 	emake
 	emake py
-	use extra && emake extra
+	emake extra
 	emake report.txt
 }
 
@@ -78,30 +79,29 @@ src_test() {
 
 ap_make() {
 	emake \
-		INSTALL_DIR="${ED}usr" \
-		DATA_INSTALL_DIR="${ED}usr/share/astrometry" \
-		LIB_INSTALL_DIR="${ED}usr/$(get_libdir)" \
-		ETC_INSTALL_DIR="${ED}etc" \
-		MAN1_INSTALL_DIR="${ED}usr/share/man/man1" \
-		DOC_INSTALL_DIR="${ED}usr/share/doc/${PF}" \
-		EXAMPLE_INSTALL_DIR="${ED}usr/share/doc/${PF}/examples" \
-		PY_BASE_INSTALL_DIR="${ED}$(python_get_sitedir)/astrometry" \
+		INSTALL_DIR="${ED%/}/usr" \
+		DATA_INSTALL_DIR="${ED%/}/usr/share/astrometry" \
+		LIB_INSTALL_DIR="${ED%/}/usr/$(get_libdir)" \
+		ETC_INSTALL_DIR="${ED%/}/etc" \
+		MAN1_INSTALL_DIR="${ED%/}/usr/share/man/man1" \
+		DOC_INSTALL_DIR="${ED%/}/usr/share/doc/${PF}" \
+		EXAMPLE_INSTALL_DIR="${ED%/}/usr/share/doc/${PF}/examples" \
+		PY_BASE_INSTALL_DIR="${ED%/}$(python_get_sitedir)/astrometry" \
 		PY_BASE_LINK_DIR="../$(python_get_sitedir | sed -e 's|/usr/||')/astrometry" \
-		FINAL_DIR="${EPREFIX}usr" \
-		DATA_FINAL_DIR="${EPREFIX}usr/share/astrometry" \
+		FINAL_DIR="${EPREFIX%/}/usr" \
+		DATA_FINAL_DIR="${EPREFIX%/}/usr/share/astrometry" \
 		$@
 }
 
 src_install() {
 	ap_make install-core
 	ap_make -C util install
-	use extra && ap_make -C blind install-extra
+	ap_make -C blind install-extra
 
-	# remove cfitsio duplicates and non installable libraries
+	# remove duplicates and non installable libraries
 	rm "${ED}"/usr/bin/{fitscopy,imcopy,listhead} || die
 	rm "${ED}"/usr/$(get_libdir)/lib*.a || die
-
-	# remove license file
 	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
+
 	use examples || rm -r "${ED}"/usr/share/doc/${PF}/examples
 }
