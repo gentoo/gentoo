@@ -10616,7 +10616,7 @@ games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
 games-engines/openmw 0.39.0 0.39.0-r1: An open source reimplementation of TES III: Morrowind
-games-engines/openxcom 1.0.0 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
+games-engines/openxcom 1.0.0 1.0.0-r1 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
 games-engines/residualvm 0.2.1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
