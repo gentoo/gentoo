@@ -5581,6 +5581,7 @@ dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and 
 dev-perl/DateTime-Format-DateParse 0.50.0-r1: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-Flexible 0.260.0: Flexibly parse strings and turn them into DateTime objects
 dev-perl/DateTime-Format-HTTP 0.420.0: Date conversion routines
+dev-perl/DateTime-Format-Human-Duration 0.640.0: Get a locale specific string describing the span of a given duration
 dev-perl/DateTime-Format-ICal 0.90.0: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
@@ -17955,7 +17956,7 @@ www-apps/trac-tags 0.6: Tags plugin for Trac
 www-apps/tt-rss 20160527 20160930: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911: A feed aggregator application
 www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
-www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV
+www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
