@@ -24,7 +24,7 @@ src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"	emake -C src/github.com/drone/drone gen || die
 	pushd src || die
 	DRONE_BUILD_NUMBER="${EGIT_COMMIT}" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"\
-		go install -ldflags '-extldflags "-static" -X github.com/drone/drone/version.VersionDev=${EGIT_COMMIT}' github.com/drone/drone/drone || die
+		go install -ldflags "-extldflags '-static' -X github.com/drone/drone/version.VersionDev=${EGIT_COMMIT}" github.com/drone/drone/drone || die
 	popd || die
 }
 
