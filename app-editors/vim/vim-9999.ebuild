@@ -92,12 +92,12 @@ src_prepare() {
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
 		"${S}"/runtime/menu.vim \
-		"${S}"/src/configure.in || die 'sed failed'
+		"${S}"/src/configure.ac || die 'sed failed'
 
 	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
 	# this is NeXT, but it's actually just a file in dev-libs/9libs
 	# This fixes bug 43885 (20 Mar 2004 agriffis)
-	sed -i 's/ libc\.h / /' "${S}"/src/configure.in || die 'sed failed'
+	sed -i 's/ libc\.h / /' "${S}"/src/configure.ac || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
 	# correctly. To avoid some really entertaining error messages about stuff
@@ -150,7 +150,7 @@ src_configure() {
 	replace-flags -O3 -O2
 
 	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.in is newer than auto/configure
+	# (1) Notice configure.ac is newer than auto/configure
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
