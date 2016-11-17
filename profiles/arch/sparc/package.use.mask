@@ -188,9 +188,6 @@ net-misc/openssh hpn
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Pacho Ramos <pacho@gentoo.org> (19 Jan 2014)
-sys-kernel/dracut -dracut_modules_systemd
-
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial

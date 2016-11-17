@@ -183,9 +183,6 @@ kde-apps/okular dpi
 >=dev-libs/totem-pl-parser-3.10 quvi
 >=media-video/totem-3.10 flash
 
-# Pacho Ramos <pacho@gentoo.org> (11 Jan 2013)
-sys-kernel/dracut -dracut_modules_systemd
-
 # Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe

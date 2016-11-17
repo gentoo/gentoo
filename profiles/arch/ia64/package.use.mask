@@ -186,9 +186,6 @@ dev-util/dbus-test-runner test
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Pacho Ramos <pacho@gentoo.org> (11 Jan 2014)
-sys-kernel/dracut -dracut_modules_systemd
-
 # Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
 # no keyword for media-libs/tremor
 >=dev-libs/DirectFB-1.7.1 tremor
