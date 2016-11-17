@@ -5902,7 +5902,7 @@ dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATE
 dev-perl/JSON-MaybeXS 1.3.5: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
 dev-perl/JSON-Parse 0.420.0 0.430.0 0.460.0: Read JSON into a Perl Variable
 dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
-dev-perl/JSON-XS 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
+dev-perl/JSON-XS 3.10.0 3.30.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
 dev-perl/JavaScript-Minifier 1.140.0: Perl extension for minifying JavaScript code
 dev-perl/JavaScript-Minifier-XS 0.110.0-r1: XS based JavaScript minifier
@@ -17973,7 +17973,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 54.0.2840.100: The web browser from Google
-www-client/google-chrome-beta 55.0.2883.44: The web browser from Google
+www-client/google-chrome-beta 55.0.2883.52: The web browser from Google
 www-client/google-chrome-unstable 56.0.2914.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -18025,7 +18025,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.154: Adobe Flash Player
-www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.44_beta 56.0.2914.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.52_beta 56.0.2914.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
