@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=DROLSKY
-DIST_VERSION=1.40
+DIST_VERSION=1.41
 inherit perl-module
 
 DESCRIPTION="A date and time object"
