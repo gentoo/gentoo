@@ -67,6 +67,9 @@ src_install() {
 	doins ext/cli/foreground
 	doins ext/cli/gem
 	doins ext/cli/ruby
+	doins ext/cli/reload
+	doins ext/cli/start
+	doins ext/cli/stop
 	insinto /opt/puppetlabs/server/apps/puppetserver/bin
 	doins ext/bin/puppetserver
 	insopts -m0644
