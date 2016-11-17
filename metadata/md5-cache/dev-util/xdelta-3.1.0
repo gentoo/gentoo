@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup test
+DEPEND=app-arch/xz-utils test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.14* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+EAPI=6
+HOMEPAGE=http://xdelta.org/
+IUSE=examples test
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-arch/xz-utils
+SLOT=3
+SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b025a9da3ca29e8fb37b86c50dd27656

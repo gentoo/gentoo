@@ -10158,7 +10158,7 @@ dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply bec
 dev-util/wsta 0.4.1: A CLI development tool for WebSocket APIs
 dev-util/wstool 0.1.10 0.1.12 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 3.0.6 3.0.10 3.0.11: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+dev-util/xdelta 1.1.4-r1 3.0.6 3.0.10 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
@@ -11752,7 +11752,7 @@ kde-frameworks/kplotting 5.26.0 5.27.0 5.28.0: Framework providing easy data-plo
 kde-frameworks/kpty 5.26.0 5.27.0 5.27.0-r1 5.28.0: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kross 5.26.0 5.27.0 5.28.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.26.0 5.27.0 5.28.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.26.0 5.27.0 5.28.0 5.28.0-r1: Advanced plugin and service introspection
+kde-frameworks/kservice 5.26.0 5.27.0 5.28.0-r1: Advanced plugin and service introspection
 kde-frameworks/ktexteditor 5.26.0-r2 5.27.0 5.28.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.26.0 5.27.0 5.28.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.26.0 5.27.0 5.28.0: Framework for converting units
@@ -14468,7 +14468,7 @@ net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network com
 net-libs/farstream 0.1.2-r2 0.2.7 0.2.8 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.44.0 2.46.1 2.48.2 2.50.0: Network-related giomodules for glib
-net-libs/gloox 1.0.9 1.0.16-r1 1.0.17: A portable high-level Jabber/XMPP library for C++
+net-libs/gloox 1.0.9 1.0.17 1.0.18: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.22.1 3.22.2: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.5.5 3.5.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
@@ -16802,7 +16802,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8 0.9: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.3-r1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.4 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
@@ -18480,7 +18480,7 @@ x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut 
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
 x11-misc/light-locker 1.7.0 1.7.0-r1: A simple locker using lightdm
-x11-misc/lightdm 1.10.5 1.16.7 1.17.6 1.18.2 1.18.3 1.19.4 1.20.0: A lightweight display manager
+x11-misc/lightdm 1.10.5 1.16.7 1.17.6 1.18.3 1.19.4 1.20.0 1.21.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.2: LightDM GTK+ Greeter
 x11-misc/lightdm-kde 0.3.2.1-r1: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
