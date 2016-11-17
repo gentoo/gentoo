@@ -20,16 +20,9 @@
     <p>tnftp is a NetBSD FTP client with several advanced features.</p>
   </background>
   <description>
-    <table>
-      <tbody>
-        <tr>
-          <td>The fetch_url function in usr.bin/ftp/fetch.c allows remote
+          <p>The fetch_url function in usr.bin/ftp/fetch.c allows remote
             attackers to execute arbitrary commands via a
-          </td>
-          <td>(pipe) character at the end of an HTTP redirect.</td>
-        </tr>
-      </tbody>
-    </table>
+          </p>
   </description>
   <impact type="normal">
     <p>A remote attacker could possibly execute arbitrary code with the
