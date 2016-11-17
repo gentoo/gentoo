@@ -19,8 +19,10 @@ IUSE="doc test"
 
 # TODO: Missing support for >=dev-python/eyeD3-0.7 API
 # test? ( >=dev-python/eyeD3-0.7 )
-DEPEND="
+RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 python_compile_all() {

@@ -66,9 +66,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	use bidi || PATCHES+=( "${FILESDIR}"/${PN}-16.4.0-zero-bidi.patch )
 
-	use bidi || eapply "${FILESDIR}"/${PN}-16.4.0-zero-bidi.patch
+	default
 
 	# Upstream Makefile sucks
 	sed -i -e "/^PREFIX=/ s:/usr/local:${EPREFIX}/usr:" \
@@ -108,6 +108,8 @@ src_prepare() {
 	if ! use streaming ; then
 		sed -e 's:DEFINES += YOUTUBE_SUPPORT:#&:' \
 			-i src/smplayer.pro || die
+		sed -e 's:^#define PLAYLIST_DOWNLOAD://&:' \
+			-i src/playlist.h || die
 	fi
 
 	# Commented out because it gives false positives
