@@ -18184,7 +18184,7 @@ x11-drivers/xf86-video-amdgpu 1.1.0 1.1.2 1.2.0 9999: Accelerated Open Source dr
 x11-drivers/xf86-video-apm 1.2.4 1.2.5 1.2.5-r1: Alliance ProMotion video driver
 x11-drivers/xf86-video-ark 0.7.5: X.Org driver for ark cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 6.14.6-r1 7.5.0 7.6.1 7.7.0 7.7.1: ATI video driver
+x11-drivers/xf86-video-ati 7.5.0 7.6.1 7.7.0 7.7.1 7.8.0: ATI video driver
 x11-drivers/xf86-video-chips 1.2.6: Chips and Technologies video driver
 x11-drivers/xf86-video-cirrus 1.5.1 1.5.2 1.5.3: Cirrus Logic video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7: X.Org driver for dummy cards
