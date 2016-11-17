@@ -9,7 +9,7 @@ KDE_TEST="true"
 KMNAME="${PN}-kde"
 inherit kde5
 
-DESCRIPTION="Adds communication between KDE and your smartphone"
+DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://www.kde.org/ https://community.kde.org/KDEConnect"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${KMNAME}-${PV}.tar.xz"
 
