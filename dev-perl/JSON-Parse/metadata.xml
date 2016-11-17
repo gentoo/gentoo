@@ -9,6 +9,5 @@
     <remote-id type="cpan">JSON-Parse</remote-id>
     <remote-id type="cpan-module">JSON::Parse</remote-id>
     <remote-id type="cpan-module">JSON::Tokenize</remote-id>
-    <remote-id type="cpan-module">JSON::Whitespace</remote-id>
   </upstream>
 </pkgmetadata>
