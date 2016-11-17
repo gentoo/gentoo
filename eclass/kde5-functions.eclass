@@ -23,6 +23,35 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+# determine the build type
+if [[ ${PV} = *9999* ]]; then
+	KDE_BUILD_TYPE="live"
+else
+	KDE_BUILD_TYPE="release"
+fi
+export KDE_BUILD_TYPE
+
+case ${CATEGORY} in
+	kde-frameworks)
+		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		;;
+	kde-plasma)
+		if [[ $(get_version_component_range 2) -eq 8 && $(get_version_component_range 3) -lt 50 ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.26.0}	# special 5.8 LTS rule to not get overwritten below
+		elif ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.28.0}
+		fi
+		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		;;
+	kde-apps)
+		local vcr2=$((10#$(get_version_component_range 2)))
+		if ! [[ $(get_version_component_range 1) -le 16 && ${vcr2} -lt 9 ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.28.0}
+		fi
+		unset vcr2
+		;;
+esac
+
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
@@ -69,14 +98,6 @@ case ${KDE_SCM} in
 	git) ;;
 	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
 esac
-
-# determine the build type
-if [[ ${PV} = *9999* ]]; then
-	KDE_BUILD_TYPE="live"
-else
-	KDE_BUILD_TYPE="release"
-fi
-export KDE_BUILD_TYPE
 
 # @FUNCTION: _check_gcc_version
 # @INTERNAL
