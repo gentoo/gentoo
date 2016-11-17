@@ -5971,7 +5971,7 @@ dev-perl/MIME-tools 5.507.0: A Perl module for parsing and creating MIME entitie
 dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
 dev-perl/MP3-Info 1.240.0-r1: A Perl module to manipulate/fetch info from MP3 files
-dev-perl/MP3-Tag 1.130.0-r1: Tag - Module for reading tags of mp3 files
+dev-perl/MP3-Tag 1.130.0-r1 1.140.0: Module for reading tags of MP3 Audio files
 dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.120.0-r1: Lets you build groups of accessors
 dev-perl/Mac-Pasteboard 0.3.0: Manipulate Mac OS X clipboards/pasteboards
