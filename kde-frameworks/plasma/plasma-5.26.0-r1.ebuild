@@ -56,6 +56,8 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${PN}-5.26.0-activationTogglesExpanded.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package egl EGL)
