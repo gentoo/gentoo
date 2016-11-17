@@ -340,6 +340,11 @@ src_prepare() {
 		-e "s#Makefile.gbuild all slowcheck#Makefile.gbuild all#g" \
 		Makefile.in || die
 
+	sed -i \
+		-e "s,/usr/share/bash-completion/completions,$(get_bashcompdir)," \
+		-e "s,\$INSTALLDIRNAME.sh,${PN}," \
+		bin/distro-install-desktop-integration || die
+
 	if use branding; then
 		# hack...
 		mv -v "${WORKDIR}/branding-intro.png" "${S}/icon-themes/galaxy/brand/intro.png" || die
@@ -525,8 +530,7 @@ src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
-	# Fix bash completion placement
-	newbashcomp "${ED}"usr/share/bash-completion/completions/libreoffice.sh ${PN}
+	# bash completion aliases
 	bashcomp_alias \
 		libreoffice \
 		unopkg loimpress lobase localc lodraw lomath lowriter lofromtemplate loweb loffice
