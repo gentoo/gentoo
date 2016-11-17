@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ checkconfig() {
 		return 1
 	fi
 
-	if ! grep -q ^pid_file /etc/mpd.conf; then
+	if ! grep -q '^\s*pid_file' /etc/mpd.conf; then
 		eerror "Invalid configuration: pid_file needs to be set."
 		return 1
 	fi
