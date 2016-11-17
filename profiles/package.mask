@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
+# New version masked for testing. It supports source-window buffer size
+# over 2G but it 'currently performs 3-5% slower and has 1-2% worse
+# compression'.
+>=dev-util/xdelta-3.1.0
+
 # Johannes Huber <johu@gentoo.org> (16 Nov 2016)
 # Masked for removal in 30 days. Declared as dead by upstream.
 # Last release with 16.08.3. Exported to kde-sunset overlay.
