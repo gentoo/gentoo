@@ -10535,7 +10535,7 @@ games-board/simsu 1.2.3 1.2.3-r1: A basic sudoku game
 games-board/sirius 0.8.0 0.8.0-r1: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
 games-board/spider 1.2_p4-r1: Spider Solitaire
-games-board/stockfish 7: Free UCI chess engine, claimed to be the strongest in the world
+games-board/stockfish 7 8: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tali 3.18.0 3.20.0 3.22.0: Beat the odds in a poker-style dice game
 games-board/teg 0.11.2: Gnome Risk Clone
 games-board/tetzle 2.0.3: A jigsaw puzzle game that uses tetrominoes for the pieces
