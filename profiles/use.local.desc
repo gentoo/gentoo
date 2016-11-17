@@ -8294,6 +8294,7 @@ x11-misc/mate-notification-daemon:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/mozo:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
+x11-misc/qt5ct:systray - Enable system tray support
 x11-misc/rednotebook:libyaml - enable libyaml support
 x11-misc/rednotebook:spell - enable gtk-spell support
 x11-misc/redshift:appindicator - Enable usage of dev-libs/libappindicator to export menu options in to unity and KDE 5
