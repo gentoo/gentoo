@@ -5573,7 +5573,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.400.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.410.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
@@ -6039,7 +6039,7 @@ dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
-dev-perl/Module-ScanDeps 1.200.0: Recursively scan Perl code for dependencies
+dev-perl/Module-ScanDeps 1.200.0 1.230.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
 dev-perl/Module-Starter 1.710.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
