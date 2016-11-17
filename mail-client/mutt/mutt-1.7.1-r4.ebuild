@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r3"
+PATCHREV="r4"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
@@ -105,8 +105,8 @@ src_prepare() {
 		done
 		# add some explanation as to why not to go upstream
 		sed -i \
-			-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n"' \
-			version.c || die "Failed to add bug instructions"
+			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
+			main.c || die "Failed to add bug instructions"
 	fi
 
 	local upatches=
