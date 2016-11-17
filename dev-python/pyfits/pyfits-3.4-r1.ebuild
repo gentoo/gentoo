@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
@@ -32,12 +32,13 @@ DEPEND="${RDEPEND}
 		 )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.2.1-unbundle-cfitsio.patch )
+PATCHES=( "${FILESDIR}"/01-system-cfitsio.patch
+		  "${FILESDIR}"/02-numpy-deprecation-warning.patch
+		  "${FILESDIR}"/03-fix-for-cfitsio-3380.patch )
 
 python_prepare_all() {
-	sed -i \
-		-e "s/\(hook_package_dir = \)lib/\1$(get_libdir)/g" \
-		"${S}"/setup.cfg || die
+	sed -e "s/\(hook_package_dir = \)lib/\1$(get_libdir)/g" \
+		-i "${S}"/setup.cfg || die
 
 	# https://github.com/spacetelescope/PyFITS/issues/95
 	sed -e "s/except UserWarning, w/except UserWarning as w/" \
