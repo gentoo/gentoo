@@ -32,11 +32,10 @@
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
-# all mozilla pcakages to fail in src_install() when xpcshell is
+# all mozilla packages to fail in src_install() when xpcshell is
 # called in ${WORKDIR}, #580726
 # Segfaults when creating directories #578582
 =sys-apps/sandbox-2.11*
-
 
 # Michał Górny <mgorny@gentoo.org> (17 Nov 2016)
 # New version masked for testing. It supports source-window buffer size
