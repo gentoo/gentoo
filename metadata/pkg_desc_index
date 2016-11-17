@@ -346,7 +346,7 @@ app-backup/bacula 5.2.13-r5 7.0.5-r1 7.0.5-r2 7.4.3 7.4.4 7.4.4-r1: Featureful c
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2 16.2.4: Featureful client/server network backup suite
 app-backup/borgbackup 1.0.7 1.0.8 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1-r1 0.11.1-r2: A completely automatic on-line backup system
-app-backup/btrbk 0.23.3 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
+app-backup/btrbk 0.23.3 0.24.0 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1: A highly efficient backup system based on the git packfile format
 app-backup/burp 1.3.48-r1 1.4.40-r5 1.4.40-r6: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
@@ -9109,7 +9109,7 @@ dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variable extensions
 dev-ruby/fuubar 2.0.0 2.1.1 2.2.0: Instafailing RSpec progress bar formatter
 dev-ruby/gettext_i18n_rails 1.5.0 1.7.2 1.8.0: FastGettext / Rails integration
-dev-ruby/gh 0.14.0: multi-layer client for the github api v3
+dev-ruby/gh 0.14.0 0.14.0-r1: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0-r1 4.0.0 4.0.0-r1: Fast Gherkin lexer and parser
 dev-ruby/git 1.2.9.1 1.3.0: Library for using Git in Ruby
 dev-ruby/github_api 0.12.4 0.14.0 0.14.1 0.14.5: A Ruby wrapper for the GitHub REST API v3
@@ -9477,7 +9477,7 @@ dev-ruby/sourcemap 0.1.1: Ruby source maps
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/spreadsheet 0.6.9: Ruby library to read and write spreadsheet documents
-dev-ruby/spring 1.6.4 1.7.1 1.7.2: Rails application preloader
+dev-ruby/spring 1.6.4 1.7.1 1.7.2 2.0.0: Rails application preloader
 dev-ruby/sprockets 2.2.3 2.11.3 2.12.3-r1 3.4.1 3.5.2 3.6.3 3.7.0: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 2.0.0 2.1.3 2.2.4 2.3.3-r1 3.0.4 3.0.4-r1 3.1.1 3.2.0: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 0.4.2 0.4.3 0.4.5: A simple opinionated mocking framework

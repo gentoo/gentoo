@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://mirrors.kodi.tv/releases/source/16.0-Jarvis.tar.gz -> kodi-16.0.tar.gz https://github.com/xbmc/xbmc/archive/16.0-Jarvis.tar.gz -> kodi-16.0.tar.gz !java? ( http://mirrors.kodi.tv/releases/source/kodi-16.0-generated-addons.tar.xz )
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=11c7e27670cb91fb7c46a002238e8b1e
+_md5_=1b7041347ed00f11372ecc78e4e6b5f0
