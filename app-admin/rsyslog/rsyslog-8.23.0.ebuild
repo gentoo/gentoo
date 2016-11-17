@@ -61,7 +61,7 @@ IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl 
 IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
 
 RDEPEND="
-	>=dev-libs/libfastjson-0.99.2:=
+	>=dev-libs/libfastjson-0.99.3:=
 	>=dev-libs/libestr-0.1.9
 	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
@@ -97,7 +97,7 @@ RDEPEND="
 		>=net-libs/czmq-3.0.0
 	)"
 DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-archive-2015.02.04
+	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
 	test? ( sys-libs/libfaketime )"
 

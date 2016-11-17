@@ -18,7 +18,7 @@ SLOT="0/${PVR}"
 IUSE=""
 
 DEPEND="dev-go/go-bindata
-	dev-util/drone-ui"
+	dev-util/drone-ui:="
 
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"	emake -C src/github.com/drone/drone gen || die
