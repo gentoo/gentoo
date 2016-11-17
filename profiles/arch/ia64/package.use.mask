@@ -112,10 +112,6 @@ dev-libs/libpeas lua jit
 dev-libs/efl physics sdl
 media-libs/elementary sdl
 
-# Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
-# Dependency not keyworded on this arch, bug #542570.
-xfce-base/xfce4-settings libinput
-
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg x265 gme ssh
