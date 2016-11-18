@@ -20,10 +20,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.1-wx.patch
-)
-
 src_prepare() {
 	default
 
