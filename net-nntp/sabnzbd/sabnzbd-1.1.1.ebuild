@@ -14,7 +14,7 @@ MY_P="${P/sab/SAB}"
 
 DESCRIPTION="Binary newsgrabber with web-interface"
 HOMEPAGE="http://www.sabnzbd.org/"
-SRC_URI="mirror://sourceforge/sabnzbdplus/${MY_P}-src.tar.gz"
+SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${PV}/${MY_P}-src.tar.gz"
 
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
