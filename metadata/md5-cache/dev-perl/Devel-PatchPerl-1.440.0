@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/File-pushd-1.0.0 virtual/perl-IO virtual/perl-MIME-Base64 dev-perl/Module-Pluggable virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Patch perl source a la Devel::PPPort's buildperl.pl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Devel-PatchPerl/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/File-pushd-1.0.0 virtual/perl-IO virtual/perl-MIME-Base64 dev-perl/Module-Pluggable dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/Devel-PatchPerl-1.44.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=a1be066e98b67f2e3f1033317f390ea8

@@ -5610,14 +5610,14 @@ dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.130.0-r1 0.140.0: Returns the
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
-dev-perl/Devel-NYTProf 6.20.0: Powerful feature-rich perl source code profiler
+dev-perl/Devel-NYTProf 6.20.0 6.30.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
-dev-perl/Devel-PatchPerl 1.380.0 1.400.0: Patch perl source a la Devel::PPPort's buildperl.pl
+dev-perl/Devel-PatchPerl 1.380.0 1.400.0 1.440.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
 dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl variables
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
-dev-perl/Devel-StackTrace 2.0.0: An object representing a stack trace
+dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.150.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
