@@ -5619,7 +5619,7 @@ dev-perl/Devel-Size 0.800.0: Perl extension for finding the memory usage of Perl
 dev-perl/Devel-SmallProf 2.20.0-r2: Per-line Perl profiler
 dev-perl/Devel-StackTrace 2.0.0 2.10.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1 0.150.0: Displays stack trace in HTML
-dev-perl/Devel-Symdump 2.150.0: Dump symbol names or the symbol table
+dev-perl/Devel-Symdump 2.150.0 2.170.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0: Generic CRC function
