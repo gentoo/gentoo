@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (18 Nov 2016)
+# Drupal 6 is no longer supported by upstream and is likely
+# vulnerable to DRUPAL-SA-CORE-2016-005 - bug 600124.
+# Removal at the end of the year
+=www-apps/drupal-6.38
+
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
 # all mozilla packages to fail in src_install() when xpcshell is
