@@ -3,11 +3,12 @@
 # $Id$
 
 EAPI=6
-inherit cmake-utils kde5-functions git-r3
 
-DESCRIPTION="A set of widget styles for Qt and GTK2"
+KDE_AUTODEPS="false"
+inherit kde5
+
+DESCRIPTION="Widget styles for Qt and GTK2"
 HOMEPAGE="https://quickgit.kde.org/?p=qtcurve.git"
-EGIT_REPO_URI="git://anongit.kde.org/qtcurve"
 
 LICENSE="LGPL-2+"
 SLOT="0"
@@ -19,10 +20,7 @@ REQUIRED_USE="gtk? ( X )
 	plasma? ( qt5 )
 "
 
-RDEPEND="X? (
-		x11-libs/libX11
-		x11-libs/libxcb
-	)
+COMMON_DEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	qt4? (
 		dev-qt/qtcore:4
@@ -31,15 +29,13 @@ RDEPEND="X? (
 		dev-qt/qtsvg:4
 	)
 	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
+		$(add_qt_dep qtdbus)
+		$(add_qt_dep qtgui)
+		$(add_qt_dep qtsvg)
+		$(add_qt_dep qtwidgets)
+		$(add_qt_dep qtx11extras)
 	)
 	plasma? (
-		dev-qt/qtprintsupport:5
 		$(add_frameworks_dep karchive)
 		$(add_frameworks_dep kcompletion)
 		$(add_frameworks_dep kconfig)
@@ -53,13 +49,20 @@ RDEPEND="X? (
 		$(add_frameworks_dep kwidgetsaddons)
 		$(add_frameworks_dep kwindowsystem)
 		$(add_frameworks_dep kxmlgui)
+		$(add_qt_dep qtprintsupport)
 	)
-	!x11-themes/gtk-engines-qtcurve"
-DEPEND="${RDEPEND}
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb
+	)
+"
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
-
-S="${WORKDIR}/${P/_/}"
+	nls? ( sys-devel/gettext )
+"
+RDEPEND="${COMMON_DEPEND}
+	!x11-themes/gtk-engines-qtcurve
+"
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
@@ -75,9 +78,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local mycmakeargs
-
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
@@ -90,5 +91,5 @@ src_configure() {
 		-DQTC_QT5_ENABLE_KDE="$(usex plasma)"
 	)
 
-	cmake-utils_src_configure
+	kde5_src_configure
 }
