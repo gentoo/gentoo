@@ -27,6 +27,10 @@ DEPEND="
 	xinerama? ( x11-proto/xineramaproto )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-xinerama.patch
+)
+
 src_prepare() {
 	default
 
