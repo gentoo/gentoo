@@ -86,8 +86,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	>=sys-devel/binutils-2.23.1
-	>=sys-devel/gcc-4.6
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
@@ -122,16 +120,6 @@ pkg_pretend() {
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
-	fi
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(gcc-major-version) -lt 4
-			|| ( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ) ]]
-		then
-			eerror "systemd requires at least gcc 4.6 to build. Please switch the active"
-			eerror "gcc version using gcc-config."
-			die "systemd requires at least gcc 4.6"
-		fi
 	fi
 
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -231,6 +219,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable elfutils)
 		$(use_enable gcrypt)
 		$(multilib_native_use_enable gnuefi)
+		--with-efi-libdir="/usr/$(get_libdir)"
 		$(multilib_native_use_enable http microhttpd)
 		$(usex http $(multilib_native_use_enable ssl gnutls) --disable-gnutls)
 		$(multilib_native_use_enable idn libidn)
