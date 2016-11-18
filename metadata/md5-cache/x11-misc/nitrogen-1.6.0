@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://projects.l3ib.org/nitrogen/files/nitrogen-1.6.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=858a5bb8b33ac70bfce1bf45041065ce
+_md5_=908c53886a19e60aa5ddc44353035fd0
