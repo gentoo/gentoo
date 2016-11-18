@@ -59,7 +59,7 @@ stop() {
 	ebegin "Stopping SABnzbd"
 
 	if [ "$(wget -q -t 1 -O - -T 10 "${url}")" = "ok" ]; then
-		signals="CONT/5/${signals}"
+		signals="NULL/5/${signals}"
 	fi
 
 	start-stop-daemon \
