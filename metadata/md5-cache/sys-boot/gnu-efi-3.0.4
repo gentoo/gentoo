@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/pciutils
+DESCRIPTION=Library for build EFI Applications
+EAPI=6
+HOMEPAGE=http://gnu-efi.sourceforge.net/
+IUSE=abi_x86_32 abi_x86_64
+KEYWORDS=-* ~amd64 ~arm ~arm64 -ia64 ~x86
+LICENSE=GPL-2
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/gnu-efi/gnu-efi-3.0.4.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=75721eb71f55afdb8d83bef6027fbdd4
