@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 # Require python-2 with sqlite USE flag
 PYTHON_DEPEND="2:2.7"
 PYTHON_USE_WITH="sqlite"
 
-inherit eutils python user systemd versionator
+inherit python user systemd versionator
 
 MY_P="${P/sab/SAB}"
 
@@ -64,15 +64,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/1.1.x/0001-use-system-configobj-and-feedparser.patch
-	epatch "${FILESDIR}"/1.1.x/0002-assume-gntp-1.0.patch
-	epatch "${FILESDIR}"/1.1.x/0003-cfg-disable-growl-by-default.patch
-	epatch "${FILESDIR}"/1.1.x/0004-use-system-rarfile.patch
+	eapply "${FILESDIR}"/patches
 
 	# remove bundled modules
 	rm -r sabnzbd/utils/{feedparser,configobj,rarfile}.py || die
 	rm -r gntp || die
 	rm licenses/License-{feedparser,configobj,gntp,rarfile}.txt || die
+
+	eapply_user
 }
 
 src_install() {
