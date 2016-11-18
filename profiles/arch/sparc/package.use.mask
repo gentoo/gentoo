@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
+# libomp does not support SPARC, #600148.
+sys-devel/clang-runtime openmp
+
 # Christian Ruppert <idl0r@gentoo.org> (14 Oct 2016)
 # dnstap USE masked due to missing keywords
 net-dns/bind dnstap
