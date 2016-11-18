@@ -79,16 +79,14 @@ src_prepare() {
 src_install() {
 	local d
 
-	dodir /usr/share/${PN}/sabnzbd
-	insinto /usr/share/${PN}/
-	doins SABnzbd.py
-	fperms +x /usr/share/${PN}/SABnzbd.py
-	dobin "${FILESDIR}"/sabnzbd
-
 	for d in cherrypy email icons interfaces locale po sabnzbd tools util; do
 		insinto /usr/share/${PN}/${d}
 		doins -r ${d}/*
 	done
+
+	insinto /usr/share/${PN}
+	insopts -m 0755
+	doins SABnzbd.py
 
 	python_optimize "${D}usr/share/${PN}"
 
