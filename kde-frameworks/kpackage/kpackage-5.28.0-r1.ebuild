@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	man? ( $(add_frameworks_dep kdoctools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-install-metadata.patch" ) # fix for <=Plasma-5.8
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package man KF5DocTools)
