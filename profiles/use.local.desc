@@ -1311,6 +1311,7 @@ dev-db/recutils:curl - Enable support for remote descriptors using libcurl
 dev-db/recutils:mdb - Build the mdb2rec utility
 dev-db/recutils:uuid - Enable support for uuid types
 dev-db/redis:jemalloc - Use dev-libs/jemalloc for allocations.
+dev-db/redis:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
 dev-db/rethinkdb:jemalloc - Use dev-libs/jemalloc for allocations (default).
 dev-db/rethinkdb:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
@@ -7834,6 +7835,7 @@ sys-libs/uclibc:wordexp - Add support for word expansion (wordexp.h)
 sys-libs/uclibc-ng:rpc - Enable sun nis/rpc support (you should use libtirpc though)
 sys-libs/uclibc-ng:symlink-compat - Explicitly add sym links for libdl.so.0, libm.so.0, and friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier
 sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction
+sys-power/apcupsd:modbus - enable MODBUS support over USB
 sys-power/cpupower:cpufreq_bench - Build and install the cpufreq_bench binary
 sys-power/nut:ipmi - Support IPMI-based UPSes.
 sys-power/nut:ups_drivers_al175 - Driver for Eltek UPS models with AL175 alarm module
