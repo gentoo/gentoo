@@ -13,7 +13,7 @@ inherit python-single-r1 user systemd versionator
 MY_P="${P/sab/SAB}"
 
 DESCRIPTION="Binary newsgrabber with web-interface"
-HOMEPAGE="http://www.sabnzbd.org/"
+HOMEPAGE="https://sabnzbd.org/"
 SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${PV}/${MY_P}-src.tar.gz"
 
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
@@ -124,7 +124,7 @@ pkg_postinst() {
 			ewarn
 			ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes, see:"
 			ewarn
-			ewarn "    http://wiki.sabnzbd.org/introducing-1-0-0"
+			ewarn "    https://sabnzbd.org/wiki/introducing-1-0-0"
 			ewarn
 			ewarn "In particular, you need to let your queue complete before restarting SABnzbd+."
 			break
