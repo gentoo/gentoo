@@ -60,7 +60,7 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 
 	# Create sabnzbd group
-	enewgroup ${PN}
+	enewgroup "${PN}"
 	# Create sabnzbd user, put in sabnzbd group
 	enewuser "${PN}" -1 -1 "${HOMEDIR}" "${PN}"
 }
@@ -80,11 +80,11 @@ src_install() {
 	local d
 
 	for d in cherrypy email icons interfaces locale po sabnzbd tools util; do
-		insinto /usr/share/${PN}/${d}
+		insinto "/usr/share/${PN}/${d}"
 		doins -r ${d}/*
 	done
 
-	insinto /usr/share/${PN}
+	insinto "/usr/share/${PN}"
 	insopts -m 0755
 	doins SABnzbd.py
 
@@ -93,12 +93,12 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
-	diropts -o ${PN} -g ${PN}
-	dodir /etc/${PN}
-	dodir /var/log/${PN}
+	diropts -o "${PN}" -g "${PN}"
+	dodir "/etc/${PN}"
+	dodir "/var/log/${PN}"
 
 	insinto "/etc/${PN}"
-	insopts -m 0600 -o ${PN} -g ${PN}
+	insopts -m 0600 -o "${PN}" -g "${PN}"
 	doins "${FILESDIR}/${PN}.ini"
 
 	dodoc {ABOUT,ISSUES,README}.txt licenses/*
