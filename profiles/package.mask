@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
+# Depends on slotted lua
+=dev-db/redis-3.2.5-r1
+
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (18 Nov 2016)
 # Drupal 6 is no longer supported by upstream and is likely
 # vulnerable to DRUPAL-SA-CORE-2016-005 - bug 600124.

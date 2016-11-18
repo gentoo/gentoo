@@ -23,4 +23,9 @@ determined by power consumption rates.
 <upstream>
 	<remote-id type="sourceforge">apcupsd</remote-id>
 </upstream>
+<use>
+	<flag name="modbus">
+	  enable MODBUS support over USB
+	</flag>
+</use>
 </pkgmetadata>
