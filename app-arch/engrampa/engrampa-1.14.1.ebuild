@@ -34,8 +34,8 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.50.1:*
-	dev-util/itstool:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
