@@ -5,10 +5,10 @@
 EAPI="6"
 
 # Require python-2 with sqlite USE flag
-PYTHON_DEPEND="2:2.7"
-PYTHON_USE_WITH="sqlite"
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="sqlite"
 
-inherit python user systemd versionator
+inherit python-single-r1 user systemd versionator
 
 MY_P="${P/sab/SAB}"
 
@@ -36,6 +36,7 @@ IUSE="+rar +ssl unzip +yenc"
 # https://github.com/sabnzbd/sabnzbd/issues/47
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=app-arch/par2cmdline-0.4
 	>=dev-python/cheetah-2.0.1
 	dev-python/configobj
@@ -49,13 +50,14 @@ RDEPEND="
 	unzip? ( >=app-arch/unzip-5.5.2 )
 	yenc? ( dev-python/yenc )
 "
+DEPEND="${PYTHON_DEPS}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	HOMEDIR="/var/lib/${PN}"
-	python_set_active_version 2
-	python_pkg_setup
+	python-single-r1_pkg_setup
 
 	# Create sabnzbd group
 	enewgroup ${PN}
@@ -88,6 +90,8 @@ src_install() {
 		doins -r ${d}/*
 	done
 
+	python_optimize "${D}usr/share/${PN}"
+
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
@@ -105,8 +109,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	python_mod_optimize /usr/share/${PN}
-
 	einfo "Default directory: ${HOMEDIR}"
 	einfo ""
 	einfo "Run: gpasswd -a <user> sabnzbd"
@@ -126,8 +128,4 @@ pkg_postinst() {
 			break
 		fi
 	done
-}
-
-pkg_postrm() {
-	python_mod_cleanup /usr/share/${PN}
 }
