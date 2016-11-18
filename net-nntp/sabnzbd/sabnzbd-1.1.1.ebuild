@@ -108,21 +108,25 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Default directory: ${HOMEDIR}"
-	einfo ""
-	einfo "Run: gpasswd -a <user> sabnzbd"
-	einfo "to add a user to the sabnzbd group so it can edit sabnzbd files"
-	einfo ""
-	einfo "By default sabnzbd will listen on 127.0.0.1:8080"
-	einfo "As growl isn't default notification system on gentoo we disable it."
-	einfo "By default notifications are forwarded to the 23053 port(gntp)."
+	einfo
+	einfo "To add a user to the sabnzbd group so it can edit SABnzbd+ files, run:"
+	einfo
+	einfo "    gpasswd -a <user> sabnzbd"
+	einfo
+	einfo "By default, SABnzbd+ will listen on TCP port 8080."
+	einfo
+	einfo "As Growl is not the default notification system on Gentoo, we disable it."
+	einfo "By default, notifications are forwarded to TCP port 23053."
 
 	local replacing
 	for replacing in ${REPLACING_VERSIONS}; do
 		if [ "$(get_major_version ${replacing})" == "0" ]; then
-			echo
-			ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes"
-			ewarn "See http://wiki.sabnzbd.org/introducing-1-0-0."
-			ewarn "In particular, you need to let your queue complete before restarting ${PN}"
+			ewarn
+			ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes, see:"
+			ewarn
+			ewarn "    http://wiki.sabnzbd.org/introducing-1-0-0"
+			ewarn
+			ewarn "In particular, you need to let your queue complete before restarting SABnzbd+."
 			break
 		fi
 	done
