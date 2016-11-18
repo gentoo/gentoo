@@ -244,7 +244,7 @@ src_install() {
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc
-	use container-init && dosym tini-static /usr/bin/docker-init
+	use container-init && dosym tini /usr/bin/docker-init
 
 	newinitd contrib/init/openrc/docker.initd docker
 	newconfd contrib/init/openrc/docker.confd docker
