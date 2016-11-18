@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
+# libomp does not support 32-bit PPC, #600148.
+sys-devel/clang-runtime openmp
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
 # dev-qt/qtwebkit:5 and kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde webkit
