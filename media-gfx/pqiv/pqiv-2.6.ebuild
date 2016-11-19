@@ -46,7 +46,7 @@ src_prepare() {
 src_configure() {
 	local backends="gdkpixbuf"
 	use ffmpeg || use libav && backends="${backends},libav"
-	use imagemagick && backends="${backends},magick"
+	use imagemagick && backends="${backends},wand"
 	use pdf && backends="${backends},poppler"
 	use postscript && backends="${backends},spectre"
 
