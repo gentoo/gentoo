@@ -15,7 +15,7 @@ SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 SLOT="0"
-IUSE="bzip2 doc +gnutls ldap nls readline selinux +smartcard tofu tools usb wks-server"
+IUSE="bzip2 doc +gnutls ldap nls readline selinux +smartcard tofu +tools usb wks-server"
 
 COMMON_DEPEND_LIBS="
 	>=dev-libs/npth-1.2
