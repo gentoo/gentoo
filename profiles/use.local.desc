@@ -1901,6 +1901,8 @@ dev-libs/gobject-introspection:doctool - Install g-ir-doc-tool for generating do
 dev-libs/hidapi:fox - Build a x11-libs/fox GUI
 dev-libs/intel-common:compiler - Install the libraries needed for the icc and ifort compilers
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
+dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
+dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
 dev-libs/leveldb:snappy - support the snappy compression library
 dev-libs/libRocket:samples - Build samples
 dev-libs/libbase58:tools - Build command line base58 tool
