@@ -1,0 +1,383 @@
+--- a/doc/alphabet-format.html
++++ b/doc/alphabet-format.html
+@@ -233,7 +233,7 @@
+           providing a reference on the meaning of the symbols used. If present, the
+           symbol name must be the second field.</p>
+           <p>The &quot;<span class="pdat">name</span>&quot; follows the rules of
+-          <a href="qstr">quoted text</a>.</p>
++          <a href="#qstr">quoted text</a>.</p>
+         </div>
+         <h5>color</h5>
+         <div class="indent">
+--- a/doc/release-notes.html
++++ b/doc/release-notes.html
+@@ -14,8 +14,26 @@
+       <h2>Motif-based sequence analysis tools</h2>
+     </div>
+     <h2>MEME Suite Release Notes</h2>
++    <hr>
++      <b>MEME version 4.11.2 patch 1 -- June 16, 2016</b>
++      <ul>
++        <li>
++            <b>Bug fixes</b>
++            <ul>
++              <li>
++              Fixed bug in MCAST 4.11.2 that caused it to prematurely truncate
++              reading the sequence file.
++              </li>
++              <li>
++              Modified MEME to fall back to a simple Dirichlet prior when
++              using DNA or a custom alphabet with a prior that requires
++              a prior library, but no prior libray is specified.
++              </li>
++            </ul
++        </li>
++      </ul>
++      <p>
+       <hr>
+-      <p>
+         <b>MEME version 4.11.2 -- May 5 2016</b>
+       </p>
+       <ul>
+--- a/src/fasta-io.c
++++ b/src/fasta-io.c
+@@ -14,6 +14,7 @@
+ #include "alphabet.h"
+ #include "fasta-io.h"
+ #include "io.h"
++#include "seq-reader-from-fasta.h"
+ #include "prior-reader-from-psp.h"
+ #include "seq.h"
+ 
+@@ -159,61 +160,6 @@
+ }
+ 
+ /****************************************************************************
+- * Read raw sequence until a new sequence is encountered or too many letters
+- * are read.  The new sequence is appended to the end of the given
+- * sequence.
+- *
+- * Return: Was the sequence read completely?
+- ****************************************************************************/
+-static BOOLEAN_T read_raw_sequence_from_reader(
+-   DATA_BLOCK_READER_T *fasta_reader, // Sequence source
+-   char* name, // Sequence ID (used in error messages).
+-   ALPH_T* alph, // Alphabet in use
+-   unsigned int offset, // Current position in raw_sequence.
+-   unsigned int max_chars, // Maximum chars in raw_sequence.
+-   char* raw_sequence // Pre-allocated sequence.
+-) {
+-  // tlb; change a_char to integer so it will compile on SGI
+-  int a_char;
+-  int start_update;
+-  BOOLEAN_T return_value = TRUE;
+-
+-  // Start at the end of the given sequence.
+-  assert(offset < max_chars);
+-
+-  DATA_BLOCK_T *seq_block = new_sequence_block(max_chars - offset);
+-  return_value = !fasta_reader->get_next_block(fasta_reader, seq_block);
+-
+-  char *seq_buffer = get_sequence_from_data_block(seq_block);
+-  size_t seq_buffer_size = get_num_read_into_data_block(seq_block);
+-  int i;
+-  for (i = 0; i < seq_buffer_size; ++i) {
+-    a_char = seq_buffer[i];
+-    // Skip non-alphabetic characters.
+-    if (!isalnum(a_char) && a_char != '-' && a_char != '*' && a_char != '.') {
+-      if ((a_char != ' ') && (a_char != '\t') && (a_char != '\n') && (a_char != '\r')) {
+-        fprintf(stderr, "Warning: Skipping character %c in sequence %s.\n",
+-                a_char, name);
+-      }
+-    } else {
+-      // skip check if unknown alph
+-      if (alph != NULL && !alph_is_known(alph, a_char)) {
+-        fprintf(stderr, "Warning: Converting illegal character %c to %c ",
+-                a_char, alph_wildcard(alph));
+-        fprintf(stderr, "in sequence %s.\n", name);
+-        a_char = alph_wildcard(alph);
+-      }
+-      raw_sequence[offset] = (char) a_char;
+-      ++offset;
+-    }
+-  }
+-
+-  raw_sequence[offset] = '\0';
+-  free_data_block(seq_block);
+-  return(return_value);
+-}
+-
+-/****************************************************************************
+  * Read one sequence from a file in Fasta format.
+  *
+  * Return: Was a sequence successfully read?
+@@ -320,44 +266,6 @@
+ }
+ 
+ /****************************************************************************
+- * Read up to max_chars letters of one sequence from a DATA_BLOCK_T readder
+- * and copy them in to the raw sequence in the SEQ_T object starting at the
+- * given buffer offset. 
+- ****************************************************************************/
+-void read_one_fasta_segment_from_reader(
+-   DATA_BLOCK_READER_T *fasta_reader,
+-   size_t max_size,
+-   size_t buffer_offset,
+-   SEQ_T *sequence
+-) {
+-
+-  assert(sequence != NULL);
+-  assert(get_seq_length(sequence) <= max_size);
+-
+-  // Get the raw sequence buffer from the SEQ_T
+-  char *raw_sequence = get_raw_sequence(sequence);
+-  if (raw_sequence == NULL) {
+-    // Allocate space for raw sequence if not done yet.
+-    raw_sequence = mm_malloc(sizeof(char) * max_size + 1);
+-    raw_sequence[0] = 0;
+-  }
+-
+-  // Read a block of sequence charaters into the
+-  // raw sequence buffer for the SEQ_T.
+-  char *name = get_seq_name(sequence);
+-  BOOLEAN_T is_complete = read_raw_sequence_from_reader(
+-    fasta_reader,
+-    name,
+-    NULL, //FIXME this is dodgy, need a proper way of getting the alphabet. The fasta_reader has it but it is not accessable!
+-    buffer_offset,
+-    max_size,
+-    raw_sequence
+-  );
+-  set_raw_sequence(raw_sequence, is_complete, sequence);
+-
+-}
+-
+-/****************************************************************************
+  * Read all the sequences from a FASTA file at once.
+    Multiple files can be appended by calling this more than once.
+  ****************************************************************************/
+--- a/src/fasta-io.h
++++ b/src/fasta-io.h
+@@ -43,19 +43,6 @@
+ );
+ 
+ /****************************************************************************
+- * Read up to max_chars letters of one sequence from a DATA_BLOCK_T readder
+- * and copy them in to the raw sequence in the SEQ_T object starting at the
+- * given buffer offset. 
+- ****************************************************************************/
+-void read_one_fasta_segment_from_reader(
+-  DATA_BLOCK_READER_T *fasta_reader,
+-  size_t max_size,
+-  size_t buffer_offset,
+-  SEQ_T* sequence
+-);
+-
+-
+-/****************************************************************************
+  * Read all the sequences from a file in Fasta format.
+  ****************************************************************************/
+ void read_many_fastas
+--- a/src/init.c
++++ b/src/init.c
+@@ -767,10 +767,16 @@
+       if (alph_is_builtin_protein(alph)) { // default mixture prior for proteins
+         plib_name = make_path_to_file(get_meme_etc_dir(), PROTEIN_PLIB);
+       } else {
+-        fprintf(stderr, "The prior library must be specified for DNA or custom "
+-            "alphabets when specifiying a prior type of 'dmix', 'mega' "
+-            "or 'megap'.");
+-        exit(1);
++        fprintf(
++          stderr, 
++          "WARNING: When using DNA or a custom alphabet, "
++          "and specifiying a prior type of\n"
++          "'dmix', 'mega' or 'megap', a prior library must be provided.\n"
++          "No prior library was provided, so a simple Dirichlet prior will be used.\n"
++        );
++        prior = "dirichlet";
++        ptype = Dirichlet;
++        if (beta <= 0) beta = 0.01; // default b = 0.01 for simple Dirichlet
+       }
+     }
+   }
+--- a/src/seq-reader-from-fasta.c
++++ b/src/seq-reader-from-fasta.c
+@@ -639,11 +639,140 @@
+   return fasta_reader->current_position;
+ }
+ 
++
++/****************************************************************************
++ * Read up to max_chars letters of one sequence from a DATA_BLOCK_T readder
++ * and copy them in to the raw sequence in the SEQ_T object starting at the
++ * given buffer offset. 
++ ****************************************************************************/
++void read_one_fasta_segment_from_reader(
++   DATA_BLOCK_READER_T *fasta_reader,
++   size_t max_size,
++   size_t offset,
++   SEQ_T *sequence
++) {
++
++
++  assert(sequence != NULL);
++  assert(offset < max_size);
++
++  // Get the raw sequence buffer from the SEQ_T
++  char *raw_sequence = get_raw_sequence(sequence);
++  if (raw_sequence == NULL) {
++    // Allocate space for raw sequence if not done yet.
++    raw_sequence = mm_malloc(sizeof(char) * max_size + 1);
++    raw_sequence[0] = 0;
++  }
++
++  // Read a block of sequence charaters into the
++  // raw sequence buffer for the SEQ_T, starting at offset.
++  BOOLEAN_T is_complete = read_raw_sequence_from_reader(
++    fasta_reader,
++    max_size - offset,
++    raw_sequence + offset
++  );
++  set_raw_sequence(raw_sequence, is_complete, sequence);
++}
++
++/****************************************************************************
++ * Read raw sequence until a new sequence is encountered or too many letters
++ * are read.
++ *
++ * Return: Was the sequence read completely?
++ ****************************************************************************/
++BOOLEAN_T read_raw_sequence_from_reader(
++   DATA_BLOCK_READER_T *reader, // Sequence source
++   unsigned int max_chars, // Maximum chars in raw_sequence.
++   char* raw_sequence // Pre-allocated sequence buffer.
++) {
++
++  SEQ_READER_FROM_FASTA_T *fasta_reader 
++    = (SEQ_READER_FROM_FASTA_T *) get_data_block_reader_data(reader);
++
++  // Read sequence into temp. buffer from the sequence file.
++  char buffer[max_chars];
++  long start_file_pos = ftell(fasta_reader->fasta_file);
++  size_t seq_index = 0;
++  size_t total_read = 0;
++  while (seq_index < max_chars) {
++
++    size_t num_char_read = fread(
++      buffer,
++      sizeof(char), 
++      max_chars - seq_index,
++      fasta_reader->fasta_file
++    );
++    fasta_reader->current_position += num_char_read;
++    total_read += num_char_read;
++
++    if (feof(fasta_reader->fasta_file)) {
++       fasta_reader->at_end_of_file = TRUE;
++    }
++    else if (num_char_read < (max_chars - seq_index)) {
++      die(
++        "Error while reading sequence from file:%s.\nError message: %s\n", 
++        fasta_reader->filename,
++        strerror(ferror(fasta_reader->fasta_file))
++      );
++    }
++
++    size_t i;
++    for(i = 0; i < num_char_read; ++i) {
++      char c = buffer[i];
++      assert(c != 0);
++      if (isspace(c)) {
++        // Skip over white space
++        fasta_reader->at_start_of_line = (c == '\n');
++      }
++      else if (c == '>' && fasta_reader->at_start_of_line == TRUE) {
++        // We found the start of a new sequence while trying
++        // to fill the buffer. Leave the buffer incomplete.
++        // and wind back the file
++        fseek(fasta_reader->fasta_file, start_file_pos + i - 1, SEEK_SET);
++        fasta_reader->current_position = start_file_pos + i - 1;
++        fasta_reader->at_end_of_seq = TRUE;
++        fasta_reader->at_start_of_line = FALSE;
++        fasta_reader->at_end_of_file = FALSE;
++        break;
++      }
++      else {
++        fasta_reader->at_start_of_line = FALSE;
++        // Check that character is legal in alphabet. 
++        // If not, replace with wild card character.
++        if (alph_is_known(fasta_reader->alphabet, c)) {
++          raw_sequence[seq_index] = c;
++        }
++        else {
++          raw_sequence[seq_index] = alph_wildcard(fasta_reader->alphabet);
++          fprintf(
++            stderr, 
++            "Warning: %c is not a valid character in %s alphabet.\n"
++            "         Converting %c to %c.\n",
++            c,
++            alph_name(fasta_reader->alphabet),
++            c,
++            raw_sequence[i]
++          );
++        }
++        ++seq_index;
++      }
++    }
++    if (fasta_reader->at_end_of_seq | fasta_reader->at_end_of_file) {
++      break;
++    }
++  }
++
++  raw_sequence[seq_index] = '\0';
++  return(fasta_reader->at_end_of_seq | fasta_reader->at_end_of_file);
++}
++
+ /******************************************************************************
+- * Fills in the next data block for the sequence. 
+- * During the first call for the sequence it fills in the full data block.
+- * On successive calls, shifts the sequence in the block down one position
+- * and reads one more character.
++ * Populates the data block for the with the next block of sequence. 
++ *
++ * During the first call for the sequence it fills in a buffer from a file,
++ * The sequence pointer in the data block is set to point at the start of the buffer.
++ * On successive calls, the sequence pointer in the block is shifted down one position
++ * in the buffer. When the end of the buffer is reached, it is filled again from the file.
+  * 
+  * Returns TRUE if it was able to completely fill the block, FALSE if 
+  * the next sequence or EOF was reached before the block was filled.
+--- a/src/seq-reader-from-fasta.h
++++ b/src/seq-reader-from-fasta.h
+@@ -37,5 +37,30 @@
+   int * end_ptr           // end position of sequence (chr:\d+-(\d+))
+ );
+ 
++/****************************************************************************
++ * Read raw sequence until a new sequence is encountered or too many letters
++ * are read.
++ *
++ * Return: Was the sequence read completely?
++ ****************************************************************************/
++BOOLEAN_T read_raw_sequence_from_reader(
++   DATA_BLOCK_READER_T *fasta_reader, // Sequence source
++   unsigned int max_chars, // Maximum chars in raw_sequence.
++   char* raw_sequence // Pre-allocated sequence.
++);
++
++/****************************************************************************
++ * Read up to max_chars letters of one sequence from a DATA_BLOCK_T readder
++ * and copy them in to the raw sequence in the SEQ_T object starting at the
++ * given buffer offset. 
++ ****************************************************************************/
++void read_one_fasta_segment_from_reader(
++   DATA_BLOCK_READER_T *reader,
++   size_t max_size,
++   size_t offset,
++   SEQ_T *sequence
++);
++
++
+ size_t get_current_pos_from_seq_reader_from_fasta(DATA_BLOCK_READER_T *reader);
+ #endif
