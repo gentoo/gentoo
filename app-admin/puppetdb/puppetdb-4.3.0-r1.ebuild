@@ -65,6 +65,9 @@ src_install() {
 	doins ext/cli/foreground
 	doins ext/cli/anonymize
 	doins ext/cli/import
+	doins ext/cli/reload
+	doins ext/cli/start
+	doins ext/cli/stop
 	insinto /opt/puppetlabs/server/apps/puppetdb/bin
 	doins ext/bin/puppetdb
 	insopts -m0644
