@@ -4749,7 +4749,7 @@ dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes 
 dev-libs/libgit2 0.22.3 0.23.4 0.24.1 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
-dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.18.2 3.20.3: Library to access weather information from online services
@@ -5564,7 +5564,7 @@ dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GU
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.110.0 0.140.0: Domain and host name validation
-dev-perl/Data-Validate-IP 0.240.0 0.260.0: Lightweight IPv4 and IPv6 validation module
+dev-perl/Data-Validate-IP 0.240.0 0.260.0 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.40.0 0.50.0: Extract probable dates from strings
@@ -5956,6 +5956,8 @@ dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.540.0 2.580.0: Dispatches messages to one or more outputs
 dev-perl/Log-Dispatch-Array 1.3.0: log events to an array (reference)
 dev-perl/Log-Log4perl 1.460.0 1.470.0 1.480.0: Log4j implementation for Perl
+dev-perl/Log-Report 1.180.0: A pluggable, multilingual handler driven problem reporting system
+dev-perl/Log-Report-Optional 1.20.0: Lightweight implementation logger for Log::Report
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
 dev-perl/MARC-Record 2.0.6: Perl extension for handling MARC records
@@ -6350,6 +6352,7 @@ dev-perl/String-CRC32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy c
 dev-perl/String-Ediff 0.90.0-r1: Produce common sub-string indices for two strings
 dev-perl/String-Escape 2010.002: Backslash escapes, quoted phrase, word elision, etc
 dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities with arbitrary format definitions
+dev-perl/String-Print 0.150.0: Extensions to printf
 dev-perl/String-RewritePrefix 0.7.0: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
 dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
@@ -6597,6 +6600,11 @@ dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
 dev-perl/XML-Catalog 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-CompactTree-XS 0.20.0-r1: a fast builder of compact tree structures from XML documents
+dev-perl/XML-Compile 1.540.0: Compilation based XML Processing
+dev-perl/XML-Compile-Cache 1.50.0: Cache compiled XML translations
+dev-perl/XML-Compile-SOAP 3.200.0: Soap 1.1 XML Compiler
+dev-perl/XML-Compile-Tester 0.900.0: Support XML::Compile related regression testing
+dev-perl/XML-Compile-WSDL11 3.50.0: WSDL version 1.1 XML Compiler
 dev-perl/XML-DOM 1.450.0 1.460.0: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module

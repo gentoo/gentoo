@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Devel-GlobalDestruction-0.90.0 >=virtual/perl-Encode-2.0.0 >=dev-perl/Log-Report-Optional-1.20.0 virtual/perl-Scalar-List-Utils >=dev-perl/String-Print-0.130.0 >=virtual/perl-Sys-Syslog-0.270.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.860.0 ) dev-lang/perl:=
+DESCRIPTION=A pluggable, multilingual handler driven problem reporting system
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Log-Report/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Devel-GlobalDestruction-0.90.0 >=virtual/perl-Encode-2.0.0 >=dev-perl/Log-Report-Optional-1.20.0 virtual/perl-Scalar-List-Utils >=dev-perl/String-Print-0.130.0 >=virtual/perl-Sys-Syslog-0.270.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/Log-Report-1.18.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=1ceb3cc963dfbc7cea1f9e1fcb9f99ba
