@@ -68,6 +68,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
 	dev-libs/libdbusmenu-qt[qt5]
+	|| ( >=kde-frameworks/kpackage-5.28.0-r1 <kde-frameworks/kpackage-5.28.0 )
 	media-libs/phonon[qt5]
 	sys-libs/zlib
 	x11-libs/libICE
