@@ -4,23 +4,24 @@
 
 EAPI=5
 
-inherit cmake-utils user
+inherit cmake-utils user git-r3
 
 DESCRIPTION="Another sendmail milter for different mail checks"
-SRC_URI="https://github.com/vstakhov/rmilter/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/vstakhov/rmilter"
+EGIT_REPO_URI="https://github.com/vstakhov/rmilter.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="dkim +memcached"
+KEYWORDS=""
+IUSE="dkim libressl +memcached"
 
 RDEPEND="dev-libs/libpcre
-		dev-libs/openssl:0
-		mail-filter/libmilter
-		>=dev-libs/glib-2.28
-		dkim? ( mail-filter/opendkim )
-		memcached? ( dev-libs/libmemcached )"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	mail-filter/libmilter
+	>=dev-libs/glib-2.28
+	dkim? ( mail-filter/opendkim )
+	memcached? ( dev-libs/libmemcached )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {

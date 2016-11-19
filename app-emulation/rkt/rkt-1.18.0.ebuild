@@ -48,7 +48,9 @@ DEPEND=">=dev-lang/go-1.5
 	dev-perl/Capture-Tiny
 	rkt_stage1_src? ( >=sys-apps/util-linux-2.27 )
 	rkt_stage1_kvm_qemu? (
+		sys-apps/attr[static-libs(+)]
 		sys-libs/libcap[static-libs(+)]
+		sys-libs/zlib[static-libs(+)]
 		>=x11-libs/pixman-0.28.0[static-libs(+)]
 	)"
 
@@ -128,7 +130,7 @@ src_prepare() {
 'else\n'\
 '\t\0\n'\
 'endif~' \
-	-e 's|QEMU_CONFIGURATION_OPTS :=|\0 --disable-opengl --disable-libssh2|' \
+	-e 's|QEMU_CONFIGURATION_OPTS :=|\0 --disable-bzip2 --disable-libssh2 --disable-opengl|' \
 	-i stage1/usr_from_kvm/qemu.mk || die
 
 	# disable fetch of kernel sources
