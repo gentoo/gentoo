@@ -539,6 +539,12 @@ src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
+	# bug 593514
+	if use gtk3; then
+		dosym /usr/$(get_libdir)/libreoffice/program/liblibreofficekitgtk.so \
+			/usr/$(get_libdir)/liblibreofficekitgtk.so
+	fi
+
 	# bash completion aliases
 	bashcomp_alias \
 		libreoffice \
