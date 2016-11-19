@@ -56,9 +56,9 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EROOT%/}/opt/skypeforlinux/skypeforlinux!" \
+	sed -e "s!^SKYPE_PATH=.*!SKYPE_PATH=${EPREFIX}/opt/skypeforlinux/skypeforlinux!" \
 		-i usr/bin/skypeforlinux || die
-	sed -e "s!^Exec=.*!Exec=${EROOT%/}/opt/bin/skypeforlinux!" \
+	sed -e "s!^Exec=.*!Exec=${EPREFIX}/opt/bin/skypeforlinux!" \
 		-e "s!^Categories=.*!Categories=Network;InstantMessaging;Telephony;!" \
 		-i usr/share/applications/skypeforlinux.desktop || die
 }
