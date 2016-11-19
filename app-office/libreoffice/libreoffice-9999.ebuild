@@ -246,19 +246,18 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 )
 
-CHECKREQS_MEMORY="512M"
-
-if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
-	CHECKREQS_DISK_BUILD="22G"
-elif [[ ${MERGE_TYPE} != binary ]] ; then
-	CHECKREQS_DISK_BUILD="6G"
-fi
-
 pkg_pretend() {
 	use java || \
 		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
+
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
 		check-reqs_pkg_pretend
 
 		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
@@ -286,7 +285,15 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
-	[[ ${MERGE_TYPE} != binary ]] && check-reqs_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
+		check-reqs_pkg_setup
+	fi
 }
 
 src_unpack() {
