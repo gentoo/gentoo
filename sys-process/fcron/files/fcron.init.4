@@ -5,7 +5,7 @@
 
 FCRON_INSTANCE="${SVCNAME##*.}"
 
-if [ -n "${FCRON_INSTANCE}" -a "${SVCNAME}" != "fcron" ]; then
+if [ -n "${FCRON_INSTANCE}" ] && [ "${SVCNAME}" != "fcron" ]; then
 	FCRON_CONFIGFILE="/etc/fcron/fcron.${FCRON_INSTANCE}.conf"
 else
 	FCRON_CONFIGFILE="/etc/fcron/fcron.conf"
@@ -17,10 +17,10 @@ getconfig() {
 	local value=
 
 	if service_started; then
-		value="$(service_get_value ${key})"
+		value="$(service_get_value "${key}")"
 	fi
 
-	if [ -z "${value}" -a -r "${FCRON_CONFIGFILE}" ]; then
+	if [ -z "${value}" ] && [ -r "${FCRON_CONFIGFILE}" ]; then
 		value="$(sed -n -e 's:^'"${key}"'[ \t]*=[ \t]*::p' "${FCRON_CONFIGFILE}")"
 	fi
 
