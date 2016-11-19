@@ -147,9 +147,9 @@ easar() {
 }
 
 package_dir() {
-	local binmod="${1}" binmod_v
-	eval binmod_v=\${$(tr '[:lower:]' '[:upper:]' <<< ${binmod//-/_}_V)}
-	echo -n ${binmod}-${binmod_v}
+	local binmod="${1//-/_}"
+	local binmod_v="${binmod^^}_V"
+	echo -n ${1}-${!binmod_v}
 }
 
 _unpack_npm_package() {
