@@ -14043,7 +14043,7 @@ net-analyzer/nsat 1.5-r3: Network Security Analysis Tool, an application-level n
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/ntop 4.0.3 4.1.0 5.0.1-r2: Network traffic analyzer with web interface
-net-analyzer/ntopng 1.2.1 2.0: Network traffic analyzer with web interface
+net-analyzer/ntopng 1.2.1 2.0 2.4: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
