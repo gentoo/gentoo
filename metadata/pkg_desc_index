@@ -14119,7 +14119,7 @@ net-analyzer/tcptrace 6.6.7-r2 6.6.7_p4_p1: A Tool for analyzing network packet 
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/testssl 2.6: Tool to check TLS/SSL cipher support
-net-analyzer/thc-ipv6 2.3 2.5 2.7: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
+net-analyzer/thc-ipv6 2.3 2.5 2.7 3.0 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
 net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface
