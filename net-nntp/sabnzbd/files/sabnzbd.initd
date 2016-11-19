@@ -24,7 +24,7 @@ start() {
 		--group ${SABNZBD_GROUP} \
 		--pidfile "${PIDFILE}" \
 		--wait 1000 \
-		--exec /usr/bin/sabnzbd \
+		--exec /usr/share/sabnzbd/SABnzbd.py \
 		-- \
 		--config-file "${SABNZBD_CONFIGFILE}" \
 		--logging "${SABNZBD_LOGGING}" \
@@ -59,7 +59,7 @@ stop() {
 	ebegin "Stopping SABnzbd"
 
 	if [ "$(wget -q -t 1 -O - -T 10 "${url}")" = "ok" ]; then
-		signals="CONT/5/${signals}"
+		signals="NULL/5/${signals}"
 	fi
 
 	start-stop-daemon \
