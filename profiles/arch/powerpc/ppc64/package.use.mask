@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+dev-db/redis luajit
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
