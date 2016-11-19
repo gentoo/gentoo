@@ -5,7 +5,7 @@
 EAPI=6
 inherit eutils
 
-DESCRIPTION="A library containing a number of classes and functions for programming GTK+ programs using C++"
+DESCRIPTION="A number of classes and functions for programming GTK+ programs using C++"
 HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN/++/xx}/${P}.tar.gz"
 
