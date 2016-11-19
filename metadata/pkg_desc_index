@@ -3967,7 +3967,7 @@ dev-java/freehep-graphicsio-tests 2.4: High Energy Physics Java library - FreeHE
 dev-java/freehep-io 2.2.2: High Energy Physics Java library - FreeHEP I/O Library
 dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
-dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
+dev-java/gcj-jdk 4.9.4: Java wrappers around GCJ
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
@@ -4006,8 +4006,8 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.1.0 7.2.6.7: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.1.0 7.2.6.7: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 3.2.0 7.2.6.8: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 3.1.0 3.2.0 7.2.6.7 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -15662,7 +15662,7 @@ sci-biology/mammoth 1.0-r1: MAtching Molecular Models Obtained from THeory
 sci-biology/maq 0.7.1 0.7.1-r1: Mapping and Assembly with Qualities - mapping Solexa and SOLiD reads to reference sequences
 sci-biology/maqview 0.2.5-r2: GUI for sci-biology/maq, a short read mapping assembler
 sci-biology/mcl 08.312 12.135 14.137: A Markov Cluster Algorithm implementation
-sci-biology/meme 4.8.1-r2: The MEME/MAST system - Motif discovery and search
+sci-biology/meme 4.8.1-r2 4.11.2_p2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina
 sci-biology/mosaik 1.0.1367 1.0.1388 2.2.30: A reference-guided aligner for next-generation sequencing technologies
 sci-biology/mothur 1.27.0-r1: A suite of algorithms for ecological bioinformatics
