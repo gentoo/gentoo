@@ -36,6 +36,7 @@
 # include equivalent versions to avoid complications with virtuals
 >=virtual/perl-Math-BigInt-1.999.726
 >=perl-core/Math-BigInt-1.999.726
+>=dev-perl/Math-BigInt-GMP-1.600.0
 
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # Depends on slotted lua
