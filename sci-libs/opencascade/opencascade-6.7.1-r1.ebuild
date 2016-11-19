@@ -13,9 +13,8 @@ SRC_URI="http://files.opencascade.com/OCCT/OCC_${PV}_release/opencascade-${PV}.t
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc examples freeimage gl2ps java qt4 +tbb +vtk"
+IUSE="debug doc examples freeimage gl2ps java qt4 +tbb"
 
-MY_VTK="vtk-6.1"
 DEPEND="app-eselect/eselect-opencascade
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
@@ -29,8 +28,7 @@ DEPEND="app-eselect/eselect-opencascade
 	freeimage? ( media-libs/freeimage )
 	gl2ps? ( x11-libs/gl2ps )
 	java? ( >=virtual/jdk-0:= )
-	tbb? ( dev-cpp/tbb )
-	vtk? ( || ( =sci-libs/${MY_VTK}*[imaging] =sci-libs/${MY_VTK}*[qt4] =sci-libs/${MY_VTK}*[rendering] =sci-libs/${MY_VTK}*[views] =sci-libs/${MY_VTK}*[all-modules] ) )"
+	tbb? ( dev-cpp/tbb )"
 RDEPEND="${DEPEND}"
 
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
@@ -49,7 +47,9 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 
 	epatch \
-		"${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
+		"${FILESDIR}"/${P}-deprecated-glx-api.patch \
+		"${FILESDIR}"/${PN}-6.7.0-fixed-DESTDIR.patch \
+		"${FILESDIR}"/${PN}-6.5.4-fixed-tbb-VERSION.patch
 
 	# Feed environment variables used by Opencascade compilation
 	my_install_dir=${EROOT}usr/$(get_libdir)/${P}/ros
@@ -110,7 +110,6 @@ TCL_LIBRARY=${my_sys_lib}/tcl$(grep TCL_VER /usr/include/tcl.h | sed 's/^.*"\(.*
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" \
 		-e "s:\$qt/include:\$qt/include/qt4:g"\
 		-e "s:\$qt/lib:\$qt/$(get_libdir)/qt4:g"\
-		-e "/CSF_VTK_LIB=/s:-${MY_VTK/vtk-}::g" \
 		-i configure.ac || die
 	eautoreconf
 }
@@ -127,8 +126,6 @@ src_configure() {
 		$(usex tbb "--with-tbb-include=${EROOT}usr" "") \
 		$(usex tbb "--with-tbb-library=${EROOT}usr" "") \
 		$(use java && echo "--with-java-include=$(java-config -O)/include" || echo "--without-java-include") \
-		$(usex vtk "--with-vtk-include=${EROOT}usr/include/${MY_VTK}" "") \
-		$(usex vtk "--with-vtk-library=${EROOT}usr/$(get_libdir)" "") \
 		$(use_enable debug) \
 		$(use_enable !debug production)
 }
@@ -144,8 +141,10 @@ src_install() {
 		dosym "$(get_libdir)" "${my_install_dir}/lin/lib"
 	fi
 
-	newenvd 50${PN} ${PV}
+	insinto /etc/env.d/${PN}
+	newins 50${PN} ${PV}
 
+	#cd "${S}"
 	if use examples ; then
 		insinto /usr/share/doc/${PF}/examples
 		doins -r data
