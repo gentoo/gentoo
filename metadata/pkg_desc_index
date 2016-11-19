@@ -10098,7 +10098,7 @@ dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular langu
 dev-util/rats 2.1-r2 2.3 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.5.1 2.6.0 2.6.1: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.6.1 2.6.2: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
@@ -17986,7 +17986,7 @@ www-client/firefox 45.4.0 49.0: Firefox Web Browser
 www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
 www-client/google-chrome 54.0.2840.100: The web browser from Google
 www-client/google-chrome-beta 55.0.2883.52: The web browser from Google
-www-client/google-chrome-unstable 56.0.2914.3: The web browser from Google
+www-client/google-chrome-unstable 56.0.2922.1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.8-r1 2.12-r2 2.12-r3: A fast and lightweight web browser running in both graphics and text mode
@@ -18037,7 +18037,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.154: Adobe Flash Player
-www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.52_beta 56.0.2914.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.52_beta 56.0.2922.1_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
