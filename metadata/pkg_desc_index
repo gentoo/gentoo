@@ -11820,7 +11820,7 @@ kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
 kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
 kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
-kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
+kde-misc/kimtoy 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-gdrive 1.0.2 1.0.3 1.0.4: KIO Slave for Google Drive service
 kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
