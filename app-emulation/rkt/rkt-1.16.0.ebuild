@@ -202,8 +202,8 @@ src_compile() {
 	case ${arch} in
 		amd64) arch=x86_64;;
 	esac
-	ARCH=${arch} emake
-	ARCH=${arch} emake bash-completion
+	ARCH=${arch} emake V=3
+	ARCH=${arch} emake V=3 bash-completion
 }
 
 src_install() {
