@@ -568,8 +568,8 @@ qt5_base_configure() {
 		-glib
 
 		# disable everything to prevent automagic deps (part 2)
-		-no-pulseaudio -no-alsa
 		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -no-gtk || echo -no-gtkstyle)
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-pulseaudio -no-alsa)
 
 		# exclude examples and tests from default build
 		-nomake examples
@@ -630,7 +630,7 @@ qt5_base_configure() {
 		-no-libinput
 
 		# disable gstreamer by default, override in qtmultimedia
-		-no-gstreamer
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-gstreamer)
 
 		# respect system proxies by default: it's the most natural
 		# setting, and it'll become the new upstream default in 5.8
