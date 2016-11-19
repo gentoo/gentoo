@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=runc container cli tools
+EAPI=6
+HOMEPAGE=http://runc.io
+IUSE=apparmor +seccomp
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=apparmor? ( sys-libs/libapparmor ) seccomp? ( sys-libs/libseccomp )
+SLOT=0
+SRC_URI=https://github.com/opencontainers/runc/archive/v0.1.1.tar.gz -> runc-0.1.1.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
+_md5_=fb043c6f701fdd5da0071aebb0fa120e
