@@ -1,8 +1,8 @@
 http://cvs.savannah.gnu.org/viewvc/cvs/ccvs/src/hash.h?r1=1.14.6.2&r2=1.14.6.3&pathrev=cvs1-11-x-branch
 fixed in cvs-1.11.23, cvs-HEAD after cvs-1.12.13a
 
---- src/hash.h.orig	2005-02-01 22:56:48 +0100
-+++ src/hash.h	2010-03-10 19:00:11 +0100
+--- a/src/hash.h.orig	2005-02-01 22:56:48 +0100
++++ b/src/hash.h	2010-03-10 19:00:11 +0100
 @@ -27,26 +27,26 @@
  };
  typedef enum ntype Ntype;
