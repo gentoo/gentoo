@@ -17170,7 +17170,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.21.1-r1 2.22-r1 2.23.2 2.24-r3 2.25 2.25-r1 2.25.1-r1 2.26.1 2.27 9999: Tools necessary to build programs
 sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7.2-r1 7.3 7.3.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 7.3.1
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1: binutils package for building 64bit kernels on HPPA
+sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20160315 20160606 20160818 20160926: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
