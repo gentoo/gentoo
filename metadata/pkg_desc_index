@@ -16852,7 +16852,7 @@ sys-apps/ripgrep 0.2.5-r1 0.2.6 0.2.9: a command line search tool that combines 
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
-sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
+sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0: skarnet.org's small and secure supervision software suite
 sys-apps/s6-linux-init 0.0.1.4 0.1.0.0: Generates an init binary for s6-based init systems
 sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0: Set of tiny linux utilities
@@ -16863,6 +16863,8 @@ sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r3: sandbox'd LD_PRELOA
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.5 2.6 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
+sys-apps/selinux-python 9999: SELinux core utilities
+sys-apps/semodule-utils 9999: SELinux policy module utilities
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.41 1.42: Apps for querying the sg SCSI interface
