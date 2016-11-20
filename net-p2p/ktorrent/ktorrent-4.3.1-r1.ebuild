@@ -39,21 +39,19 @@ HOMEPAGE="http://ktorrent.pwsp.net/"
 LICENSE="GPL-2"
 SLOT="4"
 IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +kross +logviewer
-+magnetgenerator +mediaplayer plasma rss +scanfolder +search +shutdown +stats
-+upnp webinterface +zeroconf"
++magnetgenerator +mediaplayer rss +scanfolder +search +stats +upnp webinterface
++zeroconf"
 
 COMMONDEPEND="
 	<net-libs/libktorrent-${LIBKT_VERSION_MAX}:4
 	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}:4
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? ( >=media-libs/taglib-1.5 )
-	plasma? ( $(add_kdebase_dep libtaskmanager) )
 	rss? ( $(add_kdeapps_dep kdepimlibs) )
 	search? (
 		$(add_kdebase_dep kdelibs webkit 4.14.22)
 		dev-qt/qtwebkit:4
 	)
-	shutdown? ( $(add_kdebase_dep libkworkspace) )
 "
 DEPEND="${COMMONDEPEND}
 	dev-libs/boost
@@ -74,17 +72,16 @@ PATCHES=(
 )
 
 src_prepare() {
-	if ! use plasma; then
-		sed -i \
-			-e "s:add_subdirectory(plasma):#nada:g" \
-			CMakeLists.txt || die "Failed to make plasmoid optional"
-	fi
+	sed -i \
+		-e "s:add_subdirectory(plasma):#nada:g" \
+		CMakeLists.txt || die "Failed to make plasmoid optional"
 
 	kde4-base_src_prepare
 }
 
 src_configure() {
 	mycmakeargs=(
+		-D_ENABLE_SHUTDOWN_PLUGIN=OFF
 		$(cmake-utils_use_enable bwscheduler BWSCHEDULER_PLUGIN)
 		$(cmake-utils_use_enable downloadorder DOWNLOADORDER_PLUGIN)
 		$(cmake-utils_use_enable infowidget INFOWIDGET_PLUGIN)
@@ -97,7 +94,6 @@ src_configure() {
 		$(cmake-utils_use_enable rss SYNDICATION_PLUGIN)
 		$(cmake-utils_use_enable scanfolder SCANFOLDER_PLUGIN)
 		$(cmake-utils_use_enable search SEARCH_PLUGIN)
-		$(cmake-utils_use_enable shutdown SHUTDOWN_PLUGIN)
 		$(cmake-utils_use_enable stats STATS_PLUGIN)
 		$(cmake-utils_use_enable upnp UPNP_PLUGIN)
 		$(cmake-utils_use_enable webinterface WEBINTERFACE_PLUGIN)

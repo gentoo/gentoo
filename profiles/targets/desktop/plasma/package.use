@@ -61,7 +61,6 @@ media-libs/phonon designer
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/solid-runtime -bluetooth
 kde-frameworks/baloo minimal
-net-p2p/ktorrent:4 -plasma
 sys-auth/polkit-kde-agent minimal
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
