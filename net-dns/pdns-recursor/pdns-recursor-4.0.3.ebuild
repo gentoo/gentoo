@@ -32,6 +32,7 @@ S="${WORKDIR}"/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost-1.61-fcontext.patch
+	"${FILESDIR}"/${P}-ecdsa.patch
 )
 
 pkg_setup() {
