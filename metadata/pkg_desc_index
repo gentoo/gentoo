@@ -11673,7 +11673,6 @@ kde-apps/syndication 16.08.3: Library for parsing RSS and Atom feeds
 kde-apps/thumbnailers 16.04.3 16.08.3: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 16.04.3 16.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-base/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-base/kactivities 4.13.3-r2: KDE Activity Manager
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kcheckpass 4.11.22-r1: A simple password checker, used by any software in need of user authentication
@@ -11892,6 +11891,7 @@ kde-plasma/breeze 5.7.5 5.8.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.7.5 5.8.3: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.7.5 5.8.3: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/breeze-plymouth 5.7.5 5.8.3: Breeze theme for Plymouth
+kde-plasma/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-plasma/kactivitymanagerd 5.7.5 5.8.3: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.7.5 5.8.3: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 2.2.1 5.7.5 5.8.3: KDE Plasma systemsettings kcm to set GTK application look&feel
@@ -15096,7 +15096,7 @@ net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.4 5.5.0: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-misc/stunnel 5.24 5.30 5.34-r1 5.35 5.36 5.37: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.34-r1 5.35 5.36 5.37: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
