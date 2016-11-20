@@ -132,6 +132,8 @@ multilib_src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
+		# ensure that the correct llvm-config is used
+		-DLLVM_CONFIG="${EPREFIX}/usr/bin/${CHOST}-llvm-config"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../lib/clang/${clang_version}"
 
