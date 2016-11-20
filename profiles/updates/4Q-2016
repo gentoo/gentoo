@@ -29,3 +29,4 @@ move app-misc/ddctool app-misc/ddcutil
 move kde-base/freespacenotifier kde-plasma/freespacenotifier
 move kde-base/solid-actions-kcm kde-plasma/solid-actions-kcm
 move kde-base/kephal kde-plasma/kephal
+move kde-base/kcheckpass kde-plasma/kcheckpass

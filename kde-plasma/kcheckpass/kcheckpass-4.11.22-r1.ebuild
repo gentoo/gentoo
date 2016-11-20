@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	pam? ( || (
 		>=kde-base/kdebase-pam-7
-		kde-plasma/kscreenlocker
-		<kde-plasma/plasma-workspace-5.4.50
+		kde-plasma/kscreenlocker:5
 	) )
 "
 
