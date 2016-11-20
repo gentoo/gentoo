@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit multilib-build
+
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="http://clang.llvm.org/"
 SRC_URI=""
@@ -15,5 +17,5 @@ IUSE="libcxx openmp"
 
 # compiler-rt is installed unconditionally
 RDEPEND="
-	libcxx? ( ~sys-libs/libcxx-${PV} )
-	openmp? ( ~sys-libs/libomp-${PV} )"
+	libcxx? ( ~sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
+	openmp? ( ~sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"

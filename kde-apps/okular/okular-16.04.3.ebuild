@@ -14,7 +14,7 @@ inherit kde4-base
 DESCRIPTION="Universal document viewer based on KPDF"
 HOMEPAGE="https://okular.kde.org https://www.kde.org/applications/graphics/okular"
 KEYWORDS="amd64 ~arm x86"
-IUSE="chm crypt debug djvu dpi ebook +jpeg mobi +postscript +pdf +tiff"
+IUSE="chm crypt debug djvu ebook +jpeg mobi +postscript +pdf +tiff"
 
 DEPEND="
 	media-libs/freetype
@@ -23,7 +23,6 @@ DEPEND="
 	chm? ( dev-libs/chmlib )
 	crypt? ( app-crypt/qca:2[qt4] )
 	djvu? ( app-text/djvu )
-	dpi? ( kde-plasma/libkscreen:4 )
 	ebook? ( app-text/ebook-tools )
 	jpeg? (
 		$(add_kdeapps_dep libkexiv2)
@@ -39,10 +38,10 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_KActivities=OFF
+		-DWITH_LibKScreen=OFF
 		-DWITH_CHM=$(usex chm)
 		-DWITH_QCA2=$(usex crypt)
 		-DWITH_DjVuLibre=$(usex djvu)
-		-DWITH_LibKScreen=$(usex dpi)
 		-DWITH_EPub=$(usex ebook)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_Kexiv2=$(usex jpeg)

@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit multilib-build
+
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="http://clang.llvm.org/"
 SRC_URI=""
@@ -18,7 +20,7 @@ RDEPEND="
 		~sys-libs/compiler-rt-${PV}
 		sanitize? ( ~sys-libs/compiler-rt-sanitizers-${PV} )
 	)
-	libcxx? ( ~sys-libs/libcxx-${PV} )
-	openmp? ( ~sys-libs/libomp-${PV} )"
+	libcxx? ( ~sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
+	openmp? ( ~sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
 
 REQUIRED_USE="sanitize? ( compiler-rt )"

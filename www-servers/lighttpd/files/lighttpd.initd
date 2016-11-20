@@ -5,7 +5,7 @@
 
 extra_started_commands="reload graceful"
 
-LIGHTTPD_PID="$($(which lighttpd) -pf ${LIGHTTPD_CONF} | grep pid | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
+LIGHTTPD_PID="$(grep pid ${LIGHTTPD_CONF} | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
 
 depend() {
 	need net
