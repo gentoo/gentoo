@@ -87,24 +87,25 @@ src_configure() {
 	if use doc; then
 		python_setup
 	else
-		# If the python cannot be found, the docs will not build
-		sed -e 's#"${ac_cv_path_PYTHON}"#""#' -i configure || die
+		export PYTHON=/bin/false
 	fi
 
-	# liboath not in portage
-	econf \
-		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh" \
-		--without-openssl-version-check \
-		$(use_enable static-libs static) \
-		$(use_enable nls ) \
-		$(use_with !gnutls openssl) \
-		$(use_with gnutls ) \
-		$(use_with libproxy) \
-		$(use_with lz4) \
-		$(use_with gssapi) \
-		$(use_with smartcard libpcsclite) \
-		$(use_with stoken) \
+	local myconf=(
+		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
+		--without-openssl-version-check
+		$(use_enable static-libs static)
+		$(use_enable nls)
+		$(use_with !gnutls openssl)
+		$(use_with gnutls)
+		$(use_with libproxy)
+		$(use_with lz4)
+		$(use_with gssapi)
+		$(use_with smartcard libpcsclite)
+		$(use_with stoken)
 		$(use_with java)
+	)
+
+	econf "${myconf[@]}"
 }
 
 DOC_CONTENTS="The init script for openconnect supports multiple vpn tunnels.
@@ -135,9 +136,8 @@ chmod 755 /etc/openconnect/vpn0/*
 "
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
-	dodoc AUTHORS TODO
 	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
 	dodir /etc/openconnect
 	insinto /etc/openconnect
@@ -148,8 +148,7 @@ src_install() {
 	newins "${FILESDIR}"/openconnect.logrotate openconnect
 	keepdir /var/log/openconnect
 
-	# Remove useless .la files
-	prune_libtool_files --all
+	prune_libtool_files
 
 	readme.gentoo_create_doc
 }
