@@ -76,7 +76,6 @@ RDEPEND="
 		$(add_kdebase_dep kstyles)
 		$(add_kdebase_dep ksystraycmd)
 		$(add_kdebase_dep libkworkspace)
-		$(add_kdebase_dep liboxygenstyle)
 		$(add_kdebase_dep libplasmaclock)
 		$(add_kdebase_dep libplasmagenericshell)
 		$(add_kdebase_dep libtaskmanager)
@@ -90,6 +89,7 @@ RDEPEND="
 		kde-plasma/kmenuedit:4
 		kde-plasma/ksysguard:4
 		kde-plasma/kwrited:4
+		kde-plasma/liboxygenstyle:4
 		kde-plasma/powerdevil:4
 		kde-plasma/solid-actions-kcm:4
 	)
