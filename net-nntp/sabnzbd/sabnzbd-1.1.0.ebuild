@@ -80,9 +80,9 @@ src_install() {
 
 	dodir /usr/share/${PN}/sabnzbd
 	insinto /usr/share/${PN}/
+	python_convert_shebangs 2 SABnzbd.py
 	doins SABnzbd.py
 	fperms +x /usr/share/${PN}/SABnzbd.py
-	dobin "${FILESDIR}"/sabnzbd
 
 	for d in cherrypy email icons interfaces locale po sabnzbd tools util; do
 		insinto /usr/share/${PN}/${d}
