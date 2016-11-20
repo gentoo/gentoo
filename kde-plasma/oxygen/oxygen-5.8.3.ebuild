@@ -41,8 +41,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	qt4? (
-		!kde-base/kstyles:4
-		!kde-base/liboxygenstyle:4
+		!kde-plasma/kstyles:4
+		!kde-plasma/liboxygenstyle:4
 	)
 	!kde-plasma/kdebase-cursors:4
 "
