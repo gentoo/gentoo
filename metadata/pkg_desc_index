@@ -1823,7 +1823,7 @@ app-misc/interceptty 0.6: a program that can sit between a serial port and an ap
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
 app-misc/irtrans-irserver 6.09.04: IRTrans Server
 app-misc/jail 2.0: a tool that builds a chroot and configures all the required files, directories and libraries
-app-misc/jira-cli 2.1.4: Simple command line utility to interact with your jira instance
+app-misc/jira-cli 2.1.4-r1: Simple command line utility to interact with your jira instance
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3: An application that translates joystick events to keyboard events
@@ -4007,7 +4007,7 @@ dev-java/httpcomponents-client 4.5: A low level toolset of Java components focus
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.2.0 7.2.6.8: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.1.0 3.2.0 7.2.6.7 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.1.0 3.2.0 7.2.6.8: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -4746,8 +4746,8 @@ dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming i
 dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.22.3 0.23.4 0.24.1 0.24.2 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
+dev-libs/libgit2 0.22.3 0.23.4 0.24.2 9999: A linkable library for Git
+dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
