@@ -7,12 +7,12 @@ EAPI=5
 KMNAME="kde-workspace"
 inherit kde4-meta
 
-DESCRIPTION="KDE screensaver framework"
+DESCRIPTION="KDE Plasma screensaver framework"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep kcheckpass)
+	kde-plasma/kcheckpass:4
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}"

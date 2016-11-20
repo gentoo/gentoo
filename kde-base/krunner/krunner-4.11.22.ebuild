@@ -14,10 +14,10 @@ IUSE="debug"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	$(add_kdebase_dep kcheckpass)
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmagenericshell)
+	kde-plasma/kcheckpass:4
 	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
 	!aqua? (
