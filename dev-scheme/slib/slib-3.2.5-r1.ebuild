@@ -57,7 +57,10 @@ src_install() {
 	doins *.{dat,init,ps,scm,sh}
 
 	# permissions
-	fperms +x /usr/share/slib/*.sh
+	local i
+	for i in "${ED%/}"/usr/share/${PN}/*.sh ; do
+		fperms +x /usr/share/${PN}/$(basename "$i")
+	done
 
 	# bin
 	dodir /usr/bin/
