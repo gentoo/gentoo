@@ -11984,8 +11984,8 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.0 1.2.1 1.2.2: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.4.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.8.0 45.4.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.5.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 31.8.0 38.8.0 45.5.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
@@ -17984,8 +17984,8 @@ www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.20.3 3.22.1 3.22.2: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 45.4.0 49.0: Firefox Web Browser
-www-client/firefox-bin 45.4.0 49.0: Firefox Web Browser
+www-client/firefox 45.4.0 45.5.0 50.0: Firefox Web Browser
+www-client/firefox-bin 45.5.0 50.0: Firefox Web Browser
 www-client/google-chrome 54.0.2840.100: The web browser from Google
 www-client/google-chrome-beta 55.0.2883.52: The web browser from Google
 www-client/google-chrome-unstable 56.0.2922.1: The web browser from Google
