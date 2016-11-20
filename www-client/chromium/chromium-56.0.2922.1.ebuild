@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="cups +gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
+IUSE="cups gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -57,8 +57,6 @@ COMMON_DEPEND="
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:=
-	gtk3? ( x11-libs/gtk+:3= )
-	!gtk3? ( x11-libs/gtk+:2= )
 	x11-libs/libdrm
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
@@ -77,14 +75,10 @@ COMMON_DEPEND="
 	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt:=
 	media-libs/flac:=
-	>=media-libs/harfbuzz-0.9.41:=[icu(+)]
+	>=media-libs/harfbuzz-1.3.1:=[icu(+)]
 	>=media-libs/libwebp-0.4.0:=
 	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
-	!gn? (
-		>=app-accessibility/speech-dispatcher-0.8:=
-		>=dev-libs/libevent-1.4.13:=
-	)
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
@@ -93,6 +87,8 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts
+	!gtk3? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
 	selinux? ( sec-policy/selinux-chromium )
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
 	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
@@ -112,6 +108,8 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	virtual/pkgconfig
 	dev-vcs/git
+	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	$(python_gen_any_dep '
 		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
 		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
@@ -166,8 +164,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-54-ffmpeg2compat.patch"
-	"${FILESDIR}/${PN}-gn-bootstrap-ld.patch"
-	"${FILESDIR}/${PN}-icu-58.patch"
 )
 
 pkg_pretend() {
@@ -247,6 +243,7 @@ src_prepare() {
 		third_party/google_input_tools/third_party/closure_library/third_party/closure
 		third_party/hunspell
 		third_party/iccjpeg
+		third_party/inspector_protocol
 		third_party/jstemplate
 		third_party/khronos
 		third_party/leveldatabase
@@ -300,19 +297,18 @@ src_prepare() {
 		third_party/zlib/google
 		url/third_party/mozilla
 		v8/src/third_party/valgrind
+		v8/third_party/inspector_protocol
+
+		# gyp -> gn leftovers
+		base/third_party/libevent
+		third_party/adobe
+		third_party/speech-dispatcher
+		third_party/usb_ids
+		third_party/xdg-utils
+		third_party/yasm/run_yasm.py
 	)
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
-	fi
-	if use gn; then
-		keeplibs+=(
-			base/third_party/libevent
-			third_party/adobe
-			third_party/speech-dispatcher
-			third_party/usb_ids
-			third_party/xdg-utils
-			third_party/yasm/run_yasm.py
-		)
 	fi
 
 	# Remove most bundled libraries. Some are still needed.
@@ -320,23 +316,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf_gyp=""
 	local myconf_gn=""
 
 	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
 	myconf_gn+=" is_debug=false"
 
-	# Never tell the build system to "enable" SSE2, it has a few unexpected
-	# additions, bug #336871.
-	myconf_gyp+=" -Ddisable_sse2=1"
-
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
-	myconf_gyp+=" -Ddisable_nacl=1"
 	myconf_gn+=" enable_nacl=false"
-
-	# Make it possible to remove third_party/adobe.
-	echo > "${T}/flapper_version.h" || die
-	myconf_gyp+=" -Dflapper_version_h_file=${T}/flapper_version.h"
 
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
@@ -346,24 +332,6 @@ src_configure() {
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
-	myconf_gyp+="
-		-Duse_system_bzip2=1
-		-Duse_system_ffmpeg=$(usex system-ffmpeg 1 0)
-		-Duse_system_flac=1
-		-Duse_system_harfbuzz=1
-		-Duse_system_jsoncpp=1
-		-Duse_system_libevent=1
-		-Duse_system_libpng=1
-		-Duse_system_libvpx=1
-		-Duse_system_libwebp=1
-		-Duse_system_libxml=1
-		-Duse_system_libxslt=1
-		-Duse_system_minizip=1
-		-Duse_system_nspr=1
-		-Duse_system_snappy=1
-		-Duse_system_speex=1
-		-Duse_system_xdg_utils=1
-		-Duse_system_zlib=1"
 
 	# libevent: https://bugs.gentoo.org/593458
 	local gn_system_libraries="
@@ -385,26 +353,7 @@ src_configure() {
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries} || die
 
-	# TODO: patch gyp so that this arm conditional is not needed.
-	if ! use arm; then
-		myconf_gyp+="
-			-Duse_system_yasm=1"
-	fi
-
 	# Optional dependencies.
-	# TODO: linux_link_kerberos, bug #381289.
-	myconf_gyp+="
-		$(gyp_use cups)
-		$(gyp_use gnome use_gconf)
-		$(gyp_use gnome-keyring use_gnome_keyring)
-		$(gyp_use gnome-keyring linux_link_gnome_keyring)
-		$(gyp_use gtk3)
-		$(gyp_use hangouts enable_hangout_services_extension)
-		$(gyp_use kerberos)
-		$(gyp_use pulseaudio)
-		$(gyp_use tcmalloc use_allocator tcmalloc none)
-		$(gyp_use widevine enable_widevine)"
-
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
 	myconf_gn+=" enable_widevine=$(usex widevine true false)"
 	myconf_gn+=" use_cups=$(usex cups true false)"
@@ -414,45 +363,22 @@ src_configure() {
 	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 	myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
 
-	# Use explicit library dependencies instead of dlopen.
-	# This makes breakages easier to detect by revdep-rebuild.
-	myconf_gyp+="
-		-Dlinux_link_gsettings=1
-		-Dlinux_link_libpci=1
-		-Dlinux_link_libspeechd=1
-		-Dlibspeechd_h_prefix=speech-dispatcher/"
-
 	# TODO: link_pulseaudio=true for GN.
 
-	# TODO: use the file at run time instead of effectively compiling it in.
-	myconf_gyp+="
-		-Dusb_ids_path=/usr/share/misc/usb.ids"
-
-	myconf_gyp+=" -Dfieldtrial_testing_like_official_build=1"
 	myconf_gn+=" fieldtrial_testing_like_official_build=true"
 
 	if tc-is-clang; then
-		myconf_gyp+=" -Dclang=1"
 		myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
 	else
-		myconf_gyp+=" -Dclang=0"
 		myconf_gn+=" is_clang=false"
 	fi
 
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
-	myconf_gyp+="
-		-Dclang_use_chrome_plugins=0
-		-Dhost_clang=0
-		-Dlinux_use_bundled_binutils=0
-		-Dlinux_use_bundled_gold=0
-		-Dlinux_use_gold_flags=0
-		-Dsysroot="
 	# Trying to use gold results in linker crash.
 	myconf_gn+=" use_gold=false use_sysroot=false linux_use_bundled_binutils=false"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
-	myconf_gyp+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
 	myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
 	myconf_gn+=" ffmpeg_branding=\"${ffmpeg_branding}\""
 
@@ -463,9 +389,6 @@ src_configure() {
 	local google_api_key="AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc"
 	local google_default_client_id="329227923882.apps.googleusercontent.com"
 	local google_default_client_secret="vgKG0NNv7GoDpbtoFNLxCUXu"
-	myconf_gyp+=" -Dgoogle_api_key=${google_api_key}
-		-Dgoogle_default_client_id=${google_default_client_id}
-		-Dgoogle_default_client_secret=${google_default_client_secret}"
 	myconf_gn+=" google_api_key=\"${google_api_key}\""
 	myconf_gn+=" google_default_client_id=\"${google_default_client_id}\""
 	myconf_gn+=" google_default_client_secret=\"${google_default_client_secret}\""
@@ -483,37 +406,16 @@ src_configure() {
 	elif [[ $myarch = arm ]] ; then
 		target_arch=arm
 		ffmpeg_target_arch=$(usex neon arm-neon arm)
-		# TODO: re-enable NaCl (NativeClient).
-		local CTARGET=${CTARGET:-${CHOST}}
-		if [[ $(tc-is-softfloat) == "no" ]]; then
-
-			myconf_gyp+=" -Darm_float_abi=hard"
-		fi
-		filter-flags "-mfpu=*"
-		use neon || myconf_gyp+=" -Darm_fpu=${ARM_FPU:-vfpv3-d16}"
-
-		if [[ ${CTARGET} == armv[78]* ]]; then
-			myconf_gyp+=" -Darmv7=1"
-		else
-			myconf_gyp+=" -Darmv7=0"
-		fi
-		myconf_gyp+=" -Dsysroot=
-			$(gyp_use neon arm_neon)
-			-Ddisable_nacl=1"
 	else
 		die "Failed to determine target arch, got '$myarch'."
 	fi
 
-	myconf_gyp+=" -Dtarget_arch=${target_arch}"
-
 	# Make sure that -Werror doesn't get added to CFLAGS by the build system.
 	# Depending on GCC version the warnings are different and we don't want
 	# the build to fail because of that.
-	myconf_gyp+=" -Dwerror="
 	myconf_gn+=" treat_warnings_as_errors=false"
 
 	# Disable fatal linker warnings, bug 506268.
-	myconf_gyp+=" -Ddisable_fatal_linker_warnings=1"
 	myconf_gn+=" fatal_linker_warnings=false"
 
 	# Avoid CFLAGS problems, bug #352457, bug #390147.
@@ -534,6 +436,9 @@ src_configure() {
 
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
+
+	# https://bugs.gentoo.org/588596
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
 	# Define a custom toolchain for GN
 	myconf_gn+=" custom_toolchain=\"${FILESDIR}/toolchain:default\""
@@ -571,15 +476,10 @@ src_configure() {
 	touch chrome/test/data/webui/i18n_process_css_test.html || die
 
 	einfo "Configuring Chromium..."
-	if use gn; then
-		# TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
-		tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
-		myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
-		out/Release/gn gen --args="${myconf_gn}" out/Release || die
-	else
-		build/linux/unbundle/replace_gyp_files.py ${myconf_gyp} || die
-		egyp_chromium ${myconf_gyp} || die
-	fi
+	# TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
+	tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
+	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
+	out/Release/gn gen --args="${myconf_gn}" out/Release || die
 }
 
 eninja() {
