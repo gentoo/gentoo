@@ -8383,7 +8383,7 @@ dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Pyth
 dev-python/stsci-sphinxext 1.2.1: Tools and templates to customize Sphinx for STScI projects
 dev-python/subunit 1.1.0 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
-dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
+dev-python/suds 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
 dev-python/superlance 0.13 0.14: A set of plugins to monitor and control supervisor
 dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
@@ -12485,7 +12485,7 @@ media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/pornview 0.2.2 0.2.2-r1: Image viewer/manager with optional support for MPEG movies
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
-media-gfx/potrace 1.10-r1 1.11 1.12 1.13: Transforming bitmaps into vector graphics
+media-gfx/potrace 1.12 1.13: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.2 2.6: Modern rewrite of Quick Image Viewer
