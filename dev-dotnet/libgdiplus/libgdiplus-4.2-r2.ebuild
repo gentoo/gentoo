@@ -17,15 +17,15 @@ SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.gz"
 IUSE="cairo"
 
 RDEPEND=">=dev-libs/glib-2.2.3:2
-	>=media-libs/freetype-2.3.7
+	>=media-libs/freetype-2.3.7:2
 	>=media-libs/fontconfig-2.6
-	>=media-libs/libpng-1.4:0
+	>=media-libs/libpng-1.4:0=
 	x11-libs/libXrender
 	x11-libs/libX11
 	x11-libs/libXt
 	>=x11-libs/cairo-1.8.4[X]
 	media-libs/libexif
-	>=media-libs/giflib-5.1.2
+	>=media-libs/giflib-5.1.2:=
 	virtual/jpeg:0
 	media-libs/tiff:0
 	!cairo? ( >=x11-libs/pango-1.20 )"
