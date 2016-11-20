@@ -5600,7 +5600,7 @@ dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings w
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
-dev-perl/Devel-CheckCompiler 0.50.0 0.60.0: Check the compiler's availability
+dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0 1.70.0: check that a library is available
 dev-perl/Devel-Cover 1.200.0 1.210.0 1.230.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
@@ -5624,7 +5624,7 @@ dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
 dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0: Generic CRC function
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
-dev-perl/Digest-JHash 0.70.0-r1 0.90.0: Perl extension for 32 bit Jenkins Hashing Algorithm
+dev-perl/Digest-JHash 0.70.0-r1 0.90.0 0.100.0: Perl extension for 32 bit Jenkins Hashing Algorithm
 dev-perl/Digest-MD2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
