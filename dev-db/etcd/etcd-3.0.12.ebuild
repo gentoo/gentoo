@@ -17,7 +17,6 @@ IUSE="doc"
 DEPEND=">=dev-lang/go-1.6:="
 RDEPEND="!dev-db/etcdctl"
 
-
 src_prepare() {
 	eapply_user
 	sed -e 's|GIT_SHA=.*|GIT_SHA=v${PV}|'\
