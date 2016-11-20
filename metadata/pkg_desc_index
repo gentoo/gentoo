@@ -11683,7 +11683,6 @@ kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
-kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
@@ -11896,6 +11895,7 @@ kde-plasma/kde-cli-tools 5.7.5 5.8.3: Tools based on KDE Frameworks 5 to better 
 kde-plasma/kde-gtk-config 2.2.1 5.7.5 5.8.3: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.7.5 5.8.3: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 4.14.3-r1 5.7.5 5.8.3: Extra Plasma applets and engines
+kde-plasma/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-plasma/kgamma 5.7.5 5.8.3: Screen gamma values kcontrol module
 kde-plasma/khotkeys 4.11.22 5.7.5 5.8.3: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 4.11.22 5.7.5 5.8.3: A utility that provides information about a computer system
@@ -12639,7 +12639,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2 1.8.3: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 0.10.31-r2 1.4.5 1.6.3 1.8.2 1.8.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.3 1.8.2 1.8.3: Basepack of plugins for gstreamer
