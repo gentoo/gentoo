@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+		semodule-utils are utilities to create and link SELinux policy module packages.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:redhat:policycoreutils</remote-id>
+		<remote-id type="github">SELinuxProject/selinux</remote-id>
+	</upstream>
+</pkgmetadata>

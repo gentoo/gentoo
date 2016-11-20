@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 
-inherit autotools vcs-snapshot user
+inherit autotools eutils systemd vcs-snapshot user
 
 DESCRIPTION="Update local time over HTTPS"
 HOMEPAGE="https://github.com/ioerror/tlsdate"
@@ -26,6 +26,7 @@ src_prepare() {
 	sed -i \
 		-e 's:/tlsdate/ca-roots/tlsdate-ca-roots.conf:/ssl/certs/ca-certificates.crt:' \
 		Makefile.am || die
+	epatch "${FILESDIR}"/${P}-tlsdated-service.patch
 
 	eautoreconf
 }
@@ -52,6 +53,11 @@ src_install() {
 	newconfd "${FILESDIR}"/tlsdated.confd tlsdated
 	newinitd "${FILESDIR}"/tlsdate.rc tlsdate
 	newconfd "${FILESDIR}"/tlsdate.confd tlsdate
+
+	systemd_newunit "${S}"/systemd/tlsdated.service tlsdated.service
+	systemd_newtmpfilesd "${FILESDIR}"/tlsdated.tmpfiles.conf tlsdated.conf
+	insinto /etc/default
+	newins "${FILESDIR}"/tlsdated.default tlsdated
 
 	insinto /etc/dbus-1/system.d/
 	doins dbus/org.torproject.tlsdate.conf
