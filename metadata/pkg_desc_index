@@ -5362,7 +5362,7 @@ dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web a
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.210.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.210.0 0.220.0: PSGI adapter for CGI
-dev-perl/CGI-Fast 2.100.0: CGI Interface for Fast CGI
+dev-perl/CGI-Fast 2.100.0 2.110.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r1: The Perl CGI::FastTemplate Module
 dev-perl/CGI-FormBuilder 3.90.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
