@@ -11556,7 +11556,7 @@ kde-apps/kompare 16.04.3 16.08.3: A program to view the differences between file
 kde-apps/konq-plugins 16.04.3 16.08.3: Various plugins for konqueror
 kde-apps/konqueror 16.04.3-r1 16.08.3: Web browser and file manager
 kde-apps/konquest 16.04.3 16.08.3: Galactic Strategy KDE Game
-kde-apps/konsole 16.04.3 16.08.3: KDE's terminal emulator
+kde-apps/konsole 16.04.3 16.08.3 16.08.3-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.08.3: A command line interface to KDE calendars
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 16.08.3: Container application to unify several major PIM applications within one
