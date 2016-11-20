@@ -11688,7 +11688,6 @@ kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/ksplash 4.11.22: KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)
 kde-base/kstartupconfig 4.11.22: KDE: Utility to launch applications with special window properties
-kde-base/ksystraycmd 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
 kde-base/libkworkspace 4.11.22: A library for KDE desktop applications
 kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
@@ -11904,6 +11903,7 @@ kde-plasma/kscreensaver 4.11.22: KDE Plasma screensaver framework
 kde-plasma/ksshaskpass 0.5.3-r1 5.7.5 5.8.3: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/kstyles 4.11.22: A set of different KDE Plasma styles
 kde-plasma/ksysguard 4.11.22 5.7.5 5.8.3: Network-enabled task manager and system monitor
+kde-plasma/ksystraycmd 4.11.22: Embeds applications given as argument into the system tray
 kde-plasma/kwallet-pam 5.7.5 5.8.3: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.7.5 5.8.3: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 4.11.22 5.7.5 5.8.3: KDE window manager
@@ -13988,7 +13988,7 @@ net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban 
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2 3.6: IPMI Sensor Monitoring Plugin for Nagios/Icinga
 net-analyzer/nagios-check_linux_bonding 1.3.2 1.4: Nagios plugin to monitor bonding status of network interfaces
-net-analyzer/nagios-check_logfiles 2.3.2.1-r1 3.7.3.1 3.7.3.1-r1 3.7.5.2: A nagios plugin for checking logfiles
+net-analyzer/nagios-check_logfiles 2.3.2.1-r1 3.7.3.1 3.7.3.1-r1 3.7.6.3: A nagios plugin for checking logfiles
 net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
@@ -14382,7 +14382,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.11.0.1: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.12.0.4: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.16 0.10.19: Official desktop client for Telegram (binary package)
@@ -15237,7 +15237,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.4.18: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.5.2: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
@@ -16270,7 +16270,7 @@ sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansi
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
-sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2-r1 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r2 4.0.3: High-level interactive language for numerical computations
+sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2-r1 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r2 4.0.3 4.2.0: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
