@@ -6151,7 +6151,7 @@ dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or
 dev-perl/Net-Telnet 3.40.0: interact with TELNET port or other TCP ports in Perl
 dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
 dev-perl/Net-Trackback 1.10.0: Object-oriented interface for developing Trackback clients and servers
-dev-perl/Net-Twitter 4.10.100: A perl interface to the Twitter API
+dev-perl/Net-Twitter 4.10.100 4.10.410: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.3: Perl extension for UPnP
 dev-perl/Net-Whois-IP 1.190.0: Perl extension for looking up the whois information for ip addresses
 dev-perl/Net-XMPP 1.20.0-r1 1.50.0: XMPP Perl Library
@@ -6658,7 +6658,7 @@ dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL querie
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
-dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0: YAML Ain't Markup Language (tm)
+dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0 1.190.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.200.0-r1 1.290.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0: Read/Write YAML files with as little code as possible
