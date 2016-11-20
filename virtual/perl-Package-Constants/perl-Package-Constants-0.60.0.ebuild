@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	~perl-core/${PN#perl-}-${PV}
+	dev-lang/perl:=
 "
 
 # removed from core; stabilize this together with dev-lang/perl-5.22

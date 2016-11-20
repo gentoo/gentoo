@@ -16,6 +16,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	|| ( =dev-lang/perl-5.22.0* ~perl-core/${PN#perl-}-${PV} )
+	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 "

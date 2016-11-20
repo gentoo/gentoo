@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* )
+	dev-lang/perl:=
 	!perl-core/${PN#perl-}
 	!<dev-perl/Test-Tester-0.114.0
 	!<dev-perl/Test-use-ok-0.160.0

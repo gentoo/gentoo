@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,6 +14,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.20* ~perl-core/Locale-Maketext-${PV} )
+	dev-lang/perl:=
 	!<perl-core/Locale-Maketext-${PV}
 	!>perl-core/Locale-Maketext-${PV}-r999
 "

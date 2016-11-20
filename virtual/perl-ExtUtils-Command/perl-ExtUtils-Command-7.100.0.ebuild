@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	~virtual/perl-ExtUtils-MakeMaker-7.100.100_rc
+	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 "

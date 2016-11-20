@@ -15,6 +15,7 @@ KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-ai
 IUSE=""
 RDEPEND="
 	|| ( =dev-lang/perl-5.22* ~perl-core/${PN#perl-}-${PV} )
+	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 "

@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/I18N-LangTags-${PV} )
+	dev-lang/perl:=
 	!<perl-core/I18N-LangTags-${PV}
 	!>perl-core/I18N-LangTags-${PV}-r999
 "

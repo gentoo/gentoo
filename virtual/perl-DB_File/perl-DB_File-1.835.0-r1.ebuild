@@ -15,6 +15,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.24*[berkdb] =dev-lang/perl-5.22*[berkdb] ~perl-core/${PN#perl-}-${PV} )
+	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 "

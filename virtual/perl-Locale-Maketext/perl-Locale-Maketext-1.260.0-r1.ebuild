@@ -14,6 +14,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* ~perl-core/Locale-Maketext-${PV} )
+	dev-lang/perl:=
 	!<perl-core/Locale-Maketext-${PV}
 	!>perl-core/Locale-Maketext-${PV}-r999
 "

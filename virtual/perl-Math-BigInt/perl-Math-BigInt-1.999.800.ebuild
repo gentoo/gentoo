@@ -15,4 +15,5 @@ IUSE=""
 
 RDEPEND="
 	~perl-core/${PN#perl-}-${PV}
+	dev-lang/perl:=
 "
