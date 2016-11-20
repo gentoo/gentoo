@@ -11675,7 +11675,6 @@ kde-apps/umbrello 16.04.3 16.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/kactivities 4.13.3-r2: KDE Activity Manager
 kde-base/katepart 4.14.3: KDE Editor KPart
-kde-base/kcheckpass 4.11.22-r1: A simple password checker, used by any software in need of user authentication
 kde-base/kcminit 4.11.22: KCMInit - runs startups initialization for Control Modules
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
@@ -11686,7 +11685,7 @@ kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
-kde-base/kscreensaver 4.11.22: KDE screensaver framework
+kde-base/kscreensaver 4.11.22: KDE Plasma screensaver framework
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/ksplash 4.11.22: KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)
 kde-base/kstartupconfig 4.11.22: KDE: Utility to launch applications with special window properties
@@ -11891,6 +11890,7 @@ kde-plasma/breeze-gtk 5.7.5 5.8.3: Official GTK+ port of KDE's Breeze widget sty
 kde-plasma/breeze-plymouth 5.7.5 5.8.3: Breeze theme for Plymouth
 kde-plasma/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-plasma/kactivitymanagerd 5.7.5 5.8.3: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kcheckpass 4.11.22-r1: A simple password checker, used by any software in need of user authentication
 kde-plasma/kde-cli-tools 5.7.5 5.8.3: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 2.2.1 5.7.5 5.8.3: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.7.5 5.8.3: Plugin based library to create window decorations
@@ -12639,7 +12639,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r3 0.10.23-r4 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.3 1.8.2 1.8.3 1.8.3-r1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 0.10.31-r2 1.4.5 1.6.3 1.8.2 1.8.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.3 1.8.2 1.8.3: Basepack of plugins for gstreamer
@@ -14710,7 +14710,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22.2 0.22.2-r1 0.23.1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22.2 0.22.2-r1 0.23.1 0.23.2: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6 7.0.7 7.0.8 7.0.9: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
