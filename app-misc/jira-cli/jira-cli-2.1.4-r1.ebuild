@@ -24,7 +24,8 @@ RDEPEND="${CDEPEND}
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/jira[${PYTHON_USEDEP}]
 	dev-python/suds[${PYTHON_USEDEP}]
-	dev-python/keyring[${PYTHON_USEDEP}]"
+	>=dev-python/keyring-10.0.2-r1[${PYTHON_USEDEP}]
+	dev-python/keyrings_alt[${PYTHON_USEDEP}]"
 
 DEPEND="${CDEPEND}
 	test? (	${RDEPEND}
@@ -35,6 +36,11 @@ DEPEND="${CDEPEND}
 		>=dev-python/vcrpy-1.7.4[${PYTHON_USEDEP}] )"
 
 RESTRICT="test"
+
+python_prepare_all() {
+	sed -i -e '/ordereddict/d' -e '/argparse/d' requirements/main.txt || die
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	nosetests || die
