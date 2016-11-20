@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://swiss.csail.mit.edu/ftpdir/scm/slib-3b5.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=968c46e3ff05236e8c9807a5a644474c
+_md5_=b7b67b2a2ae51511491f51d9bfaf0deb
