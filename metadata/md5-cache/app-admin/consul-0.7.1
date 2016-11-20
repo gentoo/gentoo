@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND=app-arch/zip >=dev-lang/go-1.6:= >=dev-go/go-tools-0_pre20160121 virtual/pkgconfig
+DESCRIPTION=A tool for service discovery, monitoring and configuration
+EAPI=6
+HOMEPAGE=http://www.consul.io
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/consul/archive/v0.7.1.tar.gz -> consul-0.7.1.tar.gz https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=187a6658c85659c4e2f059bd545c0292
