@@ -14,13 +14,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="cpu_flags_x86_aes i2p-hardening libressl pch static +upnp"
 
 RDEPEND="!static? ( >=dev-libs/boost-1.49[threads]
-			!libressl? ( dev-libs/openssl:0 )
+			!libressl? ( dev-libs/openssl:0[-bindist] )
 			libressl? ( dev-libs/libressl )
 			upnp? ( net-libs/miniupnpc )
 		)"
 DEPEND="${RDEPEND}
 	static? ( >=dev-libs/boost-1.49[static-libs,threads]
-		!libressl? ( dev-libs/openssl:0[-bindist,static-libs] )
+		!libressl? ( dev-libs/openssl:0[static-libs] )
 		libressl? ( dev-libs/libressl[static-libs] )
 		upnp? ( net-libs/miniupnpc[static-libs] ) )
 	i2p-hardening? ( >=sys-devel/gcc-4.7 )
