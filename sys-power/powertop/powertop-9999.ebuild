@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils linux-info
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/fenrus75/powertop.git"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 	SRC_URI=""
 else
 	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
@@ -36,8 +36,6 @@ RDEPEND="
 	X? ( x11-apps/xset )
 	virtual/libintl
 "
-
-DOCS=( TODO README )
 
 pkg_setup() {
 	CONFIG_CHECK="
@@ -95,10 +93,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	if [[ ${PV} == "9999" ]] ; then
+		chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
+		scripts/version || die "Failed to extract version information"
 		eautoreconf
-	else
-		default
 	fi
 }
 
