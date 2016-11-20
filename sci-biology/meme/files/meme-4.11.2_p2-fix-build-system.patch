@@ -7,7 +7,7 @@ Fix and modernise build system
 
 --- a/configure.ac
 +++ b/configure.ac
-@@ -76,61 +76,9 @@
+@@ -76,61 +76,10 @@
  AM_CONDITIONAL(WANT_STRLCPY, test ["$have_strlcpy" = no])
  
  # Check for compiler-specific settings
@@ -66,6 +66,7 @@ Fix and modernise build system
 -  LIBEXSLT_CFLAGS="-I\${top_srcdir}/src/libexslt"
 -  LIBXSLT_CFLAGS="-I\${top_srcdir}/src/"
 -fi
++AC_PROG_MKDIR_P
 +AC_SYS_LARGEFILE
 +CFLAGS="-std=gnu89 -Wall -Wno-unused ${CFLAGS}"
 +CPPFLAGS="-DUNIX -D__USE_FIXED_PROTOTYPES__ ${CPPFLAGS}"
@@ -271,6 +272,28 @@ Fix and modernise build system
 +memedocdir = $(htmldir)
  memedoc_DATA =  $(NORMAL_FILES)
  endif
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -52,7 +52,7 @@
+ endif
+ 
+ dbdir:
+-	mkdir -p $(MEME_DB)
++	$(MKDIR_P) $(DESTDIR)/$(MEME_DB)
+ 
+ all-local:
+ if WEBSITE
+@@ -64,8 +64,8 @@
+ endif
+ 
+ install-data-local:
+-	mkdir -p $(MEME_LOGS)
+-	chmod a+w $(MEME_LOGS)
++	$(MKDIR_P) $(DESTDIR)/$(MEME_LOGS)
++	chmod a+w $(DESTDIR)/$(MEME_LOGS)
+ 
+ distdir = $(PACKAGE)_$(VERSION)
  
 --- a/scripts/Makefile.am
 +++ b/scripts/Makefile.am
