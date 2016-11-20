@@ -9,7 +9,7 @@ HOMEPAGE="https://labs.consol.de/nagios/check_logfiles/index.html"
 
 MY_P=${P/nagios-/}
 
-SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
+SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 
