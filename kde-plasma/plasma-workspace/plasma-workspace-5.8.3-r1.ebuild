@@ -107,7 +107,7 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-libs/xembed-sni-proxy
 	!kde-plasma/freespacenotifier:4
 	!kde-base/libtaskmanager:4
-	!kde-base/kcminit:4
+	!kde-plasma/kcminit:4
 	!kde-base/kdebase-startkde:4
 	!kde-base/klipper:4
 	!kde-base/krunner:4

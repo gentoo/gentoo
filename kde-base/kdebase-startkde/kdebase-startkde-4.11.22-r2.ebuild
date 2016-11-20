@@ -53,12 +53,12 @@ RDEPEND="
 	$(add_kdeapps_dep plasma-runtime)
 	$(add_kdeapps_dep renamedlg-plugins)
 	$(add_kdeapps_dep solid-runtime)
-	$(add_kdebase_dep kcminit)
 	$(add_kdebase_dep krunner)
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep ksplash)
 	$(add_kdebase_dep kstartupconfig)
 	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/kcminit:4
 	kde-plasma/kwin:4
 	kde-plasma/systemsettings:4
 	x11-apps/mkfontdir
