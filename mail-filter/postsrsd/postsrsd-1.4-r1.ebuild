@@ -20,6 +20,6 @@ RDEPEND=""
 
 src_install() {
 	cmake-utils_src_install
-	newinitd "${FILESDIR}/postsrsd-r1.init" postsrsd
+	newinitd "${FILESDIR}/postsrsd.init-r1" postsrsd
 	newconfd "${BUILD_DIR}/postsrsd.default" postsrsd
 }
