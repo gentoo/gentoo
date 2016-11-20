@@ -84,7 +84,6 @@ RDEPEND="
 		$(add_kdebase_dep libplasmagenericshell)
 		$(add_kdebase_dep libtaskmanager)
 		$(add_kdebase_dep qguiplatformplugin_kde)
-		$(add_kdebase_dep solid-actions-kcm)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
@@ -92,6 +91,7 @@ RDEPEND="
 		kde-plasma/ksysguard:4
 		kde-plasma/kwrited:4
 		kde-plasma/powerdevil:4
+		kde-plasma/solid-actions-kcm:4
 	)
 	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
 "
