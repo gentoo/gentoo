@@ -33,6 +33,7 @@ src_prepare() {
 	cat "${S}/configure.seed" | sed "s/@VERSION@/${PV}/g" | sed "s/@SHORT_VERSION@/${PV}/g" > "${S}/configure.ac"
 	epatch "${FILESDIR}/${P}-dont-build-ndpi.patch"
 	epatch "${FILESDIR}/${P}-mysqltool.patch"
+	epatch "${FILESDIR}/${P}-cxx.patch"
 	sed -i 's/exit$/exit 1/g' "${S}/configure.ac" "${S}/nDPI/configure.ac"
 	eautoreconf
 
