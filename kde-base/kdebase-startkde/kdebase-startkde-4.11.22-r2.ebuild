@@ -53,12 +53,12 @@ RDEPEND="
 	$(add_kdeapps_dep plasma-runtime)
 	$(add_kdeapps_dep renamedlg-plugins)
 	$(add_kdeapps_dep solid-runtime)
-	$(add_kdebase_dep kcminit)
 	$(add_kdebase_dep krunner)
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep ksplash)
 	$(add_kdebase_dep kstartupconfig)
 	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/kcminit:4
 	kde-plasma/kwin:4
 	kde-plasma/systemsettings:4
 	x11-apps/mkfontdir
@@ -72,7 +72,6 @@ RDEPEND="
 	handbook? ( kde-apps/khelpcenter:* )
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
-		$(add_kdebase_dep kdebase-cursors)
 		$(add_kdebase_dep klipper)
 		$(add_kdebase_dep kstyles)
 		$(add_kdebase_dep ksystraycmd)
@@ -84,6 +83,7 @@ RDEPEND="
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
+		kde-plasma/kdebase-cursors:4
 		kde-plasma/kephal:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4

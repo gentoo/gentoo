@@ -44,7 +44,7 @@ RDEPEND="${COMMON_DEPEND}
 		!kde-base/kstyles:4
 		!kde-base/liboxygenstyle:4
 	)
-	!kde-base/kdebase-cursors:4
+	!kde-plasma/kdebase-cursors:4
 "
 
 pkg_setup() {

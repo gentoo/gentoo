@@ -30,3 +30,5 @@ move kde-base/freespacenotifier kde-plasma/freespacenotifier
 move kde-base/solid-actions-kcm kde-plasma/solid-actions-kcm
 move kde-base/kephal kde-plasma/kephal
 move kde-base/kcheckpass kde-plasma/kcheckpass
+move kde-base/kcminit kde-plasma/kcminit
+move kde-base/kdebase-cursors kde-plasma/kdebase-cursors
