@@ -62,9 +62,11 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 
 # pax-utils for scanelf used by rlpkg
 RDEPEND="${DEPEND}
-	dev-python/sepolgen
 	app-misc/pax-utils
 	!<sys-apps/openrc-0.14"
+
+PDEPEND="sys-apps/semodule-utils
+	sys-apps/selinux-python"
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds
@@ -164,15 +166,9 @@ src_install() {
 	keepdir /var/lib/selinux
 
 	# Set version-specific scripts
-	for pyscript in audit2allow sepolgen-ifgen sepolicy chcat; do
-	  python_replicate_script "${ED}/usr/bin/${pyscript}"
-	done
-	for pyscript in semanage rlpkg; do
+	for pyscript in rlpkg; do
 	  python_replicate_script "${ED}/usr/sbin/${pyscript}"
 	done
-
-	dodir /usr/share/doc/${PF}/mcstrans/examples
-	cp -dR "${S1}"/mcstrans/share/examples/* "${D}/usr/share/doc/${PF}/mcstrans/examples" || die
 }
 
 pkg_postinst() {
