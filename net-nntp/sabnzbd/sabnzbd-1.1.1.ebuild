@@ -117,7 +117,6 @@ pkg_postinst() {
 	einfo "By default, SABnzbd+ will listen on TCP port 8080."
 	einfo
 	einfo "As Growl is not the default notification system on Gentoo, we disable it."
-	einfo "By default, notifications are forwarded to TCP port 23053."
 
 	local replacing
 	for replacing in ${REPLACING_VERSIONS}; do
