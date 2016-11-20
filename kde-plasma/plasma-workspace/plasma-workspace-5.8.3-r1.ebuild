@@ -105,7 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xset
 	x11-apps/xsetroot
 	!dev-libs/xembed-sni-proxy
-	!kde-base/freespacenotifier:4
+	!kde-plasma/freespacenotifier:4
 	!kde-base/libtaskmanager:4
 	!kde-base/kcminit:4
 	!kde-base/kdebase-startkde:4

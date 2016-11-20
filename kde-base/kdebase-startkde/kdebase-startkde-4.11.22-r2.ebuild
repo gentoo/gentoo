@@ -72,7 +72,6 @@ RDEPEND="
 	handbook? ( kde-apps/khelpcenter:* )
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
-		$(add_kdebase_dep freespacenotifier)
 		$(add_kdebase_dep kcheckpass)
 		$(add_kdebase_dep kdebase-cursors)
 		$(add_kdebase_dep kephal)
@@ -86,6 +85,7 @@ RDEPEND="
 		$(add_kdebase_dep libtaskmanager)
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		$(add_kdebase_dep solid-actions-kcm)
+		kde-plasma/freespacenotifier:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
 		kde-plasma/kmenuedit:4
