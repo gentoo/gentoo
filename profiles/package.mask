@@ -32,7 +32,7 @@
 
 # Johannes Huber <johu@gentoo.org> (20 Nov 2016)
 # Masked for removal in 30 days. Dead upstream. Only supports
-# deprecated Plasma 4 only. Fails to build with newer
+# deprecated Plasma 4. Fails to build with newer
 # kde-base/kdelibs (bug #558516). Fails to build with ninja
 # (bug #575828).
 x11-themes/crystal
