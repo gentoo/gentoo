@@ -22,7 +22,7 @@ DEPEND="
 	x11-libs/libXrender
 "
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep libkgreeter)
+	kde-plasma/libkgreeter:4
 "
 
 KMEXTRACTONLY="

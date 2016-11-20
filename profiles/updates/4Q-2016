@@ -33,3 +33,4 @@ move kde-base/kcheckpass kde-plasma/kcheckpass
 move kde-base/kcminit kde-plasma/kcminit
 move kde-base/kdebase-cursors kde-plasma/kdebase-cursors
 move kde-base/kscreensaver kde-plasma/kscreensaver
+move kde-base/libkgreeter kde-plasma/libkgreeter

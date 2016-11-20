@@ -34,7 +34,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdepasswd)
-	$(add_kdebase_dep libkgreeter)
+	kde-plasma/libkgreeter:4
 	>=x11-apps/xinit-1.0.5-r2
 	x11-apps/xmessage
 "
