@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,10 +15,10 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	$(add_kdebase_dep kcheckpass)
-	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmagenericshell)
+	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
 	!aqua? (
 		x11-libs/libX11

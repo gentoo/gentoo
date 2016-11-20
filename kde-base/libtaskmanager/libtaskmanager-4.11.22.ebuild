@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,8 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdebase_dep kactivities)
-	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep libkworkspace)
+	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
 	x11-libs/libX11
 "
