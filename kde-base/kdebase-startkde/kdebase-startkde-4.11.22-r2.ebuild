@@ -72,7 +72,6 @@ RDEPEND="
 	handbook? ( kde-apps/khelpcenter:* )
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
-		$(add_kdebase_dep kdebase-cursors)
 		$(add_kdebase_dep klipper)
 		$(add_kdebase_dep kstyles)
 		$(add_kdebase_dep ksystraycmd)
@@ -84,6 +83,7 @@ RDEPEND="
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
+		kde-plasma/kdebase-cursors:4
 		kde-plasma/kephal:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
