@@ -1376,6 +1376,7 @@ app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynam
 app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19-r1 1.9.20 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
+app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.6.3-r3 4.6.4 4.7.0-r3 4.7.1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.6.3 4.6.4 4.7.0 4.7.0-r1 4.7.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
@@ -7801,7 +7802,7 @@ dev-python/pika 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pillow 2.8.2 2.9.0 3.0.0-r1 3.1.1 3.4.2: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3 8.1.1 8.1.2: Installs python packages -- replacement for easy_install
+dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3 8.1.1 8.1.2 9.0.1: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -11687,11 +11688,9 @@ kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/ksplash 4.11.22: KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)
 kde-base/kstartupconfig 4.11.22: KDE: Utility to launch applications with special window properties
-kde-base/kstyles 4.11.22: KDE: A set of different KDE styles
 kde-base/ksystraycmd 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
 kde-base/libkworkspace 4.11.22: A library for KDE desktop applications
-kde-base/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE
 kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-base/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
 kde-base/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
@@ -11903,6 +11902,7 @@ kde-plasma/kscreen 1.0.71_p20150824 5.7.5 5.8.3: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.7.5 5.8.3: Library and components for secure lock screen architecture
 kde-plasma/kscreensaver 4.11.22: KDE Plasma screensaver framework
 kde-plasma/ksshaskpass 0.5.3-r1 5.7.5 5.8.3: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/kstyles 4.11.22: A set of different KDE Plasma styles
 kde-plasma/ksysguard 4.11.22 5.7.5 5.8.3: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.7.5 5.8.3: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.7.5 5.8.3: Provides integration plugins for various KDE frameworks for Wayland
@@ -11911,6 +11911,7 @@ kde-plasma/kwrited 4.11.22 5.7.5 5.8.3: KDE Plasma daemon listening for wall and
 kde-plasma/libkgreeter 4.11.22: Conversation widgets for KDM greeter
 kde-plasma/libkscreen 1.0.5_p20150822 5.7.5 5.8.3: Plasma screen management library
 kde-plasma/libksysguard 5.7.5 5.8.3: Task management and system monitoring library
+kde-plasma/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE Plasma
 kde-plasma/milou 0.1 5.7.5 5.8.3: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.7.5 5.8.3: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
