@@ -4,11 +4,11 @@ DESCRIPTION=A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementati
 EAPI=6
 HOMEPAGE=http://ipsec-tools.sourceforge.net/
 IUSE=hybrid idea ipv6 kerberos ldap libressl nat pam rc5 readline selinux stats
-KEYWORDS=amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~ia64 ~mips ppc ppc64 x86
 LICENSE=BSD GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) readline? ( sys-libs/readline:0= ) selinux? ( sys-libs/libselinux ) selinux? ( sec-policy/selinux-ipsec )
 SLOT=0
 SRC_URI=mirror://sourceforge/ipsec-tools/ipsec-tools-0.8.2.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9f4b929215dadcaf325626d8a520516a
+_md5_=df2d21c1799e003cb1452f3f27c1b1a9
