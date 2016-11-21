@@ -14250,7 +14250,7 @@ net-dns/dnssec-root 20110630 20150403: The DNSSEC root key(s)
 net-dns/dnssec-system-tray 2.1 2.2: display DNSSEC resolver logs in system tray
 net-dns/dnssec-tools 2.1 2.2: tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.1 2.2: DNSSEC validator (dnsval)
-net-dns/dnstop 20121017 20140915 20140915-r1: Displays various tables of DNS traffic on your network
+net-dns/dnstop 20121017 20140915 20140915-r2: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
