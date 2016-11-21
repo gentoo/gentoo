@@ -13477,7 +13477,7 @@ media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-s
 media-sound/mpck 0.15: Checks MP3s for errors
 media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18 0.19.19: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
-media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
+media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.18.1 1.22.4 1.23.6 1.23.7 1.23.8: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3

@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/glib-2.16:2 >=media-libs/libmpdclient-2.2 curl? ( net-misc/curl ) !curl? ( net-libs/libsoup:2.4 ) virtual/pkgconfig
+DEPEND=dev-libs/glib media-libs/libmpdclient curl? ( net-misc/curl ) !curl? ( net-libs/libsoup:2.4 ) virtual/pkgconfig
 DESCRIPTION=An MPD client that submits information to Audioscrobbler
-EAPI=4
+EAPI=6
 HOMEPAGE=http://mpd.wikia.com/wiki/Client:Mpdscribble
 IUSE=+curl
 KEYWORDS=amd64 ~hppa ~ppc x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.16:2 >=media-libs/libmpdclient-2.2 curl? ( net-misc/curl ) !curl? ( net-libs/libsoup:2.4 )
+RDEPEND=dev-libs/glib media-libs/libmpdclient curl? ( net-misc/curl ) !curl? ( net-libs/libsoup:2.4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/mpdscribble-0.22.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e2d77ec12ea1f64c2f7389854fe4cc07
+_md5_=6b14c723567162144a2d65b9fbb0a723
