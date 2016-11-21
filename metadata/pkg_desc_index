@@ -531,7 +531,7 @@ app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.5.5 1.6.0 1.7.1-r1: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.5.5 1.6.0 1.8.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
@@ -4563,7 +4563,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.10.13 1.11.29 1.11.33: A C++ crypto library
+dev-libs/botan 1.10.12 1.10.13 1.11.33: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -15184,7 +15184,7 @@ net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload file
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x11rdp 0.8.0.1.9.5: A X11 server for RDP clients (used by xrdp)
 net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1: The X2Go Qt client
-net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
+net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
@@ -15236,7 +15236,7 @@ net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small 
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 16.4 17.1 18.0_pre1820: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.139-r1 0.139-r2 0.140: A newsreader for GNOME
-net-nntp/sabnzbd 1.1.0 1.1.1: Binary newsgrabber with web-interface
+net-nntp/sabnzbd 1.1.0 1.1.1-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
 net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
