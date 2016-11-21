@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install preinst prepare setup
-DEPEND=>=virtual/jdk-1.7 dev-java/commons-vfs:2 dev-java/dom4j:1 dev-java/gson:2.6 dev-java/guava:18 dev-java/javassist:3 dev-java/jsr305:0 dev-java/slf4j-api:0 dev-java/tomcat-servlet-api:3.1 app-arch/unzip >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+DEPEND=>=virtual/jdk-1.7 dev-java/commons-vfs:2 dev-java/dom4j:1 dev-java/gson:2.6 dev-java/guava:20 dev-java/javassist:3 dev-java/jsr305:0 dev-java/slf4j-api:0 dev-java/tomcat-servlet-api:3.1 app-arch/unzip >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 DESCRIPTION=Java runtime metadata analysis
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/ronmamo/reflections
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
 KEYWORDS=~amd64 ~x86
 LICENSE=WTFPL-2
-RDEPEND=>=virtual/jre-1.7 dev-java/commons-vfs:2 dev-java/dom4j:1 dev-java/gson:2.6 dev-java/guava:18 dev-java/javassist:3 dev-java/jsr305:0 dev-java/slf4j-api:0 dev-java/tomcat-servlet-api:3.1 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RDEPEND=>=virtual/jre-1.7 dev-java/commons-vfs:2 dev-java/dom4j:1 dev-java/gson:2.6 dev-java/guava:20 dev-java/javassist:3 dev-java/jsr305:0 dev-java/slf4j-api:0 dev-java/tomcat-servlet-api:3.1 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://search.maven.org/remotecontent?filepath=org/reflections/reflections/0.9.10/reflections-0.9.10-sources.jar
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_install:java-pkg-simple
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-pkg-simple	88558e9b1185c8404cf95c1ea077592c	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=aaa7c2f7ff8c08e48fe4a2cd03ea1ab6
+_md5_=38b1ca769cda546cb17e9b7be8819079
