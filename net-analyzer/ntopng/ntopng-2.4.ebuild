@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils user
+inherit autotools eutils user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="http://www.ntop.org/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/ntop/${PN}/${P}-stable.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="redis"
+IUSE=""
 
 DEPEND="dev-db/sqlite:3
 	dev-python/pyzmq
@@ -20,14 +20,14 @@ DEPEND="dev-db/sqlite:3
 	dev-libs/json-c
 	dev-libs/geoip
 	dev-libs/glib:2
-	redis? ( dev-libs/hiredis )
+	dev-libs/hiredis
 	dev-libs/libxml2
 	net-analyzer/rrdtool
 	net-libs/libpcap
 	net-misc/curl
 	virtual/libmysqlclient"
 RDEPEND="${DEPEND}
-	redis? ( dev-db/redis )"
+	dev-db/redis"
 
 S="${WORKDIR}/${P}-stable"
 
@@ -44,6 +44,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG
 	cd "${S}/nDPI"
 	econf
 	cd "${S}"

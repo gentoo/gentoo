@@ -7,7 +7,4 @@
   <upstream>
     <remote-id type="sourceforge">ntop</remote-id>
   </upstream>
-  <use>
-    <flag name="redis">Enable REDIS support</flag>
-  </use>
 </pkgmetadata>
