@@ -5020,7 +5020,7 @@ dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0 1.3.0: SIMD Vector Class Library for C++
 dev-libs/wayland 1.7.0 1.9.0 1.11.0 1.12.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.3 1.4 1.5 1.7 9999: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 9999: Wayland reference compositor
-dev-libs/wlc 0.0.5 0.0.6 9999: A helper library for Wayland compositors
+dev-libs/wlc 0.0.5 0.0.6 0.0.7 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.22 1.2.24 1.4.1: Xapian Probabilistic Information Retrieval library
@@ -13331,7 +13331,7 @@ media-sound/banshee 2.6.2-r1: Import, play and share your music using a simple a
 media-sound/baudline 1.08-r1: A time-frequency browser designed for scientific visualization of the spectral domain
 media-sound/beets 1.3.13-r1: A media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11: Qt4 MPD client with experimental UI
-media-sound/bitmeter 1.2: a diagnosis tool for JACK audio software
+media-sound/bitmeter 1.2-r1: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bluez-alsa 1.1.0-r1 9999: Bluetooth Audio ALSA Backend
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
@@ -14839,7 +14839,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 49.0.2623.40 50.0.2661.22 52.0.2743.74: access remote computers via Chrome!
-net-misc/chrony 2.2.1 2.3 2.4 2.4-r1 9999: NTP client and server programs
+net-misc/chrony 2.2.1 2.3 2.4 2.4-r1 2.4.1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -18045,7 +18045,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.4.589.29_p1 1.5.658.27_p1 1.5.658.31_p1: A new browser for our friends
+www-client/vivaldi 1.4.589.29_p1 1.5.658.31_p1 1.5.658.42_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18208,7 +18208,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 340.93-r1 340.96 340.96-r5 340.98 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 364.19-r1 367.18 367.27 367.35-r1 367.44 367.57 367.57-r1 370.28 370.28-r1 375.10 375.10-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 340.93-r1 340.96 340.96-r5 340.98 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 364.19-r1 367.18 367.27 367.35-r1 367.44 367.57 367.57-r1 370.28 370.28-r1 375.10 375.10-r1 375.20: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
