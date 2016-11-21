@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic
+inherit autotools
 
 DESCRIPTION="Displays various tables of DNS traffic on your network"
 HOMEPAGE="http://dnstop.measurement-factory.com/"
@@ -13,22 +13,21 @@ SRC_URI="http://dnstop.measurement-factory.com/src/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
-IUSE="ipv6"
+IUSE=""
 
 RDEPEND="sys-libs/ncurses:0
-	net-libs/libpcap[ipv6?]"
+	net-libs/libpcap[ipv6(+)]"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}"-pkg-config.patch )
+
 src_prepare() {
-	epatch_user
+	default
+	eautoreconf
 }
 
 src_configure() {
-	if has_version sys-libs/ncurses:0[tinfo] ; then
-		append-libs -ltinfo	#bug 595068
-	fi
-	econf \
-		$(use_enable ipv6)
+	econf --enable-ipv6
 }
 
 src_install() {
