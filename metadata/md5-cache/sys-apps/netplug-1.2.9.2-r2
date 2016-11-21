@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=doc? ( app-text/ghostscript-gpl media-gfx/graphviz )
+DESCRIPTION=Brings up/down ethernet ports automatically with cable detection
+EAPI=6
+HOMEPAGE=http://www.red-bean.com/~bos/
+IUSE=debug doc
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.red-bean.com/~bos/netplug/netplug-1.2.9.2.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=69623041c9bff78e094e21486293331c
