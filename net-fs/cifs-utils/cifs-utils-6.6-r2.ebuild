@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils linux-info multilib
+inherit eutils linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="http://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -63,7 +63,8 @@ src_configure() {
 		$(use caps && use_with !caps-ng libcap || echo --without-libcap) \
 		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng) \
 		$(use_enable creds cifscreds) \
-		$(usex pam '--with-pamdir=/lib/security' '')
+		$(use_enable pam) \
+		$(use_with pam pamdir $(getpam_mod_dir))
 }
 
 src_install() {
