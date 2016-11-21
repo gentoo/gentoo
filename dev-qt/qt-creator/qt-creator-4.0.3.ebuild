@@ -60,7 +60,7 @@ RDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	>=sys-devel/gdb-7.5[client,python]
 	clangcodemodel? ( >=sys-devel/clang-3.6.2:= )
-	qbs? ( >=dev-util/qbs-1.5.2 )
+	qbs? ( ~dev-util/qbs-1.5.2 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-5.6.0:5 )
 	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
