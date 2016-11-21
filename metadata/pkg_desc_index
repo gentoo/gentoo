@@ -5300,7 +5300,7 @@ dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft N
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0 0.760.0: Generic archive extracting mechanism
@@ -5376,7 +5376,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
@@ -5872,7 +5872,7 @@ dev-perl/IO-Prompt 0.997.3: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
 dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
-dev-perl/IO-Socket-SSL 2.24.0: Nearly transparent SSL encapsulation for IO::Socket::INET
+dev-perl/IO-Socket-SSL 2.24.0 2.39.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
