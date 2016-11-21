@@ -1891,7 +1891,7 @@ app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multipl
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qlcplus 4.10.2b 4.10.3 4.10.4: QLC+ - Q Light Controller Plus to control DMX interfaces
 app-misc/ranger 1.7.2 9999: A vim-inspired file manager for the console
-app-misc/razertool 0.0.7-r3: Unofficial tool for controlling the Razer Copperhead mouse
+app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.19.5-r1: A personal full text search package
 app-misc/regex-markup 0.10.0 0.10.0-r1: A tool to color syslog files as well
