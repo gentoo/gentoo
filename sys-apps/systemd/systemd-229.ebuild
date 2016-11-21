@@ -68,6 +68,11 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
+	|| (
+		sys-apps/util-linux[kill(-)]
+		sys-process/procps[kill(+)]
+		sys-apps/coreutils[kill(-)]
+	)
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
