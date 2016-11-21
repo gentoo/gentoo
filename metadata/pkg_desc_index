@@ -15412,7 +15412,7 @@ net-wireless/blueberry 1.1.8: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 4.101-r9 5.39 5.43: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chirp 20160513 20160717 99999999: Free open-source tool for programming your amateur radio
