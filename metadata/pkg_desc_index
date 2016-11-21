@@ -2997,7 +2997,7 @@ dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
 dev-db/sqlitestudio 3.0.7: SQLiteStudio3 is a powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
 dev-db/tinycdb 0.77-r2: TinyCDB is a very fast and simple package for creating and reading constant data bases
-dev-db/tokumx 1.5.0 1.5.0-r1 2.0.1: An open source, high-performance distribution of MongoDB
+dev-db/tokumx 2.0.2: An open source, high-performance distribution of MongoDB
 dev-db/tokyocabinet 1.4.48 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.0.0_pre20140929-r1 9999: TOra - Toolkit For Oracle
 dev-db/unixODBC 2.3.2-r1 2.3.2-r2 2.3.4: A complete ODBC driver manager
