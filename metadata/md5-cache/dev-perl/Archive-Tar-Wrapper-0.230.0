@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/File-Which dev-perl/IPC-Run dev-perl/Log-Log4perl virtual/perl-File-Path app-arch/tar virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=API wrapper around the 'tar' utility
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Archive-Tar-Wrapper/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/File-Which dev-perl/IPC-Run dev-perl/Log-Log4perl virtual/perl-File-Path app-arch/tar dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MS/MSCHILLI/Archive-Tar-Wrapper-0.23.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=6d45a070cc96538fe470479bf21efdb1

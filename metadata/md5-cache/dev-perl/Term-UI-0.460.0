@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Locale-Maketext-Simple dev-perl/Log-Message-Simple virtual/perl-Params-Check virtual/perl-Term-ReadLine virtual/perl-if virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.310.0 ) dev-lang/perl:=
+DESCRIPTION=User interfaces via Term::ReadLine made easy
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Term-UI/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Locale-Maketext-Simple dev-perl/Log-Message-Simple virtual/perl-Params-Check virtual/perl-Term-ReadLine virtual/perl-if dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/Term-UI-0.46.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=21d7eca0195795a952b3cc9372f0a741

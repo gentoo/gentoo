@@ -5298,6 +5298,7 @@ dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
+dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
 dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0-r1 0.740.0-r1 0.750.0-r1 0.780.0: Manage perl installations in your $HOME
@@ -5305,6 +5306,7 @@ dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and par
 dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0 0.760.0: Generic archive extracting mechanism
 dev-perl/Archive-Rar 2.20.0-r1: Archive::Rar - Interface with the rar command
+dev-perl/Archive-Tar-Wrapper 0.230.0: API wrapper around the 'tar' utility
 dev-perl/Archive-Zip 1.530.0 1.560.0 1.570.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 2.20.0-r1 2.110.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
@@ -5377,6 +5379,7 @@ dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta obje
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
@@ -5457,8 +5460,11 @@ dev-perl/Config-AutoConf 0.311.0 0.313.0: A module to implement some of AutoConf
 dev-perl/Config-Crontab 1.400.0 1.410.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.600.0 2.620.0 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1 1.110.0: A grammar-based, user-friendly config parser
+dev-perl/Config-INI 0.25.0: simple .ini-file format
 dev-perl/Config-IniFiles 2.880.0 2.920.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.520.200: A JSON based config file system
+dev-perl/Config-MVP 2.200.10: multivalue-property package-oriented configuration
+dev-perl/Config-MVP-Reader-INI 2.101.463: an MVP config reader for .ini files
 dev-perl/Config-Properties 1.800.0: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
@@ -5555,6 +5561,7 @@ dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0 0.120.0: A module used to generate random data
+dev-perl/Data-Section 0.200.6: read multiple hunks of data out of your DATA section
 dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
@@ -5608,6 +5615,7 @@ dev-perl/Devel-Cover 1.200.0 1.210.0 1.230.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
+dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
 dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.130.0-r1 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
@@ -5634,6 +5642,7 @@ dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa 
 dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
+dev-perl/Dist-Zilla 6.8.0: distribution builder; installer not included!
 dev-perl/EV 4.180.0 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.7.0: unified interface to mail representations
@@ -5877,6 +5886,7 @@ dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
 dev-perl/IO-Tee 0.640.0-r1: Multiplex output to multiple output handles
+dev-perl/IO-TieCombine 1.5.0: produce tied (and other) separate but combined variables
 dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
 dev-perl/IO-stringy 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
@@ -5957,7 +5967,10 @@ dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.540.0 2.580.0: Dispatches messages to one or more outputs
 dev-perl/Log-Dispatch-Array 1.3.0: log events to an array (reference)
+dev-perl/Log-Dispatchouli 2.15.0: a simple wrapper around Log::Dispatch
 dev-perl/Log-Log4perl 1.460.0 1.470.0 1.480.0: Log4j implementation for Perl
+dev-perl/Log-Message 0.80.0: Powerful and flexible message logging mechanism
+dev-perl/Log-Message-Simple 0.100.0: Simplified interface to Log::Message
 dev-perl/Log-Report 1.180.0: A pluggable, multilingual handler driven problem reporting system
 dev-perl/Log-Report-Optional 1.20.0: Lightweight implementation logger for Log::Report
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
@@ -6025,6 +6038,7 @@ dev-perl/Math-Spline 0.20.0: Cubic Spline Interpolation of data
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
+dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does the rest
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270: enable all of the features of Modern Perl with one import
@@ -6040,6 +6054,7 @@ dev-perl/Module-Install 1.160.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
 dev-perl/Module-Locate 1.800.0: Locate modules in the same fashion as require and use
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
+dev-perl/Module-Path 0.190.0: get the full path to a locally installed module
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.14.0: Runtime module handling
@@ -6070,11 +6085,14 @@ dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attri
 dev-perl/MooseX-FollowPBP 0.50.0: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Getopt 0.680.0: A Moose role for processing command line options
 dev-perl/MooseX-GlobRef 0.70.100: Store a Moose object in glob reference
+dev-perl/MooseX-LazyRequire 0.110.0: Required attributes which fail only when trying to use them
 dev-perl/MooseX-MultiInitArg 0.20.0: Attributes with aliases for constructor arguments
 dev-perl/MooseX-Object-Pluggable 0.1.400: Make your classes pluggable
+dev-perl/MooseX-OneArgNew 0.5.0: teach ->new to accept single, non-hashref arguments
 dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
 dev-perl/MooseX-Role-Parameterized 1.80.0: Roles with composition parameters
 dev-perl/MooseX-Role-WithOverloading 0.160.0: Roles which support overloading
+dev-perl/MooseX-SetOnce 0.200.2: write-once, read-many attributes for Moose
 dev-perl/MooseX-SimpleConfig 0.110.0: A Moose role for setting attributes from a simple configfile
 dev-perl/MooseX-StrictConstructor 0.190.0: Make your object constructors blow up on unknown attributes
 dev-perl/MooseX-Types 0.360.0 0.460.0: Organise your Moose types in libraries
@@ -6085,6 +6103,7 @@ dev-perl/MooseX-Types-DateTimeX 0.100.0: Extensions to MooseX::Types::DateTime::
 dev-perl/MooseX-Types-JSON 1.0.0: JSON datatype for Moose
 dev-perl/MooseX-Types-Path-Class 0.80.0: A Path::Class type library for Moose
 dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
+dev-perl/MooseX-Types-Perl 0.101.343: Moose types that check against Perl syntax
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 0.970.0-r1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
@@ -6237,13 +6256,16 @@ dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been s
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
+dev-perl/Perl-PrereqScanner 1.23.0: a tool to scan your Perl code for its prerequisites
 dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
+dev-perl/Perl-Version 1.13.0: Parse and manipulate Perl version strings
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.180.0-r1 0.190.0: PerlIO layer to gzip/gunzip
+dev-perl/PerlIO-utf8_strict 0.6.0: Fast and correct UTF-8 IO
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: PerlIO::via::dynamic - dynamic PerlIO layers
 dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
@@ -6254,6 +6276,7 @@ dev-perl/Plack 1.3.900: Perl Superglue for Web frameworks and Web Servers (PSGI 
 dev-perl/Plucene 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
+dev-perl/Pod-Eventual 0.94.1: read a POD document as a series of trivial events
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
 dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-POM 2.10.0: POD Object Model
@@ -6291,6 +6314,8 @@ dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
+dev-perl/Role-HasMessage 0.6.0: a thing with a message method
+dev-perl/Role-Identifiable 0.7.0: a thing with a list of tags
 dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
@@ -6331,6 +6356,7 @@ dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
 dev-perl/Socket-GetAddrInfo 0.220.0: Address-family independent name resolving functions
 dev-perl/Socket6 0.250.0 0.270.0: IPv6 related part of the C socket.h defines and structure manipulators
+dev-perl/Software-License 0.103.12: packages that provide templated software licenses
 dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
@@ -6353,8 +6379,11 @@ dev-perl/Stream-Buffered 0.30.0: Temporary buffer to save bytes
 dev-perl/String-Approx 3.270.0: Perl extension for approximate string matching (fuzzy matching)
 dev-perl/String-CRC32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/String-Ediff 0.90.0-r1: Produce common sub-string indices for two strings
+dev-perl/String-Errf 0.8.0: a simple sprintf-like dialect
 dev-perl/String-Escape 2010.002: Backslash escapes, quoted phrase, word elision, etc
+dev-perl/String-Flogger 1.101.245: string munging for loggers
 dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities with arbitrary format definitions
+dev-perl/String-Formatter 0.102.84: build sprintf-like functions of your own
 dev-perl/String-Print 0.150.0: Extensions to printf
 dev-perl/String-RewritePrefix 0.7.0: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
@@ -6362,6 +6391,7 @@ dev-perl/String-Tokenizer 0.60.0: A simple string tokenizer
 dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
 dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
+dev-perl/Sub-Exporter-GlobExporter 0.5.0: export shared globs with Sub::Exporter collectors
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.40.0-r1 0.120.0: Retrieve names of code references
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
@@ -6408,6 +6438,7 @@ dev-perl/Term-Screen 1.50.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
 dev-perl/Term-Shell 0.90: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
+dev-perl/Term-UI 0.460.0: User interfaces via Term::ReadLine made easy
 dev-perl/TermReadKey 2.300.200-r1 2.330.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework

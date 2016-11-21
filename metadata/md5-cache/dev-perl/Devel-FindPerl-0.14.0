@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!minimal? ( >=dev-perl/ExtUtils-Config-0.7.0 ) virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Find the path to your perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Devel-FindPerl/
+IUSE=test minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!minimal? ( >=dev-perl/ExtUtils-Config-0.7.0 ) virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/Devel-FindPerl-0.014.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=0e93b15c09e608d4d43402df46cfa592
