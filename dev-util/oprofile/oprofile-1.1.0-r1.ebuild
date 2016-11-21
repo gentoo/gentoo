@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-inherit eutils java-pkg-opt-2 linux-info multilib user
+inherit autotools eutils java-pkg-opt-2 linux-info multilib user
 
 MY_P=${PN}-${PV/_/-}
 DESCRIPTION="A transparent low-overhead system-wide profiler"
@@ -46,6 +46,9 @@ pkg_setup() {
 src_prepare() {
 	# fix bug #594178
 	epatch "${FILESDIR}/${PN}-1.1.0-gcc6.patch"
+	# bug #600000
+	epatch "${FILESDIR}/${PN}-1.1.0-gcc6-template-depth.patch"
+	eautoreconf
 }
 
 src_configure() {
