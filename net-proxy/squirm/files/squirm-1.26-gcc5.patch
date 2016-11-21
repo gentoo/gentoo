@@ -1,0 +1,9 @@
+--- a/util.h	2005-08-19 09:31:06.000000000 +0200
++++ b/util.h	2016-11-21 21:06:59.311182893 +0100
+@@ -24,5 +24,5 @@
+   information.
+ */
+ 
+-inline void lower_case(char *str);
++extern inline void lower_case(char *str);
+ char *safe_strdup(const char *str);
