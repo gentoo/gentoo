@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="A library for interfacing Music Player Daemon (media-sound/mpd)"
-HOMEPAGE="http://www.musicpd.org"
-SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+HOMEPAGE="https://www.musicpd.org"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,12 +17,12 @@ RDEPEND=""
 DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
 	sed -e "s:@top_srcdir@:.:" -i doc/doxygen.conf.in
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable static-libs static) \
 		$(use_enable doc documentation)
 }
