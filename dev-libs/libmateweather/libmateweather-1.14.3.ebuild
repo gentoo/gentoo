@@ -24,7 +24,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	"
 
-RDEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
+COMMON_DEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
 	>=dev-libs/libxml2-2.6:2
 	>=net-libs/libsoup-2.34:2.4
 	>=sys-libs/timezone-data-2010k:0
@@ -38,7 +38,9 @@ RDEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
 		>=dev-python/pygtk-2:2[${PYTHON_USEDEP}]
 	)"
 
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}"
+
+DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1:*
