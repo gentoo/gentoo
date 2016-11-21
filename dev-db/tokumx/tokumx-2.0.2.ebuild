@@ -1,18 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 CMAKE_BUILD_TYPE=Release
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-r1 cmake-utils pax-utils
 
-MY_P=${PN}-git-tag-${PV}
+MY_P=${PN}-enterprise-${PV}
 
 DESCRIPTION="An open source, high-performance distribution of MongoDB"
-HOMEPAGE="http://www.tokutek.com/products/tokumx-for-mongodb/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.percona.com/software/mongo-database/percona-tokumx"
+SRC_URI="https://www.percona.com/downloads/percona-tokumx/${MY_P}/source/tarball/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
@@ -26,31 +26,33 @@ RDEPEND="
 	>=dev-libs/libpcre-8.30[cxx]
 	net-libs/libpcap"
 DEPEND="${RDEPEND}
+	dev-util/valgrind
 	sys-libs/ncurses
 	sys-libs/readline
 	pax_kernel? ( sys-apps/paxctl sys-apps/elfix )
 "
 
-S="${WORKDIR}/mongo"
-BUILD_DIR="${WORKDIR}/mongo/build"
+S="${WORKDIR}/${MY_P}"
+#BUILD_DIR="${MY_P}/build"
 QA_PRESTRIPPED="/usr/lib64/libHotBackup.so"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-no-werror.patch"
+	eapply "${FILESDIR}/${P}-no-werror.patch"
+	eapply "${FILESDIR}/${P}-boost-57.patch"
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-D TOKU_DEBUG_PARANOID=OFF
-		-D USE_VALGRIND=OFF
-		-D USE_BDB=OFF
-		-D BUILD_TESTING=OFF
-		-D TOKUMX_DISTNAME=${PV}
-		-D LIBJEMALLOC="jemalloc"
-		-D TOKUMX_STRIP_BINARIES=0
-		-D USE_SYSTEM_PCRE=1
-		-D USE_SYSTEM_BOOST=1
+		-DTOKU_DEBUG_PARANOID=OFF
+		-DUSE_VALGRIND=OFF
+		-DUSE_BDB=OFF
+		-DBUILD_TESTING=OFF
+		-DTOKUMX_DISTNAME=${PV}
+		-DLIBJEMALLOC="jemalloc"
+		-DTOKUMX_STRIP_BINARIES=0
+		-DUSE_SYSTEM_PCRE=1
+		-DUSE_SYSTEM_BOOST=1
 	)
 	cmake-utils_src_configure
 }
