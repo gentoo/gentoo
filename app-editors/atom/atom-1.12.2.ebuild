@@ -93,7 +93,10 @@ DEPEND="
 	>=dev-util/ctags-5.8
 	>=dev-util/electron-1.3.5:${ELECTRON_SLOT}
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!sys-apps/apmd
+"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
