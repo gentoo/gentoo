@@ -15018,7 +15018,7 @@ net-misc/nextcloud-client 2.2.3 2.2.4 2.2.4-r1: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
-net-misc/ntp 4.2.8_p8: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p8 4.2.8_p9: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365 2015.365: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
 net-misc/nxplayer 5.0.63.3 5.1.7.6 5.1.24.1: Client for NoMachine remote servers
