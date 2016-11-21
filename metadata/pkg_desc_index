@@ -12088,7 +12088,7 @@ mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
 mail-mta/courier 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
-mail-mta/exim 4.87 4.87-r1 4.88_rc2: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.87 4.87-r1 4.88_rc5: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -14516,7 +14516,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.22.1 3.22.2: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.5.5 3.5.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.37 2.8.38: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.38 2.8.39: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.14 0.14.15 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 0.20.16 0.20.17 0.20.18: An object-oriented framework for creating UPnP devs and control points
