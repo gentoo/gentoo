@@ -230,6 +230,7 @@ src_configure() {
 		$(use_enable jpeg)
 		--disable-android
 		$(use_enable raspberry-pi rpi)
+		--disable-ios-gl
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev	# Only available in overlays.
 
