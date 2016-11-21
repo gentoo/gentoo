@@ -1,0 +1,13 @@
+diff --git a/src/gifcreator.cpp b/src/gifcreator.cpp
+index 00dd243..87128d0 100644
+--- a/src/gifcreator.cpp
++++ b/src/gifcreator.cpp
+@@ -135,7 +135,7 @@ bool GifCreator::save(const char* filename, int every)
+ 	  return false;
+      }
+    
+-     if (EGifCloseFile(GifFile) == GIF_ERROR) {
++     if (EGifCloseFile(GifFile, NULL) == GIF_ERROR) {
+ 	  PrintGifError();
+ 	  endProgress();
+ 	  return false;

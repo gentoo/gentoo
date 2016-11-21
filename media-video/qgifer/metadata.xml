@@ -15,6 +15,7 @@
 	<use>
 		<flag name="imagemagick">Use imagemagick for image operations</flag>
 		<flag name="opencv3">Use media-libs/opencv:0/3.0 for video operations instead media-libs/opencv:0/2.4</flag>
+		<flag name="giflib5">Use media-libs/giflib-5.1* for video operations instead media-libs/giflib-4*</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">qgifer</remote-id>
