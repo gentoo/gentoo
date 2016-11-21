@@ -1,0 +1,88 @@
+diff -uNr tokumx-enterprise-2.0.2.ORIG/CMakeLists.txt tokumx-enterprise-2.0.2/CMakeLists.txt
+--- tokumx-enterprise-2.0.2.ORIG/CMakeLists.txt	2016-11-21 11:15:27.517430430 +0000
++++ tokumx-enterprise-2.0.2/CMakeLists.txt	2016-11-21 11:16:27.874433436 +0000
+@@ -82,14 +82,13 @@
+   endforeach(flag)
+ endmacro(set_cxxflags_if_supported)
+ 
+-set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -Werror -pipe")
++set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -pipe")
+ set(CMAKE_CXX_FLAGS "-fPIC -fno-strict-aliasing -ggdb")
+ set_cxxflags_if_supported(
+   -Wall
+   -Wsign-compare
+   -Wno-unknown-pragmas
+   -Winvalid-pch
+-  -Werror
+   -pipe
+   -Wnon-virtual-dtor
+   -Woverloaded-virtual
+diff -uNr tokumx-enterprise-2.0.2.ORIG/SConstruct tokumx-enterprise-2.0.2/SConstruct
+--- tokumx-enterprise-2.0.2.ORIG/SConstruct	2016-11-21 11:15:27.517430430 +0000
++++ tokumx-enterprise-2.0.2/SConstruct	2016-11-21 11:16:27.875433436 +0000
+@@ -710,7 +710,7 @@
+                          "-Winvalid-pch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if linux:
+-        env.Append( CCFLAGS=["-Werror", "-pipe"] )
++        env.Append( CCFLAGS=["-pipe"] )
+         if not has_option('clang'):
+             env.Append( CCFLAGS=["-fno-builtin-memcmp"] ) # glibc's memcmp is faster than gcc's
+ 
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/third_party/backup/CMakeLists.txt tokumx-enterprise-2.0.2/src/third_party/backup/CMakeLists.txt
+--- tokumx-enterprise-2.0.2.ORIG/src/third_party/backup/CMakeLists.txt	2016-11-21 11:15:27.392430424 +0000
++++ tokumx-enterprise-2.0.2/src/third_party/backup/CMakeLists.txt	2016-11-21 11:17:22.576436161 +0000
+@@ -10,7 +10,7 @@
+   _FILE_OFFSET_BITS=64 
+   _LARGEFILE64_SOURCE)
+ 
+-set(CMAKE_CXX_FLAGS "-Werror -W -Wall -Wshadow ${CMAKE_CXX_FLAGS}")
++set(CMAKE_CXX_FLAGS "-W -Wall -Wshadow ${CMAKE_CXX_FLAGS}")
+ 
+ set(USE_VALGRIND ON CACHE BOOL "whether to use valgrind headers")
+ if (USE_VALGRIND)
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/third_party/backup/remote/Makefile tokumx-enterprise-2.0.2/src/third_party/backup/remote/Makefile
+--- tokumx-enterprise-2.0.2.ORIG/src/third_party/backup/remote/Makefile	2016-11-21 11:15:27.393430424 +0000
++++ tokumx-enterprise-2.0.2/src/third_party/backup/remote/Makefile	2016-11-21 11:17:38.840436971 +0000
+@@ -1,4 +1,4 @@
+ backup.pb.o: backup.pb.h
+-CXXFLAGS = -W -Wall -Werror -O1
++CXXFLAGS = -W -Wall -O1
+ backup.pb.cc backup.bp.h: backup.proto
+ 	protoc -I=. --cpp_out=. backup.proto
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake tokumx-enterprise-2.0.2/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake
+--- tokumx-enterprise-2.0.2.ORIG/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake	2016-11-21 11:15:27.422430426 +0000
++++ tokumx-enterprise-2.0.2/src/third_party/ft-index/cmake_modules/TokuSetupCompiler.cmake	2016-11-21 11:16:54.312434753 +0000
+@@ -181,8 +181,8 @@
+ endif ()
+ 
+ ## always want these
+-set(CMAKE_C_FLAGS "-Wall -Werror ${CMAKE_C_FLAGS}")
+-set(CMAKE_CXX_FLAGS "-Wall -Werror ${CMAKE_CXX_FLAGS}")
++set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
++set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")
+ 
+ ## need to set -stdlib=libc++ to get real c++11 support on darwin
+ if (APPLE)
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/third_party/v8/CMakeLists.txt tokumx-enterprise-2.0.2/src/third_party/v8/CMakeLists.txt
+--- tokumx-enterprise-2.0.2.ORIG/src/third_party/v8/CMakeLists.txt	2016-11-21 11:15:27.452430427 +0000
++++ tokumx-enterprise-2.0.2/src/third_party/v8/CMakeLists.txt	2016-11-21 11:16:27.876433437 +0000
+@@ -126,7 +126,6 @@
+ 
+ set(V8_CXX_FLAGS
+   -Wall
+-  -Werror
+   -W
+   -Wno-unused-parameter
+   -Woverloaded-virtual
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/third_party/v8/SConscript tokumx-enterprise-2.0.2/src/third_party/v8/SConscript
+--- tokumx-enterprise-2.0.2.ORIG/src/third_party/v8/SConscript	2016-11-21 11:15:27.452430427 +0000
++++ tokumx-enterprise-2.0.2/src/third_party/v8/SConscript	2016-11-21 11:16:27.876433437 +0000
+@@ -47,7 +47,6 @@
+   'gcc': {
+     'all': {
+       'CCFLAGS':      ['-Wall',
+-                       '-Werror',
+                        '-W',
+                        '-Wno-unused-parameter',
+                        '-Woverloaded-virtual',
