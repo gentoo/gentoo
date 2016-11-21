@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Unofficial tool for controlling the Razer Copperhead mouse"
@@ -16,13 +16,21 @@ IUSE="gtk"
 
 RDEPEND="virtual/libusb:0
 	gtk? (
+		dev-libs/atk
+		dev-libs/glib:2
 		>=gnome-base/librsvg-2.0
 		>=x11-libs/cairo-1.0.0
-		>=x11-libs/gtk+-2.8.0:2 )"
+		x11-libs/gdk-pixbuf
+		>=x11-libs/gtk+-2.8.0:2
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+DOCS=( AUTHORS ChangeLog NEWS README )
+
 src_prepare() {
+	default
+
 	sed -i razertool.rules.example \
 		-e 's:ACTION=="add", ::;s:BUS=:SUBSYSTEMS=:;s:SYSFS{:ATTRS{:g' \
 		|| die "sed razertool.rules.example action failed"
@@ -38,12 +46,10 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	default
 
 	insinto /lib/udev/rules.d
-	newins razertool.rules.example 90-razertool.rules || die
-
-	dodoc AUTHORS ChangeLog NEWS README
+	newins razertool.rules.example 90-razertool.rules
 
 	# Icon and desktop entry
 	dosym /usr/share/${PN}/pixmaps/${PN}-icon.png /usr/share/pixmaps/${PN}-icon.png

@@ -64,10 +64,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/1.1.x/0001-use-system-configobj-and-feedparser.patch
-	epatch "${FILESDIR}"/1.1.x/0002-assume-gntp-1.0.patch
-	epatch "${FILESDIR}"/1.1.x/0003-cfg-disable-growl-by-default.patch
-	epatch "${FILESDIR}"/1.1.x/0004-use-system-rarfile.patch
+	epatch "${FILESDIR}"/patches/0001-use-system-configobj-and-feedparser.patch
+	epatch "${FILESDIR}"/patches/0002-assume-gntp-1.0.patch
+	epatch "${FILESDIR}"/patches/0003-cfg-disable-growl-by-default.patch
+	epatch "${FILESDIR}"/patches/0004-use-system-rarfile.patch
 
 	# remove bundled modules
 	rm -r sabnzbd/utils/{feedparser,configobj,rarfile}.py || die
@@ -80,9 +80,9 @@ src_install() {
 
 	dodir /usr/share/${PN}/sabnzbd
 	insinto /usr/share/${PN}/
+	python_convert_shebangs 2 SABnzbd.py
 	doins SABnzbd.py
 	fperms +x /usr/share/${PN}/SABnzbd.py
-	dobin "${FILESDIR}"/sabnzbd
 
 	for d in cherrypy email icons interfaces locale po sabnzbd tools util; do
 		insinto /usr/share/${PN}/${d}
