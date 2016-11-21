@@ -12969,7 +12969,7 @@ media-libs/svgalib 1.9.25-r4 1.9.25-r5: A library for running svga graphics on t
 media-libs/t1lib 5.1.2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.9.1-r2 1.10 1.11-r1: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 3.9.7-r1 4.0.6 4.0.6-r1: Tag Image File Format (TIFF) library
+media-libs/tiff 3.9.7-r1 4.0.6 4.0.6-r1 4.0.7: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20120120 0_pre20130223 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
@@ -17476,7 +17476,7 @@ sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.42_p44 3.18.43_p46 3.18.44_p47 3.18.44_p48 4.1.33_p37 4.1.34_p39 4.1.35_p40 4.1.35_p41 4.4.21_p30 4.4.25_p35 4.4.27_p37 4.4.30_p41 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.42_p44 3.18.43_p46 3.18.44_p47 3.18.44_p48 4.1.33_p37 4.1.34_p39 4.1.35_p40 4.1.35_p41 4.4.21_p30 4.4.25_p35 4.4.27_p37 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.67 3.16.39 3.18.44 4.1.35 4.4.33 4.8.9: Full sources for the Linux kernel
