@@ -1606,6 +1606,11 @@
       <role>General System Administration, Release Engineering liaison</role>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Janitor</role>
+    </member>
+    <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
       <role>General System Administration, Automation, Virtualization</role>
