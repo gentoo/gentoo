@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils user
+inherit autotools eutils user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="http://www.ntop.org/"
@@ -17,8 +17,10 @@ IUSE=""
 DEPEND="dev-db/sqlite:3
 	dev-python/pyzmq
 	dev-lang/luajit:2
+	dev-libs/json-c
 	dev-libs/geoip
 	dev-libs/glib:2
+	dev-libs/hiredis
 	dev-libs/libxml2
 	net-analyzer/rrdtool
 	net-libs/libpcap
@@ -42,6 +44,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG
 	cd "${S}/nDPI"
 	econf
 	cd "${S}"
