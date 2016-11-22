@@ -23,9 +23,9 @@ else
 	UPSTREAM_VER=
 	SECURITY_VER=17
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=6
+	GENTOO_VER=7
 	# xen-tools's gentoo patches version which apply to this specific ebuild
-	GENTOO_GPV=0
+	GENTOO_GPV=1
 	# xen-tools ovmf's patches
 	OVMF_VER=2
 
