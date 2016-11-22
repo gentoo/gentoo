@@ -5643,6 +5643,14 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/Dist-Zilla 6.8.0: distribution builder; installer not included!
+dev-perl/Dist-Zilla-Plugin-MakeMaker-Awesome 0.380.0: A more awesome MakeMaker plugin for Dist::Zilla
+dev-perl/Dist-Zilla-Plugin-MetaProvides 2.2.3: Generating and Populating 'provides' in your META.yml
+dev-perl/Dist-Zilla-Plugin-MetaProvides-Package 2.4.2: Extract namespaces/version from traditional packages for provides
+dev-perl/Dist-Zilla-Plugin-OSPrereqs 0.8.0: List prereqs conditional on operating system
+dev-perl/Dist-Zilla-Plugin-OurPkgVersion 0.100.0: No line insertion and does Package version with our
+dev-perl/Dist-Zilla-Plugin-Test-MinimumVersion 2.0.7: Release tests for minimum required versions
+dev-perl/Dist-Zilla-Plugin-Test-Perl-Critic 3.0.0: Tests to check your code against best practices
+dev-perl/Dist-Zilla-Role-ModuleMetadata 0.4.0: A role for plugins that use Module::Metadata
 dev-perl/EV 4.180.0 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.7.0: unified interface to mail representations
@@ -5855,6 +5863,7 @@ dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standa
 dev-perl/HTTP-Server-Simple-PSGI 0.160.0: PSGI handler for HTTP::Server::Simple
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
 dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
+dev-perl/Hash-Merge-Simple 0.51.0: Recursively merge two or more hashes, simply
 dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
 dev-perl/Hash-NoRef 0.30.0-r1: A HASH that store values without increasing the reference count (weak references)
@@ -6256,6 +6265,7 @@ dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been s
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
+dev-perl/Perl-MinimumVersion 1.380.0: Find a minimum required version of perl for Perl code
 dev-perl/Perl-PrereqScanner 1.23.0: a tool to scan your Perl code for its prerequisites
 dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
@@ -6450,6 +6460,7 @@ dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
 dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily as loaded modules
 dev-perl/Test-Deep 1.120.0: Extremely flexible deep comparison testing
+dev-perl/Test-Deep-JSON 0.30.0: Compare JSON with Test::Deep
 dev-perl/Test-Dependencies 0.120.0 0.210.0: Ensure that your dependency listing is complete
 dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
@@ -6466,6 +6477,7 @@ dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
+dev-perl/Test-MinimumVersion 0.101.82: does your code require newer perl than you think?
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.505.270-r1: Perl extension for emulating troublesome interfaces
@@ -6494,6 +6506,7 @@ dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for t
 dev-perl/Test-Trap 0.2.2-r1 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.170.0: do use_ok() for all the MANIFESTed modules
+dev-perl/Test-Version 2.50.0: Check to see that version's in modules are sane
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them

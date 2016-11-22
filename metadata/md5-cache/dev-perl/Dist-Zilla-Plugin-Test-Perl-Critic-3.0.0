@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Data-Section-0.4.0 dev-perl/Dist-Zilla dev-perl/Moose dev-perl/Test-Perl-Critic dev-perl/namespace-autoclean >=dev-perl/Module-Build-0.280.0 test? ( virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-IO >=virtual/perl-Test-Simple-0.940.0 virtual/perl-autodie ) dev-lang/perl:=
+DESCRIPTION=Tests to check your code against best practices
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Dist-Zilla-Plugin-Test-Perl-Critic/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Data-Section-0.4.0 dev-perl/Dist-Zilla dev-perl/Moose dev-perl/Test-Perl-Critic dev-perl/namespace-autoclean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JQ/JQUELIN/Dist-Zilla-Plugin-Test-Perl-Critic-3.000.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=6e878d0cf5bdc4ab8f18017a35823ccd

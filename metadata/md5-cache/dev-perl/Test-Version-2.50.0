@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Exporter dev-perl/File-Find-Rule-Perl >=virtual/perl-Module-Metadata-1.0.20 >=virtual/perl-Test-Simple-0.940.0 virtual/perl-parent >=virtual/perl-version-0.860.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-CPAN-Meta-2.120.900 virtual/perl-File-Spec virtual/perl-IO dev-perl/Test-Exception ) dev-lang/perl:=
+DESCRIPTION=Check to see that version's in modules are sane
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-Version/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Exporter dev-perl/File-Find-Rule-Perl >=virtual/perl-Module-Metadata-1.0.20 >=virtual/perl-Test-Simple-0.940.0 virtual/perl-parent >=virtual/perl-version-0.860.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Test-Version-2.05.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=e8dda840a497b3f687cbe7eb121bf9ea

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Exporter-Lite dev-perl/JSON dev-perl/Test-Deep >=dev-perl/Module-Build-0.380.0 virtual/perl-CPAN-Meta test? ( >=virtual/perl-ExtUtils-MakeMaker-6.590.0 virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Compare JSON with Test::Deep
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-Deep-JSON/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Exporter-Lite dev-perl/JSON dev-perl/Test-Deep dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MO/MOTEMEN/Test-Deep-JSON-0.03.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=a5c526cbe1df6198e48db61f0e2c07b8

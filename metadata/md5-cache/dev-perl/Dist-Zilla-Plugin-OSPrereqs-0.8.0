@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Dist-Zilla-5.22.0 dev-perl/Moose >=virtual/perl-Scalar-List-Utils-1.330.0 dev-perl/namespace-autoclean >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( >=virtual/perl-CPAN-Meta-2.120.900 virtual/perl-File-Spec dev-perl/Params-Util dev-perl/Sub-Exporter dev-perl/Test-Deep dev-perl/Test-Deep-JSON >=virtual/perl-Test-Simple-0.880.0 dev-perl/YAML-Tiny ) dev-lang/perl:=
+DESCRIPTION=List prereqs conditional on operating system
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Dist-Zilla-Plugin-OSPrereqs/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Dist-Zilla-5.22.0 dev-perl/Moose >=virtual/perl-Scalar-List-Utils-1.330.0 dev-perl/namespace-autoclean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Dist-Zilla-Plugin-OSPrereqs-0.008.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=893fdb537863f780af1435aee35c760c
