@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-17">
+  <title>RPCBind: Denial of Service</title>
+  <synopsis>A buffer overflow in RPCBind might allow remote attackers to cause
+    a Denial of Service.
+  </synopsis>
+  <product type="ebuild">rpcbind</product>
+  <announced>November 22, 2016</announced>
+  <revised>November 22, 2016: 2</revised>
+  <bug>560990</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-nds/rpcbind" auto="yes" arch="*">
+      <unaffected range="ge">0.2.3-r1</unaffected>
+      <vulnerable range="lt">0.2.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The RPCBind utility is a server that converts RPC program numbers into
+      universal addresses.
+    </p>
+  </background>
+  <description>
+    <p>A use-after-free vulnerability was discovered in RPCBind’s
+      svc_dodestroy function when trying to free a corrupted xprt-&gt;xp_netid
+      pointer.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RPCBind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-nds/rpcbind-0.2.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7236">CVE-2015-7236</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:23:05 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:58:44 +0000">b-man</metadata>
+</glsa>

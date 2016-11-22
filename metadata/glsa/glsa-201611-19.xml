@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-19">
+  <title>Tar: Extract pathname bypass</title>
+  <synopsis>A path traversal attack in Tar may lead to the remote execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">tar</product>
+  <announced>November 22, 2016</announced>
+  <revised>November 22, 2016: 2</revised>
+  <bug>598334</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/tar" auto="yes" arch="*">
+      <unaffected range="ge">1.29-r1</unaffected>
+      <vulnerable range="lt">1.29-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Tar program provides the ability to create and manipulate tar
+      archives.
+    </p>
+  </background>
+  <description>
+    <p>Tar attempts to avoid path traversal attacks by removing offending parts
+      of the element name at extract. This sanitizing leads to a vulnerability
+      where the attacker can bypass the path name(s) specified on the command
+      line.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The attacker can create a crafted tar archive that, if extracted by the
+      victim, replaces files and directories the victim has access to in the
+      target directory, regardless of the path name(s) specified on the command
+      line.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tar users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/tar-1.29-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6321">CVE-2016-6321</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 11 Nov 2016 06:05:11 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:59:11 +0000">b-man</metadata>
+</glsa>
