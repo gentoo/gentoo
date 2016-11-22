@@ -13,7 +13,7 @@ DESCRIPTION="vim plugin: interact with gists (gist.github.com)"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2423 https://github.com/mattn/gist-vim"
 SRC_URI="https://github.com/mattn/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 
 RDEPEND="
 	app-vim/webapi
