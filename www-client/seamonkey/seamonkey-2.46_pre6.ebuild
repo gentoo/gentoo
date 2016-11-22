@@ -59,7 +59,7 @@ else
 	"
 fi
 
-MOZCONFIG_OPTIONAL_GTK2ONLY=1
+MOZCONFIG_OPTIONAL_GTK3=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.49 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas-v2
