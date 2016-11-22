@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,7 +48,7 @@ src_test() {
 
 src_install() {
 	dobin ${PN}
-	newman ${PN}.cat1 ${PN}.1
+	doman ${PN}.1
 	FORCE_BSD_MK=1 SYS_MK_DIR=. \
 		sh ../mk/install-mk -v -m 644 "${ED}"/usr/share/mk/${PN} \
 		|| die "failed to install mk files"
