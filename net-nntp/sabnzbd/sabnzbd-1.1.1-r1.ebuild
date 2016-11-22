@@ -88,8 +88,8 @@ src_install() {
 	insopts -m 0755
 	doins SABnzbd.py
 
-	python_fix_shebang "${ED}usr/share/${PN}"
-	python_optimize "${ED}usr/share/${PN}"
+	python_fix_shebang "${ED%/}/usr/share/${PN}"
+	python_optimize "${ED%/}/usr/share/${PN}"
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"

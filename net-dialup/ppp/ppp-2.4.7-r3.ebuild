@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,23 +6,27 @@ EAPI=5
 
 inherit eutils linux-info multilib pam toolchain-funcs
 
-PATCH_VER="2"
+PATCH_VER="4"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="http://www.samba.org/ppp"
 SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
-	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-patches-${PATCH_VER}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/${P}-patches-${PATCH_VER}.tar.xz
 	http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="activefilter atm dhcp eap-tls gtk ipv6 pam radius"
+IUSE="activefilter atm dhcp eap-tls gtk ipv6 libressl pam radius"
 
 DEPEND="activefilter? ( net-libs/libpcap )
 	atm? ( net-dialup/linux-atm )
 	pam? ( virtual/pam )
 	gtk? ( x11-libs/gtk+:2 )
-	eap-tls? ( net-misc/curl dev-libs/openssl:0 )"
+	eap-tls? (
+		net-misc/curl
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)"
 RDEPEND="${DEPEND}"
 PDEPEND="net-dialup/ppp-scripts"
 
@@ -81,6 +85,8 @@ src_prepare() {
 		einfo "Disabling radius"
 		sed -i -e '/+= radius/s:^:#:' pppd/plugins/Makefile.linux || die
 	fi
+
+	epatch_user # 549588
 }
 
 src_compile() {
