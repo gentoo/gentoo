@@ -28,18 +28,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-lang/perl )"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected compiler"
-
-			if tc-is-clang; then
-				ewarn "OpenMP support in sys-devel/clang is provided by sys-libs/libomp,"
-				ewarn "which you will need to build ${CATEGORY}/${PN} with USE=\"openmp\""
-			fi
-
-			die "need openmp capable compiler"
-		fi
+		tc-check-openmp
 		FORTRAN_NEED_OPENMP=1
 	fi
 
