@@ -29,6 +29,7 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
+	$(add_frameworks_dep plasma)
 	$(add_plasma_dep kde-cli-tools)
 	$(add_qt_dep qtgraphicaleffects)
 	!kde-plasma/kscreen:4
