@@ -3991,7 +3991,7 @@ dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 13.0.1 13.0.1-r3 14.0.1 18.0 20.0: A collection of Google's core Java libraries
-dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
+dev-java/guice 4.0 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
