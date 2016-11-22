@@ -41,7 +41,7 @@
     <code>
       # emerge --sync
       # emerge --ask --oneshot --verbose
-      "&gt;=www-plugins/adobe-flash-23.0.0.205"
+      "&gt;=www-plugins/adobe-flash-23.0.0.207"
     </code>
     
     <p>All Adobe Flash Player 11.x users should upgrade to the latest version:</p>
@@ -49,7 +49,7 @@
     <code>
       # emerge --sync
       # emerge --ask --oneshot --verbose
-      "&gt;=www-plugins/adobe-flash-11.2.202.635"
+      "&gt;=www-plugins/adobe-flash-11.2.202.644"
     </code>
   </resolution>
   <references>
