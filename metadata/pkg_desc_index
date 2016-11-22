@@ -5770,7 +5770,7 @@ dev-perl/GD 2.460.0-r1 2.560.0-r1: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1: Create 3D Graphs with GD and GD::Graph
 dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written using GD
-dev-perl/GDGraph 1.490.0 1.510.0 1.520.0: Perl5 module to create charts using the GD module
+dev-perl/GDGraph 1.490.0 1.510.0 1.520.0 1.540.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
 dev-perl/GStreamer 0.200.0: Perl bindings for GStreamer
