@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-15">
+  <title>Poppler: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Poppler, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>November 22, 2016</announced>
+  <revised>November 22, 2016: 3</revised>
+  <bug>542220</bug>
+  <bug>579752</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.42.0</unaffected>
+      <vulnerable range="lt">0.42.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Poppler is a PDF rendering library based on the xpdf-3.0 code base.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Poppler. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted PDF
+      using Poppler, possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Poppler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.42.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8868">
+      CVE-2015-8868
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 06 Jun 2015 14:35:30 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 22 Nov 2016 11:58:21 +0000">b-man</metadata>
+</glsa>
