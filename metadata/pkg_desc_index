@@ -4507,7 +4507,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2: An object-oriented scripting language
+dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3: An object-oriented scripting language
 dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
@@ -12469,7 +12469,7 @@ media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating 
 media-gfx/krita 3.0 3.0.1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.3.0: Program to create cross stitch patterns
-media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9-r1 2.1.1 9999: Generic 2D CAD program
+media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.4.0 0.5.0: LXImage Image Viewer - GPicView replacement
@@ -18100,7 +18100,7 @@ www-servers/ocsigenserver 2.7-r1 9999: Ocaml-powered webserver and framework for
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3-r1 0.3.1 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.1.0 3.1.1 3.6.0: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.1.0 3.1.1 3.6.0 3.6.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
