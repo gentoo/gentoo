@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 eutils
@@ -59,7 +59,7 @@ src_configure() {
 
 	if use python; then
 		pushd bindings/python || die
-		distutils-r1_src_prepare
+		distutils-r1_src_configure
 		popd || die
 	fi
 }

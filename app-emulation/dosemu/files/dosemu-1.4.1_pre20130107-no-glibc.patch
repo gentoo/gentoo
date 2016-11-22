@@ -1,0 +1,18 @@
+The check has no AC_MGS_RESULT finish helper
+and gets called as
+    set ``
+on gcc-6 which clutters ./configure output.
+
+One of fallouts of https://bugs.gentoo.org/598798
+diff --git a/configure.ac b/configure.ac
+index 34a7f71..0f06f57 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -574,7 +574,2 @@ if test "$GCC" = "yes" ; then
+ 
+-  AC_MSG_CHECKING(for glibc...)
+-  set `printf '%b\n' '#include <features.h>\nXXAaZZ __GLIBC__'|${CC-cc} -E -|awk '/XXAaZZ/ {print $2}'`
+-  if test "$1" = "__GLIBC__"; then
+-    AC_MSG_ERROR([Sorry, you need glibc.])
+-  fi
+ fi

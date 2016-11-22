@@ -1,0 +1,92 @@
+diff --git a/doc/editorconfig.txt b/doc/editorconfig.txt
+index bd6173b..3b32012 100644
+--- a/doc/editorconfig.txt
++++ b/doc/editorconfig.txt
+@@ -79,7 +79,8 @@ empty. There are 3 modes currently: "external_command", "python_builtin",
+ "python_external".
+ 
+     python_builtin:     Use the vim built-in python to run the python version
+-                        EditorConfig Core.
++                        EditorConfig Core. In this mode, Python 2.5 or higher
++                        is required.
+     python_external:    Use an external python interpreter to run the python
+                         version EditorConfig Core.
+     external_command:   Run external EditorConfig Core.
+diff --git a/plugin/editorconfig.vim b/plugin/editorconfig.vim
+index af4f630..9abd008 100644
+--- a/plugin/editorconfig.vim
++++ b/plugin/editorconfig.vim
+@@ -121,15 +121,15 @@ function! s:FindPythonFiles() " {{{1
+ 
+     let l:python_core_files_dir = fnamemodify(
+                 \ findfile(g:EditorConfig_python_files_dir . '/main.py',
+-                \ ','.&runtimepath), ':p:h')
++                \ fnameescape(','.&runtimepath)), ':p:h')
+ 
+     if empty(l:python_core_files_dir)
+         let l:python_core_files_dir = ''
+     else
+ 
+-    " expand python core file path to full path, and remove the appending '/'
+-    let l:python_core_files_dir = substitute(
+-                \ fnamemodify(l:python_core_files_dir, ':p'), '/$', '', '')
++        " expand python core file path to full path, and remove the appending '/'
++        let l:python_core_files_dir = substitute(
++                    \ fnamemodify(l:python_core_files_dir, ':p'), '/$', '', '')
+     endif
+ 
+     let &shellslash = l:old_shellslash
+@@ -247,7 +247,7 @@ function! s:InitializePythonBuiltin(editorconfig_core_py_dir) " {{{2
+     " The following line modifies l:ret. This is a bit confusing but
+     " unfortunately to be compatible with Vim 7.3, we cannot use pyeval. This
+     " should be changed in the future.
+-    execute s:pyfile_cmd s:pyscript_path
++    execute s:pyfile_cmd fnameescape(s:pyscript_path)
+ 
+     return l:ret
+ endfunction
+@@ -327,14 +327,19 @@ endif
+ 
+ function! s:UseConfigFiles()
+ 
++    let l:buffer_name = expand('%:p')
+     " ignore buffers without a name
+-    if empty(expand('%:p'))
++    if empty(l:buffer_name)
+         return
+     endif
+ 
++    if g:EditorConfig_verbose
++        echo 'Applying EditorConfig on file "' . l:buffer_name . '"'
++    endif
++
+     " Ignore specific patterns
+     for pattern in g:EditorConfig_exclude_patterns
+-        if expand('%:p') =~ pattern
++        if l:buffer_name =~ pattern
+             return
+         endif
+     endfor
+@@ -386,8 +391,8 @@ endfunction
+ function! s:UseConfigFiles_Python_External() " {{{2
+ " Use external python interp to run the python EditorConfig Core
+ 
+-    let l:cmd = s:editorconfig_python_interp . ' ' .
+-                \ s:editorconfig_core_py_dir . '/main.py'
++    let l:cmd = shellescape(s:editorconfig_python_interp) . ' ' .
++                \ shellescape(s:editorconfig_core_py_dir . '/main.py')
+ 
+     call s:SpawnExternalParser(l:cmd)
+ 
+@@ -445,6 +450,11 @@ function! s:SpawnExternalParser(cmd) " {{{2
+             return
+         endif
+ 
++        if g:EditorConfig_verbose
++            echo 'Output from EditorConfig core executable:'
++            echo l:parsing_result
++        endif
++
+         for one_line in l:parsing_result
+             let l:eq_pos = stridx(one_line, '=')
+ 

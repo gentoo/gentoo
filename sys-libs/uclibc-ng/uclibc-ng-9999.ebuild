@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug hardened iconv ipv6 rpc crosscompile_opts_headers-only"
+IUSE="debug hardened iconv ipv6 rpc symlink-compat crosscompile_opts_headers-only"
 RESTRICT="strip"
 
 # 1) We can't upgrade from uclibc to uclibc-ng via a soft blocker since portage
@@ -254,13 +254,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local version subversion
+	local version subversion extraversion
 
 	# uclibc-ng tries to create a two sym link with ld.so,
 	# ld-uClibc.so.{0,MAJOR_VERSION} -> ld-uClibc-<version>.so
 	# where MAJOR_VERSION != 0 indicates the ABI verison.
 	# We want to get rid of this and just have ABI = 0.
-	eapply "${FILESDIR}"/uclibc-compat.patch
+	eapply "${FILESDIR}"/uclibc-compat-r1.patch
 
 	# We need to change the major.minor.sublevel of uclibc-ng.
 	# Upstream sets MAJOR_VERSION = 1 which breaks runtime linking.
@@ -269,11 +269,13 @@ src_prepare() {
 	version=( $(get_version_components) )
 	if [[ -z ${version[1]} ]]; then
 		subversion=0
+		extraversion=0
 	else
+		subversion=${version[1]}
 		if [[ -z ${version[2]} ]]; then
-			subversion=${version[1]}
+			extraversion=0
 		else
-			subversion=${version[1]}.${version[2]}
+			extraversion=.${version[2]}
 		fi
 	fi
 
@@ -281,6 +283,7 @@ src_prepare() {
 		-e "/^MAJOR_VERSION/s|:=.*|:= 0|" \
 		-e "/^MINOR_VERSION/s|:=.*|:= ${version[0]}|" \
 		-e "/^SUBLEVEL/s|:=.*|:= ${subversion}|" \
+		-e "/^EXTRAVERSION/s|:=.*|:= ${extraversion}|" \
 		Rules.mak || die
 
 	eapply_user
@@ -306,18 +309,12 @@ src_configure() {
 	if [[ ${target} == "i386" ]]; then
 		[[ ${CTARGET} == i[456]86* ]] && cpu="${CTARGET:1:1}86"
 		sed -i -e "s|default CONFIG_686|default CONFIG_${cpu:-486}|" \
-			extra/Configs/Config.i385 || die
+			extra/Configs/Config.i386 || die
 	fi
 
 	# For arm
 	if [[ ${target} == "arm" ]]; then
 		sed -i -e '/Build for EABI/a \\tdefault y' extra/Configs/Config.arm
-	fi
-
-	# For mips
-	if [[ ${target} == "mips" ]]; then
-		sed -i -e "s|default CONFIG_MIPS_O32_ABI|CONFIG_MIPS_${ABI^[on]}_ABI|" \
-			extra/Configs/Config.mips || die
 	fi
 
 	# We set HOSTCC to the proper tuple rather than just 'gcc'
@@ -380,6 +377,17 @@ src_install() {
 			newbin utils/ldd.host ${CTARGET}-ldd
 		fi
 		return 0
+	fi
+
+	if use symlink-compat; then
+		dosym libc.so.0 "${DESTDIR}"/lib/libcrypt.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libdl.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libm.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libpthread.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/librt.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libresolv.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libubacktrace.so.0
+		dosym libc.so.0 "${DESTDIR}"/lib/libutil.so.0
 	fi
 
 	emake DESTDIR="${D}" install_utils

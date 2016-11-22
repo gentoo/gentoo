@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.6.2-sysmacros.patch #580910
+}
+
 src_configure() {
 	# Hard disable the flags that apply only to the libs.
 	econf \

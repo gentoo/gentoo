@@ -1,0 +1,41 @@
+From d56d2c9a42c291a3592f3d7977b4dcca9ac755b3 Mon Sep 17 00:00:00 2001
+From: Jeffrey Kyllo <jkyllo@echospiral.com>
+Date: Mon, 25 Jan 2016 14:00:04 +0000
+Subject: [PATCH] Updated DateFormattingTestCase with new datetime formats from
+ babel.
+
+---
+ tests/tests.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/tests.py b/tests/tests.py
+index 63c2ecf..2df68ee 100644
+--- a/tests/tests.py
++++ b/tests/tests.py
+@@ -35,7 +35,7 @@ def test_basics(self):
+         with app.test_request_context():
+             app.config['BABEL_DEFAULT_LOCALE'] = 'de_DE'
+             assert babel.format_datetime(d, 'long') == \
+-                '12. April 2010 15:46:00 MESZ'
++                '12. April 2010 um 15:46:00 MESZ'
+ 
+     def test_init_app(self):
+         b = babel.Babel()
+@@ -57,7 +57,7 @@ def test_init_app(self):
+         with app.test_request_context():
+             app.config['BABEL_DEFAULT_LOCALE'] = 'de_DE'
+             assert babel.format_datetime(d, 'long') == \
+-                '12. April 2010 15:46:00 MESZ'
++                '12. April 2010 um 15:46:00 MESZ'
+ 
+     def test_custom_formats(self):
+         app = flask.Flask(__name__)
+@@ -95,7 +95,7 @@ def select_timezone():
+         the_timezone = 'Europe/Vienna'
+ 
+         with app.test_request_context():
+-            assert babel.format_datetime(d) == '12.04.2010 15:46:00'
++            assert babel.format_datetime(d) == '12.04.2010, 15:46:00'
+ 
+     def test_refreshing(self):
+         app = flask.Flask(__name__)

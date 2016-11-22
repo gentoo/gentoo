@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -29,11 +29,16 @@ DEPEND="${RDEPEND}
 	)
 	test? (
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pyside[${PYTHON_USEDEP},svg]
+			dev-python/PyQt5[${PYTHON_USEDEP},svg,testlib]
+			dev-python/PyQt4[${PYTHON_USEDEP},svg,testlib]
+		)
 	)
 	|| (
 		dev-python/pyside[${PYTHON_USEDEP},svg]
-		dev-python/PyQt4[${PYTHON_USEDEP},svg]
 		dev-python/PyQt5[${PYTHON_USEDEP},svg]
+		dev-python/PyQt4[${PYTHON_USEDEP},svg]
 	)
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-13[${PYTHON_USEDEP}]

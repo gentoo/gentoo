@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://gerrit.libreoffice.org/libgltf.git"
-inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-2
+inherit eutils
+[[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="C++ Library for rendering OpenGL models stored in glTF format"
 HOMEPAGE="http://www.libreoffice.org"
@@ -33,8 +33,8 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
+	default
 	[[ -d m4 ]] || mkdir "m4"
-	base_src_prepare
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 

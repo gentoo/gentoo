@@ -3,8 +3,8 @@ cdavl.c:105:53: error: ‘struct ext2_super_block’ has no member named ‘s_fr
 
 http://bugs.gentoo.org/425820
 
---- src/cdavl/cdavl.c
-+++ src/cdavl/cdavl.c
+--- a/src/cdavl/cdavl.c
++++ b/src/cdavl/cdavl.c
 @@ -98,9 +98,11 @@
  	PRINT4("s_free_inodes_count:      ", le32_to_cpu(sb->s_free_inodes_count));
  	PRINT4("s_first_data_block:       ", le32_to_cpu(sb->s_first_data_block));

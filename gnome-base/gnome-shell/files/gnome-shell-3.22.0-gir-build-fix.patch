@@ -1,0 +1,28 @@
+From 395bede20811b0cf2bcecb0b4e5bcbc2c2fa35f4 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 12 Nov 2016 00:21:25 +0100
+Subject: [PATCH] Add missing rpath to point to mutter specific libraries
+
+Reported-By: AlphatPC@gmail.com
+X-Gentoo-Bug: 597842
+X-Gentoo-Url: https://bugs.gentoo.org/show_bug.cgi?id=597842
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e9aacfe..fd98ba5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -311,7 +311,7 @@ shell-enum-types.c: $(srcdir)/shell-enum-types.c.in stamp-shell-enum-types.h
+ 	rm -f $(@F).tmp
+ EXTRA_DIST += shell-enum-types.c.in
+ 
+-libgnome_shell_ldflags = -avoid-version
++libgnome_shell_ldflags = -avoid-version -Wl,-rpath,$(MUTTER_TYPELIB_DIR)
+ libgnome_shell_libadd =		\
+ 	-lm			\
+ 	$(GNOME_SHELL_LIBS)	\
+-- 
+2.10.1
+

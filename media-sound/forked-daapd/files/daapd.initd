@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 # Override in /etc/conf.d/daapd
 LOG_LEVEL=${LOG_LEVEL:-2}

@@ -9,7 +9,6 @@
 		<flag name="nsscache">Depend on sys-auth/libnss-cache to handle flat files</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">nsscache</remote-id>
 		<remote-id type="github">google/nsscache</remote-id>
 	</upstream>
 </pkgmetadata>

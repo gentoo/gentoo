@@ -6,17 +6,18 @@ EAPI=5
 inherit cmake-utils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
-HOMEPAGE="http://sourceforge.net/projects/podofo/"
+HOMEPAGE="https://sourceforge.net/projects/podofo/"
 SRC_URI="mirror://sourceforge/podofo/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+boost idn debug test"
+IUSE="+boost idn libressl debug test"
 
 RDEPEND="dev-lang/lua:=
 	idn? ( net-dns/libidn:= )
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	media-libs/fontconfig:=
 	media-libs/freetype:2=
 	virtual/jpeg:0=

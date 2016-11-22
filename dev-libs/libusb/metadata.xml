@@ -10,6 +10,6 @@
 		<name>Peter Stuge</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">libusb</remote-id>
+		<remote-id type="github">libusb/libusb</remote-id>
 	</upstream>
 </pkgmetadata>

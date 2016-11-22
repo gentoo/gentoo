@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>sir.suriv@gmail.com</email>
+	<name>Diogo Pereira</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	configshell-fb is a Python library that provides a framework
+	for building simple but nice CLI-based applications.
+</longdescription>
+<upstream>
+	<maintainer status="active">
+		<email>agrover@redhat.com</email>
+		<name>Andy Grover</name>
+	</maintainer>
+	<remote-id type="github">open-iscsi/configshell-fb</remote-id>
+	<bugs-to>https://github.com/open-iscsi/configshell-fb/issues</bugs-to>
+</upstream>
+</pkgmetadata>

@@ -25,7 +25,7 @@ IUSE="test"
 # URI-Escape
 
 RDEPEND="
-	>=dev-perl/data-buffer-0.04
+	>=dev-perl/Data-Buffer-0.04
 	virtual/perl-MIME-Base64
 	virtual/perl-Math-BigInt
 	virtual/perl-IO-Compress

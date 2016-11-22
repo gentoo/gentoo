@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,41 +6,41 @@
 # them in a tarball on our mirrors.  This avoids ugly issues while
 # building stages, and when the jade/sgml packages are broken (which
 # seems to be more common than would be nice).
+# Required packages for doc generation:
+# app-text/docbook-sgml-utils
 
-EAPI="4"
+EAPI=5
 
 inherit flag-o-matic eutils toolchain-funcs fcaps
 if [[ ${PV} == "99999999" ]] ; then
-	EGIT_REPO_URI="git://www.linux-ipv6.org/gitroot/iputils"
-	inherit git-2
+	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
+	inherit git-r3
 else
-	SRC_URI="http://www.skbuff.net/iputils/iputils-s${PV}.tar.bz2
-		mirror://gentoo/iputils-s${PV}-manpages.tar.bz2"
+	SRC_URI="https://github.com/iputils/iputils/archive/s${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~polynomial-c/iputils-s${PV}-manpages.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD-4"
 SLOT="0"
-IUSE="arping caps clockdiff doc gnutls idn ipv6 libressl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
+IUSE="arping caps clockdiff doc gcrypt idn ipv6 libressl nettle +openssl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn[static-libs(+)] )
 	ipv6? ( ssl? (
-		gnutls? (
-			net-libs/gnutls[openssl(+)]
-			net-libs/gnutls[static-libs(+)]
-		)
-		!gnutls? (
+		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
+		nettle? ( dev-libs/nettle[static-libs(+)] )
+		openssl? (
 			!libressl? ( dev-libs/openssl:0[static-libs(+)] )
 			libressl? ( dev-libs/libressl[static-libs(+)] )
 		)
 	) )"
 RDEPEND="arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
-	traceroute? ( !net-misc/traceroute )
+	traceroute? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
@@ -54,31 +54,41 @@ if [[ ${PV} == "99999999" ]] ; then
 	"
 fi
 
-S=${WORKDIR}/${PN}-s${PV}
+REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
+
+[ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/021109-uclibc-no-ether_ntohost.patch
-	epatch "${FILESDIR}"/${PN}-99999999-openssl.patch #335436
-	epatch "${FILESDIR}"/${PN}-99999999-tftpd-syslog.patch
-	epatch "${FILESDIR}"/${PN}-20121221-makefile.patch
-	epatch "${FILESDIR}"/${PN}-20121221-parallel-doc.patch
-	epatch "${FILESDIR}"/${PN}-20121221-strtod.patch #472592
-	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20071127-nonroot-floodping.patch
+	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch
 }
 
 src_configure() {
 	use static && append-ldflags -static
 
-	IPV4_TARGETS=(
+	TARGETS=(
 		ping
 		$(for v in arping clockdiff rarpd rdisc tftpd tracepath ; do usev ${v} ; done)
 	)
-	IPV6_TARGETS=(
-		ping6
-		$(usex tracepath 'tracepath6' '')
-		$(usex traceroute 'traceroute6' '')
+	if use ipv6 ; then
+		TARGETS+=(
+			$(usex tracepath 'tracepath6' '')
+			$(usex traceroute 'traceroute6' '')
+		)
+	fi
+
+	myconf=(
+		USE_CRYPTO=no
+		USE_GCRYPT=no
+		USE_NETTLE=no
 	)
-	use ipv6 || IPV6_TARGETS=()
+
+	if use ipv6 && use ssl ; then
+		myconf=(
+			USE_CRYPTO=$(usex openssl)
+			USE_GCRYPT=$(usex gcrypt)
+			USE_NETTLE=$(usex nettle)
+		)
+	fi
 }
 
 src_compile() {
@@ -86,10 +96,9 @@ src_compile() {
 	emake \
 		USE_CAP=$(usex caps) \
 		USE_IDN=$(usex idn) \
-		USE_GNUTLS=$(usex gnutls) \
-		USE_CRYPTO=$(usex ssl) \
-		IPV4_TARGETS="${IPV4_TARGETS[*]}" \
-		IPV6_TARGETS="${IPV6_TARGETS[*]}"
+		IPV4_DEFAULT=$(usex ipv6 'no' 'yes') \
+		TARGETS="${TARGETS[*]}" \
+		${myconf[@]}
 
 	if [[ ${PV} == "99999999" ]] ; then
 		emake html man
@@ -98,8 +107,12 @@ src_compile() {
 
 src_install() {
 	into /
-	dobin ping $(usex ipv6 'ping6' '')
-	use ipv6 && dosym ping.8 "${EPREFIX}"/usr/share/man/man8/ping6.8
+	dobin ping
+	dosym ping /bin/ping4
+	if use ipv6 ; then
+		dosym ping /bin/ping6
+		dosym ping.8 /usr/share/man/man8/ping6.8
+	fi
 	doman doc/ping.8
 
 	if use arping ; then
@@ -122,7 +135,7 @@ src_install() {
 
 	if use tracepath && use ipv6 ; then
 		dosbin tracepath6
-		dosym tracepath.8 "${EPREFIX}"/usr/share/man/man8/tracepath6.8
+		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
 	if use traceroute && use ipv6 ; then
@@ -135,7 +148,7 @@ src_install() {
 		newconfd "${FILESDIR}"/rarpd.conf.d rarpd
 	fi
 
-	dodoc INSTALL RELNOTES
+	dodoc INSTALL.md RELNOTES
 
 	use doc && dohtml doc/*.html
 }
@@ -143,7 +156,6 @@ src_install() {
 pkg_postinst() {
 	fcaps cap_net_raw \
 		bin/ping \
-		$(usex ipv6 'bin/ping6' '') \
 		$(usex arping 'bin/arping' '') \
 		$(usex clockdiff 'usr/bin/clockdiff' '')
 }

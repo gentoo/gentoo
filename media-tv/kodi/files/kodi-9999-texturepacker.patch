@@ -1,5 +1,5 @@
---- tools/depends/native/TexturePacker/Makefile.old	2015-03-17 22:29:18.880029509 +0100
-+++ tools/depends/native/TexturePacker/Makefile	2015-03-17 22:29:41.459671679 +0100
+--- a/tools/depends/native/TexturePacker/Makefile	2015-03-17 22:29:18.880029509 +0100
++++ b/tools/depends/native/TexturePacker/Makefile	2015-03-17 22:29:41.459671679 +0100
 @@ -9,14 +9,10 @@
  
  ifeq ($(NATIVEPLATFORM),)

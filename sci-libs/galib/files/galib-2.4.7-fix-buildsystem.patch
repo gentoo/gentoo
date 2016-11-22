@@ -1,0 +1,65 @@
+Fix the build system, removing hardcoded values for toolchain variables.
+
+--- a/examples/makefile
++++ b/examples/makefile
+@@ -6,7 +6,6 @@
+ # want to compile.  See the README for a description of what each example does.
+ # -----------------------------------------------------------------------------
+ 
+-include ../makevars
+ 
+ # Set these paths to the location of the GA library and headers.
+ #GA_INC_DIR= /usr/local/include
+@@ -14,8 +13,6 @@
+ GA_INC_DIR= ..
+ GA_LIB_DIR= ../ga
+ 
+-INC_DIRS= -I$(GA_INC_DIR)
+-LIB_DIRS= -L$(GA_LIB_DIR)
+ 
+ EXS=randtest\
+  ex1  ex2  ex3  ex4  ex5  ex6  ex7  ex8  ex9\
+@@ -24,7 +21,7 @@
+ 
+ .SUFFIXES: .C
+ .C.o:
+-	$(CXX) $(CXXFLAGS) $(INC_DIRS) -c $<
++	$(CXX) $(CXXFLAGS) -I.. -c $<
+ 
+ all: $(EXS)
+ 
+@@ -34,7 +31,7 @@
+ 
+ # Use this for gnu make
+ $(EXS): %: %.o
+-	$(CXX) $@.o -o $@ $(LIB_DIRS) -lga -lm $(CXX_LIBS)
++	$(CXX) $@.o -o $@ -L../ga/ -lga -lm $(CXX_LIBS)
+ 
+ clean:
+ 	$(RM) $(EXS)
+--- a/ga/makefile
++++ b/ga/makefile
+@@ -14,7 +14,7 @@
+ 
+ $(LIB): $(OBJS) 
+ 	$(PRELINK)
+-	$(AR) $(LIB) $?
++	$(AR) rv $(LIB) $?
+ 	$(RANLIB) $(LIB)
+ 	echo "$(CXX) $(CXXFLAGS)" > BUILD
+ 	@echo $(LIB) is now up-to-date
+--- a/makevars
++++ b/makevars
+@@ -31,12 +31,7 @@
+ #  verified 06mar07 on linux-x86 (debian with gcc 3.3.5)
+ #  verified 06mar07 on linux-x86 (ubuntu with gcc 4.0.3)
+ #  verified 06mar07 on macosx-ppc (macosx 10.4.8 with gcc 4.0.1)
+-CXX         = g++
+-CXXFLAGS    = -g -Wall
+-LD          = g++ -w
+-AR          = ar rv
+ INSTALL     = install -c
+-RANLIB      = echo no ranlib
+ 
+ # gcc2
+ #  verified 28dec04 on linux-x86 (redhat 6.2 with gcc 2.95.2)

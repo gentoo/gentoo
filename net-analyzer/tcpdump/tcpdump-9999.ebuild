@@ -1,18 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils flag-o-matic git-r3 toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-HOMEPAGE="http://www.tcpdump.org/"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	${EGIT_REPO_URI}
+"
 
 LICENSE="BSD"
 SLOT="0"
+IUSE="+drop-root libressl smi ssl samba suid test"
 KEYWORDS=""
-IUSE="+drop-root libressl smi ssl ipv6 samba suid test"
 
 RDEPEND="
 	drop-root? ( sys-libs/libcap-ng )
@@ -53,7 +56,6 @@ src_configure() {
 	fi
 
 	econf \
-		$(use_enable ipv6) \
 		$(use_enable samba smb) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \

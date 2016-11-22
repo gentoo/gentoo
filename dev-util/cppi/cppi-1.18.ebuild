@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="a cpp directive indenter"
-HOMEPAGE="http://savannah.gnu.org/projects/cppi"
+HOMEPAGE="https://savannah.gnu.org/projects/cppi"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"

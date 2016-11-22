@@ -35,6 +35,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND} dev-ml/opam"
 
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
+
 src_configure() {
 	emake setup.exe
 	OASIS_SETUP_COMMAND="./setup.exe" oasis_src_configure

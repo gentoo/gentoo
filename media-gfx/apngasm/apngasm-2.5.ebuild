@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="create an APNG from multiple PNG files"
-HOMEPAGE="http://sourceforge.net/projects/apngasm/"
+HOMEPAGE="https://sourceforge.net/projects/apngasm/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="LGPL-2.1"

@@ -1,0 +1,50 @@
+From a36dad95c447a5cf65f9e3b66c86e906e7f05890 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 5 Nov 2016 09:17:34 -0400
+Subject: [PATCH] Adjust pkgconfig files to point at rootlibdir
+
+The .so symlinks got moved to rootlibdir in 082210c7.
+---
+ Makefile.am                     | 1 +
+ src/libsystemd/libsystemd.pc.in | 2 +-
+ src/libudev/libudev.pc.in       | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f2d8bf5..73144b1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6054,6 +6054,7 @@ EXTRA_DIST += \
+ 
+ # ------------------------------------------------------------------------------
+ substitutions = \
++       '|rootlibdir=$(rootlibdir)|' \
+        '|rootlibexecdir=$(rootlibexecdir)|' \
+        '|rootbindir=$(rootbindir)|' \
+        '|bindir=$(bindir)|' \
+diff --git a/src/libsystemd/libsystemd.pc.in b/src/libsystemd/libsystemd.pc.in
+index e8f7950..7e6d499 100644
+--- a/src/libsystemd/libsystemd.pc.in
++++ b/src/libsystemd/libsystemd.pc.in
+@@ -7,7 +7,7 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
++libdir=@rootlibdir@
+ includedir=@includedir@
+ 
+ Name: systemd
+diff --git a/src/libudev/libudev.pc.in b/src/libudev/libudev.pc.in
+index a0f3f52..770c922 100644
+--- a/src/libudev/libudev.pc.in
++++ b/src/libudev/libudev.pc.in
+@@ -7,7 +7,7 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
++libdir=@rootlibdir@
+ includedir=@includedir@
+ 
+ Name: libudev

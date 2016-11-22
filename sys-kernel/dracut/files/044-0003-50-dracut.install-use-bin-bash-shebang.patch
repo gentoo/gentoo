@@ -1,0 +1,23 @@
+From 69395a528aed99ec04b16c14ebacf4c2e10afd26 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 4 Nov 2016 13:09:28 -0400
+Subject: [PATCH] 50-dracut.install: use /bin/bash shebang
+
+This script utilizes several bash-specific constructs.
+---
+ 50-dracut.install | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/50-dracut.install b/50-dracut.install
+index 7d081d5..54c71d4 100755
+--- a/50-dracut.install
++++ b/50-dracut.install
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ COMMAND="$1"
+ KERNEL_VERSION="$2"
+-- 
+2.10.2
+

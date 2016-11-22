@@ -1,0 +1,11 @@
+[Unit]
+Description=Plex Media Server
+After=network.target
+
+[Service]
+Type=simple
+User=plex
+ExecStart=/usr/sbin/start_pms
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+diff -Naur x2goclient-4.0.5.2.orig/x2goclient.pro x2goclient-4.0.5.2/x2goclient.pro
+--- x2goclient-4.0.5.2.orig/x2goclient.pro	2016-09-19 06:17:44.000000000 +0200
++++ x2goclient-4.0.5.2/x2goclient.pro	2016-09-28 22:03:41.830790244 +0200
+@@ -167,16 +167,16 @@
+ TEMPLATE = app
+ DEPENDPATH += .
+ INCLUDEPATH += src
+-RESOURCES += res/resources.rcc
++RESOURCES += res/resources.qrc
+ 
+ exists(res/txt/git-info) {
+   message("Configuring with --git-info")
+-  RESOURCES += res/git.rcc
++  RESOURCES += res/git.qrc
+ }
+ 
+ exists(res/txt/changelog) {
+   message("Configuring with --changelog")
+-  RESOURCES += res/changelog.rcc
++  RESOURCES += res/changelog.qrc
+ }
+ 
+ linux-g++ {

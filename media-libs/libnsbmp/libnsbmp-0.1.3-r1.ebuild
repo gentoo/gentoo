@@ -12,7 +12,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/libnsbmp/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
 IUSE=""
 
 RDEPEND=""

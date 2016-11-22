@@ -1,5 +1,14 @@
---- configure.ac.orig	2016-03-05 20:53:50.574628728 -0500
-+++ configure.ac	2016-03-05 20:57:54.945617833 -0500
+https://bugs.gentoo.org/show_bug.cgi?id=395615
+
+Explicitly add the required -m32/m64 to *FLAGS; this overrides any 
+arch-specific -m* flags that may have been appended by multilib-portage.
+
+Even though -m32/m64 is now added to *FLAGS, -m32/m64 still has to be
+explicitly added to CC and CXX due to wine's build system. For example,
+winegcc saves the build-time value of CC and uses it at runtime.
+
+--- a/configure.ac	2016-03-05 20:53:50.574628728 -0500
++++ b/configure.ac	2016-03-05 20:57:54.945617833 -0500
 @@ -141,6 +141,9 @@
      then
        CC="$CC -m32"

@@ -1,0 +1,14 @@
+Index: resource_retriever-1.12.2/include/resource_retriever/retriever.h
+===================================================================
+--- resource_retriever-1.12.2.orig/include/resource_retriever/retriever.h
++++ resource_retriever-1.12.2/include/resource_retriever/retriever.h
+@@ -32,8 +32,7 @@
+ #include <string>
+ #include <boost/shared_array.hpp>
+ #include <stdexcept>
+-
+-typedef void CURL;
++#include <curl/curl.h>
+ 
+ namespace resource_retriever
+ {

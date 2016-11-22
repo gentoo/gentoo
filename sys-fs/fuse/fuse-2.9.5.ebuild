@@ -7,7 +7,7 @@ inherit eutils libtool linux-info udev toolchain-funcs
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
-SRC_URI="https://github.com/libfuse/libfuse/releases/download/${PN}_${PV//./_}/fuse-2.9.5.tar.gz"
+SRC_URI="https://github.com/libfuse/libfuse/releases/download/${PN}_${PV//./_}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

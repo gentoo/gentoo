@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit flag-o-matic libtool multilib
 
@@ -87,7 +87,7 @@ RDEPEND="${NLS_RDEPEND}
 		media-libs/libogg
 		media-libs/libvorbis
 		)
-	vpx? ( media-libs/libvpx )
+	vpx? ( media-libs/libvpx:0= )
 	wavpack? ( media-sound/wavpack )
 	X? (
 		x11-libs/libX11
@@ -117,6 +117,8 @@ REQUIRED_USE="vidix? ( || ( X fbcon ) )
 	xinerama? ( X )"
 
 src_prepare() {
+	default
+
 	sed -i -e '/define VDR_ABS_FIFO_DIR/s|".*"|"/var/vdr/xine"|' src/vdr/input_vdr.c || die
 
 	if [[ ${PV} == *9999* ]]; then

@@ -1,13 +1,59 @@
---- makemkv-oss-1.8.10/makemkvgui/src/api_linux.cpp.orig	2014-04-13 14:01:36.000000000 +0100
-+++ makemkv-oss-1.8.10/makemkvgui/src/api_linux.cpp	2014-05-08 00:09:52.863784998 +0100
-@@ -36,9 +36,7 @@
- }
+diff -Naur makemkv-oss-1.9.10.orig/libabi/src/httplinux.cpp makemkv-oss-1.9.10/libabi/src/httplinux.cpp
+--- makemkv-oss-1.9.10.orig/libabi/src/httplinux.cpp	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/libabi/src/httplinux.cpp	2016-05-08 10:52:42.481501963 +0100
+@@ -45,7 +45,7 @@
+     lurl = (char*)alloca(strlen(Url)+1);
+     strcpy(lurl,Url);
  
- static const char* const app_locations[]={
--    "/bin",
--    "/usr/bin",
--    "/usr/local/bin",
-+    "/opt/bin",
-     NULL };
+-    strcpy(argv0,"/usr/bin/wget"); argv[0]=argv0;
++    strcpy(argv0,"wget"); argv[0]=argv0;
+     strcpy(argv1,"-q"); argv[1]=argv1;
+     strcpy(argv2,"-O"); argv[2]=argv2;
+     strcpy(argv3,"-"); argv[3]=argv3;
+diff -Naur makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp
+--- makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp	2016-05-08 13:51:48.761885862 +0100
+@@ -54,8 +54,6 @@
  
- const char* const* ApGetAppLocations()
+     if (AppName[0]==':')
+     {
+-        bool app_found = false;
+-        const char* const* app_locations = ApGetAppLocations();
+         const char* p_env = getenv("MAKEMKVCON");
+ 
+         AppName++;
+@@ -63,6 +61,13 @@
+         if (p_env!=NULL)
+         {
+             strcpy(app_path,p_env);
++        } else {
++            strcpy(app_path,AppName);
++        }
++    } else {
++        strcpy(app_path,AppName);
++    }
++/*
+             app_found = true;
+         } else {
+             for (size_t i=0;app_locations[i]!=NULL;i++)
+@@ -105,7 +110,7 @@
+         }
+         strcpy(p,AppName);
+     }
+-
++*/
+     strcpy(str_guiserver,"guiserver");
+     strcpy(str_apver,verstr);
+ 
+diff -Naur makemkv-oss-1.9.10.orig/makemkvgui/src/spawn_posix.cpp makemkv-oss-1.9.10/makemkvgui/src/spawn_posix.cpp
+--- makemkv-oss-1.9.10.orig/makemkvgui/src/spawn_posix.cpp	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/makemkvgui/src/spawn_posix.cpp	2016-05-08 10:52:37.137598384 +0100
+@@ -70,7 +70,7 @@
+         }
+     }
+ 
+-    err = posix_spawn(&pid,argv[0],&spawn_actions,&spawn_attr,argv,envp);
++    err = posix_spawnp(&pid,argv[0],&spawn_actions,&spawn_attr,argv,envp);
+ 
+     posix_spawn_file_actions_destroy(&spawn_actions);
+     posix_spawnattr_destroy(&spawn_attr);

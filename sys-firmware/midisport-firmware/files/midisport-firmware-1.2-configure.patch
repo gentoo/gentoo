@@ -1,0 +1,36 @@
+--- midisport-firmware-1.2.orig/configure.ac	2006-03-05 22:01:45.000000000 +0100
++++ midisport-firmware-1.2/configure.ac	2013-01-06 22:08:40.479938650 +0100
+@@ -1,9 +1,12 @@
+ # Process this file with autoconf to produce a configure script
+ AC_PREREQ(2.0)
+ AC_INIT(midisport-firmware, 1.2, [usb-midi-fw-user@lists.sourceforge.net])
+-AM_INIT_AUTOMAKE($PACKAGE_NAME, $PACKAGE_VERSION)
++AM_INIT_AUTOMAKE
+ AC_REVISION($Revision$)
+ AC_CONFIG_SRCDIR(MidiSportLoader.ihx)
++m4_ifndef([PKG_PROG_PKG_CONFIG],
++    [m4_fatal([pkg-config is required])])
++PKG_PROG_PKG_CONFIG
+ 
+ AC_ARG_WITH([fxload],
+ 	    AS_HELP_STRING([--with-fxload=name],
+@@ -22,17 +25,8 @@
+   AC_MSG_ERROR([$FXLOAD not found; please install the fxload package first])
+ fi
+ 
+-AC_MSG_CHECKING([for udev version])
+-udev_ver=`udevinfo -V | awk '{ print $3 }'`
+-if test -n "$udev_ver"; then
+-  AC_MSG_RESULT([$udev_ver])
+-else
+-  AC_MSG_RESULT([none])
+-  udev_ver="0"
+-fi
+-if test "$udev_ver" -lt 057; then
+-  AC_MSG_ERROR([udev version 057 or later is required])
+-fi
++PKG_CHECK_MODULES([udev], [udev >= 057], [], [
++	AC_MSG_ERROR(["udev of at least version 057 is required"])])
+ 
+ AC_ARG_WITH([udev],
+ 	    AS_HELP_STRING([--with-udev=dir],

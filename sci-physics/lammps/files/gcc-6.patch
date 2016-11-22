@@ -1,0 +1,11 @@
+--- lammps-7Apr16-orig/lib/atc/Vector.h	2014-11-20 11:59:03.000000000 -0700
++++ lammps-7Apr16/lib/atc/Vector.h	2016-10-13 06:04:44.328977960 -0600
+@@ -119,7 +119,7 @@
+ {
+   DenseVector<T> r(v);
+   r*=(1.0/s); // for integer types this may be worthless
+-  return ;
++  return r;
+ }
+ ///////////////////////////////////////////////////////////////////////////////
+ //* Operator for Vector-Vector sum

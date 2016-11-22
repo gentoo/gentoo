@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit eutils python-any-r1
 
@@ -51,7 +51,7 @@ if ${PRECOMPILED} ; then
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${PV}${NMU_PR:++nmu}${NMU_PR}_all.deb"
 else
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
-		ftp://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
+		https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
 		cacert? ( https://dev.gentoo.org/~anarchy/patches/nss-3.14.1-add_spi+cacerts_ca_certs.patch )"
 fi
 
@@ -169,12 +169,7 @@ pkg_postinst() {
 		"${EROOT}"/usr/sbin/update-ca-certificates --root "${ROOT}"
 	fi
 
-	local c badcerts=0
-	for c in $(find -L "${EROOT}"etc/ssl/certs/ -type l) ; do
-		ewarn "Broken symlink for a certificate at $c"
-		badcerts=1
-	done
-	if [ ${badcerts} -eq 1 ]; then
+	if [ -n "$(find -L "${EROOT}"etc/ssl/certs/ -type l)" ] ; then
 		ewarn "Removing the following broken symlinks:"
 		ewarn "$(find -L "${EROOT}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
 	fi

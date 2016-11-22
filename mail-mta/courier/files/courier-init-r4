@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Portions Copyright 2003 Gentoo Linux
 # $Id$
 #

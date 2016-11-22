@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1
 
-DESCRIPTION="This is a client for the OpenStack Trove API, a scalable relational database service"
+DESCRIPTION="A client for the OpenStack Trove API, a scalable relational database service"
 HOMEPAGE="https://github.com/openstack/python-troveclient"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

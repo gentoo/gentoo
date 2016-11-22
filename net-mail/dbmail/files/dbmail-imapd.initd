@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # chkconfig: - 91 35
 # description: Starts and stops dbmail-impad

@@ -1,0 +1,72 @@
+# Example configuration for GRUB
+# Much of this example configuration was taken from the GRUB manual.
+
+# Menu timeout
+timeout=5
+
+# Default menu entry
+default=0
+
+# If we have a font available, start graphical output.
+if loadfont unifont; then
+	# Output resolution for GRUB (eg. 1024x768 or 'auto').
+	gfxmode=auto
+
+	# Output resolution for Linux (VESAFB only).
+	# 'keep' means use the same resolution as GRUB.
+	# For other framebuffer drivers, pass a resolution using the video= kernel param.
+	gfxpayload=keep
+
+	# Load all video drivers.
+	insmod all_video
+
+	# Switch to graphical output.
+	terminal_output gfxterm
+fi
+
+# Load modules necessary to find any boot files (/boot).
+
+# Partition table(s).
+insmod part_msdos
+#insmod part_gpt
+
+menuentry "Gentoo Linux 4.7.2" {
+	# Filesystem for /boot
+	#insmod btrfs
+	insmod ext2
+	#insmod xfs
+	#insmod zfs
+
+	# Search all block devices for a matching UUID (for /boot)
+	search --set=root --fs-uuid 33d4013a-ec25-4462-a540-8078aeb8ed17
+
+	# Load a linux kernel, passing the root filesystem and init process as parameters
+	echo "Loading kernel..."
+	linux /vmlinuz-4.7.2 root=UUID=e1fce3ad-d7e4-4e2f-a1f5-537642bbccd5 rootfstype=btrfs init=/usr/lib/systemd/systemd
+
+	echo "Loading initramfs..."
+	initrd /initramfs-4.7.2.img
+}
+
+menuentry "Windows XP" {
+	insmod ntfs
+	search --set=root --label WINDOWS_XP --hint hd0,msdos1
+	ntldr /ntldr
+}
+
+menuentry "Windows 7" {
+	insmod ntfs
+	search --set=root --label WINDOWS_7 --hint hd0,msdos2
+	ntldr /bootmgr
+}
+
+menuentry "FreeBSD" {
+	insmod zfs
+	search --set=root --label freepool --hint hd0,msdos7
+	kfreebsd /freebsd@/boot/kernel/kernel
+	kfreebsd_module_elf /freebsd@/boot/kernel/opensolaris.ko
+	kfreebsd_module_elf /freebsd@/boot/kernel/zfs.ko
+	kfreebsd_module /freebsd@/boot/zfs/zpool.cache type=/boot/zfs/zpool.cache
+	set kFreeBSD.vfs.root.mountfrom=zfs:freepool/freebsd
+	set kFreeBSD.hw.psm.synaptics_support=1
+}

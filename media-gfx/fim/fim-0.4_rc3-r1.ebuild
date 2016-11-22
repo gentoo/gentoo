@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim"
-HOMEPAGE="http://savannah.nongnu.org/projects/fbi-improved"
+HOMEPAGE="https://savannah.nongnu.org/projects/fbi-improved"
 SRC_URI="http://download.savannah.gnu.org/releases/fbi-improved/${P/_rc/-rc}.tar.bz2"
 
 LICENSE="GPL-2"

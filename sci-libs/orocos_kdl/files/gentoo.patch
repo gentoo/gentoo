@@ -1,0 +1,10 @@
+Index: orocos_kdl/CMakeLists.txt
+===================================================================
+--- orocos_kdl.orig/CMakeLists.txt
++++ orocos_kdl/CMakeLists.txt
+@@ -114,4 +114,4 @@ INSTALL(FILES ${PROJECT_BINARY_DIR}/oroc
+ INSTALL(FILES ${PROJECT_BINARY_DIR}/orocos_kdl-config-version.cmake DESTINATION share/orocos_kdl)
+ INSTALL(EXPORT OrocosKDLTargets DESTINATION share/orocos_kdl)
+ 
+-INSTALL(FILES package.xml DESTINATION share/orocos_kdl)
++INSTALL(FILES package.xml DESTINATION share/ros_packages/orocos_kdl)

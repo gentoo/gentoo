@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-2
 else
 	SRC_URI="https://github.com/tatsuhiro-t/nghttp2/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -26,14 +26,14 @@ IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xm
 RDEPEND="
 	cxx? ( dev-libs/boost:=[${MULTILIB_USEDEP},threads] )
 	hpack-tools? ( >=dev-libs/jansson-2.5 )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc[${MULTILIB_USEDEP}] )
 	utils? (
-		>=dev-libs/libev-4.15
-		!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist] )
-		libressl? ( dev-libs/libressl )
-		>=sys-libs/zlib-1.2.3
+		>=dev-libs/libev-4.15[${MULTILIB_USEDEP}]
+		!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist,${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		>=sys-libs/zlib-1.2.3[${MULTILIB_USEDEP}]
 	)
-	xml? ( >=dev-libs/libxml2-2.7.7:2 )"
+	xml? ( >=dev-libs/libxml2-2.7.7:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://files.ayoy.net/qoauth/release/${PV}/src/${P}-src.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="debug doc static-libs test"
 
 COMMON_DEPEND="app-crypt/qca:2[debug?,qt4(+)]"
@@ -21,7 +21,7 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-qt/qttest:4 )
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 "
 
 S=${WORKDIR}/${P}-src

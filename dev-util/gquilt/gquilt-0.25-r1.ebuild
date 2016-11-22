@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="A Python/GTK wrapper for quilt"
-HOMEPAGE="http://gquilt.sourceforge.net/ http://sourceforge.net/projects/gquilt/"
+HOMEPAGE="http://gquilt.sourceforge.net/ https://sourceforge.net/projects/gquilt/"
 SRC_URI="mirror://sourceforge/gquilt/${P}.tar.gz"
 
 LICENSE="GPL-2"

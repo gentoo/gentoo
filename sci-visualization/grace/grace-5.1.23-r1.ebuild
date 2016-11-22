@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,14 +22,14 @@ IUSE="fortran fftw jpeg netcdf png"
 
 DEPEND="
 	media-libs/t1lib
-	media-libs/tiff
+	media-libs/tiff:0
 	sys-libs/zlib
 	>=x11-libs/motif-2.3:0
 	x11-libs/xbae
 	fftw? ( sci-libs/fftw:2.1 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	netcdf? ( sci-libs/netcdf )
-	png? ( media-libs/libpng )"
+	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 

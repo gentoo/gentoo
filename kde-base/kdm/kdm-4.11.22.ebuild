@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ KMNAME="kde-workspace"
 inherit systemd kde4-meta flag-o-matic user
 
 DESCRIPTION="KDE login manager, similar to xdm and gdm"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug +consolekit kerberos pam systemd"
 
 REQUIRED_USE="consolekit? ( !systemd ) systemd? ( !consolekit )"
@@ -27,14 +27,14 @@ DEPEND="
 	)
 	kerberos? ( virtual/krb5 )
 	pam? (
-		$(add_kdebase_dep kcheckpass)
+		kde-plasma/kcheckpass:4
 		virtual/pam
 	)
 	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdepasswd)
-	$(add_kdebase_dep libkgreeter)
+	kde-plasma/libkgreeter:4
 	>=x11-apps/xinit-1.0.5-r2
 	x11-apps/xmessage
 "

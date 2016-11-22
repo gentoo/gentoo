@@ -6,9 +6,9 @@ EAPI=5
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook from vdr menu"
-HOMEPAGE="http://www.joachim-wilke.de/show.htm?alias=vdr-fritz"
-SRC_URI="http://joachim-wilke.de/vdr-fritz/${P}.tgz"
+DESCRIPTION="VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook"
+HOMEPAGE="https://github.com/jowi24/vdr-fritz"
+SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/1.5.3/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-1.7.34
 		dev-libs/libgcrypt:0
-		dev-libs/boost"
+		dev-libs/boost[threads]"
 RDEPEND="${DEPEND}"
 
 pkg_postinst() {

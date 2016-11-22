@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/show_bug.cgi?id=566050#c2
+
+--- paps-0.6.8/src/paps.c
++++ paps-0.6.8/src/paps.c
+@@ -569,11 +569,14 @@
+ 
+   fclose (file);
+ 
+-  /* Add a trailing new line if it is missing */
+-  if (inbuf->str[inbuf->len-1] != '\n')
+-    g_string_append(inbuf, "\n");
++  if (inbuf->len) {
++	  /* Add a trailing new line if it is missing */
++	  if (inbuf->str[inbuf->len-1] != '\n')
++	    g_string_append(inbuf, "\n");
+ 
+-  text = inbuf->str;
++	  text = inbuf->str;
++  } else
++  	text = g_strdup("\n");
+   g_string_free (inbuf, FALSE);
+ 
+   return text;

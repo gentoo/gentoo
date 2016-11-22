@@ -1,0 +1,41 @@
+Fix building with C++14, which errors out due to bool -> T* conversions
+See also: https://bugs.gentoo.org/show_bug.cgi?id=592448
+
+Patch by OpenSUSE
+
+Index: src/effects/vamp/LoadVamp.cpp
+===================================================================
+--- src/effects/vamp/LoadVamp.cpp.orig
++++ src/effects/vamp/LoadVamp.cpp
+@@ -266,7 +266,7 @@ Plugin *VampEffectsModule::FindPlugin(co
+    Plugin *vp = PluginLoader::getInstance()->loadPlugin(key, 48000); // rate doesn't matter here
+    if (!vp)
+    {
+-      return false;
++      return NULL;
+    }
+ 
+    // We limit the listed plugin outputs to those whose results can
+Index: src/import/ImportFLAC.cpp
+===================================================================
+--- src/import/ImportFLAC.cpp.orig
++++ src/import/ImportFLAC.cpp
+@@ -296,7 +296,7 @@ ImportFileHandle *FLACImportPlugin::Open
+    int cnt;
+    wxFile binaryFile;
+    if (!binaryFile.Open(filename)) {
+-      return false; // File not found
++      return NULL; // File not found
+    }
+ 
+ #ifdef USE_LIBID3TAG
+@@ -313,7 +313,7 @@ ImportFileHandle *FLACImportPlugin::Open
+ 
+    if (cnt == wxInvalidOffset || strncmp(buf, FLAC_HEADER, 4) != 0) {
+       // File is not a FLAC file
+-      return false;
++      return NULL;
+    }
+ 
+    // Open the file for import
+

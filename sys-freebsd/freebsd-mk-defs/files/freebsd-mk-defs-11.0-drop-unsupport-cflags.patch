@@ -1,0 +1,13 @@
+diff --git a/share/mk/bsd.sys.mk b/share/mk/bsd.sys.mk
+index 37c4d01..e840a25 100644
+--- a/share/mk/bsd.sys.mk
++++ b/share/mk/bsd.sys.mk
+@@ -112,7 +112,7 @@ CWARNFLAGS+=	-Wno-error=unused-function -Wno-error=enum-compare -Wno-error=logic
+ .if ${COMPILER_TYPE} == "clang" && ${COMPILER_VERSION} >= 30600
+ FORMAT_EXTENSIONS=	-D__printf__=__freebsd_kprintf__
+ .else
+-FORMAT_EXTENSIONS=	-fformat-extensions
++FORMAT_EXTENSIONS=
+ .endif
+ 
+ .if defined(IGNORE_PRAGMA)

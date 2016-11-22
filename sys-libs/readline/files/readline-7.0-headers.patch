@@ -1,0 +1,24 @@
+From 4bc0aa68aff12a59628dd3c99a53360a9aa1ce93 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 11 Aug 2016 17:49:27 +0800
+Subject: [PATCH] include ctype.h for isdigit usage
+
+---
+ lib/readline/histexpand.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/readline/histexpand.c b/lib/readline/histexpand.c
+index 46a99aa62e30..13248db83048 100644
+--- a/lib/readline/histexpand.c
++++ b/lib/readline/histexpand.c
+@@ -26,6 +26,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <ctype.h>
+ 
+ #if defined (HAVE_STDLIB_H)
+ #  include <stdlib.h>
+-- 
+2.9.0
+

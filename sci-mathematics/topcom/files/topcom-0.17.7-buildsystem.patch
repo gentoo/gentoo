@@ -1,0 +1,327 @@
+diff -U 3 -dHrN topcom-0.17.7.orig/src/Makefile.in topcom-0.17.7/src/Makefile.in
+--- topcom-0.17.7.orig/src/Makefile.in	2016-07-08 12:46:13.000000000 +0200
++++ topcom-0.17.7/src/Makefile.in	2016-09-25 20:22:51.729578197 +0200
+@@ -119,249 +119,206 @@
+ am_B_A_OBJECTS = B_A.$(OBJEXT)
+ B_A_OBJECTS = $(am_B_A_OBJECTS)
+ B_A_LDADD = $(LDADD)
+-B_A_DEPENDENCIES = ../lib-src/libTOPCOM.a ../lib-src-reg/libCHECKREG.a \
+-	../external/lib/libcddgmp.a ../external/lib/libgmpxx.a \
+-	../external/lib/libgmp.a
++B_A_DEPENDENCIES = ../lib-src/libTOPCOM.a ../lib-src-reg/libCHECKREG.a
+ am_B_A_center_OBJECTS = B_A_center.$(OBJEXT)
+ B_A_center_OBJECTS = $(am_B_A_center_OBJECTS)
+ B_A_center_LDADD = $(LDADD)
+ B_A_center_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_B_D_OBJECTS = B_D.$(OBJEXT)
+ B_D_OBJECTS = $(am_B_D_OBJECTS)
+ B_D_LDADD = $(LDADD)
+-B_D_DEPENDENCIES = ../lib-src/libTOPCOM.a ../lib-src-reg/libCHECKREG.a \
+-	../external/lib/libcddgmp.a ../external/lib/libgmpxx.a \
+-	../external/lib/libgmp.a
++B_D_DEPENDENCIES = ../lib-src/libTOPCOM.a ../lib-src-reg/libCHECKREG.a
+ am_chiro2allfinetriangs_OBJECTS = chiro2allfinetriangs.$(OBJEXT)
+ chiro2allfinetriangs_OBJECTS = $(am_chiro2allfinetriangs_OBJECTS)
+ chiro2allfinetriangs_LDADD = $(LDADD)
+ chiro2allfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2alltriangs_OBJECTS = chiro2alltriangs.$(OBJEXT)
+ chiro2alltriangs_OBJECTS = $(am_chiro2alltriangs_OBJECTS)
+ chiro2alltriangs_LDADD = $(LDADD)
+ chiro2alltriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2circuits_OBJECTS = chiro2circuits.$(OBJEXT)
+ chiro2circuits_OBJECTS = $(am_chiro2circuits_OBJECTS)
+ chiro2circuits_LDADD = $(LDADD)
+ chiro2circuits_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a
+ am_chiro2cocircuits_OBJECTS = chiro2cocircuits.$(OBJEXT)
+ chiro2cocircuits_OBJECTS = $(am_chiro2cocircuits_OBJECTS)
+ chiro2cocircuits_LDADD = $(LDADD)
+ chiro2cocircuits_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2dual_OBJECTS = chiro2dual.$(OBJEXT)
+ chiro2dual_OBJECTS = $(am_chiro2dual_OBJECTS)
+ chiro2dual_LDADD = $(LDADD)
+ chiro2dual_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2finetriang_OBJECTS = chiro2finetriang.$(OBJEXT)
+ chiro2finetriang_OBJECTS = $(am_chiro2finetriang_OBJECTS)
+ chiro2finetriang_LDADD = $(LDADD)
+ chiro2finetriang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2finetriangs_OBJECTS = chiro2finetriangs.$(OBJEXT)
+ chiro2finetriangs_OBJECTS = $(am_chiro2finetriangs_OBJECTS)
+ chiro2finetriangs_LDADD = $(LDADD)
+ chiro2finetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2mintriang_OBJECTS = chiro2mintriang.$(OBJEXT)
+ chiro2mintriang_OBJECTS = $(am_chiro2mintriang_OBJECTS)
+ chiro2mintriang_LDADD = $(LDADD)
+ chiro2mintriang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2nallfinetriangs_OBJECTS = chiro2nallfinetriangs.$(OBJEXT)
+ chiro2nallfinetriangs_OBJECTS = $(am_chiro2nallfinetriangs_OBJECTS)
+ chiro2nallfinetriangs_LDADD = $(LDADD)
+ chiro2nallfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2nalltriangs_OBJECTS = chiro2nalltriangs.$(OBJEXT)
+ chiro2nalltriangs_OBJECTS = $(am_chiro2nalltriangs_OBJECTS)
+ chiro2nalltriangs_LDADD = $(LDADD)
+ chiro2nalltriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2nfinetriangs_OBJECTS = chiro2nfinetriangs.$(OBJEXT)
+ chiro2nfinetriangs_OBJECTS = $(am_chiro2nfinetriangs_OBJECTS)
+ chiro2nfinetriangs_LDADD = $(LDADD)
+ chiro2nfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2ntriangs_OBJECTS = chiro2ntriangs.$(OBJEXT)
+ chiro2ntriangs_OBJECTS = $(am_chiro2ntriangs_OBJECTS)
+ chiro2ntriangs_LDADD = $(LDADD)
+ chiro2ntriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2placingtriang_OBJECTS = chiro2placingtriang.$(OBJEXT)
+ chiro2placingtriang_OBJECTS = $(am_chiro2placingtriang_OBJECTS)
+ chiro2placingtriang_LDADD = $(LDADD)
+ chiro2placingtriang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_chiro2triangs_OBJECTS = chiro2triangs.$(OBJEXT)
+ chiro2triangs_OBJECTS = $(am_chiro2triangs_OBJECTS)
+ chiro2triangs_LDADD = $(LDADD)
+ chiro2triangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_cocircuits2facets_OBJECTS = cocircuits2facets.$(OBJEXT)
+ cocircuits2facets_OBJECTS = $(am_cocircuits2facets_OBJECTS)
+ cocircuits2facets_LDADD = $(LDADD)
+ cocircuits2facets_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a
+ am_cross_OBJECTS = cross.$(OBJEXT)
+ cross_OBJECTS = $(am_cross_OBJECTS)
+ cross_LDADD = $(LDADD)
+ cross_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a
+ am_cube_OBJECTS = cube.$(OBJEXT)
+ cube_OBJECTS = $(am_cube_OBJECTS)
+ cube_LDADD = $(LDADD)
+ cube_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_cyclic_OBJECTS = cyclic.$(OBJEXT)
+ cyclic_OBJECTS = $(am_cyclic_OBJECTS)
+ cyclic_LDADD = $(LDADD)
+ cyclic_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_hypersimplex_OBJECTS = hypersimplex.$(OBJEXT)
+ hypersimplex_OBJECTS = $(am_hypersimplex_OBJECTS)
+ hypersimplex_LDADD = $(LDADD)
+ hypersimplex_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_lattice_OBJECTS = lattice.$(OBJEXT)
+ lattice_OBJECTS = $(am_lattice_OBJECTS)
+ lattice_LDADD = $(LDADD)
+ lattice_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2allfinetriangs_OBJECTS = points2allfinetriangs.$(OBJEXT)
+ points2allfinetriangs_OBJECTS = $(am_points2allfinetriangs_OBJECTS)
+ points2allfinetriangs_LDADD = $(LDADD)
+ points2allfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2alltriangs_OBJECTS = points2alltriangs.$(OBJEXT)
+ points2alltriangs_OBJECTS = $(am_points2alltriangs_OBJECTS)
+ points2alltriangs_LDADD = $(LDADD)
+ points2alltriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2chiro_OBJECTS = points2chiro.$(OBJEXT)
+ points2chiro_OBJECTS = $(am_points2chiro_OBJECTS)
+ points2chiro_LDADD = $(LDADD)
+ points2chiro_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2facets_OBJECTS = points2facets.$(OBJEXT)
+ points2facets_OBJECTS = $(am_points2facets_OBJECTS)
+ points2facets_LDADD = $(LDADD)
+ points2facets_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2finetriang_OBJECTS = points2finetriang.$(OBJEXT)
+ points2finetriang_OBJECTS = $(am_points2finetriang_OBJECTS)
+ points2finetriang_LDADD = $(LDADD)
+ points2finetriang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2finetriangs_OBJECTS = points2finetriangs.$(OBJEXT)
+ points2finetriangs_OBJECTS = $(am_points2finetriangs_OBJECTS)
+ points2finetriangs_LDADD = $(LDADD)
+ points2finetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2flips_OBJECTS = points2flips.$(OBJEXT)
+ points2flips_OBJECTS = $(am_points2flips_OBJECTS)
+ points2flips_LDADD = $(LDADD)
+ points2flips_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2nallfinetriangs_OBJECTS = points2nallfinetriangs.$(OBJEXT)
+ points2nallfinetriangs_OBJECTS = $(am_points2nallfinetriangs_OBJECTS)
+ points2nallfinetriangs_LDADD = $(LDADD)
+ points2nallfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2nalltriangs_OBJECTS = points2nalltriangs.$(OBJEXT)
+ points2nalltriangs_OBJECTS = $(am_points2nalltriangs_OBJECTS)
+ points2nalltriangs_LDADD = $(LDADD)
+ points2nalltriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2nfinetriangs_OBJECTS = points2nfinetriangs.$(OBJEXT)
+ points2nfinetriangs_OBJECTS = $(am_points2nfinetriangs_OBJECTS)
+ points2nfinetriangs_LDADD = $(LDADD)
+ points2nfinetriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2nflips_OBJECTS = points2nflips.$(OBJEXT)
+ points2nflips_OBJECTS = $(am_points2nflips_OBJECTS)
+ points2nflips_LDADD = $(LDADD)
+ points2nflips_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2ntriangs_OBJECTS = points2ntriangs.$(OBJEXT)
+ points2ntriangs_OBJECTS = $(am_points2ntriangs_OBJECTS)
+ points2ntriangs_LDADD = $(LDADD)
+ points2ntriangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2placingtriang_OBJECTS = points2placingtriang.$(OBJEXT)
+ points2placingtriang_OBJECTS = $(am_points2placingtriang_OBJECTS)
+ points2placingtriang_LDADD = $(LDADD)
+ points2placingtriang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2triangs_OBJECTS = points2triangs.$(OBJEXT)
+ points2triangs_OBJECTS = $(am_points2triangs_OBJECTS)
+ points2triangs_LDADD = $(LDADD)
+ points2triangs_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_points2volume_OBJECTS = points2volume.$(OBJEXT)
+ points2volume_OBJECTS = $(am_points2volume_OBJECTS)
+ points2volume_LDADD = $(LDADD)
+ points2volume_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_santos_22_triang_OBJECTS = santos_22_triang.$(OBJEXT)
+ santos_22_triang_OBJECTS = $(am_santos_22_triang_OBJECTS)
+ santos_22_triang_LDADD = $(LDADD)
+ santos_22_triang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_santos_dim4_triang_OBJECTS = santos_dim4_triang.$(OBJEXT)
+ santos_dim4_triang_OBJECTS = $(am_santos_dim4_triang_OBJECTS)
+ santos_dim4_triang_LDADD = $(LDADD)
+ santos_dim4_triang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ am_santos_triang_OBJECTS = santos_triang.$(OBJEXT)
+ santos_triang_OBJECTS = $(am_santos_triang_OBJECTS)
+ santos_triang_LDADD = $(LDADD)
+ santos_triang_DEPENDENCIES = ../lib-src/libTOPCOM.a \
+-	../lib-src-reg/libCHECKREG.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src-reg/libCHECKREG.a 
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+ am__v_P_0 = false
+@@ -591,9 +548,6 @@
+ santos_22_triang_SOURCES = santos_22_triang.cc
+ LDADD = ../lib-src/libTOPCOM.a \
+                   ../lib-src-reg/libCHECKREG.a \
+-                  ../external/lib/libcddgmp.a \
+-                  ../external/lib/libgmpxx.a \
+-                  ../external/lib/libgmp.a
+ 
+ AM_CPPFLAGS = -I../lib-src -I../lib-src-reg -I../wrap-gmp-gmpxx \
+ 	-I../external/include -I$(includedir) -DVERBOSE -DGMPRATIONAL \
+diff -U 3 -dHrN topcom-0.17.7.orig/src-reg/Makefile.in topcom-0.17.7/src-reg/Makefile.in
+--- topcom-0.17.7.orig/src-reg/Makefile.in	2016-07-08 12:46:13.000000000 +0200
++++ topcom-0.17.7/src-reg/Makefile.in	2016-09-25 20:19:04.062645737 +0200
+@@ -102,8 +102,7 @@
+ checkregularity_OBJECTS = $(am_checkregularity_OBJECTS)
+ checkregularity_LDADD = $(LDADD)
+ checkregularity_DEPENDENCIES = ../lib-src-reg/libCHECKREG.a \
+-	../lib-src/libTOPCOM.a ../external/lib/libcddgmp.a \
+-	../external/lib/libgmpxx.a ../external/lib/libgmp.a
++	../lib-src/libTOPCOM.a
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
+ am__v_P_0 = false
+@@ -257,9 +256,6 @@
+ checkregularity_SOURCES = checkregularity.cc
+ LDADD = ../lib-src-reg/libCHECKREG.a \
+                   ../lib-src/libTOPCOM.a \
+-                  ../external/lib/libcddgmp.a \
+-                  ../external/lib/libgmpxx.a \
+-                  ../external/lib/libgmp.a
+ 
+ AM_CPPFLAGS = -I../lib-src -I../lib-src-reg -I../wrap-gmp-gmpxx \
+ 	-I../external/include -I$(includedir) -DVERBOSE -DGMPRATIONAL \

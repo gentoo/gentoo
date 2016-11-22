@@ -1,0 +1,25 @@
+From 8967c58a435ad8c1db5599edd044de2902399459 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 24 Jun 2016 15:54:24 +0200
+Subject: [PATCH] Disable check for new version by default
+
+---
+ taskcoachlib/config/defaults.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/taskcoachlib/config/defaults.py b/taskcoachlib/config/defaults.py
+index 77a3809..5025af3 100644
+--- a/taskcoachlib/config/defaults.py
++++ b/taskcoachlib/config/defaults.py
+@@ -538,7 +538,7 @@ defaults = {
+     'pythonfrozen': '',  # Idem
+     'current': meta.data.version,
+     'notified': meta.data.version,
+-    'notify': 'True' 
++    'notify': 'False'
+     },
+ 'behavior': {
+     'markparentcompletedwhenallchildrencompleted': 'False',
+-- 
+2.9.0
+

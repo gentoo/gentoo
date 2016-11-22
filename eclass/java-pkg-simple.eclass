@@ -88,6 +88,9 @@ S="${WORKDIR}"
 java-pkg-simple_src_compile() {
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
+	# auto generate classpath
+	java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
+
 	# gather sources
 	find ${JAVA_SRC_DIR:-*} -name \*.java > ${sources}
 	mkdir -p ${classes} || die "Could not create target directory"

@@ -23,10 +23,9 @@ IUSE="+alsa +clock colorpicker cpuload +desktopswitch dom +kbindicator +mainmenu
 	+showdesktop statusnotifier sysstat +taskbar +tray +volume worldclock"
 REQUIRED_USE="volume? ( || ( alsa pulseaudio ) )"
 
-DEPEND="
+CDEPEND="
 	dev-libs/glib:2
 	>=dev-libs/libqtxdg-1.0.0
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -51,7 +50,9 @@ DEPEND="
 		x11-libs/libXrender )
 	volume? ( alsa? ( media-libs/alsa-lib )
 		pulseaudio? ( media-sound/pulseaudio ) )"
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	dev-qt/linguist-tools:5"
+RDEPEND="${CDEPEND}
 	dev-qt/qtsvg:5
 	>=lxde-base/lxmenu-data-0.1.2"
 

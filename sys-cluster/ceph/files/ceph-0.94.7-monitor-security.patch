@@ -1,0 +1,109 @@
+From b78a1be835706e7dabc505be343945d0ac05697d Mon Sep 17 00:00:00 2001
+From: Kefu Chai <kchai@redhat.com>
+Date: Thu, 30 Jun 2016 13:24:22 +0800
+Subject: [PATCH] mon: Monitor: validate prefix on handle_command()
+
+Fixes: http://tracker.ceph.com/issues/16297
+
+Signed-off-by: You Ji <youji@ebay.com>
+(cherry picked from commit 7cb3434fed03a5497abfd00bcec7276b70df0654)
+
+Conflicts:
+    src/mon/Monitor.cc (the signature of Monitor::reply_command()
+                        changed a little bit in master, so adapt the
+                        commit to work with the old method)
+---
+ src/mon/Monitor.cc       | 23 ++++++++++++++++++++++-
+ src/test/librados/cmd.cc | 35 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+), 1 deletion(-)
+
+diff --git a/src/mon/Monitor.cc b/src/mon/Monitor.cc
+index 48563ad..d499f0c 100644
+--- a/src/mon/Monitor.cc
++++ b/src/mon/Monitor.cc
+@@ -2565,7 +2565,19 @@ void Monitor::handle_command(MMonCommand *m)
+     return;
+   }
+ 
+-  cmd_getval(g_ceph_context, cmdmap, "prefix", prefix);
++  // check return value. If no prefix parameter provided,
++  // return value will be false, then return error info.
++  if(!cmd_getval(g_ceph_context, cmdmap, "prefix", prefix)) {
++    reply_command(m, -EINVAL, "command prefix not found", 0);
++    return;
++  }
++
++  // check prefix is empty
++  if (prefix.empty()) {
++    reply_command(m, -EINVAL, "command prefix must not be empty", 0);
++    return;
++  }
++
+   if (prefix == "get_command_descriptions") {
+     bufferlist rdata;
+     Formatter *f = Formatter::create("json");
+@@ -2586,6 +2598,15 @@ void Monitor::handle_command(MMonCommand *m)
+   boost::scoped_ptr<Formatter> f(Formatter::create(format));
+ 
+   get_str_vec(prefix, fullcmd);
++
++  // make sure fullcmd is not empty.
++  // invalid prefix will cause empty vector fullcmd.
++  // such as, prefix=";,,;"
++  if (fullcmd.empty()) {
++    reply_command(m, -EINVAL, "command requires a prefix to be valid", 0);
++    return;
++  }
++
+   module = fullcmd[0];
+ 
+   // validate command is in leader map
+diff --git a/src/test/librados/cmd.cc b/src/test/librados/cmd.cc
+index 4f327a0..0a7ed16 100644
+--- a/src/test/librados/cmd.cc
++++ b/src/test/librados/cmd.cc
+@@ -49,6 +49,41 @@ TEST(LibRadosCmd, MonDescribe) {
+   rados_buffer_free(buf);
+   rados_buffer_free(st);
+ 
++  cmd[0] = (char *)"";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "{}", 2, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{\"abc\":\"something\"}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{\"prefix\":\"\"}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{\"prefix\":\"    \"}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{\"prefix\":\";;;,,,;;,,\"}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
++  cmd[0] = (char *)"{\"prefix\":\"extra command\"}";
++  ASSERT_EQ(-EINVAL, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
++  rados_buffer_free(buf);
++  rados_buffer_free(st);
++
+   cmd[0] = (char *)"{\"prefix\":\"mon_status\"}";
+   ASSERT_EQ(0, rados_mon_command(cluster, (const char **)cmd, 1, "", 0, &buf, &buflen, &st, &stlen));
+   ASSERT_LT(0u, buflen);
+-- 
+2.9.0
+

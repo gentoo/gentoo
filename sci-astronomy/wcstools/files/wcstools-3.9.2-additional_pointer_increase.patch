@@ -1,0 +1,14 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix duplicate pointer increase
+ Otherwise, xborder1 may be zero, causing an illegal memory access later.
+--- a/libwcs/findstar.c
++++ b/libwcs/findstar.c
+@@ -212,7 +212,7 @@
+ 	tx1 = trimsec + 1;
+ 	tx2 = strchr (trimsec, ':');
+ 	*tx2 = (char) 0;
+-	xborder1 = atoi (tx1+1);
++	xborder1 = atoi (tx1);
+ 	tx2 = tx2 + 1;
+ 	tx3 = strchr (tx2, ',');
+ 	*tx3 = (char) 0;

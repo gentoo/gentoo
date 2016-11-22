@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools
 
 DESCRIPTION="Library to read and write vcard files"
-HOMEPAGE="http://sourceforge.net/projects/vformat/"
+HOMEPAGE="https://sourceforge.net/projects/vformat/"
 SRC_URI="
 	mirror://debian/pool/main/libv/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/libv/${PN}/${PN}_${PV}-10.debian.tar.gz
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs"
 
 S="${WORKDIR}/${P}.orig"

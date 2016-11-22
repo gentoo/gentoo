@@ -36,6 +36,10 @@ RDEPEND="dev-libs/atk
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cpp14.patch" # bug #594116
+)
+
 src_configure() {
 	myeconfargs=(
 		--with-lv2-dir=/usr/$(get_libdir)/lv2

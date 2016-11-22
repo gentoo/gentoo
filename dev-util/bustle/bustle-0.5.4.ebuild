@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="interactivetests +threaded"
 
 RDEPEND="dev-haskell/cairo:=
@@ -32,6 +32,7 @@ RDEPEND="dev-haskell/cairo:=
 	dev-haskell/text:=
 	>=dev-lang/ghc-7.4.1:=
 	dev-libs/glib:2
+	dev-perl/Locale-gettext
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8

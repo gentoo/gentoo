@@ -1,0 +1,13 @@
+Index: ANSITerminal-0.7/_oasis
+===================================================================
+--- ANSITerminal-0.7.orig/_oasis
++++ ANSITerminal-0.7/_oasis
+@@ -19,7 +19,7 @@ Library "ANSITerminal"
+   InternalModules: ANSITerminal_common
+   CSources:     ANSITerminal_stubs.c
+   BuildDepends: unix, bytes
+-  
++
+ Document API
+   Title:           API reference for ANSITerminal
+   Type:            OCamlbuild (0.3)

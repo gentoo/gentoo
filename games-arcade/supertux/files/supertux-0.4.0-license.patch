@@ -1,5 +1,5 @@
---- CMakeLists.txt.orig
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -578,7 +578,7 @@
  
  INSTALL(TARGETS supertux2_exe DESTINATION ${INSTALL_SUBDIR_BIN})

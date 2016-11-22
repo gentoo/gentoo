@@ -54,7 +54,6 @@ ricoh - libgphoto support for ricoh cameras
 ricoh_g3 - libgphoto support for ricoh_g3 cameras
 samsung - libgphoto support for samsung cameras
 sierra - libgphoto support for sierra cameras
-sipix_blink - libgphoto support for sipix_blink cameras (obsolete)
 sipix_blink2 - libgphoto support for sipix_blink2 cameras
 sipix_web2 - libgphoto support for sipix_web2 cameras
 smal - libgphoto support for smal cameras
@@ -68,7 +67,6 @@ st2205 - libgphoto support for st2205 cameras
 stv0674 - libgphoto support for stv0674 cameras
 stv0680 - libgphoto support for stv0680 cameras
 sx330z - libgphoto support for sx330z cameras
-template - libgphoto support for template cameras (obsolete)
 topfield - libgphoto support for Topfield PVR5000 cameras
 toshiba_pdrm11 - libgphoto support for toshiba_pdrm11 cameras
 tp6801 - libgphoto support for Tenx tp6801 cameras

@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>fauli@gentoo.org</email>
-		<name>Christian Faulhammer</name>
+		<email>kevin@kblob.com</email>
+		<name>Kevin Simmons</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 GRAMPS helps you track your family tree. It allows you to store, edit,
@@ -88,6 +92,8 @@ na vrstni red), kar vam bo v pomoč pri vaših raziskavah, analizah in
 zapolnjevanju vrzeli v rodoslovnih podatkih.
 </longdescription>
 	<use>
+		<flag name="geo">Enable rendering of geographical data using
+			<pkg>sci-geosciences/osm-gps-map</pkg>.</flag>
 		<flag name="reports">All external software that is needed for graphical
     reports will be installed</flag>
 		<flag name="webkit">Use Webkit-based rendering for geographical

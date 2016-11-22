@@ -1,43 +1,56 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # emacs support disabled due to #99533 #335900
 
-EAPI="4"
+EAPI=5
 
 inherit eutils systemd toolchain-funcs autotools multilib-minimal
 
 DESCRIPTION="Console-based mouse driver"
 HOMEPAGE="http://www.nico.schottelius.org/software/gpm/"
-SRC_URI="http://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma"
+SRC_URI="http://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma
+	mirror://gentoo/${P}-docs.patch.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="selinux static-libs"
 
-RDEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]
 	selinux? ( sec-policy/selinux-gpm )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r12
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
-DEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
+DEPEND=">=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]
 	app-arch/xz-utils
 	sys-apps/texinfo
 	virtual/yacc"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sysmacros.patch
+
+	# Hack up the docs until we get this sorted upstream.
+	# https://github.com/telmich/gpm/issues/8
+	epatch "${WORKDIR}"/${P}-docs.patch
+	touch -r . doc/* || die
+
 	# fix ABI values
 	sed -i \
 		-e '/^abi_lev=/s:=.*:=1:' \
 		-e '/^abi_age=/s:=.*:=20:' \
 		configure.ac.footer || die
+	# Rebuild autotools since release doesn't include them.
+	# Should be fixed with the next release though.
+	# https://github.com/telmich/gpm/pull/15
 	sed -i -e '/ACLOCAL/,$d' autogen.sh || die
 	./autogen.sh
 	eautoreconf
+
+	# Out-of-tree builds are broken.
+	# https://github.com/telmich/gpm/issues/16
 	multilib_copy_sources
 }
 
@@ -49,8 +62,6 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	# make sure nothing compiled is left
-	emake clean
 	emake EMACS=: $(multilib_is_native_abi || echo "PROG= ")
 }
 

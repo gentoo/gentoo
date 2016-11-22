@@ -1,0 +1,17 @@
+--- a/src/netserver.c
++++ b/src/netserver.c
+@@ -165,12 +165,12 @@
+ #elif defined(ANDROID)
+ #define DEBUG_LOG_FILE_DIR "/data/local/tmp/"
+ #else
+-#define DEBUG_LOG_FILE_DIR "/var/log/"
++#define DEBUG_LOG_FILE_DIR "/var/log/netperf/"
+ #endif
+ #endif /* DEBUG_LOG_FILE_DIR */
+ 
+ #ifndef DEBUG_LOG_FILE
+-#define DEBUG_LOG_FILE DEBUG_LOG_FILE_DIR"netserver.debug"
++#define DEBUG_LOG_FILE DEBUG_LOG_FILE_DIR "/netserver.debug"
+ #endif
+ 
+ #if !defined(PATH_MAX)

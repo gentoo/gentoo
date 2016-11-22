@@ -1,0 +1,79 @@
+commit 5c29ae813099f62affa048efd424e393a2f433c9
+Author: 0xd34df00d <0xd34df00d@gmail.com>
+Date:   Wed Sep 3 02:30:48 2014 +0400
+
+    [BT] libtorrent-1.0 compatibility.
+
+diff --git a/src/plugins/bittorrent/core.cpp b/src/plugins/bittorrent/core.cpp
+index 2152988..c63de7c 100644
+--- a/src/plugins/bittorrent/core.cpp
++++ b/src/plugins/bittorrent/core.cpp
+@@ -230,9 +230,11 @@ namespace BitTorrent
+ 			setLoggingSettings ();
+ 			tcpPortRangeChanged ();
+ 
++#if LIBTORRENT_VERSION_NUM < 010000
+ 			if (XmlSettingsManager::Instance ()->
+ 					property ("EnableMetadata").toBool ())
+ 				Session_->add_extension (&libtorrent::create_metadata_plugin);
++#endif
+ 			if (XmlSettingsManager::Instance ()->
+ 					property ("EnablePEX").toBool ())
+ 				Session_->add_extension (&libtorrent::create_ut_pex_plugin);
+@@ -1932,10 +1934,17 @@ namespace BitTorrent
+ 			atp.paused = pause;
+ 			atp.duplicate_is_error = true;
+ #endif
++
++#if LIBTORRENT_VERSION_NUM >= 010000
++			std::copy (resumeData.constData (),
++					resumeData.constData () + resumeData.size (),
++					std::back_inserter (atp.resume_data));
++#else
+ 			atp.resume_data = new std::vector<char>;
+ 			std::copy (resumeData.constData (),
+ 					resumeData.constData () + resumeData.size (),
+ 					std::back_inserter (*atp.resume_data));
++#endif
+ 
+ 			handle = Session_->add_torrent (atp);
+ 			if (XmlSettingsManager::Instance ()->property ("ResolveCountries").toBool ())
+diff --git a/src/plugins/bittorrent/core.h b/src/plugins/bittorrent/core.h
+index 07ac771..46e95cb 100644
+--- a/src/plugins/bittorrent/core.h
++++ b/src/plugins/bittorrent/core.h
+@@ -271,7 +271,7 @@ namespace BitTorrent
+ 				const QVector<bool>& files = QVector<bool> (),
+ 				LeechCraft::TaskParameters params = LeechCraft::NoParameters);
+ 		void KillTask (int);
+-		void RemoveTorrent (int, int opt = libtorrent::session::none);
++		void RemoveTorrent (int, int opt = 0);
+ 		void PauseTorrent (int);
+ 		void ResumeTorrent (int);
+ 		void ForceReannounce (int);
+diff --git a/src/plugins/bittorrent/torrentplugin.cpp b/src/plugins/bittorrent/torrentplugin.cpp
+index e19fc2f..676e544 100644
+--- a/src/plugins/bittorrent/torrentplugin.cpp
++++ b/src/plugins/bittorrent/torrentplugin.cpp
+@@ -555,7 +555,7 @@ namespace LeechCraft
+ 
+ 				confirm.exec ();
+ 
+-				int roptions = libtorrent::session::none;
++				int roptions = 0;
+ 				if (confirm.clickedButton () == deleteTorrentsAndFilesButton)
+ 					roptions |= libtorrent::session::delete_files;
+ 				else if (confirm.clickedButton () == deleteTorrentsButton)
+diff --git a/src/plugins/bittorrent/torrenttab.cpp b/src/plugins/bittorrent/torrenttab.cpp
+index fd0cbf7..7f9358b 100644
+--- a/src/plugins/bittorrent/torrenttab.cpp
++++ b/src/plugins/bittorrent/torrenttab.cpp
+@@ -450,7 +450,7 @@ namespace BitTorrent
+ 
+ 		confirm.exec ();
+ 
+-		int roptions = libtorrent::session::none;
++		int roptions = 0;
+ 		if (confirm.clickedButton () == deleteTorrentsAndFilesButton)
+ 			roptions |= libtorrent::session::delete_files;
+ 		else if (confirm.clickedButton () == deleteTorrentsButton)

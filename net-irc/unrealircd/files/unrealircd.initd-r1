@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands="reload"
+
+# Defaults
+: ${UNREALIRCD_USER:=unrealircd}
+: ${UNREALIRCD_CONF:=/etc/unrealircd/${SVCNAME}.conf}
+: ${UNREALIRCD_PIDFILE:=/run/unrealircd/${SVCNAME#unreal}.pid}
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+start() {
+	UNREALIRCD_PIDFILEDIR=${UNREALIRCD_PIDFILE%/*}
+	if ! [ -d "${UNREALIRCD_PIDFILEDIR}" ]; then
+		ebegin "Creating ${UNREALIRCD_PIDFILEDIR} for ${SVCNAME}"
+		mkdir "${UNREALIRCD_PIDFILEDIR}" \
+			&& chown :unrealircd "${UNREALIRCD_PIDFILEDIR}" \
+			&& chmod 770 "${UNREALIRCD_PIDFILEDIR}"
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start ${UNREALIRCD_SSD_OPTS} --exec /usr/bin/unrealircd \
+		--user ${UNREALIRCD_USER} --pidfile "${UNREALIRCD_PIDFILE}" -- -f "${UNREALIRCD_CONF}" ${UNREALIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop ${UNREALIRCD_SSD_OPTS} --pidfile "${UNREALIRCD_PIDFILE}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP ${UNREALIRCD_SSD_OPTS} --pidfile "${UNREALIRCD_PIDFILE}"
+	eend $?
+}

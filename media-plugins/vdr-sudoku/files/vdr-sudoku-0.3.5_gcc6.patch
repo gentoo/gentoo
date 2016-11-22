@@ -1,0 +1,26 @@
+compile fix gcc-6
+https://bugs.gentoo.org/show_bug.cgi?id=594322
+Signed-of-by: Peter Levin <plevine457@gmail.com> 
+Signed-of-by: Joerg  Bornkessel <hd_brummy@gentoo.org> ( 2016/Sep/29 )
+--- sudoku-0.3.5/sudoku.h.old	2016-09-25 17:47:23.689678251 -0400
++++ sudoku-0.3.5/sudoku.h	2016-09-25 17:47:29.014272651 -0400
+@@ -23,6 +23,10 @@
+ 
+ #include <vector>
+ 
++#ifdef USE_RAND
++#include <stdlib.h>
++#include <time.h>
++#endif // USE_RAND
+ 
+ namespace Sudoku
+ {
+@@ -32,8 +36,6 @@
+ 
+ 
+ #ifdef USE_RAND
+-#include <stdlib.h>
+-#include <time.h>
+   /** Random number 0 .. max-1 */
+   static unsigned int rand(unsigned int max)
+   {

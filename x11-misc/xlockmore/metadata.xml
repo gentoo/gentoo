@@ -7,5 +7,6 @@
   </maintainer>
   <use>
     <flag name="xlockrc">Enables xlockrc for people without PAM</flag>
+    <flag name="vtlock">Enables support for virtual terminal locking</flag>
   </use>
 </pkgmetadata>

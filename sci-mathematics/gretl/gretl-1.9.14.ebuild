@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,9 +20,9 @@ IUSE="accessibility cpu_flags_x86_avx emacs gnome gtk nls odbc openmp python
 
 CDEPEND="
 	dev-libs/glib:2
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	dev-libs/libxml2:2
-	dev-libs/mpfr
+	dev-libs/mpfr:0
 	sci-libs/fftw:3.0
 	sci-visualization/gnuplot
 	virtual/lapack
@@ -36,7 +36,7 @@ CDEPEND="
 			x11-libs/gtksourceview:3.0 )
 	odbc? ( dev-db/unixODBC )
 	R? ( dev-lang/R )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:0 )"
 RDEPEND="${CDEPEND}
 	python? ( dev-python/numpy )"
 DEPEND="${CDEPEND}

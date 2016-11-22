@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 # Does not work with py3 here
 PYTHON_COMPAT=( python2_7 )
@@ -10,21 +10,29 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
 
+LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
+LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
+LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
 CODENAME="Krypton"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
 	inherit git-r3
 	;;
-*|*_p*)
+*)
 	MY_PV=${PV/_p/_r}
+	MY_PV=${MY_PV//_alpha/a}
+	MY_PV=${MY_PV//_beta/b}
+	MY_PV=${MY_PV//_rc/rc}
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI="http://mirrors.kodi.tv/releases/source/${MY_PV}-${CODENAME}.tar.gz -> ${P}.tar.gz
-		https://github.com/xbmc/xbmc/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz
-		!java? ( http://mirrors.kodi.tv/releases/source/${MY_P}-generated-addons.tar.xz )"
+	SRC_URI="https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
+		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
+		https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
+		https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
+		!java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
 	KEYWORDS="~amd64 ~x86"
 
-	S=${WORKDIR}/xbmc-${PV}-${CODENAME}
+	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 	;;
 esac
 
@@ -33,12 +41,11 @@ HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa avahi bluetooth bluray caps cec dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X"
+IUSE="airplay alsa bluetooth bluray caps cec dbus debug gles java midi mysql nfs +opengl profile pulseaudio +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
 # gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
 REQUIRED_USE="
 	|| ( gles opengl )
-	gles? ( !vaapi )
-	vaapi? ( !gles )
+	?? ( gles vaapi )
 	udisks? ( dbus )
 	upower? ( dbus )
 "
@@ -60,29 +67,26 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml[stl]
 	>=dev-libs/yajl-2
 	dev-python/simplejson[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	media-fonts/anonymous-pro
 	media-fonts/corefonts
-	media-fonts/roboto
+	media-fonts/dejavu
 	alsa? ( media-libs/alsa-lib )
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
+	media-libs/jasper:=
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	bluray? ( >=media-libs/libbluray-0.7.0 )
 	media-libs/libmad
 	media-libs/libmodplug
-	media-libs/libogg
-	media-libs/libpng:0=
+	media-libs/libmpeg2
 	media-libs/libsamplerate
-	joystick? ( media-libs/libsdl2 )
-	>=media-libs/taglib-1.8
-	media-libs/libvorbis
-	media-sound/dcadec
-	pulseaudio? ( media-sound/pulseaudio )
+	>=media-libs/taglib-1.9
+	media-libs/tiff:0=
 	media-sound/wavpack
-	>=media-video/ffmpeg-2.6:=[encode]
-	rtmp? ( media-video/rtmpdump )
-	avahi? ( net-dns/avahi )
+	>=media-video/ffmpeg-3.0:=[encode]
 	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -92,11 +96,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	caps? ( sys-libs/libcap )
 	sys-libs/zlib
+	virtual/jpeg:0=
 	usb? ( virtual/libusb:1 )
 	mysql? ( virtual/mysql )
 	opengl? (
 		virtual/glu
 		virtual/opengl
+		>=media-libs/glew-1.5.6:=
 	)
 	gles? (
 		media-libs/mesa[gles2]
@@ -112,7 +118,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 		x11-libs/libXrender
-	)"
+	)
+	zeroconf? ( net-dns/avahi )
+"
 RDEPEND="${COMMON_DEPEND}
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
@@ -133,6 +141,11 @@ DEPEND="${COMMON_DEPEND}
 # generated addons package.  #488118
 [[ ${PV} == "9999" ]] && DEPEND+=" virtual/jre"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
+	"${FILESDIR}"/${PN}-9999-texturepacker.patch
+)
+
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
 In some cases Kodi needs to access multicast addresses.
@@ -146,12 +159,13 @@ pkg_setup() {
 
 src_unpack() {
 	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
+	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
+	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
+	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
-	epatch "${FILESDIR}"/${PN}-9999-texturepacker.patch
-	epatch_user #293109
+	default
 
 	# some dirs ship generated autotools, some dont
 	multijob_init
@@ -164,12 +178,34 @@ src_prepare() {
 		pushd ${d/%configure/.} >/dev/null || die
 		AT_NOELIBTOOLIZE="yes" AT_TOPLEVEL_EAUTORECONF="yes" \
 		multijob_child_init eautoreconf
-		popd >/dev/null
+		popd >/dev/null || die
 	done
 	multijob_finish
 	elibtoolize
 
-	if [[ ${PV} == "9999" ]] || use java ; then #558798
+	# Cross-compiler support
+	# We need JsonSchemaBuilder and TexturePacker binaries for the host system
+	# Later we need libsquish for the target system
+	if tc-is-cross-compiler ; then
+		mkdir "${WORKDIR}"/${CBUILD} || die
+		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
+		einfo "Building host tools"
+		cp -a "$S"/{tools,xbmc} ./ || die
+		local tools=( JsonSchemaBuilder )
+		use texturepacker && tools+=( TexturePacker )
+		for tool in "${tools[@]}" ; do
+			tc-env_build emake -C tools/depends/native/$tool
+			mkdir "$S"/tools/depends/native/$tool/bin || die
+			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool "$S"/tools/depends/native/$tool/bin/$tool || die
+		done
+		popd >/dev/null || die
+
+		emake -f codegenerator.mk
+
+		# Binary kodi.bin links against libsquish,
+		# so we need libsquish compiled for the target system
+		emake -C tools/depends/native/libsquish-native/ CXX=$(tc-getCXX)
+	elif [[ ${PV} == "9999" ]] || use java ; then #558798
 		tc-env_build emake -f codegenerator.mk
 	fi
 
@@ -187,7 +223,7 @@ src_prepare() {
 		xbmc/linux/*.cpp || die
 
 	# Tweak autotool timestamps to avoid regeneration
-	find . -type f -exec touch -r configure {} +
+	find . -type f -exec touch -r configure {} + || die
 }
 
 src_configure() {
@@ -201,27 +237,23 @@ src_configure() {
 	[[ ${PV} != "9999" ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
 
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		--disable-ccache \
 		--disable-optimizations \
 		--with-ffmpeg=shared \
 		$(use_enable alsa) \
 		$(use_enable airplay) \
-		$(use_enable avahi) \
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
 		$(use_enable dbus) \
 		$(use_enable debug) \
 		$(use_enable gles) \
-		$(use_enable joystick) \
 		$(use_enable midi mid) \
 		$(use_enable mysql) \
 		$(use_enable nfs) \
 		$(use_enable opengl gl) \
 		$(use_enable profile profiling) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable rtmp) \
 		$(use_enable samba) \
 		$(use_enable sftp ssh) \
 		$(use_enable usb libusb) \
@@ -231,7 +263,8 @@ src_configure() {
 		$(use_enable vaapi) \
 		$(use_enable vdpau) \
 		$(use_enable webserver) \
-		$(use_enable X x11)
+		$(use_enable X x11) \
+		$(use_enable zeroconf avahi)
 }
 
 src_compile() {
@@ -240,22 +273,25 @@ src_compile() {
 
 src_install() {
 	default
-	rm "${ED}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
+	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	domenu tools/Linux/kodi.desktop
 	newicon media/icon48x48.png kodi.png
 
-	# Remove fonconfig settings that are used only on MacOSX.
+	# Remove fontconfig settings that are used only on MacOSX.
 	# Can't be patched upstream because they just find all files and install
 	# them into same structure like they have in git.
-	rm -rf "${ED}"/usr/share/kodi/system/players/dvdplayer/etc
+	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
 
 	# Replace bundled fonts with system ones.
-	rm "${ED}"/usr/share/kodi/addons/skin.confluence/fonts/Roboto-* || die
-	dosym /usr/share/fonts/roboto/Roboto-Regular.ttf \
-		/usr/share/kodi/addons/skin.confluence/fonts/Roboto-Regular.ttf
-	dosym /usr/share/fonts/roboto/Roboto-Bold.ttf \
-		/usr/share/kodi/addons/skin.confluence/fonts/Roboto-Bold.ttf
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf || die
+	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
+		/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf || die
+	dosym /usr/share/fonts/anonymous-pro/Anonymous\ Pro.ttf \
+		/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf
+	#lato is also present but cannot be unbundled because
+	#lato isn't (yet) in portage: https://bugs.gentoo.org/show_bug.cgi?id=589288
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send

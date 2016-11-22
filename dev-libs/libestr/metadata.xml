@@ -2,20 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="person">
 		<email>andreis.vinogradovs@gmail.com</email>
 		<name>Andreis Vinogradovs</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>whissi@whissi.de</email>
-		<name>Thomas D. (Whissi)</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/libestr/issues</bugs-to>

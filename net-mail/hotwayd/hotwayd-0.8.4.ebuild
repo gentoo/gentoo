@@ -24,7 +24,7 @@ hotmail_greed_warning() {
 	ewarn "Since Hotmail started to charge for WebDAV access, you need a Hotmail Plus"
 	ewarn "(or equivalent MSN) account to keep using hotwayd. More info:"
 	ewarn "http://www.boolean.ca/hotpop/"
-	ewarn "http://sourceforge.net/forum/forum.php?thread_id=1277989&forum_id=80217"
+	ewarn "https://sourceforge.net/forum/forum.php?thread_id=1277989&forum_id=80217"
 	echo
 	ebeep 3
 	epause 10

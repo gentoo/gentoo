@@ -1,0 +1,17 @@
+--- a/include/schily/sha2.h  2016-06-05 00:48:16.547308184 -0500
++++ b/include/schily/sha2.h  2016-06-05 00:49:29.304314626 -0500
+@@ -104,10 +104,14 @@
+ 
+ #ifdef	HAVE_LONGLONG
+ extern void SHA384Init		__PR((SHA2_CTX *));
++
++#ifndef HAVE_PRAGMA_WEAK
+ extern void SHA384Transform	__PR((UInt64_t state[8],
+ 					const UInt8_t [SHA384_BLOCK_LENGTH]));
+ extern void SHA384Update	__PR((SHA2_CTX *, const UInt8_t *, size_t));
+ extern void SHA384Pad		__PR((SHA2_CTX *));
++#endif
++
+ extern void SHA384Final		__PR((UInt8_t [SHA384_DIGEST_LENGTH],
+ 					SHA2_CTX *));
+ extern char *SHA384End		__PR((SHA2_CTX *, char *));

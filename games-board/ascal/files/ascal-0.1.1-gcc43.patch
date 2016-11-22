@@ -1,5 +1,5 @@
---- src/gui.cpp.old	2009-01-18 21:11:58.000000000 +0100
-+++ src/gui.cpp	2009-01-18 21:12:33.000000000 +0100
+--- a/src/gui.cpp	2009-01-18 21:11:58.000000000 +0100
++++ b/src/gui.cpp	2009-01-18 21:12:33.000000000 +0100
 @@ -21,6 +21,7 @@
  #include "shareddata.hpp"
  #include "config.h"
@@ -8,8 +8,8 @@
  
  gui::gui(shareddata *newData): GuiBoard() {
  	//clean, cleaner - pointer ;)
---- src/gui_board.cpp.old	2009-01-18 21:13:30.000000000 +0100
-+++ src/gui_board.cpp	2009-01-18 21:13:50.000000000 +0100
+--- a/src/gui_board.cpp	2009-01-18 21:13:30.000000000 +0100
++++ b/src/gui_board.cpp	2009-01-18 21:13:50.000000000 +0100
 @@ -20,6 +20,7 @@
  #include <math.h>
  #include "helper.h"
@@ -18,8 +18,8 @@
  
  
  gui_board::gui_board()   {
---- src/board.cpp.old	2009-01-18 21:14:27.000000000 +0100
-+++ src/board.cpp	2009-01-18 21:14:58.000000000 +0100
+--- a/src/board.cpp	2009-01-18 21:14:27.000000000 +0100
++++ b/src/board.cpp	2009-01-18 21:14:58.000000000 +0100
 @@ -15,6 +15,7 @@
  // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  

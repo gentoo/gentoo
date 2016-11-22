@@ -13,6 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RESTRICT="test"
+
 RDEPEND="dev-vcs/git"
 DEPEND=""
 

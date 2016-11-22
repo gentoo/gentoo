@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>wschlich@gentoo.org</email>
+    <name>Wolfram Schlich</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">todbot/blink1</remote-id>
+  </upstream>
+  <use>
+    <flag name="tool">Build and install command-line tool blink1-tool</flag>
+    <flag name="mini-tool">Build and install command-line mini-tool blink1-mini-tool (normally used for embedded devices)</flag>
+    <flag name="server">Build and install REST API server (currently hard-coded to TCP port 8080)</flag>
+  </use>
+</pkgmetadata>

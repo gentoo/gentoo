@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 RESTRICT="userpriv" # bug #112898
 
-DEPEND=">=games-board/gnuchess-6"
+DEPEND="<games-board/gnuchess-6.2.3"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}

@@ -1,5 +1,5 @@
---- source/blender/blenfont/intern/blf_glyph.c
-+++ source/blender/blenfont/intern/blf_glyph.c
+--- a/source/blender/blenfont/intern/blf_glyph.c
++++ a/source/blender/blenfont/intern/blf_glyph.c
 @@ -262,8 +262,8 @@
  	g->xoff = -1;
  	g->yoff = -1;

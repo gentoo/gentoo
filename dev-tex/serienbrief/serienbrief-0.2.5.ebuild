@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,16 +8,10 @@ DESCRIPTION="Easy creation of form letters written in LaTeX"
 HOMEPAGE="http://nasauber.de/opensource/serienbrief/"
 SRC_URI="http://nasauber.de/opensource/serienbrief/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2" # GPLv2 only
 SLOT="0"
-IUSE=""
-LINS=("de")
-
-for ((i=0; i<${#LINS[@]}; i++)) do
-	IUSE="${IUSE} linguas_${LINS[$i]}"
-done
-
 KEYWORDS="~amd64 ~x86"
+IUSE="linguas_de"
 
 DEPEND=""
 RDEPEND=">=dev-lang/perl-5.8.6
@@ -29,10 +23,9 @@ RDEPEND=">=dev-lang/perl-5.8.6
 src_install() {
 	dobin bin/serienbrief
 	doman doc/serienbrief.1
-	if use linguas_de; then
-		mv po/de.mo serienbrief.mo
-		insinto /usr/share/locale/de/LC_MESSAGES
-		doins serienbrief.mo
+	# install if LINGUAS is unset, or if it contains the language code
+	if [[ -z ${LINGUAS+set} ]] || has de ${LINGUAS}; then
+		domo po/de.mo
 	fi
 	dodoc ChangeLog doc/example/*
 }

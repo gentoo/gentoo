@@ -1,0 +1,77 @@
+From 2756fff72169df6cd4eec3d9bf96e9673574c2d0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 6 Nov 2016 01:00:13 +0100
+Subject: [PATCH 2/2] Make options optional
+
+REVIEW: 129344
+---
+ CMakeLists.txt | 30 ++++++++++++++++++------------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4db135f..8055bee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,6 +48,11 @@ add_definitions(-fvisibility=default)
+ cmake_policy(SET CMP0002 OLD)
+ #cmake_policy(SET CMP0063 NEW)
+ 
++### Options ######################################
++option(ENABLE_CANTOR "Build with Cantor support" ON)
++option(ENABLE_FFTW "Build with FFTW support" ON)
++option(ENABLE_NETCDF "Build with NetCDF support" ON)
++
+ ### FFTW ######################################
+ FIND_LIBRARY(FFTW_LIBRARIES fftw3
+ 	PATHS
+@@ -58,12 +63,12 @@ FIND_PATH (FFTW_INCLUDE_DIR fftw3.h
+ 	/usr/include
+ 	/usr/local/include
+ )
+-IF (FFTW_LIBRARIES AND FFTW_INCLUDE_DIR)
++IF(ENABLE_FFTW AND FFTW_LIBRARIES AND FFTW_INCLUDE_DIR)
+ 	SET (FFTW_FOUND TRUE)
+-ELSE (FFTW_LIBRARIES AND FFTW_INCLUDE_DIR)
++ELSE()
+ 	SET (FFTW_FOUND FALSE)
+ 	SET (FFTW_LIBRARIES "")
+-ENDIF (FFTW_LIBRARIES AND FFTW_INCLUDE_DIR)
++ENDIF()
+ 
+ IF (FFTW_FOUND)
+ 	MESSAGE (STATUS "Found FFTW 3 Library: ${FFTW_INCLUDE_DIR} ${FFTW_LIBRARIES}")
+@@ -120,12 +125,12 @@ FIND_PATH (CANTOR_INCLUDE_DIR worksheetaccess.h
+ 	/usr/include/cantor
+ 	/usr/local/include/cantor
+ )
+-IF (CANTOR_LIBS AND CANTOR_INCLUDE_DIR)
++IF(ENABLE_CANTOR AND CANTOR_LIBS AND CANTOR_INCLUDE_DIR)
+ 	SET (CANTOR_LIBS_FOUND TRUE)
+-ELSE (CANTOR_LIBS AND CANTOR_INCLUDE_DIR)
++ELSE()
+ 	SET (CANTOR_LIBS_FOUND FALSE)
+ 	SET (CANTOR_LIBS "")
+-ENDIF (CANTOR_LIBS AND CANTOR_INCLUDE_DIR)
++ENDIF()
+ IF (CANTOR_LIBS_FOUND)
+ 	MESSAGE (STATUS "Found CantorLibs ${CANTOR_INCLUDE_DIR} ${CANTOR_LIBS}")
+ 	add_definitions (-DHAVE_CANTOR_LIBS)
+@@ -150,12 +155,12 @@ FIND_PATH (NETCDF_INCLUDE_DIR netcdf.h
+ 	/usr/include/
+ 	/usr/local/include/
+ )
+-IF (NETCDF_LIBRARY AND NETCDF_INCLUDE_DIR)
++IF(ENABLE_NETCDF AND NETCDF_LIBRARY AND NETCDF_INCLUDE_DIR)
+ 	SET (NETCDF_FOUND TRUE)
+-ELSE (NETCDF_LIBRARY AND NETCDF_INCLUDE_DIR)
++ELSE()
+ 	SET (NETCDF_FOUND FALSE)
+ 	SET (NETCDF_LIBRARY "")
+-ENDIF (NETCDF_LIBRARY AND NETCDF_INCLUDE_DIR)
++ENDIF()
+ IF (NETCDF_FOUND)
+ 	MESSAGE (STATUS "Found Network Common Data Format (NetCDF) Library: ${NETCDF_INCLUDE_DIR} ${NETCDF_LIBRARY}")
+ 	add_definitions (-DHAVE_NETCDF)
+-- 
+2.7.3
+

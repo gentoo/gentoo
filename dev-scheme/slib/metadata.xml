@@ -9,4 +9,8 @@
 SLIB is a portable scheme library meant to provide compatibiliy and
 utility functions for all standard scheme implementations.
 	</longdescription>
+	<use>
+		<flag name="scm">Support for scm scheme implementation</flag>
+		<flag name="gambit">Support for gambit scheme implementation</flag>
+	</use>
 </pkgmetadata>

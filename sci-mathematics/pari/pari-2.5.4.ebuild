@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,11 @@ KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-fb
 IUSE="data doc fltk gmp qt4 X"
 
 RDEPEND="
-	sys-libs/readline
+	sys-libs/readline:0=
 	data? ( sci-mathematics/pari-data )
 	doc? ( X? ( x11-misc/xdg-utils ) )
 	fltk? ( x11-libs/fltk:1 )
-	gmp? ( dev-libs/gmp )
+	gmp? ( dev-libs/gmp:0= )
 	qt4? ( dev-qt/qtgui:4 )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}

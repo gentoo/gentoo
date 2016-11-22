@@ -3,8 +3,8 @@ Description=Restore iptables firewall rules
 # if both are queued for some reason, don't store before restoring :)
 Before=iptables-store.service
 # sounds reasonable to have firewall up before any of the services go up
-Before=network.target
-Conflicts=shutdown.target
+Before=network-pre.target
+Wants=network-pre.target
 
 [Service]
 Type=oneshot

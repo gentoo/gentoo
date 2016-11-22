@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]"
+DEPEND="sys-libs/ncurses:0[unicode?]"
 RDEPEND=${DEPEND}
 
 src_prepare() {
@@ -57,7 +57,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	newins config.h ${PF}.config.h
 
-	dodoc README
+	dodoc README.md
 
 	save_config config.h
 }

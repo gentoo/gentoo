@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,13 +8,13 @@ inherit eutils multilib games
 DESCRIPTION="An X11 clone of the well-known Scrabble"
 HOMEPAGE="http://freshmeat.net/projects/xscrabble/?topic_id=80"
 SRC_URI="ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tgz
-	linguas_fr? ( ftp://ftp.ac-grenoble.fr/ge/educational_games/xscrabble_fr.tgz )
+	l10n_fr? ( ftp://ftp.ac-grenoble.fr/ge/educational_games/xscrabble_fr.tgz )
 	ftp://ftp.ac-grenoble.fr/ge/educational_games/xscrabble_en.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="linguas_fr"
+IUSE="l10n_fr"
 
 RDEPEND="x11-libs/libXaw
 	x11-libs/libXp"
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${P}.tgz
 	cp "${DISTDIR}"/xscrabble_en.tgz .
-	use linguas_fr && cp "${DISTDIR}"/xscrabble_fr.tgz .
+	use l10n_fr && cp "${DISTDIR}"/xscrabble_fr.tgz .
 }
 
 src_prepare() {
@@ -42,7 +42,7 @@ src_install() {
 	local f
 	export DESTDIR="${D}" LIBDIR="$(get_libdir)"
 	./build install || die "install failed"
-	if use linguas_fr ; then
+	if use l10n_fr ; then
 		./build lang fr || die "fr failed"
 	fi
 	./build lang en || die "en failed"

@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils gnome2-utils games
 
 DESCRIPTION="A rewrite for GNOME of the Windows card game WUNO"
-HOMEPAGE="http://sourceforge.net/projects/gnono/"
+HOMEPAGE="https://sourceforge.net/projects/gnono/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

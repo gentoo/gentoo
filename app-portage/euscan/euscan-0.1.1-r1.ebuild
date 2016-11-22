@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	python_export_best
+	python_setup
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all

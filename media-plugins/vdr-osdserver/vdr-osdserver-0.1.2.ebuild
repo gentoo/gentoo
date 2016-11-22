@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR plugin: VDR OSD access for external programs through a TCP/IP socket connection"
+DESCRIPTION="VDR plugin: VDR OSD access for ext. programs through a TCP/IP socket connection"
 HOMEPAGE="http://www.udo-richter.de/vdr/osdserver.en.html"
 SRC_URI=" http://www.udo-richter.de/vdr/files/${P}.tgz"
 

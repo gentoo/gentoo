@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 toolchain-funcs
@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=( "${FILESDIR}/pyzmq-cython-0.24.patch" )
 
 python_prepare_all() {
 	# Prevent un-needed download during build

@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit base cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic
 
 MY_P="${P/_/-}"
 
@@ -56,7 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 	>=dev-qt/qtsvg-4.7.0:4
 	speech? ( app-accessibility/powiedz )
 "

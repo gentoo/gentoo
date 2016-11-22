@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,10 +10,11 @@ KMNAME="kde-workspace"
 KMMODULE="plasma"
 PYTHON_COMPAT=( python2_7 )
 OPENGL_REQUIRED="always"
+WEBKIT_REQUIRED="always"
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps json +kdepim python qalculate"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -23,12 +24,12 @@ COMMONDEPEND="
 	>=dev-qt/qtcore-4.8.4-r3:4
 	!kde-misc/ktouchpadenabler
 	$(add_kdebase_dep kactivities)
-	$(add_kdebase_dep kephal)
-	$(add_kdebase_dep ksysguard)
 	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmaclock 'kdepim?')
 	$(add_kdebase_dep libplasmagenericshell)
 	$(add_kdebase_dep libtaskmanager)
+	kde-plasma/kephal:4
+	kde-plasma/ksysguard:4
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage

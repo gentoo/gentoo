@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -13,7 +13,7 @@ USE_RUBY="ruby20"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php5-4 php5-5" # deps must be registered separately below
+USE_PHP="php5-5" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -109,7 +109,6 @@ CDEPEND="sys-libs/zlib
 	mono? ( =dev-lang/mono-2* )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php5-4? ( dev-lang/php:5.4[embed] )
 		php_targets_php5-5? ( dev-lang/php:5.5[embed] )
 	)
 	python? ( ${PYTHON_DEPS} )

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
 
 inherit eutils flag-o-matic toolchain-funcs pam autotools user git-r3
 
-DESCRIPTION="Full-screen window manager that multiplexes physical terminals between several processes"
+DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
 
 LICENSE="GPL-2"

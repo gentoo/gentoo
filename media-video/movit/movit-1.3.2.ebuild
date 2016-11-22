@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ IUSE=""
 RDEPEND="media-libs/mesa
 	>=dev-cpp/eigen-3.2.0:3
 	media-libs/libepoxy
-	sci-libs/fftw
+	>=sci-libs/fftw-3
 	media-libs/libsdl2
 	"
 DEPEND="${RDEPEND}"

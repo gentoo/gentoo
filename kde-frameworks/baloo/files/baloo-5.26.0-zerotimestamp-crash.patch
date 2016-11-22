@@ -1,0 +1,39 @@
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 11 Sep 2016 16:48:53 +0000
+Subject: allow ctime/mtime == 0
+X-Git-Url: http://quickgit.kde.org/?p=baloo.git&a=commitdiff&h=628daced19b88d0c537736a14aea3287a4662609
+---
+allow ctime/mtime == 0
+
+Fix that baloo is instant killed by any file with timestamp 0. (which is OK and can easily happen after unpacking some zip/tar/..)
+
+REVIEW: 128887
+BUG: 355238
+---
+
+
+--- a/src/engine/documenttimedb.cpp
++++ b/src/engine/documenttimedb.cpp
+@@ -58,8 +58,6 @@
+ void DocumentTimeDB::put(quint64 docId, const TimeInfo& info)
+ {
+     Q_ASSERT(docId > 0);
+-    Q_ASSERT(info.mTime);
+-    Q_ASSERT(info.cTime);
+ 
+     MDB_val key;
+     key.mv_size = sizeof(quint64);
+
+--- a/src/engine/writetransaction.cpp
++++ b/src/engine/writetransaction.cpp
+@@ -206,9 +206,6 @@
+     }
+ 
+     if (operations & DocumentTime) {
+-        Q_ASSERT(doc.m_mTime);
+-        Q_ASSERT(doc.m_cTime);
+-
+         DocumentTimeDB::TimeInfo info;
+         info.mTime = doc.m_mTime;
+         info.cTime = doc.m_cTime;
+

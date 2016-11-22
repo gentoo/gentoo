@@ -1,0 +1,12 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Host provided libuuid.so links against libpool.so, which in turn links
+# against libxml2.so.  In the latter it looks for SUNW@ symbols which
+# our Prefix-provided libxml2.so doesn't have and cause problems, hence
+# we need to provide libuuid.so ourselves for packages that use it.
+# It's added here, because in previous releases we relied on the
+# system-provided libuuid, but now no longer can, and ebuilds can't
+# easily make the difference.
+*sys-libs/libuuid

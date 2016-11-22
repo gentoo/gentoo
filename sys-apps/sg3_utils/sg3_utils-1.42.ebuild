@@ -12,7 +12,7 @@ SRC_URI="http://sg.danny.cz/sg/p/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="static-libs"
 
 DEPEND="sys-devel/libtool"
@@ -20,7 +20,8 @@ RDEPEND=""
 PDEPEND=">=sys-apps/rescan-scsi-bus-1.24"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.26-stdint.patch
+	epatch "${FILESDIR}"/${PN}-1.26-stdint.patch #580236
+	epatch "${FILESDIR}"/${PN}-1.42-sysmacros.patch #580236
 }
 
 src_configure() {

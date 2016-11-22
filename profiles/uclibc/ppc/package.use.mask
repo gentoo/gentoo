@@ -1,11 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
 # Masked Parallel LCD devices for bug #180683
 app-misc/lcd4linux lcd_devices_hd44780
-
-# Petteri Räty <betelgeuse@gentoo.org> (22 Oct 2006)
-# Not all of them support the nsplugin use flag. Resolves bug #147908.
-=dev-java/ibm-jdk-bin-1.5* -nsplugin

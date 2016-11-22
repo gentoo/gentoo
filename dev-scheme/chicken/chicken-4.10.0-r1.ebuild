@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib versionator
 
@@ -17,10 +17,14 @@ KEYWORDS="alpha amd64 ppc ppc64 x86"
 IUSE="emacs doc"
 DOCS=( NEWS README LICENSE )
 
-DEPEND="sys-apps/texinfo
-		emacs? ( virtual/emacs )"
-RDEPEND="emacs? ( virtual/emacs
-		app-emacs/scheme-complete )"
+DEPEND="
+	sys-apps/texinfo
+	emacs? ( virtual/emacs )"
+RDEPEND="
+	emacs? (
+		virtual/emacs
+		app-emacs/scheme-complete
+	)"
 
 src_prepare() {
 	#Because chicken's Upstream is in the habit of using variables that
@@ -34,8 +38,7 @@ src_prepare() {
 		-i defaults.make || die
 
 	# remove HTML documentation if the user doesn't USE=doc
-	if ! use "doc"
-	then
+	if ! use "doc"; then
 		rm -rf manual-html || die
 	fi
 }
@@ -59,9 +62,7 @@ src_install() {
 
 	dodoc ${DOCS}
 
-	if use "doc"
-	then
+	if use "doc"; then
 		dodoc -r manual-html
 	fi
-
 }

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -58,8 +58,11 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
+# Remove pkg_preinst in the next version bump
 pkg_preinst() {
-	# Remove this in the next version bump
+	# https://bugs.gentoo.org/585146
+	cd "${HOME}" || die
+
 	_cleanup() {
 		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
 		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"

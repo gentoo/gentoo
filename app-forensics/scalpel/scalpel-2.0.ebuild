@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="A high performance file carver"
-HOMEPAGE="http://www.digitalforensicssolutions.com/Scalpel/"
+HOMEPAGE="https://github.com/sleuthkit/scalpel"
 SRC_URI="http://www.digitalforensicssolutions.com/Scalpel/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -16,11 +16,12 @@ IUSE=""
 RDEPEND="dev-libs/tre"
 DEPEND="${RDEPEND}"
 
-DOCS=(Changelog README)
+DOCS=( Changelog README )
 
 src_prepare() {
 	# Set the default config file location
 	sed -i -e "s:scalpel.conf:/etc/\0:" src/scalpel.h || die "sed failed"
+	default
 }
 
 src_install() {

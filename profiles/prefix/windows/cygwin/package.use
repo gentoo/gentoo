@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Michael Haubenwallner <haubi@gentoo.org> (18 Apr 2016)
+# Cygwin coreutils provide kill as gkill
+sys-apps/coreutils kill

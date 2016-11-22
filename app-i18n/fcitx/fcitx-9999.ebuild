@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils gnome2-utils multilib xdg
 
@@ -20,7 +20,7 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
-LICENSE="GPL-2+ LGPL-2+"
+LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="+X +autostart +cairo +dbus debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
@@ -84,6 +84,7 @@ src_prepare() {
 		-i CMakeLists.txt
 
 	cmake-utils_src_prepare
+	xdg_environment_reset
 }
 
 src_configure() {

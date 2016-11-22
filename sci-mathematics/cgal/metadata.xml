@@ -19,7 +19,7 @@
     e.g., for visualisation, and I/O, and other support facilities.
 </longdescription>
   <use>
-    <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-mathematics/mpfi</pkg></flag>
+    <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-libs/mpfi</pkg></flag>
 	<flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
   </use>
 </pkgmetadata>

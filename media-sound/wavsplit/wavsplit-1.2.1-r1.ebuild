@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="WavSplit is a simple command line tool to split WAV files"
-HOMEPAGE="http://sourceforge.net/projects/wavsplit/"
+HOMEPAGE="https://sourceforge.net/projects/wavsplit/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

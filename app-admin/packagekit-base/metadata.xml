@@ -2,8 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>mudler@gentoo.org</email>
+		<name>Ettore Di Giacinto</name>
+		<description>Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
 		<email>lxnay@gentoo.org</email>
 		<name>Fabio Erculiani</name>
+		<description>CC on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
 		<flag name="command-not-found">Enable packagekit support on shell "command not found"</flag>

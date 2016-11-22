@@ -1,0 +1,39 @@
+Index: octomap-1.8.0/dynamicEDT3D/CMakeLists.txt
+===================================================================
+--- octomap-1.8.0.orig/dynamicEDT3D/CMakeLists.txt
++++ octomap-1.8.0/dynamicEDT3D/CMakeLists.txt
+@@ -62,7 +62,7 @@ file(GLOB dynamicEDT3D_HDRS ${PROJECT_SO
+ install(FILES ${dynamicEDT3D_HDRS}	DESTINATION include/dynamicEDT3D)
+ 
+ # Install catkin package.xml, attention package.xml names the catkin package "dynamic_edt_3d", so this is also the location where it needs to be installed to (and not "dynamicEDT3D")
+-install(FILES package.xml DESTINATION share/dynamic_edt_3d)
++install(FILES package.xml DESTINATION share/ros_packages/dynamic_edt_3d)
+ 
+ #TODO: this conflicts with the octomap uninstall
+ #it is not only a target name problem, also both will use the same manifest file
+Index: octomap-1.8.0/octomap/CMakeLists.txt
+===================================================================
+--- octomap-1.8.0.orig/octomap/CMakeLists.txt
++++ octomap-1.8.0/octomap/CMakeLists.txt
+@@ -65,7 +65,7 @@ file(GLOB octomap_math_HDRS ${PROJECT_SO
+ install(FILES ${octomap_math_HDRS}	DESTINATION include/octomap/math)
+ 
+ # Install catkin package.xml
+-install(FILES package.xml DESTINATION share/octomap)
++install(FILES package.xml DESTINATION share/ros_packages/octomap)
+ 
+ # uninstall target
+ configure_file(
+Index: octomap-1.8.0/octovis/CMakeLists.txt
+===================================================================
+--- octomap-1.8.0.orig/octovis/CMakeLists.txt
++++ octomap-1.8.0/octovis/CMakeLists.txt
+@@ -126,7 +126,7 @@ IF(BUILD_VIEWER)
+   install(FILES ${octovis_HDRS} DESTINATION include/octovis)
+ 
+   # Install catkin package.xml
+-  install(FILES package.xml DESTINATION share/octovis)
++  install(FILES package.xml DESTINATION share/ros_packages/octovis)
+   
+ ELSE()
+     MESSAGE ( "Unfortunately, the viewer (octovis) can not be built because some requirements are missing.")

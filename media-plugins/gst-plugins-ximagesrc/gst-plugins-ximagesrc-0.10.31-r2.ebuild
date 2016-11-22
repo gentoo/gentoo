@@ -7,7 +7,7 @@ EAPI="5"
 GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="

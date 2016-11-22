@@ -1,0 +1,30 @@
+From 10ba492047b1ad80adeeb878e7f155a13638da7f Mon Sep 17 00:00:00 2001
+From: Michael Olbrich <m.olbrich@pengutronix.de>
+Date: Wed, 18 May 2016 10:43:51 +0200
+Subject: [PATCH] sleep-monitor-upower: add missing include
+
+Otherwise building fails with:
+
+  nm-sleep-monitor-upower.c:132:45: error: expected declaration specifiers or '...' before 'nm_sleep_monitor_get'
+  nm-sleep-monitor-upower.c:132:67: error: expected declaration specifiers or '...' before '(' token
+
+https://mail.gnome.org/archives/networkmanager-list/2016-May/msg00053.html
+---
+ src/nm-sleep-monitor-upower.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/nm-sleep-monitor-upower.c b/src/nm-sleep-monitor-upower.c
+index 5f0ff24..8d07190 100644
+--- a/src/nm-sleep-monitor-upower.c
++++ b/src/nm-sleep-monitor-upower.c
+@@ -24,6 +24,7 @@
+ #include <sys/stat.h>
+ 
+ #include "nm-core-internal.h"
++#include "NetworkManagerUtils.h"
+ 
+ #include "nm-sleep-monitor.h"
+ 
+-- 
+2.9.0
+

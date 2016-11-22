@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jpace/glark/archive/v${PV}.tar.gz -> ${PN}-git-${PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~sparc x86"
 IUSE="zip"
 
 ruby_add_rdepend "

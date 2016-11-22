@@ -94,7 +94,7 @@ eblit-glibc-pkg_pretend() {
 		then
 			eerror "Your patched vendor kernel is broken.  You need to get an"
 			eerror "update from whoever is providing the kernel to you."
-			eerror "http://sourceware.org/bugzilla/show_bug.cgi?id=5227"
+			eerror "https://sourceware.org/bugzilla/show_bug.cgi?id=5227"
 			eerror "http://bugs.gentoo.org/262698"
 			die "keeping your system alive, say thank you"
 		fi

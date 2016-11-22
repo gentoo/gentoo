@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit vdr-plugin-2
+inherit vdr-plugin-2 flag-o-matic
 
 MY_PV=0.9.13-MKIV-pre3
 MY_P=${PN}-${MY_PV}
@@ -34,6 +34,9 @@ DEPEND=">=media-video/vdr-1.6
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
+	# wrt bug 595248
+	append-cxxflags $(test-flags-CXX -std=gnu++03) -std=gnu++03
+
 	epatch "${FILESDIR}/${PN}-0.0.1_pre4-gentoo.diff"
 	epatch "${FILESDIR}/${PN}-0.0.1_pre4-gcc4.diff"
 	epatch "${DISTDIR}/${PN}-0.0.1_pre4-span-0.0.3.diff.tar.gz"
@@ -50,6 +53,10 @@ src_prepare() {
 	has_version ">=media-gfx/imagemagick-6.4" && epatch "${FILESDIR}/imagemagick-6.4.x.diff"
 
 	sed -i mp3ng.c -e "s:RegisterI18n:// RegisterI18n:"
+
+	if has_version ">=media-video/vdr-2.1.2"; then
+		sed -e "s#VideoDirectory#cVideoDirectory::Name\(\)#" -i decoder.c
+	fi
 }
 
 src_install() {

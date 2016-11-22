@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,11 +9,11 @@ KMMODULE="libs/plasmaclock"
 inherit kde4-meta
 
 DESCRIPTION="Libraries for KDE Plasma's clocks"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug +kdepim"
 
 DEPEND="
-	$(add_kdebase_dep kephal)
+	kde-plasma/kephal:4
 	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 "
 RDEPEND="${DEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -75,25 +75,26 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-	elog "For booting Gentoo from Device-Mapper RAID you can use a Genkernel initramfs."
-	elog
-	elog "Genkernel will generate the kernel and the initramfs with a statically "
-	elog "linked dmraid binary (its own version which may not be the same as this version):"
-	elog "\t emerge -av sys-kernel/genkernel"
-	elog "\t genkernel --dmraid all"
+		elog "For booting Gentoo from Device-Mapper RAID you can use a Genkernel initramfs."
+		elog
+		elog "Genkernel will generate the kernel and the initramfs with a statically "
+		elog "linked dmraid binary (its own version which may not be the same as this version):"
+		elog "\t emerge -av sys-kernel/genkernel"
+		elog "\t genkernel --dmraid all"
 	fi
-	if [[ ${REPLACING_VERSIONS} != ${PVR} ]]; then
-	elog
-	elog "A pre-patched distfile of this version of DMRAID has been installed at"
-	elog "/usr/share/${PN}/${PN}-${MY_PV}-prepatched.tar.bz2 , to support using it within a"
-	elog "Genkernel initramfs."
-	elog
+	# skip this message if this revision has already been emerged
+	if [[ " ${REPLACING_VERSIONS} " != *\ ${PVR}\ * ]]; then
+		elog
+		elog "A pre-patched distfile of this version of DMRAID has been installed at"
+		elog "/usr/share/${PN}/${PN}-${MY_PV}-prepatched.tar.bz2 , to support using it within a"
+		elog "Genkernel initramfs."
+		elog
 	fi
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-	elog "If you would rather use this version of DMRAID with Genkernel, update the following"
-	elog "in /etc/genkernel.conf:"
-	elog "\t DMRAID_VER=\"${MY_PV}\""
-	elog "\t DMRAID_SRCTAR=\"/usr/share/${PN}/${PN}-${MY_PV}-prepatched.tar.bz2\""
-	elog
+		elog "If you would rather use this version of DMRAID with Genkernel, update the following"
+		elog "in /etc/genkernel.conf:"
+		elog "\t DMRAID_VER=\"${MY_PV}\""
+		elog "\t DMRAID_SRCTAR=\"/usr/share/${PN}/${PN}-${MY_PV}-prepatched.tar.bz2\""
+		elog
 	fi
 }

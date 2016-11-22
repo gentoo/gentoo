@@ -1,0 +1,27 @@
+--- eid-mw-4.1.18-v4.1.18-a/plugins_tools/xpi/src/Makefile.in	2016-05-20 12:58:46.184002742 +0200
++++ eid-mw-4.1.18-v4.1.18-b/plugins_tools/xpi/src/Makefile.in	2016-06-18 16:18:57.467199895 +0200
+@@ -724,24 +724,6 @@
+ @SIGNED_TRUE@	cp $(srcdir)/belgiumeid-1.0.18.1-signed.1-signed.xpi $(XPI_ID).xpi
+ 
+ @SIGNED_FALSE@xpipackage: $(xpi_files)
+-#	 Create a temporary directory $tmp in $TMPDIR (default /tmp).
+-#	 Use mktemp if possible; otherwise fall back on mkdir,
+-#	 with $RANDOM to make collisions less likely.
+-@SIGNED_FALSE@	{ \
+-@SIGNED_FALSE@		tmp=` \
+-@SIGNED_FALSE@			(umask 077 && mktemp -t -d "xpiXXXXXX") 2>/dev/null \
+-@SIGNED_FALSE@		` && \
+-@SIGNED_FALSE@		test -n "$$tmp" && test -d "$$tmp"; \
+-@SIGNED_FALSE@	} || { \
+-@SIGNED_FALSE@		tmp=$$TMPDIR/xpi$$RANDOM; \
+-@SIGNED_FALSE@		umask 077 && $(mkinstalldirs) "$$tmp"; \
+-@SIGNED_FALSE@	} || exit $$?; \
+-@SIGNED_FALSE@	$(MAKE) DESTDIR=$$tmp extensionrootdir=/ install; \
+-@SIGNED_FALSE@	cd $$tmp; \
+-@SIGNED_FALSE@        rm -f $(abs_builddir)/$(XPI_NAME); \
+-@SIGNED_FALSE@	@ZIP@ -rq $(abs_builddir)/$(XPI_NAME) .; \
+-@SIGNED_FALSE@	cd -; \
+-@SIGNED_FALSE@	rm -rf $$tmp;
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

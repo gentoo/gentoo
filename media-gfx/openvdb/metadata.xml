@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer restrict="&gt;=media-gfx/openvdb-3.1.0" type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+        </maintainer>
+	<maintainer restrict="&gt;=media-gfx/openvdb-3.1.0" type="person">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Libraries from Dreamworks Animation for the efficient manipulation 
+                of volumetric data used in big budget movies like 'Cloudy with a
+                Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
+	</longdescription>
+	<use>
+		<flag name="openvdb-compression">
+			Adds enhanced compression to files through
+			<pkg>dev-libs/c-blosc</pkg>. Very useful so
+			enabled by dfault.
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+--- qp10.0.orig/configure	2016-06-07 02:54:42.000000000 +0200
++++ qp10.0/configure	2016-10-03 18:30:22.360786524 +0200
+@@ -2256,12 +2256,16 @@
+ #
+ # Check for addtional command line options.
+ #
+-DEBUGGING=" -DNDEBUG "
+ # Check whether --enable-debug was given.
+ if test "${enable_debug+set}" = set; then :
+-  enableval=$enable_debug;  DEBUGGING=
++  enableval=$enable_debug;
+ fi
+ 
++if test "$enable_debug" = yes; then
++	DEBUGGING=
++else
++	DEBUGGING=" -DNDEBUG "
++fi
+ 
+ 
+ # Single versus multiple thread configuraation.

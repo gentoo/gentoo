@@ -9,14 +9,14 @@ inherit autotools linux-mod multilib toolchain-funcs versionator
 MY_PV=$(delete_version_separator '_')
 MY_PN="${PN/-kernel}"
 MY_P="${MY_PN}-${MY_PV}"
-PVER="20160321"
+PVER="20160801-1"
 
 DESCRIPTION="The OpenAFS distributed file system kernel module"
-HOMEPAGE="http://www.openafs.org/"
+HOMEPAGE="https://www.openafs.org/"
 # We always d/l the doc tarball as man pages are not USE=doc material
 [[ ${PV} == *_pre* ]] && MY_PRE="candidate/" || MY_PRE=""
 SRC_URI="
-	http://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-src.tar.bz2
+	https://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~bircoph/afs/${MY_PN}-patches-${PVER}.tar.xz
 "
 

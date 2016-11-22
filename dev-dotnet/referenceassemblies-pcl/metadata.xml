@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+		<description>Gentoo Dotnet Project</description>
+	</maintainer>
+	<longdescription lang="en">
+		.NET Portable Class Library reference assemblies
+    </longdescription>
+	<longdescription lang="ru">
+        переносимые библиотеки классов (PCL) собранные Microsoft-ом
+    </longdescription>
+</pkgmetadata>

@@ -1,5 +1,5 @@
---- share/g-octave.eclass	2013-05-30 19:01:07.980521612 +0200
-+++ share/g-octave.eclass.new	2013-05-30 19:03:38.933514388 +0200
+--- g-octave-0.4.1/share/g-octave.eclass	2013-05-30 19:01:07.980521612 +0200
++++ g-octave-0.4.1/share/g-octave.eclass.new	2013-05-30 19:03:38.933514388 +0200
 @@ -48,6 +48,9 @@
  	for filename in Makefile configure; do
  		cp "${DISTDIR}/g-octave_${filename}" "${S}/${filename}"

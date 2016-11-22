@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 PYTHON_REQ_USE="xml(+)"
 
 inherit eutils distutils-r1 linux-info prefix
@@ -61,6 +61,7 @@ python_prepare_all()  {
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all
 	#rm "${S}"/"${PN}"/tests/dtest.py
+	epatch "${FILESDIR}"/${P}-dir_check.patch
 	eprefixify etc/layman.cfg layman/config.py
 }
 

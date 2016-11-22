@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,7 @@ SLOT="0"
 IUSE="X cairo cups doc exif fltk qt4 raw test"
 
 RDEPEND="
-	|| (
-		=app-admin/elektra-0.7*:0=[${MULTILIB_USEDEP}]
-		>=app-admin/elektra-0.8.4:0=[${MULTILIB_USEDEP}]
-	)
+	>=app-admin/elektra-0.8.4:0[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
 	>=dev-libs/yajl-2.0.4-r1[${MULTILIB_USEDEP}]
 	media-libs/icc-profiles-basiccolor-printing2009

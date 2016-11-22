@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/450530
+
+we disable fiascotopnm all the time, so delete the test too
+
+--- a/test/all-in-place.test
++++ b/test/all-in-place.test
+@@ -53,7 +53,6 @@ ordinary_testprogs="\
+   ddbugtopbm \
+   escp2topbm \
+   eyuvtoppm \
+-  fiascotopnm \
+   fitstopnm \
+   fstopgm \
+   g3topbm \
+--- a/test/Test-Order
++++ b/test/Test-Order
+@@ -153,5 +153,4 @@
+ 
+ # Round-trip tests : lossy converters
+ 
+-fiasco-roundtrip.test
+ yuv-roundtrip.test

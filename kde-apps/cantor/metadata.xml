@@ -6,7 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="analitza">Enable <pkg>kde-base/analitza</pkg> backend support</flag>
+		<flag name="analitza">Enable <pkg>kde-apps/analitza</pkg> backend support</flag>
 		<flag name="qalculate">Enable <pkg>sci-libs/libqalculate</pkg> backend support</flag>
 		<flag name="R">Enable <pkg>dev-lang/R</pkg> backend support</flag>
 	</use>

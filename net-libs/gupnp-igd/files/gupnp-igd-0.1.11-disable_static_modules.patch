@@ -1,5 +1,5 @@
---- python/Makefile.am
-+++ python/Makefile.am
+--- a/python/Makefile.am
++++ b/python/Makefile.am
 @@ -27,7 +28,7 @@
  
  igd_la_LDFLAGS =					\

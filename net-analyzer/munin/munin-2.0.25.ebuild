@@ -27,7 +27,7 @@ REQUIRED_USE="cgi? ( !minimal ) apache? ( cgi )"
 # Some of the mysql plugins use DBD::mysql, while others call mysqladmin directly.
 # We replace the original ipmi plugins with the freeipmi_ plugin which at least works.
 DEPEND_COM="
-	dev-lang/perl[berkdb]
+	dev-lang/perl:=[berkdb]
 	dev-perl/DBI
 	dev-perl/Date-Manip
 	dev-perl/File-Copy-Recursive

@@ -14,19 +14,19 @@ HOMEPAGE="https://gitlab.com/mdds/mdds"
 [[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/${PN}/src/${P}.tar.bz2"
 
 LICENSE="MIT"
-SLOT="1/${PV}"
+SLOT="1/${PV%.*}"
 IUSE="doc valgrind"
 
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
-COMMON_DEPEND="dev-libs/boost:="
-DEPEND="${COMMON_DEPEND}
+RDEPEND="dev-libs/boost:="
+DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx
-	)"
-RDEPEND="${COMMON_DEPEND}"
+	)
+"
 
 DOCS=() # buildsystem installs docs
 

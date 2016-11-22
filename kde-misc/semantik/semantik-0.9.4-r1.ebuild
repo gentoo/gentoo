@@ -11,7 +11,7 @@ PYTHON_REQ_USE="threads(+),xml"
 inherit eutils python-single-r1 kde4-base waf-utils
 
 DESCRIPTION="Mindmapping-like tool for document generation"
-HOMEPAGE="http://freehackers.org/~tnagy/semantik.html https://code.google.com/p/semantik/"
+HOMEPAGE="http://freehackers.org/~tnagy/semantik.html"
 SRC_URI="http://ftp.waf.io/pub/release/${P}.tar.bz2"
 
 LICENSE="GPL-3"

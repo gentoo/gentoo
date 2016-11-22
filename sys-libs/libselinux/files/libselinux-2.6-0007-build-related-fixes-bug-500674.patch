@@ -1,0 +1,91 @@
+https://bugs.gentoo.org/500674
+
+random fixes:
+- make sure PCRE_CFLAGS get used
+- use PCRE_LIBS via pkg-config
+- move LDFLAGS to before objects, not after
+- do not hardcode -L$(LIBDIR) (let the toolchain handle it)
+- do not hardcode -I$(INCLUDEDIR) (let the toolchain handle it)
+
+diff --git a/libselinux/Makefile b/libselinux/Makefile
+index baa0db3..4dc5aa0 100644
+--- libselinux/Makefile
++++ libselinux/Makefile
+@@ -1,5 +1,6 @@
+ SUBDIRS = src include utils man
+ 
++PKG_CONFIG ?= pkg-config
+ DISABLE_SETRANS ?= n
+ DISABLE_RPM ?= n
+ ANDROID_HOST ?= n
+@@ -20,10 +21,11 @@ export DISABLE_SETRANS DISABLE_RPM DISABLE_FLAGS ANDROID_HOST
+ 
+ USE_PCRE2 ?= n
+ ifeq ($(USE_PCRE2),y)
+-	PCRE_CFLAGS := -DUSE_PCRE2 -DPCRE2_CODE_UNIT_WIDTH=8
+-	PCRE_LDFLAGS := -lpcre2-8
++	PCRE_CFLAGS := -DUSE_PCRE2 -DPCRE2_CODE_UNIT_WIDTH=8 $(shell $(PKG_CONFIG) --cflags libpcre2-8)
++	PCRE_LDFLAGS := $(shell $(PKG_CONFIG) --libs libpcre2-8)
+ else
+-	PCRE_LDFLAGS := -lpcre
++	PCRE_CFLAGS := $(shell $(PKG_CONFIG) --cflags libpcre)
++	PCRE_LDFLAGS := $(shell $(PKG_CONFIG) --libs libpcre)
+ endif
+ export PCRE_CFLAGS PCRE_LDFLAGS
+ 
+diff --git a/libselinux/src/Makefile b/libselinux/src/Makefile
+index 13501cd..42cb2f6 100644
+--- libselinux/src/Makefile
++++ libselinux/src/Makefile
+@@ -67,7 +67,7 @@ CFLAGS ?= -O -Wall -W -Wundef -Wformat-y2k -Wformat-security -Winit-self -Wmissi
+ 
+ PCRE_LDFLAGS ?= -lpcre
+ 
+-override CFLAGS += -I../include -I$(INCLUDEDIR) -D_GNU_SOURCE $(DISABLE_FLAGS) $(PCRE_CFLAGS)
++override CFLAGS += -I../include -D_GNU_SOURCE $(DISABLE_FLAGS) $(PCRE_CFLAGS)
+ 
+ SWIG_CFLAGS += -Wno-error -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter \
+ 		-Wno-shadow -Wno-uninitialized -Wno-missing-prototypes -Wno-missing-declarations
+@@ -107,17 +107,17 @@ $(SWIGRUBYLOBJ): $(SWIGRUBYCOUT)
+ 	$(CC) $(CFLAGS) $(SWIG_CFLAGS) $(RUBYINC) -fPIC -DSHARED -c -o $@ $<
+ 
+ $(SWIGSO): $(SWIGLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $< -L. -lselinux $(LDFLAGS) -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $< -L. -lselinux
+ 
+ $(SWIGRUBYSO): $(SWIGRUBYLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ -L. -lselinux $(LDFLAGS) -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lselinux
+ 
+ $(LIBA): $(OBJS)
+ 	$(AR) rcs $@ $^
+ 	$(RANLIB) $@
+ 
+ $(LIBSO): $(LOBJS)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ $(PCRE_LDFLAGS) -ldl $(LDFLAGS) -L$(LIBDIR) -Wl,-soname,$(LIBSO),-z,defs,-z,relro
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ $(PCRE_LDFLAGS) -ldl -Wl,-soname,$(LIBSO),-z,defs,-z,relro
+ 	ln -sf $@ $(TARGET) 
+ 
+ $(LIBPC): $(LIBPC).in ../VERSION
+@@ -130,7 +130,7 @@ $(AUDIT2WHYLOBJ): audit2why.c
+ 	$(CC) $(filter-out -Werror, $(CFLAGS)) $(PYINC) -fPIC -DSHARED -c -o $@ $<
+ 
+ $(AUDIT2WHYSO): $(AUDIT2WHYLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ -L. $(LDFLAGS) -lselinux $(LIBDIR)/libsepol.a -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lselinux $(LIBDIR)/libsepol.a
+ 
+ %.o:  %.c policy.h
+ 	$(CC) $(CFLAGS) $(TLSFLAGS) -c -o $@ $<
+diff --git a/libselinux/utils/Makefile b/libselinux/utils/Makefile
+index e56a953..6fd205a 100644
+--- libselinux/utils/Makefile
++++ libselinux/utils/Makefile
+@@ -25,7 +25,7 @@ CFLAGS ?= -O -Wall -W -Wundef -Wformat-y2k -Wformat-security -Winit-self -Wmissi
+           -fipa-pure-const -Wno-suggest-attribute=pure -Wno-suggest-attribute=const \
+           -Werror -Wno-aggregate-return -Wno-redundant-decls
+ override CFLAGS += -I../include -I$(INCLUDEDIR) -D_GNU_SOURCE $(DISABLE_FLAGS) $(PCRE_CFLAGS)
+-LDLIBS += -L../src -lselinux -L$(LIBDIR)
++LDLIBS += -L../src -lselinux
+ PCRE_LDFLAGS ?= -lpcre
+ 
+ ifeq ($(ANDROID_HOST),y)

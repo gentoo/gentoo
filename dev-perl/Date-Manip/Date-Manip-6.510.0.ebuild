@@ -12,7 +12,7 @@ DESCRIPTION="Perl date manipulation routines"
 
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-IUSE="test"
+IUSE="elibc_musl test"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -21,12 +21,11 @@ RDEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-IO
 	virtual/perl-Storable
+	elibc_musl? ( sys-libs/timezone-data )
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.210.0
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Inter
 		virtual/perl-Test-Simple
 	)
@@ -35,3 +34,8 @@ DEPEND="${RDEPEND}
 SRC_TEST="do parallel"
 
 mydoc="HISTORY"
+
+src_test() {
+	perl_rm_files t/pod_coverage.t t/pod.t
+	perl-module_src_test
+}

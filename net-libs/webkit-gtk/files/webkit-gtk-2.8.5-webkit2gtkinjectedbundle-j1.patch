@@ -9,8 +9,8 @@
  
 Index: Source/WebKit2/PlatformGTK.cmake
 ===================================================================
---- Source/WebKit2/PlatformGTK.cmake	(revision 188859)
-+++ Source/WebKit2/PlatformGTK.cmake	(working copy)
+--- a/Source/WebKit2/PlatformGTK.cmake	(revision 188859)
++++ b/Source/WebKit2/PlatformGTK.cmake	(working copy)
 @@ -860,7 +860,7 @@ include_directories(
  )
  

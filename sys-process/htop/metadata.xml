@@ -5,6 +5,10 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
 	<use>
 		<flag name="oom">Add column to track the OOM-killer score of processes</flag>
 		<flag name="openvz">Enable openvz support</flag>

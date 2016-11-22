@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
+# The oauth2client-2 dep sucks.
+# https://github.com/GoogleCloudPlatform/gsutil/issues/355
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/boto-2.38.0[${PYTHON_USEDEP}]
 	>=dev-python/crcmod-1.7[${PYTHON_USEDEP}]
@@ -25,6 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/gcs-oauth2-boto-plugin-1.12[${PYTHON_USEDEP}]
 	>=dev-python/google-apitools-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/oauth2client-1.5.2[${PYTHON_USEDEP}]
+	<dev-python/oauth2client-2
 	>=dev-python/python-gflags-2.0[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]

@@ -1,0 +1,13 @@
+--- gpsim-0.29.0/modules/logic.cc
++++ gpsim-0.29.0/modules/logic.cc
+@@ -269,8 +269,10 @@
+ 
+ LogicGate::~LogicGate()
+ {
++#ifdef HAVE_GUI
+   if (pixbuf)
+     g_object_unref(pixbuf);
++#endif
+ }
+ 
+ //--------------------------------------------------------------

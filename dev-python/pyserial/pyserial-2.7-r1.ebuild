@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="Python Serial Port Extension"
-HOMEPAGE="http://pyserial.sourceforge.net/ http://sourceforge.net/projects/pyserial/ https://pypi.python.org/pypi/pyserial"
+HOMEPAGE="http://pyserial.sourceforge.net/ https://sourceforge.net/projects/pyserial/ https://pypi.python.org/pypi/pyserial"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"
@@ -18,14 +18,11 @@ IUSE="doc examples"
 
 DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-RDEPEND=""
-PATCHES=( "${FILESDIR}"/mapping.patch )
-DOCS=( CHANGES.txt README.txt )
 
-python_prepare_all() {
-	# Usual avoid d'loading un-needed objects.inv file
-	distutils-r1_python_prepare_all
-}
+# Usual avoid d'loading un-needed objects.inv file
+PATCHES=( "${FILESDIR}"/mapping.patch )
+
+DOCS=( CHANGES.txt README.txt )
 
 python_compile_all() {
 	use doc && emake -C documentation html

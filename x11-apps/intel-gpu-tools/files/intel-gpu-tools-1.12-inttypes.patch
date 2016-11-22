@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/582430
+
+From d24f4a5c5fe45e2fad8942acc137f87cd8f35ea5 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Jun 2016 14:37:38 -0400
+Subject: [PATCH] include inttypes.h for PRI defines
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=96620
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ lib/igt_fb.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/igt_fb.c b/lib/igt_fb.c
+index 61205f345707..ba29eae5cabd 100644
+--- a/lib/igt_fb.c
++++ b/lib/igt_fb.c
+@@ -28,6 +28,7 @@
+ #define _GNU_SOURCE
+ #include <stdio.h>
+ #include <math.h>
++#include <inttypes.h>
+ 
+ #include "drmtest.h"
+ #include "igt_fb.h"
+-- 
+2.8.2
+

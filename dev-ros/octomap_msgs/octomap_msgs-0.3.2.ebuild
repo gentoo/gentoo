@@ -6,7 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/OctoMap/octomap_msgs"
 CATKIN_HAS_MESSAGES=yes
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/geometry_msgs dev-ros/std_msgs"
 
 inherit ros-catkin

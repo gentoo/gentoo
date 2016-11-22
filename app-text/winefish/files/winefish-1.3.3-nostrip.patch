@@ -1,7 +1,5 @@
-Index: winefish-1.3.3/src/Makefile.in
-===================================================================
---- winefish-1.3.3.orig/src/Makefile.in
-+++ winefish-1.3.3/src/Makefile.in
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -37,7 +37,7 @@ LDFLAGS = @LDFLAGS@
  LIBS = @LIBS@
  INSTALL = @INSTALL@

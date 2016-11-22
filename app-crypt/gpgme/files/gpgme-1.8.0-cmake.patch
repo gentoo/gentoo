@@ -1,0 +1,33 @@
+From 572c1aac107125ce62230251713349348373db5a Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 16 Nov 2016 23:09:45 +0100
+Subject: [PATCH] Remove a forgotten instance of @libsuffix@
+
+* lang/cpp/src/GpgmeppConfig.cmake.in.in: Remove a forgotten
+instance of @libsuffix@.
+--
+
+b2c07bd47bd608afa5cc819b60a7b5bb8c9dd96a removed @libsuffix@ from
+cmake config files, but missed one instance.
+
+Signed-off-by: Heiko Becker <heirecka@exherbo.org>
+---
+ lang/cpp/src/GpgmeppConfig.cmake.in.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lang/cpp/src/GpgmeppConfig.cmake.in.in b/lang/cpp/src/GpgmeppConfig.cmake.in.in
+index 928d19f..cbe9713 100644
+--- a/lang/cpp/src/GpgmeppConfig.cmake.in.in
++++ b/lang/cpp/src/GpgmeppConfig.cmake.in.in
+@@ -63,7 +63,7 @@ add_library(Gpgmepp SHARED IMPORTED)
+ 
+ set_target_properties(Gpgmepp PROPERTIES
+   INTERFACE_INCLUDE_DIRECTORIES "@resolved_includedir@/gpgme++;@resolved_includedir@"
+-  INTERFACE_LINK_LIBRARIES "pthread;@resolved_libdir@/libgpgme@libsuffix@;@LIBASSUAN_LIBS@"
++  INTERFACE_LINK_LIBRARIES "pthread;@resolved_libdir@/libgpgme.so;@LIBASSUAN_LIBS@"
+   IMPORTED_LOCATION "@resolved_libdir@/libgpgmepp.so"
+ )
+ 
+-- 
+2.8.0.rc3
+

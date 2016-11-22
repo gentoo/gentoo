@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils multilib
 
 DESCRIPTION="A ncurses client for the Music Player Daemon (MPD)"
-HOMEPAGE="http://www.musicpd.org/clients/ncmpc/"
-SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+HOMEPAGE="https://www.musicpd.org/clients/ncmpc/"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,6 +28,7 @@ src_prepare() {
 	# default ax_with_curses.m4 produces automagic dependency on ncursesw
 	# also, ncursesw is required for colors (bug #554245), so we force it here
 	epatch "${FILESDIR}"/${PN}-0.24-tinfo.patch
+	eapply_user
 
 	cp "${FILESDIR}"/ax_require_defined.m4 m4/ || die
 

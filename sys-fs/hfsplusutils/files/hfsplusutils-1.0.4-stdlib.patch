@@ -1,0 +1,22 @@
+needed for exit() prototype
+
+--- a/libhfsp/src/os.c
++++ b/libhfsp/src/os.c
+@@ -46,6 +46,7 @@ int fstat(int, struct stat *);
+ # endif
+ 
+ # include <stdio.h>
++# include <stdlib.h>
+ 
+ 
+ # include <errno.h>
+--- a/libhfsp/src/record.c
++++ b/libhfsp/src/record.c
+@@ -32,6 +32,7 @@
+ #include <errno.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "libhfsp.h"
+ #include "hfstime.h"

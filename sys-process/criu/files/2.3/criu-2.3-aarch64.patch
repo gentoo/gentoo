@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 0e2636b..ef8f78b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,7 +25,7 @@ export SRC_DIR
+ 
+ #
+ # Architecture specific options.
+-ifneq ($(filter-out x86 arm arm64 ppc64,$(ARCH)),)
++ifneq ($(filter-out x86 arm aarch64 ppc64,$(ARCH)),)
+         $(error "The architecture $(ARCH) isn't supported")
+ endif
+ 
+@@ -39,7 +39,7 @@ ifeq ($(ARCH),arm)
+         SRCARCH		:= arm
+ endif
+ 
+-ifeq ($(ARCH),arm64)
++ifeq ($(ARCH),aarch64)
+         ARCH		:= aarch64
+         SRCARCH		:= aarch64
+         VDSO		:= y

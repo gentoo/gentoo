@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit cmake-utils l10n
 
 MY_P=${PN}4-${PV}
 
-DESCRIPTION="A Qt4 frontend to nmap"
+DESCRIPTION="A Qt frontend to nmap"
 HOMEPAGE="http://www.nmapsi4.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 

@@ -25,7 +25,7 @@ IUSE="ftdi serial static-libs test usb"
 LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8[static-libs(+)]
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
-	serial? ( dev-libs/libserialport[static-libs(+)] )
+	serial? ( >=dev-libs/libserialport-0.1.0[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"
 RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )"

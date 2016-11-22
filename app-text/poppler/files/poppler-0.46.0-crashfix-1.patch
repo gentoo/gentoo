@@ -1,0 +1,36 @@
+From 7d3aea760a14a73962e429059f73d97391660367 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sat, 30 Jul 2016 17:32:59 +0200
+Subject: [PATCH 1/2] Fix abort on documents where the docinfo obj is not a
+ dict
+
+Bug #97134
+---
+ poppler/PDFDoc.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/poppler/PDFDoc.cc b/poppler/PDFDoc.cc
+index c91d6e4..a51d8b6 100644
+--- a/poppler/PDFDoc.cc
++++ b/poppler/PDFDoc.cc
+@@ -14,7 +14,7 @@
+ // under GPL version 2 or later
+ //
+ // Copyright (C) 2005, 2006, 2008 Brad Hards <bradh@frogmouth.net>
+-// Copyright (C) 2005, 2007-2009, 2011-2015 Albert Astals Cid <aacid@kde.org>
++// Copyright (C) 2005, 2007-2009, 2011-2016 Albert Astals Cid <aacid@kde.org>
+ // Copyright (C) 2008 Julien Rebetez <julienr@svn.gnome.org>
+ // Copyright (C) 2008, 2010 Pino Toscano <pino@kde.org>
+ // Copyright (C) 2008, 2010, 2011 Carlos Garcia Campos <carlosgc@gnome.org>
+@@ -646,7 +646,7 @@ void PDFDoc::setDocInfoStringEntry(const char *key, GooString *value)
+ GooString *PDFDoc::getDocInfoStringEntry(const char *key) {
+   Object infoObj;
+   getDocInfo(&infoObj);
+-  if (infoObj.isNull()) {
++  if (!infoObj.isDict()) {
+       return NULL;
+   }
+ 
+-- 
+2.9.1
+

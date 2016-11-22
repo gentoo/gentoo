@@ -5,11 +5,6 @@
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>
   </maintainer>
-  <use>
-    <flag name="openssl">
-      Use openssl crypto backend.
-    </flag>
-  </use>
   <upstream>
     <remote-id type="github">bwalex/tc-play</remote-id>
   </upstream>

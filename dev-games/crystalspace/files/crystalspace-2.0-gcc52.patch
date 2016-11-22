@@ -1,0 +1,53 @@
+--- include/csgfx/imagememory.h.old	2016-04-17 09:09:31.497152401 +0200
++++ include/csgfx/imagememory.h	2016-04-17 09:12:13.838355158 +0200
+@@ -179,8 +179,8 @@
+   /// Get a pointer to the alpha data that can be changed.
+   uint8* GetAlphaPtr ();
+ 
+-  virtual const void* GetImageData () { return GetImagePtr (); }
+-  virtual int GetWidth () const { return Width; }
++  virtual const void* GetImageData ();
++  virtual int GetWidth () const;
+   virtual int GetHeight () const { return Height; }
+   virtual int GetDepth () const { return Depth; }
+ 
+--- libs/csgfx/imagememory.cpp.old	2016-04-17 09:07:19.555451540 +0200
++++ libs/csgfx/imagememory.cpp	2016-04-17 09:13:09.339398463 +0200
+@@ -208,6 +208,23 @@
+   EnsureImage();
+   return (void*)databuf->GetData ();
+ }
++
++const void* csImageMemory::GetImageData ()
++{
++  return GetImagePtr ();
++}
++
++int csImageMemory::GetWidth () const
++{
++  return Width;
++}
++
++void csImageBase::SetName (const char* iName)
++{
++  cs_free (fName);
++  fName = CS::StrDup (iName);
++}
++
+ csRGBpixel* csImageMemory::GetPalettePtr ()
+ {
+   EnsureImage();
+--- include/csgfx/imagebase.h.old	2016-04-17 09:59:09.211101864 +0200
++++ include/csgfx/imagebase.h	2016-04-17 09:59:20.041919599 +0200
+@@ -61,10 +61,7 @@
+   // Most images are 2D, so provide a sensible default
+   virtual int GetDepth () const { return 1; }
+ 
+-  virtual void SetName (const char* iName)
+-  {
+-    cs_free (fName); fName = CS::StrDup (iName);
+-  }
++  virtual void SetName (const char* iName);
+   virtual const char* GetName () const { return fName; }
+ 
+   /* Commented out: should be implemented by all descendants.

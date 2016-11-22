@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="SLiM (Simple Login Manager) themes pack"
-HOMEPAGE="http://sourceforge.net/projects/slim.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 SRC_URI="mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz
 	mirror://sourceforge/project/slim.berlios/slim-gentoo-simple.tar.bz2
 	mirror://gentoo/slim-archlinux.tar.gz

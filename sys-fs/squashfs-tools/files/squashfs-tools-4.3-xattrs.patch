@@ -1,0 +1,34 @@
+From ffe9e55c4993422ce36213fa86d4fc29c22646ea Mon Sep 17 00:00:00 2001
+From: Wessel Dankers <wsl-debian-804194@fruit.je>
+Date: Fri, 17 Jun 2016 09:46:42 +0800
+Subject: [PATCH] unsquashfs: Correctly set file capabilities
+
+As posted on https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=804194.
+---
+ squashfs-tools/unsquashfs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/squashfs-tools/unsquashfs.c b/squashfs-tools/unsquashfs.c
+index 1323dd6..a5f0117 100644
+--- a/squashfs-tools/unsquashfs.c
++++ b/squashfs-tools/unsquashfs.c
+@@ -821,8 +821,6 @@ int set_attributes(char *pathname, int mode, uid_t uid, gid_t guid, time_t time,
+ {
+ 	struct utimbuf times = { time, time };
+ 
+-	write_xattr(pathname, xattr);
+-
+ 	if(utime(pathname, &times) == -1) {
+ 		ERROR("set_attributes: failed to set time on %s, because %s\n",
+ 			pathname, strerror(errno));
+@@ -845,6 +843,8 @@ int set_attributes(char *pathname, int mode, uid_t uid, gid_t guid, time_t time,
+ 		return FALSE;
+ 	}
+ 
++	write_xattr(pathname, xattr);
++
+ 	return TRUE;
+ }
+ 
+-- 
+2.8.0.rc3.226.g39d4020

@@ -1,5 +1,5 @@
---- jbsrc/jb.c.orig	2014-01-19 20:06:48.525462981 +0100
-+++ jbsrc/jb.c	2014-01-19 20:07:36.087934897 +0100
+--- a/jbsrc/jb.c.orig	2014-01-19 20:06:48.525462981 +0100
++++ b/jbsrc/jb.c	2014-01-19 20:07:36.087934897 +0100
 @@ -425,7 +425,6 @@
         */
        jb_compile_options_add_cflags(object->compile_options, "-std=c99");

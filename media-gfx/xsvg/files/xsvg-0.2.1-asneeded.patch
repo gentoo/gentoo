@@ -1,9 +1,0 @@
-diff -ur xsvg-0.2.1.orig/src/Makefile.am xsvg-0.2.1/src/Makefile.am
---- xsvg-0.2.1.orig/src/Makefile.am	2003-12-19 17:07:21.000000000 +0200
-+++ xsvg-0.2.1/src/Makefile.am	2007-03-12 22:31:55.000000000 +0200
-@@ -6,4 +6,4 @@
- 	xsvg.c
- 
- AM_CFLAGS = $(X_CFLAGS) $(XSVG_CFLAGS)
--xsvg_LDFLAGS = $(X_LIBS) $(XSVG_LIBS)
-+xsvg_LDADD = $(X_LIBS) $(XSVG_LIBS)

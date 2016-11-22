@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,22 +16,15 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="old-quickcheck"
+IUSE=""
 
 RDEPEND="dev-haskell/tagged:=[profile?]
 	>=dev-haskell/tasty-0.10.1:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	old-quickcheck? ( >=dev-haskell/quickcheck-2.5:2=[profile?] <dev-haskell/quickcheck-2.7:2=[profile?]
-				dev-haskell/random:=[profile?] )
-	!old-quickcheck? ( >=dev-haskell/quickcheck-2.7:2=[profile?] <dev-haskell/quickcheck-3:2=[profile?] )
+	>=dev-haskell/quickcheck-2.5:2=[profile?] <dev-haskell/quickcheck-3:2=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 	test? ( dev-haskell/pcre-light
 		dev-haskell/tasty-hunit )
 "
-
-src_configure() {
-	haskell-cabal_src_configure \
-		$(cabal_flag old-quickcheck old-quickcheck)
-}

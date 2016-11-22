@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>wizardedit@gentoo.org</email>
+    <name>Austin English</name>
+  </maintainer>
+  <longdescription lang="en">
+    Python library for interacting with JIRA via REST APIs.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">jira</remote-id>
+    <remote-id type="github">pycontribs/jira</remote-id>
+  </upstream>
+  <use>
+    <flag name="filemagic">Include filemagic support (for identifying uploaded filetypes)</flag>
+    <flag name="ipython">Include Interactive Python (IPython)</flag>
+    <flag name="oauth">Support OAuth authentication</flag>
+  </use>
+</pkgmetadata>

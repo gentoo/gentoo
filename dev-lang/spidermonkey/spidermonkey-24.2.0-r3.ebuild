@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit autotools eutils toolchain-funcs multilib python-any-r1 versionator pax-
 MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
-HOMEPAGE="http://www.mozilla.org/js/spidermonkey/"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.bz2"
 
 LICENSE="NPL-1.1"
@@ -26,7 +26,7 @@ BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.9.4
 	virtual/libffi
-	sys-libs/readline:0
+	sys-libs/readline:0=
 	>=sys-libs/zlib-1.1.4
 	system-icu? ( >=dev-libs/icu-1.51:= )"
 DEPEND="${RDEPEND}

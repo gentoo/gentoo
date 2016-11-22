@@ -15,6 +15,7 @@
   projectors.
 </longdescription>
   <use>
+    <flag name="media">Enable sound and video support</flag>
     <flag name="stars">Install extra star catalogs</flag>
     <flag name="sound">Enable sound support</flag>
   </use>

@@ -6,7 +6,7 @@ EAPI=6
 
 if [[ ${PV} == 9999  ]]; then
 	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-	inherit autotools python-any-r1
+	inherit python-any-r1
 fi
 
 inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
@@ -23,7 +23,7 @@ if [[ ${PV} != 9999 ]]; then
 			https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/2.02_beta3-10_linux-UUID.patch
+	"${FILESDIR}"/2.02_beta3-sysmacros.patch
+	"${FILESDIR}"/2.02_beta3-gcc6-ld-no-pie.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.35
@@ -47,9 +49,9 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount multislot nls static sdl test +themes truetype libzfs"
 
-GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen )
+GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="
@@ -83,6 +85,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	fonts? ( media-libs/freetype:2 )
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
+	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
@@ -105,7 +108,7 @@ RDEPEND+="
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 )
+	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
 
@@ -149,12 +152,8 @@ src_prepare() {
 		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
 	fi
 
-	if [[ ${PV} == 9999 ]]; then
-		python_setup
-		bash autogen.sh || die
-		autopoint() { :; }
-		eautoreconf
-	fi
+	autopoint() { :; }
+	eautoreconf
 }
 
 grub_do() {
@@ -169,21 +168,23 @@ grub_configure() {
 	local platform
 
 	case ${MULTIBUILD_VARIANT} in
-		efi-32)
-			platform=efi
-			if [[ ${CTARGET:-${CHOST}} == x86_64* ]]; then
-				local CTARGET=${CTARGET:-i386}
-			fi ;;
-		efi-64)
-			platform=efi
-			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
-				local CTARGET=${CTARGET:-x86_64}
-				local TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
-				local TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
-				export TARGET_CFLAGS TARGET_CPPFLAGS
-			fi ;;
+		efi*) platform=efi ;;
+		xen*) platform=xen ;;
 		guessed) ;;
-		*)	platform=${MULTIBUILD_VARIANT} ;;
+		*) platform=${MULTIBUILD_VARIANT} ;;
+	esac
+
+	case ${MULTIBUILD_VARIANT} in
+		*-32)
+			if [[ ${CTARGET:-${CHOST}} == x86_64* ]]; then
+				local CTARGET=i386
+			fi ;;
+		*-64)
+			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
+				local CTARGET=x86_64
+				local -x TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
+				local -x TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
+			fi ;;
 	esac
 
 	local myeconfargs=(
@@ -263,6 +264,8 @@ src_install() {
 
 	einstalldocs
 
+	dodoc "${FILESDIR}/grub.cfg.example"
+
 	if use multislot; then
 		mv "${ED%/}"/usr/share/info/grub{,2}.info || die
 	fi
@@ -274,8 +277,11 @@ src_install() {
 pkg_postinst() {
 	elog "For information on how to configure GRUB2 please refer to the guide:"
 	elog "    https://wiki.gentoo.org/wiki/GRUB2_Quick_Start"
+	elog
+	elog "For manual configuration, see /usr/share/doc/${PF}/grub.cfg.example"
 
 	if has_version 'sys-boot/grub:0'; then
+		elog
 		elog "A migration guide for GRUB Legacy users is available:"
 		elog "    https://wiki.gentoo.org/wiki/GRUB2_Migration"
 	fi

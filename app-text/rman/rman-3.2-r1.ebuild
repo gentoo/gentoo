@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="PolyGlotMan man page translator AKA RosettaMan"
-HOMEPAGE="http://sourceforge.net/projects/polyglotman/"
+HOMEPAGE="https://sourceforge.net/projects/polyglotman/"
 SRC_URI="mirror://sourceforge/polyglotman/${P}.tar.gz"
 
 LICENSE="Artistic"

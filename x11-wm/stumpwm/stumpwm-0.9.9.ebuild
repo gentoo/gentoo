@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit common-lisp-3 eutils elisp-common autotools
+inherit autotools common-lisp-3 eutils elisp-common xdg-utils
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="https://stumpwm.github.io/"
@@ -24,9 +24,11 @@ RDEPEND="dev-lisp/cl-ppcre
 		!sbcl? ( !clisp? (  ecl? ( >=dev-lisp/ecls-10.4.1 ) ) )
 		!sbcl? (  clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) )
 		emacs? ( virtual/emacs app-emacs/slime )"
+
 DEPEND="${RDEPEND}
 		sys-apps/texinfo
-		doc? ( virtual/texi2dvi )"
+		doc? ( virtual/texi2dvi )
+		contrib? ( dev-vcs/git )"
 
 SITEFILE=70${PN}-gentoo.el
 CLPKGDIR="${CLSOURCEROOT}/${CLPACKAGE}"
@@ -72,6 +74,7 @@ src_prepare() {
 src_configure() {
 	local moduleconfig
 
+	xdg_environment_reset
 	use contrib && moduleconfig="--with-module-dir=${CONTRIBDIR}/contrib"
 	econf --with-lisp=$(get_lisp sbcl clisp ecl) "${moduleconfig}"
 }

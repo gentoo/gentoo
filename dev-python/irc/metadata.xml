@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>sautier.louis@gmail.com</email>
 		<name>Louis Sautier</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -17,5 +16,6 @@
 	<upstream>
 		<remote-id type="pypi">irc</remote-id>
 		<remote-id type="github">jaraco/irc</remote-id>
+		<bugs-to>https://github.com/jaraco/irc/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

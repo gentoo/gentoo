@@ -8,7 +8,7 @@ inherit eutils unpacker
 
 SRC_URI_BASE="https://spideroak.com/getbuild?platform=ubuntu"
 
-DESCRIPTION="Secure free online backup, storage, access and sharing system"
+DESCRIPTION="Secure free online backup, storage, and sharing system"
 HOMEPAGE="https://spideroak.com"
 SRC_URI="x86? ( ${SRC_URI_BASE}&arch=i386&version=${PV} -> ${P}_x86.deb )
 	amd64? ( ${SRC_URI_BASE}&arch=x86_64&version=${PV} -> ${P}_amd64.deb )"
@@ -16,7 +16,7 @@ RESTRICT="mirror strip"
 
 LICENSE="spideroak"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus X"
 
 DEPEND="dev-util/patchelf"

@@ -1,0 +1,51 @@
+--- phc-intel-pack-rev21/inc/4.6/linux-phc-0.3.2.patch
++++ phc-intel-pack-rev21/inc/4.6/linux-phc-0.3.2.patch
+@@ -97,7 +97,7 @@
+  static void __init acpi_cpufreq_boost_init(void)
+  {
+  	if (boot_cpu_has(X86_FEATURE_CPB) || boot_cpu_has(X86_FEATURE_IDA)) {
+-@@ -917,6 +914,491 @@
++@@ -917,6 +914,496 @@
+  	}
+  }
+  
+@@ -169,6 +169,7 @@
+ +		vid = extract_vid_from_control(perf->states[freq_table[i].driver_data].control);
+ +		count += sprintf(&buf[count], "%u ", vid);
+ +	}
+++	if (count) count--;
+ +	count += sprintf(&buf[count], "\n");
+ +
+ +	return count;
+@@ -197,6 +198,7 @@
+ +		vid = extract_vid_from_control(data->original_controls[freq_table[i].driver_data]);
+ +		count += sprintf(&buf[count], "%u ", vid);
+ +	}
+++	if (count) count--;
+ +	count += sprintf(&buf[count], "\n");
+ +
+ +	return count;
+@@ -222,6 +224,7 @@
+ +		fid = extract_fid_from_control(perf->states[freq_table[i].driver_data].control);
+ +		count += sprintf(&buf[count], "%u ", fid);
+ +	}
+++	if (count) count--;
+ +	count += sprintf(&buf[count], "\n");
+ +
+ +	return count;
+@@ -252,6 +255,7 @@
+ +		vid = extract_vid_from_control(perf->states[freq_table[i].driver_data].control);
+ +		count += sprintf(&buf[count], "%u:%u ", fid, vid);
+ +	}
+++	if (count) count--;
+ +	count += sprintf(&buf[count], "\n");
+ +
+ +	return count;
+@@ -285,6 +289,7 @@
+ +		vid = extract_vid_from_control(data->original_controls[freq_table[i].driver_data]);
+ +		count += sprintf(&buf[count], "%u:%u ", fid, vid);
+ +	}
+++	if (count) count--;
+ +	count += sprintf(&buf[count], "\n");
+ +
+ +	return count;

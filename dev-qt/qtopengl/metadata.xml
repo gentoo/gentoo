@@ -16,4 +16,9 @@
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>http://doc.qt.io/</doc>
 	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
 </pkgmetadata>

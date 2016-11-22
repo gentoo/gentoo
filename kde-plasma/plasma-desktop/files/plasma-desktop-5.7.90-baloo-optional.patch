@@ -1,0 +1,45 @@
+commit 00cdef0f2b6e8e20661aef98074b8533103bbfdd
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu Sep 15 00:39:43 2016 +0200
+
+    Make KF5Baloo optional
+    
+    https://mail.kde.org/pipermail/kde-frameworks-devel/2016-September/037734.html
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f15021a..613ca20 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,14 +67,10 @@ set_package_properties(PackageKitQt5 PROPERTIES DESCRIPTION "Software Manager in
+                        PURPOSE "Provides package management integration to the application launcher."
+                       )
+ 
+-# Baloo is currently part of the KF5 namespace, but it is not
+-# a proper framework. Hence the strange versioning.
+-# This will be fixed with Plasma 5.2, as Baloo should have
+-# become a framework by then
+-find_package(KF5Baloo "5.1.90")
++find_package(KF5Baloo)
+ set_package_properties(KF5Baloo PROPERTIES DESCRIPTION "File Searching"
+-                       TYPE REQUIRED
+-                       PURPOSE "Needed to build to File Search KCM"
++                       TYPE OPTIONAL
++                       PURPOSE "Needed to build the File Search KCM"
+                       )
+ 
+ find_package(Fontconfig)
+diff --git a/kcms/CMakeLists.txt b/kcms/CMakeLists.txt
+index 53ca49a..3220bd3 100644
+--- a/kcms/CMakeLists.txt
++++ b/kcms/CMakeLists.txt
+@@ -55,7 +55,9 @@ add_subdirectory(useraccount/pics)
+ 
+ 
+ add_subdirectory(workspaceoptions)
+-add_subdirectory(baloo)
++if (KF5Baloo_FOUND)
++   add_subdirectory(baloo)
++endif()
+ add_subdirectory(solid_actions)
+ add_subdirectory(cursortheme)
+ 

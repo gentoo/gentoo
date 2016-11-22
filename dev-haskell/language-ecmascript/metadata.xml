@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Some tools for working with ECMAScript 3 (popularly known as JavaScript).
+		Includes a parser, pretty-printer, and basic building blocks for more
+		sophisticated tools.
+		This package used to be called WebBits.
+	</longdescription>
+</pkgmetadata>

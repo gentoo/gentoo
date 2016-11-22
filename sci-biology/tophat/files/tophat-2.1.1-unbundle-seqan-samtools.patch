@@ -1,9 +1,25 @@
 Unbundle the included samtools and SeqAn, and use system libraries.
 See also: https://bugs.gentoo.org/show_bug.cgi?id=566494
 
---- tophat-2.1.1/configure.ac
-+++ tophat-2.1.1/configure.ac
-@@ -38,16 +38,6 @@
+Remove ancient ax_boost_base.m4 and ax_boost_thread.m4, and depend
+on >=sys-devel/autoconf-archive-2016.09.16 in the ebuild instead.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594810
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,26 +28,15 @@
+ AC_PROG_INSTALL
+ AM_PATH_PYTHON([2.4])
+ 
+-m4_include([ax_boost_base.m4])
+-m4_include([ax_boost_thread.m4])
+ # CXXFLAGS="$CXXFLAGS $threadLib"
+ AX_BOOST_BASE([1.38.0])
++AX_BOOST_SYSTEM
+ AX_BOOST_THREAD
+-if test -z "$BOOST_THREAD_LIBS"; then
++if test -z "$BOOST_THREAD_LIB"; then
+   AC_MSG_ERROR([boost.thread not found. Aborting.])
  fi
  
  
@@ -20,7 +36,7 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=566494
  # Checks for header files.
  AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
  
-@@ -80,32 +70,23 @@
+@@ -80,32 +69,23 @@
  # set CFLAGS and CXXFLAGS
  #user_CFLAGS="${CXXFLAGS}"
  user_CFLAGS=${CFLAGS}
@@ -55,8 +71,17 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=566494
  LDFLAGS="$BAM_LDFLAGS $BOOST_LDFLAGS $user_LDFLAGS"
  
  AM_INIT_AUTOMAKE([-Wall foreign tar-pax foreign])
---- tophat-2.1.1/src/Makefile.am
-+++ tophat-2.1.1/src/Makefile.am
+@@ -122,7 +102,7 @@
+ -- ${PACKAGE_STRING} Configuration Results --
+   C++ compiler:        ${CXX} ${CXXFLAGS}
+   Linker flags:        ${LDFLAGS}
+-  BOOST libraries:     ${BOOST_THREAD_LIBS}"
++  BOOST libraries:     ${BOOST_THREAD_LIB}"
+ 
+ if test x"${GCC}" = x"yes" ; then
+    gcc_version=`${CC} --version | head -n 1`
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -683,17 +683,12 @@
  SeqAn-1.4.2/seqan/system/system_thread.h \
  SeqAn-1.4.2/seqan/version.h
@@ -96,6 +121,29 @@ See also: https://bugs.gentoo.org/show_bug.cgi?id=566494
  
  noinst_HEADERS = \
  	reads.h \
+@@ -801,11 +793,11 @@
+ prep_reads_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) 
+ 
+ segment_juncs_SOURCES = segment_juncs.cpp
+-segment_juncs_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++segment_juncs_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ segment_juncs_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ long_spanning_reads_SOURCES = long_spanning_reads.cpp
+-long_spanning_reads_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++long_spanning_reads_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ long_spanning_reads_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ gtf_juncs_SOURCES = gtf_juncs.cpp
+@@ -817,7 +809,7 @@
+ juncs_db_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS)
+ 
+ tophat_reports_SOURCES = tophat_reports.cpp
+-tophat_reports_LDADD = $(top_builddir)/src/libtophat.a  $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++tophat_reports_LDADD = $(top_builddir)/src/libtophat.a  $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ tophat_reports_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ fix_map_ordering_SOURCES = fix_map_ordering.cpp
 @@ -844,15 +836,5 @@
  gtf_to_fasta_LDADD = $(top_builddir)/src/libtophat.a libgc.a $(BAM_LIB)
  gtf_to_fasta_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS)

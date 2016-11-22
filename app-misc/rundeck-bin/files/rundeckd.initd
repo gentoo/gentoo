@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+command=/usr/bin/rundeckd
+pidfile=/var/run/rundeckd.pid
+command_background=yes
+extra_started_commands=reload
+servicelog=/var/log/rundeck/service.log
+start_stop_daemon_args="-1 ${servicelog} -2 ${servicelog} -u rundeck -g rundeck"
+
+reload() {
+	ebegin "Reloading $RC_SVCNAME"
+	start-stop-daemon -p ${pidfile} -s HUP
+	eend $?
+}

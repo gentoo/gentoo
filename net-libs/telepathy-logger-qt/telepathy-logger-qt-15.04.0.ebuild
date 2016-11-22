@@ -14,7 +14,7 @@ if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="mirror://kde/stable/telepathy-logger-qt/${PV%.*}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-2.1"

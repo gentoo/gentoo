@@ -9,7 +9,7 @@ inherit eutils multilib-minimal
 MY_PN="gstreamer-vaapi"
 DESCRIPTION="Hardware accelerated video decoding through VA-API plugin"
 HOMEPAGE="https://github.com/01org/gstreamer-vaapi"
-SRC_URI="http://www.freedesktop.org/software/vaapi/releases/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://www.freedesktop.org/software/vaapi/releases/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"

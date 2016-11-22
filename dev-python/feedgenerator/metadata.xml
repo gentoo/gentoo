@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">feedgenerator</remote-id>
+		<remote-id type="github">getpelican/feedgenerator</remote-id>
+		<bugs-to>https://github.com/getpelican/feedgenerator/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@
 	<use>
 		<flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
 		<flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>
-		<flag name="libextractor">Use <pkg>media-libs/libextract</pkg> to gather
+		<flag name="libextractor">Use <pkg>media-libs/libextractor</pkg> to gather
 			files' metadata in media-player</flag>
 		<flag name="vdr">Compile the vdr output plugin to use local or remote xine as output</flag>
 		<flag name="xine">Compile the xine input plugin for displaying vdr video and OSD</flag>

@@ -3,6 +3,6 @@
 # $Id$
 
 CFLAGS="-O2 -pipe"
-CXXFLAGS="-stdlib=libc++ ${CFLAGS}"
+CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"

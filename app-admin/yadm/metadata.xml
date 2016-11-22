@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dev+gentoobugzilla@henriksen.is</email>
+		<name>Espen H</name>
+		<description>Proxy maintainer - set to assignee on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">TheLocehiliosan/yadm</remote-id>
+	</upstream>
+	<longdescription lang="en">
+	yadm is a dotfile manager that handles the hassle of synchronizing the
+	dotfiles in your home folder across different workstations. It has a
+	philosophy using git and getting out of git's way to ensure it does what it
+	does best. What sets it apart is that it supports encryption, which enables
+	you to add files like mutt configuration with passwords and host it
+	publicly. It also enables you to add suffixes to your files like
+	##Linux.hostname, and yadm will automatically symlink the file if you are
+	on that hostname.
+	</longdescription>
+</pkgmetadata>

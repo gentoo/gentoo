@@ -1,0 +1,13 @@
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -37,3 +37,10 @@
+ add_executable(strip-id3v1 strip-id3v1.cpp)
+ target_link_libraries(strip-id3v1 tag)
+ 
++INSTALL(TARGETS
++  tagreader tagreader_c tagwriter framelist strip-id3v1
++  LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++  RUNTIME DESTINATION ${BIN_INSTALL_DIR}
++  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++)
++

@@ -24,7 +24,6 @@ lm_sensors
 caps
 filecaps
 vidix
-madwifi
 3dfx
 nvidia
 xvmc

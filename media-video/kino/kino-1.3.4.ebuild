@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,11 +25,11 @@ IUSE="alsa dvdr gpac lame gstreamer quicktime sox vorbis"
 # Optional dependency on cinelerra-cvs (as a replacement for libquicktime)
 # dropped because kino may run with it but won't build anymore.
 
-CDEPEND=">=x11-libs/gtk+-2.6.0
+CDEPEND=">=x11-libs/gtk+-2.6.0:2
 	>=gnome-base/libglade-2.5.0
-	>=dev-libs/glib-2
+	>=dev-libs/glib-2:2
 	x11-libs/libXv
-	dev-libs/libxml2
+	dev-libs/libxml2:2
 	media-libs/audiofile
 	>=sys-libs/libraw1394-1.0.0
 	>=sys-libs/libavc1394-0.4.1

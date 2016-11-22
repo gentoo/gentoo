@@ -6,7 +6,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit eutils python-single-r1 ${GITECLASS}
@@ -17,19 +17,19 @@ HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 [[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/orcus/src/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/0.11" # based on SONAME of liborcus.so
+SLOT="0/0.12" # based on SONAME of liborcus.so
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
-	>=dev-libs/boost-1.51.0:=
+	dev-libs/boost:=
 	sys-libs/zlib:=
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.11:= )
+	spreadsheet-model? ( >=dev-libs/libixion-0.12.1:= )
 "
 DEPEND="${RDEPEND}
-	dev-util/mdds:1
+	>=dev-util/mdds-1.2.2:1
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -39,7 +39,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
@@ -54,6 +54,5 @@ src_configure() {
 
 src_install() {
 	default
-
 	prune_libtool_files --all
 }

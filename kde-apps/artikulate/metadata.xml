@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="qtmedia">Enable playback via Qt5Multimedia</flag>
+	</use>
 </pkgmetadata>

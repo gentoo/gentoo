@@ -1,3 +1,12 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_X86
+sys-devel/llvm llvm_targets_X86
+
 # Multilib flag for the system is forced
 sys-freebsd/freebsd-lib abi_x86_32
 sys-freebsd/freebsd-ubin abi_x86_32

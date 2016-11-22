@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Project manager for Gnome"
-HOMEPAGE="https://live.gnome.org/Planner/"
+HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Planner"
 SRC_URI="https://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
+
 IUSE="eds examples python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -33,10 +33,10 @@ RDEPEND="
 		>=dev-python/pygtk-2.6:2[${PYTHON_USEDEP}] )
 	eds? (
 		>=gnome-extra/evolution-data-server-3.6:=
-		>=mail-client/evolution-3.6 )"
-
+		>=mail-client/evolution-3.6 )
+"
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
+	app-text/rarian
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.5
 	gnome-base/gnome-common

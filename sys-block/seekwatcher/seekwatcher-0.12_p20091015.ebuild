@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_DEPEND="2"
 
 inherit eutils distutils
 
-DESCRIPTION="Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance"
+DESCRIPTION="generates graphs from blktrace to help visualize IO patterns and performance"
 HOMEPAGE="http://oss.oracle.com/~mason/seekwatcher/"
 #SRC_URI="http://oss.oracle.com/~mason/seekwatcher/${P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~slyfox/${P}.tar.gz"
@@ -19,8 +19,8 @@ IUSE=""
 
 DEPEND="dev-python/pyrex"
 RDEPEND="dev-python/matplotlib
-		dev-python/numpy
-		>=sys-block/btrace-0.0.20070730162628"
+	dev-python/numpy
+	>=sys-block/blktrace-0.0.20070730162628"
 
 S=${WORKDIR}/${PN}-b392aeaf693b # hg snapshot
 

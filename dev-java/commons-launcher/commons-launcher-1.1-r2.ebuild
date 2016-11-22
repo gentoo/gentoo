@@ -8,13 +8,13 @@ JAVA_PKG_IUSE="examples doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Commons-launcher eliminates the need for a batch or shell script to launch a Java class"
+DESCRIPTION="Java library to launch Java classes"
 HOMEPAGE="http://commons.apache.org/launcher/"
 SRC_URI="mirror://apache/${PN%%-*}/${PN##*-}/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
 IUSE=""
 
 CDEPEND="dev-java/ant-core:0"

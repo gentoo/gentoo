@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,8 +15,8 @@ LICENSE="MPL-1.0"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="capi celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc
-ipv6 ivr ixj java ldap lid +plugins sbc sip sipim +sound srtp ssl static-libs
-stats swig theora +video vpb vxml wav x264 x264-static xml"
+ipv6 ivr ixj java ldap lid +plugins sbc +sip +sipim +sound srtp ssl static-libs
+stats swig theora +video vpb vxml +wav x264 x264-static +xml"
 
 REQUIRED_USE="x264-static? ( x264 )
 	h281? ( h224 )

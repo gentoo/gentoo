@@ -1,0 +1,29 @@
+From 1789b728e8118626adb6b945303f1b2059a2e84d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 23 Oct 2016 17:09:38 +0200
+Subject: [PATCH] Respect custom CFLAGS
+
+---
+ configure.ac | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index fb78b0b..f59c617 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,12 +16,6 @@ AC_ARG_WITH([core-foundation],
+     AS_HELP_STRING([--with-core-foundation], [link against Core Foundation (OS X only) @<:@default=no@:>@]))
+ 
+ 
+-if test x"$enable_debug" == "xyes" ; then
+-    my_CFLAGS="-g -O0"
+-else
+-    my_CFLAGS="-O2"
+-fi
+-
+ if test x"$enable_debug_output" == "xyes" ; then
+     AC_DEFINE([BINDFS_DEBUG], [1], [Define to 1 to enable debugging messages])
+ fi
+-- 
+2.10.0
+

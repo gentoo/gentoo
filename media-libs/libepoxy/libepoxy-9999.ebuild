@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='xml(+)'
 inherit autotools-multilib ${GIT_ECLASS} python-any-r1
 
@@ -29,12 +29,12 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-RESTICT="test" # FIXME: tests fail when run from portage.
+RESTRICT="test" # FIXME: tests fail when run from portage.
 
 DEPEND="${PYTHON_DEPS}
-	media-libs/mesa[egl]
+	media-libs/mesa[egl,${MULTILIB_USEDEP}]
 	x11-misc/util-macros
-	x11-libs/libX11"
+	x11-libs/libX11[${MULTILIB_USEDEP}]"
 RDEPEND=""
 
 src_unpack() {

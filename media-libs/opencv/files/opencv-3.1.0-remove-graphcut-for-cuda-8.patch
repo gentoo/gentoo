@@ -1,0 +1,23 @@
+From 10896129b39655e19e4e7c529153cb5c2191a1db Mon Sep 17 00:00:00 2001
+From: Vladislav Vinogradov <vlad.vinogradov@itseez.com>
+Date: Fri, 6 May 2016 11:37:32 +0300
+Subject: [PATCH] GraphCut deprecated in CUDA 7.5 and removed in 8.0
+
+---
+ modules/cudalegacy/src/graphcuts.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules/cudalegacy/src/graphcuts.cpp b/modules/cudalegacy/src/graphcuts.cpp
+index eb08c3c..1a1eb85 100644
+--- a/modules/cudalegacy/src/graphcuts.cpp
++++ b/modules/cudalegacy/src/graphcuts.cpp
+@@ -42,7 +42,8 @@
+ 
+ #include "precomp.hpp"
+ 
+-#if !defined (HAVE_CUDA) || defined (CUDA_DISABLER)
++// GraphCut has been removed in NPP 8.0
++#if !defined (HAVE_CUDA) || defined (CUDA_DISABLER) || (CUDART_VERSION >= 8000)
+ 
+ void cv::cuda::graphcut(GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, Stream&) { throw_no_cuda(); }
+ void cv::cuda::graphcut(GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, GpuMat&, Stream&) { throw_no_cuda(); }

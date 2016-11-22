@@ -1,4 +1,4 @@
---- xgammon/lib/db.c.orig	Sat Jan  6 12:14:12 2001
+--- xgammon/lib/db.c	Sat Jan  6 12:14:12 2001
 +++ xgammon/lib/db.c	Sat Jan  6 12:13:56 2001
 @@ -259,10 +259,11 @@
      close(fid);

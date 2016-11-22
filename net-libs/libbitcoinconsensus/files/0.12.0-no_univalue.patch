@@ -1,0 +1,35 @@
+From c0251eab760f00fa9515fdf7b13c5ac28e37f0f9 Mon Sep 17 00:00:00 2001
+From: Luke Dashjr <luke-jr+git@utopios.org>
+Date: Thu, 30 Jun 2016 01:51:09 +0000
+Subject: [PATCH] Bugfix: Allow building libbitcoinconsensus without any
+ univalue
+
+---
+ configure.ac | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 24f9f09..a23c645 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -750,6 +750,10 @@ fi
+ 
+ dnl univalue check
+ 
++if test x$build_bitcoin_cli$build_bitcoin_tx$build_bitcoind$bitcoin_enable_qt$use_tests$use_bench = xnononononono; then
++  system_univalue=yes
++else
++
+ if test x$system_univalue != xno ; then
+   found_univalue=no
+   if test x$use_pkgconfig = xyes; then
+@@ -782,6 +786,9 @@ if test x$system_univalue = xno ; then
+   UNIVALUE_CFLAGS='-I$(srcdir)/univalue/include'
+   UNIVALUE_LIBS='univalue/libunivalue.la'
+ fi
++
++fi
++
+ AM_CONDITIONAL([EMBEDDED_UNIVALUE],[test x$system_univalue = xno])
+ AC_SUBST(UNIVALUE_CFLAGS)
+ AC_SUBST(UNIVALUE_LIBS)

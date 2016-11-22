@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://live.gnome.org/Tasque"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+rememberthemilk +sqlite hiveminder debug"
 
 LANGS="ca ca@valencia cs da de el en_GB eo es et fi fr gl hu id it ja lv nb nds nl pl

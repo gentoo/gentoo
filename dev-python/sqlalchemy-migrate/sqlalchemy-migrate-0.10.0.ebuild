@@ -4,7 +4,7 @@
 
 EAPI=5
 # py3 has a syntax errors. On testing it is underdone
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
 inherit distutils-r1
 

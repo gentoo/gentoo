@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit unpacker toolchain-funcs
+inherit unpacker toolchain-funcs flag-o-matic
 
 DESCRIPTION="pax (Portable Archive eXchange) is the POSIX standard archive tool"
 HOMEPAGE="https://www.mirbsd.org/pax.htm"
@@ -15,15 +15,19 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/libbsd"
+RDEPEND="dev-libs/libbsd
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	$(unpacker_src_uri_depends)"
 
 S=${WORKDIR}/${PN}
 
+PATCHES=( "${FILESDIR}/${P}-glibc-to-linux.patch" )
+
 src_prepare() {
 	# Newer C libraries omit this include from sys/types.h.
 	sed -i '1i#include <sys/sysmacros.h>' extern.h || die
+	default
 }
 
 src_configure() {
@@ -31,6 +35,8 @@ src_configure() {
 }
 
 src_compile() {
+	use elibc_musl && append-ldflags "-lfts"
+
 	# We can't rely on LFS flags as it uses the fts.h interface which lacks 64-bit support.
 	set -- \
 		${CC} ${CPPFLAGS} ${CFLAGS} \

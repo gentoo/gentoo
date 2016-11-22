@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ RDEPEND="|| (
 		dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 		>=sys-devel/libtool-2.4.2-r1[${MULTILIB_USEDEP}]
 	)
-	>=sys-libs/readline-6.2_p5-r1[${MULTILIB_USEDEP}]
-	>=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
+	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
+	>=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}

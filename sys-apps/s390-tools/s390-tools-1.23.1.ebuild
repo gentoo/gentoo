@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils udev
 
@@ -21,9 +21,11 @@ SRC_URI="http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/$
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* s390"
-IUSE="fuse snmp zfcpdump"
+IUSE="fuse ncurses snmp zfcpdump"
 
-RDEPEND="fuse? ( sys-fs/fuse )
+RDEPEND="sys-libs/zlib
+	fuse? ( sys-fs/fuse )
+	ncurses? ( sys-libs/ncurses:0= )
 	snmp? ( net-analyzer/net-snmp )"
 DEPEND="${RDEPEND}
 	dev-util/indent
@@ -34,6 +36,7 @@ src_prepare() {
 
 	use snmp || sed -i -e 's:osasnmpd::' Makefile
 	use fuse || { sed -i -e 's:cmsfs-fuse::' Makefile; export WITHOUT_FUSE=1; }
+	use ncurses || sed -i -e 's:hyptop::' Makefile
 
 	if use zfcpdump ; then
 		local x

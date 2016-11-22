@@ -384,7 +384,6 @@ multilib_src_configure() {
 		-DINSTALL_MANDIR=share/man
 		-DINSTALL_MYSQLDATADIR=${EPREFIX}/var/lib/mysql
 		-DINSTALL_MYSQLSHAREDIR=share/mysql
-		-DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mysql/plugin
 		-DINSTALL_SBINDIR=sbin
 		-DINSTALL_SCRIPTDIR=share/mysql/scripts
@@ -402,7 +401,16 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_FEATURE_SET=0
 		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
 		-DENABLE_STATIC_LIBS=$(usex static-libs)
+		# The build forces this to be defined when cross-compiling.  We pass it
+		# all the time for simplicity and to make sure it is actually correct.
+		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 	)
+
+	if use test ; then
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
+	else
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
+	fi
 
 	if in_iuse systemd ; then
 		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
@@ -537,11 +545,16 @@ mysql-multilib-r1_src_install() {
 multilib_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if multilib_is_native_abi; then
-		# Make sure the vars are correctly initialized
-		mysql_init_vars
+	cmake-utils_src_install
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
 
-		cmake-utils_src_install
+	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
+	if [[ -f "${D}${MY_INCLUDEDIR}/private/config.h" ]] ; then
+		rm "${D}${MY_INCLUDEDIR}/private/config.h" || die
+	fi
+
+	if multilib_is_native_abi; then
 
 		# Convenience links
 		einfo "Making Convenience links for mysqlcheck multi-call binary"
@@ -627,7 +640,6 @@ multilib_src_install() {
 			fi
 		done
 	else
-		cmake-utils_src_install
 		if [[ "${PN}" == "mariadb" ]] && use server ; then
 			insinto /usr/include/mysql/private
 			doins "${S}"/sql/*.h
@@ -805,11 +817,29 @@ mysql-multilib-r1_pkg_config() {
 	local maxtry=15
 
 	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
-		MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval 'client mysql' password)"
+		local tmp_mysqld_password_source=
+
+		for tmp_mysqld_password_source in mysql client; do
+			einfo "Trying to get password for mysql 'root' user from '${tmp_mysqld_password_source}' section ..."
+			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval "${tmp_mysqld_password_source}" password)"
+			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]]; then
+				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]]; then
+					ewarn "Ignoring password from '${tmp_mysqld_password_source}' section due to newline character (do you have multiple password options set?)!"
+					MYSQL_ROOT_PASSWORD=
+					continue
+				fi
+
+				einfo "Found password in '${tmp_mysqld_password_source}' section!"
+				break
+			fi
+		done
+
 		# Sometimes --show is required to display passwords in some implementations of my_print_defaults
 		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]]; then
-			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval 'client mysql' password --show)"
+			MYSQL_ROOT_PASSWORD="$(mysql-multilib-r1_getoptval "${tmp_mysqld_password_source}" password --show)"
 		fi
+
+		unset tmp_mysqld_password_source
 	fi
 	MYSQL_TMPDIR="$(mysql-multilib-r1_getoptval mysqld tmpdir)"
 	# These are dir+prefix
@@ -906,7 +936,7 @@ mysql-multilib-r1_pkg_config() {
 
 	local cmd
 	local initialize_options
-        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && mysql_version_is_at_least "5.7.6" ; then
+        if [[ ${PN} == "mysql" || ${PN} == "percona-server" ]] && version_is_at_least "5.7.6" ; then
 		# --initialize-insecure will not set root password
 		# --initialize would set a random one in the log which we don't need as we set it ourselves
 		cmd="${EROOT}usr/sbin/mysqld"

@@ -1,0 +1,11 @@
+--- tuprolog-3.0.0.orig/test/unit/alice/tuprolog/PrologTestCase.java	2016-10-08 14:34:12.000000000 +0200
++++ tuprolog-3.0.0/test/unit/alice/tuprolog/PrologTestCase.java	2016-10-08 17:43:28.339078761 +0200
+@@ -32,7 +32,7 @@
+ 		assertNotNull(engine.getLibrary("alice.tuprolog.StringLibrary"));
+ 		Library javaLibrary = new alice.tuprolog.lib.OOLibrary();
+ 		engine.loadLibrary(javaLibrary);
+-		assertSame(javaLibrary, engine.getLibrary("alice.tuprolog.lib.JavaLibrary"));
++		assertSame(javaLibrary, engine.getLibrary("alice.tuprolog.lib.OOLibrary"));
+ 	}
+ 	
+ 	public void testGetLibraryWithName() throws InvalidLibraryException {

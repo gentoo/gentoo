@@ -25,6 +25,8 @@ ruby_add_bdepend "test? ( dev-ruby/spring dev-ruby/rails )"
 all_ruby_prepare() {
 	sed -i -e '/:guard/,/end/ s:^:#:' \
 		-e '5igem "rspec", "~> 3.0"' Gemfile || die
+
+	sed -i -e '/rubocop/ s:^:#:' dotenv.gemspec || die
 }
 
 each_ruby_prepare() {

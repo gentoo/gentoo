@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-tcltk/tix
-	dev-lang/tk
+	dev-lang/tk:0=
 	>=dev-python/numpy-1.1[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP},tk]
 	>=sci-chemistry/cns-1.2.1-r7[aria,openmp]

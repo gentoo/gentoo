@@ -112,6 +112,7 @@
 -lilo
 -mmx
 -mmxext
+-mpx
 -sse
 -sse2
 -sse3

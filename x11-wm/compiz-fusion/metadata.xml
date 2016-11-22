@@ -3,7 +3,7 @@
 <pkgmetadata>
 <use>
   <flag name="emerald">Install the <pkg>x11-wm/emerald</pkg> package.</flag>
-  <flag name="unsupported">Install the <pkg>x11-plugins/compiz-fusion-plugins-unsupported</pkg> package.</flag>
+  <flag name="unsupported">Install the <pkg>x11-plugins/compiz-plugins-unsupported</pkg> package.</flag>
 </use>
 <maintainer type="project">
   <email>desktop-effects@gentoo.org</email>

@@ -1,0 +1,57 @@
+2016-05-21  Magnus Granberg  <zorry@gentoo.org>
+
+	#583042 sys-boot/grub-2.02_beta3-r1: building w/gcc-6[pie]: error:
+	x86_64-pc-linux-gnu/bin/ld: -r and -shared may not be used together
+
+	* acinclude.m4: Add -no-pie check.
+	* configure.ac: Add -no-pie to TARGET_LDFLAGS if needed.
+
+--- a/acinclude.m4	2015-11-11 20:56:52.000000000 +0100
++++ b/acinclude.m4	2016-05-17 00:08:22.000000000 +0200
+@@ -390,6 +390,24 @@ else
+ [fi]
+ ])
+ 
++dnl Check if the Linker supports `-no-pie'.
++AC_DEFUN([grub_CHECK_NO_PIE],
++[AC_MSG_CHECKING([whether linker accepts -no-pie])
++AC_CACHE_VAL(grub_cv_cc_ld_nopie,
++[save_LDFLAGS="$LDFLAGS"
++LDFLAGS="$LDFLAGS -no-pie"
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[]])],
++	       [grub_cv_cc_ld_no_pie=yes],
++	       [grub_cv_cc_ld_no_pie=no])
++LDFLAGS="$save_LDFLAGS"
++])
++AC_MSG_RESULT([$grub_cv_cc_ld_no_pie])
++nopie_possible=no
++if test "x$grub_cv_cc_ld_no_pie" = xyes ; then
++  nopie_possible=yes
++fi
++])
++
+ dnl Check if the C compiler supports `-fPIC'.
+ AC_DEFUN([grub_CHECK_PIC],[
+ [# Position independent executable.
+--- a/configure.ac	2016-02-27 13:40:56.000000000 +0100
++++ b/configure.ac	2016-05-17 00:57:29.471000000 +0200
+@@ -1184,13 +1184,18 @@ CFLAGS="$TARGET_CFLAGS"
+ 
+ # Position independent executable.
+ grub_CHECK_PIE
++grub_CHECK_NO_PIE
+ [# Need that, because some distributions ship compilers that include
+-# `-fPIE' in the default specs.
++# `-fPIE' and '-pie' in the default specs.
+ if [ x"$pie_possible" = xyes ]; then
+   TARGET_CFLAGS="$TARGET_CFLAGS -fno-PIE"
++fi
++if [ x"$nopie_possible" = xyes ] &&  [ x"$pie_possible" = xyes ]; then
++  TARGET_LDFLAGS="$TARGET_LDFLAGS -no-pie"
+ fi]
+ 
+ CFLAGS="$TARGET_CFLAGS"
++LDFLAGS="$TARGET_LDFLAGS"
+ 
+ # Position independent executable.
+ grub_CHECK_PIC

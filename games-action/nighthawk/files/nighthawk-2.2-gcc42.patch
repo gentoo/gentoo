@@ -1,5 +1,5 @@
---- src_sound/dsp_mixxer.c
-+++ src_sound/dsp_mixxer.c
+--- a/src_sound/dsp_mixxer.c
++++ b/src_sound/dsp_mixxer.c
 @@ -302,10 +302,8 @@
    for(sample_no = 0;sample_no < mix_buffer_size;sample_no++)
    {

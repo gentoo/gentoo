@@ -7,7 +7,7 @@ EAPI=5
 inherit linux-info
 
 DESCRIPTION="IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs"
-HOMEPAGE="http://people.freedesktop.org/~agd5f/radeon_ucode/"
+HOMEPAGE="https://people.freedesktop.org/~agd5f/radeon_ucode/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="radeon-ucode"

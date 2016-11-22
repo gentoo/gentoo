@@ -53,8 +53,8 @@
     <flag name="sha512">
       Switch Linux-PAM's pam_unix module to use sha512 for passwords
       hashes rather than MD5. This option requires
-      <pkg>&gt;=sys-libs/pam-1.0.1</pkg> built against
-      <pkg>&gt;=sys-libs/glibc-2.7</pkg>, if it's built against an
+      <pkg>sys-libs/pam</pkg> version 1.0.1 built against
+      <pkg>sys-libs/glibc</pkg> version 2.7, if it's built against an
       earlier version, it will silently be ignored, and MD5 hashes
       will be used. All the passwords changed after this USE flag is
       enabled will be saved to the shadow file hashed using SHA512

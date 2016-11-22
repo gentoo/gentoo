@@ -1,0 +1,28 @@
+diff --git a/src/tX_mouse.cc b/src/tX_mouse.cc
+--- a/src/tX_mouse.cc
++++ b/src/tX_mouse.cc
+@@ -50,2 +50,3 @@
+ #include <stdlib.h>
++#include <string.h> /* strcmp() */
+ 
+diff --git a/src/tX_mouse.h b/src/tX_mouse.h
+--- a/src/tX_mouse.h
++++ b/src/tX_mouse.h
+@@ -38,2 +38,3 @@
+ #include <gdk/gdkkeysyms.h>
++#include <gtk/gtk.h> /* GtkWidget */
+ 
+diff --git a/src/tX_vttgui.cc b/src/tX_vttgui.cc
+--- a/src/tX_vttgui.cc
++++ b/src/tX_vttgui.cc
+@@ -61,2 +61,3 @@
+ #include <stdio.h>
++#include <string.h> /* strrchr() */
+ #include <ctype.h>
+diff --git a/src/tX_global.h b/src/tX_global.h
+--- a/src/tX_global.h
++++ b/src/tX_global.h
+@@ -37,2 +37,3 @@ extern "C" {
+ #include <stdio.h>
++#include <string.h> /* strcpy() */
+ #include "tX_types.h"

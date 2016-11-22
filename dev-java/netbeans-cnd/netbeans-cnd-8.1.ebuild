@@ -17,7 +17,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/BF2C234985CF9BD6CDE18114406C67EC7C32B84A-cnd-build-trace-1.0.zip
 	http://hg.netbeans.org/binaries/BB83D4F8047D608858154CB041054F5CAE35B903-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"

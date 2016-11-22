@@ -1,0 +1,242 @@
+From: Ole Streicher <debian@liska.ath.cx>
+Date: Fri, 5 Aug 2016 16:17:42 +0200
+Subject: Spellfixes and manpage fixes
+
+---
+ edhead.c           |  2 +-
+ immatch.c          |  2 +-
+ imwcs.c            |  4 ++--
+ libwcs/fitsfile.c  | 10 +++++-----
+ libwcs/imhfile.c   |  4 ++--
+ man/man1/edhead.1  |  2 +-
+ man/man1/imcat.1   |  2 +-
+ man/man1/imgsc.1   |  4 ++--
+ man/man1/imua2.1   |  2 +-
+ man/man1/keyhead.1 |  2 +-
+ man/man1/skycoor.1 |  2 +-
+ man/man1/sua2.1    |  2 +-
+ man/man1/susa2.1   |  2 +-
+ 13 files changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/edhead.c b/edhead.c
+index 1fe33e2..494cb4d 100644
+--- a/edhead.c
++++ b/edhead.c
+@@ -109,7 +109,7 @@ usage ()
+ 	exit (-1);
+     fprintf (stderr,"Edit header of FITS or IRAF image file\n");
+     fprintf(stderr,"usage: edhead [-nv] [-e editor] file.fits file.imh...\n");
+-    fprintf(stderr,"  -e: Set editor, overiding environment EDITOR \n");
++    fprintf(stderr,"  -e: Set editor, overriding environment EDITOR \n");
+     fprintf(stderr,"  -n: write new file, else overwrite \n");
+     fprintf(stderr,"  -v: verbose\n");
+     exit (1);
+diff --git a/immatch.c b/immatch.c
+index 02af222..59b4826 100644
+--- a/immatch.c
++++ b/immatch.c
+@@ -383,7 +383,7 @@ char **av;
+ 
+     /* If reference catalog is not set, exit with an error message */
+     if (refcatname == NULL) {
+-	PrintUsage ("* Must specifiy a reference catalog using -c or alias.");
++	PrintUsage ("* Must specify a reference catalog using -c or alias.");
+ 	}
+ 
+     /* Process image files from list file */
+diff --git a/imwcs.c b/imwcs.c
+index c32cffd..6639198 100644
+--- a/imwcs.c
++++ b/imwcs.c
+@@ -285,7 +285,7 @@ char **av;
+     		    ac--;
+     		    break;
+ 
+-    		case 'o':	/* Specifiy output image filename */
++    		case 'o':	/* Specify output image filename */
+     		    if (ac < 2)
+     			PrintUsage (str);
+ 		    if (*(av+1)[0] == '-' || *(str+1) != (char)0)
+@@ -476,7 +476,7 @@ char **av;
+ 
+     /* If reference catalog is not set, exit with an error message */
+     if (refcatname == NULL && matchfile == NULL) {
+-	PrintUsage ("* Must specifiy a reference catalog using -c or alias.");
++	PrintUsage ("* Must specify a reference catalog using -c or alias.");
+ 	}
+ 
+     if (!writeheader && !verbose) {
+diff --git a/libwcs/fitsfile.c b/libwcs/fitsfile.c
+index 2c3e709..a2f0d0f 100644
+--- a/libwcs/fitsfile.c
++++ b/libwcs/fitsfile.c
+@@ -1583,7 +1583,7 @@ char	*image;		/* FITS image pixels */
+ 	if (!access (filename, 0)) {
+ 	    fd = open (filename, O_WRONLY);
+ 	    if (fd < 3) {
+-		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writeable\n", filename);
++		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writable\n", filename);
+ 		return (0);
+ 		}
+ 	    }
+@@ -1622,7 +1622,7 @@ char	*image;		/* FITS image pixels */
+ 	if (!access (filename, 0)) {
+ 	    fd = open (filename, O_WRONLY);
+ 	    if (fd < 3) {
+-		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writeable\n",
++		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writable\n",
+ 			 filename);
+ 		return (0);
+ 		}
+@@ -1884,7 +1884,7 @@ char	*filename0;	/* Name of input FITS image file */
+     if (!access (filename, 0)) {
+ 	fdout = open (filename, O_WRONLY);
+ 	if (fdout < 3) {
+-	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writeable\n", filename);
++	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writable\n", filename);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -1970,7 +1970,7 @@ char	*header;	/* FITS image header */
+     if (!access (filename, 0)) {
+ 	fd = open (filename, O_WRONLY);
+ 	if (fd < 3) {
+-	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writeable\n", filename);
++	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writable\n", filename);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -2072,7 +2072,7 @@ char	*header;	/* FITS image header */
+     if (ext != NULL)
+ 	*ext = cext;
+     if (fd < 3) {
+-	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writeable\n", filename);
++	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writable\n", filename);
+ 	return (-1);
+ 	}
+ 
+diff --git a/libwcs/imhfile.c b/libwcs/imhfile.c
+index 4279d3c..25f82ac 100644
+--- a/libwcs/imhfile.c
++++ b/libwcs/imhfile.c
+@@ -896,7 +896,7 @@ char	*fitsheader;	/* FITS image header */
+     if (!access (hdrname, 0)) {
+ 	fd = open (hdrname, O_WRONLY);
+ 	if (fd < 3) {
+-	    fprintf (stderr, "IRAFWIMAGE:  file %s not writeable\n", hdrname);
++	    fprintf (stderr, "IRAFWIMAGE:  file %s not writable\n", hdrname);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -993,7 +993,7 @@ char	*image;		/* IRAF image */
+     if (!access (pixname, 0)) {
+ 	fd = open (pixname, O_WRONLY);
+ 	if (fd < 3) {
+-	    fprintf (stderr, "IRAFWIMAGE:  file %s not writeable\n", pixname);
++	    fprintf (stderr, "IRAFWIMAGE:  file %s not writable\n", pixname);
+ 	    return (0);
+ 	    }
+ 	}
+diff --git a/man/man1/edhead.1 b/man/man1/edhead.1
+index 543487c..74dbedf 100644
+--- a/man/man1/edhead.1
++++ b/man/man1/edhead.1
+@@ -11,7 +11,7 @@ takes care of trailing spaces so they can be ignored while using the editor.
+ .SH Options
+ .TP
+ .B \-e <editor path>
+-Set editor, overiding environment EDITOR
++Set editor, overriding environment EDITOR
+ .TP
+ .B \-n
+ Write a new file with .e before the file type extension.  The default is
+diff --git a/man/man1/imcat.1 b/man/man1/imcat.1
+index a1cac13..e975af6 100644
+--- a/man/man1/imcat.1
++++ b/man/man1/imcat.1
+@@ -4,7 +4,7 @@ imcat \- List catalog stars in FITS and IRAF image files
+ .SH Synopsis
+ imcat [options] FITS or IRAF file(s)
+ .SH Description
+-Search given catalog withing area described by the world coordinate
++Search given catalog within area described by the world coordinate
+ system in an image header.  May be called as imuac to search the USNO A 1.0
+ catalog, imusac to search the USNO SA 1.0 catalog, or imgsc to search
+ the HST Guide Star Catalog.
+diff --git a/man/man1/imgsc.1 b/man/man1/imgsc.1
+index 604b072..aa64b2c 100644
+--- a/man/man1/imgsc.1
++++ b/man/man1/imgsc.1
+@@ -1,10 +1,10 @@
+-.TH imgsc(1) WCS "14 April 1998"
++.TH imgsc 1 WCSTools "14 April 1998"
+ .SH Name
+ imgsc \- Find HST GSC stars in FITS or IRAF image files
+ .SH Synopsis
+ imgsc [options] FITS or IRAF file(s)
+ .SH Description
+-Search the HST Guide Star Catalog withing the area described by the world
++Search the HST Guide Star Catalog within the area described by the world
+ coordinate system in an image header.  This is a link to imcat rather than
+ a separate executable.
+ .SH Options
+diff --git a/man/man1/imua2.1 b/man/man1/imua2.1
+index 4acbc8b..22b896f 100644
+--- a/man/man1/imua2.1
++++ b/man/man1/imua2.1
+@@ -78,7 +78,7 @@ Sort by RA instead of flux
+ Tab table to standard output as well as file
+ .TP
+ .B \-u <plate>
+-Accept only stars from thsi plate (default all)
++Accept only stars from this plate (default all)
+ .TP
+ .B \-v
+ Verbose listing of processing intermediate results
+diff --git a/man/man1/keyhead.1 b/man/man1/keyhead.1
+index 4d1dfb1..fea7652 100644
+--- a/man/man1/keyhead.1
++++ b/man/man1/keyhead.1
+@@ -7,7 +7,7 @@ sethead [\-hknv] <FITS or IRAF file> kw1=kw1a kw2=kwd2a ... kwn=kwdna
+ Change the names of keywords in FITS or IRAF image headers.  Each current
+ image keyword whose entry is to be modified should be followed by an
+ equal sign and a second keyword, with no intervening spaces.
+-If the \-r option is used, the value of the second keyword is transfered
++If the \-r option is used, the value of the second keyword is transferred
+ to that of the first. Otherwise, the name of the first keyword is changed
+ to the second keyword.
+ To change keywords in a list of files, substitute @<listfile> for the file
+diff --git a/man/man1/skycoor.1 b/man/man1/skycoor.1
+index c3b3d2b..2126c29 100644
+--- a/man/man1/skycoor.1
++++ b/man/man1/skycoor.1
+@@ -1,4 +1,4 @@
+-.TH skycoor(1) WCSTools "9 November 2001"
++.TH skycoor 1 WCSTools "9 November 2001"
+ .SH Name
+ skycoor \- Convert coordinates
+ .SH Synopsis
+diff --git a/man/man1/sua2.1 b/man/man1/sua2.1
+index b28c89a..d29d126 100644
+--- a/man/man1/sua2.1
++++ b/man/man1/sua2.1
+@@ -1,6 +1,6 @@
+ .TH sua2 1  WCS "19 November 1999"
+ .SH Name
+-Find USNO-A2.0 Catalog stars in a square on the sky
++sua2 \- Find USNO-A2.0 Catalog stars in a square on the sky
+ .SH Synopsis
+ sua2 [options] ra dec system
+ .SH Description
+diff --git a/man/man1/susa2.1 b/man/man1/susa2.1
+index 06409e2..8d03886 100644
+--- a/man/man1/susa2.1
++++ b/man/man1/susa2.1
+@@ -1,6 +1,6 @@
+ .TH susa2 1 WCS "9 June 2000"
+ .SH Name
+-Find USNO-SA2.0 Catalog stars in a square on the sky
++susa2 \- Find USNO-SA2.0 Catalog stars in a square on the sky
+ .SH Synopsis
+ susac [options] [\-b or \-j] ra dec
+ .SH Description

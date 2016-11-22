@@ -1,4 +1,4 @@
-# Copyright 2010-2015 Gentoo Foundation
+# Copyright 2010-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,8 +34,8 @@ RDEPEND="
 	qrcode? (
 		media-gfx/qrencode
 	)
-	qt4? ( dev-qt/qtgui:4 )
-	qt5? ( dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5 )
+	qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
+	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 )
 	app-shells/bash:0
 	dev-libs/boost[threads(+)]
 	dev-libs/glib:2
@@ -50,8 +50,9 @@ RDEPEND="
 		qt5? ( dev-qt/qtdbus:5 )
 	)
 "
-
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
 
 S="${WORKDIR}/bitcoinxt-${My_PV}"
 

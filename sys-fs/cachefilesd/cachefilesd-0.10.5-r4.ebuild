@@ -19,7 +19,7 @@ RDEPEND="selinux? ( sec-policy/selinux-cachefilesd )"
 DEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/0.10.4-makefile.patch
+	epatch "${FILESDIR}"/${PN}-0.10.4-makefile.patch
 	tc-export CC
 	if ! use selinux; then
 		sed -e '/^secctx/s:^:#:g' -i cachefilesd.conf || die
@@ -38,8 +38,8 @@ src_install() {
 
 	dodoc howto.txt
 
-	newconfd "${FILESDIR}"/cachefilesd.conf ${PN}
-	newinitd "${FILESDIR}"/cachefilesd-3.init ${PN}
+	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newinitd "${FILESDIR}"/${PN}-3.init ${PN}
 
 	systemd_dounit ${PN}.service
 	systemd_newtmpfilesd "${FILESDIR}"/${PN}-tmpfiles.d ${PN}.conf

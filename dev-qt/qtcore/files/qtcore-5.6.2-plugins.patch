@@ -1,0 +1,81 @@
+From ca4d93d85ee446c5e30ec8e7814651e45cbf1218 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Thu, 12 Nov 2015 10:14:51 -0800
+Subject: Stop unloading plugins in QPluginLoader and QFactoryLoader
+
+QPluginLoader hasn't unloaded in its destructor since Qt 5.0, but we
+missed the equivalent code in QFactoryLoader (which bypasses
+QPluginLoader). Besides, QPluginLoader::unload() was still doing
+unloading, which it won't anymore.
+
+Not unloading plugins is Qt's policy, as decided during the 5.0
+development process and reaffirmed now in 5.6. This is due to static
+data in plugins leaking out and remaining in use past the unloading of
+the plugin, causing crashes.
+
+This does not affect QLibrary and QLibrary::unload(). Those are meant
+for non-Qt loadable modules, so unloading them may be safe.
+
+Task-number: QTBUG-49061
+Discussed-on: http://lists.qt-project.org/pipermail/development/2015-November/023681.html
+Change-Id: I461e9fc7199748faa187ffff1416070f138df8db
+(cherry picked from commit 494376f980e96339b6f1eff7c41336ca4d853065)
+Discussed-again-on: http://lists.qt-project.org/pipermail/development/2016-October/027476.html
+Reviewed-by: Lars Knoll <lars.knoll@qt.io>
+---
+ src/corelib/plugin/qfactoryloader.cpp | 6 ++++--
+ src/corelib/plugin/qpluginloader.cpp  | 5 +++--
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/corelib/plugin/qfactoryloader.cpp b/src/corelib/plugin/qfactoryloader.cpp
+index dcf1b1a..b6558f5 100644
+--- a/src/corelib/plugin/qfactoryloader.cpp
++++ b/src/corelib/plugin/qfactoryloader.cpp
+@@ -208,10 +208,12 @@ void QFactoryLoader::update()
+                     ++keyUsageCount;
+                 }
+             }
+-            if (keyUsageCount || keys.isEmpty())
++            if (keyUsageCount || keys.isEmpty()) {
++                library->setLoadHints(QLibrary::PreventUnloadHint); // once loaded, don't unload
+                 d->libraryList += library;
+-            else
++            } else {
+                 library->release();
++            }
+         }
+     }
+ #else
+diff --git a/src/corelib/plugin/qpluginloader.cpp b/src/corelib/plugin/qpluginloader.cpp
+index 37f2368..0ea8280 100644
+--- a/src/corelib/plugin/qpluginloader.cpp
++++ b/src/corelib/plugin/qpluginloader.cpp
+@@ -148,6 +148,7 @@ QPluginLoader::QPluginLoader(const QString &fileName, QObject *parent)
+     : QObject(parent), d(0), did_load(false)
+ {
+     setFileName(fileName);
++    setLoadHints(QLibrary::PreventUnloadHint);
+ }
+ 
+ /*!
+@@ -342,7 +343,7 @@ static QString locatePlugin(const QString& fileName)
+ void QPluginLoader::setFileName(const QString &fileName)
+ {
+ #if defined(QT_SHARED)
+-    QLibrary::LoadHints lh;
++    QLibrary::LoadHints lh = QLibrary::PreventUnloadHint;
+     if (d) {
+         lh = d->loadHints();
+         d->release();
+@@ -391,7 +392,7 @@ Q_GLOBAL_STATIC(StaticPluginList, staticPluginList)
+     \brief Give the load() function some hints on how it should behave.
+ 
+     You can give hints on how the symbols in the plugin are
+-    resolved. By default, none of the hints are set.
++    resolved. By default since Qt 5.7, QLibrary::PreventUnloadHint is set.
+ 
+     See the documentation of QLibrary::loadHints for a complete
+     description of how this property works.
+-- 
+cgit v1.0-4-g1e03
+

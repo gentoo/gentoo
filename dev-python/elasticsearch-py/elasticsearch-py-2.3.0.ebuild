@@ -21,7 +21,7 @@ SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples doc test"
 
 RDEPEND=">=dev-python/urllib3-1.8[${PYTHON_USEDEP}]
@@ -84,7 +84,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( example/. )
+	use examples && dodoc -r example
 	doman docs/_build/man/*
 	distutils-r1_python_install_all
 }

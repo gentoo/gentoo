@@ -1,5 +1,5 @@
---- configure.ac.old	2008-01-14 14:51:11.000000000 +0100
-+++ configure.ac	2008-12-28 12:57:13.000000000 +0100
+--- a/configure.ac	2008-01-14 14:51:11.000000000 +0100
++++ b/configure.ac	2008-12-28 12:57:13.000000000 +0100
 @@ -73,12 +65,6 @@
               AC_MSG_ERROR([*** SDL-Mixer not found!]))
  AC_CHECK_HEADER(SDL/SDL_mixer.h, , AC_MSG_ERROR([*** SDL-mixer devel files not found!]))

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://idsoftware/quake4/linux/quake4-linux-${PV}.x86.run"
 LICENSE="QUAKE4"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE="cdinstall dedicated linguas_cs linguas_fr linguas_it linguas_pl linguas_ru"
+IUSE="cdinstall dedicated l10n_cs l10n_fr l10n_it l10n_pl l10n_ru"
 RESTRICT="strip"
 
 # QUAKE4 NEEDS s3tc support, which can be obtained for OSS drivers via
@@ -52,7 +52,7 @@ QA_EXECSTACK="${dir:1}/quake4.x86
 	${dir:1}/libSDL-1.2.id.so.0"
 
 zpaklang() {
-	if ! use linguas_${1} ; then
+	if ! use l10n_${1} ; then
 		einfo "Removing ${2} zpak files"
 		rm -f q4base/zpak_${2}*
 	fi

@@ -1,5 +1,5 @@
---- ./import/probe_ffmpeg.c.original	2013-04-22 20:04:51.058081388 +0200
-+++ ./import/probe_ffmpeg.c	2013-04-22 20:05:25.744081897 +0200
+--- a/import/probe_ffmpeg.c
++++ b/import/probe_ffmpeg.c
 @@ -109,7 +109,7 @@ void probe_ffmpeg(info_t *ipipe)
          return;
      }
@@ -9,8 +9,8 @@
      if (ret < 0) {
          tc_log_error(__FILE__, "unable to fetch informations from '%s'"
                                 " (libavformat failure)",
---- ./import/decode_lavc.c.original	2013-04-22 20:06:17.260082652 +0200
-+++ ./import/decode_lavc.c	2013-04-22 20:07:47.564083975 +0200
+--- a/import/decode_lavc.c
++++ b/import/decode_lavc.c
 @@ -170,7 +170,7 @@ void decode_lavc(decode_t *decode)
  
    // Set these to the expected values so that ffmpeg's decoder can

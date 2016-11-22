@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -18,7 +18,7 @@ IUSE=""
 DESCRIPTION="Advanced command line parser supporting commands"
 HOMEPAGE="http://cmdparse.gettalong.org/"
 
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 LICENSE="LGPL-3"
 SLOT="0"
 

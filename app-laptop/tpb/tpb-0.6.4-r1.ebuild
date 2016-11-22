@@ -6,8 +6,8 @@ EAPI=5
 inherit linux-info eutils
 
 DESCRIPTION="IBM ThinkPad buttons utility"
-HOMEPAGE="http://savannah.nongnu.org/projects/tpb/"
-SRC_URI="http://savannah.nongnu.org/download/tpb/${P}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/tpb/"
+SRC_URI="https://savannah.nongnu.org/download/tpb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

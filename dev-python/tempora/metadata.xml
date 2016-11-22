@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>sautier.louis@gmail.com</email>
 		<name>Louis Sautier</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -12,6 +11,8 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">tempora</remote-id>
-		<remote-id type="bitbucket">jaraco/tempora</remote-id>
+		<remote-id type="github">jaraco/tempora</remote-id>
+		<bugs-to>https://github.com/jaraco/tempora/issues</bugs-to>
+		<changelog>https://github.com/jaraco/tempora/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>

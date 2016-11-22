@@ -51,7 +51,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
@@ -60,7 +60,7 @@ RDEPEND="
 	)
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

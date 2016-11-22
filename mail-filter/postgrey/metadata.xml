@@ -6,10 +6,6 @@
 	 <name>Andreis Vinogradovs</name>
   </maintainer>
   <maintainer type="person">
-	  <email>qnikst@gentoo.org</email>
-	  <name>Alexander Vershilov</name>
-  </maintainer>
-  <maintainer type="person">
 	<email>lists@xunil.at</email>
 	<name>Stefan Weichinger</name>
 	<description>Proxy maintainer under the proxy-maintainers herd</description>

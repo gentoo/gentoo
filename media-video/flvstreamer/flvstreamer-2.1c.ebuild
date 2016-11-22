@@ -7,7 +7,7 @@ EAPI="2"
 inherit toolchain-funcs
 
 DESCRIPTION="Open source command-line RTMP client intended to stream audio or video flash content"
-HOMEPAGE="http://savannah.nongnu.org/projects/flvstreamer/"
+HOMEPAGE="https://savannah.nongnu.org/projects/flvstreamer/"
 SRC_URI="mirror://nongnu/${PN}/source/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Password storage/retrieval in a dockapp"
-HOMEPAGE="http://sourceforge.net/projects/wmpasman/"
+HOMEPAGE="https://sourceforge.net/projects/wmpasman/"
 SRC_URI="mirror://sourceforge/wmpasman/${P}.tar.gz"
 
 LICENSE="GPL-2"

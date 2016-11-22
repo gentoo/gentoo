@@ -36,7 +36,7 @@ src_prepare() {
 # slot the info pages.  do this w/out munging the source so we don't have
 # to depend on texinfo to regen things.  #464146 (among others)
 slot_info_pages() {
-	pushd "${D}"/usr/share/info >/dev/null
+	pushd "${ED}"/usr/share/info >/dev/null
 	rm -f dir
 
 	# Rewrite all the references to other pages.
@@ -68,8 +68,8 @@ src_install() {
 
 	local x
 	for x in aclocal automake ; do
-		mv "${D}"/usr/bin/${x}{,-${SLOT}} || die "rename ${x}"
-		mv "${D}"/usr/share/${x}{,-${SLOT}} || die "move ${x}"
+		mv "${ED}"/usr/bin/${x}{,-${SLOT}} || die "rename ${x}"
+		mv "${ED}"/usr/share/${x}{,-${SLOT}} || die "move ${x}"
 	done
 
 	# remove all config.guess and config.sub files replacing them

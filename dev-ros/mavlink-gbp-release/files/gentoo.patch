@@ -1,0 +1,12 @@
+Index: mavlink-gbp-release-release-kinetic-mavlink/CMakeLists.txt
+===================================================================
+--- mavlink-gbp-release-release-kinetic-mavlink.orig/CMakeLists.txt
++++ mavlink-gbp-release-release-kinetic-mavlink/CMakeLists.txt
+@@ -170,6 +170,6 @@ install(FILES ${PROJECT_BINARY_DIR}/COPY
+     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/ COMPONENT license)
+ 
+ install(FILES ${CMAKE_SOURCE_DIR}/package.xml
+-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/ COMPONENT catkin)
++    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/ros_packages/${PROJECT_NAME}/ COMPONENT catkin)
+ 
+ # vim:sw=4:ts=4:expandtab

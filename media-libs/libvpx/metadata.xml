@@ -9,6 +9,7 @@
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<use>
+		<flag name="highbitdepth">Enable 10 and 12 bit support for VP9.</flag>
 		<flag name="postproc">Enable additional post processing filters</flag>
 		<flag name="svc">Enable spatial-svc support (experimental)</flag>
 	</use>

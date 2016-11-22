@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake-utils
 
 DESCRIPTION="Simple Qt4 ID3v2 tag editor"
@@ -12,7 +13,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:4
@@ -33,12 +34,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON
 	)
-
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	rm "${D}"/usr/share/doc/${PF}/{ChangeLog~,LICENSE}
+	rm -f "${ED}"/usr/share/doc/${PF}/{ChangeLog~,LICENSE} || die
 }

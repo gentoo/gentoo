@@ -9,20 +9,17 @@
 		<email>scarabeus@gentoo.org</email>
 	</maintainer>
 	<maintainer type="project">
-	        <email>proxy-maint@gentoo.org</email>
-	        <name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="dnstap">Include support for the dnstap
-		binary log format (http://dnstap.info/).
+		<flag name="dnstap">
+			Include support for the dnstap binary log format
+			(http://dnstap.info/).
 		</flag>
-	        <flag name="fastparser">Use a zone file parser that is
-		faster, but requires more memory and CPU time to
-		compile.
-		</flag>
-		<flag name="lmdb">Use the LMDB database to store
-		timers for slave zones on disk, making the timers
-		persist across server restarts.
+		<flag name="fastparser">
+			Use a zone file parser that is faster, but requires more memory and
+			CPU time to compile.
 		</flag>
 	</use>
 </pkgmetadata>

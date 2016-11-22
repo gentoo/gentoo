@@ -19,9 +19,6 @@ gradm - match packets based on grsecurity RBAC status
 iface - match allows to check interface states
 ipmark - IPMARK target allows mark a received packet basing on its IP address
 ipp2p - matches certain packets in P2P flows
-ipset - enables build of ipset related modules and tools
-ipset4 - enables build of ipset-4.x related modules and tools
-ipset6 - enables build of ipset-6.x related modules and tools
 ipv4options - match against a set of IPv4 header options
 length2 - matches the length of a packet against a specific value or range of values
 logmark - LOGMARK target will log packet and connection marks to syslog

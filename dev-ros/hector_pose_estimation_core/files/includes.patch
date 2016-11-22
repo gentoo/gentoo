@@ -1,0 +1,12 @@
+Index: hector_localization-0.3.0/hector_pose_estimation_core/include/hector_pose_estimation/state.h
+===================================================================
+--- hector_localization-0.3.0.orig/hector_pose_estimation_core/include/hector_pose_estimation/state.h
++++ hector_localization-0.3.0/hector_pose_estimation_core/include/hector_pose_estimation/state.h
+@@ -29,6 +29,7 @@
+ #ifndef HECTOR_POSE_ESTIMATION_STATE_H
+ #define HECTOR_POSE_ESTIMATION_STATE_H
+ 
++#include <vector>
+ #include <hector_pose_estimation/types.h>
+ 
+ #include <boost/function.hpp>

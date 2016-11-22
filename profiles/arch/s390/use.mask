@@ -72,9 +72,6 @@ gtk3
 gnome
 gnome-keyring
 
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 diet
 m17n-lib
 xemacs

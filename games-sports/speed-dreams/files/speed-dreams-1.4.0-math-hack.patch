@@ -1,0 +1,25 @@
+https://sourceforge.net/p/speed-dreams/tickets/952/
+https://bugs.gentoo.org/580054
+
+--- a/src/modules/simu/simuv2/simu.cpp
++++ b/src/modules/simu/simuv2/simu.cpp
+@@ -61,7 +61,7 @@
+     if (isnan(car->ctrl->brakeCmd) || isinf(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;
+     if (isnan(car->ctrl->clutchCmd) || isinf(car->ctrl->clutchCmd)) car->ctrl->clutchCmd = 0;
+     if (isnan(car->ctrl->steer) || isinf(car->ctrl->steer)) car->ctrl->steer = 0;
+-    if (isnan(car->ctrl->gear) || isinf(car->ctrl->gear)) car->ctrl->gear = 0;
++    if (isnan((float)car->ctrl->gear) || isinf((float)car->ctrl->gear)) car->ctrl->gear = 0;
+ #else
+     if (isnan(car->ctrl->accelCmd)) car->ctrl->accelCmd = 0;
+     if (isnan(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;
+--- a/src/modules/simu/simuv3/simu.cpp
++++ b/src/modules/simu/simuv3/simu.cpp
+@@ -61,7 +61,7 @@
+     if (isnan(car->ctrl->brakeCmd) || isinf(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;
+     if (isnan(car->ctrl->clutchCmd) || isinf(car->ctrl->clutchCmd)) car->ctrl->clutchCmd = 0;
+     if (isnan(car->ctrl->steer) || isinf(car->ctrl->steer)) car->ctrl->steer = 0;
+-    if (isnan(car->ctrl->gear) || isinf(car->ctrl->gear)) car->ctrl->gear = 0;
++    if (isnan((float)car->ctrl->gear) || isinf((float)car->ctrl->gear)) car->ctrl->gear = 0;
+ #else
+     if (isnan(car->ctrl->accelCmd)) car->ctrl->accelCmd = 0;
+     if (isnan(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;

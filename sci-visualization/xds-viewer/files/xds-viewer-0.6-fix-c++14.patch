@@ -1,0 +1,66 @@
+Fix building with C++14, caused by invalid implicit T* -> bool conversions.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=598126
+
+--- a/src/CbfReader.cpp
++++ b/src/CbfReader.cpp
+@@ -315,12 +315,12 @@
+ 
+ 	for ( int i = 0;i < nx*ny;i++ )
+ 	{
+-		if ( tapin.get( sc ) == 0 )return -4;
++		if ( !tapin.get( sc ) )return -4;
+ 		diff = sc;
+ 		if ( diff == -128 )
+ 		{
+-			if ( tapin.get( uc0 ) == 0 )return -4;
+-			if ( tapin.get( uc1 ) == 0 )return -4;
++			if ( !tapin.get( uc0 ) )return -4;
++			if ( !tapin.get( uc1 ) )return -4;
+ 			tmp0 = uc0;
+ 			if ( uc0 < 0 ) tmp0 += 256; // converting signed to unsigned char
+ 			diff = uc1;
+@@ -329,15 +329,15 @@
+ 			if ( diff > 32767 )diff -= 65536;
+ 			if ( diff == -32768 )
+ 			{
+-				if ( tapin.get( uc0 ) == 0 )return -4;
+-				if ( tapin.get( uc1 ) == 0 )return -4;
++				if ( !tapin.get( uc0 ) )return -4;
++				if ( !tapin.get( uc1 ) )return -4;
+ 				tmp0 = uc0;
+ 				if ( tmp0 < 0 ) tmp0 += 256; // converting signed to unsigned char
+ 				tmp1 = uc1;
+ 				if ( tmp1 < 0 ) tmp1 += 256; // converting signed to unsigned char
+ 				diff = tmp0 + 256 * tmp1;
+-				if ( tapin.get( uc0 ) == 0 )return -4;
+-				if ( tapin.get( uc1 ) == 0 )return -4;
++				if ( !tapin.get( uc0 ) )return -4;
++				if ( !tapin.get( uc1 ) )return -4;
+ 				tmp0 = uc0;
+ 				if ( tmp0 < 0 ) tmp0 += 256; // converting signed to unsigned char
+ 				tmp1 = uc1;
+@@ -359,7 +359,7 @@
+ {
+ 	std::ifstream::pos_type streamPos = tapin.tellg();
+ 
+-	char binaryMarker[5] = {12, 26, 4, 213, '\0'};
++	char binaryMarker[5] = {12, 26, 4, (char)213, '\0'};
+ 	char buffer[5] = {0, 0, 0, 0, '\0'};
+ 
+ 	bool equal = true;
+@@ -448,13 +448,13 @@
+ 
+ int CbfReader::checkImageFormat( std::ifstream& tapin )
+ {
+-	if ( tapin == 0 )return -2; // Cannot open image file
++	if ( !tapin )return -2; // Cannot open image file
+ 
+ 	{ // Check image file format
+ 		std::string s( "###CBF: " );
+ 		char label[9];
+ 		for ( int i = 0;i < 8;i++ )
+-			if ( tapin.get( label[i] ) == false )return -4; // Cannot read image file
++			if ( !tapin.get( label[i] ) )return -4; // Cannot read image file
+ 		label[8] = '\0';
+ 		std::string sLabel = ( std::string )label;
+ 

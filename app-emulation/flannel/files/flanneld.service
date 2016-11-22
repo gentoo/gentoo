@@ -5,7 +5,7 @@ Before=docker.service
 
 [Service]
 Type=notify
-Environment=FLANNEL_ETCD=http://127.0.0.1:4001 FLANNEL_ETCD_KEY=/coreos.com/network
+Environment=FLANNEL_ETCD=http://127.0.0.1:4001,http://127.0.0.1:2379 FLANNEL_ETCD_KEY=/coreos.com/network
 ExecStart=/usr/bin/flanneld -etcd-endpoints=${FLANNEL_ETCD} -etcd-prefix=${FLANNEL_ETCD_KEY} $FLANNEL_OPTIONS
 ExecStartPost=/usr/libexec/flannel/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/docker
 

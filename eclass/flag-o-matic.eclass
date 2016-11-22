@@ -27,10 +27,10 @@ setup-allowed-flags() {
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
 		'-fstack-protector*' '-fsanitize*'
 		-fbounds-check -fbounds-checking -fno-strict-overflow
-		-fno-PIE -fno-pie -nopie -fno-unit-at-a-time
+		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
 		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
 		-fno-ident -fpermissive -frecord-gcc-switches
-		'-fdiagnostics*'
+		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
 		# CPPFLAGS and LDFLAGS
@@ -54,7 +54,7 @@ setup-allowed-flags() {
 		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
-		-mfix-r10000 -mno-fix-r10000
+		-mfix-r10000 -mno-fix-r10000 -mthumb -marm
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
@@ -80,7 +80,16 @@ _filter-hardened() {
 			# thinking about -fPIE.
 			-fPIC|-fpic|-fPIE|-fpie|-Wl,pie|-pie)
 				gcc-specs-pie || continue
-				is-flagq -nopie || append-flags -nopie;;
+				if ! is-flagq -nopie && ! is-flagq -no-pie ; then
+					# Support older Gentoo form first (-nopie) before falling
+					# back to the official gcc-6+ form (-no-pie).
+					if test-flags -nopie >/dev/null ; then
+						append-flags -nopie
+					else
+						append-flags -no-pie
+					fi
+				fi
+				;;
 			-fstack-protector)
 				gcc-specs-ssp || continue
 				is-flagq -fno-stack-protector || append-flags $(test-flags -fno-stack-protector);;

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit oasis
+inherit oasis eutils
 
 DESCRIPTION="Printf-style format-strings for user-defined string conversion"
 HOMEPAGE="http://www.janestreet.com/ocaml"
@@ -22,6 +22,10 @@ DEPEND="dev-ml/ppx_tools:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	emake setup.exe

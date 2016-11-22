@@ -1,0 +1,17 @@
+diff --git a/criu/Makefile.config b/criu/Makefile.config
+index f531b3b..23a3b23 100644
+--- a/criu/Makefile.config
++++ b/criu/Makefile.config
+@@ -2,10 +2,12 @@ include $(__nmk_dir)/utils.mk
+ include $(__nmk_dir)msg.mk
+ include $(SRC_DIR)/scripts/feature-tests.mak
+ 
++ifeq ($(SETPROCTITLE),yes)
+ ifeq ($(call try-cc,$(FEATURE_TEST_LIBBSD_DEV),-lbsd),true)
+         LIBS		+= -lbsd
+         FEATURE_DEFINES	+= -DCONFIG_HAS_LIBBSD
+ endif
++endif
+ 
+ ifeq ($(call pkg-config-check,libselinux),y)
+         LIBS		+= -lselinux

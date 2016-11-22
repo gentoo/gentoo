@@ -1,5 +1,5 @@
---- ./g-octave-0.4.1/g_octave/package_manager.py	2010-10-23 23:37:26.000000000 +0200
-+++ ./g-octave-0.4.1/g_octave/package_manager.py	2011-05-25 12:52:10.510019006 +0200
+--- g-octave-0.4.1/g_octave/package_manager.py	2010-10-23 23:37:26.000000000 +0200
++++ g-octave-0.4.1/g_octave/package_manager.py	2011-05-25 12:52:10.510019006 +0200
 @@ -15,6 +15,7 @@
      'Portage',
      'Pkgcore',
@@ -65,8 +65,8 @@
 +            for line in p.stdout:
 +                packages.append(line.strip())
 +        return packages
---- ./g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:25.740019020 +0200
-+++ ./g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:39.434019008 +0200
+--- g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:25.740019020 +0200
++++ g-octave-0.4.1/scripts/g-octave	2011-05-25 12:00:39.434019008 +0200
 @@ -217,7 +217,7 @@
              return os.EX_DATAERR
          return os.EX_OK

@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-inherit gnome2-utils multilib
+EAPI=6
+inherit gnome2-utils multilib readme.gentoo-r1
 
 DESCRIPTION="Gtk+-2.0 Hangul Input Modules"
 HOMEPAGE="https://code.google.com/p/imhangul/"
@@ -14,12 +14,23 @@ LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/libhangul-0.0.12
+RDEPEND="
+	>=app-i18n/libhangul-0.0.12
 	>=x11-libs/gtk+-2.2:2
-	virtual/libintl"
+	virtual/libintl
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+"
+
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+If you want to use one of the module as a default input method,
+
+export GTK_IM_MODULE=hangul2  # 2 input type
+export GTK_IM_MODULE=hangul3f # 3 input type
+"
 
 get_gtk_confdir() {
 	# bug #366889
@@ -32,43 +43,39 @@ get_gtk_confdir() {
 }
 
 src_prepare() {
-	# Drop DEPRECATED flags, bug #387825
-	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED:$(NULL):g' Makefile.am Makefile.in || die
+	default
+	gnome2_environment_reset
+	gnome2_disable_deprecation_warning
 }
 
 src_configure() {
 	econf \
 		--with-gtk-im-module-dir="${EPREFIX}/usr/$(get_libdir)/gtk-2.0/immodules" \
-		--with-gtk-im-module-file="$(get_gtk_confdir)" || die
+		--with-gtk-im-module-file="$(get_gtk_confdir)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-
-	find "${ED}" -name "*.la" -type f -delete || die
+	default
+	prune_libtool_files --modules
 
 	insinto /etc/X11/xinit/xinput.d
-	newins "${FILESDIR}/xinput-imhangul2" imhangul2.conf || die
-	newins "${FILESDIR}/xinput-imhangul2y" imhangul2y.conf || die
-	newins "${FILESDIR}/xinput-imhangul32" imhangul32.conf || die
-	newins "${FILESDIR}/xinput-imhangul39" imhangul39.conf || die
-	newins "${FILESDIR}/xinput-imhangul3f" imhangul3f.conf || die
-	newins "${FILESDIR}/xinput-imhangul3s" imhangul3s.conf || die
-	newins "${FILESDIR}/xinput-imhangul3y" imhangul3y.conf || die
-	newins "${FILESDIR}/xinput-imhangulahn" imhangulahn.conf || die
-	newins "${FILESDIR}/xinput-imhangulro" imhangulro.conf || die
+	newins "${FILESDIR}/xinput-imhangul2" imhangul2.conf
+	newins "${FILESDIR}/xinput-imhangul2y" imhangul2y.conf
+	newins "${FILESDIR}/xinput-imhangul32" imhangul32.conf
+	newins "${FILESDIR}/xinput-imhangul39" imhangul39.conf
+	newins "${FILESDIR}/xinput-imhangul3f" imhangul3f.conf
+	newins "${FILESDIR}/xinput-imhangul3s" imhangul3s.conf
+	newins "${FILESDIR}/xinput-imhangul3y" imhangul3y.conf
+	newins "${FILESDIR}/xinput-imhangulahn" imhangulahn.conf
+	newins "${FILESDIR}/xinput-imhangulro" imhangulro.conf
 
-	dodoc AUTHORS ChangeLog NEWS README TODO imhangul.conf || die
+	dodoc imhangul.conf
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	gnome2_query_immodules_gtk2
-	elog ""
-	elog "If you want to use one of the module as a default input method, "
-	elog ""
-	elog "export GTK_IM_MODULE=hangul2  # 2 input type"
-	elog "export GTK_IM_MODULE=hangul3f # 3 input type"
-	elog ""
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {

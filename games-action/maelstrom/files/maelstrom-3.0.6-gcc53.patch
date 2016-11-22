@@ -1,0 +1,11 @@
+--- Maelstrom-3.0.6/Maelstrom-netd.c.orig	2016-06-04 06:02:44.000000000 +0300
++++ Maelstrom-3.0.6/Maelstrom-netd.c	2016-06-05 13:45:11.422533649 +0300
+@@ -204,7 +204,7 @@
+ 	memset(&serv_addr, 0, sizeof(serv_addr));
+ 	serv_addr.sin_family      = AF_INET;
+ 	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+-	serv_addr.sin_port        = htons(NETPLAY_PORT-1);
++	serv_addr.sin_port        = htons(NETPLAY_PORT - 1);
+ 	if (bind(netfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+ 		perror("Can't bind local address");
+ 		exit(3);

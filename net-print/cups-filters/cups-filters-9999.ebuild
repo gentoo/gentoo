@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
@@ -16,13 +16,14 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
 fi
 DESCRIPTION="Cups PDF filters"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdfasstandardprintjobformat"
+HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_job_format"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
 IUSE="dbus +foomatic jpeg ldap perl png +postscript static-libs tiff zeroconf"
 
 RDEPEND="
+	app-text/mupdf
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
 	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils,xpdf-headers(+)]
 	>=app-text/qpdf-3.0.2:=
@@ -48,6 +49,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -75,7 +77,7 @@ src_configure() {
 }
 
 src_compile() {
-	MAKEOPTS=-j1 default
+	default
 
 	if use perl; then
 		pushd "${S}/scripting/perl" > /dev/null
@@ -112,6 +114,10 @@ src_install() {
 
 	doinitd "${T}"/cups-browsed
 	systemd_dounit "${S}/utils/cups-browsed.service"
+}
+
+src_test() {
+	emake check
 }
 
 pkg_postinst() {

@@ -155,7 +155,6 @@ src_install() {
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
 	doins "${FILESDIR}/"*.json.example
-	rm "${ED}etc/consul.d/ui-dir.json.example" || die
 
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"
@@ -164,6 +163,8 @@ src_install() {
 
 	newinitd "${FILESDIR}/consul.initd" "${PN}"
 	newconfd "${FILESDIR}/consul.confd" "${PN}"
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
 
 	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die

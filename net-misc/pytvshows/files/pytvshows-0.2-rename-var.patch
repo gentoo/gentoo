@@ -1,0 +1,11 @@
+--- a/pytvshows.bug	2014-06-19 18:49:42.414928250 +0100
++++ b/pytvshows	2014-06-19 18:49:50.534957323 +0100
+@@ -255,7 +255,7 @@
+             self.show_type = 'seasonepisode'
+         elif date_match:
+             self.show_type = 'date'
+-        elif titlematch and titlematch.group(1) != 'n/a':
++        elif title_match and title_match.group(1) != 'n/a':
+             self.show_type = 'time'
+         else:
+             print >> warn, "Could not determine show type for %s." % self

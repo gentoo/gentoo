@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>zzam@gentoo.org</email>
-<name>Matthias Schwarzott</name>
-</maintainer>
-<maintainer type="person">
 <email>robbat2@gentoo.org</email>
 <name>Robin H. Johnson</name>
 </maintainer>

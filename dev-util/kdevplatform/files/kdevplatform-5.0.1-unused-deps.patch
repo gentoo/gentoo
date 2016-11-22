@@ -1,0 +1,24 @@
+commit 9d2423f20458d735454b9917b4b0f5e39a7929f5
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Oct 16 09:36:03 2016 +0200
+
+    Remove unused dependencies
+    
+    Qt5Quick, Qt5QuickWidgets only used in welcomepage
+    
+    REVIEW: 129196
+
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index 97666f3..118acf1 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -121,9 +121,6 @@ LINK_PUBLIC
+     KDev::OutputView
+     KDev::Interfaces
+ LINK_PRIVATE
+-    Qt5::Quick
+-    Qt5::QuickWidgets
+-
+     KF5::GuiAddons
+     KF5::ConfigWidgets
+     KF5::IconThemes

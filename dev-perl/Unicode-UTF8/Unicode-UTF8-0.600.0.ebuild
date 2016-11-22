@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encoding and decoding of UTF-8 encoding form"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Test-Fatal-0.6.0
 		>=virtual/perl-Test-Simple-0.470.0
 
-		dev-perl/Test-Pod
 		dev-perl/Taint-Runtime
 		dev-perl/Variable-Magic
 		dev-perl/Test-LeakTrace
@@ -34,3 +33,8 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/999_pod.t
+	perl-module_src_test
+}

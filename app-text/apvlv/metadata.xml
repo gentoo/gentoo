@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="html">Build binary with html format support</flag>
-  </use>
   <upstream>
     <remote-id type="google-code">apvlv</remote-id>
     <remote-id type="github">naihe2010/apvlv</remote-id>

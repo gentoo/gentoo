@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SRC_URI="https://crawl.develz.org/release/stone_soup-${PV}.tar.xz
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug luajit ncurses test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
@@ -32,8 +32,8 @@ RDEPEND="
 	dev-db/sqlite:3
 	luajit? ( >=dev-lang/luajit-2.0.0 )
 	sys-libs/zlib
-	!ncurses? ( !tiles? ( sys-libs/ncurses ) )
-	ncurses? ( sys-libs/ncurses )
+	!ncurses? ( !tiles? ( sys-libs/ncurses:0 ) )
+	ncurses? ( sys-libs/ncurses:0 )
 	tiles? (
 		media-fonts/dejavu
 		media-libs/freetype:2
@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	virtual/yacc
 	tiles? (
-		sys-libs/ncurses
+		sys-libs/ncurses:0
 	)"
 
 S=${WORKDIR}/${MY_P}/source

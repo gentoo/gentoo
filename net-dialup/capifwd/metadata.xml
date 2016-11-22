@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>A daemon forwarding CAPI messages to capi20proxy clients</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">capi20proxy</remote-id>
-	</upstream>
-</pkgmetadata>

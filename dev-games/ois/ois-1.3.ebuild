@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit autotools autotools-utils
 
 MY_P=${PN}-v${PV/./-}
 DESCRIPTION="Object-oriented Input System - A cross-platform C++ input handling library"
-HOMEPAGE="http://sourceforge.net/projects/wgois/"
+HOMEPAGE="https://sourceforge.net/projects/wgois/"
 SRC_URI="mirror://sourceforge/wgois/${MY_P/-/_}.tar.gz"
 
 LICENSE="ZLIB"
@@ -24,12 +24,4 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc47.patch \
 		"${FILESDIR}"/${P}-automake-1.13.patch
 	eautoreconf
-}
-
-src_configure() {
-	local myeconfargs=(
-		$(use_enable static-libs static)
-	)
-	autotools-utils_src_configure
-
 }

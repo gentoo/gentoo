@@ -1,5 +1,5 @@
---- mozilla/nsprpub/pr/src/misc/prtime.c.orig	2007-09-14 19:41:08.000000000 +0200
-+++ mozilla/nsprpub/pr/src/misc/prtime.c	2007-09-14 19:42:17.000000000 +0200
+--- a/pr/src/misc/prtime.c
++++ b/pr/src/misc/prtime.c
 @@ -1536,7 +1536,7 @@
                  case TT_EET: zone_offset =  2 * 60; break;
                  case TT_JST: zone_offset =  9 * 60; break;

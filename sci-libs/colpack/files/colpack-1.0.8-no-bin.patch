@@ -1,8 +1,8 @@
 From: Sebastien Fabbro <bicatali@gentoo.org>
 Avoid installing the ColPack binary on an absolute path
 
---- Makefile.am	2012-03-20 21:37:34.000000000 -0700
-+++ Makefile.am	2012-09-17 14:24:02.168309078 -0700
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -17,8 +17,7 @@
  LDADD = libColPack.la
  AM_DEFAULT_SOURCE_EXT = .cpp

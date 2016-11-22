@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ DEPEND="
 	media-libs/tiff:0
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/libXpm
 	x11-libs/motif:0
 	x11-apps/xdpyinfo"

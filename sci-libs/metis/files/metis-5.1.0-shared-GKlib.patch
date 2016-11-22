@@ -1,5 +1,5 @@
---- GKlib/CMakeLists.orig.txt	2013-03-11 20:50:14.000000000 +0100
-+++ GKlib/CMakeLists.txt	2013-03-17 19:53:44.220827579 +0100
+--- a/GKlib/CMakeLists.txt
++++ b/GKlib/CMakeLists.txt
 @@ -7,7 +7,7 @@
  include(GKlibSystem.cmake)
  

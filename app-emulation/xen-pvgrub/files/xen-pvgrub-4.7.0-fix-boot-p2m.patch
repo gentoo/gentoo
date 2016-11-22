@@ -1,0 +1,36 @@
+From 9714f6b87e19b32d3a6663a20df6610265c4bfe5 Mon Sep 17 00:00:00 2001
+From: Juergen Gross <jgross@suse.com>
+Date: Wed, 28 Sep 2016 06:02:44 +0200
+Subject: [PATCH] pvgrub: fix crash when booting kernel with p2m list outside
+ kernel mapping
+
+When trying to boot a kernel with the p2m list not mapped by the
+initial kernel mapping it can happen that pvgrub is failing as it is
+keeping some page tables mapped.
+
+Unmap the additional page tables created for the special p2m mapping
+will avoid this failure.
+
+Reported-by: Sven Koehler <sven.koehler@gmail.com>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Acked-by: Wei Liu <wei.liu2@citrix.com>
+---
+ stubdom/grub/kexec.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/stubdom/grub/kexec.c b/stubdom/grub/kexec.c
+index 8fd9ff9..71c2f3f 100644
+--- a/stubdom/grub/kexec.c
++++ b/stubdom/grub/kexec.c
+@@ -347,6 +347,8 @@ void kexec(void *kernel, long kernel_size, void *module, long module_size, char
+     /* Unmap libxc's projection of the boot page table */
+     seg = xc_dom_seg_to_ptr(dom, &dom->pgtables_seg);
+     munmap(seg, dom->pgtables_seg.vend - dom->pgtables_seg.vstart);
++    seg = xc_dom_seg_to_ptr(dom, &dom->p2m_seg);
++    munmap(seg, dom->p2m_seg.vend - dom->p2m_seg.vstart);
+ 
+     /* Unmap day0 pages to avoid having a r/w mapping of the future page table */
+     for (pfn = 0; pfn < allocated; pfn++)
+-- 
+2.10.0
+

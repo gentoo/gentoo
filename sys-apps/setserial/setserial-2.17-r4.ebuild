@@ -22,6 +22,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-headers.patch
 	epatch "${FILESDIR}"/${P}-build.patch
 	epatch "${FILESDIR}"/${P}-hayes-esp.patch #309883
+	epatch "${FILESDIR}"/${P}-darwin.patch #541536
 }
 
 src_compile() {

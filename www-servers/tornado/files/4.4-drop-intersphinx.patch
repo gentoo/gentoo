@@ -1,0 +1,36 @@
+diff --git a/docs/Makefile b/docs/Makefile
+index 7001b80..ab2ffdd 100644
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -3,7 +3,7 @@ all: sphinx
+ 
+ # No -W for doctests because that disallows tests with empty output.
+ SPHINX_DOCTEST_OPTS=-n -d build/doctress .
+-SPHINXOPTS=-n -W -d build/doctrees .
++SPHINXOPTS=-n -d build/doctrees .
+ 
+ .PHONY: sphinx
+ sphinx:
+diff --git a/docs/conf.py b/docs/conf.py
+index 368e4e8..85a276d 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -17,7 +17,6 @@ extensions = [
+     "sphinx.ext.coverage",
+     "sphinx.ext.doctest",
+     "sphinx.ext.extlinks",
+-    "sphinx.ext.intersphinx",
+     "sphinx.ext.viewcode",
+     ]
+ 
+@@ -92,10 +91,6 @@
+         'tornado-%s.tar.g' % version),
+     }
+ 
+-intersphinx_mapping = {
+-    'python': ('https://docs.python.org/3.5/', None),
+-    }
+-
+ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+ 
+ # On RTD we can't import sphinx_rtd_theme, but it will be applied by

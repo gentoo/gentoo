@@ -1,0 +1,50 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+instance_name=${SVCNAME/*.}
+config_file=${config_file:-/etc/rethinkdb/instances.d/${instance_name}.conf}
+run_dir=${run_dir:-/run/rethinkdb}
+
+command="/usr/bin/rethinkdb"
+command_args="--config-file ${config_file}"
+command_background="true"
+pidfile=${run_dir}/${instance_name}.pid
+user=${user:-rethinkdb}
+group=${group:-rethinkdb}
+start_stop_daemon_args="--user ${user} --group ${group} --wait 2000"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -m 0750 -o "${user}":"${group}" "${run_dir}"
+	if [ "${instance_name}" == "rethinkdb" ]; then
+		eerror "You should not run this default init script directly"
+		eerror "Create a symlink to an instance name"
+		eerror "and create a configuration file in /etc/rethinkdb/instances.d/"
+		eerror "then run this instance init script instead."
+		return 1
+	fi
+	if [ ! -f ${config_file} ]; then
+		eerror "Missing configuration file ${config_file}"
+		return 1
+	else
+		# respect configured directory or set a default
+		directory=$(egrep -e '^directory=' "${config_file}" | cut -d'=' -f2)
+		if [ -z "${directory}" ]; then
+			directory=/var/lib/rethinkdb/instances.d/"${instance_name}"
+		fi
+		checkpath -d -m 0750 -o "${user}":"${group}" "${directory}"
+		command_args="${command_args} --directory ${directory}"
+
+		# respect configured log-file or set a default
+		log_file=$(egrep -e '^log_file=' "${config_file}" | cut -d'=' -f2)
+		if [ -z "${log_file}" ]; then
+			log_file=/var/log/rethinkdb/"${instance_name}".log
+		fi
+		command_args="${command_args} --log-file ${log_file}"
+	fi
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test tiff umfpack vala v4l webp"
-REQUIRED_IUSE="
+REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
 "
@@ -48,10 +48,10 @@ RDEPEND="
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( >=media-libs/jasper-1.900.1 )
+	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
-	openexr? ( media-libs/openexr )
+	openexr? ( media-libs/openexr:= )
 	png? ( media-libs/libpng:0= )
 	raw? ( >=media-libs/libraw-0.15.4 )
 	sdl? ( media-libs/libsdl )

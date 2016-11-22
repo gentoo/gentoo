@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_REQUIRED="optional"
-QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
@@ -20,14 +19,13 @@ DEV_URI="
 	http://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
 	http://download.documentfoundation.org/libreoffice/old/${PV}/
 "
-EXT_URI="http://ooo.itc.hu/oxygenoffice/download/libreoffice"
 ADDONS_URI="http://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -59,7 +57,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/ce12af00283eb90d9281956524250d6e-xmlsec1-1.2.20.tar.gz" # modifies source code
+	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -74,79 +72,70 @@ ADDONS_SRC=(
 SRC_URI+=" ${ADDONS_SRC[*]}"
 
 unset ADDONS_URI
-unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
-+gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc"
-
-LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
-# Unpackaged separate extensions:
-# diagram: lo has 0.9.5 upstream is weirdly patched 0.9.4 -> wtf?
-# hunart: only on ooo extensions -> fubared download path somewhere on sf
-# numbertext, typo, validator, watch-window: ^^
-# oooblogger: no homepage or anything
 # Extensions that need extra work:
-for lo_xt in ${LO_EXTS}; do
-	IUSE+=" libreoffice_extensions_${lo_xt}"
-done
-unset lo_xt
+LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
+
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome googledrive
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk pdfimport postgres quickstarter telepathy test vlc
+$(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
-COMMON_DEPEND="
-	${PYTHON_DEPS}
-	app-arch/zip
+COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
-	>=app-text/hunspell-1.3.2-r3
-	app-text/mythes
+	app-arch/zip
+	app-text/hunspell
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.4.4
 	>=app-text/libebook-0.1
 	>=app-text/libetonyek-0.1
+	app-text/libexttextcat
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
+	app-text/libstaroffice
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
-	>=app-text/poppler-0.16:=[cxx]
+	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
-	>=dev-libs/boost-1.55:=
+	dev-lang/perl
+	dev-libs/boost:=
 	dev-libs/expat
-	>=dev-libs/hyphen-2.7.1
-	>=dev-libs/icu-4.8.1.1:=
-	>=dev-libs/liborcus-0.11.1
-	>=dev-libs/librevenge-0.0.1
-	>=dev-libs/nspr-4.8.8
-	>=dev-libs/nss-3.12.9
-	>=dev-lang/perl-5.0
+	dev-libs/hyphen
+	dev-libs/icu:=
+	>=dev-libs/liborcus-0.12.1
+	dev-libs/librevenge
+	dev-libs/nspr
+	dev-libs/nss
 	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	media-gfx/graphite2
-	>=media-libs/fontconfig-2.8.0
+	media-libs/fontconfig
 	media-libs/freetype:2
-	>=media-libs/glew-1.10
-	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
+	>=media-libs/glew-1.10:=
+	media-libs/harfbuzz:=[graphite,icu]
 	media-libs/lcms:2
-	>=media-libs/libpng-1.4:0=
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
+	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
-	>=net-misc/curl-7.21.4
+	media-libs/libzmf
 	net-libs/neon
+	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	>=x11-libs/cairo-1.10.0[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -154,43 +143,44 @@ COMMON_DEPEND="
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
-	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
+	collada? ( media-libs/opencollada )
 	cups? ( net-print/cups )
-	dbus? ( >=dev-libs/dbus-glib-0.92 )
+	dbus? ( dev-libs/dbus-glib )
 	eds? (
 		dev-libs/glib:2
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
+	gnome? ( gnome-base/dconf )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 	gtk? (
-		x11-libs/gdk-pixbuf[X]
+		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
 	)
 	gtk3? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
-		>=x11-libs/gtk+-3.8:3
-	)
-	gstreamer? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
+		x11-libs/gtk+:3
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	libreoffice_extensions_scripting-beanshell? ( >=dev-java/bsh-2.0_beta4 )
+	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
+	mysql? ( dev-db/mysql-connector-c++ )
+	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? ( >=net-libs/telepathy-glib-0.18.0 )
+	telepathy? ( net-libs/telepathy-glib )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
-	!<app-office/openoffice-bin-3.4.0-r1
 	!app-office/openoffice
-	media-fonts/libertine
 	media-fonts/liberation-fonts
+	media-fonts/libertine
 	media-fonts/urw-fonts
 	java? ( >=virtual/jre-1.6 )
 	kde? ( $(add_kdeapps_dep kioclient) )
@@ -209,6 +199,7 @@ fi
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
+	!<sys-devel/make-3.82
 	>=dev-libs/libatomic_ops-7.2d
 	>=dev-libs/libxml2-2.7.8
 	dev-libs/libxslt
@@ -216,12 +207,11 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	dev-util/mdds:1=
+	>=dev-util/mdds-1.2.2:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
-	!<sys-devel/make-3.82
 	sys-devel/ucpp
 	sys-libs/zlib
 	virtual/pkgconfig
@@ -232,15 +222,14 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xineramaproto
 	x11-proto/xproto
 	java? (
+		dev-java/ant-core
 		>=virtual/jdk-1.6
-		>=dev-java/ant-core-1.7
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 	test? ( dev-util/cppunit )
 "
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
 	eds? ( gnome )
@@ -254,27 +243,25 @@ REQUIRED_USE="
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 )
-
-CHECKREQS_MEMORY="512M"
-
-if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
-	CHECKREQS_DISK_BUILD="22G"
-elif [[ ${MERGE_TYPE} != binary ]] ; then
-	CHECKREQS_DISK_BUILD="6G"
-fi
 
 pkg_pretend() {
 	use java || \
 		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
+
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
 		check-reqs_pkg_pretend
 
-		if [[ $(gcc-major-version) -lt 4 ]] || {
-			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; }
-		then
+		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
+				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
 			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
 		fi
@@ -296,8 +283,17 @@ pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
+	xdg_environment_reset
 
-	[[ ${MERGE_TYPE} != binary ]] && check-reqs_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
+		check-reqs_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -351,6 +347,11 @@ src_prepare() {
 		-e "s#Makefile.gbuild all slowcheck#Makefile.gbuild all#g" \
 		Makefile.in || die
 
+	sed -i \
+		-e "s,/usr/share/bash-completion/completions,$(get_bashcompdir)," \
+		-e "s,\$INSTALLDIRNAME.sh,${PN}," \
+		bin/distro-install-desktop-integration || die
+
 	if use branding; then
 		# hack...
 		mv -v "${WORKDIR}/branding-intro.png" "${S}/icon-themes/galaxy/brand/intro.png" || die
@@ -360,6 +361,12 @@ src_prepare() {
 src_configure() {
 	local java_opts
 	local ext_opts
+
+	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+	# Note: these are for Gentoo use ONLY. For your own distribution, please get
+	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
+	local google_default_client_id="329227923882.apps.googleusercontent.com"
+	local google_default_client_secret="vgKG0NNv7GoDpbtoFNLxCUXu"
 
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
@@ -398,14 +405,19 @@ src_configure() {
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
 	fi
 
+	if use kde; then
+		# bug 544108, bug 599076
+		export QMAKEQT4="$(qt4_get_bindir)/qmake"
+		export MOCQT4="$(qt4_get_bindir)/moc"
+	fi
+
 	# system headers/libs/...: enforce using system packages
+	# --disable-breakpad: requires not-yet-in-tree dev-utils/breakpad
 	# --enable-cairo: ensure that cairo is always required
 	# --enable-graphite: disabling causes build breakages
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
-	# --disable-systray: quickstarter does not actually work at all so do not
-	#   promote it
 	# --enable-extension-integration: enable any extension integration support
 	# --without-{fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --disable-report-builder: too much java packages pulled in without pkgs
@@ -413,10 +425,10 @@ src_configure() {
 	#   not linked or anything else, worthless to depend on
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
-		--with-system-headers \
-		--with-system-libs \
-		--with-system-jars \
 		--with-system-dicts \
+		--with-system-headers \
+		--with-system-jars \
+		--with-system-libs \
 		--enable-cairo-canvas \
 		--enable-graphite \
 		--enable-largefile \
@@ -425,16 +437,14 @@ src_configure() {
 		--enable-python=system \
 		--enable-randr \
 		--enable-release-build \
-		--disable-hardlink-deliver \
+		--disable-breakpad \
 		--disable-ccache \
-		--disable-crashdump \
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
-		--disable-report-builder \
 		--disable-online-update \
-		--disable-systray \
+		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
 		--with-build-version="Gentoo official package" \
 		--enable-extension-integration \
@@ -451,7 +461,6 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--without-sun-templates \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
@@ -463,18 +472,23 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
 		$(use_enable gnome gio) \
+		$(use_enable gnome dconf) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
 		$(use_enable kde kde4) \
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
+		$(use_enable pdfimport) \
 		$(use_enable postgres postgresql-sdbc) \
+		$(use_enable quickstarter systray) \
 		$(use_enable telepathy) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
 		$(use_with gltf system-libgltf) \
+		$(use_with googledrive gdrive-client-id ${google_default_client_id}) \
+		$(use_with googledrive gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
@@ -523,8 +537,13 @@ src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
-	# Fix bash completion placement
-	newbashcomp "${ED}"usr/share/bash-completion/completions/libreoffice.sh ${PN}
+	# bug 593514
+	if use gtk3; then
+		dosym /usr/$(get_libdir)/libreoffice/program/liblibreofficekitgtk.so \
+			/usr/$(get_libdir)/liblibreofficekitgtk.so
+	fi
+
+	# bash completion aliases
 	bashcomp_alias \
 		libreoffice \
 		unopkg loimpress lobase localc lodraw lomath lowriter lofromtemplate loweb loffice
@@ -542,12 +561,8 @@ src_install() {
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
 
-	# Remove desktop files for support to old installs that can't parse mime
+	# Remove desktop files to support old installs that can't parse mime
 	rm -r "${ED}"usr/share/mimelnk/ || die
-
-	# FIXME: Hack add missing file
-	exeinto /usr/$(get_libdir)/${PN}/program
-	doexe "${S}"/instdir/program/libsaxlo.so
 
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin

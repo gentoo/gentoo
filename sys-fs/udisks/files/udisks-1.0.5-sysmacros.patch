@@ -1,0 +1,72 @@
+https://bugs.gentoo.org/580230
+https://bugs.freedesktop.org/95028
+
+From 245093a15abe985b1746603c00084cb972fb71ae Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Apr 2016 23:04:32 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+Linux C libraries are moving away from implicit includes of
+sys/sysmacros.h, so pull in this header directly in the files
+that use these funcs.
+
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -38,6 +38,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+--- a/src/device.c
++++ b/src/device.c
+@@ -28,6 +28,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+--- a/src/mount-monitor.c
++++ b/src/mount-monitor.c
+@@ -27,6 +27,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <mntent.h>
+--- a/src/probers/part-id.c
++++ b/src/probers/part-id.c
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+--- a/tools/udisks.c
++++ b/tools/udisks.c
+@@ -28,6 +28,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+--- a/tools/umount-udisks.c
++++ b/tools/umount-udisks.c
+@@ -28,6 +28,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>

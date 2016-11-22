@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
-    <flag name="racket">Enable support for Scheme using <pkg>dev-lang/racket</pkg></flag>
+    <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
     <flag name="vim-pager">Install vimpager and vimmanpager links</flag>
     <flag name="X">Link console vim against X11 libraries to enable title and
 	  clipboard features in xterm</flag>

@@ -1,5 +1,5 @@
---- Tools/qmake/mkspecs/features/features.prf	2014-03-19 18:35:47.795676444 +0000
-+++ Tools/qmake/mkspecs/features/features.prf	2014-03-19 18:36:38.602433220 +0000
+--- a/Tools/qmake/mkspecs/features/features.prf	2014-03-19 18:35:47.795676444 +0000
++++ b/Tools/qmake/mkspecs/features/features.prf	2014-03-19 18:36:38.602433220 +0000
 @@ -99,12 +99,6 @@
  
      # HTML5 Media Support for builds with GStreamer

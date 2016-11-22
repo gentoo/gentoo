@@ -1,5 +1,5 @@
---- modules/Makefile.am.orig	2013-07-22 14:13:10.339130133 -0700
-+++ modules/Makefile.am	2013-07-22 14:15:10.770813929 -0700
+--- a/modules/Makefile.am
++++ b/modules/Makefile.am
 @@ -105,7 +105,7 @@
  libstokes2D_la_LIBADD = $(GFS2D_LIBS)
  

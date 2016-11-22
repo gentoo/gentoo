@@ -1,0 +1,42 @@
+#!/bin/sh
+
+export SAVAGEWHEELS_SYS_DATADIR="${SAVAGEWHEELS_SYS_DATADIR-@CMAKE_INSTALL_DATADIR@}"
+export SAVAGEWHEELS_LIBEXECDIR="${SAVAGEWHEELS_LIBEXECDIR-@CMAKE_INSTALL_LIBEXECDIR@}"
+export SAVAGEWHEELS_USR_CONFDIR="${SAVAGEWHEELS_USR_CONFDIR-${HOME}/.config/savagewheels}"
+export SAVAGEWHEELS_USR_DATADIR="${SAVAGEWHEELS_USR_DATADIR-${HOME}/.local/share/savagewheels}"
+
+if [ ! -d ${SAVAGEWHEELS_USR_CONFDIR} ]; then
+    if [ -e ${SAVAGEWHEELS_USR_CONFDIR} ]; then
+        printf "${SAVAGEWHEELS_USR_CONFDIR} exists but is not a directory.\n" >&2
+        printf "  Please remove.\n" >&2
+        exit 1
+    fi
+    mkdir -p ${SAVAGEWHEELS_USR_CONFDIR}
+    if [ $? -ne 0 ]; then
+        printf "Failed to create ${SAVAGEWHEELS_USR_CONFDIR}\n" >&2
+        exit 1
+    fi
+fi
+
+if [ ! -d ${SAVAGEWHEELS_USR_DATADIR} ]; then
+    if [ -e ${SAVAGEWHEELS_USR_DATADIR} ]; then
+        printf "${SAVAGEWHEELS_USR_DATADIR} exists but is not a directory.\n" >&2
+        printf "  Please remove.\n" >&2
+        exit 1
+    fi
+    mkdir -p ${SAVAGEWHEELS_USR_DATADIR}
+    if [ $? -ne 0 ]; then
+        printf "Failed to create ${SAVAGEWHEELS_USR_DATADIR}\n" >&2
+        exit 1
+    fi
+fi
+
+if [ ! -e ${SAVAGEWHEELS_USR_CONFDIR}/bindings.xml ]; then
+    cp ${SAVAGEWHEELS_SYS_DATADIR}/bindings.xml ${SAVAGEWHEELS_USR_CONFDIR}
+    if [ $? -ne 0 ]; then
+        printf "Failed to create ${SAVAGEWHEELS_USR_CONFDIR}/bindings.xml\n" >&2
+        exit 1
+    fi
+fi
+
+exec ${SAVAGEWHEELS_LIBEXECDIR}/savagewheels "$@"

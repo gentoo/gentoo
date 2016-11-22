@@ -4,4 +4,8 @@
 <maintainer type="person">
   <email>robbat2@gentoo.org</email>
 </maintainer>
+<maintainer type="person">
+  <email>slyfox@gentoo.org</email>
+  <name>Sergei Trofimovich</name>
+</maintainer>
 </pkgmetadata>

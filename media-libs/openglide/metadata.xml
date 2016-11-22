@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">voyageur/openglide</remote-id>
+		<remote-id type="sourceforge">openglide</remote-id>
+	</upstream>
+	<longdescription>
+	  OpenGLide is a Glide to OpenGL wrapper. It emulates a Voodoo
+	  board so you can run old DOS/Windows Glide games by translating
+	  Glide calls into OpenGL.
+	</longdescription>
+</pkgmetadata>

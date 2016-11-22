@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>gregkh@gentoo.org</email>
-	<name>Greg Kroah-Hartman</name>
-</maintainer>
-<maintainer type="person">
 	<email>chithanh@gentoo.org</email>
 	<name>Chí-Thanh Christopher Nguyễn</name>
 </maintainer>

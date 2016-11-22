@@ -1,0 +1,11 @@
+--- lammps-30Jul16-original/lib/meam/fm_exp.c	2016-04-18 14:00:58.000000000 +0000
++++ lammps-30Jul16/lib/meam/fm_exp.c	2016-10-06 03:15:55.631053526 +0000
+@@ -112,7 +112,7 @@
+     return epart.f*x;
+ }
+ 
+-double fm_exp_(double *x)
++extern "C" double fm_exp_(double *x)
+ {
+ #if defined(__BYTE_ORDER__)
+ #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__

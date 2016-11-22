@@ -1,0 +1,14 @@
+diff --git a/src/payload.c b/src/payload.c
+index ac0e917..9ba980a 100644
+--- a/src/payload.c
++++ b/src/payload.c
+@@ -85,6 +85,9 @@ static void payload_expr_pctx_update(struct proto_ctx *ctx,
+ 	base = ctx->protocol[left->payload.base].desc;
+ 	desc = proto_find_upper(base, proto);
+ 
++	if (!desc)
++		return;
++
+ 	assert(desc->base <= PROTO_BASE_MAX);
+ 	if (desc->base == base->base) {
+ 		assert(base->length > 0);

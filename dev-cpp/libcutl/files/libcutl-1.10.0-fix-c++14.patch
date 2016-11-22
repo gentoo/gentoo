@@ -1,0 +1,53 @@
+Make dtors noexcept(false) when compiling in C++11 and above. This avoids silent
+breakage due to the semantic exception changes between C++98 and C++11.
+
+--- a/cutl/fs/auto-remove.cxx
++++ b/cutl/fs/auto-remove.cxx
+@@ -13,6 +13,9 @@
+   {
+     auto_remove::
+     ~auto_remove ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       if (!canceled_)
+       {
+@@ -23,6 +26,9 @@
+ 
+     auto_removes::
+     ~auto_removes ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       if (!canceled_)
+       {
+--- a/cutl/fs/auto-remove.hxx
++++ b/cutl/fs/auto-remove.hxx
+@@ -26,7 +26,11 @@
+       {
+       }
+ 
+-      ~auto_remove ();
++      ~auto_remove ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       void
+       cancel ()
+@@ -51,7 +55,11 @@
+     struct LIBCUTL_EXPORT auto_removes
+     {
+       auto_removes (): canceled_ (false) {}
+-      ~auto_removes ();
++      ~auto_removes ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       void
+       add (path const& p)

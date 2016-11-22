@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,20 +10,21 @@ PK3_FILE="QuDos-${PV}.pk3"
 MY_PN="quake2"
 
 DESCRIPTION="Enhanced Quake 2 engine"
-HOMEPAGE="http://qudos.quakedev.com/"
-SRC_URI="http://qudos.quakedev.com/linux/${MY_PN}/engines/QuDos/${FILE_STEM}.tar.bz2
-	http://qudos.quakedev.com/linux/${MY_PN}/engines/QuDos/${PK3_FILE}"
+HOMEPAGE="https://github.com/ZwS/qudos"
+SRC_URI="mirror://gentoo/${FILE_STEM}.tar.bz2
+	https://github.com/ZwS/qudos/raw/master/quake2/baseq2/qudos.pk3 -> ${PK3_FILE}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa cdinstall debug dedicated demo dga ipv6 joystick mods opengl qmax oss sdl textures"
+IUSE="cdinstall debug dedicated demo dga ipv6 joystick mods opengl qmax oss sdl textures"
 
-UIDEPEND="alsa? ( media-libs/alsa-lib )
-	opengl? (
+DEPEND="opengl? (
 		virtual/opengl
 		virtual/glu )
-	sdl? ( media-libs/libsdl )
+	sdl? ( media-libs/libsdl[joystick?,opengl,sound,video]
+		virtual/opengl
+		virtual/glu )
 	virtual/jpeg:0
 	media-libs/libogg
 	media-libs/libpng:0
@@ -33,11 +34,10 @@ UIDEPEND="alsa? ( media-libs/alsa-lib )
 	x11-libs/libXext
 	x11-libs/libXxf86dga
 	x11-libs/libXxf86vm"
-RDEPEND="${UIDEPEND}
+RDEPEND="${DEPEND}
 	cdinstall? ( games-fps/quake2-data )
-	demo? ( games-fps/quake2-demodata )
+	demo? ( games-fps/quake2-demodata[symlink] )
 	textures? ( games-fps/quake2-textures )"
-DEPEND="${UIDEPEND}"
 
 S=${WORKDIR}/${FILE_STEM}
 dir=${GAMES_DATADIR}/${MY_PN}
@@ -71,19 +71,12 @@ pkg_setup() {
 	snd_drv=""
 	[[ -z "${snd_drv}" ]] && use oss && snd_drv="oss"
 	[[ -z "${snd_drv}" ]] && use sdl && snd_drv="sdl"
-	[[ -z "${snd_drv}" ]] && use alsa && snd_drv="alsa"
 	# Default if nothing else chosen
 	[[ -z "${snd_drv}" ]] && snd_drv="oss"
 
 	if default_client ; then
 		elog "Selected the ${snd_drv} sound driver as the default."
 		echo
-		if [[ "${snd_drv}" = "alsa" ]] ; then
-			ewarn "The ALSA sound driver for this game is incomplete."
-			# OSS is the default sound driver in the Makefile
-			ewarn "The 'oss' USE flag is recommended instead."
-			echo
-		fi
 	fi
 }
 
@@ -95,17 +88,21 @@ src_prepare() {
 	rm docs/gnu.txt
 
 	# Change default sound driver and its location
-	sed -i src/client/snd_dma.c \
+	sed -i \
 		-e "s:\"oss\":\"${snd_drv}\":" \
 		-e "s:\"\./snd:\"$(games_get_libdir)/${PN}/snd:" \
-		|| die "sed snd_dma.c failed"
+		src/client/snd_dma.c || die
 
 	sed -i \
 		-e 's:jpeg_mem_src:qudos_jpeg_mem_src:g' \
 		src/ref_gl/gl_image.c || die
 
-	has_version '>=sys-libs/zlib-1.2.5.1-r1' && \
-		sed -i -e '1i#define OF(x) x' src/qcommon/unzip/ioapi.h
+	if has_version '>=sys-libs/zlib-1.2.5.1-r1' ; then
+		sed -i \
+			-e '1i#define OF(x) x' \
+			src/qcommon/unzip/ioapi.h || die
+	fi
+	sed -i -e '106,119 s/CFL/LED/' Makefile || die
 
 	epatch \
 		"${FILESDIR}"/${P}-libpng15.patch \
@@ -113,7 +110,7 @@ src_prepare() {
 }
 
 src_compile() {
-	yesno() { use $1 && echo YES || echo NO ; }
+	yesno() { usex $1 YES NO; }
 
 	local client="YES"
 	default_client || client="NO"
@@ -121,12 +118,12 @@ src_compile() {
 	local type="release"
 	use debug && type="debug"
 
-	emake -j1 \
+	emake \
 		BUILD_QUAKE2="${client}" \
 		BUILD_DEDICATED=$(yesno dedicated) \
 		BUILD_GLX=$(yesno opengl) \
 		BUILD_SDLGL=$(yesno sdl) \
-		BUILD_ALSA_SND=$(yesno alsa) \
+		BUILD_ALSA_SND=NO \
 		BUILD_SDL_SND=$(yesno sdl) \
 		BUILD_OSS_SND=$(yesno oss) \
 		WITH_XMMS=NO \
@@ -175,14 +172,4 @@ src_install() {
 	dodoc $(find docs -name \*.txt) docs/q2_orig/README*
 
 	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-
-	if use demo && ! has_version "games-fps/quake2-demodata[symlink]" ; then
-		ewarn "To play the Quake 2 demo,"
-		ewarn "emerge games-fps/quake2-demodata with the 'symlink' USE flag."
-		echo
-	fi
 }

@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
 inherit eutils games
 
 MY_PN=${PN/moo/MOO-light}
@@ -20,6 +19,7 @@ IUSE=""
 DEPEND="
 	>=dev-lang/tcl-8.3.3:0=
 	>=dev-lang/tk-8.3.3:0="
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 

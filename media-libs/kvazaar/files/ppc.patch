@@ -1,0 +1,19 @@
+commit 99e37ec23532a247b9e306ef87e9879385c625d8
+Author: Ari Lemmetti <ari.lemmetti@gmail.com>
+Date:   Sat Jan 30 19:33:09 2016 +0200
+
+    Update old pixel type to the current one
+
+diff --git a/src/strategies/altivec/picture-altivec.c b/src/strategies/altivec/picture-altivec.c
+index 7c9d1fb..28e86e8 100644
+--- a/src/strategies/altivec/picture-altivec.c
++++ b/src/strategies/altivec/picture-altivec.c
+@@ -28,7 +28,7 @@
+ #include <stdlib.h>
+ 
+ 
+-static unsigned reg_sad_altivec(const pixel * const data1, const pixel * const data2,
++static unsigned reg_sad_altivec(const kvz_pixel * const data1, const kvz_pixel * const data2,
+                         const int width, const int height, const unsigned stride1, const unsigned stride2)
+ {
+   vector unsigned int vsad = {0,0,0,0}, vzero = {0,0,0,0}; 

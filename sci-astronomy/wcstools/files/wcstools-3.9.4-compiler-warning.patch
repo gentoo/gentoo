@@ -1,0 +1,34 @@
+From: Ole Streicher <debian@liska.ath.cx>
+Date: Fri, 5 Aug 2016 16:17:42 +0200
+Subject: Fix some compiler warnings.
+
+---
+ libwcs/imhfile.c | 2 +-
+ libwcs/webread.c | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libwcs/imhfile.c b/libwcs/imhfile.c
+index b618686..4279d3c 100644
+--- a/libwcs/imhfile.c
++++ b/libwcs/imhfile.c
+@@ -1075,7 +1075,7 @@ char	*hdrname;	/* IRAF image header file pathname */
+ 
+ 	/* add name */
+ 	newpixname[len] = '\0';
+-	(void)strncat (newpixname, pixname, SZ_IM2PIXFILE);
++	(void)strncat (newpixname, pixname, SZ_IM2PIXFILE - len);
+ 	}
+ 
+     /* Pixel file has same name as header file, but with .pix extension */
+diff --git a/libwcs/webread.c b/libwcs/webread.c
+index 1f5c518..cd9cba9 100644
+--- a/libwcs/webread.c
++++ b/libwcs/webread.c
+@@ -32,6 +32,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
++#include <ctype.h>
+ #include <math.h>
+ #include "wcs.h"
+ #include "fitsfile.h"

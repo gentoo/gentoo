@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,6 +31,8 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	epatch "${WORKDIR}/atscepg-${PV}_vdr-1.7.13.diff"
+
+	epatch "${FILESDIR}/${P}_gcc6.patch"
 
 	fix_vdr_libsi_include tables.cpp filter.cpp scanner.cpp
 }

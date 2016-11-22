@@ -1,0 +1,53 @@
+From 5ab184661ff38baca3ea2709d81932a578654392 Mon Sep 17 00:00:00 2001
+From: Kir Kolyshkin <kir@openvz.org>
+Date: Mon, 16 May 2016 14:52:28 -0700
+Subject: [PATCH] mate-dict.pc: depend upon proper gtk version
+
+If the package is built against gtk-3.0 (as in
+./configure --with-gtk=3.0), mate-dict.pc still wants gtk-2.0
+since it's hardcoded it there. This can lead to improper builds
+of packages using libmatedict (although I can't find any now),
+as well as improper RPM dependencies, like this:
+
+	$ rpm -e gtk2-devel
+	error: Failed dependencies:
+	...
+	pkgconfig(gtk+-2.0) is needed by (installed) mate-utils-devel-1.14.0-1gtk3.fc23.x86_64
+
+Fortunately, the file is already generated, so it's trivial to add
+a proper substitution.
+
+[v2: also add min GTK version required]
+
+Signed-off-by: Kir Kolyshkin <kir@openvz.org>
+---
+ configure.ac                             | 2 ++
+ mate-dictionary/libgdict/mate-dict.pc.in | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 64aba70..39cc6f8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,6 +89,8 @@ case "$with_gtk" in
+ 		LIBCANBERRA_GTK_REQUIRED=0.4
+ 		;;
+ esac
++AC_SUBST(GTK_API_VERSION)
++AC_SUBST(GTK_REQUIRED)
+ 
+ # common checks
+ PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
+diff --git a/mate-dictionary/libgdict/mate-dict.pc.in b/mate-dictionary/libgdict/mate-dict.pc.in
+index e409a0c..8168de2 100644
+--- a/mate-dictionary/libgdict/mate-dict.pc.in
++++ b/mate-dictionary/libgdict/mate-dict.pc.in
+@@ -5,7 +5,7 @@ includedir=@includedir@
+ 
+ Name: gdict-1.0
+ Description: MATE Dictionary Protocol client library
+-Requires: gtk+-2.0
++Requires: gtk+-@GTK_API_VERSION@ >= @GTK_REQUIRED@
+ Version: @GDICT_VERSION@
+ Libs: -L${libdir} -lmatedict
+ Cflags: -I${includedir}/mate-dict

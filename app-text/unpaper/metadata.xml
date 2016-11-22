@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-  </maintainer>
   <upstream>
     <remote-id type="github">Flameeyes/unpaper</remote-id>
     <bugs-to>https://github.com/Flameeyes/unpaper/issues</bugs-to>

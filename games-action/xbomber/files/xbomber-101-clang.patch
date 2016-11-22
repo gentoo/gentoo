@@ -1,0 +1,123 @@
+--- a/bomber.c	2016-07-13 16:35:34.596802964 -0500
++++ b/bomber.c	2016-07-13 16:40:43.110797439 -0500
+@@ -350,7 +350,7 @@
+ 			inform1(i);
+ }
+ 
+-networktraffic()
++void networktraffic()
+ {
+ int i,j,k;
+ int length;
+@@ -1252,7 +1252,7 @@
+ 	}
+ }
+ 
+-addsprite(int x,int y,figure *fig)
++void addsprite(int x,int y,figure *fig)
+ {
+ sprite *sp;
+ 	if(spritesused==MAXSPRITES) return;
+@@ -1262,7 +1262,7 @@
+ 	sp->ypos=y;
+ 	sp->fig=fig;
+ }
+-adddamage(int xpos,int ypos,int xsize,int ysize)
++void adddamage(int xpos,int ypos,int xsize,int ysize)
+ {
+ damage *dm;
+ 	if(damageused==MAXDAMAGES) return;
+@@ -1375,7 +1375,7 @@
+ 	return (y>>FRACTION)+arraystarty;
+ }
+ 
+-int trymove(player *pl,int dx,int dy)
++void trymove(player *pl,int dx,int dy)
+ {
+ int wx,wy;
+ int sx,sy;
+@@ -1520,7 +1520,7 @@
+ 	}
+ }
+ 
+-doplayer(player *pl)
++void doplayer(player *pl)
+ {
+ int last;
+ int color;
+@@ -1640,7 +1640,7 @@
+ 8,14,4,
+ };
+ 
+-initplayers()
++void initplayers()
+ {
+ int i;
+ unsigned char *p;
+@@ -1794,7 +1794,7 @@
+ 	copyup();
+ }
+ 
+-pulseon()
++void pulseon()
+ {
+ 	if(havepulse) return;
+ 	havepulse=1;
+@@ -1803,7 +1803,7 @@
+ 	thandler(0);
+ 	setitimer(ITIMER_REAL,&itval,NULL);
+ }
+-pulseoff()
++void pulseoff()
+ {
+ 	if(!havepulse) return;
+ 	havepulse=0;
+@@ -2235,7 +2235,7 @@
+ failure(char *str,...)
+ {
+ 	gamemode=0;
+-	return;
++	return 1;
+ }
+ drawmode3()
+ {
+@@ -2261,7 +2261,7 @@
+ }
+ 
+ 
+-domode3()
++void domode3()
+ {
+ int size;
+ int i,j;
+@@ -2351,7 +2351,7 @@
+ 
+ 	gamemode=0;
+ }
+-domode4()
++void domode4()
+ {
+ unsigned char querystr[16];
+ long now;
+--- a/bomber.h	2016-07-13 16:35:34.596802964 -0500
++++ b/bomber.h	2016-07-13 16:40:26.797797731 -0500
+@@ -210,6 +210,8 @@
+ extern void scrprintf(char *str, ...);
+ extern int textx,texty,fontxsize,fontysize;
+ extern void texthome(void);
++extern void adddamage(int xpos,int ypos,int xsize,int ysize);
++extern void addsprite(int x,int y,figure *fig);
+ 
+ extern unsigned char field[32][32];
+ extern void *info[32][32];
+--- a/sound.c	2016-07-13 16:35:34.596802964 -0500
++++ b/sound.c	2016-07-13 16:40:57.702797177 -0500
+@@ -44,7 +44,7 @@
+ 
+ 
+ 
+-soundinit(char *name)
++void soundinit(char *name)
+ {
+ int fd[2];
+ char devname[256];

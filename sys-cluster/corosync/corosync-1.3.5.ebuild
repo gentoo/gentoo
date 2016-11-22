@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ IUSE="doc infiniband ssl static-libs"
 RDEPEND="!sys-cluster/heartbeat
 	ssl? ( dev-libs/nss )
 	infiniband? (
-		sys-infiniband/libibverbs
-		sys-infiniband/librdmacm
+		sys-fabric/libibverbs
+		sys-fabric/librdmacm
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

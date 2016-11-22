@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">ukoethe/vigra</remote-id>
 	</upstream>
+	<use>
+	    <flag name="valgrind">Enable valgrind in make check</flag>
+	</use>
 </pkgmetadata>

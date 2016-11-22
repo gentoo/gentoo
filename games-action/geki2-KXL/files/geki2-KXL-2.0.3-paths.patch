@@ -1,13 +1,13 @@
---- bmp/Makefile.am
-+++ bmp/Makefile.am
+--- a/bmp/Makefile.am
++++ b/bmp/Makefile.am
 @@ -1,4 +1,4 @@
 -bmpdir = $(prefix)/share/geki2/bmp
 +bmpdir = $(BMP_PATH)
  bmp_DATA =   back1.bmp boss2.bmp enemyshot4.bmp kuru.bmp myshot.bmp back2.bmp\
  	     boss3.bmp enemyshot5.bmp mboss.bmp uraura.bmp back3.bmp\
  	     boss3laser.bmp flash.bmp uturn.bmp back4.bmp back6.bmp boss6.bmp\
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -25,9 +25,9 @@
          BMP_PATH=/usr/local/share/geki2/bmp
          WAV_PATH=/usr/local/share/geki2/wav
@@ -21,8 +21,8 @@
  fi
  AC_DEFINE_UNQUOTED(DATA_PATH,"$DATA_PATH")
  AC_DEFINE_UNQUOTED(BMP_PATH,"$BMP_PATH")
---- data/Makefile.am
-+++ data/Makefile.am
+--- a/data/Makefile.am
++++ b/data/Makefile.am
 @@ -1,9 +1,7 @@
 -datadir = $(prefix)/share/geki2/data
 +datadir = $(DATA_PATH)
@@ -34,8 +34,8 @@
 -install:
 -	$(INSTALL) -c -m 666 ./.score $(DESTDIR)$(DATA_PATH)
  
---- wav/Makefile.am
-+++ wav/Makefile.am
+--- a/wav/Makefile.am
++++ b/wav/Makefile.am
 @@ -1,4 +1,4 @@
 -wavdir = $(prefix)/share/geki2/wav
 +wavdir = $(WAV_PATH)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlg@gentoo.org</email>
+		<name>Daniel Campbell</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>jfreegman@tox.chat</email>
+			<name>JFreegman</name>
+		</maintainer>
+		<remote-id type="github">jfreegman/toxic</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		An ncurses-based Tox client written in C. Supports audio calling, file sharing, and desktop notifications.
+	</longdescription>
+	<use>
+		<flag name="notifications">Enables desktop notifications with libnotify</flag>
+		<flag name="av">Enables audio calling and/or audio notifications</flag>
+	</use>
+</pkgmetadata>

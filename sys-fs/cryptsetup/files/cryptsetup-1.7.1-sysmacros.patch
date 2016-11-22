@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/580228
+
+From ca5f8f92c161d9bd3b0c539befc13199f8a60813 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Apr 2016 02:13:00 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+These functions are defined in that header, so include it when needed.
+Otherwise we can get build failures like:
+veritysetup-utils_loop.o: In function '_sysfs_backing_file':
+utils_loop.c:(.text+0x50): undefined reference to 'minor'
+utils_loop.c:(.text+0x5e): undefined reference to 'major'
+veritysetup-utils_loop.o: In function 'crypt_loop_device':
+utils_loop.c:(.text+0x638): undefined reference to 'major'
+../lib/.libs/libcryptsetup.so: undefined reference to 'makedev'
+---
+ lib/utils_devpath.c | 1 +
+ lib/utils_loop.c    | 1 +
+ lib/utils_wipe.c    | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/lib/utils_devpath.c b/lib/utils_devpath.c
+index 963785a..0bc0563 100644
+--- a/lib/utils_devpath.c
++++ b/lib/utils_devpath.c
+@@ -30,6 +30,7 @@
+ #include <errno.h>
+ #include <limits.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include "internal.h"
+ 
+diff --git a/lib/utils_loop.c b/lib/utils_loop.c
+index d7b03a1..36d4c46 100644
+--- a/lib/utils_loop.c
++++ b/lib/utils_loop.c
+@@ -27,6 +27,7 @@
+ #include <limits.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <linux/loop.h>
+ 
+diff --git a/lib/utils_wipe.c b/lib/utils_wipe.c
+index 210c566..8e2a2aa 100644
+--- a/lib/utils_wipe.c
++++ b/lib/utils_wipe.c
+@@ -29,6 +29,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
++#include <sys/sysmacros.h>
+ #include <fcntl.h>
+ 
+ #include "libcryptsetup.h"
+-- 
+2.7.4
+

@@ -1,0 +1,35 @@
+--- a/Makefile	2003-05-17 20:08:29.000000000 +0200
++++ b/Makefile	2013-03-13 18:24:24.552941672 +0100
+@@ -9,12 +9,10 @@
+ GTK_INCLUDE = $(shell pkg-config gtk+-2.0 --cflags)
+ GTK_LIB = $(shell pkg-config gtk+-2.0 --libs)
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
++FLAGS = -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)
+ 
+-LFLAGS = -shared
+-
+-CC = gcc 
++LFLAGS = -shared 
+ 
+ #
+ # files
+@@ -30,7 +28,7 @@
+ 
+ 
+ %.o : %.c
+-	$(CC) $(CFLAGS) $(FLAGS) -c $< -o $@ 
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) -c $< -o $@ 
+ 
+ 
+ all:
+@@ -41,7 +39,7 @@
+ 
+ $(TARGET): $(OBJECTS)
+ 	@echo -e "\n\n>> linking\n"
+-	$(CC) $(OBJECTS) -o $@ $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $@ $(LFLAGS) $(LIBS)
+ 	@echo -e "\n<< done "
+ 
+ install: gkrellm-imonc.so

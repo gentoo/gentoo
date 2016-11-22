@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+## Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: $
 #
-# Authors: George Shapovalov <george@gentoo.org>
-#          Steve Arnold <nerdboy@gentoo.org>
-#
+# Author: George Shapovalov <george@gentoo.org>
+# Author: Steve Arnold <nerdboy@gentoo.org>
 # Belongs to: ada herd <ada@gentoo.org>
 #
 # Notes:
@@ -19,19 +18,27 @@
 #WANT_AUTOMAKE="1.8"
 #WANT_AUTOCONF="2.1"
 
-inherit eutils versionator toolchain-funcs flag-o-matic multilib autotools \
-	libtool fixheadtails gnuconfig pax-utils
+inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs versionator
 
-EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_postrm src_unpack src_compile src_install
+FEATURES=${FEATURES/multilib-strict/}
+
+EXPORT_FUNCTIONS="pkg_setup pkg_postinst pkg_postrm src_unpack src_configure src_compile src_install"
 
 IUSE="nls"
 # multilib is supported via profiles now, multilib usevar is deprecated
 
-DEPEND=">=app-eselect/eselect-gnat-1.3
-	sys-devel/bc
-"
+RDEPEND="app-eselect/eselect-gnat
+	virtual/libiconv
+	nls? ( virtual/libintl )"
 
-RDEPEND="app-eselect/eselect-gnat"
+DEPEND="${RDEPEND}
+	>=app-eselect/eselect-gnat-1.3-r1
+	>=sys-libs/glibc-2.12
+	>=sys-devel/binutils-2.23
+	sys-devel/bc
+	>=sys-devel/bison-1.875
+	>=sys-devel/flex-2.5.4
+	nls? ( sys-devel/gettext )"
 
 # Note!
 # It may not be safe to source this at top level. Only source inside local
@@ -140,7 +147,7 @@ is_multilib() {
 	[[ ${GCCMAJOR} < 3 ]] && return 1
 	case ${CTARGET} in
 		mips64*|powerpc64*|s390x*|sparc64*|x86_64*)
-			has_multilib_profile || use multilib ;;
+			has_multilib_profile ;;
 		*)  false ;;
 	esac
 }
@@ -200,7 +207,7 @@ create_eselect_conf() {
 	echo "  bin_prefix=${CTARGET}" >> "${D}/${gnat_config_file}"
 
 	for abi in $(get_all_abis) ; do
-		add_profile_eselect_conf "${D}/${gnat_config_file}" "${abi}"
+		add_profile_eselect_conf "${gnat_config_file}" "${abi}"
 	done
 }
 
@@ -213,7 +220,7 @@ should_we_eselect_gnat() {
 	# if the current config is invalid, we definitely want a new one
 	# Note: due to bash quirkiness, the following must not be 1 line
 	local curr_config
-	curr_config=$(eselect gnat show | grep ${CTARGET} | awk '{ print $1 }') || return 0
+	curr_config=$(eselect --colour=no gnat show | grep ${CTARGET} | awk '{ print $1 }') || return 0
 	[[ -z ${curr_config} ]] && return 0
 
 	# The logic is basically "try to keep the same profile if possible"
@@ -246,7 +253,7 @@ do_gnat_config() {
 	elog "Ada handling in Gentoo allows you to have multiple gnat variants"
 	elog "installed in parallel and automatically manage Ada libs."
 	elog "Please take a look at the Ada project page for some documentation:"
-	elog "https://www.gentoo.org/proj/en/prog_lang/ada/index.xml"
+	elog "http://www.gentoo.org/proj/en/prog_lang/ada/index.xml"
 }
 
 
@@ -309,12 +316,11 @@ gnatbuild_pkg_postinst() {
 	elog
 	. ${GnatCommon} || die "failed to source common code"
 	if [[ ! -f ${PRIMELIST} ]] || [[ ! -s ${PRIMELIST} ]]; then
-		mkdir -p ${SETTINGSDIR}
 		echo "${gnat_profile}" > ${PRIMELIST}
 		elog "The list of primary compilers was empty and got assigned ${gnat_profile}."
 	fi
 	elog "Please edit ${PRIMELIST} and list there gnat profiles intended"
-	elog "for common use, one per line."
+	elog "for common use."
 }
 
 
@@ -333,7 +339,10 @@ gnatbuild_pkg_postrm() {
 # common unpack stuff
 gnatbuild_src_unpack() {
 	debug-print-function ${FUNCNAME} $@
-	[ -z "$1" ] &&  gnatbuild_src_unpack all
+	if [[ -z "$1" ]]; then
+		gnatbuild_src_unpack all
+		return $?
+	fi
 
 	while [ "$1" ]; do
 	case $1 in
@@ -417,6 +426,12 @@ gnatbuild_src_unpack() {
 	done
 }
 
+# for now just dont run default configure
+gnatbuild_src_configure() {
+	# do nothing
+	:
+}
+
 # it would be nice to split configure and make steps
 # but both need to operate inside specially tuned evironment
 # so just do sections for now (as in eclass section of handbook)
@@ -441,7 +456,14 @@ gnatbuild_src_compile() {
 		# so many paths are not identical to the installed ones.
 		# Plus it was simplified even more in new releases.
 		if [[ ${BOOT_SLOT} > 4.1 ]] ; then
-			GNATLIB="${GNATBOOT}/lib"
+			case $(tc-arch) in
+				arm)
+					GNATLIB="${GNATBOOT}/lib/gcc/${BOOT_TARGET}/${BOOT_SLOT}"
+					;;
+				*)
+					GNATLIB="${GNATBOOT}/lib"
+					;;
+			esac
 		else
 			GNATLIB="${GNATBOOT}/lib/gnatgcc/${BOOT_TARGET}/${BOOT_SLOT}"
 		fi
@@ -465,10 +487,10 @@ gnatbuild_src_compile() {
 		export ADA_OBJECTS_PATH="${GNATLIB}/adalib"
 		export ADA_INCLUDE_PATH="${GNATLIB}/adainclude"
 
-#		einfo "CC=${CC},
-#			ADA_INCLUDE_PATH=${ADA_INCLUDE_PATH},
-#			LDFLAGS=${LDFLAGS},
-#			PATH=${PATH}"
+		einfo "CC=${CC},
+			ADA_INCLUDE_PATH=${ADA_INCLUDE_PATH},
+			LDFLAGS=${LDFLAGS},
+			PATH=${PATH}"
 
 		while [ "$1" ]; do
 		case $1 in
@@ -492,9 +514,9 @@ gnatbuild_src_compile() {
 				fi
 
 				if version_is_at_least 4.6 ; then
-					confgcc+=( $(use_enable lto) )
-				else
-					confgcc+=( --disable-lto )
+					confgcc="${confgcc} --enable-lto"
+				elif tc_version_is_at_least 4.5 ; then
+					confgcc="${confgcc} --disable-lto --disable-plugin"
 				fi
 
 				# reasonably sane globals (from toolchain)
@@ -503,9 +525,13 @@ gnatbuild_src_compile() {
 					--with-system-zlib \
 					--disable-checking \
 					--disable-werror \
-					--disable-libgomp \
 					--disable-libmudflap \
 					--disable-libssp \
+					--disable-altivec \
+					--disable-fixed-point \
+					--disable-libgcj \
+					--disable-libcilkrts \
+					--disable-libsanitizer \
 					--disable-libunwind-exceptions"
 
 				if in_iuse openmp ; then
@@ -518,19 +544,19 @@ gnatbuild_src_compile() {
 					then
 						case $(tc-arch) in
 							arm)
-								confgcc+=( --disable-libgomp )
+								confgcc="${confgcc} --disable-libgomp"
 								;;
 							*)
-								confgcc+=( $(use_enable openmp libgomp) )
+								confgcc="${confgcc} $(use_enable openmp libgomp)"
 								;;
 						esac
 					else
 						# Force disable as the configure script can be dumb #359855
-						confgcc+=( --disable-libgomp )
+						confgcc="${confgcc} --disable-libgomp"
 					fi
 				else
 					# For gcc variants where we don't want openmp (e.g. kgcc)
-					confgcc+=( --disable-libgomp )
+					confgcc="${confgcc} --disable-libgomp"
 				fi
 
 				# ACT's gnat-gpl does not like libada for whatever reason..
@@ -542,8 +568,11 @@ gnatbuild_src_compile() {
 				fi
 
 				# set some specifics available in later versions
-				if version_is_at_least 4.3 ; then
+				if version_is_at_least 4.7 ; then
 					einfo "setting gnat thread model"
+					confgcc="${confgcc} --enable-threads=posix"
+					confgcc="${confgcc} --enable-shared=boehm-gc,ada,libada"
+				elif version_is_at_least 4.3 ; then
 					confgcc="${confgcc} --enable-threads=gnat"
 					confgcc="${confgcc} --enable-shared=boehm-gc,ada,libada"
 				else
@@ -567,23 +596,33 @@ gnatbuild_src_compile() {
 
 				einfo "confgcc=${confgcc}"
 
-				# need to strip graphite flags or we'll get the
+				export gcc_cv_lto_plugin=1  # okay to build, default to opt-in
+				export gcc_cv_prog_makeinfo_modern=no
+				export ac_cv_have_x='have_x=yes ac_x_includes= ac_x_libraries='
+				export gcc_cv_libc_provides_ssp=yes
+
+				# need to strip graphite/lto flags or we'll get the
 				# dreaded C compiler cannot create executables...
 				# error.
-				strip-flags -floop-interchange -floop-strip-mine -floop-block
+				strip-flags
+				replace-flags -O? -O2
+				filter-flags '-mabi*' -m31 -m32 -m64
+				filter-flags -frecord-gcc-switches
+				filter-flags -mno-rtm -mno-htm
+				#filter-flags -floop-interchange -floop-strip-mine -floop-block
+				#filter-flags -fuse-linker-plugin -flto*
 
 				cd "${GNATBUILD}"
-				CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" "${S}"/configure \
-					--prefix=${PREFIX} \
-					--bindir=${BINPATH} \
-					--includedir=${INCLUDEPATH} \
+				CC="${CC}" CFLAGS="${CFLAGS}" CXXFLAGS="${CFLAGS}" "${S}"/configure \
+					--prefix="${PREFIX}" \
+					--bindir="${BINPATH}" \
+					--includedir="${INCLUDEPATH}" \
 					--libdir="${LIBPATH}" \
 					--libexecdir="${LIBEXECPATH}" \
-					--datadir=${DATAPATH} \
-					--mandir=${DATAPATH}/man \
-					--infodir=${DATAPATH}/info \
-					--program-prefix=gnat \
-					--enable-languages="c,ada" \
+					--datadir="${DATAPATH}" \
+					--mandir="${DATAPATH}"/man \
+					--infodir="${DATAPATH}"/info \
+					--enable-languages=c,ada \
 					--with-gcc \
 					${confgcc} || die "configure failed"
 			;;
@@ -606,13 +645,19 @@ gnatbuild_src_compile() {
 				gnatmake xsinfo   && \
 				gnatmake xeinfo   && \
 				gnatmake xnmake   || die "building helper tools"
+
+				mv xeinfo xnmake xsinfo xtreeprs bin/
 			;;
 
 			bootstrap)
 				debug-print-section bootstrap
 				# and, finally, the build itself
 				cd "${GNATBUILD}"
-				emake bootstrap || die "bootstrap failed"
+				emake \
+					LDFLAGS="${LDFLAGS}" \
+					LIBPATH="${LIBPATH}" \
+					CC="${CC}" \
+					bootstrap-lean || die "bootstrap failed"
 			;;
 
 			gnatlib_and_tools)
@@ -692,10 +737,16 @@ gnatbuild_src_install() {
 		cd "${GNATBUILD}"
 		make DESTDIR="${D}" install || die
 
+		# Disable RANDMMAP so PCH works. #301299
+		pax-mark r "${D}"${LIBEXECPATH}/{gnat1,cc1,cc1plus}
+		# Quiet QA warnings, wait for adacore exec stack patch in gcc 7
+		export QA_EXECSTACK="${BINPATH:1}/gnatls ${BINPATH:1}/gnatname
+			${BINPATH:1}/gnatmake ${BINPATH:1}/gnatclean ${BINPATH:1}/gnat"
+
 		if use doc ; then
 			if (( $(bc <<< "${GNATBRANCH} > 4.3") )) ; then
 				#make a convenience info link
-				elog "Yay!  Math is good."
+				ewarn "Yay!  Math works."
 				dosym gnat_ugn.info ${DATAPATH}/info/gnat.info
 			fi
 		fi
@@ -728,9 +779,9 @@ gnatbuild_src_install() {
 		# force gnatgcc to use its own specs - versions prior to 3.4.6 read specs
 		# from system gcc location. Do the simple wrapper trick for now
 		# !ATTN! change this if eselect-gnat starts to follow eselect-compiler
+		cd "${D}${BINPATH}"
 		if [[ ${GCCVER} < 3.4.6 ]] ; then
 			# gcc 4.1 uses builtin specs. What about 4.0?
-			cd "${D}${BINPATH}"
 			mv gnatgcc gnatgcc_2wrap
 			cat > gnatgcc << EOF
 #! /bin/bash
@@ -742,6 +793,11 @@ BINDIR=\$(dirname \$0)
 \${BINDIR}/gnatgcc_2wrap -specs="${LIBPATH}/specs" -I"${LIBPATH}/include" \$@
 EOF
 			chmod a+x gnatgcc
+		else
+			local i
+			for i in cpp gcc gcov ; do
+				ln -s ${i} gnat${i}
+			done
 		fi
 
 		# earlier gnat's generate some Makefile's at generic location, need to
@@ -751,7 +807,7 @@ EOF
 
 		# use gid of 0 because some stupid ports don't have
 		# the group 'root' set to gid 0 (toolchain.eclass)
-		chown -R root:0 "${D}${LIBPATH}"
+#		chown -R root:0 "${D}${LIBPATH}"
 		;;
 
 	cleanup)
@@ -774,9 +830,6 @@ EOF
 				"${D}${LIBEXECPATH}"/liblto_plugin.la \
 				|| die "sed update of .la file failed!"
 		fi
-
-		# add config directory (bug 440660)
-		keepdir /etc/ada
 		;;
 
 	prep_env)

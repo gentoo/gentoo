@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ DESCRIPTION="Composable style cycles"
 HOMEPAGE="
 	http://matplotlib.org/cycler/
 	https://pypi.python.org/pypi/Cycler/
-	http://github.com/matplotlib/cycler"
+	https://github.com/matplotlib/cycler"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 
 SLOT="0"

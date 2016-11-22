@@ -13,7 +13,7 @@ LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"
 IUSE="curl gnuplot ipv6 kerberos minimal nls readline s3 samba systemd xfs"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 RDEPEND="sys-libs/readline:=
 	virtual/awk
 	app-arch/tar

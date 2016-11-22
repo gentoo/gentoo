@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,3 +22,11 @@ DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.400.0
 	test? ( virtual/perl-Test-Simple )
 "
+src_test() {
+	local my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+	if has network ${my_test_control}; then
+		perl-module_src_test
+	else
+		einfo "Tests skipped without DIST_TEST_OVERRIDE =~ network: Fails under network sandboxing"
+	fi
+}

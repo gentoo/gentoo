@@ -1,5 +1,5 @@
---- src/Makefile.in.old	2009-02-11 14:31:56.000000000 +0100
-+++ src/Makefile.in	2009-02-11 14:32:29.000000000 +0100
+--- a/src/Makefile.in	2009-02-11 14:31:56.000000000 +0100
++++ b/src/Makefile.in	2009-02-11 14:32:29.000000000 +0100
 @@ -109,7 +109,7 @@
  INCLUDES =  	-I$(top_srcdir) 	@X_CFLAGS@ 	@GL_CFLAGS@ 	@GLUT_CFLAGS@ 	@TCL_CFLAGS@ 	@GIF_CFLAGS@ 	@JPEG_CFLAGS@ 	@PNG_CFLAGS@ 	@PLIB_CFLAGS@
  

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,11 +21,15 @@ SRC_URI="ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/${MY_P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="ipv6 readline ssl"
+IUSE="ipv6 libressl readline ssl"
 
-RDEPEND=">=sys-libs/ncurses-5.2:=
+RDEPEND="
+	>=sys-libs/ncurses-5.2:=
 	readline? ( sys-libs/readline:0= )
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= ) )
+"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}

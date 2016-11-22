@@ -16,5 +16,6 @@
   </upstream>
   <use>
     <flag name="embedded">Support embedded server (libmysqld)</flag>
+    <flag name="ssl">Compile in support for SSL connections via libmysqlclient</flag>
   </use>
 </pkgmetadata>

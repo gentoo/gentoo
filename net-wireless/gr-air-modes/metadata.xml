@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+	<email>radio@gentoo.org</email>
+	<name>Radio</name>
+	</maintainer>
+<use>
+	<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
+	<flag name="fgfs">Support FlightGear</flag>
+	<flag name="gui">Build the GUI</flag>
+</use>
+</pkgmetadata>

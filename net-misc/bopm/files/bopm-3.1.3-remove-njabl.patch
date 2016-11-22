@@ -1,0 +1,28 @@
+Remove NJABL as an example blacklist.
+
+NJABL has been shut down and bopm upstream still lists it in its default
+configuration.
+---
+diff --git a/bopm.conf.sample b/bopm.conf.sample
+index 74483e1..bc05bf4 100644
+--- a/bopm.conf.sample
++++ b/bopm.conf.sample
+@@ -363,18 +363,6 @@ OPM {
+ #        };
+ 
+ 
+-	/* example: NJABL - please read http://www.njabl.org/use.html before
+-	 * uncommenting */
+-#	 blacklist {
+-#	    name = "dnsbl.njabl.org";
+-#	    type = "A record reply";
+-#	    reply {
+-#	       9 = "Open proxy";
+-#	    };
+-#	    ban_unknown = no;
+-#	    kline = "KLINE *@%h :Open proxy found on your host, please visit www.njabl.org/cgi-bin/lookup.cgi?query=%i";
+-#	};
+-
+ 	/*
+ 	 * You can report the insecure proxies you find to a DNSBL also!
+ 	 * The remaining directives in this section are only needed if you

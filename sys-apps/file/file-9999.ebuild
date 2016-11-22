@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 DISTUTILS_OPTIONAL=1
 
 inherit eutils distutils-r1 libtool toolchain-funcs multilib-minimal
@@ -18,16 +18,18 @@ else
 fi
 
 DESCRIPTION="identify a file's format by scanning binary data for patterns"
-HOMEPAGE="http://www.darwinsys.com/file/"
+HOMEPAGE="http://www.darwinsys.com/file/ http://mx.gw.com/pipermail/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
 
-DEPEND="python? ( ${PYTHON_DEPS} )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r21
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+DEPEND="
+	python? (
+		${PYTHON_DEPS}
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
@@ -41,10 +43,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
-	ac_cv_header_zlib_h=$(usex zlib) \
-	ac_cv_lib_z_gzopen=$(usex zlib)
 	econf \
-		$(use_enable static-libs static)
+		--enable-fsect-man5 \
+		$(use_enable static-libs static) \
+		$(use_enable zlib)
 }
 
 src_configure() {
@@ -75,12 +77,15 @@ multilib_src_compile() {
 	if multilib_is_native_abi ; then
 		emake
 	else
-		emake -C src libmagic.la
+		cd src
+		emake magic.h #586444
+		emake libmagic.la
 	fi
 }
 
 src_compile() {
-	if tc-is-cross-compiler && ! ROOT=/ has_version ~${CATEGORY}/${P} ; then
+	if tc-is-cross-compiler && ! ROOT=/ has_version "~${CATEGORY}/${P}" ; then
+		emake -C "${WORKDIR}"/build/src magic.h #586444
 		emake -C "${WORKDIR}"/build/src file
 		PATH="${WORKDIR}/build/src:${PATH}"
 	fi

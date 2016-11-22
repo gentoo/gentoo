@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chiitoo@gentoo.org</email>
+    <name>Jimi Huotari</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    A rewrite of what was formerly known as "Open Broadcaster Software",
+    software originally designed for recording and streaming live video
+    content, efficiently.  Aims to be multi-platform, and improved upon
+    internally.
+  </longdescription>
+  <use>
+    <flag name="fdk">Enable libfdk support for AAC encoding.</flag>
+    <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">jp9000/obs-studio</remote-id>
+  </upstream>
+</pkgmetadata>

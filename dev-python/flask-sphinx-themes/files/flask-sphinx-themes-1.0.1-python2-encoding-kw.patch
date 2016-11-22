@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index d14f27b..40bffcc 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python
+ import os
+ import re
++from io import open  # for python 2 compat (missing 'encoding' kw)
+ 
+ from setuptools import setup
+ 

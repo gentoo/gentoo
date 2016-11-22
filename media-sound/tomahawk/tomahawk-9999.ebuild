@@ -11,7 +11,6 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Multi-source social music player"
@@ -37,13 +36,13 @@ CDEPEND="
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	dev-libs/qtkeychain[qt5]
-	dev-libs/quazip[qt5]
-	>=media-libs/libechonest-2.3.0:=[qt5]
+	dev-libs/qtkeychain:=[qt5]
+	>=dev-libs/quazip-0.7.2[qt5]
+	>=media-libs/libechonest-2.3.1:=[qt5]
 	media-libs/liblastfm[qt5]
-	media-libs/phonon[qt5]
 	>=media-libs/taglib-1.8.0
-	>=net-libs/gnutls-3.2
+	media-video/vlc:=[flac,dvbpsi,ffmpeg,mp3]
+	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
 	telepathy? ( net-libs/telepathy-qt[qt5] )
@@ -54,15 +53,12 @@ DEPEND="${CDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 RDEPEND="${CDEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 "
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-quazip-cmake.patch"
-	"${FILESDIR}/${PN}-liblastfm-cmake.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-liblastfm-cmake.patch" )
 
 src_configure() {
 	local mycmakeargs=(

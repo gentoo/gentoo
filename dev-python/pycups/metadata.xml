@@ -6,10 +6,6 @@
     <name>Maciej Mrozowski</name>
   </maintainer>
   <maintainer type="project">
-    <email>kde@gentoo.org</email>
-    <name>Gentoo KDE Project</name>
-  </maintainer>
-  <maintainer type="project">
     <email>printing@gentoo.org</email>
     <name>Gentoo Printing Project</name>
   </maintainer>

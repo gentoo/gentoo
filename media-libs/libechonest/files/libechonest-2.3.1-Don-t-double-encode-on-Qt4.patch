@@ -1,0 +1,78 @@
+https://bugs.gentoo.org/show_bug.cgi?id=581844
+https://github.com/lfranchi/libechonest/issues/27
+
+From 009514f65044823ef29045397d4b58dd04d09977 Mon Sep 17 00:00:00 2001
+From: Leo Franchi <lfranchi@dropbox.com>
+Date: Mon, 18 May 2015 22:08:31 -0400
+Subject: [PATCH 1/2] Don't double-encode on Qt4
+
+Fixes issue #27
+---
+ src/Util.cpp           |  4 +++-
+ tests/PlaylistTest.cpp | 22 ++++++++++++++++++++++
+ tests/PlaylistTest.h   |  1 +
+ 3 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/src/Util.cpp b/src/Util.cpp
+index 8401e8c..595435b 100644
+--- a/src/Util.cpp
++++ b/src/Util.cpp
+@@ -150,7 +150,9 @@ void Echonest::urlAddQueryItem(QUrl& url, const QString& key, const QString& val
+     urlQuery.addQueryItem( key, value );
+     url.setQuery( urlQuery );
+ #else
+-    url.addQueryItem( key, value );
++    // We assume here that the key and values, though QStrings, are actually latin1 and not UTF-8.
++    // That is, they've already gone through playlistParamToString(). This is terrible.
++    url.addEncodedQueryItem( key.toLatin1(), value.toLatin1() );
+ #endif
+ }
+ 
+diff --git a/tests/PlaylistTest.cpp b/tests/PlaylistTest.cpp
+index 6f7c606..2ec7eb2 100644
+--- a/tests/PlaylistTest.cpp
++++ b/tests/PlaylistTest.cpp
+@@ -201,6 +201,28 @@ void PlaylistTest::testStaticXSPF()
+ }
+ 
+ 
++void PlaylistTest::testStaticWithSpecialChars()
++{
++    DynamicPlaylist::PlaylistParams p;
++    p.append( DynamicPlaylist::PlaylistParamData( Echonest::DynamicPlaylist::Artist, QString::fromUtf8( "Björk" ) ) );
++    p.append( DynamicPlaylist::PlaylistParamData( Echonest::DynamicPlaylist::Type, Echonest::DynamicPlaylist::ArtistRadioType ) );
++    p.append( DynamicPlaylist::PlaylistParamData( Echonest::DynamicPlaylist::Results, 10 ) );
++
++    QNetworkReply* reply = DynamicPlaylist::staticPlaylist( p );
++
++    QVERIFY( reply->url().toEncoded() == "http://developer.echonest.com/api/v4/playlist/static?api_key=JGJCRKWLXLBZIFAZB&format=xml&artist=Bj%C3%B6rk&type=artist-radio&results=10" );
++
++    QEventLoop loop;
++    loop.connect( reply, SIGNAL(finished()), SLOT(quit()) );
++    loop.exec();
++    SongList songs = DynamicPlaylist::parseStaticPlaylist( reply );
++
++    QVERIFY( songs.size() == 10 );
++    Q_FOREACH( const Song& song, songs )
++            QVERIFY( !song.id().isEmpty() );
++
++}
++
+ void PlaylistTest::testDynamic1()
+ {
+     DynamicPlaylist::PlaylistParams p;
+diff --git a/tests/PlaylistTest.h b/tests/PlaylistTest.h
+index 9d75c05..71c21d6 100644
+--- a/tests/PlaylistTest.h
++++ b/tests/PlaylistTest.h
+@@ -30,6 +30,7 @@ private slots:
+     void testStaticArtistYears();
+     void testStaticWithSongType();
+     void testStaticXSPF();
++    void testStaticWithSpecialChars();
+     void testDynamic1();
+     void testDynamic2();
+     void testNewDynamicAPI();
+-- 
+2.7.4
+

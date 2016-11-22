@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ inherit autotools bash-completion-r1 gnome2 libtool eutils flag-o-matic	multilib
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="http://www.gtk.org/"
 SRC_URI="${SRC_URI}
-	http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
+	https://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
 
 LICENSE="LGPL-2+"
 SLOT="2"
@@ -45,11 +45,7 @@ RDEPEND="
 	utils? (
 		${PYTHON_DEPS}
 		>=dev-util/gdbus-codegen-${PV}[${PYTHON_USEDEP}]
-		|| (
-			>=dev-libs/elfutils-0.142
-			>=dev-libs/libelf-0.8.12
-			>=sys-freebsd/freebsd-lib-9.2_rc1
-		)
+		virtual/libelf:0=
 	)
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r9
@@ -135,11 +131,6 @@ src_prepare() {
 			sed -i -e "/gdbus\/delayed-message-processing/d" gio/tests/gdbus-peer.c || die
 			sed -i -e "/gdbus\/nonce-tcp/d" gio/tests/gdbus-peer.c || die
 		fi
-
-		# thread test fails, upstream bug #679306
-		# FIXME: we need to check if it's still failing as upstream thinks something
-		# is wrong in our setups
-		#epatch "${FILESDIR}/${PN}-2.34.0-testsuite-skip-thread4.patch"
 
 		# This test is prone to fail, bug #504024, upstream bug #723719
 		sed -i -e '/gdbus-close-pending/d' gio/tests/Makefile.am || die

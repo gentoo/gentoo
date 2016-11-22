@@ -1,0 +1,44 @@
+commit 8a472f17ce11f3b79d740cdc21096d82b8683f3d
+Author: David Edmundson <kde@davidedmundson.co.uk>
+Date:   Thu Nov 10 10:28:16 2016 +0000
+
+    Avoid connecting to screen changed signals twice
+    
+    Summary:
+    load() can be called multiple times; either from setShell or
+    loadLookAndFeelDefaultLayout. We still only want addOutput once when a
+    screen is added
+    
+    Reviewers: #plasma, apol
+    
+    Reviewed By: apol
+    
+    Subscribers: plasma-devel
+    
+    Tags: #plasma
+    
+    Differential Revision: https://phabricator.kde.org/D3320
+    
+    CCBUG:372099
+    CCBUG:371858
+    CBUG:371991
+    CCBUG:371819
+    CCBUG:371734
+
+diff --git a/shell/shellcorona.cpp b/shell/shellcorona.cpp
+index af2f555..0007f0b 100644
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -675,9 +675,9 @@ void ShellCorona::load()
+             addOutput(screen);
+         }
+     }
+-    connect(qGuiApp, &QGuiApplication::screenAdded, this, &ShellCorona::addOutput);
+-    connect(qGuiApp, &QGuiApplication::primaryScreenChanged, this, &ShellCorona::primaryOutputChanged);
+-    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ShellCorona::screenRemoved);
++    connect(qGuiApp, &QGuiApplication::screenAdded, this, &ShellCorona::addOutput, Qt::UniqueConnection);
++    connect(qGuiApp, &QGuiApplication::primaryScreenChanged, this, &ShellCorona::primaryOutputChanged, Qt::UniqueConnection);
++    connect(qGuiApp, &QGuiApplication::screenRemoved, this, &ShellCorona::screenRemoved, Qt::UniqueConnection);
+ 
+     if (!m_waitingPanels.isEmpty()) {
+         m_waitingPanelsTimer.start();

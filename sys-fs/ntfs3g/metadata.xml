@@ -4,9 +4,6 @@
 <maintainer type="person">
 	<email>chutzpah@gentoo.org</email>
 </maintainer>
-<maintainer type="person">
-	<email>ssuominen@gentoo.org</email>
-</maintainer>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
@@ -27,6 +24,8 @@ file ownership, access right.
 	<flag name="ntfsprogs">Include internal version of ntfsprogs.</flag>
 </use>
 <upstream>
+	<bugs-to>http://tuxera.com/forum/</bugs-to>
 	<remote-id type="cpe">cpe:/a:ntfs-3g:ntfs-3g</remote-id>
+	<remote-id type="sourceforge">ntfs-3g</remote-id>
 </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-lang/perl
-		>=dev-perl/yaml-0.60
+		>=dev-perl/YAML-0.60
 		>=dev-perl/Shell-EnvImporter-1.70.0-r2
 		dev-perl/Log-Agent"
 RDEPEND="${DEPEND}"
@@ -31,7 +31,6 @@ src_install() {
 		perl-module_src_install
 		diropts "-m0755"
 		dodir "/var/tmp/g-cpan"
-		keepdir "/var/tmp/g-cpan"
 		dodir "/var/log/g-cpan"
 		keepdir "/var/log/g-cpan"
 }

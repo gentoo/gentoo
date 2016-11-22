@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="pypi">pysrt</remote-id>
 		<remote-id type="github">byroot/pysrt</remote-id>
+		<bugs-to>https://github.com/byroot/pysrt/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

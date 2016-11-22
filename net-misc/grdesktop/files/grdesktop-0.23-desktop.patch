@@ -1,5 +1,5 @@
---- grdesktop.desktop.old	2014-07-08 14:05:45.500537718 +0200
-+++ grdesktop.desktop	2014-07-08 14:06:27.237420849 +0200
+--- a/grdesktop.desktop.old	2014-07-08 14:05:45.500537718 +0200
++++ b/grdesktop.desktop	2014-07-08 14:06:27.237420849 +0200
 @@ -4,13 +4,13 @@
  Comment[de]=Verbindet zu einem entfernten Windows Terminal-Server
  TryExec=grdesktop

@@ -9,4 +9,7 @@
     <remote-id type="cpan">Convert-UUlib</remote-id>
     <remote-id type="cpan-module">Convert::UUlib</remote-id>
   </upstream>
+  <use>
+    <flag name="system-uulib">Use <pkg>dev-libs/uulib</pkg> instead of bundled version.</flag>
+  </use>
 </pkgmetadata>

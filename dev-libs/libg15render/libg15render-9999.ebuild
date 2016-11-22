@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 ESVN_PROJECT=g15tools/trunk
-ESVN_REPO_URI="https://g15tools.svn.sourceforge.net/svnroot/${ESVN_PROJECT}/${PN}"
+ESVN_REPO_URI="https://svn.code.sf.net/p/g15tools/code/trunk/${PN}"
 
 inherit subversion base eutils autotools
 

@@ -1,0 +1,15 @@
+Wait for the java team to upstream this patch.
+Bug: 591156
+--- /setup.py	2013-02-15 07:12:09.000000000 +0900
++++ /setup.py.new	2016-08-13 16:38:22.000000000 +0900
+@@ -87,8 +87,8 @@
+ 		elif arch in ['hpux']:
+ 			defaults = '*= hp-jdk-bin'
+ 
+-		os.mkdir(self.root + '/usr/share/java-config-2/config/')
+-		with open(self.root + '/usr/share/java-config-2/config/jdk-defaults.conf', 'w') as f:
++		os.mkdir(self.root + eprefix + '/usr/share/java-config-2/config/')
++		with open(self.root + eprefix + '/usr/share/java-config-2/config/jdk-defaults.conf', 'w') as f:
+ 			f.write("# This files contain the default support jdk's\n")
+ 			f.write(defaults + "\n")
+ 

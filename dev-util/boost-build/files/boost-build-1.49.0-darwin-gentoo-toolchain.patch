@@ -2,8 +2,8 @@ Avoid adding all kinds of things to the toolchain's flags that within
 Gentoo (Prefix) we really shouldn't, such as sysroot, deployment target,
 arch, etc.
 
---- tools/darwin.jam
-+++ tools/darwin.jam
+--- a/tools/darwin.jam
++++ b/tools/darwin.jam
 @@ -227,6 +227,9 @@
          }
      }

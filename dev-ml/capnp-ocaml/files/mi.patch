@@ -1,0 +1,31 @@
+Index: capnp-ocaml-2.1.1/src/compiler/OMakefile
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/compiler/OMakefile
++++ capnp-ocaml-2.1.1/src/compiler/OMakefile
+@@ -24,7 +24,8 @@ else
+ 
+ includes.ml: make_includes.ml ../runtime/common-inc.ml \
+ ../runtime/reader-inc.ml ../runtime/builder-inc.ml
+-	ocaml $(TOPLEVEL_INCLUDE) make_includes.ml
++	ocamlfind ocamlopt -o make_includes -package core_kernel -linkpkg make_includes.ml
++	./make_includes
+ 
+ 
+ PROGRAM = capnpc-ocaml
+Index: capnp-ocaml-2.1.1/src/compiler/make_includes.ml
+===================================================================
+--- capnp-ocaml-2.1.1.orig/src/compiler/make_includes.ml
++++ capnp-ocaml-2.1.1/src/compiler/make_includes.ml
+@@ -1,12 +1,7 @@
+-#!/usr/bin/env ocaml
+-
+ (* Generate ocaml code containing the content of a couple of files, formatted
+    as a list of lines.  This is used to perform an ocaml source inclusion,
+    providing functor-like capability without the performance hit. *)
+ 
+-#use "topfind"
+-#require "core_kernel"
+-
+ open Core_kernel
+ 
+ 

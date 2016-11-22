@@ -2,13 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>grobian@gentoo.org</email>
-		<name>Fabian Groffen</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>clabbe.montjoie@gmail.com</email>
 		<name>LABBE Corentin (Montjoie)</name>
 		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

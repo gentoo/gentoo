@@ -1,7 +1,7 @@
 * drop Solaris linker stuff
 
---- nspr-4.7.4/mozilla/nsprpub/configure.in
-+++ nspr-4.7.4/mozilla/nsprpub/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -1988,26 +1988,14 @@
      CPU_ARCH=`uname -p`
      MDCPUCFG_H=_solaris.cfg

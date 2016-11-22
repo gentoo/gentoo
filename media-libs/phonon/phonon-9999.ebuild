@@ -1,24 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="mirror://kde/stable/phonon/${PV}/src/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 else
-	SCM_ECLASS="git-r3"
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
-	KEYWORDS=""
+	inherit git-r3
 fi
 
-inherit multibuild qmake-utils cmake-multilib ${SCM_ECLASS}
+inherit cmake-multilib multibuild qmake-utils
 
 DESCRIPTION="KDE multimedia API"
-HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon"
+HOMEPAGE="https://phonon.kde.org/"
 
-LICENSE="LGPL-2.1"
+LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
 IUSE="aqua debug designer gstreamer pulseaudio +qt4 qt5 +vlc zeitgeist"
 
@@ -49,13 +48,13 @@ RDEPEND="
 	zeitgeist? ( dev-libs/libqzeitgeist )
 "
 DEPEND="${RDEPEND}
-	qt4? ( >=dev-util/automoc-0.9.87 )
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	qt5? ( kde-frameworks/extra-cmake-modules:5 )
 "
 PDEPEND="
 	aqua? ( media-libs/phonon-qt7 )
-	gstreamer? ( >=media-libs/phonon-gstreamer-4.8.0[qt4?,qt5?] )
-	vlc? ( >=media-libs/phonon-vlc-0.8.0[qt4?,qt5?] )
+	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt4?,qt5?] )
+	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt4?,qt5?] )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
@@ -66,19 +65,21 @@ pkg_setup() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
-		$(cmake-utils_use designer PHONON_BUILD_DESIGNER_PLUGIN)
-		$(cmake-utils_use_with pulseaudio GLIB2)
-		$(cmake-utils_use_with pulseaudio PulseAudio)
-		$(multilib_is_native_abi && cmake-utils_use_with zeitgeist QZeitgeist)
+		-DWITH_GLIB2=$(usex pulseaudio)
+		-DWITH_PulseAudio=$(usex pulseaudio)
+		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist) || echo -DWITH_QZeitgeist=OFF)
 		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
+
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
-		mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=OFF)
+		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=OFF )
 	fi
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt5 ]]; then
-		mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=ON)
+		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=ON )
 	fi
+
 	cmake-utils_src_configure
 }
 
@@ -103,6 +104,7 @@ src_compile() {
 			cmake-utils_src_compile
 		fi
 	}
+
 	multibuild_foreach_variant mycompile
 }
 
@@ -114,6 +116,7 @@ src_test() {
 			cmake-utils_src_test
 		fi
 	}
+
 	multibuild_foreach_variant mytest
 }
 
@@ -125,5 +128,6 @@ src_install() {
 			cmake-utils_src_install
 		fi
 	}
+
 	multibuild_foreach_variant myinstall
 }

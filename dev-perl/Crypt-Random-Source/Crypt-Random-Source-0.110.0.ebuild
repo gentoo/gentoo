@@ -31,10 +31,6 @@ DEPEND="${RDEPEND}
 	test? (
 		virtual/perl-ExtUtils-MakeMaker
 		dev-perl/Test-Exception
-		>=virtual/perl-Test-Simple-0.880.0
-		|| (
-				>=virtual/perl-Test-Simple-1.1.10
-				( <virtual/perl-Test-Simple-1.1.10 dev-perl/Test-use-ok )
-		)
+		>=virtual/perl-Test-Simple-1.1.10
 	)
 "

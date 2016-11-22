@@ -7,14 +7,14 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Multi-purpose text editor for the X Window System"
-HOMEPAGE="http://sourceforge.net/projects/nedit"
+HOMEPAGE="https://sourceforge.net/projects/nedit"
 SRC_URI="
 	http://downloads.sourceforge.net/project/${PN}/${PN}-source/${P}a-src.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~mips ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=x11-libs/motif-2.3:0
 	x11-libs/libXp

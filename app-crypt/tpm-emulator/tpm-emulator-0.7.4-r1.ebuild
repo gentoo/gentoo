@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,15 +7,18 @@ inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
-HOMEPAGE="http://sourceforge.net/projects/tpm-emulator.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/tpm-emulator.berlios/"
 SRC_URI="mirror://sourceforge/tpm-emulator/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="ssl modules"
-RDEPEND="ssl? ( dev-libs/openssl )"
+IUSE="libressl ssl modules"
+RDEPEND="ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	!ssl? ( dev-libs/gmp )"
 

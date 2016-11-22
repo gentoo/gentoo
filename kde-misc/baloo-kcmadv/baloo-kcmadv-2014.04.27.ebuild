@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,9 @@ SLOT="4"
 IUSE=""
 
 DEPEND="
-	$(add_kdebase_dep baloo '-minimal(-)')
-	$(add_kdebase_dep kfilemetadata)
 	dev-libs/qjson
 	dev-libs/xapian
+	kde-frameworks/baloo:4[-minimal]
+	kde-frameworks/kfilemetadata:4
 "
 RDEPEND="${DEPEND}"

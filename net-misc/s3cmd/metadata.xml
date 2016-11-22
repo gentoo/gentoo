@@ -2,17 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
+    <email>brendan@horan.hk</email>
+    <name>Brendan Horan</name>
+    <description>Proxy maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="person">
     <email>igor@itesten.com</email>
     <name>Igor Testen</name>
   </maintainer>
   <maintainer type="person">
     <email>titanofold@gentoo.org</email>
     <name>Aaron W. Swenson</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>brendan@horan.hk</email>
-    <name>Brendan Horan</name>
-    <description>Proxy maintainer, assign bugs</description>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

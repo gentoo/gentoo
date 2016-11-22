@@ -4,12 +4,12 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit distutils-r1
 
 DESCRIPTION="Synchronize calendars and contacts"
-HOMEPAGE="https://github.com/untitaker/vdirsyncer"
+HOMEPAGE="https://github.com/pimutils/vdirsyncer"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

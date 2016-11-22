@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 
 inherit linux-info python-r1 toolchain-funcs
 
@@ -28,6 +28,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580082
 	tc-export CC
 }
 

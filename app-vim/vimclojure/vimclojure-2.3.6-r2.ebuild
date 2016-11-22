@@ -10,10 +10,11 @@ MY_PN="VimClojure"
 
 DESCRIPTION="vim plugin: Clojure syntax highlighting, filetype and indent settings"
 HOMEPAGE="https://github.com/vim-scripts/VimClojure"
+#SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/${PV}.zip -> ${P}.zip"
 SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/${PV}.zip"
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/clojure"

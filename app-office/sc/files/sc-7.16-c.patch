@@ -1,0 +1,147 @@
+--- a/abbrev.c
++++ b/abbrev.c
+@@ -122,7 +122,7 @@
+ del_abbr(char *abbrev)
+ {
+     struct abbrev *a;
+-    struct abbrev **prev;
++    struct abbrev **prev = NULL;
+ 
+     if (!(a = find_abbr(abbrev, strlen(abbrev), prev))) 
+	return;
+--- a/help.c
++++ b/help.c
+@@ -14,6 +14,10 @@
+ #include "sc.h"
+ #endif /* QREF */
+ 
++#ifdef TROFF
++#include <stdlib.h>
++#endif /* TROFF */
++
+ char *intro[] = {
+ " ",
+ #if defined(QREF) && defined(TROFF)
+--- a/lex.c
++++ b/lex.c
+@@ -27,6 +27,8 @@
+ 
+ #ifdef IEEE_MATH
+ #include <ieeefp.h>
++#else
++#include <math.h>
+ #endif /* IEEE_MATH */
+ 
+ #include <stdlib.h>
+--- a/sc.h
++++ b/sc.h
+@@ -14,6 +14,9 @@
+ #include <stdio.h>
+ #endif
+ 
++#include <unistd.h>
++#include <curses.h>
++
+ #define	ATBL(tbl, row, col)	(*(tbl + row) + (col))
+ 
+ #define MINROWS 100 	/* minimum size at startup */
+@@ -390,6 +393,7 @@
+ extern	char *v_name(int row, int col);
+ extern	double eval(register struct enode *e);
+ extern	int any_locked_cells(int r1, int c1, int r2, int c2);
++extern	int are_abbrevs();
+ extern	int are_colors();
+ extern	int are_frames();
+ extern	int are_ranges();
+@@ -425,6 +429,7 @@
+ extern	struct crange *find_crange(int row, int col);
+ extern	struct frange *find_frange(int row, int col);
+ extern	void EvalAll();
++extern	void add_abbr(char *string);
+ extern	void add_crange(struct ent *r_left, struct ent *r_right, int pair);
+ extern	void add_frange(struct ent *or_left, struct ent *or_right,
+ 	struct ent *ir_left, struct ent *ir_right, int toprows, int bottomrows,
+@@ -434,6 +439,7 @@
+ extern	void addplugin(char *ext, char *plugin, char type);
+ extern	void backcol(int arg);
+ extern	void backrow(int arg);
++extern	void center(int sr, int sc, int er, int ec);
+ extern	void change_color(int pair, struct enode *e);
+ extern	void checkbounds(int *rowp, int *colp);
+ extern	void clearent(struct ent *v);
+@@ -456,9 +462,12 @@
+ extern	void diesave();
+ extern	void doend(int rowinc, int colinc);
+ extern	void doformat(int c1, int c2, int w, int p, int r);
++extern	void dogetkey();
+ extern	void dupcol();
+ extern	void duprow();
+ extern	void doquery(char *s, char *data, int fd);
++extern	void doeval(struct enode *e, char *fmt, int row, int col, int fd);
++extern	void doseval(struct enode *e, int row, int col, int fd);
+ extern	void dostat(int fd);
+ extern	void dotick(int tick);
+ extern	void editexp(int row, int col);
+@@ -486,11 +495,14 @@
+ extern	void free_ent(register struct ent *p, int unlock);
+ extern	void getexp(int r0, int c0, int rn, int cn, int fd);
+ extern	void getfmt(int r0, int c0, int rn, int cn, int fd);
++extern	void getframe(int fd);
+ extern	void getformat(int col, int fd);
+ extern	void getnum(int r0, int c0, int rn, int cn, int fd);
++extern	void getrange(char *name, int fd);
+ extern	void getstring(int r0, int c0, int rn, int cn, int fd);
+ extern	void go_last();
+ extern	void goraw();
++extern	void gotonote();
+ extern	void help();
+ extern	void hide_col(int arg);
+ extern	void hide_row(int arg);
+@@ -507,6 +519,8 @@
+ extern	void label(register struct ent *v, register char *s, int flushdir);
+ extern	void let(struct ent *v, struct enode *e);
+ extern	void list_colors(FILE *f);
++extern	void ljustify(int sr, int sc, int er, int ec);
++extern	void list_frames(FILE *f);
+ extern	void list_ranges(FILE *f);
+ extern	void lock_cells(struct ent *v1, struct ent *v2);
+ extern	void markcell();
+@@ -523,6 +537,7 @@
+ extern	void read_hist();
+ extern	void remember(int save);
+ extern	void resetkbd();
++extern	void rjustify(int sr, int sc, int er, int ec);
+ extern	void rowshow_op();
+ extern	void scxfree(char *p);
+ extern	void setauto(int i);
+@@ -560,6 +575,9 @@
+ extern	void write_line(int c);
+ extern	void write_ranges(FILE *f);
+ extern	void yank_area(int sr, int sc, int er, int ec);
++extern	void yankcol(int arg);
++extern	void yankr(struct ent *v1, struct ent *v2);
++extern	void yankrow(int arg);
+ extern	void yyerror(char *err);
+ extern	int yylex();
+ extern	int yyparse();
+--- a/screen.c
++++ b/screen.c
+@@ -870,7 +870,7 @@
+ 		    }
+ 		} /* else */
+ 	    } else
+-	    if (!*pp && color && has_colors && cr && cr->r_color != 1) {
++	    if (!*pp && color && has_colors() && cr && cr->r_color != 1) {
+ 		move(r, c);
+ 		color_set(cr->r_color, NULL);
+ 		printw("%*s", fwidth[col], " ");
+--- a/vi.c
++++ b/vi.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <sys/types.h>
++#include <sys/wait.h>
+ #ifdef BSD42
+ #include <strings.h>
+ #else

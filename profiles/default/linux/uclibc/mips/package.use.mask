@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
+# net-libs/openpgm is not keyworded on mips
+net-libs/zeromq pgm
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5

@@ -1,0 +1,24 @@
+Fix build with GCC 6.
+
+Gentoo-bug: 594188
+
+--- a/hupnp/src/devicehosting/devicehost/hservermodel_creator_p.cpp
++++ b/hupnp/src/devicehosting/devicehost/hservermodel_creator_p.cpp
+@@ -493,7 +493,7 @@
+             QString("Failed to initialize device [%1]").arg(
+                 deviceInfo.udn().toString());
+ 
+-        return false;
++        return NULL;
+     }
+ 
+     device->h_ptr->m_deviceDescription =
+@@ -560,7 +560,7 @@
+                     "[%2]").arg(device->info().deviceType().toString(),
+                                 dt.toString());
+ 
+-                return false;
++                return NULL;
+             }
+         }
+     }

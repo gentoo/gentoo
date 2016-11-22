@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/564168
+Never build libintl since it's in dev-libs/libintl now.
+
+We can drop this if/when upstream fixes the configure flag handling:
+https://savannah.gnu.org/bugs/?48233
+
+--- a/gettext-runtime/configure
++++ b/gettext-runtime/configure
+@@ -20391,8 +20391,7 @@ $as_echo "$ac_res" >&6; }
+ 
+                                         if { eval "gt_val=\$$gt_func_gnugettext_libc"; test "$gt_val" = "yes"; } \
+            || { { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; } \
+-                && test "$PACKAGE" != gettext-runtime \
+-                && test "$PACKAGE" != gettext-tools; }; then
++                }; then
+           gt_use_preinstalled_gnugettext=yes
+         else
+                     LIBINTL=
+--- a/gettext-tools/configure
++++ b/gettext-tools/configure
+@@ -22746,8 +22746,7 @@ $as_echo "$ac_res" >&6; }
+ 
+                                         if { eval "gt_val=\$$gt_func_gnugettext_libc"; test "$gt_val" = "yes"; } \
+            || { { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; } \
+-                && test "$PACKAGE" != gettext-runtime \
+-                && test "$PACKAGE" != gettext-tools; }; then
++                }; then
+           gt_use_preinstalled_gnugettext=yes
+         else
+                     LIBINTL=

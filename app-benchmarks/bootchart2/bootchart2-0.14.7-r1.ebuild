@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit linux-info python-r1 systemd toolchain-funcs
 
@@ -36,6 +36,7 @@ S="${WORKDIR}"/${PN%2}-${PV}
 CONFIG_CHECK="~PROC_EVENTS ~TASKSTATS ~TASK_DELAY_ACCT ~TMPFS"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #579922
 	tc-export CC
 	sed \
 		-e "/^install/s:py-install-compile::g" \

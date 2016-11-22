@@ -17,7 +17,8 @@ IUSE="static-libs X"
 
 RDEPEND="X? ( >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	>=media-libs/libsdl2-2.0.1-r1[${MULTILIB_USEDEP}]
-	>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}]"
+	>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]"
 DEPEND=${RDEPEND}
 
 S=${WORKDIR}/${MY_P}

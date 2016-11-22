@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="X">Build bindings for the QtGui module</flag>
+		<flag name="compat">Install the deprecated pyqtconfig module for backward compatibility</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="declarative">Build bindings for the QtDeclarative module</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
@@ -29,6 +30,7 @@
 			<name>Phil Thompson</name>
 		</maintainer>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/PyQt4/</doc>
 		<remote-id type="pypi">PyQt4</remote-id>
 		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>

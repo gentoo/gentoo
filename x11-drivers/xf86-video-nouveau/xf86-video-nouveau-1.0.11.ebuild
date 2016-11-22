@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 fi
 
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
-HOMEPAGE="http://nouveau.freedesktop.org/"
+HOMEPAGE="https://nouveau.freedesktop.org/"
 
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="glamor"

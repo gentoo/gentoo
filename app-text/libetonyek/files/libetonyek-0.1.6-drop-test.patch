@@ -1,0 +1,36 @@
+From 1a20d8ece2ea3e8aa1d319cd88e8a6aa637982f2 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Fri, 30 Sep 2016 09:57:15 +0200
+Subject: [PATCH] drop test that violates Unicode tr#35
+
+(and therefore fails with latest liblangtag)
+
+Change-Id: I0e06c6c4e8bcf999cf5559d6287e77ae97e555d8
+---
+ src/test/IWORKLanguageManagerTest.cpp |   10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/test/IWORKLanguageManagerTest.cpp b/src/test/IWORKLanguageManagerTest.cpp
+index 8fca0a6..e663bd2 100644
+--- a/src/test/IWORKLanguageManagerTest.cpp
++++ b/src/test/IWORKLanguageManagerTest.cpp
+@@ -104,16 +104,6 @@ void IWORKLanguageManagerTest::testTagToProps()
+   }
+ 
+   {
+-    const string tag(mgr.addTag("ccc"));
+-    CPPUNIT_ASSERT(!tag.empty());
+-    RVNGPropertyList props;
+-    mgr.writeProperties(tag, props);
+-    assertProperty("unknown lang", props, "fo:language", "ccc");
+-    CPPUNIT_ASSERT(!props["fo:country"]);
+-    CPPUNIT_ASSERT(!props["fo:script"]);
+-  }
+-
+-  {
+     // invalid tag
+     const string tag(mgr.addTag("13c"));
+     CPPUNIT_ASSERT(tag.empty());
+-- 
+1.7.9.5
+

@@ -1,5 +1,5 @@
-#!/@GENTOO_PORTAGE_EPREFIX@sbin/runscript
-# Copyright 1999-2015 Gentoo Foundation
+#!/@GENTOO_PORTAGE_EPREFIX@sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="forcestop"

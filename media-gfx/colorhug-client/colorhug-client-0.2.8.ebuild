@@ -9,7 +9,7 @@ inherit bash-completion-r1 eutils gnome2
 
 DESCRIPTION="Client tools for the ColorHug display colorimeter"
 HOMEPAGE="http://www.hughski.com/"
-SRC_URI="http://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
+SRC_URI="https://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

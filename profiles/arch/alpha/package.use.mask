@@ -2,10 +2,50 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# dev-libs/uchardet lacks alpha keyword. See bug #569114.
-media-video/mpv uchardet
+# Tobias Klausmann <klausman@gentoo.org> (15 Nov 2016)
+# JITing for libpcre{,2} is not supported on Alpha
+dev-libs/libpcre jit
+dev-libs/libpcre2 jit
+
+# Tobias Klausmann <klausman@gentoo.org> (22 Oct 2016)
+# Pulls in dev-db/redis which is not keyworded on alpha.
+>=dev-python/pyzor-1.0.0 test
+
+# Tobias Klausmann <klausman@gentoo.org> (03 Oct 2016)
+# Pulls in dev-db/redis which is not keyworded on alpha.
+>=dev-libs/hiredis-0.13.1 test
+
+# Tobias Klausmann <klausman@gentoo.org> (02 Oct 2016)
+# For the one single version noted hereunder, the ebuild does not pull in
+# sys-apps/fakeroot as a test dependency (bug #593768).
+=dev-util/debhelper-9.20160814 test
+
+# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# networkmanager USE masked due to missing keywords
+gnome-extra/nm-applet teamd
+
+# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Opt-out of ofono support until there is a user request,
+# see also pulseaudio/connman
+net-misc/networkmanager ofono
+
+# Tobias Klausmann <klausman@gentoo.org> (04 Jul 2016)
+# Mask USE=test since it implies USE=valgrind
+net-mail/notmuch test
+
+# Tobias Klausmann <klausman@gentoo.org> (14 Jun 2016)
+# asciidoctor pulls in a lot of Ruby deps
+>=net-misc/chrony-2.4_pre1 html
+
+# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# cmus is one amongst many. When-if a user wants it, we'll reconsider it.
+# Same goes for libircclient
+app-admin/conky cmus irc
+
+# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# the nvidia SDK needs nvidia-drivers and thus can never work on alpha
+# Likewise, nasm is x86/x86-64 only
+media-video/ffmpeg nvenc openh264
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
@@ -19,7 +59,7 @@ media-libs/elementary javascript
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
 net-analyzer/rrdtool rados
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on Alpha.
 app-text/tesseract scrollview
 
@@ -31,10 +71,6 @@ app-text/mupdf opengl
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-lang/luajit lacks alpha keyword. See bug #488318.
 media-video/mpv luajit
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -67,10 +103,6 @@ dev-python/restkit cli
 # app-portage/g-sorcery pulls in pymongo and a whole host of deps that don't
 # work on alpha. Mask USE flag for layman accordingly
 app-portage/layman -g-sorcery
-
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on alpha
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
 # Mask USE=sssd for sudo because sys-auth/sssd is relatively big and doesn't
@@ -115,12 +147,6 @@ xfce-base/xfce4-settings libinput
 # Michał Górny <mgorny@gentoo.org> (22 Feb 2015)
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
-
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not keyworded on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 pkcs11
 
 # Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
 # Missing keywords for media-libs/x265
@@ -191,9 +217,6 @@ media-video/mpv doc-pdf
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
-
-# Pacho Ramos <pacho@gentoo.org> (11 Jan 2014)
-sys-kernel/dracut -dracut_modules_systemd
 
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156

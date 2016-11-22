@@ -25,7 +25,7 @@ CDEPEND="
 	!minimal? (
 		dev-perl/Algorithm-Munkres
 		dev-perl/Array-Compare
-		dev-perl/yaml
+		dev-perl/YAML
 		dev-perl/Bio-ASN1-EntrezGene
 		dev-perl/Clone
 		dev-perl/Convert-Binary-C

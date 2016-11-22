@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic multilib multiprocessing python-r1 toolchain-funcs versionator multilib-minimal
 
@@ -75,7 +75,20 @@ create_user-config.jam() {
 	fi
 
 	if python_bindings_needed; then
-		python_configuration="using python : : ${PYTHON} ;"
+		# boost expects libpython$(pyver) and doesn't allow overrides
+		# and the build system is so creepy that it's easier just to
+		# provide a symlink (linker's going to use SONAME anyway)
+		# TODO: replace it with proper override one day
+		ln -f -s "$(python_get_library_path)" "${T}/lib${EPYTHON}$(get_libname)" || die
+
+		if tc-is-cross-compiler; then
+			python_configuration="using python : ${EPYTHON#python} : : ${SYSROOT:-${EROOT}}/usr/include/${EPYTHON} : ${SYSROOT:-${EROOT}}/usr/$(get_libdir) ;"
+		else
+			# note: we need to provide version explicitly because of
+			# a bug in the build system:
+			# https://github.com/boostorg/build/pull/104
+			python_configuration="using python : ${EPYTHON#python} : ${PYTHON} : $(python_get_includedir) : ${T} ;"
+		fi
 	fi
 
 	cat > "${BOOST_ROOT}/user-config.jam" << __EOF__

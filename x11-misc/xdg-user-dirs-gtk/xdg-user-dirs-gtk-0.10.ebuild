@@ -6,7 +6,7 @@ EAPI=5
 inherit gnome.org readme.gentoo
 
 DESCRIPTION="Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-user-dirs"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,7 +26,7 @@ DOC_CONTENTS="
 	This package tries to automatically use some sensible default
 	directories for your documents, music, video and other stuff.
 	If you want to change those directories to your needs, see
-	the settings in ~/.config/user-dir.dirs
+	the settings in ~/.config/user-dirs.dirs
 "
 
 src_prepare() {

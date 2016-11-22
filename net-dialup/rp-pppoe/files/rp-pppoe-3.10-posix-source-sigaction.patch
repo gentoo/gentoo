@@ -1,7 +1,7 @@
 glibc does not define SA_RESTART when _POSIX_SOURCE is defined, so we
 have to just assume the default signal.h include defines SA_RESTART
 
-http://sourceware.org/bugzilla/show_bug.cgi?id=12252
+https://sourceware.org/bugzilla/show_bug.cgi?id=12252
 
 --- rp-pppoe-3.10/src/pppoe.h
 +++ rp-pppoe-3.10/src/pppoe.h

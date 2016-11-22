@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
@@ -21,7 +21,7 @@ REQUIRED_USE="
 "
 RDEPEND="
 	gtk? ( x11-libs/gtk+:2 )
-	imagemagick? ( media-gfx/imagemagick )
+	imagemagick? ( media-gfx/imagemagick:= )
 	motif? ( >=x11-libs/motif-2.3:0 )
 	nas? ( media-libs/nas )
 	opengl? (
@@ -44,19 +44,24 @@ DEPEND="
 	x11-proto/xineramaproto
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.46-freetype261.patch
+	"${FILESDIR}"/${PN}-5.46-destdir.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.46-freetype261.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
-	local myconf=""
+	local myconf=()
 
 	if use opengl && use truetype; then
-			myconf="${myconf} --with-ftgl"
+			myconf=( --with-ftgl )
 			append-flags -DFTGL213
 		else
-			myconf="${myconf} --without-ftgl"
+			myconf=( --without-ftgl )
 	fi
 
 	econf \
@@ -79,12 +84,11 @@ src_configure() {
 		--enable-vtlock \
 		--without-esound \
 		--without-gtk \
-		${myconf}
+		${myconf[@]}
 }
 
 src_install() {
-	einstall xapploaddir="${D}/usr/share/X11/app-defaults" \
-		mandir="${D}/usr/share/man/man1" INSTPGMFLAGS=""
+	default
 
 	pamd_mimic_system xlock auth
 
@@ -94,6 +98,7 @@ src_install() {
 		fperms 4755 /usr/bin/xlock
 	fi
 
-	dohtml docs/xlock.html
 	dodoc README docs/{3d.howto,cell_automata,HACKERS.GUIDE,Purify,Revisions,TODO}
+	docinto html
+	dodoc docs/xlock.html
 }

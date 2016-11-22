@@ -22,7 +22,10 @@ RDEPEND="
 	dev-python/basemap[${PYTHON_USEDEP}]
 	sci-electronics/voacapl
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	app-text/gnome-doc-utils
+	app-text/rarian
+"
 
 src_prepare() {
 	# do not call update_destop_database here

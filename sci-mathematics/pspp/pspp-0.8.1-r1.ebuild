@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	sci-libs/gsl
 	sys-devel/gettext
-	sys-libs/readline
+	sys-libs/readline:0
 	sys-libs/zlib
 	virtual/libiconv
 	cairo? ( x11-libs/cairo )
@@ -30,8 +30,8 @@ RDEPEND="
 			gnome-base/libglade:2.0
 			x11-libs/gtk+:2
 			>=x11-libs/gtksourceview-2.2:2.0 )
-	ncurses? ( sys-libs/ncurses )
-	postgres? ( dev-db/postgresql[server] )"
+	ncurses? ( sys-libs/ncurses:0= )
+	postgres? ( dev-db/postgresql:*[server] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( virtual/latex-base )"

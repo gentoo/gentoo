@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic toolchain-funcs multilib
+inherit eutils flag-o-matic toolchain-funcs user multilib
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
@@ -46,6 +46,11 @@ S="${WORKDIR}/${MY_P}"
 
 WEBROOT="/var/www/localhost"
 
+pkg_preinst() {
+	enewgroup monkeyd
+	enewuser monkeyd -1 -1 /var/tmp/monkeyd monkeyd
+}
+
 pkg_setup() {
 	if use debug; then
 		ewarn
@@ -59,6 +64,7 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
+	epatch "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
 	epatch "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
 }
 
@@ -106,13 +112,13 @@ src_configure() {
 	./configure \
 		--pthread-tls \
 		--prefix=/usr \
+		--default-user=monkeyd \
 		--sbindir=/usr/sbin \
 		--webroot=${WEBROOT}/htdocs \
-		--logdir=/var/log/${PN} \
+		--logdir=/var/log/monkeyd \
 		--mandir=/usr/share/man \
 		--libdir=/usr/$(get_libdir) \
-		--pidfile=/run/monkey.pid \
-		--sysconfdir=/etc/${PN} \
+		--sysconfdir=/etc/monkeyd \
 		${myconf} \
 		|| die
 }
@@ -133,9 +139,15 @@ src_install() {
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist || die
 
 	keepdir \
+		/var/tmp/monkeyd \
 		/var/log/monkeyd \
 		${WEBROOT}/htdocs
 
 	# This needs to be created at runtime
 	rm -rf "${D}"/run
+}
+
+pkg_postinst() {
+	chown monkeyd:monkeyd /var/{log,tmp}/monkeyd
+	chmod 770 /var/{log,tmp}/monkeyd
 }

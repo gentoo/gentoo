@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ inherit autotools-utils flag-o-matic
 MY_P=${P/c/C}
 
 DESCRIPTION="A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1"
-HOMEPAGE="http://www.coin3d.org/"
-SRC_URI="ftp://ftp.coin3d.org/pub/coin/src/all/${MY_P}.tar.gz"
+HOMEPAGE="https://bitbucket.org/Coin3D/coin/wiki/Home"
+SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
 KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,6 +37,7 @@ LIB_DEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)]
 RDEPEND="!static? ( ${LIB_DEPEND//[static-libs(+),/=[} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
+RDEPEND+=" !sys-boot/grub:2[-multislot]"
 
 pkg_setup() {
 	case $(tc-arch) in
@@ -225,8 +226,8 @@ setup_boot_dir() {
 		ewarn "This means you must use either grub-install or perform"
 		ewarn "root/setup manually."
 		ewarn
-		ewarn "For more help, see the handbook:"
-		ewarn "https://www.gentoo.org/doc/en/handbook/handbook-${ARCH}.xml?part=1&chap=10#grub-install-auto"
+		ewarn "For more help, see the wiki:"
+		ewarn "https://wiki.gentoo.org/wiki/GRUB"
 		echo
 	fi
 

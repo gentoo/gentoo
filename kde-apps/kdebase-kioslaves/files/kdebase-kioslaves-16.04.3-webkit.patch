@@ -1,0 +1,50 @@
+commit 7209a3d7aa400f6dec72eb40ff21077a40110927
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Tue Jul 26 18:22:02 2016 +0200
+
+    [kioslave] Make KDEWEBKIT optional
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b4d0f2..520c00a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,6 +62,8 @@ set_package_properties(LibGcrypt PROPERTIES DESCRIPTION "Libgcrypt is a general
+ # Build options
+ option(KDERUNTIME_BUILD_NEPOMUK "Build the Nepomuk KCM and kioslaves" FALSE)
+ 
++option(WITH_KDEWEBKIT "Build features depending on KDEWEBKIT (currently HTML thumbnailer)" TRUE)
++
+ check_include_files(sys/wait.h HAVE_SYS_WAIT_H)
+ check_include_files(sys/time.h HAVE_SYS_TIME_H)
+ 
+diff --git a/kioslave/thumbnail/CMakeLists.txt b/kioslave/thumbnail/CMakeLists.txt
+index 8f28a4e..2d37906 100644
+--- a/kioslave/thumbnail/CMakeLists.txt
++++ b/kioslave/thumbnail/CMakeLists.txt
+@@ -89,7 +89,7 @@ install(TARGETS textthumbnail DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+ ########### next target ###############
+ 
+-if(NOT WINCE)
++if(NOT WINCE AND WITH_KDEWEBKIT)
+ set(htmlthumbnail_PART_SRCS htmlcreator.cpp)
+ 
+ kde4_add_plugin(htmlthumbnail ${htmlthumbnail_PART_SRCS})
+@@ -97,7 +97,8 @@ kde4_add_plugin(htmlthumbnail ${htmlthumbnail_PART_SRCS})
+ target_link_libraries(htmlthumbnail ${KDE4_KDEWEBKIT_LIBS})
+ 
+ install(TARGETS htmlthumbnail DESTINATION ${PLUGIN_INSTALL_DIR})
+-endif(NOT WINCE)
++install(FILES htmlthumbnail.desktop DESTINATION ${SERVICES_INSTALL_DIR})
++endif(NOT WINCE AND WITH_KDEWEBKIT)
+ 
+ ########### next target ###############
+ 
+@@ -189,7 +190,6 @@ install(FILES
+     imagethumbnail.desktop
+     jpegthumbnail.desktop
+     textthumbnail.desktop
+-    htmlthumbnail.desktop
+     djvuthumbnail.desktop
+     desktopthumbnail.desktop
+     comicbookthumbnail.desktop

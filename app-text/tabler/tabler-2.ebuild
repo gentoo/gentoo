@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="A utility to create text art tables from delimited input"
-HOMEPAGE="http://sourceforge.net/projects/tabler/"
+HOMEPAGE="https://sourceforge.net/projects/tabler/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

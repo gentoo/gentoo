@@ -10,7 +10,7 @@ MY_P=${P%_p*}
 [[ ${PV} == *_p* ]] && REV=${P#*_p} || unset REV
 MY_P=${MY_P/e}
 DESCRIPTION="read and write the WakeUp time in the BIOS"
-HOMEPAGE="http://sourceforge.net/projects/nvram-wakeup"
+HOMEPAGE="https://sourceforge.net/projects/nvram-wakeup"
 SRC_URI="mirror://sourceforge/nvram-wakeup/${MY_P}.tar.gz
 	${REV+http://nvram-wakeup.svn.sourceforge.net/viewvc/*checkout*/nvram-wakeup/trunk/nvram-wakeup/nvram-wakeup-mb.c?revision=${REV}}"
 

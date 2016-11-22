@@ -23,10 +23,7 @@ DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-CBuilder-0.24
 	>=virtual/perl-File-Spec-1.500.0
 	>=dev-perl/Module-Build-0.280.0
-	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
-	)
+	test? ( virtual/perl-Test-Simple )
 "
 
 SRC_TEST="do"
@@ -34,4 +31,9 @@ SRC_TEST="do"
 src_configure() {
 	myconf=( --wxWidgets-build=0 )
 	perl-module_src_configure
+}
+
+src_test() {
+	perl_rm_files t/zz_pod.t t/zy_pod_coverage.t
+	perl-module_src_test
 }

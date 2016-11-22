@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-	<email>pva@gentoo.org</email>
-	<name>Peter Volkov</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>andreis.vinogradovs@gmail.com</email>
 		<name>Andreis Vinogradovs</name>
 		<description>Proxy maintainer, CC him on bugs</description>

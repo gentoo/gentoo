@@ -22,6 +22,10 @@ SLOT="0/${PV}"
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"
 
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
+
 src_compile()
 {
 	emake all

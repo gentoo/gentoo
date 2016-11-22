@@ -1,0 +1,43 @@
+From b913a28f65e32380a84da735e0524f8d5c127f93 Mon Sep 17 00:00:00 2001
+From: David Bremner <david@tethera.net>
+Date: Sun, 9 Oct 2016 19:30:44 -0300
+Subject: [PATCH 1/3] emacs/show: force notmuch-show-buttonise-links to act on
+ lines
+
+This seems to fix a problem with emacs 25 creating partial buttons by
+calling n-s-b-l with a region that does not include the whole button.
+I'm not 100% sure it's legit to act outside the region passed by
+jit-lock, but goto-address-fontify-region (where I borrowed the code
+from) already does this, so this patch to not make things worse.
+---
+ emacs/notmuch-show.el | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/emacs/notmuch-show.el b/emacs/notmuch-show.el
+index 641398d..e7d16f8 100644
+--- a/emacs/notmuch-show.el
++++ b/emacs/notmuch-show.el
+@@ -1174,13 +1174,15 @@ This also turns id:\"<message id>\"-parts and mid: links into
+ buttons for a corresponding notmuch search."
+   (goto-address-fontify-region start end)
+   (save-excursion
+-    (let (links)
+-      (goto-char start)
+-      (while (re-search-forward notmuch-id-regexp end t)
++    (let (links
++	  (beg-line (progn (goto-char start) (line-beginning-position)))
++	  (end-line (progn (goto-char end) (line-end-position))))
++      (goto-char beg-line)
++      (while (re-search-forward notmuch-id-regexp end-line t)
+ 	(push (list (match-beginning 0) (match-end 0)
+ 		    (match-string-no-properties 0)) links))
+-      (goto-char start)
+-      (while (re-search-forward notmuch-mid-regexp end t)
++      (goto-char beg-line)
++      (while (re-search-forward notmuch-mid-regexp end-line t)
+ 	(let* ((mid-cid (match-string-no-properties 1))
+ 	       (mid (save-match-data
+ 		      (string-match "^[^/]*" mid-cid)
+-- 
+2.10.1
+

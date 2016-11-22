@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -94,7 +94,7 @@ src_install() {
 	fi
 
 	python_optimize "${D}"/usr/share/qgis/python/plugins \
-                "${D}"/$(python_get_sitedir)/qgis
+		"${D}"/$(python_get_sitedir)/qgis
 }
 
 pkg_preinst() {

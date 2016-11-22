@@ -22,6 +22,15 @@
     <flag name="tools">
       Build extra tools
     </flag>
+    <flag name="tls-heartbeat">
+      Enable the Heartbeat Extension in TLS and DTLS
+    </flag>
+    <flag name="sslv2">
+      Support for the old/insecure SSLv2 protocol
+    </flag>
+    <flag name="sslv3">
+      Support for the old/insecure SSLv3 protocol
+    </flag>
   </use>
   <slots>
    <subslots>Reflect ABI compatibility of libgnutls.so</subslots>

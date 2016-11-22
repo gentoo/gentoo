@@ -1,0 +1,110 @@
+vdiff -ru a/contrib/Makefile b/contrib/Makefile
+--- a/contrib/Makefile	2015-06-29 15:42:18.000000000 -0400
++++ b/contrib/Makefile	2015-09-06 07:50:51.258463861 -0400
+@@ -5,58 +5,9 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-		adminpack	\
+-		auth_delay	\
+-		auto_explain	\
+-		bloom		\
+-		btree_gin	\
+-		btree_gist	\
+-		chkpass		\
+-		citext		\
+-		cube		\
+-		dblink		\
+-		dict_int	\
+-		dict_xsyn	\
+-		earthdistance	\
+-		file_fdw	\
+-		fuzzystrmatch	\
+-		hstore		\
+-		intagg		\
+-		intarray	\
+-		isn		\
+-		lo		\
+-		ltree		\
+ 		oid2name	\
+-		pageinspect	\
+-		passwordcheck	\
+-		pg_buffercache	\
+-		pg_freespacemap \
+-		pg_prewarm	\
+-		pg_standby	\
+-		pg_stat_statements \
+-		pg_trgm		\
+-		pgcrypto	\
+-		pgrowlocks	\
+-		pgstattuple	\
+-		pg_visibility	\
+-		postgres_fdw	\
+-		seg		\
+-		spi		\
+-		tablefunc	\
+-		tcn		\
+-		test_decoding	\
+-		tsm_system_rows \
+-		tsm_system_time \
+-		tsearch2	\
+-		unaccent	\
+ 		vacuumlo
+ 
+-ifeq ($(with_openssl),yes)
+-SUBDIRS += sslinfo
+-else
+-ALWAYS_SUBDIRS += sslinfo
+-endif
+-
+ ifneq ($(with_uuid),no)
+ SUBDIRS += uuid-ossp
+ else
+diff -ru a/src/bin/Makefile b/src/bin/Makefile
+--- a/src/bin/Makefile	2015-06-29 15:42:18.000000000 -0400
++++ b/src/bin/Makefile	2015-09-06 08:03:27.014847309 -0400
+@@ -14,20 +14,8 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-	initdb \
+-	pg_archivecleanup \
+-	pg_basebackup \
+ 	pg_config \
+-	pg_controldata \
+-	pg_ctl \
+ 	pg_dump \
+-	pg_resetxlog \
+-	pg_rewind \
+-	pg_test_fsync \
+-	pg_test_timing \
+-	pg_upgrade \
+-	pg_xlogdump \
+-	pgbench \
+ 	psql \
+ 	scripts
+ 
+diff -ru a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2015-06-29 15:42:18.000000000 -0400
++++ b/src/Makefile	2015-09-06 08:04:25.274568519 -0400
+@@ -15,19 +15,11 @@
+ SUBDIRS = \
+ 	common \
+ 	port \
+-	timezone \
+ 	backend \
+-	backend/utils/mb/conversion_procs \
+-	backend/snowball \
+ 	include \
+ 	interfaces \
+-	backend/replication/libpqwalreceiver \
+-	fe_utils \
+ 	bin \
+-	pl \
+-	makefiles \
+-	test/regress \
+-	test/perl
++	makefiles
+ 
+ # There are too many interdependencies between the subdirectories, so
+ # don't attempt parallel make here.

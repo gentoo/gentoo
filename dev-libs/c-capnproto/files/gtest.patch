@@ -1,0 +1,41 @@
+Index: c-capnproto-c-capnproto-0.1/configure.ac
+===================================================================
+--- c-capnproto-c-capnproto-0.1.orig/configure.ac
++++ c-capnproto-c-capnproto-0.1/configure.ac
+@@ -35,8 +35,6 @@ AC_SUBST(WERROR)
+ #  AC_MSG_ERROR([capnproto base package (0.5.2 or newer) not found])
+ #])
+ 
+-AC_CONFIG_SUBDIRS([gtest/googletest])
+-
+ AC_CONFIG_FILES([
+ 	Makefile
+ 	c-capnproto.pc
+Index: c-capnproto-c-capnproto-0.1/Makefile.am
+===================================================================
+--- c-capnproto-c-capnproto-0.1.orig/Makefile.am
++++ c-capnproto-c-capnproto-0.1/Makefile.am
+@@ -41,12 +41,6 @@ noinst_HEADERS += \
+ 	compiler/c++.capnp.h \
+ 	compiler/test.capnp.h
+ 
+-GTEST_LDADD = gtest/googletest/lib/libgtest.la
+-gtest/googletest/lib/libgtest.la:
+-	make -C gtest/googletest lib/libgtest.la
+-GTEST_CPPFLAGS = -I${srcdir}/gtest/googletest/include
+-DIST_SUBDIRS = gtest/googletest
+-
+ check_PROGRAMS += \
+ 	capn-test
+ capn_test_SOURCES = \
+@@ -55,8 +49,8 @@ capn_test_SOURCES = \
+ 	compiler/test.capnp.c \
+ 	compiler/schema-test.cpp \
+ 	compiler/schema.capnp.c
+-capn_test_CPPFLAGS = $(AM_CPPFLAGS) $(GTEST_CPPFLAGS)
++capn_test_CPPFLAGS = $(AM_CPPFLAGS)
+ capn_test_CXXFLAGS = -std=gnu++11 -pthread
+-capn_test_LDADD = libcapnp_c.la $(GTEST_LDADD)
++capn_test_LDADD = libcapnp_c.la -lgtest
+ capn_test_LDFLAGS = -pthread
+ TESTS = capn-test

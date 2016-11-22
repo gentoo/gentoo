@@ -15,7 +15,7 @@
 	</maintainer>
 	<longdescription>
 		The spnavcfg is the GTK-based configuration GUI for
-		<pkg>sys-libs/spacenavd</pkg>.
+		<pkg>app-misc/spacenavd</pkg>.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">spacenav</remote-id>

@@ -70,10 +70,6 @@ RDEPEND="$DEPEND"
 
 S="${WORKDIR}/${MY_P}"
 
-processes="buildPluginsCommon:avidemux_plugins
-	buildPluginsCLI:avidemux_plugins"
-use qt4 && processes+=" buildPluginsQt4:avidemux_plugins"
-
 PATCHES=( "${FILESDIR}"/${PN}-2.6.4-optional-pulse.patch )
 
 src_configure() {
@@ -84,6 +80,10 @@ src_configure() {
 
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
+
+	processes="buildPluginsCommon:avidemux_plugins
+		buildPluginsCLI:avidemux_plugins"
+	use qt4 && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
 		local build="${process%%:*}"

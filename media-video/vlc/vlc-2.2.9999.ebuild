@@ -15,7 +15,7 @@ if [ "${PV%9999}" != "${PV}" ] ; then
 	fi
 fi
 
-inherit eutils multilib autotools toolchain-funcs flag-o-matic virtualx ${SCM}
+inherit eutils multilib autotools toolchain-funcs flag-o-matic versionator virtualx ${SCM}
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -38,7 +38,7 @@ if [[ ${PV} != *9999 ]] ; then
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
-IUSE="a52 aalib alsa altivec atmo +audioqueue avahi +avcodec
+IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
@@ -50,7 +50,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue avahi +avcodec
 	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vcdx vdpau
-	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zvbi"
+	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zvbi zeroconf"
 
 RDEPEND="
 		!<media-video/ffmpeg-1.2:0
@@ -61,7 +61,6 @@ RDEPEND="
 		a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
 		aalib? ( media-libs/aalib:0 )
 		alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
-		avahi? ( >=net-dns/avahi-0.6:0[dbus] )
 		avcodec? (
 			!libav? ( media-video/ffmpeg:0= )
 			libav? ( media-video/libav:0= )
@@ -154,7 +153,9 @@ RDEPEND="
 			!libav? ( media-video/ffmpeg:0=[vaapi] )
 			libav? ( media-video/libav:0=[vaapi] )
 		)
-		vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )"
+		vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
+		zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
+"
 
 # Temporarily block non-live FFMPEG versions as they break vdpau, 9999 works;
 # thus we'll have to wait for a new release there.
@@ -166,7 +167,7 @@ RDEPEND="${RDEPEND}
 		)
 		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 		vorbis? ( >=media-libs/libvorbis-1.1:0 )
-		vpx? ( media-libs/libvpx:0 )
+		vpx? ( media-libs/libvpx:0= )
 		X? ( x11-libs/libX11:0 )
 		x264? ( >=media-libs/x264-0.0.20090923:0= )
 		x265? ( media-libs/x265:0= )
@@ -209,8 +210,8 @@ REQUIRED_USE="
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	if [[ "${MERGE_TYPE}" != "binary" && "$(tc-getCC)" == *"gcc"* ]] ; then
-		if [[ $(gcc-major-version) < 4 || ( $(gcc-major-version) == 4 && $(gcc-minor-version) < 5 ) ]] ; then
+	if [[ "${MERGE_TYPE}" != "binary" ]] && tc-is-gcc ; then
+		if ! version_is_at_least 4.5 $(gcc-version) ; then
 			die "You need to have at least >=sys-devel/gcc-4.5 to build and/or have a working vlc, see bug #426754."
 		fi
 	fi
@@ -232,7 +233,7 @@ src_prepare() {
 	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
 	#
 	# https://gcc.gnu.org/c99status.html
-	if [[ "$(tc-getCC)" == *"gcc"* ]] ; then
+	if tc-is-gcc ; then
 		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
 	fi
 
@@ -320,7 +321,6 @@ src_configure() {
 		$(use_enable altivec) \
 		$(use_enable atmo) \
 		$(use_enable audioqueue) \
-		$(use_enable avahi bonjour) \
 		$(use_enable avcodec) \
 		$(use_enable avformat) \
 		$(use_enable bidi fribidi) \
@@ -428,6 +428,7 @@ src_configure() {
 		$(use_enable xcb) \
 		$(use_enable xml libxml2) \
 		$(use_enable xv xvideo) \
+		$(use_enable zeroconf bonjour) \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
 		--disable-asdcp \
 		--disable-coverage \

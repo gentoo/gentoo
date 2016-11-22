@@ -158,7 +158,7 @@ it is likely that you will encounter bugs in using them. If you do,
 please report bugs upstream:
 
 Mailing list: https://lists.sourceforge.net/lists/listinfo/clisp-devel
-Bug tracker:  http://sourceforge.net/tracker/?atid=101355&group_id=1355
+Bug tracker:  https://sourceforge.net/tracker/?atid=101355&group_id=1355
 
 EOF
 	fi

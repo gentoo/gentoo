@@ -1,0 +1,10 @@
+--- librecad/src/lib/engine/rs_spline.cpp.old	2016-06-20 20:43:27.000000000 +0200
++++ librecad/src/lib/engine/rs_spline.cpp	2016-09-05 13:23:25.459841304 +0200
+@@ -26,6 +26,7 @@
+ 
+ #include<iostream>
+ #include<cmath>
++#include<numeric>
+ #include "rs_spline.h"
+ 
+ 

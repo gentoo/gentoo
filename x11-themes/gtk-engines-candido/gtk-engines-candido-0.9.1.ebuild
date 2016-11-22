@@ -8,7 +8,7 @@ inherit autotools eutils
 MY_P="candido-engine-${PV}"
 
 DESCRIPTION="Candido GTK+ 2.x Theme Engine"
-HOMEPAGE="http://sourceforge.net/projects/candido.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/candido.berlios/"
 SRC_URI="mirror://sourceforge/candido.berlios/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

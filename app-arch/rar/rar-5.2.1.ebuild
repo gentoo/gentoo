@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
 EAPI=4
 MY_PV="${PV/0_beta/b}"
 DESCRIPTION="RAR compressor/uncompressor"
@@ -16,10 +17,11 @@ SRC_URI="x86? ( ${URI_x86} )
 		${URI_w64}
 	)"
 
-LICENSE="RAR"
+LICENSE="RAR BSD BSD-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="all_sfx static"
+RESTRICT="mirror bindist"
 
 DEPEND="all_sfx? ( app-arch/unrar )"
 RDEPEND="sys-libs/glibc"

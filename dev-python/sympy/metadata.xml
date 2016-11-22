@@ -18,7 +18,7 @@
 </longdescription>
   <use>
     <flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
-    <flag name="imaging">Add support for <pkg>dev-python/imaging</pkg></flag>
+    <flag name="imaging">Add support for <pkg>dev-python/pillow</pkg></flag>
     <flag name="mathml">Add support for mathml</flag>
     <flag name="pyglet">Use <pkg>dev-python/pyglet</pkg> for plots and print preview</flag>
     <flag name="texmacs">Add <pkg>app-office/texmacs</pkg>

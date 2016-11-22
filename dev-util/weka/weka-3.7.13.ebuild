@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 HOMEPAGE="http://www.cs.waikato.ac.nz/ml/weka/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	>=dev-java/javacup-0.11a_beta20060608:0"
@@ -38,7 +38,7 @@ weka_get_max_memory() {
 	fi
 }
 
-java_prepare() {
+src_prepare() {
 	unzip -qq "${PN}-src.jar" -d . || die "Failed to unpack the source"
 	rm -v weka.jar || die
 	rm -rf doc || die

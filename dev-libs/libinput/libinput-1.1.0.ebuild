@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/libinput/"
-SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
+SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/10"

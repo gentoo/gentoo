@@ -93,7 +93,7 @@ x11-misc/lightdm razor kde
 # dev-util/google-perftools is not keyworded for arm
 >=dev-libs/libmemcached-0.50 tcmalloc
 
-# Christoph Junghans <ottxor@gentoo.org> (29 Apr 2013)
+# Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
 
@@ -124,10 +124,6 @@ x11-misc/colord extra-print-profiles
 gnome-extra/sushi office
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/systemd works on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # requires dev-util/bustle, which is written in haskell
 # remove mask if/when dev-lang/ghc is keywoded for arm
 dev-util/dbus-test-runner test
@@ -152,15 +148,12 @@ app-accessibility/speech-dispatcher flite
 # mask kde-base/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/krdc rdesktop
-kde-apps/kopete jingle msn sms
-kde-base/kdeplasma-addons fcitx oauth qwt scim
+kde-apps/kopete jingle msn
+kde-plasma/kdeplasma-addons fcitx oauth qwt scim
 kde-apps/okular ebook chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
-kde-base/smokeqt qscintilla qwt
-kde-base/qtruby qscintilla qwt
-kde-base/perlqt qscintilla qwt
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
 # media-video/coherence not keyworded
@@ -289,6 +282,6 @@ media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
 # projectm not keyworded, bug #314969
 media-video/vlc projectm chromaprint opencv
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq

@@ -1,0 +1,26 @@
+Description: Make sure SIGPWR is not the same as SIGINFO
+ Avoid a duplicate case value in a switch statement on e.g. Alpha.
+Forwarded: not-yet
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2016-04-11
+
+--- a/lib/tostring.c
++++ b/lib/tostring.c
+@@ -1551,7 +1551,17 @@
+          return "SIGPROF";
+ #endif /* SIGPROF */
+ 
++#undef NEED_SIGPWR
++
+ #ifdef SIGPWR
++#ifndef SIGINFO
++#define NEED_SIGPWR
++#elif SIGINFO != SIGPWR
++#define NEED_SIGPWR
++#endif
++#endif
++
++#ifdef NEED_SIGPWR
+       case SIGPWR:
+          return "SIGPWR";
+ #endif /* SIGPWR */

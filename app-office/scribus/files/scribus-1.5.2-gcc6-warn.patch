@@ -1,0 +1,87 @@
+commit bb3066704e987210c324ec7f3bfb2c8153d9710e
+Author: Jean Ghali <jghali@libertysurf.fr>
+Date:   Sat Aug 20 12:18:31 2016 +0000
+
+    fix a few gcc 6 warnings related to auto_ptr deprecation in c++11 by replacing it with QScopedPointer
+    
+    git-svn-id: svn://scribus.net/trunk/Scribus@21430 11d20701-8431-0410-a711-e3c959e3b870
+
+diff --git a/scribus/sclistboxpixmap.h b/scribus/sclistboxpixmap.h
+index 044d45a..a067b79 100644
+--- a/scribus/sclistboxpixmap.h
++++ b/scribus/sclistboxpixmap.h
+@@ -13,6 +13,7 @@ for which a new license (GPL+exception) is in place.
+ #include <QDebug>
+ #include <QPainter>
+ #include <QPixmap>
++#include <QScopedPointer>
+ #include <QVariant>
+ 
+ #include "scguardedptr.h"
+@@ -30,19 +31,19 @@ public:
+ 	virtual QSize sizeHint (const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+ 	virtual void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+ protected:
+-	static std::auto_ptr<QPixmap> pmap;
++	static QScopedPointer<QPixmap> pmap;
+ 	// The drawPixmap function must not modify pixmap size
+ 	virtual void redraw(const QVariant&) const = 0;
+ };
+ 
+ template<unsigned int pixWidth, unsigned int pixHeight> 
+-std::auto_ptr<QPixmap> ScListBoxPixmap<pixWidth, pixHeight>::pmap;
++QScopedPointer<QPixmap> ScListBoxPixmap<pixWidth, pixHeight>::pmap;
+ 
+ 
+ template<unsigned int pixWidth, unsigned int pixHeight>
+ ScListBoxPixmap<pixWidth, pixHeight>::ScListBoxPixmap(void) : QAbstractItemDelegate()
+ {
+-	if (!pmap.get())
++	if (pmap.isNull())
+ 	{
+ 		pmap.reset( new QPixmap(pixWidth, pixHeight) );
+ 	}
+diff --git a/scribus/ui/colorlistbox.cpp b/scribus/ui/colorlistbox.cpp
+index 9f3897b..99f280f 100644
+--- a/scribus/ui/colorlistbox.cpp
++++ b/scribus/ui/colorlistbox.cpp
+@@ -83,7 +83,7 @@ public:
+ 
+ void ColorSmallItemDelegate::redraw(const QVariant& data) const
+ {
+-	QPixmap* pPixmap = ScListBoxPixmap<15,15>::pmap.get();
++	QPixmap* pPixmap = ScListBoxPixmap<15,15>::pmap.data();
+ 	pPixmap->fill(Qt::transparent);
+ 	if (data.canConvert<ColorPixmapValue>())
+ 	{
+@@ -101,7 +101,7 @@ void ColorSmallItemDelegate::redraw(const QVariant& data) const
+ 
+ void ColorWideItemDelegate::redraw(const QVariant& data) const
+ {
+-	QPixmap* pPixmap = ScListBoxPixmap<30,15>::pmap.get();
++	QPixmap* pPixmap = ScListBoxPixmap<30,15>::pmap.data();
+ 	pPixmap->fill(Qt::transparent);
+ 	if (data.canConvert<ColorPixmapValue>())
+ 	{
+@@ -134,7 +134,7 @@ void ColorFancyItemDelegate::redraw(const QVariant& data) const
+ 		iconsInitialized = true;
+ 	}
+ 
+-	QPixmap* pPixmap = ScListBoxPixmap<60,15>::pmap.get();
++	QPixmap* pPixmap = ScListBoxPixmap<60,15>::pmap.data();
+ 	pPixmap->fill(Qt::transparent);
+ 
+ 	if (data.canConvert<ColorPixmapValue>())
+diff --git a/scribus/ui/propertiespalette_utils.cpp b/scribus/ui/propertiespalette_utils.cpp
+index f76743c..cadbb11 100644
+--- a/scribus/ui/propertiespalette_utils.cpp
++++ b/scribus/ui/propertiespalette_utils.cpp
+@@ -66,7 +66,7 @@ void LineFormatItemDelegate::redraw(const QVariant& data) const
+ 	QColor tmpf;
+ 	pmap->fill(Qt::white);
+ 	QPainter p;
+-	p.begin(pmap.get());
++	p.begin(pmap.data());
+ 	for (int its = item.m_Line.size()-1; its > -1; its--)
+ 	{
+ 		const ScColor& col = item.m_doc->PageColors[item.m_Line[its].Color];

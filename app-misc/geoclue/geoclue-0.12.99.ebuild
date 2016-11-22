@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="A geoinformation D-Bus service"
-HOMEPAGE="http://freedesktop.org/wiki/Software/GeoClue"
-SRC_URI="http://freedesktop.org/~hadess/${P}.tar.gz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/GeoClue"
+SRC_URI="https://freedesktop.org/~hadess/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils readme.gentoo
 
 DESCRIPTION="FUSE filesystem for SMB shares"
-HOMEPAGE="http://sourceforge.net/projects/smbnetfs"
+HOMEPAGE="https://sourceforge.net/projects/smbnetfs"
 SRC_URI="mirror://sourceforge/smbnetfs/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -17,7 +17,7 @@ IUSE="gnome"
 RDEPEND=">=sys-fs/fuse-2.3:=
 	>=net-fs/samba-3.2:=[smbclient(+)]
 	>=dev-libs/glib-2.30:=
-	gnome? ( gnome-base/gnome-keyring:= )"
+	gnome? ( gnome-base/libgnome-keyring:= )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

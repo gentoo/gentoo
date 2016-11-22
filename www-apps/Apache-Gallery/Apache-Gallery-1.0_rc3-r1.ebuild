@@ -28,7 +28,7 @@ DEPEND="${DEPEND}
 	dev-perl/URI
 	>=dev-perl/Image-Info-1.40.0
 	>=dev-perl/Image-Size-2.990.0
-	dev-perl/text-template
+	dev-perl/Text-Template
 	>=dev-perl/CGI-3.08
 	dev-perl/Image-Imlib2
 "

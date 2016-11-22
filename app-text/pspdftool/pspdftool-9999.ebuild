@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
-ESVN_REPO_URI="https://pspdftool.svn.sourceforge.net/svnroot/pspdftool/trunk"
+ESVN_REPO_URI="https://svn.code.sf.net/p/pspdftool/code/trunk"
 ESVN_PROJECT="pspdftool"
 
 [[ "${PV}" == "9999" ]] && EXTRA_ECLASS="subversion"
@@ -12,7 +12,7 @@ inherit autotools ${EXTRA_ECLASS}
 unset EXTRA_ECLASS
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
-HOMEPAGE="http://sourceforge.net/projects/pspdftool"
+HOMEPAGE="https://sourceforge.net/projects/pspdftool"
 [[ "${PV}" == "9999" ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 [[ "${PV}" == "9999" ]] || \
 KEYWORDS="~amd64 ~x86"

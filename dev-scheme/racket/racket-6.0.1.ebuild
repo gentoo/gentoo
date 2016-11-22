@@ -17,7 +17,7 @@ EGIT_REPO_URI="git://git.racket-lang.org/plt.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc +futures +jit minimal +places +threads +X"
 REQUIRED_USE="futures? ( jit )"
 
@@ -30,7 +30,7 @@ S="${WORKDIR}/${P}/src"
 
 src_prepare() {
 	#remove bundled libraries
-	rm -rf foreign/libffi/
+	rm -rf foreign/libffi/ || die
 }
 
 src_configure() {

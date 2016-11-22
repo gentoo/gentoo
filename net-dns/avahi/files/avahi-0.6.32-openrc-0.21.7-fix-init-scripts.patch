@@ -1,0 +1,18 @@
+diff -Naur avahi-0.6.32.orig/initscript/gentoo/avahi-daemon.in avahi-0.6.32/initscript/gentoo/avahi-daemon.in
+--- avahi-0.6.32.orig/initscript/gentoo/avahi-daemon.in	2016-02-15 21:13:45.000000000 -0500
++++ avahi-0.6.32/initscript/gentoo/avahi-daemon.in	2016-09-21 20:58:01.999109439 -0400
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2007 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+diff -Naur avahi-0.6.32.orig/initscript/gentoo/avahi-dnsconfd.in avahi-0.6.32/initscript/gentoo/avahi-dnsconfd.in
+--- avahi-0.6.32.orig/initscript/gentoo/avahi-dnsconfd.in	2016-02-15 21:13:45.000000000 -0500
++++ avahi-0.6.32/initscript/gentoo/avahi-dnsconfd.in	2016-09-21 20:58:12.683109618 -0400
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2007 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 

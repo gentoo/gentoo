@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit eutils cmake-utils
 
 DESCRIPTION="Cloud platform, core parts"
 HOMEPAGE="http://reverbrain.com/cocaine/"
-SRC_URI="https://github.com/cocaine/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/cocaine/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
-HOMEPAGE="https://bitbucket.org/mgorny/pshs/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/pshs/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

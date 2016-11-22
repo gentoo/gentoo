@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">vstakhov/rspamd</remote-id>
   </upstream>
+  <use>
+    <flag name="fann">Enable neural network plugin (requires <pkg>sci-mathematics/fann</pkg>).</flag>
+  </use>
 </pkgmetadata>

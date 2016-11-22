@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils eutils
 
 if [[ ${PV} == 9999 ]]; then
-	ESVN_REPO_URI="https://tora.svn.sourceforge.net/svnroot/tora/trunk/tora"
+	ESVN_REPO_URI="https://svn.code.sf.net/p/tora/code/trunk/tora"
 	inherit subversion
 	SRC_URI=""
 else

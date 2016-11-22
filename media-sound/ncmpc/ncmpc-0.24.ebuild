@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit multilib
 
 DESCRIPTION="A ncurses client for the Music Player Daemon (MPD)"
-HOMEPAGE="http://www.musicpd.org/clients/ncmpc/"
-SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+HOMEPAGE="https://www.musicpd.org/clients/ncmpc/"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,9 +16,9 @@ IUSE="artist-screen chat-screen colors debug +help-screen key-screen lirc lyrics
 
 RDEPEND=">=dev-libs/glib-2.12:2
 	>=media-libs/libmpdclient-2.3
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 	lirc? ( app-misc/lirc )
-	nls? ( sys-libs/ncurses[unicode] )"
+	nls? ( sys-libs/ncurses:*[unicode] )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"

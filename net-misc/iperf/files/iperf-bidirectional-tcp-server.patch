@@ -4,7 +4,7 @@ Description: Fix bidirectional TCP server exiting after the test
  for new connections.
 Author: Roberto Lumbreras <rover@debian.org>
 Bug-Redhat: https://bugzilla.redhat.com/show_bug.cgi?id=449796
-Forwarded: http://sourceforge.net/tracker/?func=detail&aid=1983829&group_id=128336&atid=711371
+Forwarded: https://sourceforge.net/tracker/?func=detail&aid=1983829&group_id=128336&atid=711371
 
 --- a/src/Client.cpp
 +++ b/src/Client.cpp

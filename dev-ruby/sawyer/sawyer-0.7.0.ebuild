@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/lostisland/sawyer"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend "<dev-ruby/faraday-0.10

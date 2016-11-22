@@ -7,9 +7,6 @@
   </maintainer>
   <longdescription lang="en">
   </longdescription>
-  <use>
-    <flag name="nova">Installs Openstack Nova for it's libraries</flag>
-  </use>
   <upstream>
     <remote-id type="github">kanaka/noVNC</remote-id>
   </upstream>

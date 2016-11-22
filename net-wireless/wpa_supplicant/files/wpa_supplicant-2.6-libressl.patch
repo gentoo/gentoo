@@ -1,0 +1,81 @@
+From d53b107120af86a0c711bac950bfc2fa728cb4e6 Mon Sep 17 00:00:00 2001
+From: Julian Ospald <hasufell@hasufell.de>
+Date: Fri, 7 Oct 2016 17:45:46 +0200
+Subject: [PATCH] Fix LibreSSL compatibility
+Upstream: pending, http://lists.infradead.org/pipermail/hostap/2016-October/036458.html
+
+This basically just follows
+587b0457e0238b7b1800d46f5cdd5e1d2b06732f
+with the same pattern, which was missed here.
+
+Signed-off-by: Julian Ospald <hasufell@hasufell.de>
+---
+ src/crypto/crypto_openssl.c | 4 ++--
+ src/crypto/tls_openssl.c    | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/crypto/crypto_openssl.c b/src/crypto/crypto_openssl.c
+index 19e0e2b..b3d1b07 100644
+--- a/src/crypto/crypto_openssl.c
++++ b/src/crypto/crypto_openssl.c
+@@ -611,7 +611,7 @@ void crypto_cipher_deinit(struct crypto_cipher *ctx)
+ 
+ void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	DH *dh;
+ 	struct wpabuf *pubkey = NULL, *privkey = NULL;
+ 	size_t publen, privlen;
+@@ -712,7 +712,7 @@ err:
+ 
+ void * dh5_init_fixed(const struct wpabuf *priv, const struct wpabuf *publ)
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	DH *dh;
+ 
+ 	dh = DH_new();
+diff --git a/src/crypto/tls_openssl.c b/src/crypto/tls_openssl.c
+index 23ac64b..a7d4880 100644
+--- a/src/crypto/tls_openssl.c
++++ b/src/crypto/tls_openssl.c
+@@ -919,7 +919,7 @@ void * tls_init(const struct tls_config *conf)
+ 		}
+ #endif /* OPENSSL_FIPS */
+ #endif /* CONFIG_FIPS */
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 		SSL_load_error_strings();
+ 		SSL_library_init();
+ #ifndef OPENSSL_NO_SHA256
+@@ -1043,7 +1043,7 @@ void tls_deinit(void *ssl_ctx)
+ 
+ 	tls_openssl_ref_count--;
+ 	if (tls_openssl_ref_count == 0) {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ #ifndef OPENSSL_NO_ENGINE
+ 		ENGINE_cleanup();
+ #endif /* OPENSSL_NO_ENGINE */
+@@ -2334,7 +2334,7 @@ static int tls_connection_client_cert(struct tls_connection *conn,
+ 		return 0;
+ 
+ #ifdef PKCS12_FUNCS
+-#if OPENSSL_VERSION_NUMBER < 0x10002000L
++#if OPENSSL_VERSION_NUMBER < 0x10002000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	/*
+ 	 * Clear previously set extra chain certificates, if any, from PKCS#12
+ 	 * processing in tls_parse_pkcs12() to allow OpenSSL to build a new
+@@ -3976,7 +3976,7 @@ int tls_connection_set_params(void *tls_ctx, struct tls_connection *conn,
+ 		engine_id = "pkcs11";
+ 
+ #if defined(EAP_FAST) || defined(EAP_FAST_DYNAMIC) || defined(EAP_SERVER_FAST)
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	if (params->flags & TLS_CONN_EAP_FAST) {
+ 		wpa_printf(MSG_DEBUG,
+ 			   "OpenSSL: Use TLSv1_method() for EAP-FAST");
+-- 
+2.10.1
+

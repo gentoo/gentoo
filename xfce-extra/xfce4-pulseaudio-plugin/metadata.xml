@@ -6,7 +6,7 @@
 		<name>XFCE Team</name>
 	</maintainer>
 	<use>
-		<flag name="keybinder">Enable support for global hotkeys using <pkg>dev-libs/keybdiner</pkg>.</flag>
+		<flag name="keybinder">Enable support for global hotkeys using <pkg>dev-libs/keybinder</pkg>.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">andrzej-r/xfce4-pulseaudio-plugin</remote-id>

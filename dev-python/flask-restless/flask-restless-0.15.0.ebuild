@@ -3,13 +3,13 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
 PYTHON_REQ_USE="sqlite"
 inherit distutils-r1
 
 DESCRIPTION="Flask extension for easy ReSTful API generation"
-HOMEPAGE="http://packages.python.org/Flask-Restless/"
+HOMEPAGE="https://flask-restless.readthedocs.io/ https://github.com/jfinkels/flask-restless"
 SRC_URI="https://github.com/jfinkels/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( AGPL-3 BSD )"

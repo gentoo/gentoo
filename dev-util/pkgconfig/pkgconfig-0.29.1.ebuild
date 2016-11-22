@@ -18,11 +18,11 @@ if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SRC_URI="http://pkgconfig.freedesktop.org/releases/${MY_P}.tar.gz"
+	SRC_URI="https://pkgconfig.freedesktop.org/releases/${MY_P}.tar.gz"
 fi
 
 DESCRIPTION="Package config system that manages compile/link flags"
-HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
+HOMEPAGE="https://pkgconfig.freedesktop.org/wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,7 +31,8 @@ IUSE="elibc_FreeBSD elibc_glibc hardened internal-glib"
 RDEPEND="!internal-glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 	!dev-util/pkgconf[pkg-config]
 	!dev-util/pkg-config-lite
-	!dev-util/pkgconfig-openbsd[pkg-config]"
+	!dev-util/pkgconfig-openbsd[pkg-config]
+	virtual/libintl"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -67,6 +68,12 @@ multilib_src_configure() {
 			# not good, esp. since Carbon should be deprecated
 			[[ ${CHOST} == *-darwin* ]] && \
 				append-ldflags -framework CoreFoundation -framework Carbon
+			if [[ ${CHOST} == *-solaris* ]] ; then
+				# required due to __EXTENSIONS__
+				append-cppflags -DENABLE_NLS
+				# similar to Darwin
+				append-ldflags -lintl
+			fi
 		fi
 	else
 		if ! has_version dev-util/pkgconfig; then

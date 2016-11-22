@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit python-any-r1 autotools-utils
 
@@ -25,3 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sysmacros.patch #579988
+)

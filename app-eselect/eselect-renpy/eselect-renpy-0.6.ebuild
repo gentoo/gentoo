@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="app-eselect/eselect-lib-bin-symlink"
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>cedk@gentoo.org</email>
-    <name>Cédric Krier</name>
-  </maintainer>
-  <longdescription lang="en">
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+		<name>Cédric Krier</name>
+	</maintainer>
+	<longdescription lang="en">
 		A module to handle standardized numbers and codes
 	</longdescription>
-  <use>
-    <flag name="vies">Enable VIES</flag>
-  </use>
-  <upstream>
-    <remote-id type="pypi">python-stdnum</remote-id>
-  </upstream>
+	<use>
+		<flag name="vies">Enable VIES</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">python-stdnum</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Another Modeline Calculator, generates quality X11 display configs easily"
-HOMEPAGE="http://sourceforge.net/projects/amlc.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/amlc.berlios/"
 SRC_URI="https://dev.gentoo.org/~jer/${P}.cpp"
 
 LICENSE="GPL-2"

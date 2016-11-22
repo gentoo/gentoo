@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit vdr-plugin-2
+inherit vdr-plugin-2 flag-o-matic
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -31,6 +31,9 @@ PATCHES=("${FILESDIR}/${P}-i18n-fix.diff")
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
+
+	# wrt bug 595390
+	append-cxxflags $(test-flags-CXX -std=gnu++03) -std=gnu++03
 
 	epatch "${FILESDIR}/${P}-gentoo.diff"
 	epatch "${FILESDIR}/${P}-timeout.diff"

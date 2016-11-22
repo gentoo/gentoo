@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -84,20 +84,12 @@ pkg_preinst() {
 		for f in /var/games/emacs/{snake,tetris}-scores; do
 			if [[ -e ${EROOT}${f} ]]; then
 				cp "${EROOT}${f}" "${ED}${f}" || die
-			elif [[ -e ${EROOT}/var/lib${f#/var} ]]; then
-				# backwards compatibility
-				cp "${EROOT}/var/lib${f#/var}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
 			chgrp gamestat "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
 
-		if [[ -d ${EROOT}/var/games && -z $(find "${EROOT}"/var/games \
-				-maxdepth 0 -uid 0 -gid 0 -perm 755 -print) ]]; then
-			chown 0:0 "${EROOT}"/var/games || die
-			chmod 755 "${EROOT}"/var/games || die
-		fi
 		if has 1.4-r1 ${REPLACING_VERSIONS} \
 				&& [[ -d ${EROOT}/var/games/emacs ]]; then
 			elog "Updating owner and permissions of score file directory."

@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp autotools
 
 DESCRIPTION="The Insidious Big Brother Database"
-HOMEPAGE="http://savannah.nongnu.org/projects/bbdb/"
+HOMEPAGE="https://savannah.nongnu.org/projects/bbdb/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ GPL-1+ FDL-1.3+"

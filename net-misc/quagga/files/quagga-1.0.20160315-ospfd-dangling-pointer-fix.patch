@@ -1,0 +1,134 @@
+From bb01bdd740339b0c07d8ed0786811801b2a79192 Mon Sep 17 00:00:00 2001
+From: Jafar Al-Gharaibeh <jafar@atcorp.com>
+Date: Thu, 21 Apr 2016 21:22:33 +0000
+Subject: ospfd: fix - correct neighbor index on changing/p2p/virtual links
+
+ospfd keeps a list of neighbor routers for each configured interface. This
+ list is indexed using the neighbor router id in case of point-to-point and
+ virtual link types, otherwise the list is indexed using the neighbor's
+ source IP (RFC 2328, page 96). The router adds itself as a "pseudo" neighbor
+ on each link, and also keeps a pointer called (nbr_self) to the neighbor
+ structure. This takes place when the interface is first configured. Currently
+ ospfd adds this pseudo neighbor before the link parameters are fully configure,
+ including whether the link type is point-to-point or virtual link. This causes
+ the pseudo neighbor to be always indexed using the source IP address regardless
+ of th link type. For point-to-point and virtual links, this causes the lookup
+ for the pseudo neighbor to always fail because the lookup is done using the
+ router id whereas the neighbor was added using its source IP address.
+ This becomes really problematic if there is a state change that requires a
+ rebuild of nbr_self, changing the router id for example. When resetting
+ nbr_self, the router first tries to remove the pseudo neighbor form its
+ neighbor list on each link by looking it up and resetting any references to it
+ before freeing the neighbor structure. since the lookup fails to retrieve any
+ references in the case of point-to-point and virtual links the neighbor
+ structure is freed leaving dangling references to it. Any access to the
+ neighbor list after that is bound to stumble over this dangling pointer
+ causing ospfd to crash.
+
+Signed-off-by: Jafar Al-Gharaibeh <jafar@atcorp.com>
+Tested-by: NetDEF CI System <cisystem@netdef.org>
+---
+diff --git a/ospfd/ospf_interface.c b/ospfd/ospf_interface.c
+index f4242b0..d54bc47 100644
+--- a/ospfd/ospf_interface.c
++++ b/ospfd/ospf_interface.c
+@@ -232,8 +232,8 @@ ospf_if_new (struct ospf *ospf, struct interface *ifp, struct prefix *p)
+   /* Set default values. */
+   ospf_if_reset_variables (oi);
+ 
+-  /* Add pseudo neighbor. */
+-  oi->nbr_self = ospf_nbr_new (oi);
++  /* Set pseudo neighbor to Null */
++  oi->nbr_self = NULL;
+ 
+   oi->ls_upd_queue = route_table_init ();
+   oi->t_ls_upd_event = NULL;
+@@ -902,7 +902,9 @@ ospf_vl_new (struct ospf *ospf, struct ospf_vl_data *vl_data)
+   if (IS_DEBUG_OSPF_EVENT)
+     zlog_debug ("ospf_vl_new(): set associated area to the backbone");
+ 
+-  ospf_nbr_add_self (voi);
++  /* Add pseudo neighbor. */
++  ospf_nbr_self_reset (voi);
++
+   ospf_area_add_if (voi->area, voi);
+ 
+   ospf_if_stream_set (voi);
+diff --git a/ospfd/ospf_neighbor.c b/ospfd/ospf_neighbor.c
+index 862de5e..06e63dd 100644
+--- a/ospfd/ospf_neighbor.c
++++ b/ospfd/ospf_neighbor.c
+@@ -181,6 +181,35 @@ ospf_nbr_delete (struct ospf_neighbor *nbr)
+ 
+       route_unlock_node (rn);
+     }
++  else
++    {
++      /*
++       * This neighbor was not found, but before we move on and
++       * free the neighbor structre, make sure that it was not
++       * indexed incorrectly and ended up in the "worng" place
++       */
++
++      /* Reverse the lookup rules */
++      if (oi->type == OSPF_IFTYPE_VIRTUALLINK ||
++	  oi->type == OSPF_IFTYPE_POINTOPOINT)
++	p.u.prefix4 = nbr->src;
++      else
++	p.u.prefix4 = nbr->router_id;
++
++      rn = route_node_lookup (oi->nbrs, &p);
++      if (rn){
++	/* We found the neighbor!
++	 * Now make sure it is not the exact same neighbor
++	 * structure that we are about to free
++	 */
++	if (nbr == rn->info){
++	  /* Same neighbor, drop the reference to it */
++	  rn->info = NULL;
++	  route_unlock_node (rn);
++	}
++	route_unlock_node (rn);
++      }
++    }
+ 
+   /* Free ospf_neighbor structure. */
+   ospf_nbr_free (nbr);
+@@ -207,7 +236,9 @@ ospf_nbr_bidirectional (struct in_addr *router_id,
+ void
+ ospf_nbr_self_reset (struct ospf_interface *oi)
+ {
+-  ospf_nbr_delete (oi->nbr_self);
++  if (oi->nbr_self)
++    ospf_nbr_delete (oi->nbr_self);
++
+   oi->nbr_self = ospf_nbr_new (oi);
+   ospf_nbr_add_self (oi);
+ }
+diff --git a/ospfd/ospfd.c b/ospfd/ospfd.c
+index c9fcdc3..cc76e9e 100644
+--- a/ospfd/ospfd.c
++++ b/ospfd/ospfd.c
+@@ -754,9 +754,6 @@ add_ospf_interface (struct connected *co, struct ospf_area *area)
+   oi->params = ospf_lookup_if_params (co->ifp, oi->address->u.prefix4);
+   oi->output_cost = ospf_if_get_output_cost (oi);
+ 
+-  /* Add pseudo neighbor. */
+-  ospf_nbr_add_self (oi);
+-
+   /* Relate ospf interface to ospf instance. */
+   oi->ospf = area->ospf;
+ 
+@@ -765,6 +762,9 @@ add_ospf_interface (struct connected *co, struct ospf_area *area)
+      skip network type setting. */
+   oi->type = IF_DEF_PARAMS (co->ifp)->type;
+ 
++  /* Add pseudo neighbor. */
++  ospf_nbr_self_reset (oi);
++
+   ospf_area_add_if (oi->area, oi);
+ 
+   /* if router_id is not configured, dont bring up
+--
+cgit v0.9.0.2
+

@@ -1,5 +1,5 @@
---- configure.ac.orig	2007-09-27 09:27:28.731439558 +0100
-+++ configure.ac	2007-09-27 09:37:45.755835491 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -9,7 +9,7 @@
  # *not* the same as the "public" version number.  CURRENT:REVISION:AGE
  SHARED_VERSION_INFO="2:4:0"

@@ -1,19 +1,20 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 FROM_LANG="Vietnamese"
 TO_LANG="English"
 
 inherit stardict
 
-HOMEPAGE="http://forum.vnoss.org/viewtopic.php?id=1818"
-SRC_URI="http://james.dyndns.ws/pub/Dictionary/StarDict-James/VietAnh23K.zip"
+HOMEPAGE="https://sourceforge.net/projects/ovdp/"
+SRC_URI="mirror://gentoo/VietAnh23K.zip"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
-RDEPEND=""
 
 S=${WORKDIR}/VietAnh

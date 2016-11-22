@@ -1,0 +1,11 @@
+--- a/CPP/myWindows/StdAfx.h
++++ b/CPP/myWindows/StdAfx.h
+@@ -32,7 +32,7 @@
+ #include <errno.h>
+ #include <math.h>
+ 
+-#ifdef __NETWARE__
++#if defined(__NETWARE__) || defined(__MACH__)
+ #include <sys/types.h>
+ #endif
+ 

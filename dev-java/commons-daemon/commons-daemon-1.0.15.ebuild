@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 WANT_AUTOCONF=2.5
+
 JAVA_PKG_IUSE="doc examples source"
 
-inherit eutils autotools java-pkg-2 java-ant-2
+inherit autotools java-pkg-2 java-ant-2
 
 DESCRIPTION="Tools to allow Java programs to run as UNIX daemons"
 SRC_URI="mirror://apache/commons/daemon/source/${P}-src.tar.gz"
@@ -15,16 +16,19 @@ HOMEPAGE="http://commons.apache.org/daemon/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="kernel_linux"
 
-COMMON_DEP="kernel_linux? ( sys-libs/libcap )"
+CDEPEND="kernel_linux? ( sys-libs/libcap )"
 
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.4"
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.4"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${P}-src"
 

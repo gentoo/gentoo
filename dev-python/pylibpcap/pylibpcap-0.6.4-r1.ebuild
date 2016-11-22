@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to libpcap"
-HOMEPAGE="http://sourceforge.net/projects/pylibpcap/"
+HOMEPAGE="https://sourceforge.net/projects/pylibpcap/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

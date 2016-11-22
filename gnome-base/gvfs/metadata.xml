@@ -19,7 +19,7 @@ applications not using gio to access the gvfs filesystems.
 	<flag name="fuse">Enables fuse mount points in $HOME/.gvfs for legacy application access</flag>
 	<flag name="gnome-online-accounts">Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
 	<flag name="google">Enables support for accessing Google accounts via <pkg>dev-libs/libgdata</pkg></flag>
-	<flag name="http">Enable the HTTP/DAV backend using <pkg>net-libs/libsoup-gnome</pkg></flag>
+	<flag name="http">Enable the HTTP/DAV backend using <pkg>net-libs/libsoup</pkg></flag>
 	<flag name="nfs">Enable NFS client support via <pkg>net-fs/libnfs</pkg>.</flag>
 	<flag name="udev">Enable udev base replacement code for cdda feature</flag>
 </use>

@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils eutils
 
 DESCRIPTION="Library for reading and writing matlab files"
-HOMEPAGE="http://sourceforge.net/projects/matio/"
+HOMEPAGE="https://sourceforge.net/projects/matio/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"

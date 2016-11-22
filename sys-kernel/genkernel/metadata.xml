@@ -7,8 +7,11 @@
 	<use>
 		<flag name="crypt">Obsolete USE flag. Use cryptsetup for LUKS support. (bug ##414523)</flag>
 		<flag name="cryptsetup">Enable support for Luks disk encryption using <pkg>sys-fs/cryptsetup</pkg></flag>
+		<flag name="firmware">Prefer system firmware <pkg>sys-kernel/linux-firmware</pkg> over local copy.</flag>
 	</use>
+	<!--
 	<upstream>
-		<remote-id type="sourceforge">fuse</remote-id>
+		<remote-id type="gentoo">git://git.gentoo.org/proj/genkernel</remote-id>
 	</upstream>
+	-->
 </pkgmetadata>

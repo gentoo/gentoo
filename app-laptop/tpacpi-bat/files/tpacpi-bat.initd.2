@@ -1,0 +1,76 @@
+#!/sbin/openrc-run
+# Copyright (C) 2012-2016 Christoph Junghans <junghans@gentoo.org>
+#
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_started_commands="low high info"
+
+depend() {
+	after modules
+}
+
+start() {
+	local state1
+
+	ebegin "Making sure that module 'acpi_call' is loaded"
+	modprobe acpi_call
+	state1=$?
+	eend ${state1}
+
+	[ "${state1}" -ne "0" ] && return 1
+
+	ebegin "Starting ${SVCNAME}"
+	set_all ${TPACPI_BAT_THRESH_START} ${TPACPI_BAT_THRESH_STOP}
+	eend $?
+}
+
+stop() {
+	einfo "Nothing required to be done to stop ${SVCNAME}"
+}
+
+require_started() {
+	if ! service_started; then
+		"${RC_SERVICE}" start || return $?
+	fi
+}
+
+high() {
+	require_started
+
+	einfo "Switching ${SVCNAME} to high thesholds"
+	set_all ${TPACPI_BAT_HIGH_THRESH_START} ${TPACPI_BAT_HIGH_THRESH_STOP}
+}
+
+low() {
+	require_started
+
+	einfo "Switching ${SVCNAME} to low thesholds"
+	set_all ${TPACPI_BAT_LOW_THRESH_START} ${TPACPI_BAT_LOW_THRESH_STOP}
+}
+
+set_all() {
+	local tstart=$1
+	local tstop=$2
+	local bat
+
+	for bat in ${BATS}; do
+		ebegin "  setting thresholds for ${bat}: $tstart $tstop"
+		/usr/bin/tpacpi-bat -s startThreshold ${bat} ${tstart}
+		/usr/bin/tpacpi-bat -s stopThreshold ${bat} ${tstop}
+		eend $?
+	done
+}
+
+info() {
+	local tstart
+	local tstop
+	local bat
+
+	require_started
+
+	for bat in ${BATS}; do
+		tstart=$(/usr/bin/tpacpi-bat -g startThreshold ${bat})
+		tstop=$(/usr/bin/tpacpi-bat -g stopThreshold ${bat})
+		einfo "Battery ${bat}: ${tstart} ${tstop}"
+	done
+}

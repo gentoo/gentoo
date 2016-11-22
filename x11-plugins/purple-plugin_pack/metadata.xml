@@ -4,7 +4,7 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="talkfilters">Enable support for
-		<pkg>app-text/talklfilters</pkg></flag>
+		<pkg>app-text/talkfilters</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="bitbucket">rekkanoryo/purple-plugin-pack</remote-id>

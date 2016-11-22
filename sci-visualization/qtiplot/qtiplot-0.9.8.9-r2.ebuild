@@ -42,7 +42,7 @@ CDEPEND="
 	>=x11-libs/gl2ps-1.3.5[png]
 	>=dev-cpp/muParser-1.32
 	>=dev-libs/boost-1.35.0:=
-	dev-libs/quazip
+	dev-libs/quazip[qt4]
 	media-libs/libpng:=
 	sci-libs/alglib:=
 	<sci-libs/gsl-2

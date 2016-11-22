@@ -1,5 +1,5 @@
---- common/exf.c
-+++ common/exf.c
+--- a/common/exf.c
++++ b/common/exf.c
 @@ -228,13 +228,18 @@
  		/*
  		 * XXX

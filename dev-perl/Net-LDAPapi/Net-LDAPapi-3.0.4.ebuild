@@ -9,7 +9,7 @@ DIST_AUTHOR=MISHIKAL
 inherit eutils multilib perl-module
 
 DESCRIPTION="Perl5 Module Supporting LDAP API"
-HOMEPAGE="http://sourceforge.net/projects/net-ldapapi/
+HOMEPAGE="https://sourceforge.net/projects/net-ldapapi/
 	http://search.cpan.org/~mishikal/Net-LDAPapi/"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

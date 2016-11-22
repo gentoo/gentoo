@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,11 +9,11 @@ KMNAME="kde-workspace"
 inherit kde4-meta pax-utils
 
 DESCRIPTION="The reliable KDE session manager that talks the standard X11R6"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kcminit)
+	kde-plasma/kcminit:4
 	$(add_kdebase_dep libkworkspace)
 	media-libs/qimageblitz
 	x11-libs/libICE
@@ -22,7 +22,7 @@ DEPEND="
 	x11-libs/libXrender
 "
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep libkgreeter)
+	kde-plasma/libkgreeter:4
 "
 
 KMEXTRACTONLY="

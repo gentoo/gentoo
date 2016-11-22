@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools games
 
 DESCRIPTION="A simple arcade/puzzle game, loosely based on the retro classic Frogger"
-HOMEPAGE="http://sourceforge.net/projects/fishsupper/"
+HOMEPAGE="https://sourceforge.net/projects/fishsupper/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-2.5 GPL-3"

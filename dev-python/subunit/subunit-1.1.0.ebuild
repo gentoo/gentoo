@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1 eutils multilib-minimal
 
@@ -19,10 +19,11 @@ IUSE="static-libs test"
 
 RDEPEND="
 	>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
-	dev-python/extras[${PYTHON_USEDEP}]"
+	dev-python/extras[${PYTHON_USEDEP}]
+	dev-lang/perl:=
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-lang/perl:=
 	>=dev-libs/check-0.9.11[${MULTILIB_USEDEP}]
 	>=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}]
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]

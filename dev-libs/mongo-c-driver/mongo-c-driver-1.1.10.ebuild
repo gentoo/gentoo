@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,11 +13,14 @@ SRC_URI="https://github.com/mongodb/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE="debug examples sasl ssl static-libs test"
+IUSE="debug examples libressl sasl ssl static-libs test"
 
 RDEPEND=">=dev-libs/libbson-1.1.10
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( dev-libs/openssl:= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	test? ( dev-db/mongodb )"
 

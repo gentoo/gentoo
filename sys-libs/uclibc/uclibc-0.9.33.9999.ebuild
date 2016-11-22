@@ -19,10 +19,10 @@ fi
 
 MY_P=uClibc-${PV}
 DESCRIPTION="C library for developing embedded Linux systems"
-HOMEPAGE="http://www.uclibc.org/"
+HOMEPAGE="https://www.uclibc.org/"
 if [[ ${PV} != *9999 ]] ; then
 	PATCH_VER=""
-	SRC_URI="http://uclibc.org/downloads/${MY_P}.tar.bz2
+	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
 		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
 	KEYWORDS="-* ~amd64 ~arm ~m68k ~mips ~ppc ~sh ~sparc ~x86"
 fi
@@ -146,6 +146,7 @@ src_config() {
 	fi
 
 	defs=(
+		LDSO_GNU_HASH_SUPPORT
 		MALLOC_GLIBC_COMPAT
 		DO_C99_MATH
 		UCLIBC_HAS_{CTYPE_CHECKED,WCHAR,HEXADECIMAL_FLOATS,GLIBC_CUSTOM_PRINTF,FOPEN_EXCLUSIVE_MODE,GLIBC_CUSTOM_STREAMS,PRINTF_M_SPEC}

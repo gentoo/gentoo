@@ -1,0 +1,16 @@
+diff --git a/src/Shelly/Lifted.hs b/src/Shelly/Lifted.hs
+index 825201d..cdca61b 100644
+--- a/src/Shelly/Lifted.hs
++++ b/src/Shelly/Lifted.hs
+@@ -2,4 +2,4 @@
+              FlexibleInstances, FlexibleContexts, IncoherentInstances,
+-             TypeFamilies, ExistentialQuantification, RankNTypes,
+-             ImpredicativeTypes #-}
++             TypeFamilies, ExistentialQuantification, RankNTypes
++  #-}
+ {-# OPTIONS_GHC -fno-warn-orphans #-}
+@@ -299,3 +299,3 @@ instance (MonadShControl m, Monoid w)
+ controlSh :: MonadShControl m => ((forall x. m x -> Sh (ShM m x)) -> Sh (ShM m a)) -> m a
+-controlSh = liftShWith >=> restoreSh
++controlSh r = liftShWith r >>= restoreSh
+ {-# INLINE controlSh #-}

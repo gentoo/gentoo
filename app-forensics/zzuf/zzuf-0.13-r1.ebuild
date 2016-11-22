@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="Transparent application input fuzzer"
-HOMEPAGE="http://libcaca.zoy.org/wiki/zzuf/"
+HOMEPAGE="http://caca.zoy.org/wiki/zzuf"
 SRC_URI="http://caca.zoy.org/files/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~cardoe/distfiles/${P}-zzcat-zzat-rename.patch.bz2"
 

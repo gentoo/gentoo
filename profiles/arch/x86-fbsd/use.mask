@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
+# Unkeyworded
+qt5
+
 # Unmask the flag which corresponds to ARCH.
 -x86-fbsd
 -abi_x86_32

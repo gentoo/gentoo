@@ -1,5 +1,5 @@
---- libaacskeys.make.orig	2010-02-16 18:37:31.000000000 -0700
-+++ libaacskeys.make	2010-02-16 18:40:15.000000000 -0700
+--- a/libaacskeys.make
++++ b/libaacskeys.make
 @@ -13,12 +13,12 @@
    LIBDIR := .
    OBJDIR := obj/linux/ReleaseLib

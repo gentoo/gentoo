@@ -15,7 +15,6 @@
 		routines.  It can easily be extended with custom compression,
 		decompression, and contents definitions.
 	</longdescription>
-	<natural-name>pyDeComp</natural-name>
 	<upstream>
 		<remote-id type="github">dol-sen/pyDeComp</remote-id>
 	</upstream>

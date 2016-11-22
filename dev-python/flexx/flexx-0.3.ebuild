@@ -4,14 +4,14 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4,5} )
+PYTHON_COMPAT=( python3_{4,5} )
 
 inherit distutils-r1
 
 DESCRIPTION="Pure Python toolkit for creating GUI's using web technology"
 HOMEPAGE="
 	http://flexx.readthedocs.org
-	http://github.com/zoofio/flexx
+	https://github.com/zoofio/flexx
 	http://pypi.python.org/pypi/flexx"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 

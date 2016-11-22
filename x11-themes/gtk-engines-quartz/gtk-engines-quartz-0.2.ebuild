@@ -9,7 +9,7 @@ inherit autotools
 MY_NAME=gtk-quartz-engine-${PV}
 
 DESCRIPTION="OSX GTK+ Theme Engine"
-HOMEPAGE="http://sourceforge.net/apps/trac/gtk-osx/wiki/GtkQuartzEngine"
+HOMEPAGE="https://sourceforge.net/apps/trac/gtk-osx/wiki/GtkQuartzEngine"
 SRC_URI="http://downloads.sourceforge.net/project/gtk-osx/GTK%20Quartz%20Engine/${MY_NAME}.tar.gz"
 
 LICENSE="GPL-2"

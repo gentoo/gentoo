@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 # Additional options that are passed to the daemon.
 DAEMON_OPTS="-c ${CONFIGFILE}"

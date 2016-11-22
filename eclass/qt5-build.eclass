@@ -90,7 +90,12 @@ case ${PV} in
 		# official stable release
 		QT5_BUILD_TYPE="release"
 		MY_P=${QT5_MODULE}-opensource-src-${PV}
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
+		# bug 586646
+		if [[ ${PV} = 5.6.1 ]]; then
+			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}-1/submodules/${MY_P}-1.tar.xz"
+		else
+			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
+		fi
 		S=${WORKDIR}/${MY_P}
 		;;
 esac
@@ -136,19 +141,21 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # @DESCRIPTION:
 # Unpacks the sources.
 qt5-build_src_unpack() {
-	local min_gcc4_minor_version=5
-	if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
-		min_gcc4_minor_version=7
-	fi
-	if [[ $(gcc-major-version) -lt 4 ]] || \
-	   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
-		if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
-			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
-			die "GCC 4.${min_gcc4_minor_version} or later required"
-		else
-			ewarn
-			ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported"
-			ewarn
+	if tc-is-gcc; then
+		local min_gcc4_minor_version=5
+		if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
+			min_gcc4_minor_version=7
+		fi
+		if [[ $(gcc-major-version) -lt 4 ]] || \
+		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
+			if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
+				eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
+				die "GCC 4.${min_gcc4_minor_version} or later required"
+			else
+				ewarn
+				ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported"
+				ewarn
+			fi
 		fi
 	fi
 
@@ -199,7 +206,7 @@ qt5-build_src_prepare() {
 
 		# Respect toolchain and flags in config.tests
 		find config.tests/unix -name '*.test' -type f -execdir \
-			sed -i -re '/(bin\/qmake|QMAKE")/ s/-nocache //' '{}' + || die
+			sed -i -e 's/-nocache //' '{}' + || die
 
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
@@ -537,7 +544,7 @@ qt5_base_configure() {
 		-shared
 
 		# always enable large file support
-		-largefile
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -largefile)
 
 		# disabling accessibility is not recommended by upstream, as
 		# it will break QStyle and may break other internal parts of Qt
@@ -547,8 +554,8 @@ qt5_base_configure() {
 		-no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
 
-		# obsolete flag, does nothing
-		#-qml-debug
+		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
@@ -557,9 +564,11 @@ qt5_base_configure() {
 		# use pkg-config to detect include and library paths
 		-pkg-config
 
-		# prefer system libraries (only common deps here)
+		# prefer system libraries (only common hard deps here)
 		-system-zlib
 		-system-pcre
+		# TODO after bug 581054
+		#$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
@@ -571,7 +580,7 @@ qt5_base_configure() {
 		-no-xkbcommon-x11 -no-xkbcommon-evdev
 		-no-xinput2 -no-xcb-xlib
 
-		# don't specify -no-gif because there is no way to override it later
+		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
 
 		# always enable glib event loop support
@@ -591,9 +600,6 @@ qt5_base_configure() {
 
 		# print verbose information about each configure test
 		-verbose
-
-		# obsolete flag, does nothing
-		#-nis
 
 		# always enable iconv support
 		-iconv
@@ -629,8 +635,7 @@ qt5_base_configure() {
 		-no-xkb -no-xrender
 
 		# disable obsolete/unused X11-related flags
-		# (not shown in ./configure -help output)
-		-no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
@@ -649,8 +654,9 @@ qt5_base_configure() {
 		# disable gstreamer by default, override in qtmultimedia
 		-no-gstreamer
 
-		# use upstream default
-		#-no-system-proxies
+		# respect system proxies by default: it's the most natural
+		# setting, and it'll become the new upstream default in 5.8
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -system-proxies)
 
 		# do not build with -Werror
 		-no-warnings-are-errors

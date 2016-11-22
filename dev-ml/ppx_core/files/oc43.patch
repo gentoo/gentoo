@@ -1,0 +1,788 @@
+diff -uNr ppx_core-113.33.00/js-utils/gen_install.ml ppx_core-113.33.01+4.03/js-utils/gen_install.ml
+--- ppx_core-113.33.00/js-utils/gen_install.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/js-utils/gen_install.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -31,7 +31,7 @@
+   |> List.map (fun line -> Scanf.sscanf line "%[^=]=%S" (fun k v -> (k, v)))
+ 
+ let remove_cwd =
+-  let prefix = Sys.getcwd () ^ "/" in
++  let prefix = Sys.getcwd () ^ Filename.dir_sep in
+   let len_prefix = String.length prefix in
+   fun fn ->
+     let len = String.length fn in
+diff -uNr ppx_core-113.33.00/_oasis ppx_core-113.33.01+4.03/_oasis
+--- ppx_core-113.33.00/_oasis	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/_oasis	2016-04-18 12:14:21.000000000 +0200
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_core
+-Version:          113.33.00
++Version:          113.33.01+4.03
+ Synopsis:         Standard library for ppx rewriters
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_core-113.33.00/opam ppx_core-113.33.01+4.03/opam
+--- ppx_core-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_core-113.33.01+4.03/opam	2016-04-18 12:27:13.000000000 +0200
+@@ -14,4 +14,4 @@
+   "ocamlfind"  {build & >= "1.3.2"}
+   "ppx_tools"  {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_core-113.33.00/src/ast_builder_intf.ml ppx_core-113.33.01+4.03/src/ast_builder_intf.ml
+--- ppx_core-113.33.00/src/ast_builder_intf.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_builder_intf.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -44,6 +44,11 @@
+   val elist : (expression list -> expression) with_loc
+   val plist : (pattern    list -> pattern   ) with_loc
+ 
++  val pstr_value_list :
++    loc:Location.t -> Asttypes.rec_flag -> value_binding list -> structure_item list
++  (** [pstr_value_list ~loc rf vbs] = [pstr_value ~loc rf vbs] if [vbs <> []], [[]]
++      otherwise. *)
++
+   val nonrec_type_declaration :
+     (name:string Location.loc
+      -> params:(core_type * Asttypes.variance) list
+diff -uNr ppx_core-113.33.00/src/ast_builder.ml ppx_core-113.33.01+4.03/src/ast_builder.ml
+--- ppx_core-113.33.00/src/ast_builder.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_builder.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -22,27 +22,31 @@
+ 
+   include Ast_builder_generated.M
+ 
++  let pstr_value_list ~loc rec_flag = function
++    | [] -> []
++    | vbs -> [pstr_value ~loc rec_flag vbs]
++
+   let nonrec_type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest =
+     let td = type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest in
+     { td with ptype_attributes =
+                 ({ txt = "nonrec"; loc }, PStr []) :: td.ptype_attributes }
+   ;;
+ 
+-  let eint ~loc t = pexp_constant ~loc (Const_int t)
+-  let echar ~loc t = pexp_constant ~loc (Const_char t)
+-  let estring ~loc t = pexp_constant ~loc (Const_string (t, None))
+-  let efloat ~loc t = pexp_constant ~loc (Const_float t)
+-  let eint32 ~loc t = pexp_constant ~loc (Const_int32 t)
+-  let eint64 ~loc t = pexp_constant ~loc (Const_int64 t)
+-  let enativeint ~loc t = pexp_constant ~loc (Const_nativeint t)
+-
+-  let pint ~loc t = ppat_constant ~loc (Const_int t)
+-  let pchar ~loc t = ppat_constant ~loc (Const_char t)
+-  let pstring ~loc t = ppat_constant ~loc (Const_string (t, None))
+-  let pfloat ~loc t = ppat_constant ~loc (Const_float t)
+-  let pint32 ~loc t = ppat_constant ~loc (Const_int32 t)
+-  let pint64 ~loc t = ppat_constant ~loc (Const_int64 t)
+-  let pnativeint ~loc t = ppat_constant ~loc (Const_nativeint t)
++  let eint ~loc t = pexp_constant ~loc (Pconst_integer (string_of_int t, None))
++  let echar ~loc t = pexp_constant ~loc (Pconst_char t)
++  let estring ~loc t = pexp_constant ~loc (Pconst_string (t, None))
++  let efloat ~loc t = pexp_constant ~loc (Pconst_float (t, None))
++  let eint32 ~loc t = pexp_constant ~loc (Pconst_integer (Int32.to_string t, Some 'l'))
++  let eint64 ~loc t = pexp_constant ~loc (Pconst_integer (Int64.to_string t, Some 'L'))
++  let enativeint ~loc t = pexp_constant ~loc (Pconst_integer (Nativeint.to_string t, Some 'n'))
++
++  let pint ~loc t = ppat_constant ~loc (Pconst_integer (string_of_int t, None))
++  let pchar ~loc t = ppat_constant ~loc (Pconst_char t)
++  let pstring ~loc t = ppat_constant ~loc (Pconst_string (t, None))
++  let pfloat ~loc t = ppat_constant ~loc (Pconst_float (t, None))
++  let pint32 ~loc t = ppat_constant ~loc (Pconst_integer (Int32.to_string t, Some 'l'))
++  let pint64 ~loc t = ppat_constant ~loc (Pconst_integer (Int64.to_string t, Some 'L'))
++  let pnativeint ~loc t = ppat_constant ~loc (Pconst_integer (Nativeint.to_string t, Some 'n'))
+ 
+   let ebool ~loc t = pexp_construct ~loc (Located.lident ~loc (string_of_bool t)) None
+   let pbool ~loc t = ppat_construct ~loc (Located.lident ~loc (string_of_bool t)) None
+@@ -77,10 +81,11 @@
+     | _ -> pexp_apply ~loc e el
+   ;;
+ 
+-  let eapply ~loc e el = pexp_apply ~loc e (List.map el ~f:(fun e -> ("", e)))
++  let eapply ~loc e el =
++    pexp_apply ~loc e (List.map el ~f:(fun e -> (Asttypes.Nolabel, e)))
+ 
+   let eabstract ~loc ps e =
+-    List.fold_right ps ~init:e ~f:(fun p e -> pexp_fun ~loc "" None p e)
++    List.fold_right ps ~init:e ~f:(fun p e -> pexp_fun ~loc Asttypes.Nolabel None p e)
+   ;;
+ 
+   let pconstruct cd arg = ppat_construct ~loc:cd.pcd_loc (Located.map_lident cd.pcd_name) arg
+@@ -111,6 +116,8 @@
+ module Make(Loc : sig val loc : Location.t end) : S = struct
+   include Ast_builder_generated.Make(Loc)
+ 
++  let pstr_value_list = Default.pstr_value_list
++
+   let nonrec_type_declaration ~name ~params ~cstrs ~kind ~private_ ~manifest =
+     Default.nonrec_type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest
+   ;;
+diff -uNr ppx_core-113.33.00/src/ast_pattern.ml ppx_core-113.33.01+4.03/src/ast_pattern.ml
+--- ppx_core-113.33.00/src/ast_pattern.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_pattern.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -80,6 +80,13 @@
+ 
+ let ( >>| ) t f = map t ~f
+ 
++let map0 (T func) ~f = T (fun ctx loc x k -> func ctx loc x (           k  f     ))
++let map1 (T func) ~f = T (fun ctx loc x k -> func ctx loc x (fun a   -> k (f a  )))
++let map2 (T func) ~f = T (fun ctx loc x k -> func ctx loc x (fun a b -> k (f a b)))
++
++let alt_option some none =
++  alt (map1 some ~f:(fun x -> Some x)) (map0 none ~f:None)
++
+ let many (T f) = T (fun ctx loc l k ->
+   k (List.map l ~f:(fun x -> f ctx loc x (fun x -> x))))
+ ;;
+@@ -96,25 +103,37 @@
+ 
+ let ( ^:: ) = cons
+ 
+-let eint       t = pexp_constant (const_int t)
+-let echar      t = pexp_constant (const_char t)
+-let estring    t = pexp_constant (const_string t drop)
+-let efloat     t = pexp_constant (const_float t)
+-let eint32     t = pexp_constant (const_int32 t)
+-let eint64     t = pexp_constant (const_int64 t)
++let echar      t = pexp_constant (pconst_char   t     )
++let estring    t = pexp_constant (pconst_string t drop)
++let efloat     t = pexp_constant (pconst_float  t drop)
++
++let pchar      t = ppat_constant (pconst_char   t     )
++let pstring    t = ppat_constant (pconst_string t drop)
++let pfloat     t = ppat_constant (pconst_float  t drop)
++
++let int'       (T f) = T (fun ctx loc x k -> f ctx loc (int_of_string       x) k)
++let int32'     (T f) = T (fun ctx loc x k -> f ctx loc (Int32.of_string     x) k)
++let int64'     (T f) = T (fun ctx loc x k -> f ctx loc (Int64.of_string     x) k)
++let nativeint' (T f) = T (fun ctx loc x k -> f ctx loc (Nativeint.of_string x) k)
++
++let const_int       t = pconst_integer (int'       t) none
++let const_int32     t = pconst_integer (int32'     t) (some (char 'l'))
++let const_int64     t = pconst_integer (int64'     t) (some (char 'L'))
++let const_nativeint t = pconst_integer (nativeint' t) (some (char 'n'))
++
++let eint       t = pexp_constant (const_int       t)
++let eint32     t = pexp_constant (const_int32     t)
++let eint64     t = pexp_constant (const_int64     t)
+ let enativeint t = pexp_constant (const_nativeint t)
+ 
+-let pint       t = ppat_constant (const_int t)
+-let pchar      t = ppat_constant (const_char t)
+-let pstring    t = ppat_constant (const_string t drop)
+-let pfloat     t = ppat_constant (const_float t)
+-let pint32     t = ppat_constant (const_int32 t)
+-let pint64     t = ppat_constant (const_int64 t)
++let pint       t = ppat_constant (const_int       t)
++let pint32     t = ppat_constant (const_int32     t)
++let pint64     t = ppat_constant (const_int64     t)
+ let pnativeint t = ppat_constant (const_nativeint t)
+ 
+ let single_expr_payload t = pstr (pstr_eval t nil ^:: nil)
+ 
+-let no_label t = string "" ** t
++let no_label t = (cst Asttypes.Nolabel ~to_string:(fun _ -> "Nolabel")) ** t
+ 
+ let attribute (T f1) (T f2) = T (fun ctx loc ((name : _ Location.loc), payload) k ->
+   let k = f1 ctx name.loc name.txt k in
+diff -uNr ppx_core-113.33.00/src/ast_pattern.mli ppx_core-113.33.01+4.03/src/ast_pattern.mli
+--- ppx_core-113.33.00/src/ast_pattern.mli	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_pattern.mli	2016-04-18 12:14:21.000000000 +0200
+@@ -115,6 +115,10 @@
+     one. *)
+ val alt : ('a, 'b, 'c) t -> ('a, 'b, 'c) t -> ('a, 'b, 'c) t
+ 
++(** Same as [alt], for the common case where the left-hand-side captures a value but not
++    the right-hand-side. *)
++val alt_option : ('a, 'v -> 'b, 'c) t -> ('a, 'b, 'c) t -> ('a, 'v option -> 'b, 'c) t
++
+ (** Same as [alt] *)
+ val ( ||| ) : ('a, 'b, 'c) t -> ('a, 'b, 'c) t -> ('a, 'b, 'c) t
+ 
+@@ -125,6 +129,10 @@
+ (** Same as [map] *)
+ val ( >>| ) : ('a, 'b, 'c) t -> ('d -> 'b) -> ('a, 'd, 'c) t
+ 
++val map0 : ('a,               'b, 'c) t -> f:               'v  -> ('a, 'v -> 'b, 'c) t
++val map1 : ('a, 'v1 ->        'b, 'c) t -> f:('v1 ->        'v) -> ('a, 'v -> 'b, 'c) t
++val map2 : ('a, 'v1 -> 'v2 -> 'b, 'c) t -> f:('v1 -> 'v2 -> 'v) -> ('a, 'v -> 'b, 'c) t
++
+ val ( ^:: ) : ('a, 'b, 'c) t -> ('a list, 'c, 'd) t -> ('a list, 'b, 'd) t
+ val many : ('a, 'b -> 'b, 'c) t -> ('a list, 'c list -> 'd, 'd) t
+ 
+@@ -194,7 +202,7 @@
+ 
+ val single_expr_payload : (expression, 'a, 'b) t -> (payload, 'a, 'b) t
+ 
+-val no_label : (expression, 'a, 'b) t -> (string * expression, 'a, 'b) t
++val no_label : (expression, 'a, 'b) t -> (Asttypes.arg_label * expression, 'a, 'b) t
+ 
+ val attribute : (string, 'a, 'b) t -> (payload, 'b, 'c) t -> (attribute, 'a, 'c) t
+ val extension : (string, 'a, 'b) t -> (payload, 'b, 'c) t -> (attribute, 'a, 'c) t
+diff -uNr ppx_core-113.33.00/src/attribute.ml ppx_core-113.33.01+4.03/src/attribute.ml
+--- ppx_core-113.33.00/src/attribute.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/attribute.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -15,6 +15,10 @@
+     ; "ocaml.doc"
+     ; "ocaml.text"
+     ; "nonrec"
++    ; "ocaml.noalloc"
++    ; "ocaml.unboxed"
++    ; "ocaml.untagged"
++    ; "ocaml.inline"
+     ]
+ ;;
+ 
+@@ -74,6 +78,7 @@
+     | Pstr_eval               : structure_item          t
+     | Pstr_extension          : structure_item          t
+     | Psig_extension          : signature_item          t
++    | Row_field               : row_field               t
+ 
+   let label_declaration       = Label_declaration
+   let constructor_declaration = Constructor_declaration
+@@ -100,6 +105,7 @@
+   let pstr_eval               = Pstr_eval
+   let pstr_extension          = Pstr_extension
+   let psig_extension          = Psig_extension
++  let row_field               = Row_field
+ 
+   let get_pstr_eval st =
+     match st.pstr_desc with
+@@ -116,6 +122,17 @@
+     | Psig_extension (e, l) -> (e, l)
+     | _ -> failwith "Attribute.Context.get_psig_extension"
+ 
++  module Row_field = struct
++    let get_attrs = function
++      | Rinherit _ -> []
++      | Rtag (_, attrs, _, _) -> attrs
++
++    let set_attrs attrs = function
++      | Rinherit _ -> invalid_arg "Row_field.set_attrs"
++      | Rtag (lbl, _, can_be_constant, params_opts) ->
++        Rtag (lbl, attrs, can_be_constant, params_opts)
++  end
++
+   let get_attributes : type a. a t -> a -> attributes = fun t x ->
+     match t with
+     | Label_declaration       -> x.pld_attributes
+@@ -143,6 +160,7 @@
+     | Pstr_eval               -> snd (get_pstr_eval      x)
+     | Pstr_extension          -> snd (get_pstr_extension x)
+     | Psig_extension          -> snd (get_psig_extension x)
++    | Row_field               -> Row_field.get_attrs x
+ 
+   let set_attributes : type a. a t -> a -> attributes -> a = fun t x attrs ->
+     match t with
+@@ -174,6 +192,7 @@
+       { x with pstr_desc = Pstr_extension (get_pstr_extension x |> fst, attrs) }
+     | Psig_extension ->
+       { x with psig_desc = Psig_extension (get_psig_extension x |> fst, attrs) }
++    | Row_field               -> Row_field.set_attrs attrs x
+ 
+   let desc : type a. a t -> string = function
+     | Label_declaration       -> "label declaration"
+@@ -201,6 +220,7 @@
+     | Pstr_eval               -> "toplevel expression"
+     | Pstr_extension          -> "toplevel extension"
+     | Psig_extension          -> "toplevel signature extension"
++    | Row_field               -> "row field"
+ 
+ (*
+   let pattern : type a b c d. a t
+@@ -480,6 +500,7 @@
+   method! module_expr             x = super#module_expr             (self#check_node Context.Module_expr             x)
+   method! value_binding           x = super#value_binding           (self#check_node Context.Value_binding           x)
+   method! module_binding          x = super#module_binding          (self#check_node Context.Module_binding          x)
++  method! row_field               x = super#row_field               (self#check_node Context.Row_field               x)
+ 
+   method! class_field x =
+     let x = self#check_node              Context.Class_field x in
+diff -uNr ppx_core-113.33.00/src/attribute.mli ppx_core-113.33.01+4.03/src/attribute.mli
+--- ppx_core-113.33.00/src/attribute.mli	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/attribute.mli	2016-04-18 12:14:21.000000000 +0200
+@@ -42,6 +42,7 @@
+   val pstr_eval               : structure_item          t
+   val pstr_extension          : structure_item          t
+   val psig_extension          : signature_item          t
++  val row_field               : row_field               t
+ end
+ 
+ (** [declare fully_qualified_name context payload_pattern k] declares an attribute. [k] is
+diff -uNr ppx_core-113.33.00/src/common.ml ppx_core-113.33.01+4.03/src/common.ml
+--- ppx_core-113.33.00/src/common.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/common.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -16,7 +16,7 @@
+   List.fold_right
+     (fun (tp, _variance) acc ->
+       let loc = tp.ptyp_loc in
+-      ptyp_arrow ~loc "" (f ~loc tp) acc)
++      ptyp_arrow ~loc Nolabel (f ~loc tp) acc)
+     td.ptype_params
+     result_type
+ ;;
+@@ -74,7 +74,9 @@
+ 
+   method! constructor_declaration cd =
+     (* Don't recurse through cd.pcd_res *)
+-    List.iter (fun ty -> self#core_type ty) cd.pcd_args
++    match cd.pcd_args with
++    | Pcstr_tuple args -> List.iter (fun ty -> self#core_type ty) args
++    | Pcstr_record _ -> failwith "Pcstr_record not supported"
+ end
+ 
+ let types_are_recursive ?(stop_on_functions = true) ?(short_circuit = fun _ -> None)
+@@ -110,6 +112,7 @@
+   match payload with
+   | PStr []          -> name.loc
+   | PStr (x :: l)    -> { x.pstr_loc with loc_end = (last x l).pstr_loc.loc_end }
++  | PSig _           -> failwith "Not yet implemented"
+   | PTyp t           -> t.ptyp_loc
+   | PPat (x, None)   -> x.ppat_loc
+   | PPat (x, Some e) -> { x.ppat_loc with loc_end = e.pexp_loc.loc_end }
+diff -uNr ppx_core-113.33.00/src/gen/common.ml ppx_core-113.33.01+4.03/src/gen/common.ml
+--- ppx_core-113.33.00/src/gen/common.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/common.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -70,8 +70,13 @@
+   | Type_variant cds ->
+     List.fold_left cds ~init:acc
+       ~f:(fun acc (cd : Types.constructor_declaration) ->
+-         List.fold_left cd.cd_args ~init:acc
+-           ~f:(add_type_expr_dependencies env))
++        match cd.cd_args with
++        | Cstr_tuple typ_exprs ->
++          List.fold_left typ_exprs ~init:acc ~f:(add_type_expr_dependencies env)
++        | Cstr_record label_decls ->
++          List.fold_left label_decls ~init:acc
++            ~f:(fun acc (label_decl : Types.label_declaration) ->
++              add_type_expr_dependencies env acc label_decl.ld_type))
+   | Type_abstract ->
+     match td.type_manifest with
+     | None -> acc
+diff -uNr ppx_core-113.33.00/src/gen/gen_ast_builder.ml ppx_core-113.33.01+4.03/src/gen/gen_ast_builder.ml
+--- ppx_core-113.33.00/src/gen/gen_ast_builder.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen_ast_builder.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -121,57 +121,60 @@
+   open M
+ 
+   let gen_combinator_for_constructor ~wrapper:(wpath, wprefix, has_attrs) path ~prefix cd =
+-    let args =
+-      List.mapi cd.cd_args ~f:(fun i _ -> sprintf "x%d" i)
+-    in
+-    let exp =
+-      Exp.construct (Loc.mk (fqn_longident path cd.cd_id))
+-        (match args with
+-         | []  -> None
+-         | [x] -> Some (evar x)
+-         | _   -> Some (Exp.tuple (List.map args ~f:evar)))
+-    in
+-    let body =
+-      let fields =
+-        [ ( Loc.mk (fqn_longident' wpath (wprefix ^ "loc"))
+-          , evar "loc"
+-          )
+-        ; ( Loc.mk (fqn_longident' wpath (wprefix ^ "desc"))
+-          , exp
+-          )
+-        ]
++    match cd.cd_args with
++    | Cstr_record _ -> failwith "Cstr_record not supported"
++    | Cstr_tuple cd_args ->
++      let args =
++        List.mapi cd_args ~f:(fun i _ -> sprintf "x%d" i)
++      in
++      let exp =
++        Exp.construct (Loc.mk (fqn_longident path cd.cd_id))
++          (match args with
++           | []  -> None
++           | [x] -> Some (evar x)
++           | _   -> Some (Exp.tuple (List.map args ~f:evar)))
+       in
+-      let fields =
+-        if has_attrs then
+-          ( Loc.mk (fqn_longident' wpath (wprefix ^ "attributes"))
+-          , [%expr []]
+-          )
+-          :: fields
++      let body =
++        let fields =
++          [ ( Loc.mk (fqn_longident' wpath (wprefix ^ "loc"))
++            , evar "loc"
++            )
++          ; ( Loc.mk (fqn_longident' wpath (wprefix ^ "desc"))
++            , exp
++            )
++          ]
++        in
++        let fields =
++          if has_attrs then
++            ( Loc.mk (fqn_longident' wpath (wprefix ^ "attributes"))
++            , [%expr []]
++            )
++            :: fields
++          else
++            fields
++        in
++        Exp.record fields None
++      in
++      let body =
++  (*      match args with
++        | [] -> [%expr fun () -> [%e body]]
++        | _ ->*)
++          List.fold_right args ~init:body ~f:(fun arg acc ->
++            [%expr fun [%p pvar arg] -> [%e acc]])
++      in
++  (*    let body =
++        if not has_attrs then
++          body
++        else
++          [%expr fun ?(attrs=[]) -> [%e body]]
++      in*)
++      let body =
++        if fixed_loc then
++          body
+         else
+-          fields
++          [%expr fun ~loc -> [%e body]]
+       in
+-      Exp.record fields None
+-    in
+-    let body =
+-(*      match args with
+-      | [] -> [%expr fun () -> [%e body]]
+-      | _ ->*)
+-        List.fold_right args ~init:body ~f:(fun arg acc ->
+-          [%expr fun [%p pvar arg] -> [%e acc]])
+-    in
+-(*    let body =
+-      if not has_attrs then
+-        body
+-      else
+-        [%expr fun ?(attrs=[]) -> [%e body]]
+-    in*)
+-    let body =
+-      if fixed_loc then
+-        body
+-      else
+-        [%expr fun ~loc -> [%e body]]
+-    in
+-    [%stri let [%p pvar (function_name_of_id ~prefix cd.cd_id)] = [%e body]]
++      [%stri let [%p pvar (function_name_of_id ~prefix cd.cd_id)] = [%e body]]
+   ;;
+ 
+   let gen_combinator_for_record path ~prefix lds =
+@@ -189,10 +192,10 @@
+     let body =
+       let l = List.filter funcs ~f:(fun f -> f <> "loc" && f <> "attributes") in
+       match l with
+-      | [x] -> Exp.fun_ "" None (pvar x) body
++      | [x] -> Exp.fun_ Nolabel None (pvar x) body
+       | _ ->
+         List.fold_right l ~init:body ~f:(fun func acc ->
+-          Exp.fun_ func None (pvar func) acc
++          Exp.fun_ (Labelled func) None (pvar func) acc
+         )
+     in
+ (*    let body =
+diff -uNr ppx_core-113.33.00/src/gen/gen_ast_pattern.ml ppx_core-113.33.01+4.03/src/gen/gen_ast_pattern.ml
+--- ppx_core-113.33.00/src/gen/gen_ast_pattern.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen_ast_pattern.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -157,66 +157,69 @@
+   ]
+ 
+ let gen_combinator_for_constructor ?wrapper path ~prefix cd =
+-  let args =
+-    List.mapi cd.cd_args ~f:(fun i _ -> sprintf "x%d" i)
+-  in
+-  let funcs =
+-    List.mapi cd.cd_args ~f:(fun i _ -> sprintf "f%d" i)
+-  in
+-  let pat =
+-    Pat.construct (Loc.mk (fqn_longident path cd.cd_id))
+-      (match args with
+-       | []  -> None
+-       | [x] -> Some (pvar x)
+-       | _   -> Some (Pat.tuple (List.map args ~f:pvar)))
+-  in
+-  let exp =
+-    apply_parsers funcs (List.map args ~f:evar) cd.cd_args
+-  in
+-  let expected = without_prefix ~prefix (Ident.name cd.cd_id) in
+-  let body =
+-    [%expr
+-      match x with
+-      | [%p pat] -> ctx.matched <- ctx.matched + 1; [%e exp]
+-      | _ -> fail loc [%e Exp.constant (Const_string (expected, None))]
+-    ]
+-  in
+-  let body =
+-    match wrapper with
+-    | None -> body
+-    | Some (path, prefix, has_attrs) ->
+-      let body =
+-        [%expr
+-          let loc = [%e Exp.field (evar "x")
+-                          (Loc.mk @@ fqn_longident' path (prefix ^ "loc"))]
+-          in
+-          let x = [%e Exp.field (evar "x")
+-                        (Loc.mk @@ fqn_longident' path (prefix ^ "desc"))]
+-          in
+-          [%e body]
+-        ]
+-      in
+-      if has_attrs then
+-        [%expr
+-          [%e assert_no_attributes ~path ~prefix];
+-          [%e body]
+-        ]
+-      else
+-        body
+-  in
+-  let body =
+-    let loc =
++  match cd.cd_args with
++  | Cstr_record _ -> failwith "Cstr_record not supported"
++  | Cstr_tuple cd_args ->
++    let args =
++      List.mapi cd_args ~f:(fun i _ -> sprintf "x%d" i)
++    in
++    let funcs =
++      List.mapi cd_args ~f:(fun i _ -> sprintf "f%d" i)
++    in
++    let pat =
++      Pat.construct (Loc.mk (fqn_longident path cd.cd_id))
++        (match args with
++         | []  -> None
++         | [x] -> Some (pvar x)
++         | _   -> Some (Pat.tuple (List.map args ~f:pvar)))
++    in
++    let exp =
++      apply_parsers funcs (List.map args ~f:evar) cd_args
++    in
++    let expected = without_prefix ~prefix (Ident.name cd.cd_id) in
++    let body =
++      [%expr
++        match x with
++        | [%p pat] -> ctx.matched <- ctx.matched + 1; [%e exp]
++        | _ -> fail loc [%e Exp.constant (Pconst_string (expected, None))]
++      ]
++    in
++    let body =
+       match wrapper with
+-      | None -> [%pat? loc]
+-      | Some _ -> [%pat? _loc]
++      | None -> body
++      | Some (path, prefix, has_attrs) ->
++        let body =
++          [%expr
++            let loc = [%e Exp.field (evar "x")
++                            (Loc.mk @@ fqn_longident' path (prefix ^ "loc"))]
++            in
++            let x = [%e Exp.field (evar "x")
++                          (Loc.mk @@ fqn_longident' path (prefix ^ "desc"))]
++            in
++            [%e body]
++          ]
++        in
++        if has_attrs then
++          [%expr
++            [%e assert_no_attributes ~path ~prefix];
++            [%e body]
++          ]
++        else
++          body
+     in
+-    [%expr T (fun ctx [%p loc] x k -> [%e body])]
+-  in
+-  let body =
+-    List.fold_right funcs ~init:body ~f:(fun func acc ->
+-      [%expr fun (T [%p pvar func]) -> [%e acc]])
+-  in
+-  [%stri let [%p pvar (function_name_of_id ~prefix cd.cd_id)] = [%e body]]
++    let body =
++      let loc =
++        match wrapper with
++        | None -> [%pat? loc]
++        | Some _ -> [%pat? _loc]
++      in
++      [%expr T (fun ctx [%p loc] x k -> [%e body])]
++    in
++    let body =
++      List.fold_right funcs ~init:body ~f:(fun func acc ->
++        [%expr fun (T [%p pvar func]) -> [%e acc]])
++    in
++    [%stri let [%p pvar (function_name_of_id ~prefix cd.cd_id)] = [%e body]]
+ ;;
+ 
+ let gen_combinator_for_record path ~prefix ~has_attrs lds =
+@@ -241,7 +244,7 @@
+   let body = [%expr T (fun ctx loc x k -> [%e body])] in
+   let body =
+     List.fold_right funcs ~init:body ~f:(fun func acc ->
+-      Exp.fun_ func None [%pat? T [%p pvar func]] acc)
++      Exp.fun_ (Labelled func) None [%pat? T [%p pvar func]] acc)
+   in
+   [%stri let [%p pvar (Common.function_name_of_path path)] = [%e body]]
+ ;;
+diff -uNr ppx_core-113.33.00/src/gen/gen.ml ppx_core-113.33.01+4.03/src/gen/gen.ml
+--- ppx_core-113.33.00/src/gen/gen.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -23,7 +23,7 @@
+ 
+   method apply
+     :  Parsetree.expression
+-    -> (string * Parsetree.expression) list
++    -> (Asttypes.arg_label * Parsetree.expression) list
+     -> Parsetree.expression
+ 
+   method abstract
+@@ -49,9 +49,9 @@
+   method class_params = []
+ 
+   method apply expr args = Exp.apply expr args
+-  method abstract patt expr = Exp.fun_ "" None patt expr
++  method abstract patt expr = Exp.fun_ Nolabel None patt expr
+ 
+-  method typ ty = Typ.arrow "" ty ty
++  method typ ty = Typ.arrow Nolabel ty ty
+ 
+   method array  = [%expr Array.map]
+   method any    = [%expr fun x -> x]
+@@ -68,7 +68,7 @@
+   method class_params = []
+ 
+   method apply expr args = Exp.apply expr args
+-  method abstract patt expr = Exp.fun_ "" None patt expr
++  method abstract patt expr = Exp.fun_ Nolabel None patt expr
+ 
+   method typ ty = [%type: [%t ty] -> unit]
+   method array  = [%expr Array.iter]
+@@ -88,8 +88,9 @@
+ 
+   method class_params = [(Typ.var "acc", Asttypes.Invariant)]
+ 
+-  method apply expr args = Exp.apply expr (args @ [("", evar "acc")])
+-  method abstract patt expr = Exp.fun_ "" None patt (Exp.fun_ "" None (pvar "acc") expr)
++  method apply expr args = Exp.apply expr (args @ [(Asttypes.Nolabel, evar "acc")])
++  method abstract patt expr =
++    Exp.fun_ Nolabel None patt (Exp.fun_ Nolabel None (pvar "acc") expr)
+ 
+   method typ ty = [%type: [%t ty] -> 'acc -> 'acc]
+   method array =
+@@ -121,8 +122,9 @@
+ 
+   method class_params = [(Typ.var "acc", Asttypes.Invariant)]
+ 
+-  method apply expr args = Exp.apply expr (args @ [("", evar "acc")])
+-  method abstract patt expr = Exp.fun_ "" None patt (Exp.fun_ "" None (pvar "acc") expr)
++  method apply expr args = Exp.apply expr (args @ [(Asttypes.Nolabel, evar "acc")])
++  method abstract patt expr =
++    Exp.fun_ Nolabel None patt (Exp.fun_ Nolabel None (pvar "acc") expr)
+ 
+   method typ ty = [%type: [%t ty] -> 'acc -> [%t ty] * 'acc]
+   method array =
+@@ -180,12 +182,12 @@
+ 
+     method class_params = [(Typ.var "ctx", Asttypes.Invariant)]
+ 
+-    method apply expr args = Exp.apply expr (("", evar "ctx") :: args)
++    method apply expr args = Exp.apply expr ((Asttypes.Nolabel, evar "ctx") :: args)
+     method abstract patt expr =
+       if uses_ctx expr then
+-        Exp.fun_ "" None (pvar "ctx") (Exp.fun_ "" None patt expr)
++        Exp.fun_ Nolabel None (pvar "ctx") (Exp.fun_ Nolabel None patt expr)
+       else
+-        Exp.fun_ "" None (pvar "_ctx") (Exp.fun_ "" None patt expr)
++        Exp.fun_ Nolabel None (pvar "_ctx") (Exp.fun_ Nolabel None patt expr)
+ 
+     method typ ty = [%type: 'ctx -> [%t ty] -> [%t ty]]
+     method array = [%expr fun ctx a -> Array.map (f ctx) a]
+@@ -219,7 +221,7 @@
+   let ty = Typ.constr (Loc.mk ~loc (longident_of_path path)) params in
+   let ty =
+     List.fold_right
+-      (fun param ty -> Typ.arrow "" (what#typ param) ty)
++      (fun param ty -> Typ.arrow Nolabel (what#typ param) ty)
+       params (what#typ ty)
+   in
+   Typ.poly vars ty
+@@ -244,7 +246,8 @@
+       | _ ->
+         Exp.apply map
+           (List.map
+-             (fun te -> ("", type_expr_mapper ~what ~all_types ~var_mappers te))
++             (fun te ->
++               (Asttypes.Nolabel, type_expr_mapper ~what ~all_types ~var_mappers te))
+              params)
+     else
+       what#any
+@@ -263,7 +266,8 @@
+   List.map2
+     (fun te var ->
+        (var,
+-        what#apply (type_expr_mapper ~what ~all_types ~var_mappers te) [("", evar var)]))
++        what#apply (type_expr_mapper ~what ~all_types ~var_mappers te)
++          [(Asttypes.Nolabel, evar var)]))
+     tes vars
+ ;;
+ 
+@@ -290,24 +294,27 @@
+   let cases =
+     List.map
+       (fun cd ->
+-         let vars = vars_of_list cd.cd_args in
+-         let cstr = Loc.mk ~loc (lident (Ident.name cd.cd_id)) in
+-         let deconstruct =
+-           Pat.construct cstr
+-             (match vars with
+-              | [] -> None
+-              | _ -> Some (Pat.tuple (List.map pvar vars)))
+-         in
+-         let reconstruct =
+-           Exp.construct cstr
+-             (match vars with
+-              | [] -> None
+-              | _ -> Some (Exp.tuple (List.map evar vars)))
+-         in
+-         let mappers =
+-           map_variables ~what ~all_types ~var_mappers vars cd.cd_args
+-         in
+-         Exp.case deconstruct (what#combine mappers ~reconstruct))
++         match cd.cd_args with
++         | Cstr_tuple args ->
++           let vars = vars_of_list args in
++           let cstr = Loc.mk ~loc (lident (Ident.name cd.cd_id)) in
++           let deconstruct =
++             Pat.construct cstr
++               (match vars with
++                | [] -> None
++                | _ -> Some (Pat.tuple (List.map pvar vars)))
++           in
++           let reconstruct =
++             Exp.construct cstr
++               (match vars with
++                | [] -> None
++                | _ -> Some (Exp.tuple (List.map evar vars)))
++           in
++           let mappers =
++             map_variables ~what ~all_types ~var_mappers vars args
++           in
++           Exp.case deconstruct (what#combine mappers ~reconstruct)
++         | Cstr_record _ -> failwith "Cstr_record not supported")
+       cds
+   in
+   what#abstract (pvar "x") (Exp.match_ (evar "x") cases)
+@@ -333,7 +340,7 @@
+         | Some te -> type_expr_mapper ~what ~all_types ~var_mappers te
+     in
+     List.fold_right
+-      (fun (_, v) acc -> Exp.fun_ "" None (pvar v) acc)
++      (fun (_, v) acc -> Exp.fun_ Nolabel None (pvar v) acc)
+       var_mappers body
+   end
+ ;;

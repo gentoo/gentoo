@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 virtualx xdg-utils
 
 MYPN=APLpy
 MYP=${MYPN}-${PV}
@@ -38,6 +38,7 @@ PATCHES=(
 
 python_prepare_all() {
 	sed -i -e '/auto_use/s/True/False/' setup.cfg || die
+	xdg_environment_reset
 	distutils-r1_python_prepare_all
 }
 

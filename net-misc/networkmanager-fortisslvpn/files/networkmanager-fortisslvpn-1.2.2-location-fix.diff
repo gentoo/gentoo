@@ -1,0 +1,26 @@
+From 377ba9ca7fb33f3fb2ba5258a5af666869947597 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 18 May 2016 10:16:35 +0200
+Subject: [PATCH] service: don't use sharedstatedir
+
+GNU CS and thus autoconf default to a location that doesn't make any
+sense on Linux:
+
+http://www.redhat.com/archives/fedora-extras-list/2006-March/msg01546.html
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2725b48..7c0f811 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,4 @@
+-fortisslvpn_statedir = $(sharedstatedir)/$(PACKAGE)
++fortisslvpn_statedir = $(localstatedir)/lib/$(PACKAGE)
+ 
+ install-data-hook:
+ 	$(mkinstalldirs) -m 0700 $(DESTDIR)$(fortisslvpn_statedir)
+-- 
+2.7.3
+

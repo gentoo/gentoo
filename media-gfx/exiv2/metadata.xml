@@ -14,7 +14,6 @@
 		write EXIF, IPTC and XMP image metadata.
 	</longdescription>
 	<use>
-		<flag name="contrib">Build additional contrib components</flag>
 		<flag name="webready">Support reading metadata over the internet</flag>
 	</use>
 </pkgmetadata>

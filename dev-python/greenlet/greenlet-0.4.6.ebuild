@@ -5,7 +5,7 @@
 EAPI=5
 
 # Note: greenlet is built-in in pypy
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 flag-o-matic
 

@@ -15,7 +15,7 @@
 	<flag name="oldfdm">Enables deprecated Flight Dynamics Models (LaRCsim, UIUC)</flag>
 	<flag name="qt5">Builds Qt5 launcher application</flag>
 	<flag name="udev">Enables event-based Input devices through <pkg>virtual/udev</pkg></flag>
-	<flag name="utils">Builds various utilities (fgpanel, terrasync, fgviewer among others)</flag>
+	<flag name="utils">Builds various utilities (fgpanel, fgviewer among others)</flag>
 	<flag name="yasim">Enables YASim Flight Dynamics Model</flag>
 </use>
 </pkgmetadata>

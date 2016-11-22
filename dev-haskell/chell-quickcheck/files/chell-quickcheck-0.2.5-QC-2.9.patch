@@ -1,0 +1,11 @@
+diff --git a/lib/Test/Chell/QuickCheck.hs b/lib/Test/Chell/QuickCheck.hs
+index 56cbd04..c630320 100644
+--- a/lib/Test/Chell/QuickCheck.hs
++++ b/lib/Test/Chell/QuickCheck.hs
+@@ -103,5 +103,3 @@ maxDiscardedTests :: QuickCheck.Testable prop => QuickCheck.Args -> prop -> Int
+ #if MIN_VERSION_QuickCheck(2,5,0)
+-maxDiscardedTests args p = if QuickCheck.exhaustive p
+-	then QuickCheck.maxDiscardRatio args
+-	else QuickCheck.maxDiscardRatio args * QuickCheck.maxSuccess args
++maxDiscardedTests args _ = QuickCheck.maxDiscardRatio args * QuickCheck.maxSuccess args
+ #else

@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="ppp">Enable support for <pkg>net-dialup/ppp</pkg>.</flag>
+		<flag name="telepathy">Enable build of <pkg>kde-apps/plasma-telepathy-meta</pkg>, otherwise <pkg>kde-apps/kopete</pkg>.</flag>
 	</use>
 </pkgmetadata>

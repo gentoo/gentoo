@@ -1,0 +1,118 @@
+diff --git a/src/config.h.in b/src/config.h.in
+index e8efdca..9a6290a 100644
+--- a/config.h.in
++++ a/config.h.in
+@@ -473,6 +473,9 @@
+ #ifndef DEFAULT_PATH
+ # define DEFAULT_PATH "./lib/"
+ #endif
++#ifndef DEFAULT_PATH_W
++# define DEFAULT_PATH_W DEFAULT_PATH
++#endif
+ 
+ 
+ /*
+diff --git a/src/server/externs.h b/src/server/externs.h
+index 249e41b..e1a5c4f 100644
+--- a/server/externs.h
++++ a/server/externs.h
+@@ -644,7 +644,7 @@ extern errr init_e_info_txt(FILE *fp, char *buf);
+ extern errr init_r_info_txt(FILE *fp, char *buf);
+ 
+ /* init.c */
+-extern void init_file_paths(char *path);
++extern void init_file_paths(char *path, char *path2);
+ extern void init_some_arrays(void);
+ extern void load_server_cfg(void);
+ 
+diff --git a/src/server/init2.c b/src/server/init2.c
+index 00d8a01..27fd2b7 100644
+--- a/server/init2.c
++++ a/server/init2.c
+@@ -63,10 +63,11 @@
+  * to succeed even if the strings have not been allocated yet,
+  * as long as the variables start out as "NULL".
+  */
+-void init_file_paths(char *path)
++void init_file_paths(char *path, char *path2)
+ {
+ 	char *tail;
+-
++	char *tail2;
++	char *tmp;
+ 
+ 	/*** Free everything ***/
+ 
+@@ -103,6 +104,10 @@ void init_file_paths(char *path)
+ 	/* Prepare to append to the Base Path */
+ 	tail = path + strlen(path);
+ 
++	tmp = string_make(path2);
++
++	/* Prepare to append to the Base Path */
++	tail2 = path2 + strlen(path2);
+ 
+ #ifdef VM
+ 
+@@ -123,8 +128,8 @@ void init_file_paths(char *path)
+ 	/*** Build the sub-directory names ***/
+ 
+ 	/* Build a path name */
+-	strcpy(tail, "data");
+-	ANGBAND_DIR_DATA = string_make(path);
++	strcpy(tail2, "data");
++	ANGBAND_DIR_DATA = string_make(path2);
+ 
+ 	/* Build a path name */
+ 	strcpy(tail, "edit");
+@@ -147,16 +152,16 @@ void init_file_paths(char *path)
+ 	ANGBAND_DIR_PREF = string_make(path);
+ #endif
+ 	/* Build a path name */
+-	strcpy(tail, "save");
+-	ANGBAND_DIR_SAVE = string_make(path);
++	strcpy(tail2, "save");
++	ANGBAND_DIR_SAVE = string_make(path2);
+ 	
+ 	/* Build a path name */
+ 	strcpy(tail, "text");
+ 	ANGBAND_DIR_TEXT = string_make(path);
+ 
+ 	/* Build a path name */
+-	strcpy(tail, "user");
+-	ANGBAND_DIR_USER = string_make(path);
++	strcpy(tail2, "user");
++	ANGBAND_DIR_USER = string_make(path2);
+ #if 0
+ 	/* Build a path name */
+ 	strcpy(tail, "apex");
+diff --git a/src/server/main.c b/src/server/main.c
+index 4260b8d..7884b2f 100644
+--- a/server/main.c
++++ a/server/main.c
+@@ -142,6 +142,7 @@ extern unsigned _ovrbuffer = 0x1500;
+ static void init_stuff(void)
+ {
+ 	char path[1024];
++	char path2[1024];
+ 
+ #if defined(AMIGA) || defined(VM)
+ 
+@@ -161,10 +162,16 @@ static void init_stuff(void)
+ 	/* Hack -- Add a path separator (only if needed) */
+ 	if (!suffix(path, PATH_SEP)) strcat(path, PATH_SEP);
+ 
++	/* Use the angband_path, or a default */
++	strcpy(path2, tail ? tail : DEFAULT_PATH_W);
++
++	/* Hack -- Add a path separator (only if needed) */
++	if (!suffix(path2, PATH_SEP)) strcat(path2, PATH_SEP);
++
+ #endif /* AMIGA / VM */
+ 
+ 	/* Initialize */
+-	init_file_paths(path);
++	init_file_paths(path, path2);
+ }
+ 
+ /*

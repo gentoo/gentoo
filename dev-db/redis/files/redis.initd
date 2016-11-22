@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # $Id$
 
 REDIS_EXEC=/usr/sbin/redis-server

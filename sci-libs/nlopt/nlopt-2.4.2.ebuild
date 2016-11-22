@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ SLOT="0"
 IUSE="cxx guile octave python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="
-	guile? ( dev-scheme/guile )
+	guile? ( dev-scheme/guile:* )
 	octave? ( sci-mathematics/octave )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}"

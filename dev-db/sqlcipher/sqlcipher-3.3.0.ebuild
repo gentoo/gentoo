@@ -15,14 +15,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="readline static-libs tcl"
+IUSE="readline static-libs tcl test"
 
 # Tcl is always needed by buildsystem
 RDEPEND="dev-libs/openssl:0[${MULTILIB_USEDEP}]
-	readline? ( sys-libs/readline:0[${MULTILIB_USEDEP}] )
+	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-lang/tcl"
+
+# Testsuite requires compilation with TCL, bug #582584
+REQUIRED_USE="test? ( tcl )"
 
 src_prepare() {
 	append-cflags -DSQLITE_HAS_CODEC

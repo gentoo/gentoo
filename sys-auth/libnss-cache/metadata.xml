@@ -5,10 +5,6 @@
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="google-code">nsscache</remote-id>
 		<remote-id type="github">google/nsscache</remote-id>

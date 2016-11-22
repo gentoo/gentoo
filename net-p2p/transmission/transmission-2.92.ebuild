@@ -15,7 +15,7 @@ SRC_URI="http://download.transmissionbt.com/${PN}/files/${P}.tar.xz"
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT=0
 IUSE="ayatana gtk libressl lightweight systemd qt4 qt5 xfs"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
 
 RDEPEND=">=dev-libs/libevent-2.0.10:=
 	!libressl? ( dev-libs/openssl:0= )
@@ -65,9 +65,6 @@ src_prepare() {
 
 	# Trick to avoid automagic dependency
 	use ayatana || { sed -i -e '/^LIBAPPINDICATOR_MINIMUM/s:=.*:=9999:' configure.ac || die; }
-
-	# Pass our configuration dir to systemd unit file
-	sed -i '/ExecStart/ s|$| -g /var/lib/transmission/config|' daemon/transmission-daemon.service || die
 
 	# http://trac.transmissionbt.com/ticket/4324
 	sed -i -e 's|noinst\(_PROGRAMS = $(TESTS)\)|check\1|' libtransmission/Makefile.am || die
@@ -120,6 +117,7 @@ src_install() {
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
 	systemd_dounit daemon/transmission-daemon.service
+	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
 
 	if use qt4 || use qt5; then
 		pushd qt >/dev/null || die
@@ -149,7 +147,12 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	enewgroup transmission
-	enewuser transmission -1 -1 -1 transmission
+	enewuser transmission -1 -1 /var/lib/transmission transmission
+
+	if [[ ! -e "${ROOT%/}"/var/lib/transmission ]]; then
+		mkdir -p "${ROOT%/}"/var/lib/transmission
+		chown transmission:transmission "${ROOT%/}"/var/lib/transmission
+	fi
 
 	elog "If you use transmission-daemon, please, set 'rpc-username' and"
 	elog "'rpc-password' (in plain text, transmission-daemon will hash it on"

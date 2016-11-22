@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Meta-package for Telepathy Connection Managers"
-HOMEPAGE="http://telepathy.freedesktop.org/"
+HOMEPAGE="https://telepathy.freedesktop.org/"
 SRC_URI=""
 LICENSE="metapackage"
 SLOT="0"

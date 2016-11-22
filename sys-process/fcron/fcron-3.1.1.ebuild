@@ -15,15 +15,13 @@ SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 arm hppa ia64 ~mips ppc sparc x86 ~x86-fbsd"
-IUSE="debug pam selinux linguas_fr +system-crontab readline"
+IUSE="debug pam selinux l10n_fr +system-crontab readline"
 
 DEPEND="selinux? ( sys-libs/libselinux )
 	pam? ( virtual/pam )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:= )"
 
-# see bug 282214 for the reason to depend on bash
 RDEPEND="${DEPEND}
-	app-shells/bash
 	>=app-misc/editor-wrapper-3
 	pam? ( >=sys-auth/pambase-20100310 )"
 
@@ -162,7 +160,7 @@ src_install() {
 	doman doc/en/man/*.{1,5,8}
 
 	for lang in fr; do
-		use linguas_${lang} || continue
+		use l10n_${lang} || continue
 
 		doman -i18n=${lang} doc/${lang}/man/*.{1,5,8} || die
 		docinto html/${lang}

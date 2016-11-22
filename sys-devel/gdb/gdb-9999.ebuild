@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit flag-o-matic eutils python-single-r1
 
@@ -51,7 +50,7 @@ esac
 
 PATCH_VER=""
 DESCRIPTION="GNU debugger"
-HOMEPAGE="http://sourceware.org/gdb/"
+HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="${SRC_URI} ${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
 
 LICENSE="GPL-2 LGPL-2"
@@ -59,7 +58,7 @@ SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="+client expat lzma multitarget nls +python +server test vanilla"
+IUSE="+client lzma multitarget nls +python +server test vanilla xml"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	|| ( client server )
@@ -69,9 +68,9 @@ RDEPEND="server? ( !dev-util/gdbserver )
 	client? (
 		>=sys-libs/ncurses-5.2-r2:0=
 		sys-libs/readline:0=
-		expat? ( dev-libs/expat )
 		lzma? ( app-arch/xz-utils )
 		python? ( ${PYTHON_DEPS} )
+		xml? ( dev-libs/expat )
 		sys-libs/zlib
 	)"
 DEPEND="${RDEPEND}
@@ -154,7 +153,7 @@ src_configure() {
 			--without-zlib
 			--with-system-zlib
 			--with-separate-debug-dir="${EPREFIX}"/usr/lib/debug
-			$(use_with expat)
+			$(use_with xml expat)
 			$(use_with lzma)
 			$(use_enable nls)
 			$(use multitarget && echo --enable-targets=all)
@@ -195,7 +194,7 @@ src_install() {
 		return 0
 	fi
 	# Install it by hand for now:
-	# http://sourceware.org/ml/gdb-patches/2011-12/msg00915.html
+	# https://sourceware.org/ml/gdb-patches/2011-12/msg00915.html
 	# Only install if it exists due to the twisted behavior (see
 	# notes in src_configure above).
 	[[ -e gdb/gdbserver/gdbreplay ]] && dobin gdb/gdbserver/gdbreplay

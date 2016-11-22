@@ -12,7 +12,7 @@ MY_PV="DS$(get_major_version)-R$(get_after_major_version)"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="CAD program written in PyGTK"
-HOMEPAGE="http://sourceforge.net/projects/pythoncad"
+HOMEPAGE="https://sourceforge.net/projects/pythoncad"
 SRC_URI="mirror://sourceforge/pythoncad/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

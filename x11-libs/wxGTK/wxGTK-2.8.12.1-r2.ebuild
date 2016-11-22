@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND="
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
 		x11-libs/libXinerama[${MULTILIB_USEDEP}]
@@ -44,8 +44,8 @@ RDEPEND="
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)
 	aqua? (
-		>=x11-libs/gtk+-2.4:2[aqua=,${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[aqua=,${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)"
 
@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.11-collision.patch
 	epatch "${FILESDIR}"/${PN}-2.8.7-mmedia.patch              # Bug #174874
 	epatch "${FILESDIR}"/${PN}-2.8.10.1-odbc-defines.patch     # Bug #310923
+	epatch "${FILESDIR}"/${PN}-2.8.12.1-fix-c++14.patch        # Bug #592442
 
 	# Bug #421851
 	epatch "${FILESDIR}"/${P}-libdir.patch

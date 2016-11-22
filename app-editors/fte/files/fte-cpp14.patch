@@ -1,0 +1,17 @@
+Fix C++14 compilation errors. Add casting int literals to char in config
+generator to avoid narrowing conversions.
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=595048
+
+--- a/src/mkdefcfg.pl
++++ b/src/mkdefcfg.pl
+@@ -24,8 +24,8 @@
+ 
+     @c = split(//, $buf);
+     for ($i = 0; $i < $len; $i++) {
+-        $out .= sprintf("0x%02X", ord($c[$i]));
+-        if ($n++ % 10) {
++        $out .= sprintf("(char)0x%02X", ord($c[$i]));
++        if ($n++ % 5) {
+             $out .= ", ";
+         } else {
+             $out .= ",\n";

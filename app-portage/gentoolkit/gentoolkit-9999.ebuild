@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5} pypy)
+PYTHON_COMPAT=(python{2_7,3_4,3_5} pypy)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 git-r3
@@ -24,10 +24,8 @@ KEYWORDS=""
 DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	!<=app-portage/gentoolkit-dev-0.2.7
-	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-freebsd/freebsd-bin )
 	sys-apps/gawk
-	sys-apps/gentoo-functions
-	sys-apps/grep"
+	sys-apps/gentoo-functions"
 
 python_prepare_all() {
 	python_setup

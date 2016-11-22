@@ -13,7 +13,7 @@
   values, arrays or ranges of type double.  
 </longdescription>
   <use>
-    <flag name="designer">Installs <pkg>dev-qt/designer plugin</pkg></flag>
+    <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
     <flag name="mathml">Use the MathML renderer of the Qt solutions package.</flag>
   </use>
   <upstream>

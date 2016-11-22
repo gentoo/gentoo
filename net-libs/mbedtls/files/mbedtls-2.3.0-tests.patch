@@ -1,0 +1,23 @@
+From b92834324f29768a5bf39c58c674c5f3c09b6763 Mon Sep 17 00:00:00 2001
+From: Simon Butcher <simon.butcher@arm.com>
+Date: Wed, 13 Jul 2016 11:02:41 +0100
+Subject: [PATCH] Fixes all.sh for full config
+
+MBEDTLS_PLATFORM_TIME_ALT was accidentally left in the full config test
+leading to linker problems.
+---
+ tests/scripts/all.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/scripts/all.sh b/tests/scripts/all.sh
+index 5262397..a2b0995 100755
+--- a/tests/scripts/all.sh
++++ b/tests/scripts/all.sh
+@@ -231,6 +231,7 @@ scripts/config.pl unset MBEDTLS_PLATFORM_MEMORY
+ scripts/config.pl unset MBEDTLS_PLATFORM_PRINTF_ALT
+ scripts/config.pl unset MBEDTLS_PLATFORM_FPRINTF_ALT
+ scripts/config.pl unset MBEDTLS_PLATFORM_SNPRINTF_ALT
++scripts/config.pl unset MBEDTLS_PLATFORM_TIME_ALT
+ scripts/config.pl unset MBEDTLS_PLATFORM_EXIT_ALT
+ scripts/config.pl unset MBEDTLS_ENTROPY_NV_SEED
+ scripts/config.pl unset MBEDTLS_MEMORY_BUFFER_ALLOC_C

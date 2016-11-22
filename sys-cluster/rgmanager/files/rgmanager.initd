@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2011 Gentoo Foundation
 # Adaption of the original RedHat script
 # Original Copyright (C) 2003 Red Hat, Inc.

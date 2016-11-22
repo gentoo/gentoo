@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Fast XML-RPC implementation for Python"
-HOMEPAGE="http://sourceforge.net/projects/py-xmlrpc/"
+HOMEPAGE="https://sourceforge.net/projects/py-xmlrpc/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="examples"
 
 DEPEND=""

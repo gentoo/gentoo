@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Geek code generator"
-HOMEPAGE="http://sourceforge.net/projects/geekcode"
+HOMEPAGE="https://sourceforge.net/projects/geekcode"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -3,7 +3,8 @@
 	notifempty
 
 	postrotate
-		/etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/openrc/softlevel && /etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/systemd/system && systemctl is-active --quiet asterisk.service && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
 	endscript
 }
 
@@ -13,7 +14,8 @@
 	daily
 
 	postrotate
-		/etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/openrc/softlevel && /etc/init.d/asterisk --quiet status && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
+		test -e /run/systemd/system && systemctl is-active --quiet asterisk.service && /usr/sbin/asterisk -rnx "logger reload" || /bin/true
 	endscript
 }
 

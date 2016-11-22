@@ -42,6 +42,21 @@
 
 inherit multilib
 
+case ${EAPI:-0} in
+	0|1|2|3|4|5)
+		;;
+	6)
+		ewarn
+		ewarn "EAPI=${EAPI} is not supported by depend.apache.eclass."
+		ewarn "This means that ${CATEGORY}/${PF} is most likely buggy."
+		ewarn "Please file a report on https://bugs.gentoo.org/"
+		ewarn
+		;;
+	*)
+		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
+		;;
+esac
+
 # ==============================================================================
 # INTERNAL VARIABLES
 # ==============================================================================

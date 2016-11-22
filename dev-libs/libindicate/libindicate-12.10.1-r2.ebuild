@@ -6,7 +6,7 @@ EAPI=5
 VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils flag-o-matic vala
+inherit autotools eutils flag-o-matic vala xdg-utils
 
 DESCRIPTION="A library to raise flags on DBus for other components of the desktop to pick up and visualize"
 HOMEPAGE="https://launchpad.net/libindicate"
@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	xdg_environment_reset
 	vala_src_prepare
 
 	epatch "${FILESDIR}"/${PN}-0.6.1-no-mono.patch

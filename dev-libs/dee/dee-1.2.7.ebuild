@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 AUTOTOOLS_AUTORECONF=y
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/icu:=
 	introspection? (
 		${PYTHON_DEPS}
-		dev-libs/gobject-introspection
+		dev-libs/gobject-introspection:=
 		)"
 DEPEND="${RDEPEND}
 	$(vala_depend)

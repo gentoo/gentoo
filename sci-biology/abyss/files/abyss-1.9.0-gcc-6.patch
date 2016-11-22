@@ -1,0 +1,34 @@
+diff --git a/DataBase/db-csv.cc b/DataBase/db-csv.cc
+index 05cac19..48e3b44 100644
+--- a/DataBase/db-csv.cc
++++ b/DataBase/db-csv.cc
+@@ -18,11 +18,11 @@ static const char TABLE_LIST[] =
+ typedef vector<string> vs;
+ 
+ static bool existFile(const char* f)
+ {
+ 	ifstream file(f);
+-	return file;
++	return bool(file);
+ }
+ 
+ template <typename D>
+ static bool existTable(
+ 		D& db, const string& t)
+diff --git a/SimpleGraph/SimpleGraph.cpp b/SimpleGraph/SimpleGraph.cpp
+index 373ec70..0a9ebd3 100644
+--- a/SimpleGraph/SimpleGraph.cpp
++++ b/SimpleGraph/SimpleGraph.cpp
+@@ -645,11 +645,11 @@ static void* worker(void* pArg)
+ 	for (;;) {
+ 		/** Lock the input stream. */
+ 		static pthread_mutex_t inMutex = PTHREAD_MUTEX_INITIALIZER;
+ 		pthread_mutex_lock(&inMutex);
+ 		EstimateRecord er;
+-		bool good = (*arg.in) >> er;
++		bool good = bool((*arg.in) >> er);
+ 		pthread_mutex_unlock(&inMutex);
+ 		if (!good)
+ 			break;
+ 
+ 		// Flip the anterior distance estimates.

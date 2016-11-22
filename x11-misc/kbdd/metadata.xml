@@ -3,7 +3,6 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>qnikst@gentoo.org</email>
-    <description>Very simple layout switcher</description>
   </maintainer>
   <upstream>
     <remote-id type="github">qnikst/kbdd</remote-id>

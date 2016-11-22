@@ -1,0 +1,12 @@
+# !! IMPORTANT !!
+#
+# This file is ONLY used to override some of the init script configuration.
+#
+# You should NOT use this file to configure your rethinkdb instance,
+# see the /etc/rethinkdb/default.conf.sample file instead.
+#
+# Available init script modifiers :
+# - config_file : the configuration file to use (default : /etc/rethinkdb/instance.d/<instance-name>.conf)
+# - user : the user used to run your rethinkdb instance (default : rethinkdb)
+# - group : the group used to run your rethinkdb instance (default : rethinkdb)
+# - run_dir : the run directory for your PID files (default : /run/rethinkdb)

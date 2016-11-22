@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<longdescription lang="en">The BuildBot is a system to automate the compile/test cycle required
+    by most software projects to validate code changes.
+    Features:
+      * run builds on a variety of slave platforms
+      * arbitrary build process: handles projects using C, Python, whatever
+      * minimal host requirements: python and Twisted
+      * slaves can be behind a firewall if they can still do checkout
+      * status delivery through web page, email, IRC, other protocols
+      * track builds in progress, provide estimated completion time
+      * flexible configuration by subclassing generic build process classes
+      * debug tools to force a new build, submit fake Changes, query slave
+        status
+      * released under the GPL</longdescription>
+	<upstream>
+		<maintainer>
+			<email>devel@buildbot.net</email>
+			<name>Developers List</name>
+		</maintainer>
+		<remote-id type="pypi">buildbot</remote-id>
+	</upstream>
+</pkgmetadata>

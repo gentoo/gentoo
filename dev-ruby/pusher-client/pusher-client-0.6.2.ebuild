@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -19,7 +19,7 @@ IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/websocket-1:0
-	dev-ruby/json
+	dev-ruby/json:*
 "
 
 all_ruby_prepare() {

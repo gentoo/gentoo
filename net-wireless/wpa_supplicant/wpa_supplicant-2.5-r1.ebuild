@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,10 +36,10 @@ CDEPEND="dbus? ( sys-apps/dbus )
 	)
 	readline? (
 		sys-libs/ncurses:0=
-		sys-libs/readline:0
+		sys-libs/readline:0=
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
 	!ssl? (

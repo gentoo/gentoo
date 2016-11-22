@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,6 +6,7 @@ EAPI=5
 
 KDE_LINGUAS="ar bs cs da de el en_GB es et fi fr gl hu it kk km ko nb nds nl pl
 pt pt_BR ro ru sk sl sv tr uk zh_TW"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Library for accessing the features of social networking site vkontakte.ru"

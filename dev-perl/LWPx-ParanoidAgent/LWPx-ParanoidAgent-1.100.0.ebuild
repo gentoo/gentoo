@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Subclass of LWP::UserAgent that protects you from harm"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 # Net::SSL 2.85 -> Crypt-SSLeay 0.58

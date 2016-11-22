@@ -1,5 +1,5 @@
---- src/snapshot.c
-+++ src/snapshot.c
+--- a/src/snapshot.c
++++ b/src/snapshot.c
 @@ -26,6 +26,7 @@
  #include "lightspeed.h"
  

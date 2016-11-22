@@ -7,7 +7,7 @@ inherit gnustep-2
 MY_P=RemoteDesk-${PV}
 DESCRIPTION="GNUstep remote windows access tool"
 HOMEPAGE="http://www.nongnu.org/gap/remotedesk/index.html"
-SRC_URI="http://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

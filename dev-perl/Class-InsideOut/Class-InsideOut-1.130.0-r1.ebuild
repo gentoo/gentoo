@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 		virtual/perl-Scalar-List-Utils
 		>=virtual/perl-Test-Simple-0.45
 		virtual/perl-XSLoader
-		virtual/perl-threads
 	)
 "
 

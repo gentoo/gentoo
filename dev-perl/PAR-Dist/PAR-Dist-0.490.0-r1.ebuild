@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,13 +11,13 @@ inherit perl-module
 DESCRIPTION="Create and manipulate PAR distributions"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ia64 m68k ~ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 DEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp
-	|| ( dev-perl/YAML-Syck dev-perl/yaml )
+	|| ( dev-perl/YAML-Syck dev-perl/YAML )
 	dev-perl/Archive-Zip"
 	# || ( YAML::Syck YAML YAML-Tiny YAML-XS Parse-CPAN-Meta )
 RDEPEND="${DEPEND}"

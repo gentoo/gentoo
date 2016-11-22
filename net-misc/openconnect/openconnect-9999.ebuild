@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo
+inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
@@ -16,7 +16,7 @@ else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20140806
+VPNC_VER=20160829
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
@@ -25,24 +25,23 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
-ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
-for lang in $ILINGUAS; do
-	IUSE="${IUSE} linguas_${lang}"
-done
+IUSE="doc +gnutls gssapi java libproxy libressl lz4 nls smartcard static-libs stoken"
 
-DEPEND="dev-libs/libxml2
+DEPEND="
+	dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] )
-		libressl? ( dev-libs/libressl[static-libs?] )
+		!libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] )
+		libressl? ( dev-libs/libressl:0=[static-libs?] )
 	)
 	gnutls? (
-		>=net-libs/gnutls-3[static-libs?] dev-libs/nettle
 		app-misc/ca-certificates
+		dev-libs/nettle
+		>=net-libs/gnutls-3:0=[static-libs?]
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
+	lz4? ( app-arch/lz4:= )
 	nls? ( virtual/libintl )
 	smartcard? ( sys-apps/pcsc-lite:0= )
 	stoken? ( app-crypt/stoken )"
@@ -63,46 +62,50 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-
-	if use doc; then
-		python-any-r1_pkg_setup
-	fi
 }
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	fi
-	unpack ${A}
+	default
 }
 
 src_prepare() {
-	epatch_user
+	default
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
 	fi
 }
 
 src_configure() {
-	strip-linguas $ILINGUAS
-	echo ${LINGUAS} > po/LINGUAS
-	if ! use doc; then
-		# If the python cannot be found, the docs will not build
-		sed -e 's#"${ac_cv_path_PYTHON}"#""#' -i configure || die
+	if [[ ${LINGUAS+set} == set ]]; then
+		strip-linguas -u po
+		echo "${LINGUAS}" > po/LINGUAS || die
 	fi
 
-	# liboath not in portage
-	econf \
-		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh" \
-		$(use_enable static-libs static) \
-		$(use_enable nls ) \
-		$(use_with !gnutls openssl) \
-		$(use_with gnutls ) \
-		$(use_with libproxy) \
-		$(use_with gssapi) \
-		$(use_with smartcard libpcsclite) \
-		$(use_with stoken) \
+	if use doc; then
+		python_setup
+	else
+		export PYTHON=/bin/false
+	fi
+
+	local myconf=(
+		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
+		--without-openssl-version-check
+		$(use_enable static-libs static)
+		$(use_enable nls)
+		$(use_with !gnutls openssl)
+		$(use_with gnutls)
+		$(use_with libproxy)
+		$(use_with lz4)
+		$(use_with gssapi)
+		$(use_with smartcard libpcsclite)
+		$(use_with stoken)
 		$(use_with java)
+	)
+
+	econf "${myconf[@]}"
 }
 
 DOC_CONTENTS="The init script for openconnect supports multiple vpn tunnels.
@@ -133,9 +136,8 @@ chmod 755 /etc/openconnect/vpn0/*
 "
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
-	dodoc AUTHORS TODO
 	newinitd "${FILESDIR}"/openconnect.init.in-r4 openconnect
 	dodir /etc/openconnect
 	insinto /etc/openconnect
@@ -146,8 +148,7 @@ src_install() {
 	newins "${FILESDIR}"/openconnect.logrotate openconnect
 	keepdir /var/log/openconnect
 
-	# Remove useless .la files
-	prune_libtool_files --all
+	prune_libtool_files
 
 	readme.gentoo_create_doc
 }

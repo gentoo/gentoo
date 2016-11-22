@@ -30,7 +30,7 @@ RDEPEND="dev-perl/Capture-Tiny
 	x11-apps/xauth
 	x11-apps/xhost
 	x11-apps/xwininfo
-	fuse? ( sys-fs/sshfs )
+	fuse? ( net-fs/sshfs )
 	postgres? ( dev-perl/DBD-Pg )
 	sqlite? ( dev-perl/DBD-SQLite )"
 
@@ -83,7 +83,7 @@ pkg_postinst() {
 		elog " # x2godbadmin --createdb"
 	fi
 	if use postgres ; then
-		elog "To use a PostgreSQL databse, more information is availabe here:"
+		elog "To use a PostgreSQL database, more information is availabe here:"
 		elog "http://www.x2go.org/doku.php/wiki:advanced:multi-node:x2goserver-pgsql"
 	fi
 

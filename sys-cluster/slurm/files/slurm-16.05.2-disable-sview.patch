@@ -1,0 +1,90 @@
+diff -urN slurm-16.05.2.orig/configure.ac slurm-16.05.2/configure.ac
+--- slurm-16.05.2.orig/configure.ac	2016-07-07 02:51:37.000000000 +0300
++++ slurm-16.05.2/configure.ac	2016-07-15 20:02:41.373270765 +0300
+@@ -261,44 +261,6 @@
+ PKG_CHECK_MODULES([CHECK], [check >= 0.9.8], [ac_have_check="yes"], [ac_have_check="no"])
+ AM_CONDITIONAL(HAVE_CHECK, test "x$ac_have_check" = "xyes")
+ 
+-#
+-#  Tests for GTK+
+-#
+-
+-# use the correct libs if running on 64bit
+-if test -d "/usr/lib64/pkgconfig"; then
+-    PKG_CONFIG_PATH="/usr/lib64/pkgconfig/:$PKG_CONFIG_PATH"
+-fi
+-
+-if test -d "/opt/gnome/lib64/pkgconfig"; then
+-    PKG_CONFIG_PATH="/opt/gnome/lib64/pkgconfig/:$PKG_CONFIG_PATH"
+-fi
+-
+-AM_PATH_GLIB_2_0([2.7.1], [ac_glib_test="yes"], [ac_glib_test="no"], [gthread])
+-
+-if test ${glib_config_minor_version=0} -ge 32 ; then
+-       AC_DEFINE([GLIB_NEW_THREADS], 1, [Define to 1 if using glib-2.32.0 or higher])
+-fi
+-
+-AM_PATH_GTK_2_0([2.7.1], [ac_gtk_test="yes"], [ac_gtk_test="no"], [gthread])
+-if test ${gtk_config_minor_version=0} -ge 10 ; then
+-       AC_DEFINE([GTK2_USE_RADIO_SET], 1, [Define to 1 if using gtk+-2.10.0 or higher])
+-fi
+-
+-if test ${gtk_config_minor_version=0} -ge 12 ; then
+-       AC_DEFINE([GTK2_USE_TOOLTIP], 1, [Define to 1 if using gtk+-2.12.0 or higher])
+-fi
+-
+-if test ${gtk_config_minor_version=0} -ge 14 ; then
+-       AC_DEFINE([GTK2_USE_GET_FOCUS], 1, [Define to 1 if using gtk+-2.14.0 or higher])
+-fi
+-
+-if test "x$ac_glib_test" != "xyes" -o "x$ac_gtk_test" != "xyes"; then
+-	AC_MSG_WARN([cannot build sview without gtk library]);
+-fi
+-
+-AM_CONDITIONAL(BUILD_SVIEW, [test "x$ac_glib_test" = "xyes"] && [test "x$ac_gtk_test" = "xyes"])
+-
+ X_AC_DATABASES
+ 
+ dnl Cray ALPS/Basil support depends on mySQL
+@@ -503,7 +465,6 @@
+ 		 src/sshare/Makefile
+ 		 src/sstat/Makefile
+ 		 src/strigger/Makefile
+-		 src/sview/Makefile
+ 		 src/plugins/Makefile
+ 		 src/plugins/accounting_storage/Makefile
+ 		 src/plugins/accounting_storage/common/Makefile
+diff -urN slurm-16.05.2.orig/src/Makefile.am slurm-16.05.2/src/Makefile.am
+--- slurm-16.05.2.orig/src/Makefile.am	2016-07-07 02:51:37.000000000 +0300
++++ slurm-16.05.2/src/Makefile.am	2016-07-15 20:02:41.373270765 +0300
+@@ -27,8 +27,7 @@
+ 	srun_cr		\
+ 	sshare		\
+ 	sstat		\
+-	strigger	\
+-	sview
++	strigger
+ 
+ if !REAL_BG_L_P_LOADED
+ SUBDIRS += srun
+diff -urN slurm-16.05.2.orig/src/Makefile.in slurm-16.05.2/src/Makefile.in
+--- slurm-16.05.2.orig/src/Makefile.in	2016-07-07 02:51:37.000000000 +0300
++++ slurm-16.05.2/src/Makefile.in	2016-07-15 20:02:41.373270765 +0300
+@@ -199,7 +199,7 @@
+ DIST_SUBDIRS = api bcast common database db_api layouts plugins sacct \
+ 	sacctmgr salloc sattach sbatch sbcast scancel scontrol sdiag \
+ 	sinfo slurmctld slurmd slurmdbd smap smd sprio squeue sreport \
+-	srun_cr sshare sstat strigger sview srun
++	srun_cr sshare sstat strigger srun
+ am__DIST_COMMON = $(srcdir)/Makefile.in
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ am__relativize = \
+@@ -487,7 +487,7 @@
+ SUBDIRS = api bcast common database db_api layouts plugins sacct \
+ 	sacctmgr salloc sattach sbatch sbcast scancel scontrol sdiag \
+ 	sinfo slurmctld slurmd slurmdbd smap smd sprio squeue sreport \
+-	srun_cr sshare sstat strigger sview $(am__append_1)
++	srun_cr sshare sstat strigger  $(am__append_1)
+ all: all-recursive
+ 
+ .SUFFIXES:

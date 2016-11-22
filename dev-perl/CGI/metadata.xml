@@ -8,16 +8,14 @@
   <upstream>
     <remote-id type="cpan">CGI</remote-id>
     <remote-id type="cpan-module">CGI</remote-id>
-    <remote-id type="cpan-module">CGI::Apache</remote-id>
     <remote-id type="cpan-module">CGI::Carp</remote-id>
     <remote-id type="cpan-module">CGI::Cookie</remote-id>
-    <remote-id type="cpan-module">CGI::Fast</remote-id>
+    <remote-id type="cpan-module">CGI::File::Temp</remote-id>
+    <remote-id type="cpan-module">CGI::HTML::Functions</remote-id>
+    <remote-id type="cpan-module">CGI::MultipartBuffer</remote-id>
     <remote-id type="cpan-module">CGI::Pretty</remote-id>
     <remote-id type="cpan-module">CGI::Push</remote-id>
-    <remote-id type="cpan-module">CGI::Switch</remote-id>
     <remote-id type="cpan-module">CGI::Util</remote-id>
-    <remote-id type="cpan-module">CGITempFile</remote-id>
     <remote-id type="cpan-module">Fh</remote-id>
-    <remote-id type="cpan-module">MultipartBuffer</remote-id>
   </upstream>
 </pkgmetadata>

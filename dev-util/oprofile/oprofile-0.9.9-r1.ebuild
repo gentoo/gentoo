@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,6 +50,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc-4.9-non-ppc.patch"
 	epatch "${FILESDIR}/${P}-gcc-4.9-unused.patch"
 	epatch "${FILESDIR}/${PN}-1.0.0-athlon.patch"
+	epatch "${FILESDIR}/${PN}-1.1.0-gcc6.patch"
 	eautoreconf
 }
 

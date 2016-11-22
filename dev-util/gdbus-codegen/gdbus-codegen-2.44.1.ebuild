@@ -4,7 +4,7 @@
 
 EAPI="5"
 GNOME_ORG_MODULE="glib"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils gnome.org distutils-r1

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils eutils multilib python-single-r1
 
 DESCRIPTION="Ham radio backend rig control libraries"
-HOMEPAGE="http://sourceforge.net/apps/mediawiki/hamlib"
+HOMEPAGE="https://sourceforge.net/apps/mediawiki/hamlib"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"

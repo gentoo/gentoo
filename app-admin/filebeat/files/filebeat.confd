@@ -1,0 +1,12 @@
+# Run filebeat under this user/group
+#FILEBEAT_USER=""
+#FILEBEAT_GROUP=""
+
+# Configuration path
+#FILEBEAT_CONFIG=""
+
+# Path to state directory
+#FILEBEAT_STATEDIR=""
+
+# Additional arguments passed to filebeat
+#FILEBEAT_OPTS=""

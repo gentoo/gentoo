@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+name="zookeeper"
+command="/usr/bin/java"
+command_args="${JVM_OPTS} -cp ${CLASSPATH} ${MAIN} ${CONFIG}"
+command_background="true"
+start_stop_daemon_args="--user zookeeper --group zookeeper"
+pidfile="/var/run/zookeeper.pid"
+
+depend() {
+	need net
+}

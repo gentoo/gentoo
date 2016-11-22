@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,9 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 IUSE="doc fam ncurses +ocamlopt readline"
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	ncurses? ( >=sys-libs/ncurses-5.3 )
+	ncurses? ( >=sys-libs/ncurses-5.3:0= )
 	fam? ( virtual/fam )
-	readline? ( >=sys-libs/readline-4.3 )"
+	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-${MY_PV%-*}

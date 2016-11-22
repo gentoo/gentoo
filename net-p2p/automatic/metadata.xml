@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+Automatic is a RSS daemon that downloads torrent files
+matching regular expression patterns at certain intervals.
+It is capable of adding downloaded torrents directly to Transmission.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/1100101/Automatic/blob/master/ChangeLog</changelog>
+		<bugs-to>https://github.com/1100101/Automatic/issues</bugs-to>
+		<remote-id type="github">1100101/Automatic</remote-id>
+	</upstream>
+</pkgmetadata>

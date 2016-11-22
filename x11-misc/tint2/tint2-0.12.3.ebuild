@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="battery examples svg startup-notification tint2conf"
 DEPEND="
 	dev-libs/glib:2
 	svg? ( gnome-base/librsvg:2 )
-	>=media-libs/imlib2-1.4.2[X]
+	>=media-libs/imlib2-1.4.2[X,png]
 	x11-libs/cairo
 	x11-libs/pango[X]
 	tint2conf? ( x11-libs/gtk+:2 )

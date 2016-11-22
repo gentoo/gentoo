@@ -1,0 +1,38 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+inherit vdr-plugin-2
+
+DESCRIPTION="VDR Plugin: informe about Least Cost Routing (LCR)"
+HOMEPAGE="http://lcr.vdr-developer.org"
+SRC_URI="http://lcr.vdr-developer.org/downloads/${P}.tar.bz2"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+DEPEND=">=media-video/vdr-1.5.7"
+RDEPEND=">=dev-perl/libwww-perl-5.69-r2
+		>=dev-perl/HTML-Parser-3.34-r1
+		>=www-client/lynx-2.8.4"
+
+PATCHES=( "${FILESDIR}/${P}_gcc-6.patch" )
+
+src_install() {
+	vdr-plugin-2_src_install
+
+	dobin contrib/vdr-lcr-retrieve_data.pl
+}
+
+pkg_postinst() {
+	vdr-plugin-2_pkg_postinst
+
+	echo
+	elog "By default, this plugin only supports the German telephone network"
+	elog "Find more info in /usr/bin/vdr-lcr-retrieve-data.pl how to add your"
+	elog "own Provider-Parser, or contact the maintainer"
+}

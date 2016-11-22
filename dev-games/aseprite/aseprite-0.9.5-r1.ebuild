@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="dev-libs/tinyxml
 	media-libs/libpng:0
 	net-misc/curl
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"

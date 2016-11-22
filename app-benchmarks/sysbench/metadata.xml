@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomáš Mózes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="aio">Enable libaio support</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">sysbench</remote-id>
+		<remote-id type="github">akopytov/sysbench</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,25 @@
+From 4f65bde8fc4d4efe747d4e7fbeba1211469ed79a Mon Sep 17 00:00:00 2001
+From: monsta <monsta@inbox.ru>
+Date: Thu, 24 Dec 2015 17:11:19 +0300
+Subject: [PATCH] 7z: correct checking for p7zip 15.09+
+
+from https://github.com/GNOME/file-roller/commit/ed9c3fd2
+
+fixes https://github.com/mate-desktop/engrampa/issues/114
+---
+ src/fr-command-7z.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fr-command-7z.c b/src/fr-command-7z.c
+index 297ba1b..0b784f7 100644
+--- a/src/fr-command-7z.c
++++ b/src/fr-command-7z.c
+@@ -106,7 +106,7 @@ list__process_line (char     *line,
+ 			strncpy (version, ver_start, ver_len);
+ 			version[ver_len] = 0;
+ 
+-			if (strcmp (version, "4.55") < 0)
++			if ((strcmp (version, "4.55") < 0) && (ver_len > 1) && (version[1] == '.'))
+ 				p7z_comm->old_style = TRUE;
+ 			else
+ 				p7z_comm->old_style = FALSE;

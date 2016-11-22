@@ -13,6 +13,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>cameronwhite91@gmail.com</email>
+			<name>Cameron White</name>
 		</maintainer>
 		<changelog>https://github.com/PintaProject/Pinta/commits/1.3</changelog>
 		<doc lang="en">http://pinta-project.com/HowTo.ashx</doc>

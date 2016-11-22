@@ -33,7 +33,9 @@ RDEPEND="
 	>=dev-python/routes-1.12.3[${PYTHON_USEDEP}]
 	!~dev-python/routes-2.0[${PYTHON_USEDEP}]
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
+	!~dev-python/routes-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
+	!~dev-python/cryptography-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	sqlite? (
 		>=dev-python/sqlalchemy-1.0.10[sqlite,${PYTHON_USEDEP}]
@@ -55,10 +57,11 @@ RDEPEND="
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
 	!~dev-python/python-keystoneclient-1.8.0[${PYTHON_USEDEP}]
 	!~dev-python/python-keystoneclient-2.1.0[${PYTHON_USEDEP}]
+	<dev-python/python-keystoneclient-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-4.0.0[${PYTHON_USEDEP}]
 	!~dev-python/keystonemiddleware-4.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-cache-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-3.5.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.7.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-messaging-4.0.0[${PYTHON_USEDEP}]
@@ -77,7 +80,7 @@ RDEPEND="
 	>=dev-python/jsonschema-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
-	~dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
 	memcached? (
@@ -93,7 +96,11 @@ RDEPEND="
 		<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
 		~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
 	)
-	www-servers/uwsgi[python,${PYTHON_USEDEP}]"
+	|| (
+		www-servers/uwsgi[python,${PYTHON_USEDEP}]
+		www-apache/mod_wsgi[${PYTHON_USEDEP}]
+		www-servers/gunicorn[${PYTHON_USEDEP}]
+	)"
 
 #PATCHES=(
 #)

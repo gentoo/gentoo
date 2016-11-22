@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,11 +8,12 @@ KDE_HANDBOOK="optional"
 KDE_REQUIRED="optional"
 CPPUNIT_REQUIRED="optional"
 PYTHON_COMPAT=( python2_7 )
+WEBKIT_REQUIRED="always"
 inherit kde4-base python-single-r1
 
 DESCRIPTION="Generic geographical map widget"
 HOMEPAGE="https://marble.kde.org/"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug designer-plugin gps +kde phonon plasma python shapefile test zip"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -39,7 +40,7 @@ RDEPEND="
 		kde? ( $(add_kdebase_dep pykde4 "${PYTHON_USEDEP}" ) )
 	)
 	shapefile? ( sci-libs/shapelib )
-	zip? ( dev-libs/quazip )
+	zip? ( dev-libs/quazip[qt4] )
 "
 DEPEND="
 	${RDEPEND}

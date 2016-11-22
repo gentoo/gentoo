@@ -14,6 +14,6 @@
 			<pkg>net-libs/webkit-gtk</pkg> for PAC parsing</flag>
   </use>
   <upstream>
-    <remote-id type="google-code">libproxy</remote-id>
+    <remote-id type="github">libproxy/libproxy</remote-id>
   </upstream>
 </pkgmetadata>

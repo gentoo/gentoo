@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # Startup script for the Gofish Gopher Server (for Gentoo Linux)
 #

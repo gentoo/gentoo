@@ -67,7 +67,8 @@ src_prepare() {
 		"${FILESDIR}/${P}-apcupsd.patch" \
 		"${FILESDIR}/${P}-default-graph-size.patch" \
 		"${FILESDIR}/${P}-diskio-dmmajor.patch" \
-		"${FILESDIR}/${P}-tinfo.patch"
+		"${FILESDIR}/${P}-tinfo.patch" \
+		"${FILESDIR}/${P}-update-noaa-metar-uri.patch"
 
 	# Allow user patches #478482
 	epatch_user

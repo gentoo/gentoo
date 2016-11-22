@@ -1,0 +1,569 @@
+From 108d79460d42d5e8167ad52747628f9dfd21058d Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 2 Nov 2016 23:40:52 +0100
+Subject: [PATCH 1/5] Make bluetooth/colord/goa/kerberos/wacom optional
+
+Upstream is not interested in any part of this patch:
+
+https://bugzilla.gnome.org/show_bug.cgi?id=686840
+https://bugzilla.gnome.org/show_bug.cgi?id=697478
+https://bugzilla.gnome.org/show_bug.cgi?id=700145
+
+Signed-off-by: Ole Reifschneider <tranquility@gentoo.org>
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+---
+ configure.ac                            | 185 +++++++++++++++++++++++---------
+ panels/Makefile.am                      |  10 +-
+ panels/background/Makefile.am           |   8 +-
+ panels/background/bg-pictures-source.c  |  20 ++++
+ panels/power/cc-power-panel.c           |   2 +-
+ panels/user-accounts/um-realm-manager.c |   9 ++
+ shell/Makefile.am                       |  10 +-
+ shell/cc-panel-loader.c                 |   8 ++
+ 8 files changed, 196 insertions(+), 56 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1e07acd..19096f5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -119,10 +119,6 @@ LIBGD_INIT([_view-common notification static])
+ PKG_CHECK_MODULES(LIBLANGUAGE, $COMMON_MODULES gnome-desktop-3.0 fontconfig)
+ PKG_CHECK_MODULES(LIBSHORTCUTS, $COMMON_MODULES x11)
+ PKG_CHECK_MODULES(SHELL, $COMMON_MODULES x11 polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION)
+-PKG_CHECK_MODULES(BACKGROUND_PANEL, $COMMON_MODULES cairo-gobject libxml-2.0 gnome-desktop-3.0
+-                  gdk-pixbuf-2.0 >= $GDKPIXBUF_REQUIRED_VERSION
+-                  goa-1.0 >= $GOA_REQUIRED_VERSION
+-                  grilo-0.3 >= $GRILO_REQUIRED_VERSION)
+ PKG_CHECK_MODULES(DATETIME_PANEL, $COMMON_MODULES
+                   gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION
+                   polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION
+@@ -140,12 +136,58 @@ PKG_CHECK_MODULES(MOUSE_PANEL, $COMMON_MODULES xi >= 1.2
+ PKG_CHECK_MODULES(NETWORK_PANEL, $COMMON_MODULES gmodule-2.0
+                   polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION)
+ PKG_CHECK_MODULES(NOTIFICATIONS_PANEL, $COMMON_MODULES)
+-PKG_CHECK_MODULES(ONLINE_ACCOUNTS_PANEL, $COMMON_MODULES goa-1.0 goa-backend-1.0 >= $GOA_REQUIRED_VERSION)
+-PKG_CHECK_MODULES(COLOR_PANEL, $COMMON_MODULES
+-                  colord >= $COLORD_REQUIRED_VERSION
+-                  colord-gtk >= $COLORD_GTK_REQUIRED_VERSION
+-                  libsoup-2.4
+-                  gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION)
++
++build_online_accounts=no
++background_online_accounts=
++AC_ARG_ENABLE([goa],
++              AS_HELP_STRING([--disable-goa],
++                             [disable online accounts management panel]),
++              [],
++              [enable_goa=auto])
++
++AS_IF([test "$enable_goa" != "no"],
++      [PKG_CHECK_MODULES([ONLINE_ACCOUNTS_PANEL],
++                         [$COMMON_MODULES goa-1.0 goa-backend-1.0 >= $GOA_REQUIRED_VERSION],
++                         [
++                           AC_DEFINE(BUILD_ONLINE_ACCOUNTS, 1, [Define to 1 to build the Online Accounts panel])
++                           build_online_accounts=yes
++                           background_goa_dependencies="goa-1.0 >= $GOA_REQUIRED_VERSION grilo-0.3 >= $GRILO_REQUIRED_VERSION"
++                         ], [
++                           AS_IF([test "$enable_goa" = "yes"],
++                                 [AC_MSG_ERROR([gnome-online-accounts support requested but not found])])
++                         ])
++       ])
++AM_CONDITIONAL(BUILD_ONLINE_ACCOUNTS, test "$build_online_accounts" = "yes")
++
++PKG_CHECK_MODULES(BACKGROUND_PANEL, $COMMON_MODULES cairo-gobject libxml-2.0 gnome-desktop-3.0
++                  gdk-pixbuf-2.0 >= $GDKPIXBUF_REQUIRED_VERSION
++                  $background_goa_dependencies)
++
++build_color=no
++AC_ARG_ENABLE([color],
++              AS_HELP_STRING([--disable-color],
++                             [disable color management panel]),
++              [],
++              [enable_color=auto])
++
++AS_IF([test "$enable_color" != "no"],
++      [PKG_CHECK_MODULES([COLOR_PANEL],
++                         [
++                           $COMMON_MODULES
++                           colord >= $COLORD_REQUIRED_VERSION
++                           colord-gtk >= $COLORD_GTK_REQUIRED_VERSION
++                           libsoup-2.4
++                           gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION
++                         ], [
++                           AC_DEFINE(BUILD_COLOR, 1, [Define to 1 to build the Color panel])
++                           build_color=yes
++                         ], [
++                           AS_IF([test "$enable_color" = "yes"],
++                                 [AC_MSG_ERROR([colord support requested but not found])])
++                         ])
++      ])
++AM_CONDITIONAL(BUILD_COLOR, test "$build_color" = "yes")
++
+ PKG_CHECK_MODULES(PRINTERS_PANEL, $COMMON_MODULES
+                   polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION)
+ PKG_CHECK_MODULES(PRIVACY_PANEL, $COMMON_MODULES)
+@@ -220,15 +262,27 @@ else
+ fi
+ 
+ # Check for gnome-bluetooth
+-PKG_CHECK_MODULES(BLUETOOTH, $COMMON_MODULES gnome-bluetooth-1.0 >= 3.18.2,
+-		  [have_bluetooth=yes], have_bluetooth=no)
+-if test "x$have_bluetooth" = xyes ; then
+-	AC_DEFINE(BUILD_BLUETOOTH, 1, [Define to 1 to build the Bluetooth panel])
+-fi
+-AM_CONDITIONAL(BUILD_BLUETOOTH, [test x$have_bluetooth = xyes])
+-if test x${have_bluetooth} = xyes; then
+-  AC_DEFINE(HAVE_BLUETOOTH, 1, [Define to 1 if bluetooth support is available])
+-fi
++have_bluetooth=no
++AC_ARG_ENABLE([bluetooth],
++              AS_HELP_STRING([--disable-bluetooth],
++                             [disable bluetooth management panel]),
++              [],
++              [enable_bluetooth=auto])
++
++AS_IF([test "$enable_bluetooth" = "yes"],
++      [PKG_CHECK_MODULES([BLUETOOTH],
++                         [$COMMON_MODULES gnome-bluetooth-1.0 >= 3.18.2],
++                         [
++                           AC_DEFINE(BUILD_BLUETOOTH, 1, [Define to 1 to build the Bluetooth panel])
++                           have_bluetooth=yes
++                         ],
++                         [
++                           have_bluetooth=no
++                           AS_IF([test "$enable_bluetooth" = "yes"],
++                                 [AC_MSG_ERROR([bluetooth support requested but not found])])
++                         ])
++      ])
++AM_CONDITIONAL(BUILD_BLUETOOTH, [test "$have_bluetooth" = "yes"])
+ 
+ # Check for smbclient
+ PKG_CHECK_MODULES(SMBCLIENT, smbclient, [have_smbclient=yes], [have_smbclient=no])
+@@ -301,38 +355,61 @@ fi
+ AM_CONDITIONAL(BUILD_CHEESE, test x${have_cheese} = xyes)
+ 
+ # wacom is disabled for s390/s390x and non Linux platforms (needs udev)
+-case $host_os in
+-  linux*)
+-    if test "$host_cpu" = s390 -o "$host_cpu" = s390x; then
+-      have_wacom=no
+-    else
+-      PKG_CHECK_MODULES(WACOM_PANEL, $COMMON_MODULES
+-                        gnome-settings-daemon >= $GSD_REQUIRED_VERSION
+-                        xi >= 1.2 x11 libwacom >= $LIBWACOM_REQUIRED_VERSION
+-                        gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION
+-                        clutter-gtk-1.0
+-                        clutter-1.0 >= $CLUTTER_REQUIRED_VERSION)
+-      have_wacom=yes
+-      AC_DEFINE(BUILD_WACOM, 1, [Define to 1 to build the Wacom panel])
+-      AC_DEFINE(HAVE_WACOM, 1, [Define to 1 is Wacom is supportted])
+-    fi
+-    ;;
+-  *)
+-    have_wacom=no
+-    ;;
+-esac
+-AM_CONDITIONAL(BUILD_WACOM, [test x${have_wacom} = xyes])
++have_wacom=no
++AS_CASE([$host_os],
++        [linux*],
++        [AS_IF([test "$host_cpu" = "s390" -o "$host_cpu" = "s390x"],
++               [have_wacom=no],
++               [
++                 AC_ARG_ENABLE([wacom],
++                               AS_HELP_STRING([--disable-wacom],
++                                              [disable wacom management panel]),
++                               [],
++                               [enable_wacom=yes])
++                 AS_IF([test "$enable_wacom" = "yes"],
++                       [PKG_CHECK_MODULES([WACOM_PANEL],
++                                          [
++                                            $COMMON_MODULES
++                                            gnome-settings-daemon >= $GSD_REQUIRED_VERSION
++                                            xi >= 1.2 x11 libwacom >= $LIBWACOM_REQUIRED_VERSION
++                                            gnome-desktop-3.0 >= $GNOME_DESKTOP_REQUIRED_VERSION
++                                            clutter-gtk-1.0
++                                            clutter-1.0 >= $CLUTTER_REQUIRED_VERSION
++                                          ], [
++                                            have_wacom=yes
++                                            AC_DEFINE(BUILD_WACOM, 1, [Define to 1 to build the Wacom panel])
++                                            AC_DEFINE(HAVE_WACOM, 1, [Define to 1 is Wacom is supportted])
++                                          ], [
++                                            have_wacom=no
++                                            AS_IF([test "$enable_wacom" = "yes"],
++                                                  [AC_MSG_ERROR([wacom support requested but not found])])
++                                          ])
++                       ])
++               ])
++        ],
++        [have_wacom=no])
++AM_CONDITIONAL(BUILD_WACOM, [test "$have_wacom" = "yes"])
+ 
+ # Kerberos kerberos support
+-AC_PATH_PROG(KRB5_CONFIG, krb5-config, no)
+-if test "$KRB5_CONFIG" = "no"; then
+-  AC_MSG_ERROR([krb5-config executable not found in your path - should be installed with the kerberos libraries])
+-fi
+-
+-AC_MSG_CHECKING(for krb5 libraries and flags)
+-KRB5_CFLAGS="`$KRB5_CONFIG --cflags`"
+-KRB5_LIBS="`$KRB5_CONFIG --libs`"
+-AC_MSG_RESULT($KRB5_CFLAGS $KRB5_LIBS)
++AC_ARG_ENABLE([kerberos],
++              AS_HELP_STRING([--disable-kerberos],
++                             [disable kerberos support (default: enabled)]),
++              [],
++              [enable_kerberos=yes])
++
++AS_IF([test "$enable_kerberos" != "no"],
++      [
++        AC_PATH_PROG(KRB5_CONFIG, krb5-config, no)
++
++        AS_IF([test "$KRB5_CONFIG" = "no"],
++              AC_MSG_ERROR([krb5-config executable not found in your path - should be installed with the kerberos libraries]))
++
++        AC_MSG_CHECKING([for krb5 libraries and flags])
++        KRB5_CFLAGS="`$KRB5_CONFIG --cflags`"
++        KRB5_LIBS="`$KRB5_CONFIG --libs`"
++        AC_MSG_RESULT($KRB5_CFLAGS $KRB5_LIBS)
++        AC_DEFINE(HAVE_KERBEROS, 1, [defined if krb5 is available])
++      ])
+ 
+ AC_SUBST(KRB5_CFLAGS)
+ AC_SUBST(KRB5_LIBS)
+@@ -569,6 +646,11 @@ if test "x$have_bluetooth" = "xyes"; then
+ else
+ 	AC_MSG_NOTICE([   Bluetooth panel disabled])
+ fi
++if test "x$build_color" = "xyes"; then
++	AC_MSG_NOTICE([** colord (Color panel)])
++else
++	AC_MSG_NOTICE([   Color panel disabled])
++fi
+ if test "x$enable_cups" = "xyes"; then
+ 	AC_MSG_NOTICE([** CUPS (Printers panel)])
+ else
+@@ -579,6 +661,11 @@ if test "x$have_cheese" = "xyes"; then
+ else
+ 	AC_MSG_NOTICE([   Users panel webcam support disabled])
+ fi
++if test "x$build_online_accounts" = "xyes"; then
++       AC_MSG_NOTICE([** gnome-online-accounts (Online Accounts panel)])
++else
++       AC_MSG_NOTICE([   Online Accounts panel disabled])
++fi
+ if test "x$have_wacom" = "xyes"; then
+ 	AC_MSG_NOTICE([** wacom (Wacom tablet panel)])
+ else
+diff --git a/panels/Makefile.am b/panels/Makefile.am
+index 9961c25..0c54622 100644
+--- a/panels/Makefile.am
++++ b/panels/Makefile.am
+@@ -2,11 +2,9 @@ SUBDIRS= \
+ 	common \
+ 	background \
+ 	power \
+-	color \
+ 	display \
+ 	mouse \
+ 	notifications \
+-	online-accounts \
+ 	region \
+ 	info \
+ 	sound \
+@@ -18,6 +16,10 @@ SUBDIRS= \
+ 	privacy \
+ 	sharing
+ 
++if BUILD_COLOR
++SUBDIRS += color
++endif
++
+ if BUILD_WACOM
+ SUBDIRS += wacom
+ endif
+@@ -34,4 +36,8 @@ if BUILD_BLUETOOTH
+ SUBDIRS += bluetooth
+ endif
+ 
++if BUILD_ONLINE_ACCOUNTS
++SUBDIRS += online-accounts
++endif
++
+ -include $(top_srcdir)/git.mk
+diff --git a/panels/background/Makefile.am b/panels/background/Makefile.am
+index ccb8017..bde4cdf 100644
+--- a/panels/background/Makefile.am
++++ b/panels/background/Makefile.am
+@@ -27,8 +27,6 @@ libbackground_chooser_la_SOURCES =	\
+ 	$(BUILT_SOURCES)		\
+ 	cc-background-chooser-dialog.c	\
+ 	cc-background-chooser-dialog.h	\
+-	cc-background-grilo-miner.c	\
+-	cc-background-grilo-miner.h	\
+ 	cc-background-item.c		\
+ 	cc-background-item.h		\
+ 	cc-background-xml.c		\
+@@ -42,6 +40,12 @@ libbackground_chooser_la_SOURCES =	\
+ 	bg-colors-source.c		\
+ 	bg-colors-source.h
+ 
++if BUILD_ONLINE_ACCOUNTS
++libbackground_chooser_la_SOURCES +=	\
++	cc-background-grilo-miner.c	\
++	cc-background-grilo-miner.h
++endif
++
+ libbackground_chooser_la_LIBADD = $(PANEL_LIBS) $(BACKGROUND_PANEL_LIBS)
+ 
+ libbackground_la_SOURCES =		\
+diff --git a/panels/background/bg-pictures-source.c b/panels/background/bg-pictures-source.c
+index a33cee7..408359c 100644
+--- a/panels/background/bg-pictures-source.c
++++ b/panels/background/bg-pictures-source.c
+@@ -23,13 +23,17 @@
+ 
+ #include "bg-pictures-source.h"
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+ #include "cc-background-grilo-miner.h"
++#endif
+ #include "cc-background-item.h"
+ 
+ #include <string.h>
+ #include <cairo-gobject.h>
+ #include <gio/gio.h>
++#ifdef BUILD_ONLINE_ACCOUNTS
+ #include <grilo.h>
++#endif
+ #include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ #include <gdesktop-enums.h>
+ 
+@@ -46,7 +50,9 @@ struct _BgPicturesSourcePrivate
+ {
+   GCancellable *cancellable;
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+   CcBackgroundGriloMiner *grl_miner;
++#endif
+ 
+   GnomeDesktopThumbnailFactory *thumb_factory;
+ 
+@@ -84,7 +90,9 @@ bg_pictures_source_dispose (GObject *object)
+       g_clear_object (&priv->cancellable);
+     }
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+   g_clear_object (&priv->grl_miner);
++#endif
+   g_clear_object (&priv->thumb_factory);
+ 
+   G_OBJECT_CLASS (bg_pictures_source_parent_class)->dispose (object);
+@@ -414,7 +422,11 @@ add_single_file (BgPicturesSource     *bg_source,
+   gboolean needs_download;
+   gboolean retval = FALSE;
+   GFile *pictures_dir, *cache_dir;
++#ifdef BUILD_ONLINE_ACCOUNTS
+   GrlMedia *media;
++#else
++  gpointer media = NULL;
++#endif
+ 
+   /* find png and jpeg files */
+   if (!content_type)
+@@ -473,7 +485,9 @@ add_single_file (BgPicturesSource     *bg_source,
+ 
+  read_file:
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+   media = g_object_get_data (G_OBJECT (file), "grl-media");
++#endif
+   if (media == NULL)
+     {
+       g_object_set_data_full (G_OBJECT (file), "item", g_object_ref (item), g_object_unref);
+@@ -556,6 +570,7 @@ add_single_file_from_info (BgPicturesSource     *bg_source,
+   return add_single_file (bg_source, file, content_type, mtime, ret_row_ref);
+ }
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+ static gboolean
+ add_single_file_from_media (BgPicturesSource *bg_source,
+                             GFile            *file,
+@@ -580,6 +595,7 @@ add_single_file_from_media (BgPicturesSource *bg_source,
+ 
+   return add_single_file (bg_source, file, content_type, (guint64) mtime_unix, NULL);
+ }
++#endif /* BUILD_ONLINE_ACCOUNTS */
+ 
+ gboolean
+ bg_pictures_source_add (BgPicturesSource     *bg_source,
+@@ -923,6 +939,7 @@ monitor_path (BgPicturesSource *self,
+   return monitor;
+ }
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+ static void
+ media_found_cb (BgPicturesSource *self, GrlMedia *media)
+ {
+@@ -934,6 +951,7 @@ media_found_cb (BgPicturesSource *self, GrlMedia *media)
+   g_object_set_data_full (G_OBJECT (file), "grl-media", g_object_ref (media), g_object_unref);
+   add_single_file_from_media (self, file, media);
+ }
++#endif /* BUILD_ONLINE_ACCOUNTS */
+ 
+ static void
+ bg_pictures_source_init (BgPicturesSource *self)
+@@ -961,9 +979,11 @@ bg_pictures_source_init (BgPicturesSource *self)
+   priv->cache_dir_monitor = monitor_path (self, cache_path);
+   g_free (cache_path);
+ 
++#ifdef BUILD_ONLINE_ACCOUNTS
+   priv->grl_miner = cc_background_grilo_miner_new ();
+   g_signal_connect_swapped (priv->grl_miner, "media-found", G_CALLBACK (media_found_cb), self);
+   cc_background_grilo_miner_start (priv->grl_miner);
++#endif /* BUILD_ONLINE_ACCOUNTS */
+ 
+   priv->thumb_factory =
+     gnome_desktop_thumbnail_factory_new (GNOME_DESKTOP_THUMBNAIL_SIZE_LARGE);
+diff --git a/panels/power/cc-power-panel.c b/panels/power/cc-power-panel.c
+index db4e69a..7677b58 100644
+--- a/panels/power/cc-power-panel.c
++++ b/panels/power/cc-power-panel.c
+@@ -1882,7 +1882,7 @@ add_power_saving_section (CcPowerPanel *self)
+                     G_CALLBACK (wifi_switch_changed), self);
+ #endif
+ 
+-#ifdef HAVE_BLUETOOTH
++#ifdef BUILD_BLUETOOTH
+   priv->bt_rfkill = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+ 						   G_DBUS_PROXY_FLAGS_NONE,
+ 						   NULL,
+diff --git a/panels/user-accounts/um-realm-manager.c b/panels/user-accounts/um-realm-manager.c
+index 8a0a0e6..22c6b94 100644
+--- a/panels/user-accounts/um-realm-manager.c
++++ b/panels/user-accounts/um-realm-manager.c
+@@ -22,7 +22,9 @@
+ 
+ #include "um-realm-manager.h"
+ 
++#ifdef HAVE_KERBEROS
+ #include <krb5/krb5.h>
++#endif
+ 
+ #include <glib.h>
+ #include <glib/gi18n.h>
+@@ -698,6 +700,7 @@ login_closure_free (gpointer data)
+         g_slice_free (LoginClosure, login);
+ }
+ 
++#ifdef HAVE_KERBEROS
+ static krb5_error_code
+ login_perform_kinit (krb5_context k5,
+                      const gchar *realm,
+@@ -761,12 +764,14 @@ login_perform_kinit (krb5_context k5,
+ 
+         return code;
+ }
++#endif /* HAVE_KERBEROS */
+ 
+ static void
+ kinit_thread_func (GSimpleAsyncResult *async,
+                    GObject *object,
+                    GCancellable *cancellable)
+ {
++#ifdef HAVE_KERBEROS
+         LoginClosure *login = g_simple_async_result_get_op_res_gpointer (async);
+         krb5_context k5 = NULL;
+         krb5_error_code code;
+@@ -844,6 +849,10 @@ kinit_thread_func (GSimpleAsyncResult *async,
+ 
+         if (k5)
+                 krb5_free_context (k5);
++#else /* HAVE_KERBEROS */
++        g_simple_async_result_set_error (async, UM_REALM_ERROR, UM_REALM_ERROR_GENERIC,
++                                         _("gnome-control-center was built without kerberos support"));
++#endif
+ }
+ 
+ void
+diff --git a/shell/Makefile.am b/shell/Makefile.am
+index 45f6363..b76f343 100644
+--- a/shell/Makefile.am
++++ b/shell/Makefile.am
+@@ -78,14 +78,12 @@ gnome_control_center_LDADD =						\
+ 	$(top_builddir)/panels/common/liblanguage.la			\
+ 	$(top_builddir)/panels/common/libdevice.la			\
+ 	$(top_builddir)/panels/background/libbackground.la		\
+-	$(top_builddir)/panels/color/libcolor.la			\
+ 	$(top_builddir)/panels/datetime/libdate_time.la			\
+ 	$(top_builddir)/panels/display/libdisplay.la			\
+ 	$(top_builddir)/panels/info/libinfo.la				\
+ 	$(top_builddir)/panels/keyboard/libkeyboard.la			\
+ 	$(top_builddir)/panels/mouse/libmouse-properties.la		\
+ 	$(top_builddir)/panels/notifications/libnotifications.la	\
+-	$(top_builddir)/panels/online-accounts/libonline-accounts.la	\
+ 	$(top_builddir)/panels/power/libpower.la			\
+ 	$(top_builddir)/panels/privacy/libprivacy.la			\
+ 	$(top_builddir)/panels/region/libregion.la			\
+@@ -111,6 +109,14 @@ if BUILD_BLUETOOTH
+ gnome_control_center_LDADD += $(top_builddir)/panels/bluetooth/libbluetooth.la
+ endif
+ 
++if BUILD_COLOR
++gnome_control_center_LDADD += $(top_builddir)/panels/color/libcolor.la
++endif
++
++if BUILD_ONLINE_ACCOUNTS
++gnome_control_center_LDADD += $(top_builddir)/panels/online-accounts/libonline-accounts.la
++endif
++
+ gnome_control_center_alt_LDADD = 					\
+ 	$(gnome_control_center_LDADD)					\
+ 	alt/libshell_alt.la
+diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+index 03dbfb1..a713079 100644
+--- a/shell/cc-panel-loader.c
++++ b/shell/cc-panel-loader.c
+@@ -33,7 +33,9 @@ extern GType cc_background_panel_get_type (void);
+ #ifdef BUILD_BLUETOOTH
+ extern GType cc_bluetooth_panel_get_type (void);
+ #endif /* BUILD_BLUETOOTH */
++#ifdef BUILD_COLOR
+ extern GType cc_color_panel_get_type (void);
++#endif /* BUILD_COLOR */
+ extern GType cc_date_time_panel_get_type (void);
+ extern GType cc_display_panel_get_type (void);
+ extern GType cc_info_panel_get_type (void);
+@@ -43,7 +45,9 @@ extern GType cc_mouse_panel_get_type (void);
+ extern GType cc_network_panel_get_type (void);
+ #endif /* BUILD_NETWORK */
+ extern GType cc_notifications_panel_get_type (void);
++#ifdef BUILD_ONLINE_ACCOUNTS
+ extern GType cc_goa_panel_get_type (void);
++#endif /* BUILD_ONLINE_ACCOUNTS */
+ extern GType cc_power_panel_get_type (void);
+ #ifdef BUILD_PRINTERS
+ extern GType cc_printers_panel_get_type (void);
+@@ -77,7 +81,9 @@ static struct {
+ #ifdef BUILD_BLUETOOTH
+   PANEL_TYPE("bluetooth",        cc_bluetooth_panel_get_type    ),
+ #endif
++#ifdef BUILD_COLOR
+   PANEL_TYPE("color",            cc_color_panel_get_type        ),
++#endif
+   PANEL_TYPE("datetime",         cc_date_time_panel_get_type    ),
+   PANEL_TYPE("display",          cc_display_panel_get_type      ),
+   PANEL_TYPE("info",             cc_info_panel_get_type         ),
+@@ -87,7 +93,9 @@ static struct {
+   PANEL_TYPE("network",          cc_network_panel_get_type      ),
+ #endif
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type),
++#ifdef BUILD_ONLINE_ACCOUNTS
+   PANEL_TYPE("online-accounts",  cc_goa_panel_get_type          ),
++#endif
+   PANEL_TYPE("power",            cc_power_panel_get_type        ),
+ #ifdef BUILD_PRINTERS
+   PANEL_TYPE("printers",         cc_printers_panel_get_type     ),
+-- 
+2.10.1
+

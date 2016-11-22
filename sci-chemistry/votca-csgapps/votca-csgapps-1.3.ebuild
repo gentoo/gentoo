@@ -25,7 +25,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-RDEPEND="=sci-chemistry/${PN%apps}-${PV}"
+RDEPEND="~sci-chemistry/${PN%apps}-${PV}"
 
 DEPEND="${RDEPEND}"
 

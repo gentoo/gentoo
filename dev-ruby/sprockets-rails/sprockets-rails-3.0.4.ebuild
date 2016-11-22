@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/sprockets-rails/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1)"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
 
 IUSE="test"
 
@@ -32,3 +32,8 @@ ruby_add_bdepend "
 		>=dev-ruby/railties-4
 		dev-ruby/test-unit:2
 	)"
+
+all_ruby_prepare() {
+	# Help load correct rack version consistently
+	sed -i -e "3irequire 'action_controller'" test/test_helper.rb || die
+}

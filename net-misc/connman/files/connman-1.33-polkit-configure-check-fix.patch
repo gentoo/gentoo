@@ -1,0 +1,15 @@
+--- connman-1.33/configure.ac.old	2016-10-09 11:26:43.137856416 -0700
++++ connman-1.33/configure.ac	2016-10-09 11:26:52.819722799 -0700
+@@ -281,11 +281,11 @@ AM_CONDITIONAL(NMCOMPAT, test "${enable_
+ 
+ AC_ARG_ENABLE(polkit, AC_HELP_STRING([--enable-polkit],
+ 				[enable PolicyKit support]),
+ 			[enable_polkit=${enableval}], [enable_polkit="no"])
+ if (test "${enable_polkit}" != "no"); then
+-	POLKIT_DATADIR="`$PKG_CONFIG --variable=actiondir polkit`"
++	POLKIT_DATADIR="`$PKG_CONFIG --variable=actiondir polkit-gobject-1`"
+ 	POLKIT_DATADIR=""
+ 	if (test -z "${POLKIT_DATADIR}"); then
+ 		POLKIT_DATADIR="${datadir}/polkit-1/actions"
+ 	fi
+ 	AC_SUBST(POLKIT_DATADIR)

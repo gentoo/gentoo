@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils subversion versionator
 
 DESCRIPTION="Yet another factoring utility"
-HOMEPAGE="http://sourceforge.net/projects/yafu/"
+HOMEPAGE="https://sourceforge.net/projects/yafu/"
 #SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 ESVN_REPO_URI="https://svn.code.sf.net/p/yafu/code/"
 
@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="+sieve"
 
 DEPEND="
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	sci-mathematics/gmp-ecm
 	sieve? (
 		sci-mathematics/msieve

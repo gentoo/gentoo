@@ -10,7 +10,7 @@ dev-qt/qtchooser test
 # Missing keyword on dev-libs/botan and dev-libs/pkcs11-helper
 app-crypt/qca botan pkcs11
 
-# Michael Palimaka <kensington@gentoo.org) (26 Dec 2014)
+# Michael Palimaka <kensington@gentoo.org> (26 Dec 2014)
 # Unkeyworded media-libs/opencv
 media-plugins/frei0r-plugins facedetect
 media-video/vlc opencv
@@ -31,10 +31,6 @@ media-plugins/gst-plugins-meta modplug vaapi
 # Lars Wendler <polynomial-c@gentoo.org> (09 May 2014)
 # Masked kde USE flag until bug #509892 is fixed
 dev-vcs/subversion kde
-
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-base/nepomuk-core migrator
 
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156

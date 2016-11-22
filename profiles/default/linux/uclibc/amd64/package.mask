@@ -150,8 +150,6 @@ sci-chemistry/cyana
 sci-chemistry/icm
 sci-chemistry/mars
 sci-libs/ipp
-sys-apps/memtest86
-sys-apps/memtest86+
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
 

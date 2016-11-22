@@ -4,9 +4,7 @@
 
 # @ECLASS: bsdmk.eclass
 # @MAINTAINER:
-# Otavio R. Piske "AngusYoung" <angusyoung@gentoo.org>
-# Diego Pettenò <flameeyes@gentoo.org>
-# Benigno B. Junior <bbj@gentoo.org>
+# maintainer-needed@gentoo.org
 # @BLURB: Some functions for BSDmake
 
 inherit toolchain-funcs portability flag-o-matic
@@ -81,5 +79,5 @@ bsdmk_src_compile() {
 # @DESCRIPTION:
 # The bsdmk src_install function, which is exported
 bsdmk_src_install() {
-	mkinstall || die "install failed"
+	mkinstall "$@" || die "install failed"
 }

@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
 DESCRIPTION="Full-featured IRC connection manager for Telepathy"
-HOMEPAGE="http://cgit.freedesktop.org/telepathy/telepathy-idle"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://cgit.freedesktop.org/telepathy/telepathy-idle"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

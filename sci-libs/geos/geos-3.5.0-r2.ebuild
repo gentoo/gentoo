@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/3.4.2-solaris-isnan.patch
+	"${FILESDIR}"/${PN}-3.5.0-std-isnan.patch
+	"${FILESDIR}"/${PN}-3.5.0-autoconf-detect-isnan.patch
 	"${FILESDIR}"/${P}-phpconfig-path.patch
 )
 

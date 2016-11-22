@@ -1,5 +1,5 @@
---- makefile.am.old	2011-06-21 08:43:21.804880067 +0200
-+++ makefile.am	2011-06-21 08:43:49.875661081 +0200
+--- a/makefile.am	2011-06-21 08:43:21.804880067 +0200
++++ b/makefile.am	2011-06-21 08:43:49.875661081 +0200
 @@ -1,5 +1,5 @@
  INCLUDES = `wx-config --cxxflags`
 -LIBS = `wx-config --libs --gl-libs`

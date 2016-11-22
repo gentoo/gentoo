@@ -15,7 +15,7 @@ inherit php-ext-source-r2 eutils
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="PHP extension that provides access to movie info"
-HOMEPAGE="http://sourceforge.net/projects/ffmpeg-php/"
+HOMEPAGE="https://sourceforge.net/projects/ffmpeg-php/"
 SRC_URI="mirror://sourceforge/ffmpeg-php/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"

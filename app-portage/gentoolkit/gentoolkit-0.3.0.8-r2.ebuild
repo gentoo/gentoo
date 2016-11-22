@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=(python{2_7,3_3})
+PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1
@@ -22,9 +22,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 DEPEND="sys-apps/portage"
 RDEPEND="${DEPEND}
 	!<=app-portage/gentoolkit-dev-0.2.7
-	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-freebsd/freebsd-bin )
-	sys-apps/gawk
-	sys-apps/grep"
+	sys-apps/gawk"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-revdep-rebuild-484340.patch

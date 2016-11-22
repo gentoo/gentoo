@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/rails/journey"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/hoe )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,11 +19,11 @@ IUSE="doc gnome nls"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/gmp
-	dev-libs/mpfr
+	dev-libs/gmp:0=
+	dev-libs/mpfr:0
 	dev-libs/popt
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:0=
+	sys-libs/readline:0
 	gnome? (
 		x11-libs/gtk+:2
 		gnome-base/libgnome

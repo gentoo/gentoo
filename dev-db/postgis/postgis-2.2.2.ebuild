@@ -31,7 +31,7 @@ RDEPEND="
 		dev-libs/libxml2:2
 		>=sci-libs/geos-3.5.0
 		>=sci-libs/proj-4.6.0
-		>=sci-libs/gdal-1.10.0
+		>=sci-libs/gdal-1.10.0:=
 		gtk? ( x11-libs/gtk+:2 )
 "
 
@@ -141,5 +141,5 @@ pkg_postinst() {
 	postgresql-config update
 
 	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "http://postgis.net/docs/manual-${MY_PV}/postgis_installation.html#create_new_db_extensions"
+	elog "http://postgis.net/docs/manual-${PGIS}/postgis_installation.html#create_new_db_extensions"
 }

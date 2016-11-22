@@ -9,10 +9,6 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>fauli@gentoo.org</email>
-		<name>Christian Faulhammer</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>

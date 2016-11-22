@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}4/archive/${PV}.tar.gz -> ${P}.tar.gz
 	http://www.antlr.org/download/${P}-complete.jar" # Prebuilt version needed.
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc64 x86 ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 
 CDEPEND="dev-java/antlr:3.5

@@ -1,0 +1,54 @@
+httpoxy mitigation
+
+See https://httpoxy.org/ and https://www.nginx.com/blog/?p=41962 for details.
+---
+ conf/fastcgi.conf   | 3 +++
+ conf/fastcgi_params | 3 +++
+ conf/scgi_params    | 3 +++
+ conf/uwsgi_params   | 3 +++
+ 4 files changed, 12 insertions(+)
+
+diff --git a/conf/fastcgi.conf b/conf/fastcgi.conf
+index 091738c..9f7e192 100644
+--- a/conf/fastcgi.conf
++++ b/conf/fastcgi.conf
+@@ -24,3 +24,6 @@ fastcgi_param  SERVER_NAME        $server_name;
+ 
+ # PHP only, required if PHP was built with --enable-force-cgi-redirect
+ fastcgi_param  REDIRECT_STATUS    200;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++fastcgi_param  HTTP_PROXY         "";
+diff --git a/conf/fastcgi_params b/conf/fastcgi_params
+index 28decb9..3be3a95 100644
+--- a/conf/fastcgi_params
++++ b/conf/fastcgi_params
+@@ -23,3 +23,6 @@ fastcgi_param  SERVER_NAME        $server_name;
+ 
+ # PHP only, required if PHP was built with --enable-force-cgi-redirect
+ fastcgi_param  REDIRECT_STATUS    200;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++fastcgi_param  HTTP_PROXY         "";
+diff --git a/conf/scgi_params b/conf/scgi_params
+index 6d4ce4f..a9da34f 100644
+--- a/conf/scgi_params
++++ b/conf/scgi_params
+@@ -15,3 +15,6 @@ scgi_param  REMOTE_ADDR        $remote_addr;
+ scgi_param  REMOTE_PORT        $remote_port;
+ scgi_param  SERVER_PORT        $server_port;
+ scgi_param  SERVER_NAME        $server_name;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++scgi_param  HTTP_PROXY         "";
+diff --git a/conf/uwsgi_params b/conf/uwsgi_params
+index 09c732c..9d67d3d 100644
+--- a/conf/uwsgi_params
++++ b/conf/uwsgi_params
+@@ -15,3 +15,6 @@ uwsgi_param  REMOTE_ADDR        $remote_addr;
+ uwsgi_param  REMOTE_PORT        $remote_port;
+ uwsgi_param  SERVER_PORT        $server_port;
+ uwsgi_param  SERVER_NAME        $server_name;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++uwsgi_param  HTTP_PROXY         "";

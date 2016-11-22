@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-pam
-
 -elibc_musl
 elibc_uclibc
 elibc_glibc

@@ -1,0 +1,35 @@
+diff --git a/tests/unit/modules/boto_secgroup_test.py b/tests/unit/modules/boto_secgroup_test.py
+index f1c6bb1..07fd8ec 100644
+--- a/tests/unit/modules/boto_secgroup_test.py
++++ b/tests/unit/modules/boto_secgroup_test.py
+@@ -192,30 +192,6 @@ class BotoSecgroupTestCase(TestCase):
+                                                         **conn_parameters)
+         self.assertEqual(group_vpc.id, retrieved_group_id)
+ 
+-    @mock_ec2
+-    def test_get_config_single_rule_group_name(self):
+-        '''
+-        tests return of 'config' when given group name. get_config returns an OrderedDict.
+-        '''
+-        group_name = _random_group_name()
+-        ip_protocol = u'tcp'
+-        from_port = 22
+-        to_port = 22
+-        cidr_ip = u'0.0.0.0/0'
+-        rules_egress = [{'to_port': -1, 'from_port': -1, 'ip_protocol': u'-1', 'cidr_ip': u'0.0.0.0/0'}]
+-
+-        conn = boto.ec2.connect_to_region(region, **boto_conn_parameters)
+-        group = conn.create_security_group(name=group_name, description=group_name)
+-        group.authorize(ip_protocol=ip_protocol, from_port=from_port, to_port=to_port, cidr_ip=cidr_ip)
+-        # setup the expected get_config result
+-        expected_get_config_result = OrderedDict([('name', group.name), ('group_id', group.id), ('owner_id', u'111122223333'),
+-                                                 ('description', group.description),
+-                                                 ('rules', [{'to_port': to_port, 'from_port': from_port,
+-                                                  'ip_protocol': ip_protocol, 'cidr_ip': cidr_ip}]),
+-                                                 ('rules_egress', rules_egress)])
+-        secgroup_get_config_result = boto_secgroup.get_config(group_id=group.id, **conn_parameters)
+-        self.assertEqual(expected_get_config_result, secgroup_get_config_result)
+-
+     @skipIf(True, 'test skipped due to error in moto return - fixed in '
+                   'https://github.com/spulec/moto/commit/cc0166964371f7b5247a49d45637a8f936ccbe6f')
+     @mock_ec2

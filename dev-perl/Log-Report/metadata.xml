@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Log-Report</remote-id>
+    <remote-id type="cpan-module">Dancer2::Logger::LogReport</remote-id>
+    <remote-id type="cpan-module">Dancer2::Plugin::LogReport</remote-id>
+    <remote-id type="cpan-module">Dancer2::Plugin::LogReport::Message</remote-id>
+    <remote-id type="cpan-module">Dancer::Logger::LogReport</remote-id>
+    <remote-id type="cpan-module">Log::Report</remote-id>
+    <remote-id type="cpan-module">Log::Report::DBIC::Profiler</remote-id>
+    <remote-id type="cpan-module">Log::Report::Die</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::Callback</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::File</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::Log4perl</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::LogDispatch</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::Perl</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::Syslog</remote-id>
+    <remote-id type="cpan-module">Log::Report::Dispatcher::Try</remote-id>
+    <remote-id type="cpan-module">Log::Report::Domain</remote-id>
+    <remote-id type="cpan-module">Log::Report::Exception</remote-id>
+    <remote-id type="cpan-module">Log::Report::Message</remote-id>
+    <remote-id type="cpan-module">Log::Report::Translator</remote-id>
+    <remote-id type="cpan-module">MojoX::Log::Report</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -2,18 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit kde4-base
 
 DESCRIPTION="Qt/C++ wrapper around LibFace to perform face recognition and detection"
 HOMEPAGE="https://projects.kde.org/projects/kde/kdegraphics/libs/libkface"
+SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=media-libs/opencv-3.0.0:=[contrib]"
+DEPEND="media-libs/opencv:=[contrib(+)]"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -23,7 +24,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_OPENCV3=ON
+		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 	)
 
 	kde4-base_src_configure

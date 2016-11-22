@@ -1,0 +1,73 @@
+diff -ur midori-0.5.11/CMakeLists.txt midori-0.5.11_p/CMakeLists.txt
+--- midori-0.5.11/CMakeLists.txt	2015-08-30 13:56:26.000000000 +0200
++++ midori-0.5.11_p/CMakeLists.txt	2016-08-21 21:10:30.117983251 +0200
+@@ -112,13 +112,13 @@
+                   sqlite3>=3.6.19
+                   gmodule-2.0
+                   gio-2.0>=2.32.3
+-                  libsoup-gnome-2.4>=2.37.1
++                  libsoup-2.4>=2.37.1
+                   )
+ add_definitions("-DHAVE_LIBXML")
+ add_definitions("-DGIO_VERSION=\"${DEPS_gio-2.0_VERSION}\"")
+-add_definitions("-DLIBSOUP_VERSION=\"${DEPS_libsoup-gnome-2.4_VERSION}\"")
++add_definitions("-DLIBSOUP_VERSION=\"${DEPS_libsoup-2.4_VERSION}\"")
+ set(PKGS posix linux libxml-2.0 sqlite3 gmodule-2.0 gio-2.0 libsoup-2.4)
+-if (${DEPS_libsoup-gnome-2.4_VERSION} VERSION_GREATER "2.40.0")
++if (${DEPS_libsoup-2.4_VERSION} VERSION_GREATER "2.40.0")
+     # valac 0.16 didn't have the bindings yet
+     # For consistency we need to ensure C code makes the same assumptions
+     if (${VALA_VERSION} VERSION_GREATER "0.17.0")
+@@ -126,7 +126,7 @@
+         set(VALAFLAGS ${VALAFLAGS} -D HAVE_LIBSOUP_2_40_0)
+     endif ()
+ endif ()
+-if (${DEPS_libsoup-gnome-2.4_VERSION} VERSION_GREATER "2.48.0")
++if (${DEPS_libsoup-2.4_VERSION} VERSION_GREATER "2.48.0")
+     add_definitions("-DHAVE_LIBSOUP_2_48_0")
+     set(VALAFLAGS ${VALAFLAGS} -D HAVE_LIBSOUP_2_48_0)
+ endif ()
+diff -ur midori-0.5.11/extensions/cookie-manager/cookie-manager.c midori-0.5.11_p/extensions/cookie-manager/cookie-manager.c
+--- midori-0.5.11/extensions/cookie-manager/cookie-manager.c	2015-08-30 13:56:26.000000000 +0200
++++ midori-0.5.11_p/extensions/cookie-manager/cookie-manager.c	2016-08-19 23:19:20.000000000 +0200
+@@ -12,7 +12,7 @@
+ #include "config.h"
+ #include <midori/midori.h>
+ #include "katze/katze.h"
+-#include <libsoup/soup-cookie-jar-sqlite.h>
++#include <libsoup/soup-cookie-jar-db.h>
+ 
+ #include "cookie-manager.h"
+ #include "cookie-manager-page.h"
+@@ -282,7 +282,7 @@
+ 	/* setup soup */
+ #ifdef HAVE_WEBKIT2
+ 	gchar *filename = midori_paths_get_config_filename_for_writing ("cookies.db");
+-	priv->jar = soup_cookie_jar_sqlite_new (filename, FALSE);
++	priv->jar = soup_cookie_jar_db_new (filename, FALSE);
+ 	g_free(filename);
+ #else
+ 	SoupSession *session = webkit_get_default_session();
+diff -ur midori-0.5.11/midori/midori-session.c midori-0.5.11_p/midori/midori-session.c
+--- midori-0.5.11/midori/midori-session.c	2015-08-30 13:56:26.000000000 +0200
++++ midori-0.5.11_p/midori/midori-session.c	2016-08-19 23:56:30.000000000 +0200
+@@ -17,8 +17,8 @@
+ #include "sokoke.h"
+ 
+ #include <glib/gi18n-lib.h>
+-#include <libsoup/soup-cookie-jar-sqlite.h>
+-#include <libsoup/soup-gnome-features.h>
++#include <libsoup/soup-cookie-jar-db.h>
++#include <libsoup/soup-types.h>
+ 
+     #define LIBSOUP_USE_UNSTABLE_REQUEST_API
+     #include <libsoup/soup-cache.h>
+@@ -297,7 +297,7 @@
+     g_object_unref (feature);
+ 
+     katze_assign (config_file, midori_paths_get_config_filename_for_writing ("cookies.db"));
+-    jar = soup_cookie_jar_sqlite_new (config_file, FALSE);
++    jar = soup_cookie_jar_db_new (config_file, FALSE);
+     soup_session_add_feature (session, SOUP_SESSION_FEATURE (jar));
+     g_signal_connect (jar, "changed",
+                       G_CALLBACK (midori_session_cookie_jar_changed_cb), settings);

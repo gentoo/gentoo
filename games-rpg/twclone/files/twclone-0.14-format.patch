@@ -1,5 +1,5 @@
---- bigbang.c.old	2015-10-27 09:21:51.172611109 +0100
-+++ bigbang.c	2015-10-27 09:25:41.117233447 +0100
+--- a/bigbang.c	2015-10-27 09:21:51.172611109 +0100
++++ b/bigbang.c	2015-10-27 09:25:41.117233447 +0100
 @@ -530,13 +530,11 @@
      planetfile = fopen ("./planets.data", "w");
      for (loop = 1; loop <= 299 - strlen(terraInfo); loop++)
@@ -48,8 +48,8 @@
      }
      fclose (file);
  
---- config.c.old	2015-10-27 09:30:00.091283678 +0100
-+++ config.c	2015-10-27 09:30:25.068806593 +0100
+--- a/config.c	2015-10-27 09:30:00.091283678 +0100
++++ b/config.c	2015-10-27 09:30:25.068806593 +0100
 @@ -140,9 +140,8 @@
  
    for (loop=0; loop < 199 - strlen(buffer); loop++)
@@ -61,8 +61,8 @@
  
    fclose(configfile);
    free(buffer);
---- planet.c.old	2015-10-27 09:31:44.867282757 +0100
-+++ planet.c	2015-10-27 09:32:17.083667674 +0100
+--- a/planet.c	2015-10-27 09:31:44.867282757 +0100
++++ b/planet.c	2015-10-27 09:32:17.083667674 +0100
 @@ -59,8 +59,7 @@
  		addint(stufftosave, planets[index]->citdl->upgradestart, ':', BUFF_SIZE);
  		for (loop=0; loop< 399 - strlen(stufftosave); loop++)

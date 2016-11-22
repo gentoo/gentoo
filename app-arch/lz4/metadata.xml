@@ -5,6 +5,10 @@
 		<email>ryao@gentoo.org</email>
 		<name>Richard Yao</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<use>
 		<flag name="valgrind">Enable usage of dev-util/valgrind in tests</flag>
 	</use>

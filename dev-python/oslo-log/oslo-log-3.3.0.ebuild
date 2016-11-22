@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
 inherit distutils-r1
 
-DESCRIPTION="OpenStack logging config library provides standardized configuration for all openstack projects."
+DESCRIPTION="OpenStack logging config library, configuration for all openstack projects."
 HOMEPAGE="https://pypi.python.org/pypi/oslo.log https://github.com/openstack/oslo.log"
 SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
 S="${WORKDIR}/oslo.log-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"

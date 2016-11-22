@@ -78,7 +78,7 @@ RDEPEND="
 	>=dev-python/alembic-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-3.5.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.7.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-db-4.1.0[${PYTHON_USEDEP}]
@@ -167,7 +167,7 @@ python_install() {
 	fi
 	if use linuxbridge; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-linuxbridge-agent"
-		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd.liberty" "neutron-linuxbridge-agent"
+		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd" "neutron-linuxbridge-agent"
 	fi
 	diropts -m 755 -o neutron -g neutron
 	dodir /var/log/neutron /var/lib/neutron

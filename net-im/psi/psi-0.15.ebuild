@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ done
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm hppa ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="crypt dbus debug doc jingle spell ssl xscreensaver whiteboarding"
 RESTRICT="test"
 
@@ -42,9 +42,9 @@ PDEPEND="
 	crypt? ( app-crypt/qca:2[gpg] )
 	jingle? (
 		net-im/psimedia
-		app-crypt/qca:2[openssl]
+		app-crypt/qca:2[ssl]
 	)
-	ssl? ( app-crypt/qca:2[openssl] )
+	ssl? ( app-crypt/qca:2[ssl] )
 "
 
 DOC_CONTENTS='Psi+ support(USE="extras") was removed from ebuild since 0.15'

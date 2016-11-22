@@ -245,12 +245,12 @@ java-ant_bsfix_files() {
 		done
 
 		# for javadoc target and all in one pass, we need the new rewriter.
-		local rewriter3="/usr/share/javatoolkit/xml-rewrite-3.py"
+		local rewriter3="${EPREFIX}/usr/share/javatoolkit/xml-rewrite-3.py"
 		if [[ ! -f ${rewriter3} ]]; then
-			rewriter3="/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
+			rewriter3="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-3.py"
 		fi
 
-		local rewriter4="/usr/$(get_libdir)/javatoolkit/bin/build-xml-rewrite"
+		local rewriter4="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/build-xml-rewrite"
 
 		if [[ -x ${rewriter4} && ${JAVA_ANT_ENCODING} ]]; then
 			[[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] && local gcp="-g"
@@ -458,8 +458,8 @@ java-ant_ignore-system-classes() {
 # @DESCRIPTION:
 # Run the right xml-rewrite binary with the given arguments
 java-ant_xml-rewrite() {
-	local gen2="/usr/bin/xml-rewrite-2.py"
-	local gen2_1="/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-2.py"
+	local gen2="${EPREFIX}/usr/bin/xml-rewrite-2.py"
+	local gen2_1="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/xml-rewrite-2.py"
 	# gen1 is deprecated
 	if [[ -x "${gen2}" ]]; then
 		${gen2} "${@}" || die "${gen2} failed"

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,10 +12,9 @@ SRC_URI="http://ushare.geexbox.org/releases/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="dlna nls"
+IUSE="nls"
 
-RDEPEND=">=net-libs/libupnp-1.6.14
-	dlna? ( >=media-libs/libdlna-0.2.4 )"
+RDEPEND=">=net-libs/libupnp-1.6.14"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -31,7 +30,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	myconf="--prefix=/usr --sysconfdir=/etc --disable-strip $(use_enable dlna)"
+	myconf="--prefix=/usr --sysconfdir=/etc --disable-strip --disable-dlna"
 	# nls can only be disabled, on by default.
 	use nls || myconf="${myconf} --disable-nls"
 

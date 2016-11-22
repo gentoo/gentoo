@@ -5,6 +5,10 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
+  <maintainer type="person">
+    <email>alicef@gentoo.org</email>
+    <name>Alice Ferrazzi</name>
+  </maintainer>
   <longdescription>
 This is a library for making SSH2 connections (client or server).
 Emphasis is on using SSH2 as an alternative to SSL for making secure

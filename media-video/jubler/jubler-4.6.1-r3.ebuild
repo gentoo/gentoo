@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND=">=virtual/jre-1.5
 	mplayer? ( media-video/mplayer[libass] )
 	spell? (
 		app-text/aspell
-		>=dev-java/zemberek-2.0[linguas_tr]
+		>=dev-java/zemberek-2.0[l10n_tr]
 	)"
 
 DEPEND=">=virtual/jdk-1.5

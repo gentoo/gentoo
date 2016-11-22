@@ -1,0 +1,29 @@
+diff -Nuar a/gtk/Makefile b/gtk/Makefile
+--- a/gtk/Makefile	2016-04-27 06:04:12.000000000 +0200
++++ b/gtk/Makefile	2016-07-22 10:33:06.730040039 +0200
+@@ -19,7 +19,6 @@
+ 	    -Wall \
+ 	    -Wno-parentheses \
+ 	    -Wno-write-strings \
+-	    -g \
+ 	    -I/usr/X11R6/include \
+ 	    -fno-exceptions \
+ 	    -fno-rtti \
+@@ -30,13 +29,14 @@
+ 	    -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	    -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+ 	    -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
+-	    -D_WCHAR_T_DEFINED
++	    -D_WCHAR_T_DEFINED \
++	    ${CXXFLAGS}
+ 
+-LDFLAGS = -L/usr/X11R6/lib
++LDFLAGS := -L/usr/X11R6/lib ${LDFLAGS}
+ ifeq "$(shell uname -s)" "Darwin"
+ LIBS := gcc111libbid-mac-x64.a -lXmu $(shell pkg-config --libs gtk+-2.0)
+ else
+-LIBS := gcc111libbid-$(shell uname -m).a -lXmu $(shell pkg-config --libs gtk+-2.0)
++LIBS := gcc111libbid-$(shell uname -m).a -lXmu -lX11 -ldl -lpthread $(shell pkg-config --libs gtk+-2.0)
+ endif
+ 
+ ifeq "$(shell uname -s)" "Linux"

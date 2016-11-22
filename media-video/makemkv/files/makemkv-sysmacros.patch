@@ -1,0 +1,10 @@
+--- makemkv-oss-1.9.10/libabi/src/sys_linux.c.orig	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/libabi/src/sys_linux.c	2016-05-08 10:34:07.988650837 +0100
+@@ -20,6 +20,7 @@
+ */
+ #include <lgpl/sysabi.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <dirent.h>
+ #include <string.h>

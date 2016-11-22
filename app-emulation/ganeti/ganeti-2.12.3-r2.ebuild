@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=(python2_7)
-use test && PYTHON_REQ_USE="ipv6"
+PYTHON_REQ_USE="ipv6(+)?"
 
 inherit eutils user autotools bash-completion-r1 python-single-r1 versionator
 
@@ -34,7 +34,9 @@ HOMEPAGE="http://www.ganeti.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="drbd haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen"
-REQUIRED_USE="|| ( kvm xen lxc ) ${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="|| ( kvm xen lxc )
+	test? ( ipv6 )
+	${PYTHON_REQUIRED_USE}"
 
 USER_PREFIX="${GANETI_USER_PREFIX:-"gnt-"}"
 GROUP_PREFIX="${GANETI_GROUP_PREFIX:-"${USER_PREFIX}"}"

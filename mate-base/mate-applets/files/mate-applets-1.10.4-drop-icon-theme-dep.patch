@@ -1,0 +1,33 @@
+From 0a9439346e00aded616fe99773ffec2f3f7bcc49 Mon Sep 17 00:00:00 2001
+From: raveit65 <chat-to-me@raveit.de>
+Date: Thu, 1 Oct 2015 00:27:53 +0200
+Subject: [PATCH] drop dpendency to mate-icon-theme
+
+The dependency is not really needed; depending on GTK+ should be enough
+to guarantee the presence of a spec-compliant icon theme.
+---
+ configure.ac | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b69e1a4..284dba7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,7 +20,6 @@ LIBNOTIFY_REQUIRED=0.7.0
+ UPOWER_REQUIRED=0.9.4
+ DBUS_REQUIRED=1.1.2
+ DBUS_GLIB_REQUIRED=0.74
+-MATE_ICON_THEME_REQUIRED=1.1.0
+ LIBXML_REQUIRED=2.5.0
+ POLKIT_REQUIRED=0.92
+ dnl ***************************************************************************
+@@ -122,9 +121,6 @@ dnl ***************************************************************************
+ dnl *** Use pkg-config to check for dependancies                            ***
+ dnl ***************************************************************************
+ 
+-dnl -- Check for mate-icon-theme (required) ----------------------------------
+-PKG_CHECK_MODULES(GIT, mate-icon-theme >= $MATE_ICON_THEME_REQUIRED)
+-
+ dnl -- check for gio (required) ------------------------------------------
+ PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED gio-unix-2.0)
+ AC_SUBST(GIO_CFLAGS)

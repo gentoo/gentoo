@@ -19,9 +19,7 @@ RDEPEND="
 	sys-auth/polkit
 	sys-libs/libcap
 "
-DEPEND="${DEPEND}
-	app-arch/xz-utils
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	# Fedora patches

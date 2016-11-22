@@ -20,3 +20,7 @@ sys-fs/cryptsetup static static-libs
 sys-fs/lvm2 static static-libs
 sys-fs/dmraid static
 dev-libs/libgudev static-libs
+# These are actually possible, but only if you USE=-udev when building pciutils.
+# But package.use.mask doesn't have a way to express that, so this profile loses.
+sys-apps/flashrom static
+sys-apps/pciutils static-libs

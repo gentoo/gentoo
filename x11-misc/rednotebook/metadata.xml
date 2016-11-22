@@ -5,10 +5,6 @@
 		<flag name="libyaml">enable libyaml support</flag>
 		<flag name="spell">enable gtk-spell support</flag>
 	</use>
-	<maintainer type="person">
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
-	</maintainer>
 	<longdescription lang="en">
 A graphical journal with calendar, templates, tags, keyword searching, and export functionality.
 </longdescription>

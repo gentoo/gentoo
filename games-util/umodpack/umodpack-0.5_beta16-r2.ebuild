@@ -20,6 +20,7 @@ DEPEND="virtual/perl-IO-Compress
 	dev-perl/Archive-Zip
 	dev-perl/Tie-IxHash
 	tk? ( dev-perl/Tk )"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 SRC_TEST="do parallel"

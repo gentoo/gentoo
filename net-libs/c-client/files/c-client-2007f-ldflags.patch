@@ -1,5 +1,5 @@
---- src/osdep/unix/Makefile~	2011-06-07 16:04:29.000000000 +0300
-+++ src/osdep/unix/Makefile	2011-06-07 15:55:31.000000000 +0300
+--- a/src/osdep/unix/Makefile~	2011-06-07 16:04:29.000000000 +0300
++++ b/src/osdep/unix/Makefile	2011-06-07 15:55:31.000000000 +0300
 @@ -954,23 +954,24 @@
  
  # Once-only environment setup

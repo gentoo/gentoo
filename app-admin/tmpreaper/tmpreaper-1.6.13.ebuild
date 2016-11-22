@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="sys-fs/e2fsprogs"
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P/_/-}"

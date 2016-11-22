@@ -1,0 +1,43 @@
+From 3716c048d65d4984513591cb8b1031858201db6c Mon Sep 17 00:00:00 2001
+From: Alex Merry <alex.merry@kde.org>
+Date: Sun, 16 Aug 2015 20:30:41 +0100
+Subject: [PATCH] Tell CMake what version of Python we want to find.
+
+This ensures that Python 2 is found if possible, rather than Python 3.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=91659
+
+Reviewed-by: Alexandr Akulich <akulichalexander@gmail.com>
+---
+ CMakeLists.txt                        | 2 +-
+ cmake/modules/FindPythonLibrary.cmake | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9a014ce..a01b586 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,8 +133,8 @@ macro_log_feature(QT_GLIB_SUPPORT "Qt Glib Support"
+ set(CMAKE_REQUIRED_FLAGS "")
+ 
+ # Find python version >= 2.5
+-find_package(PythonLibrary REQUIRED)
+ set(REQUIRED_PY 2.5)
++find_package(PythonLibrary ${REQUIRED_PY} REQUIRED)
+ if(${PYTHON_SHORT_VERSION} VERSION_GREATER ${REQUIRED_PY} OR ${PYTHON_SHORT_VERSION} VERSION_EQUAL ${REQUIRED_PY})
+     message(STATUS "Python ${PYTHON_SHORT_VERSION} found")
+ else(${PYTHON_SHORT_VERSION} VERSION_GREATER ${REQUIRED_PY} OR ${PYTHON_SHORT_VERSION} VERSION_EQUAL ${REQUIRED_PY})
+diff --git a/cmake/modules/FindPythonLibrary.cmake b/cmake/modules/FindPythonLibrary.cmake
+index 2585859..c6bb712 100644
+--- a/cmake/modules/FindPythonLibrary.cmake
++++ b/cmake/modules/FindPythonLibrary.cmake
+@@ -28,7 +28,8 @@ if(EXISTS PYTHON_LIBRARY)
+   # Already in cache, be silent
+   set(PYTHONLIBRARY_FOUND TRUE)
+ else(EXISTS PYTHON_LIBRARY)
+-  FIND_PACKAGE(PythonInterp)
++  message(STATUS "PythonLibrary find version: ${PythonLibrary_FIND_VERSION}")
++  FIND_PACKAGE(PythonInterp ${PythonLibrary_FIND_VERSION})
+ 
+   if(PYTHONINTERP_FOUND)
+     FIND_FILE(_find_lib_python_py FindLibPython.py PATHS ${CMAKE_MODULE_PATH})

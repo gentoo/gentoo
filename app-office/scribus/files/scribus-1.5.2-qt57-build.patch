@@ -1,0 +1,21 @@
+commit ddb5688ae4f4ff40ba1204a413fcf15279b35f2b
+Author: Franz Schmid <Franz.Schmid@altmuehlnet.de>
+Date:   Sat Jun 18 09:14:21 2016 +0000
+
+    Compile Fix for compiling with Qt-5.7
+    
+    git-svn-id: svn://scribus.net/trunk/Scribus@21381 11d20701-8431-0410-a711-e3c959e3b870
+
+diff --git a/scribus/third_party/fparser/fpoptimizer.cc b/scribus/third_party/fparser/fpoptimizer.cc
+index ae8c0f6..673e1b6 100644
+--- a/scribus/third_party/fparser/fpoptimizer.cc
++++ b/scribus/third_party/fparser/fpoptimizer.cc
+@@ -7296,7 +7296,7 @@ namespace FPoptimizer_CodeTree
+                             //if(imm >= 0.0)
+                             {
+                                 double new_base_immed = std::pow(base_immed, imm);
+-                                if(isinf(new_base_immed) || new_base_immed == 0.0)
++								if(std::isinf(new_base_immed) || new_base_immed == 0.0)
+                                 {
+                                     // It produced an infinity. Do not change.
+                                     break;

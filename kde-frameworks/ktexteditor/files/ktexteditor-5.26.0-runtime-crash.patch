@@ -1,0 +1,39 @@
+From: Dominik Haumann <dhaumann@kde.org>
+Date: Thu, 08 Sep 2016 13:32:39 +0000
+Subject: Fix crash: Make sure the display cursor is valid after text folding
+X-Git-Url: http://quickgit.kde.org/?p=ktexteditor.git&a=commitdiff&h=09a1e864d54735ebcab6bf31198fdef969b92a67
+---
+Fix crash: Make sure the display cursor is valid after text folding
+
+This bug existed at least since KDE 4.3 (2009), took a long time to track it down.
+
+FIXED-IN: KDE Frameworks 5.27
+BUG: 367466
+Differential-Revision: https://phabricator.kde.org/D2709
+---
+
+
+--- a/src/view/kateviewinternal.cpp
++++ b/src/view/kateviewinternal.cpp
+@@ -709,6 +709,10 @@
+ 
+         // set cursor to start of folding region
+         updateCursor(foldingRange.start(), true);
++    } else {
++        // force an update of the cursor, since otherwise the m_displayCursor
++        // line may be below the total amount of visible lines.
++        updateCursor(m_cursor, true);
+     }
+ 
+     updateView();
+@@ -1515,6 +1519,9 @@
+         m_view->completionWidget()->cursorUp();
+         return;
+     }
++
++    // assert that the display cursor is in visible lines
++    Q_ASSERT(m_displayCursor.line() < m_view->textFolding().visibleLines());
+ 
+     /**
+      * move cursor to start of line, if we are at first line!
+

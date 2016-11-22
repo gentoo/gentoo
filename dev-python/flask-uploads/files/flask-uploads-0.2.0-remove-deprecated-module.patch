@@ -1,0 +1,23 @@
+From 0a4d2a9724ad7ac4e332f0016bd2027a5a8ad33e Mon Sep 17 00:00:00 2001
+From: Wojciech Kryscinski <wojciech.kryscinski@fornax.co>
+Date: Mon, 6 Jun 2016 12:17:05 +0000
+Subject: [PATCH] Removed Module from imports. It was deprecated and removed
+ from flask
+
+---
+ flask_uploads.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flask_uploads.py b/flask_uploads.py
+index ebbc395..a10b72c 100644
+--- a/flask_uploads.py
++++ b/flask_uploads.py
+@@ -21,7 +21,7 @@
+ import os.path
+ import posixpath
+ 
+-from flask import current_app, Module, send_from_directory, abort, url_for
++from flask import current_app, send_from_directory, abort, url_for
+ from itertools import chain
+ from werkzeug import secure_filename, FileStorage
+ 

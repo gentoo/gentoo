@@ -1,8 +1,0 @@
---- a/libwandio/Makefile.am
-+++ b/libwandio/Makefile.am
-@@ -43,3 +43,5 @@
- wandiocat_CFLAGS = -I"$(top_srcdir)/libwandio"
- wandiocat_CXXFLAGS = -I"$(top_srcdir)/libwandio"
- wandiocat_LDFLAGS = -L"$(top_srcdir)/libwandio" -lwandio
-+
-+wandiocat: libwandio.la

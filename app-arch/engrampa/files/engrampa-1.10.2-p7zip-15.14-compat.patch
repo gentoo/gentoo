@@ -1,0 +1,30 @@
+From a2a537eb4c263a5b33851572a189fe89476b212e Mon Sep 17 00:00:00 2001
+From: sc0w <scow@riseup.net>
+Date: Wed, 25 May 2016 02:29:21 +0200
+Subject: [PATCH] p7zip-rar 15.14 supported
+
+since 15.14, p7zip-rar uses the plugin Rar.so to handle archives
+
+It can find on /usr/lib/ or /usr/libexec/
+
+If someone has it in another folder, we can add it
+
+Fixes #136
+---
+ src/fr-command-7z.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/fr-command-7z.c b/src/fr-command-7z.c
+index 20cfa2c..a7d032e 100644
+--- a/src/fr-command-7z.c
++++ b/src/fr-command-7z.c
+@@ -599,7 +599,8 @@ fr_command_7z_get_capabilities (FrCommand  *comm,
+ 		if (is_mime_type (mime_type, "application/x-rar")
+ 		    || is_mime_type (mime_type, "application/x-cbr"))
+ 		{
+-			if (! check_command || g_file_test ("/usr/lib/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS))
++			if (! check_command || g_file_test ("/usr/lib/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS) || g_file_test ("/usr/lib/p7zip/Codecs/Rar.so", G_FILE_TEST_EXISTS)
++			    || g_file_test ("/usr/libexec/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS) || g_file_test ("/usr/libexec/p7zip/Codecs/Rar.so", G_FILE_TEST_EXISTS))
+ 				capabilities |= FR_COMMAND_CAN_READ;
+ 		}
+ 		else

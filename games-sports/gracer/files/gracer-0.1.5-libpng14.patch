@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=308885
 
---- common/gr_texture.c
-+++ common/gr_texture.c
+--- a/common/gr_texture.c
++++ b/common/gr_texture.c
 @@ -419,7 +419,7 @@ read_png_file (GrTexture *texture, char
    if (fread (header, 1, PNG_BYTES_TO_CHECK, file) != PNG_BYTES_TO_CHECK) {
      goto ERROR;

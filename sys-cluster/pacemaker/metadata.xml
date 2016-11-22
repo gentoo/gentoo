@@ -13,7 +13,7 @@
   <use>
     <flag name="cman">Enable <pkg>sys-cluster/cman</pkg> support.</flag>
     <flag name="heartbeat">Enable <pkg>sys-cluster/heartbeat</pkg> support.</flag>
-    <flag name="smtp">Enable SMTP support via <pkg>net-libs/libsmtp</pkg></flag>
+    <flag name="smtp">Enable SMTP support via <pkg>net-libs/libesmtp</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">ClusterLabs/pacemaker</remote-id>

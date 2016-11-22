@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_P="gnu.regexp-${PV}"
 
 DESCRIPTION="GNU regular expression package for Java"
-HOMEPAGE="http://savannah.gnu.org/projects/gnu-regexp"
+HOMEPAGE="https://savannah.gnu.org/projects/gnu-regexp"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

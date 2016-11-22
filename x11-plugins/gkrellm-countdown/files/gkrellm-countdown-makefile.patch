@@ -1,0 +1,40 @@
+This patch is by Michael Mair-Keimberger, as part of bug 339657. It
+teaches the Makefile to support the user's LDFLAGS.
+
+Gentoo-Bug: 339657
+
+--- a/Makefile	2003-12-30 23:07:29.000000000 +0100
++++ b/Makefile	2013-03-16 14:23:47.671010566 +0100
+@@ -9,7 +9,7 @@
+ IMLIB_LIB ?= 
+ PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE) $(IMLIB_INCLUDE)
++FLAGS = -fPIC $(GTK_INCLUDE) $(IMLIB_INCLUDE)
+ LIBS = $(GTK_LIB) $(IMLIB_LIB)
+ LFLAGS = -shared -lpthread
+ 
+@@ -22,8 +22,8 @@
+ FLAGS += -DPACKAGE="\"$(PACKAGE)\"" 
+ export PACKAGE LOCALEDIR
+ 
+-CC ?= gcc 
+-CC += $(CFLAGS) $(FLAGS)
++
++CC = $(CC)
+ 
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+@@ -32,8 +32,11 @@
+ 
+ all:	$(BIN_FILENAME).so
+ 
++%.o: %.c
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) -c -o $@ $<
++
+ $(BIN_FILENAME).so: $(OBJS)
+-	$(CC) $(OBJS) -o $(BIN_FILENAME).so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) $(OBJS) -o $(BIN_FILENAME).so $(LFLAGS) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~

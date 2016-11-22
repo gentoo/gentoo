@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/580258
+
+From 6c6f341d84f1e4c2c67fed98f09debe086fe9a47 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Apr 2016 02:19:20 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+These funcs are defined in that header, so include it to avoid errors:
+../lib/.libs/libsmputils1.so: undefined reference to 'minor'
+---
+ lib/smp_aac_io.c    | 1 +
+ lib/smp_lin_bsg.c   | 1 +
+ lib/smp_mptctl_io.c | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/lib/smp_aac_io.c b/lib/smp_aac_io.c
+index 442eadf..e3d9710 100644
+--- a/lib/smp_aac_io.c
++++ b/lib/smp_aac_io.c
+@@ -6,6 +6,7 @@
+ #include <stddef.h>
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+diff --git a/lib/smp_lin_bsg.c b/lib/smp_lin_bsg.c
+index 0995ded..89a92cc 100644
+--- a/lib/smp_lin_bsg.c
++++ b/lib/smp_lin_bsg.c
+@@ -40,6 +40,7 @@
+ #include <fcntl.h>
+ //#include <curses.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+diff --git a/lib/smp_mptctl_io.c b/lib/smp_mptctl_io.c
+index 5512913..def386d 100644
+--- a/lib/smp_mptctl_io.c
++++ b/lib/smp_mptctl_io.c
+@@ -15,6 +15,7 @@
+ #include <fcntl.h>
+ //#include <curses.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+-- 
+2.7.4
+

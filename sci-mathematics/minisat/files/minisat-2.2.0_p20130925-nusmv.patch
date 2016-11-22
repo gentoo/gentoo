@@ -1,0 +1,527 @@
+--- a/Makefile
++++ b/Makefile
+@@ -69,8 +89,8 @@
+ VERB=
+ endif
+ 
+-SRCS = $(wildcard minisat/core/*.cc) $(wildcard minisat/simp/*.cc) $(wildcard minisat/utils/*.cc)
+-HDRS = $(wildcard minisat/mtl/*.h) $(wildcard minisat/core/*.h) $(wildcard minisat/simp/*.h) $(wildcard minisat/utils/*.h)
++SRCS = $(wildcard minisat/core/*.cc) $(wildcard minisat/simp/*.cc) $(wildcard minisat/utils/*.cc) $(wildcard minisat/proof/*.cc)
++HDRS = $(wildcard minisat/mtl/*.h) $(wildcard minisat/core/*.h) $(wildcard minisat/simp/*.h) $(wildcard minisat/utils/*.h) $(wildcard minisat/proof/*.h)
+ OBJS = $(filter-out %Main.o, $(SRCS:.cc=.o))
+ 
+ r:	$(BUILD_DIR)/release/bin/$(MINISAT)
+@@ -89,7 +109,7 @@
+ lsh:	$(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE)
+ 
+ ## Build-type Compile-flags:
+-$(BUILD_DIR)/release/%.o:			MINISAT_CXXFLAGS +=$(MINISAT_REL) $(MINISAT_RELSYM)
++$(BUILD_DIR)/release/%.o:			MINISAT_CXXFLAGS +=$(MINISAT_REL) $(MINISAT_RELSYM) $(MINISAT_FPIC)
+ $(BUILD_DIR)/debug/%.o:				MINISAT_CXXFLAGS +=$(MINISAT_DEB) -g
+ $(BUILD_DIR)/profile/%.o:			MINISAT_CXXFLAGS +=$(MINISAT_PRF) -pg
+ $(BUILD_DIR)/dynamic/%.o:			MINISAT_CXXFLAGS +=$(MINISAT_REL) $(MINISAT_FPIC)
+@@ -195,7 +215,7 @@
+ 	$(INSTALL) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 755 $(BUILD_DIR)/dynamic/bin/$(MINISAT) $(DESTDIR)$(bindir)
+ 
+-clean:
++origclean:
+ 	rm -f $(foreach t, release debug profile dynamic, $(foreach o, $(SRCS:.cc=.o), $(BUILD_DIR)/$t/$o)) \
+           $(foreach t, release debug profile dynamic, $(foreach d, $(SRCS:.cc=.d), $(BUILD_DIR)/$t/$d)) \
+ 	  $(foreach t, release debug profile dynamic, $(BUILD_DIR)/$t/bin/$(MINISAT_CORE) $(BUILD_DIR)/$t/bin/$(MINISAT)) \
+@@ -203,6 +223,7 @@
+ 	  $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR).$(SOMINOR)$(SORELEASE)\
+ 	  $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB).$(SOMAJOR)\
+ 	  $(BUILD_DIR)/dynamic/lib/$(MINISAT_DLIB)
++	rm -f $(NUSMV_LIBNAME)
+ 
+ distclean:	clean
+ 	rm -f config.mk
+--- a/minisat/core/Solver.cc
++++ b/minisat/core/Solver.cc
+@@ -101,7 +101,16 @@
+   , conflict_budget    (-1)
+   , propagation_budget (-1)
+   , asynch_interrupt   (false)
+-{}
++{
++    // NuSMV: MOD BEGIN
++    /* Disables "progress saving" which relies on last polarity
++       assigned to a var when branching. Polarity for us is forced to
++       be false. See http://reasoning.cs.ucla.edu/fetch.php?id=69&type=pdf
++    */
++    phase_saving = 0;
++    default_polarity = l_Undef;
++    // NuSMV: MOD END
++}   
+ 
+ 
+ Solver::~Solver()
+@@ -250,8 +259,19 @@
+ {
+     Var next = var_Undef;
+ 
++    // NuSMV: PREF MOD
++    // Selection from preferred list
++    for (int i = 0; i < preferred.size(); i++) {
++      if (value(preferred[i]) == l_Undef) {
++        next = preferred[i];
++        break;
++      }
++    }
++    // NuSMV: PREF MOD END
++
+     // Random decision:
+-    if (drand(random_seed) < random_var_freq && !order_heap.empty()){
++    if (next == var_Undef && // NuSMV: PREF MOD
++        drand(random_seed) < random_var_freq && !order_heap.empty()){
+         next = order_heap[irand(random_seed,order_heap.size())];
+         if (value(next) == l_Undef && decision[next])
+             rnd_decisions++; }
+@@ -269,6 +289,8 @@
+         return lit_Undef;
+     else if (user_pol[next] != l_Undef)
+         return mkLit(next, user_pol[next] == l_True);
++    else if (default_polarity != l_Undef) // NuSMV
++        return mkLit(next, default_polarity == l_True);
+     else if (rnd_pol)
+         return mkLit(next, drand(random_seed) < 0.5);
+     else
+@@ -620,6 +642,19 @@
+ }
+ 
+ 
++// NuSMV: PREF MOD
++void Solver::addPreferred(Var v)
++{
++    preferred.push(v);
++}
++
++void Solver::clearPreferred()
++{
++    preferred.clear(0);
++}
++// NuSMV: PREF MOD END
++
++
+ void Solver::rebuildOrderHeap()
+ {
+     vec<Var> vs;
+--- a/minisat/core/Solver.h
++++ b/minisat/core/Solver.h
+@@ -90,6 +90,19 @@
+     void    setPolarity    (Var v, lbool b); // Declare which polarity the decision heuristic should use for a variable. Requires mode 'polarity_user'.
+     void    setDecisionVar (Var v, bool b);  // Declare if a variable should be eligible for selection in the decision heuristic.
+ 
++    // NuSMV: PREF MOD
++    /*
++     * Add a variable at the end of the list of preferred variables
++     * Does not remove the variable from the standard ordering.
++     */
++    void addPreferred(Var v);
++    
++    /*
++     * Clear vector of preferred variables.
++     */
++    void clearPreferred();
++    // NuSMV: PREF MOD END
++    
+     // Read state:
+     //
+     lbool   value      (Var x) const;       // The current value of a variable.
+@@ -134,6 +147,8 @@
+     int       ccmin_mode;         // Controls conflict clause minimization (0=none, 1=basic, 2=deep).
+     int       phase_saving;       // Controls the level of phase saving (0=none, 1=limited, 2=full).
+     bool      rnd_pol;            // Use random polarities for branching heuristics.
++    lbool     default_polarity; // NuSMV: default polarity for vars
++    
+     bool      rnd_init_act;       // Initialize variable activities with a small random value.
+     double    garbage_frac;       // The fraction of wasted memory allowed before a garbage collection is triggered.
+     int       min_learnts_lim;    // Minimum number to set the learnts limit to.
+@@ -215,6 +230,10 @@
+     Var                 next_var;         // Next variable to be created.
+     ClauseAllocator     ca;
+ 
++    // NuSMV: PREF MOD
++    vec<Var>            preferred;
++    // NuSMV: PREF MOD END
++
+     vec<Var>            released_vars;
+     vec<Var>            free_vars;
+ 
+--- a/minisat/core/SolverTypes.h
++++ b/minisat/core/SolverTypes.h
+@@ -52,7 +52,7 @@
+     int     x;
+ 
+     // Use this as a constructor:
+-    friend Lit mkLit(Var var, bool sign = false);
++    friend Lit mkLit(Var var, bool sign);
+ 
+     bool operator == (Lit p) const { return x == p.x; }
+     bool operator != (Lit p) const { return x != p.x; }
+@@ -61,6 +61,7 @@
+ 
+ 
+ inline  Lit  mkLit     (Var var, bool sign) { Lit p; p.x = var + var + (int)sign; return p; }
++inline  Lit  mkLit     (Var var)            { return mkLit(var, false); }
+ inline  Lit  operator ~(Lit p)              { Lit q; q.x = p.x ^ 1; return q; }
+ inline  Lit  operator ^(Lit p, bool b)      { Lit q; q.x = p.x ^ (unsigned int)b; return q; }
+ inline  bool sign      (Lit p)              { return p.x & 1; }
+@@ -120,6 +121,7 @@
+ inline int   toInt  (lbool l) { return l.value; }
+ inline lbool toLbool(int   v) { return lbool((uint8_t)v);  }
+ 
++#define MINISAT_CONSTANTS_AS_MACROS
+ #if defined(MINISAT_CONSTANTS_AS_MACROS)
+   #define l_True  (lbool((uint8_t)0)) // gcc does not do constant propagation if these are real constants.
+   #define l_False (lbool((uint8_t)1))
+--- a/minisat/simp/Solver_C.cc
++++ b/minisat/simp/Solver_C.cc
+@@ -0,0 +1,246 @@
++
++/**************************************************************************************************
++
++Solver_C.C
++
++C-wrapper for Solver.C
++
++  This file is part of NuSMV version 2. 
++  Copyright (C) 2007 by FBK-irst. 
++  Author: Roberto Cavada <cavada@fbk.eu>
++
++  NuSMV version 2 is free software; you can redistribute it and/or 
++  modify it under the terms of the GNU Lesser General Public 
++  License as published by the Free Software Foundation; either 
++  version 2 of the License, or (at your option) any later version.
++
++  NuSMV version 2 is distributed in the hope that it will be useful, 
++  but WITHOUT ANY WARRANTY; without even the implied warranty of 
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
++  Lesser General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public 
++  License along with this library; if not, write to the Free Software 
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
++
++  For more information on NuSMV see <http://nusmv.fbk.eu>
++  or email to <nusmv-users@fbk.eu>.
++  Please report bugs to <nusmv-users@fbk.eu>.
++
++  To contact the NuSMV development board, email to <nusmv@fbk.eu>. ]
++
++**************************************************************************************************/
++
++
++#include "SimpSolver.h"
++extern "C" {
++#include "Solver_C.h"
++}
++
++namespace {
++using Minisat::lbool;
++} // namespace
++
++extern "C" MiniSat_ptr MiniSat_Create()
++{
++  Minisat::SimpSolver *s = new Minisat::SimpSolver();
++  s->default_polarity = l_True;
++  return (MiniSat_ptr)s;
++}
++
++extern "C" void MiniSat_Delete(MiniSat_ptr ms)
++{
++  delete (Minisat::SimpSolver *)ms;
++}
++
++extern "C" int MiniSat_Nof_Variables(MiniSat_ptr ms)
++{
++  return ((Minisat::SimpSolver *)ms)->nVars();
++}
++
++extern "C" int MiniSat_Nof_Clauses(MiniSat_ptr ms)
++{
++  return ((Minisat::SimpSolver *)ms)->nClauses();
++}
++
++/* variables are in the range 1...N */
++extern "C" int MiniSat_New_Variable(MiniSat_ptr ms)
++{
++  /* Actually, minisat used variable range 0 .. N-1,
++     so in all function below there is a convertion between
++     input variable (1..N) and internal variables (0..N-1)
++  */	
++  Minisat::Var var = ((Minisat::SimpSolver *)ms)->newVar();
++  ((Minisat::SimpSolver *)ms)->setFrozen(var, true);
++  return var+1;
++}
++
++
++/*
++ * Here clauses are in dimacs form, variable indexing is 1...N
++ */
++extern "C" int MiniSat_Add_Clause(MiniSat_ptr ms,
++                                  int *clause_lits, int num_lits)
++{
++  int i;
++  Minisat::vec<Minisat::Lit> cl;
++  for(i = 0; i < num_lits; ++i) {
++    const int lit = clause_lits[i];
++    assert(abs(lit) > 0);
++    assert(abs(lit) <= MiniSat_Nof_Variables((Minisat::SimpSolver*)ms));
++    int var = abs(lit) - 1;
++    cl.push((lit > 0) ? Minisat::mkLit(var) : ~ Minisat::mkLit(var));
++  }
++  ((Minisat::SimpSolver *)ms)->addClause(cl);
++
++  if(((Minisat::SimpSolver *)ms)->okay()) return 1;
++  return 0;
++}
++
++extern "C" int MiniSat_Solve(MiniSat_ptr ms)
++{
++  bool ret = ((Minisat::SimpSolver *)ms)->solve();
++  if(ret) return 1;
++  return 0;
++}
++
++/*
++ * Here the assumption is in "dimacs form", variable indexing is 1...N
++ */
++extern "C" int MiniSat_Solve_Assume(MiniSat_ptr ms,
++				    int nof_assumed_lits,
++				    int *assumed_lits)
++{
++  int i;
++  Minisat::vec<Minisat::Lit> cl;
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);
++
++  solver.simplify();
++  if(solver.okay() == false) return 0;
++
++  assert(nof_assumed_lits >= 0);
++  for(i = 0; i < nof_assumed_lits; ++i) {
++    const int lit = assumed_lits[i];
++    assert(abs(lit) > 0);
++    assert(abs(lit) <= MiniSat_Nof_Variables((Minisat::SimpSolver*)ms));
++    int var = abs(lit) - 1;
++    cl.push((lit > 0) ? Minisat::mkLit(var) : ~Minisat::mkLit(var));
++  }
++
++  if (solver.solve(cl)) return 1;
++  return 0;
++}
++
++extern "C" int MiniSat_simplifyDB(MiniSat_ptr ms)
++{
++  ((Minisat::SimpSolver *)ms)->simplify();
++  if(((Minisat::SimpSolver *)ms)->okay()) return 1;
++  return 0;
++}
++
++/*
++ * Here variables are numbered 1...N
++ */
++extern "C" int MiniSat_Get_Value(MiniSat_ptr ms, int var_num)
++{
++  assert(var_num > 0);
++  if(var_num > MiniSat_Nof_Variables(ms)) return -1;
++  /* minisat assigns all variables. just check */
++  assert(((Minisat::SimpSolver *)ms)->model[var_num-1] != l_Undef); 
++  
++  if(((Minisat::SimpSolver *)ms)->model[var_num-1] == l_True) return 1;
++  return 0;
++}
++
++extern "C" int MiniSat_Get_Nof_Conflict_Lits(MiniSat_ptr ms)
++{
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);
++
++  return solver.conflict.size();
++}
++
++extern "C" void MiniSat_Get_Conflict_Lits(MiniSat_ptr ms, int* conflict_lits)
++{
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);
++
++  Minisat::LSet& cf = solver.conflict;
++
++  for (int i = 0; i < cf.size(); ++i) {
++    int v = Minisat::var(~cf[i]);
++    int s = Minisat::sign(~cf[i]);
++    assert(v != Minisat::var_Undef);
++    conflict_lits[i] = (s == 0) ? (v+1) : -(v+1);
++  }
++}
++
++/** mode can be  polarity_user, polarity_rnd */
++extern "C" void MiniSat_Set_Polarity_Mode(MiniSat_ptr ms, int mode)
++{
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  assert(__polarity_unsupported != mode); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);  
++  if (polarity_rnd == mode) {
++    solver.rnd_pol = true;
++    solver.default_polarity = l_Undef;
++  }
++  else {
++    // assert(polarity_user == mode);
++    solver.rnd_pol = false;
++    switch (mode) {
++    case polarity_false:
++      solver.default_polarity = l_True;
++      break;
++    case polarity_true:
++      solver.default_polarity = l_False;
++      break;
++    default: // polarity_user
++      solver.default_polarity = l_Undef;
++      break;
++    }
++  }
++}
++
++extern "C" int MiniSat_Get_Polarity_Mode(MiniSat_ptr ms)
++{
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);  
++  //return solver.rnd_pol ? polarity_rnd : polarity_user;
++  if (solver.rnd_pol) {
++    return polarity_rnd;
++  } else if (solver.default_polarity == l_True) {
++    return polarity_false;
++  } else if (solver.default_polarity == l_False) {
++    return polarity_true;
++  } else {
++    return polarity_user;
++  }
++}
++
++extern "C" void MiniSat_Set_Random_Seed(MiniSat_ptr ms, double seed)
++{
++  assert(((Minisat::SimpSolver*)0) != ((Minisat::SimpSolver*)ms)); 
++  Minisat::SimpSolver& solver = *((Minisat::SimpSolver*)ms);
++  solver.random_seed = seed;
++}
++
++
++// NuSMV: PREF MOD
++/* variables are in the range 1...N */
++extern "C" void MiniSat_Set_Preferred_Variable(MiniSat_ptr ms, int x)
++{
++  /* Actually, minisat used variable range 0 .. N-1,
++     so in all function below there is a convertion between
++     input variable (1..N) and internal variables (0..N-1)
++  */
++  ((Minisat::SimpSolver *)ms)->addPreferred((Minisat::Var) x);
++}
++
++extern "C" void MiniSat_Clear_Preferred_Variables(MiniSat_ptr ms)
++{
++
++  ((Minisat::SimpSolver *)ms)->clearPreferred();
++}
++// NuSMV: PREF MOD END
+--- a/minisat/simp/Solver_C.h
++++ b/minisat/simp/Solver_C.h
+@@ -0,0 +1,72 @@
++/**************************************************************************************************
++
++Solver_C.h
++
++C-wrapper for Solver.h
++
++  This file is part of NuSMV version 2. 
++  Copyright (C) 2007 by FBK-irst. 
++  Author: Roberto Cavada <cavada@fbk.eu>
++
++  NuSMV version 2 is free software; you can redistribute it and/or 
++  modify it under the terms of the GNU Lesser General Public 
++  License as published by the Free Software Foundation; either 
++  version 2 of the License, or (at your option) any later version.
++
++  NuSMV version 2 is distributed in the hope that it will be useful, 
++  but WITHOUT ANY WARRANTY; without even the implied warranty of 
++  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU 
++  Lesser General Public License for more details.
++
++  You should have received a copy of the GNU Lesser General Public 
++  License along with this library; if not, write to the Free Software 
++  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
++
++  For more information on NuSMV see <http://nusmv.fbk.eu>
++  or email to <nusmv-users@fbk.eu>.
++  Please report bugs to <nusmv-users@fbk.eu>.
++
++  To contact the NuSMV development board, email to <nusmv@fbk.eu>. ]
++
++**************************************************************************************************/
++
++#ifndef SOLVER_C_h
++#define SOLVER_C_h
++
++//=================================================================================================
++// Solver -- the main class:
++
++#define MiniSat_ptr void *
++
++enum {
++  __polarity_unsupported = -1,
++  polarity_true = 0, 
++  polarity_false = 1, 
++  polarity_user = 2,  
++  polarity_rnd = 3,
++};
++
++MiniSat_ptr MiniSat_Create();
++void MiniSat_Delete(MiniSat_ptr);
++int MiniSat_Nof_Variables(MiniSat_ptr);
++int MiniSat_Nof_Clauses(MiniSat_ptr);
++int MiniSat_New_Variable(MiniSat_ptr);
++int MiniSat_Add_Clause(MiniSat_ptr, int *clause_lits, int num_lits);
++int MiniSat_Solve(MiniSat_ptr);
++int MiniSat_Solve_Assume(MiniSat_ptr, int nof_assumed_lits, int *assumed_lits);
++int MiniSat_simplifyDB(MiniSat_ptr);
++int MiniSat_Get_Value(MiniSat_ptr, int var_num);
++int MiniSat_Get_Nof_Conflict_Lits(MiniSat_ptr ms);
++void MiniSat_Get_Conflict_Lits(MiniSat_ptr ms, int* conflict_lits);
++
++void MiniSat_Set_Polarity_Mode(MiniSat_ptr ms, int mode);
++int MiniSat_Get_Polarity_Mode(MiniSat_ptr ms);
++void MiniSat_Set_Random_Seed(MiniSat_ptr ms, double seed);
++
++// NuSMV: PREF MOD
++void MiniSat_Set_Preferred_Variable(MiniSat_ptr, int);
++void MiniSat_Clear_Preferred_Variables(MiniSat_ptr);
++// NuSMV: PREF MOD END
++
++//=================================================================================================
++#endif
+--- a/minisat/utils/System.cc
++++ b/minisat/utils/System.cc
+@@ -77,7 +77,7 @@
+     struct rusage ru;
+     getrusage(RUSAGE_SELF, &ru);
+     return (double)ru.ru_maxrss / 1024; }
+-double Minisat::memUsedPeak() { return memUsed(); }
++double Minisat::memUsedPeak(bool strictlyPeak) { return memUsed(); }
+ 
+ 
+ #elif defined(__APPLE__)
+@@ -87,11 +87,11 @@
+     malloc_statistics_t t;
+     malloc_zone_statistics(NULL, &t);
+     return (double)t.max_size_in_use / (1024*1024); }
+-double Minisat::memUsedPeak() { return memUsed(); }
++double Minisat::memUsedPeak(bool strictlyPeak) { return memUsed(); }
+ 
+ #else
+ double Minisat::memUsed()     { return 0; }
+-double Minisat::memUsedPeak() { return 0; }
++double Minisat::memUsedPeak(bool strictlyPeak) { return 0; }
+ #endif
+ 
+ 

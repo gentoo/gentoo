@@ -1,0 +1,11 @@
+diff -purN a/Source/WebCore/platform/gtk/RenderThemeGtk2.cpp b/Source/WebCore/platform/gtk/RenderThemeGtk2.cpp
+--- a/Source/WebCore/platform/gtk/RenderThemeGtk2.cpp	2016-03-14 08:09:01.000000000 +0100
++++ b/Source/WebCore/platform/gtk/RenderThemeGtk2.cpp	2016-04-10 19:43:00.215345381 +0200
+@@ -40,6 +40,7 @@
+ #include "PaintInfo.h"
+ #include "PlatformContextCairo.h"
+ #include "RenderElement.h"
++#include "RenderBox.h"
+ #include "TextDirection.h"
+ #include "UserAgentStyleSheets.h"
+ #include "WidgetRenderingContext.h"

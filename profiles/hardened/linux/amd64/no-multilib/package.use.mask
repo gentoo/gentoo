@@ -3,6 +3,11 @@
 # $Id$
 
 # Mirror profile/amd64/no-multilib/package.use.mask
+
+# Mike Frysinger <vapier@gentoo.org> (12 Aug 2016)
+# Requires sys-boot/grub:0 which is masked here.
+sys-apps/memtest86+ floppy
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
 # Disable 32-bit parts of wine, bug #351436
 app-emulation/wine mono win32

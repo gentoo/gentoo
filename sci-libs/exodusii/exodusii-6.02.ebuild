@@ -12,7 +12,7 @@ MY_PN="${PN%ii}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Model developed to store and retrieve transient data for finite element analyses"
-HOMEPAGE="http://sourceforge.net/projects/exodusii/"
+HOMEPAGE="https://sourceforge.net/projects/exodusii/"
 SRC_URI="mirror://sourceforge/project/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

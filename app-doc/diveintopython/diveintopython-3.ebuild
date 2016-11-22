@@ -17,7 +17,7 @@ SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz
 LICENSE="CC-BY-SA-3.0"
 SLOT="3"
 
-KEYWORDS="~amd64 ~ppc64 ~ppc ~x86"
+KEYWORDS="amd64 ppc64 ppc x86"
 
 IUSE="pdf"
 
@@ -29,7 +29,7 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /usr/share/doc/${PN}-${SLOT}
+	insinto "/usr/share/doc/${PN}-${SLOT}"
 	use pdf && dodoc "${P}.pdf"
 	doins -r *
 }

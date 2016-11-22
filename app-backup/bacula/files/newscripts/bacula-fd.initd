@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+command=/usr/sbin/bacula-fd
+command_args="${FD_OPTIONS}"
+pidfile=/var/run/bacula-fd.9102.pid
+
+depend() {
+	need net
+	use dns
+}

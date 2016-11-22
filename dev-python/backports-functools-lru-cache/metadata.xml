@@ -13,5 +13,7 @@
 	<upstream>
 		<remote-id type="pypi">backports.functools_lru_cache</remote-id>
 		<remote-id type="github">jaraco/backports.functools_lru_cache</remote-id>
+		<bugs-to>https://github.com/jaraco/backports.functools_lru_cache/issues</bugs-to>
+		<changelog>https://github.com/jaraco/backports.functools_lru_cache/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>

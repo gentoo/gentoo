@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -100,7 +100,8 @@ src_prepare() {
 		"${FILESDIR}/${P}-libav9.patch" \
 		"${FILESDIR}/${P}-underlinking.patch" \
 		"${FILESDIR}/${P}-tests.patch" \
-		"${FILESDIR}/${P}-xxd.patch"
+		"${FILESDIR}/${P}-xxd.patch" \
+		"${FILESDIR}/${P}-ffmpeg3.patch"
 
 	eautoreconf
 }

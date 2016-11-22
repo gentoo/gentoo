@@ -2,18 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
-		<description>Maintainer. Assign bugs to him</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
-		<description>Maintainer. CC him on bugs</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
 			<email>eionrobb@gmail.com</email>
+			<name>Eion Robb</name>
 		</maintainer>
 		<bugs-to>https://code.google.com/p/pidgin-opensteamworks/issues/list</bugs-to>
 		<remote-id type="github">EionRobb/pidgin-opensteamworks</remote-id>

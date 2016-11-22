@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,6 +39,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-rendering.patch #197489
 	epatch "${FILESDIR}"/${P}-asneeded.patch #207638
 	epatch "${FILESDIR}"/${P}-libpng15.patch #357167
+	epatch "${FILESDIR}"/${P}-underlinking-test.patch #367645
+	epatch "${FILESDIR}"/${P}-no-LDFLAGS-in-pc.patch
 
 	mkdir m4 && cp "${WORKDIR}"/gtk-1-for-imlib.m4 m4
 

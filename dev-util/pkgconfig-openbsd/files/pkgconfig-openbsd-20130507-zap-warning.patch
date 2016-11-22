@@ -1,0 +1,19 @@
+Use of $_ produces warnings which can cause build failures in certain consumers.
+
+Backported from revision 1.4 upstream (http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/pkg-config/OpenBSD/PkgConfig.pm).
+
+Gentoo-bug: 538012
+Gentoo-bug: 545314
+Gentoo-bug: 545322
+Gentoo-bug: 545962
+
+--- a/src/usr.bin/pkg-config/OpenBSD/PkgConfig.pm
++++ b/src/usr.bin/pkg-config/OpenBSD/PkgConfig.pm
+@@ -91,7 +91,6 @@
+ {
+ 	my ($class, $fh, $name) = @_;
+ 	my $cfg = $class->new;
+-	my $_;
+ 
+ 	$name = '' if !defined $name;
+ 	while (<$fh>) {

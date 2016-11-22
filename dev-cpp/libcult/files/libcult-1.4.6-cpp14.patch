@@ -1,0 +1,163 @@
+Fix compilation with GCC 6.x (C++14 as default standard). Remove throw
+specificator from function declaration when compilation is performed with
+standard >= C++11. Adds one cast to argument in C++11, C++14.
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=593928
+
+--- a/cult/cli/file-arguments.hxx
++++ b/cult/cli/file-arguments.hxx
+@@ -46,8 +46,12 @@
+       {
+         if (i >= size ())
+           throw Bounds ();
+-
+-        args_.erase (args_.begin () + i);
++	
++#if __cplusplus < 201103L
++	args_.erase (args_.begin() + i);
++#else
++        args_.erase ((Containers::Vector<String>::ConstIterator)(args_.begin () + i));
++#endif
+       }
+ 
+     private:
+--- a/cult/mm/new.cxx
++++ b/cult/mm/new.cxx
+@@ -140,7 +140,12 @@
+ using namespace Cult;
+ 
+ Void*
+-operator new (Size s) throw (MM::StdBadAlloc)
++operator new (Size s)
++#if __cplusplus < 201103L
++throw (MM::StdBadAlloc)
++#else
++noexcept(false)
++#endif
+ {
+   return MM::allocate (s, *MM::counted);
+ }
+--- a/cult/mm/new.hxx
++++ b/cult/mm/new.hxx
+@@ -255,7 +255,13 @@
+ }
+ 
+ Cult::Void*
+-operator new (Cult::Size) throw (Cult::MM::StdBadAlloc);
++operator new (Cult::Size)
++#if __cplusplus < 201103L
++throw (Cult::MM::StdBadAlloc)
++#else
++noexcept(false)
++#endif
++;
+ 
+ Cult::Void*
+ operator new (Cult::Size,
+--- a/cult/sched/condition.cxx
++++ b/cult/sched/condition.cxx
+@@ -12,6 +12,9 @@
+   {
+     Condition::
+     ~Condition ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       if (Int e = pthread_cond_destroy (&cond_))
+         throw Implementation (e);
+--- a/cult/sched/condition.hxx
++++ b/cult/sched/condition.hxx
+@@ -19,7 +19,11 @@
+     class Condition: public NonCopyable
+     {
+     public:
+-      ~Condition ();
++      ~Condition ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       Condition (Mutex& mutex);
+ 
+--- a/cult/sched/mutex.cxx
++++ b/cult/sched/mutex.cxx
+@@ -12,6 +12,9 @@
+   {
+     Mutex::
+     ~Mutex ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       if (Int e = pthread_mutex_destroy (&mutex_))
+         throw Implementation (e);
+--- a/cult/sched/mutex.hxx
++++ b/cult/sched/mutex.hxx
+@@ -17,7 +17,11 @@
+     class Mutex: public NonCopyable
+     {
+     public:
+-      ~Mutex ();
++      ~Mutex ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       Mutex ();
+ 
+--- a/cult/sched/spin.cxx
++++ b/cult/sched/spin.cxx
+@@ -12,6 +12,9 @@
+   {
+     Spin::
+     ~Spin ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       if (Int e = pthread_spin_destroy (&spin_))
+         throw Implementation (e);
+--- a/cult/sched/spin.hxx
++++ b/cult/sched/spin.hxx
+@@ -17,7 +17,11 @@
+     class Spin: public NonCopyable
+     {
+     public:
+-      ~Spin ();
++      ~Spin ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       Spin ();
+ 
+--- a/cult/sched/thread.cxx
++++ b/cult/sched/thread.cxx
+@@ -196,6 +196,9 @@
+ 
+     Thread::
+     ~Thread ()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+     {
+       tout << "thread is being destroyed.";
+ 
+--- a/cult/sched/thread.hxx
++++ b/cult/sched/thread.hxx
+@@ -30,7 +30,11 @@
+ 
+     public:
+       virtual
+-      ~Thread ();
++      ~Thread ()
++#if __cplusplus >= 201103L
++      noexcept(false)
++#endif
++      ;
+ 
+       Thread (Void* (*StartRoutine) (Void*), Void* arg = 0);
+ 

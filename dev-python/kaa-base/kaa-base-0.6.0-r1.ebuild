@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,12 @@ SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="avahi sqlite tls lirc"
+IUSE="lirc sqlite tls zeroconf"
 
-DEPEND=">=dev-libs/glib-2.4.0
-	avahi? ( net-dns/avahi[python] )
-	sqlite? ( dev-python/dbus-python[${PYTHON_USEDEP}] )"
+DEPEND=">=dev-libs/glib-2.4.0:2
+	sqlite? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+	zeroconf? ( net-dns/avahi[python] )
+"
 RDEPEND="${DEPEND}
 	dev-python/pynotifier[${PYTHON_USEDEP}]
 	lirc? ( dev-python/pylirc[${PYTHON_USEDEP}] )

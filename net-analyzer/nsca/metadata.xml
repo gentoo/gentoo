@@ -24,7 +24,7 @@
   <use>
     <flag name="crypt">
       Build support for crypted communication with nsca, through
-      <pkg>dev-libs/mcrypt</pkg>. It's recommended not to disable this
+      <pkg>dev-libs/libmcrypt</pkg>. It's recommended not to disable this
       flag unless all the communication will be handled in an
       absolutely safe environment.
     </flag>

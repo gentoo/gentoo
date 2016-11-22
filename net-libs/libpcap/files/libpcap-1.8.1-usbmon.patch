@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1493,10 +1493,9 @@
+ 	AC_DEFINE(PCAP_SUPPORT_USB, 1, [target host supports USB sniffing])
+ 	USB_SRC=pcap-usb-linux.c
+ 	AC_MSG_RESULT(yes)
+-	ac_usb_dev_name=`udevinfo -q name -p /sys/class/usb_device/usbmon 2>/dev/null`
+-	if test $? -ne 0 ; then
+-	  ac_usb_dev_name="usbmon"
+-	fi
++
++	ac_usb_dev_name="usbmon"
++
+ 	AC_DEFINE_UNQUOTED(LINUX_USB_MON_DEV, "/dev/$ac_usb_dev_name", [path for device for USB sniffing])
+ 	AC_MSG_NOTICE(Device for USB sniffing is /dev/$ac_usb_dev_name)
+ 	#

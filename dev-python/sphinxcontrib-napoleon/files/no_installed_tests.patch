@@ -1,0 +1,11 @@
+--- setup.py.orig	2016-08-03 16:43:35.775261808 +0200
++++ setup.py	2016-08-03 16:43:56.126054227 +0200
+@@ -43,7 +43,7 @@
+         'Framework :: Sphinx :: Extension',
+     ],
+     platforms='any',
+-    packages=find_packages(),
++    packages=["sphinxcontrib"],
+     include_package_data=True,
+     install_requires=reqs,
+     test_suite='nose.collector',

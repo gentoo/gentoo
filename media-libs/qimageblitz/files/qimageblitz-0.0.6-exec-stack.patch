@@ -1,0 +1,9 @@
+Index: blitz/asm_scale.S
+===================================================================
+--- a/blitz/asm_scale.S	(revision 1204247)
++++ b/blitz/asm_scale.S	(revision 1204248)
+@@ -1,3 +1,4 @@
++.section .note.GNU-stack,"",%progbits
+ 
+ #if defined(__EMX__)
+ /* Due to strange behaviour of as.exe we use this macros */

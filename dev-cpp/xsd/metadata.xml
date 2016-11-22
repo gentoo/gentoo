@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>dev-zero@gentoo.org</email>
-    <name>Tiziano Müller</name>
-</maintainer>
-<use>
-	<flag name="ace">Enable support for serializing to/from an ACE CDR stream</flag>
-</use>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+		<name>Gentoo C++ Project</name>
+	</maintainer>
+	<use>
+		<flag name="ace">Enable support for serializing to/from an ACE CDR stream</flag>
+	</use>
 </pkgmetadata>

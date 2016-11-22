@@ -13,7 +13,7 @@
     <flag name="frei0r">Build the module for <pkg>media-plugins/frei0r-plugins</pkg></flag>
     <flag name="melt">Build the melt commandline tool</flag>
     <flag name="lua">Build SWIG bindings for Lua</flag>
-    <flag name="kdenlive">Build support for <pkg>media-video/kdenlive</pkg></flag>
+    <flag name="kdenlive">Build support for <pkg>kde-apps/kdenlive</pkg></flag>
     <flag name="python">Build SWIG bindings for Python</flag>
     <flag name="rtaudio">Builds rtaudio consumer for native audio support on multiple platforms.</flag>
     <flag name="ruby">Build SWIG bindings for Ruby</flag>

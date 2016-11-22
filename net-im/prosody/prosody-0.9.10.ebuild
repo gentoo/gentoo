@@ -14,7 +14,7 @@ SRC_URI="http://prosody.im/tmp/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="ipv6 libevent mysql postgres sqlite ssl zlib jit libressl"
 
 DEPEND="net-im/jabber-base
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 		mysql? ( dev-lua/luadbi[mysql] )
 		postgres? ( dev-lua/luadbi[postgres] )
 		sqlite? ( dev-lua/luadbi[sqlite] )
-		ssl? ( dev-lua/luasec )
+		ssl? ( <dev-lua/luasec-0.6 )
 		zlib? ( dev-lua/lua-zlib )"
 
 S=${WORKDIR}/${MY_P}

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/${P}.tgz
 
 LICENSE="OPENLDAP GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 IUSE_DAEMON="crypt icu samba slp tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
@@ -57,7 +57,7 @@ CDEPEND="icu? ( dev-libs/icu:= )
 		odbc? ( !iodbc? ( dev-db/unixODBC )
 			iodbc? ( dev-db/libiodbc ) )
 		slp? ( net-libs/openslp )
-		perl? ( dev-lang/perl[-build(-)] )
+		perl? ( dev-lang/perl:=[-build(-)] )
 		samba? (
 			!libressl? ( dev-libs/openssl:0 )
 			libressl? ( dev-libs/libressl )
@@ -298,8 +298,12 @@ pkg_setup() {
 		openldap_find_versiontags
 	fi
 
-	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	# The user/group are only used for running daemons which are
+	# disabled in minimal builds, so elide the accounts too.
+	if ! use minimal ; then
+		enewgroup ldap 439
+		enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	fi
 }
 
 src_prepare() {
@@ -470,6 +474,11 @@ multilib_src_configure() {
 		$(multilib_native_use_with sasl cyrus-sasl)
 		$(multilib_native_use_enable sasl spasswd)
 		$(use_enable tcpd wrappers)
+	)
+
+	# Some cross-compiling tests don't pan out well.
+	tc-is-cross-compiler && myconf+=(
+		--with-yielding-select=yes
 	)
 
 	local ssl_lib="no"

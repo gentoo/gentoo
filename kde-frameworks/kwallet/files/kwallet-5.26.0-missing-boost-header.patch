@@ -1,0 +1,22 @@
+commit 0ae542bfa6e266ead736d6cca5f979dac75e24f2
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Sep 25 14:56:55 2016 +0200
+
+    Add missing boost header
+    
+    Fixes build error with GpgME-1.7.0 (which was ported away from boost).
+    
+    REVIEW: 129012
+
+diff --git a/src/runtime/kwalletd/kwalletwizard.cpp b/src/runtime/kwalletd/kwalletwizard.cpp
+index bf36f3b..cd52e54 100644
+--- a/src/runtime/kwalletd/kwalletwizard.cpp
++++ b/src/runtime/kwalletd/kwalletwizard.cpp
+@@ -39,6 +39,7 @@
+ #include <QDebug>
+ #include <kmessagebox.h>
+ #include <gpgme.h>
++#include <boost/shared_ptr.hpp>
+ #endif
+ 
+ class PageIntro : public QWizardPage

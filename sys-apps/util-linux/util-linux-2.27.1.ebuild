@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	python-single-r1 multilib-minimal systemd
@@ -32,7 +32,7 @@ RDEPEND="caps? ( sys-libs/libcap-ng )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
-	readline? ( sys-libs/readline:0 )
+	readline? ( sys-libs/readline:0= )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )

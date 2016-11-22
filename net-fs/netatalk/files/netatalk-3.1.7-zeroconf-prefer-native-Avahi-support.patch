@@ -7,7 +7,7 @@ Check first for native Avahi support and use that over mDNSResponder
 support to avoid using Avahi's mDNSResponder compatibility layer by
 default.
 
-Bug: http://sourceforge.net/p/netatalk/bugs/586/
+Bug: https://sourceforge.net/p/netatalk/bugs/586/
 Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=492716
 
 Signed-off-by: Doug Goldstein <cardoe@cardoe.com>

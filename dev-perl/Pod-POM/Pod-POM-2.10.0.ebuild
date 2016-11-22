@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="test"
 RDEPEND="virtual/perl-parent"
 DEPEND="
 	test? (
-		>=dev-perl/yaml-0.67
+		>=dev-perl/YAML-0.67
 		dev-perl/File-Slurper
 		dev-perl/Test-Differences
 	)"

@@ -1,0 +1,35 @@
+From e72c59062f39e89569524f4556cbddb8d00119f4 Mon Sep 17 00:00:00 2001
+From: Vivien Malerba <malerba@gnome-db.org>
+Date: Sun, 7 Feb 2016 20:49:07 +0100
+Subject: Re-correction for bug #761424
+
+Automatic detection of API version
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 152f676..9898a32 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -571,13 +571,13 @@ fi
+ vala_api="No Vala bindings will be generated"
+ if test "x$enable_vala" = "xyes"
+ then
+-	AM_PROG_VALAC([0.26.0])
++	AM_PROG_VALAC()
+ 	if test "x$VALA_API_VERSION" = "x"
+ 	then
+-		VAPIGEN_CHECK([0.26.0],[0.26],,no)
+-		vala_api="0.26 (Default)"
++		VAPIGEN_CHECK(,,,no)
++		vala_api="`pkg-config --modversion vapigen` (Default)"
+ 	else
+-		VAPIGEN_CHECK([0.26.0],$VALA_API_VERSION,,no)
++		VAPIGEN_CHECK(,$VALA_API_VERSION,,no)
+ 		vala_api=$VALA_API_VERSION
+ 	fi
+ else
+-- 
+cgit v0.12
+

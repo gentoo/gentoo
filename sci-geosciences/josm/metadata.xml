@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>hanno@gentoo.org</email>
+    <email>nixphoeni@gentoo.org</email>
   </maintainer>
 <maintainer type="project">
     <email>sci-geosciences@gentoo.org</email>

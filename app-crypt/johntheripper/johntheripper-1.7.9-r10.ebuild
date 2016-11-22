@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
 #Remove AltiVec USE flag. Appears to be an upstream issue.
-IUSE="cuda custom-cflags -minimal cpu_flags_x86_mmx mozilla mpi opencl openmp cpu_flags_x86_sse2"
+IUSE="cuda custom-cflags -minimal cpu_flags_x86_mmx libressl mozilla mpi opencl openmp cpu_flags_x86_sse2"
 REQUIRED_USE="openmp? ( !minimal )
 	mpi? ( !minimal )
 	cuda? ( !minimal )
@@ -29,7 +29,10 @@ REQUIRED_USE="openmp? ( !minimal )
 	mozilla? ( !minimal )"
 
 DEPEND="sys-libs/zlib
-	!minimal? ( >=dev-libs/openssl-0.9.7:0 )
+	!minimal? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	mpi? ( virtual/mpi )
 	cuda? ( x11-drivers/nvidia-drivers
 		dev-util/nvidia-cuda-toolkit:= )

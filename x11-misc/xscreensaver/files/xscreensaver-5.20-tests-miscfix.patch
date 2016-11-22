@@ -1,7 +1,7 @@
 http://pkgs.fedoraproject.org/cgit/xscreensaver.git/tree/xscreensaver-5.12-tests-miscfix.patch
 
---- driver/test-xdpms.c
-+++ driver/test-xdpms.c
+--- a/driver/test-xdpms.c
++++ a/driver/test-xdpms.c
 @@ -29,7 +29,6 @@
  
  #include <X11/Xproto.h>
@@ -10,8 +10,8 @@ http://pkgs.fedoraproject.org/cgit/xscreensaver.git/tree/xscreensaver-5.12-tests
  
  extern Bool DPMSQueryExtension (Display *dpy, int *event_ret, int *error_ret);
  extern Bool DPMSCapable (Display *dpy);
---- driver/Makefile.in
-+++ driver/Makefile.in
+--- a/driver/Makefile.in
++++ a/driver/Makefile.in
 @@ -850,7 +850,7 @@
  test-mlstring: test-mlstring.o
  	$(CC) -DTEST $(LDFLAGS) -o $@ test-mlstring.o $(SAVER_LIBS)

@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
@@ -62,11 +62,6 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 
 S=${WORKDIR}/systemd-${PV}
 
-# The multilib-build.eclass doesn't handle situation where the installed headers
-# are different in ABIs. In this case, we install libgudev headers in native
-# ABI but not for non-native ABI.
-multilib_check_headers() { :; }
-
 check_default_rules() {
 	# Make sure there are no sudden changes to upstream rules file
 	# (more for my own needs than anything else ...)
@@ -82,7 +77,7 @@ check_default_rules() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
-		CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED ~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~!FW_LOADER_USER_HELPER"
+		CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED ~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~!FW_LOADER_USER_HELPER ~UNIX"
 		linux-info_pkg_setup
 
 		# CONFIG_FHANDLE was introduced by 2.6.39
@@ -114,6 +109,7 @@ src_prepare() {
 	if [[ -n "${patchset}" ]]; then
 		EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
 	fi
+	epatch "${FILESDIR}"/${PN}-229-sysmacros.patch #580200
 
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
@@ -368,8 +364,8 @@ pkg_postinst() {
 	elog
 	elog "Starting from version >= 197 the new predictable network interface names are"
 	elog "used by default, see:"
-	elog "http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-	elog "http://cgit.freedesktop.org/systemd/systemd/tree/src/udev/udev-builtin-net_id.c"
+	elog "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
+	elog "https://cgit.freedesktop.org/systemd/systemd/tree/src/udev/udev-builtin-net_id.c"
 	elog
 	elog "Example command to get the information for the new interface name before booting"
 	elog "(replace <ifname> with, for example, eth0):"
@@ -425,7 +421,7 @@ pkg_postinst() {
 		eend $?
 	fi
 
-	# http://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
+	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
 	# https://bugs.gentoo.org/246847
 	# https://bugs.gentoo.org/514174
 	enewgroup input
@@ -434,7 +430,7 @@ pkg_postinst() {
 	if has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
-		# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		[[ -z ${REPLACING_VERSIONS} ]] && udev_reload
 	fi
 }

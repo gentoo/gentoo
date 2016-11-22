@@ -6,7 +6,7 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="a simple X property utility"
-HOMEPAGE="http://tools.suckless.org/sprop"
+HOMEPAGE="http://tools.suckless.org/x/sprop"
 SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"

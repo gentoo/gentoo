@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit eutils flag-o-matic multilib toolchain-funcs versionator
 MY_PN=CQRlib
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="An ANSI C implementation of a utility library for quaternion arithmetic and quaternion rotation math"
+DESCRIPTION="Utility library for quaternion arithmetic / rotation math (ANSI C implemented)"
 HOMEPAGE="http://cqrlib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 

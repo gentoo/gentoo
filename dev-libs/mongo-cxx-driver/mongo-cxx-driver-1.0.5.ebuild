@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,15 @@ SRC_URI="https://github.com/mongodb/${PN}/archive/legacy-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug sasl ssl static-libs"
+IUSE="debug libressl sasl ssl static-libs"
 
 RDEPEND="!dev-db/tokumx
 	>=dev-libs/boost-1.50[threads(+)]
 	sasl? ( dev-libs/cyrus-sasl )
-	ssl? ( dev-libs/openssl:= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}"
 
 # Maintainer notes

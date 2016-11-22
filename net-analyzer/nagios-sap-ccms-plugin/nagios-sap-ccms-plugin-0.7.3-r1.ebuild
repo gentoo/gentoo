@@ -8,7 +8,7 @@ MY_P="sap-ccms-plugin-${PV}"
 
 DESCRIPTION="Nagios plugin that provides an interface to SAP CCMS
 Infrastructure"
-HOMEPAGE="http://sourceforge.net/projects/nagios-sap-ccms/"
+HOMEPAGE="https://sourceforge.net/projects/nagios-sap-ccms/"
 SRC_URI="mirror://sourceforge/nagios-sap-ccms/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -15,7 +15,7 @@ fi
 inherit eutils
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"
-HOMEPAGE="http://wolf31o2.org/projects/livecd-tools"
+HOMEPAGE="https://www.gentoo.org"
 
 SLOT="0"
 LICENSE="GPL-2"

@@ -1,0 +1,13 @@
+Index: settlerlib/CMakeLists.txt
+===================================================================
+--- settlerlib.orig/CMakeLists.txt
++++ settlerlib/CMakeLists.txt
+@@ -9,7 +9,7 @@ catkin_package(DEPENDS Boost calibration
+ )
+ 
+ # common commands for building c++ executables and libraries
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS})
+ include_directories(include)
+ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/settlerlib/
+         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}

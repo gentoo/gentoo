@@ -1,0 +1,17 @@
+diff --git a/blohg/vcs_backends/git/filectx.py b/blohg/vcs_backends/git/filectx.py
+index 84f7aa3..5e20762 100644
+--- a/blohg/vcs_backends/git/filectx.py
++++ b/blohg/vcs_backends/git/filectx.py
+@@ -73,7 +73,11 @@ def _last_changeset(self):
+                                       GIT_SORT_TIME):
+             diff = self._repo.diff(head, commit)
+             for patch in diff:
+-                if patch.new_file_path == self._path:
++                try:
++                    new_file_path = patch.delta.new_file.path
++                except AttributeError:
++                    new_file_path = patch.new_file_path
++                if new_file_path == self._path:
+                     return head
+             head = commit
+ 

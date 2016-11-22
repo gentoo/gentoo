@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/580372
+
+include sys/sysmacros.h for major/minor prototypes
+
+--- a/photosyst.c
++++ b/photosyst.c
+@@ -164,6 +164,7 @@
+ #include <signal.h>
+ #include <string.h>
+ #include <dirent.h>
++#include <sys/sysmacros.h>
+ 
+ #include <sys/socket.h>
+ #include <netinet/in.h>

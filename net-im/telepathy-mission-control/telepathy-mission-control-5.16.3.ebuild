@@ -11,8 +11,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-any-r1
 
 DESCRIPTION="An account manager and channel dispatcher for the Telepathy framework"
-HOMEPAGE="http://cgit.freedesktop.org/telepathy/telepathy-mission-control/"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://cgit.freedesktop.org/telepathy/telepathy-mission-control/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

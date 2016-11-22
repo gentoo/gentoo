@@ -1,5 +1,5 @@
---- bindings/Makefile.am	2015-07-10 10:04:18.091199191 +0200
-+++ bindings/Makefile.am	2015-07-10 10:19:47.047974439 +0200
+--- a/bindings/Makefile.am	2015-07-10 10:04:18.091199191 +0200
++++ b/bindings/Makefile.am	2015-07-10 10:19:47.047974439 +0200
 @@ -3,8 +3,10 @@
  	vala
  else
@@ -12,8 +12,8 @@
  endif
  
  if HAS_MONO
---- configure.ac	2015-07-16 13:28:41.007502838 +0200
-+++ configure.ac_new	2015-07-16 13:53:18.118602877 +0200
+--- a/configure.ac	2015-07-16 13:28:41.007502838 +0200
++++ b/configure.ac_new	2015-07-16 13:53:18.118602877 +0200
 @@ -188,25 +188,37 @@
  PYGTK_REQUIRED=2.14.0
  PYGOBJECT_REQUIRED=0.22

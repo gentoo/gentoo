@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<longdescription lang="en">
+    This is a client for the OpenStack Monasca API.
+  </longdescription>
+	<upstream>
+		<remote-id type="pypi">python-monascaclient</remote-id>
+		<remote-id type="github">openstack/python-monascaclient</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,11 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
-inherit autotools eutils gnome2 mono-env
+EAPI=6
+inherit autotools gnome2 mono-env
 
 DESCRIPTION="GTK# Hex Editor"
 HOMEPAGE="http://home.gna.org/bless/"
@@ -23,7 +21,7 @@ RDEPEND="
 	     >=dev-dotnet/glade-sharp-2.12 )
 "
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
+	app-text/rarian
 	>=sys-devel/gettext-0.15
 	virtual/pkgconfig
 "
@@ -41,9 +39,9 @@ pkg_setup() {
 src_prepare() {
 	einfo "Running gettextize -f --no-changelog..."
 	( "${T}/gettextize" -f --no-changelog > /dev/null ) || die "gettexize failed"
-	epatch "${FILESDIR}/${P}-pixmap.patch"
-	epatch "${FILESDIR}/${P}-docpath.patch"
-	epatch "${FILESDIR}/${P}-mono-4.patch"
+	eapply "${FILESDIR}/${P}-pixmap.patch"
+	eapply "${FILESDIR}/${P}-docpath.patch"
+	eapply "${FILESDIR}/${P}-mono-4.patch"
 	eautoreconf
 	gnome2_src_prepare
 }

@@ -1,0 +1,32 @@
+commit 118b29f5404014d0a627767a4c7e8de4f00f9fce
+Author: João Cristóvão <jmacristovao@gmail.com>
+Date:   Wed Jul 23 12:27:29 2014 +0100
+
+    If GHC >= 7.8 module is always Thrustworthy, never safe, due to GHC.Exts
+
+diff --git a/src/Data/List/NonEmpty.hs b/src/Data/List/NonEmpty.hs
+index 8a28020..f3c2db5 100644
+--- a/src/Data/List/NonEmpty.hs
++++ b/src/Data/List/NonEmpty.hs
+@@ -1,7 +1,7 @@
+ {-# LANGUAGE CPP #-}
+ 
+ #if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
+-#ifdef MIN_VERSION_hashable
++#if defined(MIN_VERSION_hashable) || __GLASGOW_HASKELL__ >= 708
+ {-# LANGUAGE Trustworthy #-}
+ #else
+ {-# LANGUAGE Safe #-}
+diff --git a/src/Data/Semigroup.hs b/src/Data/Semigroup.hs
+index 7d41775..88fcbb0 100644
+--- a/src/Data/Semigroup.hs
++++ b/src/Data/Semigroup.hs
+@@ -8,7 +8,7 @@
+ #if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
+ #define LANGUAGE_DefaultSignatures
+ {-# LANGUAGE DefaultSignatures #-}
+-#ifdef MIN_VERSION_hashable
++#if defined(MIN_VERSION_hashable) || __GLASGOW_HASKELL__ >= 708
+ {-# LANGUAGE Trustworthy #-}
+ #else
+ {-# LANGUAGE Safe #-}

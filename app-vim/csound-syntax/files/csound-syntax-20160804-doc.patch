@@ -1,0 +1,9 @@
+--- csound-syntax-20160804/doc/csound.txt
++++ csound-syntax-20160804/doc/csound.txt
+@@ -1,4 +1,6 @@
++*csound.txt*            Csound Syntax Reference
+ 
++                                                              *csound-syntax*
+ ===========================================================================
+ !=                                                                       *!=*
+ 

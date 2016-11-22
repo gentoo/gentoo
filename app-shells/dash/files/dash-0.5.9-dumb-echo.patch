@@ -1,0 +1,93 @@
+http://bugs.gentoo.org/337329
+http://bugs.gentoo.org/527848
+
+there's no requirement for `echo` to support escape sequences. bash, by default,
+does not, while dash always does.  POSIX permits either behavior:
+http://pubs.opengroup.org/onlinepubs/9699919799/utilities/echo.html
+
+however, since the behavior is not portable, no one should be relying on echo
+having any specific behavior.  they should use `printf` when they want an escape
+sequence.  it also makes dash smaller & faster to disable this logic entirely.
+
+--- a/src/bltin/printf.c
++++ b/src/bltin/printf.c
+@@ -442,21 +442,12 @@
+ int
+ echocmd(int argc, char **argv)
+ {
+-	int nonl;
+-
+-	nonl = *++argv ? equal(*argv, "-n") : 0;
+-	argv += nonl;
+-
+-	do {
+-		int c;
+-
+-		if (likely(*argv))
+-			nonl += print_escape_str("%s", NULL, NULL, *argv++);
+-		if (nonl > 0)
+-			break;
+-
+-		c = *argv ? ' ' : '\n';
+-		out1c(c);
+-	} while (*argv);
++	int i;
++	for (i = 1; i < argc; ++i) {
++		outstr(argv[i], out1);
++		if (i < argc - 1)
++			outc(' ', out1);
++	}
++	outc('\n', out1);
+ 	return 0;
+ }
+--- a/src/dash.1
++++ b/src/dash.1
+@@ -1182,43 +1182,15 @@
+ option turns off the effect of any preceding
+ .Fl P
+ options.
+-.It Xo echo Op Fl n
++.It Xo echo
+ .Ar args... 
+ .Xc
+ Print the arguments on the standard output, separated by spaces.
+-Unless the
+-.Fl n
+-option is present, a newline is output following the arguments.
+-.Pp
+-If any of the following sequences of characters is encountered during
+-output, the sequence is not output.  Instead, the specified action is
+-performed:
+-.Bl -tag -width indent
+-.It Li \eb
+-A backspace character is output.
+-.It Li \ec
+-Subsequent output is suppressed.  This is normally used at the end of the
+-last argument to suppress the trailing newline that
+-.Ic echo
+-would otherwise output.
+-.It Li \ef
+-Output a form feed.
+-.It Li \en
+-Output a newline character.
+-.It Li \er
+-Output a carriage return.
+-.It Li \et
+-Output a (horizontal) tab character.
+-.It Li \ev
+-Output a vertical tab.
+-.It Li \e0 Ns Ar digits
+-Output the character whose value is given by zero to three octal digits.
+-If there are zero digits, a nul character is output.
+-.It Li \e\e
+-Output a backslash.
+-.El
+ .Pp
+-All other backslash sequences elicit undefined behaviour.
++No arguments or backslash sequences are supported as they are not portable.
++They will be printed out exactly as passed in.
++.Pp
++You can replace `echo -n ...` with the portable `printf %s ...` construct.
+ .It eval Ar string ...
+ Concatenate all the arguments with spaces.
+ Then re-parse and execute the command.

@@ -6,8 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="distribution">Enable networking. See
-	http://www.workrave.org/features/</flag>
 		<flag name="mate">Add support for MATE panel</flag>
 		<flag name="xfce">Add support for XFCE panel</flag>
 	</use>

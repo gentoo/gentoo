@@ -1,0 +1,11 @@
+--- a/configure.ac	2016-07-06 11:16:41.000000000 +0200
++++ b/configure.ac	2016-07-06 11:45:51.088155620 +0200
+@@ -1250,7 +1250,7 @@
+     CLIENTGUIFLAGS="${CLIENTGUIFLAGS} -DNDEBUG"
+ fi
+ 
+-CLIENTGUILIBS="${WX_LIBS} ${SQLITE3_LIBS}"
++CLIENTGUILIBS="${WX_LIBS} $($WX_CONFIG_WITH_ARGS --libs webview) ${SQLITE3_LIBS}"
+ 
+ if test "${enable_client_release}" = "yes" ; then
+    if test "x${WX_LIBS_STATIC}" = "x" ; then

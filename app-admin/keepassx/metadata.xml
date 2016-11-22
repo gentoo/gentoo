@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>tgurr@gentoo.org</email>
-    <name>Timo Gurr</name>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
   </maintainer>
   <longdescription>
     KeePassX provides a safe location for your passwords and similar

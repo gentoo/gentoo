@@ -26,7 +26,7 @@
 inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	0|1|2|3|4)
 		die "EAPI=\"${EAPI:-0}\" is not supported anymore"
@@ -77,8 +77,8 @@ fi
 
 
 DESCRIPTION="${BUILD_GST_PLUGINS} plugin for gstreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
 
 LICENSE="GPL-2"
 case ${GST_ORG_PVP} in
@@ -171,7 +171,7 @@ gstreamer_get_plugin_dir() {
 # @USAGE: gstreamer_system_link gst-libs/gst/audio:gstreamer-audio [...]
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
-# librairies.
+# libraries.
 # Takes a list of path fragments and corresponding pkgconfig libraries
 # separated by colon (:). Will replace the path fragment by the output of
 # pkgconfig.

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,8 +28,11 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Exception
 		virtual/perl-Test-Simple
 		>=dev-perl/Test-Taint-1.60.0
-		dev-perl/Test-Dependencies
-		>=dev-perl/Test-Pod-1.140.0
-		>=dev-perl/Test-Pod-Coverage-1.40.0
 	)
 "
+
+src_test() {
+	perl_rm_files t/boilerplate.t t/manifest.t t/dependencies.t \
+		t/pod-coverage.t t/pod.t
+	perl-module_src_test
+}

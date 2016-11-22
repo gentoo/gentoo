@@ -1,0 +1,8 @@
+diff --git a/src/Language/Bash/Word.hs b/src/Language/Bash/Word.hs
+index ce36c4a..b9392a9 100644
+--- a/src/Language/Bash/Word.hs
++++ b/src/Language/Bash/Word.hs
+@@ -7,2 +7,3 @@
+   , TypeSynonymInstances
++  , OverlappingInstances
+   #-}

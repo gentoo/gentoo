@@ -9,6 +9,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="fluidsynth">Enable support for <pkg>media-sound/fluidsynth</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">drumstick</remote-id>
 	</upstream>

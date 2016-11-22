@@ -1,0 +1,30 @@
+From 4d6541b108ab59e30e7413a5bc62f29bbc1fd2ab Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 11 Aug 2016 13:00:53 -0400
+Subject: [PATCH 2/3] Modernize the AM_INIT_AUTOMAKE invocation.
+
+The existing call to AM_INIT_AUTOMAKE, which passed both the project
+name and its version, had been deprecated. These days, you're supposed
+to pass those things to AC_INIT, and then call AM_INIT_AUTOMAKE with
+no arguments. This commit does that, and fixes the version number in
+the process.
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 575a5ab..fe26bad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(tlswrap.c)
+-AM_INIT_AUTOMAKE(tlswrap, 0.8)
++AC_INIT(tlswrap.c, 1.04)
++AM_INIT_AUTOMAKE
+ 
+ dnl
+ dnl Get cannonical host
+-- 
+2.7.3
+

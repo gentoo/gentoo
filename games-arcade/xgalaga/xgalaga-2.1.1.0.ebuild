@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="A clone of the classic game Galaga for the X Window System"
-HOMEPAGE="http://sourceforge.net/projects/xgalaga"
+HOMEPAGE="https://sourceforge.net/projects/xgalaga"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

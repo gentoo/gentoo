@@ -7,8 +7,8 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="The glue between Coin3D and Qt"
-SRC_URI="http://ftp.coin3d.org/coin/src/all/${P}.tar.gz"
-HOMEPAGE="http://www.coin3d.org/"
+HOMEPAGE="https://bitbucket.org/Coin3D/soqt"
+SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
 KEYWORDS="~amd64 ~arm ~x86"

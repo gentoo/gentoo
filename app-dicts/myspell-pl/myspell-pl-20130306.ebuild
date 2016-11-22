@@ -26,7 +26,7 @@ DESCRIPTION="Polish dictionaries for myspell/hunspell"
 # thesarus released last in 2k8
 HOMEPAGE="
 	http://www.sjp.pl/slownik/en/
-	http://sourceforge.net/projects/synonimy/
+	https://sourceforge.net/projects/synonimy/
 "
 SRC_URI="
 	http://sjp.pl/slownik/ort/sjp-myspell-pl-${PV}.zip

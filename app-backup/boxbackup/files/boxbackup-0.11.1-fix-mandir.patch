@@ -1,0 +1,14 @@
+Install man pages into /usr/share/man instead of /usr/man. This patch
+was provided by a Gentoo user in bug 515422.
+
+--- a/infrastructure/makeparcels.pl.in	2015-04-30 15:28:26.790570655 +0200
++++ b/infrastructure/makeparcels.pl.in	2015-04-30 15:35:40.795699542 +0200
+@@ -304,7 +304,7 @@
+ 		if ($type eq 'man')
+ 		{
+ 			$name =~ /([0-9])$/;
+-			$dest = "man/man$1";
++			$dest = "share/man/man$1";
+ 			$name =~ s/$/\.gz/;
+ 		}
+ 

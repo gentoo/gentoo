@@ -8,8 +8,8 @@ inherit autotools eutils udev vcs-snapshot
 
 MY_PV="V_${PV//./_}"
 DESCRIPTION="library to add support for consumer fingerprint readers"
-HOMEPAGE="http://cgit.freedesktop.org/libfprint/libfprint/"
-SRC_URI="http://cgit.freedesktop.org/${PN}/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+HOMEPAGE="https://cgit.freedesktop.org/libfprint/libfprint/"
+SRC_URI="https://cgit.freedesktop.org/${PN}/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
 	https://dev.gentoo.org/~xmw/${P}_vfs0050.patch.gz"
 
 LICENSE="LGPL-2.1"

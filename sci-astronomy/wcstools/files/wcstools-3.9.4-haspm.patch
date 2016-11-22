@@ -1,0 +1,22 @@
+From: Ole Streicher <olebole@debian.org>
+Date: Fri, 5 Aug 2016 16:17:42 +0200
+Subject: Fix uninitialized value for haspm in RASortStars()
+
+This fixes a crash with 'imstar -s'.
+---
+ libwcs/sortstar.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libwcs/sortstar.c b/libwcs/sortstar.c
+index 0123c64..f77555f 100644
+--- a/libwcs/sortstar.c
++++ b/libwcs/sortstar.c
+@@ -856,6 +856,8 @@ int	log;		/* If >0, log progress every time mod number written */
+ 	hasnum = 1;
+     if (spra != NULL && spdec != NULL)
+ 	haspm = 1;
++    else
++	haspm = 0;
+     if (sx != NULL && sy != NULL)
+ 	hasxy = 1;
+     else

@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils vcs-snapshot
-
-DESCRIPTION="Symlinks and syncs browser profile dirs to RAM"
+DESCRIPTION="Symlinks and syncs browser profile dirs to RAM."
 HOMEPAGE="https://wiki.archlinux.org/index.php/Profile-sync-daemon"
 SRC_URI="https://github.com/graysky2/profile-sync-daemon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

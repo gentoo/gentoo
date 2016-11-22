@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 DISTUTILS_OPTIONAL="1"
 
 inherit flag-o-matic toolchain-funcs distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="http://dl.lm-sensors.org/i2c-tools/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python"
 
 RDEPEND="!<sys-apps/lm_sensors-3

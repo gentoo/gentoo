@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Capture STDOUT and STDERR from Perl code, subprocesses or XS"
 
 SLOT="0"
-KEYWORDS="amd64 hppa ~mips ppc ppc64 x86 ~x86-linux"
+KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 x86 ~x86-linux"
 IUSE="test"
 
 RDEPEND="

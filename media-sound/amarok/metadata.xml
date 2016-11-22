@@ -27,7 +27,7 @@
 	<flag name="ofa">Use <pkg>media-libs/libofa</pkg> to compute MusicDNS acoustic
 		fingerprints (used by MusicBrainz)
 	</flag>
-	<flag name="utils">Build the utils - old <pkg>media-sound/amarok-utils</pkg>
+	<flag name="utils">Build the utils - old media-sound/amarok-utils
 	</flag>
 </use>
 </pkgmetadata>

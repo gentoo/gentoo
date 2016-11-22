@@ -1,0 +1,13 @@
+Index: gazebo_ros_control/src/default_robot_hw_sim.cpp
+===================================================================
+--- gazebo_ros_control.orig/src/default_robot_hw_sim.cpp
++++ gazebo_ros_control/src/default_robot_hw_sim.cpp
+@@ -381,7 +381,7 @@ void DefaultRobotHWSim::registerJointLim
+ 
+   if (urdf_model != NULL)
+   {
+-    const boost::shared_ptr<const urdf::Joint> urdf_joint = urdf_model->getJoint(joint_name);
++    const std::shared_ptr<const urdf::Joint> urdf_joint = urdf_model->getJoint(joint_name);
+     if (urdf_joint != NULL)
+     {
+       *joint_type = urdf_joint->type;

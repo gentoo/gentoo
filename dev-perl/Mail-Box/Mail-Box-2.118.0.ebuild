@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Mail folder manager and MUA backend"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE="test"
 
 RDEPEND="
@@ -34,7 +34,6 @@ DEPEND="${RDEPEND}
 	test? (
 		>=virtual/perl-Test-Harness-3.0.0
 		>=virtual/perl-Test-Simple-0.470.0
-		>=dev-perl/Test-Pod-1.0.0
 	)
 "
 
@@ -44,4 +43,9 @@ src_configure() {
 	MAILBOX_INSTALL_OPTIONALS=n \
 	MAILBOX_RUN_TESTS=y \
 	perl-module_src_configure
+}
+
+src_test() {
+	perl_rm_files tests/02dist/10pod.t
+	perl-module_src_test
 }

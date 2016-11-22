@@ -1,0 +1,701 @@
+Make perl shebangs portable, such that the scripts can also be used on Gentoo Prefix.
+Rationale: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/contributions/ace2fof
++++ b/contributions/ace2fof
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # .-----------------------------------------------------------------------------------.
+ # |                                                                                   |
+@@ -107,6 +107,7 @@
+ # |                                                                                   |
+ # `-----------------------------------------------------------------------------------'
+ #Fixed this file for taking Aracne's Ace file by syang 05152002
++use warnings;
+ use strict;
+ use POSIX qw(fmod);
+ 
+--- a/contributions/ace2OligosWithComments.perl
++++ b/contributions/ace2OligosWithComments.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # ace2Oligos.perl
+ #
+@@ -18,6 +18,8 @@
+ # Rev: 020528 to print comments in oligo tags upon request (Peter Kos)
+ #
+ 
++use warnings;
++
+ $szUsage = "\nUsage:  $0 (name of ace file) (name of oligo file) [Print|Comment|PrintComment]\n";
+ 
+ die "$szUsage" if  (( $#ARGV != 1 ) && ( $#ARGV != 2 ));
+--- a/contributions/aceContigs2Phds.perl
++++ b/contributions/aceContigs2Phds.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # aceContigs2Phd.perl
+ #
+@@ -13,6 +13,8 @@
+ # Acknowledgements: Borrowed as much as I could from determineReadTypes.Perl
+ #                   and fasta2Phd.perl
+ 
++use warnings;
++
+ $szUsage = "Usage: aceContigs2Phds.perl [-s minimum-contig-size] <name of ace file>";
+ $nContigLimit = 2000;
+ 
+--- a/contributions/acestatus.pl
++++ b/contributions/acestatus.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # acestatus.pl
+ # author: Cliff Wollam
+@@ -14,6 +14,7 @@
+ # USAGE FROM THE COMMAND LINE:
+ # acestatus.pl ace_filename
+ 
++use warnings;
+ use strict;
+ 
+ if($#ARGV >= 0) {
+--- a/contributions/cons.perl
++++ b/contributions/cons.perl
+@@ -1,5 +1,6 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
++use warnings;
+ use strict;
+ use Cwd;
+ 
+--- a/contributions/mergeAces.perl
++++ b/contributions/mergeAces.perl
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # Bugs and complaints to Bill Gilliland, billg@ucdavis.edu.
+ # mergeAces.perl v. 0.2 5/22/01
+@@ -9,6 +9,7 @@
+ # project directory (if it doesn't already exist) with all the cgrams
+ # and phd files of the original projects.
+ 
++use warnings;
+ use Getopt::Long;
+ use File::Copy;
+ $pathRoot = $ENV{"PWD"};
+--- a/contributions/phredPhrapWithPhdBalls
++++ b/contributions/phredPhrapWithPhdBalls
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # phredPhrapWithPhdBalls
+ #    modified from phredPhrap by Ben Allen at LANL
+@@ -73,6 +73,7 @@
+ # Rev: 120312 to not duplicate consensus tags during miniassembly
+ # Rev: 120717 Ben Allen (LANL) to use reads from phdballs as well as phd_dir
+ 
++use warnings;
+ 
+ $szVersion = "120312";
+ 
+--- a/contributions/recover_consensus_tags
++++ b/contributions/recover_consensus_tags
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # Purpose:  Transfers all consensus tags from a set of old assemblies to
+ #     a new assembly.  
+@@ -14,6 +14,7 @@
+ #  rct ace_filename <only ace file to be transfer (optional)>
+ # You must be in the edit_dir where the ace file is located
+ 
++use warnings;
+ use strict;
+ 
+ 
+--- a/contributions/revert_fof
++++ b/contributions/revert_fof
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # PURPOSE:  If the user really screws up a read, to back out all changes.
+ #           You must reassemble after using this.
+@@ -19,6 +19,8 @@
+ # phd extensions.
+ # revert_fof use file of files to give reads to revert 3/14/01 SL
+ 
++use warnings;
++
+ $szUsage = "Enter a file of files name, please!";
+ 
+ die $szUsage if ( $#ARGV != 0 );
+--- a/contributions/sff2phd.perl
++++ b/contributions/sff2phd.perl
+@@ -1,4 +1,5 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
++use warnings;
+ use strict;
+  #          SFF to PHD files converter, with 454 paired reads and MID support
+  #          Version 0.15 - 111229
+--- a/contributions/sff2phd_Samborskyy
++++ b/contributions/sff2phd_Samborskyy
+@@ -1,4 +1,5 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
++use warnings;
+ use strict;
+  #          SFF to PHD files converter, with 454 paired reads and MID support
+  #          Version 0.10 - 101110
+--- a/scripts/ace2Fasta.perl
++++ b/scripts/ace2Fasta.perl
+@@ -1,7 +1,9 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # Purpose:  makes a contigs file out of an ace file
+ 
++use warnings;
++
+ $szUsage = "Usage:  ace2Contigs.perl (ace file)";
+ 
+ 
+--- a/scripts/ace2Oligos.perl
++++ b/scripts/ace2Oligos.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # ace2Oligos.perl
+ #
+@@ -16,6 +16,8 @@
+ # Rev: 000330 to handle comments in oligo tags
+ #
+ 
++use warnings;
++
+ $szUsage = "Usage:  ace2Oligos.perl (name of ace file) (name of oligo file)";
+ 
+ if ( $ARGV[0] eq "-V" || $ARGV[0] eq "-v" ) {
+--- a/scripts/add454Reads.perl
++++ b/scripts/add454Reads.perl
+@@ -1,11 +1,11 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # add454Reads.perl
+ # part of Consed package
+ # 
+ # DG with help from Hao Wang to screen vector
+ 
+-
++use warnings;
+ use File::Basename;
+ 
+ 
+--- a/scripts/addReads2Consed.perl
++++ b/scripts/addReads2Consed.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ #   Purpose:  called by consed in order to add new reads to an
+ #       existing assembly without reassemblying
+@@ -29,6 +29,7 @@
+ #   Rev: 080320 (David Gordon) to use discrep_lists instead of alignments
+ #   Rev: 130828 (David Gordon) to handle slashes (/) in read names
+ 
++use warnings;
+ 
+ $szVersion = "130828";
+ if ( $#ARGV >= 0 ) {
+--- a/scripts/addSangerReads.perl
++++ b/scripts/addSangerReads.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # addSangerReads.perl
+ 
+@@ -32,7 +32,7 @@
+ # added is printed in a report ending with ".log".  The name of this
+ # file is listed in auto.fof
+ 
+-
++use warnings;
+ 
+ 
+ $szVersion = "120717";
+--- a/scripts/addSolexaReads.perl
++++ b/scripts/addSolexaReads.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # addSolexaReads.perl
+ 
+@@ -54,7 +54,7 @@
+ 
+ $szUsage = "addSolexaReads.perl -ace (ace file) -fastqfof (solexa files) -fasta (fasta file) -readsList (file of list of desired reads) where -readsList is optional";
+ 
+-
++use warnings;
+ use Getopt::Long;
+ 
+ GetOptions( "ace=s" => \$szAceFile,
+--- a/scripts/alignRNA2Genomic.perl
++++ b/scripts/alignRNA2Genomic.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # alignRNA2Genomic.perl
+ 
+@@ -6,6 +6,8 @@
+ # consed-ready ace and phd ball with the RNA aligned against the
+ # genomic with introns being represented by large gaps
+ 
++use warnings;
++
+ $szVersion = "120717";
+ 
+ if ( $#ARGV == 0 ) {
+--- a/scripts/alignSolexaReads2Refs.perl
++++ b/scripts/alignSolexaReads2Refs.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # Input: a file where each line looks like this:
+ #    (solexa seq file) (read prefix)
+@@ -10,6 +10,7 @@
+ 
+ # Output: a list of alignment files
+ 
++use warnings;
+ 
+ defined( $szConsedHome = $ENV{'CONSED_HOME'} ) ||
+     ( $szConsedHome = "/usr/local/genome" );
+--- a/scripts/amplifyTranscripts.perl
++++ b/scripts/amplifyTranscripts.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # PURPOSE: runs consed -autoPCRAmplify in order to pick pcr primers 
+ #    for a large group of regions
+@@ -40,7 +40,7 @@
+ #   That is, the left primers are given in top strand orientation, and
+ #   the right primers are given in bottom strand orientation.
+ 
+-
++use warnings;
+ 
+ defined( $szConsedHome = $ENV{'CONSED_HOME'} ) ||
+     ( $szConsedHome = "/usr/local/genome" );
+--- a/scripts/autoPrimers.perl
++++ b/scripts/autoPrimers.perl
+@@ -1,5 +1,6 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
++use warnings;
+ 
+ $szUsage = "autoPrimers.perl (fasta file of targets)";
+ $szVersion = "141226";
+--- a/scripts/bam2Ace.perl
++++ b/scripts/bam2Ace.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ 
+ # Purpose:  runs:
+@@ -6,6 +6,7 @@
+ #  2) consed -renameDuplicates
+ #  3) consed -removeColumnsOfPads
+ 
++use warnings;
+ 
+ $szUsage = "usage: bam2Ace.perl -bamFile (bam file) -regionsFile (regions file) (see README.txt for format of the regions file) -exec (consed executable name) -newAceFile (new ace file name) where the -exec (exec) is optional";
+ 
+--- a/scripts/convertBedToBamScape.perl
++++ b/scripts/convertBedToBamScape.perl
+@@ -1,4 +1,6 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
++
++use warnings;
+ 
+ $szUsage = "usage: convertBedToBamScape.perl (Bed file) (BamScape file) (fasta file of all sequences) (conversion of reference names--optional)";
+ 
+--- a/scripts/countEditedBases.perl
++++ b/scripts/countEditedBases.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # countEditedBases.perl
+ #
+@@ -11,6 +11,8 @@
+ #
+ #
+ 
++use warnings;
++
+ while(<>) {
+ 	if ( /^CO / ) {
+ 		@aWords = split;
+--- a/scripts/determineReadTypes.perl
++++ b/scripts/determineReadTypes.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #  determineReadTypes.perl
+ #  
+ #  Purpose:  to write into the phd file information about the template 
+@@ -173,6 +173,7 @@
+ #
+ ###############################################################
+ 
++use warnings;
+ 
+ # you can remove or comment out this line when you are satisfied with
+ # your customized version of this file.
+--- a/scripts/fasta2Ace.perl
++++ b/scripts/fasta2Ace.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # manyFasta2Ace.perl
+ #
+@@ -13,6 +13,7 @@
+ #
+ # NOTE:  you must run this in edit_dir 
+ 
++use warnings;
+ use Getopt::Long;
+ 
+ $szRevision = "141212";
+--- a/scripts/fasta2PhdBall.perl
++++ b/scripts/fasta2PhdBall.perl
+@@ -1,4 +1,6 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
++
++use warnings;
+ 
+ $nQuality = 20;
+ 
+--- a/scripts/fasta2Phd.perl
++++ b/scripts/fasta2Phd.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # fasta2Phd.perl
+ #
+@@ -20,6 +20,7 @@
+ #            June 2002, Bill Gilliland to allow the user to specify 
+ #                the quality value
+ 
++use warnings;
+ use Getopt::Long;
+ GetOptions( "quality=i" => \$qualityValue);
+  
+--- a/scripts/fastq2Phrap.perl
++++ b/scripts/fastq2Phrap.perl
+@@ -1,4 +1,6 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
++
++use warnings;
+ 
+ $szUsage = "fastq2Phrap.perl (fastq) or for paired reads fastq2Phrap.perl (fastq1) (fastq2) where fastq1 and fastq2 have corresponding mate pairs--e.g., the 5th read in fastq1 is the mate of the 5th read in fastq2--these fastq files are assumed to be in ../solexa_dir--not the current directory\n";
+ 
+--- a/scripts/filter454Reads.perl
++++ b/scripts/filter454Reads.perl
+@@ -1,6 +1,6 @@
+-#!/usr/bin/perl -w
+-
++#!/usr/bin/env perl
+ 
++use warnings;
+ use File::Basename;
+ 
+ 
+--- a/scripts/findSequenceMatchesForConsed.perl
++++ b/scripts/findSequenceMatchesForConsed.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # findSequenceMatchesForConsed.perl
+ 
+@@ -16,6 +16,8 @@
+ # REVISIONS: 021127 (DG) to write (project).(date).(time).fasta instead of
+ #    (project).fasta.screen.ace.1.(date).(time).fasta
+ 
++use warnings;
++
+ $szVersion = "021127";
+ 
+ $szUsage = "Usage: findSequenceMatchesForConsed.perl (ace file) (crossmatch parameters, if any)";
+--- a/scripts/fixContigEnd.perl
++++ b/scripts/fixContigEnd.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # fixContigEnd.perl
+ 
+@@ -7,6 +7,7 @@
+ # consed -ace (acefile) -fixContigEnds
+ #
+ 
++use warnings;
+ 
+ $szUsage = "fixContigEnd.perl (fasta file of reads for input) (fof for ace file, output)";
+ 
+--- a/scripts/lib2Phd.perl
++++ b/scripts/lib2Phd.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # lib2Phd.perl
+ #
+@@ -23,6 +23,8 @@
+ #    accept fasta library files as input.  The output file is named 
+ #    according to the first, non-space block of text on each fasta defline. 
+ 
++use warnings;
++
+ $nQuality = 20;
+ 
+ $szUsage = "Usage: lib2Phd.perl <name of file with fasta library>";
+--- a/scripts/makePhdBall.perl
++++ b/scripts/makePhdBall.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # PURPOSE: concatenate all phd file into a single phd.ball 
+ #          for the purpose of fast startup of consed
+@@ -9,6 +9,7 @@
+ #
+ # February 2008, David Gordon
+ 
++use warnings;
+ 
+ if ( $#ARGV >= 0 ) {
+    if ( $ARGV[0] eq "-v" || $ARGV[0] eq "-V" ) {
+--- a/scripts/makeRegionsFile.perl
++++ b/scripts/makeRegionsFile.perl
+@@ -1,10 +1,12 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # makeRegionsFile.perl
+ # To be used with consed -bam2Ace
+ # Takes a fasta file of sequences and makes a regions file that
+ # specifies the entire length of each sequence.
+ 
++use warnings;
++
+ $szUsage = "makeRegionsFile.perl (name of fasta file)";
+ 
+ $szVersion = "110914";
+--- a/scripts/orderPrimerPairs.perl
++++ b/scripts/orderPrimerPairs.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # PURPOSE: puts the primers in 96 well format for ordering.  
+ #  creates a file that can be emailed to
+@@ -13,6 +13,8 @@
+ #         2) a file of primer pairs, sorted by product size
+ #         3) a fasta file of the primers, for your convenience for analysis
+ 
++use warnings;
++
+ $| = 1;
+ 
+ $szUsage = "orderPrimerPairs.perl";
+--- a/scripts/phd2Ace.perl
++++ b/scripts/phd2Ace.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # phd2Ace.perl
+ #
+@@ -13,6 +13,8 @@
+ # REV:  981002 (David Gordon) for new ace format
+ #       981210 (DG) to eliminate warning message
+ 
++use warnings;
++
+ $szPhdDirPath = "../phd_dir";
+ 
+ $szUsage = "Usage: phd2Ace.perl <filename (without directory) of phd file>\nThe phd file is assumed to reside in $szPhdDirPath";
+--- a/scripts/phredPhrap
++++ b/scripts/phredPhrap
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # phredPhrap
+ #
+@@ -70,6 +70,8 @@
+ # Rev: 110609 to allow masking of vector sequence when doing miniassemblies
+ # Rev: 120312 to not duplicate consensus tags during miniassembly
+ 
++use warnings;
++
+ $szVersion = "120312";
+ 
+ 
+--- a/scripts/picard2Regions.perl
++++ b/scripts/picard2Regions.perl
+@@ -1,10 +1,12 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # PURPOSE: takes a file of locations in the format for bamScape custom
+ # navigation (Picard IntervalList format), adds 2000 bases of context
+ # to each side of each location, and prints a region file in format to
+ # be used by bam2Ace
+ 
++use warnings;
++
+ $szRevision = "140903"; # David Gordon
+ 
+ if ( defined( $ARGV[0] ) &&
+--- a/scripts/removeReads
++++ b/scripts/removeReads
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # PURPOSE:  removes a list of chromats from an assembly.  After running this,
+ #   you must reassemble to create an ace file without the given phd files.
+@@ -16,6 +16,8 @@
+ #        removeReads (name of fof's)
+ #
+ 
++use warnings;
++
+ $szUsage = "Usage: removeReads listOfReads.fof";
+ 
+ die "$szUsage" if ( $#ARGV != 0 );
+--- a/scripts/revertToUneditedRead
++++ b/scripts/revertToUneditedRead
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # PURPOSE:  If the user really screws up a read, to back out all changes.
+ #           You must reassemble after using this.
+@@ -16,6 +16,7 @@
+ # REV:  7/24/98 (DG)
+ # REV:  8/28/2013 (DG) to handle readnames with slashes (/)
+ 
++use warnings;
+ 
+ $szUsage = "Usage: revertToUneditedRead (read name without any .phd.# extension)";
+ 
+--- a/scripts/selectOneRegion.perl
++++ b/scripts/selectOneRegion.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # selectOneRegion.perl
+ # 
+@@ -11,6 +11,7 @@
+ # and you will create an ace file chr15_51000000.ace  or chr15_51000000.ace.1 
+ # (or higher extension)
+ 
++use warnings;
+ use Getopt::Long;
+ 
+ 
+--- a/scripts/selectRegions.perl
++++ b/scripts/selectRegions.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ 
+ # selectRegions.perl
+ # 
+@@ -43,7 +43,7 @@
+ # my_new_ace.ace says what the ace file should be called (the
+ # extension may not start at 1 if there is already a .1
+ 
+-
++use warnings;
+ 
+ $SIG{__WARN__} = dieWhenGetWarning;
+ sub dieWhenGetWarning {
+--- a/scripts/tagRepeats.perl
++++ b/scripts/tagRepeats.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # PROGRAM:  tagRepeats.perl
+ # PURPOSE:  to put consensus tags on any found ALU or any other 
+@@ -10,6 +10,7 @@
+ # INPUTS:   The ace file.  You must also provide a fasta file of the 
+ #           ALU or any other sequence you want to tag
+ 
++use warnings;
+ 
+ $szVersion = "090209";
+ if ( $#ARGV >= 0 ) {
+--- a/scripts/testSocket.perl
++++ b/scripts/testSocket.perl
+@@ -1,7 +1,8 @@
+-#! /usr/local/bin/perl -w
++#!/usr/bin/env perl
+  
+ # open a socket to consed
+- 
++
++use warnings;
+ use IO::Socket;
+  
+ # Consed makes a file which has nothing but the port number.
+--- a/scripts/transferConsensusTags.perl
++++ b/scripts/transferConsensusTags.perl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ #
+ # Purpose:  Transfers consensus tags from an old assembly to
+ #     a new assembly.  
+@@ -44,6 +44,8 @@
+ # Nov 2001, DG to handle cloneEnd tags which have orientation
+ # Mar 2012, DG to prevent duplicating tags after miniassembly
+ 
++use warnings;
++
+ $szUsage = "Usage:  transferConsensusTags.perl (old ace file) (new ace file) (file of list of old contigs with consensus tags to be transferred)";
+ 
+ if ( $ARGV[0] eq "-V" || $ARGV[0] eq "-v" ) {

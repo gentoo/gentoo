@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,12 @@ RDEPEND="dev-perl/DateTime
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
-		dev-perl/Test-Pod
 		dev-perl/File-Find-Rule
-		dev-perl/Test-Distribution
 	)"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/00_distribution.t t/99_pod.t
+	perl-module_src_test
+}

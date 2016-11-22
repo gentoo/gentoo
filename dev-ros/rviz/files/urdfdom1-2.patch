@@ -1,0 +1,436 @@
+commit cd741b86ecc8bdd14906e83b11a3d14dfc3c9871
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Thu Oct 20 12:53:48 2016 +0200
+
+    Revert "Revert "Use urdf::*ShredPtr instead of boost::shared_ptr" (#1060)"
+    
+    This reverts commit f54f04d560bedb0620368d8583ec7af4114fd78e.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b8c7381..597aecb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,8 @@ find_package(Boost REQUIRED
+   thread
+ )
+ 
++find_package(urdfdom_headers REQUIRED)
++
+ find_package(PkgConfig REQUIRED)
+ 
+ find_package(ASSIMP QUIET)
+@@ -131,6 +133,7 @@ find_package(catkin REQUIRED
+   tf
+   urdf
+   visualization_msgs
++  urdfdom_headers
+ )
+ 
+ if(${tf_VERSION} VERSION_LESS "1.11.3")
+@@ -203,6 +206,7 @@ include_directories(SYSTEM
+   ${OGRE_OV_INCLUDE_DIRS}
+   ${OPENGL_INCLUDE_DIR}
+   ${PYTHON_INCLUDE_PATH}
++  ${urdfdom_headers_INCLUDE_DIRS}
+ )
+ include_directories(src ${catkin_INCLUDE_DIRS})
+ 
+diff --git a/package.xml b/package.xml
+index d9c8bf8..76b9873 100644
+--- a/package.xml
++++ b/package.xml
+@@ -48,6 +48,7 @@
+   <build_depend>visualization_msgs</build_depend>
+   <build_depend>yaml-cpp</build_depend>
+   <build_depend>opengl</build_depend>
++  <build_depend>liburdfdom-headers-dev</build_depend>
+ 
+   <run_depend>assimp</run_depend>
+   <run_depend>eigen</run_depend>
+@@ -81,6 +82,7 @@
+   <run_depend>visualization_msgs</run_depend>
+   <run_depend>yaml-cpp</run_depend>
+   <run_depend>opengl</run_depend>
++  <run_depend>liburdfdom-headers-dev</run_depend>
+ 
+   <export>
+     <rviz plugin="${prefix}/plugin_description.xml"/>
+diff --git a/src/rviz/default_plugin/effort_display.cpp b/src/rviz/default_plugin/effort_display.cpp
+index a5574de..e9b595b 100644
+--- a/src/rviz/default_plugin/effort_display.cpp
++++ b/src/rviz/default_plugin/effort_display.cpp
+@@ -208,11 +208,11 @@ namespace rviz
+ 	    return;
+ 	}
+         setStatus(rviz::StatusProperty::Ok, "URDF", "Robot model parserd Ok");
+-	for (std::map<std::string, boost::shared_ptr<urdf::Joint> >::iterator it = robot_model_->joints_.begin(); it != robot_model_->joints_.end(); it ++ ) {
+-            boost::shared_ptr<urdf::Joint> joint = it->second;
++    for (std::map<std::string, urdf::JointSharedPtr >::iterator it = robot_model_->joints_.begin(); it != robot_model_->joints_.end(); it ++ ) {
++        urdf::JointSharedPtr joint = it->second;
+ 	    if ( joint->type == urdf::Joint::REVOLUTE ) {
+                 std::string joint_name = it->first;
+-		boost::shared_ptr<urdf::JointLimits> limit = joint->limits;
++                urdf::JointLimitsSharedPtr limit = joint->limits;
+                 joints_[joint_name] = createJoint(joint_name);
+                 //joints_[joint_name]->max_effort_property_->setFloat(limit->effort);
+                 //joints_[joint_name]->max_effort_property_->setReadOnly( true );
+diff --git a/src/rviz/default_plugin/effort_visual.cpp b/src/rviz/default_plugin/effort_visual.cpp
+index c33716e..922110b 100644
+--- a/src/rviz/default_plugin/effort_visual.cpp
++++ b/src/rviz/default_plugin/effort_visual.cpp
+@@ -8,6 +8,7 @@
+ #include <ros/ros.h>
+ 
+ #include <urdf/model.h>
++#include <urdf_model/types.h>
+ #include "effort_visual.h"
+ 
+ namespace rviz
+@@ -31,7 +32,7 @@ namespace rviz
+ 
+ 	// We create the arrow object within the frame node so that we can
+ 	// set its position and direction relative to its header frame.
+-	for (std::map<std::string, boost::shared_ptr<urdf::Joint> >::iterator it = urdf_model_->joints_.begin(); it != urdf_model_->joints_.end(); it ++ ) {
++	for (std::map<std::string, urdf::JointSharedPtr >::iterator it = urdf_model_->joints_.begin(); it != urdf_model_->joints_.end(); it ++ ) {
+ 	    if ( it->second->type == urdf::Joint::REVOLUTE ) {
+                 std::string joint_name = it->first;
+                 effort_enabled_[joint_name] = true;
+@@ -103,7 +104,7 @@ namespace rviz
+                 if ( ! effort_enabled_[joint_name] ) continue;
+ 
+ 		//tf::Transform offset = poseFromJoint(joint);
+-		boost::shared_ptr<urdf::JointLimits> limit = joint->limits;
++		urdf::JointLimitsSharedPtr limit = joint->limits;
+ 		double max_effort = limit->effort, effort_value = 0.05;
+ 
+ 		if ( max_effort != 0.0 )
+diff --git a/src/rviz/robot/robot.cpp b/src/rviz/robot/robot.cpp
+index 506a8bd..c1a87f0 100644
+--- a/src/rviz/robot/robot.cpp
++++ b/src/rviz/robot/robot.cpp
+@@ -236,7 +236,7 @@ void Robot::clear()
+ 
+ RobotLink* Robot::LinkFactory::createLink(
+     Robot* robot,
+-    const boost::shared_ptr<const urdf::Link>& link,
++    const urdf::LinkConstSharedPtr& link,
+     const std::string& parent_joint_name,
+     bool visual,
+     bool collision)
+@@ -246,7 +246,7 @@ RobotLink* Robot::LinkFactory::createLink(
+ 
+ RobotJoint* Robot::LinkFactory::createJoint(
+     Robot* robot,
+-    const boost::shared_ptr<const urdf::Joint>& joint)
++    const urdf::JointConstSharedPtr& joint)
+ {
+   return new RobotJoint(robot, joint);
+ }
+@@ -265,12 +265,12 @@ void Robot::load( const urdf::ModelInterface &urdf, bool visual, bool collision
+   // Create properties for each link.
+   // Properties are not added to display until changedLinkTreeStyle() is called (below).
+   {
+-    typedef std::map<std::string, boost::shared_ptr<urdf::Link> > M_NameToUrdfLink;
++    typedef std::map<std::string, urdf::LinkSharedPtr > M_NameToUrdfLink;
+     M_NameToUrdfLink::const_iterator link_it = urdf.links_.begin();
+     M_NameToUrdfLink::const_iterator link_end = urdf.links_.end();
+     for( ; link_it != link_end; ++link_it )
+     {
+-      const boost::shared_ptr<const urdf::Link>& urdf_link = link_it->second;
++      const urdf::LinkConstSharedPtr& urdf_link = link_it->second;
+       std::string parent_joint_name;
+ 
+       if (urdf_link != urdf.getRoot() && urdf_link->parent_joint)
+@@ -298,12 +298,12 @@ void Robot::load( const urdf::ModelInterface &urdf, bool visual, bool collision
+   // Create properties for each joint.
+   // Properties are not added to display until changedLinkTreeStyle() is called (below).
+   {
+-    typedef std::map<std::string, boost::shared_ptr<urdf::Joint> > M_NameToUrdfJoint;
++    typedef std::map<std::string, urdf::JointSharedPtr > M_NameToUrdfJoint;
+     M_NameToUrdfJoint::const_iterator joint_it = urdf.joints_.begin();
+     M_NameToUrdfJoint::const_iterator joint_end = urdf.joints_.end();
+     for( ; joint_it != joint_end; ++joint_it )
+     {
+-      const boost::shared_ptr<const urdf::Joint>& urdf_joint = joint_it->second;
++      const urdf::JointConstSharedPtr& urdf_joint = joint_it->second;
+       RobotJoint* joint = link_factory_->createJoint( this, urdf_joint );
+ 
+       joints_[urdf_joint->name] = joint;
+diff --git a/src/rviz/robot/robot.h b/src/rviz/robot/robot.h
+index d529177..ff0afa7 100644
+--- a/src/rviz/robot/robot.h
++++ b/src/rviz/robot/robot.h
+@@ -39,6 +39,9 @@
+ #include <OgreQuaternion.h>
+ #include <OgreAny.h>
+ 
++#include <urdf_model/types.h>
++#include <urdf_world/types.h>
++
+ namespace Ogre
+ {
+ class SceneManager;
+@@ -62,13 +65,6 @@ namespace tf
+ class TransformListener;
+ }
+ 
+-namespace urdf
+-{
+-class ModelInterface;
+-class Link;
+-class Joint;
+-}
+-
+ namespace rviz
+ {
+ 
+@@ -173,12 +169,12 @@ public:
+   {
+   public:
+     virtual RobotLink* createLink( Robot* robot,
+-                                   const boost::shared_ptr<const urdf::Link>& link,
++                                   const urdf::LinkConstSharedPtr& link,
+                                    const std::string& parent_joint_name,
+                                    bool visual,
+                                    bool collision);
+     virtual RobotJoint* createJoint( Robot* robot,
+-                                     const boost::shared_ptr<const urdf::Joint>& joint);
++                                     const urdf::JointConstSharedPtr& joint);
+   };
+ 
+   /** Call this before load() to subclass the RobotLink or RobotJoint class used in the link property.
+diff --git a/src/rviz/robot/robot_joint.cpp b/src/rviz/robot/robot_joint.cpp
+index 6538fd0..eade172 100644
+--- a/src/rviz/robot/robot_joint.cpp
++++ b/src/rviz/robot/robot_joint.cpp
+@@ -38,15 +38,13 @@
+ #include "rviz/ogre_helpers/axes.h"
+ #include "rviz/load_resource.h"
+ 
+-#include <urdf_model/model.h>
+-#include <urdf_model/link.h>
+-#include <urdf_model/joint.h>
++#include <urdf_world/types.h>
+ 
+ 
+ namespace rviz
+ {
+ 
+-RobotJoint::RobotJoint( Robot* robot, const boost::shared_ptr<const urdf::Joint>& joint )
++RobotJoint::RobotJoint( Robot* robot, const urdf::JointConstSharedPtr& joint )
+   : robot_( robot )
+   , name_( joint->name )
+   , child_link_name_( joint->child_link_name )
+diff --git a/src/rviz/robot/robot_joint.h b/src/rviz/robot/robot_joint.h
+index ba8a832..f9242a0 100644
+--- a/src/rviz/robot/robot_joint.h
++++ b/src/rviz/robot/robot_joint.h
+@@ -42,6 +42,10 @@
+ #include <OgreMaterial.h>
+ #endif
+ 
++#include <urdf/model.h>
++#include <urdf_model/pose.h>
++#include <urdf_world/types.h>
++
+ #include "rviz/ogre_helpers/object.h"
+ #include "rviz/selection/forwards.h"
+ 
+@@ -57,15 +61,6 @@ class Any;
+ class RibbonTrail;
+ }
+ 
+-namespace urdf
+-{
+-class ModelInterface;
+-class Link;
+-class Joint;
+-class Geometry;
+-class Pose;
+-}
+-
+ namespace rviz
+ {
+ class Shape;
+@@ -89,7 +84,7 @@ class RobotJoint: public QObject
+ {
+ Q_OBJECT
+ public:
+-  RobotJoint( Robot* robot, const boost::shared_ptr<const urdf::Joint>& joint );
++  RobotJoint( Robot* robot, const urdf::JointConstSharedPtr& joint );
+   virtual ~RobotJoint();
+ 
+ 
+diff --git a/src/rviz/robot/robot_link.cpp b/src/rviz/robot/robot_link.cpp
+index b1e3789..4d9a4ca 100644
+--- a/src/rviz/robot/robot_link.cpp
++++ b/src/rviz/robot/robot_link.cpp
+@@ -154,7 +154,7 @@ void RobotLinkSelectionHandler::postRenderPass(uint32_t pass)
+ 
+ 
+ RobotLink::RobotLink( Robot* robot,
+-                      const urdf::LinkConstPtr& link,
++                      const urdf::LinkConstSharedPtr& link,
+                       const std::string& parent_joint_name,
+                       bool visual,
+                       bool collision)
+@@ -261,8 +261,8 @@ RobotLink::RobotLink( Robot* robot,
+       desc << " child joint: ";
+     }
+ 
+-    std::vector<boost::shared_ptr<urdf::Joint> >::const_iterator child_it = link->child_joints.begin();
+-    std::vector<boost::shared_ptr<urdf::Joint> >::const_iterator child_end = link->child_joints.end();
++    std::vector<urdf::JointSharedPtr >::const_iterator child_it = link->child_joints.begin();
++    std::vector<urdf::JointSharedPtr >::const_iterator child_end = link->child_joints.end();
+     for ( ; child_it != child_end ; ++child_it )
+     {
+       urdf::Joint *child_joint = child_it->get();
+@@ -441,7 +441,7 @@ void RobotLink::updateVisibility()
+   }
+ }
+ 
+-Ogre::MaterialPtr RobotLink::getMaterialForLink( const urdf::LinkConstPtr& link)
++Ogre::MaterialPtr RobotLink::getMaterialForLink( const urdf::LinkConstSharedPtr& link)
+ {
+   if (!link->visual || !link->visual->material)
+   {
+@@ -509,7 +509,7 @@ Ogre::MaterialPtr RobotLink::getMaterialForLink( const urdf::LinkConstPtr& link)
+   return mat;
+ }
+ 
+-void RobotLink::createEntityForGeometryElement(const urdf::LinkConstPtr& link, const urdf::Geometry& geom, const urdf::Pose& origin, Ogre::SceneNode* scene_node, Ogre::Entity*& entity)
++void RobotLink::createEntityForGeometryElement(const urdf::LinkConstSharedPtr& link, const urdf::Geometry& geom, const urdf::Pose& origin, Ogre::SceneNode* scene_node, Ogre::Entity*& entity)
+ {
+   entity = NULL; // default in case nothing works.
+   Ogre::SceneNode* offset_node = scene_node->createChildSceneNode();
+@@ -646,19 +646,19 @@ void RobotLink::createEntityForGeometryElement(const urdf::LinkConstPtr& link, c
+   }
+ }
+ 
+-void RobotLink::createCollision(const urdf::LinkConstPtr& link)
++void RobotLink::createCollision(const urdf::LinkConstSharedPtr& link)
+ {
+   bool valid_collision_found = false;
+ #if URDF_MAJOR_VERSION == 0 && URDF_MINOR_VERSION == 2
+-  std::map<std::string, boost::shared_ptr<std::vector<boost::shared_ptr<urdf::Collision> > > >::const_iterator mi;
++  std::map<std::string, boost::shared_ptr<std::vector<urdf::CollisionSharedPtr > > >::const_iterator mi;
+   for( mi = link->collision_groups.begin(); mi != link->collision_groups.end(); mi++ )
+   {
+     if( mi->second )
+     {
+-      std::vector<boost::shared_ptr<urdf::Collision> >::const_iterator vi;
++      std::vector<urdf::CollisionSharedPtr >::const_iterator vi;
+       for( vi = mi->second->begin(); vi != mi->second->end(); vi++ )
+       {
+-        boost::shared_ptr<urdf::Collision> collision = *vi;
++        urdf::CollisionSharedPtr collision = *vi;
+         if( collision && collision->geometry )
+         {
+           Ogre::Entity* collision_mesh = NULL;
+@@ -673,10 +673,10 @@ void RobotLink::createCollision(const urdf::LinkConstPtr& link)
+     }
+   }
+ #else
+-  std::vector<boost::shared_ptr<urdf::Collision> >::const_iterator vi;
++  std::vector<urdf::CollisionSharedPtr >::const_iterator vi;
+   for( vi = link->collision_array.begin(); vi != link->collision_array.end(); vi++ )
+   {
+-    boost::shared_ptr<urdf::Collision> collision = *vi;
++    urdf::CollisionSharedPtr collision = *vi;
+     if( collision && collision->geometry )
+     {
+       Ogre::Entity* collision_mesh = NULL;
+@@ -703,19 +703,19 @@ void RobotLink::createCollision(const urdf::LinkConstPtr& link)
+   collision_node_->setVisible( getEnabled() );
+ }
+ 
+-void RobotLink::createVisual(const urdf::LinkConstPtr& link )
++void RobotLink::createVisual(const urdf::LinkConstSharedPtr& link )
+ {
+   bool valid_visual_found = false;
+ #if URDF_MAJOR_VERSION == 0 && URDF_MINOR_VERSION == 2
+-  std::map<std::string, boost::shared_ptr<std::vector<boost::shared_ptr<urdf::Visual> > > >::const_iterator mi;
++  std::map<std::string, boost::shared_ptr<std::vector<urdf::VisualSharedPtr > > >::const_iterator mi;
+   for( mi = link->visual_groups.begin(); mi != link->visual_groups.end(); mi++ )
+   {
+     if( mi->second )
+     {
+-      std::vector<boost::shared_ptr<urdf::Visual> >::const_iterator vi;
++      std::vector<urdf::VisualSharedPtr >::const_iterator vi;
+       for( vi = mi->second->begin(); vi != mi->second->end(); vi++ )
+       {
+-        boost::shared_ptr<urdf::Visual> visual = *vi;
++        urdf::VisualSharedPtr visual = *vi;
+         if( visual && visual->geometry )
+         {
+           Ogre::Entity* visual_mesh = NULL;
+@@ -730,10 +730,10 @@ void RobotLink::createVisual(const urdf::LinkConstPtr& link )
+     }
+   }
+ #else
+-  std::vector<boost::shared_ptr<urdf::Visual> >::const_iterator vi;
++  std::vector<urdf::VisualSharedPtr >::const_iterator vi;
+   for( vi = link->visual_array.begin(); vi != link->visual_array.end(); vi++ )
+   {
+-    boost::shared_ptr<urdf::Visual> visual = *vi;
++    urdf::VisualSharedPtr visual = *vi;
+     if( visual && visual->geometry )
+     {
+       Ogre::Entity* visual_mesh = NULL;
+diff --git a/src/rviz/robot/robot_link.h b/src/rviz/robot/robot_link.h
+index 31e8e6f..d0014fb 100644
+--- a/src/rviz/robot/robot_link.h
++++ b/src/rviz/robot/robot_link.h
+@@ -43,6 +43,9 @@
+ #include <OgreSharedPtr.h>
+ #endif
+ 
++#include <urdf_model/types.h>
++#include <urdf_model/pose.h>
++
+ #include "rviz/ogre_helpers/object.h"
+ #include "rviz/selection/forwards.h"
+ 
+@@ -58,16 +61,6 @@ class Any;
+ class RibbonTrail;
+ }
+ 
+-namespace urdf
+-{
+-class ModelInterface;
+-class Link;
+-typedef boost::shared_ptr<const Link> LinkConstPtr;
+-class Geometry;
+-typedef boost::shared_ptr<const Geometry> GeometryConstPtr;
+-class Pose;
+-}
+-
+ namespace rviz
+ {
+ class Shape;
+@@ -93,7 +86,7 @@ class RobotLink: public QObject
+ Q_OBJECT
+ public:
+   RobotLink( Robot* robot,
+-             const urdf::LinkConstPtr& link,
++             const urdf::LinkConstSharedPtr& link,
+              const std::string& parent_joint_name,
+              bool visual,
+              bool collision);
+@@ -162,12 +155,12 @@ private Q_SLOTS:
+ private:
+   void setRenderQueueGroup( Ogre::uint8 group );
+   bool getEnabled() const;
+-  void createEntityForGeometryElement( const urdf::LinkConstPtr& link, const urdf::Geometry& geom, const urdf::Pose& origin, Ogre::SceneNode* scene_node, Ogre::Entity*& entity );
++  void createEntityForGeometryElement( const urdf::LinkConstSharedPtr& link, const urdf::Geometry& geom, const urdf::Pose& origin, Ogre::SceneNode* scene_node, Ogre::Entity*& entity );
+ 
+-  void createVisual( const urdf::LinkConstPtr& link);
+-  void createCollision( const urdf::LinkConstPtr& link);
++  void createVisual( const urdf::LinkConstSharedPtr& link);
++  void createCollision( const urdf::LinkConstSharedPtr& link);
+   void createSelection();
+-  Ogre::MaterialPtr getMaterialForLink( const urdf::LinkConstPtr& link );
++  Ogre::MaterialPtr getMaterialForLink( const urdf::LinkConstSharedPtr& link );
+ 
+ 
+ protected:

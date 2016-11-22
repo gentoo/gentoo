@@ -1,6 +1,5 @@
-diff -Naur nmap-4.75-orig/Makefile.in nmap-4.75/Makefile.in
---- nmap-4.75-orig/Makefile.in	2008-09-05 07:32:06.000000000 +0200
-+++ nmap-4.75/Makefile.in	2008-09-09 16:34:38.000000000 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -258,5 +258,5 @@
  	./config.status --recheck
  

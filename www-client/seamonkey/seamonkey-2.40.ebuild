@@ -38,7 +38,7 @@ DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
 
 [[ ${PV} != *_pre* ]] && \
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -61,6 +61,7 @@ RDEPEND=">=dev-libs/nss-3.20.1
 			( >=app-crypt/gnupg-2.0
 				|| (
 					app-crypt/pinentry[gtk]
+					app-crypt/pinentry[qt5]
 					app-crypt/pinentry[qt4]
 				)
 			)
@@ -276,8 +277,8 @@ src_install() {
 	if ! use gmp-autoupdate ; then
 		for plugin in gmp-gmpopenh264 ; do
 			echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
-				"${S}/${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
-				|| dir
+				"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" \
+				|| die
 		done
 	fi
 

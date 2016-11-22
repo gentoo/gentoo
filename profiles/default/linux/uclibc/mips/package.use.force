@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_Mips
+sys-devel/llvm llvm_targets_Mips
+
 # Vicente Olivert Riera <vincent@gentoo.org> (12 Sep 2014)
 # If deprecated USE flag is not set, www-client/midori will
 # depend on net-libs/webkit-gtk:3 which fails to compile

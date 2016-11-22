@@ -29,9 +29,9 @@ PATCHES=(
 	# Bug 256679 - patch the assembler code.  The remaining executable stacks in ./.libs/poly
 	# comes from the polyml generated ./polyexport.o file.
 	"${FILESDIR}/${PN}-5.5.0-asm.patch"
-	# http://sourceforge.net/p/polyml/code/1875/ for isabelle-2013.2
+	# https://sourceforge.net/p/polyml/code/1875/ for isabelle-2013.2
 	"${FILESDIR}/${PN}-5.5.1-inputN-return-for-zero-chars.patch"
-	# http://sourceforge.net/p/polyml/code/1869/
+	# https://sourceforge.net/p/polyml/code/1869/
 	# Adds Test146.ML that fails, applying it anyway as it is required by
 	# sci-mathematics/isabelle-2013.2
 	"${FILESDIR}/${PN}-5.5.1-optimize-closure.patch"

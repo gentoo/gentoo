@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>tommy@gentoo.org</email>
-		<name>Thomas Sachau</name>
-	</maintainer>
-	<maintainer restrict="&gt;=dev-vcs/subversion-1.8.0" type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
@@ -14,7 +10,5 @@
 		<flag name="dso">Enable runtime module search</flag>
 		<flag name="extras">Install extra scripts (examples, tools, hooks)</flag>
 		<flag name="http">Enable http support using <pkg>net-libs/serf</pkg></flag>
-		<flag name="webdav-neon">Enable WebDAV support using <pkg>net-libs/neon</pkg></flag>
-		<flag name="webdav-serf">Enable WebDAV support using <pkg>net-libs/serf</pkg></flag>
 	</use>
 </pkgmetadata>

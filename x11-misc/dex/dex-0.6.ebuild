@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python3_4 )
 inherit eutils python-r1
 
 DESCRIPTION="DesktopEntry eXecution - tool to manage and launch autostart entries"

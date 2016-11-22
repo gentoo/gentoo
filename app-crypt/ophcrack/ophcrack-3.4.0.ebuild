@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="5"
 inherit eutils
 
 DESCRIPTION="A time-memory-trade-off-cracker"
@@ -12,9 +12,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="qt4 debug +tables"
+IUSE="debug libressl qt4 +tables"
 
-CDEPEND="dev-libs/openssl
+CDEPEND="!libressl? ( dev-libs/openssl:0= )
+		 libressl? ( dev-libs/libressl:0= )
 		 net-libs/netwib
 		 qt4? ( dev-qt/qtgui:4 )"
 DEPEND="app-arch/unzip

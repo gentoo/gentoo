@@ -1,0 +1,78 @@
+From 6565314e775232cf1682b35720b8b1b207a16f3e Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Wed, 21 Sep 2016 15:38:52 +0200
+Subject: [PATCH] configure: Add AC_HEADER_MAJOR to find where major() is
+ defined
+
+glibc currently pulls sys/sysmacros.h into sys/types.h, but this may
+change in a future release.
+
+https://sourceware.org/ml/libc-alpha/2015-11/msg00253.html
+
+Gentoo-Bug: https://bugs.gentoo.org/580922
+---
+ configure.ac                    | 4 +++-
+ module/owlib/src/include/ow.h   | 7 +++++--
+ module/ownet/c/src/include/ow.h | 8 ++++++--
+ 3 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c1e3d77..3b32fbe 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -180,10 +180,12 @@ m4_include([src/scripts/m4/acx_pthread.m4])
+ # Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([asm/types.h arpa/inet.h sys/ioctl.h sys/mkdev.h sys/socket.h sys/time.h sys/times.h sys/types.h sys/param.h sys/uio.h feature_tests.h fcntl.h netinet/in.h stdlib.h string.h strings.h sys/file.h syslog.h termios.h unistd.h limits.h stdint.h features.h getopt.h resolv.h semaphore.h])
++AC_CHECK_HEADERS([asm/types.h arpa/inet.h sys/ioctl.h sys/socket.h sys/time.h sys/times.h sys/types.h sys/param.h sys/uio.h feature_tests.h fcntl.h netinet/in.h stdlib.h string.h strings.h sys/file.h syslog.h termios.h unistd.h limits.h stdint.h features.h getopt.h resolv.h semaphore.h])
+ AC_CHECK_HEADERS([linux/limits.h linux/types.h netdb.h dlfcn.h])
+ AC_CHECK_HEADERS(sys/event.h sys/inotify.h)
+ 
++AC_HEADER_MAJOR
++
+ # Test if debugging out enabled
+ ENABLE_DEBUG="true"
+ AC_MSG_CHECKING([if debug-output is enabled])
+diff --git a/module/owlib/src/include/ow.h b/module/owlib/src/include/ow.h
+index 9dbec5f..2a6050d 100644
+--- a/module/owlib/src/include/ow.h
++++ b/module/owlib/src/include/ow.h
+@@ -188,9 +188,12 @@
+ #include <netdb.h>				/* for getaddrinfo */
+ #endif							/* HAVE_NETDB_H */
+ 
+-#ifdef HAVE_SYS_MKDEV_H
++#ifdef MAJOR_IN_MKDEV
+ #include <sys/mkdev.h>			/* for major() */
+-#endif							/* HAVE_SYS_MKDEV_H */
++#endif							/* MAJOR_IN_MKDEV */
++#ifdef MAJOR_IN_SYSMACROS
++#include <sys/sysmacros.h>		/* for major() */
++#endif							/* MAJOR_IN_MKDEV */
+ 
+ #include <stddef.h> // for offsetof()
+ 
+diff --git a/module/ownet/c/src/include/ow.h b/module/ownet/c/src/include/ow.h
+index c157a7c..aeeba8e 100644
+--- a/module/ownet/c/src/include/ow.h
++++ b/module/ownet/c/src/include/ow.h
+@@ -118,9 +118,13 @@
+ 
+ #include <netdb.h>				/* addrinfo */
+ 
+-#ifdef HAVE_SYS_MKDEV_H
++#ifdef MAJOR_IN_MKDEV
+ #include <sys/mkdev.h>			/* for major() */
+-#endif							/* HAVE_SYS_MKDEV_H */
++#endif							/* MAJOR_IN_MKDEV */
++#ifdef MAJOR_IN_SYSMACROS
++#include <sys/sysmacros.h>		/* for major() */
++#endif							/* MAJOR_IN_MKDEV */
++
+ 
+ /* Can't include search.h when compiling owperl on Fedora Core 1. */
+ #ifndef SKIP_SEARCH_H
+-- 
+2.10.0
+

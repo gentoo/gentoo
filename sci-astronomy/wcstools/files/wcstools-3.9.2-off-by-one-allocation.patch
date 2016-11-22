@@ -1,0 +1,15 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix an off-by-one memory allocation problem
+ in fitsfile.c, line 331, there is no space for a final '\0' byte
+ allocated. However, there is one expected in ksearch() (hget.c, line 1203).
+--- a/libwcs/fitsfile.c
++++ b/libwcs/fitsfile.c
+@@ -328,7 +328,7 @@
+ 		nbprim = nrec * FITSBLOCK;
+ 		headend = ksearch (header,"END");
+ 		lprim = headend + 80 - header;
+-		pheader = (char *) calloc ((unsigned int) nbprim, 1);
++		pheader = (char *) calloc ((unsigned int) nbprim+1, 1);
+ 		for (i = 0; i < lprim; i++)
+ 		    pheader[i] = header[i];
+ 		for (i = lprim; i < nbprim; i++)

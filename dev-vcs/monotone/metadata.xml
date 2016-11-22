@@ -6,10 +6,6 @@
     <name>Jonny</name>
 	<description>Future Maintainer</description>
   </maintainer>
-  <maintainer type="person">
-  <email>pva@gentoo.org</email>
-  <name>Peter Volkov</name>
-  </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>

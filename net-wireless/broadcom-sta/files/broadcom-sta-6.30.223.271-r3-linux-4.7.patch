@@ -1,0 +1,14 @@
+--- a/src/wl/sys/wl_cfg80211_hybrid.c	2016-08-20 17:19:11.285578121 +0200
++++ b/src/wl/sys/wl_cfg80211_hybrid.c	2016-08-20 17:20:55.611574041 +0200
+@@ -49,6 +49,11 @@
+ u32 wl_dbg_level = WL_DBG_ERR;
+ #endif
+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 7, 0)
++#define IEEE80211_BAND_2GHZ NL80211_BAND_2GHZ
++#define IEEE80211_BAND_5GHZ NL80211_BAND_5GHZ
++#endif
++
+ static s32 wl_cfg80211_change_iface(struct wiphy *wiphy, struct net_device *ndev,
+            enum nl80211_iftype type, u32 *flags, struct vif_params *params);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)

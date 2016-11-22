@@ -1,0 +1,11 @@
+--- minitube-2.5.1.orig/src/mainwindow.cpp
++++ minitube-2.5.1/src/mainwindow.cpp
+@@ -232,8 +232,6 @@
+ 
+     ChannelAggregator::instance()->start();
+ 
+-    checkForUpdate();
+-
+     initialized = true;
+ }
+ 

@@ -1,0 +1,55 @@
+From d35670e01a3c6f9f9bcb3150217d26cc92513586 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20Wei=C3=9Fl?= <jargon@molb.org>
+Date: Sun, 21 Feb 2016 14:22:28 +0100
+Subject: [PATCH 1/5] Support typed records newly exposed in OTP 19
+
+Otherwise `lager_transform` fails after https://github.com/erlang/otp/commit/de9012628a6b0e97d2f1325bf2f72817f69f84ee
+
+The error message is:
+
+    test/pr_nested_record_test.erl: error in parse transform 'lager_transform': {function_clause,
+                                                 [{lager_transform,
+                                                   '-walk_ast/2-fun-0-',
+                                                   [{typed_record_field,
+                                                     {record_field,5,
+                                                      {atom,5,field1}},
+                                                     {type,5,term,[]}}],
+                                                   [{file,
+                                                     "src/lager_transform.erl"},
+                                                    {line,62}]},
+---
+ src/lager_transform.erl | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/lager_transform.erl b/src/lager_transform.erl
+index 7648c46..8cea5a3 100644
+--- a/src/lager_transform.erl
++++ b/src/lager_transform.erl
+@@ -59,16 +59,19 @@ walk_ast(Acc, [{function, Line, Name, Arity, Clauses}|T]) ->
+     walk_ast([{function, Line, Name, Arity,
+                 walk_clauses([], Clauses)}|Acc], T);
+ walk_ast(Acc, [{attribute, _, record, {Name, Fields}}=H|T]) ->
+-    FieldNames = lists:map(fun({record_field, _, {atom, _, FieldName}}) ->
+-                FieldName;
+-            ({record_field, _, {atom, _, FieldName}, _Default}) ->
+-                FieldName
+-        end, Fields),
++    FieldNames = lists:map(fun record_field_name/1, Fields),
+     stash_record({Name, FieldNames}),
+     walk_ast([H|Acc], T);
+ walk_ast(Acc, [H|T]) ->
+     walk_ast([H|Acc], T).
+ 
++record_field_name({record_field, _, {atom, _, FieldName}}) ->
++    FieldName;
++record_field_name({record_field, _, {atom, _, FieldName}, _Default}) ->
++    FieldName;
++record_field_name({typed_record_field, Field, _Type}) ->
++    record_field_name(Field).
++
+ walk_clauses(Acc, []) ->
+     lists:reverse(Acc);
+ walk_clauses(Acc, [{clause, Line, Arguments, Guards, Body}|T]) ->
+-- 
+2.8.3
+

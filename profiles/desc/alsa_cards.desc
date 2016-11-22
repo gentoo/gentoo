@@ -5,158 +5,40 @@
 # This file contains descriptions of ALSA_CARDS USE_EXPAND flags.
 
 # Keep it sorted.
-ad1816a - Analog Devices SoundPort AD1816A
-ad1848 - Generic AD1848/CS4248 driver
-ad1848-lib - Enable the ad1848-lib driver
-ad1889 - Analog Devices AD1889
-adlib - AdLib FM card
 aica - Sega Dreamcast audio driver
-ali5451 - ALi M5451 PCI Audio Controller
-als100 - Avance Logic ALS100/ALS120
-als300 - Avance Logic ALS300/ALS300+
-als4000 - Avance Logic ALS4000
-aoa - Apple Onboard Audio driver
-aoa-fabric-layout - layout-id fabric
-aoa-onyx - support Onyx chip
-aoa-soundbus - Apple Soundbus support
-aoa-soundbus-i2s - I2S bus support
-aoa-tas - support TAS chips
-aoa-toonie - support Toonie chip
-armaaci - ARM PrimeCell PL041 AC Link support
 asihpi - AudioScience ASIxxxx
-at91-soc-eti-b1-wm8731 - SoC I2S Audio support for Endrelia ETI-B1 board
-at91-soc-i2s - Enable the at91-soc-i2s driver
-at91-soc - SoC Audio for the Atmel AT91 System-on-Chip
-atiixp - ATI IXP AC97 Controller
-atiixp-modem - ATI IXP Modem
-au1x00 - Au1x00 AC97 Port Driver
-au8810 - Aureal Advantage
-au8820 - Aureal Vortex
-au8830 - Aureal Vortex 2
-azt2320 - Aztech Systems AZT2320
-azt3328 - Aztech AZF3328 / PCI168 (EXPERIMENTAL)
-bt87x - Bt87x Audio Capture
-ca0106 - SB Audigy LS / Live 24bit
 ca0132 - Creative CA0132 (Sound Core3D) HD-audio
-cmi8330 - C-Media CMI8330
-cmipci - C-Media 8738, 8338
-cs4231 - Generic Cirrus Logic CS4231 driver
-cs4231-lib - Enable the cs4231-lib driver
-cs4232 - Generic Cirrus Logic CS4232 driver
-cs4236 - Generic Cirrus Logic CS4236+ driver
-cs4281 - Cirrus Logic (Sound Fusion) CS4281
 cs46xx - Cirrus Logic (Sound Fusion) CS4280/CS461x/CS462x/CS463x
-cs5535audio - CS5535/CS5536 Audio
 darla20 - (Echoaudio) Darla20
 darla24 - (Echoaudio) Darla24
-dt019x - Diamond Technologies DT-019X, Avance Logic ALS-007
-dummy - Dummy (/dev/null) soundcard
 echo3g - (Echoaudio) 3G cards
-emi26 - Emagic EMI 2|6 Audio Interface
 emu10k1 - Emu10k1 (SB Live!, Audigy, E-mu APS)
 emu10k1x - Emu10k1X (Dell OEM Version)
 emu1212 - E-MU 1212M PCI
 emu1616 - E-MU 1616 CardBus, 1616m CardBus, 1616 PCI
 emu1820 - E-MU 1820M PCI
-ens1370 - (Creative) Ensoniq AudioPCI 1370
-ens1371 - (Creative) Ensoniq AudioPCI 1371/1373
-es1688 - Generic ESS ES688/ES1688 driver
-es18xx - Generic ESS ES18xx driver
-es1938 - ESS ES1938/1946/1969 (Solo-1)
-es1968 - ESS ES1968/1978 (Maestro-1/2/2E)
-es968 - Generic ESS ES968 driver
-fm801 - ForteMedia FM801
-fm801-tea575x - Enable the fm801-tea575x driver
 gina20 - (Echoaudio) Gina20
 gina24 - (Echoaudio) Gina24
-gusclassic - Gravis UltraSound Classic
-gusextreme - Gravis UltraSound Extreme
-gusmax - Gravis UltraSound MAX
-harmony - Harmony/Vivace sound chip
-hda-intel - Intel HD Audio
 hdspm - RME Hammerfall DSP MADI
 hdsp - RME Hammerfall DSP Audio
-hifier - TempoTec HiFier Fantasia
-hpet - HPET timer interface
-hrtimer - ALSA timer interface
 ice1712 - ICEnsemble ICE1712 (Envy24)
-ice1724 - ICE/VT1724/1720 (Envy24HT/PT)
-indigodj - (Echoaudio) Indigo DJ
 indigo - (Echoaudio) Indigo
 indigoio - (Echoaudio) Indigo IO
-intel8x0 - Intel/SiS/nVidia/AMD/ALi AC97 Controller
-intel8x0m - Intel/SiS/nVidia/AMD MC97 Modem
-interwave - AMD InterWave, Gravis UltraSound PnP
-interwave-stb - AMD InterWave + TEA6330T (UltraSound 32-Pro)
 korg1212 - Korg 1212 IO
 layla20 - (Echoaudio) Layla20
 layla24 - (Echoaudio) Layla24
-loopback - Generic loopback driver (PCM)
 maestro3 - ESS Allegro/Maestro3
 mia - (Echoaudio) Mia
-miro - Miro miroSOUND PCM1pro/PCM12/PCM20radio driver
 mixart - Digigram miXart
-ml403-ac97cr - Xilinx ML403 AC97 Controller Reference
 mona - (Echoaudio) Mona
-mpu401 - Generic MPU-401 UART driver
 msnd-pinnacle - Turtle Beach MultiSound Pinnacle/Fiji driver
-mtpav - MOTU MidiTimePiece AV multiport MIDI
-mts64 - ESI Miditerminal 4140 driver
-nm256 - NeoMagic NM256AV/ZX
-opl3sa2 - Yamaha OPL3-SA2/SA3
-opti92x-ad1848 - OPTi 82C92x - AD1848
-opti92x-cs4231 - OPTi 82C92x - CS4231
-opti93x - OPTi 82C93x
-oxygen - C-Media 8788 (Oxygen)
-oxygen-lib - Enable the oxygen-lib driver
-pc98-cs4232 - NEC PC9800 CS4232 driver
-pcsp - Internal PC speaker support
 pcxhr - Digigram PCXHR
-pdaudiocf - Sound Core PDAudioCF
-pdplus - Sek'D/Marian Prodif Plus
-portman2x4 - Portman 2x4 driver
-powermac - PowerMac (AWACS, DACA, Burgundy, Tumbler, Keywest)
-pxa2xx-ac97 - AC97 driver for the Intel PXA2xx chip
-pxa2xx-i2sound - Enable the pxa2xx-i2sound driver
-pxa2xx-soc-corgi - SoC Audio support for Sharp Zaurus SL-C7x0
-pxa2xx-soc-e800 - SoC AC97 Audio support for e800
-pxa2xx-soc-poodle - SoC Audio support for Poodle
-pxa2xx-soc - SoC Audio for the Intel PXA2xx chip
-pxa2xx-soc-spitz - SoC Audio support for Sharp Zaurus SL-Cxx00
-pxa2xx-soc-tosa - SoC AC97 Audio support for Tosa
-riptide - Conexant Riptide
 rme32 - RME Digi32, 32/8, 32 PRO
-rme9652 - RME Digi9652 (Hammerfall)
 rme96 - RME Digi96, 96/8, 96/8 PRO
-rtctimer - ALSA RTC timer interface
-s3c2410 - S3C24XX Sound core
-s3c2412-soc-i2s - Enable the s3c2412-soc-i2s driver
-s3c24xx-soc-ln2440sbc-alc650 - SoC AC97 Audio support for LN2440SBC - ALC650
-sa11xx-uda1341 - SA11xx UDA1341TS driver (iPaq H3600)
 sb16 - Sound Blaster 16 (PnP)
-sb8 - Sound Blaster 1.0/2.0/Pro (8-bit)
 sbawe - Sound Blaster AWE (32,64) (PnP)
-seq-dummy - Sequencer dummy client
-serialmidi - Generic driver for serial MIDI adapters
-serial-u16550 - UART16550 serial MIDI driver
-sgalaxy - Aztech Sound Galaxy
-sis7019 - SiS 7019 Audio Accelerator
-soc - SoC audio support
-soc-tlv320aic3x - Enable the soc-tlv320aic3x driver
-sonicvibes - S3 SonicVibes
 sscape - Ensoniq SoundScape PnP driver
-sun-amd7930 - Sun AMD7930
-sun-cs4231 - Sun CS4231
-sun-dbri - Sun DBRI
-trident - Trident 4D-Wave DX/NX; SiS 7018
-usb-audio - USB Audio/MIDI driver
-usb-us122l - Tascam US-122L USB driver
 usb-usx2y - Tascam US-122, US-224 and US-428 USB driver
-via82xx-modem - VIA 82C686A/B, 8233 based Modems
-via82xx - VIA 82C686A/B, 8233/8235 AC97 Controller
-virmidi - Virtual MIDI soundcard
-virtuoso - Asus Virtuoso 200 (Xonar)
 vx222 - Digigram VX222
-vxpocket - Digigram VXpocket
 wavefront - Turtle Beach Maui,Tropez,Tropez+ (Wavefront)
 ymfpci - Yamaha YMF724/740/744/754

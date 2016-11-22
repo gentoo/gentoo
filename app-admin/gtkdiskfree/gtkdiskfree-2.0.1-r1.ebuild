@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,10 +9,10 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit autotools-utils flag-o-matic
 
 DESCRIPTION="Graphical tool to show free disk space"
-HOMEPAGE="https://gitorious.org/gtkdiskfree"
+HOMEPAGE="https://gitlab.com/mazes_80/gtkdiskfree"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="nls"

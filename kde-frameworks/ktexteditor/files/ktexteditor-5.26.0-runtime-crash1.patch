@@ -1,0 +1,149 @@
+From: Dominik Haumann <dhaumann@kde.org>
+Date: Wed, 07 Sep 2016 10:27:00 +0000
+Subject: Fix crash when showing top or bottom messages mutliple times
+X-Git-Url: http://quickgit.kde.org/?p=ktexteditor.git&a=commitdiff&h=86f1dde943389bbf211ec1cde3f27c9681351d3f
+---
+Fix crash when showing top or bottom messages mutliple times
+
+Unfortunately, this regression was introduced in KF 5.24-5.26.
+Will be fixed with KF 5.27.
+---
+
+
+--- a/autotests/src/messagetest.cpp
++++ b/autotests/src/messagetest.cpp
+@@ -66,7 +66,7 @@
+     QVERIFY(message != 0);
+     delete message;
+     QTest::qWait(600); // fadeout animation takes 500 ms
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testAutoHide()
+@@ -98,7 +98,7 @@
+ 
+     // message widget should be hidden after 2 seconds
+     QTest::qWait(500);
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testAutoHideAfterUserInteraction()
+@@ -142,7 +142,7 @@
+ 
+     // after a total of 3.6 seconds, widget should be hidden
+     QTest::qWait(500);
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testMessageQueue()
+@@ -200,7 +200,7 @@
+ 
+     // after a total of 3.1s, animation is finished and widget is hidden
+     QTest::qWait(500);
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testPriority()
+@@ -305,8 +305,8 @@
+     // delete message, then check after fadeout time 0f 0.5s whether message is gone
+     delete m1;
+     QTest::qWait(600);
+-    QVERIFY(!v1->messageWidget());
+-    QVERIFY(!v2->messageWidget());
++    QVERIFY(!v1->messageWidget()->isVisible());
++    QVERIFY(!v2->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testHideView()
+@@ -353,7 +353,7 @@
+     // wait another 0.5s, then message widget should be hidden
+     QTest::qWait(500);
+     QVERIFY(message.data() == 0);
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+ void MessageTest::testHideViewAfterUserInteraction()
+@@ -414,6 +414,6 @@
+ 
+     // another 0.5s, and the message widget should be hidden
+     QTest::qWait(600);
+-    QVERIFY(!view->messageWidget());
++    QVERIFY(!view->messageWidget()->isVisible());
+ }
+ 
+-
+
+--- a/src/view/katemessagewidget.cpp
++++ b/src/view/katemessagewidget.cpp
+@@ -78,7 +78,6 @@
+     // if not message to show, just stop
+     if (m_messageQueue.size() == 0) {
+         hide();
+-        deleteLater();
+         return;
+     }
+ 
+--- a/src/view/kateview.cpp
++++ b/src/view/kateview.cpp
+@@ -51,6 +51,7 @@
+ #include "script/katescriptmanager.h"
+ #include "script/katescriptaction.h"
+ #include "export/exporter.h"
++#include "katemessagewidget.h"
+ #include "katetemplatehandler.h"
+ #include "katepartdebug.h"
+ #include "printing/kateprinter.h"
+--- a/src/view/kateview.h
++++ b/src/view/kateview.h
+@@ -38,7 +38,6 @@
+ #include "katetextrange.h"
+ #include "katetextfolding.h"
+ #include "katerenderer.h"
+-#include "katemessagewidget.h"
+ 
+ namespace KTextEditor
+ {
+@@ -58,6 +57,7 @@
+ class KateGotoBar;
+ class KateDictionaryBar;
+ class KateSpellingMenu;
++class KateMessageWidget;
+ class KateIconBorder;
+ class KateStatusBar;
+ class KateViewEncodingAction;
+@@ -873,13 +873,13 @@
+ 
+ private:
+     /** Message widget showing KTextEditor::Messages above the View. */
+-    QPointer<KateMessageWidget> m_topMessageWidget;
++    KateMessageWidget *m_topMessageWidget;
+     /** Message widget showing KTextEditor::Messages below the View. */
+-    QPointer<KateMessageWidget> m_bottomMessageWidget;
++    KateMessageWidget *m_bottomMessageWidget;
+     /** Message widget showing KTextEditor::Messages as view overlay in top right corner. */
+-    QPointer<KateMessageWidget> m_floatTopMessageWidget;
++    KateMessageWidget *m_floatTopMessageWidget;
+     /** Message widget showing KTextEditor::Messages as view overlay in bottom left corner. */
+-    QPointer<KateMessageWidget> m_floatBottomMessageWidget;
++    KateMessageWidget *m_floatBottomMessageWidget;
+     /** Layout for floating notifications */
+     QVBoxLayout *m_notificationLayout;
+ 
+--- a/src/view/kateviewinternal.cpp
++++ b/src/view/kateviewinternal.cpp
+@@ -484,7 +484,9 @@
+         if (!calledExternally && qAbs(viewLinesScrolled) < lines &&
+             // NOTE: on some machines we must update if the floating widget is visible
+             //       otherwise strange painting bugs may occur during scrolling...
+-            !(m_view->m_floatTopMessageWidget || m_view->m_bottomMessageWidget))
++            !((m_view->m_floatTopMessageWidget && m_view->m_floatTopMessageWidget->isVisible()) ||
++              (m_view->m_floatBottomMessageWidget && m_view->m_floatBottomMessageWidget->isVisible()))
++           )
+         {
+             updateView(false, viewLinesScrolled);
+ 

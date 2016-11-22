@@ -9,8 +9,7 @@
 		<flag name="chappa">enhance alpine by applying Eduardo Chappa's
 			patches</flag>
 		<flag name="onlyalpine">installs only the alpine binary, so it does
-			not collied with <pkg>app-editors/pico</pkg> and/or 
-			<pkg>mail-client/pine</pkg></flag>
+			not collied with pico and/or pine</flag>
 		<flag name="passfile">Adds support for caching passwords into a file
 			between sessions</flag>
 		<flag name="smime">Enable support for S/MIME</flag>

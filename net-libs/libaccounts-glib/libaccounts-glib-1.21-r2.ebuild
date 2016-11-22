@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils vcs-snapshot
+inherit autotools eutils vcs-snapshot xdg-utils
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 RDEPEND="
@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 DOCS=( AUTHORS NEWS )
+
+pkg_setup() {
+	xdg_environment_reset
+}
 
 src_prepare() {
 	eautoreconf

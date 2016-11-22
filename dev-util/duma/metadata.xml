@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <longdescription>
 DUMA is an open-source library (under GNU General Public License) to 
 detect buffer overruns and under-runs in C and C++ programs. This 
 library is a fork of Buce Perens Electric Fence library and adds 
 some new features to it.</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">duma</remote-id>
-	</upstream>
+  <upstream>
+    <remote-id type="sourceforge">duma</remote-id>
+  </upstream>
 </pkgmetadata>

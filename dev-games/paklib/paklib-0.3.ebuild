@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="library for accessing Quake pak files"
-HOMEPAGE="http://sourceforge.net/projects/paklib/"
+HOMEPAGE="https://sourceforge.net/projects/paklib/"
 SRC_URI="mirror://sourceforge/paklib/pak-${PV}.tar.gz"
 
 LICENSE="GPL-2"

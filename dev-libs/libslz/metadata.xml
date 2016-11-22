@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>bertrand@jacquin.bzh</email>
+		<name>Bertrand Jacquin</name>
+	</maintainer>
+	<longdescription>
+SLZ is a fast and memory-less stream compressor which produces an output that can be decompressed with zlib or gzip. It does not implement decompression at all, zlib is perfectly fine for this.
+
+The purpose is to use SLZ in situations where a zlib-compatible stream is needed and zlib's resource usage would be too high while the compression ratio is not critical. The typical use case is in HTTP servers and gateways which have to compress many streams in parallel with little CPU resources to assign to this task, and without having to thottle the compression ratio due to the memory usage. In such an environment, the server's memory usage can easily be divided by 10 and the CPU usage by 3
+	</longdescription>
+	<use>
+		<flag name="tools">Install additional tools (zenc, zdec)</flag>
+	</use>
+</pkgmetadata>

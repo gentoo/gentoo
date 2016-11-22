@@ -1,0 +1,46 @@
+Add patch from openSUSE fixing python module import failure when built with
+dev-lang/swig-3.0.10.
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=987607
+
+Gentoo-bug: 594238
+
+--- a/swig/python/Makefile.am
++++ b/swig/python/Makefile.am
+@@ -6,9 +6,8 @@ SUBDIRS = test
+ 
+ libapparmor_wrap.c: $(srcdir)/../SWIG/libapparmor.i
+ 	$(SWIG) -python -I$(srcdir)/../../include -module LibAppArmor -o $@ $(srcdir)/../SWIG/libapparmor.i
+-	mv LibAppArmor.py __init__.py
+ 
+-MOSTLYCLEANFILES=libapparmor_wrap.c __init__.py
++MOSTLYCLEANFILES=libapparmor_wrap.c LibAppArmor.py
+ 
+ all-local: libapparmor_wrap.c setup.py
+ 	if test ! -f libapparmor_wrap.c; then cp $(srcdir)/libapparmor_wrap.c . ; fi
+
+--- a/dev/null
++++ b/swig/python/__init__.py
+@@ -0,0 +1 @@
++from LibAppArmor.LibAppArmor import *
+
+--- a/swig/python/Makefile.in
++++ b/swig/python/Makefile.in
+@@ -326,7 +326,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ @HAVE_PYTHON_TRUE@EXTRA_DIST = libapparmor_wrap.c
+ @HAVE_PYTHON_TRUE@SUBDIRS = test
+-@HAVE_PYTHON_TRUE@MOSTLYCLEANFILES = libapparmor_wrap.c __init__.py
++@HAVE_PYTHON_TRUE@MOSTLYCLEANFILES = libapparmor_wrap.c LibAppArmor.py
+ all: all-recursive
+ 
+ .SUFFIXES:
+@@ -648,7 +648,6 @@ uninstall-am:
+ 
+ @HAVE_PYTHON_TRUE@libapparmor_wrap.c: $(srcdir)/../SWIG/libapparmor.i
+ @HAVE_PYTHON_TRUE@	$(SWIG) -python -I$(srcdir)/../../include -module LibAppArmor -o $@ $(srcdir)/../SWIG/libapparmor.i
+-@HAVE_PYTHON_TRUE@	mv LibAppArmor.py __init__.py
+ 
+ @HAVE_PYTHON_TRUE@all-local: libapparmor_wrap.c setup.py
+ @HAVE_PYTHON_TRUE@	if test ! -f libapparmor_wrap.c; then cp $(srcdir)/libapparmor_wrap.c . ; fi
+

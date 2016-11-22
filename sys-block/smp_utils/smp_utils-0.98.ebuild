@@ -18,3 +18,7 @@ IUSE="static-libs"
 DOCS=( AUTHORS ChangeLog COVERAGE CREDITS README )
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sysmacros.patch #580258
+)

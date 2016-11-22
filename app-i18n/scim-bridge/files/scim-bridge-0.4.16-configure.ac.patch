@@ -1,5 +1,5 @@
---- configure.ac.orig	2009-11-27 21:07:46.000000000 +0800
-+++ configure.ac	2009-11-27 21:33:17.000000000 +0800
+--- a/configure.ac.orig	2009-11-27 21:07:46.000000000 +0800
++++ b/configure.ac	2009-11-27 21:33:17.000000000 +0800
 @@ -55,63 +55,6 @@
  AM_CONDITIONAL(HAVE_DOCBOOK, test x$DOCBOOK_XSL != xno)
  AM_CONDITIONAL(BUILD_MANUAL, test x$XSLTPROC != xno -a x$DOCBOOK_XSL != xno)

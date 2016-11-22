@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,6 +16,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 DOCS=( README )
 
 src_prepare() {
-	sed -i '/^prefix/s:=.*:=/usr:' Makefile || die
+	sed -i "/^prefix/s:=.*:=${EPREFIX}/usr:" Makefile || die
 	tc-export CC
 }

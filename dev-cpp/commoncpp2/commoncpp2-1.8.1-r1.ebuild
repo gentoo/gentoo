@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils autotools
 
-DESCRIPTION="C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services"
+DESCRIPTION="C++ library offering portable support for system-related services"
 SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/commoncpp/"
 LICENSE="GPL-2"

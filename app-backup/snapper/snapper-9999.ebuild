@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+btrfs ext4 lvm pam xattr"
 
-RDEPEND="dev-libs/boost[threads]
+RDEPEND="dev-libs/boost:=[threads]
 	dev-libs/libxml2
 	dev-libs/icu:=
 	sys-apps/acl
@@ -36,7 +36,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README.md package/snapper.changes )
+REQUIRED_USE="|| ( btrfs ext4 lvm )"
+
+DOCS=( AUTHORS package/snapper.changes )
 
 PATCHES=( "${FILESDIR}"/cron-confd.patch )
 

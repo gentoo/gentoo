@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="A clean and friendly gtk-based serial terminal"
@@ -21,7 +19,6 @@ RDEPEND="
 	>=x11-libs/gtk+-3.0.0:3
 "
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
 	>=app-text/gnome-doc-utils-0.3.2
 	>=dev-util/intltool-0.35
 	dev-util/itstool

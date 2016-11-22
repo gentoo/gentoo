@@ -10,6 +10,11 @@
   <email>sci@gentoo.org</email>
   <name>Gentoo Science Project</name>
 </maintainer>
+<use>
+  <flag name='openmpi'>Include pre-built OpenMPI 1.x libraries</flag>
+  <flag name='openmpi2'>Include pre-built OpenMPI 2.x libraries</flag>
+  <flag name='mpich'>Include pre-built MPICH libraries</flag>
+</use>
 <longdescription>
   The PathScale EKOPath Compiler Suite offers programmers a rich set of tools and 
   one of the world's most sophisticated optimization infrastructures to maximize 

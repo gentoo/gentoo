@@ -1,0 +1,13 @@
+http://dev.gentoo.org/~vapier/scons-blows.txt
+
+diff -Naur xboxdrv-linux-0.8.8.orig/SConstruct xboxdrv-linux-0.8.8/SConstruct
+--- xboxdrv-linux-0.8.8.orig/SConstruct	2015-11-09 10:19:35.000000000 +0000
++++ xboxdrv-linux-0.8.8/SConstruct	2016-07-02 16:13:52.560961836 +0100
+@@ -84,6 +84,7 @@
+ opts.Add('CXXFLAGS', 'C++ Compiler flags')
+ opts.Add('LINKFLAGS', 'Linker Compiler flags')
+ opts.Add('AR', 'Library archiver')
++opts.Add('RANLIB', 'Archive indexer')
+ opts.Add('CC', 'C Compiler')
+ opts.Add('CXX', 'C++ Compiler')
+ opts.Add('BUILD', 'Build type: release, custom, development')

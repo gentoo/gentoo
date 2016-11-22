@@ -1,0 +1,14 @@
+lno and last are uint32_t which might be different from unsigned long
+
+--- a/common/msg.c
++++ b/common/msg.c
+@@ -640,7 +640,8 @@ msgq_status(SCR *sp, db_recno_t lno, u_i
+ 			p += len;
+ 		} else {
+ 			t = msg_cat(sp, "027|line %lu of %lu [%ld%%]", &len);
+-			(void)sprintf(p, t, lno, last, (lno * 100) / last);
++			(void)sprintf(p, t, (u_long)lno, (u_long)last,
++					((long)lno * 100L) / (long)last);
+ 			p += strlen(p);
+ 		}
+ 	} else {

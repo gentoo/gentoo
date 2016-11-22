@@ -1,0 +1,46 @@
+From 220b38717f8d0fc16c8b9d68cfd6e5b5751e4669 Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Mon, 15 Aug 2016 16:36:57 +0200
+Subject: build: fix linking libnm-vpn-plugin-openvpn.la for dlopen()
+
+On some systems, dlopen() is not in libdl.so [1].
+
+[1] https://autotools.io/autoconf/finding.html
+
+https://bugzilla.gnome.org/show_bug.cgi?id=769783
+---
+ configure.ac           | 3 +++
+ properties/Makefile.am | 3 ++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 34829f4..3988bad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,9 @@ dnl
+ AC_PROG_GCC_TRADITIONAL
+ AC_FUNC_MEMCMP
+ AC_CHECK_FUNCS(select socket uname)
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [
++  AC_MSG_ERROR([unable to find the dlopen() function])
++])
+ 
+ dnl ensure that when the Automake generated makefile calls aclocal,
+ dnl it honours the $ACLOCAL_FLAGS environment variable
+diff --git a/properties/Makefile.am b/properties/Makefile.am
+index 552e537..04ed5cd 100644
+--- a/properties/Makefile.am
++++ b/properties/Makefile.am
+@@ -57,7 +57,8 @@ libnm_vpn_plugin_openvpn_la_CFLAGS =                    \
+         $(LIBNM_CFLAGS)
+ 
+ libnm_vpn_plugin_openvpn_la_LIBADD = \
+-        $(LIBNM_LIBS)
++        $(LIBNM_LIBS) \
++        $(DLOPEN)
+ 
+ libnm_vpn_plugin_openvpn_la_LDFLAGS = \
+         -avoid-version \
+-- 
+cgit v0.12
+

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>qt@gentoo.org</email>
-    <name>Gentoo Qt Project</name>
-  </maintainer>
-  <longdescription>
-    A very small Qt text editor. It has lots of extra features including syntax
-    highlighting and a built in file manager as well as a built in image viewer.
-    It can also read lots of 'other' filetypes.
-  </longdescription>
-  <use>
-    <flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
-    <flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
-  </use>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<longdescription>
+		A very small Qt text editor. It has lots of extra features including syntax
+		highlighting and a built in file manager as well as a built in image viewer.
+		It can also read lots of 'other' filetypes.
+	</longdescription>
+	<use>
+		<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
+		<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
+	</use>
 </pkgmetadata>

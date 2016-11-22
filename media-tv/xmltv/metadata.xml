@@ -51,6 +51,7 @@
     <flag name="uk_bleb">Britain tv listing grabber</flag>
     <flag name="uk_rt">Britain alternative tv listing grabber</flag>
     <flag name="uk_tvguide">UK and Ireland tv listing grabber using TV Guide website</flag>
+    <flag name="sd_json">Grabber for schedulesDirect.org SD-JSON service (many countries)</flag>
     <flag name="za">South Africa tv listing grabber</flag>
   </use>
   <upstream>

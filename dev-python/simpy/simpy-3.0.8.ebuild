@@ -1,23 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="tk"
 
 inherit distutils-r1
 
 MY_P="${P/simpy/SimPy}"
 
-DESCRIPTION="Simulation in Python is an object-oriented, process-based discrete-event simulation language"
+DESCRIPTION="Object-oriented, process-based discrete-event simulation language"
 HOMEPAGE="http://simpy.readthedocs.org/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="${PYTHON_DEPS}"

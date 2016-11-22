@@ -1,0 +1,63 @@
+diff -Naur a/IlmImf/ImfSystemSpecific.cpp b/IlmImf/ImfSystemSpecific.cpp
+--- a/IlmImf/ImfSystemSpecific.cpp	2016-06-14 01:19:15.070511555 +0930
++++ b/IlmImf/ImfSystemSpecific.cpp	2016-06-14 01:36:08.776496862 +0930
+@@ -35,6 +35,7 @@
+ #include "ImfSystemSpecific.h"
+ #include "ImfNamespace.h"
+ #include "OpenEXRConfig.h"
++#include <cpuid.h>
+ 
+ OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER
+ 
+@@ -42,19 +43,15 @@
+ #if defined(IMF_HAVE_SSE2) &&  defined(__GNUC__)
+ 
+     // Helper functions for gcc + SSE enabled
+-    void cpuid(int n, int &eax, int &ebx, int &ecx, int &edx)
++    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx, unsigned int &ecx, unsigned int &edx)
+     {
+-        __asm__ __volatile__ (
+-            "cpuid"
+-            : /* Output  */ "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx) 
+-            : /* Input   */ "a"(n)
+-            : /* Clobber */);
++	__get_cpuid(n, &eax, &ebx, &ecx, &edx );
+     }
+ 
+ #else // IMF_HAVE_SSE2 && __GNUC__
+ 
+     // Helper functions for generic compiler - all disabled
+-    void cpuid(int n, int &eax, int &ebx, int &ecx, int &edx)
++    void cpuid(unsigned int n, unsigned int &eax, unsigned int &ebx, unsigned int &ecx, unsigned int &edx)
+     {
+         eax = ebx = ecx = edx = 0;
+     }
+@@ -64,7 +61,7 @@
+ 
+ #ifdef OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX
+ 
+-    void xgetbv(int n, int &eax, int &edx)
++    void xgetbv(unsigned int n, unsigned int &eax, unsigned int &edx)
+     {
+         __asm__ __volatile__ (
+             "xgetbv"
+@@ -75,7 +72,7 @@
+ 
+ #else //  OPENEXR_IMF_HAVE_GCC_INLINE_ASM_AVX
+ 
+-    void xgetbv(int n, int &eax, int &edx)
++    void xgetbv(unsigned int n, unsigned int &eax, unsigned int &edx)
+     {
+         eax = edx = 0;
+     }
+@@ -94,8 +91,8 @@
+     f16c(false)
+ {
+     bool osxsave = false;
+-    int  max     = 0;
+-    int  eax, ebx, ecx, edx;
++    unsigned int  max     = 0;
++    unsigned int  eax, ebx, ecx, edx;
+ 
+     cpuid(0, max, ebx, ecx, edx);
+     if (max > 0)

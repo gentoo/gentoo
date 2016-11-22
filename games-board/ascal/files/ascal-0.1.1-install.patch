@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -63,9 +63,6 @@
          AC_DEFINE(DEBUG, 1, [Enable debug msg.])
  		CPPFLAGS=[`echo "$CXXFLAGS" | $SED -e 's/-O[0-9]*//g'`]
@@ -19,8 +19,8 @@
  fi
  
  AC_ARG_ENABLE(static,
---- m4/Makefile.am
-+++ m4/Makefile.am
+--- a/m4/Makefile.am
++++ b/m4/Makefile.am
 @@ -15,6 +15,5 @@
  m4macros = 
  
@@ -28,8 +28,8 @@
 -m4data_DATA = $(m4macros) 
  EXTRA_DIST =  
  
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -17,13 +17,12 @@
  
  ACLOCAL_AMFLAGS = -I m4
@@ -48,8 +48,8 @@
 -#include aminclude.am
 \ No newline at end of file
 +#include aminclude.am
---- po/Makefile.in.in
-+++ po/Makefile.in.in
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
 @@ -34,7 +34,7 @@
  datarootdir = @datarootdir@
  libdir = @libdir@
@@ -59,8 +59,8 @@
  subdir = po
  install_sh = @install_sh@
  # Automake >= 1.8 provides @mkdir_p@.
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -50,5 +50,5 @@
  
  

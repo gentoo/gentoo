@@ -1,6 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Enable the GPU targets matching the default VIDEO_CARDS
+sys-devel/clang llvm_targets_AMDGPU
+sys-devel/llvm llvm_targets_AMDGPU
 
 # Pacho Ramos <pacho@gentoo.org> (15 Feb 2014)    
 # libev isn't supported on this arch, use another default (#499498)

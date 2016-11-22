@@ -30,3 +30,10 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/google-api-python-client-1.1[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/PySocks-1.01[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	sed \
+		-e '/SocksiPy-branch/d' \
+		-i setup.py || die
+}

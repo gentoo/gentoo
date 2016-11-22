@@ -12,7 +12,5 @@
 			enabling this flag will become your setup to be fully
 			unsupported by upstream and downstream Gnome team. Do not
 			try to enable it unless completely needed</flag>
-		<flag name="short-touchpad-timeout">Change the touchpad timeout so that 
-			it's effective for fast typists</flag>
 	</use>
 </pkgmetadata>

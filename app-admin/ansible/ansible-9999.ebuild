@@ -33,6 +33,7 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]

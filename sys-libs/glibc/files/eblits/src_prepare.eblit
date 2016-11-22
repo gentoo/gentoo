@@ -43,10 +43,10 @@ eblit-glibc-src_prepare() {
 
 	# Glibc is stupid sometimes, and doesn't realize that with a
 	# static C-Only gcc, -lgcc_eh doesn't exist.
-	# http://sourceware.org/ml/libc-alpha/2003-09/msg00100.html
-	# http://sourceware.org/ml/libc-alpha/2005-02/msg00042.html
+	# https://sourceware.org/ml/libc-alpha/2003-09/msg00100.html
+	# https://sourceware.org/ml/libc-alpha/2005-02/msg00042.html
 	# But! Finally fixed in recent versions:
-	# http://sourceware.org/ml/libc-alpha/2012-05/msg01865.html
+	# https://sourceware.org/ml/libc-alpha/2012-05/msg01865.html
 	if ! version_is_at_least 2.16 ; then
 		echo 'int main(){}' > "${T}"/gcc_eh_test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/gcc_eh_test.c -lgcc_eh 2>/dev/null ; then

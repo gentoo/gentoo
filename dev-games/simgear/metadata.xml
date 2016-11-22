@@ -14,6 +14,7 @@ SimGear is a set of open-source libraries designed to be used as building blocks
 quickly assembling 3d simulations, games, and visualization applications.
 </longdescription>
 <use>
+	<flag name="dns">Enables DNS resolver via <pkg>net-libs/udns</pkg></flag>
 	<flag name="subversion">Enables terrasync scenery downloader</flag>
 </use>
 </pkgmetadata>

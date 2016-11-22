@@ -1,6 +1,6 @@
 === modified file 'Makefile'
---- Makefile	2011-08-09 15:19:01 +0000
-+++ Makefile	2011-08-09 15:19:43 +0000
+--- a/Makefile	2011-08-09 15:19:01 +0000
++++ b/Makefile	2011-08-09 15:19:43 +0000
 @@ -871,7 +871,7 @@
  		$(ARCH_LIBS)
  	@echo

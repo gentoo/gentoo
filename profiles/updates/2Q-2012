@@ -3,7 +3,7 @@ move dev-lisp/cl-asdf dev-lisp/asdf
 move dev-lisp/cl-asdf-binary-locations dev-lisp/asdf-binary-locations
 slotmove media-libs/libharu 2 0
 move sys-fs/bleachbit sys-apps/bleachbit
-move sys-infiniband/openib sys-infiniband/ofed
+move sys-fabric/openib sys-fabric/ofed
 move app-text/djview4 app-text/djview
 move app-text/focuswriter app-editors/focuswriter
 move app-mobilephone/jacksms-desktop app-mobilephone/freesmee

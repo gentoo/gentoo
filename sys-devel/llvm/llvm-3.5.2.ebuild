@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,19 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
 	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.5.0-manpages.tar.bz2 )"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend: LLVM Software Grant by ARM.
+# 3. MD5 code: public-domain.
+# 4. autoconf (not installed): some undefined M.I.T. license.
+# 5. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain
+	arm? ( LLVM-Grant )
+	arm64? ( LLVM-Grant )
+	multitarget? ( LLVM-Grant )"
 SLOT="0/3.5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi multitarget ncurses ocaml python
@@ -50,7 +62,6 @@ DEPEND="${COMMON_DEPEND}
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
 	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-${PV%_rc*}.9999 )
 	clang? ( xml? ( virtual/pkgconfig ) )
 	doc? ( dev-python/sphinx )
 	libffi? ( virtual/pkgconfig )
@@ -61,7 +72,8 @@ RDEPEND="${COMMON_DEPEND}
 		!>=sys-devel/clang-9999 )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
-PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
+PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
+	kernel_Darwin? ( =sys-libs/libcxx-${SLOT#*/}* )"
 
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
@@ -75,7 +87,7 @@ S=${WORKDIR}/${P}.src
 # so why did it call itself ninja in the first place?
 CMAKE_MAKEFILE_GENERATOR=emake
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !clang !debug !multitarget -O2       400
 	# !clang !debug  multitarget -O2       550
@@ -123,8 +135,12 @@ pkg_pretend() {
 	fi
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_unpack() {
@@ -144,19 +160,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.2-nodoctargz.patch
-	epatch "${FILESDIR}"/${PN}-3.5-gcc-4.9.patch
-	epatch "${FILESDIR}"/${PN}-3.5-gentoo-install.patch
-	epatch "${FILESDIR}"/${P}-gcc-5.1.patch
+	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
+	epatch "${FILESDIR}"/3.6.2/gcc-4.9.patch
+	epatch "${FILESDIR}"/3.5.2/gentoo-install.patch
+	epatch "${FILESDIR}"/3.5.2/gcc-5.1.patch
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/Ocaml/*ml  || die
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
+		epatch "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.5-gentoo-install.patch
-		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.5.2/clang/gentoo-install.patch
+		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 

@@ -7,7 +7,7 @@ EAPI=5
 OASIS_BUILD_DOCS=1
 OASIS_BUILD_TESTS=1
 
-inherit oasis
+inherit oasis eutils
 
 DESCRIPTION="Library for automated conversion of OCaml-values to and from S-expressions"
 HOMEPAGE="https://bitbucket.org/yminsky/ocaml-core/wiki/Home"
@@ -20,6 +20,10 @@ IUSE=""
 
 RDEPEND=">=dev-ml/type-conv-113.00.00:="
 DEPEND="${RDEPEND} dev-ml/opam"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	emake setup.exe

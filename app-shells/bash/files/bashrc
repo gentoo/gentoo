@@ -53,42 +53,29 @@ esac
 # dircolors --print-database uses its own built-in database
 # instead of using /etc/DIR_COLORS.  Try to use the external file
 # first to take advantage of user additions.
+# We run dircolors directly due to its changes in file syntax and
+# terminal name patching.
 use_color=false
 if type -P dircolors >/dev/null ; then
 	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 	LS_COLORS=
 	if [[ -f ~/.dir_colors ]] ; then
-		# If you have a custom file, chances are high that it's not the default.
-		used_default_dircolors="no"
 		eval "$(dircolors -b ~/.dir_colors)"
 	elif [[ -f /etc/DIR_COLORS ]] ; then
-		# People might have customized the system database.
-		used_default_dircolors="maybe"
 		eval "$(dircolors -b /etc/DIR_COLORS)"
 	else
-		used_default_dircolors="yes"
 		eval "$(dircolors -b)"
 	fi
+	# Note: We always evaluate the LS_COLORS setting even when it's the
+	# default.  If it isn't set, then `ls` will only colorize by default
+	# based on file attributes and ignore extensions (even the compiled
+	# in defaults of dircolors). #583814
 	if [[ -n ${LS_COLORS:+set} ]] ; then
 		use_color=true
-
-		# The majority of systems out there do not customize these files, so we
-		# want to avoid always exporting the large $LS_COLORS variable.  This
-		# keeps the active env smaller, and it means we don't have to deal with
-		# running new/old (incompatible) versions of `ls` compared to when we
-		# last sourced this file.
-		case ${used_default_dircolors} in
-		no) ;;
-		yes) unset LS_COLORS ;;
-		*)
-			ls_colors=$(eval "$(dircolors -b)"; echo "${LS_COLORS}")
-			if [[ ${ls_colors} == "${LS_COLORS}" ]] ; then
-				unset LS_COLORS
-			fi
-			;;
-		esac
+	else
+		# Delete it if it's empty as it's useless in that case.
+		unset LS_COLORS
 	fi
-	unset used_default_dircolors
 else
 	# Some systems (e.g. BSD & embedded) don't typically come with
 	# dircolors so we need to hardcode some terminals in here.

@@ -3,7 +3,10 @@
 # $Id$
 
 # See bug #504200
-sys-devel/gcc sanitize 
+sys-devel/gcc sanitize
+
+# llvm's sanitizers are also incompatible with musl
+sys-devel/llvm sanitize
 
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext

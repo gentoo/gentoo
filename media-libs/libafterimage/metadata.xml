@@ -16,4 +16,8 @@
   included, providing support for TrueType fonts using FreeType library,
   and anti-aliasing of standard fonts from X window system.
 </longdescription>
+<use>
+	<flag name="shaping">Use MIT shaped X windows extention.</flag>
+	<flag name="shm">Use MIT shared memory extention for X image transfer.</flag>
+</use>
 </pkgmetadata>

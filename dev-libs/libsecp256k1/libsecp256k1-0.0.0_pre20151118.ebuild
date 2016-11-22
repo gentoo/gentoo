@@ -15,7 +15,7 @@ SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${My
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="asm doc ecdh endomorphism experimental gmp +recovery schnorr test"
+IUSE="asm doc ecdh endomorphism experimental gmp libressl +recovery schnorr test"
 
 REQUIRED_USE="
 	asm? ( amd64 )
@@ -27,7 +27,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-libs/openssl:0 )
+	test? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 
 S="${WORKDIR}/${MyPN}-${COMMITHASH}"

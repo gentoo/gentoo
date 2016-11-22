@@ -5,10 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="newbase">Use base-4.0 or newer.</flag>
-		<flag name="splitbase">Use the new smaller, split-up base package.</flag>
-	</use>
 	<longdescription>
 		One module layer over regex-tdfa to replace Text.Regex.
 		

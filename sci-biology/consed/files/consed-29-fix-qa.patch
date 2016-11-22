@@ -1,0 +1,275 @@
+Fix various QA violations, due to
+* implicit declarations
+* incorrect printf() format specifiers
+* incorrect function prototypes
+* remove unsafe gets() fucntion
+
+--- a/misc/454/sff2scf.c
++++ b/misc/454/sff2scf.c
+@@ -39,6 +39,7 @@
+ void writeScfFile(char *filearg, char *outfile);
+ void writeScfCommand(char *filearg, char *outfile);
+ 
++int sffinfo(int argc, char *argv[], FILE* pTempFile );
+ 
+ int main(int argc, char *argv[])
+ {
+--- a/misc/mktrace/mktrace.c
++++ b/misc/mktrace/mktrace.c
+@@ -70,9 +70,9 @@
+   else
+   {
+     printf( "enter FASTA filename: " );
+-    gets( ifnm );
++    fgets( ifnm, sizeof(ifnm), stdin );
+     printf( "enter output filename: " );
+-    gets( ofnm );
++    fgets( ofnm, sizeof(ofnm), stdin );
+   }
+ 
+   /*
+@@ -192,7 +192,7 @@
+   /*
+   ** Write phd file.
+   */
+-  if( writePhd( ofnm, numBase, seq, qual, pos, numPoint, trace ) == ERROR )
++  if( writePhd( ofnm, numBase, seq, qual, pos, numPoint ) == ERROR )
+   {
+     fprintf( stderr, "mktrace: error: bad status: writePhd\n" );
+     free( seq );
+--- a/misc/mktrace/mktrace.h
++++ b/misc/mktrace/mktrace.h
+@@ -37,8 +37,8 @@
+ int writeSCF( char *filename, int numBase, char *seq, int numPoint, float **trace );
+ int freeTrace( float **trace );
+ char *readFASTA( char *filename, char *entryName, char *comments, int *len );
+-int writePhd( char *ofnm, int numBase, char *seq, int *pos, int numPoint );
+ int *readQUAL( char *filename, char *entryName, char *comments, int *len );
++char *getTime( void );
+ #else
+ int writePhd();
+ float **synTrace();
+--- a/misc/phd2fasta/phd2fasta.h
++++ b/misc/phd2fasta/phd2fasta.h
+@@ -276,6 +276,10 @@
+                 Comments *comments, Seq *seq, TagList *tagList, char *emsg );
+ int checkIntString( char *string );
+ int delimiterTest( char *string, unsigned int mask );
++int checkParam( Option *option );
++char* getVersion( void );
++int showDoc( void );
++char* getTime( void );
+ #else
+ Option *getOption();
+ struct Tag *allocTag();
+--- a/misc/phd2fasta/readStdTag.c
++++ b/misc/phd2fasta/readStdTag.c
+@@ -699,11 +699,11 @@
+       if( fstat )
+       {
+         fprintf( stderr,
+-                 "readStdTag: %s: line: %d: unexpected delimiter %s\n",
++                 "readStdTag: %s: line: %p: unexpected delimiter %s\n",
+                   filename,
+                   nline,
+                   line );
+-        sprintf( emsg, "%s: line: %d: unexpected delimiter %s\n",
++        sprintf( emsg, "%s: line: %p: unexpected delimiter %s\n",
+                  filename,
+                  nline,
+                  line );
+--- a/misc/phd2fasta/readWholeReadTag.c
++++ b/misc/phd2fasta/readWholeReadTag.c
+@@ -393,11 +393,11 @@
+       if( fstat )
+       {
+         fprintf( stderr,
+-                 "readWholeReadTag: %s: line: %d: unexpected delimiter %s\n",
++                 "readWholeReadTag: %s: line: %p: unexpected delimiter %s\n",
+                   filename,
+                   nline,
+                   line );
+-        sprintf( emsg, "%s: line: %d: unexpected delimiter %s\n",
++        sprintf( emsg, "%s: line: %p: unexpected delimiter %s\n",
+                  filename,
+                  nline,
+                  line );
+--- a/misc/phd2fasta/writeFasta.c
++++ b/misc/phd2fasta/writeFasta.c
+@@ -39,7 +39,7 @@
+ #include "phd2fasta.h"
+ 
+ #ifdef ANSI_C
+-writeFasta( FILE *sfp, FILE *qfp, FILE *bfp,
++int writeFasta( FILE *sfp, FILE *qfp, FILE *bfp,
+             int outBasePosOption,
+             Comments *comments, Seq *seq, TagList *tagList, char *emsg )
+ #else
+--- a/motifutils.cpp
++++ b/motifutils.cpp
+@@ -202,13 +202,13 @@
+ void printButtonEvent( XButtonEvent* pEvent ) {
+ 
+    printf( "type = %d\n", pEvent->type );
+-   printf( "serial = %d\n", pEvent->serial );
++   printf( "serial = %lu\n", pEvent->serial );
+    printf( "send_event = %s\n", szPrintBool( pEvent->send_event ) );
+-   printf( "*display = %x\n", pEvent->display );
+-   printf( "window = %x\n", pEvent->window );
+-   printf( "root = %x\n", pEvent->root );
+-   printf( "subwindow = %x\n", pEvent->subwindow );
+-   printf( "time = %d\n", pEvent->time );
++   printf( "*display = %p\n", pEvent->display );
++   printf( "window = %lu\n", pEvent->window );
++   printf( "root = %lu\n", pEvent->root );
++   printf( "subwindow = %lu\n", pEvent->subwindow );
++   printf( "time = %lu\n", pEvent->time );
+    printf( "x = %d\n", pEvent->x );
+    printf( "y = %d\n", pEvent->y );
+    printf( "x_root = %d\n", pEvent->x_root );
+--- a/phaster2PhdBall.cpp
++++ b/phaster2PhdBall.cpp
+@@ -547,7 +547,7 @@
+ 
+    int nTokens = 
+       sscanf( soLine_.data(), 
+-              "%s %*s %d %d %lld %s %s %*s %d %d %lld %s %s\n",
++              "%s %*s %d %d %ld %s %s %*s %d %d %ld %s %s\n",
+               soReadName_.data(),
+               &nRead1Left_,
+               &nRead1Right_,
+--- a/printAutoFinishMiscInfo.cpp
++++ b/printAutoFinishMiscInfo.cpp
+@@ -80,7 +80,7 @@
+    int nError = stat( (char*) soAceFileFullPathname.data(), &statBuffer );
+    
+    if (nError == 0 ) {
+-      fprintf( pAO,"size: %d date: %s\n",
++      fprintf( pAO,"size: %ld date: %s\n",
+                (long) statBuffer.st_size,
+                ctime( &( statBuffer.st_mtime )) );
+ 
+--- a/printAutoFinishParameters.cpp
++++ b/printAutoFinishParameters.cpp
+@@ -206,7 +206,7 @@
+        pCP->nInexactSearchForStringMaxPerCentMismatch_ );
+ 
+    fprintf( pAO, "! when using the inexact search for string, allow up to this\n");
+-   fprintf( pAO, "! % mismatch:  the sum of the insertion, deletion, and substitution\n");
++   fprintf( pAO, "! %% mismatch:  the sum of the insertion, deletion, and substitution\n");
+    fprintf( pAO, "! differences divided by the length of the query string\n");
+    fprintf( pAO, "! (YES)\n");
+    fprintf( pAO, "consed.onlyAllowOneReadWriteConsedAtATime: %s\n",
+@@ -825,7 +825,7 @@
+    fprintf( pAO, "! template will be 1500 bases from the forward read.  But if this template\n");
+    fprintf( pAO, "! has an insert that is shorter than average, the walk may walk into vector.\n");
+    fprintf( pAO, "! To be conservative, we may want to assume that the insert is somewhat \n");
+-   fprintf( pAO, "! shorter than average.  By default, we assume that it is 90% as large as \n");
++   fprintf( pAO, "! shorter than average.  By default, we assume that it is 90%% as large as \n");
+    fprintf( pAO, "! the average. This parameter gives that percentage.  This parameter\n");
+    fprintf( pAO, "! is used both by Consed and Autofinish.\n");
+    fprintf( pAO, "! (OK)\n");
+@@ -1249,9 +1249,9 @@
+        pCP->nAutoFinishConfidenceThatReadWillCoverSingleSubcloneRegion_ );
+ 
+    fprintf( pAO, "! Autofinish computes the per cent of existing reads are aligned at\n");
+-   fprintf( pAO, "! each base position.  Typically, this number starts at around 0% at\n");
+-   fprintf( pAO, "! base position 1, rises to close to 100% at around base position 300,\n");
+-   fprintf( pAO, "! and then drops again to 0% at base position 800 or so.  This number\n");
++   fprintf( pAO, "! each base position.  Typically, this number starts at around 0%% at\n");
++   fprintf( pAO, "! base position 1, rises to close to 100%% at around base position 300,\n");
++   fprintf( pAO, "! and then drops again to 0%% at base position 800 or so.  This number\n");
+    fprintf( pAO, "! specifies how high the number must be for Autofinish to consider an\n");
+    fprintf( pAO, "! Autofinish read to cover a single subclone region.\n");
+    fprintf( pAO, "! (OK)\n");
+@@ -1295,7 +1295,7 @@
+      ( ( pCP->bCheckIfTooManyWalks_ ) ? "true" : "false" ) );
+ 
+    fprintf( pAO, "! this just checks if the number of walks, pcr ends, and unknown reads\n");
+-   fprintf( pAO, "! exceeds 20% of the total number of reads.  If this is exceeded, then \n");
++   fprintf( pAO, "! exceeds 20%% of the total number of reads.  If this is exceeded, then \n");
+    fprintf( pAO, "! a warning message is given.  Typically, such a warning indicates\n");
+    fprintf( pAO, "! that you have incorrectly customized determineReadTypes.perl\n");
+    fprintf( pAO, "! (OK)\n");
+@@ -1446,7 +1446,7 @@
+      ( ( pCP->bProcessMatePairsAtStartup_ ) ? "true" : "false" ) );
+ 
+    fprintf( pAO, "! This is necessary to show the mate pair flags, but it does add\n");
+-   fprintf( pAO, "! around 15% to startup time.\n");
++   fprintf( pAO, "! around 15%% to startup time.\n");
+    fprintf( pAO, "! (OK)\n");
+    fprintf( pAO, "consed.maximumNumberOfTracesShown: %d\n",
+        pCP->nMaximumNumberOfTracesShown_ );
+@@ -1796,7 +1796,7 @@
+        (char*)pCP->soStoreTracePeakPositions_.data() );
+ 
+    fprintf( pAO, "! never, always or whenChromatAvailable\n");
+-   fprintf( pAO, "! changing this to \"always\" increases memory usage by close to 100%,\n");
++   fprintf( pAO, "! changing this to \"always\" increases memory usage by close to 100%%,\n");
+    fprintf( pAO, "! especially if the assembler is Newbler.  always means it will store\n");
+    fprintf( pAO, "! the positions if they are present in the phd file/ball.\n");
+    fprintf( pAO, "! \"whenChromatAvailable\" means it will store trace peak positions for\n");
+--- a/readPrimerScreenSequences.cpp
++++ b/readPrimerScreenSequences.cpp
+@@ -167,7 +167,7 @@
+         ++nSequenceNumber ) {
+       if ( pnLengthOfSequence[ nSequenceNumber ] !=
+            strlen( pszSequence[ nSequenceNumber ] ) ) {
+-         sprintf( szErrorMessage, "inconsistency between pnLengthOfSequence %d and pszSequence %d for sequence number %d",
++         sprintf( szErrorMessage, "inconsistency between pnLengthOfSequence %d and pszSequence %zu for sequence number %d",
+                  pnLengthOfSequence[ nSequenceNumber ],
+                  strlen( pszSequence[ nSequenceNumber ] ),
+                         nSequenceNumber );
+--- a/rwcstring.cpp
++++ b/rwcstring.cpp
+@@ -235,7 +235,7 @@
+ 
+    nMaxLength_ = nDefaultLengthForConversions;
+ 
+-   nCurrentLength_ = sprintf( sz_, "%d", lNumberToConvert );
++   nCurrentLength_ = sprintf( sz_, "%ld", lNumberToConvert );
+ 
+    if ( nCurrentLength_ > nMaxLength_ ) {
+       // big trouble--might not even make it here--might segmentation fault
+--- a/someOtherProgramSentACommandToConsed.cpp
++++ b/someOtherProgramSentACommandToConsed.cpp
+@@ -89,7 +89,7 @@
+ 
+    char szLine2[ nMaxLine ];
+ 
+-   sprintf( szLine2, "# of chars = %d %s", strlen( szLine ), szLine );
++   sprintf( szLine2, "# of chars = %zu %s", strlen( szLine ), szLine );
+ 
+    cout << szLine2 << endl;
+ 
+--- a/tag.cpp
++++ b/tag.cpp
+@@ -466,7 +466,7 @@
+    fprintf( pPhdFile, "DATE: %s\n", soDate_.data() );
+ 
+    if ( lID_ != nUndefinedTagID ) {
+-      fprintf( pPhdFile, "ID: %d\n", lID_ );
++      fprintf( pPhdFile, "ID: %ld\n", lID_ );
+    }
+ 
+ 
+--- a/userDefinedTagField.cpp
++++ b/userDefinedTagField.cpp
+@@ -64,7 +64,7 @@
+ 
+ void userDefinedIntegerTagField :: writeThyselfToAceFileOrPhdBall( FILE* pFile ) {
+ 
+-   fprintf( pFile, "%s %d\n",
++   fprintf( pFile, "%s %ld\n",
+                       pUserDefinedTagFieldType_->soFieldName_.data(),
+                       l_ );
+ }
+@@ -119,7 +119,7 @@
+ 
+ void userDefinedPointerTagField :: writeThyselfToAceFileOrPhdBall( FILE* pFile ) {
+ 
+-   fprintf( pFile, "%s %d\n",
++   fprintf( pFile, "%s %ld\n",
+             pUserDefinedTagFieldType_->soFieldName_.data(),
+             lID_ );
+    

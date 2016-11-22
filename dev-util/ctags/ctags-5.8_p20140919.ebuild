@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/universal-ctags/ctags/archive/9fce9dd0afd3dd261c6818
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ada"
 
 RDEPEND="app-eselect/eselect-ctags"
@@ -40,16 +40,16 @@ src_configure() {
 		--with-posix-regex \
 		--without-readlib \
 		--disable-etags \
-		--enable-tmpdir=/tmp
+		--enable-tmpdir="${EPREFIX}"/tmp
 }
 
 src_install() {
-	emake prefix="${D}"/usr mandir="${D}"/usr/share/man install
+	emake prefix="${ED}"/usr mandir="${ED}"/usr/share/man install
 
 	# namepace collision with X/Emacs-provided /usr/bin/ctags -- we
 	# rename ctags to exuberant-ctags (Mandrake does this also).
-	mv "${D}"/usr/bin/{ctags,exuberant-ctags} || die
-	mv "${D}"/usr/share/man/man1/{ctags,exuberant-ctags}.1 || die
+	mv "${ED}"/usr/bin/{ctags,exuberant-ctags} || die
+	mv "${ED}"/usr/share/man/man1/{ctags,exuberant-ctags}.1 || die
 
 	dodoc FAQ NEWS README EXTENDING.html
 }

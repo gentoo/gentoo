@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="examples"
 
-RDEPEND=">=dev-libs/boost-1.48[python]
+RDEPEND=">=dev-libs/boost-1.48[python,threads]
 	>=media-libs/taglib-1.4"
 DEPEND="${RDEPEND}
 	dev-python/setuptools"

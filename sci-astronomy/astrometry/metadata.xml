@@ -12,7 +12,7 @@
   calibration meta-data, plus lists of known objects falling inside
   the field of view.
 </longdescription>
-  <use>
-    <flag name="extra">Add extra tools for astrometry.net, specifically for plots</flag>
-  </use>
+<upstream>
+  <remote-id type="github">dstndstn/astrometry.net</remote-id>
+</upstream>
 </pkgmetadata>

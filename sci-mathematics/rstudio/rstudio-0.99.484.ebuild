@@ -60,7 +60,7 @@ RDEPEND="
 	sys-apps/util-linux
 	>=sys-devel/clang-3.5.0
 	sys-libs/zlib
-	|| ( =virtual/jre-1.7*:= =virtual/jre-1.8*:= )
+	>=virtual/jre-1.7:=
 	x11-libs/pango
 	!dedicated? (
 		>=dev-qt/qtcore-${QT_VER}:${QT_SLOT}
@@ -85,7 +85,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core
-	|| ( =virtual/jdk-1.7*:= =virtual/jdk-1.8*:= )
+	>=virtual/jdk-1.7:=
 	virtual/pkgconfig"
 #	test? ( dev-java/junit:4 )
 

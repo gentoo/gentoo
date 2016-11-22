@@ -8,5 +8,8 @@
 		<flag name="smp">
 			Enable support for multiprocessors
 		</flag>
+		<flag name="vector-icons">
+			Enable support for vector icons (experimental)
+		</flag>
 	</use>
 </pkgmetadata>

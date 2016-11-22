@@ -1,0 +1,80 @@
+Silence warning pollution due to misplaced attributes:
+* /var/tmp/portage/sci-chemistry/ball-1.4.2/work/BALL-1.4.2/include/BALL/COMMON/logStream.h:165:22: note: attribute for ‘struct BALL::LogStreamBuf::StreamStruct’ must follow the ‘struct’ keyword
+
+--- BALL-1.4.2/include/BALL/COMMON/logStream.h
++++ BALL-1.4.2/include/BALL/COMMON/logStream.h
+@@ -162,7 +162,7 @@
+ 		virtual int overflow(int c = -1);
+ 		//@}
+ 
+-		BALL_EXPORT struct StreamStruct
++		struct BALL_EXPORT StreamStruct
+ 		{
+ 			std::ostream*				stream;
+ 			string							prefix;
+--- BALL-1.4.2/include/BALL/FORMAT/MOL2File.h
++++ BALL-1.4.2/include/BALL/FORMAT/MOL2File.h
+@@ -33,7 +33,7 @@
+ 		public:
+ 
+ 		/// A class used for storing TRIPOS sets
+-		BALL_EXPORT struct SetStruct
++		struct BALL_EXPORT SetStruct
+ 		{
+ 			String			name;
+ 			bool				is_static;
+@@ -136,7 +136,7 @@
+ 
+ 		bool containsAtomChilds_(AtomContainerConstIterator& frag_it);
+ 
+-		BALL_EXPORT struct AtomStruct
++		struct BALL_EXPORT AtomStruct
+ 		{
+ 			String		name;
+ 			Vector3		position;
+@@ -146,14 +146,14 @@
+ 			float			charge;
+ 		};
+ 
+-		BALL_EXPORT struct BondStruct
++		struct BALL_EXPORT BondStruct
+ 		{
+ 			Position	atom1;
+ 			Position	atom2;
+ 			String		type;
+ 		};
+ 
+-		BALL_EXPORT struct MoleculeStruct
++		struct BALL_EXPORT MoleculeStruct
+ 		{
+ 			String			name;
+ 			Size				number_of_atoms;
+@@ -166,7 +166,7 @@
+ 			String			comment;
+ 		};
+ 
+-		BALL_EXPORT struct SubstructureStruct
++		struct BALL_EXPORT SubstructureStruct
+ 		{
+ 			String			name;
+ 			Size				root_atom;
+@@ -178,7 +178,7 @@
+ 			String			comment;
+ 		};
+ 
+-		BALL_EXPORT struct CommentStruct
++		struct BALL_EXPORT CommentStruct
+ 		{
+ 			String name;
+ 			String value;
+--- BALL-1.4.2/include/BALL/FORMAT/MOLFile.h
++++ BALL-1.4.2/include/BALL/FORMAT/MOLFile.h
+@@ -41,7 +41,7 @@
+ 				@see PropertyManager::setProperty
+ 				@see PropertyManager::getProperty
+ 		*/
+-		BALL_EXPORT struct Property
++		struct BALL_EXPORT Property
+ 		{
+ 			///
+ 			static const String ATOM_MASS_DIFFERENCE;

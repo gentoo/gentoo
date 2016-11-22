@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
-		<description>Maintainer, assign bugs to him</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
@@ -17,7 +12,6 @@
 		<remote-id type="github">OpenRA/OpenRA</remote-id>
 	</upstream>
 	<use>
-		<flag name="cg">NVIDIA toolkit plugin</flag>
 		<flag name="tools">Install some development tools
 			such as editor.</flag>
 	</use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,14 +28,13 @@ DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	>=dev-perl/JSON-2
 	>=dev-perl/XML-Writer-0.500.0
-	>=dev-perl/yaml-0.660.0
+	>=dev-perl/YAML-0.660.0
 	test? (
 		dev-perl/HTML-Parser
 		dev-perl/Spreadsheet-ParseExcel
 		>=dev-perl/Template-Toolkit-2.200.0
 		dev-perl/Test-Exception
 		dev-perl/Test-Differences
-		dev-perl/Test-Pod
 		>=dev-perl/XML-LibXML-1.690.0
 	)
 "

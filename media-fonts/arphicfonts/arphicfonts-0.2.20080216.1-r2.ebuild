@@ -7,7 +7,7 @@ inherit font eutils
 
 DESCRIPTION="Chinese TrueType Arphic Fonts"
 HOMEPAGE="http://www.arphic.com.tw/
-	http://www.freedesktop.org/wiki/Software/CJKUnifonts"
+	https://www.freedesktop.org/wiki/Software/CJKUnifonts"
 SRC_URI="mirror://gnu/non-gnu/chinese-fonts-truetype/gkai00mp.ttf.gz
 	mirror://gnu/non-gnu/chinese-fonts-truetype/bkai00mp.ttf.gz
 	mirror://gnu/non-gnu/chinese-fonts-truetype/bsmi00lp.ttf.gz

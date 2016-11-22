@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright (C) 2011 Henning Schild <henning@wh9.tu-dresden.de>
 # Copyright (C) 2011 Sebastian Pipping <sebastian@pipping.org>
 #

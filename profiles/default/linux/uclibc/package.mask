@@ -6,12 +6,6 @@ sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
 
-# busybox-1.24 is broken on uclibc, bug #567598
-=sys-apps/busybox-1.24*
-
-# DT_RUNPATH is broken on uclibc, bug #561684
->sys-devel/binutils-config-4-r2
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev
@@ -65,6 +59,7 @@ games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-rpg/nwmouse
+games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded
 games-simulation/bcs-demo

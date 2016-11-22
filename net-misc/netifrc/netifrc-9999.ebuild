@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	#EGIT_REPO_URI="git://github.com/gentoo/netifrc" # Alternate
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~robbat2/dist/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 
@@ -24,7 +24,8 @@ IUSE=""
 
 DEPEND="kernel_linux? ( virtual/pkgconfig )
 	!<sys-fs/udev-172"
-RDEPEND="sys-apps/gentoo-functions"
+RDEPEND="sys-apps/gentoo-functions
+		>=sys-apps/openrc-0.12"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then

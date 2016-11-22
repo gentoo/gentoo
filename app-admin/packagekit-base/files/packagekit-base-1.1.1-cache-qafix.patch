@@ -1,0 +1,15 @@
+--- a/src/~Makefile.am	2016-06-29 10:59:14.178918032 +0200
++++ b/src/Makefile.am	2016-06-29 11:02:50.739929627 +0200
+@@ -175,11 +175,7 @@ pk_self_test_CFLAGS =					\
+ TESTS = pk-self-test
+ 
+ install-data-hook:
+-	if test -w $(DESTDIR)$(prefix)/; then \
+-		mkdir -p $(DESTDIR)$(localstatedir)/cache/PackageKit/downloads; \
+-		mkdir -p $(DESTDIR)$(localstatedir)/cache/PackageKit/metadata; \
+-		mkdir -p $(DESTDIR)$(localstatedir)/log; \
+-	fi
++
+ 
+ clean-local:
+ 	rm -f *~

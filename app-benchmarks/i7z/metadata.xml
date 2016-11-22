@@ -5,7 +5,6 @@
 		<email>chewi@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">i7z</remote-id>
 		<remote-id type="github">ajaiantilal/i7z</remote-id>
 	</upstream>
 </pkgmetadata>

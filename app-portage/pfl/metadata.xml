@@ -8,7 +8,7 @@
 	<upstream>
 		<maintainer>
 			<email>bugs@portagefilelist.de</email>
-			<description>Upstream author, please CC on bugs</description>
+			<name>Daniel Buschke</name>
 		</maintainer>
 	</upstream>
 	<use>

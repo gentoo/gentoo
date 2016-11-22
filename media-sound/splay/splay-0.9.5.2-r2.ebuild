@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-external-id3lib.diff"
 	"${FILESDIR}/${P}-gcc43-2.patch"
 	"${FILESDIR}/${P}-fix-buildsystem.patch"
+	"${FILESDIR}/${P}-fix-c++14.patch"
 )
 
 src_prepare() {

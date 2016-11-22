@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+   PyDL consists of Python replacements for functions that are part of the IDL
+   built-in library or part of astronomical IDL libraries.
+   The emphasis is on reproducing results of the astronomical library
+   functions.
+   Only the bare minimum of IDL built-in functions are implemented to support this.   
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">pydl</remote-id>
+  </upstream>
+</pkgmetadata>

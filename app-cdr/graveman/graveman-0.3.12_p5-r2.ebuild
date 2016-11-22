@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2"
@@ -20,7 +18,7 @@ RDEPEND="
 	app-cdr/cdrdao
 	>=dev-libs/glib-2.4:2
 	>=gnome-base/libglade-2.4:2.0
-	media-libs/libmng
+	media-libs/libmng:=
 	virtual/cdrtools
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.4:2
@@ -38,24 +36,29 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
-S=${WORKDIR}/${P/_p/-}
+S="${WORKDIR}/${P/_p/-}"
 
 src_prepare() {
-	epatch \
+	eapply \
 		"${FILESDIR}"/joliet-long.patch \
 		"${FILESDIR}"/rename.patch \
 		"${FILESDIR}"/desktop-entry.patch
 
 	if use mp3 || use vorbis; then
-		epatch "${FILESDIR}"/sox.patch
+		eapply "${FILESDIR}"/sox.patch
 	fi
 
 	# Fix tests
 	echo glade/dialog_media.glade >> po/POTFILES.in
 	echo glade/window_welcome.glade >> po/POTFILES.in
 	echo src/flac.c >> po/POTFILES.in
+
+	# Prevent m4_copy error when running aclocal
+	# m4_copy: won't overwrite defined macro: glib_DEFUN, bug #579918
+	rm m4/glib-gettext.m4 || die
 
 	eautoreconf # Needed for build only the needed translations
 	gnome2_src_prepare

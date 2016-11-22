@@ -1,8 +1,8 @@
 Don't use @executable_path, it messed up linking against nspr from e.g.
 nss.
 
---- mozilla/nsprpub/configure.in
-+++ mozilla/nsprpub/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -1007,7 +1007,7 @@
              ;;
      esac
@@ -12,8 +12,8 @@ nss.
      _OPTIMIZE_FLAGS=-O2
      MKSHLIB='$(CC) $(DSO_LDOPTS) -o $@'
      STRIP="$STRIP -x -S"
---- mozilla/nsprpub/configure
-+++ mozilla/nsprpub/configure
+--- a/configure
++++ b/configure
 @@ -1007,7 +1007,7 @@
              ;;
      esac

@@ -9,6 +9,10 @@
     <email>graphics@gentoo.org</email>
     <name>Gentoo Graphics Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Project</name>
+  </maintainer>
   <longdescription lang="en">
 	Shotwell is a digital photo organizer designed for the GNOME desktop
 	environment. It allows you to import photos from disk or camera, organize

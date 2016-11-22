@@ -1,0 +1,68 @@
+--- fbterm-1.7/src/lib/vterm_states.cpp.old	2016-09-24 00:44:29.981247206 -0400
++++ fbterm-1.7/src/lib/vterm_states.cpp	2016-09-24 00:48:40.463777924 -0400
+@@ -39,14 +39,14 @@
+ 	{ 0x1B, 0,	ESesc },
+ 	{ 0x7F, 0,	ESkeep },
+ 	{ 0x9B, 0,	ESsquare },
+-	{ -1}
++	{ (u16) -1}
+ };
+ 
+ const VTerm::Sequence VTerm::escape_sequences[] = {
+ 	{   0, 0, ESnormal },
+ 
+ 	// ESnormal
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// ESesc
+ 	{ '[', &VTerm::clear_param,	ESsquare },
+@@ -65,7 +65,7 @@
+ 	{ '8', &VTerm::restore_cursor,	ESnormal },
+ 	{ '>', &VTerm::keypad_numeric,	ESnormal },
+ 	{ '=', &VTerm::keypad_application,	ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// ESsquare
+ 	{ '[', 0,	ESfunckey },
+@@ -104,7 +104,7 @@
+ 	{ '`', &VTerm::cursor_position_col,	ESnormal },
+ 	{ ']', &VTerm::linux_specific, ESnormal },
+ 	{ '}', &VTerm::fbterm_specific, ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// ESnonstd
+ 	{ '0' | ADDSAME(9), &VTerm::set_palette,    ESkeep },
+@@ -112,25 +112,25 @@
+ 	{ 'a' | ADDSAME(5), &VTerm::set_palette,    ESkeep },
+ 	{ 'P', &VTerm::begin_set_palette, ESkeep },
+ 	{ 'R', &VTerm::reset_palette, ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// ESpercent
+ 	{ '@', &VTerm::clear_utf8,	ESnormal },
+ 	{ 'G', &VTerm::set_utf8,	ESnormal },
+ 	{ '8', &VTerm::set_utf8,	ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// EScharset
+ 	{ '0', &VTerm::set_charset, ESnormal },
+ 	{ 'B', &VTerm::set_charset, ESnormal },
+ 	{ 'U', &VTerm::set_charset, ESnormal },
+ 	{ 'K', &VTerm::set_charset, ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// EShash
+ 	{ '8', &VTerm::screen_align,	ESnormal },
+-	{ -1 },
++	{ (u16) -1 },
+ 
+ 	// ESfunckey
+-	{ -1 },
++	{ (u16) -1 },
+ };

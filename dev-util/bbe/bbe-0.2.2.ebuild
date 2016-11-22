@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="Sed-like editor for binary files"
-HOMEPAGE="http://sourceforge.net/projects/bbe-/"
+HOMEPAGE="https://sourceforge.net/projects/bbe-/"
 SRC_URI="mirror://sourceforge/${PN}-/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,0 +1,11 @@
+--- a/doc/interpreter/module.mk
++++ b/doc/interpreter/module.mk
+@@ -298,6 +298,8 @@
+ 	$(AWK) -f $(srcdir)/doc/interpreter/mkcontrib.awk $(srcdir)/doc/interpreter/contributors.in > $@-t && \
+ 	mv $@-t $@
+ 
++doc/interpreter/preface.texi: doc/interpreter/contributors.texi
++
+ AUTHORS: doc/interpreter/preface.texi doc/interpreter/contributors.texi | doc/interpreter/$(octave_dirstamp)
+ 	$(AM_V_MAKEINFO)rm -f $@-t $@ && \
+ 	if [ "x$(srcdir)" != "x." ] && [ -f $(srcdir)/doc/interpreter/contributors.texi ] && [ ! -f doc/interpreter/contributors.texi ]; then \

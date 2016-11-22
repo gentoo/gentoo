@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ src_configure() {
 	then
 		econf $(use_with caps) $(use_with python) $(use_with seccomp)
 	else
-		tc-export CC
+		tc-export CC PKG_CONFIG
 	fi
 }
 
@@ -53,5 +53,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" PKGDOCDIR='$(DOCDIR)'/${PF} install
+	_emake DESTDIR="${D}" PKGDOCDIR='$(DOCDIR)'/${PF} install
 }

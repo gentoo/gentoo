@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3946,7 +3946,7 @@
+     AC_DEFINE([linux], [1], [Linux OS])
+ dnl    AC_DEFINE([__i386__], [1], [Intel 386 machine])
+     AC_DEFINE([_POSIX_SOURCE], [1], [POSIX source])
+-    AC_DEFINE([_BSD_SOURCE], [1], [BSD source])
++    AC_DEFINE([_DEFAULT_SOURCE], [1], [DEFAULT source])
+     AC_DEFINE([_GNU_SOURCE], [1], [GNU source])
+ dnl    AC_DEFINE([DX_LOCALE], [1], [DX Locale])
+     if test -e /etc/shadow ; then

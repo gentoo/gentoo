@@ -1,5 +1,5 @@
---- examples/Makefile.orig	2012-01-24 05:31:40.000000000 +0000
-+++ examples/Makefile	2012-05-08 19:00:08.000000000 +0100
+--- a/examples/Makefile.orig	2012-01-24 05:31:40.000000000 +0000
++++ b/examples/Makefile	2012-05-08 19:00:08.000000000 +0100
 @@ -1,7 +1,6 @@
  # This makefile is on purpose not made with configure, to show how to use the library
  # The make file requires that the fann library is installed (see ../README)

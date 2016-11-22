@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>lxnay@gentoo.org</email>
-</maintainer>
+	<maintainer type="person">
+		<email>mudler@gentoo.org</email>
+		<name>Ettore Di Giacinto</name>
+		<description>Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>lxnay@gentoo.org</email>
+		<name>Fabio Erculiani</name>
+		<description>CC on bugs</description>
+	</maintainer>
 <use>
 	<flag name="cryptsetup">Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
 	<flag name="dmraid">Enable support for DMRAID (include dmraid dependency)</flag>

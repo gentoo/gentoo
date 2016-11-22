@@ -1,0 +1,18 @@
+ configure.ac | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 9d4bb66..aa94364 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,6 +12,10 @@ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AN_MAKEVAR([AR], [AC_PROG_AR])
++AN_PROGRAM([ar], [AC_PROG_AR])
++AC_DEFUN([AC_PROG_AR], [AC_CHECK_TOOL(AR, ar, :)])
++AC_PROG_AR
+ AC_CHECK_TOOL(GHC, ghc)
+ AM_CONDITIONAL([HAVE_GHC], [test "$GHC"])
+ 

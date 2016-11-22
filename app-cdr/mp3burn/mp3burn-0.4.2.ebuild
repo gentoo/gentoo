@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Burn mp3s without filling up your disk with .wav files"
-HOMEPAGE="http://sourceforge.net/projects/mp3burn"
+HOMEPAGE="https://sourceforge.net/projects/mp3burn"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

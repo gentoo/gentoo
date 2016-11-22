@@ -1,0 +1,87 @@
+diff -uNr async_unix-113.33.00/_oasis async_unix-113.33.00+4.03/_oasis
+--- async_unix-113.33.00/_oasis	2016-03-09 16:44:52.000000000 +0100
++++ async_unix-113.33.00+4.03/_oasis	2016-03-22 15:13:48.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:           0.4
+-OCamlVersion:          >= 4.02.3
++OCamlVersion:          >= 4.03.0
+ FindlibVersion:        >= 1.3.2
+ Name:                  async_unix
+-Version:               113.33.00
++Version:               113.33.00+4.03
+ Synopsis:              Monadic concurrency library
+ Authors:               Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:            (C) 2008-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr async_unix-113.33.00/opam async_unix-113.33.00+4.03/opam
+--- async_unix-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ async_unix-113.33.00+4.03/opam	2016-03-22 17:51:33.000000000 +0100
+@@ -26,4 +26,4 @@
+   "typerep"
+   "variantslib"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr async_unix-113.33.00/src/raw_scheduler.ml async_unix-113.33.00+4.03/src/raw_scheduler.ml
+--- async_unix-113.33.00/src/raw_scheduler.ml	2016-03-09 16:44:52.000000000 +0100
++++ async_unix-113.33.00+4.03/src/raw_scheduler.ml	2016-03-22 15:13:48.000000000 +0100
+@@ -587,7 +587,7 @@
+ 
+ let sync_changed_fds_to_file_descr_watcher t =
+   let module F = (val t.file_descr_watcher : File_descr_watcher.S) in
+-  let make_file_descr_watcher_agree_with (fd : Fd.t) =
++  let make_file_descr_watcher_agree_with = (fun (fd : Fd.t) ->
+     fd.watching_has_changed <- false;
+     let desired =
+       Read_write.mapi fd.watching ~f:(fun read_or_write watching ->
+@@ -607,7 +607,7 @@
+     with exn ->
+       failwiths "sync_changed_fds_to_file_descr_watcher unable to set fd"
+         (desired, fd, exn, t) [%sexp_of: bool Read_write.t * Fd.t * exn * t]
+-  in
++  ) [@inline always] in
+   let changed = t.fds_whose_watching_has_changed in
+   t.fds_whose_watching_has_changed <- [];
+   List.iter changed ~f:make_file_descr_watcher_agree_with;
+diff -uNr async_unix-113.33.00/src/std.ml async_unix-113.33.00+4.03/src/std.ml
+--- async_unix-113.33.00/src/std.ml	2016-03-09 16:44:52.000000000 +0100
++++ async_unix-113.33.00+4.03/src/std.ml	2016-03-22 15:13:48.000000000 +0100
+@@ -60,10 +60,9 @@
+ 
+   module Overwrite_ = struct
+     let overwrite1 (`This_is_async__Think_about_blocking as x) = x
+-    let wrap f `This_is_async__Think_about_blocking = f
+-    let overwrite2 = wrap overwrite1
+-    let overwrite3 = wrap overwrite2
+-    let overwrite4 = wrap overwrite3
++    let overwrite2 `This_is_async__Think_about_blocking = overwrite1
++    let overwrite3 `This_is_async__Think_about_blocking = overwrite2
++    let overwrite4 `This_is_async__Think_about_blocking = overwrite3
+     let overwritef f = ksprintf (fun _ -> `This_is_async__Think_about_blocking) f
+   end
+   open Overwrite_
+diff -uNr async_unix-113.33.00/src/unix_syscalls.ml async_unix-113.33.00+4.03/src/unix_syscalls.ml
+--- async_unix-113.33.00/src/unix_syscalls.ml	2016-03-09 16:44:52.000000000 +0100
++++ async_unix-113.33.00+4.03/src/unix_syscalls.ml	2016-03-22 15:13:48.000000000 +0100
+@@ -365,8 +365,8 @@
+ ;;
+ 
+ (* symlinks *)
+-let symlink ~src ~dst =
+-  In_thread.syscall_exn ~name:"symlink" (fun () -> Unix.symlink ~src ~dst)
++let symlink ?to_dir ~src ~dst =
++  In_thread.syscall_exn ~name:"symlink" (fun () -> Unix.symlink ?to_dir ~src ~dst)
+ ;;
+ 
+ let readlink filename =
+diff -uNr async_unix-113.33.00/src/unix_syscalls.mli async_unix-113.33.00+4.03/src/unix_syscalls.mli
+--- async_unix-113.33.00/src/unix_syscalls.mli	2016-03-09 16:44:52.000000000 +0100
++++ async_unix-113.33.00+4.03/src/unix_syscalls.mli	2016-03-22 15:13:48.000000000 +0100
+@@ -223,7 +223,7 @@
+   -> string
+   -> unit Deferred.t
+ 
+-val symlink : src:string -> dst:string -> unit Deferred.t
++val symlink : ?to_dir:bool -> src:string -> dst:string -> unit Deferred.t
+ 
+ val readlink : string -> string Deferred.t
+ 

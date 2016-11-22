@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ DESCRIPTION="C++ bindings for gtkglext"
 HOMEPAGE="https://projects.gnome.org/gtkglext/"
 SRC_URI="mirror://sourceforge/gtkglext/${P}.tar.bz2"
 
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 SLOT="1.0"
 LICENSE="GPL-2 LGPL-2.1"

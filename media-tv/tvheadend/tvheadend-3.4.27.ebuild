@@ -25,10 +25,7 @@ REQUIRED_USE="dvbscan? ( dvb )"
 DEPEND="dev-libs/openssl:0=
 	avahi? ( net-dns/avahi )
 	dvb? ( virtual/linuxtv-dvb-headers )
-	ffmpeg? (
-		virtual/ffmpeg
-		<media-video/ffmpeg-3
-	)
+	ffmpeg? ( <media-video/ffmpeg-3:= )
 	imagecache? ( net-misc/curl )
 	zlib? ( sys-libs/zlib )
 	virtual/pkgconfig"

@@ -14,7 +14,7 @@ SRC_URI="http://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="cairo cuda debug gl +numa opencl +pci plugins svg static-libs xml X"
 
 # TODO opencl only works with AMD so no virtual
@@ -23,7 +23,7 @@ IUSE="cairo cuda debug gl +numa opencl +pci plugins svg static-libs xml X"
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1 )
-	gl? ( media-video/nvidia-settings )
+	gl? ( || ( x11-drivers/nvidia-drivers[static-libs,tools] media-video/nvidia-settings ) )
 	opencl? ( x11-drivers/ati-drivers:* )
 	pci? (
 		>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]

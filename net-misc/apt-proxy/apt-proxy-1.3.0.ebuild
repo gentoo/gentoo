@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils user
 
 DESCRIPTION="Caching proxy for the Debian package system"
-HOMEPAGE="http://sourceforge.net/projects/apt-proxy/"
+HOMEPAGE="https://sourceforge.net/projects/apt-proxy/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"

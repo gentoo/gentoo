@@ -29,7 +29,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${PN}_${PV}.tar.bz2"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi +smp starpu static-libs"
 
 RDEPEND="
@@ -41,11 +41,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-nosmp-undefined-variable.patch"
+	"${FILESDIR}/${P}-isnan-floating-point-cast.patch"
+)
 S="${WORKDIR}/${PN}_${PV}/src"
 
 src_prepare() {
 	default
-	epatch "${FILESDIR}"/${P}-nosmp-undefined-variable.patch
 	sed -e 's/^\(HOSTARCH\s*=\).*/\1 ${HOST}/' \
 		-e "s:^\(CCPROG\s*=\).*:\1 $(tc-getCC):" \
 		-e "s:^\(CFPROG\s*=\).*:\1 $(tc-getFC):" \

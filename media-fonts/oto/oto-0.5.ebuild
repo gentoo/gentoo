@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Open Type Organizer"
-HOMEPAGE="http://sourceforge.net/projects/oto/"
+HOMEPAGE="https://sourceforge.net/projects/oto/"
 SRC_URI="mirror://sourceforge/oto/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -5,8 +5,4 @@
 		<email>sci-biology@gentoo.org</email>
 		<name>Gentoo Biology Project</name>
 	</maintainer>
-	<use>
-		<flag name="pvm">Add support for parallel virtual machine
-    (<pkg>sys-cluster/pvm</pkg>)</flag>
-	</use>
 </pkgmetadata>

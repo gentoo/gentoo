@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 S="${WORKDIR}"
 IUSE=""
 
-CDEPEND="dev-java/zemberek[linguas_tr]
+CDEPEND="dev-java/zemberek[l10n_tr]
 	 dev-java/dbus-java
 	 dev-java/mina-core"
 

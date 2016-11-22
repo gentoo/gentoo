@@ -1,0 +1,10 @@
+--- sysvinit/trunk/src/init.c	2014/01/26 16:40:03	134
++++ sysvinit/trunk/src/init.c	2014/01/26 22:00:42	135
+@@ -49,6 +49,7 @@
+ #include <utmp.h>
+ #include <ctype.h>
+ #include <stdarg.h>
++#include <sys/ttydefaults.h>
+ #include <sys/syslog.h>
+ #include <sys/time.h>
+ 

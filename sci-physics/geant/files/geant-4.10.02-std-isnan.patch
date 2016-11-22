@@ -1,0 +1,17 @@
+Fully qualify isnan:
+* /var/tmp/portage/sci-physics/geant-4.10.02/work/geant4.10.02/source/processes/hadronic/models/lend/src/nf_utilities.cc:61:22: error: ‘isnan’ was not declared in this scope
+*      return( isnan( d ) );
+See also:
+https://bugs.gentoo.org/show_bug.cgi?id=581322
+
+--- geant4.10.02/source/processes/hadronic/models/lend/src/nf_utilities.cc
++++ geant4.10.02/source/processes/hadronic/models/lend/src/nf_utilities.cc
+@@ -58,7 +58,7 @@
+ */
+ int nfu_isNAN( double d ) {
+ 
+-    return( isnan( d ) );
++    return( std::isnan( d ) );
+ }
+ /*
+ ************************************************************

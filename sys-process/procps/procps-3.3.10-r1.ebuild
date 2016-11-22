@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-pmap-unreadable.patch #404389
 	epatch "${FILESDIR}"/${P}-tests-no-tty.patch #461302
 	sed -i -e 's:systemd-login:systemd:' configure || die #501306
+	epatch_user
 }
 
 src_configure() {

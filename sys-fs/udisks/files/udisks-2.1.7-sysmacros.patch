@@ -1,0 +1,83 @@
+https://bugs.gentoo.org/580230
+https://bugs.freedesktop.org/95028
+
+From 245093a15abe985b1746603c00084cb972fb71ae Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Apr 2016 23:04:32 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+Linux C libraries are moving away from implicit includes of
+sys/sysmacros.h, so pull in this header directly in the files
+that use these funcs.
+---
+ src/udiskslinuxfilesystem.c | 2 +-
+ src/udiskslinuxpartition.c  | 1 +
+ src/udisksmountmonitor.c    | 1 +
+ src/udisksstate.c           | 1 +
+ tools/umount-udisks.c       | 1 +
+ 5 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/udiskslinuxfilesystem.c b/src/udiskslinuxfilesystem.c
+index 68f7c4d..67132ab 100644
+--- a/src/udiskslinuxfilesystem.c
++++ b/src/udiskslinuxfilesystem.c
+@@ -29,7 +29,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <mntent.h>
+-#include <sys/types.h>
++#include <sys/sysmacros.h>
+ #ifdef HAVE_ACL
+ #include <sys/acl.h>
+ #endif
+diff --git a/src/udiskslinuxpartition.c b/src/udiskslinuxpartition.c
+index bfee216..12b73bc 100644
+--- a/src/udiskslinuxpartition.c
++++ b/src/udiskslinuxpartition.c
+@@ -26,6 +26,7 @@
+ #include <grp.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <sys/sysmacros.h>
+ #include <glib-unix.h>
+ 
+ #include <glib/gstdio.h>
+diff --git a/src/udisksmountmonitor.c b/src/udisksmountmonitor.c
+index 891d118..eae6c02 100644
+--- a/src/udisksmountmonitor.c
++++ b/src/udisksmountmonitor.c
+@@ -28,6 +28,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <mntent.h>
+ 
+ #include <glib.h>
+diff --git a/src/udisksstate.c b/src/udisksstate.c
+index fc7451a..2eeaf44 100644
+--- a/src/udisksstate.c
++++ b/src/udisksstate.c
+@@ -25,6 +25,7 @@
+ #include <glib/gstdio.h>
+ 
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+ #include <linux/loop.h>
+diff --git a/tools/umount-udisks.c b/tools/umount-udisks.c
+index 8ce5fea..73ddea7 100644
+--- a/tools/umount-udisks.c
++++ b/tools/umount-udisks.c
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <string.h>
+ 
+-- 
+2.7.4
+

@@ -9,7 +9,7 @@ HOMEPAGE="http://www.harding.motd.ca/autossh/"
 SRC_URI="http://www.harding.motd.ca/${PN}/${P}.tgz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
 SLOT="0"
 
 RDEPEND="net-misc/openssh"

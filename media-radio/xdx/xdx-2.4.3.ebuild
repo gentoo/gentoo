@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils
 
 DESCRIPTION="a GTK+ TCP/IP DX-cluster and ON4KST chat client"
-HOMEPAGE="http://sourceforge.net/projects/xdxclusterclient"
+HOMEPAGE="https://sourceforge.net/projects/xdxclusterclient"
 SRC_URI="mirror://sourceforge/xdxclusterclient/${P}.tar.gz"
 
 LICENSE="GPL-2"

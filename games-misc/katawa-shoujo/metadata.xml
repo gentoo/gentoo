@@ -2,14 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>maksverver@geocities.com</email>
-		<name>Maks Verver</name>
-		<description>Proxy maintainer. CC him on bugs</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>alex_y_xu@yahoo.ca</email>
 		<name>Alex Xu</name>
 		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>maksverver@geocities.com</email>
+		<name>Maks Verver</name>
+		<description>Proxy maintainer. CC him on bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>

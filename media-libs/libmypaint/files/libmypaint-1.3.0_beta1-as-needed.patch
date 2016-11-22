@@ -1,0 +1,28 @@
+From b8eab3a5c264c90c30ab68c3abfccdfcfd1c6860 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 25 Jul 2016 14:00:04 +0200
+Subject: [PATCH] Fix "make check" link errors
+
+.. for ./configure LDFLAGS="-Wl,--as-needed" --enable-gegl
+---
+ tests/gegl/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/gegl/Makefile.am b/tests/gegl/Makefile.am
+index a1f34ec..2804316 100644
+--- a/tests/gegl/Makefile.am
++++ b/tests/gegl/Makefile.am
+@@ -29,8 +29,8 @@ endif
+ LDADD = \
+ 	$(DEPS)								\
+ 	$(GEGL_LIBS)						\
++	$(top_builddir)/tests/libmypaint-tests.a \
+ 	$(top_builddir)/libmypaint.la		\
+-	$(top_builddir)/gegl/libmypaint-gegl.la	\
+-	$(top_builddir)/tests/libmypaint-tests.a
++	$(top_builddir)/gegl/libmypaint-gegl.la
+ 
+ endif
+-- 
+2.9.2
+

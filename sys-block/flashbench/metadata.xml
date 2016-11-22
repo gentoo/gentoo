@@ -4,7 +4,4 @@
 	<maintainer type="person">
 		<email>bircoph@gentoo.org</email>
 	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">ksokoban</remote-id>
-	</upstream>
 </pkgmetadata>

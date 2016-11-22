@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 inherit distutils-r1
 
@@ -36,7 +36,7 @@ pkg_setup() {
 python_compile_all() {
 	if use doc; then
 		einfo "Generation of documentation"
-		"${PYTHON}" "${FILESDIR}/genextdoc.py" Levenshtein \
+		"${EPYTHON}" "${FILESDIR}/genextdoc.py" Levenshtein \
 			|| die "Generation of documentation failed"
 	fi
 }

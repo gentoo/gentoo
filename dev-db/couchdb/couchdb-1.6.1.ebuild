@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="selinux test"
 
 RDEPEND=">=dev-libs/icu-4.3.1:=
-		dev-lang/erlang[ssl]
+		<dev-lang/erlang-18.0[ssl]
 		>=dev-libs/openssl-0.9.8j:0
 		>=net-misc/curl-7.18.2
 		<dev-lang/spidermonkey-1.8.7

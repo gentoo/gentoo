@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/581346
+
+From 34104ea9e635fae5551fd1d6495a80f8041c4adc Mon Sep 17 00:00:00 2001
+From: "Enrico M. Crisostomo" <enrico.m.crisostomo@gmail.com>
+Date: Sun, 20 Mar 2016 14:17:15 +0100
+Subject: [PATCH] Update CXXCPP after updating CXX.
+
+Rewrap text.
+
+Rewrap.
+---
+ m4/ax_cxx_compile_stdcxx.m4    | 14 ++++++++++----
+ m4/ax_cxx_compile_stdcxx_11.m4 |  5 +++--
+ m4/ax_cxx_compile_stdcxx_14.m4 |  5 +++--
+ 3 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/m4/ax_cxx_compile_stdcxx.m4 b/m4/ax_cxx_compile_stdcxx.m4
+index 8adc765..2c18e49 100644
+--- a/m4/ax_cxx_compile_stdcxx.m4
++++ b/m4/ax_cxx_compile_stdcxx.m4
+@@ -9,9 +9,9 @@
+ # DESCRIPTION
+ #
+ #   Check for baseline language coverage in the compiler for the specified
+-#   version of the C++ standard.  If necessary, add switches to CXX to
+-#   enable support.  VERSION may be '11' (for the C++11 standard) or '14'
+-#   (for the C++14 standard).
++#   version of the C++ standard.  If necessary, add switches to CXX and
++#   CXXCPP to enable support.  VERSION may be '11' (for the C++11 standard)
++#   or '14' (for the C++14 standard).
+ #
+ #   The second argument, if specified, indicates whether you insist on an
+ #   extended mode (e.g. -std=gnu++11) or a strict conformance mode (e.g.
+@@ -39,7 +39,7 @@
+ #   and this notice are preserved.  This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 3
++#serial 4
+ 
+ dnl  This macro is based on the code from the AX_CXX_COMPILE_STDCXX_11 macro
+ dnl  (serial version number 13).
+@@ -82,6 +82,9 @@ AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
+          CXX="$ac_save_CXX"])
+       if eval test x\$$cachevar = xyes; then
+         CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+@@ -105,6 +108,9 @@ AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
+          CXX="$ac_save_CXX"])
+       if eval test x\$$cachevar = xyes; then
+         CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+diff --git a/m4/ax_cxx_compile_stdcxx_11.m4 b/m4/ax_cxx_compile_stdcxx_11.m4
+index b3d4bfd..3dd5cf9 100644
+--- a/m4/ax_cxx_compile_stdcxx_11.m4
++++ b/m4/ax_cxx_compile_stdcxx_11.m4
+@@ -9,7 +9,8 @@
+ # DESCRIPTION
+ #
+ #   Check for baseline language coverage in the compiler for the C++11
+-#   standard; if necessary, add switches to CXX to enable support.
++#   standard; if necessary, add switches to CXX and CXXCPP to enable
++#   support.
+ #
+ #   This macro is a convenience alias for calling the AX_CXX_COMPILE_STDCXX
+ #   macro with the version set to C++11.  The two optional arguments are
+@@ -32,7 +33,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 15
++#serial 16
+ 
+ include([ax_cxx_compile_stdcxx.m4])
+ 
+diff --git a/m4/ax_cxx_compile_stdcxx_14.m4 b/m4/ax_cxx_compile_stdcxx_14.m4
+index 741accf..6d2123a 100644
+--- a/m4/ax_cxx_compile_stdcxx_14.m4
++++ b/m4/ax_cxx_compile_stdcxx_14.m4
+@@ -9,7 +9,8 @@
+ # DESCRIPTION
+ #
+ #   Check for baseline language coverage in the compiler for the C++14
+-#   standard; if necessary, add switches to CXX to enable support.
++#   standard; if necessary, add switches to CXX and CXXCPP to enable
++#   support.
+ #
+ #   This macro is a convenience alias for calling the AX_CXX_COMPILE_STDCXX
+ #   macro with the version set to C++14.  The two optional arguments are
+@@ -27,7 +28,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 2
++#serial 3
+ 
+ include([ax_cxx_compile_stdcxx.m4])
+ 
+-- 
+2.8.2
+

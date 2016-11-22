@@ -1,0 +1,5 @@
+--- lxc-lxc-2.0.1/config/Makefile.am.orig	2016-05-19 02:56:11.891113982 +0000
++++ lxc-lxc-2.0.1/config/Makefile.am	2016-05-19 02:56:32.596115476 +0000
+@@ -1 +1 @@
+-SUBDIRS = apparmor bash etc init selinux templates yum sysconfig
++SUBDIRS = apparmor bash etc init selinux templates yum

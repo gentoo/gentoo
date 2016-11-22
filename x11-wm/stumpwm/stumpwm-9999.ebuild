@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools common-lisp-3 git-2
+inherit autotools common-lisp-3 git-2 xdg-utils
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="https://stumpwm.github.io/"
@@ -36,6 +36,10 @@ src_prepare() {
 	# Fix ASDF dir
 	sed -i -e "/^STUMPWM_ASDF_DIR/s|\`pwd\`|${CLPKGDIR}|" configure.ac || die
 	eautoreconf
+}
+
+src_configure() {
+	xdg_environment_reset
 }
 
 src_compile() {

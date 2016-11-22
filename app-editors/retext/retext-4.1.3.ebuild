@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_4 )
 
 PLOCALES="ca cs cy da de es et eu fr it ja pl pt pt_BR ru sk uk zh_CN zh_TW"
 
@@ -23,7 +23,7 @@ else
 fi
 
 DESCRIPTION="A Qt-based text editor for Markdown and reStructuredText"
-HOMEPAGE="http://sourceforge.net/p/retext/home/ReText/"
+HOMEPAGE="https://sourceforge.net/p/retext/home/ReText/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,7 +32,7 @@ IUSE="+spell"
 RDEPEND+="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/markups[${PYTHON_USEDEP}]
+	<dev-python/markups-2[${PYTHON_USEDEP}]
 	dev-python/PyQt4[webkit,${PYTHON_USEDEP}]
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "

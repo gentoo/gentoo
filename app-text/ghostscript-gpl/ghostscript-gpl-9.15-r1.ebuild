@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ SRC_URI="
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="cups dbus djvu gtk idn linguas_de static-libs tiff X"
+IUSE="cups dbus djvu gtk idn l10n_de static-libs tiff X"
 RESTRICT="djvu? ( bindist )"
 
 COMMON_DEPEND="
@@ -48,10 +48,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	>=app-text/poppler-data-0.4.5-r1
 	>=media-fonts/urw-fonts-2.4.9
-	linguas_ja? ( media-fonts/kochi-substitute )
-	linguas_ko? ( media-fonts/baekmuk-fonts )
-	linguas_zh_CN? ( media-fonts/arphicfonts )
-	linguas_zh_TW? ( media-fonts/arphicfonts )
+	l10n_ja? ( media-fonts/kochi-substitute )
+	l10n_ko? ( media-fonts/baekmuk-fonts )
+	l10n_zh-CN? ( media-fonts/arphicfonts )
+	l10n_zh-TW? ( media-fonts/arphicfonts )
 	!!media-fonts/gnu-gs-fonts-std
 	!!media-fonts/gnu-gs-fonts-other
 	!<net-print/cups-filters-1.0.36-r2
@@ -59,9 +59,9 @@ RDEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-LANGS="ja ko zh_CN zh_TW"
+LANGS="ja ko zh-CN zh-TW"
 for X in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${X}"
+	IUSE="${IUSE} l10n_${X}"
 done
 
 pkg_setup() {
@@ -217,8 +217,8 @@ src_install() {
 	doins "${WORKDIR}/fontmaps/CIDFnmap"
 	doins "${WORKDIR}/fontmaps/cidfmap"
 	for X in ${LANGS} ; do
-		if use linguas_${X} ; then
-			doins "${WORKDIR}/fontmaps/cidfmap.${X}"
+		if use l10n_${X} ; then
+			doins "${WORKDIR}/fontmaps/cidfmap.${X/-/_}"
 		fi
 	done
 
@@ -227,5 +227,5 @@ src_install() {
 
 	use static-libs || find "${D}" -name '*.la' -delete
 
-	use linguas_de || rm -r "${D}"/usr/share/man/de
+	use l10n_de || rm -r "${D}"/usr/share/man/de
 }

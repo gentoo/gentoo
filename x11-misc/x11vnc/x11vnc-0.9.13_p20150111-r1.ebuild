@@ -43,6 +43,7 @@ S="${WORKDIR}/x11vnc-82eb9752485db87c9c6d3d6bb4aa1ae7ac81174a"
 DOCS=(ChangeLog README)
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.9.13-fix-compiler-detection.patch
 	eautoreconf
 }
 

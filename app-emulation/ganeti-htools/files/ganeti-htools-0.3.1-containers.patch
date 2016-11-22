@@ -1,0 +1,9 @@
+diff --git a/Ganeti/HTools/QC.hs b/Ganeti/HTools/QC.hs
+index 534a7b1..6f99a96 100644
+--- a/Ganeti/HTools/QC.hs
++++ b/Ganeti/HTools/QC.hs
+@@ -753,3 +753,3 @@ prop_ClusterAllocBalance node =
+     let nl = makeSmallCluster node count
+-        (hnode, nl') = IntMap.deleteFindMax nl
++        ((_k, hnode), nl') = IntMap.deleteFindMax nl
+         il = Container.empty

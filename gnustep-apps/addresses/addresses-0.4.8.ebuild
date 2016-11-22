@@ -7,7 +7,7 @@ inherit gnustep-2
 
 DESCRIPTION="Addresses is a Apple Addressbook work alike (standalone and for GNUMail)"
 HOMEPAGE="http://gap.nongnu.org/addresses/"
-SRC_URI="http://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

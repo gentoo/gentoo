@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
-inherit cmake-utils
+inherit cmake-utils eutils
 
 DESCRIPTION="The OpenAL Utility Toolkit"
 HOMEPAGE="http://kcat.strangesoft.net/alure.html"
@@ -24,6 +24,7 @@ RDEPEND=">=media-libs/openal-1.1
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-include-unistd.patch"
 	sed -i -e "/DESTINATION/s:doc/alure:doc/${PF}:" CMakeLists.txt || die
 }
 

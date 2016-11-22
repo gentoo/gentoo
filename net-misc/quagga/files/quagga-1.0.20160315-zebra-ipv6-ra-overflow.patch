@@ -1,0 +1,48 @@
+commit cfb1fae25f8c092e0d17073eaf7bd428ce1cd546
+Author: David Lamparter <equinox@opensourcerouting.org>
+Date:   Wed Aug 31 13:31:16 2016 +0200
+
+    zebra: stack overrun in IPv6 RA receive code (CVE-2016-1245)
+    
+    The IPv6 RA code also receives ICMPv6 RS and RA messages.
+    Unfortunately, by bad coding practice, the buffer size specified on
+    receiving such messages mixed up 2 constants that in fact have
+    different values.
+    
+    The code itself has:
+     #define RTADV_MSG_SIZE 4096
+    While BUFSIZ is system-dependent, in my case (x86_64 glibc):
+     /usr/include/_G_config.h:#define _G_BUFSIZ 8192
+     /usr/include/libio.h:#define _IO_BUFSIZ _G_BUFSIZ
+     /usr/include/stdio.h:# define BUFSIZ _IO_BUFSIZ
+    
+    FreeBSD, OpenBSD, NetBSD and Illumos are not affected, since all of them
+    have BUFSIZ == 1024.
+    
+    As the latter is passed to the kernel on recvmsg(), it's possible to
+    overwrite 4kB of stack -- with ICMPv6 packets that can be globally sent
+    to any of the system's addresses (using fragmentation to get to 8k).
+    
+    (The socket has filters installed limiting this to RS and RA packets,
+    but does not have a filter for source address or TTL.)
+    
+    Issue discovered by trying to test other stuff, which randomly caused
+    the stack to be smaller than 8kB in that code location, which then
+    causes the kernel to report EFAULT (Bad address).
+    
+    Signed-off-by: David Lamparter <equinox@opensourcerouting.org>
+    Reviewed-by: Donald Sharp <sharpd@cumulusnetworks.com>
+
+diff --git a/zebra/rtadv.c b/zebra/rtadv.c
+index d4ef1b8..2f62714 100644
+--- a/zebra/rtadv.c
++++ b/zebra/rtadv.c
+@@ -482,7 +482,7 @@ rtadv_read (struct thread *thread)
+   /* Register myself. */
+   rtadv_event (zvrf, RTADV_READ, sock);
+ 
+-  len = rtadv_recv_packet (sock, buf, BUFSIZ, &from, &ifindex, &hoplimit);
++  len = rtadv_recv_packet (sock, buf, sizeof (buf), &from, &ifindex, &hoplimit);
+ 
+   if (len < 0) 
+     {

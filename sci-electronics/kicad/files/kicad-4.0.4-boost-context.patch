@@ -1,0 +1,107 @@
+diff -Naur kicad-4.0.2-orig/common/system/libcontext.cpp kicad-4.0.2/common/system/libcontext.cpp
+--- kicad-4.0.2-orig/common/system/libcontext.cpp       2016-06-16 22:30:58.000000000 -0700
++++ kicad-4.0.2/common/system/libcontext.cpp    2016-06-16 22:35:46.654719468 -0700
+@@ -13,7 +13,7 @@
+             http://www.boost.org/LICENSE_1_0.txt)
+
+ */
+-#include "libcontext.h"
++#include <system/libcontext.h>
+ #if defined(LIBCONTEXT_PLATFORM_windows_i386) && defined(LIBCONTEXT_COMPILER_gcc)
+ __asm (
+ ".text\n"
+diff -Naur kicad-4.0.2-orig/CMakeLists.txt kicad-4.0.2/CMakeLists.txt
+--- kicad-4.0.2-orig/CMakeLists.txt	2016-02-13 13:14:42.000000000 -0800
++++ kicad-4.0.2/CMakeLists.txt	2016-06-11 01:11:25.623484908 -0700
+@@ -561,7 +561,7 @@
+ # Download boost and possibly build parts of it
+ #################################################
+ if( KICAD_SKIP_BOOST )
+-    find_package( Boost 1.54.0 REQUIRED COMPONENTS context date_time filesystem iostreams locale
++    find_package( Boost 1.54.0 REQUIRED COMPONENTS date_time filesystem iostreams locale
+                                                    program_options regex system thread )
+ 
+     if( NOT Boost_FOUND )
+diff -Naur kicad-4.0.2-orig/common/CMakeLists.txt kicad-4.0.2/common/CMakeLists.txt
+--- kicad-4.0.2-orig/common/CMakeLists.txt	2016-02-13 13:14:42.000000000 -0800
++++ kicad-4.0.2/common/CMakeLists.txt	2016-06-11 01:10:04.886830434 -0700
+@@ -256,6 +256,8 @@
+     view/view_item.cpp
+     view/view_group.cpp
+ 
++    system/libcontext.cpp
++
+     math/math_util.cpp
+ 
+     tool/tool_action.cpp
+diff -Naur kicad-4.0.2-orig/include/tool/coroutine.h kicad-4.0.2/include/tool/coroutine.h
+--- kicad-4.0.2-orig/include/tool/coroutine.h	2016-02-13 13:14:42.000000000 -0800
++++ kicad-4.0.2/include/tool/coroutine.h	2016-06-11 01:07:06.035378422 -0700
+@@ -27,8 +27,7 @@
+ 
+ #include <cstdlib>
+ 
+-#include <boost/context/fcontext.hpp>
+-#include <boost/version.hpp>
++#include <system/libcontext.h>
+ 
+ #include "delegate.h"
+ 
+@@ -92,10 +91,8 @@
+         if( m_saved )
+             delete m_saved;
+ 
+-#if BOOST_VERSION >= 105600
+         if( m_self )
+             delete m_self;
+-#endif
+ 
+         if( m_stack )
+             free( m_stack );
+@@ -156,13 +153,9 @@
+         assert( m_saved == NULL );
+ 
+         m_args = &aArgs;
+-#if BOOST_VERSION >= 105600
+-        m_self = new boost::context::fcontext_t();
+-        *m_self = boost::context::make_fcontext( sp, m_stackSize, callerStub );
+-#else
+-        m_self = boost::context::make_fcontext( sp, m_stackSize, callerStub );
+-#endif
+-        m_saved = new boost::context::fcontext_t();
++        m_self = new fcontext_t();
++        *m_self = make_fcontext( sp, m_stackSize, callerStub );
++        m_saved = new fcontext_t();
+ 
+         m_running = true;
+         // off we go!
+@@ -222,14 +215,10 @@
+     }
+ 
+     ///> Wrapper for jump_fcontext to assure compatibility between different boost versions
+-    static inline intptr_t jump(boost::context::fcontext_t* aOld, boost::context::fcontext_t* aNew,
++    static inline intptr_t jump(fcontext_t* aOld, fcontext_t* aNew,
+                                 intptr_t aP, bool aPreserveFPU = true )
+     {
+-#if BOOST_VERSION >= 105600
+-        return boost::context::jump_fcontext( aOld, *aNew, aP, aPreserveFPU );
+-#else
+-        return boost::context::jump_fcontext( aOld, aNew, aP, aPreserveFPU );
+-#endif
++        return jump_fcontext( aOld, *aNew, aP, aPreserveFPU );
+     }
+ 
+     template <typename T>
+@@ -252,10 +241,10 @@
+     ReturnType m_retVal;
+ 
+     ///< saved caller context
+-    boost::context::fcontext_t* m_saved;
++    fcontext_t* m_saved;
+ 
+     ///< saved coroutine context
+-    boost::context::fcontext_t* m_self;
++    fcontext_t* m_self;
+ 
+     ///< coroutine stack
+     void* m_stack;

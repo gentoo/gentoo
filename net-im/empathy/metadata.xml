@@ -6,8 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="geoloc">Enable geolocation support through
-			<pkg>app-misc/geoclue</pkg></flag>
 		<flag name="gnome-online-accounts">Enable using
 			<pkg>net-libs/gnome-online-accounts</pkg> for authorization (e.g.
 			for Google Talk)</flag>

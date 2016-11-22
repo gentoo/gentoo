@@ -1,6 +1,6 @@
 Author: Vitaliy Tomin <highwaystar@users.sf.net>
 Description: Fix direct calling of direct function calls from Python
-Bug: http://sourceforge.net/p/gnudatalanguage/bugs/678
+Bug: https://sourceforge.net/p/gnudatalanguage/bugs/678
 --- a/src/pythongdl.cpp
 +++ b/src/pythongdl.cpp
 @@ -392,25 +392,31 @@

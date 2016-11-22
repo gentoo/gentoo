@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ LICENSE="BSD-2 GPL-2"
 # with abi-compliance-checker and update the subslot every time ABI
 # changes. This is the least we can do to keep things sane.
 SLOT="0/r131"
-IUSE="test valgrind"
+IUSE="static-libs test valgrind"
 
 DEPEND="test? ( valgrind? ( dev-util/valgrind ) )"
 
@@ -37,22 +37,28 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+lmake() {
+	emake \
+		BUILD_STATIC=$(usex static-libs) \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
+		"$@"
+}
+
 multilib_src_compile() {
 	tc-export CC AR
 	# we must not use the 'all' target since it builds test programs
 	# & extra -m32 executables
-	emake -C lib liblz4 liblz4.pc
-	emake -C programs lz4 lz4c
+	lmake -C lib liblz4 liblz4.pc
+	lmake -C programs lz4 lz4c
 	# work around lack of proper target dependencies
 	touch lib/liblz4
 }
 
 multilib_src_test() {
-	emake -j1 test
+	lmake -j1 test
 }
 
 multilib_src_install() {
-	emake install DESTDIR="${D}" \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}"/usr/$(get_libdir)
+	lmake install DESTDIR="${D}"
 }

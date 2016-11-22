@@ -1,0 +1,38 @@
+--- pax/cache.c.old	2016-03-06 08:12:52.000000000 -0600
++++ pax/cache.c	2016-04-17 13:01:26.461307830 -0500
+@@ -195,7 +195,7 @@
+ 	 * No entry for this uid, we will add it
+ 	 */
+ 	if (!pwopn) {
+-#if defined(__GLIBC__)
++#if defined(__GLIBC__) || defined(__linux__)
+ 		setpwent();
+ #elif !defined(__INTERIX)
+ 		setpassent(1);
+@@ -265,7 +265,7 @@
+ 	 * No entry for this gid, we will add it
+ 	 */
+ 	if (!gropn) {
+-#if defined(__GLIBC__)
++#if defined(__GLIBC__) || defined(__linux__)
+ 		setgrent();
+ #elif !defined(__INTERIX) && !defined(__CYGWIN__)
+ 		setgroupent(1);
+@@ -336,7 +336,7 @@
+ 	}
+ 
+ 	if (!pwopn) {
+-#if defined(__GLIBC__)
++#if defined(__GLIBC__) || defined(__linux__)
+ 		setpwent();
+ #elif !defined(__INTERIX)
+ 		setpassent(1);
+@@ -403,7 +403,7 @@
+ 	}
+ 
+ 	if (!gropn) {
+-#if defined(__GLIBC__)
++#if defined(__GLIBC__) || defined(__linux__)
+ 		setgrent();
+ #elif !defined(__INTERIX) && !defined(__CYGWIN__)
+ 		setgroupent(1);

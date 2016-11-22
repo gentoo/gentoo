@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/flaggie/issues/</bugs-to>
-    <remote-id type="bitbucket">mgorny/flaggie</remote-id>
+	<bugs-to>https://github.com/mgorny/flaggie/issues/</bugs-to>
+    <remote-id type="github">mgorny/flaggie</remote-id>
   </upstream>
 </pkgmetadata>

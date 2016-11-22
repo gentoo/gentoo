@@ -1,1 +1,0 @@
-NEUTRON_CONFS=("/etc/neutron/neutron.conf" "/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini")

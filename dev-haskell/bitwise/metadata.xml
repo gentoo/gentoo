@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Unboxed multidimensional bit packed Bool arrays with fast aggregate
+		operations based on lifting Bool operations to bitwise operations.
+		
+		There are many other bit packed structures out there, but none met
+		all of these requirements:
+		
+		(1) unboxed bit packed Bool array,
+		
+		(2) multi-dimensional indexing,
+		
+		(3) fast (de)serialization, or interoperable with foreign code,
+		
+		(4) fast aggregate operations (fold, map, zip).
+		
+		Quick tour of the bitwise library:
+		
+		[Data.Bits.Bitwise] Lift boolean operations on &#39;Bool&#39; to bitwise
+		operations on &#39;Data.Bits.Bits&#39;.
+		
+		[Data.Array.BitArray] Immutable bit arrays.
+		
+		[Data.Array.BitArray.ST] Mutable bit arrays in &#39;Control.Monad.ST.ST&#39;.
+		
+		[Data.Array.BitArray.IO] Mutable bit arrays in &#39;IO&#39;.
+		
+		[Data.Array.BitArray.ByteString] (De)serialization.
+		
+		[Codec.Image.PBM] Portable bitmap monochrome 2D image format.
+		
+		Very rough performance benchmarks:
+		
+		* immutable random access single bit reads:
+		@BitArray ix@ is about 40% slower than @UArray ix Bool@,
+		
+		* &#39;Control.Monad.ST.ST&#39; mutable random access single bit reads:
+		@STBitArray s ix@ is about the same as @STUArray s ix Bool@,
+		
+		* immutable map @Bool -&gt; Bool@:
+		@BitArray ix@ is about 85x faster than @UArray ix Bool@,
+		
+		* immutable zipWith @Bool -&gt; Bool -&gt; Bool@:
+		@BitArray ix@ is about 1300x faster than @UArray ix Bool@.
+	</longdescription>
+</pkgmetadata>

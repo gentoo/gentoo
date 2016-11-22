@@ -1,0 +1,25 @@
+The option -Werror=missing-include-dirs causes the build to fail if
+non-exsistent directories are added via -I.  Removing the rest of the -Werror*
+flags to ensure no new bugs get created because a -Werror flag stopped the
+build.
+
+--- hexchat-2.12.2/configure.ac.old	2016-10-15 13:40:30.585210113 -0700
++++ hexchat-2.12.2/configure.ac	2016-10-15 13:40:44.937008119 -0700
+@@ -634,17 +634,10 @@ AX_APPEND_COMPILE_FLAGS([\
+ 	-Wno-unused-parameter \
+ 	-Wno-sign-compare \
+ 	-Wno-pointer-sign \
+ 	-Wno-missing-field-initializers \
+ 	-Wno-unused-result \
+-	-Werror=format-security \
+-	-Werror=init-self \
+-	-Werror=declaration-after-statement \
+-	-Werror=missing-include-dirs \
+-	-Werror=date-time \
+-	-Werror=implicit-function-declaration \
+-	-Werror=pointer-arith \
+ ])
+ 
+ AS_IF([test "$stack_protector" = "yes"], [
+ 	AX_APPEND_COMPILE_FLAGS([ \
+ 		-fstack-protector-strong \

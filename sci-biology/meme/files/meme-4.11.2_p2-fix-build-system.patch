@@ -1,0 +1,346 @@
+Fix and modernise build system
+* Remove all *FLAGS setting, just append to the user-supplied ones
+* Add --enable-doc and --enable-examples configure flags
+* Install documentation and examples in correct directories
+* Discover libxml2 and libxslt dependencies using PKG_CHECK_MODULES
+* Install python and perl modules correctly
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -76,61 +76,10 @@
+ AM_CONDITIONAL(WANT_STRLCPY, test ["$have_strlcpy" = no])
+ 
+ # Check for compiler-specific settings
+-LARGE_FILE_SUPPORT=`getconf LFS_CFLAGS`
+-if test "${GCC}" = "yes"; then
+-  ac_cc_opt="-O3"
+-  ac_cc_debug_opt="-O0"
+-  ac_cc_warn="-Wall -Wno-unused"
+-  ac_cc_debug="-ggdb"
+-  # Check for OS X llvm (clang) compiler
+-  if `gcc --version |grep llvm >/dev/null`; then
+-    ac_cc_debug="-g"
+-  fi
+-  CFLAGS="-std="gnu89" $ac_cc_warn -DUNIX -D__USE_FIXED_PROTOTYPES__ $LARGE_FILE_SUPPORT"
+-else
+-  ac_cc_opt="-O"
+-  ac_cc_debug_opt=""
+-  ac_cc_warn=""
+-  ac_cc_debug="-g"
+-  CFLAGS="$ac_cc_warn -DUNIX -D__USE_FIXED_PROTOTYPES__ $LARGE_FILE_SUPPORT"
+-fi
+-
+-# Set up default libxml2 settings
+-# check for installed copy of libxml2
+-build_libxml2="yes"
+-if test -n "$XML2_CONFIG"; then
+-  # Require at least version 2.6
+-  required_libxml2_version="2006000"
+-  LIBXML2_VERSION="`$XML2_CONFIG --version | \
+-    awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`"
+-  if test -n "$LIBXML2_VERSION" && \
+-     test "$LIBXML2_VERSION"  -ge "$required_libxml2_version"; then 
+-    build_libxml2="no"
+-    LIBXML2_LIBS="`$XML2_CONFIG --libs`"
+-    LIBXML2_CFLAGS="`$XML2_CONFIG --cflags`"
+-  fi
+-fi
+-if test -z "$LIBXML2_LIBS"; then
+-  AC_MSG_WARN([libxml2 library not found])
+-  LIBXML2_LIBS="\${top_builddir}/src/libxml2/libxml2.la"
+-  LIBXML2_CFLAGS="-I\${top_srcdir}/src/libxml2/include"
+-fi
+-
+-# Set up default libxslt settings
+-# check for installed copy of libxslt
+-build_libxslt="yes"
+-if test -n "$XSLT_CONFIG"; then
+-  build_libxslt="no"
+-  LIBXSLT_LIBS="`$XSLT_CONFIG --libs` -lexslt"
+-  LIBXSLT_CFLAGS="`$XSLT_CONFIG --cflags`"
+-fi
+-if test -z "$LIBXSLT_LIBS"; then
+-  AC_MSG_WARN([libxslt library not found])
+-  LIBEXSLT_LIBS="\${top_builddir}/src/libexslt/libexslt.la"
+-  LIBXSLT_LIBS="\${top_builddir}/src/libxslt/libxslt.la"
+-  LIBEXSLT_CFLAGS="-I\${top_srcdir}/src/libexslt"
+-  LIBXSLT_CFLAGS="-I\${top_srcdir}/src/"
+-fi
++AC_PROG_MKDIR_P
++AC_SYS_LARGEFILE
++CFLAGS="-std=gnu89 -Wall -Wno-unused ${CFLAGS}"
++CPPFLAGS="-DUNIX -D__USE_FIXED_PROTOTYPES__ ${CPPFLAGS}"
+ 
+ # who is installing 
+ USER=`whoami`
+@@ -279,6 +227,16 @@
+ AM_CONDITIONAL(PARALLEL, test ["$parallel" != no])
+ AM_CONDITIONAL(PARALLEL_IS_LAM, test -n ["$lammpi"]) 
+ 
++dnl Documentation
++AC_ARG_ENABLE([doc],
++	AS_HELP_STRING([--enable-doc], [Enable installation of documentation]))
++AM_CONDITIONAL([ENABLE_DOC], [test "x$enable_doc" = "xyes"])
++
++dnl Examples
++AC_ARG_ENABLE([examples],
++	AS_HELP_STRING([--enable-examples], [Enable installation of examples]))
++AM_CONDITIONAL([ENABLE_EXAMPLES], [test "x$enable_examples" = "xyes"])
++
+ AC_ARG_ENABLE(
+     webservice,
+     [  --enable-webservice=deploy_dir       Deploy the MEME service on an existing Opal 2.5+ installation],
+@@ -309,24 +267,35 @@
+ AM_CONDITIONAL(WEBEITHER, test ["x$OPAL_DEPLOY" != "x" -o "x$OPAL_URL" != "xno"])
+ 
+ # enable building of included libxml2
+-AC_ARG_ENABLE(
+-    build_libxml2,
+-    [  --enable-build-libxml2     Build included version of libxml2. Default is to use pre-existing locally installed copy.],
+-    build_libxml2=$enableval; \
+-    LIBXML2_LIBS="\${top_builddir}/src/libxml2/libxml2.la"; \
+-    LIBXML2_CFLAGS="-I\${top_srcdir}/src/libxml2/include" , )
+-AM_CONDITIONAL(BUILD_LIBXML2, test ["$build_libxml2" = yes])
++AC_ARG_ENABLE([build-libxml2],
++	AS_HELP_STRING([--enable-build-libxml2], [Build included version of libxml2. Default is to use pre-existing locally installed copy.]))
++AS_IF([test "x$enable_build_libxml2" = "xyes"], [
++	dnl Enable building of bundled libs
++	LIBXML2_CFLAGS="-I\${top_srcdir}/src/libxml2/include"
++	LIBXML2_LIBS="\${top_builddir}/src/libxml2/libxml2.la"
++	],[
++	dnl Use system libraries
++	PKG_CHECK_MODULES([LIBXML2], [libxml-2.0 >= 2.6])
++])
++AM_CONDITIONAL([BUILD_LIBXML2], [test "x$enable_build_libxml2" = "xyes"])
++
+ 
+ # enable building of included libxslt
+-AC_ARG_ENABLE(
+-    build_libxslt,
+-    [  --enable-build-libxslt     Build included version of libxslt. Default is to use pre-existing locally installed copy.],
+-    build_libxslt=$enableval; \
+-    LIBEXSLT_LIBS="\${top_builddir}/src/libexslt/libexslt.la"; \
+-    LIBXSLT_LIBS="\${top_builddir}/src/libxslt/libxslt.la"; \
+-    LIBEXSLT_CFLAGS="-I\${top_srcdir}/src/libexslt"; \
+-    LIBXSLT_CFLAGS="-I\${top_srcdir}/src/" , )
+-AM_CONDITIONAL(BUILD_LIBXSLT, test ["$build_libxslt" = yes])
++AC_ARG_ENABLE([build-libxslt],
++	AS_HELP_STRING([--enable-build-libxslt], [Build included version of libxslt. Default is to use pre-existing locally installed copy.]))
++AS_IF([test "x$enable_build_libxslt" = "xyes"], [
++	dnl Enable building of bundled libs
++	LIBXSLT_CFLAGS="-I\${top_srcdir}/src/"
++	LIBXSLT_LIBS="\${top_builddir}/src/libxslt/libxslt.la"
++
++	LIBEXSLT_CFLAGS="-I\${top_srcdir}/src/libexslt"
++	LIBEXSLT_LIBS="\${top_builddir}/src/libexslt/libexslt.la"
++	],[
++	dnl Use system libraries
++	PKG_CHECK_MODULES([LIBXSLT], [libxslt])
++	PKG_CHECK_MODULES([LIBEXSLT], [libexslt])
++])
++AM_CONDITIONAL([BUILD_LIBXSLT], [test "x$enable_build_libxslt" = "xyes"])
+ 
+ # set website url
+ AC_ARG_WITH(
+@@ -427,13 +396,13 @@
+     [AC_PATH_PROG(PERL, perl)])
+ AC_DEFINE_UNQUOTED(PERL, "$PERL", [Path to Perl] )
+ 
++AC_ARG_WITH([perl-dir],
++	AS_HELP_STRING([--with-perl-dir], [Perl modules directory]), [perlmoddir="$with_perl_dir"], [perlmoddir="lib/perl"])
++AC_SUBST([perlmoddir])
++
++
+ # set path to Python
+-AC_ARG_WITH(
+-    python,
+-    [  --with-python=NAME     Set path to Python. Default is to take from user's PATH.],
+-    [PYTHON=$withval],
+-    [AC_PATH_PROG(PYTHON, python)])
+-AC_DEFINE_UNQUOTED(PYTHON, "$PYTHON", [Path to Python] )
++AM_PATH_PYTHON
+ 
+ # set path to convert utility
+ AC_ARG_WITH(
+@@ -586,13 +555,15 @@
+         Configuration parameters
+         ========================
+ 
+-  Install path:               ${prefix}
++  Install path (prefix):      ${prefix}
+   Install UID:                ${MEME_USER}
+   Version:                    ${VERSION}
+-  C compiler:                 ${CC}
+-  C compiler flags:           ${CFLAGS}
+-  Linker:                     ${LD}
+-  Special Libs:               ${LIBS}
++  C compiler (CC):            ${CC}
++  C compiler flags (CFLAGS):  ${CFLAGS}
++  C preproc flags (CPPFLAGS): ${CPPFLAGS}
++  Linker (LD):                ${LD}
++  Linker flags (LDFLAGS):     ${LDFLAGS}
++  Special Libs (LIBS):        ${LIBS}
+   MPICC                       ${MPICC}
+   MPIRUN                      ${MPIRUN}
+   MPI_CMD                     ${MPI_CMD}
+--- a/doc/css/Makefile.am
++++ b/doc/css/Makefile.am
+@@ -5,7 +5,7 @@
+ 
+ EXTRA_DIST = $(NORMAL_FILES)
+ 
+-if ! WEBSITE
+-doccssdir = $(prefix)/doc/css
++if ENABLE_DOC
++doccssdir = $(htmldir)/css
+ doccss_DATA =  $(NORMAL_FILES)
+ endif
+--- a/doc/examples/compute_prior_dist_example_output_files/Makefile.am
++++ b/doc/examples/compute_prior_dist_example_output_files/Makefile.am
+@@ -7,8 +7,8 @@
+ EXAMPLES = \
+   prior.dist.txt
+ 
+-if ! WEBSITE
+-exdir = $(prefix)/doc/examples/compute_prior_dist_example_output_files
++if ENABLE_EXAMPLES
++exdir = $(docdir)/examples/compute_prior_dist_example_output_files
+ ex_DATA = $(EXAMPLES)
+ endif
+ 
+--- a/doc/examples/Makefile.am
++++ b/doc/examples/Makefile.am
+@@ -22,8 +22,8 @@
+ # load the EXAMPLE_OUTPUT_FILES variable
+ include examples.mk
+ 
+-if ! WEBSITE
+-exdir = $(prefix)/doc/examples
++if ENABLE_EXAMPLES
++exdir = $(docdir)/examples
+ nobase_dist_ex_DATA = $(EXAMPLES) $(EXAMPLE_OUTPUT_FILES)
+ endif
+ 
+--- a/doc/examples/sample_opal_scripts/Makefile.am
++++ b/doc/examples/sample_opal_scripts/Makefile.am
+@@ -15,8 +15,8 @@
+   MemeClient.pl \
+   MemeClient.py
+ 
+-if ! WEBSITE
+-exdir = $(prefix)/doc/examples/sample_opal_scripts
++if ENABLE_EXAMPLES
++exdir = $(docdir)/examples/sample_opal_scripts
+ ex_DATA = $(EXAMPLES)
+ endif
+ 
+--- a/doc/images/Makefile.am
++++ b/doc/images/Makefile.am
+@@ -30,8 +30,8 @@
+ 
+ MEME_IMAGES = $(PROGRAM_ICONS) $(OTHER_IMAGES)
+ 
+-if ! WEBSITE
+-memeimgdir = $(prefix)/doc/images
++if ENABLE_DOC
++memeimgdir = $(htmldir)/images
+ memeimg_DATA = $(MEME_IMAGES)
+ endif
+ 
+--- a/doc/js/Makefile.am
++++ b/doc/js/Makefile.am
+@@ -41,8 +41,8 @@
+ 
+ BUILT_SOURCES = $(BUILT_FILES)
+ 
+-if ! WEBSITE
+-docjsdir = $(prefix)/doc/js
++if ENABLE_DOC
++docjsdir = $(htmldir)/js
+ docjs_DATA =  $(NORMAL_FILES) $(BUILT_FILES) $(SYMLINK_FILES)
+ endif
+ 
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -129,8 +129,8 @@
+   update-sequence-db.html \
+   ismb94.pdf
+ 
+-if ! WEBSITE
+-memedocdir = $(prefix)/doc
++if ENABLE_DOC
++memedocdir = $(htmldir)
+ memedoc_DATA =  $(NORMAL_FILES)
+ endif
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -52,7 +52,7 @@
+ endif
+ 
+ dbdir:
+-	mkdir -p $(MEME_DB)
++	$(MKDIR_P) $(DESTDIR)/$(MEME_DB)
+ 
+ all-local:
+ if WEBSITE
+@@ -64,8 +64,8 @@
+ endif
+ 
+ install-data-local:
+-	mkdir -p $(MEME_LOGS)
+-	chmod a+w $(MEME_LOGS)
++	$(MKDIR_P) $(DESTDIR)/$(MEME_LOGS)
++	chmod a+w $(DESTDIR)/$(MEME_LOGS)
+ 
+ distdir = $(PACKAGE)_$(VERSION)
+ 
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -22,8 +22,8 @@
+   -e 's%@WHICHJAVA@%$(JAVA)%' \
+   -e 's%@WHICHCONVERT@%$(CONVERT)%' \
+   -e 's%@WHICHGHOSTSCRIPT@%$(GHOSTSCRIPT)%' \
+-  -e 's%@PERLLIBDIR@%$(libdir)/perl%' \
+-  -e 's%@PYTHONLIBDIR@%$(libdir)/python%' \
++  -e 's%@PERLLIBDIR@%$(perlmoddir)%' \
++  -e 's%@PYTHONLIBDIR@%$(pythondir)%' \
+   -e 's%@JAVALIBDIR@%$(libdir)/java%' \
+   -e 's%@LAM_BIN@%$(LAMBIN)%' \
+   -e 's%@APPCONFIGDIR@%$(sysconfdir)%' \
+@@ -62,7 +62,7 @@
+   DiffXML.pm \
+   HypergeometricDynProg.pm
+ 
+-perlmoddir=$(libdir)/perl
++perlmoddir = $(exec_prefix)/@perlmoddir@
+ perlmod_SCRIPTS = \
+   $(BUILT_PERL_MOD) \
+   $(NORMAL_PERL_MOD)
+@@ -76,8 +76,7 @@
+   hypergeometric.py \
+   sequence.py
+ 
+-pythonlibdir=$(libdir)/python
+-pythonlib_SCRIPTS = \
++python_PYTHON = \
+   $(BUILT_PYTHON_LIB) \
+   $(NORMAL_PYTHON_LIB)
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -19,7 +19,13 @@
+ ARCHIVE_REVISION = $(shell cat ../ARCHIVE_REVISION)
+ ARCHIVE_DATE = $(shell cat ../ARCHIVE_DATE)
+ 
+-SUBDIRS = filters libxml2 libxslt libexslt . parallel
++SUBDIRS = filters . parallel
++if BUILD_LIBXML2
++SUBDIRS += libxml2
++endif
++if BUILD_LIBXSLT
++SUBDIRS += libxslt libexslt
++endif
+ 
+ BUILT_SOURCES = dir.h projrel.h
+ 

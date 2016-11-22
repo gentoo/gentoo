@@ -1,0 +1,21 @@
+--- a/m4/curses.m4	2010-04-04 02:19:58.000000000 +1000
++++ b/m4/curses.m4	2014-03-06 16:36:12.404404130 +1100
+@@ -218,9 +218,17 @@
+ 			CURSES_LIBS="$CHECKLIBS"
+ 		],, $CHECKLIBS)
+ 	    ], $CURSES_LIBS)
++	    AC_CHECK_LIB(ncurses, tputs, [
++	        true;
++	    ], [
++                CHECKLIBS=`echo "$3"|sed 's/-lncurses/-lncurses -ltinfo/g'`
++		AC_CHECK_LIB(tinfo, tputs, [
++			CURSES_LIBS="$CHECKLIBS"
++		],, $CHECKLIBS)
++	    ], $CURSES_LIBS)
+ 	    CURSES_INCLUDEDIR="$4"
+ 	    search_ncurses=false
+-	    screen_manager="$5"
++	    screen_manager=$5
+             AC_DEFINE(HAS_CURSES)
+             has_curses=true
+ 	    has_ncurses=true

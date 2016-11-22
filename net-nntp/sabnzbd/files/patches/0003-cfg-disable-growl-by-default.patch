@@ -1,0 +1,34 @@
+From d969db7d407d21ea73b9ca96ff81b1846cbaff8e Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Tue, 14 Jun 2016 08:38:54 -0400
+Subject: [PATCH 3/4] cfg: disable growl by default
+
+---
+ sabnzbd/cfg.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sabnzbd/cfg.py b/sabnzbd/cfg.py
+index 8172646..53b75f3 100644
+--- a/sabnzbd/cfg.py
++++ b/sabnzbd/cfg.py
+@@ -291,7 +291,7 @@ acenter_prio_queue_done = OptionBool('acenter', 'acenter_prio_queue_done', True)
+ acenter_prio_other = OptionBool('acenter', 'acenter_prio_other', False)
+ 
+ # [ntfosd]
+-ntfosd_enable = OptionBool('ntfosd', 'ntfosd_enable', not sabnzbd.WIN32 and not sabnzbd.DARWIN)
++ntfosd_enable = OptionBool('ntfosd', 'ntfosd_enable', False)
+ ntfosd_prio_startup = OptionBool('ntfosd', 'ntfosd_prio_startup', True)
+ ntfosd_prio_download = OptionBool('ntfosd', 'ntfosd_prio_download', False)
+ ntfosd_prio_pp = OptionBool('ntfosd', 'ntfosd_prio_pp', False)
+@@ -305,7 +305,7 @@ ntfosd_prio_queue_done = OptionBool('ntfosd', 'ntfosd_prio_queue_done', True)
+ ntfosd_prio_other = OptionBool('ntfosd', 'ntfosd_prio_other', False)
+ 
+ # [growl]
+-growl_enable = OptionBool('growl', 'growl_enable', sabnzbd.DARWIN and sabnzbd.DARWIN_VERSION < 8)
++growl_enable = OptionBool('growl', 'growl_enable', False)
+ growl_server = OptionStr('growl', 'growl_server')
+ growl_password = OptionPassword('growl', 'growl_password')
+ growl_prio_startup = OptionBool('growl', 'growl_prio_startup', True)
+-- 
+2.4.10
+

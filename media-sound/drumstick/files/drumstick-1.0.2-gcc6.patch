@@ -1,0 +1,35 @@
+Index: library/file/qove.cpp
+===================================================================
+--- a/library/file/qove.cpp	(revision 316)
++++ b/library/file/qove.cpp	(working copy)
+@@ -11356,7 +11356,7 @@
+ 				OVE::MeasureData* measureData = d->ove.getMeasureData(i, j, k);
+ 				QList<OVE::MusicData*> tempoPtrs = measureData->getMusicDatas(OVE::MusicData_Tempo);
+ 
+-				if (k == 0 || (k > 0 && abs(measure->getTypeTempo()	- d->ove.getMeasure(k - 1)->getTypeTempo()) > 0.01)) {
++				if (k == 0 || (k > 0 && std::abs(measure->getTypeTempo()	- d->ove.getMeasure(k - 1)->getTypeTempo()) > 0.01)) {
+ 					int tick = d->mtt.getTick(k, 0);
+ 					int tempo = (int) measure->getTypeTempo();
+ 					tempos[tick] = tempo;
+@@ -11739,7 +11739,7 @@
+ 				}
+ 				case OVE::Articulation_Arpeggio: {
+ 					//if( art->getChangeSoundEffect() ) {
+-						unsigned int soundEffect = abs(art->getSoundEffect().first) + abs(art->getSoundEffect().second);
++						unsigned int soundEffect = std::abs(art->getSoundEffect().first) + std::abs(art->getSoundEffect().second);
+ 						int tickAmount = (soundEffect / notes.size()) * ((notes.size() - i) - 1);
+ 						startTick -= tickAmount;
+ 					//}
+Index: utils/testevents/testevents.cpp
+===================================================================
+--- a/utils/testevents/testevents.cpp	(revision 316)
++++ b/utils/testevents/testevents.cpp	(working copy)
+@@ -262,7 +262,7 @@
+     dumpEvent(new KeyPressEvent(5, 60, 124));
+     dumpEvent(new ChanPressEvent(6, 111));
+     dumpEvent(new PitchBendEvent(7, 1234));
+-    char sysex[] = {0xf0, 0x41, 0x10, 0x42, 0x12, 0x40, 0, 0x7f, 0, 0x41, 0xf7};
++    char sysex[] = {'\xf0', '\x41', '\x10', '\x42', '\x12', '\x40', '\0', '\x7f', '\0', '\x41', '\xf7'};
+     dumpEvent(new SysExEvent(QByteArray(sysex, sizeof(sysex))));
+     QString text = "This can be a copyright, song name, instrument, lyric...";
+     TextEvent te(text, 3);

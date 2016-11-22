@@ -1,7 +1,7 @@
 --- src/sysv/gentoo/sssd.old	2011-08-02 23:14:48.000000000 +0300
 +++ src/sysv/gentoo/sssd	2011-08-24 12:15:18.413929409 +0300
 @@ -1,13 +1,13 @@
- #!/sbin/runscript
+ #!/sbin/openrc-run
  
  depend(){
 -    need localmount netmount clock

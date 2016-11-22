@@ -1,0 +1,34 @@
+From 048ca3d57228759f05af7b9553200fd362aeaa8b Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <kde@mattwhitlock.name>
+Date: Tue, 29 Mar 2016 12:22:41 -0400
+Subject: [PATCH] Only link with MYSQL_EMBEDDED_LIBRARIES if
+ WITH_MYSQL_EMBEDDED
+
+REVIEW: 127523
+---
+ src/core-impl/collections/db/sql/mysqlcollection/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/core-impl/collections/db/sql/mysqlcollection/CMakeLists.txt b/src/core-impl/collections/db/sql/mysqlcollection/CMakeLists.txt
+index 244cde1..4c618fc 100644
+--- a/src/core-impl/collections/db/sql/mysqlcollection/CMakeLists.txt
++++ b/src/core-impl/collections/db/sql/mysqlcollection/CMakeLists.txt
+@@ -21,11 +21,14 @@ target_link_libraries(amarok_collection-mysqlcollection
+     ${KDE4_KDECORE_LIBS}
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+-    ${MYSQL_EMBEDDED_LIBRARIES}
+     ${CMAKE_DL_LIBS}
+     ${ZLIB_LIBRARIES}
+ )
+ 
++if(WITH_MYSQL_EMBEDDED)
++    target_link_libraries( amarok_collection-mysqlcollection ${MYSQL_EMBEDDED_LIBRARIES} )
++endif(WITH_MYSQL_EMBEDDED)
++
+ if(NOT WIN32 AND NOT APPLE)
+     target_link_libraries( amarok_collection-mysqlcollection crypt pthread )
+ endif(NOT WIN32 AND NOT APPLE)
+-- 
+2.8.1
+

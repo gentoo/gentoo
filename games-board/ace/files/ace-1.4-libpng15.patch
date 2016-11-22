@@ -1,5 +1,5 @@
---- lib/make-imglib.c
-+++ lib/make-imglib.c
+--- a/lib/make-imglib.c
++++ b/lib/make-imglib.c
 @@ -86,7 +86,7 @@
      png_ptr = png_create_read_struct (PNG_LIBPNG_VER_STRING, 0, 0, 0);
      info_ptr = png_create_info_struct (png_ptr);
@@ -9,8 +9,8 @@
        fclose (f);
        continue;
      }
---- lib/xwin.c
-+++ lib/xwin.c
+--- a/lib/xwin.c
++++ b/lib/xwin.c
 @@ -824,13 +824,13 @@
    png_ptr = png_create_read_struct (PNG_LIBPNG_VER_STRING, 0, 0, 0);
    info_ptr = png_create_info_struct (png_ptr);

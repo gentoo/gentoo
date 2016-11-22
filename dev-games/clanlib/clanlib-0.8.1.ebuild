@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="media-libs/libpng:0
 	virtual/glu
 	virtual/opengl
 	sdl? (
-		media-libs/libsdl
+		media-libs/libsdl[X]
 		media-libs/sdl-gfx
 	)
 	x11-libs/libXi

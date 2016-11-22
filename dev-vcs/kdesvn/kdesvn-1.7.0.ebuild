@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="optional"
 KDE_LINGUAS="cs de el es fr it ja lt pt_BR ro ru"
@@ -16,7 +16,7 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="4"
 IUSE="debug"
 
@@ -30,6 +30,9 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-apps/kdesdk-kioslaves:4[subversion(+)]
 "
+
+# bug #583286: needs network access
+RESTRICT="test"
 
 src_configure() {
 	append-cppflags -DQT_THREAD_SUPPORT

@@ -1,0 +1,36 @@
+From ebfdaa0690c2f65dfe90714b02ff4f9bc9a3fa6d Mon Sep 17 00:00:00 2001
+From: Julien Puydt <jpuydt@free.fr>
+Date: Mon, 21 Jan 2013 15:54:38 +0100
+Subject: Made the call-history signal the changes first, then do some cleaning
+ later -- fixes a crash on clear
+
+---
+ lib/engine/components/call-history/history-book.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lib/engine/components/call-history/history-book.cpp b/lib/engine/components/call-history/history-book.cpp
+index b110d4d..4db92fa 100644
+--- a/lib/engine/components/call-history/history-book.cpp
++++ b/lib/engine/components/call-history/history-book.cpp
+@@ -177,6 +177,10 @@ History::Book::clear ()
+ 
+   std::list<ContactPtr> old_contacts = ordered_contacts;
+   ordered_contacts.clear ();
++
++  cleared ();
++  updated ();
++
+   for (std::list<ContactPtr>::iterator iter = old_contacts.begin ();
+        iter != old_contacts.end();
+        ++iter)
+@@ -187,7 +191,6 @@ History::Book::clear ()
+   xmlDocSetRootElement (doc.get (), root);
+ 
+   save ();
+-  cleared ();
+ }
+ 
+ void
+-- 
+cgit v0.12
+

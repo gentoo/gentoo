@@ -1,0 +1,29 @@
+From 8f61441ba94f7f0bd2b2a1c900e20db038b7085f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 13 Nov 2016 09:23:58 +1300
+Subject: [PATCH 2/2] Disable signature validation
+
+Signature validation currently requires M2Crypto and M2Ext,
+which are *only* available on Python2
+
+Python3 Implementations of Signature Validation appear currently broken
+---
+ fedmsg.d/ssl.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fedmsg.d/ssl.py b/fedmsg.d/ssl.py
+index c148667..f635ffb 100644
+--- a/fedmsg.d/ssl.py
++++ b/fedmsg.d/ssl.py
+@@ -25,7 +25,7 @@ here = os.getcwd()
+ 
+ config = dict(
+     sign_messages=False,
+-    validate_signatures=True,
++    validate_signatures=False,
+ 
+     # Use these implementations to sign and validate messages
+     crypto_backend='x509',
+-- 
+2.10.2
+

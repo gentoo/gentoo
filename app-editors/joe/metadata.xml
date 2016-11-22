@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>tomk@gentoo.org</email>
-    <name>Tom Knight</name>
-  </maintainer>
-  <longdescription>
+<maintainer type="person">
+            <email>amynka@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
   JOE (Joe's own editor) has the feel of most IBM PC text editors: The
   key-sequences are reminiscent of WordStar and Turbo-C. JOE is much more
   powerful than those editors, however. JOE has all of the features a UNIX
   user should expect: full use of termcap/terminfo, excellent screen update
   optimizations, simple installation, and all of the UNIX-integration features
   of VI.
-</longdescription>
-  <use>
-    <flag name="xterm">Enable full xterm clipboard support</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">joe-editor</remote-id>
-  </upstream>
+</longdescription> 
+<use>
+  <flag name="xterm">Enable full xterm clipboard support</flag>
+</use>
+<upstream>
+  <remote-id type="sourceforge">joe-editor</remote-id>
+</upstream>
 </pkgmetadata>

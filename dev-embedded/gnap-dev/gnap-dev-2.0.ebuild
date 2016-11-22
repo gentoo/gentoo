@@ -1,24 +1,29 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 MY_P=${P/gnap-dev/gnap-sources}
 S="${WORKDIR}/gnap-${PV}"
 DESCRIPTION="Gentoo-based Network Appliance building system development tools"
-HOMEPAGE="https://embedded.gentoo.org/gnap.xml"
-
-SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
-	!minimal? (	mirror://gentoo/gnap-stageseed-${PV}.tar.bz2
-		mirror://gentoo/gnap-portagesnapshot-${PV}.tar.bz2 )"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="
+	mirror://gentoo/${MY_P}.tar.bz2
+	!minimal? ( mirror://gentoo/gnap-stageseed-${PV}.tar.bz2
+		mirror://gentoo/gnap-portagesnapshot-${PV}.tar.bz2 )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
 
-RDEPEND=">=dev-util/catalyst-2.0_rc40
-	sys-fs/squashfs-tools
-	app-cdr/cdrtools"
+RDEPEND="
+	>=dev-util/catalyst-2.0_rc40
+	sys-fs/squashfs-tools:0
+	app-cdr/cdrtools
+"
 
 src_unpack() {
 	unpack ${MY_P}.tar.bz2

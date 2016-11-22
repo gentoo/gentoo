@@ -5,15 +5,6 @@
     <email>ultrabug@gentoo.org</email>
     <name>Ultrabug</name>
   </maintainer>
-  <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergström</name>
-    <description>Proxy Maintainer. CC on bugs</description>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <longdescription lang="en">A BSON utility library.</longdescription>
   <upstream>
     <remote-id type="github">mongodb/libbson</remote-id>

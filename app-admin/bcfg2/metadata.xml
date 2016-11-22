@@ -2,14 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
+	<email>mjinks@uchicago.edu</email>
+	<name>Michael Jinks</name>
+</maintainer>
+<maintainer type="person">
 	<email>xmw@gentoo.org</email>
 	<name>Michael Weber</name>
 	<description>Proxy Maintainer</description>
-</maintainer>
-<maintainer type="person">
-	<email>mjinks@uchicago.edu</email>
-	<name>Michael Jinks</name>
-	<description>Proxied maintainer; set to assignee in all bugs</description>
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>

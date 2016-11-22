@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 inherit eutils python-single-r1 readme.gentoo-r1 systemd user
 
 MY_PV=${PV/_/-}
@@ -14,7 +14,7 @@ DESCRIPTION="An advanced IRC Bouncer"
 
 SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"

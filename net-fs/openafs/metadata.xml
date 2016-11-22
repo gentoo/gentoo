@@ -11,7 +11,12 @@
 	<description>please CC on bugs</description>
 </maintainer>
 <use>
+	<flag name="bitmap-later">Enable fast startup of file server by
+	not reading bitmap till needed.</flag>
+	<flag name="fuse">Build fuse client.</flag>
 	<flag name="modules">Build libafs kernel module. Disable only if you know
 	what you're doing: without this module OpenAFS client will not work.</flag>
+	<flag name="pthreaded-ubik">Enable installation of pthreaded ubik applications.</flag>
+	<flag name="supergroups">Enable support for nested pts groups.</flag>
 </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+introspection vala"
-REQUIRED_IUSE="vala? ( introspection )"
+REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	>=app-text/enchant-1.6.0

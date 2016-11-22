@@ -1,0 +1,22 @@
+From 38a955ad9588817073a330c79d4b4476afcf69d5 Mon Sep 17 00:00:00 2001
+From: Daniel Stoeckel <dstoeckel@bioinf.uni-sb.de>
+Date: Thu, 14 Apr 2016 19:30:04 +0200
+Subject: [PATCH] Fix Python bindings for Box
+
+---
+ source/PYTHON/EXTENSIONS/VIEW/box.sip | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/PYTHON/EXTENSIONS/VIEW/box.sip b/source/PYTHON/EXTENSIONS/VIEW/box.sip
+index 341b1a4..592765e 100644
+--- a/source/PYTHON/EXTENSIONS/VIEW/box.sip
++++ b/source/PYTHON/EXTENSIONS/VIEW/box.sip
+@@ -6,7 +6,7 @@
+ 
+ class Box
+ 	: GeometricObject,
+-		Vertex2
++	  Box3
+ {
+ %TypeHeaderCode
+ 	#include <BALL/VIEW/PRIMITIVES/box.h>

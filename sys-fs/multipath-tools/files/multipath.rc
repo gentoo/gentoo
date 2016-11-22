@@ -1,16 +1,17 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 depend() {
-	before checkfs fsck multipathd lvm
+	before checkfs fsck multipathd iscsid lvm
 	after modules device-mapper
 }
 
 start() {
 	if ! grep -qs device-mapper /proc/devices /proc/misc ; then
 		[ -e /proc/modules ] && modprobe -q dm-mod
+		[ -e /proc/modules ] && modprobe -q dm-multipath
 	fi
 
 	ebegin "Activating Multipath devices"

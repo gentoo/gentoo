@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="New GNU Portable Threads Library"
-HOMEPAGE="http://thread.gmane.org/gmane.comp.encryption.gpg.announce/179"
+HOMEPAGE="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"

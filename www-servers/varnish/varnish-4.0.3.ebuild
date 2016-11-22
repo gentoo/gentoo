@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4} pypy )
 
 inherit user autotools-utils eutils systemd python-r1
 
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~mips x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline:= )
+	|| ( dev-libs/libedit sys-libs/readline )
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
 	sys-libs/ncurses:="

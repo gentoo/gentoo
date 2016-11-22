@@ -890,10 +890,12 @@ https://bugs.gentoo.org/show_bug.cgi?id=568440
  bool IsBubbleEdge(int eid, const HyperBasevector& hb, const vec<int>& to_left,
 --- allpathslg-52488/src/paths/long/VariantReadSupport.cc
 +++ allpathslg-52488/src/paths/long/VariantReadSupport.cc
-@@ -23,6 +23,11 @@
+@@ -23,6 +23,13 @@
  #include "paths/long/ReadOriginTracker.h"
  #include "paths/long/EvalByReads.h"
  
++#include <cmath>
++
 +using std::get;
 +using std::make_tuple;
 +using std::ignore;
@@ -902,6 +904,24 @@ https://bugs.gentoo.org/show_bug.cgi?id=568440
  namespace {
  void CalcLengthProbSimple(vec<double>&vOut,const double dProbIns_len, const double dProbDel_len, const uint64_t org_length){
      const double dProbIns=dProbIns_len;
+@@ -158,7 +165,7 @@
+     for(uint64_t ff=1;ff<nFlavors;++ff){
+         for( size_t ll = 2 ; ll <= get<0>(n_q_len[ff]) ; ++ll){ dFactor /= (long double)(ll); }
+     }
+-    if( dFactor==std::numeric_limits<long double>::infinity() || isnan(dFactor) ){ dFactor=1.0; }
++    if( dFactor==std::numeric_limits<long double>::infinity() || std::isnan(dFactor) ){ dFactor=1.0; }
+     if(verbosity>0) std::cout << "dFactor " << dFactor << std::endl;
+ 
+     long double dDenom=0.0;
+@@ -193,7 +200,7 @@
+         }
+     }
+     if(verbosity>0) std::cout <<"denom: " << dDenom<< std::endl;
+-    if( dDenom < std::numeric_limits<long double>::epsilon() * 100 || isnan(dDenom)) return;
++    if( dDenom < std::numeric_limits<long double>::epsilon() * 100 || std::isnan(dDenom)) return;
+     ForceAssert(dDenom>0);
+     if(verbosity>0){
+         for( uint64_t row=0;row<nFlavors;++row){
 --- allpathslg-52488/src/paths/long/VariantReadSupport.h
 +++ allpathslg-52488/src/paths/long/VariantReadSupport.h
 @@ -5,6 +5,8 @@

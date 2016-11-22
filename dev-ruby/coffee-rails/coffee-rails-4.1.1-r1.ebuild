@@ -12,11 +12,11 @@ inherit ruby-fakegem versionator
 
 DESCRIPTION="Coffee Script adapter for the Rails asset pipeline"
 HOMEPAGE="https://github.com/rails/coffee-rails"
-SRC_URI="https://github.com/rails/coffee-rails/archive/v${PV}.tar.gz -> ${PV}.tar.gz"
+SRC_URI="https://github.com/rails/coffee-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
 
 IUSE=""
 

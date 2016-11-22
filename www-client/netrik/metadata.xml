@@ -4,6 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">netrik</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=23183</bugs-to>
+		<bugs-to>https://sourceforge.net/tracker/?group_id=23183</bugs-to>
 	</upstream>
 </pkgmetadata>

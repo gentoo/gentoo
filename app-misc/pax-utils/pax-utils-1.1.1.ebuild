@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ inherit eutils toolchain-funcs unpacker
 DESCRIPTION="ELF related utils for ELF 32/64 binaries that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
 SRC_URI="mirror://gentoo/pax-utils-${PV}.tar.xz
-	http://dev.gentoo.org/~solar/pax/pax-utils-${PV}.tar.xz
-	http://dev.gentoo.org/~vapier/dist/pax-utils-${PV}.tar.xz"
+	https://dev.gentoo.org/~solar/pax/pax-utils-${PV}.tar.xz
+	https://dev.gentoo.org/~vapier/dist/pax-utils-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -41,7 +41,7 @@ src_configure() {
 	then
 		econf $(use_with caps) $(use_with debug) $(use_with python) $(use_with seccomp)
 	else
-		tc-export CC
+		tc-export CC PKG_CONFIG
 	fi
 }
 
@@ -54,5 +54,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" PKGDOCDIR='$(DOCDIR)'/${PF} install
+	_emake DESTDIR="${D}" PKGDOCDIR='$(DOCDIR)'/${PF} install
 }

@@ -1,0 +1,44 @@
+diff -Naur tinc-1.1pre14.orig/src/names.c tinc-1.1pre14/src/names.c
+--- tinc-1.1pre14.orig/src/names.c	2016-04-17 12:08:41.000000000 -0400
++++ tinc-1.1pre14/src/names.c	2016-10-15 07:37:51.147064396 -0400
+@@ -86,36 +86,11 @@
+ 	if(!pidfilename)
+ 		xasprintf(&pidfilename, "%s" SLASH "pid", confbase);
+ #else
+-	bool fallback = false;
+-	if(daemon) {
+-		if(access(LOCALSTATEDIR, R_OK | W_OK | X_OK))
+-			fallback = true;
+-	} else {
+-		char fname[PATH_MAX];
+-		snprintf(fname, sizeof fname, LOCALSTATEDIR SLASH "run" SLASH "%s.pid", identname);
+-		if(access(fname, R_OK)) {
+-			snprintf(fname, sizeof fname, "%s" SLASH "pid", confbase);
+-			if(!access(fname, R_OK))
+-				fallback = true;
+-		}
+-	}
++	if(!logfilename)
++		xasprintf(&logfilename, "/var/log" SLASH "%s.log", identname);
+ 
+-	if(!fallback) {
+-		if(!logfilename)
+-			xasprintf(&logfilename, LOCALSTATEDIR SLASH "log" SLASH "%s.log", identname);
+-
+-		if(!pidfilename)
+-			xasprintf(&pidfilename, LOCALSTATEDIR SLASH "run" SLASH "%s.pid", identname);
+-	} else {
+-		if(!logfilename)
+-			xasprintf(&logfilename, "%s" SLASH "log", confbase);
+-
+-		if(!pidfilename) {
+-			if(daemon)
+-				logger(DEBUG_ALWAYS, LOG_WARNING, "Could not access " LOCALSTATEDIR SLASH " (%s), storing pid and socket files in %s" SLASH, strerror(errno), confbase);
+-			xasprintf(&pidfilename, "%s" SLASH "pid", confbase);
+-		}
+-	}
++	if(!pidfilename)
++		xasprintf(&pidfilename, "/run" SLASH "%s.pid", identname);
+ #endif
+ 
+ 	if(!unixsocketname) {

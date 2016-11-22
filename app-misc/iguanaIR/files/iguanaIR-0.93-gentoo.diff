@@ -2,7 +2,7 @@ diff -Naur iguanaIR-0.93.orig/iguanaIR.gentoo.init iguanaIR-0.93/iguanaIR.gentoo
 --- iguanaIR-0.93.orig/iguanaIR.gentoo.init	2008-03-20 15:34:46.000000000 +0100
 +++ iguanaIR-0.93/iguanaIR.gentoo.init	2008-03-20 15:38:06.000000000 +0100
 @@ -1,7 +1,7 @@
- #!/sbin/runscript
+ #!/sbin/openrc-run
  
  # load the settings
 -[ -f /etc/default/iguanaIR ] && . /etc/default/iguanaIR

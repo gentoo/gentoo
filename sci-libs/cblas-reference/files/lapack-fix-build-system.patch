@@ -1,0 +1,124 @@
+ BLAS/CMakeLists.txt    | 2 +-
+ BLAS/blas.pc.in        | 6 ++++--
+ CBLAS/CMakeLists.txt   | 2 +-
+ CBLAS/cblas.pc.in      | 9 ++++++---
+ CMakeLists.txt         | 2 +-
+ LAPACKE/CMakeLists.txt | 2 +-
+ LAPACKE/lapacke.pc.in  | 6 ++++--
+ lapack.pc.in           | 6 ++++--
+ 8 files changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/BLAS/CMakeLists.txt b/BLAS/CMakeLists.txt
+index 45e68e9..56c8354 100644
+--- a/BLAS/CMakeLists.txt
++++ b/BLAS/CMakeLists.txt
+@@ -2,7 +2,7 @@ add_subdirectory(SRC)
+ if(BUILD_TESTING)
+ add_subdirectory(TESTING)
+ endif(BUILD_TESTING)
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/blas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/blas.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/blas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/blas.pc @ONLY)
+ install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/blas.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+diff --git a/BLAS/blas.pc.in b/BLAS/blas.pc.in
+index 845a25c..7a53ea5 100644
+--- a/BLAS/blas.pc.in
++++ b/BLAS/blas.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: blas
+ Description: Basic Linear Algebra Subprograms F77 reference implementations
+diff --git a/CBLAS/CMakeLists.txt b/CBLAS/CMakeLists.txt
+index 98b481f..8f98b04 100644
+--- a/CBLAS/CMakeLists.txt
++++ b/CBLAS/CMakeLists.txt
+@@ -71,7 +71,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/CMAKE/cblas-config-build.cmake.in
+   ${LAPACK_BINARY_DIR}/cblas-config.cmake @ONLY)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cblas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cblas.pc.in ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc @ONLY)
+   install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/cblas.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+diff --git a/CBLAS/cblas.pc.in b/CBLAS/cblas.pc.in
+index ee20206..14a141e 100644
+--- a/CBLAS/cblas.pc.in
++++ b/CBLAS/cblas.pc.in
+@@ -1,9 +1,12 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include/@PROFNAME@
+ 
+-Name: lapacke
++Name: cblas-reference
+ Description: C Standard Interface to BLAS Linear Algebra PACKage
+ Version: @LAPACK_VERSION@
+ URL: http://www.netlib.org/lapack/
+ Libs: -L${libdir} -lcblas
++Cflags: -I${includedir}
+ Requires: blas
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ab29bd2..31b878a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -333,7 +333,7 @@ configure_file(${LAPACK_SOURCE_DIR}/CMAKE/lapack-config-build.cmake.in
+   ${LAPACK_BINARY_DIR}/lapack-config.cmake @ONLY)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc @ONLY)
+   install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+diff --git a/LAPACKE/CMakeLists.txt b/LAPACKE/CMakeLists.txt
+index 008f24c..d8c4cb0 100644
+--- a/LAPACKE/CMakeLists.txt
++++ b/LAPACKE/CMakeLists.txt
+@@ -65,7 +65,7 @@ if(BUILD_TESTING)
+ endif(BUILD_TESTING)
+ 
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapacke.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapacke.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc @ONLY)
+  install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/lapacke.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+diff --git a/LAPACKE/lapacke.pc.in b/LAPACKE/lapacke.pc.in
+index 75e6871..ce5201b 100644
+--- a/LAPACKE/lapacke.pc.in
++++ b/LAPACKE/lapacke.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: lapacke
+ Description: C Standard Interface to LAPACK Linear Algebra PACKage
+diff --git a/lapack.pc.in b/lapack.pc.in
+index d34c870..0d0750f 100644
+--- a/lapack.pc.in
++++ b/lapack.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: lapack
+ Description: FORTRAN reference implementation of LAPACK Linear Algebra PACKage

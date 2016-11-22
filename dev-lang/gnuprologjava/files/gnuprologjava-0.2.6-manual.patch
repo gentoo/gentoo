@@ -1,0 +1,11 @@
+--- gnuprologjava.orig/docs/manual.texinfo	2011-01-06 13:07:12.000000000 +0100
++++ gnuprologjava/docs/manual.texinfo	2016-10-27 17:25:09.265632090 +0200
+@@ -36,7 +36,7 @@
+ @titlepage
+ @title GNU Prolog for Java
+ @subtitle for version @value{VERSION}, @value{UPDATED}
+-@author Daniel Thomas (@email{info-gnuprolog@gnu.org})
++@author Daniel Thomas (@email{info-gnuprolog@@gnu.org})
+ @insertcopying
+ @end titlepage
+ 

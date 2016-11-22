@@ -1,0 +1,705 @@
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Tue, 06 Sep 2016 14:16:28 +0000
+Subject: Use standard o.f.DBus.Properties interface for PropertiesChanged signal for NM 1.4.0+
+X-Git-Tag: v5.27.0-rc1
+X-Git-Url: http://quickgit.kde.org/?p=networkmanager-qt.git&a=commitdiff&h=7671424efb02e7194a18a4913da16bc2044a4cb9
+---
+Use standard o.f.DBus.Properties interface for PropertiesChanged signal for NM 1.4.0+
+
+CCBUG:367938
+REVIEW:128843
+---
+
+
+--- a/src/accesspoint.cpp
++++ b/src/accesspoint.cpp
+@@ -79,7 +79,12 @@
+     , d_ptr(new AccessPointPrivate(path, this))
+ {
+     Q_D(AccessPoint);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     QObject::connect(&d->iface, &OrgFreedesktopNetworkManagerAccessPointInterface::PropertiesChanged, d, &AccessPointPrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::AccessPoint::~AccessPoint()
+@@ -180,6 +185,14 @@
+         qCDebug(NMQT) << Q_FUNC_INFO << "Unhandled mode" << mode;
+     }
+     return ourMode;
++}
++
++void NetworkManager::AccessPointPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.AccessPoint")) {
++        propertiesChanged(properties);
++    }
+ }
+ 
+ void NetworkManager::AccessPointPrivate::propertiesChanged(const QVariantMap &properties)
+
+--- a/src/accesspoint_p.h
++++ b/src/accesspoint_p.h
+@@ -56,6 +56,7 @@
+     Q_DECLARE_PUBLIC(AccessPoint)
+     AccessPoint *q_ptr;
+ private Q_SLOTS:
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void propertiesChanged(const QVariantMap &properties);
+ };
+ 
+
+--- a/src/activeconnection.cpp
++++ b/src/activeconnection.cpp
+@@ -93,8 +93,12 @@
+ {
+     Q_D(ActiveConnection);
+ 
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerConnectionActiveInterface::PropertiesChanged, d, &ActiveConnectionPrivate::propertiesChanged);
+-
++#endif
+     /*
+      * Workaround: Re-check connection state before we watch changes in case it gets changed too quickly
+      * BUG:352326
+@@ -107,7 +111,12 @@
+ {
+     Q_D(ActiveConnection);
+ 
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerConnectionActiveInterface::PropertiesChanged, d, &ActiveConnectionPrivate::propertiesChanged);
++#endif
+ 
+     /*
+      * Workaround: Re-check connection state before we watch changes in case it gets changed too quickly
+@@ -302,11 +311,20 @@
+     }
+ }
+ 
++void NetworkManager::ActiveConnectionPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.Connection.Active")) {
++        propertiesChanged(properties);
++    }
++}
++
+ void NetworkManager::ActiveConnectionPrivate::propertiesChanged(const QVariantMap &properties)
+ {
+     Q_Q(ActiveConnection);
+ 
+-    // qCDebug(NMQT) << Q_FUNC_INFO << properties;
++    qCDebug(NMQT) << Q_FUNC_INFO << properties;
+ 
+     QVariantMap::const_iterator it = properties.constBegin();
+     while (it != properties.constEnd()) {
+
+--- a/src/activeconnection_p.h
++++ b/src/activeconnection_p.h
+@@ -64,8 +64,10 @@
+      * BUG:352326
+      */
+     void recheckProperties();
++public:
++    void propertiesChanged(const QVariantMap &properties);
+ private Q_SLOTS:
+-    void propertiesChanged(const QVariantMap &properties);
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+ };
+ 
+ }
+
+--- a/src/adsldevice.cpp
++++ b/src/adsldevice.cpp
+@@ -41,7 +41,12 @@
+     : Device(*new AdslDevicePrivate(path, this), parent)
+ {
+     Q_D(AdslDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceAdslInterface::PropertiesChanged, d, &AdslDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::AdslDevicePrivate::~AdslDevicePrivate()
+
+--- a/src/bluetoothdevice.cpp
++++ b/src/bluetoothdevice.cpp
+@@ -42,7 +42,12 @@
+     : ModemDevice(*new BluetoothDevicePrivate(path, this), parent)
+ {
+     Q_D(BluetoothDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->btIface, &OrgFreedesktopNetworkManagerDeviceBluetoothInterface::PropertiesChanged, d, &BluetoothDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::BluetoothDevice::~BluetoothDevice()
+
+--- a/src/bonddevice.cpp
++++ b/src/bonddevice.cpp
+@@ -49,7 +49,12 @@
+     Device(*new BondDevicePrivate(path, this), parent)
+ {
+     Q_D(BondDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceBondInterface::PropertiesChanged, d, &BondDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::BondDevicePrivate::~BondDevicePrivate()
+
+--- a/src/bridgedevice.cpp
++++ b/src/bridgedevice.cpp
+@@ -47,7 +47,12 @@
+     Device(*new BridgeDevicePrivate(path, this), parent)
+ {
+     Q_D(BridgeDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceBridgeInterface::PropertiesChanged, d, &BridgeDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::BridgeDevice::~BridgeDevice()
+
+--- a/src/connection.cpp
++++ b/src/connection.cpp
+@@ -74,7 +74,12 @@
+     connect(&d->iface, &OrgFreedesktopNetworkManagerSettingsConnectionInterface::Updated, d, &ConnectionPrivate::onConnectionUpdated);
+     connect(&d->iface, &OrgFreedesktopNetworkManagerSettingsConnectionInterface::Removed, d, &ConnectionPrivate::onConnectionRemoved);
+     d->unsaved = d->iface.unsaved();
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerSettingsConnectionInterface::PropertiesChanged, d, &ConnectionPrivate::onPropertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::Connection::~Connection()
+@@ -176,6 +181,14 @@
+     QString tmpPath = path;
+     updateSettings();
+     Q_EMIT q->removed(tmpPath);
++}
++
++void NetworkManager::ConnectionPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.Settings.Connection")) {
++        onPropertiesChanged(properties);
++    }
+ }
+ 
+ void NetworkManager::ConnectionPrivate::onPropertiesChanged(const QVariantMap &properties)
+
+--- a/src/connection_p.h
++++ b/src/connection_p.h
+@@ -54,6 +54,7 @@
+ private Q_SLOTS:
+     void onConnectionUpdated();
+     void onConnectionRemoved();
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void onPropertiesChanged(const QVariantMap &properties);
+ };
+ 
+
+--- a/src/device.cpp
++++ b/src/device.cpp
+@@ -215,6 +215,7 @@
+ {
+     Q_Q(Device);
+ 
++    // qCDebug(NMQT) << property  << " - " << value;
+     if (property == QLatin1String("ActiveConnection")) {
+         // FIXME workaround, because NM doesn't Q_EMIT correct value
+         // d->activeConnection = value.value<QDBusObjectPath>.path();
+@@ -570,6 +571,14 @@
+     Q_EMIT q->stateChanged(connectionState, NetworkManager::DevicePrivate::convertState(oldState), NetworkManager::DevicePrivate::convertReason(reason));
+ }
+ 
++void NetworkManager::DevicePrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName.contains(QLatin1String("org.freedesktop.NetworkManager.Device"))) {
++        propertiesChanged(properties);
++    }
++}
++
+ void NetworkManager::DevicePrivate::propertiesChanged(const QVariantMap &properties)
+ {
+     // qCDebug(NMQT) << Q_FUNC_INFO << properties;
+
+--- a/src/device_p.h
++++ b/src/device_p.h
+@@ -86,6 +86,7 @@
+ 
+ public Q_SLOTS:
+     void deviceStateChanged(uint, uint, uint);
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void propertiesChanged(const QVariantMap &properties);
+ };
+ 
+
+--- a/src/dhcp4config.cpp
++++ b/src/dhcp4config.cpp
+@@ -44,8 +44,12 @@
+ {
+     Q_D(Dhcp4Config);
+     Q_UNUSED(owner);
+-
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->myPath, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->dhcp4Iface, &OrgFreedesktopNetworkManagerDHCP4ConfigInterface::PropertiesChanged, d, &Dhcp4ConfigPrivate::dhcp4PropertiesChanged);
++#endif
+     d->options = d->dhcp4Iface.options();
+ }
+ 
+@@ -76,6 +80,14 @@
+     return value;
+ }
+ 
++void NetworkManager::Dhcp4ConfigPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.DHCP4Config")) {
++        dhcp4PropertiesChanged(properties);
++    }
++}
++
+ void NetworkManager::Dhcp4ConfigPrivate::dhcp4PropertiesChanged(const QVariantMap &properties)
+ {
+     Q_Q(Dhcp4Config);
+
+--- a/src/dhcp4config_p.h
++++ b/src/dhcp4config_p.h
+@@ -41,6 +41,7 @@
+     Q_DECLARE_PUBLIC(Dhcp4Config)
+     Dhcp4Config *q_ptr;
+ protected Q_SLOTS:
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void dhcp4PropertiesChanged(const QVariantMap &);
+ };
+ 
+
+--- a/src/dhcp6config.cpp
++++ b/src/dhcp6config.cpp
+@@ -43,8 +43,12 @@
+ {
+     Q_D(Dhcp6Config);
+     Q_UNUSED(owner);
+-
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->dhcp6Iface, &OrgFreedesktopNetworkManagerDHCP6ConfigInterface::PropertiesChanged, d, &Dhcp6ConfigPrivate::dhcp6PropertiesChanged);
++#endif
+     d->options = d->dhcp6Iface.options();
+ }
+ 
+@@ -75,6 +79,15 @@
+     return value;
+ }
+ 
++void NetworkManager::Dhcp6ConfigPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.DHCP6Config")) {
++        dhcp6PropertiesChanged(properties);
++    }
++}
++
++
+ void NetworkManager::Dhcp6ConfigPrivate::dhcp6PropertiesChanged(const QVariantMap &properties)
+ {
+     Q_Q(Dhcp6Config);
+
+--- a/src/dhcp6config_p.h
++++ b/src/dhcp6config_p.h
+@@ -41,6 +41,7 @@
+     Q_DECLARE_PUBLIC(Dhcp6Config)
+     Dhcp6Config *q_ptr;
+ protected Q_SLOTS:
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void dhcp6PropertiesChanged(const QVariantMap &);
+ };
+ 
+
+--- a/src/genericdevice.cpp
++++ b/src/genericdevice.cpp
+@@ -42,7 +42,12 @@
+     : Device(*new NetworkManager::GenericDevicePrivate(path, this), parent)
+ {
+     Q_D(GenericDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceGenericInterface::PropertiesChanged, d, &GenericDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::GenericDevice::~GenericDevice()
+
+--- a/src/gredevice.cpp
++++ b/src/gredevice.cpp
+@@ -51,7 +51,12 @@
+     Device(*new GreDevicePrivate(path, this), parent)
+ {
+     Q_D(GreDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     QObject::connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceGreInterface::PropertiesChanged, d, &GreDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::GreDevice::~GreDevice()
+
+--- a/src/infinibanddevice.cpp
++++ b/src/infinibanddevice.cpp
+@@ -44,7 +44,12 @@
+     : Device(*new InfinibandDevicePrivate(path, this), parent)
+ {
+     Q_D(InfinibandDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceInfinibandInterface::PropertiesChanged, d, &InfinibandDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::InfinibandDevicePrivate::~InfinibandDevicePrivate()
+
+--- a/src/macvlandevice.cpp
++++ b/src/macvlandevice.cpp
+@@ -43,7 +43,12 @@
+     Device(*new MacVlanDevicePrivate(path, this), parent)
+ {
+     Q_D(MacVlanDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceMacvlanInterface::PropertiesChanged, d, &MacVlanDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::MacVlanDevice::~MacVlanDevice()
+
+--- a/src/manager.cpp
++++ b/src/manager.cpp
+@@ -97,9 +97,13 @@
+             this, &NetworkManagerPrivate::onDeviceAdded);
+     connect(&iface, &OrgFreedesktopNetworkManagerInterface::DeviceRemoved,
+             this, &NetworkManagerPrivate::onDeviceRemoved);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, NetworkManagerPrivate::DBUS_DAEMON_PATH, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), this, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&iface, &OrgFreedesktopNetworkManagerInterface::PropertiesChanged,
+             this, &NetworkManagerPrivate::propertiesChanged);
+-
++#endif
+     connect(&watcher, &QDBusServiceWatcher::serviceRegistered,
+             this, &NetworkManagerPrivate::daemonRegistered);
+     connect(&watcher, &QDBusServiceWatcher::serviceUnregistered,
+@@ -679,6 +683,14 @@
+     if (nmState != newStatus) {
+         nmState = newStatus;
+         Q_EMIT Notifier::statusChanged(newStatus);
++    }
++}
++
++void NetworkManager::NetworkManagerPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager")) {
++        propertiesChanged(properties);
+     }
+ }
+ 
+
+--- a/src/manager_p.h
++++ b/src/manager_p.h
+@@ -121,6 +121,7 @@
+     void init();
+     void onDeviceAdded(const QDBusObjectPath &state);
+     void onDeviceRemoved(const QDBusObjectPath &state);
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void propertiesChanged(const QVariantMap &changedProperties);
+     void daemonRegistered();
+     void daemonUnregistered();
+
+--- a/src/modemdevice.cpp
++++ b/src/modemdevice.cpp
+@@ -54,7 +54,12 @@
+ {
+     Q_D(ModemDevice);
+     d->initModemProperties();
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     QObject::connect(&d->modemIface, &OrgFreedesktopNetworkManagerDeviceModemInterface::PropertiesChanged, d, &ModemDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::ModemDevice::ModemDevice(NetworkManager::ModemDevicePrivate &dd, QObject *parent)
+@@ -62,7 +67,12 @@
+ {
+     Q_D(ModemDevice);
+     d->initModemProperties();
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     QObject::connect(&d->modemIface, &OrgFreedesktopNetworkManagerDeviceModemInterface::PropertiesChanged, d, &ModemDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::ModemDevice::~ModemDevice()
+
+--- a/src/olpcmeshdevice.cpp
++++ b/src/olpcmeshdevice.cpp
+@@ -42,7 +42,12 @@
+     : Device(*new OlpcMeshDevicePrivate(path, this), parent)
+ {
+     Q_D(OlpcMeshDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     QObject::connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceOlpcMeshInterface::PropertiesChanged, d, &OlpcMeshDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::OlpcMeshDevice::~OlpcMeshDevice()
+
+--- a/src/settings.cpp
++++ b/src/settings.cpp
+@@ -42,8 +42,13 @@
+ #endif
+     , m_canModify(true)
+ {
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, NetworkManagerPrivate::DBUS_SETTINGS_PATH, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), this, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&iface, &OrgFreedesktopNetworkManagerSettingsInterface::PropertiesChanged,
+             this, &SettingsPrivate::propertiesChanged);
++#endif
+     connect(&iface, &OrgFreedesktopNetworkManagerSettingsInterface::NewConnection,
+             this, &SettingsPrivate::onConnectionAdded);
+     connect(&iface, &OrgFreedesktopNetworkManagerSettingsInterface::ConnectionRemoved,
+@@ -151,6 +156,14 @@
+ void NetworkManager::SettingsPrivate::saveHostname(const QString &hostname)
+ {
+     iface.SaveHostname(hostname);
++}
++
++void NetworkManager::SettingsPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.Settings")) {
++        propertiesChanged(properties);
++    }
+ }
+ 
+ void NetworkManager::SettingsPrivate::propertiesChanged(const QVariantMap &properties)
+
+--- a/src/settings_p.h
++++ b/src/settings_p.h
+@@ -58,6 +58,7 @@
+     void onConnectionAdded(const QDBusObjectPath &);
+     void onConnectionRemoved(const QDBusObjectPath &);
+     void onConnectionRemoved(const QString &);
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void propertiesChanged(const QVariantMap &properties);
+     void initNotifier();
+ protected:
+
+--- a/src/teamdevice.cpp
++++ b/src/teamdevice.cpp
+@@ -47,7 +47,12 @@
+     : Device(*new TeamDevicePrivate(path, this), parent)
+ {
+     Q_D(TeamDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceTeamInterface::PropertiesChanged, d, &TeamDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::TeamDevice::~TeamDevice()
+
+--- a/src/tundevice.cpp
++++ b/src/tundevice.cpp
+@@ -46,7 +46,12 @@
+     : Device(*new TunDevicePrivate(path, this), parent)
+ {
+     Q_D(TunDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceTunInterface::PropertiesChanged, d, &TunDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::TunDevice::~TunDevice()
+
+--- a/src/vethdevice.cpp
++++ b/src/vethdevice.cpp
+@@ -43,7 +43,12 @@
+     : Device(*new VethDevicePrivate(path, this), parent)
+ {
+     Q_D(VethDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceVethInterface::PropertiesChanged, d, &VethDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::VethDevice::~VethDevice()
+
+--- a/src/vlandevice.cpp
++++ b/src/vlandevice.cpp
+@@ -47,7 +47,12 @@
+     : Device(*new VlanDevicePrivate(path, this), parent)
+ {
+     Q_D(VlanDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerDeviceVlanInterface::PropertiesChanged, d, &VlanDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::VlanDevicePrivate::~VlanDevicePrivate()
+
+--- a/src/vpnconnection.cpp
++++ b/src/vpnconnection.cpp
+@@ -54,7 +54,12 @@
+     : ActiveConnection(*new VpnConnectionPrivate(path, this), parent)
+ {
+     Q_D(VpnConnection);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->path, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->iface, &OrgFreedesktopNetworkManagerVPNConnectionInterface::PropertiesChanged, d, &VpnConnectionPrivate::propertiesChanged);
++#endif
+     connect(&d->iface, &OrgFreedesktopNetworkManagerVPNConnectionInterface::VpnStateChanged, d, &VpnConnectionPrivate::vpnStateChanged);
+ }
+ 
+@@ -73,6 +78,17 @@
+ {
+     Q_D(const VpnConnection);
+     return d->state;
++}
++
++void NetworkManager::VpnConnectionPrivate::dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties)
++{
++    Q_UNUSED(invalidatedProperties);
++
++    if (interfaceName == QLatin1String("org.freedesktop.NetworkManager.VPN.Connection")) {
++        propertiesChanged(properties);
++    } else {
++        ActiveConnectionPrivate::propertiesChanged(properties);
++    }
+ }
+ 
+ void NetworkManager::VpnConnectionPrivate::propertiesChanged(const QVariantMap &properties)
+
+--- a/src/vpnconnection_p.h
++++ b/src/vpnconnection_p.h
+@@ -47,6 +47,7 @@
+     Q_DECLARE_PUBLIC(VpnConnection)
+     VpnConnection *q_ptr;
+ private Q_SLOTS:
++    void dbusPropertiesChanged(const QString &interfaceName, const QVariantMap &properties, const QStringList &invalidatedProperties);
+     void propertiesChanged(const QVariantMap &properties);
+     void vpnStateChanged(uint new_state, uint reason);
+ };
+
+--- a/src/wimaxdevice.cpp
++++ b/src/wimaxdevice.cpp
+@@ -54,7 +54,12 @@
+     : Device(*new WimaxDevicePrivate(path, this), parent)
+ {
+     Q_D(WimaxDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->wimaxIface, &OrgFreedesktopNetworkManagerDeviceWiMaxInterface::PropertiesChanged, d, &WimaxDevicePrivate::propertiesChanged);
++#endif
+     connect(&d->wimaxIface, &OrgFreedesktopNetworkManagerDeviceWiMaxInterface::NspAdded, d, &WimaxDevicePrivate::nspAdded);
+     connect(&d->wimaxIface, &OrgFreedesktopNetworkManagerDeviceWiMaxInterface::NspRemoved, d, &WimaxDevicePrivate::nspRemoved);
+ }
+
+--- a/src/wireddevice.cpp
++++ b/src/wireddevice.cpp
+@@ -50,7 +50,12 @@
+     : Device(*new NetworkManager::WiredDevicePrivate(path, this), parent)
+ {
+     Q_D(WiredDevice);
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->wiredIface, &OrgFreedesktopNetworkManagerDeviceWiredInterface::PropertiesChanged, d, &WiredDevicePrivate::propertiesChanged);
++#endif
+ }
+ 
+ NetworkManager::WiredDevice::~WiredDevice()
+
+--- a/src/wirelessdevice.cpp
++++ b/src/wirelessdevice.cpp
+@@ -66,7 +66,12 @@
+         d->accessPointAdded(op);
+     }
+ 
++#if NM_CHECK_VERSION(1, 4, 0)
++    QDBusConnection::systemBus().connect(NetworkManagerPrivate::DBUS_SERVICE, d->uni, NetworkManagerPrivate::FDO_DBUS_PROPERTIES,
++                                         QLatin1String("PropertiesChanged"), d, SLOT(dbusPropertiesChanged(QString,QVariantMap,QStringList)));
++#else
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::PropertiesChanged, d, &WirelessDevicePrivate::propertiesChanged);
++#endif
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::AccessPointAdded, d, &WirelessDevicePrivate::accessPointAdded);
+     connect(&d->wirelessIface, &OrgFreedesktopNetworkManagerDeviceWirelessInterface::AccessPointRemoved, d, &WirelessDevicePrivate::accessPointRemoved);
+ 
+

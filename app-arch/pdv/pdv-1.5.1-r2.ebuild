@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils autotools toolchain-funcs
 
 DESCRIPTION="build a self-extracting and self-installing binary package"
-HOMEPAGE="http://sourceforge.net/projects/pdv"
+HOMEPAGE="https://sourceforge.net/projects/pdv"
 SRC_URI="mirror://sourceforge/pdv/${P}.tar.gz"
 
 LICENSE="MIT"

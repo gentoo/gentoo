@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>whissi@whissi.de</email>
-		<name>Thomas D. (Whissi)</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/edenhill/librdkafka/issues</bugs-to>

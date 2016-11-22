@@ -26,6 +26,8 @@ DEPEND="
 	)"
 RDEPEND=""
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	# fix broken path subst in .pc file
 	"${FILESDIR}"/jsoncpp-1.6.2-fix-pkgconfig.patch

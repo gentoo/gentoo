@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lluixhi@gmail.com</email>
+    <name>Aric Belsito</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <email>devel@openastro.org</email>
+      <name>Pelle van der Scheer</name>
+    </maintainer>
+    <bugs-to>https://bugs.launchpad.net/openastro.org</bugs-to>
+  </upstream>
+</pkgmetadata>

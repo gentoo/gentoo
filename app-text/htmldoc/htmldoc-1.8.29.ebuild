@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Convert HTML pages into a PDF document"
 SRC_URI="http://www.msweet.org/files/project1/${P}-source.tar.bz2"
@@ -36,6 +36,7 @@ src_prepare() {
 src_configure() {
 	local myconf="$(use_with fltk gui)"
 
+	CC=$(tc-getCC) CXX=$(tc-getCXX) \
 	econf ${myconf}
 	# Add missing -lfltk_images to LIBS
 	if use fltk; then

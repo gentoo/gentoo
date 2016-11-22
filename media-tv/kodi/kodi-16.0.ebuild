@@ -33,7 +33,7 @@ HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X"
+IUSE="airplay alsa bluetooth bluray caps cec css dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
 # gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
 REQUIRED_USE="
 	|| ( gles opengl )
@@ -67,7 +67,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	bluray? ( >=media-libs/libbluray-0.7.0 )
@@ -87,7 +87,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-sound/wavpack
 	>=media-video/ffmpeg-2.6:=[encode]
 	rtmp? ( media-video/rtmpdump )
-	avahi? ( net-dns/avahi )
 	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -103,7 +102,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	opengl? (
 		virtual/glu
 		virtual/opengl
-		>=media-libs/glew-1.5.6
+		>=media-libs/glew-1.5.6:0=
 	)
 	gles? (
 		media-libs/mesa[gles2]
@@ -119,7 +118,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 		x11-libs/libXrender
-	)"
+	)
+	zeroconf? ( net-dns/avahi )
+"
 RDEPEND="${COMMON_DEPEND}
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
@@ -177,7 +178,29 @@ src_prepare() {
 	multijob_finish
 	elibtoolize
 
-	if [[ ${PV} == "9999" ]] || use java ; then #558798
+	# Cross-compiler support
+	# We need JsonSchemaBuilder and TexturePacker binaries for the host system
+	# Later we need libsquish for the target system
+	if tc-is-cross-compiler ; then
+		mkdir "${WORKDIR}"/${CBUILD} || die
+		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
+		einfo "Building host tools"
+		cp -a "$S"/{tools,xbmc} ./ || die
+		local tools=( JsonSchemaBuilder )
+		use texturepacker && tools+=( TexturePacker )
+		for tool in "${tools[@]}" ; do
+			tc-env_build emake -C tools/depends/native/$tool
+			mkdir "$S"/tools/depends/native/$tool/bin || die
+			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool "$S"/tools/depends/native/$tool/bin/$tool || die
+		done
+		popd >/dev/null || die
+
+		emake -f codegenerator.mk
+
+		# Binary kodi.bin links against libsquish,
+		# so we need libsquish compiled for the target system
+		emake -C tools/depends/native/libsquish-native/ CXX=$(tc-getCXX)
+	elif [[ ${PV} == "9999" ]] || use java ; then #558798
 		tc-env_build emake -f codegenerator.mk
 	fi
 
@@ -215,7 +238,6 @@ src_configure() {
 		--with-ffmpeg=shared \
 		$(use_enable alsa) \
 		$(use_enable airplay) \
-		$(use_enable avahi) \
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
@@ -240,7 +262,8 @@ src_configure() {
 		$(use_enable vaapi) \
 		$(use_enable vdpau) \
 		$(use_enable webserver) \
-		$(use_enable X x11)
+		$(use_enable X x11) \
+		$(use_enable zeroconf avahi)
 }
 
 src_compile() {

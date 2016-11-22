@@ -26,6 +26,7 @@ IUSE=""
 
 RDEPEND="!app-text/zathura-pdf-poppler
 	>=app-text/mupdf-1.7a:=
+	<app-text/mupdf-1.9a:=
 	>=app-text/zathura-0.3.1
 	media-libs/jbig2dec:=
 	media-libs/openjpeg:2=

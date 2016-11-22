@@ -1,0 +1,16 @@
+Fix C++11 changes to isnan():
+* /var/tmp/portage/sci-chemistry/ball-1.4.2/work/BALL-1.4.2/source/MOLMEC/MINIMIZATION/shiftedLVMM.C:769:46:   required from here
+* /var/tmp/portage/sci-chemistry/ball-1.4.2/work/BALL-1.4.2/include/BALL/MATHS/common.h:175:18: error: ‘isnan’ was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation [-fpermissive]
+*      return (isnan(t) != 0);
+
+--- BALL-1.4.2/include/BALL/MATHS/common.h
++++ BALL-1.4.2/include/BALL/MATHS/common.h
+@@ -172,7 +172,7 @@
+ 			#elif  defined(BALL_OS_DARWIN)
+ 				return ( __inline_isnand(t) != 0);
+ 			#else
+-				return (isnan(t) != 0);
++				return (std::isnan(t) != 0);
+ 			#endif
+ 		}
+ 

@@ -1,0 +1,73 @@
+From 7422ff662be0daeb3931fde397f1fed8ff86c50d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 20 Aug 2016 23:47:41 +0200
+Subject: [PATCH] llvm-config: Clean up exported values, update for shared
+ linking
+
+Gentoo-specific fixup for llvm-config, including:
+- wiping build-specific CFLAGS, CXXFLAGS,
+- updating library suffixes for shared libs,
+- wiping --system-libs for shared linking,
+- making --src-root return invalid path (/dev/null),
+- making --build-mode return "Release" rather than "Gentoo".
+
+Thanks to Steven Newbury for the initial patch.
+
+Bug: https://bugs.gentoo.org/565358
+Bug: https://bugs.gentoo.org/501684
+---
+ tools/llvm-config/CMakeLists.txt  | 11 ++++++++---
+ tools/llvm-config/llvm-config.cpp |  9 +++++++--
+ 2 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/tools/llvm-config/CMakeLists.txt b/tools/llvm-config/CMakeLists.txt
+index 83794bb..eba6f45 100644
+--- a/tools/llvm-config/CMakeLists.txt
++++ b/tools/llvm-config/CMakeLists.txt
+@@ -23,6 +23,10 @@ set(LLVM_SRC_ROOT ${LLVM_MAIN_SRC_DIR})
+ set(LLVM_OBJ_ROOT ${LLVM_BINARY_DIR})
+ set(LLVM_CPPFLAGS "${CMAKE_CPP_FLAGS} ${CMAKE_CPP_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+-set(LLVM_CFLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+-set(LLVM_CXXFLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${COMPILE_FLAGS} ${LLVM_DEFINITIONS}")
++# Just use CMAKE_CPP_FLAGS for CFLAGS and CXXFLAGS, otherwise compiler
++# specific flags will be set when we don't know what compiler will be used
++# with external project utilising llvm-config.  C++ Standard is required.
++# TODO: figure out if we can remove -std=c++11 and move it to revdeps.
++set(LLVM_CFLAGS "${CMAKE_CPP_FLAGS} ${CMAKE_C_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
++set(LLVM_CXXFLAGS "${CMAKE_CPP_FLAGS} -std=c++11 ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+ set(LLVM_BUILD_SYSTEM cmake)
+ set(LLVM_HAS_RTTI ${LLVM_CONFIG_HAS_RTTI})
+@@ -31,5 +35,6 @@ set(LLVM_HAS_RTTI ${LLVM_CONFIG_HAS_RTTI})
+ set(LLVM_LDFLAGS "${CMAKE_CXX_LINK_FLAGS}")
+ set(LLVM_BUILDMODE ${CMAKE_BUILD_TYPE})
+-set(LLVM_SYSTEM_LIBS ${SYSTEM_LIBS})
++# We don't do static libs, so we don't need to supply any system-libs
++set(LLVM_SYSTEM_LIBS "")
+ if(BUILD_SHARED_LIBS)
+   set(LLVM_ENABLE_SHARED ON)
+diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
+index 80f6279..309c5dc 100644
+--- a/tools/llvm-config/llvm-config.cpp
++++ b/tools/llvm-config/llvm-config.cpp
+@@ -485,5 +485,6 @@ int main(int argc, char **argv) {
+         OS << Triple::normalize(LLVM_DEFAULT_TARGET_TRIPLE) << '\n';
+       } else if (Arg == "--build-mode") {
+-        OS << build_mode << '\n';
++        // force Release since we force non-standard Gentoo build mode
++        OS << "Release" << '\n';
+       } else if (Arg == "--assertion-mode") {
+ #if defined(NDEBUG)
+@@ -501,5 +502,9 @@ int main(int argc, char **argv) {
+         OS << ActivePrefix << '\n';
+       } else if (Arg == "--src-root") {
+-        OS << LLVM_SRC_ROOT << '\n';
++        if (IsInDevelopmentTree) {
++          OS << LLVM_SRC_ROOT << '\n';
++        } else {
++          OS << "/dev/null\n";
++        }
+       } else {
+         usage();
+-- 
+2.9.3
+

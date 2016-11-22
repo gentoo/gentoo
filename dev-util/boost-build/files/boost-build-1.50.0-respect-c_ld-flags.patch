@@ -1,5 +1,5 @@
---- engine/build.jam.orig	2012-08-19 09:47:23.916383518 +0200
-+++ engine/build.jam	2012-08-19 09:53:38.011554690 +0200
+--- a/engine/build.jam
++++ b/engine/build.jam
 @@ -3,7 +3,7 @@
  #~ (See accompanying file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
  
@@ -36,8 +36,8 @@
  ## GCC 2.x, 3.x, 4.x
  toolset gcc gcc : "-o " : -D
      : -pedantic -fno-strict-aliasing
---- engine/build.sh.orig	2012-08-19 12:09:56.400780866 +0200
-+++ engine/build.sh	2012-08-19 12:10:49.728499203 +0200
+--- a/engine/build.sh
++++ b/engine/build.sh
 @@ -224,9 +224,9 @@
      cc)
      if test -z "$CC" ; then CC=cc ; fi

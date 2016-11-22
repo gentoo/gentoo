@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
+EAPI=6
 inherit eutils flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
@@ -14,15 +13,20 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-toolchain.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-9999-toolchain.patch
+	default
 	sed -i lib/common.h -e '/^#define PALOVERSION/{s|".*"|"'${PV}'"|g}' || die
 }
 
 src_compile() {
-	emake AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD) \
-		makepalo makeipl || die
-	emake CC=$(tc-getCC) iplboot || die
+	local target
+	for target in '-C palo' '-C ipl' 'iplboot'; do
+		emake AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD) ${target}
+	done
 }
 
 src_install() {
@@ -30,8 +34,7 @@ src_install() {
 	dosbin palo/palo
 
 	doman palo.8
-	dodoc palo.conf
-	dohtml README.html
+	dodoc TODO debian/changelog README.html
 
 	insinto /etc
 	doins "${FILESDIR}"/palo.conf

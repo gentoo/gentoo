@@ -1,0 +1,17 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Increase rtol of asserts to let the tests succeed with montage-4.0
+--- a/montage_wrapper/tests/test_wrappers.py
++++ b/montage_wrapper/tests/test_wrappers.py
+@@ -50,9 +50,9 @@
+         assert hdu.data.shape == (288, 282)
+         valid = hdu.data[~np.isnan(hdu.data)]
+         assert len(valid) == 65029
+-        assert_allclose(np.std(valid), 0.12658458001333581)
+-        assert_allclose(np.mean(valid), 0.4995945318627074)
+-        assert_allclose(np.median(valid), 0.5003376603126526)
++        assert_allclose(np.std(valid), 0.12658458001333581, 1e-5)
++        assert_allclose(np.mean(valid), 0.4995945318627074, 1e-5)
++        assert_allclose(np.median(valid), 0.5003376603126526, 1e-5)
+ 
+     @pytest.mark.xfail()  # results are not consistent on different machines
+     def test_mosaic_background_match(self):

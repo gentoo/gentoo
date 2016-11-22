@@ -16,4 +16,8 @@
 		</maintainer>
 		<remote-id type="github">blogc/blogc</remote-id>
 	</upstream>
+	<use>
+		<flag name="git">Build blogc-git-receiver tool</flag>
+		<flag name="httpd">Build blogc-runserver tool</flag>
+	</use>
 </pkgmetadata>

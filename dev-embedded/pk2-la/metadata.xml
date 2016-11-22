@@ -5,10 +5,6 @@
 		pk2-la allows the Microchip PICkit2 programmer to be used as a
 		Logic Analyzer and I/O Probe.
 	</longdescription>
-	<maintainer type="person">
-		<email>josejx@gentoo.org</email>
-		<name>Joseph Jezak</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>

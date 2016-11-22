@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="libressl static-libs"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-1:0 )
+	!libressl? ( >=dev-libs/openssl-1:0= )
 	libressl? ( dev-libs/libressl )
 	media-libs/raptor:2
 	>=media-libs/ladspa-sdk-1.12"

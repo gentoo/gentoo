@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ src_install () {
 	touch src/__init__.py || die
 
 	install_python() {
-		local python_moduleroot=${PN}
+		python_moduleinto ${PN}
 		python_domodule src/*
 		sed \
 			-e "s#@SITEDIR@#$(python_get_sitedir)/${PN}#" \

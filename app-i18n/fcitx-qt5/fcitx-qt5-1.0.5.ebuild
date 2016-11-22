@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils
 
@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc64 x86"
 IUSE=""
 
 # Private headers of dev-qt/qtgui:5 used.

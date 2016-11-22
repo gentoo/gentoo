@@ -1,18 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils git-r3 multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
-HOMEPAGE="http://www.tcpdump.org/"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	${EGIT_REPO_URI}
+"
 
 LICENSE="BSD"
 SLOT="0"
+IUSE="bluetooth dbus netlink static-libs canusb"
 KEYWORDS=""
-IUSE="bluetooth dbus ipv6 netlink static-libs canusb"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
@@ -26,15 +29,20 @@ DEPEND="${RDEPEND}
 	dbus? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.0-cross-linux.patch
+	"${FILESDIR}"/${PN}-1.6.1-configure.patch
+	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
+	"${FILESDIR}"/${PN}-1.7.2-libnl.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.2.0-cross-linux.patch \
-		"${FILESDIR}"/${PN}-1.6.1-configure.patch \
-		"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch \
-		"${FILESDIR}"/${PN}-1.7.2-libnl.patch
+	default
 
 	mkdir bluetooth || die
 	cp "${FILESDIR}"/mgmt.h bluetooth/ || die
+
+	eapply_user
 
 	eautoreconf
 }
@@ -43,7 +51,6 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable bluetooth) \
-		$(use_enable ipv6) \
 		$(use_enable canusb) \
 		$(use_enable dbus) \
 		$(use_with netlink libnl)

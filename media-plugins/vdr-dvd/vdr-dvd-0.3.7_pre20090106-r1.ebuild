@@ -10,12 +10,12 @@ MY_P=${PN}-cvs-${PV#*_pre}
 S=${WORKDIR}/${MY_P#vdr-}
 
 DESCRIPTION="VDR Plugin: DVD-Player"
-HOMEPAGE="http://sourceforge.net/projects/dvdplugin"
+HOMEPAGE="https://sourceforge.net/projects/dvdplugin"
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=media-video/vdr-1.6.0

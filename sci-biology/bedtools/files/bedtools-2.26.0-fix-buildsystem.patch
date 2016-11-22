@@ -1,0 +1,869 @@
+* Make build system verbose (https://bugs.gentoo.org/show_bug.cgi?id=429308)
+* Remove CXX and CXXFLAGS, ebuild sets them
+* Handle python via Gentoo's EPYTHON instead
+
+--- a/Makefile
++++ b/Makefile
+@@ -16,17 +16,9 @@
+ export BIN_DIR	= bin
+ export SRC_DIR	= src
+ export UTIL_DIR	= src/utils
+-export CXX		= g++
+-ifeq ($(DEBUG),1)
+-export CXXFLAGS = -Wall -O0 -g -fno-inline -fkeep-inline-functions -D_FILE_OFFSET_BITS=64 -fPIC -DDEBUG -D_DEBUG
+-else
+-export CXXFLAGS = -Wall -O2 -D_FILE_OFFSET_BITS=64 -fPIC $(INCLUDES)
+-endif
+ export LIBS		= -lz
+ export BT_ROOT  = src/utils/BamTools/
+ 
+-prefix ?= /usr/local
+-
+ SUBDIRS = $(SRC_DIR)/annotateBed \
+ 		  $(SRC_DIR)/bamToBed \
+ 		  $(SRC_DIR)/bamToFastq \
+@@ -135,13 +127,13 @@
+ 
+ all: print_banner $(OBJ_DIR) $(BIN_DIR) autoversion $(UTIL_SUBDIRS) $(SUBDIRS)
+ 	@echo "- Building main bedtools binary."
+-	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c src/bedtools.cpp -o obj/bedtools.o $(INCLUDES)
+-	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $(BIN_DIR)/bedtools $(BUILT_OBJECTS) -L$(UTIL_DIR)/BamTools/lib/ -lbamtools $(LIBS) $(LDFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c src/bedtools.cpp -o obj/bedtools.o $(INCLUDES)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -o $(BIN_DIR)/bedtools $(BUILT_OBJECTS) -L$(UTIL_DIR)/BamTools/lib/ -lbamtools $(LIBS)
+ 	@echo "done."
+ 
+ 	@echo "- Creating executables for old CLI."
+-	@python scripts/makeBashScripts.py
+-	@chmod +x bin/*
++	$(EPYTHON) scripts/makeBashScripts.py
++	chmod +x bin/*
+ 	@echo "done."
+ 
+ 
+--- a/src/annotateBed/Makefile
++++ b/src/annotateBed/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ 		
+ clean:
+--- a/src/bamToBed/Makefile
++++ b/src/bamToBed/Makefile
+@@ -28,7 +28,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) 
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)  -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/bamToFastq/Makefile
++++ b/src/bamToFastq/Makefile
+@@ -24,7 +24,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) 
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/bed12ToBed6/Makefile
++++ b/src/bed12ToBed6/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/bedpeToBam/Makefile
++++ b/src/bedpeToBam/Makefile
+@@ -33,7 +33,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(UTILITIES_DIR)/BamTools/	
+--- a/src/bedToBam/Makefile
++++ b/src/bedToBam/Makefile
+@@ -30,7 +30,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/bedToIgv/Makefile
++++ b/src/bedToIgv/Makefile
+@@ -28,7 +28,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/closestFile/Makefile
++++ b/src/closestFile/Makefile
+@@ -40,7 +40,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/clusterBed/Makefile
++++ b/src/clusterBed/Makefile
+@@ -25,7 +25,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/complementFile/Makefile
++++ b/src/complementFile/Makefile
+@@ -42,7 +42,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/coverageFile/Makefile
++++ b/src/coverageFile/Makefile
+@@ -38,7 +38,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/expand/Makefile
++++ b/src/expand/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/fastaFromBed/Makefile
++++ b/src/fastaFromBed/Makefile
+@@ -30,7 +30,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/fisher/Makefile
++++ b/src/fisher/Makefile
+@@ -51,7 +51,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/flankBed/Makefile
++++ b/src/flankBed/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 		
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/genomeCoverageBed/Makefile
++++ b/src/genomeCoverageBed/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/getOverlap/Makefile
++++ b/src/getOverlap/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ 	
+ clean:
+--- a/src/groupBy/Makefile
++++ b/src/groupBy/Makefile
+@@ -42,7 +42,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/intersectFile/Makefile
++++ b/src/intersectFile/Makefile
+@@ -39,7 +39,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/jaccard/Makefile
++++ b/src/jaccard/Makefile
+@@ -43,7 +43,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/linksBed/Makefile
++++ b/src/linksBed/Makefile
+@@ -25,7 +25,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/mapFile/Makefile
++++ b/src/mapFile/Makefile
+@@ -38,7 +38,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/maskFastaFromBed/Makefile
++++ b/src/maskFastaFromBed/Makefile
+@@ -25,7 +25,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/mergeFile/Makefile
++++ b/src/mergeFile/Makefile
+@@ -40,7 +40,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/multiBamCov/Makefile
++++ b/src/multiBamCov/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/multiIntersectBed/Makefile
++++ b/src/multiIntersectBed/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/nekSandbox1/Makefile
++++ b/src/nekSandbox1/Makefile
+@@ -35,7 +35,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/nucBed/Makefile
++++ b/src/nucBed/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/pairToBed/Makefile
++++ b/src/pairToBed/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/pairToPair/Makefile
++++ b/src/pairToPair/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ 
+ clean:
+--- a/src/randomBed/Makefile
++++ b/src/randomBed/Makefile
+@@ -23,7 +23,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/regressTest/Makefile
++++ b/src/regressTest/Makefile
+@@ -24,24 +24,18 @@
+ # ----------------------------------
+ # define our source and object files
+ # ----------------------------------
+-#SOURCES= regressTestMain.cpp RegressTest.cpp RegressTest.h
+-#OBJECTS= regressTestMain.o RegressTest.o
+-#BUILT_OBJECTS= $(patsubst %,$(OBJ_DIR)/%,$(OBJECTS))
++SOURCES= regressTestMain.cpp RegressTest.cpp RegressTest.h
++OBJECTS= regressTestMain.o RegressTest.o
++BUILT_OBJECTS= $(patsubst %,$(OBJ_DIR)/%,$(OBJECTS))
+ PROGRAM= regressTest
+ 
+-
+-all: #$(BUILT_OBJECTS)
+-	@echo "compiling RegressTest.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/RegressTest.o RegressTest.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
+-	@echo "compiling regressTestMain.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/regressTestMain.o regressTestMain.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++all: $(BUILT_OBJECTS)
+ 	
+ .PHONY: all
+ 
+-#$(BUILT_OBJECTS): $(SOURCES)
+-#	@echo "  * compiling" $(*F).cpp
+-#	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
+-
++$(BUILT_OBJECTS): $(SOURCES)
++	@echo "  * compiling" $(*F).cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/reldist/Makefile
++++ b/src/reldist/Makefile
+@@ -30,7 +30,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/sampleFile/Makefile
++++ b/src/sampleFile/Makefile
+@@ -37,7 +37,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/shiftBed/Makefile
++++ b/src/shiftBed/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/shuffleBed/Makefile
++++ b/src/shuffleBed/Makefile
+@@ -28,7 +28,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/slopBed/Makefile
++++ b/src/slopBed/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/sortBed/Makefile
++++ b/src/sortBed/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/spacingFile/Makefile
++++ b/src/spacingFile/Makefile
+@@ -37,7 +37,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/split/Makefile
++++ b/src/split/Makefile
+@@ -25,7 +25,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/subtractFile/Makefile
++++ b/src/subtractFile/Makefile
+@@ -40,7 +40,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/tagBam/Makefile
++++ b/src/tagBam/Makefile
+@@ -28,7 +28,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/unionBedGraphs/Makefile
++++ b/src/unionBedGraphs/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/BamTools/Makefile
++++ b/src/utils/BamTools/Makefile
+@@ -56,12 +56,12 @@
+ 
+ $(LIBRARY): $(OBJECTS)
+ 	@echo " * linking $(LIBRARY)"
+-	ar cr $@ $^
++	$(AR) cr $@ $^
+ 	-ranlib $@
+ 
+ $(OBJECTS): $(SOURCES)
+ 	@echo " * compiling" $(*F).cpp
+-	@$(CXX) -c $(*D)/$(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -o $(*D)/$(*F).o
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -o $(*D)/$(*F).o -c $(*D)/$(*F).cpp
+ 
+ .PHONY: api
+ api:
+--- a/src/utils/BamTools-Ancillary/Makefile
++++ b/src/utils/BamTools-Ancillary/Makefile
+@@ -21,7 +21,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -L$(BT_ROOT)/lib
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -L$(BT_ROOT)/lib -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/bedFile/Makefile
++++ b/src/utils/bedFile/Makefile
+@@ -20,7 +20,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C -W $(INCLUDES)
+--- a/src/utils/bedFilePE/Makefile
++++ b/src/utils/bedFilePE/Makefile
+@@ -17,7 +17,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/bedGraphFile/Makefile
++++ b/src/utils/bedGraphFile/Makefile
+@@ -19,7 +19,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C -W $(INCLUDES)
+--- a/src/utils/BinTree/Makefile
++++ b/src/utils/BinTree/Makefile
+@@ -28,7 +28,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/BlockedIntervals/Makefile
++++ b/src/utils/BlockedIntervals/Makefile
+@@ -23,7 +23,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -L$(BT_ROOT)/lib
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -L$(BT_ROOT)/lib -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/chromsweep/Makefile
++++ b/src/utils/chromsweep/Makefile
+@@ -20,7 +20,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/Contexts/Makefile
++++ b/src/utils/Contexts/Makefile
+@@ -36,7 +36,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/driver/Makefile
++++ b/src/utils/driver/Makefile
+@@ -85,7 +85,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(DFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 	
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/Fasta/Makefile
++++ b/src/utils/Fasta/Makefile
+@@ -19,7 +19,7 @@
+ 	
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/FileRecordTools/FileReaders/Makefile
++++ b/src/utils/FileRecordTools/FileReaders/Makefile
+@@ -32,7 +32,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/FileRecordTools/FileReaders/Makefile~
++++ b/src/utils/FileRecordTools/FileReaders/Makefile~
+@@ -31,7 +31,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/FileRecordTools/Makefile
++++ b/src/utils/FileRecordTools/Makefile
+@@ -34,9 +34,9 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling FileRecordMgr.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/FileRecordMgr.o FileRecordMgr.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $(OBJ_DIR)/FileRecordMgr.o FileRecordMgr.cpp
+ 	@echo "  * compiling FileRecordMergeMgr.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/FileRecordMergeMgr.o FileRecordMergeMgr.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $(OBJ_DIR)/FileRecordMergeMgr.o FileRecordMergeMgr.cpp
+ 	
+ 	
+ 
+--- a/src/utils/FileRecordTools/Records/Makefile
++++ b/src/utils/FileRecordTools/Records/Makefile
+@@ -37,7 +37,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/fileType/Makefile
++++ b/src/utils/fileType/Makefile
+@@ -22,7 +22,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/general/Makefile
++++ b/src/utils/general/Makefile
+@@ -21,7 +21,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/GenomeFile/Makefile
++++ b/src/utils/GenomeFile/Makefile
+@@ -20,9 +20,9 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES) $(SUBDIRS)
+ 	@echo "  * compiling GenomeFile.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/GenomeFile.o GenomeFile.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $(OBJ_DIR)/GenomeFile.o GenomeFile.cpp
+ 	@echo "  * compiling NewGenomeFile.cpp"
+-	@$(CXX) -c -o $(OBJ_DIR)/NewGenomeFile.o NewGenomeFile.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $(OBJ_DIR)/NewGenomeFile.o NewGenomeFile.cpp
+ 
+ #$(EXT_OBJECTS):
+ #	@$(MAKE) --no-print-directory -C $(UTILITIES_DIR)/lineFileUtilities/
+--- a/src/utils/gzstream/Makefile
++++ b/src/utils/gzstream/Makefile
+@@ -38,7 +38,7 @@
+ UTILITIES_DIR = ../../utils/
+ 	
+ ${OBJ_DIR}/gzstream.o : gzstream.C gzstream.h
+-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $(OBJ_DIR)/gzstream.o gzstream.C $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $(OBJ_DIR)/gzstream.o gzstream.C
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/KeyListOps/Makefile
++++ b/src/utils/KeyListOps/Makefile
+@@ -31,7 +31,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ 
+ $(EXT_OBJECTS):
+--- a/src/utils/NewChromsweep/Makefile
++++ b/src/utils/NewChromsweep/Makefile
+@@ -34,7 +34,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/RecordOutputMgr/Makefile
++++ b/src/utils/RecordOutputMgr/Makefile
+@@ -29,7 +29,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/sequenceUtilities/Makefile
++++ b/src/utils/sequenceUtilities/Makefile
+@@ -17,7 +17,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/tabFile/Makefile
++++ b/src/utils/tabFile/Makefile
+@@ -19,7 +19,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C -W $(INCLUDES)
+--- a/src/utils/ToolBase/Makefile
++++ b/src/utils/ToolBase/Makefile
+@@ -30,7 +30,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(INCLUDES)
+--- a/src/utils/VectorOps/Makefile
++++ b/src/utils/VectorOps/Makefile
+@@ -11,7 +11,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/utils/version/Makefile
++++ b/src/utils/version/Makefile
+@@ -20,7 +20,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES) $(HEADERS)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/windowBed/Makefile
++++ b/src/windowBed/Makefile
+@@ -27,7 +27,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/src/windowMaker/Makefile
++++ b/src/windowMaker/Makefile
+@@ -26,7 +26,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(UTILITIES_DIR)/genomeFile/

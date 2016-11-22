@@ -15,5 +15,5 @@ SLOT="4"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-DEPEND="$(add_kdebase_dep kwin)"
+DEPEND="kde-plasma/kwin:4"
 RDEPEND="${DEPEND}"

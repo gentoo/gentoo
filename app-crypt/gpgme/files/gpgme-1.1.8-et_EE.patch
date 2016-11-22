@@ -1,5 +1,5 @@
---- ./gpgme-1.1.8/src/gpgme-config.in.orig	2009-03-08 10:25:48.000000000 +1100
-+++ ./gpgme-1.1.8/src/gpgme-config.in	2009-03-08 10:35:53.000000000 +1100
+--- gpgme-1.1.8/src/gpgme-config.in	2009-03-08 10:25:48.000000000 +1100
++++ gpgme-1.1.8/src/gpgme-config.in	2009-03-08 10:35:53.000000000 +1100
 @@ -64,7 +64,7 @@
  while test $# -gt 0; do
      case "$1" in

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python3_4 )
 
 inherit python-single-r1 xorg-2
 
@@ -21,6 +21,11 @@ DEPEND="dev-libs/glib:2
 	python? ( ${PYTHON_DEPS} )
 	unwind? ( sys-libs/libunwind )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12-inttypes.patch #582430
+	"${FILESDIR}"/${PN}-1.12-sysmacros.patch #581080
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

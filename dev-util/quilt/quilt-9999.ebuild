@@ -11,8 +11,8 @@ EGIT_REPO_URI="git://git.sv.gnu.org/quilt.git"
 inherit bash-completion-r1 eutils
 
 DESCRIPTION="quilt patch manager"
-HOMEPAGE="http://savannah.nongnu.org/projects/quilt"
-[[ ${PV} == 9999 ]] || SRC_URI="http://savannah.nongnu.org/download/quilt/${P}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
+[[ ${PV} == 9999 ]] || SRC_URI="https://savannah.nongnu.org/download/quilt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

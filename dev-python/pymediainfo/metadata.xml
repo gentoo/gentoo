@@ -12,5 +12,6 @@
   <upstream>
 	  <remote-id type="pypi">pymediainfo</remote-id>
 	  <remote-id type="github">sbraz/pymediainfo</remote-id>
+	  <bugs-to>https://github.com/sbraz/pymediainfo/issues</bugs-to>
   </upstream>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/SimonSapin/cairocffi"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="doc test"
 
 RDEPEND="

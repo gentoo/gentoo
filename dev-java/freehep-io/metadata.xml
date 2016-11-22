@@ -5,4 +5,7 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">freehep/freehep-io</remote-id>
+	</upstream>
 </pkgmetadata>

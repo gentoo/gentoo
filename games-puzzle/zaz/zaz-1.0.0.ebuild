@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools flag-o-matic eutils games
 
 DESCRIPTION="A puzzle game where the player has to arrange balls in triplets"
-HOMEPAGE="http://sourceforge.net/projects/zaz/"
+HOMEPAGE="https://sourceforge.net/projects/zaz/"
 SRC_URI="mirror://sourceforge/zaz/${P}.tar.bz2"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 OFL"

@@ -6,7 +6,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
 Author: Martin Steghöfer <martin@steghoefer.eu>
-Bug: http://sourceforge.net/tracker/?func=detail&aid=3512390&group_id=290648&atid=1229531
+Bug: https://sourceforge.net/tracker/?func=detail&aid=3512390&group_id=290648&atid=1229531
 Forwarded: not-needed
 
 Added includes necessary for the use of the function "av_rescale_q".

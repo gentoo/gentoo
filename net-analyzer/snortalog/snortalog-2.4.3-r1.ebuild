@@ -18,10 +18,11 @@ IUSE="tk"
 
 RDEPEND="
 	dev-lang/perl[ithreads]
+	dev-perl/GDGraph
 	dev-perl/HTML-HTMLDoc
 	virtual/perl-DB_File
 	virtual/perl-Getopt-Long
-	tk? ( dev-perl/Tk dev-perl/GDGraph )
+	tk? ( dev-perl/Tk )
 "
 
 S=${WORKDIR}

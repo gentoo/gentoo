@@ -9,7 +9,7 @@ inherit eutils webapp eutils depend.apache
 WAS_VER="0.1.2b"
 
 DESCRIPTION="Utility for monitoring and archiving AOL Instant Messenger messages across a network"
-HOMEPAGE="http://sourceforge.net/projects/aimsniff/"
+HOMEPAGE="https://sourceforge.net/projects/aimsniff/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.gz
 	http? ( mirror://sourceforge/${PN}/was-${WAS_VER}.tar.gz )

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nimiux@gentoo.org</email>
+		<name>Chema Alonso</name>
+	</maintainer>
+	<longdescription lang="en">
+		swatchdog.pl started out as swatch, the "simple watchdog"
+		for activity monitoring log files produced by UNIX's syslog
+		facility. It has since been evolving into a utility that can
+		monitor just about any type of log. The name has been changed
+		to satisfy a request made by the old Swiss watch company.
+	</longdescription>
+	<longdescription lang="es">
+		swatchdog.pl comenzó como swatch, el "simple perro guardián"
+		para monitorizar la actividad en los ficheros de registro
+		producidos por la característica syslog de los sistemas UNIX.
+		Desde entonces ha evolucionado hacia una utilidad que puede
+		monitorizar cualquier tipo de registro. Se ha cambiado el
+		nombre del proyecto para satisfacer una petición realizada
+		por la empresa de relojes suiza.
+	</longdescription>
+</pkgmetadata>

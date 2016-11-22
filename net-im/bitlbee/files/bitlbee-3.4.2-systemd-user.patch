@@ -1,0 +1,10 @@
+--- a/init/bitlbee.service.in
++++ b/init/bitlbee.service.in
+@@ -4,6 +4,7 @@
+ 
+ [Service]
+ ExecStart=@sbindir@bitlbee -F -n
++User=bitlbee
+ 
+ [Install]
+ WantedBy=multi-user.target

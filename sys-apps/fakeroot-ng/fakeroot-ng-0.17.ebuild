@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="A utility to run commands with fake root privileges"
-HOMEPAGE="http://sourceforge.net/projects/fakerootng/"
+HOMEPAGE="https://sourceforge.net/projects/fakerootng/"
 SRC_URI="mirror://sourceforge/${PN//-/}/${PF}.tar.gz
 	https://dev.gentoo.org/~ssuominen/${P}-gcc47.patch.xz"
 

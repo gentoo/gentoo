@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/automatic
+
+# Various options.
+# run `samplicator -h` for valid cmdline options
+OPTS="-v 1 -a -l /var/log/automatic/automatic.log"
+
+# Receiver config file
+CONFIG="-c /etc/automatic.conf"

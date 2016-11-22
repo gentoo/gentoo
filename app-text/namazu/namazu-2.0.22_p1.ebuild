@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,11 +13,11 @@ SRC_URI="http://www.namazu.org/test/${P/_p/pre}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="emacs nls tk linguas_ja"
+IUSE="emacs nls tk l10n_ja"
 
 RDEPEND=">=dev-perl/File-MMagic-1.20
 	emacs? ( virtual/emacs )
-	linguas_ja? (
+	l10n_ja? (
 		app-i18n/nkf
 		|| (
 			dev-perl/Text-Kakasi
@@ -28,7 +28,7 @@ RDEPEND=">=dev-perl/File-MMagic-1.20
 	)
 	nls? ( virtual/libintl )
 	tk? (
-		dev-lang/tk
+		dev-lang/tk:0
 		www-client/lynx
 	)"
 DEPEND="${RDEPEND}

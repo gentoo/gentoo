@@ -1,0 +1,14 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+ARCH="x86-cygwin"
+CHOST="i686-pc-cygwin"
+ACCEPT_KEYWORDS="~x86-cygwin ~x86-linux"
+
+# multilib build stuff, single ABI (no multilib)
+MULTILIB_ABIS="x86"
+DEFAULT_ABI="x86"
+ABI="x86"
+IUSE_IMPLICIT="abi_x86_32"
+LIBDIR_x86="lib"

@@ -1,5 +1,5 @@
---- configure.ac.orig	2009-06-14 22:10:24.000000000 +1200
-+++ configure.ac	2009-06-14 22:26:29.000000000 +1200
+--- a/configure.ac
++++ b/configure.ac
 @@ -148,6 +148,12 @@ AC_ARG_WITH(netcdf,
  	      [with_netcdf=$withval],
  	      [with_netcdf='yes'])

@@ -16,5 +16,6 @@
     <flag name="http">Enable embedded web server</flag>
     <flag name="cluster">Enable high-availability support through the Corosync Cluster Engine</flag>
     <flag name="ilbc">Enable the Internet Low Bitrate Codec (iLBC)</flag>
+	<flag name="pjproject">Enable support for pjproject (pjsip)</flag>
   </use>
 </pkgmetadata>

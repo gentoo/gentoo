@@ -1,5 +1,5 @@
---- TuxMathScrabble/tms.py.old	2015-02-02 22:19:30.894373011 +0100
-+++ TuxMathScrabble/tms.py	2015-02-02 22:20:19.530320947 +0100
+--- a/TuxMathScrabble/tms.py	2015-02-02 22:19:30.894373011 +0100
++++ b/TuxMathScrabble/tms.py	2015-02-02 22:20:19.530320947 +0100
 @@ -1258,7 +1258,7 @@
  		if not os.path.exists(infname):
  			
@@ -9,8 +9,8 @@
  			if os.path.exists(candidate):
  				master_fname=candidate
  			
---- .tms_config_master.old	2015-02-02 22:21:59.655216399 +0100
-+++ .tms_config_master	2015-02-02 22:25:33.754003432 +0100
+--- a/.tms_config_master	2015-02-02 22:21:59.655216399 +0100
++++ b/.tms_config_master	2015-02-02 22:25:33.754003432 +0100
 @@ -380,66 +380,66 @@
  		'wtype':'wx.SpinCtrl',
  	},

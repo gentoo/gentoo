@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-    <description>Proxying maintainer</description>
-  </maintainer>
-  <maintainer type="person">
     <email>toffanin.mauro@gmail.com</email>
     <description>Proxied maintainer</description>
   </maintainer>

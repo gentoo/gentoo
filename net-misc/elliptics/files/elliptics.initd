@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 opts="reload graceful"
 ELLIPTICS_PNAME=dnet-main

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>tomboy64@sina.cn</email>
+        <name>Matthew Brewer</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>3dprint@gentoo.org</email>
+        <name>Gentoo 3D Printer Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Gentoo Proxy Maintainers Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>python@gentoo.org</email>
+        <name>Gentoo Python Project</name>
+    </maintainer>
+    <upstream>
+		<remote-id type="github">Ultimaker/Uranium</remote-id>
+    </upstream>
+</pkgmetadata>

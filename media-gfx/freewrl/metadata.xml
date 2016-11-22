@@ -12,8 +12,6 @@ support for rendering.  When developing your 3D world or model, you can program 
 X3D Shaders Component, put your model exactly where you want them with the Geospatial Component, or just 
 throw triangles to the screen as Extrusions, IndexedFaceSets, TriangleSets, Circle2D, Disk2D, Spheres, Boxes, 
 Cubes; the list goes on and on.  With royalty free open standards, your models will continue to render, year after year. 
-<pkg>=media-gfx/freewrl-1.22*</pkg> uses traditional OpenGL calls, while <pkg>&gt;=media-gfx/freewrl-2</pkg> uses 
-"shaders" and requires hardware capable of at least OpenGL-2.0 or OpenGL-ES.
 </longdescription>
 	<use>
 		<flag name="glew">Enable glew extensions</flag>

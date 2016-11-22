@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="en">
+	Pidgin usually stores passwords as plaintext with the "save password"
+	function. This plugin instead saves all passwords to the system
+	keyring, which some would argue is a more secure form of password
+	storage.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aebrahim/pidgin-gnome-keyring</remote-id>
+	</upstream>
+</pkgmetadata>

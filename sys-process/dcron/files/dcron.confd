@@ -1,8 +1,5 @@
 # /etc/conf.d/dcron
 
-# Options to pass to dcron at startup
+# Options to pass to dcron at startup.
+# Default logging is via syslog; use -L to send to file.
 DCRON_OPTS=""
-
-# Logfile to send log output to
-# Default is /var/log/cron.log, set to /dev/null to disable logging
-DCRON_LOG="/var/log/cron.log"

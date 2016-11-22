@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-ugly
 inherit eutils gstreamer
 
 DESCRIPTION="GStreamer plugin for AMRNB/AMRWB codec"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"

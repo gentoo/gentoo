@@ -1,0 +1,58 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="UCARP is a portable implementation of the CARP protocol"
+description_logstatus="Logs the status of ${SVCNAME} to syslog"
+description_demote="Demotes ${SVCNAME} from master to backup"
+
+extra_started_commands="logstatus demote"
+
+command="/usr/sbin/ucarp"
+command_args="--interface=${UCARP_INTERFACE} \
+              --srcip=${UCARP_SOURCEADDRESS} \
+              --vhid=${UCARP_VHID} \
+              --passfile=${UCARP_PASSFILE} \
+              --addr=${UCARP_VIRTUALADDRESS} \
+              --upscript=${UCARP_UPSCRIPT} \
+              --downscript=${UCARP_DOWNSCRIPT} \
+              --xparam=${UCARP_VIRTUALPREFIX} \
+              ${UCARP_OPTS}"
+
+pidfile="/var/run/${SVCNAME}.pid"
+command_background="yes"
+
+required_files="${UCARP_PASSFILE} ${UCARP_UPSCRIPT} ${UCARP_DOWNSCRIPT}"
+
+depend() {
+        need net
+        use logger
+}
+
+start_pre() {
+        local required_vars='UCARP_INTERFACE UCARP_SOURCEADDRESS UCARP_VHID
+                             UCARP_PASSFILE UCARP_VIRTUALADDRESS UCARP_UPSCRIPT
+                             UCARP_DOWNSCRIPT UCARP_VIRTUALPREFIX'
+
+        local config_var=''
+        for config_var in $required_vars; do
+                if test -z  "$(eval echo \$$config_var)"; then
+                        eerror "Missing or empty config variable '$config_var'"
+                        ewarn  "You have to edit /etc/conf.d/${SVCNAME} first"
+                        return 1
+                fi
+        done
+}
+
+logstatus() {
+        ebegin "Logging status of ${SVCNAME} to syslog"
+        start-stop-daemon --signal SIGUSR1 --pidfile "${pidfile}"
+        eend $?
+}
+
+demote() {
+        ebegin "Demote ${SVCNAME} from master to backup"
+        start-stop-daemon --signal SIGUSR2 --pidfile "${pidfile}"
+        eend $?
+}

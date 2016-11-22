@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Probabilistic Alignment Kit"
 HOMEPAGE="http://wasabiapp.org/software/prank/"
@@ -16,12 +16,14 @@ IUSE=""
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${PN}-msa/src"
+PATCHES=( "${FILESDIR}/${PN}-140603-fix-c++14.patch" )
 
 src_prepare() {
 	sed \
 		-e "s/\$(LINK)/& \$(LDFLAGS)/" \
 		-e "s:/usr/lib:${EPREFIX}/usr/$(get_libdir):g" \
 		-i Makefile || die
+	default
 }
 
 src_compile() {

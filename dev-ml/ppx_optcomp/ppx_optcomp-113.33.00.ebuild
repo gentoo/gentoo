@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit oasis
+inherit oasis eutils
 
 DESCRIPTION="Optional compilation for OCaml"
 HOMEPAGE="http://www.janestreet.com/ocaml"
@@ -19,6 +19,10 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:="
 
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	emake setup.exe

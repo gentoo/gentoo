@@ -1,0 +1,25 @@
+From 2e74d91ddc1a776692dd7398e0126a6bd1f2a92a Mon Sep 17 00:00:00 2001
+From: Jeff Becker <ampernand@gmail.com>
+Date: Tue, 16 Aug 2016 10:25:56 -0400
+Subject: [PATCH] try fixing https://github.com/PurpleI2P/i2pd/issues/612
+
+---
+ build/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index 7f9b8c6..99d6a5a 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -369,7 +369,10 @@ if (WITH_BINARY)
+   if (MSYS OR MINGW)
+     set (MINGW_EXTRA -lws2_32 -lmswsock -liphlpapi )
+   endif ()
+-  target_link_libraries( "${PROJECT_NAME}" libi2pd i2pdclient ${DL_LIB} ${Boost_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${MINGW_EXTRA} )
++  if (WITH_STATIC)
++    set(DL_LIB ${CMAKE_DL_LIBS})
++  endif()
++  target_link_libraries( "${PROJECT_NAME}" libi2pd i2pdclient ${DL_LIB} ${Boost_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} ${MINGW_EXTRA} ${DL_LIB})
+ 
+   install(TARGETS "${PROJECT_NAME}" RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime)
+   set (APPS "\${CMAKE_INSTALL_PREFIX}/bin/${PROJECT_NAME}${CMAKE_EXECUTABLE_SUFFIX}")

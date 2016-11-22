@@ -1,0 +1,46 @@
+Work-around KDE 5.7 MPRIS issues. 
+
+diff --git a/gui/mainwindow.cpp b/gui/mainwindow.cpp
+index cc2b532..37eec9e 100644
+--- a/gui/mainwindow.cpp
++++ b/gui/mainwindow.cpp
+@@ -1410,8 +1410,8 @@ void MainWindow::setRating()
+     }
+ }
+ 
+-void MainWindow::readSettings()
+-{    
++void MainWindow::initMpris()
++{
+     #ifdef QT_QTDBUS_FOUND
+     if (Settings::self()->mpris()) {
+         if (!mpris) {
+@@ -1424,6 +1424,16 @@ void MainWindow::readSettings()
+         mpris=0;
+     }
+     CurrentCover::self()->setEnabled(mpris || Settings::self()->showPopups() || 0!=Settings::self()->playQueueBackground() || Settings::self()->showCoverWidget());
++    #endif
++}
++
++void MainWindow::readSettings()
++{    
++    #ifdef QT_QTDBUS_FOUND
++    // It appears as if the KDE MPRIS code does not like the MPRIS interface to be setup before the window is visible.
++    // to work-around this, initMpris in the next event loop iteration.
++    // See #863
++    QTimer::singleShot(0, this, SLOT(initMpris()));
+     #else
+     CurrentCover::self()->setEnabled(Settings::self()->showPopups() || 0!=Settings::self()->playQueueBackground() || Settings::self()->showCoverWidget());
+     #endif
+diff --git a/gui/mainwindow.h b/gui/mainwindow.h
+index 6d6e960..aa3a80a 100644
+--- a/gui/mainwindow.h
++++ b/gui/mainwindow.h
+@@ -268,6 +268,7 @@ public Q_SLOTS:
+ private Q_SLOTS:
+     void toggleContext();
+     void toggleMenubar();
++    void initMpris();
+ 
+ private:
+     int prevPage;

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE="doc"
 
 DEPEND="dev-lang/perl
 	virtual/latex-base
+	dev-texlive/texlive-fontsextra
 	doc? (
 		app-text/dvipsk
 		app-text/docbook-sgml-utils[jadetex] )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_PV="${MY_PV_MAIN}-${MY_PV_RC//rc/rcgit.}"
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 else
 	inherit git-2
 	SRC_URI=""
@@ -40,6 +40,7 @@ RDEPEND="
 	crypt? ( dev-libs/libgcrypt:0= )
 	freerdp? (
 		>=net-misc/freerdp-1.2
+		<net-misc/freerdp-2
 	)
 	gnome-keyring? ( gnome-base/libgnome-keyring )
 	ssh? ( net-libs/libssh[sftp] )

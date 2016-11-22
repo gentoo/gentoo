@@ -1,0 +1,33 @@
+--- a/configure.in
++++ b/configure.in
+@@ -8,9 +8,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ 
+-dnl Checks for libraries.
+-dnl Replace `main' with a function in -lncurses:
+-AC_CHECK_LIB(ncurses, main)
++PKG_PROG_PKG_CONFIG
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+@@ -26,18 +24,7 @@
+ 
+ AC_CHECK_HEADERS(curses.h ncurses.h)
+ 
+-CURSES_LIB_NAME=""
+-AC_CHECK_LIB(ncurses, tgetent, CURSES_LIB="-lncurses" CURSES_LIB_NAME=ncurses)
+-
+-if eval "test x$CURSES_LIB_NAME = x"
+-then
+-    AC_CHECK_LIB(curses, tgetent, CURSES_LIB="-lcurses" CURSES_LIB_NAME=curses)
+-fi
+-
+-if eval "test x$CURSES_LIB_NAME = x"
+-then
+-    AC_CHECK_LIB(termcap, tgetent, CURSES_LIB="-ltermcap" CURSES_LIB_NAME=termcap)
+-fi
++PKG_CHECK_MODULES(ncurses,ncurses,[LIBS="$LIBS $ncurses_LIBS";CURSES_LIB_NAME=ncurses])
+ 
+ if eval "test x$CURSES_LIB_NAME = x"
+ then

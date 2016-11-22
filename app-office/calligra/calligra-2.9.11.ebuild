@@ -12,6 +12,7 @@ CHECKREQS_DISK_BUILD="4G"
 KDE_HANDBOOK="optional"
 KDE_LINGUAS_LIVE_OVERRIDE="true"
 OPENGL_REQUIRED="optional"
+WEBKIT_REQUIRED="optional"
 inherit check-reqs kde4-base versionator
 
 DESCRIPTION="KDE Office Suite"
@@ -36,11 +37,11 @@ LICENSE="GPL-2"
 SLOT="4"
 
 if [[ ${KDE_BUILD_TYPE} == release ]] ; then
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
-+glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw kde +kdepim +lcms
++glew +glib +gsf gsl import-filter +jpeg jpeg2k +kdcraw +kdepim +lcms
 marble mysql +okular openexr +pdf postgres spacenav sybase test tiff +threads
 +truetype vc xbase +xml"
 
@@ -57,6 +58,7 @@ REQUIRED_USE="
 	calligra_features_krita? ( eigen exif lcms opengl )
 	calligra_features_plan? ( kdepim )
 	calligra_features_sheets? ( eigen )
+	calligra_features_stage? ( webkit )
 	vc? ( calligra_features_krita )
 	test? ( calligra_features_karbon )
 "
@@ -91,7 +93,6 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	kdcraw? ( $(add_kdeapps_dep libkdcraw) )
-	kde? ( $(add_kdebase_dep kactivities) )
 	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	lcms? (
 		media-libs/lcms:2
@@ -99,7 +100,7 @@ RDEPEND="
 	)
 	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
-	okular? ( $(add_kdeapps_dep okular) )
+	okular? ( >=kde-apps/okular-4.4:4=[aqua=] )
 	opengl? (
 		media-libs/glew
 		virtual/glu
@@ -150,6 +151,13 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
+src_prepare() {
+	if ! use webkit; then
+		sed -i CMakeLists.txt -e "/^find_package/ s/QtWebKit //" || die
+	fi
+	kde4-base_src_prepare
+}
+
 src_configure() {
 	local cal_ft myproducts
 
@@ -173,6 +181,7 @@ src_configure() {
 		"-DCREATIVEONLY=OFF"
 		"-DPACKAGERS_BUILD=OFF"
 		"-DWITH_Soprano=OFF"
+		"-DWITH_KActivities=OFF"	# deprecated Plasma 4 activities integration
 	)
 
 	# regular options
@@ -197,7 +206,6 @@ src_configure() {
 		$(cmake-utils_use_with jpeg JPEG)
 		$(cmake-utils_use_with jpeg2k OpenJPEG)
 		$(cmake-utils_use_with kdcraw Kdcraw)
-		$(cmake-utils_use_with kde KActivities)
 		$(cmake-utils_use_with kdepim KdepimLibs)
 		$(cmake-utils_use_with lcms LCMS2)
 		$(cmake-utils_use_with marble CalligraMarble)

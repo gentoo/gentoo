@@ -188,8 +188,12 @@ pkg_setup() {
 		openldap_find_versiontags
 	fi
 
-	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	# The user/group are only used for running daemons which are
+	# disabled in minimal builds, so elide the accounts too.
+	if ! use minimal ; then
+		enewgroup ldap 439
+		enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	fi
 }
 
 src_prepare() {

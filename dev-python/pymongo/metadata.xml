@@ -2,13 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-		<name>Alexys Jacob</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>julien@thebault.co</email>
 		<name>Lujeni</name>
 		<description>Proxy-Maintainer, assign bugs</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>

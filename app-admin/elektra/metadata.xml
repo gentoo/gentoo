@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
-</maintainer>
-<use>
-	<flag name="augeas">Enable plugin for reading and writing configuration files with help from Augeas</flag>
-	<flag name="ini">Enable new, advanced ini support</flag>
-	<flag name="gcov">Enable coverage support</flag>
-	<flag name="simpleini">Enable simpleini support</flag>
-	<flag name="uname">Enable uname information for the key database</flag>
-	<flag name="yajl">Enable yajl support</flag>
-</use>
+	<maintainer type="person">
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<use>
+		<flag name="augeas">Enable plugin for reading and writing configuration files with help from Augeas</flag>
+		<flag name="gcov">Enable coverage support</flag>
+		<flag name="ini">Enable new, advanced ini support</flag>
+		<flag name="simpleini">Enable simpleini support</flag>
+		<flag name="uname">Enable uname information for the key database</flag>
+		<flag name="yajl">Enable yajl support</flag>
+	</use>
 </pkgmetadata>

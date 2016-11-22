@@ -1,0 +1,27 @@
+From 7c3148ec0a2fed4834c6f9869ff7d2da77ba804c Mon Sep 17 00:00:00 2001
+From: Joerg Sonnenberger <joerg@bec.de>
+Date: Wed, 22 Jun 2016 23:03:43 +0200
+Subject: [PATCH] Ignore the MT encoder in XZ 5.2 prerelease versions.
+
+---
+ configure.ac | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 64775fa..4f7f432 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -374,8 +374,11 @@ if test "x$with_lzma" != "xno"; then
+   AC_CACHE_CHECK(
+     [whether we have multithread support in lzma],
+     ac_cv_lzma_has_mt,
+-    [AC_COMPILE_IFELSE([
+-      AC_LANG_PROGRAM([[#include <lzma.h>]],
++    [AC_LINK_IFELSE([
++      AC_LANG_PROGRAM([[#include <lzma.h>]
++                       [#if LZMA_VERSION < 50020000]
++                       [#error unsupported]
++                       [#endif]],
+                       [[lzma_stream_encoder_mt(0, 0);]])],
+       [ac_cv_lzma_has_mt=yes], [ac_cv_lzma_has_mt=no])])
+   if test "x$ac_cv_lzma_has_mt" != xno; then

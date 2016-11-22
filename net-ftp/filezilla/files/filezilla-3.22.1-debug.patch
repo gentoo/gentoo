@@ -1,0 +1,12 @@
+--- filezilla-3.22.1/configure.ac
++++ filezilla-3.22.1/configure.ac
+@@ -36,9 +36,7 @@
+ 
+   if test "X$GCC" = Xyes; then
+     AX_APPEND_FLAG(-Wall, CFLAGS)
+-    AX_APPEND_FLAG(-g, CFLAGS)
+     AX_APPEND_FLAG(-Wall, CXXFLAGS)
+-    AX_APPEND_FLAG(-g, CXXFLAGS)
+   fi
+ 
+   # Do this early: Compiler and linker flags to work around a nasty bug in Xcode.

@@ -13,16 +13,19 @@ SRC_URI="http://www.yafc-ftp.com/downloads/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
-IUSE="ipv6 readline kerberos socks5 ssh"
+IUSE="ipv6 libressl kerberos readline socks5 ssh"
 
-DEPEND="dev-libs/openssl:0
+RDEPEND="
 	sys-libs/ncurses:*
 	dev-libs/libbsd
-	readline? ( >=sys-libs/readline-6 )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	kerberos? ( virtual/krb5 )
+	readline? ( >=sys-libs/readline-6:0= )
 	socks5? ( net-proxy/dante )
-	ssh? ( net-libs/libssh )"
-RDEPEND="${DEPEND}"
+	ssh? ( net-libs/libssh )
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( BUGS NEWS README.md THANKS TODO )
 

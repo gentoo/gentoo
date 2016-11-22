@@ -7,9 +7,9 @@ EAPI=5
 MY_P=${P/_/-}
 
 DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
-HOMEPAGE="http://portland.freedesktop.org/"
-SRC_URI="http://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz"
-#SRC_URI="http://portland.freedesktop.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://portland.freedesktop.org/"
+SRC_URI="https://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz"
+#SRC_URI="https://portland.freedesktop.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

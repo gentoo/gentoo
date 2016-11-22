@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="list window names"
-HOMEPAGE="http://tools.suckless.org/lsw"
+HOMEPAGE="http://tools.suckless.org/x/lsw"
 SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"

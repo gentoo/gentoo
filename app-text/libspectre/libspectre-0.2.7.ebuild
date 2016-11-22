@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="A library for rendering Postscript documents"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/libspectre"
-SRC_URI="http://libspectre.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libspectre"
+SRC_URI="https://libspectre.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

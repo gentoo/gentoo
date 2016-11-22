@@ -1,5 +1,5 @@
---- blitz/CMakeLists.txt
-+++ blitz/CMakeLists.txt
+--- a/blitz/CMakeLists.txt
++++ b/blitz/CMakeLists.txt
 @@ -31,12 +31,8 @@
  
  if(HAVE_MMX)

@@ -5,11 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<use>
-		<flag name="gunit" restrict="&gt;=dev-java/antlr-3.1.3-r1">
-		  gUnit is a "Unit Test" framework for ANTLR grammars
-	  </flag>
-	</use>
 	<upstream>
 		<remote-id type="github">antlr/antlr4</remote-id>
 	</upstream>

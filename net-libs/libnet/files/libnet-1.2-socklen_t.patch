@@ -1,0 +1,11 @@
+--- a/src/libnet_raw.c
++++ b/src/libnet_raw.c
+@@ -77,7 +77,7 @@
+ #else
+ 	BOOL n;
+ #endif
+-    int len;
++    socklen_t len;
+ 
+ #ifdef SO_SNDBUF
+ 

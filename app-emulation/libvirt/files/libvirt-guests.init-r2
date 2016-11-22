@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 description="Virtual Machine Management (libvirt) Guests"
 

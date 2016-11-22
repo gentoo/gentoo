@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/glib-2.38:2
 		>=media-libs/id3lib-3.8.3-r8
 		>=media-libs/libid3tag-0.15.1b-r4
 		)
-	mp4? ( >=media-libs/taglib-1.9.1[mp4] )
+	mp4? ( >=media-libs/taglib-1.9.1[mp4(+)] )
 	opus? (
 		>=media-libs/opus-1.1
 		>=media-libs/opusfile-0.4

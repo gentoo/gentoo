@@ -1,0 +1,12 @@
+Index: CMakeLists.txt
+===================================================================
+--- a/CMakeLists.txt	(revision 1209280)
++++ b/CMakeLists.txt	(revision 1209281)
+@@ -1,5 +1,7 @@
+ project(blitz)
+ 
++cmake_minimum_required(VERSION 2.6.4)
++
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules )
+ find_package(Qt4 REQUIRED)
+ # properly set up compile flags (QT_DEBUG/QT_NO_DEBUG, ...)

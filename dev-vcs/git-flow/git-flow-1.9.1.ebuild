@@ -11,13 +11,13 @@ COMP_P="${COMP_PN}-${COMP_PV}"
 inherit bash-completion-r1
 
 DESCRIPTION="Git extensions to provide high-level repository operations"
-HOMEPAGE="https://github.com/petervanderdoes/gitflow"
+HOMEPAGE="https://github.com/petervanderdoes/gitflow-avh"
 SRC_URI="https://github.com/petervanderdoes/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 https://github.com/petervanderdoes/${COMP_PN}/archive/${COMP_PV}.tar.gz -> ${COMP_P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""

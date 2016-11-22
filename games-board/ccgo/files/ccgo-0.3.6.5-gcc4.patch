@@ -1,5 +1,5 @@
---- gtk/board.cc.orig
-+++ gtk/board.cc
+--- a/gtk/board.cc
++++ b/gtk/board.cc
 @@ -20,9 +20,7 @@
   */
  

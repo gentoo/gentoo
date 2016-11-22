@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="command-line utility to show process environment"
 HOMEPAGE="https://github.com/jamesodhunt/procenv"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jamesodhunt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="test"
 
 DEPEND="
@@ -21,5 +21,9 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-sysmacros.patch
+	epatch \
+		"${FILESDIR}"/${P}-sysmacros.patch \
+		"${FILESDIR}"/${P}-flags.patch
+
+	eautoreconf
 }

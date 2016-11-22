@@ -8,7 +8,6 @@
   <longdescription>hugin is a panorama stitching program</longdescription>
   <use>
     <flag name="sift">automatically align images with
-		<pkg>media-gfx/autopano-sift</pkg> or
 		<pkg>media-gfx/autopano-sift-C</pkg></flag>
   </use>
   <upstream>

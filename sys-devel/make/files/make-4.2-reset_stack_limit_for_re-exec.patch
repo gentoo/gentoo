@@ -1,0 +1,25 @@
+From a3d8c086d54c112fecfa2b9026a32a14f741f5f5 Mon Sep 17 00:00:00 2001
+From: Jeremy Devenport <jeremy.devenport@gmail.com>
+Date: Tue, 31 May 2016 07:09:24 +0000
+Subject: * main.c (main): [SV 48009] Reset stack limit for make re-exec.
+
+Copyright-paperwork-exempt: yes
+---
+diff --git a/main.c b/main.c
+index e606488..fa8045f 100644
+--- a/main.c
++++ b/main.c
+@@ -2454,6 +2454,11 @@ main (int argc, char **argv, char **envp)
+             exit (WIFEXITED(r) ? WEXITSTATUS(r) : EXIT_FAILURE);
+           }
+ #else
++#ifdef SET_STACK_SIZE
++          /* Reset limits, if necessary.  */
++          if (stack_limit.rlim_cur)
++            setrlimit (RLIMIT_STACK, &stack_limit);
++#endif
+           exec_command ((char **)nargv, environ);
+ #endif
+           free (aargv);
+--
+cgit v0.9.0.2

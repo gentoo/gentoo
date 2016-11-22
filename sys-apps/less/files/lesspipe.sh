@@ -162,7 +162,7 @@ lesspipe() {
 
 	### Media ###
 	*.bmp|*.gif|*.jpeg|*.jpg|*.ico|*.pcd|*.pcx|*.png|*.ppm|*.tga|*.tiff|*.tif|*.webp)
-		identify "$1" || file -L -- "$1"
+		identify -verbose -- "$1" || file -L -- "$1"
 		;;
 	*.asf|*.avi|*.mov|*.mp4|*.mpeg|*.mpg|*.qt|*.ram|*.rm|*.webm|*.wmv)
 		midentify "$1" || file -L -- "$1"

@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Utilities for PKCS#11 data object manipulation in"
-HOMEPAGE="https://sites.google.com/site/alonbarlev/pkcs11-utilities"
-SRC_URI="https://pkcs11-tools.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/alonbl/pkcs11-data"
+SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,8 +18,3 @@ IUSE=""
 RDEPEND=">=dev-libs/pkcs11-helper-1.02"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF}
-}

@@ -1,0 +1,25 @@
+--- ./src/run.c.orig	2004-03-30 13:17:53.000000000 +0000
++++ ./src/run.c	2012-05-13 06:33:35.000000000 +0000
+@@ -110,7 +110,7 @@
+ 		sshcmd = g_strconcat(sshcmd, g_strdup_printf("%s",
+ 			SHASH("sshhost")), NULL);
+ 		sshcmd = g_strconcat(sshcmd, g_strdup_printf(" \"%s\"", cmd), NULL);
+-		g_warning(sshcmd);
++		g_warning("%s",sshcmd);
+ 		cmdline = g_strconcat(sshcmd, NULL);
+ 	} else {	/* execute without ssh */
+ 		cmdline = g_strconcat(cmd, NULL);
+--- ./src/rdpparse.c.orig	2012-05-13 06:36:59.000000000 +0000
++++ ./src/rdpparse.c	2012-05-13 06:37:31.000000000 +0000
+@@ -306,9 +306,9 @@
+ 	parts = g_strsplit(value, "x", 2);
+ 
+ 	if(typ == 'W')
+-		return(g_strdup_printf(parts[0]));
++		return(g_strdup_printf("%s",parts[0]));
+ 	else
+-		return(g_strdup_printf(parts[1]));
++		return(g_strdup_printf("%s",parts[1]));
+ 
+ 	if(parts != NULL)
+ 		g_strfreev(parts);

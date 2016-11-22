@@ -4,6 +4,31 @@
 
 # This file requires >=portage-2.1.1
 
+# Jonathan Scruggs <j.scruggs@gmail.com> (27 Oct 2016)
+# Blender needs newer versions of CUDA which no longer support x86
+media-gfx/blender cuda
+
+# Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
+# Enable gambit and scm only on supported architectures
+>=dev-scheme/slib-3.2.5 -gambit -scm
+
+# Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
+# Enable MQTT support on supported architectures
+app-admin/collectd -collectd_plugins_mqtt
+
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# Enable numa support on supported architectures
+dev-db/percona-server -numa
+
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
+# Patrice Clement <monsieurp@gentoo.org> (05 Jun 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lua/busted lacks x86 keyword. See bug #581210.
+media-video/aegisub test
+
 # Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
 # rspec:3 is not keyworded for x86 at this time
 =dev-ruby/bundler-audit-0.5.0 test
@@ -76,7 +101,7 @@ media-libs/mesa -openmax
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
-# http://sourceforge.net/p/mikmod/bugs/16/#17ea
+# https://sourceforge.net/p/mikmod/bugs/16/#17ea
 media-libs/libmikmod sse2
 media-libs/libmikmod cpu_flags_x86_sse2
 
@@ -84,7 +109,7 @@ media-libs/libmikmod cpu_flags_x86_sse2
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <ottxor@gentoo.org> (08 Sep 2013)
+# Christoph Junghans <junghans@gentoo.org> (08 Sep 2013)
 # restrict USE=quad for x86 as there are too less registers
 sci-libs/fftw quad
 
@@ -113,14 +138,10 @@ sci-libs/cholmod -cuda
 sci-libs/flann -cuda
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/biosdevname, systemd work on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium, mono work on this arch (masked in base)
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda/mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -cuda -mkl
 
@@ -210,10 +231,6 @@ dev-libs/glib -systemtap
 =sys-cluster/glusterfs-3.1.2 infiniband
 =sys-cluster/corosync-1.3.0 infiniband
 
-# Luca Barbato <lu_zero@gentoo.org> (28 Feb 2011)
-# # Masked in base, unmask for amd64/x86
-media-video/mplayer2 -bluray
-
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
@@ -234,10 +251,6 @@ www-client/firefox -ipc
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
-# Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
->=dev-java/ibm-jdk-bin-1.5 -nsplugin
->=dev-java/ibm-jre-bin-1.5 -nsplugin
 
 # Jim Ramsay <lack@gentoo.org> (24 March 2011)
 # '64bit' '32bit' 'nspluginwrapper' are for amd64 only
@@ -268,11 +281,6 @@ app-text/enchant -zemberek
 
 x11-terms/eterm sse2
 x11-terms/eterm cpu_flags_x86_sse2
-
-# Christian Faulhammer <opfer@gentoo.org> (14 Jan 2008)
-# only works on x86
-dev-java/ibm-jdk-bin -alsa
-dev-java/ibm-jre-bin -alsa
 
 # Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
 media-video/mplayer -cpudetection -custom-cpuopts -bindist

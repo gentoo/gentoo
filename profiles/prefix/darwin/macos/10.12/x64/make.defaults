@@ -1,0 +1,10 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+ARCH="x64-macos"
+CHOST="x86_64-apple-darwin16"
+ACCEPT_KEYWORDS="~x64-macos"
+
+USE="mmx mmxext sse sse2"
+CPU_FLAGS_X86="mmx mmxext sse sse2"

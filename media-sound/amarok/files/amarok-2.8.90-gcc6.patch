@@ -1,0 +1,36 @@
+From 9308403e1c8484052f277bf6de32ee07c93a4beb Mon Sep 17 00:00:00 2001
+From: Rex Dieter <rdieter@math.unl.edu>
+Date: Wed, 1 Jun 2016 13:58:26 -0500
+Subject: [PATCH] gcc6 buildfix
+
+courtesy of opensuse, thx
+
+BUG: 363054
+---
+ src/core-impl/playlists/types/file/xspf/XSPFPlaylist.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/core-impl/playlists/types/file/xspf/XSPFPlaylist.cpp b/src/core-impl/playlists/types/file/xspf/XSPFPlaylist.cpp
+index 4bdb9b9..e327354 100644
+--- a/src/core-impl/playlists/types/file/xspf/XSPFPlaylist.cpp
++++ b/src/core-impl/playlists/types/file/xspf/XSPFPlaylist.cpp
+@@ -28,6 +28,7 @@
+ #include "playlist/PlaylistModelStack.h"
+ 
+ using namespace Playlists;
++using namespace Playlist;
+ 
+ XSPFPlaylist::XSPFPlaylist( const KUrl &url, Playlists::PlaylistProvider *provider, OnLoadAction onLoad )
+     : PlaylistFile( url, provider )
+@@ -101,7 +102,7 @@ XSPFPlaylist::load()
+     //FIXME: this needs to be moved to whatever is creating the XSPFPlaylist
+     if( m_autoAppendAfterLoad )
+         The::playlistController()->insertPlaylist(
+-                    ::Playlist::ModelStack::instance()->bottom()->rowCount(),
++                    ModelStack::instance()->bottom()->rowCount(),
+                     Playlists::PlaylistPtr( this )
+                 );
+ }
+-- 
+2.8.3
+

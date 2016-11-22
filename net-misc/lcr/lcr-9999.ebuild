@@ -27,11 +27,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:' "${S}"/libgsmhr/fetch_sources.py
 	eautoreconf
 }
 
 src_configure() {
-	econf \
+	CXXFLAGS="$CXXFLAGS -I./include" CFLAGS="$CFLAGS -I./include" econf \
 		$(use_with asterisk) \
 		$(use_with ssl) \
 		$(use_with gsm-bs) \

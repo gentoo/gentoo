@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/bitcoin/${MyPN}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="asm doc ecdh endomorphism experimental gmp +recovery schnorr test"
+IUSE="asm doc ecdh endomorphism experimental gmp libressl +recovery schnorr test"
 
 REQUIRED_USE="
 	asm? ( amd64 )
@@ -26,7 +26,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-libs/openssl:0 )
+	test? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 
 src_prepare() {

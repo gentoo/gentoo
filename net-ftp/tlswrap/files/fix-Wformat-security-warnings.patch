@@ -1,0 +1,67 @@
+From dbbc4b17b5fdd08b11b0f285cfc99a28be8a89e5 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 11 Aug 2016 13:05:43 -0400
+Subject: [PATCH 3/3] Fix -Wformat-security warnings by adding trivial format
+ strings.
+
+Newer versions of GCC have the option to output warnings for insecure
+(e.g. missing) format string usage. A few places were making calls to
+the printf family of functions, and passing in a string variable
+without a format string. In all cases, the desired format string was
+simply "%s", intended to print the sole argument, and that "%s" has
+been added.
+
+This eliminates the warnings, and allows the build to complete when
+-Werror=format-security is used.
+---
+ misc.c  | 4 ++--
+ parse.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/misc.c b/misc.c
+index ebaabb2..d9bb150 100644
+--- a/misc.c
++++ b/misc.c
+@@ -164,7 +164,7 @@ int print_to_ud(struct user_data *ud, const char *s) {
+   	size_t slen;
+   	char str[1024];
+   
+-  	snprintf(str, sizeof(str), s);
++  	snprintf(str, sizeof(str), "%s", s);
+ 
+   	slen = strlen(str); /* NOT including null char */
+   
+@@ -184,7 +184,7 @@ int print_to_serv(struct user_data *ud, const char *s) {
+ 	size_t slen;
+ 	char str[130];
+ 
+-	snprintf(str, sizeof(str), s);
++	snprintf(str, sizeof(str), "%s", s);
+ 	slen = strlen(str); /* NOT including null char */
+ 	if ( (&ud->u2s_buf[U2S_SIZE]-ud->u2s_i)<slen) {
+ 		printf("print_to_ud: can't fit string to buffer\n");
+diff --git a/parse.c b/parse.c
+index 1174202..ac4529f 100644
+--- a/parse.c
++++ b/parse.c
+@@ -345,7 +345,7 @@ parse_serv_buf(struct user_data *ud, int index, char *ucertspath, char *cafile)
+ 		ud->serv_status = SERV_PBSZ;
+ 		snprintf(s, sizeof(s), "PROT %c\r\n", ud->prot);
+ 		if (debug)
+-			printf(s);
++			printf("%s", s);
+ 		print_to_serv(ud,s);
+ 	} else if ((ud->serv_status == SERV_PBSZ) && (strncasecmp(dst,"200 ",4) == 0) ) {
+ 		ud->serv_status = SERV_PROT;
+@@ -365,7 +365,7 @@ parse_serv_buf(struct user_data *ud, int index, char *ucertspath, char *cafile)
+ 	} else if (ud->delay_prot && (ud->serv_status == SERV_PROT) && (strncasecmp(dst,"230 ",4) == 0) ) {
+ 		snprintf(s, sizeof(s), "PROT %c\r\n", ud->prot);
+ 		if (debug)
+-			printf(s);
++			printf("%s", s);
+ 		print_to_serv(ud,s);
+ 	} else if (ud->delay_prot && (ud->serv_status == SERV_PROT) && (strncasecmp(dst,"200 ",4) == 0) ) {
+ 		write(ud->user_fd, "230 Bypassed login text because the ftpd can't handle PROT before USER.\r\n", 73);
+-- 
+2.7.3
+

@@ -1,0 +1,67 @@
+Fix building with C++14 (default in GCC 6). Changes types (mostly float into
+double). Add necessary casts.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594116
+
+--- a/src/analyzer.cpp
++++ b/src/analyzer.cpp
+@@ -470,13 +470,13 @@
+                                 lastoutL = fft_outL[_iter];
+                                 //pumping up actual signal an erase surrounding
+                                 // sounds
+-                                fft_outL[_iter] = 0.25f * std::max(n * 0.6f * \
++                                fft_outL[_iter] = 0.25 * std::max(n * 0.6 * \
+                                     fabs(fft_outL[_iter]) - var1L , 1e-20);
+                                 if(_mode == 3 or _mode == 4) {
+                                     // do the same with R channel if needed
+                                     lastoutR = fft_outR[_iter];
+-                                    fft_outR[_iter] = 0.25f * std::max(n * \
+-                                        0.6f * fabs(fft_outR[_iter]) - var1R , 1e-20);
++                                    fft_outR[_iter] = 0.25 * std::max(n * \
++                                        0.6 * fabs(fft_outR[_iter]) - var1R , 1e-20);
+                                 }
+                                 break;
+                         }
+--- a/src/jack_client.cpp
++++ b/src/jack_client.cpp
+@@ -226,7 +226,7 @@
+                 map<string, int>::const_iterator p = port_to_plugin.find((*k) + cnlen + 1);
+                 if (p != port_to_plugin.end())
+                 {
+-                    run_before.insert(make_pair<int, int>(p->second, i));
++                    run_before.insert(make_pair<int, int>((int)p->second, (int)i));
+                 }
+             }
+             jack_free(conns);
+--- a/src/modules_dist.cpp
++++ b/src/modules_dist.cpp
+@@ -794,8 +794,8 @@
+             lfo2.advance(1);
+             
+             // dot
+-            rms = std::max((double)rms, (fabs(Lo) + fabs(Ro)) / 2);
+-            input = std::max((double)input, (fabs(Lc) + fabs(Rc)) / 2);
++            rms = std::max((double)rms, (fabs(Lo) + fabs(Ro)) / 2.0);
++            input = std::max((double)input, (fabs(Lc) + fabs(Rc)) / 2.0);
+             
+             float values[] = {inL, inR, outs[0][i], outs[1][i]};
+             meters.process(values);
+--- a/src/modules_limit.cpp
++++ b/src/modules_limit.cpp
+@@ -429,7 +429,7 @@
+                 }
+                 
+                 // write multiband coefficient to buffer
+-                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
++                buffer[pos] = std::min((double)*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
+                 
+                 // step forward in multiband buffer
+                 pos = (pos + channels) % buffer_size;
+@@ -811,7 +811,7 @@
+                 }
+                 
+                 // write multiband coefficient to buffer
+-                buffer[pos] = std::min(*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
++                buffer[pos] = std::min((double)*params[param_limit] / std::max(fabs(tmpL), fabs(tmpR)), 1.0);
+                 
+                 // step forward in multiband buffer
+                 pos = (pos + channels) % buffer_size;

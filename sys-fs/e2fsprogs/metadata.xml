@@ -5,6 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name='fuse'>Build fuse2fs, a FUSE file system client for ext2/ext3/ext4 file systems</flag>
+</use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:ext2_filesystems_utilities:e2fsprogs</remote-id>
 	<remote-id type="sourceforge">e2fsprogs</remote-id>

@@ -71,7 +71,6 @@
     <remote-id type="cpan-module">DBI::DBD::SqlEngine::db</remote-id>
     <remote-id type="cpan-module">DBI::DBD::SqlEngine::dr</remote-id>
     <remote-id type="cpan-module">DBI::DBD::SqlEngine::st</remote-id>
-    <remote-id type="cpan-module">DBI::FAQ</remote-id>
     <remote-id type="cpan-module">DBI::Gofer::Execute</remote-id>
     <remote-id type="cpan-module">DBI::Gofer::Request</remote-id>
     <remote-id type="cpan-module">DBI::Gofer::Response</remote-id>
@@ -90,7 +89,6 @@
     <remote-id type="cpan-module">DBI::ProxyServer::db</remote-id>
     <remote-id type="cpan-module">DBI::ProxyServer::dr</remote-id>
     <remote-id type="cpan-module">DBI::ProxyServer::st</remote-id>
-    <remote-id type="cpan-module">DBI::PurePerl</remote-id>
     <remote-id type="cpan-module">DBI::SQL::Nano</remote-id>
     <remote-id type="cpan-module">DBI::SQL::Nano::Statement_</remote-id>
     <remote-id type="cpan-module">DBI::SQL::Nano::Table_</remote-id>

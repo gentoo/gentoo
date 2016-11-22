@@ -1,0 +1,10 @@
+--- a/libinterp/corefcn/module.mk
++++ b/libinterp/corefcn/module.mk
+@@ -318,6 +318,7 @@
+   $(HDF5_CPPFLAGS) \
+   $(LLVM_CPPFLAGS) \
+   $(Z_CPPFLAGS)
++libinterp_corefcn_libcorefcn_la_LIBADD = $(Z_LIBS)
+ 
+ libinterp_corefcn_libcorefcn_la_CFLAGS = $(AM_CFLAGS) $(WARN_CFLAGS)
+ 

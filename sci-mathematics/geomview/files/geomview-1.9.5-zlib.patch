@@ -1,0 +1,34 @@
+Upstream diff to fix missing declarations with --without-zlib:
+* image.c:1028:34: error: 'gzip_data_pipe' undeclared here (not in a function)
+*    { decompressors+1, "gzip -dc", gzip_data_pipe, { "z", "gz", "gzip", NULL } },
+*                                   ^~~~~~~~~~~~~~
+See also: https://bugs.gentoo.org/show_bug.cgi?id=596414
+
+--- a/src/lib/shade/image.c
++++ b/src/lib/shade/image.c
+@@ -36,6 +36,8 @@
+ 
+ #ifndef HAVE_LIBZ
+ # define HAVE_LIBZ 0
++#elif HAVE_LIBZ
++# define HAVE_LIBZ 1
+ #endif
+ 
+ #if HAVE_LIBZ
+@@ -1025,9 +1027,15 @@
+ };
+ 
+ static struct filter decompressors[] = {
++#if HAVE_LIBZ
+   { decompressors+1, "gzip -dc", gzip_data_pipe, { "z", "gz", "gzip", NULL } },
+-  { decompressors+2, "bzip2 -dc", NULL, { "bz2", "bzip2", NULL } },
++#else
++  { decompressors+1, "gzip -dc", NULL, { "z", "gz", "gzip", NULL } },
++#endif
++  { HAVE_LIBZ ? decompressors+2 : NULL, "bzip2 -dc", NULL, { "bz2", "bzip2", NULL } },
++#if HAVE_LIBZ  
+   { NULL, NULL, zlib_data_pipe, { "zlib", NULL } },
++#endif
+ };
+ 
+ static struct filter converters[] = {

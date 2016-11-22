@@ -1,0 +1,4 @@
+# Configuration to create /run/prelude-manager directory
+# Used as part of systemd's tmpfiles
+
+d /run/prelude-manager 0755 root root

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multiprocessing games
 
 DESCRIPTION="city/country simulation game for X and opengl"
-HOMEPAGE="http://sourceforge.net/projects/lincity-ng.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/lincity-ng.berlios/"
 SRC_URI="mirror://sourceforge/lincity-ng.berlios/${P}.tar.bz2"
 
 LICENSE="GPL-2 BitstreamVera"

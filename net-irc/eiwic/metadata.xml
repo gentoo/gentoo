@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>angelos@gentoo.org</email>
-		<name>Christoph Mende</name>
-	</maintainer>
 	<longdescription lang="en">
 		Eiwic is an IRC-bot written in pure C. It can be easily extended by own modules,
 		that can be loaded at runtime. It has an module API which is designed to make

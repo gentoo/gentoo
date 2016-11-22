@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,9 +41,13 @@ DEPEND="${RDEPEND}
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Spec
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Perl-Critic-Dynamic
 	)
 "
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/01-pod.t t/02-pod-coverage.t t/03-kwalitee.t \
+		t/04-critic.t t/release-pod-syntax.t
+	perl-module_src_test
+}

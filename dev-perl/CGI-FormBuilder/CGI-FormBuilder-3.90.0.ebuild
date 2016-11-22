@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,9 +13,12 @@ DESCRIPTION="Extremely fast, reliable form generation and processing module"
 HOMEPAGE="http://www.formbuilder.org/ ${HOMEPAGE}"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}/${P}-rt81650.patch"
+)
 # Templates that can be used - but they are optional
 #	>=dev-perl/HTML-Template-2.60.0
 #	>=dev-perl/text-template-1.430.0

@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 HOMEPAGE="http://www.geda.seul.org"
-DESCRIPTION="Metapackage which installs all the components required for a full-featured gEDA/gaf system"
+DESCRIPTION="Metapackage for all components for a full-featured gEDA/gaf system"
 
 IUSE=''
 LICENSE="GPL-2"

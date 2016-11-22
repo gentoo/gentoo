@@ -17,7 +17,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="selinux"
 
 DEPEND=""
-RDEPEND=">=sys-apps/microcode-data-20090330
+RDEPEND=">=sys-firmware/intel-microcode-20090330
 	selinux? ( sec-policy/selinux-cpucontrol )"
 
 S=${WORKDIR}/${MY_P}

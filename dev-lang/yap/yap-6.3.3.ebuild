@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="7"
+PATCHSET_VER="9"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
@@ -57,6 +57,7 @@ src_configure() {
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		--disable-prism \
+		--disable-gecode \
 		$(use_enable !static dynamic-loading) \
 		$(use_enable threads) \
 		$(use_enable threads pthread-locking) \

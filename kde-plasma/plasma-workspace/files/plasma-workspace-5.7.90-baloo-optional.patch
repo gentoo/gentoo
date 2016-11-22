@@ -1,0 +1,41 @@
+commit 7ea5034dda3d7a497be8c8d1adea08897c165916
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu Sep 15 00:22:38 2016 +0200
+
+    Make KF5Baloo optional
+    
+    https://mail.kde.org/pipermail/kde-frameworks-devel/2016-September/037734.html
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e57cb73..49584d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,8 +26,13 @@ find_package(KF5XmlRpcClient REQUIRED)
+ find_package(KF5 REQUIRED COMPONENTS PlasmaQuick)
+ find_package(KF5 REQUIRED COMPONENTS SysGuard)
+ find_package(KF5 REQUIRED COMPONENTS Package)
+-# Baloo has a different version scheme than KF5 for now
+-find_package(KF5 5.1 REQUIRED COMPONENTS Baloo)
++
++find_package(KF5Baloo)
++set_package_properties(KF5Baloo PROPERTIES DESCRIPTION "File Searching"
++                       TYPE OPTIONAL
++                       PURPOSE "Needed for the File Search runner."
++                      )
++
+ find_package(KF5TextEditor)
+ find_package(KWinDBusInterface CONFIG REQUIRED)
+ 
+diff --git a/runners/CMakeLists.txt b/runners/CMakeLists.txt
+index 48cc379..d7656c8 100644
+--- a/runners/CMakeLists.txt
++++ b/runners/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ add_subdirectory(activities)
+-add_subdirectory(baloo)
++if(KF5Baloo_FOUND)
++ add_subdirectory(baloo)
++endif()
+ add_subdirectory(bookmarks)
+ add_subdirectory(calculator)
+ add_subdirectory(locations)

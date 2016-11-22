@@ -1,25 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
+
 JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files"
+DESCRIPTION="Java API for working with archive files"
 HOMEPAGE="https://commons.apache.org/proper/commons-compress/"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-java/xz-java:0"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+RDEPEND="
 	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
 	test? (
 		dev-java/junit:4
 		dev-java/ant-junit:0

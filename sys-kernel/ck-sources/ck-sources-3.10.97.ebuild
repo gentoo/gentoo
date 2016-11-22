@@ -74,21 +74,23 @@ SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_UR
 	!bfsonly? ( ${CK_URI} )
 	bfsonly? ( ${BFS_URI} )"
 
-UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
-
-if ! use bfsonly ; then
-	UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
-else
-	UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
-fi
-
-UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
-
-UNIPATCH_STRICTORDER="yes"
-
-#-- Since experimental genpatches && we want BFQ irrespective of experimental -
-
 K_EXP_GENPATCHES_LIST="50*_*.patch*"
+
+src_unpack() {
+	UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
+	UNIPATCH_STRICTORDER="yes"
+
+	if ! use bfsonly ; then
+		UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
+	else
+		UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
+	fi
+
+	UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
+
+	#-- Since experimental genpatches && we want BFQ irrespective of experimental -
+	kernel-2_src_unpack
+}
 
 src_prepare() {
 

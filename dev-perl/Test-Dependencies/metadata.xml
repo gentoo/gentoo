@@ -5,4 +5,10 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-Dependencies</remote-id>
+    <remote-id type="cpan-module">Test::Dependencies</remote-id>
+    <remote-id type="cpan-module">Test::Dependencies::Heavy</remote-id>
+    <remote-id type="cpan-module">Test::Dependencies::Light</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Downloads and installs third-party clamav signatures"
-HOMEPAGE="http://sourceforge.net/projects/unofficial-sigs"
+HOMEPAGE="https://sourceforge.net/projects/unofficial-sigs"
 SRC_URI="mirror://sourceforge/unofficial-sigs/${P}.tar.gz"
 
 LICENSE="BSD"

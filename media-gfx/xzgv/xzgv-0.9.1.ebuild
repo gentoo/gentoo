@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Fast and simple GTK+ image viewer"
-HOMEPAGE="http://sourceforge.net/projects/xzgv"
+HOMEPAGE="https://sourceforge.net/projects/xzgv"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

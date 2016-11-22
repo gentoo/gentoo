@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit eutils multibuild multilib python-r1 qmake-utils
 
@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="amd64 arm ~ppc64 x86"
 
 # TODO: QtBluetooth, QtLocation, QtNfc, QtWebEngineWidgets
 IUSE="dbus debug declarative designer doc examples gles2 gui help multimedia

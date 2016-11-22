@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Cisco netflow probe from libpcap, ULOG, tee/divert sources"
-HOMEPAGE="http://sourceforge.net/projects/ndsad"
+HOMEPAGE="https://sourceforge.net/projects/ndsad"
 SRC_URI="mirror://sourceforge/ndsad/ndsad-${PV}.tgz"
 
 LICENSE="GPL-2"

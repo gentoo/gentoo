@@ -1,0 +1,16 @@
+--- config.h.in	2013-04-07 22:52:21.000000000 -0700
++++ config.h.in	2016-06-20 16:46:46.560891256 -0700
+@@ -879,6 +879,13 @@
+    #define below would cause a syntax error. */
+ #undef _UINT64_T
+ 
++/* Kludgey fix for Gentoo bug #492710, caused by improper use of the Tcl API.
++ * Upstream should be using Tcl_SetObjResult, Tcl_GetObjResult, and/or
++ * Tcl_GetStringResult. This is the simplest way for us to fix it, and should
++ * be removed as soon as GST uses the Tcl interface correctly.
++ */
++#define USE_INTERP_RESULT 1
++
+ /* Define for Solaris 2.5.1 so the uint8_t typedef from <sys/synch.h>,
+    <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+    #define below would cause a syntax error. */

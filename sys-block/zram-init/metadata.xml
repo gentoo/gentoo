@@ -2,9 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jauhien@gentoo.org</email>
-		<name>Jauhien Piatlicki</name>
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
 	</maintainer>
+
 	<upstream>
 		<remote-id type="github">vaeth/zram-init</remote-id>
 	</upstream>

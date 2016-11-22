@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=4
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1 qt4-r2
 if [[ ${PV} = *9999* ]]; then

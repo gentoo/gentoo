@@ -17,7 +17,7 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="gnutls java +opengl pam server +xorgmodule"
 
 RDEPEND="virtual/jpeg:0
@@ -25,7 +25,7 @@ RDEPEND="virtual/jpeg:0
 	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.5:* )
 	pam? ( virtual/pam )
 	server? (
 		dev-lang/perl
@@ -94,6 +94,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use arm || use hppa && append-flags "-fPIC"
+
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
 		-DENABLE_PAM=$(usex pam)

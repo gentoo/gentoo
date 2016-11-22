@@ -11,10 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="dcc_video">Support video connections over DCC protocol</flag>
-		<flag name="dcc_voice">Support voice connections over DCC protocol</flag>
-		<flag name="ipc">Support inter-process communication between KVIrc processes</flag>
 		<flag name="phonon">Support Phonon for audio output</flag>
-		<flag name="transparency">Support pseudo-transparency</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">kvirc/KVIrc</remote-id>

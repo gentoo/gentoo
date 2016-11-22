@@ -1,5 +1,5 @@
---- setup.py
-+++ setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -205,38 +205,7 @@
  
  _ext_modules = []

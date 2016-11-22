@@ -24,7 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+system-binutils"
 
-DEPEND="|| ( dev-libs/elfutils dev-libs/libelf )
+DEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0
 	dev-cpp/libxmlpp:2.6
@@ -34,7 +34,8 @@ DEPEND="|| ( dev-libs/elfutils dev-libs/libelf )
 	dev-libs/libsigc++:2
 	dev-libs/glib:2
 	system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r2:=[multitarget] )
-	net-misc/curl"
+	net-misc/curl
+	virtual/libelf:0="
 # automagic dep
 # dev-util/capstone
 RDEPEND="${DEPEND}"

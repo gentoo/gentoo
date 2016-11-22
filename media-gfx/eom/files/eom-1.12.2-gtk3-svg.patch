@@ -1,0 +1,33 @@
+From 038530ed2e9b844f75e2af24e44e0421ad1ccdc8 Mon Sep 17 00:00:00 2001
+From: monsta <monsta@inbox.ru>
+Date: Wed, 24 Feb 2016 16:47:08 +0300
+Subject: [PATCH] fix svg rendering that's broken with GTK+3
+
+from
+https://git.gnome.org/browse/eog/commit/?id=a33950c14d7b8da8e1c6289709022affb910be2a
+---
+ src/eom-scroll-view.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/eom-scroll-view.c b/src/eom-scroll-view.c
+index 6385f29..6d1b290 100644
+--- a/src/eom-scroll-view.c
++++ b/src/eom-scroll-view.c
+@@ -1306,7 +1306,7 @@ display_expose_event (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+ 
+ #ifdef HAVE_RSVG
+ 	if (eom_image_is_svg (view->priv->image)) {
+-		cairo_matrix_t matrix, translate, scale;
++		cairo_matrix_t matrix, translate, scale, original;
+ 		EomTransform *transform = eom_image_get_transform (priv->image);
+ 		cairo_matrix_init_identity (&matrix);
+ 		if (transform) {
+@@ -1343,6 +1343,8 @@ display_expose_event (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+ 		cairo_matrix_init_translate (&translate, xofs, yofs);
+ 		cairo_matrix_multiply (&matrix, &matrix, &translate);
+ 
++		cairo_get_matrix (cr, &original);
++		cairo_matrix_multiply (&matrix, &matrix, &original);
+ 		cairo_set_matrix (cr, &matrix);
+ 
+ 		rsvg_handle_render_cairo (eom_image_get_svg (priv->image), cr);

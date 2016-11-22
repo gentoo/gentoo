@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,6 +46,7 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	# Patch from debian to compile with recent zlib
 	epatch "${FILESDIR}"/${PN}-3.84-new-zlib.patch
+	epatch "${FILESDIR}"/${PN}-3.84-includes.patch
 	gnome2_src_prepare
 }
 

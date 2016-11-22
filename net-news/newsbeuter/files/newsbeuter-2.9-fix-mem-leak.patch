@@ -1,0 +1,88 @@
+From cdacfbde9fe3ae2489fc96d35dfb7d263ab03f50 Mon Sep 17 00:00:00 2001
+From: cpubug <admin@crtx.ru>
+Date: Sun, 8 Nov 2015 13:15:25 +0300
+Subject: [PATCH] fixed a memory leak
+
+---
+ include/rss.h | 4 ++--
+ src/rss.cpp   | 7 +++++--
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/include/rss.h b/include/rss.h
+index bc0ef03..f8c87f2 100644
+--- a/include/rss.h
++++ b/include/rss.h
+@@ -117,7 +117,7 @@ class rss_item : public matchable {
+ 
+ 		void set_feedptr(std::shared_ptr<rss_feed> ptr);
+ 		inline std::shared_ptr<rss_feed> get_feedptr() {
+-			return feedptr;
++			return feedptr_.lock();
+ 		}
+ 
+ 		inline bool deleted() const {
+@@ -167,7 +167,7 @@ class rss_item : public matchable {
+ 		bool enqueued_;
+ 		std::string flags_;
+ 		std::string oldflags_;
+-		std::shared_ptr<rss_feed> feedptr;
++		std::weak_ptr<rss_feed> feedptr_;
+ 		bool deleted_;
+ 		unsigned int idx;
+ 		std::string base;
+diff --git a/src/rss.cpp b/src/rss.cpp
+index 1687cbe..9cf0cce 100644
+--- a/src/rss.cpp
++++ b/src/rss.cpp
+@@ -27,7 +27,6 @@ rss_item::rss_item(cache * c) : pubDate_(0), unread_(true), ch(c), enqueued_(fal
+ }
+ 
+ rss_item::~rss_item() {
+-	feedptr.reset();
+ 	// LOG(LOG_CRITICAL, "delete rss_item");
+ }
+ 
+@@ -91,6 +90,7 @@ void rss_item::set_unread_nowrite(bool u) {
+ 
+ void rss_item::set_unread_nowrite_notify(bool u, bool notify) {
+ 	unread_ = u;
++	std::shared_ptr<rss_feed> feedptr = feedptr_.lock();
+ 	if (feedptr && notify) {
+ 		feedptr->get_item_by_guid(guid_)->set_unread_nowrite(unread_); // notify parent feed
+ 	}
+@@ -100,6 +100,7 @@ void rss_item::set_unread(bool u) {
+ 	if (unread_ != u) {
+ 		bool old_u = unread_;
+ 		unread_ = u;
++		std::shared_ptr<rss_feed> feedptr = feedptr_.lock();
+ 		if (feedptr)
+ 			feedptr->get_item_by_guid(guid_)->set_unread_nowrite(unread_); // notify parent feed
+ 		try {
+@@ -243,6 +244,7 @@ bool rss_item::has_attribute(const std::string& attribname) {
+ 		return true;
+ 
+ 	// if we have a feed, then forward the request
++	std::shared_ptr<rss_feed> feedptr = feedptr_.lock();
+ 	if (feedptr)
+ 		return feedptr->rss_feed::has_attribute(attribname);
+ 
+@@ -276,6 +278,7 @@ std::string rss_item::get_attribute(const std::string& attribname) {
+ 		return utils::to_string<unsigned int>(idx);
+ 
+ 	// if we have a feed, then forward the request
++	std::shared_ptr<rss_feed> feedptr = feedptr_.lock();
+ 	if (feedptr)
+ 		return feedptr->rss_feed::get_attribute(attribname);
+ 
+@@ -563,7 +566,7 @@ void rss_feed::set_feedptrs(std::shared_ptr<rss_feed> self) {
+ }
+ 
+ void rss_item::set_feedptr(std::shared_ptr<rss_feed> ptr) {
+-	feedptr = ptr;
++	feedptr_ = std::weak_ptr<rss_feed>(ptr);
+ }
+ 
+ std::string rss_feed::get_status() {
+-- 
+2.9.3
+

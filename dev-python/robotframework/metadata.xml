@@ -6,7 +6,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">robotframework</remote-id>
+    <remote-id type="github">robotframework/robotframework</remote-id>
     <remote-id type="pypi">robotframework</remote-id>
   </upstream>
 </pkgmetadata>

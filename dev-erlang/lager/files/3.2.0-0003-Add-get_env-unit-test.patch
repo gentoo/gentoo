@@ -1,0 +1,64 @@
+From 09aee4b601e0a11b31e99392bdb14ec67a79c80f Mon Sep 17 00:00:00 2001
+From: Alexander Petrovsky <askjuise@gmail.com>
+Date: Wed, 11 May 2016 22:52:09 +0300
+Subject: [PATCH 3/5] Add get_env unit test
+
+---
+ rebar.config             |  4 +++-
+ test/lager_app_tests.erl | 22 ++++++++++++++++++++++
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+ create mode 100644 test/lager_app_tests.erl
+
+diff --git a/rebar.config b/rebar.config
+index 77272c7..278df9c 100644
+--- a/rebar.config
++++ b/rebar.config
+@@ -40,9 +40,12 @@
+ 
+ {eunit_opts, [verbose]}.
+ {eunit_compile_opts, [
++    export_all,
++
+     nowarn_untyped_record,
+     nowarn_export_all
+ ]}.
++
+ {deps, [
+     {goldrush, ".*", {git, "git://github.com/DeadZen/goldrush.git", {tag, "0.1.8"}}}
+ ]}.
+@@ -53,4 +56,3 @@
+ {cover_enabled, true}.
+ {edoc_opts, [{stylesheet_file, "./priv/edoc.css"}]}.
+ 
+-{eunit_opts, [verbose]}.
+diff --git a/test/lager_app_tests.erl b/test/lager_app_tests.erl
+new file mode 100644
+index 0000000..80fe985
+--- /dev/null
++++ b/test/lager_app_tests.erl
+@@ -0,0 +1,22 @@
++-module(lager_app_tests).
++
++-compile([{parse_transform, lager_transform}]).
++
++-include_lib("eunit/include/eunit.hrl").
++
++
++get_env_default_test() ->
++    ?assertEqual(<<"Some">>,  lager_app:get_env_default(undefined,         <<"Some">>)),
++    ?assertEqual(<<"Value">>, lager_app:get_env_default({ok, <<"Value">>}, <<"Some">>)),
++    ok.
++
++get_env_test() ->
++    application:set_env(myapp, mykey1, <<"Value">>),
++
++    ?assertEqual(<<"Some">>,  lager_app:get_env(myapp, mykey0, <<"Some">>)),
++    ?assertEqual(<<"Value">>, lager_app:get_env(myapp, mykey1, <<"Some">>)),
++
++    ?assertEqual(undefined,   lager_app:get_env(myapp, mykey0)),
++    ?assertEqual(<<"Value">>, lager_app:get_env(myapp, mykey1)),
++    ok.
++
+-- 
+2.8.3
+

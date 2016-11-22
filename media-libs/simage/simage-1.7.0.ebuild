@@ -7,7 +7,7 @@ EAPI=2
 inherit base
 
 DESCRIPTION="Image and video texturing library"
-HOMEPAGE="http://www.coin3d.org/lib/simage/"
+HOMEPAGE="https://bitbucket.org/Coin3D/simage"
 SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${P}.tar.gz"
 
 LICENSE="public-domain mpeg2enc"

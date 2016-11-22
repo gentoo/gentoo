@@ -8,7 +8,7 @@ inherit autotools eutils
 
 DESCRIPTION="Use your favorite text editor to rename files"
 HOMEPAGE="http://www.nongnu.org/renameutils/"
-SRC_URI="http://savannah.nongnu.org/download/renameutils/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/renameutils/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

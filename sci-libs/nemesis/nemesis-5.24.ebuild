@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ MY_PN="exodus"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enhancement to the EXODUSII finite element database model"
-HOMEPAGE="http://sourceforge.net/projects/exodusii/"
+HOMEPAGE="https://sourceforge.net/projects/exodusii/"
 SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
@@ -30,6 +30,7 @@ PATCHES=( "${FILESDIR}"/${PN}-5.22b-multilib.patch )
 src_prepare() {
 	find ../exodus -delete || die
 	cmake-utils_src_prepare
+	sed -i 's/exoIIv2c/NAMES exodus &/' CMakeLists.txt || die
 }
 
 src_configure() {

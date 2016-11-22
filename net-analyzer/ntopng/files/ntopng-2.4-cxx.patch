@@ -1,0 +1,44 @@
+diff -ru ntopng-2.4-stable.orig/configure.ac ntopng-2.4-stable/configure.ac
+--- ntopng-2.4-stable.orig/configure.ac	2016-11-20 03:59:19.928851928 -0800
++++ ntopng-2.4-stable/configure.ac	2016-11-20 03:59:53.717850915 -0800
+@@ -341,14 +341,6 @@
+ 	GMAKE="make"
+ fi
+ 
+-GPP=`which clang++`
+-if test x$GPP = x
+-then
+-	GPP="g++"
+-else
+-	GPP="$GPP -O0"
+-fi
+-
+ GIT=`which git`
+ if test x$GIT = x
+ then
+diff -ru ntopng-2.4-stable.orig/Makefile.in ntopng-2.4-stable/Makefile.in
+--- ntopng-2.4-stable.orig/Makefile.in	2016-06-27 12:31:18.000000000 -0700
++++ ntopng-2.4-stable/Makefile.in	2016-11-20 04:00:31.037849796 -0800
+@@ -4,7 +4,6 @@
+ SHELL=/bin/sh
+ OS := $(shell uname -s)
+ PWD=@PWD@
+-GPP=@GPP@
+ INSTALL_DIR=$(DESTDIR)$(prefix)
+ MAN_DIR=$(DESTDIR)@MAN_DIR@
+ 
+@@ -126,12 +125,12 @@
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ %.o: %.cpp $(HEADERS) Makefile
+-	$(GPP) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 
+ .PRECIOUS: $(TARGET) $(OBJECTS)
+ 
+ $(TARGET): $(OBJECTS) $(LIBRRDTOOL) Makefile
+-	$(GPP) $(OBJECTS) -Wall $(LIBS) -o $@
++	$(CXX) $(OBJECTS) $(CXXFLAGS) $(CPPFLAGS) -Wall $(LIBS) -o $@
+ 
+ $(LUAJIT_LIB):
+ 	cd $(LUAJIT_HOME); @GMAKE@

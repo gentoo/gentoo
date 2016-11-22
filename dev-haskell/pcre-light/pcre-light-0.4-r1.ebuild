@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit base haskell-cabal
 
-DESCRIPTION="A small, efficient and portable regex library for Perl 5 compatible regular expressions"
+DESCRIPTION="Portable regex library for Perl 5 compatible regular expressions"
 HOMEPAGE="http://code.haskell.org/~dons/code/pcre-light"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 

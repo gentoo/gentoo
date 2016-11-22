@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-KDE_LINGUAS="af ar az be bg bn br bs ca cs csb cy da de el en_GB eo es et eu fa fi fo fr fy ga gl ha he hi hr hsb
-hu id is it ja ka kk km ko ku lb lo lt lv mi mk mn ms mt nb nds ne nl nn nso oc pa pl pt pt_BR ro ru
-rw se sk sl sq sr sr@Latn ss sv ta te tg th tr tt uk uz uz@cyrillic ven vi wa xh zh_CN zh_HK zh_TW zu"
-
+KDE_LINGUAS="ar be bg bs ca cs da de el en_GB eo es et eu fa fi fr ga gl he hi
+hr hu is it ja km ko lt lv ms nb nds ne nl nn pa pl pt pt_BR ro ru se sk sl sq
+sv th tr uk vi zh_CN zh_TW"
 KDE_HANDBOOK="optional"
 CMAKE_MIN_VERSION="2.8"
 KDE_MINIMAL="4.10"
@@ -37,32 +36,28 @@ CDEPEND="
 	kde-apps/libkgeomap:4
 	kde-apps/libkipi:4
 	kde-apps/marble:4=[plasma]
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/lcms:2
 	media-libs/lensfun
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	>=media-libs/opencv-2.4.9
-	media-libs/tiff
-	virtual/jpeg
+	>=media-libs/opencv-2.4.9[-qt5]
+	media-libs/tiff:0
+	virtual/jpeg:0
 	dev-qt/qtgui:4
 	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
 	addressbook? ( $(add_kdeapps_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
-	semantic-desktop? (
-		$(add_kdebase_dep baloo)
-	)
+	semantic-desktop? ( kde-frameworks/baloo:4 )
 "
 RDEPEND="${CDEPEND}
 	kde-apps/kreadconfig:4
-	media-plugins/kipi-plugins
+	media-plugins/kipi-plugins:4
 	video? (
 		|| (
 			kde-apps/ffmpegthumbs:4
-			kde-apps/mplayerthumbs:4
-			$(add_kdeapps_dep mplayerthumbs)
 			$(add_kdeapps_dep ffmpegthumbs)
 		)
 	)

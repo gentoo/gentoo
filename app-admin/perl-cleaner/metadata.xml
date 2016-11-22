@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>fuzzyray@gentoo.org</email>
-	</maintainer>
 <maintainer type="project">
-		<email>perl@gentoo.org</email>
-		<name>Gentoo Perl Project</name>
-	</maintainer>
+	<email>perl@gentoo.org</email>
+	<name>Gentoo Perl Project</name>
+</maintainer>
+<maintainer type="person">
+	<email>fuzzyray@gentoo.org</email>
+	<description>Please CC me in the bugs and assign to project</description>
+</maintainer>
 </pkgmetadata>

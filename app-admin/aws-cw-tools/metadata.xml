@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>lxnay@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
     <email>sergey.zhuga@gmail.com</email>
     <name>Sergey Zhuga</name>
     <description>Proxied maintainer; set to assignee in all bugs</description>

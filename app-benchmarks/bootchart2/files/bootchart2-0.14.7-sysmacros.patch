@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/579922
+
+From add58c3b57064afd6f7d2fd5f09006d28a3e770e Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 21 Apr 2016 00:19:32 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+These funcs are defined in the sys/sysmacros.h header, not sys/types.h.
+Linux C libraries are updating to drop the implicit include, so we need
+to include it explicitly.
+---
+ collector/collector.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/collector/collector.c b/collector/collector.c
+index cfdcb26..2f3ce6b 100644
+--- a/collector/collector.c
++++ b/collector/collector.c
+@@ -33,6 +33,7 @@
+ #include "common.h"
+ 
+ #include <sys/mount.h>
++#include <sys/sysmacros.h>
+ #include <linux/fs.h>
+ #include <linux/genetlink.h>
+ #include <linux/taskstats.h>
+-- 
+2.7.4
+

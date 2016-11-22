@@ -25,7 +25,8 @@ RDEPEND="lirc? ( app-misc/lirc )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
-	virtual/os-headers"
+	virtual/os-headers
+	!!gnustep-base/gnustep-gui" #377635
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.9.1-glib-single-include.patch"

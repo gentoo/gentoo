@@ -1,0 +1,51 @@
+# Note: Gentoo places ip in /sbin/ not /bin/
+diff -Nuar cloud-init-0.7.6.orig/cloudinit/sources/DataSourceOpenNebula.py cloud-init-0.7.6/cloudinit/sources/DataSourceOpenNebula.py
+--- cloud-init-0.7.6.orig/cloudinit/sources/DataSourceOpenNebula.py	2014-10-10 08:26:25.000000000 -0700
++++ cloud-init-0.7.6/cloudinit/sources/DataSourceOpenNebula.py	2016-04-25 15:24:51.483130933 -0700
+@@ -435,7 +435,7 @@
+     # http://opennebula.org/documentation:rel3.8:cong#network_configuration
+     for k in context.keys():
+         if re.match(r'^ETH\d+_IP$', k):
+-            (out, _) = util.subp(['/sbin/ip', 'link'])
++            (out, _) = util.subp(['/bin/ip', 'link'])
+             net = OpenNebulaNetwork(out, context)
+             results['network-interfaces'] = net.gen_conf()
+             break
+
+# Note Gentoo installs its own RC files
+diff -Nuar cloud-init-0.7.6.orig/setup.py cloud-init-0.7.6/setup.py
+--- cloud-init-0.7.6.orig/setup.py	2014-10-10 08:26:25.000000000 -0700
++++ cloud-init-0.7.6/setup.py	2016-04-25 15:24:51.488131027 -0700
+@@ -141,7 +141,7 @@
+       author='Scott Moser',
+       author_email='scott.moser@canonical.com',
+       url='http://launchpad.net/cloud-init/',
+-      packages=setuptools.find_packages(exclude=['tests']),
++      packages=setuptools.find_packages(exclude=['tests.*', 'tests']),
+       scripts=['bin/cloud-init',
+                'tools/cloud-init-per',
+                ],
+@@ -160,9 +160,4 @@
+                    [f for f in glob('doc/examples/seed/*') if is_f(f)]),
+                  ],
+       install_requires=read_requires(),
+-      cmdclass={
+-          # Use a subclass for install that handles
+-          # adding on the right init system configuration files
+-          'install': InitsysInstallData,
+-      },
+       )
+
+# https://bugs.launchpad.net/cloud-init/+bug/1380424
+diff -Nuar cloud-init-0.7.6.orig/tests/unittests/test_distros/test_netconfig.py cloud-init-0.7.6/tests/unittests/test_distros/test_netconfig.py
+--- cloud-init-0.7.6.orig/tests/unittests/test_distros/test_netconfig.py	2014-10-10 08:26:25.000000000 -0700
++++ cloud-init-0.7.6/tests/unittests/test_distros/test_netconfig.py	2016-04-25 15:24:51.485130971 -0700
+@@ -174,7 +174,7 @@
+         self.assertCfgEquals(expected_buf, str(write_buf))
+         self.assertEquals(write_buf.mode, 0644)
+ 
+-    def test_simple_write_freebsd(self):
++    def _test_simple_write_freebsd(self):
+         fbsd_distro = self._get_distro('freebsd')
+         util_mock = self.mocker.replace(util.write_file,
+                                         spec=False, passthrough=False)

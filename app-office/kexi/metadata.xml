@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="marble">Enable displaying of maps using <pkg>kde-apps/marble</pkg></flag>
+		<flag name="mdb">Enable support for Microsoft Access database</flag>
+		<flag name="webkit">Enable web form designer widget using <pkg>dev-qt/qtwebkit</pkg></flag>
+	</use>
+</pkgmetadata>

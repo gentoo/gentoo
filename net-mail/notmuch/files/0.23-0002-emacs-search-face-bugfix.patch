@@ -1,0 +1,36 @@
+From e64f1ec1db49406d4834b09d8c4b2aec83ba66cb Mon Sep 17 00:00:00 2001
+From: Mark Walters <markwalters1009@gmail.com>
+Date: Wed, 12 Oct 2016 08:39:21 +0100
+Subject: [PATCH 2/3] emacs: search face bugfix
+
+In commit 2a7b11b064233afc4feead876fa396e3c18a6b91 the default faces
+for unread and flagged were accidentally swapped. This swaps them back.
+---
+ emacs/notmuch.el | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/emacs/notmuch.el b/emacs/notmuch.el
+index 8e14692..48c33fd 100644
+--- a/emacs/notmuch.el
++++ b/emacs/notmuch.el
+@@ -313,7 +313,7 @@ there will be called at other points of notmuch execution."
+ 
+ (defface notmuch-search-flagged-face
+   '((t
+-     (:weight bold)))
++     (:foreground "blue")))
+   "Face used in search mode face for flagged threads.
+ 
+ This face is the default value for the \"flagged\" tag in
+@@ -323,7 +323,7 @@ This face is the default value for the \"flagged\" tag in
+ 
+ (defface notmuch-search-unread-face
+   '((t
+-     (:foreground "blue")))
++     (:weight bold)))
+   "Face used in search mode for unread threads.
+ 
+ This face is the default value for the \"unread\" tag in
+-- 
+2.10.1
+

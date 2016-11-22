@@ -9,7 +9,7 @@ pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
 user=${user:-${SVCNAME}}
 
 command="/usr/bin/${SVCNAME}"
-command_args="agent -config-dir=/etc/vault.d ${command_args}"
+command_args="server ${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \

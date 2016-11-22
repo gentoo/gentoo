@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ IUSE="debug doc static-libs"
 DEPEND="
 	doc? ( >=app-doc/doxygen-1.4.2 )
 "
-RDEPEND="!<app-misc/strigi-0.7.5-r3"
+RDEPEND=""
 
 RESTRICT="test"
 

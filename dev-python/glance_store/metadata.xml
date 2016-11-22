@@ -18,6 +18,5 @@
 	</upstream>
 	<use>
 		<flag name="cinder">adds cinder backend support</flag>
-		<flag name="swift">adds swift backend support</flag>
 	</use>
 </pkgmetadata>

@@ -20,6 +20,7 @@ tcl3dSDL 	Wrapper for the Simple DirectMedia Library.
 tcl3dFTGL 	Wrapper for the OpenGL Font Rendering Library.
 tcl3dGl2ps 	Wrapper for the OpenGL To Postscript library. *
 tcl3dOde 	Wrapper for the Open Dynamics Engine.
+tcl3dOsg    Wrapper for OpenSceneGraph
 tcl3dGauges 	Tcl3D package for displaying gauges.
 </longdescription>
 </pkgmetadata>

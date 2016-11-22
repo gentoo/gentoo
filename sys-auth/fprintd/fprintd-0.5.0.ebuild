@@ -7,9 +7,9 @@ EAPI=4
 inherit autotools pam systemd versionator
 
 DESCRIPTION="D-Bus service to access fingerprint readers"
-HOMEPAGE="http://cgit.freedesktop.org/libfprint/fprintd/"
+HOMEPAGE="https://cgit.freedesktop.org/libfprint/fprintd/"
 MY_PV="V_$(replace_all_version_separators _)"
-SRC_URI="http://cgit.freedesktop.org/libfprint/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://cgit.freedesktop.org/libfprint/${PN}/snapshot/${MY_PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

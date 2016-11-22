@@ -6,7 +6,7 @@ EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="A flexible and configurable notification daemon"
-HOMEPAGE="http://sourceforge.net/projects/qtnotifydaemon/"
+HOMEPAGE="https://sourceforge.net/projects/qtnotifydaemon/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"

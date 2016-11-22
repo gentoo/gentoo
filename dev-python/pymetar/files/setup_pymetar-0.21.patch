@@ -1,0 +1,10 @@
+--- setup.py.orig	2016-08-24 16:21:38.558828272 +0200
++++ setup.py	2016-08-24 16:22:16.619289653 +0200
+@@ -27,6 +27,6 @@
+       py_modules=["pymetar"],
+       scripts=["bin/pymetar"],
+       data_files=[("share/doc/pymetar-%s" % pymetar.__version__,
+-                   ['README', 'COPYING', 'THANKS', 'librarydoc.txt']),
++                   ['README']),
+                   ("share/man/man1", ['pymetar.1'])]
+       )

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>jsbronder@gentoo.org</email>
-	<name>Justin Bronder</name>
-</maintainer>
-<longdescription>
-OpenMesh is a generic and efficient data structure for representing and
-manipulating polygonal meshes. OpenMesh is developed at the Computer Graphics
-Group, RWTH Aachen, as part of the  OpenSGPlus project, is funded by the
-German Ministry for Research and Education (BMBF), and will serve as
-geometry kernel upon which the so-called high level primitives (e.g.
-subdivision surfaces or progressive meshes) of OpenSGPlus are built.
-</longdescription>
+	<!-- maintainer-needed -->
+	<longdescription>
+		OpenMesh is a generic and efficient data structure for representing and
+		manipulating polygonal meshes. OpenMesh is developed at the Computer Graphics
+		Group, RWTH Aachen, as part of the  OpenSGPlus project, is funded by the
+		German Ministry for Research and Education (BMBF), and will serve as
+		geometry kernel upon which the so-called high level primitives (e.g.
+		subdivision surfaces or progressive meshes) of OpenSGPlus are built.
+	</longdescription>
 </pkgmetadata>

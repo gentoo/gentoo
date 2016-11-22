@@ -2,13 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mschiff@gentoo.org</email>
-		<name>Marc Schiffbauer</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>info@roessner-net.com</email>
 		<name>Christian Roessner</name>
 		<description>Proxy-Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<maintainer type="project">
 	    <email>proxy-maint@gentoo.org</email>

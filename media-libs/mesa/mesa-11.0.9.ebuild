@@ -25,10 +25,10 @@ HOMEPAGE="http://mesa3d.sourceforge.net/"
 
 if [[ $PV == 9999 ]]; then
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="arm"
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -95,15 +95,9 @@ RDEPEND="
 	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	llvm? ( !kernel_FreeBSD? (
-		video_cards_radeonsi? ( || (
-			>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-			>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-			) )
+		video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		!video_cards_r600? (
-			video_cards_radeon? ( || (
-				>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-				>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-				) )
+			video_cards_radeon? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		) )
 		>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
 		<sys-devel/llvm-3.8
@@ -111,10 +105,7 @@ RDEPEND="
 	opencl? (
 				app-eselect/eselect-opencl
 				dev-libs/libclc
-				!kernel_FreeBSD? ( || (
-					>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-					>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-				) )
+				!kernel_FreeBSD? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 			)
 	openmax? ( >=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-0.35.0:=[${MULTILIB_USEDEP}] )

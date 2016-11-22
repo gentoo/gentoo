@@ -6,7 +6,7 @@ EAPI=5
 
 # One test; FAIL: test_encodeToUTF8 (__main__.UltraJSONTests) under py2.5.
 # Fix and repair and re-insert if it's REALLY needed
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 

@@ -8,14 +8,19 @@
 		physical environment. You can write scripts to read temperature, flash
 		lights, write to an LCD, log and graph, ...
 	</longdescription>
+	<slots>
+		<subslots>Reflect ABI of libow.so.</subslots>
+	</slots>
 	<upstream>
 		<remote-id type="sourceforge">owfs</remote-id>
 	</upstream>
 	<use>
+		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
 		<flag name="ftpd">Enable building the OWFS FTP server (owftpd)</flag>
 		<flag name="fuse">Enable building the FUSE-based OWFS client (owfs)</flag>
 		<flag name="httpd">Enable building the OWFS web server (owhttpd)</flag>
 		<flag name="parport">Enable support for the DS1410E parallel port adapter</flag>
 		<flag name="server">Enable building the OWFS server (owserver)</flag>
+		<flag name="zeroconf">Enables support for zero-configuration networking via <pkg>net-dns/avahi</pkg></flag>
 	</use>
 </pkgmetadata>

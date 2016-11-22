@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 DEPEND="sys-devel/gettext"
 RDEPEND="!app-office/koffice-l10n"
 
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc"
 
 MY_LANGS="bs ca ca@valencia cs da de el en_GB es et fi fr gl hu it ja kk nb nl
@@ -34,8 +34,8 @@ SRC_URI=""
 SLOT="4"
 
 for MY_LANG in ${MY_LANGS} ; do
-	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE}/${PN}-${MY_LANG}-${PV}.tar.xz )"
+	IUSE="${IUSE} l10n_${MY_LANG/[@_]/-}"
+	SRC_URI="${SRC_URI} l10n_${MY_LANG/[@_]/-}? ( ${URI_BASE}/${PN}-${MY_LANG}-${PV}.tar.xz )"
 done
 unset MY_LANG
 
@@ -45,19 +45,17 @@ src_unpack() {
 	local lng dir
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 
 	[[ -n ${A} ]] && unpack ${A}
 	cd "${S}"
 
-	# add all linguas to cmake
+	# add all L10N to cmake
 	if [[ -n ${A} ]]; then
 		for lng in ${MY_LANGS}; do
 			dir="${PN}-${lng}-${PV}"

@@ -1,6 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI="5"
 
 inherit autotools eutils
 
@@ -17,9 +18,8 @@ RDEPEND="sys-apps/rescan-scsi-bus
 	sys-apps/sg3_utils"
 DEPEND="${RDEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580214
 	# this builds a really old mdadm
 	sed -i \
 		-e '/RPMB/d' \
@@ -39,18 +39,14 @@ src_unpack() {
 	done
 }
 
-src_compile() {
-	econf --sbindir=/usr/sbin \
-		|| die "econf failed"
-	emake \
-		|| die "emake failed"
+src_configure() {
+	econf --sbindir=/usr/sbin
 }
 
 src_install() {
 	into /usr
 	docdir="/usr/share/doc/${PF}/"
-	emake install DESTDIR="${D}" datato="${D}${docdir}" \
-		|| die "emake install failed"
+	emake install DESTDIR="${D}" datato="${D}${docdir}"
 	dosbin files/sgevt
 	dosbin files/mdevt
 	# unneeded files
@@ -60,6 +56,4 @@ src_install() {
 	doins files/*.mdf
 	# new docs
 	dodoc ChangeLog AUTHORS TODO
-	# ensure that other docs from the emake install are compressed too.
-	prepalldocs
 }

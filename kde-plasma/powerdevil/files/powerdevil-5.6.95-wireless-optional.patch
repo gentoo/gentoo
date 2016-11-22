@@ -1,0 +1,177 @@
+commit 7d8a12c65dbbb8166beee53b4bb0c1f2fdede6c6
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Jun 19 12:14:25 2016 +0200
+
+    Revert-Revert "Make NetworkManagerQt and BluezQt optional"
+    
+    This reverts commit f2018a8d3c5f2824278bb167cb48d938ca2670c4.
+    
+    commit 3257be562b2c48eb11c9e32f7e4fd82ea7fb090b
+    Author: Heiko Becker <heirecka@exherbo.org>
+    Date:   Wed Jun 15 23:07:46 2016 +0200
+    
+    Summary:
+    While it is most certainly sensible and helpful on a system equipped
+    with Bluetooth and Wi-Fi hardware, it serves no purpose on a desktop
+    system without these and just pulls in a long chain of unwanted
+    dependencies.
+    
+    Test Plan: Successfully built with BluezQt and NetworkManagerQt present and missing.
+    
+    Reviewers: #plasma, broulik
+    
+    Subscribers: plasma-devel
+    
+    Tags: #plasma
+    
+    Differential Revision: https://phabricator.kde.org/D1944
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6b631b4..6117f75 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,9 +22,32 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+ endif()
+ 
+ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Widgets DBus X11Extras)
+-find_package(KF5 REQUIRED COMPONENTS Activities Auth IdleTime Config DBusAddons Solid I18n GlobalAccel KIO NotifyConfig Screen KDELibs4Support Wayland NetworkManagerQt BluezQt)
++find_package(KF5 REQUIRED COMPONENTS Activities Auth IdleTime Config DBusAddons Solid I18n GlobalAccel KIO NotifyConfig Screen KDELibs4Support Wayland)
+ find_package(LibKWorkspace CONFIG REQUIRED)
+ 
++find_package(KF5BluezQt)
++set_package_properties(KF5BluezQt
++    PROPERTIES DESCRIPTION "Qt wrapper for BlueZ 5 DBus API"
++    TYPE OPTIONAL
++    PURPOSE "Support for wireless energy saving actions"
++)
++find_package(KF5NetworkManagerQt)
++set_package_properties(KF5NetworkManagerQt
++    PROPERTIES DESCRIPTION "Qt wrapper for NetworkManager API"
++    TYPE OPTIONAL
++    PURPOSE "Support for wireless energy saving actions"
++)
++
++set(HAVE_WIRELESS_SUPPORT FALSE)
++if(KF5NetworkManagerQt_FOUND AND KF5BluezQt_FOUND)
++    set(HAVE_WIRELESS_SUPPORT TRUE)
++endif()
++add_feature_info(
++    "Wireless power saving"
++    HAVE_WIRELESS_SUPPORT
++    "Support turning off signal-transmitting devices to save energy"
++)
++
+ find_package(UDev REQUIRED)
+ 
+ find_package(XCB REQUIRED COMPONENTS XCB RANDR DPMS)
+diff --git a/daemon/CMakeLists.txt b/daemon/CMakeLists.txt
+index 4b0aafd..9c9b897 100644
+--- a/daemon/CMakeLists.txt
++++ b/daemon/CMakeLists.txt
+@@ -19,9 +19,14 @@ set(powerdevil_bundled_actions_SRCS
+     actions/bundled/dimdisplay.cpp
+     actions/bundled/runscript.cpp
+     actions/bundled/handlebuttonevents.cpp
+-    actions/bundled/wirelesspowersaving.cpp
+ )
+ 
++if(HAVE_WIRELESS_SUPPORT)
++    set(powerdevil_bundled_actions_SRCS ${powerdevil_bundled_actions_SRCS}
++        actions/bundled/wirelesspowersaving.cpp
++    )
++endif()
++
+ # target no.1 - powerdevil core library
+ set(powerdevilcore_SRCS
+     powerdevil_debug.cpp
+@@ -49,8 +54,10 @@ qt5_add_dbus_adaptor(powerdevilcore_SRCS actions/bundled/org.kde.Solid.PowerMana
+                      actions/bundled/handlebuttonevents.h PowerDevil::BundledActions::HandleButtonEvents)
+ qt5_add_dbus_adaptor(powerdevilcore_SRCS actions/bundled/org.kde.Solid.PowerManagement.Actions.SuspendSession.xml
+                      actions/bundled/suspendsession.h PowerDevil::BundledActions::SuspendSession)
+-qt5_add_dbus_adaptor(powerdevilcore_SRCS actions/bundled/org.kde.Solid.PowerManagement.Actions.WirelessPowerSaving.xml
+-                     actions/bundled/wirelesspowersaving.h PowerDevil::BundledActions::WirelessPowerSaving)
++if(HAVE_WIRELESS_SUPPORT)
++    qt5_add_dbus_adaptor(powerdevilcore_SRCS actions/bundled/org.kde.Solid.PowerManagement.Actions.WirelessPowerSaving.xml
++                         actions/bundled/wirelesspowersaving.h PowerDevil::BundledActions::WirelessPowerSaving)
++endif()
+ 
+ add_library(powerdevilcore SHARED ${powerdevilcore_SRCS} ${powerdevil_bundled_actions_SRCS})
+ set_target_properties(powerdevilcore PROPERTIES VERSION ${POWERDEVIL_CORE_VERSION_STRING} SOVERSION ${POWERDEVIL_CORE_VERSION_MAJOR})
+@@ -70,11 +77,16 @@ target_link_libraries(powerdevilcore
+     KF5::WidgetsAddons
+     KF5::Notifications
+     KF5::XmlGui
+-    KF5::NetworkManagerQt
+-    KF5::BluezQt
+     PW::KWorkspace
+ )
+ 
++if(HAVE_WIRELESS_SUPPORT)
++    target_link_libraries(powerdevilcore
++        KF5::NetworkManagerQt
++        KF5::BluezQt
++    )
++endif()
++
+ if (XCB_FOUND) # kwin kscreen helper effect
+     target_link_libraries(powerdevilcore Qt5::X11Extras XCB::XCB)
+ endif ()
+diff --git a/daemon/actions/bundled/CMakeLists.txt b/daemon/actions/bundled/CMakeLists.txt
+index e3e8eeb..9623b57 100644
+--- a/daemon/actions/bundled/CMakeLists.txt
++++ b/daemon/actions/bundled/CMakeLists.txt
+@@ -19,8 +19,9 @@ add_powerdevil_bundled_action(keyboardbrightnesscontrol)
+ add_powerdevil_bundled_action(dimdisplay)
+ add_powerdevil_bundled_action(runscript KF5::KIOCore KF5::KIOWidgets)
+ add_powerdevil_bundled_action(suspendsession KF5::KIOCore KF5::KIOWidgets KF5::Solid KF5::KDELibs4Support)
+-add_powerdevil_bundled_action(wirelesspowersaving KF5::NetworkManagerQt KF5::BluezQt)
+-
++if(HAVE_WIRELESS_SUPPORT)
++    add_powerdevil_bundled_action(wirelesspowersaving KF5::NetworkManagerQt KF5::BluezQt)
++endif()
+ 
+ set(actionconfig_SRCS handlebuttoneventsconfig.cpp)
+ qt5_add_dbus_interface(actionconfig_SRCS
+diff --git a/daemon/config-powerdevil.h.cmake b/daemon/config-powerdevil.h.cmake
+index 62938dc..042317d 100644
+--- a/daemon/config-powerdevil.h.cmake
++++ b/daemon/config-powerdevil.h.cmake
+@@ -1,2 +1,5 @@
+ /* Defines if you have XCB */
+ #cmakedefine HAVE_XCB 1
++
++/* Define to 1 if you have NetworkManagerQt and BluezQt libs. */
++#cmakedefine HAVE_WIRELESS_SUPPORT 1
+diff --git a/daemon/powerdevilactionpool.cpp b/daemon/powerdevilactionpool.cpp
+index 7ef823a..2864483 100644
+--- a/daemon/powerdevilactionpool.cpp
++++ b/daemon/powerdevilactionpool.cpp
+@@ -24,6 +24,8 @@
+ #include "powerdevilcore.h"
+ #include "powerdevil_debug.h"
+ 
++#include <config-powerdevil.h>
++
+ #include <KConfigGroup>
+ #include <KServiceTypeTrader>
+ #include <KPluginInfo>
+@@ -38,7 +40,9 @@
+ #include "actions/bundled/dimdisplay.h"
+ #include "actions/bundled/runscript.h"
+ #include "actions/bundled/handlebuttonevents.h"
++#ifdef HAVE_WIRELESS_SUPPORT
+ #include "actions/bundled/wirelesspowersaving.h"
++#endif
+ 
+ namespace PowerDevil
+ {
+@@ -127,7 +131,9 @@ void ActionPool::init(PowerDevil::Core *parent)
+     m_actionPool.insert("DimDisplay", new BundledActions::DimDisplay(parent));
+     m_actionPool.insert("RunScript", new BundledActions::RunScript(parent));
+     m_actionPool.insert("HandleButtonEvents", new BundledActions::HandleButtonEvents(parent));
++#ifdef HAVE_WIRELESS_SUPPORT
+     m_actionPool.insert("WirelessPowerSaving", new BundledActions::WirelessPowerSaving(parent));
++#endif
+ 
+     // Verify support
+     QHash<QString,Action*>::iterator i = m_actionPool.begin();

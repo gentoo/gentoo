@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -12,6 +12,7 @@
+ AC_PROG_INSTALL
+ 
+ # Checks for libraries
++AC_SEARCH_LIBS(ceil, m)
+ pkg_modules="gtk+-2.0 gthread-2.0 libglade-2.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)

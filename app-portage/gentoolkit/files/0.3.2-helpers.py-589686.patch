@@ -1,0 +1,30 @@
+From bc92540f8ce498e8305103619c7085b670ba19b1 Mon Sep 17 00:00:00 2001
+From: Paul Varner <fuzzyray@gentoo.org>
+Date: Mon, 25 Jul 2016 13:01:06 -0500
+Subject: Add missing import of io.open when using python2.7
+
+This fixes the traceback when running equery changes with Python 2.7
+
+X-Gentoo-bug: 589686
+X-Gentoo-bug-url: https://bugs.gentoo.org/show_bug.cgi?id=589686
+---
+ pym/gentoolkit/helpers.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pym/gentoolkit/helpers.py b/pym/gentoolkit/helpers.py
+index 0d985b6..8d25393 100644
+--- a/pym/gentoolkit/helpers.py
++++ b/pym/gentoolkit/helpers.py
+@@ -26,6 +26,9 @@ __docformat__ = 'epytext'
+ # =======
+ 
+ import os
++import sys
++if sys.hexversion < 0x3000000:
++	from io import open
+ import re
+ from functools import partial
+ from itertools import chain
+-- 
+cgit v0.12
+

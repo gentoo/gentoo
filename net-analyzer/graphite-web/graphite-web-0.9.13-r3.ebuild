@@ -33,6 +33,7 @@ RDEPEND="
 	)
 	>=dev-python/twisted-core-10.0[${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.3.1[${PYTHON_USEDEP}]
+	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
@@ -91,7 +92,7 @@ python_install() {
 
 pkg_config() {
 	"${ROOT}"/usr/bin/${PN}-manage syncdb --noinput
-	local idx=$(grep 'INDEX_FILE =' "${EROOT}"/etc/local_settings.py 2>/dev/null)
+	local idx=$(grep 'INDEX_FILE =' "${EROOT}"/etc/graphite-web/local_settings.py 2>/dev/null)
 	if [[ -n ${idx} ]] ; then
 		idx=${idx##*=}
 		idx=$(echo ${idx})
@@ -101,7 +102,7 @@ pkg_config() {
 }
 
 pkg_postinst() {
-	einfo "You will need to ${PN} it with Apache (mod_wsgi) or nginx (uwsgi)."
+	einfo "You need to configure ${PN} to run with a WSGI server of your choice."
 	einfo "Don't forget to edit local_settings.py in ${EPREFIX}/etc/${PN}"
 	einfo "See http://graphite.readthedocs.org/en/latest/config-local-settings.html"
 	einfo "Run emerge --config =${PN}-${PVR} if this is a fresh install."

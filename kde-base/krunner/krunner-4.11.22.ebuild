@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,15 +11,15 @@ inherit kde4-meta
 DESCRIPTION="KDE Command Runner"
 HOMEPAGE+=" https://userbase.kde.org/Plasma/Krunner"
 IUSE="debug"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	$(add_kdebase_dep kcheckpass)
-	$(add_kdebase_dep kephal)
 	$(add_kdebase_dep ksmserver)
-	$(add_kdebase_dep ksysguard)
 	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmagenericshell)
+	kde-plasma/kcheckpass:4
+	kde-plasma/kephal:4
+	kde-plasma/ksysguard:4
 	!aqua? (
 		x11-libs/libX11
 		x11-libs/libXcursor

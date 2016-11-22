@@ -1,20 +1,20 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils systemd
+inherit systemd
 
 if [ "${PV}" = "9999" ]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="git://github.com/teleshoes/tpacpi-bat.git https://github.com/teleshoes/tpacpi-bat.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/teleshoes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
-DESCRIPTION="Control battery thresholds of recent ThinkPads, which are not supported by tp_smapi"
+DESCRIPTION="Control battery thresholds of recent ThinkPads, not supported by tp_smapi"
 HOMEPAGE="https://github.com/teleshoes/tpacpi-bat"
 
 LICENSE="GPL-3"
@@ -28,7 +28,7 @@ RDEPEND="sys-power/acpi_call
 src_install() {
 	dodoc README battery_asl
 	dobin tpacpi-bat
-	newinitd "${FILESDIR}"/${PN}.initd.1 ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd.0 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd.2 ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd.1 ${PN}
 	systemd_newunit tpacpi.service ${PN}.service
 }

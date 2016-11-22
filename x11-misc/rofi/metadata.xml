@@ -9,7 +9,6 @@
 	<name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-	<flag name="i3">Compile in support for the <pkg>x11-wm/i3</pkg> window manager</flag>
 	<flag name="windowmode">Enable normal window mode</flag>
 </use>
 <upstream>

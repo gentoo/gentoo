@@ -1,32 +1,36 @@
 diff -Nuar a/doc/manpages/de/muttprint.pod b/doc/manpages/de/muttprint.pod
 --- a/doc/manpages/de/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
-+++ b/doc/manpages/de/muttprint.pod	2014-08-19 19:00:14.939978099 +0200
-@@ -1,3 +1,4 @@
++++ b/doc/manpages/de/muttprint.pod	2014-12-19 23:17:31.939783684 +0100
+@@ -1,3 +1,5 @@
 +=encoding latin1
++
  =head1 NAME
  
  muttprint - schöner Ausdruck von Mails mit Mutt
 diff -Nuar a/doc/manpages/en/muttprint.pod b/doc/manpages/en/muttprint.pod
 --- a/doc/manpages/en/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
-+++ b/doc/manpages/en/muttprint.pod	2014-08-19 19:00:09.349978130 +0200
-@@ -1,3 +1,4 @@
++++ b/doc/manpages/en/muttprint.pod	2014-12-19 23:17:15.219783778 +0100
+@@ -1,3 +1,5 @@
 +=encoding latin1
++
  =head1 NAME
  
  muttprint - pretty printing of mails with Mutt
 diff -Nuar a/doc/manpages/es/muttprint.pod b/doc/manpages/es/muttprint.pod
 --- a/doc/manpages/es/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
-+++ b/doc/manpages/es/muttprint.pod	2014-08-19 19:00:11.109978120 +0200
-@@ -1,3 +1,4 @@
++++ b/doc/manpages/es/muttprint.pod	2014-12-19 23:17:25.029783723 +0100
+@@ -1,3 +1,5 @@
 +=encoding latin1
++
  =head1 NOMBRE
  
  muttprint - impresión elegante de mensajes de correo con Mutt
 diff -Nuar a/doc/manpages/it/muttprint.pod b/doc/manpages/it/muttprint.pod
 --- a/doc/manpages/it/muttprint.pod	2006-05-06 09:13:46.000000000 +0200
-+++ b/doc/manpages/it/muttprint.pod	2014-08-19 19:00:12.679978111 +0200
-@@ -1,3 +1,4 @@
++++ b/doc/manpages/it/muttprint.pod	2014-12-19 23:17:39.779783640 +0100
+@@ -1,3 +1,5 @@
 +=encoding latin1
++
  =head1 NOME
  
  muttprint - stampa raffinata della posta elettronica con Mutt

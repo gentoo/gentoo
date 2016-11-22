@@ -10,7 +10,7 @@ inherit distutils-r1 flag-o-matic
 MY_P="MySQL-python-${PV}"
 
 DESCRIPTION="Python interface to MySQL"
-HOMEPAGE="http://sourceforge.net/projects/mysql-python/ https://pypi.python.org/pypi/MySQL-python"
+HOMEPAGE="https://sourceforge.net/projects/mysql-python/ https://pypi.python.org/pypi/MySQL-python"
 SRC_URI="mirror://sourceforge/mysql-python/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

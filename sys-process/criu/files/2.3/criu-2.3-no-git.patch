@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 97f63eb..0e2636b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -245,9 +245,9 @@ test: zdtm
+ # Generating tar requires tag matched CRIU_VERSION.
+ # If not found then simply use GIT's describe with
+ # "v" prefix stripped.
+-head-name := $(shell git tag -l v$(CRIU_VERSION))
++head-name := $(shell if [ -d ".git" ]; then git tag -l v$(CRIU_VERSION); fi)
+ ifeq ($(head-name),)
+-        head-name := $(shell git describe 2>/dev/null)
++        head-name := $(shell if [ -d ".git" ]; then git describe 2>/dev/null; fi)
+ endif
+ # If no git tag could describe current commit,
+ # use pre-defined CRIU_VERSION with GITID (if any).

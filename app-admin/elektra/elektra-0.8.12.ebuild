@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-multilib eutils java-pkg-opt-2
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
-HOMEPAGE="http://freedesktop.org/wiki/Software/Elektra"
+HOMEPAGE="https://freedesktop.org/wiki/Software/Elektra"
 SRC_URI="ftp://ftp.markus-raab.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="BSD"

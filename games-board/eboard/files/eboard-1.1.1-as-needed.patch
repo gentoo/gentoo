@@ -1,5 +1,5 @@
---- configure.old	2009-02-03 14:46:21.000000000 +0100
-+++ configure	2009-02-03 14:48:13.000000000 +0100
+--- a/configure	2009-02-03 14:46:21.000000000 +0100
++++ b/configure	2009-02-03 14:48:13.000000000 +0100
 @@ -638,7 +638,7 @@
  
  print CONFIGMAKE "CXX       = $cxx\n";
@@ -9,8 +9,8 @@
  
  print CONFIGMAKE "prefix    = \${DESTDIR}$prefix\n";
  print CONFIGMAKE "bindir    = \${DESTDIR}$prefix/bin\n";
---- elifekam.old	2009-02-03 14:48:43.000000000 +0100
-+++ elifekam	2009-02-03 14:48:58.000000000 +0100
+--- a/elifekam	2009-02-03 14:48:43.000000000 +0100
++++ b/elifekam	2009-02-03 14:48:58.000000000 +0100
 @@ -24,7 +24,7 @@
  all: eboard nls-dicts
  

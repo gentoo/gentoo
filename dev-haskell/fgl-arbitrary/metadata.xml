@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Provides Arbitrary instances for fgl graphs (to avoid adding a
+		QuickCheck dependency for fgl whilst still making the instances
+		available to others).
+		
+		Also available are non-fgl-specific functions for generating
+		graph-like data structures.
+	</longdescription>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,8 +11,8 @@ VALA_USE_DEPEND="vapigen"
 inherit eutils gnome2 python-single-r1 vala virtualx
 
 DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol"
-HOMEPAGE="http://telepathy.freedesktop.org"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://telepathy.freedesktop.org/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -44,6 +44,11 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	net-im/telepathy-mission-control
 "
+
+src_prepare() {
+	use vala && vala_src_prepare
+	gnome2_src_prepare
+}
 
 src_configure() {
 	gnome2_src_configure \

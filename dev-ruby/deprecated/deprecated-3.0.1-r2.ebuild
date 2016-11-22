@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/erikh/deprecated"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"

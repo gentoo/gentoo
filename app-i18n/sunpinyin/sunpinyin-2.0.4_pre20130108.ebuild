@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="A Statistical Language Model based Chinese input method library"
-HOMEPAGE="https://sunpinyin.googlecode.com/"
+HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 PDEPEND="app-i18n/sunpinyin-data"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.0.4-pod2man.patch
 	epatch_user
 }
 
@@ -40,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	escons --install-sandbox="${ED}" install
+	escons --install-sandbox="${D}" install
 	rm -rf "${D}"/usr/share/doc/${PN} || die
 	dodoc doc/{README,SLM-inst.mk,SLM-train.mk}
 }

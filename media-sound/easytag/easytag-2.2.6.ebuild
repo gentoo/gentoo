@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/glib-2.32:2
 		>=media-libs/id3lib-3.8.3-r8
 		>=media-libs/libid3tag-0.15.1b-r4
 		)
-	mp4? ( >=media-libs/taglib-1.9.1[mp4] )
+	mp4? ( >=media-libs/taglib-1.9.1[mp4(+)] )
 	opus? (
 		>=media-libs/opus-1.1
 		>=media-libs/opusfile-0.4

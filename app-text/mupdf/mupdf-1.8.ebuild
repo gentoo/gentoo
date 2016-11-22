@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://git.ghostscript.com/?p=mupdf.git;a=snapshot;h=179403598244f069b5
 LICENSE="AGPL-3"
 MY_SOVER=1.8
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X vanilla +curl javascript libressl opengl +openssl static static-libs"
 
 LIB_DEPEND="
@@ -26,7 +26,7 @@ LIB_DEPEND="
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
 		x11-libs/libXext[static-libs?] )
-	javascript? ( dev-lang/mujs )
+	javascript? ( <dev-lang/mujs-0_p20160504 )
 	opengl? ( >=media-libs/glfw-3 )"
 RDEPEND="${LIB_DEPEND}"
 DEPEND="${RDEPEND}

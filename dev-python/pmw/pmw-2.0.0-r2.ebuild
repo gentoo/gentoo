@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python3_4 )
 PYTHON_REQ_USE="tk"
 
 inherit distutils-r1
@@ -22,7 +22,7 @@ IUSE="doc examples test"
 
 DEPEND="!dev-python/pmw:0"
 RDEPEND="${DEPEND}"
-# http://sourceforge.net/p/pmw/bugs/39/
+# https://sourceforge.net/p/pmw/bugs/39/
 RESTRICT="test"
 
 S="${WORKDIR}/src"

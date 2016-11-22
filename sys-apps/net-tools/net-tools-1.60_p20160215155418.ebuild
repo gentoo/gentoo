@@ -8,10 +8,11 @@ inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/net-tools/code"
+	EGIT_PROJECT="${PN}"
 	inherit git-2
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Standard Linux networking tools"
@@ -62,6 +63,9 @@ set_opt() {
 }
 
 src_configure() {
+	# Clear out env vars from the user. #599602
+	unset BASEDIR BINDIR SBINDIR
+
 	set_opt I18N use nls
 	set_opt HAVE_AFINET6 use ipv6
 	set_opt HAVE_HWIB has_version '>=sys-kernel/linux-headers-2.6'

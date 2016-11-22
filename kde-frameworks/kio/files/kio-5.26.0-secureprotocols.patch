@@ -1,0 +1,26 @@
+From: Andrius Štikonas <andrius@stikonas.eu>
+Date: Mon, 26 Sep 2016 17:15:02 +0000
+Subject: Fix kio using only tls1.0.
+X-Git-Url: http://quickgit.kde.org/?p=kio.git&a=commitdiff&h=8196a735bebc6fd5eaf9d293bd565c00ef98516b
+---
+Fix kio using only tls1.0.
+
+Now kio should use QSsl::SslProtocol::SecureProtocols which will deprecate
+unsafe TLS versions when they are no longer safe.
+
+REVIEW: 129031
+---
+
+
+--- a/src/core/tcpslavebase.cpp
++++ b/src/core/tcpslavebase.cpp
+@@ -492,7 +492,7 @@
+     if (d->usingSSL) {
+         return false;
+     }
+-    return d->startTLSInternal(KTcpSocket::TlsV1) & ResultOk;
++    return d->startTLSInternal(KTcpSocket::SecureProtocols) & ResultOk;
+ }
+ 
+ TCPSlaveBase::SslResult TCPSlaveBase::TcpSlaveBasePrivate::startTLSInternal(KTcpSocket::SslVersion version,
+

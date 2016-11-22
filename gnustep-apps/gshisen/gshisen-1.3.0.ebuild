@@ -7,7 +7,7 @@ inherit eutils gnustep-2
 MY_PN=GShisen
 DESCRIPTION="The first GNUstep game, similar to Mahjongg"
 HOMEPAGE="http://gap.nongnu.org/gshisen/index.html"
-SRC_URI="http://savannah.nongnu.org/download/gap/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

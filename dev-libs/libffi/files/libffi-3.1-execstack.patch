@@ -1,5 +1,5 @@
-http://bugs.gentoo.org/511634
-http://sourceware.org/ml/libffi-discuss/2014/msg00058.html
+https://bugs.gentoo.org/511634
+https://sourceware.org/ml/libffi-discuss/2014/msg00058.html
 
 --- src/x86/win32.S
 +++ src/x86/win32.S

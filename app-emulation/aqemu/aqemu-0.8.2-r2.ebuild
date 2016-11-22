@@ -7,7 +7,7 @@ EAPI=4
 inherit  cmake-utils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators, using Qt4"
-HOMEPAGE="http://sourceforge.net/projects/aqemu"
+HOMEPAGE="https://sourceforge.net/projects/aqemu"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

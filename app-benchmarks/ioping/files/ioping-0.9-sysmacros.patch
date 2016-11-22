@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/579982
+
+From c56a8a442e79a8837074e0e573f6319efa492ba8 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Apr 2016 02:44:33 -0400
+Subject: [PATCH] ioping: include sys/sysmacros.h for makedev
+
+The makedev prototype is in sys/sysmacros.h, so include it.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ ioping.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ioping.c b/ioping.c
+index aae4704..80f4bb4 100644
+--- a/ioping.c
++++ b/ioping.c
+@@ -48,6 +48,7 @@
+ #ifdef __linux__
+ # include <sys/ioctl.h>
+ # include <sys/mount.h>
++# include <sys/sysmacros.h>
+ # define HAVE_POSIX_FADVICE
+ # define HAVE_POSIX_MEMALIGN
+ # define HAVE_DIRECT_IO
+-- 
+2.7.4
+

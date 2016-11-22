@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit scons-utils toolchain-funcs #udev
 
 DESCRIPTION="exFAT filesystem FUSE module"
 HOMEPAGE="https://github.com/relan/exfat"
-SRC_URI="https://exfat.googlecode.com/files/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

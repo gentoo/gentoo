@@ -9,7 +9,7 @@ inherit distutils-r1 linux-info systemd
 
 DESCRIPTION="Computes ambient brightness and sets screen's correct backlight using a webcam"
 HOMEPAGE="http://calise.sourceforge.net/"
-SRC_URI="http://sourceforge.net/projects/${PN}/files/${PN}-beta/${PV}/${P}.tar.gz"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}-beta/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 "
 
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
+
+src_prepare() {
+	epatch_user
+}
 
 src_configure() {
 	DOC_CONTENTS="In order to use Bumblebee, add your user to 'bumblebee' group.

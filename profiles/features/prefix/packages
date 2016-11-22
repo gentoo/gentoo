@@ -14,7 +14,6 @@
 # This file removes everything from the base profile which is not
 # necessary/desired in a prefix environment.
 
--*>=sys-apps/baselayout-2
 -*net-misc/iputils
 -*sys-apps/iproute2
 -*sys-apps/kbd
@@ -22,9 +21,6 @@
 -*virtual/dev-manager
 -*virtual/modutils
 -*virtual/shadow
-
-# add back prefix baselayout
-*sys-apps/baselayout-prefix
 
 # we don't want this either (as baselayout-prefix provides the functions.sh
 # file that this was added to ../base/packages for)

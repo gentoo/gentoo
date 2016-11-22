@@ -5,7 +5,7 @@
 EAPI=5
 
 # uses ruby19 hash syntax
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 

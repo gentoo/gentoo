@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-any-r1
 
 DESCRIPTION="A link-local XMPP connection manager for Telepathy"
-HOMEPAGE="http://telepathy.freedesktop.org/wiki/CategorySalut"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://telepathy.freedesktop.org/wiki/CategorySalut"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

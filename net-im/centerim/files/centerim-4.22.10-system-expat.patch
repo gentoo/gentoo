@@ -1,0 +1,51 @@
+From 539f0dd1b9b81c4b0aece3ab076b1c75073c8062 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 6 May 2016 02:33:51 +0200
+Subject: [PATCH] Build against system Expat
+
+---
+ libjabber/Makefile.am | 4 ++--
+ libjabber/libxode.h   | 2 +-
+ src/Makefile.am       | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libjabber/Makefile.am b/libjabber/Makefile.am
+index f91ad8f..7b20f6b 100644
+--- a/libjabber/Makefile.am
++++ b/libjabber/Makefile.am
+@@ -1,4 +1,4 @@
+ AM_CPPFLAGS = -I$(top_srcdir)/connwrap
+ noinst_LIBRARIES = liblibjabber.a
+-noinst_HEADERS = xmltok_impl_c.h latin1tab.h log.h asciitab.h libxode.h jabber.h hashtable.h xmlparse.h iasciitab.h xmldef.h xmltok.h utf8tab.h xmltok_impl.h xmlrole.h nametab.h xmltok_ns_c.h
+-liblibjabber_a_SOURCES =  jid.c log.c jutil.c str.c expat.c hashtable.c genhash.c pproxy.c pool.c rate.c xmlparse.c xstream.c xmltok.c xmlnode.c jconn.c xmlrole.c jpacket.c snprintf.c socket.c sha.c
++noinst_HEADERS = log.h libxode.h jabber.h nametab.h
++liblibjabber_a_SOURCES =  jid.c log.c jutil.c str.c expat.c genhash.c pproxy.c pool.c rate.c xstream.c xmlnode.c jconn.c jpacket.c snprintf.c socket.c sha.c
+diff --git a/libjabber/libxode.h b/libjabber/libxode.h
+index d6c92a6..8752b0c 100644
+--- a/libjabber/libxode.h
++++ b/libjabber/libxode.h
+@@ -16,7 +16,7 @@
+ #include <arpa/inet.h>
+ #include <sys/time.h>
+ 
+-#include "xmlparse.h"
++#include <expat.h>
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif /* HAVE_CONFIG_H */
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3a0feaf..b8cf2ff 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,7 +22,7 @@ centerim_LDADD += -llibgadu
+ endif
+ if BUILD_JABBER
+ centerim_LDFLAGS += -L$(top_builddir)/libjabber
+-centerim_LDADD += -llibjabber
++centerim_LDADD += -llibjabber -lexpat
+ endif
+ if BUILD_MSN
+ centerim_LDFLAGS += -L$(top_builddir)/libmsn
+-- 
+2.8.1
+

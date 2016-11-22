@@ -7,7 +7,7 @@ inherit cmake-utils eutils gnome2-utils user vcs-snapshot
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
 HOMEPAGE="http://minetest.net/"
-SRC_URI="http://github.com/minetest/minetest/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/minetest/minetest/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"

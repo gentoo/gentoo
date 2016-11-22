@@ -1,0 +1,14 @@
+When : when building perl bindings. Without this patch, it does not take care of LDFLAGS.
+Why : It is required if you want to customize your own LDFLAGS, example : for hardening
+Upstream : https://www.prelude-siem.org/issues/761 It should be added in the next version of Prelude.
+--- a/bindings/perl/Makefile.PL.in
++++ b/bindings/perl/Makefile.PL.in
+@@ -27,7 +27,7 @@
+ my %attributs = (NAME => 'Prelude',
+ 		 INC => '-I@top_builddir@ -I@top_builddir@/src/include -I@top_srcdir@/src/include -I@top_builddir@/src/libprelude-error -I@top_srcdir@/bindings/c++/include',
+ 		 LIBS => ["-L@top_builddir@/src/.libs -lprelude -L@top_builddir@/bindings/c++/.libs -lpreludecpp", "-L$ENV{LIBDIR} -lprelude @LIBPRELUDE_LIBS@ @LIBADD_DL@ @LTLIBTHREAD@" ],
+-		 LDDLFLAGS => "-L@top_builddir@/src/.libs $Config{lddlflags}");
++		 LDDLFLAGS => "-L@top_builddir@/src/.libs $Config{lddlflags} @LDFLAGS@,-rpath");
+ 
+ if ( abs_path("@top_srcdir@") ne abs_path("@top_builddir@") ) {
+     foreach my $filename ( qw/Prelude.cxx Prelude.pm/ ) {

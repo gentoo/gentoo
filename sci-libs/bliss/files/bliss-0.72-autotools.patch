@@ -3,7 +3,7 @@ Replace simple Makefile by autotools
 - parallel build
 - added pkg-config support
 
-Author: Christoph Junghans <ottxor@gentoo.org>
+Author: Christoph Junghans <junghans@gentoo.org>
 
 diff -Naur bliss-0.72-fedora/config/.dummy bliss-0.72/config/.dummy
 --- bliss-0.72-fedora/config/.dummy	1969-12-31 17:00:00.000000000 -0700

@@ -13,6 +13,5 @@
     <remote-id type="cpan-module">IO::Handle::Util</remote-id>
     <remote-id type="cpan-module">IO::Handle::Util::Overloading</remote-id>
     <remote-id type="cpan-module">IO::Handle::Util::Tie</remote-id>
-    <remote-id type="cpan-module">IO::Handle::Util</remote-id>
   </upstream>
 </pkgmetadata>

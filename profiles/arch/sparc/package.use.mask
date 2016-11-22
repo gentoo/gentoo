@@ -2,6 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
+# libomp does not support SPARC, #600148.
+sys-devel/clang-runtime openmp
+
+# Christian Ruppert <idl0r@gentoo.org> (14 Oct 2016)
+# dnstap USE masked due to missing keywords
+net-dns/bind dnstap
+
+# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# networkmanager USE masked due to missing keywords
+gnome-extra/nm-applet teamd
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-libs/uchardet lacks sparc keyword. See bug #569114.
@@ -23,7 +39,7 @@ app-office/planner eds
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
@@ -67,10 +83,6 @@ net-mail/dovecot lz4
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
 
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on sparc
-dev-db/percona-server tokudb tokudb-backup-plugin
-
 # Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
@@ -103,10 +115,6 @@ media-video/mpv rubberband
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
 media-libs/elementary sdl
-
-# Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
-# Dependency not keyworded on this arch, bug #542570.
-xfce-base/xfce4-settings libinput
 
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
@@ -143,16 +151,11 @@ sys-apps/systemd xkb
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
-
 # Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
 # Missing keywords on dev-libs/protobuf-c (bug 519772)
 >=net-libs/libgadu-1.12.0 gg11
 
-# Christoph Junghans <ottxor@gentoo.org> (21 Jul 2014)
+# Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
 
@@ -188,9 +191,6 @@ net-misc/openssh hpn
 # Pacho Ramos <pacho@gentoo.org> (19 Jan 2014)
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
-
-# Pacho Ramos <pacho@gentoo.org> (19 Jan 2014)
-sys-kernel/dracut -dracut_modules_systemd
 
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
@@ -338,14 +338,6 @@ media-gfx/povray mkl
 # uses games-board/ggz-gtk-client
 games-strategy/freeciv ggz
 
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need dev-db/virtuoso-* keyworded
-dev-libs/soprano virtuoso
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need sys-auth/polkit keyworded
-app-admin/system-config-printer-common  policykit
-
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qtmultimedia is not keyworded, bug 293671
 dev-python/PyQt4 multimedia
@@ -384,7 +376,7 @@ app-text/enchant zemberek
 # Mask srtp for ortp because libsrtp is marked -sparc
 net-libs/ortp srtp
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="Put together several primitives to build a given shape. (C.S.G. Game)"
 HOMEPAGE="http://www.nongnu.org/ensemblist/index_en.html"
-SRC_URI="http://savannah.nongnu.org/download/ensemblist/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/ensemblist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +20,7 @@ DEPEND="media-libs/freeglut
 	virtual/glu
 	virtual/opengl
 	x11-libs/libXmu"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-build.patch

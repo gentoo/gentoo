@@ -1,0 +1,20 @@
+--- a/nose/plugins/cover.py	2016-10-11 15:51:26.990868010 +0200
++++ b/nose/plugins/cover.py	2016-10-11 15:52:28.261102027 +0200
+@@ -187,7 +187,7 @@
+                     for name, module in sys.modules.items()
+                     if self.wantModuleCoverage(name, module)]
+         log.debug("Coverage report will cover modules: %s", modules)
+-        self.coverInstance.report(modules, file=stream)
++        self.coverInstance.report(modules, file=stream, show_missing=True)
+ 
+         import coverage
+         if self.coverHtmlDir:
+@@ -207,7 +207,7 @@
+         # make sure we have minimum required coverage
+         if self.coverMinPercentage:
+             f = StringIO.StringIO()
+-            self.coverInstance.report(modules, file=f)
++            self.coverInstance.report(modules, file=f, show_missing=True)
+ 
+             multiPackageRe = (r'-------\s\w+\s+\d+\s+\d+(?:\s+\d+\s+\d+)?'
+                               r'\s+(\d+)%\s+\d*\s{0,1}$')

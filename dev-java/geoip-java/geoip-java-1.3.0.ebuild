@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 MY_PN="geoip-api-java"
 
-DESCRIPTION="Java library for lookup countries by IP addresses."
+DESCRIPTION="Java library for lookup countries by IP addresses"
 HOMEPAGE="https://github.com/maxmind"
 SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.zip -> ${P}.zip"
 LICENSE="GPL-2"
@@ -26,13 +26,13 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 JAVA_SRC_DIR="src"
 
 java_prepare() {
-	rm -rf src/test || die
+	rm -rv src/test || die
 }
 
 src_install() {
 	java-pkg-simple_src_install
 
-	dodoc README.md Changes.md || die
+	dodoc README.md Changes.md
 
 	use examples && java-pkg_doexamples examples/*
 }

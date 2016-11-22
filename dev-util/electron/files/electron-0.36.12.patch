@@ -1,0 +1,257 @@
+From 293b40208c981a3a18a1ccd5c5ea0a50611e2356 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 8 Feb 2016 15:16:40 -0500
+Subject: [PATCH] electron build fixes
+
+---
+ atom.gyp         | 55 +++++++++++++++++++++++++++++++++++++++++++------------
+ common.gypi      | 29 +++++++++++++++++++++++------
+ filenames.gypi   |  1 -
+ tools/js2asar.py | 11 ++++++-----
+ 4 files changed, 72 insertions(+), 24 deletions(-)
+
+diff --git a/atom.gyp b/atom.gyp
+index 5554adb..61ec47c 100644
+--- a/atom.gyp
++++ b/atom.gyp
+@@ -29,6 +29,7 @@
+       'type': 'executable',
+       'dependencies': [
+         'js2asar',
++        'nodebin',
+         '<(project_name)_lib',
+       ],
+       'sources': [
+@@ -177,7 +178,7 @@
+           ],
+         }, {
+           'dependencies': [
+-            'vendor/breakpad/breakpad.gyp:dump_syms#host',
++            'breakpad/breakpad.gyp:dump_syms#host',
+           ],
+         }],  # OS=="win"
+         ['OS=="linux"', {
+@@ -194,7 +195,7 @@
+                   }, {
+                     'copied_libraries': [
+                       '<(PRODUCT_DIR)/lib/libnode.so',
+-                      '<(libchromiumcontent_dir)/libffmpeg.so',
++                      '<(PRODUCT_DIR)/lib/libv8.so',
+                     ],
+                   }],
+                 ],
+@@ -202,9 +203,6 @@
+               'destination': '<(PRODUCT_DIR)',
+               'files': [
+                 '<@(copied_libraries)',
+-                '<(libchromiumcontent_dir)/locales',
+-                '<(libchromiumcontent_dir)/icudtl.dat',
+-                '<(libchromiumcontent_dir)/content_shell.pak',
+                 '<(libchromiumcontent_dir)/natives_blob.bin',
+                 '<(libchromiumcontent_dir)/snapshot_blob.bin',
+               ],
+@@ -242,15 +240,14 @@
+         '<@(lib_sources)',
+       ],
+       'include_dirs': [
+-        '.',
+         'chromium_src',
++        '.',
+         'vendor/brightray',
+         'vendor/native_mate',
+         # Include atom_natives.h.
+         '<(SHARED_INTERMEDIATE_DIR)',
+         # Include directories for uv and node.
+         'vendor/node/src',
+-        'vendor/node/deps/http_parser',
+         'vendor/node/deps/uv/include',
+         # The `node.h` is using `#include"v8.h"`.
+         '<(libchromiumcontent_src_dir)/v8/include',
+@@ -301,8 +298,8 @@
+             'vendor/node/deps/uv/uv.gyp:libuv',
+             'vendor/node/deps/zlib/zlib.gyp:zlib',
+             # Build with breakpad support.
+-            'vendor/breakpad/breakpad.gyp:breakpad_handler',
+-            'vendor/breakpad/breakpad.gyp:breakpad_sender',
++            'breakpad/breakpad.gyp:breakpad_handler',
++            'breakpad/breakpad.gyp:breakpad_sender',
+           ],
+         }],  # OS=="win"
+         ['OS=="mac" and mas_build==0', {
+@@ -333,7 +330,7 @@
+               # Make binary search for libraries under current directory, so we
+               # don't have to manually set $LD_LIBRARY_PATH:
+               # http://serverfault.com/questions/279068/cant-find-so-in-the-same-directory-as-the-executable
+-              '-rpath \$$ORIGIN',
++              '-Wl,-rpath=\$$ORIGIN/',
+               # Make native module dynamic loading work.
+               '-rdynamic',
+             ],
+@@ -344,10 +341,10 @@
+             '-Wno-reserved-user-defined-literal',
+           ],
+           'include_dirs': [
+-            'vendor/breakpad/src',
++            'breakpad/src',
+           ],
+           'dependencies': [
+-            'vendor/breakpad/breakpad.gyp:breakpad_client',
++            'breakpad/breakpad.gyp:breakpad_client',
+           ],
+         }],  # OS=="linux"
+       ],
+@@ -355,6 +352,9 @@
+     {
+       'target_name': 'js2asar',
+       'type': 'none',
++      'dependencies': [
++        'nodebin'
++      ],
+       'actions': [
+         {
+           'action_name': 'js2asar',
+@@ -376,6 +376,7 @@
+           'action': [
+             'python',
+             'tools/js2asar.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(_outputs)',
+             '<@(_inputs)',
+           ],
+@@ -403,6 +404,36 @@
+         }
+       ],
+     },  # target atom_js2c
++    {
++      'target_name': 'nodebin',
++      'type': 'executable',
++      'sources': [
++        'vendor/node/src/node_main.cc',
++      ],
++      'dependencies': [
++        'vendor/node/node.gyp:node',
++      ],
++      'include_dirs': [
++        '.',
++        'vendor/native_mate',
++        # Include atom_natives.h.
++        '<(SHARED_INTERMEDIATE_DIR)',
++        # Include directories for uv and node.
++        'vendor/node/src',
++        'vendor/node/deps/uv/include',
++        # The `node.h` is using `#include"v8.h"`.
++        '<(libchromiumcontent_src_dir)/v8/include',
++        # The `node.h` is using `#include"ares.h"`.
++        'vendor/node/deps/cares/include',
++      ],
++      'link_settings': {
++        'ldflags': [
++          '-Wl,-rpath=\$$ORIGIN/',
++          # Make native module dynamic loading work.
++          '-rdynamic',
++        ],
++      },
++    },  # target nodebin
+   ],
+   'conditions': [
+     ['OS=="mac"', {
+diff --git a/common.gypi b/common.gypi
+index 7c41c36..2da2fea 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -17,12 +17,6 @@
+     'node_target_type': 'shared_library',
+     'node_install_npm': 'false',
+     'node_prefix': '',
+-    'node_shared_cares': 'false',
+-    'node_shared_http_parser': 'false',
+-    'node_shared_libuv': 'false',
+-    'node_shared_openssl': 'false',
+-    'node_shared_v8': 'true',
+-    'node_shared_zlib': 'false',
+     'node_tag': '',
+     'node_use_dtrace': 'false',
+     'node_use_etw': 'false',
+@@ -35,10 +29,33 @@
+     'V8_BASE': '',
+     'v8_postmortem_support': 'false',
+     'v8_enable_i18n_support': 'false',
++    'v8_gyp_path': '<(DEPTH)/v8/tools/gyp/v8.gyp',
++    'v8_libraries': '["v8", "v8_snapshot", "v8_nosnapshot", "v8_external_snapshot", "v8_base", "v8_libbase", "v8_libplatform"]',
++    'v8_target_type': 'shared_library',
++    'v8_use_snapshot': 'true',
++    'v8_use_external_startup_data': 1,
+   },
+   # Settings to compile node under Windows.
+   'target_defaults': {
+     'target_conditions': [
++      ['_target_name in <(v8_libraries) + ["node"]', {
++        'cflags!': [
++          '-fvisibility=hidden',
++          '-fdata-sections',
++          '-ffunction-sections',
++        ],
++        'cflags_cc!': [
++          '-fvisibility-inlines-hidden'
++        ],
++      }],
++
++      ['_target_name in <(v8_libraries) + ["mksnapshot"]', {
++        'defines': [
++          'V8_SHARED',
++          'BUILDING_V8_SHARED',
++        ],
++      }],
++
+       ['_target_name in ["libuv", "http_parser", "openssl", "cares", "node", "zlib"]', {
+         'msvs_disabled_warnings': [
+           4013,  # 'free' undefined; assuming extern returning int
+diff --git a/filenames.gypi b/filenames.gypi
+index f9e1955..84999a3 100644
+--- a/filenames.gypi
++++ b/filenames.gypi
+@@ -498,7 +498,6 @@
+       'chromium_src/extensions/browser/app_window/size_constraints.h',
+       'chromium_src/extensions/common/url_pattern.cc',
+       'chromium_src/extensions/common/url_pattern.h',
+-      'chromium_src/library_loaders/libspeechd_loader.cc',
+       'chromium_src/library_loaders/libspeechd.h',
+       'chromium_src/net/test/embedded_test_server/stream_listen_socket.cc',
+       'chromium_src/net/test/embedded_test_server/stream_listen_socket.h',
+diff --git a/tools/js2asar.py b/tools/js2asar.py
+index cb02e33..3d80a11 100755
+--- a/tools/js2asar.py
++++ b/tools/js2asar.py
+@@ -11,12 +11,13 @@ SOURCE_ROOT = os.path.dirname(os.path.dirname(__file__))
+ 
+ 
+ def main():
+-  archive = sys.argv[1]
+-  js_source_files = sys.argv[2:]
++  node = sys.argv[1]
++  archive = sys.argv[2]
++  js_source_files = sys.argv[3:]
+ 
+   output_dir = tempfile.mkdtemp()
+   copy_js(js_source_files, output_dir)
+-  call_asar(archive, output_dir)
++  call_asar(node, archive, output_dir)
+   shutil.rmtree(output_dir)
+ 
+ 
+@@ -28,10 +29,10 @@ def copy_js(js_source_files, output_dir):
+     shutil.copy2(source_file, output_path)
+ 
+ 
+-def call_asar(archive, output_dir):
++def call_asar(node, archive, output_dir):
+   js_dir = os.path.join(output_dir, 'lib')
+   asar = os.path.join(SOURCE_ROOT, 'node_modules', 'asar', 'bin', 'asar')
+-  subprocess.check_call([find_node(), asar, 'pack', js_dir, archive])
++  subprocess.check_call([node, asar, 'pack', js_dir, archive])
+ 
+ 
+ def find_node():
+-- 
+2.7.3
+

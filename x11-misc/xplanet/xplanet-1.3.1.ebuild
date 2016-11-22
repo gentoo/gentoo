@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gif jpeg png tiff truetype X"
 
-RDEPEND="gif? ( >media-libs/giflib-4.2 )
+RDEPEND="
+	gif? ( media-libs/giflib:= )
 	jpeg? ( virtual/jpeg:* )
 	png? (
 		media-libs/libpng:0
@@ -27,16 +28,19 @@ RDEPEND="gif? ( >media-libs/giflib-4.2 )
 		)
 	X? (
 		x11-libs/libX11
-		x11-libs/libXext
 		x11-libs/libXScrnSaver
+		x11-libs/libXext
 		x11-libs/libXt
-		)"
-DEPEND="${RDEPEND}
+		)
+"
+DEPEND="
+	${RDEPEND}
 	truetype? ( virtual/pkgconfig )
 	X? (
 		x11-proto/scrnsaverproto
 		x11-proto/xproto
-		)"
+		)
+"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 

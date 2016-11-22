@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,12 +46,12 @@ RDEPEND="
 	gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 )
 	imlib2? ( media-libs/imlib2 )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper[jpeg] )
+	jpeg2k? ( media-libs/jasper:=[jpeg] )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng )
 	mpeg3? ( media-libs/libmpeg3 )
 	opengl? ( media-libs/mesa[gbm,egl?,gles2?] x11-libs/libdrm )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
 	timidity? (
@@ -76,7 +76,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.7.1-build.patch \
 		"${FILESDIR}"/${PN}-1.6.3-setregion.patch \
 		"${FILESDIR}"/${PN}-1.6.3-atomic-fix-compiler-error-when-building-for-thumb2.patch \
-		"${FILESDIR}"/${PN}-1.7.6-cle266.patch
+		"${FILESDIR}"/${PN}-1.7.6-cle266.patch \
+		"${FILESDIR}"/${PN}-1.7.6-idivine.patch
 	sed -i \
 		-e '/#define RASPBERRY_PI/d' \
 		systems/egl/egl_system.c || die #497124

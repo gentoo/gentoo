@@ -12,12 +12,12 @@ inherit golang-build
 KEYWORDS="~amd64"
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol "
 EGO_PN="github.com/otoolep/rqlite/..."
-HOMEPAGE="https://${EGO_PN%/*} http://www.philipotoole.com/replicating-sqlite-using-raft-consensus"
+HOMEPAGE="https://github.com/rqlite/rqlite http://www.philipotoole.com/tag/rqlite/"
 LICENSE="MIT"
 SLOT="0/${PVR}"
 IUSE=""
 RESTRICT="test"
-EGIT_REPO_URI="https://github.com/otoolep/rqlite.git"
+EGIT_REPO_URI="https://github.com/rqlite/rqlite.git"
 EGIT_COMMIT="v${PV}"
 SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz

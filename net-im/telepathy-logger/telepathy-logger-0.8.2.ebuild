@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Telepathy Logger is a session daemon that should be activated whenever telepathy is being used"
-HOMEPAGE="http://telepathy.freedesktop.org/wiki/Logger"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://telepathy.freedesktop.org/wiki/Logger"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"

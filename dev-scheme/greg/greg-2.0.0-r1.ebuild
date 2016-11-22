@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,10 @@ IUSE="static-libs"
 RDEPEND=">=dev-scheme/guile-1.8"
 DEPEND=""
 
-PATCHES=( "${FILESDIR}"/${P}-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-guile2.patch
+	)
 
 src_test() {
 	cd test || die

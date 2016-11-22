@@ -5,17 +5,16 @@
 EAPI=5
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	VCSECLASS="git-r3"
+	inherit git-r3
 	KEYWORDS=""
 	EGIT_REPO_URI="git://git.videolan.org/libbluray.git"
 	SRC_URI=""
 else
-	VCSECLASS=""
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 	SRC_URI="http://ftp.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
 fi
 
-inherit autotools ${VCSECLASS} java-pkg-opt-2 flag-o-matic eutils multilib-minimal
+inherit autotools java-pkg-opt-2 flag-o-matic eutils multilib-minimal
 
 DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="http://www.videolan.org/developers/libbluray.html"

@@ -13,7 +13,4 @@
   documentation. The product can be installed as a non-commercial as
   well. License, terms of qualifications can be found on the web site.
 </longdescription>
-  <use>
-    <flag name="eclipse">Install the <pkg>dev-util/eclipse-sdk</pkg> plugins</flag>
-  </use>
 </pkgmetadata>

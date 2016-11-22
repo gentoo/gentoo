@@ -1,0 +1,109 @@
+diff --git a/kex.c b/kex.c
+index 143227a..c9b84c2 100644
+--- a/kex.c
++++ b/kex.c
+@@ -345,9 +345,9 @@ kex_reset_dispatch(struct ssh *ssh)
+ static int
+ kex_send_ext_info(struct ssh *ssh)
+ {
++#ifdef EXPERIMENTAL_RSA_SHA2_256
+ 	int r;
+ 
+-#ifdef EXPERIMENTAL_RSA_SHA2_256
+ /* IMPORTANT NOTE:
+  * Do not offer rsa-sha2-* until is resolved misconfiguration issue
+  * with allowed public key algorithms!
+diff --git a/key-eng.c b/key-eng.c
+index 9bc50fd..bc0d03d 100644
+--- a/key-eng.c
++++ b/key-eng.c
+@@ -786,7 +786,6 @@ ssh_engines_shutdown() {
+ 	while (buffer_len(&eng_list) > 0) {
+ 		u_int   k = 0;
+ 		char    *s;
+-		ENGINE  *e;
+ 
+ 		s = buffer_get_cstring_ret(&eng_list, &k);
+ 		ssh_engine_reset(s);
+diff --git a/monitor.c b/monitor.c
+index 345d3df..0de30ad 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -707,7 +707,7 @@ mm_answer_sign(int sock, Buffer *m)
+ 	    (r = sshbuf_get_string(m, &p, &datlen)) != 0 ||
+ 	    (r = sshbuf_get_cstring(m, &alg, &alglen)) != 0)
+ 		fatal("%s: buffer error: %s", __func__, ssh_err(r));
+-	if (keyid > INT_MAX)
++	if (keyid32 > INT_MAX)
+ 		fatal("%s: invalid key ID", __func__);
+ 
+ 	keyid = keyid32; /*save cast*/
+diff --git a/readconf.c b/readconf.c
+index beb38a0..1cbda7e 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -1459,7 +1459,9 @@ parse_int:
+ 
+ 	case oHostKeyAlgorithms:
+ 		charptr = &options->hostkeyalgorithms;
++# if 0
+ parse_keytypes:
++# endif
+ 		arg = strdelim(&s);
+ 		if (!arg || *arg == '\0')
+ 			fatal("%.200s line %d: Missing argument.",
+diff --git a/servconf.c b/servconf.c
+index a540138..e77a344 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -1574,7 +1573,9 @@ parse_string:
+ 
+ 	case sHostKeyAlgorithms:
+ 		charptr = &options->hostkeyalgorithms;
++# if 0
+  parse_keytypes:
++#endif
+ 		arg = strdelim(&cp);
+ 		if (!arg || *arg == '\0')
+ 			fatal("%s line %d: Missing argument.",
+diff --git a/ssh-pkcs11.c b/ssh-pkcs11.c
+index 50f04b7..3f9a7bf 100644
+--- a/ssh-pkcs11.c
++++ b/ssh-pkcs11.c
+@@ -273,21 +273,18 @@ pkcs11_dsa_finish(DSA *dsa)
+ }
+ 
+ #ifdef OPENSSL_HAS_ECC
++#ifdef HAVE_EC_KEY_METHOD_NEW
+ /* openssl callback for freeing an EC key */
+ static void
+ pkcs11_ec_finish(EC_KEY *ec)
+ {
+ 	struct pkcs11_key	*k11;
+ 
+-#ifdef HAVE_EC_KEY_METHOD_NEW
+ 	k11 = EC_KEY_get_ex_data(ec, ssh_pkcs11_ec_ctx_index);
+ 	EC_KEY_set_ex_data(ec, ssh_pkcs11_ec_ctx_index, NULL);
+-#else
+-	k11 = ECDSA_get_ex_data(ec, ssh_pkcs11_ec_ctx_index);
+-	ECDSA_set_ex_data(ec, ssh_pkcs11_ec_ctx_index, NULL);
+-#endif
+ 	pkcs11_key_free(k11);
+ }
++#endif /*def HAVE_EC_KEY_METHOD_NEW*/
+ #endif /*def OPENSSL_HAS_ECC*/
+ 
+ 
+diff --git a/sshconnect.c b/sshconnect.c
+index fd2a70e..0960be1 100644
+--- a/sshconnect.c
++++ b/sshconnect.c
+@@ -605,7 +605,7 @@ send_client_banner(int connection_out, int minor1)
+ {
+ 	/* Send our own protocol version identification. */
+ 	if (compat20) {
+-		xasprintf(&client_version_string, "SSH-%d.%d-%.100s PKIX[%d]\r\n",
++		xasprintf(&client_version_string, "SSH-%d.%d-%.100s PKIX[%s]\r\n",
+ 		    PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION, SSH_X509);
+ 	} else {
+ 		xasprintf(&client_version_string, "SSH-%d.%d-%.100s\n",

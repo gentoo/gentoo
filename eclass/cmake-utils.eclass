@@ -87,7 +87,6 @@ _CMAKE_UTILS_ECLASS=1
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
-: ${CMAKE_WARN_UNUSED_CLI:=no}
 
 # @ECLASS-VARIABLE: PREFIX
 # @DESCRIPTION:
@@ -113,7 +112,8 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 case ${EAPI} in
-	2|3|4|5|6) : ;;
+	2|3|4|5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
+	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -161,7 +161,7 @@ _cmake_use_me_now() {
 	local arg=$2
 	[[ ! -z $3 ]] && arg=$3
 
-	[[ ${EAPI} == [2345] ]] || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+	[[ ${EAPI} == [2345] ]] || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
 
 	local uper capitalised x
 	[[ -z $2 ]] && die "cmake-utils_use-$1 <USE flag> [<flag name>]"
@@ -184,7 +184,7 @@ _cmake_use_me_now_inverted() {
 	[[ ! -z $3 ]] && arg=$3
 
 	if [[ ${EAPI} != [2345] && "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
-		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
 	fi
 
 	local uper capitalised x
@@ -262,15 +262,18 @@ _cmake_generator_to_use() {
 # @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
-# Comment out an add_subdirectory call in CMakeLists.txt in the current directory
+# Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
 cmake_comment_add_subdirectory() {
 	if [[ -z ${1} ]]; then
-		die "comment_add_subdirectory must be passed the directory name to comment"
+		die "comment_add_subdirectory must be passed at least one directory name to comment"
 	fi
 
 	if [[ -e "CMakeLists.txt" ]]; then
-		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${1//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
-			-i CMakeLists.txt || die "failed to comment add_subdirectory(${1})"
+		local d
+		for d in $@; do
+			sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
+				-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
+		done
 	fi
 }
 
@@ -628,7 +631,7 @@ enable_cmake-utils_src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${PREFIX}"
 		"${mycmakeargs_local[@]}"
 		-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
-		-DCMAKE_INSTALL_DO_STRIP=OFF
+		$([[ ${EAPI} == [2345] ]] && echo -DCMAKE_INSTALL_DO_STRIP=OFF)
 		-DCMAKE_USER_MAKE_RULES_OVERRIDE="${build_rules}"
 		-DCMAKE_TOOLCHAIN_FILE="${toolchain_file}"
 		"${MYCMAKEARGS}"
@@ -659,12 +662,28 @@ _ninjaopts_from_makeopts() {
 	set -- ${MAKEOPTS}
 	while (( $# )); do
 		case $1 in
-			-j|-l|-k)
-				ninjaopts+=( $1 $2 )
-				shift 2
+			-j|-l)
+				if [[ $# -eq 1 || $2 == -* ]]; then
+					if [[ $1 == -j ]]; then
+						# absurdly high job limit
+						ninjaopts+=( $1 9999 )
+					else # -l
+						# remove load limit (like make does for -l)
+						ninjaopts+=( $1 0 )
+					fi
+					shift 1
+				else
+					ninjaopts+=( $1 $2 )
+					shift 2
+				fi
 				;;
-			-j*|-l*|-k*)
+			-j*|-l*)
 				ninjaopts+=( $1 )
+				shift 1
+				;;
+			-k)
+				# -k 0 = any number of tasks can fail
+				ninjaopts+=( $1 0 )
 				shift 1
 				;;
 			*) shift ;;
@@ -735,6 +754,7 @@ enable_cmake-utils_src_test() {
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
+	echo ctest "${myctestargs[@]}" "$@"
 	if ctest "${myctestargs[@]}" "$@" ; then
 		einfo "Tests succeeded."
 		popd > /dev/null || die

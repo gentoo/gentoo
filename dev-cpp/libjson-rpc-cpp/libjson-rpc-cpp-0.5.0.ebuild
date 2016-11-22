@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-libs/boost )"
 
+RESTRICT="!test? ( test )"
+
 src_configure() {
 	local mycmakeargs=(
 		-DHTTP_CLIENT=$(usex http-client)

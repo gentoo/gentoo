@@ -88,20 +88,29 @@ if version_is_at_least 2.18 ; then
 else
 	LICENSE="|| ( GPL-2 LGPL-2 )"
 fi
-IUSE="cxx multislot multitarget nls static-libs test vanilla"
-if version_is_at_least 2.19 ; then
+IUSE="cxx multitarget nls static-libs test vanilla"
+if version_is_at_least 2.19 && ! version_is_at_least 2.26 ; then
 	IUSE+=" zlib"
 fi
 SLOT="${BVER}"
 
 RDEPEND=">=sys-devel/binutils-config-3"
-in_iuse zlib && RDEPEND+=" zlib? ( sys-libs/zlib )"
+if in_iuse zlib ; then
+	RDEPEND+=" zlib? ( sys-libs/zlib )"
+elif version_is_at_least 2.26 ; then
+	RDEPEND+=" sys-libs/zlib"
+fi
 DEPEND="${RDEPEND}
-	!multislot? ( !<${CATEGORY}/${P} )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
 	virtual/yacc"
+if is_cross ; then
+	# The build assumes the host has libiberty and such when cross-compiling
+	# its build tools.  We should probably make binutils itself build a local
+	# copy to use, but until then, be lazy.
+	DEPEND+=" >=sys-libs/binutils-libs-${PV}"
+fi
 
 S=${WORKDIR}/binutils
 case ${BVER} in
@@ -264,6 +273,8 @@ toolchain-binutils_src_configure() {
 		# older versions did not have an explicit configure flag
 		export ac_cv_search_zlibVersion=$(usex zlib -lz no)
 		myconf+=( $(use_with zlib) )
+	elif version_is_at_least 2.26 ; then
+		myconf+=( --with-system-zlib )
 	fi
 
 	# For bi-arch systems, enable a 64bit bfd.  This matches
@@ -299,6 +310,8 @@ toolchain-binutils_src_configure() {
 		--enable-obsolete
 		--enable-shared
 		--enable-threads
+		# Newer versions (>=2.27) offer a configure flag now.
+		--enable-relro
 		# Newer versions (>=2.24) make this an explicit option. #497268
 		--enable-install-libiberty
 		--disable-werror

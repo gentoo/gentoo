@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ SLOT="0"
 
 DEPEND=">=sys-libs/db-4.2
 	>=sys-libs/zlib-1.1.4
-	>=media-libs/libpng-1.2
+	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]
 	dev-libs/geoip
 	bzip2? ( app-arch/bzip2 )"

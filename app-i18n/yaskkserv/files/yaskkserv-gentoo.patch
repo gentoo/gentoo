@@ -1,0 +1,93 @@
+--- a/Makefile
++++ b/Makefile
+@@ -57,16 +57,16 @@
+ 	$(MAKE) --no-print-directory -C $(SOURCE_PATH) -f $(MAKEFILE) test
+ 
+ install_common_		:
+-	$(MKDIR) -p $(PREFIX)/bin
+-	$(INSTALL) $(VAR_PATH)/yaskkserv_make_dictionary/yaskkserv_make_dictionary $(PREFIX)/bin/yaskkserv_make_dictionary
++	$(MKDIR) -p $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) $(VAR_PATH)/yaskkserv_make_dictionary/yaskkserv_make_dictionary $(DESTDIR)$(PREFIX)/bin/yaskkserv_make_dictionary
+ 
+ install			: install_normal
+ 
+ install_all		: install_common_
+-	$(MKDIR) -p $(PREFIX)/sbin
+-	$(INSTALL) $(VAR_PATH)/yaskkserv_simple/yaskkserv_simple $(PREFIX)/sbin/yaskkserv_simple
+-	$(INSTALL) $(VAR_PATH)/yaskkserv_normal/yaskkserv_normal $(PREFIX)/sbin/yaskkserv_normal
+-	$(INSTALL) $(VAR_PATH)/yaskkserv_hairy/yaskkserv_hairy $(PREFIX)/sbin/yaskkserv_hairy
++	$(MKDIR) -p $(DESTDIR)$(PREFIX)/sbin
++	$(INSTALL) $(VAR_PATH)/yaskkserv_simple/yaskkserv_simple $(DESTDIR)$(PREFIX)/sbin/yaskkserv_simple
++	$(INSTALL) $(VAR_PATH)/yaskkserv_normal/yaskkserv_normal $(DESTDIR)$(PREFIX)/sbin/yaskkserv_normal
++	$(INSTALL) $(VAR_PATH)/yaskkserv_hairy/yaskkserv_hairy $(DESTDIR)$(PREFIX)/sbin/yaskkserv_hairy
+ 
+ install_simple		: install_common_
+ 	$(MKDIR) -p $(PREFIX)/sbin
+--- a/source/Makefile.bsd_cygwin_linux_gcc.common
++++ b/source/Makefile.bsd_cygwin_linux_gcc.common
+@@ -16,16 +16,16 @@
+ endif				# DEBUG
+ 
+ INCLUDE_FLAGS		= -I . -I $(VAR_PATH) -I $(PROJECT_ROOT)/source/skk -I $(PROJECT_ROOT)/source/skk/architecture -I $(PROJECT_ROOT)/source/skk/architecture/$(ARCHITECTURE_LOWER_CASE)
+-LIBRARY_FLAGS		= -L/usr/lib
++LIBRARY_FLAGS		=
+ 
+-CPPFLAGS		= $(DEBUG_FLAGS) $(CXXFLAGS_ARCHITECTURE) $(CXXFLAGS_BYTE_ORDER) $(CXXFLAGS_CONFIG) $(INCLUDE_FLAGS) $(CXXFLAGS_DEFINE) -D $(PROJECT_IDENTIFIER)_VERSION=\"$(PROJECT_VERSION)\"
++CPPFLAGS		+= $(DEBUG_FLAGS) $(CXXFLAGS_ARCHITECTURE) $(CXXFLAGS_BYTE_ORDER) $(CXXFLAGS_CONFIG) $(INCLUDE_FLAGS) $(CXXFLAGS_DEFINE) -D $(PROJECT_IDENTIFIER)_VERSION=\"$(PROJECT_VERSION)\"
+ 
+-CXXFLAGS		= $(DEBUG_FLAGS) $(CXXFLAGS_ARCHITECTURE) $(CXXFLAGS_BYTE_ORDER) $(CXXFLAGS_CONFIG) $(INCLUDE_FLAGS) $(OPTIMIZE_FLAGS) $(CXXFLAGS_WARNING) -fno-exceptions -fno-rtti -fmessage-length=0 -pipe -fPIC -D $(PROJECT_IDENTIFIER)_VERSION=\"$(PROJECT_VERSION)\"
++CXXFLAGS		+= $(DEBUG_FLAGS) $(CXXFLAGS_ARCHITECTURE) $(CXXFLAGS_BYTE_ORDER) $(CXXFLAGS_CONFIG) $(INCLUDE_FLAGS) $(OPTIMIZE_FLAGS) $(CXXFLAGS_WARNING) -fno-exceptions -fno-rtti -fmessage-length=0 -pipe -fPIC -D $(PROJECT_IDENTIFIER)_VERSION=\"$(PROJECT_VERSION)\"
+ 
+-LDFLAGS			= $(DEBUG_FLAGS) $(LDFLAGS_ARCHITECTURE) $(OPTIMIZE_FLAGS) -pipe $(LIBRARY_FLAGS) -fPIC
++LDFLAGS			+= $(DEBUG_FLAGS) $(LDFLAGS_ARCHITECTURE) $(OPTIMIZE_FLAGS) -pipe $(LIBRARY_FLAGS) -fPIC
+ 
+ CXX			= $(CCACHE) $(COMPILER)
+ LD			= $(COMPILER)
+ CPP			= $(CXX)
+ LD			= $(CXX)
+-STRIP			= strip
++STRIP			= true
+--- a/source/yaskkserv_hairy/Makefile.bsd_cygwin_linux_gcc
++++ b/source/yaskkserv_hairy/Makefile.bsd_cygwin_linux_gcc
+@@ -12,7 +12,7 @@
+ # RUN_FLAGS		= --port=9999 --google-japanese-input=dictionary --google-suggest --google-japanese-input-timeout=1.1 https://www.google.com
+ # RUN_FLAGS		= --port=9999 --google-japanese-input=dictionary --google-japanese-input-timeout=1.1 http://www.google.com /home/wac/local/share/skk/SKK-JISYO.total+zipcode.yaskkserv
+ # RUN_FLAGS		= --port=9999 --google-japanese-input=dictionary --google-japanese-input-timeout=1.1 http://www.google.com
+-CXXFLAGS		+= $(CXXFLAGS_OPTIMIZE_SERVER_HAIRY) $(CXXFLAGS_WARNING_SERVER_HAIRY)
++CXXFLAGS		+= $(CXXFLAGS_WARNING_SERVER_HAIRY)
+ 
+ SOURCES			= ${wildcard *.cpp}
+ OBJECTS			= ${addprefix $(VAR_PATH)/$(TARGET_BASE)/,$(SOURCES:.cpp=.o)}
+--- a/source/yaskkserv_make_dictionary/Makefile.bsd_cygwin_linux_gcc
++++ b/source/yaskkserv_make_dictionary/Makefile.bsd_cygwin_linux_gcc
+@@ -5,7 +5,7 @@
+ TARGET_BASE		= yaskkserv_make_dictionary
+ 
+ RUN_FLAGS		=
+-CXXFLAGS		+= $(CXXFLAGS_OPTIMIZE_TOOL) $(CXXFLAGS_WARNING_TOOL)
++CXXFLAGS		+= $(CXXFLAGS_WARNING_TOOL)
+ 
+ SOURCES			= ${wildcard *.cpp}
+ OBJECTS			= ${addprefix $(VAR_PATH)/$(TARGET_BASE)/,$(SOURCES:.cpp=.o)}
+--- a/source/yaskkserv_normal/Makefile.bsd_cygwin_linux_gcc
++++ b/source/yaskkserv_normal/Makefile.bsd_cygwin_linux_gcc
+@@ -5,7 +5,7 @@
+ TARGET_BASE		= yaskkserv_normal
+ 
+ RUN_FLAGS		= --check-update --port=9999 /var/tmp/SKK-JISYO.total+zipcode.yaskkserv
+-CXXFLAGS		+= $(CXXFLAGS_OPTIMIZE_SERVER_NORMAL) $(CXXFLAGS_WARNING_SERVER_NORMAL)
++CXXFLAGS		+= $(CXXFLAGS_WARNING_SERVER_NORMAL)
+ 
+ SOURCES			= ${wildcard *.cpp}
+ OBJECTS			= ${addprefix $(VAR_PATH)/$(TARGET_BASE)/,$(SOURCES:.cpp=.o)}
+--- a/source/yaskkserv_simple/Makefile.bsd_cygwin_linux_gcc
++++ b/source/yaskkserv_simple/Makefile.bsd_cygwin_linux_gcc
+@@ -5,7 +5,7 @@
+ TARGET_BASE		= yaskkserv_simple
+ 
+ RUN_FLAGS		= --port=9999 /var/tmp/SKK-JISYO.total+zipcode.yaskkserv
+-CXXFLAGS		+= $(CXXFLAGS_OPTIMIZE_SERVER_SIMPLE) $(CXXFLAGS_WARNING_SERVER_SIMPLE)
++CXXFLAGS		+= $(CXXFLAGS_WARNING_SERVER_SIMPLE)
+ 
+ SOURCES			= ${wildcard *.cpp}
+ OBJECTS			= ${addprefix $(VAR_PATH)/$(TARGET_BASE)/,$(SOURCES:.cpp=.o)}

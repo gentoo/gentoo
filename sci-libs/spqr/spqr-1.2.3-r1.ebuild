@@ -13,7 +13,7 @@ SRC_URI="http://www.cise.ufl.edu/research/sparse/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc metis static-libs tbb"
 RDEPEND="sci-libs/cholmod[supernodal(+)]
 	tbb? ( dev-cpp/tbb )

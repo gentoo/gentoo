@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,4 +17,6 @@ IUSE=""
 
 DEPEND=">=sys-apps/pcsc-lite-1.6.0"
 
-myconf="-I/usr/include/ -l/usr/$(get_libdir)"
+pkg_setup() {
+	myconf="-I/usr/include/ -l/usr/$(get_libdir)"
+}

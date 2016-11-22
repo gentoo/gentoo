@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,7 @@ DEPEND="media-libs/libsdl[sound,joystick,video]
 	sys-libs/zlib
 	app-arch/bzip2
 	opengl? ( virtual/opengl )"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ovflfix.patch
@@ -30,7 +31,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	default
 	prepgamesdirs
 }

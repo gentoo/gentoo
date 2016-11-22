@@ -39,7 +39,7 @@ RDEPEND="
 	dev-perl/XML-LibXML
 	dev-perl/XML-Simple
 	dev-perl/libwww-perl
-	dev-perl/yaml
+	dev-perl/YAML
 	virtual/perl-Carp
 	virtual/perl-Data-Dumper
 	virtual/perl-Digest-MD5

@@ -1,5 +1,5 @@
---- src/io.c
-+++ src/io.c
+--- a/src/io.c
++++ b/src/io.c
 @@ -2665,6 +2665,8 @@
  		g_error("Unexpected output in cdda2wav toc-output\n");
  	}

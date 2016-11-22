@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription>
+  This Astropy-affiliated package provides a python wrapper to the
+  Montage Astronomical Image Mosaic Engine, including both functions to
+  access individual Montage commands, and high-level functions to
+  facilitate mosaicking and re-projecting.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">montage-wrapper</remote-id>
+  </upstream>
+</pkgmetadata>

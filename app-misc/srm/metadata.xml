@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>idella4@gentoo.org</email>
-		<name>Ian Delaney</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>

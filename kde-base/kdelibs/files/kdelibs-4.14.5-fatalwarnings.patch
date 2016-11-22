@@ -1,8 +1,8 @@
 Avoid build failure due to harmless warnings on some platforms (eg. ARM) being
 forced fatal.
 
---- cmake/modules/FindKDE4Internal.cmake
-+++ cmake/modules/FindKDE4Internal.cmake
+--- a/cmake/modules/FindKDE4Internal.cmake
++++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -1100,8 +1100,8 @@
  if (CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME STREQUAL GNU)
     if (CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")

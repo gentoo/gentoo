@@ -1,0 +1,11 @@
+--- a/setup.py	2016-09-04 14:44:02.000000000 +0000
++++ b/setup.py	2016-09-22 12:21:52.496968618 +0000
+@@ -278,7 +278,7 @@
+             if packaging:
+                 path = resource_path
+             else:
+-                path = os.path.abspath(os.path.join(self.install_data, 'share'))
++                path = '/usr/share'
+             fp.write(path)
+ 
+         _install.run(self)

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-security.patch \
 		"${FILESDIR}"/${P}-64bits.patch \
 		"${FILESDIR}"/${P}-gcc34.patch \
-		"${FILESDIR}"/${P}-warnings.patch
+		"${FILESDIR}"/${P}-warnings.patch \
+		"${FILESDIR}"/${P}-gcc53.patch
 
 	# Install the data into $(datadir)/..., not $(prefix)/games/...
 	sed -i \

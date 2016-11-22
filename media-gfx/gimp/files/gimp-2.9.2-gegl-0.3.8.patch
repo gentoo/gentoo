@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/586828
+
+Backported from:
+https://git.gnome.org/browse/gimp/commit/?id=2e4685013123c584354bc38612527593a815c38b
+
+--- gimp-2.9.2/app/core/gimpparamspecs-duplicate.c
++++ gimp-2.9.2/app/core/gimpparamspecs-duplicate.c
+@@ -66,23 +66,11 @@
+         }
+       else
+         {
+-
+           copy = g_param_spec_string (pspec->name,
+                                       g_param_spec_get_nick (pspec),
+                                       g_param_spec_get_blurb (pspec),
+                                       spec->default_value,
+                                       flags);
+-
+-          if (GEGL_IS_PARAM_SPEC_MULTILINE (pspec))
+-            {
+-              static GQuark multiline_quark = 0;
+-
+-              if (! multiline_quark)
+-                multiline_quark = g_quark_from_static_string ("multiline");
+-
+-              g_param_spec_set_qdata (copy, multiline_quark,
+-                                      GINT_TO_POINTER (TRUE));
+-            }
+         }
+     }
+   else if (G_IS_PARAM_SPEC_BOOLEAN (pspec))
+--- gimp-2.9.2/app/widgets/gimppropgui.c
++++ gimp-2.9.2/app/widgets/gimppropgui.c
+@@ -227,11 +227,6 @@
+     }
+   else if (G_IS_PARAM_SPEC_STRING (pspec))
+     {
+-      static GQuark multiline_quark = 0;
+-
+-      if (! multiline_quark)
+-        multiline_quark = g_quark_from_static_string ("multiline");
+-
+       if (GIMP_IS_PARAM_SPEC_CONFIG_PATH (pspec))
+         {
+           widget =
+@@ -239,7 +234,7 @@
+                                                g_param_spec_get_nick (pspec),
+                                                GTK_FILE_CHOOSER_ACTION_OPEN);
+         }
+-      else if (g_param_spec_get_qdata (pspec, multiline_quark))
++      else if (HAS_KEY (pspec, "multiline", "true"))
+         {
+           GtkTextBuffer *buffer;
+           GtkWidget     *view;

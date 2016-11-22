@@ -4,12 +4,12 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="A HTTP replay library for testing."
-HOMEPAGE="http://github.com/agriffis/httreplay http://pypi.python.org/pypi/httreplay"
+HOMEPAGE="https://github.com/agriffis/httreplay http://pypi.python.org/pypi/httreplay"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

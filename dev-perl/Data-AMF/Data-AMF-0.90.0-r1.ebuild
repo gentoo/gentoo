@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RDEPEND="dev-perl/DateTime
 	dev-perl/XML-LibXML"
 
 DEPEND="${RDEPEND}
-	test? ( dev-perl/yaml )"
+	test? ( dev-perl/YAML )"
 
 src_prepare() {
 	sed -i '/^inc\/YAML.pm/d' MANIFEST || die

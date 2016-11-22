@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ IUSE="keystone swift neutron glance cinder nova"
 
 DEPEND=""
 RDEPEND="keystone? ( ~sys-auth/keystone-2016.1.9999 )
-		swift? ( ~sys-cluster/swift-2.7.0 )
+		swift? ( ~sys-cluster/swift-2.9.0 )
 		neutron? ( ~sys-cluster/neutron-2016.1.9999 )
 		glance? ( ~app-admin/glance-2016.1.9999 )
 		cinder? ( ~sys-cluster/cinder-2016.1.9999 )

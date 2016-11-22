@@ -6,7 +6,7 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription>Provides dbish, a command line tool for interacting with
-	any installed DBD module directly.</longdescription>
+  any installed DBD module directly.</longdescription>
   <upstream>
     <remote-id type="cpan">DBI-Shell</remote-id>
     <remote-id type="cpan-module">DBI::Format</remote-id>

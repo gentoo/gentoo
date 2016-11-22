@@ -1,0 +1,151 @@
+diff -Naruw postgresql-9.5.5.orig/contrib/Makefile postgresql-9.5.5/contrib/Makefile
+--- postgresql-9.5.5.orig/contrib/Makefile	2016-10-24 16:10:50.000000000 -0400
++++ postgresql-9.5.5/contrib/Makefile	2016-10-27 13:49:19.418285694 -0400
+@@ -5,55 +5,9 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-		adminpack	\
+-		auth_delay	\
+-		auto_explain	\
+-		btree_gin	\
+-		btree_gist	\
+-		chkpass		\
+-		citext		\
+-		cube		\
+-		dblink		\
+-		dict_int	\
+-		dict_xsyn	\
+-		earthdistance	\
+-		file_fdw	\
+-		fuzzystrmatch	\
+-		hstore		\
+-		intagg		\
+-		intarray	\
+-		isn		\
+-		lo		\
+-		ltree		\
+ 		oid2name	\
+-		pageinspect	\
+-		passwordcheck	\
+-		pg_buffercache	\
+-		pg_freespacemap \
+-		pg_prewarm	\
+-		pg_standby	\
+-		pg_stat_statements \
+-		pg_trgm		\
+-		pgcrypto	\
+-		pgrowlocks	\
+-		pgstattuple	\
+-		postgres_fdw	\
+-		seg		\
+-		spi		\
+-		tablefunc	\
+-		tcn		\
+-		test_decoding	\
+-		tsm_system_rows \
+-		tsm_system_time \
+-		tsearch2	\
+-		unaccent	\
+ 		vacuumlo
+ 
+-ifeq ($(with_openssl),yes)
+-SUBDIRS += sslinfo
+-else
+-ALWAYS_SUBDIRS += sslinfo
+-endif
+ 
+ ifneq ($(with_uuid),no)
+ SUBDIRS += uuid-ossp
+diff -Naruw postgresql-9.5.5.orig/src/backend/Makefile postgresql-9.5.5/src/backend/Makefile
+--- postgresql-9.5.5.orig/src/backend/Makefile	2016-10-24 16:10:50.000000000 -0400
++++ postgresql-9.5.5/src/backend/Makefile	2016-10-27 13:51:16.027706097 -0400
+@@ -47,7 +47,7 @@
+ 
+ ##########################################################################
+ 
+-all: submake-libpgport submake-schemapg postgres $(POSTGRES_IMP)
++all: someheaders
+ 
+ ifneq ($(PORTNAME), cygwin)
+ ifneq ($(PORTNAME), win32)
+@@ -106,7 +106,7 @@
+ endif # aix
+ 
+ # Update the commonly used headers before building the subdirectories
+-$(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
++someheaders $(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/errcodes.h $(top_builddir)/src/include/utils/probes.h
+ 
+ # run this unconditionally to avoid needing to know its dependencies here:
+ submake-schemapg:
+@@ -199,23 +199,7 @@
+ 
+ ##########################################################################
+ 
+-install: all installdirs install-bin
+-ifeq ($(PORTNAME), cygwin)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-ifeq ($(PORTNAME), win32)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-	$(MAKE) -C catalog install-data
+-	$(MAKE) -C tsearch install-data
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_hba.conf.sample '$(DESTDIR)$(datadir)/pg_hba.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_ident.conf.sample '$(DESTDIR)$(datadir)/pg_ident.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample '$(DESTDIR)$(datadir)/postgresql.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/access/transam/recovery.conf.sample '$(DESTDIR)$(datadir)/recovery.conf.sample'
++install:
+ 
+ install-bin: postgres $(POSTGRES_IMP) installdirs
+ 	$(INSTALL_PROGRAM) postgres$(X) '$(DESTDIR)$(bindir)/postgres$(X)'
+diff -Naruw postgresql-9.5.5.orig/src/bin/Makefile postgresql-9.5.5/src/bin/Makefile
+--- postgresql-9.5.5.orig/src/bin/Makefile	2016-10-24 16:10:50.000000000 -0400
++++ postgresql-9.5.5/src/bin/Makefile	2016-10-27 14:26:26.397161219 -0400
+@@ -14,19 +14,8 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-	initdb \
+-	pg_archivecleanup \
+-	pg_basebackup \
+ 	pg_config \
+-	pg_controldata \
+-	pg_ctl \
+ 	pg_dump \
+-	pg_resetxlog \
+-	pg_rewind \
+-	pg_test_fsync \
+-	pg_test_timing \
+-	pg_upgrade \
+-	pg_xlogdump \
+ 	pgbench \
+ 	psql \
+ 	scripts
+diff -Naruw postgresql-9.5.5.orig/src/Makefile postgresql-9.5.5/src/Makefile
+--- postgresql-9.5.5.orig/src/Makefile	2016-10-24 16:10:50.000000000 -0400
++++ postgresql-9.5.5/src/Makefile	2016-10-27 14:03:49.513956432 -0400
+@@ -15,18 +15,11 @@
+ SUBDIRS = \
+ 	common \
+ 	port \
+-	timezone \
+ 	backend \
+-	backend/utils/mb/conversion_procs \
+-	backend/snowball \
+ 	include \
+ 	interfaces \
+-	backend/replication/libpqwalreceiver \
+ 	bin \
+-	pl \
+-	makefiles \
+-	test/regress \
+-	test/perl
++	makefiles
+ 
+ # There are too many interdependencies between the subdirectories, so
+ # don't attempt parallel make here.

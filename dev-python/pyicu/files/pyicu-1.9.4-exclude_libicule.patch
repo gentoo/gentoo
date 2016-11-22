@@ -1,0 +1,46 @@
+diff --git a/setup.py b/setup.py
+index 2cbec9f..ea42e96 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,5 +1,5 @@
+ 
+-import os, sys
++import os, sys, subprocess
+ 
+ try:
+     from setuptools import setup, Extension
+@@ -8,6 +8,7 @@ except ImportError:
+ 
+ 
+ VERSION = '1.9.4'
++ICU_VERSION = subprocess.check_output(('icu-config', '--version')).strip()
+ 
+ INCLUDES = {
+     'darwin': ['/usr/local/include'],
+@@ -43,11 +44,11 @@ LFLAGS = {
+ }
+ 
+ LIBRARIES = {
+-    'darwin': ['icui18n', 'icuuc', 'icudata', 'icule'],
+-    'linux': ['icui18n', 'icuuc', 'icudata', 'icule'],
+-    'freebsd': ['icui18n', 'icuuc', 'icudata', 'icule'],
+-    'win32': ['icuin', 'icuuc', 'icudt', 'icule'],
+-    'sunos5': ['icui18n', 'icuuc', 'icudata', 'icule'],
++    'darwin': ['icui18n', 'icuuc', 'icudata'],
++    'linux': ['icui18n', 'icuuc', 'icudata'],
++    'freebsd': ['icui18n', 'icuuc', 'icudata'],
++    'win32': ['icuin', 'icuuc', 'icudt'],
++    'sunos5': ['icui18n', 'icuuc', 'icudata'],
+ }
+ 
+ platform = sys.platform
+@@ -79,6 +80,9 @@ else:
+ 
+ if 'PYICU_LIBRARIES' in os.environ:
+     _libraries = os.environ['PYICU_LIBRARIES'].split(os.pathsep)
++elif ((sys.version_info >= (3,) and str(ICU_VERSION, 'ascii') < '58') or
++      (sys.version_info < (3,) and ICU_VERSION < '58')):
++    _libraries = LIBRARIES[platform][:] + ['icule']
+ else:
+     _libraries = LIBRARIES[platform]
+ 

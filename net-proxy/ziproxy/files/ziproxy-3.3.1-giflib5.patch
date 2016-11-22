@@ -1,0 +1,46 @@
+Description: Build using giflib5
+Forwarded: yes
+Author: Marcos Talau <talau@users.sourceforge.net>
+Author: Matthias Klose <doko@debian.org>
+Last-Update: 2015-11-04
+
+Index: ziproxy-3.3.1/src/image.c
+===================================================================
+--- ziproxy-3.3.1.orig/src/image.c
++++ ziproxy-3.3.1/src/image.c
+@@ -905,7 +905,11 @@ int gif2bitmap(char *inbuf, int insize,
+ 	desc.size=insize;
+ 	desc.x.pos=0;
+ 
++#if GIFLIB_MAJOR >= 5
++	if ((GifFile = DGifOpen((void*)&desc, &gif_mem_input, NULL)) == NULL)
++#else
+ 	if ((GifFile = DGifOpen((void*)&desc, &gif_mem_input)) == NULL) 
++#endif
+     		return( IMG_RET_ERR_UNKNOWN + IMG_RET_FLG_WHILE_DECOMP);//more possible reasons
+ 
+ 	bmp = new_raw_bitmap();
+@@ -1083,7 +1087,11 @@ int gif2bitmap(char *inbuf, int insize,
+ 	}
+ 	bmp->pal_bpp = bmp->bpp;
+ 	
++#if GIFLIB_MAJOR >= 5
++	DGifCloseFile(GifFile, NULL);
++#else
+ 	DGifCloseFile(GifFile);
++#endif        
+ 	return IMG_RET_OK;
+ }
+ 
+@@ -1738,7 +1746,11 @@ static int bitmap2jp2 (raw_bitmap *bmp,
+ 		cmptparm->width = cwidth [cmptno];
+ 		cmptparm->height = cheight [cmptno];
+ 		cmptparm->prec = cbitlen [cmptno];
++#if GIFLIB_MAJOR >= 5
++		cmptparm->sgnd = 0;	// we only generate unsigned components
++#else
+ 		cmptparm->sgnd = false;	// we only generate unsigned components
++#endif
+ 
+ 		cshiftR [cmptno] = 8 - cbitlen [cmptno]; // calculate the resampling shift for this component
+ 	}

@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>flameeyes@gentoo.org</email>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>cron-bugs@gentoo.org</email>

@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="KDE applet to monitor the network interface status"
-HOMEPAGE="http://sourceforge.net/projects/pa-net-stat/"
+HOMEPAGE="https://sourceforge.net/projects/pa-net-stat/"
 SRC_URI="mirror://sourceforge/pa-net-stat/${P}-Source.tar.bz2"
 
 SLOT="4"

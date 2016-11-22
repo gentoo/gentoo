@@ -1,0 +1,39 @@
+From: Kevin Funk <kfunk@kde.org>
+Date: Tue, 18 Oct 2016 07:47:28 +0000
+Subject: GitHub: Don't crash when Git plugin not loaded
+X-Git-Url: http://quickgit.kde.org/?p=kdevelop.git&a=commitdiff&h=3afcc322a94878c8f5f662c1c5795b75a3bf62a5
+---
+GitHub: Don't crash when Git plugin not loaded
+
+BUG: 331883
+FIXED-IN: 5.0.3
+---
+
+
+--- a/providers/ghprovider/ghproviderwidget.cpp
++++ b/providers/ghprovider/ghproviderwidget.cpp
+@@ -91,17 +91,20 @@
+     if (!pos.isValid())
+         return nullptr;
+ 
++    auto plugin = ICore::self()->pluginController()->pluginForExtension("org.kdevelop.IBasicVersionControl", "kdevgit");
++    if (!plugin) {
++        KMessageBox::error(0, i18n("The Git plugin could not be loaded which is required to import a Github project."), i18n("Github Provider Error"));
++        return nullptr;
++    }
++
+     QString url = pos.data(ProviderModel::VcsLocationRole).toString();
+     if (m_account->validAccount())
+       url = "https://" + m_account->token() + "@" + url.mid(8);
+     QUrl real = QUrl(url);
+     VcsLocation loc(real);
+ 
+-    auto plugin = ICore::self()->pluginController()->pluginForExtension("org.kdevelop.IBasicVersionControl", "kdevgit");
+-    Q_ASSERT(plugin);
+     auto vc = plugin->extension<IBasicVersionControl>();
+     Q_ASSERT(vc);
+-
+     return vc->createWorkingCopy(loc, dest);
+ }
+ 
+

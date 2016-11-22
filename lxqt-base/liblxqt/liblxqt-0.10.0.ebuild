@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Common base library for the LXQt desktop environment"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ $(gcc-version) < 4.8 ]] && \
+		tc-is-gcc && [[ $(gcc-version) < 4.8 ]] && \
 		die 'The active compiler needs to be gcc 4.8 (or newer)'
 	fi
 }

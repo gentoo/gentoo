@@ -1,6 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
+# Steam requires amd64 multilib. These are steam-overlay packages.
+dev-util/adobe-air-runtime
+games-util/steam-client-meta
+games-util/steam-games-meta
+games-util/steam-launcher
+games-util/steam-meta
 
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Novell Groupwise Client sadly needs a 32bit java vm (bundled)
@@ -18,9 +26,6 @@ app-emulation/crossover-office-bin
 app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
-app-emulation/virtualbox
-app-emulation/virtualbox-extpack-oracle
-app-emulation/virtualbox-guest-additions
 >=app-i18n/atokx3-3.0.0
 app-office/lotus-notes
 app-office/ooextras
@@ -152,8 +157,6 @@ sci-chemistry/cyana
 sci-chemistry/icm
 sci-chemistry/mars
 sci-libs/ipp
-sys-apps/memtest86
-sys-apps/memtest86+
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
 

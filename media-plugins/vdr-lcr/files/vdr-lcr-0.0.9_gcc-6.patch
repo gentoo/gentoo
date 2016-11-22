@@ -1,0 +1,87 @@
+compile fix gcc-6
+https://bugs.gentoo.org/show_bug.cgi?id=594266
+Signed-of-by: Peter Levine
+Reviewed-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/Oct/17)
+--- lcr-0.0.9/lcrcfg.c.old	2016-09-23 22:45:27.742540395 -0400
++++ lcr-0.0.9/lcrcfg.c	2016-09-23 22:48:44.825541491 -0400
+@@ -50,48 +50,48 @@
+ {
+   {
+     // eLcrThemeClassic
+-    0x7F000000, // clrBackground
+-    0xFFFCFCFC, // clrTitleBackground
+-    0xFF000000, // clrTitleText
+-    0xFFFCC024, // clrActiveText
++    (int) 0x7F000000, // clrBackground
++    (int) 0xFFFCFCFC, // clrTitleBackground
++    (int) 0xFF000000, // clrTitleText
++    (int) 0xFFFCC024, // clrActiveText
+ //    0xFFFCFCFC, // clrInactiveText // changed, since nearly white on white cannot be read ;-)
+-    0xFF000000, // clrInactiveText
+-    0xFFFC1414, // clrRed
+-    0xFFFCC024, // clrYellow
+-    0xFF24FC24, // clrGreen
++    (int) 0xFF000000, // clrInactiveText
++    (int) 0xFFFC1414, // clrRed
++    (int) 0xFFFCC024, // clrYellow
++    (int) 0xFF24FC24, // clrGreen
+   },
+   {
+     // eLcrThemeElchi
+-    0xC8000066, // clrBackground
+-    0xC833AAEE, // clrTitleBackground
+-    0xFF000000, // clrTitleText
+-    0xFFCCBB22, // clrActiveText
+-    0xFFFFFFFF, // clrInactiveText
+-    0xFFFF0000, // clrRed
+-    0xFFFFEE00, // clrYellow
+-    0xFF33CC33, // clrGreen
++    (int) 0xC8000066, // clrBackground
++    (int) 0xC833AAEE, // clrTitleBackground
++    (int) 0xFF000000, // clrTitleText
++    (int) 0xFFCCBB22, // clrActiveText
++    (int) 0xFFFFFFFF, // clrInactiveText
++    (int) 0xFFFF0000, // clrRed
++    (int) 0xFFFFEE00, // clrYellow
++    (int) 0xFF33CC33, // clrGreen
+   },
+   {
+     // eLcrThemeDeepBlue
+-    0xC80C0C0C, // clrBackground
+-    0xC832557A, // clrTitleBackground
+-    0xFF000000, // clrTitleText
+-    0xFFCE7B00, // clrActiveText
+-    0xFF9A9A9A, // clrInactiveText
+-    0xFF992900, // clrRed
+-    0xFFCE7B00, // clrYellow
+-    0xFF336600, // clrGreen
++    (int) 0xC80C0C0C, // clrBackground
++    (int) 0xC832557A, // clrTitleBackground
++    (int) 0xFF000000, // clrTitleText
++    (int) 0xFFCE7B00, // clrActiveText
++    (int) 0xFF9A9A9A, // clrInactiveText
++    (int) 0xFF992900, // clrRed
++    (int) 0xFFCE7B00, // clrYellow
++    (int) 0xFF336600, // clrGreen
+   },
+   {
+     // eLcrThemeMoronimo
+-    0xDF294A6B, // clrBackground
+-    0xDF3E5578, // clrTitleBackground
+-    0xFF9BBAD7, // clrTitleText
+-    0xFFCE7B00, // clrActiveText
+-    0xFF9A9A9A, // clrInactiveText
+-    0xFF992900, // clrRed
+-    0xFFCE7B00, // clrYellow
+-    0xFF336600, // clrGreen
++    (int) 0xDF294A6B, // clrBackground
++    (int) 0xDF3E5578, // clrTitleBackground
++    (int) 0xFF9BBAD7, // clrTitleText
++    (int) 0xFFCE7B00, // clrActiveText
++    (int) 0xFF9A9A9A, // clrInactiveText
++    (int) 0xFF992900, // clrRed
++    (int) 0xFFCE7B00, // clrYellow
++    (int) 0xFF336600, // clrGreen
+   },
+ };
+ 

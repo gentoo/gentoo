@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="AVR Downloader/UploaDEr"
-HOMEPAGE="http://savannah.nongnu.org/projects/avrdude"
+HOMEPAGE="https://savannah.nongnu.org/projects/avrdude"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 	doc? (
 		mirror://nongnu/${PN}/${PN}-doc-${PV}.tar.gz

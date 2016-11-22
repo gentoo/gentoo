@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="Digger Remastered"
 HOMEPAGE="http://www.digger.org/"
-SRC_URI="https://gitorious.org/digger/digger/archive/8d5769c59d68b37a5b30aa7a9cbfa5a9e15e7ed3.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

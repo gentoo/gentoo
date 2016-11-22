@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">speaklater</remote-id>
     <remote-id type="github">mitsuhiko/speaklater</remote-id>
+    <bugs-to>https://github.com/mitsuhiko/speaklater/issues</bugs-to>
   </upstream>
 </pkgmetadata>

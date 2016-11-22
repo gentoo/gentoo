@@ -9,12 +9,12 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Google API Client for Python"
-HOMEPAGE="https://code.google.com/p/google-api-python-client/ https://github.com/google/google-api-python-client"
+HOMEPAGE="https://github.com/google/google-api-python-client"
 SRC_URI="https://github.com/google/google-api-python-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 
 RDEPEND="
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
 
-python_prepare_all(){
+python_prepare_all() {
 	export SKIP_GOOGLEAPICLIENT_COMPAT_CHECK=true
 	distutils-r1_python_prepare_all
 }

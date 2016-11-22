@@ -1,0 +1,52 @@
+This patch fixes gentoo QA notices against the desktop file (see gentoo bug 460412#3)
+Based upon patch extracted from upstream git; original patch info:
+commit 04f73d125365d97fa6f72677ec5d220292690e56
+Author: Golubev Alexander <fatzer2@gmail.com>
+Date:   Mon Jul 18 13:45:03 2016 +0400
+
+    Remove OnlyShowIn=Unity from clementine.desktop's action sections (#5444)
+
+diff --git a/dist/clementine.desktop b/dist/clementine.desktop
+index 2fb9559..9ee881e 100644
+--- a/dist/clementine.desktop
++++ b/dist/clementine.desktop
+@@ -38,7 +38,6 @@ Actions=Play;Pause;Stop;Previous;Next;
+ [Desktop Action Play]
+ Name=Play
+ Exec=clementine --play
+-OnlyShowIn=Unity;
+ Name[af]=Speel
+ Name[be]=Прайграць
+ Name[bg]=Възпроизвеждане
+@@ -89,7 +88,6 @@ Name[zh_TW]=播放
+ [Desktop Action Pause]
+ Name=Pause
+ Exec=clementine --pause
+-OnlyShowIn=Unity;
+ Name[be]=Прыпыніць
+ Name[bg]=Пауза
+ Name[br]=Ehan
+@@ -135,7 +133,6 @@ Name[zh_TW]=暫停
+ [Desktop Action Stop]
+ Name=Stop
+ Exec=clementine --stop
+-OnlyShowIn=Unity;
+ Name[be]=Спыніць
+ Name[bg]=Спиране
+ Name[br]=Paouez
+@@ -184,7 +181,6 @@ Name[zh_TW]=停止
+ [Desktop Action Previous]
+ Name=Previous
+ Exec=clementine --previous
+-OnlyShowIn=Unity;
+ Name[af]=Vorige
+ Name[be]=Папярэдні
+ Name[bg]=Предишна
+@@ -232,7 +228,6 @@ Name[zh_TW]=往前
+ [Desktop Action Next]
+ Name=Next
+ Exec=clementine --next
+-OnlyShowIn=Unity;
+ Name[af]=Volgende
+ Name[be]=Далей
+ Name[bg]=Следваща

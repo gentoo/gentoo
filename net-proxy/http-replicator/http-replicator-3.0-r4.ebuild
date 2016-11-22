@@ -9,7 +9,7 @@ inherit eutils python systemd
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="Proxy cache for Gentoo packages"
-HOMEPAGE="http://sourceforge.net/projects/http-replicator"
+HOMEPAGE="https://sourceforge.net/projects/http-replicator"
 SRC_URI="mirror://sourceforge/http-replicator/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

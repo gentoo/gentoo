@@ -8,8 +8,8 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Telepathy client library that uses Farstream to handle Call channels"
-HOMEPAGE="http://telepathy.freedesktop.org"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://telepathy.freedesktop.org/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3"

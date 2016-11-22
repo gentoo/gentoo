@@ -1,0 +1,419 @@
+diff -Nuar llvm-3.8.0.src.orig/clang/docs/ItaniumMangleAbiTags.rst llvm-3.8.0.src/clang/docs/ItaniumMangleAbiTags.rst
+--- llvm-3.8.0.src.orig/clang/docs/ItaniumMangleAbiTags.rst	1970-01-01 01:00:00.000000000 +0100
++++ llvm-3.8.0.src/clang/docs/ItaniumMangleAbiTags.rst	2016-07-10 23:54:47.768756996 +0200
+@@ -0,0 +1,101 @@
++========
++ABI tags
++========
++
++Introduction
++============
++
++This text tries to describe gcc semantic for mangling "abi_tag" attributes
++described in https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html
++
++There is no guarantee the following rules are correct, complete or make sense
++in any way as they were determined empirically by experiments with gcc5.
++
++Declaration
++===========
++
++ABI tags are declared in an abi_tag attribute and can be applied to a
++function, variable, class or inline namespace declaration. The attribute takes
++one or more strings (called tags); the order does not matter.
++
++See https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html for
++details.
++
++Tags on an inline namespace are called "implicit tags", all other tags are
++"explicit tags".
++
++Mangling
++========
++
++All tags that are "active" on an <unqualified-name> are emitted after the
++<unqualified-name>, before <template-args> or <discriminator>, and are part of
++the same <substitution> the <unqualified-name> is.
++
++They are mangled as:
++
++    <abi-tags> ::= <abi-tag>*   # sort by name
++    <abi-tag> ::= B <tag source-name>
++
++Example:
++
++    __attribute__((abi_tag("test")))
++    void Func();
++
++    gets mangled as: _Z4FuncB4testv (prettified as `Func[abi:test]()`)
++
++Active tags
++===========
++
++A namespace does not have any active tags. For types (class / struct / union /
++enum), the explicit tags are the active tags.
++
++For variables and functions, the active tags are the explicit tags plus any
++"required tags" which are not in the "available tags" set:
++
++    derived-tags := (required-tags - available-tags)
++    active-tags := explicit-tags + derived-tags
++
++Required tags for a function
++============================
++
++If a function is used as a local scope for another name, and is part of
++another function as local scope, it doesn't have any required tags.
++
++If a function is used as a local scope for a guard variable name, it doesn't
++have any required tags.
++
++Otherwise the function requires any implicit or explicit tag used in the name
++for the return type.
++
++Example:
++    namespace A {
++      inline namespace B __attribute__((abi_tag)) {
++        struct C { int x; };
++      }
++    }
++
++    A::C foo();
++
++    gets mangled as: _Z3fooB1Bv (prettified as `foo[abi:B]()`)
++
++Required tags for a variable
++============================
++
++A variable requires any implicit or explicit tag used in its type.
++
++Available tags
++==============
++
++All tags used in the prefix and in the template arguments for a name are
++available. Also, for functions, all tags from the <bare-function-type>
++(which might include the return type for template functions) are available.
++
++For <local-name>s all active tags used in the local part (<function-
++encoding>) are available, but not implicit tags which were not active.
++
++Implicit and explicit tags used in the <unqualified-name> for a function (as
++in the type of a cast operator) are NOT available.
++
++Example: a cast operator to std::string (which is
++std::__cxx11::basic_string<...>) will use 'cxx11' as an active tag, as it is
++required from the return type `std::string` but not available.
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/docs/ItaniumMangleAbiTags.rst llvm-3.8.0.src/tools/clang/docs/ItaniumMangleAbiTags.rst
+--- llvm-3.8.0.src.orig/tools/clang/docs/ItaniumMangleAbiTags.rst	1970-01-01 01:00:00.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/docs/ItaniumMangleAbiTags.rst	2016-07-10 23:55:02.544868256 +0200
+@@ -0,0 +1,101 @@
++========
++ABI tags
++========
++
++Introduction
++============
++
++This text tries to describe gcc semantic for mangling "abi_tag" attributes
++described in https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html
++
++There is no guarantee the following rules are correct, complete or make sense
++in any way as they were determined empirically by experiments with gcc5.
++
++Declaration
++===========
++
++ABI tags are declared in an abi_tag attribute and can be applied to a
++function, variable, class or inline namespace declaration. The attribute takes
++one or more strings (called tags); the order does not matter.
++
++See https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Attributes.html for
++details.
++
++Tags on an inline namespace are called "implicit tags", all other tags are
++"explicit tags".
++
++Mangling
++========
++
++All tags that are "active" on an <unqualified-name> are emitted after the
++<unqualified-name>, before <template-args> or <discriminator>, and are part of
++the same <substitution> the <unqualified-name> is.
++
++They are mangled as:
++
++    <abi-tags> ::= <abi-tag>*   # sort by name
++    <abi-tag> ::= B <tag source-name>
++
++Example:
++
++    __attribute__((abi_tag("test")))
++    void Func();
++
++    gets mangled as: _Z4FuncB4testv (prettified as `Func[abi:test]()`)
++
++Active tags
++===========
++
++A namespace does not have any active tags. For types (class / struct / union /
++enum), the explicit tags are the active tags.
++
++For variables and functions, the active tags are the explicit tags plus any
++"required tags" which are not in the "available tags" set:
++
++    derived-tags := (required-tags - available-tags)
++    active-tags := explicit-tags + derived-tags
++
++Required tags for a function
++============================
++
++If a function is used as a local scope for another name, and is part of
++another function as local scope, it doesn't have any required tags.
++
++If a function is used as a local scope for a guard variable name, it doesn't
++have any required tags.
++
++Otherwise the function requires any implicit or explicit tag used in the name
++for the return type.
++
++Example:
++    namespace A {
++      inline namespace B __attribute__((abi_tag)) {
++        struct C { int x; };
++      }
++    }
++
++    A::C foo();
++
++    gets mangled as: _Z3fooB1Bv (prettified as `foo[abi:B]()`)
++
++Required tags for a variable
++============================
++
++A variable requires any implicit or explicit tag used in its type.
++
++Available tags
++==============
++
++All tags used in the prefix and in the template arguments for a name are
++available. Also, for functions, all tags from the <bare-function-type>
++(which might include the return type for template functions) are available.
++
++For <local-name>s all active tags used in the local part (<function-
++encoding>) are available, but not implicit tags which were not active.
++
++Implicit and explicit tags used in the <unqualified-name> for a function (as
++in the type of a cast operator) are NOT available.
++
++Example: a cast operator to std::string (which is
++std::__cxx11::basic_string<...>) will use 'cxx11' as an active tag, as it is
++required from the return type `std::string` but not available.
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/AttrDocs.td llvm-3.8.0.src/tools/clang/include/clang/Basic/AttrDocs.td
+--- llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/AttrDocs.td	2015-12-02 22:58:08.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/include/clang/Basic/AttrDocs.td	2016-07-10 23:55:02.545868263 +0200
+@@ -1859,3 +1859,16 @@
+ 
+   }];
+ }
++
++def AbiTagsDocs : Documentation {
++  let Content = [{
++The ``abi_tag`` attribute can be applied to a function, variable, class or
++inline namespace declaration to modify the mangled name of the entity. It gives
++the ability to distinguish between different versions of the same entity but
++with different ABI versions supported. For example, a newer version of a class
++could have a different set of data members and thus have a different size. Using
++the ``abi_tag`` attribute, it is possible to have different mangled names for
++a global variable of the class type. Therefor, the old code could keep using
++the old manged name and the new code will use the new mangled name with tags.
++  }];
++}
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/Attr.td llvm-3.8.0.src/tools/clang/include/clang/Basic/Attr.td
+--- llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/Attr.td	2015-12-02 22:58:08.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/include/clang/Basic/Attr.td	2016-07-10 23:55:02.544868256 +0200
+@@ -349,6 +349,14 @@
+ // Attributes begin here
+ //
+ 
++def AbiTag : Attr {
++  let Spellings = [GCC<"abi_tag">];
++  let Args = [VariadicStringArgument<"Tags">];
++  let Subjects = SubjectList<[Struct, Var, Function, Namespace], ErrorDiag,
++      "ExpectedStructClassVariableFunctionOrInlineNamespace">;
++  let Documentation = [AbiTagsDocs];
++}
++
+ def AddressSpace : TypeAttr {
+   let Spellings = [GNU<"address_space">];
+   let Args = [IntArgument<"AddressSpace">];
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/DiagnosticSemaKinds.td llvm-3.8.0.src/tools/clang/include/clang/Basic/DiagnosticSemaKinds.td
+--- llvm-3.8.0.src.orig/tools/clang/include/clang/Basic/DiagnosticSemaKinds.td	2016-01-09 13:53:17.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/include/clang/Basic/DiagnosticSemaKinds.td	2016-07-10 23:55:02.547868278 +0200
+@@ -2434,7 +2434,8 @@
+   "Objective-C instance methods|init methods of interface or class extension declarations|"
+   "variables, functions and classes|Objective-C protocols|"
+   "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
+-  "interface or protocol declarations|kernel functions|non-K&R-style functions}1">,
++  "interface or protocol declarations|kernel functions|non-K&R-style functions|"
++  "structs, classes, variables, functions, and inline namespaces}1">,
+   InGroup<IgnoredAttributes>;
+ def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
+ def warn_type_attribute_wrong_type : Warning<
+@@ -4144,6 +4145,13 @@
+ def err_redefinition_extern_inline : Error<
+   "redefinition of a 'extern inline' function %0 is not supported in "
+   "%select{C99 mode|C++}1">;
++def warn_attr_abi_tag_namespace : Warning<
++  "'abi_tag' attribute on %select{non-inline|anonymous}0 namespace ignored">,
++  InGroup<IgnoredAttributes>;
++def err_abi_tag_on_redeclaration : Error<
++  "cannot add 'abi_tag' attribute in a redeclaration">;
++def err_new_abi_tag_on_redeclaration : Error<
++  "'abi_tag' %0 missing in original declaration">;
+ 
+ def note_deleted_dtor_no_operator_delete : Note<
+   "virtual destructor requires an unambiguous, accessible 'operator delete'">;
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/include/clang/Sema/AttributeList.h llvm-3.8.0.src/tools/clang/include/clang/Sema/AttributeList.h
+--- llvm-3.8.0.src.orig/tools/clang/include/clang/Sema/AttributeList.h	2015-12-02 18:07:30.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/include/clang/Sema/AttributeList.h	2016-07-10 23:55:02.548868286 +0200
+@@ -855,7 +855,8 @@
+   ExpectedStructOrTypedef,
+   ExpectedObjectiveCInterfaceOrProtocol,
+   ExpectedKernelFunction,
+-  ExpectedFunctionWithProtoType
++  ExpectedFunctionWithProtoType,
++  ExpectedStructClassVariableFunctionOrInlineNamespace
+ };
+ 
+ }  // end namespace clang
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/lib/Sema/SemaDeclAttr.cpp llvm-3.8.0.src/tools/clang/lib/Sema/SemaDeclAttr.cpp
+--- llvm-3.8.0.src.orig/tools/clang/lib/Sema/SemaDeclAttr.cpp	2016-01-13 02:07:35.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/lib/Sema/SemaDeclAttr.cpp	2016-07-10 23:55:02.552868316 +0200
+@@ -4446,6 +4446,42 @@
+       Attr.getRange(), S.Context, Attr.getAttributeSpellingListIndex()));
+ }
+ 
++static void handleAbiTagAttr(Sema &S, Decl *D, const AttributeList &Attr) {
++  SmallVector<std::string, 4> Tags;
++  for (unsigned I = 0, E = Attr.getNumArgs(); I != E; ++I) {
++    StringRef Tag;
++    if (!S.checkStringLiteralArgumentAttr(Attr, I, Tag))
++      return;
++    Tags.push_back(Tag);
++  }
++
++  if (const auto *NS = dyn_cast<NamespaceDecl>(D)) {
++    if (!NS->isInline()) {
++      S.Diag(Attr.getLoc(), diag::warn_attr_abi_tag_namespace) << 0;
++      return;
++    }
++    if (NS->isAnonymousNamespace()) {
++      S.Diag(Attr.getLoc(), diag::warn_attr_abi_tag_namespace) << 1;
++      return;
++    }
++    if (Attr.getNumArgs() == 0)
++      Tags.push_back(NS->getName());
++  } else if (!checkAttributeAtLeastNumArgs(S, Attr, 1))
++    return;
++
++  // Store tags sorted and without duplicates.
++  std::sort(Tags.begin(), Tags.end());
++  Tags.erase(std::unique(Tags.begin(), Tags.end()), Tags.end());
++
++  D->addAttr(::new (S.Context)
++             AbiTagAttr(Attr.getRange(), S.Context, Tags.data(), Tags.size(),
++                        Attr.getAttributeSpellingListIndex()));
++
++  // FIXME: remove this warning as soon as mangled part is ready.
++  S.Diag(Attr.getRange().getBegin(), diag::warn_attribute_ignored)
++        << Attr.getName();
++}
++
+ static void handleARMInterruptAttr(Sema &S, Decl *D,
+                                    const AttributeList &Attr) {
+   // Check the attribute arguments.
+@@ -5360,6 +5396,9 @@
+   case AttributeList::AT_Thread:
+     handleDeclspecThreadAttr(S, D, Attr);
+     break;
++  case AttributeList::AT_AbiTag:
++    handleAbiTagAttr(S, D, Attr);
++    break;
+ 
+   // Thread safety attributes:
+   case AttributeList::AT_AssertExclusiveLock:
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/lib/Sema/SemaDecl.cpp llvm-3.8.0.src/tools/clang/lib/Sema/SemaDecl.cpp
+--- llvm-3.8.0.src.orig/tools/clang/lib/Sema/SemaDecl.cpp	2016-01-11 23:41:53.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/lib/Sema/SemaDecl.cpp	2016-07-10 23:55:02.551868308 +0200
+@@ -2396,6 +2396,24 @@
+     }
+   }
+ 
++  // Re-declaration cannot add abi_tag's.
++  if (const auto *NewAbiTagAttr = New->getAttr<AbiTagAttr>()) {
++    if (const auto *OldAbiTagAttr = Old->getAttr<AbiTagAttr>()) {
++      for (const auto &NewTag : NewAbiTagAttr->tags()) {
++        if (std::find(OldAbiTagAttr->tags_begin(), OldAbiTagAttr->tags_end(),
++                      NewTag) == OldAbiTagAttr->tags_end()) {
++          Diag(NewAbiTagAttr->getLocation(),
++               diag::err_new_abi_tag_on_redeclaration)
++              << NewTag;
++          Diag(OldAbiTagAttr->getLocation(), diag::note_previous_declaration);
++        }
++      }
++    } else {
++      Diag(NewAbiTagAttr->getLocation(), diag::err_abi_tag_on_redeclaration);
++      Diag(Old->getLocation(), diag::note_previous_declaration);
++    }
++  }
++
+   if (!Old->hasAttrs())
+     return;
+ 
+diff -Nuar llvm-3.8.0.src.orig/tools/clang/test/SemaCXX/attr-abi-tag-syntax.cpp llvm-3.8.0.src/tools/clang/test/SemaCXX/attr-abi-tag-syntax.cpp
+--- llvm-3.8.0.src.orig/tools/clang/test/SemaCXX/attr-abi-tag-syntax.cpp	1970-01-01 01:00:00.000000000 +0100
++++ llvm-3.8.0.src/tools/clang/test/SemaCXX/attr-abi-tag-syntax.cpp	2016-07-10 23:55:02.552868316 +0200
+@@ -0,0 +1,43 @@
++// RUN: %clang_cc1 -std=c++11 -fsyntax-only -verify %s
++
++namespace N1 {
++
++namespace __attribute__((__abi_tag__)) {}
++// expected-warning@-1 {{'abi_tag' attribute on non-inline namespace ignored}}
++
++namespace N __attribute__((__abi_tag__)) {}
++// expected-warning@-1 {{'abi_tag' attribute on non-inline namespace ignored}}
++
++} // namespace N1
++
++namespace N2 {
++
++inline namespace __attribute__((__abi_tag__)) {}
++// expected-warning@-1 {{'abi_tag' attribute on anonymous namespace ignored}}
++
++inline namespace N __attribute__((__abi_tag__)) {}
++// FIXME: remove this warning as soon as attribute fully supported.
++// expected-warning@-2 {{'__abi_tag__' attribute ignored}}
++
++} // namespcace N2
++
++__attribute__((abi_tag("B", "A"))) extern int a1;
++// FIXME: remove this warning as soon as attribute fully supported.
++// expected-warning@-2 {{'abi_tag' attribute ignored}}
++
++__attribute__((abi_tag("A", "B"))) extern int a1;
++// expected-note@-1 {{previous declaration is here}}
++// FIXME: remove this warning as soon as attribute fully supported.
++// expected-warning@-3 {{'abi_tag' attribute ignored}}
++
++__attribute__((abi_tag("A", "C"))) extern int a1;
++// expected-error@-1 {{'abi_tag' C missing in original declaration}}
++// FIXME: remove this warning as soon as attribute fully supported.
++// expected-warning@-3 {{'abi_tag' attribute ignored}}
++
++extern int a2;
++// expected-note@-1 {{previous declaration is here}}
++__attribute__((abi_tag("A")))extern int a2;
++// expected-error@-1 {{cannot add 'abi_tag' attribute in a redeclaration}}
++// FIXME: remove this warning as soon as attribute fully supported.
++// expected-warning@-3 {{'abi_tag' attribute ignored}}

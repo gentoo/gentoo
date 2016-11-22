@@ -24,7 +24,11 @@ kernel_linux? (
 	amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
 	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
 	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
-	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
+	ppc64? (
+		${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz
+		${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap.tbz
+	)
+	s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-bootstrap.tbz )
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
 )
 kernel_SunOS? (
@@ -38,8 +42,6 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI+="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
-	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
-	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
@@ -87,6 +89,8 @@ go_arch()
 	case "${portage_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
+		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
+		s390) echo s390x ;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -152,7 +156,7 @@ src_compile()
 	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
 	if use gccgo; then
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
-		local go_binary=$(type -P go-5 2>/dev/null)
+		local go_binary=$(gcc-config --get-bin-path)/go-5
 		[[ -x ${go_binary} ]] || go_binary=$(
 			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-5 | sort -V | tail -n1)
 		[[ -x ${go_binary} ]] || die "go-5: command not found"
@@ -174,6 +178,7 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
+	elog "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"
@@ -214,39 +219,4 @@ src_install()
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
 	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
-}
-
-pkg_preinst()
-{
-	has_version '<dev-lang/go-1.4' &&
-		export had_support_files=true ||
-		export had_support_files=false
-}
-
-pkg_postinst()
-{
-	# If the go tool sees a package file timestamped older than a dependancy it
-	# will rebuild that file.  So, in order to stop go from rebuilding lots of
-	# packages for every build we need to fix the timestamps.  The compiler and
-	# linker are also checked - so we need to fix them too.
-	ebegin "fixing timestamps to avoid unnecessary rebuilds"
-	tref="usr/lib/go/pkg/*/runtime.a"
-	find "${EROOT}"usr/lib/go -type f \
-		-exec touch -r "${EROOT}"${tref} {} \;
-	eend $?
-
-	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} &&
-		${REPLACING_VERSIONS} != ${PV} ]]; then
-		elog "Release notes are located at http://golang.org/doc/go${PV}"
-	fi
-
-	if $had_support_files; then
-		ewarn
-		ewarn "All editor support, IDE support, shell completion"
-		ewarn "support, etc has been removed from the go package"
-		ewarn "upstream."
-		ewarn "For more information on which support is available, see"
-		ewarn "the following URL:"
-		ewarn "https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins"
-	fi
 }

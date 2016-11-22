@@ -10,6 +10,6 @@
     <flag name="nio-buffers">Enables support for NIO buffers</flag>
   </use>
   <upstream>
-    <remote-id type="github">twall/jna#readme</remote-id>
+    <remote-id type="github">twall/jna</remote-id>
   </upstream>
 </pkgmetadata>

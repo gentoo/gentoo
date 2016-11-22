@@ -103,7 +103,6 @@ mzscheme
 xemacs
 rpm
 scanner
-madwifi
 libupnp
 zvbi
 ldap
@@ -210,7 +209,7 @@ video_cards_vmware
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
 # mask d3d since we don't have wine
 d3d
 
@@ -226,9 +225,6 @@ clvm
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # virtual/opencl is not keyworded
 opencl
-
-# This one we need to test ...
-python_targets_python3_3
 
 # No arm64 java support yet.
 java

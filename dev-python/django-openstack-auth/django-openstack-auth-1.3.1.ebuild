@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -20,7 +20,6 @@ IUSE="doc test"
 CDEPEND=">=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
-		<dev-python/oslo-sphinx-2.6.0[${PYTHON_USEDEP}]
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 		>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 		<dev-python/pbr-2.0[${PYTHON_USEDEP}]
@@ -38,7 +37,6 @@ RDEPEND="
 	>=dev-python/django-1.4.2[${PYTHON_USEDEP}]
 	<dev-python/django-1.8[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-1.11.0[${PYTHON_USEDEP}]
-	<dev-python/oslo-config-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 

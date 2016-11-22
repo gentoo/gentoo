@@ -1,0 +1,176 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e12aad4..910ba55 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
+ OPTION(ENABLE_DEBUG        "Enable debug output [default: OFF]"              OFF)
+ OPTION(ENABLE_OPTIMIZATION "Enable optimization [default: OFF]"              OFF)
+ OPTION(ENABLE_DKIM         "Enable dkim signatures [default: ON]"           ON)
++OPTION(ENABLE_MEMCACHED    "Enable memcached storage [default: ON]"         ON)
+ OPTION(WANT_SYSTEMD_UNITS  "Install systemd unit files on Linux [default: OFF]" OFF)
+ 
+ ############################# INCLUDE SECTION #############################################
+@@ -121,8 +122,8 @@ MACRO(ProcessPackage PKG_NAME)
+ 						PATH_SUFFIXES ${PKG_LIB_SUFFIXES} lib64 lib
+ 						PATHS ${RMILTER_DEFAULT_LIBRARY_PATHS})
+ 			IF(NOT _lib)
+-				IF(OPTIONAL)
+-					MESSAGE("Cannot find library ${PKG_LIBRARY} for package ${PKG_NAME}")
++				IF(PKG_OPTIONAL)
++					MESSAGE(STATUS "Cannot find library ${PKG_LIBRARY} for package ${PKG_NAME}")
+ 				ELSE()
+ 					MESSAGE(FATAL_ERROR "Cannot find library ${PKG_LIBRARY} for package ${PKG_NAME}")
+ 				ENDIF()
+@@ -133,8 +134,8 @@ MACRO(ProcessPackage PKG_NAME)
+ 							PATH_SUFFIXES ${PKG_INCLUDE_SUFFIXES} "include"
+ 							PATHS ${RMILTER_DEFAULT_INCLUDE_PATHS})
+ 			IF(NOT _incl)
+-				IF(OPTIONAL)
+-					MESSAGE("Cannot find header ${PKG_INCLUDE} for package ${PKG_NAME}")
++				IF(PKG_OPTIONAL)
++					MESSAGE(STATUS "Cannot find header ${PKG_INCLUDE} for package ${PKG_NAME}")
+ 				ELSE()
+ 					MESSAGE(FATAL_ERROR "Cannot find header ${PKG_INCLUDE} for package ${PKG_NAME}")
+ 				ENDIF()
+@@ -362,8 +363,6 @@ ProcessPackage(PCRE LIBRARY pcre INCLUDE pcre.h INCLUDE_SUFFIXES include/pcre
+ 	ROOT ${PCRE_ROOT_DIR} MODULES pcre libpcre pcre3 libpcre3)
+ ProcessPackage(LIBMILTER LIBRARY milter INCLUDE mfapi.h INCLUDE_SUFFIXES include/libmilter
+ 	LIB_SUFFIXES lib/libmilter ROOT ${LIBMILTER_ROOT_DIR} MODULES libmilter)
+-ProcessPackage(LIBMEMCACHED LIBRARY memcached INCLUDE memcached.h INCLUDE_SUFFIXES include/libmemcached
+-	LIB_SUFFIXES lib/libmemcached ROOT ${LIBMEMCACHED_ROOT_DIR} MODULES libmemcached)
+ 
+ IF(ENABLE_DKIM MATCHES "ON")
+ 	SET(WITH_DKIM 1)
+@@ -373,6 +372,14 @@ IF(ENABLE_DKIM MATCHES "ON")
+ 		ROOT ${OPENDKIM_ROOT_DIR} MODULES opendkim)
+ ENDIF()
+ 
++IF(ENABLE_MEMCACHED MATCHES "ON")
++	SET(WITH_MEMCACHED 1)
++	ProcessPackage(LIBMEMCACHED LIBRARY memcached
++		INCLUDE memcached.h INCLUDE_SUFFIXES include/libmemcached
++		LIB_SUFFIXES lib/libmemcached ROOT ${LIBMEMCACHED_ROOT_DIR}
++		MODULES libmemcached)
++ENDIF()
++
+ ################################ SOURCES SECTION ###########################
+ ADD_SUBDIRECTORY(hiredis)
+ INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/hiredis")
+diff --git a/config.h.in b/config.h.in
+index b90d422..0ab2725 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -159,6 +159,8 @@
+ 
+ #cmakedefine WITH_SPF            1
+ 
++#cmakedefine WITH_MEMCACHED           1
++
+ #cmakedefine HAVE_SENDFILE       1
+ #cmakedefine HAVE_SYS_SENDFILE_H 1
+ 
+diff --git a/src/cache.c b/src/cache.c
+index d83b6e3..c84cafc 100644
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -23,7 +23,9 @@
+  */
+ 
+ #include "config.h"
++#ifdef WITH_MEMCACHED
+ #include "libmemcached/memcached.h"
++#endif
+ #include "cfg_file.h"
+ #include "cache.h"
+ #include "hiredis.h"
+@@ -33,6 +35,7 @@
+ 
+ #define DEFAULT_REDIS_PORT 6379
+ 
++#ifdef WITH_MEMCACHED
+ static inline bool compat_memcached_success(int rc)
+ {
+ 	return (rc == MEMCACHED_BUFFERED ||
+@@ -60,6 +63,7 @@ static inline bool compat_memcached_fatal(int rc)
+ 			rc != MEMCACHED_SUCCESS &&
+ 			rc != MEMCACHED_VALUE);
+ }
++#endif
+ 
+ static struct cache_server *
+ rmilter_get_server (struct config_file *cfg, enum rmilter_query_type type,
+@@ -110,6 +114,7 @@ rmilter_get_server (struct config_file *cfg, enum rmilter_query_type type,
+ 	return serv;
+ }
+ 
++#ifdef WITH_MEMCACHED
+ static void
+ rmilter_format_libmemcached_config (struct config_file *cfg,
+ 		struct cache_server *serv,
+@@ -128,6 +133,7 @@ rmilter_format_libmemcached_config (struct config_file *cfg,
+ 	memcached_behavior_set (ctx, MEMCACHED_BEHAVIOR_POLL_TIMEOUT,
+ 				cfg->memcached_connect_timeout);
+ }
++#endif
+ 
+ bool
+ rmilter_query_cache (struct config_file *cfg, enum rmilter_query_type type,
+@@ -211,6 +217,7 @@ rmilter_query_cache (struct config_file *cfg, enum rmilter_query_type type,
+ 			}
+ 		}
+ 		else {
++#ifdef WITH_MEMCACHED
+ 			char *kval;
+ 			size_t value_len = 0;
+ 			uint32_t mflags;
+@@ -254,6 +261,10 @@ rmilter_query_cache (struct config_file *cfg, enum rmilter_query_type type,
+ 			}
+ 
+ 			memcached_free (mctx);
++#else
++			msg_err ("memcached query requested when memcached support is"
++					" not compiled");
++#endif
+ 		}
+ 	}
+ 
+@@ -340,6 +351,7 @@ rmilter_set_cache (struct config_file *cfg, enum rmilter_query_type type ,
+ 			}
+ 		}
+ 		else {
++#ifdef WITH_MEMCACHED
+ 			char *kval;
+ 			size_t value_len = 0;
+ 			uint32_t mflags;
+@@ -373,6 +385,10 @@ rmilter_set_cache (struct config_file *cfg, enum rmilter_query_type type ,
+ 			}
+ 
+ 			memcached_free (mctx);
++#else
++		msg_err ("memcached query requested when memcached support is"
++				" not compiled");
++#endif
+ 		}
+ 	}
+ 
+@@ -448,6 +464,7 @@ rmilter_delete_cache (struct config_file *cfg, enum rmilter_query_type type ,
+ 			}
+ 		}
+ 		else {
++#ifdef WITH_MEMCACHED
+ 			char *kval;
+ 			size_t value_len = 0;
+ 			uint32_t mflags;
+@@ -480,7 +497,12 @@ rmilter_delete_cache (struct config_file *cfg, enum rmilter_query_type type ,
+ 
+ 			upstream_ok (&serv->up, time (NULL));
+ 			memcached_free (mctx);
++#else
++			msg_err ("memcached query requested when memcached support is"
++					" not compiled");
++#endif
+ 		}
++
+ 	}
+ 
+ 	return true;

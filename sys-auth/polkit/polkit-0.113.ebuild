@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils multilib pam pax-utils systemd user
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/polkit"
-SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/whole/tg-${PV}otf.zip"
 
 LICENSE="|| ( GFL LPPL-1.3c )" # legally equivalent
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 
 S=${WORKDIR}
 FONT_SUFFIX="otf"

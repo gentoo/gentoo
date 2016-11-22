@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="fits">Enable support for the FITS image format through <pkg>sci-libs/cfitsio</pkg></flag>
+		<flag name='matio'>Enable support for reading images from Matlab files through <pkg>sci-libs/matio</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">vips</remote-id>

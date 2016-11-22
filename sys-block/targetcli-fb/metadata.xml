@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>sir.suriv@gmail.com</email>
+	<name>Diogo Pereira</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	targetcli-fb is a command-line interface for configuring
+	the Linux-IO generic SCSI target.
+</longdescription>
+<upstream>
+	<maintainer status="active">
+		<email>agrover@redhat.com</email>
+		<name>Andy Grover</name>
+	</maintainer>
+	<remote-id type="github">open-iscsi/targetcli-fb</remote-id>
+	<bugs-to>https://github.com/open-iscsi/targetcli-fb</bugs-to>
+</upstream>
+</pkgmetadata>

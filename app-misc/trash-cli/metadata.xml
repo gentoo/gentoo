@@ -13,6 +13,7 @@
   <upstream>
     <maintainer status="active">
       <email>sito@andreafrancia.it</email>
+      <name>Andrea Francia</name>
     </maintainer>
     <changelog>https://github.com/andreafrancia/trash-cli/commits/master</changelog>
     <doc lang="en">https://github.com/andreafrancia/trash-cli/blob/master/README.txt</doc>

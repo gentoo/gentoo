@@ -1,0 +1,12 @@
+--- a/dns.c
++++ b/dns.c
+@@ -49,7 +49,8 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ //#include <ctype.h>
+-//#include <string.h>
++#include <string.h>
++#include <strings.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>

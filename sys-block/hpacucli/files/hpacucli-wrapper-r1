@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cmd="$(basename "$0")"
+
+HPACUCLI_BASEDIR="/opt/hp/hpacucli"
+HPACUCLI_LOCKDIR="/run/lock/$cmd"
+HPACUCLI_LOCK="${HPACUCLI_LOCKDIR}/CPQACU_MUTEX"
+HPACUCLI_BIN="${HPACUCLI_BASEDIR}/$cmd.bin"
+
+if pgrep -x "$cmd.bin"; then
+        echo "Another instance of $cmd is running! Stop it first."
+        exit 1
+fi
+
+if ! [ -f "${HPACUCLI_LOCK}" ]; then
+	mkdir -p -m 700 "${HPACUCLI_LOCKDIR}"
+	touch "${HPACUCLI_LOCK}"
+fi
+
+export LD_LIBRARY_PATH="${HPACUCLI_BASEDIR}"
+export ACUXE_LOCK_FILES_DIR="${HPACUCLI_LOCKDIR}/"
+"${HPACUCLI_BIN}" "${@}"

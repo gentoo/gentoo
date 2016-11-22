@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils distutils-r1 libtool multilib-minimal toolchain-funcs
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
-HOMEPAGE="http://sourceforge.net/projects/cracklib"
+HOMEPAGE="https://sourceforge.net/projects/cracklib"
 SRC_URI="mirror://sourceforge/cracklib/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

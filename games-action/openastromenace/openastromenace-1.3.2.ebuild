@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit gnome2-utils cmake-utils eutils games
 
 DESCRIPTION="Modern 3D space shooter with spaceship upgrade possibilities"
-HOMEPAGE="http://sourceforge.net/projects/openastromenace/"
+HOMEPAGE="https://sourceforge.net/projects/openastromenace/"
 SRC_URI="mirror://sourceforge/openastromenace/${PV}/astromenace-src-${PV}.tar.bz2"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 UbuntuFontLicense-1.0 OFL-1.1"
@@ -23,6 +23,7 @@ DEPEND="virtual/opengl
 	media-libs/libogg
 	media-libs/libvorbis
 	x11-libs/libXinerama"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/AstroMenace
 

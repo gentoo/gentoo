@@ -6,7 +6,7 @@ Subject: [PATCH] modplug: Specify directory when including stdafx.h
 modplug stopped exposing their directory in their pcfile, meaining
 consumers accessing the headers directly fail to build.
 
-http://sourceforge.net/p/modplug-xmms/git/ci/75e9b166982ed637b59ef7cbc1835a09f768923e/
+https://sourceforge.net/p/modplug-xmms/git/ci/75e9b166982ed637b59ef7cbc1835a09f768923e/
 ---
  ext/modplug/gstmodplug.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

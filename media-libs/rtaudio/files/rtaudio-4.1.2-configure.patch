@@ -1,0 +1,68 @@
+--- rtaudio-4.1.2/configure.ac
++++ rtaudio-4.1.2/configure.ac
+@@ -69,9 +69,9 @@
+ AC_PROG_CXX(g++ CC c++ cxx)
+ AM_PROG_AR
+ AC_PATH_PROG(AR, ar, no)
+-if [[ $AR = "no" ]] ; then
+-    AC_MSG_ERROR("Could not find ar - needed to create a library");
+-fi
++AS_IF([test "x$AR" == "x" ], [
++    AC_MSG_ERROR("Could not find ar - needed to create a library")
++])
+ 
+ # Initialize libtool
+ LT_INIT([win32-dll])
+@@ -131,38 +130,41 @@
+   ;;
+ 
+   *-*-linux*)
+-  AC_ARG_WITH(jack, [  --with-jack = choose JACK server support (mac and linux only)], [
++  AC_ARG_WITH([jack], AS_HELP_STRING([--with-jack], [choose JACK server support (mac and linux only)]))
++  AS_IF([test "x$with_jack" != "xno"], [
+     api="$api -D__UNIX_JACK__"
+     AC_MSG_RESULT(using JACK)
+     AC_CHECK_LIB(jack, jack_client_open, , AC_MSG_ERROR(JACK support requires the jack library!))
+-    AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(Jack support also requires the asound library!))], )
++    AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(Jack support also requires the asound library!))])
+ 
+   # Look for ALSA flag
+-  AC_ARG_WITH(alsa, [  --with-alsa = choose native ALSA API support (linux only)], [
++  AC_ARG_WITH([alsa], AS_HELP_STRING([--with-alsa], [choose native ALSA API support (linux only)]))
++  AS_IF([test "x$with_alsa" != "xno"], [
+     api="$api -D__LINUX_ALSA__"
+     req="$req alsa"
+     AC_MSG_RESULT(using ALSA)
+-    AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(ALSA support requires the asound library!))], )
++    AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(ALSA support requires the asound library!))])
+ 
+   # Look for PULSE flag
+-  AC_ARG_WITH(pulse, [  --with-pulse = choose PulseAudio API support (linux only)], [
++  AC_ARG_WITH([pulse], AS_HELP_STRING([--with-pulse], [choose PulseAudio API support (linux only)]))
++  AS_IF([test "x$with_pulse" != "xno"], [
+     api="$api -D__LINUX_PULSE__"
+     req="$req libpulse-simple"
+     AC_MSG_RESULT(using PulseAudio)
+-    AC_CHECK_LIB(pulse-simple, pa_simple_flush, , AC_MSG_ERROR(PulseAudio support requires the pulse-simple library!))], )
++    AC_CHECK_LIB(pulse-simple, pa_simple_flush, , AC_MSG_ERROR(PulseAudio support requires the pulse-simple library!))])
+ 
+   # Look for OSS flag
+-  AC_ARG_WITH(oss, [  --with-oss = choose OSS API support (linux only)], [
++  AC_ARG_WITH([oss], AS_HELP_STRING([--with-oss], [choose OSS API support (linux only)]))
++  AS_IF([test "x$with_oss" != "xno"], [
+     api="$api -D__LINUX_OSS__"
+-    AC_MSG_RESULT(using OSS)], )
++    AC_MSG_RESULT(using OSS)])
+ 
+   # If no audio api flags specified, use ALSA
+-  if [test "$api" == "";] then
++  AS_IF([test "x$api" == "x"], [
+     AC_MSG_RESULT(using ALSA)
+     AC_SUBST( api, [-D__LINUX_ALSA__] )
+     req="$req alsa"
+-    AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(ALSA support requires the asound library!))
+-  fi
++	AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(ALSA support requires the asound library!))])
+ 
+   AC_CHECK_LIB(pthread, pthread_create, , AC_MSG_ERROR(RtAudio requires the pthread library!))
+   ;;

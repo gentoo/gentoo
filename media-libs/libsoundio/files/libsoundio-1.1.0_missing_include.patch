@@ -1,0 +1,22 @@
+From e8b908243d58760d7815525d18bddd64ec97a5d2 Mon Sep 17 00:00:00 2001
+From: Andrew Kelley <superjoe30@gmail.com>
+Date: Fri, 22 Apr 2016 10:24:32 -0700
+Subject: [PATCH] add missing include directive
+
+fixes compilation when no backends are available. closes #67
+---
+ src/soundio_private.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/soundio_private.h b/src/soundio_private.h
+index 13d1d7a..213b36f 100644
+--- a/src/soundio_private.h
++++ b/src/soundio_private.h
+@@ -10,6 +10,7 @@
+ 
+ #include "soundio_internal.h"
+ #include "config.h"
++#include "list.h"
+ 
+ #ifdef SOUNDIO_HAVE_JACK
+ #include "jack.h"

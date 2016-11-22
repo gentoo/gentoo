@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">Graphical Portage frontend based on KDE4/Qt4</longdescription>
-	<maintainer type="person">
-		<email>galiven@users.sourceforge.net</email>
-		<name>Andrew Schenck</name>
-		<description>Upstream Maintainer (please CC on bugs)</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>
@@ -18,6 +13,11 @@
 	<maintainer type="project">
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>galiven@users.sourceforge.net</email>
+		<name>Andrew Schenck</name>
+		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">kuroo</remote-id>

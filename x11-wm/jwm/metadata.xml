@@ -5,4 +5,18 @@
 		<email>wraeth@gentoo.org</email>
 		<name>Sam Jorna</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">joewing/jwm</remote-id>
+		<changelog>http://joewing.net/projects/jwm/snapshots/ChangeLog</changelog>
+		<bugs-to>https://github.com/joewing/jwm/issues</bugs-to>
+	</upstream>
+	<longdescription>
+	JWM is a light-weight window manager for the X11 Window System. JWM is
+	written in C and uses only Xlib at a minimum. Because of its small
+	footprint, JWM makes a good window manager for older computers and less
+	powerful systems, such as the Raspberry Pi, though it is perfectly capable
+	of running on modern systems. JWM is included in small Linux distributions
+	such as Puppy Linux and Damn Small Linux, and it is available as a separate
+	package in many other distributions.
+	</longdescription>
 </pkgmetadata>

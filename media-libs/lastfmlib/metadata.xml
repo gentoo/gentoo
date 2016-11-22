@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dirk.vdb@gmail.com</email>
-		<name>Dirk Vanden Boer</name>
-		<description>Proxy maintainer and upstream developer. Please CC him on bugs</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
@@ -13,6 +8,11 @@
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dirk.vdb@gmail.com</email>
+		<name>Dirk Vanden Boer</name>
+		<description>Proxy maintainer and upstream developer. Please CC him on bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>

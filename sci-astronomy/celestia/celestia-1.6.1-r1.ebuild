@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,9 @@ IUSE="cairo gnome gtk nls pch theora threads"
 
 RDEPEND="
 	virtual/opengl
-	virtual/jpeg
+	virtual/jpeg:0
 	media-libs/libpng:0=
-	<dev-lang/lua-5.2
+	<dev-lang/lua-5.2:*
 	gtk? ( !gnome? ( x11-libs/gtk+:2 >=x11-libs/gtkglext-1.0 ) )
 	gnome? (
 		x11-libs/gtk+:2

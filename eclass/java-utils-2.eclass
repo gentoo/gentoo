@@ -37,7 +37,7 @@ has "${EAPI}" 0 1 && JAVA_PKG_PORTAGE_DEP=">=sys-apps/portage-2.1.2.7"
 # This is a convience variable to be used from the other java eclasses. This is
 # the version of java-config we want to use. Usually the latest stable version
 # so that ebuilds can use new features without depending on specific versions.
-JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0 ${JAVA_PKG_PORTAGE_DEP}"
+JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3 ${JAVA_PKG_PORTAGE_DEP}"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
 # @ECLASS-VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
@@ -275,7 +275,7 @@ java-pkg_addres() {
 # be it a unit test or a regular java class.
 #
 # You can use this function by either:
-# - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
+# - calling it yourself in src_prepare() and feeding java-pkg_rm_files with
 # the list of files you wish to remove.
 # - defining an array in the ebuild named JAVA_RM_FILES with the list of files
 # you wish to remove.
@@ -348,8 +348,10 @@ java-pkg_dojar() {
 				#but first check class version when in strict mode.
 				is-java-strict && java-pkg_verify-classes "${jar}"
 
-				INSDESTTREE="${JAVA_PKG_JARDEST}" \
-					doins "${jar}" || die "failed to install ${jar}"
+				(
+					insinto "${JAVA_PKG_JARDEST}"
+					doins "${jar}"
+				) || die "failed to install ${jar}"
 				java-pkg_append_ JAVA_PKG_CLASSPATH "${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "installed ${jar} to ${D}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
@@ -493,9 +495,11 @@ java-pkg_doso() {
 		if [[ -e "${lib}" ]] ; then
 			# install if it isn't a symlink
 			if [[ ! -L "${lib}" ]] ; then
-				INSDESTTREE="${JAVA_PKG_LIBDEST}" \
-					INSOPTIONS="-m0755" \
-					doins "${lib}" || die "failed to install ${lib}"
+				(
+					insinto "${JAVA_PKG_LIBDEST}"
+					insopts -m0755
+					doins "${lib}"
+				) || die "failed to install ${lib}"
 				java-pkg_append_ JAVA_PKG_LIBRARY "${JAVA_PKG_LIBDEST}"
 				debug-print "Installing ${lib} to ${JAVA_PKG_LIBDEST}"
 			# otherwise make a symlink to the symlink's origin
@@ -724,8 +728,10 @@ java-pkg_dosrc() {
 	done
 
 	# Install the zip
-	INSDESTTREE=${JAVA_PKG_SOURCESPATH} \
-		doins ${zip_path} || die "Failed to install source"
+	(
+		insinto "${JAVA_PKG_SOURCESPATH}"
+		doins ${zip_path}
+	) || die "Failed to install source"
 
 	JAVA_SOURCES="${JAVA_PKG_SOURCESPATH}/${zip_name}"
 
@@ -825,7 +831,10 @@ java-pkg_dolauncher() {
 	echo "source /usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
 
 	if [[ -n "${target_dir}" ]]; then
-		DESTTREE="${target_dir}" dobin "${target}"
+		(
+			into "${target_dir}"
+			dobin "${target}"
+		)
 		local ret=$?
 		return ${ret}
 	else
@@ -864,9 +873,11 @@ java-pkg_dowar() {
 		fi
 
 		# Install those files like you mean it
-		INSOPTIONS="-m 0644" \
-			INSDESTTREE=${JAVA_PKG_WARDEST} \
+		(
+			insopts -m0644
+			insinto "${JAVA_PKG_WARDEST}"
 			doins ${warpath}
+		)
 	done
 }
 
@@ -1856,7 +1867,14 @@ ejunit4() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	java-pkg_func-exists java_prepare && java_prepare
+	case ${EAPI:-0} in
+		[0-5])
+			java-pkg_func-exists java_prepare && java_prepare ;;
+		*)
+			java-pkg_func-exists java_prepare &&
+				eqawarn "java_prepare is no longer called, define src_prepare instead."
+			eapply_user ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
@@ -2171,10 +2189,6 @@ java-pkg_init() {
 		I_WANT_GLOBAL_JAVA_OPTIONS="true"
 	fi
 
-	if java-pkg_func-exists ant_src_unpack; then
-		java-pkg_announce-qa-violation "Using old ant_src_unpack. Should be src_unpack"
-	fi
-
 	java-pkg_switch-vm
 	PATH=${JAVA_HOME}/bin:${PATH}
 
@@ -2323,14 +2337,14 @@ java-pkg_init_paths_() {
 		JAVA_PKG_NAME="${PN}-${SLOT%/*}"
 	fi
 
-	JAVA_PKG_SHAREPATH="${DESTTREE}/share/${JAVA_PKG_NAME}"
+	JAVA_PKG_SHAREPATH="/usr/share/${JAVA_PKG_NAME}"
 	JAVA_PKG_SOURCESPATH="${JAVA_PKG_SHAREPATH}/sources/"
 	JAVA_PKG_ENV="${D}${JAVA_PKG_SHAREPATH}/package.env"
-	JAVA_PKG_VIRTUALS_PATH="${DESTTREE}/share/java-config-2/virtuals"
+	JAVA_PKG_VIRTUALS_PATH="/usr/share/java-config-2/virtuals"
 	JAVA_PKG_VIRTUAL_PROVIDER="${D}/${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
 
 	[[ -z "${JAVA_PKG_JARDEST}" ]] && JAVA_PKG_JARDEST="${JAVA_PKG_SHAREPATH}/lib"
-	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="${DESTTREE}/$(get_libdir)/${JAVA_PKG_NAME}"
+	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="/usr/$(get_libdir)/${JAVA_PKG_NAME}"
 	[[ -z "${JAVA_PKG_WARDEST}" ]] && JAVA_PKG_WARDEST="${JAVA_PKG_SHAREPATH}/webapps"
 
 	# TODO maybe only print once?
@@ -2874,4 +2888,30 @@ java-pkg_clean() {
 	if [[ -z "${JAVA_PKG_NO_CLEAN}" ]]; then
 		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
 	fi
+}
+
+# @FUNCTION: java-pkg_gen-cp
+# @INTERNAL
+# @DESCRIPTION:
+# Java package generate classpath will create a classpath based on
+# special variable CP_DEPEND in the ebuild.
+#
+# @CODE
+# Parameters:
+# $1 - classpath variable either EANT_GENTOO_CLASSPATH or JAVA_GENTOO_CLASSPATH
+# @CODE
+java-pkg_gen-cp() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local atom
+	for atom in ${CP_DEPEND}; do
+		if [[ ${atom} =~ /(([[:alnum:]+_-]+)-[0-9]+(\.[0-9]+)*[a-z]?(_[[:alnum:]]+)?(-r[0-9]*)?|[[:alnum:]+_-]+):([[:alnum:]+_.-]+) ]]; then
+			atom=${BASH_REMATCH[2]:-${BASH_REMATCH[1]}}
+			[[ ${BASH_REMATCH[6]} != 0 ]] && atom+=-${BASH_REMATCH[6]}
+			local regex="(^|\s|,)${atom}($|\s|,)"
+			[[ ${!1} =~ ${regex} ]] || declare -g ${1}+=${!1:+,}${atom}
+		else
+			die "Invalid CP_DEPEND atom ${atom}, ensure a SLOT is included"
+		fi
+	done
 }

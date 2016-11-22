@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 inherit toolchain-funcs flag-o-matic multilib
 
 if [[ ${PV} == 9999 ]]; then
@@ -23,21 +23,15 @@ IUSE="static-libs"
 RDEPEND="media-libs/libao
 	net-misc/curl
 	dev-libs/libgcrypt:0=
-	dev-libs/json-c
+	dev-libs/json-c:=
 	>=virtual/ffmpeg-9"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_prepare() {
-	sed -e '/@echo /d' \
-		-e 's/@${CC}/${CC}/' \
-		-i Makefile || die
-}
-
 src_compile() {
 	append-cflags -std=c99
 	tc-export CC
-	emake DYNLINK=1
+	emake V=1 DYNLINK=1
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ USE_PHP="php5-6 php5-5 php5-4"
 
 inherit php-ext-pecl-r2
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 
 DESCRIPTION="This extension implements a Z39.50 client for PHP using the YAZ toolkit"
 LICENSE="PHP-3"

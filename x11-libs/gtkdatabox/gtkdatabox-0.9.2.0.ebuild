@@ -6,7 +6,7 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="Gtk+ Widgets for live display of large amounts of fluctuating numerical data"
-HOMEPAGE="http://sourceforge.net/projects/gtkdatabox/"
+HOMEPAGE="https://sourceforge.net/projects/gtkdatabox/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

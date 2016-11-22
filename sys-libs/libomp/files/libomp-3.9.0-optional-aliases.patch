@@ -1,0 +1,63 @@
+From 89ab78e360b7b20ebe1bc89736880a8e4aaa9e6e Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Wed, 14 Sep 2016 17:46:27 +0000
+Subject: [PATCH] [cmake] Make libgomp & libiomp5 alias install optional
+
+Introduce a new LIBOMP_INSTALL_VARIABLES cache variable that can be used
+to disable creating libgomp and libiomp5 aliases on 'make install'.
+Those aliases are undesired e.g. on Gentoo systems where libomp is used
+purely by clang.
+
+Differential Revision: https://reviews.llvm.org/D24563
+
+git-svn-id: https://llvm.org/svn/llvm-project/openmp/trunk@281512 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ runtime/CMakeLists.txt     |  4 ++++
+ runtime/src/CMakeLists.txt | 16 +++++++++-------
+ 2 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/runtime/CMakeLists.txt b/runtime/CMakeLists.txt
+index 9db058b..e8e9a74 100644
+--- a/runtime/CMakeLists.txt
++++ b/runtime/CMakeLists.txt
+@@ -340,6 +340,10 @@ endif()
+ 
+ set(LIBOMP_LIB_FILE ${LIBOMP_LIB_NAME}${LIBOMP_LIBRARY_SUFFIX})
+ 
++# Optional backwards compatibility aliases.
++set(LIBOMP_INSTALL_ALIASES TRUE CACHE BOOL
++  "Install libgomp and libiomp5 library aliases for backwards compatibility")
++
+ # Print configuration after all variables are set.
+ if(${LIBOMP_STANDALONE_BUILD})
+   libomp_say("Operating System     -- ${CMAKE_SYSTEM_NAME}")
+diff --git a/runtime/src/CMakeLists.txt b/runtime/src/CMakeLists.txt
+index 777434d..c80f88d 100644
+--- a/runtime/src/CMakeLists.txt
++++ b/runtime/src/CMakeLists.txt
+@@ -305,13 +305,15 @@ else()
+ 
+   install(TARGETS omp ${LIBOMP_INSTALL_KIND} DESTINATION lib${LIBOMP_LIBDIR_SUFFIX})
+ 
+-  # Create aliases (symlinks) of the library for backwards compatibility
+-  set(LIBOMP_ALIASES "libgomp;libiomp5")
+-  foreach(alias IN LISTS LIBOMP_ALIASES)
+-    install(CODE "execute_process(COMMAND \"\${CMAKE_COMMAND}\" -E create_symlink \"${LIBOMP_LIB_FILE}\"
+-      \"${alias}${LIBOMP_LIBRARY_SUFFIX}\" WORKING_DIRECTORY
+-      \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib${LIBOMP_LIBDIR_SUFFIX})")
+-  endforeach()
++  if(${LIBOMP_INSTALL_ALIASES})
++    # Create aliases (symlinks) of the library for backwards compatibility
++    set(LIBOMP_ALIASES "libgomp;libiomp5")
++    foreach(alias IN LISTS LIBOMP_ALIASES)
++      install(CODE "execute_process(COMMAND \"\${CMAKE_COMMAND}\" -E create_symlink \"${LIBOMP_LIB_FILE}\"
++        \"${alias}${LIBOMP_LIBRARY_SUFFIX}\" WORKING_DIRECTORY
++        \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib${LIBOMP_LIBDIR_SUFFIX})")
++    endforeach()
++  endif()
+ endif()
+ install(
+   FILES
+-- 
+2.4.10
+

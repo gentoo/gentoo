@@ -1,0 +1,29 @@
+From 6557b1512ebfda508345e032e09ed85789c16c98 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 8 Nov 2016 15:37:27 -0500
+Subject: [PATCH] lddtree.py: work around pyelftools API change
+
+Section names now get returned as strings rather than bytes. See
+108eaea9 upstream.
+
+Bug: https://bugs.gentoo.org/599082
+---
+ lddtree.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lddtree.py b/lddtree.py
+index 3971a9a..8480248 100755
+--- a/lddtree.py
++++ b/lddtree.py
+@@ -72,6 +72,8 @@ def dbg(debug, *args, **kwargs):
+ 
+ def bstr(buf):
+   """Decode the byte string into a string"""
++  if isinstance(buf, str):
++      return buf
+   return buf.decode('utf-8')
+ 
+ 
+-- 
+2.10.2
+

@@ -7,7 +7,7 @@ inherit eutils games
 
 SUPPORTP="${PN}-support-1.3"
 DESCRIPTION="A gaming server for Battle.Net compatible clients"
-HOMEPAGE="http://sourceforge.net/projects/pvpgn.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/pvpgn.berlios/"
 SRC_URI="mirror://sourceforge/pvpgn.berlios/${PN}-${PV/_/}.tar.bz2
 	mirror://sourceforge/pvpgn.berlios/${SUPPORTP}.tar.gz"
 

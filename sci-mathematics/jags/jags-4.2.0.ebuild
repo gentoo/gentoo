@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/mcmc-jags/JAGS/4.x/Source/${MYP}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="

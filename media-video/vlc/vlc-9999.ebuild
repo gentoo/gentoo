@@ -15,7 +15,7 @@ if [ "${PV%9999}" != "${PV}" ] ; then
 	fi
 fi
 
-inherit eutils multilib autotools toolchain-funcs flag-o-matic virtualx ${SCM}
+inherit eutils multilib autotools toolchain-funcs flag-o-matic versionator virtualx ${SCM}
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -44,8 +44,8 @@ IUSE="a52 aalib alsa altivec +audioqueue +avcodec
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnutls gstreamer httpd
 	ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
-	macosx-eyetv macosx-notifications macosx-quartztext macosx-qtkit
-	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack
+	macosx-eyetv macosx-notifications macosx-qtkit
+	matroska cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack
 	ncurses neon ogg omxil opencv opengl optimisememory opus
 	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
@@ -70,7 +70,7 @@ RDEPEND="
 			libav? ( media-video/libav:0= )
 		)
 		bidi? ( >=dev-libs/fribidi-0.10.4:0 )
-		bluray? ( >=media-libs/libbluray-0.3:0 )
+		bluray? ( >=media-libs/libbluray-0.6.2:0 )
 		cddb? ( >=media-libs/libcddb-1.2:0 )
 		chromaprint? ( >=media-libs/chromaprint-0.6:0 )
 		chromecast? ( >=dev-libs/protobuf-2.5.0 )
@@ -78,7 +78,7 @@ RDEPEND="
 		dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
 		directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
 		dts? ( >=media-libs/libdca-0.0.5:0 )
-		dvbpsi? ( >=media-libs/libdvbpsi-1.0.0:0= )
+		dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:0= )
 		dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
 		elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
 		faad? ( >=media-libs/faad2-2.6.1:0 )
@@ -86,12 +86,12 @@ RDEPEND="
 		flac? ( >=media-libs/libogg-1:0 >=media-libs/flac-1.1.2:0 )
 		fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
 		fontconfig? ( media-libs/fontconfig:1.0 )
-		gcrypt? ( >=dev-libs/libgcrypt-1.2.0:0= )
+		gcrypt? ( >=dev-libs/libgcrypt-1.6.0:0= )
 		gme? ( media-libs/game-music-emu:0 )
-		gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+		gnutls? ( >=net-libs/gnutls-3.2.0:0 )
 		gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
-		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
+		jack? ( >=media-sound/jack-audio-connection-kit-0.120.1:0 )
 		jpeg? ( virtual/jpeg:0 )
 		kate? ( >=media-libs/libkate-0.3:0 )
 		libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
@@ -117,13 +117,13 @@ RDEPEND="
 		opus? ( >=media-libs/opus-1.0.3:0 )
 		png? ( media-libs/libpng:0= sys-libs/zlib:0 )
 		postproc? (
-			!libav? ( >=media-video/ffmpeg-2.2:0= )
+			!libav? ( >=media-video/ffmpeg-3.1.3:0= )
 			libav? ( media-libs/libpostproc:0= )
 		)
 		projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 		pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 		qt4? ( >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4 )
-		qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5  >=dev-qt/qtx11extras-5.1:5 )
+		qt5? ( >=dev-qt/qtgui-5.2:5 >=dev-qt/qtcore-5.2:5 >=dev-qt/qtwidgets-5.2:5  >=dev-qt/qtx11extras-5.2:5 )
 		rdp? ( >=net-misc/freerdp-1.0.1:0= )
 		samba? ( || ( >=net-fs/samba-3.4.6:0[smbclient] >=net-fs/samba-4:0[client] ) )
 		schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
@@ -150,7 +150,7 @@ RDEPEND="
 		v4l? ( media-libs/libv4l:0 )
 		vaapi? (
 			x11-libs/libva:0[X,drm]
-			!libav? ( <media-video/ffmpeg-2.9:0=[vaapi] )
+			!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi] )
 			libav? ( media-video/libav:0=[vaapi] )
 		)
 		vcd? ( >=dev-libs/libcdio-0.78.2:0 )
@@ -170,13 +170,13 @@ RDEPEND="${RDEPEND}
 		)
 		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 		vorbis? ( >=media-libs/libvorbis-1.1:0 )
-		vpx? ( media-libs/libvpx:0 )
+		vpx? ( media-libs/libvpx:0= )
 		X? ( x11-libs/libX11:0 )
 		x264? ( >=media-libs/x264-0.0.20090923:0= )
 		x265? ( media-libs/x265:0= )
 		xcb? ( >=x11-libs/libxcb-1.6:0 >=x11-libs/xcb-util-0.3.4:0 >=x11-libs/xcb-util-keysyms-0.3.4:0 )
 		xml? ( >=dev-libs/libxml2-2.5:2 )
-		zvbi? ( >=media-libs/zvbi-0.2.25:0 )
+		zvbi? ( >=media-libs/zvbi-0.2.28:0 )
 "
 
 DEPEND="${RDEPEND}
@@ -184,7 +184,7 @@ DEPEND="${RDEPEND}
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
 	dev-lang/yasm:*
-	>=sys-devel/gettext-0.19.2:*
+	>=sys-devel/gettext-0.19.6:*
 	virtual/pkgconfig:*
 "
 
@@ -212,8 +212,8 @@ REQUIRED_USE="
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	if [[ "${MERGE_TYPE}" != "binary" && "$(tc-getCC)" == *"gcc"* ]] ; then
-		if [[ $(gcc-major-version) < 4 || ( $(gcc-major-version) == 4 && $(gcc-minor-version) < 5 ) ]] ; then
+	if [[ "${MERGE_TYPE}" != "binary" ]] && tc-is-gcc ; then
+		if ! version_is_at_least 4.5 $(gcc-version) ; then
 			die "You need to have at least >=sys-devel/gcc-4.5 to build and/or have a working vlc, see bug #426754."
 		fi
 	fi
@@ -235,7 +235,7 @@ src_prepare() {
 	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
 	#
 	# https://gcc.gnu.org/c99status.html
-	if [[ "$(tc-getCC)" == *"gcc"* ]] ; then
+	if tc-is-gcc ; then
 		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
 	fi
 
@@ -287,6 +287,9 @@ src_configure() {
 	# We need to disable -fstack-check if use >=gcc 4.8.0.
 	# See bug #499996
 	use x86 && append-cflags $(test-flags-CC -fno-stack-check)
+
+	# VLC now requires C++11 after commit 4b1c9dcdda0bbff801e47505ff9dfd3f274eb0d8
+	append-cxxflags -std=c++11
 
 	# Needs libresid-builder from libsidplay:2 which is in another directory...
 	# FIXME!
@@ -364,8 +367,6 @@ src_configure() {
 		$(use_enable macosx-eyetv) \
 		$(use_enable macosx-notifications osx-notifications) \
 		$(use_enable macosx-qtkit) \
-		$(use_enable macosx-quartztext) \
-		$(use_enable matroska mkv) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable modplug mod) \
 		$(use_enable mp3 mad) \
@@ -441,7 +442,6 @@ src_configure() {
 		--disable-mmal \
 		--disable-opensles \
 		--disable-oss \
-		--disable-quicktime \
 		--disable-rpi-omxil \
 		--disable-shine \
 		--disable-sndio \

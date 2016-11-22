@@ -1,0 +1,25 @@
+# /etc/conf.d/swatchdog: config file for /etc/init.d/swatchdog
+
+# Path to the swatchdog program.
+#SWATCHDOG_BINARY="/usr/bin/swatchdog"
+
+# Swatchrc to read patterns and actions from.
+#SWATCHDOGRC="/etc/swatchdogrc"
+
+# File to monitor
+#SWATCHDOG_TAILFILE="/var/log/syslog"
+
+# Arguments to tail program
+#SWATCHDOG_TAILARGS=""
+
+# Swatch log file
+#SWATCHDOG_LOGFILE="/var/log/swatchdog.log"
+
+# Swatch error file
+#SWATCHDOG_ERRFILE="/var/log/swatchdog-err.log"
+
+# Where to output the generated script to. Should not be writable by others.
+#SWATCHDOG_SCRIPT="/run/swatchdog/swatchdog_script.pl"
+
+# Whether to parse the complete file once at startup. Defaults to "NO".
+PARSE_FULL="NO"

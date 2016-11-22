@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="gtk"
 
 DEPEND="gtk? ( x11-libs/gtk+:2 )"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	sed -i 's/19/32/' src/gui/translation_fork.c || die

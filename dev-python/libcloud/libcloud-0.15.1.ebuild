@@ -5,7 +5,7 @@
 EAPI=5
 
 # py3 dropped due to failing tests once lockfile installed
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4} pypy )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -20,7 +20,8 @@ KEYWORDS="amd64 x86"
 IUSE="examples test"
 
 RDEPEND=""
-DEPEND="test? (
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
 	)"

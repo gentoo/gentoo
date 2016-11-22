@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="optional"
 KDE_LINGUAS="bg bs ca ca@valencia cs da de el en_GB eo es et fi fr ga
@@ -13,20 +13,23 @@ inherit kde4-base
 MY_P="${P/_/-}"
 
 DESCRIPTION="An advanced twin-panel (commander-style) file-manager for KDE with many extras"
-HOMEPAGE="http://www.krusader.org/"
+HOMEPAGE="https://quickgit.kde.org/?p=krusader.git"
 SRC_URI="mirror://sourceforge/krusader/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bookmarks debug"
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_kdeapps_dep libkonq)
 	sys-libs/zlib
 	bookmarks? ( $(add_kdeapps_dep keditbookmarks) )
 "
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	$(add_kdeapps_dep kdebase-kioslaves)
+"
+DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
 

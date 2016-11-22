@@ -1,20 +1,23 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit git-2
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
 HOMEPAGE="http://www.atheme.org/project/mowgli"
 EGIT_REPO_URI="git://github.com/atheme/libmowgli-2.git"
-IUSE="ssl"
+IUSE="libressl ssl"
 
 LICENSE="BSD-2"
 SLOT="2"
 KEYWORDS=""
-RDEPEND="ssl? ( dev-libs/openssl )"
+RDEPEND="ssl? (
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+)"
 DEPEND="${RDEPEND}"
 DOCS="AUTHORS README doc/BOOST doc/design-concepts.txt"
 

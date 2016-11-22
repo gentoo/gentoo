@@ -1,0 +1,27 @@
+From 5d0ce36e5be134bb5ead03cab1edeaa60fa355aa Mon Sep 17 00:00:00 2001
+From: Jonathan Helmus <jjhelmus@gmail.com>
+Date: Wed, 12 Oct 2016 13:07:42 -0500
+Subject: [PATCH] BUG: import full module path in npy_load_module
+
+Use the full module path when importing importlib.machinery for use in the
+npy_load_module function. Just importing importlib is not sufficient in certain
+cases, for example Python 3.4.
+
+closes #8147
+---
+ numpy/compat/py3k.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/numpy/compat/py3k.py b/numpy/compat/py3k.py
+index 25cc535..d5bb2e4 100644
+--- a/numpy/compat/py3k.py
++++ b/numpy/compat/py3k.py
+@@ -118,7 +118,7 @@ def npy_load_module(name, fn, info=None):
+         mod : module
+ 
+         """
+-        import importlib
++        import importlib.machinery
+         return importlib.machinery.SourceFileLoader(name, fn).load_module()
+ else:
+     def npy_load_module(name, fn, info=None):

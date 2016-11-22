@@ -5,6 +5,11 @@
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>commendsarnex@gmail.com</email>
+		<name>Nick Sarnie</name>
+		<description>Only CC on bugs that involve USE="d3d9"</description>
+	</maintainer>
 	<longdescription>
 Wine is an Open Source implementation of the Windows API on top of X and Unix.
 
@@ -13,10 +18,11 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 	<use>
 		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
+		<flag name="d3d9">Apply highly experimental patches for Gallium Nine support.
+			This patch may break some applications.</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
-		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;
-			For versions before wine-1.9.2, uses experimental patch which may break some apps</flag>
+		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;</flag>
 		<flag name="mono">Add support for .NET using Wine's Mono add-on</flag>
 		<flag name="netapi">Use libnetapi from <pkg>net-fs/samba</pkg> to support Windows networks in netapi32.dll</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
@@ -32,8 +38,9 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 		<flag name="samba">Add support for NTLM auth. see
 		http://wiki.winehq.org/NtlmAuthSetupGuide and
 		http://wiki.winehq.org/NtlmSigningAndSealing</flag>
-		<flag name="staging">Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
-			For versions before wine-1.8, this patchset is unofficial.</flag>
+		<flag name="staging">Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet</flag>
+		<flag name="themes">Support GTK+:3 window theming through Wine-Staging</flag>
+		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">wine-compholio/wine-staging</remote-id>

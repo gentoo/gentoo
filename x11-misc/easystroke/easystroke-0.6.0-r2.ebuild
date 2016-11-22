@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="a gesture-recognition application for X11"
-HOMEPAGE="http://sourceforge.net/apps/trac/easystroke/"
+HOMEPAGE="https://sourceforge.net/apps/trac/easystroke/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"

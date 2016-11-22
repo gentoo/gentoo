@@ -39,7 +39,7 @@ src_prepare() {
 src_install() {
 	gnome2_src_install
 
-	# Icon from http://sourceforge.net/p/gcolor2/patches/5/
+	# Icon from https://sourceforge.net/p/gcolor2/patches/5/
 	doicon -s scalable "${DISTDIR}/${PN}.svg"
 	make_desktop_entry ${PN} Gcolor2 ${PN} Graphics
 }

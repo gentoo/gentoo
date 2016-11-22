@@ -1,13 +1,13 @@
 diff --git a/Makefile.am b/Makefile.am
-index 1a605f7..6475886 100644
+index 65baf07..c264576 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -1,7 +1,7 @@
  ACLOCAL_AMFLAGS = -I scripts/m4
  EXTRA_DIST = scripts/build-aux/config.rpath  debian build-debian.sh rpm doc
  
--SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 tests/unit plugins_tools/xpi plugins_tools/aboutmw/gtk
-+SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 tests/unit plugins_tools/xpi
+-SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 plugins_tools/util tests/unit plugins_tools/xpi plugins_tools/aboutmw/gtk plugins_tools/eid-viewer
++SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 plugins_tools/util tests/unit plugins_tools/xpi
  
  xpipackage:
  	$(MAKE) -C plugins_tools/xpi xpipackage
@@ -54,18 +54,18 @@ index 6e33315..fce4494 100644
 -
  pkgconfig_DATA=libbeidpkcs11.pc
 diff --git a/configure.ac b/configure.ac
-index 6f4b833..ec7ae8f 100644
+index 6485b23..a1f9c93 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -56,11 +56,6 @@ then
- 	fi
- fi
+@@ -59,11 +59,6 @@ fi
  
--if test x"$have_gtk" = "xno"
+ AC_DEFINE_UNQUOTED([HAVE_GTK], [$have_gtk], [Set to major version of libgtk])
+ 
+-if test "$have_gtk" = "no"
 -then
 -	AC_MSG_ERROR([At least one version of GTK is required.])
 -fi
 -
- ###########################################################################
- ####### read user-specific requests from --enable directives         ######
- ###########################################################################
+ PKG_CHECK_MODULES([XML2], [libxml-2.0])
+ PKG_CHECK_MODULES([libproxy], [libproxy-1.0])
+ 

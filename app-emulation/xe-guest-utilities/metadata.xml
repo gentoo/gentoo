@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>bugs@camisa.org</email>
-	<name>Christopher J. Camisa</name>
+	<email>chicago@blkid.net</email>
+	<name>Chicago</name>
 	<description>proxy maintainer</description>
 </maintainer>
 <maintainer type="person">

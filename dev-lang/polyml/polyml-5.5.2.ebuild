@@ -29,7 +29,7 @@ PATCHES=(
 	# Bug 256679 - patch the assembler code.  The remaining executable stacks in ./.libs/poly
 	# comes from the polyml generated ./polyexport.o file.
 	"${FILESDIR}/${PN}-5.5.0-asm.patch"
-	# Patches from http://sourceforge.net/p/polyml/code/HEAD/tree/fixes-5.5.2
+	# Patches from https://sourceforge.net/p/polyml/code/HEAD/tree/fixes-5.5.2
 	# which are required to build and run sci-mathematics/isabelle-2015
 	"${FILESDIR}/${PN}-5.5.2-r1952-check_for_negative_sized_array.patch"
 	"${FILESDIR}/${PN}-5.5.2-r1954_Fix_segfault_in_FFI_when_malloc_runs_out_of_memory.patch"

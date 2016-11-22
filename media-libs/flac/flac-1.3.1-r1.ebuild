@@ -34,6 +34,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3.0-asneeded.patch
 		"${FILESDIR}"/${PN}-1.3.0-dontbuild-tests.patch
 		"${FILESDIR}"/${PN}-1.3.0-dontbuild-examples.patch
+		"${FILESDIR}"/${PN}-1.3.1-x32.patch #574984
 	)
 
 	AT_M4DIR="m4" autotools-multilib_src_prepare

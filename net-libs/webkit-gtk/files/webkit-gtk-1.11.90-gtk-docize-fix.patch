@@ -1,5 +1,5 @@
---- configure.ac.old	2013-03-02 09:22:53.791750644 +0200
-+++ configure.ac	2013-03-02 09:24:56.725213764 +0200
+--- a/configure.ac.old	2013-03-02 09:22:53.791750644 +0200
++++ b/configure.ac	2013-03-02 09:24:56.725213764 +0200
 @@ -24,6 +24,7 @@
  m4_include([Source/autotools/SetupLibtool.m4])
  m4_include([Source/autotools/ReadCommandLineArguments.m4])

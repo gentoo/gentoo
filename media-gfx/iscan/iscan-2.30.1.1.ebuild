@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,12 +36,12 @@ SRC_URI="
 	https://dev.gentoo.org/~flameeyes/avasys/${PN}_${MY_PVR}.tar.gz
 	doc? (
 		https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_e.pdf
-		linguas_ja? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
+		l10n_ja? ( https://dev.gentoo.org/~flameeyes/avasys/${MY_DOC}_j.pdf )
 	)"
 LICENSE="GPL-2 AVASYS"
 SLOT="0"
 
-IUSE="X doc gimp jpeg png tiff"
+IUSE="X doc gimp jpeg png tiff l10n_ja"
 IUSE_LINGUAS="ar de es fr it ja ko nl pt zh_CN zh_TW"
 
 for X in ${IUSE_LINGUAS}; do IUSE="${IUSE} linguas_${X}"; done
@@ -79,7 +79,7 @@ src_prepare() {
 	local i
 
 	# convert japanese docs to UTF-8
-	if use linguas_ja; then
+	if use l10n_ja; then
 		for i in {NEWS,README}.ja non-free/*.ja.txt; do
 			if [ -f "${i}" ]; then
 				echo ">>> Converting ${i} to UTF-8"
@@ -125,7 +125,7 @@ src_install() {
 
 	# install docs
 	dodoc AUTHORS NEWS README
-	use linguas_ja && dodoc NEWS.ja README.ja
+	use l10n_ja && dodoc NEWS.ja README.ja
 
 	# install sane config
 	insinto /etc/sane.d
@@ -134,7 +134,7 @@ src_install() {
 	# install extra docs
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		if use linguas_ja; then
+		if use l10n_ja; then
 			doins "${DISTDIR}/${MY_DOC}_j.pdf"
 		else
 			doins "${DISTDIR}/${MY_DOC}_e.pdf"

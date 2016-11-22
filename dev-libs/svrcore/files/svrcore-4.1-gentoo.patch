@@ -1,0 +1,100 @@
+diff -uNr a/m4/nspr.m4 b/m4/nspr.m4
+--- a/m4/nspr.m4	2016-04-22 06:30:23.000000000 +1000
++++ b/m4/nspr.m4	2016-06-08 15:06:49.923333338 +1000
+@@ -52,28 +52,6 @@
+ ],
+ AC_MSG_RESULT(no))
+ 
+-# see if we are doing an "in-tree" build with the other
+-# mozilla components
+-if test -z "$nspr_inc" -o -z "$nspr_lib" ; then
+-    for nsprpath in "../../dist" "../../dist/*.OBJ" ; do
+-        savedir=`pwd`
+-        cd $nsprpath
+-        abs_nsprpath=`pwd`
+-        cd $savedir
+-        if test -f "$abs_nsprpath/include/nspr/nspr.h" ; then
+-            nspr_inc="-I$abs_nsprpath/include/nspr"
+-        elif test -f "$abs_nsprpath/include/nspr.h" ; then
+-            nspr_inc="-I$abs_nsprpath/include"
+-        fi
+-        if test -d "$abs_nsprpath/lib" ; then
+-            nspr_lib="-L$abs_nsprpath/lib"
+-        fi
+-        if test -n "$nspr_inc" -a -n "$nspr_lib" ; then
+-            break
+-        fi
+-    done
+-fi
+-
+ # if NSPR is not found yet, try pkg-config
+ # last resort
+ if test -z "$nspr_inc" -o -z "$nspr_lib" ; then
+diff -uNr a/m4/nss.m4 b/m4/nss.m4
+--- a/m4/nss.m4	2016-04-22 06:30:23.000000000 +1000
++++ b/m4/nss.m4	2016-06-08 15:06:49.923333338 +1000
+@@ -52,32 +52,6 @@
+ ],
+ AC_MSG_RESULT(no))
+ 
+-# see if we are building "in tree" with the
+-# other mozilla components
+-if test -z "$nss_inc" -o -z "$nss_lib"; then
+-    nsslibpath=`echo ../../dist/*.OBJ/lib | cut -f1 -d' '`
+-    savedir=`pwd`
+-    cd $nsslibpath
+-    abs_nsslibpath=`pwd`
+-    cd $savedir
+-    nssincpath=../../dist/public/nss
+-    savedir=`pwd`
+-    cd $nssincpath
+-    abs_nssincpath=`pwd`
+-    cd $savedir
+-    if test -f "$abs_nssincpath/nss.h" ; then
+-        nss_inc="-I$abs_nssincpath"
+-    fi
+-    if test -d "$abs_nsslibpath" ; then
+-        nss_lib="-L$abs_nsslibpath"
+-    fi
+-    if test -n "$nss_inc" -a -n "$nss_lib" ; then
+-        AC_MSG_CHECKING(using in-tree NSS from $nssincpath $nsslibpath)
+-    else
+-        AC_MSG_CHECKING(could not find in-tree NSS in ../../dist)
+-    fi
+-fi
+-
+ # if NSS is not found yet, try pkg-config
+ # last resort
+ if test -z "$nss_inc" -o -z "$nss_lib"; then
+diff -uNr a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2016-04-22 06:30:23.000000000 +1000
++++ b/src/Makefile.am	2016-06-08 15:06:49.923333338 +1000
+@@ -10,8 +10,8 @@
+ 	     Makefile.win \
+ 	     ntgetpin.rc
+ 
+-lib_LTLIBRARIES = libsvrcore.la
+-include_HEADERS = svrcore.h
++pkglib_LTLIBRARIES = libsvrcore.la
++pkginclude_HEADERS = svrcore.h
+ libsvrcore_la_SOURCES =	alt.c \
+ 		      	cache.c \
+ 		      	errors.c \
+diff -uNr a/svrcore.pc.in b/svrcore.pc.in
+--- a/svrcore.pc.in	2016-04-22 06:30:23.000000000 +1000
++++ b/svrcore.pc.in	2016-06-08 15:06:49.923333338 +1000
+@@ -1,11 +1,11 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
++libdir=@libdir@/@PACKAGE@
++includedir=@includedir@/@PACKAGE@
+ 
+ Name: svrcore
+ Description: Svrcore - Secure PIN handling using NSS crypto
+ Version: @VERSION@
+ Requires: @NSPR_NAME@ >= @NSPR_MIN_VER@ , @NSS_NAME@ >= @NSS_MIN_VER@
+-Libs: -lsvrcore
++Libs: -L${libdir} -lsvrcore
+ Cflags: -I${includedir}

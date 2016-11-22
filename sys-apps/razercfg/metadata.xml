@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>joker@gentoo.org</email>
-<name>Christian Birchinger</name>
-</maintainer>
 <longdescription>
 Utility to for advanced configuration of the following Razer mice: Copperhead
 Lachesis (Classic), DeathAdder (Classic, 3500 DPI, Black Edition, 2013), Taipan
@@ -14,6 +10,7 @@ privilege hardware accesses. The user interface tools are "razercfg", a
 commandline tool; and "qrazercfg", a QT4 based graphical device configuration
 tool.
 </longdescription>
+<!-- maintainer-needed -->
 <use>
 	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
 		requires <pkg>sys-power/pm-utils</pkg></flag>

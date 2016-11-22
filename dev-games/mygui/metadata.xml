@@ -9,7 +9,6 @@
 		<maintainer status="active">
 			<email>altren@list.ru</email>
 			<name>Evmenov Georgiy</name>
-			<description>CC on bugs</description>
 		</maintainer>
 		<changelog>http://redmine.mygui.info/repositories/entry/mygui/tags/MyGUI3.2/ChangeLog.txt</changelog>
 		<bugs-to>https://sourceforge.net/tracker/?group_id=193706&amp;atid=946487</bugs-to>

@@ -20,11 +20,10 @@ DEPEND="
 	dev-perl/Exporter-Lite
 	dev-perl/File-Which
 	dev-perl/Getopt-Tabular
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	dev-perl/Sys-CPU
 	dev-util/astyle
 	dev-util/indent
-	=sys-devel/clang-3.7*:0=
-	=sys-devel/llvm-3.7*:0=[clang]"
+	=sys-devel/clang-3.7*"
 
 RDEPEND="${DEPEND}"

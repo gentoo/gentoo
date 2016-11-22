@@ -1,0 +1,41 @@
+--- a/test/broker/Makefile	2016-02-14 14:36:55.000000000 +0000
++++ b/test/broker/Makefile	2016-05-05 09:53:30.548519257 +0100
+@@ -63,11 +63,13 @@
+ 	./05-clean-session-qos1.py 
+ 
+ 06 :
++ifeq ($(WITH_BRIDGE),yes)
+ 	./06-bridge-reconnect-local-out.py
+ 	./06-bridge-br2b-disconnect-qos1.py
+ 	./06-bridge-br2b-disconnect-qos2.py
+ 	./06-bridge-b2br-disconnect-qos1.py
+ 	./06-bridge-b2br-disconnect-qos2.py
++endif
+ 
+ 07 :
+ 	./07-will-qos0.py
+@@ -85,10 +87,12 @@
+ 	./08-ssl-connect-cert-auth-crl.py
+ 	./08-ssl-connect-identity.py
+ 	./08-ssl-connect-no-identity.py
++ifeq ($(WITH_BRIDGE),yes)
+ 	./08-ssl-bridge.py
+ 	./08-tls-psk-pub.py
+ 	./08-tls-psk-bridge.py
+ endif
++endif
+ 
+ 09 :
+ 	./09-plugin-auth-unpwd-success.py
+--- a/test/broker/c/Makefile	2016-02-14 14:36:55.000000000 +0000
++++ b/test/broker/c/Makefile	2016-05-05 09:40:31.440608209 +0100
+@@ -13,7 +13,9 @@
+ 	$(CC) ${CFLAGS} $^ -o $@ ../../../lib/libmosquitto.so.1
+ 
+ 08-tls-psk-bridge.test : 08-tls-psk-bridge.c
++ifeq ($(WITH_BRIDGE),yes)
+ 	$(CC) ${CFLAGS} $^ -o $@ ../../../lib/libmosquitto.so.1
++endif
+ 
+ 
+ reallyclean : clean

@@ -1,0 +1,48 @@
+# Copyright 1999-2016 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Id$
+
+# Make sure we don't get wrong versions
+<sys-freebsd/freebsd-pam-modules-11.0_alpha
+>sys-freebsd/freebsd-pam-modules-11.0.99
+<sys-freebsd/freebsd-rescue-11.0_alpha
+>sys-freebsd/freebsd-rescue-11.0.99
+<sys-freebsd/freebsd-pf-11.0_alpha
+>sys-freebsd/freebsd-pf-11.0.99
+<sys-freebsd/freebsd-mk-defs-11.0_alpha
+>sys-freebsd/freebsd-mk-defs-11.0.99
+<sys-freebsd/freebsd-lib-11.0_alpha
+>sys-freebsd/freebsd-lib-11.0.99
+<sys-freebsd/freebsd-libexec-11.0_alpha
+>sys-freebsd/freebsd-libexec-11.0.99
+<sys-freebsd/freebsd-bin-11.0_alpha
+>sys-freebsd/freebsd-bin-11.0.99
+<sys-freebsd/freebsd-sbin-11.0_alpha
+>sys-freebsd/freebsd-sbin-11.0.99
+<sys-freebsd/freebsd-ubin-11.0_alpha
+>sys-freebsd/freebsd-ubin-11.0.99
+>sys-freebsd/freebsd-usbin-11.0.99
+<sys-freebsd/freebsd-share-11.0_alpha
+>sys-freebsd/freebsd-share-11.0.99
+<sys-freebsd/freebsd-contrib-11.0_alpha
+>sys-freebsd/freebsd-contrib-11.0.99
+>sys-freebsd/freebsd-cddl-11.0.99
+<sys-freebsd/boot0-11.0_alpha
+>sys-freebsd/boot0-11.0.99
+<sys-freebsd/freebsd-sources-11.0_alpha
+>sys-freebsd/freebsd-sources-11.0.99
+
+# Mask version of -cddl and -usbin is different for ease of upgrade. bug #491774
+# Please keep <freebsd-cddl-9.2_alpha and <freebsd-usbin-9.1_alpha.
+<sys-freebsd/freebsd-cddl-9.2_alpha
+<sys-freebsd/freebsd-usbin-9.1_alpha
+
+# Alexis Ballier <aballier@gentoo.org> (07 Nov 2011)
+# It is in freebsd-ubin starting from FreeBSD 9.0
+sys-process/fuser-bsd
+
+# Alexis Ballier <aballier@gentoo.org> (11 May 2012)
+# freebsd-lib provides a utempter compatible interface starting from FreeBSD 9.0
+# via libulog.
+# this package does not build anymore as it requires utmp
+sys-libs/libutempter

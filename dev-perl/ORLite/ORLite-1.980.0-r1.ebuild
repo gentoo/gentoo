@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Extremely light weight SQLite-specific ORM"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 COMMON_DEPEND="

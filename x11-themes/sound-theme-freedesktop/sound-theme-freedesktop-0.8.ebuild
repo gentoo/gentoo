@@ -5,8 +5,8 @@
 EAPI="5"
 
 DESCRIPTION="Default freedesktop.org sound theme following the XDG theming specification"
-HOMEPAGE="http://www.freedesktop.org/wiki/Specifications/sound-theme-spec"
-SRC_URI="http://people.freedesktop.org/~mccann/dist/${P}.tar.bz2"
+HOMEPAGE="https://www.freedesktop.org/wiki/Specifications/sound-theme-spec"
+SRC_URI="https://people.freedesktop.org/~mccann/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2 CC-BY-3.0 CC-BY-SA-2.0"
 SLOT="0"

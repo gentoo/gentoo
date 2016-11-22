@@ -6,7 +6,7 @@ EAPI=4
 inherit qt4-r2
 
 DESCRIPTION="Fractal planet and terrain generator"
-HOMEPAGE="http://sourceforge.net/projects/fracplanet/"
+HOMEPAGE="https://sourceforge.net/projects/fracplanet/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

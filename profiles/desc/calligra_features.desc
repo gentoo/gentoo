@@ -15,5 +15,4 @@ krita - CALLIGRA_FEATURES option to build raster image editor
 plan - CALLIGRA_FEATURES option to build project planning component
 sheets - CALLIGRA_FEATURES option to build spreadsheet processor
 stage - CALLIGRA_FEATURES option to build presentation processor
-tables - CALLIGRA_FEATURES option to build spreadsheet processor (up to 2.3beta)
 words - CALLIGRA_FEATURES option to build word processor

@@ -1,0 +1,55 @@
+From 70b00d882e9ff1e17bb82b3e722def0b71f2374a Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 11 Jun 2016 15:15:25 +0300
+Subject: [PATCH 2/2] build: use system zlib
+
+this should be a toggle of build system not hard coded.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ envelope/envelope.h | 6 +-----
+ makefile            | 4 ++--
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/envelope/envelope.h b/envelope/envelope.h
+index 028f4b2..4ef6b20 100644
+--- a/envelope/envelope.h
++++ b/envelope/envelope.h
+@@ -17,11 +17,7 @@
+   #endif /* Compiler-specific includes */
+ #endif /* _STREAM_DEFINED */
+ #ifdef USE_COMPRESSION
+-  #if defined( INC_ALL )
+-	#include "zlib.h"
+-  #else
+-	#include "zlib/zlib.h"
+-  #endif /* Compiler-specific includes */
++  #include <zlib.h>
+ #endif /* USE_COMPRESSION */
+ 
+ /****************************************************************************
+diff --git a/makefile b/makefile
+index c762d02..24c180a 100644
+--- a/makefile
++++ b/makefile
+@@ -283,7 +283,7 @@ ZLIBOBJS	= $(OBJPATH)adler32.o $(OBJPATH)deflate.o $(OBJPATH)inffast.o \
+ OBJS		= $(BNOBJS) $(CERTOBJS) $(CRYPTOBJS) $(CTXOBJS) $(DEVOBJS) \
+ 			  $(ENCDECOBJS) $(ENVOBJS) $(HASHOBJS) $(IOOBJS) $(KEYSETOBJS) \
+ 			  $(KRNLOBJS) $(LIBOBJS) $(MECHOBJS) $(MISCOBJS) $(SESSOBJS) \
+-			  $(ZLIBOBJS) $(OSOBJS)
++			  $(OSOBJS)
+ 
+ # Object files for the self-test code
+ 
+@@ -1483,7 +1483,7 @@ $(LIBNAME):		$(OBJS) $(EXTRAOBJS) $(TESTOBJS)
+ 
+ $(SLIBNAME):	$(OBJS) $(EXTRAOBJS) $(TESTOBJS)
+ 				@./tools/buildsharedlib.sh $(OSNAME) $(SLIBNAME) $(LD) \
+-					$(STRIP) $(OBJS) $(EXTRAOBJS)
++					$(STRIP) $(OBJS) $(EXTRAOBJS) -lz
+ 
+ $(DYLIBNAME):	$(OBJS) $(EXTRAOBJS) $(TESTOBJS)
+ 				@$(LD) -dynamiclib -compatibility_version $(MAJ).$(MIN) \
+-- 
+2.7.3
+

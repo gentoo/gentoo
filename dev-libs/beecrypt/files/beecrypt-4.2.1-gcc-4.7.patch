@@ -1,5 +1,5 @@
---- include/beecrypt/c++/util/AbstractSet.h
-+++ include/beecrypt/c++/util/AbstractSet.h
+--- a/include/beecrypt/c++/util/AbstractSet.h
++++ b/include/beecrypt/c++/util/AbstractSet.h
 @@ -56,7 +56,7 @@
  					if (c->size() != size())
  						return false;

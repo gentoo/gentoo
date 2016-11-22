@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -61,7 +61,8 @@ python_prepare_all() {
 	rm -r sklearn/externals/joblib/* || die
 	echo "from joblib import *" > sklearn/externals/joblib/__init__.py
 	sed -i -e '/joblib\/test/d' sklearn/externals/setup.py || die
-	sed -i -e 's/..externals.joblib/joblib/g' \
+	sed -i -e 's/..externals.joblib/ joblib/g' \
+		sklearn/cross_validation.py \
 		sklearn/decomposition/tests/test_sparse_pca.py \
 		sklearn/metrics/pairwise.py || die
 

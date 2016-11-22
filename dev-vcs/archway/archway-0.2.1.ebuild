@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="A GUI for GNU Arch"
 HOMEPAGE="http://www.nongnu.org/archway/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

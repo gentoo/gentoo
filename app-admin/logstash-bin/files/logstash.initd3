@@ -1,0 +1,70 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+LS_USER=${LS_USER:-logstash}
+LS_GROUP=${LS_GROUP:-$LS_USER}
+LS_LOG_FILE=${LS_LOG_FILE:-/var/log/logstash/logstash.log}
+LS_CONF_DIR=${LS_CONF_DIR:-/etc/logstash/conf.d}
+LS_HOME=${LS_HOME:-/var/lib/logstash}
+LS_HEAP_SIZE=${LS_HEAP_SIZE:-500m}
+LS_NICE=${LS_NICE:-19}
+LS_JAVA_OPTS=${LS_JAVA_OPTS:-"-Djava.io.tmpdir=${LS_HOME}"}
+LS_USE_GC_LOGGING=${LS_USE_GC_LOGGING:-false}
+LS_OPEN_FILES=${LS_OPEN_FILES:-16384}
+KILL_ON_STOP_TIMEOUT=${KILL_ON_STOP_TIMEOUT:-0}
+
+command="/opt/logstash/bin/logstash"
+command_args="--path.config ${LS_CONF_DIR} --path.logs ${LS_LOG_FILE} ${LS_OPTS}"
+command_background="true"
+pidfile=${LS_PIDFILE:-"/run/logstash/logstash.pid"}
+
+start_stop_daemon_args="--user ${LS_USER}:${LS_GROUP} \
+	--chdir ${LS_HOME}
+	--nicelevel ${LS_NICE}
+	--env LS_HEAP_SIZE=${LS_HEAP_SIZE}
+	--env LS_JAVA_OPTS=${LS_JAVA_OPTS}
+	--env LS_USE_GC_LOGGING=${LS_USE_GC_LOGGING}"
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+checkconfig() {
+	if [ ! -f ${LS_CONF_DIR}/* ]; then
+		eerror "Please put your configuration in ${LS_CONF_DIR}"
+		exit 1
+	fi
+
+	ebegin "Checking your configuration"
+	${command} ${command_args} --config.test_and_exit
+	eend $? "Configuration error. Please fix your configuration files."
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	rc_ulimit="-n ${LS_OPEN_FILES}"
+
+	checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "$(dirname "${pidfile}")"
+	checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "$(dirname "${LS_LOG_FILE}")"
+	checkpath -f -o "${LS_USER}":"${LS_GROUP}" -m640 "${LS_LOG_FILE}"
+}
+
+stop() {
+	ebegin "Stopping logstash"
+	if [ "${KILL_ON_STOP_TIMEOUT}" == "1" ]; then
+		start-stop-daemon --stop \
+			--pidfile=${pidfile} \
+			--retry=TERM/5/KILL/5
+	else
+		start-stop-daemon --stop \
+			--pidfile=${pidfile}
+	fi
+}

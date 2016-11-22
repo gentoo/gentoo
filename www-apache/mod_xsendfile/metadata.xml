@@ -9,10 +9,6 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>qnikst@gentoo.org</email>
-		<name>Alexander Vershilov</name>
-	</maintainer>
 
 <maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

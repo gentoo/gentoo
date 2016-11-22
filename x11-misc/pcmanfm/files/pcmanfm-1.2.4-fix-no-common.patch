@@ -1,0 +1,11 @@
+--- a/src/tab-page.h	2014-08-24 00:46:28.000000000 +0200
++++ b/src/tab-page.h	2016-08-21 18:12:33.509482924 +0200
+@@ -147,7 +147,7 @@
+ #if FM_CHECK_VERSION(1, 2, 0)
+ #include "pcmanfm-modules.h"
+ 
+-GList *_tab_page_modules; /* in pcmanfm.c */
++extern GList *_tab_page_modules; /* in pcmanfm.c */
+ #endif
+ 
+ G_END_DECLS

@@ -31,6 +31,7 @@ dev-cpp
 dev-db
 dev-dotnet
 dev-embedded
+dev-erlang
 dev-games
 dev-go
 dev-haskell
@@ -137,7 +138,7 @@ sys-devel
 sys-firmware
 sys-freebsd
 sys-fs
-sys-infiniband
+sys-fabric
 sys-kernel
 sys-libs
 sys-power

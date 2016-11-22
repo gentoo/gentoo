@@ -1,15 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DECLARATIVE_REQUIRED="always"
 VIRTUALX_REQUIRED="test"
 VIRTUALDBUS_TEST="true"
 KDE_LINGUAS="ca ca@valencia cs da de el es fi fr gl hu it nl pl pt pt_BR ro sk
 sl sv tr uk zh_CN"
-KDE_MINIMAL="4.10"
 inherit kde4-base
 
 DESCRIPTION="Application launcher for KDE Plasma desktop"

@@ -1,0 +1,14 @@
+Fix building with C++14, which errors out due to broken perfect forwarding signature.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594544
+
+--- a/src/tophat_reports.cpp
++++ b/src/tophat_reports.cpp
+@@ -2705,7 +2705,7 @@
+ 				junction_stat.gtf_match = true;
+ 				junction_stat.accepted = true;
+ 
+-				gtf_junctions.insert(make_pair<Junction, JunctionStats>(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
++				gtf_junctions.insert(make_pair(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
+ 			}
+ 		}
+ 		fprintf(stderr, "Loaded %d GFF junctions from %s.\n", (int)(gtf_junctions.size()), gtf_juncs.c_str());

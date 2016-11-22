@@ -1,11 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (16 Feb 2012)
 # JIT implementation in pcre does not know about AIX.
 dev-libs/libpcre jit
-
-# Michael Haubenwallner <haubi@gentoo.org> (08 May 2009)
-# IBM does not provide "Java Communications API support" for AIX
-dev-java/ibm-jdk-bin javacomm

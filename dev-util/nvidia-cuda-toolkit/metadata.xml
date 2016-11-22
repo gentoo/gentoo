@@ -12,6 +12,6 @@
     <flag name="debugger">
 			Installs the CUDA debugger.
 		</flag>
-    <flag name="eclipse">Install the <pkg>dev-util/eclipse-sdk</pkg> plugins</flag>
+    <flag name="eclipse">Install plugins for eclipse</flag>
   </use>
 </pkgmetadata>

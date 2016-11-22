@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug exif gps libproxy qrcode qt4 qt5"
 
-REQUIRED_USE="^^ ( qt4 qt5 )"
-
+REQUIRED_USE="
+	^^ ( qt4 qt5 )
+	qrcode? ( qt4 )
+"
 RDEPEND="
 	qt4? (
 		dev-qt/qtcore:4
@@ -46,7 +48,6 @@ RDEPEND="
 	qrcode? ( media-gfx/zbar[qt4] )
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
 	virtual/pkgconfig
 "
 

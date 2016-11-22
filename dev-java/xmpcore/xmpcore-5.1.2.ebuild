@@ -13,9 +13,7 @@ HOMEPAGE="http://www.adobe.com/devnet/xmp.html"
 SRC_URI="http://central.maven.org/maven2/com/adobe/xmp/${PN}/${PV}/${P}-sources.jar"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip"
-
+DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"

@@ -14,8 +14,6 @@
 		<flag name="cdda">Build with audio CD support</flag>
 		<flag name="daap">Build with Daap support</flag>
 		<flag name="karma">Build with karma support</flag>
-		<flag name="web">Enable support for plugins that access web-based services
-	such as Amazon and wikipedia (requires <pkg>net-libs/webkit-gtk</pkg>)</flag>
 		<flag name="youtube">Enable the Youtube plugin</flag>
 	</use>
 </pkgmetadata>

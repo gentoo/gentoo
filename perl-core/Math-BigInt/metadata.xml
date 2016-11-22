@@ -11,5 +11,6 @@
     <remote-id type="cpan-module">Math::BigInt</remote-id>
     <remote-id type="cpan-module">Math::BigInt::Calc</remote-id>
     <remote-id type="cpan-module">Math::BigInt::CalcEmu</remote-id>
+    <remote-id type="cpan-module">Math::BigInt::Lib</remote-id>
   </upstream>
 </pkgmetadata>

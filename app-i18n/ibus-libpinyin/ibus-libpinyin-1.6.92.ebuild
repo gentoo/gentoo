@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE="boost opencc lua"
 DEPEND="sys-apps/sed"
 RDEPEND=">=app-i18n/ibus-1.4[python,${PYTHON_USEDEP}]
 	dev-python/pygtk[${PYTHON_USEDEP}]
-	>=app-i18n/libpinyin-1.0.0
+	=app-i18n/libpinyin-1.0.0
 	app-i18n/pyzy
 	boost? ( >=dev-libs/boost-1.39 )
 	lua? ( >=dev-lang/lua-5.1 )"

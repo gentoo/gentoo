@@ -1,0 +1,25 @@
+From 7ffaea52e44a3fbea1ac0aa186a48b2033b409a2 Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Wed, 21 Sep 2016 19:39:30 -0400
+Subject: [PATCH 2/4] assume >=gntp-1.0
+
+---
+ sabnzbd/notifier.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sabnzbd/notifier.py b/sabnzbd/notifier.py
+index 777f93a..514da75 100644
+--- a/sabnzbd/notifier.py
++++ b/sabnzbd/notifier.py
+@@ -39,7 +39,7 @@ from sabnzbd.constants import NOTIFY_KEYS
+ from sabnzbd.misc import split_host, make_script_path
+ from sabnzbd.newsunpack import external_script
+ 
+-from gntp import GNTPRegister
++from gntp.core import GNTPRegister
+ from gntp.notifier import GrowlNotifier
+ try:
+     import Growl
+-- 
+2.4.10
+

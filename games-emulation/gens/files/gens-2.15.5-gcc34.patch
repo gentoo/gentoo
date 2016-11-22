@@ -1,4 +1,4 @@
-from http://sourceforge.net/p/gens/patches/25/
+from https://sourceforge.net/p/gens/patches/25/
 
 --- gens.orig/src/gens/gens_core/cpu/68k/cpu_68k.c	2004-05-22 09:02:12.000000000 -0700
 +++ gens/src/gens/gens_core/cpu/68k/cpu_68k.c	2005-03-21 10:52:24.000000000 -0800

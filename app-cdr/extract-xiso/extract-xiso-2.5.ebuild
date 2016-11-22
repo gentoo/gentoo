@@ -7,7 +7,7 @@ inherit toolchain-funcs
 MY_PV=${PV/_beta/b}
 
 DESCRIPTION="Tool for extracting and creating optimised Xbox ISO images"
-HOMEPAGE="http://sourceforge.net/projects/extract-xiso"
+HOMEPAGE="https://sourceforge.net/projects/extract-xiso"
 SRC_URI="mirror://sourceforge/extract-xiso/${PN}_v${MY_PV}_src.tgz"
 
 LICENSE="BSD-4"

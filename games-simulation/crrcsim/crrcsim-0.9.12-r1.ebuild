@@ -7,7 +7,7 @@ WANT_AUTOMAKE="1.10"
 inherit autotools eutils gnome2-utils games
 
 DESCRIPTION="model-airplane flight simulation program"
-HOMEPAGE="http://sourceforge.net/projects/crrcsim/"
+HOMEPAGE="https://sourceforge.net/projects/crrcsim/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

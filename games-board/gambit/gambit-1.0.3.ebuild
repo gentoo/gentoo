@@ -11,7 +11,7 @@ inherit cmake-utils games
 MY_P="G${P:1}"
 
 DESCRIPTION="Qt-based chess application + engine \"gupta\""
-HOMEPAGE="http://sourceforge.net/projects/gambitchess/"
+HOMEPAGE="https://sourceforge.net/projects/gambitchess/"
 SRC_URI="mirror://sourceforge/project/${PN}chess/${MY_P}/${MY_P}-src.tar.bz2"
 
 LICENSE="CC0-1.0"

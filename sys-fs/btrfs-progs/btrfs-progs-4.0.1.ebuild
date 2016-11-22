@@ -39,7 +39,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	convert? ( sys-apps/acl )
-	app-text/asciidoc
+	>=app-text/asciidoc-8.6.0
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
 "

@@ -1,0 +1,54 @@
+--- /tmp/a/SConstruct	2016-06-21 21:15:24.000000000 +0200
++++ /tmp/b/SConstruct	2016-08-19 11:40:45.916695952 +0200
+@@ -865,7 +865,6 @@
+ 
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
+     env.Append( CCFLAGS=["-fPIC",
+-                         "-ggdb",
+                          "-pthread",
+                          "-Wall",
+                          "-Wsign-compare",
+@@ -873,13 +872,13 @@
+                          "-Winvalid-pch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if linux or darwin:
+-        env.Append( CCFLAGS=["-pipe"] )
+         if not has_option("disable-warnings-as-errors"):
+             env.Append( CCFLAGS=["-Werror"] )
+ 
+     env.Append( CPPDEFINES=["_FILE_OFFSET_BITS=64"] )
+-    env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
+     env.Append( LINKFLAGS=["-fPIC"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # SERVER-9761: Ensure early detection of missing symbols in dependent libraries at program
+     # startup.
+@@ -905,11 +904,6 @@
+         env.Append( CXXFLAGS=" -fprofile-arcs -ftest-coverage " )
+         env.Append( LINKFLAGS=" -fprofile-arcs -ftest-coverage " )
+ 
+-    if optBuild:
+-        env.Append( CCFLAGS=["-O3"] )
+-    else:
+-        env.Append( CCFLAGS=["-O0"] )
+-
+     if debugBuild:
+         if not optBuild:
+             env.Append( CCFLAGS=["-fstack-protector"] )
+@@ -932,7 +926,6 @@
+ except OSError:
+     pass
+ 
+-env.Prepend(CPPPATH=['$VARIANT_DIR/third_party/gtest-1.7.0/include'])
+ 
+ boostSuffixList = ["-mt", ""]
+ if get_option("boost-lib-search-suffixes") is not None:
+@@ -1143,6 +1136,7 @@
+         # Clang likes to warn about unused functions, which seems a tad aggressive and breaks
+         # -Werror, which we want to be able to use.
+         AddToCCFLAGSIfSupported(myenv, '-Wno-unused-function')
++        AddToCCFLAGSIfSupported(myenv, '-Wno-unused-variable')
+ 
+         # TODO: Note that the following two flags are added to CCFLAGS even though they are
+         # really C++ specific. We need to do this because SCons passes CXXFLAGS *before*

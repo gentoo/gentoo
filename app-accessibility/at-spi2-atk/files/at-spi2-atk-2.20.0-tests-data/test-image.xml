@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<accessible description="Root of the accessible tree" name="root_object" role="accelerator label">
+      <accessible description="first child" name="obj1" role="alert"/>
+      <accessible_image description="image child" name="obj0" role="image">
+         <image image_description="image description" width="100" height="50" x="500" y="50" image_extents="png" image_locale="image_locale"/>
+      </accessible_image>
+</accessible>

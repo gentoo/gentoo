@@ -5,11 +5,6 @@
 	<email>tetromino@gentoo.org</email>
 	<name>Alexandre Rostovtsev</name>
   </maintainer>
-  <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-    <name>Ben de Groot</name>
-	<description>Secondary maintainer (x11 team is primary)</description>
-  </maintainer>
   <maintainer type="project">
     <email>x11@gentoo.org</email>
     <name>X11</name>

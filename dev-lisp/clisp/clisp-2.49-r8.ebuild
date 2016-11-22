@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 gtk? ( >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2.6 )
 		 pari? ( <sci-mathematics/pari-2.5.0 )
 		 postgres? ( >=dev-db/postgresql-8.0 )
-		 readline? ( >=sys-libs/readline-5.0 )
+		 readline? ( >=sys-libs/readline-5.0 <sys-libs/readline-7.0 )
 		 pcre? ( dev-libs/libpcre )
 		 svm? ( sci-libs/libsvm )
 		 zlib? ( sys-libs/zlib )

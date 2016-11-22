@@ -5,10 +5,6 @@
 		<email>jer@gentoo.org</email>
 		<name>Jeroen Roovers</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>wired@gentoo.org</email>
-		<name>Alex Alexander</name>
-	</maintainer>
 	<use>
 		<flag name="256-color">Enable 256 color support</flag>
 		<flag name="alt-font-width">Calculate the font width using a different method</flag>

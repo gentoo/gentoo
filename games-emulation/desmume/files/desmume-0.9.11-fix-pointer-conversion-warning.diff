@@ -1,0 +1,11 @@
+--- a/src/path.h	2015-02-14 16:05:26.000000000 +0100
++++ b/src/path.h	2016-07-11 12:09:59.591987169 +0200
+@@ -375,7 +375,7 @@
+ 				else if (strchr(strftimeArgs, *p))
+ 				{
+ 					char tmp[MAX_PATH];
+-					char format[] = { '%', *p, NULL };
++					char format[] = { '%', *p, '\0' };
+ 					strftime(tmp, MAX_PATH, format, time_struct);
+ 					file.append(tmp);
+ 		}

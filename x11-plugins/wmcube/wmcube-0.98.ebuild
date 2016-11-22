@@ -41,7 +41,7 @@ src_install() {
 	cd ..
 	dodoc README CHANGES
 
-	SHARE=${DESTTREE}/share/wmcube
+	SHARE=/usr/share/wmcube
 	dodir ${SHARE}
 	insinto ${SHARE}
 	doins 3dObjects/*

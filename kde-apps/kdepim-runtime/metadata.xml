@@ -6,7 +6,6 @@
 	<name>Gentoo KDE Project</name>
 </maintainer>
 <use>
-	<flag name="facebook">Facebook service integration via <pkg>net-libs/libkfbapi</pkg></flag>
 	<flag name="google">Google service integration via <pkg>net-libs/libkgapi</pkg></flag>
 </use>
 </pkgmetadata>

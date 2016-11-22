@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		>=virtual/perl-Test-Simple-0.470.0
 	)
 "
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/97_meta.t t/98_pod_coverage.t t/98_pod.t
+	perl-module_src_test
+}

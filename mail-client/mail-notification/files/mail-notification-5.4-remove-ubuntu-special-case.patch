@@ -1,5 +1,5 @@
---- jbsrc/lib/src/core/jb-feature.c.~1~	2008-04-27 16:47:27.000000000 +0200
-+++ jbsrc/lib/src/core/jb-feature.c	2008-07-22 11:40:50.856886210 +0200
+--- a/jbsrc/lib/src/core/jb-feature.c.~1~	2008-04-27 16:47:27.000000000 +0200
++++ b/jbsrc/lib/src/core/jb-feature.c	2008-07-22 11:40:50.856886210 +0200
 @@ -164,8 +164,6 @@
  static void
  gconf_configure (void)

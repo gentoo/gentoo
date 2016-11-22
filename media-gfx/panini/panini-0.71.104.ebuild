@@ -8,7 +8,7 @@ inherit qt4-r2 eutils
 
 MY_P="${P/p/P}-src"
 DESCRIPTION="OpenGL-based panoramic image viewer"
-HOMEPAGE="http://sourceforge.net/projects/pvqt/"
+HOMEPAGE="https://sourceforge.net/projects/pvqt/"
 SRC_URI="mirror://sourceforge/pvqt/${MY_P}.zip"
 
 LICENSE="GPL-3"

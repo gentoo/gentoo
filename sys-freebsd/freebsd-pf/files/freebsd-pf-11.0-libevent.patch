@@ -1,0 +1,13 @@
+diff --git a/usr.sbin/ftp-proxy/Makefile b/usr.sbin/ftp-proxy/Makefile
+index 941505f..df5ccb2 100644
+--- a/usr.sbin/ftp-proxy/Makefile
++++ b/usr.sbin/ftp-proxy/Makefile
+@@ -7,8 +7,6 @@ MAN=	ftp-proxy.8
+ 
+ SRCS=	ftp-proxy.c filter.c
+ 
+-CFLAGS+=-I${.CURDIR}/../../contrib/pf/libevent
+-
+ LIBADD=	event
+ 
+ WARNS?=	3

@@ -5,7 +5,7 @@
 MY_PN=gpl-cver
 
 DESCRIPTION="Verilog simulator"
-HOMEPAGE="http://sourceforge.net/projects/${PN}"
+HOMEPAGE="https://sourceforge.net/projects/${PN}"
 SRC_URI="http://www.pragmatic-c.com/${MY_PN}/downloads/${P}.src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"

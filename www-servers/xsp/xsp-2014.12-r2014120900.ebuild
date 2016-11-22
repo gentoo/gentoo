@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -78,9 +78,9 @@ src_install() {
 	insinto /etc/xsp4
 	doins "${FILESDIR}"/systemd/mono.webapp
 	insinto /etc/xsp4/conf.d
-	# mono-xsp4.service was original name from 
+	# mono-xsp4.service was original name from
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770458;filename=mono-xsp4.service;att=1;msg=5
-	# I think that using the same commands as in debian 
+	# I think that using the same commands as in debian
 	#     systemctl start mono-xsp4.service
 	#     systemctl start mono-xsp4
 	# is better than to have shorter command

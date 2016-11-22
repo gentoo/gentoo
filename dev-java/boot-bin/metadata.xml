@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kentnl@gentoo.org</email>
+		<name>Kent Fredric</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>

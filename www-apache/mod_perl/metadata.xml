@@ -5,8 +5,11 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>
+	<use>
+		<flag name="ithreads">Build for use with thread-capable perl, needs same setting as in dev-lang/perl</flag>
+	</use>
 </pkgmetadata>
