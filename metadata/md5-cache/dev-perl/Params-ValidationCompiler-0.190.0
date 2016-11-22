@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Eval-Closure dev-perl/Exception-Class virtual/perl-Exporter >=virtual/perl-Scalar-List-Utils-1.400.0 dev-lang/perl:=
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Params-ValidationCompiler-0.18.tar.gz
+SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Params-ValidationCompiler-0.19.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=475f920d41ab47217df82637a2674484
+_md5_=a70d2257b8672edb44eeb0dc226673b9
