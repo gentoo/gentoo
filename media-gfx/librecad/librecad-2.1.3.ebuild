@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,21 +33,24 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-cpp/muParser
-	media-libs/freetype"
+	media-libs/freetype:2"
 
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/LibreCAD-${PV}"
 
 src_prepare() {
+# 	epatch "${FILESDIR}/iota-fix-2.1.1.patch"
+
 	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	use 3d || sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	if ! use 3d; then
+		sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	fi
 }
 
 src_configure() {
-	if use qt4
-	then
+	if use qt4; then
 		eqmake4 -r
 	else
 		eqmake5 -r
@@ -59,9 +62,9 @@ src_install() {
 	use tools && dobin unix/ttf2lff
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
-	use doc && dohtml -r librecad/support/doc/*
+	use doc && insinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/appdata
 	doins unix/appdata/librecad.appdata.xml
-	doicon librecad/res/main/"${PN}".png
+	doicon librecad/res/main/${PN}.png
 	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
 }
