@@ -294,7 +294,7 @@ src_install() {
 			|| die
 	done
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake DESTDIR="${D}" install
 
 	# Install language packs
