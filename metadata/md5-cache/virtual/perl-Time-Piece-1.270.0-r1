@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Time-Piece
+EAPI=5
+KEYWORDS=alpha amd64 ~arm64 ia64 ppc ppc64 sparc x86 ~x86-solaris
+RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/Time-Piece-1.270.0 ) dev-lang/perl:= !<perl-core/Time-Piece-1.270.0 !>perl-core/Time-Piece-1.270.0-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=6b9e9361f87fefc7a89e1f117c6e6303
