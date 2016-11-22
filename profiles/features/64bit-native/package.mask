@@ -26,9 +26,6 @@ app-emulation/crossover-office-bin
 app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
-app-emulation/virtualbox
-app-emulation/virtualbox-extpack-oracle
-app-emulation/virtualbox-guest-additions
 >=app-i18n/atokx3-3.0.0
 app-office/lotus-notes
 app-office/ooextras
