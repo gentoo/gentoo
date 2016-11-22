@@ -8058,9 +8058,12 @@ www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/seamonkey:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 www-client/seamonkey:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
+www-client/seamonkey:gtk2 - Use the cairo-gtk2 rendering engine
 www-client/seamonkey:ipc - Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes
+www-client/seamonkey:jemalloc - Enable or disable jemalloc
 www-client/seamonkey:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
 www-client/seamonkey:roaming - Build roaming extension support (default on)
+www-client/seamonkey:skia - Enable the SKIA engine for 2D rendering as an alternative to cairo
 www-client/seamonkey:system-cairo - Use the system-wide x11-libs/cairo instead of bundled.
 www-client/seamonkey:system-harfbuzz - Use the system-wide media-libs/harfbuzz instead of bundled.
 www-client/seamonkey:system-icu - Use the sytem-wide dev-libs/icu instead of bundled.
