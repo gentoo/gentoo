@@ -1,0 +1,11 @@
+diff --git a/src/av-cp/playlist-treeview.h b/src/av-cp/playlist-treeview.h
+index 8637ae8..16b131e 100644
+--- a/src/av-cp/playlist-treeview.h
++++ b/src/av-cp/playlist-treeview.h
+@@ -23,6 +23,8 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
++
++#include <libgupnp/gupnp.h>
+ #include <libgupnp-av/gupnp-av.h>
