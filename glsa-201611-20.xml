@@ -43,7 +43,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=app-admin/testdisk-7.0"
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/testdisk-7.0-r2"
     </code>
     
   </resolution>
