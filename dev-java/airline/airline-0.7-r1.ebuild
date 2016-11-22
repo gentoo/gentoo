@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
+
+JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -14,13 +16,20 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=virtual/jdk-1.7
-	dev-java/guava:18
+CP_DEPEND="dev-java/guava:20
 	dev-java/javax-inject:0
-	dev-java/jsr305:0
-	dev-java/testng:0"
+	dev-java/jsr305:0"
+
+DEPEND=">=virtual/jdk-1.7
+	${CP_DEPEND}"
 
 RDEPEND=">=virtual/jre-1.7
-	${DEPEND}"
+	${CP_DEPEND}"
 
-JAVA_GENTOO_CLASSPATH="guava-18,javax-inject,jsr305,testng"
+S="${WORKDIR}/${P}"
+JAVA_SRC_DIR="src/main/java"
+
+src_install() {
+	java-pkg-simple_src_install
+	dodoc README.md
+}
