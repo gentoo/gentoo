@@ -61,7 +61,7 @@ esac
 : ${MOZ_HTTP_URI:=""}
 
 # @ECLASS-VARIABLE: MOZ_LANGPACK_HTTP_URI
-# @ÐESCRIPTION:
+# @DESCRIPTION:
 # An alternative http URI if it differs from official mozilla URI.
 # Defaults to whatever MOZ_HTTP_URI was set to.
 : ${MOZ_LANGPACK_HTTP_URI:=${MOZ_HTTP_URI}}
