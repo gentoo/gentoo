@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">libmwaw</remote-id>
 	</upstream>
+	<use>
+		<flag name="tools">Build file conversion tools</flag>
+	</use>
 </pkgmetadata>
