@@ -3,17 +3,24 @@
 # $Id$
 
 EAPI=5
-inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user
+if [[ ${PV} != 9999 ]]; then
+	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
+	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+else
+	inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user wxwidgets
+	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
+	EGIT_BRANCH="master"
+	KEYWORDS=""
+fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
 HOMEPAGE="http://icinga.org/icinga2"
-EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
-EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax"
+WX_GTK_VER="3.0"
 
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -36,7 +43,7 @@ RDEPEND="
 	) )
 	mail? ( virtual/mailx )
 	classicui? ( net-analyzer/icinga[web] )
-	studio? ( x11-libs/wxGTK:2.9 )"
+	studio? ( x11-libs/wxGTK:3.0 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
@@ -44,6 +51,7 @@ want_apache2
 
 pkg_setup() {
 	depend.apache_pkg_setup
+	setup-wxwidgets
 	enewgroup icinga
 	enewgroup icingacmd
 	enewgroup nagios  # for plugins
@@ -65,6 +73,7 @@ src_configure() {
 		-DICINGA2_COMMAND_USER=icinga
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=yes
+		-DLOGROTATE_HAS_SU=ON
 	)
 	# default to off if minimal, allow the flags to be set otherwise
 	if use minimal; then
@@ -159,6 +168,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "DB IDO schema upgrade required. http://docs.icinga.org/icinga2/snapshot/chapter-2.html#upgrading-the-mysql-database"
-	elog "You will need to update your configuration files, see https://dev.icinga.org/issues/5909"
+	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} && ${REPLACING_VERSIONS} != ${PV} ]]; then
+		elog "DB IDO schema upgrade may be required required.
+		http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/upgrading-icinga-2"
+	fi
 }
