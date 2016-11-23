@@ -98,6 +98,8 @@ src_prepare() {
 	}
 
 	sed -i \
+		-e 's:^#\tuser = :\tuser = :g' \
+		-e 's:^#\tgroup = :\tgroup = :g' \
 		-e 's:/var/run/radiusd:/run/radiusd:g' \
 		-e '/^run_dir/s:${localstatedir}::g' \
 		raddb/radiusd.conf.in || die
@@ -196,7 +198,7 @@ src_install() {
 	rm "${D}/usr/sbin/rc.radiusd" || die
 
 	newinitd "${FILESDIR}/radius.init-r3" radiusd
-	newconfd "${FILESDIR}/radius.conf-r3" radiusd
+	newconfd "${FILESDIR}/radius.conf-r4" radiusd
 
 	prune_libtool_files
 }
@@ -205,6 +207,8 @@ pkg_config() {
 	if use ssl; then
 		cd "${ROOT}"/etc/raddb/certs
 		./bootstrap
+
+		chown -R root:radius "${ROOT}"/etc/raddb/certs
 	fi
 }
 
