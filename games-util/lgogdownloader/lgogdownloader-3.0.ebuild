@@ -20,7 +20,7 @@ RDEPEND=">=app-crypt/rhash-1.3.3-r2:=
 	dev-cpp/htmlcxx:=
 	dev-libs/boost:=
 	>=dev-libs/jsoncpp-1.7:=
-	dev-libs/tinyxml:=
+	dev-libs/tinyxml2:=
 	net-libs/liboauth:=
 	>=net-misc/curl-7.32:=[ssl]"
 
