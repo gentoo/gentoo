@@ -139,7 +139,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 # Force java for latest git version to avoid having to hand maintain the
 # generated addons package.  #488118
-[[ ${PV} == "9999" ]] && DEPEND+=" virtual/jre"
+[[ ${PV} == 9999 ]] && DEPEND+=" virtual/jre"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
@@ -158,7 +158,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack || default
 	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
 	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
 	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
@@ -183,7 +183,30 @@ src_prepare() {
 	multijob_finish
 	elibtoolize
 
-	if [[ ${PV} == "9999" ]] || use java ; then #558798
+	# Cross-compiler support
+	# We need JsonSchemaBuilder and TexturePacker binaries for the host system
+	# Later we need libsquish for the target system
+	if tc-is-cross-compiler ; then
+		mkdir "${WORKDIR}"/${CBUILD} || die
+		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
+		einfo "Building host tools"
+		cp -a "${S}"/{tools,xbmc} ./ || die
+		local tool tools=( JsonSchemaBuilder )
+		use texturepacker && tools+=( TexturePacker )
+		for tool in "${tools[@]}" ; do
+			tc-env_build emake -C tools/depends/native/$tool
+			mkdir "${S}"/tools/depends/native/$tool/bin || die
+			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool \
+				"${S}"/tools/depends/native/$tool/bin/$tool || die
+		done
+		popd >/dev/null || die
+
+		emake -f codegenerator.mk
+
+		# Binary kodi.bin links against libsquish,
+		# so we need libsquish compiled for the target system
+		emake -C tools/depends/native/libsquish-native/ CXX=$(tc-getCXX)
+	elif [[ ${PV} == 9999 ]] || use java ; then #558798
 		tc-env_build emake -f codegenerator.mk
 	fi
 
@@ -212,7 +235,7 @@ src_configure() {
 	# No configure flage for this #403561
 	export ac_cv_lib_bluetooth_hci_devid=$(usex bluetooth)
 	# Requiring java is asine #434662
-	[[ ${PV} != "9999" ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
+	[[ ${PV} != 9999 ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
 
 	econf \
 		--disable-ccache \
