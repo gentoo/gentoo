@@ -14,7 +14,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip
 	http://hg.netbeans.org/binaries/545E2B7AB1BD579CC76E3836055877982C5CD0C6-ant-misc-1.9.7.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
