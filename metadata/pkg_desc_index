@@ -14013,7 +14013,7 @@ net-analyzer/lft 3.73 3.76 3.77: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 9.3-r1 9999: Check websites for broken links
-net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
+net-analyzer/macchanger 1.7.0 1.7.0-r1: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.10.2 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
