@@ -10,12 +10,15 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
+DEPEND=""
 RDEPEND="
-	|| ( =dev-lang/perl-5.24* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.24.0* =dev-lang/perl-5.22* )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 "
+
+# special case: Perl 5.22 version does not correspond to any separate release...

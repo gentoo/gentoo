@@ -14,10 +14,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND="
-	|| ( =dev-lang/perl-5.24* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.24.1* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
-	>=virtual/perl-Compress-Raw-Zlib-${PV}
-	>=virtual/perl-Compress-Raw-Bzip2-${PV}
 "

@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
-	|| ( =dev-lang/perl-5.24* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.24.0* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
