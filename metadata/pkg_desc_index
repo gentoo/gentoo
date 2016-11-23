@@ -4236,7 +4236,7 @@ dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standa
 dev-java/netbeans-apisupport 8.0.2 8.1 8.2: Netbeans API Support Cluster
 dev-java/netbeans-cnd 8.0.2 8.1 8.2: Netbeans CND Cluster
 dev-java/netbeans-dlight 8.0.2 8.1 8.2: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1 8.2: Netbeans Enterprise cluster
+dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1 8.2 8.2-r1: Netbeans Enterprise cluster
 dev-java/netbeans-ergonomics 8.0.2 8.1 8.2: Netbeans Ergonomics Cluster
 dev-java/netbeans-extide 8.0.2 8.1 8.2: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1 8.2: Netbeans Groovy Cluster
