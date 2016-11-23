@@ -13,7 +13,7 @@ DESCRIPTION="A X11 server for RDP clients (used by xrdp)"
 HOMEPAGE="http://www.xrdp.org/"
 # mirrored from https://github.com/neutrinolabs/xrdp/releases
 SRC_URI="https://dev.gentoo.org/~mgorny/dist/${XRDP_P}.tar.xz
-	http://xorg.freedesktop.org/releases/individual/xserver/${XORG_P}.tar.bz2"
+	https://www.x.org/releases/individual/xserver/${XORG_P}.tar.bz2"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"

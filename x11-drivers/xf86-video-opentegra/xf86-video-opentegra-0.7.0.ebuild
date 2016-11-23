@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="X.Org video driver for NVIDIA Tegra"
 
-SRC_URI="http://xorg.freedesktop.org/releases/individual/driver/${P}.tar.xz"
+SRC_URI="https://www.x.org/releases/individual/driver/${P}.tar.xz"
 KEYWORDS="arm"
 IUSE=""
 
