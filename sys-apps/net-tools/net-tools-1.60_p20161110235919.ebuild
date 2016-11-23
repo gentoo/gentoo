@@ -62,6 +62,10 @@ set_opt() {
 		config.in || die
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}-fix-building-w-older-linux-headers.patch"
+}
+
 src_configure() {
 	# Clear out env vars from the user. #599602
 	unset BASEDIR BINDIR SBINDIR
