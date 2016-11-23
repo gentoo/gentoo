@@ -30,5 +30,5 @@ src_install() {
 
 	# these files are not shipped in any other version of qt-docs and collide with qtcore
 	# bug 597026
-	rm -r "${ED}"/usr/share/doc/qt-5.6.2/global
+	rm -rf "${ED}${dest}"/global || die
 }
