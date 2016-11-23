@@ -15,7 +15,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/472A52636BE09823B4E5F707071B31FB990A7375-phpsigfiles.zip
 	http://hg.netbeans.org/binaries/3D6AF75EA20D715887DAF47A3F063864EF0814C1-predefined_vars.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
