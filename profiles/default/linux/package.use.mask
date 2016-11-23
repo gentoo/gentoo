@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# prometheanfire <prometheanfire@gentoo.org> (24 Jan 2016)
-# studio support is best effort only
-net-analyzer/icinga2 studio
-
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups
