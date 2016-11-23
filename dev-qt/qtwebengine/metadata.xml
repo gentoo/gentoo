@@ -8,6 +8,7 @@
 	<use>
 		<flag name="geolocation">Enable physical position determination
 			via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
 		<flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg>
 			instead of bundled.</flag>
 		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
