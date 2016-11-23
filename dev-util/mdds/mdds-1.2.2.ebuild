@@ -7,7 +7,7 @@ EAPI=6
 EGIT_REPO_URI="https://gitlab.com/mdds/mdds.git"
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 
-inherit eutils toolchain-funcs ${GITECLASS}
+inherit toolchain-funcs ${GITECLASS}
 
 DESCRIPTION="A collection of multi-dimensional data structure and indexing algorithm"
 HOMEPAGE="https://gitlab.com/mdds/mdds"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 DOCS=() # buildsystem installs docs
 
 src_prepare(){
-	eapply_user
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
