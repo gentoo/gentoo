@@ -75,6 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xineramaproto
 	x11-proto/xproto
 	test? ( app-text/docbook-xml-dtd:4.5 )
+	wayland? ( >=sys-kernel/linux-headers-4.4 )
 "
 RDEPEND="${COMMON_DEPEND}
 	!x11-misc/expocity
