@@ -2,13 +2,13 @@ DEFINED_PHASES=compile install postinst postrm preinst unpack
 DEPEND=>=x11-base/xorg-server-1.0.99 x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/libtool-1.5 >=sys-devel/m4-1.4 virtual/pkgconfig >=x11-misc/util-macros-1.3.0
 DESCRIPTION=CG3 video driver
 EAPI=0
-HOMEPAGE=http://xorg.freedesktop.org/
+HOMEPAGE=https://www.x.org/wiki/
 IUSE=debug
 KEYWORDS=-* ~sparc
 LICENSE=MIT
 RDEPEND=>=x11-base/xorg-server-1.0.99 !<=x11-base/xorg-x11-6.9
 SLOT=0
-SRC_URI=http://xorg.freedesktop.org/releases/individual/driver/xf86-video-suncg3-1.1.2.tar.bz2
+SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-suncg3-1.1.2.tar.bz2
 _eclass_exported_funcs=pkg_preinst:x-modular pkg_postrm:x-modular pkg_postinst:x-modular src_unpack:x-modular src_compile:x-modular src_install:x-modular
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	x-modular	fe1b527854d17c98e41850ce479dbe1f
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	x-modular	c5d1af3df13b94d6ec8bb4bb758b39ca
 _md5_=79dec4f35a31a69e68efa35020adf414
