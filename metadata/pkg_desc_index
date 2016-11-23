@@ -8619,7 +8619,7 @@ dev-qt/qdbus 5.5.1-r1 5.6.1 5.6.2 5.7.0: Interface to Qt applications communicat
 dev-qt/qdbusviewer 4.8.6-r1 4.8.7 5.5.1-r1 5.6.1 5.6.2 5.7.0: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.5.1 5.6.1 5.6.2 5.7.0: Qt documentation generator
 dev-qt/qt-creator 3.6.1 4.0.3 4.1.0 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.5.1_p0 5.6.1_p1 5.6.2_p0 5.6.2_p0-r1 5.7.0_p1: Documentation for Qt5, for use with Qt Creator and other tools
+dev-qt/qt-docs 5.5.1_p0 5.6.1_p1 5.6.2_p0-r1 5.7.0_p1: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
 dev-qt/qt3d 5.7.0: The 3D module for the Qt5 framework
@@ -8629,7 +8629,7 @@ dev-qt/qtbluetooth 5.5.1-r1 5.6.1 5.6.2 5.7.0: Bluetooth support library for the
 dev-qt/qtcharts 5.7.0: Chart component library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.5.1 5.6.1 5.6.2 5.7.0: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1 5.6.1 5.6.2 5.6.2-r1 5.7.0: Cross-platform application development framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1 5.6.1 5.6.2-r1 5.7.0: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.7.0: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.5.1 5.6.1 5.6.2 5.7.0: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.5.1-r1 5.6.1-r1 5.6.2 5.7.0: The QML and Quick modules for the Qt5 framework
