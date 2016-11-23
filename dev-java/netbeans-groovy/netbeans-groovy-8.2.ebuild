@@ -13,7 +13,7 @@ SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/01730F61E9C9E59FD1B814371265334D7BE0B8D2-groovy-all-2.4.5.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 

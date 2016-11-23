@@ -18,7 +18,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar
 	http://hg.netbeans.org/binaries/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 

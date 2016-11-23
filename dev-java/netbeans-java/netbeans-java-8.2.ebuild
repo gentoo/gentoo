@@ -41,7 +41,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/3B96251214DF697E902C849EB0B4A0EFA2CD1A53-wagon-http-shared-2.10.jar
 	http://hg.netbeans.org/binaries/0CD9CDDE3F56BB5250D87C54592F04CBC24F03BF-wagon-provider-api-2.10.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
