@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
-DESCRIPTION=Virtual for Parse-CPAN-Meta
+DESCRIPTION=Virtual for IO-Compress
 EAPI=6
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
-RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/Parse-CPAN-Meta-1.441.700 ) dev-lang/perl:= !<perl-core/Parse-CPAN-Meta-1.441.700 !>perl-core/Parse-CPAN-Meta-1.441.700-r999
+RDEPEND=|| ( =dev-lang/perl-5.24.0* ~perl-core/IO-Compress-2.69.0 ) dev-lang/perl:= !<perl-core/IO-Compress-2.69.0 !>perl-core/IO-Compress-2.69.0-r999 >=virtual/perl-Compress-Raw-Zlib-2.69.0 >=virtual/perl-Compress-Raw-Bzip2-2.69.0
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=5e646b736f012cce9c27c43bf6483bae
+_md5_=a75d647257e59a227d277fa8deb2dfca
