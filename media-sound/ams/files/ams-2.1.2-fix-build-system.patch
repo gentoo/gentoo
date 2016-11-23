@@ -1,0 +1,80 @@
+* Remove extraneous CXXFLAGS
+* Missing -ldl for dlsym, dlerror, and dlopen
+See also: https://bugs.gentoo.org/379251
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,46 +31,7 @@
+ AC_FUNC_SELECT_ARGTYPES
+ AC_FUNC_STAT
+ 
+-dnl set basic compiler flags
+-AMS_CORE_CXXFLAGS="-Wall"
+-
+-dnl set compiler optimization flags
+-AC_MSG_CHECKING(which processor class to optimize for)
+-case "$target" in
+-    i486-*-*)
+-         AMS_OPT_CXXFLAGS="-march=i486"
+-         AC_MSG_RESULT(i486)
+-         ;;
+-    i586-*-*)
+-         AMS_OPT_CXXFLAGS="-march=pentium"
+-         AC_MSG_RESULT(i586)
+-         ;;
+-    i686-*-*)
+-         AMS_OPT_CXXFLAGS="-march=pentiumpro -msse -mfpmath=sse -ffast-math"
+-         AC_MSG_RESULT(i686)
+-         ;;
+-    i786-*-*)
+-         AMS_OPT_CXXFLAGS="-march=pentium4 -msse -mfpmath=sse -ffast-math"
+-         AC_MSG_RESULT(i786)
+-         ;;
+-    x86_64-*-*)
+-         AMS_OPT_CXXFLAGS="-m64 -msse -mfpmath=sse -ffast-math"
+-         AC_MSG_RESULT(x86_64)
+-         ;;
+-    *)
+-         AC_MSG_RESULT(i386)
+-         AC_MSG_WARN(This is probably not what you want, use --target)
+-         ;;
+-esac
+-
+-if test "x$AMS_OPT_CXXFLAGS" = "x"; then
+-    AMS_CXXFLAGS=$AMS_CORE_CXXFLAGS
+-else
+-    AC_MSG_NOTICE([Compiler optimization... $AMS_OPT_CXXFLAGS])
+-    AMS_CXXFLAGS="$AMS_CORE_CXXFLAGS $AMS_OPT_CXXFLAGS"
+-fi
+-AC_SUBST(AMS_CXXFLAGS)
+-
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([asound], [snd_pcm_open], ,
+@@ -81,8 +42,12 @@
+              [AC_MSG_ERROR(pthread is required)])
+ AC_CHECK_LIB([m], [roundf], ,
+              [AC_MSG_ERROR([required libm missing])])
+-AC_CHECK_LIB([dl], [dlopen], ,
+-             [AC_MSG_ERROR(libdl is required)])
++dnl The dlopen() function is in the C library for *BSD and in
++dnl libdl on GLIBC-based systems
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [
++             AC_MSG_ERROR([unable to find the dlopen() function])
++])
++
+ dnl for vocoder module
+ AC_CHECK_LIB([fftw3], [fftw_execute], ,
+              [AC_MSG_ERROR(libfftw3 is required)])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -267,7 +267,7 @@
+ # all generated files to be removed by "make clean"
+ CLEANFILES = $(nodist_ams_SOURCES) $(translations_DATA)
+ 
+-ams_CXXFLAGS = $(QT_CXXFLAGS) $(AMS_CXXFLAGS)
++ams_CXXFLAGS = $(QT_CXXFLAGS)
+ DEFS = -D_REENTRANT -DLADSPA_PATH=\"$(LADSPA_PATH)\" -DTRANSLATIONSDIR=\"$(translationsdir)\" -DDEMOFILEPATH=\"$(pkgdatadir)/demos\" -DINSTRUMENTFILEPATH=\"$(pkgdatadir)/instruments\" @DEFS@
+ 
+ # rule for moc-file generation
