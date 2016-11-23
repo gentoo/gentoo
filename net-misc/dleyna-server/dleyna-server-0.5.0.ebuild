@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
-inherit eutils
 
 DESCRIPTION="library for implementing services that allow clients to discover, browse and manipulate DLNA Servers"
 HOMEPAGE="https://01.org/dleyna/"
@@ -29,7 +27,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	# Bug 597952
+	epatch "${FILESDIR}"/${P}-fix-references-to-GUPnPContextManager.patch
+	default
+}
+
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
