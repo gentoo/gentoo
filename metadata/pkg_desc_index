@@ -11214,7 +11214,7 @@ games-util/gslist 0.8.11a 0.8.11a-r1: A GameSpy server browser
 games-util/gtkevemon 1.8-r1 1.10 9999: A standalone skill monitoring application for EVE Online
 games-util/higan-purify 03: Rom purifier for higan
 games-util/joystick 1.4.8 1.5.1 1.6.0: joystick testing utilities
-games-util/lgogdownloader 2.28: Unofficial GOG.com downloader for Linux
+games-util/lgogdownloader 3.0: Unofficial GOG.com downloader for Linux
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux
@@ -16798,7 +16798,7 @@ sys-apps/ifplugd 0.28-r9 0.28-r10: Brings up/down ethernet ports automatically w
 sys-apps/input-utils 0.0.1_pre20081014 1.1 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
-sys-apps/inxi 2.2.14 2.2.19 2.3.0_p20160807: Commandline script to print hardware information for irc and administration.
+sys-apps/inxi 2.3.0_p20160807 2.3.4_p20161104: Commandline script to print hardware information for irc and administration
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 2.8.5 2.9.9 3.0.0: IPMI Management Utilities
