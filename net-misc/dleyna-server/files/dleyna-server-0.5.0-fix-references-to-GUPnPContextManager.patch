@@ -1,0 +1,13 @@
+Fix build with recent gupnp version
+
+Gentoo-Bug: 597952
+--- a/libdleyna/server/upnp.h
++++ b/libdleyna/server/upnp.h
+@@ -24,6 +24,7 @@
+ #define DLS_UPNP_H__
+ 
+ #include <libdleyna/core/connector.h>
++#include <libgupnp/gupnp-context-manager.h>
+ 
+ #include "client.h"
+ #include "async.h"
