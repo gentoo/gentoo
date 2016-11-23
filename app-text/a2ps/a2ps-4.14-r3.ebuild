@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools elisp-common eutils flag-o-matic
 
 DESCRIPTION="Any to PostScript filter"
-HOMEPAGE="http://www.inf.enst.fr/~demaille/a2ps/"
+HOMEPAGE="https://www.gnu.org/software/a2ps/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	linguas_ja? ( mirror://gentoo/${P}-ja_nls.patch.gz )"
 

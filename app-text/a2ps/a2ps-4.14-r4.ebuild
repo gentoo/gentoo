@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools elisp-common flag-o-matic
 
 DESCRIPTION="Any to PostScript filter"
-HOMEPAGE="http://www.inf.enst.fr/~demaille/a2ps/"
+HOMEPAGE="https://www.gnu.org/software/a2ps/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	linguas_ja? ( mirror://gentoo/${P}-ja_nls.patch.gz )"
 
