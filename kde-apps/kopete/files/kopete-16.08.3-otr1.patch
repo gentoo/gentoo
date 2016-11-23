@@ -1,0 +1,37 @@
+From 19957f9324a5ae45bcb1479f1bb017efa77d0aa7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Tue, 22 Nov 2016 00:31:43 +0100
+Subject: [PATCH 1/4] When updating OTR GUI icon properly set OTR instance tag
+
+Without configured instance tag libotr library does not encrypt sent
+messages and moreover it even does not report any error that message was
+not encrypted.
+
+This should fix a bug when OTR "encrypted" icon is shown in GUI and libotr
+itself does not want to encrypt messages. It happened when Kopete window
+with active OTR session was closed and after that again opened.
+
+BUG: 362535
+FIXED-IN: 16.12
+---
+ plugins/otr/otrlchatinterface.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/plugins/otr/otrlchatinterface.cpp b/plugins/otr/otrlchatinterface.cpp
+index cf5b492..6e3d417 100644
+--- a/plugins/otr/otrlchatinterface.cpp
++++ b/plugins/otr/otrlchatinterface.cpp
+@@ -744,6 +744,10 @@ int OtrlChatInterface::privState( Kopete::ChatSession *session ){
+ 	ConnContext *context = otrl_context_find(userstate, session->members().first()->contactId().toLocal8Bit(), session->account()->accountId().toLocal8Bit(), session->account()->protocol()->displayName().toLocal8Bit(), instance, 0, NULL, NULL, NULL);
+ 
+ 	if( context ){
++		if( instance == OTRL_INSTAG_BEST && context->their_instance ){
++			kDebug(14318) << "Updating otr-instag to" << context->their_instance << "for session" << session;
++			session->setProperty("otr-instag", QString::number(context->their_instance));
++		}
+ 		switch( context->msgstate ){
+ 		case OTRL_MSGSTATE_PLAINTEXT:
+ 			return 0;
+-- 
+2.7.3
+

@@ -1,0 +1,43 @@
+From 966e8170b04812369307a2471596e433662e8f79 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali.rohar@gmail.com>
+Date: Tue, 22 Nov 2016 00:41:52 +0100
+Subject: [PATCH 3/4] Do not show empty internal messages by OTR plugin
+
+---
+ plugins/otr/otrlchatinterface.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/otr/otrlchatinterface.cpp b/plugins/otr/otrlchatinterface.cpp
+index 153fae9..a9b70ea 100644
+--- a/plugins/otr/otrlchatinterface.cpp
++++ b/plugins/otr/otrlchatinterface.cpp
+@@ -400,7 +400,7 @@ void OtrlChatInterface::handle_msg_event(void *opdata, OtrlMessageEvent msg_even
+ 	switch (msg_event)
+ 	{
+ 	case OTRL_MSGEVENT_NONE:
+-		break;
++		return;
+ 	case OTRL_MSGEVENT_ENCRYPTION_REQUIRED:
+ 		msg.setHtmlBody( i18n( "You attempted to send an unencrypted message to %1.", QLatin1String(context->username) ) );
+ 		msg.setDirection( Kopete::Message::Internal );
+@@ -453,7 +453,7 @@ void OtrlChatInterface::handle_msg_event(void *opdata, OtrlMessageEvent msg_even
+ 		return;
+ 	case OTRL_MSGEVENT_LOG_HEARTBEAT_SENT:
+ 		kDebug(14318) << "Heartbeat sent to" << context->username;
+-		break;
++		return;
+ 	case OTRL_MSGEVENT_RCVDMSG_GENERAL_ERR:
+ 		msg.setHtmlBody( QLatin1String(message) );
+ 		msg.setDirection( Kopete::Message::Internal );
+@@ -466,7 +466,7 @@ void OtrlChatInterface::handle_msg_event(void *opdata, OtrlMessageEvent msg_even
+ 		break;
+ 	case OTRL_MSGEVENT_RCVDMSG_UNRECOGNIZED:
+ 		kDebug(14318) << "Unrecognized OTR message received from" << context->username;
+-		break;
++		return;
+ 	case OTRL_MSGEVENT_RCVDMSG_FOR_OTHER_INSTANCE:
+ 		msg.setHtmlBody( i18n( "%1 has sent an encrypted message intended for a different session. If you are logged in multiple times, another session may have received the message.", QLatin1String(context->username) ) );
+ 		msg.setDirection( Kopete::Message::Inbound );
+-- 
+2.7.3
+
