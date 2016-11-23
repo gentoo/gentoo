@@ -1346,7 +1346,7 @@ app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, P
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.12.7-r1 0.12.8 0.13.1-r2 0.13.2 9999: SPICE server
+app-emulation/spice 0.12.7-r1 0.12.8 0.13.1-r2 0.13.2 0.13.3 9999: SPICE server
 app-emulation/spice-protocol 0.12.11 0.12.12 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.16.0 0.17.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
@@ -17623,7 +17623,7 @@ sys-process/at 3.1.16 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5 2.6 2.7: utility to checkpoint/restore a process tree
+sys-process/criu 2.5 2.6 2.7 2.8: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
