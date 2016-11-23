@@ -14,7 +14,10 @@ LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-util/cargo"
+DEPEND="
+	dev-util/cargo
+	>=dev-lang/rust-1.11
+"
 
 src_prepare() {
 	default
