@@ -46,7 +46,7 @@ SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_zh-TW? ( ${ALL_URLS} )
 "
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE_NETBEANS_MODULES="
 	+netbeans_modules_apisupport
 	netbeans_modules_cnd
