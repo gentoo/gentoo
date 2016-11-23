@@ -17,6 +17,7 @@
       <unaffected range="ge">23.0.0.205</unaffected>
       <unaffected range="rge">11.2.202.635</unaffected>
       <unaffected range="rge">11.2.202.643</unaffected>
+      <unaffected range="rge">11.2.202.644</unaffected>
       <vulnerable range="lt">23.0.0.205</vulnerable>
     </package>
   </affected>
