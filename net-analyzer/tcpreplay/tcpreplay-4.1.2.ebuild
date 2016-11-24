@@ -28,7 +28,6 @@ DOCS=(
 )
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-enable-pcap_findalldevs.patch
-	"${FILESDIR}"/${PN}-4.1.1-MAXPACKET.patch
 )
 
 src_prepare() {
