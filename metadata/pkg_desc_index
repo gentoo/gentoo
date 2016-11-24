@@ -6997,7 +6997,7 @@ dev-php/propel-runtime 1.6.4: Object Persistence Layer for PHP 5 (Runtime)
 dev-php/recaptcha 1.1.2: PHP client library for Google's reCAPTCHA service
 dev-php/securimage 3.0.1: PHP captcha creator and validator library
 dev-php/simpletest 1.1.0: A PHP testing framework
-dev-php/smarty 3.1.21-r1 3.1.27 3.1.30: A template engine for PHP
+dev-php/smarty 3.1.30: A template engine for PHP
 dev-php/stringparser_bbcode 0.3.3: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
