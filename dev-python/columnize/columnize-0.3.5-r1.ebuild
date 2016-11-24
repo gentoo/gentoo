@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Format a simple (i.e. not nested) list into aligned columns"
-HOMEPAGE="https://code.google.com/p/pycolumnize/ https://pypi.python.org/pypi/columnize"
-SRC_URI="https://pycolumnize.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/rocky/pycolumnize https://pypi.python.org/pypi/columnize"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"
