@@ -35,7 +35,40 @@ KEYWORDS="-* ~amd64 ~x86"
 LICENSE="AdobeFlash-11.x"
 RESTRICT="strip mirror"
 
+NPAPI_RDEPEND="
+	dev-libs/atk
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	kde? (
+		dev-qt/qtcore:4
+		dev-qt/qtdbus:4
+		dev-qt/qtgui:4
+		dev-qt/qtsvg:4
+		kde-base/kdelibs
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libXau
+		x11-libs/libXdmcp
+		x11-libs/libXext
+		x11-libs/libXft
+		x11-libs/libXpm
+	)
+	media-libs/fontconfig
+	media-libs/freetype
+	>=sys-libs/glibc-2.4
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:2
+	x11-libs/libX11
+	x11-libs/libXcursor
+	x11-libs/libXext
+	x11-libs/libXrender
+	x11-libs/libXt
+	x11-libs/pango
+"
 RDEPEND="
+	npapi? ( ${NPAPI_RDEPEND} )
 	!www-plugins/chrome-binary-plugins[flash(-)]
 	npapi? ( !www-plugins/adobe-flash:0 )
 "
