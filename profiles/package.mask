@@ -186,11 +186,6 @@ sci-geosciences/googleearth
 # Mask Exim RCs
 =mail-mta/exim-4.88_rc5
 
-# Christoph Junghans <junghans@gentoo.org> (20 Sep 2016)
-# Switch to a non-stable scheme  following google-chrome
-# please unmask latest version yourself
-=www-plugins/google-talkplugin-5.4.2.0
-
 # Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
 # KDE PIM 5 masked for wider testing.
 =kde-apps/akonadi-16.08*
