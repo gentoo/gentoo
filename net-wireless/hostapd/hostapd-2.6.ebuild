@@ -30,7 +30,11 @@ RDEPEND="${DEPEND}"
 S="${S}/${PN}"
 
 src_prepare() {
+	# Allow users to apply patches to src/drivers for example,
+	# i.e. anything outside ${S}/${PN}
+	pushd ../ >/dev/null || die
 	default
+	popd >/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
