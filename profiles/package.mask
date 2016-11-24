@@ -278,7 +278,6 @@ games-action/awesomenauts
 # Removal in 90 days
 virtual/httpd-php:5.5
 dev-lang/php:5.5
-dev-php/pecl-http:0
 =dev-php/pecl-mailparse-2.1.6-r1
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
