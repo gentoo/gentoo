@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">dikt</remote-id>
+		<remote-id type="bitbucket">dikt/code</remote-id>
 	</upstream>
 </pkgmetadata>
