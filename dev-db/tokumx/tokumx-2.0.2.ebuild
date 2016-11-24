@@ -6,7 +6,7 @@ EAPI=6
 CMAKE_BUILD_TYPE=Release
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 cmake-utils pax-utils
+inherit python-r1 cmake-utils pax-utils check-reqs
 
 MY_P=${PN}-enterprise-${PV}
 
@@ -33,8 +33,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
-#BUILD_DIR="${MY_P}/build"
 QA_PRESTRIPPED="/usr/lib64/libHotBackup.so"
+CHECKREQS_DISK_BUILD="13G"
 
 src_prepare() {
 	eapply "${FILESDIR}/${P}-no-werror.patch"
