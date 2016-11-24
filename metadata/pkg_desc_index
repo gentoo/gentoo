@@ -9986,7 +9986,7 @@ dev-util/distro-info-data 0.29: Information about the Debian distributions' rele
 dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
-dev-util/drone 0.5.0_pre20161019: A Continuous Delivery platform built on Docker, written in Go
+dev-util/drone 0.5.0_pre20161019 0.5.0_pre20161121: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-ui 0_pre20161007: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
