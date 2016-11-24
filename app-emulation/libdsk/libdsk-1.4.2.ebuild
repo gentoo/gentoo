@@ -17,7 +17,7 @@ DEPEND="doc? ( app-office/lyx )"
 RDEPEND=""
 
 src_prepare() {
-	if use doc ; then
+	if ! use doc ; then
 		sed -i Makefile.in -e '/^SUBDIRS/s|doc$||' || die
 	fi
 	eapply_user
