@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (24 Nov 2016)
+# Dead upstream, hosted on googlecode, no reverse dependencies.
+# Removal in 30 days.
+dev-python/platinfo
+dev-python/pssi
+dev-python/adns-python
+dev-python/py-bcrypt
+dev-python/pygooglevoice
+dev-python/winpdb
+
 # Johannes Huber <johu@gentoo.org> (20 Nov 2016)
 # Masked for removal in 30 days. Dead upstream. Only supports
 # deprecated Plasma 4. Fails to build with newer
