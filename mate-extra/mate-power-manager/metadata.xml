@@ -12,8 +12,6 @@
 		<flag name="pm-utils">Adds support for suspend/resume using
 			<pkg>sys-power/upower-pm-utils</pkg> instead of
 			<pkg>sys-power/upower</pkg></flag>
-		<flag name="unique">Enable single instance support using 
-		<pkg>dev-libs/libunique</pkg>.</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/mate-power-manager</remote-id>
