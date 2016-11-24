@@ -3627,7 +3627,6 @@ mate-base/mate-applets-meta:sensors - Pull in mate-extra/mate-sensors-applet for
 mate-base/mate-control-center:appindicator - Add support for AppIndicator
 mate-base/mate-control-center:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate-desktop:gtk3 - Build with GTK+3 instead of GTK+2
-mate-base/mate-desktop:user-guide - Install MATE user guide
 mate-base/mate-panel:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate-session-manager:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate-settings-daemon:gtk3 - Build with GTK+3 instead of GTK+2
