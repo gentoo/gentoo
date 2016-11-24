@@ -184,7 +184,7 @@ src_install() {
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 
-	rm -rf "${ED}"/usr/share/cmake/{completions,editors} || die
+	rm -r "${ED}"/usr/share/cmake/{completions,editors} || die
 }
 
 pkg_postinst() {

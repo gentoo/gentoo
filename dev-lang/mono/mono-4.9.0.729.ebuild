@@ -29,6 +29,7 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/bc
 	virtual/yacc
 	pax_kernel? ( sys-apps/elfix )
+	dev-util/cmake
 	!dev-lang/mono-basic
 "
 
