@@ -7,13 +7,11 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 MY_P="${PN}-${PV/_pre/-PR}"
+MY_P="${MY_P/5\.1/51}"
 
 DESCRIPTION="Identify/delete duplicate files residing within specified directories"
-HOMEPAGE="https://github.com/adrianlopezroche/fdupes https://code.google.com/p/fdupes/"
-SRC_URI="
-	https://fdupes.googlecode.com/files/${P}.tar.gz
-	https://github.com/adrianlopezroche/${PN}/archive/${P}.tar.gz
-	"
+HOMEPAGE="https://github.com/adrianlopezroche/fdupes"
+SRC_URI="https://github.com/adrianlopezroche/${PN}/archive/${P/5\.1/51}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,10 +22,10 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${P}-makefile.patch \
+		"${FILESDIR}"/${PN}-1.51-makefile.patch \
 		"${FILESDIR}"/${PN}-1.50_pre2-compare-file.patch \
 		"${FILESDIR}"/${PN}-1.50_pre2-typo.patch \
-		"${FILESDIR}"/${P}-fix-stdin-lvalue.patch
+		"${FILESDIR}"/${PN}-1.51-fix-stdin-lvalue.patch
 
 	append-lfs-flags
 }
