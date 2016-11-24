@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-autoar"
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 IUSE="gtk +introspection"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 
 RDEPEND="
 	>=app-arch/libarchive-3.2.0
