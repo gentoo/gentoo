@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to Graphviz's Dot language"
-HOMEPAGE="https://code.google.com/p/pydot/ https://pypi.python.org/pypi/pydot"
-SRC_URI="https://pydot.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://pypi.python.org/pypi/pydot"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

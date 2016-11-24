@@ -10,7 +10,6 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">votca</remote-id>
 		<remote-id type="github">votca/csgapps</remote-id>
 	</upstream>
 </pkgmetadata>
