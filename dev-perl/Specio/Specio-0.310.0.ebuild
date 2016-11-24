@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Type constraints and coercions for Perl"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 PATCHES=("${FILESDIR}/${PN}-${DIST_VERSION}-installskip.patch")
