@@ -1290,7 +1290,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0 1.21.0 1.22.0 1.22.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.3 1.13.0_rc1 1.13.0_rc1-r1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.3 1.13.0_rc1 1.13.0_rc1-r1 1.13.0_rc2 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0_rc4 1.9.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -15235,7 +15235,7 @@ net-news/liferea 1.10.8 1.10.17 1.10.19 1.12_rc1: News Aggregator for RDF/RSS/CD
 net-news/newsbeuter 2.9 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22: Rawdog - RSS Aggregator Without Delusions Of Grandeur
-net-news/rssguard 2.4.0 3.3.5: A tiny RSS and Atom feed reader
+net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
