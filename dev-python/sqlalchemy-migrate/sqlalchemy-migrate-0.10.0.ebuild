@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="SQLAlchemy Schema Migration Tools"
-HOMEPAGE="https://code.google.com/p/sqlalchemy-migrate/ https://pypi.python.org/pypi/sqlalchemy-migrate"
+HOMEPAGE="https://pypi.python.org/pypi/sqlalchemy-migrate"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Google's Python argument parsing library"
-HOMEPAGE="https://github.com/gflags/python-gflags"
+HOMEPAGE="https://github.com/google/python-gflags"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
