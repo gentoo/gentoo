@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,10 +7,7 @@ EAPI=4
 inherit cmake-utils
 
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="https://downloads.votca.googlecode.com/hg/${PF}.tar.gz"
-else
-	inherit mercurial
-	EHG_REPO_URI="https://csgapps.votca.googlecode.com/hg"
+	SRC_URI="https://github.com/votca/downloads/raw/master/${PF}.tar.gz"
 fi
 
 DESCRIPTION="Extra applications for votca-csg"
