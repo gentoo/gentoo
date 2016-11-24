@@ -22,6 +22,7 @@ IUSE="doc emacs system-jsoncpp ncurses qt5"
 RDEPEND="
 	>=app-arch/libarchive-3.0.0:=
 	>=dev-libs/expat-2.0.1
+	>=dev-libs/libuv-1.0.0:=
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
@@ -35,7 +36,6 @@ RDEPEND="
 	system-jsoncpp? ( >=dev-libs/jsoncpp-0.6.0_rc2:0= )
 "
 DEPEND="${RDEPEND}
-	dev-libs/libuv
 	doc? ( dev-python/sphinx )
 "
 
