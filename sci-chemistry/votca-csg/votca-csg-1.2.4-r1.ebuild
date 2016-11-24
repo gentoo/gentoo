@@ -9,15 +9,9 @@ inherit bash-completion-r1 cmake-utils multilib
 IUSE="doc examples extras +gromacs"
 PDEPEND="extras? ( =sci-chemistry/votca-csgapps-${PV} )"
 if [ "${PV}" != "9999" ]; then
-	SRC_URI="https://downloads.votca.googlecode.com/hg/${P}.tar.gz
-		doc? ( https://downloads.votca.googlecode.com/hg/${PN}-manual-${PV}.pdf )
-		examples? (	https://downloads.votca.googlecode.com/hg/${PN}-tutorials-${PV}.tar.gz )"
-else
-	SRC_URI=""
-	inherit mercurial
-	EHG_REPO_URI="https://csg.votca.googlecode.com/hg"
-	PDEPEND="${PDEPEND} doc? ( =app-doc/${PN}-manual-${PV} )
-		examples? ( =sci-chemistry/${PN}-tutorials-${PV} )"
+	SRC_URI="https://github.com/votca/downloads/raw/master/${P}.tar.gz
+		doc? ( https://github.com/votca/downloads/raw/master/${PN}-manual-${PV}.pdf )
+		examples? (	https://github.com/votca/downloads/raw/master/${PN}-tutorials-${PV}.tar.gz )"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
