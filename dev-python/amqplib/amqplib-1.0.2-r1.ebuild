@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python client for the Advanced Message Queuing Procotol (AMQP)"
-HOMEPAGE="https://code.google.com/p/py-amqplib/"
-SRC_URI="https://py-amqplib.googlecode.com/files/${P}.tgz"
+HOMEPAGE="https://barryp.org/software/py-amqplib/"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tgz"
 
 LICENSE="LGPL-3"
 SLOT="0"
