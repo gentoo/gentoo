@@ -23,6 +23,8 @@ DEPEND="dev-lang/perl
 		app-text/docbook-sgml-utils[jadetex] )"
 
 RDEPEND="dev-lang/perl
+	dev-perl/TimeDate
+	dev-perl/Text-Iconv
 	virtual/latex-base
 	dev-texlive/texlive-latexextra"
 
