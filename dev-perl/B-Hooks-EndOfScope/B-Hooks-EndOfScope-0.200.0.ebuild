@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Execute code after a scope finished compilation"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86 ~ppc-aix ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~x86 ~ppc-aix ~x64-macos"
 IUSE="test"
 
 RDEPEND="
