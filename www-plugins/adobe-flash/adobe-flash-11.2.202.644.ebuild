@@ -40,7 +40,7 @@ RESTRICT="strip mirror"
 
 S="${WORKDIR}"
 
-NATIVE_DEPS="
+NATIVE_RDEPEND="
 	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -78,7 +78,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	abi_x86_64? ( ${NATIVE_DEPS} )
+	abi_x86_64? ( ${NATIVE_RDEPEND} )
 	abi_x86_32? (
 		amd64? (
 			>=dev-libs/atk-2.10.0[abi_x86_32(-)]
@@ -97,7 +97,7 @@ RDEPEND="
 			>=x11-libs/libXt-1.1.4[abi_x86_32(-)]
 			>=x11-libs/pango-1.36.3[abi_x86_32(-)]
 		)
-		x86? ( ${NATIVE_DEPS} )
+		x86? ( ${NATIVE_RDEPEND} )
 	)
 	|| ( media-fonts/liberation-fonts media-fonts/corefonts )
 	selinux? ( sec-policy/selinux-flash )
