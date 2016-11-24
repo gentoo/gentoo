@@ -1,0 +1,13 @@
+Fix compiling with C++14, due to changed operator T* -> operator bool semantics.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=593872
+
+--- a/src/write.cpp
++++ b/src/write.cpp
+@@ -196,6 +196,6 @@
+ 
+   string str = to_string(precision, width, expn_width, 
+       fmt, showpos, uppercase, fill);
+-  return (s << str) != 0;
++  return static_cast<bool>(s << str);
+ }
+ 
