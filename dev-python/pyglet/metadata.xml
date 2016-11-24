@@ -16,7 +16,6 @@
   multiple windows and fully aware of multi-monitor setups.
   pyglet might be seen as an alternative to PyGame.</longdescription>
   <upstream>
-    <remote-id type="google-code">pyglet</remote-id>
     <remote-id type="pypi">pyglet</remote-id>
   </upstream>
 </pkgmetadata>
