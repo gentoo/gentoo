@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
 HOMEPAGE="https://github.com/kurtmckee/feedparser https://pypi.python.org/pypi/feedparser"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 # sgmllib is licensed under PSF-2.
 LICENSE="BSD-2 PSF-2"
