@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (24 Nov 2016)
+# Discontinued upstream, hosted on googlecode, no reverse dependencies.
+# Bug 575578. Masked for removal in 30 days.
+dev-cpp/gtkmm-utils
+
 # Mike Gilbert <floppym@gentoo.org> (24 Nov 2016)
 # Dead upstream, hosted on googlecode, no reverse dependencies.
 # Removal in 30 days.
