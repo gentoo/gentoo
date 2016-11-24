@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Create PDF documents in Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test examples"
 
 RDEPEND="
