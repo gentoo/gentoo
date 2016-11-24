@@ -4430,7 +4430,7 @@ dev-lang/cilk 5.4.6-r1 5.4.6-r2: Language for multithreaded parallel programming
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
-dev-lang/coffee-script 1.9.3-r1 1.10.0-r1: A little language that compiles into javascript
+dev-lang/coffee-script 1.9.3-r1 1.11.1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3 0.19.4 0.20.0: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
@@ -17667,7 +17667,7 @@ sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/vixie-cron 4.1-r14: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r1 0.1-r2: Watches a process for termination
-sys-process/xjobs 20140125 20151016: Reads commands line by line and executes them in parallel
+sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/ada 1995 2005 2012: Virtual for selecting an appropriate Ada compiler
 virtual/awk 0 1: Virtual for awk implementation
