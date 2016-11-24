@@ -1416,7 +1416,7 @@ app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.2: PHP eselect module
 app-eselect/eselect-pinentry 0.4 0.5 0.6 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1: Utility to select the default PostgreSQL slot
-app-eselect/eselect-python 20111108 20140125-r1 20151117-r2 20160222 20160516 99999999: Eselect module for management of multiple Python versions
+app-eselect/eselect-python 20111108 20140125-r2 20151117-r2 20160222 20160516 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.21 0.22: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.4 0.6: Manages renpy symlink
@@ -16010,7 +16010,7 @@ sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2 2.14.5: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.6.1-r2 1.6.3: GPS mapping utility
+sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
