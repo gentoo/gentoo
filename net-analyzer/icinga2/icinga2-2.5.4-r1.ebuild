@@ -3,16 +3,24 @@
 # $Id$
 
 EAPI=5
-inherit cmake-utils depend.apache eutils systemd toolchain-funcs user
+if [[ ${PV} != 9999 ]]; then
+	inherit cmake-utils depend.apache eutils systemd toolchain-funcs user wxwidgets
+	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
+else
+	inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user wxwidgets
+	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
+	EGIT_BRANCH="master"
+	KEYWORDS=""
+fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
 HOMEPAGE="http://icinga.org/icinga2"
-SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax"
+WX_GTK_VER="3.0"
 
 CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -35,7 +43,7 @@ RDEPEND="
 	) )
 	mail? ( virtual/mailx )
 	classicui? ( net-analyzer/icinga[web] )
-	studio? ( x11-libs/wxGTK:2.9 )"
+	studio? ( x11-libs/wxGTK:3.0 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
@@ -43,6 +51,7 @@ want_apache2
 
 pkg_setup() {
 	depend.apache_pkg_setup
+	setup-wxwidgets
 	enewgroup icinga
 	enewgroup icingacmd
 	enewgroup nagios  # for plugins
