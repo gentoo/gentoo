@@ -77,7 +77,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package flashexport KF5Archive)
 		$(cmake-utils_use_find_package mediawiki KF5MediaWiki)
-		$(cmake-utils_use_find_package remotestorage KF5KIO)
+		-DENABLE_KIO=$(usex remotestorage)
 		$(cmake-utils_use_find_package vkontakte KF5Vkontakte)
 	)
 
