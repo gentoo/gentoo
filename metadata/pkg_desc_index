@@ -17301,7 +17301,7 @@ sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs w
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
-sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607 20160714 20161104: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
