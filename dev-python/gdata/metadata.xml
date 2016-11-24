@@ -6,6 +6,6 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">gdata-python-client</remote-id>
+		<remote-id type="github">google/gdata-python-client</remote-id>
 	</upstream>
 </pkgmetadata>
