@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Extend File::ShareDir to local libraries"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-perl/File-ShareDir-1.30.0"
