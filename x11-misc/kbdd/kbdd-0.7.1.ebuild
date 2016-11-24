@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,8 +25,6 @@ DEPEND="dev-libs/glib:2=
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/kbdd-0.7-fix-non-dbus-build.patch
-
 	eautoreconf
 }
 
