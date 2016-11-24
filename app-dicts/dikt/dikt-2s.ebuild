@@ -6,7 +6,7 @@ EAPI=6
 
 inherit kde5
 
-DESCRIPTION="A dictionary for KDE"
+DESCRIPTION="A dictionary application that implements the Dict protocol"
 HOMEPAGE="https://www.dikt.tv/"
 SRC_URI="https://bitbucket.org/dikt/code/downloads/${P}.txz -> ${P}.tar.xz"
 
