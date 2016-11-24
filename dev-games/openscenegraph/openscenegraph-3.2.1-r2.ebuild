@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
-SRC_URI="http://www.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
+SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0"
