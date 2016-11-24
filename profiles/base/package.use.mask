@@ -649,7 +649,7 @@ gnome-extra/zeitgeist-datasources chromium tomboy
 # See bug #436460 and https://git.gnome.org/browse/tracker/log/?h=evo-new-api
 app-misc/tracker eds
 
-# Christoph Jungans <junghans@gentoo.org> (26 Dec 2012)
+# Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda/mkl only works on x86/amd64
 sci-chemistry/gromacs cuda mkl
 
