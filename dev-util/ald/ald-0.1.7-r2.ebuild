@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 
 inherit autotools
 
-DESCRIPTION="Assembly Language Debugger - a tool for debugging executable programs at the assembly level"
+DESCRIPTION="Assembly Language Debugger"
 HOMEPAGE="http://ald.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ald/${P}.tar.gz"
 
@@ -15,15 +15,13 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="debug ncurses"
 
-DEPEND="ncurses? ( sys-libs/ncurses )"
+DEPEND="ncurses? ( sys-libs/ncurses:= )"
 RDEPEND="${DEPEND}"
-
-DOCS=( BUGS ChangeLog README TODO )
 
 src_prepare() {
 	# respect CFLAGS (bug #240268)
 	sed -i -e "/^CFLAGS/d" configure.ac || die 'sed on CFLAGS failed'
-
+	eapply_user
 	eautoreconf
 }
 
