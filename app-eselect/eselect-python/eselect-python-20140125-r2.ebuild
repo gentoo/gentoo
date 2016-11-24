@@ -37,6 +37,8 @@ src_install() {
 pkg_postinst() {
 	if has_version 'dev-lang/python'; then
 		eselect python update --if-unset
+		# Regen python-config wrapper
+		eselect python set $(eselect python show)
 	fi
 	if has_version '=dev-lang/python-2*'; then
 		eselect python update --python2 --if-unset
