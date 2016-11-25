@@ -13,7 +13,7 @@ LICENSE="BSD dtrace? ( CDDL ) zfs? ( CDDL )"
 IUSE="+build-kernel debug dtrace zfs"
 
 # Security Advisory and Errata patches.
-# UPSTREAM_PATCHES=()
+UPSTREAM_PATCHES=( "SA-16:15/sysarch-01.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
