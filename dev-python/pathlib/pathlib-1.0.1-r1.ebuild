@@ -17,3 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+
+python_test() {
+	"${PYTHON}" test_pathlib.py || die
+}
