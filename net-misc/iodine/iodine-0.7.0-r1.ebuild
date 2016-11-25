@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,4 +48,6 @@ src_install() {
 	newinitd "${FILESDIR}"/iodined-1.init iodined
 	newconfd "${FILESDIR}"/iodined.conf iodined
 	keepdir /var/empty
+	fowners root:nogroup /etc/conf.d/iodined
+	fperms 640 /etc/conf.d/iodined
 }
