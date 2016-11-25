@@ -9,9 +9,10 @@ inherit eutils cmake-utils git-r3
 DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
 EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="qt5 +system_ffmpeg"
+IUSE="qt5 +system-ffmpeg"
 
 RDEPEND="
 	sys-libs/zlib
@@ -20,7 +21,7 @@ RDEPEND="
 	media-libs/libsdl
 	media-libs/libsdl2
 	app-arch/snappy
-	system_ffmpeg? ( virtual/ffmpeg )
+	system-ffmpeg? ( virtual/ffmpeg )
 	qt5? (
 		dev-qt/qtsvg:5
 		dev-qt/qtgui:5
@@ -34,7 +35,7 @@ DEPEND="${RDEPEND}
 	dev-util/cmake"
 
 src_unpack() {
-	if use system_ffmpeg ; then
+	if use system-ffmpeg ; then
 		EGIT_SUBMODULES=(lang ext/armips ext/ppsspp-glslang ext/tinyformat)
 	else
 		EGIT_SUBMODULES=(lang ext/armips ext/ppsspp-glslang ext/tinyformat ffmpeg)
@@ -45,7 +46,7 @@ src_unpack() {
 
 src_prepare() {
 	sed -i -e "s#-O3#-O2#g;" "${S}"/CMakeLists.txt || die
-	if use !system_ffmpeg ; then
+	if use !system-ffmpeg ; then
 	sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
 	fi
 	cmake-utils_src_prepare
@@ -54,7 +55,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use qt5 USING_QT_UI)
-		$(cmake-utils_use system_ffmpeg USE_SYSTEM_FFMPEG)
+		$(cmake-utils_use system-ffmpeg USE_SYSTEM_FFMPEG)
 	)
 	cmake-utils_src_configure
 }
