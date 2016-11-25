@@ -4,37 +4,23 @@
 
 EAPI=5
 
-inherit eutils cmake-utils qt4-r2 git-r3
+inherit eutils cmake-utils git-r3
 
 DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
 EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
-
-LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="qt4 qt5 +sdl"
-REQUIRED_USE="
-	?? ( qt4 qt5 sdl )
-"
+IUSE="qt5 +system_ffmpeg"
 
-RDEPEND=""
-
-DEPEND="
+RDEPEND="
 	sys-libs/zlib
-	sdl? (
-		dev-util/cmake
-		media-libs/libsdl
-		media-libs/libsdl2
-	)
-	qt4? (
-		dev-qt/qtsvg:4
-		dev-qt/qtgui:4
-		dev-qt/qtcore:4
-		dev-qt/qtopengl:4
-		dev-qt/qtmultimedia:4
-		dev-qt/qt-mobility[multimedia]
-	)
+	dev-libs/libzip
+	virtual/opengl
+	media-libs/libsdl
+	media-libs/libsdl2
+	app-arch/snappy
+	system_ffmpeg? ( virtual/ffmpeg )
 	qt5? (
 		dev-qt/qtsvg:5
 		dev-qt/qtgui:5
@@ -43,81 +29,54 @@ DEPEND="
 		dev-qt/qtmultimedia:5
 		dev-qt/qtwidgets:5
 		dev-qt/qt-mobility[multimedia]
-	)
-"
+	)"
+DEPEND="${RDEPEND}
+	dev-util/cmake"
 
 src_unpack() {
+	if use system_ffmpeg ; then
+		EGIT_SUBMODULES=(lang ext/armips ext/ppsspp-glslang ext/tinyformat)
+	else
+		EGIT_SUBMODULES=(lang ext/armips ext/ppsspp-glslang ext/tinyformat ffmpeg)
+	fi
 	git-r3_fetch
 	git-r3_checkout
-	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_unpack
-	elif use qt5 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_unpack
-	fi
 }
 
 src_prepare() {
 	sed -i -e "s#-O3#-O2#g;" "${S}"/CMakeLists.txt || die
-	sed -i -e "s#-O3#-O2#g;" "${S}"/Qt/Settings.pri || die
+	if use !system_ffmpeg ; then
 	sed -i -e "s#-O3#-O2#g;" "${S}"/ffmpeg/linux_*.sh || die
-
-	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_prepare
-	elif use qt5 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_prepare
-	else
-		cmake-utils_src_prepare
 	fi
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_configure
-		eqmake4 "${WORKDIR}"/"${P}"/Qt/PPSSPPQt.pro
-	elif use qt5 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_configure
-		eqmake5 "${WORKDIR}"/"${P}"/Qt/PPSSPPQt.pro
-	else
-		cmake-utils_src_configure
-	fi
+	local mycmakeargs=(
+		$(cmake-utils_use qt5 USING_QT_UI)
+		$(cmake-utils_use system_ffmpeg USE_SYSTEM_FFMPEG)
+	)
+	cmake-utils_src_configure
 }
 
 src_compile() {
-	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_compile
-	elif use qt5 ; then
-		cd "${WORKDIR}"/"${P}"/Qt || die
-		qt4-r2_src_compile
-	else
-		cmake-utils_src_compile
-	fi
+	cmake-utils_src_compile
 }
 
 src_install() {
-	if use qt4 ; then
-		exeinto /usr/games/bin
-		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
-	elif use qt5 ; then
-		exeinto /usr/games/bin
-		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
+if use qt5 ; then
+		exeinto usr/share/games/"${PN}"
+		newexe "${WORKDIR}"/"${P}"_build/PPSSPPQt ppsspp
 	else
-		exeinto /usr/games
-		dobin "${FILESDIR}"/ppsspp
 		exeinto /usr/share/games/"${PN}"
-		doexe "${WORKDIR}"/"${P}"_build/PPSSPPSDL
-		insinto /usr/share/games/"${PN}"
-		doins -r "${WORKDIR}"/"${P}"_build/assets
-		doins -r "${WORKDIR}"/"${P}"/lang
+		newexe "${WORKDIR}"/"${P}"_build/PPSSPPSDL ppsspp
+
 	fi
-	insinto /usr/share/icons/
-	newins "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
+	exeinto /usr/games/bin
+	doexe "${FILESDIR}"/ppsspp
+	insinto /usr/share/games/"${PN}"
+	doins -r "${WORKDIR}"/"${P}"_build/assets
+	newicon "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
 	domenu "${FILESDIR}"/ppsspp.desktop
 }
 
