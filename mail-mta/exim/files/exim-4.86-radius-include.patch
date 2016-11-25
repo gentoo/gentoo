@@ -1,0 +1,15 @@
+diff -urN exim-4.86.orig/src/auths/call_radius.c exim-4.86/src/auths/call_radius.c
+--- exim-4.86.orig/src/auths/call_radius.c	2015-07-24 00:20:37.000000000 +0300
++++ exim-4.86/src/auths/call_radius.c	2015-10-17 20:05:31.581240956 +0300
+@@ -38,7 +38,11 @@
+   #if !defined(RADIUS_LIB_RADIUSCLIENT) && !defined(RADIUS_LIB_RADIUSCLIENTNEW)
+   #define RADIUS_LIB_RADIUSCLIENT
+   #endif
++  #ifdef RADIUS_LIB_RADIUSCLIENTNEW
++  #include <freeradius-client.h>
++  #else
+   #include <radiusclient.h>
++  #endif
+ #endif
+ 
+ 
