@@ -6695,7 +6695,7 @@ dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Smart 1.790.0: A smart, easy and powerful way to access or create XML from fiels, data and URLs.
 dev-perl/XML-Stream 1.240.0: Creates and XML Stream connection and parses return data
 dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML documents
-dev-perl/XML-Twig 3.490.0: Process huge XML documents in tree mode
+dev-perl/XML-Twig 3.490.0 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
 dev-perl/XML-XPath 1.130.0-r1 1.360.0 1.370.0: A XPath Perl Module
