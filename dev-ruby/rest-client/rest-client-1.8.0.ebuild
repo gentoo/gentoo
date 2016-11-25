@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/archiloque/rest-client"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/webmock )"
