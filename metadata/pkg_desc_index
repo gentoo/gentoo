@@ -491,6 +491,7 @@ app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Re
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
 app-crypt/af_alg 0_pre20120229 0.0.1: af_alg is an openssl crypto engine kernel interface thing
+app-crypt/argon2 20160821: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
 app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
@@ -15285,7 +15286,7 @@ net-p2p/go-ethereum 1.5.2: Official golang implementation of the Ethereum protoc
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/i2p 0.9.26: A privacy-centric, anonymous network.
+net-p2p/i2p 0.9.26 0.9.27: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
 net-p2p/ktorrent 4.3.1-r1 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
@@ -17324,7 +17325,7 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.4 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-freebsd/boot0 8.2 9.1 10.3 11.0: FreeBSD's bootloader
+sys-freebsd/boot0 8.2 9.1 10.3 11.0-r1: FreeBSD's bootloader
 sys-freebsd/freebsd-bin 8.2 9.1 10.3 11.0: FreeBSD /bin tools
 sys-freebsd/freebsd-cddl 8.2 9.1 10.3 11.0: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
@@ -17336,9 +17337,9 @@ sys-freebsd/freebsd-pf 8.2 9.1 10.3 11.0: FreeBSD's base system libraries
 sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0: FreeBSD's rescue binaries
 sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3 11.0: FreeBSD sbin utils
 sys-freebsd/freebsd-share 8.2 9.1 10.3 11.0: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r5 11.0: FreeBSD kernel sources
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1: FreeBSD kernel sources
 sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0: FreeBSD's base system source for /usr/bin
-sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0: FreeBSD /usr/sbin tools
+sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0-r1: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE

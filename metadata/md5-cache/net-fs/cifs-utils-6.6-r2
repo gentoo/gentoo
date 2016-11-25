@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst setup
-DEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 ads? ( sys-apps/keyutils sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils ) pam? ( virtual/pam )
+DEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 sys-apps/keyutils ads? ( sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils ) pam? ( virtual/pam )
 DESCRIPTION=Tools for Managing Linux CIFS Client Filesystems
 EAPI=6
 HOMEPAGE=http://wiki.samba.org/index.php/LinuxCIFS_utils
@@ -7,10 +7,10 @@ IUSE=+acl +ads +caps +caps-ng creds pam
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux
 LICENSE=GPL-3
 PDEPEND=acl? ( || ( =net-fs/samba-3.6*[winbind] >=net-fs/samba-4.0.0_alpha1 ) )
-RDEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 ads? ( sys-apps/keyutils sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils ) pam? ( virtual/pam )
+RDEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 sys-apps/keyutils ads? ( sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils ) pam? ( virtual/pam )
 REQUIRED_USE=acl? ( ads )
 SLOT=0
 SRC_URI=https://ftp.samba.org/pub/linux-cifs/cifs-utils/cifs-utils-6.6.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=da6826d429a6bc061066f97dc2590ca1
+_md5_=d4b4aef157137f9a8cde3247544209fc
