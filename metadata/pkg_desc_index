@@ -14935,7 +14935,7 @@ net-misc/icecast 2.4.2 2.4.3: Opensource alternative to shoutcast that supports 
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
 net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
-net-misc/iodine 0.7.0-r1: IP over DNS tunnel
+net-misc/iodine 0.7.0-r2: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.5-r2 2.0.9 3.0.12 3.1.3 3.1.4: A TCP, UDP, and SCTP network bandwidth measurement tool
