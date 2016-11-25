@@ -6,7 +6,12 @@
     <name>Gentoo Physics Project</name>
   </maintainer>
   <longdescription lang="en">
-  HERWIG is a Monte Carlo package for simulating Hadron Emission
-  Reactions With Interfering Gluons.
-</longdescription>
+    HERWIG is a Monte Carlo package for simulating Hadron Emission
+    Reactions With Interfering Gluons.
+  </longdescription>
+  <use>
+    <flag name="c++11">Build Herwig++ using the C++11 standard.
+    Experimental feature, not for production use.</flag>
+    <flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
+  </use>
 </pkgmetadata>
