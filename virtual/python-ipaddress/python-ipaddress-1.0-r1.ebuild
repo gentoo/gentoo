@@ -21,4 +21,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/ipaddress[${PYTHON_USEDEP}]' \
-	python2_7 'pypy*')"
+	python2_7 pypy)"
