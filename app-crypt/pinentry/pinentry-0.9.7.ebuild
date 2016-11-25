@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools qmake-utils multilib eutils flag-o-matic toolchain-funcs
 
-DESCRIPTION="Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
+DESCRIPTION="Collection of simple PIN or passphrase entry dialogs utilising Assuan protocol"
 HOMEPAGE="http://gnupg.org/aegypten2/index.html"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
@@ -23,11 +23,11 @@ CDEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	qt4? (
 		>=dev-qt/qtgui-4.4.1:4
-	     )
+	)
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-	     )
+	)
 	caps? ( sys-libs/libcap )
 	static? ( >=sys-libs/ncurses-5.7-r5:0=[static-libs,-gpm] )
 	app-eselect/eselect-pinentry
@@ -39,8 +39,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 "
 
-RDEPEND="
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	gnome-keyring? ( app-crypt/gcr )
 "
 
@@ -61,24 +60,17 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
 	use static && append-ldflags -static
 	[[ "$(gcc-major-version)" -ge 5 ]] && append-cxxflags -std=gnu++11
 
 	QT_MOC=""
 	if use qt4; then
-		myconf+=( --enable-pinentry-qt
-			  --disable-pinentry-qt5
-			)
 		QT_MOC="$(qt4_get_bindir)"/moc
 		# Issues finding qt on multilib systems
 		export QTLIB="$(qt4_get_libdir)"
 	elif use qt5; then
-		myconf+=( --enable-pinentry-qt )
 		QT_MOC="$(qt5_get_bindir)"/moc
 		export QTLIB="$(qt5_get_libdir)"
-	else
-		myconf+=( --disable-pinentry-qt )
 	fi
 
 	econf \
@@ -87,16 +79,18 @@ src_configure() {
 		$(use_enable gtk pinentry-gtk2) \
 		$(use_enable ncurses pinentry-curses) \
 		$(use_enable ncurses fallback-curses) \
+		$(use qt4 || use qt5 && \
+			echo --enable-pinentry-qt || echo --disable-pinentry-qt) \
+		$(use_enable qt5 pinentry-qt5) \
 		$(use_with caps libcap) \
 		$(use_enable gnome-keyring libsecret) \
 		$(use_enable gnome-keyring pinentry-gnome3) \
-		"${myconf[@]}" \
 		MOC="${QT_MOC}"
 }
 
 src_install() {
 	default
-	rm -f "${ED}"/usr/bin/pinentry || die
+	rm -f "${ED}"usr/bin/pinentry || die
 
 	if use qt4 || use qt5; then
 		dosym pinentry-qt /usr/bin/pinentry-qt4

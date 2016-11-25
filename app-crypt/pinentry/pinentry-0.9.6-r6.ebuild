@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools qmake-utils multilib eutils flag-o-matic toolchain-funcs
 
-DESCRIPTION="Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol"
+DESCRIPTION="Collection of simple PIN or passphrase entry dialogs utilising Assuan protocol"
 HOMEPAGE="http://gnupg.org/aegypten2/index.html"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
