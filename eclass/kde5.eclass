@@ -500,13 +500,17 @@ kde5_src_prepare() {
 			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
 		fi
 
-		# add all l10n directories to cmake
 		cat <<-EOF > CMakeLists.txt || die
-project(${PN})
-cmake_minimum_required(VERSION 2.8.12)
-$(printf "add_subdirectory( %s )\n" \
-	`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-EOF
+		project(${PN})
+		cmake_minimum_required(VERSION 2.8.12)
+		EOF
+		# add all l10n directories to cmake
+		if [[ -n ${A} ]]; then
+			cat <<-EOF >> CMakeLists.txt || die
+			$(printf "add_subdirectory( %s )\n" \
+				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
+			EOF
+		fi
 
 		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
 		case ${l10npart} in
