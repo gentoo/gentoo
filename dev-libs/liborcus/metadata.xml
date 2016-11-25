@@ -10,7 +10,7 @@
 	</slots>
 	<use>
 		<flag name="spreadsheet-model">Enable the spreadsheet model implementation</flag>
-		<flag name="tools">Build miscellaneous tools</flag>
+		<flag name="tools">Build various low-level parsers</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">orcus/orcus</remote-id>
