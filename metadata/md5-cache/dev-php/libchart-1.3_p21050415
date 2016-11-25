@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Libchart is a chart creation PHP library that is easy to use
+EAPI=6
+HOMEPAGE=http://naku.dohcrew.com/libchart
+IUSE=examples
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3 BitstreamVera
+RDEPEND=dev-lang/php:*[gd,truetype]
+SLOT=0
+SRC_URI=https://github.com/naku/libchart/archive/af1628453cc083ede980c78216da8f2f594da6fa.tar.gz -> libchart-1.3_p21050415.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_install:-
+_eclasses_=vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_md5_=c128225392728262421b8a4492e8c3ed
