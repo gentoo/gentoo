@@ -54,7 +54,7 @@ src_prepare() {
 	fi
 
 	# upstream does not use libtool, but we do (see bug #336167)
-	cp "${FILESDIR}/configure.in" "${S}"
+	cp "${FILESDIR}/configure.ac" "${S}"
 	eautoreconf
 }
 

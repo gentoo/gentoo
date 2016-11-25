@@ -746,10 +746,8 @@ dev-ruby/weakling
 # Rafael Martins <rafaelmartins@gentoo.org> (04 Dec 2016)
 # Adding Lua 5.3 to mask
 app-eselect/eselect-lua
-=dev-lang/lua-5.1.5-r2
-=dev-lang/lua-5.1.5-r100
-=dev-lang/lua-5.2.3
-=dev-lang/lua-5.2.3-r1
+dev-lang/lua:5.1
+dev-lang/lua:5.2
 =dev-lang/lua-5.3.3
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Mar 2014)

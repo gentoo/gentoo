@@ -107,7 +107,7 @@ src_install() {
 		-e "s:^R=.*:R= ${PV}:" \
 		-e "s:/,lib,:/$(get_libdir):g" \
 		-e "s:/,include,:/include/lua${SLOT}:g" \
-		"${FILESDIR}/lua.pc" > "${WORKDIR}/lua-$(get_libdir).pc"
+		"${FILESDIR}/lua.pc" > "${WORKDIR}/lua-$(get_libdir).pc" || die
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	newins "${WORKDIR}/lua-$(get_libdir).pc" "lua${SLOT}.pc"
