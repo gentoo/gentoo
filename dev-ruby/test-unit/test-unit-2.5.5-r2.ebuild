@@ -16,11 +16,6 @@ inherit ruby-fakegem
 # bootstrapping ruby21 won't be possible due to the yard dependency
 # tree.
 USE_RUBY="${USE_RUBY/ruby21/}" ruby_add_bdepend "doc? ( dev-ruby/yard )"
-# redcloth is also needed to build documentation, but not available for
-# jruby. Since we build documentation with the main ruby implementation
-# only we skip the dependency for jruby in this roundabout way, assuming
-# that jruby won't be the main ruby.
-USE_RUBY="${USE_RUBY/ruby21/}" ruby_add_bdepend "doc? ( dev-ruby/redcloth )"
 
 DESCRIPTION="An improved version of the Test::Unit framework from Ruby 1.8"
 HOMEPAGE="http://test-unit.rubyforge.org/"
