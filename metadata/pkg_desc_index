@@ -1328,7 +1328,7 @@ app-emulation/libvirt-glib 0.2.3 0.2.3-r1 1.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4 2.0.5: LinuX Containers userspace utilities
 app-emulation/lxd 2.2 2.3 2.4.1 2.5: Fast, dense and secure container management
-app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743 10.0.7 10.1.0: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 10.0.7 10.1.0: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
@@ -8001,7 +8001,7 @@ dev-python/pyinotify 0.9.4-r1 0.9.5 0.9.6: Python module used for monitoring fil
 dev-python/pyinsane 1.4.0 2.0.3 2.0.6: Python implementation of the Sane API and abstration layer
 dev-python/pyjade 4.0.0: Jade syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
-dev-python/pykerberos 1.1.5 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
+dev-python/pykerberos 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.4.0 1.4.1 1.5.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylast 1.0.0 1.6.0: Python interface to last.fm and other api-compatible websites
