@@ -9594,7 +9594,7 @@ dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.5 1.2.6: General Rack Authentication Framework
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 1.19.0 1.20.3 1.24.6 2.1.0: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 1.20.3 1.24.6 2.1.0: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.2 1.2.3: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.3.4 0.6.2 0.6.3 0.6.4: A complete implementation of the WebSocket protocols
@@ -17660,7 +17660,7 @@ sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling p
 sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed services
 sys-process/systemd-cron 1.5.3 1.5.4: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r1 1.7-r2: displays info about resources used by a program
-sys-process/tini 0.10.0 0.11.0 0.13.0: A tiny but valid init for containers
+sys-process/tini 0.10.0 0.11.0 0.13.0 0.13.0-r1: A tiny but valid init for containers
 sys-process/tiptop 2.2 2.3: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
