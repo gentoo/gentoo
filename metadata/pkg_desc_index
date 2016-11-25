@@ -15981,7 +15981,7 @@ sci-geosciences/harmonics-dwf-free 20121224 20131228: Tidal harmonics database f
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 10327 10966 99999: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
-sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR format common in GIS
+sci-geosciences/liblas 1.8.0 1.8.1: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 3.0.9: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
