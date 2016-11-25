@@ -1,0 +1,14 @@
+--- configure.ac.orig	2016-01-20 21:39:22.900434965 +0800
++++ configure.ac	2016-01-20 21:39:07.422742473 +0800
+@@ -102,9 +102,9 @@
+ dnl
+ AC_DEFUN([AC_NCURSES_REQUIREMENTS],
+ [
+-    AC_PATH_PROG(NCURSES5_CONFIG,ncurses5-config,no)
++    AC_PATH_PROG(NCURSES5_CONFIG,ncurses6-config,no)
+     if test "$NCURSES5_CONFIG" = "no"; then
+-      AC_MSG_ERROR([You need to have ncurses5-config installed to build this package.
++      AC_MSG_ERROR([You need to have ncurses6-config installed to build this package.
+ 
+ Debian users: aptitude install libncurses-dev
+ ])
