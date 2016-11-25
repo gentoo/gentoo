@@ -30,6 +30,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.9.3-kernel-types.patch
+	epatch "${FILESDIR}"/gold-unversioned-symbol.patch
 	# sandbox violation with mtab writability wrt #438250
 	# don't sed configure.in without eautoreconf because of maintainer mode
 	sed -i 's:umount --fake:true --fake:' configure || die
