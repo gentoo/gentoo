@@ -78,13 +78,15 @@ eblit-glibc-pkg_pretend() {
 		check_devpts
 	fi
 
-	# prevent native builds from downgrading ... maybe update to allow people
-	# to change between diff -r versions ? (2.3.6-r4 -> 2.3.6-r2)
+	# Prevent native builds from downgrading.
 	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
 	   [[ ${ROOT} == "/" ]] && \
 	   [[ ${CBUILD} == ${CHOST} ]] && \
 	   [[ ${CHOST} == ${CTARGET} ]] ; then
-		if has_version '>'${CATEGORY}/${PF} ; then
+		# The high rev # is to allow people to downgrade between -r# versions.
+		# We want to block 2.20->2.19, but 2.20-r3->2.20-r2 should be fine.
+		# Hopefully we never actually use a r# this high.
+		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction"
 			die "aborting to save your system"

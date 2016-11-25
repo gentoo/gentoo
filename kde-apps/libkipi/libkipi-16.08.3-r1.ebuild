@@ -26,3 +26,5 @@ RDEPEND="${DEPEND}
 	!<kde-apps/libkipi-15.08.3-r1:4
 	!kde-base/legacy-icons
 "
+
+PATCHES=( "${FILESDIR}/${P}-public-deps.patch" )
