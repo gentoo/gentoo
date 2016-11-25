@@ -12,7 +12,7 @@ SRC_URI="mirror://apache/perl/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="debug ithreads test"
 
 SRC_TEST=do
