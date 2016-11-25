@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 PYTHON_COMPAT=( python3_{4,5} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
-inherit eutils python-single-r1 ${GITECLASS}
+inherit python-single-r1 ${GITECLASS}
 unset GITECLASS
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
@@ -55,5 +55,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
