@@ -1,0 +1,43 @@
+# Disable any subdirectories listed here. Comments are ignored
+# First argument: parent directory
+# Second argument: which subdirectory to disable in CMakeLists.txt
+# kde-l10n 5
+data/kdeedu khangman
+docs/applications kate
+docs/applications konsole
+docs/applications kwrite
+docs/kde-runtime glossary
+docs/kde-runtime khelpcenter
+docs/kdeedu kig
+docs/kdeedu parley
+docs/kdeedu step
+docs/kdegames bomber
+docs/kdegraphics gwenview
+docs/kdegraphics kruler
+docs/kdesdk kapptemplate
+docs/kdesdk okteta
+docs/kdesdk umbrello
+docs/kdeutils kwalletmanager
+scripts kdeedu
+# Plasma 5
+docs kde-workspace
+docs/kde-runtime fundamentals
+docs/kde-runtime kdesu
+docs/kde-runtime khelpcenter
+docs/kde-runtime knetattach
+docs/kde-runtime onlinehelp
+docs/kde-runtime/kcontrol bookmarks
+docs/kde-runtime/kcontrol cookies
+docs/kde-runtime/kcontrol ebrowsing
+docs/kde-runtime/kcontrol emoticons
+docs/kde-runtime/kcontrol icons
+docs/kde-runtime/kcontrol kcmcgi
+docs/kde-runtime/kcontrol nepomuk
+docs/kde-runtime/kcontrol smb
+docs/kde-runtime/kcontrol trash
+docs/kde-runtime/kcontrol useragent
+messages kde-workspace
+messages kdeplasma-addons
+# kdepim-l10n 5
+docs kdepim
+docs kdepimlibs
