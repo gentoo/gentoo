@@ -5,7 +5,6 @@
 EAPI="5"
 ETYPE="sources"
 KEYWORDS="~amd64 ~x86"
-IUSE="bfsonly"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://users.tpg.com.au/ckolivas/kernel/"
@@ -13,7 +12,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="102"
+K_GENPATCHES_VER="9"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -30,20 +29,28 @@ DESCRIPTION="Con Kolivas' high performance patchset and Gentoo's genpatches for 
 XTRA_INCP_MIN=""
 XTRA_INCP_MAX=""
 
+#-- Until BFQ patches make it into the genpatches list again
+
+BFQ_VERSION="4.5.0-v7r11"
+BFQ_FILE1="0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch"
+BFQ_FILE2="0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch"
+BFQ_FILE3="0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+
+BFQ_BASE_URL="http://algo.ing.unimo.it/people/paolo/disk_sched/patches"
+BFQ_LVER_URL="${BFQ_BASE_URL}/${BFQ_VERSION}"
+BFQ_URI="${BFQ_LVER_URL}/${BFQ_FILE1} ${BFQ_LVER_URL}/${BFQ_FILE2} ${BFQ_LVER_URL}/${BFQ_FILE3}"
+
+BFQ_FILE="${DISTDIR}/${BFQ_FILE1} ${DISTDIR}/${BFQ_FILE2} ${DISTDIR}/${BFQ_FILE3}"
+
 #--
 
 CK_VERSION="1"
-BFS_VERSION="440"
 
-CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}-r1.bz2"
-BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}-r1.patch"
+CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.xz"
 
-CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
+CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
-CK_URI="https://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
-	${CK_LVER_URL}/${CK_FILE}"
-BFS_URI="https://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
-	${CK_LVER_URL}/patches/${BFS_FILE}"
+CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------
 
@@ -58,39 +65,26 @@ if [ -n "${XTRA_INCP_MIN}" ]; then
 	done
 fi
 
-#-- CK needs sometimes to patch itself... (3.7)--------------------------------
+#-- CK needs sometimes to patch itself... ---------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""
 
-#-- Local patches needed for the ck-patches to apply smoothly (3.4/3.5) -------
+#-- Local patches needed for the ck-patches to apply smoothly -------
 
 PRE_CK_FIX=""
 POST_CK_FIX=""
 
 #--
 
-SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI}
-	!bfsonly? ( ${CK_URI} )
-	bfsonly? ( ${BFS_URI} )"
+SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI} ${CK_URI} ${BFQ_URI}"
+
+UNIPATCH_LIST="${LX_INCP_LIST} ${BFQ_FILE} ${PRE_CK_FIX} ${DISTDIR}/${CK_FILE} ${CK_INCP_LIST} ${POST_CK_FIX}"
+UNIPATCH_STRICTORDER="yes"
+
+#-- Since experimental genpatches && we want BFQ irrespective of experimental -
 
 K_EXP_GENPATCHES_LIST="50*_*.patch*"
-
-src_unpack() {
-	UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
-	UNIPATCH_STRICTORDER="yes"
-
-	if ! use bfsonly ; then
-		UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
-	else
-		UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
-	fi
-
-	UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
-
-	#-- Since experimental genpatches && we want BFQ irrespective of experimental -
-	kernel-2_src_unpack
-}
 
 src_prepare() {
 
