@@ -492,6 +492,15 @@ enable_cmake-utils_src_configure() {
 
 	_cmake_check_build_dir
 
+	# Split CC/CXX/FC from multilib.eclass to be CMake-friendly, #542530
+	local myCC=( $(tc-getCC) )
+	local myCXX=( $(tc-getCXX) )
+	local myFC=( $(tc-getFC) )
+	local -x CC="${myCC[0]}" CXX="${myCXX[0]}" FC="${myFC[0]}"
+	local -x CFLAGS="${myCC[*]:1} ${CFLAGS}"
+	local -x CXXFLAGS="${myCXX[*]:1} ${CXXFLAGS}"
+	local -x FCFLAGS="${myFC[*]:1} ${FCFLAGS}"
+
 	# Fix xdg collision with sandbox
 	local -x XDG_CONFIG_HOME="${T}"
 
@@ -528,9 +537,9 @@ enable_cmake-utils_src_configure() {
 
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
 	cat > ${toolchain_file} <<- _EOF_ || die
-		SET (CMAKE_C_COMPILER $(tc-getCC))
-		SET (CMAKE_CXX_COMPILER $(tc-getCXX))
-		SET (CMAKE_Fortran_COMPILER $(tc-getFC))
+		SET (CMAKE_C_COMPILER "${CC}")
+		SET (CMAKE_CXX_COMPILER "${CXX}")
+		SET (CMAKE_Fortran_COMPILER "${FC}")
 	_EOF_
 
 	if tc-is-cross-compiler; then
