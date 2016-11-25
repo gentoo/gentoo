@@ -59,6 +59,19 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}/open-vm-tools"
 
+pkg_setup() {
+	linux-info_get_any_version
+	local CONFIG_CHECK="~VMWARE_BALLOON ~VMWARE_PVSCSI ~VMXNET3"
+	use X && CONFIG_CHECK+=" ~DRM_VMWGFX"
+	kernel_is -lt 3 9 || CONFIG_CHECK+=" ~VMWARE_VMCI ~VMWARE_VMCI_VSOCKETS"
+	kernel_is -lt 3 || CONFIG_CHECK+=" ~FUSE_FS"
+	if use modules; then
+		linux-mod_pkg_setup
+	else
+		linux-info_pkg_setup
+	fi
+}
+
 src_prepare() {
 	eapply -p2 "${FILESDIR}/10.1.0-vgauth.patch"
 	default
