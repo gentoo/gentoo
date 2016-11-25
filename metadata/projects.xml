@@ -1801,6 +1801,10 @@
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
     </member>
+    <member>
+      <email>whissi@gentoo.org</email>
+      <name>Thomas Deutschmann</name>
+    </member>
   </project>
   <project>
     <email>ldap-bugs@gentoo.org</email>
