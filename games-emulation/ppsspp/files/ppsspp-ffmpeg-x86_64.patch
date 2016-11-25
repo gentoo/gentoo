@@ -1,0 +1,11 @@
+--- ffmpeg/linux_x86-64.sh.orig	2016-01-04 21:42:14.220082959 +0800
++++ ffmpeg/linux_x86-64.sh	2016-01-04 21:42:31.940083265 +0800
+@@ -71,7 +71,7 @@
+ ./configure \
+     --prefix=./linux/${ARCH} \
+     ${GENERAL} \
+-    --extra-cflags="-D__STDC_CONSTANT_MACROS -O3" \
++    --extra-cflags="-D__STDC_CONSTANT_MACROS -O2" \
+     --enable-zlib \
+     --enable-pic \
+ 	--disable-yasm \

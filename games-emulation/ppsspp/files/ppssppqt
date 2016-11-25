@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p ~/.ppsspp
+cd ~/.ppsspp
+/usr/share/games/ppsspp/PPSSPPQt
