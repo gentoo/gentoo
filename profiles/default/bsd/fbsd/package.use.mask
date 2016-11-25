@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
+# net-libs/libnetfilter_conntrack is not keyworded on FreeBSD
+net-dns/dnsmasq conntrack
+
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # libressl:  dev-libs/libressl is a base package on FreeBSD
 # jemalloc:  dev-libs/jemalloc is not keyworded on FreeBSD
