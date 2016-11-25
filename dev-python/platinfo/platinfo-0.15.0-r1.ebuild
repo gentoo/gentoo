@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Determines and returns consistent names for platforms"
 HOMEPAGE="https://github.com/trentm/platinfo"
-SRC_URI="https://platinfo.googlecode.com/files/${P}.zip"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
