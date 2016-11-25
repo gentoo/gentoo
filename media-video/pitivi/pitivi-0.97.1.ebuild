@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.10
 
 	>=media-libs/gstreamer-${GST_VER}:1.0[introspection]
-	>=media-plugins/gst-transcoder-1.8.1
+	>=media-plugins/gst-transcoder-1.8.2-r1
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.30.0:2
@@ -80,8 +80,9 @@ src_configure() {
 	# --buildtype=plain needed for honoring CFLAGS/CXXFLAGS and not
 	# defaulting to debug
 	./configure \
-		--prefix=/usr \
+		--prefix="${EPREFIX}/usr" \
 		--buildtype=plain \
+		--libdir="$(get_libdir)" \
 		-Denable-tests=$(usex test true false) \
 		|| die
 }
