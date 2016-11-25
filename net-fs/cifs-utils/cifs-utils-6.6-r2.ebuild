@@ -18,8 +18,8 @@ IUSE="+acl +ads +caps +caps-ng creds pam"
 RDEPEND="
 	!net-fs/mount-cifs
 	!<net-fs/samba-3.6_rc1
+	sys-apps/keyutils
 	ads? (
-		sys-apps/keyutils
 		sys-libs/talloc
 		virtual/krb5
 	)
