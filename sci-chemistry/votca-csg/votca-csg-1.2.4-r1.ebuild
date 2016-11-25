@@ -23,7 +23,7 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-macos"
 
 #perl is only used for scripts
 RDEPEND="~sci-libs/votca-tools-${PV}
-	gromacs? ( sci-chemistry/gromacs:= )
+	gromacs? ( <sci-chemistry/gromacs-5.1:= )
 	dev-lang/perl
 	app-shells/bash:0"
 
