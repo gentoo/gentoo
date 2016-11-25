@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit alternatives eutils
+inherit alternatives
 
 DESCRIPTION="WordPerfect Document import/export library"
 HOMEPAGE="http://libwpd.sf.net"
@@ -15,13 +15,11 @@ SLOT="0.10"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips x86 ~x86-fbsd"
 IUSE="doc +tools"
 
-COMMON_DEPEND="dev-libs/librevenge"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="dev-libs/librevenge"
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-RDEPEND="${COMMON_DEPEND}
-	!<app-text/libwpd-0.8.14-r1"
 
 src_configure() {
 	econf \
@@ -29,13 +27,12 @@ src_configure() {
 		--disable-werror \
 		$(use_with doc docs) \
 		$(use_enable tools) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--program-suffix=-${SLOT}
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
