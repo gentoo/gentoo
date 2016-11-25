@@ -3,8 +3,9 @@
 # $Id$
 
 EAPI=6
+MODULES_OPTIONAL_USE="modules"
 
-inherit autotools flag-o-matic pam systemd toolchain-funcs user
+inherit autotools linux-mod pam systemd toolchain-funcs user
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
@@ -71,7 +72,6 @@ src_configure() {
 		--disable-tests
 		--with-procps
 		--with-dnet
-		--without-kernel-modules
 		$(use_enable doc docs)
 		$(use_enable grabbitmqproxy)
 		$(use_enable vgauth)
@@ -84,12 +84,21 @@ src_configure() {
 		$(use_with X gtk3)
 		$(use_with X gtkmm3)
 		$(use_with X x)
+
+		$(use_with modules kernel-modules)
+		--without-root-privileges
+		--with-kernel-release="${KV_FULL}"
 	)
 
 	econf "${myeconfargs[@]}"
 
 	# Bugs 260878, 326761
 	find . -name Makefile -exec sed -i -e 's/-Werror//g' '{}' +  || die "sed out Werror failed"
+}
+
+src_compile() {
+	use modules && set_arch_to_kernel
+	default
 }
 
 src_install() {
@@ -117,4 +126,5 @@ src_install() {
 
 pkg_postinst() {
 	enewgroup vmware
+	linux-mod_pkg_postinst
 }
