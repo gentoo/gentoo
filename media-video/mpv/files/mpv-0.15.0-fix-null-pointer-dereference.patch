@@ -1,0 +1,21 @@
+commit 5053f4cc3f48538c3d9a3ba13dc98442f3302052
+Author: wm4 <wm4@nowhere>
+Date:   Mon Jan 18 20:10:28 2016 +0100
+
+    command: fix NULL pointer deref in "video-codec" property
+    
+    Fixes #2729.
+
+diff --git a/player/command.c b/player/command.c
+index 3c7cfb2..413349d 100644
+--- a/player/command.c
++++ b/player/command.c
+@@ -2438,7 +2438,7 @@ static int mp_property_video_codec(void *ctx, struct m_property *prop,
+ {
+     MPContext *mpctx = ctx;
+     struct track *track = mpctx->current_track[0][STREAM_VIDEO];
+-    const char *c = track->d_video ? track->d_video->decoder_desc : NULL;
++    const char *c = track && track->d_video ? track->d_video->decoder_desc : NULL;
+     return m_property_strdup_ro(action, arg, c);
+ }
+
