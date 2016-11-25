@@ -21,6 +21,8 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 IUSE="${IUSE} debug"
 
+[[ ${CATEGORY}/${PN} != dev-util/cargo ]] && DEPEND=">=dev-util/cargo-0.13.0"
+
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
