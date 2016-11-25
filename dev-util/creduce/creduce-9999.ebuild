@@ -7,7 +7,8 @@ EAPI="6"
 EGIT_REPO_URI="https://github.com/csmith-project/creduce
 	git://github.com/csmith-project/creduce"
 
-inherit autotools git-r3
+: ${CMAKE_MAKEFILE_GENERATOR=Ninja}
+inherit cmake-utils git-r3
 
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
 HOMEPAGE="http://embed.cs.utah.edu/creduce/"
@@ -31,8 +32,3 @@ RDEPEND="${COMMON_DEPEND}
 	dev-util/astyle
 	dev-util/indent"
 DEPEND="${COMMON_DEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
