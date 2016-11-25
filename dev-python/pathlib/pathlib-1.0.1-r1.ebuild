@@ -5,7 +5,7 @@
 EAPI=5
 
 # In Python 3.4, pathlib is now part of the standard library.
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 pypy pypy3 )
 
 inherit distutils-r1
 
@@ -17,3 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+
+python_test() {
+	"${PYTHON}" test_pathlib.py || die
+}
