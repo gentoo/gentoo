@@ -23,6 +23,7 @@ RDEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]
 	>=dev-python/click-threading-0.1.2[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4.1[${PYTHON_USEDEP}]
 	!=dev-python/requests-2.9.0[${PYTHON_USEDEP}]
+	!=dev-python/requests-2.11.1[${PYTHON_USEDEP}]
 	=dev-python/lxml-3.4.4[${PYTHON_USEDEP}]
 	>=dev-python/requests-toolbelt-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]"
