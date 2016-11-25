@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://darwin.zoology.gla.ac.uk/~rpage/treeviewx/"
 SRC_URI="http://darwin.zoology.gla.ac.uk/~rpage/${PN}/download/0.5/tv-${PV}.tar.gz"
 LICENSE="GPL-2"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 
