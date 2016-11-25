@@ -293,6 +293,13 @@ qt4-build-multilib_src_prepare() {
 qt4_multilib_src_configure() {
 	qt4_prepare_env
 
+	# qt4 is not safe to build with C++11 / C++14 (the new gcc-6 default).
+	# Upstream has addressed this for qt5, but while we contiue to support
+	# qt4, we need to ensure everything is built in C++98 mode.
+	# Gentoo-bug: 582522, 582618, 583744, 583662
+	# https://github.com/gentoo/gentoo/pull/2908
+	append-cxxflags -std=gnu++98
+
 	qt4_symlink_tools_to_build_dir
 
 	# toolchain setup ('local -x' because of bug 532510)
