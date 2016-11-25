@@ -11674,7 +11674,7 @@ kde-apps/libkeduvocdocument 16.04.3 16.08.3: Library for reading/writing KVTML
 kde-apps/libkexiv2 15.08.3 16.04.3 16.08.3: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.3 16.04.3 16.08.3: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3 16.04.3 16.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 15.08.3-r1 16.04.3 16.08.3: A library for image plugins accross KDE applications
+kde-apps/libkipi 15.08.3-r1 16.04.3 16.08.3-r1: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2016.01 16.08.3: Library for encryption handling
 kde-apps/libkmahjongg 4.14.3 16.04.3 16.08.3: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 16.04.3 16.08.3: KDE library to compare files and strings
