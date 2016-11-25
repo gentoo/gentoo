@@ -48,4 +48,6 @@ src_install() {
 	newinitd "${FILESDIR}"/iodined-1.init iodined
 	newconfd "${FILESDIR}"/iodined.conf iodined
 	keepdir /var/empty
+	fowners root:nogroup /etc/conf.d/iodined
+	fperms 640 /etc/conf.d/iodined
 }
