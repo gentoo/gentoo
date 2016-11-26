@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit eutils
 
 DESCRIPTION="Flash the Xbox boot chip"
-HOMEPAGE="http://www.xbox-linux.org/"
+HOMEPAGE="https://sourceforge.net/projects/xbox-linux/"
 SRC_URI="mirror://sourceforge/xbox-linux/${P}.tbz2"
 
 LICENSE="GPL-2"
