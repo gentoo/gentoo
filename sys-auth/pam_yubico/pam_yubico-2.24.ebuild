@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit multilib
 
@@ -18,7 +18,7 @@ IUSE="ldap test"
 RDEPEND="
 	virtual/pam
 	sys-auth/libyubikey
-	>=sys-auth/ykclient-2.12
+	>=sys-auth/ykclient-2.15
 	>=sys-auth/ykpers-1.6
 	ldap? ( net-nds/openldap )"
 DEPEND="${RDEPEND}

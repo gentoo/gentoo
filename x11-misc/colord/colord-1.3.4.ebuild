@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	argyllcms? ( media-gfx/argyllcms )
 	gusb? ( >=dev-libs/libgusb-0.2.7[introspection?,${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
-	policykit? ( >=sys-auth/polkit-0.103 )
+	policykit? ( >=sys-auth/polkit-0.104 )
 	scanner? (
 		media-gfx/sane-backends
 		sys-apps/dbus )
