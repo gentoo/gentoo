@@ -1,0 +1,15 @@
+The .desktop file wrongly indicates the version of the software instead of the
+version of the .desktop file format. This has been reported upstream and should
+be fixed in the next version.
+
+--- "a/usr/share/applications/Worklog Assistant.desktop"	2016-11-19 15:59:42.000000000 +0100
++++ "b/usr/share/applications/Worklog Assistant.desktop"	2016-11-21 22:25:02.937080445 +0100
+@@ -3,7 +3,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=Worklog Assistant
+-Version=2.1.3577
++Version=1.0
+ Comment=Hassle-free time tracking for JIRA
+ Exec=/bin/bash "/opt/Worklog Assistant/bin/wrapper.sh"
+ Icon=/opt/Worklog Assistant/share/logo.png
