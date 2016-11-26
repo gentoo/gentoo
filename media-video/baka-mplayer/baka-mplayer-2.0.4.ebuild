@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit qmake-utils
+inherit eutils qmake-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
@@ -32,6 +32,8 @@ src_prepare() {
 	sed -e '/^INSTALLS/s:license::' -i src/Baka-MPlayer.pro || die
 	# put manual in our docdir
 	sed -e '/^manual.path/s:'${PN}':'${PF}':' -i src/Baka-MPlayer.pro || die
+
+	epatch "${FILESDIR}/${P}-gcc5.patch"
 }
 
 src_configure() {
