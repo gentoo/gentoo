@@ -30,6 +30,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-io-extern-inline.patch #548312
 	epatch "${FILESDIR}"/${P}-reboot-def.patch #548312
 	epatch "${FILESDIR}"/${P}-no-clean.patch #557890
+	epatch "${FILESDIR}"/${P}-no-C-headers.patch #592638
 
 	if use serial ; then
 		sed -i \
