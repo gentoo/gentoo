@@ -2305,7 +2305,7 @@ app-text/htmlinc 1.0_beta1 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlrecode 1.3.1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1: An HTML preprocessor
-app-text/hunspell 1.3.3 1.3.4 1.4.1-r1 1.4.2: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.0: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.63 3.68 3.70: ISO language, territory, currency, script codes and their translations
@@ -6207,7 +6207,7 @@ dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.400: Perl interface providing graphics display using OpenGL
-dev-perl/PAR 1.10.0: Perl Archive Toolkit
+dev-perl/PAR 1.10.0 1.12.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
@@ -7167,7 +7167,7 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20 3.1.24: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2015.11.20 2016.8.8 2016.8.31 2016.9.26: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.2 1.8.3: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.3 1.9.1: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0: Python library for creating 3D images
@@ -7217,8 +7217,8 @@ dev-python/coverage 3.7.1 4.0.3 4.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11: Python module to provide iteration for datetime object
 dev-python/crumbs 2.0.0 2.0.1 2.0.2 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.1.2 1.3.1 1.3.4 1.5.2 1.5.3-r1: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.1.2 1.3.1 1.3.4 1.5.2 1.5.3: Test vectors for the cryptography package
+dev-python/cryptography 1.1.2 1.3.1 1.3.4 1.5.2 1.5.3-r1 1.6: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.1.2 1.3.1 1.3.4 1.5.2 1.5.3 1.6: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1 0.9.2 1.0.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
@@ -17489,7 +17489,7 @@ sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 20160628 20161005 
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11 2.6.32.116.1: Kernel sources with OpenVZ patchset
-sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
+sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.43_p46 3.18.44_p47 3.18.44_p48 4.1.34_p39 4.1.35_p40 4.1.35_p41 4.4.25_p35 4.4.27_p37 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
