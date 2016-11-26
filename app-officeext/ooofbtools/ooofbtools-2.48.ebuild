@@ -20,7 +20,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-libs/libxml2"
+RDEPEND="dev-libs/libxml2
+	app-arch/zip"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
