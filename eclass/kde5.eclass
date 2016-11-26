@@ -113,6 +113,14 @@ fi
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
 : ${KDE_SELINUX_MODULE:=none}
 
+# @ECLASS-VARIABLE: KDE_SUBSLOT
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# If set to "true", add a subslot to the package, where subslot is either
+# defined as major.minor version for kde-*/ categories or ${PV} if other.
+# For any other value, that value will be used as subslot.
+: ${KDE_SUBSLOT:=false}
+
 # @ECLASS-VARIABLE: KDE_UNRELEASED
 # @INTERNAL
 # @DESCRIPTION
@@ -133,42 +141,34 @@ fi
 
 LICENSE="GPL-2"
 
+SLOT=5
+
 if [[ ${CATEGORY} = kde-frameworks ]]; then
-	SLOT=5/$(get_version_component_range 1-2)
-else
-	SLOT=5
+	KDE_SUBSLOT=true
 fi
+
+case ${KDE_SUBSLOT} in
+	false)  ;;
+	true)
+		case ${CATEGORY} in
+			kde-frameworks | \
+			kde-plasma | \
+			kde-apps)
+				SLOT+="/$(get_version_component_range 1-2)"
+				;;
+			*)
+				SLOT+="/${PV}"
+				;;
+		esac
+		;;
+	*)
+		SLOT+="/${KDE_SUBSLOT}"
+		;;
+esac
 
 case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			case ${CATEGORY} in
-				kde-frameworks)
-					: ${FRAMEWORKS_MINIMAL:=9999}
-				;;
-				kde-plasma)
-
-					: ${FRAMEWORKS_MINIMAL:=9999}
-				;;
-				*) ;;
-			esac
-		fi
-
-		if [[ ${CATEGORY} = kde-plasma && ${FRAMEWORKS_MINIMAL} != 9999 ]]; then
-			if ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
-				: ${FRAMEWORKS_MINIMAL:=5.27.0}
-			fi
-		fi
-
-		if [[ ${CATEGORY} = kde-apps ]]; then
-			local vcr2=$((10#$(get_version_component_range 2)))
-			if ! [[ $(get_version_component_range 1) -le 16 && ${vcr2} -lt 9 ]]; then
-				: ${FRAMEWORKS_MINIMAL:=5.28.0}
-			fi
-			unset vcr2
-		fi
-
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
@@ -500,13 +500,17 @@ kde5_src_prepare() {
 			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
 		fi
 
-		# add all l10n directories to cmake
 		cat <<-EOF > CMakeLists.txt || die
-project(${PN})
-cmake_minimum_required(VERSION 2.8.12)
-$(printf "add_subdirectory( %s )\n" \
-	`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-EOF
+		project(${PN})
+		cmake_minimum_required(VERSION 2.8.12)
+		EOF
+		# add all l10n directories to cmake
+		if [[ -n ${A} ]]; then
+			cat <<-EOF >> CMakeLists.txt || die
+			$(printf "add_subdirectory( %s )\n" \
+				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
+			EOF
+		fi
 
 		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
 		case ${l10npart} in
