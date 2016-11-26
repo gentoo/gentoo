@@ -5,7 +5,7 @@
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
-inherit autotools eutils
+inherit autotools
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing the visio documents"
@@ -26,7 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	>=dev-libs/boost-1.46
+	dev-libs/boost
 	dev-util/gperf
 	sys-devel/libtool
 	virtual/pkgconfig
@@ -37,23 +37,21 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-0.1.3-tests-without-tools.patch" )
 
 src_prepare() {
-	eapply "${PATCHES[@]}"
-	eapply_user
+	default
 	[[ -d m4 ]] || mkdir "m4"
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable static-libs static) \
 		--disable-werror \
 		$(use_with doc docs) \
+		$(use_enable static-libs static) \
 		$(use_enable test tests) \
 		$(use_enable tools)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
