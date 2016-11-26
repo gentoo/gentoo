@@ -538,7 +538,7 @@ app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
 app-crypt/heimdal 1.5.3-r2: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
-app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
+app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
 app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10 1.7.9-r11: fast password cracker
@@ -17574,7 +17574,7 @@ sys-libs/pam 1.2.1 1.2.1-r1 1.3.0: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r2 7.0_p1: Another cute console display library
 sys-libs/rvm 1.12 1.17-r1: Recoverable Virtual Memory (used by Coda)
-sys-libs/slang 2.2.4-r1 2.3.0 2.3.1: A multi-platform programmer's library designed to allow a developer to create robust software
+sys-libs/slang 2.2.4-r1 2.3.0 2.3.1 2.3.1a: A multi-platform programmer's library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.7 2.1.8: Samba talloc library
