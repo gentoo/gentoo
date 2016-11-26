@@ -1,0 +1,15 @@
+[Unit]
+Description=FreeRADIUS high performance RADIUS server.
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/run/radiusd/radiusd.pid
+ExecStartPre=-/bin/chown -R radius.radius /run/radiusd
+ExecStartPre=/usr/sbin/radiusd -C
+ExecStart=/usr/sbin/radiusd -d /etc/raddb -f
+ExecReload=/usr/sbin/radiusd -C
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

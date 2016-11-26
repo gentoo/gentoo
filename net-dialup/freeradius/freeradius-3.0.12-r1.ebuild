@@ -5,9 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils pam python-any-r1 user
-
-#PATCHSET=4
+inherit autotools eutils pam python-any-r1 systemd user
 
 MY_P="${PN}-server-${PV}"
 
@@ -199,6 +197,9 @@ src_install() {
 
 	newinitd "${FILESDIR}/radius.init-r3" radiusd
 	newconfd "${FILESDIR}/radius.conf-r4" radiusd
+
+	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
+	systemd_dounit "${FILESDIR}"/freeradius.service
 
 	prune_libtool_files
 }
