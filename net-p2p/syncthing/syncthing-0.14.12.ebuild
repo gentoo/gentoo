@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
 IUSE="tools"
 
+DEPEND="tools? ( >=dev-lang/go-1.7.1:= )"
+
 DOCS=(README.md AUTHORS CONTRIBUTING.md)
 
 pkg_setup() {
@@ -51,8 +53,6 @@ src_compile() {
 		|| die "build failed"
 }
 
-# Tests sometimes fail, reported upstream
-# https://github.com/syncthing/syncthing/issues/3735
 src_test() {
 	cd src/${EGO_PN} || die
 	go run build.go test || die "test failed"

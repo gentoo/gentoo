@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
-HOMEPAGE="https://${PN}.googlecode.com/"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/sleinen/${PN}"
+SRC_URI="https://github.com/sleinen/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
@@ -26,7 +26,7 @@ src_install() {
 
 	# Install Gentoo init script and its config
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	# Install manual page
 	doman "${FILESDIR}"/${PN}.8
