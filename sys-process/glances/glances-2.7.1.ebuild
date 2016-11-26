@@ -34,10 +34,10 @@ pkg_setup() {
 python_prepare_all() {
 	# Remove duplicate entries of a prebuilt doc build and
 	# ensure install of the file glances.conf in /etc/${PN}
-	sed -i -r '\|share/doc/glances|,/\),/ {
-			s.*share/doc/glances.*|("etc/glances", ["conf/glances.conf"]),|p
-			d
-		}' -- 'setup.py' || die
+	sed \
+		-e '/share\/doc\/glances/d' \
+		-e "s:'conf/glances.conf':('etc/glances', ['conf/glances.conf':g" \
+		-i setup.py || die
 
 	distutils-r1_python_prepare_all
 }
