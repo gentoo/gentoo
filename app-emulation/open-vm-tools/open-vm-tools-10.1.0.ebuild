@@ -59,6 +59,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}/open-vm-tools"
 
+PATCHES=(
+	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
+	"${FILESDIR}/10.1.0-vgauth.patch"
+)
+
 pkg_setup() {
 	linux-info_get_any_version
 	local CONFIG_CHECK="~VMWARE_BALLOON ~VMWARE_PVSCSI ~VMXNET3"
@@ -73,8 +78,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply -p2 "${FILESDIR}/10.1.0-vgauth.patch"
-	default
+	eapply -p2 "${PATCHES[@]}"
+	eapply_user
 	eautoreconf
 }
 
