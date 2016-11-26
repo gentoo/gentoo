@@ -9,6 +9,10 @@
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
 	<use>
 		<flag name="apparmor">
 			Enable AppArmor support.
