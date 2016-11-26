@@ -52,8 +52,8 @@ src_prepare() {
 src_configure() {
 	# avoids dead-store elimination optimization
 	# leading to segfaults on GCC 6
-	# bug #592590
-	append-cxxflags -fno-lifetime-dse
+	# bug #592590 #596506
+	append-cxxflags $(test-flags-CXX -fno-lifetime-dse)
 
 	# We need Prefix env, bug #287358
 	export CONFIG_SHELL="${CONFIG_SHELL:-${BASH}}"
