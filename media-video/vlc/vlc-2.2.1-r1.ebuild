@@ -45,7 +45,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	growl httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
-	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
+	matroska cpu_flags_x86_mmx modplug mp3 mpeg
 	mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
 	png postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
@@ -121,9 +121,8 @@ RDEPEND="
 		)
 		projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 		pulseaudio? ( >=media-sound/pulseaudio-1:0 )
-		qt4? ( >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4 )
-		qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5
-			>=dev-qt/qtx11extras-5.1:5 )
+		!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
+		qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 		rdp? ( >=net-misc/freerdp-1.0.1:0=[client] <net-misc/freerdp-2 )
 		samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
 			>=net-fs/samba-4.0.0_alpha1:0[client] ) )
@@ -178,7 +177,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	kde? ( >=kde-base/kdelibs-4:4 )
+	!qt5? ( kde? ( kde-base/kdelibs:4 ) )
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
 	x86?   ( dev-lang/yasm:* )
@@ -200,10 +199,10 @@ REQUIRED_USE="
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	qt4? ( X !qt5 )
-	qt5? ( X !qt4 )
+	qt4? ( X )
+	qt5? ( X )
 	sdl? ( X )
-	skins? ( truetype X xml ^^ ( qt4 qt5 ) )
+	skins? ( truetype X xml || ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
 	vdpau? ( xcb )
 	vlm? ( encode )
@@ -289,14 +288,16 @@ src_prepare() {
 
 	# If qtchooser is installed, it may break the build, because moc,rcc and uic binaries for wrong qt version may be used.
 	# Setting QT_SELECT environment variable will enforce correct binaries.
-	if use qt4; then
-		export QT_SELECT=qt4
-	elif use qt5; then
+	if use qt5; then
 		export QT_SELECT=qt5
+	elif use qt4; then
+		export QT_SELECT=qt4
 	fi
 }
 
 src_configure() {
+	local myconf
+
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
 
@@ -316,13 +317,15 @@ src_configure() {
 				--with-default-monospace-font-family=Monospace"
 	fi
 
-	local qt_flag=""
-	if use qt4 ; then
-		qt_flag="--enable-qt=4"
-	elif use qt5 ; then
-		qt_flag="--enable-qt=5"
+	if use qt5 ; then
+		myconf+=" --enable-qt=5"
 	else
-		qt_flag="--disable-qt"
+		if use qt4 ; then
+			myconf+=" --enable-qt=4"
+		else
+			myconf+=" --disable-qt"
+		fi
+		use kde && myconf+=" --with-kde-solid"
 	fi
 
 	econf \
@@ -372,7 +375,6 @@ src_configure() {
 		$(use_enable jack) \
 		$(use_enable jpeg) \
 		$(use_enable kate) \
-		$(use_with kde kde-solid) \
 		$(use_enable libass) \
 		$(use_enable libcaca caca) \
 		$(use_enable libnotify notify) \
@@ -407,7 +409,6 @@ src_configure() {
 		$(use_enable postproc) \
 		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
-		${qt_flag} \
 		$(use_enable rdp freerdp) \
 		$(use_enable rtsp realrtsp) \
 		$(use_enable run-as-root) \
@@ -482,7 +483,7 @@ src_configure() {
 }
 
 src_test() {
-	Xemake check-TESTS
+	virtx emake check-TESTS
 }
 
 DOCS="AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt"
@@ -491,7 +492,7 @@ src_install() {
 	default
 
 	# Punt useless libtool's .la files
-	find "${D}" -name '*.la' -delete
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
