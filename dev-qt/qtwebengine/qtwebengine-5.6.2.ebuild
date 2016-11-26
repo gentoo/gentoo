@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/opus
 	media-libs/speex
-	net-libs/libsrtp:=
+	net-libs/libsrtp:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
