@@ -4,6 +4,10 @@
 	<maintainer type="person">
 	    <email>amynka@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<use>
 	<flag name="search-domains">Honour search domains from
 		/etc/resolv.conf (see bug #201948 for possible side effects)</flag>
