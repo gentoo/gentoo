@@ -25,10 +25,7 @@ RDEPEND="
 			>=sys-fs/udev-232:0/0[${MULTILIB_USEDEP}]
 		) )
 	)
-	systemd? ( || (
-		>=sys-apps/systemd-212-r5:0/2[${MULTILIB_USEDEP}]
-		>=sys-apps/systemd-208-r3:0/1[${MULTILIB_USEDEP}]
-		>=sys-apps/systemd-208:0/0[${MULTILIB_USEDEP}] )
-	)"
+	systemd? ( >=sys-apps/systemd-212-r5:0/2[${MULTILIB_USEDEP}] )
+"
 
 REQUIRED_USE="systemd? ( !static-libs )"
