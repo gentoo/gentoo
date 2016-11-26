@@ -5622,7 +5622,7 @@ dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.130.0-r1 0.140.0: Returns the
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
-dev-perl/Devel-NYTProf 6.20.0 6.30.0: Powerful feature-rich perl source code profiler
+dev-perl/Devel-NYTProf 6.20.0 6.30.0 6.40.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0 1.400.0 1.440.0 1.460.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.27: A modern perl interactive shell
