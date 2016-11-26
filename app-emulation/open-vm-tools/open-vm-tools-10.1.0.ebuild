@@ -53,10 +53,6 @@ DEPEND="${COMMON_DEPEND}
 "
 
 RDEPEND="${COMMON_DEPEND}
-	X? (
-		x11-drivers/xf86-input-vmmouse
-		x11-drivers/xf86-video-vmware
-	)
 "
 
 S="${WORKDIR}/${MY_P}/open-vm-tools"
