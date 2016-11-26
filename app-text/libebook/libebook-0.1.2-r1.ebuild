@@ -7,7 +7,7 @@ EAPI=6
 MY_PN="libe-book"
 MY_P="${MY_PN}-${PV}"
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Library parsing various ebook formats"
 HOMEPAGE="http://www.sourceforge.net/projects/libebook/"
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE="doc test"
+IUSE="doc test tools"
 
 RDEPEND="
 	dev-libs/icu:=
@@ -25,7 +25,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	dev-libs/boost:=
+	dev-libs/boost
 	dev-util/gperf
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -48,10 +48,10 @@ src_configure() {
 		--disable-werror \
 		$(use_with doc docs) \
 		$(use_enable test tests) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_with tools)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
