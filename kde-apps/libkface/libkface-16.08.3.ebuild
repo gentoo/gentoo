@@ -19,11 +19,12 @@ DEPEND="
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	media-libs/opencv:=[contrib(+)]
+	media-libs/opencv:=
+	|| ( <media-libs/opencv-3.0.0 >=media-libs/opencv-3.1.0-r6[contrib] )
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-15.12.2-opencv3.1.patch" )
+PATCHES=( "${FILESDIR}/${PN}-16.08.3-opencv3.2-gentoo-3.1.patch" ) # not upstreamable like that
 
 src_configure() {
 	local mycmakeargs=(
