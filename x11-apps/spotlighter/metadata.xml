@@ -14,9 +14,4 @@
 		on the desktop screen.
 		You can use this to hide and show objects on the desktop.
 		This program has been implemented for educational purposes.</longdescription>
-	<use>
-	</use>
-	<upstream>
-		<remote-id type="google-code">ardesia</remote-id>
-	</upstream>
 </pkgmetadata>
