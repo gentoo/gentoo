@@ -17,10 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X doc grabbitmqproxy icu pam +pic vgauth xinerama"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libdnet
-	sys-apps/ethtool
 	sys-fs/fuse
 	>=sys-process/procps-3.3.2
 	grabbitmqproxy? ( dev-libs/openssl:0 )
@@ -33,11 +32,7 @@ RDEPEND="
 	)
 	X? (
 		dev-cpp/gtkmm:3.0
-		x11-base/xorg-server
-		x11-drivers/xf86-input-vmmouse
-		x11-drivers/xf86-video-vmware
 		x11-libs/gtk+:3
-		x11-libs/libnotify
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -51,10 +46,17 @@ RDEPEND="
 	)
 "
 
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
 	sys-apps/findutils
+"
+
+RDEPEND="${COMMON_DEPEND}
+	X? (
+		x11-drivers/xf86-input-vmmouse
+		x11-drivers/xf86-video-vmware
+	)
 "
 
 S="${WORKDIR}/${MY_P}/open-vm-tools"
