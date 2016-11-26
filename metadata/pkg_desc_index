@@ -143,7 +143,7 @@ app-admin/lsyncd 2.1.5 2.1.6 2.1.6-r1: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.8.0 2.8.8 2.9.0 2.9.1: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.8.8 2.9.1: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
@@ -1289,7 +1289,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 1.15.0 1.21.0 1.22.0 1.22.1: Golden Disk Image builder.
+app-emulation/diskimage-builder 1.15.0 1.21.0 1.22.0 1.22.1 1.22.2: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.3 1.13.0_rc1-r1 1.13.0_rc2 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
