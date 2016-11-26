@@ -1,3 +1,5 @@
+http://forum.canardpc.com/threads/110955-PATCH-don-t-pull-in-system-headers
+
 avoid using C library headers as it'd mean we'd need 32-bit glibc files available
 
 https://bugs.gentoo.org/592638
