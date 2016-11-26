@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
@@ -79,9 +79,18 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-0.6_rc5[${PYTHON_USEDEP}]
-	>=virtual/podofo-build-0.8.2"
+	>=virtual/podofo-build-0.8.2
+	virtual/pkgconfig"
 
 src_prepare() {
+	# no_updates: do not annoy user with "new version is availible all the time
+	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
+	eapply \
+		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
+		"${FILESDIR}/${PN}-disable_plugins.patch"
+
+	eapply_user
+
 	# Fix outdated version constant.
 	#sed -e "s#\\(^numeric_version =\\).*#\\1 (${PV//./, })#" \
 	#	-i src/calibre/constants.py || \
@@ -92,8 +101,9 @@ src_prepare() {
 	sed -e "s|'xdg-desktop-menu', 'install'|\\0, '--mode', 'user'|" \
 		-e "s|check_call(\\['xdg-desktop-menu', 'forceupdate'\\])|#\\0|" \
 		-e "s|\\(CurrentDir(tdir)\\), \\\\\$|\\1:|" \
-		-e "s|PreserveMIMEDefaults():||" \
-		-e "s|xdg-icon-resource install|\\0 --mode user|" \
+		-e "s|, PreserveMIMEDefaults():|:|" \
+		-e "s|'xdg-icon-resource', 'install'|\\0, '--mode', 'user'|" \
+		-e "s|cmd\[2\]|cmd[4]|" \
 		-e "s|cc(\\['xdg-desktop-menu', 'forceupdate'\\])|#\\0|" \
 		-e "s|'xdg-mime', 'install'|\\0, '--mode', 'user'|" \
 		-i src/calibre/linux.py || die "sed failed to patch linux.py"
@@ -108,7 +118,7 @@ src_prepare() {
 '-e', 's|^CXXFLAGS .*|\\\\\\\\0 ${CXXFLAGS}|', \
 '-e', 's|^LFLAGS .*|\\\\\\\\0 ${LDFLAGS}|', \
 '-i', 'Makefile'])" \
-		-i setup/extensions.py || die "sed failed to patch extensions.py"
+		-i setup/build.py || die "sed failed to patch build.py"
 
 	# use system beautifulsoup, instead of bundled
 	rm -f "${S}"/src/calibre/ebooks/BeautifulSoup.py \
@@ -123,11 +133,8 @@ src_prepare() {
 		-e "s|'xdg-desktop-menu', 'install'|'xdg-desktop-menu', 'install', '--novendor'|" \
 		-i "${S}"/src/calibre/linux.py || die 'sed failed'
 
-	# no_updates: do not annoy user with "new version is availible all the time
-	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
-	epatch \
-		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
-		"${FILESDIR}/${PN}-disable_plugins.patch"
+	# don't create/install uninstaller
+	sed '/self\.create_uninstaller()/d' -i src/calibre/linux.py || die
 }
 
 src_install() {
@@ -186,8 +193,8 @@ src_install() {
 		--staging-root="${ED}usr" \
 		--staging-libdir="${ED}usr/${libdir}" || die
 
-	grep -rlZ "${ED}" "${ED}" | xargs -0 sed -e "s:${D}:/:g" -i ||
-		die "failed to fix harcoded \$D in paths"
+	#grep -rlZ "${ED}" "${ED}" | xargs -0 sed -e "s:${D}:/:g" -i ||
+	#	die "failed to fix harcoded \$D in paths"
 
 	# The menu entries end up here due to '--mode user' being added to
 	# xdg-* options in src_prepare.
@@ -219,6 +226,21 @@ src_install() {
 
 	newinitd "${FILESDIR}"/calibre-server.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server.conf calibre-server
+
+	bashcomp_alias calibre \
+		lrfviewer \
+		calibre-debug \
+		ebook-meta \
+		calibre-server \
+		ebook-viewer \
+		ebook-polish \
+		fetch-ebook-metadata \
+		lrf2lrs \
+		ebook-convert \
+		ebook-edit \
+		calibre-smtp \
+		ebook-device
+
 }
 
 pkg_postinst() {

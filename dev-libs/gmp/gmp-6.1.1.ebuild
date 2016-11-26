@@ -33,6 +33,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/gmp.h )
 
 src_prepare() {
 	[[ -d ${FILESDIR}/${PV} ]] && EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch "${FILESDIR}"/${PV}
+	epatch "${FILESDIR}"/${PN}-6.1.0-udiv.patch
 
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
