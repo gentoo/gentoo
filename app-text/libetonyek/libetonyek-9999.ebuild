@@ -5,7 +5,6 @@
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libetonyek"
-inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
@@ -51,15 +50,14 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable static-libs static) \
 		--disable-werror \
-		$(use_enable test tests) \
 		$(use_with doc docs) \
+		$(use_enable static-libs static) \
+		$(use_enable test tests) \
 		--with-mdds=1.2
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
