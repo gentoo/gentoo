@@ -5,9 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils pam python-any-r1 user
-
-#PATCHSET=4
+inherit autotools eutils pam python-any-r1 systemd user
 
 MY_P="${PN}-server-${PV}"
 
@@ -18,7 +16,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -98,6 +96,8 @@ src_prepare() {
 	}
 
 	sed -i \
+		-e 's:^#\tuser = :\tuser = :g' \
+		-e 's:^#\tgroup = :\tgroup = :g' \
 		-e 's:/var/run/radiusd:/run/radiusd:g' \
 		-e '/^run_dir/s:${localstatedir}::g' \
 		raddb/radiusd.conf.in || die
@@ -181,7 +181,7 @@ src_install() {
 	diropts
 
 	# verbose, do not install certificates
-	emake -j1 \
+	emake \
 		Q='' ECHO=true \
 		LOCAL_CERT_PRODUCTS='' \
 		R="${D}" \
@@ -196,7 +196,10 @@ src_install() {
 	rm "${D}/usr/sbin/rc.radiusd" || die
 
 	newinitd "${FILESDIR}/radius.init-r3" radiusd
-	newconfd "${FILESDIR}/radius.conf-r3" radiusd
+	newconfd "${FILESDIR}/radius.conf-r4" radiusd
+
+	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
+	systemd_dounit "${FILESDIR}"/freeradius.service
 
 	prune_libtool_files
 }
@@ -205,6 +208,8 @@ pkg_config() {
 	if use ssl; then
 		cd "${ROOT}"/etc/raddb/certs
 		./bootstrap
+
+		chown -R root:radius "${ROOT}"/etc/raddb/certs
 	fi
 }
 
