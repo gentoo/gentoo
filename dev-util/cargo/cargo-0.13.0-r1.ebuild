@@ -115,6 +115,52 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/findutils
 	sys-apps/sed"
 
+# Until cargo bootstraps itself with a version based on 0.13.0, this needs
+# to stay (these variables and src_unpack)
+ECARGO_HOME="${WORKDIR}/cargo_home"
+ECARGO_REPO="github.com-88ac128001ac3a9a"
+ECARGO_INDEX="${ECARGO_HOME}/registry/index/${ECARGO_REPO}"
+ECARGO_SRC="${ECARGO_HOME}/registry/src/${ECARGO_REPO}"
+ECARGO_CACHE="${ECARGO_HOME}/registry/cache/${ECARGO_REPO}"
+
+src_unpack() {
+	mkdir -p "${ECARGO_INDEX}" || die
+	mkdir -p "${ECARGO_CACHE}" || die
+	mkdir -p "${ECARGO_SRC}" || die
+	mkdir -p "${S}" || die
+
+	local archive
+	for archive in ${A}; do
+		case "${archive}" in
+			*.crate)
+				ebegin "Unpacking ${archive}"
+				cp "${DISTDIR}"/${archive} "${ECARGO_CACHE}/" || die
+				tar -xf "${DISTDIR}"/${archive} -C "${ECARGO_SRC}/" || die
+				eend $?
+				;;
+			cargo-snapshot*)
+				ebegin "Unpacking ${archive}"
+				mkdir -p "${S}"/target/snapshot
+				tar -xzf "${DISTDIR}"/${archive} -C "${S}"/target/snapshot --strip-components 2 || die
+				# cargo's makefile needs this otherwise it will try to
+				# download it
+				touch "${S}"/target/snapshot/bin/cargo || die
+				eend $?
+				;;
+			cargo-registry*)
+				ebegin "Unpacking ${archive}"
+				tar -xzf "${DISTDIR}"/${archive} -C "${ECARGO_INDEX}" --strip-components 1 || die
+				# prevent cargo from attempting to download this again
+				touch "${ECARGO_INDEX}"/.cargo-index-lock || die
+				eend $?
+				;;
+			*)
+				unpack ${archive}
+				;;
+		esac
+	done
+}
+
 src_configure() {
 	# Cargo only supports these GNU triples:
 	# - Linux: <arch>-unknown-linux-gnu
