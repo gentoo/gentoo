@@ -13,13 +13,12 @@ SRC_URI="https://worklogassistant.com/downloads/${MY_PN}-v2_${PV}_amd64.deb"
 LICENSE="worklog-assistant"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+RESTRICT="fetch bindist strip"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
-RESTRICT="fetch strip"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-desktop.patch"
