@@ -1,0 +1,24 @@
+From https://github.com/plougher/squashfs-tools/pull/9
+
+From b0ca8a5c98ff73e70b2ab1bc24aa824aa2458287 Mon Sep 17 00:00:00 2001
+From: Alexandru Ardelean <aa@ocedo.com>
+Date: Wed, 6 Jan 2016 15:36:48 +0200
+Subject: [PATCH] pseudo.c: add explicit <sys/stat.h> include
+
+Signed-off-by: Alexandru Ardelean <aa@ocedo.com>
+---
+ squashfs-tools/pseudo.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/squashfs-tools/pseudo.c b/squashfs-tools/pseudo.c
+index f85fe60..83bfc97 100644
+--- a/squashfs-tools/pseudo.c
++++ b/squashfs-tools/pseudo.c
+@@ -32,6 +32,7 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <sys/stat.h>
+ #include <ctype.h>
+ 
+ #include "pseudo.h"
