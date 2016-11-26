@@ -36,13 +36,20 @@
 <!--
   element: mirror
   description: One per mirror; name the mirror and provide one or more uris
-  example: <mirror>
+  optionally: provide GPS coordinates, a city and a bug id.
+  example: <mirror city="Corvallis"
+                   coordinates="44.5646,-123.2620"
+                   gentoo-bug="12345">
              <name>OSU Open Source Lab</name>
              <uri protocol="http">http://gentoo.osuosl.org/</uri>
              <uri protocol="ftp">ftp://gentoo.osuosl.org/</uri>
            </mirror>
 -->
 <!ELEMENT mirror (name, uri+)>
+<!ATTLIST mirror
+    city CDATA #IMPLIED
+    coordinates CDATA #IMPLIED
+    gentoo-bug CDATA #IMPLIED>
 
 <!--
   element: name
