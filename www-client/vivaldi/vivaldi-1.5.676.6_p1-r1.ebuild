@@ -81,6 +81,7 @@ src_prepare() {
 	rm \
 		_gpgbuilder \
 		etc/cron.daily/${VIVALDI_BIN} \
+		${VIVALDI_HOME}/libwidevinecdm.so \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
