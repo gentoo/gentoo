@@ -2211,7 +2211,7 @@ app-text/blogc 0.12.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 1.20 2.35.0-r2 2.47.0 2.55.0 2.68.0 2.70.0: Ebook management application
+app-text/calibre 1.20 2.70.0 2.73.0: Ebook management application
 app-text/catdoc 0.94.4 0.94.4-r1 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
@@ -4026,12 +4026,12 @@ dev-java/itext 2.1.5-r2 5.5.4-r2: Java library that generate documents in the Po
 dev-java/j2objc-annotations 1.2: Annotations for the J2ObjC Java to Objective-C translator
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
-dev-java/jackson 1.9.13 2.5.1 2.5.2: High-performance JSON processor
-dev-java/jackson-annotations 2.5.1 2.5.2: High-performance JSON processor
-dev-java/jackson-databind 2.5.1-r1 2.5.2: High-performance JSON processor
-dev-java/jackson-dataformat-xml 2.5.1 2.5.2: XML data format extension for Jackson
-dev-java/jackson-dataformat-yaml 2.5.1: YAML data format extension for Jackson
-dev-java/jackson-module-jaxb-annotations 2.5.1 2.5.2: JAXB alternative to native Jackson annotations
+dev-java/jackson 2.8.5: High-performance JSON processor
+dev-java/jackson-annotations 2.8.5: Annotations for the Java Jackson data processor
+dev-java/jackson-databind 2.8.5: Data-binding functionality and tree-model for the Java Jackson data processor
+dev-java/jackson-dataformat-xml 2.8.5: XML data format extension for Jackson
+dev-java/jackson-dataformat-yaml 2.8.5: YAML data format extension for Jackson
+dev-java/jackson-module-jaxb-annotations 2.8.5: JAXB alternative to native Jackson annotations
 dev-java/jacl 1.4.1-r1: Jacl is an implementation of Tcl written in Java
 dev-java/jacoco 0.7.5: Java Code Coverage library.
 dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
@@ -7758,7 +7758,7 @@ dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fa
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
-dev-python/oauth2client 1.4.6 1.4.11 1.4.12 1.5.1 1.5.2 2.0.1 2.0.2 2.1.0 2.2.0: Library for accessing resources protected by OAuth 2.0
+dev-python/oauth2client 1.5.2 2.0.1 2.0.2 2.1.0 2.2.0: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 0.7.2 1.0.1 1.0.3 1.1.2: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/objgraph 1.7.2 1.8.1: Draws Python object reference graphs with graphviz
 dev-python/oct2py 1.3.0-r1 3.3.3 3.6.0: Python to GNU Octave bridge
