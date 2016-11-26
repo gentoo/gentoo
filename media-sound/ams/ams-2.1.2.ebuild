@@ -43,5 +43,7 @@ src_configure() {
 	econf \
 		--disable-nsm \
 		--enable-qt5 \
-		MOC="$(qt5_get_bindir)/moc"
+		MOC="$(qt5_get_bindir)/moc" \
+		LUPDATE="$(qt5_get_bindir)/lupdate" \
+		LRELEASE="$(qt5_get_bindir)/lrelease"
 }
