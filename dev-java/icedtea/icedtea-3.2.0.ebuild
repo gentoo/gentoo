@@ -278,6 +278,9 @@ src_configure() {
 	# Warn about potential problems with ccache enabled
 	if has ccache ${FEATURES}; then
 		ewarn 'ccache has been known to break IcedTea. Disable it before filing bugs.'
+		config+=" --enable-ccache"
+	else
+		config+=" --disable-ccache"
 	fi
 
 	config+=" --with-parallel-jobs=$(makeopts_jobs)"
