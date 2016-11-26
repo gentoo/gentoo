@@ -49,7 +49,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
-	sys-apps/findutils
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -60,6 +59,7 @@ S="${WORKDIR}/${MY_P}/open-vm-tools"
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
 	"${FILESDIR}/10.1.0-vgauth.patch"
+	"${FILESDIR}/10.1.0-Werror.patch"
 )
 
 pkg_setup() {
@@ -107,9 +107,6 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
-
-	# Bugs 260878, 326761
-	find . -name Makefile -exec sed -i -e 's/-Werror//g' '{}' +  || die "sed out Werror failed"
 }
 
 src_compile() {
