@@ -204,6 +204,9 @@ src_install() {
 	dosym /opt/VirtualBox/VBoxDDU.so /opt/VirtualBox/components/VBoxDDU.so
 	dosym /opt/VirtualBox/VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
+	# see Bug 598020
+	dosym /opt/VirtualBox /usr/lib64/virtualbox
+
 	local each
 	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp}; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
