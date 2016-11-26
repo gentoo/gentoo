@@ -53,10 +53,6 @@ DEPEND="${COMMON_DEPEND}
 "
 
 RDEPEND="${COMMON_DEPEND}
-	X? (
-		x11-drivers/xf86-input-vmmouse
-		x11-drivers/xf86-video-vmware
-	)
 "
 
 S="${WORKDIR}/${MY_P}/open-vm-tools"
@@ -133,11 +129,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/vmtoolsd.service
 
 	if use X; then
-		fperms 4755 /usr/bin/vmware-user-suid-wrapper
+		fperms 4711 /usr/bin/vmware-user-suid-wrapper
 		dobin scripts/common/vmware-xdg-detect-de
-
-		insinto /etc/xdg/autostart
-		doins "${FILESDIR}"/open-vm-tools.desktop
 
 		elog "To be able to use the drag'n'drop feature of VMware for file"
 		elog "exchange, please add the users to the 'vmware' group."
