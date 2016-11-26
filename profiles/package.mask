@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (26 Nov 2016)
+# Masked until all reverse dependencies no longer break.
+>=app-text/hunspell-1.5.0
+
 # Mike Gilbert <floppym@gentoo.org> (25 Nov 2016)
 # Modules are now part of app-emulation/open-vm-tools.
 # Removal in 30 days.
