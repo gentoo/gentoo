@@ -8,7 +8,7 @@ SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.g
 DESCRIPTION="Shows a movable and resizable spotlight on the screen"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
