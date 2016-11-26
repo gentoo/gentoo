@@ -1,3 +1,5 @@
+http://forum.canardpc.com/threads/110953-PATCH-don-t-try-to-scp-after-building
+
 this makes no sense in a sane build world
 
 --- a/Makefile
