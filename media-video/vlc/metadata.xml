@@ -47,7 +47,6 @@
 		<flag name="macosx-quartztext">Enables Mac OS X quartz text module.</flag>
 		<flag name="macosx-qtkit">Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.</flag>
 		<flag name="matroska">Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
-		<flag name="media-library">Build the (sqlite based) media library.</flag>
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="omxil">Enables OpenMAX Integration Layer codec module.</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance.</flag>

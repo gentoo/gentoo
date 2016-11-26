@@ -45,7 +45,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
-	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
+	matroska cpu_flags_x86_mmx modplug mp3 mpeg
 	mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
 	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
@@ -224,6 +224,10 @@ PATCHES=(
 
 	# Bug #589396
 	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
+
+	# Bug #594126
+	"${FILESDIR}"/${PN}-2.2.4-decoder-lock-scope.patch
+	"${FILESDIR}"/${PN}-2.2.4-alsa-large-buffers.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
