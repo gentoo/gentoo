@@ -20,10 +20,7 @@ RDEPEND="
 		>=sys-fs/eudev-1.3:0/0[${MULTILIB_USEDEP},static-libs?]
 		>=sys-fs/udev-208-r1:0/0[${MULTILIB_USEDEP},static-libs?]
 	) )
-	systemd? ( || (
-		>=sys-apps/systemd-212-r5:0/2[${MULTILIB_USEDEP}]
-		>=sys-apps/systemd-208-r3:0/1[${MULTILIB_USEDEP}]
-		>=sys-apps/systemd-208:0/0[${MULTILIB_USEDEP}]
-	) )"
+	systemd? ( >=sys-apps/systemd-212-r5:0/2[${MULTILIB_USEDEP}] )
+"
 
 REQUIRED_USE="systemd? ( !static-libs )"
