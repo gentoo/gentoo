@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1
+inherit autotools bash-completion-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/jonas/tig.git"
@@ -28,9 +28,11 @@ RDEPEND="${DEPEND}
 	dev-vcs/git"
 [[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
 
+PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
+
 src_prepare() {
 	default
-	[[ ${PV} == "9999" ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
