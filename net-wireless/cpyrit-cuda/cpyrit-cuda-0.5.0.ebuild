@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit toolchain-funcs distutils-r1
 
 DESCRIPTION="A sub-package that adds CUDA-capability to Pyrit"
 HOMEPAGE="https://github.com/JPaulMora/Pyrit"
@@ -25,6 +25,12 @@ RDEPEND="${DEPEND}"
 PDEPEND="~net-wireless/pyrit-${PV}"
 
 S="${WORKDIR}/Pyrit-${PV}/modules/cpyrit_cuda"
+
+pkg_pretend() {
+	if tc-is-gcc && [[ $(gcc-version) > 4.8 ]]; then
+		die "gcc 4.9 and up are not supported"
+	fi
+}
 
 pkg_setup() {
 	python-single-r1_pkg_setup
