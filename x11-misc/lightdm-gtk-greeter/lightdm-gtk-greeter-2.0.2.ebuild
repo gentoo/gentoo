@@ -27,7 +27,7 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-themes-standard
-	|| ( >=x11-themes/adwaita-icon-theme-3.14.1 x11-themes/gnome-icon-theme )"
+	>=x11-themes/adwaita-icon-theme-3.14.1"
 
 GENTOO_BG="gentoo-bg_65.jpg"
 
