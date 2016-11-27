@@ -1,0 +1,15 @@
+fix build w/newer glibc due to major/minor includes being dropped from sys/types.h
+
+https://bugs.gentoo.org/580012
+https://bugs.xine-project.org/show_bug.cgi?id=574
+
+--- a/src/xine-utils/xine_check.c
++++ b/src/xine-utils/xine_check.c
+@@ -55,6 +55,7 @@
+ #include <dlfcn.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
++#include <sys/sysmacros.h>
+ #include <sys/utsname.h>
+ #include <linux/major.h>
+ #include <linux/hdreg.h>
