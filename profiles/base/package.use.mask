@@ -5,6 +5,20 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not rely on monodevelop, bug #596656
+net-irc/hexchat theme-manager
+gnome-extra/zeitgeist-datasources mono
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# dev-dotnet/zeitgeist-sharp is going to be removed, bug #582894
+gnome-extra/zeitgeist-datasources tomboy
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Avoid the usage of dead net-dialup/capi4k-utils
+app-emulation/crossover-bin capi
+net-libs/opal capi
+
 # Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
 # OpenVG support in Mesa is long gone, and qtopenvg is going to p.mask.
 dev-qt/qt-meta openvg

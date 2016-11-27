@@ -51,7 +51,9 @@ want_apache2
 
 pkg_setup() {
 	depend.apache_pkg_setup
-	setup-wxwidgets
+	if use studio ; then
+		setup-wxwidgets
+	fi
 	enewgroup icinga
 	enewgroup icingacmd
 	enewgroup nagios  # for plugins

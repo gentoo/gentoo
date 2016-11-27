@@ -31,6 +31,152 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Dead for years, replaced by media-video/devedeng, bug #430564, removal in
+# a month.
+media-video/devede
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Dead for years, still using udisks:0 and no sign to be ever ported, bug
+# #440856 and bug #440858, removal in a month.
+sys-apps/uevt
+sys-auth/pam_usb
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Dead for years, relies on obsolete and vulnerable gksu (#486456), removal
+# in a month.
+net-print/gmso2
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Obsolete, not compatible with mono-4, bug #504036, removal in a month.
+gnome-extra/gnome-do
+gnome-extra/gnome-do-plugins
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Relies on obsolete and vulnerable webkit-gtk, also we cannot update it as
+# deps are also pending to be bumped due to long standing issues that are
+# never handled. Removal in a month, bug #532058
+net-misc/sparkleshare
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Vulnerable to CVE-2015-1431 and nobody taking care of it, bug #538360.
+# Removal in a month.
+www-apps/phpBB
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Obsolete and not needed anymore, bug #545704, removal in a month.
+dev-dotnet/pango-sharp
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Vulnerable to CVE-2015-3248 (#552534), and nobody willing to take care of
+# the package. Removal in a month.
+sys-libs/openhpi
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Obsolete, orphan, needs porting to new python eclasses, bug #554458.
+# Removal in a month.
+x11-misc/menumaker
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not compatible with mono-4 (#558934, #545964), removal in a month.
+net-irc/smuxi
+dev-dotnet/smartirc4net
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Doesn't build (#562488), not needed by anything in the tree, removal in a
+# month.
+media-libs/sublib
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not compatible with mono-4, bug #558106, removal in a month.
+media-sound/banshee
+media-plugins/banshee-community-extensions
+#563234
+dev-dotnet/google-gdata-sharp
+#438420
+media-libs/libkarma
+#565032
+dev-dotnet/taglib-sharp
+app-misc/basenji
+#580590
+dev-dotnet/gudev-sharp
+#582894
+dev-dotnet/zeitgeist-sharp
+#588938
+dev-dotnet/gtk-sharp-beans
+#596614
+dev-dotnet/mono-zeroconf
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Newer versions have huge issues (#589554, #594944), and older ones are not
+# compatible with newer mono and gtk-sharp (#596656). Removal in a month.
+dev-util/monodevelop
+dev-util/monodevelop-database
+dev-util/monodevelop-debugger-gdb
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Needs porting to new python eclasses and nothing needs this in the tree,
+# bug #597482, removal in a month.
+dev-libs/librtfcomp
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Obsolete packages not needed anymore, bug #598852
+dev-dotnet/gtk-sharp-docs
+dev-dotnet/gtk-dotnet-sharp
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Needs porting to new python eclasses, nothing needs this in the tree, bug
+# #599824, removal in a month.
+www-apps/bitten
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Needs porting to new python eclasses and relies on gstreamer-0.10
+# (#599888). Removal in a month.
+media-sound/christine
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Nothing needs this obsolete package anymore, bug #599990, removal in a
+# month.
+x11-themes/gnome-icon-theme-extras
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Relies on obsolete and vulnerable webkit-gtk versions, bug #600898
+www-client/vimb
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Dead, needs porting to new python eclasses, all orphans (#592160)
+app-pda/synce-core
+app-pda/orange
+dev-libs/librra
+sys-fs/fur
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Orphan, dead, fails to build (#594896), removal in a month.
+app-editors/zoinks
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Fails to build (#596348), relies on obsolete wxGTK:2.8. Removal in a
+# month.
+dev-lang/ucblogo
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not compatible with mono-4, bug #596600, removal in a month.
+app-misc/tomboy
+x11-plugins/tomboy-reminder
+
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not compatible with wxGTK:3.0 (#564068), fails to build (#521476), dead.
+# Removal in a month.
+app-misc/roadnav
+dev-libs/libroadnav
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Dead and obsolete lib not needed by anything in the tree (#567946).
+# Removal in a month.
+app-mobilephone/gsmlib
+
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Not compatible with tcl/tk 8.6, obsolete version, bug #547322.
 # Try to use versions from sci overlay. Removal in a month.
 media-gfx/brlcad

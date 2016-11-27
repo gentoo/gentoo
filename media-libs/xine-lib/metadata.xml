@@ -18,7 +18,7 @@
 			container (OggFLAC), but might have better support for exotic features like
 			24-bit samples or 96kHz sample rates.
 		</flag>
-		<flag name="fusion">
+		<flag name="fusionsound">
 			Enable support for the Fusion audio sub system
 		</flag>
 		<flag name="gtk">
