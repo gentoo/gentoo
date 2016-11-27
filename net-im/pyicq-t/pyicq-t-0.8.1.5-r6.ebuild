@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 	( || ( ( dev-python/twisted-core[${PYTHON_USEDEP}]
 			dev-python/twisted-words[${PYTHON_USEDEP}]
 			dev-python/twisted-web[${PYTHON_USEDEP}] )
-		dev-python/twisted-core[${PYTHON_USEDEP}] ) )
+		dev-python/twisted[${PYTHON_USEDEP}] ) )
 	webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
 	dev-python/pillow[${PYTHON_USEDEP}]"
 
