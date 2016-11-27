@@ -34,7 +34,7 @@
       <pkg>dev-db/sqlite</pkg>.
     </flag>
     <flag name="tools">
-      Install extra tools.
+      Install extra tools (including gpgsplit and gpg-zip).
     </flag>
 	<flag name="wks-server">
 	  Install the wks-server
