@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Allows you to control aspects of your mobile phone from your GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/PhoneManager"
@@ -14,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/PhoneManager"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
+IUSE="debug"
 # telepathy support is considered experimental
 
 RDEPEND="
@@ -27,10 +26,10 @@ RDEPEND="
 	>=app-mobilephone/gnokii-0.6.28[bluetooth]
 	net-wireless/bluez
 	dev-libs/dbus-glib
-	dev-libs/openobex
+	dev-libs/openobex:0=
 	media-libs/libcanberra[gtk]
-	>=x11-themes/gnome-icon-theme-2.19.1
-	>=net-wireless/gnome-bluetooth-3.3:2
+	>=net-wireless/gnome-bluetooth-3.3:2=
+	x11-themes/adwaita-icon-theme
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35.5
@@ -41,8 +40,9 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Fix eds-3.6 building, upstream bug #680927
-	epatch "${FILESDIR}"/0001-Adapt-to-Evolution-Data-Server-API-changes.patch
-
+	eapply "${FILESDIR}"/0001-Adapt-to-Evolution-Data-Server-API-changes.patch
+	eapply "${FILESDIR}"/${P}-adwaita-icon-theme.patch
+	mv configure.in configure.ac || die
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -52,5 +52,6 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-bluetooth-plugin \
 		--disable-telepathy \
-		--disable-static
+		--disable-static \
+		$(use_enable debug)
 }
