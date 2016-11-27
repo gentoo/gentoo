@@ -6736,8 +6736,6 @@ sci-biology/clustalw-mpi:mpi_njtree - Use MPI (as opposed to serial) code for co
 sci-biology/clustalw-mpi:static_pairalign - Use static (as opposed to dynamic) scheduling for pair alignments
 sci-biology/exonerate:utils - Install all utilities
 sci-biology/fasttree:double-precision - use double precision instead of single-precision floating point (2x memroy required)
-sci-biology/gmap:goby - Enable support for goby
-sci-biology/gmap:samtools - Enable support for samtools
 sci-biology/goby:cpp - Compile C/C++ API
 sci-biology/mcl:blast - add support for NCBI BLAST data
 sci-biology/plink:R - add support R language

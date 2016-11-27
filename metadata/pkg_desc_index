@@ -1800,7 +1800,7 @@ app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
 app-misc/gnote 3.20.1 3.20.2 3.22.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
-app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 2.7-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
@@ -2976,7 +2976,7 @@ dev-db/pgpool2 3.5.2 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.0.10.15 4.0.10.17 4.4.15.5 4.4.15.8 4.6.4: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.18 4.4.15.5 4.4.15.8 4.4.15.9 4.6.5.1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.1.21 9.1.23 9.1.24 9.2.16 9.2.18 9.2.19 9.3.12 9.3.14 9.3.15 9.4.7 9.4.9 9.4.10 9.5.2 9.5.4 9.5.5 9.6.0 9.6.1 9.6.1-r1 9999: PostgreSQL RDBMS
@@ -10298,7 +10298,7 @@ dev-vcs/qct 1.7-r1: PyQt based commit tool for many VCSs
 dev-vcs/qgit 2.6: Qt GUI for git repositories
 dev-vcs/qsvn 0.8.3: GUI frontend to the Subversion revision system
 dev-vcs/rabbitvcs 0.15.2 0.15.3 0.16: Integrated version control support for your desktop
-dev-vcs/rapidsvn 0.12.1-r1 0.12.1-r2 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
+dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
@@ -15902,7 +15902,7 @@ sci-chemistry/vmd 1.9.2: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.2.4-r1 1.3-r1 1.3.1 1.4 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.2.4 1.3 1.3.1 1.4 9999: Extra applications for votca-csg
 sci-chemistry/votca-xtp 1.4 9999: Votca excitation and charge properties module
-sci-chemistry/wxmacmolplt 7.4.2 7.5 7.5-r1: Chemical 3D graphics program with GAMESS input builder
+sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170430: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
 sci-chemistry/xdsstat-bin 140225: Prints various statistics (that are not available from XDS itself)
@@ -16344,7 +16344,7 @@ sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of di
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/wxmaxima 13.04.2 15.08.2 16.04.1 16.04.2: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 15.08.2 16.04.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 1.6.5 1.6.6 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
