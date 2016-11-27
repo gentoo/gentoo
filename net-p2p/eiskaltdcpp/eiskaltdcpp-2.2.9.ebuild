@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit cmake-utils eutils l10n fdo-mime gnome2-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt based client for DirectConnect and ADC protocols, based on DC++ library"
-HOMEPAGE="https://code.google.com/p/eiskaltdc/"
+HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
@@ -30,7 +30,7 @@ REQUIRED_USE="
 "
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://eiskaltdc.googlecode.com/files/${P}.tar.xz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
