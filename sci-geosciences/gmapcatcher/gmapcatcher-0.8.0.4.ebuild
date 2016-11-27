@@ -12,7 +12,7 @@ DESCRIPTION="An offline viewer for different map providers"
 HOMEPAGE="https://github.com/heldersepu/GMapCatcher"
 SRC_URI="https://github.com/heldersepu/GMapCatcher/archive/${MY_COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
