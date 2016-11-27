@@ -25,7 +25,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css directfb dts dvb dxr3 fbcon flac fusion gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X +xcb xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css directfb dts dvb dxr3 fbcon flac fusionsound gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X +xcb xinerama +xv xvmc ${NLS_IUSE}"
 
 RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
@@ -47,7 +47,7 @@ RDEPEND="${NLS_RDEPEND}
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
 	flac? ( media-libs/flac )
-	fusion? ( media-libs/FusionSound )
+	fusionsound? ( || ( >=media-libs/FusionSound-1.1.1 >=dev-libs/DirectFB-1.7.1[fusionsound] ) )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick ) )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
@@ -191,7 +191,7 @@ src_configure() {
 		$(use_with X x) \
 		$(use_with alsa) \
 		--without-esound \
-		$(use_with fusion fusionsound) \
+		$(use_with fusionsound) \
 		$(use_with jack) \
 		$(use_with pulseaudio) \
 		$(use_with libcaca caca) \
