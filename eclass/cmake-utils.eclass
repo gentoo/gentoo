@@ -521,7 +521,6 @@ enable_cmake-utils_src_configure() {
 		SET (CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
 		SET (CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
 		SET (CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> ${includes} ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
-		SET (PKG_CONFIG_EXECUTABLE $(type -P $(tc-getPKG_CONFIG)) CACHE FILEPATH "pkg-config executable" FORCE)
 	_EOF_
 
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
@@ -532,6 +531,7 @@ enable_cmake-utils_src_configure() {
 
 	# Bug 542530, export those instead of setting paths in toolchain file
 	local -x CC=$(tc-getCC) CXX=$(tc-getCXX) FC=$(tc-getFC)
+	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
 
 	if tc-is-cross-compiler; then
 		local sysname
