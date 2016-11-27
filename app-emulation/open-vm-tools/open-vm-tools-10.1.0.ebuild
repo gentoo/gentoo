@@ -101,6 +101,10 @@ src_configure() {
 		$(use_with X gtkmm3)
 		$(use_with X x)
 
+		# configure locates the kernel object directory by looking for
+		# "/lib/modules/${KERNEL_RELEASE}/build".
+		# This will fail if the user is building against an uninstalled kernel.
+		# Fixing this would mean reworking the build system.
 		$(use_with modules kernel-modules)
 		--without-root-privileges
 		--with-kernel-release="${KV_FULL}"
