@@ -1115,7 +1115,7 @@ app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
 app-emacs/dash 2.12.0 2.12.1 2.13.0: A modern list library for Emacs
-app-emacs/ddskk 14.3 14.4 15.1: One Japanese input methods on Emacs
+app-emacs/ddskk 14.3 14.4 15.1 16.1: One Japanese input methods on Emacs
 app-emacs/desktop+ 0.2: desktop+ extends standard desktop module
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
