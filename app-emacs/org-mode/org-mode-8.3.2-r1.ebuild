@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit readme.gentoo elisp
+inherit elisp readme.gentoo-r1
 
 DESCRIPTION="An Emacs mode for notes and project planning"
 HOMEPAGE="http://www.orgmode.org/"
@@ -20,12 +20,6 @@ DEPEND="doc? ( virtual/texi2dvi )"
 
 S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
-
-DOC_CONTENTS="
-Org mode has a large variety of run-time dependencies, so you may have to
-install one or more additional packages.  A non-exhaustive list of these
-dependencies may be found at <http://orgmode.org/worg/org-dependencies.html>.
-"
 
 src_compile() {
 	emake datadir="${EPREFIX}${SITEETC}/${PN}"
@@ -55,7 +49,12 @@ src_install() {
 	fi
 
 	elisp-site-file-install "${T}/${SITEFILE}"
-	readme.gentoo_create_doc
 	dodoc README doc/library-of-babel.org doc/orgcard.txt etc/ORG-NEWS
 	use doc && dodoc doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
+
+	DOC_CONTENTS="Org mode has a large variety of run-time dependencies,
+		so you may have to install one or more additional packages.
+		A non-exhaustive list of these dependencies may be found at
+		<http://orgmode.org/worg/org-dependencies.html>."
+	readme.gentoo_create_doc
 }
