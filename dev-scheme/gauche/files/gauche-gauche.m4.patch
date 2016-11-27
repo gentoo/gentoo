@@ -1,0 +1,18 @@
+--- a/m4/gauche.m4
++++ b/m4/gauche.m4
+@@ -103,13 +103,10 @@
+   AS_CASE(["$target"],
+ 	  [i686-*], [I686OPT="-DUSE_I686_PREFETCH"])
+   AS_CASE(["$CC"],
+-	  [gcc*], [ dnl some systems may have gcc-2.95, gcc-3, etc.
++	  [*gcc*], [ dnl some systems may have gcc-2.95, gcc-3, etc.
+ 		  AS_CASE(["$target"],
+ 			  [*mingw*], [],
+-				     [GCCOPT="-fomit-frame-pointer"])
+-		  AS_CASE(["$target"],
+-			  [i586-*], [GCCOPT="$GCCOPT -march=i586"],
+-			  [i686-*], [GCCOPT="$GCCOPT -march=i686"])])])
++				     [GCCOPT="-fomit-frame-pointer"])])])
+ OPTFLAGS="$GCCOPT $I686OPT"
+ AC_SUBST(OPTFLAGS)
+ ])

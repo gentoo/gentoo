@@ -26,14 +26,18 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9-rpath.patch
-	epatch "${FILESDIR}"/${PN}-0.9-gauche.m4.patch
-	epatch "${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
-	epatch "${FILESDIR}"/${PN}-0.9-xz-info.patch
-	epatch "${FILESDIR}"/${PN}-0.9-rfc.tls.patch
+	epatch "${FILESDIR}"/${PN}-rpath.patch
+	epatch "${FILESDIR}"/${PN}-gauche.m4.patch
+	epatch "${FILESDIR}"/${PN}-ext-ldflags.patch
+	epatch "${FILESDIR}"/${PN}-xz-info.patch
+	epatch "${FILESDIR}"/${PN}-rfc.tls.patch
+	epatch "${FILESDIR}"/${P}-libressl.patch
+	epatch "${FILESDIR}"/${P}-bsd.patch
+	epatch "${FILESDIR}"/${P}-main.patch
+	epatch "${FILESDIR}"/${P}-unicode.patch
+	eapply_user
 
-	mv gc/src/*.[Ss] gc || die
-	sed -i "/^EXTRA_libgc_la_SOURCES/s|src/||g" gc/Makefile.am
+	use ipv6 && sed -i "s/ -4//" ext/tls/ssltest-mod.scm
 
 	eautoconf
 }
@@ -41,6 +45,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable ipv6) \
+		--with-libatomic-ops=no \
 		--with-slib="${EPREFIX}"/usr/share/slib
 }
 
@@ -49,6 +54,6 @@ src_test() {
 }
 
 src_install() {
-	emake -j1 DESTDIR="${D}" install-pkg install-doc
+	emake DESTDIR="${D}" install-pkg install-doc
 	dodoc AUTHORS ChangeLog HACKING README
 }
