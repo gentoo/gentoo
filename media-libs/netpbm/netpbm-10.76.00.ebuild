@@ -57,6 +57,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/netpbm-10.76.00-build.patch
 	epatch "${FILESDIR}"/netpbm-10.76.00-test.patch #450530
 	epatch "${FILESDIR}"/netpbm-10.76.00-misc-deps.patch
+	epatch "${FILESDIR}"/netpbm-10.76.00-pbmtext-test.patch #601012
 
 	# make sure we use system libs
 	sed -i '/SUPPORT_SUBDIRS/s:urt::' GNUmakefile || die
