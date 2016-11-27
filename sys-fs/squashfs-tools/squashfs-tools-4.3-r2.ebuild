@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/squashfs/squashfs${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="lz4 lzma lzo static xattr +xz"
+IUSE="debug lz4 lzma lzo static xattr +xz"
 
 LIB_DEPEND="sys-libs/zlib[static-libs(+)]
 	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
@@ -53,6 +53,7 @@ src_configure() {
 	)
 
 	tc-export CC
+	use debug && append-cppflags -DSQUASHFS_TRACE
 	use static && append-ldflags -static
 }
 
