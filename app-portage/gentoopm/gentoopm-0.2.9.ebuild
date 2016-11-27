@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A common interface to Gentoo package managers"
-HOMEPAGE="https://bitbucket.org/mgorny/gentoopm/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/gentoopm/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
