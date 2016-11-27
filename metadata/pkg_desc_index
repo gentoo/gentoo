@@ -10222,7 +10222,7 @@ dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desk
 dev-util/xfce4-dev-tools 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
-dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1: A graphical file and directories comparator and merge tool
+dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1 4.0.1-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r4 1.9.1-r5 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
