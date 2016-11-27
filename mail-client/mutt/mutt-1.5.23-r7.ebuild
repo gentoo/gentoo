@@ -47,7 +47,7 @@ CDEPEND="
 		sasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
 	idn?     ( net-dns/libidn )
-	gpg?     ( >=app-crypt/gpgme-0.9.0 )
+	gpg?     ( >=app-crypt/gpgme-0.9.0 <app-crypt/gpgme-1.8.0 )
 	smime?   ( >=dev-libs/openssl-0.9.6 )
 	slang? ( sys-libs/slang )
 	!slang? ( >=sys-libs/ncurses-5.2 )
