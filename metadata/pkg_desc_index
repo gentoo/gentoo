@@ -1211,7 +1211,7 @@ app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/paredit 23-r1: Minor mode for performing structured editing of S-expressions
 app-emacs/php-mode 1.5.0: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42: Maintain a local Wiki using Emacs-friendly markup
-app-emacs/po-mode 0.18.3.2 0.19.3 0.19.4: Major mode for GNU gettext PO files
+app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popwin 0.6.2: Popup window manager for Emacs
 app-emacs/pov-mode 3.2 3.3: Emacs mode for povray
 app-emacs/prom-wl 2.7.0-r1: Procmail reader for Wanderlust
@@ -15697,7 +15697,7 @@ sci-biology/gatk 2.4 9999: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
-sci-biology/gmap 2011.10.07 2012.07.20 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+sci-biology/gmap 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
 sci-biology/goby 1.9.7.3-r1 1.9.8.1-r1: A DNA sequencing data management framework
 sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
 sci-biology/hmmer 2.3.2-r3 2.3.2-r4 3.0 3.1_beta2: Sequence analysis using profile hidden Markov models
