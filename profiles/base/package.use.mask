@@ -6,6 +6,10 @@
 # New entries go on top.
 
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# dev-dotnet/zeitgeist-sharp is going to be removed, bug #582894
+gnome-extra/zeitgeist-datasources tomboy
+
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Avoid the usage of dead net-dialup/capi4k-utils
 app-emulation/crossover-bin capi
 net-libs/opal capi
