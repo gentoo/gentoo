@@ -37,6 +37,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580594
+
 	sed -i -e 's:\($(CC)\) $^:\1 $(LDFLAGS) $^:' usr/Makefile || die
 
 	# make sure xml docs are generated before trying to install them
