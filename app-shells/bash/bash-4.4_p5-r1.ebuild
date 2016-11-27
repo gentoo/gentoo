@@ -11,6 +11,12 @@ PLEVEL=${PV##*_p}
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
+is_release() {
+	case ${PV} in
+	*_alpha*|*_beta*|*_rc*) return 1 ;;
+	*) return 0 ;;
+	esac
+}
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
 	local opt=$1 plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
@@ -32,10 +38,11 @@ READLINE_VER="7.0"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
-case ${PV} in
-*_alpha*|*_beta*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
-*) SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)" ;;
-esac
+if is_release ; then
+	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
+else
+	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -75,7 +82,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.4-popd-offset-overflow.patch #600174
 
 	# Clean out local libs so we know we use system ones w/releases.
-	if [[ ${PV} != *_rc* ]] ; then
+	if is_release ; then
 		rm -rf lib/{readline,termcap}/*
 		touch lib/{readline,termcap}/Makefile.in # for config.status
 		sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
@@ -125,7 +132,7 @@ src_configure() {
 	# is here because readline needs it.  But bash itself calls
 	# ncurses in one or two small places :(.
 
-	if [[ ${PV} != *_rc* ]] ; then
+	if is_release ; then
 		# Use system readline only with released versions.
 		myconf+=( --with-installed-readline=. )
 	fi
