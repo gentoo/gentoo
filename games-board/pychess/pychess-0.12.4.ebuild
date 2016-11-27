@@ -1,38 +1,38 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit fdo-mime gnome2-utils distutils-r1 games
+inherit fdo-mime gnome2-utils distutils-r1
 
 DESCRIPTION="A chess client for Gnome"
-HOMEPAGE="http://pychess.googlepages.com/home"
-SRC_URI="https://pychess.googlecode.com/files/${P/_/}.tar.gz"
+HOMEPAGE="http://pychess.org/"
+SRC_URI="http://pychess.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gstreamer"
 
-DEPEND="dev-python/librsvg-python
+DEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
-	gstreamer? ( dev-python/gst-python:0.10[${PYTHON_USEDEP}] )
-	dev-python/gconf-python
-	x11-themes/gnome-icon-theme"
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	gnome-base/librsvg:2
+	x11-libs/gtksourceview:3.0
+	x11-libs/pango
+	x11-themes/adwaita-icon-theme
+	gstreamer? (
+		dev-python/gst-python:1.0
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0 )
+"
 RDEPEND=${DEPEND}
 
-PATCHES=( "${FILESDIR}"/${P}-python.patch )
-
-S=${WORKDIR}/${P/_/}
-
 python_install() {
-	distutils-r1_python_install --install-scripts="${GAMES_BINDIR}"
+	distutils-r1_python_install
 
 	# bug 487706
 	sed -i \
@@ -41,9 +41,8 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
-	dodoc AUTHORS README
-	prepgamesdirs
+	DOCS="AUTHORS README.md" \
+		distutils-r1_python_install_all
 }
 
 src_prepare() {
@@ -59,12 +58,10 @@ src_install() {
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
 }

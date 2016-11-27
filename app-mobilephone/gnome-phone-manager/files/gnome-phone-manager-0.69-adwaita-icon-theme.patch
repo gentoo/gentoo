@@ -1,0 +1,12 @@
+diff -up ./configure.in.orig ./configure.in
+--- a/configure.in.orig	2014-05-04 09:40:07.973480490 +0300
++++ b/configure.in	2014-05-04 09:40:26.264727691 +0300
+@@ -48,7 +48,7 @@ PKG_CHECK_MODULES(LIBGSM, glib-2.0 gobje
+ PKG_CHECK_MODULES(PHONEMGR, gtk+-3.0 >= 3.0 glib-2.0 >= 2.31.0
+ 	libcanberra-gtk3 gconf-2.0
+ 	$GNOME_BLUETOOTH_REQS $evo_pc_file libedataserver-1.2 >= 3.6
+-	gmodule-2.0 dbus-glib-1 gnome-icon-theme >= 2.19.1
++	gmodule-2.0 dbus-glib-1 adwaita-icon-theme >= 2.19.1
+ )
+ 
+ DBUSLIBDIR="`$PKG_CONFIG dbus-glib-1 --variable=libdir`"

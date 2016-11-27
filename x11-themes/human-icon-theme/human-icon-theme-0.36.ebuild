@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RESTRICT="binchecks strip"
 
-RDEPEND="|| ( x11-themes/tangerine-icon-theme x11-themes/gnome-icon-theme )"
+RDEPEND="|| ( x11-themes/tangerine-icon-theme x11-themes/adwaita-icon-theme )"
 DEPEND=">=gnome-base/librsvg-2.34
 	>=x11-misc/icon-naming-utils-0.8.90
 	dev-util/intltool

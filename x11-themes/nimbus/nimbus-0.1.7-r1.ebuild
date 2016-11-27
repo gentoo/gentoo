@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="gtk minimal"
 
 COMMON_DEPEND="gtk? ( x11-libs/gtk+:2 )"
 RDEPEND="${COMMON_DEPEND}
-	!minimal? ( || ( x11-themes/gnome-icon-theme x11-themes/tango-icon-theme ) )"
+	!minimal? ( || ( x11-themes/adwaita-icon-theme x11-themes/tango-icon-theme ) )"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
