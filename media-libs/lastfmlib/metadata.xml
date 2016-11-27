@@ -17,6 +17,6 @@
 	<longdescription lang="en">
 	</longdescription>
 	<upstream>
-		<remote-id type="google-code">lastfmlib</remote-id>
+		<remote-id type="github">dirkvdb/lastfmlib</remote-id>
 	</upstream>
 </pkgmetadata>
