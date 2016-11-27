@@ -173,7 +173,7 @@ Fix build system
  build_LDFLAGS="@LDFLAGS@"
  CXX="@CXX@"
 -CXXFLAGS="-I$includedir @REQ_CXXFLAGS@"
-+CXXFLAGS="-I$includedir
++CXXFLAGS="-I$includedir"
  FC="@FC@"
  
  LDFLAGS="-L$libdir -lqd @LIBS@"
