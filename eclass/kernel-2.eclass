@@ -681,7 +681,7 @@ compile_headers() {
 		# if K_DEFCONFIG isn't set, force to "defconfig"
 		# needed by mips
 		if [[ -z ${K_DEFCONFIG} ]]; then
-			if [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.16) ]]; then
+			if kernel_is ge 2 6 16 ; then
 				case ${CTARGET} in
 					powerpc64*)	K_DEFCONFIG="ppc64_defconfig";;
 					powerpc*)	K_DEFCONFIG="pmac32_defconfig";;
