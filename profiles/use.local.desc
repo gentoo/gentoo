@@ -4120,7 +4120,7 @@ media-libs/x265:pic - Disable optimized assembly code that is not PIC friendly
 media-libs/xine-lib:bluray - Enable playback of Blu-ray filesystems using media-libs/libbluray
 media-libs/xine-lib:dxr3 - Enable support for DXR3 mpeg acceleration cards.
 media-libs/xine-lib:flac - Build the media-libs/flac based FLAC demuxer and decoder. This flag is not needed for playing FLAC content, neither standalone nor in Ogg container (OggFLAC), but might have better support for exotic features like 24-bit samples or 96kHz sample rates.
-media-libs/xine-lib:fusion - Enable support for the Fusion audio sub system
+media-libs/xine-lib:fusionsound - Enable support for the Fusion audio sub system
 media-libs/xine-lib:gtk - Build the gdkpixbuf-based image decoder plugin.
 media-libs/xine-lib:imagemagick - Build the ImageMagick-based image decoder plugin.
 media-libs/xine-lib:mad - Build the media-libs/libmad based mp3 decoder. This mp3 decoder has superior support compared to the one coming from FFmpeg that is used as a fallback. If you experience any bad behaviour with mp3 files (skipping, distorted sound) make sure you enabled this USE flag.

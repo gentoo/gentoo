@@ -12011,7 +12011,7 @@ lxqt-base/lxqt-runner 0.10.0 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.10.0 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0 0.11.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
+mail-client/alpine 2.00-r5 2.00-r6 2.00-r7: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.13.2 3.14.0 3.14.1: An email client (and news reader) based on GTK+
@@ -14847,7 +14847,7 @@ net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
 net-misc/bti 031-r1: A command line twitter/identi.ca client
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
-net-misc/capi4hylafax 01.03.00.99.300.3-r2 01.03.00.99.300.9-r1 01.03.00.99.300.20-r1: capi4hylafax adds a faxcapi modem to the hylafax enviroment
+net-misc/capi4hylafax 01.03.00.99.300.3-r2 01.03.00.99.300.9-r1 01.03.00.99.300.20-r1 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem to the hylafax enviroment
 net-misc/cbqinit 0.7.3-r2: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
