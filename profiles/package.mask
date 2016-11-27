@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
+# Not compatible with tcl/tk 8.6, obsolete version, bug #547322.
+# Try to use versions from sci overlay. Removal in a month.
+media-gfx/brlcad
+
 # Lars Wendler <polynomial-c@gentoo.org> (26 Nov 2016)
 # Masked until all reverse dependencies no longer break.
 >=app-text/hunspell-1.5.0
