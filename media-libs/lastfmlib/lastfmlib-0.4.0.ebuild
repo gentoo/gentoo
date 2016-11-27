@@ -8,7 +8,7 @@ DESCRIPTION="C++ library to scrobble tracks on Last.fm"
 HOMEPAGE="https://github.com/dirkvdb/lastfmlib/releases"
 SRC_URI="https://github.com/dirkvdb/lastfmlib/archive/lastfmlib-0.4.0.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="debug syslog"
