@@ -1492,7 +1492,7 @@ app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including 
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5 9999: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13 1.5.14: Intelligent Input Bus for Linux / Unix OS
-app-i18n/ibus-anthy 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
+app-i18n/ibus-anthy 1.5.4 1.5.9: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.4.7 1.5.1: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
@@ -4514,7 +4514,7 @@ dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3: An object-o
 dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
-dev-lang/scala-bin 2.11.7: The Scala Programming Language
+dev-lang/scala-bin 2.11.7 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
@@ -12107,7 +12107,7 @@ mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer
 mail-mta/exim 4.87 4.87-r1 4.88_rc5: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4 1.06-r5: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.2_p1 6.0.2_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r1 3.1.3 3.2_pre20161106: A fast and secure drop-in replacement for sendmail
@@ -14933,7 +14933,7 @@ net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/i2pd 2.8.0 2.9.0-r1 2.10.0 2.10.1: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 13.3.0.344519-r1 13.4.0.10109380-r1: ICA Client for Citrix Presentation servers
+net-misc/icaclient 13.4.0.10109380-r1: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
