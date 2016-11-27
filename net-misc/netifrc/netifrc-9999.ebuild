@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,8 @@ IUSE=""
 DEPEND="kernel_linux? ( virtual/pkgconfig )
 	!<sys-fs/udev-172"
 RDEPEND="sys-apps/gentoo-functions
-		>=sys-apps/openrc-0.12"
+	>=sys-apps/openrc-0.15
+	!<sys-fs/udev-init-scripts-27"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
