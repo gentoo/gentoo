@@ -115,6 +115,7 @@ src_compile() {
 		PREFIX=/usr \
 		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		COPTS="${COPTS}" \
@@ -125,6 +126,7 @@ src_compile() {
 		PREFIX=/usr \
 		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		all
