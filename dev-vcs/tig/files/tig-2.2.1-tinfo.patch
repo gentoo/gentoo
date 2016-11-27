@@ -1,15 +1,32 @@
-commit 585e5d60fb85eff2e7709d63d80c320049393694
-Author: Justin Lecher <jlec@gentoo.org>
-Date:   Sat Nov 26 12:55:42 2016 +0100
+From 5eee0216193ef9e6ca39906aeeb7b7774097a2f7 Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Sat, 26 Nov 2016 12:55:42 +0100
+Subject: [PATCH] Use pkg-config to detect ncurses
 
-    Update ax_with_curses.m4 to support pkg-config
-    
-    Latest version of ax_with_curses.m4 supports pkg-config. This is important
-    as libcurses is split into libcurses.so and libtinfo.so on many distros
-    and linking against libcurses.so is not sufficiant. Pkg-config allows
-    proper detection of necessary libs.
-    
-    Signed-off-by: Justin Lecher <jlec@gentoo.org>
+Update ax_with_curses.m4 to latest version and use pkg-config as primary
+detection mechanism for ncurses. Latest version of ax_with_curses.m4
+supports pkg-config. This is important as libcurses is split into
+libcurses.so and libtinfo.so on many distros and linking against
+libcurses.so is not sufficiant. Pkg-config allows proper detection of
+necessary libs.
+
+Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+Also include ax_require_defined.m4 to fix issue with undefined macro:
+
+    configure:3751: error: possibly undefined macro: AX_REQUIRE_DEFINED
+          If this token and others are legitimate, please use m4_pattern_allow.
+          See the Autoconf documentation.
+    configure:3751: error: possibly undefined macro: PKG_CHECK_EXISTS
+
+Signed-off-by: Jonas Fonseca <jonas.fonseca@gmail.com>
+---
+ config.make.in              |   2 +-
+ configure.ac                |   2 +-
+ tools/ax_require_defined.m4 |  37 ++++++++++++
+ tools/ax_with_curses.m4     | 142 ++++++++++++++++++++++++++++++++------------
+ 4 files changed, 142 insertions(+), 41 deletions(-)
+ create mode 100644 tools/ax_require_defined.m4
 
 diff --git a/config.make.in b/config.make.in
 index bf41d85..a7c9ce3 100644
@@ -25,42 +42,61 @@ index bf41d85..a7c9ce3 100644
  ASCIIDOC = @ASCIIDOC@
  XMLTO = @XMLTO@
 diff --git a/configure.ac b/configure.ac
-index 0bcfb3f..d58e2f2 100644
+index 0bcfb3f..8b956ba 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -21,15 +21,23 @@ AC_CHECK_FUNCS([mkstemps], [AC_SUBST([NO_MKSTEMPS], ["#"])])
- AC_CHECK_FUNCS([setenv], [AC_SUBST([NO_SETENV], ["#"])])
- AC_CHECK_FUNCS([strndup], [AC_SUBST([NO_STRNDUP], ["#"])])
- 
--AX_WITH_CURSES
--case "$ax_cv_ncurses" in "no")
--	AC_MSG_ERROR([ncurses not found])
--esac
--case "$ax_cv_ncursesw" in "no")
--	AC_MSG_WARN([The found ncurses library does not support wide-char.])
--	AC_MSG_WARN([This means that tig will not correctly render UTF-8.])
--esac
+@@ -29,7 +29,7 @@ case "$ax_cv_ncursesw" in "no")
+ 	AC_MSG_WARN([The found ncurses library does not support wide-char.])
+ 	AC_MSG_WARN([This means that tig will not correctly render UTF-8.])
+ esac
 -AC_SUBST(CURSES_LIB)
-+PKG_CHECK_MODULES([CURSES], [ncursesw],
-+	[AC_SUBST(CURSES_LIBS)], [
-+	PKG_CHECK_MODULES([CURSES], [ncurses],
-+		[AC_SUBST(CURSES_LIBS)
-+		AC_MSG_WARN([The found ncurses library does not support wide-char.])
-+		AC_MSG_WARN([This means that tig will not correctly render UTF-8.])],[
-+			AX_WITH_CURSES
-+			case "$ax_cv_ncurses" in "no")
-+				AC_MSG_ERROR([ncurses not found])
-+			esac
-+			case "$ax_cv_ncursesw" in "no")
-+				AC_MSG_WARN([The found ncurses library does not support wide-char.])
-+				AC_MSG_WARN([This means that tig will not correctly render UTF-8.])
-+			esac
-+			AC_SUBST(CURSES_LIBS)
-+		])
-+	])
++AC_SUBST(CURSES_LIBS)
  
  AX_LIB_READLINE(6.2)
  
+diff --git a/tools/ax_require_defined.m4 b/tools/ax_require_defined.m4
+new file mode 100644
+index 0000000..cae1111
+--- /dev/null
++++ b/tools/ax_require_defined.m4
+@@ -0,0 +1,37 @@
++# ===========================================================================
++#    http://www.gnu.org/software/autoconf-archive/ax_require_defined.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_REQUIRE_DEFINED(MACRO)
++#
++# DESCRIPTION
++#
++#   AX_REQUIRE_DEFINED is a simple helper for making sure other macros have
++#   been defined and thus are available for use.  This avoids random issues
++#   where a macro isn't expanded.  Instead the configure script emits a
++#   non-fatal:
++#
++#     ./configure: line 1673: AX_CFLAGS_WARN_ALL: command not found
++#
++#   It's like AC_REQUIRE except it doesn't expand the required macro.
++#
++#   Here's an example:
++#
++#     AX_REQUIRE_DEFINED([AX_CHECK_LINK_FLAG])
++#
++# LICENSE
++#
++#   Copyright (c) 2014 Mike Frysinger <vapier@gentoo.org>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 1
++
++AC_DEFUN([AX_REQUIRE_DEFINED], [dnl
++  m4_ifndef([$1], [m4_fatal([macro ]$1[ is not defined; is a m4 file missing?])])
++])dnl AX_REQUIRE_DEFINED
 diff --git a/tools/ax_with_curses.m4 b/tools/ax_with_curses.m4
 index 33a37ac..9461eef 100644
 --- a/tools/ax_with_curses.m4
