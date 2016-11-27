@@ -72,7 +72,7 @@ RDEPEND="
 	tools? ( !media-video/nvidia-settings )
 	wayland? ( dev-libs/wayland )
 	X? (
-		<x11-base/xorg-server-1.18.99:=
+		<x11-base/xorg-server-1.19.99:=
 		>=x11-libs/libvdpau-1.0
 		multilib? (
 			>=x11-libs/libX11-1.6.2[abi_x86_32]
@@ -92,11 +92,11 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 8; then
+	if use kernel_linux && kernel_is ge 4 9; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.8"
-		ewarn "<sys-kernel/vanilla-sources-4.8"
+		ewarn "<sys-kernel/gentoo-sources-4.9"
+		ewarn "<sys-kernel/vanilla-sources-4.9"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"

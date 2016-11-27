@@ -266,7 +266,7 @@ multilib_src_configure() {
 
 	if use libffi; then
 		local CPPFLAGS=${CPPFLAGS}
-		append-cppflags "$(pkg-config --cflags libffi)"
+		append-cppflags "$($(tc-getPKG_CONFIG) --cflags libffi)"
 	fi
 
 	# Enable large file support, bug #550708
