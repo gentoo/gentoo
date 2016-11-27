@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare test
 DEPEND=sys-libs/gdbm test? ( dev-libs/openssl ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A Unix system friendly Scheme Interpreter
-EAPI=5
+EAPI=6
 HOMEPAGE=http://practical-scheme.net/gauche/
 IUSE=ipv6 test
 KEYWORDS=~alpha ~amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/gauche/Gauche-0.9.3.3.tgz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=806b66dee36b8e89da68565f0d4a9e73
+_md5_=4d0b186efa47263c330a395eb473dee9

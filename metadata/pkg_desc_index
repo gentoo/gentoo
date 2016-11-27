@@ -9614,7 +9614,7 @@ dev-scheme/chicken 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme 
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1: escm - Embedded Scheme Processor
 dev-scheme/gambit 4.6.2 4.6.3 4.6.4 4.6.5 4.6.7 4.6.9 4.7.0 4.7.0-r1: Gambit-C is a native Scheme to C compiler and interpreter
-dev-scheme/gauche 0.9.3.3 0.9.4-r1: A Unix system friendly Scheme Interpreter
+dev-scheme/gauche 0.9.3.3 0.9.4-r1 0.9.5: A Unix system friendly Scheme Interpreter
 dev-scheme/gauche-cdb 0.3.1-r1: CDB binding for Gauche
 dev-scheme/gauche-gl 0.5.1 0.6: OpenGL binding for Gauche
 dev-scheme/gauche-gtk 0.6_pre1: GTK2 binding for Gauche
