@@ -288,7 +288,7 @@ app-crypt/ekeyd:usb - Build the libusb-based userland daemon for accessing the E
 app-crypt/gnupg:mta - Build mta support using virtual/mta.
 app-crypt/gnupg:smartcard - Build scdaemon software. Enables usage of OpenPGP cards. For other type of smartcards, try app-crypt/gnupg-pkcs11-scd. Bring in dev-libs/libusb as a dependency; enable scdaemon.
 app-crypt/gnupg:tofu - Enable support for Trust of First use trust model; requires dev-db/sqlite.
-app-crypt/gnupg:tools - Install extra tools.
+app-crypt/gnupg:tools - Install extra tools (including gpgsplit and gpg-zip).
 app-crypt/gnupg:usb - Build direct CCID access for scdaemon; requires dev-libs/libusb.
 app-crypt/gnupg:wks-server - Install the wks-server
 app-crypt/gpgme:common-lisp - Install common-lisp files
