@@ -259,8 +259,8 @@ src_prepare() {
 multilib_src_configure() {
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
-		ffi_cflags=$(pkg-config --cflags-only-I libffi)
-		ffi_ldflags=$(pkg-config --libs-only-L libffi)
+		ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
+		ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	fi
 
 	local libdir=$(get_libdir)
