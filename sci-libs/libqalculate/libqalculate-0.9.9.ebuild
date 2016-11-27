@@ -27,6 +27,11 @@ RDEPEND="${COMMON_DEPEND}
 	net-misc/wget
 	gnuplot? ( >=sci-visualization/gnuplot-3.7 )"
 
+PATCHES=(
+	# https://github.com/Qalculate/libqalculate/issues/6
+	"${FILESDIR}"/${P}-readline.patch
+)
+
 src_prepare() {
 	default
 
