@@ -4386,7 +4386,6 @@ media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/moc:tremor - Build vorbis support using an integer implementation of the vorbis library (media-libs/tremor)
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support
-media-sound/mp3splt-gtk:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 media-sound/mpd:adplug - Enable the AdPlug decoder plugin
 media-sound/mpd:cdio - Use libcdio for ISO9660 parsing support
 media-sound/mpd:curl - Support for web stream listening
