@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-
 inherit eutils autotools
 
 DESCRIPTION="Spellchecker wrapping library"
@@ -13,26 +12,29 @@ SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+
 IUSE="aspell +hunspell static-libs zemberek"
+REQUIRED_USE="|| ( hunspell aspell zemberek )"
 
 COMMON_DEPENDS="
 	dev-libs/glib:2
 	aspell? ( app-text/aspell )
 	hunspell? ( >=app-text/hunspell-1.2.1:0= )
-	zemberek? ( dev-libs/dbus-glib )"
-
+	zemberek? ( dev-libs/dbus-glib )
+"
 RDEPEND="${COMMON_DEPENDS}
-	zemberek? ( app-text/zemberek-server )"
-
+	zemberek? ( app-text/zemberek-server )
+"
 DEPEND="${COMMON_DEPENDS}
-	virtual/pkgconfig"
-
-REQUIRED_USE="|| ( hunspell aspell zemberek )"
+	virtual/pkgconfig
+"
 
 DOCS="AUTHORS BUGS ChangeLog HACKING MAINTAINERS NEWS README TODO"
 
 PATCHES=(
+	# http://bugzilla.abisource.com/show_bug.cgi?id=13772
 	"${FILESDIR}/${P}-hunspell140_fix.patch"
+	"${FILESDIR}/${P}-hunspell150_fix.patch"
 )
 
 src_prepare() {
@@ -40,6 +42,7 @@ src_prepare() {
 	sed -i \
 		-e 's:noinst_PROGRAMS:check_PROGRAMS:' \
 		tests/Makefile.am || die
+	mv configure.in configure.ac || die
 	AT_M4DIR=ac-helpers eautoreconf
 }
 
@@ -56,6 +59,5 @@ src_configure() {
 
 src_install() {
 	default
-
-	prune_libtool_files --all
+	prune_libtool_files --modules
 }
