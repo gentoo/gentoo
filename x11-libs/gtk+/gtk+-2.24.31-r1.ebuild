@@ -216,7 +216,7 @@ multilib_src_install_all() {
 	# Also set more default variables in sync with gtk3 and other distributions
 	echo 'gtk-fallback-icon-theme = "gnome"' > "${T}/gtkrc"
 	echo 'gtk-theme-name = "Adwaita"' >> "${T}/gtkrc"
-	echo 'gtk-icon-theme-name = "gnome"' >> "${T}/gtkrc"
+	echo 'gtk-icon-theme-name = "Adwaita"' >> "${T}/gtkrc"
 	echo 'gtk-cursor-theme-name = "Adwaita"' >> "${T}/gtkrc"
 
 	insinto /usr/share/gtk-2.0
