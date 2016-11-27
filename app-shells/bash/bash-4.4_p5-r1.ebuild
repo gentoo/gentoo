@@ -1,13 +1,12 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs multilib prefix
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-4.3-patches/
+# See ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/
 PLEVEL=${PV##*_p}
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
@@ -73,6 +72,7 @@ src_unpack() {
 src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
+	epatch "${FILESDIR}"/${PN}-4.4-popd-offset-overflow.patch #600174
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
