@@ -2417,7 +2417,7 @@ app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.36: Automating Software Documentation
-app-text/ronn 0.7.3-r2 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
+app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3: An XSLT Parser in C++
@@ -7329,7 +7329,7 @@ dev-python/dogpile-cache 0.6.1 0.6.2: A locking API for expiring values while a 
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
 dev-python/doit 0.23.0-r1 0.27.0 0.28.0 0.29.0: Automation tool
 dev-python/doit-py 0.3.0 0.4.0: doit tasks for python stuff
-dev-python/dominate 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
+dev-python/dominate 2.2.1 2.3.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.7 1.8.1: Python test doubles
 dev-python/doublex-expects 0.4.0 0.7.0_rc1 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1 1.8.8: Fast, simple packet creation / parsing
@@ -9150,7 +9150,7 @@ dev-ruby/faraday_middleware 0.9.2 0.10.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6: Response JSON parser using MultiJson and FaradayMiddleware
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
 dev-ruby/fast_gettext 1.0.0 1.1.0 1.2.0 1.3.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
-dev-ruby/fast_xs 0.8.0-r1 0.8.0-r2: fast_xs text escaping library ruby bindings
+dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
 dev-ruby/fattr 2.2.2 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.6: A ruby indexing/searching library
@@ -9193,7 +9193,7 @@ dev-ruby/hipchat 1.5.3 1.5.4: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3 1.2.4: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.14.1 3.15.2 3.15.3: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.rb
-dev-ruby/hpricot 0.8.6-r2 0.8.6-r3 0.8.6-r5: A fast and liberal HTML parser for Ruby
+dev-ruby/hpricot 0.8.6-r3 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.6.3-r1 0.9.8 0.9.8-r1 1.0.2 2.0.0 2.0.1 2.0.2 2.0.3 2.1.0: An easy-to-use client library for making requests from Ruby
@@ -9245,7 +9245,7 @@ dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
 dev-ruby/mail 2.6.4: An email handling library
 dev-ruby/map 6.6.0: A string/symbol indifferent ordered hash that works in all rubies
-dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
+dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/maxitest 1.5.7 2.0.2 2.1.0 2.2.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
@@ -9285,7 +9285,7 @@ dev-ruby/multi_json 1.9.3 1.11.2 1.12.1: A gem to provide swappable JSON backend
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
-dev-ruby/mustache 0.99.5 1.0.2 1.0.3: Mustache is a framework-agnostic way to render logic-free views
+dev-ruby/mustache 1.0.2 1.0.3: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mysql2 0.3.20 0.4.4 0.4.5: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
@@ -12709,7 +12709,7 @@ media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.4.9 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
-media-libs/jasper 1.900.6 1.900.26 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
+media-libs/jasper 1.900.6 1.900.26 2.0.0 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1 0.13: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
@@ -17472,7 +17472,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.44 4.4.26 4.4.27 4.4.28 4.4.29 4.4.30 4.4.31 4.4.32 4.4.33 4.4.34 4.8.3 4.8.4 4.8.5 4.8.6 4.8.7 4.8.8 4.8.9 4.8.10: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.44 4.4.26 4.4.28 4.4.34 4.4.35 4.8.3 4.8.4 4.8.5 4.8.6 4.8.7 4.8.8 4.8.9 4.8.10 4.8.11: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.1 6.8.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
