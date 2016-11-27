@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 	>=dev-cpp/gconfmm-2.6
 	>=dev-libs/libsigc++-2.2:2
 	media-sound/pulseaudio[glib,gnome]
-	|| ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )"
+	|| ( x11-themes/tango-icon-theme x11-themes/adwaita-icon-theme )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext
 		dev-util/intltool )
