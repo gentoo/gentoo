@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-libs/glib-2.31.18:2
 	>=net-libs/libvncserver-0.9.8.2
 	x11-libs/libxkbfile
-	x11-themes/gnome-icon-theme
+	virtual/freedesktop-icon-theme
 	ayatana? ( dev-libs/libappindicator )
 	crypt? ( dev-libs/libgcrypt:0 )
 	freerdp? (
