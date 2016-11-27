@@ -13,7 +13,7 @@ DESCRIPTION="GPU-accelerated attack against WPA-PSK authentication"
 HOMEPAGE="https://github.com/JPaulMora/Pyrit"
 SRC_URI="https://github.com/JPaulMora/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cuda opencl test"
