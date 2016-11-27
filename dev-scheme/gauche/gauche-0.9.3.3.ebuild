@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils
 
-# Switch to ^g when we switch to EAPI=6.
-MY_P="G${P:1}"
+MY_P="${P^g}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
 HOMEPAGE="http://practical-scheme.net/gauche/"
