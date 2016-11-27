@@ -20,7 +20,7 @@ IUSE="test"
 DEPEND="${PYTHON_DEPS}
 	test? (
 		sci-libs/htslib
-		sci-biology/samtools
+		sci-biology/samtools:0
 	)"
 RDEPEND="sys-libs/zlib"
 
