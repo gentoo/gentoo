@@ -73,6 +73,7 @@ src_prepare() {
 	fi
 	del=(
 		pnmtofiasco fiascotopnm # We always disable fiasco
+		$(usex jpeg '' 'jpegtopnm pnmtojpeg ppmtojpeg')
 		$(usex jbig '' 'jbigtopnm pnmtojbig')
 		$(usex jpeg2k '' 'jpeg2ktopam pamtojpeg2k')
 		$(usex rle '' 'pnmtorle rletopnm')

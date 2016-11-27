@@ -71,14 +71,16 @@ src_prepare() {
 	fi
 	del=(
 		pnmtofiasco fiascotopnm # We always disable fiasco
+		$(usex jpeg '' 'jpegtopnm pnmtojpeg ppmtojpeg')
 		$(usex jbig '' 'jbigtopnm pnmtojbig')
 		$(usex jpeg2k '' 'jpeg2ktopam pamtojpeg2k')
 		$(usex rle '' 'pnmtorle rletopnm')
 		$(usex tiff '' 'pamtotiff pnmtotiff pnmtotiffcmyk tifftopnm')
 	)
 	if [[ ${#del[@]} -gt 0 ]] ; then
-		sed -i -r $(printf -- ' -e s/\<%s\>(:.ok)?//' "${del[@]}") test/all-in-place.{ok,test} || die
-		sed -i '/^$/d' test/all-in-place.ok || die
+		sed -i -r $(printf -- ' -e s/\<%s\>(:.ok)?//' "${del[@]}") \
+			test/{all-in-place,legacy-names}.{ok,test} || die
+		sed -i '/^$/d' test/{all-in-place,legacy-names}.ok || die
 	fi
 
 	# take care of the importinc stuff ourselves by only doing it once

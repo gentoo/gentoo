@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=PJACKLAM
-DIST_VERSION=1.6000
+DIST_VERSION=1.6001
 inherit perl-module
 
 DESCRIPTION="Use the GMP library for Math::BigInt routines"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
-	>=virtual/perl-Math-BigInt-1.999.800
+	>=virtual/perl-Math-BigInt-1.999.801
 	>=virtual/perl-XSLoader-0.20.0
 	>=dev-libs/gmp-4.0.0:0
 "
