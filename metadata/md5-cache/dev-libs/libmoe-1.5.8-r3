@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=Multi octet character encoding handling library
+EAPI=6
+HOMEPAGE=http://pub.ks-and-ks.ne.jp/prog/libmoe/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=public-domain
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://pub.ks-and-ks.ne.jp/prog/pub/libmoe-1.5.8.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=359542c309da5ee16a206026b83e37d0
