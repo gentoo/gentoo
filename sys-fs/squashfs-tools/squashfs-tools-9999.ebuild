@@ -16,7 +16,7 @@ EGIT_REPO_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="lz4 lzma lzo static xattr +xz"
+IUSE="debug lz4 lzma lzo static xattr +xz"
 
 LIB_DEPEND="sys-libs/zlib[static-libs(+)]
 	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
@@ -50,6 +50,7 @@ src_configure() {
 	)
 
 	tc-export CC
+	use debug && append-cppflags -DSQUASHFS_TRACE
 	use static && append-ldflags -static
 }
 
