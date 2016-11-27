@@ -26,6 +26,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-rollup.patch
 	# Fix owner of humfsify; bug #364531
 	epatch "${FILESDIR}"/${P}-humfsify-owner.patch
+	epatch "${FILESDIR}"/${P}-headers.patch #580816
+
 	sed -i -e 's:-o \$(BIN):$(LDFLAGS) -o $(BIN):' "${S}"/*/Makefile || die "LDFLAGS sed failed"
 	sed -i -e 's:-o \$@:$(LDFLAGS) -o $@:' "${S}"/moo/Makefile || die "LDFLAGS sed (moo) failed"
 	if ! use fuse; then
