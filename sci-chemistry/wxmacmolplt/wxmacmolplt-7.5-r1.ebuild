@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="flash"
 
 RDEPEND="
-	media-libs/glew
+	media-libs/glew:0=
 	media-libs/mesa
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	flash? ( media-libs/ming )"
