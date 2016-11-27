@@ -93,6 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-accessibility/caribou-0.3
 
 	x11-misc/xdg-utils
+	x11-libs/xapps
 
 	dev-python/dbus-python[python_targets_python2_7]
 	dev-python/gconf-python:2[python_targets_python2_7]

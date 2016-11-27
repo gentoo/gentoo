@@ -48,6 +48,10 @@ S="${WORKDIR}/${MY_P}"
 # See _render and _clean in Tests/test_imagefont.py
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}/pillow-3.4.2-no-scripts.patch"
+)
+
 python_prepare_all() {
 	# Disable all the stuff we don't want.
 	local f
