@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit autotools elisp-common eutils flag-o-matic
+EAPI=6
+inherit autotools elisp-common flag-o-matic
 
 DESCRIPTION="Any to PostScript filter"
 HOMEPAGE="https://www.gnu.org/software/a2ps/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="emacs latex linguas_ja nls static-libs userland_BSD userland_GNU vanilla"
 
 RESTRICT=test
@@ -36,41 +36,47 @@ SITEFILE=50${PN}-gentoo.el
 S=${WORKDIR}/${PN}-${PV:0:4}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
-	# this will break
-	#epatch "${FILESDIR}/${PN}-4.13c-stdarg.patch"
-	use vanilla || epatch "${FILESDIR}"/${PN}-4.13-stdout.diff
+	default
+
+	eapply "${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
+	use vanilla || eapply -p0 "${FILESDIR}"/${PN}-4.13-stdout.diff
 	if use linguas_ja; then
-		epatch "${DISTDIR}"/${P}-ja_nls.patch.gz
+		eapply "${WORKDIR}"/${P}-ja_nls.patch
 		# bug #335803
-		epatch "${FILESDIR}"/${P}-ja-cleanup.patch
+		eapply -p0 "${FILESDIR}"/${P}-ja-cleanup.patch
 	else
-		epatch "${FILESDIR}"/${P}-cleanup.patch
+		eapply "${FILESDIR}"/${P}-cleanup.patch
 	fi
 
 	# fix fnmatch replacement, bug #134546
-	epatch "${FILESDIR}"/${PN}-4.13c-fnmatch-replacement.patch
+	eapply "${FILESDIR}"/${PN}-4.13c-fnmatch-replacement.patch
 
 	# bug #122026
-	epatch "${FILESDIR}"/${P}-psset.patch
+	eapply "${FILESDIR}"/${P}-psset.patch
 
 	# fix emacs printing, bug #114627
-	epatch "${FILESDIR}"/a2ps-4.13c-emacs.patch
+	eapply "${FILESDIR}"/a2ps-4.13c-emacs.patch
 
 	# fix chmod error, #167670
-	epatch "${FILESDIR}"/a2ps-4.13-manpage-chmod.patch
+	eapply "${FILESDIR}"/a2ps-4.13-manpage-chmod.patch
 
 	# add configure check for mempcpy, bug 216588
-	epatch "${FILESDIR}"/${P}-check-mempcpy.patch
+	eapply "${FILESDIR}"/${P}-check-mempcpy.patch
 
 	# fix compilation error due to invalid stpcpy() prototype, bug 216588
-	epatch "${FILESDIR}"/${P}-fix-stpcpy-proto.patch
+	eapply -p0 "${FILESDIR}"/${P}-fix-stpcpy-proto.patch
 
 	# fix compilation error due to obstack.h issue, bug 269638
-	epatch "${FILESDIR}"/${P}-ptrdiff_t.patch
+	eapply "${FILESDIR}"/${P}-ptrdiff_t.patch
+
+	# fix compilation error due to texinfo 5.x, bug 482748
+	eapply "${FILESDIR}"/${P}-texinfo-5.x.patch
+
+	# fix CVE-2014-0466, bug 506352
+	eapply "${FILESDIR}"/${P}-CVE-2014-0466.patch
 
 	# fix building with sys-devel/automake >= 1.12, bug 420503
-	rm -f {.,ogonkify}/aclocal.m4
+	rm -f {.,ogonkify}/aclocal.m4 || die
 	sed -i \
 		-e '/^AM_C_PROTOTYPES/d' \
 		-e '/^AUTOMAKE_OPTIONS.*ansi2knr/d' \
@@ -114,7 +120,7 @@ src_install() {
 	newdoc "${ED}"/usr/share/a2ps/ppd/README README.a2ps.ppd
 	newdoc "${ED}"/usr/share/ogonkify/README README.ogonkify
 
-	rm -f "${ED}"/usr/share/{a2ps,a2ps/ppd,ogonkify}/README
+	rm -f "${ED}"/usr/share/{a2ps,a2ps/ppd,ogonkify}/README || die
 
 	prune_libtool_files
 

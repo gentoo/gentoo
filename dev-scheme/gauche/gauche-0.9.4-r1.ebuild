@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,11 +27,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-rpath.diff
-	epatch "${FILESDIR}"/${PN}-gauche.m4.diff
-	epatch "${FILESDIR}"/${PN}-ext-ldflags.diff
-	epatch "${FILESDIR}"/${PN}-xz-info.diff
-	epatch "${FILESDIR}"/${PN}-rfc.tls.diff
+	epatch "${FILESDIR}"/${PN}-0.9-rpath.patch
+	epatch "${FILESDIR}"/${PN}-0.9-gauche.m4.patch
+	epatch "${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
+	epatch "${FILESDIR}"/${PN}-0.9-xz-info.patch
+	epatch "${FILESDIR}"/${PN}-0.9-rfc.tls.patch
 
 	mv gc/src/*.[Ss] gc || die
 	sed -i "/^EXTRA_libgc_la_SOURCES/s|src/||g" gc/Makefile.am
