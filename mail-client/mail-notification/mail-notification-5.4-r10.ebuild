@@ -12,7 +12,7 @@ GIT_REVISION="9ae8768" # Same as Fedora
 SRC_URI="https://github.com/epienbroek/${PN}/tarball/${GIT_REVISION} -> ${PN}-${GIT_REVISION}.tar.gz"
 S="${WORKDIR}/epienbroek-${PN}-${GIT_REVISION}"
 
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-linux"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-linux"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="+gnome-keyring libressl sasl ssl sylpheed"
