@@ -60,29 +60,6 @@ src_prepare() {
 	sed -i '/SUPPORT_SUBDIRS/s:urt::' GNUmakefile || die
 	rm -r urt converter/other/jbig/libjbig converter/other/jpeg2000/libjasper || die
 
-	# disable certain tests based on active USE flags
-	local del=(
-		$(usex jbig '' 'jbigtopnm pnmtojbig jbig-roundtrip')
-		$(usex rle '' 'utahrle-roundtrip')
-		$(usex tiff '' 'tiff-roundtrip')
-	)
-	if [[ ${#del[@]} -gt 0 ]] ; then
-		sed -i -r $(printf -- ' -e /%s.test/d' "${del[@]}") test/Test-Order || die
-	fi
-	del=(
-		pnmtofiasco fiascotopnm # We always disable fiasco
-		$(usex jpeg '' 'jpegtopnm pnmtojpeg ppmtojpeg')
-		$(usex jbig '' 'jbigtopnm pnmtojbig')
-		$(usex jpeg2k '' 'jpeg2ktopam pamtojpeg2k')
-		$(usex rle '' 'pnmtorle rletopnm')
-		$(usex tiff '' 'pamtotiff pnmtotiff pnmtotiffcmyk tifftopnm')
-	)
-	if [[ ${#del[@]} -gt 0 ]] ; then
-		sed -i -r $(printf -- ' -e s/\<%s\>(:.ok)?//' "${del[@]}") \
-			test/{all-in-place,legacy-names}.{ok,test} || die
-		sed -i '/^$/d' test/{all-in-place,legacy-names}.ok || die
-	fi
-
 	# take care of the importinc stuff ourselves by only doing it once
 	# at the top level and having all subdirs use that one set #149843
 	sed -i \
