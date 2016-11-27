@@ -2,7 +2,7 @@ automatically skip tests of disabled tools
 
 --- GNUmakefile
 +++ GNUmakefile
-@@ -455,6 +455,17 @@ deb:
+@@ -455,6 +458,21 @@ deb:
  .PHONY: check-package
  .PHONY: check-install
  
@@ -14,13 +14,17 @@ automatically skip tests of disabled tools
 +	JASPERLIB="$(JASPERLIB)" \
 +	JBIGLIB="$(JBIGLIB)" \
 +	JPEGLIB="$(JPEGLIB)" \
++	PNGLIB="$(PNGLIB)" \
 +	TIFFLIB="$(TIFFLIB)" \
-+	URTLIB="$(URTLIB)"
++	URTLIB="$(URTLIB)" \
++	X11LIB="$(X11LIB)" \
++	XML2_LIBS="$(XML2_LIBS)" \
++	ZLIB="$(ZLIB)"
 +
  # Test files in source tree.
  
  check-tree : BUILDBINDIRS :=./analyzer \
-@@ -525,10 +536,10 @@ resultdir-backup: FORCE
+@@ -525,10 +543,10 @@ resultdir-backup: FORCE
  
  check-tree: $(TESTRANDOM) resultdir-backup
  	cd $(RESULTDIR); \
@@ -33,7 +37,7 @@ automatically skip tests of disabled tools
  	  $(SRCDIR)/test/Execute-Tests 2>&1
  
  # Execute-Tests needs to know BUILDDIR in order to locate testrandom.
-@@ -545,19 +556,18 @@ check: check-package
+@@ -545,19 +563,18 @@ check: check-package
  
  check-package: $(TESTRANDOM) resultdir-backup
  	cd $(RESULTDIR); \
@@ -58,7 +62,7 @@ automatically skip tests of disabled tools
  
 --- test/all-in-place.test
 +++ test/all-in-place.test
-@@ -367,11 +367,49 @@ ordinary_testprogs="\
+@@ -367,11 +367,62 @@ ordinary_testprogs="\
    zeisstopnm \
  "
  
@@ -81,6 +85,16 @@ automatically skip tests of disabled tools
 +      ppmtojpeg)
 +        [ "${JPEGLIB}" = "NONE" ] && return 1 ;;
 +
++      pamtopng|\
++      pngtopam|\
++      pnmtopng)
++        [ "${PNGLIB}" = "NONE" ] && return 1 ;;
++
++      svgtopam)
++        [ "${PNGLIB}" = "NONE" ] && return 1
++        [ "${XML2_LIBS}" = "NONE" ] && return 1
++        ;;
++
 +      pamtotiff|\
 +      pnmtotiffcmyk|\
 +      tifftopnm)
@@ -89,6 +103,9 @@ automatically skip tests of disabled tools
 +      pnmtorle|\
 +      rletopnm)
 +        [ "${URTLIB}" = "NONE" ] && return 1 ;;
++
++      pamx)
++        [ "${X11LIB}" = "NONE" ] && return 1 ;;
 +    esac
 +
 +    return 0
@@ -133,6 +150,78 @@ automatically skip tests of disabled tools
  
  # Test 1.  Should print 2425386270 41
  pnmtojbig testgrid.pbm | jbigtopnm | cksum
+--- test/legacy-names.test
++++ test/legacy-names.test
+@@ -94,8 +94,30 @@ ordinary_testprogs="\
+   ppmtouil \
+ "
+ 
++enabled_testprog() {
++    case $1 in
++      ppmtojpeg)
++        [ "${JPEGLIB}" = "NONE" ] && return 1 ;;
++
++      pamrgbatopng|\
++      pngtopnm)
++        [ "${PNGLIB}" = "NONE" ] && return 1 ;;
++
++      pnmtotiff)
++        [ "${TIFFLIB}" = "NONE" ] && return 1 ;;
++    esac
++
++    return 0
++}
++
+ for i in $ordinary_testprogs
+   do
++    # Stub out programs that aren't built.
++    if ! enabled_testprog "$i"; then
++      echo "$i: ok"
++      continue
++    fi
++
+     $i --version  2>&1 | \
+     egrep -v \
+     "(Using libnetpbm|Compiled|(BSD|SYSV|MSDOS|AMIGA) defined|RGB_?ENV=)" \
+--- test/png-roundtrip.test
++++ test/png-roundtrip.test
+@@ -6,6 +6,10 @@
+ ## If this test fails and pnm-roundtrip2.test succeeds, it indicates
+ ## some problem with pnmtopng.
+ 
++if [ "${PNGLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ # Test 1.  Should print 1926073387 101484 18 times
+ for flags in "" -interlace \
+   -gamma=.45 \
+--- test/png-roundtrip2.test
++++ test/png-roundtrip2.test
+@@ -9,6 +9,10 @@
+ ## If both tests fail, the likely cause is a problem with pngtopam.
+ ## It is also possible that there is some problem in libpng.
+ 
++if [ "${PNGLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ # Test 1.  Should print 1926073387 101484 twice
+ for flags in "" -gamma=.45
+   do
+--- test/ps-roundtrip.test
++++ test/ps-roundtrip.test
+@@ -8,6 +8,10 @@
+ ## (1) zlib was not linked.
+ ## (2) ghostscript is not available.
+ 
++if [ "${ZLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ tmpdir=${tmpdir:-/tmp}
+ 
+ # pstopnm does not use libnetpbm functions for output.
 --- test/tiff-roundtrip.test
 +++ test/tiff-roundtrip.test
 @@ -2,6 +2,9 @@
