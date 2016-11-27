@@ -17165,7 +17165,7 @@ sys-cluster/ganglia 3.5.0 3.5.0-r1 3.6.0-r1 3.7.1 3.7.1-r1: A scalable distribut
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
-sys-cluster/glusterfs 3.1.2 3.5.4 3.6.5 3.7.4: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 3.1.2 3.5.4 3.6.5 3.7.4 3.8.6: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r2: Heartbeat high availability cluster manager
 sys-cluster/heat 7.0.0-r1 7.0.1 2016.2.9999: A CloudFormation-compatible openstack-native cloud orchistration engine.
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
