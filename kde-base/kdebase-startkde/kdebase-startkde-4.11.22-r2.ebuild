@@ -73,7 +73,6 @@ RDEPEND="
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
 		$(add_kdebase_dep klipper)
-		$(add_kdebase_dep libtaskmanager)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
@@ -89,6 +88,7 @@ RDEPEND="
 		kde-plasma/liboxygenstyle:4
 		kde-plasma/libplasmaclock:4
 		kde-plasma/libplasmagenericshell:4
+		kde-plasma/libtaskmanager:4
 		kde-plasma/powerdevil:4
 		kde-plasma/qguiplatformplugin_kde:4
 		kde-plasma/solid-actions-kcm:4
