@@ -21,8 +21,8 @@ HOMEPAGE="http://www.ocsigen.org"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-IUSE="debug doc dbm +ocamlopt +sqlite zlib"
-REQUIRED_USE="|| ( sqlite dbm )"
+IUSE="debug doc dbm +ocamlopt +sqlite zlib postgres"
+REQUIRED_USE="|| ( sqlite dbm postgres )"
 RESTRICT="strip installsources"
 
 DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
@@ -34,6 +34,7 @@ DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
 		>=dev-ml/tyxml-4:=[camlp4(+)]
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
 		dev-ml/ocaml-ipaddr:=
+		postgres? ( dev-ml/pgocaml:= )
 		dbm? ( dev-ml/camldbm:= )
 		sqlite? ( dev-ml/ocaml-sqlite3:= )"
 RDEPEND="${DEPEND}"
@@ -55,6 +56,7 @@ src_configure() {
 		$(use_with zlib camlzip) \
 		$(use_with sqlite) \
 		$(use_with dbm) \
+		$(use_with postgres pgsql) \
 		--with-preempt \
 		--ocsigen-group ocsigenserver \
 		--ocsigen-user ocsigenserver  \
