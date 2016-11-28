@@ -8,11 +8,11 @@ inherit bash-completion-r1 autotools flag-o-matic systemd toolchain-funcs user
 
 KEYWORDS="~amd64"
 
-PXE_VERSION="1151.0.0"
+PXE_VERSION="1235.0.0"
 PXE_SYSTEMD_VERSION="v231"
-KVM_LINUX_VERSION="4.3.1"
-KVMTOOL_VERSION="d62653e177597251c24494a6dda60acd6d846671"
-QEMU_VERSION="v2.6.1"
+KVM_LINUX_VERSION="4.8.6"
+KVMTOOL_VERSION="1cd6f516264ad2ad83fad3dc1264d6ff4bcd17b2"
+QEMU_VERSION="v2.7.0"
 PXE_URI="http://alpha.release.core-os.net/amd64-usr/${PXE_VERSION}/coreos_production_pxe_image.cpio.gz"
 PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
 
@@ -41,6 +41,10 @@ SLOT="0"
 IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src +actool systemd"
 REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm_lkvm rkt_stage1_kvm_qemu rkt_stage1_src ) rkt_stage1_host? ( systemd ) !rkt_stage1_kvm"
 
+# Some tests fail.
+# rkt_stage1_src needs to copy /bin/mount, which requires root privileges during src_compile
+RESTRICT="test rkt_stage1_src? ( userpriv )"
+
 DEPEND=">=dev-lang/go-1.5
 	app-arch/cpio
 	app-crypt/trousers
@@ -48,7 +52,9 @@ DEPEND=">=dev-lang/go-1.5
 	dev-perl/Capture-Tiny
 	rkt_stage1_src? ( >=sys-apps/util-linux-2.27 )
 	rkt_stage1_kvm_qemu? (
+		sys-apps/attr[static-libs(+)]
 		sys-libs/libcap[static-libs(+)]
+		sys-libs/zlib[static-libs(+)]
 		>=x11-libs/pixman-0.28.0[static-libs(+)]
 	)"
 
@@ -85,6 +91,10 @@ src_unpack() {
 
 src_prepare() {
 	eapply_user
+
+	# This patch breaks linux kernel cc-option checks when the
+	# compiler doesn't recognize the -no-pie option.
+	rm stage1/usr_from_kvm/kernel/patches/0002-for-debian-gcc.patch || die
 
 	# avoid sdjournal include for bug 595874
 	if ! use systemd; then
@@ -128,7 +138,7 @@ src_prepare() {
 'else\n'\
 '\t\0\n'\
 'endif~' \
-	-e 's|QEMU_CONFIGURATION_OPTS :=|\0 --disable-opengl|' \
+	-e 's|QEMU_CONFIGURATION_OPTS :=|\0 --disable-bzip2 --disable-libssh2 --disable-opengl|' \
 	-i stage1/usr_from_kvm/qemu.mk || die
 
 	# disable fetch of kernel sources
@@ -232,10 +242,12 @@ src_install() {
 		dosym stage1-kvm-qemu.aci "${STAGE1_DEFAULT_LOCATION}"
 	fi
 
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.service
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.timer
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.service
-	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.socket
+	systemd_dounit "${S}"/dist/init/systemd/*.service \
+		"${S}"/dist/init/systemd/*.timer \
+		"${S}"/dist/init/systemd/*.socket
+
+	insinto /usr/lib/tmpfiles.d
+	doins "${S}"/dist/init/systemd/tmpfiles.d/*
 
 	newbashcomp "${S}"/dist/bash_completion/rkt.bash rkt
 

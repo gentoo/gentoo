@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,9 +6,12 @@ EAPI="5"
 
 inherit eutils multiprocessing toolchain-funcs
 
+MY_HASH="e78ed7a67bbaa37dc57dfb37219f505c48755e14"
+MY_P="${PN}-${MY_HASH}"
+
 DESCRIPTION="Port of many Plan 9 programs and libraries"
 HOMEPAGE="http://swtch.com/plan9port/"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tgz"
+SRC_URI="https://github.com/9fans/${PN}/archive/${MY_HASH}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="9base BSD-4 MIT LGPL-2.1 BigelowHolmes"
 SLOT="0"
@@ -21,7 +24,7 @@ DEPEND="X? ( x11-apps/xauth )
 	            media-libs/fontconfig )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/${MY_P}"
 
 PLAN9=/usr/lib/plan9
 EPLAN9="${EPREFIX}"${PLAN9}
