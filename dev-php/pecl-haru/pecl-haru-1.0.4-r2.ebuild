@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-USE_PHP="php5-5 php5-6"
+USE_PHP="php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 DESCRIPTION="An interface to libharu, a PDF generator"
 
@@ -20,9 +20,10 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	# config.m4 is broken checking paths, so we need to override it
-	my_conf=""
-	use png && my_conf+=" --with-png-dir=/usr"
-	use zlib && my_conf+=" --with-zlib-dir=/usr"
+	local PHP_EXT_ECONF_ARGS=(
+		$(usex png '--with-png-dir=/usr' '')
+		$(usex zlib '--with-zlib-dir=/usr' '')
+	)
 
-	php-ext-source-r2_src_configure
+	php-ext-source-r3_src_configure
 }

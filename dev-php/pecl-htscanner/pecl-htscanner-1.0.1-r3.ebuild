@@ -1,18 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="htscanner"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS="README"
-PHPSAPILIST="cgi"
+PHP_EXT_SAPIS="cgi"
 
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP="php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 
@@ -31,13 +31,11 @@ done
 DEPEND="${PHPUSEDEPEND}"
 RDEPEND="${DEPEND}"
 
-my_conf="--enable-htscanner"
-
 src_install() {
-	php-ext-pecl-r2_src_install
+	php-ext-pecl-r3_src_install
 
-	php-ext-source-r2_addtoinifiles "config_file" ".htaccess"
-	php-ext-source-r2_addtoinifiles "default_docroot" "/"
-	php-ext-source-r2_addtoinifiles "default_ttl" "300"
-	php-ext-source-r2_addtoinifiles "stop_on_error" "0"
+	php-ext-source-r3_addtoinifiles "config_file" ".htaccess"
+	php-ext-source-r3_addtoinifiles "default_docroot" "/"
+	php-ext-source-r3_addtoinifiles "default_ttl" "300"
+	php-ext-source-r3_addtoinifiles "stop_on_error" "0"
 }
