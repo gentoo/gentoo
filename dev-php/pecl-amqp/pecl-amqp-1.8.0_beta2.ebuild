@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-USE_PHP="php7-0 php5-6 php5-5"
+USE_PHP="php7-0 php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 

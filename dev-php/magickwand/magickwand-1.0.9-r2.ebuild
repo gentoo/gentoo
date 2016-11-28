@@ -1,22 +1,22 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="magickwand"
 PHP_EXT_ZENDEXT="no"
 PHP_EXT_INI="yes"
-DOCS="AUTHOR ChangeLog CREDITS README TODO"
+DOCS=( AUTHOR ChangeLog CREDITS README TODO )
 
 MY_PN="MagickWandForPHP"
 IUSE=""
 
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP="php5-6"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-inherit php-ext-source-r2
+inherit php-ext-source-r3
 
 DESCRIPTION="A native PHP-extension to the ImageMagick MagickWand API"
 HOMEPAGE="http://www.magickwand.org/"

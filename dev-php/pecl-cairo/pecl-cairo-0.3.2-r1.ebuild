@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-DOCS="TODO"
+DOCS=( TODO )
 
-USE_PHP="php5-5 php5-6"
+USE_PHP="php5-6"
 
-inherit php-ext-pecl-r2
+PHP_EXT_S="${WORKDIR}/Cairo-${PV}"
+
+inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 
@@ -21,5 +23,4 @@ RDEPEND="${DEPEND}"
 
 IUSE=""
 
-S="${WORKDIR}/Cairo-${PV}"
-PHP_EXT_S="$S"
+S="${PHP_EXT_S}"
