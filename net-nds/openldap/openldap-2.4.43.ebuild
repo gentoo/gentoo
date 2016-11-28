@@ -52,7 +52,7 @@ CDEPEND="icu? ( dev-libs/icu:= )
 	!minimal? (
 		sys-devel/libtool
 		sys-libs/e2fsprogs-libs
-		>=dev-db/lmdb-0.9.14
+		>=dev-db/lmdb-0.9.17
 		tcpd? ( sys-apps/tcp-wrappers )
 		odbc? ( !iodbc? ( dev-db/unixODBC )
 			iodbc? ( dev-db/libiodbc ) )
