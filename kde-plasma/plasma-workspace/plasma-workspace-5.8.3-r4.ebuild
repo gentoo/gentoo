@@ -113,7 +113,7 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-base/klipper:4
 	!kde-base/krunner:4
 	!kde-base/ksmserver:4
-	!kde-base/ksplash:4
+	!kde-plasma/ksplash:4
 	!kde-base/plasma-workspace:4
 "
 DEPEND="${COMMON_DEPEND}
