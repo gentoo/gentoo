@@ -118,6 +118,7 @@ REQUIRED_USE="vidix? ( || ( X fbcon ) )
 
 PATCHES=(
 	"${FILESDIR}/${P}-libxcb-1.12.patch"
+	"${FILESDIR}/${P}-sysmacros.patch"
 )
 
 src_prepare() {
