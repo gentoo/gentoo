@@ -15382,7 +15382,7 @@ net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
-net-proxy/obfs4proxy 0.0.6 9999: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
+net-proxy/obfs4proxy 0.0.6 0.0.7 9999: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
@@ -17466,7 +17466,7 @@ sys-fs/vhba 20130607 20140928: Virtual (SCSI) Host Bus Adapter kernel module for
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.3 3.1.5 3.1.6: xfs dump/restore utilities
-sys-fs/xfsprogs 3.2.4 4.5.0 4.7.0: xfs filesystem utilities
+sys-fs/xfsprogs 3.2.4 4.5.0 4.7.0 4.8.0: xfs filesystem utilities
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
@@ -18087,7 +18087,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorde
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
+www-misc/zoneminder 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.154: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.59_beta 56.0.2924.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
