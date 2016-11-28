@@ -1,0 +1,112 @@
+https://git.reviewboard.kde.org/r/128576/
+
+	The Xcb implementation of KWindowSystem has two operations modes and when
+	switching between the two it recreates the NETEventFilter.
+
+	This could result in the compositingChanged signal never to be emitted if:
+	1) NETEventFilter gets created before compositor is started
+	2) NETEventFilter gets recreated after compositor is started but before
+	the old filter had a chance to process the XFixes event
+
+	This was the cause for e.g. plasmashell not properly detecting that a
+	Compositor is running on X11.
+
+	This change ensures that the signal is emitted if the compositing state
+	differs after the recreation. Also a test case is added which simulates
+	the condition.
+
+	BUG: 362531
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index 690c41bfe2ca981d206c590c3fbd28416d4ae401..ce9c31e591eab4c1b583d5907112dd7c0e5bd424 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -50,6 +50,7 @@ if(X11_FOUND)
+         netrootinfotestwm
+         netwininfotestclient
+         netwininfotestwm
++        compositingenabled_test
+     )
+     
+     kwindowsystem_executable_tests(
+diff --git a/autotests/compositingenabled_test.cpp b/autotests/compositingenabled_test.cpp
+new file mode 100644
+index 0000000000000000000000000000000000000000..61727415d6d22cbc894707ab357c17b20ac531ab
+--- /dev/null
++++ b/autotests/compositingenabled_test.cpp
+@@ -0,0 +1,53 @@
++/*
++ *   Copyright 2016 Martin Gräßlin <mgraesslin@kde.org>
++ *
++ *   This library is free software; you can redistribute it and/or
++ *   modify it under the terms of the GNU Lesser General Public
++ *   License as published by the Free Software Foundation; either
++ *   version 2.1 of the License, or (at your option) any later version.
++ *
++ *   This library is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *   Lesser General Public License for more details.
++ *
++ *   You should have received a copy of the GNU Lesser General Public
++ *   License along with this library.  If not, see <http://www.gnu.org/licenses/>.
++ */
++#include <KWindowSystem>
++#include <kmanagerselection.h>
++#include <QtTest/QtTest>
++
++class CompositingEnabledTest : public QObject
++{
++    Q_OBJECT
++private Q_SLOTS:
++    void testRecreatingNetEventFilter();
++};
++
++void CompositingEnabledTest::testRecreatingNetEventFilter()
++{
++    // this test simulates the condition that the compositor gets enabled while the NetEventFilter gets recreated
++    QVERIFY(!KWindowSystem::compositingActive());
++
++    // fake the compositor
++    QSignalSpy compositingChangedSpy(KWindowSystem::self(), &KWindowSystem::compositingChanged);
++    QVERIFY(compositingChangedSpy.isValid());
++    KSelectionOwner compositorSelection("_NET_WM_CM_S0");
++    QSignalSpy claimedSpy(&compositorSelection, &KSelectionOwner::claimedOwnership);
++    QVERIFY(claimedSpy.isValid());
++    compositorSelection.claim(true);
++    connect(&compositorSelection, &KSelectionOwner::claimedOwnership,
++        [] {
++            // let's connect to a signal which will cause a re-creation of NetEventFilter
++            QSignalSpy workAreaChangedSpy(KWindowSystem::self(), &KWindowSystem::workAreaChanged);
++            QVERIFY(workAreaChangedSpy.isValid());
++        }
++    );
++
++    QTRY_VERIFY(KWindowSystem::compositingActive());
++    QCOMPARE(compositingChangedSpy.count(), 1);
++}
++
++QTEST_MAIN(CompositingEnabledTest)
++#include "compositingenabled_test.moc"
+diff --git a/src/platforms/xcb/kwindowsystem.cpp b/src/platforms/xcb/kwindowsystem.cpp
+index fbff381b61116c6eef47d5c7fa1fc5730857328c..091c71af48c79a69abd526c44e88a2847e46e893 100644
+--- a/src/platforms/xcb/kwindowsystem.cpp
++++ b/src/platforms/xcb/kwindowsystem.cpp
+@@ -480,6 +480,7 @@ void KWindowSystemPrivateX11::init(FilterInfo what)
+     }
+ 
+     if (!s_d || s_d->what < what) {
++        const bool wasCompositing = s_d ? s_d->compositingEnabled : false;
+         MainThreadInstantiator instantiator(what);
+         NETEventFilter *filter;
+         if (instantiator.thread() == QCoreApplication::instance()->thread()) {
+@@ -496,6 +497,9 @@ void KWindowSystemPrivateX11::init(FilterInfo what)
+         }
+         d.reset(filter);
+         d->activate();
++        if (wasCompositing != s_d_func()->compositingEnabled) {
++            emit KWindowSystem::self()->compositingChanged(s_d_func()->compositingEnabled);
++        }
+     }
+ }
+ 
