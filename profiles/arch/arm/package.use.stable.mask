@@ -2,6 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
+# no stable mpi on arm yet, but maybe in the future
+<=app-crypt/johntheripper-1.7.9-r6 mpi
+<=dev-libs/boost-1.56.0-r1 mpi
+<=dev-util/valgrind-3.10.1 mpi
+<=sci-chemistry/gromacs-5.0.4 mpi
+<=sci-libs/fftw-3.3.4 mpi
+
 # Markus Meier <maekke@gentoo.org> (27 Sep 2016)
 # Missing stable
 dev-db/mariadb jdbc
