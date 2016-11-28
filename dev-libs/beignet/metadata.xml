@@ -5,4 +5,8 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<use>
+		<flag name="ocl-icd">Enable compatibility with the
+		<pkg>dev-libs/ocl-icd</pkg> OpenCL ICD loader</flag>
+	</use>
 </pkgmetadata>
