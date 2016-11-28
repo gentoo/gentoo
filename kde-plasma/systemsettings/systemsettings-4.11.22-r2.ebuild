@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 COMMONDEPEND="
 	dev-libs/glib:2
 	kde-plasma/kwin:4
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	media-libs/fontconfig
 	>=media-libs/freetype-2
 	>=x11-libs/libxklavier-3.2

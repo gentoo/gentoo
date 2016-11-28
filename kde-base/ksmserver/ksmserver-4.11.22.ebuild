@@ -14,7 +14,7 @@ IUSE="debug"
 
 DEPEND="
 	kde-plasma/kcminit:4
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	media-libs/qimageblitz
 	x11-libs/libICE
 	x11-libs/libSM

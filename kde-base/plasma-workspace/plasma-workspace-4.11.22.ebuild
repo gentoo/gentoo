@@ -24,12 +24,12 @@ COMMONDEPEND="
 	>=dev-qt/qtcore-4.8.4-r3:4
 	!kde-misc/ktouchpadenabler
 	$(add_kdebase_dep kactivities)
-	$(add_kdebase_dep libkworkspace)
 	$(add_kdebase_dep libplasmaclock 'kdepim?')
 	$(add_kdebase_dep libplasmagenericshell)
 	$(add_kdebase_dep libtaskmanager)
 	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
+	kde-plasma/libkworkspace:4
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage

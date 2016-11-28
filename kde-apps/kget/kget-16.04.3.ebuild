@@ -14,8 +14,8 @@ IUSE="debug bittorrent gpg mms sqlite webkit"
 
 RDEPEND="
 	$(add_kdeapps_dep libkonq)
-	$(add_kdebase_dep libkworkspace '' 4.11)
 	app-crypt/qca:2[qt4]
+	kde-plasma/libkworkspace:4
 	bittorrent? ( >=net-libs/libktorrent-1.0.3:4 )
 	gpg? ( || ( $(add_kdeapps_dep gpgmepp) $(add_kdeapps_dep kdepimlibs) ) )
 	mms? ( media-libs/libmms )

@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug prison"
 
 DEPEND="
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	$(add_kdebase_dep libtaskmanager)
 	sys-libs/zlib
 	x11-libs/libX11

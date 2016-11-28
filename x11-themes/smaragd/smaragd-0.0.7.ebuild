@@ -17,7 +17,7 @@ SLOT="4"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	x11-libs/cairo
 "
 RDEPEND="

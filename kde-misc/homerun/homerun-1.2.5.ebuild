@@ -22,7 +22,7 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdeapps_dep libkonq)
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 "
 RDEPEND="
 	${DEPEND}
