@@ -110,7 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 		qt4? ( dev-libs/sni-qt )
 	)
 	pulseaudio? ( $(add_plasma_dep plasma-pa ) )
-	qt4? ( kde-base/qguiplatformplugin_kde )
+	qt4? ( kde-plasma/qguiplatformplugin_kde:4 )
 	!kde-apps/kcontrol
 	!kde-apps/kdepasswd:4
 	!kde-apps/knetattach[handbook]

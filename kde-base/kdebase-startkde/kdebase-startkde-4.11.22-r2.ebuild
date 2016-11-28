@@ -77,7 +77,6 @@ RDEPEND="
 		$(add_kdebase_dep libplasmaclock)
 		$(add_kdebase_dep libplasmagenericshell)
 		$(add_kdebase_dep libtaskmanager)
-		$(add_kdebase_dep qguiplatformplugin_kde)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
@@ -91,6 +90,7 @@ RDEPEND="
 		kde-plasma/kwrited:4
 		kde-plasma/liboxygenstyle:4
 		kde-plasma/powerdevil:4
+		kde-plasma/qguiplatformplugin_kde:4
 		kde-plasma/solid-actions-kcm:4
 	)
 	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
