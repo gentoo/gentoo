@@ -13,5 +13,7 @@
 	<upstream>
 		<remote-id type="pypi">backports.unittest_mock</remote-id>
 		<remote-id type="github">jaraco/backports.unittest_mock</remote-id>
+		<bugs-to>https://github.com/jaraco/backports.unittest_mock/issues</bugs-to>
+		<changelog>https://github.com/jaraco/backports.unittest_mock/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>
