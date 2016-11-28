@@ -1,0 +1,42 @@
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Tue, 15 Dec 2015 07:40:43 +0000
+Subject: Fix ark doesn't exit with kxmlgui 5.17.
+X-Git-Url: http://quickgit.kde.org/?p=ark.git&a=commitdiff&h=f7312a26d31cdc31776a09df600327ca86d3daea
+---
+Fix ark doesn't exit with kxmlgui 5.17.
+
+Previously setQuitOnLastWindowClosed is reset by KMainWindow::init but
+now it's removed in 5.17. Change to use setQuitOnLastWindowClosed in ark
+only when it's using a kjob and connect quit() to finished signal.
+
+REVIEW: 126358
+---
+
+
+--- a/app/main.cpp
++++ b/app/main.cpp
+@@ -119,7 +119,6 @@
+                         QStringLiteral("http://littlesvr.ca/misc/contactandrew.php"));
+ 
+     application.setWindowIcon(QIcon::fromTheme(QStringLiteral("ark")));
+-    application.setQuitOnLastWindowClosed(false);
+ 
+     QCommandLineParser parser;
+     parser.setApplicationDescription(aboutData.shortDescription());
+@@ -196,6 +195,7 @@
+             parser.isSet(QStringLiteral("add-to"))) {
+ 
+             AddToArchive *addToArchiveJob = new AddToArchive(&application);
++            application.setQuitOnLastWindowClosed(false);
+             application.connect(addToArchiveJob, SIGNAL(result(KJob*)), SLOT(quit()), Qt::QueuedConnection);
+ 
+             if (parser.isSet(QStringLiteral("changetofirstpath"))) {
+@@ -233,6 +233,7 @@
+         } else if (parser.isSet(QStringLiteral("batch"))) {
+ 
+             BatchExtract *batchJob = new BatchExtract(&application);
++            application.setQuitOnLastWindowClosed(false);
+             application.connect(batchJob, SIGNAL(result(KJob*)), SLOT(quit()), Qt::QueuedConnection);
+ 
+             for (int i = 0; i < urls.count(); ++i) {
+
