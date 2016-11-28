@@ -11734,7 +11734,6 @@ kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/ksplash 4.11.22: KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)
-kde-base/kstartupconfig 4.11.22: KDE: Utility to launch applications with special window properties
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
 kde-base/libkworkspace 4.11.22: A library for KDE desktop applications
 kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
@@ -11948,6 +11947,7 @@ kde-plasma/kscreen 1.0.71_p20150824 5.7.5 5.8.3 5.8.4: KDE Plasma screen managem
 kde-plasma/kscreenlocker 5.7.5 5.8.3 5.8.4: Library and components for secure lock screen architecture
 kde-plasma/kscreensaver 4.11.22: KDE Plasma screensaver framework
 kde-plasma/ksshaskpass 0.5.3-r1 5.7.5 5.8.3 5.8.4: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/kstartupconfig 4.11.22: Utility to launch applications with special window properties
 kde-plasma/kstyles 4.11.22: A set of different KDE Plasma styles
 kde-plasma/ksysguard 4.11.22 5.7.5 5.8.3 5.8.4: Network-enabled task manager and system monitor
 kde-plasma/ksystraycmd 4.11.22: Embeds applications given as argument into the system tray
