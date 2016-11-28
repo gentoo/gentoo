@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/uutf:= dev-lang/ocaml:= dev-ml/uchar:= dev-ml/topkg dev-ml/opam dev-ml/ocamlbuild dev-ml/findlib
+DESCRIPTION=Non-blocking streaming JSON codec for OCaml
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/jsonm
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/uutf:= dev-lang/ocaml:= dev-ml/uchar:=
+SLOT=0/1.0.0
+SRC_URI=http://erratique.ch/software/jsonm/releases/jsonm-1.0.0.tbz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=7e2e7b1d4b1e03e340ce3266ca3bcbd2
