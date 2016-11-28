@@ -10,7 +10,7 @@ inherit user eutils multilib flag-o-matic autotools
 
 DESCRIPTION="389 Directory Server (core librares and daemons )"
 HOMEPAGE="http://port389.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
+SRC_URI="http://www.port389.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -77,7 +77,6 @@ src_configure() {
 		$(use_enable bitwise) \
 		$(use_enable presence) \
 		$(use_with kerberos) \
-		$(use_enable debug) \
 		$(use_enable auto-dn-suffix) \
 		--enable-maintainer-mode \
 		--with-fhs \

@@ -9,13 +9,13 @@ WANT_AUTOMAKE="1.13"
 inherit user eutils multilib flag-o-matic autotools
 
 DESCRIPTION="389 Directory Server (core librares and daemons )"
-HOMEPAGE="http://port389.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
+HOMEPAGE="http://www.port389.org/"
+SRC_URI="http://www.port389.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
+IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise presence kerberos selinux"
 
 # Pinned to db:4.8 as it is the current stable, can change to a later db version < 6 when they stabilize.
 # The --with-db-inc line in econf will need to be updated as well when changing db version.
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
-	dev-libs/nss[utils]
+	>=dev-libs/nss-3.22[utils]
 	dev-libs/nspr
 	>=dev-libs/svrcore-4.1.2
 	dev-libs/openssl:0=
@@ -69,7 +69,6 @@ src_configure() {
 		$(use_enable bitwise) \
 		$(use_enable presence) \
 		$(use_with kerberos) \
-		$(use_enable debug) \
 		$(use_enable auto-dn-suffix) \
 		--with-initddir=no \
 		--enable-maintainer-mode \
