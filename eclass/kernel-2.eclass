@@ -1260,8 +1260,12 @@ kernel-2_src_unpack() {
 	# we run misc `make` functions below
 	[[ $(type -t kernel-2_hook_premake) == "function" ]] && kernel-2_hook_premake
 
-	debug-print "Doing epatch_user"
-	epatch_user
+	debug-print "Applying any user patches"
+	# apply any user patches
+    case ${EAPI:-0} in
+        0|1|2|3|4|5) epatch_user ;;
+        6) eapply_user ;;
+    esac
 
 	debug-print "Doing unpack_set_extraversion"
 
