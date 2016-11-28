@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ DECLARATIVE_REQUIRED="always"
 KMNAME="kde-workspace"
 inherit kde4-meta
 
-DESCRIPTION="KDE splashscreen framework (the splashscreen of KDE itself, not of individual apps)"
+DESCRIPTION="KDE Plasma splashscreen framework"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_3dnow altivec debug cpu_flags_x86_mmx cpu_flags_x86_sse
 cpu_flags_x86_sse2 xinerama"
