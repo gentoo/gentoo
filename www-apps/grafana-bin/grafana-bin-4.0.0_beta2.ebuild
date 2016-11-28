@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="http://grafana.org"
-SRC_URI="https://grafanarel.s3.amazonaws.com/builds/${MY_PN}-${MY_PV}.linux-x64.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://skade.schwarzvogel.de/~klausman/gentoo/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
