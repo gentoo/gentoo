@@ -152,7 +152,7 @@ sci-libs/flann -cuda
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium -tomboy
+gnome-extra/zeitgeist-datasources -chromium
 
 # Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda works on x86/amd64 (masked in base)
