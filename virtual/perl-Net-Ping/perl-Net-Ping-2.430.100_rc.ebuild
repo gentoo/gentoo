@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="
-	|| ( =dev-lang/perl-5.24.1* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.24.1* =dev-lang/perl-5.22.3* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/Net-Ping-${PV}
 	!>perl-core/Net-Ping-${PV}-r999
