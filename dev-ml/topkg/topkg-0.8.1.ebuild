@@ -11,7 +11,7 @@ HOMEPAGE="http://erratique.ch/software/topkg https://github.com/dbuenzli/topkg"
 SRC_URI="https://github.com/dbuenzli/topkg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
