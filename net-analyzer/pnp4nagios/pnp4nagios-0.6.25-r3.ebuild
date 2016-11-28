@@ -4,15 +4,13 @@
 
 EAPI=6
 
-inherit depend.apache eutils
-
 DESCRIPTION="A performance data analyzer for nagios"
 HOMEPAGE="http://www.pnp4nagios.org/"
 SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="apache2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 # A lot of things (sync mode, for one) are broken with nagios-4.x.
@@ -37,38 +35,28 @@ PATCHES=(
 	"${FILESDIR}/${P}-rrdtool-0.6.0-support.patch"
 )
 
-# There is no want_apache2_4, but we needed to specify that manually
-# anyway to be able to include the list of modules.
-want_apache2
-
-pkg_setup() {
-	depend.apache_pkg_setup
-}
-
 src_configure() {
-	local var_dir=
-	local user_group=
+	local var_dir user_group
 
 	if has_version net-analyzer/nagios-core; then
-		var_dir=/var/nagios/
+		var_dir=/var/nagios
 		user_group=nagios
 	elif has_version net-analyzer/icinga2; then
-		var_dir=/var/lib/icinga2/
+		var_dir=/var/lib/icinga2
 		user_group=icinga
 	else
-		var_dir=/var/lib/icinga/
+		var_dir=/var/lib/icinga
 		user_group=icinga
 	fi
 
 	econf \
-		--sysconfdir=/etc/pnp \
-		--datarootdir=/usr/share/pnp \
-		--mandir=/usr/share/man \
-		--with-perfdata-dir=${var_dir}/perfdata \
+		--sysconfdir="${EPREFIX}"/etc/pnp \
+		--datarootdir="${EPREFIX}"/usr/share/pnp \
+		--with-perfdata-dir="${EPREFIX}"${var_dir}/perfdata \
 		--with-nagios-user=${user_group} \
 		--with-nagios-group=${user_group} \
-		--with-perfdata-logfile=${var_dir}/perfdata.log \
-		--with-perfdata-spool-dir=/var/spool/pnp
+		--with-perfdata-logfile="${EPREFIX}"${var_dir}/perfdata.log \
+		--with-perfdata-spool-dir="${EPREFIX}"/var/spool/pnp
 }
 
 src_compile() {
@@ -78,9 +66,10 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install install-config
+	einstalldocs
 	newinitd "${FILESDIR}"/npcd.initd npcd
-	rm "${D}/usr/share/pnp/install.php" || \
-		die "unable to remove ${D}/usr/share/pnp/install.php"
+	rm "${ED%/}/usr/share/pnp/install.php" || \
+		die "unable to remove ${ED%/}/usr/share/pnp/install.php"
 
 	if use apache2 ; then
 		insinto "${APACHE_MODULES_CONFDIR}"
@@ -88,21 +77,24 @@ src_install() {
 
 		# Allow the apache user to read our config files. This same
 		# approach is used in net-analyzer/nagios-core.
-		chgrp -R apache "${D}/etc/pnp" \
-			|| die "failed to change group of ${ROOT}etc/pnp"
+		chgrp -R apache "${ED%/}/etc/pnp" \
+			|| die "failed to change group of ${ED%/}/etc/pnp"
 	fi
 
 	# Bug 430358 - CVE-2012-3457
-	find "${D}/etc/pnp" -type f -exec chmod 0640 '{}' + || \
-		die "unable to set file permissions under ${D}/etc/pnp"
+	local f
+	while IFS="" read -d $'\0' -r f ; do
+		chmod 0640 "${f}" || die
+	done < <(find "${ED%/}/etc/pnp" -type f)
 
-	find "${D}/etc/pnp" -type d -exec chmod 0750 '{}' + || \
-		die "unable to set directory permissions under ${D}/etc/pnp"
+	while IFS="" read -d $'\0' -r f ; do
+		chmod 0750 "${f}" || die
+	done < <(find "${ED%/}/etc/pnp" -type d)
 }
 
 pkg_postinst() {
 	elog "To enable the pnp4nagios web front-end, please visit"
-	elog "${ROOT}etc/conf.d/apache2 and add \"-D PNP -D PHP5\""
+	elog "${EROOT%/}/etc/conf.d/apache2 and add \"-D PNP -D PHP5\""
 	elog "to APACHE2_OPTS. Then pnp4nagios will be available at,"
 	elog
 	elog "  http://localhost/pnp4nagios"
