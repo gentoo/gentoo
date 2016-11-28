@@ -180,7 +180,6 @@ dev-libs/libroadnav
 # Removal in a month.
 app-mobilephone/gsmlib
 
-
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Not compatible with tcl/tk 8.6, obsolete version, bug #547322.
 # Try to use versions from sci overlay. Removal in a month.
@@ -336,7 +335,7 @@ net-libs/libkolabxml
 
 # Lars Wendler <polynomial-c@gentoo.org> (27 Oct 2016)
 # Breaks build of some packages. See tracker bug #598186
-=sys-devel/flex-2.6.2
+>=sys-devel/flex-2.6.2
 
 # Craig Andrews <candrews@integralblue.com> (25 Oct 2016)
 # >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
