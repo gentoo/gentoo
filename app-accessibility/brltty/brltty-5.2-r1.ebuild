@@ -31,7 +31,7 @@ COMMON_DEP="bluetooth? ( net-wireless/bluez )
 	iconv? ( virtual/libiconv )
 	icu? ( dev-libs/icu:= )
 	python? ( ${PYTHON_DEPS} )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 	usb? ( virtual/libusb:0 )
@@ -46,7 +46,8 @@ RDEPEND="java? ( >=virtual/jre-1.4 )
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-ldflags.patch \
 		"${FILESDIR}"/${P}-udev.patch \
-		"${FILESDIR}"/${P}-respect-AR.patch
+		"${FILESDIR}"/${P}-respect-AR.patch \
+		"${FILESDIR}"/${P}-major.patch
 
 	java-pkg-opt-2_src_prepare
 
