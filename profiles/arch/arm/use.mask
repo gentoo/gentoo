@@ -80,7 +80,6 @@ octave
 tracker
 xindy
 lyx
-mpi
 lasi
 fusion
 debug-utils

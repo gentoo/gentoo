@@ -536,9 +536,6 @@ app-admin/gkrellm ntlm
 # Masking this so repoman shuts up about paludis
 sys-apps/paludis ruby-bindings
 
-# missing keyword for sys-cluster/openmpi sys-cluster/mpich2
-dev-libs/boost mpi
-
 # missing keywords
 media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
