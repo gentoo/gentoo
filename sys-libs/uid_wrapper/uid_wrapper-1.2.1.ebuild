@@ -18,6 +18,12 @@ IUSE="test"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+# https://bugs.gentoo.org/578668
+SRC_URI+=" https://git.samba.org/?p=uid_wrapper.git;a=blobdiff_plain;f=src/uid_wrapper.c;h=ded857a1b18f4744bac324b0ccaee3b2d2d146fa;hp=34889e0c3f955ad04bda3859b734a86763dee529;hb=cf2b35344d4de927f158a1e6d5b6bbc1be2ffd96;hpb=a00a6b8b300b7baa867191e2bc016b835cf8d1b3 -> ${PN}-1.2.1-alpha_fix.patch"
+PATCHES=(
+	"${DISTDIR}/${P}-alpha_fix.patch"
+)
+
 # Work around a problem with >=dev-util/cmake-3.3.0 (bug #558340)
 # Because of this we cannot use cmake-multilib_src_configure() here.
 multilib_src_configure() {
