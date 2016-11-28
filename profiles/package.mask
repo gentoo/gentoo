@@ -68,10 +68,6 @@ net-misc/sparkleshare
 www-apps/phpBB
 
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Obsolete and not needed anymore, bug #545704, removal in a month.
-dev-dotnet/pango-sharp
-
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Vulnerable to CVE-2015-3248 (#552534), and nobody willing to take care of
 # the package. Removal in a month.
 sys-libs/openhpi
