@@ -25,3 +25,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
+PATCHES=( "${FILESDIR}/gentoo.patch" )
