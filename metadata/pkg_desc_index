@@ -10049,7 +10049,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.26 2.27 2.28: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.26 2.27 2.28 2.33: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.6: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3 5.0.2: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -18041,7 +18041,7 @@ www-client/google-chrome-beta 55.0.2883.59: The web browser from Google
 www-client/google-chrome-unstable 56.0.2924.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
-www-client/links 2.8-r1 2.12-r2 2.12-r3: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9: An excellent console-based web browser with ssl support
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
