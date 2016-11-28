@@ -54,7 +54,7 @@ app-admin/aws-iam-tools 1.3.0: The Command Line Interface (CLI) for the AWS Iden
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 2.4.4: Distribution-independent installer framework
+app-admin/calamares 2.4.5: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 3.1.9 3.1.13: A usable configuration management system
@@ -6928,21 +6928,21 @@ dev-php/igbinary 1.2.1-r1 2.0.0: A fast drop-in replacement for the standard PHP
 dev-php/jpgraph 3.0.7-r1 3.0.7-r2: Fully OO graph drawing library for PHP
 dev-php/libchart 1.3_p21050415: Libchart is a chart creation PHP library that is easy to use
 dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
-dev-php/magickwand 1.0.9-r1: A native PHP-extension to the ImageMagick MagickWand API
+dev-php/magickwand 1.0.9-r2: A native PHP-extension to the ImageMagick MagickWand API
 dev-php/ming-php 0.4.5: PHP extension for the ming Flash movie generation library
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.4.0 1.7.0 1.7.1: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.7.1 1.8.0_beta2: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.5: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via APCu
-dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
-dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
+dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
+dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
-dev-php/pecl-dio 0.0.7-r2: Direct I/O functions for PHP
+dev-php/pecl-dio 0.0.7-r3: Direct I/O functions for PHP
 dev-php/pecl-eio 1.2.5-r1 2.0.0: PHP wrapper for libeio library
 dev-php/pecl-event 1.11.1-r1 2.1.0: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r1: PHP extension for using gearmand
@@ -17482,7 +17482,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64 65: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.113 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.12.52-r1 3.12.63 3.12.66 3.12.67 3.12.9999 3.14.58-r1 3.14.79 3.18.25-r1 3.18.42 3.18.43 3.18.44 4.1.15-r1 4.1.35 4.4.26 4.4.28 4.4.34 4.4.35 4.8.3 4.8.4 4.8.5 4.8.6 4.8.7 4.8.8 4.8.9 4.8.10 4.8.11: Full sources including the Gentoo patchset for the 4.8 kernel tree
 sys-kernel/git-sources 4.9_rc1 4.9_rc2 4.9_rc3 4.9_rc4 4.9_rc5 4.9_rc6 4.9_rc7: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.9 4.7.10 4.7.10-r1 4.7.10-r2 4.8.7 4.8.8 4.8.9 4.8.10: Hardened kernel sources (kernel series 4.8)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.10 4.8.10 4.8.11: Hardened kernel sources (kernel series 4.8)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
