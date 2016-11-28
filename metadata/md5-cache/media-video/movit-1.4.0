@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile test
+DEPEND=media-libs/mesa >=dev-cpp/eigen-3.2.0:3 media-libs/libepoxy >=sci-libs/fftw-3 media-libs/libsdl2
+DESCRIPTION=Modern Video Toolkit
+EAPI=5
+HOMEPAGE=http://movit.sesse.net/
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/mesa >=dev-cpp/eigen-3.2.0:3 media-libs/libepoxy >=sci-libs/fftw-3 media-libs/libsdl2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://movit.sesse.net/movit-1.4.0.tar.gz https://googletest.googlecode.com/files/gtest-1.7.0.zip
+_eclass_exported_funcs=src_compile:- src_test:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=8b0be201a21bd9f2ce202302c0b5cee4

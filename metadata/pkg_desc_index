@@ -13827,7 +13827,7 @@ media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a comma
 media-video/mkvtoolnix 8.5.2 9.2.0 9.3.1 9.4.0 9.4.2 9.5.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
-media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2: Modern Video Toolkit
+media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2 1.4.0: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
 media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
