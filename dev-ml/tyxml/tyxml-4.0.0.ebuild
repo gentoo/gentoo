@@ -18,13 +18,14 @@ KEYWORDS="~amd64"
 IUSE="+ppx +camlp4"
 
 DEPEND="
-	dev-ml/uutf:=
+	>=dev-ml/uutf-1.0:=
 	dev-ml/ocaml-re:=
 	ppx? ( >=dev-ml/ppx_tools-5:= dev-ml/markup:= )
 	camlp4? ( dev-ml/camlp4:= )"
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES README.md )
+PATCHES=( "${FILESDIR}/uutf.patch" )
 
 src_configure() {
 	oasis_configure_opts="
