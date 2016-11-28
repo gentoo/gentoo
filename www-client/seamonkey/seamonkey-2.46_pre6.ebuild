@@ -92,6 +92,7 @@ RDEPEND=">=dev-libs/nss-3.25
 		( >=app-crypt/gnupg-2.0
 			|| (
 				app-crypt/pinentry[gtk]
+				app-crypt/pinentry[qt5]
 				app-crypt/pinentry[qt4]
 			)
 		)
