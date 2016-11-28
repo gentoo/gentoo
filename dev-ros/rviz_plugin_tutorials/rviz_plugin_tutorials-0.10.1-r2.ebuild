@@ -20,4 +20,3 @@ RDEPEND="
 	dev-qt/qtgui:4
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/install_loc.patch" )

@@ -17,6 +17,7 @@ DESCRIPTION="Retrieves information about ROS packages available on the filesyste
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
+PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 RDEPEND="dev-libs/boost:=
 	dev-libs/tinyxml

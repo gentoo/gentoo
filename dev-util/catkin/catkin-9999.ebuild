@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/gnuinstalldirs.patch"
 	"${FILESDIR}/catkin_prefix_path_util_py.patch"
 	"${FILESDIR}/package_xml.patch"
+	"${FILESDIR}/etc.patch"
 )
 
 src_prepare() {
