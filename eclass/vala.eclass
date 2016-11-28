@@ -57,6 +57,9 @@ vala_api_versions() {
 			echo "0.${minor_version}"
 		fi
 	done
+
+	# For some reason 0.22 is still in the tree but 0.24 is not
+	echo "0.22"
 }
 
 # @FUNCTION: vala_depend
