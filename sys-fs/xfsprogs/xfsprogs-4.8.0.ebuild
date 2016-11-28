@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
-SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
-	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/${P}.tar.gz"
+SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
