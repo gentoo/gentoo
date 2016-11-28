@@ -37,3 +37,4 @@ move kde-base/libkgreeter kde-plasma/libkgreeter
 move kde-base/liboxygenstyle kde-plasma/liboxygenstyle
 move kde-base/kstyles kde-plasma/kstyles
 move kde-base/ksystraycmd kde-plasma/ksystraycmd
+move kde-base/kstartupconfig kde-plasma/kstartupconfig
