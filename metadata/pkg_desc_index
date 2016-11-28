@@ -6924,7 +6924,7 @@ dev-php/awl 0.53-r2 0.55-r1 0.56: Andrew McMillan's Web Libraries
 dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/ffmpeg-php 0.6.0-r3 0.6.0-r4: PHP extension that provides access to movie info
-dev-php/igbinary 1.2.1-r1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 1.2.1-r1 2.0.0: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 3.0.7-r1 3.0.7-r2: Fully OO graph drawing library for PHP
 dev-php/libchart 1.3_p21050415: Libchart is a chart creation PHP library that is easy to use
 dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
@@ -6941,7 +6941,7 @@ dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
 dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
-dev-php/pecl-dbx 1.1.2-r1: The dbx module is a database abstraction layer
+dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.7-r2: Direct I/O functions for PHP
 dev-php/pecl-eio 1.2.5-r1 2.0.0: PHP wrapper for libeio library
 dev-php/pecl-event 1.11.1-r1 2.1.0: PHP wrapper for libevent2
@@ -11734,7 +11734,6 @@ kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
-kde-base/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
 kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-frameworks/attica 5.26.0 5.28.0: Framework providing access to Open Collaboration Services
@@ -11958,6 +11957,7 @@ kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
 kde-plasma/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE Plasma
 kde-plasma/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-plasma/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
+kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
 kde-plasma/milou 0.1 5.7.5 5.8.3 5.8.4: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.7.5 5.8.3 5.8.4: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
