@@ -1398,7 +1398,7 @@ app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5 1.5-r1: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1: Eselect module to choose an infinality font configuration style
-app-eselect/eselect-java 0.2.0 0.2.0-r1: A set of eselect modules for Java
+app-eselect/eselect-java 0.2.0 0.2.0-r1 0.3.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
@@ -7997,7 +7997,7 @@ dev-python/pygtkspellcheck 4.0.5: a simple but quite powerful spellchecking libr
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyicu 1.9.3 1.9.3-r1 1.9.4 1.9.5: Python bindings for dev-libs/icu
+dev-python/pyicu 1.9.3-r1 1.9.5: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r1 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
 dev-python/pyinotify 0.9.4-r1 0.9.5 0.9.6: Python module used for monitoring filesystems events
