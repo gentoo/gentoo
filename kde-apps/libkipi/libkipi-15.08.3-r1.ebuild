@@ -13,7 +13,7 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND=""
-RDEPEND="|| ( >=kde-base/legacy-icons-4.11.22-r1 kde-apps/libkipi:5 )"
+RDEPEND="kde-apps/libkipi:5"
 
 src_install() {
 	kde4-base_src_install
