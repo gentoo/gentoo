@@ -12,7 +12,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	x11-libs/libX11
 	x11-libs/libXtst
 "

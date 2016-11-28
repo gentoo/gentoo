@@ -22,8 +22,8 @@ IUSE="debug gles opengl wayland"
 COMMONDEPEND="
 	$(add_kdebase_dep kactivities)
 	$(add_kdebase_dep kdelibs opengl)
-	$(add_kdebase_dep libkworkspace)
 	kde-plasma/kephal:4
+	kde-plasma/libkworkspace:4
 	kde-plasma/liboxygenstyle:4
 	x11-libs/libICE
 	x11-libs/libSM

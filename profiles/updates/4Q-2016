@@ -40,3 +40,4 @@ move kde-base/ksystraycmd kde-plasma/ksystraycmd
 move kde-base/kstartupconfig kde-plasma/kstartupconfig
 move kde-base/qguiplatformplugin_kde kde-plasma/qguiplatformplugin_kde
 move kde-base/ksplash kde-plasma/ksplash
+move kde-base/libkworkspace kde-plasma/libkworkspace

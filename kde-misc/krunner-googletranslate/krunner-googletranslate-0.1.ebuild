@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep libkworkspace)
 	dev-libs/qjson
+	kde-plasma/libkworkspace:4
 "
 DEPEND="
 	${RDEPEND}

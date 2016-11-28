@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND="
 	$(add_kdebase_dep kactivities)
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	$(add_kdebase_dep plasma-workspace)
 "
 RDEPEND=${DEPEND}

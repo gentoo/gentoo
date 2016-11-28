@@ -15,7 +15,7 @@ IUSE="debug test"
 
 DEPEND="
 	kde-plasma/kephal:4
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	x11-libs/libX11
 "
 RDEPEND="${DEPEND}"

@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep libkworkspace)
+	kde-plasma/libkworkspace:4
 	$(add_kdeapps_dep kopete)
 "
 RDEPEND="${DEPEND}"
