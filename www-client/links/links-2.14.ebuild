@@ -20,21 +20,34 @@ IUSE="bzip2 directfb fbcon gpm ipv6 jpeg libevent libressl livecd lzma ssl suid 
 
 GRAPHICS_DEPEND="media-libs/libpng:0="
 
-RDEPEND="bzip2? ( app-arch/bzip2 )
+RDEPEND="
+	bzip2? (
+		app-arch/bzip2
+	)
 	directfb? (
 		${GRAPHICS_DEPEND}
 		dev-libs/DirectFB
-		)
-	fbcon? ( ${GRAPHICS_DEPEND} )
-	gpm? ( sys-libs/gpm )
-	jpeg? ( virtual/jpeg:0 )
-	libevent? ( dev-libs/libevent:0= )
+	)
+	fbcon? (
+		${GRAPHICS_DEPEND}
+	)
+	gpm? (
+		sys-libs/gpm
+	)
+	jpeg? (
+		virtual/jpeg:0
+	)
+	libevent? (
+		dev-libs/libevent:0=
+	)
 	livecd? (
 		${GRAPHICS_DEPEND}
 		sys-libs/gpm
 		virtual/jpeg:0
-		)
-	lzma? ( app-arch/xz-utils )
+	)
+	lzma? (
+		app-arch/xz-utils
+	)
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -42,13 +55,17 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	svga? (
 		${GRAPHICS_DEPEND}
 		media-libs/svgalib
-		)
-	tiff? ( media-libs/tiff:0 )
+	)
+	tiff? (
+		media-libs/tiff:0
+	)
 	X? (
 		${GRAPHICS_DEPEND}
 		x11-libs/libXext
-		)
-	zlib? ( sys-libs/zlib )"
+	)
+	zlib? (
+		sys-libs/zlib
+	)"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -64,10 +81,10 @@ src_prepare() {
 	default
 
 	if use unicode; then
-		pushd intl >/dev/null
+		pushd intl > /dev/null || die
 		./gen-intl || die
 		./synclang || die
-		popd >/dev/null
+		popd > /dev/null || die
 	fi
 
 	# error: conditional "am__fastdepCXX" was never defined (for eautoreconf)
@@ -120,9 +137,11 @@ src_install() {
 		newicon Links_logo.png links.png
 		make_desktop_entry 'links -g %u' Links links 'Network;WebBrowser'
 		local d="${ED}"/usr/share/applications
-		echo 'MimeType=x-scheme-handler/http;' >> "${d}"/*.desktop
-		use ssl && sed -i -e 's:x-scheme-handler/http;:&x-scheme-handler/https;:' \
-			"${d}"/*.desktop
+		echo 'MimeType=x-scheme-handler/http;' >> "${d}"/*.desktop || die
+		if use ssl; then
+			sed -i -e 's:x-scheme-handler/http;:&x-scheme-handler/https;:' \
+			"${d}"/*.desktop || die
+		fi
 	fi
 
 	use suid && fperms 4755 /usr/bin/links

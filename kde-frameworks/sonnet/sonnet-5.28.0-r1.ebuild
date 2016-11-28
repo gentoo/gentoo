@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-hunspell-1.5.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package aspell ASPELL)
