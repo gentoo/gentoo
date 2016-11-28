@@ -6,7 +6,7 @@ EAPI=6
 
 PHP_EXT_NAME="geoip"
 DOCS="README ChangeLog"
-USE_PHP="php5-5 php5-6 php7-0"
+USE_PHP="php5-6 php7-0"
 
 inherit php-ext-pecl-r3
 
