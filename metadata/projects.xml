@@ -1771,6 +1771,11 @@
       <name>Tony Vroon</name>
       <role>Member (Kernel, mm-sources, vanilla-sources)</role>
     </member>
+    <member>
+      <email>gregkh@gentoo.org</email>
+      <name>Greg Kroah-Hartman</name>
+      <role>Member (Kernel, gentoo-sources, genpatches)</role>
+    </member>
     <member is-lead="1">
       <email>mpagano@gentoo.org</email>
       <name>Mike Pagano</name>
