@@ -8,7 +8,7 @@ PHP_EXT_NAME="timezonedb"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php5-6 php5-5 php7-0"
+USE_PHP="php5-6 php7-0"
 
 inherit php-ext-pecl-r3
 
