@@ -1,0 +1,26 @@
+From: Andreas Hartmetz <ahartmetz@gmail.com>
+Date: Sat, 05 Dec 2015 15:31:24 +0000
+Subject: setQuitOnLastWindowClosed(false) causes lingering processes. Remove.
+X-Git-Url: http://quickgit.kde.org/?p=kate.git&a=commitdiff&h=cd0163d7b956ace0e786a76d8211d06790a2c174
+---
+setQuitOnLastWindowClosed(false) causes lingering processes. Remove.
+
+Previously, it was set to true again later from
+KMainWindowPrivate::init(). I have changed that in KMainWindowPrivate
+so that applications have a better chance to set the property as they
+like - commit 155f524dd79add7d in kxmlgui.
+For Kate, true seems to be the correct setting.
+---
+
+
+--- a/kate/src/main.cpp
++++ b/kate/src/main.cpp
+@@ -133,7 +133,6 @@
+     app.setApplicationDisplayName(aboutData.displayName());
+     app.setOrganizationDomain(aboutData.organizationDomain());
+     app.setApplicationVersion(aboutData.version());
+-    app.setQuitOnLastWindowClosed(false);
+ 
+     /**
+      * set the program icon
+
