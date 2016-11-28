@@ -1,3 +1,6 @@
+So that files like python_logging.conf ends up in $EPREFIX/etc.
+https://bugs.gentoo.org/show_bug.cgi?id=598537
+
 Index: catkin-0.7.4/cmake/all.cmake
 ===================================================================
 --- catkin-0.7.4.orig/cmake/all.cmake
