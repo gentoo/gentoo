@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ DESCRIPTION="Retrieves information about ROS packages available on the filesyste
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
+PATCHES=( "${FILESDIR}/gentoo.patch" )
 
 RDEPEND="dev-libs/boost:=
 	dev-libs/tinyxml
