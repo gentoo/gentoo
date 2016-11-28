@@ -11734,7 +11734,6 @@ kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
-kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-base/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
 kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
@@ -11957,6 +11956,7 @@ kde-plasma/libkscreen 1.0.5_p20150822 5.7.5 5.8.3 5.8.4: Plasma screen managemen
 kde-plasma/libksysguard 5.7.5 5.8.3 5.8.4: Task management and system monitoring library
 kde-plasma/libkworkspace 4.11.22: A library for Plasma desktop applications
 kde-plasma/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE Plasma
+kde-plasma/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-plasma/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
 kde-plasma/milou 0.1 5.7.5 5.8.3 5.8.4: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.7.5 5.8.3 5.8.4: Oxygen visual style for the Plasma desktop
