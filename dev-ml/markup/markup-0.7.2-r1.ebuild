@@ -4,27 +4,32 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="Error-recovering streaming HTML5 and XML parsers"
 HOMEPAGE="https://github.com/aantron/markup.ml"
 SRC_URI="https://github.com/aantron/markup.ml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/${PV}p1"
 KEYWORDS="~amd64"
 IUSE="doc test"
 
 DEPEND="
 	dev-lang/ocaml:=[ocamlopt]
 	dev-ml/lwt:=[ocamlopt]
-	dev-ml/uutf:=[ocamlopt]
+	>=dev-ml/uutf-1.0:=[ocamlopt]
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? ( dev-ml/ounit )
 	dev-ml/ocamlbuild"
 S="${WORKDIR}/${PN}.ml-${PV}"
+
+src_prepare() {
+	epatch "${FILESDIR}/uutf.patch" \
+		"${FILESDIR}/test.patch"
+}
 
 src_compile() {
 	emake
