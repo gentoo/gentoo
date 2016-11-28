@@ -94,13 +94,6 @@ net-misc/modemmanager mbim
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# mono works on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -tomboy
-
-# ranger <ranger@gentoo.org> (17 apr 2012)
-# Remasking llvm in mesa
-
 # ranger <ranger@gentoo.org> (17 apr 2012)
 # masking libvirt for cfengine (bug #412253)
 net-misc/cfengine libvirt
