@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="Flash the Xbox boot chip"
 HOMEPAGE="https://sourceforge.net/projects/xbox-linux/"
-SRC_URI="mirror://sourceforge/xbox-linux/${P}.tbz2"
+SRC_URI="https://sourceforge.net/projects/xbox-linux/files/Other/Raincoat/${P}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"
