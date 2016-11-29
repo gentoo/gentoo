@@ -1,7 +1,7 @@
 https://www.sqlite.org/src/info/afbbb6c66a85ff3f
 
---- ext/icu/icu.c
-+++ ext/icu/icu.c
+--- a/ext/icu/icu.c
++++ b/ext/icu/icu.c
 @@ -500,20 +500,20 @@
      void *pContext;                           /* sqlite3_user_data() context */
      void (*xFunc)(sqlite3_context*,int,sqlite3_value**);
@@ -34,8 +34,8 @@ https://www.sqlite.org/src/info/afbbb6c66a85ff3f
  
      {"icu_load_collation",  2, SQLITE_UTF8, (void*)db, icuLoadCollation},
    };
---- test/cursorhint2.test
-+++ test/cursorhint2.test
+--- a/test/cursorhint2.test
++++ b/test/cursorhint2.test
 @@ -164,17 +164,19 @@
    x2 {AND(EQ(c1,ADD(32,32)),EQ(c0,r[2]))}
  }

@@ -50,7 +50,7 @@ pkg_setup() {
 
 src_prepare() {
 	if full_tarball; then
-		epatch "${FILESDIR}/${PN}-3.14.0-full_tarball-build.patch"
+		eapply "${FILESDIR}/${PN}-3.14.0-full_tarball-build.patch"
 
 		eapply_user
 
@@ -58,7 +58,7 @@ src_prepare() {
 		# https://mailinglists.sqlite.org/cgi-bin/mailman/private/sqlite-dev/2016-March/002762.html
 		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
 	else
-		epatch "${FILESDIR}/${PN}-3.12.0-nonfull_tarball-build.patch"
+		eapply "${FILESDIR}/${PN}-3.12.0-nonfull_tarball-build.patch"
 
 		eapply_user
 
