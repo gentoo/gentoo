@@ -28,8 +28,6 @@ DEPEND="
 "
 
 python_compile_all() {
-	# https://github.com/Supervisor/superlance/issues/91
-	# https://github.com/Supervisor/superlance/issues/92
 	use doc && emake -C docs html
 }
 

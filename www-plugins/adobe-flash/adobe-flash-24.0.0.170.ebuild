@@ -18,9 +18,9 @@ AF_NP_64_URI="${AF_URI}/linux64/flash-player-npapi-${PV}-release.x86_64.rpm -> $
 AF_PP_32_URI="${AF_URI}/linux32/flash-player-ppapi-${PV}-release.i386.rpm -> ${P}-ppapi.i386.rpm"
 AF_PP_64_URI="${AF_URI}/linux64/flash-player-ppapi-${PV}-release.x86_64.rpm -> ${P}-ppapi.x86_64.rpm"
 
-IUSE="kde +npapi +ppapi"
+IUSE="kde +nsplugin +ppapi"
 SRC_URI="
-	npapi? (
+	nsplugin? (
 		abi_x86_32? ( ${AF_NP_32_URI} )
 		abi_x86_64? ( ${AF_NP_64_URI} )
 	)
@@ -68,9 +68,11 @@ NPAPI_RDEPEND="
 	x11-libs/pango
 "
 RDEPEND="
-	npapi? ( ${NPAPI_RDEPEND} )
 	!www-plugins/chrome-binary-plugins[flash(-)]
-	npapi? ( !www-plugins/adobe-flash:0 )
+	nsplugin? (
+		${NPAPI_RDEPEND}
+		!www-plugins/adobe-flash:0
+	)
 "
 
 S="${WORKDIR}"
@@ -98,7 +100,7 @@ multilib_src_install() {
 	local pkglibdir=lib
 	[[ -d usr/lib64 ]] && pkglibdir=lib64
 
-	if use npapi; then
+	if use nsplugin; then
 		# PLUGINS_DIR comes from nsplugins.eclass
 		exeinto /usr/$(get_libdir)/${PLUGINS_DIR}
 		doexe usr/${pkglibdir}/flash-plugin/libflashplayer.so

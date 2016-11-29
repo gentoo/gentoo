@@ -18,13 +18,12 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/freetype
 	x11-libs/libX11
+	x11-libs/libXcursor
 	x11-libs/libXext
-"
-DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
-	${RDEPEND}
 "
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# fix under-linking
