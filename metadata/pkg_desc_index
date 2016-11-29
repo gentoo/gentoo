@@ -2330,20 +2330,20 @@ app-text/lesspipe 1.83: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.1.1: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
-app-text/libetonyek 0.1.3 0.1.6 9999: Library parsing Apple Keynote presentations
+app-text/libetonyek 0.1.6 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.2.3.2 0.2.4: Library for handling and rendering XPS documents
-app-text/liblangtag 0.5.6 0.6.2: An interface library to access tags for identifying languages
+app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.6 0.3.8 9999: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.8 9999: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.4 0.1.6 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.2 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.0-r1 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
-app-text/libwps 0.2.9 0.3.1 0.4.2 0.4.3 0.4.4-r1: Microsoft Works file word processor format import filter library
+app-text/libwps 0.2.9 0.3.1 0.4.4-r1: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.71-r1 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 22 22_p20160324 9999: a graphical PDF viewer which aims to superficially resemble less(1)
@@ -2853,7 +2853,7 @@ dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without
 dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbackend-elements 1.7.2: A collection of elementary building blocks for implementing compiler backends in c++
 dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
-dev-cpp/libcmis 0.5.0-r1 0.5.1 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
+dev-cpp/libcmis 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
 dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
@@ -4772,7 +4772,7 @@ dev-libs/libinput 1.1.0 1.1.5 1.3.1 1.3.3 1.4.2 1.5.0 1.5.1: Library to handle i
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.3.8 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
-dev-libs/libixion 0.9.0 0.9.1-r1 0.11.1 0.12.1 9999: General purpose formula parser & interpreter
+dev-libs/libixion 0.11.1 0.12.1 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
 dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
 dev-libs/libksba 1.3.5 1.3.5-r1: X.509 and CMS (PKCS#7) library
@@ -4815,7 +4815,7 @@ dev-libs/libofx 0.9.10: A library to support the Open Financial eXchange XML for
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
-dev-libs/liborcus 0.7.1 0.7.1-r1 0.9.2-r1 0.11.2 0.12.1 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.11.2 0.12.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2: Abstraction layer to simplify PKCS#11 API
@@ -8144,7 +8144,7 @@ dev-python/python-discid 1.1.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation for Python
-dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
+dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 0.9.1 1.0.3: Python implementation of the Engine.IO realtime server.
@@ -18569,7 +18569,7 @@ x11-misc/netwmpager 2.05: EWMH (NetWM) compatible pager. Works with Openbox and 
 x11-misc/nitrogen 1.5.2 1.6.0: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon
 x11-misc/notify-osd 0.9.34: Canonical's on-screen-display notification agent
-x11-misc/nts 82: Note Taking made Simple, an intuitive note taking application
+x11-misc/nts 82-r1: Note Taking made Simple, an intuitive note taking application
 x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.3_p20111019 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.9.0_p20150729: Openbox window manager configuration tool
