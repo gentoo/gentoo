@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 IUSE="doc utftrip +ocamlopt test"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
+	dev-ml/uchar:=
 	utftrip? ( dev-ml/cmdliner:= )"
 DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild
