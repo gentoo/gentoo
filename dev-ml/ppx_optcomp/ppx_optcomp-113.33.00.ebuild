@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+	has_version '>=dev-lang/ocaml-4.04' && epatch "${FILESDIR}/oc44.patch"
 }
 
 src_configure() {
