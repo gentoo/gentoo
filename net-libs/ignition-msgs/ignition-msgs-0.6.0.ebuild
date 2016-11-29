@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-libs/protobuf:="
+DEPEND="dev-libs/protobuf:=
+	sci-libs/ignition-math:2="
 RDEPEND="${DEPEND}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
