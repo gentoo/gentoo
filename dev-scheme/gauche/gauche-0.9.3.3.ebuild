@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9-xz-info.patch
 	"${FILESDIR}"/${PN}-0.9-rfc.tls.patch
 	"${FILESDIR}"/${P}-gauche.threads.patch
+	"${FILESDIR}"/${P}-file.util.patch
 )
 
 src_prepare() {
