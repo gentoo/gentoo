@@ -29,14 +29,6 @@ DEPEND="
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-python_prepare_all() {
-	# Remove an unconditional test only dep
-	sed \
-		-e "s/setup_requires/# setup_requires/" \
-		-i setup.py
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	emake check
 }
