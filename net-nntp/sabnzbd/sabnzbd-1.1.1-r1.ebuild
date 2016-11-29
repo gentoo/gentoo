@@ -84,9 +84,8 @@ src_install() {
 		doins -r ${d}/*
 	done
 
-	insinto "/usr/share/${PN}"
-	insopts -m 0755
-	doins SABnzbd.py
+	exeinto "/usr/share/${PN}"
+	doexe SABnzbd.py
 
 	python_fix_shebang "${ED%/}/usr/share/${PN}"
 	python_optimize "${ED%/}/usr/share/${PN}"
