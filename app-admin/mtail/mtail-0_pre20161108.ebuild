@@ -23,7 +23,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 DEPEND=">=dev-lang/go-1.6:="
-RDEPEND=""
+RDEPEND="!app-misc/mtail"
 
 get_archive_go_package() {
 	local archive=${1} uri x
