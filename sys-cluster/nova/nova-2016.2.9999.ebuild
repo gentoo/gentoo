@@ -132,7 +132,7 @@ RDEPEND="
 	sys-fs/multipath-tools
 	net-misc/bridge-utils
 	compute? (
-		app-cdr/cdrkit
+		app-cdr/cdrtools
 		sys-fs/dosfstools
 		app-emulation/qemu
 	)
@@ -182,6 +182,7 @@ python_install() {
 	insinto /etc/nova
 	insopts -m 0640 -o nova -g nova
 	newins "${DISTDIR}/newton-nova.conf.sample" "nova.conf.sample"
+	doins "${FILESDIR}/nova-compute.conf"
 	doins "${S}/etc/nova/"*
 	#rootwrap filters
 	insopts -m 0644
