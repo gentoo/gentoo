@@ -15351,8 +15351,8 @@ net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
 net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported printers
 net-print/gtklp 1.3.0 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.9 5.2.10 5.2.11: Ghostscript and cups printer drivers
-net-print/hplip 3.16.3 3.16.9-r1 3.16.10: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.16.3 3.16.9 3.16.10: Proprietary plugins and firmware for HPLIP
+net-print/hplip 3.16.3 3.16.9-r1 3.16.10 3.16.11: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip-plugin 3.16.3 3.16.9 3.16.10 3.16.11: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
@@ -18041,7 +18041,7 @@ www-client/firefox 45.4.0 45.5.0 50.0.1: Firefox Web Browser
 www-client/firefox-bin 45.5.0 50.0.1: Firefox Web Browser
 www-client/google-chrome 54.0.2840.100: The web browser from Google
 www-client/google-chrome-beta 55.0.2883.59: The web browser from Google
-www-client/google-chrome-unstable 56.0.2924.3: The web browser from Google
+www-client/google-chrome-unstable 56.0.2924.10: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18092,7 +18092,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.170: Adobe Flash Player
-www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.59_beta 56.0.2924.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.59_beta 56.0.2924.10_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
