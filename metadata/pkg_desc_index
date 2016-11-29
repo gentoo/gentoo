@@ -5115,7 +5115,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.0.1 4.1.1 4.1.2 4.2.1 4.2.2: An image manipulation library for ocaml
-dev-ml/camlp4 4.02.1_p3 4.03_p1: System for writing extensible parsers for programming languages
+dev-ml/camlp4 4.02.1_p3 4.03_p1 4.04_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.14 6.15 6.16 6.17: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.05 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
@@ -5138,7 +5138,7 @@ dev-ml/eliom 5.0.0-r2 9999: A web framework to program client/server application
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1 1.7.1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
-dev-ml/fieldslib 113.24.00 113.33.03: Folding over record fields
+dev-ml/fieldslib 113.33.03: Folding over record fields
 dev-ml/findlib 1.4 1.5.6 1.6.1 1.6.1-r1 1.6.2 1.6.3 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5155,7 +5155,7 @@ dev-ml/jsonm 0.9.1 1.0.0: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
-dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
+dev-ml/labltk 8.06.0 8.06.1 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
