@@ -1,23 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils vcs-snapshot flag-o-matic
+inherit cmake-utils
 
-DESCRIPTION="A small, fast, and high performance math library for robot applications"
-HOMEPAGE="http://ignitionrobotics.org/libraries/math"
-SRC_URI="https://bitbucket.org/ignitionrobotics/ign-math/get/${PN}2_${PV}.tar.bz2"
+DESCRIPTION="Protobuf messages and functions for robot applications"
+HOMEPAGE="http://ignitionrobotics.org/libraries/messages https://bitbucket.org/ignitionrobotics/ign-msgs"
+SRC_URI="https://osrf-distributions.s3.amazonaws.com/ign-msgs/releases/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
-SLOT="2/2"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-libs/protobuf:="
 RDEPEND="${DEPEND}"
-S="${WORKDIR}/${PN}2_${PV}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_configure() {
