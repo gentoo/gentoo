@@ -164,8 +164,8 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	if use !compute-only; then
 		for svc in api cert conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do
@@ -184,19 +184,14 @@ python_install() {
 	newins "${DISTDIR}/newton-nova.conf.sample" "nova.conf.sample"
 	doins "${FILESDIR}/nova-compute.conf"
 	doins "${S}/etc/nova/"*
-	#rootwrap filters
+	# rootwrap filters
 	insopts -m 0644
 	insinto /etc/nova/rootwrap.d
 	doins "etc/nova/rootwrap.d/api-metadata.filters"
 	doins "etc/nova/rootwrap.d/compute.filters"
 	doins "etc/nova/rootwrap.d/network.filters"
-	#copy migration conf file (not coppied on install via setup.py script)
-	insinto /usr/$(get_libdir)/python2.7/site-packages/nova/db/sqlalchemy/migrate_repo/
-	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
-	#copy the CA cert dir (not coppied on install via setup.py script)
-	cp -R "${S}/nova/CA" "${D}/usr/$(get_libdir)/python2.7/site-packages/nova/" || die "installing CA files failed"
 
-	#add sudoers definitions for user nova
+	# add sudoers definitions for user nova
 	insinto /etc/sudoers.d/
 	insopts -m 0600 -o root -g root
 	doins "${FILESDIR}/nova-sudoers"
@@ -208,6 +203,15 @@ python_install() {
 		insinto /etc/nova/
 		doins "${FILESDIR}/scsi-openscsi-link.sh"
 	fi
+}
+
+python_install() {
+	distutils-r1_python_install
+	# copy migration conf file (not coppied on install via setup.py script)
+	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
+	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
+	# copy the CA cert dir (not coppied on install via setup.py script)
+	cp -R "${S}/nova/CA" "${D}/$(python_get_sitedir)/nova/" || die "installing CA files failed"
 }
 
 pkg_postinst() {
