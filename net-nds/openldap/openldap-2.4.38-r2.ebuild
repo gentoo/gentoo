@@ -438,6 +438,10 @@ multilib_src_configure() {
 			--disable-overlays
 			--disable-syslog
 		)
+
+		tc-is-cross-compiler && myconf+=(
+			--with-yielding-select=yes
+		)
 	fi
 
 	# basic functionality stuff
