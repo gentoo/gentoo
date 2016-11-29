@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
@@ -13,7 +13,7 @@ inherit eutils multilib python-any-r1
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
 
-UPSTREAM_VER=0
+UPSTREAM_VER=1
 
 [[ -n ${UPSTREAM_VER} ]] && \
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}-1.1-upstream-patches-${UPSTREAM_VER}.tar.xz"
@@ -54,6 +54,9 @@ src_prepare() {
 		EPATCH_OPTS="-p1" \
 			epatch "${WORKDIR}"/patches-upstream
 	fi
+
+	eapply "${FILESDIR}"/tinc-1.1-fix-paths.patch #560528
+	eapply_user
 }
 
 src_configure() {
@@ -80,7 +83,7 @@ src_install() {
 	dodoc AUTHORS NEWS README THANKS
 	doconfd "${FILESDIR}"/tinc.networks
 	newconfd "${FILESDIR}"/tincd.conf tincd
-	newinitd "${FILESDIR}"/tincd-r1 tincd
+	newinitd "${FILESDIR}"/tincd-r2 tincd
 
 	if use gui; then
 		python_fix_shebang "${ED}"/usr/bin/tinc-gui
