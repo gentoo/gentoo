@@ -22,14 +22,17 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/openssl )"
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9-rpath.patch
-	epatch "${FILESDIR}"/${PN}-0.9-gauche.m4.patch
-	epatch "${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
-	epatch "${FILESDIR}"/${PN}-0.9-xz-info.patch
-	epatch "${FILESDIR}"/${PN}-0.9-rfc.tls.patch
-	epatch "${FILESDIR}"/${P}-gauche.threads.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9-rpath.patch
+	"${FILESDIR}"/${PN}-0.9-gauche.m4.patch
+	"${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
+	"${FILESDIR}"/${PN}-0.9-xz-info.patch
+	"${FILESDIR}"/${PN}-0.9-rfc.tls.patch
+	"${FILESDIR}"/${P}-gauche.threads.patch
+)
 
+src_prepare() {
+	default
 	eautoconf
 }
 

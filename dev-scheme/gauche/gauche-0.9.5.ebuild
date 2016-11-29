@@ -25,17 +25,19 @@ DEPEND="${RDEPEND}
 	)"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-rpath.patch
+	"${FILESDIR}"/${PN}-gauche.m4.patch
+	"${FILESDIR}"/${PN}-ext-ldflags.patch
+	"${FILESDIR}"/${PN}-xz-info.patch
+	"${FILESDIR}"/${PN}-rfc.tls.patch
+	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${P}-bsd.patch
+	"${FILESDIR}"/${P}-unicode.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-rpath.patch
-	epatch "${FILESDIR}"/${PN}-gauche.m4.patch
-	epatch "${FILESDIR}"/${PN}-ext-ldflags.patch
-	epatch "${FILESDIR}"/${PN}-xz-info.patch
-	epatch "${FILESDIR}"/${PN}-rfc.tls.patch
-	epatch "${FILESDIR}"/${P}-libressl.patch
-	epatch "${FILESDIR}"/${P}-bsd.patch
-	epatch "${FILESDIR}"/${P}-main.patch
-	epatch "${FILESDIR}"/${P}-unicode.patch
-	eapply_user
+	default
 
 	use ipv6 && sed -i "s/ -4//" ext/tls/ssltest-mod.scm
 
