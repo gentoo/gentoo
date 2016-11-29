@@ -65,6 +65,11 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.26:0=[${MULTILIB_USEDEP}]
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
+	|| (
+		sys-apps/util-linux[kill(-)]
+		sys-process/procps[kill(+)]
+		sys-apps/coreutils[kill(-)]
+	)
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev"
