@@ -4938,7 +4938,7 @@ dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
 dev-libs/openssl 0.9.8z_p8 1.0.2j 1.1.0c: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
-dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
+dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.0.0 1.0.1_pre20121112 1.0.1_pre20131013 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12: Portable Coroutine Library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
@@ -5116,7 +5116,7 @@ dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.0.1 4.1.1 4.1.2 4.2.1 4.2.2: An image manipulation library for ocaml
 dev-ml/camlp4 4.02.1_p3 4.03_p1: System for writing extensible parsers for programming languages
-dev-ml/camlp5 6.14 6.15 6.16: A preprocessor-pretty-printer of ocaml
+dev-ml/camlp5 6.14 6.15 6.16 6.17: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.05 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
@@ -7038,7 +7038,7 @@ dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
-dev-python/URLObject 2.4.0: A utility class for manipulating URLs
+dev-python/URLObject 2.4.0 2.4.2: A utility class for manipulating URLs
 dev-python/WSME 0.8.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
@@ -7341,7 +7341,7 @@ dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
-dev-python/easy-thumbnails 2.2: Easy thumbnails for Django
+dev-python/easy-thumbnails 2.2 2.3: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r1 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
@@ -8800,7 +8800,7 @@ dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, 
 dev-ros/move_base 1.14.0 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 9999: Move slow and clear
-dev-ros/moveit_msgs 0.8.0 0.8.1 0.8.3 9999: Messages, services and actions used by MoveIt
+dev-ros/moveit_msgs 0.8.0 0.8.1 0.8.3 0.9.0 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.13.0 1.13.1 1.14.0 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.3 1.12.4 1.12.5 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.14.0-r1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
@@ -14164,7 +14164,7 @@ net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.3 1.11.7: Fast SSL configuration scanner
 net-analyzer/sslsniff 0.8-r2: MITM all SSL connections on a LAN and dynamically generates certs
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 2.0.11 3.0.1 3.1 3.1.2: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 2.0.11 3.0.1 3.1 3.1.2 3.1.3: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -14544,7 +14544,8 @@ net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
-net-libs/ignition-transport 1.3.0 1.4.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
+net-libs/ignition-msgs 0.6.0: Protobuf messages and functions for robot applications
+net-libs/ignition-transport 1.4.0 2.1.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.2.1 1.3.0: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
@@ -15921,7 +15922,7 @@ sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logi
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.8.7b 0.9.2b 0.9.2b-r1 0.9.2b-r2: Electronic Design Automation
-sci-electronics/gazebo 7.2.0 7.3.1 7.4.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 7.4.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.1 1.8.2 1.9.1 1.9.2: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
@@ -16126,7 +16127,7 @@ sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencin
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
-sci-libs/ignition-math 1.0.0 2.2.2 2.3.0 2.4.0 2.5.0: A small, fast, and high performance math library for robot applications
+sci-libs/ignition-math 1.0.0 2.5.0 2.6.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.2.0 1.3.1: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
