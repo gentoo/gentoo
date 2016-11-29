@@ -18699,6 +18699,7 @@ x11-misc/xfishtank 2.1-r1: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
+x11-misc/xiccd 0.2.3: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 24102005: xidle monitors inactivity in X and runs the specified program when a timeout occurs.
 x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
 x11-misc/xkbset 0.5-r1 0.5_p5_p1: User preference utility for XKB extensions for X
