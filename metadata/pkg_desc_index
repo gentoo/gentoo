@@ -7111,7 +7111,7 @@ dev-python/backports-functools-lru-cache 1.2.1 1.3: Backport of functools.lru_ca
 dev-python/backports-lzma 0.0.6: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
-dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
+dev-python/backports-unittest-mock 1.1.1 1.2.1: Backport of unittest.mock
 dev-python/bandit 0.13.2-r1 1.0.1 1.1.0 1.2.0: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
@@ -7183,7 +7183,7 @@ dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
-dev-python/chump 1.5.1: API wrapper for Pushover
+dev-python/chump 1.5.1 1.5.2: API wrapper for Pushover
 dev-python/cliapp 1.20140315 1.20150305 1.20160724-r1: Framework for Unix-like command line programs
 dev-python/click 6.6: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3 0.1.4: Logging integration for Click.
@@ -7406,7 +7406,7 @@ dev-python/flask-login 0.2.11 0.3.2 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.0 0.9.1 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 1.3.0 1.8.0 2.0.0: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.7.0 0.7.1 0.8: Flask support for MongoDB and with WTF model forms
-dev-python/flask-nav 0.5: Easily create navigation for Flask applications.
+dev-python/flask-nav 0.5 0.6: Easily create navigation for Flask applications.
 dev-python/flask-openid 1.2.3 1.2.4 1.2.5: OpenID support for Flask
 dev-python/flask-peewee 0.6.5 0.6.6 0.6.7: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0 0.4.0-r1: Identity management for flask
@@ -8435,7 +8435,7 @@ dev-python/subunit 1.1.0 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
-dev-python/superlance 0.13 0.14: A set of plugins to monitor and control supervisor
+dev-python/superlance 0.14 1.0.0: A set of plugins to monitor and control supervisor
 dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
@@ -12838,7 +12838,7 @@ media-libs/libomxil-bellagio 0.9.3: An Open Source implementation of the OpenMAX
 media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.0 0.1.1 0.1.2: Video editing library used by OpenShot
-media-libs/libopenshot-audio 0.0.6 0.1.2: Audio library used by OpenShot
+media-libs/libopenshot-audio 0.0.6 0.1.2-r1: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.2 0.0.3 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
@@ -14430,7 +14430,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.12.0.4: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.13.0.3: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.16 0.10.19: Official desktop client for Telegram (binary package)
@@ -18089,7 +18089,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.154: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.170: Adobe Flash Player
 www-plugins/chrome-binary-plugins 54.0.2840.100 55.0.2883.59_beta 56.0.2924.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
