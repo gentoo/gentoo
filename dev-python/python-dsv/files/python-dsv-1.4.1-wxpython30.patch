@@ -1,0 +1,21 @@
+--- a/DSV/DSV.py
++++ b/DSV/DSV.py
+@@ -676,7 +676,7 @@ if wx is not None:
+                      style = wx.TAB_TRAVERSAL, name = "ImportWizardPanel"):
+             wx.Panel.__init__(self, parent, id, pos, size, style, name)
+             self.SetAutoLayout(True)
+-            mainSizer = wx.FlexGridSizer(3, 1)
++            mainSizer = wx.FlexGridSizer(4, 1)
+             self.SetSizer(mainSizer)
+             mainSizer.AddGrowableCol(0)
+ 
+@@ -1089,7 +1089,8 @@ if __name__ == '__main__':
+                 else:
+                     dlg.Destroy()
+ 
+-                return True
++                # return True
++                sys.exit()
+ 
+         app = SampleApp()
+         app.MainLoop()
