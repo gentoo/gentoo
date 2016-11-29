@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit findlib versionator
+inherit findlib versionator eutils
 
 MY_PV=$(replace_version_separator 2 '+')
 DESCRIPTION="Tools for authors of ppx rewriters"
@@ -19,6 +19,10 @@ IUSE=""
 DEPEND=">=dev-lang/ocaml-4.03.0:="
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-$(replace_version_separator 2 '-')"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.04_beta' && epatch "${FILESDIR}/ocaml404.patch"
+}
 
 src_compile() {
 	emake -j1

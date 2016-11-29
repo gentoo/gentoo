@@ -1,0 +1,12 @@
+Index: ocamlpam-1.1/pam_stubs.c
+===================================================================
+--- ocamlpam-1.1.orig/pam_stubs.c
++++ ocamlpam-1.1/pam_stubs.c
+@@ -57,6 +57,7 @@ static int converse(int nMsg, const stru
+ 	struct pam_response * local_responses;
+ 	caml_pam_handle * h;
+ 
++  	CAMLparam0 ();
+ 	CAMLlocal1(ret);
+ 
+ 	h = (caml_pam_handle *)data;
