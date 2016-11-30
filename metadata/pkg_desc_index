@@ -4573,6 +4573,7 @@ dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3 1.11.1: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
+dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.4-r2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
@@ -7393,7 +7394,7 @@ dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean test
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4 3.0.4-r2: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1-r1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0 1.4.2 1.4.2-r1: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0 0.11.1: i18n and l10n support for Flask based on Babel and pytz
@@ -17852,6 +17853,7 @@ virtual/pypy 4.0.1 5.0.0 5.1.1 5.3.0 5.3.1 5.4.0-r1 5.4.1: A virtual for PyPy Py
 virtual/pypy3 2.4.0 5.2.0_alpha1 5.5.0_alpha: A virtual for PyPy3 Python implementation
 virtual/python-asyncio 0: A virtual for the Python 3.4+ asyncio module
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
+virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-dnspython 1: A virtual for dnspython, for Python 2 & 3
 virtual/python-enum34 1: A virtual for Python enum34 module
 virtual/python-funcsigs 0-r1 1: A Virtual for Python function signatures from PEP362
