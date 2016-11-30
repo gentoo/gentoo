@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils cmake-utils flag-o-matic
+inherit eutils cmake-utils flag-o-matic multilib
 
 DESCRIPTION="ZynAddSubFX is an opensource software synthesizer"
 HOMEPAGE="http://zynaddsubfx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,6 +17,7 @@ IUSE="alsa +fltk jack lash"
 
 RDEPEND=">=dev-libs/mini-xml-2.2.1
 	sci-libs/fftw:3.0
+	media-libs/liblo
 	alsa? ( media-libs/alsa-lib )
 	fltk? ( >=x11-libs/fltk-1.3:1 )
 	jack? ( media-sound/jack-audio-connection-kit )
@@ -30,10 +31,10 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="!alsa? ( jack )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.0-docs.patch
+	"${FILESDIR}"/${PN}-2.5.2-docs.patch
 )
 
-DOCS="ChangeLog FAQ.txt HISTORY.txt README.adoc bugs.txt"
+DOCS=( ChangeLog HISTORY.txt README.adoc )
 
 src_configure() {
 	append-cxxflags "-std=c++11"
@@ -43,6 +44,7 @@ src_configure() {
 		`use alsa && echo "-DOutputModule=alsa" || echo "-DOutputModule=jack"`
 		`use alsa && echo "-DAlsaMidiOutput=TRUE" || echo "-DAlsaMidiOutput=FALSE"`
 		`use jack && echo "-DJackOutput=TRUE" || echo "-DJackOutput=FALSE"`
+		-DPluginLibDir=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }

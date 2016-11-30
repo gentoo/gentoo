@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE="alsa +fltk jack lash"
 
 RDEPEND=">=dev-libs/mini-xml-2.2.1
 	sci-libs/fftw:3.0
+	media-libs/liblo
 	alsa? ( media-libs/alsa-lib )
 	fltk? ( >=x11-libs/fltk-1.3:1 )
 	jack? ( media-sound/jack-audio-connection-kit )
