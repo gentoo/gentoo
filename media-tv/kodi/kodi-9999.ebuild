@@ -68,9 +68,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/yajl-2
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	media-fonts/anonymous-pro
 	media-fonts/corefonts
-	media-fonts/dejavu
+	media-fonts/noto
+	media-fonts/roboto
 	alsa? ( media-libs/alsa-lib )
 	media-libs/flac
 	media-libs/fontconfig
@@ -139,7 +139,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 # Force java for latest git version to avoid having to hand maintain the
 # generated addons package.  #488118
-[[ ${PV} == "9999" ]] && DEPEND+=" virtual/jre"
+[[ ${PV} == 9999 ]] && DEPEND+=" virtual/jre"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
@@ -158,7 +158,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack || default
 	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
 	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
 	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
@@ -190,13 +190,14 @@ src_prepare() {
 		mkdir "${WORKDIR}"/${CBUILD} || die
 		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
 		einfo "Building host tools"
-		cp -a "$S"/{tools,xbmc} ./ || die
-		local tools=( JsonSchemaBuilder )
+		cp -a "${S}"/{tools,xbmc} ./ || die
+		local tool tools=( JsonSchemaBuilder )
 		use texturepacker && tools+=( TexturePacker )
 		for tool in "${tools[@]}" ; do
 			tc-env_build emake -C tools/depends/native/$tool
-			mkdir "$S"/tools/depends/native/$tool/bin || die
-			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool "$S"/tools/depends/native/$tool/bin/$tool || die
+			mkdir "${S}"/tools/depends/native/$tool/bin || die
+			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool \
+				"${S}"/tools/depends/native/$tool/bin/$tool || die
 		done
 		popd >/dev/null || die
 
@@ -205,7 +206,7 @@ src_prepare() {
 		# Binary kodi.bin links against libsquish,
 		# so we need libsquish compiled for the target system
 		emake -C tools/depends/native/libsquish-native/ CXX=$(tc-getCXX)
-	elif [[ ${PV} == "9999" ]] || use java ; then #558798
+	elif [[ ${PV} == 9999 ]] || use java ; then #558798
 		tc-env_build emake -f codegenerator.mk
 	fi
 
@@ -234,7 +235,7 @@ src_configure() {
 	# No configure flage for this #403561
 	export ac_cv_lib_bluetooth_hci_devid=$(usex bluetooth)
 	# Requiring java is asine #434662
-	[[ ${PV} != "9999" ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
+	[[ ${PV} != 9999 ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
 
 	econf \
 		--disable-ccache \
@@ -284,14 +285,25 @@ src_install() {
 	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
 
 	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
-		/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf || die
-	dosym /usr/share/fonts/anonymous-pro/Anonymous\ Pro.ttf \
-		/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf
-	#lato is also present but cannot be unbundled because
-	#lato isn't (yet) in portage: https://bugs.gentoo.org/show_bug.cgi?id=589288
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoMono-Regular.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Bold.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
+	dosym /usr/share/fonts/roboto/Roboto-Thin.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
