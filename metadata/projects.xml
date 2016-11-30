@@ -1389,6 +1389,22 @@
     </member>
   </project>
   <project>
+    <email>github@gentoo.org</email>
+    <name>GitHub</name>
+    <url>https://wiki.gentoo.org/wiki/Project:GitHub</url>
+    <description>Support team for the Gentoo organization on GitHub and the related resources (mirrors, pull requests).</description>
+    <member>
+      <email>kensington@gentoo.org</email>
+      <name>Michael Palimaka</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member</role>
+    </member>
+  </project>
+  <project>
     <email>graphics@gentoo.org</email>
     <name>Gentoo Graphics Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Graphics</url>
@@ -1574,6 +1590,7 @@
     <name>Gentoo Infrastructure</name>
     <url>https://wiki.gentoo.org/wiki/Project:Infrastructure</url>
     <description>The Gentoo Infrastructure team provides and develops services for the Gentoo developer and user community, ensuring availability, security and functionality.</description>
+    <subproject ref="github@gentoo.org"/>
     <subproject ref="overlays@gentoo.org"/>
     <member>
       <email>a3li@gentoo.org</email>

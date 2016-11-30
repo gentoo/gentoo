@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/mini-xml-2.2.1 sci-libs/fftw:3.0 alsa? ( media-libs/alsa-lib ) fltk? ( >=x11-libs/fltk-1.3:1 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=>=dev-libs/mini-xml-2.2.1 sci-libs/fftw:3.0 media-libs/liblo alsa? ( media-libs/alsa-lib ) fltk? ( >=x11-libs/fltk-1.3:1 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=ZynAddSubFX is an opensource software synthesizer
 EAPI=5
 HOMEPAGE=http://zynaddsubfx.sourceforge.net/
 IUSE=alsa +fltk jack lash
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/mini-xml-2.2.1 sci-libs/fftw:3.0 alsa? ( media-libs/alsa-lib ) fltk? ( >=x11-libs/fltk-1.3:1 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash )
+RDEPEND=>=dev-libs/mini-xml-2.2.1 sci-libs/fftw:3.0 media-libs/liblo alsa? ( media-libs/alsa-lib ) fltk? ( >=x11-libs/fltk-1.3:1 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash )
 REQUIRED_USE=!alsa? ( jack )
 SLOT=0
 SRC_URI=mirror://sourceforge/zynaddsubfx/zynaddsubfx-2.5.4.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	cae35dcea0791d64777f09153b959a96	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8054f070569354249657501b2b6b4d0c
+_md5_=3ad9436b59f3f8428202254c522a6ce5
