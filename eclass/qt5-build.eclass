@@ -370,6 +370,29 @@ qt_use_compile_test() {
 	fi
 }
 
+# @FUNCTION: qt_use_disable_config
+# @USAGE: <flag> <config> <files...>
+# @DESCRIPTION:
+# <flag> is the name of a flag in IUSE.
+# <config> is the (lowercase) name of a Qt5 config entry.
+# <files...> is a list of one or more qmake project files.
+#
+# This function patches <files> to treat <config> as disabled
+# when <flag> is disabled, otherwise it does nothing.
+# This can be useful to avoid an automagic dependency when the config entry
+# is enabled on the system but the corresponding USE flag is disabled.
+qt_use_disable_config() {
+	[[ $# -ge 3 ]] || die "${FUNCNAME}() requires at least three arguments"
+
+	local flag=$1
+	local config=$2
+	shift 2
+
+	if ! use "${flag}"; then
+		echo "$@" | xargs sed -i -e "s/qtConfig(${config})/false/g" || die
+	fi
+}
+
 # @FUNCTION: qt_use_disable_mod
 # @USAGE: <flag> <module> <files...>
 # @DESCRIPTION:
