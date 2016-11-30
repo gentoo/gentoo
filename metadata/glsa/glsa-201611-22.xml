@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201611-22">
+  <title>PHP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PHP, the worst of which
+    could lead to arbitrary code execution or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">php</product>
+  <announced>November 30, 2016</announced>
+  <revised>November 30, 2016: 1</revised>
+  <bug>578734</bug>
+  <bug>581834</bug>
+  <bug>584204</bug>
+  <bug>587246</bug>
+  <bug>591710</bug>
+  <bug>594498</bug>
+  <bug>597586</bug>
+  <bug>599326</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/php" auto="yes" arch="*">
+      <unaffected range="ge">5.6.28</unaffected>
+      <vulnerable range="lt">5.6.28</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHP is a widely-used general-purpose scripting language that is
+      especially suited for Web development and can be embedded into HTML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can possibly execute arbitrary code or create a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PHP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev=lang/php-5.6.28"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8865">CVE-2015-8865</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3074">CVE-2016-3074</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4071">CVE-2016-4071</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4072">CVE-2016-4072</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4073">CVE-2016-4073</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4537">CVE-2016-4537</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4538">CVE-2016-4538</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4539">CVE-2016-4539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4540">CVE-2016-4540</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4541">CVE-2016-4541</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4542">CVE-2016-4542</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4543">CVE-2016-4543</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4544">CVE-2016-4544</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5385">CVE-2016-5385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6289">CVE-2016-6289</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6290">CVE-2016-6290</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6291">CVE-2016-6291</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6292">CVE-2016-6292</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6294">CVE-2016-6294</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6295">CVE-2016-6295</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6296">CVE-2016-6296</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6297">CVE-2016-6297</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7124">CVE-2016-7124</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7125">CVE-2016-7125</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7126">CVE-2016-7126</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7127">CVE-2016-7127</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7128">CVE-2016-7128</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7129">CVE-2016-7129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7130">CVE-2016-7130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7131">CVE-2016-7131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7132">CVE-2016-7132</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7133">CVE-2016-7133</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7134">CVE-2016-7134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7411">CVE-2016-7411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7412">CVE-2016-7412</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7413">CVE-2016-7413</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7414">CVE-2016-7414</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7416">CVE-2016-7416</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7417">CVE-2016-7417</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7418">CVE-2016-7418</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 19 Jun 2016 11:17:24 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Nov 2016 21:46:26 +0000">b-man</metadata>
+</glsa>
