@@ -4,11 +4,8 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE=threads
-DISTUTILS_SINGLE_IMPL=yesplz
-DISTUTILS_OPTIONAL=yesplz
-DISTUTILS_IN_SOURCE_BUILD=yesplz
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php5-5 php5-6"
 
@@ -18,7 +15,7 @@ PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
 #inherit distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
-inherit distutils-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
+inherit python-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -36,7 +33,7 @@ COMMONDEPEND="dev-libs/xapian:0/30
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
 	python? (
-		dev-python/sphinx
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
 	ruby? ( dev-lang/ruby:= )
@@ -53,7 +50,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 pkg_setup() {
 #	use mono && mono-env_pkg_setup
 	use java && java-pkg-opt-2_pkg_setup
-	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -64,6 +60,10 @@ src_prepare() {
 
 	# Accept ruby 2.0 - patch configure directly to avoid autoreconf
 	epatch "${FILESDIR}"/${PN}-1.3.6-allow-ruby-2.0.patch
+
+	if use python; then
+		python_copy_sources
+	fi
 }
 
 src_configure() {
@@ -87,15 +87,46 @@ src_configure() {
 		--without-csharp \
 		$(use_with perl) \
 		$(use_with php) \
-		$(use_with python) \
+		--without-python \
+		--without-python3 \
 		$(use_with ruby) \
 		$(use_with tcl)
 #		$(use_with mono csharp)
+
+	python_configure() {
+		local myconf=(
+			--disable-documentation
+			--without-java
+			--without-lua
+			--without-csharp
+			--without-perl
+			--without-php
+			--without-ruby
+			--without-tcl
+		)
+		if python_is_python3; then
+			myconf+=( --with-python3 )
+		else
+			myconf+=( --with-python )
+		fi
+
+		# Avoid sandbox failures when compiling modules
+		addpredict "$(python_get_sitedir)"
+
+		econf "${myconf[@]}"
+	}
+
+	if use python; then
+		python_foreach_impl run_in_build_dir python_configure
+	fi
 }
 
 src_compile() {
-	local -x PYTHONDONTWRITEBYTECODE=
 	default
+	if use python; then
+		unset PYTHONDONTWRITEBYTECODE
+		python_foreach_impl run_in_build_dir emake
+	fi
 }
 
 src_install() {
@@ -109,6 +140,10 @@ src_install() {
 	fi
 
 	use php && php-ext-source-r2_createinifiles
+
+	if use python; then
+		python_foreach_impl run_in_build_dir emake DESTDIR="${D}" install
+	fi
 
 	# For some USE combinations this directory is not created
 	if [[ -d "${D}/usr/share/doc/xapian-bindings" ]]; then
