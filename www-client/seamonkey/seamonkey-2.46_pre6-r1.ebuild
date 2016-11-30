@@ -74,7 +74,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
+IUSE="+calendar +chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
 
 SRC_URI+="
 	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCHFF}.tar.xz
@@ -222,8 +222,8 @@ src_configure() {
 
 	# Other sm-specific settings
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
-
 	mozconfig_annotate '' --enable-safe-browsing
+	mozconfig_use_enable calendar
 
 	mozlinguas_mozconfig
 
