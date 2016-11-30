@@ -33,7 +33,7 @@ src_prepare() {
 		"${S}/gtk/shell_main.cc" || die
 	epatch "${FILESDIR}"/${P}-fix-makefile.patch
 	epatch "${FILESDIR}"/${P}-fix-build-intel-lib.patch
-	eapply_user
+	default
 }
 
 src_compile() {
