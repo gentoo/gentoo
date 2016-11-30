@@ -117,8 +117,8 @@ python_compile_all() {
 	use doc && "${PYTHON}" setup.py build_sphinx
 }
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	for svc in api glare registry scrubber; do
 		newinitd "${FILESDIR}/glance.initd" glance-${svc}
@@ -134,9 +134,7 @@ python_install() {
 	insinto /etc/glance
 	insopts -m 0640 -o glance -g glance
 	doins -r etc/*.ini etc/*.conf etc/*.sample etc/*.json etc/meta*
-}
 
-python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 	distutils-r1_python_install_all
 }
