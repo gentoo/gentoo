@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -97,7 +97,8 @@ python_test() {
 	# Failures still occur under py2.7.
 	# https://github.com/shazow/urllib3/issues/621
 
-	[[ "${EPYTHON}" == pypy ]] && return
+	# FIXME: get tornado ported
+	[[ "${EPYTHON}" == pypy* ]] && return
 
 	nosetests -v \
 		--exclude test_headerdict \
