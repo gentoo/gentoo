@@ -8114,6 +8114,7 @@ dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a l
 dev-python/pytest-localserver 0.3.4 0.3.5 0.3.6: Py.test plugin to test server connections locally
 dev-python/pytest-mock 1.2: Thin-wrapper around the mock package for easier use with py.test
 dev-python/pytest-mpl 0.5: pytest plugin to faciliate image comparison for matplotlib figures
+dev-python/pytest-pep8 1.0.6: pytest plugin to check PEP8 requirements
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0 2.1: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-runner 2.6.2 2.8 2.9: Adds support for tests during installation of setup.py files
@@ -8584,7 +8585,7 @@ dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
 dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2 1.1.2 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
-dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
+dev-python/wstools 0.4.3 0.4.4: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
