@@ -20,7 +20,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/nose[${PYTHON_USEDEP}]"
 
 python_test() {
-	# https://github.com/kgrandis/nose-exclude/issue/10/test-failures-with-python-3
-	python_is_python3 && return
 	esetup.py test
 }
