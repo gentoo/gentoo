@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 #if LIVE
-HOMEPAGE="https://github.com/mgorny/gentoopm.git"
+EGIT_REPO_URI="https://github.com/mgorny/gentoopm.git"
 inherit git-r3
 #endif
 
