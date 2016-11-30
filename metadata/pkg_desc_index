@@ -2992,7 +2992,7 @@ dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4 2.2.5: A replication sys
 dev-db/soci 3.2.2 3.2.3: A db access library for C++ that makes the illusion of embedding SQL queries in the regular C++ code
 dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
-dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
+dev-db/sqlcipher 3.3.0 3.4.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1 3.14.2 3.15.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.8.0 3.9.1: SQLite Database Browser
@@ -7097,7 +7097,7 @@ dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/atomicwrites 0.1.8 0.1.9 1.1.5: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
-dev-python/attrs 15.2.0: Attributes without boilerplate
+dev-python/attrs 15.2.0 16.3.0: Attributes without boilerplate
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1 0.16.0: WebSocket and WAMP for Twisted and Asyncio
@@ -7107,7 +7107,7 @@ dev-python/awscli 1.10.51 1.10.53 1.10.59 1.11.0: Universal Command Line Environ
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
-dev-python/backports-abc 0.4: Backport of Python 3.5's 'collections.abc' module
+dev-python/backports-abc 0.4 0.5: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-functools-lru-cache 1.2.1 1.3: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.6: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
@@ -8102,7 +8102,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2 3.3.0: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2 0.5.2-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 3.0.3 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 3.0.3 3.0.4 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
@@ -8136,7 +8136,7 @@ dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects int
 dev-python/python-ctags 1.0.6 1.2.3: Exuberant Ctags indexing python bindings
 dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.0.4 2.0.5 2.0.6 2.1.1: Library to implement a well-behaved Unix daemon process
-dev-python/python-dateutil 2.1-r1 2.2 2.4.0 2.4.1-r1 2.4.2 2.4.2-r1 2.5.3: Extensions to the standard Python datetime module
+dev-python/python-dateutil 2.2 2.4.2-r1 2.5.3 2.6.0: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.26 0.1.27 0.1.28: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0 2.3.0: Python bindings to the Designate API.
@@ -8289,7 +8289,7 @@ dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
 dev-python/reproject 0.2 0.3.1: Reproject astronomical images with Python
-dev-python/requests 2.7.0 2.8.1 2.9.1-r2 2.11.1: HTTP library for human beings
+dev-python/requests 2.7.0 2.8.1 2.9.1-r2 2.11.1 2.12.1: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0 0.7.0 1.0.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1 0.6.2: This project provides first-class OAuth library support for Requests
@@ -8410,7 +8410,7 @@ dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include progr
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
 dev-python/sphinxtogithub 1.0.0 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 2.3.4 2.3.5.2 2.3.8 2.3.9: Python IDE with matlab-like features
-dev-python/sqlalchemy 0.7.10 0.9.8 1.0.12 1.0.15 1.1.2 1.1.3: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 0.7.10 0.9.8 1.0.15 1.1.3 1.1.4: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.9.5 0.10.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
 dev-python/sqlite3dbm 0.1.4-r1: An sqlite-backed dictionary
@@ -18606,7 +18606,7 @@ x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you qu
 x11-misc/qxkb 0.4.6: Qt4-based keyboard layout switcher
 x11-misc/read-edid 1.4.2 3.0.1 3.0.2: Program that can get information from a PnP monitor
 x11-misc/rednotebook 1.8.0 1.14: Graphical journal with calendar, templates, tags and keyword searching
-x11-misc/redshift 1.10 1.11: A screen color temperature adjusting software
+x11-misc/redshift 1.10 1.11 1.11-r1: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
