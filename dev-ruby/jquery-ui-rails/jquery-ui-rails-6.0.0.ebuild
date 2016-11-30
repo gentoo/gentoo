@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -15,12 +15,12 @@ RUBY_FAKEGEM_EXTRAINSTALL="app"
 inherit ruby-fakegem
 
 DESCRIPTION="The jQuery UI assets for the Rails 3.2+ asset pipeline"
-HOMEPAGE="http://www.rubyonrails.org"
+HOMEPAGE="https://github.com/joliss/jquery-ui-rails"
 
 LICENSE="MIT"
-SLOT="5"
+SLOT="6"
 KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/railties-3.2.16"
+ruby_add_rdepend ">=dev-ruby/railties-3.2.16:*"
