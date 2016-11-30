@@ -8,7 +8,7 @@ command=/usr/bin/${SVCNAME}
 command_background=yes
 pidfile=/var/run/nova/${SVCNAME}.pid
 required_files=/etc/nova/nova.conf
-start_stop_daemon_args="--quiet --user ${NOVA_USER:-nova} --config-file /etc/nova/nova.conf"
+start_stop_daemon_args="--quiet --user ${NOVA_USER:-nova} -- --config-file /etc/nova/nova.conf"
 if [ "$SVCNAME" == nova-compute ]; then
 	required_files="${required_files} /etc/nova/nova-compute.conf"
 	start_stop_daemon_args="${start_stop_daemon_args} --config-file /etc/nova/nova-compute.conf"
