@@ -1394,6 +1394,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:GitHub</url>
     <description>Support team for the Gentoo organization on GitHub and the related resources (mirrors, pull requests).</description>
     <member>
+      <email>cynede@gentoo.org</email>
+      <name>Mikhail Pukhlikov</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
       <role>Member</role>
