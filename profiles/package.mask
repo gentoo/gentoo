@@ -30,6 +30,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (30 Nov 2016)
+# Do not support gnustep-make v2 mode, last release more than 10 years ago
+# Bugs #591576, #592546
+# Removal in a month
+gnustep-apps/camera
+gnustep-apps/stepulator
+
+# Bernard Cafarelli <voyageur@gentoo.org> (30 Nov 2016)
+# Fails to build, abandoned 10 years ago, bug #590088
+# Removal in a month
+gnustep-apps/gwnet
+gnustep-libs/smbkit
+
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # All stardict stuff and dicts are completely unmaintained and orphan for
 # years (#471350, #533632, #568472, #600718). Removal in a month.
