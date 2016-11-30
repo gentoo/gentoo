@@ -8,7 +8,7 @@ be fixed in the next version.
  [Desktop Entry]
  Type=Application
  Name=Worklog Assistant
--Version=2.1.3577
+-Version=2.1.3580
 +Version=1.0
  Comment=Hassle-free time tracking for JIRA
  Exec=/bin/bash "/opt/Worklog Assistant/bin/wrapper.sh"
