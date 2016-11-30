@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils linux-info mono-env flag-o-matic pax-utils versionator multilib-minimal
+inherit autotools eutils linux-info mono-env flag-o-matic pax-utils versionator multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.mono-project.com/Main_Page"
@@ -32,6 +32,8 @@ DEPEND="${COMMONDEPEND}
 	dev-util/cmake
 	!dev-lang/mono-basic
 "
+
+PATCHES=("${FILESDIR}"/${PN}-4.8.0.371-makedev.patch)
 
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
@@ -73,6 +75,8 @@ src_prepare() {
 	#append-flags -fPIC
 
 	default
+	# PATCHES contains configure.ac patch
+	eautoreconf
 	multilib_copy_sources
 }
 
