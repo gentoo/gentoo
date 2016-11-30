@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
@@ -20,8 +20,10 @@ HOMEPAGE="https://github.com/pkgcore/snakeoil"
 
 LICENSE="BSD"
 SLOT="0"
+IUSE="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 python_configure_all() {
 	# disable snakeoil 2to3 caching

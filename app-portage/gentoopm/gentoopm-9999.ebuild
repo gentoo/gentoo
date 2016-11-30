@@ -2,41 +2,38 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
-inherit distutils-r1
-
-#if LIVE
-HOMEPAGE="https://github.com/mgorny/gentoopm.git"
-inherit git-r3
-#endif
+EGIT_REPO_URI="https://github.com/mgorny/gentoopm.git"
+inherit distutils-r1 git-r3
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="https://github.com/mgorny/gentoopm/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS=""
 IUSE="doc"
 
-RDEPEND="|| (
-		sys-apps/pkgcore
+RDEPEND="
+	|| (
+		sys-apps/pkgcore[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
-		>=sys-apps/paludis-0.64.2[python-bindings] )"
-DEPEND="doc? ( dev-python/epydoc )"
+		>=sys-apps/paludis-2.6.0[python,${PYTHON_USEDEP}] )"
+DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep python2_7)] )"
 PDEPEND="app-eselect/eselect-package-manager"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
+REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"
+
+src_configure() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2_7 )
+	distutils-r1_src_configure
+}
 
 python_compile_all() {
-	if use doc; then
-		esetup.py doc
-	fi
+	use doc && esetup.py doc
 }
 
 python_test() {

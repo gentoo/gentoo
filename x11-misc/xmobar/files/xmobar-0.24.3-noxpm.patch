@@ -1,0 +1,9 @@
+diff --git a/xmobar.cabal b/xmobar.cabal
+index f6a6dae..8a17579 100644
+--- a/xmobar.cabal
++++ b/xmobar.cabal
+@@ -89,3 +89,3 @@ executable xmobar
+       Xmobar, Actions, Bitmap, Config, Parsers, Commands, Localize,
+-      XUtil, XPMFile, StatFS, Runnable, ColorCache, Window, Signal,
++      XUtil, StatFS, Runnable, ColorCache, Window, Signal,
+       Environment,
