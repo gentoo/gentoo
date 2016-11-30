@@ -25,6 +25,6 @@ start_pre() {
 
 start() {
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon -S -b -p ${pidfile} -q -u ${NOVA_USER:-nova} -x ${command}
+	start-stop-daemon -S -b -m -p ${pidfile} -q -u ${NOVA_USER:-nova} -x ${command}
 	eend $?
 }
