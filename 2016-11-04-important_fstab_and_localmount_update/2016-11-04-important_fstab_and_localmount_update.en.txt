@@ -1,10 +1,10 @@
-Title: Inportant fstab and localmount update
+Title: Important fstab and localmount update
 Author: William Hubbs <williamh@gentoo.org>
 Author: Ian Stakenvicius <axs@gentoo.org>
 Display-If-Installed: <=sys-apps/openrc-0.23
 Content-Type: text/plain
 Posted: 2016-11-04
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 
 Recent updates to service scripts in OpenRC and (e)udev have removed the
