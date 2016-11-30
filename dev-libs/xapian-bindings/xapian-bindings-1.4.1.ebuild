@@ -109,6 +109,10 @@ src_configure() {
 		else
 			myconf+=( --with-python )
 		fi
+
+		# Avoid sandbox failures when compiling modules
+		addpredict "$(python_get_sitedir)"
+
 		econf "${myconf[@]}"
 	}
 
