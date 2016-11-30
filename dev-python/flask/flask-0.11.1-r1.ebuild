@@ -33,8 +33,12 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
-	 # Prevent un-needed d'loading
+	# Prevent un-needed d'loading
 	sed -e "s/ 'sphinx.ext.intersphinx',//" -i docs/conf.py || die
+
+	local PATCHES=(
+		"${FILESDIR}"/${P}-pypy3.patch
+	)
 
 	distutils-r1_python_prepare_all
 }
