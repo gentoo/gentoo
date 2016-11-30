@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 
 inherit distutils-r1
 
@@ -34,5 +34,5 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	find -name __pycache__ -exec rm -r '{}' + || die
-	py.test -vv -x || die "Tests failed under ${EPYTHON}"
+	py.test -vv || die "Tests failed under ${EPYTHON}"
 }

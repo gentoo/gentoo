@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 flag-o-matic
@@ -24,19 +24,15 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="doc examples test"
-RESTRICT="test" # currently pretty broken. tox always tries to fetch stuff from the internet.
 
 RDEPEND="
 	>=dev-python/six-1.5.2[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-# Test dependencies aren't keyworded for all arches yet.
-#	test? (
-#		>=dev-python/coverage-4.2[${PYTHON_USEDEP}]
-#		dev-python/tox[${PYTHON_USEDEP}]
-#		>=dev-python/pytest-3.0.1[${PYTHON_USEDEP}]
-#	)"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? (
+		virtual/python-cffi[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.0.1[${PYTHON_USEDEP}] )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -45,9 +41,8 @@ python_compile_all() {
 }
 
 python_test() {
-	tox
-	# https://bugs.launchpad.net/pyopenssl/+bug/1237953
-	rm -rf tmp* *.key *.pem || die
+	# FIXME: for some reason, no-ops on PyPy
+	esetup.py test
 }
 
 python_install_all() {

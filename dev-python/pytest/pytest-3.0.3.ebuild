@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 
 inherit distutils-r1
 
@@ -53,7 +53,7 @@ python_prepare_all() {
 python_test() {
 	# test_nose.py not written to suit py3.2 in pypy3
 	if [[ "${EPYTHON}" == pypy3 ]]; then
-		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -x -v \
+		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -vv \
 			--ignore=testing/BUILD_nose.py \
 			|| die "tests failed with ${EPYTHON}"
 	else
