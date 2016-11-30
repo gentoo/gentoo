@@ -3,12 +3,12 @@
 # $Id$
 
 # To generate the man pages, unpack the upstream tarball and run:
-# ./configure --enable-install-program=arch,coreutils
+# ./configure --enable-install-program=arch,coreutils,hostname,kill
 # make
 # cd ..
 # tar cf - coreutils-*/man/*.[0-9] | xz > coreutils-<ver>-man.tar.xz
 
-EAPI="4"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -17,9 +17,9 @@ DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utili
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~vapier/dist/${P}-patches-${PATCH_VER}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/dist/${P}-patches-${PATCH_VER}.tar.xz
 	mirror://gentoo/${P}-man.tar.xz
-	https://dev.gentoo.org/~vapier/dist/${P}-man.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/dist/${P}-man.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,7 +28,7 @@ IUSE="acl caps gmp hostname kill multicall nls selinux static userland_BSD vanil
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
-	gmp? ( dev-libs/gmp[static-libs] )
+	gmp? ( dev-libs/gmp:=[static-libs] )
 	xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
 	selinux? ( sys-libs/libselinux )
@@ -141,7 +141,7 @@ src_install() {
 	newins src/dircolors.hin DIR_COLORS
 
 	if [[ ${USERLAND} == "GNU" ]] ; then
-		cd "${ED}"/usr/bin
+		cd "${ED}"/usr/bin || die
 		dodir /bin
 		# move critical binaries into /bin (required by FHS)
 		local fhs="cat chgrp chmod chown cp date dd df echo false ln ls
