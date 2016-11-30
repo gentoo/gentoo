@@ -68,9 +68,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/yajl-2
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	media-fonts/anonymous-pro
 	media-fonts/corefonts
-	media-fonts/dejavu
+	media-fonts/noto
+	media-fonts/roboto
 	alsa? ( media-libs/alsa-lib )
 	media-libs/flac
 	media-libs/fontconfig
@@ -285,14 +285,25 @@ src_install() {
 	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
 
 	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
-		/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf || die
-	dosym /usr/share/fonts/anonymous-pro/Anonymous\ Pro.ttf \
-		/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf
-	#lato is also present but cannot be unbundled because
-	#lato isn't (yet) in portage: https://bugs.gentoo.org/show_bug.cgi?id=589288
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoMono-Regular.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Bold.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf || die
+	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf
+
+	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
+	dosym /usr/share/fonts/roboto/Roboto-Thin.ttf \
+		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
