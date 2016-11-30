@@ -20,6 +20,7 @@ IUSE=""
 
 RDEPEND="
 	dev-python/autopep8[${PYTHON_USEDEP}]
+	dev-python/execnet[${PYTHON_USEDEP}]
 	dev-python/pep8[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/pytest-cache[${PYTHON_USEDEP}]
