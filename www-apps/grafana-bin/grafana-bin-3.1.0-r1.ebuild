@@ -6,7 +6,7 @@ EAPI=5
 
 inherit user
 MY_PN=${PN/-bin/}
-MY_PV="4.0.0-1480439068"
+MY_PV="3.1.0-1468321182"
 S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
@@ -48,10 +48,4 @@ src_install() {
 	keepdir /var/{lib,log}/grafana
 	fowners grafana:grafana /var/{lib,log}/grafana
 	fperms 0750 /var/{lib,log}/grafana
-}
-
-post_install() {
-	einfo "Starting with version 4.0, Grafana is using a lot more file"
-	einfo "descriptors. You can bump the limit (by default 1024) by"
-	einfo "uncommenting the relevant line in /etc/conf.d/grafana."
 }
