@@ -5,8 +5,3 @@ GRAFANA_USER=grafana
 
 # The group to run your application as.
 GRAFANA_GROUP=grafana
-
-# Starting with 4.0, grafana uses a lot of file descriptors.
-# If you run into the default limit of 1024, uncomment this line and if needed,
-# bump its value.
-#rc_ulimit="-n 10000"
