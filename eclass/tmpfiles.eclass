@@ -66,7 +66,7 @@ dotmpfiles() {
 	use kernel_linux || return 0
 	local f
 	for f; do
-		if [[ ${f} != *.conf ]]
+		if [[ ${f} != *.conf ]]; then
 			die "tmpfiles.d files must end with .conf"
 		fi
 	done
