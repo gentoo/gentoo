@@ -172,8 +172,14 @@ qt5-build_src_prepare() {
 		qt5_symlink_tools_to_build_dir
 
 		# Avoid unnecessary qmake recompilations
-		sed -i -re "s|^if true;.*(\[ '\!').*(\"\\\$outpath/bin/qmake\".*)|if \1 -e \2 then|" \
-			configure || die "sed failed (skip qmake bootstrap)"
+		if [[ ${QT5_MINOR_VERSION} -ge 8 ]]; then
+			sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
+				-e '/echo "Done."/a fi' \
+				configure || die "sed failed (skip qmake bootstrap)"
+		else
+			sed -i -re "s|^if true;.*(\[ '\!').*(\"\\\$outpath/bin/qmake\".*)|if \1 -e \2 then|" \
+				configure || die "sed failed (skip qmake bootstrap)"
+		fi
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
 		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
