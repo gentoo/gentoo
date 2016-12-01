@@ -26,11 +26,6 @@ DEPEND="${DEPEND}
 	dev-ml/ocamlbuild"
 S="${WORKDIR}/${PN}.ml-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}/uutf.patch" \
-		"${FILESDIR}/test.patch"
-}
-
 src_compile() {
 	emake
 	use doc && emake docs
