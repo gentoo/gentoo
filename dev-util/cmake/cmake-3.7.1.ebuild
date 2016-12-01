@@ -15,12 +15,14 @@ SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.
 
 LICENSE="CMake"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+[[ "${PV}" = *_rc* ]] || \
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs system-jsoncpp ncurses qt5"
 
 RDEPEND="
 	>=app-arch/libarchive-3.0.0:=
 	>=dev-libs/expat-2.0.1
+	>=dev-libs/libuv-1.0.0:=
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
@@ -59,7 +61,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-FindPythonInterp.patch
 
 	# upstream fixes (can usually be removed with a version bump)
-	"${FILESDIR}"/${PN}-3.6.1-find_library-lib32.patch
 )
 
 cmake_src_bootstrap() {
@@ -173,17 +174,17 @@ src_install() {
 	fi
 
 	insinto /usr/share/vim/vimfiles/syntax
-	doins Auxiliary/cmake-syntax.vim
+	doins Auxiliary/vim/syntax/cmake.vim
 
 	insinto /usr/share/vim/vimfiles/indent
-	doins Auxiliary/cmake-indent.vim
+	doins Auxiliary/vim/indent/cmake.vim
 
 	insinto /usr/share/vim/vimfiles/ftdetect
 	doins "${FILESDIR}/${PN}.vim"
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 
-	rm -rf "${ED}"/usr/share/cmake/{completions,editors} || die
+	rm -r "${ED}"/usr/share/cmake/{completions,editors} || die
 }
 
 pkg_postinst() {
