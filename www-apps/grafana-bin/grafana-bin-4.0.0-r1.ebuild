@@ -49,3 +49,9 @@ src_install() {
 	fowners grafana:grafana /var/{lib,log}/grafana
 	fperms 0750 /var/{lib,log}/grafana
 }
+
+post_install() {
+	einfo "Starting with version 4.0, Grafana is using a lot more file"
+	einfo "descriptors. You can bump the limit (by default 1024) by"
+	einfo "uncommenting the relevant line in /etc/conf.d/grafana."
+}
