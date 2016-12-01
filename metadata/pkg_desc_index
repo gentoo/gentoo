@@ -629,7 +629,7 @@ app-dicts/aspell-da 1.7.42: Danish language dictionary for aspell
 app-dicts/aspell-de 0.60_pre20030222: German and Swiss-German language dictionary for aspell
 app-dicts/aspell-de-alt 2.1.1-r1: German (traditional orthography) language dictionary for aspell
 app-dicts/aspell-el 0.50.3: Greek language dictionary for aspell
-app-dicts/aspell-en 7.1.0: English (US, British, Canadian) language dictionary for aspell
+app-dicts/aspell-en 7.1.0 2016.11.20.0: English (US, British, Canadian) language dictionary for aspell
 app-dicts/aspell-eo 2.1.20000225.2: Esperanto language dictionary for aspell
 app-dicts/aspell-es 1.9a: Spanish language dictionary for aspell
 app-dicts/aspell-et 0.1.21.1: Estonian language dictionary for aspell
@@ -4567,7 +4567,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.10.13 1.10.14 1.11.33: A C++ crypto library
+dev-libs/botan 1.10.12 1.10.13 1.10.14 1.11.33 1.11.34: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
