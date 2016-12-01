@@ -9,4 +9,4 @@ SLOT=0
 SRC_URI=https://grafanarel.s3.amazonaws.com/builds/grafana-4.0.0-1480439068.linux-x64.tar.gz -> grafana-bin-4.0.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=f66346243420e0e7a248d8e12aa71d74
+_md5_=965df88459a8a363382ff931c717be9a
