@@ -5161,7 +5161,7 @@ dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the term
 dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
-dev-ml/markup 0.7.2-r1: Error-recovering streaming HTML5 and XML parsers
+dev-ml/markup 0.7.3: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20160526 20160808 20160825 20161114 20161115: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
@@ -16793,6 +16793,7 @@ sys-apps/hdparm 9.45 9.48 9.49 9.50: Utility to change hard drive performance pa
 sys-apps/heirloom-tools 070715: Heirloom toolchest - original Unix tools
 sys-apps/help2man 1.46.6 1.47.3 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
+sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2: Utility to manage hardware, network, power or other profiles (fork)
