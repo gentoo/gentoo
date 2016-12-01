@@ -8,7 +8,7 @@ PHP_EXT_NAME="mysqlnd_qc"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php5-5 php5-6"
+USE_PHP="php5-6"
 
 inherit php-ext-pecl-r3 flag-o-matic
 
@@ -23,11 +23,6 @@ IUSE="memcached sqlite"
 DEPEND="
 	memcached? ( dev-libs/libmemcached )
 	sqlite? ( dev-db/sqlite:3 )
-	php_targets_php5-5? ( || (
-				 dev-lang/php:5.5[-libmysqlclient,mysql]
-				 dev-lang/php:5.5[-libmysqlclient,mysqli]
-				)
-			    )
 	php_targets_php5-6? ( || (
 				 dev-lang/php:5.6[-libmysqlclient,mysql]
 				 dev-lang/php:5.6[-libmysqlclient,mysqli]
