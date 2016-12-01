@@ -38,16 +38,3 @@ Index: tyxml-4.0.0/lib/xml_print.ml
             | `Malformed _ ->
                 Uutf.Buffer.add_utf_8 buffer Uutf.u_rep;
                 warn:=true)
-Index: tyxml-4.0.0/ppx/ppx_attribute_value.ml
-===================================================================
---- tyxml-4.0.0.orig/ppx/ppx_attribute_value.ml
-+++ tyxml-4.0.0/ppx/ppx_attribute_value.ml
-@@ -160,7 +160,7 @@ let char ?separated_by:_ ?default:_ loc
-   let c =
-     match next decoded with
-     | None -> Ppx_common.error loc "No character in attribute %s" name
--    | Some i when i <= 255 -> Char.chr i
-+    | Some i when Uchar.to_int i <= 255 -> Char.chr (Uchar.to_int i)
-     | Some _ ->
-       Ppx_common.error loc "Character out of range in attribute %s" name
-   in
