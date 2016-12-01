@@ -71,6 +71,11 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	if use system-icu; then
+		# ensuire build against system headers - bug #601264
+		rm -r src/3rdparty/chromium/third_party/icu/source || die
+	fi
+
 	qt_use_disable_mod geolocation positioning \
 		src/core/core_common.pri \
 		src/core/core_gyp_generator.pro
