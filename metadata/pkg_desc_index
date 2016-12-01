@@ -16875,7 +16875,7 @@ sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8 0.9: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.7 0.22.4 9999: OpenRC manages the services, startup and shutdown of a host
-sys-apps/opentmpfiles 9999: A standalone utility to process systemd-style tmpfiles.d files
+sys-apps/opentmpfiles 0.1 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
@@ -17880,6 +17880,7 @@ virtual/ssh 0: Virtual for SSH client and server
 virtual/szip 2.1: Virtual for szip compression drop-in replacements
 virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
 virtual/texi2dvi 0: Virtual for texi2dvi (and texi2pdf)
+virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
