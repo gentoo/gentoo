@@ -94,7 +94,6 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	dev-libs/atk
 	dev-libs/expat
 	>=x11-libs/cairo-1.10[X]
-	>=x11-libs/gtk+-2.18:2
 	x11-libs/gdk-pixbuf
 	>=x11-libs/pango-1.22.0
 	>=media-libs/libpng-1.6.21:0=[apng]
@@ -135,7 +134,8 @@ if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
 		IUSE+=" gtk3"
 	fi
 	RDEPEND+="
-	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )"
+	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )
+	!gtk3? ( >=x11-libs/gtk+-2.18:2 )"
 elif [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
 	if [[ ${MOZCONFIG_OPTIONAL_GTK2ONLY} = "enabled" ]]; then
 		IUSE+=" +gtk2"
@@ -143,7 +143,11 @@ elif [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
 		IUSE+=" gtk2"
 	fi
 	RDEPEND+="
+	gtk2? ( >=x11-libs/gtk+-2.18:2 )
 	!gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
+else
+	RDEPEND+="
+		>=x11-libs/gtk+-2.18:2"
 fi
 if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
 	inherit qmake-utils
