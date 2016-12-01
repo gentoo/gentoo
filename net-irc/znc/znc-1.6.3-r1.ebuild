@@ -28,12 +28,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-libs/icu:=
 	sys-libs/zlib
-	perl? ( >=dev-lang/perl-5.10 )
+	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
 "
