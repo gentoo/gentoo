@@ -33,7 +33,10 @@ DEPEND="${COMMONDEPEND}
 	!dev-lang/mono-basic
 "
 
-PATCHES=("${FILESDIR}"/${PN}-4.8.0.371-makedev.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8.0.371-makedev.patch
+	"${FILESDIR}"/${PN}-4.8.0.371-x86_32.patch
+)
 
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
