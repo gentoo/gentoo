@@ -1291,7 +1291,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 1.23.0: Golden Disk Image builder.
+app-emulation/diskimage-builder 1.23.0 1.24.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.3 1.13.0_rc1-r1 1.13.0_rc2 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
@@ -4678,7 +4678,7 @@ dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
 dev-libs/keybinder 0.3.0-r200 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 1.5.25 2.0.4: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r1: Library implementing generic path searching, configuration, and TeX-specific file searching
+dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r2: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kproperty 3.0.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1: Framework for creation and generation of reports in multiple formats
@@ -7065,7 +7065,7 @@ dev-python/ansi2html 1.1.1: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
-dev-python/aodhclient 0.6.0: A client for the OpenStack Aodh API
+dev-python/aodhclient 0.6.0 0.7.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.2-r1 1.4: namespace control and lazy-import mechanism
 dev-python/aplpy 1.0 1.1.1: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.0: Module for determining appropriate platform-specific dirs
@@ -9740,7 +9740,7 @@ dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexibl
 dev-tex/latex2html 2008 2008-r1 2015: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.2.1b 2.3.8 2.3.11: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1: Compare two latex files and mark up significant differences
-dev-tex/latexmk 435 441 443a 444 445: Perl script for automatically building LaTeX documents
+dev-tex/latexmk 435 441 443a 444 445 448: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
