@@ -41,6 +41,7 @@ SRC_URI="${SRC_URI} ) "
 TEXMF_PATH=/usr/share/texmf-dist
 
 src_prepare() {
+	epatch "${FILESDIR}/insecure_tmp_mktexlsr.patch"
 	cd "${WORKDIR}/texlive-${PV#*_p}-source"
 	S="${WORKDIR}/texlive-${PV#*_p}-source" elibtoolize #sane .so versionning on gfbsd
 	cp "${FILESDIR}/texmf-update-r2" "${S}"/texmf-update
