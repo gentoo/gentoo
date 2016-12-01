@@ -146,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
 	"${FILESDIR}"/${PN}-9999-texturepacker.patch
 	"${FILESDIR}"/${PN}-16-ffmpeg3.patch
+	"${FILESDIR}"/${PN}-16.1-gcc-6.patch
 )
 
 CONFIG_CHECK="~IP_MULTICAST"
