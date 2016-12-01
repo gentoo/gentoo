@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/glib-2.32:2
 	)
 	gtk3? (
 		>=x11-libs/gtk+-3.0:3
-		vte? ( x11-libs/vte:2.90 )
+		vte? ( x11-libs/vte:2.91 )
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
