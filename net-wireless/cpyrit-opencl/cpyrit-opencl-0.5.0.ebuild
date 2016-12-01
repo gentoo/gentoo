@@ -13,7 +13,7 @@ DESCRIPTION="A sub-package that adds OpenCL-capability to Pyrit"
 HOMEPAGE="https://github.com/JPaulMora/Pyrit"
 SRC_URI="https://github.com/JPaulMora/Pyrit/archive/v${PV}.tar.gz -> pyrit-${PV}.tar.gz"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ GPL-3+-with-opencl-exception GPL-3+-with-opencl-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
