@@ -90,12 +90,18 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-has "${EAPI:-0}" 0 1 2 3 4 5 || die "kernel-2.eclass is unsupported for EAPI ${EAPI}"
-
 PYTHON_COMPAT=( python{2_6,2_7} )
 
 inherit eutils toolchain-funcs versionator multilib python-any-r1
-EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+case ${EAPI:-0} in
+	0|1)
+		EXPORT_FUNCTIONS src_{unpack,compile,install,test} \
+			pkg_{setup,preinst,postinst,postrm} ;;
+	2|3|4|5)
+		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
+			pkg_{setup,preinst,postinst,postrm} ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+esac
 
 # Added by Daniel Ostrow <dostrow@gentoo.org>
 # This is an ugly hack to get around an issue with a 32-bit userland on ppc64.
@@ -1260,12 +1266,9 @@ kernel-2_src_unpack() {
 	# we run misc `make` functions below
 	[[ $(type -t kernel-2_hook_premake) == "function" ]] && kernel-2_hook_premake
 
-	debug-print "Applying any user patches"
-	# apply any user patches
-    case ${EAPI:-0} in
-        0|1|2|3|4|5) epatch_user ;;
-        6) eapply_user ;;
-    esac
+	case ${EAPI:-0} in
+		0|1) kernel-2_src_prepare ;;
+	esac
 
 	debug-print "Doing unpack_set_extraversion"
 
@@ -1303,6 +1306,20 @@ kernel-2_src_unpack() {
 			-e 's|TOUT      := .tmp_gas_check|TOUT  := $(T).tmp_gas_check|' \
 			"${S}"/arch/powerpc/Makefile
 	fi
+}
+
+# @FUNCTION: kernel-2_src_prepare
+# @DESCRIPTION:
+# Apply any user patches 
+kernel-2_src_prepare() {
+
+	debug-print "Applying any user patches"
+
+	# apply any user patches
+	case ${EAPI:-0} in
+		0|1|2|3|4|5) epatch_user ;;
+		6) eapply_user ;;
+	esac
 }
 
 kernel-2_src_compile() {
