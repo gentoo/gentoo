@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=(python2_7)
+PYTHON_COMPAT=( python2_7 )
 
 inherit eutils systemd distutils-r1
 
@@ -80,7 +80,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
 
-DOCS=(README.rst AUTHORS)
+DOCS=( README.rst AUTHORS )
 
 REQUIRED_USE="|| ( raet zeromq )"
 RESTRICT="x86? ( test )"
@@ -88,19 +88,20 @@ RESTRICT="x86? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
 	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
-	"${FILESDIR}/${PN}-2016.3.1-broken-tests.patch"
+	"${FILESDIR}/${PN}-2016.3.4-test-nonexist-dirs.patch"
+	"${FILESDIR}/${PN}-2016.3.4-dont-test-ordering.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
 
 	# apparently libcloud does not know about this?
-	rm tests/unit/cloud/clouds/dimensiondata_test.py
+	rm tests/unit/cloud/clouds/dimensiondata_test.py || die
 
 	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
-	rm tests/unit/cloud/clouds/gce_test.py
+	rm tests/unit/cloud/clouds/gce_test.py || die
 }
 
 python_install_all() {
@@ -120,7 +121,7 @@ python_install_all() {
 python_test() {
 	local tempdir
 	# testsuite likes lots of files
-	ulimit -n 3072
+	ulimit -n 3072 || die
 
 	# ${T} is too long a path for the tests to work
 	tempdir="$(mktemp -dup /tmp salt-XXX)"
