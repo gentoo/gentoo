@@ -604,6 +604,7 @@ enable_cmake-utils_src_configure() {
 	# Wipe the default optimization flags out of CMake
 	if [[ ${CMAKE_BUILD_TYPE} != Gentoo ]] && ! has "${EAPI}" 2 3 4 5; then
 		cat >> ${common_config} <<- _EOF_ || die
+			SET (CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
