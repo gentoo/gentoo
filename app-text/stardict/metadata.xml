@@ -19,7 +19,8 @@
 		<flag name="qqwry">Enable QQWry plugin, which provides information (in
 			 Chinese language) about geographical positions, owner, etc. for IP
 			 addresses</flag>
-		<flag name="tools">Build and install the extra stardict tools</flag>
+		<flag name="tools">Build and install dictionary management
+			tools and converters from various dictionary formats</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">stardict-4</remote-id>
