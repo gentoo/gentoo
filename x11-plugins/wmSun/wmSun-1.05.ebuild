@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 MY_P=${P/S/s}
 DESCRIPTION="dockapp which displays the rise/set time of the sun"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmsun"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmsun"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,8 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="dockapp for monitoring the top three processes using cpu or memory"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmtop"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmtop"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
