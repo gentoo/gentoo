@@ -17,26 +17,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
 RDEPEND="
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/jaraco-collections[${PYTHON_USEDEP}]
+	>=dev-python/jaraco-functools-1.5[${PYTHON_USEDEP}]
+	>=dev-python/jaraco-itertools-1.8[${PYTHON_USEDEP}]
+	dev-python/jaraco-logging[${PYTHON_USEDEP}]
 	dev-python/jaraco-stream[${PYTHON_USEDEP}]
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
-	dev-python/jaraco-itertools[${PYTHON_USEDEP}]
-	dev-python/jaraco-logging[${PYTHON_USEDEP}]
-	>=dev-python/jaraco-functools-1.5[${PYTHON_USEDEP}]
+	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
+		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
-		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 	)
 	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/rst-linker[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 
