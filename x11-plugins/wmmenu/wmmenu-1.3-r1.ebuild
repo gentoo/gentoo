@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils toolchain-funcs
 
-DESCRIPTION="a popup menu of icons like in AfterStep, as a dockable application"
+DESCRIPTION="a popup menu of icons like in AfterStep, as a dockapp"
 HOMEPAGE="http://www.dockapps.net/wmmenu"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
