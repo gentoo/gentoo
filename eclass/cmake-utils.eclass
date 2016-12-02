@@ -523,11 +523,18 @@ enable_cmake-utils_src_configure() {
 		SET (CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> ${includes} ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
 	_EOF_
 
+	local myCC=$(tc-getCC) myCXX=$(tc-getCXX) myFC=$(tc-getFC)
+
+	# !!! IMPORTANT NOTE !!!
+	# Single slash below is intentional. CMake is weird and wants the
+	# CMAKE_*_VARIABLES split into two elements: the first one with
+	# compiler path, and the second all with all command-line options,
+	# space separated.
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
 	cat > ${toolchain_file} <<- _EOF_ || die
-		SET (CMAKE_C_COMPILER $(tc-getCC))
-		SET (CMAKE_CXX_COMPILER $(tc-getCXX))
-		SET (CMAKE_Fortran_COMPILER $(tc-getFC))
+		SET (CMAKE_C_COMPILER "${myCC/ /;}")
+		SET (CMAKE_CXX_COMPILER "${myCXX/ /;}")
+		SET (CMAKE_Fortran_COMPILER "${myFC/ /;}")
 		SET (CMAKE_AR $(type -P $(tc-getAR)) CACHE FILEPATH "Archive manager" FORCE)
 		SET (CMAKE_RANLIB $(type -P $(tc-getRANLIB)) CACHE FILEPATH "Archive index generator" FORCE)
 	_EOF_
