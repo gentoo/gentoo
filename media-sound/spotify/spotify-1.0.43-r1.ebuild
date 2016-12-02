@@ -9,11 +9,11 @@ DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 BUILD_ID="123.g80176796"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}-client/"
-SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}-77_amd64.deb )
-	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}-24_i386.deb )"
+SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.125.g376063c5-91_amd64.deb )
+	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}-25_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
