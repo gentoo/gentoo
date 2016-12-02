@@ -6145,7 +6145,6 @@ net-misc/lldpd:edp - Enable Extreme Discovery Protocol
 net-misc/lldpd:fdp - Enable Foundry Discovery Protocol
 net-misc/lldpd:graph - Create dot graphs in documentations
 net-misc/lldpd:jansson - Enable JSON output via Jansson
-net-misc/lldpd:json-c - Enable JSON output via json-c
 net-misc/lldpd:lldpmed - Enable LLDP-MED extension
 net-misc/lldpd:old-kernel - Enable compatibility with Linux kernel older than 2.6.39
 net-misc/lldpd:sanitizers - Enable code instrumentation with selected sanitizers
