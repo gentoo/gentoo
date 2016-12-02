@@ -39,9 +39,12 @@ src_test() {
 }
 
 src_install() {
-	exeinto "$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD $(usex luajit 'luajit' 'lua'))"
+	local instdir
+	instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD $(usex luajit 'luajit' 'lua'))"
+	exeinto "${inst#${EPREFIX}}"
 	doexe lpeg.so
-	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
+	instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
+	insinto "${inst#${EPREFIX}}"
 	doins re.lua
 
 	use doc && einstalldocs
