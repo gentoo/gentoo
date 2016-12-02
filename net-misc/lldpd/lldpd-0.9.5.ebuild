@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils user systemd bash-completion-r1 autotools
 
@@ -14,26 +14,27 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph jansson +lldpmed old-kernel
-	seccomp sonmp snmp static-libs readline xml zsh-completion"
+	sanitizers seccomp sonmp snmp static-libs readline xml zsh-completion"
 
-RDEPEND=">=dev-libs/libevent-2.0.5
-		dev-libs/libbsd
-		snmp? ( net-analyzer/net-snmp[extensible(+)] )
-		xml? ( dev-libs/libxml2 )
-		jansson? ( dev-libs/jansson )
-		seccomp? ( sys-libs/libseccomp )
-		zsh-completion? ( app-shells/zsh )"
+RDEPEND="dev-libs/libbsd
+	>=dev-libs/libevent-2.0.5
+	snmp? ( net-analyzer/net-snmp[extensible(+)] )
+	xml? ( dev-libs/libxml2 )
+	jansson? ( dev-libs/jansson )
+	seccomp? ( sys-libs/libseccomp )
+	zsh-completion? ( app-shells/zsh )"
 DEPEND="${RDEPEND}
-		virtual/pkgconfig
-		doc? (
-			graph? ( app-doc/doxygen[dot] )
-			!graph? ( app-doc/doxygen )
-		)"
+	virtual/pkgconfig
+	doc? (
+		graph? ( app-doc/doxygen[dot] )
+		!graph? ( app-doc/doxygen )
+	)"
 
 REQUIRED_USE="graph? ( doc )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.11-zsh-completion-dir.patch
+	"${FILESDIR}/${PN}-0.7.11-zsh-completion-dir.patch"
+	"${FILESDIR}/${P}-seccomp-add-mprotect.patch"
 )
 
 pkg_setup() {
@@ -44,8 +45,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
+
 	eautoreconf
 	elibtoolize
 }
@@ -74,6 +75,7 @@ src_configure() {
 		$(use_enable sonmp) \
 		$(use_enable static-libs static) \
 		$(use_with readline) \
+		$(use_enable sanitizers) \
 		$(use_with seccomp) \
 		$(use_with snmp) \
 		$(use_with xml)
@@ -92,8 +94,10 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}-confd-1 ${PN}
 	newbashcomp src/client/completion/lldpcli lldpcli
 
-	use doc && dohtml -r doxygen/html/*
+	use doc && dodoc -r doxygen/html
 
+	insinto /etc
+	doins "${FILESDIR}/lldpd.conf"
 	keepdir /etc/${PN}.d
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
