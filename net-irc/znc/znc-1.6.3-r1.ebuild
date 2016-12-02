@@ -9,11 +9,13 @@ inherit eutils python-single-r1 readme.gentoo-r1 systemd user
 
 MY_PV=${PV/_/-}
 GTEST_VER="1.7.0"
-GTEST_URL="https://googletest.googlecode.com/files/gtest-${GTEST_VER}.zip"
+GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> googletest-release-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
-SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz
-	test? ( ${GTEST_URL} )"
+SRC_URI="
+	http://znc.in/releases/${PN}-${MY_PV}.tar.gz
+	test? ( ${GTEST_URL} )
+"
 KEYWORDS="amd64 arm x86"
 
 HOMEPAGE="http://znc.in"
@@ -26,16 +28,17 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-libs/icu:=
 	sys-libs/zlib
-	perl? ( >=dev-lang/perl-5.10 )
+	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
 "
 
@@ -62,7 +65,7 @@ pkg_setup() {
 
 src_configure() {
 	econf \
-		--with-systemdsystemunitdir=$(systemd_get_systemunitdir) \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable perl) \
@@ -70,12 +73,12 @@ src_configure() {
 		$(use_enable sasl cyrus) \
 		$(use_enable ssl openssl) \
 		$(use_enable tcl tcl) \
-		$(use_with test gtest "${WORKDIR}/gtest-${GTEST_VER}")
+		$(use_with test gtest "${WORKDIR}/googletest-release-${GTEST_VER}")
 }
 
 src_install() {
-	emake install DESTDIR="${D%/}"
-	dodoc NOTICE README.md
+	default
+	dodoc NOTICE
 	if use daemon; then
 		newinitd "${FILESDIR}"/znc.initd-r1 znc
 		newconfd "${FILESDIR}"/znc.confd-r1 znc
