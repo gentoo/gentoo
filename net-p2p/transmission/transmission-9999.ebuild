@@ -34,6 +34,7 @@ HOMEPAGE="https://transmissionbt.com/"
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
 IUSE="gtk libressl lightweight nls qt5 systemd test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.0.10:=
