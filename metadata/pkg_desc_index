@@ -4682,7 +4682,7 @@ dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p2015052
 dev-libs/kproperty 3.0.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/kreport 3.0.0-r1: Framework for creation and generation of reports in multiple formats
-dev-libs/leatherman 0.9.0 0.9.1 0.9.3: A C++ toolkit
+dev-libs/leatherman 0.9.0 0.9.1 0.9.3 0.9.4: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14 0.8.14-r2: CORBA tree builder
@@ -4909,7 +4909,7 @@ dev-libs/m17n-lib 1.5.2 1.5.5 1.6.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library f
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
-dev-libs/mathjax 2.2 2.4.0 2.5.3: JavaScript display engine for LaTeX, MathML and AsciiMath
+dev-libs/mathjax 2.2 2.4.0 2.5.3 2.7.0: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mini-xml 2.8 2.9 2.10: Small XML parsing library to read XML and XML-like data files
@@ -16345,7 +16345,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903 1.0.44: IDE for the R language
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
