@@ -36,12 +36,12 @@ install_cron_file() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/"${P}"-ignore-hidden.patch \
-	"${FILESDIR}"/"${P}"-fbsd.patch \
-	"${FILESDIR}"/"${P}"-noasprintf.patch \
-	"${FILESDIR}"/"${P}"-atomic-create.patch \
-	"${FILESDIR}"/"${P}"-Werror.patch \
-	"${FILESDIR}"/"${P}"-lfs.patch
+	"${FILESDIR}/${P}-ignore-hidden.patch"
+	"${FILESDIR}/${P}-fbsd.patch"
+	"${FILESDIR}/${P}-noasprintf.patch"
+	"${FILESDIR}/${P}-atomic-create.patch"
+	"${FILESDIR}/${P}-Werror.patch"
+	"${FILESDIR}/${P}-lfs.patch"
 )
 
 src_prepare() {
