@@ -5,7 +5,7 @@
 EAPI=5
 inherit autotools
 
-DESCRIPTION="a dockapp that displays time and date (same style as NEXTSTEP(tm) operating systems)"
+DESCRIPTION="a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)"
 HOMEPAGE="http://www.dockapps.net/wmclock"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
