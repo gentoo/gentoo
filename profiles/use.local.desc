@@ -1117,7 +1117,7 @@ app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processi
 app-text/stardict:espeak - Enable text to speech synthesizer using espeak engine
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
-app-text/stardict:tools - Build and install the extra stardict tools
+app-text/stardict:tools - Build and install dictionary management tools and converters from various dictionary formats
 app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.
