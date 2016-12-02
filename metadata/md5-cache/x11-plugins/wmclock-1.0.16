@@ -1,8 +1,8 @@
 DEFINED_PHASES=prepare
 DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=a dockapp that displays time and date (same style as NEXTSTEP(tm) operating systems)
+DESCRIPTION=a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 EAPI=5
-HOMEPAGE=http://windowmaker.org/dockapps/?name=wmclock
+HOMEPAGE=http://www.dockapps.net/wmclock
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmclock-1.0.16.tar.gz
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4d8dfc30608bc1b8135d59266a3e4d15
+_md5_=9fca10e8a0956fac587f5f81b6f7fc40
