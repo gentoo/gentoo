@@ -38,7 +38,6 @@ RDEPEND="sys-apps/pciutils
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
 		dev-libs/openssl:*[-bindist]
@@ -85,6 +84,14 @@ DOCS=( README.rst AUTHORS )
 
 REQUIRED_USE="|| ( raet zeromq )"
 RESTRICT="x86? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2016.11.0-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.4-test-nonexist-dirs.patch"
+	"${FILESDIR}/${PN}-2016.11.0-remove-file-tree-test.patch"
+	"${FILESDIR}/${PN}-2016.11.0-broken-tests.patch"
+)
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
