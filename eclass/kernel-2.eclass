@@ -544,9 +544,6 @@ elif [[ ${ETYPE} == headers ]]; then
 	unset KBUILD_OUTPUT
 
 	SLOT="0"
-else
-	eerror "Unknown ETYPE=\"${ETYPE}\", must be \"sources\" or \"headers\""
-	die "Unknown ETYPE=\"${ETYPE}\", must be \"sources\" or \"headers\""
 fi
 
 # Cross-compile support functions
@@ -1371,6 +1368,11 @@ kernel-2_pkg_setup() {
 	fi
 
 	ABI="${KERNEL_ABI}"
+	if [[ ${ETYPE} != sources ]] && [[ ${ETYPE} != headers ]]; then
+		eerror "Unknown ETYPE=\"${ETYPE}\", must be \"sources\" or \"headers\""
+		die "Unknown ETYPE=\"${ETYPE}\", must be \"sources\" or \"headers\""
+	fi
+
 	[[ ${ETYPE} == headers ]] && setup_headers
 	[[ ${ETYPE} == sources ]] && echo ">>> Preparing to unpack ..."
 }
