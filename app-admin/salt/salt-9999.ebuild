@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=(python2_7)
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
 inherit eutils systemd distutils-r1
 
@@ -24,7 +24,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
-IUSE+=" openssl profile redis selinux test timelib raet +zeromq vim-syntax"
+IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -38,7 +38,7 @@ RDEPEND="sys-apps/pciutils
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-	openssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
+
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
 		dev-libs/openssl:*[-bindist]
@@ -55,6 +55,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
+	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
@@ -67,24 +68,34 @@ RDEPEND="sys-apps/pciutils
 	vim-syntax? ( app-vim/salt-vim )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/timelib[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
+		!x86? ( dev-python/boto3[${PYTHON_USEDEP}] )
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
-		>=dev-python/SaltTesting-2015.2.16[${PYTHON_USEDEP}]
+		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
+		>=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
 
-DOCS=(README.rst AUTHORS)
+DOCS=( README.rst AUTHORS )
 
 REQUIRED_USE="|| ( raet zeromq )"
+RESTRICT="x86? ( test )"
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
+
+	# apparently libcloud does not know about this?
+	rm tests/unit/cloud/clouds/dimensiondata_test.py || die
+
+	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
+	rm tests/unit/cloud/clouds/gce_test.py || die
 }
 
 python_install_all() {
@@ -102,11 +113,25 @@ python_install_all() {
 }
 
 python_test() {
+	local tempdir
 	# testsuite likes lots of files
-	ulimit -n 3072
+	ulimit -n 3072 || die
 
-	# using ${T} for the TMPDIR makes some tests needs paths that exceed PATH_MAX
-	USE_SETUPTOOLS=1 SHELL="/bin/bash" TMPDIR="/tmp" \
-		${EPYTHON} tests/runtests.py \
-		--unit-tests --no-report --verbose || die "testing failed"
+	# ${T} is too long a path for the tests to work
+	tempdir="$(mktemp -dup /tmp salt-XXX)"
+	mkdir "${T}/$(basename "${tempdir}")"
+
+	(
+		cleanup() { rm -f "${tempdir}"; }
+		trap cleanup EXIT
+
+		addwrite "${tempdir}"
+		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}"
+
+		USE_SETUPTOOLS=1 SHELL="/bin/bash" \
+			TMPDIR="${tempdir}" \
+			${EPYTHON} tests/runtests.py \
+			--unit-tests --no-report --verbose
+
+	) || die "testing failed"
 }
