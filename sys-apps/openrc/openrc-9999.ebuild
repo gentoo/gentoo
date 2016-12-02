@@ -45,7 +45,10 @@ DEPEND="${COMMON_DEPEND}
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
 	!prefix? (
-		kernel_linux? ( >=sys-apps/sysvinit-2.86-r6 )
+		kernel_linux? (
+			>=sys-apps/sysvinit-2.86-r6
+			virtual/tmpfiles
+		)
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
 	)
 	selinux? (
