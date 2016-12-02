@@ -6,8 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="dockapp that displays memory and swap space usage"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmmemload"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmmemload"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

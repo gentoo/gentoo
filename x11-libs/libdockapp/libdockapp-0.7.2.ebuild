@@ -6,8 +6,7 @@ EAPI=5
 inherit autotools font
 
 DESCRIPTION="Window Maker Dock Applet Library"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmclock"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/libdockapp"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT public-domain"

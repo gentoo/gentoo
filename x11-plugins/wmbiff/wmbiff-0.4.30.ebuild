@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes"
 HOMEPAGE="http://www.dockapps.net/wmbiff"
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
+SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="crypt"
 
 RDEPEND="x11-libs/libX11
@@ -26,12 +26,11 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	x11-proto/xproto"
 
-S=${WORKDIR}/dockapps
-
 DOCS="ChangeLog FAQ NEWS README TODO wmbiff/sample.wmbiffrc"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.4.27-invalid-strncpy.patch
+	default
+	eapply "${FILESDIR}"/${PN}-0.4.27-invalid-strncpy.patch
 	eautoreconf
 }
 
