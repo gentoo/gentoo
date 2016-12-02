@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-01">
+  <title>GnuPG: RNG output is predictable</title>
+  <synopsis>Due to a design flaw, the output of GnuPG's Random Number Generator
+    (RNG) is predictable.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>December 02, 2016</announced>
+  <revised>December 02, 2016: 1</revised>
+  <bug>591536</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">1.4.21</unaffected>
+      <vulnerable range="lt">1.4.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite of
+      cryptographic software.
+    </p>
+  </background>
+  <description>
+    <p>A long standing bug (since 1998) in Libgcrypt (see “GLSA 201610-04”
+      below) and GnuPG allows an attacker to predict the output from the
+      standard RNG. Please review the “Entropy Loss and Output Predictability
+      in the Libgcrypt PRNG” paper below for a deep technical analysis.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker who obtains 580 bytes of the random number from the standard
+      RNG can trivially predict the next 20 bytes of output.
+    </p>
+    
+    <p>This flaw does not affect the default generation of keys, because
+      running gpg for key creation creates at most 2 keys from the pool. For a
+      single 4096 bit RSA key, 512 bytes of random are required and thus for
+      the second key (encryption subkey), 20 bytes could be predicted from the
+      the first key.
+    </p>
+    
+    <p>However, the security of an OpenPGP key depends on the primary key
+      (which was generated first) and thus the 20 predictable bytes should not
+      be a problem.  For the default key length of 2048 bit nothing will be
+      predictable.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuPG 1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.21"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6313">CVE-2016-6313</uri>
+    <uri link="http://formal.iti.kit.edu/~klebanov/pubs/libgcrypt-cve-2016-6313.pdf">
+      Entropy Loss and Output Predictability in the Libgcrypt PRNG
+    </uri>
+    <uri link="http://security.gentoo.org/glsa/201610-04">GLSA 201610-04</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 30 Nov 2016 18:28:25 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Fri, 02 Dec 2016 09:38:37 +0000">whissi</metadata>
+</glsa>
