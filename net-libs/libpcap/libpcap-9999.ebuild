@@ -71,6 +71,6 @@ multilib_src_install_all() {
 	# We need this to build pppd on G/FBSD systems
 	if [[ "${USERLAND}" == "BSD" ]]; then
 		insinto /usr/include
-		doins pcap-int.h
+		doins pcap-int.h portability.h
 	fi
 }
