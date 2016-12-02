@@ -1,0 +1,12 @@
+diff -Nuar a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2016-11-30 13:05:55.000000000 +0100
++++ b/Makefile.am	2016-12-02 23:46:15.288908073 +0100
+@@ -8,7 +8,7 @@
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ sbin_PROGRAMS = logrotate
+ logrotate_SOURCES = basenames.c config.c log.c logrotate.c \
+ 		    basenames.h config.h log.h logrotate.h queue.h
