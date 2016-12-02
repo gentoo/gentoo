@@ -50,21 +50,9 @@ gnustep-libs/smbkit
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # All stardict stuff and dicts are completely unmaintained and orphan for
 # years (#471350, #533632, #568472, #600718). Removal in a month.
-app-dicts/stardict-cdict-en-zh-big5
-app-dicts/stardict-cdict-en-zh-gb
-app-dicts/stardict-cedict-zh-en-big5
-app-dicts/stardict-cedict-zh-en-gb
-app-dicts/stardict-dictd-devils
-app-dicts/stardict-freedict-eng-deu
-app-dicts/stardict-freedict-eng-fra
-app-dicts/stardict-freedict-eng-ita
-app-dicts/stardict-freedict-eng-lat
-app-dicts/stardict-freedict-eng-rus
-app-dicts/stardict-freedict-eng-spa
-app-dicts/stardict-freedict-eng-swe
-app-dicts/stardict-freedict-eng-tur
-app-dicts/stardict-freedict-tur-deu
-app-dicts/stardict-freedict-tur-eng
+# Andrew Savchenko <bircoph@gentoo.org> (02 Dec 2016)
+# stardict and most dicts are maintained now, thus removed from
+# this list, but mask is kept for broken stuff
 app-dicts/stardict-hnd-de-vi
 app-dicts/stardict-hnd-en-vi
 app-dicts/stardict-hnd-fr-vi
@@ -73,21 +61,6 @@ app-dicts/stardict-hnd-vi-de
 app-dicts/stardict-hnd-vi-en
 app-dicts/stardict-hnd-vi-fr
 app-dicts/stardict-hnd-vi-vi
-app-dicts/stardict-jmdict-en-ja
-app-dicts/stardict-jmdict-ja-en
-app-dicts/stardict-langdao-en-zh-gb
-app-dicts/stardict-langdao-zh-en-gb
-app-dicts/stardict-mova-smiley
-app-dicts/stardict-oxford-en-zh-gb
-app-dicts/stardict-quick-eng-fra
-app-dicts/stardict-quick-eng-jpn
-app-dicts/stardict-quick-jpn-eng
-app-dicts/stardict-quick-ru-en
-app-dicts/stardict-xdict-en-zh-big5
-app-dicts/stardict-xdict-en-zh-gb
-app-dicts/stardict-xdict-zh-en-big5
-app-dicts/stardict-xdict-zh-en-gb
-app-text/stardict
 
 # Johannes Huber <johu@gentoo.org> (28 Nov 2016)
 # Masked for removal in 14 days. Gentoo temp workaround package.
