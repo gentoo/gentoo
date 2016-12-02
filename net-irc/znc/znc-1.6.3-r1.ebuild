@@ -16,7 +16,7 @@ SRC_URI="
 	http://znc.in/releases/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
 "
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"
@@ -28,12 +28,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-libs/icu:=
 	sys-libs/zlib
-	perl? ( >=dev-lang/perl-5.10 )
+	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
 "
