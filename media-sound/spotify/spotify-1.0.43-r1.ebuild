@@ -13,7 +13,7 @@ SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.125.g376063c5-91_amd64.deb )
 	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID}-25_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
