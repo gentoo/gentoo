@@ -16131,7 +16131,7 @@ sci-libs/gsl 1.14 1.16 2.1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.14-r1 1.8.15_p1 1.8.17: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.8.14-r1 1.8.15_p1 1.8.17 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
