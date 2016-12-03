@@ -85,7 +85,7 @@ app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for manag
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.5.0 6.7.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
-app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
+app-admin/ec2-ami-tools 1.5.6-r1: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
 app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.14 1.15: Rebuild Emacs packages
@@ -1990,7 +1990,7 @@ app-mobilephone/kannel 1.4.3-r2 1.5.0-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 0.7.2 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
-app-mobilephone/obexftp 0.23-r2 0.24 0.24-r1: File transfer over OBEX for mobile phones
+app-mobilephone/obexftp 0.23-r2 0.24-r1: File transfer over OBEX for mobile phones
 app-mobilephone/past 0.0.4: A simple SMS tool
 app-mobilephone/pysms 0.9.4-r1: Tool for sending text messages for various Swiss providers
 app-mobilephone/qtadb 0.8.1: Android phone manager via ADB
@@ -4933,7 +4933,7 @@ dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8: Alternative to vendor specific OpenCL ICD lo
 dev-libs/oniguruma 5.9.5 5.9.5-r1: a regular expression library for different character encodings
 dev-libs/opencryptoki 3.4.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
-dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
+dev-libs/openobex 1.5 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
 dev-libs/openssl 0.9.8z_p8 1.0.2j 1.1.0c: full-strength general purpose cryptography library (including SSL and TLS)
@@ -18061,7 +18061,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 41.0.2353.56 41.0.2353.69: A fast and secure web browser
-www-client/opera-beta 42.0.2393.27 42.0.2393.38: A fast and secure web browser
+www-client/opera-beta 42.0.2393.38 42.0.2393.65: A fast and secure web browser
 www-client/opera-developer 43.0.2420.0 43.0.2423.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
@@ -18986,7 +18986,7 @@ x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well 
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.20.2 3.20.3 3.22.0 3.22.1: The Gnome Terminal
-x11-terms/guake 0.8.3 0.8.5 0.8.7 9999: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.8.3 0.8.7 0.8.8 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
