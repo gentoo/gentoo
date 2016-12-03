@@ -33,12 +33,15 @@ RDEPEND="
 		>=virtual/opengl-7.0-r1:0[${MULTILIB_USEDEP}]
 		>=media-libs/freeglut-2.8.1:0[${MULTILIB_USEDEP}]
 		virtual/glu
+		x11-libs/libXi[${MULTILIB_USEDEP}]
+		x11-libs/libXmu[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.0-fix-build-system.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-add_libm.patch
 )
 
 multilib_src_configure() {

@@ -1,0 +1,11 @@
+--- jasper-2.0.0/src/libjasper/CMakeLists.txt.ori	2016-11-28 13:32:57.245053411 +0100
++++ jasper-2.0.0/src/libjasper/CMakeLists.txt	2016-11-28 13:33:24.707547620 +0100
+@@ -135,6 +135,8 @@
+ 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
+ )
+ 
++target_link_libraries(libjasper m)
++
+ if (UNIX)
+ 	set_target_properties(libjasper PROPERTIES OUTPUT_NAME jasper)
+ endif()
