@@ -31,6 +31,13 @@
 #--- END OF EXAMPLES ---
 
 # Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
+# Sandbox failure on install. No maintainer.
+# https://bugs.gentoo.org/597146
+# https://bugs.gentoo.org/597188
+# Removal in 30 days.
+dev-python/pygtkspellcheck
+
+# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
 # Duplicate package, see sci-libs/Shapely.
 # Removal in 30 days.
 dev-python/shapely
