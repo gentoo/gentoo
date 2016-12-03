@@ -53,7 +53,6 @@ else
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
 		https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
 		cacert? (
-			https://dev.gentoo.org/~anarchy/patches/nss-3.14.1-add_spi+cacerts_ca_certs.patch
 			https://dev.gentoo.org/~axs/distfiles/nss-cacert-class1-class3.patch
 		)"
 fi
@@ -106,7 +105,6 @@ src_prepare() {
 
 		if use cacert ; then
 			pushd "${S}"/nss-${NSS_VER} >/dev/null
-			epatch "${DISTDIR}"/nss-3.14.1-add_spi+cacerts_ca_certs.patch
 			epatch "${DISTDIR}"/nss-cacert-class1-class3.patch
 			popd >/dev/null
 		fi
