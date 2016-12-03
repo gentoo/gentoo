@@ -26,6 +26,7 @@ RDEPEND="icu? ( >=dev-libs/icu-56:= )
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
