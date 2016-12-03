@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ DEPEND="
 	kde-plasma/libtaskmanager:4
 	sys-libs/zlib
 	x11-libs/libX11
-	prison? ( media-libs/prison:4 )
+	prison? ( kde-frameworks/prison:4 )
 "
 RDEPEND="${DEPEND}"
 

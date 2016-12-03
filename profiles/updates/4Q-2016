@@ -44,3 +44,4 @@ move kde-base/libkworkspace kde-plasma/libkworkspace
 move kde-base/libplasmagenericshell kde-plasma/libplasmagenericshell
 move kde-base/libplasmaclock kde-plasma/libplasmaclock
 move kde-base/libtaskmanager kde-plasma/libtaskmanager
+move media-libs/prison kde-frameworks/prison

@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	calendar? ( $(add_kdeapps_dep kholidays) )
 	geolocation? ( $(add_frameworks_dep networkmanager-qt) )
 	gps? ( sci-geosciences/gpsd )
-	prison? ( media-libs/prison:5 )
+	prison? ( $(add_frameworks_dep prison) )
 	qalculate? ( sci-libs/libqalculate )
 "
 RDEPEND="${COMMON_DEPEND}

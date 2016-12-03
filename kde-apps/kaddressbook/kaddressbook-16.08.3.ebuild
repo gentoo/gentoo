@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtwidgets)
 	dev-libs/grantlee:5
-	prison? ( media-libs/prison:5 )
+	prison? ( $(add_frameworks_dep prison) )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( $(add_kdeapps_dep akonadi 'sqlite,tools') )
