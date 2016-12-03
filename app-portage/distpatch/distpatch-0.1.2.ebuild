@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Distfile Patching Support for Gentoo Linux (tools)"
-HOMEPAGE="https://www.gentoo.org/proj/en/infrastructure/distpatch/"
+HOMEPAGE="https://github.com/rafaelmartins/distpatch"
 SRC_URI="https://github.com/rafaelmartins/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
