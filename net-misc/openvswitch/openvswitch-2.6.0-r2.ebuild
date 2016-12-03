@@ -24,6 +24,7 @@ RDEPEND="
 	)
 	ssl? ( dev-libs/openssl:0= )
 	${PYTHON_DEPS}
+	~dev-python/ovs-${PV}
 	dev-python/twisted-core
 	dev-python/twisted-conch
 	dev-python/twisted-web
@@ -94,15 +95,9 @@ src_install() {
 		python_foreach_impl python_doscript utilities/"${SCRIPT}"
 	done
 
-	# monitor is statically enabled for bug 596206
-	#if use monitor ; then
-	python_install() {
-		python_domodule "${ED%/}"/usr/share/openvswitch/python/*
-		python_optimize "${ED%/}"/usr/share/ovsdbmonitor
-	}
-	python_foreach_impl python_install
+	python_foreach_impl python_optimize "${ED%/}"/usr/share/ovsdbmonitor
+
 	rm -r "${ED%/}"/usr/share/openvswitch/python || die
-	#fi
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
