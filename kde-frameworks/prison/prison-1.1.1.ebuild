@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="QRCode and data matrix barcode library"
-HOMEPAGE="https://projects.kde.org/projects/kdesupport/prison"
+HOMEPAGE="https://cgit.kde.org/prison.git"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"
