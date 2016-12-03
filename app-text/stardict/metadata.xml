@@ -12,15 +12,28 @@
 	 as Full-text translation, Net Dict. 
 	 </longdescription>
 	<use>
-		<flag name="espeak">Enable text to speech synthesizer using espeak
-			 engine</flag>
+		<flag name="advertisement">Enable stardict advertisements plugin</flag>
+		<flag name="dictdotcn">Enable dict.cn network plugin (for Chinese language)</flag>
+		<flag name="espeak">Enable text to speech synthesizer plugin using
+			<pkg>app-accessibility/espeak</pkg> engine</flag>
+		<flag name="gucharmap">Enable plugin for unicode symbols description
+			using <pkg>gnome-extra/gucharmap</pkg></flag>
+		<flag name="htmlparse">Enable plugin to parse dictionaries with html content</flag>
+		<flag name="man">Enable plugin to read manual pages</flag>
 		<flag name="pronounce">Install WyabdcRealPeopleTTS package (it is just
 			 many .wav files) to make StarDict pronounce English words</flag>
 		<flag name="qqwry">Enable QQWry plugin, which provides information (in
 			 Chinese language) about geographical positions, owner, etc. for IP
 			 addresses</flag>
-		<flag name="tools">Build and install dictionary management
-			tools and converters from various dictionary formats</flag>
+		<flag name="powerwordparse">Enable plugin to parse powerword dictionaries</flag>
+		<flag name="tools">Build and install dictionary management tools and
+			converters from various dictionary formats</flag>
+		<flag name="updateinfo">Enable plugin to check for stardict updates</flag>
+		<flag name="wikiparse">Enable plugin to parse dictionaries in wikimedia format</flag>
+		<flag name="wordnet">Enable wordnet plugin to find similar English words
+			using lexical database</flag>
+		<flag name="xdxfparse">Enable plugin to parse dictionaries
+			in xdxf (XML Dictionary eXchange Format)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">stardict-4</remote-id>

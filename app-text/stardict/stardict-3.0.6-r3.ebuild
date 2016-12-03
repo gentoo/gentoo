@@ -21,7 +21,9 @@ SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug espeak pronounce spell tools qqwry"
+IUSE="advertisement debug dictdotcn espeak +gucharmap +htmlparse
+man +powerwordparse pronounce qqwry spell tools updateinfo
++wikiparse +wordnet +xdxfparse"
 
 RESTRICT="test"
 
@@ -33,6 +35,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-2.20:2
 	x11-libs/libX11
 	x11-libs/pango
+	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
 		dev-libs/libpcre:=
@@ -67,25 +70,32 @@ src_prepare() {
 }
 
 src_configure() {
-	# NOTE: Festival plugin crashes, bug 188684. Disable for now.
-
 	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
 	# libbonobo-2, libgnome-2, libgnomeui-2, gconf-2 and orbit-2 will
 	# give you GNOME 2.x support, that is otherwise considered deprecated
 	# because of the deep GNOME 2.x core library dependencies
+
+	# Festival plugin crashes, bug 188684. Disable for now.
 	gnome2_src_configure \
-		$(use_enable tools) \
-		--disable-scrollkeeper \
-		$(use_enable spell) \
-		--disable-gucharmap \
-		$(use_enable debug) \
 		--disable-festival \
-		$(use_enable espeak) \
-		$(use_enable qqwry) \
-		--disable-updateinfo \
 		--disable-gnome-support \
 		--disable-gpe-support \
-		--disable-schemas-install
+		--disable-schemas-install \
+		--disable-scrollkeeper \
+		$(use_enable advertisement) \
+		$(use_enable dictdotcn) \
+		$(use_enable debug) \
+		$(use_enable espeak) \
+		$(use_enable gucharmap) \
+		$(use_enable htmlparse) \
+		$(use_enable qqwry) \
+		$(use_enable powerwordparse) \
+		$(use_enable spell) \
+		$(use_enable tools) \
+		$(use_enable updateinfo) \
+		$(use_enable wikiparse) \
+		$(use_enable wordnet) \
+		$(use_enable xdxfparse)
 }
 
 src_install() {
