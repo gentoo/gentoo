@@ -6,13 +6,13 @@ EAPI=5
 
 inherit cmake-utils udev
 
-DESCRIPTION="An implementation of the OBEX protocol used for transferring data to mobile devices"
+DESCRIPTION="Implementation of the OBEX protocol used for transferring data to mobile devices"
 HOMEPAGE="https://sourceforge.net/projects/openobex/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-Source.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bluetooth irda usb"
 
 RDEPEND="bluetooth? ( net-wireless/bluez:= )
