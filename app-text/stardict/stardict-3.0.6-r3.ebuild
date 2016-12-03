@@ -47,6 +47,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	espeak? ( >=app-accessibility/espeak-1.29 )
+	perl? ( dev-lang/perl )
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
