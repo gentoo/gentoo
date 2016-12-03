@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit prefix
+
 DESCRIPTION="Simple information system script"
 HOMEPAGE="https://github.com/dylanaraps/neofetch"
 SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
@@ -24,3 +26,12 @@ RDEPEND="${DEPEND}
 		media-libs/imlib2
 		media-gfx/imagemagick
 	)"
+
+src_prepare() {
+	hprefixify ${PN}
+	default
+}
+
+src_install() {
+	emake DESTDIR="${ED}" install
+}
