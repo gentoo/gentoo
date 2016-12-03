@@ -9048,7 +9048,7 @@ dev-ruby/aws-sdk-resources 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Serv
 dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.3-r1 0.6.4 0.6.5: Ruby barcode generator that doesn't rely on 3rd party libraries
-dev-ruby/bcat 0.6.2-r1 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
+dev-ruby/bcat 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11 3.1.11-r1: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
@@ -9176,7 +9176,7 @@ dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variabl
 dev-ruby/fuubar 2.2.0: Instafailing RSpec progress bar formatter
 dev-ruby/gettext_i18n_rails 1.5.0 1.7.2 1.8.0: FastGettext / Rails integration
 dev-ruby/gh 0.14.0 0.14.0-r1 0.15.0: multi-layer client for the github api v3
-dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0-r1 4.0.0 4.0.0-r1: Fast Gherkin lexer and parser
+dev-ruby/gherkin 2.12.0-r3 2.12.2 3.2.0-r1 4.0.0 4.0.0-r1: Fast Gherkin lexer and parser
 dev-ruby/git 1.2.9.1 1.3.0: Library for using Git in Ruby
 dev-ruby/github_api 0.12.4 0.14.0 0.14.1 0.14.5: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.6 0.3.6-r1 0.3.7: Reference models by URI
