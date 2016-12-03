@@ -90,7 +90,8 @@ src_install() {
 
 	local SCRIPT
 	for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
-		python_replicate_script utilities/"${SCRIPT}"
+		sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}" || die
+		python_foreach_impl python_doscript utilities/"${SCRIPT}"
 	done
 
 	# monitor is statically enabled for bug 596206
