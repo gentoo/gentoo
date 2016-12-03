@@ -1197,7 +1197,7 @@ app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.58 1.59: Emacs front-end to mpg123 audio player and OggVorbis audio player
 app-emacs/mu-cite 8.1_p200709030413 8.1_p201202272330: Message citation utilities for emacsen
-app-emacs/multi-term 1.2: Manage multiple terminal buffers in Emacs
+app-emacs/multi-term 1.2 1.3: Manage multiple terminal buffers in Emacs
 app-emacs/multiple-cursors 1.3.0: Multiple cursors for Emacs
 app-emacs/muse 3.20: Muse-mode is similar to EmacsWikiMode, but more focused on publishing to various formats
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
@@ -1328,7 +1328,7 @@ app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
 app-emulation/libvirt 1.3.5-r2 2.0.0-r3 2.1.0-r2 2.2.0-r1 2.3.0 2.4.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 0.2.3 0.2.3-r1 1.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
-app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4 2.0.5: LinuX Containers userspace utilities
+app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4 2.0.5 2.0.6: LinuX Containers userspace utilities
 app-emulation/lxd 2.2 2.3 2.4.1 2.5: Fast, dense and secure container management
 app-emulation/open-vm-tools 10.0.7 10.1.0: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
@@ -2435,7 +2435,7 @@ app-text/sigil 0.8.7-r1 0.9.5-r2 0.9.6: Sigil is a multi-platform WYSIWYG ebook 
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6-r2: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6-r2 3.0.6-r3: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.6.2 1.7.2 1.7.3 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
@@ -7812,7 +7812,7 @@ dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5 16.6: Core utilities for Python
 dev-python/pafy 0.5.1 0.5.2: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
-dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
+dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.15.1-r1 1.16.0 2.0.2 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
@@ -8593,6 +8593,7 @@ dev-python/wstools 0.4.3 0.4.4: WSDL parsing services package for Web Services f
 dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5 0.2.6: WTForms integration for peewee models
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
+dev-python/xarray 0.8.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.4.0 0.4.2: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdis 2.3.1 3.2.3: Python cross-version byte-code disassembler and marshal routines
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
@@ -12091,7 +12092,7 @@ mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1: Postgrey is a Postfix policy serve
 mail-filter/postsrsd 1.4 1.4-r1: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r10 3.22-r11: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108 20091202: Procmail Module Library is a collection of modules for Procmail
-mail-filter/pypolicyd-spf 1.3.2-r1: Python-based policy daemon for Postfix SPF verification
+mail-filter/pypolicyd-spf 1.3.2-r1 2.0.0: Python-based policy daemon for Postfix SPF verification
 mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
@@ -13817,7 +13818,7 @@ media-video/kamoso 3.2: Application to take pictures and videos from your webcam
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0a: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12_beta1 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.17 11.3 11.3-r1 11.4 11.6 11.7 11.8 11.9999 12 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -17406,7 +17407,7 @@ sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.5 2.9.6 2.9.7 3.0.0_rc1 3.0.0_rc2: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.0.1 1.2.4: exFAT filesystem FUSE module
-sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
+sys-fs/fuse-zip 0.4.2: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
