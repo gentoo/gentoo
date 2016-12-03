@@ -9,16 +9,15 @@ PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
 
-inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
+inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="http://pandas.pydata.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/pydata/pandas.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc -minimal full-support test X"
 
 MINIMAL_DEPEND="
@@ -100,9 +99,19 @@ RDEPEND="
 	!minimal? ( ${RECOMMENDED_DEPEND} )
 	full-support? ( ${OPTIONAL_DEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gapi.patch
+	"${FILESDIR}"/${P}-seqf.patch
+)
+
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" -i doc/source/conf.py || die
+
+	# https://github.com/pydata/pandas/issues/11299
+	sed \
+		-e 's:testOdArray:disable:g' \
+		-i pandas/io/tests/json/test_ujson.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -123,7 +132,7 @@ python_test() {
 	pushd  "${BUILD_DIR}"/lib > /dev/null
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
 	PYTHONPATH=. MPLCONFIGDIR=. \
-		virtx nosetests --verbosity=3 -A "${test_pandas}" pandas.io.tests.json.test_ujson.NumpyJSONTests
+		virtx nosetests --verbosity=3 -A "${test_pandas}" pandas
 	popd > /dev/null
 }
 
