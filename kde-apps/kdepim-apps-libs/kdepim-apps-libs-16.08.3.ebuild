@@ -32,7 +32,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	>=dev-libs/grantlee-5.1.0:5
-	prison? ( media-libs/prison:5 )
+	prison? ( $(add_frameworks_dep prison) )
 "
 RDEPEND="${DEPEND}"
 
