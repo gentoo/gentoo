@@ -22,7 +22,7 @@ LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="advertisement debug dictdotcn espeak examples +gucharmap
-+htmlparse man +powerwordparse pronounce qqwry spell tools
++htmlparse man perl +powerwordparse pronounce qqwry spell tools
 updateinfo +wikiparse +wordnet +xdxfparse"
 
 RESTRICT="test"
@@ -132,6 +132,7 @@ src_install() {
 	fi
 
 	# noinst_PROGRAMS with ${PN}_ prefix from tools/src/Makefile.am wrt #292773
+	# and additional scripts from tools dir
 	if use tools; then
 		local app
 		local apps="${PN}-editor pydict2dic olddic2newdic oxford2dic directory2dic
@@ -145,12 +146,24 @@ src_install() {
 			resdatabase2dir dir2resdatabase ${PN}-index sd2foldoc ${PN}-text2bin
 			${PN}-bin2text ${PN}-repair"
 
+		use perl && apps+=" dicts-dump.pl ncce2stardict.pl parse-oxford.perl"
+
 		for app in ${apps}; do
-			newbin tools/src/${app} ${PN}_${app}
+			if [[ "${app}" =~ ^${PN} ]]; then
+				dobin "tools/src/${app}"
+			else
+				newbin "tools/src/${app}" "${PN}_${app}"
+			fi
 		done
 
 		docinto tools
 		dodoc tools/{AUTHORS,ChangeLog,README}
+
+		if use examples; then
+			insinto tools
+			insinto /usr/share/doc/${PF}/tools
+			doins tools/src/{dictbuilder.{example,readme},example.ifo,example_treedict.tar.bz2}
+		fi
 	fi
 }
 
