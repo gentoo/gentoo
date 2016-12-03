@@ -2963,7 +2963,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Tra
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.6.32.78.1 5.6.33.79.0: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.32.78.1 5.6.33.79.0 5.6.34.79.1: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.4: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
@@ -14262,7 +14262,7 @@ net-dns/bind-tools 9.10.3_p4 9.10.4_p3 9.10.4_p4 9.11.0_p1: bind tools: dig, nsl
 net-dns/c-ares 1.10.0-r1 1.11.0 1.12.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
-net-dns/djbdns 1.05-r29 1.05-r30 1.05-r31: Collection of DNS client/server software
+net-dns/djbdns 1.05-r29 1.05-r30 1.05-r31 1.05-r32: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r1: A caching DNS proxy server
 net-dns/dnscap 20130814: dnscap is a network capture utility designed specifically for DNS traffic
 net-dns/dnscrypt-proxy 1.4.2 1.4.3 1.6.0 1.6.0-r1 1.6.1 1.7.0: A tool for securing communications between a client and a DNS resolver
