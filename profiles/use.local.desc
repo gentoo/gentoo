@@ -6228,7 +6228,8 @@ net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
 net-misc/openvpn:down-root - Enable the down-root plugin
 net-misc/openvpn:iproute2 - Enabled iproute2 support instead of net-tools
-net-misc/openvpn:passwordsave - Enables openvpn to save passwords
+net-misc/openvpn:lz4 - Enable LZ4 support
+net-misc/openvpn:mbedtls - Use mbed TLS instead of OpenSSL
 net-misc/openvpn:pkcs11 - Enable PKCS#11 smartcard support
 net-misc/openvpn:plugins - Enable the OpenVPN plugin system
 net-misc/openvpn:polarssl - Use PolarSSL instead of OpenSSL
