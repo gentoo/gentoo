@@ -18,14 +18,15 @@ IUSE="+unicode"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="git://github.com/patroclos/PAmix.git"
 else
-	SRC_URI="https://github.com/patroclos/PAmix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/patroclos/PAmix/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/PAmix-${PV}"
 fi
 
 RDEPEND="media-sound/pulseaudio
 	sys-libs/ncurses:0=[unicode?]"
-DEPEND="virtual/pkgconfig
+DEPEND="sys-devel/autoconf-archive
+	virtual/pkgconfig
 	${RDEPEND}"
 
 src_prepare() {
