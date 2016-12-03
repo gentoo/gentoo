@@ -21,9 +21,9 @@ SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="advertisement debug dictdotcn espeak +gucharmap +htmlparse
-man +powerwordparse pronounce qqwry spell tools updateinfo
-+wikiparse +wordnet +xdxfparse"
+IUSE="advertisement debug dictdotcn espeak examples +gucharmap
++htmlparse man +powerwordparse pronounce qqwry spell tools
+updateinfo +wikiparse +wordnet +xdxfparse"
 
 RESTRICT="test"
 
@@ -54,6 +54,9 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+# docs are messy, installed manually below
+DOCS=""
 
 src_prepare() {
 	# From Fedora
@@ -101,7 +104,19 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 
-	dodoc dict/doc/{Documentation,FAQ,HACKING,HowToCreateDictionary,Skins,StarDictFileFormat,Translation}
+	dodoc AUTHORS ChangeLog README
+
+	docinto dict
+	dodoc dict/{AUTHORS,ChangeLog,README,TODO}
+	dodoc dict/doc/{Documentation,FAQ,HowToCreateDictionary,Skins,StarDictFileFormat,TextualDictionaryFileFormat,Translation}
+
+	docinto lib
+	dodoc lib/{AUTHORS,ChangeLog,README}
+
+	if use examples; then
+		insinto /usr/share/doc/${PF}/dict
+		doins dict/doc/stardict-textual-dict*
+	fi
 
 	if use qqwry; then
 		insinto /usr/share/${PN}/data
@@ -133,10 +148,14 @@ src_install() {
 		for app in ${apps}; do
 			newbin tools/src/${app} ${PN}_${app}
 		done
+
+		docinto tools
+		dodoc tools/{AUTHORS,ChangeLog,README}
 	fi
 }
 
 pkg_postinst() {
+	elog
 	elog "Note: festival text to speech (TTS) plugin is not built. To use festival"
 	elog 'TTS plugin, please, emerge festival and enable "Use TTS program." at:'
 	elog '"Preferences -> Dictionary -> Sound" and fill in "Commandline" with:'
@@ -144,8 +163,12 @@ pkg_postinst() {
 	elog
 	elog "You will now need to install ${PN} dictionary files. If"
 	elog "you have not, execute the below to get a list of dictionaries:"
-	elog
 	elog "  emerge -s ${PN}-"
+	elog
+	elog "Additionally you may install any stardict dictionary from the net"
+	elog "by unpacking it to:"
+	elog "  /usr/share/stardict/dic"
+	elog
 
 	gnome2_pkg_postinst
 }
