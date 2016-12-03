@@ -126,6 +126,7 @@ src_install() {
 	docinto dict
 	dodoc dict/{AUTHORS,ChangeLog,README,TODO}
 	dodoc dict/doc/{Documentation,FAQ,HowToCreateDictionary,Skins,StarDictFileFormat,TextualDictionaryFileFormat,Translation}
+	dodoc -r dict/doc/wiki
 
 	docinto lib
 	dodoc lib/{AUTHORS,ChangeLog,README}
