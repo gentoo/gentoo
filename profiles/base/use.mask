@@ -16,6 +16,7 @@ ruby_targets_ruby18
 ruby_targets_jruby
 ruby_targets_ree18
 ruby_targets_ruby19
+ruby_targets_ruby20
 
 # masking here and unmasking in default/linux/
 kmod

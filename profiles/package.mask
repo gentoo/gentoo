@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
+# Mask ruby 2.0 for removal, bug 576034
+dev-lang/ruby:2.0
+
 # Johannes Huber <johu@gentoo.org> (05 Dec 2016)
 # Masked for removal in 30 days. Dead upstream.
 # Relies on deprecated dev-qt/qt3support.
