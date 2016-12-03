@@ -87,6 +87,7 @@ src_prepare() {
 
 	if use jpeg2k; then
 		epatch "${FILESDIR}"/${P}-jasper.patch
+		epatch "${FILESDIR}"/${P}-jasper2.patch #bug 599626
 	fi
 
 	# -soname is only accepted by GNU ld/ELF
