@@ -4,16 +4,16 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic user systemd linux-info git-r3
+inherit autotools flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
-EGIT_SUBMODULES=(-cmocka)
+SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz
+	test? ( https://raw.githubusercontent.com/OpenVPN/${PN}/v${PV}/tests/unit_tests/${PN}/mock_msg.h )"
 HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins polarssl selinux +ssl static systemd test userland_BSD"
@@ -59,6 +59,10 @@ pkg_setup()  {
 src_prepare() {
 	default
 	eautoreconf
+
+	if use test; then
+		cp "${DISTDIR}/mock_msg.h" tests/unit_tests/${PN} || die
+	fi
 }
 
 src_configure() {
@@ -152,9 +156,4 @@ pkg_postinst() {
 		einfo ""
 		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}"
 	fi
-
-	ewarn ""
-	ewarn "You are using a live ebuild building from the sources of openvpn"
-	ewarn "repository from http://openvpn.git.sourceforge.net. For reporting"
-	ewarn "bugs please contact: openvpn-devel@lists.sourceforge.net."
 }
