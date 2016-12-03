@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask-babelex[${PYTHON_USEDEP}]
-		dev-python/shapely[${PYTHON_USEDEP}]
+		sci-libs/Shapely[${PYTHON_USEDEP}]
 		dev-python/geoalchemy2[${PYTHON_USEDEP}]
 		>=dev-python/pillow-2.9[${PYTHON_USEDEP},jpeg]
 	)"
