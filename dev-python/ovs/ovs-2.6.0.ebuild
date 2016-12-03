@@ -16,5 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	!<net-misc/openvswitch-2.6.0-r2
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	"
 RDEPEND=""
