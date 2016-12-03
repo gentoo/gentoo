@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
+		dev-libs/expat
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
 		virtual/mysql
@@ -153,16 +154,16 @@ src_install() {
 	# and additional scripts from tools dir
 	if use tools; then
 		local app
-		local apps="${PN}-editor pydict2dic olddic2newdic oxford2dic directory2dic
-			dictd2dic wquick2dic ec50 directory2treedic treedict2dir jdictionary mova
-			xmlinout soothill kanjidic2 powerword kdic 21tech 21shiji buddhist
-			tabfile cedict edict duden ${PN}-dict-update degb2utf frgb2utf
-			jpgb2utf gmx2utf rucn kingsoft wikipedia wikipediaImage babylon
-			${PN}2txt ${PN}-verify fest2dict i2e2dict downloadwiki
-			ooo2dict myspell2dic exc2i2e dictbuilder tabfile2sql KangXi Unihan
-			xiaoxuetang-ja wubi ydp2dict wordnet lingvosound2resdb
-			resdatabase2dir dir2resdatabase ${PN}-index sd2foldoc ${PN}-text2bin
-			${PN}-bin2text ${PN}-repair"
+		local apps="${PN}-editor pydict2dic olddic2newdic oxford2dic directory2dic dictd2dic
+			wquick2dic ec50 directory2treedic treedict2dir jdictionary mova xmlinout
+			soothill kanjidic2 powerword kdic 21tech 21shiji buddhist tabfile
+			cedict edict duden ${PN}-dict-update degb2utf frgb2utf jpgb2utf gmx2utf
+			rucn kingsoft kingsoft2 wikipedia wikipediaImage babylon ${PN}2txt ${PN}-verify
+			fest2dict i2e2dict downloadwiki ooo2dict myspell2dic exc2i2e
+			dictbuilder tabfile2sql KangXi Unihan xiaoxuetang-ja wubi ydp2dict
+			wordnet lingvosound2resdb resdatabase2dir dir2resdatabase ${PN}-index
+			sd2foldoc
+			${PN}-text2bin ${PN}-bin2text ${PN}-repair"
 
 		use perl && apps+=" dicts-dump.pl ncce2stardict.pl parse-oxford.perl"
 		use python && apps+=" hanzim2dict.py jm2stardict.py lingea-trd-decoder.py
