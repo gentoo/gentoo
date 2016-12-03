@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
+# Duplicate package, see sci-libs/Shapely.
+# Removal in 30 days.
+dev-python/shapely
+
 # Eray Aslan <eras@gentoo.org> (01 Dec 2016)
 # Mask release candidates
 =app-crypt/heimdal-7.0*

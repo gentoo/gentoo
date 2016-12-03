@@ -21,7 +21,7 @@ RDEPEND=">=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/shapely[${PYTHON_USEDEP}]
+		sci-libs/Shapely[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
