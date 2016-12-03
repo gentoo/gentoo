@@ -5,6 +5,10 @@
     <email>mrueg@gentoo.org</email>
     <name>Manuel Rüger</name>
   </maintainer>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
   <longdescription>OpenVPN is an easy-to-use, robust and highly
 configurable VPN daemon which can be used to securely link two or more
 networks using an encrypted tunnel.</longdescription>
