@@ -9100,7 +9100,7 @@ dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.7.7 0.8.0 0.8.1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0: Sorts an array in column order
 dev-ruby/combustion 0.5.4 0.5.5: Elegant Rails Engine Testing
-dev-ruby/commander 4.3.7 4.3.8 4.4.0: The complete solution for Ruby command-line executables
+dev-ruby/commander 4.4.0 4.4.1: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
@@ -9599,7 +9599,7 @@ dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form suppor
 dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.4-r1 2.1.5 2.1.5-r1: Simple library to generate UUIDs
-dev-ruby/vcard 0.2.13 0.2.14: Ruby vcard support extracted from Vpim
+dev-ruby/vcard 0.2.13 0.2.14 0.2.15: Ruby vcard support extracted from Vpim
 dev-ruby/vcr 1.11.3 2.9.3 3.0.1 3.0.3: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.5 1.2.6: General Rack Authentication Framework
