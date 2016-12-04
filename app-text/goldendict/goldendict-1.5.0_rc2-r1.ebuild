@@ -45,6 +45,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 
