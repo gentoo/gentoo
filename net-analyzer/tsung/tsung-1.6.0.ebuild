@@ -16,11 +16,16 @@ SRC_URI="http://tsung.erlang-projects.org/dist/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="gnuplot"
 
 DEPEND="dev-lang/erlang"
-RDEPEND=${DEPEND}
-
+RDEPEND="
+	gnuplot? (
+		sci-visualization/gnuplot
+		dev-perl/Template-Toolkit
+	)
+	${DEPEND}
+"
 src_configure() {
 	./configure --prefix="/usr" || die "econf failed"
 }
