@@ -16,7 +16,7 @@ fi
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
 HOMEPAGE="http://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
-LICENSE="Apache-2.0"
+LICENSE="Boost-1.0"
 SLOT="0"
 IUSE="+cxx static-libs test"
 
