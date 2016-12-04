@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-
 inherit eutils multilib pam toolchain-funcs
 
 MY_PN="${PN/plus/}"
@@ -19,20 +18,23 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="jbig html ldap mgetty pam"
 
-DEPEND=">=sys-libs/zlib-1.1.4
+DEPEND="
+	>=sys-libs/zlib-1.1.4
 	app-text/ghostscript-gpl
 	virtual/mta
-	media-libs/tiff[jbig?]
-	virtual/jpeg
+	media-libs/tiff:0[jbig?]
+	virtual/jpeg:0
 	jbig? ( media-libs/jbigkit )
 	virtual/awk
 	ldap? (  net-nds/openldap )
 	pam? ( virtual/pam )
-	mgetty? ( net-dialup/mgetty[-fax] )"
-
+	mgetty? ( net-dialup/mgetty[-fax] )
+	!net-dialup/mgetty[fax]
+"
 RDEPEND="${DEPEND}
 	net-mail/metamail
-	!net-dialup/sendpage"
+	!net-dialup/sendpage
+"
 
 S="${WORKDIR}/${MY_P}"
 
