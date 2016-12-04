@@ -2005,7 +2005,7 @@ app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1 3.0.2: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
-app-office/calcurse 4.0.0 4.1.0 4.2.0: a text-based calendar and scheduling application
+app-office/calcurse 4.0.0 4.1.0 4.2.0 4.2.1: a text-based calendar and scheduling application
 app-office/calligra 2.9.11: KDE Office Suite
 app-office/calligra-l10n 2.9.11 2.9.11-r1: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
@@ -2298,7 +2298,7 @@ app-text/hd2u 1.0.3: Dos2Unix like text file converter
 app-text/highlight 3.17 3.31 3.32 3.33: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
-app-text/html-xml-utils 6.9 6.9-r1 7.0: A number of simple utilities for manipulating HTML and XML files
+app-text/html-xml-utils 6.9 6.9-r1 7.0 7.1: A number of simple utilities for manipulating HTML and XML files
 app-text/html2text 1.3.2a 1.3.2a-r1: A HTML to text converter
 app-text/html401 19991224-r2: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
@@ -3176,7 +3176,7 @@ dev-games/newton 2.36 3.13: an integrated solution for real time simulation of p
 dev-games/ode 0.11.1 0.12 0.14: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
-dev-games/openscenegraph 3.2.1-r2 3.4.0 3.5.1: Open source high performance 3D graphics toolkit
+dev-games/openscenegraph 3.2.1-r2 3.4.0 3.5.1-r1: Open source high performance 3D graphics toolkit
 dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 2.0.3-r1: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
@@ -7150,7 +7150,7 @@ dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/brython 3.2.6 3.2.7 3.2.8: A Python 3 implementation for client-side web programming
+dev-python/brython 3.2.8 3.2.9: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
@@ -7528,7 +7528,7 @@ dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 1.1 2.0 2.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
-dev-python/imageio 1.5: Python library for reading and writing image data
+dev-python/imageio 1.5 1.6: Python library for reading and writing image data
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
 dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
@@ -15325,7 +15325,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.6 0.14.9 0.14.10 0.14.12: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.10 0.14.12 0.14.13: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.92 2.92-r1 9999: A fast, easy, and free BitTorrent client
@@ -15503,7 +15503,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20160502 20160610: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.5-r1 2.5-r2 2.6: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.5-r1 2.5-r2 2.6 2.6-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240 2.150.1: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist

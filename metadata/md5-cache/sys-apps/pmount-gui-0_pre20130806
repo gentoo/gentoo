@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install
 DEPEND=x11-libs/gtk+:2 virtual/pkgconfig
 DESCRIPTION=A simple graphical frontend for pmount
 EAPI=5
-HOMEPAGE=http://git.tdb.fi/?p=pmount-gui:a=summary
+HOMEPAGE=http://git.tdb.fi/?p=pmount-gui.git;a=summary
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 RDEPEND=x11-libs/gtk+:2 sys-apps/pmount virtual/udev
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~ssuominen/pmount-gui-0_pre20130806.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9801bebcff169dcac265cd8ea9e0cd79
+_md5_=9152c39f40096bc658ea99edd930a199
