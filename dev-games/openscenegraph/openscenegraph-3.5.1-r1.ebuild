@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 WX_GTK_VER="3.0"
 
-inherit eutils cmake-utils flag-o-matic wxwidgets
+inherit cmake-utils flag-o-matic wxwidgets
 
 MY_PN="OpenSceneGraph"
 MY_P=${MY_PN}-${PV}
@@ -18,16 +18,12 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/34" # Subslot consists of major + minor version number
 KEYWORDS="~amd64 ~x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-jpeg2k las lua openexr openinventor osgapps pdf png qt4 qt5 sdl sdl2 svg tiff truetype
+jpeg2k las lua openexr openinventor osgapps pdf png qt5 sdl sdl2 svg tiff truetype
 vnc wxwidgets xine xrandr zlib"
 
-REQUIRED_USE="
-	qt4? ( !qt5 )
-	qt5? ( !qt4 )
-	sdl2? ( sdl )
-"
+REQUIRED_USE="sdl2? ( sdl )"
 
-# TODO: COLLADA, FBX, GTA, ITK, OpenVRML, Performer, DCMTK
+# TODO: COLLADA, FBX, GTA, OpenVRML, Performer, DCMTK
 RDEPEND="
 	x11-libs/libSM
 	x11-libs/libXext
@@ -55,17 +51,12 @@ RDEPEND="
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
-		media-libs/ilmbase
-		media-libs/openexr
+		media-libs/ilmbase:=
+		media-libs/openexr:=
 	)
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
 	png? ( media-libs/libpng:0= )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -92,9 +83,9 @@ DEPEND="${RDEPEND}
 	xrandr? ( x11-proto/randrproto )
 "
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
-DOCS=(AUTHORS.txt ChangeLog NEWS.txt)
+DOCS=( AUTHORS.txt ChangeLog NEWS.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-cmake.patch
@@ -108,55 +99,53 @@ src_configure() {
 	# Needed by FFmpeg
 	append-cppflags -D__STDC_CONSTANT_MACROS
 
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DDYNAMIC_OPENSCENEGRAPH=ON
-		-DWITH_ITK=OFF
 		-DGENTOO_DOCDIR="/usr/share/doc/${PF}"
 		-DOPENGL_PROFILE=GL2 #GL1 GL2 GL3 GLES1 GLES3 GLES3
 		-DOSG_PROVIDE_READFILE=ON
 		-DOSG_USE_LOCAL_LUA_SOURCE=OFF
 		-DWITH_Lua51=OFF # We use CMake-version FindLua.cmake instead
-		-DWITH_Lua52=OFF
-		$(cmake-utils_use_with asio)
-		$(cmake-utils_use_with curl)
-		$(cmake-utils_use_build doc DOCUMENTATION)
-		$(cmake-utils_use_build osgapps OSG_APPLICATIONS)
-		$(cmake-utils_use_build examples OSG_EXAMPLES)
-		$(cmake-utils_use_with ffmpeg FFmpeg)
-		$(cmake-utils_use_with fltk)
-		$(cmake-utils_use_with fox)
-		$(cmake-utils_use_with gdal)
-		$(cmake-utils_use_with gif GIFLIB)
-		$(cmake-utils_use_with glut)
-		$(cmake-utils_use_with gstreamer GStreamer)
-		$(cmake-utils_use_with gstreamer GLIB)
-		$(cmake-utils_use_with gtk GtkGl)
-		$(cmake-utils_use_with jpeg)
-		$(cmake-utils_use_with jpeg2k Jasper)
-		$(cmake-utils_use_with las LIBLAS)
-		$(cmake-utils_use_with lua)
-		$(cmake-utils_use_with openexr OpenEXR)
-		$(cmake-utils_use_with openinventor Inventor)
-		$(cmake-utils_use_with pdf Poppler-glib)
-		$(cmake-utils_use_with png)
-		$(cmake-utils_use_with sdl)
-		$(cmake-utils_use_with sdl2)
-		$(cmake-utils_use_with svg rsvg)
-		$(cmake-utils_use_with tiff)
-		$(cmake-utils_use_with truetype Freetype)
-		$(cmake-utils_use_with vnc LibVNCServer)
-		$(cmake-utils_use_with wxwidgets wxWidgets)
-		$(cmake-utils_use_with xine)
-		$(cmake-utils_use xrandr OSGVIEWER_USE_XRANDR)
-		$(cmake-utils_use_with zlib)
+		-DWITH_Asio=$(usex asio)
+		-DWITH_CURL=$(usex curl)
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DBUILD_OSG_APPLICATIONS=$(usex osgapps)
+		-DBUILD_OSG_EXAMPLES=$(usex examples)
+		-DWITH_FFmpeg=$(usex ffmpeg)
+		-DWITH_GDAL=$(usex gdal)
+		-DWITH_GIFLIB=$(usex gif)
+		-DWITH_GStreamer=$(usex gstreamer)
+		-DWITH_GLIB=$(usex gstreamer)
+		-DWITH_GtkGl=$(usex gtk)
+		-DWITH_JPEG=$(usex jpeg)
+		-DWITH_Jasper=$(usex jpeg2k)
+		-DWITH_LIBLAS=$(usex las)
+		-DWITH_Lua=$(usex lua)
+		-DWITH_OpenEXR=$(usex openexr)
+		-DWITH_Inventor=$(usex openinventor)
+		-DWITH_Poppler-glib=$(usex pdf)
+		-DWITH_PNG=$(usex png)
+		-DOSG_USE_QT=$(usex qt5)
+		$(usex qt5 "-DDESIRED_QT_VERSION=5" "")
+		-DWITH_SDL=$(usex sdl)
+		-DWITH_SDL2=$(usex sdl2)
+		-DWITH_RSVG=$(usex svg rsvg)
+		-DWITH_TIFF=$(usex tiff)
+		-DWITH_Freetype=$(usex truetype)
+		-DWITH_LibVNCServer=$(usex vnc)
+		-DWITH_Xine=$(usex xine)
+		-DOSGVIEWER_USE_XRANDR=$(usex xrandr)
+		-DWITH_ZLIB=$(usex zlib)
 	)
-	if use qt4; then
-		mycmakeargs+=( -DOSG_USE_QT=ON -DDESIRED_QT_VERSION=4 )
-	elif use qt5; then
-		mycmakeargs+=( -DOSG_USE_QT=ON -DDESIRED_QT_VERSION=5 )
-	else
-		mycmakeargs+=( -DOSG_USE_QT=OFF )
+	if use examples; then
+		mycmakeargs+=(
+			-DWITH_FLTK=$(usex fltk)
+			-DWITH_FOX=$(usex fox)
+			-DWITH_GLUT=$(usex glut)
+			-DWITH_wxWidgets=$(usex wxwidgets)
+		)
 	fi
+
 	cmake-utils_src_configure
 }
 
