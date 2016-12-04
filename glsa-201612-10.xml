@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-10">
+  <title>libvirt: Directory traversal</title>
+  <synopsis>Libvirt is vulnerable to directory traversal when using Access
+    Control Lists (ACL).
+  </synopsis>
+  <product type="ebuild">libvirt</product>
+  <announced>December 04, 2016</announced>
+  <revised>December 04, 2016: 1</revised>
+  <bug>568870</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/libvirt" auto="yes" arch="*">
+      <unaffected range="ge">1.2.21-r1</unaffected>
+      <vulnerable range="lt">1.2.21-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libvirt is a C toolkit for manipulating virtual machines.</p>
+  </background>
+  <description>
+    <p>Normally, only privileged users can coerce libvirt into creating or
+      opening existing files using the virStorageVol APIs; and such users
+      already have full privilege to create any domain XML.
+    </p>
+    
+    <p>But in the case of fine-grained ACLs, it is feasible that a user can be
+      granted storage_vol:create but not domain:write, and it violates
+      assumptions if such a user can abuse libvirt to access files outside of
+      the storage pool.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>When fine-grained Access Control Lists (ACL) are in effect, an
+      authenticated local user with storage_vol:create permission but without
+      domain:write permission maybe able to create or access arbitrary files
+      outside of the storage pool.
+    </p>
+  </impact>
+  <workaround>
+    <p>Don’t make use of fine-grained Access Control Lists (ACL) in libvirt;
+      In Gentoo, libvirt’s ACL support is disable by default unless you
+      enable the “policykit” USE flag.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All libvirt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/libvirt-1.2.21-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5313">CVE-2015-5313</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 24 Dec 2015 05:15:17 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:17:48 +0000">whissi</metadata>
+</glsa>
