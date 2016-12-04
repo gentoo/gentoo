@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
-RUBY_VER=2.0
+RUBY_VER=2.1
 
 inherit bash-completion-r1 eutils python-single-r1 user
 

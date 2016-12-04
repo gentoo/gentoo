@@ -45,7 +45,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( dev-lang/ruby:2.0 )"
+	ruby? ( dev-lang/ruby:2.1 )"
 DEPEND="${RDEPEND}
 	dev-util/ctags
 	sys-devel/autoconf
