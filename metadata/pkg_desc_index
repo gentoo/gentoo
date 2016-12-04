@@ -1869,7 +1869,7 @@ app-misc/mswinurl_launcher 1.0: Launcher and desktop association for MS Windows 
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r3 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
-app-misc/neofetch 1.8.1 1.9.1 9999: Simple information system script
+app-misc/neofetch 1.8.1 1.9.1 2.0 9999: Simple information system script
 app-misc/no-more-secrets 9999: recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
@@ -2628,7 +2628,7 @@ app-vim/screen 1.5: vim plugin: simulate a split shell with screen or tmux
 app-vim/searchcomplete 1.1-r1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
 app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syntax
-app-vim/session 2.12 2.13.1: vim plugin: extended session management for vim
+app-vim/session 2.13.1: vim plugin: extended session management for vim
 app-vim/showmarks 2.2-r1: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
@@ -2965,7 +2965,7 @@ dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition pa
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 5.6.32.78.1 5.6.33.79.0 5.6.34.79.1: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.4: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.4 2.4.5: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.0 1.22.1-r1: wxWidgets GUI for PostgreSQL
@@ -3152,7 +3152,7 @@ dev-erlang/sqlite3 1.1.5: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.3 1.0.5 1.0.6: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.3 1.0.6 1.0.7: STUN and TURN library for Erlang and Elixir
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
-dev-games/aseprite 0.9.5-r1 1.1.6 1.1.7: Animated sprite editor & pixel art tool
+dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.6.2b 0.8.4 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
@@ -17281,6 +17281,7 @@ sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parall
 sys-devel/prelink 20130503 20130503-r1 20151030: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 1.5_pre717-r1 2.0: ./configure like generator for qmake-based projects
 sys-devel/remake 3.81.0.2 3.81.0.3 3.82.0.4 3.82.0.9 4.1.1.1: patched version of GNU make that adds improved error reporting, tracing, and a debugger
+sys-devel/slibtool 0.5.12: A skinny libtool implementation, written in C
 sys-devel/smatch 1.57 1.57-r1 1.59 9999: static analysis tool for C
 sys-devel/sparse 0.4.3 0.4.4 0.5.0 9999: C semantic parser
 sys-devel/systemd-m4 9999: autoconf macros for packages using systemd
@@ -18041,7 +18042,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6 4.6.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 54.0.2840.100 55.0.2883.75 56.0.2924.10 56.0.2924.14: Open-source version of Google Chrome web browser
+www-client/chromium 55.0.2883.75 56.0.2924.10 56.0.2924.14: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
