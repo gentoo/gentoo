@@ -15,8 +15,6 @@ SRC_URI="http://www.kaffe.org/~stuart/japi/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
 RESTRICT="test"
 
 CDEPEND="dev-java/ant-core:0"
@@ -33,15 +31,16 @@ DEPEND="
 S="${WORKDIR}/${P}"
 
 JAVA_GENTOO_CLASSPATH="ant-core"
-
 JAVA_SRC_DIR="src"
 
-java_prepare() {
-	eapply_user
-	cd "${S}"/bin || die
-	rm *.bat || die
-	sed -e "s:../share/java:../share/${PN}/lib:" -i * \
+src_prepare() {
+	default
+
+	rm bin/*.bat || die
+	sed -e "s:\.\./share/java:../share/${PN}/lib:" -i bin/* \
 		|| die "Failed to correct the location of the jar file in perl scripts."
+
+	java-pkg-2_src_prepare
 }
 
 src_install() {
