@@ -35,6 +35,7 @@
     <remote-id type="cpan-module">Mojo::IOLoop::Delay</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Server</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Stream</remote-id>
+    <remote-id type="cpan-module">Mojo::IOLoop::Subprocess</remote-id>
     <remote-id type="cpan-module">Mojo::JSON</remote-id>
     <remote-id type="cpan-module">Mojo::JSON::Pointer</remote-id>
     <remote-id type="cpan-module">Mojo::Loader</remote-id>
@@ -89,7 +90,6 @@
     <remote-id type="cpan-module">Mojolicious::Controller</remote-id>
     <remote-id type="cpan-module">Mojolicious::Lite</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin</remote-id>
-    <remote-id type="cpan-module">Mojolicious::Plugin::Charset</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::Config</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::DefaultHelpers</remote-id>
     <remote-id type="cpan-module">Mojolicious::Plugin::EPLRenderer</remote-id>
