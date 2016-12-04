@@ -47,7 +47,7 @@ cuda_gccdir() {
 	local gcc_bindir ver args="" flag ret
 
 	# Currently we only support the gnu compiler suite
-	if [[ $(tc-getCXX) != *g++* ]]; then
+	if  ! tc-is-gcc ; then
 		ewarn "Currently we only support the gnu compiler suite"
 		return 2
 	fi
