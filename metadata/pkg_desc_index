@@ -2142,7 +2142,7 @@ app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-portage/unsandbox 1: The Sandbox escapist tool
 app-shells/autojump 22.2.4-r4: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p46-r1 4.3_p48 4.4_p5-r1: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p48 4.3_p48-r1 4.4_p5-r1: The standard GNU Bourne again shell
 app-shells/bash-completion 2.1_p20141224-r1 2.3-r2 2.4 2.4-r1: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -14050,7 +14050,7 @@ net-analyzer/nagios-check_mysql_health 2.1.9.2 2.2.2: A nagios plugin for checki
 net-analyzer/nagios-check_openvpn-simple 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.3.0 1.3.7-r1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 3.5.1 4.0.8-r2 4.2.3: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 3.5.1 4.0.8-r2 4.2.3-r1: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1: Nagios/Icinga plugin to check current server's RAID status
 net-analyzer/nagios-plugins 2.0.3-r2 2.1.2: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
@@ -18041,7 +18041,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6 4.6.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 54.0.2840.100 55.0.2883.75 56.0.2924.3 56.0.2924.10: Open-source version of Google Chrome web browser
+www-client/chromium 54.0.2840.100 55.0.2883.75 56.0.2924.10 56.0.2924.14: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
