@@ -1,14 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Extra GNOME icons for specific devices and file types"
-HOMEPAGE="https://www.gnome.org/ https://git.gnome.org/browse/gnome-icon-theme-extras/"
+HOMEPAGE="https://git.gnome.org/browse/gnome-icon-theme-extras/"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
