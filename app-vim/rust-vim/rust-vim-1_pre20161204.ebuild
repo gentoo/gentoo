@@ -4,15 +4,15 @@
 
 EAPI=6
 
-inherit vim-plugin
+inherit vim-plugin vcs-snapshot
 
-MY_PN="rust-mode-vim"
-MY_P="${MY_PN}-${PV}"
+MY_PN="${PN/-/.}"
+REF="eed97e75117faaf210cb6103cf39a797fe21bfbe"
+
 DESCRIPTION="Vim configuration for Rust"
 HOMEPAGE="http://www.rust-lang.org/"
-SRC_URI="https://dev.gentoo.org/~jauhien/distfiles/${MY_P}.tar.gz"
+SRC_URI="https://github.com/rust-lang/${MY_PN}/tarball/${REF} -> ${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-S="${WORKDIR}/${MY_P}"
