@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="alsa +client cups debug directfb doc ffmpeg gstreamer jpeg
+IUSE="alsa +client cups debug directfb doc ffmpeg gstreamer jpeg libav
 	pulseaudio server smartcard cpu_flags_x86_sse2 test usb X xinerama xv"
 
 RDEPEND="
@@ -48,7 +48,10 @@ RDEPEND="
 		)
 	)
 	directfb? ( dev-libs/DirectFB )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		libav? ( media-video/libav:0= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
 	gstreamer? (
 		media-libs/gstreamer:0.10
 		media-libs/gst-plugins-base:0.10
