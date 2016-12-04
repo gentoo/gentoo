@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -65,6 +65,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/envy24control-config-dir.patch
+	epatch "${FILESDIR}"/${P}-output_tram_line-static.patch
 
 	epatch_user
 
