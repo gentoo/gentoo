@@ -34,11 +34,13 @@ RDEPEND=">=sys-libs/ncurses-5.2-r3:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-underlinking.patch"
+	"${FILESDIR}/${P}-fix-missing-time.patch"
+)
+
 S="${WORKDIR}"/${MY_P}
-
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.5.3-underlinking.patch"
-
 	default
 	ecvs_clean
 	sed -i -e "/^AR=/s/ar/$(tc-getAR)/" {.,w3mimg,libwc}/Makefile.in || die
