@@ -24,8 +24,10 @@ elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 else # Official release
 	SRC_URI="https://libav.org/releases/${P}.tar.xz"
 	FATE_VER=${PV%%_*}
-	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${FATE_VER%%.*}.tar.xz )"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-12-r1.tar.xz )"
 fi
+
+SRC_URI+=" https://dev.gentoo.org/~lu_zero/libav/0001-xcb-Add-all-the-libraries-to-the-link-line-explicitl.patch"
 # 9999 does not have fate-*.tar.xz
 
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
@@ -151,6 +153,8 @@ src_unpack() {
 
 src_prepare() {
 	epatch_user
+
+	epatch "${DISTDIR}/0001-xcb-Add-all-the-libraries-to-the-link-line-explicitl.patch"
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then
@@ -344,5 +348,5 @@ multilib_src_install_all() {
 multilib_src_test() {
 	local _libs="$(for i in lib*/;do echo -n "${BUILD_DIR}/${i%/}:";done)"
 	einfo "LD_LIBRARY_PATH is set to \"${_libs}\""
-	LD_LIBRARY_PATH="${_libs}" emake -k -j1 fate
+	LD_LIBRARY_PATH="${_libs}" make -j1 fate V=1
 }
