@@ -7,8 +7,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Audio Tag Tool Ogg/Mp3 Tagger"
-HOMEPAGE="http://pwp.netcabo.pt/paol/tagtool"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://sourceforge.net/projects/tagtool/"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
