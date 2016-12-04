@@ -5345,6 +5345,7 @@ dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol name
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
+dev-perl/BSON 1.2.2: BSON serialization and deserialization
 dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
@@ -6089,7 +6090,7 @@ dev-perl/Mojolicious 6.610.0 7.110.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
-dev-perl/Moo 2.0.2: Minimalist Object Orientation (with Moose compatiblity)
+dev-perl/Moo 2.0.2 2.2.5: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
@@ -6333,7 +6334,7 @@ dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-HasMessage 0.6.0: a thing with a message method
 dev-perl/Role-Identifiable 0.7.0: a thing with a list of tags
-dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
+dev-perl/Role-Tiny 2.0.1 2.0.5: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
