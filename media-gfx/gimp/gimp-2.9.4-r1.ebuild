@@ -135,8 +135,10 @@ src_configure() {
 src_compile() {
 	# Bugs #569738 and #591214
 	local nv
-	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia[0-9] ; do
-		[[ -e "${nv}" ]] && addwrite "${nv}"
+	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
+		# We do not check for existence as they may show up later
+		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
+		addwrite "${nv}"
 	done
 	addwrite /dev/dri/  # bug #574038
 	addwrite /dev/ati/  # bug 589198
