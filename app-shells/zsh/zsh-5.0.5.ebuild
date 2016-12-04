@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ppc ppc64 s390 sh sparc x86 ~amd6
 IUSE="caps debug doc examples gdbm maildir pcre static unicode"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.1
+	>=sys-libs/ncurses-5.1:0=
 	static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] )
 	caps? ( sys-libs/libcap )
 	pcre? ( >=dev-libs/libpcre-3.9
