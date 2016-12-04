@@ -4168,7 +4168,7 @@ dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsi
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr225 1.0: XQuery API for Java
-dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
+dev-java/jsr250 1.0-r1 1.2: JSR 250 Common Annotations
 dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr322 1.5: Java EE Connector Architecture
@@ -5738,7 +5738,7 @@ dev-perl/File-LibMagic 1.150.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
-dev-perl/File-MimeInfo 0.270.0: Determine file type
+dev-perl/File-MimeInfo 0.270.0 0.280.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
 dev-perl/File-Next 1.120.0-r1: File::Next is an iterator-based module for finding files
@@ -10329,7 +10329,6 @@ games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
 games-action/accelerator3d 0.1.1-r2 0.1.1-r3: Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o
 games-action/armagetronad 0.2.8.3.2 0.2.8.3.3 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
 games-action/atanks 6.4 6.4-r1: Worms and Scorched Earth-like game
-games-action/awesomenauts 2013.5.21.3-r1: Team-based competetive arena play
 games-action/barrage 1.0.4 1.0.4-r1: A violent point-and-click shooting game
 games-action/battalion 1.4b: Be a rampaging monster and destroy the city
 games-action/beathazardultra 20130308 20130308-r1: Intense music-driven arcade shooter powered by your music
