@@ -38,7 +38,7 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2:0=
@@ -54,8 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-mapfile-improper-array-name-validation.patch
 	"${FILESDIR}"/${PN}-4.3-arrayfunc.patch
 	"${FILESDIR}"/${PN}-4.3-protos.patch
-	# CVE-2016-0634 / bug #594496
-	"${FILESDIR}"/${PN}-4.3-prompt-string-comsub.patch
+	"${FILESDIR}"/${PN}-4.4-popd-offset-overflow.patch #600174
 )
 
 S=${WORKDIR}/${MY_P}

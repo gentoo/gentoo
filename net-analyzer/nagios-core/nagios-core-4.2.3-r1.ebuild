@@ -142,7 +142,7 @@ src_install() {
 		insopts --mode=0644 # Back to the default...
 	fi
 
-	newinitd "${FILESDIR}"/nagios4 nagios
+	newinitd "${FILESDIR}"/nagios4-r1 nagios
 	newconfd "${FILESDIR}"/conf.d nagios
 
 	if use web ; then
