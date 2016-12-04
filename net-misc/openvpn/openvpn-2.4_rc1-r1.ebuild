@@ -25,6 +25,9 @@ REQUIRED_USE="static? ( !plugins !pkcs11 )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )"
 
+# bug #601524
+REQUIRED_USE+=" inotify? ( plugins )"
+
 CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
@@ -38,7 +41,8 @@ CDEPEND="
 		)
 		mbedtls? ( net-libs/mbedtls )
 	)
-	lzo? ( app-arch/lz4 )
+	lz4? ( app-arch/lz4 )
+	lzo? ( >=dev-libs/lzo-1.07 )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )"
 DEPEND="${CDEPEND}
