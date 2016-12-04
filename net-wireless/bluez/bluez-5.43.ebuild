@@ -26,7 +26,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	>=dev-libs/glib-2.28:2
+	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
 	>=sys-apps/dbus-1.6:=
 	>=sys-apps/hwids-20121202.2
 	cups? ( net-print/cups:= )
