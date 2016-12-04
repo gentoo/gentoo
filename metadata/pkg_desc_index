@@ -11807,7 +11807,7 @@ kde-frameworks/kservice 5.26.0 5.28.0-r1: Advanced plugin and service introspect
 kde-frameworks/ktexteditor 5.26.0-r2 5.28.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.26.0 5.28.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.26.0 5.28.0: Framework for converting units
-kde-frameworks/kwallet 5.26.0 5.28.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwallet 5.26.0 5.28.0 5.28.0-r1: Framework providing desktop-wide storage for passwords
 kde-frameworks/kwayland 5.26.0 5.28.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.26.0 5.28.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.26.0 5.28.0: Framework providing access to properties and features of the window manager
