@@ -1,31 +1,31 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="6"
 
-inherit eutils multilib systemd user
+inherit multilib systemd user
 
-DESCRIPTION="Voice Communication Software - Server"
-HOMEPAGE="http://www.teamspeak.com/"
+DESCRIPTION="Crystal Clear Cross-Platform Voice Communication Server"
+HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="
-	amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux-amd64-${PV}.tar.gz )
-	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux-x86-${PV}.tar.gz )"
+	amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
+	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )"
 
 SLOT="0"
 LICENSE="teamspeak3 GPL-2"
-IUSE="doc pdf tsdns"
+IUSE="doc tsdns"
 KEYWORDS="~amd64 ~x86"
 
 RESTRICT="installsources fetch mirror strip"
 
-S="${WORKDIR}/teamspeak3-server_linux-${ARCH}"
+S="${WORKDIR}/teamspeak3-server_linux_${ARCH}"
 
-QA_PREBUILT="/opt/*"
+QA_PREBUILT="opt/*"
 
 pkg_nofetch() {
 	elog "Please download ${A}"
-	elog "from ${HOMEPAGE}?page=downloads and place this"
+	elog "from ${HOMEPAGE}downloads and place this"
 	elog "file in ${DISTDIR}"
 }
 
@@ -42,20 +42,21 @@ src_install() {
 	into ${opt_dir}
 	insinto ${opt_dir}
 	exeinto ${opt_dir}
-	newsbin ts3server_linux_${ARCH} ts3server-bin
+	newsbin ts3server ts3server-bin
 	doexe *.sh
 	doins *.so
 	doins -r sql
 
 	# Install documentation and tsdns.
 	dodoc -r CHANGELOG doc/*.txt
-	use doc && dodoc -r serverquerydocs doc/*.pdf && \
+	use doc && dodoc -r serverquerydocs doc/serverquery && \
 		docompress -x /usr/share/doc/${PF}/serverquerydocs && \
-		dosym ../../usr/share/doc/${PF}/serverquerydocs  ${opt_dir}/serverquerydocs
+		docompress -x /usr/share/doc/${PF}/serverquery && \
+		dosym ../../../usr/share/doc/${PF}/serverquery ${opt_dir}/doc/serverquery && \
+		dosym ../../usr/share/doc/${PF}/serverquerydocs ${opt_dir}/serverquerydocs
 
 	if use tsdns; then
-		newsbin tsdns/tsdnsserver_linux_${ARCH} tsdnsserver
-
+		newsbin tsdns/tsdnsserver tsdnsserver
 		newdoc tsdns/README README.tsdns
 		newdoc tsdns/USAGE USAGE.tsdns
 		dodoc tsdns/tsdns_settings.ini.sample
@@ -68,8 +69,8 @@ src_install() {
 
 	# Install the init script and systemd unit.
 	newinitd "${FILESDIR}"/${PN}-init-r1 teamspeak3-server
-	systemd_dounit "${FILESDIR}"/systemd/teamspeak3.service
-	systemd_dotmpfilesd "${FILESDIR}"/systemd/teamspeak3.conf
+	systemd_newunit "${FILESDIR}"/systemd/teamspeak3-r1.service teamspeak3-server.service
+	systemd_newtmpfilesd "${FILESDIR}"/systemd/teamspeak3.conf teamspeak3-server.conf
 
 	# Fix up permissions.
 	fowners teamspeak3 /{etc,var/{lib,log}}/teamspeak3-server
@@ -77,4 +78,11 @@ src_install() {
 
 	fperms 700 /{etc,var/{lib,log}}/teamspeak3-server
 	fperms 755 ${opt_dir}
+}
+
+pkg_postinst() {
+	einfo "Starting with version 3.0.13, there are two important changes:"
+	einfo "- IPv6 is now supported."
+	einfo "- Binding to any address (0.0.0.0 / 0::0),"
+	einfo "  instead of just the default ip of the network interface."
 }
