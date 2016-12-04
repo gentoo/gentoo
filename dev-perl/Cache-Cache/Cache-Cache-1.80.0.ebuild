@@ -24,3 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+# https://rt.cpan.org/Ticket/Display.html?id=92600
+# Parallel testing causes failure
+DIST_TEST="do"
