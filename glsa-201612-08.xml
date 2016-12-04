@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-08">
+  <title>LinuxCIFS utils: Buffer overflow</title>
+  <synopsis>A vulnerability in LinuxCIFS utils' "cifscreds" PAM module might
+    allow remote attackers to have an unspecified impact via unknown vectors.
+  </synopsis>
+  <product type="ebuild">cifs-utils</product>
+  <announced>December 04, 2016</announced>
+  <revised>December 04, 2016: 1</revised>
+  <bug>552634</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/cifs-utils" auto="yes" arch="*">
+      <unaffected range="ge">6.4</unaffected>
+      <vulnerable range="lt">6.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The LinuxCIFS utils are a collection of tools for managing Linux CIFS
+      Client Filesystems.
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow was discovered in cifskey.c or cifscreds.c
+      in LinuxCIFS, as used in “pam_cifscreds.”
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit this vulnerability to cause an
+      unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>Don’t use LinuxCIFS utils’ “cifscreds” PAM module. In Gentoo,
+      LinuxCIFS utils’ PAM support is disabled by default unless the
+      “pam” USE flag is enabled.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All LinuxCIFS utils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/cifs-utils-6.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-2830">CVE-2014-2830</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:13:41 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 11:02:29 +0000">whissi</metadata>
+</glsa>
