@@ -1,0 +1,27 @@
+--- a/Modules/FindCUDA/run_nvcc.cmake	2016-12-17 16:46:54.370587130 +0000
++++ b/Modules/FindCUDA/run_nvcc.cmake	2016-12-17 16:53:10.161588315 +0000
+@@ -104,14 +104,17 @@
+ # Add the build specific configuration flags
+ list(APPEND CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS_${build_configuration}})
+ 
++# The following may cause an nvcc fatal: redefenition of compiler-bindir
++if(NOT @CMAKE_GENTOO_BUILD@ STREQUAL ON AND NOT @CMAKE_BUILD_TYPE@ STREQUAL Gentoo )
+ # Any -ccbin existing in CUDA_NVCC_FLAGS gets highest priority
+-list( FIND CUDA_NVCC_FLAGS "-ccbin" ccbin_found0 )
+-list( FIND CUDA_NVCC_FLAGS "--compiler-bindir" ccbin_found1 )
+-if( ccbin_found0 LESS 0 AND ccbin_found1 LESS 0 AND CUDA_HOST_COMPILER )
+-  if (CUDA_HOST_COMPILER STREQUAL "$(VCInstallDir)bin" AND DEFINED CCBIN)
+-    set(CCBIN -ccbin "${CCBIN}")
+-  else()
+-    set(CCBIN -ccbin "${CUDA_HOST_COMPILER}")
++  list( FIND CUDA_NVCC_FLAGS -ccbin ccbin_found0 )
++  list( FIND CUDA_NVCC_FLAGS --compiler-bindir ccbin_found1 )
++  if( ccbin_found0 LESS 0 AND ccbin_found1 LESS 0 AND CUDA_HOST_COMPILER )
++    if (CUDA_HOST_COMPILER STREQUAL "$(VCInstallDir)bin" AND DEFINED CCBIN)
++      set(CCBIN -ccbin "${CCBIN}")
++    else()
++      set(CCBIN -ccbin "${CUDA_HOST_COMPILER}")
++    endif()
+   endif()
+ endif()
+ 
