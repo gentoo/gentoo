@@ -3972,7 +3972,7 @@ media-libs/libmypaint:gegl - Add support for media-libs/gegl
 media-libs/libomxil-bellagio:audioeffects - enable audio volume/mixer effects components
 media-libs/libomxil-bellagio:clocksrc - enable clock component
 media-libs/libomxil-bellagio:videoscheduler - enable xvideosink video scheduler
-media-libs/libpagemaker:tools - Build build tools
+media-libs/libpagemaker:tools - Build command line file format conversion tools
 media-libs/libpng:apng - support unofficial APNG (Animated PNG) spec
 media-libs/libpostproc:pic - Force shared libraries to be built as PIC (this is slower).
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec)

@@ -12885,7 +12885,7 @@ media-libs/libtimidity 0.1.0-r2 0.2.0: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.0 1.10.1: Separate libraries ebuild from upstream v4l-utils package
-media-libs/libvisio 0.0.30 0.1.1 0.1.5 9999: Library parsing the visio documents
+media-libs/libvisio 0.0.30 0.1.5 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.3 1.3.3-r1 1.3.4 1.3.5: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.3.0 1.4.0 1.5.0 1.6.0-r1: WebM VP8 and VP9 Codec SDK
@@ -12913,7 +12913,7 @@ media-libs/mutagen 1.27 1.31 1.34.1 1.35 1.35.1: Audio metadata tag reader and w
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.1 1.17.2: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.2.2_p20150207 1.6.18-r1 1.6.25 1.6.31: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.2.2_p20150207 1.6.25 1.6.31: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
