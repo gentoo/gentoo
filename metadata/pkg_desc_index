@@ -5520,7 +5520,7 @@ dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.25.0 0.39.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.25.0 0.39.0 0.44.0: Self-contained crypto toolkit
 dev-perl/Curses 1.320.0 1.330.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
@@ -12495,7 +12495,7 @@ media-gfx/kphotoalbum 4.5 4.7.2 5.0.1: Tool for indexing, searching, and viewing
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/krita 3.0 3.0.1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
-media-gfx/kxstitch 1.3.0: Program to create cross stitch patterns
+media-gfx/kxstitch 1.3.0 2.0.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.9-r1 2.1.1 2.1.3 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
