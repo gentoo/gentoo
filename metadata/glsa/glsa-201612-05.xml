@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-05">
+  <title>Pygments: Arbitrary code execution</title>
+  <synopsis>Pygments is vulnerable to remote code execution if an attacker is
+    allowed to specify the font name. 
+  </synopsis>
+  <product type="ebuild">pygments</product>
+  <announced>December 04, 2016</announced>
+  <revised>December 04, 2016: 1</revised>
+  <bug>564478</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/pygments" auto="yes" arch="*">
+      <unaffected range="ge">2.0.2-r1</unaffected>
+      <vulnerable range="lt">2.0.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Pygments is a generic syntax highlighter suitable for use in code
+      hosting, forums, wikis or other applications that need to prettify source
+      code.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in FontManager’s _get_nix_font_path function allows
+      shell metacharacters to be passed in a font name.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pygments users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/pygments-2.0.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-8557">
+      CVE-2015-8557
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 08 Dec 2015 00:25:56 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 04 Dec 2016 06:50:34 +0000">whissi</metadata>
+</glsa>
