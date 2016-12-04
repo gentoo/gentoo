@@ -902,11 +902,14 @@ dev-ruby/weakling
 # Masked slotted lua for testing
 # William Hubbs <williamh@gentoo.org> (07 Aug 2016)
 # Taking this mask since Mabi is retired
+# Rafael Martins <rafaelmartins@gentoo.org> (04 Dec 2016)
+# Adding Lua 5.3 to mask
 app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r2
 =dev-lang/lua-5.1.5-r100
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
+=dev-lang/lua-5.3.3
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Mar 2014)
 # Security mask of vulnerable versions, wrt bug #424167
