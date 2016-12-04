@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/irungentoo/toxcore.git
 	git://github.com/irungentoo/toxcore.git"
 
 LICENSE="GPL-3+"
-SLOT="0"
+SLOT="0/0.0"
 KEYWORDS=""
 IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
 
