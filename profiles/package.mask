@@ -179,11 +179,6 @@ www-apps/bitten
 media-sound/christine
 
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Nothing needs this obsolete package anymore, bug #599990, removal in a
-# month.
-x11-themes/gnome-icon-theme-extras
-
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Relies on obsolete and vulnerable webkit-gtk versions, bug #600898
 www-client/vimb
 
