@@ -31,7 +31,7 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 
 # @FUNCTION: cuda_gccdir
 # @USAGE: [-f]
-# @RETURN: gcc bindir compatible with current cuda, optionally (-f) prefixed with "--compiler-bindir="
+# @RETURN: gcc bindir compatible with current cuda, optionally (-f) prefixed with "--compiler-bindir "
 # @DESCRIPTION:
 # Helper for determination of the latest gcc bindir supported by
 # then current nvidia cuda toolkit.
@@ -39,7 +39,7 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 # Example:
 # @CODE
 # cuda_gccdir -f
-# -> --compiler-bindir="/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
+# -> --compiler-bindir "/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
 # @CODE
 cuda_gccdir() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -55,7 +55,7 @@ cuda_gccdir() {
 	while [ "$1" ]; do
 		case $1 in
 			-f)
-				flag="--compiler-bindir="
+				flag="--compiler-bindir "
 				;;
 			*)
 				;;
