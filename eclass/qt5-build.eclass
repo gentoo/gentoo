@@ -62,11 +62,7 @@ else
 	LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
 fi
 
-if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
-	SLOT=5/$(get_version_component_range 1-2)
-else
-	SLOT=5
-fi
+SLOT=5/$(get_version_component_range 1-2)
 
 case ${PV} in
 	5.9999)
@@ -148,14 +144,8 @@ qt5-build_src_unpack() {
 		fi
 		if [[ $(gcc-major-version) -lt 4 ]] || \
 		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
-			if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
-				eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
-				die "GCC 4.${min_gcc4_minor_version} or later required"
-			else
-				ewarn
-				ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported"
-				ewarn
-			fi
+			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
+			die "GCC 4.${min_gcc4_minor_version} or later required"
 		fi
 	fi
 
@@ -532,7 +522,7 @@ qt5_base_configure() {
 
 		# no need to forcefully build host tools in optimized mode,
 		# just follow the overall debug/release build type
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-optimized-tools)
+		-no-optimized-tools
 
 		# licensing stuff
 		-opensource -confirm-license
@@ -555,7 +545,7 @@ qt5_base_configure() {
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
 
 		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -qml-debug)
+		-qml-debug
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
@@ -572,8 +562,7 @@ qt5_base_configure() {
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
-		-no-journald
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-syslog)
+		-no-journald -no-syslog
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
@@ -614,7 +603,7 @@ qt5_base_configure() {
 		-no-pch
 
 		# link-time code generation is not something we want to enable by default
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-ltcg)
+		-no-ltcg
 
 		# reduced relocations cause major breakage on at least arm and ppc, so
 		# don't specify anything and let the configure figure out if they are
@@ -625,10 +614,7 @@ qt5_base_configure() {
 		#-use-gold-linker
 
 		# disable all platform plugins by default, override in qtgui
-		-no-xcb -no-eglfs -no-kms
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-gbm)
-		-no-directfb -no-linuxfb
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-mirclient)
+		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb -no-mirclient
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
@@ -656,7 +642,7 @@ qt5_base_configure() {
 
 		# respect system proxies by default: it's the most natural
 		# setting, and it'll become the new upstream default in 5.8
-		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -system-proxies)
+		-system-proxies
 
 		# do not build with -Werror
 		-no-warnings-are-errors
