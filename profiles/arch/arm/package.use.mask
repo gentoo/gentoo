@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
+# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
+>=sci-libs/gdal-2.0.3 mdb
+
 # Christoph Junghans <junghans@gentoo.org> (11 Sep 2016)
 # Missing keywords on openmpi deps
 sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
