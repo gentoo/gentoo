@@ -18136,7 +18136,7 @@ www-servers/puma 3.1.0 3.1.1 3.6.0 3.6.1: a simple, fast, threaded, and highly c
 www-servers/resin 4.0.46 4.0.48 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
-www-servers/thin 1.6.4-r2 1.7.0: A fast and very simple Ruby web server
+www-servers/thin 1.7.0 1.7.0-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.67 7.0.68-r1 7.0.69 7.0.70 8.0.32-r1 8.0.33 8.0.35 8.0.36 8.0.37 8.0.38 8.0.39 8.5.3 8.5.4 8.5.5 8.5.6 8.5.8 9.0.0_alpha13: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.2.1 4.3 4.4.2-r1: Python web framework and asynchronous networking library
