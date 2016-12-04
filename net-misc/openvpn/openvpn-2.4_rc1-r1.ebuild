@@ -25,6 +25,9 @@ REQUIRED_USE="static? ( !plugins !pkcs11 )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )"
 
+# bug #601524
+REQUIRED_USE+=" inotify? ( plugins )"
+
 CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
