@@ -22,8 +22,8 @@ DEPEND="
 	>=sys-libs/zlib-1.1.4
 	app-text/ghostscript-gpl
 	virtual/mta
-	media-libs/tiff[jbig?]
-	virtual/jpeg
+	media-libs/tiff:0[jbig?]
+	virtual/jpeg:0
 	jbig? ( media-libs/jbigkit )
 	virtual/awk
 	ldap? (  net-nds/openldap )
