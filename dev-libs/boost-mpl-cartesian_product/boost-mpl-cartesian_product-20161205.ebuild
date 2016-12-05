@@ -37,6 +37,7 @@ src_test() {
 }
 
 src_install() {
+	dodoc readme.txt
 	insinto /usr/include/boost/mpl
 	doins boost/mpl/cartesian_product.hpp
 }
