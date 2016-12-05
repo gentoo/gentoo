@@ -3,19 +3,25 @@
 # $Id$
 
 EAPI=6
-inherit fdo-mime gnome.org gnome2-utils
+GNOME2_LA_PUNT="yes"
+
+inherit gnome2
 
 DESCRIPTION="GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags"
 HOMEPAGE="https://wiki.gnome.org/Apps/EasyTAG"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2 LGPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="flac mp3 mp4 opus speex test vorbis wavpack"
-REQUIRED_USE="opus? ( vorbis )
-	speex? ( vorbis )"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
-RDEPEND=">=dev-libs/glib-2.38:2
+IUSE="flac mp3 mp4 opus speex test vorbis wavpack"
+REQUIRED_USE="
+	opus? ( vorbis )
+	speex? ( vorbis )
+"
+
+RDEPEND="
+	>=dev-libs/glib-2.38:2
 	media-libs/libcanberra[gtk3]
 	>=x11-libs/gtk+-3.10:3
 	flac? ( >=media-libs/flac-1.3 )
@@ -33,7 +39,8 @@ RDEPEND=">=dev-libs/glib-2.38:2
 		>=media-libs/libogg-1.3.1
 		>=media-libs/libvorbis-1.3.4
 		)
-	wavpack? ( >=media-sound/wavpack-4.70 )"
+	wavpack? ( >=media-sound/wavpack-4.70 )
+"
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.4
 	app-text/yelp-tools
@@ -46,21 +53,12 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-libs/appstream-glib
 		>=dev-util/desktop-file-utils-0.22
-		)"
-
-DOCS=( AUTHORS ChangeLog HACKING NEWS README THANKS TODO )
-
-src_prepare() {
-	default
-
-	sed -i \
-		-e '/^DEPRECATED_CPPFLAGS="/d' \
-		-e '/warning_flags/s: -Werror=.*:":' \
-		configure || die
-}
+		)
+"
 
 src_configure() {
-	econf \
+	gnome2_src_configure \
+		--disable-Werror \
 		$(use_enable test appdata-validate) \
 		$(use_enable test tests) \
 		$(use_enable mp3) \
@@ -71,21 +69,4 @@ src_configure() {
 		$(use_enable flac) \
 		$(use_enable mp4) \
 		$(use_enable wavpack)
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	gnome2_schemas_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	gnome2_schemas_update
 }
