@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,6 +41,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-0.8.1-disable-updates.patch \
 		"${FILESDIR}"/${P}-replace-gnu+11-with-c++11.patch \
-		"${FILESDIR}"/${P}-stdlib.patch
+		"${FILESDIR}"/${P}-stdlib.patch \
+		"${FILESDIR}"/${P}-ffmpeg3.patch \
+		"${FILESDIR}"/${P}-ffmpeg3-1.patch
 	eautoreconf
 }
