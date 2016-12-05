@@ -1,0 +1,30 @@
+diff -urN Uranium-2.3.1.orig/CMakeLists.txt Uranium-2.3.1/CMakeLists.txt
+--- Uranium-2.3.1.orig/CMakeLists.txt	2016-10-27 18:22:23.000000000 +0300
++++ Uranium-2.3.1/CMakeLists.txt	2016-12-05 12:25:53.190933188 +0300
+@@ -43,14 +43,20 @@
+ # Build Translations
+ CREATE_TRANSLATION_TARGETS()
+ 
+-if(APPLE OR WIN32)
+-    install(DIRECTORY UM DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
+-else()
+-    install(DIRECTORY UM DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages)
++if(NOT PYTHON_SITE_PACKAGES_DIR)
++	if(APPLE OR WIN32)
++		set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++			CACHE STRING "Directory to install Python bindings to")
++	else()
++		set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages CACHE
++			STRING "Directory to install Python bindings to")
++	endif()
+ endif()
++
++install(DIRECTORY UM DESTINATION ${PYTHON_SITE_PACKAGES_DIR})
+ install(FILES ${CMAKE_SOURCE_DIR}/cmake/UraniumTranslationTools.cmake
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}/Modules/ )
++        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/Modules/ )
+ install(DIRECTORY resources DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium)
+-install(DIRECTORY plugins DESTINATION lib/uranium)
++install(DIRECTORY plugins DESTINATION ${CMAKE_INSTALL_LIBDIR}/uranium)
+ 
+ include(CPackConfig.cmake)
