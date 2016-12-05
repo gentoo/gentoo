@@ -22,10 +22,10 @@ HOMEPAGE="https://root.cern.ch"
 
 SLOT="0/$(get_version_component_range 1-3 ${PV})"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
-IUSE="+X afs avahi c++11 c++14 doc emacs examples fits fftw
+IUSE="+X afs c++11 c++14 doc emacs examples fits fftw
 	graphviz http kerberos ldap +math minimal mpi mysql odbc
 	+opengl openmp oracle postgres prefix pythia6 pythia8
-	python qt4 +reflex ruby sqlite ssl xinetd xml xrootd"
+	python qt4 +reflex ruby sqlite ssl xinetd xml xrootd zeroconf"
 
 # TODO: add support for: davix
 # TODO: unbundle: vdt
@@ -74,7 +74,6 @@ CDEPEND="
 	)
 	!minimal? (
 		afs? ( net-fs/openafs )
-		avahi? ( net-dns/avahi:0= )
 		emacs? ( virtual/emacs )
 		fits? ( sci-libs/cfitsio:0= )
 		fftw? ( sci-libs/fftw:3.0= )
@@ -102,6 +101,7 @@ CDEPEND="
 		ssl? ( dev-libs/openssl:0= )
 		xml? ( dev-libs/libxml2:2= )
 		xrootd? ( >=net-libs/xrootd-3.3.5:0= )
+		zeroconf? ( net-dns/avahi:0= )
 	)"
 
 DEPEND="${CDEPEND}
@@ -307,7 +307,6 @@ src_configure() {
 			$(use_enable X asimage)
 			$(use_enable X xft)
 			$(use_enable afs)
-			$(use_enable avahi bonjour)
 			$(use_enable c++11 cxx11)
 			$(use_enable c++14 cxx14)
 			$(use_enable fits fitsio)
@@ -342,6 +341,7 @@ src_configure() {
 			$(use_enable ssl)
 			$(use_enable xml)
 			$(use_enable xrootd)
+			$(use_enable zeroconf bonjour)
 			${EXTRA_ECONF}
 		)
 	fi
