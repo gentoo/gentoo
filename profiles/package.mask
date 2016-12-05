@@ -36,10 +36,6 @@
 # Superseded by kde-apps/kolourpaint.
 media-gfx/kiconedit
 
-# Mike Pagano <mpagano@gentoo.org> (04 Nov 2016)
-# Masked for testing
-=app-portage/portpeek-2.1.21*
-
 # Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
 # Sandbox failure on install. No maintainer.
 # https://bugs.gentoo.org/597146
