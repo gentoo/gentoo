@@ -18,7 +18,7 @@ IUSE="dbus debug doc eds h323 ldap libnotify cpu_flags_x86_mmx pulseaudio +shm v
 # gconf is a hard requirement until this bug is fixed:
 # https://bugzilla.gnome.org/show_bug.cgi?id=721198
 #
-# x11-themes/gnome-icon-theme needed, bug #600398
+# x11-themes/gnome-icon-theme needed, bug #600398, https://bugzilla.gnome.org/show_bug.cgi?id=775652
 # changing configure check is not enough and icons will be missing.
 RDEPEND="
 	>=dev-libs/glib-2.24.0:2
