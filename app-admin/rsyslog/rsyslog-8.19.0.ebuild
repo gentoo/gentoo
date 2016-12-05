@@ -58,7 +58,7 @@ fi
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mongodb mysql normalize omhttpfs"
-IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
+IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools uuid zeromq"
 
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.2:=
@@ -92,6 +92,7 @@ RDEPEND="
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? ( >=net-libs/gnutls-2.12.23:0= )
 	systemd? ( >=sys-apps/systemd-208 )
+	uuid? ( sys-apps/util-linux:0= )
 	zeromq? (
 		>=net-libs/zeromq-4.1.1:=
 		>=net-libs/czmq-3.0.0
@@ -228,6 +229,7 @@ src_configure() {
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
+		$(use_enable uuid)
 		$(use_enable zeromq imczmq)
 		$(use_enable zeromq imzmq3)
 		$(use_enable zeromq omczmq)
