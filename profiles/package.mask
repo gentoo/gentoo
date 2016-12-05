@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (05 Dec 2016)
+# Masked for removal in 30 days. Dead upstream.
+# Relies on deprecated dev-qt/qt3support.
+# Superseded by kde-apps/kolourpaint.
+media-gfx/kiconedit
+
 # Mike Pagano <mpagano@gentoo.org> (04 Nov 2016)
 # Masked for testing
 =app-portage/portpeek-2.1.21*
