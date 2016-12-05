@@ -101,13 +101,14 @@ src_configure() {
 		--disable-schemas-install \
 		--disable-scrollkeeper \
 		$(use_enable advertisement) \
-		$(use_enable dictdotcn) \
 		$(use_enable debug) \
+		$(use_enable dictdotcn) \
 		$(use_enable espeak) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
-		$(use_enable qqwry) \
+		$(use_enable man) \
 		$(use_enable powerwordparse) \
+		$(use_enable qqwry) \
 		$(use_enable spell) \
 		$(use_enable tools) \
 		$(use_enable updateinfo) \
