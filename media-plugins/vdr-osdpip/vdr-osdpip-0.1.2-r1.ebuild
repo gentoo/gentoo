@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,9 +30,5 @@ src_prepare() {
 
 	epatch "${FILESDIR}/${PN}-0.1.1-ffmpeg-1.patch"
 	epatch "${FILESDIR}/${PN}-libav-9.patch"
-
-	# tested with libav10/11, ffmpeg-2.5.4
-	sed -e "s:CODEC_ID_MPEG2VIDEO:AV_CODEC_ID_MPEG2VIDEO:"\
-		-e "s:avcodec_alloc_frame:av_frame_alloc:"\
-		-i decoder.c
+	epatch "${FILESDIR}/${PN}-0.1.2-ffmpeg3.patch"
 }
