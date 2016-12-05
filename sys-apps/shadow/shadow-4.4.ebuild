@@ -3,11 +3,11 @@
 
 EAPI="5"
 
-inherit eutils libtool toolchain-funcs pam multilib autotools
+inherit eutils libtool toolchain-funcs pam multilib
 
 DESCRIPTION="Utilities to deal with user accounts"
-HOMEPAGE="http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/"
-SRC_URI="http://pkg-shadow.alioth.debian.org/releases/${P}.tar.xz"
+HOMEPAGE="https://github.com/shadow-maint/shadow http://pkg-shadow.alioth.debian.org/"
+SRC_URI="https://github.com/shadow-maint/shadow/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -17,17 +17,17 @@ IUSE="acl audit cracklib nls pam selinux skey xattr"
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
 IUSE+=" $(printf 'linguas_%s ' ${LANGS[*]})"
 
-RDEPEND="acl? ( sys-apps/acl )
-	audit? ( sys-process/audit )
-	cracklib? ( >=sys-libs/cracklib-2.7-r3 )
-	pam? ( virtual/pam )
-	skey? ( sys-auth/skey )
+RDEPEND="acl? ( sys-apps/acl:0= )
+	audit? ( >=sys-process/audit-2.6:0= )
+	cracklib? ( >=sys-libs/cracklib-2.7-r3:0= )
+	pam? ( virtual/pam:0= )
+	skey? ( sys-auth/skey:0= )
 	selinux? (
-		>=sys-libs/libselinux-1.28
-		sys-libs/libsemanage
+		>=sys-libs/libselinux-1.28:0=
+		sys-libs/libsemanage:0=
 	)
 	nls? ( virtual/libintl )
-	xattr? ( sys-apps/attr )"
+	xattr? ( sys-apps/attr:0= )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
@@ -36,17 +36,15 @@ RDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch
-	"${FILESDIR}"/${P}-cross-size-checks.patch
-	"${FILESDIR}"/${P}-verbose-error-when-uid-doesnt-match.patch
+	"${FILESDIR}"/${P}-su-snprintf.patch
+	"${FILESDIR}"/${P}-prototypes.patch
 )
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
 	epatch_user
-	# https://github.com/shadow-maint/shadow/pull/5
-	mv configure.{in,ac} || die
-	eautoreconf
-	#elibtoolize
+	#eautoreconf
+	elibtoolize
 }
 
 src_configure() {
