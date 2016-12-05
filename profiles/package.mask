@@ -363,11 +363,6 @@ net-misc/bgpq
 # long had a package for. Removal in 30 days.
 dev-java/jaffl
 
-# David Seifert <soap@gentoo.org> (29 Oct 2016)
-# Unmaintained, depends on ancient and broken C++ libraries
-# Removal in 30 days.
-net-libs/libkolabxml
-
 # Lars Wendler <polynomial-c@gentoo.org> (27 Oct 2016)
 # Breaks build of some packages. See tracker bug #598186
 >=sys-devel/flex-2.6.2
