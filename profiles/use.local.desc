@@ -1115,10 +1115,14 @@ app-text/qpdfview:synctex - Add support for searching TeX sources
 app-text/sdcv:darkterm - Improve readability of color output on terminals with dark background.
 app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/stardict:advertisement - Enable stardict advertisements plugin
+app-text/stardict:cal - Enable calendar support using cal program
 app-text/stardict:dictdotcn - Enable dict.cn network plugin (for Chinese language)
 app-text/stardict:espeak - Enable text to speech synthesizer plugin using app-accessibility/espeak engine
+app-text/stardict:flite - Enable text to speech synthesizer plugin using app-accessibility/flite engine
+app-text/stardict:fortune - Enable plugin to read fortune messages using games-misc/fortune-mod. You may consider installing games-misc/fortune-mod-all to get all fortune messages.
 app-text/stardict:gucharmap - Enable plugin for unicode symbols description using gnome-extra/gucharmap
 app-text/stardict:htmlparse - Enable plugin to parse dictionaries with html content
+app-text/stardict:info - Enable plugin to read info pages
 app-text/stardict:man - Enable plugin to read manual pages
 app-text/stardict:powerwordparse - Enable plugin to parse powerword dictionaries
 app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words
@@ -1128,6 +1132,7 @@ app-text/stardict:updateinfo - Enable plugin to check for stardict updates
 app-text/stardict:wikiparse - Enable plugin to parse dictionaries in wikimedia format
 app-text/stardict:wordnet - Enable wordnet plugin to find similar English words using lexical database
 app-text/stardict:xdxfparse - Enable plugin to parse dictionaries in xdxf (XML Dictionary eXchange Format)
+app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese language)
 app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.

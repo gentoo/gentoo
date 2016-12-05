@@ -2435,7 +2435,7 @@ app-text/sigil 0.8.7-r1 0.9.5-r2 0.9.6: Sigil is a multi-platform WYSIWYG ebook 
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6-r2 3.0.6-r3: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6-r2 3.0.6-r3 4.0.0_pre20160518: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.6.2 1.7.2 1.7.3 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
@@ -6578,7 +6578,7 @@ dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
 dev-perl/Time-Duration 1.60.0-r1 1.200.0: Rounded or exact English expression of durations
 dev-perl/Time-Duration-Parse 0.130.0: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
-dev-perl/Time-Moment 0.380.0 0.390.0: Represents a date and time of day with an offset from UTC
+dev-perl/Time-Moment 0.380.0 0.390.0 0.400.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
 dev-perl/Time-ParseDate 2011.51.700-r1 2015.103.0: A Date/Time Parsing Perl Module
 dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
