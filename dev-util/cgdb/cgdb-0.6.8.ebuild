@@ -4,18 +4,21 @@
 
 EAPI=6
 
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="
+		https://github.com/cgdb/cgdb.git
+		git@github.com:cgdb/cgdb.git"
+else
+	SRC_URI="https://github.com/cgdb/cgdb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+fi
 inherit multilib-minimal
 
 DESCRIPTION="A curses front-end for GDB, the GNU debugger"
 HOMEPAGE="http://cgdb.github.io/"
-SRC_URI="https://github.com/cgdb/cgdb/archive/v${PV}.zip -> ${P}.zip"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE=""
-
-S="${WORKDIR}/${P}"
 
 DEPEND="
 	sys-libs/ncurses:0=
@@ -25,6 +28,8 @@ RDEPEND="
 	${DEPEND}
 	sys-devel/gdb"
 
+DOCS=( AUTHORS ChangeLog INSTALL NEWS README.md TODO )
+
 src_prepare() {
 	default
 	./autogen.sh || die
@@ -32,13 +37,4 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf
-}
-
-src_compile() {
-	multilib-minimal_src_compile
-}
-
-src_install() {
-	multilib-minimal_src_install
-	dodoc AUTHORS ChangeLog INSTALL NEWS README.md TODO
 }
