@@ -3351,7 +3351,6 @@ kde-misc/kepas:oscar - Enables ICQ (AIM) support.
 kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/kio-gdrive:dolphin - Enable integration with kde-apps/dolphin
 kde-misc/krusader:bookmarks - Add dependency on bookmark package.
-kde-misc/networkmanagement:openconnect - Build support for the OpenConnect VPN client
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
