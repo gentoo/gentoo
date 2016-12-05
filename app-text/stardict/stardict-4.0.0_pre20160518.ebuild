@@ -69,6 +69,8 @@ REQUIRED_USE="tools? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 # docs are messy, installed manually below
 DOCS=""
 
+PATCHES=( "${FILESDIR}/${P}-tabfile.patch" )
+
 src_prepare() {
 	# From Fedora
 	# Remove unneeded sigc++ header files to make it sure
