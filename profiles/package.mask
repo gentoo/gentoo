@@ -366,7 +366,6 @@ dev-java/jaffl
 # David Seifert <soap@gentoo.org> (29 Oct 2016)
 # Unmaintained, broken, do not work with GCC 6
 # Bugs #594506, #597780, removal in 30 days.
-<dev-cpp/xsd-4.0.0
 <dev-cpp/libxsd-frontend-2.0.0
 dev-cpp/libfrontend-elements
 dev-cpp/libbackend-elements
