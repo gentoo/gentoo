@@ -1,20 +1,19 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit autotools eutils vcs-snapshot
+EAPI=6
+inherit autotools vcs-snapshot
 
 DESCRIPTION="A VNC server for real X displays"
 HOMEPAGE="https://libvnc.github.io/"
-SRC_URI="https://github.com/LibVNC/x11vnc/archive/0.9.14.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/LibVNC/x11vnc/archive/e191071c1f375d04ba8f955ea0a30292a485999e.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="crypt fbcon libressl ssl xinerama zeroconf"
 
-RDEPEND=">=net-libs/libvncserver-0.9.8
+RDEPEND=">=net-libs/libvncserver-0.9.8[ssl?]
 	x11-libs/libX11
 	x11-libs/libXdamage
 	x11-libs/libXext
@@ -37,12 +36,8 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	xinerama? ( x11-proto/xineramaproto )"
 
-DOCS=(ChangeLog README)
-
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9.13-fix-compiler-detection.patch
-	epatch "${FILESDIR}"/${P}-libvncserver-defines-1.patch #567612
-	epatch "${FILESDIR}"/${P}-libvncserver-defines-2.patch #567612
+	default
 	eautoreconf
 }
 
