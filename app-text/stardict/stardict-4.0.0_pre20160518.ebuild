@@ -31,11 +31,12 @@ pronounce python qqwry spell tools updateinfo +wikiparse +wordnet
 RESTRICT="test"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.16:2
+	>=dev-libs/glib-2.32:2
 	dev-libs/libsigc++:2=
+	media-libs/libcanberra[gtk3]
 	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
-	>=x11-libs/gtk+-2.20:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
 	espeak? ( >=app-accessibility/espeak-1.29 )
@@ -102,9 +103,11 @@ src_configure() {
 
 	# Festival plugin crashes, bug 188684. Disable for now.
 	gnome2_src_configure \
+		--disable-darwin-support \
 		--disable-festival \
 		--disable-gnome-support \
 		--disable-gpe-support \
+		--disable-maemo-support \
 		--disable-schemas-install \
 		--disable-scrollkeeper \
 		$(use_enable advertisement) \
