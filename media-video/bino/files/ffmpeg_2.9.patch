@@ -1,0 +1,133 @@
+https://bugs.gentoo.org/show_bug.cgi?id=587860
+https://github.com/schaal/bino/blob/master/debian/patches/ffmpeg_2.9.patch
+
+Description: Replace deprecated FFmpeg API
+Author: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
+Last-Update: <2015-11-02>
+
+--- bino-1.6.0.orig/src/media_object.cpp
++++ bino-1.6.0/src/media_object.cpp
+@@ -427,20 +427,20 @@ void media_object::set_video_frame_templ
+     video_frame_template.value_range = video_frame::u8_full;
+     video_frame_template.chroma_location = video_frame::center;
+     if (!_always_convert_to_bgra32
+-            && (video_codec_ctx->pix_fmt == PIX_FMT_YUV444P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV444P10
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV422P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV422P10
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV420P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV420P10))
++            && (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV444P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV444P10
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV422P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV422P10
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV420P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV420P10))
+     {
+-        if (video_codec_ctx->pix_fmt == PIX_FMT_YUV444P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV444P10)
++        if (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV444P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV444P10)
+         {
+             video_frame_template.layout = video_frame::yuv444p;
+         }
+-        else if (video_codec_ctx->pix_fmt == PIX_FMT_YUV422P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV422P10)
++        else if (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV422P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV422P10)
+         {
+             video_frame_template.layout = video_frame::yuv422p;
+         }
+@@ -453,9 +453,9 @@ void media_object::set_video_frame_templ
+         {
+             video_frame_template.color_space = video_frame::yuv709;
+         }
+-        if (video_codec_ctx->pix_fmt == PIX_FMT_YUV444P10
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV422P10
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUV420P10)
++        if (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV444P10
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV422P10
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUV420P10)
+         {
+             video_frame_template.value_range = video_frame::u10_mpeg;
+             if (video_codec_ctx->color_range == AVCOL_RANGE_JPEG)
+@@ -482,15 +482,15 @@ void media_object::set_video_frame_templ
+         }
+     }
+     else if (!_always_convert_to_bgra32
+-            && (video_codec_ctx->pix_fmt == PIX_FMT_YUVJ444P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUVJ422P
+-                || video_codec_ctx->pix_fmt == PIX_FMT_YUVJ420P))
++            && (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUVJ444P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUVJ422P
++                || video_codec_ctx->pix_fmt == AV_PIX_FMT_YUVJ420P))
+     {
+-        if (video_codec_ctx->pix_fmt == PIX_FMT_YUVJ444P)
++        if (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUVJ444P)
+         {
+             video_frame_template.layout = video_frame::yuv444p;
+         }
+-        else if (video_codec_ctx->pix_fmt == PIX_FMT_YUVJ422P)
++        else if (video_codec_ctx->pix_fmt == AV_PIX_FMT_YUVJ422P)
+         {
+             video_frame_template.layout = video_frame::yuv422p;
+         }
+@@ -898,15 +898,6 @@ void media_object::open(const std::strin
+             // Activate multithreaded decoding. This must be done before opening the codec; see
+             // http://lists.gnu.org/archive/html/bino-list/2011-08/msg00019.html
+             codec_ctx->thread_count = video_decoding_threads();
+-            // Set CODEC_FLAG_EMU_EDGE in the same situations in which ffplay sets it.
+-            // I don't know what exactly this does, but it is necessary to fix the problem
+-            // described in this thread: http://lists.nongnu.org/archive/html/bino-list/2012-02/msg00039.html
+-            int lowres = 0;
+-#ifdef FF_API_LOWRES
+-            lowres = codec_ctx->lowres;
+-#endif
+-            if (lowres || (codec && (codec->capabilities & CODEC_CAP_DR1)))
+-                codec_ctx->flags |= CODEC_FLAG_EMU_EDGE;
+         }
+         // Find and open the codec. AV_CODEC_ID_TEXT is a special case: it has no decoder since it is unencoded raw data.
+         if (codec_ctx->codec_id != AV_CODEC_ID_TEXT && (!codec || (e = avcodec_open2(codec_ctx, codec, NULL)) < 0))
+@@ -944,8 +935,8 @@ void media_object::open(const std::strin
+             _ffmpeg->video_frames.push_back(av_frame_alloc());
+             _ffmpeg->video_buffered_frames.push_back(av_frame_alloc());
+ #endif
+-            enum PixelFormat frame_fmt = (_ffmpeg->video_frame_templates[j].layout == video_frame::bgra32
+-                    ? PIX_FMT_BGRA : _ffmpeg->video_codec_ctxs[j]->pix_fmt);
++            enum AVPixelFormat frame_fmt = (_ffmpeg->video_frame_templates[j].layout == video_frame::bgra32
++                    ? AV_PIX_FMT_BGRA : _ffmpeg->video_codec_ctxs[j]->pix_fmt);
+             int frame_bufsize = (avpicture_get_size(frame_fmt,
+                         _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height));
+             _ffmpeg->video_buffers.push_back(static_cast<uint8_t *>(av_malloc(frame_bufsize)));
+@@ -958,7 +949,7 @@ void media_object::open(const std::strin
+             if (_ffmpeg->video_frame_templates[j].layout == video_frame::bgra32)
+             {
+                 // Initialize things needed for software pixel format conversion
+-                int sws_bufsize = avpicture_get_size(PIX_FMT_BGRA,
++                int sws_bufsize = avpicture_get_size(AV_PIX_FMT_BGRA,
+                         _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height);
+ #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(55, 28, 1)
+                 _ffmpeg->video_sws_frames.push_back(avcodec_alloc_frame());
+@@ -971,11 +962,11 @@ void media_object::open(const std::strin
+                     throw exc(HERE + ": " + strerror(ENOMEM));
+                 }
+                 avpicture_fill(reinterpret_cast<AVPicture *>(_ffmpeg->video_sws_frames[j]), _ffmpeg->video_sws_buffers[j],
+-                        PIX_FMT_BGRA, _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height);
++                        AV_PIX_FMT_BGRA, _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height);
+                 // Call sws_getCachedContext(NULL, ...) instead of sws_getContext(...) just to avoid a deprecation warning.
+                 _ffmpeg->video_sws_ctxs.push_back(sws_getCachedContext(NULL,
+                             _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height, _ffmpeg->video_codec_ctxs[j]->pix_fmt,
+-                            _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height, PIX_FMT_BGRA,
++                            _ffmpeg->video_codec_ctxs[j]->width, _ffmpeg->video_codec_ctxs[j]->height, AV_PIX_FMT_BGRA,
+                             SWS_POINT, NULL, NULL, NULL));
+                 if (!_ffmpeg->video_sws_ctxs[j])
+                 {
+@@ -1529,7 +1520,7 @@ read_frame:
+                 // We need to buffer the data because FFmpeg will clubber it when decoding the next frame.
+                 av_picture_copy(reinterpret_cast<AVPicture *>(_ffmpeg->video_buffered_frames[_video_stream]),
+                         reinterpret_cast<AVPicture *>(_ffmpeg->video_frames[_video_stream]),
+-                        static_cast<enum PixelFormat>(_ffmpeg->video_codec_ctxs[_video_stream]->pix_fmt),
++                        static_cast<enum AVPixelFormat>(_ffmpeg->video_codec_ctxs[_video_stream]->pix_fmt),
+                         _ffmpeg->video_codec_ctxs[_video_stream]->width,
+                         _ffmpeg->video_codec_ctxs[_video_stream]->height);
+                 src_frame = _ffmpeg->video_buffered_frames[_video_stream];
