@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/hylafax/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="hylafaxplus"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="jbig html ldap mgetty pam"
 
