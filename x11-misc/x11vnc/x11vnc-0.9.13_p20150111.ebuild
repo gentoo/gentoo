@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libXtst-1.1.0
 	avahi? ( >=net-dns/avahi-0.6.4 )
 	ssl? ( dev-libs/openssl:= )
-	>=net-libs/libvncserver-0.9.8
+	>=net-libs/libvncserver-0.9.8[ssl=]
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
 	x11-libs/libXt
