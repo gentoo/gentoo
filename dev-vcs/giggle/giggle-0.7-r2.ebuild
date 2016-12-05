@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 eutils
+inherit autotools gnome2
 
 DESCRIPTION="GTK+ Frontend for GIT"
 HOMEPAGE="https://wiki.gnome.org/Apps/giggle"
@@ -22,7 +21,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.3.12:3
 	>=x11-libs/gtksourceview-3.0:3.0
 	>=x11-libs/gdk-pixbuf-2.22.0
-	eds? ( gnome-extra/evolution-data-server )
+	eds? ( gnome-extra/evolution-data-server:= )
 	>=x11-libs/vte-0.28:2.91
 "
 DEPEND="${RDEPEND}
@@ -36,8 +35,9 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.6.2-gtksourceview-3.8.0.patch"
-	epatch "${FILESDIR}/${PN}-0.7-vte-2.91.patch"
+	eapply "${FILESDIR}/${PN}-0.6.2-gtksourceview-3.8.0.patch"
+	eapply "${FILESDIR}/${PN}-0.7-vte-2.91.patch"
+	eautoreconf
 	gnome2_src_prepare
 }
 

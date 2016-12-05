@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r5"
+PATCHREV="r1"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
