@@ -22,10 +22,3 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 DOCS=( authors.txt contributing.txt )
-
-src_install() {
-	distutils-r1_src_install
-	for i in mesonconf mesonintrospect meson wraptool; do
-		dosym "${i}.py" "/usr/bin/${i}"
-	done
-}
