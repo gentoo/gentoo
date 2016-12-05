@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GNOME2_LA_PUNT="yes"
-VALA_MIN_API_VERSION="0.22" # for >=gtk+-3.10
+EAPI=6
+GCONF_DEBUG="no"
 
 inherit cmake-utils eutils gnome2 vala
 
@@ -16,12 +15,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nautilus test"
-RESTRICT="test"
+RESTRICT="test" # bug#????
 
 COMMON_DEPEND="
 	app-admin/packagekit-base
 	app-crypt/libsecret[vala]
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.34:2[dbus]
 	>=dev-libs/libpeas-1.0
 	>=x11-libs/gtk+-3.10:3
 	>=x11-libs/libnotify-0.7
@@ -61,8 +60,8 @@ src_configure() {
 		-DENABLE_UNITY=OFF
 		-DENABLE_UNITY_CCPANEL=OFF
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc
-		$(cmake-utils_use_enable nautilus)
-		$(cmake-utils_use_enable test TESTING)
+		-DENABLE_NAUTILUS="$(usex nautilus)"
+		-DENABLE_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
 }
