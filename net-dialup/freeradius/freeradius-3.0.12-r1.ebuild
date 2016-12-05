@@ -181,7 +181,7 @@ src_install() {
 	diropts
 
 	# verbose, do not install certificates
-	emake \
+	emake -j1 \
 		Q='' ECHO=true \
 		LOCAL_CERT_PRODUCTS='' \
 		R="${D}" \
