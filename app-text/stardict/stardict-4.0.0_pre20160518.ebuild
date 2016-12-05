@@ -23,9 +23,10 @@ SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="advertisement debug dictdotcn espeak examples +gucharmap
-+htmlparse man perl +powerwordparse pronounce python qqwry spell
-tools updateinfo +wikiparse +wordnet +xdxfparse"
+IUSE="advertisement cal debug dictdotcn espeak examples flite
+fortune gucharmap +htmlparse info man perl +powerwordparse
+pronounce python qqwry spell tools updateinfo +wikiparse +wordnet
++xdxfparse youdaodict"
 
 RESTRICT="test"
 
@@ -37,6 +38,8 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-2.20:2
 	x11-libs/libX11
 	x11-libs/pango
+	espeak? ( >=app-accessibility/espeak-1.29 )
+	flite? ( app-accessibility/flite )
 	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
@@ -48,7 +51,8 @@ COMMON_DEPEND="
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	espeak? ( >=app-accessibility/espeak-1.29 )
+	info? ( sys-apps/texinfo )
+	fortune? ( games-misc/fortune-mod )
 	perl? ( dev-lang/perl )
 "
 DEPEND="${COMMON_DEPEND}
@@ -104,19 +108,25 @@ src_configure() {
 		--disable-schemas-install \
 		--disable-scrollkeeper \
 		$(use_enable advertisement) \
-		$(use_enable dictdotcn) \
+		$(use_enable cal) \
 		$(use_enable debug) \
+		$(use_enable dictdotcn) \
 		$(use_enable espeak) \
+		$(use_enable flite) \
+		$(use_enable fortune) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
-		$(use_enable qqwry) \
+		$(use_enable info) \
+		$(use_enable man) \
 		$(use_enable powerwordparse) \
+		$(use_enable qqwry) \
 		$(use_enable spell) \
 		$(use_enable tools) \
 		$(use_enable updateinfo) \
 		$(use_enable wikiparse) \
 		$(use_enable wordnet) \
-		$(use_enable xdxfparse)
+		$(use_enable xdxfparse) \
+		$(use_enable youdaodict)
 }
 
 src_install() {

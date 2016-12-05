@@ -13,11 +13,15 @@
 	 </longdescription>
 	<use>
 		<flag name="advertisement">Enable stardict advertisements plugin</flag>
+		<flag name="cal">Enable calendar support using cal program</flag>
 		<flag name="dictdotcn">Enable dict.cn network plugin (for Chinese language)</flag>
 		<flag name="espeak">Enable text to speech synthesizer plugin using
 			<pkg>app-accessibility/espeak</pkg> engine</flag>
 		<flag name="flite">Enable text to speech synthesizer plugin using
 			<pkg>app-accessibility/flite</pkg> engine</flag>
+		<flag name="fortune">Enable plugin to read fortune messages using
+			<pkg>games-misc/fortune-mod</pkg>. You may consider installing
+			<pkg>games-misc/fortune-mod-all</pkg> to get all fortune messages.</flag>
 		<flag name="gucharmap">Enable plugin for unicode symbols description using
 			<pkg>gnome-extra/gucharmap</pkg></flag>
 		<flag name="htmlparse">Enable plugin to parse dictionaries with html content</flag>
@@ -36,6 +40,7 @@
 			lexical database</flag>
 		<flag name="xdxfparse">Enable plugin to parse dictionaries in xdxf (XML Dictionary
 			eXchange Format)</flag>
+		<flag name="youdaodict">Enable youdao.com network plugin (for Chinese language)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">stardict-4</remote-id>
