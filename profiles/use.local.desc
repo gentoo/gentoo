@@ -133,6 +133,7 @@ app-admin/rsyslog:snmp - Build the snmp modify and output module (requires net-a
 app-admin/rsyslog:ssl - Add support for encrypted client/server communication (requires net-libs/gnutls)
 app-admin/rsyslog:systemd - Build the journal input and output module (requires sys-apps/systemd)
 app-admin/rsyslog:usertools - Installs the user tools (rsgtutil, rscryutil...) corresponding to the set USE flags
+app-admin/rsyslog:uuid - Include UUIDs in messages (requires sys-apps/util-linux)
 app-admin/rsyslog:zeromq - Build the ZeroMQ input and output modules (requires net-libs/czmq)
 app-admin/sagan:libdnet - Add support for dev-libs/libdnet
 app-admin/sagan:lognorm - Add support for log/rules normalizations via dev-libs/liblognorm
