@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-13">
+  <title>nghttp2: Denial of Service</title>
+  <synopsis>Nghttp2 is vulnerable to a Denial of Service attack.</synopsis>
+  <product type="ebuild">nghttp2</product>
+  <announced>December 05, 2016</announced>
+  <revised>December 05, 2016: 1</revised>
+  <bug>574780</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/nghttp2" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nghttp2 is an implementation of HTTP/2 and its header compression
+      algorithm HPACK in C.
+    </p>
+  </background>
+  <description>
+    <p>Nghttpd, nghttp, and libnghttp2_asio applications do not limit the
+      memory usage for the incoming HTTP header field. If a peer sends a
+      specially crafted HTTP/2 HEADERS frame and CONTINUATION frame, they will
+      crash with an out of memory error.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nghttp2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nghttp2-1.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1544">CVE-2016-1544</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 13:39:02 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Mon, 05 Dec 2016 01:23:37 +0000">whissi</metadata>
+</glsa>
