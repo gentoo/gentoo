@@ -163,7 +163,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-54-ffmpeg2compat.patch"
 )
 
 pkg_pretend() {
