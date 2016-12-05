@@ -364,11 +364,6 @@ net-misc/bgpq
 dev-java/jaffl
 
 # David Seifert <soap@gentoo.org> (29 Oct 2016)
-# Unmaintained, broken, do not work with GCC 6
-# Bugs #594506, #597780, removal in 30 days.
-<dev-util/build-0.3.10
-
-# David Seifert <soap@gentoo.org> (29 Oct 2016)
 # Unmaintained, depends on ancient and broken C++ libraries
 # Removal in 30 days.
 net-libs/libkolab
