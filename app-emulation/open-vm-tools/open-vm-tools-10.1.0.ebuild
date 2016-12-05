@@ -122,8 +122,10 @@ src_install() {
 	default
 	prune_libtool_files --modules
 
-	rm "${ED%/}"/etc/pam.d/vmtoolsd || die
-	pamd_mimic_system vmtoolsd auth account
+	if use pam; then
+		rm "${ED%/}"/etc/pam.d/vmtoolsd || die
+		pamd_mimic_system vmtoolsd auth account
+	fi
 
 	newinitd "${FILESDIR}/open-vm-tools.initd" vmware-tools
 	newconfd "${FILESDIR}/open-vm-tools.confd" vmware-tools
