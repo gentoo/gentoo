@@ -5,6 +5,18 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2016)
+# Additional HAProxy functionality waiting for related stuff to land in the
+# tree.
+# bug 541042 - lua 5.3
+net-proxy/haproxy lua
+# bug 564160 - DeviceAtlas
+net-proxy/haproxy device-atlas
+# bug (none) - 51Degrees
+net-proxy/haproxy 51degrees
+# bug (none) - WURFL
+net-proxy/haproxy wurfl
+
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Not rely on monodevelop, bug #596656
 # dev-dotnet/zeitgeist-sharp is going to be removed, bug #582894
