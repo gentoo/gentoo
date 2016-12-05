@@ -4753,7 +4753,7 @@ dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming i
 dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.22.3 0.23.4 0.24.2 9999: A linkable library for Git
+dev-libs/libgit2 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25: Contains error handling functions used by GnuPG software
