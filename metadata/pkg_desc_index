@@ -2851,12 +2851,9 @@ dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
-dev-cpp/libbackend-elements 1.7.2: A collection of elementary building blocks for implementing compiler backends in c++
 dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2_pre20160820 9999: C++ client library for the CMIS interface
-dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
-dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
 dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libgnomemm 2.30.0 2.30.0-r1: C++ bindings for libgnome
@@ -2864,7 +2861,7 @@ dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
 dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 0.7.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.0 3.0.1: C++ wrapper for the libxml2 XML parser library
-dev-cpp/libxsd-frontend 1.18.0-r3 2.0.0: A compiler frontend for the W3C XML Schema definition language
+dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema definition language
 dev-cpp/luabind 0.9.1 0.9.1-r1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
@@ -2882,7 +2879,7 @@ dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arg
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
 dev-cpp/websocketpp 0.7.0: C++/Boost Asio based websocket client/server library
-dev-cpp/xsd 3.3.0-r3 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
+dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.5.1 0.5.3: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2: MySQL Schema Versioning and Migration Utility
@@ -9914,7 +9911,7 @@ dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-r1: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
-dev-util/build 0.3.9-r1 0.3.10: A massively-parallel software build system implemented on top of GNU make
+dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
 dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_p1 0.9.1 9999: BuildBot build automation system
 dev-util/buildbot-console-view 0.9.0_p1 0.9.1: Buildbot console-view plugin
 dev-util/buildbot-pkg 0.9.0_p1 0.9.1: BuildBot common www build tools for packaging releases
@@ -14590,8 +14587,6 @@ net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the cl
 net-libs/libiscsi 1.9.0-r1 1.15.0 9999: iscsi client library and utilities
 net-libs/libisds 0.7 0.10 9999: Client library for accessing ISDS Soap services
 net-libs/libkgapi 2.2.0 5.3.1: Library for accessing Google calendar and contact resources
-net-libs/libkolab 0.5.2 0.5.3: Advanced Kolab Object Handling Library
-net-libs/libkolabxml 1.0.1 1.0.3 1.1.0 1.1.2: Kolab XML format schema definitions library
 net-libs/libkpeople 0.3.0: KDE contact person abstraction library
 net-libs/libktorrent 1.3.1 2.0.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
