@@ -124,12 +124,6 @@ media-video/libav x265
 # Missing keywords
 net-misc/networkmanager teamd
 
-# Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
-# New dependencies for wayland support in Gnome 3.14
-# See bug #533420.
-media-libs/clutter egl
-x11-wm/mutter kms
-
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
 # test dependencies need keywording
 dev-haskell/binary test
