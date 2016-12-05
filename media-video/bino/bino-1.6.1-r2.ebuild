@@ -46,6 +46,7 @@ DOCS=( AUTHORS ChangeLog NEWS README README.Linux )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.2-lirc-detect.patch" # detect lirc
+	"${FILESDIR}/ffmpeg_2.9.patch" # build with latest ffmpeg, #587860
 )
 
 src_configure() {
