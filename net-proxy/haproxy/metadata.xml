@@ -23,5 +23,8 @@ Its event-driven architecture allows it to easily handle thousands of simultaneo
 		<flag name="pcre-jit">Use JIT support for PCRE</flag>
 		<flag name="slz">Use <pkg>dev-libs/libslz</pkg> compression library</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
+		<flag name="device-atlas">Device Detection using Device Atlas</flag>
+		<flag name="51degrees">Device Detection using 51 Degrees</flag>
+		<flag name="wurfl">Device Detection using WURFL</flag>
 	</use>
 </pkgmetadata>
