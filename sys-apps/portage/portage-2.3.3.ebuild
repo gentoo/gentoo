@@ -354,7 +354,7 @@ pkg_postinst() {
 
 	ewarn "Please note that this release no longer respects sync-depth for"
 	ewarn "git repositories.  There have been too many problems and"
-	ewarn "perfornmance issues.  See bugs 552814, 559008"
+	ewarn "performance issues.  See bugs 552814, 559008"
 	einfo ""
 	einfo "This release of portage NO LONGER contains the repoman code base."
 	einfo "Repoman has its own ebuild and release package."
