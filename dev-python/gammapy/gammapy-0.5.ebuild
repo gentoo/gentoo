@@ -59,6 +59,7 @@ pkg_postinst() {
 	optfeature "${PN} full functionality" \
 			   dev-python/aplpy \
 			   dev-python/astroplan \
+			   dev-python/gwcs \
 			   dev-python/h5py \
 			   dev-python/iminuit \
 			   dev-python/matplotlib \
@@ -66,9 +67,10 @@ pkg_postinst() {
 			   dev-python/pandas \
 			   dev-python/photutils \
 			   dev-python/reproject \
+			   dev-python/uncertainties \
 			   dev-python/wcsaxes \
 			   sci-libs/scipy \
 			   sci-libs/scikits_image \
-			   sci-libs/scikits_learn
-	# not yet in portage: sherpa, gwcs, uncertainties
+			   sci-libs/scikits_learn \
+	# not yet in portage: sherpa
 }
