@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.24.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.3 1.13.0_rc1-r1 1.13.0_rc2 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.3 1.13.0_rc2 1.13.0_rc3 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -6431,7 +6431,7 @@ dev-perl/Sys-Mmap 0.170.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
-dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2: API for using the libvirt library from Perl
+dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
@@ -15324,7 +15324,7 @@ net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to 
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.4.3 0.4.3-r1 0.4.4 9999: P2P communications protocol
 net-p2p/qbittorrent 3.1.9.2-r1 3.1.12 3.3.4-r1 3.3.7 9999: BitTorrent client in C++ and Qt
-net-p2p/retroshare 0.5.5c 0.6.0 0.6.9999: P2P private sharing application
+net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
@@ -17504,7 +17504,7 @@ sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.10 4.8.10 4.8.11 4.8.12: Ha
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 20160628 20161005 99999999: Linux firmware files
+sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 20160628 20161005 20161205 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6 4.7 4.8: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11 2.6.32.116.1: Kernel sources with OpenVZ patchset
