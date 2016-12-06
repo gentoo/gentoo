@@ -19,13 +19,17 @@ DESCRIPTION="A curses front-end for GDB, the GNU debugger"
 HOMEPAGE="http://cgdb.github.io/"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="test"
 
-DEPEND="
+COMMONDEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/readline:0="
 
+DEPEND="${COMMONDEPEND}
+	test? ( dev-util/dejagnu )"
+
 RDEPEND="
-	${DEPEND}
+	${COMMONDEPEND}
 	sys-devel/gdb"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README.md TODO )
