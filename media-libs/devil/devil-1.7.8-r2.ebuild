@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}"-ILUT.patch
 	"${FILESDIR}/${P}"-restrict.patch
 	"${FILESDIR}/${P}"-fix-test.patch
+	"${FILESDIR}/${P}"-jasper-remove-uchar.patch
 )
 
 src_prepare() {
