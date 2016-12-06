@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools multilib eutils
 
 MY_PN="ZenLib"
 DESCRIPTION="Shared library for libmediainfo and mediainfo"
-HOMEPAGE="https://sourceforge.net/projects/zenlib"
-SRC_URI="mirror://sourceforge/zenlib/${PN}_${PV}.tar.bz2"
+HOMEPAGE="https://github.com/MediaArea/ZenLib http://mediaarea.net/mediainfo/"
+SRC_URI="http://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
 DEPEND="virtual/pkgconfig
@@ -22,6 +22,7 @@ DEPEND="virtual/pkgconfig
 S=${WORKDIR}/${MY_PN}/Project/GNU/Library
 
 src_prepare() {
+	default
 	sed -i 's:-O2::' configure.ac || die
 	eautoreconf
 }
@@ -58,7 +59,8 @@ src_install() {
 
 	dodoc "${WORKDIR}"/${MY_PN}/History.txt
 	if use doc ; then
-		dohtml "${WORKDIR}"/${MY_PN}/Doc/*
+		docinto html
+		dodoc "${WORKDIR}"/${MY_PN}/Doc/*
 	fi
 
 	prune_libtool_files
