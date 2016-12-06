@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,6 +45,10 @@ src_prepare() {
 	if use linguas_ja; then
 		iconv -f ISO-2022-JP -t EUC-JP sl.1 > sl.ja.1
 	fi
+}
+
+src_compile() {
+	emake LDLIBS="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_install() {
