@@ -3,17 +3,22 @@
 # $Id$
 
 EAPI=6
+CMAKE_MIN_VERSION="3.0"
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime git-r3 pax-utils eutils versionator
+inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
-EGIT_REPO_URI="git://github.com/darktable-org/darktable.git"
+DOC_PV="1.6.0"
+MY_PV="${PV/_/}"
+MY_P="${P/_/.}"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
+SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 LANGS=" af ca cs da de el es fi fr gl he hu it ja nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
@@ -61,6 +66,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+S="${WORKDIR}/${P/_/~}"
+
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -98,6 +105,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
 		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang/-/_}
@@ -120,6 +128,12 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
+
+	elog "when updating from the currently stable 1.6 series,"
+	elog "please bear in mind that your edits will be preserved during this process,"
+	elog "but it will not be possible to downgrade from 2.0 to 1.6 any more."
+	echo
+	ewarn "It will not be possible to downgrade!"
 }
 
 pkg_postrm() {
