@@ -13,7 +13,7 @@ SRC_URI="https://github.com/irungentoo/toxcore/archive/${EGIT_COMMIT}.tar.gz -> 
 
 LICENSE="GPL-3+"
 SLOT="0/0.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
 
 REQUIRED_USE="^^ ( no-log log-trace log-debug log-info log-warn log-error )"
