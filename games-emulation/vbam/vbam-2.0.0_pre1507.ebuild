@@ -13,6 +13,12 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
 	KEYWORDS="amd64 x86"
+
+	# upstream patches
+	SRC_URI+=" https://github.com/visualboyadvance-m/visualboyadvance-m/commit/3f3c3859c1c5f92937bef5d3398a37605e9c16ec.patch -> ${PN}-2.0.0_pre1507-ffmpeg3_defines.patch"
+	SRC_URI+=" https://github.com/visualboyadvance-m/visualboyadvance-m/commit/029a5fc14b8e5d6f6ce724e66564f9ef89c6a809.patch -> ${PN}-2.0.0_pre1507-ffmpeg3_audio_recording_kludge.patch"
+	SRC_URI+=" https://github.com/visualboyadvance-m/visualboyadvance-m/commit/a3a07d2f565756771e9c4f0b9574dcffe51c2fa4.patch -> ${PN}-2.0.0_pre1507-ffmpeg3_encoders_no_s16.patch"
+	SRC_URI+=" https://github.com/visualboyadvance-m/visualboyadvance-m/commit/502de18456ee272c4bf264f2db9bea73a6b0bfd0.patch -> ${PN}-2.0.0_pre1507-ffmpeg3_nonfunc_video_encoding.patch"
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
@@ -58,6 +64,12 @@ src_prepare() {
 	sed -i "s:\(DESTINATION\) bin:\1 ${GAMES_BINDIR}:" \
 		CMakeLists.txt src/{wx,gtk}/CMakeLists.txt || die
 	epatch "${FILESDIR}"/${P}-man.patch
+
+	epatch \
+		"${DISTDIR}/${P}-ffmpeg3_defines.patch" \
+		"${DISTDIR}/${P}-ffmpeg3_audio_recording_kludge.patch" \
+		"${DISTDIR}/${P}-ffmpeg3_encoders_no_s16.patch" \
+		"${DISTDIR}/${P}-ffmpeg3_nonfunc_video_encoding.patch"
 }
 
 src_configure() {
