@@ -2,16 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="radius"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-0 php5-6 php5-5"
-MY_PV="${PV/_beta/b}"
+USE_PHP="php7-0 php5-6"
+PHP_EXT_PECL_FILENAME="${PN/pecl-/}-${PV/_beta/b}.tgz"
+PHP_EXT_S="${WORKDIR}/${PHP_EXT_PECL_FILENAME%.tgz}"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 
@@ -19,3 +20,10 @@ DESCRIPTION="Provides support for RADIUS authentication (RFC 2865) and accountin
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples"
+
+S="${PHP_EXT_S}"
+
+RDEPEND="
+	php_targets_php5-6? ( dev-lang/php:5.6[pcntl,sockets] )
+	php_targets_php7-0? ( dev-lang/php:7.0[pcntl,sockets] )
+"
