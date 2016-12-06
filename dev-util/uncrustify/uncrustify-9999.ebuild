@@ -16,7 +16,7 @@ else
 	S=${WORKDIR}/${PN}-${P}
 fi
 
-inherit autotools ${scm_eclass}
+inherit cmake-utils ${scm_eclass}
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -30,11 +30,6 @@ SLOT="0"
 IUSE="test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
-
-src_prepare() {
-	eautoreconf
-	default
-}
 
 python_test() {
 	cd tests
