@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -23,7 +23,7 @@ DEPEND+=" dev-libs/openssl:0 test? ( net-misc/curl )"
 RDEPEND+=" dev-libs/openssl:0"
 
 ruby_add_bdepend "virtual/ruby-ssl
-	test? ( dev-ruby/rack dev-ruby/minitest dev-ruby/test-unit )"
+	test? ( dev-ruby/rack >=dev-ruby/minitest-5.8:5 >=dev-ruby/test-unit-3.0:2 )"
 
 all_ruby_prepare() {
 	# Avoid test failing inconsistently
@@ -50,7 +50,7 @@ each_ruby_compile() {
 
 each_ruby_test() {
 	einfo "Running test suite"
-	${RUBY} -Ilib:.:test -e "gem 'minitest'; gem 'test-unit'; require 'minitest/autorun'; Dir['test/**/*test_*.rb'].each{|f| require f}" || die
+	${RUBY} -Ilib:.:test -e "gem 'minitest', '~>5.8'; gem 'test-unit', '~>3.0'; require 'minitest/autorun'; Dir['test/**/*test_*.rb'].each{|f| require f}" || die
 
 	einfo "Running integration tests"
 	pushd test/shell
