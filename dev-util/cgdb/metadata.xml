@@ -3,13 +3,13 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>nado@troglodyte.be</email>
-		<name>Nado</name>
+		<name>Corentin Pazdera</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">cgdb</remote-id>
+		<remote-id type="github">cgdb/cgdb</remote-id>
 	</upstream>
 </pkgmetadata>
