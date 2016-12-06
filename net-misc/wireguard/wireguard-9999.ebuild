@@ -50,9 +50,7 @@ src_install() {
 	dodoc -r contrib/examples
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
 	if use kmod-src; then
-		dodir /usr/src
-		rm -r "${S}"/src/tools || die
-		mv -v "${S}"/src "${ED}"usr/src/wireguard || die
+		emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src dkms-install
 	else
 		linux-mod_src_install
 	fi
