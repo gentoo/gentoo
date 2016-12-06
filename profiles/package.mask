@@ -123,11 +123,6 @@ www-apps/phpBB
 sys-libs/openhpi
 
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Obsolete, orphan, needs porting to new python eclasses, bug #554458.
-# Removal in a month.
-x11-misc/menumaker
-
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Not compatible with mono-4 (#558934, #545964), removal in a month.
 net-irc/smuxi
 dev-dotnet/smartirc4net
