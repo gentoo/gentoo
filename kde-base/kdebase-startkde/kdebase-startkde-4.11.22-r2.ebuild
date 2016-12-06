@@ -72,13 +72,13 @@ RDEPEND="
 	handbook? ( kde-apps/khelpcenter:* )
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
-		$(add_kdebase_dep klipper)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
 		kde-plasma/kephal:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
+		kde-plasma/klipper:4
 		kde-plasma/kmenuedit:4
 		kde-plasma/kstyles:4
 		kde-plasma/ksysguard:4

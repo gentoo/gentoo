@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="mirror:gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -80,7 +80,7 @@ pkg_setup() {
 src_prepare(){
 	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
-		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
+		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
 		touch "${S}/libs/ardour/revision.cc"
 	fi
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
