@@ -74,8 +74,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.2-fpic.patch
+	"${FILESDIR}"/${P}-docdir.patch
 	)
 
 src_prepare() {

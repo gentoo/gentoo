@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,8 +13,8 @@ DESCRIPTION="GStreamer integration library for Clutter"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="X examples +introspection udev"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="X debug examples +introspection udev"
 
 # >=cogl-1.18 provides cogl-2.0-experimental
 COMMON_DEPEND="
@@ -43,15 +42,9 @@ src_configure() {
 	# --enable-gl-texture-upload is experimental
 	gnome2_src_configure \
 		--disable-maintainer-flags \
+		--enable-debug=$(usex debug yes minimum) \
 		$(use_enable introspection) \
 		$(use_enable udev)
-}
-
-src_compile() {
-	# Clutter tries to access dri without userpriv, upstream bug #661873
-	# Massive failure of a hack, see bug 360219, bug 360073, bug 363917
-	unset DISPLAY
-	gnome2_src_compile
 }
 
 src_install() {
