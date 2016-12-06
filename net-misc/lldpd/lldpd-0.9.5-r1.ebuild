@@ -35,12 +35,13 @@ REQUIRED_USE="graph? ( doc )"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.11-zsh-completion-dir.patch"
 	"${FILESDIR}/${P}-seccomp-add-mprotect.patch"
+	"${FILESDIR}/${P}-seccomp-add-socket-ops.patch"
 )
 
 pkg_setup() {
 	ebegin "Creating lldpd user and group"
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
+	#enewgroup ${PN}
+	#enewuser ${PN} -1 -1 -1 ${PN}
 	eend $?
 }
 
