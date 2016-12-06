@@ -1,5 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI="5"
 
@@ -38,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch
 	"${FILESDIR}"/${P}-su-snprintf.patch
 	"${FILESDIR}"/${P}-prototypes.patch
+	"${FILESDIR}"/${P}-load_defaults.patch
 )
 
 src_prepare() {
