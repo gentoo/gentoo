@@ -2042,7 +2042,7 @@ app-office/openerp 7.0.20140125 8.0.20140125: Open Source ERP & CRM
 app-office/openoffice-bin 4.1.2: Apache OpenOffice productivity suite
 app-office/openproj-bin 1.4 1.4-r1: A free and open source desktop alternative to Microsoft Project
 app-office/orage 4.12.1: A time managing application (and panel plug-in) for the Xfce desktop environment
-app-office/pinpoint 0.1.6 0.1.8: A tool for making hackers do excellent presentations
+app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
@@ -8039,7 +8039,7 @@ dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6 0.6.7 0.7.6: Pure-Python MySQL Driver
-dev-python/pynacl 1.0.1: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynacl 1.0.1 1.0.1-r1: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
@@ -10456,8 +10456,8 @@ games-arcade/funnyboat 1.5-r1: A side scrolling shooter game starring a steamboa
 games-arcade/gav 0.9.0: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b: An ncurses-based Nibbles clone
-games-arcade/gnome-nibbles 3.18.2 3.20.2.1 3.22.1 3.22.2.2: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.18.1 3.20.2 3.22.0 3.22.1: Avoid the robots and make them crash into each other
+games-arcade/gnome-nibbles 3.20.2.1 3.22.2.2: Nibbles clone for Gnome
+games-arcade/gnome-robots 3.20.2 3.22.1: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8: Xjump clone with added features
 games-arcade/grande-KXL 0.6: ZANAC type game
 games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
@@ -10964,7 +10964,7 @@ games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little 
 games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.18.2 3.20.2 3.22.0 3.22.1: Slide blocks to solve the puzzle
+games-puzzle/gnome-klotski 3.20.2 3.22.1: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.20.5 3.22.0 3.22.2: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.20.2 3.22.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.20.0 3.22.0: Complete the puzzle by matching numbered tiles
@@ -12651,7 +12651,7 @@ media-libs/celt 0.5.1.3 0.11.1-r1 0.11.3: CELT is a very low delay audio codec d
 media-libs/chromaprint 1.2 1.2-r1 1.3.1 1.3.2: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/cimg 1.5.2 1.7.8: C++ template image processing toolkit
 media-libs/clutter 1.24.2 1.26.0: Clutter is a library for creating graphical user interfaces
-media-libs/clutter-gst 2.0.16 2.0.18 3.0.16 3.0.18 3.0.20: GStreamer integration library for Clutter
+media-libs/clutter-gst 2.0.18 3.0.20 3.0.22: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.6.6-r1 1.8.0 1.8.2: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/cogl 1.20.0 1.22.0 1.22.0-r1 1.22.0-r2 1.22.2: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 3.1.3-r2: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
@@ -13625,7 +13625,7 @@ media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
-media-sound/rhythmbox 3.3 3.3.1 3.4 3.4.1: Music management and playback software for GNOME
+media-sound/rhythmbox 3.4.1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 13.04 13.10-r1 14.02 14.12: MIDI and audio sequencer and notation editor
@@ -13880,7 +13880,7 @@ media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webc
 media-video/shrip 0.6.0: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/smplayer 14.9.0-r1 16.1.0 16.4.0-r2 16.9.0 16.11.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 15.11.0 15.11.0-r1 15.11.0-r2 16.1.0 16.3.0 16.6.0 16.6.0-r1 16.7.0: YouTube Browser for SMPlayer
-media-video/snappy 1.0 1.0-r1: A simple media player written using GStreamer and Clutter
+media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/sswf 1.8.2-r1 1.8.4-r1: A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
 media-video/streamdvd 0.4-r1: fast tool to backup Video DVDs 'on the fly'
