@@ -4,7 +4,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1 qt5-build
+inherit pax-utils python-any-r1 qt5-build
 
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE="bindist geolocation +system-ffmpeg +system-icu widgets"
+IUSE="bindist geolocation pax_kernel +system-ffmpeg +system-icu widgets"
 
 RDEPEND="
 	app-arch/snappy
@@ -40,7 +40,7 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/opus
 	media-libs/speex
-	net-libs/libsrtp:=
+	net-libs/libsrtp:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
@@ -68,9 +68,19 @@ DEPEND="${RDEPEND}
 	dev-util/ninja
 	dev-util/re2c
 	sys-devel/bison
+	pax_kernel? ( sys-apps/elfix )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.7.0-fix-system-ffmpeg.patch"
+	"${FILESDIR}/${PN}-5.7.0-gcc6.patch"
+	"${FILESDIR}/${PN}-5.7.0-icu58.patch"
+	"${FILESDIR}/${PN}-5.7.0-undef-madv_free.patch"
+)
+
 src_prepare() {
+	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-paxmark-mksnapshot.patch" )
+
 	if use system-icu; then
 		# ensuire build against system headers - bug #601264
 		rm -r src/3rdparty/chromium/third_party/icu/source || die
@@ -94,4 +104,10 @@ src_configure() {
 		$(usex system-icu 'WEBENGINE_CONFIG+=use_system_icu' '')
 	)
 	qt5-build_src_configure
+}
+
+src_install() {
+	qt5-build_src_install
+
+	pax-mark m "${D%/}${QT5_LIBEXECDIR}"/QtWebEngineProcess
 }
