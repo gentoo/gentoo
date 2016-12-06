@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+X +av notifications"
 
 RDEPEND="
-	net-libs/tox[av?]
+	net-libs/tox:0/0.0[av?]
 	dev-libs/libconfig
 	media-gfx/qrencode
 	net-misc/curl
