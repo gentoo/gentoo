@@ -2551,6 +2551,7 @@ dev-qt/qtwayland:qml - Build QML/QtQuick bindings
 dev-qt/qtwayland:wayland-compositor - Build Qt compositor for wayland
 dev-qt/qtwebchannel:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtwebengine:geolocation - Enable physical position determination via dev-qt/qtpositioning
+dev-qt/qtwebengine:pax_kernel - Enable building under a PaX enabled kernel
 dev-qt/qtwebengine:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
 dev-qt/qtwebengine:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 dev-qt/qtwebengine:widgets - Enable QtWidgets support
