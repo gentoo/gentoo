@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="Inputlirc daemon to utilize /dev/input/event*"
-HOMEPAGE="http://svn.sliepen.eu.org/inputlirc/trunk"
+HOMEPAGE="https://github.com/ferdinandhuebner/inputlirc"
 SRC_URI="http://gentooexperimental.org/~genstef/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
