@@ -1,0 +1,20 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+DESCRIPTION="Virtual for ${PN#perl-}"
+HOMEPAGE=""
+SRC_URI=""
+
+SLOT="0"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd"
+IUSE=""
+
+RDEPEND="
+	|| ( =dev-lang/perl-5.24.0* =dev-lang/perl-5.22.2* =dev-lang/perl-5.22.1* =dev-lang/perl-5.22.0* ~perl-core/Locale-Maketext-${PV} )
+	dev-lang/perl:=
+	!<perl-core/Locale-Maketext-${PV}
+	!>perl-core/Locale-Maketext-${PV}-r999
+"
