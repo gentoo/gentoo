@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="A cartoon style multiplayer first-person shooter"
-HOMEPAGE="http://worldofpadman.com/"
+HOMEPAGE="http://worldofpadman.net/"
 SRC_URI="mirror://sourceforge/${PN}/wop-1.5-unified.zip
 	mirror://sourceforge/${PN}/wop-1.5.x-to-1.6-patch-unified.zip"
 
