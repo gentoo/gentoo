@@ -48,7 +48,7 @@ RDEPEND="
 	coprocessing? (
 		plugins? (
 			dev-python/PyQt5
-			dev-qt/qtgui:5
+			dev-qt/qtgui:5[-gles2]
 		)
 	)
 	ffmpeg? ( virtual/ffmpeg )
@@ -66,9 +66,9 @@ RDEPEND="
 	)
 	qt5? (
 		dev-qt/designer:5
-		dev-qt/qtgui:5
+		dev-qt/qtgui:5[-gles2]
 		dev-qt/qthelp:5
-		dev-qt/qtopengl:5
+		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
 		dev-qt/qtwebkit:5
