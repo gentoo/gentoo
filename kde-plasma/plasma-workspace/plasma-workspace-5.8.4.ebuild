@@ -109,7 +109,7 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/libtaskmanager:4
 	!kde-plasma/kcminit:4
 	!kde-base/kdebase-startkde:4
-	!kde-base/klipper:4
+	!kde-plasma/klipper:4
 	!kde-base/krunner:4
 	!kde-base/ksmserver:4
 	!kde-plasma/ksplash:4
