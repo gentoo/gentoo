@@ -64,8 +64,16 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+}
+
 each_ruby_install() {
 	doruby "${BUILD_DIR}"/lib/facter.rb
+}
+
+src_test() {
+	cmake-utils_src_test
 }
 
 src_install() {
