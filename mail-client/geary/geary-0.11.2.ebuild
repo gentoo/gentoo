@@ -51,6 +51,9 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=751558
 	eapply "${FILESDIR}"/${PN}-0.6.0-desktopfile.patch
 
+	# vala-0.34 compat, fixed in next version, bug #601778
+	eapply "${FILESDIR}"/${P}-vala-0.34.patch
+
 	local i
 	if use nls ; then
 		if [[ -n "${LINGUAS+x}" ]] ; then
@@ -72,6 +75,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DDESKTOP_UPDATE=OFF
+		-DNO_FATAL_WARNINGS=ON
 		-DGSETTINGS_COMPILE=OFF
 		-DICON_UPDATE=OFF
 		-DVALA_EXECUTABLE="${VALAC}"
