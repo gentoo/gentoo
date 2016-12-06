@@ -30,7 +30,7 @@ index de24551..9a3cc05 100644
 +override CFLAGS   += -Wno-sign-compare
 +override CPPFLAGS += `$(PKG_CONFIG) --cflags glib-2.0`
 +LDFLAGS ?= -Wl,--as-needed
-+LDADD    = `$(PKG_CONFIG) --libs glib-2.0` -lncursesw
++LDADD    = `$(PKG_CONFIG) --libs glib-2.0` `$(PKG_CONFIG) --libs ncursesw`
  
  OBJS= latencytop.o text_display.o translate.o fsync.o
  
