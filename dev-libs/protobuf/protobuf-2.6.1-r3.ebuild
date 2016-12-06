@@ -13,7 +13,7 @@ inherit autotools-multilib eutils flag-o-matic toolchain-funcs distutils-r1 java
 
 DESCRIPTION="Google's Protocol Buffers -- an efficient method of encoding structured data"
 HOMEPAGE="https://code.google.com/p/protobuf/ https://github.com/google/protobuf/"
-SRC_URI="https://github.com/google/${PN}/releases/download/${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/google/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0/9" # subslot = soname major version
