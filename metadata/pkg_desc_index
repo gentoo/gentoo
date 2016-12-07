@@ -17659,7 +17659,7 @@ sys-process/htop 1.0.3 1.0.3-r1 2.0.1 2.0.2: interactive process viewer
 sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
-sys-process/lsof 4.87-r1 4.88-r1 4.89: Lists open files for running Unix processes
+sys-process/lsof 4.87-r1 4.88-r1 4.89 4.89-r1: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.3.1 0.3.2 0.3.3: Interactive memory viewer
 sys-process/minit 0.9.1 0.10: a small yet feature-complete init
 sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
