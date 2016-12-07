@@ -21,7 +21,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="dumb-echo libedit static"
+IUSE="libedit static vanilla"
 
 RDEPEND="!static? ( libedit? ( dev-libs/libedit ) )"
 DEPEND="${RDEPEND}
@@ -42,7 +42,7 @@ src_prepare() {
 	epatch "${PATCHES[@]}"
 
 	#337329 #527848
-	use dumb-echo && epatch "${FILESDIR}"/${PN}-0.5.9.1-dumb-echo.patch
+	use vanilla ||  epatch "${FILESDIR}"/${PN}-0.5.9.1-dumb-echo.patch
 
 	# Fix the invalid sort
 	sed -i -e 's/LC_COLLATE=C/LC_ALL=C/g' src/mkbuiltins
