@@ -4,7 +4,7 @@
 
 EAPI=6
 
-MY_PV="${PV/_rc/RC}"
+MY_PV="${PV/_beta/b}"
 PHP_EXT_PECL_FILENAME="yaml-${MY_PV}.tgz"
 PHP_EXT_NAME="yaml"
 PHP_EXT_INI="yes"
@@ -15,25 +15,33 @@ USE_PHP="php7-0 php5-6"
 
 inherit php-ext-pecl-r3
 
+USE_PHP="php5-6"
+
 S="${WORKDIR}/yaml-${MY_PV}"
 PHP_EXT_S="${S}"
-USE_PHP="php7-0"
 
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="YAML 1.1 (YAML Ain't Markup Language) serialization for PHP"
 LICENSE="MIT"
-SLOT="7"
+SLOT="0"
 IUSE=""
 
 DEPEND=">=dev-libs/libyaml-0.1.0"
-RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-yaml:0[php_targets_php5-6] )"
+RDEPEND="${DEPEND}"
+PDEPEND="php_targets_php7-0? ( dev-php/pecl-yaml:7 )"
 PHP_EXT_ECONF_ARGS=""
 
 src_prepare() {
-	if use php_targets_php7-0 ; then
+	if use php_targets_php5-6 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default_src_prepare
+	fi
+}
+
+src_install() {
+	if use php_targets_php5-6 ; then
+		php-ext-pecl-r3_src_install
 	fi
 }
