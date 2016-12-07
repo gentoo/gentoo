@@ -1,0 +1,11 @@
+--- a/test/atoi3.rl	2014-10-13 14:00:59.000000000 -0400
++++ b/test/atoi3.rl	2016-12-06 23:26:25.309623462 -0500
+@@ -12,7 +12,7 @@
+         neg = true;
+     }
+     action add_digit {
+-		val = val * 10 + (fc - "0"[0]);
++		val = val * 10 + (fc.to_i - ?0.ord);
+     }
+     action finish {
+ 		val = -1 * val if neg
