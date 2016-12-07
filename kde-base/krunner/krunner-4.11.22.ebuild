@@ -14,9 +14,9 @@ IUSE="debug"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	$(add_kdebase_dep ksmserver)
 	kde-plasma/kcheckpass:4
 	kde-plasma/kephal:4
+	kde-plasma/ksmserver:4
 	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmagenericshell:4
