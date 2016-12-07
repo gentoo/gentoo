@@ -68,9 +68,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/yajl-2
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	media-fonts/anonymous-pro
 	media-fonts/corefonts
-	media-fonts/dejavu
+	>=media-fonts/noto-20160531
+	media-fonts/roboto
 	alsa? ( media-libs/alsa-lib )
 	media-libs/flac
 	media-libs/fontconfig
@@ -159,9 +159,6 @@ pkg_setup() {
 
 src_unpack() {
 	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
-	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
-	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
-	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
 }
 
 src_prepare() {
@@ -275,24 +272,36 @@ src_install() {
 	default
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
-	domenu tools/Linux/kodi.desktop
-	newicon media/icon48x48.png kodi.png
+	domenu "tools/Linux/${PN}.desktop"
+	newicon media/icon48x48.png "${PN}.png"
 
 	# Remove fontconfig settings that are used only on MacOSX.
 	# Can't be patched upstream because they just find all files and install
 	# them into same structure like they have in git.
-	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
+	rm -rf "${ED%/}/usr/share/${PN}/system/players/dvdplayer/etc" || die
 
-	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
-		/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf || die
-	dosym /usr/share/fonts/anonymous-pro/Anonymous\ Pro.ttf \
-		/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf
+	# Replace bundled fonts with system ones
+	SKIN_FONTS="${ED%/}/usr/share/${PN}/addons/skin.estuary/fonts"
+
+	rm "${SKIN_FONTS}/NotoMono-Regular.ttf" || die
+	dosym /usr/share/fonts/noto/NotoMono-Regular.ttf \
+		"/usr/share/${PN}/addons/skin.estuary/fonts/NotoMono-Regular.ttf" || die
+
+	rm "${SKIN_FONTS}/NotoSans-Bold.ttf" || die
+	dosym /usr/share/fonts/noto/NotoSans-Bold.ttf \
+		"/usr/share/${PN}/addons/skin.estuary/fonts/NotoSans-Bold.ttf" || die
+
+	rm "${SKIN_FONTS}/NotoSans-Regular.ttf" || die
+	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
+		"/usr/share/${PN}/addons/skin.estuary/fonts/NotoSans-Regular.ttf" || die
+
+	rm "${SKIN_FONTS}/Roboto-Thin.ttf" || die
+	dosym /usr/share/fonts/roboto/Roboto-Thin.ttf \
+		"/usr/share/${PN}/addons/skin.estuary/fonts/Roboto-Thin.ttf" || die
+
 	#lato is also present but cannot be unbundled because
 	#lato isn't (yet) in portage: https://bugs.gentoo.org/show_bug.cgi?id=589288
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
-	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
+	python_newscript "tools/EventClients/Clients/Kodi Send/${PN}-send.py" "${PN}-send"
 }
