@@ -1,8 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -15,7 +14,7 @@ SRC_URI="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2
 
 LICENSE="lsof"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples ipv6 rpc selinux static"
 
 RDEPEND="rpc? ( net-libs/libtirpc )
@@ -37,9 +36,12 @@ src_prepare() {
 	sed -i \
 		-e 's:echo -n:printf:' \
 		AFSConfig Configure Customize Inventory tests/CkTestDB || die
-	# convert `test -r header.h` into a compile test
-	sed -i -r \
-		-e 's:test -r \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\1>" | ${LSOF_CC} ${LSOF_CFGF} -E - >/dev/null 2>\&1:' \
+	# Convert `test -r header.h` into a compile test.
+	# Make sure we convert `test ... -a ...` into two `test` commands
+	# so we can then convert both over into a compile test. #601432
+	sed -i -E \
+		-e '/if test .* -a /s: -a : \&\& test :g' \
+		-e '/test -r/s:test -r \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\1>" | ${LSOF_CC} ${LSOF_CFGF} -E - >/dev/null 2>\&1:g' \
 		-e 's:grep (.*) \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\2>" | ${LSOF_CC} ${LSOF_CFGF} -E -P -dD - 2>/dev/null | grep \1:' \
 		Configure || die
 }
