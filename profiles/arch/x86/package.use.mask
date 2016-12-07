@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Yixun lan <dlan@gentoo.org> (07 Dec 2016)
+# Disable zfs storage backend since sys-fs/zfs doesn't support 32bit arch
+app-emulation/libvirt zfs
+
 # Jonathan Scruggs <j.scruggs@gmail.com> (27 Oct 2016)
 # Blender needs newer versions of CUDA which no longer support x86
 media-gfx/blender cuda

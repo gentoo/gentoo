@@ -25,7 +25,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
-	ncurses? ( >=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}] )
+	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	opengl? (
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]

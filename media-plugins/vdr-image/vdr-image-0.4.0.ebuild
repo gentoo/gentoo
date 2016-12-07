@@ -12,7 +12,7 @@ DESCRIPTION="VDR plugin: display of digital images, like jpeg, tiff, png, bmp"
 HOMEPAGE="http://projects.vdr-developer.org/projects/plg-image"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="exif"

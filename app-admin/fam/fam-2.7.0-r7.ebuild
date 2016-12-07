@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/projects/fam/download/stable/${P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="static-libs"
 
 DEPEND="|| ( net-nds/rpcbind >=net-nds/portmap-5b-r6 )
@@ -28,12 +28,14 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch "${S}"/${P}/debian/patches
 	sed -i configure.ac -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
 
+	epatch "${FILESDIR}"/${P}-out-of-tree.patch
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580702
+
 	eautoreconf
-	multilib_copy_sources
 }
 
 multilib_src_configure() {
-	econf $(use_enable static-libs static)
+	ECONF_SOURCE=${S} econf $(use_enable static-libs static)
 
 	# These are thrown away later
 	if ! multilib_is_native_abi ; then

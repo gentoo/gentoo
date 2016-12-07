@@ -19,7 +19,7 @@ RESTRICT=test
 # krunner is only needed to generate dbus interface for lancelot
 COMMON_DEPEND="
 	app-crypt/qca:2[qt4(+)]
-	$(add_kdebase_dep krunner '' 4.11)
+	kde-plasma/krunner:4
 	$(add_kdebase_dep plasma-workspace '' 4.11)
 	x11-misc/shared-mime-info
 	attica? ( dev-libs/libattica )

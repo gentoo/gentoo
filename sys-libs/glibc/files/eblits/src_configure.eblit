@@ -226,6 +226,14 @@ toolchain-glibc_headers_configure() {
 		pushd "${S}"/sysdeps/mips >/dev/null
 		sed -i -e '/^CC +=/s:=.*:= -D_MIPS_SZPTR=32:' mips32/Makefile mips64/n32/Makefile || die
 		sed -i -e '/^CC +=/s:=.*:= -D_MIPS_SZPTR=64:' mips64/n64/Makefile || die
+		if version_is_at_least 2.21 ; then
+			# Force the mips ABI to the default.  This is OK because the set of
+			# installed headers in this phase is the same between the 3 ABIs.
+			# If this ever changes, this hack will break, but that's unlikely
+			# as glibc discourages that behavior.
+			# https://crbug.com/647033
+			sed -i -e 's:abiflag=.*:abiflag=_ABIO32:' preconfigure || die
+		fi
 		popd >/dev/null
 	fi
 

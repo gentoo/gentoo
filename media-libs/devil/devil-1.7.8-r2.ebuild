@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 MY_P=DevIL-${PV}
 
@@ -14,9 +15,10 @@ SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~mips ppc ppc64 x86"
-IUSE="allegro gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs tiff xpm X"
+IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl static-libs tiff X xpm"
 
-RDEPEND="allegro? ( media-libs/allegro:0 )
+RDEPEND="
+	allegro? ( media-libs/allegro:0 )
 	gif? ( media-libs/giflib:= )
 	glut? ( media-libs/freeglut )
 	jpeg? ( virtual/jpeg:0 )
@@ -29,16 +31,26 @@ RDEPEND="allegro? ( media-libs/allegro:0 )
 	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
-	xpm? ( x11-libs/libXpm )
 	X? ( x11-libs/libXext
 		 x11-libs/libX11
-		 x11-libs/libXrender )"
+		 x11-libs/libXrender )
+	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	X? ( x11-proto/xextproto )"
 
+PATCHES=(
+	"${FILESDIR}/${P}"-CVE-2009-3994.patch
+	"${FILESDIR}/${P}"-libpng14.patch
+	"${FILESDIR}/${P}"-nvtt-glut.patch
+	"${FILESDIR}/${P}"-ILUT.patch
+	"${FILESDIR}/${P}"-restrict.patch
+	"${FILESDIR}/${P}"-fix-test.patch
+	"${FILESDIR}/${P}"-jasper-remove-uchar.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-{CVE-2009-3994,libpng14,nvtt-glut,ILUT,restrict,fix-test}.patch
+	default
 	eautoreconf
 }
 
@@ -74,5 +86,7 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }

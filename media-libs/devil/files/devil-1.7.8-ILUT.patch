@@ -3,8 +3,8 @@ Date: Thu May  3 22:23:21 UTC 2012
 
 use_x11=no was not set when --disable-x11 was
 
---- m4/devil-api_checks.m4
-+++ m4/devil-api_checks.m4
+--- a/m4/devil-api_checks.m4
++++ b/m4/devil-api_checks.m4
 @@ -137,7 +137,8 @@
                                [main],
                                [dnl The use_x11 var is either "yes" already, or we don't want "no" to be overwritten

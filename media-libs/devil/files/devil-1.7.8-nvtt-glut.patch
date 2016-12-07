@@ -5,8 +5,8 @@ Subject: build system
 remove automagic handling of glut and add configure option
 fix "header present but cannot be compiled" warning for nvtt
 
---- m4/ax_check_glut.m4
-+++ m4/ax_check_glut.m4
+--- a/m4/ax_check_glut.m4
++++ b/m4/ax_check_glut.m4
 @@ -114,4 +114,11 @@
  
  AC_SUBST([GLUT_CFLAGS])
@@ -19,8 +19,8 @@ fix "header present but cannot be compiled" warning for nvtt
 +	       [enable_glut="yes"])
 +
  ])dnl
---- m4/devil-api_checks.m4
-+++ m4/devil-api_checks.m4
+--- a/m4/devil-api_checks.m4
++++ b/m4/devil-api_checks.m4
 @@ -31,8 +31,8 @@
                   AS_IF([test "x$no_gl" != "xyes" -a "x$no_glu" != "xyes"],
                         [use_ogl="yes"
@@ -32,8 +32,8 @@ fix "header present but cannot be compiled" warning for nvtt
                                 ILUT_LIBS="$GLUT_LIBS  $ILUT_LIBS"])
                          AC_DEFINE([ILUT_USE_OPENGL],
  	                          [1],
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -343,8 +343,10 @@
  			    [Do you want to use the Nvidia texture tools if possible? (enables GPU accelerated image manipulation, default="yes")]) ],
  	    [],
@@ -65,8 +65,8 @@ fix "header present but cannot be compiled" warning for nvtt
        [EXAMPLES_TO_BUILD="$EXAMPLES_TO_BUILD ILUT_gl ILUT_volume"])
  
  dnl Win32
---- bin/Makefile.am
-+++ bin/Makefile.am
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
 @@ -45,11 +45,11 @@
  examples_PROGRAMS += ILUT_animation
  endif #USE_W32
