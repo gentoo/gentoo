@@ -28,6 +28,8 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch "${S}"/${P}/debian/patches
 	sed -i configure.ac -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
 
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580702
+
 	eautoreconf
 	multilib_copy_sources
 }
