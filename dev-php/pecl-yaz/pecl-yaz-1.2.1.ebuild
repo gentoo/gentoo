@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="yaz"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="README"
+DOCS=( README )
 
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP="php7-0 php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
@@ -23,4 +23,4 @@ IUSE=""
 DEPEND=">=dev-libs/yaz-3.0.2:0="
 RDEPEND="${DEPEND}"
 
-my_conf="--with-yaz=/usr"
+PHP_EXT_ECONF_ARGS="--with-yaz=/usr"
