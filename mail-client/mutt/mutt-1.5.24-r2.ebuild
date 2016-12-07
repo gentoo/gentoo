@@ -27,36 +27,36 @@ CDEPEND="
 		qdbm?  ( dev-db/qdbm )
 		!qdbm? (
 			gdbm?  ( sys-libs/gdbm )
-			!gdbm? ( berkdb? ( >=sys-libs/db-4 ) )
+			!gdbm? ( berkdb? ( >=sys-libs/db-4:= ) )
 		)
 	)
 	imap?    (
-		gnutls?  ( >=net-libs/gnutls-1.0.17 )
+		gnutls?  ( >=net-libs/gnutls-1.0.17:= )
 		!gnutls? (
 			ssl? (
-				!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-				libressl? ( dev-libs/libressl )
+				!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+				libressl? ( dev-libs/libressl:= )
 			)
 		)
 		sasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
 	kerberos? ( virtual/krb5 )
 	pop?     (
-		gnutls?  ( >=net-libs/gnutls-1.0.17 )
+		gnutls?  ( >=net-libs/gnutls-1.0.17:= )
 		!gnutls? (
 			ssl? (
-				!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-				libressl? ( dev-libs/libressl )
+				!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+				libressl? ( dev-libs/libressl:= )
 			)
 		)
 		sasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
 	smtp?     (
-		gnutls?  ( >=net-libs/gnutls-1.0.17 )
+		gnutls?  ( >=net-libs/gnutls-1.0.17:= )
 		!gnutls? (
 			ssl? (
-				!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-				libressl? ( dev-libs/libressl )
+				!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+				libressl? ( dev-libs/libressl:= )
 			)
 		)
 		sasl?    ( >=dev-libs/cyrus-sasl-2 )
@@ -64,11 +64,11 @@ CDEPEND="
 	idn?     ( net-dns/libidn )
 	gpg?     ( >=app-crypt/gpgme-0.9.0 <app-crypt/gpgme-1.8.0 )
 	smime?   (
-		!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	slang? ( sys-libs/slang )
-	!slang? ( >=sys-libs/ncurses-5.2:0 )
+	!slang? ( >=sys-libs/ncurses-5.2:0= )
 "
 DEPEND="${CDEPEND}
 	net-mail/mailbase
