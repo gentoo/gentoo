@@ -74,5 +74,10 @@ src_install() {
 	dosym eqn /usr/bin/geqn
 	dosym tbl /usr/bin/gtbl
 
-	use examples || rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	if ! use examples ; then
+		# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
+		rm -f "${ED}"/usr/share/doc/${PF}/pdf/mom-pdf.pdf
+		mv "${ED}"/usr/share/doc/${PF}/{examples/mom,pdf}/mom-pdf.pdf || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	fi
 }

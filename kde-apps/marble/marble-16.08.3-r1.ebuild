@@ -45,10 +45,7 @@ RDEPEND="
 		$(add_frameworks_dep kwallet)
 	)
 	phonon? ( media-libs/phonon[qt5] )
-	positioning? (
-		$(add_qt_dep qtlocation)
-		$(add_qt_dep qtpositioning)
-	)
+	positioning? ( $(add_qt_dep qtpositioning) )
 	shapefile? ( sci-libs/shapelib )
 	webkit? ( $(add_qt_dep qtwebkit) )
 "
@@ -57,7 +54,9 @@ DEPEND="${RDEPEND}
 "
 
 # bug 588320
-RESTRICT=test
+RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-deps.patch" )	# from 16.12 branch
 
 src_prepare() {
 	if use kde; then
@@ -72,7 +71,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package aprs Perl)
-		$(cmake-utils_use_find_package positioning Qt5Location)
 		$(cmake-utils_use_find_package positioning Qt5Positioning)
 		-DBUILD_MARBLE_TESTS=$(usex test)
 		-DWITH_DESIGNER_PLUGIN=$(usex designer)

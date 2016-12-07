@@ -84,7 +84,9 @@ src_install() {
 	dosym tbl /usr/bin/gtbl
 
 	if ! use examples ; then
-		rm -rf "${ED}"/usr/share/doc/${PF}/examples
+		# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
 		rm -f "${ED}"/usr/share/doc/${PF}/pdf/mom-pdf.pdf
+		mv "${ED}"/usr/share/doc/${PF}/{examples/mom,pdf}/mom-pdf.pdf || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/examples
 	fi
 }
