@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 DESCRIPTION="A Perl script that removes spam from POP3 mailboxes based on RBLs"
-HOMEPAGE="http://www.topfx.com/"
-SRC_URI="http://www.topfx.com/dist/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="https://fossies.org/linux/privat/old/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Artistic"
