@@ -18,9 +18,9 @@
 		<flag name="gsf">Enable support for ODT structures extraction via <pkg>gnome-extra/libgsf</pkg></flag>
 		<flag name="import-filter">Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote</flag>
 		<flag name="kdcraw">Enable support for KDE image manipulating interface via <pkg>kde-apps/libkdcraw</pkg></flag>
-		<flag name="kdepim">Enable support for KDEPIM resources integration</flag>
 		<flag name="marble">Enable displaying of maps using Marble</flag>
 		<flag name="okular">Enable bindings for <pkg>kde-apps/okular</pkg></flag>
+		<flag name="pim">Enable support for KDE PIM resources integration</flag>
 		<flag name="spacenav">Enable support for the 3Dconnexion spacenav input device via <pkg>dev-libs/libspnav</pkg></flag>
 		<flag name="vc">Enable support for <pkg>dev-libs/vc</pkg>, could be a significant speed boost on krita</flag>
 		<flag name="xbase">Enable support for xbase compatible database formats</flag>

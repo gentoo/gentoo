@@ -25,7 +25,7 @@ IUSE="+async +ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
-	>=dev-ml/lwt-2.4.4:=
+	>=dev-ml/lwt-2.4.4:=[camlp4(+)]
 	async? ( dev-ml/async_kernel:= )
 	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
 	xml? ( >=dev-ml/tyxml-4:= )

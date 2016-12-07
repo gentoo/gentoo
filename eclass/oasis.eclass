@@ -86,10 +86,9 @@ oasis_src_configure() {
 	[ -n "${OASIS_BUILD_TESTS}" ] && confargs="${confargs} $(use_enable test tests)"
 	[ -n "${OASIS_NO_DEBUG}"    ] || confargs="${confargs} $(oasis_use_enable debug debug)"
 	${OASIS_SETUP_COMMAND:-ocaml setup.ml} -configure \
-		--prefix "${EPREFIX}/usr" \
-		--libdir "${EPREFIX}/usr/$(get_libdir)" \
-		--docdir "${EPREFIX}${OASIS_DOC_DIR}" \
-		--destdir "${D}" \
+		--prefix "${ED}/usr" \
+		--libdir "${ED}/usr/$(get_libdir)" \
+		--docdir "${ED}${OASIS_DOC_DIR}" \
 		$(oasis_use_enable ocamlopt is_native) \
 		${confargs} \
 		${oasis_configure_opts} \

@@ -25,7 +25,7 @@ IUSE="debug doc dbm +ocamlopt +sqlite zlib postgres"
 REQUIRED_USE="|| ( sqlite dbm postgres )"
 RESTRICT="strip installsources"
 
-DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
+DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl,camlp4(+)]
 		>=dev-ml/react-0.9.3:=
 		zlib? ( >=dev-ml/camlzip-1.03-r1:= )
 		dev-ml/cryptokit:=
@@ -34,7 +34,7 @@ DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
 		>=dev-ml/tyxml-4:=[camlp4(+)]
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
 		dev-ml/ocaml-ipaddr:=
-		postgres? ( dev-ml/pgocaml:= )
+		postgres? ( dev-ml/pgocaml:=[camlp4(+)] )
 		dbm? ( dev-ml/camldbm:= )
 		sqlite? ( dev-ml/ocaml-sqlite3:= )"
 RDEPEND="${DEPEND}"

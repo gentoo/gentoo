@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="kdepim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
+		<flag name="pim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://forge.ocamlcore.org/frs/download.php/1597/${P}.tgz"
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="camlp4 doc"
+IUSE="+camlp4 doc"
 
 DEPEND="dev-ml/calendar:=
 	dev-ml/csv:=
