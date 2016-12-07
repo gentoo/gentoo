@@ -101,7 +101,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	okular? ( >=kde-apps/okular-4.4:4=[aqua=] )
 	opengl? (
-		media-libs/glew
+		media-libs/glew:0
 		virtual/glu
 	)
 	openexr? ( media-libs/openexr )
