@@ -15,8 +15,8 @@ app-accessibility/festival-it:mbrola - Adds support for mbrola voices
 app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/orca:braille - Enable braille support
-app-accessibility/simon:kdepim - Use kde-apps/kdepimlibs
 app-accessibility/simon:opencv - Use media-libs/opencv
+app-accessibility/simon:pim - Use kde-apps/kdepimlibs
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
@@ -944,9 +944,9 @@ app-office/calligra:glib - Enable support for C library routines from dev-libs/g
 app-office/calligra:gsf - Enable support for ODT structures extraction via gnome-extra/libgsf
 app-office/calligra:import-filter - Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote
 app-office/calligra:kdcraw - Enable support for KDE image manipulating interface via kde-apps/libkdcraw
-app-office/calligra:kdepim - Enable support for KDEPIM resources integration
 app-office/calligra:marble - Enable displaying of maps using Marble
 app-office/calligra:okular - Enable bindings for kde-apps/okular
+app-office/calligra:pim - Enable support for KDE PIM resources integration
 app-office/calligra:spacenav - Enable support for the 3Dconnexion spacenav input device via dev-libs/libspnav
 app-office/calligra:vc - Enable support for dev-libs/vc, could be a significant speed boost on krita
 app-office/calligra:xbase - Enable support for xbase compatible database formats
@@ -2150,6 +2150,7 @@ dev-ml/js_of_ocaml:react - Enable functionnal reactive programming support.
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
+dev-ml/lwt:camlp4 - Enable camlp4 syntax extension
 dev-ml/lwt:ppx - Enables the ppx syntax extension
 dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive programming (signals, events, etc.).
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
@@ -3317,7 +3318,7 @@ kde-base/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
-kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
+kde-base/plasma-workspace:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
 kde-frameworks/kconfigwidgets:man - Build and install man pages
@@ -3363,8 +3364,8 @@ kde-plasma/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-
 kde-plasma/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
 kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
-kde-plasma/kdeplasma-addons:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
+kde-plasma/kdeplasma-addons:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt SLOT 5
 kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
@@ -3379,7 +3380,7 @@ kde-plasma/kwin:gles - Enable support for GLES
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
-kde-plasma/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
+kde-plasma/libplasmaclock:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
