@@ -34,7 +34,7 @@ DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl,camlp4(+)]
 		>=dev-ml/tyxml-4:=[camlp4(+)]
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
 		dev-ml/ocaml-ipaddr:=
-		postgres? ( dev-ml/pgocaml:= )
+		postgres? ( dev-ml/pgocaml:=[camlp4(+)] )
 		dbm? ( dev-ml/camldbm:= )
 		sqlite? ( dev-ml/ocaml-sqlite3:= )"
 RDEPEND="${DEPEND}"
