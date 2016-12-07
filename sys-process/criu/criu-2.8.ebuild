@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.8-automagic-libbsd.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-aarch64.patch
+	"${FILESDIR}"/${P}-sysmacros.patch #580454
 )
 
 criu_arch() {
