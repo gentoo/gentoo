@@ -53,9 +53,9 @@ RDEPEND="
 	$(add_kdeapps_dep plasma-runtime)
 	$(add_kdeapps_dep renamedlg-plugins)
 	$(add_kdeapps_dep solid-runtime)
-	$(add_kdebase_dep krunner)
 	$(add_kdebase_dep plasma-workspace)
 	kde-plasma/kcminit:4
+	kde-plasma/krunner:4
 	kde-plasma/ksmserver:4
 	kde-plasma/ksplash:4
 	kde-plasma/kstartupconfig:4
