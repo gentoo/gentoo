@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Open Firmware device tree compiler"
-HOMEPAGE="http://devicetree.org/Device_Tree_Compiler"
+HOMEPAGE="https://devicetree.org/ https://git.kernel.org/cgit/utils/dtc/dtc.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
