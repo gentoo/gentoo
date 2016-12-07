@@ -61,16 +61,23 @@ multilib_src_configure() {
 		emacs=/bin/false
 }
 
+_emake() {
+	emake \
+		EMACS=: ELISP="" \
+		$(multilib_is_native_abi || echo "PROG= ") \
+		"$@"
+}
+
 multilib_src_compile() {
-	emake EMACS=: $(multilib_is_native_abi || echo "PROG= ")
+	_emake
+}
+
+multilib_src_test() {
+	_emake check
 }
 
 multilib_src_install() {
-	emake \
-		DESTDIR="${D}" \
-		EMACS=: ELISP="" \
-		$(multilib_is_native_abi || echo "PROG= ") \
-		install
+	_emake DESTDIR="${D}" install
 
 	dosym libgpm.so.1 /usr/$(get_libdir)/libgpm.so
 	gen_usr_ldscript -a gpm
