@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-mysqld-rpath.patch"
 	"${FILESDIR}/${P}-scriptconsole.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-ffmpeg3.patch"
 )
 
 src_configure() {
