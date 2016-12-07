@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,10 @@ IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modpl
 	oss sid sndfile speex timidity tremor +unicode vorbis wavpack"
 
 RDEPEND=">=dev-libs/libltdl-2:0
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:0=[unicode?]
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
-	cache? ( >=sys-libs/db-4 )
+	cache? ( >=sys-libs/db-4:= )
 	curl? ( net-misc/curl )
 	ffmpeg? ( virtual/ffmpeg )
 	flac? ( media-libs/flac )
