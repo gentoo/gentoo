@@ -1,0 +1,27 @@
+Title: Ruby 2.0 removal; Ruby 2.1 default
+Author: Hans de Graaff <graaff@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-12-04
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <dev-lang/ruby-2.1
+
+Ruby MRI (Matz's Ruby Interpreter) 2.0 was retired by upstream in
+February 2016. [1] Following this, Ruby MRI 2.0 support will be
+removed from Gentoo. We recommend updating to the 'ruby21' target as
+soon as possible if you are still using 'ruby20'.
+
+Check the current setting via:
+
+	eselect ruby show
+
+Change the current setting to Ruby MRI 2.1 via:
+
+	eselect ruby set ruby21
+
+Packages can be reinstalled for ruby21 only by using the -N option of
+emerge:
+
+  emerge -uvDNq world
+
+[1] https://www.ruby-lang.org/en/news/2016/02/24/support-plan-of-ruby-2-0-0-and-2-1/
