@@ -29,6 +29,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 DOCS="AUTHORS ChangeLog NICETOHAVES README TODO"
