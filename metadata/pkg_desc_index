@@ -11742,7 +11742,6 @@ kde-apps/zeroconf-ioslave 16.04.3 16.08.3: A DNSSD (DNS Service Discovery - part
 kde-base/kactivities 4.13.3-r2: KDE Activity Manager
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
-kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
@@ -11941,6 +11940,7 @@ kde-plasma/kcminit 4.11.22: Runs startups initialization for KDE Plasma Control 
 kde-plasma/kde-cli-tools 5.7.5 5.8.3 5.8.4: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 2.2.1 5.7.5 5.8.3 5.8.4: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdebase-cursors 4.11.22: Oxygen cursors for KDE Plasma
+kde-plasma/kdebase-pam 10: pam.d files used by several KDE components
 kde-plasma/kdecoration 5.7.5 5.8.3 5.8.4: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 4.14.3-r1 5.7.5 5.8.3 5.8.4: Extra Plasma applets and engines
 kde-plasma/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
@@ -15440,7 +15440,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.8: A Bluetooth configuration tool
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 4.101-r9 5.39 5.43: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.39 5.43 5.43-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3 6.30.223.271-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
