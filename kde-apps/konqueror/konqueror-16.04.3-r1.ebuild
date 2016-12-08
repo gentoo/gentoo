@@ -21,7 +21,7 @@ RESTRICT="test"
 DEPEND="
 	$(add_kdeapps_dep libkonq)
 	filemanager? (
-		$(add_kdebase_dep kactivities '' 4.13)
+		kde-frameworks/kactivities:4
 		media-libs/phonon[qt4]
 		x11-libs/libXrender
 	)

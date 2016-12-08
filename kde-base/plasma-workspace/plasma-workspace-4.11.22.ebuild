@@ -22,7 +22,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 COMMONDEPEND="
 	dev-libs/libdbusmenu-qt
 	>=dev-qt/qtcore-4.8.4-r3:4
-	$(add_kdebase_dep kactivities)
+	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
 	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
