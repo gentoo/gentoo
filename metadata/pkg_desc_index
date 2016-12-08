@@ -508,7 +508,7 @@ app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
-app-crypt/coolkey 1.1.0-r6: Linux Driver support for the CoolKey and CAC products
+app-crypt/coolkey 1.1.0-r6 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.9 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/cryptkeeper 0.9.5: EncFS system tray applet for GNOME
 app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
@@ -13313,7 +13313,7 @@ media-radio/ibp 0.21: Shows currently transmitting beacons of the International 
 media-radio/qrq 0.3.1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 8.2.12 9.1.5 9.1.6 9.1.7 9.1.8: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
-media-radio/tlf 1.2.2 1.2.3 1.2.4.1 1.2.4.3: Console-mode amateur radio contest logger
+media-radio/tlf 1.2.2 1.2.3 1.2.4.1 1.2.4.3 1.2.4.5: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.4.2 3.5.0 3.5.0-r1: A package of programs that fit together to form a morse code tutor program
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
