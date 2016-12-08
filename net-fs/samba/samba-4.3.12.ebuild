@@ -15,7 +15,7 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.3.9.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.3.12.tar.xz"
 [[ ${PV} = *_rc* ]] || \
 KEYWORDS="~amd64 ~hppa ~x86"
 
@@ -55,7 +55,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.3[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.7[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.25[${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.28[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/pam
 	acl? ( virtual/acl )
