@@ -123,6 +123,10 @@ src_install() {
 			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
 		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
+
+		# Rename the desktop file to boincmgr.desktop to (hot)fix bug 599910
+		mv "${ED%/}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
+			die "Failed to rename desktop file"
 	fi
 
 	# cleanup cruft
