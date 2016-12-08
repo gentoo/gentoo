@@ -11468,7 +11468,7 @@ kde-apps/dolphin-plugins 16.04.3 16.08.3: Extra Dolphin plugins
 kde-apps/dragon 16.04.3 16.08.3: A simple video player
 kde-apps/drkonqi 16.04.3: KDE crash handler, gives the user feedback if a program crashed
 kde-apps/eventviews 16.08.3: Calendar viewer for KDE PIM
-kde-apps/ffmpegthumbs 15.08.3 16.04.3 16.08.3: FFmpeg based thumbnail generator for video files
+kde-apps/ffmpegthumbs 16.04.3 16.08.3: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 16.04.3 16.08.3: Visualise disk usage with interactive map of concentric, segmented rings
 kde-apps/gpgmepp 4.14.11_pre20160211 16.04.3 16.08.3: C++ bindings for gpgme
 kde-apps/granatier 16.04.3 16.08.3: KDE Bomberman game
@@ -12396,7 +12396,7 @@ media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1: A 3D model slicing engine for 3
 media-gfx/darktable 1.6.9 2.0.6 2.0.7 2.2.0_rc2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0 9.27.0: Command-line decoder for raw digital photos
-media-gfx/digikam 4.4.0-r1 4.14.0-r1 5.3.0: Digital photo management application
+media-gfx/digikam 5.3.0: Digital photo management application
 media-gfx/displaycal 3.1.6.0 3.2.1.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
