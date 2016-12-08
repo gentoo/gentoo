@@ -124,7 +124,7 @@ COMMON_DEPEND="
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
-	collectd_plugins_xencpu?		( app-emulation/xen-tools )
+	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
 
 	kernel_FreeBSD? (
 		collectd_plugins_disk?		( sys-libs/libstatgrab:= )
