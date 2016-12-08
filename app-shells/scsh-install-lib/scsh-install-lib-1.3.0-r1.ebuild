@@ -12,7 +12,7 @@ SRC_URI="http://lamp.epfl.ch/~schinz/scsh_packages/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=app-shells/scsh-0.6.6"
