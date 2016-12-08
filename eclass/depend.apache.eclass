@@ -238,6 +238,23 @@ want_apache2_2() {
 	RDEPEND="${RDEPEND} ${myiuse}? ( ${APACHE2_2_DEPEND} )"
 }
 
+# @FUNCTION: want_apache2_4
+# @USAGE: [myiuse]
+# @DESCRIPTION:
+# An ebuild calls this to get the dependency information for optional
+# apache-2.4.x support. If the myiuse parameter is not given it defaults to
+# apache2.
+# An ebuild should additionally call depend.apache_pkg_setup() in pkg_setup()
+# with the same myiuse parameter.
+want_apache2_4() {
+	debug-print-function $FUNCNAME $*
+
+	local myiuse=${1:-apache2}
+	IUSE="${IUSE} ${myiuse}"
+	DEPEND="${DEPEND} ${myiuse}? ( ${APACHE2_4_DEPEND} )"
+	RDEPEND="${RDEPEND} ${myiuse}? ( ${APACHE2_4_DEPEND} )"
+}
+
 # @FUNCTION: need_apache
 # @DESCRIPTION:
 # An ebuild calls this to get the dependency information for apache.
