@@ -29,8 +29,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	# Bug 573802
-	emake -j1
+	emake
 
 	if multilib_is_native_abi; then
 		use doc && emake -C doc docs
