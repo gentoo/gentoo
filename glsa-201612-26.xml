@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-26">
+  <title>OpenJPEG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenJPEG, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">openjpeg</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>560632</bug>
+  <bug>572430</bug>
+  <bug>577608</bug>
+  <bug>594740</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/openjpeg" auto="yes" arch="*">
+      <unaffected range="ge">2.1.1_p20160922</unaffected>
+      <unaffected range="rge">1.5.2</unaffected>
+      <vulnerable range="lt">2.1.1_p20160922</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenJPEG is an open-source JPEG 2000 library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenJPEG. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted JPEG
+      file, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition. Furthermore, a remote attacker may be able to obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenJPEG 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-libs/openjpeg-2.1.1_p20160922:2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8871">CVE-2015-8871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1923">CVE-2016-1923</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1924">CVE-2016-1924</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3181">CVE-2016-3181</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3182">CVE-2016-3182</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3183">CVE-2016-3183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7445">CVE-2016-7445</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Dec 2016 23:52:17 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:55:57 +0000">whissi</metadata>
+</glsa>
