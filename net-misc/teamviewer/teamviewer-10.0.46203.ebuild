@@ -22,9 +22,7 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	system-wine? ( app-emulation/wine[abi_x86_32(-),png] )
-	!system-wine? ( media-libs/libpng:1.2[abi_x86_32(-)] )
-	sys-apps/dbus[abi_x86_32(-)]
+	system-wine? ( app-emulation/wine[abi_x86_32(-)] )
 	dev-qt/qtcore:4[abi_x86_32(-)]
 	dev-qt/qtgui:4[abi_x86_32(-)]
 	dev-qt/qtwebkit:4[abi_x86_32(-)]
