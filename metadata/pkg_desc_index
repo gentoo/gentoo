@@ -11739,7 +11739,6 @@ kde-apps/syndication 16.08.3: Library for parsing RSS and Atom feeds
 kde-apps/thumbnailers 16.04.3 16.08.3: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 16.04.3 16.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-base/kactivities 4.13.3-r2: KDE Activity Manager
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
@@ -11756,7 +11755,7 @@ kde-frameworks/breeze-icons 5.26.0 5.28.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.28.0: Breeze SVG icon theme binary resource
 kde-frameworks/extra-cmake-modules 5.26.0 5.28.0: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.26.0 5.28.0: Framework for integrating Qt applications with KDE workspaces
-kde-frameworks/kactivities 5.26.0 5.28.0: Framework for working with KDE activities
+kde-frameworks/kactivities 4.13.3-r2 5.26.0 5.28.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.26.0 5.28.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.26.0 5.28.0: Framework for building KDE API documentation in a standard format and style
 kde-frameworks/karchive 5.26.0 5.28.0: Framework for reading, creation, and manipulation of various archive formats
@@ -11907,7 +11906,7 @@ kde-misc/plasma-widget-menubar 0.2.0: A Plasma widget to display menubar of appl
 kde-misc/plasma-widget-message-indicator 0.5.8: Plasmoid for displaying Ayatana indications
 kde-misc/plasma-wifi 0.5-r1: KDE4 plasmoid. Displays the currect signal strength
 kde-misc/plasmatvgr 0.47: KDE4 plasmoid which shows greek TV program
-kde-misc/plasmoid-workflow 0.4.1: Plasmoid that integrates Activities, Virtual Desktops and Tasks Functionalities in one component
+kde-misc/plasmoid-workflow 0.4.1: Integrates Activities, Virtual Desktops and Tasks in one component
 kde-misc/pyrad 0.6.2-r1 0.7.1: A wheel type command interface for KDE, heavily inspired by Kommando
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/quickaccess 0.8.2-r1: KDE4 plasmoid. Designed for the panel, provides quick access to the most used folders
