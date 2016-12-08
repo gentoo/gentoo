@@ -48,7 +48,8 @@ src_prepare() {
 	#!/bin/sh
 	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
-	chmod a+rx configure
+	# Patches to original configure might have lost the +x bit.
+	chmod a+rx configure{,.wrapped}
 }
 
 multilib_src_configure() {
