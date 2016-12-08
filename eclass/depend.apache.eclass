@@ -176,21 +176,28 @@ depend.apache_pkg_setup() {
 	fi
 
 	local myiuse=${1:-apache2}
-	if has ${myiuse} ${IUSE}; then
-		if use ${myiuse}; then
-			case ${EAPI:-0} in
-				0|2|3|4|5)
+
+	case ${EAPI:-0} in
+		0|2|3|4|5)
+			if has ${myiuse} ${IUSE}; then
+				if use ${myiuse}; then
 					_init_apache2
-					;;
-				*)
+				else
+					_init_no_apache
+				fi
+			fi
+			;;
+		*)
+			if in_iuse ${myiuse}; then
+				if use ${myiuse}; then
 					_init_apache2
 					_init_apache2_late
-					;;
-			esac
-		else
-			_init_no_apache
-		fi
-	fi
+				else
+					_init_no_apache
+				fi
+			fi
+			;;
+	esac
 }
 
 # @FUNCTION: want_apache
