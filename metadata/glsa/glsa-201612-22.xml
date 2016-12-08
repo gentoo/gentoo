@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-22">
+  <title>Coreutils: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Coreutils could lead to the execution of
+    arbitrary code or a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">coreutils</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>530514</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/coreutils" auto="yes" arch="*">
+      <unaffected range="ge">8.23</unaffected>
+      <vulnerable range="lt">8.23</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Core Utilities are the basic file, shell and text manipulation
+      utilities of the GNU operating system.
+    </p>
+  </background>
+  <description>
+    <p>A memory corruption flaw in GNU Coreutils’ parse_datetime function was
+      reported. Applications using parse_datetime(), such as touch or date, may
+      accepted untrusted input.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Coreutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/coreutils-8.23"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9471">CVE-2014-9471</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 27 Nov 2016 06:48:53 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:11:59 +0000">whissi</metadata>
+</glsa>
