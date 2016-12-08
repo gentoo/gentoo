@@ -142,6 +142,10 @@ PDEPEND=">=app-office/calligra-l10n-${LANGVERSION}"
 # bug 394273
 RESTRICT=test
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.1-no-arch-detection.patch
+)
+
 pkg_pretend() {
 	check-reqs_pkg_pretend
 }
