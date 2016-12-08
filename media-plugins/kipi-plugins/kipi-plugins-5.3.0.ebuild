@@ -12,7 +12,7 @@ DESCRIPTION="Plugins for the KDE Image Plugin Interface"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_kdeapps_dep libkipi '' '' '5=')
+	$(add_kdeapps_dep libkipi '' '16.08.3-r1' '5=')
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
