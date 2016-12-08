@@ -4,12 +4,12 @@
 
 EAPI=6
 
-KDE_GCC_MINIMAL="4.9"
+KDE_GCC_MINIMAL="5.1"
 inherit kde5
 
 DESCRIPTION="Folder synchronization and backup tool based on KDE Frameworks"
 HOMEPAGE="https://www.linux-apps.com/p/1127677/"
-SRC_URI="https://dl.opendesktop.org/api/files/download/id/1480345326/${P}.tar.xz"
+SRC_URI="https://dl.opendesktop.org/api/files/download/id/1480515062/${P}.tar.xz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -25,6 +25,7 @@ RDEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
+	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
