@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug gles opengl wayland"
 
 COMMONDEPEND="
-	$(add_kdebase_dep kactivities)
+	kde-frameworks/kactivities:4
 	$(add_kdebase_dep kdelibs opengl)
 	kde-plasma/kephal:4
 	kde-plasma/libkworkspace:4

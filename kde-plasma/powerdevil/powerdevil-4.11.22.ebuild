@@ -13,7 +13,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug +pm-utils"
 
 DEPEND="
-	$(add_kdebase_dep kactivities)
+	kde-frameworks/kactivities:4
 	kde-plasma/libkworkspace:4
 	!aqua? (
 		x11-libs/libX11
