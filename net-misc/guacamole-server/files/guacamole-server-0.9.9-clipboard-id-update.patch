@@ -1,0 +1,104 @@
+--- guacamole-server-0.9.5/src/protocols/rdp/rdp_cliprdr.c.orig	2015-03-17 12:39:58.316549546 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/rdp_cliprdr.c	2015-03-17 12:40:57.059229957 +0000
+@@ -104,8 +104,8 @@ void guac_rdp_process_cb_monitor_ready(g
+ 
+     /* Respond with supported format list */
+     format_list->formats = (UINT32*) malloc(sizeof(UINT32)*2);
+-    format_list->formats[0] = CB_FORMAT_TEXT;
+-    format_list->formats[1] = CB_FORMAT_UNICODETEXT;
++    format_list->formats[0] = CF_TEXT;
++    format_list->formats[1] = CF_UNICODETEXT;
+     format_list->num_formats = 2;
+ 
+     freerdp_channels_send_event(channels, (wMessage*) format_list);
+@@ -147,22 +147,22 @@ void guac_rdp_process_cb_format_list(gua
+     for (i=0; i<event->num_formats; i++) {
+ 
+         /* If plain text available, request it */
+-        if (event->formats[i] == CB_FORMAT_TEXT)
++        if (event->formats[i] == CF_TEXT)
+             formats |= GUAC_RDP_CLIPBOARD_FORMAT_CP1252;
+-        else if (event->formats[i] == CB_FORMAT_UNICODETEXT)
++        else if (event->formats[i] == CF_UNICODETEXT)
+             formats |= GUAC_RDP_CLIPBOARD_FORMAT_UTF16;
+ 
+     }
+ 
+     /* Prefer Unicode to plain text */
+     if (formats & GUAC_RDP_CLIPBOARD_FORMAT_UTF16) {
+-        __guac_rdp_cb_request_format(client, CB_FORMAT_UNICODETEXT);
++        __guac_rdp_cb_request_format(client, CF_UNICODETEXT);
+         return;
+     }
+ 
+     /* Use plain text if Unicode unavailable */
+     if (formats & GUAC_RDP_CLIPBOARD_FORMAT_CP1252) {
+-        __guac_rdp_cb_request_format(client, CB_FORMAT_TEXT);
++        __guac_rdp_cb_request_format(client, CF_TEXT);
+         return;
+     }
+ 
+@@ -186,11 +186,11 @@ void guac_rdp_process_cb_data_request(gu
+     /* Determine output encoding */
+     switch (event->format) {
+ 
+-        case CB_FORMAT_TEXT:
++        case CF_TEXT:
+             writer = GUAC_WRITE_CP1252;
+             break;
+ 
+-        case CB_FORMAT_UNICODETEXT:
++        case CF_UNICODETEXT:
+             writer = GUAC_WRITE_UTF16;
+             break;
+ 
+@@ -232,12 +232,12 @@ void guac_rdp_process_cb_data_response(g
+     switch (client_data->requested_clipboard_format) {
+ 
+         /* Non-Unicode */
+-        case CB_FORMAT_TEXT:
++        case CF_TEXT:
+             reader = GUAC_READ_CP1252;
+             break;
+ 
+         /* Unicode (UTF-16) */
+-        case CB_FORMAT_UNICODETEXT:
++        case CF_UNICODETEXT:
+             reader = GUAC_READ_UTF16;
+             break;
+ 
+--- guacamole-server-0.9.5/src/protocols/rdp/client.c.orig	2015-03-17 12:40:07.079651048 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/client.c	2015-03-17 12:40:57.064230015 +0000
+@@ -722,7 +722,7 @@ int guac_client_init(guac_client* client
+     guac_client_data->rdp_inst = rdp_inst;
+     guac_client_data->mouse_button_mask = 0;
+     guac_client_data->clipboard = guac_common_clipboard_alloc(GUAC_RDP_CLIPBOARD_MAX_LENGTH);
+-    guac_client_data->requested_clipboard_format = CB_FORMAT_TEXT;
++    guac_client_data->requested_clipboard_format = CF_TEXT;
+     guac_client_data->audio = NULL;
+     guac_client_data->filesystem = NULL;
+     guac_client_data->available_svc = guac_common_list_alloc();
+--- guacamole-server-0.9.5/src/protocols/rdp/rdp_stream.c.orig	2015-03-17 12:40:13.952730659 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/rdp_stream.c	2015-03-17 12:40:57.066230038 +0000
+@@ -289,8 +289,8 @@ int guac_rdp_clipboard_end_handler(guac_
+ 
+     /* Notify server that text data is now available */
+     format_list->formats = (UINT32*) malloc(sizeof(UINT32));
+-    format_list->formats[0] = CB_FORMAT_TEXT;
+-    format_list->formats[1] = CB_FORMAT_UNICODETEXT;
++    format_list->formats[0] = CF_TEXT;
++    format_list->formats[1] = CF_UNICODETEXT;
+     format_list->num_formats = 2;
+ 
+     freerdp_channels_send_event(channels, (wMessage*) format_list);
+--- guacamole-server-0.9.5/src/protocols/rdp/client.h.orig	2015-03-17 12:40:22.535830076 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/client.h	2015-03-17 12:40:57.067230050 +0000
+@@ -143,7 +143,7 @@ typedef struct rdp_guac_client_data {
+      * The format of the clipboard which was requested. Data received from
+      * the RDP server should conform to this format. This will be one of
+      * several legal clipboard format values defined within FreeRDP, such as
+-     * CB_FORMAT_TEXT.
++     * CF_TEXT.
+      */
+     int requested_clipboard_format;
+ 
