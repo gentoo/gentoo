@@ -3631,6 +3631,7 @@ mail-mta/ssmtp:mta - Install symlinks for sendmail-compatible MTA.
 mate-base/caja:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
 mate-base/caja:packagekit - Enable support for installing via app-admin/packagekit based on mimetype
+mate-base/caja:unique - Enable single instance support using dev-libs/libunique.
 mate-base/libmatekbd:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate:base - Install base MATE Desktop applications that are recommended for the most common usage; for example, this installs the file manager. Disable this and other USE flags if you want a more minimal MATE Desktop.
 mate-base/mate:extras - Install additional MATE Desktop applications that are recommended for extended usage of the MATE Desktop as upstream sees it; for example, this installs MATE Desktop's office related applications. Disable this if you plan to use your own non-MATE Desktop alternatives or a custom mixture of MATE and non-MATE packages.
