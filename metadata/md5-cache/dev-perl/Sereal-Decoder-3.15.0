@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-XSLoader >=virtual/perl-ExtUtils-MakeMaker-7.0 >=virtual/perl-ExtUtils-ParseXS-2.210.0 virtual/perl-File-Path test? ( virtual/perl-Data-Dumper virtual/perl-File-Spec virtual/perl-Scalar-List-Utils dev-perl/Test-LongString >=virtual/perl-Test-Simple-0.880.0 dev-perl/Test-Warn ) dev-lang/perl:=
+DESCRIPTION=Fast, compact, powerful binary deserialization
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Sereal-Decoder/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/Y/YV/YVES/Sereal-Decoder-3.015.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=c0b083b8b02011464f9eea44bf5e87e2
