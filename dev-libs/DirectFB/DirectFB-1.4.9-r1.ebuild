@@ -25,9 +25,9 @@ IUSE_INPUT_DEVICES=" dynapro elo2300 evdev joystick keyboard lirc mouse mutouch 
 IUD=${IUSE_INPUT_DEVICES// / input_devices_}
 
 DESCRIPTION="Thin library on top of the Linux framebuffer devices"
-HOMEPAGE="http://www.directfb.org/"
-SRC_URI="http://directfb.org/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
-	http://directfb.org/downloads/Old/${P}.tar.gz"
+HOMEPAGE="http://www.directfb.net/"
+SRC_URI="http://directfb.net/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
+	http://directfb.net/downloads/Old/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
