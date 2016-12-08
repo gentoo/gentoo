@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils
+inherit eutils multilib-minimal
 
 DESCRIPTION="Library for manipulating Unicode strings and C strings according to the Unicode standard"
 HOMEPAGE="https://www.gnu.org/software/libunistring/"
@@ -15,20 +15,26 @@ SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="doc static-libs"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-nodocs.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-nodocs.patch
+)
 
-src_configure() {
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" \
 	econf $(use_enable static-libs static)
 }
 
-src_install() {
+multilib_src_install() {
 	default
+
+	prune_libtool_files
+}
+
+multilib_src_install_all() {
+	default
+
 	if use doc; then
 		dohtml doc/*.html
 		doinfo doc/*.info
 	fi
-
-	prune_libtool_files
 }

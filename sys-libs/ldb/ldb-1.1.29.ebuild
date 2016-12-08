@@ -15,17 +15,17 @@ SRC_URI="http://www.samba.org/ftp/pub/${PN}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc"
+IUSE="doc +ldap"
 
 RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.8[python,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.29[python(+),${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.10[python,${MULTILIB_USEDEP}]
-	net-nds/openldap
+	>=sys-libs/tevent-0.9.31[python(+),${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.12[python,${MULTILIB_USEDEP}]
 	!!<net-fs/samba-3.6.0[ldb]
 	!!>=net-fs/samba-4.0.0[ldb]
 	${PYTHON_DEPS}
+	ldap? ( net-nds/openldap )
 	"
 
 DEPEND="dev-libs/libxslt
@@ -40,7 +40,7 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pyldb.h )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.24-optional-python.patch
+	"${FILESDIR}"/${PN}-1.1.27-optional_packages.patch
 )
 
 pkg_setup() {
@@ -54,6 +54,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		$(usex ldap '' --disable-ldap) \
 		--disable-rpath \
 		--disable-rpath-install --bundled-libraries=NONE \
 		--with-modulesdir="${EPREFIX}"/usr/$(get_libdir)/samba \
