@@ -146,10 +146,6 @@ pkg_setup() {
 	#bug 522642, disable compile tools/tests
 	export "CONFIG_TESTS=n"
 
-	if has_version dev-libs/libgcrypt:0; then
-		export "CONFIG_GCRYPT=y"
-	fi
-
 	if [[ -z ${XEN_TARGET_ARCH} ]] ; then
 		if use x86 && use amd64; then
 			die "Confusion! Both x86 and amd64 are set in your use flags!"
