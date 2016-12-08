@@ -28,6 +28,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 RDEPEND="${COMMON_DEPEND}
+	!dev-python/pydiff
 	app-text/iso-codes
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	dev-python/diff-match-patch[${PYTHON_USEDEP}]
