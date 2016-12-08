@@ -4947,7 +4947,7 @@ dev-libs/pkcs11-helper 1.11 1.11-r1: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4 1.4.6_p4-r1 1.7.6: C++ class libraries for building network- and internet-based applications
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r1 1.16-r2: Parse Options - Command line parser
-dev-libs/ppl 0.12.1-r1 1.1: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
+dev-libs/ppl 0.12.1-r1 1.1 1.2: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
 dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3_p1: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
