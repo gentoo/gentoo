@@ -40,17 +40,11 @@
 # }
 # @CODE
 
-inherit multilib
-
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
+	0|2|3|4|5)
+		inherit multilib
 		;;
 	6)
-		ewarn
-		ewarn "EAPI=${EAPI} is not supported by depend.apache.eclass."
-		ewarn "This means that ${CATEGORY}/${PF} is most likely buggy."
-		ewarn "Please file a report on https://bugs.gentoo.org/"
-		ewarn
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
@@ -84,7 +78,8 @@ esac
 # @ECLASS-VARIABLE: APACHE_BASEDIR
 # @DESCRIPTION:
 # Path to the server root directory.
-# This variable is set by the want/need_apache functions.
+# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_CONFDIR
 # @DESCRIPTION:
@@ -104,7 +99,8 @@ esac
 # @ECLASS-VARIABLE: APACHE_MODULESDIR
 # @DESCRIPTION:
 # Path where we install modules.
-# This variable is set by the want/need_apache functions.
+# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_DEPEND
 # @DESCRIPTION:
@@ -141,10 +137,19 @@ _init_apache2() {
 	APACHE_BIN="/usr/sbin/apache2"
 	APACHE_CTL="/usr/sbin/apache2ctl"
 	APACHE_INCLUDEDIR="/usr/include/apache2"
-	APACHE_BASEDIR="/usr/$(get_libdir)/apache2"
 	APACHE_CONFDIR="/etc/apache2"
 	APACHE_MODULES_CONFDIR="${APACHE_CONFDIR}/modules.d"
 	APACHE_VHOSTS_CONFDIR="${APACHE_CONFDIR}/vhosts.d"
+
+	case ${EAPI:-0} in
+		0|2|3|4|5)
+			_init_apache2_late
+			;;
+	esac
+}
+
+_init_apache2_late() {
+	APACHE_BASEDIR="/usr/$(get_libdir)/apache2"
 	APACHE_MODULESDIR="${APACHE_BASEDIR}/modules"
 }
 
@@ -173,7 +178,15 @@ depend.apache_pkg_setup() {
 	local myiuse=${1:-apache2}
 	if has ${myiuse} ${IUSE}; then
 		if use ${myiuse}; then
-			_init_apache2
+			case ${EAPI:-0} in
+				0|2|3|4|5)
+					_init_apache2
+					;;
+				*)
+					_init_apache2
+					_init_apache2_late
+					;;
+			esac
 		else
 			_init_no_apache
 		fi
