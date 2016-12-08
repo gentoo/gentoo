@@ -447,7 +447,7 @@ sci-geosciences/googleearth
 # Breaks samba's nmbd process (bug #592502)
 # Masked the possible fixed samba version until more testing has been performed.
 >=sys-libs/tevent-0.9.30
->=net-fs/samba-4.5.0-r1
+>=sys-libs/ldb-1.1.29
 
 # Ian Stakenvicius <axs@gentoo.org> (31 Aug 2016)
 # Mask old versions of thunderbird as they are no longer supported,
