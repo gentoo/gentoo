@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Class-Trigger dev-perl/Email-LocalDelivery dev-perl/Email-Simple dev-perl/IPC-Run >=virtual/perl-ExtUtils-MakeMaker-6.300.0 test? ( virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Simple filtering of RFC2822 message format and headers
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Email-Filter/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Trigger dev-perl/Email-LocalDelivery dev-perl/Email-Simple dev-perl/IPC-Run dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Filter-1.034.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=8fe7c6b822fbacda4264cb7dc88ddc7e
