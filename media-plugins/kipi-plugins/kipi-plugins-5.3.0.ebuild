@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_kdeapps_dep libkipi '' '' '5=')
+	$(add_kdeapps_dep libkipi '' '16.08.3-r1' '5=')
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
