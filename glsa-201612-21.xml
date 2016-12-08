@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-21">
+  <title>SQLite: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in SQLite, the worst of which
+    may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">sqlite</product>
+  <announced>December 08, 2016</announced>
+  <revised>December 08, 2016: 1</revised>
+  <bug>549258</bug>
+  <bug>574420</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/sqlite" auto="yes" arch="*">
+      <unaffected range="ge">3.11.1</unaffected>
+      <vulnerable range="lt">3.11.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SQLite is a C library that implements an SQL database engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SQLite. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sqlite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/sqlite-3.11.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7036">
+      CVE-2015-7036
+    </uri>
+    <uri link="http://blog.fuzzing-project.org/10-Two-invalid-read-errors-heap-overflows-in-SQLite-TFPA-0062015.html">
+      Two invalid read errors / heap overflows in SQLite (TFPA 006/2015)
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 29 Nov 2016 20:57:30 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Thu, 08 Dec 2016 13:10:39 +0000">whissi</metadata>
+</glsa>
