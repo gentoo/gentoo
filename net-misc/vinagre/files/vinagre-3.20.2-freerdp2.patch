@@ -1,0 +1,39 @@
+From 8d072483ffff3a4e752c35811fb562f61d206f68 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Fri, 22 Apr 2016 14:54:09 -0700
+Subject: [PATCH] handle new freerdp pkgconfig name
+
+freerdp has now changed its pkgconfig name to 'freerdp2' -
+https://github.com/FreeRDP/FreeRDP/commit/6fa36081 . Assuming
+we can build against both 1 and 2, we should handle both names.
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 585c016..362951d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,6 +59,7 @@ AM_CONDITIONAL([VINAGRE_ENABLE_SSH], [test "x$have_ssh" = "xyes"])
+ 
+ # Whether to enable support for RDP.
+ RDP_DEPS="freerdp x11"
++RDP_2_DEPS="freerdp2 x11"
+ AC_ARG_ENABLE([rdp],
+   [AS_HELP_STRING([--disable-rdp],
+     [Disable Remote Desktop Protocol (RDP) support])])
+@@ -68,7 +69,10 @@ AS_IF([test "x$enable_rdp" != "xno"],
+     [have_rdp=yes
+      PKG_CHECK_EXISTS(freerdp >= 1.1,
+        [AC_DEFINE([HAVE_FREERDP_1_1], [1], [FreeRDP is of version 1.1 or newer])], [])],
+-    [have_rdp=no])],
++    [PKG_CHECK_EXISTS([$RDP_2_DEPS],
++       [have_rdp=yes
++        RDP_DEPS=$RDP_2_DEPS
++        AC_DEFINE([HAVE_FREERDP_1_1], [1], [FreeRDP is of version 1.1 or newer])], [have_rdp=no])])],
+   [have_rdp=no])
+ 
+ AS_IF([test "x$have_rdp" = "xyes"],
+-- 
+2.7.3
+
