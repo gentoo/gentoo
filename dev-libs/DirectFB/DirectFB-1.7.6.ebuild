@@ -77,7 +77,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.6.3-setregion.patch \
 		"${FILESDIR}"/${PN}-1.6.3-atomic-fix-compiler-error-when-building-for-thumb2.patch \
 		"${FILESDIR}"/${PN}-1.7.6-cle266.patch \
-		"${FILESDIR}"/${PN}-1.7.6-idivine.patch
+		"${FILESDIR}"/${PN}-1.7.6-idivine.patch \
+		"${FILESDIR}"/${PN}-1.7.6-tslib.patch
 	sed -i \
 		-e '/#define RASPBERRY_PI/d' \
 		systems/egl/egl_system.c || die #497124
