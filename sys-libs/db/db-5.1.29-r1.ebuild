@@ -125,7 +125,7 @@ src_configure() {
 	# Bug #270851: test needs TCL support
 	if use tcl || use test ; then
 		myconf="${myconf} --enable-tcl"
-		myconf="${myconf} --with-tcl=/usr/$(get_libdir)"
+		myconf="${myconf} --with-tcl=${EPREFIX}/usr/$(get_libdir)"
 	else
 		myconf="${myconf} --disable-tcl"
 	fi

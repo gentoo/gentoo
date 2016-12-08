@@ -92,7 +92,7 @@ src_compile() {
 	myconf="${myconf} $(use_enable cxx)"
 
 	use tcl \
-		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/$(get_libdir)" \
+		&& myconf="${myconf} --enable-tcl --with-tcl=${EPREFIX}/usr/$(get_libdir)" \
 		|| myconf="${myconf} --disable-tcl"
 
 	myconf="${myconf} $(use_enable java)"
