@@ -37,7 +37,7 @@ LICENSE="GPL-2"
 SLOT="4"
 
 if [[ ${KDE_BUILD_TYPE} == release ]] ; then
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 IUSE="attica color-management +crypt +eigen +exif fftw +fontconfig freetds
@@ -141,6 +141,8 @@ PDEPEND=">=app-office/calligra-l10n-${LANGVERSION}"
 
 # bug 394273
 RESTRICT=test
+
+PATCHES=( "${FILESDIR}"/${PN}-2.9.1-no-arch-detection.patch )
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
