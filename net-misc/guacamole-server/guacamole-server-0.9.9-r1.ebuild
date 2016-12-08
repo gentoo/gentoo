@@ -42,7 +42,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clipboard-id-update.patch
 )
 
-
 src_configure() {
 	local myconf="--without-terminal --without-pango"
 
