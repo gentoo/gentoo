@@ -48,3 +48,4 @@ move media-libs/prison kde-frameworks/prison
 move kde-base/klipper kde-plasma/klipper
 move kde-base/ksmserver kde-plasma/ksmserver
 move kde-base/krunner kde-plasma/krunner
+move kde-base/kdebase-pam kde-plasma/kdebase-pam

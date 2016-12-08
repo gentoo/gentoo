@@ -16,7 +16,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	pam? ( || (
-		>=kde-base/kdebase-pam-7
+		kde-plasma/kdebase-pam
 		kde-plasma/kscreenlocker:5
 	) )
 "
