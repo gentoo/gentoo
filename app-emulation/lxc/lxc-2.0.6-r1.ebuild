@@ -158,10 +158,11 @@ src_compile() {
 src_install() {
 	default
 
+	mv "${ED}"/usr/share/bash-completion/completions/${PN} "${ED}"/$(get_bashcompdir)/${PN}-start || die
 	# start-ephemeral is no longer a command but removing it here
 	# generates QA warnings (still in upstream completion script)
-	bashcomp_alias ${PN} \
-		${PN}-{start,attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,start-ephemeral,stop,unfreeze,wait}
+	bashcomp_alias ${PN}-start \
+		${PN}-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,start-ephemeral,stop,unfreeze,wait}
 
 	if use python; then
 		pushd "${S}/src/python-lxc" > /dev/null
