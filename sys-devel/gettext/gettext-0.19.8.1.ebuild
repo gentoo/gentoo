@@ -105,27 +105,27 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use nls || rm -r "${D}"/usr/share/locale
+	use nls || rm -r "${ED}"/usr/share/locale
 	use static-libs || prune_libtool_files --all
 
-	rm -f "${D}"/usr/share/locale/locale.alias "${D}"/usr/lib/charset.alias
+	rm -f "${ED}"/usr/share/locale/locale.alias "${ED}"/usr/lib/charset.alias
 
 	if use java ; then
-		java-pkg_dojar "${D}"/usr/share/${PN}/*.jar
-		rm -f "${D}"/usr/share/${PN}/*.jar
-		rm -f "${D}"/usr/share/${PN}/*.class
+		java-pkg_dojar "${ED}"/usr/share/${PN}/*.jar
+		rm -f "${ED}"/usr/share/${PN}/*.jar
+		rm -f "${ED}"/usr/share/${PN}/*.class
 		if use doc ; then
-			java-pkg_dojavadoc "${D}"/usr/share/doc/${PF}/javadoc2
-			rm -rf "${D}"/usr/share/doc/${PF}/javadoc2
+			java-pkg_dojavadoc "${ED}"/usr/share/doc/${PF}/javadoc2
+			rm -rf "${ED}"/usr/share/doc/${PF}/javadoc2
 		fi
 	fi
 
 	if use doc ; then
-		dohtml "${D}"/usr/share/doc/${PF}/*.html
+		dohtml "${ED}"/usr/share/doc/${PF}/*.html
 	else
-		rm -rf "${D}"/usr/share/doc/${PF}/{csharpdoc,examples,javadoc2,javadoc1}
+		rm -rf "${ED}"/usr/share/doc/${PF}/{csharpdoc,examples,javadoc2,javadoc1}
 	fi
-	rm -f "${D}"/usr/share/doc/${PF}/*.html
+	rm -f "${ED}"/usr/share/doc/${PF}/*.html
 
 	dodoc AUTHORS ChangeLog NEWS README THANKS
 }
