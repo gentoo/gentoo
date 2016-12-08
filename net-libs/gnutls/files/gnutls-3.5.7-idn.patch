@@ -1,0 +1,87 @@
+From ddca30ed625d9f5f7efb628e4467ff7ab5a65701 Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@redhat.com>
+Date: Thu, 8 Dec 2016 15:54:07 +0100
+Subject: [PATCH] tests: make conditional (to HAVE_LIBIDN) any IDN related checks
+
+This allows the test suite to successfully complete even when compiled
+without libidn.
+---
+ tests/crq_apis.c | 2 ++
+ tests/crt_apis.c | 4 ++++
+ 2 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/tests/crq_apis.c b/tests/crq_apis.c
+index 99c02cb..7ad717f 100644
+--- a/tests/crq_apis.c
++++ b/tests/crq_apis.c
+@@ -448,8 +448,10 @@ void doit(void)
+ 
+ 	assert(gnutls_x509_crq_export2(crq, GNUTLS_X509_FMT_PEM, &out) >= 0);
+ 
++#ifdef HAVE_LIBIDN
+ 	assert(out.size == saved_crq.size);
+ 	assert(memcmp(out.data, saved_crq.data, out.size)==0);
++#endif
+ 
+ 	gnutls_free(out.data);
+ 	gnutls_x509_crq_deinit(crq);
+diff --git a/tests/crt_apis.c b/tests/crt_apis.c
+index 8b8ebbe..ed31640 100644
+--- a/tests/crt_apis.c
++++ b/tests/crt_apis.c
+@@ -183,10 +183,12 @@ void doit(void)
+ 	if (ret != 0)
+ 		fail("gnutls_x509_crt_set_subject_alt_name\n");
+ 
++#ifdef HAVE_LIBIDN
+ 	ret = gnutls_x509_crt_set_subject_alt_name(crt, GNUTLS_SAN_RFC822NAME,
+ 						   "test@νίκο.org", strlen("test@νίκο.org"), 1);
+ 	if (ret != 0)
+ 		fail("gnutls_x509_crt_set_subject_alt_name\n");
++#endif
+ 
+ 	s = 0;
+ 	ret = gnutls_x509_crt_get_key_purpose_oid(crt, 0, NULL, &s, NULL);
+@@ -275,8 +277,10 @@ void doit(void)
+ 	}
+ 	assert(gnutls_x509_crt_export2(crt, GNUTLS_X509_FMT_PEM, &out) >= 0);
+ 
++#ifdef HAVE_LIBIDN
+ 	assert(out.size == saved_crt.size);
+ 	assert(memcmp(out.data, saved_crt.data, out.size)==0);
++#endif
+ 
+ 	gnutls_free(out.data);
+ 
+--
+libgit2 0.24.0
+
+From e40393e5685743e185ea284337b6a0ed5d756a0f Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@redhat.com>
+Date: Thu, 8 Dec 2016 15:44:28 +0100
+Subject: [PATCH] str: do not call gnutls_assert in inline function
+
+This allows the build to succeed when compiled without libidn.
+---
+ lib/str.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/str.h b/lib/str.h
+index fe8b38e..d341baa 100644
+--- a/lib/str.h
++++ b/lib/str.h
+@@ -52,9 +52,10 @@ int _gnutls_idna_email_map(const char *input, unsigned ilen, gnutls_datum_t *out
+ inline static
+ int __gnutls_idna_map(const char *input, unsigned ilen, gnutls_datum_t *out, unsigned flags)
+ {
++	/* no call to gnutls_assert() due to header dependency issues */
+ 	out->data = gnutls_malloc(ilen+1);
+ 	if (out->data == NULL)
+-		return gnutls_assert_val(GNUTLS_E_MEMORY_ERROR);
++		return GNUTLS_E_MEMORY_ERROR;
+ 	out->size = ilen;
+ 	memcpy(out->data, input, ilen);
+ 	out->data[ilen] = 0;
+--
+libgit2 0.24.0
+
