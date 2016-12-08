@@ -139,7 +139,7 @@ multilib_src_configure() {
 	if use tcl || use test ; then
 		myconf+=(
 			--enable-tcl
-			--with-tcl=/usr/$(get_libdir)
+			--with-tcl="${EPREFIX}/usr/$(get_libdir)"
 		)
 	else
 		myconf+=(--disable-tcl )
