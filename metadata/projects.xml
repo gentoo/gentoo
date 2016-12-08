@@ -399,11 +399,6 @@
       <name>Tiziano Müller</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>pinkbyte@gentoo.org</email>
-      <name>Sergey Popov</name>
-      <role>Developer</role>
-    </member>
     <member is-lead="1">
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
