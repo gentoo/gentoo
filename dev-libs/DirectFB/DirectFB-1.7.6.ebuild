@@ -25,9 +25,9 @@ IUSE_INPUT_DEVICES=" dynapro elo2300 evdev joystick keyboard lirc mouse mutouch 
 IUD=${IUSE_INPUT_DEVICES// / input_devices_}
 
 DESCRIPTION="Thin library on top of the Linux framebuffer devices"
-HOMEPAGE="http://www.directfb.org/"
-SRC_URI="http://directfb.org/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
-	http://directfb.org/downloads/Old/${P}.tar.gz"
+HOMEPAGE="http://www.directfb.net/"
+SRC_URI="http://directfb.net/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
+	http://directfb.net/downloads/Old/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -77,7 +77,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.6.3-setregion.patch \
 		"${FILESDIR}"/${PN}-1.6.3-atomic-fix-compiler-error-when-building-for-thumb2.patch \
 		"${FILESDIR}"/${PN}-1.7.6-cle266.patch \
-		"${FILESDIR}"/${PN}-1.7.6-idivine.patch
+		"${FILESDIR}"/${PN}-1.7.6-idivine.patch \
+		"${FILESDIR}"/${PN}-1.7.6-tslib.patch
 	sed -i \
 		-e '/#define RASPBERRY_PI/d' \
 		systems/egl/egl_system.c || die #497124

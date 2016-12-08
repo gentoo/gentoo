@@ -2,16 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="bc_apc"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="README.md"
+PHP_EXT_EXTRA_ECONF=""
+DOCS=( README.md )
 
-USE_PHP="php7-0"
+USE_PHP="php7-0 php7-1"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 KEYWORDS="~amd64 ~x86"
 
@@ -20,7 +21,7 @@ LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-php/pecl-apcu[php_targets_php7-0]"
+DEPEND="dev-php/pecl-apcu:7[php_targets_php7-0?,php_targets_php7-1?]"
 RDEPEND="${DEPEND}"
 
 src_install() {
@@ -30,5 +31,5 @@ src_install() {
 		php_init_slot_env ${slot}
 		mv "modules/apc.so" "modules/${PHP_EXT_NAME}.so" || die
 	done
-	php-ext-pecl-r2_src_install
+	php-ext-pecl-r3_src_install
 }

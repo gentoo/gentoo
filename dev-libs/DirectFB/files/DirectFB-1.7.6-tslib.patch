@@ -1,0 +1,33 @@
+https://github.com/deniskropp/DirectFB/pull/6
+https://bugs.gentoo.org/567294
+
+From 5c7c4b197b9d04587b05624db4cfca6503adb3ff Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 8 Dec 2016 16:47:34 -0500
+Subject: [PATCH] configure: fix tslib version check
+
+The tslib version is 1.0, not 1.0.0.  Trying to check for the latter
+fails when using pkg-config:
+$ pkg-config --exists --print-errors "tslib-1.0 >= 1.0"
+$ pkg-config --exists --print-errors "tslib-1.0 >= 1.0.0"
+Requested 'tslib-1.0 >= 1.0.0' but version of tslib is 1.0
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index 6143cd393699..12a65fdc4f52 100644
+--- a/configure.in
++++ b/configure.in
+@@ -2561,7 +2561,7 @@ fi
+ 
+ enable_tslib=no
+ if test "$checkfor_tslib" = "yes"; then
+-  PKG_CHECK_MODULES([TSLIB], [tslib-1.0 >= 1.0.0], [enable_tslib=yes], [enable_tslib=no])
++  PKG_CHECK_MODULES([TSLIB], [tslib-1.0 >= 1.0], [enable_tslib=yes], [enable_tslib=no])
+   if test "$enable_tslib" = "no"; then
+      PKG_CHECK_MODULES([TSLIB], [tslib-0.0], [enable_tslib=yes], [enable_tslib=no
+        AC_MSG_WARN([*** no tslib -- tslib driver will not be built.])])
+-- 
+2.11.0.rc2
+
