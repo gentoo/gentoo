@@ -41,7 +41,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 1.9.6 2.1.3.0 2.2.0.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 1.9.6 2.1.3.0 2.2.0.0 2.2.1.0_rc1 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.4.20 2.4.23: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -6953,11 +6953,11 @@ dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via A
 dev-php/pecl-bbcode 1.0.3_beta1-r2: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2-r1: Cairo bindings for PHP
 dev-php/pecl-cassandra 1.2.2: DataStax PHP Driver for Apache Cassandra
-dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
+dev-php/pecl-crack 0.4-r4 0.4-r5: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r2: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.7-r3: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.1: PHP wrapper for libeio library
-dev-php/pecl-event 1.11.1-r1 2.1.0: PHP wrapper for libevent2
+dev-php/pecl-event 1.11.1-r1 2.2.1: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r2: PHP extension for using gearmand
 dev-php/pecl-geoip 1.1.0 1.1.1-r2: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.4.0: PHP wrapper around the gpgme library
