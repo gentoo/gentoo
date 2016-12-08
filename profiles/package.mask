@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Denis Dupeyron <calchan@gentoo.org> (08 Dec 2016)
+# Mask for testing
+=app-admin/ansible-2.2.1.0_rc1
+
 # Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
 # Mask ruby 2.0 for removal, bug 576034
 dev-lang/ruby:2.0
