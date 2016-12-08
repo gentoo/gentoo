@@ -14298,7 +14298,7 @@ net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 3.2.22 4.1.12 4.1.13: An authoritative only, high performance, open source name server
+net-dns/nsd 3.2.22 4.1.13 4.1.14: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.10 2.0.1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2 3.8.1: A framework for managing DNS information
@@ -18636,7 +18636,7 @@ x11-misc/sddm 0.13.0-r3 0.14.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.4 1.6 1.7: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.4 1.6 1.7 1.8: The Shared MIME-info Database specification
 x11-misc/shutter 0.93.1-r1: Feature-rich screenshot program
 x11-misc/shutterbug 1.7.45 1.7.47 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
