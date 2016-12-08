@@ -284,7 +284,7 @@ src_configure() {
 		$(use_with wireshark-plugins wireshark-dissector)
 		$(use_with xen)
 		$(use_with xen xen-inotify)
-		$(usex xen --with-libxl '')
+		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
 
