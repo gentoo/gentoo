@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 RUBY_FAKEGEM_TASK_DOC="none"
@@ -20,7 +20,7 @@ RUBY_FAKEGEM_GEMSPEC="rspec-core.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
-HOMEPAGE="http://rspec.rubyforge.org/"
+HOMEPAGE="https://github.com/rspec/rspec-core"
 SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
@@ -49,7 +49,9 @@ all_ruby_prepare() {
 	# Cover all released versions of ruby 2.1.x. This should be reported
 	# upstream since ruby 2.1.x uses semantic versioning and the file
 	# should not have the full version number.
-	cp spec/rspec/core/formatters/text_mate_formatted-2.1.0.html spec/rspec/core/formatters/text_mate_formatted-2.1.1.html|| die
+	cp spec/rspec/core/formatters/text_mate_formatted-2.1.0.html spec/rspec/core/formatters/text_mate_formatted-2.1.9.html|| die
+	cp spec/rspec/core/formatters/text_mate_formatted-2.1.0.html spec/rspec/core/formatters/text_mate_formatted-2.1.10.html|| die
+	cp spec/rspec/core/formatters/text_mate_formatted-2.1.0.html spec/rspec/core/formatters/text_mate_formatted-2.2.6.html|| die
 
 	# Duplicate exe also in bin. We can't change it since internal stuff
 	# also depends on this and fixing that is going to be fragile. This
@@ -62,6 +64,9 @@ all_ruby_prepare() {
 	# Avoid aruba dependency so that we don't end up in dependency hell.
 	sed -i -e '/aruba/ s:^:#:' -e '104,106 s:^:#:' spec/spec_helper.rb || die
 	rm spec/command_line/order_spec.rb || die
+
+	# Avoid testing issues with rspec 3 installed
+	sed -i -e '2igem "rspec", "~> 2.0"' bin/rspec || die
 }
 
 each_ruby_prepare() {
