@@ -84,9 +84,12 @@ src_install() {
 	dosym tbl /usr/bin/gtbl
 
 	if ! use examples ; then
-		# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
-		rm -f "${ED}"/usr/share/doc/${PF}/pdf/mom-pdf.pdf
-		mv "${ED}"/usr/share/doc/${PF}/{examples/mom,pdf}/mom-pdf.pdf || die
+		# The pdf files might not be generated if ghostscript is unavailable. #602020
+		local pdf="${ED}/usr/share/doc/${PF}/examples/mom/mom-pdf.pdf"
+		if [[ -e ${pdf} ]] ; then
+			# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
+			mv "${pdf}" "${ED}"/usr/share/doc/${PF}/pdf/ || die
+		fi
 		rm -rf "${ED}"/usr/share/doc/${PF}/examples
 	fi
 }
