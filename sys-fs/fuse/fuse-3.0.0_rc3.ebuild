@@ -2,12 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils libtool linux-info udev toolchain-funcs
+
+MY_P=${P/_/}
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
-SRC_URI="https://github.com/libfuse/libfuse/releases/download/${PN}_${PV//./_}/${P}.tar.gz"
+SRC_URI="https://github.com/libfuse/libfuse/releases/download/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,6 +18,8 @@ IUSE="examples kernel_linux kernel_FreeBSD static-libs"
 
 PDEPEND="kernel_FreeBSD? ( sys-fs/fuse4bsd )"
 DEPEND="virtual/pkgconfig"
+
+S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
 	if use kernel_linux ; then
@@ -29,11 +33,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.9.3-kernel-types.patch
 	# sandbox violation with mtab writability wrt #438250
 	# don't sed configure.in without eautoreconf because of maintainer mode
 	sed -i 's:umount --fake:true --fake:' configure || die
 	elibtoolize
+
+	default
 }
 
 src_configure() {
@@ -46,10 +51,8 @@ src_configure() {
 }
 
 src_install() {
+	local DOCS=( AUTHORS README.md doc/README.NFS doc/kernel.txt )
 	default
-
-	dodoc AUTHORS ChangeLog README.md \
-		README.NFS NEWS doc/how-fuse-works doc/kernel.txt
 
 	if use examples ; then
 		docinto examples
