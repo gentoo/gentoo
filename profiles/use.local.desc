@@ -503,7 +503,7 @@ app-emulation/libvirt:virt-network - Enable virtual networking (NAT) support for
 app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisation (one of app-emulation/virtualbox or app-emulation/virtualbox-bin)
 app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugin for the Libvirt RPC protocol
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
-app-emulation/libvirt:zfs - Enable ZFS backend storagesys-fs/zfs
+app-emulation/libvirt:zfs - Enable ZFS backend storage sys-fs/zfs
 app-emulation/lxc:cgmanager - Enable support for cgroup management using app-admin/cgmanager
 app-emulation/lxd:daemon - Build the system daemon, not just the client tool
 app-emulation/open-vm-tools:doc - Generate API documentation
