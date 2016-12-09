@@ -9957,7 +9957,7 @@ dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
 dev-util/cmocka 0.4.1 1.0.1 1.1.0: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.13: A semantic grep for the C language
-dev-util/coccinelle 1.0.5: Program matching and transformation engine
+dev-util/coccinelle 1.0.5 1.0.6: Program matching and transformation engine
 dev-util/codeblocks 16.01 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
@@ -14770,13 +14770,13 @@ net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r1 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
 net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
-net-mail/mpop 1.2.4 1.2.5: A small, fast, and portable POP3 client
+net-mail/mpop 1.2.4 1.2.5 1.2.6: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22.2 0.22.2-r1 0.23.1 0.23.2 0.23.3: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6 7.0.7 7.0.8 7.0.9 7.0.10: Powerful IMAP/Maildir synchronization and reader support
+net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
