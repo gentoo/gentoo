@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (09 Dec 2016)
+# Masked for removal, wrt bug 602164.
+# See https://github.com/PHP-FFMpeg/PHP-FFMpeg for a code based replacement
+dev-php/ffmpeg-php
+
 # Tim Harder <radhermit@gentoo.org> (09 Dec 2016)
 # Masked for removal, use media-gfx/gmic[gimp] instead.
 media-plugins/gimp-gmic
