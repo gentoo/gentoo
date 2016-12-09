@@ -92,7 +92,7 @@
 		Enable GlusterFS support via <pkg>sys-cluster/glusterfs</pkg>
 	</flag>
 	<flag name="zfs">
-		Enable ZFS backend storage<pkg>sys-fs/zfs</pkg>
+		Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
 	</flag>
 </use>
 </pkgmetadata>
