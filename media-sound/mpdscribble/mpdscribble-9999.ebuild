@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit git-r3
+inherit git-r3 autotools
 
 DESCRIPTION="An MPD client that submits information to Audioscrobbler"
 HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpdscribble"
@@ -20,6 +20,11 @@ RDEPEND="dev-libs/glib
 	!curl? ( net-libs/libsoup:2.4 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
