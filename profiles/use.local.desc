@@ -1765,6 +1765,7 @@ dev-lang/ocaml:flambda - Enables the Flambda optimizer: A new intermediate repre
 dev-lang/orc:pax_kernel - Apply patch needed for pax enabled kernels.
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems
 dev-lang/php:cli - Enable CLI SAPI
+dev-lang/php:coverage - Include gcov symbols for test coverage and lcov reports. Only useful for extension developers, and requires GCC.
 dev-lang/php:embed - Enable embed SAPI
 dev-lang/php:enchant - Add supports Enchant spelling library.
 dev-lang/php:fileinfo - Add fileinfo extension support
@@ -1776,7 +1777,7 @@ dev-lang/php:intl - Enables the intl extension for extended internalization supp
 dev-lang/php:json - Enable JSON support
 dev-lang/php:ldap-sasl - Add SASL support for the PHP LDAP extension
 dev-lang/php:libmysqlclient - Use libmyslclient driver for mysql, mysqli, PDO_Mysql (not recommended)
-dev-lang/php:opcache - Enables built-in opcode cache, replacing pecl-apc et.al
+dev-lang/php:opcache - Enables built-in opcode cache, replacing pecl-apc et al.
 dev-lang/php:pdo - Enable the bundled PDO extensions
 dev-lang/php:phar - Enables the phar extension to provide phar archive support
 dev-lang/php:phpdbg - Enable the PHP Debug Command Line SAPI (like gdb for php)
