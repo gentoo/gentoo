@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]]; then
@@ -18,22 +18,28 @@ HOMEPAGE="http://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
 LICENSE="Boost-1.0"
 SLOT="2"
-IUSE="+cxx static-libs test"
+IUSE="boost +cxx doc examples static-libs test"
 
 DEPEND="
 	test? (
 		>=dev-cpp/gtest-1.6.0-r2[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 	)
+	boost? ( dev-libs/boost[static-libs] )
+	doc? ( app-doc/doxygen )
 "
 
 DOCS=( README.md )
 
 src_configure() {
+	# static is always built
 	local mycmakeargs=(
-		$(cmake-utils_use cxx MSGPACK_ENABLE_CXX)
-		$(cmake-utils_use static-libs MSGPACK_STATIC)
-		$(cmake-utils_use test MSGPACK_BUILD_TESTS)
+		-DMSGPACK_BOOST="$(usex boost)"
+		-DMSGPACK_ENABLE_CXX="$(usex cxx)"
+		-DMSGPACK_BUILD_EXAMPLES="$(usex examples)"
+		-DMSGPACK_ENABLE_SHARED="$(usex static-libs no yes)"
+		-DMSGPACK_BUILD_TESTS="$(usex test)"
 	)
+
 	cmake-multilib_src_configure
 }
