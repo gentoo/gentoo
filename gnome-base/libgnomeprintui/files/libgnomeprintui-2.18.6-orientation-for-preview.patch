@@ -1,0 +1,44 @@
+--- ./libgnomeprintui/gnome-print-job-preview.c.orig	2012-02-23 22:48:42.000000000 +0600
++++ ./libgnomeprintui/gnome-print-job-preview.c	2012-02-25 00:18:43.000000000 +0600
+@@ -152,6 +152,7 @@ 
+ 	GtkWidget *last;
+ 	GnomeCanvas *canvas;
+ 	GnomePrintConfig *config;
++    guchar *paper_orientation_save;
+ 
+ 	guint current_page, current_offset;
+ 
+@@ -2187,6 +2188,19 @@ 
+ 	if (jp->config)
+ 		g_object_unref (G_OBJECT (jp->config));
+ 	jp->config = config;
++    if( config ) {
++        guchar *txt = gnome_print_config_get( jp->config, (const guchar*)GNOME_PRINT_KEY_PAGE_ORIENTATION );
++        if( ( g_ascii_strcasecmp(( const gchar* )txt, "R90") == 0 ) ||
++            ( g_ascii_strcasecmp(( const gchar* )txt, "R270") == 0 ) ) {
++            jp->paper_orientation_save =
++                gnome_print_config_get( jp->config, (const guchar*)GNOME_PRINT_KEY_PAPER_ORIENTATION );
++            gnome_print_config_set( jp->config, (const guchar*)GNOME_PRINT_KEY_PAPER_ORIENTATION, txt );
++            g_free ( txt );
++        }
++        else {
++            jp->paper_orientation_save = NULL;
++        }
++    }
+ 	if (!jp->config)
+ 		return;
+ 	g_object_ref (G_OBJECT (jp->config));
+@@ -2389,6 +2403,13 @@ 
+ {
+ 	GnomePrintJobPreview *jp = GNOME_PRINT_JOB_PREVIEW (object);
+ 
++    if( jp->paper_orientation_save ) {
++        gnome_print_config_set( jp->config, (const guchar*)GNOME_PRINT_KEY_PAPER_ORIENTATION,
++                                jp->paper_orientation_save );
++        g_free ( jp->paper_orientation_save );
++        jp->paper_orientation_save = NULL;
++    }
++
+ 	gnome_print_job_preview_set_config (jp, NULL);
+ 	gnome_print_job_preview_set_job (jp, NULL);
+ 
