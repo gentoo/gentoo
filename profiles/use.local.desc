@@ -890,6 +890,7 @@ app-misc/screenfetch:X - Use the media-gfx/scrot package to take screenshots
 app-misc/sphinx:id64 - use 64-bit document and word IDs
 app-misc/sphinx:re2 - use the dev-libs/re2 regular expression library
 app-misc/sphinx:stemmer - Enable language stemming support
+app-misc/task:sync - Enable "task sync" support
 app-misc/tasque:hiveminder - Allows you to use http://www.hiveminder.com/ as your storage backend.
 app-misc/tasque:rememberthemilk - Allows you to use http://www.rememberthemilk.com/ as your storage backend.
 app-misc/tmux:utempter - Include libutempter support
