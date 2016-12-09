@@ -27,6 +27,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 RDEPEND="
+	=sci-libs/votca-tools-${PV}[sqlite]
 	=sci-chemistry/votca-csg-${PV}"
 
 DEPEND="${RDEPEND}
