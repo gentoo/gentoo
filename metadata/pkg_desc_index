@@ -14367,7 +14367,7 @@ net-fs/openafs-kernel 1.6.17 1.6.18.2 1.6.18.3: The OpenAFS distributed file sys
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
-net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20: A full-featured file system for online data storage
+net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21: A full-featured file system for online data storage
 net-fs/samba 3.6.25 4.2.11 4.2.14 4.3.12 4.4.7 4.5.1 4.5.2: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
@@ -14742,14 +14742,14 @@ net-mail/fastforward 0.51-r1: handle qmail forwarding according to a cdb databas
 net-mail/fdm 1.7 1.8 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2: the legendary remote-mail retrieval and forwarding utility
 net-mail/gensig 2.3: Random ~/.signature generator
-net-mail/getmail 4.48.0 4.49.0 4.50.0 4.51.0 4.52.0: A POP3 mail retriever with reliable Maildir and mbox delivery
+net-mail/getmail 4.52.0: A POP3 mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644 1.684: A tool allowing incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
-net-mail/lbdb 0.39 0.39-r1 0.41: Little Brother database
+net-mail/lbdb 0.39 0.39-r1 0.41 0.42: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.64 0.6.66: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
@@ -15252,7 +15252,7 @@ net-news/blam 1.8.12-r1: A RSS aggregator written in C#
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.10.8 1.10.17 1.10.19 1.12_rc1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
-net-news/newsbeuter 2.9 2.9-r2 9999: A RSS/Atom feed reader for the text console
+net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.3.5: A tiny RSS and Atom feed reader
