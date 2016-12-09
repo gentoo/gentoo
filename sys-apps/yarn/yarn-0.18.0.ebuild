@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="net-libs/nodejs"
+RDEPEND="!dev-util/cmdtest
+	net-libs/nodejs"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/dist"
