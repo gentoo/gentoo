@@ -1361,7 +1361,7 @@ app-emulation/virt-manager 1.3.2 1.4.0-r2 9999: A graphical tool for administeri
 app-emulation/virt-viewer 3.1 4.0 5.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118 0.1.126: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 4.3.38 4.3.40 5.0.16-r1 5.0.26 5.0.28 5.0.30 5.1.6 5.1.8 5.1.10: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox 4.3.38 4.3.40 5.0.16-r1 5.0.26 5.0.28 5.0.30 5.1.6 5.1.8 5.1.10-r1: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 4.3.38 4.3.40 5.0.16 5.0.26 5.0.28 5.0.30 5.1.6 5.1.8 5.1.10: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-bin 4.3.38.106717 4.3.40.110317 5.0.16.105871-r1 5.0.26.108824 5.0.28.111378 5.0.30.112061 5.1.6.110634 5.1.8.111374 5.1.10.112026: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-extpack-oracle 4.3.38.106717 4.3.40.110317 5.0.16.105871 5.0.26.108824 5.0.28.111378 5.0.30.112061 5.1.6.110634 5.1.8.111374 5.1.10.112026: PUEL extensions for VirtualBox
@@ -15350,7 +15350,7 @@ net-print/cndrvcups-common-lb 3.10 3.20: Common files for Canon drivers
 net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.0.3 2.0.4 2.1.3-r1 2.1.4 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.5.0 1.8.3 1.11.6 1.12.0 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.8.3 1.11.6 1.12.0 1.13.0 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
