@@ -32,8 +32,8 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	cat > matplotlibrc <<- EOF
+	cat > matplotlibrc <<- EOF || die
 	backend : Agg
 	EOF
-	virtx nosetests --verbosity=3
+	virtx nosetests --verbosity=3 || die
 }
