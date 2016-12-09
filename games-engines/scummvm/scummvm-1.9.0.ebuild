@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic gnome2-utils toolchain-funcs games
+EAPI=6
+inherit eutils flag-o-matic gnome2-utils toolchain-funcs
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
 HOMEPAGE="http://scummvm.sourceforge.net/"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 
-RDEPEND=">=media-libs/libsdl-1.2.2[sound,joystick,video]
+RDEPEND=">=media-libs/libsdl2-2.0.0[sound,joystick,video]
 	zlib? ( sys-libs/zlib )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P/_/}
 
 src_prepare() {
+	default
+
 	# -g isn't needed for nasm here
 	sed -i \
 		-e '/NASMFLAGS/ s/-g//' \
@@ -48,39 +50,33 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-
-	# bug #137547
-	use fluidsynth || myconf="${myconf} --disable-fluidsynth"
-
 	use x86 && append-ldflags -Wl,-z,noexecstack
 
 	# NOT AN AUTOCONF SCRIPT SO DONT CALL ECONF
+	SDL_CONFIG="sdl2-config" \
 	./configure \
 		--backend=sdl \
-		--host=$CHOST \
+		--host=${CHOST} \
 		--enable-verbose-build \
 		--prefix=/usr \
-		--bindir="${GAMES_BINDIR}" \
-		--datadir="${GAMES_DATADIR}"/${PN} \
-		--libdir="${GAMES_LIBDIR}" \
-		--enable-zlib \
-		$(use_enable debug) \
-		$(use_enable !debug release-mode) \
-		$(use_enable zlib) \
+		--libdir="/usr/$(get_libdir)" \
+		--opengl-mode=$(usex opengl auto none) \
 		$(use_enable aac faad) \
 		$(use_enable alsa) \
+		$(use_enable debug) \
+		$(use_enable !debug release-mode) \
+		$(use_enable flac) \
+		$(usex fluidsynth '' --disable-fluidsynth) \
 		$(use_enable jpeg) \
-		$(use_enable png) \
 		$(use_enable mp3 mad) \
 		$(use_enable mpeg2) \
-		$(use_enable flac) \
-		$(use_enable opengl) \
-		$(use_enable vorbis) \
+		$(use_enable png) \
 		$(use_enable theora theoradec) \
 		$(use_enable truetype freetype2) \
+		$(usex unsupported --enable-all-engines '') \
+		$(use_enable vorbis) \
+		$(use_enable zlib) \
 		$(use_enable x86 nasm) \
-		$(use unsupported && echo --enable-all-engines) \
 		${myconf} ${EXTRA_ECONF} || die
 }
 
@@ -92,16 +88,13 @@ src_install() {
 	default
 	doicon -s scalable icons/scummvm.svg
 	make_desktop_entry scummvm ScummVM scummvm "Game;AdventureGame"
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
