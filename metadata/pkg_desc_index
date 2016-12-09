@@ -2840,7 +2840,7 @@ dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
 dev-cpp/glibmm 2.44.0 2.46.4 2.48.1 2.50.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4: Google's C++ logging library
-dev-cpp/gmock 1.4.0 1.5.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
+dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
