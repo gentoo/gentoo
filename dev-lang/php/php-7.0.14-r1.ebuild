@@ -30,7 +30,7 @@ IUSE="${IUSE}
 	threads"
 
 IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
-	crypt +ctype curl debug
+	coverage crypt +ctype curl debug
 	enchant exif frontbase +fileinfo +filter firebird
 	flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
@@ -63,6 +63,7 @@ COMMON_DEPEND="
 		media-libs/libpng:0=
 		sys-libs/zlib
 	) )
+	coverage? ( dev-util/lcov )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
@@ -290,6 +291,7 @@ src_configure() {
 		$(use_enable bcmath bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar calendar)
+		$(use_enable coverage gcov)
 		$(use_enable ctype ctype)
 		$(use_with curl curl "${EPREFIX}/usr")
 		$(use_enable xml dom)
