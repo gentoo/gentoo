@@ -13,6 +13,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	net-libs/libsrtp:=[${MULTILIB_USEDEP}]
+	net-libs/libsrtp:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
