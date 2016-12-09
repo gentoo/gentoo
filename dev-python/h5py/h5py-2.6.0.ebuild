@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test examples mpi"
 
 RDEPEND="
-	sci-libs/hdf5:=[mpi=]
+	sci-libs/hdf5:=[mpi=,hl(+)]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
