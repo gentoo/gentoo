@@ -22,7 +22,7 @@ IUSE="aac debug doc ffmpeg hid mp3 mp4 shout wavpack"
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
 RDEPEND="dev-db/sqlite
-	dev-libs/protobuf
+	dev-libs/protobuf:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
