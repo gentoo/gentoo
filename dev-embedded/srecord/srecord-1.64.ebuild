@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils autotools
 
@@ -21,16 +21,17 @@ DEPEND="${RDEPEND}
 	sys-apps/groff
 	test? ( app-arch/sharutils )"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.57-libtool.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.57-libtool.patch
+	default
 
 	cp etc/configure.ac "${S}"
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 src_install() {

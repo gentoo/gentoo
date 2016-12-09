@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -22,13 +22,15 @@ IUSE="doc ftdi ncurses readline"
 RDEPEND="virtual/libusb:1
 	virtual/libusb:0
 	ftdi? ( dev-embedded/libftdi:= )
-	ncurses? ( sys-libs/ncurses:= )
-	readline? ( sys-libs/readline )"
+	ncurses? ( sys-libs/ncurses:0= )
+	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog* NEWS README"
 
 src_prepare() {
+	default
+
 	# let the build system re-generate these, bug #120194
 	rm -f lexer.c config_gram.c config_gram.h || die
 }
