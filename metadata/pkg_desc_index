@@ -12444,7 +12444,7 @@ media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.8.18 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 2.9.4-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
-media-gfx/gmic 1.6.5.0 1.6.5.1 1.7.8 1.7.9: GREYC's Magic Image Converter
+media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
 media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1 3.22.2: Access, organize and share your photos on GNOME
@@ -14243,7 +14243,7 @@ net-dialup/minicom 2.6 2.7: Serial Communication Program
 net-dialup/moserial 3.0.10: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
-net-dialup/picocom 2.1: minimal dumb-terminal emulation program
+net-dialup/picocom 2.1 2.2: minimal dumb-terminal emulation program
 net-dialup/ppp 2.4.4-r25 2.4.5-r3 2.4.6-r3 2.4.7 2.4.7-r2 2.4.7-r3: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
