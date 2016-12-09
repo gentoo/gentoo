@@ -183,6 +183,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}/${P}-sas_timeouts.patch"
 
 	eapply_user
 }
