@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI='https://git.exherbo.org/paludis/paludis.git'
 PYTHON_COMPAT=( python2_7 )
-# matching profile defaults for now
-RUBY_VER=2.1
+RUBY_VER=2.3
 
-inherit autotools bash-completion-r1 eutils git-r3 python-single-r1 user
+inherit bash-completion-r1 cmake-utils git-r3 python-single-r1 user
 
 DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
@@ -23,15 +22,15 @@ KEYWORDS=""
 COMMON_DEPEND="
 	>=app-admin/eselect-1.2.13
 	>=app-shells/bash-3.2:0
-	dev-libs/libpcre[cxx]
-	sys-apps/file
-	pbins? ( >=app-arch/libarchive-3.1.2 )
+	dev-libs/libpcre:=[cxx]
+	sys-apps/file:=
+	pbins? ( >=app-arch/libarchive-3.1.2:= )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/boost-1.41.0[python,${PYTHON_USEDEP}] )
+		>=dev-libs/boost-1.41.0:=[python,${PYTHON_USEDEP}] )
 	ruby? ( dev-lang/ruby:${RUBY_VER} )
-	search-index? ( >=dev-db/sqlite-3 )
-	xml? ( >=dev-libs/libxml2-2.6 )"
+	search-index? ( >=dev-db/sqlite-3:= )
+	xml? ( >=dev-libs/libxml2-2.6:= )"
 
 DEPEND="${COMMON_DEPEND}
 	>=app-text/asciidoc-8.6.3
@@ -79,39 +78,38 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=439372#c2
 	sed -i -e "1s/ruby/&${RUBY_VER/./}/" ruby/demos/*.rb || die
 
-	./autotools_prepare.bash || die
-	eautoreconf
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
-	local myconf=(
-		--htmldir=/usr/share/doc/${PF}/html
+	local mycmakeargs=(
+		-DENABLE_DOXYGEN=$(usex doc)
+		-DENABLE_GTEST=$(usex test)
+		-DENABLE_PBINS=$(usex pbins)
+		-DENABLE_PYTHON=$(usex python)
+		-DENABLE_PYTHON_DOCS=$(usex doc) # USE=python implicit
+		-DENABLE_RUBY=$(usex ruby)
+		-DENABLE_RUBY_DOCS=$(usex doc) # USE=ruby implicit
+		-DENABLE_SEARCH_INDEX=$(usex search-index)
+		-DENABLE_VIM=ON
+		-DENABLE_XML=$(usex xml)
 
-		$(use_enable doc doxygen)
-		$(use_enable test gtest)
-		$(use_enable pbins)
-		$(use_enable pink)
-		$(use_enable python)
-		$(use python && use_enable doc python-doc)
-		$(use_enable ruby)
-		$(use ruby && use_enable doc ruby-doc)
-		--with-ruby-version="${RUBY_VER}"
-		$(use_enable search-index)
-		$(use_enable xml)
+		-DPALUDIS_COLOUR_PINK=$(usex pink)
+		-DRUBY_VERSION=${RUBY_VER}
+		-DPALUDIS_ENVIRONMENTS=all
+		-DPALUDIS_DEFAULT_DISTRIBUTION=gentoo
+		-DPALUDIS_CLIENTS=all
+		-DCONFIG_FRAMEWORK=eselect
 
-		--enable-vim
-		--with-config-framework=eselect
-		--with-environments=default,portage
-		--with-vim-install-dir=/usr/share/vim/vimfiles
+		# GNUInstallDirs
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 
-	econf "${myconf[@]}"
+	cmake-utils_src_configure
 }
 
 src_install() {
-	default
-	prune_libtool_files
+	cmake-utils_src_install
 
 	dobashcomp bash-completion/cave
 
@@ -130,13 +128,7 @@ src_test() {
 		local -x PALUDIS_REDUCED_GID=0
 	fi
 
-	if ! nonfatal emake -k check ; then
-		eerror "Tests failed. Looking for files for you to add to your bug report..."
-		find "${S}" -type f -name '*.epicfail' -or -name '*.log' | while read a ; do
-			eerror "    $a"
-		done
-		die "Make check failed"
-	fi
+	cmake-utils_src_test
 }
 
 pkg_postinst() {
