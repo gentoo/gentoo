@@ -2,37 +2,36 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2 prefix user
 
-MY_PV="${PV/_alpha/.M}"
-MY_P="apache-${PN}-${MY_PV}-src"
+MY_P="apache-${P}-src"
 
-DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
+DESCRIPTION="Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
 HOMEPAGE="http://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/${PN}/tomcat-8/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="9"
+SLOT="8.5"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
 ECJ_SLOT="4.5"
-SAPI_SLOT="4.0"
+SAPI_SLOT="3.1"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	=dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
+	>=dev-java/tomcat-servlet-api-${SLOT}:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
 	!<dev-java/tomcat-native-1.1.24
-	>=virtual/jre-1.8"
+	>=virtual/jre-1.7"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
-	>=virtual/jdk-1.8
+	>=virtual/jdk-1.7
 	test? (
 		>=dev-java/ant-junit-1.9:0
 		dev-java/easymock:3.2
@@ -46,7 +45,9 @@ pkg_setup() {
 	enewuser tomcat 265 -1 /dev/null tomcat
 }
 
-java_prepare() {
+src_prepare() {
+	default
+
 	find -name '*.jar' -type f -delete -print || die
 
 	# Remove bundled servlet-api
@@ -58,6 +59,8 @@ java_prepare() {
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
 		CLASSPATH=\`java-config --classpath ${PN}-${SLOT}\`" \
 		bin/catalina.sh || die
+
+	java-pkg-2_src_prepare
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
