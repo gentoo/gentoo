@@ -14,7 +14,7 @@ SRC_URI="http://pyropus.ca/software/getmail/old-versions/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-macos ~x64-solaris"
 IUSE="ssl"
 
 python_prepare_all() {
