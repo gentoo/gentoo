@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}"
 DOCS="AUTHORS ChangeLog* NEWS README"
 
 src_prepare() {
+	default
+
 	# let the build system re-generate these, bug #120194
 	rm -f lexer.c config_gram.c config_gram.h || die
 }
