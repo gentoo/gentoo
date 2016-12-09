@@ -2292,7 +2292,7 @@ app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0: Groonga plugin that provide
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 0.1.2 1.0.3 1.2.1: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.7: Spell checking widget for GTK
-app-text/gtranslator 2.91.6 2.91.7: An enhanced gettext po file editor for GNOME
+app-text/gtranslator 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
 app-text/highlight 3.17 3.31 3.32 3.33: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
@@ -11291,7 +11291,7 @@ gnome-base/libgnome-keyring 3.12.0: Compatibility library for accessing secrets
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.6.0 3.22.0.1: Gnome keyboard configuration library
 gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
-gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
+gnome-base/libgnomeprintui 2.18.6-r1 2.18.6-r2: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0 2.32.0 2.34.0 2.34.1: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.11 2.40.15 2.40.16: Scalable Vector Graphics (SVG) rendering library
