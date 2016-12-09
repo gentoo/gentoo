@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Enable CLI SAPI</flag>
+		<flag name="coverage">Include gcov symbols for test coverage and lcov reports. Only useful for extension developers, and requires GCC.</flag>
 		<flag name="embed">Enable embed SAPI</flag>
 		<flag name="enchant">Add supports Enchant spelling library.</flag>
 		<flag name="fileinfo">Add fileinfo extension support</flag>
