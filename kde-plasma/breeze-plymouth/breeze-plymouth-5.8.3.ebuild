@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Breeze theme for Plymouth"
 LICENSE="GPL-2+ GPL-3+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 RDEPEND="sys-boot/plymouth"
