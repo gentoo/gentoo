@@ -14,8 +14,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/WireGuard"
 	KEYWORDS=""
 else
-	SRC_URI="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-experimental-${PV}.tar.xz"
-	S="${WORKDIR}/WireGuard-experimental-${PV}"
+	SRC_URI="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-${PV}.tar.xz"
+	S="${WORKDIR}/WireGuard-${PV}"
 	KEYWORDS="~amd64 ~x86 ~mips ~arm ~arm64"
 fi
 
@@ -49,10 +49,9 @@ src_install() {
 	dodoc README.md
 	dodoc -r contrib/examples
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C contrib/examples/wg-config install
 	if use kmod-src; then
-		dodir /usr/src
-		rm -r "${S}"/src/tools || die
-		mv -v "${S}"/src "${ED}"usr/src/wireguard || die
+		emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src dkms-install
 	else
 		linux-mod_src_install
 	fi
