@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="net-libs/nodejs"
+RDEPEND="!dev-util/cmdtest
+	net-libs/nodejs"
 DEPEND="${RDEPEND}"
 
 src_install() {
