@@ -101,7 +101,7 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
-	tidy? ( app-text/tidy-html5 )
+	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
 	truetype? (
 		=media-libs/freetype-2*
 		!gd? (
