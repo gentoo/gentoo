@@ -9269,7 +9269,7 @@ dev-ruby/mail 2.6.4: An email handling library
 dev-ruby/map 6.6.0: A string/symbol indifferent ordered hash that works in all rubies
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
-dev-ruby/maxitest 2.2.0 2.3.0: Minitest + all the features you always wanted
+dev-ruby/maxitest 2.2.0 2.3.0 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.4 2.7.5: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r2: A ruby library for accessing memcached
@@ -9601,7 +9601,7 @@ dev-ruby/trollop 1.16.2-r4 2.0 2.1.2: Trollop is a commandline option parser for
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
-dev-ruby/twitter-text 1.14.0 1.14.1: Text handling for Twitter
+dev-ruby/twitter-text 1.14.0 1.14.1 1.14.2: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.0.1 1.0.2 1.1.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.44 0.3.48 0.3.52 1.2.2: Daylight-savings aware timezone library
@@ -10248,7 +10248,7 @@ dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1 4.0.1-r1: A graphical file and dire
 dev-util/yacc 1.9.1-r4 1.9.1-r5 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
-dev-vcs/bfg 1.12.12 1.12.13 1.12.14: a faster alternative to git-filter-branch for removing bad data from git repos
+dev-vcs/bfg 1.12.14: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/bzr 2.5.1 2.5.1-r1 2.6.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-explorer 1.3.0 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
@@ -12319,7 +12319,7 @@ media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
 media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0 3.2.0-r1: A beautiful sans-serif monotype Japanese font designed for code listings
-media-fonts/roboto 1.2 2.134: Standard font for Android 4.0 (Ice Cream Sandwich) and later
+media-fonts/roboto 2.134 2.135: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
@@ -12335,7 +12335,7 @@ media-fonts/sil-padauk 2.8: SIL fonts for Myanmar script
 media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian languages
 media-fonts/source-han-sans 1.001: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20141211 20160608: Adobe's open source typeface family designed for UI environments
-media-fonts/stix-fonts 1.0.0-r1 1.1.1: Comprehensive OpenType font set of mathematical symbols and alphabets
+media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/symbola 7.12 8.00: Unicode font for Basic Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
@@ -17458,7 +17458,7 @@ sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of dir
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
 sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.22.0 1.23.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.23.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
