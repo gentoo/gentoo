@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/glib-perl-1.220.0 >=dev-perl/Cairo-1.0.0 >=x11-libs/pango-1.0.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/ExtUtils-Depends-0.300.0 >=dev-perl/extutils-pkgconfig-1.30.0 test? ( virtual/perl-Test-Simple !minimal? ( >=dev-perl/gtk2-perl-1.220.0 !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ) dev-lang/perl:=
+DEPEND=>=dev-perl/glib-perl-1.220.0 >=dev-perl/Cairo-1.0.0 >=x11-libs/pango-1.0.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/ExtUtils-Depends-0.300.0 >=dev-perl/ExtUtils-PkgConfig-1.30.0 test? ( virtual/perl-Test-Simple !minimal? ( >=dev-perl/gtk2-perl-1.220.0 !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ) dev-lang/perl:=
 DESCRIPTION=Layout and render international text
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Pango/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Pango-1.227.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:- src_install:-
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=258f176d999c78a9aebc90d9dbc0e3a5
+_md5_=5af543f401d7f35eb6f664d8c6a8c919

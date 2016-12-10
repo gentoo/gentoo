@@ -5715,6 +5715,7 @@ dev-perl/ExtUtils-F77 1.180.0 1.190.0 1.200.0: Facilitate use of FORTRAN from Pe
 dev-perl/ExtUtils-Helpers 0.22.0 0.26.0: Various portability utilities for module builders
 dev-perl/ExtUtils-InstallPaths 0.10.0 0.11.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.04 0.80.0: A tool to build C libraries
+dev-perl/ExtUtils-PkgConfig 1.150.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
@@ -6740,7 +6741,6 @@ dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
-dev-perl/extutils-pkgconfig 1.150.0: Simplistic perl interface to pkg-config
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.301.0 1.314.0 1.320.0: Glib - Perl wrappers for the GLib utility and Object libraries
