@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	$(vala_depend)
+
+	gnome-base/gnome-common
 "
+# gnome-base/gnome-common needed for eautoreconf
 
 pkg_pretend() {
 	# Needed for VNC ssh tunnel, bug #518574
