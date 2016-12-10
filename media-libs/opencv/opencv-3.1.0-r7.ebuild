@@ -115,11 +115,12 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# remove bundled stuff
 	rm -rf 3rdparty || die "Removing 3rd party components failed"
