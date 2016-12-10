@@ -279,7 +279,6 @@ python_module_compile() {
 	# Remove compiled binary so new version compiles
 	# Avoid conflicts with new module builds as build system doesn't
 	# really support it.
-	emake -C modules/python2 clean
 	rm -rf modules/python2 || die "rm failed"
 }
 
