@@ -3322,9 +3322,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
 kde-base/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
-kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
-kde-base/plasma-workspace:pim - KDE PIM integration via kde-apps/kdepimlibs
-kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
@@ -3407,6 +3404,8 @@ kde-plasma/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-plasma/plasma-nm:teamd - Enable Teamd control support
 kde-plasma/plasma-sdk:plasmate - IDE for writing Plasma/KWin components (themes, plasmoids, runners, data engines)
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
+kde-plasma/plasma-workspace:json - Enable JSON support via dev-libs/qjson
+kde-plasma/plasma-workspace:pim - KDE PIM integration via kde-apps/kdepimlibs
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
