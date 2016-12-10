@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RDEPEND=">=gnome-base/gnome-vfs-2
 	>=dev-perl/glib-perl-1.120"
 DEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-Depends-0.2
-	>=dev-perl/extutils-pkgconfig-1.03
+	>=dev-perl/ExtUtils-PkgConfig-1.03
 	virtual/pkgconfig"
 
 SRC_TEST=skip
