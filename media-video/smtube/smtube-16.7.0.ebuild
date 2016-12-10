@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	|| ( media-video/smplayer[streaming] media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )"
 
 gen_translation() {
-	lrelease ${PN}_${1}.ts
+	lrelease -qt=qt5 ${PN}_${1}.ts
 	eend $? || die "failed to generate $1 translation"
 }
 
