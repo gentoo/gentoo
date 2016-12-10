@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
-	dev-perl/extutils-pkgconfig
+	dev-perl/ExtUtils-PkgConfig
 	dev-perl/ExtUtils-CChecker
 	>=virtual/perl-ExtUtils-Constant-0.230.0
 	test? (
