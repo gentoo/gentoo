@@ -6092,7 +6092,7 @@ dev-perl/Mojolicious 6.610.0 7.110.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
-dev-perl/Moo 2.0.2 2.2.5: Minimalist Object Orientation (with Moose compatiblity)
+dev-perl/Moo 2.0.2 2.2.5 2.3.0: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
@@ -6422,6 +6422,7 @@ dev-perl/Sub-Identify 0.40.0-r1 0.120.0: Retrieve names of code references
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
+dev-perl/Sub-Quote 2.3.1: efficient generation of subroutines via string eval
 dev-perl/Sub-Uplevel 0.250.0 0.260.0: Apparently run a function in a higher stack frame
 dev-perl/Switch 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
