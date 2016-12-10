@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.205.0
-	>=dev-perl/extutils-pkgconfig-1.70.0
+	>=dev-perl/ExtUtils-PkgConfig-1.70.0
 	virtual/pkgconfig
 "
 

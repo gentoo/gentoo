@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
-	>=dev-perl/extutils-pkgconfig-1.030.0
+	>=dev-perl/ExtUtils-PkgConfig-1.030.0
 "
 
 #RDEPEND+=" || ( <x11-libs/gtk+-2.22.1-r1[jpeg] x11-libs/gdk-pixbuf[jpeg] )"
