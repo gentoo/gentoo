@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
-	>=dev-perl/extutils-pkgconfig-1.30.0
+	>=dev-perl/ExtUtils-PkgConfig-1.30.0
 "
 
 src_test(){
