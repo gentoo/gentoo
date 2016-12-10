@@ -7,12 +7,12 @@ inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.2.7
-BV_AMD64=1.3.9
+BV_AMD64=1.3.12
 BV_PPC=1.2.7
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
 BV_ARM=1.3.9
-BV_ARM64=1.3.9
+BV_ARM64=1.3.11
 BV_PPC_MACOS=1.0.47
 BV_X86_MACOS=1.1.6
 BV_X64_MACOS=1.2.11
@@ -98,9 +98,11 @@ src_prepare() {
 	# bug #468482
 	eapply "${FILESDIR}"/concurrency-test-1.2.6.patch
 	# bugs #486552, #527666, #517004
-	eapply "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
+	eapply "${FILESDIR}"/bsd-sockets-test-1.3.12.patch
 	# bugs #560276, #561018
 	eapply "${FILESDIR}"/sb-posix-test-1.2.15.patch
+	# bug #599902
+	eapply "${FILESDIR}"/${PN}-1.3.11-config.patch
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
