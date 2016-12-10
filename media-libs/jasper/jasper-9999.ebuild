@@ -41,18 +41,25 @@ DEPEND="${RDEPEND}
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DJAS_ENABLE_AUTOMATIC_DEPENDENCIES=OFF
 		-DALLOW_IN_SOURCE_BUILD=OFF
 		-DBASH_PROGRAM="${EPREFIX}"/bin/bash
 		-DJAS_ENABLE_ASAN=OFF
-		-DJAS_ENABLE_LIBJPEG=$(usex jpeg)
 		-DJAS_ENABLE_LSAN=OFF
 		-DJAS_ENABLE_MSAN=OFF
-		-DJAS_ENABLE_OPENGL=$(usex opengl)
 		-DJAS_ENABLE_SHARED=ON
 		-DJAS_ENABLE_STRICT=ON
 		-DJAS_ENABLE_USAN=OFF
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
+		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
+
+		# JPEG
+		-DJAS_ENABLE_LIBJPEG=$(usex jpeg)
+		-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=$(usex !jpeg)
+
+		# OpenGL
+		-DJAS_ENABLE_OPENGL=$(usex opengl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_OpenGL=$(usex !opengl)
+
+		# Doxygen
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
 	)
 	cmake-utils_src_configure
