@@ -7046,6 +7046,7 @@ dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6 1.5.7 1.6.4: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
+dev-python/QtPy 1.1.2: Abtraction layer for PyQt5/PyQt4/PySide
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
@@ -7475,12 +7476,13 @@ dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Geve
 dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
+dev-python/ginga 2.6.0: Astronomical image toolkit for Python
 dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2 2.0.5 2.0.6: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.13.1 0.18.0: A library for glance
 dev-python/globre 0.1.2-r1 0.1.3 0.1.4: A glob matching library, providing an interface similar to the 're' module
-dev-python/glueviz 0.8.1 0.8.2: Python library to explore relationships within and among related datasets
+dev-python/glueviz 0.8.2 0.9.1: Python library to explore relationships within and among related datasets
 dev-python/gmpy 2.0.4 2.0.6 2.0.7 2.0.8: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -8327,7 +8329,7 @@ dev-python/robotframework-selenium2library 1.6.0 1.7.2 1.7.4 1.8.0: Web testing 
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2: A test library for Robot Framework that enables SSH and SFTP
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
-dev-python/rootpy 0.7.1 0.8.0: Pythonic layer on top of the ROOT framework's PyROOT bindings
+dev-python/rootpy 0.7.1 0.8.0 0.8.3: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.10.3: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
@@ -8409,6 +8411,7 @@ dev-python/soya 0.14-r1: A high-level 3D engine for Python, designed with games 
 dev-python/spark-parser 1.4.0 1.4.3 1.5.1-r1: An Early-Algorithm Context-free grammar Parser
 dev-python/sparql-wrapper 1.6.0 1.6.4 1.7.6: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
+dev-python/spectral-cube 0.4.0: Manipulate astronomical data cubes with Python
 dev-python/specutils 0.2 0.2.2: Python package for astronomy spectral operations
 dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1 1.3.5: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
@@ -8464,6 +8467,7 @@ dev-python/tabulate 0.7.2 0.7.3 0.7.5 0.7.7: Pretty-print tabular data
 dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
 dev-python/taskflow 1.30.0 2.6.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tdaemon 0.1.6: Test Daemon
+dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
 dev-python/tempest-lib 1.0.0: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3 0.5.3-r1: A very small text templating language
 dev-python/tempora 1.4 1.6.1: Objects and routines pertaining to date and time
