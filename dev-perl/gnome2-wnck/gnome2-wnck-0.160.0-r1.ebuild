@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,5 +22,5 @@ RDEPEND=">=dev-perl/glib-perl-1.180.0
 	>=dev-perl/gtk2-perl-1.42.0
 	>=x11-libs/libwnck-2.20:1"
 DEPEND="${RDEPEND}
-	>=dev-perl/extutils-pkgconfig-1.03
+	>=dev-perl/ExtUtils-PkgConfig-1.03
 	>=dev-perl/ExtUtils-Depends-0.2"
