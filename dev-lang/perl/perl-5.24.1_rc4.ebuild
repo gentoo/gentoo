@@ -337,7 +337,9 @@ src_configure() {
 	mydb='U'
 	if use gdbm ; then
 		mygdbm='D'
-		myndbm='D'
+		if use berkdb ; then
+			myndbm='D'
+		fi
 	fi
 	if use berkdb ; then
 		mydb='D'
