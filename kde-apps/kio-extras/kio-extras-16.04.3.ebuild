@@ -54,7 +54,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kded)
 	!<kde-apps/kcontrol-15.08.0-r1:4
-	!<kde-frameworks/kactivities-5.20.0
+	!<kde-frameworks/kactivities-5.20.0:5
 "
 DEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info
