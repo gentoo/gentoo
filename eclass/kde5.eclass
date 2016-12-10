@@ -720,11 +720,11 @@ kde5_pkg_postinst() {
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-base/plasma-workspace
+		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
 		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-base/plasma-workspace'; then
+				has_version 'kde-plasma/plasma-workspace:4'; then
 			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-base/plasma-workspace\","
+			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
 			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
 			ewarn "Please consider upgrading to Plasma 5."
 		fi

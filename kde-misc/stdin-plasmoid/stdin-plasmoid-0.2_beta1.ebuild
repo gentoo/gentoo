@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit kde4-base versionator
 
 MY_P="$(replace_version_separator 2 '-')"
 
-DESCRIPTION="KDE4 plasmoid for executing a process and capturing its stderr and stdout"
+DESCRIPTION="Plasmoid for executing a process and capturing its stderr and stdout"
 HOMEPAGE="http://www.kde-look.org/content/show.php/STDIN+Plasmoid?content=92309"
 SRC_URI="http://www.kde-look.org/CONTENT/content-files/92309-${MY_P}.tar.bz2"
 
@@ -18,7 +18,7 @@ SLOT="4"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 
 S="${WORKDIR}/${MY_P}"

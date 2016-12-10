@@ -20,5 +20,5 @@ DEPEND="
 	dev-perl/Date-Manip
 "
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "

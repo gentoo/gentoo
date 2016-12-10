@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit kde4-base
 
-DESCRIPTION="KDE4 plasmoid for monitoring emerge progress"
+DESCRIPTION="Plasmoid for monitoring emerge progress"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=103928"
 SRC_URI="http://dev.gentooexperimental.org/~hwoarang/projects/plasma-emergelog/${P}.tar.gz"
 
@@ -18,7 +18,7 @@ SLOT="4"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 
 PATCHES=(

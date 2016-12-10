@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXext
