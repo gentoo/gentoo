@@ -5,7 +5,7 @@
 EAPI=6
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit gnome2 multilib-minimal
+inherit autotools gnome2 multilib-minimal
 
 DESCRIPTION="User interface libraries for gnome print"
 HOMEPAGE="https://www.gnome.org/"
