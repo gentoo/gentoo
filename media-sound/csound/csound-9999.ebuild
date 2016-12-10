@@ -6,13 +6,19 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib java-pkg-opt-2 cmake-utils toolchain-funcs versionator python-single-r1
 
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/csound/csound.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/csound/csound/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="A sound design and signal processing system providing facilities for composition and performance"
 HOMEPAGE="http://csound.github.io/"
-SRC_URI="https://github.com/csound/csound/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="+alsa beats chua csoundac curl +cxx debug double-precision dssi examples
 fltk +fluidsynth +image jack java keyboard linear lua luajit nls osc openmp
 portaudio portmidi pulseaudio python samples score static-libs stk tcl test
@@ -95,10 +101,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}"/csound-6.05-python.patch
-		"${FILESDIR}"/${P}-fltk-headers.patch
-	)
+	local PATCHES=( "${FILESDIR}"/csound-6.05-python.patch )
 
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
