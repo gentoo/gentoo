@@ -8302,7 +8302,7 @@ dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19 2016.01.10: Alternative regular expression module to replace re
 dev-python/regions 0.1: Astropy affiliated package for region handling
-dev-python/rencode 1.0.3 1.0.3-r1: similar to bencode from the BitTorrent project
+dev-python/rencode 1.0.3 1.0.3-r1 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
@@ -13395,7 +13395,7 @@ media-sound/codecgraph 20120114: Generates a graph based on the ALSA description
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
 media-sound/cplay 1.50: A Curses front-end for various audio players
-media-sound/csound 6.06.0 6.07.0 6.08.0: A sound design and signal processing system providing facilities for composition and performance
+media-sound/csound 6.08.0 9999: A sound design and signal processing system providing facilities for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
@@ -13662,7 +13662,7 @@ media-sound/sooperlooper 1.7.3-r1: Live looping sampler with immediate loop reco
 media-sound/sound-juicer 3.20.0 3.22.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.2.2: Frontend to various audio converters
-media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
+media-sound/sox 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
@@ -18116,7 +18116,7 @@ www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorde
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
-www-misc/zoneminder 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
+www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.170: Adobe Flash Player
 www-plugins/chrome-binary-plugins 55.0.2883.75 56.0.2924.18_alpha 56.0.2924.21_beta: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
@@ -18644,7 +18644,7 @@ x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewe
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
 x11-misc/shared-mime-info 1.4 1.6 1.7 1.8: The Shared MIME-info Database specification
-x11-misc/shutter 0.93.1-r1 0.93.1-r2: Feature-rich screenshot program
+x11-misc/shutter 0.93.1-r2: Feature-rich screenshot program
 x11-misc/shutterbug 1.7.45 1.7.47 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
 x11-misc/simpleswitcher 9999: lightweight EWMH window switcher with features and looks of dmenu
@@ -19222,7 +19222,7 @@ x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manage
 x11-wm/wmii 3.9.2-r4: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12: Third party extensions for xmonad
-x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4 0.17.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4 0.17.5 0.17.6: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
