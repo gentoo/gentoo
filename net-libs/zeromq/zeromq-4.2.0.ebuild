@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A brokerless kernel"
 HOMEPAGE="http://www.zeromq.org/"
-SRC_URI="https://github.com/zeromq/zeromq4-1/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/zeromq/libzmq/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="pgm static-libs test"
+IUSE="pgm +sodium static-libs test"
 
 RDEPEND="
-	dev-libs/libsodium:=
+	sodium? ( dev-libs/libsodium:= )
 	pgm? ( =net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
 	app-text/asciidoc
@@ -36,8 +36,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-shared
 		$(use_enable static-libs static)
-		--with-relaxed
-		--with-libsodium
+		$(use_with sodium libsodium)
 		$(use_with pgm)
 	)
 	econf "${myeconfargs[@]}"
@@ -52,5 +51,5 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}"usr/lib* -name '*.la' -o -name '*.a' -delete || die
 }
