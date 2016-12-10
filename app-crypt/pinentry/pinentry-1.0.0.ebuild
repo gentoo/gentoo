@@ -70,17 +70,16 @@ src_configure() {
 	use static && append-ldflags -static
 	[[ "$(gcc-major-version)" -ge 5 ]] && append-cxxflags -std=gnu++11
 
-	QT_MOC=""
 	if use qt4; then
-		myconf+=( --enable-pinentry-qt
-			  --disable-pinentry-qt5
-			)
-		QT_MOC="$(qt4_get_bindir)"/moc
-		# Issues finding qt on multilib systems
+		myconf+=(
+			--enable-pinentry-qt
+			--disable-pinentry-qt5
+		)
+		export MOC="$(qt4_get_bindir)"/moc
 		export QTLIB="$(qt4_get_libdir)"
 	elif use qt5; then
 		myconf+=( --enable-pinentry-qt )
-		QT_MOC="$(qt5_get_bindir)"/moc
+		export MOC="$(qt5_get_bindir)"/moc
 		export QTLIB="$(qt5_get_libdir)"
 	else
 		myconf+=( --disable-pinentry-qt )
@@ -95,8 +94,7 @@ src_configure() {
 		$(use_with caps libcap) \
 		$(use_enable gnome-keyring libsecret) \
 		$(use_enable gnome-keyring pinentry-gnome3) \
-		"${myconf[@]}" \
-		MOC="${QT_MOC}"
+		"${myconf[@]}"
 }
 
 src_install() {
