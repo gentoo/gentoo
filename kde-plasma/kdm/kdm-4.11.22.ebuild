@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 KMNAME="kde-workspace"
 inherit systemd kde4-meta flag-o-matic user
 
-DESCRIPTION="KDE login manager, similar to xdm and gdm"
+DESCRIPTION="Login manager by KDE, similar to xdm and gdm"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug +consolekit kerberos pam systemd"
 

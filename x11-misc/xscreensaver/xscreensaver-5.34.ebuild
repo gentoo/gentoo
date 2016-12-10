@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	new-login? (
 		gdm? ( gnome-base/gdm )
-		!gdm? ( || ( x11-misc/lightdm kde-base/kdm ) )
+		!gdm? ( x11-misc/lightdm )
 		)
 	opengl? (
 		virtual/glu

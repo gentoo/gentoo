@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}
 	sys-apps/util-linux
 	pgm? ( virtual/pkgconfig )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-dl-backport.patch
+)
+
 src_prepare() {
 	sed \
 		-e '/libzmq_werror=/s:yes:no:g' \
@@ -51,5 +55,5 @@ src_test() {
 
 src_install() {
 	default
-	find "${ED}"usr/lib* -name '*.la' -o -name '*.a' -delete || die
+	find "${ED}"usr/lib* -name '*.la' -delete || die
 }

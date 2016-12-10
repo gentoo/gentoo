@@ -50,3 +50,4 @@ move kde-base/ksmserver kde-plasma/ksmserver
 move kde-base/krunner kde-plasma/krunner
 move kde-base/kdebase-pam kde-plasma/kdebase-pam
 move kde-base/kactivities kde-frameworks/kactivities
+move kde-base/kdm kde-plasma/kdm

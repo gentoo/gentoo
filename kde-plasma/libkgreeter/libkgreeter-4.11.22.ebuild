@@ -13,7 +13,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	!<kde-base/kdm-4.11.17-r1:4
+	!<kde-plasma/kdm-4.11.17-r1:4
 "
 
 RDEPEND="${DEPEND}"

@@ -90,6 +90,5 @@ pkg_postinst() {
 	elog "4.b Checking installed DMs..."
 	has_version "x11-misc/sddm" && check_dm "SDDM" "/etc/pam.d/sddm"
 	has_version "x11-misc/lightdm" && check_dm "LightDM" "/etc/pam.d/lightdm"
-	has_version "kde-base/kdm" && check_dm "KDM" "/etc/pam.d/kde"
 	elog
 }
