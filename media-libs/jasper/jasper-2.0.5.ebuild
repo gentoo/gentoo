@@ -49,7 +49,7 @@ multilib_src_configure() {
 		-DJAS_ENABLE_SHARED=ON
 		-DJAS_ENABLE_STRICT=ON
 		-DJAS_ENABLE_USAN=OFF
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
+		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
 		# JPEG
 		-DJAS_ENABLE_LIBJPEG=$(usex jpeg)
