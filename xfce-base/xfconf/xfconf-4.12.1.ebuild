@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	perl? (
 		dev-perl/ExtUtils-Depends
-		dev-perl/extutils-pkgconfig
+		dev-perl/ExtUtils-PkgConfig
 	)"
 
 pkg_setup() {
