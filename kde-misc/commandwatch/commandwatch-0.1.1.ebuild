@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit kde4-base
 
-DESCRIPTION="KDE4 plasmoid which periodically runs a system command and displays its output"
+DESCRIPTION="Plasmoid which periodically runs a system command and displays its output"
 HOMEPAGE="http://www.kde-look.org/content/show.php/Command+Watch?content=84523"
 SRC_URI="http://www.kde-look.org/CONTENT/content-files/84523-${P}.tar.bz2"
 
@@ -16,5 +16,5 @@ SLOT="4"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "

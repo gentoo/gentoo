@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ SLOT="4"
 SRC_URI="http://kde-look.org/CONTENT/content-files/${CONTENT_NUMBER}-photo-of-the-day.tar.gz -> ${CONTENT_NUMBER}-photo-of-the-day-${PV}.tar.gz"
 
 RDEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

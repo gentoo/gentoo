@@ -7,6 +7,8 @@
 	</maintainer>
 	<use>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
+		<flag name="json">Enable JSON support via <pkg>dev-libs/qjson</pkg></flag>
+		<flag name="pim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
 		<flag name="prison">Enable support for barcodes/QRcodes</flag>
 		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
 	</use>

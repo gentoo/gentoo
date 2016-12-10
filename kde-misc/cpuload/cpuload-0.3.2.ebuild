@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit kde4-base
 
-DESCRIPTION="KDE4 plasmoid that shows CPU load on the screen"
+DESCRIPTION="Plasma 4 plasmoid that shows CPU load on the screen"
 HOMEPAGE="http://www.kde-look.org/content/show.php/cpuload?content=86628"
 SRC_URI="http://kde-look.org/CONTENT/content-files/86628-${P}.tar.gz"
 
@@ -16,7 +16,7 @@ SLOT="4"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 RDEPEND="${DEPEND}"
 

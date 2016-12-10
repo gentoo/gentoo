@@ -26,7 +26,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 
 # Fails 2 out of 6, check later again.

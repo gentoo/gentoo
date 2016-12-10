@@ -22,7 +22,7 @@ DEPEND="
 	kde-plasma/libplasmaclock:4
 "
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 
 src_prepare() {
