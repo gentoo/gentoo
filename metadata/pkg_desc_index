@@ -18704,7 +18704,7 @@ x11-misc/xbattbar 1.4.3 1.4.4 1.4.5 1.4.8: Advanced Power Management battery sta
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r1: A simple interactive calendar program with a notebook capability
-x11-misc/xcalib 0.8: xcalib is a tiny monitor calibration loader for X.org
+x11-misc/xcalib 0.9.0_p20161210: A tiny monitor calibration loader for X.org
 x11-misc/xcape 1.0 1.1: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.4.0: View and manage contents of your wine cellar
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
