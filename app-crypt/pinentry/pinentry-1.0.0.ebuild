@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools qmake-utils multilib eutils flag-o-matic toolchain-funcs
 
@@ -55,9 +55,13 @@ REQUIRED_USE="
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.2-ncurses.patch"
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.8.2-ncurses.patch"
-	epatch_user
+	default
 	eautoreconf
 }
 
