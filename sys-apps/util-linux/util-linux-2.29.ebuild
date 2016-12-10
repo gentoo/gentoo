@@ -69,6 +69,11 @@ src_prepare() {
 		po/update-potfiles
 		eautoreconf
 	fi
+	# Undo bad ncurses handling by upstream. #601530
+	sed -i -E \
+		-e '/NCURSES_/s:(ncursesw?)[56]-config:$PKG_CONFIG \1:' \
+		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
+		configure || die
 	elibtoolize
 }
 

@@ -40,17 +40,11 @@
 # }
 # @CODE
 
-inherit multilib
-
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
+	0|2|3|4|5)
+		inherit multilib
 		;;
 	6)
-		ewarn
-		ewarn "EAPI=${EAPI} is not supported by depend.apache.eclass."
-		ewarn "This means that ${CATEGORY}/${PF} is most likely buggy."
-		ewarn "Please file a report on https://bugs.gentoo.org/"
-		ewarn
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
@@ -84,7 +78,8 @@ esac
 # @ECLASS-VARIABLE: APACHE_BASEDIR
 # @DESCRIPTION:
 # Path to the server root directory.
-# This variable is set by the want/need_apache functions.
+# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_CONFDIR
 # @DESCRIPTION:
@@ -104,7 +99,8 @@ esac
 # @ECLASS-VARIABLE: APACHE_MODULESDIR
 # @DESCRIPTION:
 # Path where we install modules.
-# This variable is set by the want/need_apache functions.
+# This variable is set by the want/need_apache functions (EAPI=0 through 5)
+# or depend.apache_pkg_setup (EAPI=6 and later).
 
 # @ECLASS-VARIABLE: APACHE_DEPEND
 # @DESCRIPTION:
@@ -141,10 +137,19 @@ _init_apache2() {
 	APACHE_BIN="/usr/sbin/apache2"
 	APACHE_CTL="/usr/sbin/apache2ctl"
 	APACHE_INCLUDEDIR="/usr/include/apache2"
-	APACHE_BASEDIR="/usr/$(get_libdir)/apache2"
 	APACHE_CONFDIR="/etc/apache2"
 	APACHE_MODULES_CONFDIR="${APACHE_CONFDIR}/modules.d"
 	APACHE_VHOSTS_CONFDIR="${APACHE_CONFDIR}/vhosts.d"
+
+	case ${EAPI:-0} in
+		0|2|3|4|5)
+			_init_apache2_late
+			;;
+	esac
+}
+
+_init_apache2_late() {
+	APACHE_BASEDIR="/usr/$(get_libdir)/apache2"
 	APACHE_MODULESDIR="${APACHE_BASEDIR}/modules"
 }
 
@@ -171,13 +176,28 @@ depend.apache_pkg_setup() {
 	fi
 
 	local myiuse=${1:-apache2}
-	if has ${myiuse} ${IUSE}; then
-		if use ${myiuse}; then
-			_init_apache2
-		else
-			_init_no_apache
-		fi
-	fi
+
+	case ${EAPI:-0} in
+		0|2|3|4|5)
+			if has ${myiuse} ${IUSE}; then
+				if use ${myiuse}; then
+					_init_apache2
+				else
+					_init_no_apache
+				fi
+			fi
+			;;
+		*)
+			if in_iuse ${myiuse}; then
+				if use ${myiuse}; then
+					_init_apache2
+					_init_apache2_late
+				else
+					_init_no_apache
+				fi
+			fi
+			;;
+	esac
 }
 
 # @FUNCTION: want_apache
@@ -223,6 +243,23 @@ want_apache2_2() {
 	IUSE="${IUSE} ${myiuse}"
 	DEPEND="${DEPEND} ${myiuse}? ( ${APACHE2_2_DEPEND} )"
 	RDEPEND="${RDEPEND} ${myiuse}? ( ${APACHE2_2_DEPEND} )"
+}
+
+# @FUNCTION: want_apache2_4
+# @USAGE: [myiuse]
+# @DESCRIPTION:
+# An ebuild calls this to get the dependency information for optional
+# apache-2.4.x support. If the myiuse parameter is not given it defaults to
+# apache2.
+# An ebuild should additionally call depend.apache_pkg_setup() in pkg_setup()
+# with the same myiuse parameter.
+want_apache2_4() {
+	debug-print-function $FUNCNAME $*
+
+	local myiuse=${1:-apache2}
+	IUSE="${IUSE} ${myiuse}"
+	DEPEND="${DEPEND} ${myiuse}? ( ${APACHE2_4_DEPEND} )"
+	RDEPEND="${RDEPEND} ${myiuse}? ( ${APACHE2_4_DEPEND} )"
 }
 
 # @FUNCTION: need_apache
@@ -290,7 +327,13 @@ has_apache() {
 has_apache_threads() {
 	debug-print-function $FUNCNAME $*
 
-	if ! built_with_use www-servers/apache threads; then
+	case ${EAPI:-0} in
+		0|1)
+			die "depend.apache.eclass: has_apache_threads is not supported for EAPI=${EAPI:-0}"
+			;;
+	esac
+
+	if ! has_version 'www-servers/apache[threads]'; then
 		return
 	fi
 
@@ -313,14 +356,20 @@ has_apache_threads() {
 has_apache_threads_in() {
 	debug-print-function $FUNCNAME $*
 
-	if ! built_with_use www-servers/apache threads; then
+	case ${EAPI:-0} in
+		0|1)
+			die "depend.apache.eclass: has_apache_threads_in is not supported for EAPI=${EAPI:-0}"
+			;;
+	esac
+
+	if ! has_version 'www-servers/apache[threads]'; then
 		return
 	fi
 
 	local myforeign="$1"
 	local myflag="${2:-threads}"
 
-	if ! built_with_use ${myforeign} ${myflag}; then
+	if ! has_version "${myforeign}[${myflag}]"; then
 		echo
 		eerror "You need to enable USE flag '${myflag}' in ${myforeign} to"
 		eerror "build a thread-safe version of ${CATEGORY}/${PN} for use"
