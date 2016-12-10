@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
+# Reverse dependencies need testing, wrt bug #580760
+>=net-libs/rb_libtorrent-1.1.1
+
 # Brian Evans <grknight@gentoo.org> (09 Dec 2016)
 # Masked for removal, wrt bug 602164.
 # See https://github.com/PHP-FFMpeg/PHP-FFMpeg for a code based replacement
