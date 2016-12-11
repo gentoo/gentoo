@@ -154,16 +154,25 @@ selinux-policy-2_src_prepare() {
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 		cd "${S}"
-		EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-		EPATCH_SUFFIX="patch" \
-		EPATCH_SOURCE="${WORKDIR}" \
-		EPATCH_FORCE="yes" \
-		epatch
+		if [[ ${EAPI:-0} == 5 ]]; then
+			EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
+			EPATCH_SUFFIX="patch" \
+			EPATCH_SOURCE="${WORKDIR}" \
+			EPATCH_FORCE="yes" \
+			epatch
+		else
+			einfo "Applying SELinux policy updates ... "
+			eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
+		fi
 	fi
 
 	# Call in epatch_user. We do this early on as we start moving
 	# files left and right hereafter.
-	epatch_user
+	if [[ ${EAPI:-0} == 5 ]]; then
+		epatch_user
+	else
+		eapply_user
+	fi
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
@@ -183,7 +192,11 @@ selinux-policy-2_src_prepare() {
 		cd "${S}/refpolicy/policy/modules"
 		for POLPATCH in ${POLICY_PATCH[@]};
 		do
-			epatch "${POLPATCH}"
+			if [[ ${EAPI:-0} == 5 ]]; then
+				epatch "${POLPATCH}"
+			else
+				eapply "${POLPATCH}"
+			fi
 		done
 	fi
 
