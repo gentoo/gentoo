@@ -8,7 +8,7 @@ KMNAME="kde-workspace"
 KMNOMODULE="true"
 inherit kde4-meta prefix
 
-DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
+DESCRIPTION="Script which starts a complete Plasma session, and associated scripts"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="crash-reporter +handbook minimal +wallpapers"
 

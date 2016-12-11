@@ -53,3 +53,4 @@ move kde-base/kactivities kde-frameworks/kactivities
 move kde-base/kdm kde-plasma/kdm
 move kde-base/plasma-workspace kde-plasma/plasma-workspace
 move dev-perl/extutils-pkgconfig dev-perl/ExtUtils-PkgConfig
+move kde-base/kdebase-startkde kde-plasma/kdebase-startkde
