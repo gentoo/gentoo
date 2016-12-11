@@ -1,5 +1,5 @@
 # -*- mode: shell-script; -*-
-# RAP specific patches that is pending upstream.
+# RAP specific patches pending upstream:
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 # gcc: https://gcc.gnu.org/ml/gcc-patches/2014-12/msg00331.html
 
