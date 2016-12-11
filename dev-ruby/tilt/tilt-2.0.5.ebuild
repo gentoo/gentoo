@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/rtomayko/tilt"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 # Block on some of the potential test dependencies. These dependencies
@@ -28,11 +28,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/erubis
 	dev-ruby/nokogiri
 	!!<dev-ruby/maruku-0.7.2 )"
-
-# Most dependencies are optional: skip haml and radius for ruby20 and ruby21
-# because haml depends on rails.
-USE_RUBY="ruby20 ruby21 ruby22" ruby_add_bdepend "test? ( dev-ruby/haml )"
-USE_RUBY="ruby20 ruby21" ruby_add_bdepend "test? ( dev-ruby/radius )"
 
 ruby_add_rdepend ">=dev-ruby/builder-2.0.0:*
 	!!<dev-ruby/tilt-1.4.1-r2:0"
