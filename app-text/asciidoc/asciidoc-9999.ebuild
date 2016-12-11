@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
 
 [ "$PV" == "9999" ] && inherit git-r3 autotools
-inherit readme.gentoo python-single-r1
+inherit readme.gentoo-r1 python-single-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://www.methods.co.nz/asciidoc/"
@@ -101,4 +101,8 @@ src_test() {
 	local -x ASCIIDOC_PY=asciidoc.py
 	"${PYTHON}" tests/test${PN}.py update || die
 	"${PYTHON}" tests/test${PN}.py run || die
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
