@@ -87,12 +87,10 @@ inherit eutils ${extra_eclass}
 IUSE=""
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
-if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]];
-then
+if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 		https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
-elif [[ "${BASEPOL}" != "9999" ]];
-then
+elif [[ "${BASEPOL}" != "9999" ]]; then
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2"
 else
 	SRC_URI=""
@@ -105,8 +103,7 @@ PATCHBUNDLE="${DISTDIR}/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
 
 # Modules should always depend on at least the first release of the
 # selinux-base-policy for which they are generated.
-if [[ -n ${BASEPOL} ]];
-then
+if [[ -n ${BASEPOL} ]]; then
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${BASEPOL}"
 else
@@ -128,8 +125,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg
 # @DESCRIPTION:
 # Unpack the policy sources as offered by upstream (refpolicy).
 selinux-policy-2_src_unpack() {
-	if [[ "${BASEPOL}" != "9999" ]];
-	then
+	if [[ "${BASEPOL}" != "9999" ]]; then
 		unpack ${A}
 	else
 		git-r3_src_unpack
@@ -156,8 +152,7 @@ selinux-policy-2_src_prepare() {
 	cd "${S}/refpolicy/policy/modules" && mkdir 3rd_party;
 
 	# Patch the sources with the base patchbundle
-	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]];
-	then
+	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 		cd "${S}"
 		EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
 		EPATCH_SUFFIX="patch" \
@@ -172,8 +167,7 @@ selinux-policy-2_src_prepare() {
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_FILES} ]];
-	then
+	   [[ -n ${POLICY_FILES} ]]; then
 	    add_interfaces=1;
 		cd "${S}/refpolicy/policy/modules"
 		for POLFILE in ${POLICY_FILES[@]};
@@ -185,8 +179,7 @@ selinux-policy-2_src_prepare() {
 	# Apply the additional patches refered to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
 	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_PATCH} ]];
-	then
+	   [[ -n ${POLICY_PATCH} ]]; then
 		cd "${S}/refpolicy/policy/modules"
 		for POLPATCH in ${POLICY_PATCH[@]};
 		do
@@ -199,8 +192,7 @@ selinux-policy-2_src_prepare() {
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.te) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.cil) $modfiles"
-		if [ ${add_interfaces} -eq 1 ];
-		then
+		if [[ ${add_interfaces} -eq 1 ]]; then
 			modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.if) $modfiles"
 		fi
 	done
@@ -244,14 +236,13 @@ selinux-policy-2_src_install() {
 		for j in ${MODS}; do
 			einfo "Installing ${i} ${j} policy package"
 			insinto ${BASEDIR}/${i}
-			if [ -f "${S}/${i}/${j}.pp" ] ; then
+			if [[ -f "${S}/${i}/${j}.pp" ]] ; then
 			  doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
-			elif [ -f "${S}/${i}/${j}.cil" ] ; then
+			elif [[ -f "${S}/${i}/${j}.cil" ]] ; then
 			  doins "${S}"/${i}/${j}.cil || die "Failed to add ${j}.cil to ${i}"
 			fi
 
-			if [[ "${POLICY_FILES[@]}" == *"${j}.if"* ]];
-			then
+			if [[ "${POLICY_FILES[@]}" == *"${j}.if"* ]]; then
 				insinto ${BASEDIR}/${i}/include/3rd_party
 				doins "${S}"/${i}/${j}.if || die "Failed to add ${j}.if to ${i}"
 			fi
@@ -268,8 +259,7 @@ selinux-policy-2_pkg_postinst() {
 	local COMMAND
 
 	for i in ${POLICY_TYPES}; do
-		if [ "${i}" == "strict" ] && [ "${MODS}" = "unconfined" ];
-		then
+		if [[ "${i}" == "strict" ]] && [[ "${MODS}" = "unconfined" ]]; then
 			einfo "Ignoring loading of unconfined module in strict module store.";
 			continue;
 		fi
@@ -277,15 +267,15 @@ selinux-policy-2_pkg_postinst() {
 
 		cd /usr/share/selinux/${i} || die "Could not enter /usr/share/selinux/${i}"
 		for j in ${MODS} ; do
-			if [ -f "${j}.pp" ] ; then
+			if [[ -f "${j}.pp" ]] ; then
 				COMMAND="${j}.pp ${COMMAND}"
-			elif [ -f "${j}.cil" ] ; then
+			elif [[ -f "${j}.cil" ]] ; then
 				COMMAND="${j}.cil ${COMMAND}"
 			fi
 		done
+
 		semodule -s ${i} -i ${COMMAND}
-		if [ $? -ne 0 ];
-		then
+		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
 			if [ "${i}" == "targeted" ];
 			then
@@ -293,8 +283,7 @@ selinux-policy-2_pkg_postinst() {
 			else
 				semodule -s ${i} -b base.pp -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
 			fi
-			if [ $? -ne 0 ];
-			then
+			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
 				ewarn ""
 				ewarn "If this is *not* the last SELinux module package being installed,"
@@ -321,13 +310,13 @@ selinux-policy-2_pkg_postinst() {
 	done
 
 	# Relabel depending packages
-	PKGSET="";
-	if [ -x /usr/bin/qdepends ] ; then
+	local PKGSET="";
+	if [[ -x /usr/bin/qdepends ]] ; then
 	  PKGSET=$(/usr/bin/qdepends -Cq -r -Q ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
-	elif [ -x /usr/bin/equery ] ; then
+	elif [[ -x /usr/bin/equery ]] ; then
 	  PKGSET=$(/usr/bin/equery -Cq depends ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
 	fi
-    if [ -n "${PKGSET}" ] ; then
+    if [[ -n "${PKGSET}" ]] ; then
 	  rlpkg ${PKGSET};
 	fi
 }
@@ -338,8 +327,7 @@ selinux-policy-2_pkg_postinst() {
 # deactivating the policy on the system.
 selinux-policy-2_pkg_postrm() {
 	# Only if we are not upgrading
-	if [[ -z "${REPLACED_BY_VERSION}" ]];
-	then
+	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
 		# build up the command in the case of multiple modules
 		local COMMAND
 		for i in ${MODS}; do
@@ -350,8 +338,7 @@ selinux-policy-2_pkg_postrm() {
 			einfo "Removing the following modules from the $i module store: ${MODS}"
 
 			semodule -s ${i} ${COMMAND}
-			if [ $? -ne 0 ];
-			then
+			if [[ $? -ne 0 ]]; then
 				ewarn "SELinux module unload failed.";
 			else
 				einfo "SELinux modules unloaded succesfully."
