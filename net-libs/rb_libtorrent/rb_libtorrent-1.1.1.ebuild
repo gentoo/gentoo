@@ -19,7 +19,7 @@ HOMEPAGE="http://libtorrent.org"
 SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/8"
+SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
