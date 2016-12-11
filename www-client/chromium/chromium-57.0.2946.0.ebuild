@@ -525,16 +525,16 @@ src_compile() {
 }
 
 src_install() {
-	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${CHROMIUM_SUFFIX}"
+	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser"
 	exeinto "${CHROMIUM_HOME}"
-	doexe out/Release/chrome || die
+	doexe out/Release/chrome
 
 	if use suid; then
-		newexe out/Release/chrome_sandbox chrome-sandbox || die
+		newexe out/Release/chrome_sandbox chrome-sandbox
 		fperms 4755 "${CHROMIUM_HOME}/chrome-sandbox"
 	fi
 
-	doexe out/Release/chromedriver || die
+	doexe out/Release/chromedriver
 	use widevine && doexe out/Release/libwidevinecdmadapter.so
 
 	# if ! use arm; then
@@ -545,45 +545,37 @@ src_install() {
 	# fi
 
 	local sedargs=( -e "s:/usr/lib/:/usr/$(get_libdir)/:g" )
-	if [[ -n ${CHROMIUM_SUFFIX} ]]; then
-		sedargs+=(
-			-e "s:chromium-browser:chromium-browser${CHROMIUM_SUFFIX}:g"
-			-e "s:chromium.desktop:chromium${CHROMIUM_SUFFIX}.desktop:g"
-			-e "s:plugins:plugins --user-data-dir=\${HOME}/.config/chromium${CHROMIUM_SUFFIX}:"
-		)
-	fi
 	sed "${sedargs[@]}" "${FILESDIR}/chromium-launcher-r3.sh" > chromium-launcher.sh || die
 	doexe chromium-launcher.sh
 
 	# It is important that we name the target "chromium-browser",
 	# xdg-utils expect it; bug #355517.
-	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium-browser${CHROMIUM_SUFFIX} || die
+	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium-browser
 	# keep the old symlink around for consistency
-	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium${CHROMIUM_SUFFIX} || die
+	dosym "${CHROMIUM_HOME}/chromium-launcher.sh" /usr/bin/chromium
 
-	dosym "${CHROMIUM_HOME}/chromedriver" /usr/bin/chromedriver${CHROMIUM_SUFFIX} || die
+	dosym "${CHROMIUM_HOME}/chromedriver" /usr/bin/chromedriver
 
 	# Allow users to override command-line options, bug #357629.
-	dodir /etc/chromium || die
 	insinto /etc/chromium
-	newins "${FILESDIR}/chromium.default" "default" || die
+	newins "${FILESDIR}/chromium.default" "default"
 
 	pushd out/Release/locales > /dev/null || die
 	chromium_remove_language_paks
 	popd
 
 	insinto "${CHROMIUM_HOME}"
-	doins out/Release/*.bin || die
-	doins out/Release/*.pak || die
+	doins out/Release/*.bin
+	doins out/Release/*.pak
 
 	# Needed by bundled icu
 	doins out/Release/icudtl.dat
 
-	doins -r out/Release/locales || die
-	doins -r out/Release/resources || die
+	doins -r out/Release/locales
+	doins -r out/Release/resources
 
-	newman out/Release/chrome.1 chromium${CHROMIUM_SUFFIX}.1 || die
-	newman out/Release/chrome.1 chromium-browser${CHROMIUM_SUFFIX}.1 || die
+	newman out/Release/chrome.1 chromium.1
+	newman out/Release/chrome.1 chromium-browser.1
 
 	# Install icons and desktop entry.
 	local branding size
@@ -593,7 +585,7 @@ src_install() {
 				*) branding="chrome/app/theme/chromium" ;;
 		esac
 		newicon -s ${size} "${branding}/product_logo_${size}.png" \
-			chromium-browser${CHROMIUM_SUFFIX}.png
+			chromium-browser.png
 	done
 
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
@@ -601,22 +593,17 @@ src_install() {
 	mime_types+="x-scheme-handler/ftp;" # bug #412185
 	mime_types+="x-scheme-handler/mailto;x-scheme-handler/webcal;" # bug #416393
 	make_desktop_entry \
-		chromium-browser${CHROMIUM_SUFFIX} \
-		"Chromium${CHROMIUM_SUFFIX}" \
-		chromium-browser${CHROMIUM_SUFFIX} \
+		chromium-browser \
+		"Chromium" \
+		chromium-browser \
 		"Network;WebBrowser" \
 		"MimeType=${mime_types}\nStartupWMClass=chromium-browser"
 	sed -e "/^Exec/s/$/ %U/" -i "${ED}"/usr/share/applications/*.desktop || die
 
 	# Install GNOME default application entry (bug #303100).
 	if use gnome; then
-		dodir /usr/share/gnome-control-center/default-apps || die
 		insinto /usr/share/gnome-control-center/default-apps
-		newins "${FILESDIR}"/chromium-browser.xml chromium-browser${CHROMIUM_SUFFIX}.xml || die
-		if [[ "${CHROMIUM_SUFFIX}" != "" ]]; then
-			sed "s:chromium-browser:chromium-browser${CHROMIUM_SUFFIX}:g" -i \
-				"${ED}"/usr/share/gnome-control-center/default-apps/chromium-browser${CHROMIUM_SUFFIX}.xml
-		fi
+		newins "${FILESDIR}"/chromium-browser.xml chromium-browser.xml
 	fi
 
 	readme.gentoo_create_doc
