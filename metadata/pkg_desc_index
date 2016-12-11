@@ -5725,7 +5725,7 @@ dev-perl/Fatal-Exception 0.50.0-r1: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1: Festival-Async - Non-blocking interface to a Festival server
 dev-perl/File-BOM 0.140.0-r1 0.150.0: Utilities for handling Byte Order Marks
-dev-perl/File-BaseDir 0.30.0-r1: Use the Freedesktop.org base directory specification
+dev-perl/File-BaseDir 0.30.0-r1 0.70.0: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.113.0-r1 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.40.0-r1: Object to handle .desktop files
@@ -9465,7 +9465,7 @@ dev-ruby/rspec-support 3.3.0 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (
 dev-ruby/rspectacular 0.70.0 0.70.7: RSpec support and matchers
 dev-ruby/ruby-atk 3.0.7 3.0.8: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
-dev-ruby/ruby-beautify 0.93.2 0.97.3 0.97.4: a cli tool (and module) to beautify ruby code
+dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
 dev-ruby/ruby-cairo-gobject 3.0.7 3.0.8: Ruby cairo-gobject bindings
 dev-ruby/ruby-clutter 3.0.7 3.0.8: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gstreamer 3.0.7 3.0.8: Ruby Clutter bindings

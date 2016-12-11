@@ -3960,6 +3960,11 @@ developers and volunteer mentors.</description>
     <name>Tinderbox cluster</name>
     <url>https://wiki.gentoo.org/wiki/Project:Tinderbox-cluster</url>
     <description>A tinderbox that the guest code can run on multiple setups.</description>
+    <member is-lead="1">
+      <email>zorry@gentoo.org</email>
+      <name>Magnus Granberg</name>
+      <role>Web and backend</role>
+    </member>
   </project>
   <project>
     <email>toolchain@gentoo.org</email>
@@ -4088,12 +4093,6 @@ developers and volunteer mentors.</description>
       <name>Christian Ruppert</name>
       <role>Member</role>
     </member>
-  </project>
-  <project>
-    <email>vserver-devs@gentoo.org</email>
-    <name>VPS</name>
-    <url>https://wiki.gentoo.org/wiki/Project:VPS</url>
-    <description>The Gentoo Virtual Private Server project maintains all VPS related packages.</description>
   </project>
   <project>
     <email>media-video@gentoo.org</email>
