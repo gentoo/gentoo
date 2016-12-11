@@ -10,8 +10,8 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">pyftpdlib</remote-id>
     <remote-id type="pypi">pyftpdlib</remote-id>
     <remote-id type="github">giampaolo/pyftpdlib</remote-id>
+    <bugs-to>https://github.com/giampaolo/pyftpdlib/issues</bugs-to>
   </upstream>
 </pkgmetadata>
