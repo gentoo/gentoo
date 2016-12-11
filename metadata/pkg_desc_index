@@ -18611,7 +18611,7 @@ x11-misc/oroborus-keylaunch 1.3.9: utility for binding keys in Oroborus
 x11-misc/outwiker 1.8.0 1.9.0.790 2.0.0.794: The tree notes organizer
 x11-misc/parcellite 1.1.9: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.7.45 1.7.47 1.7.49: File manager based on the FOX Toolkit
-x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 1.2.4 9999: Fast lightweight tabbed filemanager
+x11-misc/pcmanfm 0.9.10 1.2.3 1.2.4 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.10.0 0.11.1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
