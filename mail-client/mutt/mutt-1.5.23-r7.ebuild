@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos mbox nls nntp pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="ia64 sparc"  # last stable
+KEYWORDS="ia64 sparc x86"  # last stable
 CDEPEND="
 	app-misc/mime-types
 	nls? ( virtual/libintl )
