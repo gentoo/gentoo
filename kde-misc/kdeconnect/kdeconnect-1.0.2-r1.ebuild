@@ -41,10 +41,11 @@ DEPEND="
 	x11-libs/libXtst
 	app? ( $(add_frameworks_dep kdeclarative) )
 	telepathy? ( >=net-libs/telepathy-qt-0.9.7[qt5] )
-	wayland? ( $(add_frameworks_dep kwayland '' 5.5.5) )
+	wayland? ( $(add_frameworks_dep kwayland) )
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
+	app? ( dev-libs/kirigami:5 )
 	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
 "
