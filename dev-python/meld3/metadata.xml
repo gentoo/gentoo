@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">meld3</remote-id>
-    <remote-id type="github">supervisor/meld3</remote-id>
+    <remote-id type="github">Supervisor/meld3</remote-id>
+    <bugs-to>https://github.com/Supervisor/meld3/issues</bugs-to>
   </upstream>
 </pkgmetadata>
