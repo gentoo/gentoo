@@ -1,8 +1,11 @@
---- src/Makefile	2005-10-27 12:58:53.000000000 +0200
-+++ src/Makefile	2013-03-08 22:20:52.360922189 +0100
+* Fix build system to not hardcode CC
+* Fix build system to respect user flags
+
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -20,16 +20,14 @@
  
- # $Id$
+ # $Id: Makefile,v 2.16 2002/08/11 15:57:07 jehsom Exp $
  
 -
 -CFLAGS = -I../include -I. -O -W -Wall -g -D_REENTRANT #-pg -a
@@ -20,3 +23,12 @@
  LEX     = flex
  YACC    = yacc
  INCLUDE := $(wildcard ../include/*.h)
+@@ -52,7 +50,7 @@
+ $(OBJS): $(INCLUDE)
+ 
+ $(CONFOBS): $(CONFSRC)
+-	$(CC) $(LEX_CFLAGS) -c $(@:.o=.c)
++	$(CC) $(CFLAGS) $(LEX_CFLAGS) -c $(@:.o=.c)
+ 
+ lex.yy.c: parse.l
+ 	$(LEX) $^

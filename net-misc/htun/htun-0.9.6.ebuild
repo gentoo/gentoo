@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils readme.gentoo
+inherit flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Project to tunnel IP traffic over HTTP"
 HOMEPAGE="http://linux.softpedia.com/get/System/Networking/HTun-14751.shtml"
@@ -19,11 +19,15 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-util/yacc"
 RDEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-glibc.patch #248100
-	epatch "${FILESDIR}"/${P}-makefile.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc.patch #248100
+	"${FILESDIR}"/${P}-makefile.patch
+)
 
-	epatch_user
+src_configure() {
+	# Fix multiple symbol definitions due to
+	# C99/C11 inline semantics, bug 571458
+	append-cflags -std=gnu89
 }
 
 src_compile() {
@@ -32,8 +36,11 @@ src_compile() {
 
 src_install() {
 	dosbin src/htund
+
 	insinto /etc
 	doins doc/htund.conf
-	dodoc doc/* README
+
+	local DOCS=( doc/. README )
+	einstalldocs
 	readme.gentoo_create_doc
 }
