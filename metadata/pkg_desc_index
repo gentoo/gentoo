@@ -11752,7 +11752,6 @@ kde-apps/umbrello 16.04.3 16.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
-kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
@@ -11949,6 +11948,7 @@ kde-plasma/kde-cli-tools 5.8.3 5.8.4: Tools based on KDE Frameworks 5 to better 
 kde-plasma/kde-gtk-config 2.2.1 5.8.3 5.8.4: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdebase-cursors 4.11.22: Oxygen cursors for KDE Plasma
 kde-plasma/kdebase-pam 10: pam.d files used by several KDE components
+kde-plasma/kdebase-startkde 4.11.22-r2: Script which starts a complete Plasma session, and associated scripts
 kde-plasma/kdecoration 5.8.3 5.8.4: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 4.14.3-r1 5.8.3 5.8.4: Extra Plasma applets and engines
 kde-plasma/kdm 4.11.22: Login manager by KDE, similar to xdm and gdm
