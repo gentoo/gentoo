@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <andreas.sturmlechner@gmail.com> (11 Dec 2016)
+# Dead upstream. Masking for removal in 30 days
+net-libs/libkvkontakte
+net-libs/libmediawiki
+
 # Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
 # Dead upstream, no maintainer and it hasn't been bumped
 # since 2013. Masking for removal in 30 days (wrt bug #489878)
