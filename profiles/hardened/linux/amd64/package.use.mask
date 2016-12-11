@@ -23,13 +23,6 @@
 # mask assembler as it currently doesn't work
 dev-lang/path64 assembler
 
-# Magnus Granberg <zorry@gentoo.org> (20 Nov 2012)
-# mask X for we still mis the docs for revdep-pax
-# else hell will rule. (RWX in the libs)
-# Bug 433121
-# also mask tools as it requires X -zerochaos
-x11-drivers/nvidia-drivers X tools
-
 # Magnus Granberg <zorry@gentoo.org> (29 Nov 2012)
 # Bug #444786 disable nvidia on app-admin/conky
 app-admin/conky nvidia
