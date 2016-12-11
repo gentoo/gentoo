@@ -10,8 +10,6 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
-		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> to determine the
-			master vdagentd in case of multiple running vdagentds (highly
-			recommended)</flag>
+		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> to determine the master vdagentd in case of multiple running vdagentds (highly recommended)</flag>
 	</use>
 </pkgmetadata>
