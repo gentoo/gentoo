@@ -29,11 +29,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/nokogiri
 	!!<dev-ruby/maruku-0.7.2 )"
 
-# Most dependencies are optional: skip haml and radius for ruby20 and ruby21
-# because haml depends on rails.
-USE_RUBY="ruby20 ruby21 ruby22" ruby_add_bdepend "test? ( dev-ruby/haml )"
-USE_RUBY="ruby20 ruby21" ruby_add_bdepend "test? ( dev-ruby/radius )"
-
 ruby_add_rdepend ">=dev-ruby/builder-2.0.0:*
 	!!<dev-ruby/tilt-1.4.1-r2:0"
 
