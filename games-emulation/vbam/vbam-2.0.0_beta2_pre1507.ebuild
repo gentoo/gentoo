@@ -7,11 +7,13 @@ WX_GTK_VER="3.0"
 CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils wxwidgets flag-o-matic gnome2-utils fdo-mime games
 
+MY_P=${P//_beta2/}
+
 if [[ ${PV} == 9999 ]]; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/vbam/code/trunk"
 	inherit subversion
 else
-	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${MY_P}.tar.xz"
 	KEYWORDS="amd64 x86"
 
 	# upstream patches
@@ -55,6 +57,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
 
+S="${WORKDIR}"/${MY_P}
+
 src_prepare() {
 	[[ ${PV} == 9999 ]] && subversion_src_prepare
 
@@ -63,13 +67,13 @@ src_prepare() {
 
 	sed -i "s:\(DESTINATION\) bin:\1 ${GAMES_BINDIR}:" \
 		CMakeLists.txt src/{wx,gtk}/CMakeLists.txt || die
-	epatch "${FILESDIR}"/${P}-man.patch
+	epatch "${FILESDIR}"/${MY_P}-man.patch
 
 	epatch \
-		"${DISTDIR}/${P}-ffmpeg3_defines.patch" \
-		"${DISTDIR}/${P}-ffmpeg3_audio_recording_kludge.patch" \
-		"${DISTDIR}/${P}-ffmpeg3_encoders_no_s16.patch" \
-		"${DISTDIR}/${P}-ffmpeg3_nonfunc_video_encoding.patch"
+		"${DISTDIR}/${MY_P}-ffmpeg3_defines.patch" \
+		"${DISTDIR}/${MY_P}-ffmpeg3_audio_recording_kludge.patch" \
+		"${DISTDIR}/${MY_P}-ffmpeg3_encoders_no_s16.patch" \
+		"${DISTDIR}/${MY_P}-ffmpeg3_nonfunc_video_encoding.patch"
 }
 
 src_configure() {
