@@ -16,8 +16,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc"
 
-DEPEND="app-arch/unzip"
 RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S=${WORKDIR}
