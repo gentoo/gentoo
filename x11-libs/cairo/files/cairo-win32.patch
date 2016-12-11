@@ -1,0 +1,11 @@
+--- a/src/win32/cairo-win32-display-surface.c
++++ b/src/win32/cairo-win32-display-surface.c
+@@ -383,6 +383,8 @@ _cairo_win32_display_surface_create_similar (void	    *abstract_src,
+ 	new_surf = _cairo_win32_display_surface_create_for_dc (src->win32.dc, format, width, height);
+     }
+ 
++    new_surf->is_clear = TRUE;
++
+     return new_surf;
+ }
+ 
