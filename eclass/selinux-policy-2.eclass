@@ -292,11 +292,15 @@ selinux-policy-2_pkg_postinst() {
 		semodule -s ${i} -i ${COMMAND}
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
-			if [ "${i}" == "targeted" ];
-			then
-				semodule -s ${i} -b base.pp -i $(ls *.pp | grep -v base.pp);
+			local COMMAND_base="-i base.pp"
+			if has_version "<sys-apps/policycoreutils-2.5"; then
+				COMMAND="-b base.pp"
+			fi
+
+			if [[ "${i}" == "targeted" ]]; then
+				semodule -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp);
 			else
-				semodule -s ${i} -b base.pp -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
+				semodule -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
 			fi
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
@@ -311,9 +315,9 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "command finished succesfully."
 				ewarn ""
 				ewarn "To reload, run the following command from within /usr/share/selinux/${i}:"
-				ewarn "  semodule -b base.pp -i \$(ls *.pp | grep -v base.pp)"
+				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp)"
 				ewarn "or"
-				ewarn "  semodule -b base.pp -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
+				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
 				ewarn "depending on if you need the unconfined domain loaded as well or not."
 			else
 				einfo "SELinux modules reloaded succesfully."
