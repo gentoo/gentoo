@@ -13,9 +13,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"
 KEYWORDS="~amd64 ~x86"
-IUSE="+exif +face +kipi +map +raw"
-
-REQUIRED_USE="map? ( exif )"
+IUSE="+face +kipi +map +raw"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -37,12 +35,9 @@ COMMON_DEPEND="
 	$(add_qt_dep qtsql 'sqlite')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
+	>=media-gfx/exiv2-0.17:=
 	media-libs/phonon[qt5]
 	virtual/jpeg:0
-	exif? (
-		$(add_kdeapps_dep libkexiv2)
-		>=media-gfx/exiv2-0.17:=
-	)
 	face? ( $(add_kdeapps_dep libkface) )
 	kipi? ( $(add_kdeapps_dep libkipi) )
 	map? ( $(add_kdeapps_dep libkgeomap) )
@@ -58,11 +53,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( ChangeLog README )
+PATCHES=( "${FILESDIR}/${P}-buildbackports.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package exif Exiv2)
-		$(cmake-utils_use_find_package exif KF5KExiv2)
 		$(cmake-utils_use_find_package face KF5KFace)
 		$(cmake-utils_use_find_package kipi KF5Kipi)
 		$(cmake-utils_use_find_package map KF5KGeoMap)
