@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic autotools readme.gentoo
+inherit eutils flag-o-matic autotools readme.gentoo-r1
 
 PPP_P="ppp-2.4.7"
 
@@ -35,22 +35,29 @@ pkg_setup() {
 	PPPD_VER=${PPPD_VER%%-*} #reduce it to ${PV}
 }
 
-src_prepare() {
+PATCHES=(
 	# Patch to enable integration of pppoe-start and pppoe-stop with
 	# baselayout-1.11.x so that the pidfile can be found reliably per interface
-	epatch "${FILESDIR}/${PN}-3.10-gentoo-netscripts.patch"
+	"${FILESDIR}/${PN}-3.10-gentoo-netscripts.patch"
 
-	epatch "${FILESDIR}/${PN}-3.10-username-charset.patch" # bug 82410
-	epatch "${FILESDIR}/${PN}-3.10-plugin-options.patch"
-	epatch "${FILESDIR}/${PN}-3.10-autotools.patch"
-	has_version '<sys-kernel/linux-headers-2.6.35' && \
-		epatch "${FILESDIR}/${PN}-3.10-linux-headers.patch" #334197
-	epatch "${FILESDIR}/${PN}-3.10-posix-source-sigaction.patch"
-	epatch "${FILESDIR}/${PN}-3.11-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-3.11-kmode.patch" #364941
-	epatch "${FILESDIR}/${PN}-3.12-linux-headers.patch"
+	"${FILESDIR}/${PN}-3.10-username-charset.patch" # bug 82410
+	"${FILESDIR}/${PN}-3.10-plugin-options.patch"
+	"${FILESDIR}/${PN}-3.10-autotools.patch"
+	"${FILESDIR}/${PN}-3.10-posix-source-sigaction.patch"
+	"${FILESDIR}/${PN}-3.11-gentoo.patch"
+	"${FILESDIR}/${PN}-3.11-kmode.patch" #364941
+	"${FILESDIR}/${PN}-3.12-linux-headers.patch"
+	"${FILESDIR}/${PN}-3.12-ifconfig-path.patch" #602344
+)
 
-	epatch_user
+src_prepare() {
+	if has_version '<sys-kernel/linux-headers-2.6.35' ; then
+		PATCHES+=(
+			"${FILESDIR}/${PN}-3.10-linux-headers.patch" #334197
+		)
+	fi
+
+	default
 
 	cd "${S}"/src || die
 	eautoreconf
