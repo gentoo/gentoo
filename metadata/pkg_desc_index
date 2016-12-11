@@ -10021,7 +10021,7 @@ dev-util/drone 0.5.0_pre20161128: A Continuous Delivery platform built on Docker
 dev-util/drone-ui 0_pre20161007: React front-end for the Drone continuous integration server
 dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.10_p20140618 1.10_p20160519 1.10_p20160630 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/editorconfig-geany 0.1_p20160725: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
