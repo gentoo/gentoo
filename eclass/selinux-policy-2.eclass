@@ -74,15 +74,22 @@
 # The default value is the 'master' branch.
 : ${SELINUX_GIT_BRANCH:="master"};
 
-extra_eclass=""
+case "${EAPI:-0}" in
+	0|1|2|3|4) die "EAPI<5 is not supported";;
+	5|6) : ;;
+	*) die "unknown EAPI" ;;
+esac
+
 case ${BASEPOL} in
-	9999)	extra_eclass="git-r3";
+	9999)	inherit git-r3
 			EGIT_REPO_URI="${SELINUX_GIT_REPO}";
 			EGIT_BRANCH="${SELINUX_GIT_BRANCH}";
 			EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy";;
 esac
 
-inherit eutils ${extra_eclass}
+if [[ ${EAPI:-0} == 5 ]]; then
+	inherit eutils
+fi
 
 IUSE=""
 
@@ -113,11 +120,6 @@ fi
 DEPEND="${RDEPEND}
 	sys-devel/m4
 	>=sys-apps/checkpolicy-2.0.21"
-
-case "${EAPI:-0}" in
-	0|1|2|3|4) die "EAPI<5 is not supported";;
-	*) : ;;
-esac
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
