@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-30">
+  <title>SoX: User-assisted execution of arbitrary code</title>
+  <synopsis>Multiple heap overflows in SoX may allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">sox</product>
+  <announced>December 11, 2016</announced>
+  <revised>December 11, 2016: 1</revised>
+  <bug>533296</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/sox" auto="yes" arch="*">
+      <unaffected range="ge">14.4.2</unaffected>
+      <vulnerable range="lt">14.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SoX is a command line utility that can convert various formats of
+      computer audio files in to other formats.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow can be triggered when processing a
+      malicious NIST Sphere or WAV audio file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could coerce the victim to run SoX against their
+      malicious file. This may be leveraged by an attacker to gain control of
+      program execution with the privileges of the user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SoX users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/sox-14.4.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8145">
+      CVE-2014-8145
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 00:47:17 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:50:03 +0000">b-man</metadata>
+</glsa>
