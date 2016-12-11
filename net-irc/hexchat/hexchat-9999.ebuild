@@ -56,10 +56,8 @@ DEPEND="${COMMON_DEPEND}
 	theme-manager? ( dev-util/monodevelop )"
 
 src_prepare() {
-	if [[ ${PV} == "9999" ]]; then
-		eautoreconf
-	fi
 	default
+	eautoreconf
 }
 
 pkg_setup() {
