@@ -20,8 +20,10 @@ S=${WORKDIR}/${COMMIT_ID}
 REQUIRED_USE="
 	|| ( sna uxa )
 "
-RDEPEND="x11-libs/libXext
+RDEPEND="
+	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXScrnSaver
 	>=x11-libs/pixman-0.27.1
 	>=x11-libs/libdrm-2.4.29[video_cards_intel]
 	dri3? (
