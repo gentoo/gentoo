@@ -1,12 +1,12 @@
 DEFINED_PHASES=install
-DEPEND=net-libs/nodejs
+DEPEND=!dev-util/cmdtest net-libs/nodejs
 DESCRIPTION=Fast, reliable, and secure node dependency management
 EAPI=6
 HOMEPAGE=https://yarnpkg.com
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
-RDEPEND=net-libs/nodejs
+RDEPEND=!dev-util/cmdtest net-libs/nodejs
 SLOT=0
 SRC_URI=https://github.com/yarnpkg/yarn/releases/download/v0.18.0/yarn-v0.18.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=a6e86c6884249e6920fd77ac6ae97f39
+_md5_=a74478b332d3c3830bad81be9b61714e
