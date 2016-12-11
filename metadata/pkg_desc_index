@@ -9394,7 +9394,7 @@ dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid l
 dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.3.4 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
-dev-ruby/radius 0.7.4-r2: Powerful tag-based template system
+dev-ruby/radius 0.7.4-r2 0.7.4-r3: Powerful tag-based template system
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3 1.0.3-r1: Deprecated sanitizer API extracted from Action View
@@ -9593,7 +9593,7 @@ dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.5: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
-dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.4 2.0.5: Thin interface over template engines to make their usage as generic as possible
+dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1 4.1.2: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.6.0 1.10.2 1.11.0 1.12.0 1.13.0: All the stuff that isn't good enough for a real library
