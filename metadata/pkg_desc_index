@@ -4748,7 +4748,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.6-r101 1.7.3: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.4: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.22.3 0.23.4 0.24.2 9999: A linkable library for Git
@@ -7541,7 +7541,7 @@ dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 1.1 2.0 2.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
-dev-python/imageio 1.5 1.6: Python library for reading and writing image data
+dev-python/imageio 1.5 1.6 2.0.1: Python library for reading and writing image data
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
 dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
@@ -11860,7 +11860,7 @@ kde-misc/kcm-touchpad 1.1: KCM, daemon and applet for touchpad
 kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
 kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
-kde-misc/kdeconnect 1.0.2: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.0.2-r1: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 3.0-r1 3.1.2: GUI equivalent to the du command based on KDE Frameworks
@@ -19297,7 +19297,7 @@ xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
 xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.1 0.2.2: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.7 0.8.8: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.6.0 1.6.1 2.0.2: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.6.0 1.6.2 2.0.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.7.1 0.7.1-r1: XKB layout switching panel plug-in for the Xfce desktop environment
