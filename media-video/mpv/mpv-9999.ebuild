@@ -28,20 +28,18 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
-	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
-	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
-	+xscreensaver +xv zsh-completion"
+IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl encode
+	gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua luajit openal
+	+opengl oss pulseaudio raspberry-pi rubberband samba -sdl selinux test
+	tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
+	+xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
 	egl? ( || ( gbm X wayland ) )
-	enca? ( iconv )
 	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
-	libguess? ( iconv )
 	luajit? ( lua )
 	tools? ( cli )
 	uchardet? ( iconv )
@@ -72,8 +70,6 @@ COMMON_DEPEND="
 	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
 		virtual/libiconv
-		enca? ( app-i18n/enca )
-		libguess? ( >=app-i18n/libguess-1.0 )
 		uchardet? ( dev-libs/uchardet )
 	)
 	jack? ( virtual/jack )
@@ -183,8 +179,6 @@ src_configure() {
 		$(use_enable dvd dvdread)
 		$(use_enable dvd dvdnav)
 		$(use_enable cdda)
-		$(use_enable enca)
-		$(use_enable libguess)
 		$(use_enable uchardet)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
