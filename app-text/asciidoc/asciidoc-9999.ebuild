@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 pypy )
 
@@ -58,6 +58,8 @@ if [ "$PV" == "9999" ]; then
 fi
 
 src_prepare() {
+	default
+
 	# Only needed for prefix - harmless (does nothing) otherwise
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		"${S}/asciidoc.py" || die
