@@ -5604,7 +5604,7 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0 1.680.0 1.700.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0 1.30.0 1.50.0 1.100.0: Localization support for DateTime
@@ -6147,7 +6147,7 @@ dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0: Low-level HTTP connection (client)
-dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0: Internationalizing Domain Names in Applications (IDNA)
+dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
@@ -7687,7 +7687,7 @@ dev-python/mccabe 0.2.1 0.3 0.3.1 0.4.0 0.5.2: flake8 plugin: McCabe complexity 
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
-dev-python/meld3 1.0.0 1.0.2: meld3 is an HTML/XML templating engine
+dev-python/meld3 1.0.0 1.0.2-r1: meld3 is an HTML/XML templating engine
 dev-python/memory_profiler 0.39 0.40 0.41: A module for monitoring memory usage of a python program
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
 dev-python/meteor-ejson 1.1.0: Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP
