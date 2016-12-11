@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils unpacker
 
@@ -21,11 +21,11 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
 	dev-libs/quazip[-qt4,qt5]
-	>=dev-qt/qtcore-5.5:5
-	>=dev-qt/qtgui-5.5:5[accessibility]
-	>=dev-qt/qtnetwork-5.5:5
-	>=dev-qt/qtsql-5.5:5[sqlite]
-	>=dev-qt/qtwidgets-5.5:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5[accessibility]
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwidgets:5
 	sys-libs/glibc
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
@@ -42,6 +42,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	# Remove the qt-libraries as they just cause trouble with the system's Qt, see bug #328807.
 	rm libQt* || die "Couldn't remove bundled Qt libraries."
 
