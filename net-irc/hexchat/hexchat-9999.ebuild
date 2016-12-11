@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua nls perl plugin-checksum plugin-doat plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
+IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua nls perl plugin-checksum plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="dev-libs/glib:2
@@ -80,7 +80,6 @@ src_configure() {
 		$(use_enable python python "${EPYTHON}") \
 		$(use_enable perl) \
 		$(use_enable plugin-checksum checksum) \
-		$(use_enable plugin-doat doat) \
 		$(use_enable plugin-fishlim fishlim) \
 		$(use_enable plugin-sysinfo sysinfo) \
 		$(use_enable dbus) \
