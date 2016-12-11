@@ -5,28 +5,23 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-[[ "${PV}" = "9999" ]] && inherit git-r3
-inherit elisp-common autotools python-single-r1
-
-if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
-else
-	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
-fi
+inherit elisp-common autotools python-single-r1 xdg-utils
 
 DESCRIPTION="GNU Music Typesetter"
+SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
 HOMEPAGE="http://lilypond.org/"
 
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
 IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
 	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
-	media-fonts/tex-gyre
+	<dev-scheme/guile-2.0:12
+	media-fonts/urw-fonts
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
@@ -52,7 +47,12 @@ DEPEND="${RDEPEND}
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
 
-DOCS=( DEDICATION HACKING README.txt ROADMAP )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.17.2-tex-docs.patch
+	"${FILESDIR}"/${P}-fontforge.patch
+)
+
+DOCS=( AUTHORS.txt NEWS.txt README.txt )
 
 pkg_setup() {
 	# make sure >=metapost-1.803 is selected if it's installed, bug 498704
@@ -67,7 +67,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	eapply "${PATCHES[@]}"
 
 	if ! use vim-syntax ; then
 		sed -i 's/vim//' GNUmakefile.in || die
@@ -86,25 +86,24 @@ src_prepare() {
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
 
+	eapply_user
+
 	eautoreconf
+
+	xdg_environment_reset #586592
 }
 
 src_configure() {
 	# documentation generation currently not supported since it requires a newer
 	# version of texi2html than is currently in the tree
 
-	local myeconfargs+=(
-		--with-texgyre-dir=/usr/share/fonts/tex-gyre
-		--disable-documentation
-		--disable-optimising
-		--disable-pipe
-		$(use_enable debug debugging)
+	econf \
+		--with-ncsb-dir=/usr/share/fonts/urw-fonts \
+		--disable-documentation \
+		--disable-optimising \
+		--disable-pipe \
+		$(use_enable debug debugging) \
 		$(use_enable profile profiling)
-	)
-
-	has_version ">=dev-scheme/guile-2" && myeconfargs+=( --enable-guile2 )
-
-	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
