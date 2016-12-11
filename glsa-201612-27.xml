@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201612-27">
-  <title>VirtualBox: Multiple vulnerabilities [REVIEW]</title>
+  <title>VirtualBox: Multiple vulnerabilities</title>
   <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
     of which allows local users to escalate privileges.
   </synopsis>
   <product type="ebuild">virtualbox</product>
   <announced>December 11, 2016</announced>
-  <revised>December 11, 2016: 1</revised>
+  <revised>December 11, 2016: 2</revised>
   <bug>505274</bug>
   <bug>537218</bug>
   <bug>550964</bug>
@@ -71,5 +71,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5613">CVE-2016-5613</uri>
   </references>
   <metadata tag="requester" timestamp="Wed, 23 Nov 2016 00:13:06 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:37:27 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 11 Dec 2016 23:42:01 +0000">b-man</metadata>
 </glsa>
