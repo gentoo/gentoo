@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,6 +37,7 @@ src_install() {
 	python_domodule .
 
 	# Create a symbolic link for the executable
+	chmod +x "${ED}"/usr/share/aap/aap
 	dosym ../share/aap/aap /usr/bin/aap
 	python_fix_shebang "${ED}"/usr/share/aap/aap
 }
