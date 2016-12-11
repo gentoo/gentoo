@@ -54,6 +54,8 @@ CONFIG_CHECK="~TUN"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${P}-arm-inotify-only-in-server-mode.patch"
+	"${FILESDIR}/${P}-fix-async-push.patch"
 )
 
 pkg_setup()  {
