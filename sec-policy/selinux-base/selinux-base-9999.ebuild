@@ -1,9 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="5"
-
-inherit eutils
+EAPI="6"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-git://anongit.gentoo.org/proj/hardened-refpolicy.git https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
@@ -35,19 +33,14 @@ S=${WORKDIR}/
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
-		# Apply the gentoo patches to the policy. These patches are only necessary
-		# for base policies, or for interface changes on modules.
-		EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-		EPATCH_SUFFIX="patch" \
-		EPATCH_SOURCE="${WORKDIR}" \
-		EPATCH_FORCE="yes" \
-		epatch
+		einfo "Applying SELinux policy updates ... "
+		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
-	cd "${S}/refpolicy"
-	make bare
+	eapply_user
 
-	epatch_user
+	cd "${S}/refpolicy" || die
+	emake bare
 }
 
 src_configure() {
@@ -79,7 +72,7 @@ src_configure() {
 
 	# Prepare initial configuration
 	cd "${S}/refpolicy" || die
-	make conf || die "Make conf failed"
+	emake conf || die "Make conf failed"
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
@@ -132,10 +125,10 @@ src_install() {
 	for i in ${POLICY_TYPES}; do
 		cd "${S}/${i}" || die
 
-		make DESTDIR="${D}" install \
+		emake DESTDIR="${D}" install \
 			|| die "${i} install failed."
 
-		make DESTDIR="${D}" install-headers \
+		emake DESTDIR="${D}" install-headers \
 			|| die "${i} headers install failed."
 
 		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
@@ -146,7 +139,8 @@ src_install() {
 		keepdir "/etc/selinux/${i}/policy"
 
 		if use doc; then
-			dohtml doc/html/*;
+			docinto ${i}/html
+			dodoc -r doc/html/*;
 		fi
 
 		insinto /usr/share/selinux/devel;
@@ -154,6 +148,7 @@ src_install() {
 
 	done
 
+	docinto /
 	dodoc doc/Makefile.example doc/example.{te,fc,if}
 
 	doman man/man8/*.8;
