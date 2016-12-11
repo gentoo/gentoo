@@ -2181,7 +2181,7 @@ app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell usin
 app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.11-r1: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
-app-shells/zsh 5.0.5 5.2 5.2-r1 9999: UNIX Shell similar to the Korn shell
+app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
@@ -14437,7 +14437,7 @@ net-im/mcabber 0.10.2_p20131025 1.0.4 9999: A small Jabber console client with v
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.0.2 4.0.3 4.0.4: Openfire (formerly wildfire) real time collaboration (RTC) server
-net-im/pidgin 2.11.0: GTK Instant Messenger client
+net-im/pidgin 2.11.0-r1: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10 0.9.11: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
@@ -17624,7 +17624,7 @@ sys-power/apcupsd 3.14.13 3.14.14 3.14.14-r1: APC UPS daemon with integrated tcp
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpudyn 1.0.1 1.0.1-r2: A daemon to control laptop power consumption via cpufreq and disk standby
-sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0-r1 4.7.0-r1: Shows and sets processor power related values
+sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0-r1 4.7.0-r1 4.9.0: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20150717 20160729: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
