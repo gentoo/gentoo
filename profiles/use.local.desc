@@ -3836,7 +3836,6 @@ media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
 media-gfx/k3d:gts - Add Support for the GNU Triangulated Surface Library sci-libs/gts
 media-gfx/kphotoalbum:face - Enable face detection and recognition using kde-apps/libkface
-media-gfx/kphotoalbum:geolocation - Add support for kde-apps/marble
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/krita:color-management - Enable color management via media-libs/opencolorio
@@ -4192,14 +4191,9 @@ media-plugins/gst-plugins-vaapi:egl - Enable EGL support
 media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
 media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
-media-plugins/kipi-plugins:expoblending - Build the expoblending plugin, which requires media-gfx/hugin
 media-plugins/kipi-plugins:flashexport - Build the flash export plugin
-media-plugins/kipi-plugins:gpssync - Build the gpssync plugin, which requires kde-apps/libkgeomap and thereby marble
 media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
-media-plugins/kipi-plugins:panorama - Pull in dependencies needed by panorama plugin
-media-plugins/kipi-plugins:redeyes - Add redeyes removal support
 media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
-media-plugins/kipi-plugins:videoslideshow - Build videoslideshow plugin
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
 media-plugins/mythplugins:cdr - Allows MythMusic to burn CD-Rs
