@@ -2,38 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Justin Lecher <jlec@gentoo.org> (10 Dec 2016)
-# Depends on masked x11-drivers/nvidia-drivers[X]
-#
-# /opt/cuda/lib64/libcuinj64.so.8.0.44 from dev-util/nvidia-cuda-toolkit
-# is linked to /usr/lib64/libnvidia-fatbinaryloader.so.375.20 from
-#x11-drivers/nvidia-drivers which is installed via USE=X
-app-crypt/johntheripper
-dev-libs/libdynd
-dev-libs/libflatarray
-dev-libs/starpu
-dev-python/pycuda
-dev-util/nvidia-cuda-sdk
-dev-util/nvidia-cuda-toolkit
-media-gfx/blender
-media-gfx/k3d
-media-gfx/nvidia-texture-tools
-media-libs/opencv
-media-libs/opensubdiv
-net-analyzer/suricata
-net-wireless/cpyrit-cuda
-sci-chemistry/ball
-sci-chemistry/gromacs
-sci-chemistry/vmd
-sci-libs/cholmod
-sci-libs/flann
-sci-libs/magma
-sci-libs/pcl
-sci-misc/boinc
-sci-physics/espresso
-sys-apps/hwloc
-sys-cluster/openmpi
-
 # Magnus Granberg <zorry@gentoo.org> (20 Nov 2012)
 # Newer then 300.00 is patched but we still have RWX in the libs.
 # We mask X for we still need to make the doc for revdep-pax else
