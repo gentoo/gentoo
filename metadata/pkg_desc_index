@@ -2598,7 +2598,7 @@ app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the fi
 app-vim/nerdtree-tabs 1.4.6: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
 app-vim/notes 0.33.4: vim plugin: easy note taking in vim
-app-vim/ntp-syntax 20031001: vim plugin: ntp.conf syntax highlighting
+app-vim/ntp-syntax 20031001 20031001-r1: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pam-syntax 20060424: vim plugin: PAM configuration syntax highlighting
 app-vim/pathogen 2.4: vim plugin: manage your runtimepath
@@ -17507,7 +17507,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 040-r3 041-r3 043-r2 044 044-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.4.52.4-r2 3.5.0.0 3.5.0.1 3.5.0.2 3.5.0.3 3.5.0.4 3.5.0.5 3.5.0.6 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64 65: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.10.104-r1 3.12.52-r1 3.12.63 3.12.66 3.12.67 3.12.68 3.12.68-r1 3.12.9999 3.14.58-r1 3.14.79 3.14.79-r1 3.18.25-r1 3.18.42 3.18.43 3.18.44 3.18.45 3.18.45-r1 4.1.15-r1 4.1.35 4.1.36 4.1.36-r1 4.4.26 4.4.28 4.4.34 4.4.35 4.4.36 4.4.36-r1 4.4.37 4.4.38 4.8.12-r1 4.8.13 4.8.14: Full sources including the Gentoo patchset for the 4.8 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.113 3.4.113-r1 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.10.104 3.10.104-r1 3.12.52-r1 3.12.63 3.12.66 3.12.67 3.12.68 3.12.68-r1 3.12.9999 3.14.58-r1 3.14.79 3.14.79-r1 3.18.25-r1 3.18.42 3.18.43 3.18.44 3.18.45 3.18.45-r1 4.1.15-r1 4.1.35 4.1.36 4.1.36-r1 4.4.26 4.4.28 4.4.34 4.4.35 4.4.36 4.4.36-r1 4.4.37 4.4.38 4.8.12-r1 4.8.13 4.8.14 4.9.0: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/git-sources 4.9_rc1 4.9_rc2 4.9_rc3 4.9_rc4 4.9_rc5 4.9_rc6 4.9_rc7 4.9_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.7.6 4.7.10 4.8.10 4.8.11 4.8.12-r1 4.8.13: Hardened kernel sources (kernel series 4.8)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17523,7 +17523,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.43_p46 3.18.44_p47 3.18.44_p48 4.1.34_p39 4.1.35_p40 4.1.35_p41 4.4.25_p35 4.4.27_p37 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.2_p2 4.8.6_p5: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.68 3.16.39 3.18.45 4.1.36 4.4.36 4.8.12: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.68 3.16.39 3.18.45 4.1.36 4.4.38 4.8.14 4.9.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
@@ -17649,7 +17649,7 @@ sys-power/upower 0.99.2-r1 0.99.3 0.99.4: D-Bus abstraction for enumerating powe
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r3 6.6.1 6.6.2: GNU system accounting utilities
-sys-process/anacron 2.3-r2 2.3-r3: a periodic command scheduler
+sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
 sys-process/at 3.1.16 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
