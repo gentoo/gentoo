@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (12 Dec 2016)
+# Outdated and broken in the tree.
+# Masked for removal in 30 days.
+dev-util/aap
+
 # Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
 # Dead upstream, no maintainer and it hasn't been bumped
 # since 2013. Masking for removal in 30 days (wrt bug #489878)
