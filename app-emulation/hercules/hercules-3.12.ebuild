@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit flag-o-matic eutils
 
@@ -12,7 +11,7 @@ SRC_URI="http://downloads.hercules-390.eu/${P}.tar.gz"
 
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86 ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos ~x86-macos"
 IUSE="bzip2 custom-cflags +suid"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
