@@ -13872,7 +13872,7 @@ media-video/obs-studio 0.15.3 0.16.2 9999: Software for Recording and Streaming 
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1 2.1.0: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.3.5: Cross-platform Twitch client
-media-video/oxine 0.7.1-r1: OSD frontend for Xine
+media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1 2.1.0: Movie slideshow creator using Ken Burns effect
