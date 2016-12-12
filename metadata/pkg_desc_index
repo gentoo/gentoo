@@ -2872,7 +2872,7 @@ dev-cpp/pangomm 2.36.0 2.38.1 2.40.0 2.40.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.5: A simple but powerful C++ interface to libpng
-dev-cpp/pstreams 0.7.0 0.8.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
+dev-cpp/pstreams 0.7.0 0.8.1 1.0.0: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/rudiments 0.46 0.51: C++ class library for daemons, clients and servers
 dev-cpp/sparsehash 1.10 2.0.2 2.0.3: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 4.3.20150611 4.3.20150611-r1: High level abstract threading library
@@ -16861,7 +16861,7 @@ sys-apps/lshw 02.16b-r2 02.17b 02.17b-r1 02.17b-r2: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.7.5 2.7.6.1: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.7.5 2.7.6.1-r1: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.08 4.09: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
