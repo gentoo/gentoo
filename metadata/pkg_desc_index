@@ -9953,7 +9953,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.8 2.16.10: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.8 2.16.10 2.16.12: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
@@ -11224,7 +11224,7 @@ games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1 11.04.1-r1: A free Worms clone
-games-strategy/warzone2100 3.1.5 3.1.5-r1 3.2.1: 3D real-time strategy game
+games-strategy/warzone2100 3.1.5 3.1.5-r1 3.2.1 3.2.2: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17 0.18 0.18-r1: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
@@ -13003,7 +13003,7 @@ media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stk 4.4.4-r1 4.5.0 4.5.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/sublib 0.9: Subtitling library that allows for subtitle editing, conversion and synchronization
-media-libs/suil 0.8.0 0.8.2: Lightweight C library for loading and wrapping LV2 plugin UIs
+media-libs/suil 0.8.2 0.8.4: Lightweight C library for loading and wrapping LV2 plugin UIs
 media-libs/svgalib 1.9.25-r4 1.9.25-r5: A library for running svga graphics on the console
 media-libs/t1lib 5.1.2 5.1.2-r1: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.9.1-r2 1.10 1.11-r1: A library for reading and editing audio meta data
@@ -16869,7 +16869,7 @@ sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update 
 sys-apps/miller 4.0.0 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minised 1.13 1.14: a smaller, cheaper, faster SED implementation
 sys-apps/miscfiles 1.4.2-r1 1.5 1.5-r1: Miscellaneous files
-sys-apps/mlocate 0.26-r1: Merging locate is an utility to index and quickly search for files
+sys-apps/mlocate 0.26-r2: Merging locate is an utility to index and quickly search for files
 sys-apps/modutils 2.4.27-r1: Standard kernel module utilities for linux-2.4 and older
 sys-apps/more 2.12r: Primitive text file viewer
 sys-apps/moreutils 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.60: a collection of tools that nobody thought to write when Unix was young
