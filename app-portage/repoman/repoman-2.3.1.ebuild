@@ -2,63 +2,40 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=(
-	pypy
-	python3_3 python3_4 python3_5
-	python2_7
-)
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1 git-r3 multilib
+inherit distutils-r1
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
+SRC_URI="https://dev.gentoo.org/~dolsen/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
-DEPEND="
-	dev-lang/python-exec:2
-	=sys-apps/portage-9999
-	"
-
 RDEPEND="
-	dev-lang/python-exec:2
-	=sys-apps/portage-9999[${PYTHON_USEDEP}]
+	>=sys-apps/portage-2.3.0_rc[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
-	"
-
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/repoman"
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/portage.git
-	https://github.com/gentoo/portage.git"
-
-prefix_src_archives() {
-	local x y
-	for x in ${@}; do
-		for y in ${SRC_ARCHIVES}; do
-			echo ${y}/${x}
-		done
-	done
-}
-
-TARBALL_PV=${PV}
-SRC_URI=""
-
-S="${WORKDIR}/${P}/repoman"
+"
+DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	if [[ -n ${EPREFIX} ]] ; then
+	if [[ -n "${EPREFIX}" ]] ; then
 		einfo "Prefixing shebangs ..."
-		while read -r -d $'\0' ; do
-			local shebang=$(head -n1 "$REPLY")
+
+		local file
+		while read -r -d $'\0' file; do
+			local shebang=$(head -n1 "${file}")
+
 			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
+				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "${file}" || \
 					die "sed failed"
 			fi
 		done < <(find . -type f -print0)
@@ -80,10 +57,6 @@ python_install() {
 		--sbindir="$(python_get_scriptdir)" \
 		--sysconfdir="${EPREFIX}/etc" \
 		"${@}"
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
 }
 
 pkg_postinst() {
