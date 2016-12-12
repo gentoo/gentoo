@@ -12607,7 +12607,7 @@ media-gfx/tachyon 0.98.9-r2 0.99_beta6: A portable, high performance parallel ra
 media-gfx/tgif 4.2.5 4.2.5-r1: Xlib base 2-D drawing facility under X11
 media-gfx/tic98 1.01-r3: compressor for black-and-white images, in particular scanned documents
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
-media-gfx/tintii 2.9.0 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
+media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
 media-gfx/transfig 3.2.5d-r1 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
@@ -16368,7 +16368,7 @@ sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of di
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/wxmaxima 15.08.2 16.04.2: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 15.08.2 16.04.2 16.12.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 1.6.5 1.6.6 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
