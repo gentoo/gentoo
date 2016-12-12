@@ -6,20 +6,17 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/ros_control"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Interface for enforcing joint limits"
+DESCRIPTION="Combined Robot HW class"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
+	>=dev-ros/hardware_interface-0.11
+	dev-ros/pluginlib
 	dev-ros/roscpp
-	dev-ros/hardware_interface
-	dev-libs/urdfdom
-	dev-ros/urdf
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest dev-cpp/gtest )"
+DEPEND="${RDEPEND}"

@@ -17,7 +17,7 @@ USE_PHP="php5-5 php5-6 php7-0" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
-inherit apache-module distutils-r1 eutils flag-o-matic multilib pax-utils php-ext-source-r2 python-r1 ruby-ng versionator
+inherit apache-module eutils flag-o-matic multilib pax-utils php-ext-source-r2 python-r1 ruby-ng versionator
 
 DESCRIPTION="uWSGI server for Python web applications"
 HOMEPAGE="http://projects.unbit.it/uwsgi/"
@@ -144,6 +144,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/2.0.14-php-plugin.patch"
+
 	sed -i \
 		-e "s|'-O2', ||" \
 		-e "s|'-Werror', ||" \

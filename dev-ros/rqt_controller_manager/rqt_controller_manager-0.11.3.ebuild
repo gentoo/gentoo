@@ -10,16 +10,13 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Interface for enforcing joint limits"
+DESCRIPTION="RQT control manager plugin"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/hardware_interface
-	dev-libs/urdfdom
-	dev-ros/urdf
+	dev-ros/controller_manager[${PYTHON_USEDEP}]
+	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest dev-cpp/gtest )"
+DEPEND="${RDEPEND}"

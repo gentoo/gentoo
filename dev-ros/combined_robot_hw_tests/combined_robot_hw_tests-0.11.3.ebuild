@@ -10,16 +10,17 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Interface for enforcing joint limits"
+DESCRIPTION="Combined Robot HW class tests"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
+	dev-ros/combined_robot_hw
+	dev-ros/controller_manager
+	dev-ros/controller_manager_tests
 	dev-ros/hardware_interface
-	dev-libs/urdfdom
-	dev-ros/urdf
+	dev-ros/roscpp
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest dev-cpp/gtest )"
+	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
