@@ -339,7 +339,6 @@ dev-qt/qtopenvg
 # Michael Palimaka <kensington@gentoo.org> (12 Nov 2016)
 # Depends on masked app-crypt/gpgme[cxx]
 =app-office/kmymoney-4.8*
-=kde-frameworks/kwallet-5.28.0-r1
 =kde-frameworks/kwallet-5.29.0-r1
 =kde-apps/kwalletd-16.04.3-r1
 
