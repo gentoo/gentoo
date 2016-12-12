@@ -50,6 +50,7 @@ src_configure() {
 		--docdir='$(datarootdir)'/doc/${PF} \
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d \
 		--enable-setuid \
+		--enable-cache-owner=man \
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x" \
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
