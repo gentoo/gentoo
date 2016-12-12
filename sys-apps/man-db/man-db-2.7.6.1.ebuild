@@ -70,8 +70,8 @@ src_install() {
 	newexe "${FILESDIR}"/man-db.cron man-db #289884
 
 	keepdir /var/cache/man
-	fowners man:0 /var/cache/man
-	fperms 2755 /var/cache/man
+	fowners man:man /var/cache/man
+	fperms 0755 /var/cache/man
 }
 
 pkg_preinst() {
@@ -82,8 +82,8 @@ pkg_preinst() {
 	if [[ ! -g ${EROOT}var/cache/man ]] ; then
 		einfo "Resetting permissions on ${EROOT}var/cache/man" #447944
 		mkdir -p "${EROOT}var/cache/man"
-		chown -R man:0 "${EROOT}"var/cache/man
-		find "${EROOT}"var/cache/man -type d '!' -perm /g=s -exec chmod 2755 {} +
+		chown -R man:man "${EROOT}"var/cache/man
+		find "${EROOT}"var/cache/man -type d -exec chmod 0755 {} +
 	fi
 }
 
