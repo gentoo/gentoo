@@ -5136,7 +5136,7 @@ dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.6.2 0.7 0.7.1: A deriving library for Ocsigen
 dev-ml/dose3 4.2 4.3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
-dev-ml/eliom 5.0.0-r2 9999: A web framework to program client/server applications
+dev-ml/eliom 5.0.0-r2 6.0.0 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1 1.7.1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
@@ -5208,6 +5208,7 @@ dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 0.8-r1 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
+dev-ml/ocsigen-toolkit 0.99 9999: User interface widgets for Ocsigen applications
 dev-ml/ocurl 0.6.1 0.7.8 0.7.9: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/ojquery 0.1 9999: jQuery Binding for Eliom.
@@ -13508,7 +13509,7 @@ media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2 2.18.2-r2 2.19.49 2.19.50 2.19.52 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2 2.18.2-r3 2.19.50-r1 2.19.52-r1 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
