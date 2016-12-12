@@ -144,6 +144,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/2.0.14-php-plugin.patch"
+
 	sed -i \
 		-e "s|'-O2', ||" \
 		-e "s|'-Werror', ||" \
