@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils user toolchain-funcs
 
 DESCRIPTION="Merging locate is an utility to index and quickly search for files"
@@ -11,7 +11,7 @@ SRC_URI="https://fedorahosted.org/releases/m/l/mlocate/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="nls selinux"
 
 RDEPEND="!sys-apps/slocate
@@ -43,7 +43,7 @@ src_install() {
 	fperms 0644 /etc/{updatedb,mlocate-cron}.conf
 
 	insinto /etc/cron.daily
-	newins "${FILESDIR}"/mlocate.cron-r2 mlocate
+	newins "${FILESDIR}"/mlocate.cron-r3 mlocate
 	fperms 0755 /etc/cron.daily/mlocate
 
 	fowners 0:locate /usr/bin/locate
