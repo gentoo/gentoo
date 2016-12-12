@@ -2,8 +2,8 @@ get things building with glibc-2.8
 
 http://bugs.gentoo.org/248100
 
---- include/common.h
-+++ include/common.h
+--- a/include/common.h
++++ b/include/common.h
 @@ -23,6 +23,7 @@
  #ifndef __COMMON_H
  #define __COMMON_H
