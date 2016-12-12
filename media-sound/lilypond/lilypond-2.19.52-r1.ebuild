@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 [[ "${PV}" = "9999" ]] && inherit git-r3
-inherit elisp-common autotools python-single-r1
+inherit elisp-common autotools python-single-r1 xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
@@ -21,7 +21,7 @@ HOMEPAGE="http://lilypond.org/"
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
-IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
+IUSE="debug emacs guile2 profile vim-syntax ${LANGS// / linguas_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
@@ -31,6 +31,11 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
 	emacs? ( virtual/emacs )
+	guile2? ( >=dev-scheme/guile-2:12 )
+	!guile2? (
+		>=dev-scheme/guile-1.8.2:12[deprecated,regex]
+		<dev-scheme/guile-2.0:12
+	)
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	app-text/t1utils
@@ -87,6 +92,8 @@ src_prepare() {
 	rm tex/texinfo.tex || die
 
 	eautoreconf
+
+	xdg_environment_reset #586592
 }
 
 src_configure() {
@@ -99,10 +106,9 @@ src_configure() {
 		--disable-optimising
 		--disable-pipe
 		$(use_enable debug debugging)
+		$(use_enable guile2)
 		$(use_enable profile profiling)
 	)
-
-	has_version ">=dev-scheme/guile-2" && myeconfargs+=( --enable-guile2 )
 
 	econf "${myeconfargs[@]}"
 }
