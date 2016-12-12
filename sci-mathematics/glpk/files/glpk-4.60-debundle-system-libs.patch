@@ -1,0 +1,92 @@
+Remove suitesparse (camd,colamd) and zlib bundles
+bicatali - apr 2014
+Updated for 4.57 by soap (Jan 2016)
+Updated for 4.60 by bicatali (Dec 2016)
+
+--- glpk-4.60/configure.ac
++++ glpk-4.60/configure.ac
+@@ -59,6 +59,11 @@
+ dnl Check for math library
+ AC_CHECK_LIB([m], [exp])
+ 
++AC_CHECK_LIB([amd], [amd_1])
++AC_CHECK_LIB([colamd], [colamd])
++AC_CHECK_HEADER([amd.h])
++AC_CHECK_LIB([z], [gzopen])
++
+ dnl Check for <sys/time.h> header
+ AC_CHECK_HEADER([sys/time.h],
+    AC_DEFINE([HAVE_SYS_TIME_H], [1], [N/A]))
+
+--- glpk-4.60/src/Makefile.am
++++ glpk-4.60/src/Makefile.am
+@@ -6,18 +6,15 @@
+ 
+ libglpk_la_CPPFLAGS = \
+ -I$(srcdir) \
+--I$(srcdir)/amd \
+ -I$(srcdir)/api \
+ -I$(srcdir)/bflib \
+ -I$(srcdir)/cglib \
+--I$(srcdir)/colamd \
+ -I$(srcdir)/env \
+ -I$(srcdir)/minisat \
+ -I$(srcdir)/misc \
+ -I$(srcdir)/mpl \
+ -I$(srcdir)/proxy \
+--I$(srcdir)/simplex \
+--I$(srcdir)/zlib
++-I$(srcdir)/simplex
+ 
+ libglpk_la_LDFLAGS = \
+ -version-info 41:0:1 \
+@@ -63,18 +60,6 @@
+ glpssx02.c \
+ lux.c \
+ spv.c \
+-amd/amd_1.c \
+-amd/amd_2.c \
+-amd/amd_aat.c \
+-amd/amd_control.c \
+-amd/amd_defaults.c \
+-amd/amd_dump.c \
+-amd/amd_info.c \
+-amd/amd_order.c \
+-amd/amd_post_tree.c \
+-amd/amd_postorder.c \
+-amd/amd_preprocess.c \
+-amd/amd_valid.c \
+ api/advbas.c \
+ api/asnhall.c \
+ api/asnlp.c \
+@@ -142,7 +127,6 @@
+ cglib/gmicut.c \
+ cglib/gmigen.c \
+ cglib/mirgen.c \
+-colamd/colamd.c \
+ env/alloc.c \
+ env/dlsup.c \
+ env/env.c \
+@@ -195,21 +179,6 @@
+ simplex/spxprob.c \
+ simplex/spychuzc.c \
+ simplex/spychuzr.c \
+-simplex/spydual.c \
+-zlib/adler32.c \
+-zlib/compress.c \
+-zlib/crc32.c \
+-zlib/deflate.c \
+-zlib/gzclose.c \
+-zlib/gzlib.c \
+-zlib/gzread.c \
+-zlib/gzwrite.c \
+-zlib/inffast.c \
+-zlib/inflate.c \
+-zlib/inftrees.c \
+-zlib/trees.c \
+-zlib/uncompr.c \
+-zlib/zio.c \
+-zlib/zutil.c
++simplex/spydual.c
+ 
+ ## eof ##
