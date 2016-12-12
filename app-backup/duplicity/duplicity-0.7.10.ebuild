@@ -23,7 +23,10 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
