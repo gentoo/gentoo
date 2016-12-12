@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils user versionator
 
@@ -12,11 +12,11 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="berkdb +gdbm +manpager nls selinux static-libs zlib"
 
 CDEPEND=">=dev-libs/libpipeline-1.4.0
-	berkdb? ( sys-libs/db )
+	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm ) )
 	sys-apps/groff
@@ -50,6 +50,7 @@ src_configure() {
 		--docdir='$(datarootdir)'/doc/${PF} \
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d \
 		--enable-setuid \
+		--enable-cache-owner=man \
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x" \
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
@@ -70,8 +71,8 @@ src_install() {
 	newexe "${FILESDIR}"/man-db.cron man-db #289884
 
 	keepdir /var/cache/man
-	fowners man:0 /var/cache/man
-	fperms 2755 /var/cache/man
+	fowners man:man /var/cache/man
+	fperms 0755 /var/cache/man
 }
 
 pkg_preinst() {
@@ -82,8 +83,8 @@ pkg_preinst() {
 	if [[ ! -g ${EROOT}var/cache/man ]] ; then
 		einfo "Resetting permissions on ${EROOT}var/cache/man" #447944
 		mkdir -p "${EROOT}var/cache/man"
-		chown -R man:0 "${EROOT}"var/cache/man
-		find "${EROOT}"var/cache/man -type d '!' -perm /g=s -exec chmod 2755 {} +
+		chown -R man:man "${EROOT}"var/cache/man
+		find "${EROOT}"var/cache/man -type d -exec chmod 0755 {} +
 	fi
 }
 
