@@ -5,6 +5,13 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Johannes Huber <johu@gentoo.org> (12 Dec 2016)
+# No stable version available (kde-frameworks/prison).
+kde-plasma/plasma-workspace prison
+<kde-apps/akonadi-contacts-16.08.49:5 prison
+<kde-apps/kaddressbook-16.08.49:5 prison
+<kde-apps/kdepim-apps-libs-16.08.49:5 prison
+
 # Johannes Huber <johu@gentoo.org> (08 Dec 2016)
 # Python 3 support is available with
 # >=dev-python/translate-toolkit-2.0.0_beta7 which is unstable.
