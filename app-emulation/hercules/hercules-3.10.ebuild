@@ -21,6 +21,11 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.09-aliasing.patch
+
+	# The local modules need local libs, so when doing a parallel install
+	# of the modules and libs breaks during relinking.  Force the libs to
+	# install first, and then the modules that use those libs.  #488126
+	echo "install-modexecLTLIBRARIES: install-libLTLIBRARIES" >> Makefile.in
 }
 
 src_configure() {
