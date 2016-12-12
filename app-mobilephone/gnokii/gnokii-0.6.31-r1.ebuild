@@ -63,6 +63,7 @@ src_prepare() {
 	sed -i -e "s:/usr/local:${EPREFIX}/usr:" Docs/sample/gnokiirc || die
 
 	default
+	mv configure.{in,ac} || die
 
 	eautoreconf
 }
@@ -79,6 +80,7 @@ src_configure() {
 
 	econf \
 		--disable-static \
+		--enable-security \
 		--disable-unix98test \
 		$(use_enable bluetooth) \
 		${config_xdebug} \
