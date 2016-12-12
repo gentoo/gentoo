@@ -8213,7 +8213,7 @@ dev-python/python-novaclient 3.3.2 6.0.0: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 2.3.0 3.2.0: A client for the OpenStack APIs
+dev-python/python-openstackclient 2.3.0 3.2.0 3.2.1: A client for the OpenStack APIs
 dev-python/python-pam 0.1.4: A python interface to the PAM library on linux using ctypes
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
@@ -10303,6 +10303,7 @@ dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-remote-hg 0.2 0.3: Semi-official Mercurial bridge from Git project
 dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
+dev-vcs/git-spindle 3.3: Git subcommands for interacting with central services
 dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1: Assorted git-related scripts
 dev-vcs/gitg 3.20.3 3.22.0: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
