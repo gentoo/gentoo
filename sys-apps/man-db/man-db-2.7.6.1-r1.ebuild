@@ -80,11 +80,10 @@ pkg_preinst() {
 		einfo "Cleaning ${EROOT}var/cache/man from sys-apps/man"
 		find "${EROOT}"var/cache/man -type f '!' '(' -name index.bt -o -name index.db ')' -delete
 	fi
-	if [[ ! -g ${EROOT}var/cache/man ]] ; then
-		einfo "Resetting permissions on ${EROOT}var/cache/man" #447944
-		mkdir -p "${EROOT}var/cache/man"
+	if [[ -g ${EROOT}var/cache/man ]] ; then
+		einfo "Resetting permissions on ${EROOT}var/cache/man"
 		chown -R man:man "${EROOT}"var/cache/man
-		find "${EROOT}"var/cache/man -type d -exec chmod 0755 {} +
+		find "${EROOT}"var/cache/man -type d -exec chmod g-s {} +
 	fi
 }
 
