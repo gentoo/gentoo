@@ -12,7 +12,7 @@ DESCRIPTION="Model-driven deployment, config management, and command execution f
 HOMEPAGE="http://ansible.com/"
 # This is a release candidate, so we need to do things a little differently
 MY_PV="$(get_version_component_range 1-4)-0.1.rc1"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
