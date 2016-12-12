@@ -27,6 +27,8 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^CFLAGS/{s:=:+=:;s:-O2::}' \
 		Makefile || die
