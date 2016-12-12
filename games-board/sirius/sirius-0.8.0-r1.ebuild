@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils
+
+inherit autotools
 
 DESCRIPTION="A program for playing the game of othello/reversi"
 HOMEPAGE="http://sirius.bitvis.nu/"
@@ -25,25 +26,16 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${P}-fix-desktop-file.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
 )
 
 src_prepare() {
 	default
-	sed -i -e '/-g -O3/d' configure.in || die
-	sed -i \
-		-e '/Icon/s/\.png//' \
-		-e '/Categories/s/Application;//' \
-		sirius.desktop.in || die
-	mv configure.in configure.ac || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--datadir=/usr/share \
-		$(use_enable nls)
-}
-
-src_install() {
-	default
+	econf $(use_enable nls)
 }
