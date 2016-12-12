@@ -32,7 +32,7 @@ DEPEND="php_targets_php7-0? ( ${COMMON_DEPEND} dev-lang/php:7.0[session?,json?] 
 RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-memcached:0[php_targets_php5-6] )"
 
 src_unpack(){
-	if use php_targets_php7-0 || use php_targest_php7-1 ; then
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
 		vcs-snapshot_src_unpack
 		php-ext-source-r3_src_unpack
 	else
