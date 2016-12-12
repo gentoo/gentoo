@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PERL_EXPORT_PHASE_FUNCTIONS=no
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils linux-mod autotools perl-module python-single-r1 toolchain-funcs udev user
+inherit versionator eutils linux-mod autotools perl-module python-single-r1 toolchain-funcs udev user
 
 DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="http://linux-gpib.sourceforge.net/"
@@ -184,10 +184,14 @@ pkg_postinst () {
 		einfo ""
 	fi
 
-	if [[ $REPLACING_VERSIONS < "3.2.21-r1" ]]; then
-		ewarn "sci-libs/linux-gpib-3.2.21-r1 introduces incompatible changes to the kernel"
-		ewarn "interface. You may need to reboot to make sure the newly built driver modules"
-		ewarn "are used (some of the driver modules cannot be unloaded)."
-		ewarn "If you do not do this, every gpib call will just result in an error message."
-	fi
+	local v
+		for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 3.2.21-r1 ${v}; then
+			ewarn "sci-libs/linux-gpib-3.2.21-r1 introduces incompatible changes to the kernel"
+			ewarn "interface. You may need to reboot to make sure the newly built driver modules"
+			ewarn "are used (some of the driver modules cannot be unloaded)."
+			ewarn "If you do not do this, every gpib call will just result in an error message."
+			break
+		fi
+	done
 }
