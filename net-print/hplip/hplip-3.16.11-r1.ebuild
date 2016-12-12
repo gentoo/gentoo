@@ -4,10 +4,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads,xml"
 
-inherit eutils linux-info python-single-r1 readme.gentoo-r1 udev autotools
+inherit autotools linux-info python-single-r1 readme.gentoo-r1 udev
 
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
@@ -18,39 +18,42 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-IUSE="doc fax +hpcups hpijs kde -libusb0 minimal parport policykit +qt4 qt5 scanner +snmp static-ppds X"
+IUSE="doc fax +hpcups hpijs kde -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
 # dependency on dev-python/notify-python dropped due to python 3 incompatibility
 # possible replacement notify2 (https://pypi.python.org/pypi/notify2/0.3) not in tree
 
 COMMON_DEPEND="
+	net-print/cups
 	virtual/jpeg:0
 	hpijs? (
-		|| ( >=net-print/cups-filters-1.0.43-r1[foomatic] >=net-print/foomatic-filters-3.0.20080507[cups] )
+		|| ( net-print/cups-filters[foomatic] net-print/foomatic-filters[cups] )
 	)
-	>=net-print/cups-1.4.0
 	!minimal? (
 		${PYTHON_DEPS}
+		sys-apps/dbus
 		!libusb0? ( virtual/libusb:1 )
 		libusb0? ( virtual/libusb:0 )
-		scanner? ( >=media-gfx/sane-backends-1.0.19-r1 )
-		fax? ( >=sys-apps/dbus-1.6.8-r1 )
+		scanner? ( media-gfx/sane-backends )
 		snmp? (
+			dev-libs/openssl:0=
 			net-analyzer/net-snmp
-			dev-libs/openssl:0
 		)
-	)"
-
+	)
+"
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
-
+	virtual/pkgconfig
+"
 RDEPEND="${COMMON_DEPEND}
-	>=app-text/ghostscript-gpl-8.71-r3
-	policykit? ( sys-auth/polkit )
+	app-text/ghostscript-gpl
 	!minimal? (
 		>=dev-python/dbus-python-1.2.0-r1[${PYTHON_USEDEP}]
-		dev-python/pygobject[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/pygobject:2[${PYTHON_USEDEP}]' 'python2*')
+		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' 'python3*')
+		fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
 		kernel_linux? ( virtual/udev )
+		!qt5? ( >=dev-python/PyQt4-4.11.1[dbus,X,${PYTHON_USEDEP}] )
+		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}] )
 		scanner? (
 			>=dev-python/reportlab-3.1.44-r2[${PYTHON_USEDEP}]
 			>=dev-python/pillow-3.1.1[${PYTHON_USEDEP}]
@@ -60,15 +63,19 @@ RDEPEND="${COMMON_DEPEND}
 				media-gfx/sane-frontends
 			) )
 		)
-		fax? ( >=dev-python/reportlab-3.1.44-r2[${PYTHON_USEDEP}] )
-		qt4? ( >=dev-python/PyQt4-4.11.1[dbus,X,${PYTHON_USEDEP}] )
-		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,${PYTHON_USEDEP}] )
-	)"
+	)
+	policykit? ( sys-auth/polkit )
+"
 
 REQUIRED_USE="
+	fax? ( || ( $(python_gen_useflags 'python2*') ) )
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
-	!minimal? ( qt4? ( !qt5 ) )
 "
+
+PATCHES=(
+	"${WORKDIR}/patches"
+	"${FILESDIR}/${PN}-3.16.9-hpps-indent.patch"
+)
 
 CONFIG_CHECK="~PARPORT ~PPDEV"
 ERROR_PARPORT="Please make sure kernel parallel port support is enabled (PARPORT and PPDEV)."
@@ -84,8 +91,6 @@ Any user who wants to print must be in the lp group.
 
 pkg_setup() {
 	use !minimal && python-single-r1_pkg_setup
-
-	! use qt4 && ! use qt5 && ewarn "You need USE=qt4 or USE=qt5 for the hplip GUI."
 
 	use scanner && ! use X && ewarn "You need USE=X for the scanner GUI."
 
@@ -105,9 +110,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${WORKDIR}/patches"
-	eapply "${FILESDIR}/${PN}-3.16.9-hpps-indent.patch"
-
 	default
 
 	if use !minimal ; then
@@ -151,18 +153,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf drv_build minimal_build
-
-	if use qt4 || use qt5 ; then
-		myconf="${myconf} --enable-gui-build"
-	else
-		myconf="${myconf} --disable-gui-build"
-	fi
-
-	if use fax ||  use qt4 || use qt5 ; then
-		myconf="${myconf} --enable-dbus-build"
-	else
-		myconf="${myconf} --disable-dbus-build"
-	fi
 
 	if use libusb0 ; then
 		myconf="${myconf} --enable-libusb01_build"
@@ -229,12 +219,14 @@ src_configure() {
 		${minimal_build} \
 		$(use_enable doc doc-build) \
 		$(use_enable fax fax-build) \
+		$(use_enable !minimal gui-build) \
+		$(use_enable !minimal dbus-build) \
 		$(use_enable parport pp-build) \
-		$(use_enable scanner scan-build) \
-		$(use_enable snmp network-build) \
-		$(use_enable qt4) \
+		$(use_enable policykit) \
+		$(use_enable !qt5 qt4) \
 		$(use_enable qt5) \
-		$(use_enable policykit)
+		$(use_enable scanner scan-build) \
+		$(use_enable snmp network-build)
 }
 
 src_install() {
@@ -246,19 +238,19 @@ src_install() {
 
 	# Installed by sane-backends
 	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=201023
-	rm -f "${D}"/etc/sane.d/dll.conf || die
+	rm -f "${ED%/}"/etc/sane.d/dll.conf || die
 
-	rm -f "${D}"/usr/share/doc/${PF}/{copyright,README_LIBJPG,COPYING} || die
-	rmdir --ignore-fail-on-non-empty "${D}"/usr/share/doc/${PF}/ || die
+	rm -f "${ED%/}"/usr/share/doc/${PF}/{copyright,README_LIBJPG,COPYING} || die
+	rmdir --ignore-fail-on-non-empty "${ED%/}"/usr/share/doc/${PF}/ || die
 
 	# Remove hal fdi files
-	rm -rf "${D}"/usr/share/hal || die
+	rm -rf "${ED%/}"/usr/share/hal || die
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	if use !minimal ; then
 		python_export EPYTHON PYTHON
-		python_optimize "${D}"/usr/share/hplip
+		python_optimize "${ED%/}"/usr/share/hplip
 	fi
 
 	readme.gentoo_create_doc
