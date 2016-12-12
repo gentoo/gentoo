@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc gtk qt5"
 
-RDEPEND="media-libs/lv2
+RDEPEND=">=media-libs/lv2-1.12.0
 	gtk? ( x11-libs/gtk+:2 )
 	qt5? (
 		dev-qt/qtcore:5
