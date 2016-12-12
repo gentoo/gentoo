@@ -52,7 +52,6 @@ REQUISITES for a list of runtime dependencies.
 
 if [ "$PV" == "9999" ]; then
 	DEPEND="${DEPEND}
-		dev-util/aap
 		www-client/lynx
 		dev-util/source-highlight"
 fi
@@ -75,8 +74,12 @@ src_compile() {
 	default
 
 	if [ "$PV" == "9999" ]; then
-		cd doc || die
-		aap -f main.aap ../{CHANGELOG,README,BUGS} || die
+		# replicate build rules from doc/main.aap; this avoids a dependency on
+		# the A-A-P build tool
+		for f in CHANGELOG.txt BUGS.txt README.asciidoc; do
+			${PYTHON} asciidoc.py -f text.conf -n -b html4 -o - "$f" | \
+				lynx -dump -stdin > "${f%.*}" || die
+		done
 	fi
 }
 
