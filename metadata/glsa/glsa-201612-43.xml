@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-43">
+  <title>Node.js: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Node.js, the worst of
+    which can allow remote attackers to cause Denial of Service conditions.
+  </synopsis>
+  <product type="ebuild">nodejs</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 1</revised>
+  <bug>568900</bug>
+  <bug>586084</bug>
+  <bug>595256</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/nodejs" auto="yes" arch="*">
+      <unaffected range="rge">0.12.17</unaffected>
+      <unaffected range="ge">4.6.1</unaffected>
+      <vulnerable range="lt">4.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript
+      engine.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Node.js. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition, or
+      conduct man-in-the-middle attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Node.js 0.12.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-0.12.17"
+    </code>
+    
+    <p>All Node.js 4.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/nodejs-4.6.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8027">CVE-2015-8027</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2086">CVE-2016-2086</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2216">CVE-2016-2216</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5325">CVE-2016-5325</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Sep 2016 07:02:17 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 14:35:08 +0000">whissi</metadata>
+</glsa>
