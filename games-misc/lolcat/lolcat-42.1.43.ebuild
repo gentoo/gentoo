@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/busyloop/lolcat"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-vcs/git"
 
