@@ -14440,7 +14440,7 @@ net-im/kadu 0.12.3 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
-net-im/mcabber 0.10.2_p20131025 1.0.4 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.0.4 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.0.2 4.0.3 4.0.4: Openfire (formerly wildfire) real time collaboration (RTC) server
@@ -18098,7 +18098,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.5.658.44_p1 1.6.687.3_p1 1.6.689.13_p1: A new browser for our friends
+www-client/vivaldi 1.5.658.44_p1 1.6.689.13_p1 1.6.689.29_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18124,7 +18124,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.170: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.186: Adobe Flash Player
 www-plugins/chrome-binary-plugins 55.0.2883.75 56.0.2924.21_beta 57.0.2946.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
