@@ -53,10 +53,12 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig
 	dev-util/intltool
+	sys-devel/autoconf-archive
 	theme-manager? ( dev-util/monodevelop )"
 
 PATCHES=(
 	"${FILESDIR}/hexchat-2.12.2-configure.ac-remove-werror.patch"
+	"${FILESDIR}/hexchat-2.12.4-libressl.patch"
 )
 
 src_prepare() {
