@@ -30,6 +30,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (13 Dec 2016)
+# Mask Rails 4.1.x for removal.
+# This version of Rails has not been supported upstream since Rails
+# 5.0.0 came out and its security can no longer be guaranteed.
+# Masked for removal in 30 days.
+dev-ruby/rails:4.1
+dev-ruby/railties:4.1
+dev-ruby/activerecord:4.1
+dev-ruby/actionmailer:4.1
+dev-ruby/actionpack:4.1
+dev-ruby/actionview:4.1
+dev-ruby/activemodel:4.1
+dev-ruby/activesupport:4.1
+# Still depends on Rails 4.1 for testing
+=dev-ruby/dalli-2.7.4
+# Still depends on activerecord:4.1. No newer upstream version that
+# depends on a newer version.
+net-misc/termtter
+
 # David Seifert <soap@gentoo.org> (27 Dec 2016)
 # New release, masked to iron out bugs
 >=dev-util/boost-build-1.63.0
