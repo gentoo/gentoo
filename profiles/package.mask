@@ -116,11 +116,6 @@ app-dicts/stardict-hnd-vi-en
 app-dicts/stardict-hnd-vi-fr
 app-dicts/stardict-hnd-vi-vi
 
-# Johannes Huber <johu@gentoo.org> (28 Nov 2016)
-# Masked for removal in 14 days. Gentoo temp workaround package.
-# Superseded by kde-frameworks/oxygen-icons:5.
-kde-base/legacy-icons
-
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Dead for years, replaced by media-video/devedeng, bug #430564, removal in
 # a month.
