@@ -7,11 +7,10 @@
   </synopsis>
   <product type="ebuild">webkit-gtk</product>
   <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 1</revised>
+  <revised>December 13, 2016: 2</revised>
   <bug>543650</bug>
   <bug>570034</bug>
   <bug>573656</bug>
-  <bug>577068</bug>
   <access>remote</access>
   <affected>
     <package name="net-libs/webkit-gtk" auto="yes" arch="*">
@@ -188,13 +187,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7102">CVE-2015-7102</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7103">CVE-2015-7103</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7104">CVE-2015-7104</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1723">CVE-2016-1723</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1724">CVE-2016-1724</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1725">CVE-2016-1725</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1726">CVE-2016-1726</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1727">CVE-2016-1727</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1728">CVE-2016-1728</uri>
   </references>
   <metadata tag="requester" timestamp="Sat, 12 Mar 2016 11:54:30 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 10:18:40 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 11:29:46 +0000">whissi</metadata>
 </glsa>
