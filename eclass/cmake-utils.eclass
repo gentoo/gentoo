@@ -117,7 +117,7 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit toolchain-funcs multilib flag-o-matic eutils versionator
+inherit toolchain-funcs multilib flag-o-matic eutils multiprocessing versionator
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
@@ -780,8 +780,9 @@ enable_cmake-utils_src_test() {
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
-	echo ctest "${myctestargs[@]}" "$@"
-	if ctest "${myctestargs[@]}" "$@" ; then
+	set -- ctest -j "$(makeopts_jobs)" --test-load "$(makeopts_loadavg)" "${myctestargs[@]}" "$@"
+	echo "$@" >&2
+	if "$@" ; then
 		einfo "Tests succeeded."
 		popd > /dev/null || die
 		return 0
