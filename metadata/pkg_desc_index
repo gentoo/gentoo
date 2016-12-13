@@ -13844,7 +13844,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.10.2: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.10.3: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.90 0.7.91: MediaInfo supplies technical and tag information about media files
@@ -18072,7 +18072,7 @@ www-client/epiphany 3.20.3 3.22.1 3.22.2 3.22.3: GNOME webbrowser based on Webki
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 45.4.0 45.5.0 45.5.1 50.0.2: Firefox Web Browser
 www-client/firefox-bin 45.5.1 50.0.2: Firefox Web Browser
-www-client/google-chrome 55.0.2883.75: The web browser from Google
+www-client/google-chrome 55.0.2883.87: The web browser from Google
 www-client/google-chrome-beta 56.0.2924.21: The web browser from Google
 www-client/google-chrome-unstable 57.0.2946.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
@@ -18125,7 +18125,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.186: Adobe Flash Player
-www-plugins/chrome-binary-plugins 55.0.2883.75 56.0.2924.21_beta 57.0.2946.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 55.0.2883.87 56.0.2924.21_beta 57.0.2946.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
