@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-34">
+  <title>systemd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in systemd, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">systemd</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>486904</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/systemd" auto="yes" arch="*">
+      <unaffected range="ge">208</unaffected>
+      <vulnerable range="lt">208</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A system and service manager.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in systemd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly execute arbitrary code with the privileges of
+      the process, cause a Denial of Service condition, or gain escalated
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All systemd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/systemd-208"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4391">CVE-2013-4391</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4393">CVE-2013-4393</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4394">CVE-2013-4394</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Nov 2016 20:50:18 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:59:01 +0000">whissi</metadata>
+</glsa>
