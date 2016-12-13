@@ -9,7 +9,7 @@ inherit multiprocessing
 
 test-makeopts_jobs() {
 	local exp=$1; shift
-	tbegin "makeopts_jobs($*) == ${exp}"
+	tbegin "makeopts_jobs($1${2+; inf=${2}}) == ${exp}"
 	local act=$(makeopts_jobs "$@")
 	[[ ${act} == "${exp}" ]]
 	tend $? "Got back: ${act}"
@@ -38,5 +38,8 @@ tests=(
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_jobs "${tests[i]}" "${tests[i+1]}"
 done
+
+# test custom inf value
+test-makeopts_jobs 645 "-j" 645
 
 texit
