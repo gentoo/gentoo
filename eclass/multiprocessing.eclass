@@ -53,6 +53,38 @@ bashpid() {
 	sh -c 'echo ${PPID}'
 }
 
+# @FUNCTION: get_nproc
+# @USAGE: [${fallback:-1}]
+# @DESCRIPTION:
+# Attempt to figure out the number of processing units available.
+# If the value can not be determined, prints the provided fallback
+# instead. If no fallback is provided, defaults to 1.
+get_nproc() {
+	local nproc
+
+	# GNU
+	if type -P nproc &>/dev/null; then
+		nproc=$(nproc)
+	fi
+
+	# BSD
+	if [[ -z ${nproc} ]] && type -P sysctl &>/dev/null; then
+		nproc=$(sysctl -n hw.ncpu 2>/dev/null)
+	fi
+
+	# fallback to python2.6+
+	# note: this may fail (raise NotImplementedError)
+	if [[ -z ${nproc} ]] && type -P python &>/dev/null; then
+		nproc=$(python -c 'import multiprocessing; print(multiprocessing.cpu_count());' 2>/dev/null)
+	fi
+
+	if [[ -n ${nproc} ]]; then
+		echo "${nproc}"
+	else
+		echo "${1:-1}"
+	fi
+}
+
 # @FUNCTION: makeopts_jobs
 # @USAGE: [${MAKEOPTS}]
 # @DESCRIPTION:
