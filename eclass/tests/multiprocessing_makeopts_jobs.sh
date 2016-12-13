@@ -31,6 +31,9 @@ tests=(
 	7 "-l3 --jobs 7 -w"
 	4 "-j1 -j 2 --jobs 3 --jobs=4"
 	8 "     -j        			8     "
+	999 "-kj"
+	4 "-kj4"
+	5 "-kj 5"
 )
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_jobs "${tests[i]}" "${tests[i+1]}"

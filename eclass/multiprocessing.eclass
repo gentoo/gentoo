@@ -67,8 +67,8 @@ makeopts_jobs() {
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local jobs=$(echo " $* " | sed -r -n \
-		-e 's:.*[[:space:]](-j|--jobs[=[:space:]])[[:space:]]*([0-9]+).*:\2:p' \
-		-e 's:.*[[:space:]](-j|--jobs)[[:space:]].*:999:p')
+		-e 's:.*[[:space:]](-[a-z]*j|--jobs[=[:space:]])[[:space:]]*([0-9]+).*:\2:p' \
+		-e 's:.*[[:space:]](-[a-z]*j|--jobs)[[:space:]].*:999:p')
 	echo ${jobs:-1}
 }
 
@@ -86,8 +86,8 @@ makeopts_loadavg() {
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local lavg=$(echo " $* " | sed -r -n \
-		-e 's:.*[[:space:]](-l|--(load-average|max-load)[=[:space:]])[[:space:]]*([0-9]+|[0-9]+\.[0-9]+).*:\3:p' \
-		-e 's:.*[[:space:]](-l|--(load-average|max-load))[[:space:]].*:999:p')
+		-e 's:.*[[:space:]](-[a-z]*l|--(load-average|max-load)[=[:space:]])[[:space:]]*([0-9]+|[0-9]+\.[0-9]+).*:\3:p' \
+		-e 's:.*[[:space:]](-[a-z]*l|--(load-average|max-load))[[:space:]].*:999:p')
 	# Default to 999 since the default is to not use a load limit.
 	echo ${lavg:-999}
 }

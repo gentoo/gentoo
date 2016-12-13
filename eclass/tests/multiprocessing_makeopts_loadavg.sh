@@ -28,6 +28,9 @@ tests=(
 	4 "-j1 -j 2 --load-average 3 --load-average=4"
 	3 " --max-load=3 -x"
 	8 "     -l        			8     "
+	999 "-kl"
+	4 "-kl4"
+	5 "-kl 5"
 )
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_loadavg "${tests[i]}" "${tests[i+1]}"
