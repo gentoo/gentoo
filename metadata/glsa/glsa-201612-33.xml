@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-33">
+  <title>GPL Ghostscript: User-assisted execution of arbitrary code</title>
+  <synopsis>An integer overflow in GPL Ghostscript may allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript-gpl</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>556316</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.09</unaffected>
+      <vulnerable range="lt">9.09</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>An integer overflow flaw was discovered that leads to an out-of-bounds
+      read and write in gs_ttf.ps.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file,
+      possibly resulting in the execution of arbitrary code with the privileges
+      of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gpl-9.09"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3228">CVE-2015-3228</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 22 Nov 2016 15:13:30 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 06:58:50 +0000">whissi</metadata>
+</glsa>

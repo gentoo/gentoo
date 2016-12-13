@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-39">
+  <title>Bash: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Bash could potentially lead to arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">bash</product>
+  <announced>December 13, 2016</announced>
+  <revised>December 13, 2016: 2</revised>
+  <bug>594496</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-shells/bash" auto="yes" arch="*">
+      <unaffected range="ge">4.3_p46-r1</unaffected>
+      <vulnerable range="lt">4.3_p46-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bash is the standard GNU Bourne Again SHell.</p>
+  </background>
+  <description>
+    <p>A vulnerability was found in the way Bash expands $HOSTNAME. Injecting
+      malicious code into $HOSTNAME could cause it to run each time Bash
+      expands \h in the prompt string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker controlling the system’s hostname (i.e. via DHCP)
+      could possibly execute arbitrary code with the privileges of the process,
+      or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.3_p46-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0634">CVE-2016-0634</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Sep 2016 02:45:43 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 07:00:09 +0000">whissi</metadata>
+</glsa>
