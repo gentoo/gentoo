@@ -4,7 +4,11 @@
 
 # This file requires >=portage-2.1.1
 
-# Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (13 Dec 2016)
+# Dropping ppc from sci-libs/armadillo, bug 555896
+sci-libs/gdal armadillo
+
+## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
 
