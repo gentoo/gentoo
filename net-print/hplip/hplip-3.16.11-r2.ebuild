@@ -53,7 +53,6 @@ RDEPEND="${COMMON_DEPEND}
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' 'python3*')
 		fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
 		kernel_linux? ( virtual/udev )
-		!qt5? ( >=dev-python/PyQt4-4.11.1[dbus,X,${PYTHON_USEDEP}] )
 		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}] )
 		scanner? (
 			!fax? ( >=dev-python/reportlab-3.2[${PYTHON_USEDEP}] )
@@ -211,6 +210,7 @@ src_configure() {
 		--disable-foomatic-rip-hplip-install \
 		--disable-shadow-build \
 		--disable-qt3 \
+		--disable-qt4 \
 		--disable-udev_sysfs_rules \
 		--with-cupsbackenddir=$(cups-config --serverbin)/backend \
 		--with-cupsfilterdir=$(cups-config --serverbin)/filter \
@@ -225,7 +225,6 @@ src_configure() {
 		$(use_enable !minimal dbus-build) \
 		$(use_enable parport pp-build) \
 		$(use_enable policykit) \
-		$(use_enable !qt5 qt4) \
 		$(use_enable qt5) \
 		$(use_enable scanner scan-build) \
 		$(use_enable snmp network-build)
