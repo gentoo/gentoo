@@ -27,7 +27,6 @@ start_pre() {
 }
 
 start_post() {
-	# Use --no-dereference to prevent privilege escalation
-	# attacks. Fixes bug #602550.
-	chown --no-dereference "${user}":"${group}" "${logfile}"
+	# Use -h to prevent privilege escalation attacks. Fixes bug #602550.
+	chown -h "${user}":"${group}" "${logfile}"
 }
