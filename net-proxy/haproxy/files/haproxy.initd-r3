@@ -60,6 +60,17 @@ stop_pre() {
 	fi
 }
 
+stop() {
+	local _t _pid
+
+	_t="$(mktemp)"
+	for _pid in $(cat ${pidfile}) ; do
+		echo "${_pid}" > "${_t}"
+		pidfile="${_t}" openrc_default_stop
+	done
+	rm -f "${_t}"
+}
+
 reload() {
 	checkconfig || { eerror "Reloading failed, please fix your config(s) first"; return 1; }
 
