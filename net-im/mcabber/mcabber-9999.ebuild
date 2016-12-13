@@ -42,7 +42,7 @@ AUTOTOOLS_AUTORECONF="1"
 AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS ChangeLog NEWS README TODO mcabberrc.example doc/README_PGP.txt )
 PATCHES=(
-	"${FILESDIR}/${PN}-0.10.3-vim-ftdetect.patch"
+	"${FILESDIR}/${P}-vim-ftdetect.patch"
 )
 
 pkg_setup() {
