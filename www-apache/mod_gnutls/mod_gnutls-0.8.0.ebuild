@@ -45,7 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	mv src/.libs/libmod_gnutls.so src/.libs/${PN}.so || die
 	keepdir /var/cache/${PN}
 	apache-module_src_install
 }
