@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit nsplugins multilib multilib-minimal rpm
+inherit nsplugins multilib multilib-minimal
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="
@@ -12,13 +12,17 @@ HOMEPAGE="
 	https://helpx.adobe.com/security/products/flash-player.html
 "
 
-AF_URI="https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer"
-AF_NP_32_URI="${AF_URI}/linux32/flash-player-npapi-${PV}-release.i386.rpm -> ${P}-npapi.i386.rpm"
-AF_NP_64_URI="${AF_URI}/linux64/flash-player-npapi-${PV}-release.x86_64.rpm -> ${P}-npapi.x86_64.rpm"
-AF_PP_32_URI="${AF_URI}/linux32/flash-player-ppapi-${PV}-release.i386.rpm -> ${P}-ppapi.i386.rpm"
-AF_PP_64_URI="${AF_URI}/linux64/flash-player-ppapi-${PV}-release.x86_64.rpm -> ${P}-ppapi.x86_64.rpm"
+AF_URI="https://fpdownload.adobe.com/pub/flashplayer/pdc/${PV}"
+AF_NP_32_URI="${AF_URI}/flash_player_npapi_linux.i386.tar.gz -> ${P}-npapi.i386.tar.gz"
+AF_NP_64_URI="${AF_URI}/flash_player_npapi_linux.x86_64.tar.gz -> ${P}-npapi.x86_64.tar.gz"
+AF_PP_32_URI="${AF_URI}/flash_player_ppapi_linux.i386.tar.gz -> ${P}-ppapi.i386.tar.gz"
+AF_PP_64_URI="${AF_URI}/flash_player_ppapi_linux.x86_64.tar.gz -> ${P}-ppapi.x86_64.tar.gz"
 
 IUSE="kde +nsplugin +ppapi"
+REQUIRED_USE="
+	|| ( nsplugin ppapi )
+"
+
 SRC_URI="
 	nsplugin? (
 		abi_x86_32? ( ${AF_NP_32_URI} )
@@ -90,7 +94,7 @@ src_unpack() {
 		# we need to filter out the other archive(s)
 		local other_abi
 		[[ ${ABI} == amd64 ]] && other_abi=i386 || other_abi=x86_64
-		rpm_unpack ${files[@]//*${other_abi}*/}
+		unpack ${files[@]//*${other_abi}*/}
 	}
 
 	multilib_parallel_foreach_abi multilib_src_unpack
@@ -103,7 +107,7 @@ multilib_src_install() {
 	if use nsplugin; then
 		# PLUGINS_DIR comes from nsplugins.eclass
 		exeinto /usr/$(get_libdir)/${PLUGINS_DIR}
-		doexe usr/${pkglibdir}/flash-plugin/libflashplayer.so
+		doexe libflashplayer.so
 
 		if multilib_is_native_abi; then
 			if use kde; then
@@ -134,9 +138,9 @@ multilib_src_install() {
 
 	if use ppapi; then
 		exeinto /usr/$(get_libdir)/chromium-browser/PepperFlash
-		doexe usr/${pkglibdir}/flash-plugin/libpepflashplayer.so
+		doexe libpepflashplayer.so
 		insinto /usr/$(get_libdir)/chromium-browser/PepperFlash
-		doins usr/${pkglibdir}/flash-plugin/manifest.json
+		doins manifest.json
 
 		if multilib_is_native_abi; then
 			dodir /etc/chromium
