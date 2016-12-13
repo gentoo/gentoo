@@ -11760,7 +11760,6 @@ kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
-kde-base/legacy-icons 4.11.22-r1: KDE legacy icons
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-frameworks/attica 5.26.0 5.29.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 4.14.3 5.26.0-r2 5.29.0: Framework for searching and managing metadata
@@ -15088,7 +15087,7 @@ net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
-net-misc/peervpn 0.044-r1: P2P mesh VPN
+net-misc/peervpn 0.044-r2: P2P mesh VPN
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pimpd 0.8: RFC1413-compliant identd server supporting masqueraded connections
 net-misc/pipes 1.16 1.16.1: Very versatile TCP pipes
@@ -15174,7 +15173,7 @@ net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamlink 0.1.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/strongswan 5.3.4 5.5.0: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-misc/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.34-r1 5.35 5.36 5.37 5.38: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8: Complete 3270 access package
