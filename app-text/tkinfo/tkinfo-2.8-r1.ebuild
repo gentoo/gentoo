@@ -6,15 +6,17 @@ EAPI=6
 
 DESCRIPTION="Info Browser in TK"
 HOMEPAGE="http://math-www.uni-paderborn.de/~axel/tkinfo/"
-SRC_URI="http://math-www.uni-paderborn.de/~axel/tkinfo/${P}.tar.gz"
+SRC_URI="http://math-www.uni-paderborn.de/~axel/${PN}/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 IUSE=""
 LICENSE="freedist"
 SLOT="0"
 
 RDEPEND="dev-lang/tk"
 DEPEND="sys-apps/sed"
+
+DOCS=( README )
 
 src_prepare() {
 	default
@@ -26,5 +28,4 @@ src_prepare() {
 src_install () {
 	dobin "${PN}"
 	doman "${PN}.1"
-	dodoc README
 }

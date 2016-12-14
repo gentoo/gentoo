@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
+# DOSBox + OpenGLide is untested on this arch.
+games-emulation/dosbox glide
+
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
 dev-db/percona-server -numa
