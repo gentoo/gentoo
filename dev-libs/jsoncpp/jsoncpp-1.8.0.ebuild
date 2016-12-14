@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-any-r1
@@ -42,13 +43,14 @@ src_configure() {
 
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_STATIC_LIBS=OFF
+
 		# Follow Debian, Ubuntu, Arch convention for headers location
 		# bug #452234
-		-DINCLUDE_INSTALL_DIR="${EPREFIX}"/usr/include/jsoncpp
+		-DCMAKE_INSTALL_INCLUDEDIR=include/jsoncpp
+
 		# Disable implicit ccache use
 		-DCCACHE_FOUND=OFF
 	)
-
 	cmake-utils_src_configure
 }
 
@@ -56,19 +58,11 @@ src_compile() {
 	cmake-utils_src_compile
 
 	if use doc; then
-		"${EPYTHON}" doxybuild.py --doxygen=/usr/bin/doxygen || die
+		"${EPYTHON}" doxybuild.py --doxygen="${EPREFIX}"/usr/bin/doxygen || die
+		HTML_DOCS=( dist/doxygen/jsoncpp*/. )
 	fi
 }
 
 src_test() {
 	emake -C "${BUILD_DIR}" jsoncpp_check
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	if use doc; then
-		docinto html
-		dodoc -r dist/doxygen/jsoncpp*/.
-	fi
 }
