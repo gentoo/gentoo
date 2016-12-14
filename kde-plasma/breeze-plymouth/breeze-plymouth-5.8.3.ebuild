@@ -19,7 +19,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DDISTRO_NAME="Gentoo Linux"
+		-DDISTRO_NAME="${DISTRO} Linux"
 		-DDISTRO_VERSION=
 	)
 
