@@ -54,6 +54,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# bug 598647 - PIE not supported
+	sed -e 's:CFLAGS          =:& -fno-PIE:' -i "${S}/Make.common" || die
+
 	local f
 	for f in "${S}"/*/Make.tiano "${S}"/Make.common; do
 		sed -i -e 's/^\(include .*target.txt.*\)$/#\1/' \
