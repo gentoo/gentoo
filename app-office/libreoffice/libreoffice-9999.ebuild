@@ -446,7 +446,7 @@ src_configure() {
 		--disable-online-update \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
-		--with-build-version="Gentoo official package" \
+		--with-build-version="${DISTRO} official package" \
 		--enable-extension-integration \
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell" \
 		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell" \
@@ -455,7 +455,7 @@ src_configure() {
 		--with-lang="" \
 		--with-parallelism=$(makeopts_jobs) \
 		--with-system-ucpp \
-		--with-vendor="Gentoo Foundation" \
+		--with-vendor="${DISTRO} Linux" \
 		--with-x \
 		--without-fonts \
 		--without-myspell-dicts \
