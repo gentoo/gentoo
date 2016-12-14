@@ -35,9 +35,9 @@ src_unpack() {
 	sed -i "
 		1s:/bin/sh:/bin/bash:;
 		s/##VERSION##/$PV/;
-		s/Debian GNU\//Gentoo /g;
-		s/Debian/Gentoo/g;
-		s/debian/gentoo/g;
+		s/Debian GNU\//${DISTRO} /g;
+		s/Debian/${DISTRO}/g;
+		s/debian/${DISTRO}/g;
 		s/dpkg --print-architecture/uname -m/" debian/elilo.sh
 }
 
