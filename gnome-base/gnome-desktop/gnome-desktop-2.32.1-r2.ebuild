@@ -58,7 +58,7 @@ src_prepare() {
 src_configure() {
 	python_export_best
 	gnome2_src_configure \
-		--with-gnome-distributor=Gentoo \
+		--with-gnome-distributor="${DISTRO}" \
 		--disable-scrollkeeper \
 		--disable-static \
 		--disable-deprecations \

@@ -47,7 +47,7 @@ DEPEND="${COMMON_DEPEND}
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
-		--with-gnome-distributor=Gentoo \
+		--with-gnome-distributor="${DISTRO}" \
 		--enable-desktop-docs \
 		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable debug debug-tools) \

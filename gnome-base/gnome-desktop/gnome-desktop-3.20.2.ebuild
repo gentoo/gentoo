@@ -52,7 +52,7 @@ src_configure() {
 	# will not get installed in ${pnpdatadir} (/usr/share/libgnome-desktop-3.0).
 	gnome2_src_configure \
 		--disable-static \
-		--with-gnome-distributor=Gentoo \
+		--with-gnome-distributor="${DISTRO}" \
 		--enable-desktop-docs \
 		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable debug debug-tools) \
