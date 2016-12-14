@@ -13,6 +13,5 @@
 		<flag name="passfile">Adds support for caching passwords into a file
 			between sessions</flag>
 		<flag name="smime">Enable support for S/MIME</flag>
-		<flag name="topal">Enable support for <pkg>net-mail/topal</pkg></flag>
 	</use>
 </pkgmetadata>
