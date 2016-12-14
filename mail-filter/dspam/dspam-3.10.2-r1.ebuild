@@ -174,7 +174,7 @@ src_install() {
 	insinto "${DSPAM_HOME}/txt"
 	doins txt/*.txt
 	for i in spam nonspam; do
-		echo "Scanned and tagged with DSPAM ${PV} on Gentoo Linux as ${i} by ISP" > "${T}/msgtag.${i}"
+		echo "Scanned and tagged with DSPAM ${PV} on ${DISTRO} Linux as ${i} by ISP" > "${T}/msgtag.${i}"
 		doins "${T}/msgtag.${i}"
 	done
 

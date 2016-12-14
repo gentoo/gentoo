@@ -105,7 +105,7 @@ src_prepare() {
 		done
 		# add some explanation as to why not to go upstream
 		sed -i \
-			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
+			-e '/ReachingUs = N_(/aThis release of Mutt is heavily enriched with patches.\\nFor this reason, any bugs are better reported at '"${DISTRO_BUG_URL}"'\\nor re-emerge with USE=vanilla and try to reproduce your problem.\\n\\' \
 			main.c || die "Failed to add bug instructions"
 	fi
 
@@ -116,8 +116,8 @@ src_prepare() {
 	# patch version string for bug reports
 	local patchset=
 	use vanilla || patchset=", ${PATCHSET}"
-	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s'"${patchset}${upatches}"')"|' \
-		muttlib.c || die "failed patching in Gentoo version"
+	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s'"${DISTRO} ${patchset}${upatches}"')"|' \
+		muttlib.c || die "failed patching in ${DISTRO} version"
 
 	# many patches touch the buildsystem, we always need this
 	AT_M4DIR="m4" eautoreconf

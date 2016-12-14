@@ -110,8 +110,8 @@ src_prepare() {
 	epatch_user && upatches=" with user patches"
 
 	# patch version string for bug reports
-	sed -i -e 's/"Mutt %s (%s)"/"Mutt %s (%s, Gentoo '"${PVR}${upatches}"')"/' \
-		muttlib.c || die "failed patching in Gentoo version"
+	sed -i -e 's/"Mutt %s (%s)"/"Mutt %s (%s, '"${DISTRO}"' '"${PVR}${upatches}"')"/' \
+		muttlib.c || die "failed patching in ${DISTRO} version"
 
 	# many patches touch the buildsystem, we always need this
 	AT_M4DIR="m4" eautoreconf
