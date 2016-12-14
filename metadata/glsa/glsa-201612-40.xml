@@ -7,11 +7,11 @@
   </synopsis>
   <product type="ebuild">squashfs-tools</product>
   <announced>December 13, 2016</announced>
-  <revised>December 13, 2016: 2</revised>
+  <revised>December 14, 2016: 3</revised>
   <bug>427356</bug>
   <access>remote</access>
   <affected>
-    <package name="squashfs-tools" auto="yes" arch="*">
+    <package name="sys-fs/squashfs-tools" auto="yes" arch="*">
       <unaffected range="ge">4.3</unaffected>
       <vulnerable range="lt">4.3</vulnerable>
     </package>
@@ -44,7 +44,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=squashfs-tools-4.3"
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/squashfs-tools-4.3"
     </code>
   </resolution>
   <references>
@@ -52,5 +52,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4025">CVE-2012-4025</uri>
   </references>
   <metadata tag="requester" timestamp="Tue, 29 Nov 2016 23:27:04 +0000">whissi</metadata>
-  <metadata tag="submitter" timestamp="Tue, 13 Dec 2016 07:00:20 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 14 Dec 2016 10:21:21 +0000">whissi</metadata>
 </glsa>
