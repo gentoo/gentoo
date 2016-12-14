@@ -130,7 +130,7 @@ src_configure() {
 	use prefix && myconf+=" --without-local-dir"
 
 	econf \
-		--with-modified-by=Gentoo-${PVR} \
+		--with-modified-by=${DISTRO}-${PVR} \
 		--enable-gui=no \
 		--without-x \
 		--disable-darwin \
