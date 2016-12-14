@@ -15,12 +15,24 @@ LICENSE="BSD GPL-2 GPL-3 FDL-1.3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
-IUSE="${FS_USE} -gnuefi doc"
+IUSE="${FS_USE} -gnuefi doc -custom-cflags"
 
 DEPEND="gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 	!gnuefi? ( >=sys-boot/udk-2015 )"
 
 DOCS="NEWS.txt README.txt docs/refind docs/Styles"
+
+pkg_pretend() {
+	if use custom-cflags; then
+		ewarn
+		ewarn "You have enabled building with USE=custom-cflags. Be aware that"
+		ewarn "using this can result in EFI binaries that fail to run and may"
+		ewarn "fail to build at all. This is strongly advised against by upstream."
+		ewarn
+		ewarn "See https://bugs.gentoo.org/598587#c3 for more information"
+		ewarn
+	fi
+}
 
 pkg_setup() {
 	if use x86 ; then
@@ -42,6 +54,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# bug 598647 - PIE not supported
+	sed -e 's:CFLAGS          =:& -fno-PIE:' -i "${S}/Make.common" || die
+
 	local f
 	for f in "${S}"/*/Make.tiano "${S}"/Make.common; do
 		sed -i -e 's/^\(include .*target.txt.*\)$/#\1/' \
@@ -76,17 +92,9 @@ src_prepare() {
 
 src_compile() {
 	# Prepare flags
+	local pecoff_header_size
 	[[ $EFIARCH == x64 ]] && pecoff_header_size='0x228' \
 		|| pecoff_header_size='0x220'
-
-	append-cflags $(test-flags-CC -fno-strict-aliasing)
-	append-cflags $(test-flags-CC -fno-stack-protector)
-	append-cflags $(test-flags-CC -fshort-wchar) $(test-flags-CC -Wall)
-
-	# Bug #598004: required to prevent gcc from inserting calls to memcpy or memmove
-	filter-flags -O*
-	append-cflags $(test-flags-CC -Os)
-
 	local make_flags=(
 		ARCH="${BUILDARCH}"
 		GENFW="/usr/bin/GenFw"
@@ -96,8 +104,6 @@ src_compile() {
 		AR="$(tc-getAR)"
 		RANLIB="$(tc-getRANLIB)"
 		OBJCOPY="$(tc-getOBJCOPY)"
-		CFLAGS="${CFLAGS}"
-		LDFLAGS="${LDFLAGS}"
 		GNUEFI_LDFLAGS="-T \$(GNUEFI_LDSCRIPT) -shared -nostdlib -Bsymbolic \
 			-L\$(EFILIB) -L\$(GNUEFILIB) \$(CRTOBJS) -znocombreloc -zdefs"
 		TIANO_LDSCRIPT="/usr/lib/GccBase.lds"
@@ -110,7 +116,12 @@ src_compile() {
 	# Make main EFI
 	local all_target
 	use gnuefi && all_target="gnuefi" || all_target="tiano"
-	emake "${make_flags[@]}" ${all_target}
+
+	if use custom-cflags; then
+		emake CFLAGS="${CFLAGS}" "${make_flags[@]}" ${all_target}
+	else
+		emake "${make_flags[@]}" ${all_target}
+	fi
 
 	# Make filesystem drivers
 	local gnuefi_target
@@ -120,7 +131,11 @@ src_compile() {
 		fs=${fs#+}
 		if use "${fs}"; then
 			einfo "Building ${fs} filesystem driver"
-			emake "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			if use custom-cflags; then
+				emake CFLAGS="${CFLAGS}" "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			else
+				emake "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			fi
 		fi
 	done
 }
@@ -157,7 +172,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "rEFInd has been built and installed into /usr/share/${P}"
+	elog "rEFInd has been built and installed into ${EROOT%/}/usr/share/${P}"
 	elog "You will need to use the command 'refind-install' to install"
 	elog "the binaries into your EFI System Partition"
 	elog ""
@@ -170,7 +185,7 @@ pkg_postinst() {
 		elog "refind-mkdefault requires >=dev-lang/python-3"
 		elog ""
 		elog "A sample configuration can be found at"
-		elog "/usr/share/${P}/refind/refind.conf-sample"
+		elog "${EROOT%}/usr/share/${P}/refind/refind.conf-sample"
 	else
 		if ! version_is_at_least "0.10.3" "${REPLACING_VERSIONS}"; then
 			elog "The new refind-mkdefault script requires >=dev-lang/python-3"
