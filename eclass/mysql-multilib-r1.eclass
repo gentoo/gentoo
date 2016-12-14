@@ -389,7 +389,7 @@ multilib_src_configure() {
 		-DINSTALL_SCRIPTDIR=share/mysql/scripts
 		-DINSTALL_SQLBENCHDIR=share/mysql
 		-DINSTALL_SUPPORTFILESDIR=${EPREFIX}/usr/share/mysql
-		-DWITH_COMMENT="Gentoo Linux ${PF}"
+		-DWITH_COMMENT="${DISTRO} Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test)
 		-DWITH_LIBEDIT=0
 		-DWITH_ZLIB=system
