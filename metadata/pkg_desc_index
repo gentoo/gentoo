@@ -11538,7 +11538,7 @@ kde-apps/kdeaccessibility-meta 16.04.3 16.08.3: kdeaccessibility - merge this to
 kde-apps/kdeadmin-meta 16.04.3 16.08.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 16.04.3: Oxygen Plasma 4 desktop theme
-kde-apps/kdebase-kioslaves 16.04.3-r1: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
+kde-apps/kdebase-kioslaves 16.04.3-r2: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-menu 16.04.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 16.04.3: KDE menu icons
 kde-apps/kdebase-meta 16.04.3 16.08.3: Transitional package to pull in plasma-meta plus basic applications
