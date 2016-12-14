@@ -43,7 +43,7 @@ src_configure() {
 		--disable-examples \
 		--without-gtk \
 		--with-bash-completion-dir="$(get_bashcompdir)" \
-		--with-package-name="GStreamer editing services ebuild for Gentoo" \
+		--with-package-name="GStreamer editing services ebuild for ${DISTRO}" \
 		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
 }
 

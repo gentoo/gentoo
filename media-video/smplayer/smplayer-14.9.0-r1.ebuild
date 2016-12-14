@@ -59,7 +59,7 @@ src_prepare() {
 
 src_configure() {
 	cd "${S}"/src
-	echo "#define SVN_REVISION \"SVN-${MY_PV} (Gentoo)\"" > svn_revision.h
+	echo "#define SVN_REVISION \"SVN-${MY_PV} (${DISTRO})\"" > svn_revision.h
 	eqmake4
 }
 

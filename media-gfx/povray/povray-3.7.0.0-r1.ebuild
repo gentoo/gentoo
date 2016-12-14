@@ -103,7 +103,7 @@ src_configure() {
 	append-cppflags -DPOVLIBDIR=\\\"${EROOT}usr/share/${PN}\\\" -DPOVCONFDIR=\\\"${EROOT}etc/${PN}\\\"
 
 	econf \
-		COMPILED_BY="Portage (Gentoo $(uname)) on $(hostname -f)" \
+		COMPILED_BY="Portage (${DISTRO} $(uname)) on $(hostname -f)" \
 		$(use_enable debug) \
 		$(use_enable io-restrictions) \
 		$(use_with openexr openexr "${EPREFIX}/usr/$(get_libdir)") \

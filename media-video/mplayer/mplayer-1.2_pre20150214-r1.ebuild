@@ -254,7 +254,7 @@ src_prepare() {
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
 		local sv=$(<$svf)
-		printf "SVN-r${sv} (Gentoo)" > VERSION
+		printf "SVN-r${sv} (${DISTRO})" > VERSION
 	fi
 
 	# fix path to bash executable in configure scripts

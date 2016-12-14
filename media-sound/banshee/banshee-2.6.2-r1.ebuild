@@ -89,7 +89,7 @@ src_configure() {
 		--enable-gnome
 		--enable-schemas-install
 		--with-gconf-schema-file-dir=/etc/gconf/schemas
-		--with-vendor-build-id=Gentoo/${PN}/${PVR}
+		--with-vendor-build-id=${DISTRO}/${PN}/${PVR}
 		--enable-gapless-playback
 		--disable-boo
 		--disable-gst-sharp

@@ -107,7 +107,7 @@ src_configure() {
 
 	local myeconfargs=(
 		${non_redist_conf}
-		COMPILED_BY="Portage (Gentoo `uname`) on `hostname -f`"
+		COMPILED_BY="Portage (${DISTRO} `uname`) on `hostname -f`"
 		$(use_enable debug)
 		$(use_enable io-restrictions)
 		$(use_with openexr openexr "${EPREFIX}/usr/$(get_libdir)")

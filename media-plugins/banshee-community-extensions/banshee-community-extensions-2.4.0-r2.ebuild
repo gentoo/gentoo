@@ -59,7 +59,7 @@ src_configure() {
 		--enable-release
 		--disable-maintainer-mode
 		--with-gconf-schema-file-dir=/etc/gconf/schemas
-		--with-vendor-build-id=Gentoo/${PN}/${PVR}
+		--with-vendor-build-id=${DISTRO}/${PN}/${PVR}
 		--disable-scrollkeeper
 		--disable-clutterflow --disable-appindicator --disable-openvp
 		--enable-ampache --disable-karaoke --disable-jamendo

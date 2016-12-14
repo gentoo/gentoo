@@ -68,7 +68,7 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable test tests)
 		--with-bash-completion-dir="$(get_bashcompdir)"
-		--with-package-name="GStreamer ebuild for Gentoo"
+		--with-package-name="GStreamer ebuild for ${DISTRO}"
 		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer"
 	)
 
