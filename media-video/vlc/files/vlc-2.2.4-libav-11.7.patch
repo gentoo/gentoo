@@ -1,0 +1,10 @@
+--- a/modules/codec/avcodec/audio.c	2016-09-10 13:46:51.066453337 -0700
++++ a/modules/codec/avcodec/audio.c	2016-09-10 13:42:26.061451090 -0700
+@@ -38,6 +38,7 @@ 
+ 
+ #include <libavcodec/avcodec.h>
+ #include <libavutil/mem.h>
++#include <libavutil/channel_layout.h>
+ 
+ #include "avcodec.h"
+ 
