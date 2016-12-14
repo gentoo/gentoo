@@ -189,7 +189,7 @@ src_configure() {
 		--disable-linux-acpi
 		--without-dtrace
 		--without-fop
-		--with-os-vendor=Gentoo
+		--with-os-vendor="${DISTRO}"
 		--with-sha1=libcrypto
 	)
 

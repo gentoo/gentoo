@@ -41,7 +41,7 @@ pkg_setup() {
 		--disable-gladeui
 		# this one's for :3.10
 		$(use_enable glade gladeui2)
-		--with-vendor-info=Gentoo
+		--with-vendor-info="${DISTRO}"
 		)
 
 	[[ ${CHOST} == *-darwin* ]] && XFCONF+=( --disable-visibility ) #366857

@@ -167,7 +167,7 @@ src_configure() {
 		--disable-config-hal
 		--without-dtrace
 		--without-fop
-		--with-os-vendor=Gentoo
+		--with-os-vendor="${DISTRO}"
 	)
 
 	xorg-2_src_configure
