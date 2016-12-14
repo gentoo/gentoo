@@ -115,7 +115,7 @@ pkg_setup() {
 src_prepare() {
 
 	sed -i "${S}"/bin/xxvd \
-		-e "s:debian:Gentoo:" \
+		-e "s:debian:${DISTRO}:" \
 		-e "s:/var/log/xxvd.log:/var/log/xxv/xxvd.log:" \
 		-e "s:/var/run/xxvd.pid:/var/run/xxv/xxvd.pid:" \
 		-e "s:\$RealBin/../lib:${LIBDIR}:" \

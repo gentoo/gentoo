@@ -109,7 +109,7 @@ src_configure() {
 		$(use_with ssl libssl) \
 		--disable-dependency-tracking \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--enable-os-string="Gentoo ${os}" \
+		--enable-os-string="${DISTRO} ${os}" \
 		--enable-tmpdir="${EPREFIX}/var/tmp" \
 		--localstatedir="${EPREFIX}/var" \
 		--with-wwwroot="${EPREFIX}${WEBROOT}/htdocs" \

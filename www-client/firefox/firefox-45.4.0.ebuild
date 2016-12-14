@@ -351,7 +351,7 @@ PROFILE_EOF
 
 	# very ugly hack to make firefox not sigbus on sparc
 	# FIXME: is this still needed??
-	use sparc && { sed -e 's/Firefox/FirefoxGentoo/g' \
+	use sparc && { sed -e "s/Firefox/Firefox${DISTRO}/g" \
 					 -i "${ED}/${MOZILLA_FIVE_HOME}/application.ini" \
 					|| die "sparc sed failed"; }
 }
