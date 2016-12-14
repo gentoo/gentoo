@@ -1,11 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-DESCRIPTION="ClamSMTP is an SMTP filter that allows you to check for viruses using the ClamAV anti-virus software"
-HOMEPAGE="http://memberwebs.com/nielsen/software/clamsmtp/"
+DESCRIPTION="An SMTP filter to check for viruses using the ClamAV anti-virus software"
+HOMEPAGE="http://thewalter.net/stef/software/clamsmtp/"
 
-SRC_URI="http://memberwebs.com/nielsen/software/clamsmtp/${P}.tar.gz"
+SRC_URI="http://thewalter.net/stef/software/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 hppa ~sparc x86"
@@ -30,7 +30,7 @@ src_install() {
 pkg_postinst() {
 	echo
 	elog "For help configuring Postfix to use clamsmtpd, see:"
-	elog "    http://memberwebs.com/nielsen/software/clamsmtp/postfix.html"
+	elog "    http://thewalter.net/stef/software/clamsmtp/postfix.html"
 	echo
 	ewarn "You'll need to have ScanMail support turned on in clamav.conf"
 	ewarn "Also, make sure the clamd scanning daemon is running (not just freshclam)"
