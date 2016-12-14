@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure install preinst prepare unpack
-DEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst preinst prepare unpack
+DEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DOS emulator
 EAPI=6
 HOMEPAGE=http://dosbox.sourceforge.net/
-IUSE=alsa debug hardened opengl
+IUSE=alsa debug glide hardened opengl
 LICENSE=GPL-2
-RDEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
+RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:subversion src_unpack:subversion src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	750f91bd0705a41b26ba01bcee93aaad	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f41e204b64fa926d8d800e7c3180b2c4
+SRC_URI=glide? ( https://raw.githubusercontent.com/voyageur/openglide/3722fc563b737d2d7933df6a771651c2154e6f7b/platform/dosbox/dosbox_glide.diff -> dosbox_glide-3722fc563b737d2d7933df6a771651c2154e6f7b.diff )
+_eclass_exported_funcs=pkg_preinst:subversion pkg_postinst:- src_unpack:subversion src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	750f91bd0705a41b26ba01bcee93aaad	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=82ab327b4f7396036eb30c27838aef32
