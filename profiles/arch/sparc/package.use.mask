@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
+# DOSBox + OpenGLide is untested on this arch.
+games-emulation/dosbox glide
+
 # Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
 # libomp does not support SPARC, #600148.
 sys-devel/clang-runtime openmp

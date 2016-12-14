@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
+# DOSBox + OpenGLide is untested on this arch.
+games-emulation/dosbox glide
+
 # Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
