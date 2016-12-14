@@ -39,7 +39,7 @@ DEPEND="
 "
 
 EANT_BUILD_TARGET="dist.j2se"
-EANT_EXTRA_ARGS="-Dskip.proguard=yes -Dsvn=true -Dsvnversion=true -Dbuild.current.revision=Gentoo"
+EANT_EXTRA_ARGS="-Dskip.proguard=yes -Dsvn=true -Dsvnversion=true -Dbuild.current.revision=${DISTRO}"
 EANT_GENTOO_CLASSPATH="commons-imaging,jcalendar-1.2,jchart2d,jopt-simple-4.4,rxtx-2,swing-layout-1,swingx-1.6,swingx-ws-bt747"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 

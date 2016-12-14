@@ -84,7 +84,7 @@ src_prepare() {
 	sed -e "s|gcc|$(tc-getCC) \${LDFLAGS}|" \
 		${MID_INSTALL}/systems/Linux/make_shared \
 		> ${MID_INSTALL}/systems/Gentoo/make_shared || die
-	sed -e 's|PC/Linux|Gentoo|' \
+	sed -e "s|PC/Linux|${DISTRO}|" \
 		${MID_INSTALL}/systems/Linux/setup \
 		> ${MID_INSTALL}/systems/Gentoo/setup || die
 
