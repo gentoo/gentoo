@@ -22,6 +22,18 @@ DEPEND="gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 
 DOCS="NEWS.txt README.txt docs/refind docs/Styles"
 
+pkg_pretend() {
+	if use custom-cflags; then
+		ewarn
+		ewarn "You have enabled building with USE=custom-cflags. Be aware that"
+		ewarn "using this can result in EFI binaries that fail to run and may"
+		ewarn "fail to build at all. This is strongly advised against by upstream."
+		ewarn
+		ewarn "See https://bugs.gentoo.org/598587#c3 for more information"
+		ewarn
+	fi
+}
+
 pkg_setup() {
 	if use x86 ; then
 		export EFIARCH=ia32
@@ -96,12 +108,16 @@ src_compile() {
 			--defsym=PECOFF_HEADER_SIZE=${pecoff_header_size} \
 			--entry \$(ENTRYPOINT) -u \$(ENTRYPOINT) -m \$(LD_CODE)"
 	)
-	use custom-cflags && make_flags[CFLAGS]="${CFLAGS}"
 
 	# Make main EFI
 	local all_target
 	use gnuefi && all_target="gnuefi" || all_target="tiano"
-	emake "${make_flags[@]}" ${all_target}
+
+	if use custom-cflags; then
+		emake CFLAGS="${CFLAGS}" "${make_flags[@]}" ${all_target}
+	else
+		emake "${make_flags[@]}" ${all_target}
+	fi
 
 	# Make filesystem drivers
 	local gnuefi_target
@@ -111,7 +127,11 @@ src_compile() {
 		fs=${fs#+}
 		if use "${fs}"; then
 			einfo "Building ${fs} filesystem driver"
-			emake "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			if use custom-cflags; then
+				emake CFLAGS="${CFLAGS}" "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			else
+				emake "${make_flags[@]}" -C "${S}/filesystems" ${fs}${gnuefi_target}
+			fi
 		fi
 	done
 }
