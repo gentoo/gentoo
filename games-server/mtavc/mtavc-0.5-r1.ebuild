@@ -25,7 +25,7 @@ QA_EXECSTACK="/opt/${PN}/MTAServer"
 src_prepare() {
 	default
 
-	sed -i 's:NoName:Gentoo:' mtaserver.conf || die
+	sed -i "s:NoName:${DISTRO}:" mtaserver.conf || die
 }
 
 src_install() {

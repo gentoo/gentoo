@@ -23,7 +23,7 @@ QA_PREBUILT="${GAMES_PREFIX_OPT:1}/${PN}/MTAServer"
 QA_EXECSTACK="${GAMES_PREFIX_OPT:1}/${PN}/MTAServer"
 
 src_prepare() {
-	sed -i 's:NoName:Gentoo:' mtaserver.conf || die
+	sed -i "s:NoName:${DISTRO}:" mtaserver.conf || die
 }
 
 src_install() {
