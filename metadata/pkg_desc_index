@@ -1916,7 +1916,7 @@ app-misc/screen 4.3.1-r1 4.4.0 9999: screen manager with VT100/ANSI terminal emu
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 3.7.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Write patterns on disk/file
-app-misc/sl 3.03-r3: sophisticated graphical program which corrects your miss typing
+app-misc/sl 3.03-r3 5.02: sophisticated graphical program which corrects your miss typing
 app-misc/sleepyhead 0.9.2.2 0.9.2.2-r1 0.9.3 9999: Software used to analyze data from CPAP machines
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
