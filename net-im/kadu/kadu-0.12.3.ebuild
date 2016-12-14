@@ -84,7 +84,7 @@ src_configure() {
 
 	# Configure package
 	local mycmakeargs=(
-		-DBUILD_DESCRIPTION='Gentoo Linux'
+		-DBUILD_DESCRIPTION="${DISTRO} Linux"
 		-DCOMPILE_PLUGINS="${PLUGINS}"
 		-DNETWORK_IMPLEMENTATION="Qt"
 		-DSIG_HANDLING_ENABLED=TRUE

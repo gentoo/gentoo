@@ -45,6 +45,6 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-more-warnings \
 		--disable-static \
-		--with-dist-version=Gentoo \
+		--with-dist-version="${DISTRO}" \
 		$(use_with gtk gnome)
 }

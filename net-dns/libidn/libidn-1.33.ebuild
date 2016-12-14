@@ -64,9 +64,9 @@ multilib_src_configure() {
 		--disable-silent-rules \
 		--disable-valgrind-tests \
 		--with-lispdir="${EPREFIX}${SITELISP}/${PN}" \
-		--with-packager-bug-reports="https://bugs.gentoo.org" \
+		--with-packager-bug-reports="${DISTRO_BUG_URL}" \
 		--with-packager-version="r${PR}" \
-		--with-packager="Gentoo"
+		--with-packager="${DISTRO}"
 }
 
 multilib_src_compile() {

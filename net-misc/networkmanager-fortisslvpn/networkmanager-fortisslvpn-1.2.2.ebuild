@@ -46,7 +46,7 @@ src_prepare() {
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
-		--with-dist-version=Gentoo \
+		--with-dist-version="${DISTRO}" \
 		--localstatedir=/var \
 		$(use_with gtk gnome)
 }

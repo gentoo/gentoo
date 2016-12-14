@@ -43,7 +43,7 @@ src_configure() {
 	econf \
 		--enable-engine-irc		\
 		--without-indicate		\
-		--with-vendor-package-version="Gentoo ${PV}" \
+		--with-vendor-package-version="${DISTRO} ${PV}" \
 		--with-db4o=included \
 		--with-messaging-menu=no \
 		--with-indicate=no \

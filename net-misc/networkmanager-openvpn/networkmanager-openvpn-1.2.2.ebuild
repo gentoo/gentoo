@@ -52,7 +52,7 @@ src_configure() {
 		--localstatedir=/var \
 		--disable-more-warnings \
 		--disable-static \
-		--with-dist-version=Gentoo \
+		--with-dist-version="${DISTRO}" \
 		$(use_with gtk gnome) \
 		$(use_with test tests)
 }
