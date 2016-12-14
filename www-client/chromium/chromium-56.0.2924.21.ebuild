@@ -165,10 +165,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 )
 
-pkg_pretend() {
+pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
-			die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
+		if tc-is-gcc && ! version_is_at_least 5 "$(gcc-major-version)"; then
+			# bugs: #535730, #525374, #518668
+			die "At least gcc 5 is required"
 		fi
 	fi
 
@@ -180,10 +181,16 @@ pkg_pretend() {
 		CHECKREQS_DISK_BUILD="25G"
 	fi
 	eshopts_pop
-	check-reqs_pkg_pretend
+	check-reqs_pkg_setup
+}
+
+pkg_pretend() {
+	pre_build_checks
 }
 
 pkg_setup() {
+	pre_build_checks
+
 	# Make sure the build system will use the right python, bug #344367.
 	python-any-r1_pkg_setup
 
