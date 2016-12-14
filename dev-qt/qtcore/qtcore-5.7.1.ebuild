@@ -31,6 +31,7 @@ QT5_TARGET_SUBDIRS=(
 	src/tools/rcc
 	src/corelib
 	src/tools/qlalr
+	doc
 )
 
 src_configure() {

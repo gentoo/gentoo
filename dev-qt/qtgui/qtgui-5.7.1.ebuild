@@ -41,7 +41,7 @@ RDEPEND="
 	)
 	evdev? ( sys-libs/mtdev )
 	gtk? (
-		x11-libs/gtk+:2
+		x11-libs/gtk+:3
 		x11-libs/libX11
 		x11-libs/pango
 		!!x11-libs/cairo[qt4]
@@ -104,7 +104,7 @@ QT5_GENTOO_CONFIG=(
 	!gif:no-gif:
 	gles2::OPENGL_ES
 	gles2:opengles2:OPENGL_ES_2
-	gtk:gtk2:
+	gtk:gtk3:
 	!:no-gui:
 	:system-harfbuzz:HARFBUZZ
 	!:no-harfbuzz:

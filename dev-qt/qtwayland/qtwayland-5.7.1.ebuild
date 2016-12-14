@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="egl qml wayland-compositor xcomposite"
+IUSE="egl wayland-compositor xcomposite"
 
 DEPEND="
 	>=dev-libs/wayland-1.4.0
@@ -19,9 +19,7 @@ DEPEND="
 	~dev-qt/qtgui-${PV}[egl=]
 	media-libs/mesa[egl?]
 	>=x11-libs/libxkbcommon-0.2.0
-	wayland-compositor? (
-		qml? ( ~dev-qt/qtdeclarative-${PV} )
-	)
+	wayland-compositor? ( ~dev-qt/qtdeclarative-${PV} )
 	xcomposite? (
 		x11-libs/libX11
 		x11-libs/libXcomposite
@@ -35,7 +33,6 @@ src_configure() {
 	fi
 
 	qt_use_compile_test xcomposite
-	qt_use_disable_mod qml quick src/compositor/compositor_api/compositor_api.pri
 
 	qt5-build_src_configure
 }

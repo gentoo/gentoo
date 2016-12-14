@@ -54,7 +54,8 @@ inherit eutils flag-o-matic toolchain-funcs versionator virtualx
 HOMEPAGE="https://www.qt.io/"
 
 QT5_MINOR_VERSION=$(get_version_component_range 2)
-readonly QT5_MINOR_VERSION
+QT5_PATCH_VERSION=$(get_version_component_range 3)
+readonly QT5_MINOR_VERSION QT5_PATCH_VERSION
 
 if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
 	LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
@@ -278,9 +279,16 @@ qt5-build_src_install() {
 			qmake_install_target=sub-qmake-qmake-aux-pro-install_subtargets
 		fi
 
+		local global_docs_install_target=
+		if [[ ${QT5_MINOR_VERSION} -le 6 && ${QT5_PATCH_VERSION} -le 2 ]]; then
+			global_docs_install_target=install_global_docs
+		fi
+
 		set -- emake INSTALL_ROOT="${D}" \
 			${qmake_install_target} \
-			install_{syncqt,mkspecs,global_docs}
+			install_{syncqt,mkspecs} \
+			${global_docs_install_target}
+
 		einfo "Running $*"
 		"$@"
 

@@ -29,13 +29,14 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2
 	dev-libs/libxslt
+	dev-libs/protobuf:=
 	media-libs/alsa-lib
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/libpng:0=
-	>=media-libs/libvpx-1.4:=
+	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
 	media-libs/mesa
 	media-libs/opus
@@ -73,7 +74,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.0-fix-system-ffmpeg.patch"
-	"${FILESDIR}/${PN}-5.7.0-gcc6.patch"
 	"${FILESDIR}/${PN}-5.7.0-icu58.patch"
 	"${FILESDIR}/${PN}-5.7.0-undef-madv_free.patch"
 )
@@ -82,7 +82,7 @@ src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-paxmark-mksnapshot.patch" )
 
 	if use system-icu; then
-		# ensuire build against system headers - bug #601264
+		# ensure build against system headers - bug #601264
 		rm -r src/3rdparty/chromium/third_party/icu/source || die
 	fi
 
