@@ -242,10 +242,10 @@ index 2b26f3b..78ff2cf 100644
 +  cmd += "google/protobuf/unittest.proto ";
 +  cmd += "--encode=protobuf_unittest.TestAllTypes ";
 +  cmd += "--protobuf_in=" + TestSourceDir() +
-+         "/google/protobuf/testdata/text_format_unittest_data.txt ";
++         "/google/protobuf/testdata/text_format_unittest_data_oneof_implemented.txt ";
 +  cmd += "--protobuf_out=" + out_file;
 +  EXPECT_TRUE(Run(cmd));
-+  ExpectBinaryFilesMatch(out_file, "google/protobuf/testdata/golden_message");
++  ExpectBinaryFilesMatch(out_file, TestSourceDir() + "/google/protobuf/testdata/golden_message_oneof_implemented");
 +}
 +
  }  // anonymous namespace
