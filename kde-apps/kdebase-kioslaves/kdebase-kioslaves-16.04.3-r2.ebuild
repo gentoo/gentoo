@@ -28,7 +28,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdebase_dep kdelibs 'bzip2?,lzma?')
-	$(add_kdeapps_dep kdialog)
+	kde-apps/kdialog:*
 	virtual/ssh
 	!aqua? ( !kernel_SunOS? ( virtual/eject ) )
 "
