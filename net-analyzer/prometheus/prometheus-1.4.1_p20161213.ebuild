@@ -33,7 +33,7 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN%/*} || die
-	GOPATH="${S}" promu build -v --prefix ${PWD} || die
+	GOPATH="${S}" promu build -v || die
 	popd || die
 }
 
