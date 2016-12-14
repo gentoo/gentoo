@@ -415,7 +415,7 @@ src_configure() {
 		-Dglibpth="${EPREFIX}/$(get_libdir) ${EPREFIX}/usr/$(get_libdir)"' ' \
 		-Duselargefiles \
 		-Dd_semctl_semun \
-		-Dcf_by='Gentoo' \
+		-Dcf_by="${DISTRO}" \
 		-Dmyhostname='localhost' \
 		-Dperladmin='root@localhost' \
 		-Dinstallusrbinperl='n' \
