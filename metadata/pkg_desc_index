@@ -9312,7 +9312,7 @@ dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing
 dev-ruby/mixlib-shellout 2.2.7: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0 1.2.0 1.2.1: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
-dev-ruby/moneta 0.8.0: A unified interface to key/value stores
+dev-ruby/moneta 0.8.0 0.8.1: A unified interface to key/value stores
 dev-ruby/mongo 2.0.6: A Ruby driver for MongoDB
 dev-ruby/msgpack 0.7.6 1.0.1 1.0.2: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.11.2 1.12.1: A gem to provide swappable JSON backends
@@ -9358,7 +9358,7 @@ dev-ruby/origin 2.2.0 2.2.1 2.2.2: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.4.3 2.4.4 2.4.5: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
-dev-ruby/parser 2.3.1.4 2.3.2.0 2.3.3.0: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.3.1.4 2.3.2.0 2.3.3.0 2.3.3.1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/pathutil 0.14.0: Like Pathname but a little less insane
@@ -9616,7 +9616,7 @@ dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.0 1.14.1 1.14.2: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.1.0 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 0.3.44 0.3.48 0.3.52 1.2.2: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.44 0.3.52 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.2 3.0.3 3.0.4: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
