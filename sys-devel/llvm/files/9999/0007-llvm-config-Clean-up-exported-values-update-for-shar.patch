@@ -1,7 +1,7 @@
-From df2ea14b7c07dd7cf3e33f2e66f36af8af3b425e Mon Sep 17 00:00:00 2001
+From 628b899be14a6bab4b32dbd53aabd447dcc16cb7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Sat, 20 Aug 2016 23:47:41 +0200
-Subject: [PATCH 6/9] llvm-config: Clean up exported values, update for shared
+Subject: [PATCH] llvm-config: Clean up exported values, update for shared
  linking
 
 Gentoo-specific fixup for llvm-config, including:
@@ -21,7 +21,7 @@ Bug: https://bugs.gentoo.org/501684
  2 files changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/tools/llvm-config/CMakeLists.txt b/tools/llvm-config/CMakeLists.txt
-index 744fa4e..593788a 100644
+index 744fa4e44d1..593788aaef3 100644
 --- a/tools/llvm-config/CMakeLists.txt
 +++ b/tools/llvm-config/CMakeLists.txt
 @@ -32,8 +32,12 @@ get_property(COMPILE_FLAGS TARGET llvm-config PROPERTY COMPILE_FLAGS)
@@ -50,10 +50,10 @@ index 744fa4e..593788a 100644
    set(LLVM_ENABLE_SHARED ON)
  else()
 diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
-index c63733f..3162091 100644
+index d780094861c..c61c72ff48c 100644
 --- a/tools/llvm-config/llvm-config.cpp
 +++ b/tools/llvm-config/llvm-config.cpp
-@@ -522,7 +522,8 @@ int main(int argc, char **argv) {
+@@ -531,7 +531,8 @@ int main(int argc, char **argv) {
        } else if (Arg == "--host-target") {
          OS << Triple::normalize(LLVM_DEFAULT_TARGET_TRIPLE) << '\n';
        } else if (Arg == "--build-mode") {
@@ -63,7 +63,7 @@ index c63733f..3162091 100644
        } else if (Arg == "--assertion-mode") {
  #if defined(NDEBUG)
          OS << "OFF\n";
-@@ -540,7 +541,11 @@ int main(int argc, char **argv) {
+@@ -549,7 +550,11 @@ int main(int argc, char **argv) {
        } else if (Arg == "--obj-root") {
          OS << ActivePrefix << '\n';
        } else if (Arg == "--src-root") {
@@ -73,9 +73,9 @@ index c63733f..3162091 100644
 +        } else {
 +          OS << "/dev/null\n";
 +        }
-       } else if (Arg == "--link-shared") {
-         LinkMode = LinkModeShared;
-       } else if (Arg == "--link-static") {
+       } else if (Arg == "--ignore-libllvm") {
+         LinkDyLib = false;
+         LinkMode = BuiltSharedLibs ? LinkModeShared : LinkModeAuto;
 -- 
-2.9.3
+2.11.0
 
