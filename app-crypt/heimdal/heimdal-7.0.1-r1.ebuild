@@ -145,6 +145,10 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc ChangeLog* README NEWS TODO
 
+	# client rename
+	mv "${D}"/usr/share/man/man1/{,k}su.1
+	mv "${D}"/usr/bin/{,k}su
+
 	newinitd "${FILESDIR}"/heimdal-kdc.initd-r2 heimdal-kdc
 	newinitd "${FILESDIR}"/heimdal-kadmind.initd-r2 heimdal-kadmind
 	newinitd "${FILESDIR}"/heimdal-kpasswdd.initd-r2 heimdal-kpasswdd
