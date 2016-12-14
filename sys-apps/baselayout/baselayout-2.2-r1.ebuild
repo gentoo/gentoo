@@ -181,7 +181,7 @@ src_prepare() {
 	echo "LDPATH='${ldpaths#:}'" >> etc/env.d/00basic
 
 	# rc-scripts version for testing of features that *should* be present
-	echo "Gentoo Base System release ${PV}" > etc/gentoo-release
+	echo "${DISTRO} Base System release ${PV}" > etc/gentoo-release
 }
 
 src_install() {

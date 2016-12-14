@@ -55,7 +55,7 @@ src_install() {
 	fi
 
 	# rc-scripts version for testing of features that *should* be present
-	echo "Gentoo Prefix Base System release ${PV}" > "${ED}"/etc/gentoo-release
+	echo "${DISTRO} Prefix Base System release ${PV}" > "${ED}"/etc/gentoo-release
 
 	# FHS compatibility symlinks stuff
 	dosym /var/tmp /usr/tmp
@@ -66,7 +66,7 @@ src_install() {
 		#!/usr/bin/env sh
 		source "${EPREFIX}/lib/gentoo/functions.sh"
 
-		eerror "runscript not supported by Gentoo Prefix Base System release ${PV}" 1>&2
+		eerror "runscript not supported by ${DISTRO} Prefix Base System release ${PV}" 1>&2
 		exit 1
 	EOF
 	chmod 755 "${ED}"/sbin/runscript || die

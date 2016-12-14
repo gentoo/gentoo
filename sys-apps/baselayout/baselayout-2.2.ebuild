@@ -171,7 +171,7 @@ src_install() {
 	echo "LDPATH='${ldpaths#:}'" >> "${D}"/etc/env.d/00basic
 
 	# rc-scripts version for testing of features that *should* be present
-	echo "Gentoo Base System release ${PV}" > "${D}"/etc/gentoo-release
+	echo "${DISTRO} Base System release ${PV}" > "${D}"/etc/gentoo-release
 }
 
 pkg_postinst() {

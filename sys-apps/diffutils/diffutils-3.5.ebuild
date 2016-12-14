@@ -28,9 +28,9 @@ src_configure() {
 	export ac_cv_libsigsegv=no
 
 	econf \
-		--with-packager="Gentoo" \
+		--with-packager="${DISTRO}" \
 		--with-packager-version="${PVR}" \
-		--with-packager-bug-reports="https://bugs.gentoo.org/" \
+		--with-packager-bug-reports="${DISTRO_BUG_URL}" \
 		$(use_enable nls)
 }
 

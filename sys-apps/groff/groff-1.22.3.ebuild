@@ -46,9 +46,9 @@ src_prepare() {
 
 	local pfx=$(usex prefix ' Prefix' '')
 	cat <<-EOF >> tmac/mdoc.local
-	.ds volume-operating-system Gentoo${pfx}
-	.ds operating-system Gentoo${pfx}/${KERNEL}
-	.ds default-operating-system Gentoo${pfx}/${KERNEL}
+	.ds volume-operating-system ${DISTRO}${pfx}
+	.ds operating-system ${DISTRO}${pfx}/${KERNEL}
+	.ds default-operating-system ${DISTRO}${pfx}/${KERNEL}
 	EOF
 
 	# make sure we don't get a crappy `g' nameprefix on UNIX systems with real

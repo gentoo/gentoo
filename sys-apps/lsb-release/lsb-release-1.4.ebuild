@@ -24,6 +24,6 @@ src_install() {
 
 	mkdir -p "${D}/etc"
 	cat > "${D}/etc/lsb-release" <<- EOF
-		DISTRIB_ID="Gentoo"
+		DISTRIB_ID="${DISTRO}"
 	EOF
 }

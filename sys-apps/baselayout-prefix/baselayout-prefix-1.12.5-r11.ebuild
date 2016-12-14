@@ -114,7 +114,7 @@ src_install() {
 	dosym /var/tmp /usr/tmp
 
 	# rc-scripts version for testing of features that *should* be present
-	echo "Gentoo Prefix Base System version ${PV}" > ${ED}/etc/gentoo-release
+	echo "${DISTRO} Prefix Base System version ${PV}" > ${ED}/etc/gentoo-release
 
 	# get the basic stuff in there
 	doenvd "${S}"/etc/env.d/* || die "doenvd"
@@ -168,7 +168,7 @@ pkg_postinst() {
 	# write it here so that the new version is immediately in the file
 	# (without waiting for the user to do etc-update)
 	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
-	echo "Gentoo Prefix Base System version ${PV}" > "${EROOT}"/etc/gentoo-release
+	echo "${DISTRO} Prefix Base System version ${PV}" > "${EROOT}"/etc/gentoo-release
 
 	echo
 	einfo "Please be sure to update all pending '._cfg*' files in /etc,"
