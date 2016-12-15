@@ -7338,7 +7338,7 @@ dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.9.0 1.10.6: Python client for Docker
+dev-python/docker-py 1.2.2 1.9.0 1.10.6 2.0.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
@@ -17368,7 +17368,7 @@ sys-freebsd/boot0 8.2 9.1 10.3 11.0-r1: FreeBSD's bootloader
 sys-freebsd/freebsd-bin 8.2 9.1 10.3 11.0: FreeBSD /bin tools
 sys-freebsd/freebsd-cddl 8.2 9.1 10.3 11.0: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
-sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r2 11.0: FreeBSD's base system libraries
+sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r3 11.0-r1: FreeBSD's base system libraries
 sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.3 11.0: FreeBSD libexec things
 sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3 11.0: Makefiles definitions used for building and installing libraries and system files
 sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3 11.0: FreeBSD's PAM authentication modules
@@ -17377,7 +17377,7 @@ sys-freebsd/freebsd-rescue 8.2 9.1 10.3 11.0: FreeBSD's rescue binaries
 sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3 11.0: FreeBSD sbin utils
 sys-freebsd/freebsd-share 8.2 9.1 10.3 11.0: FreeBSD shared tools/files
 sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r6 11.0-r1: FreeBSD kernel sources
-sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0: FreeBSD's base system source for /usr/bin
+sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r2 11.0-r1: FreeBSD's base system source for /usr/bin
 sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3-r1 11.0-r1: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
