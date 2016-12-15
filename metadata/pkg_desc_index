@@ -13562,9 +13562,9 @@ media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.6 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
-media-sound/murmur 1.2.5 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 1.1 1.2 1.3 2.0.2 2.0.2-r1 2.0.3: WYSIWYG Music Score Typesetter
@@ -15115,7 +15115,7 @@ net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
-net-misc/quagga 1.0.20160315-r3 1.0.20160315-r4 1.1.0: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+net-misc/quagga 1.0.20160315-r4 1.1.0: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.040.00 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
@@ -18100,7 +18100,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.5.658.44_p1 1.6.689.29_p1 1.6.689.32_p1: A new browser for our friends
+www-client/vivaldi 1.5.658.44_p1 1.6.689.34_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18126,7 +18126,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.644 23.0.0.207 24.0.0.186: Adobe Flash Player
+www-plugins/adobe-flash 24.0.0.186: Adobe Flash Player
 www-plugins/chrome-binary-plugins 55.0.2883.87 56.0.2924.21_beta 57.0.2946.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
@@ -18263,7 +18263,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 340.93-r1 340.96 340.96-r5 340.98 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 364.19-r1 367.18 367.27 367.35-r1 367.44 367.57 367.57-r1 370.28 370.28-r1 375.20-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 304.132 304.134 340.93-r1 340.96 340.96-r5 340.98 340.101 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 364.19-r1 367.18 367.27 367.35-r1 367.44 367.57 367.57-r1 370.28 370.28-r1 375.20-r1 375.26: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
