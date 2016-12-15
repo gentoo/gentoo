@@ -6,7 +6,7 @@
 # Please use the same syntax as in package.use.mask
 
 # Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
-# Requires php:7.0 being stable
+# Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
 # Johannes Huber <johu@gentoo.org> (12 Dec 2016)
