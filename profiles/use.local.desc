@@ -6269,6 +6269,7 @@ net-misc/quagga:bgpclassless - Apply unofficial patch to enable classless prefix
 net-misc/quagga:multipath - Enable multipath routes support for any number of routes
 net-misc/quagga:ospfapi - Enable OSPFAPI support for client applications accessing the OSPF link state database
 net-misc/quagga:pam - Add support for PAM (via sys-libs/pam) to the Quagga Virtual Terminal Interface Shell (vtysh); if the readline USE flag is disabled, this flag is ignored
+net-misc/quagga:protobuf - Enable support for dev-libs/protobuf
 net-misc/quagga:readline - Enable support for sys-libs/readline to provide the Quagga Virtual Terminal Interface Shell (vtysh)
 net-misc/quagga:tcp-zebra - Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain sockets are chosen otherwise
 net-misc/rancid-git:git - Enable git (version control system) support
