@@ -1,0 +1,25 @@
+commit 92193665 warns about duplicate node installs.  This should only be
+enabled for dev builds beacuse it causes unwanted noise on production
+builds.  I've enclosed the relevant commands in #ifdef DEV_BUILD, which may
+or may not be appropriate.  If there's a more appropriate compile-time
+option available, that could be used instead.
+
+---
+ lib/command.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/command.c b/lib/command.c
+index ab46fc4..bff86e5 100644
+--- a/lib/command.c
++++ b/lib/command.c
+@@ -638,9 +638,11 @@ install_element (enum node_type ntype, struct cmd_element *cmd)
+   
+   if (hash_lookup (cnode->cmd_hash, cmd) != NULL)
+     {
++#ifdef DEV_BUILD
+       fprintf (stderr, 
+                "Multiple command installs to node %d of command:\n%s\n",
+                ntype, cmd->string);
++#endif
+       return;
+     }
