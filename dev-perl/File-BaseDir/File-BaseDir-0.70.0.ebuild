@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+DIST_TEST="do" # https://rt.cpan.org/Ticket/Display.html?id=119256
 src_test() {
 	perl_rm_files t/05_pod_cover.t t/04_pod_ok.t
 	perl-module_src_test
