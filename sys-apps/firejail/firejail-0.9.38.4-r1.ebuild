@@ -17,6 +17,7 @@ IUSE="+seccomp"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sysmacros.patch
+	epatch "${FILESDIR}"/${P}-0001-etc-resolv.conf-overwrite.patch
 	find -name Makefile.in -exec sed -i -r \
 			-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
 			-e '1iCC=@CC@' {} + || die
