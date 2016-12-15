@@ -4807,7 +4807,7 @@ dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usab
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.0 1.5.1 1.5.1-r1 1.7.0-r1 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.27 3.2.28 3.2.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.27 3.2.28 3.2.29_rc1 3.2.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1 0.4.1-r1: C Implementation of NTRUEncrypt
@@ -12626,7 +12626,7 @@ media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/wally 2.4.5: A Qt4/KDE4 wallpaper changer
-media-gfx/wings 1.1.1 1.5.4-r2 2.0.5 2.1.2 2.1.3: Wings 3D is an advanced subdivision modeler
+media-gfx/wings 1.1.1 1.5.4-r2 2.1.3 2.1.4.1: Wings 3D is an advanced subdivision modeler
 media-gfx/wkhtmltopdf 0.12.1.2 0.12.2.1: Convert html to pdf (and various image formats) using webkit
 media-gfx/xdot 0.5 0.6 0.7 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
@@ -14931,7 +14931,7 @@ net-misc/fatrat 1.2.0_beta2 1.2.0_beta2_p20150803: Qt4-based download/upload man
 net-misc/flexget 1.2.315 1.2.346-r1 9999: Multipurpose automation tool for content like torrents, nzbs, podcasts, comics
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
-net-misc/freerdp 1.1.0_beta1_p20130710-r2 1.2.1_pre20150326-r1 2.0.0_pre20160722 9999: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 1.2.1_pre20150326-r1 2.0.0_pre20160722 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.2.1 2.2.2: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
