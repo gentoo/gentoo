@@ -13562,9 +13562,9 @@ media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.6 1.2.16 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.6 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
-media-sound/murmur 1.2.5 1.2.16-r1 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.2.5 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 1.1 1.2 1.3 2.0.2 2.0.2-r1 2.0.3: WYSIWYG Music Score Typesetter
@@ -14562,7 +14562,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.22.1 3.22.2: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.24-r1 3.3.25 3.4.16 3.4.17 3.5.5 3.5.6 3.5.7: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.38 2.8.39: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.14 0.14.15 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 0.20.16 0.20.17 0.20.18: An object-oriented framework for creating UPnP devs and control points
