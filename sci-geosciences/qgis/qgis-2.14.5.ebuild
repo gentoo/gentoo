@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils gnome2-utils cmake-utils python-single-r1
+inherit eutils multilib gnome2-utils cmake-utils python-single-r1
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="http://www.qgis.org/"
@@ -96,12 +96,10 @@ src_configure() {
 		"-DWITH_INTERNAL_SIX=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
-		"-DWITH_SPATIALITE=ON"
-		"-DWITH_INTERNAL_SPATIALITE=OFF"
+		"-WITH_QSPATIALITE=ON"
 		-DENABLE_TESTS=no
 		-DWITH_BINDINGS="$(usex python)"
-		-DWITH_BINDINGS_GLOBAL_INSTALL="$(usex python)"
-		-DWITH_GRASS="$(usex grass)"
+		-DWITH_GRASS7="$(usex grass)"
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
 		-DWITH_GSL="$(usex gsl)"
 		-DWITH_ORACLE="$(usex oracle)"

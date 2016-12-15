@@ -4,10 +4,6 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Sergey Popov <pinkbyte@gentoo.org> (15 Dec 2016)
-# Needs dev-libs/protobuf (bug #602740)
-net-misc/quagga protobuf
-
 # Jeroen Roovers <jer@gentoo.org> (31 May 2016)
 # Mask kde-frameworks/kapidox (bug #568972)
 kde-frameworks/extra-cmake-modules doc
