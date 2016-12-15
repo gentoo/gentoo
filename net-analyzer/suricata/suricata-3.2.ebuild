@@ -23,7 +23,7 @@ DEPEND="
 	net-libs/libnfnetlink
 	dev-libs/nspr
 	dev-libs/nss
-	>=net-libs/libhtp-0.5.18
+	>=net-libs/libhtp-0.5.20
 	net-libs/libpcap
 	sys-apps/file
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
@@ -112,6 +112,28 @@ src_install() {
 
 	dodir "/var/lib/${PN}"
 	dodir "/var/log/${PN}"
+	dodir "/var/log/${PN}" \
+		"/var/lib/${PN}"
+
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
+
+	newinitd "${FILESDIR}/${P}-init" ${PN}
+	newconfd "${FILESDIR}/${P}-conf" ${PN}
+}
+
+pkg_postinst() {
+	elog "The ${PN} init script expects to find the path to the configuration"
+	elog "file as well as extra options in /etc/conf.d."
+	elog ""
+	elog "To create more than one ${PN} service, simply create a new .yaml file for it"
+	elog "then create a symlink to the init script from a link called"
+	elog "${PN}.foo - like so"
+	elog "   cd /etc/${PN}"
+	elog "   ${EDITOR##*/} suricata-foo.yaml"
+	elog "   cd /etc/init.d"
+	elog "   ln -s ${PN} ${PN}.foo"
+	elog "Then edit /etc/conf.d/${PN} and make sure you specify sensible options for foo."
+	elog ""
+	elog "You can create as many ${PN}.foo* services as you wish."
 }

@@ -1,0 +1,31 @@
+# Config file for /etc/init.d/suricata*
+
+# Where config files are stored. Default:
+
+# SURICATA_DIR="/etc/suricata"
+
+# Pass options to each suricata service.
+# You can launch more than one service at the same time with different options.
+# This can be useful in a multi-queue gateway, for example.
+# You can expand on the Suricata inline example found at:
+# https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Setting_up_IPSinline_for_Linux
+# Instead of configuring iptables to send traffic to just one queue, you can configure it to "load balance"
+# on several queues. You can then have a Suricata instance processing traffic for each queue.
+# This should help improve performance on the gateway/firewall.
+# Suppose you configured iptables to use queues 0 and 1. You can now do the following:
+# ln -s /etc/init.d/suricata /etc/init.d/suricata.q0
+# ln -s /etc/init.d/suricata /etc/init.d/suricata.q1
+# cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q0.yaml
+# cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q1.yaml
+# mkdir /var/log/suricata/q{0,1}
+# Edit both suricata-q{0,1}.yaml files and set values accordingly (eg. set the suricata.log file path to
+# a dedicated dir in the section "logging:outputs:-file").
+# You can then define the following options here:
+
+# SURICATA_OPTS[q0]="-q 0 -l /var/log/suricata/q0"
+# SURICATA_OPTS[q1]="-q 1 -l /var/log/suricata/q1"
+
+# If you want to use ${SURICATA_DIR}/suricata.yaml and start the service with /etc/init.d/suricata
+# then you can set:
+
+# SURICATA_OPTIONS="-i eth0"
