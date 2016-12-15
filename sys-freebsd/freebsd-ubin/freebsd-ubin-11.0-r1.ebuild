@@ -11,6 +11,9 @@ SLOT="0"
 IUSE="ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs"
 LICENSE="BSD zfs? ( CDDL )"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "EN-16:21/localedef.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}

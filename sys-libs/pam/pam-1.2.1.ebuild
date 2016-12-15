@@ -23,7 +23,7 @@ RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
-	berkdb? ( >=sys-libs/db-4.8.30-r1[${MULTILIB_USEDEP}] )
+	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2

@@ -11,7 +11,9 @@ SLOT="0"
 LICENSE="BSD zfs? ( CDDL )"
 
 # Security Advisory and Errata patches.
-# UPSTREAM_PATCHES=()
+UPSTREAM_PATCHES=( "EN-16:06/libc.patch"
+	"SA-16:37/libc.patch"
+	"SA-16:38/bhyve.patch" )
 
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of
@@ -50,7 +52,7 @@ if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 		!sys-freebsd/freebsd-headers"
 	DEPEND="${RDEPEND}
 		>=sys-devel/flex-2.5.31-r2
-		=sys-freebsd/freebsd-sources-${RV}*"
+		>=sys-freebsd/freebsd-sources-10.3-r5"
 	RDEPEND="${RDEPEND}
 		=sys-freebsd/freebsd-share-${RV}*
 		>=virtual/libiconv-0-r2"
@@ -107,12 +109,15 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0-pmc.patch"
+	"${FILESDIR}/${PN}-6.1-csu.patch"
+	"${FILESDIR}/${PN}-10.0-liblink.patch"
+	"${FILESDIR}/${PN}-10.2-liblink.patch"
 	"${FILESDIR}/${PN}-10.0-atfcxx.patch"
+	"${FILESDIR}/${PN}-10.3-libusb.patch"
+	"${FILESDIR}/${PN}-10.0-libproc-libcxx.patch"
+	"${FILESDIR}/${PN}-10.2-bsdxml2expat.patch"
 	"${FILESDIR}/${PN}-9.0-bluetooth.patch"
-	"${FILESDIR}/${PN}-11.0-workaround.patch"
-	"${FILESDIR}/${PN}-11.0-bsdxml2expat.patch"
-	"${FILESDIR}/${PN}-11.0-libsysdecode.patch"
-	"${FILESDIR}/${PN}-11.0-libproc-libcxx.patch"
+	"${FILESDIR}/${PN}-9.1-.eh_frame_hdr-fix.patch"
 	"${FILESDIR}/${PN}-add-nossp-cflags.patch"
 	)
 # Here we disable and remove source which we don't need or want
@@ -167,6 +172,8 @@ src_prepare() {
 	# patches "${WORKDIR}/include"
 	cd "${WORKDIR}"
 	epatch "${FILESDIR}/${PN}-includes.patch"
+	epatch "${FILESDIR}/${PN}-8.0-gcc45.patch"
+	epatch "${FILESDIR}/${PN}-9.0-opieincludes.patch"
 
 	# Don't install the hesiod man page or header
 	rm "${WORKDIR}"/include/hesiod.h || die
@@ -182,7 +189,8 @@ src_prepare() {
 	done
 	# Call LD with LDFLAGS, rename them to RAW_LDFLAGS
 	sed -e 's/LDFLAGS/RAW_LDFLAGS/g' \
-		-i "${S}/csu/i386/Makefile" || die
+		-i "${S}/csu/i386-elf/Makefile" \
+		-i "${S}/csu/ia64/Makefile" || die
 
 	if install --version 2> /dev/null | grep -q GNU; then
 		sed -i.bak -e 's:${INSTALL} -C:${INSTALL}:' "${WORKDIR}/include/Makefile"
@@ -252,6 +260,7 @@ bootstrap_csu() {
 # Compile libssp_nonshared.a and add it's path to LDFLAGS.
 bootstrap_libssp_nonshared() {
 	bootstrap_lib "gnu/lib/libssp/libssp_nonshared"
+	export LDADD="-lssp_nonshared"
 }
 
 bootstrap_libgcc() {
@@ -322,7 +331,6 @@ do_bootstrap() {
 		mkdir "${WORKDIR}/include_proper_${ABI}" || die
 		CTARGET="${CHOST}" install_includes "/include_proper_${ABI}"
 		CFLAGS="${CFLAGS} -isystem ${WORKDIR}/include_proper_${ABI}"
-		[[ $(tc-getCXX) = *clang++* ]] && CXXFLAGS="${CXXFLAGS} -isystem /usr/include/c++/v1"
 		CXXFLAGS="${CXXFLAGS} -isystem ${WORKDIR}/include_proper_${ABI}"
 		mymakeopts="${mymakeopts} RPCDIR=${WORKDIR}/include_proper_${ABI}/rpcsvc"
 	fi
@@ -341,7 +349,6 @@ do_compile() {
 		do_bootstrap
 	else
 		CFLAGS="${CFLAGS} -isystem /usr/include"
-		[[ $(tc-getCXX) = *clang++* ]] && CXXFLAGS="${CXXFLAGS} -isystem /usr/include/c++/v1"
 		CXXFLAGS="${CXXFLAGS} -isystem /usr/include"
 	fi
 
@@ -366,7 +373,7 @@ src_compile() {
 	use usb && export NON_NATIVE_SUBDIRS="${NON_NATIVE_SUBDIRS} lib/libusb lib/libusbhid"
 
 	cd "${WORKDIR}/include"
-	$(freebsd_get_bmake) CC="$(tc-getCC)" SRCTOP="${WORKDIR}" || die "make include failed"
+	$(freebsd_get_bmake) CC="$(tc-getCC)" || die "make include failed"
 
 	use crosscompile_opts_headers-only && return 0
 
@@ -573,7 +580,7 @@ src_install() {
 		# get tc-arch-kernel to return the right value, etc.
 		export CHOST=${CTARGET}
 
-		mymakeopts="${mymakeopts} WITHOUT_MAN= \
+		mymakeopts="${mymakeopts} NO_MAN= \
 			INCLUDEDIR=/usr/${CTARGET}/usr/include \
 			SHLIBDIR=/usr/${CTARGET}/usr/lib \
 			LIBDIR=/usr/${CTARGET}/usr/lib"
@@ -627,18 +634,16 @@ install_includes()
 		DESTDIR="${DESTDIR}" \
 		INCLUDEDIR="${INCLUDEDIR}" BINOWN="${BINOWN}" \
 		BINGRP="${BINGRP}" \
-		WITHOUT_GSSAPI= \
-		SRCTOP="${WORKDIR}"|| die "install_includes() failed"
+		WITHOUT_GSSAPI= || die "install_includes() failed"
 	einfo "includes installed ok."
-	EXTRA_INCLUDES="lib/librtld_db lib/libutil lib/msun gnu/lib/libregex lib/libcasper lib/libmp"
+	EXTRA_INCLUDES="lib/librtld_db lib/libutil lib/msun gnu/lib/libregex"
 	for i in $EXTRA_INCLUDES; do
 		einfo "Installing $i includes into ${INCLUDEDIR} as ${BINOWN}:${BINGRP}..."
 		cd "${WORKDIR}/$i" || die
 		$(freebsd_get_bmake) installincludes DESTDIR="${DESTDIR}" \
 			MACHINE=${MACHINE} MACHINE_ARCH=${MACHINE} \
 			INCLUDEDIR="${INCLUDEDIR}" BINOWN="${BINOWN}" \
-			BINGRP="${BINGRP}" \
-			SRCTOP="${WORKDIR}" || die "problem installing $i includes."
+			BINGRP="${BINGRP}" || die "problem installing $i includes."
 		einfo "$i includes installed ok."
 	done
 }
