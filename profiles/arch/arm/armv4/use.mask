@@ -1,0 +1,2 @@
+# Unmask armv4 specific USE flags
+-armv4

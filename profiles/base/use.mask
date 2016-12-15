@@ -137,6 +137,7 @@ ultra1
 
 # arm arch specific USE flags
 armvfp
+armv4
 armv5te
 armv6
 armv6t2
