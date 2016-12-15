@@ -38,6 +38,7 @@ RDEPEND="
 	)
 	qt4? (
 		gui? (
+			dev-qt/designer:4
 			dev-qt/qtgui:4
 			x11-libs/libX11
 			x11-libs/libXScrnSaver
@@ -46,6 +47,7 @@ RDEPEND="
 	)
 	qt5? (
 		gui? (
+			dev-qt/designer:5
 			dev-qt/qtwidgets:5
 			x11-libs/libX11
 			x11-libs/libXScrnSaver
