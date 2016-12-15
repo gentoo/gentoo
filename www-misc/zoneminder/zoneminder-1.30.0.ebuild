@@ -14,7 +14,7 @@
 
 EAPI=6
 
-inherit perl-functions readme.gentoo-r1 cmake-utils depend.apache flag-o-matic systemd
+inherit versionator perl-functions readme.gentoo-r1 cmake-utils depend.apache flag-o-matic systemd
 
 MY_PN="ZoneMinder"
 
@@ -168,6 +168,10 @@ src_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 
-	local myold=${REPLACING_VERSIONS}
-	[ "${myold}" = ${PV} ] || elog "You have upgraded zoneminder and may have to upgrade your database now using the 'zmupdate.pl' script."
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least ${PV} ${v}; then
+			elog "You have upgraded zoneminder and may have to upgrade your database now using the 'zmupdate.pl' script."
+		fi
+	done
 }
