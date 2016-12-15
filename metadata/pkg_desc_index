@@ -2179,7 +2179,7 @@ app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
-app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
+app-shells/tcsh 6.17-r1 6.18.01 6.18.01-r2 6.18.01-r4 6.20.00: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.11-r1: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 9999: UNIX Shell similar to the Korn shell
@@ -5061,7 +5061,7 @@ dev-lisp/ecls 12.12.1 13.5.1-r1 15.3.7 16.0.0 16.0.0-r1 16.1.2 16.1.2-r1: ECL is
 dev-lisp/flexi-streams 1.0.15: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
-dev-lisp/hyperspec 7.0 7.0-r1: Common Lisp ANSI-standard Hyperspec
+dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/sbcl 1.1.18 1.3.0 1.3.11 1.3.12: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7: UIOP is a portability layer spun off ASDF3
