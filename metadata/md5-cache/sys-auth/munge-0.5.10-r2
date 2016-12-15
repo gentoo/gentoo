@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://munge.googlecode.com/files/munge-0.5.10.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_test:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=b110bf305f08cc21f3458a494d6e5ac5
+_md5_=05de2245b2a4c29cf20c67503404f46f
