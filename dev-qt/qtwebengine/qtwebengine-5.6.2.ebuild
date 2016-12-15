@@ -75,7 +75,7 @@ src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-paxmark-mksnapshot.patch" )
 
 	if use system-icu; then
-		# ensuire build against system headers - bug #601264
+		# ensure build against system headers - bug #601264
 		rm -r src/3rdparty/chromium/third_party/icu/source || die
 	fi
 
