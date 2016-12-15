@@ -6,7 +6,7 @@ EAPI=5
 inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/drone/drone/..."
-EGIT_COMMIT="43b11ed3223fd3953b26b8fb0bf6d82f2a79f884"
+EGIT_COMMIT="b83a719e37c6f1c1f3f728f5250189d5aa4699af"
 ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
