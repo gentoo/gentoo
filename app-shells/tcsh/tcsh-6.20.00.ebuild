@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI=6
 
 inherit eutils flag-o-matic autotools prefix
 
@@ -10,7 +10,8 @@ CONFVER="1.9"
 
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
 HOMEPAGE="http://www.tcsh.org/"
-SRC_URI="ftp://ftp.astron.com/pub/tcsh/beta/${P}.tar.gz
+SRC_URI="
+	ftp://ftp.astron.com/pub/tcsh/${P}.tar.gz
 	https://www.gentoo.org/~grobian/distfiles/tcsh-gentoo-patches-r${CONFVER}.tar.bz2"
 
 LICENSE="BSD"
@@ -20,7 +21,8 @@ IUSE="nls doc"
 RESTRICT="test"
 
 # we need gettext because we run autoconf (AM_ICONV)
-RDEPEND=">=sys-libs/ncurses-5.1
+RDEPEND="
+	>=sys-libs/ncurses-5.1:0=
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -28,15 +30,24 @@ DEPEND="${RDEPEND}
 
 CONFDIR=${WORKDIR}/tcsh-gentoo-patches-r${CONFVER}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.20.00-debian-dircolors.patch # bug #120792
+	"${FILESDIR}"/${PN}-6.20.00-use-ncurses-tinfo.patch
+	"${FILESDIR}"/${PN}-6.18.01-aix.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-6.14.00-debian-dircolors.patch # bug #120792
-	epatch "${FILESDIR}"/${PN}-6.14-makefile.patch # bug #151951
-	epatch "${FILESDIR}"/${PN}-6.14-use-ncurses.patch
+	epatch "${PATCHES[@]}"
+
 	eautoreconf
 
 	# fix gencat usage
-	sed -i -e 's/cat \$\^ \$> | \$(GENCAT) \$@/rm -f $@; $(GENCAT) $@ $> $^/' \
-		nls/Makefile.in || die
+	sed \
+		-e 's/cat \$\^ \$> | \$(GENCAT) \$@/rm -f $@; $(GENCAT) $@ $> $^/' \
+		-i nls/Makefile.in || die
+
+	# use sysmalloc (for larger alloc sets) on Darwin also
+	sed -i -e 's/__MACHTEN__/__MACH__/' config_f.h || die
 
 	# unify ECHO behaviour
 	echo "#undef ECHO_STYLE" >> config_f.h
@@ -53,15 +64,17 @@ src_prepare() {
 			-e 's/^#PREFIX//' -e '/^#MAIN/d' \
 			"${CONFDIR}"/csh.login || die
 	fi
+
+	eapply_user
 }
 
 src_configure() {
 	# make tcsh look and live along the lines of the prefix
-	append-flags -D_PATH_DOTCSHRC="'"'"${EPREFIX}/etc/csh.cshrc"'"'"
-	append-flags -D_PATH_DOTLOGIN="'"'"${EPREFIX}/etc/csh.login"'"'"
-	append-flags -D_PATH_DOTLOGOUT="'"'"${EPREFIX}/etc/csh.logout"'"'"
-	append-flags -D_PATH_USRBIN="'"'"${EPREFIX}/usr/bin"'"'"
-	append-flags -D_PATH_BIN="'"'"${EPREFIX}/bin"'"'"
+	append-cppflags -D_PATH_DOTCSHRC="'"'"${EPREFIX}/etc/csh.cshrc"'"'"
+	append-cppflags -D_PATH_DOTLOGIN="'"'"${EPREFIX}/etc/csh.login"'"'"
+	append-cppflags -D_PATH_DOTLOGOUT="'"'"${EPREFIX}/etc/csh.logout"'"'"
+	append-cppflags -D_PATH_USRBIN="'"'"${EPREFIX}/usr/bin"'"'"
+	append-cppflags -D_PATH_BIN="'"'"${EPREFIX}/bin"'"'"
 
 	econf \
 		--prefix="${EPREFIX:-/}" \
@@ -70,19 +83,19 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.man || die
+	emake DESTDIR="${D}" install install.man
 
+	DOCS=( FAQ Fixes NewThings Ported README WishList Y2K )
 	if use doc ; then
 		perl tcsh.man2html tcsh.man || die
-		dohtml tcsh.html/*.html
+		HTML_DOCS=( tcsh.html/*.html )
 	fi
+	einstalldocs
 
 	insinto /etc
 	doins \
 		"${CONFDIR}"/csh.cshrc \
 		"${CONFDIR}"/csh.login
-
-	dodoc FAQ Fixes NewThings Ported README WishList Y2K
 
 	# bug #119703: add csh -> tcsh symlink
 	dosym /bin/tcsh /bin/csh
