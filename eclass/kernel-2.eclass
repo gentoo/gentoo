@@ -156,13 +156,6 @@
 # in the long term directories on the upstream servers
 # as the location has been changed by upstream
 
-# @ECLASS-VARIABLE:  K_KDBUS_AVAILABLE		
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# If set, the ebuild contains the option of installing the
-# kdbus patch.  This patch is not installed without the 'kdbus'
-# and 'experimental' use flags.
-
 # @ECLASS-VARIABLE:  H_SUPPORTEDARCH		
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -609,10 +602,6 @@ if [[ ${ETYPE} == sources ]]; then
 	SLOT="${PVR}"
 	DESCRIPTION="Sources based on the Linux Kernel."
 	IUSE="symlink build"
-
-	if [[ -n ${K_KDBUS_AVAILABLE} ]]; then
-		IUSE="${IUSE} kdbus"
-	fi
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]] ; then
@@ -1244,13 +1233,6 @@ unipatch() {
 				if [[ $UNIPATCH_DROP != *"5000_enable-additional-cpu-optimizations-for-gcc.patch"* ]]; then
 					#drop 5000_enable-additional-cpu-optimizations-for-gcc.patch
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
-				fi
-			fi
-
-			# if kdbus use flag is not set, drop the kdbus patch
-            if [[ $UNIPATCH_DROP != *"5015_kdbus*.patch"* ]]; then
-				if ! has kdbus ${IUSE} ||  ! use kdbus; then
-					UNIPATCH_DROP="${UNIPATCH_DROP} 5015_kdbus*.patch"
 				fi
 			fi
  		fi
