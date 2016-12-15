@@ -13991,7 +13991,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.13 0.9.14: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.2 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.9.3-r1 0.9.4 0.9.5 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.9.3-r1 0.9.4 0.9.5 0.9.6 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
@@ -15406,7 +15406,7 @@ net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP s
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.5.18 1.6.9 1.6.10 1.6.10-r1 1.6.9999 1.7.0 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.5.18 1.6.9 1.6.10 1.6.10-r1 1.6.9999 1.7.0 1.7.1 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r4 3.0-r6 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
