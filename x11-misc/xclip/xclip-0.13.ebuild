@@ -6,7 +6,7 @@ EAPI=6
 
 inherit autotools
 
-DESCRIPTION="Command-line utility to read data from standard in and place it in an X selection"
+DESCRIPTION="Copy data from standard input to X clipboard"
 HOMEPAGE="https://github.com/astrand/xclip"
 SRC_URI="https://github.com/astrand/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
