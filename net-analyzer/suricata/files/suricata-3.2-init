@@ -1,0 +1,82 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+SURICATA_DIR=${SURICATA_DIR:-/etc/suricata}
+SURICATA=${SVCNAME#*.}
+if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
+    SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml"
+    SURICATAPID="/var/run/suricata/suricata.${SURICATA}.pid"
+    SURICATAOPTS=${SURICATA_OPTS[${SURICATA}]}
+else
+    SURICATACONF="${SURICATA_DIR}/suricata.yaml"
+    SURICATAPID="/var/run/suricata/suricata.pid"
+    SURICATAOPTS=${SURICATA_OPTIONS}
+fi
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+depend() {
+	need net
+	after mysql
+	after postgresql
+}
+
+checkconfig() {
+	if [ ! -e ${SURICATACONF} ] ; then
+		eerror "You need to create ${SURICATACONF} to run ${SVCNAME}."
+		return 1
+	fi
+	if [ ! -d "/var/run/suricata" ] ; then
+		checkpath -d /var/run/suricata
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --exec /usr/bin/suricata \
+		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} \
+		 -c ${SURICATACONF} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile ${SURICATAPID} >/dev/null 2>&1
+	einfon "Waiting for ${SVCNAME} to shut down. This can take a while..."
+	echo
+	# max wait: 5 minutes as it can take quite a while on some systems with heavy traffic
+	cnt=300
+	while [ -f ${SURICATAPID} ]; do
+	    cnt=$(expr $cnt - 1)
+	    if [ $cnt -lt 1 ] ; then
+		echo
+		eend 1 "Failed."
+		break
+	    fi
+	    sleep 1
+	    echo -ne "$cnt seconds left before we give up\r"
+	done
+	eend $?
+}
+
+reload() {
+
+	local SUR_PID="`cat ${SURICATAPID}`"
+	local SUR_USER="`ps -p ${SUR_PID} --no-headers -o user`"
+
+        if [ ! -f ${SURICATAPID} ]; then
+        	eerror "${SVCNAME} isn't running"
+                return 1
+	elif [ ${SUR_USER} != root ]; then
+		eerror "${SVCNAME} must be running as root for reload to work!"
+		return 1
+	else
+		checkconfig || return 1
+		ebegin "Reloading ${SVCNAME}"
+		start-stop-daemon --signal HUP --pidfile ${SURICATAPID}
+        fi
+}
