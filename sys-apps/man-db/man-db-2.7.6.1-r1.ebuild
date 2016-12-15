@@ -69,21 +69,21 @@ src_install() {
 
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/man-db.cron man-db #289884
-
-	keepdir /var/cache/man
-	fowners man:man /var/cache/man
-	fperms 0755 /var/cache/man
 }
 
 pkg_preinst() {
-	if [[ -f ${EROOT}var/cache/man/whatis ]] ; then
-		einfo "Cleaning ${EROOT}var/cache/man from sys-apps/man"
-		find "${EROOT}"var/cache/man -type f '!' '(' -name index.bt -o -name index.db ')' -delete
+	local cachedir="${EROOT}var/cache/man"
+	if [[ -f ${cachedir}/whatis ]] ; then
+		einfo "Cleaning ${cachedir} from sys-apps/man"
+		find "${cachedir}" -type f '!' '(' -name index.bt -o -name index.db ')' -delete
 	fi
-	if [[ -g ${EROOT}var/cache/man ]] ; then
-		einfo "Resetting permissions on ${EROOT}var/cache/man"
-		chown -R man:man "${EROOT}"var/cache/man
-		find "${EROOT}"var/cache/man -type d -exec chmod g-s {} +
+	if [[ -g ${cachedir} ]] ; then
+		einfo "Resetting permissions on ${cachedir}"
+		chown -R man:man "${cachedir}" || die
+		find "${cachedir}" -type d -exec chmod g-s {} + || die
+	elif [[ ! -d ${cachedir} ]] ; then
+		mkdir -p "${cachedir}" || die
+		chown man:man "${cachedir}" || die
 	fi
 }
 
