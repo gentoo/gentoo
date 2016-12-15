@@ -51,7 +51,6 @@ src_install() {
 		rm -rf "${ED}"/var/run || die
 	fi
 
-	[[ ${EUID} = 0 ]] && diropts -o munge -g munge -m700
 	dodir /etc/munge
 
 	for d in "init.d" "default" "sysconfig"; do
