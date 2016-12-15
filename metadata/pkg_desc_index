@@ -11856,6 +11856,7 @@ kde-misc/eventlist 0.6-r1: Plasmoid showing the events from Akonadi resources
 kde-misc/eyesaver 0.4: Plasmoid, which reminds us to take our eyes off the screen
 kde-misc/fancytasks 1.1.2-r1: Task and launch representation plasmoid
 kde-misc/geekclock 1.0: Geeky Clock Plasmoid
+kde-misc/gmailfeed 1.1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
 kde-misc/gx-mail-notify 0.4.4: Plasmoid for checking unread mail
 kde-misc/hdaps_monitor 0.3-r1: KDE-based monitor for the IBM HDAPS system
 kde-misc/homerun 1.2.5: Application launcher for KDE Plasma desktop
