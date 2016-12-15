@@ -18,8 +18,9 @@ RDEPEND="sys-libs/libcap"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed 's|-m64 \(-std=gnu99\) -O2 -g \(-pthread -D_GNU_SOURCE -D_REENTRANT -Wall\) -Werror|\1 \2|' \
-		-i Makefile || die
+	sed -i -E \
+		-e '/^CFLAGS/s: (-O2|-g|-Wall|-Werror)\>: :g' \
+		Makefile || die
 	sed 's|/usr/local|$(DESTDIR)/$(PREFIX)/share|' \
 		-i Documentation/Makefile || die
 
