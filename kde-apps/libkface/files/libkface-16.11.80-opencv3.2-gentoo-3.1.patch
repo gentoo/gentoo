@@ -1,0 +1,58 @@
+--- a/src/recognition-opencv-lbph/facerec_borrowed.h	2016-11-26 14:19:01.492645170 +0100
++++ b/src/recognition-opencv-lbph/facerec_borrowed.h.new	2016-11-26 14:19:17.655835794 +0100
+@@ -141,7 +141,7 @@
+     /*
+      * Predict
+      */
+-    void predict(cv::InputArray src, cv::Ptr<cv::face::PredictCollector> collector, const int state = 0) const override;
++    void predict(cv::InputArray src, cv::Ptr<cv::face::PredictCollector> collector) const override;
+ #endif
+ 
+     /**
+--- a/src/recognition-opencv-lbph/facerec_borrowed.cpp	2016-11-26 14:19:01.492645170 +0100
++++ b/src/recognition-opencv-lbph/facerec_borrowed.cpp.new	2016-11-26 14:19:29.184971765 +0100
+@@ -380,7 +380,7 @@
+ #if OPENCV_TEST_VERSION(3,1,0)
+ void LBPHFaceRecognizer::predict(InputArray _src, int &minClass, double &minDist) const
+ #else
+-void LBPHFaceRecognizer::predict(cv::InputArray _src, cv::Ptr<cv::face::PredictCollector> collector, const int state) const
++void LBPHFaceRecognizer::predict(cv::InputArray _src, cv::Ptr<cv::face::PredictCollector> collector) const
+ #endif
+ {
+     if(m_histograms.empty())
+@@ -404,7 +404,7 @@
+     minDist      = DBL_MAX;
+     minClass     = -1;
+ #else
+-    collector->init((int)m_histograms.size(), state);
++    collector->init((int)m_histograms.size());
+ #endif
+ 
+     // This is the standard method
+@@ -424,7 +424,7 @@
+             }
+ #else
+             int label = m_labels.at<int>((int) sampleIdx);
+-            if (!collector->emit(label, dist, state))
++            if (!collector->collect(label, dist))
+             {
+                 return;
+             }
+@@ -470,7 +470,7 @@
+                 minClass = it->first;
+             }
+ #else
+-            if (!collector->emit(it->first, mean, state))
++            if (!collector->collect(it->first, mean))
+             {
+                 return;
+             }
+@@ -523,7 +523,7 @@
+             }
+ #else
+             // large is better thus it is -score.
+-            if (!collector->emit(it->first, -score, state))
++            if (!collector->collect(it->first, -score))
+             {
+                 return;
+             }
