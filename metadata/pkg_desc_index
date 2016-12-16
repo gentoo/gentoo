@@ -9124,7 +9124,7 @@ dev-ruby/colorator 0.1-r1 1.0.0 1.1.0: Colorize your text in the terminal
 dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.7.7 0.8.0 0.8.1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0: Sorts an array in column order
-dev-ruby/combustion 0.5.4 0.5.5: Elegant Rails Engine Testing
+dev-ruby/combustion 0.5.5: Elegant Rails Engine Testing
 dev-ruby/commander 4.4.0 4.4.1: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
@@ -9162,7 +9162,7 @@ dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differ
 dev-ruby/dnsruby 1.59.3 1.60.0: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.20160615 0.5.20160826 0.5.20161021 0.5.20161129: Domain Name manipulation library for Ruby
-dev-ruby/dotenv 2.1.0 2.1.1: Loads environment variables from .env into ENV
+dev-ruby/dotenv 2.1.1: Loads environment variables from .env into ENV
 dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
@@ -13330,7 +13330,7 @@ media-radio/ibp 0.21: Shows currently transmitting beacons of the International 
 media-radio/qrq 0.3.1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 8.2.12 9.1.5 9.1.6 9.1.7 9.1.8: Amateur radio SSTV software
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
-media-radio/tlf 1.2.2 1.2.3 1.2.4.1 1.2.4.3 1.2.4.5: Console-mode amateur radio contest logger
+media-radio/tlf 1.2.2 1.2.4.1 1.2.4.5: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.4.2 3.5.0 3.5.0-r1: A package of programs that fit together to form a morse code tutor program
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
