@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-IUSE="doc fax +hpcups hpijs kde -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
+IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
 # dependency on dev-python/notify-python dropped due to python 3 incompatibility
 # possible replacement notify2 (https://pypi.python.org/pypi/notify2/0.3) not in tree
@@ -36,7 +36,8 @@ COMMON_DEPEND="
 		libusb0? ( virtual/libusb:0 )
 		scanner? ( media-gfx/sane-backends )
 		snmp? (
-			dev-libs/openssl:0=
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:= )
 			net-analyzer/net-snmp
 		)
 	)
@@ -52,10 +53,10 @@ RDEPEND="${COMMON_DEPEND}
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' 'python3*')
 		fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
 		kernel_linux? ( virtual/udev )
-		!qt5? ( >=dev-python/PyQt4-4.11.1[dbus,X,${PYTHON_USEDEP}] )
 		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}] )
 		scanner? (
-			>=dev-python/reportlab-3.1.44-r2[${PYTHON_USEDEP}]
+			!fax? ( >=dev-python/reportlab-3.2[${PYTHON_USEDEP}] )
+			fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
 			>=dev-python/pillow-3.1.1[${PYTHON_USEDEP}]
 			X? ( || (
 				kde? ( kde-misc/skanlite )
@@ -209,6 +210,7 @@ src_configure() {
 		--disable-foomatic-rip-hplip-install \
 		--disable-shadow-build \
 		--disable-qt3 \
+		--disable-qt4 \
 		--disable-udev_sysfs_rules \
 		--with-cupsbackenddir=$(cups-config --serverbin)/backend \
 		--with-cupsfilterdir=$(cups-config --serverbin)/filter \
@@ -223,7 +225,6 @@ src_configure() {
 		$(use_enable !minimal dbus-build) \
 		$(use_enable parport pp-build) \
 		$(use_enable policykit) \
-		$(use_enable !qt5 qt4) \
 		$(use_enable qt5) \
 		$(use_enable scanner scan-build) \
 		$(use_enable snmp network-build)
