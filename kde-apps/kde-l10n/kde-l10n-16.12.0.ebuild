@@ -37,6 +37,7 @@ RDEPEND="
 	!kde-apps/ktp-l10n
 	!kde-apps/ktp-send-file:4
 	!kde-apps/ktp-text-ui:4
+	!<kde-apps/kwave-16.11.50
 "
 
 pkg_setup() {
