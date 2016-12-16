@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils multilib gnome2-utils cmake-utils python-single-r1
+inherit eutils gnome2-utils cmake-utils python-single-r1
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="http://www.qgis.org/"

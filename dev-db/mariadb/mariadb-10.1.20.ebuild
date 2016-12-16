@@ -19,7 +19,7 @@ DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 IUSE="bindist cracklib galera kerberos innodb-lz4 innodb-lzo innodb-snappy jdbc mroonga odbc oqgraph pam sphinx sst-rsync sst-xtrabackup tokudb systemd xml"
 RESTRICT="!bindist? ( bindist )"
 
-REQUIRED_USE="server? ( tokudb? ( jemalloc ) ) static? ( !pam ) "
+REQUIRED_USE="server? ( tokudb? ( jemalloc ) ) static? ( !pam ) jdbc? ( extraengine server !static )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
@@ -129,9 +129,9 @@ src_configure(){
 			-DCONNECT_WITH_ODBC=$(usex odbc)
 			-DCONNECT_WITH_JDBC=$(usex jdbc)
 			-DWITH_WSREP=$(usex galera)
-			-DWITH_INNODB_LZ4=$(usex innodb-lz4)
-			-DWITH_INNODB_LZO=$(usex innodb-lzo)
-			-DWITH_INNODB_SNAPPY=$(usex innodb-snappy)
+			-DWITH_INNODB_LZ4=$(usex innodb-lz4 ON OFF)
+			-DWITH_INNODB_LZO=$(usex innodb-lzo ON OFF)
+			-DWITH_INNODB_SNAPPY=$(usex innodb-snappy ON OFF)
 			-DPLUGIN_MROONGA=$(usex mroonga YES NO)
 			-DPLUGIN_AUTH_GSSAPI=$(usex kerberos YES NO)
 		)

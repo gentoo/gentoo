@@ -23,10 +23,8 @@ REQUIRED_USE="static? ( !plugins !pkcs11 )
 	pkcs11? ( ssl )
 	mbedtls? ( ssl !libressl )
 	pkcs11? ( ssl )
-	!plugins? ( !pam !down-root )"
-
-# bug #601524
-REQUIRED_USE+=" inotify? ( plugins )"
+	!plugins? ( !pam !down-root )
+	inotify? ( plugins )"
 
 CDEPEND="
 	kernel_linux? (
@@ -54,8 +52,6 @@ CONFIG_CHECK="~TUN"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-external-cmocka.patch"
-	"${FILESDIR}/${P}-arm-inotify-only-in-server-mode.patch"
-	"${FILESDIR}/${P}-fix-async-push.patch"
 )
 
 pkg_setup()  {
