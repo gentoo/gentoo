@@ -21,5 +21,6 @@ IUSE=""
 all_ruby_prepare() {
 	sed -e '/gempackagetask/ s:^:#:' \
 		-e '/GemPackageTask/,/end/ s:^:#:' \
+		-e '/rubyforgepublisher/ s:^:#:' \
 		-i Rakefile || die
 }
