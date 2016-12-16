@@ -13,8 +13,10 @@ SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-RDEPEND="sys-libs/libcap"
+IUSE="udev"
+
+RDEPEND="sys-libs/libcap
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -31,4 +33,5 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export PREFIX="${EPREFIX}/usr"
+	MAKEOPTS+=" LIBUDEV=$(usex udev 0 1)"
 }
