@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Use the Freedesktop.org base directory specification"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris"
 IUSE="test"
 
 RDEPEND="
