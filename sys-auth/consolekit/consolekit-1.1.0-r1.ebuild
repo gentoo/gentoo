@@ -84,7 +84,7 @@ src_configure() {
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \
-		--with-xinitrc-dir=/etc/X11/xinit/xinitrc.d \
+		--with-xinitrc-dir="${EPREFIX}"/etc/X11/xinit/xinitrc.d \
 		--without-systemdsystemunitdir
 }
 
