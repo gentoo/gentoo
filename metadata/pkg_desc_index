@@ -11759,7 +11759,7 @@ kde-apps/umbrello 16.04.3 16.08.3 16.12.0: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.04.3 16.08.3 16.12.0: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
-kde-base/kdelibs 4.14.24 4.14.26: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.24 4.14.27: KDE libraries needed by all KDE programs
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-frameworks/attica 5.26.0 5.29.0: Framework providing access to Open Collaboration Services
