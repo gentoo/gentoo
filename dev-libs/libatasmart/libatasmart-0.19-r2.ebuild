@@ -32,7 +32,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable static-libs static)
 }
 
