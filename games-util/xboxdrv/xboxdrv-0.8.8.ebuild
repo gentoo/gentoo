@@ -29,6 +29,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${P}-scons.patch
 	"${FILESDIR}"/github-144.patch
+	"${FILESDIR}"/${P}-fix-c++14.patch
 )
 
 CONFIG_CHECK="~INPUT_EVDEV ~INPUT_JOYDEV ~INPUT_UINPUT ~!JOYSTICK_XPAD"
