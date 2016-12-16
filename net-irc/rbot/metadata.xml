@@ -30,11 +30,6 @@
     Build and install translation for the messages coming from the bot
     and its plugins (through <pkg>dev-ruby/ruby-gettext</pkg>).
   </flag>
-  <flag name="dict">
-    Add dependency over <pkg>dev-ruby/ruby-dict</pkg>, which is needed
-    to enable the "dict" plugin for rbot. If the USE flag is disabled
-    the plugin is also disabled by default.
-  </flag>
   <flag name="figlet">
     Add dependency over <pkg>app-misc/figlet</pkg>, which is used by
     the "figlet" plugin for rbot. If the USE flag is disabled the
