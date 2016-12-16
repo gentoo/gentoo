@@ -13,23 +13,25 @@ SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-RDEPEND="sys-libs/libcap"
+IUSE="udev"
+
+RDEPEND="sys-libs/libcap
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed 's|-m64 \(-std=gnu99\) -O2 -g \(-pthread -D_GNU_SOURCE -D_REENTRANT -Wall\) -Werror|\1 \2|' \
-		-i Makefile || die
-	sed 's|/usr/local|$(DESTDIR)/$(PREFIX)/share|' \
-		-i Documentation/Makefile || die
+	sed -i -E \
+		-e '/^CFLAGS/s: (-O2|-g|-Wall|-Werror)\>: :g' \
+		Makefile || die
+	sed -i \
+		-e '/^PREFIX/s|:=|?=|' \
+		Documentation/Makefile || die
 
 	default
 }
 
-src_compile() {
-	emake CC="$(tc-getCC)"
-}
-
-src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install
+src_configure() {
+	tc-export CC
+	export PREFIX="${EPREFIX}/usr"
+	MAKEOPTS+=" LIBUDEV=$(usex udev 0 1)"
 }
