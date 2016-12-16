@@ -5662,7 +5662,6 @@ net-irc/quassel:snorenotify - Support for Snore notification framework.
 net-irc/quassel:urlpreview - Use QtWebEngine rendering engine for showing URL thumbnails.
 net-irc/rbot:aspell - Use aspell instead of ispell in the "spell" plugin for rbot. The vanilla plugin uses ispell, but enabling this flag makes it use the ispell interface from aspell instead.
 net-irc/rbot:cal - Add dependency over a package providing the /usr/bin/cal command, which is needed to enable the "cal" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
-net-irc/rbot:dict - Add dependency over dev-ruby/ruby-dict, which is needed to enable the "dict" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
 net-irc/rbot:figlet - Add dependency over app-misc/figlet, which is used by the "figlet" plugin for rbot. If the USE flag is disabled the plugin will be unable to use figlet; if toilet is also disabled, the plugin will be disabled.
 net-irc/rbot:fortune - Add dependency over games-misc/fortune-mod, which is needed to enable the "fortune" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
 net-irc/rbot:host - Add dependency over net-dns/bind-tools (providing /usr/bin/host), which is needed to enable the "host" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
