@@ -92,13 +92,18 @@ src_configure() {
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/{bin,lib/clang/"${clang_version}"/include} || die
+		mkdir -p "${BUILD_DIR}"/{bin,$(get_libdir),lib/clang/"${clang_version}"/include} || die
 		cp "${EPREFIX}/usr/bin/clang" "${EPREFIX}/usr/bin/clang++" \
 			"${BUILD_DIR}"/bin/ || die
 		cp "${EPREFIX}/usr/lib/clang/${clang_version}/include"/*.h \
 			"${BUILD_DIR}/lib/clang/${clang_version}/include/" || die
 		cp "${sys_dir}"/*builtins*.a \
 			"${BUILD_DIR}/lib/clang/${clang_version}/lib/${sys_dir##*/}/" || die
+		# we also need LLVMgold.so for gold-based tests
+		if [[ -f ${EPREFIX}/usr/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}/usr/$(get_libdir)/LLVMgold.so" \
+				"${BUILD_DIR}/$(get_libdir)/" || die
+		fi
 	fi
 }
 
