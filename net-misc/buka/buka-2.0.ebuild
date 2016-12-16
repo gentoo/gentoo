@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit eutils
+
 DESCRIPTION="Download manga from buka.cn"
 HOMEPAGE="https://gitgud.io/drylemon/buka"
 SRC_URI="http://lick.moe/buka/${P}.tar.gz"
@@ -21,4 +23,10 @@ src_install()
 	default
 	doman ${PN}.1
 	dobin ${PN}
+}
+
+pkg_postinst()
+{
+	optfeature "pdf support" media-gfx/imagemagick
+	optfeature "cbz support" app-arch/zip
 }
