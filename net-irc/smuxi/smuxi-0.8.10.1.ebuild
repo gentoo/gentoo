@@ -38,7 +38,7 @@ src_configure() {
 # Our dev-dotnet/db4o is completely unmaintained
 	econf	--enable-engine-irc		\
 		--without-indicate		\
-		--with-vendor-package-version="Gentoo ${PV}" \
+		--with-vendor-package-version="${DISTRO} ${PV}" \
 		--with-db4o=included \
 		$(use_enable debug)		\
 		$(use_enable gnome frontend-gnome) \

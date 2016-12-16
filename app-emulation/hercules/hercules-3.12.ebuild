@@ -34,7 +34,7 @@ src_configure() {
 		$(use_enable bzip2 cckd-bzip2) \
 		$(use_enable bzip2 het-bzip2) \
 		$(use_enable suid setuid-hercifc) \
-		--enable-custom="Gentoo ${PF}.ebuild" \
+		--enable-custom="${DISTRO} ${PF}.ebuild" \
 		--disable-optimization
 }
 

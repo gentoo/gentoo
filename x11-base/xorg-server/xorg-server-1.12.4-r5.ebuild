@@ -166,7 +166,7 @@ src_configure() {
 		--disable-config-hal
 		--without-dtrace
 		--without-fop
-		--with-os-vendor=Gentoo
+		--with-os-vendor="${DISTRO}"
 	)
 
 	# Xorg-server requires includes from OS mesa which are not visible for

@@ -42,7 +42,7 @@ src_configure() {
 	econf \
 		--disable-more-warnings \
 		--disable-static \
-		--with-dist-version=Gentoo \
+		--with-dist-version="${DISTRO}" \
 		--with-pppd-plugin-dir="${EPREFIX}/usr/$(get_libdir)/pppd/${PPPD_VERSION}" \
 		 $(use_with gtk gnome)
 }

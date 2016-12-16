@@ -226,7 +226,7 @@ toolchain-binutils_bugurl() {
 	printf "https://bugs.gentoo.org/"
 }
 toolchain-binutils_pkgversion() {
-	printf "Gentoo ${BVER}"
+	printf "${DISTRO} ${BVER}"
 	[[ -n ${PATCHVER} ]] && printf " p${PATCHVER}"
 }
 

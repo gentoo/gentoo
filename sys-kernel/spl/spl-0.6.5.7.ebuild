@@ -71,7 +71,7 @@ src_prepare() {
 
 	# Set module revision number
 	[ ${PV} != "9999" ] && \
-		{ sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" "${S}/META" || die "Could not set Gentoo release"; }
+		{ sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-${DISTRO}/" "${S}/META" || die "Could not set Gentoo release"; }
 
 	autotools-utils_src_prepare
 }

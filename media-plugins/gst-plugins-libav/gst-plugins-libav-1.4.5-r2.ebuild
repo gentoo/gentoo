@@ -51,7 +51,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-maintainer-mode \
-		--with-package-name="Gentoo GStreamer ebuild" \
+		--with-package-name="${DISTRO} GStreamer ebuild" \
 		--with-package-origin="https://www.gentoo.org" \
 		--disable-fatal-warnings \
 		--with-system-libav \

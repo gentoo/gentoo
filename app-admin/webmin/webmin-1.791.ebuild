@@ -285,7 +285,7 @@ pkg_config(){
 	export perl="$( which perl )"
 	export os_type='gentoo-linux'
 	export os_version='*'
-	export real_os_type='Gentoo Linux'
+	export real_os_type="${DISTRO} Linux"
 	export real_os_version='Any version'
 	# Forcing 'ssl', 'no_ssl2', 'no_ssl3', 'ssl_redirect', 'no_sslcompression',
 	# 'ssl_honorcipherorder', 'no_tls1' and 'no_tls1_1' for tightening security

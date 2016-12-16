@@ -47,9 +47,9 @@ src_configure() {
 
 	program_prefix=$(usex userland_GNU '' g)
 	econf \
-		--with-packager="Gentoo" \
+		--with-packager="${DISTRO}" \
 		--with-packager-version="${PVR}" \
-		--with-packager-bug-reports="https://bugs.gentoo.org/" \
+		--with-packager-bug-reports="${DISTRO_BUG_URL}" \
 		--program-prefix=${program_prefix} \
 		$(use_enable nls) \
 		$(use_with selinux) \

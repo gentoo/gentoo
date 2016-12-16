@@ -66,7 +66,7 @@ src_configure() {
 		--disable-nss \
 		--enable-shared \
 		--disable-static \
-		--with-distributor-name=Gentoo \
+		--with-distributor-name="${DISTRO}" \
 		$(use_enable test tests)
 }
 

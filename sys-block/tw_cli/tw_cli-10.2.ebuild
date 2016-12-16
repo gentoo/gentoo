@@ -39,7 +39,7 @@ MY_P="cli_${PN_KERNEL}_${PV}"
 #HW_VARIANT="Escalade7000Series" - for versions 9.3.0.*
 #HW_VARIANT="Escalade9650SE-Series" # for versions 9.4.0*
 #HW_VARIANT="Escalade9690SA-Series" # for versions 9.5.0*
-HW_VARIANT="3ware%20SAS%209750-8i%20Gentoo"
+HW_VARIANT="3ware%20SAS%209750-8i%20${DISTRO}"
 # package has different tarballs for x86 and amd64
 SRC_URI_BASE="http://www.lsi.com/DistributionSystem/AssetDocument"
 SRC_URI_SUFFIX="?prodName=${HW_VARIANT}"

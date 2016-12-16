@@ -89,9 +89,9 @@ src_configure() {
 	# groups/su   - shadow
 	# hostname    - net-tools
 	econf \
-		--with-packager="Gentoo" \
+		--with-packager="${DISTRO}" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
-		--with-packager-bug-reports="https://bugs.gentoo.org/" \
+		--with-packager-bug-reports="${DISTRO_BUG_URL}" \
 		--enable-install-program="arch,$(usev hostname),$(usev kill)" \
 		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime" \
 		--enable-largefile \

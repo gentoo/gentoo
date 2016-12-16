@@ -60,7 +60,7 @@ src_configure() {
 	gnome2_src_configure \
 		--enable-shared \
 		--disable-static \
-		--with-distributor-name=Gentoo \
+		--with-distributor-name="${DISTRO}" \
 		$(use_enable test tests)
 }
 

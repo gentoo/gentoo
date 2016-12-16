@@ -133,7 +133,7 @@ src_prepare() {
 
 	# Force recognition of Gentoo distro by hp-check
 	sed -i \
-		-e "s:file('/etc/issue', 'r').read():'Gentoo':" \
+		-e "s:file('/etc/issue', 'r').read():'${DISTRO}':" \
 		installer/core_install.py || die
 
 	# Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip

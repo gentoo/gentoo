@@ -99,7 +99,7 @@ src_configure() {
 		myconf+=" --disable-pythoninterp --disable-python3interp"
 	fi
 
-	econf ${myconf} --enable-gui=qt --with-vim-name=qvim --with-modified-by=Gentoo-${PVR}
+	econf ${myconf} --enable-gui=qt --with-vim-name=qvim --with-modified-by=${DISTRO}-${PVR}
 
 	if use lto ; then
 		LDFLAGS="${LDFLAGS_OLD}"

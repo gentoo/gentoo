@@ -85,7 +85,7 @@ src_configure (){
 		--libdir='${exec_prefix}'/$(get_libdir)/ \
 		--disable-encap \
 		--disable-strip \
-		--with-issue=Gentoo \
+		--with-issue="${DISTRO}" \
 		$(use_enable optimization optimize) \
 		$(use_enable debug) \
 		--enable-build-libraries="factory" \

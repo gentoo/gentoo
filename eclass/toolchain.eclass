@@ -466,7 +466,7 @@ gcc_quick_unpack() {
 #---->> src_prepare <<----
 
 toolchain_src_prepare() {
-	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
+	export BRANDING_GCC_PKGVERSION="${DISTRO} ${GCC_PVR}"
 	cd "${S}"
 
 	if ! use vanilla ; then
@@ -640,12 +640,12 @@ make_gcc_hard() {
 			# Will add some optimatizion as default.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
 			# rebrand to make bug reports easier
-			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
+			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/${DISTRO}/${DISTRO} Hardened}
 		fi
 	else
 		if use hardened ; then
 			# rebrand to make bug reports easier
-			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
+			BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/${DISTRO}/${DISTRO} Hardened}
 			if hardened_gcc_works ; then
 				einfo "Updating gcc to use automatic PIE + SSP building ..."
 				gcc_hard_flags+=" -DEFAULT_PIE_SSP"

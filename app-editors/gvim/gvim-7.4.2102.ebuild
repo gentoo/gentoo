@@ -263,7 +263,7 @@ src_configure() {
 	fi
 
 	econf \
-		--with-modified-by=Gentoo-${PVR} \
+		--with-modified-by=${DISTRO}-${PVR} \
 		--with-vim-name=gvim \
 		--with-x \
 		"${myconf[@]}"

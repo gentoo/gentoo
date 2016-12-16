@@ -84,7 +84,7 @@ src_configure() {
 	fi
 
 	gnome2_src_configure \
-		--with-desktop-vendor=Gentoo \
+		--with-desktop-vendor=${DISTRO} \
 		--with-udev-rules \
 		$(systemd_with_unitdir) \
 		${myconf}

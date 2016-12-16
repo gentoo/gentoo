@@ -88,7 +88,7 @@ src_install() {
 	emake install
 
 	# branding and setting reasonable defaults
-	sed -e "s/BRAND=\$/BRAND='Gentoo ${PF}'/;" \
+	sed -e "s/BRAND=\$/BRAND='${DISTRO} ${PF}'/;" \
 		-e "s/GREY_ENABLE=\$/GREY_ENABLE=off/;" \
 		-e "s/DCCM_LOG_AT=5\$/DCCM_LOG_AT=50/;" \
 		-e "s,DCCM_LOGDIR=\"log\"\$,DCCM_LOGDIR=\"/var/log/dcc\",;" \

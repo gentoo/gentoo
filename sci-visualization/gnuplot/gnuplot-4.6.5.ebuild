@@ -81,7 +81,7 @@ src_prepare() {
 
 	# Add special version identification as required by provision 2
 	# of the gnuplot license
-	sed -i -e "1s/.*/& (Gentoo revision ${PR})/" PATCHLEVEL || die
+	sed -i -e "1s/.*/& (${DISTRO} revision ${PR})/" PATCHLEVEL || die
 
 	# hacky workaround
 	# Please hack the buildsystem if you like
@@ -146,7 +146,7 @@ src_configure() {
 		$(use_enable qt4 qt) \
 		$(use_enable thin-splines) \
 		$(use_enable wxwidgets) \
-		DIST_CONTACT="https://bugs.gentoo.org/" \
+		DIST_CONTACT="${DISTRO_BUG_URL}" \
 		EMACS=no
 }
 

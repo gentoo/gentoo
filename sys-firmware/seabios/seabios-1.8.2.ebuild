@@ -100,7 +100,7 @@ _emake() {
 		RANLIB="$(tc-getRANLIB)" \
 		OBJDUMP="$(tc-getOBJDUMP)" \
 		HOST_CC="$(tc-getBUILD_CC)" \
-		VERSION="Gentoo/${EGIT_COMMIT:-${PVR}}" \
+		VERSION="${DISTRO}/${EGIT_COMMIT:-${PVR}}" \
 		"$@"
 }
 

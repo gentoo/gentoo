@@ -34,7 +34,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	# Brand the version with Gentoo
 	sed -i \
-		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
+		-e "/VERSION=/s:'$: ${DISTRO}-${PR}':" \
 		configure || die
 }
 

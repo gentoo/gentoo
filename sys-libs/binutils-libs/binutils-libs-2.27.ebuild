@@ -40,7 +40,7 @@ src_prepare() {
 }
 
 pkgversion() {
-	printf "Gentoo ${PVR}"
+	printf "${DISTRO} ${PVR}"
 	[[ -n ${PATCHVER} ]] && printf " p${PATCHVER}"
 }
 
@@ -52,7 +52,7 @@ multilib_src_configure() {
 		# Newer versions (>=2.24) make this an explicit option. #497268
 		--enable-install-libiberty
 		--disable-werror
-		--with-bugurl="https://bugs.gentoo.org/"
+		--with-bugurl="${DISTRO_BUG_URL}"
 		--with-pkgversion="$(pkgversion)"
 		$(use_enable static-libs static)
 		# The binutils eclass enables this flag for all bi-arch builds,

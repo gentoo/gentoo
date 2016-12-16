@@ -290,7 +290,7 @@ src_configure() {
 		--mandir="${EPREFIX}/usr/$(get_libdir)/icedtea${SLOT}/man" \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--with-pkgversion="Gentoo ${PF}" \
+		--with-pkgversion="${DISTRO} ${PF}" \
 		--disable-downloading --disable-Werror --disable-tests \
 		--enable-system-lcms --enable-system-jpeg \
 		--enable-system-zlib --disable-systemtap-tests \

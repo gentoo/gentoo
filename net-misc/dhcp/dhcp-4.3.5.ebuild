@@ -76,7 +76,7 @@ src_prepare() {
 
 	# Brand the version with Gentoo
 	sed -i \
-		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
+		-e "/VERSION=/s:'$: ${DISTRO}-${PR}':" \
 		configure || die
 
 	# Change the hook script locations of the scripts

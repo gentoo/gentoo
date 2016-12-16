@@ -37,7 +37,7 @@ pkg_setup() {
 		$(xfconf_use_debug)
 		# requires deprecated glade:3 (gladeui-1.0), bug #551296
 		--disable-gladeui
-		--with-vendor-info=Gentoo
+		--with-vendor-info="${DISTRO}"
 		)
 
 	[[ ${CHOST} == *-darwin* ]] && XFCONF+=( --disable-visibility ) #366857

@@ -143,3 +143,8 @@ UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
 # Andreas K. Hüttel <dilfridge@gentoo.org> (23 Aug 2013)
 # Make emerge messages default to English as per Council decision
 LC_MESSAGES="C"
+
+# A. Wilcox <awilfox@adelielinux.org> (13 Dec 2016)
+# Default distribution name for ebuilds that have --with-packager etc. (GLEP 70)
+DISTRO="Gentoo"
+DISTRO_BUG_URL="https://bugs.gentoo.org/"

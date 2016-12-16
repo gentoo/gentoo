@@ -100,7 +100,7 @@ src_prepare() {
 	[[ ${CHOST} == *darwin* && ${CHOST#*-darwin} -le 8 ]] && \
 		echo "#define __OSX_AVAILABLE_STARTING(x,y)  " > include/Availability.h
 
-	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
+	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (${DISTRO} ${PN}-${PVR})\\n\""
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
 	epatch "${S}"/ld64-123.2-debug-backtrace.patch
@@ -140,7 +140,7 @@ src_prepare() {
 	# RC_ProjectSourceVersion is also used as library version, we can't
 	# just append our local version info. So we hack the libstuff Makefile
 	# to include our Gentoo version.
-	sed -i -e "/cctools-.*(RC_ProjectSourceVersion).*OFILE_DIR/s,Version),Version) (Gentoo ${PN}-${PVR})," \
+	sed -i -e "/cctools-.*(RC_ProjectSourceVersion).*OFILE_DIR/s,Version),Version) (${DISTRO} ${PN}-${PVR})," \
 		libstuff/Makefile
 
 	# clean up test suite

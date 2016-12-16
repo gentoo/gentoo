@@ -59,7 +59,7 @@ src_configure() {
 	egamesconf \
 		--docdir=/usr/share/doc/${PF} \
 		--localedir=/usr/share/locale \
-		--with-distributor="Gentoo ${PF}" \
+		--with-distributor="${DISTRO} ${PF}" \
 		--with-icondir=/usr/share/icons/hicolor/128x128/apps \
 		--with-applicationdir=/usr/share/applications \
 		$(use_enable debug debug relaxed) \

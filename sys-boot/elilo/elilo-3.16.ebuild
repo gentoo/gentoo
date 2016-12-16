@@ -46,9 +46,9 @@ src_prepare() {
 	sed -i \
 		-e '1s:/bin/sh:/bin/bash:' \
 		-e "s:##VERSION##:${PV}:" \
-		-e 's:Debian GNU/:Gentoo :g' \
-		-e 's:Debian:Gentoo:g' \
-		-e 's:debian:gentoo:g' \
+		-e "s:Debian GNU/:${DISTRO} :g" \
+		-e "s:Debian:${DISTRO}:g" \
+		-e "s:debian:${DISTRO}:g" \
 		-e "s:dpkg --print-architecture:echo ${iarch}:" \
 		debian/elilo.sh || die
 }

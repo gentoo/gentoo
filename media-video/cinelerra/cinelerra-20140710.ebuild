@@ -95,7 +95,7 @@ src_configure() {
 		$(use_enable altivec) \
 		$(use_enable opengl) \
 		--with-plugindir=/usr/$(get_libdir)/${PN} \
-		--with-buildinfo=cust/"Gentoo - ${PV}" \
+		--with-buildinfo=cust/"${DISTRO} - ${PV}" \
 		--with-external-ffmpeg \
 		${myconf}
 }

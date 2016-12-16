@@ -48,11 +48,11 @@ _canonicalise() {
 #
 # @param $1 - bundle name
 _java-osgi_plugin() {
-	# We hardcode Gentoo as the vendor name
+	# We hardcode the vendor name
 
 	cat > "${_OSGI_T}/tmp_jar/plugin.properties" <<-EOF
 	bundleName="${1}"
-	vendorName="Gentoo"
+	vendorName="${DISTRO}"
 	EOF
 }
 

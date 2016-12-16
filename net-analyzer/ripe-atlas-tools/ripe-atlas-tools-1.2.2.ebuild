@@ -42,6 +42,6 @@ python_test() {
 
 python_install() {
 	distutils-r1_python_install
-	echo "RIPE Atlas Tools (Magellan) [Gentoo Linux] ${PVR}" > \
+	echo "RIPE Atlas Tools (Magellan) [${DISTRO} Linux] ${PVR}" > \
 		${D}$(python_get_sitedir)/ripe/atlas/tools/user-agent
 }

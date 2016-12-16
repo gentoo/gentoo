@@ -89,7 +89,7 @@ src_compile() {
 		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
 		brand="FreeBSD"
 	fi
-	export BRANDING="Gentoo ${brand}"
+	export BRANDING="${DISTRO} ${brand}"
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
 	export DEBUG=$(usev debug)
 	export MKTERMCAP=$(usev ncurses)

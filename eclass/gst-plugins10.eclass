@@ -253,8 +253,8 @@ gst-plugins10_src_configure() {
 
 	einfo "Configuring to build ${GST_PLUGINS_BUILD} plugin(s) ..."
 	econf \
-		--with-package-name="Gentoo GStreamer ebuild" \
-		--with-package-origin="https://www.gentoo.org" \
+		--with-package-name="${DISTRO} GStreamer ebuild" \
+		--with-package-origin="${DISTRO_BUG_URL}" \
 		${gst_conf} $@
 }
 

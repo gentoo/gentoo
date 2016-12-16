@@ -97,7 +97,7 @@ src_prepare() {
 }
 
 gdb_branding() {
-	printf "Gentoo ${PV} "
+	printf "${DISTRO} ${PV} "
 	if ! use vanilla && [[ -n ${PATCH_VER} ]] ; then
 		printf "p${PATCH_VER}"
 	else
@@ -111,7 +111,7 @@ src_configure() {
 
 	local myconf=(
 		--with-pkgversion="$(gdb_branding)"
-		--with-bugurl='https://bugs.gentoo.org/'
+		--with-bugurl="${DISTRO_BUG_URL}"
 		--disable-werror
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{binutils,etc,gas,gold,gprof,ld}

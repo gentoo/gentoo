@@ -163,7 +163,7 @@ src_configure() {
 		--disable-config-hal
 		--without-dtrace
 		--without-fop
-		--with-os-vendor=Gentoo
+		--with-os-vendor="${DISTRO}"
 		--with-sha1=libcrypto
 	)
 

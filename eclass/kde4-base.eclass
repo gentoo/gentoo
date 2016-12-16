@@ -766,7 +766,7 @@ kde4-base_src_configure() {
 	fi
 
 	# Set distribution name
-	[[ ${PN} = kdelibs ]] && cmakeargs+=(-DKDE_DISTRIBUTION_TEXT=Gentoo)
+	[[ ${PN} = kdelibs ]] && cmakeargs+=(-DKDE_DISTRIBUTION_TEXT=${DISTRO})
 
 	# Here we set the install prefix
 	tc-is-cross-compiler || cmakeargs+=(-DCMAKE_INSTALL_PREFIX="${EPREFIX}${PREFIX}")

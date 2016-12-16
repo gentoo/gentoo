@@ -34,6 +34,6 @@ src_install() {
 
 	dodir /etc
 	cat > "${D}/etc/lsb-release" <<- EOF
-		DISTRIB_ID="Gentoo"
+		DISTRIB_ID="${DISTRO}"
 	EOF
 }

@@ -66,7 +66,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with twolame) \
 		$(use_with wavpack) \
-		--with-distro="Gentoo"
+		--with-distro="${DISTRO}"
 }
 
 src_install() {

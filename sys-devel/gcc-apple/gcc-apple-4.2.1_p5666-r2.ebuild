@@ -135,7 +135,7 @@ src_prepare() {
 	fi
 
 	local BRANDING_GCC_PKGVERSION="$(sed -n -e '/^#define VERSUFFIX/s/^[^"]*"\([^"]\+\)".*$/\1/p' "${S}"/gcc/version.c)"
-	BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/(/(Gentoo ${PVR}, }
+	BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/(/(${DISTRO} ${PVR}, }
 	einfo "patching gcc version: ${GCC_VERS}${BRANDING_GCC_PKGVERSION}"
 
 	sed -i -e "s~VERSUFFIX \"[^\"]*~VERSUFFIX \"${BRANDING_GCC_PKGVERSION}~" \
