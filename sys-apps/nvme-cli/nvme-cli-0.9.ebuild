@@ -21,16 +21,14 @@ src_prepare() {
 	sed -i -E \
 		-e '/^CFLAGS/s: (-O2|-g|-Wall|-Werror)\>: :g' \
 		Makefile || die
-	sed 's|/usr/local|$(DESTDIR)/$(PREFIX)/share|' \
-		-i Documentation/Makefile || die
+	sed -i \
+		-e '/^PREFIX/s|:=|?=|' \
+		Documentation/Makefile || die
 
 	default
 }
 
-src_compile() {
-	emake CC="$(tc-getCC)"
-}
-
-src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install
+src_configure() {
+	tc-export CC
+	export PREFIX="${EPREFIX}/usr"
 }
