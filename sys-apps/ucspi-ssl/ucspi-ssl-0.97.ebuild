@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils fixheadtails qmail
+inherit fixheadtails qmail
 
 DESCRIPTION="Command-line tools for building SSL client-server applications"
 HOMEPAGE="http://www.fehcom.de/ipnet/ucspi-ssl.html"
@@ -40,6 +40,8 @@ src_prepare() {
 	cd src
 	echo "/usr/" > home || die
 	sed -i -e 's:HOME/command:/usr/bin:' sslcat.sh sslconnect.sh https\@.sh || die
+
+	eapply_user
 }
 
 src_compile() {
