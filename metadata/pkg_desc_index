@@ -11605,7 +11605,7 @@ kde-apps/kio-extras 16.04.3 16.08.3 16.12.0: KIO plugins present a filesystem-li
 kde-apps/kioclient 16.04.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 16.04.3 16.08.3 16.12.0: An addictive and fun dice game
 kde-apps/kiten 16.04.3 16.08.3 16.12.0: KDE Japanese dictionary and reference
-kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211: KDE note taking utility
+kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211 5.0.1: Note taking utility by KDE
 kde-apps/kjumpingcube 16.04.3 16.08.3 16.12.0: Tactical one or two player game
 kde-apps/kldap 16.08.3 16.12.0: Library for interacting with LDAP servers
 kde-apps/kleopatra 4.4.2016.01 4.14.11_pre20160211 16.08.3 16.12.0: Certificate manager and GUI for OpenPGP and CMS cryptography
@@ -11841,6 +11841,7 @@ kde-frameworks/syntax-highlighting 5.29.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.26.0 5.29.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
 kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
+kde-misc/akonadi-ews 0.8.1: Akonadi resource for Microsoft Exchange Web Services
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
 kde-misc/baloo-kcmadv 2014.04.27: Alternative configuration module for the Baloo search framework
 kde-misc/basket 1.81: A DropDrawers clone. Multiple information organizer
@@ -11942,7 +11943,7 @@ kde-misc/wacomtablet 2.1.0 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
-kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
+kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1: Getting things done application by KDE
 kde-plasma/bluedevil 2.1.1 5.8.3 5.8.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.3 5.8.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.8.3 5.8.4: Breeze theme for GRUB
