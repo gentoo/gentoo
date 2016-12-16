@@ -1,0 +1,21 @@
+commit d536dbdf606d18baa437d03a9852fa6bb7289953
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Jan 31 00:09:17 2016 +0100
+
+    Fix Exec in desktop file
+    
+    thx to dvratil for the correct solution.
+
+diff --git a/data/org.kde.kjots.desktop b/data/org.kde.kjots.desktop
+index cd40af1..f7e3533 100755
+--- a/data/org.kde.kjots.desktop
++++ b/data/org.kde.kjots.desktop
+@@ -36,7 +36,7 @@ GenericName[uk]=Записна книжка
+ GenericName[x-test]=xxNote Takerxx
+ GenericName[zh_CN]=笔记记录工具
+ Icon=kjots
+-Exec=kjots -caption %c
++Exec=kjots -qwindowtitle %c
+ Type=Application
+ Terminal=false
+ X-KDE-StartupNotify=true
