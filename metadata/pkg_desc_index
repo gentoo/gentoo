@@ -17708,7 +17708,7 @@ sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/vixie-cron 4.1-r14: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2 0.0.2-r1: small utility to wait for an arbitrary process to exit
-sys-process/watchpid 0.1-r1 0.1-r2: Watches a process for termination
+sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/ada 1995 2005 2012: Virtual for selecting an appropriate Ada compiler
@@ -18077,8 +18077,8 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 45.4.0 45.5.0 45.5.1 45.6.0 50.1.0: Firefox Web Browser
 www-client/firefox-bin 45.5.1 45.6.0 50.1.0: Firefox Web Browser
 www-client/google-chrome 55.0.2883.87: The web browser from Google
-www-client/google-chrome-beta 56.0.2924.21: The web browser from Google
-www-client/google-chrome-unstable 57.0.2946.0: The web browser from Google
+www-client/google-chrome-beta 56.0.2924.28: The web browser from Google
+www-client/google-chrome-unstable 57.0.2950.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18129,7 +18129,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.186: Adobe Flash Player
-www-plugins/chrome-binary-plugins 55.0.2883.87 56.0.2924.21_beta 57.0.2946.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 55.0.2883.87 56.0.2924.28_beta 57.0.2950.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
