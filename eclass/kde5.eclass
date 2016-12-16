@@ -773,7 +773,9 @@ _l10n_variant_subdir_buster() {
 	esac
 
 	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt
+		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
+			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
+		fi
 	done
 }
 
