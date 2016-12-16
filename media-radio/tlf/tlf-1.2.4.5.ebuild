@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit flag-o-matic multilib
+inherit autotools eutils flag-o-matic multilib
 
 DESCRIPTION="Console-mode amateur radio contest logger"
 HOMEPAGE="http://home.iae.nl/users/reinc/TLF-0.2.html"
@@ -21,6 +21,11 @@ RDEPEND="sys-libs/ncurses:=
 	media-sound/sox
 	dev-libs/xmlrpc-c[curl]"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/ncurses_tinfo.patch"
+	eautoreconf
+}
 
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib
