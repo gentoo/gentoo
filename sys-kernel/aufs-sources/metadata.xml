@@ -21,7 +21,6 @@
 		WARNING: This flag will drop all support from the Gentoo Kernel 
 		Security team
 	</flag>
-    <flag name="kdbus">Apply the kdbus patch. This also requires the "experimental" use flag.</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
