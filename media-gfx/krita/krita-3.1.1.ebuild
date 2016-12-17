@@ -72,11 +72,6 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-breeze-collisions.patch"
-	"${FILESDIR}/${P}-vc-cxxflags.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_FFTW3=$(usex fftw)
