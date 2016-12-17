@@ -46,7 +46,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
-	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path,sysmacros}.patch )
+	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path,sysmacros,flags}.patch )
 
 	# Qt5 always trumps Qt4 if it is available. There are no configure
 	# options or variables to control this and there is no publicly
@@ -75,32 +75,16 @@ src_configure() {
 	econf "${econf_args[@]}"
 }
 
-src_compile() {
-	emake GCC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
-}
-
 src_install() {
-	# install oss package
-	dolib.so out/libdriveio.so.0
-	dolib.so out/libmakemkv.so.1
-	dolib.so out/libmmbd.so.0
+	default
+
+	# add missing symlinks for QA
 	dosym libdriveio.so.0 /usr/$(get_libdir)/libdriveio.so.0.${PV}
 	dosym libdriveio.so.0 /usr/$(get_libdir)/libdriveio.so
 	dosym libmakemkv.so.1 /usr/$(get_libdir)/libmakemkv.so.1.${PV}
 	dosym libmakemkv.so.1 /usr/$(get_libdir)/libmakemkv.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
-
-	if use qt5 || use qt4; then
-		dobin out/makemkv
-
-		local res
-		for res in 16 22 32 64 128; do
-			newicon -s ${res} makemkvgui/share/icons/${res}x${res}/makemkv.png ${PN}.png
-		done
-
-		make_desktop_entry ${PN} MakeMKV ${PN} 'Qt;AudioVideo;Video'
-	fi
 
 	cd "${WORKDIR}"/${MY_PB} || die
 
