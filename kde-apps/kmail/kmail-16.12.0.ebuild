@@ -78,7 +78,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kdepim:5
 	!kde-apps/kdepim-common-libs:4
-	!kde-apps/ktnef:5
+	!kde-apps/ktnef
 "
 
 src_prepare() {
