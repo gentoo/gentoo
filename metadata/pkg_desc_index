@@ -12511,7 +12511,7 @@ media-gfx/kflickr 0.9.1_p1: KDE flickr.com image uploading program
 media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
 media-gfx/kiconedit 4.4.0: KDE Icon Editor
-media-gfx/kphotoalbum 5.0.1: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.0.1 5.1: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/krita 3.1.1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
@@ -15346,7 +15346,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.10 0.14.12 0.14.13: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.14: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.92 2.92-r1 9999: A fast, easy, and free BitTorrent client
