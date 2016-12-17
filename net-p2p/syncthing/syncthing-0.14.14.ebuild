@@ -17,8 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
 IUSE="tools"
 
-DEPEND="tools? ( >=dev-lang/go-1.7.1:= )"
-
 DOCS=(README.md AUTHORS CONTRIBUTING.md)
 
 pkg_setup() {
@@ -46,11 +44,8 @@ src_prepare() {
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
 	cd src/${EGO_PN} || die
-	# If we pass "build" to build.go, it builds only syncthing itself, and
-	# places the binary in the root folder. If we do not pass "build", all the
-	# tools are built, and all binaries are placed in folder ./bin.
-	go run build.go -version "v${PV}" -no-upgrade $(usex tools "" "build") \
-		|| die "build failed"
+	go run build.go -version "v${PV}" -no-upgrade install \
+		$(usex tools "all" "") || die "build failed"
 }
 
 src_test() {
@@ -63,15 +58,13 @@ src_install() {
 	doman man/*.[157]
 	einstalldocs
 
+	dobin bin/syncthing
 	if use tools ; then
-		dobin bin/syncthing
 		exeinto /usr/libexec/syncthing
 		local exe
 		for exe in bin/* ; do
 			[[ "${exe}" == "bin/syncthing" ]] || doexe "${exe}"
 		done
-	else
-		dobin syncthing
 	fi
 	popd >& /dev/null || die
 
