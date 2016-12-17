@@ -36,13 +36,14 @@ RDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.26[dbus,gtk3] )
 "
 DEPEND="${RDEPEND}
+	$(vala_depend)
+	app-text/yelp-tools
 	>=dev-lang/perl-5
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
-	$(vala_depend)
 
 	gnome-base/gnome-common
 "
