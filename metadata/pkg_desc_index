@@ -1745,7 +1745,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/dateutils 0.3.5 0.4.0: command line date and time utilities
+app-misc/dateutils 0.3.5 0.4.0 0.4.1: command line date and time utilities
 app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r2: DDCControl allows control of monitor parameters via DDC
@@ -5732,7 +5732,7 @@ dev-perl/File-BOM 0.140.0-r1 0.150.0: Utilities for handling Byte Order Marks
 dev-perl/File-BaseDir 0.30.0-r1 0.70.0: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.113.0-r1 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
-dev-perl/File-DesktopEntry 0.40.0-r1: Object to handle .desktop files
+dev-perl/File-DesktopEntry 0.40.0-r1 0.220.0: Object to handle .desktop files
 dev-perl/File-DirWalk 0.400.0-r1: File::DirWalk - walk through a directory tree and run own code
 dev-perl/File-Find-Rule 0.330.0-r1 0.340.0: Alternative interface to File::Find
 dev-perl/File-Find-Rule-Perl 1.130.0: Common rules for searching for Perl things
