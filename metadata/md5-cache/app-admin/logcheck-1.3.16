@@ -9,4 +9,4 @@ SLOT=0
 SRC_URI=mirror://debian/pool/main/l/logcheck/logcheck_1.3.16.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=ddcb558ecad7f67eca6446bc4262bb6c
+_md5_=97e4eb0f43d5e65b1e16287b4d33978e
