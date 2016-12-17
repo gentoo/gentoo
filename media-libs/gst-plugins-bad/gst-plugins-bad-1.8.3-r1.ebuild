@@ -15,7 +15,6 @@ KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-f
 
 IUSE="X bzip2 egl gles2 gtk +introspection opengl +orc vcd vnc wayland"
 REQUIRED_USE="
-	egl? ( !gles2 )
 	gles2? ( !opengl )
 	opengl? ( X )
 	wayland? ( egl )
