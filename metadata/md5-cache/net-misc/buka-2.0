@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Download manga from buka.cn
+EAPI=6
+HOMEPAGE=https://gitgud.io/drylemon/buka
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=sys-process/parallel net-misc/curl dev-util/dialog
+SLOT=0
+SRC_URI=http://lick.moe/buka/buka-2.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=481163fcba7e82e2fc4ae3adb9a2a7bc
