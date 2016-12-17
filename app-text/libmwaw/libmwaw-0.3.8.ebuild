@@ -5,11 +5,10 @@
 EAPI=6
 
 EGIT_REPO_URI="git://git.code.sf.net/p/libmwaw/libmwaw"
-inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing many pre-OSX MAC text formats"
-HOMEPAGE="http://sourceforge.net/p/libmwaw/wiki/Home/"
+HOMEPAGE="https://sourceforge.net/p/libmwaw/wiki/Home/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
@@ -26,7 +25,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46:=
+	dev-libs/boost
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -40,15 +39,14 @@ src_prepare() {
 src_configure() {
 	# zip is hard enabled as the zlib is dep on the rdeps anyway
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--with-sharedptr=boost \
 		--enable-zip \
 		--disable-werror \
-		$(use_enable static-libs static) \
-		$(use_with doc docs)
+		--with-sharedptr=boost \
+		$(use_with doc docs) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

@@ -22,20 +22,24 @@ RDEPEND="
 	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.47
+	dev-libs/boost
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
-	eapply_user
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-werror \
-		$(use_enable tools) \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		$(use_enable tools)
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
