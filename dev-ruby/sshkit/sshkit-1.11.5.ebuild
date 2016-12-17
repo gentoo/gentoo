@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # There are functional tests that require vagrant boxes to be set up.
 RUBY_FAKEGEM_TASK_TEST="test:units"
@@ -31,7 +31,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/mocha )"
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile test/helper.rb || die
 	sed -i -e '/\(turn\|unindent\|reporters\)/I s:^:#:' \
-		-e '1irequire "set"' test/helper.rb || die
+		-e '1irequire "set"; require "pathname"' test/helper.rb || die
 
 	# Fix assumption about parent directory name
 	sed -i -e '/assert_match/ s/sshkit/sshkit.*/' test/unit/test_deprecation_logger.rb || die
