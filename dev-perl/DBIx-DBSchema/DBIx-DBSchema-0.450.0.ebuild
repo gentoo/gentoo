@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Database-independent schema objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 hppa ppc x86"
 IUSE=""
 
 RDEPEND="
