@@ -13,7 +13,7 @@ HOMEPAGE="http://arma.sourceforge.net/"
 SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
-SLOT="0/6"
+SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="arpack blas debug doc examples hdf5 lapack mkl tbb test"
 REQUIRED_USE="test? ( lapack )"
