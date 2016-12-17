@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DECLARATIVE_REQUIRED="always"
 KMNAME="kdevelop"
@@ -43,11 +43,11 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build classbrowser)
-		$(cmake-utils_use_build cvs)
-		$(cmake-utils_use_build konsole)
+		-DBUILD_classbrowser=$(usex classbrowser)
+		-DBUILD_cvs=$(usex cvs)
+		-DBUILD_konsole=$(usex konsole)
 		$(cmake-utils_use_find_package reviewboard QJSON)
-		$(cmake-utils_use_build subversion)
+		-DBUILD_subversion=$(usex subversion)
 	)
 
 	kde4-base_src_configure

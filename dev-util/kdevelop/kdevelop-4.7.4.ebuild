@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_LINGUAS="bs ca ca@valencia da de el en_GB es et fi fr gl hu it kk nb nds nl
 pl pt pt_BR ru sk sl sv th tr uk zh_CN zh_TW"
@@ -33,19 +33,19 @@ RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdebase-kioslaves)
 	cxx? ( >=sys-devel/gdb-7.0[python] )
 "
+# bug 366471
 RESTRICT="test"
-# see bug 366471
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build cmake)
-		$(cmake-utils_use_build cmake cmakebuilder)
-		$(cmake-utils_use_build cxx cpp)
-		$(cmake-utils_use_with gdbui KDE4Workspace)
-		$(cmake-utils_use_with okteta LibKasten)
-		$(cmake-utils_use_with okteta LibOkteta)
-		$(cmake-utils_use_with okteta LibOktetaKasten)
-		$(cmake-utils_use_build qthelp)
+		-DBUILD_cmake=$(usex cmake)
+		-DBUILD_cmakebuilder=$(usex cmake)
+		-DBUILD_cpp=$(usex cxx)
+		-DWITH_KDE4Workspace=$(usex gdbui)
+		-DWITH_LibKasten=$(usex okteta)
+		-DWITH_LibOkteta=$(usex okteta)
+		-DWITH_LibOktetaKasten=$(usex okteta)
+		-DBUILD_qthelp=$(usex qthelp)
 	)
 
 	kde4-base_src_configure
