@@ -10,7 +10,7 @@ PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_NAME="php_mapscript"
 PHP_EXT_S="${WORKDIR}/${MY_P}/mapscript/php/"
 PHP_EXT_SKIP_PHPIZE="no"
-USE_PHP="php5-6 php5-5"
+USE_PHP="php5-6"
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -30,7 +30,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="bidi cairo gdal geos mysql opengl perl php postgis proj python threads tiff xml xslt" # ruby php tcl
 
-REQUIRED_USE="php? ( ^^ ( php_targets_php5-6 php_targets_php5-5 ) )
+REQUIRED_USE="php? ( php_targets_php5-6 )
 			xslt? ( xml )"
 
 RDEPEND="
@@ -153,7 +153,17 @@ src_configure() {
 	if use php ; then
 		local slot
 		for slot in $(php_get_slots); do
-			mycmakeargs+=( -DPHP5_CONFIG_EXECUTABLE="${EPREFIX}/usr/$(get_libdir)/${slot}/bin/php-config" )
+			local php_config="${EPREFIX}/usr/$(get_libdir)/${slot}/bin/php-config"
+			[[ -x ${php_config} ]] \
+				|| die "php-config '${php_config}' not valid or not executable"
+
+			local php_include_dir=$(${php_config} --include-dir)
+			[[ -d ${php_include_dir} ]] || die "PHP Include dir not found or not valid"
+
+			mycmakeargs+=(
+				-DPHP5_CONFIG_EXECUTABLE="${php_config}"
+				-DPHP5_INCLUDES="${php_include_dir}"
+			)
 		done
 	fi
 
