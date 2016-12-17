@@ -12,7 +12,7 @@ inherit kde4-base
 
 DESCRIPTION="Integrated Development Environment, supporting KDE/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
-IUSE="+cmake +cxx debug +gdbui okteta qthelp"
+IUSE="+cmake +cxx debug okteta qthelp"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="~amd64 ~x86"
@@ -21,10 +21,6 @@ fi
 DEPEND="
 	dev-libs/qjson
 	dev-qt/qtdeclarative:4[webkit]
-	gdbui? (
-		kde-plasma/ksysguard:4
-		kde-plasma/libkworkspace:4
-	)
 	okteta? ( $(add_kdeapps_dep okteta) )
 	qthelp? ( dev-qt/qthelp:4 )
 "
@@ -38,10 +34,10 @@ RESTRICT="test"
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_KDE4Workspace=OFF
 		-DBUILD_cmake=$(usex cmake)
 		-DBUILD_cmakebuilder=$(usex cmake)
 		-DBUILD_cpp=$(usex cxx)
-		-DWITH_KDE4Workspace=$(usex gdbui)
 		-DWITH_LibKasten=$(usex okteta)
 		-DWITH_LibOkteta=$(usex okteta)
 		-DWITH_LibOktetaKasten=$(usex okteta)
