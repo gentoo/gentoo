@@ -6,7 +6,6 @@
     <name>Tiziano Müller</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">diskscrub</remote-id>
     <remote-id type="github">chaos/scrub</remote-id>
   </upstream>
 </pkgmetadata>
