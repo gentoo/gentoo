@@ -11604,7 +11604,7 @@ kde-apps/kio-extras 16.04.3 16.08.3 16.12.0: KIO plugins present a filesystem-li
 kde-apps/kioclient 16.04.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 16.04.3 16.08.3 16.12.0: An addictive and fun dice game
 kde-apps/kiten 16.04.3 16.08.3 16.12.0: KDE Japanese dictionary and reference
-kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211 5.0.1: Note taking utility by KDE
+kde-apps/kjots 4.4.2016.01 4.14.11_pre20160211 5.0.2: Note taking utility by KDE
 kde-apps/kjumpingcube 16.04.3 16.08.3 16.12.0: Tactical one or two player game
 kde-apps/kldap 16.12.0: Library for interacting with LDAP servers
 kde-apps/kleopatra 4.4.2016.01 4.14.11_pre20160211 16.12.0: Certificate manager and GUI for OpenPGP and CMS cryptography
