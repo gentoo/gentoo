@@ -4937,7 +4937,7 @@ dev-libs/openobex 1.5 1.7.1: Implementation of the OBEX protocol used for transf
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
 dev-libs/openssl 0.9.8z_p8 1.0.2j 1.1.0c: full-strength general purpose cryptography library (including SSL and TLS)
-dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
+dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5 1.6.2-r6: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.0.0 1.0.1_pre20121112 1.0.1_pre20131013 1.1.0 9999: pcc compiler support libs
@@ -6938,11 +6938,17 @@ dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source f
 dev-php/adodb 5.18 5.20.4: Database abstraction layer for PHP
 dev-php/agavi 1.0.7: PHP5 MVC Application Framework
 dev-php/awl 0.53-r2 0.55-r1 0.56: Andrew McMillan's Web Libraries
+dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
+dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
+dev-php/composer 1.2.2-r1: Dependency Manager for PHP
 dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
+dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/ffmpeg-php 0.6.0-r3 0.6.0-r4: PHP extension that provides access to movie info
 dev-php/igbinary 1.2.1-r1 2.0.0 2.0.0-r1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 3.0.7-r1 3.0.7-r2: Fully OO graph drawing library for PHP
+dev-php/json-schema 2.0.0: PHP implementation of JSON schema
+dev-php/jsonlint 1.4.0: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.2 9999: PHP 5 bindings for libvirt
 dev-php/magickwand 1.0.9-r2: A native PHP-extension to the ImageMagick MagickWand API
@@ -7001,6 +7007,7 @@ dev-php/pecl-xdiff 1.5.2-r4 2.0.1: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.0 2.0.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.2.1: This extension implements a Z39.50 client for PHP using the YAZ toolkit
+dev-php/phar-utils 1.0.0: PHAR file format utilities, for when PHP phars you up
 dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
@@ -7014,12 +7021,23 @@ dev-php/phpunit 3.7.20 4.3.1 4.8.19 5.0.10: A PHP Unit Testing framework
 dev-php/propel 1.6.4: Object Persistence Layer for PHP 5
 dev-php/propel-generator 1.6.4: Object Persistence Layer for PHP 5 (Generator)
 dev-php/propel-runtime 1.6.4: Object Persistence Layer for PHP 5 (Runtime)
+dev-php/psr-log 1.0.2: Common interface for logging libraries
 dev-php/recaptcha 1.1.2: PHP client library for Google's reCAPTCHA service
 dev-php/securimage 3.0.1: PHP captcha creator and validator library
+dev-php/semver 1.0.0: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.0: A PHP testing framework
 dev-php/smarty 3.1.30: A template engine for PHP
+dev-php/spdx-licenses 1.0.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
+dev-php/symfony-config 2.1.0: Symfony Config Component
+dev-php/symfony-console 2.7.9-r1: Subtree split of the Symfony Console Component
+dev-php/symfony-dependency-injection 2.1.0-r1: Symfony DependencyInjection Component
+dev-php/symfony-event-dispatcher 2.1.0-r1: Symfony EventDispatcher Component
+dev-php/symfony-filesystem 2.7.20: Symfony Filesystem Component
+dev-php/symfony-finder 2.7.20: Symfony Finder Component
+dev-php/symfony-process 2.8.12: Symfony Process Component
+dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/twig 1.20.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=test? ( dev-lang/php:* dev-php/phpunit )
+DESCRIPTION=Fedora's Static PSR-4, PSR-0, and classmap autoloader
+EAPI=6
+HOMEPAGE=https://github.com/php-fedora/autoloader
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:*
+SLOT=0
+SRC_URI=https://github.com/php-fedora/autoloader/archive/0.2.1.tar.gz -> fedora-autoloader-0.2.1.tar.gz
+_eclass_exported_funcs=src_test:- src_install:-
+_md5_=c76a69948c0b1df0d1d5e312b3f07af9

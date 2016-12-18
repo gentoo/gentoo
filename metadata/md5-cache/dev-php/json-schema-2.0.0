@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP implementation of JSON schema
+EAPI=6
+HOMEPAGE=https://github.com/justinrainbow/json-schema
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/justinrainbow/json-schema/archive/2.0.0.tar.gz -> json-schema-2.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=23320a15965100f6a7e131e92a991a97

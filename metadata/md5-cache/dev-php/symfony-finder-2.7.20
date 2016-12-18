@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Symfony Finder Component
+EAPI=6
+HOMEPAGE=https://github.com/symfony/finder
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/symfony/finder/archive/v2.7.20.tar.gz -> symfony-finder-2.7.20.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=c1285093d2e9797211e2b7481fd26f48

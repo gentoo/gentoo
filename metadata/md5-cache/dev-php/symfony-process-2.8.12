@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Symfony Process Component
+EAPI=6
+HOMEPAGE=https://github.com/symfony/process
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/symfony/process/archive/v2.8.12.tar.gz -> symfony-process-2.8.12.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=d9c5b6d94f8593c9f1dba3d4338482a2

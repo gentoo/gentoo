@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Symfony Filesystem Component
+EAPI=6
+HOMEPAGE=https://github.com/symfony/filesystem
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/symfony/filesystem/archive/v2.7.20.tar.gz -> symfony-filesystem-2.7.20.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=8abdef6df8f392ca5de9b71a66b2b44e
