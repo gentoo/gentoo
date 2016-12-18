@@ -13,7 +13,7 @@ SRC_URI="http://docs.avagotech.com/docs-and-downloads/docs-and-downloads/raid-co
 
 LICENSE="Avago LSI BSD"
 SLOT="0/6.11"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND=""
