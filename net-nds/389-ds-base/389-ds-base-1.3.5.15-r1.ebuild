@@ -51,6 +51,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/389-ds-base-1.3.5-stdc.patch"
+
 	# as per 389 documentation, when 64bit, export USE_64
 	use amd64 && export USE_64=1
 
