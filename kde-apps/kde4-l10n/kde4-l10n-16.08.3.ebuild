@@ -17,7 +17,7 @@ inherit kde5
 DESCRIPTION="KDE legacy internationalization package"
 
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND="
 	kde-base/kdelibs:4

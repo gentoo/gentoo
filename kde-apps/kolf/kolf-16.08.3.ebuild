@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kolf/
 	https://games.kde.org/game.php?game=kolf
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="

@@ -15,7 +15,7 @@ inherit kde5
 
 DESCRIPTION="KDE internationalization package"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

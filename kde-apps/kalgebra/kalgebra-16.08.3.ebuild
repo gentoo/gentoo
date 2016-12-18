@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="MathML-based graph calculator by KDE"
 HOMEPAGE="https://www.kde.org/applications/education/kalgebra
 https://edu.kde.org/kalgebra"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="opengl readline"
 
 DEPEND="

@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kjumpingcube/
 	https://games.kde.org/game.php?game=kjumpingcube
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

@@ -11,7 +11,7 @@ DESCRIPTION="KDE Telepathy common library"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="otr +sso"
 
 COMMON_DEPEND="

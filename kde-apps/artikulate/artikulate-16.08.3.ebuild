@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
 HOMEPAGE="https://edu.kde.org/applications/language/artikulate"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+gstreamer qtmedia"
 
 DEPEND="

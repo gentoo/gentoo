@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Educational application to learn calculating with fractions"
 HOMEPAGE="https://www.kde.org/applications/education/kbruch https://edu.kde.org/kbruch"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

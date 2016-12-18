@@ -8,7 +8,7 @@ DECLARATIVE_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Qt Quick 1 plugin for beautiful and interactive charts"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 RDEPEND="$(add_kdeapps_dep plasma-runtime)"
