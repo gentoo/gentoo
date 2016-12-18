@@ -27,6 +27,10 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ALIGN-backport.patch
+)
+
 pkg_setup() {
 	enewgroup vboxusers
 
