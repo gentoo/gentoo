@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	opensc? ( dev-libs/opensc )
 	readline? ( sys-libs/readline:0 )
-	softhsm? ( dev-libs/softhsm )
+	softhsm? ( dev-libs/softhsm:* )
 	sqlite? (
 		dev-db/sqlite:3
 		dev-perl/DBD-SQLite
