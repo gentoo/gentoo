@@ -1,0 +1,27 @@
+commit e3fad5256a5cba9f908f1f5d951907c6194040b5
+Author: Martin T. H. Sandsmark <martin.sandsmark@kde.org>
+Date:   Sat Nov 19 13:14:00 2016 +0100
+
+    Remove non-archive mimetypes from krarc archive mime type list
+    
+    Putting non-archive mimetypes in the list of archive mimetypes confuses
+    other applications using KIO, like Dolphin. Getting Krusader to open
+    normal files as archives should be done by linking them in the Krusader
+    Protocol settings.
+    
+    BUG: 371765
+    REVIEW: 129434
+
+diff --git a/krArc/krarc.protocol b/krArc/krarc.protocol
+index 121a9d1..9783afd 100644
+--- a/krArc/krarc.protocol
++++ b/krArc/krarc.protocol
+@@ -1,7 +1,7 @@
+ [Protocol]
+ exec=kio_krarc
+ protocol=krarc
+-archiveMimetype=application/x-7z,application/x-7z-compressed,application/x-ace,application/x-ace-compressed,application/x-arj,application/x-arj-compressed,application/x-cpio,application/x-deb,application/x-debian-package,application/vnd.debian.binary-package,application/x-java-archive,application/x-lha,application/x-lha-compressed,application/x-rar,application/x-rar-compressed,application/x-rpm,application/x-source-rpm,application/zip,application/x-zip,application/x-zip-compressed,application/vnd.oasis.opendocument.chart,application/vnd.oasis.opendocument.database,application/vnd.oasis.opendocument.formula,application/vnd.oasis.opendocument.graphics,application/vnd.oasis.opendocument.presentation,application/vnd.oasis.opendocument.spreadsheet,application/vnd.oasis.opendocument.text,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/x-cbz,application/x-cbr,application/epub+zip,application/x-webarchive,application/x-plasma
++archiveMimetype=application/x-7z,application/x-7z-compressed,application/x-ace,application/x-ace-compressed,application/x-arj,application/x-arj-compressed,application/x-cpio,application/x-lha,application/x-lha-compressed,application/x-rar,application/x-rar-compressed,application/zip,application/x-zip,application/x-zip-compressed
+ input=filesystem
+ output=filesystem
+ listing=Name,Type,Size,Date,Access,Owner,Group,Link

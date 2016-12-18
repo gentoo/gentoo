@@ -1,0 +1,103 @@
+commit 101091f3521f75e301ae619ee0d698defcceca14
+Author: Martin Kostolný <clearmartin@zoho.com>
+Date:   Mon Dec 5 00:29:21 2016 +0100
+
+    Browse Archives As Folders option applied to iso files
+    
+    Differential Revision: https://phabricator.kde.org/D3429
+
+diff --git a/krusader/Panel/panelfunc.cpp b/krusader/Panel/panelfunc.cpp
+index bebc66d..ebcc5e2 100644
+--- a/krusader/Panel/panelfunc.cpp
++++ b/krusader/Panel/panelfunc.cpp
+@@ -130,7 +130,7 @@ bool ListPanelFunc::isSyncing(const QUrl &url)
+     return false;
+ }
+ 
+-void ListPanelFunc::openFileNameInternal(const QString &name, bool theFileCanBeExecutedOrOpenedWithOtherSoftware)
++void ListPanelFunc::openFileNameInternal(const QString &name, bool externallyExecutable)
+ {
+     if (name == "..") {
+         dirUp();
+@@ -153,15 +153,16 @@ void ListPanelFunc::openFileNameInternal(const QString &name, bool theFileCanBeE
+ 
+     QUrl arcPath = browsableArchivePath(name);
+     if (!arcPath.isEmpty()) {
+-        bool theArchiveMustBeBrowsedAsADirectory = (KConfigGroup(krConfig, "Archives").readEntry("ArchivesAsDirectories", _ArchivesAsDirectories) &&
+-                                                    KRarcHandler::arcSupported(mime)) || !theFileCanBeExecutedOrOpenedWithOtherSoftware;
+-        if (theArchiveMustBeBrowsedAsADirectory) {
++        bool browseAsDirectory = !externallyExecutable
++                || (KConfigGroup(krConfig, "Archives").readEntry("ArchivesAsDirectories", _ArchivesAsDirectories)
++                && (KRarcHandler::arcSupported(mime) || KrServices::isoSupported(mime)));
++        if (browseAsDirectory) {
+             openUrl(arcPath);
+             return;
+         }
+     }
+ 
+-    if (theFileCanBeExecutedOrOpenedWithOtherSoftware) {
++    if (externallyExecutable) {
+         if (KRun::isExecutableFile(url, mime)) {
+             runCommand(KShell::quoteArg(url.path()));
+             return;
+diff --git a/krusader/Panel/panelfunc.h b/krusader/Panel/panelfunc.h
+index 092224d..c31593b 100644
+--- a/krusader/Panel/panelfunc.h
++++ b/krusader/Panel/panelfunc.h
+@@ -137,7 +137,8 @@ protected slots:
+ protected:
+     QUrl cleanPath(const QUrl &url);
+     bool isSyncing(const QUrl &url);
+-    void openFileNameInternal(const QString &name, bool theFileCanBeExecutedOrOpenedWithOtherSoftware);
++    // when externallyExecutable == true, the file can be executed or opened with other software
++    void openFileNameInternal(const QString &name, bool externallyExecutable);
+     void openUrlInternal(const QUrl &url, const QString& makeCurrent,
+                          bool immediately, bool disableLock, bool manuallyEntered);
+     void runCommand(QString cmd);
+diff --git a/krusader/krservices.cpp b/krusader/krservices.cpp
+index dca4ae7..86bc0cf 100644
+--- a/krusader/krservices.cpp
++++ b/krusader/krservices.cpp
+@@ -32,8 +32,10 @@
+ QMap<QString, QString>* KrServices::slaveMap = 0;
+ #ifdef KRARC_QUERY_ENABLED
+ QSet<QString> KrServices::krarcArchiveMimetypes = QSet<QString>::fromList(KProtocolInfo::archiveMimetypes("krarc"));
++QSet<QString> KrServices::isoArchiveMimetypes = QSet<QString>::fromList(KProtocolInfo::archiveMimetypes("iso"));
+ #else
+ QSet<QString> KrServices::krarcArchiveMimetypes;
++QSet<QString> KrServices::isoArchiveMimetypes;
+ #endif
+ 
+ bool KrServices::cmdExist(QString cmdName)
+@@ -98,6 +100,11 @@ QString KrServices::registeredProtocol(QString mimetype)
+     return protocol;
+ }
+ 
++bool KrServices::isoSupported(QString mimetype)
++{
++    return isoArchiveMimetypes.contains(mimetype);
++}
++
+ void KrServices::clearProtocolCache()
+ {
+     if (slaveMap)
+diff --git a/krusader/krservices.h b/krusader/krservices.h
+index 14048e7..e9e805c 100644
+--- a/krusader/krservices.h
++++ b/krusader/krservices.h
+@@ -39,6 +39,7 @@ public:
+     static QString      chooseFullPathName(QStringList names, QString confName);
+     static QString      fullPathName(QString name, QString confName = QString());
+     static QString      registeredProtocol(QString mimetype);
++    static bool         isoSupported(QString mimetype);
+     static QString      urlToLocalPath(const QUrl &url);
+     static void         clearProtocolCache();
+     static bool         fileToStringList(QTextStream *stream, QStringList& target, bool keepEmptyLines = false);
+@@ -58,6 +59,7 @@ protected:
+ private:
+     static QMap<QString, QString>* slaveMap;
+     static QSet<QString> krarcArchiveMimetypes;
++    static QSet<QString> isoArchiveMimetypes;
+ 
+ };
+ 
