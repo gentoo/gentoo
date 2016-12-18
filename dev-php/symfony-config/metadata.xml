@@ -14,4 +14,7 @@
 	autofill and validate configuration values of any kind,
 	whatever their source may be (YAML, XML, INI files, or for instance a database).
   </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/config</remote-id>
+  </upstream>
 </pkgmetadata>
