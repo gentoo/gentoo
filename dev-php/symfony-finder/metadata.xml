@@ -13,4 +13,7 @@
     The Finder component finds files and directories
     via an intuitive fluent interface.
   </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/finder</remote-id>
+  </upstream>
 </pkgmetadata>
