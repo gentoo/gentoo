@@ -35,6 +35,7 @@ S="${WORKDIR}/${PN}-ng-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
 	"${FILESDIR}"/${PN}-3.3.11-sysctl-manpage.patch # 565304
+	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch #583036
 
 	# Upstream fixes
 	"${FILESDIR}"/${P}-strtod_nol_err.patch
