@@ -11,7 +11,7 @@ DESCRIPTION="Little Brother database"
 SRC_URI="http://www.spinnaker.de/debian/${MY_P}.tar.gz"
 HOMEPAGE="http://www.spinnaker.de/lbdb/"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 LICENSE="GPL-2"
 IUSE="pda ldap finger abook crypt evo"
 

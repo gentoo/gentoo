@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="static-libs"
 
 S="${WORKDIR}/${P}.orig"
