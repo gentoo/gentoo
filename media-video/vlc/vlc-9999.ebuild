@@ -90,7 +90,7 @@ RDEPEND="
 	gnutls? ( >=net-libs/gnutls-3.2.0:0 )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120.1:0 )
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( >=media-libs/libkate-0.3:0 )
 	libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
