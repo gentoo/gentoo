@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
-DOC_PV="1.6.0"
+DOC_PV="2.0.0"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
