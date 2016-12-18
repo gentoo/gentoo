@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 MY_P="${P/_}"
 PKCS11_IUSE="+softhsm opensc external-hsm"
-inherit base autotools multilib user
+inherit autotools multilib user
 
 DESCRIPTION="An open-source turn-key solution for DNSSEC"
 HOMEPAGE="http://www.opendnssec.org/"
