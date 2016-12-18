@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml(+),threads(+)"
 inherit distutils-r1 eutils
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
-HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 SRC_URI="http://dev.gentoo.org/~dolsen/releases/gentoolkit/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -55,7 +55,7 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "For further information on gentoolkit, please read the gentoolkit"
-		elog "guide: https://www.gentoo.org/doc/en/gentoolkit.xml"
+		elog "guide: https://wiki.gentoo.org/wiki/Gentoolkit"
 		elog
 		elog "Another alternative to equery is app-portage/portage-utils"
 		elog
