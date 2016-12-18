@@ -12,4 +12,7 @@
   <longdescription>
   	The Process component executes commands in sub-processes.
   </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/process</remote-id>
+  </upstream>
 </pkgmetadata>
