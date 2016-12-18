@@ -12,4 +12,7 @@
   <longdescription>
     PHAR file format utilities, for when PHP phars you up
   </longdescription>
+  <upstream>
+    <remote-id type="github">Seldaek/phar-utils</remote-id>
+  </upstream>
 </pkgmetadata>
