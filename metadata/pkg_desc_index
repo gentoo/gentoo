@@ -5756,13 +5756,13 @@ dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
-dev-perl/File-ShareDir 1.30.0-r1: Locate per-dist and per-module shared files
-dev-perl/File-ShareDir-Install 0.90.0: Install shared files
+dev-perl/File-ShareDir 1.30.0-r1 1.102.0: Locate per-dist and per-module shared files
+dev-perl/File-ShareDir-Install 0.90.0 0.110.0: Install shared files
 dev-perl/File-ShareDir-ProjectDistDir 1.0.8: Simple set-and-forget using of a '/share' directory in your projects root
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
 dev-perl/File-Slurp-Unicode 0.7.1-r1: Reading/Writing of Complete Files with Character Encoding Support
-dev-perl/File-Slurper 0.0.800: A simple, sane and efficient module to slurp a file
+dev-perl/File-Slurper 0.0.800 0.9.0: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
 dev-perl/File-Stat-Moose 0.60.0-r1: Status info for a file - Moose-based
