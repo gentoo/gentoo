@@ -4,7 +4,9 @@
 
 EAPI=6
 
-EGIT_REPO_URI='https://git.exherbo.org/paludis/paludis.git'
+# git:// first because https:// uses the dumb transport
+EGIT_REPO_URI="git://git.exherbo.org/paludis/paludis.git
+	https://git.exherbo.org/paludis/paludis.git"
 PYTHON_COMPAT=( python2_7 )
 RUBY_VER=2.3
 
