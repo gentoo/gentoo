@@ -33,16 +33,16 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="ayatana gtk libressl lightweight nls polarssl qt5 systemd test"
+IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.0.10:=
-	!polarssl? (
+	!mbedtls? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	polarssl? ( >=net-libs/polarssl-1.2:0= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.16.3[ssl]
@@ -102,7 +102,7 @@ src_configure() {
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
 
-		-DWITH_CRYPTO=$(usex polarssl polarssl openssl)
+		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
 		-DWITH_LIBAPPINDICATOR=$(usex ayatana ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
