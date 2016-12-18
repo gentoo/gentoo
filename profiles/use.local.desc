@@ -7226,6 +7226,7 @@ sys-apps/firejail:network-restricted - Grant access to --interface, --net=ethXXX
 sys-apps/firejail:seccomp - Enable system call filtering
 sys-apps/firejail:userns - Enable attaching a new user namespace to a sandbox (--noroot option)
 sys-apps/firejail:x11 - Enable X11 sandboxing
+sys-apps/firejail-lts:seccomp - Enable system call filtering
 sys-apps/flashrom:atahpt - Highpoint (HPT) ATA/RAID controller support
 sys-apps/flashrom:atapromise - Support for Promise PDC2026x (FastTrak/Ultra)
 sys-apps/flashrom:atavia - Support for VIA VT6421A SATA controllers
