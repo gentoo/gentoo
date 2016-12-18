@@ -12,7 +12,7 @@ inherit distutils-r1 git-r3
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoolkit.git"
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
-HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 SRC_URI=""
 
 LICENSE="GPL-2"
@@ -57,7 +57,7 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "For further information on gentoolkit, please read the gentoolkit"
-		elog "guide: https://www.gentoo.org/doc/en/gentoolkit.xml"
+		elog "guide: https://wiki.gentoo.org/wiki/Gentoolkit"
 		elog
 		elog "Another alternative to equery is app-portage/portage-utils"
 		elog
