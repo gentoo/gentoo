@@ -12,4 +12,7 @@
   <longdescription>
   	The Yaml component loads and dumps YAML files.
   </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/yaml</remote-id>
+  </upstream>
 </pkgmetadata>
