@@ -10926,6 +10926,7 @@ games-misc/opengfx 0.5.3 0.5.4: OpenGFX data files for OpenTTD
 games-misc/openmsx 0.3.1-r1: An ambiguously named music replacement set for OpenTTD
 games-misc/opensfx 0.2.3: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
+games-misc/ponysay 3.0.2: cowsay reimplemention for ponies
 games-misc/qlife 1.1 1.1-r1: Simulates the classical Game of Life invented by John Conway
 games-misc/rfksay 0.1 0.1-r1: Like cowsay, but different because it involves robots and kittens
 games-misc/robotfindskitten 2.7182818.701 2.7182818.701-r1: Help robot find kitten
