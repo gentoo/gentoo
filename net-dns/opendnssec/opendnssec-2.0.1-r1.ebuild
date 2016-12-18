@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	opensc? ( dev-libs/opensc )
 	readline? ( sys-libs/readline:0 )
-	softhsm? ( dev-libs/softhsm )
+	softhsm? ( dev-libs/softhsm:* )
 	sqlite? (
 		dev-db/sqlite:3
 		dev-perl/DBD-SQLite
@@ -197,8 +197,8 @@ src_install() {
 
 	# patch scripts to find schema files
 	sed -i \
-		-e 's,^SCHEMA=../src/db/,/usr/share/opendnssec/db/,' \
-		-e 's,^SCHEMA=../../src/db/,/usr/share/opendnssec/db/,' \
+		-e 's,^SCHEMA=../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
+		-e 's,^SCHEMA=../../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
 		"${ED}"/usr/share/opendnssec/db/convert_* \
 		"${ED}"/usr/share/opendnssec/db/1.4-2.0_db_convert/convert_*
 

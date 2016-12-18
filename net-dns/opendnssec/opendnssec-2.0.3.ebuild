@@ -6,7 +6,7 @@ EAPI=5
 
 MY_P="${P/_}"
 PKCS11_IUSE="+softhsm opensc external-hsm"
-inherit autotools multilib user
+inherit autotools eutils multilib user
 
 DESCRIPTION="An open-source turn-key solution for DNSSEC"
 HOMEPAGE="http://www.opendnssec.org/"
@@ -15,7 +15,7 @@ SRC_URI="http://www.${PN}.org/files/source/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc +mysql +signer sqlite test ${PKCS11_IUSE}"
+IUSE="debug doc +mysql readline +signer sqlite test ${PKCS11_IUSE}"
 
 RDEPEND="
 	dev-lang/perl
@@ -27,6 +27,7 @@ RDEPEND="
 		dev-perl/DBD-mysql
 	)
 	opensc? ( dev-libs/opensc )
+	readline? ( sys-libs/readline:0 )
 	softhsm? ( dev-libs/softhsm:* )
 	sqlite? (
 		dev-db/sqlite:3
@@ -46,9 +47,9 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-fix-localstatedir.patch"
-	"${FILESDIR}/${PN}-fix-run-dir.patch"
-	"${FILESDIR}/${PN}-drop-privileges.patch"
+	"${FILESDIR}/${PN}-fix-localstatedir-2.0.x.patch"
+	"${FILESDIR}/${PN}-fix-run-dir-2.0.x.patch"
+	"${FILESDIR}/${PN}-drop-privileges-2.0.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
 )
 
@@ -104,6 +105,20 @@ check_pkcs11_setup() {
 }
 
 pkg_pretend() {
+	if has_version "<net-dns/opendnssec-1.4.10"; then
+		################################################################################
+		eerror "You are already using OpenDNSSEC."
+		eerror "In order to migrate to version >=2.0.0 you need to upgrade to"
+		eerror "version >=1.4.10 first:"
+		eerror ""
+		eerror "   emerge \"<net-dns/opendnssec-2\""
+		eerror ""
+		eerror "See https://github.com/opendnssec/opendnssec/blob/2.0/master/MIGRATION"
+		eerror "for details."
+		eerror ""
+		die "Please upgrade to version >=1.4.10 first for proper db migraion"
+	fi
+
 	check_pkcs11_setup
 }
 
@@ -116,18 +131,22 @@ pkg_setup() {
 }
 
 src_prepare() {
-	base_src_prepare
+	local patch
+	default
+	for patch in "${PATCHES[@]}"; do
+		epatch "$patch"
+	done
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--without-cunit \
-		--localstatedir="${EPREFIX}/var/" \
+		--localstatedir="${EPREFIX}/var" \
 		--disable-static \
-		--with-database-backend=$(use mysql && echo "mysql")$(use sqlite && echo "sqlite3") \
+		--with-enforcer-database=$(use mysql && echo "mysql")$(use sqlite && echo "sqlite3") \
 		--with-pkcs11-${PKCS11_LIB}=${PKCS11_PATH} \
-		$(use_enable debug timeshift) \
+		$(use_with readline) \
 		$(use_enable signer)
 }
 
@@ -147,21 +166,46 @@ src_install() {
 		-e '/<!-- \$Id:/ d' \
 		"${ED}"/etc/opendnssec/* || die
 
-	# install update scripts
-	insinto /usr/share/opendnssec
+	# install db update/migration stuff
+	insinto /usr/share/opendnssec/db
 	if use sqlite; then
-		doins enforcer/utils/migrate_keyshare_sqlite3.pl
-		doins enforcer/utils/migrate_adapters_1.sqlite3
+		doins enforcer/utils/convert_mysql_to_sqlite
 	fi
 	if use mysql; then
-		doins enforcer/utils/migrate_keyshare_mysql.pl
-		doins enforcer/utils/migrate_adapters_1.mysql
+		doins enforcer/utils/convert_sqlite_to_mysql
 	fi
+
+	insinto /usr/share/opendnssec/db/sql
+	if use sqlite; then
+		doins enforcer/src/db/schema.sqlite
+	fi
+	if use mysql; then
+		doins enforcer/src/db/schema.mysql
+	fi
+
+	insinto /usr/share/opendnssec/db/1.4-2.0_db_convert
+	doins enforcer/utils/1.4-2.0_db_convert/find_problematic_zones.sql
+	doins enforcer/utils/1.4-2.0_db_convert/README.md
+	if use sqlite; then
+		doins enforcer/utils/1.4-2.0_db_convert/sqlite_convert.sql
+		doins enforcer/utils/1.4-2.0_db_convert/convert_sqlite
+	fi
+	if use mysql; then
+		doins enforcer/utils/1.4-2.0_db_convert/convert_mysql
+		doins enforcer/utils/1.4-2.0_db_convert/mysql_convert.sql
+	fi
+
+	# patch scripts to find schema files
+	sed -i \
+		-e 's,^SCHEMA=../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
+		-e 's,^SCHEMA=../../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
+		"${ED}"/usr/share/opendnssec/db/convert_* \
+		"${ED}"/usr/share/opendnssec/db/1.4-2.0_db_convert/convert_*
 
 	# fix permissions
 	fowners root:opendnssec /etc/opendnssec
 	fowners root:opendnssec /etc/opendnssec/{addns,conf,kasp,zonelist}.xml
-	fowners opendnssec:opendnssec /var/lib/opendnssec/{,signconf,unsigned,signed,tmp}
+	fowners opendnssec:opendnssec /var/lib/opendnssec/{,enforcer,signconf,signed,signer,unsigned}
 
 	# install conf/init script
 	newinitd "${FILESDIR}"/opendnssec.initd opendnssec
@@ -178,27 +222,17 @@ pkg_postinst() {
 		elog "    softhsm --init-token --slot 0 --label OpenDNSSEC"
 		elog "    chown opendnssec:opendnssec /var/lib/opendnssec/softhsm_slot0.db"
 	fi
-
 	for v in $REPLACING_VERSIONS; do
 		case $v in
-			1.3.*)
+			1.4.*)
 				ewarn ""
-				ewarn "You are upgrading from version 1.3."
+				ewarn "You are upgrading from version 1.4."
 				ewarn ""
-				ewarn "Please be aware of the following:"
-				ewarn "  * OpenDNSSEC now supports both input and output adapters for"
-				ewarn "    AXFR and IXFR in addition to file transfer."
-				ewarn "    -> The zonefetch.xml file has been replaced by addns.xml"
-				ewarn "       to support this enhancement."
-				ewarn "    -> changes to the KASP database mean that a database"
-				ewarn "       migration is required to upgrade to 1.4 from earlier"
-				ewarn "       versions of OpenDNSSEC."
-				ewarn "  * The auditor is no longer supported."
+				ewarn "A migration is needed from 1.4 to 2.0."
+				ewarn "For details see /usr/share/doc/${P}/MIGRATION*"
 				ewarn ""
-				ewarn "You can find more information here:"
-				ewarn "  * /usr/share/doc/opendnssec*/MIGRATION*"
-				ewarn "  * https://wiki.opendnssec.org/display/DOCS/Migrating+zone+fetcher+to+DNS+adapters"
-				ewarn "  * https://wiki.opendnssec.org/display/DOCS/Migrating+from+earlier+versions+of+OpenDNSSEC"
+				ewarn "For your convenience the mentioned migration scripts and README"
+				ewarn "have been installed to /usr/share/${PN}/db/1.4-2.0_db_convert"
 				ewarn ""
 			;;
 		esac
