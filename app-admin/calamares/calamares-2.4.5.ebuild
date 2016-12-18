@@ -38,7 +38,7 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5]
-	>=sys-libs/kpmcore-2.2.0:5=
+	<sys-libs/kpmcore-3.0.0:5=
 "
 
 RDEPEND="${DEPEND}
