@@ -10,6 +10,7 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
+		<flag name="files">Allow htop to show what processes are accessing what files by using <pkg>sys-process/lsof</pkg>.</flag>
 		<flag name="oom">Add column to track the OOM-killer score of processes</flag>
 		<flag name="openvz">Enable openvz support</flag>
 		<flag name="vserver">Enable vserver support</flag>
