@@ -6,18 +6,25 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Security sandbox for any type of processes"
+MY_PN=firejail
+MY_P="${MY_PN}-${PV}"
+
+DESCRIPTION="Security sandbox for any type of processes; LTS branch"
 HOMEPAGE="https://firejail.wordpress.com/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+seccomp"
 
+DEPEND="!sys-apps/firejail"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${MY_P}"
+
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sysmacros.patch
-	epatch "${FILESDIR}"/${P}-0001-etc-resolv.conf-overwrite.patch
 	find -name Makefile.in -exec sed -i -r \
 			-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
 			-e '1iCC=@CC@' {} + || die
