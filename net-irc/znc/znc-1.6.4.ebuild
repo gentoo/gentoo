@@ -13,7 +13,7 @@ GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar
 DESCRIPTION="An advanced IRC Bouncer"
 
 SRC_URI="
-	http://znc.in/releases/${PN}-${MY_PV}.tar.gz
+	http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
 "
 KEYWORDS="~amd64 ~arm ~x86"
