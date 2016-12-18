@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDEBASE="kdevelop"
 KMNAME="kdev-python"
@@ -12,7 +12,7 @@ MY_P="${KMNAME}-${PV}"
 inherit kde4-base python-any-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${MY_P}.tar.bz2"
+	SRC_URI="mirror://kde/stable/kdevelop/${KMNAME}/${PV}/${MY_P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi

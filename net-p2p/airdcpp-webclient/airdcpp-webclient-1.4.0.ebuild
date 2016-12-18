@@ -18,11 +18,11 @@ IUSE="nat-pmp +tbb +webui"
 RDEPEND="
 	app-arch/bzip2
 	dev-cpp/websocketpp
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/geoip
 	dev-libs/leveldb
 	dev-libs/openssl:0=[-bindist]
-	net-libs/miniupnpc
+	net-libs/miniupnpc:=
 	sys-libs/zlib
 	virtual/libiconv
 	nat-pmp? ( net-libs/libnatpmp )
