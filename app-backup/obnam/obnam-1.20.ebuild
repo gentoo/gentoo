@@ -41,11 +41,3 @@ src_install() {
 	doins "${FILESDIR}"/obnam.conf
 	keepdir /var/log/obnam
 }
-
-pkg_postinst() {
-	if [[ $REPLACING_VERSIONS < "1.2" ]]; then
-		elog "You will need to setup a config file before running obnam for the first time."
-		elog "For details, please see the obnam(1) manual page."
-		elog "An example file has been installed as /etc/obnam.conf for your convenience."
-	fi
-}

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,12 +40,4 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}"/obnam.conf
 	keepdir /var/log/obnam
-}
-
-pkg_postinst() {
-	if [[ $REPLACING_VERSIONS < "1.2" ]]; then
-		elog "You will need to setup a config file before running obnam for the first time."
-		elog "For details, please see the obnam(1) manual page."
-		elog "An example file has been installed as /etc/obnam.conf for your convenience."
-	fi
 }
