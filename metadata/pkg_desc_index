@@ -14461,7 +14461,7 @@ net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
-net-im/skypeforlinux 1.13.0.3: P2P Internet Telephony (VoiceIP) client
+net-im/skypeforlinux 1.14.0.5: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
 net-im/telegram-desktop-bin 0.10.16 0.10.19: Official desktop client for Telegram (binary package)
