@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Plasma integration for gphoto2 cameras"
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

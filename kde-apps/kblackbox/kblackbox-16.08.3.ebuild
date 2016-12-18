@@ -9,7 +9,7 @@ KDE_SELINUX_MODULE="games"
 inherit kde5
 
 DESCRIPTION="KDE Blackbox Game"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

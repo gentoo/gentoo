@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Virtual Globe and World Atlas to learn more about Earth"
 HOMEPAGE="https://marble.kde.org/"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 
 IUSE="aprs +dbus designer gps +kde phonon +positioning shapefile +webkit"
 

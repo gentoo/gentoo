@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="KDE hexeditor"
 HOMEPAGE="https://www.kde.org/applications/utilities/okteta
 https://utils.kde.org/projects/okteta"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="crypt examples"
 
 DEPEND="

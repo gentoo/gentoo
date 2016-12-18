@@ -12,7 +12,7 @@ DESCRIPTION="Administer web accounts for the sites and services across the Plasm
 HOMEPAGE="https://community.kde.org/KTp"
 LICENSE="LGPL-2.1"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 COMMON_DEPEND="
