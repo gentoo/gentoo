@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
   <longdescription>
   	PSR-3 logger, provide a common interface for logging libraries.
 	The main goal is to allow libraries to receive a Psr\Log\LoggerInterface object
