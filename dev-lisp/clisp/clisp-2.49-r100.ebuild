@@ -10,7 +10,7 @@ HOMEPAGE="http://clisp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/clisp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="2/${PF}"
+SLOT="2/7"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
@@ -71,6 +71,10 @@ src_configure() {
 	if use alpha || use ia64; then
 		replace-flags -O? -O1
 		append-flags '-D NO_MULTIMAP_SHM -D NO_MULTIMAP_FILE -D NO_SINGLEMAP -D NO_TRIVIALMAP'
+	fi
+
+	if use x86; then
+		append-flags -falign-functions=4
 	fi
 
 	# QA issue with lisp.run
