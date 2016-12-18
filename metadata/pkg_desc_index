@@ -5748,12 +5748,12 @@ dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.270.0 0.280.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
-dev-perl/File-Next 1.120.0-r1: File::Next is an iterator-based module for finding files
+dev-perl/File-Next 1.120.0-r1 1.160.0: File::Next is an iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
-dev-perl/File-Remove 1.520.0-r1 1.550.0: Remove files and directories
+dev-perl/File-Remove 1.520.0-r1 1.550.0 1.570.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0: An rsync perl module
-dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0: Connect to a local Clam Anti-Virus clamd service and send commands
+dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
 dev-perl/File-ShareDir 1.30.0-r1: Locate per-dist and per-module shared files
@@ -5832,7 +5832,7 @@ dev-perl/HTML-FillInForm 2.210.0: Populates HTML Forms with data
 dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
 dev-perl/HTML-Format 2.140.0: HTML Formatter
 dev-perl/HTML-FormatText-WithLinks 0.150.0: HTML to text conversion with links as footnotes
-dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0: Converts HTML to text with tables intact
+dev-perl/HTML-FormatText-WithLinks-AndTables 0.60.0 0.70.0: Converts HTML to text with tables intact
 dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
 dev-perl/HTML-Highlight 0.200.0: A module to highlight words or patterns in HTML documents
