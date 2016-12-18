@@ -28,6 +28,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
+	dev-libs/libevent:=
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? (
 		|| (
