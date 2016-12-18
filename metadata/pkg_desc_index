@@ -7478,6 +7478,7 @@ dev-python/funcsigs 0.4 1.0.2-r1: Python function signatures backport from PEP36
 dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
+dev-python/fusepy 2.0.4: Python FUSE bindings using ctypes
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
