@@ -13,4 +13,7 @@
     Allows you to prompt for user input on the command line,
     and optionally hide the characters they type.
   </longdescription>
+  <upstream>
+    <remote-id type="github">Seldaek/cli-prompt</remote-id>
+  </upstream>
 </pkgmetadata>
