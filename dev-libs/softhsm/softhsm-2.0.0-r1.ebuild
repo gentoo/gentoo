@@ -9,8 +9,8 @@ HOMEPAGE="http://www.opendnssec.org/"
 SRC_URI="http://www.opendnssec.org/files/source/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
-SLOT="0"
+IUSE="debug +migration-tool"
+SLOT="2"
 LICENSE="BSD"
 
 RDEPEND="
@@ -26,6 +26,7 @@ src_configure() {
 		--disable-static \
 		--localstatedir=/var \
 		--with-botan="${EPREFIX}/usr/" \
+		$(use_with migration-tool migrate) \
 		$(use_enable amd64 64bit) \
 		$(use debug && echo "--with-loglevel=4")
 }

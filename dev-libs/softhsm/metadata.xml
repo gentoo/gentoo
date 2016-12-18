@@ -4,4 +4,9 @@
 	<maintainer type="person">
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="migration-tool">
+		Build db migration tool
+		</flag>
+	</use>
 </pkgmetadata>
