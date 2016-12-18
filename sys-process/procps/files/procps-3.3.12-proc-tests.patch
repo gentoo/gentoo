@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/583036
+http://www.freelists.org/post/procps/Patch-Test-suite-fails-if-procpidsmaps-is-absent,1
+
+From: tobbs@opentrash.com
+To: procps@freelists.org
+Date: Sun, 11 Sep 2016 15:01:29 +0200
+Subject: [procps] [Patch] Test suite fails if /proc/<pid>/smaps is absent
+Message-Id: <20160911130129.9A8B3322A81@astra4649.startdedicated.de>
+
+Summary: Some Linux systems do not have /proc/<pid>/smaps, hence the test
+suite fails. Attached a patch to skip tests in that case it.
+
+When pmap is called with either -c, -x, or -x it tries to read
+/proc/<pid>/smaps (pmap.c, l. 540). If not present it exits.
+The file /proc/<pid>/smaps exits on Linux systems only if the kernel is
+compiled with the option CONFIG_PROC_PAGE_MONITOR (see man page proc(5)).
+
+In the test suite some tests check the output of pmap -X et al, but they
+fail if /proc/<pid>/smaps is not present, because pmap does not produce
+their expected output.
+
+Attached a patch which checks if /proc/<pid>/smaps exits, if not it
+skipps the test related to it.
+
+Note: It is unclear what the 'expected' behaviour/output of pmap should
+be if the file /proc/<pid>/smaps is not present. Maybe add an additional
+test to check the return code if /proc/<pid>/smaps is absent.
+
+--- a/testsuite/pmap.test/pmap.exp
++++ b/testsuite/pmap.test/pmap.exp
+@@ -45,6 +45,11 @@
+ spawn $pmap -qd $mypid
+ expect_table $test $pmap_procname $pmap_device_items "\$"
+ 
++if  { [ file readable "/proc/self/smaps" ] == 0 } {
++    unsupported "Skipping test which require pmap to access /proc/<pid>/smaps, because kernel seems to be compiled without CONFIG_PROC_PAGE_MONITOR."
++
++} else {
++
+ set test "pmap extended output"
+ spawn $pmap -x $mypid
+ expect_table $test $pmap_ext_header $pmap_ext_items $pmap_ext_footer
+@@ -66,3 +71,4 @@
+ spawn $pmap -XX 1
+ expect_pass $test "$pmap_initname\$"
+ 
++}
