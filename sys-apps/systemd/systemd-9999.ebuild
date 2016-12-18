@@ -79,7 +79,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-fs/udev"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
-PDEPEND=">=sys-apps/dbus-1.8.8:0[systemd]
+PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 	>=sys-apps/hwids-20150417[udev]
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
@@ -94,7 +94,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	test? ( >=sys-apps/dbus-1.6.8-r1:0 )
+	test? ( sys-apps/dbus )
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
