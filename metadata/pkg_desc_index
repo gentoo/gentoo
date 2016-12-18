@@ -121,7 +121,7 @@ app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
-app-admin/keepass 2.34: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.34 2.34-r1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2-r1 2.0.3: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
@@ -1286,14 +1286,14 @@ app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform env
 app-emulation/bochs 2.6.8: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212 0.7.7 0.7.8-r1 9999: cloud initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/containerd 0.2.0 0.2.2 0.2.3 0.2.4 0.2.5 9999: A daemon to control runC
+app-emulation/containerd 0.2.0 0.2.4 0.2.5 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.24.0 1.25.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.3 1.12.4 1.12.5 1.13.0_rc2 1.13.0_rc3-r1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.3 1.12.5 1.13.0_rc3-r1 1.13.0_rc4 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -1343,7 +1343,7 @@ app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/rkt 1.18.0 1.19.0 1.20.0 1.21.0: rkt is an App Container runtime for Linux
-app-emulation/runc 0.0.2 0.0.5 0.1.0 0.1.1 1.0.0_rc2 1.0.0_rc2-r1 9999: runc container cli tools
+app-emulation/runc 0.1.0 0.1.1 1.0.0_rc2-r1 9999: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
