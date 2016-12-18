@@ -14,4 +14,7 @@
     It allows you to declare the libraries your project depends on
     and it will manage (install/update) them for you.
   </longdescription>
+  <upstream>
+    <remote-id type="github">composer/composer</remote-id>
+  </upstream>
 </pkgmetadata>
