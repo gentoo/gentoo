@@ -3,6 +3,10 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (18 Dec 2016)
+# has multiple compilation issue, resolved for 1.1.8, bug #602990
+=app-misc/pax-utils-1.1.7
+
 # Fabian Groffen <grobian@gentoo.org> (10 Sep 2016)
 # revbump for adding libcxx dependency, which we already have, so avoid
 # the hassle
