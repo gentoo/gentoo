@@ -13,12 +13,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug libressl +ssl static-libs test +threads"
+RESTRICT="test"
 
 DEPEND="
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-	)"
+	)
+"
 RDEPEND="
 	${DEPEND}
 	!<=dev-libs/9libs-1.0
@@ -26,6 +28,9 @@ RDEPEND="
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
+)
+DOCS=(
+	ChangeLog{,-1.4,-2.0}
 )
 
 src_prepare() {
@@ -47,12 +52,6 @@ multilib_src_configure() {
 		$(use_enable test libevent-regress) \
 		$(use_enable threads thread-support)
 }
-
-src_test() {
-	emake -C test check | tee "${T}"/tests
-}
-
-DOCS=( ChangeLog{,-1.4,-2.0} )
 
 multilib_src_install_all() {
 	einstalldocs
