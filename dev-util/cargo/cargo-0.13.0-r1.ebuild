@@ -4,12 +4,15 @@
 
 EAPI=6
 
-CARGO_SNAPSHOT_DATE="2016-03-21"
-CARGO_INDEX_COMMIT="2aed1d5050840971fd1527e2a2961e05dd392e04"
-CRATES="advapi32-sys-0.2.0
+CARGO_SNAPSHOT_DATE="2016-09-01"
+CRATES="
+advapi32-sys-0.2.0
 aho-corasick-0.5.2
 bitflags-0.1.1
 bitflags-0.7.0
+bufstream-0.1.2
+cargo-0.13.0
+cargotest-0.1.0
 cfg-if-0.1.0
 cmake-0.1.17
 crates-io-0.4.0
@@ -26,6 +29,7 @@ gdi32-sys-0.2.0
 git2-0.4.4
 git2-curl-0.5.0
 glob-0.2.11
+hamcrest-0.1.0
 idna-0.1.0
 kernel32-sys-0.2.2
 lazy_static-0.2.1
@@ -81,7 +85,6 @@ inherit cargo bash-completion-r1
 DESCRIPTION="The Rust's package manager"
 HOMEPAGE="http://crates.io"
 SRC_URI="https://github.com/rust-lang/cargo/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/rust-lang/crates.io-index/archive/${CARGO_INDEX_COMMIT}.tar.gz -> cargo-registry-${CARGO_INDEX_COMMIT}.tar.gz
 	$(cargo_crate_uris ${CRATES})
 	x86?   (
 		https://static.rust-lang.org/cargo-dist/${CARGO_SNAPSHOT_DATE}/cargo-nightly-i686-unknown-linux-gnu.tar.gz ->
@@ -114,52 +117,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/diffutils
 	sys-apps/findutils
 	sys-apps/sed"
-
-# Until cargo bootstraps itself with a version based on 0.13.0, this needs
-# to stay (these variables and src_unpack)
-ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_REPO="github.com-88ac128001ac3a9a"
-ECARGO_INDEX="${ECARGO_HOME}/registry/index/${ECARGO_REPO}"
-ECARGO_SRC="${ECARGO_HOME}/registry/src/${ECARGO_REPO}"
-ECARGO_CACHE="${ECARGO_HOME}/registry/cache/${ECARGO_REPO}"
-
-src_unpack() {
-	mkdir -p "${ECARGO_INDEX}" || die
-	mkdir -p "${ECARGO_CACHE}" || die
-	mkdir -p "${ECARGO_SRC}" || die
-	mkdir -p "${S}" || die
-
-	local archive
-	for archive in ${A}; do
-		case "${archive}" in
-			*.crate)
-				ebegin "Unpacking ${archive}"
-				cp "${DISTDIR}"/${archive} "${ECARGO_CACHE}/" || die
-				tar -xf "${DISTDIR}"/${archive} -C "${ECARGO_SRC}/" || die
-				eend $?
-				;;
-			cargo-snapshot*)
-				ebegin "Unpacking ${archive}"
-				mkdir -p "${S}"/target/snapshot
-				tar -xzf "${DISTDIR}"/${archive} -C "${S}"/target/snapshot --strip-components 2 || die
-				# cargo's makefile needs this otherwise it will try to
-				# download it
-				touch "${S}"/target/snapshot/bin/cargo || die
-				eend $?
-				;;
-			cargo-registry*)
-				ebegin "Unpacking ${archive}"
-				tar -xzf "${DISTDIR}"/${archive} -C "${ECARGO_INDEX}" --strip-components 1 || die
-				# prevent cargo from attempting to download this again
-				touch "${ECARGO_INDEX}"/.cargo-index-lock || die
-				eend $?
-				;;
-			*)
-				unpack ${archive}
-				;;
-		esac
-	done
-}
 
 src_configure() {
 	# Cargo only supports these GNU triples:
