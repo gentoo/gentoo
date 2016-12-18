@@ -6,10 +6,14 @@ EAPI=6
 
 CARGO_SNAPSHOT_DATE="2016-03-21"
 CARGO_INDEX_COMMIT="2aed1d5050840971fd1527e2a2961e05dd392e04"
-CRATES="advapi32-sys-0.2.0
+CRATES="
+advapi32-sys-0.2.0
 aho-corasick-0.5.2
 bitflags-0.1.1
 bitflags-0.7.0
+bufstream-0.1.2
+cargo-0.13.0
+cargotest-0.1.0
 cfg-if-0.1.0
 cmake-0.1.17
 crates-io-0.4.0
@@ -26,6 +30,7 @@ gdi32-sys-0.2.0
 git2-0.4.4
 git2-curl-0.5.0
 glob-0.2.11
+hamcrest-0.1.0
 idna-0.1.0
 kernel32-sys-0.2.2
 lazy_static-0.2.1
