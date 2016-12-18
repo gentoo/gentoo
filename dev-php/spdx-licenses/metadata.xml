@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
   <longdescription>
 	Tools for working with the SPDX license list and validating licenses. 
   </longdescription>
