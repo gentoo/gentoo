@@ -18,5 +18,6 @@
     <flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
     <flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
     <flag name="mapserver">Determines whether mapserver should be built</flag>
+    <flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
   </use>
 </pkgmetadata>
