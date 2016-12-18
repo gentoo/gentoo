@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup
+DEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( virtual/mysql dev-perl/DBD-mysql ) opensc? ( dev-libs/opensc ) readline? ( sys-libs/readline:0 ) softhsm? ( dev-libs/softhsm:* ) sqlite? ( dev-db/sqlite:3 dev-perl/DBD-SQLite ) doc? ( app-doc/doxygen ) test? ( app-text/trang ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An open-source turn-key solution for DNSSEC
+EAPI=5
+HOMEPAGE=http://www.opendnssec.org/
+IUSE=debug doc +mysql readline +signer sqlite test +softhsm opensc external-hsm
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD GPL-2
+RDEPEND=dev-lang/perl dev-libs/libxml2 dev-libs/libxslt net-libs/ldns mysql? ( virtual/mysql dev-perl/DBD-mysql ) opensc? ( dev-libs/opensc ) readline? ( sys-libs/readline:0 ) softhsm? ( dev-libs/softhsm:* ) sqlite? ( dev-db/sqlite:3 dev-perl/DBD-SQLite )
+REQUIRED_USE=^^ ( mysql sqlite ) ^^ ( softhsm opensc external-hsm )
+SLOT=0
+SRC_URI=http://www.opendnssec.org/files/source/opendnssec-2.0.3.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=100f9917f78fe591bb2e4a86ba4dadb3

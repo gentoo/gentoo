@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-db/sqlite:3 dev-libs/botan[threads,-bindist] !=dev-libs/softhsm-2.0.0:0
+DESCRIPTION=A software PKCS#11 implementation
+EAPI=5
+HOMEPAGE=http://www.opendnssec.org/
+IUSE=debug +migration-tool
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-db/sqlite:3 dev-libs/botan[threads,-bindist] !=dev-libs/softhsm-2.0.0:0
+SLOT=2
+SRC_URI=http://www.opendnssec.org/files/source/softhsm-2.2.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=28fb346189cce73e0108a14a036becd9
