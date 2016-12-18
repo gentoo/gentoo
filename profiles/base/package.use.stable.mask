@@ -16,11 +16,6 @@ kde-plasma/plasma-workspace prison
 <kde-apps/kaddressbook-16.08.49:5 prison
 <kde-apps/kdepim-apps-libs-16.08.49:5 prison
 
-# Johannes Huber <johu@gentoo.org> (08 Dec 2016)
-# Python 3 support is available with
-# >=dev-python/translate-toolkit-2.0.0_beta7 which is unstable.
-kde-apps/lokalize python_targets_python3_4 python_targets_python3_5
-
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
 app-admin/packagekit-base entropy
