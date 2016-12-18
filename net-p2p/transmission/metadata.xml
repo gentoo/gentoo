@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="lightweight">Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)</flag>
+	<flag name="polarssl">Use PolarSSL instead of OpenSSL</flag>
     <flag name="xfs">Enable XFS filesystem capabilities by using <pkg>sys-fs/xfsprogs</pkg> headers (in building of fdlimit(.c))</flag>
   </use>
 </pkgmetadata>
