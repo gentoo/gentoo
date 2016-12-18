@@ -16,6 +16,7 @@ LICENSE="BSD"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/botan[threads,-bindist]
+	!=dev-libs/softhsm-2.0.0:0
 "
 DEPEND="${RDEPEND}"
 
