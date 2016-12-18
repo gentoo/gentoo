@@ -4,7 +4,7 @@
 
 EAPI=6
 
-DESCRIPTION="Semantic versioning utilities with constraints parsing and checking"
+DESCRIPTION="Semantic versioning utilities, constraint parsing, and checking"
 HOMEPAGE="https://github.com/composer/semver"
 SRC_URI="https://github.com/composer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
