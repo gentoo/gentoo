@@ -12,4 +12,7 @@
   <longdescription>
     The Filesystem component provides basic utilities for the filesystem.
   </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/filesystem</remote-id>
+  </upstream>
 </pkgmetadata>
