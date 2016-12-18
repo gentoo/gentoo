@@ -16,7 +16,8 @@ KEYWORDS="amd64"
 IUSE="apparmor +bind +chroot +file-transfer +network
 	network-restricted +seccomp +userns x11"
 
-DEPEND="apparmor? ( sys-libs/libapparmor )"
+DEPEND="!sys-apps/firejail
+	apparmor? ( sys-libs/libapparmor )"
 RDEPEND="${DEPEND}
 	x11? ( x11-wm/xpra[client,server] )"
 
