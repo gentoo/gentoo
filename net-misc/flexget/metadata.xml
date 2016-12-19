@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>floppym@gentoo.org</email>
-    <name>Mike Gilbert</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="transmission">Support comminucation with <pkg>net-p2p/transmission</pkg></flag>
   </use>
