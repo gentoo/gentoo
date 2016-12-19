@@ -1,0 +1,96 @@
+--- a/include/mednafen/desa68/Makefile.am
++++ b/include/mednafen/desa68/Makefile.am
+@@ -6,7 +6,7 @@
+ 
+ AUTOMAKE_OPTIONS = subdir-objects
+ AM_CFLAGS = @AM_CFLAGS@ -Wno-multichar
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libdesa68.a
+--- a/include/mednafen/drivers/Makefile.am
++++ b/include/mednafen/drivers/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @SDL_CFLAGS@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@  @SDL_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfnsdl.a
+--- a/include/mednafen/drivers_dos/Makefile.am
++++ b/include/mednafen/drivers_dos/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @SDL_CFLAGS@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@  @SDL_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfndos.a
+--- a/include/mednafen/Makefile.am
++++ b/include/mednafen/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS	= trio
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ @SNDFILE_CFLAGS@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@ @SNDFILE_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ bin_PROGRAMS	=	mednafen
+--- a/include/mednafen/ngp/Makefile.am
++++ b/include/mednafen/ngp/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  -fno-strict-aliasing
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@  -fno-strict-aliasing
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libngp.a
+--- a/include/mednafen/quicklz/Makefile.am
++++ b/include/mednafen/quicklz/Makefile.am
+@@ -1,6 +1,6 @@
+ AM_CFLAGS = @AM_CFLAGS@ -fno-strict-aliasing -Wno-shadow -Wno-unused-but-set-variable
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ -fno-strict-aliasing
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@ -fno-strict-aliasing
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfnquicklz.a
+--- a/include/mednafen/sexyal/Makefile.am
++++ b/include/mednafen/sexyal/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ @SDL_CFLAGS@ @ALSA_CFLAGS@ @JACK_CFLAGS@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@ @SDL_CFLAGS@ @ALSA_CFLAGS@ @JACK_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libsexyal.a
+--- a/include/mednafen/snes/Makefile.am
++++ b/include/mednafen/snes/Makefile.am
+@@ -1,7 +1,7 @@
+ AM_CFLAGS = @AM_CFLAGS@ @SNES_EXTRA_FLAGS@
+ AM_CXXFLAGS = @AM_CXXFLAGS@ @SNES_EXTRA_FLAGS@ @SNES_EXTRA_CXXFLAGS@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  -DNOMINMAX
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@  -DNOMINMAX
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl -I$(srcdir)/src/lib
+ 
+ noinst_LIBRARIES	=	libsnes.a
+--- a/include/mednafen/ss/Makefile.am
++++ b/include/mednafen/ss/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+ AM_CXXFLAGS = @AM_CXXFLAGS@ @SS_EXTRA_FLAGS@ @NO_STACK_PROTECTOR_FLAGS@
+ # -Wpedantic
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+--- a/include/mednafen/trio/Makefile.am
++++ b/include/mednafen/trio/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ @TRIO_CFLAGS@ @CFLAG_VISIBILITY@
++DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@ @TRIO_CFLAGS@ @CFLAG_VISIBILITY@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libtrio.a
