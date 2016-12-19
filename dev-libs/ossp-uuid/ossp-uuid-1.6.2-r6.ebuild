@@ -53,9 +53,11 @@ src_prepare() {
 		done
 
 		php-ext-source-r3_src_prepare
+		#Remove call by reference which is error
+		sed -i -e 's/\&\$/\$/' -e '/?>/d' "${S}/php/uuid.php5" || die
+	else
+		eapply_user
 	fi
-	#Remove call by reference which is error
-	sed -i -e 's/\&\$/\$/' -e '/?>/d' "${S}/php/uuid.php5" || die
 }
 
 src_configure() {
