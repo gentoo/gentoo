@@ -985,7 +985,7 @@ app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/root-docs 5.34.26 5.34.36 6.04.06: Documentation for ROOT Data Analysis Framework
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
-app-doc/single-unix-specification 3 4-r1 4-r2: The Single UNIX Specification, Version 4, 2013 Edition
+app-doc/single-unix-specification 3 4-r1 4_p1 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
 app-doc/tldp-howto 20100701 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
@@ -10692,7 +10692,7 @@ games-emulation/lxdream 0.9.1-r2: An emulator for the Sega Dreamcast system
 games-emulation/m64py 0.2.3-r2: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
-games-emulation/mednafen 0.9.38.7: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
+games-emulation/mednafen 0.9.38.7 0.9.39.2: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
 games-emulation/mgba 0.5.0 0.5.1: A new Game Boy Advance emulator written in C.
@@ -14347,7 +14347,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.5.1-r2 1.5.7 1.5.8 1.5.9 1.5.10: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.5.1-r2 1.5.7 1.5.8 1.5.9 1.5.10 1.6.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6 2.6-r1: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
