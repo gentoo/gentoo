@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,7 +49,7 @@ RDEPEND="server? (
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
 		pulseaudio? ( media-sound/pulseaudio )
-		samba? ( net-fs/samba[smbclient] )
+		samba? ( >=net-fs/samba-4.2[client] )
 		sid? ( media-sound/sidplay
 			media-libs/resid )
 		sndfile? ( media-libs/libsndfile )
