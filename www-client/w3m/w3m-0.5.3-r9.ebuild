@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tats/w3m/archive/v${PV}+${MY_REL}.tar.gz -> ${MY_P}.
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="X fbcon gpm gtk imlib libressl lynxkeymap nls nntp ssl unicode xface l10n_ja"
 
 # We cannot build w3m with gtk+2 w/o X because gtk+2 ebuild doesn't
