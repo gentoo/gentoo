@@ -5375,12 +5375,7 @@ net-fs/samba:client - Enables the client part
 net-fs/samba:cluster - Enable support for clustering
 net-fs/samba:dmapi - Enable support for DMAPI. This currently works only in combination with XFS.
 net-fs/samba:iprint - Enabling iPrint technology by Novell
-net-fs/samba:ldb - Enable the ldb tools
-net-fs/samba:netapi - Enable building of netapi bits
 net-fs/samba:quota - Enables support for user quotas
-net-fs/samba:server - Enables the server part
-net-fs/samba:smbsharemodes - Enable special smb share modes (?)
-net-fs/samba:swat - Enables support for swat configuration gui
 net-fs/samba:system-mitkrb5 - Use app-crypt/mit-krb5 instead of app-crypt/heimdal.
 net-fs/samba:winbind - Enables support for the winbind auth daemon
 net-fs/smbnetfs:gnome - Use the gnome-base/gnome-keyring for password management.
