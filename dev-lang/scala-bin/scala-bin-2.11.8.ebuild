@@ -14,7 +14,7 @@ SRC_URI="http://downloads.typesafe.com/scala/${PV}/scala-${PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.6
@@ -29,6 +29,7 @@ src_prepare() {
 	eend $?
 
 	ebegin 'Patching SCALA_HOME variable in bin/ directory'
+	local f
 	for f in bin/*; do
 		sed -i -e 's#\(SCALA_HOME\)=.*#\1=/usr/share/scala-bin#' $f || die
 	done
