@@ -9977,7 +9977,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.8 2.16.10 2.16.12: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.10 2.16.12 2.16.13: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
@@ -11240,7 +11240,7 @@ games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
 games-strategy/openra 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
 games-strategy/s25rttr 0.8.1-r2: Open Source remake of The Settlers II game (needs original game files)
-games-strategy/scorched3d 44-r1: Multi-player tank battle in 3D (OpenGL)
+games-strategy/scorched3d 44-r1 44-r2: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
 games-strategy/spaz 1.605: Space Pirates and Zombies
@@ -18359,7 +18359,7 @@ x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/amd-adl-sdk 6.0-r1 8.0 10.1: API to access display driver functionality for ATI graphics cards
 x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.0.31 2.0.31.1 2.2.10 2.2.12 2.2.13 2.2.14 2.2.14.1: A number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.14.2 1.14.2-r1 1.14.4 1.14.6 9999: A vector graphics library with cross-device output support
+x11-libs/cairo 1.14.2 1.14.6 1.14.8 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
 x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
