@@ -1,0 +1,15 @@
+diff -r -U2 ecl-16.1.3.orig/src/h/object.h ecl-16.1.3/src/h/object.h
+--- ecl-16.1.3.orig/src/h/object.h	2016-12-19 17:25:00.000000000 +0700
++++ ecl-16.1.3/src/h/object.h	2016-12-19 19:22:21.147557750 +0700
+@@ -26,6 +26,11 @@
+ */
+ 
++#ifndef TRUE
+ #define TRUE            1       /*  boolean true value  */
++#endif
++
++#ifndef FALSE
+ #define FALSE           0       /*  boolean false value  */
++#endif
+ 
+ #if !defined(__cplusplus) && !defined(bool)
