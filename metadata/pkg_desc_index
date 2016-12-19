@@ -4656,7 +4656,7 @@ dev-libs/hiredis 0.11.0-r1 0.13.1 0.13.3: Minimalistic C client library for the 
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 55.1 57.1 58.1-r1: International Components for Unicode
+dev-libs/icu 55.1 57.1 58.1-r1 58.2: International Components for Unicode
 dev-libs/icu-layoutex 58.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
