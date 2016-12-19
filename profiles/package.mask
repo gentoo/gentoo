@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (19 Dec 2016)
+# Masked for removal in 14 days. Superseded by dev-libs/kdiagram.
+# No reverse dependencies. Never consumed by unmasked packages.
+kde-apps/kdgantt2
+
 # Tim Harder <radhermit@gentoo.org> (12 Dec 2016)
 # Outdated and broken in the tree.
 # Masked for removal in 30 days.
