@@ -28,6 +28,7 @@ DEPEND="
 	$(add_frameworks_dep kjs)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kwallet)
+	$(add_frameworks_dep kpty)
 	$(add_frameworks_dep threadweaver)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
