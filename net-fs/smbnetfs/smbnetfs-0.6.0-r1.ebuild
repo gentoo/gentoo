@@ -14,14 +14,13 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm-linux ~x86-linux"
 IUSE="gnome"
 
-RDEPEND=">=sys-fs/fuse-2.3:=
-	>=net-fs/samba-3.2:=[smbclient(+)]
-	>=dev-libs/glib-2.30:=
-	gnome? ( gnome-base/libgnome-keyring:= )"
+RDEPEND=">=sys-fs/fuse-2.3
+	>=net-fs/samba-4.2[client]
+	>=dev-libs/glib-2.30
+	gnome? ( gnome-base/libgnome-keyring )"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	sys-devel/make"
+	virtual/pkgconfig"
 
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="
