@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (19 Dec 2016)
+# Upstream is dead. This package also clashes with dev-python/fusepy. You
+# should switch to fusepy if you're looking for a similar, maintained and
+# more robust solution in Python.
+# Masked for removal in 30 days. See bug #603068.
+dev-python/fuse-python
+
 # Johannes Huber <johu@gentoo.org> (19 Dec 2016)
 # Masked for removal in 14 days. Superseded by kde-apps/kde-l10n.
 # No reverse dependencies.
