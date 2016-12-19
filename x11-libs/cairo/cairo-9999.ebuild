@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic autotools multilib-minimal
 
@@ -70,16 +70,18 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cairo/cairo-directfb.h
 )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.12.18-disable-test-suite.patch
-	epatch "${FILESDIR}"/${PN}-respect-fontconfig.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12.18-disable-test-suite.patch
+	"${FILESDIR}"/${PN}-respect-fontconfig.patch
+)
 
+src_prepare() {
 	# tests and perf tools require X, bug #483574
 	if ! use X; then
 		sed -e '/^SUBDIRS/ s#boilerplate test perf# #' -i Makefile.am || die
 	fi
 
-	epatch_user
+	default
 
 	# Slightly messed build system YAY
 	if [[ ${PV} == *9999* ]]; then

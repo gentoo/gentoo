@@ -2,8 +2,8 @@ Description: Fix to build with wxWidgets 3.0
 Author: Olly Betts <olly@survex.com>
 Last-Update: 2014-05-01
 
---- src/launcher/wxdialogs/Display.cpp
-+++ src/launcher/wxdialogs/Display.cpp
+--- a/src/launcher/wxdialogs/Display.cpp
++++ b/src/launcher/wxdialogs/Display.cpp
 @@ -26,7 +26,7 @@
  	// Display settings
  	wxStaticBox *displayBox = new wxStaticBox(parent, -1, wxT("&Display"));
@@ -49,8 +49,8 @@ Last-Update: 2014-05-01
  	
  	keyboardKeyList.clear();
  	if (!Keyboard::instance()->loadKeyFile())
---- src/launcher/wxdialogs/SettingsDialog.cpp
-+++ src/launcher/wxdialogs/SettingsDialog.cpp
+--- a/src/launcher/wxdialogs/SettingsDialog.cpp
++++ b/src/launcher/wxdialogs/SettingsDialog.cpp
 @@ -105,7 +105,7 @@
  	mainPanel_ = new wxPanel(book_, -1);
  	book_->AddPage(mainPanel_, wxT("Main"));
@@ -114,8 +114,8 @@ Last-Update: 2014-05-01
  	playersPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
  
  	for (int i=0; i<24; i++)
---- src/launcher/wxdialogs/DisplayDialog.cpp
-+++ src/launcher/wxdialogs/DisplayDialog.cpp
+--- a/src/launcher/wxdialogs/DisplayDialog.cpp
++++ b/src/launcher/wxdialogs/DisplayDialog.cpp
 @@ -449,15 +449,15 @@
  	IDC_SLIDER1_CTRL->SetValue(OptionsDisplay::instance()->getBrightness());
  	IDC_SLIDER1_CTRL->SetToolTip(wxString(OptionsDisplay::instance()->getBrightnessEntry().getDescription(), wxConvUTF8));
