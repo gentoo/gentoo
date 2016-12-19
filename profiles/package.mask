@@ -390,14 +390,6 @@ sci-geosciences/googleearth
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
-# PHP 5.5 has reached end of life and will no longer receive security updates.
-# Also include associated packages which do not work on newer versions
-# Removal in 90 days
-virtual/httpd-php:5.5
-dev-lang/php:5.5
-=dev-php/pecl-mailparse-2.1.6-r1
-
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Security issues (#562898)
 =app-admin/lsyncd-2.1.5
