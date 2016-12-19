@@ -5,6 +5,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Zac Medico <zmedico@gentoo.org> (19 Dec 2016)
+# The go flag requires dev-lang/go[gccgo], and gccgo
+# is stable masked since it requires gcc-5 which is
+# currently unstable.
+www-servers/uwsgi go pypy
+
 # Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
