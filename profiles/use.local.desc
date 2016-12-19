@@ -5381,7 +5381,6 @@ net-fs/samba:ldb - Enable the ldb tools
 net-fs/samba:netapi - Enable building of netapi bits
 net-fs/samba:quota - Enables support for user quotas
 net-fs/samba:server - Enables the server part
-net-fs/samba:smbclient - Enable smbclient tool
 net-fs/samba:smbsharemodes - Enable special smb share modes (?)
 net-fs/samba:swat - Enables support for swat configuration gui
 net-fs/samba:system-mitkrb5 - Use app-crypt/mit-krb5 instead of app-crypt/heimdal.
