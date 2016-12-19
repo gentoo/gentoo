@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
+# Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),
+# dev-qt/qtquickcontrols2 (#603054), dev-qt/qtwebengine (#581478)
+dev-qt/qt-creator clangcodemodel clangstaticanalyzer test webengine
+
 # James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
@@ -45,10 +50,6 @@ net-firewall/nftables doc
 # Amy Winston <amynka@gentoo.org> (12 June 2016)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
-
-# Davide Pesavento <pesa@gentoo.org> (13 May 2016)
-# dev-qt/qtwebengine:5 not keyworded, bug 581478
-dev-qt/qt-creator webengine
 
 # Patrick McLean <chutzpah@gentoo.org> (12 May 2016)
 # Tests require dev-python/tox which isn't keyworded on arm

@@ -32,10 +32,8 @@ fi
 QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal bazaar
 	clangcodemodel clangstaticanalyzer clearcase cmake:cmakeprojectmanager cvs git glsl:glsleditor
 	ios mercurial modeling:modeleditor nim perforce python:pythoneditor qbs:qbsprojectmanager qnx
-	subversion valgrind winrt)
-IUSE="doc systemd test webengine webkit ${QTC_PLUGINS[@]%:*}"
-
-REQUIRED_USE="?? ( webengine webkit )"
+	scxml:scxmleditor subversion valgrind winrt)
+IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 
 # minimum Qt version required
 QT_PV="5.6.0:5"
@@ -58,17 +56,20 @@ RDEPEND="
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	sys-devel/gdb[client,python]
-	clangcodemodel? ( >=sys-devel/clang-3.8.0:= )
-	qbs? ( ~dev-util/qbs-1.6.1 )
+	clangcodemodel? ( >=sys-devel/clang-3.9:= )
+	qbs? ( =dev-util/qbs-1.7* )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
-	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
 "
 DEPEND="${RDEPEND}
 	>=dev-qt/linguist-tools-${QT_PV}
 	virtual/pkgconfig
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
-	test? ( >=dev-qt/qttest-${QT_PV} )
+	test? (
+		>=dev-qt/qtdeclarative-${QT_PV}[localstorage,xml]
+		>=dev-qt/qtquickcontrols2-${QT_PV}
+		>=dev-qt/qttest-${QT_PV}
+	)
 "
 # qt translations must also be installed or qt-creator translations won't be loaded
 for x in ${PLOCALES}; do
@@ -79,7 +80,7 @@ unset x
 PDEPEND="
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
-	clangstaticanalyzer? ( >=sys-devel/clang-3.8.0 )
+	clangstaticanalyzer? ( >=sys-devel/clang-3.9 )
 	cmake? ( dev-util/cmake )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
@@ -127,22 +128,17 @@ src_prepare() {
 		sed -i -e '/modelinglib/d' src/libs/libs.pro || die
 	fi
 
-	# automagic dep on qtwebkit (bug 538236)
-	if ! use webkit; then
-		sed -i -e 's/isEmpty(QT\.webkitwidgets\.name)/true/' \
-			src/plugins/help/help.pro || die "failed to disable webkit"
-	fi
-
 	# automagic dep on qtwebengine
 	if ! use webengine; then
-		sed -i -e 's/isEmpty(QT\.webenginewidgets\.name)/true/' \
-			src/plugins/help/help.pro || die "failed to disable webengine"
+		sed -i -e 's/isEmpty(QT\.webenginewidgets\.name)/true/' src/plugins/help/help.pro || die
 	fi
 
 	# disable broken or unreliable tests
 	sed -i -e '/SUBDIRS/ s/\<dumpers\>//' tests/auto/debugger/debugger.pro || die
 	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/SUBDIRS/ s/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
+	sed -i -e '/\(^char qmlString\|states\.qml$\)/ i return;' tests/auto/qml/qmldesigner/coretests/tst_testcore.cpp || die
+	sed -i -e 's/\<timeline\(items\|notes\|selection\)renderpass\>//' tests/auto/timeline/timeline.pro || die
+	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
 	# fix translations
 	sed -i -e "/^LANGUAGES =/ s:=.*:= $(l10n_get_locales):" \
