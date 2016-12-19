@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Internationalizing Domain Names in Applications (IDNA)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
