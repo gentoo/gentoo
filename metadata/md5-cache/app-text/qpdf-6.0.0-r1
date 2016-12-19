@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/libpcre sys-libs/zlib test? ( sys-apps/diffutils media-libs/tiff app-text/ghostscript-gpl )
+DEPEND=dev-libs/libpcre sys-libs/zlib test? ( sys-apps/diffutils media-libs/tiff app-text/ghostscript-gpl[tiff] )
 DESCRIPTION=Command-line tool for structural, content-preserving transformation of PDF files
 EAPI=5
 HOMEPAGE=http://qpdf.sourceforge.net/
@@ -11,4 +11,4 @@ SLOT=0/17
 SRC_URI=mirror://sourceforge/qpdf/qpdf-6.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=cce5db93dbafdd38633327377ad779fd
+_md5_=b072a2fb8395f9060a761731f6d90268

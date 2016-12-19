@@ -7827,7 +7827,7 @@ dev-python/oslo-cache 1.6.0 1.14.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.7.1 3.14.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 3.9.0 3.14.0: Oslo Configuration API
 dev-python/oslo-context 2.2.0 2.9.0: Helpers to maintain useful information about a request context
-dev-python/oslo-db 4.7.1 4.13.3 4.13.4: OpenStack Common DB Code
+dev-python/oslo-db 4.7.1 4.13.3 4.13.5: OpenStack Common DB Code
 dev-python/oslo-i18n 3.5.0 3.9.0: Oslo i18n library
 dev-python/oslo-log 3.3.0 3.16.0: OpenStack logging config library, configuration for all openstack projects.
 dev-python/oslo-messaging 4.6.1 4.6.1-r1 5.10.1: Messaging API for RPC and notifications over different messaging transports
@@ -17245,7 +17245,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 8.3.0 9.1.1 2016.1.9999 2016.2.9999: A virtual network service for Openstack
-sys-cluster/nova 13.1.2 14.0.2 2016.1.9999 2016.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 13.1.2 14.0.2 14.0.3 2016.1.9999 2016.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
