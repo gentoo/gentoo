@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lyricat/Hotot/tarball/ed2ff013 -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="chrome kde qt4"
 
 REQUIRED_USE="|| ( chrome qt4 ) ${PYTHON_REQUIRED_USE}"
