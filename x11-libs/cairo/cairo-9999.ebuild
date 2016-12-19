@@ -76,12 +76,12 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	# tests and perf tools require X, bug #483574
 	if ! use X; then
 		sed -e '/^SUBDIRS/ s#boilerplate test perf# #' -i Makefile.am || die
 	fi
-
-	default
 
 	# Slightly messed build system YAY
 	if [[ ${PV} == *9999* ]]; then
