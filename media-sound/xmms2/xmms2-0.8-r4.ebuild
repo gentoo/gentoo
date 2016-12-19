@@ -52,7 +52,7 @@ RDEPEND="server? (
 		musepack? ( media-sound/musepack-tools )
 		ofa? ( media-libs/libofa )
 		pulseaudio? ( media-sound/pulseaudio )
-		samba? ( net-fs/samba[smbclient(+)] )
+		samba? ( >=net-fs/samba-4.2[client] )
 		sid? ( media-sound/sidplay
 			media-libs/resid )
 		sndfile? ( media-libs/libsndfile )
