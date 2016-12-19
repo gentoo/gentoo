@@ -14,7 +14,7 @@ SRC_URI="http://www.infinicode.org/code/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="music"
 
 # TODO: Missing support for >=dev-python/eyeD3-0.7.x API that could
