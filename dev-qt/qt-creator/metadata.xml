@@ -22,12 +22,13 @@
 		<flag name="glsl">Enable GLSL source code editor</flag>
 		<flag name="ios">Build plugin for Apple iOS devices</flag>
 		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
-		<flag name="modeling">Enable graphical model editor plugin</flag>
+		<flag name="modeling">Enable graphical model editor</flag>
 		<flag name="nim">Enable Nim source code editor</flag>
 		<flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
 		<flag name="python">Enable Python source code editor</flag>
 		<flag name="qbs">Enable QBS project manager plugin</flag>
 		<flag name="qnx">Build plugin for QNX devices</flag>
+		<flag name="scxml">Enable graphical SCXML editor</flag>
 		<flag name="systemd">Add support for retrieving application output from journald</flag>
 		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>
