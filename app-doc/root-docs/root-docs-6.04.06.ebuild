@@ -35,7 +35,7 @@ DEPEND="
 	app-text/pandoc
 	dev-haskell/pandoc-citeproc[bibutils]
 	dev-texlive/texlive-fontsrecommended
-	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexrecommended
 	virtual/pkgconfig
 	api? (
 		media-fonts/dejavu
