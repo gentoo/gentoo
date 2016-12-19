@@ -42,7 +42,7 @@ app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.6 2.1.3.0 2.2.0.0 2.2.1.0_rc1 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.4.20 2.4.23: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.31 2.4.20 2.4.23 2.4.25: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.3.0 1.5.0 1.6.0 1.7.0: A library for changing configuration files
@@ -18157,7 +18157,7 @@ www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netsc
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31 2.2.31-r1 2.4.23 2.4.23-r1 2.4.23-r2: The Apache Web Server
+www-servers/apache 2.2.31 2.2.31-r1 2.4.23 2.4.23-r2 2.4.25: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r2: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
