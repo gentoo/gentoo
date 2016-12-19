@@ -29,7 +29,7 @@ RDEPEND="
 	sci-geosciences/gpsbabel
 	>=sci-libs/gdal-1.6.1:=[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
-	>=sci-libs/libspatialindex-1.8.5:=
+	sci-libs/libspatialindex:=
 	sci-libs/proj
 	dev-libs/qjson
 	dev-qt/designer:4
