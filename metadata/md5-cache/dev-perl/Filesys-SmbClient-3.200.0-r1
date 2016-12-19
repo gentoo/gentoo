@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=net-fs/samba-3.0.20[smbclient] dev-lang/perl:=[-build(-)]
+DEPEND=>=net-fs/samba-4.2[client] dev-lang/perl:=[-build(-)]
 DESCRIPTION=Provide Perl API for libsmbclient.so
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Filesys-SmbClient/
 KEYWORDS=~amd64
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=>=net-fs/samba-3.0.20[smbclient] dev-lang/perl:=[-build(-)]
+RDEPEND=>=net-fs/samba-4.2[client] dev-lang/perl:=[-build(-)]
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AL/ALIAN/Filesys-SmbClient-3.2.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=3864b5088665fcc82a6bf6e4aa75ff9d
+_md5_=265a26e36c1110620b19c00a2a30aa6e
