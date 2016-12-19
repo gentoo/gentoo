@@ -5,7 +5,7 @@
 EAPI=6
 
 SCM=""
-if [ "${PV%9999}" != "${PV}" ] ; then
+if [[ ${PV} = *9999 ]] ; then
 	SCM="git-r3"
 
 	if [ "${PV%.9999}" != "${PV}" ] ; then
@@ -23,7 +23,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
-if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
+if [[ ${PV} = *9999 ]] ; then # Live ebuild
 	SRC_URI=""
 elif [[ "${MY_P}" == "${P}" ]]; then
 	SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
@@ -35,14 +35,14 @@ LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="amd64 ~arm ~ppc ppc64 -sparc x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
+	growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska cpu_flags_x86_mmx modplug mp3 mpeg
@@ -53,23 +53,22 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi"
 
 RDEPEND="
-	!<media-video/ffmpeg-1.2:0
 	dev-libs/libgpg-error:0
 	net-dns/libidn:0
-	>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
+	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
 	a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
 	aalib? ( media-libs/aalib:0 )
 	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
 	avcodec? (
-		!libav? ( >=media-video/ffmpeg-2.8:0= )
-		libav? ( >=media-video/libav-11:0= )
-	)
-	avformat? (
-		!libav? ( >=media-video/ffmpeg-2.8:0= )
+		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
 	)
-	bidi? ( >=dev-libs/fribidi-0.10.4:0 )
+	avformat? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:0= )
+	)
+	bidi? ( dev-libs/fribidi:0 )
 	bluray? ( >=media-libs/libbluray-0.3:0 )
 	cddb? ( >=media-libs/libcddb-1.2:0 )
 	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
@@ -77,7 +76,7 @@ RDEPEND="
 	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
 	directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
 	dts? ( >=media-libs/libdca-0.0.5:0 )
-	dvbpsi? ( >=media-libs/libdvbpsi-0.2.1:0= )
+	dvbpsi? ( >=media-libs/libdvbpsi-1.0.0:0= )
 	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
 	elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
 	faad? ( >=media-libs/faad2-2.6.1:0 )
@@ -89,6 +88,7 @@ RDEPEND="
 	gme? ( media-libs/game-music-emu:0 )
 	gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
 	gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
@@ -123,7 +123,7 @@ RDEPEND="
 	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 	!qt5? ( qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) )
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
-	rdp? ( >=net-misc/freerdp-1.0.1:0=[client] <net-misc/freerdp-2 )
+	rdp? ( =net-misc/freerdp-1*:0=[client] )
 	samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
 		>=net-fs/samba-4.0.0_alpha1:0[client] ) )
 	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
@@ -150,7 +150,7 @@ RDEPEND="
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? (
 		x11-libs/libva:0[X,drm]
-		!libav? ( >=media-video/ffmpeg-2.8:0=[vaapi] )
+		!libav? ( media-video/ffmpeg:0=[vaapi] )
 		libav? ( media-video/libav:0=[vaapi] )
 	)
 	vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
@@ -161,29 +161,27 @@ RDEPEND="
 # thus we'll have to wait for a new release there.
 RDEPEND="${RDEPEND}
 	vdpau? (
-		>=x11-libs/libvdpau-0.6:0
-		!libav? (
-					>=media-video/ffmpeg-2.8:0=
-		)
+		x11-libs/libvdpau:0
+		!libav? ( media-video/ffmpeg:0= )
 		libav? ( >=media-video/libav-10:0= )
 	)
 	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
-	vorbis? ( >=media-libs/libvorbis-1.1:0 )
+	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
 	X? ( x11-libs/libX11:0 )
-	x264? ( >=media-libs/x264-0.0.20090923:0= )
+	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
-	xcb? ( >=x11-libs/libxcb-1.6:0 >=x11-libs/xcb-util-0.3.4:0 >=x11-libs/xcb-util-keysyms-0.3.4:0 )
-	xml? ( >=dev-libs/libxml2-2.5:2 )
-	zvbi? ( >=media-libs/zvbi-0.2.25:0 )
+	xcb? ( x11-libs/libxcb:0 x11-libs/xcb-util:0 x11-libs/xcb-util-keysyms:0 )
+	xml? ( dev-libs/libxml2:2 )
+	zvbi? ( media-libs/zvbi:0 )
 "
 
 DEPEND="${RDEPEND}
 	!qt5? ( kde? ( kde-base/kdelibs:4 ) )
+	amd64? ( dev-lang/yasm:* )
+	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
-	x86?   ( dev-lang/yasm:* )
-	amd64? ( dev-lang/yasm:* )
 	>=sys-devel/gettext-0.18.3:*
 	virtual/pkgconfig:*
 "
@@ -234,6 +232,13 @@ PATCHES=(
 	# Bug #589396
 	"${FILESDIR}"/${PN}-2.2.4-qt57.patch
 	"${FILESDIR}"/${PN}-2.2.4-cxx0x.patch
+
+	# Bug #594126
+	"${FILESDIR}"/${PN}-2.2.4-decoder-lock-scope.patch
+	"${FILESDIR}"/${PN}-2.2.4-alsa-large-buffers.patch
+
+	# Bug #593460
+	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt )
@@ -249,7 +254,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [ "${PV%9999}" != "${PV}" ] ; then
+	if [[ ${PV} = *9999 ]] ; then
 		git-r3_src_unpack
 	else
 		unpack ${A}
@@ -269,7 +274,7 @@ src_prepare() {
 	fi
 
 	# Bootstrap when we are on a git checkout.
-	if [[ "${PV%9999}" != "${PV}" ]] ; then
+	if [[ ${PV} = *9999 ]] ; then
 		./bootstrap
 	fi
 
@@ -375,6 +380,7 @@ src_configure() {
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
 		$(use_enable growl) \
+		$(use_enable gstreamer gst-decode) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
 		$(use_enable jack) \
