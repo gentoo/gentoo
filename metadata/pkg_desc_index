@@ -4637,7 +4637,7 @@ dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a 
 dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.2 2.50.0 2.50.1 2.50.2: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
-dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
+dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
@@ -8700,7 +8700,6 @@ dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking funct
 dev-qt/qtmultimedia 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.6.1 5.6.2 5.7.1: Network abstraction library for the Qt5 framework
 dev-qt/qtopengl 4.8.6-r1 4.8.7 5.6.1 5.6.2 5.7.1: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtopenvg 4.8.6-r1 4.8.7: The OpenVG module for the Qt toolkit
 dev-qt/qtpaths 5.6.1 5.6.2 5.7.1: Command line client to QStandardPaths
 dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
 dev-qt/qtplugininfo 5.6.1 5.6.2 5.7.1: Qt5 plugin metadata dumper
@@ -15397,7 +15396,6 @@ net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20140105 4.0.20160504 4.0.20161101: Printer information files for foomatic-db-engine to generate ppds
 net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic printer description files
 net-print/foomatic-db-ppds 4.0.20140105 4.0.20160504 4.0.20161101: linuxprinting.org PPD files for postscript printers
-net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
 net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported printers
 net-print/gtklp 1.3.0 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.9 5.2.10 5.2.11: Ghostscript and cups printer drivers
@@ -16045,7 +16043,6 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.0.3: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.1-r2 0.18.2 0.18.3-r1 9999: A Qt based map editor for the openstreetmap.org project
-sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0 4.4.0: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
@@ -16063,9 +16060,7 @@ sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin 
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
-sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2 2.14.5 2.18.2: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
