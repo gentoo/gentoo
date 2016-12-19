@@ -13,12 +13,13 @@ SRC_URI="https://github.com/ericmandel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
+IUSE="doc static-libs"
 
 RDEPEND="
-	sys-libs/zlib:0=
+	dev-lang/tcl:0=
 	sci-astronomy/wcstools:0=
-	sci-visualization/gnuplot"
+	sci-visualization/gnuplot
+	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -65,5 +66,7 @@ src_install () {
 	mv "${ED}"/usr/share/man/man3/funopen.3 \
 	   "${ED}"/usr/share/man/man7/funopen.7 \
 		|| die
-	use doc && cd doc && dodoc *.pdf *html *c
+	use doc && dodoc doc/*.pdf doc/*html doc/*c \
+		&& docompress -x /usr/share/doc/${PF}/*.c
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
