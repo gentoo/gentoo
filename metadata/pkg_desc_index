@@ -11582,7 +11582,7 @@ kde-apps/kdepim-common-libs 4.14.11_pre20160211: Common libraries for KDE PIM ap
 kde-apps/kdepim-kresources 4.4.2016.01 4.14.11_pre20160211: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r2 4.14.3-r1 16.08.3 16.12.0: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2016.01 4.14.11_pre20160211 16.12.0: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 4.14.11_pre20160211 16.12.0: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdepim-runtime 4.14.11_pre20160211 16.12.0-r1: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdepim-wizards 4.4.2016.01: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.10-r2 4.14.11_pre20160211-r2: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 16.08.3 16.12.0: kioslaves from kdesdk package
@@ -11696,7 +11696,7 @@ kde-apps/ktimer 16.08.3 16.12.0: KDE Timer
 kde-apps/ktimetracker 4.4.2016.01 4.14.11_pre20160211: KTimeTracker tracks time spent on various tasks
 kde-apps/ktimezoned 16.04.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.11_pre20160211: Viewer for TNEF attachments
-kde-apps/ktouch 16.08.3 16.12.0: Program that helps to learn and practice touch typing
+kde-apps/ktouch 16.08.3 16.12.0-r1: Program that helps to learn and practice touch typing
 kde-apps/ktp-accounts-kcm 16.08.3 16.12.0: KDE Telepathy account management kcm
 kde-apps/ktp-approver 16.08.3 16.12.0: KDE Telepathy notification handler
 kde-apps/ktp-auth-handler 16.08.3 16.12.0: KDE Telepathy authentication handler
@@ -14741,7 +14741,7 @@ net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream
 net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 15.04.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7: Qt bindings for the Telepathy D-Bus protocol
-net-libs/tox 0_pre20160904 9999: Encrypted P2P, messaging, and audio/video calling platform
+net-libs/tox 0_pre20160904 0.1.1 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking and configuration abstractions
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
