@@ -32,8 +32,13 @@ DEPEND="
 	$(add_qt_dep qtx11extras)
 	$(add_qt_dep qtxml)
 	$(add_qt_dep qtxmlpatterns)
+	x11-libs/libICE
+	x11-libs/libSM
 	x11-libs/libX11
+	x11-libs/libxcb
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kqtquickcharts)
 "
+
+PATCHES=( "${FILESDIR}/${P}"-deps.patch )

@@ -4,17 +4,15 @@
 
 EAPI=6
 
-inherit autotools git-r3 user systemd
+inherit autotools systemd user
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git
-	git://github.com/TokTok/c-toxcore.git"
+SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.1"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
 
 REQUIRED_USE="^^ ( no-log log-trace log-debug log-info log-warn log-error )"
@@ -28,6 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	virtual/pkgconfig"
+
+S=${WORKDIR}/c-toxcore-${PV}
 
 src_prepare() {
 	default
