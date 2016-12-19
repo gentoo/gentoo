@@ -345,12 +345,6 @@ dev-qt/qtopenvg
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.25
 
-# Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
-# Masked for removal in 30 days, bug #568980
-# Unmaintained and deprecated.
-# Use net-print/cups-filters as a replacement
-net-print/foomatic-filters
-
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
 =sys-fs/fuse-3.0.0*
