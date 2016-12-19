@@ -4513,7 +4513,7 @@ dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3: An object-o
 dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
-dev-lang/scala-bin 2.11.7 2.11.8: The Scala Programming Language
+dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
@@ -7479,7 +7479,7 @@ dev-python/funcsigs 0.4 1.0.2-r1: Python function signatures backport from PEP36
 dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
-dev-python/fusepy 2.0.4: Python FUSE bindings using ctypes
+dev-python/fusepy 2.0.4-r1: Python FUSE bindings using ctypes
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
