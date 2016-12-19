@@ -261,7 +261,7 @@ pkg_pretend() {
 		fi
 		check-reqs_pkg_pretend
 
-		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
+		if ! $(tc-is-clang) && { [[ $(gcc-major-version) -lt 4 ]] ||
 				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
 			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
