@@ -336,11 +336,6 @@ x11-themes/crystal
 =x11-base/xorg-drivers-1.19*
 =x11-base/xorg-server-1.19*
 
-# Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
-# OpenVG support in Mesa is long gone, and the last version supporting
-# it is removed. Removal in 14 days.
-dev-qt/qtopenvg
-
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.25
