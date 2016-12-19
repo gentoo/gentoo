@@ -29,7 +29,7 @@ RDEPEND="
 	sci-geosciences/gpsbabel
 	>=sci-libs/gdal-1.6.1:=[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
-	sci-libs/libspatialindex:=
+	>=sci-libs/libspatialindex-1.8.5:=
 	sci-libs/proj
 	dev-libs/qjson
 	dev-qt/designer:4
@@ -64,7 +64,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 	)
 	dev-db/sqlite:3
-	dev-db/spatialite
+	>=dev-db/spatialite-4.1.0
 	app-crypt/qca:2[qt4,ssl]
 "
 
