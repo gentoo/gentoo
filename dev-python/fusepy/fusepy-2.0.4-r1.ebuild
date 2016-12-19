@@ -17,4 +17,6 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=sys-fs/fuse-2.9.7"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!dev-python/fuse-python"

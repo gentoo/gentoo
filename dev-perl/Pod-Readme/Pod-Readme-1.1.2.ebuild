@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Intelligently generate a README file from POD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="minimal test"
 
 RDEPEND="

@@ -1,26 +1,29 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
 EAPI=6
 
 JAVA_PKG_IUSE="doc"
 
 inherit java-pkg-2
 
+MY_PN="${PN%-*}"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="The Scala Programming Language"
 HOMEPAGE="http://scala.epfl.ch/"
-SRC_URI="http://downloads.typesafe.com/scala/${PV}/scala-${PV}.tgz"
+SRC_URI="http://downloads.lightbend.com/${MY_PN}/${PV}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND="
+	>=virtual/jre-1.6
 	!dev-lang/scala"
 
-S="${WORKDIR}/scala-${PV}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
@@ -29,6 +32,7 @@ src_prepare() {
 	eend $?
 
 	ebegin 'Patching SCALA_HOME variable in bin/ directory'
+	local f
 	for f in bin/*; do
 		sed -i -e 's#\(SCALA_HOME\)=.*#\1=/usr/share/scala-bin#' $f || die
 	done
