@@ -13,6 +13,8 @@ LICENSE="GPL-2+ LGPL-3+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 x86"
 IUSE="static-libs"
+DEPEND="sys-apps/help2man"
+RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10-examples.patch
