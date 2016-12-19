@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Johannes Huber <johu@gentoo.org> (19 Dec 2016)
+# Masked for removal in 14 days. Superseded by kde-apps/kde-l10n.
+# No reverse dependencies.
+kde-apps/ktp-l10n
+
+# Johannes Huber <johu@gentoo.org> (19 Dec 2016)
 # Masked for removal in 14 days. Superseded by dev-libs/kdiagram.
 # No reverse dependencies. Never consumed by unmasked packages.
 kde-apps/kdgantt2
