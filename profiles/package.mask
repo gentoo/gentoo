@@ -383,7 +383,6 @@ sci-geosciences/osm2mp
 # instead.
 # Masked for removal in 30 days.
 sci-geosciences/osmosis
-sci-geosciences/mkgmap
 
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
