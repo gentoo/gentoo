@@ -369,13 +369,6 @@ net-misc/bgpq
 # which is hard masked see #574788
 >=media-tv/kodi-17.0_beta3
 
-# Hanno Böck <hanno@gentoo.org> (16 Oct 2016)
-# The current package is broken (depends on perl modules
-# not in the tree) and there is probably no interest in
-# keeping it, as mp is irrelevant these days.
-# Masked for removal in 30 days.
-sci-geosciences/osm2mp
-
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
 # bugs and segfaults (all). Don't ask for a version bump unless
