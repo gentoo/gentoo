@@ -34,9 +34,9 @@ IUSE_MPMS_THREAD="event worker"
 IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest
 authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
-cache cache_disk cern_meta charset_lite cgi cgid dav dav_fs dav_lock dbd deflate
-dir dumpio env expires ext_filter file_cache filter headers http2 ident imagemap
-include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
+cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
+dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
+ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
@@ -64,6 +64,7 @@ MODULE_DEPENDS="
 	log_forensic:log_config
 	logio:log_config
 	cache_disk:cache
+	cache_socache:cache
 	mime_magic:mime
 	proxy_ajp:proxy
 	proxy_balancer:proxy
@@ -84,6 +85,7 @@ MODULE_DEFINES="
 	authnz_ldap:AUTHNZ_LDAP
 	cache:CACHE
 	cache_disk:CACHE
+	cache_socache:CACHE
 	dav:DAV
 	dav_fs:DAV
 	dav_lock:DAV
@@ -126,6 +128,9 @@ HOMEPAGE="https://httpd.apache.org/"
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+
+# Upstream fixes
+SRC_URI+=" http://svn.apache.org/viewvc/httpd/httpd/trunk/modules/proxy/mod_proxy_fcgi.c?r1=1751970&r2=1751969&pathrev=1751970&view=patch -> ${PN}-2.4.23-fcgi_fix.patch"
 
 DEPEND+="apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
 
