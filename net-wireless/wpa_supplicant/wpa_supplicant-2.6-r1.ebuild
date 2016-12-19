@@ -131,6 +131,7 @@ src_configure() {
 
 	# Basic setup
 	Kconfig_style_config CTRL_IFACE
+	Kconfig_style_config MATCH_IFACE
 	Kconfig_style_config BACKEND file
 	Kconfig_style_config IBSS_RSN
 	Kconfig_style_config IEEE80211W
