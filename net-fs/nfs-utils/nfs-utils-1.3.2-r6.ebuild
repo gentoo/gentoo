@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ DEPEND_COMMON="tcpd? ( sys-apps/tcp-wrappers )
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
-		dev-libs/libevent
+		dev-libs/libevent:=
 		>=net-libs/libnfsidmap-0.21-r1
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
