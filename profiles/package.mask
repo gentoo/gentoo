@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (20 Dec 2016)
+# Masked for being completely broken and unusable (bug 586356).
+# No reverse dependencies. Masked for removal in 30 days.
+net-analyzer/snips
+
 # Johannes Huber <johu@gentoo.org> (19 Dec 2016)
 # Masked for removal in 14 days. Superseded by kde-apps/kde-l10n.
 # No reverse dependencies.
