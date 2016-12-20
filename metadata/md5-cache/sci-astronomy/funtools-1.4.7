@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=sys-libs/zlib:0= sci-astronomy/wcstools:0= sci-visualization/gnuplot virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-lang/tcl:0= sci-astronomy/wcstools:0= sci-visualization/gnuplot sys-libs/zlib:0= virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=FITS library and utlities for astronomical images
 EAPI=6
 HOMEPAGE=https://github.com/ericmandel/funtools
-IUSE=doc
+IUSE=doc static-libs
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=sys-libs/zlib:0= sci-astronomy/wcstools:0= sci-visualization/gnuplot
+RDEPEND=dev-lang/tcl:0= sci-astronomy/wcstools:0= sci-visualization/gnuplot sys-libs/zlib:0=
 SLOT=0/1
-SRC_URI=https://github.com/ericmandel/funtools/archive/v1.4.6.tar.gz -> funtools-1.4.6.tar.gz
+SRC_URI=https://github.com/ericmandel/funtools/archive/v1.4.7.tar.gz -> funtools-1.4.7.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=305e524ecd5275599a8b2f378f0ac89c
+_md5_=b06ae0f088385478228abf6e5cfc2b21

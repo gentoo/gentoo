@@ -7201,7 +7201,7 @@ dev-python/castellan 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
-dev-python/ccdproc 1.0.1 1.1.0: Astropy affiliated package for reducing optical/IR CCD data
+dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20 3.1.24: Asynchronous task queue/job queue based on distributed message passing
@@ -15654,7 +15654,7 @@ sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astrono
 sci-astronomy/esomidas 15.09: European Southern Observatory Munich Image Data Analysis System
 sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/fitspng 0.3.5: FITS to PNG converter
-sci-astronomy/funtools 1.4.6: FITS library and utlities for astronomical images
+sci-astronomy/funtools 1.4.7: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2-r1: Stellar simulation program
 sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
@@ -16170,7 +16170,7 @@ sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.14-r1 1.8.15_p1 1.8.17 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencing data formats
-sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
+sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 1.0.0 2.5.0 2.6.0: A small, fast, and high performance math library for robot applications
@@ -16292,7 +16292,7 @@ sci-libs/ssm 1.4: A macromolecular coordinate superposition library
 sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format) and CIF files
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
-sci-libs/superlu 4.3-r1: Sparse LU factorization library
+sci-libs/superlu 4.3-r1 5.2.1: Sparse LU factorization library
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
@@ -18494,7 +18494,7 @@ x11-libs/xcb-util-wm 0.4.1-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.0: X C-language Bindings sample implementations
 x11-libs/xforms 1.0.93_p1-r1 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
-x11-libs/xpa 2.1.15 2.1.17: Messaging system providing communication between programs
+x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
 x11-libs/xpyb 1.3.1-r2 1.3.1-r3: XCB-based Python bindings for the X Window System
 x11-libs/xtrans 1.3.5: X.Org xtrans library
 x11-libs/xvba-video 0.8.0-r3 9999: XVBA Backend for Video Acceleration (VA) API
