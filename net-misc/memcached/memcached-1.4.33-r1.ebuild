@@ -29,8 +29,6 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2.2-fbsd.patch"
-	# Handled different upstream
-	#epatch "${FILESDIR}/${PN}-1.3.3-gcc4-slab-fixup.patch"
 	epatch "${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
 	epatch "${FILESDIR}/${PN}-1.4.4-as-needed.patch"
 	epatch "${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
