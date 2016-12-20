@@ -914,3 +914,6 @@ dev-libs/libcec raspberry-pi
 # pie is not ready.
 >=sys-devel/gcc-6.2.0 pie
 
+# Tupone Alfredo <tupone@gentoo.org> (20 Dec 2016)
+# gcc cannot build ada without a proper Ada compiler
+sys-devel/gcc ada
