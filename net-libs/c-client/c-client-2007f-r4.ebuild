@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc +ipv6 kerberos kernel_linux kernel_FreeBSD pam ssl static-libs topal chappa"
+IUSE="doc +ipv6 kerberos kernel_linux kernel_FreeBSD pam ssl static-libs chappa"
 
 RDEPEND="ssl? ( dev-libs/openssl )
 	!net-mail/uw-imap
@@ -69,7 +69,6 @@ src_prepare() {
 		-e "s/RANLIB=ranlib/RANLIB=$(tc-getRANLIB)/" \
 		-i src/osdep/unix/Makefile || die "Respecting build flags"
 
-	use topal && epatch "${FILESDIR}/${P}-topal.patch"
 	use chappa && epatch "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
 
 	elibtoolize
