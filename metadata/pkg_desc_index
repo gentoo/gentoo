@@ -528,7 +528,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.21 2.0.28 2.0.30 2.1.15 2.1.16: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.0.28 2.0.30 2.1.15 2.1.16 2.1.17: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.9 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -7028,7 +7028,7 @@ dev-php/recaptcha 1.1.2: PHP client library for Google's reCAPTCHA service
 dev-php/securimage 3.0.1: PHP captcha creator and validator library
 dev-php/semver 1.0.0: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.0: A PHP testing framework
-dev-php/smarty 3.1.30: A template engine for PHP
+dev-php/smarty 3.1.30 3.1.31: A template engine for PHP
 dev-php/spdx-licenses 1.0.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
@@ -7505,6 +7505,7 @@ dev-python/ginga 2.6.0: Astronomical image toolkit for Python
 dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2 2.0.5 2.0.6: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
+dev-python/github3 0.9.3: A wrapper for the GitHub API written in python
 dev-python/glance_store 0.13.1 0.18.0: A library for glance
 dev-python/globre 0.1.2-r1 0.1.3 0.1.4: A glob matching library, providing an interface similar to the 're' module
 dev-python/glueviz 0.8.2 0.9.1: Python library to explore relationships within and among related datasets
@@ -8573,7 +8574,7 @@ dev-python/unidecode 0.04.18 0.04.19: Module providing ASCII transliterations of
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uranium 2.1.0_beta-r2 2.3.1: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.3.2: URDF parser for Python
-dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
+dev-python/uritemplate 0.6 3.0.0: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
 dev-python/urllib3 1.12 1.16 1.19 1.19.1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.0 1.3.1: Curses-based user interface library for Python
@@ -8620,6 +8621,7 @@ dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twist
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10.4 0.11.8 0.11.9 0.11.10 0.11.11: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0 0.29.0: A built-package format for Python
+dev-python/whelk 2.7: Pretending python is a shell
 dev-python/whichcraft 0.4.0: This package provides cross-platform cross-python shutil.which functionality
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
@@ -10325,7 +10327,7 @@ dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-remote-hg 0.2 0.3: Semi-official Mercurial bridge from Git project
 dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
-dev-vcs/git-spindle 3.3: Git subcommands for interacting with central services
+dev-vcs/git-spindle 3.3 3.3-r1: Git subcommands for interacting with central services
 dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201 2015_p20160201-r1: Assorted git-related scripts
 dev-vcs/gitg 3.20.3 3.22.0: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
