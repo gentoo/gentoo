@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils toolchain-funcs
+
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="http://squashfs.sourceforge.net"
@@ -34,6 +35,10 @@ src_prepare() {
 use10() { usex $1 1 2 ; }
 
 src_configure() {
+	# restore GNU89 inline semantics to
+	# emit function symbols, bug 595290
+	append-cflags -std=gnu89
+
 	# set up make command line variables in EMAKE_SQUASHFS_CONF
 	EMAKE_SQUASHFS_CONF=(
 		LZMA_XZ_SUPPORT=$(use10 lzma)
