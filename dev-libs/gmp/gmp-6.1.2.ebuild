@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
@@ -43,8 +43,8 @@ src_prepare() {
 	# So, to avoid patching the source constantly, wrap things up.
 	mv configure configure.wrapped || die
 	cat <<-\EOF > configure
-	#!/bin/sh
-	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
+	#!/usr/bin/env sh
+	exec env ABI="${GMPABI}" "${CONFIG_SHELL}" "$0.wrapped" "$@"
 	EOF
 	# Patches to original configure might have lost the +x bit.
 	chmod a+rx configure{,.wrapped}
@@ -64,6 +64,11 @@ multilib_src_configure() {
 		[onx]32)      GMPABI=${ABI};;
 	esac
 	export GMPABI
+
+	#367719
+	if [[ ${CHOST} == *-mint* ]]; then
+		filter-flags -O?
+	fi
 
 	tc-export CC
 	ECONF_SOURCE="${S}" econf \
@@ -97,9 +102,9 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	# should be a standalone lib
-	rm -f "${D}"/usr/$(get_libdir)/libgmp.la
+	rm -f "${ED}"/usr/$(get_libdir)/libgmp.la
 	# this requires libgmp
-	local la="${D}/usr/$(get_libdir)/libgmpxx.la"
+	local la="${ED}/usr/$(get_libdir)/libgmpxx.la"
 	use static-libs \
 		&& sed -i 's:/[^ ]*/libgmp.la:-lgmp:' "${la}" \
 		|| rm -f "${la}"
@@ -107,5 +112,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	use doc && cp "${DISTDIR}"/gmp-man-${MY_PV}.pdf "${D}"/usr/share/doc/${PF}/
+	use doc && cp "${DISTDIR}"/gmp-man-${MY_PV}.pdf "${ED}"/usr/share/doc/${PF}/
 }
