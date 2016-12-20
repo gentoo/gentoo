@@ -4,11 +4,11 @@ DESCRIPTION=Generic Online Banking Interface
 EAPI=5
 HOMEPAGE=http://www.aquamaniac.de/aqbanking/
 IUSE=chipcard debug doc ebics examples gtk ofx
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-misc/ktoblzcheck-1.48 >=dev-libs/gmp-5 >=sys-libs/gwenhywfar-4.13.1[gtk?] virtual/libintl ofx? ( >=dev-libs/libofx-0.9.5 ) chipcard? ( >=sys-libs/libchipcard-5.0.2 ) ebics? ( dev-libs/xmlsec[gcrypt,gnutls] )
 SLOT=0
 SRC_URI=http://www.aquamaniac.de/sites/download/download.php?package=03&release=206&file=01&dummy=aqbanking-5.6.10.tar.gz -> aqbanking-5.6.10.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=85bc9fccaae0494aa08b3b62c0df6abb
+_md5_=3942a7623327955deed8b4fcadd9816e
