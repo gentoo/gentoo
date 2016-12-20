@@ -4,7 +4,7 @@ DESCRIPTION=Votca coarse-graining engine
 EAPI=6
 HOMEPAGE=http://www.votca.org
 IUSE=doc examples extras +gromacs hdf5
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
+KEYWORDS=amd64 ~x86 ~amd64-linux ~x86-macos
 LICENSE=Apache-2.0
 PDEPEND=extras? ( =sci-chemistry/votca-csgapps-1.4 )
 RDEPEND==sci-libs/votca-tools-1.4 gromacs? ( sci-chemistry/gromacs:= ) hdf5? ( sci-libs/hdf5 ) dev-lang/perl app-shells/bash:*
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/votca/csg/archive/v1.4.tar.gz -> votca-csg-1.4.tar.gz doc? ( https://github.com/votca/csg-manual/releases/download/v1.4/votca-csg-manual-1.4.pdf ) examples? ( https://github.com/votca/csg-tutorials/archive/v1.4.tar.gz -> votca-csg-tutorials-1.4.tar.gz )
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=29ce469053a0744a118fddf5e4d27da6
+_md5_=7a2806ead29126b5ef70dc7c9a3f5688

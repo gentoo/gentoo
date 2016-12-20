@@ -3,11 +3,11 @@ DEPEND=media-libs/taglib media-libs/id3lib >=media-libs/fmod-4.25.07-r1:1 dev-qt
 DESCRIPTION=Automatic BPM detection utility
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/bpmdetect
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/taglib media-libs/id3lib >=media-libs/fmod-4.25.07-r1:1 dev-qt/qtgui:4
 SLOT=0
 SRC_URI=mirror://sourceforge/bpmdetect/bpmdetect-0.6.1-src.tar.bz2
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	scons-utils	d42c1726f481bb5812cc2ce1f236db1d	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e02197e1d8fa09b9ab5675530798f3ce
+_md5_=f1dafaca1a02d95ad6cf081d3afae34b
