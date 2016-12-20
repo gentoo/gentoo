@@ -44,7 +44,7 @@ src_prepare() {
 	mv configure configure.wrapped || die
 	cat <<-\EOF > configure
 	#!/usr/bin/env sh
-	exec env ABI="${GMPABI}" "${CONFIG_SHELL}" "$0.wrapped" "$@"
+	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
 	# Patches to original configure might have lost the +x bit.
 	chmod a+rx configure{,.wrapped}
