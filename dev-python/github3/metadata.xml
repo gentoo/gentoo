@@ -8,5 +8,8 @@
 		<email>nicolasbock@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">
+		github3.py is wrapper for the GitHub API written in python. The design
+		of github3.py is centered around having a logical organization of the
+		methods needed to interact with the API.
 	</longdescription>
 </pkgmetadata>
