@@ -4,18 +4,25 @@
 
 EAPI=6
 
+if [[ ${PV} != 99999999 ]]; then
+	SRC_URI="http://idlastro.gsfc.nasa.gov/ftp/astron.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	S="${WORKDIR}"
+else
+	inherit git-r3
+	GIT_ECLASS="git-r3"
+	EGIT_REPO_URI=( "git://github.com/wlandsman/IDLAstro.git" )
+	KEYWORDS=""
+fi
+
 DESCRIPTION="Astronomical user routines for IDL"
 HOMEPAGE="http://idlastro.gsfc.nasa.gov/"
-SRC_URI="${HOMEPAGE}/ftp/astron.tar.gz -> ${P}.tar.gz"
 
-LICENSE="public-domain"
+LICENSE="BSD-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 DEPEND=""
 RDEPEND="dev-lang/gdl"
-
-S="${WORKDIR}"
 
 src_install() {
 	insinto /usr/share/gnudatalanguage/${PN}
