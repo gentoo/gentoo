@@ -484,6 +484,7 @@ app-emulation/libvirt:firewalld - DBus interface to iptables/ebtables allowing f
 app-emulation/libvirt:fuse - Allow LXC to use sys-fs/fuse for mount points
 app-emulation/libvirt:glusterfs - Enable GlusterFS support via sys-cluster/glusterfs
 app-emulation/libvirt:iscsi - Allow using an iSCSI remote storage server as pool for disk image storage
+app-emulation/libvirt:libssh - Use net-libs/libssh to communicate with remote libvirtd hosts, for example: qemu+libssh://server/system
 app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
 app-emulation/libvirt:lvm - Allow using the Logical Volume Manager (sys-fs/lvm2) as pool for disk image storage
 app-emulation/libvirt:lxc - Support management of Linux Containers virtualisation (app-emulation/lxc)
