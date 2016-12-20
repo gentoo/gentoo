@@ -17,15 +17,13 @@ IUSE="static"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9.48-sysmacros.patch #580052
+	epatch "${FILESDIR}"/${PN}-9.50-build.patch
 	use static && append-ldflags -static
-	sed -i \
-		-e "/^CFLAGS/ s:-O2:${CFLAGS}:" \
-		-e "/^LDFLAGS/ s:-s:${LDFLAGS}:" \
-		Makefile || die "sed"
 }
 
-src_compile() {
-	emake STRIP=: CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
+	export STRIP=:
 }
 
 src_install() {
