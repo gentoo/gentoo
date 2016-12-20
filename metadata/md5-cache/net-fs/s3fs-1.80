@@ -4,7 +4,7 @@ DESCRIPTION=Amazon S3 mounting via fuse
 EAPI=6
 HOMEPAGE=https://github.com/s3fs-fuse/s3fs-fuse/
 IUSE=openssl nss gnutls nettle
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libxml2-2.6:2 openssl? ( dev-libs/openssl:0 ) nss? ( dev-libs/nss ) gnutls? ( net-libs/gnutls ) nettle? ( dev-libs/nettle ) >=net-misc/curl-7.0 >=sys-fs/fuse-2.8.4 app-misc/mime-types
 REQUIRED_USE=^^ ( openssl nss gnutls ) nettle? ( gnutls )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=https://github.com/s3fs-fuse/s3fs-fuse/archive/v1.80.tar.gz -> s3fs-1.80.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=acb53e769cb15756fa411a9b8da0990d
+_md5_=fd4a4cc83b30269454b404e953bf1058
