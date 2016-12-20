@@ -4,11 +4,11 @@ DESCRIPTION=Open Source Flight Simulator
 EAPI=6
 HOMEPAGE=http://www.flightgear.org/
 IUSE=dbus debug examples qt5 test +udev +utils vim-syntax
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear-2016.3.1 media-libs/openal media-libs/speex media-sound/gsm sys-libs/zlib x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) qt5? ( >=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtwidgets-5.4.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/libpng:0 virtual/opengl ) ~games-simulation/flightgear-data-2016.3.1
 SLOT=0
 SRC_URI=mirror://sourceforge/flightgear/flightgear-2016.3.1.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8b0b7710afc43aa93fffeeb512736b89
+_md5_=9fe3282b90e9c2582db5802f68636aa7
