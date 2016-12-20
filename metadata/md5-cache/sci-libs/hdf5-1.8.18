@@ -4,7 +4,7 @@ DESCRIPTION=General purpose library and file format for storing scientific data
 EAPI=5
 HOMEPAGE=http://www.hdfgroup.org/HDF5/
 IUSE=cxx debug examples fortran fortran2003 +hl mpi static-libs szip threads zlib
-KEYWORDS=alpha amd64 ~arm ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 ~arm ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=NCSA-HDF
 RDEPEND=mpi? ( virtual/mpi[romio] ) szip? ( virtual/szip ) zlib? ( sys-libs/zlib:0= ) fortran? ( virtual/fortran )
 REQUIRED_USE=threads? ( !cxx !mpi !fortran !hl ) fortran2003? ( fortran )
@@ -12,4 +12,4 @@ SLOT=0/1.8.18
 SRC_URI=https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.18.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=86bf05b9a30ca049d9084bf0f89911de
+_md5_=cc5e6aac21abcfb6657b0ec4d012820d
