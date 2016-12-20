@@ -15,18 +15,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x8
 SLOT="0"
 IUSE="boost debug examples test"
 
-RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	boost? ( dev-libs/boost:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	boost? ( dev-libs/boost[${MULTILIB_USEDEP}] )
 	test? ( >=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11-install-examples.patch
 )
-
-DOCS=( AUTHORS NEWS )
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/taglib-config
@@ -42,7 +40,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		$(multilib_is_native_abi && echo -DBUILD_EXAMPLES=$(usex examples))
+		-DBUILD_EXAMPLES=$(multilib_native_usex examples)
 		$(cmake-utils_use_find_package boost Boost)
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTS=$(usex test)
