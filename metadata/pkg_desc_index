@@ -2826,7 +2826,7 @@ app-xemacs/zenirc 1.16: ZENIRC IRC Client
 dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
 dev-ada/charles 20050913: Posix bindings for Ada
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
-dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2: The ANTLR 3 C++ Runtime
+dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
