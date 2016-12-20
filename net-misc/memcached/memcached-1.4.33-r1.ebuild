@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="test slabs-reassign debug sasl selinux" # hugetlbfs later
 
-RDEPEND=">=dev-libs/libevent-1.4
+RDEPEND=">=dev-libs/libevent-1.4:=
 		 dev-lang/perl
 		 sasl? ( dev-libs/cyrus-sasl )
 		 selinux? ( sec-policy/selinux-memcached )"
@@ -29,8 +29,6 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2.2-fbsd.patch"
-	# Handled different upstream
-	#epatch "${FILESDIR}/${PN}-1.3.3-gcc4-slab-fixup.patch"
 	epatch "${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
 	epatch "${FILESDIR}/${PN}-1.4.4-as-needed.patch"
 	epatch "${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
