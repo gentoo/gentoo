@@ -6722,7 +6722,7 @@ dev-perl/XML-Twig 3.490.0 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
 dev-perl/XML-XPath 1.130.0-r1 1.360.0 1.370.0: A XPath Perl Module
-dev-perl/XML-XPathEngine 0.130.0-r1 0.140.0-r1: A re-usable XPath engine for DOM-like trees
+dev-perl/XML-XPathEngine 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
@@ -6731,7 +6731,7 @@ dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0 1.190.0 1.200.0: YAML Ain't Markup Lang
 dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.200.0-r1 1.290.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0: Read/Write YAML files with as little code as possible
-dev-perl/ZMQ-Constants 1.30.0 1.40.0: Constants for libzmq
+dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.40.0 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0: Use shorter versions of class names
