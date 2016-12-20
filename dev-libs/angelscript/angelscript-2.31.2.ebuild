@@ -18,10 +18,6 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/sdk"
 
-PATCHES=(
-	"${FILESDIR}/gnu-stack.patch"
-)
-
 pkg_setup() {
 	tc-export CXX AR RANLIB
 }
