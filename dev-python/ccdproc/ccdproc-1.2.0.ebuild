@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 			dev-python/astroscrappy[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/reproject[${PYTHON_USEDEP}]
+			sci-libs/scikits_image[${PYTHON_USEDEP}]
 		  )"
 
 python_prepare_all() {

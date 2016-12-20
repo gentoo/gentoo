@@ -87,10 +87,10 @@ src_compile() {
 
 	local COMPILER="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
 	einfo "Compiling predict"
-	${COMPILER} predict.c -lm -lncurses -lpthread \
+	${COMPILER} predict.c -lm $($(tc-getPKG_CONFIG) --libs ncurses) -lpthread \
 		-o predict || die "failed predict"
 	einfo "Compiling predict-g1yyh"
-	${COMPILER} predict-g1yyh.c -lm -lncurses -lpthread -lmenu \
+	${COMPILER} predict-g1yyh.c -lm $($(tc-getPKG_CONFIG) --libs ncurses) -lpthread -lmenu \
 		-o predict-g1yyh || die "failed predict-g1yyh"
 	einfo "Compiling vocalizer"
 	${COMPILER} vocalizer/vocalizer.c \
