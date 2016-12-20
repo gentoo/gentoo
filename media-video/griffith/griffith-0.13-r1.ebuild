@@ -17,7 +17,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz
 	https://dev.gentoo.org/~hwoarang/distfiles/${PN}-extra-artwork-${ARTWORK_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~x86 ~x86-fbsd"
 IUSE="doc"
 
 RDEPEND="dev-python/pillow
