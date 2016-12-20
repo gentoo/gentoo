@@ -14,7 +14,7 @@ HOMEPAGE="http://ab-initio.mit.edu/nlopt/"
 SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="cxx guile octave python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
