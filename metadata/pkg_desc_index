@@ -18010,6 +18010,7 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
+www-apps/gitea 0.9.97_p20161219: A painless self-hosted Git service, written in Go, forked from gogs
 www-apps/gitit 0.12.1.1 0.12.1.1-r2: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 3.1.1 4.0.0_beta2 4.0.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
