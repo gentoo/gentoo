@@ -17,7 +17,7 @@ IUSE="+ffmpeg nls"
 [[ ${KDE_BUILD_TYPE} = live ]] && L10N_MINIMAL=${KDE_APPS_MINIMAL}
 
 RDEPEND="
-	$(add_kdeapps_dep audiocd-kio)
+	|| ( $(add_kdeapps_dep audiocd-kio) kde-apps/audiocd-kio:4 )
 	$(add_kdeapps_dep dragon)
 	$(add_kdeapps_dep juk)
 	$(add_kdeapps_dep kdenlive)
