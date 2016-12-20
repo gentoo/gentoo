@@ -162,6 +162,10 @@ src_prepare() {
 		-e '/CFLAGS/s:-ftrapv:-fdisable-this-test:'
 		-e '/OSSH_CHECK_CFLAG_LINK.*-ftrapv/d'
 	)
+	# _XOPEN_SOURCE causes header conflicts on Solaris
+	[[ ${CHOST} == *-solaris* ]] && sed_args+=(
+		-e 's/-D_XOPEN_SOURCE//'
+	)
 	sed -i "${sed_args[@]}" configure{.ac,} || die
 
 	epatch_user #473004

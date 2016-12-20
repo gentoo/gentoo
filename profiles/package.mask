@@ -293,13 +293,6 @@ dev-python/py-bcrypt
 dev-python/pygooglevoice
 dev-python/winpdb
 
-# Johannes Huber <johu@gentoo.org> (20 Nov 2016)
-# Masked for removal in 30 days. Dead upstream. Only supports
-# deprecated Plasma 4. Fails to build with newer
-# kde-base/kdelibs (bug #558516). Fails to build with ninja
-# (bug #575828).
-x11-themes/crystal
-
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
 # Will likely not be unmasked until future Perls
@@ -336,20 +329,9 @@ x11-themes/crystal
 =x11-base/xorg-drivers-1.19*
 =x11-base/xorg-server-1.19*
 
-# Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
-# OpenVG support in Mesa is long gone, and the last version supporting
-# it is removed. Removal in 14 days.
-dev-qt/qtopenvg
-
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.25
-
-# Manuel Rüger <mrueg@gentoo.org> (05 Nov 2016)
-# Masked for removal in 30 days, bug #568980
-# Unmaintained and deprecated.
-# Use net-print/cups-filters as a replacement
-net-print/foomatic-filters
 
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
@@ -368,22 +350,6 @@ net-misc/bgpq
 # >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
 # which is hard masked see #574788
 >=media-tv/kodi-17.0_beta3
-
-# Hanno Böck <hanno@gentoo.org> (16 Oct 2016)
-# The current package is broken (depends on perl modules
-# not in the tree) and there is probably no interest in
-# keeping it, as mp is irrelevant these days.
-# Masked for removal in 30 days.
-sci-geosciences/osm2mp
-
-# Hanno Böck <hanno@gentoo.org> (14 Oct 2016)
-# Both haven't been updated in years and are likely not
-# usable in their current form in the tree. Upstream
-# provides jar files for download that can be used
-# instead.
-# Masked for removal in 30 days.
-sci-geosciences/osmosis
-sci-geosciences/mkgmap
 
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
@@ -416,14 +382,6 @@ sci-geosciences/googleearth
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
-
-# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
-# PHP 5.5 has reached end of life and will no longer receive security updates.
-# Also include associated packages which do not work on newer versions
-# Removal in 90 days
-virtual/httpd-php:5.5
-dev-lang/php:5.5
-=dev-php/pecl-mailparse-2.1.6-r1
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Security issues (#562898)

@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d8abc1b..5883b34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -143,3 +143,6 @@ endif()
+ #  ${CMAKE_C_COMPILER}  )
+ configure_file(${CMAKE_SOURCE_DIR}/make.inc.in ${CMAKE_SOURCE_DIR}/make.inc)
+  
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/superlu.pc.in ${CMAKE_CURRENT_BINARY_DIR}/superlu.pc @ONLY)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/superlu.pc
++	DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+diff --git a/superlu.pc.in b/superlu.pc.in
+new file mode 100644
+index 0000000..09b1fff
+--- /dev/null
++++ b/superlu.pc.in
+@@ -0,0 +1,12 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
++includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@
++
++Name: @CMAKE_PROJECT_NAME@
++Description: Direct solution of large, sparse systems of linear equations
++Version: @PROJECT_VERSION@
++URL: http://crd-legacy.lbl.gov/~xiaoye/SuperLU/
++
++Libs: -L${libdir} -lsuperlu
++Libs.private: @BLAS_LIB@ -lm
++Cflags: -I${includedir}

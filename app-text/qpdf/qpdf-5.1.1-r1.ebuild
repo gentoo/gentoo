@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	test? (
 		sys-apps/diffutils
 		media-libs/tiff
-		app-text/ghostscript-gpl
+		app-text/ghostscript-gpl[tiff]
 	)"
 # Only need perl for the installed tools.
 RDEPEND+=" perl? ( >=dev-lang/perl-5.8 )"

@@ -24,6 +24,7 @@ RDEPEND="
 	!camlp5? ( dev-ml/camlp4:= )
 	gtk? ( >=dev-ml/lablgtk-2.10.1:=[sourceview,ocamlopt?] )"
 DEPEND="${RDEPEND}
+	dev-ml/findlib
 	doc? (
 		media-libs/netpbm[png,zlib]
 		virtual/latex-base

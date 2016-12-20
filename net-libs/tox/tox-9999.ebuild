@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils git-r3 user systemd
+inherit autotools git-r3 user systemd
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/irungentoo/toxcore.git
-	git://github.com/irungentoo/toxcore.git"
+EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git
+	git://github.com/TokTok/c-toxcore.git"
 
 LICENSE="GPL-3+"
-SLOT="0/0.0"
+SLOT="0/0.1"
 KEYWORDS=""
 IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
 
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch_user
+	default
 	eautoreconf
 }
 
@@ -58,19 +58,19 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/tox-bootstrapd.service
 	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
 	if use daemon; then
 		enewgroup ${PN}
 		enewuser ${PN} -1 -1 -1 ${PN}
-		if [[ -f ${EROOT}var/lib/tox-dht-bootstrap/key ]]; then
+		if [[ -f ${EROOT%/}/var/lib/tox-dht-bootstrap/key ]]; then
 			ewarn "Backwards compatability with the bootstrap daemon might have been"
 			ewarn "broken a while ago. To resolve this issue, REMOVE the following files:"
-			ewarn "    ${EROOT}var/lib/tox-dht-bootstrap/key"
-			ewarn "    ${EROOT}etc/tox-bootstrapd.conf"
-			ewarn "    ${EROOT}run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
+			ewarn "    ${EROOT%/}/var/lib/tox-dht-bootstrap/key"
+			ewarn "    ${EROOT%/}/etc/tox-bootstrapd.conf"
+			ewarn "    ${EROOT%/}/run/tox-dht-bootstrap/tox-dht-bootstrap.pid"
 			ewarn "Then just re-emerge net-libs/tox"
 		fi
 	fi
