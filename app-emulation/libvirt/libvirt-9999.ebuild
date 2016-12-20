@@ -32,7 +32,7 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps firewalld fuse glusterfs iscsi +libvirtd lvm
+	apparmor audit +caps firewalld fuse glusterfs iscsi +libvirtd lvm libssh
 	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
 	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
 	xen zeroconf zfs elibc_glibc
@@ -77,6 +77,7 @@ RDEPEND="
 	fuse? ( >=sys-fs/fuse-2.8.6 )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
+	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
@@ -260,6 +261,7 @@ src_configure() {
 		$(use_with glusterfs storage-gluster)
 		$(use_with iscsi storage-iscsi)
 		$(use_with libvirtd)
+		$(use_with libssh)
 		$(use_with lvm storage-lvm)
 		$(use_with lvm storage-mpath)
 		$(use_with lxc)
@@ -284,7 +286,7 @@ src_configure() {
 		$(use_with wireshark-plugins wireshark-dissector)
 		$(use_with xen)
 		$(use_with xen xen-inotify)
-		$(usex xen --with-libxl '')
+		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
 
