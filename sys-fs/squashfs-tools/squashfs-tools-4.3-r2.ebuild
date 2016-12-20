@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit eutils flag-o-matic toolchain-funcs
 
 DEB_VER="3"
 
@@ -43,6 +43,10 @@ src_prepare() {
 use10() { usex $1 1 0 ; }
 
 src_configure() {
+	# restore GNU89 inline semantics to
+	# emit function symbols, bug 595290
+	append-cflags -std=gnu89
+
 	# set up make command line variables in EMAKE_SQUASHFS_CONF
 	EMAKE_SQUASHFS_CONF=(
 		LZMA_XZ_SUPPORT=$(use10 lzma)
