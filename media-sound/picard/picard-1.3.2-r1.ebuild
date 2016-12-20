@@ -14,7 +14,7 @@ SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/picard/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="+acoustid +cdda nls"
 
 DEPEND="dev-python/PyQt4[X,${PYTHON_USEDEP}]
