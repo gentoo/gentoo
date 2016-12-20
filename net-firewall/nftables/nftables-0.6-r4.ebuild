@@ -13,12 +13,13 @@ SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug doc gmp +readline"
+IUSE="debug doc gmp +readline xml"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
-	>=net-libs/libnftnl-1.0.6
 	gmp? ( dev-libs/gmp:0= )
-	readline? ( sys-libs/readline:0= )"
+	readline? ( sys-libs/readline:0= )
+	>=net-libs/libnftnl-1.0.6[xml(-)?]
+	"
 DEPEND="${RDEPEND}
 	>=app-text/docbook2X-0.8.8-r4
 	doc? ( >=app-text/dblatex-0.3.7 )
@@ -73,7 +74,7 @@ src_install() {
 
 pkg_postinst() {
 	local save_file
-	save_file="${EROOT}var/lib/nftables/rules-save"
+	save_file="${EROOT%/}/var/lib/nftables/rules-save"
 
 	elog "In order for the nftables-restore systemd service to start, "
 	elog "the file, ${save_file}, must exist.  To create this "
