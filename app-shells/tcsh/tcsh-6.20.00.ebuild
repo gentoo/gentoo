@@ -77,7 +77,7 @@ src_configure() {
 	append-cppflags -D_PATH_BIN="'"'"${EPREFIX}/bin"'"'"
 
 	econf \
-		--prefix="${EPREFIX:-/}" \
+		--prefix="${EPREFIX:-}" \
 		--datarootdir='${prefix}/usr/share' \
 		$(use_enable nls)
 }
