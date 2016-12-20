@@ -293,13 +293,6 @@ dev-python/py-bcrypt
 dev-python/pygooglevoice
 dev-python/winpdb
 
-# Johannes Huber <johu@gentoo.org> (20 Nov 2016)
-# Masked for removal in 30 days. Dead upstream. Only supports
-# deprecated Plasma 4. Fails to build with newer
-# kde-base/kdelibs (bug #558516). Fails to build with ninja
-# (bug #575828).
-x11-themes/crystal
-
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
 # Will likely not be unmasked until future Perls

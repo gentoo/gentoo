@@ -12,7 +12,7 @@ inherit bash-completion-r1 bitcoincore
 DESCRIPTION="Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 
 src_prepare() {
 	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind \)bitcoind \(bitcoin-cli\)$/\1\2/' contrib/bitcoind.bash-completion || die
