@@ -15,7 +15,7 @@ SRC_URI="http://www.webpy.org/static/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND=""
