@@ -19,10 +19,10 @@ SLOT="0"
 if [[ ${PV} = 9999 ]]; then
 	inherit bzr
 	EBZR_REPO_URI="lp:bzr-git"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
 	SRC_URI="http://samba.org/~jelmer/bzr/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 IUSE=""
