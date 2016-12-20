@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}.java/archive/${PN}-complete-${PV}.zip ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE=""
 
 CDEPEND="dev-java/swt:3.8"
