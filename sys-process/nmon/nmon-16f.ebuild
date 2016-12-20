@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.c"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm ~ppc64"
+KEYWORDS="amd64 ~arm ~ppc64 ~x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
