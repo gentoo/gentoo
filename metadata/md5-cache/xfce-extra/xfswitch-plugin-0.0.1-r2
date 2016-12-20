@@ -4,7 +4,7 @@ DESCRIPTION=A panel plug-in for user switching (using lightdm or gdm or ldm)
 EAPI=5
 HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfswitch-plugin
 IUSE=+gdm lightdm lxdm
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.12:2 >=xfce-base/libxfce4util-4.8 >=xfce-base/libxfcegui4-4.8 >=xfce-base/xfce4-panel-4.8 gdm? ( gnome-base/gdm ) lightdm? ( x11-misc/lightdm ) lxdm? ( lxde-base/lxdm )
 REQUIRED_USE=gdm? ( !lightdm !lxdm ) lightdm? ( !gdm !lxdm ) lxdm? ( !gdm !lightdm )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfswitch-plugin/0.0/xfswitch-plugin-0.0.1.tar.gz
 _eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:- src_configure:xfconf src_install:xfconf
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
-_md5_=2f1eebc13c1e59fc9d009be56240074f
+_md5_=99ef87d0333f2589c6f04d7a1e01596a

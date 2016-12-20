@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/glib-2.22.5:2 >=dev-libs/libdbh-5.0.13 >=dev-libs/libtubo-5.0.
 DESCRIPTION=The basic library used by some rfm applications, such as Rodent filemanager
 EAPI=6
 HOMEPAGE=http://xffm.org/libxffm.html
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/glib-2.22.5:2 >=dev-libs/libdbh-5.0.13 >=dev-libs/libtubo-5.0.13 >=dev-libs/libxml2-2.4.0:2 >=dev-libs/libzip-0.9:0= >=gnome-base/librsvg-2.26:2 >=x11-libs/cairo-1.12.6[X] >=x11-libs/gtk+-3.12:3[X] >=x11-libs/pango-1.28.0[X] !<x11-misc/rodent-5
 SLOT=0
 SRC_URI=mirror://sourceforge/xffm/librfm/librfm5-5.3.16.3.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=92b469e03b01b6968fedc3121ac88003
+_md5_=02922a5545b6c976c0c4d9d6548e2f5c
