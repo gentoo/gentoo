@@ -39,7 +39,7 @@ RDEPEND="
 	cdda? ( media-sound/cdparanoia )
 	cddb? ( media-libs/libcddb )
 	mtp? ( media-libs/libmtp )
-	musicbrainz? ( media-libs/musicbrainz:5 )
+	musicbrainz? ( media-libs/musicbrainz:5= )
 	replaygain? (
 		media-libs/libebur128
 		media-sound/mpg123
