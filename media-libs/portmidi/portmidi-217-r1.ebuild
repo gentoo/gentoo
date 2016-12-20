@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug doc java python static-libs test-programs"
 
 CDEPEND="media-libs/alsa-lib"
