@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${PN}/SpeedCrunch/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 DEPEND="dev-qt/qtgui:4"
