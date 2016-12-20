@@ -4,7 +4,7 @@ DESCRIPTION=Network-UPS Tools
 EAPI=5
 HOMEPAGE=http://www.networkupstools.org/
 IUSE=cgi ipmi snmp +usb selinux ssl tcpd xml zeroconf +ups_drivers_al175 +ups_drivers_bcmxcp +ups_drivers_belkin +ups_drivers_belkinunv +ups_drivers_bestfcom +ups_drivers_bestfortress +ups_drivers_bestuferrups +ups_drivers_bestups +ups_drivers_dummy-ups +ups_drivers_etapro +ups_drivers_everups +ups_drivers_gamatronic +ups_drivers_genericups +ups_drivers_isbmex +ups_drivers_liebert +ups_drivers_liebert-esp2 +ups_drivers_masterguard +ups_drivers_metasys +ups_drivers_oldmge-shut +ups_drivers_mge-utalk +ups_drivers_microdowell +ups_drivers_mge-shut +ups_drivers_oneac +ups_drivers_optiups +ups_drivers_powercom +ups_drivers_rhino +ups_drivers_safenet +ups_drivers_solis +ups_drivers_tripplite +ups_drivers_tripplitesu +ups_drivers_upscode2 +ups_drivers_victronups +ups_drivers_powerpanel +ups_drivers_blazer_ser +ups_drivers_clone +ups_drivers_clone-outlet +ups_drivers_ivtscd +ups_drivers_apcsmart +ups_drivers_apcsmart-old +ups_drivers_apcupsd-ups +ups_drivers_riello_ser +ups_drivers_nutdrv_qx +ups_drivers_usbhid-ups +ups_drivers_bcmxcp_usb +ups_drivers_tripplite_usb +ups_drivers_blazer_usb +ups_drivers_richcomm_usb +ups_drivers_riello_usb +ups_drivers_nutdrv_qx ups_drivers_netxml-ups ups_drivers_snmp-ups ups_drivers_nut-ipmipsu
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=cgi? ( >=media-libs/gd-2[png] ) snmp? ( net-analyzer/net-snmp ) usb? ( virtual/libusb:0 ) ssl? ( >=dev-libs/openssl-1 ) tcpd? ( sys-apps/tcp-wrappers ) xml? ( >=net-libs/neon-0.25.0 ) ipmi? ( sys-libs/freeipmi ) zeroconf? ( net-dns/avahi ) virtual/udev selinux? ( sec-policy/selinux-nut )
 REQUIRED_USE=ups_drivers_usbhid-ups? ( usb ) ups_drivers_bcmxcp_usb? ( usb ) ups_drivers_tripplite_usb? ( usb ) ups_drivers_blazer_usb? ( usb ) ups_drivers_richcomm_usb? ( usb ) ups_drivers_riello_usb? ( usb ) ups_drivers_nutdrv_qx? ( usb ) ups_drivers_netxml-ups? ( xml ) ups_drivers_snmp-ups? ( snmp ) ups_drivers_nut-ipmipsu? ( ipmi )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://random.networkupstools.org/source/2.7/nut-2.7.3.tar.gz http://www.networkupstools.org/source/2.7/nut-2.7.3.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=4441df7716a0501ec04240cd0a2f1563
+_md5_=2011a7f8fa7c99170e13d847f75bf259
