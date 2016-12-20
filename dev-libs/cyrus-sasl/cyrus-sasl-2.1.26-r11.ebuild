@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="authdaemond berkdb gdbm kerberos ldapdb libressl openldap mysql pam postgres sample selinux sqlite
 srp ssl static-libs urandom"
 
@@ -89,7 +89,13 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
-	append-cppflags -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D_BSD_SOURCE -DLDAP_DEPRECATED
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# getpassphrase is defined in /usr/include/stdlib.h
+		append-cppflags -DHAVE_GETPASSPHRASE
+	else
+		# this horrendously breaks things on Solaris
+		append-cppflags -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D_BSD_SOURCE -DLDAP_DEPRECATED
+	fi
 
 	multilib-minimal_src_configure
 }
@@ -102,7 +108,7 @@ multilib_src_configure() {
 
 	# Add authdaemond support (bug #56523).
 	if use authdaemond ; then
-		myconf+=( --with-authdaemond=/var/lib/courier/authdaemon/socket )
+		myconf+=( --with-authdaemond="${EPREFIX}"/var/lib/courier/authdaemon/socket )
 	fi
 
 	# Fix for bug #59634.
@@ -143,13 +149,14 @@ multilib_src_configure() {
 		--enable-auth-sasldb \
 		--disable-cmulocal \
 		--disable-krb4 \
+		--disable-macos-framework \
 		--enable-otp \
 		--without-sqlite \
-		--with-saslauthd=/run/saslauthd \
-		--with-pwcheck=/run/saslauthd \
-		--with-configdir=/etc/sasl2 \
-		--with-plugindir=/usr/$(get_libdir)/sasl2 \
-		--with-dbpath=/etc/sasl2/sasldb2 \
+		--with-saslauthd="${EPREFIX}"/run/saslauthd \
+		--with-pwcheck="${EPREFIX}"/run/saslauthd \
+		--with-configdir="${EPREFIX}"/etc/sasl2 \
+		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sasl2 \
+		--with-dbpath="${EPREFIX}"/etc/sasl2/sasldb2 \
 		$(use_with ssl openssl) \
 		$(use_with pam) \
 		$(use_with openldap ldap) \
@@ -160,7 +167,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with java javahome ${JAVA_HOME}) \
 		$(multilib_native_use_with mysql mysql /usr) \
 		$(multilib_native_use_with postgres pgsql) \
-		$(use_with sqlite sqlite3 /usr/$(get_libdir)) \
+		$(use_with sqlite sqlite3 "${EPREFIX}"/usr/$(get_libdir)) \
 		$(use_enable srp) \
 		$(use_enable static-libs static) \
 		"${myconf[@]}"
@@ -190,9 +197,9 @@ multilib_src_install() {
 		# Default location for java classes breaks OpenOffice (bug #60769).
 		if use java; then
 			java-pkg_dojar ${PN}.jar
-			java-pkg_regso "${D}/usr/$(get_libdir)/libjavasasl.so"
+			java-pkg_regso "${ED}/usr/$(get_libdir)/libjavasasl.so"
 			# hackish, don't wanna dig through makefile
-			rm -rf "${D}/usr/$(get_libdir)/java" || die
+			rm -rf "${ED}/usr/$(get_libdir)/java" || die
 			docinto "java"
 			dodoc "${S}/java/README" "${FILESDIR}/java.README.gentoo" "${S}"/java/doc/*
 			dodir "/usr/share/doc/${PF}/java/Test"
@@ -229,16 +236,16 @@ multilib_src_install_all() {
 
 pkg_postinst () {
 	# Generate an empty sasldb2 with correct permissions.
-	if ( use berkdb || use gdbm ) && [[ ! -f "${ROOT}/etc/sasl2/sasldb2" ]] ; then
+	if ( use berkdb || use gdbm ) && [[ ! -f "${EROOT}/etc/sasl2/sasldb2" ]] ; then
 		einfo "Generating an empty sasldb2 with correct permissions ..."
-		echo "p" | "${ROOT}/usr/sbin/saslpasswd2" -f "${ROOT}/etc/sasl2/sasldb2" -p login \
+		echo "p" | "${EROOT}/usr/sbin/saslpasswd2" -f "${EROOT}/etc/sasl2/sasldb2" -p login \
 			|| die "Failed to generate sasldb2"
-		"${ROOT}/usr/sbin/saslpasswd2" -f "${ROOT}/etc/sasl2/sasldb2" -d login \
+		"${EROOT}/usr/sbin/saslpasswd2" -f "${EROOT}/etc/sasl2/sasldb2" -d login \
 			|| die "Failed to delete temp user"
-		chown root:mail "${ROOT}/etc/sasl2/sasldb2" \
-			|| die "Failed to chown ${ROOT}/etc/sasl2/sasldb2"
-		chmod 0640 "${ROOT}/etc/sasl2/sasldb2" \
-			|| die "Failed to chmod ${ROOT}/etc/sasl2/sasldb2"
+		chown root:mail "${EROOT}/etc/sasl2/sasldb2" \
+			|| die "Failed to chown ${EROOT}/etc/sasl2/sasldb2"
+		chmod 0640 "${EROOT}/etc/sasl2/sasldb2" \
+			|| die "Failed to chmod ${EROOT}/etc/sasl2/sasldb2"
 	fi
 
 	if use authdaemond ; then
