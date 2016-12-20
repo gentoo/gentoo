@@ -4,7 +4,7 @@ DESCRIPTION=Intel IA32 microcode update data
 EAPI=4
 HOMEPAGE=http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=25512
 IUSE=initramfs monolithic +split-ucode
-KEYWORDS=-* ~amd64 ~x86
+KEYWORDS=-* amd64 ~x86
 LICENSE=intel-ucode
 RDEPEND=!<sys-apps/microcode-ctl-1.17-r2
 REQUIRED_USE=|| ( initramfs monolithic split-ucode )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://downloadmirror.intel.com/25512/eng/microcode-20151106.tgz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=819375d193f73f5a1619476d5c0e849d
+_md5_=b04411483a543582fdb2dda250487ab3

@@ -7671,7 +7671,7 @@ dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp,
 dev-python/libpillowfight 0.2.1: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 1.3.5 2.0.0 2.1.0 2.2.0 2.3.0 2.4.0 9999: libvirt Python bindings
+dev-python/libvirt-python 1.3.5 2.0.0 2.1.0 2.2.0 2.3.0 2.4.0 2.5.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 1.0 1.0-r1 9999: Line-by-line profiler
