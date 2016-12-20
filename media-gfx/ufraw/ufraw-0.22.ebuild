@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="contrast fits gimp gnome gtk openmp timezone"
+IUSE="contrast fits gimp gnome gtk jpeg2k openmp timezone"
 
 REQUIRED_USE="gimp? ( gtk )"
 
@@ -29,12 +29,14 @@ RDEPEND="
 	gtk? ( >=x11-libs/gtk+-2.6:2
 		>=media-gfx/gtkimageview-1.5 )
 	gimp? ( >=media-gfx/gimp-2 )
+	jpeg2k? ( media-libs/jasper:= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.17-cfitsio-automagic.patch
+	epatch "${FILESDIR}"/${PN}-0.22-jasper-automagic.patch
 	eautoreconf
 }
 
@@ -45,6 +47,7 @@ src_configure() {
 		$(use_with gimp) \
 		$(use_enable gnome mime) \
 		$(use_with gtk) \
+		$(use_enable jpeg2k jasper) \
 		$(use_enable openmp) \
 		$(use_enable timezone dst-correction)
 }
