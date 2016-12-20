@@ -13,7 +13,7 @@ SRC_URI="http://christian.amsuess.com/tools/${PN}/files/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/pygtk-2[${PYTHON_USEDEP}]

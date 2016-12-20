@@ -29,18 +29,21 @@ RDEPEND="
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.7[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	>=dev-python/node-semver-0.1.1[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		  ${RDEPEND}
+		  dev-lang/go
 		  >=dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		  >=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		  >=dev-python/nose-parameterized-0.5.0[${PYTHON_USEDEP}]
 		  >=dev-python/webtest-2.0.18[${PYTHON_USEDEP}]
+		  dev-util/cmake
 	  )
 "
 
 python_test() {
-	nosetests -v || die
+	PYTHONPATH=${BUILD_DIR}/lib nosetests -v || die
 }

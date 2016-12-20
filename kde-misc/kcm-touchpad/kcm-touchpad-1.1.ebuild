@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="KCM, daemon and applet for touchpad"
-HOMEPAGE="https://projects.kde.org/projects/playground/utils/kcm-touchpad"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 if [[ "${PV}" == *9999 ]]; then
 	KEYWORDS=""
 else
