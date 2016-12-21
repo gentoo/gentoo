@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND=">=net-libs/gnutls-2.10.0:="
+CDEPEND=">=net-libs/gnutls-3.4.0:="
 DEPEND="${CDEPEND}
 	test? ( app-crypt/monkeysphere )"
 RDEPEND="${CDEPEND}"
+
+need_apache2_4
 
 # Fails because gpg-agent cannot be accessed
 RESTRICT="test"
@@ -30,8 +32,6 @@ DOCFILES="CHANGELOG NOTICE README"
 need_apache2
 
 src_prepare() {
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
-
 	epatch_user
 	eautoreconf
 }
