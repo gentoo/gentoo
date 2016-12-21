@@ -65,6 +65,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim:5
+	$(add_kdeapps_dep kdepim-runtime)
 "
 
 src_configure() {

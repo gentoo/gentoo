@@ -56,4 +56,5 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-misc/zanshin:4
+	$(add_kdeapps_dep kdepim-runtime)
 "
