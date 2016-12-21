@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/pyndex/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-db/metakit-2.4.9.2[python]"
