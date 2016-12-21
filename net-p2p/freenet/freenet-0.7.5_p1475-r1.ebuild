@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-#DATE=20160521
+EAPI=5
+
 DATE=20150812
 JAVA_PKG_IUSE="doc source"
 
@@ -11,7 +11,8 @@ inherit eutils java-pkg-2 java-ant-2 multilib systemd user
 
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="https://freenetproject.org/"
-SRC_URI="https://github.com/${PN}/fred/archive/build0${PV#*p}.zip -> ${P}.zip
+SRC_URI="
+	https://github.com/${PN}/fred/archive/build0${PV#*p}.zip -> ${P}.zip
 	mirror://gentoo/seednodes-${DATE}.fref.bz2
 	mirror://gentoo/freenet-ant-1.7.1.jar"
 
@@ -28,15 +29,22 @@ CDEPEND="dev-java/bcprov:1.54
 	dev-java/lzma:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0"
-DEPEND="app-arch/unzip
+
+DEPEND="
+	app-arch/unzip
 	>=virtual/jdk-1.7
 	${CDEPEND}
-	test? ( dev-java/junit:0
-		dev-java/ant-junit:0 )
+	test? (
+		dev-java/junit:0
+		dev-java/ant-junit:0
+	)
 	dev-java/ant-core:0"
-RDEPEND=">=virtual/jre-1.7
+
+RDEPEND="
+	>=virtual/jre-1.7
 	net-libs/nativebiginteger:0
 	${CDEPEND}"
+
 PDEPEND="net-libs/NativeThread:0"
 
 JAVA_PKG_BSFIX_NAME+=" build-clean.xml"
@@ -50,7 +58,12 @@ EANT_BUILD_XML="build-clean.xml"
 EANT_GENTOO_CLASSPATH="bcprov-1.54,commons-compress,fec,java-service-wrapper,jbitcollider-core,lzma,lzmajio,mersennetwister"
 EANT_EXTRA_ARGS="-Dsuppress.gjs=true -Dlib.contrib.present=true -Dlib.bouncycastle.present=true -Dlib.junit.present=true -Dtest.skip=true"
 
-S=${WORKDIR}/fred-build0${PV#*p}
+S="${WORKDIR}/fred-build0${PV#*p}"
+
+MY_PATCHES=(
+	"${FILESDIR}"/0.7.5_p1321-ext.patch
+	"${FILESDIR}/${PV}-remove-git.patch"
+)
 
 pkg_setup() {
 	has_version dev-java/icedtea[cacao] && {
@@ -66,19 +79,19 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${P}.zip seednodes-${DATE}.fref.bz2
-	mv "${WORKDIR}"/freenet-fred-* "${S}"
+	mv "${WORKDIR}"/freenet-fred-* "${S}" || die
 }
 
 java_prepare() {
 	cp "${FILESDIR}"/freenet-0.7.5_p1474-wrapper.conf freenet-wrapper.conf || die
 	cp "${FILESDIR}"/run.sh-20090501 run.sh || die
-	epatch "${FILESDIR}"/0.7.5_p1321-ext.patch
-	epatch "${FILESDIR}/${PV}-remove-git.patch"
+
+	epatch "${MY_PATCHES[@]}"
 
 	sed -i -e "s:=/usr/lib:=/usr/$(get_libdir):g" \
 		freenet-wrapper.conf || die "sed failed"
 
-	echo "wrapper.java.classpath.1=/usr/share/freenet/lib/freenet.jar" >> freenet-wrapper.conf
+	echo "wrapper.java.classpath.1=/usr/share/freenet/lib/freenet.jar" >> freenet-wrapper.conf || die
 
 	local i=2 pkg jars jar
 	local ifs_original=${IFS}
@@ -86,11 +99,11 @@ java_prepare() {
 	for pkg in ${EANT_GENTOO_CLASSPATH} ; do
 		jars="$(java-pkg_getjars ${pkg})"
 		for jar in ${jars} ; do
-			echo "wrapper.java.classpath.$((i++))=${jar}" >> freenet-wrapper.conf
+			echo "wrapper.java.classpath.$((i++))=${jar}" >> freenet-wrapper.conf || die
 		done
 	done
 	IFS=${ifs_original}
-	echo "wrapper.java.classpath.$((i++))=/usr/share/freenet/lib/ant.jar" >> freenet-wrapper.conf
+	echo "wrapper.java.classpath.$((i++))=/usr/share/freenet/lib/ant.jar" >> freenet-wrapper.conf || die
 
 	cp "${DISTDIR}"/freenet-ant-1.7.1.jar lib/ant.jar || die
 }
@@ -104,19 +117,22 @@ src_test() {
 src_install() {
 	java-pkg_dojar dist/freenet.jar
 	java-pkg_newjar "${DISTDIR}"/freenet-ant-1.7.1.jar ant.jar
+
 	if has_version =sys-apps/baselayout-2*; then
 		doinitd "${FILESDIR}"/freenet
 	else
 		newinitd "${FILESDIR}"/freenet.old freenet
 	fi
+
 	systemd_dounit "${FILESDIR}"/freenet.service
-	dodoc AUTHORS || die
-	newdoc README.md README || die
+
+	dodoc AUTHORS
+	newdoc README.md README
 	insinto /etc
-	doins freenet-wrapper.conf || die
+	doins freenet-wrapper.conf
 	insinto /var/freenet
-	doins run.sh || die
-	newins "${WORKDIR}"/seednodes-${DATE}.fref seednodes.fref || die
+	doins run.sh
+	newins "${WORKDIR}"/seednodes-${DATE}.fref seednodes.fref
 	fperms +x /var/freenet/run.sh
 	dosym java-service-wrapper/libwrapper.so /usr/$(get_libdir)/libwrapper.so
 	use doc && java-pkg_dojavadoc javadoc
