@@ -4,11 +4,11 @@ DESCRIPTION=Mobile Broadband Interface Model (MBIM) modem protocol helper librar
 EAPI=6
 HOMEPAGE=https://cgit.freedesktop.org/libmbim/
 IUSE=static-libs udev
-KEYWORDS=~alpha ~amd64 ~arm ~mips ~ppc64 ~x86
+KEYWORDS=~alpha amd64 ~arm ~mips ~ppc64 ~x86
 LICENSE=LGPL-2
 RDEPEND=>=dev-libs/glib-2.32:2
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libmbim/libmbim-1.14.0.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=af2fcfb6f6bb48e74d46613ddcadddcc
+_md5_=2d5247df3a56124fb72495a6e784bbd7

@@ -4,11 +4,11 @@ DESCRIPTION=Utilities to deal with user accounts
 EAPI=5
 HOMEPAGE=http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/
 IUSE=acl audit cracklib nls pam selinux skey xattr linguas_cs linguas_da linguas_de linguas_es linguas_fi linguas_fr linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_pl linguas_pt_BR linguas_ru linguas_sv linguas_tr linguas_zh_CN linguas_zh_TW
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=BSD GPL-2
 RDEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) pam? ( >=sys-auth/pambase-20150213 )
 SLOT=0
 SRC_URI=http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7b561d874adc23e2688fa2f85693a2b3
+_md5_=822c9271fb9ea3b9e2477040debd5515
