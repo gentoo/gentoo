@@ -14,7 +14,7 @@ SRC_URI="http://www.fossil-scm.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="debug fusefs json legacy-mv-rm miniz sqlite +ssl static tcl th1-docs th1-hooks"
 
 DEPEND="
