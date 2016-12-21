@@ -14,9 +14,9 @@ if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/ktorrent/${KTORRENT_VERSION}/${MY_P}.tar.xz"
 	S="${WORKDIR}"/"${MY_P}"
 
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 else
-	KEYWORDS=""
+	KEYWORDS="amd64"
 fi
 
 KDE_TEST="forceoptional"
