@@ -37,7 +37,6 @@ RDEPEND="
 	$(add_kdeapps_dep knetattach)
 	$(add_kdeapps_dep knewstuff)
 	$(add_kdeapps_dep knotify)
-	$(add_kdeapps_dep knotify)
 	$(add_kdeapps_dep kpasswdserver)
 	$(add_kdeapps_dep kquitapp)
 	$(add_kdeapps_dep kreadconfig)
