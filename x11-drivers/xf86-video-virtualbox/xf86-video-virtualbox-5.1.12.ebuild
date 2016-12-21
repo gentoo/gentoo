@@ -5,12 +5,12 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils linux-mod multilib python-single-r1 versionator toolchain-funcs
+inherit eutils multilib python-single-r1 versionator toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
-DESCRIPTION="VirtualBox video driver"
+DESCRIPTION="VirtualBox X11 video driver for Gentoo guest"
 HOMEPAGE="http://www.virtualbox.org/"
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
@@ -22,10 +22,9 @@ IUSE="dri"
 RDEPEND=">=x11-base/xorg-server-1.7:=[-minimal]
 	x11-libs/libXcomposite"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998_pre20131130
 	${PYTHON_DEPS}
 	>=dev-lang/yasm-0.6.2
-	>=sys-devel/gcc-4.9.0
+	>=dev-util/kbuild-0.1.9998_pre20131130
 	sys-power/iasl
 	x11-proto/fontsproto
 	x11-proto/randrproto
@@ -42,6 +41,7 @@ DEPEND="${RDEPEND}
 	x11-libs/libXext
 	dri? (  x11-proto/xf86driproto
 		>=x11-libs/libdrm-2.4.5 )"
+PDEPEND="dri? ( ~app-emulation/virtualbox-guest-additions-${PV} )"
 
 REQUIRED_USE=( "${PYTHON_REQUIRED_USE}" )
 
@@ -49,7 +49,6 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 S="${WORKDIR}/${MY_P}"
 MODULES_SRC_DIR="${S}/src/VBox/Additions/linux/drm"
-MODULE_NAMES="vboxvideo(misc:${MODULES_SRC_DIR}:${MODULES_SRC_DIR})"
 
 PATCHES=(
 	# Ugly hack to build the opengl part of the video driver
@@ -65,10 +64,6 @@ pkg_setup() {
 	if [ "${MERGE_TYPE}" != "binary" ]; then
 		version_is_at_least 4.9 $(gcc-version) || die "Please set gcc 4.9 or higher as active in gcc-config to build ${PN}"
 	fi
-
-	CONFIG_CHECK="~DRM ~DRM_TTM"
-	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
 
 	python-single-r1_pkg_setup
 }
@@ -169,23 +164,10 @@ src_compile() {
 			ln -s "${S}"/${objdir}/${each}.dep \
 				"${MODULES_SRC_DIR}" || die
 		done
-
-		# Now creating the kernel modules. We must do this _after_
-		# we compiled the user-space tools as we need two of the
-		# automatically generated header files. (>=3.2.0)
-		pushd "${MODULES_SRC_DIR}" &>/dev/null || die
-		linux-mod_src_compile
-		popd &>/dev/null || die
 	fi
 }
 
 src_install() {
-	if use dri; then
-		pushd "${MODULES_SRC_DIR}" &>/dev/null || die
-		linux-mod_src_install
-		popd &>/dev/null || die
-	fi
-
 	cd "${S}/out/linux.${ARCH}/release/bin/additions" || die
 	insinto /usr/$(get_libdir)/xorg/modules/drivers
 	newins vboxvideo_drv_system.so vboxvideo_drv.so
@@ -206,15 +188,4 @@ pkg_postinst() {
 	elog "  Driver  \"vboxvideo\""
 	elog ""
 	elog "in the Graphics device section (Section \"Device\")"
-	elog ""
-	if use dri; then
-		elog "To use the kernel drm video driver, please add:"
-		elog "\"${MODULE_NAMES%(*}\" to:"
-		if has_version sys-apps/openrc ; then
-			elog "/etc/conf.d/modules"
-		else
-			elog "/etc/modules.autoload.d/kernel-${KV_MAJOR}.${KV_MINOR}"
-		fi
-		elog ""
-	fi
 }
