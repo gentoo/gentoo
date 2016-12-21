@@ -133,7 +133,7 @@ _init_apache2() {
 	# WARNING: Do not use these variables with anything that is put
 	# into the dependency cache (DEPEND/RDEPEND/etc)
 	APACHE_VERSION="2"
-	APXS="/usr/sbin/apxs2"
+	APXS="/usr/bin/apxs"
 	APACHE_BIN="/usr/sbin/apache2"
 	APACHE_CTL="/usr/sbin/apache2ctl"
 	APACHE_INCLUDEDIR="/usr/include/apache2"
