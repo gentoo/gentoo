@@ -4,7 +4,7 @@ DESCRIPTION=SWIG and JNI bindings for Xapian
 EAPI=5
 HOMEPAGE=http://www.xapian.org/
 IUSE=java lua perl php python ruby tcl elibc_FreeBSD java php_targets_php5-5 php_targets_php5-6 python_targets_python2_7
-KEYWORDS=alpha ~amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/xapian:0/1.2.22 lua? ( dev-lang/lua:0 ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:= ) tcl? ( >=dev-lang/tcl-8.1:0= ) java? ( >=virtual/jre-1.3 ) java? ( >=dev-java/java-config-2.2.0-r3 ) php? ( php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 ) )
 REQUIRED_USE=|| ( java lua perl php python ruby tcl ) php? ( || ( php_targets_php5-5 php_targets_php5-6 ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://oligarchy.co.uk/xapian/1.2.24/xapian-bindings-1.2.24.tar.xz
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a50950a73b5d5db46f42638e2996a087	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r2	d3d06f8b11fb8481e555b58df7360663	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5c4c4e2525e18fc4d582935d44874ef0
+_md5_=78d2a97542ddf26e70e966036e7b4f31
