@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils readme.gentoo systemd
+inherit cmake-utils readme.gentoo-r1 systemd
 
 DESCRIPTION="simple fan control program for thinkpads"
 HOMEPAGE="http://thinkfan.sourceforge.net"
@@ -18,17 +18,21 @@ IUSE="atasmart"
 DEPEND="atasmart? ( dev-libs/libatasmart )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"
-
 src_prepare() {
-	sed -e "s:share/doc/${PN}:share/doc/${P}:" \
+	cmake-utils_src_prepare
+
+	sed -e "s:#!/sbin/runscript:#!/sbin/openrc-run:" \
+		-i rcscripts/thinkfan.gentoo
+
+	sed -e "s:share/doc/${PN}:share/doc/${PF}:" \
+	    -e "s:thinkfan.1:src/thinkfan.1:" \
 		-i CMakeLists.txt
 }
 
 src_configure() {
-	mycmakeargs+=(
+	local mycmakeargs+=(
 		"-DCMAKE_BUILD_TYPE:STRING=Debug"
-		"$(cmake-utils_use_use atasmart ATASMART)"
+		"-DUSE_ATASMART=$(usex atasmart)"
 	)
 
 	cmake-utils_src_configure
