@@ -47,5 +47,4 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=app-crypt/gnupg-2.1
 	app-crypt/paperkey
-	!kde-apps/gpgmepp:5
 "

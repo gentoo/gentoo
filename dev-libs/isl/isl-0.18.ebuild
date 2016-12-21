@@ -1,21 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils
+EAPI="5"
 
-DESCRIPTION="A library for manipulating integer points bounded by affine constraints"
-HOMEPAGE="http://www.kotnet.org/~skimo/isl/"
-SRC_URI="http://www.kotnet.org/~skimo/isl/${P}.tar.bz2"
+inherit eutils multilib-minimal
+
+DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
+HOMEPAGE="http://isl.gforge.inria.fr/"
+SRC_URI="http://isl.gforge.inria.fr/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="static-libs"
 
-RDEPEND="dev-libs/gmp"
-DEPEND="${RDEPEND}"
+RDEPEND=">=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}
+	app-arch/xz-utils
+	virtual/pkgconfig"
 
 DOCS=( ChangeLog AUTHORS doc/manual.pdf )
 
@@ -27,11 +30,11 @@ src_prepare() {
 	sed -i -e '/Libs:/s:@LDFLAGS@ ::' configure || die #382737
 }
 
-src_configure() {
-	econf $(use_enable static-libs static)
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
 
-src_install() {
-	default
+multilib_src_install_all() {
+	einstalldocs
 	prune_libtool_files
 }
