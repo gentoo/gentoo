@@ -10198,7 +10198,7 @@ dev-util/qfsm 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
-dev-util/radare2 0.10.6 1.0.2 9999: Advanced command line hexadecimal editor and more
+dev-util/radare2 0.10.6 1.0.2 1.1.0 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6 0.7.7: Command line tools for use with Review Board
@@ -18123,7 +18123,7 @@ www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
-www-client/vivaldi 1.5.658.44_p1 1.6.689.34_p1: A new browser for our friends
+www-client/vivaldi 1.5.658.44_p1 1.6.689.34_p1 1.6.689.40_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
