@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-GIT_TAG="0.1"
+GIT_TAG="3a0b7b74982f44c735f4cfc2dccf538c3c4ef9e2"
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
