@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,12 +13,16 @@ LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS=""
 
-DEPEND="
+CDEPEND="
 	net-libs/libpcap
 	net-libs/libnet:1.1
 "
+DEPEND="
+	${CDEPEND}
+	dev-libs/check
+"
 RDEPEND="
-	${DEPEND}
+	${CDEPEND}
 	!net-misc/iputils[arping(+)]
 "
 
