@@ -13,7 +13,7 @@ if [[ "${PV}" == "9999" ]] ; then
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/64"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/66"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	>=media-libs/freetype-2.3.9
 	sys-libs/zlib
 	cairo? (
-		>=dev-libs/glib-2.41:2
+		dev-libs/glib:2
 		>=x11-libs/cairo-1.10.0
 		introspection? ( >=dev-libs/gobject-introspection-1.32.1:= )
 	)
@@ -76,7 +76,7 @@ src_prepare() {
 
 	# Clang doesn't grok this flag, the configure nicely tests that, but
 	# cmake just uses it, so remove it if we use clang
-	if [[ ${CC} == *clang ]] ; then
+	if [[ ${CC} == clang ]] ; then
 		sed -i -e 's/-fno-check-new//' cmake/modules/PopplerMacros.cmake || die
 	fi
 
