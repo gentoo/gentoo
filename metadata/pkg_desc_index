@@ -9092,7 +9092,7 @@ dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST
 dev-ruby/aws-sdk 1.66.0 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-core 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
-dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.3-r1 0.6.4 0.6.5: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
@@ -9147,7 +9147,7 @@ dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.8.1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0: Sorts an array in column order
 dev-ruby/combustion 0.5.5: Elegant Rails Engine Testing
-dev-ruby/commander 4.4.0 4.4.1: The complete solution for Ruby command-line executables
+dev-ruby/commander 4.4.0 4.4.1 4.4.2: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
@@ -9258,7 +9258,7 @@ dev-ruby/http-form_data 1.0.1 1.0.1-r1: Utility-belt to build form data request 
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.7 0.14.0 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
-dev-ruby/httpclient 2.7.1 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
@@ -9638,7 +9638,7 @@ dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.14.0 1.14.1 1.14.2: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.6.9 1.1.0 1.1.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
-dev-ruby/tzinfo 0.3.44 0.3.52 1.2.2: Daylight-savings aware timezone library
+dev-ruby/tzinfo 0.3.52 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
 dev-ruby/uglifier 2.7.2 3.0.2 3.0.3 3.0.4: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
@@ -13359,7 +13359,7 @@ media-radio/unixcw 3.4.2 3.5.0 3.5.0-r1: A package of programs that fit together
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
 media-radio/xastir 2.0.6 2.0.8: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.4.2 2.4.3 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
-media-radio/xlog 2.0.13: An amateur radio logging program
+media-radio/xlog 2.0.13 2.0.14: An amateur radio logging program
 media-radio/xwxapt 2.4 2.7: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r1: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
