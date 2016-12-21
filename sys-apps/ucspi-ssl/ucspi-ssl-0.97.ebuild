@@ -37,7 +37,7 @@ src_prepare() {
 	echo "/usr/share/ca-certificates/" > conf-cadir || die
 	echo "${QMAIL_HOME}/control/dh1024.pem" > conf-dhfile || die
 
-	cd src
+	cd src || die
 	echo "/usr/" > home || die
 	sed -i -e 's:HOME/command:/usr/bin:' sslcat.sh sslconnect.sh https\@.sh || die
 
