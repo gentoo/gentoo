@@ -1,7 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-ARCH="ppc-macos"
 CHOST="powerpc-apple-darwin9"
-ACCEPT_KEYWORDS="~ppc-macos"
+CHOST_ppc="${CHOST}"
