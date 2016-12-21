@@ -168,28 +168,28 @@ src_prepare() {
 	python_setup
 
 	# Fix libdir for ocaml bindings install, bug #559134
-	eapply "${FILESDIR}"/3.9.0/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
+	eapply "${FILESDIR}"/3.9.1/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	eapply "${FILESDIR}"/3.9.0/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
+	eapply "${FILESDIR}"/3.9.1/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
-	eapply "${FILESDIR}"/3.9.0/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
+	eapply "${FILESDIR}"/3.9.1/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
 
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
-	eapply "${FILESDIR}"/3.9.0/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
+	eapply "${FILESDIR}"/3.9.1/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
 
 	# Allow custom cmake build types (like 'Gentoo')
 	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/3.9.0/llvm-config-r1.patch
+	eapply "${FILESDIR}"/3.9.1/llvm-config-r1.patch
 
 	# Restore SOVERSIONs for shared libraries
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
-	eapply "${FILESDIR}"/3.9.0/0008-cmake-Reintroduce-ldconfig-compatible-SOVERSIONs-on-.patch
+	eapply "${FILESDIR}"/3.9.1/0008-cmake-Reintroduce-ldconfig-compatible-SOVERSIONs-on-.patch
 
 	# support building llvm against musl-libc
 	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
@@ -204,14 +204,14 @@ src_prepare() {
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		eapply "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		eapply "${FILESDIR}"/3.8.1/compiler-rt/darwin-default-sysroot.patch
 
 		pushd "${S}"/tools/clang >/dev/null || die
 		# be able to specify default values for -stdlib and -rtlib at build time
-		eapply "${FILESDIR}"/3.9.0/clang/default-libs.patch
+		eapply "${FILESDIR}"/3.9.1/clang/default-libs.patch
 		popd >/dev/null || die
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
@@ -219,13 +219,13 @@ src_prepare() {
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
-		eapply "${FILESDIR}"/3.9.0/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
-		eapply "${FILESDIR}"/3.9.0/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+		eapply "${FILESDIR}"/3.9.1/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
+		eapply "${FILESDIR}"/3.9.1/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
-		eapply "${FILESDIR}"/3.9.0/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+		eapply "${FILESDIR}"/3.9.1/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
@@ -246,7 +246,7 @@ src_prepare() {
 		sed -e 's/add_subdirectory(readline)/#&/' \
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
 		# Do not install bundled six module
-		eapply "${FILESDIR}"/3.9.0/lldb/six.patch
+		eapply "${FILESDIR}"/3.9.1/lldb/six.patch
 	fi
 
 	# User patches

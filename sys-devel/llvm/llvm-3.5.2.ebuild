@@ -172,7 +172,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		epatch "${FILESDIR}"/3.5.2/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 
