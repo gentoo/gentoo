@@ -21,7 +21,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="debug selinux systemd tcpd warmstarts"
 
-CDEPEND=">=net-libs/libtirpc-0.2.3:=
+CDEPEND=">=net-libs/libtirpc-1.0:=
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${CDEPEND}

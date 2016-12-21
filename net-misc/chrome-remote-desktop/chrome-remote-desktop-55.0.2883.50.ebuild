@@ -27,7 +27,7 @@ SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )"
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 IUSE=""
 
 # All the libs this package links against.
@@ -96,9 +96,10 @@ pkg_postinst() {
 		elog "(2) headless system"
 		elog "    (a) install the Chrome plugin on the client:"
 		elog "        ${PLUGIN_URL}"
-		elog "    (b) visit https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/chromoting+https://www.googleapis.com/auth/googletalk+https://www.googleapis.com/auth/userinfo.email&access_type=offline&redirect_uri=https://chromoting-auth.googleplex.com/auth&approval_prompt=force&client_id=440925447803-avn2sj1kc099s0r7v62je5s339mu0am1.apps.googleusercontent.com&hl=en&from_login=1&as=-760f476eeaec11b8&pli=1&authuser=0"
-		elog "    (c) run the command mentioned on the server"
-		elog "    (d) on the client, connect to the server"
+		elog "    (b) run ${EPREFIX}opt/google/chrome-remote-desktop/start-host --help to get the auth URL"
+		elog "    (c) when it redirects you to a blank page, look at the URL for a code=XXX field"
+		elog "    (d) run start-host again, and past the code when asked for an authorization code"
+		elog "    (e) on the client, connect to the server"
 		elog
 		elog "Configuration settings you might want to be aware of:"
 		elog "  ~/.${PN}-session - shell script to start your session"
