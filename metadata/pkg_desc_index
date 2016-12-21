@@ -10055,7 +10055,7 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/electron 0.36.12-r4 0.37.8-r1 1.3.6: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0a 3.1: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
-dev-util/eric 4.5.25-r1 5.5.2 6.1.7 16.11.1: A full featured Python IDE using PyQt and QScintilla
+dev-util/eric 5.5.2 16.11.1 16.12: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.11: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
