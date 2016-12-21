@@ -33,7 +33,6 @@
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
 <flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
 <flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
-<flag name="gtk3">Build the wireshark executable with a GTK+ UI version 3.</flag>
 <flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
