@@ -4,13 +4,10 @@
 
 EAPI=5
 
-MY_PN="awapi_perl_lib"
-MY_PV="${PV//\./_}"
-MY_P="${MY_PN}_${MY_PV}"
+MODULE_AUTHOR=DTORRES
+MY_PN="GOOGLE-ADWORDS-PERL-CLIENT"
 
 inherit perl-module
-
-S="${WORKDIR}/GOOGLE-ADWORDS-PERL-CLIENT-${PV}"
 
 SRC_TEST="do"
 
@@ -20,7 +17,6 @@ RESTRICT="test"
 
 DESCRIPTION="Google AdWords API Perl Client"
 HOMEPAGE="https://github.com/googleads/googleads-perl-lib"
-SRC_URI="https://google-api-adwords-perl.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
