@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.x
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 x86 ~x86-macos"
 IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="
