@@ -5392,7 +5392,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -6094,7 +6094,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 6.610.0 7.110.0: Real-time web framework
+dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
@@ -6226,7 +6226,7 @@ dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.27.0: Facilitates the creation and modification of PDF files
-dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0: Create PDF documents in Perl
+dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
