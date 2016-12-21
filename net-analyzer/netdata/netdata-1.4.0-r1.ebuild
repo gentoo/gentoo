@@ -62,6 +62,10 @@ FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-sysmacros.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
