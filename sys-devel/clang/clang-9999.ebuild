@@ -195,7 +195,9 @@ multilib_src_compile() {
 	cmake-utils_src_compile
 
 	# provide a symlink for tests
-	ln -s "../$(get_libdir)/clang" lib/clang || die
+	if [[ $(get_libdir) != lib ]]; then
+		ln -s "../$(get_libdir)/clang" lib/clang || die
+	fi
 }
 
 multilib_src_test() {
