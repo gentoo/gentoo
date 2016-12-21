@@ -533,7 +533,7 @@ app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.9 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.5.5 1.6.0 1.8.0-r1: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.5.5 1.6.0 1.8.0-r2: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
@@ -2394,7 +2394,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3: Tools for helping translation of documentation
 app-text/podofo 0.9.2 0.9.3 0.9.4: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.42.0 0.45.0 0.46.0-r1 0.47.0 0.48.0 0.49.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.42.0 0.45.0 0.49.0 0.50.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format (EPS,EPSF) files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.5_p20130530 1.5_p20140525 1.7_p20150521: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -14925,7 +14925,7 @@ net-misc/connman-gtk 1.0 1.0-r1 1.1.1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.50.3 7.51.0: A Client that groks URLs
+net-misc/curl 7.50.3 7.51.0 7.52.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
