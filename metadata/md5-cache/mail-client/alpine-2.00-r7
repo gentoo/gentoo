@@ -4,11 +4,11 @@ DESCRIPTION=alpine is an easy to use text-based based mail and news client
 EAPI=6
 HOMEPAGE=http://www.washington.edu/alpine/ http://patches.freeiz.com/alpine/
 IUSE=doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads +chappa
-KEYWORDS=alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=alpha amd64 ~ia64 ~ppc ~sparc ~x86
 LICENSE=Apache-2.0
 RDEPEND=virtual/pam >=net-libs/c-client-2007f-r4[chappa=] >=sys-libs/ncurses-5.1:0= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ldap? ( net-nds/openldap ) kerberos? ( app-crypt/mit-krb5 ) spell? ( app-text/aspell ) app-misc/mime-types !onlyalpine? ( !mail-client/pine ) !<=net-mail/uw-imap-2004g
 SLOT=0
 SRC_URI=ftp://ftp.cac.washington.edu/alpine/alpine-2.00.tar.bz2 chappa? ( http://patches.freeiz.com/alpine/patches/alpine-2.00/all.patch.gz -> alpine-2.00-chappa-115-all.patch.gz )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ff6ca6df59647658bafe076387c6a598
+_md5_=2011fd2af8b293b0eb0d7a9f239e5d3e

@@ -4,7 +4,7 @@ DESCRIPTION=Style and Grammar Checker for libreoffice
 EAPI=5
 HOMEPAGE=https://www.languagetool.org/
 IUSE=office_implementation_libreoffice office_implementation_openoffice
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=LGPL-2
 RDEPEND=>=virtual/jre-1.8 office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( app-office/openoffice-bin[java] )
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://www.languagetool.org/download/LanguageTool-3.4.oxt
 _eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=006ca67af63ddb2e177b70260357e915
+_md5_=807ecfb528100dde4dbe4d328ff7ad1a
