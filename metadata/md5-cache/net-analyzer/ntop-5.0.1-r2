@@ -4,7 +4,7 @@ DESCRIPTION=Network traffic analyzer with web interface
 EAPI=5
 HOMEPAGE=http://www.ntop.org/products/ntop/
 IUSE=snmp ssl python_targets_python2_7
-KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86
 LICENSE=GPL-3
 RDEPEND=dev-lang/lua:= dev-lang/perl dev-libs/geoip dev-libs/libevent media-libs/gd media-libs/libpng:0= net-analyzer/rrdtool[graph] net-libs/libpcap snmp? ( net-analyzer/net-snmp[ipv6] ) ssl? ( dev-libs/openssl:0= ) sys-libs/gdbm sys-libs/zlib virtual/awk app-arch/gzip dev-libs/glib:2 dev-python/mako media-fonts/corefonts media-gfx/graphviz net-misc/wget
 REQUIRED_USE=python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/ntop/ntop/Stable/ntop-5.0.1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=e9ff6e8cff52cdba2bdc4619b2551904
+_md5_=93ff0f5b2da1bdc2d28b8bfc5c44fd32
