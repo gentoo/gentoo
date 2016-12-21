@@ -4,11 +4,11 @@ DESCRIPTION=The OpenAFS distributed file system
 EAPI=6
 HOMEPAGE=https://www.openafs.org/
 IUSE=bitmap-later debug doc fuse kerberos +modules ncurses pam pthreaded-ubik +supergroups
-KEYWORDS=~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=IBM BSD openafs-krb5-a APSL-2
 RDEPEND=virtual/libintl fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) ncurses? ( sys-libs/ncurses:0= ) pam? ( virtual/pam ) modules? ( ~net-fs/openafs-kernel-1.6.18.3 )
 SLOT=0
 SRC_URI=https://openafs.org/dl/openafs/1.6.18.3/openafs-1.6.18.3-src.tar.bz2 https://openafs.org/dl/openafs/1.6.18.3/openafs-1.6.18.3-doc.tar.bz2 https://dev.gentoo.org/~bircoph/afs/openafs-patches-20160801-2.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ff461645dd280a56364b8bda24991a30
+_md5_=2b85a500a36eccfc4998579aef35c2cf
