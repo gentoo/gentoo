@@ -15,10 +15,6 @@ SRC_URI="http://void.crufty.net/ftp/pub/sjg/${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x64-freebsd"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${PN}"
 
@@ -34,7 +30,7 @@ src_compile() {
 }
 
 src_test() {
-	cd unit-tests
+	cd unit-tests || die
 	LC_ALL=C env -u A ${S}/bmake -r -m . > test.out 2>&1 \
 		|| die "tests compilation failed"
 	sed -i \
@@ -47,8 +43,8 @@ src_test() {
 }
 
 src_install() {
-	dobin ${PN}
-	doman ${PN}.1
+	dobin "${PN}"
+	doman "${PN}.1"
 	FORCE_BSD_MK=1 SYS_MK_DIR=. \
 		sh ../mk/install-mk -v -m 644 "${ED}"/usr/share/mk/${PN} \
 		|| die "failed to install mk files"
