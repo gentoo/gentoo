@@ -4453,7 +4453,7 @@ dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Has
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnu-smalltalk 3.2.4 3.2.4-r1 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.6.3 1.7.1 1.7.3 1.7.4 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.6.3 1.7.4 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
@@ -17447,7 +17447,7 @@ sys-fs/exfat-utils 1.2.1 1.2.4 1.2.5: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
-sys-fs/f2fs-tools 1.6.0 1.6.1: Tools for Flash-Friendly File System (F2FS)
+sys-fs/f2fs-tools 1.6.0 1.6.1 1.7.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.7 3.0.0_rc3: An interface for filesystems implemented in userspace
