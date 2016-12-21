@@ -6,10 +6,7 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="cpan">File-Which</remote-id>
-    <remote-id type="cpan-module">File::Which</remote-id>
+    <remote-id type="cpan">App-pwhich</remote-id>
+    <remote-id type="cpan-module">App::pwhich</remote-id>
   </upstream>
-  <use>
-    <flag name="pwhich">Install <pkg>dev-perl/App-pwhich</pkg> which used to be a part of this package</flag>
-  </use>
 </pkgmetadata>
