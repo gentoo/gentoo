@@ -7637,7 +7637,7 @@ dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema val
 dev-python/jupyter 1.0.0 1.0.0-r1: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1 4.2.2 4.3.0 4.4.0: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.1 5.0.0: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.0.6 4.1.0 4.2.0: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.0.6 4.1.0 4.2.0 4.2.1: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
 dev-python/kaa-imlib2 0.2.3-r2: Imlib2 wrapper for Python
@@ -16995,7 +16995,7 @@ sys-apps/tuned 2.7.0 2.7.1-r2: Daemon for monitoring and adaptive tuning of syst
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
-sys-apps/ucspi-ssl 0.94-r1: Command-line tools for building SSL client-server applications
+sys-apps/ucspi-ssl 0.94-r1 0.97: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r17 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 0.36-r2 0.36-r3 0.36-r4: A ucspi implementation for unix sockets
 sys-apps/udevil 0.4.4-r1: mount and unmount removable devices without a password
