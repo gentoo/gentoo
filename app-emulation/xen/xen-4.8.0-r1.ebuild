@@ -19,7 +19,7 @@ if [[ $PV == *9999 ]]; then
 else
 	KEYWORDS="~amd64 ~arm -x86"
 	UPSTREAM_VER=
-	SECURITY_VER=18
+	SECURITY_VER=20
 	GENTOO_VER=
 
 	[[ -n ${UPSTREAM_VER} ]] && \
