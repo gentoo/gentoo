@@ -176,7 +176,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		epatch "${FILESDIR}"/3.7.1/clang/gentoo-install.patch
-		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		# Fix build fails with using gcc-4.9 on Gentoo/FreeBSD, bug #548444

@@ -1,9 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+MODULES_OPTIONAL_USE=modules
 inherit linux-mod bash-completion-r1 cmake-utils
 
 DESCRIPTION="A system exploration and troubleshooting tool"
@@ -16,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+modules"
 
 RDEPEND="
+	app-misc/jq:0=
 	dev-lang/luajit:2=
 	>=dev-libs/jsoncpp-0.6_pre:0=
 	dev-libs/libb64:0=
@@ -31,11 +34,11 @@ DEPEND="${RDEPEND}
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 pkg_pretend() {
-	use modules && linux-mod_pkg_setup
+	linux-mod_pkg_setup
 }
 
 pkg_setup() {
-	use modules && linux-mod_pkg_setup
+	linux-mod_pkg_setup
 }
 
 src_prepare() {
@@ -53,36 +56,32 @@ src_configure() {
 
 		# unbundle the deps
 		-DUSE_BUNDLED_DEPS=OFF
-#		-DUSE_BUNDLED_LUAJIT=OFF
-#		-DLUAJIT_PREFIX="${EPREFIX}"/usr
-#		-DLUAJIT_INCLUDE="${EPREFIX}"/usr/include/luajit-2.0
-#		-DUSE_BUNDLED_JSONCPP=OFF
-#		-DJSONCPP_PREFIX="${EPREFIX}"/usr
-#		-DJSONCPP_INCLUDE="${EPREFIX}"/usr/include/jsoncpp
-#		-DUSE_BUNDLED_NCURSES=OFF
-#		-DUSE_BUNDLED_OPENSSL=OFF
-#		-DUSE_BUNDLED_CURL=OFF
-#		-DZLIB_PREFIX="${EPREFIX}"/usr
 	)
 
 	cmake-utils_src_configure
 
 	# setup linux-mod ugliness
-	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver:)"
+	MODULE_NAMES="sysdig-probe(extra:${S}/driver:)"
 	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
-	BUILD_TARGETS="driver"
+	BUILD_TARGETS="all"
+
+	if use modules; then
+		cmake-utils_src_make configure_driver
+
+		cp "${BUILD_DIR}"/driver/Makefile.dkms driver/Makefile || die
+	fi
 }
 
 src_compile() {
 	cmake-utils_src_compile
 
-	use modules && linux-mod_src_compile
+	linux-mod_src_compile
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	use modules && linux-mod_src_install
+	linux-mod_src_install
 
 	# remove sources
 	rm -r "${ED%/}"/usr/src || die
