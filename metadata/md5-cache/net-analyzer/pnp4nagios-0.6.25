@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/php-5.3:*[json,simplexml,zlib,xml,filter] >=net-analyzer/rrdt
 SLOT=0
 SRC_URI=mirror://sourceforge/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=depend.apache	9750b21d9600b3ebc8dacfb0c2674436	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=69857250387ef26d9a81f06e95d41b36

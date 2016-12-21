@@ -9,5 +9,5 @@ RDEPEND==www-servers/apache-2.4*[ldap] =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mjo/distfiles/mod_vhost_ldap-2.4.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_prepare:- src_compile:apache-module src_install:-
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	9750b21d9600b3ebc8dacfb0c2674436	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=772a68294cd53f5cf6dda7d717b43d5a

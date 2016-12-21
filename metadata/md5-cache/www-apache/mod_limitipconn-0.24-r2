@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=2
 SRC_URI=http://dominia.org/djao/limit/mod_limitipconn-0.24.tar.bz2
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:apache-module src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	9750b21d9600b3ebc8dacfb0c2674436
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f
 _md5_=d8525db67845f0b4ab6afb041b7864ba

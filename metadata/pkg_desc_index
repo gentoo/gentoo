@@ -14249,7 +14249,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.6 2.2.2 2.2.3 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.2 2.2.3 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -17956,7 +17956,7 @@ www-apache/mod_fastcgi_handler 0.6: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9 2.3.9-r1: A binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
 www-apache/mod_geoip2 1.2.7-r1: Apache 2.x module for finding the country and city that a web request originated from
-www-apache/mod_gnutls 0.5.10-r1 0.7.3 0.7.5 0.8.0: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+www-apache/mod_gnutls 0.5.10-r1 0.7.3 0.7.5 0.8.1: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
 www-apache/mod_h2 1.4.7 1.5.6 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40: JK module for connecting Tomcat and Apache using the ajp13 protocol.
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory

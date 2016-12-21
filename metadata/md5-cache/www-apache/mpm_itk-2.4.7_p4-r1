@@ -9,5 +9,5 @@ RDEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache
 SLOT=0
 SRC_URI=http://mpm-itk.sesse.net/mpm-itk-2.4.7-04.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:- src_compile:apache-module src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	9750b21d9600b3ebc8dacfb0c2674436	eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dc3b66b40c45a55397be534ba66e1861
