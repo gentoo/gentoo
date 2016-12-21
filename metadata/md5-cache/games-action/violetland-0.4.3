@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf dev-libs/boost[threads(+)] virtual/opengl virtual/glu app-arch/unzip sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf dev-libs/boost[threads(+)] virtual/opengl virtual/glu sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Help a girl by name of Violet to struggle with hordes of monsters
 EAPI=5
 HOMEPAGE=https://code.google.com/p/violetland/
@@ -7,7 +7,7 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3 CC-BY-SA-3.0
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf dev-libs/boost[threads(+)] virtual/opengl virtual/glu games-misc/games-envd
 SLOT=0
-SRC_URI=https://violetland.googlecode.com/files/violetland-v0.4.3-src.zip
+SRC_URI=https://github.com/ooxi/violetland/archive/0.4.3.tar.gz -> violetland-0.4.3.tar.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3c663c8ab9395d19747d5ef4ea779e28
+_md5_=ab715def05dc900425d19868936a3d8e
