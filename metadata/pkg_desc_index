@@ -11526,7 +11526,7 @@ kde-apps/kaccounts-integration 16.08.3 16.12.0: Administer web accounts for the 
 kde-apps/kaccounts-providers 16.08.3 16.12.0: KDE accounts providers
 kde-apps/kaddressbook 4.4.2016.01 4.14.11_pre20160211 16.12.0: Address book application based on KDE Frameworks
 kde-apps/kajongg 16.08.3 16.12.0: The classical Mah Jongg for four players
-kde-apps/kalarm 4.4.2016.01 4.14.11_pre20160211 16.12.0: Application to manage alarms and other timer based alerts for the desktop
+kde-apps/kalarm 4.4.2016.01 4.14.11_pre20160211 16.12.0-r1: Application to manage alarms and other timer based alerts for the desktop
 kde-apps/kalarmcal 16.12.0: Client library to access and handling of KAlarm calendar data
 kde-apps/kalgebra 16.08.3 16.12.0: MathML-based graph calculator by KDE
 kde-apps/kalzium 16.08.3 16.12.0: Periodic table of the elements
@@ -11638,7 +11638,7 @@ kde-apps/klines 16.08.3 16.12.0: A little KDE game about balls and how to get ri
 kde-apps/klinkstatus 16.08.3 16.12.0: KDE web development - link validity checker
 kde-apps/kmag 16.08.3 16.12.0: KDE screen magnifier
 kde-apps/kmahjongg 16.08.3 16.12.0: A tile matching game for one or two players
-kde-apps/kmail 4.4.2016.01 4.14.11_pre20160211 16.12.0: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail 4.4.2016.01 4.14.11_pre20160211 16.12.0-r1: Email client, supporting POP3 and IMAP mailboxes.
 kde-apps/kmail-account-wizard 16.12.0: Assistant for KMail accounts configuration
 kde-apps/kmailtransport 16.12.0: Mail transport service
 kde-apps/kmbox 16.12.0: Library for accessing MBox format mail storages
@@ -11654,7 +11654,7 @@ kde-apps/knetattach 16.04.3: KDE network wizard
 kde-apps/knetwalk 16.08.3 16.12.0: KDE version of the popular NetWalk game for system administrators
 kde-apps/knewstuff 16.04.3: KDE4 software to download and upload 'new stuff'
 kde-apps/knode 4.4.2016.01 4.14.11_pre20160211: A newsreader by KDE
-kde-apps/knotes 4.4.2016.01 4.14.11_pre20160211 16.12.0: Note taking application
+kde-apps/knotes 4.4.2016.01 4.14.11_pre20160211 16.12.0-r1: Note taking application
 kde-apps/knotify 16.04.3: The KDE notification daemon
 kde-apps/kolf 16.08.3 16.12.0: Minigolf Game by KDE
 kde-apps/kollision 16.08.3 16.12.0: Simple ball dodging game
@@ -11670,7 +11670,7 @@ kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE a
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 16.12.0: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 16.12.0: Library for embedding KParts in a Kontact component
 kde-apps/kopete 16.08.3 16.12.0: KDE multi-protocol IM client
-kde-apps/korganizer 4.4.2016.01 4.14.11_pre20160211 16.12.0: Organizational assistant, providing calendars and other similar functionality
+kde-apps/korganizer 4.4.2016.01 4.14.11_pre20160211 16.12.0-r1: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.08.3 16.12.0: KDE patience game
 kde-apps/kpimtextedit 16.12.0: A textedit with PIM-specific features
@@ -11965,7 +11965,7 @@ kde-misc/wacomtablet 2.1.0 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
-kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1: Getting things done application by KDE
+kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
 kde-plasma/bluedevil 2.1.1 5.8.3 5.8.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.8.3 5.8.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.8.3 5.8.4: Breeze theme for GRUB
