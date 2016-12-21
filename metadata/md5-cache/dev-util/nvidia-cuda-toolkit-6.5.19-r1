@@ -3,11 +3,11 @@ DESCRIPTION=NVIDIA CUDA Toolkit (compiler and friends)
 EAPI=5
 HOMEPAGE=http://developer.nvidia.com/cuda
 IUSE=debugger doc eclipse profiler
-KEYWORDS=-* ~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=-* amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=NVIDIA-CUDA
 RDEPEND=<sys-devel/gcc-4.9[cxx] debugger? ( sys-libs/libtermcap-compat sys-libs/ncurses[tinfo] ) eclipse? ( >=virtual/jre-1.6 ) profiler? ( >=virtual/jre-1.6 ) amd64? ( >=x11-drivers/nvidia-drivers-343.22[uvm] ) x86? ( <x11-drivers/nvidia-drivers-346.35[uvm] )
 SLOT=0/6.5.19
 SRC_URI=amd64? ( http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.19_linux_64.run ) x86? ( http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.19_linux_32.run )
 _eclass_exported_funcs=pkg_pretend:check-reqs pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_install:-
 _eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	cuda	e8857dd1a7c161259295205ce0220046	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6361d13326f2639540c1c1dc913131a2
+_md5_=3a32d47d0af14448f5ceb82d5e72fb7d
