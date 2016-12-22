@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils multilib gnome2-utils cmake-utils python-single-r1
+inherit eutils gnome2-utils cmake-utils python-single-r1
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="http://www.qgis.org/"
@@ -15,10 +15,10 @@ SRC_URI="
 	http://qgis.org/downloads/qgis-${PV}.tar.bz2
 	examples? ( http://download.osgeo.org/qgis/data/qgis_sample_data.tar.gz )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples grass gsl mapserver postgres python test"
+IUSE="examples grass gsl mapserver oracle postgres python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 		mapserver? ( python )"
@@ -27,25 +27,27 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/expat
 	sci-geosciences/gpsbabel
-	>=sci-libs/gdal-1.6.1[geos,python?,${PYTHON_USEDEP}]
+	>=sci-libs/gdal-1.6.1:=[geos,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
-	gsl? ( sci-libs/gsl )
-	sci-libs/libspatialindex
+	gsl? ( sci-libs/gsl:= )
+	sci-libs/libspatialindex:=
 	sci-libs/proj
+	dev-qt/designer:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
+	dev-qt/qtscript:4
 	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
-	dev-qt/designer:4
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=[qt4(-)]
 	|| (
 		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
 	)
-	grass? ( || ( >=sci-geosciences/grass-7.0.0 ) )
+	grass? ( || ( >=sci-geosciences/grass-7.0.0:= ) )
 	mapserver? ( dev-libs/fcgi )
-	postgres? ( dev-db/postgresql:* )
+	oracle? ( dev-db/oracle-instantclient:= )
+	postgres? ( dev-db/postgresql:= )
 	python? (
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
@@ -69,9 +71,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.12.0-no-pyqtconfig.patch"
-)
+DOCS=( BUGS ChangeLog NEWS )
+
+# Disabling test suite because upstream disallow running from install path
+RESTRICT="test"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -93,17 +96,16 @@ src_configure() {
 		"-DWITH_INTERNAL_SIX=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
-		"-DWITH_SPATIALITE=ON"
-		"-DWITH_INTERNAL_SPATIALITE=OFF"
-		$(cmake-utils_use_with postgres POSTGRESQL)
-		$(cmake-utils_use_with grass GRASS)
-		$(cmake-utils_use_with mapserver SERVER)
-		$(cmake-utils_use_with python BINDINGS)
-		$(cmake-utils_use python BINDINGS_GLOBAL_INSTALL)
-		$(cmake-utils_use_with python PYSPATIALITE)
-		$(cmake-utils_use_with gsl GSL)
-		$(cmake-utils_use_enable test TESTS)
+		"-WITH_QSPATIALITE=ON"
+		-DENABLE_TESTS=no
+		-DWITH_BINDINGS="$(usex python)"
+		-DWITH_GRASS7="$(usex grass)"
 		$(usex grass "-DGRASS_PREFIX=/usr/" "")
+		-DWITH_GSL="$(usex gsl)"
+		-DWITH_ORACLE="$(usex oracle)"
+		-DWITH_POSTGRESQL="$(usex postgres)"
+		-DWITH_PYSPATIALITE="$(usex python)"
+		-DWITH_SERVER="$(usex mapserver)"
 	)
 
 	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
@@ -126,7 +128,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	dodoc BUGS ChangeLog CODING
 
 	newicon -s 128 images/icons/qgis-icon.png qgis.png
 	make_desktop_entry qgis "QGIS " qgis
