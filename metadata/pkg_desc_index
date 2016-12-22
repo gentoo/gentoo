@@ -2310,7 +2310,7 @@ app-text/htmlinc 1.0_beta1 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlrecode 1.3.1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1: An HTML preprocessor
-app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.3: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.3 1.5.4 1.6.0: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.63 3.68 3.70: ISO language, territory, currency, script codes and their translations
@@ -15447,7 +15447,7 @@ net-proxy/privoxy 3.0.24 3.0.24-r1 3.0.24-r2: A web proxy with advanced filterin
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.5.4 2.5.5 2.5.6: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
-net-proxy/squid 3.5.19 3.5.20 3.5.21 3.5.22: A full-featured web proxy cache
+net-proxy/squid 3.5.19 3.5.20 3.5.21 3.5.22 3.5.23: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
