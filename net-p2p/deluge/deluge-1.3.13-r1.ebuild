@@ -32,10 +32,10 @@ REQUIRED_USE="
 	libnotify? ( gtk )
 "
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.12-fix_scheduler_plugin.patch"
+	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
 )
 
-CDEPEND=">=net-libs/rb_libtorrent-0.14.9[python,${PYTHON_USEDEP}]"
+CDEPEND=">=net-libs/rb_libtorrent-1.0.9-r1[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-util/intltool"
@@ -45,7 +45,10 @@ RDEPEND="${CDEPEND}
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		(
+		>=dev-python/twisted-core-13.0[${PYTHON_USEDEP}]
 		>=dev-python/twisted-web-13.0[${PYTHON_USEDEP}]
+		)
 	)
 	geoip? ( dev-libs/geoip )
 	gtk? (
