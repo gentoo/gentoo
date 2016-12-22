@@ -31,7 +31,7 @@ COMMON_DEPS="
 	dev-perl/Math-Random-ISAAC
 "
 
-DEPEND="test? ( dev-perl/Pod-Coverage${COMMON_DEPS} )"
+DEPEND="test? ( dev-perl/Pod-Coverage ${COMMON_DEPS} )"
 RDEPEND="
 	virtual/httpd-cgi
 	${COMMON_DEPS}
