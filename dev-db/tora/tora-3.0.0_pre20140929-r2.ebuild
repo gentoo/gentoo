@@ -24,14 +24,13 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/ferrisloki
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=[qt4(-)]
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4[mysql?,postgres?]
 	dev-qt/qtxmlpatterns:4
 	=dev-db/oracle-instantclient-basic-11*
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 "
-
 DEPEND="
 	virtual/pkgconfig
 	${RDEPEND}
