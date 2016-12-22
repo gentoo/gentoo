@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="arch testing tool"
-HOMEPAGE="https://github.com/tom111/tatt"
-EGIT_REPO_URI="https://github.com/tom111/tatt.git \
-	git://github.com/tom111/tatt.git"
+HOMEPAGE="https://github.com/kensington/tatt"
+EGIT_REPO_URI="https://github.com/kensington/tatt.git \
+	git://github.com/kensington/tatt.git"
 
 LICENSE="GPL-2"
 SLOT="0"
