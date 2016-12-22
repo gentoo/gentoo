@@ -31,7 +31,7 @@
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
 
-inherit eutils ghc-package multilib
+inherit eutils ghc-package multilib toolchain-funcs
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @DESCRIPTION:
@@ -329,6 +329,9 @@ cabal-configure() {
 	do
 		cabalconf+=(--ghc-option="$option")
 	done
+
+	# toolchain
+	cabalconf+=(--with-ar="$(tc-getAR)")
 
 	# Building GHCi libs on ppc64 causes "TOC overflow".
 	if use ppc64; then
