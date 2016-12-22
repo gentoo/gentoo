@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
+# Dead upstream, no more hosted on googlecode
+# No reverse dependencies. Masked for removal in 30 days.
+app-admin/phpsyslogng
+
 # Davide Pesavento <pesa@gentoo.org> (21 Dec 2016)
 # Fails to install (bug 587376 and 584988), upstream stopped maintaining
 # the 5.x release series 2 years ago. Use dev-util/eric:6 instead.
