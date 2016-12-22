@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=dev-java/avalon-logkit:2.0 dev-java/commons-logging:0 dev-java/dom4j:1 dev-java/jaxen:1.1 dev-java/jython:2.7 dev-java/log4j:0 dev-java/rhino:1.6 dev-java/slf4j-api:0 dev-java/xalan:0 java-virtuals/servlet-api:2.5 >=virtual/jdk-1.7 dev-java/javacc:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=A Java tool to generate text output based on templates
+EAPI=6
+HOMEPAGE=http://freemarker.org/
+IUSE=elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-java/avalon-logkit:2.0 dev-java/commons-logging:0 dev-java/dom4j:1 dev-java/jaxen:1.1 dev-java/jython:2.7 dev-java/log4j:0 dev-java/rhino:1.6 dev-java/slf4j-api:0 dev-java/xalan:0 java-virtuals/servlet-api:2.5 >=virtual/jre-1.7 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=2.3
+SRC_URI=https://github.com/apache/incubator-freemarker/archive/v2.3.25.tar.gz -> freemarker-2.3.25.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:- src_configure:java-ant-2 src_compile:java-pkg-2 src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9084a7e22a5e3aa01fdc89167aa1487c

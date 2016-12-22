@@ -306,7 +306,7 @@ app-arch/snappy 1.1.2-r1 1.1.3 1.1.3-r1: A high-speed compression/decompression 
 app-arch/star 1.5.3: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tapeutils 0.4: Utilities for manipulation of tapes and tape image files
-app-arch/tar 1.27.1-r2 1.28-r1 1.29 1.29-r1 1.29-r2: Use this to make tarballs :)
+app-arch/tar 1.29-r1 1.29-r2: Use this to make tarballs :)
 app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
@@ -3971,7 +3971,7 @@ dev-java/freehep-graphicsio-emf 2.4: High Energy Physics Java library - FreeHEP 
 dev-java/freehep-graphicsio-svg 2.4: High Energy Physics Java library - FreeHEP Scalable Vector Graphics Driver
 dev-java/freehep-graphicsio-tests 2.4: High Energy Physics Java library - FreeHEP GraphicsIO Test Library
 dev-java/freehep-io 2.2.2: High Energy Physics Java library - FreeHEP I/O Library
-dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output based on templates
+dev-java/freemarker 2.3.13-r2 2.3.25: A Java tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/gcj-jdk 4.9.4: Java wrappers around GCJ
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
@@ -7069,7 +7069,7 @@ dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4-r1 4.12_pre1606101416-r1: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
-dev-python/PySocks 1.5.6 1.5.7 1.6.4: SOCKS client module
+dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.1.2: Abtraction layer for PyQt5/PyQt4/PySide
@@ -7563,11 +7563,11 @@ dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hyper-h2 2.4.0 2.4.1 2.5.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
-dev-python/hypothesis 1.19.0 3.6.0-r1: A library for property based testing
+dev-python/hypothesis 1.19.0 3.6.0-r1 3.6.1: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
-dev-python/idna 1.1 2.0 2.1: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 1.1 2.0 2.1 2.2: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
 dev-python/imageio 1.5 1.6 2.0.1: Python library for reading and writing image data
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
@@ -7695,7 +7695,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.4.4 3.4.4-r1 3.5.0 3.5.0-r1 3.6.0 3.6.4-r1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.6.0 3.6.4-r1 3.7.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -7855,7 +7855,7 @@ dev-python/pafy 0.5.1 0.5.2: Python library to retrieve YouTube content and meta
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 9999: Powerful data structures for data analysis and statistics
-dev-python/paramiko 1.15.1-r1 1.16.0 2.0.2 9999: SSH2 protocol library
+dev-python/paramiko 1.16.0 2.0.2 2.1.1 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
 dev-python/parse-type 0.3.4 0.3.4-r1: Simplifies to build parse types based on the parse module
@@ -7932,7 +7932,7 @@ dev-python/promise 0.2.2-r1 0.4.1 0.4.2: Bytecode optimisation using staticness 
 dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.0.0_beta3_p1 3.0.2 3.1.0: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
-dev-python/psutil 1.2.1 2.1.3 4.4.2 5.0.0: Retrieve information on running processes and system utilization
+dev-python/psutil 2.1.3 4.4.2 5.0.0 5.0.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1 2.6.2: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
@@ -8281,7 +8281,7 @@ dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.2: A pure Python implementation of the trie data structure.
-dev-python/pytz 2015.6 2016.3 2016.6.1 2016.7: World timezone definitions for Python
+dev-python/pytz 2015.6 2016.3 2016.7 2016.10: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
 dev-python/pyusb 1.0.0_beta2 1.0.0: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
@@ -8337,7 +8337,7 @@ dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
 dev-python/reproject 0.2 0.3.1: Reproject astronomical images with Python
-dev-python/requests 2.7.0 2.8.1 2.9.1-r2 2.11.1 2.12.1 2.12.3: HTTP library for human beings
+dev-python/requests 2.7.0 2.8.1 2.9.1-r2 2.11.1 2.12.3 2.12.4: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0 0.7.0 1.0.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1 0.6.2: This project provides first-class OAuth library support for Requests
