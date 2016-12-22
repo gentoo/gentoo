@@ -21,7 +21,7 @@ RDEPEND="
 	dev-cpp/antlr-cpp:2
 	dev-db/sqlite:3
 	dev-libs/qcustomplot[qt5=]
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=
 	!qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

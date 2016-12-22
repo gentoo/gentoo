@@ -20,7 +20,7 @@ IUSE="debug examples html perl php python ruby xml"
 DEPEND="dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtscript:4
-	x11-libs/qscintilla
+	x11-libs/qscintilla[qt4(-)]
 "
 RDEPEND="${DEPEND}
 	dev-util/astyle

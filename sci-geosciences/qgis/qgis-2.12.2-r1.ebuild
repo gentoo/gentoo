@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,7 @@ RDEPEND="
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
 	dev-qt/designer:4
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=[qt4(-)]
 	|| (
 		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1 )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
@@ -50,6 +50,13 @@ RDEPEND="
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
 		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/markupsafe[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		${PYTHON_DEPS}
 	)
@@ -62,6 +69,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.12.0-no-pyqtconfig.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
@@ -72,7 +83,14 @@ src_configure() {
 		"-DBUILD_SHARED_LIBS=ON"
 		"-DQGIS_LIB_SUBDIR=$(get_libdir)"
 		"-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis"
+		"-DWITH_INTERNAL_DATEUTIL=OFF"
+		"-DWITH_INTERNAL_HTTPLIB2=OFF"
+		"-DWITH_INTERNAL_JINJA2=OFF"
+		"-DWITH_INTERNAL_MARKUPSAFE=OFF"
+		"-DWITH_INTERNAL_PYGMENTS=OFF"
+		"-DWITH_INTERNAL_PYTZ=OFF"
 		"-DWITH_INTERNAL_QWTPOLAR=OFF"
+		"-DWITH_INTERNAL_SIX=OFF"
 		"-DPEDANTIC=OFF"
 		"-DWITH_APIDOC=OFF"
 		"-DWITH_SPATIALITE=ON"
@@ -118,8 +136,9 @@ src_install() {
 		doins -r "${WORKDIR}"/qgis_sample_data/*
 	fi
 
-	python_optimize "${D}"/usr/share/qgis/python/plugins \
-		"${D}"/$(python_get_sitedir)/qgis
+	python_optimize "${D}"/usr/share/qgis/python \
+		"${D}"/$(python_get_sitedir)/qgis \
+		"${D}"/$(python_get_sitedir)/pyspatialite
 
 	if use grass; then
 		python_fix_shebang "${D}"/usr/share/qgis/grass/scripts

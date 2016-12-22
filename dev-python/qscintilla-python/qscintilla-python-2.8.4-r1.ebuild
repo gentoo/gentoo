@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ DEPEND="
 	>=dev-python/PyQt4-4.11[X,${PYTHON_USEDEP}]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	~x11-libs/qscintilla-${PV}:=
+	~x11-libs/qscintilla-${PV}:=[qt4(-)]
 "
 RDEPEND="${DEPEND}"
 
