@@ -19,7 +19,7 @@ RDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4[sqlite]
-	x11-libs/qscintilla"
+	x11-libs/qscintilla:=[qt4(-)]"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README )
@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}/${P}-lpthread.patch" )
 
 src_prepare() {
 	# remove bundled lib
-	rm -rf "${S}"/${PN}/qscintilla2
+	rm -rf "${S}"/${PN}/qscintilla2 || die
 
 	cmake-utils_src_prepare
 }
