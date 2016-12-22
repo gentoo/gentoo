@@ -7,7 +7,7 @@ EAPI=6
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: easy and fast outlining"
-HOMEPAGE="http://www.vimoutliner.org/"
+HOMEPAGE="https://github.com/vimoutliner/vimoutliner"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip -> ${P}.zip"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
