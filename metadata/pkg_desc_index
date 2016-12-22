@@ -38,7 +38,7 @@ app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech 
 app-accessibility/yasr 0.6.9-r1: general-purpose console screen reader
 app-admin/389-console 1.1.7-r1: A Java based console for remote management 389 server
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
-app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13: Web UI based monitoring tool for Aerospike Community Edition Server
+app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11 3.6.12 3.6.13 3.6.13-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.6 2.1.3.0 2.2.0.0 2.2.1.0_rc1 9999: Model-driven deployment, config management, and command execution framework
@@ -11953,7 +11953,7 @@ kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
 kde-misc/rsibreak 0.12.4 0.12.5: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.4-r1: Mindmapping-like tool for document generation
 kde-misc/serverstatuswidget 1.5.1: KDE plasma widget used for monitoring servers via ping or tcp connect
-kde-misc/skanlite 1.1-r1 2.0 2.0.1: KDE image scanning application
+kde-misc/skanlite 1.1-r1 2.0.1: KDE image scanning application
 kde-misc/smooth-tasks 0_p20120130: Alternate taskbar KDE plasmoid, similar to Windows 7
 kde-misc/stdin-plasmoid 0.2_beta1: Plasmoid for executing a process and capturing its stderr and stdout
 kde-misc/steamcompanion 0.5.4-r1: Connector for web Steam service from Valve
@@ -18787,7 +18787,7 @@ x11-misc/xsetleds 0.1.3 0.1.3-r1: small tool to report and change the keyboard L
 x11-misc/xsnap 1.5.10 1.5.11 1.5.15: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 1.42-r1 1.42-r2: let it snow on your desktop and windows
 x11-misc/xsri 2.1.0-r3: The xsri wallpaper setter from RedHat
-x11-misc/xss-lock 0.3.0_p20140302: Use external locker as X screen saver
+x11-misc/xss-lock 0.3.0_p20140302 0.3.0_p20140302-r1: Use external locker as X screen saver
 x11-misc/xssstate 1.1: A simple tool to retrieve the X screensaver state
 x11-misc/xstroke 0.6-r1: Gesture/Handwriting recognition engine for X
 x11-misc/xteddy 2.2: A cuddly teddy bear (or other image) for your X desktop

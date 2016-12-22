@@ -4,11 +4,11 @@ DESCRIPTION=Convert POD to Markdown
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Pod-Markdown/
 IUSE=test minimal
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/HTML-Parser ) virtual/perl-Encode virtual/perl-Getopt-Long >=virtual/perl-Pod-Simple-3.270.0 virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RW/RWSTAUNER/Pod-Markdown-3.005.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=511392d3ee67a517fb717ea3e6e8c2d2
+_md5_=2c97b3e8b764567816f6f597127f186c
