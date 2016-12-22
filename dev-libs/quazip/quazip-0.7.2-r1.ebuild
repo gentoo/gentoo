@@ -86,4 +86,9 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake-utils_src_install
+
+	# compatibility with not yet fixed rdeps (Gentoo bug #598136)
+	if ! use qt4; then
+		dosym libquazip5.so /usr/$(get_libdir)/libquazip.so
+	fi
 }
