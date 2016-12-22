@@ -24,7 +24,7 @@ RESTRICT="test"
 RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	ssl? (
 		curl_ssl_axtls? (
-			net-libs/axtls[${MULTILIB_USEDEP}]
+			net-libs/axtls:0=[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
 		curl_ssl_gnutls? (
