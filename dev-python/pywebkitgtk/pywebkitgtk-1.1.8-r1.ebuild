@@ -11,7 +11,7 @@ DESCRIPTION="Python bindings for the WebKit GTK+ port"
 HOMEPAGE="https://github.com/jmalonzo/pywebkitgtk"
 SRC_URI="https://github.com/jmalonzo/${PN}/archive/${PN^^}_${PV//./_}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="test"
