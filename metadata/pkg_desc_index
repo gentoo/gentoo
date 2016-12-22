@@ -15141,7 +15141,7 @@ net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
-net-misc/quagga 1.0.20160315-r4 1.1.0 1.1.0-r1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+net-misc/quagga 1.0.20160315-r4 1.1.0-r2: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
@@ -16782,7 +16782,7 @@ sys-apps/cpuid 20130610 20140123 20150606 20151017: Utility to get detailed info
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
 sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
-sys-apps/darwin-miscutils 4-r1 5-r1 6-r1 7 8 9 10: Miscellaneous commands used on Darwin/Mac OS X systems, Mountain Lion 10.8
+sys-apps/darwin-miscutils 4-r1 5-r1 6-r1 7 8 9 10 11: Miscellaneous commands used on macOS, Sierra 10.12
 sys-apps/dbus 1.8.16 1.8.22 1.10.8-r1 1.10.12 1.10.14: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
