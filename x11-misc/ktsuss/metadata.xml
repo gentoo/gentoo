@@ -10,6 +10,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="sudo">Use the sudo backend instead the su one</flag>
+	</use>
 	<upstream>
 		<remote-id type="google-code">ktsuss</remote-id>
 		<remote-id type="github">nomius/ktsuss</remote-id>
