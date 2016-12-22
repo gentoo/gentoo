@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=virtual/pkgconfig >=x11-libs/gtk+-2.12.11:2 >=dev-libs/glib-2.16.5:2 sudo? ( app-admin/sudo ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Graphical version of su written in C and GTK+ 2
+EAPI=6
+HOMEPAGE=https://github.com/nomius/ktsuss
+IUSE=sudo
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=>=x11-libs/gtk+-2.12.11:2 >=dev-libs/glib-2.16.5:2 sudo? ( app-admin/sudo )
+SLOT=0
+SRC_URI=https://github.com/nomius/ktsuss/archive/2.1.tar.gz -> ktsuss-2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=6d69fb013c2b1b3083fb20bc2d6db904

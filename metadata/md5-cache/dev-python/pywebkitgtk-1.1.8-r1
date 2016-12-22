@@ -2,13 +2,13 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-libs/libxslt >=net-libs/webkit-gtk-1.1.15:2 virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Python bindings for the WebKit GTK+ port
 EAPI=5
-HOMEPAGE=https://code.google.com/p/pywebkitgtk/
+HOMEPAGE=https://github.com/jmalonzo/pywebkitgtk
 IUSE=test python_targets_python2_7 test
 KEYWORDS=amd64 ~ppc ~sparc x86
-LICENSE=LGPL-2
+LICENSE=LGPL-2+
 RDEPEND=dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-libs/libxslt >=net-libs/webkit-gtk-1.1.15:2
 SLOT=0
-SRC_URI=https://pywebkitgtk.googlecode.com/files/pywebkitgtk-1.1.8.tar.gz
+SRC_URI=https://github.com/jmalonzo/pywebkitgtk/archive/PYWEBKITGTK_1_1_8.tar.gz -> pywebkitgtk-1.1.8.tar.gz
 _eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=ff1fa0e17b6c232c5869f50256553f7c
+_md5_=726606348b61fd493a70b6a088df2f6f

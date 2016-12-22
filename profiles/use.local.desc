@@ -8318,6 +8318,7 @@ x11-misc/gpaste:gnome - Enable proper gnome support and enable gnome shell exten
 x11-misc/gtkdialog:glade - Enable support for gnome-base/libglade
 x11-misc/gtkdialog:vte - Enable support for x11-libs/vte
 x11-misc/i3status:filecaps - Linux capabilities library is required for i3status to be able to read net bandwith
+x11-misc/ktsuss:sudo - Use the sudo backend instead the su one
 x11-misc/light-locker:consolekit - Keep track of the various users, sessions, and seats present on the system.
 x11-misc/light-locker:dpms - Turn on the display on screensaver deactivation.
 x11-misc/light-locker:gtk3 - Build with GTK+ 3 instead of GTK+ 2.

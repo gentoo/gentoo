@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=>=media-libs/alsa-lib-1.1.3 >=dev-python/pyalsa-1.0.26 fltk? ( >=x11-libs/fltk-1.3.0:1 ) gtk? ( >=dev-python/pygtk-2 x11-libs/gtk+:2 x11-libs/gtk+:3 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Advanced Linux Sound Architecture tools
+EAPI=6
+HOMEPAGE=http://www.alsa-project.org/
+IUSE=fltk gtk alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_sb16 alsa_cards_sbawe alsa_cards_emu10k1 alsa_cards_emu10k1x alsa_cards_ice1712 alsa_cards_rme32 alsa_cards_rme96 alsa_cards_sscape alsa_cards_pcxhr
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/alsa-lib-1.1.3 >=dev-python/pyalsa-1.0.26 fltk? ( >=x11-libs/fltk-1.3.0:1 ) gtk? ( >=dev-python/pygtk-2 x11-libs/gtk+:2 x11-libs/gtk+:3 ) gtk? ( media-fonts/font-misc-misc )
+SLOT=0.9
+SRC_URI=mirror://alsaproject/tools/alsa-tools-1.1.3.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=32d7607a6f295e89a15398a9f89adba6
