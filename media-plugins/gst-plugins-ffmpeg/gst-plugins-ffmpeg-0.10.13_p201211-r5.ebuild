@@ -28,7 +28,7 @@ RDEPEND="
 	>=media-libs/gstreamer-0.10.36-r2:0.10[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-0.10.36:0.10[${MULTILIB_USEDEP}]
 
-	!libav? ( >=media-video/ffmpeg-1.2.6-r1:0=[postproc,${MULTILIB_USEDEP}] )
+	!libav? ( >=media-video/ffmpeg-2*:0=[postproc,${MULTILIB_USEDEP}] )
 	libav? (
 		>=media-video/libav-11.3:0=[${MULTILIB_USEDEP}]
 		>=media-libs/libpostproc-10.20140517-r1:0=[${MULTILIB_USEDEP}] )
