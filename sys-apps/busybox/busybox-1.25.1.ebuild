@@ -134,7 +134,7 @@ src_configure() {
 		busybox_config_option n UDHCPC6
 	fi
 
-	busybox_config_option $(usex static n pam) PAM
+	busybox_config_option pam PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
 	busybox_config_option systemd FEATURE_SYSTEMD
