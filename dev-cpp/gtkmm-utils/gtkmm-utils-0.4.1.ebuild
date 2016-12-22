@@ -9,7 +9,7 @@ DESCRIPTION="Utility functions, classes and widgets written on top of gtkmm and
 glibmm."
 HOMEPAGE="https://github.com/markoa/gtkmm-utils"
 SRC_URI="https://github.com/markoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
