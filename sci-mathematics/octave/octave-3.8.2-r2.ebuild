@@ -29,7 +29,7 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( sci-mathematics/glpk:0= )
 	gnuplot? ( sci-visualization/gnuplot )
-	gui? ( x11-libs/qscintilla:0= )
+	gui? ( x11-libs/qscintilla:=[qt4(-)] )
 	hdf5? ( sci-libs/hdf5:0= )
 	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	imagemagick? ( media-gfx/imagemagick:=[cxx] )

@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick hdf5 +imagemagick java opengl openssl
 	portaudio postscript +qhull +qrupdate qt5 readline sndfile +sparse static-libs X zlib"
 REQUIRED_USE="?? ( graphicsmagick imagemagick )"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
@@ -50,7 +50,9 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5 )
+		dev-qt/qtnetwork:5
+		>=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
+	)
 	readline? ( sys-libs/readline:0= )
 	sndfile? ( media-libs/libsndfile )
 	sparse? (
