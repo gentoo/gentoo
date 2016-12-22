@@ -566,6 +566,9 @@ linux-mod_pkg_setup() {
 		return
 	fi
 
+	# External modules use kernel symbols (bug #591832)
+	CONFIG_CHECK+=" !TRIM_UNUSED_KSYMS"
+
 	linux-info_pkg_setup;
 	require_configured_kernel
 	check_kernel_built;
@@ -592,7 +595,7 @@ linux-mod_pkg_setup_binary() {
 		[[ ${config:0:1} == "~" ]] && optional=''
 		new_CONFIG_CHECK="${new_CONFIG_CHECK} ${optional}${config}"
 	done
-	export CONFIG_CHECK="${new_CONFIG_CHECK}"
+	CONFIG_CHECK="${new_CONFIG_CHECK}"
 	linux-info_pkg_setup;
 }
 

@@ -21,7 +21,7 @@ IUSE="bgpclassless caps doc elibc_glibc ipv6 multipath ospfapi pam protobuf +rea
 
 COMMON_DEPEND="
 	caps? ( sys-libs/libcap )
-	protobuf? ( dev-libs/protobuf:0= )
+	protobuf? ( dev-libs/protobuf-c:0= )
 	readline? (
 		sys-libs/readline:0=
 		pam? ( sys-libs/pam )
