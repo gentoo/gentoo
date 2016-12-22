@@ -40,7 +40,7 @@ SRC_URI="mirror://sourceforge/axtls/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~x86"
 
 IUSE="httpd cgi-lua cgi-php static static-libs doc"
