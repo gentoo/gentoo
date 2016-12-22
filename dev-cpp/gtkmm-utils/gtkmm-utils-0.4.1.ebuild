@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,9 @@ inherit eutils flag-o-matic
 
 DESCRIPTION="Utility functions, classes and widgets written on top of gtkmm and
 glibmm."
-HOMEPAGE="https://code.google.com/p/gtkmm-utils/"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
-LICENSE="LGPL-2"
+HOMEPAGE="https://github.com/markoa/gtkmm-utils"
+SRC_URI="https://github.com/markoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+LICENSE="LGPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
