@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils libtool toolchain-funcs pam multilib
+inherit eutils libtool pam multilib
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow http://pkg-shadow.alioth.debian.org/"
@@ -50,7 +50,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-is-cross-compiler && export ac_cv_func_setpgrp_void=yes
 	econf \
 		--without-group-name-max-length \
 		--without-tcb \
