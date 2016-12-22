@@ -38,6 +38,7 @@ RDEPEND="
 	dev-ml/cppo:=
 	dev-ml/uchar:=
 	dev-ml/ocamlbuild:=
+	dev-ml/yojson:=
 	deriving? ( >=dev-ml/deriving-0.6:= )"
 DEPEND="${RDEPEND}"
 
