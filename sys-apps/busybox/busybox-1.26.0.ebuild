@@ -4,7 +4,7 @@
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI="4"
+EAPI="5"
 inherit eutils flag-o-matic savedconfig toolchain-funcs multilib
 
 DESCRIPTION="Utilities for rescue and embedded systems"
@@ -16,12 +16,13 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
 IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
+REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
@@ -67,10 +68,7 @@ src_prepare() {
 
 	# patches go here!
 	epatch "${FILESDIR}"/${PN}-1.19.0-bb.patch
-	epatch "${FILESDIR}"/busybox-1.24.1-trylink-ldflags.patch
-	epatch "${FILESDIR}"/busybox-1.24.2-ash-recursive-heredocs.patch
-	epatch "${FILESDIR}"/busybox-1.24.2-CVE-2016-2147.patch
-	epatch "${FILESDIR}"/busybox-1.24.2-CVE-2016-2148.patch
+#	epatch "${FILESDIR}"/${P}-*.patch
 	cp "${FILESDIR}"/ginit.c init/ || die
 
 	# flag cleanup
@@ -120,6 +118,8 @@ src_configure() {
 	busybox_config_option n MONOTONIC_SYSCALL
 	busybox_config_option n USE_PORTABLE_CODE
 	busybox_config_option n WERROR
+	# triming the BSS size may be dangerous
+	busybox_config_option n FEATURE_USE_BSS_TAIL
 
 	# If these are not set and we are using a uclibc/busybox setup
 	# all calls to system() will fail.
@@ -134,16 +134,14 @@ src_configure() {
 		busybox_config_option n UDHCPC6
 	fi
 
-	if use static && use pam ; then
-		ewarn "You cannot have USE='static pam'.  Assuming static is more important."
-	fi
-	busybox_config_option $(usex static n pam) PAM
+	busybox_config_option pam PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
 	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
 
 	# all the debug options are compiler related, so punt them
+	busybox_config_option n DEBUG_SANITIZE
 	busybox_config_option n DEBUG
 	busybox_config_option y NO_DEBUG_LIB
 	busybox_config_option n DMALLOC
