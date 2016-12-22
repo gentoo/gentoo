@@ -110,10 +110,6 @@ dev-python/pygtkspellcheck
 # Removal in 30 days.
 dev-python/shapely
 
-# Eray Aslan <eras@gentoo.org> (01 Dec 2016)
-# Mask release candidates
-=app-crypt/heimdal-7.0*
-
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Nov 2016)
 # Do not support gnustep-make v2 mode, last release more than 10 years ago
 # Bugs #591576, #592546
