@@ -2316,7 +2316,7 @@ app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.63 3.68 3.70: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.4 1.5.5: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
-app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
 app-text/jist 1.5.1 1.5.1-r1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
@@ -15146,7 +15146,7 @@ net-misc/quagga 1.0.20160315-r4 1.1.0-r2: A free routing daemon replacing Zebra 
 net-misc/r8168 8.042.00 8.043.01: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 2.13 2.14 2.15: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 1.9.8 2.13 2.14 2.15 2.15-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
