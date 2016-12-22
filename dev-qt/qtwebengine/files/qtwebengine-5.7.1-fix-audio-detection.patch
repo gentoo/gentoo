@@ -1,0 +1,23 @@
+# dev-qt/qtwebengine: Fix detecting audio backends.
+
+# The upstream change doesn't really work for us, so we'll make
+# it work with us.
+# Gentoo-Bug: https://bugs.gentoo.org/603498
+
+--- /src/core/config/linux.pri	2016-12-23 00:05:41.057955774 +0200
++++ /src/core/config/linux.pri	2016-12-23 00:09:39.000573909 +0200
+@@ -35,12 +35,12 @@
+ contains(QT_CONFIG, system-png): GYP_CONFIG += use_system_libpng=1
+ contains(QT_CONFIG, system-jpeg): GYP_CONFIG += use_system_libjpeg=1
+ contains(QT_CONFIG, system-harfbuzz): GYP_CONFIG += use_system_harfbuzz=1
+-contains(QT_CONFIG, pulseaudio) {
++use?(pulseaudio) {
+     GYP_CONFIG += use_pulseaudio=1
+ } else {
+     GYP_CONFIG += use_pulseaudio=0
+ }
+-contains(QT_CONFIG, alsa) {
++use?(alsa) {
+     GYP_CONFIG += use_alsa=1
+ } else {
+     GYP_CONFIG += use_alsa=0
