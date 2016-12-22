@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,9 +6,12 @@ EAPI=5
 
 inherit toolchain-funcs
 
+MY_PN=${PN}-fuse
+MY_P=${MY_PN}-${PV}
+
 DESCRIPTION="Amazon mounting S3 via fuse"
-HOMEPAGE="https://s3fs.googlecode.com/"
-SRC_URI="https://s3fs.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/s3fs-fuse/s3fs-fuse/"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
