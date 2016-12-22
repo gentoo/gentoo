@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtsingleapplication[qt4(+),X]
-	x11-libs/qscintilla:=
+	x11-libs/qscintilla:=[qt4(-)]
 "
 DEPEND="${RDEPEND}"
 
