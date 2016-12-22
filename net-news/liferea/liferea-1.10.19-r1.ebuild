@@ -50,8 +50,8 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
-		--disable-schemas-compile
-		$(use_enable ayatana libindicate)
+		--disable-schemas-compile \
+		$(use_enable ayatana libindicate) \
 		$(use_enable libnotify)
 }
 
