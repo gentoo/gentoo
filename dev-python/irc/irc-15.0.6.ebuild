@@ -43,7 +43,11 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 python_compile_all() {
-	use doc && esetup.py build_sphinx
+	if use doc; then
+		cd docs || die
+		sphinx-build . _build/html || die
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
@@ -56,6 +60,5 @@ python_install_all() {
 		docompress -x "/usr/share/doc/${PF}/scripts"
 		doins -r scripts
 	fi
-	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 	distutils-r1_python_install_all
 }
