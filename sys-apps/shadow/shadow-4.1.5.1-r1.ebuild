@@ -38,7 +38,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-is-cross-compiler && export ac_cv_func_setpgrp_void=yes
 	econf \
 		--without-group-name-max-length \
 		--without-tcb \
