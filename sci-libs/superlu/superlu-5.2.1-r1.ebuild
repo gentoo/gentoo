@@ -50,6 +50,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs+=(
+		-DCMAKE_INSTALL_INCLUDEDIR="include/superlu"
 		-DBUILD_SHARED_LIBS=ON
 		-Denable_blaslib=OFF
 		-Denable_tests=$(usex test)
