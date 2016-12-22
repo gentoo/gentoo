@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] x11-libs/qscintilla sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] x11-libs/qscintilla:=[qt4(-)] sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Powerful GUI manager for the Sqlite3 database
 EAPI=5
 HOMEPAGE=http://sqliteman.sourceforge.net/
 KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] x11-libs/qscintilla
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsql:4[sqlite] x11-libs/qscintilla:=[qt4(-)]
 SLOT=0
 SRC_URI=mirror://sourceforge/sqliteman/sqliteman-1.2.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c87f4f4e150e5f3334b18e65519018cd
+_md5_=253d7ade8d7483d3665a8be177b967dc

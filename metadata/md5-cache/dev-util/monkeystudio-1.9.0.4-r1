@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qthelp:4 dev-qt/qtsql:4 x11-libs/qscintilla:= plugins? ( dev-qt/qtwebkit:4 ) doc? ( >=app-doc/doxygen-1.5.8 )
+DEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qthelp:4 dev-qt/qtsql:4 x11-libs/qscintilla:=[qt4(-)] plugins? ( dev-qt/qtwebkit:4 ) doc? ( >=app-doc/doxygen-1.5.8 )
 DESCRIPTION=A cross platform Qt 4 IDE
 EAPI=5
 HOMEPAGE=http://www.monkeystudio.org
 IUSE=doc plugins linguas_be linguas_es linguas_fr linguas_ru
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-3
-RDEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qthelp:4 dev-qt/qtsql:4 x11-libs/qscintilla:= plugins? ( dev-qt/qtwebkit:4 )
+RDEPEND=dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qthelp:4 dev-qt/qtsql:4 x11-libs/qscintilla:=[qt4(-)] plugins? ( dev-qt/qtwebkit:4 )
 SLOT=0
 SRC_URI=https://monkeystudio.googlecode.com/files/mks_1.9.0.4-src.tar.gz
 _eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:qt4-r2 src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b09cace6ae4b53a8a1b9b22ea4659631
+_md5_=c6d5348df929ebac8155d78f279a5daf

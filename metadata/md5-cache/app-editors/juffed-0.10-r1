@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-i18n/enca dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] x11-libs/qscintilla:= sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=app-i18n/enca dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] x11-libs/qscintilla:=[qt4(-)] sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=QScintilla-based tabbed text editor with syntax highlighting
 EAPI=5
 HOMEPAGE=http://juffed.com/
 IUSE=debug
 KEYWORDS=amd64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
-RDEPEND=app-i18n/enca dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] x11-libs/qscintilla:=
+RDEPEND=app-i18n/enca dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] x11-libs/qscintilla:=[qt4(-)]
 SLOT=0
 SRC_URI=mirror://sourceforge/juffed/juffed-0.10-1054.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=48afef73434b7f769f6ae3022f328c7d
+_md5_=a961b6f06f9a2e982c9b787be3b56916
