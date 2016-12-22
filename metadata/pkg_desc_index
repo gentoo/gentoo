@@ -537,7 +537,7 @@ app-crypt/gpgme 1.5.5 1.6.0 1.8.0-r2: GnuPG Made Easy is a library for making Gn
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
-app-crypt/heimdal 1.5.3-r2 7.0.1-r1: Kerberos 5 implementation from KTH
+app-crypt/heimdal 1.5.3-r2 7.1.0: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 1.0 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
