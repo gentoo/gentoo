@@ -22,7 +22,8 @@ RDEPEND="
 	app-portage/eix
 	app-portage/gentoolkit
 	www-client/pybugz
-	dev-python/configobj[${PYTHON_USEDEP}]"
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
