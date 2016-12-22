@@ -11,4 +11,4 @@ SLOT=0/5
 SRC_URI=http://crd.lbl.gov/~xiaoye/SuperLU//superlu_5.2.1.tar.gz
 _eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=b4b2bc00e1f47284092f7f2508c27a31
+_md5_=06f8f7b08e89bf14e3e68a8032c4cb60

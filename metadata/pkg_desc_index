@@ -16297,7 +16297,7 @@ sci-libs/ssm 1.4: A macromolecular coordinate superposition library
 sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format) and CIF files
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
-sci-libs/superlu 4.3-r1 5.2.1: Sparse LU factorization library
+sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
