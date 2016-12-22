@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -27,7 +27,6 @@ RDEPEND="${RDEPEND}
 	virtualbox? ( || ( app-emulation/virtualbox app-emulation/virtualbox-bin ) )"
 
 ruby_add_rdepend "
-	>=dev-ruby/bundler-1.12.5
 	>=dev-ruby/childprocess-0.5.0
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/i18n-0.6.0:* <dev-ruby/i18n-0.8.0:*
@@ -43,7 +42,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "
-	dev-ruby/rake
+	>=dev-ruby/rake-11.3.0
 "
 
 all_ruby_prepare() {
@@ -52,8 +51,9 @@ all_ruby_prepare() {
 	rm Gemfile || die
 
 	# loosen dependencies
-	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp/s/~>/>=/' \
-		-e '/nokogiri\|bundler/s/=/>=/' \
+	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp\|rake/s/~>/>=/' \
+		-e '/ruby_dep/s/<=/>=/' \
+		-e '/nokogiri/s/=/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
@@ -64,18 +64,11 @@ all_ruby_prepare() {
 	sed -e '/rb-kqueue/d' \
 		-i ${PN}.gemspec || die
 
-	# see https://github.com/mitchellh/vagrant/pull/5877
-	epatch "${FILESDIR}"/${PN}-1.8.4-install-plugins-in-isolation.patch
-
 	# disable embedded CA certs and use system ones
 	epatch "${FILESDIR}"/${PN}-1.8.1-disable-embedded-cacert.patch
 
 	# fix rvm issue (bug #474476)
 	epatch "${FILESDIR}"/${PN}-1.8.1-rvm.patch
-
-	# https://github.com/mitchellh/vagrant/issues/7610 (#592996)
-	sed -e 's/bsd/linux/g ; 57i \              chmod 0600 ~/.ssh/authorized_keys' \
-		-i plugins/guests/linux/cap/public_key.rb || die
 }
 
 all_ruby_install() {
