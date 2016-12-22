@@ -14801,7 +14801,7 @@ net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.20 2.1.20-r1 2.1.23: A python-based mailing list server with an extensive web interface
 net-mail/mailshears 0.0.2-r1: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
-net-mail/mailutils 2.99.98 2.99.98-r1 2.99.99 3.0: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 2.99.98 2.99.98-r1 2.99.99 3.0 3.1: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
