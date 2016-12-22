@@ -3,20 +3,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+SURICATA_BIN=/usr/bin/suricata
 SURICATA_DIR=${SURICATA_DIR:-/etc/suricata}
 SURICATA=${SVCNAME#*.}
+SURICATAID=$(shell_var "${SURICATA}")
 if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
     SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml"
     SURICATAPID="/var/run/suricata/suricata.${SURICATA}.pid"
-    SURICATAOPTS=${SURICATA_OPTS[${SURICATA}]}
+    eval SURICATAOPTS=\$SURICATA_OPTS_${SURICATAID}
 else
     SURICATACONF="${SURICATA_DIR}/suricata.yaml"
     SURICATAPID="/var/run/suricata/suricata.pid"
-    SURICATAOPTS=${SURICATA_OPTIONS}
+    SURICATAOPTS=${SURICATA_OPTS}
 fi
 
 extra_commands="checkconfig"
-extra_started_commands="reload"
+extra_started_commands="reload relog"
 
 depend() {
 	need net
@@ -34,49 +36,96 @@ checkconfig() {
 	fi
 }
 
+initpidinfo() {
+	[ -f ${SURICATAPID} ] && SUR_PID="$(cat ${SURICATAPID})"
+	if [ ${#SUR_PID} -gt 0 ]; then
+	    SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
+	    SUR_USER="$(ps -p ${SUR_PID} --no-headers -o user)"
+	fi
+}
+
+checkpidinfo() {
+	initpidinfo
+        if [ ! -f ${SURICATAPID} ]; then
+        	eerror "${SVCNAME} isn't running"
+                return 1
+	elif [ ${#SUR_PID} -eq 0 ] || [ $((SUR_PID_CHECK)) -ne 1 ]; then
+		eerror "Could not determine PID of ${SVCNAME}! Did the service crash?"
+		return 1
+	elif [ ${#SUR_USER} -eq 0 ]; then
+		eerror "Unable to determine user running ${SVCNAME}!"
+		return 1
+	elif [ "x${SUR_USER}" != "xroot" ]; then
+		eerror "${SVCNAME} must be running as root for reload or relog to work!"
+		return 1
+        fi
+}
+
 start() {
 	checkconfig || return 1
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon --start --quiet --exec /usr/bin/suricata \
+	start-stop-daemon --start --quiet --exec ${SURICATA_BIN} \
 		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} \
 		 -c ${SURICATACONF} >/dev/null 2>&1
-	eend $?
+	local SUR_EXIT=$?
+	if [ $((SUR_EXIT)) -ne 0 ]; then
+	    einfo "Could not start ${SURICATA_BIN} with:"
+	    einfo "--pidfile ${SURICATAPID} -D ${SURICATAOPTS} -c ${SURICATACONF}"
+	    einfo "Exit code ${SUR_EXIT}"
+	fi
+	eend ${SUR_EXIT}
 }
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
+	initpidinfo
 	start-stop-daemon --stop --quiet --pidfile ${SURICATAPID} >/dev/null 2>&1
 	einfon "Waiting for ${SVCNAME} to shut down. This can take a while..."
 	echo
 	# max wait: 5 minutes as it can take quite a while on some systems with heavy traffic
-	cnt=300
-	while [ -f ${SURICATAPID} ]; do
+	local cnt=300
+	while [ -f ${SURICATAPID} ] && [ $cnt -gt 0 ]; do
 	    cnt=$(expr $cnt - 1)
-	    if [ $cnt -lt 1 ] ; then
-		echo
-		eend 1 "Failed."
-		break
-	    fi
 	    sleep 1
-	    echo -ne "$cnt seconds left before we give up\r"
+	    echo -ne "$cnt seconds left before we give up checking the PID file...\r"
 	done
-	eend $?
+	# under certain conditions suricata can be pretty slow and the PID can persist long after the pidfile has been removed
+	# max wait for process to terminate: 1 minute
+	if [ ${#SUR_PID} -gt 0 ]; then
+	    cnt=60
+	    SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
+	    if [ $((SUR_PID_CHECK)) -ne 0 ]; then
+		echo
+		einfo "The PID file ${SURICATAPID} is gone but the ${SVCNAME} PID ${SUR_PID} is still running."
+		einfo "Waiting for process to shut down on its own. This can take a while..."
+	    fi
+	    while [ $((SUR_PID_CHECK)) -ne 0 ]; do
+		cnt=$(expr $cnt - 1)
+		if [ $cnt -lt 1 ] ; then
+		    echo
+		    eend 1 "Failed. You might need to kill PID ${SUR_PID} or find out why it can't be stopped."
+		    break
+		fi
+		sleep 1
+		echo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
+		SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
+	    done
+	fi
+	eend 0
 }
 
 reload() {
+	checkpidinfo || return 1
+	checkconfig || return 1
+	ebegin "Sending USR2 signal to ${SVCNAME} to perform a live rule and config reload."
+	start-stop-daemon --signal USR2 --pidfile ${SURICATAPID}
+	eend $?
+}
 
-	local SUR_PID="`cat ${SURICATAPID}`"
-	local SUR_USER="`ps -p ${SUR_PID} --no-headers -o user`"
-
-        if [ ! -f ${SURICATAPID} ]; then
-        	eerror "${SVCNAME} isn't running"
-                return 1
-	elif [ ${SUR_USER} != root ]; then
-		eerror "${SVCNAME} must be running as root for reload to work!"
-		return 1
-	else
-		checkconfig || return 1
-		ebegin "Reloading ${SVCNAME}"
-		start-stop-daemon --signal HUP --pidfile ${SURICATAPID}
-        fi
+relog() {
+	checkpidinfo || return 1
+	checkconfig || return 1
+	ebegin "Sending HUP signal to ${SVCNAME} to close and re-open all log files."
+	start-stop-daemon --signal HUP --pidfile ${SURICATAPID}
+	eend $?
 }

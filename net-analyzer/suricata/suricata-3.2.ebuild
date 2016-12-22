@@ -63,9 +63,6 @@ src_configure() {
 	if use cuda ; then
 		myeconfargs+=( $(use_enable cuda) )
 	fi
-	if use debug ; then
-		myeconfargs+=( $(use_enable debug) )
-	fi
 	if use geoip ; then
 		myeconfargs+=( $(use_enable geoip) )
 	fi
@@ -96,7 +93,16 @@ src_configure() {
 # this should be used when pf_ring use flag support will be added
 # 	LIBS+="-lrt -lnuma"
 
-	econf LIBS="${LIBS}" ${myeconfargs[@]}
+	# avoid upstream configure script trying to add -march=native to CFLAGS
+	myeconfargs+=( --enable-gccmarch-native=no )
+
+	if use debug ; then
+		myeconfargs+=( $(use_enable debug) )
+		# so we can get a backtrace according to "reporting bugs" on upstream web site
+		CFLAGS="-ggdb -O0" econf LIBS="${LIBS}" ${myeconfargs[@]}
+	else
+		econf LIBS="${LIBS}" ${myeconfargs[@]}
+	fi
 }
 
 src_install() {
@@ -124,7 +130,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "The ${PN} init script expects to find the path to the configuration"
-	elog "file as well as extra options in /etc/conf.d."
+	elog "file as well as extra options in /etc/conf.d"
 	elog ""
 	elog "To create more than one ${PN} service, simply create a new .yaml file for it"
 	elog "then create a symlink to the init script from a link called"
@@ -136,4 +142,9 @@ pkg_postinst() {
 	elog "Then edit /etc/conf.d/${PN} and make sure you specify sensible options for foo."
 	elog ""
 	elog "You can create as many ${PN}.foo* services as you wish."
+
+	if use debug; then
+	    elog "You enabled the debug USE flag. Please read this link to report bugs upstream:"
+	    elog "https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Reporting_Bugs"
+	fi
 }
