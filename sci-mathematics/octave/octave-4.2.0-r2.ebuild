@@ -12,8 +12,8 @@ HOMEPAGE="http://www.octave.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot graphicsmagick hdf5 +imagemagick java opengl openssl
-	portaudio postscript +qhull +qrupdate qt5 readline sndfile +sparse static-libs X zlib"
+IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl openssl
+	portaudio postscript +qhull +qrupdate readline sndfile +sparse static-libs X zlib"
 REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
@@ -47,7 +47,7 @@ RDEPEND="
 		media-gfx/transfig )
 	qhull? ( media-libs/qhull:0= )
 	qrupdate? ( sci-libs/qrupdate:0= )
-	qt5? (
+	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
@@ -85,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.0-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.2.0-ncurses-pkgconfig.patch
 	"${FILESDIR}"/${PN}-4.2.0-zlib-underlinking.patch
+	"${FILESDIR}"/${PN}-4.2.0-fix-qscintilla-detection.patch
 )
 
 src_prepare() {
@@ -143,7 +144,7 @@ src_configure() {
 		$(use_with portaudio) \
 		$(use_with qhull) \
 		$(use_with qrupdate) \
-		$(use_with qt5 qt 5) \
+		$(use_with gui qt 5) \
 		$(use_with sndfile) \
 		$(use_with sparse arpack) \
 		$(use_with sparse umfpack) \
