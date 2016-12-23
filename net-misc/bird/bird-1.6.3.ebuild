@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6"
 HOMEPAGE="http://bird.network.cz"
@@ -22,6 +22,7 @@ DEPEND="sys-devel/flex
 src_prepare() {
 	mkdir ipv6
 	tar c --exclude ipv6 . | tar x -C ipv6
+	eapply_user
 }
 
 src_configure() {
