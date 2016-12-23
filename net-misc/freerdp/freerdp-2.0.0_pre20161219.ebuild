@@ -7,7 +7,7 @@ EAPI="6"
 inherit cmake-utils
 
 if [[ ${PV} != 9999 ]]; then
-	COMMIT=""
+	COMMIT="8d0809cf26868fc5ff651850a32724650597747f"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/FreeRDP-${COMMIT}"
