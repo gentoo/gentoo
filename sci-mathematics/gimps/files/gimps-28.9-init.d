@@ -7,12 +7,7 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -e "${GIMPS_DIR}" ]; then
-		einfo "Creating ${GIMPS_DIR}"
-		/bin/mkdir "${GIMPS_DIR}"
-	fi
-
-	/bin/chown -R ${USER}:${GROUP} ${GIMPS_DIR}
+	checkpath -d -o ${USER}:${GROUP} ${GIMPS_DIR}
 
 	if [ ! -e "${GIMPS_DIR}/local.txt" ]; then
 		eerror "GIMPS has not been configured.  Please configure it manually before"
