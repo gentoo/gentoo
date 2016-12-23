@@ -76,19 +76,19 @@ src_compile() {
 	TS=${S}/shell_cmds-${SHELL_VER}
 	# only pick those tools not provided by coreutils, findutils
 	for t in \
-		apply getopt hostname jot kill killall \
+		apply getopt hexdump hostname jot kill killall \
 		lastcomm renice script shlock time whereis;
 	do
 		echo "in ${TS}/${t}:"
-		echo "$(tc-getCC) ${flags[@]} -o ${t} ${t}.c"
+		echo "$(tc-getCC) ${flags[@]} -o ${t} *.c"
 		cd "${TS}/${t}"
-		$(tc-getCC) ${flags[@]} -o ${t} ${t}.c || die "failed to compile $t"
+		$(tc-getCC) ${flags[@]} -o ${t} *.c || die "failed to compile $t"
 	done
 	cd "${TS}/w"
 	sed -i -e '/#include <libutil.h>/d' w.c || die
 	echo "in ${TS}/w:"
-	echo "$(tc-getCC) ${flags[@]} -DHAVE_UTMPX=1 -lresolv -o w w.c pr_time.c proc_compare.c"
-	$(tc-getCC) ${flags[@]} -DHAVE_UTMPX=1 -lresolv -o w w.c pr_time.c proc_compare.c \
+	echo "$(tc-getCC) ${flags[@]} -DHAVE_UTMPX=1 -lresolv -o w *.c"
+	$(tc-getCC) ${flags[@]} -DHAVE_UTMPX=1 -lresolv -o w *.c \
 		|| die "failed to compile w"
 
 	TS=${S}/developer_cmds-${DEV_VER}
@@ -97,7 +97,7 @@ src_compile() {
 	# shell scripts
 	# don't install rpcgen, as it is heavily related to the OS it runs
 	# on (and this is the Sierra version)
-	for t in asa hexdump unifdef what ; do
+	for t in asa unifdef what ; do
 		echo "in ${TS}/${t}:"
 		cd "${TS}/${t}" || die
 		echo "$(tc-getCC) ${flags[@]} -o ${t}" *.c
@@ -131,7 +131,7 @@ src_install() {
 
 	TS=${S}/shell_cmds-${SHELL_VER}
 	for t in \
-		apply getopt jot killall lastcomm \
+		apply getopt hexdump hostname jot killall lastcomm \
 		renice script shlock time w whereis;
 	do
 		cp "${TS}/${t}/${t}" "${ED}"/usr/bin/
@@ -146,7 +146,7 @@ src_install() {
 	done
 
 	TS=${S}/developer_cmds-${DEV_VER}
-	for t in asa hexdump unifdef what ; do
+	for t in asa unifdef what ; do
 		cp "${TS}/${t}/${t}" "${ED}"/usr/bin/
 		doman "${TS}/${t}/${t}.1"
 	done
