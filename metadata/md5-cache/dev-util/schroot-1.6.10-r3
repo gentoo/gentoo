@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test unpack
-DEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 ) sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=Utility to execute commands in a chroot environment
 EAPI=5
 HOMEPAGE=http://packages.debian.org/source/sid/schroot
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btr
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/schroot/schroot_1.6.10.orig.tar.xz mirror://debian/pool/main/s/schroot/schroot_1.6.10-1.debian.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=faf955b1c0d60cad42f39257873cff75

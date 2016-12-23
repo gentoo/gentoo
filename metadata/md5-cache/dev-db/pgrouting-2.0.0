@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare pretend setup test
-DEPEND=doc? ( >=dev-python/sphinx-1.1 ) pdf? ( >=dev-python/sphinx-1.1[latex] ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=doc? ( >=dev-python/sphinx-1.1 ) pdf? ( >=dev-python/sphinx-1.1[latex] ) sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 EAPI=5
 HOMEPAGE=http://pgrouting.org/index.html
@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/pgRouting/pgrouting/archive/v2.0.0.tar.gz -> pgrouting-2.0.0.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=07ead2d920de781d724f97a20b36dc96
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=173c925eb04261e56c4437e00f034a10

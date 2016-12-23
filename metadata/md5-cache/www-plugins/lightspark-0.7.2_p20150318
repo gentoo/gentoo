@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend test unpack
-DEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx] media-fonts/liberation-fonts media-libs/libpng media-libs/libsdl >=sys-devel/gcc-4.6.0[cxx] <sys-devel/llvm-3.7 >=sys-devel/llvm-3.4 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) !gles? ( >=media-libs/glew-1.5.3 virtual/opengl ) gles? ( media-libs/mesa[gles2] ) pulseaudio? ( media-sound/pulseaudio ) rtmp? ( media-video/rtmpdump ) virtual/jpeg amd64? ( dev-lang/nasm ) x86? ( dev-lang/nasm ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 app-arch/unzip
+DEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx] media-fonts/liberation-fonts media-libs/libpng media-libs/libsdl >=sys-devel/gcc-4.6.0[cxx] <sys-devel/llvm-3.7 >=sys-devel/llvm-3.4 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) !gles? ( >=media-libs/glew-1.5.3 virtual/opengl ) gles? ( media-libs/mesa[gles2] ) pulseaudio? ( media-sound/pulseaudio ) rtmp? ( media-video/rtmpdump ) virtual/jpeg amd64? ( dev-lang/nasm ) x86? ( dev-lang/nasm ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.2.2 app-arch/unzip
 DESCRIPTION=High performance flash player
 EAPI=5
 HOMEPAGE=http://lightspark.sourceforge.net/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx
 SLOT=0
 SRC_URI=mirror://gentoo/lightspark-0.7.2_p20150318.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	165fc17c38d1b11dac2008280dab6e80	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	165fc17c38d1b11dac2008280dab6e80	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=eb9170d02da655b44ea989832567bb8f

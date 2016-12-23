@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
-DEPEND=>=dev-games/physfs-2[zip] media-libs/libsdl[sound,joystick,opengl,video,X] virtual/opengl dev-libs/boost virtual/pkgconfig app-arch/zip sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=>=dev-games/physfs-2[zip] media-libs/libsdl[sound,joystick,opengl,video,X] virtual/opengl dev-libs/boost virtual/pkgconfig app-arch/zip sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=A beach ball game with blobs of goo
 EAPI=5
 HOMEPAGE=https://sourceforge.net/projects/blobby/
@@ -9,5 +9,5 @@ RDEPEND=>=dev-games/physfs-2[zip] media-libs/libsdl[sound,joystick,opengl,video,
 SLOT=0
 SRC_URI=mirror://sourceforge/blobby/blobby2-linux-0.9c.tar.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0a1e0ab391c1bf6300d3d698c3ac022a

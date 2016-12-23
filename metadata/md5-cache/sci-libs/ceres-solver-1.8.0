@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd sci-libs/camd sci-libs/ccolamd sci-libs/cholmod sci-libs/colamd sci-libs/spqr ) dev-cpp/eigen:3 lapack? ( virtual/pkgconfig ) doc? ( dev-python/sphinx ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse ) lapack? ( virtual/lapack ) protobuf? ( dev-libs/protobuf ) sparse? ( sci-libs/amd sci-libs/camd sci-libs/ccolamd sci-libs/cholmod sci-libs/colamd sci-libs/spqr ) dev-cpp/eigen:3 lapack? ( virtual/pkgconfig ) doc? ( dev-python/sphinx ) sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=Nonlinear least-squares minimizer
 EAPI=5
 HOMEPAGE=https://code.google.com/p/ceres-solver/
@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( gflags ) sparse? ( lapack )
 SLOT=0/1
 SRC_URI=https://ceres-solver.googlecode.com/files/ceres-solver-1.8.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=409a28956ee6e14b14682501f5a9d2af

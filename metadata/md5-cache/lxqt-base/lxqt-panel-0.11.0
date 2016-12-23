@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.11.0 ~lxqt-base/lxqt-globalkeys-0.11.0 x11-libs/libX11 cpuload? ( sys-libs/libstatgrab ) kbindicator? ( x11-libs/libxkbcommon ) mount? ( kde-frameworks/solid:5 ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] ) sysstat? ( =lxqt-base/libsysstat-0.3* ) tray? ( x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.11.0 ~lxqt-base/lxqt-globalkeys-0.11.0 x11-libs/libX11 cpuload? ( sys-libs/libstatgrab ) kbindicator? ( x11-libs/libxkbcommon ) mount? ( kde-frameworks/solid:5 ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] ) sysstat? ( =lxqt-base/libsysstat-0.3* ) tray? ( x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=LXQt desktop panel and plugins
 EAPI=5
 HOMEPAGE=http://lxqt.org/
@@ -11,5 +11,5 @@ REQUIRED_USE=volume? ( || ( alsa pulseaudio ) )
 SLOT=0
 SRC_URI=https://downloads.lxqt.org/lxqt/0.11.0/lxqt-panel-0.11.0.tar.xz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0134aa14055c6ac3868d963106fb8396

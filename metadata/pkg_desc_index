@@ -4164,7 +4164,7 @@ dev-java/json-simple 1.1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
-dev-java/jsr173 1.0-r1 1.0-r2: Library for parsing and writing XML
+dev-java/jsr173 1.0-r1 1.0-r2 1.0-r3: Yet another Java library for parsing and writing XML
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr225 1.0: XQuery API for Java

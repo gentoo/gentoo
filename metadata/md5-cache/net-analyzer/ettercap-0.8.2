@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/libbsd dev-libs/libpcre dev-libs/openssl net-libs/libnet:1.1 >=net-libs/libpcap-0.8.1 sys-libs/zlib gtk? ( >=dev-libs/atk-1.2.4 >=dev-libs/glib-2.2.2:2 media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.2.2:2 >=x11-libs/pango-1.2.3 ) ncurses? ( >=sys-libs/ncurses-5.3 ) plugins? ( >=net-misc/curl-7.26.0 ) sys-devel/flex virtual/yacc sys-devel/make >=dev-util/cmake-2.8
+DEPEND=dev-libs/libbsd dev-libs/libpcre dev-libs/openssl net-libs/libnet:1.1 >=net-libs/libpcap-0.8.1 sys-libs/zlib gtk? ( >=dev-libs/atk-1.2.4 >=dev-libs/glib-2.2.2:2 media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.2.2:2 >=x11-libs/pango-1.2.3 ) ncurses? ( >=sys-libs/ncurses-5.3 ) plugins? ( >=net-misc/curl-7.26.0 ) sys-devel/flex virtual/yacc sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=A suite for man in the middle attacks
 EAPI=5
 HOMEPAGE=https://github.com/Ettercap/ettercap
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libbsd dev-libs/libpcre dev-libs/openssl net-libs/libnet:1.1 >=
 SLOT=0
 SRC_URI=https://github.com/Ettercap/ettercap/archive/v0.8.2.tar.gz -> ettercap-0.8.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=95f8eaf43b0b4b061592f9cf697ed2e6
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=f904f042691e9cd3c4e40831aae4a9ea

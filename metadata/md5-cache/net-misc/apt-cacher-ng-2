@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare pretend setup test
-DEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/openssl:* sys-libs/zlib systemd? ( sys-apps/systemd ) dev-util/cmake >sys-devel/gcc-4.8 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/openssl:* sys-libs/zlib systemd? ( sys-apps/systemd ) dev-util/cmake >sys-devel/gcc-4.8 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.2.2
 DESCRIPTION=Yet another caching HTTP proxy for Debian/Ubuntu software packages
 EAPI=5
 HOMEPAGE=http://www.unix-ag.uni-kl.de/~bloch/acng/ http://packages.qa.debian.org/a/apt-cacher-ng.html
@@ -10,5 +10,5 @@ RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/openssl:* sys-libs/zlib system
 SLOT=0
 SRC_URI=mirror://debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_2.orig.tar.xz
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	16e40479aefbbed67ea20779992ab90e	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=bdddba50f06d1ecb0a986d8b0eb11404
