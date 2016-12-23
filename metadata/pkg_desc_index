@@ -17121,7 +17121,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0 2.5.2 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.11 3.13 3.14: Userland client/server for kernel network block device
+sys-block/nbd 3.11 3.14 3.15.1: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
