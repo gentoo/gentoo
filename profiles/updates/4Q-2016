@@ -55,3 +55,4 @@ move dev-perl/extutils-pkgconfig dev-perl/ExtUtils-PkgConfig
 move kde-base/kdebase-startkde kde-plasma/kdebase-startkde
 move kde-base/krosspython kde-apps/kross-interpreters
 move kde-base/katepart kde-apps/katepart
+move kde-base/pykde4 kde-apps/pykde4
