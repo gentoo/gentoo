@@ -56,3 +56,4 @@ move kde-base/kdebase-startkde kde-plasma/kdebase-startkde
 move kde-base/krosspython kde-apps/kross-interpreters
 move kde-base/katepart kde-apps/katepart
 move kde-base/pykde4 kde-apps/pykde4
+move kde-base/kde-env kde-frameworks/kdelibs-env
