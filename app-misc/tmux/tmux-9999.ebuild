@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 
 CDEPEND="
-	>=dev-libs/libevent-2.0.10
+	dev-libs/libevent:0=
 	utempter? (
 		kernel_linux? ( sys-libs/libutempter )
 		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
