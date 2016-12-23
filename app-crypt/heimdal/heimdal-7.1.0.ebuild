@@ -117,7 +117,6 @@ multilib_src_compile() {
 		emake -j1
 	else
 		emake -C include -j1
-		emake -C base -j1
 		emake -C lib -j1
 		emake -C kdc -j1
 		emake -C tools -j1
@@ -134,7 +133,6 @@ multilib_src_install() {
 		INSTALL_CATPAGES="no" emake DESTDIR="${D}" install
 	else
 		emake -C include DESTDIR="${D}" install
-		emake -C base DESTDIR="${D}" install
 		emake -C lib DESTDIR="${D}" install
 		emake -C kdc DESTDIR="${D}" install
 		emake -C tools DESTDIR="${D}" install
