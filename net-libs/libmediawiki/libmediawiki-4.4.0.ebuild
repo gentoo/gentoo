@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,6 @@ EAPI=5
 
 KDE_LINGUAS=""
 KDE_MINIMAL="4.10"
-
-CMAKE_MIN_VERSION=2.8
 
 inherit kde4-base
 

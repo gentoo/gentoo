@@ -9,7 +9,6 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	KDE_TEST="true"
 fi
 CMAKE_MAKEFILE_GENERATOR="emake"
-CMAKE_MIN_VERSION="3.0"
 inherit kde5 toolchain-funcs
 
 DESCRIPTION="Digital photo management application"
