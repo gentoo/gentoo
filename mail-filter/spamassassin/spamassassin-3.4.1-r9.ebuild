@@ -213,8 +213,8 @@ src_install () {
 			   update-spamassassin-rules
 	fi
 
-	# Remove perlocal.pod to avoid file collisions (see #603338)
-	perl_delete_localpod || die "Failed to remove perlocal.pod"
+	# Remove perllocal.pod to avoid file collisions (bug #603338)
+	perl_delete_localpod || die "failed to remove perllocal.pod"
 }
 
 src_test() {
