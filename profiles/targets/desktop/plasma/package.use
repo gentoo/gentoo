@@ -75,6 +75,7 @@ net-news/rssguard -qt4
 net-p2p/bitcoin-qt -qt4
 <net-p2p/qbittorrent-3.3.4-r1 -qt4
 >=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
+x11-libs/qscintilla -qt4
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
