@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.2.0"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
