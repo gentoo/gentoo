@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep katepart)
+	$(add_kdeapps_dep katepart)
 	dev-lang/R
 	x11-libs/libX11
 "
