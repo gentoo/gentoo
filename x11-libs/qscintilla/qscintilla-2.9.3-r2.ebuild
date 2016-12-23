@@ -19,7 +19,7 @@ IUSE="designer doc +qt4 qt5"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
-RDEPEND="
+DEPEND="
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -31,8 +31,9 @@ RDEPEND="
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 		designer? ( dev-qt/designer:5 )
-	)"
-DEPEND="${RDEPEND}"
+	)
+"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -62,14 +63,15 @@ qsci_run_in() {
 
 src_configure() {
 	local my_eqmake=eqmake$(usex qt5 5 4)
-	qsci_run_in Qt4Qt5 $my_eqmake
+
+	qsci_run_in Qt4Qt5 ${my_eqmake}
 
 	if use designer; then
 		# prevent building against system version (bug 466120)
 		append-cxxflags -I../Qt4Qt5
 		append-ldflags -L../Qt4Qt5
 
-		qsci_run_in designer-Qt4Qt5 $my_eqmake
+		qsci_run_in designer-Qt4Qt5 ${my_eqmake}
 	fi
 }
 
@@ -84,6 +86,7 @@ src_install() {
 
 	use designer && qsci_run_in designer-Qt4Qt5 emake INSTALL_ROOT="${D}" install
 
+	DOCS=( ChangeLog NEWS )
 	use doc && HTML_DOCS=( doc/html-Qt4Qt5/. )
 	einstalldocs
 }
