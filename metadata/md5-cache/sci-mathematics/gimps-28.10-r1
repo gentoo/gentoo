@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=amd64? ( ftp://mersenne.org/gimps/p95v2810.linux64.tar.gz ) x86? ( ftp://mersenne.org/gimps/p95v2810.linux32.tar.gz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4a347c5b579b31f06521fe2e02dfd67f
+_md5_=d0d7c0119ac04245bd2983344c05bf48
