@@ -15,7 +15,7 @@ KEYWORDS="~x86 ~amd64 ~arm-linux ~x86-linux"
 IUSE="gnome"
 
 RDEPEND=">=sys-fs/fuse-2.3
-	>=net-fs/samba-4.2[client]
+	>=net-fs/samba-4.2
 	>=dev-libs/glib-2.30
 	gnome? ( gnome-base/libgnome-keyring )"
 
