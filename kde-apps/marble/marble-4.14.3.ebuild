@@ -37,7 +37,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.4-r1[${PYTHON_USEDEP}]
-		kde? ( $(add_kdebase_dep pykde4 "${PYTHON_USEDEP}" ) )
+		kde? ( $(add_kdeapps_dep pykde4 "${PYTHON_USEDEP}" ) )
 	)
 	shapefile? ( sci-libs/shapelib )
 	zip? ( dev-libs/quazip[qt4] )
