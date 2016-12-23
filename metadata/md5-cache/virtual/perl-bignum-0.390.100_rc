@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for bignum
 EAPI=5
-KEYWORDS=alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~ppc-macos ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.22.3* ~perl-core/bignum-0.390.100_rc ) dev-lang/perl:= !<perl-core/bignum-0.390.100_rc !>perl-core/bignum-0.390.100_rc-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=309bf4460f52acd7fe253eb0e320ac52
+_md5_=28fdc64f2e8b83921d8ee4760754a2b9
