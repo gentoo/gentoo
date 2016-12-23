@@ -20,7 +20,7 @@ LICENSE="LGPL-2"
 SLOT="0/5.1"	# soname of libqmi-glib.so
 IUSE="doc +mbim static-libs"
 
-RDEPEND=">=dev-libs/glib-2.32
+RDEPEND=">=dev-libs/glib-2.36
 	mbim? ( >=net-libs/libmbim-1.14.0 )"
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
