@@ -43,6 +43,7 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
+	net-analyzer/macchanger
 	sys-apps/iproute2
 	sys-fs/growpart
 	virtual/logger
