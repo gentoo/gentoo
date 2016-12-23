@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.0"
 inherit cmake-utils fdo-mime gnome2-utils
 
 DESCRIPTION="Qt/C++ wrapper for ALSA sequencer"
