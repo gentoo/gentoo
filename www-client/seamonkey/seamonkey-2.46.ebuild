@@ -7,8 +7,8 @@ WANT_AUTOCONF="2.1"
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
 # note - could not roll langpacks for: ca fi
-MOZ_LANGS=(be cs de en en-GB en-US es-AR es-ES fr gl hu it ja lt nb-NO nl
-	    pl pt-PT ru sk sv-SE tr uk zh-CN zh-TW)
+MOZ_LANGS=(be cs de en-GB es-AR es-ES fr gl hu it ja lt nb-NO nl pl pt-PT ru sk
+	    sv-SE tr uk zh-CN zh-TW)
 
 MOZ_PV="${PV/_pre*}"
 MOZ_PV="${MOZ_PV/_alpha/a}"
@@ -20,16 +20,18 @@ MY_MOZ_P="${PN}-${MOZ_PV}"
 
 if [[ ${PV} == *_pre* ]] ; then
 # the following are for upstream build candidates
-#	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
-#	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
+	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
+	SRC_URI+=" ${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz"
+	S="${WORKDIR}/${MY_MOZ_P}"
 	# And the langpack stuff stays at eclass defaults
 # the following is for self-rolled releases
-	MOZ_HTTP_URI="https://dev.gentoo.org/~axs/distfiles"
-	MOZ_LANGPACK_PREFIX="${MY_MOZ_P}."
-	MOZ_LANGPACK_SUFFIX=".langpack.xpi"
-	SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/${P}.source.tar.xz
-	"
+	#MOZ_HTTP_URI="https://dev.gentoo.org/~axs/distfiles"
+	#MOZ_LANGPACK_PREFIX="${MY_MOZ_P}."
+	#MOZ_LANGPACK_SUFFIX=".langpack.xpi"
+	#SRC_URI="${SRC_URI}
+	#${MOZ_HTTP_URI}/${P}.source.tar.xz
+	#"
 elif [[ ${PV} == *_p[0-9] ]]; then
 	# gentoo-unofficial release using thunderbird distfiles to build seamonkey instead
 	TB_MAJOR=45
@@ -54,13 +56,14 @@ else
 	"
 fi
 
+MOZCONFIG_OPTIONAL_GTK3=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.45 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.49 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas-v2
 
-PATCHFF="firefox-45.0-patches-07"
-PATCH="${PN}-2.42-patches-01"
-EMVER="1.9.1"
+PATCHFF="firefox-49.0-patches-03"
+PATCH="${PN}-2.46-patches-01"
+EMVER="1.9.6.1"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
@@ -68,29 +71,29 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
+IUSE="+calendar +chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
 
-SRC_URI="${SRC_URI}
+SRC_URI+="
 	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCHFF}.tar.xz
 	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
-	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCH}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
+	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCH}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	crypt? ( https://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-RDEPEND=">=dev-libs/nss-3.22.3
+RDEPEND=">=dev-libs/nss-3.25
 	>=dev-libs/nspr-4.12
 	crypt? ( || (
-			( >=app-crypt/gnupg-2.0
-				|| (
-					app-crypt/pinentry[gtk]
-					app-crypt/pinentry[qt5]
-					app-crypt/pinentry[qt4]
-				)
+		( >=app-crypt/gnupg-2.0
+			|| (
+				app-crypt/pinentry[gtk]
+				app-crypt/pinentry[qt5]
+				app-crypt/pinentry[qt4]
 			)
-			=app-crypt/gnupg-1.4* ) )"
+		)
+		=app-crypt/gnupg-1.4* ) )"
 
 DEPEND="${RDEPEND}
 	!elibc_glibc? ( !elibc_uclibc?  ( dev-libs/libexecinfo ) )
@@ -127,21 +130,17 @@ src_unpack() {
 
 	# Unpack language packs
 	mozlinguas_src_unpack
-
-	# move the irc and inspector code into the correct locations
-	mv "${WORKDIR}"/irc "${S}"/mozilla/extensions/irc || die
-	mv "${WORKDIR}"/inspector "${S}"/mozilla/extensions/inspector || die
 }
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}"/seamonkey \
-		"${FILESDIR}"/${PN}-2.42.3.0-fix-chatzillaless-locale-building.patch
+	eapply "${WORKDIR}"/seamonkey
 
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
 	rm -f "${WORKDIR}"/firefox/2000-firefox_gentoo_install_dirs.patch
 	eapply "${WORKDIR}"/firefox
+	#eapply	"${FILESDIR}"/mozilla-svg-crashfix.patch
 	popd &>/dev/null || die
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
@@ -176,11 +175,11 @@ src_prepare() {
 	sed 's@\(xargs rm\)$@\1 -f@' \
 		-i "${ms}"/toolkit/mozapps/installer/packager.mk || die
 
-	eautoreconf
+	eautoreconf old-configure.in
 	cd "${S}"/mozilla || die
-	eautoconf
+	eautoconf old-configure.in
 	cd "${S}"/mozilla/js/src || die
-	eautoconf
+	eautoconf old-configure.in
 	cd "${S}"/mozilla/memory/jemalloc/src || die
 	WANT_AUTOCONF= eautoconf
 }
@@ -217,19 +216,17 @@ src_configure() {
 	mozconfig_annotate '' --with-google-api-keyfile="${S}/google-api-key"
 
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
-	mozconfig_annotate '' --enable-jsd
-	mozconfig_annotate '' --enable-canvas
 
 	# Other sm-specific settings
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
-
 	mozconfig_annotate '' --enable-safe-browsing
+	mozconfig_use_enable calendar
 
 	mozlinguas_mozconfig
 
 	# Use an objdir to keep things organized.
-	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" \
-		>> "${S}"/.mozconfig
+	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
+	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
 
 	# Finalize and report settings
 	mozconfig_final
@@ -251,11 +248,12 @@ src_configure() {
 		fi
 	fi
 
+	# workaround for funky/broken upstream configure...
+	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake V=1 -f client.mk configure
 }
 
 src_compile() {
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL}" \
 	emake V=1 -f client.mk
 
