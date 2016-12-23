@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 GIT_TAG="3a0b7b74982f44c735f4cfc2dccf538c3c4ef9e2"
 

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils git-r3
+inherit git-r3
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
