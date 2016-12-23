@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils qt4-r2 user
+inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="http://www.wireshark.org/"
@@ -14,11 +14,10 @@ SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
 	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf
-	geoip +gtk kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi
+	geoip +gtk kerberos lua +netlink +pcap portaudio +qt5 sbc selinux smi
 	libssh randpkt randpktdump sshdump ssl tfshark zlib
 "
 REQUIRED_USE="
-	?? ( qt4 qt5 )
 	ciscodump? ( libssh )
 	sshdump? ( libssh )
 	ssl? ( crypt )
@@ -42,11 +41,6 @@ CDEPEND="
 	lua? ( >=dev-lang/lua-5.1:* )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4[accessibility]
-		x11-misc/xdg-utils
-		)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -85,7 +79,6 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	gtk? ( virtual/freedesktop-icon-theme )
-	qt4? ( virtual/freedesktop-icon-theme )
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
@@ -126,18 +119,14 @@ src_configure() {
 	fi
 
 	# Enable wireshark binary with any supported GUI toolkit (bug #473188)
-	if use gtk || use qt4 || use qt5; then
+	if use gtk || use qt5; then
 		myconf+=( "--enable-wireshark" )
 	else
 		myconf+=( "--disable-wireshark" )
 	fi
 
-	if ! use qt4 && ! use qt5; then
+	if ! use qt5; then
 		myconf+=( "--with-qt=no" )
-	fi
-
-	if use qt4; then
-		export QT_MIN_VERSION=4.6.0
 	fi
 
 	if use qt5; then
@@ -176,11 +165,6 @@ src_configure() {
 		$(use_with zlib) \
 		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
 		$(usex netlink --with-libnl=3 --without-libnl) \
-		$(usex qt4 --with-qt=4 '') \
-		$(usex qt4 LRELEASE=$(qt4_get_bindir)/lrelease '') \
-		$(usex qt4 MOC=$(qt4_get_bindir)/moc '') \
-		$(usex qt4 RCC=$(qt4_get_bindir)/rcc '') \
-		$(usex qt4 UIC=$(qt4_get_bindir)/uic '') \
 		$(usex qt5 --with-qt=5 '') \
 		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '') \
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
@@ -243,7 +227,7 @@ src_install() {
 	insinto /usr/include/wiretap
 	doins wiretap/wtap.h
 
-	if use gtk || use qt4 || use qt5; then
+	if use gtk || use qt5; then
 		local c d
 		for c in hi lo; do
 			for d in 16 32 48; do
