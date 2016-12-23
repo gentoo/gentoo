@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>steffen@schaumburger.info</email>
+		<name>Steffen Schaumburg</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="bullet">Support for Bullet Physics, a physics library.</flag>
+		<flag name="eigen">Optimized linear algebra library. Optional, but improves performance of matrix operations significantly.</flag>
+		<flag name="fmod">FMOD Ex is a proprietary audio library that supports various effects and surround sound. You must have one of FMOD or OpenAL to build support for Panda's sound interfaces. (However, you can use external sound libraries such as pygame, even without these two.)</flag>
+		<flag name="opencv">An alternate library that provides support for video textures and webcam, similar to FFMPEG.</flag>
+	</use>
+</pkgmetadata>
