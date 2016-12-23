@@ -213,8 +213,16 @@ src_install () {
 			   update-spamassassin-rules
 	fi
 
-	# Remove perllocal.pod to avoid file collisions (bug #603338)
+	# Remove perllocal.pod to avoid file collisions (bug #603338).
 	perl_delete_localpod || die "failed to remove perllocal.pod"
+
+	# The perl-module eclass calls three other functions to clean
+	# up in src_install. The first fixes references to ${D} in the
+	# packlist, and is useful to us, too. The other two functions,
+	# perl_delete_emptybsdir and perl_remove_temppath, don't seem
+	# to be needed: there are no empty directories, *.bs files, or
+	# ${D} paths remaining in our installed image.
+	perl_fix_packlist || die "failed to fix paths in packlist"
 }
 
 src_test() {
