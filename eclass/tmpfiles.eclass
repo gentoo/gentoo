@@ -112,8 +112,8 @@ tmpfiles_process() {
 
 	if type systemd-tmpfiles &> /dev/null; then
 		systemd-tmpfiles --create "$@"
-	elif type opentmpfiles &> /dev/null; then
-		opentmpfiles --create "$@"
+	elif type tmpfiles &> /dev/null; then
+		tmpfiles --create "$@"
 	fi
 	if [[ $? -ne 0 ]]; then
 		ewarn "The tmpfiles processor exited with a non-zero exit code"
