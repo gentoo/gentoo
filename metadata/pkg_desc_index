@@ -4929,7 +4929,7 @@ dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.1 1.2 1.3: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.3: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.12 4.13 4.13.1: Netscape Portable Runtime
-dev-libs/nss 3.20 3.22.2 3.23 3.25-r1 3.26.1 3.27 3.27.1 3.27.2: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.22.2 3.23 3.25-r1 3.26.1 3.27.2 3.28: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 5.9.5 5.9.5-r1 5.9.6_p1: a regular expression library for different character encodings
@@ -5089,6 +5089,7 @@ dev-lua/luafilesystem 1.5.0 1.6.2: File System Library for the Lua Programming L
 dev-lua/luajson 1.3.2 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/lualdap 1.2.0: Simple interface from Lua to OpenLDAP
 dev-lua/luaossl 20150727: Most comprehensive OpenSSL module in the Lua universe.
+dev-lua/luaposix 33.4.0: Bindings for POSIX APIs
 dev-lua/luarocks 2.0.7.1 2.0.8 2.0.12 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.4.1 0.4.1_p20130620 0.5 0.5.1 0.6: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 2.0.2 3.0_rc1-r3: Networking support library for the Lua language
@@ -15663,7 +15664,7 @@ sci-astronomy/funtools 1.4.7: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2-r1: Stellar simulation program
 sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
-sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
+sci-astronomy/idlastro 99999999: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1: Toolkit for assembling FITS images into mosaics
