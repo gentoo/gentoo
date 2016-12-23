@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Astronomical user routines for IDL
+EAPI=6
+HOMEPAGE=http://idlastro.gsfc.nasa.gov/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD-2 BSD
+RDEPEND=dev-lang/gdl
+SLOT=0
+SRC_URI=http://idlastro.gsfc.nasa.gov/ftp/astron.tar.gz -> idlastro-20161220.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=5adeacc2eeab57132075acb144162851
