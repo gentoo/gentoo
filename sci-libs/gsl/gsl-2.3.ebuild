@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0/19.3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="cblas-external static-libs"
+IUSE="cblas-external +deprecated static-libs"
 
 RDEPEND="cblas-external? ( virtual/cblas )"
 DEPEND="${RDEPEND}
@@ -47,9 +47,12 @@ src_prepare() {
 	filter-flags -ffast-math
 
 	default
+	if use deprecated; then
+		sed -i -e "/GSL_DISABLE_DEPRECATED/,+2d" configure.ac || die
+	fi
 	eautoreconf
 
-	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/
+	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/ || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.cblas.gsl || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
