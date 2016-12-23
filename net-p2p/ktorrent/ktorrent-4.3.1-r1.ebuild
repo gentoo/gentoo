@@ -63,7 +63,7 @@ RDEPEND="${COMMONDEPEND}
 		app-arch/unzip
 		$(add_kdeapps_dep kdebase-kioslaves)
 	)
-	kross? ( $(add_kdebase_dep krosspython) )
+	kross? ( $(add_kdeapps_dep kross-interpreters) )
 "
 
 PATCHES=(
