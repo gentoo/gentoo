@@ -77,5 +77,7 @@ pkg_postinst(){
 	elog
 	elog "The Android .apk file is available via"
 	elog "https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp"
+	elog "or via"
+	elog "https://f-droid.org/repository/browse/?fdid=org.kde.kdeconnect_tp"
 	elog
 }
