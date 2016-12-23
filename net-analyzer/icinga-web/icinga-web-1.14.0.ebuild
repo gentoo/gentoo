@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit depend.apache eutils user multilib
 
 DESCRIPTION="Icinga Web - new Web Interface"
 HOMEPAGE="http://www.icinga.org/"
-SRC_URI="https://github.com/icinga/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/icinga/${PN}/archive/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
@@ -16,7 +16,7 @@ IUSE="apache2 mysql pnp postgres"
 DEPEND="dev-php/phing
 		dev-db/libdbi-drivers[mysql?,postgres?]
 		|| ( >=net-analyzer/icinga-1.10.0 >=net-analyzer/icinga2-2.1.1 )
-		dev-lang/php[apache2?,cli,json,mysql?,pdo,postgres?,sockets,xslt,xml]
+		dev-lang/php:=[apache2?,cli,json,mysql?,pdo,postgres?,sockets,xslt,xml]
 		pnp? ( net-analyzer/pnp4nagios )"
 RDEPEND="${DEPEND}"
 
