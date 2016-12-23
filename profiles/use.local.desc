@@ -6511,7 +6511,6 @@ net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
 net-p2p/ktorrent:infowidget - Displays general information about a torrent in several tabs
 net-p2p/ktorrent:ipfilter - Filter IP addresses through a blocklist
-net-p2p/ktorrent:kross - Enable kross scripting support
 net-p2p/ktorrent:logviewer - Displays the logging output
 net-p2p/ktorrent:magnetgenerator - Generates magnet URI's
 net-p2p/ktorrent:mediaplayer - Phonon-based media player

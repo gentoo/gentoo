@@ -4436,7 +4436,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that ta
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.11.1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3 0.19.4 0.20.0 0.20.1: The Crystal Programming Language
+dev-lang/crystal 0.15.0 0.18.7 0.19.0 0.19.1 0.19.2 0.19.3 0.19.4 0.20.0 0.20.1 0.20.3: The Crystal Programming Language
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.855_p20160629-r1 6.0.855_p20160629-r100 6.0.967_p20161020-r1 6.0.967_p20161020-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -6945,7 +6945,7 @@ dev-php/agavi 1.0.7: PHP5 MVC Application Framework
 dev-php/awl 0.53-r2 0.55-r1 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
-dev-php/composer 1.2.2-r1: Dependency Manager for PHP
+dev-php/composer 1.2.4: Dependency Manager for PHP
 dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
@@ -11785,7 +11785,6 @@ kde-apps/zeroconf-ioslave 16.08.3 16.12.0: A DNSSD (DNS Service Discovery - part
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdelibs 4.14.24 4.14.27: KDE libraries needed by all KDE programs
-kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-frameworks/attica 5.26.0 5.29.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 4.14.3 5.26.0-r2 5.29.0: Framework for searching and managing metadata
@@ -12669,7 +12668,7 @@ media-libs/FusionSound 1.1.1-r1: Audio sub system for multiple applications
 media-libs/SoQt 1.5.0-r1: The glue between Coin3D and Qt
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
-media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
+media-libs/aalib 1.4_rc5-r6 1.4_rc5-r7: A ASCII-Graphics Library
 media-libs/adplug 2.2.1: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
@@ -13348,7 +13347,7 @@ media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additio
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/dxcc 20080225-r1: A ham radio callsign DXCC lookup utility
-media-radio/fldigi 3.23.06 3.23.12 3.23.15 3.23.16 3.23.17 3.23.18: Sound card based multimode software modem for Amateur Radio use
+media-radio/fldigi 3.23.06 3.23.12 3.23.15 3.23.16 3.23.17 3.23.18 3.23.19: Sound card based multimode software modem for Amateur Radio use
 media-radio/flrig 1.3.22 1.3.25 1.3.26 1.3.27: Transceiver control program for Amateur Radio use
 media-radio/gpredict 1.3: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
@@ -14078,7 +14077,7 @@ net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/metasploit 4.12.7 4.12.16 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.8_p10: Nagios/Icinga event broker that allows quick/direct access to your status data
-net-analyzer/monitoring-plugins 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
