@@ -11771,6 +11771,7 @@ kde-apps/plasma-runtime 16.04.3: Script engine and package tool for plasma
 kde-apps/plasma-telepathy-meta 16.08.3 16.12.0: Plasma Telepathy client
 kde-apps/poxml 16.08.3 16.12.0: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.08.3 16.12.0: Manage print jobs and printers in Plasma
+kde-apps/pykde4 4.14.3-r1: Python bindings for KDE SC 4
 kde-apps/renamedlg-plugins 16.04.3: KDE RenameDlg plugins
 kde-apps/rocs 16.08.3 16.12.0: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 16.08.3 16.12.0: KWallet extension for signond
@@ -11785,7 +11786,6 @@ kde-apps/umbrello 16.08.3 16.12.0: KDE UML Modeller
 kde-apps/zeroconf-ioslave 16.08.3 16.12.0: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdelibs 4.14.24 4.14.27: KDE libraries needed by all KDE programs
-kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-frameworks/attica 5.26.0 5.29.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 4.14.3 5.26.0-r2 5.29.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.26.0 5.29.0: Qt wrapper for Bluez 5 DBus API
@@ -11947,7 +11947,7 @@ kde-misc/plasma-widget-message-indicator 0.5.8: Plasmoid for displaying Ayatana 
 kde-misc/plasma-wifi 0.5-r1: Plasmoid which displays the currect signal strength
 kde-misc/plasmatvgr 0.47: Plasmoid which shows greek TV program
 kde-misc/plasmoid-workflow 0.4.1: Integrates Activities, Virtual Desktops and Tasks in one component
-kde-misc/pyrad 0.6.2-r1 0.7.1: A wheel type command interface for KDE, heavily inspired by Kommando
+kde-misc/pyrad 0.7.1: A wheel type command interface for KDE, heavily inspired by Kommando
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/quickaccess 0.8.2-r1: Plasmoid for the panel provides quick access to the most used folders
 kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
@@ -12149,7 +12149,7 @@ mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide 
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2: S/MIME signing milter
 mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
-mail-filter/spamassassin 3.4.0-r1 3.4.1-r8: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.0-r1 3.4.1-r8 3.4.1-r10: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 4.3.0-r1 5.0.1: A drop-in connection-time spam filter for qmail
@@ -15252,7 +15252,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.1.5 5.2.12 5.2.13: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20161218 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-misc/wireguard 0.0.20161223 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
