@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ IUSE="debug kde"
 CDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	kde? ( $(add_kdebase_dep kdelibs) )
+	kde? ( kde-frameworks/kdelibs:4 )
 "
 DEPEND="${CDEPEND}
 	sys-devel/gettext

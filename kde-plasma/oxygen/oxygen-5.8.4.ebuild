@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtx11extras)
 	x11-libs/libxcb
 	qt4? (
-		kde-base/kdelibs:4
+		kde-frameworks/kdelibs:4
 		x11-libs/libX11
 	)
 	wayland? ( $(add_frameworks_dep kwayland) )

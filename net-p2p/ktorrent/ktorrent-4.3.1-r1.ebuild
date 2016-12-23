@@ -49,8 +49,8 @@ COMMONDEPEND="
 	mediaplayer? ( >=media-libs/taglib-1.5 )
 	rss? ( $(add_kdeapps_dep kdepimlibs) )
 	search? (
-		$(add_kdebase_dep kdelibs webkit 4.14.22)
 		dev-qt/qtwebkit:4
+		kde-frameworks/kdelibs:4[webkit]
 	)
 "
 DEPEND="${COMMONDEPEND}
