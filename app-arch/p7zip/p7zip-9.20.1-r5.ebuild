@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE="doc kde rar +pch static wxwidgets"
 REQUIRED_USE="kde? ( wxwidgets )"
 
 RDEPEND="
-	kde? ( x11-libs/wxGTK:2.8[X,-odbc] kde-base/kdelibs )
+	kde? ( x11-libs/wxGTK:2.8[X,-odbc] kde-frameworks/kdelibs:4 )
 	wxwidgets? ( x11-libs/wxGTK:2.8[X,-odbc] )"
 DEPEND="${RDEPEND}
 	amd64? ( dev-lang/yasm )

@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kdelibs)
 	$(add_kdeapps_dep kdepimlibs)
 	kde-apps/akonadi:4
+	kde-frameworks/kdelibs:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4

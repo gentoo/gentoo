@@ -95,7 +95,7 @@ media-libs/xine-lib fusion
 media-libs/mesa sysfs
 
 # needs udev
-kde-base/kdelibs udisks upower
+kde-frameworks/kdelibs udisks upower
 media-libs/mesa gbm dri3
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor

@@ -27,7 +27,7 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep kdelibs 'udev,udisks(+)')
+	kde-frameworks/kdelibs:4[udev,udisks(+)]
 	$(add_kdeapps_dep audiocd-kio)
 "
 

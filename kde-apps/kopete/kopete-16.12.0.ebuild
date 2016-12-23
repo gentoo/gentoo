@@ -64,12 +64,12 @@ testbed winpopup +xmpp yahoo zeroconf"
 IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 
 COMMONDEPEND="
-	$(add_kdebase_dep kdelibs 'zeroconf?')
 	$(add_kdeapps_dep kdepimlibs)
 	dev-libs/libpcre
 	>=dev-qt/qtgui-4.4.0:4[mng]
 	media-libs/phonon[qt4]
 	media-libs/qimageblitz
+	kde-frameworks/kdelibs:4[zeroconf?]
 	!aqua? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver

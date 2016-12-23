@@ -510,7 +510,7 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-base/kdelibs is not stable for arm
+# kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
 
 # Justin Lecher <jlec@gentoo.org> (14 Jen 2011)

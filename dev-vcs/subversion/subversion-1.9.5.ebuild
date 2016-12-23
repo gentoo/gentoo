@@ -32,7 +32,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.7.12
 	berkdb? ( >=sys-libs/db-4.0.14:= )
 	ctypes-python? ( ${PYTHON_DEPS} )
 	gnome-keyring? ( dev-libs/glib:2 sys-apps/dbus gnome-base/libgnome-keyring )
-	kde? ( sys-apps/dbus dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 >=kde-base/kdelibs-4:4 )
+	kde? ( sys-apps/dbus dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 kde-frameworks/kdelibs:4 )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
