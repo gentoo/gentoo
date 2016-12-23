@@ -21,7 +21,7 @@ IUSE="acl cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl stat
 
 CDEPEND="
 	!app-editors/yudit
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	>=dev-libs/libgcrypt-1.2.3:0
 	sys-apps/coreutils
 	>=sys-libs/db-4.2.52:=
