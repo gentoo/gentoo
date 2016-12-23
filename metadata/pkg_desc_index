@@ -10003,7 +10003,7 @@ dev-util/complexity 1.5 1.10: a tool designed for analyzing the complexity of C 
 dev-util/conan 0.16.1 0.17.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
-dev-util/cookiecutter 1.4.0: Command-line utility to create projects from cookiecutters (project templates)
+dev-util/cookiecutter 1.4.0 1.5.0: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.72 1.73 1.74 1.75 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
