@@ -96,7 +96,7 @@ RDEPEND="${COMMONDEPEND}
 	!dev-qt/qtphonon
 	>=app-crypt/gnupg-2.0.11
 	app-misc/ca-certificates
-	$(add_kdebase_dep kde-env '' 4.14.3)
+	kde-frameworks/kdelibs-env:4
 	sys-apps/dbus[X]
 	!aqua? (
 		udisks? ( sys-fs/udisks:2 )

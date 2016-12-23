@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ CMAKE_REQUIRED="never"
 KDE_REQUIRED="never"
 inherit kde4-base
 
-DESCRIPTION="Environment setting required for all KDE4 apps to run"
+DESCRIPTION="Environment setting required for all KDELibs4 apps to run"
 SRC_URI=""
 ESVN_REPO_URI=""
 
