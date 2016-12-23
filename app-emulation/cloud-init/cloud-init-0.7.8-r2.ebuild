@@ -26,6 +26,7 @@ CDEPEND="
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/cheetah[$(python_gen_usedep 'python2_7')]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
