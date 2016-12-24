@@ -1,12 +1,17 @@
 certificate version 0.1
-pusher 0xA792A613 1482580110 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1482580110-53e3998deaa40e3fd2c6
+pusher Amy Winston <amynka@gentoo.org> 1482581110 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1482581114-9a85d8e6582f34eb28e3
 
-a168666a5aedea196140923ecdce1e3a00a736de b4c3092dc1db3a2f473f10922f4796bb04dd3215 refs/heads/master
+b4c3092dc1db3a2f473f10922f4796bb04dd3215 0b1317c792c717e86b5cf8a9d0c6e340574fd134 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iEYEABECAAYFAlheYI4ACgkQVWmRsqeSphNrNACeK7LA4nRwaGvymZkhotK8MrLu
-MNgAniX+cIltUEIqHnub5DR1w7Ydw68O
-=sYoR
+iQEvBAABCAAZBQJYXmR2EhxhbXlua2FAZ2VudG9vLm9yZwAKCRA7idRQNOaXgenK
+CACKJG7UJHra73AIo1ao4PrDJwiXJc9QhRr9ytKBhgNxwGfnzr0EjKB8CArTy72h
+msFt2/MEVuR9Hlex3jmAAzQi0Ty5T6T6RdyET0A0gL/05zLQwq6pqO3SMlFs5C4H
+Y4knPe7I5GtPs8vYZJtZW2DEF18XAFu8YQ18718QJe6FT2rzkoV+x3egqbm5I72p
+OdH0wbhmZ0/EtkNADX9iGK3tDpRGGJFuP+O/T2axUpk3ismwVc33c6PqiswlZjL8
+STWIixRxbhB+CGr3Myptw2qWbSHKBp+/EgY6Dd/xKQGttdkGuVbPLpvSpvTEZ9hr
+GayG4s7tZ7My7wg/gnIcBzFH
+=zHTT
 -----END PGP SIGNATURE-----
