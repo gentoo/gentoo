@@ -42,6 +42,13 @@ pkg_postinst() {
 	einfo "The API's it installs should be considered unstable"
 	einfo "and are subject to change."
 	einfo
+	einfo "This version includes a new gkeys-gpg command"
+	einfo "It can be used as an alternate gpg command for git"
+	einfo "It will set the correct keyring to verify signed commits"
+	einfo "provided the key it needs to verify against is part of the gkeys"
+	einfo "keyring system.   It only works for verification, any other call "
+	einfo "to it will re-direct directly to the normal gpg command."
+	einfo
 	einfo "Please file any enhancement requests, or bugs"
 	einfo "at https://bugs.gentoo.org"
 	einfo "We are also on IRC @ #gentoo-keys of the Freenode network"
