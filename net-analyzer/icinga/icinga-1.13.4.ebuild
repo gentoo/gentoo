@@ -14,6 +14,7 @@ HOMEPAGE="http://www.icinga.org/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/${PN}/${PN}-core/archive/v${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~prometheanfire/dist/patches/CVEs/CVE-2015-8010_1.13.3.patch"
+S="${WORKDIR}/${PN}-core-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
