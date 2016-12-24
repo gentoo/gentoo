@@ -13,7 +13,7 @@ LICENSE="MIT"
 SRC_URI="https://codeload.github.com/jgarzik/${PN}/tar.gz/v${PV} -> ${P}.tgz"
 SLOT="0/0"
 
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 
 IUSE=""
 
