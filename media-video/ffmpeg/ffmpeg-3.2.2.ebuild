@@ -284,6 +284,8 @@ RESTRICT="
 
 S=${WORKDIR}/${P/_/-}
 
+PATCHES=( "${FILESDIR}/chromaprint14.patch" )
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
