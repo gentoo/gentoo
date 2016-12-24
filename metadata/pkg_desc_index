@@ -14479,7 +14479,7 @@ net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
 net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
-net-im/pyicq-t 0.8.1.5-r4 0.8.1.5-r5 0.8.1.5-r6: Python based jabber transport for ICQ
+net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.5.0 1.6.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
 net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
