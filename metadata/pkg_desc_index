@@ -18109,8 +18109,8 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9 2.8.9_pre11: An excell
 www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
-www-client/opera 12.16_p1860-r1 42.0.2393.85: A fast and secure web browser
-www-client/opera-beta 42.0.2393.65 42.0.2393.78: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 42.0.2393.85 42.0.2393.94: A fast and secure web browser
+www-client/opera-beta 43.0.2442.7: A fast and secure web browser
 www-client/opera-developer 43.0.2423.0 43.0.2431.0: A fast and secure web browser
 www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
