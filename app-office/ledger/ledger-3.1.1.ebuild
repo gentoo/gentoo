@@ -36,7 +36,11 @@ DEPEND="
 	dev-libs/utfcpp
 	doc? (
 		sys-apps/texinfo
-		dev-texlive/texlive-texinfo
+		|| (
+			>=dev-texlive/texlive-plainextra-2013
+			dev-texlive/texlive-texinfo
+		)
+		dev-texlive/texlive-fontsrecommended
 	)
 "
 
@@ -127,3 +131,4 @@ pkg_postrm() {
 
 # rainy day TODO:
 # - IUSE test
+# - EAPI=6
