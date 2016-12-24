@@ -2,51 +2,62 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
-inherit autotools eutils python-single-r1 user
+PYTHON_COMPAT=( python{3_4,3_5} )
+PLOCALES="ru"
+CMAKE_MAKEFILE_GENERATOR=ninja
 
-MY_PV=${PV/_/-}
+inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
+
+GTEST_VER="1.8.0"
+GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> googletest-release-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
-inherit git-r3
-EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/znc/znc.git"}
-SRC_URI=""
-KEYWORDS=""
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/znc/znc.git"}
+	SRC_URI=""
+	KEYWORDS=""
+	SWIG_DEPEND="
+		perl? ( >=dev-lang/swig-3.0.0 )
+		python? ( >=dev-lang/swig-3.0.0 )
+	"
+else
+	SRC_URI="
+		http://znc.in/releases/archive/${P}.tar.gz
+		test? ( ${GTEST_URL} )
+	"
+	KEYWORDS="~amd64 ~arm ~x86"
+	SWIG_DEPEND=""
+fi
 
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="daemon debug ipv6 libressl perl python ssl sasl tcl"
+IUSE="daemon +ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
 
 RDEPEND="
-	dev-libs/icu:=
-	sys-libs/zlib
-	perl? ( >=dev-lang/perl-5.10 )
+	icu? ( dev-libs/icu:= )
+	nls? ( dev-libs/boost[nls] )
+	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
+	zlib? ( sys-libs/zlib )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	${SWIG_DEPEND}
+	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
-	perl? (
-		>=dev-lang/swig-2.0.12
-	)
-	python? (
-		>=dev-lang/swig-2.0.12
-	)
 "
-
-S=${WORKDIR}/${PN}-${MY_PV}
-
-CONFDIR="/var/lib/znc"
 
 pkg_setup() {
 	if use python; then
@@ -54,111 +65,107 @@ pkg_setup() {
 	fi
 	if use daemon; then
 		enewgroup ${PN}
-		enewuser ${PN} -1 -1 /dev/null ${PN}
+		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+		# The home directory was previously set to /dev/null
+		# This caused a bug with the systemd unit
+		# https://bugs.gentoo.org/521916
+		esethome ${PN} /var/lib/${PN}
 	fi
 }
 
 src_prepare() {
-	AT_M4DIR="${S}/m4" \
-		eautoreconf
-
-	# build system quirk, it does not define AM_INIT_AUTOMAKE, nor
-	# does it have Makefile.am in the root dir, but we need '--add-missing'
-	automake --add-missing
+	l10n_find_plocales_changes "${S}/src/po" "${PN}." '.po'
+	remove_locale() {
+		# Some languages can miss some modules
+		rm src/po/${PN}.${1}.po modules/po/*.${1}.po || true
+	}
+	l10n_for_each_disabled_locale_do remove_locale
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable ipv6) \
-		$(use_enable perl) \
-		$(use python && echo "--enable-python=python3") \
-		$(use_enable sasl cyrus) \
-		$(use_enable ssl openssl) \
-		$(use_enable tcl tcl)
+	local want_swig
+	if [[ ${PV} == *9999* ]]; then
+		want_swig=yes
+	else
+		want_swig=no
+	fi
+	local mycmakeargs=(
+		-DWANT_SYSTEMD="$(usex daemon)"
+		-DSYSTEMD_DIR="$(systemd_get_systemunitdir)"
+		-DWANT_ICU="$(usex icu)"
+		-DWANT_IPV6="$(usex ipv6)"
+		-DWANT_I18N="$(usex nls)"
+		-DWANT_PERL="$(usex perl)"
+		-DWANT_PYTHON="$(usex python)"
+		-DWANT_CYRUS="$(usex sasl)"
+		-DWANT_OPENSSL="$(usex ssl)"
+		-DWANT_TCL="$(usex tcl)"
+		-DWANT_ZLIB="$(usex zlib)"
+		-DWANT_SWIG="${want_swig}"
+	)
+	if use test; then
+		export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googletest"
+		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
+	fi
+	cmake-utils_src_configure
+}
+
+src_test() {
+	pushd "${BUILD_DIR}" > /dev/null || die
+	${CMAKE_MAKEFILE_GENERATOR} unittest || die "Unit test failed"
+	popd > /dev/null || die
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
-	dodoc NOTICE README.md
+	cmake-utils_src_install
+	dodoc NOTICE
 	if use daemon; then
-		newinitd "${FILESDIR}"/znc.initd-r1 znc
+		newinitd "${FILESDIR}"/znc.initd-r2 znc
 		newconfd "${FILESDIR}"/znc.confd-r1 znc
 	fi
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo") || die
+	DISABLE_AUTOFORMATTING=1
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	if use !daemon; then
-		elog
-		elog "Run 'znc --makeconf' as the user you want to run ZNC as"
-		elog "to make a configuration file"
-		elog
-	else
-		elog
-		elog "An init-script was installed in /etc/init.d"
-		elog "A config file was installed in /etc/conf.d"
-		if [[ ! -d "${EROOT}${CONFDIR}" ]]; then
-			elog
-			elog "Run 'emerge --config znc' under portage"
-			elog "or 'cave config znc' under paludis to configure ZNC"
-			elog "as a system-wide daemon."
-			elog
-			elog "To generate a new SSL certificate, run:"
-			elog "  znc --system-wide-config-as znc --makepem -d ${CONFDIR}"
-			elog "as root"
-			elog
-			elog "If migrating from a user-based install"
-			elog "you can use your existing config files:"
-			elog "  mkdir ${CONFDIR}"
-			elog "  mv /home/\$USER/.znc/* ${CONFDIR}"
-			elog "  rm -rf /home/\$USER/.znc"
-			elog "  chown -R znc:znc ${CONFDIR}"
-			elog
-			elog "If you already have znc set up and want take advantage of the"
-			elog "init script but skip of all the above, you can also edit"
-			elog "  /etc/conf.d/znc"
-			elog "and adjust the variables to your current znc user and config"
-			elog "location."
-			if [[ -d "${EROOT}"/etc/znc ]]; then
-				elog
-				ewarn "/etc/znc exists on your system."
-				ewarn "Due to the nature of the contents of that folder,"
-				ewarn "we have changed the default configuration to use"
-				ewarn "	/var/lib/znc"
-				ewarn "please move /etc/znc to /var/lib/znc"
-				ewarn "or adjust /etc/conf.d/znc"
-			fi
-		else
-			elog "Existing config detected in ${CONFDIR}"
-			elog "You're good to go :)"
-		fi
-		elog
+	readme.gentoo_print_elog
+	if [[ -d "${EROOT%/}"/etc/znc ]]; then
+		ewarn "/etc/znc exists on your system."
+		ewarn "Due to the nature of the contents of that folder,"
+		ewarn "we have changed the default configuration to use"
+		ewarn "	/var/lib/znc"
+		ewarn "please move /etc/znc to /var/lib/znc"
+		ewarn "or adjust /etc/conf.d/znc"
 	fi
 }
 
 pkg_config() {
-	if use daemon && ! [[ -d "${EROOT}${CONFDIR}" ]]; then
-		einfo "Press ENTER to interactively create a new configuration file for znc."
-		einfo "To abort, press Control-C"
-		read
-		mkdir -p "${EROOT}${CONFDIR}" || die
-		chown -R ${PN}:${PN} "${EROOT}${CONFDIR}" ||
-			die "Setting permissions failed"
-		"${EROOT}"/usr/bin/znc --system-wide-config-as znc -c -r -d "${EROOT}${CONFDIR}" ||
-			die "Config failed"
-		echo
-		einfo "To start znc, run '/etc/init.d/znc start'"
-		einfo "or add znc to a runlevel:"
-		einfo "  rc-update add znc default"
-	else
-		if use daemon; then
-			ewarn "${CONFDIR} already exists, aborting to avoid damaging"
+	if use daemon; then
+		if [[ -e "${EROOT%/}/var/lib/znc" ]]; then
+			ewarn "${EROOT%/}/var/lib/znc already exists, aborting to avoid damaging"
 			ewarn "any existing configuration. If you are sure you want"
 			ewarn "to generate a new configuration, remove the folder"
 			ewarn "and try again."
 		else
-			ewarn "To configure znc as a system-wide daemon you have to"
-			ewarn "enable the 'daemon' use flag."
+			einfo "Press any key to interactively create a new configuration file"
+			einfo "for znc."
+			einfo "To abort, press Control-C"
+			read
+			mkdir -p "${EROOT%/}/var/lib/znc" || die
+			chown -R ${PN}:${PN} "${EROOT%/}/var/lib/znc" ||
+				die "Setting permissions failed"
+			start-stop-daemon --start --user ${PN}:${PN} --env ZNC_NO_LAUNCH_AFTER_MAKECONF=1 \
+				"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
+				die "Config failed"
+			echo
+			einfo "To start znc, run '/etc/init.d/znc start'"
+			einfo "or add znc to a runlevel:"
+			einfo "  rc-update add znc default"
 		fi
+	else
+		ewarn "To configure znc as a system-wide daemon you have to"
+		ewarn "enable the 'daemon' use flag."
 	fi
 }
