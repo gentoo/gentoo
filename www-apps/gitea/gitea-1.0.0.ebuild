@@ -61,5 +61,5 @@ src_install() {
 	newinitd "${FILESDIR}"/gitea.initd gitea
 	newconfd "${FILESDIR}"/gitea.confd gitea
 	keepdir /var/log/gitea /var/lib/gitea/data
-	fowners gitea:gitea /var/log/gitea /var/lib/gitea
+	fowners gitea:gitea /var/log/gitea /var/lib/gitea /var/lib/gitea/data
 }
