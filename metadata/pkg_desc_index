@@ -11809,7 +11809,7 @@ kde-frameworks/kdeclarative 5.26.0 5.29.0: Framework providing integration of QM
 kde-frameworks/kded 5.26.0 5.29.0: Central daemon of KDE workspaces
 kde-frameworks/kdelibs 4.14.24 4.14.27: KDE libraries needed by all KDE programs
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
-kde-frameworks/kdelibs4support 5.26.0 5.29.0: Framework easing the development transition from KDE 4 to KF 5
+kde-frameworks/kdelibs4support 5.26.0 5.29.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.26.0 5.29.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
 kde-frameworks/kdesu 5.26.0 5.29.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.26.0 5.29.0: Framework providing KDE integration of QtWebKit
