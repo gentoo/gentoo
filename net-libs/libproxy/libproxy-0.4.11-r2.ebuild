@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # NOTE: mozjs/spidermonkey might still cause problems like #373397 ?
 # NOTE: webkit-gtk:3, not :2, needed for libjavascriptcoregtk support
 RDEPEND="gnome? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
-	kde? ( >=kde-base/kdelibs-4.4.5 )
+	kde? ( kde-frameworks/kdelibs:4 )
 	mono? ( dev-lang/mono )
 	networkmanager? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	perl? ( dev-lang/perl:= )

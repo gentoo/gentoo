@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	gtk? ( dev-python/pywebkitgtk[${PYTHON_USEDEP}] )
 	qt4? ( dev-qt/qtwebkit:4
-		kde? ( kde-base/kdelibs ) )"
+		kde? ( kde-frameworks/kdelibs:4 ) )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	qt4? ( dev-qt/qtsql:4 )"

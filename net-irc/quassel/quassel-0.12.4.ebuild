@@ -64,7 +64,7 @@ GUI_RDEPEND="
 			>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt4(+)]
 			dev-qt/qtdbus:4
 			kde? (
-				kde-base/kdelibs:4
+				kde-frameworks/kdelibs:4
 				kde-frameworks/oxygen-icons:*
 				ayatana? ( kde-misc/plasma-widget-message-indicator )
 			)

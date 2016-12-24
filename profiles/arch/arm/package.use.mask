@@ -427,7 +427,7 @@ dev-util/devhelp gedit
 app-accessibility/speech-dispatcher flite
 
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
-# mask kde-base/* flags due to unkeyworded dependencies
+# mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/kopete jingle
 kde-plasma/kdeplasma-addons fcitx oauth
@@ -510,7 +510,7 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-base/kdelibs is not stable for arm
+# kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
 
 # Justin Lecher <jlec@gentoo.org> (14 Jen 2011)

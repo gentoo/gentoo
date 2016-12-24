@@ -177,7 +177,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	!qt5? ( kde? ( kde-base/kdelibs:4 ) )
+	!qt5? ( kde? ( kde-frameworks/kdelibs:4 ) )
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
 	xcb? ( x11-proto/xproto:0 )

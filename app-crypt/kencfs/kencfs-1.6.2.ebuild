@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	kde-base/kdelibs:4
+	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}
 	kde-apps/kwalletd:4

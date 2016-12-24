@@ -59,7 +59,7 @@ CDEPEND="
 	histman? ( >=dev-qt/qtsql-${QT_PV} )
 	ayatana? ( >=dev-libs/libindicate-qt-0.2.2 )
 	hunspell? ( app-text/hunspell )
-	kde? ( kde-base/kdelibs:4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 	mobility? (
 		dev-qt/qt-mobility[multimedia,feedback]
 		>=dev-qt/qtbearer-${QT_PV}
