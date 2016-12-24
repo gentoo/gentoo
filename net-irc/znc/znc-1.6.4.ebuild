@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="daemon debug ipv6 icu libressl perl python ssl sasl tcl test zlib"
+IUSE="daemon debug +ipv6 +icu libressl perl python +ssl sasl tcl test +zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
