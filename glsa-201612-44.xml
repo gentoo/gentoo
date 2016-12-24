@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-44">
+  <title>Roundcube: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Roundcube could potentially lead to arbitrary
+    code execution.
+  </synopsis>
+  <product type="ebuild">roundcube</product>
+  <announced>December 24, 2016</announced>
+  <revised>December 24, 2016: 1</revised>
+  <bug>601410</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/roundcube" auto="yes" arch="*">
+      <unaffected range="ge">1.2.3</unaffected>
+      <vulnerable range="lt">1.2.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Free and open source webmail software for the masses, written in PHP.</p>
+  </background>
+  <description>
+    <p>Roundcube, when no SMTP server is configured and the sendmail program is
+      enabled, does not properly restrict the use of custom envelope-from
+      addresses on the sendmail command line.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An authenticated remote attacker could possibly execute arbitrary code
+      with the privileges of the process, or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>Don’t use a MTA (Mail Transfer Agent) in conjunction with Roundcube
+      which implements sendmail’s “-O” or “-X” parameter, or
+      configure Roundcube to use a SMTP server as recommended by upstream.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Roundcube users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/roundcube-1.2.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9920">CVE-2016-9920</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 23 Dec 2016 15:26:48 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Sat, 24 Dec 2016 06:42:27 +0000">whissi</metadata>
+</glsa>
