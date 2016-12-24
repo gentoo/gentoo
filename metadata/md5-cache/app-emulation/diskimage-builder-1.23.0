@@ -4,7 +4,7 @@ DESCRIPTION=Golden Disk Image builder.
 EAPI=6
 HOMEPAGE=http://docs.openstack.org/developer/diskimage-builder/
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm64 x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
 RDEPEND=>=dev-python/pbr-1.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/Babel-2.3.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/dib-utils[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pyyaml-3.10.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/flake8-2.5.4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] <dev-python/flake8-2.6.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/six-1.9.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/oslo-sphinx-4.7.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-emulation/qemu sys-block/parted sys-fs/multipath-tools python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/d/diskimage-builder/diskimage-builder-1.23.0.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	583a05d30524485fda6869c772682ecd	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=6e654574bfcdac7e3c5052d25b01edec
+_md5_=a0f9ad328f17210438b4078b10ab1d7f
