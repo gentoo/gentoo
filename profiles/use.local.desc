@@ -3335,9 +3335,9 @@ kde-apps/pykde4:akonadi - Compile bindings for Akonadi
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
-kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
+kde-frameworks/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
 kde-frameworks/kfilemetadata:epub - Adds support for reading EPUB ebook metadata

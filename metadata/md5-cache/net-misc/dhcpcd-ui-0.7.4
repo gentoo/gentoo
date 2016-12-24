@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=virtual/libintl libnotify? ( gtk? ( x11-libs/libnotify ) gtk3? ( x11-libs/libnotify ) qt4? ( kde-base/kdelibs ) ) gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) qt4? ( dev-qt/qtgui:4 ) virtual/pkgconfig
+DEPEND=virtual/libintl libnotify? ( gtk? ( x11-libs/libnotify ) gtk3? ( x11-libs/libnotify ) qt4? ( kde-frameworks/kdelibs:4 ) ) gtk? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) qt4? ( dev-qt/qtgui:4 ) virtual/pkgconfig
 DESCRIPTION=Desktop notification and configuration for dhcpcd
 EAPI=5
 HOMEPAGE=http://roy.marples.name/projects/dhcpcd-ui/
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.4.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c2f27f5ba1b39e39c0b7e583e0d1c89d
+_md5_=58ee84cb10b55831ee0f1932f42cd01c
