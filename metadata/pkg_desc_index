@@ -161,7 +161,7 @@ app-admin/packagekit-gtk 0.8.15 1.0.11 1.1.1 1.1.4: Gtk3 PackageKit backend libr
 app-admin/packagekit-qt 0.9.6: Qt PackageKit backend library
 app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
-app-admin/passwordsafe 0.99_beta 1.00_beta: Password manager with wxGTK based frontend
+app-admin/passwordsafe 1.00_beta 1.01_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.20 2.21 2.22 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0: Filesystem Integrity Checker
@@ -1011,7 +1011,7 @@ app-editors/editra 0.7.20-r1: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
-app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5-r1 24.5-r3 25.1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r11 23.4-r14 24.4-r4 24.5-r3 25.1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 25.1.50_pre20160923 25.1.9999-r2 26.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
@@ -1989,8 +1989,8 @@ app-mobilephone/gnokii 0.6.31 0.6.31-r1 9999: User space driver and tools for us
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
-app-mobilephone/kannel 1.4.3-r2 1.5.0-r2 1.5.0-r3: Powerful SMS and WAP gateway
-app-mobilephone/kannel-sqlbox 0.7.2 1.5.0-r1: DB-Based Kannel Box for message queueing
+app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
+app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
 app-mobilephone/obexftp 0.23-r2 0.24-r1: File transfer over OBEX for mobile phones
@@ -13582,7 +13582,7 @@ media-sound/mpck 0.15: Checks MP3s for errors
 media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18 0.19.19 0.19.21: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
-media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
+media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.18.1 1.22.4 1.23.6 1.23.7 1.23.8: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
