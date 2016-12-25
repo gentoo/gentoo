@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x8
 IUSE="pgm +sodium static-libs test"
 
 RDEPEND="
+	sys-libs/libunwind
 	sodium? ( dev-libs/libsodium:= )
 	pgm? ( =net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
