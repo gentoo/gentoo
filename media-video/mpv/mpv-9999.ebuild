@@ -113,11 +113,11 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	zsh-completion? ( dev-lang/perl )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
