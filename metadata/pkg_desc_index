@@ -252,7 +252,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.17.27 1.18.14 1.18.15: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.17.27 1.18.15 1.18.18: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.12.0-r1 1.14.1 1.16.0: Engrampa archive manager for MATE
