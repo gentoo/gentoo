@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils multilib-minimal toolchain-funcs autotools flag-o-matic
+inherit eutils multilib-minimal toolchain-funcs autotools
 
 DESCRIPTION="BSD tar command"
 HOMEPAGE="http://www.libarchive.org/"
@@ -77,9 +77,6 @@ multilib_src_configure() {
 	myconf+=(
 		--without-lzmadec
 	)
-
-	# Fix linking on Solaris
-	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lsocket  -lnsl
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
