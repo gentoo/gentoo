@@ -4168,7 +4168,7 @@ dev-java/jsr173 1.0-r1 1.0-r2 1.0-r3: Yet another Java library for parsing and w
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr225 1.0: XQuery API for Java
-dev-java/jsr250 1.0-r1 1.2: JSR 250 Common Annotations
+dev-java/jsr250 1.2: JSR 250 Common Annotations
 dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr322 1.5: Java EE Connector Architecture
