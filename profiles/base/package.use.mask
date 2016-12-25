@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Patrice Clement <monsieurp@gentoo.org> (26 Dec 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Requires masked media-video/libav-12. See bug #603726.
+>=media-video/mpv-0.23.0 libav
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (14 Dec 2016)
 # Fails to build with newly stable ffmpeg-3, so mask this useflag
 # Workaround; leaving a real fix to the maintainers... bug 580630
