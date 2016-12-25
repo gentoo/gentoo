@@ -17024,7 +17024,7 @@ sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package i
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.0.1 1.1.0 1.1.0-r1 9999: Framework for defining and tracking users, login sessions and seats
-sys-auth/docker_auth 1.1-r1: Docker Registry 2 authentication server
+sys-auth/docker_auth 1.2: Docker Registry 2 authentication server
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
