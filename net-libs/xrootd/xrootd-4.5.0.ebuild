@@ -4,7 +4,9 @@
 
 EAPI=6
 
-inherit cmake-utils user
+PYTHON_COMPAT=( python2_7 )
+
+inherit cmake-utils python-single-r1 user
 
 DESCRIPTION="Extended ROOT remote file server"
 HOMEPAGE="http://xrootd.org/"
@@ -13,26 +15,38 @@ SRC_URI="http://xrootd.org/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc fuse http kerberos readline rbd ssl test"
+IUSE="doc examples fuse http kerberos python readline rbd ssl test"
 
-RDEPEND="
+CDEPEND="
 	!<sci-physics/root-5.32[xrootd]
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse )
 	kerberos? ( virtual/krb5 )
+	python? ( ${PYTHON_DEPS} )
 	rbd? ( sys-cluster/ceph )
 	readline? ( sys-libs/readline:0= )
-	ssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
-	test? ( dev-util/cppunit )"
-
-REQUIRED_USE="http? ( kerberos ssl )"
+	ssl? ( dev-libs/openssl:0= )
+"
+DEPEND="${CDEPEND}
+	doc? (
+		app-doc/doxygen[dot]
+		python? ( dev-python/sphinx )
+	)
+	test? ( dev-util/cppunit )
+"
+RDEPEND="${CDEPEND}
+	dev-lang/perl
+"
+REQUIRED_USE="
+	http? ( kerberos ssl )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 PATCHES=( "${FILESDIR}"/${PN}-no-werror.patch )
 
 pkg_setup() {
 	enewgroup xrootd
 	enewuser xrootd -1 -1 "${EPREFIX}"/var/spool/xrootd xrootd
+	use python && python_setup
 }
 
 src_configure() {
@@ -42,7 +56,7 @@ src_configure() {
 		-DENABLE_FUSE=$(usex fuse)
 		-DENABLE_HTTP=$(usex http)
 		-DENABLE_KRB5=$(usex kerberos)
-		-DENABLE_PYTHON=OFF # TODO: install python bindings properly
+		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_READLINE=$(usex readline)
 		-DENABLE_TESTS=$(usex test)
 	)
@@ -53,6 +67,9 @@ src_compile() {
 	cmake-utils_src_compile
 	if use doc; then
 		doxygen Doxyfile || die
+		if use python; then
+			emake -C bindings/python/docs html
+		fi
 	fi
 }
 
@@ -76,4 +93,18 @@ src_install() {
 	done
 	# all daemons MUST use single master config file
 	newconfd "${FILESDIR}"/xrootd.confd xrootd
+
+	if use python; then
+		python_optimize "${D}/$(python_get_sitedir)"
+
+		if use doc; then
+			docinto python
+			docompress -x "/usr/share/doc/${PF}/python/html"
+			dodoc -r bindings/python/docs/build/html
+		fi
+		if use examples; then
+			docinto python
+			dodoc -r bindings/python/examples
+		fi
+	fi
 }
