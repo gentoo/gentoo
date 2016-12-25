@@ -7,7 +7,7 @@ EGO_PN="github.com/cesanta/docker_auth/..."
 
 inherit user golang-build golang-vcs-snapshot
 
-SHORT_COMMIT="0b4bb77"
+SHORT_COMMIT="99a7306"
 SRC_URI="https://${EGO_PN%/*}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/dchest/uniuri/archive/8902c56451e9b58ff940bbe5fec35d5f9c04584a.tar.gz -> dchest-uniuri-8902c56451e9b58ff940bbe5fec35d5f9c04584a.tar.gz
 	https://github.com/deckarep/golang-set/archive/ceca0031971f0401859beb9fc7396188545e4c9f.tar.gz -> deckarep-golang-set-ceca0031971f0401859beb9fc7396188545e4c9f.tar.gz
