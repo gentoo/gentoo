@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (25 Dec 2016)
+# Masked for removal in 30 days. Dead upstream. No reverse dependencies.
+# No maintainer. Was introduced for media-sound/tomahwak. Uses deprecated
+# EAPI.
+net-libs/qtweetlib
+
 # Lars Wendler <polynomial-c@gentoo.org> (24 Dec 2016)
 # Fails with Google TLS certificates and possibly others (bug #603622).
 =dev-libs/nss-3.28
