@@ -89,15 +89,9 @@ src_configure() {
 	# It's all built as C++, upstream uses CFLAGS internally.
 	CFLAGS="" ./configure \
 		--disable-strip \
-		--prefix-dir="${EPREFIX}" \
-		--binary-dir="/usr/bin" \
-		--data-dir="/usr/share/${PN}" \
+		--prefix-dir="${EPREFIX}/usr" \
+		--binary-dir="bin" \
 		--install-dir="${D}" \
-		--icon-dir=/usr/share/pixmaps \
-		--menu-dir=/usr/share/applications \
-		--icon-theme-dir=/usr/share/icons/hicolor \
-		--man-dir=/usr/share/man/man6 \
-		--doc-dir=/usr/share/doc/${PF} \
 		--menu-group="Game;Simulation;" \
 		${myopts[@]} \
 		$(use_with iconv) \
