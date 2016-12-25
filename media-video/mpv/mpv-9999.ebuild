@@ -124,7 +124,10 @@ RDEPEND="${COMMON_DEPEND}
 	tools? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
+	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
+)
 
 mpv_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && use vaapi && use egl && ! tc-has-tls; then
