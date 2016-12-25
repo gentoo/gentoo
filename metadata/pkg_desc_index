@@ -9281,6 +9281,7 @@ dev-ruby/json 1.8.2-r1 1.8.3 2.0.1 2.0.2: A JSON implementation as a Ruby extens
 dev-ruby/jwt 1.5.4 1.5.5 1.5.6: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
+dev-ruby/kpeg 1.1.0: A simple PEG library for Ruby
 dev-ruby/kramdown 1.4.2 1.12.0 1.13.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3 2.4.3-r1: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
@@ -9449,7 +9450,7 @@ dev-ruby/rbpdf-font 1.19.0-r1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2-r1: Ruby/RBTree module
 dev-ruby/rcairo 1.14.3 1.15.2 1.15.3: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.2.0 4.2.2 4.3.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.2.0 4.2.2 4.3.0 5.0.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.6-r1 2.0.14-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4: A Ruby wrapper for Upskirt
@@ -12436,7 +12437,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cura 0.15.04.4 0.15.04.5_rc5 2.1.0_beta 2.3.1: A 3D model slicing application for 3D printing
 media-gfx/curaengine 0.15.04.6 2.1.0_beta 2.3.1: A 3D model slicing engine for 3D printing
-media-gfx/darktable 1.6.9 2.0.6 2.0.7 2.2.0_rc3 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 1.6.9 2.0.6 2.0.7 2.2.0 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.3.0 5.3.0-r1: Digital photo management application
