@@ -373,10 +373,6 @@ net-misc/bgpq
 # there is a working release.
 sci-geosciences/googleearth
 
-# Fabian Groffen <grobian@gentoo.org> (25 Sep 2016)
-# Mask Exim RCs
-=mail-mta/exim-4.88_rc6
-
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
 # Masked for testing, see bug #588894.
 =x11-misc/light-locker-1.7.0-r1

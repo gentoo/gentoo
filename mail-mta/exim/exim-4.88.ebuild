@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils toolchain-funcs multilib pam systemd
 
@@ -101,6 +101,8 @@ src_prepare() {
 	else
 		epatch "${FILESDIR}"/exim-4.80-spool-mail-group.patch # 438606
 	fi
+
+	eapply_user
 
 	# user Exim believes it should be
 	MAILUSER=mail
@@ -522,4 +524,6 @@ pkg_postinst() {
 	use tpda && einfo "TPDA/EVENT support is experimental"
 	use proxy && einfo "proxy support is experimental"
 	use dsn && einfo "DSN support is experimental"
+	elog "The obsolete acl condition 'demime' is removed, the replacements"
+	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
 }
