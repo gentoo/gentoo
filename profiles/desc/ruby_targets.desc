@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation.
+# Copyright 1999-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,3 +11,4 @@ ruby20 - Build with MRI Ruby 2.0.x
 ruby21 - Build with MRI Ruby 2.1.x
 ruby22 - Build with MRI Ruby 2.2.x
 ruby23 - Build with MRI Ruby 2.3.x
+ruby24 - Build with MRI Ruby 2.4.x
