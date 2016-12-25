@@ -9383,7 +9383,7 @@ dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.4.3 2.4.4 2.4.5: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
-dev-ruby/paint 1.0.1: Terminal painter
+dev-ruby/paint 1.0.1 2.0.0: Terminal painter
 dev-ruby/parser 2.3.1.4 2.3.2.0 2.3.3.0 2.3.3.1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -9553,7 +9553,7 @@ dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported R
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.8.2 3.8.3: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.6 2.6.7 2.6.8: Centralized Ruby extension management system
-dev-ruby/rubyntlm 0.6.0 0.6.1: Ruby/NTLM provides message creator and parser for the NTLM authentication.
+dev-ruby/rubyntlm 0.6.1: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
