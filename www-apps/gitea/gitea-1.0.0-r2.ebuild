@@ -22,8 +22,8 @@ DEPEND="dev-go/go-bindata"
 RDEPEND="dev-vcs/git"
 
 pkg_setup() {
-	enewgroup gitea
-	enewuser gitea -1 /bin/bash /var/lib/gitea gitea
+	enewgroup git
+	enewuser git -1 /bin/bash /var/lib/gitea git
 }
 
 src_prepare() {
@@ -32,8 +32,7 @@ src_prepare() {
 	sed -i -e "s/git rev-parse --short HEAD/echo ${EGIT_COMMIT:0:7}/"\
 		-e "s/^LDFLAGS += -X \"main.Version.*$/LDFLAGS += -X \"main.Version=${PV}\"/"\
 		-e "s/-ldflags '-s/-ldflags '/" src/${EGO_PN%/*}/Makefile || die
-	sed -i -e "s#RUN_USER = git#RUN_USER = gitea#"\
-		-e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${GITEA_PREFIX}/data#"\
+	sed -i -e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${GITEA_PREFIX}/data#"\
 		-e "s#^PATH = data/gitea.db#PATH = ${GITEA_PREFIX}/data/gitea.db#"\
 		-e "s#^PROVIDER_CONFIG = data/sessions#PROVIDER_CONFIG = ${GITEA_PREFIX}/data/sessions#"\
 		-e "s#^AVATAR_UPLOAD_PATH = data/avatars#AVATAR_UPLOAD_PATH = ${GITEA_PREFIX}/data/avatars#"\
@@ -58,5 +57,5 @@ src_install() {
 	newinitd "${FILESDIR}"/gitea.initd gitea
 	newconfd "${FILESDIR}"/gitea.confd gitea
 	keepdir /var/log/gitea /var/lib/gitea/data
-	fowners -R gitea:gitea /var/log/gitea /var/lib/gitea/
+	fowners -R git:git /var/log/gitea /var/lib/gitea/
 }
