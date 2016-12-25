@@ -748,7 +748,7 @@ dev-ruby/weakling
 app-eselect/eselect-lua
 dev-lang/lua:5.1
 dev-lang/lua:5.2
-=dev-lang/lua-5.3.3
+dev-lang/lua:5.3
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Mar 2014)
 # Security mask of vulnerable versions, wrt bug #424167
