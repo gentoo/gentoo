@@ -9,7 +9,7 @@ user=${user:-${SVCNAME}}
 group=${group:-${SVCNAME}}
 
 command="/usr/bin/gitea web"
-command_args="${command_args:--config /etc/gitea/app.ini}"
+command_args="${command_args:--config /var/lib/gitea/conf/app.ini}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
