@@ -14,7 +14,7 @@ HOMEPAGE="http://www.darktable.org/"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 #KEYWORDS="~amd64 ~x86"
-LANGS=" af ca cs da de el es fi fr gl he hu it ja nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN"
+LANGS=" ca cs da de es fr he hu it ja nl pl ru sk sl sv uk"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
 nls opencl openmp openexr pax_kernel webp
