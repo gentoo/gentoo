@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit cmake-utils multilib
+inherit cmake-utils
 
 DESCRIPTION="OpenGL to PostScript printing library"
 HOMEPAGE="http://www.geuz.org/gl2ps/"
