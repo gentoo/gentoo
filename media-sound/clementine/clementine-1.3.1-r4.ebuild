@@ -95,6 +95,7 @@ S="${WORKDIR}/${MY_P^}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
 	"${FILESDIR}"/${P}-fix-desktop-file.patch
+	"${FILESDIR}"/${PN}-chromaprint14.patch #603662
 )
 
 src_prepare() {
