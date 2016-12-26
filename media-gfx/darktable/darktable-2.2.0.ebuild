@@ -7,7 +7,7 @@ CMAKE_MIN_VERSION="3.0"
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
-DOC_PV="2.0.0"
+DOC_PV="2.2.0"
 MY_PV="${PV/_/}"
 MY_P="${P/_/.}"
 
