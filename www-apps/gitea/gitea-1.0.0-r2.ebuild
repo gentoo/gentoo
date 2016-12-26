@@ -10,12 +10,12 @@ EGIT_COMMIT="6aacf4d2f09631359b99df562b4bf31dcef44ea3"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="A painless self-hosted Git service, written in Go, forked from gogs"
+DESCRIPTION="A painless self-hosted Git service, written in Go"
 HOMEPAGE="https://github.com/go-gitea/gitea"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="MIT"
-SLOT="0/${PVR}"
+SLOT="0"
 IUSE=""
 
 DEPEND="dev-go/go-bindata"
