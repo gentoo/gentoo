@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Math-Complex >=media-libs/gd-2.2.3 png? ( media-libs/gd[png] media-libs/libpng:0 sys-libs/zlib ) jpeg? ( media-libs/gd[jpeg] virtual/jpeg:0 ) truetype? ( media-libs/gd[truetype] media-libs/freetype:2 ) xpm? ( media-libs/gd[xpm] x11-libs/libXpm ) gif? ( media-libs/giflib ) virtual/perl-ExtUtils-CBuilder virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Interface to Thomas Boutell's gd library
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/GD/
+IUSE=animgif gif jpeg png truetype xpm
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Math-Complex >=media-libs/gd-2.2.3 png? ( media-libs/gd[png] media-libs/libpng:0 sys-libs/zlib ) jpeg? ( media-libs/gd[jpeg] virtual/jpeg:0 ) truetype? ( media-libs/gd[truetype] media-libs/freetype:2 ) xpm? ( media-libs/gd[xpm] x11-libs/libXpm ) gif? ( media-libs/giflib ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LD/LDS/GD-2.56.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=1c4f6acdcd922919fe76844f01b4adeb

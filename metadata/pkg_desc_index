@@ -5793,7 +5793,7 @@ dev-perl/Font-TTF 1.20.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r1: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
 dev-perl/Fuse 0.16.1: Fuse module for perl
-dev-perl/GD 2.460.0-r1 2.560.0-r1: Interface to Thomas Boutell's gd library
+dev-perl/GD 2.560.0-r1 2.560.0-r2: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1: Create 3D Graphs with GD and GD::Graph
 dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written using GD
