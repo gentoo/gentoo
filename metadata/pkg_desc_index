@@ -5176,7 +5176,7 @@ dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
-dev-ml/ocaml-containers 0.21 0.22: A modular standard library focused on data structures
+dev-ml/ocaml-containers 0.22: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.3.0 2.3.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1 0.10.2 0.11.1 0.11.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
@@ -5266,7 +5266,7 @@ dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2 0.2.1 9999: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
-dev-ml/sequence 0.8: Simple sequence (iterator) datatype and combinators
+dev-ml/sequence 0.9: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 112.35.00 113.00.00 113.24.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
 dev-ml/textutils 112.17.00 113.24.00 113.33.00: Text output utilities
