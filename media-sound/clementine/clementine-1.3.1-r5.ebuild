@@ -41,7 +41,6 @@ COMMON_DEPEND="
 	>=media-libs/chromaprint-0.6
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	media-libs/libechonest:=[qt4(+)]
 	>=media-libs/libmygpo-qt-1.0.9[qt4(+)]
 	>=media-libs/taglib-1.8[mp4(+)]
 	sys-libs/zlib
@@ -95,7 +94,8 @@ S="${WORKDIR}/${MY_P^}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
 	"${FILESDIR}"/${P}-fix-desktop-file.patch
-	"${FILESDIR}"/${PN}-chromaprint14.patch #603662
+	"${FILESDIR}"/${P}-chromaprint14.patch #603662
+	"${FILESDIR}"/${P}-libechonest_removal.patch
 )
 
 src_prepare() {
