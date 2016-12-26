@@ -5634,7 +5634,7 @@ dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
 dev-perl/Devel-FindPerl 0.14.0: Find the path to your perl
-dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.130.0-r1 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
+dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
@@ -6457,7 +6457,7 @@ dev-perl/TeX-Encode 1.300.0: Encode/decode Perl utf-8 strings into TeX
 dev-perl/Template-DBI 2.650.0-r1: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
-dev-perl/Template-Plugin-Latex 2.170.0-r1 3.60.0: LaTeX support for the Template Toolkit
+dev-perl/Template-Plugin-Latex 3.60.0: LaTeX support for the Template Toolkit
 dev-perl/Template-Tiny 1.120.0-r1: Template Toolkit reimplemented in as little code as possible
 dev-perl/Template-Toolkit 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
