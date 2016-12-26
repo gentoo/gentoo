@@ -12,7 +12,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="dev-lang/go"
+DEPEND=">=dev-lang/go-1.7.1"
 RDEPEND="!app-admin/filebeat-bin"
 
 ELASTIC="${WORKDIR}/src/github.com/elastic"
@@ -28,6 +28,11 @@ src_unpack() {
 src_compile() {
 	cd ${BEATS}/filebeat || die
 	GOPATH="${WORKDIR}" emake
+}
+
+src_test() {
+	cd ${BEATS}/filebeat || die
+	GOPATH="${WORKDIR}" emake check
 }
 
 src_install() {
