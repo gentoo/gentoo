@@ -38,8 +38,10 @@ src_install(){
 	insinto "/usr/share/php/${PN}"
 	doins -r *.php language extras
 
-	dodoc README.md changelog.md
-	dodoc docs/*
+	# Fixed in the next version, I hope.
+	# https://github.com/PHPMailer/PHPMailer/issues/919
+	#dodoc README.md SECURITY.md changelog.md
+	#dodoc docs/*
 	use examples && dodoc -r examples
 
 	use doc && dodoc -r html/*
