@@ -12,15 +12,19 @@ SRC_URI="http://www.eurogaran.com/downloads/tpipe/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="amd64 ppc x86"
+
+DOCS=( README.txt )
 
 src_compile() {
-	emake OPTFLAGS="-ansi -pedantic ${CFLAGS}" PREFIX=/usr CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
+	emake OPTFLAGS="-ansi -pedantic ${CFLAGS}" \
+		PREFIX=/usr \
+		CC="$(tc-getCC)" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
-	dodoc README.txt
+	einstalldocs
 }
