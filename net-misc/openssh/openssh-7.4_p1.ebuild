@@ -113,11 +113,9 @@ src_prepare() {
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
 	if use X509 ; then
-		pushd .. >/dev/null
-		sed -i 's:PKIX_VERSION:SSH_X509:g' "${WORKDIR}"/${X509_PATCH%.*} || die
-		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
-		save_version X509
+		# We no longer allow X509 to be used with anything else.
+		#save_version X509
 	fi
 
 	if use ldap ; then
@@ -193,7 +191,7 @@ src_configure() {
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
-		$(use_with sctp)
+		$(use X509 || use_with sctp)
 		$(use_with selinux)
 		$(use_with skey)
 		$(use_with ssh1)
