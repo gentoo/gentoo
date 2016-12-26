@@ -8,14 +8,12 @@ inherit scons-utils eutils
 
 DESCRIPTION="Binary-decimal and decimal-binary conversion routines for IEEE doubles"
 HOMEPAGE="https://github.com/google/double-conversion"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
-
-S="${WORKDIR}"
 
 LIBNAME=lib${PN}
 
