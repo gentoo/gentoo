@@ -5,6 +5,7 @@
 EAPI=5
 
 OASIS_BUILD_DOCS=1
+OASIS_BUILD_TESTS=1
 
 inherit oasis
 
@@ -18,5 +19,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND=">=dev-lang/ocaml-4.03:="
-DEPEND="${RDEPEND}"
-DOCS=( "README.md" "CHANGELOG.md" )
+DEPEND="${RDEPEND}
+	test? ( dev-ml/iTeML )"
+DOCS=( "README.adoc" "CHANGELOG.md" )
