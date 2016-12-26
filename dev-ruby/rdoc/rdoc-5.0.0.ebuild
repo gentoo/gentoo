@@ -36,11 +36,9 @@ all_ruby_prepare() {
 	# Other packages also have use for a nonexistent directory, bug 321059
 	sed -i -e 's#/nonexistent#/nonexistent_rdoc_tests#g' test/test_rdoc*.rb || die
 
-	# Remove unavailable and unneeded isolate plugin for Hoe
-	sed -i -e '/isolate/d' Rakefile || die
-
-	# Remove licenses line from Hoe definitions so we also use older versions.
-	sed -i -e '/licenses/ s:^:#:' Rakefile || die
+	# Avoid unneeded dependency on bundler, bug 603696
+	sed -i -e '/bundler/ s:^:#:' \
+		-e 's/Bundler::GemHelper.gemspec.full_name/"rdoc"/' Rakefile || die
 
 	# Remove test that is depending on the locale, which we can't garantuee.
 	sed -i -e '/def test_encode_with/,/^  end/ s:^:#:' test/test_rdoc_options.rb || die
