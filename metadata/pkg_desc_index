@@ -4759,7 +4759,7 @@ dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes 
 dev-libs/libgit2 0.22.3 0.23.4 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
-dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.18.2 3.20.3: Library to access weather information from online services
