@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="daemon">Allow znc to run as a system-wide service. Installs an init script and creates a znc user:group.</flag>
+		<flag name="zlib">Enable mod_deflate-like gzip support for znc's web interface using <pkg>sys-libs/zlib</pkg>.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">znc/znc</remote-id>
