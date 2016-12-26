@@ -323,7 +323,7 @@ app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various f
 app-arch/unrar 5.3.11 5.4.4 5.4.5: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
-app-arch/unshield 0.6_p20120308 0.6_p20120308-r1 1.3: InstallShield CAB file extractor
+app-arch/unshield 0.6_p20120308 0.6_p20120308-r1 1.4: InstallShield CAB file extractor
 app-arch/unzip 5.52-r2 6.0-r3 6.0_p20: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
@@ -13423,7 +13423,7 @@ media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdr
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
 media-sound/chuck 1.3.5.1 1.3.5.2: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.2.3 1.2.3-r2 1.3.1-r4 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
+media-sound/clementine 1.2.3 1.2.3-r2 1.3.1-r5 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.7.1 2.8.0_rc0: A ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5 0.3.1: Last.fm scrobbler for cmus music player

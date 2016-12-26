@@ -5691,6 +5691,7 @@ net-irc/weechat:scripts - Build infrastructure for scripting.
 net-irc/weechat:trigger - Enable trigger plugin.
 net-irc/weechat:xfer - Enable xfer plugin support.
 net-irc/znc:daemon - Allow znc to run as a system-wide service. Installs an init script and creates a znc user:group.
+net-irc/znc:zlib - Enable mod_deflate-like gzip support for znc's web interface using sys-libs/zlib.
 net-libs/aqbanking:chipcard - Enable support for DDV/RSA-chipcards
 net-libs/aqbanking:ebics - Enable support for Electronic Banking Internet Communication Standard (EBICS)
 net-libs/axtls:cgi-lua - Enables lua backed cgi for axhttpd server
