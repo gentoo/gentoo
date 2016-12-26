@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS README )
+PATCHES=( ${FILESDIR}/${PN}-1.0.8-fix-JsonCreatorTest-failure.patch )
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
