@@ -167,6 +167,7 @@ PATCHES=(
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
+		local -x CPP="$(tc-getCXX) -E"
 		if tc-is-gcc && ! version_is_at_least 5 "$(gcc-major-version)"; then
 			# bugs: #535730, #525374, #518668
 			die "At least gcc 5 is required"
