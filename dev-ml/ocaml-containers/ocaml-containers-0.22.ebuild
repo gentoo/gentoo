@@ -20,10 +20,12 @@ IUSE="test"
 
 RDEPEND="
 	dev-ml/result:=
-	dev-ml/sequence:=
+	>=dev-ml/sequence-0.9:=
 "
 DEPEND="${RDEPEND} dev-ml/cppo
 	test? ( dev-ml/iTeML )"
+
+PATCHES=( "${FILESDIR}/seq.patch" )
 
 src_configure() {
 	oasis_configure_opts="
