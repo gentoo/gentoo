@@ -7778,7 +7778,7 @@ dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9 0.1.11: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18: Network address representation and manipulation library
-dev-python/netcdf4-python 1.0.4 1.2.2: Python/numpy interface to the netCDF C library
+dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.8-r2 0.10.4 0.10.5: Portable network interface information
 dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utility classes used by pathod and mitmproxy
 dev-python/networkx 1.9.1 1.10 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
@@ -9801,7 +9801,7 @@ dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
 dev-tex/luatex 0.70.1-r2 0.76.0: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/metapost 1.780 1.803 1.902: System for producing graphics
-dev-tex/minted 1.7 2.0 2.1: LaTeX package for source code syntax highlighting
+dev-tex/minted 2.0 2.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
