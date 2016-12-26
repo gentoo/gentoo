@@ -16,3 +16,7 @@ LICENSE="MIT"
 SLOT="1"
 KEYWORDS="~amd64"
 IUSE=""
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+}
