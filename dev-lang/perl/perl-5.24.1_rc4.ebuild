@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
-PATCH_VER=1
+PATCH_VER=2
 CROSS_VER=1.1.1
 
 PERL_OLDVERSEN="5.24.0"
