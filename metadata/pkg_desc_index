@@ -5538,7 +5538,7 @@ dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.480.0 1.500.0 1.520.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-SQLite 1.480.0 1.500.0 1.520.0 1.540.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.32.0-r2 4.36.0-r1 4.37.0 4.38.0 4.38.10_rc 4.39.0 4.40.0 4.41.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.634.0 1.636.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
@@ -5814,12 +5814,12 @@ dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
 dev-perl/Getopt-Long-Descriptive 0.97.0 0.99.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
-dev-perl/Glib-Object-Introspection 0.40.0: Dynamically create Perl language bindings
+dev-perl/Glib-Object-Introspection 0.40.0 0.42.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
 dev-perl/Google-Ads-AdWords-Client 2.7.3-r1 4.11.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
-dev-perl/GraphViz 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing tool
+dev-perl/GraphViz 2.190.0 2.200.0 2.230.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
@@ -6731,7 +6731,7 @@ dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL querie
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
-dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0 1.190.0 1.200.0: YAML Ain't Markup Language (tm)
+dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0 1.190.0 1.200.0 1.210.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.200.0-r1 1.290.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.690.0: Read/Write YAML files with as little code as possible
