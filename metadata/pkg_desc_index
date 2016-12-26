@@ -13541,7 +13541,7 @@ media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
-media-sound/lilypond 2.18.2 2.18.2-r3 2.19.50-r1 2.19.52-r1 9999: GNU Music Typesetter
+media-sound/lilypond 2.18.2 2.18.2-r3 2.19.50-r1 2.19.52-r1 2.19.53 9999: GNU Music Typesetter
 media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
