@@ -967,13 +967,6 @@ install_sources() {
 		done
 	fi
 
-	if [[ ! -f ${S}/patches.txt ]]; then
-		# patches.txt is empty so lets use our ChangeLog
-		[[ -f ${FILESDIR}/../ChangeLog ]] && \
-			echo "Please check the ebuild ChangeLog for more details." \
-			> "${S}"/patches.txt
-	fi
-
 	mv "${WORKDIR}"/linux* "${ED}"usr/src || die
 
 	if [[ -n "${UNIPATCH_DOCS}" ]] ; then
