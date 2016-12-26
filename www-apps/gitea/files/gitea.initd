@@ -5,13 +5,14 @@
 
 description="Gitea, a self-hosted Git service"
 pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
-user=${user:-${SVCNAME}}
-group=${group:-${SVCNAME}}
+user=${user:-git}
+group=${group:-git}
 
 command="/usr/bin/gitea web"
-command_args="${command_args:--config /etc/gitea/app.ini}"
+command_args="${command_args:--config /var/lib/gitea/conf/app.ini}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
+	-e GITEA_CUSTOM=/var/lib/gitea
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
 	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
 

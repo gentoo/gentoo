@@ -1,5 +1,5 @@
 /var/log/gitea/* {
-	su gitea gitea
+	su git git
 	missingok
 	size 5M
 	rotate 3

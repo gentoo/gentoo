@@ -1,18 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="A selection of tools from Debian"
 HOMEPAGE="http://packages.qa.debian.org/d/debianutils.html"
-SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="BSD GPL-2 SMAIL"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="kernel_linux static"
 
 src_prepare() {
@@ -36,7 +36,7 @@ src_install() {
 
 	doman tempfile.1 run-parts.8 savelog.8
 	use kernel_linux && doman installkernel.8
-	cd debian
+	cd debian || die
 	dodoc changelog control
 	keepdir /etc/kernel/postinst.d
 }

@@ -10,20 +10,20 @@ EGIT_COMMIT="6aacf4d2f09631359b99df562b4bf31dcef44ea3"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="A painless self-hosted Git service, written in Go, forked from gogs"
+DESCRIPTION="A painless self-hosted Git service, written in Go"
 HOMEPAGE="https://github.com/go-gitea/gitea"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="MIT"
-SLOT="0/${PVR}"
+SLOT="0"
 IUSE=""
 
 DEPEND="dev-go/go-bindata"
 RDEPEND="dev-vcs/git"
 
 pkg_setup() {
-	enewgroup gitea
-	enewuser gitea -1 /bin/bash /var/lib/gitea gitea
+	enewgroup git
+	enewuser git -1 /bin/bash /var/lib/gitea git
 }
 
 src_prepare() {
@@ -32,9 +32,7 @@ src_prepare() {
 	sed -i -e "s/git rev-parse --short HEAD/echo ${EGIT_COMMIT:0:7}/"\
 		-e "s/^LDFLAGS += -X \"main.Version.*$/LDFLAGS += -X \"main.Version=${PV}\"/"\
 		-e "s/-ldflags '-s/-ldflags '/" src/${EGO_PN%/*}/Makefile || die
-	sed -i -e "s#RUN_USER = git#RUN_USER = gitea#"\
-		-e "s#^STATIC_ROOT_PATH =#STATIC_ROOT_PATH = ${EPREFIX}/usr/share/themes/gitea/default#"\
-		-e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${GITEA_PREFIX}/data#"\
+	sed -i -e "s#^APP_DATA_PATH = data#APP_DATA_PATH = ${GITEA_PREFIX}/data#"\
 		-e "s#^PATH = data/gitea.db#PATH = ${GITEA_PREFIX}/data/gitea.db#"\
 		-e "s#^PROVIDER_CONFIG = data/sessions#PROVIDER_CONFIG = ${GITEA_PREFIX}/data/sessions#"\
 		-e "s#^AVATAR_UPLOAD_PATH = data/avatars#AVATAR_UPLOAD_PATH = ${GITEA_PREFIX}/data/avatars#"\
@@ -45,21 +43,19 @@ src_prepare() {
 
 src_compile() {
 	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} generate
-	TAGS="bindata cert pam sqlite" LDFLAGS="" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} build
+	TAGS="bindata pam sqlite" LDFLAGS="" GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake -C src/${EGO_PN%/*} build
 }
 
 src_install() {
 	pushd src/${EGO_PN%/*} || die
 	dobin gitea
-	insinto /etc/gitea
+	insinto /var/lib/gitea/conf
 	doins conf/app.ini
-	insinto /usr/share/themes/gitea/default
-	doins -r public templates
 	popd || die
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/gitea.logrotated gitea
 	newinitd "${FILESDIR}"/gitea.initd gitea
 	newconfd "${FILESDIR}"/gitea.confd gitea
 	keepdir /var/log/gitea /var/lib/gitea/data
-	fowners gitea:gitea /var/log/gitea /var/lib/gitea /var/lib/gitea/data
+	fowners -R git:git /var/log/gitea /var/lib/gitea/
 }

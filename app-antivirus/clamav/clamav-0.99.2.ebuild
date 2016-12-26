@@ -46,6 +46,8 @@ pkg_setup() {
 src_prepare() {
 	use ppc64 && append-flags -mminimal-toc
 	use uclibc && export ac_cv_type_error_t=yes
+
+	epatch "${FILESDIR}"/${P}-gcc-6.patch #592432
 }
 
 src_configure() {

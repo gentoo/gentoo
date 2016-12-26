@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -77,6 +77,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# FIXME: the following should be proper patch sent to upstream
 	# fix OSX loadable module filename extension
 	sed -i -e 's/\.dylib/.bundle/' configure.ac || die
@@ -92,7 +94,6 @@ src_prepare() {
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
 
-	epatch_user
 	eautoreconf
 
 	use vala && vala_src_prepare

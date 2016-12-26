@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -20,7 +20,7 @@ HOMEPAGE="http://www.gegl.org/babl/"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_mmx"
+IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_mmx cpu_flags_x86_f16c"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	epatch_user
+	default
 	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
@@ -43,9 +43,11 @@ src_configure() {
 		--disable-static \
 		--disable-maintainer-mode \
 		$(use_enable altivec) \
+		$(use_enable cpu_flags_x86_f16c f16c) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable cpu_flags_x86_sse sse2)
+		$(use_enable cpu_flags_x86_sse2 sse2) \
+		$(use_enable cpu_flags_x86_sse4_1 sse4_1)
 }
 
 src_install() {
