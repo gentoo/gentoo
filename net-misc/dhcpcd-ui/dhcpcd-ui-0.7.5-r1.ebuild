@@ -31,7 +31,9 @@ DEPEND="
 	gtk3? ( x11-libs/gtk+:3 )
 	qt4?  ( dev-qt/qtgui:4 )"
 
-RDEPEND=">=net-misc/dhcpcd-6.4.4"
+RDEPEND="
+	>=net-misc/dhcpcd-6.4.4
+	qt4? ( dev-qt/qtsvg:4  )"
 
 pkg_setup() {
 	if use qt4 ; then
