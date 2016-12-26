@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A simple console menu program"
 HOMEPAGE="http://joeyh.name/code/pdmenu/"
@@ -28,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-impl-dec.patch
 )
 
+DOCS=( doc/ANNOUNCE doc/BUGS doc/TODO )
+
 src_prepare() {
 	default
 	sed \
@@ -47,12 +49,11 @@ src_compile() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc doc/ANNOUNCE doc/BUGS doc/TODO
 	use examples && dodoc -r examples
 	mv "doc/${PN}.man" "doc/${PN}.1" || die
 	mv "doc/${PN}rc.man" "doc/${PN}rc.5" || die
 	doman "doc/${PN}.1" "doc/${PN}rc.5"
-
+	einstalldocs
 }
 
 pkg_postinst() {
