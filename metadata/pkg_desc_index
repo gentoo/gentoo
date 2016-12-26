@@ -213,6 +213,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.4.0 11.4.1 11.4.2 11.5.2 11.5.3: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
+app-admin/systemdgenie 0.99.0: systemd managment utility
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1 4.8.2 4.8.3 4.9.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
@@ -402,7 +403,7 @@ app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolution
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6 2.0.6-r1: Performance Test of Filesystem I/O using standard C library calls
-app-benchmarks/bonnie++ 1.96 1.97-r1 1.97.2: Hard drive bottleneck testing benchmark suite
+app-benchmarks/bonnie++ 1.97-r1 1.97.2: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of the system boot process
 app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
@@ -1386,7 +1387,7 @@ app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulato
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.6.4-r3 4.6.4-r4 4.7.1-r3 4.7.1-r4 4.8.0-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.6.4 4.7.1 4.7.1-r1 4.8.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.6.4-r4 4.7.1-r4 4.8.0: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.6.4-r4 4.7.1-r4 4.7.1-r5 4.8.0 4.8.0-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -2001,7 +2002,7 @@ app-mobilephone/ringtonetools 2.26: program for creating ringtones and logos for
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
-app-mobilephone/sobexsrv 1.0.1 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
+app-mobilephone/sobexsrv 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-mobilephone/wammu 0.40: Front-end for gammu to access mobile phones easily
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
@@ -2034,7 +2035,7 @@ app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functional
 app-office/libreoffice 5.2.3.3-r1 5.2.4.2 5.2.9999 5.3.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.2.3.3: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.2.3.3: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 5.2.3.3 5.2.4.1: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 5.2.3.3 5.2.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.0.8.1 2.1.4 2.1.5 2.2.1 2.2.2: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -2164,14 +2165,14 @@ app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control o
 app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 0.17 3.3.7: Bash completion for the mpv video player
-app-shells/pdmenu 1.3.4 1.3.4-r1: A simple console menu program
+app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/psh 1.8.1-r1 1.8.1-r2: Combines the interactive nature of a Unix shell with the power of Perl
 app-shells/push 1.6 1.8 1.11: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 2.0_p2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4: A reimplementation of the Plan 9 shell
-app-shells/rrs 1.70-r1: Reverse Remote Shell
+app-shells/rrs 1.70-r1 1.70-r2: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
 app-shells/rust-zshcomp 1_beta20150411: Rust zsh completions
 app-shells/sash 3.8: A small (static) UNIX Shell
@@ -9074,7 +9075,7 @@ dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/akismet 1.0.2 2.0.0: A Ruby client for the Akismet API
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
-dev-ruby/ammeter 1.1.3 1.1.3-r1 1.1.4: Write specs for your Rails 3+ generators
+dev-ruby/ammeter 1.1.3 1.1.3-r1 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
 dev-ruby/amq-protocol 1.9.2 2.0.1 2.0.1-r1: An AMQP 0.9.1 serialization library for Ruby
 dev-ruby/amqp 1.5.1 1.6.0: AMQP client implementation in Ruby/EventMachine
@@ -9382,7 +9383,7 @@ dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.2 2.3.0: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.4.3 2.4.4 2.4.5: A fast XML parser and Object marshaller
+dev-ruby/ox 2.4.3 2.4.4 2.4.5 2.4.7: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1 2.0.0: Terminal painter
 dev-ruby/parser 2.3.1.4 2.3.2.0 2.3.3.0 2.3.3.1: A production-ready Ruby parser written in pure Ruby
@@ -9412,7 +9413,7 @@ dev-ruby/prawn-table 0.2.2: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 2.1.1-r1 2.2.0 2.2.1: A libyaml wrapper for Ruby
+dev-ruby/psych 2.1.1-r1 2.2.0 2.2.1 2.2.2: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 2.0.3-r1 2.0.4: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3 4.3.0: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
@@ -9458,7 +9459,7 @@ dev-ruby/redcloth 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/redis 3.0.7 3.2.2 3.3.0 3.3.1 3.3.2: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
 dev-ruby/regexp_parser 0.3.2 0.3.6 0.4.1: A library for tokenizing, lexing, and parsing Ruby regular expressions
-dev-ruby/request_store 1.0.5 1.3.0 1.3.1: Per-request global storage for Rack
+dev-ruby/request_store 1.0.5 1.3.1: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0-r1 1.8.0-r2 1.8.0-r3 2.0.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
 dev-ruby/rex-arch 0.1.1 0.1.2: architecture specific information for Rex
@@ -9492,7 +9493,7 @@ dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.4 3.5.3 3.5.4: A Beha
 dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.4.2 3.5.0 3.5.1 3.5.2: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.4.2 3.5.0 3.5.1 3.5.2 3.5.2-r1: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.5.0 0.5.1 0.5.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.3.0 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.0 0.70.7: RSpec support and matchers
@@ -10178,7 +10179,7 @@ dev-util/obs-service-update_source 20130802: Open Build Service client module - 
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1: Make replacement
 dev-util/open-vcdiff 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/oprofile 0.9.9-r1 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027: A transparent low-overhead system-wide profiler
+dev-util/oprofile 0.9.9-r2 1.1.0-r1 1.2.0_pre20161027: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
@@ -12168,7 +12169,7 @@ mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5 1.6.6: An SMTP client and SMTP plug
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4 1.06-r5: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.2_p1 6.0.2_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r1 3.1.3 3.2_pre20161204: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 3.0.2 3.0.3-r1 3.0.7 3.1.0-r1 3.1.2-r1 3.1.3 3.2_pre20161224: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
@@ -12607,7 +12608,7 @@ media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qiv 2.2.4 2.3.1: Quick Image Viewer
 media-gfx/qiviewer 0.5.0-r1: Lightweight image viewer, similar to eog or viewnior for Gnome
 media-gfx/qosmic 1.5.0: A cosmic recursive flame fractal editor
-media-gfx/qrencode 3.3.1 3.4.3 3.4.4-r1: C library for encoding data in a QR Code symbol
+media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
 media-gfx/qrencode-python 1.01-r1 1.02_pre140921: A simple wrapper for the C qrencode library
 media-gfx/quat 1.20: A 3D quaternionic fractal generator
 media-gfx/qvv 4.02: QVV Image Viewer and Browser
@@ -12684,7 +12685,7 @@ media-libs/aubio 0.4.1 0.4.2 0.4.3: Library for audio labelling
 media-libs/audiofile 0.3.6-r1 0.3.6-r2: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.8 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.8 9999: Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks
-media-libs/babl 0.1.10-r1 0.1.12 0.1.14 0.1.16 0.1.18 0.1.20 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.12 0.1.18 0.1.20 0.1.22 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bio2jack 0.9-r1: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r1: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
@@ -12956,7 +12957,7 @@ media-libs/mesa 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 12.0.5 13.0.0 13.0.1 1
 media-libs/ming 0.4.4-r1 0.4.5 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2 6.4.1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
-media-libs/mutagen 1.27 1.31 1.34.1 1.35 1.35.1: Audio metadata tag reader and writer implemented in pure Python
+media-libs/mutagen 1.27 1.31 1.35.1 1.36: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.1 1.17.2: A software implementation of the OpenAL 3D audio API
@@ -13526,7 +13527,7 @@ media-sound/k4guitune 1.1.1: A program to tune a musical instrument using your c
 media-sound/karlyriceditor 2.1: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3-r3: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
-media-sound/kid3 3.3.2-r1 3.4.2 3.4.3: Simple tag editor based on Qt
+media-sound/kid3 3.3.2-r1 3.4.2 3.4.3 3.4.4: Simple tag editor based on Qt
 media-sound/klick 0.12.2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/kmid 2.4.0-r1: A MIDI/Karaoke player for KDE
@@ -13872,7 +13873,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.10.3: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.10.4: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.90 0.7.91: MediaInfo supplies technical and tag information about media files
@@ -14404,8 +14405,8 @@ net-fs/netatalk 3.1.8 3.1.10: Open Source AFP server
 net-fs/nfs-utils 1.2.9-r3 1.3.1-r4 1.3.1-r5 1.3.2-r6 1.3.3 1.3.4: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.3: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS server
-net-fs/openafs 1.6.17 1.6.18.2 1.6.18.3: The OpenAFS distributed file system
-net-fs/openafs-kernel 1.6.17 1.6.18.2 1.6.18.3: The OpenAFS distributed file system kernel module
+net-fs/openafs 1.6.18.3: The OpenAFS distributed file system
+net-fs/openafs-kernel 1.6.18.3: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
@@ -14757,8 +14758,8 @@ net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
 net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11-r1 2.4.11-r200 2.12.5 2.14.1 2.14.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
-net-libs/xrootd 3.3.6 4.1.1 4.4.0: Extended ROOT remote file server
-net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.6 4.2.0: A brokerless kernel
+net-libs/xrootd 3.3.6 4.4.0 4.5.0: Extended ROOT remote file server
+net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.4 4.1.6 4.2.0-r1: A brokerless kernel
 net-mail/Freemail 9999-r1: Anonymous IMAP/SMTP e-mail server over Freenet
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03: A log analyzer for amavisd-new
@@ -15432,7 +15433,7 @@ net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP s
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.5.18 1.6.9 1.6.10 1.6.10-r1 1.6.9999 1.7.0 1.7.1 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.5.18 1.5.19 1.6.9 1.6.10 1.6.10-r1 1.6.11 1.6.9999 1.7.0 1.7.1 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r4 3.0-r6 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
@@ -16789,7 +16790,7 @@ sys-apps/darwin-miscutils 4-r1 5-r1 6-r1 7 8 9 10 11: Miscellaneous commands use
 sys-apps/dbus 1.8.16 1.8.22 1.10.8-r1 1.10.12 1.10.14: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
-sys-apps/debianutils 4.4 4.7 4.8: A selection of tools from Debian
+sys-apps/debianutils 4.7 4.8 4.8.1: A selection of tools from Debian
 sys-apps/diffutils 3.3 3.4-r1 3.5: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
@@ -17306,7 +17307,7 @@ sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compil
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.5.39-r1 2.6.1 2.6.2: The Fast Lexical Analyzer
-sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 6.2.0-r1: The GNU Compiler Collection
+sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 6.3.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 9999: GNU debugger
@@ -18017,7 +18018,7 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitea 1.0.0: A painless self-hosted Git service, written in Go, forked from gogs
+www-apps/gitea 1.0.0-r2: A painless self-hosted Git service, written in Go
 www-apps/gitit 0.12.1.1 0.12.1.1-r2: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/grafana-bin 3.1.1 4.0.0_beta2 4.0.1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
@@ -18376,7 +18377,7 @@ x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0 2.36.0 2.36.1 2.36.2: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
-x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
+x11-libs/gl2ps 1.3.8 1.3.9: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
@@ -18499,7 +18500,7 @@ x11-libs/xcb-util-image 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-keysyms 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-renderutil 0.3.9-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-wm 0.4.1-r1: X C-language Bindings sample implementations
-x11-libs/xcb-util-xrm 1.0: X C-language Bindings sample implementations
+x11-libs/xcb-util-xrm 1.0 1.2: X C-language Bindings sample implementations
 x11-libs/xforms 1.0.93_p1-r1 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14-r1 2.2.14-r2 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
 x11-libs/xpa 2.1.15 2.1.17 2.1.18: Messaging system providing communication between programs
@@ -18782,7 +18783,7 @@ x11-misc/xplanetFX 2.6.7 2.6.12: GUI to configure, run or daemonize xplanet with
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.34 5.35-r2 5.36: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.36: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0 9999: command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors

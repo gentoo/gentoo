@@ -5876,7 +5876,7 @@ net-libs/webkit-gtk:webgl - Build support for the WebGL HTML API using virtual/o
 net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible functional interface. This USE flag is only needed with GCC earlier than version 4.1, or with other compilares not providing said interface.
 net-libs/xrootd:fuse - Enable the sys-fs/fuse filesystem driver
 net-libs/xrootd:http - Enable http protocol support
-net-libs/xrootd:libevent - Use dev-libs/libevent for event handling
+net-libs/xrootd:rbd - Enable rados block device support via sys-cluster/ceph
 net-libs/zeromq:pgm - Build PGM (Pragmatic General Multicast)extention, a protocol for reliable multicast transport of data over IP networks.
 net-libs/zeromq:sodium - Use dev-libs/libsodium for cryptography
 net-mail/automx:memcached - Enable memcached support
