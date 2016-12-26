@@ -3877,7 +3877,7 @@ dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
 dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
-dev-java/boot-bin 2.6.0 2.7.0: Build tooling for Clojure
+dev-java/boot-bin 2.6.0 2.7.0 2.7.1: Build tooling for Clojure
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
@@ -6107,7 +6107,7 @@ dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
-dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600: A postmodern object system for Perl 5
+dev-perl/Moose 2.60.400-r1 2.160.400 2.160.500 2.180.600 2.180.700: A postmodern object system for Perl 5
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.270.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.140.0: An abstract Moose role for setting attributes from a configfile
@@ -17648,7 +17648,7 @@ sys-libs/tdb 1.3.8 1.3.11 1.3.12: A simple database API
 sys-libs/tevent 0.9.26 0.9.28 0.9.29 0.9.31-r1: Samba tevent library
 sys-libs/timezone-data 2016h 2016i 2016j: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
-sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 1.0.20 9999: C library for developing embedded Linux systems
+sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 1.0.20 1.0.21 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
