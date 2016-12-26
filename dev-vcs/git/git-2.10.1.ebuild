@@ -191,6 +191,8 @@ exportmakeopts() {
 		|| myopts+=" NO_PTHREADS=YesPlease"
 	use cvs \
 		|| myopts+=" NO_CVS=YesPlease"
+	use elibc_musl \
+		&& myopts+=" NO_REGEX=YesPlease"
 # Disabled until ~m68k-mint can be keyworded again
 #	if [[ ${CHOST} == *-mint* ]] ; then
 #		myopts+=" NO_MMAP=YesPlease"
