@@ -22,11 +22,6 @@ RDEPEND=">=dev-lang/php-5.3:*
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	default_src_prepare
-	sed -i -e '/role="doc"/d' -e '/role="test"/d' "${WORKDIR}/package.xml" || die
-}
-
 src_install() {
 	insinto /usr/share/php
 	doins -r PEAR
