@@ -24,7 +24,7 @@ IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
 REQUIRED_USE="|| ( sdl gtk wxwidgets )"
 
 RDEPEND="media-libs/libpng:0=
-	media-libs/libsdl[sound]
+	media-libs/libsdl2[sound]
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
