@@ -6,18 +6,20 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
-ES_VERSION="5.0.0"
+ES_VERSION="5.1.1"
 
 inherit distutils-r1
 
-RESTRICT="test" # fails to start in chroot envs, unreliable
+# tests fail in chroot
+# https://github.com/elastic/elasticsearch/issues/12018
+RESTRICT="test"
 
 MY_PN=${PN/-py/}
 
 DESCRIPTION="official Python low-level client for Elasticsearch"
 HOMEPAGE="http://elasticsearch-py.rtfd.org/"
 SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		test? ( https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz )"
+	test? ( https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -46,17 +48,17 @@ python_test() {
 	PID="${ES}/elasticsearch.pid"
 
 	# run Elasticsearch instance on custom port
-	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
-		s/# cluster.name: my-application/cluster.name: gentoo-es-py-test/g" \
-		${ES}/config/elasticsearch.yml || die
+	sed -i "s/#http.port: 9200/http.port: ${ES_PORT}/g; \
+		s/#cluster.name: my-application/cluster.name: gentoo-es-py-test/g" \
+		"${ES}/config/elasticsearch.yml" || die
 
 	# start local instance of elasticsearch
-	${ES}/bin/elasticsearch -d -p ${PID} || die
+	"${ES}"/bin/elasticsearch -d -p "${PID}" || die
 
 	local i
-	for i in `seq 10`; do
+	for i in {1..10}; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
-		if [ $? -eq 0 ]; then
+		if [[ $? -eq 0 ]]; then
 			einfo "Elasticsearch started"
 			eend 0
 			break
@@ -73,7 +75,7 @@ python_test() {
 	done
 
 	export TEST_ES_SERVER="localhost:${ES_PORT}"
-	esetup.py test
+	esetup.py test || die
 
 	pkill -F ${PID}
 }
