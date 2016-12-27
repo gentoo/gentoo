@@ -16833,7 +16833,7 @@ sys-apps/gnome-disk-utility 3.20.2 3.22.0 3.22.1: Disk Utility for GNOME using u
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257: Administrative interface for the grsecurity Role Based Access Control system
-sys-apps/grep 2.25 2.26 2.27: GNU regular expression matcher
+sys-apps/grep 2.25 2.26 2.27-r1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
