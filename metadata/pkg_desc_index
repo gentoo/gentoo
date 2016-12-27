@@ -6910,7 +6910,7 @@ dev-php/PEAR-Structures_DataGrid 0.9.3: A tabular structure that contains a reco
 dev-php/PEAR-Structures_Graph 1.0.4-r2 1.1.1-r1: Graph datastructure manipulation library
 dev-php/PEAR-System_Command 1.0.8: PEAR::System_Command is a commandline execution interface
 dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
-dev-php/PEAR-Text_CAPTCHA 0.5.0: Generation of CAPTCHAs
+dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
 dev-php/PEAR-Text_Figlet 1.0.2: Render text using FIGlet fonts
 dev-php/PEAR-Text_Highlighter 0.7.3: A package for syntax highlighting
