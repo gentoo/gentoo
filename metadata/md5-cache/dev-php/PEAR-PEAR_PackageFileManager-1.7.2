@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Updates an existing package.xml file with a new filelist and changelog
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/PEAR_PackageFileManager
+IUSE=minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-3.01
+RDEPEND=>=dev-lang/php-5.3:* >=dev-php/PEAR-PEAR-1.10.1 dev-php/PEAR-PEAR_PackageFileManager2 dev-php/PEAR-PEAR_PackageFileManager_Plugins !minimal? ( >=dev-php/PEAR-PHP_CompatInfo-1.4.0 )
+SLOT=0
+SRC_URI=http://pear.php.net/get/PEAR_PackageFileManager-1.7.2.tgz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_install:-
+_md5_=aa6b542b00311ebd0cce6b227ab98655

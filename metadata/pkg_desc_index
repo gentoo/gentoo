@@ -6891,7 +6891,9 @@ dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals
 dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
-dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.0: Takes an existing package.xml file and updates it with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.0 1.7.2: Updates an existing package.xml file with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager2 1.0.4: Updates an existing package.xml file with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4: Various methods to check files to update an existing package.xml file
 dev-php/PEAR-PHP_Beautifier 0.1.15-r1: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
