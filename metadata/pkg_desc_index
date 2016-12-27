@@ -16067,7 +16067,7 @@ sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 9999: NMEA-data and plugi
 sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: OTCurrent Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-squiddio 0.7 9999: Squiddio Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-statusbar 0.5-r1 9999: Statusbar Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-weather_routing 1.10.1 9999: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
