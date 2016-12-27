@@ -16,6 +16,7 @@ else
     SURICATAPID="/var/run/suricata/suricata.pid"
     SURICATAOPTS=${SURICATA_OPTS}
 fi
+[ -e ${SURICATACONF} ] && SURICATAOPTS="${SURICATAOPTS} -c ${SURICATACONF}"
 
 extra_commands="checkconfig"
 extra_started_commands="reload relog"
@@ -28,8 +29,9 @@ depend() {
 
 checkconfig() {
 	if [ ! -e ${SURICATACONF} ] ; then
-		eerror "You need to create ${SURICATACONF} to run ${SVCNAME}."
-		return 1
+		einfo "The configuration file ${SURICATACONF} was not found."
+		einfo "If this is OK then make sure you set enough options for ${SVCNAME} in /etc/conf.d/suricata."
+		einfo "Take a look at the suricata arguments --set and --dump-config."
 	fi
 	if [ ! -d "/var/run/suricata" ] ; then
 		checkpath -d /var/run/suricata
@@ -37,7 +39,7 @@ checkconfig() {
 }
 
 initpidinfo() {
-	[ -f ${SURICATAPID} ] && SUR_PID="$(cat ${SURICATAPID})"
+	[ -e ${SURICATAPID} ] && SUR_PID="$(cat ${SURICATAPID})"
 	if [ ${#SUR_PID} -gt 0 ]; then
 	    SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
 	    SUR_USER="$(ps -p ${SUR_PID} --no-headers -o user)"
@@ -46,7 +48,7 @@ initpidinfo() {
 
 checkpidinfo() {
 	initpidinfo
-        if [ ! -f ${SURICATAPID} ]; then
+        if [ ! -e ${SURICATAPID} ]; then
         	eerror "${SVCNAME} isn't running"
                 return 1
 	elif [ ${#SUR_PID} -eq 0 ] || [ $((SUR_PID_CHECK)) -ne 1 ]; then
@@ -65,12 +67,11 @@ start() {
 	checkconfig || return 1
 	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon --start --quiet --exec ${SURICATA_BIN} \
-		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} \
-		 -c ${SURICATACONF} >/dev/null 2>&1
+		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} >/dev/null 2>&1
 	local SUR_EXIT=$?
 	if [ $((SUR_EXIT)) -ne 0 ]; then
 	    einfo "Could not start ${SURICATA_BIN} with:"
-	    einfo "--pidfile ${SURICATAPID} -D ${SURICATAOPTS} -c ${SURICATACONF}"
+	    einfo "--pidfile ${SURICATAPID} -D ${SURICATAOPTS}"
 	    einfo "Exit code ${SUR_EXIT}"
 	fi
 	eend ${SUR_EXIT}
@@ -80,14 +81,13 @@ stop() {
 	ebegin "Stopping ${SVCNAME}"
 	initpidinfo
 	start-stop-daemon --stop --quiet --pidfile ${SURICATAPID} >/dev/null 2>&1
-	einfon "Waiting for ${SVCNAME} to shut down. This can take a while..."
-	echo
+	einfo "Waiting for ${SVCNAME} to shut down. This can take a while..."
 	# max wait: 5 minutes as it can take quite a while on some systems with heavy traffic
 	local cnt=300
-	while [ -f ${SURICATAPID} ] && [ $cnt -gt 0 ]; do
+	while [ -e ${SURICATAPID} ] && [ $cnt -gt 0 ]; do
 	    cnt=$(expr $cnt - 1)
 	    sleep 1
-	    echo -ne "$cnt seconds left before we give up checking the PID file...\r"
+	    einfo -ne "$cnt seconds left before we give up checking the PID file...\r"
 	done
 	# under certain conditions suricata can be pretty slow and the PID can persist long after the pidfile has been removed
 	# max wait for process to terminate: 1 minute
@@ -95,19 +95,17 @@ stop() {
 	    cnt=60
 	    SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
 	    if [ $((SUR_PID_CHECK)) -ne 0 ]; then
-		echo
 		einfo "The PID file ${SURICATAPID} is gone but the ${SVCNAME} PID ${SUR_PID} is still running."
 		einfo "Waiting for process to shut down on its own. This can take a while..."
 	    fi
 	    while [ $((SUR_PID_CHECK)) -ne 0 ]; do
 		cnt=$(expr $cnt - 1)
 		if [ $cnt -lt 1 ] ; then
-		    echo
 		    eend 1 "Failed. You might need to kill PID ${SUR_PID} or find out why it can't be stopped."
 		    break
 		fi
 		sleep 1
-		echo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
+		einfo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
 		SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
 	    done
 	fi
