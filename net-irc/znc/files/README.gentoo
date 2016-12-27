@@ -1,8 +1,6 @@
 To run znc as a user, run 'znc --makeconf' to create a configuration file.
 
-If znc was compiled with the 'daemon' use flag, you may run
-    emerge --config znc
-to configure it.
+To configure the system-wide daemon, you may run 'emerge --config znc'.
 
 If migrating from a user-based install, you can copy the existing
 configuration files:
