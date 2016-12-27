@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (27 Dec 2016)
+# New release, masked to iron out bugs
+>=dev-util/boost-build-1.63.0
+>=dev-libs/boost-1.63.0
+
+# David Seifert <soap@gentoo.org> (27 Dec 2016)
 # Fails with more recent boost, dead upstream (bug #600548).
 dev-cpp/luabind
 games-rpg/valyriatear
