@@ -61,7 +61,7 @@ src_prepare() {
 
 src_configure() {
 	local threads
-	has_version dev-libs/boost[threads] && threads="-mt"
+	has_version 'dev-libs/boost[threads]' && threads="-mt"
 
 	configure() {
 		econf \
