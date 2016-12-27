@@ -4,7 +4,7 @@
 
 EAPI=5
 
-WX_GTK_VER="2.8"
+WX_GTK_VER="3.0"
 MY_PN="weather_routing_pi"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/seandepagnier/${MY_PN}.git"
@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Weather Routing Plugin for OpenCPN"
-HOMEPAGE="https://github.com/"
+HOMEPAGE="https://github.com/seandepagnier/weather_routing_pi/"
 
 LICENSE="GPL-3+"
 SLOT="0"
