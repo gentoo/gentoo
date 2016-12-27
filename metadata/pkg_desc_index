@@ -9078,7 +9078,7 @@ dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.3 1.1.3-r1 1.1.4 1.1.4-r1: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
 dev-ruby/amq-protocol 1.9.2 2.0.1 2.0.1-r1: An AMQP 0.9.1 serialization library for Ruby
-dev-ruby/amqp 1.5.1 1.6.0: AMQP client implementation in Ruby/EventMachine
+dev-ruby/amqp 1.6.0: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.5.4-r2: Provides POSIX tarchive management from Ruby programs
@@ -9156,7 +9156,7 @@ dev-ruby/commander 4.4.0 4.4.1 4.4.2: The complete solution for Ruby command-lin
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
-dev-ruby/concurrent-ruby 1.0.2 1.0.2-r1 1.0.3: Modern concurrency tools including agents, futures, promises, thread pools, more
+dev-ruby/concurrent-ruby 1.0.2 1.0.2-r1 1.0.3 1.0.4: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0 2.2.1: Generic connection pooling for Ruby
 dev-ruby/contracts 0.14.0: provides contracts for Ruby
@@ -9369,7 +9369,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1 1.2.1-r1: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.6.2 1.6.6.4 1.6.7.2 1.6.8 1.6.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.6.2 1.6.8.1 1.7.0: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7 1.4.9: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
