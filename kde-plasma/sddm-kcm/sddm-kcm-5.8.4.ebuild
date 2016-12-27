@@ -37,3 +37,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( CONTRIBUTORS )
+
+src_prepare() {
+	kde5_src_prepare
+	punt_bogus_dep Qt5 Designer # bug 603794
+}
