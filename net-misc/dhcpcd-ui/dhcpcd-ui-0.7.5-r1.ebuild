@@ -25,13 +25,15 @@ DEPEND="
 	libnotify? (
 		gtk?  ( x11-libs/libnotify )
 		gtk3? ( x11-libs/libnotify )
-		qt4?  ( kde-base/kdelibs kde-apps/knotify )
+		qt4?  ( kde-frameworks/kdelibs:4 kde-apps/knotify:4 )
 	)
 	gtk?  ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
 	qt4?  ( dev-qt/qtgui:4 )"
 
-RDEPEND=">=net-misc/dhcpcd-6.4.4"
+RDEPEND="
+	>=net-misc/dhcpcd-6.4.4
+	qt4? ( dev-qt/qtsvg:4  )"
 
 pkg_setup() {
 	if use qt4 ; then

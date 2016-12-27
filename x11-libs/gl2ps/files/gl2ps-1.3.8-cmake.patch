@@ -6,8 +6,8 @@ Patch to add various enhancements to cmake:
 * optional examples building
 * do not install static libraries
 
---- CMakeLists.txt	2012-09-02 02:07:33.000000000 -0700
-+++ CMakeLists.txt	2012-09-17 13:51:58.337832078 -0700
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -46,6 +46,8 @@
  
  option(ENABLE_ZLIB "Enable compression using ZLIB" ON)

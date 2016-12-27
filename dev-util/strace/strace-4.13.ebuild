@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit flag-o-matic eutils
+inherit flag-o-matic eutils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2 autotools
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
@@ -48,6 +48,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# Set up the default build settings, and then use the naems strace expects.
+	tc-export_build_env BUILD_{CC,CPP}
+	local v bv
+	for v in CC CPP {C,CPP,LD}FLAGS ; do
+		bv="BUILD_${v}"
+		export "${v}_FOR_BUILD=${!bv}"
+	done
+
 	econf $(use_with unwind libunwind)
 }
 

@@ -16,7 +16,7 @@ SRC_URI="http://web.mit.edu/kerberos/dist/krb5/${P_DIR}/${MY_P}.tar.gz"
 LICENSE="openafs-krb5-a BSD MIT OPENLDAP BSD-2 HPND BSD-4 ISC RSA CC-BY-SA-3.0 || ( BSD-2 GPL-2+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="doc +keyutils libressl openldap +pkinit selinux +threads test xinetd"
+IUSE="doc +keyutils libressl nls openldap +pkinit selinux +threads test xinetd"
 
 CDEPEND="
 	!!app-crypt/heimdal
@@ -59,6 +59,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	epatch "${FILESDIR}/${PN}-config_LDFLAGS.patch"
 	epatch "${FILESDIR}/${PN}-1.14.2-redeclared-ttyname.patch"
+	epatch "${FILESDIR}/${PN}-1.14.4-disable-nls.patch"
 
 	# Make sure we always use the system copies.
 	rm -rf util/{et,ss,verto}
@@ -82,6 +83,7 @@ multilib_src_configure() {
 	econf \
 		$(use_with openldap ldap) \
 		"$(multilib_native_use_with test tcl "${EPREFIX}/usr")" \
+		$(use_enable nls) \
 		$(use_enable pkinit) \
 		$(use_enable threads thread-support) \
 		--without-hesiod \

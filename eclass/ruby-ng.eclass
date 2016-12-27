@@ -20,6 +20,7 @@
 #  * ruby21 - Ruby (MRI) 2.1.x
 #  * ruby22 - Ruby (MRI) 2.2.x
 #  * ruby23 - Ruby (MRI) 2.3.x
+#  * ruby24 - Ruby (MRI) 2.4.x
 #  * jruby  - JRuby
 #  * rbx    - Rubinius
 #

@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI="5"
-CMAKE_MIN_VERSION="2.8"
 inherit cmake-utils eutils
 
 DESCRIPTION="A dynamic floating and tiling window manager"

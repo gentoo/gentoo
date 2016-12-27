@@ -4,8 +4,6 @@
 
 EAPI="6"
 
-CMAKE_MIN_VERSION="2.8.5"
-
 inherit cmake-utils eutils fdo-mime toolchain-funcs versionator
 
 DESCRIPTION="CD and DVD image access library"

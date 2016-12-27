@@ -32,7 +32,7 @@ REQUIRED_USE="ldns? ( ssl )
 	pie? ( !static )
 	ssh1? ( ssl )
 	static? ( !kerberos !pam )
-	X509? ( !ldap ssl )
+	X509? ( !hpn !ldap !sctp ssl )
 	test? ( ssl )"
 
 LIB_DEPEND="
@@ -113,18 +113,9 @@ src_prepare() {
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
 	if use X509 ; then
-		pushd .. >/dev/null
-		if use hpn ; then
-			pushd ${HPN_PATCH%.*.*} >/dev/null
-			epatch "${FILESDIR}"/${P}-hpn-12-x509-9.2-glue.patch
-			popd >/dev/null
-		fi
-		epatch "${FILESDIR}"/${PN}-7.3_p1-sctp-x509-glue.patch
-		sed -i 's:PKIX_VERSION:SSH_X509:g' "${WORKDIR}"/${X509_PATCH%.*} || die
-		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
-		epatch "${FILESDIR}"/${P}-x509-9.2-warnings.patch
-		save_version X509
+		# We no longer allow X509 to be used with anything else.
+		#save_version X509
 	fi
 
 	if use ldap ; then
@@ -134,7 +125,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-7.4_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	epatch "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
-	epatch "${WORKDIR}"/${SCTP_PATCH%.*}
+	use X509 || epatch "${WORKDIR}"/${SCTP_PATCH%.*}
 	epatch "${FILESDIR}"/${P}-test-bashism.patch
 	use abi_mips_n32 && epatch "${FILESDIR}"/${PN}-7.3-mips-seccomp-n32.patch
 
@@ -200,7 +191,7 @@ src_configure() {
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
-		$(use_with sctp)
+		$(use X509 || use_with sctp)
 		$(use_with selinux)
 		$(use_with skey)
 		$(use_with ssh1)

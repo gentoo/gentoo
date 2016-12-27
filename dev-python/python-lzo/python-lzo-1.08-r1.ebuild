@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 eutils prefix
 
 DESCRIPTION="Python interface to lzo"
 HOMEPAGE="http://www.oberhumer.com/opensource/lzo/"
@@ -19,8 +19,10 @@ IUSE=""
 DEPEND="dev-libs/lzo:2"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/lzo2compat.patch" )
-
 python_test() {
 	"${PYTHON}" tests/test.py || die "tests failed"
+}
+
+src_prepare() {
+	epatch "$(prefixify_ro "${FILESDIR}"/lzo2compat.patch)"
 }

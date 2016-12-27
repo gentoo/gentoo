@@ -20,12 +20,13 @@ EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
 RDEPEND="
 	!<sys-devel/llvm-4.0"
 DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
+	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
 
 test_compiler() {
@@ -62,6 +63,54 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	# prepare a test compiler
+	local clang_version=4.0.0
+	local sys_dir=( "${EPREFIX}/usr/lib/clang/${clang_version}/lib"/* )
+	[[ -e ${sys_dir} ]] || die "Unable to find ${sys_dir}"
+	[[ ${#sys_dir[@]} -eq 1 ]] || die "Non-deterministic compiler-rt install: ${sys_dir[@]}"
+
+	# copy clang over since resource_dir is located relatively to binary
+	# therefore, we can put our new libraries in it
+	mkdir -p "${BUILD_DIR}"/{bin,$(get_libdir),lib/clang/"${clang_version}"/include} || die
+	cp "${EPREFIX}/usr/bin/clang" "${EPREFIX}/usr/bin/clang++" \
+		"${BUILD_DIR}"/bin/ || die
+	cp "${EPREFIX}/usr/lib/clang/${clang_version}/include"/*.h \
+		"${BUILD_DIR}/lib/clang/${clang_version}/include/" || die
+
+	# builtins are not converted to lit yet, so run them manually
+	local tests=() f
+	cd "${S}"/test/builtins/Unit || die
+	while read -r -d '' f; do
+		# ppc subdir is unmaintained and lacks proper guards
+		# (and ppc builtins do not seem to be used anyway)
+		[[ ${f} == ./ppc/* ]] && continue
+		# these are special
+		[[ ${f} == ./cpu_model_test.c ]] && continue
+		[[ ${f} == ./gcc_personality_test.c ]] && continue
+		# unsupported
+		[[ ${f} == ./trampoline_setup_test.c ]] && continue
+		tests+=( "${f%.c}" )
+	done < <(find -name '*.c' -print0)
+
+	{
+		echo "check: ${tests[*]/#/check-}" &&
+		echo ".PHONY: check ${tests[*]/#/check-}" &&
+		for f in "${tests[@]}"; do
+			echo "check-${f}: ${f}" &&
+			echo "	${f}"
+		done
+	} > Makefile || die
+
+	# use -k to run all tests even if some fail
+	emake -k \
+		CC="${BUILD_DIR}/bin/clang" \
+		CFLAGS='' \
+		CPPFLAGS='-I../../../lib/builtins' \
+		LDFLAGS='-rtlib=compiler-rt' \
+		LDLIBS='-lm'
 }
 
 src_install() {

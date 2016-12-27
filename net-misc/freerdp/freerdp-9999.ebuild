@@ -64,6 +64,8 @@ RDEPEND="
 			x11-libs/libXdamage
 			x11-libs/libXext
 			x11-libs/libXfixes
+			x11-libs/libXrandr
+			x11-libs/libXtst
 			xinerama? ( x11-libs/libXinerama )
 		)
 	)

@@ -22,7 +22,7 @@ REQUIRED_USE="|| ( chrome qt4 ) ${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	qt4? ( dev-qt/qtwebkit:4
-		kde? ( kde-base/kdelibs ) )
+		kde? ( kde-frameworks/kdelibs:4 ) )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

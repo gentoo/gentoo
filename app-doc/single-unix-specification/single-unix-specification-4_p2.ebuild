@@ -10,8 +10,9 @@ SRC_URI="http://pubs.opengroup.org/onlinepubs/9699919799/download/susv4tc2.tar.b
 
 LICENSE="sus4-copyright"
 SLOT="4"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND=""
 RDEPEND=""

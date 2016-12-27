@@ -30,7 +30,7 @@ dev-qt/qtcore icu
 # Required by kde-apps/kate[addons]
 dev-libs/libgit2 threads
 
-# Required by kde-base/pykde4
+# Required by kde-apps/pykde4
 dev-python/PyQt4 script sql webkit
 
 # Required by kde-apps/akonadi

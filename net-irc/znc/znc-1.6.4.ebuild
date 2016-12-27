@@ -13,7 +13,7 @@ GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar
 DESCRIPTION="An advanced IRC Bouncer"
 
 SRC_URI="
-	http://znc.in/releases/${PN}-${MY_PV}.tar.gz
+	http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
 "
 KEYWORDS="~amd64 ~arm ~x86"
@@ -21,13 +21,12 @@ KEYWORDS="~amd64 ~arm ~x86"
 HOMEPAGE="http://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="daemon debug ipv6 libressl perl python ssl sasl tcl test"
+IUSE="daemon debug +ipv6 +icu libressl perl python +ssl sasl tcl test +zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	dev-libs/icu:=
-	sys-libs/zlib
+	icu? ( dev-libs/icu:= )
 	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
@@ -36,6 +35,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
+	zlib? ( sys-libs/zlib )
 "
 DEPEND="
 	${RDEPEND}
@@ -67,12 +67,14 @@ src_configure() {
 	econf \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable debug) \
+		$(use_enable icu charset) \
 		$(use_enable ipv6) \
 		$(use_enable perl) \
 		$(use_enable python) \
 		$(use_enable sasl cyrus) \
 		$(use_enable ssl openssl) \
 		$(use_enable tcl) \
+		$(use_enable zlib) \
 		$(use_with test gtest "${WORKDIR}/googletest-release-${GTEST_VER}")
 }
 

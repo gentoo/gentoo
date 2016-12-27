@@ -42,7 +42,7 @@ COMMONDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]
-		$(add_kdebase_dep pykde4 "${PYTHON_USEDEP}")
+		$(add_kdeapps_dep pykde4 "${PYTHON_USEDEP}")
 	)
 	qalculate? ( sci-libs/libqalculate )
 "

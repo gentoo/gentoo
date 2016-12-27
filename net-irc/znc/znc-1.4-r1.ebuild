@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 fi
 

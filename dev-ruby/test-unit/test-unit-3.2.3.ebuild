@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -15,7 +15,7 @@ inherit ruby-fakegem
 # depend on yard for the other ruby implementations. Without this
 # assumption bootstrapping ruby23 won't be possible due to the yard
 # dependency tree.
-USE_RUBY="${USE_RUBY/ruby23/}" ruby_add_bdepend "doc? ( dev-ruby/yard )"
+USE_RUBY="${USE_RUBY/ruby23 ruby24/}" ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 DESCRIPTION="An xUnit family unit testing framework for Ruby"
 HOMEPAGE="https://rubygems.org/gems/test-unit"

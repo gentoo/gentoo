@@ -4,8 +4,6 @@
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.0.0"
-
 inherit cmake-utils
 
 DESCRIPTION="Unofficial GOG.com downloader for Linux"

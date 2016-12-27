@@ -38,7 +38,7 @@ HOMEPAGE="http://ktorrent.pwsp.net/"
 
 LICENSE="GPL-2"
 SLOT="4"
-IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +kross +logviewer
+IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +logviewer
 +magnetgenerator +mediaplayer rss +scanfolder +search +stats +upnp webinterface
 +zeroconf"
 
@@ -49,8 +49,8 @@ COMMONDEPEND="
 	mediaplayer? ( >=media-libs/taglib-1.5 )
 	rss? ( $(add_kdeapps_dep kdepimlibs) )
 	search? (
-		$(add_kdebase_dep kdelibs webkit 4.14.22)
 		dev-qt/qtwebkit:4
+		kde-frameworks/kdelibs:4[webkit]
 	)
 "
 DEPEND="${COMMONDEPEND}
@@ -63,7 +63,6 @@ RDEPEND="${COMMONDEPEND}
 		app-arch/unzip
 		$(add_kdeapps_dep kdebase-kioslaves)
 	)
-	kross? ( $(add_kdebase_dep krosspython) )
 "
 
 PATCHES=(
@@ -81,13 +80,13 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-D_ENABLE_SHUTDOWN_PLUGIN=OFF
+		-DENABLE_SHUTDOWN_PLUGIN=OFF
+		-DENABLE_SCRIPTING_PLUGIN=OFF
 		$(cmake-utils_use_enable bwscheduler BWSCHEDULER_PLUGIN)
 		$(cmake-utils_use_enable downloadorder DOWNLOADORDER_PLUGIN)
 		$(cmake-utils_use_enable infowidget INFOWIDGET_PLUGIN)
 		$(cmake-utils_use_with infowidget SYSTEM_GEOIP)
 		$(cmake-utils_use_enable ipfilter IPFILTER_PLUGIN)
-		$(cmake-utils_use_enable kross SCRIPTING_PLUGIN)
 		$(cmake-utils_use_enable logviewer LOGVIEWER_PLUGIN)
 		$(cmake-utils_use_enable magnetgenerator MAGNETGENERATOR_PLUGIN)
 		$(cmake-utils_use_enable mediaplayer MEDIAPLAYER_PLUGIN)

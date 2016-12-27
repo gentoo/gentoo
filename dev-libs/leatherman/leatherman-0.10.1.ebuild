@@ -4,7 +4,6 @@
 
 EAPI=5
 USE_RUBY="ruby21 ruby22"
-CMAKE_MIN_VERSION="3.2.2"
 
 inherit cmake-utils multilib
 

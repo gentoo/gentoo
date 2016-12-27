@@ -5,7 +5,6 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-CMAKE_MIN_VERSION="3.2"
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
 KDE_TEST="false"

@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nikoli@gmx.us</email>
+    <email>fatzer2@gmail.com</email>
+    <name>Alexander Golubev</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

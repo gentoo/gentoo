@@ -53,3 +53,8 @@ move kde-base/kdm kde-plasma/kdm
 move kde-base/plasma-workspace kde-plasma/plasma-workspace
 move dev-perl/extutils-pkgconfig dev-perl/ExtUtils-PkgConfig
 move kde-base/kdebase-startkde kde-plasma/kdebase-startkde
+move kde-base/krosspython kde-apps/kross-interpreters
+move kde-base/katepart kde-apps/katepart
+move kde-base/pykde4 kde-apps/pykde4
+move kde-base/kde-env kde-frameworks/kdelibs-env
+move kde-base/kdelibs kde-frameworks/kdelibs

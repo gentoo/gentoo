@@ -1,0 +1,60 @@
+diff -Naur a/build.xml b/build.xml
+--- a/build.xml	2016-06-14 19:48:01.000000000 +0100
++++ b/build.xml	2016-12-22 22:41:41.988262564 +0000
+@@ -27,6 +27,10 @@
+   xmlns:u="http://freemarker.org/util"
+ >
+ 
++  <path id="gentoo.classpath">
++    <pathelement path="${gentoo.classpath}/"/>
++  </path>
++
+   <!-- ================================================================== -->
+   <!-- Properties                                                         -->
+   <!-- ================================================================== -->
+@@ -143,13 +147,11 @@
+     />
+ 
+     <mkdir dir="${_javaccOutputDir}" />
+-    <ivy:retrieve conf="parser" pattern="build/javacc-home.tmp/[artifact].[ext]" />
+     <javacc:generate
+       target="src/main/javacc/FTL.jj"
+       outputdirectory="${_javaccOutputDir}"
+       javacchome="build/javacc-home.tmp"
+     />
+-    <delete dir="build/javacc-home.tmp" />
+     
+     <replace
+       file="${_javaccOutputDir}/FMParser.java"
+@@ -271,6 +273,7 @@
+       verify="yes" stubversion="1.2"
+     />
+ 
++<!--
+     <ivy:cachepath conf="build.jsp2.0" pathid="ivy.dep.jsp2.0" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+       debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+@@ -286,6 +289,7 @@
+         freemarker/ext/jsp/FreeMarkerJspFactory21.java,
+         freemarker/ext/jsp/FreeMarkerJspApplicationContext.java"
+     />
++!-->
+     
+     <!-- There's no build.jsp2.0, as those classes are part of the common build subset. -->
+     
+@@ -301,6 +305,7 @@
+         freemarker/ext/jsp/FreeMarkerJspApplicationContext.java"
+     />
+ 
++<!--
+     <ivy:cachepath conf="build.jython2.0" pathid="ivy.dep.jython2.0" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+       debug="on" optimize="off" target="1.5" source="1.5" encoding="utf-8"
+@@ -325,6 +330,7 @@
+       includes="
+         freemarker/ext/jython/_Jython22VersionAdapter.java"
+     />
++!-->
+     
+     <ivy:cachepath conf="build.jython2.5" pathid="ivy.dep.jython2.5" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 

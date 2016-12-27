@@ -5,7 +5,7 @@
 EAPI=6
 
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx
+inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx flag-o-matic
 
 MY_P="${P/_/-}"
 
@@ -135,6 +135,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fix linking on Solaris
+	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lsocket -lnsl
+
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
 		-DCMAKE_USE_SYSTEM_LIBRARY_JSONCPP=$(usex system-jsoncpp)

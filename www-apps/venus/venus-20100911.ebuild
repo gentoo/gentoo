@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://intertwingly.net/code/venus/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="PSF-2.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="django genshi redland test"
 SLOT="0"
 

@@ -30,7 +30,7 @@ dev-libs/totem-pl-parser quvi
 media-plugins/gst-plugins-meta dv dvd musepack vcd vpx wavpack
 
 # Justin Lecher <jlec@gentoo.org> (19 Sep 2010)
-# kde-base/konqueror not keyworded
+# kde-apps/konqueror not keyworded
 app-arch/p7zip kde
 
 # Justin Lecher <jlec@gentoo.org> (12 Sep 2010)

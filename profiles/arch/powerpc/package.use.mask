@@ -24,8 +24,8 @@ dev-python/PyQt5 bluetooth location webengine
 app-misc/hachoir-metadata kde
 dev-vcs/subversion kde
 games-arcade/jumpnbump kde
-kde-base/katepart handbook
-kde-base/kdelibs handbook policykit
+kde-apps/katepart handbook
+kde-frameworks/kdelibs handbook policykit
 net-libs/libproxy kde
 net-voip/ekiga kde
 sys-auth/polkit kde

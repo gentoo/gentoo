@@ -7,7 +7,7 @@ EAPI=6
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="Framework easing the development transition from KDE 4 to KF 5"
+DESCRIPTION="Framework easing the development transition from KDELibs 4 to KF 5"
 LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm x86"
 IUSE="libressl X"

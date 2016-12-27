@@ -9,6 +9,7 @@ DIST_VERSION=2.03
 inherit perl-module
 
 DESCRIPTION="atexit() function to register exit-callbacks"
+LICENSE="|| ( Artistic Artistic-2 )"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"

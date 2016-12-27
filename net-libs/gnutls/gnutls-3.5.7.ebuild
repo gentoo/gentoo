@@ -14,7 +14,7 @@ LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 sslv2 +sslv3 static-libs test +tls-heartbeat +tools zlib ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 sslv2 +sslv3 static-libs test +tls-heartbeat tools zlib ${IUSE_LINGUAS// / linguas_}"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts

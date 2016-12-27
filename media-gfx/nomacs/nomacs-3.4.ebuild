@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	>=media-gfx/exiv2-0.25:=
-	opencv? ( media-libs/opencv:=[-qt4] )
+	opencv? ( media-libs/opencv:=[-qt4(-)] )
 	raw? ( >=media-libs/libraw-0.14:= )
 	tiff? ( media-libs/tiff:0 )
 	zip? ( dev-libs/quazip[qt5] )

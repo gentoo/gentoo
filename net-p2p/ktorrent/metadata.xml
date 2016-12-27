@@ -8,7 +8,6 @@
 	<use>
 		<flag name="bwscheduler">Schedule upload and download limits over a period of a week</flag>
 		<flag name="downloadorder">Specify the download order of a multi-file torrent</flag>
-		<flag name="kross">Enable kross scripting support</flag>
 		<flag name="infowidget">Displays general information about a torrent in several tabs</flag>
 		<flag name="ipfilter">Filter IP addresses through a blocklist</flag>
 		<flag name="logviewer">Displays the logging output</flag>

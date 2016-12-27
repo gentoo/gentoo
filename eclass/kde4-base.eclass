@@ -314,11 +314,11 @@ kdecommondepend="
 if [[ ${PN} != kdelibs ]]; then
 	local _kdelibsuse
 	case ${WEBKIT_REQUIRED} in
-		always) _kdelibsuse="webkit" ;;
-		optional) _kdelibsuse="webkit?" ;;
+		always) _kdelibsuse="[webkit]" ;;
+		optional) _kdelibsuse="[webkit?]" ;;
 		*) ;;
 	esac
-	kdecommondepend+=" $(add_kdebase_dep kdelibs "${_kdelibsuse}" 4.14.22)"
+	kdecommondepend+=" >=kde-frameworks/kdelibs-4.14.22:4${_kdelibsuse}"
 	unset _kdelibsuse
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then
@@ -378,7 +378,7 @@ kdehandbookdepend="
 	app-text/docbook-xsl-stylesheets
 "
 kdehandbookrdepend="
-	$(add_kdebase_dep kdelibs 'handbook')
+	kde-frameworks/kdelibs:4[handbook]
 "
 case ${KDE_HANDBOOK} in
 	always)

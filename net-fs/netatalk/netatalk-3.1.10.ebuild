@@ -16,12 +16,12 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 
 
 LICENSE="GPL-2 BSD"
 SLOT="0/17.0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="acl cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
 	!app-editors/yudit
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	>=dev-libs/libgcrypt-1.2.3:0
 	sys-apps/coreutils
 	>=sys-libs/db-4.2.52:=

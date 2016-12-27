@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_MIN_VERSION="3.1"
 VIRTUALX_REQUIRED="test"
 inherit cmake-utils virtualx
 

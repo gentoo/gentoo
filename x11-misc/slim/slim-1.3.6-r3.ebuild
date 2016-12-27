@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-CMAKE_MIN_VERSION="2.8.8"
 inherit cmake-utils pam eutils systemd versionator
 
 DESCRIPTION="Simple Login Manager"

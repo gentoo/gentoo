@@ -8,7 +8,7 @@ inherit fox
 
 LICENSE="LGPL-2.1"
 SLOT="1.7"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib"
 
 # newish autoconf needed for working mmap check

@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
-PATCH_VER=1
+PATCH_VER=2
 CROSS_VER=1.1.1
 
 PERL_OLDVERSEN="5.24.0"
@@ -337,7 +337,9 @@ src_configure() {
 	mydb='U'
 	if use gdbm ; then
 		mygdbm='D'
-		myndbm='D'
+		if use berkdb ; then
+			myndbm='D'
+		fi
 	fi
 	if use berkdb ; then
 		mydb='D'
