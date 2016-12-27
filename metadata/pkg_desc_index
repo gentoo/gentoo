@@ -6145,7 +6145,7 @@ dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Sto
 dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
-dev-perl/Net-CUPS 0.610.0-r2: CUPS C API Interface
+dev-perl/Net-CUPS 0.610.0-r2 0.630.0: CUPS C API Interface
 dev-perl/Net-DBus 1.0.0-r1 1.1.0: Perl extension for the DBus message system
 dev-perl/Net-DNS 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
