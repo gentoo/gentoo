@@ -10,6 +10,7 @@ DIST_EXAMPLES=("example/*")
 inherit perl-module
 
 DESCRIPTION="Read/Write Vixie compatible crontab(5) files"
+LICENSE="Artistic"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
