@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-splice.patch
 	sed -i \
 		-e "s:@SHELL@:${EPREFIX}/bin/sh:g" \
 		src/egrep.sh || die #523898
