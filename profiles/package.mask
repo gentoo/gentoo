@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (27 Dec 2016)
+# Fails with more recent boost, dead upstream (bug #600548).
+dev-cpp/luabind
+games-rpg/valyriatear
+
 # Johannes Huber <johu@gentoo.org> (25 Dec 2016)
 # Masked for removal in 30 days. Dead upstream. No reverse dependencies.
 # No maintainer. Was introduced for media-sound/tomahwak. Uses deprecated
