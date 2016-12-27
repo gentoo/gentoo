@@ -118,8 +118,6 @@ src_install() {
 
 	dodir "/var/lib/${PN}"
 	dodir "/var/log/${PN}"
-	dodir "/var/log/${PN}" \
-		"/var/lib/${PN}"
 
 	fowners -R ${PN}: "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"
 	fperms 750 "/var/lib/${PN}" "/var/log/${PN}" "/etc/${PN}"

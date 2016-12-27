@@ -23,8 +23,8 @@
 # 
 # You can then define the following options here:
 
-# SURICATA_OPTS_q0="-i eth0"
-# SURICATA_OPTS_q1="-i eth1"
+# SURICATA_OPTS_q0="-q 0"
+# SURICATA_OPTS_q1="-q 1"
 
 # If you want to use ${SURICATA_DIR}/suricata.yaml and start the service with /etc/init.d/suricata
 # then you can set:
