@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="SAX2 Driver for Expat"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=dev-perl/XML-SAX-0.15-r1
@@ -19,11 +19,15 @@ RDEPEND=">=dev-perl/XML-SAX-0.15-r1
 	dev-perl/XML-Parser"
 DEPEND="${RDEPEND}
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
+		virtual/perl-Test-Simple
 	)"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/98podsyn.t t/99podcov.t
+	perl-module_src_test
+}
 
 src_compile() {
 	export SKIP_SAX_INSTALL=1
