@@ -19,9 +19,17 @@
 # ln -s /etc/init.d/suricata /etc/init.d/suricata.q1
 # cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q0.yaml
 # cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q1.yaml
+#
 # Edit both suricata-q{0,1}.yaml files and set values accordingly.
-# 
-# You can then define the following options here:
+# You can override these yaml config file names with SURICATA_CONF* below (optional).
+# This allows you to use the same yaml config file for multiple instances as long as you override
+# sensible options such as the log file paths.
+# SURICATA_CONF_q0="suricata-queues.yaml"
+# SURICATA_CONF_q1="suricata-queues.yaml"
+# SURICATA_CONF="suricata.yaml"
+
+# You can define the options here:
+# NB: avoid using -l, -c and setting logging.outputs.1.file.filename as the init script will try to set them for you.
 
 # SURICATA_OPTS_q0="-q 0"
 # SURICATA_OPTS_q1="-q 1"
@@ -30,3 +38,14 @@
 # then you can set:
 
 SURICATA_OPTS="-i eth0"
+
+# Log paths listed here will be created by the init script and will override the log path
+# set in the yaml file, if present.
+# SURICATA_LOG_PATH_q0="/var/log/suricata/q0"
+# SURICATA_LOG_PATH_q1="/var/log/suricata/q1"
+# SURICATA_LOG_PATH="/var/log/suricata"
+# SURICATA_LOG_FILE="suricata.log"
+
+# You can view all the available options you can set with --set
+# and check the full config settings in an easily parsable format.
+# SURICATA_DUMP=1

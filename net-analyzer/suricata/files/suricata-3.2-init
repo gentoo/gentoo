@@ -8,13 +8,17 @@ SURICATA_DIR=${SURICATA_DIR:-/etc/suricata}
 SURICATA=${SVCNAME#*.}
 SURICATAID=$(shell_var "${SURICATA}")
 if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
-    SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml"
+    eval SURICATACONF=\$SURICATA_CONF_${SURICATAID}
+    [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
     SURICATAPID="/var/run/suricata/suricata.${SURICATA}.pid"
     eval SURICATAOPTS=\$SURICATA_OPTS_${SURICATAID}
+    eval SURICATALOGPATH=\$SURICATA_LOG_PATH_${SURICATAID}
 else
-    SURICATACONF="${SURICATA_DIR}/suricata.yaml"
+    SURICATACONF=${SURICATA_CONF}
+    [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
     SURICATAPID="/var/run/suricata/suricata.pid"
     SURICATAOPTS=${SURICATA_OPTS}
+    SURICATALOGPATH=${SURICATA_LOG_PATH}
 fi
 [ -e ${SURICATACONF} ] && SURICATAOPTS="${SURICATAOPTS} -c ${SURICATACONF}"
 
@@ -35,6 +39,14 @@ checkconfig() {
 	fi
 	if [ ! -d "/var/run/suricata" ] ; then
 		checkpath -d /var/run/suricata
+	fi
+	if [ ${#SURICATALOGPATH} -gt 0 ]; then
+		if [ ! -d "${SURICATALOGPATH}" ] ; then
+			checkpath -d "${SURICATALOGPATH}"
+		fi
+		SURICATALOGFILE=${SURICATA_LOG_FILE:-suricata.log}
+		SURICATAOPTS="${SURICATAOPTS} --set logging.outputs.1.file.filename=${SURICATALOGPATH}/${SURICATALOGFILE}"
+		SURICATALOGPATH="-l ${SURICATALOGPATH}"
 	fi
 }
 
@@ -65,13 +77,19 @@ checkpidinfo() {
 
 start() {
 	checkconfig || return 1
+	if [ $((SURICATA_DUMP)) -eq 1 ]; then
+	    einfo "Dumping ${SVCNAME} config values and quitting."
+	    ${SURICATA_BIN} --dump-config --pidfile ${SURICATAPID} ${SURICATAOPTS} ${SURICATALOGPATH}
+	    einfo "You need to disable SURICATA_DUMP to start ${SVCNAME}."
+	    return 1
+	fi
 	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon --start --quiet --exec ${SURICATA_BIN} \
-		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} >/dev/null 2>&1
+		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} ${SURICATALOGPATH} >/dev/null 2>&1
 	local SUR_EXIT=$?
 	if [ $((SUR_EXIT)) -ne 0 ]; then
 	    einfo "Could not start ${SURICATA_BIN} with:"
-	    einfo "--pidfile ${SURICATAPID} -D ${SURICATAOPTS}"
+	    einfo "--pidfile ${SURICATAPID} -D ${SURICATAOPTS} ${SURICATALOGPATH}"
 	    einfo "Exit code ${SUR_EXIT}"
 	fi
 	eend ${SUR_EXIT}
@@ -87,7 +105,7 @@ stop() {
 	while [ -e ${SURICATAPID} ] && [ $cnt -gt 0 ]; do
 	    cnt=$(expr $cnt - 1)
 	    sleep 1
-	    einfo -ne "$cnt seconds left before we give up checking the PID file...\r"
+	    echo -ne "$cnt seconds left before we give up checking the PID file...\r"
 	done
 	# under certain conditions suricata can be pretty slow and the PID can persist long after the pidfile has been removed
 	# max wait for process to terminate: 1 minute
@@ -105,7 +123,7 @@ stop() {
 		    break
 		fi
 		sleep 1
-		einfo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
+		echo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
 		SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
 	    done
 	fi
