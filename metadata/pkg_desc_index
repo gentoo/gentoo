@@ -4513,8 +4513,8 @@ dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Lang
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3 2.4.0: An object-oriented scripting language
-dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.12.1 1.13.0: Systems programming language from Mozilla
+dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0 1.14.0: Systems programming language from Mozilla
+dev-lang/rust-bin 1.12.1 1.13.0 1.14.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
@@ -8355,7 +8355,7 @@ dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.3.1 0.4.1: Validating URI References per RFC 3986
 dev-python/rfc3987 1.3.6 1.3.7: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
 dev-python/rlcompleter2 0.98-r1: Python command line completion
-dev-python/rnc2rng 2.4: RELAX NG Compact to regular syntax conversion library
+dev-python/rnc2rng 2.4 2.4.1: RELAX NG Compact to regular syntax conversion library
 dev-python/robotframework 2.9 3.0: test automation framework for acceptance testing & test-driven development
 dev-python/robotframework-selenium2library 1.6.0 1.7.2 1.7.4 1.8.0: Web testing library for Robot Framework
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2: A test library for Robot Framework that enables SSH and SFTP
@@ -9976,7 +9976,7 @@ dev-util/buildbot-www 0.9.0_p1 0.9.1: BuildBot base web interface, use with buil
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
-dev-util/cargo 0.12.0 0.13.0 0.13.0-r1 0.14.0: The Rust's package manager
+dev-util/cargo 0.12.0 0.13.0 0.13.0-r1 0.14.0 0.15.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.1-r2 0.7.2 0.7.4-r1 9999: Cmake macros and associated python code used to build some parts of ROS
@@ -17984,7 +17984,7 @@ www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
-www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2 4.5.7: An Apache2 module for running Python WSGI applications
+www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2 4.5.7 4.5.11: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
