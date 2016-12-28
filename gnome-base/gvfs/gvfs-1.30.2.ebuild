@@ -81,6 +81,10 @@ DEPEND="${RDEPEND}
 # https://bugzilla.gnome.org/700162
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.30.2-sysmacros.patch #580234
+)
+
 src_prepare() {
 	if ! use udev; then
 		sed -e 's/gvfsd-burn/ /' \
