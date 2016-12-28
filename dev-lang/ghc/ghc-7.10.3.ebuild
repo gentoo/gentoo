@@ -87,6 +87,15 @@ RDEPEND="
 	kernel_linux? ( >=sys-devel/binutils-2.17:* )
 	kernel_SunOS? ( >=sys-devel/binutils-2.17:* )
 "
+# gentoo binaries are built against ncurses-5
+RDEPEND+="
+	binary? (
+		|| (
+			sys-libs/ncurses:0/5
+			sys-libs/ncurses:5/5
+		)
+	)
+"
 
 # force dependency on >=gmp-5, even if >=gmp-4.1 would be enough. this is due to
 # that we want the binaries to use the latest versioun available, and not to be
