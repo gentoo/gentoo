@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23 ruby24"
 
 # The test target also contains test:exe but that requires
 # shoulda-context which we do not have packaged yet.
