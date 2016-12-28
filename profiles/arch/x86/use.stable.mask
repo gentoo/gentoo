@@ -12,7 +12,6 @@ apparmor
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable versions on x86
 clozurecl
-gcl
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # PyPy is unstable on this arch.
