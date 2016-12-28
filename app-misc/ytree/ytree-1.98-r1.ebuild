@@ -12,7 +12,7 @@ SRC_URI="http://www.han.de/~werner/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -21,10 +21,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	default
-	epatch "${FILESDIR}"/${PN}-1.94-bindir.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-1.94-bindir.patch )
+
+DOCS=( CHANGES README THANKS ytree.conf )
 
 pkg_setup() {
 	tc-export CC
@@ -32,5 +31,4 @@ pkg_setup() {
 
 src_install() {
 	emake DESTDIR="${D}usr" install
-	dodoc CHANGES README THANKS ytree.conf
 }
