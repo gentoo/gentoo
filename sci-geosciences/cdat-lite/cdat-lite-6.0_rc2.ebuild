@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND=">=sci-libs/netcdf-4.0.1
+COMMON_DEPEND="
+	>=sci-libs/netcdf-4.0.1:0=
 	>=sci-libs/hdf5-1.6.4
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/wxpython:2.8[${PYTHON_USEDEP}]
