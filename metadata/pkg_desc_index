@@ -4516,7 +4516,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.2.6 2.3.1 2.3.2 2.3.3 2.3.3-r1 2.4.0: An object-oriented scripting language
 dev-lang/rust 1.11.0 1.12.0 1.12.1 1.13.0 1.14.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.12.1 1.13.0 1.14.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
+dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8 2.12.1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -17311,7 +17311,7 @@ sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compil
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.5.39-r1 2.6.1 2.6.2: The Fast Lexical Analyzer
-sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 6.3.0: The GNU Compiler Collection
+sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 5.4.0-r2 6.3.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 9999: GNU debugger
