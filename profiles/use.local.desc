@@ -5161,6 +5161,7 @@ net-analyzer/suricata:af-packet - Enable AF_PACKET support
 net-analyzer/suricata:control-socket - Enable unix socket
 net-analyzer/suricata:cuda - Enable NVIDIA Cuda computations support
 net-analyzer/suricata:detection - Enable detection modules
+net-analyzer/suricata:logrotate - Install logrotate rule
 net-analyzer/suricata:luajit - Enable Luajit support
 net-analyzer/suricata:nflog - Enable libnetfilter_log support
 net-analyzer/suricata:nfqueue - Enable NFQUEUE support for inline IDP
