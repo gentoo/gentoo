@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )
+DEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )
 DESCRIPTION=Scientific library and interface for array oriented data access
 EAPI=5
 HOMEPAGE=http://www.unidata.ucar.edu/software/netcdf/
 IUSE=+dap examples hdf +hdf5 mpi static-libs szip test tools
 KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=UCAR-Unidata
-RDEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )
+RDEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )
 REQUIRED_USE=test? ( tools ) szip? ( hdf5 ) mpi? ( hdf5 )
 SLOT=0/7
 SRC_URI=ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.3.2.tar.gz
 _eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=90060dd318dce4109fa08ce9e872498d
+_md5_=229a7de8d10c102e1ec1ee95a71782d7
