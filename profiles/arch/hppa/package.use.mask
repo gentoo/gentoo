@@ -6,6 +6,7 @@
 
 # Jeroen Roovers <jer@gentoo.org> (28 Dec 2016)
 # "#error Unsupported architecture"
+dev-libs/libpcre2 jit
 
 # Jeroen Roovers <jer@gentoo.org> (31 May 2016)
 # Mask kde-frameworks/kapidox (bug #568972)
