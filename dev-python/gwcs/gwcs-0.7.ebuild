@@ -9,10 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python  for managing the World Coordinate System"
 HOMEPAGE="http://gwcs.readthedocs.org"
-
-# take 0.7_rc2 instead 0f 0.5.1, incompatible with asdf-1.2.1
-#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-SRC_URI="https://github.com/spacetelescope/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
