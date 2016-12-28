@@ -4973,7 +4973,7 @@ dev-libs/quazip 0.7.1 0.7.2-r1: A simple C++ wrapper over Gilles Vollant's ZIP/U
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2016.05.01 0.2016.11.01: An efficent, principled regular expression library
+dev-libs/re2 0.2016.05.01 0.2016.11.01-r1: An efficent, principled regular expression library
 dev-libs/redland 1.0.15 1.0.16 1.0.17 1.0.17-r1: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
