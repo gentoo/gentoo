@@ -1,8 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI="5"
 
 inherit eutils flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
@@ -36,7 +35,7 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
 		eautoreconf
 	fi
-	default
+	epatch_user
 }
 
 src_configure() {
