@@ -76,9 +76,6 @@ RDEPEND="
 	>=dev-libs/gmp-5:=
 	sys-libs/ncurses:=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
-	!kernel_Darwin? ( >=sys-devel/gcc-2.95.3 )
-	kernel_linux? ( >=sys-devel/binutils-2.17 )
-	kernel_SunOS? ( >=sys-devel/binutils-2.17 )
 "
 # gentoo binaries are built against ncurses-5
 RDEPEND+="

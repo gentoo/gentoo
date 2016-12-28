@@ -9,6 +9,5 @@
 		<flag name="binary">Install the binary version directly, rather than using it to build the source version.</flag>
 		<flag name="ghcbootstrap">Bootstrap from an existing GHC installation.</flag>
 		<flag name="ghcmakebinary">Build with less runtime depends (bundle libffi for building bootstrap binaries).</flag>
-		<flag name="llvm">Enable llvm code generator for ghc (-fllvm).</flag>
 	</use>
 </pkgmetadata>
