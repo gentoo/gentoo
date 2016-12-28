@@ -1,0 +1,10 @@
+--- a/makefile	2016-11-07 23:20:55.000000000 +0900
++++ b/makefile	2016-12-28 19:43:01.786472519 +0900
+@@ -6,6 +6,7 @@
+ ldoc:
+ 
+ install: install_parts
++	mkdir -p $(DESTDIR)$(LUA_BINDIR)
+ 	echo "lua $(LUA_SHAREDIR)/ldoc.lua \$$*" > $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 	chmod +x $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 
