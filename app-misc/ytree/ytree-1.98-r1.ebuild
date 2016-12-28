@@ -31,4 +31,5 @@ pkg_setup() {
 
 src_install() {
 	emake DESTDIR="${D}usr" install
+	einstalldocs
 }
