@@ -26,3 +26,8 @@ src_configure() {
 		--includedir=/usr/include \
 		--disable-static
 }
+
+src_install() {
+	default
+	find "${D}" -name "*.la" -delete || die
+}
