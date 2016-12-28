@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,11 +14,14 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="+xml static-libs"
 
-RDEPEND=">=dev-libs/libcdio-0.90-r1[-minimal,${MULTILIB_USEDEP}]
+RDEPEND="
+	>=dev-libs/libcdio-0.90-r1:0=[-minimal,${MULTILIB_USEDEP}]
 	dev-libs/popt
-	xml? ( dev-libs/libxml2 )"
+	xml? ( dev-libs/libxml2:2 )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS="AUTHORS BUGS ChangeLog FAQ HACKING NEWS README THANKS TODO"
 
