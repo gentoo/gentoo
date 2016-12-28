@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils
+inherit eutils
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="http://www.unidata.ucar.edu/software/netcdf/"
@@ -18,7 +18,7 @@ IUSE="+dap examples hdf +hdf5 mpi static-libs szip test tools"
 RDEPEND="
 	dap? ( net-misc/curl:0= )
 	hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= )
-	hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )"
+	hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )"
 DEPEND="${RDEPEND}"
 # doc generation is missing many doxygen files in tar ball
 #	doc? ( app-doc/doxygen[dot] )"
@@ -28,32 +28,24 @@ REQUIRED_USE="test? ( tools ) szip? ( hdf5 ) mpi? ( hdf5 )"
 S="${WORKDIR}/${PN}-c-${PV}"
 
 src_configure() {
-	#	--docdir="${EPREFIX}"/usr/share/doc/${PF}
-	#	$(use_enable doc doxygen)
-	local myeconfargs=(
-		--disable-examples
-		--disable-dap-remote-tests
-		$(use_enable dap)
-		$(use_enable hdf hdf4)
-		$(use_enable hdf5 netcdf-4)
-		$(use_enable tools utilities)
-	)
+	local myconf
 	if use mpi; then
 		export CC=mpicc
-		myeconfargs+=( --enable-parallel )
-		use test && myeconfargs+=( --enable-parallel-tests )
+		myconf="--enable-parallel"
+		use test && myconf+=" --enable-parallel-tests"
 	fi
-	autotools-utils_src_configure
-}
-
-src_test() {
-	autotools-utils_src_test -j1
+	econf "${myconf}" \
+		--disable-examples \
+		--disable-dap-remote-tests \
+		$(use_enable dap) \
+		$(use_enable hdf hdf4) \
+		$(use_enable hdf5 netcdf-4) \
+		$(use_enable static-libs static) \
+		$(use_enable tools utilities)
 }
 
 src_install() {
-	autotools-utils_src_install
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	default
+	use examples && dodoc -r examples
+	prune_libtool_files
 }

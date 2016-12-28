@@ -18,7 +18,7 @@ IUSE="+dap examples hdf +hdf5 mpi static-libs szip test tools"
 RDEPEND="
 	dap? ( net-misc/curl:0= )
 	hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= )
-	hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )"
+	hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )"
 DEPEND="${RDEPEND}"
 # doc generation is missing many doxygen files in tar ball
 #	doc? ( app-doc/doxygen[dot] )"
