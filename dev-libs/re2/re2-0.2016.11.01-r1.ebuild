@@ -17,7 +17,8 @@ SRC_URI="https://github.com/google/re2/archive/${RE2_VER}.tar.gz -> re2-${RE2_VE
 LICENSE="BSD"
 # NOTE: Always run libre2 through abi-compliance-checker!
 # https://abi-laboratory.pro/tracker/timeline/re2/
-SLOT="0/0.2016.11.01"
+SONAME="gentoo-2016-09-01"
+SLOT="0/${SONAME}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="icu"
 
@@ -32,6 +33,7 @@ HTML_DOCS=( doc/syntax.html )
 
 src_prepare() {
 	default
+	grep -qv '^SONAME=0$' Makefile || die "Check SONAME in Makefile"
 	if use icu; then
 		sed -i -e 's:^# \(\(CC\|LD\)ICU=.*\):\1:' Makefile || die
 	fi
@@ -42,6 +44,10 @@ src_configure() {
 	tc-export AR CXX NM
 }
 
+multilib_src_compile() {
+	emake SONAME="${SONAME}"
+}
+
 multilib_src_install() {
-	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" libdir="\$(exec_prefix)/$(get_libdir)" install
+	emake SONAME="${SONAME}" DESTDIR="${D}" prefix="${EPREFIX}/usr" libdir="\$(exec_prefix)/$(get_libdir)" install
 }
