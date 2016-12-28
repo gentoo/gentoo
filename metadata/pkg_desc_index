@@ -17681,6 +17681,7 @@ sys-power/pmtools 20071116 20110323 20110323-r1: Collection of tools for ACPI an
 sys-power/powerman 2.3.9-r1: RPC/PDU control and monitoring service for data center or compute cluster power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r3: Daemon to control the speed and voltage of CPUs
+sys-power/powerstat 0.02.11 9999: Laptop power measuring tool
 sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is using the most power
 sys-power/sispmctl 3.1 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
