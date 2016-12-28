@@ -7,13 +7,13 @@ PYTHON_COMPAT=( python3_{4,5} )
 
 inherit autotools gnome2 pax-utils python-r1
 
-MY_P=${P/_/-}a
+MY_P=${P/_/-}
 MY_PV=${PV/_/-}
 
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="News Aggregator for RDF/RSS/CDF/Atom/Echo feeds"
-HOMEPAGE="http://liferea.sourceforge.net/"
+HOMEPAGE="https://lzone.de/liferea/"
 SRC_URI="https://github.com/lwindolf/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
@@ -44,6 +44,11 @@ S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	gnome2_src_prepare
+
+	# gnome2_src_prepare calls elibtoolize
+	if [ -f "${S}"/.elibtoolized ]; then
+		local AT_NOELIBTOOLIZE="yes"
+	fi
 	eautoreconf
 }
 
@@ -62,6 +67,5 @@ src_install() {
 
 	einfo "If you want to enhance the functionality of this package,"
 	einfo "you should consider installing:"
-	einfo "    dev-libs/dbus-glib"
 	einfo "    net-misc/networkmanager"
 }
