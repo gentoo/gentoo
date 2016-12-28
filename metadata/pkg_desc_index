@@ -1050,7 +1050,7 @@ app-editors/mg 20150323 20160421 20161005: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment
 app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
-app-editors/nano 2.5.3 2.6.3 2.7.2 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.5.3 2.6.3 2.7.3 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 9999: Vim-fork focused on extensibility and agility.
@@ -10114,7 +10114,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.26 2.27 2.28 2.33: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.19.4 2.26 2.27 2.28 2.33 2.38: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.6: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.4 5.0.3: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -14262,7 +14262,7 @@ net-analyzer/wireshark 2.2.2 2.2.3 99999999: A network protocol analyzer formerl
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
-net-analyzer/zabbix 2.2.16 3.0.6 3.2.2: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.16 3.0.6 3.2.2 3.2.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
@@ -14718,7 +14718,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.7.1 1.10.0 1.17.0 1.18.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.0 6.9.1 7.0.0 7.2.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.10 0.12.17 4.6.0 4.6.1 6.9.0 6.9.1 6.9.2 7.0.0 7.2.0 7.3.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
