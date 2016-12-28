@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )
+DESCRIPTION=Fast SSL configuration scanner
+EAPI=6
+HOMEPAGE=https://github.com/rbsec/sslscan
+IUSE=libressl +static
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )
+SLOT=0
+SRC_URI=https://github.com/rbsec/sslscan/archive/1.11.8-rbsec.tar.gz -> sslscan-1.11.8-rbsec.tar.gz static? ( mirror://openssl/source/openssl-1.0.2j.tar.gz )
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=e9f5083b1b38398c192faa5525926578
