@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure prepare test
+DEPEND=X? ( x11-libs/motif:0 ) gmp? ( >=dev-libs/gmp-5 ) elibc_glibc? ( threads? ( >=sys-libs/glibc-2.13 ) ) virtual/libffi !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Poly/ML is a full implementation of Standard ML
+EAPI=6
+HOMEPAGE=http://www.polyml.org
+IUSE=X elibc_glibc +gmp portable test +threads
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/motif:0 ) gmp? ( >=dev-libs/gmp-5 ) elibc_glibc? ( threads? ( >=sys-libs/glibc-2.13 ) ) virtual/libffi
+SLOT=0/5.6
+SRC_URI=https://codeload.github.com/polyml/polyml/tar.gz/v5.6 -> polyml-5.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=4fa8200ba7070dfacf484d04d2c8ac3b
