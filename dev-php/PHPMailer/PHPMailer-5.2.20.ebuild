@@ -11,15 +11,11 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +examples test"
+IUSE="doc +examples"
 
 RDEPEND="dev-lang/php:*"
 DEPEND="${RDEPEND}
-	doc? ( dev-php/phpDocumentor )
-	test? ( ${RDEPEND} dev-php/phpunit )"
-
-# The test suite requires network access.
-RESTRICT=test
+	doc? ( dev-php/phpDocumentor )"
 
 src_compile(){
 	if use doc; then
@@ -35,21 +31,13 @@ src_compile(){
 }
 
 src_install(){
+	# To help out the Composer kids, most of the documentation and
+	# tests are missing from the release tarballs.
 	insinto "/usr/share/php/${PN}"
 	doins -r *.php language extras
 
-	# Fixed in the next version, I hope.
-	# https://github.com/PHPMailer/PHPMailer/issues/919
-	#dodoc README.md SECURITY.md changelog.md
-	#dodoc docs/*
 	use examples && dodoc -r examples
-
 	use doc && dodoc -r html/*
-}
-
-src_test(){
-	cd test/ || die
-	phpunit . || die "test suite failed"
 }
 
 pkg_postinst(){
