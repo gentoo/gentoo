@@ -172,6 +172,10 @@ PATCHES=(
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
+			# bugs: #601654
+			die "At least clang 3.9.1 is required"
+		fi
 		if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
 			die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
 		fi

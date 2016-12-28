@@ -168,6 +168,10 @@ PATCHES=(
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
+		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
+			# bugs: #601654
+			die "At least clang 3.9.1 is required"
+		fi
 		if tc-is-gcc && ! version_is_at_least 5 "$(gcc-major-version)"; then
 			# bugs: #535730, #525374, #518668, #600288
 			die "At least gcc 5 is required"
