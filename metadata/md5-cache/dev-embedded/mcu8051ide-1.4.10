@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-embedded/sdcc-2.5[mcs51] >=app-doc/doxygen-1.7 >=dev-util/indent-2.2 >=app-text/hunspell-1.3 >=dev-tcltk/bwidget-1.8 >dev-tcltk/itcl-3.3 >=dev-lang/tcl-8.5.9:* >=dev-tcltk/tdom-0.8 >=dev-tcltk/tcllib-1.11 >=dev-lang/tk-8.5.9:* >=dev-tcltk/tkimg-1.4 >=dev-tcltk/tclx-8.4 sys-devel/make >=dev-util/cmake-3.2.2
+DESCRIPTION=Graphical IDE for microcontrollers based on 8051.
+EAPI=6
+HOMEPAGE=http://www.moravia-microsystems.com/mcu-8051-ide/
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=>=dev-embedded/sdcc-2.5[mcs51] >=app-doc/doxygen-1.7 >=dev-util/indent-2.2 >=app-text/hunspell-1.3 >=dev-tcltk/bwidget-1.8 >dev-tcltk/itcl-3.3 >=dev-lang/tcl-8.5.9:* >=dev-tcltk/tdom-0.8 >=dev-tcltk/tcllib-1.11 >=dev-lang/tk-8.5.9:* >=dev-tcltk/tkimg-1.4 >=dev-tcltk/tclx-8.4
+SLOT=0
+SRC_URI=http://www.moravia-microsystems.com/download/mcu8051ide/mcu8051ide/1.4.10/mcu8051ide-1.4.10.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e40184297fde4a47cd64dc35e2e7fd7e
