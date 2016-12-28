@@ -17152,7 +17152,7 @@ sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1: Command shell for managing Linux LIO kernel target
 sys-block/tgt 1.0.67 1.0.68 1.0.69: Linux SCSI target framework (tgt)
-sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1: A suite of tools for thin provisioning on Linux
+sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1 0.6.3: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 21: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
