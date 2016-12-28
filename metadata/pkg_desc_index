@@ -15019,7 +15019,7 @@ net-misc/jlj 2.12: A simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jumpgate 0.7: An advanced TCP connection forwarder
 net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1: A high-throughput distributed messaging system
+net-misc/kafka-bin 0.10.0.1 0.10.1.0 0.10.1.0-r1 0.10.1.1: A high-throughput distributed messaging system
 net-misc/kea 1.1.0: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.2 2.8.3: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.7.7 0.8.0_pre20161211: Plasma Network Monitor
