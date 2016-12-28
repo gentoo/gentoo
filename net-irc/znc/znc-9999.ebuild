@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_4,3_5} )
 PLOCALES="ru"
-CMAKE_MAKEFILE_GENERATOR=ninja
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 
 inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
 
