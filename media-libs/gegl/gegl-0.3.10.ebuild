@@ -53,7 +53,7 @@ RDEPEND="
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr:= )
 	media-libs/libpng:0=
-	raw? ( >=media-libs/libraw-0.15.4 )
+	raw? ( >=media-libs/libraw-0.15.4:0= )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
 	tiff? ( >=media-libs/tiff-4:0 )

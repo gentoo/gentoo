@@ -1,0 +1,12 @@
+diff -ruN File-DirWalk-0.5.orig/t/2.t File-DirWalk-0.5/t/2.t
+--- File-DirWalk-0.5.orig/t/2.t	2013-03-10 18:13:51.000000000 +0100
++++ File-DirWalk-0.5/t/2.t	2016-12-28 12:42:38.523599947 +0100
+@@ -9,7 +9,7 @@
+ ok(-e "t/");
+ ok(-d "t/");
+ 
+-foreach my $f qw(1.t 2.t 3.t 4.t) {
++foreach my $f (qw(1.t 2.t 3.t 4.t)) {
+ 	$dw = new File::DirWalk();
+ 	$dw->setDepth(1);
+ 
