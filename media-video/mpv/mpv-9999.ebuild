@@ -113,18 +113,21 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	zsh-completion? ( dev-lang/perl )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 	tools? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
+	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
+)
 
 mpv_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && use vaapi && use egl && ! tc-has-tls; then
@@ -193,6 +196,7 @@ src_configure() {
 		--disable-sdl1
 		$(use_enable oss oss-audio)
 		--disable-rsound		# Only available in overlays.
+		--disable-sndio			# Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
@@ -233,8 +237,8 @@ src_configure() {
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable vaapi vaapi-hwaccel)
-		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
-		--disable-cuda			# No support in ffmpeg. See Gentoo bug 595450.
+		$(use_enable vdpau vdpau-hwaccel)
+		--disable-cuda-hwaccel	# No support in ffmpeg. See Gentoo bug 595450.
 
 		# TV features:
 		$(use_enable v4l tv)

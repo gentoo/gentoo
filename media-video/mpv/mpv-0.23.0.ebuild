@@ -9,14 +9,14 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.8.12
 
-inherit gnome2-utils pax-utils python-any-r1 toolchain-funcs versionator waf-utils xdg-utils
+inherit gnome2-utils pax-utils python-r1 toolchain-funcs versionator waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI=( {https,git}://github.com/mpv-player/mpv.git )
@@ -28,21 +28,20 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
-	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv +lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
-	selinux test +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
-	+xscreensaver +xv zsh-completion"
+IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl encode
+	gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua luajit openal
+	+opengl oss pulseaudio raspberry-pi rubberband samba -sdl selinux test
+	tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
+	+xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
 	egl? ( || ( gbm X wayland ) )
-	enca? ( iconv )
 	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
-	libguess? ( iconv )
 	luajit? ( lua )
+	tools? ( cli )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
@@ -55,8 +54,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( >=media-video/ffmpeg-2.4:0=[encode?,threads,vaapi?,vdpau?] )
-	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
+	!libav? ( >=media-video/ffmpeg-3.2.2:=[encode?,threads,vaapi?,vdpau?] )
+	libav? ( >=media-video/libav-12:=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
@@ -71,8 +70,6 @@ COMMON_DEPEND="
 	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
 		virtual/libiconv
-		enca? ( app-i18n/enca )
-		libguess? ( >=app-i18n/libguess-1.0 )
 		uchardet? ( dev-libs/uchardet )
 	)
 	jack? ( virtual/jack )
@@ -116,17 +113,21 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	zsh-completion? ( dev-lang/perl )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
+	tools? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.19.0-make-ffmpeg-version-check-non-fatal.patch"
+	"${FILESDIR}/${PN}-0.23.0-make-libavdevice-check-accept-libav.patch"
+)
 
 mpv_check_compiler() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && use vaapi && use egl && ! tc-has-tls; then
@@ -140,7 +141,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	mpv_check_compiler
-	python-any-r1_pkg_setup
+	[[ ${MERGE_TYPE} != "binary" ]] && python_setup
 }
 
 src_prepare() {
@@ -181,8 +182,6 @@ src_configure() {
 		$(use_enable dvd dvdread)
 		$(use_enable dvd dvdnav)
 		$(use_enable cdda)
-		$(use_enable enca)
-		$(use_enable libguess)
 		$(use_enable uchardet)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
@@ -197,6 +196,7 @@ src_configure() {
 		--disable-sdl1
 		$(use_enable oss oss-audio)
 		--disable-rsound		# Only available in overlays.
+		--disable-sndio			# Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
@@ -237,8 +237,8 @@ src_configure() {
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable vaapi vaapi-hwaccel)
-		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
-		--disable-cuda			# No support in ffmpeg. See Gentoo bug 595450.
+		$(use_enable vdpau vdpau-hwaccel)
+		--disable-cuda-hwaccel	# No support in ffmpeg. See Gentoo bug 595450.
 
 		# TV features:
 		$(use_enable v4l tv)
@@ -278,6 +278,12 @@ src_install() {
 
 	if use cli && use luajit; then
 		pax-mark -m "${ED}"usr/bin/${PN}
+	fi
+
+	if use tools; then
+		dobin TOOLS/{mpv_identify.sh,umpv}
+		newbin TOOLS/idet.sh mpv_idet.sh
+		python_replicate_script "${ED}"usr/bin/umpv
 	fi
 }
 

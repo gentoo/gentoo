@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit git-r3 eutils cmake-utils
+inherit git-r3 eutils cmake-utils fcaps
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
@@ -22,6 +22,7 @@ RDEPEND="=dev-libs/wlc-9999[systemd=]
 		dev-libs/libinput
 		x11-libs/libxkbcommon
 		dev-libs/wayland
+		sys-libs/libcap
 		x11-libs/pango
 		x11-libs/cairo
 		swaylock? ( virtual/pam )
@@ -35,7 +36,7 @@ src_prepare() {
 	default
 
 	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/FLAGS.*-Werror/d' -e '/FLAGS.*-g/d' CMakeLists.txt || die
+	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -63,7 +64,10 @@ src_install() {
 	use !systemd && fperms u+s /usr/bin/sway
 }
 
+FILECAPS=( cap_sys_ptrace usr/bin/sway )
+
 pkg_postinst() {
+	fcaps_pkg_postinst
 	if use swaygrab
 	then
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]

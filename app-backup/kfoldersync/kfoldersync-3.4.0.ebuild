@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Folder synchronization and backup tool based on KDE Frameworks"
 HOMEPAGE="https://www.linux-apps.com/p/1127677/"
-SRC_URI="https://dl.opendesktop.org/api/files/download/id/1480515062/${P}.tar.xz"
+SRC_URI="https://dl.opendesktop.org/api/files/download/id/1482526406/${P}.tar.xz"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~x86"
