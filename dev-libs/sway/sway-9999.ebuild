@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 		app-text/asciidoc"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# remove bad CFLAGS that upstream is trying to add
 	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
@@ -53,6 +53,7 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
+		-DLD_LIBRARY_PATH="${EPREFIX}/usr/lib"
 	)
 
 	cmake-utils_src_configure
