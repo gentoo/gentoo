@@ -10,7 +10,7 @@ DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for 
 HOMEPAGE="https://fedorahosted.org/elfutils/"
 SRC_URI="https://fedorahosted.org/releases/e/l/${PN}/${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-2-with-exceptions"
+LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="bzip2 lzma nls static-libs test +threads +utils"
