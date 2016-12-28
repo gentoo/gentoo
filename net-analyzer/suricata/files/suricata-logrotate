@@ -1,0 +1,6 @@
+/var/log/suricata/* {
+	missingok
+	postrotate
+		/etc/init.d/suricata reload
+	endscript
+}
