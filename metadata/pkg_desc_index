@@ -18740,7 +18740,7 @@ x11-misc/x11vnc 0.9.13_p20150111 0.9.14_p20161013: A VNC server for real X displ
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.5-r1 3.6: Very fast real-time fractal zoomer
-x11-misc/xautolock 2.2_p5: An automatic X screen-locker/screen-saver
+x11-misc/xautolock 2.2_p5 2.2_p5_p1: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.05 1.06 1.09: Control X from command line and find things on screen
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.3 1.4.4 1.4.5 1.4.8: Advanced Power Management battery status display for X
