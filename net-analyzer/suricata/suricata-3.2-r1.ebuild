@@ -156,5 +156,7 @@ pkg_postinst() {
 	if use debug; then
 		elog "You enabled the debug USE flag. Please read this link to report bugs upstream:"
 		elog "https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Reporting_Bugs"
+		elog "You need to also ensure the FEATURES variable in make.conf contains the"
+		elog "'nostrip' option to produce useful core dumps or back traces."
 	fi
 }
