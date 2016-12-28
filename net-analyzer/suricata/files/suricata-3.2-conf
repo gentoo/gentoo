@@ -41,11 +41,6 @@ SURICATA_OPTS="-i eth0"
 
 # Log paths listed here will be created by the init script and will override the log path
 # set in the yaml file, if present.
-# SURICATA_LOG_PATH_q0="/var/log/suricata/q0"
-# SURICATA_LOG_PATH_q1="/var/log/suricata/q1"
-# SURICATA_LOG_PATH="/var/log/suricata"
-# SURICATA_LOG_FILE="suricata.log"
-
-# You can view all the available options you can set with --set
-# and check the full config settings in an easily parsable format.
-# SURICATA_DUMP=1
+# SURICATA_LOG_FILE_q0="/var/log/suricata/q0/suricata.log"
+# SURICATA_LOG_FILE_q1="/var/log/suricata/q1/suricata.log"
+# SURICATA_LOG_FILE="/var/log/suricata/suricata.log"

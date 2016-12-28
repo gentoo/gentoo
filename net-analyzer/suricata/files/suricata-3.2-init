@@ -12,18 +12,23 @@ if [ -n "${SURICATA}" ] && [ ${SVCNAME} != "suricata" ]; then
     [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata-${SURICATA}.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
     SURICATAPID="/var/run/suricata/suricata.${SURICATA}.pid"
     eval SURICATAOPTS=\$SURICATA_OPTS_${SURICATAID}
-    eval SURICATALOGPATH=\$SURICATA_LOG_PATH_${SURICATAID}
+    eval SURICATALOGPATH=\$SURICATA_LOG_FILE_${SURICATAID}
 else
     SURICATACONF=${SURICATA_CONF}
     [ ${#SURICATACONF} -eq 0 ] && SURICATACONF="${SURICATA_DIR}/suricata.yaml" || SURICATACONF="${SURICATA_DIR}/${SURICATACONF}"
     SURICATAPID="/var/run/suricata/suricata.pid"
     SURICATAOPTS=${SURICATA_OPTS}
-    SURICATALOGPATH=${SURICATA_LOG_PATH}
+    SURICATALOGPATH=${SURICATA_LOG_FILE}
 fi
 [ -e ${SURICATACONF} ] && SURICATAOPTS="${SURICATAOPTS} -c ${SURICATACONF}"
 
-extra_commands="checkconfig"
+description="Suricata IDS/IPS"
+extra_commands="checkconfig dump"
+description_checkconfig="Check config for ${SVCNAME}"
+description_dump="List all config values that can be used with --set"
 extra_started_commands="reload relog"
+description_reload="Live rule and config reload"
+description_relog="Close and re-open all log files"
 
 depend() {
 	need net
@@ -41,10 +46,12 @@ checkconfig() {
 		checkpath -d /var/run/suricata
 	fi
 	if [ ${#SURICATALOGPATH} -gt 0 ]; then
+		SURICATALOGFILE=$( basename ${SURICATA_LOG_FILE} )
+		SURICATALOGFILE=${SURICATALOGFILE:-suricata.log}
+		SURICATALOGPATH=$( dirname ${SURICATALOGPATH} )
 		if [ ! -d "${SURICATALOGPATH}" ] ; then
 			checkpath -d "${SURICATALOGPATH}"
 		fi
-		SURICATALOGFILE=${SURICATA_LOG_FILE:-suricata.log}
 		SURICATAOPTS="${SURICATAOPTS} --set logging.outputs.1.file.filename=${SURICATALOGPATH}/${SURICATALOGFILE}"
 		SURICATALOGPATH="-l ${SURICATALOGPATH}"
 	fi
@@ -77,12 +84,6 @@ checkpidinfo() {
 
 start() {
 	checkconfig || return 1
-	if [ $((SURICATA_DUMP)) -eq 1 ]; then
-	    einfo "Dumping ${SVCNAME} config values and quitting."
-	    ${SURICATA_BIN} --dump-config --pidfile ${SURICATAPID} ${SURICATAOPTS} ${SURICATALOGPATH}
-	    einfo "You need to disable SURICATA_DUMP to start ${SVCNAME}."
-	    return 1
-	fi
 	ebegin "Starting ${SVCNAME}"
 	start-stop-daemon --start --quiet --exec ${SURICATA_BIN} \
 		-- --pidfile ${SURICATAPID} -D ${SURICATAOPTS} ${SURICATALOGPATH} >/dev/null 2>&1
@@ -143,5 +144,12 @@ relog() {
 	checkconfig || return 1
 	ebegin "Sending HUP signal to ${SVCNAME} to close and re-open all log files."
 	start-stop-daemon --signal HUP --pidfile ${SURICATAPID}
+	eend $?
+}
+
+dump() {
+	checkconfig || return 1
+	ebegin "Dumping ${SVCNAME} config values and quitting."
+	${SURICATA_BIN} --dump-config --pidfile ${SURICATAPID} ${SURICATAOPTS} ${SURICATALOGPATH}
 	eend $?
 }
