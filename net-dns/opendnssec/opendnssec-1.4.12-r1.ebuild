@@ -154,12 +154,10 @@ src_install() {
 	# install update scripts
 	insinto /usr/share/opendnssec
 	if use sqlite; then
-		doins enforcer/utils/migrate_keyshare_sqlite3.pl
-		doins enforcer/utils/migrate_adapters_1.sqlite3
+		doins enforcer/utils/migrate_*sqlite*
 	fi
 	if use mysql; then
-		doins enforcer/utils/migrate_keyshare_mysql.pl
-		doins enforcer/utils/migrate_adapters_1.mysql
+		doins enforcer/utils/migrate_*mysql*
 	fi
 
 	# fix permissions
