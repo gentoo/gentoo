@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (29 Dec 2016)
+# elogind support is not yet fully implemented in all required packages
+elogind
+
 # cilk has been ported only to x86 systems
 cilk
 
