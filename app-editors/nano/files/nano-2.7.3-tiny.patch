@@ -1,0 +1,29 @@
+From fc89ac11d25a5d052a63c01006c1fd767d9f5879 Mon Sep 17 00:00:00 2001
+From: Felix Janda <felix.janda@posteo.de>
+Date: Thu, 29 Dec 2016 13:43:06 -0500
+Subject: [PATCH] speller: fix build when tiny build is enabled
+
+URL: https://bugs.gentoo.org/604000
+---
+ src/text.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/text.c b/src/text.c
+index bd1737687e65..a8b34f2f6bba 100644
+--- a/src/text.c
++++ b/src/text.c
+@@ -3079,9 +3079,11 @@ const char *do_alt_speller(char *tempfile_name)
+     stat(tempfile_name, &spellfileinfo);
+     if (spellfileinfo.st_mtime != timestamp) {
+ 	set_modified();
++#ifndef NANO_TINY
+ 	/* Flush the undo stack, to avoid making a mess when the user
+ 	 * tries to undo things in spell-corrected lines. */
+ 	discard_until(NULL, openfile);
++#endif
+     }
+ #ifndef NANO_TINY
+     /* Unblock SIGWINCHes again. */
+-- 
+2.11.0
+
