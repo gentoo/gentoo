@@ -7132,8 +7132,8 @@ dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4 1.4.5 1.4.6 1.4.7 1.4.8: Abstra
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astroplan 0.2: Observation planning package for astronomers
-dev-python/astropy 1.1.2 1.2.1: Core functionality for performing astrophysics with Python
-dev-python/astropy-helpers 1.1.2 1.2: Helpers for Astropy and Affiliated packages
+dev-python/astropy 1.2.1 1.3: Core functionality for performing astrophysics with Python
+dev-python/astropy-helpers 1.2 1.3: Helpers for Astropy and Affiliated packages
 dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astronomical resources
 dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
@@ -7536,7 +7536,7 @@ dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 1.0.3-r1 2.0.5-r1 2.1.1 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle.
-dev-python/gwcs 0.7_rc2: Python for managing the World Coordinate System
+dev-python/gwcs 0.7: Python for managing the World Coordinate System
 dev-python/h5py 2.3.1 2.4.0 2.5.0 2.6.0: Simple Python interface to HDF5 files
 dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
 dev-python/hachoir-parser 1.3.4-r1: Package of Hachoir parsers used to open binary files
@@ -7545,7 +7545,7 @@ dev-python/hacking 0.8.1 0.9.2 0.9.5 0.9.6 0.10.1 0.10.2: A client for the OpenS
 dev-python/happydoc 3.1-r2: Tool for extracting documentation from Python source code
 dev-python/hcluster 0.2.0-r1: Python hierarchical clustering package for Scipy
 dev-python/hcs-utils 1.4 1.5: A library containing some useful snippets
-dev-python/healpy 1.9.1 1.10.1: Python wrapper for healpix
+dev-python/healpy 1.9.1 1.10.1 1.10.2: Python wrapper for healpix
 dev-python/hgdistver 0.22 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hgtools 6.0 6.5.1: Classes and setuptools plugin for Mercurial repositories
@@ -15662,7 +15662,7 @@ sci-astronomy/cdsclient 3.8.1: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
-sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astronomy
+sci-astronomy/erfa 1.2.0 1.3.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/esomidas 15.09: European Southern Observatory Munich Image Data Analysis System
 sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/fitspng 0.3.5: FITS to PNG converter
@@ -15682,7 +15682,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
-sci-astronomy/sofa_c 20150209a: Library for algorithms for models in fundamental astronomy
+sci-astronomy/sofa_c 20150209a 20160503c: Library for algorithms for models in fundamental astronomy
 sci-astronomy/stellarium 0.12.4 0.14.2 0.14.3 0.15.0 0.15.0-r1: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs

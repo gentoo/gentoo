@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Library for algorithms for models in fundamental astronomy
+EAPI=6
+HOMEPAGE=http://www.iausofa.org/current_C.html
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=SOFA
+SLOT=0
+SRC_URI=http://www.iausofa.org/2016_0503_C/sofa_c-20160503_c.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=22ef88623bbf8024ad572a6760b4cbd5
