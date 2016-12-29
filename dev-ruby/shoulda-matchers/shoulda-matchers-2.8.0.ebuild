@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/thoughtbot/shoulda-matchers"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activesupport-3.0.0"
