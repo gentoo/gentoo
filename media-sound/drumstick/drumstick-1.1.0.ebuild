@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc fluidsynth pulseaudio"
 
+RESTRICT="test"
+
 RDEPEND="
 	>=dev-qt/qtcore-5.7:5
 	>=dev-qt/qtdbus-5.7:5
@@ -55,6 +57,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=OFF
 		$(cmake-utils_use_find_package doc Doxygen)
 	)
 
