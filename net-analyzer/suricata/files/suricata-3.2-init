@@ -26,7 +26,7 @@ else
 fi
 SURICATAUSER=${SURICATAUSER:-${SURICATA_USER}}
 SURICATAGROUP=${SURICATAGROUP:-${SURICATA_GROUP}}
-[ -e ${SURICATACONF} ] && SURICATAOPTS="${SURICATAOPTS} -c ${SURICATACONF}"
+[ -e ${SURICATACONF} ] && SURICATAOPTS="-c ${SURICATACONF} ${SURICATAOPTS}"
 
 description="Suricata IDS/IPS"
 extra_commands="checkconfig dump"
@@ -47,7 +47,7 @@ checkconfig() {
 		checkpath -d /var/run/suricata
 	fi
 	if [ ${#SURICATALOGPATH} -gt 0 ]; then
-		SURICATALOGFILE=$( basename ${SURICATA_LOG_FILE} )
+		SURICATALOGFILE=$( basename ${SURICATALOGPATH} )
 		SURICATALOGFILE=${SURICATALOGFILE:-suricata.log}
 		SURICATALOGPATH=$( dirname ${SURICATALOGPATH} )
 		if [ ! -d "${SURICATALOGPATH}" ] ; then
