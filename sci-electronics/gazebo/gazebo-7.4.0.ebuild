@@ -24,7 +24,8 @@ RDEPEND="
 	dev-libs/tinyxml2
 	dev-libs/libtar
 	dev-cpp/tbb
-	>=dev-games/ogre-1.7.4
+	>=dev-games/ogre-1.7.4[freeimage]
+	>=media-libs/freeimage-3.15.4[png]
 	sci-libs/libccd
 	libav? ( >=media-video/libav-9:0= )
 	!libav? ( >=media-video/ffmpeg-2.6:0= )
