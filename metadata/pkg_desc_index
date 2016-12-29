@@ -3187,7 +3187,7 @@ dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.3.1 2016.4.3 2016.4.4 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.17.2 0.18.0: A general purpose tile map editor
-dev-games/vamos 0.7.1: an automotive simulation framework
+dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
@@ -11097,7 +11097,7 @@ games-puzzle/xlogical 1.0.7: SDL logical clone
 games-puzzle/xpired 1.22: A Sokoban-styled puzzle game with lots more action
 games-puzzle/xtris 1.15: a networked Tetris-like game
 games-puzzle/xwelltris 1.0.1: 2.5D tetris like game
-games-puzzle/xye 0.12.1: Free version of the classic game Kye
+games-puzzle/xye 0.12.1 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
