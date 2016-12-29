@@ -17,7 +17,7 @@ SRC_URI="https://launchpad.net/${PN}/gtk3/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome-keyring gpg nautilus"
 
 DEPEND=">=dev-vcs/bzr-1.6_rc1[${PYTHON_USEDEP}]
