@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit toolchain-funcs eutils flag-o-matic autotools-utils
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
-SRC_URI="https://gperftools.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://github.com/gperftools/gperftools/archive/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
