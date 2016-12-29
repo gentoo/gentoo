@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=>=dev-libs/glib-2.32 mbim? ( >=net-libs/libmbim-1.14.0 ) doc? ( dev-util/gtk-doc ) virtual/pkgconfig dev-util/gtk-doc >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/glib-2.36 mbim? ( >=net-libs/libmbim-1.14.0 ) doc? ( dev-util/gtk-doc ) virtual/pkgconfig dev-util/gtk-doc >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 EAPI=6
 HOMEPAGE=https://cgit.freedesktop.org/libqmi/
 IUSE=doc +mbim static-libs
 LICENSE=LGPL-2
-RDEPEND=>=dev-libs/glib-2.32 mbim? ( >=net-libs/libmbim-1.14.0 )
-SLOT=0
+RDEPEND=>=dev-libs/glib-2.36 mbim? ( >=net-libs/libmbim-1.14.0 )
+SLOT=0/5.1
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=8a911c802dfe3a987e6a13ce403148e7
+_md5_=67fb78ad206598a5492c55bad990ce69
