@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="CUPS C API Interface"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="net-print/cups"
