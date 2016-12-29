@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -22,7 +22,7 @@ if [[ ${PV} == *9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
 else
-	SRC_URI="http://www.cups.org/software/${MY_PV}/${MY_P}-source.tar.bz2"
+	SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
@@ -86,15 +86,12 @@ REQUIRED_USE="
 # upstream includes an interactive test which is a nono for gentoo
 RESTRICT="test"
 
-S="${WORKDIR}/${MY_P}"
-
 # systemd-socket.patch from Fedora
 PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
+	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
-	"${FILESDIR}/${PN}-2.1.2-systemd-socket.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 	"${FILESDIR}/${PN}-2.0.3-cross-compile.patch"
 )
@@ -148,9 +145,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
-
-	epatch_user
+	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
 	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
@@ -260,7 +255,7 @@ multilib_src_install_all() {
 	use zeroconf && neededservices+=" avahi-daemon"
 	use dbus && neededservices+=" dbus"
 	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
-	cp "${FILESDIR}"/cupsd.init.d-r1 "${T}"/cupsd || die
+	cp "${FILESDIR}"/cupsd.init.d-r2 "${T}"/cupsd || die
 	sed -i \
 		-e "s/@neededservices@/$neededservices/" \
 		"${T}"/cupsd || die
@@ -288,7 +283,7 @@ multilib_src_install_all() {
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
 		/var/log/cups /var/spool/cups/tmp
 
-	keepdir /etc/cups/{ppd,ssl}
+	keepdir /etc/cups/{interfaces,ppd,ssl}
 
 	use X || rm -r "${ED}"/usr/share/applications
 
