@@ -1,0 +1,75 @@
+From 2d86293939bafd80bc320849ffcc7544350fc2bf Mon Sep 17 00:00:00 2001
+From: Dag Andersen <danders@get2net.dk>
+Date: Fri, 9 Dec 2016 11:19:36 +0100
+Subject: Words: Fix crash when adding connected text frame
+
+Summary:
+KWFrameConnectSelector crashes you activate existsingRadio button but do not select a frameset.
+This patch selects a frameset if none is selected.
+
+Reviewers: boemann
+
+Reviewed By: boemann
+
+Tags: #kexi, #calligra:_3.0
+
+Differential Revision: https://phabricator.kde.org/D3632
+---
+ words/part/dialogs/KWFrameConnectSelector.cpp | 14 ++++++++++++++
+ words/part/dialogs/KWFrameConnectSelector.h   |  1 +
+ 2 files changed, 15 insertions(+)
+
+diff --git a/words/part/dialogs/KWFrameConnectSelector.cpp b/words/part/dialogs/KWFrameConnectSelector.cpp
+index 566dfe2..590d3b7 100644
+--- a/words/part/dialogs/KWFrameConnectSelector.cpp
++++ b/words/part/dialogs/KWFrameConnectSelector.cpp
+@@ -21,6 +21,7 @@
+ #include "KWDocument.h"
+ #include "frames/KWTextFrameSet.h"
+ #include "Words.h"
++#include "WordsDebug.h"
+ 
+ KWFrameConnectSelector::KWFrameConnectSelector(FrameConfigSharedState *state)
+         : m_state(state),
+@@ -30,6 +31,8 @@ KWFrameConnectSelector::KWFrameConnectSelector(FrameConfigSharedState *state)
+ 
+     connect(widget.framesList, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
+             this, SLOT(frameSetSelected()));
++    connect(widget.existingRadio, SIGNAL(clicked(bool)),
++            this, SLOT(existingRadioClicked(bool)));
+     connect(widget.frameSetName, SIGNAL(textChanged(QString)),
+             this, SLOT(nameChanged(QString)));
+ }
+@@ -50,6 +53,17 @@ bool KWFrameConnectSelector::canOpen(KoShape *shape)
+     return true;
+ }
+ 
++void KWFrameConnectSelector::existingRadioClicked(bool on)
++{
++    // make sure there is a selcted frameset
++    if (on && !widget.framesList->currentItem() && widget.framesList->model()->rowCount() > 0) {
++        QModelIndex curr = widget.framesList->model()->index(0, 0);
++        widget.framesList->setCurrentIndex(curr);
++        widget.framesList->selectionModel()->select(curr, QItemSelectionModel::Select);
++    }
++    debugWords<<Q_FUNC_INFO<<on<<widget.framesList->currentItem();
++}
++
+ void KWFrameConnectSelector::frameSetSelected()
+ {
+     widget.existingRadio->setChecked(true);
+diff --git a/words/part/dialogs/KWFrameConnectSelector.h b/words/part/dialogs/KWFrameConnectSelector.h
+index 74d3f0d..75ec1613 100644
+--- a/words/part/dialogs/KWFrameConnectSelector.h
++++ b/words/part/dialogs/KWFrameConnectSelector.h
+@@ -50,6 +50,7 @@ public:
+     }
+ 
+ private Q_SLOTS:
++    void existingRadioClicked(bool on);
+     void frameSetSelected();
+     void nameChanged(const QString &text);
+ 
+-- 
+cgit v0.11.2
+
