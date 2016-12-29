@@ -29,6 +29,7 @@ src_prepare() {
 src_install() {
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS README NEWS
+	find "${ED}" -name '*.la' -delete || die
 }
 
 src_test() {
