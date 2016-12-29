@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ftrvxmtrx/split2flac/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="MIT"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="enca flake imagemagick mac mp3 mp4 ogg replaygain wavpack"
 
 RDEPEND="

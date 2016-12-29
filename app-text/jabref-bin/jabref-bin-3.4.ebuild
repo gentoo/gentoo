@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/jabref/JabRef-${MY_PV}.jar"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	app-arch/unzip

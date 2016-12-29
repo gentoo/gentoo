@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/ald/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="debug ncurses"
 
 DEPEND="ncurses? ( sys-libs/ncurses:= )"
