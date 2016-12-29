@@ -8,7 +8,7 @@ inherit user golang-build golang-vcs-snapshot
 EGO_PN="code.gitea.io/gitea/..."
 EGIT_COMMIT="6aacf4d2f09631359b99df562b4bf31dcef44ea3"
 ARCHIVE_URI="https://github.com/go-gitea/gitea/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 DESCRIPTION="A painless self-hosted Git service, written in Go"
 HOMEPAGE="https://github.com/go-gitea/gitea"
