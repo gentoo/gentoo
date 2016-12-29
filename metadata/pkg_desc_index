@@ -135,7 +135,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.9.1-r1 3.9.2 3.9.2-r2 3.10.0 3.11.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 2.3.4 2.4.0-r3 5.0.0-r2 5.0.1 5.0.1-r1 5.1.1: Tool for managing events and logs
+app-admin/logstash-bin 2.3.4 2.4.0-r3 5.0.0-r2 5.0.1 5.0.1-r1 5.1.1-r1: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
@@ -10050,7 +10050,7 @@ dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
-dev-util/distro-info-data 0.29: Information about the Debian distributions' releases (data files)
+dev-util/distro-info-data 0.29 0.32: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
