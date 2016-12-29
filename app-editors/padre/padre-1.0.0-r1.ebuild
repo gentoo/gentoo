@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MY_PN=Padre
-MODULE_AUTHOR=PLAVEN
-MODULE_VERSION=0.98
+DIST_NAME=Padre
+DIST_AUTHOR=PLAVEN
+DIST_VERSION=1.00
 inherit perl-module
 
 DESCRIPTION="Perl Application Development and Refactoring Environment"
@@ -26,10 +26,8 @@ TDEPEND="
 	>=dev-perl/Test-Warn-0.240.0
 "
 
-# Depend on perl-5.10.1 but it only needs
-# a modern EU::MM
-#	>=virtual/perl-Pod-Perldoc-3.15
 RDEPEND="
+	dev-lang/perl[ithreads]
 	>=dev-lang/perl-5.10.1
 	>=dev-perl/Algorithm-Diff-1.190.0
 	>=dev-perl/Capture-Tiny-0.06
@@ -99,7 +97,11 @@ DEPEND="${RDEPEND}"
 #	)
 #"
 
-#SRC_TEST=do
+DIST_TEST=skip
+
+PATCHES=(
+	"${FILESDIR}/${P}-DBD-Sqlite.patch"
+)
 
 src_configure() {
 	unset DISPLAY
