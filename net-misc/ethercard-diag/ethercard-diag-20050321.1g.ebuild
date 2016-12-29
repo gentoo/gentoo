@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI="6"
+
 inherit toolchain-funcs
 
 DESCRIPTION="low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)"
@@ -17,11 +19,11 @@ DEPEND="!sys-apps/nictools"
 
 src_compile() {
 	tc-export CC AR
-	emake || die
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	default
 	dodir /sbin
-	mv "${D}"/usr/sbin/{mii-diag,ether-wake} "${D}"/sbin/ || die
+	mv "${ED%/}"/usr/sbin/{mii-diag,ether-wake} "${ED%/}"/sbin/ || die
 }
