@@ -69,7 +69,8 @@ src_configure() {
 		-DDISABLE_V4L2="$(usex !v4l)"
 		-DLIBOBS_PREFER_IMAGEMAGICK="$(usex imagemagick)"
 		-DOBS_MULTIARCH_SUFFIX="${libdir#lib}"
-		-DUNIX_STRUCTURE=1
+		-DOBS_VERSION_OVERRIDE="${PV}"
+		-DUNIX_STRUCTURE="1"
 	)
 
 	cmake-utils_src_configure
