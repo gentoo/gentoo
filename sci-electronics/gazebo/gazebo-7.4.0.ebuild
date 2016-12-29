@@ -8,7 +8,7 @@ inherit cmake-utils versionator vcs-snapshot flag-o-matic
 
 DESCRIPTION="A 3D multiple robot simulator with dynamics"
 HOMEPAGE="http://gazebosim.org/"
-SRC_URI="http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${P}.tar.bz2"
+SRC_URI="https://osrf-distributions.s3.amazonaws.com/gazebo/releases/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -24,7 +24,8 @@ RDEPEND="
 	dev-libs/tinyxml2
 	dev-libs/libtar
 	dev-cpp/tbb
-	>=dev-games/ogre-1.7.4
+	>=dev-games/ogre-1.7.4[freeimage]
+	>=media-libs/freeimage-3.15.4[png]
 	sci-libs/libccd
 	libav? ( >=media-video/libav-9:0= )
 	!libav? ( >=media-video/ffmpeg-2.6:0= )
@@ -49,6 +50,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/qttest:4
 	app-text/ronn
+	app-arch/gzip
 	virtual/pkgconfig
 	x11-apps/mesa-progs
 	test? ( dev-libs/libxslt )

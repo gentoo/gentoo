@@ -1,0 +1,15 @@
+Fix missing implicit include.
+Patch by Jan-Matthias Braun
+See also: https://bugs.gentoo.org/show_bug.cgi?id=598340
+
+--- a/src/mongo/client/examples/connect.cpp
++++ b/src/mongo/client/examples/connect.cpp
+@@ -29,6 +29,8 @@
+ #include "mongo/client/dbclient.h"
+ #include "mongo/stdx/functional.h"
+ 
++#include <boost/core/ref.hpp>
++
+ namespace {
+ 
+ class OstreamAppender : public mongo::logger::MessageLogDomain::EventAppender {
