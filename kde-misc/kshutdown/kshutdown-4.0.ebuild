@@ -14,7 +14,7 @@ HOMEPAGE="http://kshutdown.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+kde"
 
 RDEPEND="
