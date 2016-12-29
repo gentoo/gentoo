@@ -13,7 +13,7 @@ DESCRIPTION="KControl module for Wacom tablets"
 HOMEPAGE="http://kde-apps.org/content/show.php?action=content&content=114856"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 MY_PV=${PV/_/\~}
