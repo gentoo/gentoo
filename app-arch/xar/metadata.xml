@@ -14,6 +14,6 @@
     content's rich meta-data.
   </longdescription>
   <upstream>
-    <remote-id type="google-code">xar</remote-id>
+    <remote-id type="github">mackyle/xar</remote-id>
   </upstream>
 </pkgmetadata>
