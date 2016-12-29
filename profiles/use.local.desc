@@ -4400,6 +4400,8 @@ media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED*
 media-sound/lilypond:guile2 - Enable experimental support for Guile 2
 media-sound/linuxsampler:lv2 - Add support for Ladspa V2
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
+media-sound/lmms:libgig - Enables GIG player plugin.
+media-sound/lmms:soundio - Enalbes libsoundio support.
 media-sound/lmms:stk - Enables STK Mallet plugin.
 media-sound/lmms:vst - Enables the VeSTige plugin to run VST plugins through Wine.
 media-sound/lyvi:mpris - Enable MPRIS support

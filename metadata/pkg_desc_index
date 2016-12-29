@@ -4983,7 +4983,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/safestr 1.0.3: provide a standards compatible yet secure string implementation
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 4.1.1-r1 4.2.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 4.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -13550,7 +13550,7 @@ media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
-media-sound/lmms 1.0.2 1.0.3 1.1.3: Free alternative to popular programs such as Fruityloops, Cubase and Logic
+media-sound/lmms 1.0.2 1.0.3 1.1.3 1.1.90 9999: Cross-platform music production software
 media-sound/lxmusic 0.4.5 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 3.99.4.5.7-r1: Monkey's Audio Codecs
@@ -15348,7 +15348,7 @@ net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
-net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1: An encrypted network without censorship
+net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.2: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
@@ -18467,7 +18467,7 @@ x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send &
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
 x11-libs/libva 1.6.2 1.7.0 1.7.1 1.7.2 1.7.3 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 1.7.2 1.7.3 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 0.7.4-r4 9999: VDPAU Backend for Video Acceleration (VA) API
+x11-libs/libva-vdpau-driver 0.7.4-r4 9999: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.14.0 3.14.1 3.20.0 3.20.1: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12 1.12-r2: X C-language Bindings library
