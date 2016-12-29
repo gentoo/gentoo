@@ -11,4 +11,7 @@
     ERFA. Where possible the API is similar to the C SLA API except
     for the use of a "pal" prefix.
   </longdescription>
+  <upstream>
+    <remote-id type="github">Starlink/pal</remote-id>
+  </upstream>
 </pkgmetadata>
