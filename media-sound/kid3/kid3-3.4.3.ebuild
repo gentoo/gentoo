@@ -18,7 +18,7 @@ IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
 
-DEPEND="
+COMMON_DEPEND="
 	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
@@ -51,8 +51,11 @@ DEPEND="
 		media-libs/libvorbis
 	)
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	!media-sound/kid3:4
+"
+DEPEND="${COMMON_DEPEND}
+	$(add_qt_dep linguist-tools)
 "
 
 PATCHES=( "${FILESDIR}/${PN}-3.3.2-libdir.patch" )
