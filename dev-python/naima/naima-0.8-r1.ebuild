@@ -20,22 +20,26 @@ DOCS=( README.rst )
 
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
+	dev-python/corner[${PYTHON_USEDEP}]
 	dev-python/emcee[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.10[${PYTHON_USEDEP}]"
+	dev-python/h5py[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	sci-libs/scipy[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/h5py[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
 
 DOCS=( README.rst CHANGES.rst )
 
 python_prepare_all() {
 	sed -e '/auto_use/s/True/False/' -i setup.cfg || die
 	xdg_environment_reset
+	# issues during install time (bug #604012)
+	addpredict /proc/mtrr
+	addpredict /sys/devices/system/cpu/
 	distutils-r1_python_prepare_all
 }
 
