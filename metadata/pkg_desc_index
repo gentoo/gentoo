@@ -3184,7 +3184,7 @@ dev-games/physfs 2.0.3-r1: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
-dev-games/simgear 3.4.0 2016.3.1 2016.4.3 9999: Development library for simulation games
+dev-games/simgear 3.4.0 2016.3.1 2016.4.3 2016.4.4 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.17.2 0.18.0: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
@@ -11186,8 +11186,8 @@ games-simulation/cannonsmash 0.6.6: 3D tabletennis game
 games-simulation/crashtest 1.1 1.1-r1: Educational car crash simulator
 games-simulation/crrcsim 0.9.12-r1 0.9.12-r2: model-airplane flight simulation program
 games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
-games-simulation/flightgear 3.4.0 2016.3.1 2016.4.3 9999: Open Source Flight Simulator
-games-simulation/flightgear-data 3.4.0 2016.3.1 2016.4.3 9999: FlightGear data files
+games-simulation/flightgear 3.4.0 2016.3.1 2016.4.3 2016.4.4 9999: Open Source Flight Simulator
+games-simulation/flightgear-data 3.4.0 2016.3.1 2016.4.3 2016.4.4 9999: FlightGear data files
 games-simulation/gl117 1.3.2 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
@@ -11522,7 +11522,7 @@ kde-apps/drkonqi 16.04.3: KDE crash handler, gives the user feedback if a progra
 kde-apps/eventviews 16.12.0: Calendar viewer for KDE PIM
 kde-apps/ffmpegthumbs 16.08.3 16.12.0: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 16.08.3 16.12.0: Visualise disk usage with interactive map of concentric, segmented rings
-kde-apps/gpgmepp 4.14.11_pre20160211 16.04.3 16.08.3: C++ bindings for gpgme
+kde-apps/gpgmepp 4.14.11_pre20160211 16.08.3: C++ bindings for gpgme
 kde-apps/granatier 16.08.3 16.12.0: KDE Bomberman game
 kde-apps/grantlee-editor 16.12.0: Utilities and tools to manage themes in KDE PIM applications
 kde-apps/grantleetheme 16.12.0: Library for Grantlee plugins
@@ -11626,7 +11626,7 @@ kde-apps/kgoldrunner 16.08.3 16.12.0: Game of action and puzzle solving by KDE
 kde-apps/kgpg 16.08.3 16.12.0: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 16.08.3 16.12.0: Classical hangman game by KDE
 kde-apps/khelpcenter 16.08.3 16.12.0: The KDE Help Center
-kde-apps/kholidays 16.04.3 16.08.3 16.12.0: Library to determine holidays and other special events for a geographical region
+kde-apps/kholidays 16.08.3 16.12.0: Library to determine holidays and other special events for a geographical region
 kde-apps/kiconfinder 16.04.3: Finds an icon based on its name
 kde-apps/kidentitymanagement 16.12.0: Library for managing identitites
 kde-apps/kig 16.08.3 16.12.0: KDE Interactive Geometry tool
@@ -11931,7 +11931,7 @@ kde-misc/krename 4.0.9-r3 4.0.9-r4: KRename - a very powerful batch file renamer
 kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
 kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open conversation with your contact
 kde-misc/krusader 2.4.0_beta3-r2 2.5.0 2.5.0-r1: An advanced twin-panel (commander-style) file-manager with many extras
-kde-misc/kshutdown 3.2 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
+kde-misc/kshutdown 4.0: Shutdown manager for desktop environmenmts like KDE Plasma
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
@@ -11962,7 +11962,7 @@ kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
 kde-misc/rsibreak 0.12.4 0.12.5: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.4-r1: Mindmapping-like tool for document generation
 kde-misc/serverstatuswidget 1.5.1: KDE plasma widget used for monitoring servers via ping or tcp connect
-kde-misc/skanlite 1.1-r1 2.0.1: KDE image scanning application
+kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/smooth-tasks 0_p20120130: Alternate taskbar KDE plasmoid, similar to Windows 7
 kde-misc/stdin-plasmoid 0.2_beta1: Plasmoid for executing a process and capturing its stderr and stdout
 kde-misc/steamcompanion 0.5.4-r1: Connector for web Steam service from Valve
@@ -11970,7 +11970,7 @@ kde-misc/stock-quote 2.1-r2: Displays stock quotes pulled from the Yahoo! server
 kde-misc/synaptiks 0.8.1-r4: Touchpad configuration and management tool for KDE
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 2.3.10 2.3.11 3.0: A collection manager for the KDE environment
-kde-misc/wacomtablet 2.1.0 3.0.0_beta1: KControl module for Wacom tablets
+kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
