@@ -4,11 +4,11 @@ DESCRIPTION=CUPS C API Interface
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Net-CUPS/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=net-print/cups dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Net-CUPS-0.63.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=53f0b5cbe0d900305230f81763d48df2
+_md5_=432403a7be118ebfff61dbd8776838b9
