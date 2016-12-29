@@ -1340,7 +1340,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3 5.0.5: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8 4.2.10: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.3.1 1.3.3: Qt GUI configuration tool for Wine
-app-emulation/qemu 2.7.0-r7 2.7.1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.7.0-r7 2.7.1 2.8.0 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
@@ -17394,7 +17394,7 @@ sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and
 sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/radeon-ucode 20150511 20160331 20160616 20160628: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
-sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
+sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2 1.10.1: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
 sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-6400 DVB Card
