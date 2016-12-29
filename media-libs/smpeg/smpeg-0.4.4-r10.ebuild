@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-mmx.patch \
 		"${FILESDIR}"/${P}-malloc.patch \
 		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-missing-init.patch
+		"${FILESDIR}"/${P}-missing-init.patch \
+		"${FILESDIR}"/${P}-gcc6.patch
 
 	cd "${WORKDIR}"
 	epatch "${DISTDIR}"/${P}-gtkm4.patch.bz2
