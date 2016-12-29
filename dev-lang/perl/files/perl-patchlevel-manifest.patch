@@ -1,0 +1,10 @@
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -4678,6 +4678,7 @@
+ pad.h				Scratchpad headers
+ parser.h			parser object header
++patchlevel-gentoo.h			Gentoo's Perl patch level
+ patchlevel.h			The current patch level of perl
+ perlapi.c			Perl API functions
+ perlapi.h			Perl API function declarations
+ perl.c				main()
