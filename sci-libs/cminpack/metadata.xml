@@ -17,4 +17,7 @@
   This is the C re-write of the original fortran minpack
   implementation.
 </longdescription>
+  <upstream>
+    <remote-id type="github">devernay/cminpack</remote-id>
+  </upstream>
 </pkgmetadata>

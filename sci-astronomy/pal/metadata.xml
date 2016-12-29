@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Positional Astronomy Library is a collection of code designed
+    to aid in replacing the SLA library with code from NOVAS and
+    ERFA. Where possible the API is similar to the C SLA API except
+    for the use of a "pal" prefix.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Starlink/pal</remote-id>
+  </upstream>
+</pkgmetadata>
