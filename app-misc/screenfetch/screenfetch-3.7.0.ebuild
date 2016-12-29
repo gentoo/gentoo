@@ -14,7 +14,7 @@ SRC_URI="https://github.com/KittyKatt/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
