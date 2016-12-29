@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils multilib toolchain-funcs versionator multiprocessing autotools
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
@@ -22,7 +22,7 @@ ruby_atom() {
 
 # hacks to avoid using the ruby eclasses since this requires something similar
 # to the python-any-r1 eclass for ruby which currently doesn't exist
-RUBY_IMPLS=( ruby23 ruby22 ruby21 ruby20 )
+RUBY_IMPLS=( ruby23 ruby22 ruby21 )
 RUBY_BDEPS="$(for ruby_impl in "${RUBY_IMPLS[@]}"; do
 	echo "( $(ruby_atom ${ruby_impl}) virtual/rubygems[ruby_targets_${ruby_impl}] )"; done)"
 
@@ -70,7 +70,7 @@ src_prepare() {
 	done
 	[[ -z ${RUBY} ]] && die "No available ruby implementations to build with"
 
-	epatch_user
+	default
 	eautoreconf
 }
 

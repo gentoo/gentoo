@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug dnstap doc caps +fastparser idn systemd"
 
 RDEPEND="
-	>=net-libs/gnutls-3.3
+	>=net-libs/gnutls-3.3:=
 	>=dev-libs/jansson-2.3
 	>=dev-db/lmdb-0.9.15
 	>=dev-libs/userspace-rcu-0.5.4
@@ -29,7 +29,6 @@ RDEPEND="
 	dev-libs/libedit
 	systemd? ( sys-apps/systemd )
 "
-
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
@@ -54,7 +53,11 @@ src_configure() {
 
 src_compile() {
 	default
-	use doc && emake -C doc html
+
+	if use doc; then
+		emake -C doc html
+		HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
+	fi
 }
 
 src_test() {
@@ -62,8 +65,6 @@ src_test() {
 }
 
 src_install() {
-	use doc && HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
-
 	default
 
 	keepdir /var/lib/${PN}
