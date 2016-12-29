@@ -1258,7 +1258,7 @@ app-emacs/template 3.1c-r1: Use templates, decorate comments, auto-update buffer
 app-emacs/tempo-snippets 0.1.5: Visual insertion of tempo templates
 app-emacs/thinks 1.9: Insert text in a think bubble
 app-emacs/thumbs 2.0: Emacs thumbnail previewer for image files
-app-emacs/tuareg-mode 2.0.7 2.0.8: An Objective Caml/Camllight mode for Emacs
+app-emacs/tuareg-mode 2.0.7 2.0.8 2.0.10: An Objective Caml/Camllight mode for Emacs
 app-emacs/twittering-mode 2.0.0 3.0.0 9999: Emacs major mode for Twitter
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
@@ -6866,7 +6866,7 @@ dev-php/PEAR-Math_Stats 0.9.1: Classes to calculate statistical parameters
 dev-php/PEAR-Net_CheckIP 1.2.2: Check the syntax of IPv4 addresses
 dev-php/PEAR-Net_DIME 1.0.2: The PEAR::Net_DIME class implements DIME encoding
 dev-php/PEAR-Net_DNS 1.0.7: Resolver library used to communicate with a DNS server
-dev-php/PEAR-Net_DNS2 1.2.5 1.3.1: Object-oriented PHP5 resolver library used to communicate with a DNS server
+dev-php/PEAR-Net_DNS2 1.3.1 1.4.2: Object-oriented PHP5 resolver library used to communicate with a DNS server
 dev-php/PEAR-Net_DNSBL 1.3.7: DNSBL Checker
 dev-php/PEAR-Net_FTP 1.3.7-r1 1.4.0_alpha3: Provides an OO interface to the PHP FTP functions
 dev-php/PEAR-Net_IDNA2 0.1.1: Punycode encoding and decoding
@@ -13747,7 +13747,7 @@ media-sound/vitunes 2.3: A curses media indexer and player for vi users
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
-media-sound/vmpk 0.6.1: Virtual MIDI Piano Keyboard
+media-sound/vmpk 0.6.1 0.6.2a: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
@@ -17302,7 +17302,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1: NetBSD's portable make
+sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.1-r100 3.9.0-r100 3.9.1-r100 9999: C language family frontend for LLVM
