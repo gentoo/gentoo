@@ -48,7 +48,7 @@ RDEPEND="
 	qrcode? ( media-gfx/zbar[qt4] )
 "
 DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools )
+	qt5? ( dev-qt/linguist-tools:5 )
 	virtual/pkgconfig
 "
 
