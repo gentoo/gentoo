@@ -36,9 +36,11 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz
 		dev-libs/libxml2[${PYTHON_USEDEP}]
 		dev-python/h5py[${PYTHON_USEDEP}]
+		dev-python/jplephem[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-gallery[${PYTHON_USEDEP}]
 		dev-python/wcsaxes[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
@@ -60,7 +62,7 @@ PATCHES=(
 python_prepare_all() {
 	export mydistutilsargs="--offline"
 	export ASTROPY_USE_SYSTEM_PYTEST=True
-	rm -r ${PN}_helpers || die
+	#rm -r ${PN}_helpers || die
 	cp "${FILESDIR}"/astropy-ply.py astropy/extern/ply.py || die
 	rm -r cextern/{expat,erfa,cfitsio,wcslib} || die
 	sed -i -e '/auto_use/s/True/False/' setup.cfg || die
@@ -74,10 +76,13 @@ python_prepare_all() {
 
 python_compile_all() {
 	if use doc; then
+		mkdir -p examples
+		touch examples/README.txt || die
+		python_setup
 		VARTEXFONTS="${T}"/fonts \
 			MPLCONFIGDIR="${BUILD_DIR}" \
 			PYTHONPATH="${BUILD_DIR}"/lib \
-			esetup.py build_sphinx
+			esetup.py build_docs --no-intersphinx
 	fi
 }
 
