@@ -333,6 +333,10 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	epatch "${FILESDIR}"/${PN}-2.7.0-CVE-2016-8669-1.patch #597108
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-9908.patch #601826
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-9912.patch #602630
+	epatch "${FILESDIR}"/${PN}-2.8.0-CVE-2016-10028.patch #603444
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
