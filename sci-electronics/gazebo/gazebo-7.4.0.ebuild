@@ -49,6 +49,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/qttest:4
 	app-text/ronn
+	app-arch/gzip
 	virtual/pkgconfig
 	x11-apps/mesa-progs
 	test? ( dev-libs/libxslt )
