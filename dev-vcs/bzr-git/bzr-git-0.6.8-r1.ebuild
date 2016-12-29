@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,10 +19,10 @@ SLOT="0"
 if [[ ${PV} = 9999 ]]; then
 	inherit bzr
 	EBZR_REPO_URI="lp:bzr-git"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 else
 	SRC_URI="http://samba.org/~jelmer/bzr/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 IUSE=""
