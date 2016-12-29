@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ejwa/gitinspector"
 SRC_URI="https://github.com/ejwa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
