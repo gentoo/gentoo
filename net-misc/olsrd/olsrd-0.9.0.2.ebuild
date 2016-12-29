@@ -11,7 +11,7 @@ SRC_URI="http://www.olsr.org/releases/$(get_version_component_range 1-2)/${P}.ta
 
 SLOT="0"
 LICENSE="BSD LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gtk"
 DEPEND="
 	gtk? (
