@@ -1,26 +1,12 @@
 certificate version 0.1
-pusher Sébastien Fabbro <bicatali@gentoo.org> 1482994930 +0000
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1482994930-5ab41ee9f3bcaefab1d2
+pusher 0x8883FA56A308A8D7 1482995545 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1482995545-9ba251aee1b68b00ab52
 
-83549a07d085b197a1765267d9da6570f4d3a730 4601ef379f6d012f1c87c80ac67bb749796bd7a8 refs/heads/master
+4601ef379f6d012f1c87c80ac67bb749796bd7a8 3fd0b8fa315cbc1ac9c3a9c6099b6ed4f1b96b07 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQKoBAABCgCSFiEEZ57oneHb19koxLslv/J0bOCXyRAFAlhktPJfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldDY3
-OUVFODlERTFEQkQ3RDkyOEM0QkIyNUJGRjI3NDZDRTA5N0M5MTAUHGJpY2F0YWxp
-QGdlbnRvby5vcmcACgkQv/J0bOCXyRD5jQ/9FI9WA0FSB92IN0oVeOtTh9CqJh7U
-Ye1Tc38NTkqQvgYjvTjWpA/deN0alv2hxKaDj/0y0DmqxNj1TWHynjytOKLdwPsu
-bHljwhQHfanY4MrW4/dqnbxEvhwxWi5yrCmlG7lDcVB8QwjCTFcUYlmxBF9qCVbv
-bhY4+cM9V7cqfDyxMomeFojYZ51oAg2jsOBIvHw99pk8VpwDLX2UpKPwlNmJ2ARs
-G9yzhT6i6wj2Q1PtQRiyVHeJds8RnVuPXzkKw5Q2ykmr0Xl8/dHLEAe65qDRb7qq
-UoZGXB203yfFw2ci9df588SOiMAc4616QlAaLW2yfxq6ZXzbzbQrxVpSG0CmQR+a
-9Rys3522Ov07m40f/bkS2MJmbgiZGNi/B1XGqW26XS6BvmGwv0yIuxtdS5o/XOEK
-ilZ8Dp6xlKHwM4TxkkZfergVt8xttkxvSTsqIHgN8F/t8zvZD3vtZZ0pCqo+apQQ
-mlRL1kQTRLSwxUcnFgOki2nORC/7LvsRs1Ca6/RjOdzYlYVuTHfNE1TNLEFCH0uJ
-oqfJC4TV7uElAmgRsAXeRPo4r9ICR18KtgeX1/kcJvV3tUCk3Htg2dQfxjSg1iGX
-d7TQzwcj7EZdxCVJ5cn+PAA+J7/zBHoh8WV/mb4XiiVMM6dMVuzYmVpumhYR7HBH
-W3YXSBkLlMPeLYw=
-=Qdt9
+iF4EABEIAAYFAlhkt1kACgkQiIP6VqMIqNeWVgD+JQ5PFN6T1k7pi1v0j7D0nvnF
+i+1EG7enLonVWLuXDaoA/1xsCyyIEL+3TWfNcNyZtTQ/csH9/bB+7CZQ0ptvL6nj
+=0oZp
 -----END PGP SIGNATURE-----
