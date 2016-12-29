@@ -35,7 +35,10 @@ RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${P}-boost-1.59-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-boost-1.59-makefile.patch"
+	"${FILESDIR}/${P}-tests.patch"
+)
 
 src_prepare() {
 	default
