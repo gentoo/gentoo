@@ -54,10 +54,12 @@ start_pre() {
 
 	rc_ulimit="-n ${LS_OPEN_FILES}"
 
-	checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "${LS_INSTALL_DIR}/data"
-	checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "$(dirname "${pidfile}")"
-	checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "${LS_LOG_DIR}"
-	checkpath -f -o "${LS_USER}":"${LS_GROUP}" -m640 "${LS_LOG_DIR}/logstash-plain.log"
+	local d
+	for d in "${LS_INSTALL_DIR}/data" "$(dirname "${pidfile}")" "${LS_LOG_DIR}"; do
+		checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "$d"
+		chown -R "${LS_USER}":"${LS_GROUP}" "$d"
+	done
+
 }
 
 stop() {
