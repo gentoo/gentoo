@@ -1,0 +1,14 @@
+Add explicit cast to silence C++14 -Wnarrowing conversion warnings.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=600298
+
+--- a/src/xsb_level.cpp
++++ b/src/xsb_level.cpp
+@@ -784,7 +784,7 @@
+ 
+ bool FromXyeDFS(int* mem, unsigned char x, unsigned char y)
+ {
+-    static const unsigned char dx[4] = {0,0,-1,1}, dy[4] = {-1,1,0,0};
++    static const unsigned char dx[4] = {0,0,(unsigned char)-1,1}, dy[4] = {(unsigned char)-1,1,0,0};
+     int &res =  mem[y*XYE_HORZ+x];
+     if( res==0)
+     {
