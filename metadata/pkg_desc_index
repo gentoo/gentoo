@@ -13676,7 +13676,7 @@ media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Repla
 media-sound/rhythmbox 3.4.1: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
-media-sound/rosegarden 13.04 13.10-r1 14.02 14.12: MIDI and audio sequencer and notation editor
+media-sound/rosegarden 13.04 13.10-r1 14.02 14.12 16.06: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1 3.3.2-r2: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/schismtracker 20120105: Free implementation of Impulse Tracker, a tool used to create high quality music
@@ -14348,7 +14348,7 @@ net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/Postgr
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 3.2.22 4.1.13 4.1.14: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2 3.8.1: A framework for managing DNS information
 net-dns/pdns 3.4.10 4.0.0 4.0.1: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
