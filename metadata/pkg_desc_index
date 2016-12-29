@@ -12908,7 +12908,7 @@ media-libs/libopenshot-audio 0.0.6 0.1.2-r1: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.2 0.0.3-r1 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libpng 1.2.56 1.5.26 1.5.27 1.6.19 1.6.21 1.6.25 1.6.26: Portable Network Graphics library
+media-libs/libpng 1.2.56 1.2.57 1.5.26 1.5.28 1.6.25 1.6.26 1.6.27: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.0.1-r1 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
