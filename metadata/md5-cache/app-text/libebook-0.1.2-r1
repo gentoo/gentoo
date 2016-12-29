@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/libebook/libe-book-0.1.2.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c9406d7bd56f330e7e842daac15c53e9
+_md5_=577180a4f674a77c656c044c194fc01c

@@ -15299,7 +15299,7 @@ net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/blam 1.8.12-r1: A RSS aggregator written in C#
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
-net-news/liferea 1.10.8 1.10.17 1.10.19-r1 1.12_rc1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
+net-news/liferea 1.10.8 1.10.17 1.10.19-r1 1.12_rc2: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9-r2 9999: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20 2.22: Rawdog - RSS Aggregator Without Delusions Of Grandeur
