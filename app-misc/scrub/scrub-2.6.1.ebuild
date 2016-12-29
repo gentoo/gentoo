@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-DESCRIPTION="Overwrite files with itarative patterns."
+DESCRIPTION="Overwrite files with iterative patterns."
 HOMEPAGE="https://github.com/chaos/scrub"
 SRC_URI="https://github.com/chaos/${PN}/releases/download/${PV}/${P}.tar.gz"
 
