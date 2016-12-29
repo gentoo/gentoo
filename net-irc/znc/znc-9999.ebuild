@@ -6,7 +6,6 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_4,3_5} )
 PLOCALES="ru"
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 
 inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
 
@@ -35,7 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
 
 RDEPEND="
 	icu? ( dev-libs/icu:= )
-	nls? ( dev-libs/boost[nls] )
+	nls? ( dev-libs/boost:=[nls] )
 	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
@@ -70,15 +69,14 @@ src_prepare() {
 	l10n_find_plocales_changes "${S}/src/po" "${PN}." '.po'
 	remove_locale() {
 		# Some language/module pairs can be missing
-		rm src/po/${PN}.${1}.po modules/po/*.${1}.po || true
+		rm -f src/po/${PN}.${1}.po modules/po/*.${1}.po || die
 	}
 	l10n_for_each_disabled_locale_do remove_locale
 
 	# Let SWIG rebuild modperl/modpython to make user patching easier.
-	# Not "| true" to report an error if names the pregenerated files change upstream.
 	if [[ ${PV} != *9999* ]]; then
-		rm modules/modperl/generated.tar.gz
-		rm modules/modpython/generated.tar.gz
+		rm modules/modperl/generated.tar.gz || die
+		rm modules/modpython/generated.tar.gz || die
 	fi
 
 	cmake-utils_src_prepare
@@ -124,12 +122,12 @@ src_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 	if [[ -d "${EROOT%/}"/etc/znc ]]; then
-		ewarn "/etc/znc exists on your system."
+		ewarn "${EROOT%/}/etc/znc exists on your system."
 		ewarn "Due to the nature of the contents of that folder,"
 		ewarn "we have changed the default configuration to use"
-		ewarn "	/var/lib/znc"
-		ewarn "please move /etc/znc to /var/lib/znc"
-		ewarn "or adjust /etc/conf.d/znc"
+		ewarn "	${EROOT%/}/var/lib/znc"
+		ewarn "please move ${EROOT%/}/etc/znc to ${EROOT%/}/var/lib/znc"
+		ewarn "or adjust ${EROOT%/}/etc/conf.d/znc"
 	fi
 }
 
@@ -150,8 +148,8 @@ pkg_config() {
 		start-stop-daemon --start --user ${PN}:${PN} --env ZNC_NO_LAUNCH_AFTER_MAKECONF=1 \
 			"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
 			die "Config failed"
-		echo
-		einfo "To start znc, run '/etc/init.d/znc start'"
+		einfo
+		einfo "To start znc, run '${EROOT%/}/etc/init.d/znc start'"
 		einfo "or add znc to a runlevel:"
 		einfo "  rc-update add znc default"
 	fi
