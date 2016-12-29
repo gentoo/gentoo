@@ -4,7 +4,7 @@ DESCRIPTION=A Ruby wrapper for the GitHub REST API v3
 EAPI=5
 HOMEPAGE=https://github.com/peter-murach/github
 IUSE=test elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 doc test test
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby20? ( >=dev-ruby/addressable-2.3[ruby_targets_ruby20] >=dev-ruby/descendants_tracker-0.0.4[ruby_targets_ruby20] >=dev-ruby/faraday-0.8[ruby_targets_ruby20] <dev-ruby/faraday-0.10[ruby_targets_ruby20] >=dev-ruby/hashie-3.4[ruby_targets_ruby20] >=dev-ruby/multi_json-1.7.5[ruby_targets_ruby20] <dev-ruby/multi_json-2.0[ruby_targets_ruby20] >=dev-ruby/nokogiri-1.6.6[ruby_targets_ruby20] dev-ruby/oauth2[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/addressable-2.3[ruby_targets_ruby21] >=dev-ruby/descendants_tracker-0.0.4[ruby_targets_ruby21] >=dev-ruby/faraday-0.8[ruby_targets_ruby21] <dev-ruby/faraday-0.10[ruby_targets_ruby21] >=dev-ruby/hashie-3.4[ruby_targets_ruby21] >=dev-ruby/multi_json-1.7.5[ruby_targets_ruby21] <dev-ruby/multi_json-2.0[ruby_targets_ruby21] >=dev-ruby/nokogiri-1.6.6[ruby_targets_ruby21] dev-ruby/oauth2[ruby_targets_ruby21] ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
 REQUIRED_USE=|| ( ruby_targets_ruby20 ruby_targets_ruby21 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/peter-murach/github/archive/v0.12.4.tar.gz -> github_api-0.12.4.tar.gz
 _eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	ruby-fakegem	2b249022d4895a29827658b7d630c461	ruby-ng	934780d41ab18a9ff091703f511371be	ruby-utils	382c3a262907e1219a21618dfd1a01a0	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=32eaa5ef6f8eff7be6bd1e98f3dce374
+_md5_=7966306ccd9c2d5b77f89f1e12bee3a0
