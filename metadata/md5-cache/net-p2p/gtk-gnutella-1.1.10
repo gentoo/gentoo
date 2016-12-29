@@ -4,11 +4,11 @@ DESCRIPTION=A GTK+ Gnutella client
 EAPI=6
 HOMEPAGE=http://gtk-gnutella.sourceforge.net/
 IUSE=nls dbus ssl +gtk
-KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 sys-libs/zlib gtk? ( >=x11-libs/gtk+-2.2.1:2 ) dbus? ( >=sys-apps/dbus-0.35.2 ) ssl? ( >=net-libs/gnutls-2.2.5 ) nls? ( >=sys-devel/gettext-0.11.5 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gtk-gnutella/gtk-gnutella-1.1.10.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b1410ec0dd53326a6db5c0930c755691
+_md5_=5cca0dd0e92e3a25f2b49529b62da798

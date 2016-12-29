@@ -4,11 +4,11 @@ DESCRIPTION=Tool for creating snapshots and remote backups of btrfs subvolumes
 EAPI=6
 HOMEPAGE=https://digint.ch/btrbk/
 IUSE=+pv
-KEYWORDS=amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-3+
 RDEPEND=dev-lang/perl net-misc/openssh pv? ( sys-apps/pv ) >=sys-fs/btrfs-progs-3.18.2
 SLOT=0
 SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.24.0.tar.xz
 _eclass_exported_funcs=src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c1f55a54b93cf838478988e62ae08b89
+_md5_=4db3543b8e4110b80fedb41e2d34fb38

@@ -83,7 +83,7 @@ app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system 
 app-admin/dio 1.5.2: dio - Device I/O monitoring tool
 app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
-app-admin/drush 6.5.0 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
+app-admin/drush 6.7.0 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6-r1: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
@@ -10237,7 +10237,7 @@ dev-util/shellcheck 0.4.4 0.4.5: Shell script analysis tool
 dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line programs
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
-dev-util/shunit2 2.1.6 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
+dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/skipfish 2.10_beta: A fully automated, active web application security reconnaissance tool
 dev-util/smem 20071119_p1: A tool to parse smaps statistics
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
