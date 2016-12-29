@@ -14,7 +14,7 @@ SRC_URI="http://packages.${PN}.de/${PN}-src/${PN}-src-${PV}.tar.gz"
 
 SLOT="$(get_version_component_range 1-2)"
 LICENSE="BSD GPL-3"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse4_1 test"
 DEPEND="sys-libs/zlib
 	app-arch/bzip2
