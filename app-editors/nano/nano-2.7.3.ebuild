@@ -35,6 +35,7 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
 		eautoreconf
 	fi
+	epatch "${FILESDIR}"/${P}-tiny.patch #604000
 	epatch_user
 }
 
