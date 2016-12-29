@@ -2,13 +2,13 @@ DEFINED_PHASES=configure prepare
 DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libxml2 sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An easily extensible archive format
 EAPI=5
-HOMEPAGE=https://code.google.com/p/xar
+HOMEPAGE=https://github.com/mackyle/xar
 IUSE=acl +bzip2 libressl
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libxml2 sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 )
 SLOT=0
-SRC_URI=https://xar.googlecode.com/files/xar-1.5.2.tar.gz
+SRC_URI=https://github.com/mackyle/xar/archive/xar-1.5.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=d7a988c1215b1ddcba11619d7540b17a
+_md5_=b9f50a1671e7cff67b41aa65e6e72d28
