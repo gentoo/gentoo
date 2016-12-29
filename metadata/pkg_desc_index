@@ -3186,7 +3186,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.3.1 2016.4.3 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.17.0 0.17.1 0.17.2: A general purpose tile map editor
+dev-games/tiled 0.17.2 0.18.0: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
