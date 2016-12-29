@@ -38,7 +38,7 @@ RDEPEND="
 	opengl? (
 		virtual/opengl
 		virtual/glu
-		media-libs/glew
+		media-libs/glew:=
 	)
 	pcre? ( dev-libs/libpcre )
 	python? (
