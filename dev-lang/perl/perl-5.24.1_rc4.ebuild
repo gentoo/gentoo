@@ -215,7 +215,6 @@ src_prepare_update_patchlevel_h() {
 	# it under the same terms as Perl itself.
 	local patchdir="${WORKDIR}/patches"
 	local prefix
-	local patchoutput="patchlevel-gentoo.h"
 
 	[[ -f ${patchdir}/series ]] || return 0
 
@@ -253,8 +252,9 @@ do
 	# label: prepend to the hold space
 	:prepend x; H; d;
 	'
-done < "${WORKDIR}"/patches/series > "${S}/${patchoutput}"
-echo "${patchoutput}" >> "${S}/MANIFEST"
+done < "${WORKDIR}"/patches/series > "${S}/patchlevel-gentoo.h"
+
+	eapply "${FILESDIR}/perl-patchlevel-manifest.patch"
 }
 
 src_prepare() {
