@@ -1056,7 +1056,7 @@ app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 0.1.5 0.1.5-r1 0.1.6 0.1.7 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r4 1.81.6-r6 1.81.6-r7: Vi clone
-app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring Environment
+app-editors/padre 1.0.0 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.12.2-r1 1.14.1 1.16.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r2: Advanced text editor with syntax highlighting
@@ -5502,7 +5502,7 @@ dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0-r1: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
-dev-perl/Coro 6.480.100 6.511.0: The only real threads in perl
+dev-perl/Coro 6.511.0: The only real threads in perl
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
@@ -16287,7 +16287,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.10.5 0.10.10 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.10.10 0.11.12 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.11.3 0.12.3: Image processing routines for SciPy
