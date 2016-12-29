@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	 <email>andreis.vinogradovs@gmail.com</email>
-	 <name>Andreis Vinogradovs</name>
-  </maintainer>
   <maintainer type="person">
 	<email>lists@xunil.at</email>
 	<name>Stefan Weichinger</name>
-	<description>Proxy maintainer under the proxy-maintainers herd</description>
   </maintainer>
 <maintainer type="project">
 	  <email>net-mail@gentoo.org</email>
