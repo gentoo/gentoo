@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/SirCmpwn/sway/archive/0.11.tar.gz -> sway-0.11.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5e57073582aac6fc8ddb4d2ac0abc76a
+_md5_=a804645aa3492b2d1979a3b72012e568

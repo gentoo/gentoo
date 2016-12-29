@@ -4999,7 +4999,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.10 0.11 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.10 0.11-r1 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
@@ -15464,7 +15464,7 @@ net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r5 1.8_beta5-r8: Transparent SOCKS v4 proxying library
-net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid internet proxy
+net-proxy/ufdbguard 1.32.4: ufdbGuard is a redirector for the Squid internet proxy
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
@@ -17006,7 +17006,7 @@ sys-apps/tuned 2.7.0 2.7.1-r2: Daemon for monitoring and adaptive tuning of syst
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
-sys-apps/ucspi-ssl 0.94-r1 0.97: Command-line tools for building SSL client-server applications
+sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r17 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 0.36-r2 0.36-r3 0.36-r4: A ucspi implementation for unix sockets
 sys-apps/udevil 0.4.4-r1: mount and unmount removable devices without a password
