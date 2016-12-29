@@ -51,7 +51,7 @@ pkg_setup() {
 
 python_prepare_all() {
 	epatch "${FILESDIR}"/${P}-doc-makefile.patch
-	epatch "${FILESDIR}"/${PN}-0.7.6.1-zeta.patch
+	epatch "${FILESDIR}"/${P}-zeta.patch
 	distutils-r1_python_prepare_all
 }
 
