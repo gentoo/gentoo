@@ -13,7 +13,7 @@ DESCRIPTION="Last File Manager is a powerful file manager for the console"
 HOMEPAGE="https://inigo.katxi.org/devel/lfm/"
 SRC_URI="https://inigo.katxi.org/devel/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
