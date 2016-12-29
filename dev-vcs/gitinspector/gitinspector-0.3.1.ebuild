@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Statistical analysis tool for git repositories"
 HOMEPAGE="https://github.com/ejwa/gitinspector"
-SRC_URI="https://${PN}.googlecode.com/files/${PN}_${PV}.zip"
+SRC_URI="https://github.com/ejwa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
