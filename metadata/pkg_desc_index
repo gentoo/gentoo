@@ -323,7 +323,7 @@ app-arch/unp 2.0_pre7 2.0_pre7_p1 2.0_pre7_p1-r1: Script for unpacking various f
 app-arch/unrar 5.3.11 5.4.4 5.4.5: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
-app-arch/unshield 0.6_p20120308 0.6_p20120308-r1 1.4: InstallShield CAB file extractor
+app-arch/unshield 1.4: InstallShield CAB file extractor
 app-arch/unzip 5.52-r2 6.0-r3 6.0_p20: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
@@ -4919,7 +4919,7 @@ dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrat
 dev-libs/mini-xml 2.8 2.9 2.10: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5: A high-performance MongoDB driver for C
-dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2: C++ Driver for MongoDB
+dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7 6.0.7-r1: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5: library for multiple-precision floating-point computations with exact rounding
@@ -15160,7 +15160,7 @@ net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git exten
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc3-r1 1.2.0_rc15 1.2.0_rc16: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc3-r1 1.2.0_rc16 1.2.0_rc16-r1 1.2.0_rc17: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
