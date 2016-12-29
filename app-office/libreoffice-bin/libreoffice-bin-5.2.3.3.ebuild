@@ -64,7 +64,7 @@ BIN_COMMON_DEPEND="
 	dev-libs/boost:0/1.56.0
 	dev-libs/icu:0/58.1
 	>=media-gfx/graphite2-1.2.0
-	media-libs/glew:0/1.10
+	|| ( media-libs/glew:0/1.10 media-libs/glew:1.10 )
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
 	>=sys-devel/gcc-4.9.3
