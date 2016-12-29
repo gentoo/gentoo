@@ -9,6 +9,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc RI.rdoc TODO.rdoc"
 
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_BINDIR="exe"
 
 inherit ruby-fakegem eutils
