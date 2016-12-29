@@ -1619,4 +1619,7 @@ kernel-2_pkg_postrm() {
 	ewarn "with modified files will remain behind. By design, package managers"
 	ewarn "will not remove these modified files and the directories they reside in."
 	echo
+	ewarn "For more detailed kernel removal instructions, please see: "
+	ewarn "https://wiki.gentoo.org/wiki/Kernel/Removal"
+	echo
 }
