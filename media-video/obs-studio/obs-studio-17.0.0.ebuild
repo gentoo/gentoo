@@ -35,6 +35,7 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/ffmpeg:=[x264]
+	net-misc/curl
 	x11-libs/libXcomposite
 	x11-libs/libXinerama
 	x11-libs/libXrandr
@@ -55,8 +56,6 @@ src_prepare() {
 	CMAKE_REMOVE_MODULES_LIST=(FindFreetype)
 
 	cmake-utils_src_prepare
-
-	default
 }
 
 src_configure() {
@@ -70,7 +69,8 @@ src_configure() {
 		-DDISABLE_V4L2="$(usex !v4l)"
 		-DLIBOBS_PREFER_IMAGEMAGICK="$(usex imagemagick)"
 		-DOBS_MULTIARCH_SUFFIX="${libdir#lib}"
-		-DUNIX_STRUCTURE=1
+		-DOBS_VERSION_OVERRIDE="${PV}"
+		-DUNIX_STRUCTURE="1"
 	)
 
 	cmake-utils_src_configure
@@ -78,7 +78,28 @@ src_configure() {
 
 pkg_postinst() {
 	if ! use alsa && ! use pulseaudio; then
-		elog "To be able to use the audio capture features, either the"
-		elog "'alsa' or the 'pulseaudio' USE-flag needs to be enabled."
+		elog
+		elog "For the audio capture features to be available,"
+		elog "either the 'alsa' or the 'pulseaudio' USE-flag needs to"
+		elog "be enabled."
+		elog
+	fi
+
+	if ! has_version "sys-apps/dbus"; then
+		elog
+		elog "The 'sys-apps/dbus' package is not installed, but"
+		elog "could be used for disabling hibernating, screensaving,"
+		elog "and sleeping.  Where it is not installed,"
+		elog "'xdg-screensaver reset' is used instead"
+		elog "(if 'x11-misc/xdg-utils' is installed)."
+		elog
+	fi
+
+	if ! has_version "media-libs/speex"; then
+		elog
+		elog "For the speexdsp-based noise suppression filter"
+		elog "to be available, the 'media-libs/speex' package needs"
+		elog "to be installed."
+		elog
 	fi
 }
