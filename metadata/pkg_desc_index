@@ -10718,7 +10718,7 @@ games-emulation/mupen64plus-rsp-hle 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 em
 games-emulation/mupen64plus-ui-console 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, console UI
 games-emulation/mupen64plus-video-glide64mk2 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin
 games-emulation/mupen64plus-video-rice 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, rice video plugin
-games-emulation/nestopia 1.46.2: A portable Nintendo Entertainment System emulator written in C++
+games-emulation/nestopia 1.46.2 1.47: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
