@@ -4,11 +4,11 @@ DESCRIPTION=Manipulation and operations on IP addresses
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/NetAddr-IP/
 IUSE=ipv6
-KEYWORDS=alpha amd64 arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ~ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
 LICENSE=|| ( Artistic GPL-2 )
 RDEPEND=ipv6? ( dev-perl/Socket6 ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIKER/NetAddr-IP-4.078.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=b27dd65f1cf286e8d9ba98c3e1f01490
+_md5_=0e1a98c1e0393913287e3bf0c6ad43d3
