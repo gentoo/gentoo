@@ -4,6 +4,7 @@
 
 EAPI="6"
 VALA_USE_DEPEND="vapigen"
+VALA_MIN_API_VERSION="0.24"
 
 inherit eutils gnome2 vala
 
