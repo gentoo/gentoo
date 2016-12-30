@@ -7701,7 +7701,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.6.0 3.6.4-r1 3.7.0: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.6.0 3.6.4-r1 3.7.0 3.7.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0 0.25.1-r2: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -12914,7 +12914,7 @@ media-libs/libptp2 1.1.10: Library and client for communicating with PTP enabled
 media-libs/libquicktime 1.2.4 1.2.4-r1: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.16.2 0.17.1 0.17.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.16.2 0.17.2 0.18.0: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.8-r1 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
