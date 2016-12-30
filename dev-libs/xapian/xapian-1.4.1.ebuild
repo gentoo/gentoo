@@ -27,20 +27,15 @@ S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local myconf=""
 
-	ewarn
 	if use cpu_flags_x86_sse2; then
-		ewarn "Using sse2"
 		myconf="${myconf} --enable-sse=sse2"
 	else
 		if use cpu_flags_x86_sse; then
-			ewarn "Using sse"
 			myconf="${myconf} --enable-sse=sse"
 		else
-			ewarn "Disabling sse and sse2"
 			myconf="${myconf} --disable-sse"
 		fi
 	fi
-	ewarn
 
 	myconf="${myconf} $(use_enable static-libs static)"
 
