@@ -5816,7 +5816,7 @@ dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/Glib-Object-Introspection 0.40.0 0.42.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
-dev-perl/Google-Ads-AdWords-Client 2.7.3-r1 4.11.0: Google AdWords API Perl Client Library
+dev-perl/Google-Ads-AdWords-Client 4.11.0: Google AdWords API Perl Client Library
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.190.0 2.200.0 2.230.0: Interface to AT&T's GraphViz
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
@@ -6695,7 +6695,7 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing 
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800 2.12.800-r1: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.870.0 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
