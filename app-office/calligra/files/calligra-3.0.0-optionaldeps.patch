@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0394af4..e11d998 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -223,11 +223,10 @@ find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED
+         Notifications
+         KCMUtils
+ )
+-find_package(KF5 ${REQUIRED_KF5_VERSION} QUIET
+-    OPTIONAL_COMPONENTS
+-        Activities
+-        KHtml
+-)
++
++find_package(KF5Activities)
++find_package(KF5KHtml)
++
+ set_package_properties(KF5Activities PROPERTIES
+     TYPE OPTIONAL
+ )

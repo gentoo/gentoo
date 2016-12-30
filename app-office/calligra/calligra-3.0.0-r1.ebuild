@@ -114,6 +114,7 @@ COMMON_DEPEND="
 		okular? ( $(add_kdeapps_dep okular) )
 	)
 	calligra_features_plan? (
+		$(add_frameworks_dep khtml)
 		$(add_qt_dep qtcore '' '' '5=')
 		dev-libs/kdiagram:5
 		dev-libs/kproperty:5
@@ -141,7 +142,12 @@ RDEPEND="${COMMON_DEPEND}
 "
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-no-arch-detection.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-no-arch-detection.patch"
+	"${FILESDIR}/${P}-optionaldeps.patch"
+	"${FILESDIR}/${P}-words-crash.patch"
+	"${FILESDIR}/${P}-plan-crash.patch"
+)
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
@@ -175,6 +181,9 @@ src_prepare() {
 		sed -i -e "/add_subdirectory( *okularodpgenerator *)/ s/^/#DONT/" \
 			extras/CMakeLists.txt || die "Failed to disable OKULAR_GENERATOR_ODP"
 	fi
+
+	rm -f po/*/*kexi*po || die
+	rm -f po/*/*krita*po || die
 }
 
 src_configure() {
@@ -196,10 +205,17 @@ src_configure() {
 
 	local mycmakeargs=( -DPRODUCTSET="${myproducts[*]}" )
 
+	if [[ ${KDE_BUILD_TYPE} == release ]] ; then
+		mycmakeargs+=(
+			-DRELEASE_BUILD=ON
+			-DBUILD_UNMAINTAINED=${experimental}
+		)
+	fi
+
 	mycmakeargs+=(
 		-DPACKAGERS_BUILD=OFF
-		-DBUILD_UNMAINTAINED=${experimental}
 		-DWITH_Iconv=ON
+		$(cmake-utils_use_find_package activities KF5Activities)
 		-DWITH_Qca-qt5=$(usex crypt)
 		-DWITH_Eigen3=$(usex eigen)
 		-DWITH_Fontconfig=$(usex fontconfig)
