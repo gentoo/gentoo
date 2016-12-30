@@ -31,6 +31,11 @@ RDEPEND="sys-libs/zlib
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-zlib.patch"
+)
+
 src_unpack() {
 	# we need the -a option, so we can not use 'unpack'
 	unzip -qoa "${DISTDIR}/cl${MY_PV}.zip" || die
@@ -65,12 +70,6 @@ src_prepare() {
 
 	# Fix version number of shared library.
 	sed -i -e 's/PLV="2"/PLV="3"/' tools/buildall.sh || die "sed tools/buildall.sh failed"
-
-	# Respect LDFLAGS and fix soname and strip issues.
-	epatch "${FILESDIR}/${P}-build.patch"
-
-	# Use external zlib.
-	epatch "${FILESDIR}/${P}-zlib.patch"
 
 	wrap_python ${FUNCNAME}
 }
