@@ -328,22 +328,6 @@ media-gfx/brlcad
 # Removal in 30 days.
 app-emulation/open-vm-tools-kmod
 
-# Michael Palimaka <kensington@gentoo.org> (24 Nov 2016)
-# Discontinued upstream, hosted on googlecode, no reverse dependencies.
-# Use app-emulation/ganeti-instance-debootstrap instead.
-# Bug 598968. Masked for removal in 30 days.
-app-emulation/ganeti-instance-debian-etch
-
-# Michael Palimaka <kensington@gentoo.org> (24 Nov 2016)
-# Discontinued upstream, hosted on googlecode, no reverse dependencies.
-# Masked for removal in 30 days.
-app-cdr/recorder
-
-# Michael Palimaka <kensington@gentoo.org> (24 Nov 2016)
-# Discontinued upstream, hosted on googlecode, no reverse dependencies.
-# Bug 575578. Masked for removal in 30 days.
-dev-cpp/gtkmm-utils
-
 # Mike Gilbert <floppym@gentoo.org> (24 Nov 2016)
 # Dead upstream, hosted on googlecode, no reverse dependencies.
 # Removal in 30 days.
