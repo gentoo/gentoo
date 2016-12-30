@@ -84,7 +84,7 @@ src_install() {
 
 	if use !gtk ; then
 		# lirc-setup requires gtk
-		rm "${ED%/}"/usr/bin/lirc-setup
+		rm "${ED%/}"/usr/bin/lirc-setup || die
 	fi
 
 	newinitd "${FILESDIR}"/lircd-0.8.6-r2 lircd
