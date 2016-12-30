@@ -3123,33 +3123,33 @@ dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10 0.10-r1 9999: tool for communicating over JTAG with flash chips, CPUs, and many more (fork of openwince jtag)
 dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/zmac 1.3: Z80 macro cross-assembler
-dev-erlang/cache_tab 1.0.2 1.0.3 1.0.4: In-memory cache Erlang and Elixir library
+dev-erlang/cache_tab 1.0.2 1.0.3 1.0.4 1.0.5: In-memory cache Erlang and Elixir library
 dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.4 1.0.7 1.0.8: ProcessOne SIP server component
+dev-erlang/esip 1.0.4 1.0.7 1.0.8 1.0.10: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.1: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.3 1.0.6 1.0.7: TLS/SSL native driver for Erlang and Elixir
-dev-erlang/fast_xml 1.1.3 1.1.14 1.1.15: Fast Expat based Erlang XML parsing library
-dev-erlang/fast_yaml 1.0.3 1.0.5 1.0.6: Fast Yaml native library for Erlang and Elixir
+dev-erlang/fast_tls 1.0.3 1.0.6 1.0.7 1.0.9: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_xml 1.1.3 1.1.14 1.1.15 1.1.18: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_yaml 1.0.3 1.0.5 1.0.6 1.0.7: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.8.1: Small Erlang app that provides fast event stream processing
 dev-erlang/hamcrest 0.1.0_p20150103 0.1.0_p20160709: Erlang port of Hamcrest
-dev-erlang/iconv 1.0.0 1.0.1 1.0.2: Fast encoding conversion library for Erlang and Elixir
+dev-erlang/iconv 1.0.0 1.0.1 1.0.2 1.0.3: Fast encoding conversion library for Erlang and Elixir
 dev-erlang/jiffy 0.14.7 0.14.8: JSON NIFs for Erlang
 dev-erlang/lager 3.2.0 3.2.1 3.2.2: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2: Lua in Erlang
 dev-erlang/meck 0.8.3 0.8.4: Mocking library for Erlang
-dev-erlang/p1_mysql 1.0.1: Pure Erlang MySQL driver
+dev-erlang/p1_mysql 1.0.1 1.0.2: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pam 1.0.0: epam for ejabberd to help with PAM authentication support
-dev-erlang/p1_pgsql 1.1.0: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.4 1.0.5: Erlang utility modules from ProcessOne
+dev-erlang/p1_pgsql 1.1.0 1.1.1: Pure Erlang PostgreSQL driver
+dev-erlang/p1_utils 1.0.4 1.0.5 1.0.6: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/proper 1.1_p20160426 1.2: QuickCheck-inspired property-based testing tool for Erlang
 dev-erlang/protobuffs 0.8.2 0.9.0: Google's Protocol Buffers for Erlang
-dev-erlang/riak_pb 2.1.0.7 2.1.4.2 2.2.0.0: Riak Protocol Buffers messages
+dev-erlang/riak_pb 2.1.0.7 2.1.4.2 2.2.0.0 2.2.0.1: Riak Protocol Buffers messages
 dev-erlang/riakc 2.1.1_p20151111 2.4.1 2.4.2: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5: SQLite gen_server port for Erlang
-dev-erlang/stringprep 1.0.3 1.0.5 1.0.6: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.3 1.0.6 1.0.7: STUN and TURN library for Erlang and Elixir
+dev-erlang/stringprep 1.0.3 1.0.5 1.0.6 1.0.7: Fast Stringprep implementation for Erlang and Elixir
+dev-erlang/stun 1.0.3 1.0.6 1.0.7 1.0.9: STUN and TURN library for Erlang and Elixir
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
