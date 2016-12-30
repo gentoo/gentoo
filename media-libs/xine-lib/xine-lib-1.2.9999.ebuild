@@ -80,7 +80,7 @@ RDEPEND="${NLS_RDEPEND}
 	vaapi? ( x11-libs/libva )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
-		dev-libs/libcdio[-minimal]
+		dev-libs/libcdio:0=[-minimal]
 		)
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? (
