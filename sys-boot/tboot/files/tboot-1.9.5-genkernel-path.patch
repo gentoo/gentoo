@@ -1,0 +1,58 @@
+diff -ur tboot-1.9.5.orig/tboot/20_linux_tboot tboot-1.9.5/tboot/20_linux_tboot
+--- tboot-1.9.5.orig/tboot/20_linux_tboot	2016-12-30 17:37:08.625535208 +0800
++++ tboot-1.9.5/tboot/20_linux_tboot	2016-12-30 17:42:38.405714435 +0800
+@@ -171,6 +171,14 @@
+ EOF
+ }
+ 
++case "$machine" in
++    i?86) GENKERNEL_ARCH="x86" ;;
++    mips|mips64) GENKERNEL_ARCH="mips" ;;
++    mipsel|mips64el) GENKERNEL_ARCH="mipsel" ;;
++    arm*) GENKERNEL_ARCH="arm" ;;
++    *) GENKERNEL_ARCH="$machine" ;;
++esac
++
+ linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
+     	basename=$(basename $i)
+ 	version=$(echo $basename | sed -e "s,^[^0-9]*-,,g")
+@@ -217,7 +225,9 @@
+ 		 "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+ 		 "initrd-${alt_version}" "initramfs-${alt_version}.img" \
+ 		 "initramfs-genkernel-${version}" \
+-		 "initramfs-genkernel-${alt_version}"; do
++		 "initramfs-genkernel-${alt_version}" \
++		 "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
++		 "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
+ 	    if test -e "${dirname}/${i}" ; then
+ 		initrd="$i"
+ 		break
+diff -ur tboot-1.9.5.orig/tboot/20_linux_xen_tboot tboot-1.9.5/tboot/20_linux_xen_tboot
+--- tboot-1.9.5.orig/tboot/20_linux_xen_tboot	2016-12-30 17:37:08.628535191 +0800
++++ tboot-1.9.5/tboot/20_linux_xen_tboot	2016-12-30 17:43:39.112379262 +0800
+@@ -165,6 +165,14 @@
+ EOF
+ }
+ 
++case "$machine" in
++    i?86) GENKERNEL_ARCH="x86" ;;
++    mips|mips64) GENKERNEL_ARCH="mips" ;;
++    mipsel|mips64el) GENKERNEL_ARCH="mipsel" ;;
++    arm*) GENKERNEL_ARCH="arm" ;;
++    *) GENKERNEL_ARCH="$machine" ;;
++esac
++
+ linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* /boot/kernel-*; do
+     if grub_file_is_not_garbage "$i"; then
+     	basename=$(basename $i)
+@@ -232,7 +240,9 @@
+                 "initrd-${version}" "initrd.img-${alt_version}" \
+                 "initrd-${alt_version}.img" "initrd-${alt_version}" \
+                 "initramfs-genkernel-${version}" \
+-                "initramfs-genkernel-${alt_version}" ; do
++                "initramfs-genkernel-${alt_version}" \
++                "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
++                "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
+                 if test -e "${dirname}/${i}" ; then
+                     initrd="$i"
+                     break
