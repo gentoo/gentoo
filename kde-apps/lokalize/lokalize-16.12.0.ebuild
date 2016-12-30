@@ -45,6 +45,8 @@ RDEPEND="${DEPEND}
 	dev-python/translate-toolkit[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${P}"-hunspell-1.6.patch )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	kde5_pkg_setup
