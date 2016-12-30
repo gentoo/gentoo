@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
+inherit toolchain-funcs
 
 MY_P="${P/_/-}"
 S="${WORKDIR}/${MY_P}"
@@ -68,6 +68,11 @@ DEPEND="${RDEPEND}
 	nls? ( dev-util/intltool )
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-jack-ng.patch
+	"${FILESDIR}"/${P}-gl-spectrum-include-fix.patch
+)
+
 mp3_warning() {
 	if ! use mp3 ; then
 		ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
@@ -82,6 +87,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	has_version "<dev-libs/glib-2.32" && \
 		cd "${S}"/src/mpris2 && \
 		gdbus-codegen --interface-prefix org.mpris. \
