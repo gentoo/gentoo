@@ -20,4 +20,8 @@
 		content. It keeps command history, has sane autocompletes, credential caching,
 		site-wide and individual configs, and it's fun to say.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://bitbucket.org/mahlon/shelldap/issues/</bugs-to>
+		<remote-id type="bitbucket">mahlon/shelldap</remote-id>
+	</upstream>
 </pkgmetadata>
