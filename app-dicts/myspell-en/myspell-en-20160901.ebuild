@@ -31,8 +31,8 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="English dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/english-dictionaries"
-SRC_URI="http://extensions.libreoffice.org/extension-center/english-dictionaries/releases/${MY_PV}/dict-en.oxt -> dict-en-${PV}.oxt"
+HOMEPAGE="http://extensions.libreoffice.org/extensions/english-dictionaries"
+SRC_URI="https://extensions.libreoffice.org/extensions/english-dictionaries/${MY_PV}/@@download/file/dict-en.oxt -> dict-en-${PV}.oxt"
 
 LICENSE="GPL-2 LGPL-2.1 Princeton myspell-en_CA-KevinAtkinson"
 SLOT="0"
