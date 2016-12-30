@@ -16059,21 +16059,28 @@ sci-geosciences/mapserver 7.0.3: Development environment for building spatially 
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.18.1-r2 0.18.2 0.18.3-r1 9999: A Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.2-r1 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
-sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0 4.4.0: a free, open source software for marine navigation
-sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
+sci-geosciences/opencpn 4.0.0-r1 4.2.0 4.4.0: a free, open source software for marine navigation
+sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 2.1 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0-r1 9999: Climatology Plugin for OpenCPN (includes CL-DATA)
-sci-geosciences/opencpn-plugin-iacfleet 0.8 9999: IAC Fleetcode Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-dr 1.1 9999: Dead Reckoning Positions Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-findit 1.1007 9999: FindIt Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-iacfleet 0.8 0.9 9999: IAC Fleetcode Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-launcher 1.0-r1 1.1 9999: Launcher Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-logbookkonni 1.2018-r1 1.3002 9999: Logbook Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-objsearch 0.5.1-r1 0.7 9999: Chart Object Search Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-ocpn_draw 1.0.12 9999: Draw Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 9999: NMEA-data and plugin-API Debugger Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-ocpn_draw 1.0.12 1.3.14 9999: Draw Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 1.3 9999: NMEA-data and plugin-API Debugger Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: OTCurrent Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-polar 1.1007 9999: Polar Diagram Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-radar 0.98 9999: AIS Radar View Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-route 1.2 9999: Route Plotting Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-squiddio 0.7 9999: Squiddio Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-statusbar 0.5-r1 9999: Statusbar Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-watchdog 1.9.051 9999: Watchdog Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weather_routing 1.10.1 9999: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
+sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/qgis 1.8.0 2.12.1-r1 2.12.2-r1 2.14.5-r1 2.18.2-r1: User friendly Geographic Information System
