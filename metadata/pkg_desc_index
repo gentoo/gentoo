@@ -18712,7 +18712,7 @@ x11-misc/superswitcher 0.6: A more feature-full replacement of the Alt-Tab windo
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.5.3 0.5.4 0.5.5 0.5.6 0.5.7: Simple X hotkey daemon
-x11-misc/synergy 1.6.3 1.8.1-r3 1.8.2 1.8.5: Lets you easily share a single mouse and keyboard between multiple computers
+x11-misc/synergy 1.6.3 1.8.1-r3 1.8.2 1.8.5 1.8.6: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.11-r2 0.12.3: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r1: GUI wizard which generates config files for tint2 panels
