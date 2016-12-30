@@ -16234,7 +16234,7 @@ sci-libs/libpdb 991112 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0 0.4.0 9999: provide basic hardware drivers for logic analyzers and input/output file format support
-sci-libs/libsigrokdecode 0.3.0 0.4.0 9999: provide (streaming) protocol decoding functionality
+sci-libs/libsigrokdecode 0.3.0 0.4.0 0.4.1 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.17-r1 3.17-r3 3.21: Library for Support Vector Machines
 sci-libs/libticables2 1.3.3-r1 1.3.4: Library to handle different link cables for TI calculators
@@ -17401,7 +17401,7 @@ sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau
 sys-firmware/radeon-ucode 20150511 20160331 20160616 20160628: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2 1.10.1: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
-sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
+sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
 sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-6400 DVB Card
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
