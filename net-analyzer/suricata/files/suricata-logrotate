@@ -1,6 +1,15 @@
-/var/log/suricata/* {
-	missingok
-	postrotate
-		/etc/init.d/suricata reload
-	endscript
-}
+--- /usr/portage/net-analyzer/suricata/files/suricata-logrotate	2016-12-28 10:34:11.000000000 +0100
++++ /usr/local/portage/net-analyzer/suricata/files/suricata-logrotate	2016-12-29 08:59:51.390256659 +0100
+@@ -1,6 +1,10 @@
+-/var/log/suricata/* {
++/var/log/suricata/*.log /var/log/suricata/*.json {
++	rotate 3
+ 	missingok
++	nocompress
++	create
++	sharedscripts
+ 	postrotate
+-		/etc/init.d/suricata reload
++		/etc/init.d/suricata relog
+ 	endscript
+ }
