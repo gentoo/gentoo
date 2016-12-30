@@ -76,6 +76,7 @@ IUSE="${IUSE} dbus debug ffmpeg +gstreamer gstreamer-0 +jemalloc3 neon pulseaudi
 # some notes on deps:
 # gtk:2 minimum is technically 2.10 but gio support (enabled by default) needs 2.14
 # media-libs/mesa needs to be 10.2 or above due to a bug with flash+vdpau
+# media-libs/libcanberra is dlopen'ed rather than linked
 
 RDEPEND=">=app-text/hunspell-1.2:=
 	dev-libs/atk
@@ -88,6 +89,7 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	>=media-libs/mesa-10.2:*
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
+	media-libs/libcanberra:*[pulseaudio?]
 	kernel_linux? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
 	virtual/freedesktop-icon-theme
