@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
 	logwatch mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto
 	sql-pooling +sqlite ssl static +storage-daemon tcpd vim-syntax"
+REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
 DEPEND="
 	!app-backup/bacula
