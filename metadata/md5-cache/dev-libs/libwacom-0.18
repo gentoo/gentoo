@@ -4,11 +4,11 @@ DESCRIPTION=Library for identifying Wacom tablets and their model-specific featu
 EAPI=5
 HOMEPAGE=http://linuxwacom.sourceforge.net/
 IUSE=doc static-libs
-KEYWORDS=alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86
+KEYWORDS=alpha amd64 arm ~ia64 ppc ppc64 sparc x86
 LICENSE=MIT
 RDEPEND=dev-libs/glib:2 virtual/libgudev:=
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxwacom/libwacom/libwacom-0.18.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338
-_md5_=0c274a227f6a2852d626c78d74b86c57
+_md5_=fdfc6c6de6c68ff5a23efa887f3006b1
