@@ -2010,7 +2010,7 @@ app-office/abiword 3.0.1 3.0.2: Fully featured yet light and fast cross platform
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0 4.1.0 4.2.0 4.2.1: a text-based calendar and scheduling application
-app-office/calligra 2.9.11 2.9.11-r1 3.0.0: KDE Office Suite
+app-office/calligra 2.9.11 2.9.11-r1 3.0.0-r1: KDE Office Suite
 app-office/calligra-l10n 2.9.11 2.9.11-r1: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
