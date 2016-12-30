@@ -19,6 +19,7 @@
         <flag name="audio">Support using an audio device connected to an IR receiver</flag>
         <flag name="iguanair">Support iguanaIR devices</flag>
         <flag name="ftdi">Support FTDI devices</flag>
+        <flag name="gtk">Include GTK support which enables the use of lirc-setup</flag>
     </use>
     <upstream>
         <remote-id type="sourceforge">lirc</remote-id>
