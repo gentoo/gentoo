@@ -1,0 +1,101 @@
+Modernise C++ to avoid errors in C++14 mode.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=600084
+
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -66,7 +66,7 @@
+ 
+ void writeconfig(const map& game_map) {
+ 	ofstream config((ostring)TuxHomeDirectory + "/config");	// open config file
+-	if(config == NULL) {	// error check
++	if(!config) {	// error check
+ 		cout << "Warning: Couldn't write to file " << (ostring)TuxHomeDirectory + "/config" << endl;
+ 		return;
+ 	}
+@@ -124,7 +124,7 @@
+ 
+ void readconfig(class map& game_map) {
+ 	ifstream config((ostring)TuxHomeDirectory + "/config");	// open config file
+-	if(config==0) {	// error check
++	if(!config) {	// error check
+ 		cout << "Warning: Couldn't find configuration file " << (ostring)TuxHomeDirectory + "/config" << ". Using default values." << endl;
+ 		return;
+ 	}
+--- a/src/map.cpp
++++ b/src/map.cpp
+@@ -346,13 +346,13 @@
+ 	cout << "-- copy map --" << endl;		// print status message
+ 	ifstream in_file(path);	// open source file
+ 
+-	if(in_file == 0) {	// error checking
++	if(!in_file) {	// error checking
+ 		cout << "Couldn't open sourcefile \"" << filename << "\"" << endl;
+ 		cout << endl << "-- error in copymap --" << endl;
+ 		return 1;
+ 	}
+ 
+-	if(out_file == 0) {	// error checking
++	if(!out_file) {	// error checking
+ 		cout << "Couldn't open target file \"" << temp_path << "\" for writing " << endl;
+ 		cout << endl << "-- error in copymap --" << endl;
+ 		return 1;
+@@ -390,7 +390,7 @@
+ 		path = mapfolder;
+ 		path += filename;
+ 		file.open(path);	// open file
+-		if(file == NULL) {
++		if(!file) {
+ 			cout << "map::savemap :  error while saving map to file '" << path << "'" << endl;
+ 			return 1;
+ 		}
+@@ -402,7 +402,7 @@
+ 		path = savefolder;
+ 		path += filename;
+ 		file.open(path);	// open file
+-		if(file == NULL) {
++		if(!file) {
+ 			cout << "map::savemap : error while saving game to file '" << path << "'" << endl;
+ 			return 1;
+ 		}
+--- a/src/menu.cpp
++++ b/src/menu.cpp
+@@ -119,7 +119,7 @@
+ 
+ // add a selection box
+ 
+-class element* menu_mgm::add_box(int x, int y, const ostring& text, const ostring& value, bool selectable, int size, int xgroup, int ygroup, int max, int width, int height, unsigned char r, unsigned char g, unsigned char b, int value_type, bool dependency, char* depend) {
++class element* menu_mgm::add_box(int x, int y, const ostring& text, const ostring& value, bool selectable, int size, int xgroup, int ygroup, int max, int width, int height, unsigned char r, unsigned char g, unsigned char b, int value_type, bool dependency, const char* depend) {
+ 	class element& newone = add();
+ 	newone.value = value;
+ 	newone.posx = x;
+--- a/src/menu.h
++++ b/src/menu.h
+@@ -56,7 +56,7 @@
+ 		void check_custom_parameters();	// check if parameters are okay
+ 		ostring keytoa(SDLKey);	// cast SDLKey to ASCII
+ 		class element* add_text(int, int, const ostring&, bool, int, int =-1, int =-1, unsigned char =0, unsigned char =0, unsigned char = 0, int = -1, int = -1);	// add a text element
+-		class element* add_box(int, int, const ostring&, const ostring&, bool, int, int, int, int, int, int, unsigned char, unsigned char, unsigned char, int = 0, bool =false, char* =0);	// add a box element
++		class element* add_box(int, int, const ostring&, const ostring&, bool, int, int, int, int, int, int, unsigned char, unsigned char, unsigned char, int = 0, bool =false, const char* =0);	// add a box element
+ 		class element* add_select(int, int, const ostring&, const ostring&, bool, int, int, int, const char* oneoftwo=0);	// add a select element
+ 		void draw_window();	// draw the current menu screen with all elements
+ 		void selection_mgm(char);	// process user input for menu navigation
+--- a/src/surface.cpp
++++ b/src/surface.cpp
+@@ -92,7 +92,7 @@
+ 	else file_tmp = file;
+ 
+ 	TTF_Font *font = TTF_OpenFont(file_tmp, size);
+-	SDL_Color color = {r, g, b, 0};
++	SDL_Color color = {(Uint8)r, (Uint8)g, (Uint8)b, 0};
+ 
+ 	area = TTF_RenderText_Solid(font, text, color);
+ 
+@@ -118,7 +118,7 @@
+ 	SDL_Surface* text_surface;
+ 	SDL_Rect temp;
+ 	TTF_Font *font_tmp = TTF_OpenFont(font, size);
+-	SDL_Color farbe = {r, g, b, 0};
++	SDL_Color farbe = {(Uint8)r, (Uint8)g, (Uint8)b, 0};
+ 	text_surface = TTF_RenderText_Solid(font_tmp, text, farbe);
+ 	TTF_CloseFont(font_tmp);
+ 	temp = pos;
