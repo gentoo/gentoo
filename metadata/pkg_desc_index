@@ -4590,7 +4590,7 @@ dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/cryptlib 3.4.0-r1 3.4.0-r2 3.4.3 3.4.3-r1: Powerful security toolkit for adding encryption to software
+dev-libs/cryptlib 3.4.0-r1 3.4.3-r1: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.2-r3 5.6.4-r2 5.6.4-r4 5.6.5: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
@@ -17321,7 +17321,7 @@ sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling t
 sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
-sys-devel/flex 2.5.39-r1 2.6.1 2.6.2: The Fast Lexical Analyzer
+sys-devel/flex 2.5.39-r1 2.6.1 2.6.3: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 4.9.4 5.1.0 5.2.0 5.3.0 5.4.0 5.4.0-r2 6.3.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
