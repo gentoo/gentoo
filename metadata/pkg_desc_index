@@ -11316,7 +11316,7 @@ games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0 0.26.0 0.26.0-r1: Simple low-level configuration system
 gnome-base/dconf-editor 3.20.3 3.22.1: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.20.1 3.22.1 3.22.1-r1: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gdm 3.20.1 3.22.1-r1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.22.0: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.14.0-r1 3.18.0 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.20.1 3.20.1-r1 3.20.2 3.22.1: GNOME's main interface to configure various aspects of the desktop
@@ -16837,7 +16837,7 @@ sys-apps/gawk 3.1.8 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.10 0.11 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.20.2 3.22.0 3.22.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.20.2 3.22.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257: Administrative interface for the grsecurity Role Based Access Control system
