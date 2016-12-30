@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit toolchain-funcs
+EAPI=6
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A lightweight and fast battery icon that sits in your system tray"
 HOMEPAGE="https://github.com/ColinJones/cbatticon"
@@ -25,6 +24,12 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	default
+
+	strip-linguas -i .
+}
+
 src_compile() {
 	tc-export CC
 	emake \
@@ -35,5 +40,11 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" V=1 VERSION="${PF}" install
+	emake \
+		DESTDIR="${D}" \
+		LANGUAGES="${LINGUAS}" \
+		V=1 VERSION="${PF}" \
+		install
+
+	dodoc Changelog
 }
