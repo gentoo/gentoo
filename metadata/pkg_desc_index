@@ -16979,7 +16979,7 @@ sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.0.2.1 0.0.3.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r3: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.10-r3 2.11-r3 2.11-r4: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.5 2.6 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
@@ -17570,7 +17570,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.44_p48 4.1.35_p41 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.6_p5 4.8.14_p9: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.45 4.1.36 4.4.39 4.8.15 4.9.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.46 4.1.37 4.4.39 4.8.15 4.9.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
@@ -19246,7 +19246,7 @@ x11-wm/marco 1.12.1 1.14.2 1.16.0: MATE default window manager
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.8.5 3.0.5 3.2.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.20.3 3.22.1 3.22.2: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.20.3 3.22.2: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
