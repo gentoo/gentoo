@@ -14955,7 +14955,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.8.1: Google Drive client for the commandline
 net-misc/dropbear 2016.73 2016.74: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 6.3.13 14.3.17: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 14.3.17 17.3.28: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3 2.5.4 2.6.4: User friendly Bitcoin client
@@ -17202,7 +17202,7 @@ sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPA
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 231-r1 232: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
-sys-boot/tboot 1.9.4-r1 1.9.4_p20161101: Performs a measured and verified boot using Intel Trusted Execution Technology
+sys-boot/tboot 1.9.4-r1 1.9.4_p20161101 1.9.5: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015: Tianocore UEFI Development kit
 sys-boot/unetbootin 625: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427: Chrome OS verified boot tools
