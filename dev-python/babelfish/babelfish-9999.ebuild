@@ -10,7 +10,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library to work with countries and languages"
 HOMEPAGE="https://github.com/Diaoul/babelfish https://pypi.python.org/pypi/babelfish"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
+EGIT_REPO_URI=( {https,git}://github.com/Diaoul/${PN}.git )
 
 LICENSE="BSD"
 SLOT="0"
