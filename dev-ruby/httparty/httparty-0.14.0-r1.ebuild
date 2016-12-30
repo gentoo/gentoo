@@ -18,7 +18,7 @@ HOMEPAGE="https://jnunemaker.github.com/httparty"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend '>=dev-ruby/multi_xml-0.5.2'
