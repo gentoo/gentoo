@@ -19050,7 +19050,7 @@ x11-proto/xproto 7.0.27 7.0.28 7.0.29 7.0.31: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
-x11-terms/gnome-terminal 3.20.2 3.20.3 3.22.0 3.22.1: The Gnome Terminal
+x11-terms/gnome-terminal 3.20.3 3.22.1: The Gnome Terminal
 x11-terms/guake 0.8.3 0.8.7 0.8.8 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
