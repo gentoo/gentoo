@@ -1,0 +1,11 @@
+--- a/as10k1/as10k1.c	2016-12-04 15:13:07.122841673 +0000
++++ b/as10k1/as10k1.c	2016-12-04 15:13:50.982841350 +0000
+@@ -366,7 +366,7 @@
+ 	exit(1);
+ }
+ 
+-inline void output_tram_line( struct list_head *line_head, int type){
++static inline void output_tram_line( struct list_head *line_head, int type){
+         
+         struct tram *tram_sym;
+         struct list_head *entry;
