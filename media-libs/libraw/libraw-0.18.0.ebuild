@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-multilib toolchain-funcs
+inherit multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV=${PV/_b/-B}
@@ -22,7 +22,7 @@ SRC_URI="http://www.libraw.org/data/${MY_P}.tar.gz
 # can be obtained from here:
 # http://www.libraw.org/data/LICENSE.LibRaw.pdf
 LICENSE="LGPL-2.1 CDDL GPL-2 GPL-3"
-SLOT="0/15" # subslot = libraw soname version
+SLOT="0/16" # subslot = libraw soname version
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="demosaic examples jpeg jpeg2k +lcms openmp"
 
@@ -37,13 +37,16 @@ S=${WORKDIR}/${MY_P}
 DOCS=( Changelog.txt README )
 
 pkg_pretend() {
-	if use openmp ; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-src_configure() {
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+multilib_src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_enable demosaic demosaic-pack-gpl2)
 		$(use_enable demosaic demosaic-pack-gpl3)
 		$(use_enable examples)
@@ -52,5 +55,13 @@ src_configure() {
 		$(use_enable lcms)
 		$(use_enable openmp)
 	)
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" \
+	econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	einstalldocs
+
+	# package installs .pc files
+	find "${D}" -name '*.la' -delete || die
 }
