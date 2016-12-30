@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
 fi
 
-inherit ${SCM} cmake-utils multilib
+inherit ${SCM} cmake-utils multilib cuda
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
@@ -60,10 +60,25 @@ REQUIRED_USE="
 	tutorials? ( doc )
 "
 
+src_prepare() {
+	use cuda && cuda_src_prepare
+        cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		"-DLIB_INSTALL_DIR=$(get_libdir)"
+        # ===================================================
+        # CUDA build components
+        # ===================================================
 		"-DWITH_CUDA=$(usex cuda TRUE FALSE)"
+		"-DBUILD_CUDA=$(usex cuda TRUE FALSE)"
+		"-DBUILD_cuda_io=$(usex cuda TRUE FALSE)"
+		"-DBUILD_GPU=$(usex cuda TRUE FALSE)"
+		"-DBUILD_gpu_surface=$(usex cuda TRUE FALSE)"
+		"-DBUILD_gpu_tracking=$(usex cuda TRUE FALSE)"
+        # ===================================================
+		"-DBUILD_surface_on_nurbs=TRUE"
 		"-DWITH_LIBUSB=$(usex usb TRUE FALSE)"
 		"-DWITH_OPENGL=$(usex opengl TRUE FALSE)"
 		"-DWITH_PNG=$(usex png TRUE FALSE)"
@@ -80,5 +95,8 @@ src_configure() {
 		"-DWITH_TUTORIALS=$(usex tutorials TRUE FALSE)"
 		"-DBUILD_TESTS=$(usex test TRUE FALSE)"
 	)
+        use cuda && mycmakeargs+=(
+                -DCUDA_NVCC_FLAGS="${NVCCFLAGS},-arsch"
+        )
 	cmake-utils_src_configure
 }
