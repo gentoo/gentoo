@@ -10583,7 +10583,7 @@ games-arcade/tomatoes 1.55-r2: How many tomatoes can you smash in ten short minu
 games-arcade/trailblazer 0.9: Guide a ball through a succession of levels while avoiding holes
 games-arcade/triplexinvaders 1.08: An Alien Invaders style game with 3d graphics
 games-arcade/tuxanci 20110429 99999999: Tuxanci is first tux shooter inspired by game Bulanci
-games-arcade/tuxdash 0.8: A simple BoulderDash clone
+games-arcade/tuxdash 0.8 0.8-r1: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r1: Hover hockey
 games-arcade/vor 0.5.5 0.5.7: Variations on Rockdodger: Dodge the rocks until you die
 games-arcade/watermelons 1.1.1-r1: A thrilling watermelon bouncing game
