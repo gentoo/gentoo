@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# No stable for arm
+sys-fs/dmraid dietlibc klibc
+
 # Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
 # no stable mpi on arm yet, but maybe in the future
 <=app-crypt/johntheripper-1.7.9-r6 mpi
