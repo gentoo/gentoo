@@ -4809,7 +4809,7 @@ dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usab
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.1-r1 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.27 3.2.28 3.2.29 3.2.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.28 3.2.29 3.2.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1 0.4.1-r1: C Implementation of NTRUEncrypt
