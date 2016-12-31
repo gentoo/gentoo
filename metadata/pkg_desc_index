@@ -15112,7 +15112,7 @@ net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git exten
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc3-r1 1.2.0_rc16 1.2.0_rc16-r1 1.2.0_rc17: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc3-r1 1.2.0_rc16-r1 1.2.0_rc17: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
