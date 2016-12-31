@@ -23,6 +23,9 @@ LICENSE="BSD-1"
 SLOT="0"
 IUSE="+pkg-config"
 
+# tests require 'kyua'
+RESTRICT="test"
+
 DEPEND=""
 RDEPEND="${DEPEND}
 	pkg-config? (
