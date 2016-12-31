@@ -2462,7 +2462,7 @@ app-text/wgetpaste 2.25-r3 2.28 2.28-r1: Command-line interface to various paste
 app-text/wiki2beamer 0.9.5-r1: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/winefish 1.3.3-r1 1.3.3-r2: LaTeX editor based on Bluefish
 app-text/wklej 0.2.1-r1: A wklej.org submitter
-app-text/writerperfect 0.9.2 0.9.5: Various formats to Open document format converter
+app-text/writerperfect 0.9.5: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r1 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
@@ -5442,7 +5442,7 @@ dev-perl/Clipboard 0.130.0-r2: Copy and paste with any OS
 dev-perl/Clone 0.380.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
-dev-perl/Compress-Bzip2 2.170.0 2.220.0 2.240.0: Interface to Bzip2 compression library
+dev-perl/Compress-Bzip2 2.220.0 2.240.0: Interface to Bzip2 compression library
 dev-perl/Config-Any 0.260.0 0.270.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
@@ -6117,8 +6117,8 @@ dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Sto
 dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
-dev-perl/Net-CUPS 0.610.0-r2 0.630.0: CUPS C API Interface
-dev-perl/Net-DBus 1.0.0-r1 1.1.0: Perl extension for the DBus message system
+dev-perl/Net-CUPS 0.630.0: CUPS C API Interface
+dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
 dev-perl/Net-DNS 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
@@ -6438,7 +6438,7 @@ dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
 dev-perl/Term-ProgressBar 2.170.0: Perl module for Term-ProgressBar
 dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
-dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.310.0: GNU Readline XS library wrapper
+dev-perl/Term-ReadLine-Gnu 1.310.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities for ttytter
 dev-perl/Term-ReadPassword 0.110.0-r1: Term::ReadPassword - Asking the user for a password
@@ -6623,7 +6623,7 @@ dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugz
 dev-perl/WWW-Curl 4.150.0-r1 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Dict-Leo-Org 1.400.0: Commandline interface to http://dict.leo.org/
 dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0 1.790.0: Handy web browsing in a Perl object
-dev-perl/WWW-Mechanize-FormFiller 0.100.0-r1 0.110.0: Framework to automate HTML forms
+dev-perl/WWW-Mechanize-FormFiller 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 1.3.0-r1: Paste on www.pastebin.com without API keys
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
 dev-perl/WWW-Shorten 3.93.0: Interface to URL shortening sites
@@ -17393,7 +17393,7 @@ sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compres
 sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.2 1.7.3: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
-sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.46 1.99-r1 1.99.5: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.20 1.21: Copy data from one file or block device to another with read-error recovery
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
