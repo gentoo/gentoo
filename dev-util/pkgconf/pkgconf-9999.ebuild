@@ -21,7 +21,10 @@ HOMEPAGE="https://github.com/pkgconf/pkgconf"
 
 LICENSE="BSD-1"
 SLOT="0"
-IUSE="+pkg-config strict"
+IUSE="+pkg-config"
+
+# tests require 'kyua'
+RESTRICT="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -47,8 +50,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf $(use_enable strict)
+	ECONF_SOURCE=${S} econf
 }
 
 multilib_src_install() {

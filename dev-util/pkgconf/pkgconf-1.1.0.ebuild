@@ -23,6 +23,9 @@ LICENSE="BSD-1"
 SLOT="0"
 IUSE="+pkg-config"
 
+# tests require 'kyua'
+RESTRICT="test"
+
 DEPEND=""
 RDEPEND="${DEPEND}
 	pkg-config? (
@@ -47,7 +50,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-    ECONF_SOURCE=${S} econf
+	ECONF_SOURCE=${S} econf
 }
 
 multilib_src_install() {

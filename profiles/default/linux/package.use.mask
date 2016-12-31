@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ian Whyman <thev00d00@gentoo.org> (31/12/2016)
+# Handbrake needs libav-12 which is masked.
+media-video/handbrake libav
+
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups
