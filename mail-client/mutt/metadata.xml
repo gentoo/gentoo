@@ -13,7 +13,7 @@
     <flag name="pop">Enable support for POP3</flag>
 	<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
     <flag name="sidebar">Enable the sidebar feature</flag>
-    <flag name="smime">Enable support for smime</flag>
+    <flag name="smime">Enable support for S/MIME</flag>
     <flag name="smtp">Enable support for smtp</flag>
     <flag name="tokyocabinet">Enable tokyocabinet database backend for header
       caching</flag>
