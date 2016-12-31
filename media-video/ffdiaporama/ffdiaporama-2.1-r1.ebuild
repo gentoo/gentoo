@@ -22,7 +22,7 @@ LICENSE="GPL-2
 	openclipart? ( CC0-1.0 )
 	texturemate? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="libav openclipart texturemate"
 
 RDEPEND="
