@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,9 +15,6 @@ show_ip32_info() {
 	einfo "\t- Framebuffer console is limited to 4MB.  Anything greater"
 	einfo "\t\040\040specified when building the kernel will likely oops"
 	einfo "\t\040\040or panic the kernel."
-	einfo "\t- A new RTC driver is included that uses the RTC class"
-	einfo "\t\040\040framework to interface with the O2's Dallas/Maxim 1687-5"
-	einfo "\t\040\040RTC chip.  Please report any bugs to the MIPS Team."
 	einfo "\t- X support is limited to the generic fbdev driver.  No X"
 	einfo "\t\040\040gbefb driver exists for O2 yet.  Feel free to submit"
 	einfo "\t\040\040patches!"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,8 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20151126"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="4"				# Tarball revision for patches
+GITDATE="20160123"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -20,12 +20,17 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.2"
+K_BASE_VER="4.3"
+K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
 inherit kernel-2 eutils
 detect_version
+
+# EPATCH Vars
+# XXX: Required to properly apply Impact/Odyssey driver patches.
+EPATCH_OPTS="-F3"
 
 # Version Data
 F_KV="${PVR}"
@@ -35,9 +40,15 @@ BASE_KV="$(get_version_component_range 1-2).0"
 # Portage Vars
 HOMEPAGE="http://www.linux-mips.org/ http://www.gentoo.org/"
 KEYWORDS="-* ~mips"
-IUSE="cobalt ip27 ip28 ip30"
-DEPEND=">=sys-devel/gcc-4.6.0"
+IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
+DEPEND="${RDEPEND}
+	>=sys-devel/gcc-4.7.0
+	>=sys-devel/patch-2.7.4"
+
+# Specify any patches or patch familes to NOT apply here.
+# Use only the 4-digit number followed by a '*'.
+P_EXCLUDE=""
 
 # Machine Support Control Variables
 DO_IP22="test"				# If "yes", enable IP22 support		(SGI Indy, Indigo2 R4x00)
@@ -45,7 +56,6 @@ DO_IP27="yes"				# 		   IP27 support		(SGI Origin)
 DO_IP28="test"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
 DO_IP30="yes"				# 		   IP30 support		(SGI Octane)
 DO_IP32="yes"				# 		   IP32 support		(SGI O2, R5000/RM5200 Only)
-DO_CBLT="test"				# 		   Cobalt Support	(Cobalt Microsystems)
 
 # Machine Stable Version Variables
 SV_IP22=""				# If set && DO_IP22 == "no", indicates last "good" IP22 version
@@ -53,14 +63,13 @@ SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
 SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
-SV_CBLT=""				# 	    DO_CBLT == "no", 			   Cobalt
 
 DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
 SRC_URI="${KERNEL_URI}
 	 mirror://gentoo/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
 	 mirror://gentoo/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
-UNIPATCH_STRICTORDER="1"
+UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
@@ -142,16 +151,15 @@ load_eblit_funcs() {
 	eblit-include err_disabled_mach v1
 	eblit-include err_only_one_mach_allowed v1
 	eblit-include show_ip22_info v3
-	eblit-include show_ip27_info v3
+	eblit-include show_ip27_info v4
 	eblit-include show_ip28_info v1
-	eblit-include show_ip30_info v4
-	eblit-include show_ip32_info v4
-	eblit-include show_cobalt_info v1
+	eblit-include show_ip30_info v5
+	eblit-include show_ip32_info v5
 
 	# This makes sure pkg_setup & pkg_postinst gets into any binpkg.
 	# Neccessary because we can't guarantee FILESDIR is around for binpkgs.
-	eblit-pkg setup v1
-	eblit-pkg postinst v1
+	eblit-pkg setup v2
+	eblit-pkg postinst v2
 
 	# Eblit load complete
 	MIPS_SOURCES_EBLITS_LOADED=1
@@ -162,6 +170,6 @@ pkg_setup() {
 	pkg_setup
 }
 
-src_unpack() { eblit-run src_unpack v6 ; }
+src_unpack() { eblit-run src_unpack v7 ; }
 
 #//------------------------------------------------------------------------------

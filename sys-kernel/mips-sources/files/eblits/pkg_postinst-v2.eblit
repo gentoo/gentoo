@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@
 eblit-mips-sources-pkg_postinst() {
 	# Symlink /usr/src/linux as appropriate
 	local my_ksrc="${S##*/}"
-	for x in {ip27,ip28,ip30,cobalt}; do
+	for x in {ip27,ip28,ip30}; do
 		use ${x} && my_ksrc="${my_ksrc}.${x}"
 	done
 
