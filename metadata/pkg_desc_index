@@ -1951,7 +1951,7 @@ app-misc/tpconfig 3.1.3-r1: Touchpad config for ALPS and Synaptics TPs. Controls
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 1.8.0 1.8.1 1.10.1: A tagging metadata database, search tool and indexer
-app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
+app-misc/trash-cli 0.12.9.14-r2 0.16.12.29: Python scripts to manipulate trash cans via the command line
 app-misc/ttyrec 1.0.8-r1: tty recorder
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
