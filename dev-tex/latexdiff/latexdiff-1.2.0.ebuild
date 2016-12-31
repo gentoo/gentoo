@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	test? ( app-shells/tcsh )"
 
 src_compile() {
-	emake -j1 distribution
+	PATH="${S}/dist:${PATH}" emake -j1 distribution
 }
 
 src_test() {
