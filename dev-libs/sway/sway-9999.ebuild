@@ -59,13 +59,7 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_install() {
-	cmake-utils_src_install
-
-	use !systemd && fperms u+s /usr/bin/sway
-}
-
-FILECAPS=( cap_sys_ptrace usr/bin/sway )
+FILECAPS=( -M 4711 cap_sys_ptrace,cap_sys_tty_config usr/bin/sway )
 
 pkg_postinst() {
 	fcaps_pkg_postinst
