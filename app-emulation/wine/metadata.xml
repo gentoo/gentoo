@@ -10,6 +10,10 @@
 		<name>Nick Sarnie</name>
 		<description>Only CC on bugs that involve USE="d3d9"</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
+	</maintainer>
 	<longdescription>
 Wine is an Open Source implementation of the Windows API on top of X and Unix.
 
