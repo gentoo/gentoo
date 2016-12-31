@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.8 dev-perl/Algorithm-Diff
 SLOT=0
 SRC_URI=https://github.com/ftilmann/latexdiff/archive/1.2.0.tar.gz -> latexdiff-1.2.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=84c11e19d2c8a02944c64287ec3cefaf
+_md5_=50b2ef0e0fd6dcc2d635a67402c00297
