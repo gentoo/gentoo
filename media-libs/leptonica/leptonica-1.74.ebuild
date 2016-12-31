@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 
 # N.B. Tests need some features enabled:
-REQUIRED_USE="test? ( jpeg png tiff )"
+REQUIRED_USE="test? ( jpeg png tiff zlib )"
 
 DEPEND="gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
