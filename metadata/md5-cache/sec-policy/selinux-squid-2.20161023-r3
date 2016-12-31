@@ -3,11 +3,11 @@ DEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/
 DESCRIPTION=SELinux policy for squid
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
-KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20161023-r3
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20161023.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20161023-r3.tar.bz2
 _eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
 _eclasses_=selinux-policy-2	fdb802daf258a647a1117a1f2c043168
-_md5_=7c725ece3f6cb38d38806f9a64f7ad87
+_md5_=808dca59fc36f1eec4eab8b4deb77101
