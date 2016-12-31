@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="A tool to list content of virtual tables in a shared library"
 HOMEPAGE="https://github.com/lvc/vtable-dumper"
 SRC_URI="https://github.com/lvc/vtable-dumper/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -14,6 +16,10 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/elfutils:0="
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	tc-export CC
+}
 
 src_install() {
 	emake prefix="${ED%/}/usr" install
