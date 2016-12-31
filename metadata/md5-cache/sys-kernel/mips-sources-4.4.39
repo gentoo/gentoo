@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
-DEPEND=>=sys-devel/gcc-4.6.0 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
-DESCRIPTION=Linux-Mips GIT sources for MIPS-based machines, dated 20151126
+DEPEND=>=sys-devel/gcc-4.7.0 >=sys-devel/patch-2.7.4 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Linux-Mips GIT sources for MIPS-based machines, dated 20160123
 EAPI=5
 HOMEPAGE=http://www.linux-mips.org/ http://www.gentoo.org/
-IUSE=cobalt ip27 ip28 ip30 symlink build
+IUSE=experimental ip27 ip28 ip30 symlink build
 KEYWORDS=-* ~mips
 LICENSE=GPL-2 freedist
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=4.3.3
-SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.3.3.xz mirror://kernel/linux/kernel/v4.x/linux-4.3.tar.xz mirror://gentoo/mipsgit-4.3.0-20151126.diff.xz mirror://gentoo/mips-sources-4.3.0-patches-v1.tar.xz
+SLOT=4.4.39
+SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.4.39.xz mirror://kernel/linux/kernel/v4.x/linux-4.4.tar.xz mirror://gentoo/mipsgit-4.4.0-20160123.diff.xz mirror://gentoo/mips-sources-4.4.0-patches-v2.tar.xz
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:kernel-2 pkg_setup:- src_unpack:- src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	kernel-2	d6e1dc6b6c76281d9b644966393069ef	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4698060fbce6fb9a08d286cb82ce9440
+_md5_=06ef6a634ba0c4d6f76e9c50e161ee57
