@@ -18,6 +18,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2016)
+# on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (14 Dec 2016)
+# Fails to build with newly unmasked ffmpeg-3, so mask this useflag
+# Workaround; leaving a real fix to the maintainers... bug 580630
+media-libs/mlt vdpau
+
 # Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
 # Enable gambit and scm only on supported architectures
 >=dev-scheme/slib-3.2.5 -gambit -scm
