@@ -10157,7 +10157,7 @@ dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators 
 dev-util/perf 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5 0.5.1 0.5.3 9999: pkgcore-based QA utility
-dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 0.9.11 0.9.12 1.0.1 1.0.2 1.1.0 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 0.29.1 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1 20130507-r2: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306-r3: Port of many Plan 9 programs and libraries
@@ -10240,7 +10240,7 @@ dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
 dev-util/visualvm 1.3.8-r1: Integrates commandline JDK tools and profiling capabilites
 dev-util/vmtouch 1.0.2: Virtual Memory Toucher, portable file system cache diagnostics and control
-dev-util/vtable-dumper 1.1: A tool to list content of virtual tables in a shared library
+dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
 dev-util/w32api 3.17.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest)
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
