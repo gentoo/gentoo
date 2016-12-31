@@ -12,7 +12,7 @@ HOMEPAGE="http://www.xmds.org"
 SRC_URI="mirror://sourceforge/xmds/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc examples mpi"
 
 DEPEND="dev-python/cheetah[${PYTHON_USEDEP}]"
