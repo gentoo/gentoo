@@ -3,6 +3,10 @@
 # $Id$
 
 # Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# Not going to be stable for now
+dev-util/geany-plugins gtkspell
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
 # No stable for arm
 sys-fs/dmraid dietlibc klibc
 
