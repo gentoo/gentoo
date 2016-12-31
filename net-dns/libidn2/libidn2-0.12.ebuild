@@ -51,7 +51,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		--without-included-libunistring
 }
 
 multilib_src_install() {
