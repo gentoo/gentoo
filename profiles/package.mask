@@ -30,10 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Mart Raudsepp <leio@gentoo.org> (30 Dec 2016)
-# Temporary testing mask for non-maintainer commit of a bugfix, #553092
-=sys-apps/sandbox-2.10-r3
-
 # David Seifert <soap@gentoo.org> (29 Dec 2016)
 # Ancient codebase, maintenance nightmare, dead
 # upstream, games-emulation/vbam is spiritual successor
