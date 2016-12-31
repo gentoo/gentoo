@@ -1,0 +1,17 @@
+--- a/cmake/OpenCVDetectVTK.cmake	2016-12-24 00:18:42.193096223 +0000
++++ b/cmake/OpenCVDetectVTK.cmake	2016-12-24 00:22:44.624096987 +0000
+@@ -2,8 +2,13 @@
+   return()
+ endif()
+ 
++# VTK 7.x components
++find_package(VTK QUIET COMPONENTS vtkRenderingOpenGL2 vtkInteractionStyle vtkRenderingLOD vtkIOPLY vtkFiltersTexture vtkRenderingFreeType vtkIOExport NO_MODULE)
++
+ # VTK 6.x components
+-find_package(VTK QUIET COMPONENTS vtkRenderingOpenGL vtkInteractionStyle vtkRenderingLOD vtkIOPLY vtkFiltersTexture vtkRenderingFreeType vtkIOExport NO_MODULE)
++if(NOT VTK_FOUND)
++find_package(VTK QUIET COMPONENTS vtkRenderingOpenGL NO_MODULE)
++endif()
+ 
+ # VTK 5.x components
+ if(NOT VTK_FOUND)
