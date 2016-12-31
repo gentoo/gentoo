@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-50">
+  <title>Openfire: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Openfire, the worst of
+    which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">openfire</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>603604</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-im/openfire" auto="yes" arch="*">
+      <unaffected range="ge">4.1.0</unaffected>
+      <vulnerable range="lt">4.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Openfire (formerly Wildfire) is a cross-platform real-time collaboration
+      server based on the XMPP (Jabber) protocol.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Openfire. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could bypass the CSRF protection mechanism, conduct
+      Cross-Site Scripting attacks, or an authenticated remote attacker could
+      gain privileges while accessing Openfire’s web interface.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Openfire users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-im/openfire-4.1.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6972">CVE-2015-6972</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6973">CVE-2015-6973</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7707">CVE-2015-7707</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 31 Dec 2016 00:17:25 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 06:27:02 +0000">whissi</metadata>
+</glsa>
