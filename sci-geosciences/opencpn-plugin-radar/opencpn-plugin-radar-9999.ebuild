@@ -5,7 +5,7 @@
 EAPI=5
 
 WX_GTK_VER="3.0"
-MY_PN="radar_pi-aisradar_pi"
+MY_PN="radar_pi"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Verezano/${MY_PN}.git"
 	inherit git-r3 cmake-utils wxwidgets
@@ -16,7 +16,7 @@ else
 	"
 	inherit cmake-utils wxwidgets
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${MY_PN}-${PV}"
+	S="${WORKDIR}/${MY_PN}-aisradar_pi-${PV}"
 fi
 
 DESCRIPTION="AIS Radar View Plugin for OpenCPN"
