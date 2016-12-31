@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,6 +26,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${MY_PN}-1.99-test_fix.patch"
+	epatch "${FILESDIR}/${MY_PN}-1.99-musl.patch"
 
 	sed -i \
 		-e 's:-ldl:$(LDFLAGS) -ldl:' \
