@@ -9896,7 +9896,7 @@ dev-util/Orange 2.7.2: Open source data visualization and analysis for novice an
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2 1.091-r3: Bram Moolenaar's super-make program
 dev-util/abi-compliance-checker 1.99.21 1.99.22 1.99.23 1.99.25 9999: A tool for checking backward compatibility of a C/C++ library
-dev-util/abi-dumper 0.99.15: Dump ABI of an ELF object containing DWARF debug info
+dev-util/abi-dumper 0.99.15 0.99.19: Dump ABI of an ELF object containing DWARF debug info
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
@@ -12745,7 +12745,7 @@ media-libs/lasi 1.1.1: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.6-r1 2.7 2.8: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
-media-libs/leptonica 1.71 1.71-r1 1.73: C library for image processing and analysis
+media-libs/leptonica 1.71 1.71-r1 1.74: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
