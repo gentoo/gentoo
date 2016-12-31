@@ -4,7 +4,7 @@ DESCRIPTION=gnome bindings for mono
 EAPI=5
 HOMEPAGE=http://www.mono-project.com/GtkSharp
 IUSE=debug
-KEYWORDS=~amd64 ~x86 ~ppc ~x86-fbsd
+KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-dotnet/gtk-sharp-2.12.21:2 gnome-base/gconf gnome-base/libgnomecanvas gnome-base/libgnomeui media-libs/libart_lgpl !dev-dotnet/gnomevfs-sharp !dev-dotnet/gconf-sharp !dev-dotnet/art-sharp
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=2
 SRC_URI=mirror://gnome/sources/gnome-sharp/2.24/gnome-sharp-2.24.2.tar.bz2
 _eclass_exported_funcs=pkg_setup:dotnet src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	dotnet	b8788d81fe4ec93fda9fc56fed2981d0	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=b80ed4a5f047d1817f3b4b00968fa8b3
+_md5_=30660d49ac6be0ce043850ffc2891330

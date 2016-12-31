@@ -4,11 +4,11 @@ DESCRIPTION=Luminance HDR is a graphical user interface that provides a workflow
 EAPI=5
 HOMEPAGE=http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR
 IUSE=cpu_flags_x86_sse2 fits openmp test linguas_cs linguas_de linguas_es linguas_fi linguas_fr linguas_hi linguas_hu linguas_id linguas_it linguas_pl linguas_ro linguas_ru linguas_sk linguas_tr linguas_zh
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/boost:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0
 SLOT=0
 SRC_URI=mirror://sourceforge/qtpfsgui/luminance-hdr-2.4.0.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=75010dd3ed106fa6287085a84ca4b192
+_md5_=1f61dd79c4726687aadc97aed93ef342

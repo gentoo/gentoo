@@ -4,7 +4,7 @@ DESCRIPTION=Provides information about the Debian distributions' releases
 EAPI=6
 HOMEPAGE=https://debian.org
 IUSE=python test python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=ISC
 RDEPEND=dev-lang/perl:= python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) dev-util/distro-info-data
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://debian/pool/main/d/distro-info/distro-info_0.14.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=distutils-r1	583a05d30524485fda6869c772682ecd	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=7ec7e96e398b500b59bfc56a10fc01a2
+_md5_=0a8bde84e92996a47648569f81537022
