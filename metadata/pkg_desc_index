@@ -2198,7 +2198,7 @@ app-text/ansifilter 2.3: Handles text files containing ANSI terminal escape code
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
-app-text/asa 1.1 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
+app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 8.6.9-r3 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r1 0.60.6.1-r3 0.60.6.1-r4: A spell checker replacement for ispell
 app-text/atril 1.12.2-r3 1.14.2 1.16.1: Atril document viewer for MATE
@@ -12098,7 +12098,7 @@ mail-client/roundcube 1.2.3: A browser-based multilingual IMAP client with an ap
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.6.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.8.0 45.5.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 31.8.0 38.8.0 45.6.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
