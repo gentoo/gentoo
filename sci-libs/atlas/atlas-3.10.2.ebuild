@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/math-atlas/${PN}${PV}.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fortran generic lapack static-libs threads"
 
 RDEPEND=""
