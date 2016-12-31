@@ -4,7 +4,7 @@ DESCRIPTION=Extended ROOT remote file server
 EAPI=6
 HOMEPAGE=http://xrootd.org/
 IUSE=doc fuse http kerberos readline ssl test
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-3
 RDEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:0= )
 REQUIRED_USE=http? ( kerberos ssl )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://xrootd.org/download/v4.4.0/xrootd-4.4.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	841d8d6fc58d18f89ca4920900fd8d2a	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=47ebe8792e2660967fde16a9ebb266fd
+_md5_=37e32016086afd5787b3b6ac2d567b05
