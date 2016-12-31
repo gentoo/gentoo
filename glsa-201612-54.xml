@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201612-54">
+  <title>Chicken: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chicken, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">chicken</product>
+  <announced>December 31, 2016</announced>
+  <revised>December 31, 2016: 1</revised>
+  <bug>467966</bug>
+  <bug>486350</bug>
+  <bug>510712</bug>
+  <bug>536448</bug>
+  <bug>552202</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-scheme/chicken" auto="yes" arch="*">
+      <unaffected range="ge">4.10.0-r1</unaffected>
+      <vulnerable range="lt">4.10.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chicken is a scheme interpreter and native scheme to C compiler.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chicken. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chicken users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-scheme/chicken-4.10.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2024">CVE-2013-2024</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-4385">CVE-2013-4385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3776">CVE-2014-3776</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9651">CVE-2014-9651</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4556">CVE-2015-4556</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 21 Dec 2015 14:54:52 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 15:19:08 +0000">b-man</metadata>
+</glsa>
