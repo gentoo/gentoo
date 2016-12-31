@@ -13,8 +13,8 @@ Signed-off-by: Mike Frysinger <vapier@gentoo.org>
 
 diff --git a/src/fsync.c b/src/fsync.c
 index 1706571..3bec719 100644
---- a/src/fsync.c
-+++ b/src/fsync.c
+--- a/fsync.c
++++ b/fsync.c
 @@ -30,6 +30,7 @@
  #include <string.h>
  #include <ncurses.h>
