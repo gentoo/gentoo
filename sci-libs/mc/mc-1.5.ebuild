@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="
 	sci-libs/amd
 	sci-libs/gamer
 	sci-libs/punc
-	sci-libs/superlu
+	<sci-libs/superlu-5
 	sci-libs/umfpack
 	virtual/blas
 	virtual/lapack"
