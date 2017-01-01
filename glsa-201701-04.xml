@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-04">
+  <title>Mutt: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in Mutt might allow remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">mutt</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>530842</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">1.5.23-r5</unaffected>
+      <vulnerable range="lt">1.5.23-r5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but very powerful text-based mail client.</p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow was discovered in Mutt’s mutt_substrdup
+      function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/mutt-1.5.23-r5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9116">CVE-2014-9116</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 11:02:45 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 15:05:18 +0000">b-man</metadata>
+</glsa>
