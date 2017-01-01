@@ -17,7 +17,17 @@ RESTRICT="test" # needs a graphics set in order to test
 
 RDEPEND="!dedicated? (
 		media-libs/libsdl[sound,X,video]
-		icu? ( dev-libs/icu:= )
+		icu? (
+			|| (
+				(
+					dev-libs/icu-layoutex
+					dev-libs/icu-le-hb
+					>=dev-libs/icu-58.1
+				)
+				<dev-libs/icu-58.1
+			)
+			dev-libs/icu:=
+		)
 		truetype? (
 			media-libs/fontconfig
 			media-libs/freetype:2

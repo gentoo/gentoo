@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils confutils flag-o-matic
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="anondel anonperm anonren anonres caps charconv implicittls ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
+IUSE="anondel anonperm anonren anonres caps charconv implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
 
 REQUIRED_USE="implicittls? ( ssl )"
 
@@ -25,7 +25,10 @@ DEPEND="caps? ( sys-libs/libcap )
 	mysql? ( virtual/mysql )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:= )
-	ssl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
+		libressl? ( dev-libs/libressl:= )
+	)
 	sysquota? ( sys-fs/quota[-rpc] )
 	xinetd? ( virtual/inetd )"
 
@@ -34,9 +37,9 @@ RDEPEND="${DEPEND}
 	net-ftp/ftpbase
 	selinux? ( sec-policy/selinux-ftp )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.28-pam.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.28-pam.patch
+)
 
 src_configure() {
 	# adjust max user length to something more appropriate
@@ -44,6 +47,7 @@ src_configure() {
 	sed -e "s:# define MAX_USER_LENGTH 32U:# define MAX_USER_LENGTH 127U:" \
 		-i "${S}/src/ftpd.h" || die "sed failed"
 
+	# required for confutils.eclass
 	local my_conf=""
 
 	# Let's configure the USE-enabled stuff
@@ -62,7 +66,7 @@ src_configure() {
 
 	# noiplog is a negative flag, we don't want that enabled by default,
 	# so we handle it manually, as confutils can't do that
-	use noiplog && my_conf="${my_conf} --without-iplogging"
+	use noiplog && my_conf+=" --without-iplogging"
 
 	# Those features are only configurable like this, see bug #179375.
 	use anondel && append-cppflags -DANON_CAN_DELETE
@@ -74,30 +78,32 @@ src_configure() {
 	# Do not auto-use SSP -- let the user select this.
 	export ax_cv_check_cflags___fstack_protector_all=no
 
-	econf \
-		--with-altlog \
-		--with-cookie \
-		--with-diraliases \
-		--with-extauth \
-		--with-ftpwho \
-		--with-language=${PUREFTPD_LANG:=english} \
-		--with-peruserlimits \
-		--with-privsep \
-		--with-puredb \
-		--with-quotas \
-		--with-ratios \
-		--with-throttling \
-		--with-uploadscript \
-		--with-virtualhosts \
-		--enable-largefile \
-		${my_conf}
+	local myeconfargs=(
+		--with-altlog
+		--with-cookie
+		--with-diraliases
+		--with-extauth
+		--with-ftpwho
+		--with-language=${PUREFTPD_LANG:=english}
+		--with-peruserlimits
+		--with-privsep
+		--with-puredb
+		--with-quotas
+		--with-ratios
+		--with-throttling
+		--with-uploadscript
+		--with-virtualhosts
+		--enable-largefile
+	)
+	econf "${myeconfargs[@]}" "${my_conf}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	local DOCS=( AUTHORS CONTACT ChangeLog FAQ HISTORY INSTALL README* NEWS )
 
-	dodoc AUTHORS CONTACT ChangeLog FAQ HISTORY INSTALL README* NEWS
+	default
 
+	newinitd "${FILESDIR}/pure-ftpd.rc11" ${PN}
 	newconfd "${FILESDIR}/pure-ftpd.conf_d-3" ${PN}
 
 	if use implicittls ; then
@@ -105,13 +111,11 @@ src_install() {
 			|| die "Adjusting default server port for implicittls usage failed!"
 	fi
 
-	newinitd "${FILESDIR}/pure-ftpd.rc11" pure-ftpd
-
-	dodir /var/lib/run/${PN}
+	keepdir /var/lib/run/${PN}
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
-		newins "${FILESDIR}/pure-ftpd.xinetd" pure-ftpd
+		newins "${FILESDIR}/pure-ftpd.xinetd" ${PN}
 	fi
 
 	if use ldap ; then
