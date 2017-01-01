@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~hppa ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gnome"
 
 RDEPEND=">=sci-libs/libqalculate-0.9.9:=
