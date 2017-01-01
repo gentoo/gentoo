@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-05">
+  <title>BusyBox: Denial of Service</title>
+  <synopsis>A vulnerability in BusyBox might allow remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">busybox</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>590478</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/busybox" auto="yes" arch="*">
+      <unaffected range="ge">1.25.1</unaffected>
+      <vulnerable range="lt">1.25.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BusyBox is a set of tools for embedded systems and is a replacement for
+      GNU Coreutils.
+    </p>
+  </background>
+  <description>
+    <p>The recv_and_process_client_pkt function in networking/ntpd.c in BusyBox
+      allows remote attackers to cause a Denial of Service (CPU and bandwidth
+      consumption) via a forged NTP packet, which triggers a communication
+      loop.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker might send a specially crafted package to a machine
+      running BusyBox ntpd, possibly resulting in a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BusyBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/busybox-1.25.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6301">CVE-2016-6301</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:19:19 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 15:33:56 +0000">b-man</metadata>
+</glsa>
