@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://ichi2.net/pyosd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ppc ~x86"
 IUSE="doc examples"
 
 DEPEND=">=x11-libs/xosd-2.2.4"
