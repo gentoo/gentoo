@@ -6619,14 +6619,14 @@ dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Rel
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.551 1.600: Minimalistic data validation
-dev-perl/Variable-Magic 0.580.0 0.590.0 0.600.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.590.0 0.600.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
-dev-perl/WWW-Curl 4.150.0-r1 4.170.0: Perl extension interface for libcurl
+dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Dict-Leo-Org 1.400.0: Commandline interface to http://dict.leo.org/
-dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0 1.790.0: Handy web browsing in a Perl object
+dev-perl/WWW-Mechanize 1.750.0 1.790.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 1.3.0-r1: Paste on www.pastebin.com without API keys
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
@@ -7046,7 +7046,7 @@ dev-python/PyECLib 1.2.0: Messaging API for RPC and notifications over a number 
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.2 1.27.1 1.28: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
-dev-python/PyQt4 4.11.1 4.11.4-r1 4.12_pre1606101416-r1 4.12: Python bindings for the Qt framework
+dev-python/PyQt4 4.11.4-r1 4.12: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7 5.7.1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5: SOCKS client module
@@ -8281,7 +8281,7 @@ dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and supe
 dev-python/pyzor 0.5.0-r2 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.8.4-r1 2.9.2-r1 2.9.3-r1 2.9.4: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.9.2-r1 2.9.4: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtawesome 0.3.3: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.1.1 4.2.1: Qt-based console for Jupyter with support for rich media output
@@ -8402,7 +8402,7 @@ dev-python/simples3 1.0: A fairly simple, decently quick python interface to Ama
 dev-python/simplesettings 0.5-r1: Simple settings initialization
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.16.2 4.16.9 4.18 4.18.1 4.19 4.9999: Python extension module generator for C and C++ libraries
+dev-python/sip 4.18 4.18.1 4.19 4.9999: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0: Python 2 and 3 compatibility library
 dev-python/skype4py 1.0.35-r1: Python wrapper for the Skype API
 dev-python/sleekxmpp 1.3.0 1.3.1 1.3.1-r1: Python library for XMPP
@@ -16452,7 +16452,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823 20150124: 2D and 3D data visualization and analysis program
-sci-visualization/veusz 1.11 1.24 1.25.1: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.11 1.25.1: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0 2.9.2 2.10.3: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
@@ -18443,7 +18443,7 @@ x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.36.8-r1 1.38.1 1.40.1 1.40.2 1.40.3: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.34.0 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.8.4-r2 2.9.2-r1 2.9.3-r1 2.9.3-r2 2.9.4: A Qt port of Neil Hodgson's Scintilla C++ editor class
+x11-libs/qscintilla 2.9.2-r1 2.9.4: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.6.0-r1 0.7.0 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r1: 2D plotting library for Qt4 and Qt5
