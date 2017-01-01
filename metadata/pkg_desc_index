@@ -17276,7 +17276,7 @@ sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
 sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 7.12 9999: GNU debugger
 sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.7 0.19.8.1: GNU locale utilities
-sys-devel/gnuconfig 20151214 20160402 20161104 99999999: Updated config.sub and config.guess file from GNU
+sys-devel/gnuconfig 20160402 20161104 20170101 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 4.9.4 5.3.0 5.4.0: 64bit kernel compiler
