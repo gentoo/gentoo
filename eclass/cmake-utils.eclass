@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,7 +57,7 @@ _CMAKE_UTILS_ECLASS=1
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
 # Specify the minimum required CMake version.
-: ${CMAKE_MIN_VERSION:=3.2.2}
+: ${CMAKE_MIN_VERSION:=3.5.2}
 
 # @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES
 # @DESCRIPTION:
