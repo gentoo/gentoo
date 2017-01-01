@@ -13,8 +13,8 @@ Signed-off-by: Mike Frysinger <vapier@gentoo.org>
 
 diff --git a/src/Makefile b/src/Makefile
 index de24551..9a3cc05 100644
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -3,14 +3,22 @@ HAS_GTK_GUI = 1
  
  DESTDIR =
