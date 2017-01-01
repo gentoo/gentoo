@@ -11636,7 +11636,7 @@ kde-apps/kolourpaint 16.08.3 16.12.0: Paint Program by KDE
 kde-apps/kommander 16.08.3 16.12.0: KDE dialog system for scripting
 kde-apps/kompare 16.08.3 16.12.0: A program to view the differences between files
 kde-apps/konq-plugins 16.08.3: Various plugins for konqueror
-kde-apps/konqueror 16.08.3 16.12.0: Web browser and file manager based on KDE Frameworks
+kde-apps/konqueror 16.08.3 16.12.0-r1: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 16.08.3 16.12.0: Galactic Strategy KDE Game
 kde-apps/konsole 16.08.3-r1 16.12.0: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.12.0: Command line interface to KDE calendars
