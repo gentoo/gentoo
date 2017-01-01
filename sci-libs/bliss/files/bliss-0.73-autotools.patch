@@ -13,9 +13,9 @@ diff -Naur bliss-0.72-fedora/config/.dummy bliss-0.72/config/.dummy
 diff -Naur bliss-0.72-fedora/configure.ac bliss-0.72/configure.ac
 --- bliss-0.72-fedora/configure.ac	1969-12-31 17:00:00.000000000 -0700
 +++ bliss-0.72/configure.ac	2013-04-28 14:40:42.283242722 -0600
-@@ -0,0 +1,31 @@
+@@ -0,0 +1,32 @@
 +AC_PREREQ([2.65])
-+AC_INIT([bliss], [0.72], [Tommi.Junttil@kk.fi])
++AC_INIT([bliss], [0.73], [Tommi.Junttil@kk.fi])
 +
 +AC_CONFIG_AUX_DIR(config)
 +AC_CONFIG_MACRO_DIR(config)
@@ -44,6 +44,7 @@ diff -Naur bliss-0.72-fedora/configure.ac bliss-0.72/configure.ac
 +
 +AC_CONFIG_FILES([Makefile])
 +AC_CONFIG_FILES([bliss.pc])
++AC_CONFIG_FILES([bliss.1])
 +AC_OUTPUT
 diff -Naur bliss-0.72-fedora/bliss.pc.in bliss-0.72/bliss.pc.in
 --- bliss-0.72-fedora/bliss.pc.in	1969-12-31 17:00:00.000000000 -0700
@@ -62,67 +63,6 @@ diff -Naur bliss-0.72-fedora/bliss.pc.in bliss-0.72/bliss.pc.in
 +Libs: -L${libdir} -lbliss @GMP@
 +Libs.private: -lm
 +Cflags: -I${includedir}
-diff -Naur bliss-0.72-fedora/Makefile bliss-0.72/Makefile
---- bliss-0.72-fedora/Makefile	2013-04-28 14:40:10.543128514 -0600
-+++ bliss-0.72/Makefile	1969-12-31 17:00:00.000000000 -0700
-@@ -1,57 +0,0 @@
--CFLAGS = -I.
--CFLAGS += -g
--#CFLAGS += -pg
--CFLAGS += -Wall
--CFLAGS += --pedantic
--CFLAGS += -O9
--#CFLAGS += -DBLISS_DEBUG
--CFLAGS += -fPIC
--
--SRCS = defs.cc graph.cc partition.cc orbit.cc uintseqhash.cc heap.cc
--SRCS += timer.cc utils.cc bliss_C.cc
--
--OBJS = $(addsuffix .o, $(basename $(SRCS)))
--
--GMPOBJS = $(addsuffix g,  $(OBJS))
--
--LIB =
--#LIB += /usr/lib/ccmalloc.o -ldl
--
--CC = g++
--RANLIB = ranlib
--AR = ar
--BLISSLIB = libbliss.a
--
--gmp:	LIB += -lgmp
--gmp:	CFLAGS += -DBLISS_USE_GMP
--
--normal:	bliss
--gmp:	bliss_gmp
--
--
--all:: lib bliss
--
--%.o %.og:	%.cc
--	$(CC) $(CFLAGS) -c -o $@ $<
--
--lib: $(OBJS)
--	rm -f $(BLISSLIB)
--	$(AR) cr $(BLISSLIB) $(OBJS)
--	$(RANLIB) $(BLISSLIB)
--
--lib_gmp: $(GMPOBJS)
--	rm -f $(BLISSLIB)
--	$(AR) cr $(BLISSLIB) $(GMPOBJS)
--	$(RANLIB) $(BLISSLIB)
--
--bliss: bliss.o lib $(OBJS)
--	$(CC) $(CFLAGS) -o bliss bliss.o $(OBJS) $(LIB)
--
--bliss_gmp: bliss.og lib_gmp $(GMPOBJS)
--	$(CC) $(CFLAGS) -o bliss bliss.og $(GMPOBJS) $(LIB)
--
--
--clean:
--	rm -f bliss $(BLISSLIB) $(OBJS) bliss.o $(GMPOBJS) bliss.og
--
--# DO NOT DELETE
 diff -Naur bliss-0.72-fedora/Makefile.am bliss-0.72/Makefile.am
 --- bliss-0.72-fedora/Makefile.am	1969-12-31 17:00:00.000000000 -0700
 +++ bliss-0.72/Makefile.am	2013-04-28 14:47:26.944698789 -0600
