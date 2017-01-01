@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,6 +66,8 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-apps/konq-plugins
 	!kde-apps/libkonq:5
 "
+
+PATCHES=( "${FILESDIR}/${PN}-16.12.0-crashfix.patch" )
 
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc

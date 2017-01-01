@@ -1,0 +1,29 @@
+From 4c6575a9852e3dfcf85bd849fa953dcc083029d9 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Wed, 21 Dec 2016 08:51:10 +0100
+Subject: Set Qt::AA_ShareOpenGLContexts like what Qt tells me to do:
+
+"initialize: Qt WebEngine seems to be initialized from a plugin. Please set Qt::AA_ShareOpenGLContexts using QCoreApplication::setAttribute before 
+constructing QGuiApplication."
+---
+ src/konqmain.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/konqmain.cpp b/src/konqmain.cpp
+index 774225e..73c6a2f 100644
+--- a/src/konqmain.cpp
++++ b/src/konqmain.cpp
+@@ -58,7 +58,8 @@ static KonqPreloadingHandler s_preloadingHandler;
+ 
+ extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
+ {
+-    KonquerorApplication app(argc, argv);    
++    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts); // says QtWebEngine
++    KonquerorApplication app(argc, argv);
+     KLocalizedString::setApplicationDomain("konqueror");
+ 
+     KAboutData aboutData("konqueror", i18n("Konqueror"), KONQUEROR_VERSION);
+-- 
+cgit v0.11.2
+
+
