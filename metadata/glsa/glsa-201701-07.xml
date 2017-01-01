@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-07">
+  <title>Open vSwitch: Remote execution of arbitrary code</title>
+  <synopsis>A buffer overflow in Open vSwitch might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">openvswitch</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 2</revised>
+  <bug>577568</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openvswitch" auto="yes" arch="*">
+      <unaffected range="ge">2.5.0</unaffected>
+      <vulnerable range="lt">2.5.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Open vSwitch is a production quality multilayer virtual switch.</p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in lib/flow.c in ovs-vswitchd.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, using a specially crafted MPLS packet, could execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Open vSwitch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openvswitch-2.5.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2074">
+      CVE-2016-2074
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:31:09 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 16:00:54 +0000">b-man</metadata>
+</glsa>
