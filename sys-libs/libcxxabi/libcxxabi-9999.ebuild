@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,6 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
-CMAKE_MIN_VERSION=3.4.3
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib git-r3 python-any-r1
