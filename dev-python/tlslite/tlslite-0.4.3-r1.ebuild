@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,6 @@ IUSE="doc gmp"
 RESTRICT="test"
 
 DEPEND="
-	>=dev-libs/cryptlib-3.3.3[python,${PYTHON_USEDEP}]
 	|| (
 		dev-python/m2crypto[${PYTHON_USEDEP}]
 		dev-python/pycrypto[${PYTHON_USEDEP}]
