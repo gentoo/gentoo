@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ia64 ppc ~ppc64 x86"
 IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
 
 # GTK+:2 does not offer static libaries.
