@@ -4,11 +4,11 @@ DESCRIPTION=A performance data analyzer for nagios
 EAPI=5
 HOMEPAGE=http://www.pnp4nagios.org/
 IUSE=apache2
-KEYWORDS=amd64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/php:*[filter,gd,json,simplexml,xml,zlib] >=net-analyzer/rrdtool-1.2[graph,perl] || ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 ) virtual/perl-Getopt-Long virtual/perl-Time-HiRes media-fonts/dejavu apache2? ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authz_core,apache2_modules_rewrite] ) apache2? ( =www-servers/apache-2* )
 SLOT=0
 SRC_URI=mirror://sourceforge/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1f5c16b85eb320fab771dcc52ec82e97
+_md5_=80b0c9364251d9fdd077d5db508cf290

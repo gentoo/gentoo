@@ -4,11 +4,11 @@ DESCRIPTION=A fast, lightweight imageviewer using imlib2
 EAPI=6
 HOMEPAGE=http://feh.finalrewind.org/
 IUSE=debug curl exif test xinerama
-KEYWORDS=amd64 ~arm ~mips ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~mips ppc ~ppc64 x86
 LICENSE=feh
 RDEPEND=media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0
 SLOT=0
 SRC_URI=http://feh.finalrewind.org/feh-2.18.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9403d79a6f3b63dd2280cd0d7f2aaf8e
+_md5_=25c47f712b4a8f4a5544301f5ec8569c
