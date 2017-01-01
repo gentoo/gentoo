@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-09">
+  <title>Xdg-Utils: Command injection</title>
+  <synopsis>A command injection vulnerability in Xdg-Utils may allow for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">xdg-utils</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>472888</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="x11-misc/xdg-utils" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1</unaffected>
+      <vulnerable range="lt">1.1.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xdg-Utils is a set of tools allowing all applications to easily
+      integrate with the Free Desktop configuration.
+    </p>
+  </background>
+  <description>
+    <p>An eval injection vulnerability was discovered in Xdg-Utils.</p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could execute arbitrary code via the URL
+      argument to xdg-open.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xdg-Utils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-misc/xdg-utils-1.1.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9622">CVE-2014-9622</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 01 Jan 2017 12:56:54 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 16:34:46 +0000">b-man</metadata>
+</glsa>
