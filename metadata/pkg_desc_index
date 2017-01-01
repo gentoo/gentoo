@@ -15166,7 +15166,7 @@ net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamlink 0.1.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.4 5.5.1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-misc/stunnel 5.34-r1 5.35 5.36 5.37 5.38: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.34-r1 5.35 5.36 5.37 5.38 5.39: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.7 1.2.9: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8 3.5_p9: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
