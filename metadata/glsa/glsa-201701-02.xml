@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-02">
+  <title>Bash: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were found in Bash, the worst of which may
+    allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">bash</product>
+  <announced>January 01, 2017</announced>
+  <revised>January 01, 2017: 1</revised>
+  <bug>595268</bug>
+  <bug>600174</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/bash" auto="yes" arch="*">
+      <unaffected range="ge">4.3_p48-r1</unaffected>
+      <vulnerable range="lt">4.3_p48-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Bash is the standard GNU Bourne Again SHell.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Bash. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Bash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/bash-4.3_p48-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7543">CVE-2016-7543</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9401">CVE-2016-9401</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Jun 2016 09:45:02 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 01 Jan 2017 13:44:22 +0000">whissi</metadata>
+</glsa>
