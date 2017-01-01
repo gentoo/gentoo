@@ -1,24 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-DIST_AUTHOR=PJCJ
-DIST_VERSION=1.21
+DIST_AUTHOR=ANDYA
+DIST_VERSION=1.00
 inherit perl-module
 
-DESCRIPTION='Code coverage metrics for Perl'
+DESCRIPTION="Simple parallel execution"
+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	virtual/perl-Digest-MD5
+	virtual/perl-IO
 	virtual/perl-Storable
 "
-DEPEND="
-	virtual/perl-ExtUtils-MakeMaker
+DEPEND="${RDEPEND}
+	dev-perl/Module-Build
 	test? (
 		virtual/perl-Test-Simple
 	)
