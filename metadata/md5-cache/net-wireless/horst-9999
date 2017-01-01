@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install unpack
 DEPEND=sys-libs/ncurses:0 pcap? ( net-libs/libpcap ) test? ( sys-devel/sparse ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Small 802.11 wireless LAN analyzer
 EAPI=5
-HOMEPAGE=http://br1.einfach.org/tech/horst/
+HOMEPAGE=https://github.com/br101/horst
 IUSE=debug +pcap test
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0 pcap? ( net-libs/libpcap )
@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=20f9d19582efa8c0264a8ddb1b1ddead
+_md5_=1d544f1f6efceb6306d2f93650ff7af6
