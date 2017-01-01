@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,8 +63,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
-	"${FILESDIR}"/${PN}-3.2.20-rtnl_tc_get_ops.patch
-	"${FILESDIR}"/${PN}-3.2.20-cache-api.patch
+	"${FILESDIR}"/${PN}-3.2.28-in6.patch
 )
 
 src_prepare() {
