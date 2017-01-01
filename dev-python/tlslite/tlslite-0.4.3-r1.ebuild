@@ -19,11 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc gmp"
 RESTRICT="test"
 
-DEPEND="
-	|| (
-		dev-python/m2crypto[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 # Tests still hang

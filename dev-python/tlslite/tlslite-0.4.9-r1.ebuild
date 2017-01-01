@@ -18,11 +18,7 @@ KEYWORDS="~amd64 ~x86"
 #Refrain for now setting IUSE test and deps of test given test restricted.
 IUSE="doc"
 
-DEPEND="
-	|| (
-		dev-python/m2crypto[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 RESTRICT="test"
