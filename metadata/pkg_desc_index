@@ -14651,7 +14651,7 @@ net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by sign
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1 2.56.0: An HTTP library implementation in C
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 2.0.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
+net-libs/libssh 0.7.3-r1 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
@@ -15395,7 +15395,7 @@ net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.5.14 1.5.18 1.5.19 1.6.9 1.6.10 1.6.10-r1 1.6.11 1.6.9999 1.7.0 1.7.1 1.7.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/http-replicator 3.0-r4 3.0-r6 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
+net-proxy/http-replicator 3.0-r7 4.0_alpha2-r5: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
@@ -18716,7 +18716,7 @@ x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit chang
 x11-misc/xdesktopwaves 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.1 1.1.1-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.1 1.1.1-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.3 0.4 0.5: Small X utility to perform elementary actions on windows
