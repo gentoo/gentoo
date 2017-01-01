@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,6 +20,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
+
+src_prepare() {
+	kde5_src_prepare
+
+	# ensure at least one version-free atom so that hunspell is found
+	sed -e "/FIND_LIBRARY(HUNSPELL_LIBRARIES/ s/\bhunspell\b-[0-9.]*/hunspell/" \
+		-i cmake/FindHUNSPELL.cmake || die
+}
 
 src_configure() {
 	local mycmakeargs=(
