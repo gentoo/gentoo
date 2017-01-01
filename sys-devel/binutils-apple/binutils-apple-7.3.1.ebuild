@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -77,6 +77,12 @@ src_prepare() {
 	epatch "${S}"/ld64-241.9-get-comm-align.patch
 	epatch "${S}"/ld64-241.9-cc_md5.patch
 	epatch "${S}"/ld64-264.3.102-bitcode-case.patch
+
+	# workound llvm-3.9.{0,1} issue
+	# https://bugs.gentoo.org/show_bug.cgi?id=603580
+	# https://groups.google.com/forum/#!topic/llvm-dev/JY6nuKE__sU
+	# http://lists.llvm.org/pipermail/cfe-commits/Week-of-Mon-20160829/169553.html
+	sed -i -e '/COMPILE_TIME_ASSERT/d' ld/parsers/libunwind/*.hpp || die
 
 	# provide missing headers from libunwind and dyld
 	mkdir -p include/{mach,mach-o/arm} || die
