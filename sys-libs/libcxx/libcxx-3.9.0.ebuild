@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,6 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 EGIT_REPO_URI="http://llvm.org/git/libcxx.git
 	https://github.com/llvm-mirror/libcxx.git"
-CMAKE_MIN_VERSION=3.4.3
 PYTHON_COMPAT=( python2_7 )
 
 [[ ${PV} == 9999 ]] && SCM="git-r3" || SCM=""
