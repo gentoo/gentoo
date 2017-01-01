@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI="https://ktsuss.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~mips ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.12.11:2
