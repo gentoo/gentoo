@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 
 DEPEND=">=dev-erlang/fast_tls-1.0.7
 	>=dev-erlang/p1_utils-1.0.5

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://download.gna.org/songwrite/${MY_P}.tar.gz"
 HOMEPAGE="http://home.gna.org/oomadness/en/editobj/index.html"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ppc ~x86"
 SLOT="0"
 IUSE="+examples"
 

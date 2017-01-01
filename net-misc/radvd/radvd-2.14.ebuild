@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://v6web.litech.org/radvd/dist/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ~ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~arm64 hppa ppc sparc x86 ~x86-fbsd"
 IUSE="kernel_FreeBSD selinux test"
 
 CDEPEND="dev-libs/libdaemon"
