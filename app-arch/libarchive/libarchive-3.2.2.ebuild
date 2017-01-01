@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit eutils multilib-minimal toolchain-funcs autotools
+inherit eutils libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="BSD tar command"
 HOMEPAGE="http://www.libarchive.org/"
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	eautoreconf # elibtoolize is required for Solaris sol2_ld linker fix
+	elibtoolize  # is required for Solaris sol2_ld linker fix
 }
 
 multilib_src_configure() {
