@@ -5338,6 +5338,7 @@ dev-perl/Bio-SamTools 1.420.0: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
+dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.120.0-r1: Calculate business hours in a time period
 dev-perl/Business-ISBN 2.50.0-r1 2.90.200_rc: Work with ISBN as objects
@@ -5375,6 +5376,7 @@ dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Packer 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
+dev-perl/CSS-Tiny 1.200.0: Read/Write .css files with as little code as possible
 dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-FastMmap 1.400.0 1.440.0: Uses an mmaped file to act as a shared memory interprocess cache
@@ -5601,7 +5603,7 @@ dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0 0.60.0 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0 1.70.0: check that a library is available
-dev-perl/Devel-Cover 1.200.0 1.210.0 1.230.0: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.230.0 1.230.0-r1: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
@@ -6219,6 +6221,7 @@ dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using pol
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
 dev-perl/POSIX-strftime-Compiler 0.410.0: GNU C library compatible strftime for loggers and servers
 dev-perl/PPI 1.220: Parse, Analyze and Manipulate Perl (without perl)
+dev-perl/PPI-HTML 1.80.0: Generate syntax-hightlighted HTML for Perl using PPI
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.190.0: Utility methods and base class for manipulating Perl via PPI
 dev-perl/PPIx-Regexp 0.48.0: Represent a regular expression of some sort
@@ -6234,6 +6237,7 @@ dev-perl/Pango 1.224.0-r1 1.227.0: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
 dev-perl/Parallel-ForkManager 1.170.0 1.180.0: A simple parallel processing fork manager
+dev-perl/Parallel-Iterator 1.0.0: Simple parallel execution
 dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
