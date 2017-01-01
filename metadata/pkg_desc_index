@@ -6748,7 +6748,7 @@ dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
-dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
+dev-perl/mime-construct 1.900.0-r1 1.1100.0: construct and optionally mail MIME messages
 dev-perl/multidimensional 0.11.0: disables multidimensional array emulation
 dev-perl/namespace-autoclean 0.130.0-r1 0.280.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.210.0-r1 0.260.0: Keep imports and functions out of your namespace
