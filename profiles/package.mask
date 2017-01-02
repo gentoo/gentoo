@@ -226,11 +226,6 @@ app-mobilephone/gsmlib
 # Please migrate to it's successor - net-misc/bgpq3
 net-misc/bgpq
 
-# Craig Andrews <candrews@integralblue.com> (25 Oct 2016)
-# >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
-# which is hard masked see #574788
->=media-tv/kodi-17.0_beta3
-
 # Julian Ospald <hasufell@gentoo.org> (21 Jul 2013)
 # Mask all unfetchable versions and those with tons of random
 # bugs and segfaults (all). Don't ask for a version bump unless
