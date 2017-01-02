@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Daniel Campbell <zlg@gentoo.org> (02 Jan 2016)
+# Google Code shutdown and change of versioning scheme
+# needs 'old' versions masked (v94 -> v1.0.0)
+# Masked for removal in 30 days.
+=x11-misc/alock-94
+=x11-misc/alock-94-r1
+=x11-misc/alock-94-r2
+
 # David Seifert <soap@gentoo.org> (29 Dec 2016)
 # Ancient codebase, maintenance nightmare, dead
 # upstream, games-emulation/vbam is spiritual successor
