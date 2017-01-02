@@ -1,0 +1,10 @@
+--- a/src/vfs/vfs-volume-nohal.c
++++ b/src/vfs/vfs-volume-nohal.c
+@@ -36,6 +36,7 @@
+ 
+ #include <signal.h>  // kill
+ #include <linux/kdev_t.h>  // MAJOR MINOR
++#include <sys/sysmacros.h> // needed for dev_t
+  
+ #ifdef HAVE_STATVFS
+ #include <sys/statvfs.h>
