@@ -1,0 +1,395 @@
+diff -Nur sundials-2.7.0.orig/src/arkode/CMakeLists.txt sundials-2.7.0/src/arkode/CMakeLists.txt
+--- sundials-2.7.0.orig/src/arkode/CMakeLists.txt	2016-09-26 22:16:52.000000000 +0000
++++ sundials-2.7.0/src/arkode/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -127,7 +127,7 @@
+     PROPERTIES OUTPUT_NAME sundials_arkode CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the ARKODE library
+-  INSTALL(TARGETS sundials_arkode_static DESTINATION lib)
++  INSTALL(TARGETS sundials_arkode_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -146,8 +146,10 @@
+   SET_TARGET_PROPERTIES(sundials_arkode_shared
+     PROPERTIES VERSION ${arkodelib_VERSION} SOVERSION ${arkodelib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_arkode_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
++
+   # Install the ARKODE library
+-  INSTALL(TARGETS sundials_arkode_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_arkode_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/arkode/fcmix/CMakeLists.txt sundials-2.7.0/src/arkode/fcmix/CMakeLists.txt
+--- sundials-2.7.0.orig/src/arkode/fcmix/CMakeLists.txt	2016-09-26 22:16:52.000000000 +0000
++++ sundials-2.7.0/src/arkode/fcmix/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -70,7 +70,7 @@
+   PROPERTIES OUTPUT_NAME sundials_farkode CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Install the FARKODE library
+-INSTALL(TARGETS sundials_farkode_static DESTINATION lib)
++INSTALL(TARGETS sundials_farkode_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ #
+ MESSAGE(STATUS "Added ARKODE FCMIX module")
+diff -Nur sundials-2.7.0.orig/src/cvode/CMakeLists.txt sundials-2.7.0/src/cvode/CMakeLists.txt
+--- sundials-2.7.0.orig/src/cvode/CMakeLists.txt	2016-09-26 22:17:07.000000000 +0000
++++ sundials-2.7.0/src/cvode/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -134,7 +134,7 @@
+     PROPERTIES OUTPUT_NAME sundials_cvode CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the CVODE library
+-  INSTALL(TARGETS sundials_cvode_static DESTINATION lib)
++  INSTALL(TARGETS sundials_cvode_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -153,8 +153,10 @@
+   SET_TARGET_PROPERTIES(sundials_cvode_shared
+     PROPERTIES VERSION ${cvodelib_VERSION} SOVERSION ${cvodelib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_cvode_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
++
+   # Install the CVODE library
+-  INSTALL(TARGETS sundials_cvode_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_cvode_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/cvode/fcmix/CMakeLists.txt sundials-2.7.0/src/cvode/fcmix/CMakeLists.txt
+--- sundials-2.7.0.orig/src/cvode/fcmix/CMakeLists.txt	2016-09-26 22:17:07.000000000 +0000
++++ sundials-2.7.0/src/cvode/fcmix/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -57,7 +57,7 @@
+   PROPERTIES OUTPUT_NAME sundials_fcvode CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Install the FCVODE library
+-INSTALL(TARGETS sundials_fcvode_static DESTINATION lib)
++INSTALL(TARGETS sundials_fcvode_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ #
+ MESSAGE(STATUS "Added CVODE FCMIX module")
+diff -Nur sundials-2.7.0.orig/src/cvodes/CMakeLists.txt sundials-2.7.0/src/cvodes/CMakeLists.txt
+--- sundials-2.7.0.orig/src/cvodes/CMakeLists.txt	2016-09-26 22:17:15.000000000 +0000
++++ sundials-2.7.0/src/cvodes/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -121,7 +121,7 @@
+     PROPERTIES OUTPUT_NAME sundials_cvodes CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the CVODES library
+-  INSTALL(TARGETS sundials_cvodes_static DESTINATION lib)
++  INSTALL(TARGETS sundials_cvodes_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -140,8 +140,9 @@
+   SET_TARGET_PROPERTIES(sundials_cvodes_shared
+     PROPERTIES VERSION ${cvodeslib_VERSION} SOVERSION ${cvodeslib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_cvodes_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
+   # Install the CVODES library
+-  INSTALL(TARGETS sundials_cvodes_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_cvodes_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/ida/CMakeLists.txt sundials-2.7.0/src/ida/CMakeLists.txt
+--- sundials-2.7.0.orig/src/ida/CMakeLists.txt	2016-09-26 22:17:26.000000000 +0000
++++ sundials-2.7.0/src/ida/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -124,7 +124,7 @@
+     PROPERTIES OUTPUT_NAME sundials_ida CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the IDA library
+-  INSTALL(TARGETS sundials_ida_static DESTINATION lib)
++  INSTALL(TARGETS sundials_ida_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -143,8 +143,10 @@
+   SET_TARGET_PROPERTIES(sundials_ida_shared
+     PROPERTIES VERSION ${idalib_VERSION} SOVERSION ${idalib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_ida_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
++  
+   # Install the IDA library
+-  INSTALL(TARGETS sundials_ida_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_ida_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/ida/fcmix/CMakeLists.txt sundials-2.7.0/src/ida/fcmix/CMakeLists.txt
+--- sundials-2.7.0.orig/src/ida/fcmix/CMakeLists.txt	2016-09-26 22:17:26.000000000 +0000
++++ sundials-2.7.0/src/ida/fcmix/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -56,6 +56,6 @@
+   PROPERTIES OUTPUT_NAME sundials_fida CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Install the FIDA library
+-INSTALL(TARGETS sundials_fida_static DESTINATION lib)
++INSTALL(TARGETS sundials_fida_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ #
+ MESSAGE(STATUS "Added IDA FCMIX module")
+diff -Nur sundials-2.7.0.orig/src/idas/CMakeLists.txt sundials-2.7.0/src/idas/CMakeLists.txt
+--- sundials-2.7.0.orig/src/idas/CMakeLists.txt	2016-09-26 22:17:32.000000000 +0000
++++ sundials-2.7.0/src/idas/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -126,7 +126,7 @@
+     PROPERTIES OUTPUT_NAME sundials_idas CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the IDA library
+-  INSTALL(TARGETS sundials_idas_static DESTINATION lib)
++  INSTALL(TARGETS sundials_idas_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -145,8 +145,10 @@
+   SET_TARGET_PROPERTIES(sundials_idas_shared
+     PROPERTIES VERSION ${idaslib_VERSION} SOVERSION ${idaslib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_idas_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
++  
+   # Install the IDAS library
+-  INSTALL(TARGETS sundials_idas_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_idas_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/kinsol/CMakeLists.txt sundials-2.7.0/src/kinsol/CMakeLists.txt
+--- sundials-2.7.0.orig/src/kinsol/CMakeLists.txt	2016-09-26 22:17:39.000000000 +0000
++++ sundials-2.7.0/src/kinsol/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -134,7 +134,7 @@
+     PROPERTIES OUTPUT_NAME sundials_kinsol CLEAN_DIRECT_OUTPUT 1)
+ 
+   # Install the KINSOL library
+-  INSTALL(TARGETS sundials_kinsol_static DESTINATION lib)
++  INSTALL(TARGETS sundials_kinsol_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+@@ -153,8 +153,10 @@
+   SET_TARGET_PROPERTIES(sundials_kinsol_shared
+     PROPERTIES VERSION ${kinsollib_VERSION} SOVERSION ${kinsollib_SOVERSION})
+ 
++  TARGET_LINK_LIBRARIES(sundials_kinsol_shared -lm ${KLU_LIBRARIES} ${SUPERLUMT_LIBRARIES} ${LAPACK_LIBRARIES})
++  
+   # Install the KINSOL library
+-  INSTALL(TARGETS sundials_kinsol_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_kinsol_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+diff -Nur sundials-2.7.0.orig/src/kinsol/fcmix/CMakeLists.txt sundials-2.7.0/src/kinsol/fcmix/CMakeLists.txt
+--- sundials-2.7.0.orig/src/kinsol/fcmix/CMakeLists.txt	2016-09-26 22:17:39.000000000 +0000
++++ sundials-2.7.0/src/kinsol/fcmix/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -54,7 +54,7 @@
+   PROPERTIES OUTPUT_NAME sundials_fkinsol CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Install the FKINSOL library
+-INSTALL(TARGETS sundials_fkinsol_static DESTINATION lib)
++INSTALL(TARGETS sundials_fkinsol_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ #
+ MESSAGE(STATUS "Added KINSOL FCMIX module")
+diff -Nur sundials-2.7.0.orig/src/nvec_openmp/CMakeLists.txt sundials-2.7.0/src/nvec_openmp/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_openmp/CMakeLists.txt	2016-09-26 22:16:50.000000000 +0000
++++ sundials-2.7.0/src/nvec_openmp/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -51,7 +51,7 @@
+   ADD_LIBRARY(sundials_nvecopenmp_static STATIC ${nvecopenmp_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecopenmp_static
+     PROPERTIES OUTPUT_NAME sundials_nvecopenmp CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecopenmp_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecopenmp_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -65,7 +65,8 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecopenmp CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecopenmp_shared
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecopenmp_shared DESTINATION lib)
++  TARGET_LINK_LIBRARIES(sundials_nvecopenmp_shared -lm)
++  INSTALL(TARGETS sundials_nvecopenmp_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECOPENMP header files
+@@ -78,7 +79,7 @@
+     ADD_LIBRARY(sundials_fnvecopenmp_static STATIC ${fnvecopenmp_SOURCES})
+     SET_TARGET_PROPERTIES(sundials_fnvecopenmp_static
+       PROPERTIES OUTPUT_NAME sundials_fnvecopenmp CLEAN_DIRECT_OUTPUT 1)
+-    INSTALL(TARGETS sundials_fnvecopenmp_static DESTINATION lib)
++    INSTALL(TARGETS sundials_fnvecopenmp_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_STATIC_LIBS)
+   IF(BUILD_SHARED_LIBS)
+     ADD_LIBRARY(sundials_fnvecopenmp_shared ${fnvecopenmp_SOURCES})
+@@ -86,7 +87,8 @@
+       PROPERTIES OUTPUT_NAME sundials_fnvecopenmp CLEAN_DIRECT_OUTPUT 1)
+     SET_TARGET_PROPERTIES(sundials_fnvecopenmp_shared 
+       PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-    INSTALL(TARGETS sundials_fnvecopenmp_shared DESTINATION lib)
++    TARGET_LINK_LIBRARIES(sundials_fnvecopenmp_shared -lm)
++    INSTALL(TARGETS sundials_fnvecopenmp_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_SHARED_LIBS)
+ ENDIF(FCMIX_ENABLE AND F77_FOUND)
+ 
+diff -Nur sundials-2.7.0.orig/src/nvec_par/CMakeLists.txt sundials-2.7.0/src/nvec_par/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_par/CMakeLists.txt	2016-09-26 22:16:50.000000000 +0000
++++ sundials-2.7.0/src/nvec_par/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -52,7 +52,7 @@
+   ADD_LIBRARY(sundials_nvecparallel_static STATIC ${nvecparallel_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecparallel_static
+     PROPERTIES OUTPUT_NAME sundials_nvecparallel CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecparallel_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecparallel_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -66,7 +66,8 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecparallel CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecparallel_shared 
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecparallel_shared DESTINATION lib)
++  TARGET_LINK_LIBRARIES(sundials_nvecparallel_shared -lm)
++  INSTALL(TARGETS sundials_nvecparallel_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECPARALLEL header files
+@@ -79,7 +80,7 @@
+     ADD_LIBRARY(sundials_fnvecparallel_static STATIC ${fnvecparallel_SOURCES})
+     SET_TARGET_PROPERTIES(sundials_fnvecparallel_static
+       PROPERTIES OUTPUT_NAME sundials_fnvecparallel CLEAN_DIRECT_OUTPUT 1)
+-    INSTALL(TARGETS sundials_fnvecparallel_static DESTINATION lib)
++    INSTALL(TARGETS sundials_fnvecparallel_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_STATIC_LIBS)
+   IF(BUILD_SHARED_LIBS)
+     ADD_LIBRARY(sundials_fnvecparallel_shared SHARED ${fnvecparallel_SOURCES})
+@@ -87,7 +88,7 @@
+       PROPERTIES OUTPUT_NAME sundials_fnvecparallel CLEAN_DIRECT_OUTPUT 1)
+     SET_TARGET_PROPERTIES(sundials_fnvecparallel_shared
+       PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-    INSTALL(TARGETS sundials_fnvecparallel_shared DESTINATION lib)
++    INSTALL(TARGETS sundials_fnvecparallel_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_SHARED_LIBS)
+ ENDIF(FCMIX_ENABLE AND MPIF_FOUND)
+ #
+diff -Nur sundials-2.7.0.orig/src/nvec_parhyp/CMakeLists.txt sundials-2.7.0/src/nvec_parhyp/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_parhyp/CMakeLists.txt	2016-09-26 22:16:50.000000000 +0000
++++ sundials-2.7.0/src/nvec_parhyp/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -53,7 +53,7 @@
+   ADD_LIBRARY(sundials_nvecparhyp_static STATIC ${nvecparhyp_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecparhyp_static
+     PROPERTIES OUTPUT_NAME sundials_nvecparhyp CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecparhyp_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecparhyp_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -67,7 +67,7 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecparhyp CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecparhyp_shared 
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecparhyp_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecparhyp_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECPARHYP header files
+diff -Nur sundials-2.7.0.orig/src/nvec_petsc/CMakeLists.txt sundials-2.7.0/src/nvec_petsc/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_petsc/CMakeLists.txt	2016-09-26 22:16:50.000000000 +0000
++++ sundials-2.7.0/src/nvec_petsc/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -53,7 +53,7 @@
+   ADD_LIBRARY(sundials_nvecpetsc_static STATIC ${nvecpetsc_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecpetsc_static
+     PROPERTIES OUTPUT_NAME sundials_nvecpetsc CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecpetsc_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecpetsc_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -67,7 +67,7 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecpetsc CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecpetsc_shared 
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecpetsc_shared DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecpetsc_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECPARHYP header files
+diff -Nur sundials-2.7.0.orig/src/nvec_pthreads/CMakeLists.txt sundials-2.7.0/src/nvec_pthreads/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_pthreads/CMakeLists.txt	2016-09-26 22:16:50.000000000 +0000
++++ sundials-2.7.0/src/nvec_pthreads/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -44,7 +44,7 @@
+   ADD_LIBRARY(sundials_nvecpthreads_static STATIC ${nvecpthreads_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecpthreads_static
+     PROPERTIES OUTPUT_NAME sundials_nvecpthreads CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecpthreads_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecpthreads_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -58,7 +58,8 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecpthreads CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecpthreads_shared
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecpthreads_shared DESTINATION lib)
++  TARGET_LINK_LIBRARIES(sundials_nvecpthreads_shared -lm -lpthread)
++  INSTALL(TARGETS sundials_nvecpthreads_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECPTHREADS header files
+@@ -71,7 +72,7 @@
+     ADD_LIBRARY(sundials_fnvecpthreads_static STATIC ${fnvecpthreads_SOURCES})
+     SET_TARGET_PROPERTIES(sundials_fnvecpthreads_static
+       PROPERTIES OUTPUT_NAME sundials_fnvecpthreads CLEAN_DIRECT_OUTPUT 1)
+-    INSTALL(TARGETS sundials_fnvecpthreads_static DESTINATION lib)
++    INSTALL(TARGETS sundials_fnvecpthreads_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_STATIC_LIBS)
+   IF(BUILD_SHARED_LIBS)
+     ADD_LIBRARY(sundials_fnvecpthreads_shared ${fnvecpthreads_SOURCES})
+@@ -79,7 +80,8 @@
+       PROPERTIES OUTPUT_NAME sundials_fnvecpthreads CLEAN_DIRECT_OUTPUT 1)
+     SET_TARGET_PROPERTIES(sundials_fnvecpthreads_shared 
+       PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-    INSTALL(TARGETS sundials_fnvecpthreads_shared DESTINATION lib)
++    TARGET_LINK_LIBRARIES(sundials_fnvecpthreads_shared -lm -lpthread)
++    INSTALL(TARGETS sundials_fnvecpthreads_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_SHARED_LIBS)
+ ENDIF(FCMIX_ENABLE AND F77_FOUND)
+ 
+diff -Nur sundials-2.7.0.orig/src/nvec_ser/CMakeLists.txt sundials-2.7.0/src/nvec_ser/CMakeLists.txt
+--- sundials-2.7.0.orig/src/nvec_ser/CMakeLists.txt	2016-09-26 22:16:49.000000000 +0000
++++ sundials-2.7.0/src/nvec_ser/CMakeLists.txt	2016-12-30 23:41:54.355840949 +0000
+@@ -44,7 +44,7 @@
+   ADD_LIBRARY(sundials_nvecserial_static STATIC ${nvecserial_SOURCES} ${shared_SOURCES})
+   SET_TARGET_PROPERTIES(sundials_nvecserial_static
+     PROPERTIES OUTPUT_NAME sundials_nvecserial CLEAN_DIRECT_OUTPUT 1)
+-  INSTALL(TARGETS sundials_nvecserial_static DESTINATION lib)
++  INSTALL(TARGETS sundials_nvecserial_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_STATIC_LIBS)
+ 
+ # Rules for building and installing the shared library:
+@@ -58,7 +58,8 @@
+     PROPERTIES OUTPUT_NAME sundials_nvecserial CLEAN_DIRECT_OUTPUT 1)
+   SET_TARGET_PROPERTIES(sundials_nvecserial_shared
+     PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-  INSTALL(TARGETS sundials_nvecserial_shared DESTINATION lib)
++  TARGET_LINK_LIBRARIES(sundials_nvecserial_shared -lm)
++  INSTALL(TARGETS sundials_nvecserial_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ ENDIF(BUILD_SHARED_LIBS)
+ 
+ # Install the NVECSERIAL header files
+@@ -71,7 +72,7 @@
+     ADD_LIBRARY(sundials_fnvecserial_static STATIC ${fnvecserial_SOURCES})
+     SET_TARGET_PROPERTIES(sundials_fnvecserial_static
+       PROPERTIES OUTPUT_NAME sundials_fnvecserial CLEAN_DIRECT_OUTPUT 1)
+-    INSTALL(TARGETS sundials_fnvecserial_static DESTINATION lib)
++    INSTALL(TARGETS sundials_fnvecserial_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_STATIC_LIBS)
+   IF(BUILD_SHARED_LIBS)
+     ADD_LIBRARY(sundials_fnvecserial_shared ${fnvecserial_SOURCES})
+@@ -79,7 +80,8 @@
+       PROPERTIES OUTPUT_NAME sundials_fnvecserial CLEAN_DIRECT_OUTPUT 1)
+     SET_TARGET_PROPERTIES(sundials_fnvecserial_shared 
+       PROPERTIES VERSION ${nveclib_VERSION} SOVERSION ${nveclib_SOVERSION})
+-    INSTALL(TARGETS sundials_fnvecserial_shared DESTINATION lib)
++    TARGET_LINK_LIBRARIES(sundials_fnvecserial_shared -lm)
++    INSTALL(TARGETS sundials_fnvecserial_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   ENDIF(BUILD_SHARED_LIBS)
+ ENDIF(FCMIX_ENABLE AND F77_FOUND)
+ 

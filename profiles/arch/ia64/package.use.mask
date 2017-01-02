@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
+# Don't keyword redis
+dev-libs/hiredis test
+
 # Lars Wendler <polynomial-c@gentoo.org> (17 Nov 2016)
 # jit not supported on ia64 (bug #600052).
 dev-libs/libpcre2 jit
