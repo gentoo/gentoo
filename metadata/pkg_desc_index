@@ -2144,7 +2144,7 @@ app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash c
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 1.21 1.21-r1: Shell history suggest box
-app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (ksh93)
+app-shells/ksh 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
