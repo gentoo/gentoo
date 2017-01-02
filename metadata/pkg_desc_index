@@ -2375,7 +2375,7 @@ app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.6.0 3.6.3 9999: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 3.6.0 3.6.3 3.7.0 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r3: Tools for helping translation of documentation
@@ -7406,7 +7406,7 @@ dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for buil
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/fedmsg 0.18.0 0.18.1: Fedora Messaging Client API
-dev-python/feedgenerator 1.6 1.7 1.8: Standalone version of django.utils.feedgenerator
+dev-python/feedgenerator 1.6 1.7 1.8 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
@@ -14301,7 +14301,7 @@ net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.3.3: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17 1.7.0: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 0.11 0.12 0.13: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 0.11 0.13 0.14: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
@@ -18659,7 +18659,7 @@ x11-misc/sisctrl 0.0.20051202: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0: A full-screen task-switcher providing Apple Expose-like functionality with various WMs
 x11-misc/slim 1.3.6-r3 1.3.6-r5 9999: Simple Login Manager
 x11-misc/slock 1.3-r3 1.4: simple X screen locker
-x11-misc/spacefm 1.0.4 1.0.5-r1 9999: A multi-panel tabbed file manager
+x11-misc/spacefm 1.0.4 1.0.4-r1 1.0.5-r1 1.0.5-r2 9999: A multi-panel tabbed file manager
 x11-misc/spnavcfg 0.2.1: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2 9999: Simple X selection printer
