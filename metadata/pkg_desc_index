@@ -1286,7 +1286,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.3 1.12.5 1.13.0_rc3-r1 1.13.0_rc4 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.5 1.13.0_rc4 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -16975,7 +16975,7 @@ sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r17 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 0.36-r2 0.36-r3 0.36-r4: A ucspi implementation for unix sockets
-sys-apps/udevil 0.4.4-r1: mount and unmount removable devices without a password
+sys-apps/udevil 0.4.4-r1 0.4.4-r2: mount and unmount removable devices without a password
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
