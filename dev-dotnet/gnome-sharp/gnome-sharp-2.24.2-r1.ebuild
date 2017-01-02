@@ -10,7 +10,7 @@ SLOT="2"
 DESCRIPTION="gnome bindings for mono"
 HOMEPAGE="http://www.mono-project.com/GtkSharp"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 SRC_URI="mirror://gnome/sources/gnome-sharp/2.24/${P}.tar.bz2"
 IUSE="debug"
 
