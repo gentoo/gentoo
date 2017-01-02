@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
+# Don't stabilize redis
+dev-libs/hiredis test
+
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins devhelp gtkspell markdown webkit
