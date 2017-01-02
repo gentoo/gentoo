@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Bastille-Linux is a security hardening tool
+EAPI=6
+HOMEPAGE=http://bastille-linux.org/
+IUSE=X
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables app-admin/logrotate dev-lang/perl:= dev-perl/Curses net-firewall/psad X? ( dev-perl/Tk ) virtual/logger
+SLOT=0
+SRC_URI=mirror://sourceforge/bastille-linux/Bastille-3.0.9.tar.bz2 mirror://gentoo/bastille-3.0.9-gentoo-0.2.patch.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	perl-functions	aac50de73be0a80ebe780e0b20850130	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=0801903a0e992207dd6d39341590bab1
