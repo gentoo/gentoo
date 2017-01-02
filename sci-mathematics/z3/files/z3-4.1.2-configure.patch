@@ -1,0 +1,76 @@
+--- z3-orig/configure.in	2012-10-04 16:41:04.000000000 +1000
++++ z3/configure.in	2012-10-18 15:56:49.895967069 +1100
+@@ -22,20 +22,29 @@
+ 
+ host_os=`uname -s`
+ 
++AC_ARG_ENABLE([static],
++[ --disable-static disable static],
++[static=${enableval}], [static=yes])
++
++if test "$static" = "yes"; then
++  STATIC_FLAGS=-static
++else
++  STATIC_FLAGS=
++fi
++
+ AS_IF([test "$host_os" = "Darwin"], [
+   PLATFORM=osx
+   SO_EXT=dylib
+-  SLIBFLAGS="-dynamiclib -fopenmp"
++  LDFLAGS="${LDFLAGS}"
++  SLIBFLAGS="${LDFLAGS} -dynamiclib -fopenmp"
+   COMP_VERSIONS="-compatibility_version \$(Z3_VERSION) -current_version \$(Z3_VERSION)"
+-  STATIC_FLAGS=
+   CPPFLAGS+=" -mmacosx-version-min=10.4"
+ ], [test "$host_os" = "Linux"], [
+   PLATFORM=linux
+-  SO_EXT=so
+-  LDFLAGS=-lrt
+-  SLIBFLAGS="-shared -fopenmp"
++  SO_EXT=so.1.0
++  LDFLAGS="${LDFLAGS} -lrt"
++  SLIBFLAGS="${LDFLAGS} -shared -fopenmp"
+   COMP_VERSIONS=
+-  STATIC_FLAGS=-static
+ ], [
+   AC_MSG_ERROR([Unknown host platform: $host_os])
+ ])
+@@ -88,15 +97,17 @@
+    AC_CHECK_LIB(gmp, __gmpz_cmp, LIBS="-lgmp $LIBS", AC_MSG_ERROR([GMP library not found]))
+    dnl Look for libgmp.a at /usr/local/lib and /usr/lib
+    dnl TODO: make the following test more robust...
+-   if test -e /usr/local/lib/libgmp.a; then
+-      GMP_STATIC_LIB="/usr/local/lib/libgmp.a"
+-   else if test -e /usr/lib/libgmp.a; then
+-      GMP_STATIC_LIB="/usr/lib/libgmp.a"
+-   else if test -e /usr/lib/libgmp.dll.a; then
+-      GMP_STATIC_LIB="/usr/lib/libgmp.dll.a"
+-   else
+-      AC_MSG_ERROR([Failed to find libgmp.a])   
+-   fi fi fi
++   if test "$static" = "yes"; then
++      if test -e /usr/local/lib/libgmp.a; then
++         GMP_STATIC_LIB="/usr/local/lib/libgmp.a"
++       else if test -e /usr/lib/libgmp.a; then
++         GMP_STATIC_LIB="/usr/lib/libgmp.a"
++       else if test -e /usr/lib/libgmp.dll.a; then
++         GMP_STATIC_LIB="/usr/lib/libgmp.dll.a"
++       else
++         AC_MSG_ERROR([Failed to find libgmp.a])   
++       fi fi fi
++   fi
+ fi
+ 
+ AC_PROG_CXXCPP
+--- z3-orig/Makefile.in	2012-10-04 16:41:02.000000000 +1000
++++ z3/Makefile.in	2012-10-18 15:25:00.716162723 +1100
+@@ -175,7 +175,7 @@
+ 
+ $(BIN_DIR)/lib$(Z3).@SO_EXT@: $(OBJ_DIR) $(BIN_DIR) $(LIB_OBJS)
+ 	@mkdir -p $(BIN_DIR)
+-	$(CXX) -o $(BIN_DIR)/lib$(Z3).@SO_EXT@  $(LIB_OBJS) $(LIBFLAGS) $(LIBS) @COMP_VERSIONS@
++	$(CXX) -Wl,-soname=lib$(Z3).@SO_EXT@ -o $(BIN_DIR)/lib$(Z3).@SO_EXT@  $(LIB_OBJS) $(LIBFLAGS) $(LIBS) @COMP_VERSIONS@
+ 
+ $(BIN_DIR)/lib$(Z3).a: $(OBJ_DIR) $(BIN_DIR) $(LIB_OBJS)
+ 	@mkdir -p $(BIN_DIR)
