@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+CMAKE_MIN_VERSION="3.0"
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
