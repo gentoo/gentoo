@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>proxy-maintainer, please CC on bugs</description>
 	</maintainer>
 	<use>
 		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS</flag>
