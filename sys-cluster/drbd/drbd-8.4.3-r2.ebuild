@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI="http://oss.linbit.com/drbd/$(get_version_component_range 1-2 ${PV})/${P
 HOMEPAGE="http://www.drbd.org"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="heartbeat pacemaker +udev xen"
 SLOT="0"
 
