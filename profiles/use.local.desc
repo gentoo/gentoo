@@ -3757,10 +3757,7 @@ media-gfx/darktable:graphicsmagick - Use media-gfx/graphicsmagick for image impo
 media-gfx/darktable:libsecret - Enable libsecret support to store login credentials
 media-gfx/darktable:opencl - Enable opencl support
 media-gfx/darktable:pax_kernel - Triggers paxmarking of main darktable binary
-media-gfx/darktable:rawspeed - Enable the rawspeed backend
 media-gfx/darktable:slideshow - Build the opengl slideshow viewer
-media-gfx/darktable:squish - Enable thumbnail compression via libsquish
-media-gfx/darktable:web-services - Add support for uploading photos to facebook and picasa
 media-gfx/darktable:webp - Enable WebP export support
 media-gfx/digikam:addressbook - Enable akonadi contact integration
 media-gfx/digikam:kipi - Enable support for media-plugins/kipi-plugins
