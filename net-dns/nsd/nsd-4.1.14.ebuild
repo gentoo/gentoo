@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,10 @@ IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit ro
 RDEPEND="
 	virtual/yacc
 	libevent? ( dev-libs/libevent )
-	ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	munin? ( net-analyzer/munin )
 "
 DEPEND="
@@ -38,28 +41,30 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--enable-pie \
-		--enable-relro-now \
-		--enable-largefile \
-		--with-logfile="${EPREFIX}"/var/log/nsd.log \
-		--with-pidfile="${EPREFIX}"/run/nsd/nsd.pid \
-		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db \
-		--with-xfrdir="${EPREFIX}"/var/db/nsd \
-		--with-xfrdfile="${EPREFIX}"/var/db/nsd/xfrd.state \
-		--with-zonelistfile="${EPREFIX}"/var/db/nsd/zone.list \
-		--with-zonesdir="${EPREFIX}"/var/lib/nsd \
-		$(use_enable bind8-stats) \
-		$(use_enable bind8-stats zone-stats) \
-		$(use_enable ipv6) \
-		$(use_enable minimal-responses) \
-		$(use_enable mmap) \
-		$(use_enable nsec3) \
-		$(use_enable ratelimit) \
-		$(use_enable root-server) \
-		$(use_enable runtime-checks checking) \
-		$(use_with libevent) \
+	local myeconfargs=(
+		--enable-pie
+		--enable-relro-now
+		--enable-largefile
+		--with-logfile="${EPREFIX}"/var/log/nsd.log
+		--with-pidfile="${EPREFIX}"/run/nsd/nsd.pid
+		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db
+		--with-xfrdir="${EPREFIX}"/var/db/nsd
+		--with-xfrdfile="${EPREFIX}"/var/db/nsd/xfrd.state
+		--with-zonelistfile="${EPREFIX}"/var/db/nsd/zone.list
+		--with-zonesdir="${EPREFIX}"/var/lib/nsd
+		$(use_enable bind8-stats)
+		$(use_enable bind8-stats zone-stats)
+		$(use_enable ipv6)
+		$(use_enable minimal-responses)
+		$(use_enable mmap)
+		$(use_enable nsec3)
+		$(use_enable ratelimit)
+		$(use_enable root-server)
+		$(use_enable runtime-checks checking)
+		$(use_with libevent)
 		$(use_with ssl)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
