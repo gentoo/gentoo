@@ -38,7 +38,7 @@ gnome-base/gvfs nfs
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins devhelp markdown
+dev-util/geany-plugins devhelp gtkspell markdown
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 media-plugins/gst-plugins-meta modplug

@@ -19,6 +19,10 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
+# Dependencies not going to stable for now
+dev-util/geany-plugins gtkspell
+
+# Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
 # net-misc/libteam is now ~ppc ~ppc64
 net-misc/networkmanager teamd
 
