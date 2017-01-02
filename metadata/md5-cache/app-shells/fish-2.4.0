@@ -4,10 +4,10 @@ DESCRIPTION=fish is the Friendly Interactive SHell
 EAPI=6
 HOMEPAGE=http://fishshell.com/
 IUSE=X
-KEYWORDS=amd64 ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= sys-devel/bc sys-devel/gettext X? ( x11-misc/xsel )
 SLOT=0
 SRC_URI=http://fishshell.com/files/2.4.0/fish-2.4.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_test:-
-_md5_=568ff49dcae5582d69209e5c0f899046
+_md5_=b860ba67382bc676e648de92511b0246

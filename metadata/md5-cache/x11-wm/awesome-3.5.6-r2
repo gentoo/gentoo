@@ -4,11 +4,11 @@ DESCRIPTION=A dynamic floating and tiling window manager
 EAPI=5
 HOMEPAGE=http://awesome.naquadah.org/
 IUSE=dbus doc elibc_FreeBSD gnome
-KEYWORDS=amd64 arm ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 arm ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/lua-5.1:0 dev-libs/glib:2 >=dev-libs/libxdg-basedir-1 >=dev-lua/lgi-0.7 x11-libs/cairo[xcb] x11-libs/gdk-pixbuf:2 >=x11-libs/libxcb-1.6 >=x11-libs/pango-1.19.3[introspection] >=x11-libs/startup-notification-0.10_p20110426 >=x11-libs/xcb-util-0.3.8 x11-libs/xcb-util-cursor x11-libs/libXcursor >=x11-libs/libX11-1.3.99.901 dbus? ( >=sys-apps/dbus-1 ) elibc_FreeBSD? ( dev-libs/libexecinfo )
 SLOT=0
 SRC_URI=http://awesome.naquadah.org/download/awesome-3.5.6.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=280babe5e8d130574a0d76d63a22a664
+_md5_=4b223f493d87b64c92b3cd7064392cc1
