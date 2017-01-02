@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="convert filenames to utf8 or any other charset"
 HOMEPAGE="http://j3e.de/linux/convmv"
@@ -19,6 +17,7 @@ DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e "1s|#!/usr|#!${EPREFIX}/usr|" convmv || die
 }
 
