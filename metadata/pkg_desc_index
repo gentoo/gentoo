@@ -88,7 +88,7 @@ app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a mo
 app-admin/ec2-ami-tools 1.5.6-r1: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.15 0.8.16 9999: Framework to store config parameters in hierarchical key-value pairs
-app-admin/emacs-updater 1.14 1.15: Rebuild Emacs packages
+app-admin/emacs-updater 1.15: Rebuild Emacs packages
 app-admin/entr 3.6: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.5 1.4.7 1.4.8 9999: Gentoo's multi-purpose configuration and management tool
@@ -2368,7 +2368,7 @@ app-text/pastebinit 1.5: A software that lets you send anything you want directl
 app-text/pdf2djvu 0.9.3 0.9.4: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715: Converts pdf files to odf
-app-text/pdfgrep 1.3.2 1.4.1-r1: A tool similar to grep which searches text in PDFs
+app-text/pdfgrep 1.4.1-r1: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20131113 20140328 20140328-r1: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
@@ -7162,7 +7162,7 @@ dev-python/blockdiag 1.5.3: blockdiag generates block-diagram image from text
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and disk
-dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
+dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0 2.42.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1: The AWS SDK for Python
 dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
@@ -7755,6 +7755,7 @@ dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced d
 dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0: Converting Jupyter Notebooks
+dev-python/nbdime 0.1.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
@@ -8050,7 +8051,7 @@ dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 2.1.4 2.1.5: A wrapper around the mediainfo library
 dev-python/pymetar 0.19-r1 0.21: Downloads, decodes and provides access to the weather report for a given station ID
-dev-python/pyminuit 1.2.1 1.2.1-r1: Minuit numerical function minimization in Python
+dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
 dev-python/pymongo 2.6.3 2.7.2 2.8.1 2.9.3 3.0.3 3.1.1 3.2.2 3.3.0 3.4.0: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
@@ -10137,7 +10138,7 @@ dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18 8.0.44-r1: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.19-r1 7.5.18-r2 8.0.44: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
@@ -15674,7 +15675,7 @@ sci-biology/bioperl 1.6.9 9999-r1: Perl tools for bioinformatics - Core modules
 sci-biology/bioperl-db 1.6.9 9999-r1: Perl tools for bioinformatics - Perl API that accesses the BioSQL schema
 sci-biology/bioperl-network 1.6.9 9999-r1: Perl tools for bioinformatics - Analysis of protein-protein interaction networks
 sci-biology/bioperl-run 1.6.9 9999-r1: Perl wrapper modules for key bioinformatics applications
-sci-biology/biopython 1.65 1.66 1.68: Python modules for computational molecular biology
+sci-biology/biopython 1.68: Python modules for computational molecular biology
 sci-biology/bioruby 1.4.3.0001-r1 9999: An integrated environment for bioinformatics using the Ruby language
 sci-biology/biosql 1.0.1: A generic bioinformatics relational database model
 sci-biology/blat 34 34-r1: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
@@ -15769,7 +15770,7 @@ sci-biology/psipred 3.1 3.2 3.2.1 3.3 3.4 3.5: Protein Secondary Structure Predi
 sci-biology/pysam 0.9.0: Python interface for the SAM/BAM sequence alignment and mapping format
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
-sci-biology/rebase 1602 1604 1607 1608 1609 1611 1612 1701: A restriction enzyme database
+sci-biology/rebase 1607 1612 1701: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
@@ -15806,14 +15807,14 @@ sci-calculators/calculator 1.6.43 1.7.49 1.7.54: Scientific calculator based on 
 sci-calculators/galculator 2.1.3 2.1.4: GTK+ based algebraic and RPN calculator
 sci-calculators/gonvert 0.2.32 0.2.39: Unit conversion utility written in PyGTK
 sci-calculators/grpn 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
-sci-calculators/hcalc 1.0-r1 1.2-r1: DJ's Hex Calculator
-sci-calculators/hexcalc 1.11-r2 1.11-r3: A simple hex calculator for X
+sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
+sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.2.3: A universal currency converter and calculator
 sci-calculators/orpie 1.5.1 1.5.1-r1 1.5.2 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 2 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calculator
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
-sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator for power users
+sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
@@ -16076,7 +16077,7 @@ sci-libs/buddy 2.2 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2: C wrapper interface to the F77 reference BLAS implementation
-sci-libs/ccfits 2.4 2.4-r1: C++ interface for cfitsio
+sci-libs/ccfits 2.4-r1: C++ interface for cfitsio
 sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
 sci-libs/cctbx 2010.03.29.2334-r7: Computational Crystallography Toolbox
@@ -16123,7 +16124,7 @@ sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.6 1.0.9-r1: C++ algorithms for specialized vertex coloring problems
 sci-libs/coot-data 3: Data for the Crystallographic Object-Oriented Toolkit
-sci-libs/cqrlib 1.1.2-r1 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
+sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2: Extended sparse matrix package
 sci-libs/dcmtk 3.6.0: The DICOM Toolkit
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
@@ -16150,7 +16151,7 @@ sci-libs/gsl 1.14 1.16 2.1 2.3: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.14-r1 1.8.15_p1 1.8.17 1.8.18: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b 2.11.1: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
@@ -16219,13 +16220,13 @@ sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPF
 sci-libs/mpir 2.6.0-r2: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/naga 2.1: Simplified Java NIO asynchronous sockets
-sci-libs/neartree 3.1.1-r3 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
+sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 5.22b 5.24 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.3.2-r1 4.4.0-r1 4.4.1.1: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.2.3: library for nonequispaced discrete Fourier transformations
-sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
+sci-libs/nlopt 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.8.0-r2 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
@@ -16288,7 +16289,7 @@ sci-libs/umfpack 5.2.0 5.6.2: Unsymmetric multifrontal sparse LU factorization l
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 9999: Votca tools library
-sci-libs/vtk 6.0.0 6.1.0 6.1.0-r1 6.1.0-r3 6.1.0-r4: The Visualization Toolkit
+sci-libs/vtk 6.1.0-r3 6.1.0-r4: The Visualization Toolkit
 sci-libs/vtkdata 6.0.0 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r2: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1: Library to read gromacs trajectory and topology files
@@ -16360,7 +16361,7 @@ sci-mathematics/pari-data 20120726: Data sets for pari
 sci-mathematics/polymake 2.14-r1 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
-sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1 0.10.2: Program for statistical analysis of sampled data
+sci-mathematics/pspp 0.10.1 0.10.2: Program for statistical analysis of sampled data
 sci-mathematics/pymc 2.3.6: Markov Chain Monte Carlo sampling toolkit
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
@@ -16371,14 +16372,14 @@ sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953
 sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
-sci-mathematics/snns 4.2-r8 4.2-r9 4.3-r2: Stuttgart Neural Network Simulator
+sci-mathematics/snns 4.3-r2: Stuttgart Neural Network Simulator
 sci-mathematics/spass 3.7: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/wxmaxima 15.08.2 16.04.2 16.12.0: Graphical frontend to Maxima, using the wxWidgets toolkit
-sci-mathematics/xmds 1.6.5 1.6.6 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
+sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.4.1 4.5.0: An efficient theorem prover
@@ -16446,7 +16447,7 @@ sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
 sci-visualization/gnuplot 4.6.5 5.0.1-r1 5.0.4 5.0.9999 5.1.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.22-r2 5.1.22-r3 5.1.23 5.1.23-r1: Motif based XY-plotting tool
 sci-visualization/gri 2.12.19 2.12.23: Language for scientific graphics programming
-sci-visualization/gwyddion 2.39 2.44: Framework for Scanning Mode Microscopy data analysis
+sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.3.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer

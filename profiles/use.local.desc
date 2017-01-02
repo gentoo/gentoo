@@ -2347,6 +2347,7 @@ dev-python/matplotlib:pyside - Qt support via dev-python/pyside
 dev-python/mpmath:matplotlib - Add support for dev-python/matplotlib
 dev-python/mwlib:server - Install the daemons required when using mwlib for generating PDFs on a MediaWiki instance.
 dev-python/mwlib-rl:pdftk - Enable support for app-text/pdftk, required to generate TOCs
+dev-python/nbdime:webtools - Install web-based diff and merge tools.
 dev-python/netaddr:cli - Enable netaddr shell with dev-python/ipython
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
