@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/processone/fast_xml/archive/1.1.18.tar.gz -> fast_xml-1.1.18.tar.gz
 _eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=a57c6ff76ce58403b639c76cfda18118
+_md5_=ca72cb9e9f29945298c20e1d4b679c58
