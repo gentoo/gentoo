@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-12">
+  <title>memcached: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in memcached which could
+    lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">memcached</product>
+  <announced>January 02, 2017</announced>
+  <revised>January 02, 2017: 1</revised>
+  <bug>598836</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/memcached" auto="yes" arch="*">
+      <unaffected range="ge">1.4.33</unaffected>
+      <vulnerable range="lt">1.4.33</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>memcached is a high-performance, distributed memory object caching
+      system
+    </p>
+  </background>
+  <description>
+    <p>Multiple integer overflow vulnerabilities were discovered in memcached.
+      Please review the CVE identifiers and Cisco TALOS reports referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could abuse memcached’s binary protocol leading to
+      the remote execution of arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All memcached users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/memcached-1.4.33"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8704">CVE-2016-8704</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8705">CVE-2016-8705</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8706">CVE-2016-8706</uri>
+    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0219/">
+      TALOS-2016-0219
+    </uri>
+    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0220/">
+      TALOS-2016-0220
+    </uri>
+    <uri link="http://www.talosintelligence.com/reports/TALOS-2016-0221/">
+      TALOS-2016-0221
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Jan 2017 07:31:20 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:42:05 +0000">b-man</metadata>
+</glsa>
