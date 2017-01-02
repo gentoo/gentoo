@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-13">
+  <title>HDF5: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in HDF5 which could lead
+    to the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">hdf5</product>
+  <announced>January 02, 2017</announced>
+  <revised>January 02, 2017: 1</revised>
+  <bug>601404</bug>
+  <bug>601408</bug>
+  <bug>601414</bug>
+  <bug>601420</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sci-libs/hdf5" auto="yes" arch="*">
+      <unaffected range="ge">1.8.18</unaffected>
+      <vulnerable range="lt">1.8.18</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>HDF5 technology suite includes a data model, library, and file format
+      for storing and managing data.
+    </p>
+  </background>
+  <description>
+    <p>Multiple arbitrary code execution vulnerabilities have been discovered
+      in HDF5. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code with the privileges of the
+      process via a maliciously crafted database file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All HDF5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sci-libs/hdf5-1.8.18"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4330">CVE-2016-4330</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4331">CVE-2016-4331</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4332">CVE-2016-4332</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4333">CVE-2016-4333</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Jan 2017 07:36:29 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 14:52:28 +0000">b-man</metadata>
+</glsa>
