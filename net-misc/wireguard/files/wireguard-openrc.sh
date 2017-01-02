@@ -10,6 +10,7 @@ wireguard_depend()
 
 wireguard_pre_start()
 {
+	[[ $IFACE == wg* ]] || return 0
 	ip link delete dev "$IFACE" type wireguard 2>/dev/null
 	ebegin "Creating WireGuard interface $IFACE"
 	if ! ip link add dev "$IFACE" type wireguard; then
@@ -37,6 +38,7 @@ wireguard_pre_start()
 
 wireguard_post_stop()
 {
+	[[ $IFACE == wg* ]] || return 0
 	ebegin "Removing WireGuard interface $IFACE"
 	ip link delete dev "$IFACE" type wireguard
 	eend $?
