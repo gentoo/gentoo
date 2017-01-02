@@ -1,0 +1,32 @@
+Index: Isabelle2016/lib/Tools/java
+===================================================================
+--- Isabelle2016.orig/lib/Tools/java
++++ Isabelle2016/lib/Tools/java
+@@ -10,5 +10,5 @@ declare -a JAVA_ARGS; eval "JAVA_ARGS=($
+ unset CLASSPATH
+ 
+ isabelle_java java "${JAVA_ARGS[@]}" \
+-  -classpath "$(platform_path "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(platform_path "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+ 
+Index: Isabelle2016/lib/Tools/scala
+===================================================================
+--- Isabelle2016.orig/lib/Tools/scala
++++ Isabelle2016/lib/Tools/scala
+@@ -14,4 +14,4 @@ do
+ done
+ 
+ isabelle_scala scala "${SCALA_ARGS[@]}" \
+-  -classpath "$(platform_path "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(platform_path "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+Index: Isabelle2016/lib/Tools/scalac
+===================================================================
+--- Isabelle2016.orig/lib/Tools/scalac
++++ Isabelle2016/lib/Tools/scalac
+@@ -7,5 +7,5 @@
+ isabelle_admin_build jars || exit $?
+ 
+ isabelle_scala scalac -Dfile.encoding=UTF-8 \
+-  -classpath "$(platform_path "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(platform_path "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+ 
