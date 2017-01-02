@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>November 18, 2016</announced>
-  <revised>November 18, 2016: 1</revised>
+  <revised>January 02, 2017: 2</revised>
   <bug>594368</bug>
   <bug>594520</bug>
   <bug>595192</bug>
@@ -21,6 +21,7 @@
   <bug>598044</bug>
   <bug>598046</bug>
   <bug>598328</bug>
+  <bug>603442</bug>
   <access>local</access>
   <affected>
     <package name="app-emulation/qemu" auto="yes" arch="*">
@@ -53,6 +54,9 @@
     </code>
   </resolution>
   <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10029">
+      CVE-2016-10029
+    </uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7161">CVE-2016-7161</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7423">CVE-2016-7423</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7466">CVE-2016-7466</uri>
@@ -73,5 +77,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9105">CVE-2016-9105</uri>
   </references>
   <metadata tag="requester" timestamp="Thu, 17 Nov 2016 07:04:59 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Fri, 18 Nov 2016 23:08:06 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 02 Jan 2017 10:33:37 +0000">b-man</metadata>
 </glsa>
