@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/rspec/rspec"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ppc64 x86"
+KEYWORDS="alpha amd64 arm ~hppa ~ppc64 x86"
 IUSE=""
 
 SUBVERSION="$(get_version_component_range 1-2)"
