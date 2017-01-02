@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="advertisement cal debug dictdotcn espeak examples flite
-fortune gucharmap +htmlparse info man perl +powerwordparse
+fortune gnome gucharmap +htmlparse info man perl +powerwordparse
 pronounce python qqwry spell tools updateinfo +wikiparse +wordnet
 +xdxfparse youdaodict"
 
@@ -41,6 +41,12 @@ COMMON_DEPEND="
 	x11-libs/pango
 	espeak? ( >=app-accessibility/espeak-1.29 )
 	flite? ( app-accessibility/flite )
+	gnome? (
+		gnome-base/gconf:2
+		gnome-base/libbonobo
+		gnome-base/libgnome
+		gnome-base/orbit:2
+	)
 	gucharmap? ( gnome-extra/gucharmap:0= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
@@ -92,6 +98,11 @@ src_prepare() {
 		sed -i '1 a # -*- coding: utf-8 -*-' tools/src/uyghur2dict.py || die
 	fi
 
+	# bug 604318
+	if ! use gnome; then
+		sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
+	fi
+
 	eapply_user
 	eautoreconf
 	gnome2_src_prepare
@@ -107,7 +118,6 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-darwin-support \
 		--disable-festival \
-		--disable-gnome-support \
 		--disable-gpe-support \
 		--disable-maemo-support \
 		--disable-schemas-install \
@@ -119,6 +129,7 @@ src_configure() {
 		$(use_enable espeak) \
 		$(use_enable flite) \
 		$(use_enable fortune) \
+		$(use_enable gnome gnome-support) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
 		$(use_enable info) \

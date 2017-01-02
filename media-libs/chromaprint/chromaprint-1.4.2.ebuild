@@ -1,13 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit cmake-multilib
+
+GTEST_VERSION="1.8.0"
 
 DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
 HOMEPAGE="http://acoustid.org/chromaprint"
-SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz
+	test? (	https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz -> gtest-${GTEST_VERSION}.tar.gz )
+"
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
@@ -27,13 +31,13 @@ DEPEND="${RDEPEND}
 
 DOCS="NEWS.txt README.md"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.1-gtest.patch )
-
 multilib_src_configure() {
+	export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VERSION}/googletest/"
 	local mycmakeargs=(
-		"-DBUILD_EXAMPLES=$(multilib_native_usex tools ON OFF)"
+		"-DBUILD_TOOLS=$(multilib_native_usex tools ON OFF)"
 		"-DBUILD_TESTS=$(usex test ON OFF)"
-		-DWITH_AVFFT=ON
+		-DFFT_LIB=avfft
+		-DAUDIO_PROCESSOR_LIB=$(usex libav avresample swresample)
 		)
 	cmake-utils_src_configure
 }
