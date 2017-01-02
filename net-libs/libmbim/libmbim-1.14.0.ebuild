@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~mips ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ~ppc64 x86"
 IUSE="static-libs udev"
 
 RDEPEND=">=dev-libs/glib-2.32:2"
