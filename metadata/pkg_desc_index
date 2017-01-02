@@ -9670,7 +9670,7 @@ dev-scheme/guile 1.8.8-r3 2.0.13-r1: GNU Ubiquitous Intelligent Language for Ext
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
-dev-scheme/guile-lib 0.1.9: An accumulation place for pure-scheme Guile modules
+dev-scheme/guile-lib 0.1.9 0.2.4: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34 2.35: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/ikarus 0.0.3_p1870: A free optimizing incremental native-code compiler for R6RS Scheme
 dev-scheme/jscheme 7.2: JScheme is a dialect of Scheme with a very simple interface to Java, called the Javadot notation
@@ -16263,7 +16263,7 @@ sci-libs/scikits_learn 0.17 0.17.1: Python modules for machine learning and data
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.15.1 0.16.0 0.16.1 0.17.0 0.18.1 9999: Scientific algorithms library for Python
-sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1: Software for graph, mesh and hypergraph partitioning
+sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.3.0-r1: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 1.1.0 2.0.0 3.2.0 4.1.0: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.9.1 4.10.2: A mesh and field I/O library and scientific database
@@ -17606,7 +17606,7 @@ sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.15 1.1.15-r2 1.1.16 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
-sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
+sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 2.5.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
