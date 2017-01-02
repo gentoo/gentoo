@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/gtk2-perl >=dev-perl/glib-perl-1.160.0 dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig virtual/perl-ExtUtils-MakeMaker x11-libs/gtksourceview:2.0 dev-lang/perl:=
+DESCRIPTION=Perl binding for the C library gtksourceview
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Gtk2-SourceView2/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2+ Artistic-2 )
+RDEPEND=dev-perl/gtk2-perl >=dev-perl/glib-perl-1.160.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PO/POTYL/Gtk2-SourceView2-0.10.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=468fa95162c048d15cfe9b7b48d6bcf1
