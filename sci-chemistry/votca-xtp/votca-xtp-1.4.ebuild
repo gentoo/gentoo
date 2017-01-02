@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,12 +12,12 @@ IUSE="doc"
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}/releases/download/v${PV}/${PN}-manual-${PV}.pdf )"
-	KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-macos"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-macos"
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Votca excitation and charge properties module"
