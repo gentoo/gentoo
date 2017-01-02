@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>sci@gentoo.org</email>
-  <name>Gentoo Science Project</name>
-</maintainer>
-<longdescription lang="en">
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
   NLopt is a library for nonlinear optimization,
   providing a common interface for a number of different free
   optimization routines available online as well as original
@@ -18,7 +18,7 @@
     * Algorithms for unconstrained optimization, bound-constrained
     optimization, and general nonlinear inequality constraints.
 </longdescription>
-<use>
-  <flag name="octave">Add plugin for <pkg>sci-mathematics/octave</pkg></flag>
-</use>
+  <use>
+    <flag name="octave">Add plugin for <pkg>sci-mathematics/octave</pkg></flag>
+  </use>
 </pkgmetadata>
