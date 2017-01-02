@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ IUSE="gtk3"
 DEPEND="app-arch/xz-utils"
 RDEPEND="
 	x11-themes/gtk-engines-murrine
-	gtk3? ( x11-themes/gtk-engines-unico )
+	gtk3? ( x11-themes/gtk-engines-unico <x11-libs/gtk+-3.20:3 )
 "
 
 S="${WORKDIR}"/${MY_PN}-${MY_PV}
