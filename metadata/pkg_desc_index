@@ -7036,6 +7036,7 @@ dev-python/Babel 2.0 2.1.1 2.2.0 2.3.4: A collection of tools for internationali
 dev-python/BitVector 3.3.2 3.4.4: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.6 0.11.7: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
+dev-python/CommonMark 0.5.4: Python parser for the CommonMark Markdown spec
 dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless they test everything
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
@@ -7984,6 +7985,7 @@ dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydl 0.5.2 0.5.3: Library of IDL astronomy routines converted to Python
 dev-python/pydns 2.3.6-r1 3.1.0 3.1.1: Python DNS (Domain Name System) library
+dev-python/pydot-ng 1.0.0: Python interface to Graphviz's Dot language next gen
 dev-python/pyds 0.7.3-r1: Python Desktop Server
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
@@ -8304,6 +8306,7 @@ dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple st
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.7.2 0.8.2 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
+dev-python/recommonmark 0.4.0: Python docutils-compatibility bridge to CommonMark
 dev-python/reconfigure 0.1.50 0.1.72 0.1.75 0.1.79: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
@@ -9928,7 +9931,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bats 0.4.0: An automated testing system for bash
-dev-util/bazel 0.3.2 0.3.2-r1 0.4.0: Fast and correct automated build system
+dev-util/bazel 0.3.2 0.3.2-r1 0.4.0 0.4.3: Fast and correct automated build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.1.8-r2 0.2.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
@@ -15218,7 +15221,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.1.5 5.2.12 5.2.13 5.2.14: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20161230 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-misc/wireguard 0.0.20161230-r1 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
@@ -16271,6 +16274,7 @@ sci-libs/ssm 1.4: A macromolecular coordinate superposition library
 sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format) and CIF files
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
+sci-libs/sundials 2.7.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation

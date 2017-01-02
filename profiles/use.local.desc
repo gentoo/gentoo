@@ -7004,6 +7004,9 @@ sci-libs/ssm:ccp4 - Link superpose with libccp4
 sci-libs/suitesparse:cuda - Enable nvidia cuda toolkit for speeding up computations
 sci-libs/suitesparse:metis - Enable the Partition module to cholmod using sci-libs/metis
 sci-libs/suitesparse:tbb - Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
+sci-libs/sundials:hypre - Build with sci-libs/hypre conditioners
+sci-libs/sundials:sparse - Enable support for sci-libs/klu sparse solver
+sci-libs/sundials:superlumt - Build with sci-libs/superlu_mt
 sci-libs/superlu_mt:int64 - Build the 64 bits integer library
 sci-libs/taucs:cilk - Enable multithreading using dev-lang/cilk
 sci-libs/umfpack:cholmod - Use sci-libs/cholmod for matrix ordering

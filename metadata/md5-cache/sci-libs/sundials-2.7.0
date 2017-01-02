@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=lapack? ( virtual/lapack ) mpi? ( virtual/mpi sci-libs/hypre:= ) sparse? ( sci-libs/klu:= ) superlumt? ( sci-libs/superlu_mt:= ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2 fortran? ( virtual/fortran )
+DESCRIPTION=Suite of nonlinear solvers
+EAPI=6
+HOMEPAGE=http://computation.llnl.gov/projects/sundials
+IUSE=cxx doc examples fortran hypre lapack mpi openmp sparse static-libs superlumt threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=lapack? ( virtual/lapack ) mpi? ( virtual/mpi sci-libs/hypre:= ) sparse? ( sci-libs/klu:= ) superlumt? ( sci-libs/superlu_mt:= ) fortran? ( virtual/fortran )
+REQUIRED_USE=hypre? ( mpi )
+SLOT=0/2
+SRC_URI=http://computation.llnl.gov/projects/sundials/download/sundials-2.7.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=80db2c926e7edffe558a4b371a2f273f
