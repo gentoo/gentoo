@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/etherape/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=gnome-base/libglade-2.0
