@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Flexible filesystem archiver for backup and deployment tool"
 HOMEPAGE="http://www.fsarchiver.org"
@@ -30,9 +30,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable lzma) \
-		$(use_enable lzo) \
-		$(use_enable static) \
+	myeconfargs=(
+		$(use_enable lzma)
+		$(use_enable lzo)
+		$(use_enable static)
 		$(use_enable debug devel)
+	)
+	econf "${myeconfargs[@]}"
 }
