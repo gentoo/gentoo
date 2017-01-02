@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test
+DESCRIPTION=implementation of SHA1 is taken from the GNU coreutils package
+EAPI=6
+HOMEPAGE=http://isabelle.in.tum.de/
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://isabelle.in.tum.de/components/polyml-5.6-1.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f1f669bd3431a626f18942e1e0c8740d
