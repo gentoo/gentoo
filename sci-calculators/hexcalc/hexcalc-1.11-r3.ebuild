@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.x.org/R5contrib/${PN}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw"

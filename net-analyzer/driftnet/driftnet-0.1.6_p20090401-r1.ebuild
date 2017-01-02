@@ -10,7 +10,7 @@ HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
 SRC_URI="mirror://github/rbu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc -sparc ~x86"
+KEYWORDS="amd64 ppc -sparc x86"
 SLOT="0"
 IUSE="gtk mp3 suid"
 

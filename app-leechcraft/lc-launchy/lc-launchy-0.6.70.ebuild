@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit leechcraft toolchain-funcs
 DESCRIPTION="Allows one to launch third-party applications (as well as LeechCraft plugins) from LeechCraft"
 
 SLOT="0"
-KEYWORDS=" amd64 ~x86"
+KEYWORDS=" amd64 x86"
 IUSE=""
 
 DEPEND="~app-leechcraft/lc-core-${PV}

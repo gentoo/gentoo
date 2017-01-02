@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ PATCHES=( "${FILESDIR}"/${PN}-no-werror.patch )
 # xrootd plugins are not intended to be linked with,
 # they are to be loaded at runtime by xrootd,
 # see https://github.com/xrootd/xrootd/issues/447
-QA_SONAME_NO_SYMLINK="/usr/lib.*/libXrd*-4.so"
+QA_SONAME="/usr/lib.*/libXrd*-4.so"
 
 pkg_setup() {
 	enewgroup xrootd

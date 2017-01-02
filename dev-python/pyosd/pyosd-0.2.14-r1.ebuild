@@ -13,7 +13,7 @@ SRC_URI="http://ichi2.net/pyosd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~x86"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="doc examples"
 
 DEPEND=">=x11-libs/xosd-2.2.4"

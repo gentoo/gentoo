@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/MythTV/mythtv/archive/v0.27.5.tar.gz -> mythtv-0.27.
 
 SLOT="0/${PV}"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE="alsa altivec avahi libass autostart bluray cec crystalhd debug dvb dvd \
