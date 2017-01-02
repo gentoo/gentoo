@@ -16312,7 +16312,7 @@ sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/drgeo 1.1.0: Interactive geometry package
 sci-mathematics/dunshire 0.1.1: Python library to solve linear games over symmetric cones
-sci-mathematics/e 1.5 1.6 1.8: E is a theorem prover for full first-order logic with equality
+sci-mathematics/e 1.5 1.6 1.8 1.8-r1: E is a theorem prover for full first-order logic with equality
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/factmsieve 76-r1: Convenient factorization helper script using msieve and ggnfs
@@ -16373,7 +16373,7 @@ sci-mathematics/rw 0.7-r2: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/snns 4.3-r2: Stuttgart Neural Network Simulator
-sci-mathematics/spass 3.7: An Automated Theorem Prover for First-Order Logic with Equality
+sci-mathematics/spass 3.7 3.9: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
