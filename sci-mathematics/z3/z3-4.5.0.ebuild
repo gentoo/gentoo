@@ -85,11 +85,9 @@ src_compile() {
 
 	use java && java-pkg-simple_src_compile
 
-	if use doc; then
-		pushd doc || die
-		${EPYTHON} mk_api_doc.py || die
-		popd || die
-	fi
+	pushd doc || die
+	${EPYTHON} mk_api_doc.py || die
+	popd || die
 }
 
 src_install() {
