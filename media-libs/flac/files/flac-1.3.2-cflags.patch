@@ -1,0 +1,26 @@
+--- flac-1.3.2/configure.ac
++++ flac-1.3.2/configure.ac
+@@ -384,14 +384,7 @@
+ AH_TEMPLATE(FLAC__HAS_NASM, [define if you are compiling for x86 and have the NASM assembler])
+ fi
+ 
+-if test "x$debug" = xtrue; then
+-	CPPFLAGS="-DDEBUG $CPPFLAGS"
+-	CFLAGS="-g $CFLAGS"
+-else
+-	CPPFLAGS="-DNDEBUG $CPPFLAGS"
+-	CFLAGS=$(echo "$CFLAGS" | sed 's/-O2//')
+-	CFLAGS="-O3 -funroll-loops $CFLAGS"
+-fi
++CPPFLAGS="-DDEBUG $CPPFLAGS"
+ 
+ XIPH_GCC_VERSION
+ 
+@@ -400,7 +393,6 @@
+ 	CXXFLAGS="$CXXFLAGS -Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef " # -Wcast-qual -Wbad-function-cast -Wwrite-strings -Woverloaded-virtual -Wmissing-declarations
+ 
+ 	XIPH_ADD_CFLAGS([-Wdeclaration-after-statement])
+-	XIPH_ADD_CFLAGS([-D_FORTIFY_SOURCE=2])
+ 
+ 	AC_LANG_PUSH([C++])
+ 	XIPH_ADD_CXXFLAGS([-Weffc++])

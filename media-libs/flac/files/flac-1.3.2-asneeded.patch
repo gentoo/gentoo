@@ -1,0 +1,21 @@
+--- flac-1.3.2/src/flac/Makefile.am
++++ flac-1.3.2/src/flac/Makefile.am
+@@ -60,7 +60,7 @@
+ 	$(top_builddir)/src/share/replaygain_synthesis/libreplaygain_synthesis.la \
+ 	$(top_builddir)/src/libFLAC/libFLAC.la \
+ 	$(win_utf8_lib) \
+-	@LIBICONV@ \
++	@LTLIBICONV@ \
+ 	-lm
+ 
+ CLEANFILES = flac.exe
+--- flac-1.3.2/src/metaflac/Makefile.am
++++ flac-1.3.2/src/metaflac/Makefile.am
+@@ -55,6 +55,6 @@
+ 	$(top_builddir)/src/share/utf8/libutf8.la \
+ 	$(top_builddir)/src/libFLAC/libFLAC.la \
+ 	$(win_utf8_lib) \
+-	@LIBICONV@
++	@LTLIBICONV@
+ 
+ CLEANFILES = metaflac.exe
