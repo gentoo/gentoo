@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
 FORTRAN_STANDARD=90
 PYTHON_COMPAT=( python{2_7,3_4} )
 
-inherit autotools-utils fortran-2 python-any-r1
+inherit autotools fortran-2 python-any-r1
 
 DESCRIPTION="An experimental suite of programs for linear scaling quantum chemistry"
 HOMEPAGE="http://www.freeon.org"
@@ -25,3 +24,12 @@ RDEPEND="
 	virtual/lapack"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-stop.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
