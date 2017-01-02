@@ -41,7 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
-	myeconfargs=(
+	local myeconfargs=(
 		--enable-pie
 		--enable-relro-now
 		--enable-largefile
