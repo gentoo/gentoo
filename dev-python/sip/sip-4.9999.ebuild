@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.pyth
 EHG_REPO_URI="http://www.riverbankcomputing.com/hg/sip"
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
-SLOT="0/11"
+SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS=""
 IUSE="debug doc"
