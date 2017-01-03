@@ -23,6 +23,12 @@ RDEPEND="${DEPEND}
 	sys-apps/util-linux"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-Makefiles.patch"
+	"${FILESDIR}/${P}-musl-fixes.patch"
+	"${FILESDIR}/${P}-musl-ethtool-compat.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
@@ -59,12 +65,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-Makefiles.patch
-	eapply "${FILESDIR}"/${P}-musl-fixes.patch
-	eapply "${FILESDIR}"/${P}-musl-ethtool-compat.patch
-	eapply_user
-
 	sed -i -e 's:^\(iscsid.startup\)\s*=.*:\1 = /usr/sbin/iscsid:' etc/iscsid.conf || die
+	default
 }
 
 src_configure() {
