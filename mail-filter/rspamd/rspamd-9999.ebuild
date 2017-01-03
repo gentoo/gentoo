@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="fann +jit libressl"
+IUSE="fann +gd +jit libressl"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 		libressl? ( dev-libs/libressl:0 )
@@ -32,7 +32,8 @@ RDEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 		dev-libs/gmime
 		dev-util/ragel
 		sys-apps/file
-		virtual/libiconv"
+		virtual/libiconv
+		gd? ( media-libs/gd[jpeg] )"
 DEPEND="dev-util/ragel
 		${RDEPEND}"
 
@@ -49,6 +50,7 @@ src_configure() {
 		-DLOGDIR=/var/log/rspamd
 		-DENABLE_LUAJIT=$(usex jit ON OFF)
 		-DENABLE_FANN=$(usex fann ON OFF)
+		-DENABLE_GD=$(usex gd ON OFF)
 	)
 	cmake-utils_src_configure
 }
