@@ -110,7 +110,7 @@ src_install() {
 	fi
 
 	local DOCS=( "README" "RELEASE_NOTES" )
-	einstalldocs
+	use doc && einstalldocs
 }
 
 pkg_postinst() {
