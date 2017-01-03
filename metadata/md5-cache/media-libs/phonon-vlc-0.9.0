@@ -4,7 +4,7 @@ DESCRIPTION=Phonon VLC backend
 EAPI=6
 HOMEPAGE=https://phonon.kde.org/
 IUSE=debug +qt4 qt5
-KEYWORDS=amd64 ~arm ppc ~ppc64 x86 ~amd64-fbsd
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-fbsd
 LICENSE=LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )
 RDEPEND=>=media-libs/phonon-4.9.0[qt4=,qt5=] >=media-video/vlc-2.0.1:=[dbus,ogg,vorbis] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
 REQUIRED_USE=|| ( qt4 qt5 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://kde/stable/phonon/phonon-backend-vlc/0.9.0/phonon-backend-vlc-0.9.0.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=50f0f65cc5485a74b518198c6e6e0b3d
+_md5_=713e32a5ae5c6d19eff000f9745c84e4
