@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,8 @@ IUSE="cxx fortran romio threads"
 RDEPEND="|| (
 	>=sys-cluster/openmpi-1.10.2-r1[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
 	>=sys-cluster/mpich-3.2-r1[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
-	sys-cluster/mpich2[cxx?,fortran?,romio?,threads?]
-	sys-cluster/mvapich2[fortran?,romio?,threads?]
+	sys-cluster/mpich2[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
+	sys-cluster/mvapich2[${MULTILIB_USEDEP},cxx(-)?,fortran?,romio?,threads?]
 	sys-cluster/nullmpi[${MULTILIB_USEDEP},cxx(-)?,fortran(-)?,romio(-)?,threads(-)?]
 	sys-cluster/native-mpi
 )"
