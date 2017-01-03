@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,13 +9,12 @@ inherit cmake-utils multilib
 
 DESCRIPTION="A C++ toolkit"
 HOMEPAGE="https://github.com/puppetlabs/leatherman"
-SRC_URI="https://downloads.puppetlabs.com/facter/${P}.tar.gz"
 SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="debug test"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="net-misc/curl"
 DEPEND=">=dev-libs/boost-1.54[nls]
