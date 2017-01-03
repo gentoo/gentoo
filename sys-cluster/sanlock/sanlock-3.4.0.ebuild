@@ -77,6 +77,7 @@ src_install() {
 
 	# systemd
 	systemd_newunit init.d/sanlock.service.native sanlock.service
+	sed -i 's,^ExecStartPre=,#ExecStartPre=,' init.d/wdmd.service.native
 	systemd_newunit init.d/wdmd.service.native wdmd.service
 	systemd_dounit init.d/sanlk-resetd.service
 	#systemd_dounit ${FILESDIR}/fence_sanlockd.service
