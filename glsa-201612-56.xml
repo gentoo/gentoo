@@ -7,12 +7,13 @@
   </synopsis>
   <product type="ebuild">xen</product>
   <announced>December 31, 2016</announced>
-  <revised>December 31, 2016: 1</revised>
+  <revised>January 03, 2017: 2</revised>
   <bug>600382</bug>
   <bug>600662</bug>
   <bug>601248</bug>
   <bug>601250</bug>
   <bug>601986</bug>
+  <bug>603420</bug>
   <access>local</access>
   <affected>
     <package name="app-emulation/xen" auto="yes" arch="*">
@@ -91,5 +92,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9932">CVE-2016-9932</uri>
   </references>
   <metadata tag="requester" timestamp="Sat, 26 Nov 2016 10:47:37 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sat, 31 Dec 2016 16:13:07 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 05:55:18 +0000">b-man</metadata>
 </glsa>
