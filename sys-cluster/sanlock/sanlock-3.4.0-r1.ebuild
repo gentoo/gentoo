@@ -40,8 +40,9 @@ pkg_setup() {
 }
 
 pkg_preinst() {
-	enewuser sanlock
 	enewgroup sanlock
+	enewuser sanlock -1 -1 -1 sanlock,disk
+
 }
 
 src_compile() {
