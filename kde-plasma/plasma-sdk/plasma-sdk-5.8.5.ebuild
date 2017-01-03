@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/kirigami
+	dev-libs/kirigami:5
 	plasmate? (
 		$(add_frameworks_dep kdelibs4support)
 		$(add_frameworks_dep knewstuff)
