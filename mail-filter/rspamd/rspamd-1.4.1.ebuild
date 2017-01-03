@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,8 @@ RDEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 		virtual/libiconv"
 DEPEND="dev-util/ragel
 		${RDEPEND}"
+
+QA_MULTILIB_PATHS="usr/lib/rspamd/.*"
 
 pkg_setup() {
 	enewgroup rspamd

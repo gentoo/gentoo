@@ -37,6 +37,8 @@ RDEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 DEPEND="dev-util/ragel
 		${RDEPEND}"
 
+QA_MULTILIB_PATHS="usr/lib/rspamd/.*"
+
 pkg_setup() {
 	enewgroup rspamd
 	enewuser rspamd -1 -1 /var/lib/rspamd rspamd
