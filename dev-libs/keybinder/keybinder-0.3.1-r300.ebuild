@@ -13,7 +13,7 @@ SRC_URI="https://github.com/engla/keybinder/releases/download/${PN}-3.0-v${PV}/$
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 x86"
 IUSE="+introspection"
 
 RDEPEND="x11-libs/gtk+:3
