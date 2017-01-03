@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
 	http://motif.ics.com/"
-SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}-src.tgz
-	mirror://gentoo/${P}-patches-1.tar.xz"
+SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
+	http://dev.gentoo.org/~ulm/distfiles/${P}-patches-2.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples jpeg +motif22-compatibility png static-libs unicode xft"
 
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
@@ -36,14 +36,17 @@ DEPEND="${RDEPEND}
 	x11-misc/xbitmaps"
 
 src_prepare() {
-	EPATCH_SUFFIX=patch epatch
-	epatch_user
+	eapply ../patch
+	eapply_user
 
 	# disable compilation of demo binaries
 	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am
 
 	# add X.Org vendor string to aliases for virtual bindings
 	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias
+
+	# remove header file which shouldn't be in the tarball #578168
+	rm lib/Xm/Xm.h || die
 
 	AT_M4DIR=. eautoreconf
 
