@@ -1,0 +1,25 @@
+commit 15579ddcf34ad04bf190a189b670f62c3796c057
+Author: Pali Rohár <pali.rohar@gmail.com>
+Date:   Sun Nov 27 16:55:54 2016 +0100
+
+    Fix crash after OTR plugin generates key
+    
+    Function OtrlChatInterface::replayStoredMessages() had wrong logic to check
+    if there is still some postponed message waiting for processing.
+    
+    BUG: 349596
+    FIXED-IN: 16.12
+
+diff --git a/plugins/otr/otrlchatinterface.cpp b/plugins/otr/otrlchatinterface.cpp
+index 0c73323..6b76520 100644
+--- a/plugins/otr/otrlchatinterface.cpp
++++ b/plugins/otr/otrlchatinterface.cpp
+@@ -932,7 +932,7 @@ void OtrlChatInterface::otrlMessagePoll()
+ 
+ void OtrlChatInterface::replayStoredMessages()
+ {
+-    while (m_storedMessages.isEmpty()) {
++    while (!m_storedMessages.isEmpty()) {
+         Kopete::Message msg = m_storedMessages.takeFirst();
+         msg.manager()->appendMessage(msg);
+     }
