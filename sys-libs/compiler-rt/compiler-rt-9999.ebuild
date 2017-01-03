@@ -71,9 +71,6 @@ run_tests_for_abi() {
 src_test() {
 	# prepare a test compiler
 	local clang_version=4.0.0
-	local sys_dir=( "${EPREFIX}/usr/lib/clang/${clang_version}/lib"/* )
-	[[ -e ${sys_dir} ]] || die "Unable to find ${sys_dir}"
-	[[ ${#sys_dir[@]} -eq 1 ]] || die "Non-deterministic compiler-rt install: ${sys_dir[@]}"
 
 	# copy clang over since resource_dir is located relatively to binary
 	# therefore, we can put our new libraries in it
