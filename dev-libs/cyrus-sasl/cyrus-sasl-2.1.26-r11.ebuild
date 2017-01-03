@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -165,7 +165,7 @@ multilib_src_configure() {
 		$(use_enable kerberos gssapi) \
 		$(multilib_native_use_enable java) \
 		$(multilib_native_use_with java javahome ${JAVA_HOME}) \
-		$(multilib_native_use_with mysql mysql /usr) \
+		$(multilib_native_use_with mysql mysql "${EPREFIX}"/usr) \
 		$(multilib_native_use_with postgres pgsql) \
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr/$(get_libdir)) \
 		$(use_enable srp) \
@@ -197,7 +197,7 @@ multilib_src_install() {
 		# Default location for java classes breaks OpenOffice (bug #60769).
 		if use java; then
 			java-pkg_dojar ${PN}.jar
-			java-pkg_regso "${ED}/usr/$(get_libdir)/libjavasasl.so"
+			java-pkg_regso "${ED}/usr/$(get_libdir)/libjavasasl$(get_libname)"
 			# hackish, don't wanna dig through makefile
 			rm -rf "${ED}/usr/$(get_libdir)/java" || die
 			docinto "java"
@@ -231,7 +231,11 @@ multilib_src_install_all() {
 	systemd_dounit "${FILESDIR}/saslauthd.service"
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
 
-	prune_libtool_files --modules
+	# The get_modname bit is important: do not remove the .la files on
+	# platforms where the lib isn't called .so for cyrus searches the .la to
+	# figure out what the name is supposed to be instead
+	use static-libs || [[ $(get_modname) != .so ]] || \
+		prune_libtool_files --modules
 }
 
 pkg_postinst () {
