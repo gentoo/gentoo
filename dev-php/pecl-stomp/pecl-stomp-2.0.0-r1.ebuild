@@ -1,13 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
+EAPI=6
 
 USE_PHP="php5-6 php7-0"
 PHP_EXT_NAME="stomp"
-PHP_EXT_INI="yes"
-PHP_EXT_ZENDEXT="no"
 DOCS=( CREDITS doc/classes.php doc/functions.php )
 
 inherit php-ext-pecl-r3
@@ -16,10 +14,10 @@ USE_PHP="php7-0"
 
 KEYWORDS="~amd64 ~x86"
 
-DESCRIPTION="PHP extension to communicate with Stomp compliant Message Brokers"
-LICENSE="PHP-3"
+DESCRIPTION="PHP extension to communicate with Stomp message brokers"
+LICENSE="PHP-3.01"
 SLOT="7"
-IUSE="examples +ssl"
+IUSE="examples ssl test"
 
 DEPEND="${DEPEND}
 	php_targets_php7-0? ( dev-lang/php:7.0[ssl?] )
@@ -37,8 +35,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local PHP_EXT_ECONF_ARGS=( --enable-stomp
-		$(use_with ssl openssl-dir=/usr) )
+	local PHP_EXT_ECONF_ARGS=(
+		--enable-stomp
+		--with-openssl-dir=$(usex ssl "${EPREFIX}/usr")
+	)
 	php-ext-source-r3_src_configure
 }
 
