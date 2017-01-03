@@ -16,8 +16,8 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="dev-lang/php:5.6[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
-	virtual/httpd-php:5.6"
+RDEPEND="<dev-lang/php-7.1[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
+	<virtual/httpd-php-7.1"
 
 S=${WORKDIR}/${PN}
 
