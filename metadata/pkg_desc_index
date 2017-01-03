@@ -6932,7 +6932,7 @@ dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/ffmpeg-php 0.6.0-r3 0.6.0-r4: PHP extension that provides access to movie info
 dev-php/igbinary 1.2.1-r1 2.0.0 2.0.0-r1 2.0.1: A fast drop-in replacement for the standard PHP serialize
-dev-php/jpgraph 3.0.7-r1 3.0.7-r2: Fully OO graph drawing library for PHP
+dev-php/jpgraph 3.0.7-r1 3.0.7-r2 4.0.2: Object-oriented graphing library for PHP
 dev-php/json-schema 2.0.0: PHP implementation of JSON schema
 dev-php/jsonlint 1.4.0: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
@@ -12119,8 +12119,8 @@ mail-filter/pypolicyd-spf 1.3.2-r1 2.0.1: Python-based policy daemon for Postfix
 mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
-mail-filter/rmilter 1.9.2 1.10.0 9999: Another sendmail milter for different mail checks
-mail-filter/rspamd 1.3.5-r2 1.4.0 1.4.1 9999: Rapid spam filtering system
+mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 9999: Another sendmail milter for different mail checks
+mail-filter/rspamd 1.3.5-r2 1.4.0 1.4.1 1.4.1-r1 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide Sender-ID verification service
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
@@ -12951,10 +12951,10 @@ media-libs/opus 1.1 1.1.3 1.2_alpha: Open versatile codec designed for interacti
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5 0.9.5-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.7.2 4.9.0 9999: KDE multimedia API
-media-libs/phonon-gstreamer 4.7.2 4.9.0 9999: Phonon GStreamer backend
+media-libs/phonon 4.9.0 9999: KDE multimedia API
+media-libs/phonon-gstreamer 4.9.0 9999: Phonon GStreamer backend
 media-libs/phonon-qt7 0_pre20110424: Phonon QuickTime7 backend
-media-libs/phonon-vlc 0.7.2 0.9.0 9999: Phonon VLC backend
+media-libs/phonon-vlc 0.9.0 9999: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6 2.6-r1: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
