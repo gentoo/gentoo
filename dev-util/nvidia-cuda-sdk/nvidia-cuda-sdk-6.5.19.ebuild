@@ -2,19 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cuda eutils flag-o-matic portability toolchain-funcs unpacker versionator
 
-MYD=$(get_version_component_range 1-2)
+MYD=$(get_version_component_range 1)_$(get_version_component_range 2)
 
 DESCRIPTION="NVIDIA CUDA Software Development Kit"
-HOMEPAGE="https://developer.nvidia.com/cuda-downloads"
-SRC_URI="http://developer.download.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_linux.run"
+HOMEPAGE="http://developer.nvidia.com/cuda"
+CURI="http://developer.download.nvidia.com/compute/cuda/${MYD}/rel/installers"
+SRC_URI="
+	amd64? ( ${CURI}/cuda_${PV}_linux_64.run )
+	x86? ( ${CURI}/cuda_${PV}_linux_32.run )"
 
 LICENSE="CUDPP"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug +doc +examples opencl +cuda"
 
 RDEPEND="
@@ -24,13 +27,14 @@ RDEPEND="
 		media-libs/freeimage
 		media-libs/glew:0=
 		virtual/mpi
-		>=x11-drivers/nvidia-drivers-352.39[uvm]
+		>=x11-drivers/nvidia-drivers-340.32[uvm]
+		x86? ( <x11-drivers/nvidia-drivers-346.35[uvm] )
 		)"
 DEPEND="${RDEPEND}"
 
 RESTRICT="test"
 
-S=${WORKDIR}/samples
+S=${WORKDIR}/cuda-samples
 
 QA_EXECSTACK=(
 	opt/cuda/sdk/0_Simple/cdpSimplePrint/cdpSimplePrint
@@ -47,6 +51,13 @@ src_unpack() {
 pkg_setup() {
 	if use cuda || use opencl; then
 		cuda_pkg_setup
+	fi
+
+	if use x86; then
+		ewarn "Starting with version 6.5 NVIDIA dropped more and more"
+		ewarn "the support for 32bit linux."
+		ewarn "Be aware that bugfixes and new features may not be available."
+		ewarn "https://dev.gentoo.org/~jlec/distfiles/CUDA_Toolkit_Release_Notes.pdf"
 	fi
 }
 
@@ -66,9 +77,9 @@ src_prepare() {
 		-e "/ CXXFLAGS/s|\(:=\)|\1 ${CXXFLAGS}|g" \
 		-e "/NVCCFLAGS/s|\(:=\)|\1 ${NVCCFLAGS} |g" \
 		-e 's:-Wimplicit::g' \
-		-e "s|../../common/lib/linux/\$(OS_ARCH)/libGLEW.a|$($(tc-getPKG_CONFIG) --libs glew)|g" \
-		-e "s|../../common/lib/\$(OSLOWER)/libGLEW.a|$($(tc-getPKG_CONFIG) --libs glew)|g" \
-		-e "s|../../common/lib/\$(OSLOWER)/\$(OS_ARCH)/libGLEW.a|$($(tc-getPKG_CONFIG) --libs glew)|g" \
+		-e "s|../../common/lib/linux/\$(OS_ARCH)/libGLEW.a|$(pkg-config --libs glew)|g" \
+		-e "s|../../common/lib/\$(OSLOWER)/libGLEW.a|$(pkg-config --libs glew)|g" \
+		-e "s|../../common/lib/\$(OSLOWER)/\$(OS_ARCH)/libGLEW.a|$(pkg-config --libs glew)|g" \
 		-i $(find . -type f -name "Makefile") || die
 
 #		-e "/ALL_LDFLAGS/s|:=|:= ${RAWLDFLAGS} |g" \
