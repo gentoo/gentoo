@@ -11,7 +11,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.python.org/pypi/subliminal"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
+EGIT_REPO_URI=( {https,git}://github.com/Diaoul/${PN}.git )
 EGIT_BRANCH="develop"
 
 LICENSE="MIT"
