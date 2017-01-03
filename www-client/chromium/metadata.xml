@@ -7,6 +7,7 @@
 	</maintainer>
 	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
+		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="gn">Use GN (generate ninja) instead of GYP for building</flag>
 		<flag name="gtk3">Use gtk3 instead of gtk2</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
