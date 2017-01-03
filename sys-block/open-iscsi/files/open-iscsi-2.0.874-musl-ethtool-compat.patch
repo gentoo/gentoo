@@ -1,0 +1,69 @@
+From: Anthony G. Basiel <blueness@gentoo.org>
+
+diff -Naur open-iscsi-2.0.874.orig/iscsiuio/src/unix/libs/bnx2x.c open-iscsi-2.0.874/iscsiuio/src/unix/libs/bnx2x.c
+--- open-iscsi-2.0.874.orig/iscsiuio/src/unix/libs/bnx2x.c	2016-09-29 18:33:24.000000000 +0000
++++ open-iscsi-2.0.874/iscsiuio/src/unix/libs/bnx2x.c	2017-01-03 21:45:47.504035833 +0000
+@@ -42,7 +42,7 @@
+ #include <arpa/inet.h>
+ #include <linux/types.h>	/* Needed for linux/ethtool.h on RHEL 5.x */
+ #include <linux/sockios.h>
+-#include <linux/ethtool.h>
++#include "ethtool-compat.h"
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+diff -Naur open-iscsi-2.0.874.orig/iscsiuio/src/unix/libs/ethtool-compat.h open-iscsi-2.0.874/iscsiuio/src/unix/libs/ethtool-compat.h
+--- open-iscsi-2.0.874.orig/iscsiuio/src/unix/libs/ethtool-compat.h	1970-01-01 00:00:00.000000000 +0000
++++ open-iscsi-2.0.874/iscsiuio/src/unix/libs/ethtool-compat.h	2017-01-03 21:45:23.016034980 +0000
+@@ -0,0 +1,51 @@
++/*
++ * ethtool-compat.h: adopted from
++ # ethtool.h: Defines for Linux ethtool.
++ *
++ * Copyright (C) 1998 David S. Miller (davem@redhat.com)
++ * Copyright 2001 Jeff Garzik <jgarzik@pobox.com>
++ * Portions Copyright 2001 Sun Microsystems (thockin@sun.com)
++ * Portions Copyright 2002 Intel (eli.kupermann@intel.com,
++ *                                christopher.leech@intel.com,
++ *                                scott.feldman@intel.com)
++ * Portions Copyright (C) Sun Microsystems 2008
++ */
++
++#include <linux/types.h>
++#include <netinet/if_ether.h>
++
++#define ETHTOOL_FWVERS_LEN	32
++#define ETHTOOL_BUSINFO_LEN	32
++#define ETHTOOL_EROMVERS_LEN	32
++
++struct ethtool_drvinfo {
++	__u32	cmd;
++	char	driver[32];
++	char	version[32];
++	char	fw_version[ETHTOOL_FWVERS_LEN];
++	char	bus_info[ETHTOOL_BUSINFO_LEN];
++	char	erom_version[ETHTOOL_EROMVERS_LEN];
++	char	reserved2[12];
++	__u32	n_priv_flags;
++	__u32	n_stats;
++	__u32	testinfo_len;
++	__u32	eedump_len;
++	__u32	regdump_len;
++};
++
++struct ethtool_tcpip4_spec {
++	__be32	ip4src;
++	__be32	ip4dst;
++	__be16	psrc;
++	__be16	pdst;
++	__u8    tos;
++};
++
++struct ethtool_ah_espip4_spec {
++	__be32	ip4src;
++	__be32	ip4dst;
++	__be32	spi;
++	__u8    tos;
++};
++
++#define ETHTOOL_GDRVINFO	0x00000003 /* Get driver info. */
