@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 eutils qmake-utils
+inherit distutils-r1 eutils flag-o-matic qmake-utils
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -62,6 +62,18 @@ src_configure() {
 		#use doc ||
 		export DOXYGEN=true
 		export MOC="$(qt5_get_bindir)/moc"
+	fi
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# FIXME: I don't know how to select on C++11 (libc++) here, but
+		# I do know all Darwin users are using C++11.  This should also
+		# apply to GCC 4.7+ with libc++, and basically anyone targetting
+		# it.
+
+		# The C-standard doesn't define strdup, and C++11 drops it
+		# resulting in an implicit declaration of strdup error.  Since
+		# it is in POSIX raise the feature set to that.
+		append-cxxflags -D_POSIX_C_SOURCE=200112L
 	fi
 
 	econf \
