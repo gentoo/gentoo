@@ -4969,7 +4969,7 @@ dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multico
 dev-libs/stfl 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
-dev-libs/sway 0.10 0.11-r1 9999: i3-compatible Wayland window manager
+dev-libs/sway 0.10 0.11-r2 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 2.2.0 3.0.0 4.0.1: A simple, small, efficient, C++ XML parser
@@ -12459,7 +12459,7 @@ media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.8.18 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 2
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
-media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 3.13 3.14 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.20.3 3.20.4 3.22.1 3.22.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
@@ -15250,7 +15250,7 @@ net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
 net-nds/rpcbind 0.2.3-r1 0.2.3-r2 0.2.4 9999: portmap replacement which supports RPC over various protocols
-net-nds/shelldap 1.3.1: A handy shell-like interface for browsing LDAP servers and editing their content
+net-nds/shelldap 1.3.1 1.3.2: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 2.12-r1: Network Information Service tools
@@ -15310,7 +15310,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.5.2: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
 net-p2p/gtk-gnutella 1.1.8 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
@@ -16743,7 +16743,7 @@ sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4 2.2-r5: Minimal baselayout for Gentoo Prefix installs
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20100611-r1: A script that creates floppy boot images to flash Dell BIOSes
-sys-apps/bleachbit 1.2 1.11.2 1.12: Clean junk to free disk space and to maintain privacy
+sys-apps/bleachbit 1.12: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.25.1 1.26.0 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.03 1.09 1.09-r1 1.10 1.11: Shows status of logical drives attached to HP SmartArray controllers
@@ -18583,6 +18583,7 @@ x11-misc/kronometer 2.1.1 2.1.2: Stopwatch application
 x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut both directly or as part of a combination
 x11-misc/ktsuss 2 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
+x11-misc/libinput-gestures 2.15 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.7.0 1.7.0-r1: A simple locker using lightdm
 x11-misc/lightdm 1.16.7 1.18.3 1.20.0 1.21.3: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.2: LightDM GTK+ Greeter

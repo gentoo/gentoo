@@ -1,13 +1,12 @@
 DEFINED_PHASES=compile install
 DEPEND=!sys-apps/nictools
 DESCRIPTION=low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
-EAPI=0
-HOMEPAGE=ftp://ftp.scyld.com/pub/diag/ ftp://ftp.scyld.com/pub/isa-diag/
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=!sys-apps/nictools
 SLOT=0
 SRC_URI=mirror://gentoo/ethercard-diag-20050321.1g.tar.lzma
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=994c10c9107f0a26dfc426b733580edf
+_md5_=874f1cc86a57ede177dad3be3c98080b
