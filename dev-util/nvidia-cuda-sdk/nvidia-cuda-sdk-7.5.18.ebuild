@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/freeglut
 	examples? (
 		media-libs/freeimage
-		media-libs/glew
+		media-libs/glew:0=
 		virtual/mpi
 		>=x11-drivers/nvidia-drivers-352.39[uvm]
 		)"

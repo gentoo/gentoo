@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/freeglut
 	examples? (
 		media-libs/freeimage
-		media-libs/glew
+		media-libs/glew:0=
 		virtual/mpi
 		>=x11-drivers/nvidia-drivers-340.32[uvm]
 		x86? ( <x11-drivers/nvidia-drivers-346.35[uvm] )
