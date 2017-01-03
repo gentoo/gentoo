@@ -64,6 +64,10 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+run_tests_for_abi() {
+	local ABI=${1}
+}
+
 src_test() {
 	# prepare a test compiler
 	local clang_version=4.0.0
@@ -103,13 +107,22 @@ src_test() {
 		done
 	} > Makefile || die
 
-	# use -k to run all tests even if some fail
-	emake -k \
-		CC="${BUILD_DIR}/bin/clang" \
-		CFLAGS='' \
-		CPPFLAGS='-I../../../lib/builtins' \
-		LDFLAGS='-rtlib=compiler-rt' \
-		LDLIBS='-lm'
+	local ABI
+	for ABI in $(get_all_abis); do
+		# not supported at all at the moment
+		[[ ${ABI} == x32 ]] && continue
+
+		rm -f "${tests[@]}" || die
+
+		einfo "Running tests for ABI=${ABI}"
+		# use -k to run all tests even if some fail
+		emake -k \
+			CC="${BUILD_DIR}/bin/clang" \
+			CFLAGS="$(get_abi_CFLAGS)" \
+			CPPFLAGS='-I../../../lib/builtins' \
+			LDFLAGS='-rtlib=compiler-rt' \
+			LDLIBS='-lm'
+	done
 }
 
 src_install() {
