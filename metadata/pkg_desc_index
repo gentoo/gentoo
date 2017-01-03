@@ -10015,7 +10015,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160814 10.2.1 10.2.2: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160814 10.2.2 10.2.3: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.86 1.0.87: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -18098,7 +18098,7 @@ www-client/qupzilla 2.0.1 2.0.2: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.8.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.40 2.46: Seamonkey Web Browser
-www-client/seamonkey-bin 2.39 2.44_pre20160608 2.45_pre20160812: Mozilla Application Suite - web browser, email, HTML editor, IRC
+www-client/seamonkey-bin 2.39 2.46: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
