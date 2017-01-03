@@ -2528,7 +2528,7 @@ app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
 app-vim/csv 0.31-r1: vim plugin: display and alter csv files
 app-vim/ctrlp 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
-app-vim/curcmdmode 1.0 1.0-r1: vim plugin: library for extending vim's mode() function
+app-vim/curcmdmode 1.0-r1: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 24.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
