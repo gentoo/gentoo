@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">libpng</product>
   <announced>October 05, 2010</announced>
-  <revised>June 06, 2015: 8</revised>
+  <revised>January 03, 2017: 9</revised>
   <bug>307637</bug>
   <bug>324153</bug>
   <bug>335887</bug>
@@ -25,6 +25,7 @@
       <unaffected range="rge">1.2.54</unaffected>
       <unaffected range="rge">1.2.55</unaffected>
       <unaffected range="rge">1.2.56</unaffected>
+      <unaffected range="rge">1.2.57</unaffected>
       <vulnerable range="lt">1.4.3</vulnerable>
     </package>
   </affected>
@@ -88,6 +89,6 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="Fri, 07 Oct 2011 22:32:46 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:36:51 +0000">system</metadata>
-  <metadata tag="bugReady" timestamp="Sat, 06 Jun 2015 23:36:52 +0000">system</metadata>
+  <metadata tag="submitter" timestamp="Tue, 03 Jan 2017 04:37:30 +0000">system</metadata>
+  <metadata tag="bugReady" timestamp="Tue, 03 Jan 2017 04:37:31 +0000">system</metadata>
 </glsa>
