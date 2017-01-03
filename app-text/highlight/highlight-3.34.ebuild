@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,6 +31,11 @@ src_prepare() {
 	if has_version '<dev-lang/lua-5.2' ; then
 		sed -i 's/-DUSE_LUA52//' src/makefile || die
 	fi
+
+	# We set it via eqmake4, otherwise it forces clang...
+	sed -e 's/QMAKE_CC/#QMAKE_CC/g' \
+		-e 's/QMAKE_CXX /#QMAKE_CXX /g' \
+		-i "${S}/src/gui-qt/highlight.pro" || die
 }
 
 src_compile() {
