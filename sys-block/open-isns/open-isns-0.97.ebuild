@@ -20,6 +20,8 @@ DEPEND="
 	slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-${PV}-musl.patch" )
+
 src_configure() {
 	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI
 	append-lfs-flags
