@@ -355,7 +355,7 @@ app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude list
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.9 2.4.20 2.4.22 2.4.23 2.5.6 2.5.7: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+app-backup/dar 2.4.20 2.4.23 2.5.7 2.5.8: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
 app-backup/deja-dup 34.2 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.26 0.7.07.1 0.7.10: Secure backup system using gnupg to encrypt data
@@ -10138,7 +10138,7 @@ dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
-dev-util/nvidia-cuda-sdk 6.5.14 7.5.18 8.0.44-r1: NVIDIA CUDA Software Development Kit
+dev-util/nvidia-cuda-sdk 6.5.14 6.5.19 7.5.18 8.0.44-r1: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
@@ -17627,7 +17627,7 @@ sys-libs/timezone-data 2016h 2016i 2016j: Timezone data (/usr/share/zoneinfo) an
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 1.0.20 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
-sys-libs/zlib 1.2.8-r1 1.2.9: Standard (de)compression library
+sys-libs/zlib 1.2.8-r1 1.2.9 1.2.10: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
