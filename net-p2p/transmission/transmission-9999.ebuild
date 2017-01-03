@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,17 +13,6 @@ else
 	SRC_URI="https://github.com/transmission/transmission/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
 fi
-
-# See CMakeLists
-DHT_ID="cc379e406d"
-UTP_ID="7c4f19abdf"
-B64_ID="c1e3323498"
-
-SRC_URI+="
-	https://github.com/transmission/dht/archive/${DHT_ID}.tar.gz -> dht-${DHT_ID}.tar.gz
-	https://github.com/transmission/libutp/archive/${UTP_ID}.tar.gz -> libutp-${UTP_ID}.tar.gz
-	https://github.com/transmission/libb64/archive/${B64_ID}.tar.gz -> libb64-${B64_ID}.tar.gz
-"
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
 HOMEPAGE="https://transmissionbt.com/"
@@ -109,16 +98,6 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
-
-	symlink_tarball() {
-		local srcdir="${BUILD_DIR}/third-party/${1}-${3}/src"
-		mkdir -p "${srcdir}" || die
-		ln -s "${DISTDIR}/${2}-${3}.tar.gz" "${srcdir}/${3}.tar.gz" || die
-	}
-
-	symlink_tarball dht dht "${DHT_ID}"
-	symlink_tarball utp libutp "${UTP_ID}"
-	symlink_tarball b64 libb64 "${B64_ID}"
 }
 
 DISABLE_AUTOFORMATTING=1
