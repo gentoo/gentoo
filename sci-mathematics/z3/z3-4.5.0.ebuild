@@ -22,6 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:0 )"
 DEPEND="${RDEPEND}
+	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.8 )"
 
 S=${WORKDIR}/${PN}-${P}
@@ -85,9 +86,11 @@ src_compile() {
 
 	use java && java-pkg-simple_src_compile
 
-	pushd doc || die
-	${EPYTHON} mk_api_doc.py || die
-	popd || die
+	if use doc; then
+		pushd doc || die
+		${EPYTHON} mk_api_doc.py || die
+		popd || die
+	fi
 }
 
 src_install() {
@@ -121,8 +124,8 @@ src_install() {
 	fi
 
 	local DOCS=( "README.md" "RELEASE_NOTES" )
-	local HTML_DOCS=( "doc/api/html" )
-	einstalldocs
+	local HTML_DOCS=( "doc/api/html/." )
+	use doc && einstalldocs
 }
 
 pkg_postinst() {

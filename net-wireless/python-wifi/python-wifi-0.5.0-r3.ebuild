@@ -13,7 +13,7 @@ HOMEPAGE="https://pypi.python.org/pypi/python-wifi"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.bz2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 LICENSE="LGPL-2.1 examples? ( GPL-2 )"
 IUSE="examples"
 

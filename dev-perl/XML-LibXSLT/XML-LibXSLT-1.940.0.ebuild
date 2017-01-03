@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Perl module to parse XSL Transformational sheets using gnome's libXSLT"
 
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="

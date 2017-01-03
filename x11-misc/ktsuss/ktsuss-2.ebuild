@@ -10,7 +10,7 @@ SRC_URI="https://ktsuss.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~ppc64 x86"
+KEYWORDS="amd64 ~mips ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.12.11:2
