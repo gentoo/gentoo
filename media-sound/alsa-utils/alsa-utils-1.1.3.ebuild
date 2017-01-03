@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,8 @@ src_configure() {
 		$(use_enable ncurses alsamixer) \
 		--disable-alsaconf \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		--with-udev-rules-dir="$(get_udevdir)"/rules.d \
+		--with-udev-rules-dir="${EPREFIX}/$(get_udevdir)"/rules.d \
+		--with-asound-state-dir="${EPREFIX}"/var/lib/alsa \
 		${myconf}
 }
 
