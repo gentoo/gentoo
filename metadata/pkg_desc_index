@@ -11578,7 +11578,6 @@ kde-apps/kdesu 16.04.3: KDE gui for su(1)
 kde-apps/kdeutils-meta 16.08.3 16.12.0: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdewebdev-meta 16.08.3 16.12.0: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 16.08.3 16.12.0: KDE free disk space utility
-kde-apps/kdgantt2 16.08.3: KDGantt library
 kde-apps/kdialog 16.08.3 16.12.0: Can be used to show nice dialog boxes from shell scripts
 kde-apps/kdiamond 16.08.3 16.12.0: A KDE three-in-a-row game
 kde-apps/kdontchangethehostname 16.04.3: Tool to inform Plasma about a change in hostname
@@ -11693,7 +11692,6 @@ kde-apps/ktp-contact-runner 16.08.3 16.12.0: KDE Telepathy krunner plugin
 kde-apps/ktp-desktop-applets 16.08.3 16.12.0: KDE Telepathy contact, presence and chat Plasma applets
 kde-apps/ktp-filetransfer-handler 16.08.3 16.12.0: KDE Telepathy file transfer handler
 kde-apps/ktp-kded-module 16.08.3 16.12.0: KDE Telepathy workspace integration
-kde-apps/ktp-l10n 16.04.3: KDE Telepathy internationalization package
 kde-apps/ktp-send-file 16.08.3 16.12.0: KDE Telepathy file manager plugin to send files to contacts
 kde-apps/ktp-text-ui 16.08.3 16.12.0: KDE Telepathy text chat window
 kde-apps/ktraderclient 16.04.3: A command-line tool for querying the KDE trader system
