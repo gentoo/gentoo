@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-libs/expat >=dev-lang/ocaml-3.10.2:=[ocamlopt?] test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml bindings for expat
+EAPI=5
+HOMEPAGE=https://github.com/whitequark/ocaml-expat
+IUSE=doc +ocamlopt test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/expat >=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+SLOT=0/1.0.0
+SRC_URI=https://github.com/whitequark/ocaml-expat/archive/v1.0.0.tar.gz -> ocaml-expat-1.0.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=7da93b2c3040384335c082709ed709f5

@@ -5140,7 +5140,7 @@ dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
 dev-ml/lwt 2.4.3 2.5.2-r1 2.6.0: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.3 0.7.4: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20160526 20160808 20160825 20161114 20161115: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20161115 20170101: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1 0.4.6 0.4.7 0.4.8: OASIS is a tool to integrate a configure, build and install system in OCaml project
@@ -5154,7 +5154,7 @@ dev-ml/ocaml-ctypes 0.4.1-r1 0.10.2 0.11.1 0.11.2: Library for binding to C libr
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
-dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
+dev-ml/ocaml-expat 0.9.1 1.0.0: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-extunix 0.1.3 0.1.4: Thin bindings to various low-level system APIs
 dev-ml/ocaml-fileutils 0.4.5 0.5.0 0.5.1: Pure OCaml functions to manipulate real file (POSIX like) and filename
@@ -7863,7 +7863,7 @@ dev-python/pathtools 0.1.2 0.1.2-r1: Pattern matching and various utilities for 
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2-r1 1.8.1 1.9.1 1.10.0 1.10.0-r1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1 0.3.2: Simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
@@ -13794,7 +13794,7 @@ media-video/dv2sub 0.3: extract info or subtitles from DV stream
 media-video/dvbackup 0.0.4-r1: A small utility for creating backups on DV tapes
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
 media-video/dvd9to5 0.1.7: Perl script to backup the main feature of a DVD-9 on DVD-5
-media-video/dvdauthor 0.7.1: Tools for generating DVD files to be played on standalone DVD players
+media-video/dvdauthor 0.7.1 0.7.2: Tools for generating DVD files to be played on standalone DVD players
 media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r2 0.98.11-r3: dvd::rip is a graphical frontend for transcode
