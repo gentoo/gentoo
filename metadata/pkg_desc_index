@@ -5270,7 +5270,7 @@ dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment p
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.80.0 7.120.0 7.130.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.120.0 7.130.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
@@ -6332,7 +6332,7 @@ dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7 1.1-r1: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
-dev-perl/SOAP-Lite 1.040.0-r1 1.190.0: Lightweight interface to the SOAP protocol both on client and server side
+dev-perl/SOAP-Lite 1.190.0: Lightweight interface to the SOAP protocol both on client and server side
 dev-perl/SOAP-WSDL 3.3.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
@@ -6480,7 +6480,7 @@ dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
-dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
+dev-perl/Test-Memory-Cycle 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-MinimumVersion 0.101.82: does your code require newer perl than you think?
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
@@ -6677,7 +6677,7 @@ dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API t
 dev-perl/XML-LibXML 2.12.100 2.12.600 2.12.800 2.12.800-r1: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
-dev-perl/XML-LibXSLT 1.870.0 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
+dev-perl/XML-LibXSLT 1.940.0 1.950.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.110.0-r1: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
