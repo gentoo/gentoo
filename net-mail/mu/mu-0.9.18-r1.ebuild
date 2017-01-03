@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -59,6 +59,7 @@ src_install () {
 		  man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
 		  man/mu-mkdir.1 man/mu-remove.1 man/mu-server.1 man/mu-verify.1 \
 		  man/mu-view.1 man/mu.1
+	doinfo mu4e/mu4e.info
 	if use gui; then
 		dobin man/mug.1
 	fi
