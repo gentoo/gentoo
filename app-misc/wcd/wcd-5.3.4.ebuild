@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND="${CDEPEND}"
 S="${WORKDIR}"/${P}/src
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.2.5-gentoo.patch
+	"${FILESDIR}"/${PN}-5.3.4-gentoo.patch
 )
 
 src_prepare() {
@@ -45,7 +45,7 @@ src_compile() {
 }
 
 src_install() {
-	local DOCS="../README.txt"
+	local DOCS=( ../README.txt )
 	default
 	emake DESTDIR="${D}" DOTWCD=1 install-profile sysconfdir="/etc"
 }
