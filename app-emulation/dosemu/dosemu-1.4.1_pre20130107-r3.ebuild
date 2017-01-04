@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,6 +47,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fortify.patch
 	epatch "${FILESDIR}"/${PN}-1.4.1_pre20091009-dash.patch
 	epatch "${FILESDIR}"/${P}-no-glibc.patch
+	epatch "${FILESDIR}"/${P}-flex-2.6.3.patch
 
 	epatch_user
 
