@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit linux-mod
+inherit linux-mod bash-completion-r1
 
 DESCRIPTION="Simple yet fast and modern VPN that utilizes state-of-the-art cryptography."
 HOMEPAGE="https://www.wireguard.io/"
@@ -48,8 +48,14 @@ src_compile() {
 src_install() {
 	dodoc README.md
 	dodoc -r contrib/examples
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C contrib/examples/wg-config install
+	emake \
+		WITH_BASHCOMPLETION=yes \
+		WITH_SYSTEMDUNITS=yes \
+		WITH_WGQUICK=yes \
+		DESTDIR="${D}" \
+		BASHCOMPDIR="$(get_bashcompdir)" \
+		PREFIX="${EPREFIX}/usr" \
+		-C src/tools install
 	if use kmod-src; then
 		emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src dkms-install
 	else
