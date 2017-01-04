@@ -4,7 +4,7 @@
 
 EAPI=6
 
-WX_GTK_VER=3.0
+WX_GTK_VER=2.8
 
 inherit autotools eutils linux-info systemd user versionator wxwidgets
 
@@ -43,7 +43,7 @@ RDEPEND="
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)
 "
 DEPEND="${RDEPEND}
@@ -56,11 +56,6 @@ DEPEND="${RDEPEND}
 		)
 	)
 "
-
-PATCHES=(
-	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
-	"${FILESDIR}"/fix_webview.patch
-)
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
@@ -123,6 +118,10 @@ src_install() {
 			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
 		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
+
+		# Rename the desktop file to boincmgr.desktop to (hot)fix bug 599910
+		mv "${ED%/}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
+			die "Failed to rename desktop file"
 	fi
 
 	# cleanup cruft

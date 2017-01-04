@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 inherit eutils libtool user
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
@@ -12,7 +13,7 @@ SRC_URI="http://packages.groonga.org/source/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex libedit libevent lzo mecab msgpack +nfkc ruby sphinx static-libs uyield zeromq zlib"
+IUSE="abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex libedit libevent lzo mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib"
 
 RDEPEND="benchmark? ( >=dev-libs/glib-2.8 )
 	libedit? ( >=dev-libs/libedit-3 )
@@ -20,7 +21,6 @@ RDEPEND="benchmark? ( >=dev-libs/glib-2.8 )
 	lzo? ( dev-libs/lzo )
 	mecab? ( >=app-text/mecab-0.80 )
 	msgpack? ( dev-libs/msgpack )
-	ruby? ( dev-lang/ruby )
 	sphinx? ( >=dev-python/sphinx-1.0.1 )
 	zeromq? ( net-libs/zeromq )
 	zlib? ( sys-libs/zlib )"
@@ -36,6 +36,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default_src_prepare
 	elibtoolize
 }
 
@@ -43,6 +44,7 @@ src_configure() {
 	# httpd is a bundled copy of nginx; disabled for security reasons
 	# prce only is used with httpd
 	# kytea and libstemmer are not available in portage
+	# ruby is only used for an http test
 	econf \
 		--disable-groonga-httpd \
 		--without-pcre \
@@ -50,6 +52,7 @@ src_configure() {
 		--without-libstemmer \
 		--with-log-path="${EROOT}var/log/${PN}.log" \
 		--docdir="${EROOT}usr/share/doc/${P}" \
+		--without-ruby \
 		$(use_enable abort) \
 		$(use_enable benchmark) \
 		$(use_enable debug memory-debug) \
@@ -64,7 +67,6 @@ src_configure() {
 		$(use_with mecab) \
 		$(use_with msgpack message-pack "${EROOT}usr") \
 		$(use_enable nfkc) \
-		$(use_with ruby) \
 		$(use_with sphinx sphinx-build) \
 		$(use_enable static-libs static) \
 		$(use_enable uyield) \
@@ -73,6 +75,7 @@ src_configure() {
 }
 
 src_install() {
+	local DOCS=( README.md )
 	default
 
 	prune_libtool_files
@@ -82,8 +85,6 @@ src_install() {
 
 	keepdir /var/{log,lib}/${PN}
 	fowners groonga:groonga /var/{log,lib}/${PN}
-
-	dodoc README.md
 
 	use examples || rm -r "${D}usr/share/${PN}" || die
 	# Extra init script

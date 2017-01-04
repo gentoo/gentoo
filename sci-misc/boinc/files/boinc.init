@@ -5,7 +5,6 @@
 
 extra_started_commands="attach resume suspend"
 
-
 depend() {
 	# we can use dns and net, but we can also in most cases live without them
 	use dns net ntp-client ntpd
@@ -13,15 +12,19 @@ depend() {
 
 
 create_work_directory() {
-	if [ ! -d "${RUNTIMEDIR}" ]; then
+	if [[ ! -d "${RUNTIMEDIR}" ]]; then
 		einfo "Directory ${RUNTIMEDIR} does not exist, creating now."
 		mkdir -p "${RUNTIMEDIR}"
-		if [ ! -d "${RUNTIMEDIR}" ]; then
+		if [[ ! -d "${RUNTIMEDIR}" ]]; then
 			eeror "Directory ${RUNTIMEDIR} could not be created!"
 			return 1
 		fi
+
+		# ensure proper ownership
+		chown "${USER}:${GROUP}" "${RUNTIMEDIR}"
 	fi
-	if [ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ] ; then
+
+	if [[ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ]]; then
 		ln -s /etc/ssl/certs/ca-certificates.crt "${RUNTIMEDIR}"/ca-bundle.crt
 	fi
 
@@ -30,9 +33,20 @@ create_work_directory() {
 
 
 cuda_check() {
-	if [ -f /opt/cuda/lib/libcudart.so ]; then
-		# symlink wont harm :]
-		ln -snf /opt/cuda/lib/libcudart.so "${RUNTIMEDIR}"/libcudart.so
+	local libtarget="${RUNTIMEDIR}/libcudart.so"
+	local libsource="$(ls -t /opt/cuda/lib*/libcudart.so 2>/dev/null | head -n 1)"
+
+	# Remove a broken symlink
+	if [[ -h "${libtarget}" ]] \
+	&& [[ "${libsource}" != "$(readlink "${libtarget}")" ]]; then
+		rm -f "${libtarget}"
+	fi
+
+	# symlink the correct path
+	if [[ -n "${libsource}" ]] \
+	&& [[ -f "${libsource}" ]] \
+	&& [[ ! -h "${libtarget}" ]]; then
+		ln -snf "$libsource" "${libtarget}"
 	fi
 }
 
@@ -43,14 +57,23 @@ env_check() {
 	: ${GROUP:="boinc"}
 	: ${RUNTIMEDIR:="/var/lib/boinc"}
 	: ${BOINCBIN:="$(which boinc_client)"}
+	: ${BOINC_PIDFILE:="/var/run/boinc_client.pid"}
+	: ${BOINCCMD:="$(which /usr/bin/boinccmd)"}
 	: ${ALLOW_REMOTE_RPC:="yes"}
 	: ${NICELEVEL:="19"}
 	# ARGS is not checked, it could have been explicitly set
 	# to be empty by the user.
 
 	# If the client was not found (how?) something is seriously wrong
-	if [ ! -x "$BOINCBIN" ] ; then
+	if [[ ! -x "$BOINCBIN" ]]; then
 		eerror "No boinc_client found!"
+		return 1
+	fi
+
+	# The boinccmd is crucial, or we can not attach, suspend or resume
+	# the boinc client
+	if [[ ! -x "$BOINCCMD" ]]; then
+		eerror "No boinccmd_program found!"
 		return 1
 	fi
 
@@ -75,10 +98,7 @@ start_pre() {
 	create_work_directory || return 1
 	cuda_check
 
-	# always ensure proper ownership
-	chown -R "${USER}:${GROUP}" "${RUNTIMEDIR}"
-
-	if [ ! -f "${RUNTIMEDIR}/lockfile" ]; then
+	if [[ ! -f "${RUNTIMEDIR}/lockfile" ]]; then
 		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
 		einfo "You need to setup an account on the BOINC project homepage beforehand!"
 		einfo "Go to http://boinc.berkeley.edu/ and locate your project."
@@ -94,14 +114,17 @@ start_pre() {
 
 
 start() {
-	if [ "${ALLOW_REMOTE_RPC}" = "yes" ]; then
+	if [[ "${ALLOW_REMOTE_RPC}" = "yes" ]]; then
 		ARGS="${ARGS} --allow_remote_gui_rpc"
 	fi
 
-	ARGS="${ARGS} --daemon --dir "${RUNTIMEDIR}" --redirectio"
+	ARGS="${ARGS} --dir "${RUNTIMEDIR}" --redirectio"
 
 	ebegin "Starting ${RC_SVCNAME}"
-	start-stop-daemon -S -N ${NICELEVEL} -u ${USER} -q -x "${BOINCBIN}" -- ${ARGS}
+	start-stop-daemon --start --nicelevel ${NICELEVEL} \
+		--user "${USER}:${GROUP}" --quiet --make-pidfile \
+		--pidfile "$BOINC_PIDFILE" --background \
+		--exec "${BOINCBIN}" -- ${ARGS}
 	eend $?
 }
 
@@ -113,7 +136,7 @@ attach() {
 
 	env_check || return 1
 
-	einfo "If you cant find your account key just try to obtain it by using:"
+	einfo "If you can't find your account key just try to obtain it by using:"
 	einfo "    boinccmd --passwd PASSWORD_FROM_GUI_RPC_AUTH --lookup_account URL EMAIL PASSWORD"
 
 	printf "    Enter the Project URL: "
@@ -130,16 +153,19 @@ attach() {
 	fi
 
 	ebegin "${RC_SVCNAME}: Attaching to project"
-	start-stop-daemon -u ${USER} -q -d "${RUNTIMEDIR}" -x boinccmd -- ${password} --project_attach ${url} ${key}
+	start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+		--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+		-- ${password} --project_attach ${url} ${key}
 	eend $?
 
-	sleep 10
+	sleep 10s
 	tail "${RUNTIMEDIR}/stdoutdae.txt"
 }
 
 
 stop() {
 	local password=""
+	local stop_timeout="SIGTERM/60/SIGTERM/30/SIGKILL/30"
 
 	env_check || return 1
 
@@ -148,20 +174,54 @@ stop() {
 	fi
 
 	ebegin "Stopping ${RC_SVCNAME}"
-	start-stop-daemon -u ${USER} -q -d "${RUNTIMEDIR}" -x boinccmd -- ${password} --quit
+	start-stop-daemon --stop --quiet --progress \
+		--retry $stop_timeout \
+		--pidfile "${BOINC_PIDFILE}"
 	eend $?
 }
 
 
 resume() {
-	for url in $(boinccmd --get_project_status | sed -n 's/\s*master URL: //p'); do
-		boinccmd --project ${url} resume
+	env_check || return 1
+
+	local password=""
+	local master_urls=( \
+		$("${BOINCCMD}" --get_project_status | \
+		  sed -n 's/\s*master URL: //p') \
+	)
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	for url in "${master_urls[@]}"; do
+		ebegin "Resuming $url"
+		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+			-- ${password} --project ${url} resume
+		eend $?
 	done
 }
 
 
 suspend() {
-	for url in $(boinccmd --get_project_status | sed -n 's/\s*master URL: //p'); do
-		boinccmd --project ${url} suspend;
+	env_check || return 1
+
+	local password=""
+	local master_urls=( \
+		$("${BOINCCMD}" --get_project_status | \
+		  sed -n 's/\s*master URL: //p') \
+	)
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	for url in "${master_urls[@]}"; do
+		ebegin "Suspending $url"
+		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+			-- ${password} --project ${url} suspend
+		eend $?
 	done
 }
