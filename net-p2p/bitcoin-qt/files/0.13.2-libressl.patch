@@ -1,0 +1,48 @@
+commit 0388afe69dd85ca9549727ee105ba7017169b464 (HEAD -> EVP_MD_CTX_new, personal-github/EVP_MD_CTX_new)
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Wed Jan 4 17:07:42 2017 +0000
+
+    Let autoconf detect presence of EVP_MD_CTX_new
+    
+    Fixes LibreSSL compatibility
+
+diff --git a/configure.ac b/configure.ac
+index ced258e..02af0d6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -832,6 +832,13 @@ else
+   fi
+ fi
+ 
++save_CXXFLAGS="${CXXFLAGS}"
++CXXFLAGS="${CXXFLAGS} ${CRYPTO_CFLAGS} ${SSL_CFLAGS}"
++AC_CHECK_DECLS([EVP_MD_CTX_new],,,[AC_INCLUDES_DEFAULT
++#include <openssl/x509_vfy.h>
++])
++CXXFLAGS="${save_CXXFLAGS}"
++
+ dnl univalue check
+ 
+ need_bundled_univalue=yes
+diff --git a/src/qt/paymentrequestplus.cpp b/src/qt/paymentrequestplus.cpp
+index 82be4d8..0d4907b 100644
+--- a/src/qt/paymentrequestplus.cpp
++++ b/src/qt/paymentrequestplus.cpp
+@@ -159,7 +159,7 @@ bool PaymentRequestPlus::getMerchant(X509_STORE* certStore, QString& merchant) c
+         std::string data_to_verify;                     // Everything but the signature
+         rcopy.SerializeToString(&data_to_verify);
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if HAVE_DECL_EVP_MD_CTX_NEW
+         EVP_MD_CTX *ctx = EVP_MD_CTX_new();
+         if (!ctx) throw SSLVerifyError("Error allocating OpenSSL context.");
+ #else
+@@ -174,7 +174,7 @@ bool PaymentRequestPlus::getMerchant(X509_STORE* certStore, QString& merchant) c
+             !EVP_VerifyFinal(ctx, (const unsigned char*)paymentRequest.signature().data(), (unsigned int)paymentRequest.signature().size(), pubkey)) {
+             throw SSLVerifyError("Bad signature, invalid payment request.");
+         }
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if HAVE_DECL_EVP_MD_CTX_NEW
+         EVP_MD_CTX_free(ctx);
+ #endif
+ 

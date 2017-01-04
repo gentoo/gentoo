@@ -79,6 +79,8 @@ src_prepare() {
 	sed "s/locale\/${filt}/bitcoin.qrc/" -i 'src/Makefile.qt.include' || die
 	einfo "Languages -- Enabled:$yeslang -- Disabled:$nolang"
 
+	epatch "${FILESDIR}/0.13.2-libressl.patch"
+
 	bitcoincore_autoreconf
 }
 
