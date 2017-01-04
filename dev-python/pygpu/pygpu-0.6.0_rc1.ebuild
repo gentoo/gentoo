@@ -17,7 +17,7 @@ SRC_URI="https://github.com/Theano/libgpuarray/archive/v${MYPV}.tar.gz -> ${P}.t
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cuda doc opencl test"
+IUSE="cuda opencl test"
 
 RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]
@@ -27,21 +27,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-	   dev-python/sphinx[${PYTHON_USEDEP}]
-	   dev-python/breathe[${PYTHON_USEDEP}]
-	)
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/libgpuarray-${MYPV}"
-
-python_compile_all() {
-	if use doc; then
-		python_setup
-		esetup.py build_sphinx
-	fi
-}
 
 python_test() {
 	local DEVICE=cuda
