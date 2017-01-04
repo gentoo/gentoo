@@ -12957,7 +12957,7 @@ media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2: An open-source JPEG 20
 media-libs/opensubdiv 3.1.0: An Open-Source subdivision surface library
 media-libs/opus 1.1 1.1.3 1.2_alpha: Open versatile codec designed for interactive speech and audio transmission over the internet
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
-media-libs/oyranos 0.9.5 0.9.5-r1 9999: Colour management system allowing to share settings across apps and services
+media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.9.0 9999: KDE multimedia API
 media-libs/phonon-gstreamer 4.9.0 9999: Phonon GStreamer backend
