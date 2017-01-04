@@ -1,18 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-[[ ${PV} = 9999* ]] && inherit git-2 autotools
-EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
-inherit base eutils
+[[ ${PV} = 9999* ]] && inherit git-r3 autotools
 
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
 if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
-	KEYWORDS=""
+	EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
 else
 	SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.xz"
 	KEYWORDS="~amd64 ~mips ~x86"
@@ -25,7 +22,7 @@ IUSE="+curl debug nls static-libs test"
 COMMON_DEPEND="
 	app-crypt/gpgme
 	dev-libs/expat
-	dev-libs/libgcrypt:0
+	dev-libs/libgcrypt:0=
 	dev-libs/libxml2
 	curl? ( net-misc/curl[ssl] )
 "
@@ -40,23 +37,25 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( NEWS README AUTHORS ChangeLog )
 
 src_prepare() {
-	base_src_prepare
+	default
 	[[ ${PV} = 9999* ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-fatalwarnings \
-		$(use_with curl libcurl) \
-		$(use_enable curl curlreauthorizationbug) \
-		$(use_enable debug) \
-		$(use_enable nls) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-fatalwarnings
+		$(use_with curl libcurl)
+		$(use_enable curl curlreauthorizationbug)
+		$(use_enable debug)
+		$(use_enable nls)
+		$(use_enable static-libs static)
 		$(use_enable test)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	base_src_install
+	default
 
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
