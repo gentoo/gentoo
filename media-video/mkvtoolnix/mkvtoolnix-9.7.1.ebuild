@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,6 +41,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
+		dev-qt/qtconcurrent:5
 	)
 "
 DEPEND="${RDEPEND}
