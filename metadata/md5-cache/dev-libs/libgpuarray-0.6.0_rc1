@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=doc? ( app-doc/doxygen ) test? ( cuda? ( amd64? ( >=dev-util/nvidia-cuda-toolkit-7 ) ) opencl? ( virtual/opencl || ( sci-libs/clblast sci-libs/clblas ) ) dev-libs/check virtual/pkgconfig ) sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Library to manipulate tensors on the GPU
+EAPI=6
+HOMEPAGE=http://deeplearning.net/software/libgpuarray/
+IUSE=cuda doc opencl static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=cuda? ( amd64? ( >=dev-util/nvidia-cuda-toolkit-7 ) ) opencl? ( virtual/opencl || ( sci-libs/clblast sci-libs/clblas ) )
+SLOT=0
+SRC_URI=https://github.com/Theano/libgpuarray/archive/v0.6.0-rc1.tar.gz -> libgpuarray-0.6.0_rc1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:-
+_eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	cuda	f150e667cc5826799d86be0fff518252	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b51963e2875e2b7bdc8c462cdef7334c

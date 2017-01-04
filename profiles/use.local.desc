@@ -1955,6 +1955,8 @@ dev-libs/libgit2:ssh - Enable SSH transport support
 dev-libs/libgit2:trace - Enable tracing support
 dev-libs/libgit2-glib:ssh - Enable SSH transport support
 dev-libs/libgpg-error:common-lisp - Install common-lisp files
+dev-libs/libgpuarray:cuda - Enable NVIDIA CUDA toolkit support
+dev-libs/libgpuarray:opencl - Enable OpenCL support
 dev-libs/libgweather:glade - Installs catalog files for dev-util/glade
 dev-libs/libisoburn:cdio - Enable EXPERIMENTAL use of libcdio as system adapter
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
@@ -2359,6 +2361,8 @@ dev-python/paste:flup - enable support for flup (and therefore for various wgsi 
 dev-python/paste:openid - enable OpenID support
 dev-python/pillow:webp - Enable support for webp image format.
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
+dev-python/pygpu:cuda - Enable NVIDIA CUDA toolkit support
+dev-python/pygpu:opencl - Enable OpenCL support
 dev-python/pyhamcrest:numpy - Enable optional dependence on dev-python/numpy
 dev-python/pymongo:mod_wsgi - Disable the C extension to work with mod_wsgi.
 dev-python/pyocr:cuneiform - Enable support for the app-text/cuneiform OCR engine
@@ -6895,6 +6899,10 @@ sci-libs/cgnslib:tools - A number of utility programs: cgnscheck, cgnscompress, 
 sci-libs/chemkit:applications - Build also applications not only the libraries
 sci-libs/cholmod:cuda - Use nvidia cuda toolkit for speeding up computations
 sci-libs/cholmod:metis - Enable the Partition module to cholmod using sci-libs/metis
+sci-libs/clblas:client - Build a command line clBLAS client program.
+sci-libs/clblas:ktest - A command line tool for testing single clBLAS kernel.
+sci-libs/clblas:performance - Copy performance scripts that can measure and graph performance.
+sci-libs/clblast:client - Enable compilation of the clients to test and compare performance with reference libraries
 sci-libs/coinor-bonmin:glpk - Undocumented USE
 sci-libs/coinor-clp:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
 sci-libs/coinor-clp:metis - Enable partitioning with sci-libs/metis
