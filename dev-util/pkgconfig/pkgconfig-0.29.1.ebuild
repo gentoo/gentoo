@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,6 +48,14 @@ src_prepare() {
 		eautoreconf
 	else
 		elibtoolize # Required for FreeMiNT wrt #333429
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# fix standards conflicts
+		sed -i -e 's/\(_XOPEN_SOURCE\(_EXTENDED\)\?\|__EXTENSIONS__\)/  \1_DISABLED/' \
+			glib/configure || die
+		sed -i -e '/#define\s\+_POSIX_SOURCE/d' \
+			glib/glib/giounix.c || die
 	fi
 }
 
