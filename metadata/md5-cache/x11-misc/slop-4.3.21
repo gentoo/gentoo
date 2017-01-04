@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/libX11 x11-libs/libXext opengl? ( media-libs/glew:0= media-libs/imlib2 virtual/opengl x11-libs/libXrandr x11-libs/libXrender ) opengl? ( media-libs/glm ) sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=An application that queries the user for a selection for printing
+EAPI=6
+HOMEPAGE=https://github.com/naelstrof/slop
+IUSE=opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11 x11-libs/libXext opengl? ( media-libs/glew:0= media-libs/imlib2 virtual/opengl x11-libs/libXrandr x11-libs/libXrender )
+SLOT=0
+SRC_URI=https://github.com/naelstrof/slop/archive/v4.3.21.tar.gz -> slop-4.3.21.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9141b33ba017acb25d21a7f4cee01b71
