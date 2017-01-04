@@ -1,0 +1,113 @@
+commit b8de9669eab6487387d76e3181e0d38df46205a5
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed Jan 4 13:55:13 2017 +0100
+
+    Revert "Workaround bug 311940: Plan crashes when typing a text in..."
+    
+    "...the filter textbox before the textbook is fully loaded when selecting
+     a contact from the adressbook"
+    
+    This reverts commit
+    1fb81d2e5fc2df149261c6fc20a13b4a6a03dd7a
+    and partially
+    b8d7a4034e5e85577e8a7eff523c226ca2d965c5
+
+diff --git a/plan/CMakeLists.txt b/plan/CMakeLists.txt
+index 25427da..119b23c 100644
+--- a/plan/CMakeLists.txt
++++ b/plan/CMakeLists.txt
+@@ -5,10 +5,7 @@ project(kplato)
+ add_definitions( -DKDE_DEFAULT_DEBUG_AREA=42000 )
+ 
+ if (KF5AkonadiContact_FOUND)
+-    # disable for now: there is a bug
+-    # it only works if you use kde contacts (of course) but many use other stuff, so gets dissapointed
+-    # add_definitions(-DPLAN_KDEPIMLIBS_FOUND)
+-    message(WARNING "AkonadiContacs available, but funtion is disabled due to Bug 311940")
++    add_definitions(-DPLAN_KDEPIMLIBS_FOUND)
+ endif ()
+ 
+ if (PLANCHARTDEBUG)
+@@ -25,6 +22,7 @@ set( KPLATO_INCLUDES
+     ${CMAKE_BINARY_DIR}/plan
+ 
+     ${KOMAIN_INCLUDES}
++    ${KDEPIMLIBS_INCLUDE_DIR}
+ )
+ 
+ add_subdirectory( libs )
+diff --git a/plan/kpttaskdefaultpanel.cpp b/plan/kpttaskdefaultpanel.cpp
+index 27eca57..6f119e5 100644
+--- a/plan/kpttaskdefaultpanel.cpp
++++ b/plan/kpttaskdefaultpanel.cpp
+@@ -55,10 +55,6 @@ ConfigTaskPanelImpl::ConfigTaskPanelImpl(QWidget *p )
+     chooseLeader->hide();
+ #endif
+ 
+-    // FIXME
+-    // [Bug 311940] New: Plan crashes when typing a text in the filter textbox before the textbook is fully loaded when selecting a contact from the adressbook
+-    chooseLeader->hide();
+-
+     initDescription();
+ 
+     connect(chooseLeader, SIGNAL(clicked()), SLOT(changeLeader()));
+diff --git a/plan/libs/ui/kptmainprojectpanel.cpp b/plan/libs/ui/kptmainprojectpanel.cpp
+index ac7212b..2078d4d 100644
+--- a/plan/libs/ui/kptmainprojectpanel.cpp
++++ b/plan/libs/ui/kptmainprojectpanel.cpp
+@@ -48,10 +48,6 @@ MainProjectPanel::MainProjectPanel(Project &p, QWidget *parent)
+     chooseLeader->hide();
+ #endif
+ 
+-    // FIXME
+-    // [Bug 311940] New: Plan crashes when typing a text in the filter textbox before the textbook is fully loaded when selecting a contact from the adressbook
+-    chooseLeader->hide();
+-
+     QString s = i18n( "The Work Breakdown Structure introduces numbering for all tasks in the project, according to the task structure.\nThe WBS code is auto-generated.\nYou can define the WBS code pattern using the Define WBS Pattern command in the Tools menu." );
+     wbslabel->setWhatsThis( s );
+     wbs->setWhatsThis( s );
+diff --git a/plan/libs/ui/kptresourcedialog.cpp b/plan/libs/ui/kptresourcedialog.cpp
+index 5e092c4..ff9eae0 100644
+--- a/plan/libs/ui/kptresourcedialog.cpp
++++ b/plan/libs/ui/kptresourcedialog.cpp
+@@ -53,10 +53,6 @@ ResourceDialogImpl::ResourceDialogImpl( const Project &project, Resource &resour
+     chooseBtn->hide();
+ #endif
+ 
+-    // FIXME
+-    // [Bug 311940] New: Plan crashes when typing a text in the filter textbox before the textbook is fully loaded when selecting a contact from the adressbook
+-    chooseBtn->hide();
+-
+     QSortFilterProxyModel *pr = new QSortFilterProxyModel( ui_teamView );
+     QStandardItemModel *m = new QStandardItemModel( ui_teamView );
+     pr->setSourceModel( new QStandardItemModel( ui_teamView ) );
+diff --git a/plan/libs/ui/kptsummarytaskgeneralpanel.cpp b/plan/libs/ui/kptsummarytaskgeneralpanel.cpp
+index 1a2af87..dd66ca8 100644
+--- a/plan/libs/ui/kptsummarytaskgeneralpanel.cpp
++++ b/plan/libs/ui/kptsummarytaskgeneralpanel.cpp
+@@ -45,10 +45,6 @@ SummaryTaskGeneralPanel::SummaryTaskGeneralPanel(Task &task, QWidget *p, const c
+     chooseLeader->hide();
+ #endif
+ 
+-    // FIXME
+-    // [Bug 311940] New: Plan crashes when typing a text in the filter textbox before the textbook is fully loaded when selecting a contact from the adressbook
+-    chooseLeader->hide();
+-
+     m_description = new TaskDescriptionPanel( task, this );
+     m_description->namefield->hide();
+     m_description->namelabel->hide();
+diff --git a/plan/libs/ui/kpttaskgeneralpanel.cpp b/plan/libs/ui/kpttaskgeneralpanel.cpp
+index b3c2974..562ea9d 100644
+--- a/plan/libs/ui/kpttaskgeneralpanel.cpp
++++ b/plan/libs/ui/kpttaskgeneralpanel.cpp
+@@ -228,10 +228,6 @@ TaskGeneralPanelImpl::TaskGeneralPanelImpl(QWidget *p, const char *n)
+     chooseLeader->hide();
+ #endif
+ 
+-    // FIXME
+-    // [Bug 311940] New: Plan crashes when typing a text in the filter textbox before the textbook is fully loaded when selecting a contact from the adressbook
+-    chooseLeader->hide();
+-
+     connect(namefield, SIGNAL(textChanged(QString)), SLOT(checkAllFieldsFilled()));
+     connect(leaderfield, SIGNAL(textChanged(QString)), SLOT(checkAllFieldsFilled()));
+     connect(chooseLeader, SIGNAL(clicked()), SLOT(changeLeader()));
