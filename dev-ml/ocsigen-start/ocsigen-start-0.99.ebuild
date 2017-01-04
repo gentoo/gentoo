@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit findlib eutils
+inherit findlib
 
 DESCRIPTION="Eliom Base Application with users, (pre)registration, notifications, etc."
 HOMEPAGE="https://github.com/ocsigen/ocsigen-start"
@@ -31,12 +31,9 @@ RDEPEND="dev-lang/ocaml:=
 	dev-ml/ocsigen-toolkit:=
 	dev-ml/ppx_deriving:=
 	dev-ml/yojson:=
+	dev-ml/OCaml-ImageMagick:=
 "
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	epatch "${FILESDIR}/magick.patch"
-}
 
 src_install() {
 	findlib_src_preinst
