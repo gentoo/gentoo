@@ -4309,8 +4309,6 @@ media-sound/clementine:moodbar - Enable moodbar support
 media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:seafile - Enable support for seafile: a file sync service
 media-sound/clementine:skydrive - Enable Skydrive support
-media-sound/clementine:system-sqlite - Use the system-wide dev-db/sqlite installation
-media-sound/clementine:ubuntu-one - Enable Ubuntu One support
 media-sound/clementine:udisks_legacy - Enable storage management support via legacy sys-fs/udisks:0
 media-sound/clementine:vkontakte - Enable vk.com support
 media-sound/clementine:wiimote - Enable support for Wii remote

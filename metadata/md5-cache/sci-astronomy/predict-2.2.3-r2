@@ -4,11 +4,11 @@ DESCRIPTION=Satellite tracking and orbital prediction
 EAPI=6
 HOMEPAGE=http://www.qsl.net/kd2bd/predict.html
 IUSE=doc gtk nls xforms xplanet
-KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= gtk? ( x11-libs/gtk+:2 ) xforms? ( x11-libs/xforms ) xplanet? ( x11-misc/xplanet[truetype] )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/predict/predict_2.2.3.orig.tar.gz mirror://debian/pool/main/p/predict/predict_2.2.3-3.1.diff.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c1a7f7583e4ce197aa51ad19087f3540
+_md5_=af519dd9d2fde3b9198f762f1e6b4e34

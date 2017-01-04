@@ -4,7 +4,7 @@ DESCRIPTION=Distributed, fault-tolerant and schema-free document-oriented databa
 EAPI=5
 HOMEPAGE=http://couchdb.apache.org/
 IUSE=libressl selinux test
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-libs/icu-4.3.1:= <dev-lang/erlang-19.0[ssl] !libressl? ( >=dev-libs/openssl-0.9.8j:0 ) libressl? ( dev-libs/libressl ) >=net-misc/curl-7.18.2 <dev-lang/spidermonkey-1.8.7 selinux? ( sec-policy/selinux-couchdb )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=f2f1b4e22bd48851afed862503ab93c6
+_md5_=ff9982477e44b81fa951de07aea9519e
