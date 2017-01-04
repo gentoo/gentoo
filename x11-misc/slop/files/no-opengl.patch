@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,14 +67,8 @@ endif()
+ 
+ # Obtain library paths and make sure they exist.
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmakemodules" )
+-find_package( Imlib2    REQUIRED )
+ find_package( X11       REQUIRED )
+ find_package( XExt      REQUIRED )
+-find_package( OpenGL    REQUIRED )
+-find_package( GLX       REQUIRED )
+-find_package( XRender   REQUIRED )
+-find_package( XRandr    REQUIRED )
+-find_package( GLEW      REQUIRED )
+ 
+ set( CMAKE_CXX_FLAGS
+      "${CMAKE_CXX_FLAGS} ${CMAKE_IMLIB2_CXX_FLAGS}" )
