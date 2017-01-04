@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,6 +11,7 @@ HOMEPAGE="https://techbase.kde.org/Kirigami"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
+SLOT="1"
 KEYWORDS="amd64 ~arm x86"
 IUSE="examples plasma"
 

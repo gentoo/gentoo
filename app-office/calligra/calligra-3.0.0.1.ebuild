@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,15 +11,7 @@ inherit check-reqs kde5 versionator
 
 DESCRIPTION="KDE Office Suite"
 HOMEPAGE="http://www.calligra.org/"
-
-case ${PV} in
-	3.[0123456789].[789]?)
-		# beta or rc releases
-		SRC_URI="mirror://kde/unstable/${P}/${P}.tar.gz" ;;
-	3.[0123456789].?)
-		# stable releases
-		SRC_URI="mirror://kde/stable/${P}/${P}.tar.gz"
-esac
+[[ ${KDE_BUILD_TYPE} == release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 
@@ -143,10 +135,8 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test"
 
 PATCHES=(
-	"${FILESDIR}/${P}-no-arch-detection.patch"
-	"${FILESDIR}/${P}-optionaldeps.patch"
-	"${FILESDIR}/${P}-words-crash.patch"
-	"${FILESDIR}/${P}-plan-crash.patch"
+	"${FILESDIR}/${PN}-3.0.0-no-arch-detection.patch"
+	"${FILESDIR}/${PN}-3.0.0-optionaldeps.patch"
 )
 
 pkg_pretend() {
@@ -181,9 +171,6 @@ src_prepare() {
 		sed -i -e "/add_subdirectory( *okularodpgenerator *)/ s/^/#DONT/" \
 			extras/CMakeLists.txt || die "Failed to disable OKULAR_GENERATOR_ODP"
 	fi
-
-	rm -f po/*/*kexi*po || die
-	rm -f po/*/*krita*po || die
 }
 
 src_configure() {
