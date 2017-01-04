@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/openlierox/${MY_P}.src.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X breakpad debug joystick"
 
 RDEPEND="media-libs/sdl-mixer

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 -sparc ~x86"
+KEYWORDS="amd64 arm ~ppc ~ppc64 -sparc x86"
 IUSE="debug readline static static-libs"
 
 LIB_DEPEND="~sys-libs/libaal-1.0.6[static-libs(+)]

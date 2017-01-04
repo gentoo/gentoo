@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # TODO: Add arm/arm64 once figure out how to build w/out including
 # all the x86-specific drivers (that use I/O insns).
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="efi ipv6 iso lkrn +qemu undi usb vmware"
 
 DEPEND="app-arch/xz-utils

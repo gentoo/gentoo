@@ -22,6 +22,8 @@ CDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	<dev-python/cached-property-2[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.3.7[${PYTHON_USEDEP}]
+	<dev-python/colorama-0.4[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	<dev-python/dockerpty-0.5[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-2.0.0[${PYTHON_USEDEP}]

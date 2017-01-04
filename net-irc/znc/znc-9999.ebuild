@@ -9,6 +9,8 @@ PLOCALES="ru"
 
 inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
 
+GTEST_VER="1.8.0"
+GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
 if [[ ${PV} == *9999* ]]; then
@@ -16,7 +18,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/znc/znc.git"}
 	SRC_URI=""
 else
-	SRC_URI="http://znc.in/releases/archive/${P}.tar.gz"
+	SRC_URI="
+		http://znc.in/releases/archive/${P}.tar.gz
+		test? ( ${GTEST_URL} )
+	"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -46,7 +51,6 @@ DEPEND="
 	virtual/pkgconfig
 	perl? ( >=dev-lang/swig-3.0.0 )
 	python? ( >=dev-lang/swig-3.0.0 )
-	test? ( dev-cpp/gtest )
 "
 
 pkg_setup() {
@@ -94,6 +98,11 @@ src_configure() {
 		-DWANT_TCL="$(usex tcl)"
 		-DWANT_ZLIB="$(usex zlib)"
 	)
+
+	if [[ ${PV} != *9999* ]] && use test; then
+		export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googletest"
+		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
+	fi
 
 	cmake-utils_src_configure
 }
