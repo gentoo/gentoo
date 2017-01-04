@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
 	EHG_REVISION="stable"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 	SRC_URI=""
 	HG_DEPEND="dev-vcs/mercurial"
 fi
