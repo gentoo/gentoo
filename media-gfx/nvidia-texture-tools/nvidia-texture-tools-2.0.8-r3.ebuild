@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit cmake-utils eutils multilib toolchain-funcs
+EAPI=6
+inherit cmake-utils
 
 DESCRIPTION="A set of cuda-enabled texture tools and compressors"
 HOMEPAGE="http://developer.nvidia.com/object/texture_tools.html"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-1.tar.gz
-	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
+		 https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cg cuda glew glut openexr"
 
 RDEPEND="media-libs/libpng:0
@@ -31,7 +31,15 @@ RDEPEND="media-libs/libpng:0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}/${P}-cg.patch" # fix bug #414509
+	"${FILESDIR}/${P}-gcc-4.7.patch" # fix bug #423965
+	"${FILESDIR}/${P}-openexr.patch" # fix bug #462494
+	"${FILESDIR}/${P}-clang.patch" # fix clang build
+	"${FILESDIR}/${P}-cpp14.patch" # fix bug #594938
+)
+
+S="${WORKDIR}/${PN}"
 
 pkg_setup() {
 	if use cuda; then
@@ -44,35 +52,24 @@ pkg_setup() {
 
 src_prepare() {
 	edos2unix cmake/*
-	EPATCH_SUFFIX=patch epatch "${WORKDIR}"/patches
-	# fix bug #414509
-	epatch "${FILESDIR}"/${P}-cg.patch
-	# fix bug #423965
-	epatch "${FILESDIR}"/${P}-gcc-4.7.patch
-	# fix bug #462494
-	epatch "${FILESDIR}"/${P}-openexr.patch
-	# fix clang build
-	epatch "${FILESDIR}"/${P}-clang.patch
-	# fix bug #594938
-	epatch "${FILESDIR}/${P}-cpp14.patch"
+	EPATCH_SUFFIX=patch epatch "${WORKDIR}/patches"
+	default
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DLIBDIR=$(get_libdir)
 		-DNVTT_SHARED=TRUE
-		$(cmake-utils_use cg CG)
-		$(cmake-utils_use cuda CUDA)
-		$(cmake-utils_use glew GLEW)
-		$(cmake-utils_use glut GLUT)
-		$(cmake-utils_use openexr OPENEXR)
-		)
+		-DCG="$(usex cg)"
+		-DCUDA="$(usex cuda)"
+		-DGLEW="$(usex glew)"
+		-DGLUT="$(usex glut)"
+		-DOPENEXR="$(usex openexr)"
+	)
 
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-
-	dodoc ChangeLog
 }
