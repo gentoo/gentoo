@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/roxterm/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="1"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/dbus-glib-0.100
