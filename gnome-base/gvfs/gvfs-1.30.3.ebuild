@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -80,6 +80,10 @@ DEPEND="${RDEPEND}
 # Tests with multiple failures, this is being handled upstream at:
 # https://bugzilla.gnome.org/700162
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.30.2-sysmacros.patch #580234
+)
 
 src_prepare() {
 	if ! use udev; then
