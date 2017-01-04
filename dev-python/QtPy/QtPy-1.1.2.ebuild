@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND="
 		  dev-python/pyside[${PYTHON_USEDEP},designer=,svg=,webkit=]
 	   )
 	gui? ( || (
-		  dev-python/PyQt5[${PYTHON_USEDEP},gui]
+		  dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]
 		  dev-python/PyQt4[${PYTHON_USEDEP},X]
 		  dev-python/pyside[${PYTHON_USEDEP},X]
 	) )
