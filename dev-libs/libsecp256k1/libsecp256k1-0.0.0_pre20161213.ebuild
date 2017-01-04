@@ -15,7 +15,7 @@ SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${PN
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="asm doc ecdh endomorphism experimental gmp java +recovery test test_openssl"
+IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test_openssl"
 
 REQUIRED_USE="
 	asm? ( || ( amd64 arm ) arm? ( experimental ) )
@@ -24,7 +24,7 @@ REQUIRED_USE="
 	test_openssl? ( test )
 "
 RDEPEND="
-	gmp? ( dev-libs/gmp:0 )
+	gmp? ( dev-libs/gmp:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -64,10 +64,7 @@ src_configure() {
 }
 
 src_install() {
-	if use doc; then
-		dodoc README.md
-	fi
-
+	dodoc README.md
 	emake DESTDIR="${D}" install
 	prune_libtool_files
 }

@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
+# Mask assembly optimisations that are platform-specific
+dev-libs/libsecp256k1 asm
+
 # Patrice Clement <monsieurp@gentoo.org> (26 Dec 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # Requires masked media-video/libav-12. See bug #603726.
