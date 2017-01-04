@@ -1,23 +1,28 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
+
 inherit mount-boot
 
-IUSE=""
 DESCRIPTION="Xbox boot loader precompiled binaries from xbox-linux.org"
-SRC_URI="mirror://sourceforge/xbox-linux/cromwell-${PV}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/xbox-linux/"
-RESTRICT="${RESTRICT} strip"
-DEPEND=""
-SLOT="0"
+SRC_URI="mirror://sourceforge/xbox-linux/cromwell-${PV}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="-* x86"
 
-S=${WORKDIR}/cromwell
+SLOT="0"
+KEYWORDS="-* x86"
+IUSE=""
+RESTRICT="${RESTRICT} strip"
+
+DEPEND=""
+RDEPEND=""
+
+S=${WORKDIR}/cromwell-${PV}
 
 src_install () {
 	dodir /boot/${PN}
 	insinto /boot/${PN}
-	doins ${S}/image.bin ${S}/image_1024.bin ${S}/default.xbe || die
+	doins cromwell{,_1024}.bin xromwell.xbe
 }
