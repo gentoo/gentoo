@@ -1996,7 +1996,7 @@ app-office/abiword 3.0.1 3.0.2: Fully featured yet light and fast cross platform
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0 4.1.0 4.2.0 4.2.1: a text-based calendar and scheduling application
-app-office/calligra 2.9.11 2.9.11-r1 3.0.0-r1: KDE Office Suite
+app-office/calligra 2.9.11 2.9.11-r1 3.0.0.1: KDE Office Suite
 app-office/calligra-l10n 2.9.11 2.9.11-r1: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
@@ -5760,7 +5760,7 @@ dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of mu
 dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
-dev-perl/Filesys-SmbClient 3.200.0-r1: Provide Perl API for libsmbclient.so
+dev-perl/Filesys-SmbClient 3.200.0-r1 3.200.0-r2: Provide Perl API for libsmbclient.so
 dev-perl/Filter 1.540.0 1.550.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
@@ -13976,7 +13976,7 @@ net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
 net-analyzer/chaosreader 0.94 0.94-r1: A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
 net-analyzer/check_mk 1.2.4_p5-r1: General purpose Nagios/Icinga plugin for retrieving data
 net-analyzer/cloudshark 1.0.2.174 1.0.3.180 1.0.4: Easily upload your wireshark captures to CloudShark
-net-analyzer/cnet 3.3.1: Network simulation tool
+net-analyzer/cnet 3.3.1 3.3.4: Network simulation tool
 net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encryption
 net-analyzer/cutter 1.03-r1 1.04: TCP/IP Connection cutting on Linux Firewalls and Routers
 net-analyzer/darkstat 3.0.718 3.0.719: Network traffic analyzer with cute web interface
