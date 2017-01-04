@@ -14,9 +14,10 @@ unset GITECLASS
 DESCRIPTION="Colour management system allowing to share settings across apps and services"
 HOMEPAGE="http://www.oyranos.org/"
 [[ ${PV} != *9999 ]] && \
-SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	http://dev.gentoo.org/~asturm/${P}-patches.tar.xz"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"
 SLOT="0"
 IUSE="X cairo cups doc examples exif fltk jpeg qt5 raw scanner static-libs test tiff"
@@ -78,6 +79,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindXcm FindCUPS"
+
+PATCHES=( "${WORKDIR}/patches" )
 
 src_prepare() {
 	einfo remove bundled libs
