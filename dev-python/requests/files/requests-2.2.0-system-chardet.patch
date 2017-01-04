@@ -1,0 +1,21 @@
+--- requests-2.2.0/requests/compat.py
++++ requests-2.2.0/requests/compat.py
+@@ -4,7 +4,7 @@
+ pythoncompat
+ """
+ 
+-from .packages import chardet
++import chardet
+ 
+ import sys
+ 
+--- requests-2.2.0/setup.py
++++ requests-2.2.0/setup.py
+@@ -17,7 +17,6 @@
+ packages = [
+     'requests',
+     'requests.packages',
+-    'requests.packages.chardet',
+     'requests.packages.urllib3',
+     'requests.packages.urllib3.packages',
+     'requests.packages.urllib3.contrib',
