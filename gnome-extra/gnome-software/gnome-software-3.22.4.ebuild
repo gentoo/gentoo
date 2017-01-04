@@ -19,7 +19,7 @@ RDEPEND="
 	>=app-admin/packagekit-base-1.1.0
 	app-crypt/libsecret
 	dev-db/sqlite:3
-	>=dev-libs/appstream-glib-0.6.1:0
+	>=dev-libs/appstream-glib-0.6.5:0
 	>=dev-libs/glib-2.46:2
 	>=dev-libs/json-glib-1.1.1
 	>=gnome-base/gsettings-desktop-schemas-3.11.5
