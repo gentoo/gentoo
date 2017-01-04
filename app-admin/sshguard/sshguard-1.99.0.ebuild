@@ -34,7 +34,6 @@ DOCS=(
 	doc/developers.rst
 	doc/setup.rst
 	examples/net.sshguard.plist
-	examples/sshguard.conf.sample
 	examples/sshguard.service
 	examples/whitelistfile.example
 )
@@ -44,4 +43,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+
+	insinto /etc
+	newins examples/sshguard.conf.sample sshguard.conf
 }
