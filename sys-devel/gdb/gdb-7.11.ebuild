@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -167,7 +167,7 @@ src_configure() {
 }
 
 src_test() {
-	nonfatal emake check || ewarn "tests failed"
+	emake check || die 'tests failed'
 }
 
 src_install() {
