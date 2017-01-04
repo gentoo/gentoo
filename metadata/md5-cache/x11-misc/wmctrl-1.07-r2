@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-libs/glib-2:2 x11-libs/libX11 x11-libs/libXt x11-libs/libXmu virtual/pkgconfig x11-proto/xproto
+DESCRIPTION=command line tool to interact with an EWMH/NetWM compatible X Window Manager
+EAPI=6
+HOMEPAGE=http://tomas.styblo.name/wmctrl/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2:2 x11-libs/libX11 x11-libs/libXt x11-libs/libXmu
+SLOT=0
+SRC_URI=http://tomas.styblo.name/wmctrl/dist/wmctrl-1.07.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=1599ea44188a819ecc145d4109c790a0
