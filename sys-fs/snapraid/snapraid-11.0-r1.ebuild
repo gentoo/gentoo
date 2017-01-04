@@ -14,3 +14,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DOCS=( "AUTHORS" "HISTORY" "README" "TODO" "snapraid.conf.example" )
+
+PATCHES=( "${FILESDIR}/${P}-minor.patch" )
