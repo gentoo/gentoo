@@ -31,6 +31,10 @@ RDEPEND="
 DOCS=(
 	CHANGELOG.rst
 	README.rst
+	doc/developers.rst
+	doc/setup.rst
+	examples/net.sshguard.plist
+	examples/sshguard.conf.sample
 	examples/sshguard.service
 	examples/whitelistfile.example
 )
