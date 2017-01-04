@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
+# Assembly optimisations are supported on arm since 0.0.0_pre20161213
+dev-libs/libsecp256k1 -asm
+<dev-libs/libsecp256k1-0.0.0_pre20161213 asm
+
 # Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
 # Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),
 # dev-qt/qtquickcontrols2 (#603054), dev-qt/qtwebengine (#581478)
