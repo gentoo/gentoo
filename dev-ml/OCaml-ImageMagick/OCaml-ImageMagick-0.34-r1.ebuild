@@ -1,15 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
+
+inherit findlib
 
 DESCRIPTION="Provide the ImageMagick methods to OCaml"
 HOMEPAGE="http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/"
 SRC_URI="http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/ImageMagick/${P}.tgz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 # interactive tests
@@ -20,6 +22,7 @@ DEPEND="media-gfx/imagemagick:=
 RDEPEND="${DEPEND}"
 
 src_install() {
-	emake OCAML_DIR="${D}/$(ocamlc -where)" install
+	findlib_src_preinst
+	emake find_install
 	dodoc README.txt
 }
