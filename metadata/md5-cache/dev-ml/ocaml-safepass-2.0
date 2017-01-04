@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DESCRIPTION=A library offering facilities for the safe storage of user passwords
+EAPI=5
+HOMEPAGE=http://ocaml-safepass.forge.ocamlcore.org/ https://github.com/darioteixeira/ocaml-safepass
+IUSE=+ocamlopt debug doc
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/2.0
+SRC_URI=https://github.com/darioteixeira/ocaml-safepass/archive/v2.0.tar.gz -> ocaml-safepass-2.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	473d7851a239e10730fd5d1f7301e7ca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=6498b776bc502aba46e6ad1766d91238
