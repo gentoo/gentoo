@@ -581,6 +581,84 @@ media-plugins/gst-plugins-ffmpeg
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
 
+# Mart Raudsepp <leio@gentoo.org> (15 Jan 2017)
+# Old gstreamer 0.10 versions. Use gstreamer:1.0 and co instead.
+# Masked for removal in 30 days. Bug #550648
+media-libs/gstreamer:0.10
+media-libs/gst-plugins-base:0.10
+media-libs/gst-plugins-good:0.10
+media-libs/gst-plugins-ugly:0.10
+media-libs/gst-plugins-bad:0.10
+media-libs/gst-rtsp-server:0.10
+media-plugins/gst-plugins-a52dec:0.10
+media-plugins/gst-plugins-alsa:0.10
+media-plugins/gst-plugins-amr:0.10
+media-plugins/gst-plugins-annodex:0.10
+media-plugins/gst-plugins-assrender:0.10
+media-plugins/gst-plugins-cdio:0.10
+media-plugins/gst-plugins-cdparanoia:0.10
+media-plugins/gst-plugins-dts:0.10
+media-plugins/gst-plugins-dv:0.10
+media-plugins/gst-plugins-dvb:0.10
+media-plugins/gst-plugins-dvdread:0.10
+media-plugins/gst-plugins-faac:0.10
+media-plugins/gst-plugins-faad:0.10
+media-plugins/gst-plugins-flac:0.10
+media-plugins/gst-plugins-gconf:0.10
+media-plugins/gst-plugins-gdkpixbuf:0.10
+media-plugins/gst-plugins-gio:0.10
+media-plugins/gst-plugins-gl
+media-plugins/gst-plugins-gnomevfs:0.10
+media-plugins/gst-plugins-gsm:0.10
+media-plugins/gst-plugins-ivorbis:0.10
+media-plugins/gst-plugins-jack:0.10
+media-plugins/gst-plugins-jpeg:0.10
+media-plugins/gst-plugins-ladspa:0.10
+media-plugins/gst-plugins-lame:0.10
+media-plugins/gst-plugins-libmms:0.10
+media-plugins/gst-plugins-libnice:0.10
+media-plugins/gst-plugins-libpng:0.10
+media-plugins/gst-plugins-libvisual:0.10
+media-plugins/gst-plugins-mad:0.10
+media-plugins/gst-plugins-meta:0.10
+media-plugins/gst-plugins-modplug:0.10
+media-plugins/gst-plugins-mpeg2dec:0.10
+media-plugins/gst-plugins-mpeg2enc:0.10
+media-plugins/gst-plugins-mplex:0.10
+media-plugins/gst-plugins-musepack:0.10
+media-plugins/gst-plugins-neon:0.10
+media-plugins/gst-plugins-ofa:0.10
+media-plugins/gst-plugins-ogg:0.10
+media-plugins/gst-plugins-opus:0.10
+media-plugins/gst-plugins-oss:0.10
+media-plugins/gst-plugins-pango:0.10
+media-plugins/gst-plugins-pulse:0.10
+media-plugins/gst-plugins-raw1394:0.10
+media-plugins/gst-plugins-resindvd:0.10
+media-plugins/gst-plugins-rtmp:0.10
+media-plugins/gst-plugins-schroedinger:0.10
+media-plugins/gst-plugins-shout2:0.10
+media-plugins/gst-plugins-sidplay:0.10
+media-plugins/gst-plugins-soundtouch:0.10
+media-plugins/gst-plugins-soup:0.10
+media-plugins/gst-plugins-speex:0.10
+media-plugins/gst-plugins-taglib:0.10
+media-plugins/gst-plugins-theora:0.10
+media-plugins/gst-plugins-twolame:0.10
+media-plugins/gst-plugins-v4l2:0.10
+media-plugins/gst-plugins-wavpack:0.10
+media-plugins/gst-plugins-vorbis:0.10
+media-plugins/gst-plugins-vp8:0.10
+media-plugins/gst-plugins-x:0.10
+media-plugins/gst-plugins-x264:0.10
+media-plugins/gst-plugins-ximagesrc:0.10
+media-plugins/gst-plugins-xvid:0.10
+media-plugins/gst-plugins-xvideo:0.10
+dev-cpp/gstreamermm:0.10
+dev-python/gst-python:0.10
+media-libs/gnonlin:0.10
+net-libs/farstream:0.1
+
 # Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
 # Use x11-drivers/nvidia-drivers[tools] instead.
 media-video/nvidia-settings
