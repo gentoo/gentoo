@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep plasma-workspace)
-	app? ( dev-libs/kirigami:5 )
+	app? ( dev-libs/kirigami:1 )
 	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
 "

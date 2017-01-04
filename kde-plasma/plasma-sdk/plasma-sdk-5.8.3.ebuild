@@ -34,7 +34,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/kirigami:5
+	dev-libs/kirigami:1
 	plasmate? (
 		$(add_frameworks_dep kdelibs4support)
 		$(add_frameworks_dep knewstuff)
