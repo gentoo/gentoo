@@ -528,7 +528,7 @@ app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.21 2.0.28 2.0.30 2.1.15 2.1.16 2.1.17: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.0.28 2.0.30 2.1.15 2.1.16 2.1.17-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.9 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -1287,7 +1287,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.5 1.13.0_rc4 9999: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-compose 1.8.1 1.9.0: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.8.1 1.9.0 1.10.0_pre20161220: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
