@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=MegaRAID StorCLI (successor of the MegaCLI)
+EAPI=6
+HOMEPAGE=http://www.avagotech.com/support/download-search?dnd-keyword=storcli
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Avago LSI BSD
+SLOT=0/6.12
+SRC_URI=https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/1.20.15_StorCLI.zip -> storcli-1.20.15.zip
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
+_eclasses_=pax-utils	4c2654a34ebe732e85fda354f6ee642f
+_md5_=f22d85503bf58917cc9594c0e4ccdcee

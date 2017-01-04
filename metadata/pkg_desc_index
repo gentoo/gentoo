@@ -17119,7 +17119,7 @@ sys-block/sedutil 1.12: The Drive Trust Alliance Self Encrypting Drive Utility
 sys-block/seekwatcher 0.6 0.12 0.12_p20091015 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
-sys-block/storcli 1.19.04: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 3.0_pre4 9999: CLI and shell for the Linux SCSI target
 sys-block/targetcli-fb 2.1.44-r1: Command shell for managing Linux LIO kernel target
