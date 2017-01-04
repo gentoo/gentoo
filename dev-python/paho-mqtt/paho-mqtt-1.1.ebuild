@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,6 +12,6 @@ HOMEPAGE="https://www.eclipse.org/paho/clients/python/"
 SRC_URI="https://github.com/eclipse/paho.mqtt.python/archive/${PV}.zip -> ${P}.zip"
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/paho.mqtt.python-${PV}"
