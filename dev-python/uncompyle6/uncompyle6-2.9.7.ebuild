@@ -19,8 +19,8 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/xdis-3.2.3
 	<dev-python/xdis-3.3.0
-	>=dev-python/spark-parser-1.4.0
-	<dev-python/spark-parser-1.5.0"
+	>=dev-python/spark-parser-1.5.1
+	<dev-python/spark-parser-1.6.0"
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/nose-1.0[${PYTHON_USEDEP}]
@@ -31,16 +31,13 @@ DEPEND="${RDEPEND}
 "
 
 python_prepare_all() {
-	rm -R test/__pycache__ || die "removal of test/__pycache__ failed"
-	rm -R test/pycdc || die "removal of test/pycdc failed"
 	distutils-r1_python_prepare_all
 }
 
-# the pypi page says to run "make check" to test
-# There are numerous more tests, but not all pass, so
-# until clarified, only run the recommended "make check" tests
+# only run the recommended "make check" tests
 python_test() {
+	distutils_install_for_testing
+
 	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
 		emake check || die "Tests failed under ${EPYTHON}"
-		#pytest -vv || die "Tests failed under ${EPYTHON}"
 }
