@@ -60,6 +60,9 @@ src_configure() {
 		# preprocessor then.
 		append-cppflags -DDEBUG
 	fi
+	
+	# Explicitly enable c++11 mode
+	append-cxxflags -std=c++11
 
 	# Explicitly enable c++11 mode
 	append-cxxflags -std=c++11
