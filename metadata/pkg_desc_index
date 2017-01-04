@@ -11894,7 +11894,7 @@ kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kio_gopher 0.1.4: Gopher Kioslave for Konqueror
-kde-misc/kolor-manager 1.0.2: KControl module for Oyranos CMS cross desktop settings
+kde-misc/kolor-manager 1.1.0: KControl module for Oyranos CMS cross desktop settings
 kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
@@ -12619,6 +12619,7 @@ media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
 media-gfx/swftools 0.9.2-r1: SWF Tools is a collection of SWF manipulation and generation utilities
 media-gfx/sxiv 1.3.2: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.0.0: Application to create libraries of QPainterPath objects with redering hints
+media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.98.9-r2 0.99_beta6: A portable, high performance parallel ray tracing system
 media-gfx/tgif 4.2.5 4.2.5-r1: Xlib base 2-D drawing facility under X11
 media-gfx/tic98 1.01-r3: compressor for black-and-white images, in particular scanned documents

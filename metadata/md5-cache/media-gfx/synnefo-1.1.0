@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=media-libs/oyranos-0.9.6 sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Qt front end for the Oyranos Color Management System
+EAPI=6
+HOMEPAGE=https://github.com/oyranos-cms/Synnefo
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=media-libs/oyranos-0.9.6 x11-misc/xcalib
+SLOT=0
+SRC_URI=https://github.com/oyranos-cms/Synnefo/archive/1.1.0.tar.gz -> synnefo-1.1.0.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	b43f5e0df58483dd4b68aef4777f6e22	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e9efb08828b39c5d932a266806fb0295
