@@ -18792,7 +18792,7 @@ x11-misc/xtrlock 2.7 2.8: A simplistic screen locking program for X
 x11-misc/xtscal 0.6.3 0.6.3-r1: Touchscreen calibration utility
 x11-misc/xvfb-run 1.17.2_p2 1.18.4_p2: Run a command in a virtual X server environment
 x11-misc/xvkbd 3.6 3.7: virtual keyboard for X window system
-x11-misc/xwinwrap 0_p4: replace a desktop background with a movie or screensaver
+x11-misc/xwinwrap 0_p4 0_p4-r1: replace a desktop background with a movie or screensaver
 x11-misc/xwit 3.4 3.4-r1: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26: Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
 x11-misc/xxkb 1.11-r3 1.11.1: eXtended XKB - assign different keymaps to different windows
