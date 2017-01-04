@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86 ~x86-fbsd"
 IUSE="geoip ipv6"
 
 SLOT="0"
