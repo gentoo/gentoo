@@ -48,7 +48,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature \
-		"Make picture of Theano computation graph" dev-python/pydot-ng \
-		"Required for GPU/CPU code generation" dev-python/pygpu
+	optfeature "Make picture of Theano computation graph" dev-python/pydot-ng
+	optfeature "Required for GPU/CPU code generation" dev-python/pygpu
 }
