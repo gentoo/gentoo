@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~am
 IUSE="test"
 
 RDEPEND=">=dev-lang/perl-5.8
+	virtual/latex-base
 	dev-perl/Algorithm-Diff"
 DEPEND="${RDEPEND}
 	dev-perl/Pod-LaTeX
