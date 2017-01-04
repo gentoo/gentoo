@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=sys-libs/libunwind sodium? ( dev-libs/libsodium:= ) pgm? ( =net-libs/openpgm-5.2.122 ) app-text/asciidoc app-text/xmlto sys-apps/util-linux pgm? ( virtual/pkgconfig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A brokerless kernel
+EAPI=6
+HOMEPAGE=http://www.zeromq.org/
+IUSE=pgm +sodium static-libs test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+RDEPEND=sys-libs/libunwind sodium? ( dev-libs/libsodium:= ) pgm? ( =net-libs/openpgm-5.2.122 )
+SLOT=0/5
+SRC_URI=https://github.com/zeromq/libzmq/releases/download/v4.2.1/zeromq-4.2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=448380b481f2cb542d921dd50dfb993f
