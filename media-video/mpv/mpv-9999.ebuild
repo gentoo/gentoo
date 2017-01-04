@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,9 +30,9 @@ LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl encode
 	gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua luajit openal
-	+opengl oss pulseaudio raspberry-pi rubberband samba -sdl selinux test
-	tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
-	+xv zsh-completion"
+	+opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux test tools
+	+uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver +xv
+	zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
