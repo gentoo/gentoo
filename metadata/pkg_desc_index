@@ -17145,7 +17145,7 @@ sys-boot/arcload 0.50-r1 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootlo
 sys-boot/bootcreator 1.1 1.2: Simple generator for Forth based BootMenu scripts for Pegasos machines
 sys-boot/colo 1.22: CObalt LOader - Modern bootloader for Cobalt MIPS machines
 sys-boot/cromwell 2.40-r3: Xbox boot loader
-sys-boot/cromwell-bin 2.31 2.40: Xbox boot loader precompiled binaries from xbox-linux.org
+sys-boot/cromwell-bin 2.31-r1 2.40-r1: Xbox boot loader precompiled binaries from xbox-linux.org
 sys-boot/dvhtool 1.0.1-r2: Tool to copy kernel(s) into the volume header on SGI MIPS-based workstations
 sys-boot/efibootmgr 0.5.4 0.5.4-r1 0.6.0 0.11.0 0.12 13 14: User-space application to modify the EFI boot manager
 sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16: Linux boot loader for EFI-based systems such as IA-64
