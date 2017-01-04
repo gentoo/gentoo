@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,14 @@ RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
+# yes nose is somehow required besides testing
 DEPEND="
+	dev-python/nose[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
+
+python_test() {
+	echo 'backend: agg' > matplotlibrc
+	VARTEXFONTS="${T}"/fonts MPLCONFIGDIR="${BUILD_DIR}" \
+			   nosetests -v || die
+}

@@ -1,0 +1,20 @@
+Description: disable multilib flags
+Author: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Forwarded: not-needed
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -296,9 +296,9 @@
+     # Don't use -rpath.
+     set(CMAKE_SKIP_RPATH ON CACHE BOOL "Skip RPATH" FORCE)
+ 
+-    set(CMAKE_C_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_C_FLAGS}")
+-    set(CMAKE_CXX_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_CXX_FLAGS}")
+-    set(CMAKE_Fortran_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_Fortran_FLAGS}")
++    #set(CMAKE_C_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_C_FLAGS}")
++    #set(CMAKE_CXX_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_CXX_FLAGS}")
++    #set(CMAKE_Fortran_FLAGS "-m${TARGET_PLATFORM} ${CMAKE_Fortran_FLAGS}")
+ 
+     if(TARGET_PLATFORM EQUAL 32)
+         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-builtin")
