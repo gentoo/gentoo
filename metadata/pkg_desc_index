@@ -4462,7 +4462,7 @@ dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.382: Mono runtime and c
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
-dev-lang/mujs 0_p20150202 0_p20160504: lightweight Javascript interpreter
+dev-lang/mujs 0_p20150202 0_p20160504 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/nim 0.14.2 0.15.0-r1 0.15.2: compiled, garbage-collected systems programming language
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
@@ -7763,7 +7763,7 @@ dev-python/nbdime 0.1.0: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 4.0.1 4.1.0 4.2.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0 0.4.2: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
-dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9 0.1.11: Python client for Neovim
+dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9 0.1.11 0.1.12: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18: Network address representation and manipulation library
 dev-python/netcdf4-python 1.2.2: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.8-r2 0.10.4 0.10.5: Portable network interface information
@@ -10195,7 +10195,7 @@ dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
 dev-util/radare2 0.10.6 1.0.2 1.1.0 9999: Advanced command line hexadecimal editor and more
-dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
+dev-util/ragel 6.7-r1 6.8 6.9 7.0.0.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6 0.7.7: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
