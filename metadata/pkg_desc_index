@@ -13361,7 +13361,7 @@ media-sound/alsamixer-app 0.1: AlsaMixer.app is a simple mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
 media-sound/amarok 2.8.0-r3 2.8.90-r2: Advanced audio player based on KDE framework
-media-sound/ams 2.0.1 2.1.1 2.1.2: Alsa Modular Software Synthesizer
+media-sound/ams 2.1.2: Alsa Modular Software Synthesizer
 media-sound/amsynth 1.3.2 1.5.1 1.6.4: Virtual analogue synthesizer
 media-sound/apetag 1.12: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.6-r1 0.1.7: PulseAudio emulation for ALSA
