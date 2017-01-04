@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,12 +58,10 @@ RESTRICT="test"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-9.0.1-disable-version-check.patch
-
-	distutils-r1_src_prepare
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}/pip-disable-system-install.patch"
+	"${FILESDIR}/${PN}-9.0.1-disable-version-check.patch"
+)
 
 python_install_all() {
 	local DOCS=( AUTHORS.txt docs/*.rst )
