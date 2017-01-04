@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,8 @@ IUSE="libav"
 
 RDEPEND="
 	sys-libs/zlib
-	!libav? ( >=media-video/ffmpeg-2.4:0= )
-	libav? ( >=media-video/libav-9:0= )
+	!libav? ( >=media-video/ffmpeg-2.4:= )
+	libav? ( >=media-video/libav-9:= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
