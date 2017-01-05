@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="test"
 
 S=${WORKDIR}/client_python-${PV}
 
-RDEPEND="dev-python/twisted[${PYTHON_USEDEP}]"
+RDEPEND="|| ( dev-python/twisted-web dev-python/twisted[${PYTHON_USEDEP}] )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}] )"
