@@ -7028,7 +7028,7 @@ dev-php/symfony-finder 2.7.20: Symfony Finder Component
 dev-php/symfony-process 2.8.12: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
-dev-php/twig 1.20.0 1.29.0: PHP templating engine with syntax similar to Django
+dev-php/twig 1.29.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.2.6 2.4.1 2.5.0: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.2.6 2.4.1 2.5.0: Xdebug client for the Common Debugger Protocol (DBGP)
