@@ -37,7 +37,7 @@ net-analyzer/rrdtool rados
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # Contact us if you want or have an HPPA cluster with dev-db/mariadb
 # (bug #544378)
-dev-db/mariadb garbd
+dev-db/mariadb galera
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
