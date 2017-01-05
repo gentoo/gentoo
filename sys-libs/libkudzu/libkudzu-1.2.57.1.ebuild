@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info flag-o-matic toolchain-funcs
 
 DESCRIPTION="Red Hat Hardware detection tools"
-HOMEPAGE="https://rhlinux.redhat.com/kudzu/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/kudzu-${PV}.tar.gz"
 
 LICENSE="GPL-2"
