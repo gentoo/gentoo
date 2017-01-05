@@ -1,0 +1,44 @@
+Fix sgml and tex regex against perl-5.22. See Gentoo-bug: 604428.
+Based on a patch from upstream git. Original commit info:
+From 44e5c2f02b3166536257bc9d6384d41dda386648 Mon Sep 17 00:00:00 2001
+From: Martin Quinson <martin.quinson@loria.fr>
+Date: Fri, 28 Aug 2015 19:01:17 +0200
+Subject: [PATCH] Port our regex to Perl 5.22 (patch by Roderich Schupp)
+
+---
+ lib/Locale/Po4a/Sgml.pm | 4 ++--
+ lib/Locale/Po4a/TeX.pm  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Locale/Po4a/Sgml.pm b/lib/Locale/Po4a/Sgml.pm
+index 742e003..3ad5e8d 100644
+--- a/lib/Locale/Po4a/Sgml.pm
++++ b/lib/Locale/Po4a/Sgml.pm
+@@ -672,9 +672,9 @@ sub parse_file {
+             }
+         }
+     }
+-    $prolog =~ s/<!--{PO4A-ent-beg-(.*?)}(.*?){PO4A-ent-end}-->/<!ENTITY % $1 SYSTEM "$2">/g;
++    $prolog =~ s/<!--\{PO4A-ent-beg-(.*?)\}(.*?)\{PO4A-ent-end\}-->/<!ENTITY % $1 SYSTEM "$2">/g;
+     # Unprotect undefined inclusions, and die of them
+-    $prolog =~ s/{PO4A-percent}/%/sg;
++    $prolog =~ s/\{PO4A-percent\}/%/sg;
+     if ($prolog =~ /%([^;\s]*);/) {
+         die wrap_mod("po4a::sgml",
+                      dgettext("po4a",
+diff --git a/lib/Locale/Po4a/TeX.pm b/lib/Locale/Po4a/TeX.pm
+index a78f94b..0faa465 100644
+--- a/lib/Locale/Po4a/TeX.pm
++++ b/lib/Locale/Po4a/TeX.pm
+@@ -1168,7 +1168,7 @@ sub parse {
+ #       environment contains an un-closed bracket)
+         if (   ($closed and ($line =~ /^\s*$/ or
+                              $line =~ /^\s*$RE_VERBATIM\s*$/))
+-            or (in_verbatim(@env) and $line =~ /^\s*\Q$ESCAPE\Eend{$env[-1]}\s*$/)
++            or (in_verbatim(@env) and $line =~ /^\s*\Q$ESCAPE\Eend\{$env[-1]\}\s*$/)
+            ) {
+             # An empty line. This indicates the end of the current
+             # paragraph.
+-- 
+2.10.2
+
