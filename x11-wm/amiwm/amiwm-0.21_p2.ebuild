@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.diff \
-		"${FILESDIR}"/${P}-implicts.patch
+		"${FILESDIR}"/${P}-implicts.patch \
+		"${FILESDIR}"/${P}-flex-2.6.3-fix.patch
 	sed -i -e "s:\$(exec_prefix)/lib:\$(exec_prefix)/$(get_libdir):" \
 		Makefile.in || die
 	sed -i -e "s:/bin/ksh:/bin/sh:g" Xsession{,2}.in || die
