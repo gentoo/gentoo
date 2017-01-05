@@ -37,6 +37,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 		app-crypt/dieharder
 		app-misc/datefudge
 		dev-libs/softhsm:2
+		dev-util/valgrind
 		net-dialup/ppp
 		net-misc/socat
 	)
@@ -105,7 +106,6 @@ multilib_src_configure() {
 	#   complains about duplicate symbols
 	ECONF_SOURCE=${S} \
 	econf \
-		--disable-valgrind-tests \
 		--without-included-libtasn1 \
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
@@ -115,6 +115,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc gtk-doc) \
 		$(multilib_native_use_enable guile) \
 		$(multilib_native_use_enable test tests) \
+		$(multilib_native_use_enable test-full valgrind-tests) \
 		$(use_enable nls) \
 		$(use_enable openssl openssl-compatibility) \
 		$(use_enable tls-heartbeat heartbeat-support) \

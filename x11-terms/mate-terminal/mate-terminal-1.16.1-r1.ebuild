@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,8 @@ COMMON_DEPEND="dev-libs/atk:0
 	>=x11-libs/gtk+-3.14:3
 	>=x11-libs/vte-0.38:2.91"
 
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	>=mate-base/mate-desktop-1.6"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/rarian:0
