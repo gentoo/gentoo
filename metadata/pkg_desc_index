@@ -6924,9 +6924,9 @@ dev-php/Savant3-Plugin-Form 0.2.1: The Form Plugin for Savant3
 dev-php/Text_Template 1.1.1: Simple template engine
 dev-php/YAML 1.0.6-r1: The Symfony YAML Component
 dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
-dev-php/adodb 5.18 5.20.4: Database abstraction layer for PHP
+dev-php/adodb 5.18 5.20.9: Database abstraction layer for PHP
 dev-php/agavi 1.0.7: PHP5 MVC Application Framework
-dev-php/awl 0.53-r2 0.55-r1 0.56: Andrew McMillan's Web Libraries
+dev-php/awl 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
 dev-php/composer 1.2.4: Dependency Manager for PHP
@@ -6969,7 +6969,7 @@ dev-php/pecl-lzf 1.6.5: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r3 2.1.6-r4 3.0.1-r1 3.0.2: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r1 2.2.0-r2 3.0.0_alpha1_pre20161206: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongo 1.6.9 1.6.11 1.6.14: Legacy MongoDB database driver for PHP
+dev-php/pecl-mongo 1.6.9 1.6.14-r1: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.7 1.1.8: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
 dev-php/pecl-mysqlnd_qc 1.2.0-r2: A query cache plugin for the mysqlnd library
@@ -6997,7 +6997,7 @@ dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.0 2.0.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.2.1: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/phar-utils 1.0.0: PHAR file format utilities, for when PHP phars you up
-dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
+dev-php/phing 2.10.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
 dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
@@ -15087,7 +15087,7 @@ net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling 
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/openssh 7.2_p2 7.2_p2-r1 7.3_p1-r5 7.3_p1-r6 7.3_p1-r7 7.3_p1-r8 7.4_p1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
-net-misc/openvpn 2.3.12 2.3.13 2.3.14 2.4_rc2 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-misc/openvpn 2.3.12 2.3.14 2.4_rc2 2.4.0 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0 2.6.0 2.6.0-r2: Production quality, multilayer virtual switch
 net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
