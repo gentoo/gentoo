@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ DESCRIPTION="A software PKCS#11 implementation"
 HOMEPAGE="http://www.opendnssec.org/"
 SRC_URI="http://www.opendnssec.org/files/source/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="debug +migration-tool"
 SLOT="2"
 LICENSE="BSD"
