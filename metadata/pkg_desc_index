@@ -9591,7 +9591,7 @@ dev-ruby/spring 1.6.4 1.7.1 1.7.2 2.0.0: Rails application preloader
 dev-ruby/sprockets 2.2.3 2.11.3 2.12.3-r1 3.4.1 3.5.2 3.6.3 3.7.0 3.7.1: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 2.0.0 2.1.3 2.2.4 2.3.3-r1 3.0.4 3.0.4-r1 3.1.1 3.2.0: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 0.4.2 0.4.3 0.4.5: A simple opinionated mocking framework
-dev-ruby/sqlite3 1.3.10-r1 1.3.11 1.3.12: An extension library to access a SQLite database from Ruby
+dev-ruby/sqlite3 1.3.10-r1 1.3.11 1.3.12 1.3.13: An extension library to access a SQLite database from Ruby
 dev-ruby/sshkey 1.8.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.11.4 1.11.5: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
@@ -9649,7 +9649,7 @@ dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.6: General Rack Authentication Framework
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.3: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.4: A complete implementation of the WebSocket protocols
