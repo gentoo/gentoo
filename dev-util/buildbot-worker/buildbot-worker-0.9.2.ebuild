@@ -15,7 +15,10 @@ HOMEPAGE="http://trac.buildbot.net/ http://code.google.com/p/buildbot/ http://py
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+if [[ ${PV} != *9999 ]]; then
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+		http://dev.gentoo.org/~dolsen/distfiles/buildbot_worker-9-tests.tar.xz"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,6 +57,16 @@ pkg_setup() {
 		run as a different user if desired. If you need to run more than one
 		build worker, just copy the scripts."
 }
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	cd ${MY_P}
+	unpack buildbot_worker-9-tests.tar.xz
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/buildbot-worker-0.9.Addmissedtests.patch
+	}
 
 python_test() {
 	distutils_install_for_testing
