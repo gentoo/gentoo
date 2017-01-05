@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ IUSE="${IUSE}
 
 IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	coverage crypt +ctype curl debug
-	enchant exif frontbase +fileinfo +filter firebird
+	enchant exif +fileinfo +filter firebird
 	flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
 	mhash mssql mysql mysqli nls
