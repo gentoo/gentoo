@@ -118,6 +118,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	v4l? ( virtual/os-headers )
 	zsh-completion? ( dev-lang/perl )
 "
 RDEPEND="${COMMON_DEPEND}
