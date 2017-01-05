@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -68,7 +68,7 @@ PHP_FPM="( >=www-servers/apache-2.4[${APACHE_MODS},apache2_modules_proxy_fcgi]
 
 DEPEND="dev-libs/libltdl
 	virtual/mailx
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	web? ( media-libs/gd[jpeg,png]
 			lighttpd? ( www-servers/lighttpd[php] )
 			apache2? ( || ( ${PHP_MOD} ${PHP_CGI} ${PHP_FCGID} ${PHP_FPM} ) ) )"
