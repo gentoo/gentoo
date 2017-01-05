@@ -20,7 +20,7 @@ DEPEND="igbinary? (
 	php_targets_php5-6? ( dev-php/igbinary[php_targets_php5-6] )
 	php_targets_php7-0? ( dev-php/igbinary[php_targets_php7-0] )
 	php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] ) )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} !dev-php/pecl-redis:7"
 
 # The test suite requires network access.
 RESTRICT=test
