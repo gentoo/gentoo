@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ REQUIRED_USE="apache2? ( !lighttpd )"
 MOD_ALIAS=apache2_modules_alias
 DEPEND="sys-devel/libtool
 	virtual/mailx
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	web? (
 		app-arch/unzip
 		media-libs/gd[jpeg,png]
