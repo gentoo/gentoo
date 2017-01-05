@@ -6987,7 +6987,7 @@ dev-php/pecl-spl_types 0.4.0-r2: Standard PHP library types add-on
 dev-php/pecl-ssh2 0.12-r3 0.13-r1 1.0 9999: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.9-r1 2.0.0-r1: PHP extension to communicate with Stomp message brokers
 dev-php/pecl-svn 1.0.3-r1: PHP Bindings for the Subversion Revision control system
-dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
+dev-php/pecl-taint 2.0.2: Extension used for detecting XSS code (tainted strings)
 dev-php/pecl-timezonedb 2016.10: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.2-r1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r3: An extension to track progress of a file upload
