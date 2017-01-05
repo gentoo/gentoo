@@ -1,68 +1,95 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit multilib flag-o-matic user systemd linux-info
+inherit autotools flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz"
+SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz
+	test? ( https://raw.githubusercontent.com/OpenVPN/${PN}/v${PV}/tests/unit_tests/${PN}/mock_msg.h )"
 HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="examples down-root iproute2 libressl +lzo pam pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
+
+IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
+IUSE+=" pkcs11 +plugins polarssl selinux +ssl static systemd test userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
-			polarssl? ( ssl !libressl )
-			pkcs11? ( ssl )
-			!plugins? ( !pam !down-root )"
+	lzo? ( !lz4 )
+	pkcs11? ( ssl )
+	mbedtls? ( ssl !libressl )
+	pkcs11? ( ssl )
+	!plugins? ( !pam !down-root )
+	inotify? ( plugins )"
 
-DEPEND="
+CDEPEND="
 	kernel_linux? (
-		iproute2? ( sys-apps/iproute2[-minimal] ) !iproute2? ( sys-apps/net-tools )
+		iproute2? ( sys-apps/iproute2[-minimal] )
+		!iproute2? ( sys-apps/net-tools )
 	)
 	pam? ( virtual/pam )
 	ssl? (
-		!polarssl? (
-			!libressl? ( >=dev-libs/openssl-0.9.7:* )
+		!mbedtls? (
+			!libressl? ( >=dev-libs/openssl-0.9.8:* )
 			libressl? ( dev-libs/libressl )
 		)
-		polarssl? ( >=net-libs/polarssl-1.3.8 )
+		mbedtls? ( net-libs/mbedtls )
 	)
+	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )"
-RDEPEND="${DEPEND}
-	selinux? ( sec-policy/selinux-openvpn )
-"
+DEPEND="${CDEPEND}
+	test? ( dev-util/cmocka )"
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-openvpn )"
 
 CONFIG_CHECK="~TUN"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-external-cmocka.patch"
+)
 
 pkg_setup()  {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+	default
+	eautoreconf
+
+	if use test; then
+		cp "${DISTDIR}/mock_msg.h" tests/unit_tests/${PN} || die
+	fi
+}
+
 src_configure() {
-	use static && LDFLAGS="${LDFLAGS} -Xcompiler -static"
-	local myconf
-	use polarssl && myconf="--with-crypto-library=polarssl"
+	use static && append-ldflags -Xcompiler -static
 	econf \
-		${myconf} \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(use_enable ssl) \
+		$(usex mbedtls 'with-crypto-library' 'mbedtls' '' '') \
+		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
+		$(use_enable lz4) \
 		$(use_enable lzo) \
 		$(use_enable pkcs11) \
 		$(use_enable plugins) \
 		$(use_enable iproute2) \
-		$(use_enable socks) \
 		$(use_enable pam plugin-auth-pam) \
 		$(use_enable down-root plugin-down-root) \
+		$(use_enable test tests) \
 		$(use_enable systemd)
+}
+
+src_test() {
+	make check || die "top-level tests failed"
+	pushd tests/unit_tests > /dev/null || die
+	make check || die "unit tests failed"
+	popd > /dev/null || die
 }
 
 src_install() {
@@ -131,8 +158,4 @@ pkg_postinst() {
 		einfo ""
 		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}"
 	fi
-
-	einfo ""
-	einfo "OpenVPN 2.3.x no longer includes the easy-rsa suite of utilities."
-	einfo "They can now be emerged via app-crypt/easy-rsa."
 }
