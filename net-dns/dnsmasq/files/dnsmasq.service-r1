@@ -4,9 +4,18 @@ After=network.target
 
 [Service]
 Type=simple
+PIDFile=/run/dnsmasq/dnsmasq.pid
 ExecStartPre=/usr/sbin/dnsmasq --test
-ExecStart=/usr/sbin/dnsmasq -k --user=dnsmasq --group=dnsmasq
+ExecStart=/usr/sbin/dnsmasq -k -x /run/dnsmasq/dnsmasq.pid --user=dnsmasq --group=dnsmasq
 ExecReload=/bin/kill -HUP $MAINPID
+RuntimeDirectory=dnsmasq
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=multi-user.target
