@@ -63,7 +63,6 @@ COMMON_DEPEND="
 	bluray? ( >=media-libs/libbluray-0.3.0 )
 	cdda? ( dev-libs/libcdio-paranoia )
 	drm? ( x11-libs/libdrm )
-	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? (
 		>=media-libs/libdvdnav-4.2.0
 		>=media-libs/libdvdread-4.1.0
@@ -117,6 +116,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
+	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
 	v4l? ( virtual/os-headers )
 	zsh-completion? ( dev-lang/perl )
