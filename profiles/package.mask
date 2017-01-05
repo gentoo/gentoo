@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (05 Jan 2017)
+# Masking for testing
+=app-emulation/ganeti-2.16*
+=app-emulation/ganeti-2.17*
+
 # Michael Orlitzky <mjo@gentoo.org> (02 Jan 2017)
 # Ancient version, dead upstream, no homepage, experiencing
 # build failures, no reverse dependencies -- we've hit all
@@ -397,10 +402,6 @@ dev-lang/niecza-bin
 # Eray Aslan <eras@gentoo.org> (22 Feb 2016)
 # Mask experimental software
 =mail-mta/postfix-3.2*
-
-# Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
-# Security mask, wrt bug #519730
-<app-emulation/ganeti-2.11.6-r2
 
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on

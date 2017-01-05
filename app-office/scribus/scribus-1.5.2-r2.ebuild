@@ -157,7 +157,7 @@ src_install() {
 	# en_EN can be deleted always
 	for lang in ${IUSE_LINGUAS}; do
 		if ! use linguas_${lang}; then
-			_lang=$(translate_lang)
+			_lang=$(translate_lang ${lang})
 			safe_delete "${ED%/}"/usr/share/man/${_lang}
 		fi
 	done
@@ -205,8 +205,6 @@ safe_delete () {
 			ebegin "Deleting ${x}"
 			rm "${x}" || die
 			eend $?
-		else
-			ewarn "${x} not found"
 		fi
 	done
 }

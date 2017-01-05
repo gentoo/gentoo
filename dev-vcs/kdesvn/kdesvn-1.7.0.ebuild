@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ DEPEND="
 	sys-devel/gettext
 "
 RDEPEND="${DEPEND}
-	!kde-apps/kdesdk-kioslaves:4[subversion(+)]
+	!kde-apps/kdesdk-kioslaves:4[subversion(-)]
 "
 
 # bug #583286: needs network access

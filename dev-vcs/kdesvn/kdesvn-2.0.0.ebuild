@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,7 +48,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!dev-vcs/kdesvn:4
-	!kde-apps/kdesdk-kioslaves:4[subversion(+)]
+	!kde-apps/kdesdk-kioslaves:4[subversion(-)]
 "
 
 PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
