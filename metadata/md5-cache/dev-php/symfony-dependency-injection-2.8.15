@@ -9,6 +9,6 @@ LICENSE=MIT
 RDEPEND=dev-lang/php:* dev-php/fedora-autoloader >=dev-php/symfony-config-2.1.0 >=dev-php/symfony-yaml-2.1.0
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/symfony/dependency-injection/archive/v2.1.0.tar.gz -> symfony-dependency-injection-2.1.0.tar.gz
+SRC_URI=https://github.com/symfony/dependency-injection/archive/v2.8.15.tar.gz -> symfony-dependency-injection-2.8.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
-_md5_=0d6e0ef1486304ef3d7197bc78c89646
+_md5_=76edad891d5a9b4e52fddea0abbb0108

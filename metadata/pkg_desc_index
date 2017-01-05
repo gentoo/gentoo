@@ -7003,7 +7003,7 @@ dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
 dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
-dev-php/phpdepend 1.1.1 2.2.2: Static code analyser for PHP
+dev-php/phpdepend 2.3.2: Static code analysis for PHP
 dev-php/phpmd 1.5.0: PHP mess detector
 dev-php/phptal 1.2.2: A templating engine for PHP5 that implements Zope Page Templates syntax
 dev-php/phpunit 3.7.20 4.3.1 4.8.19 5.0.10: A PHP Unit Testing framework
@@ -7019,9 +7019,9 @@ dev-php/smarty 3.1.30 3.1.31: A template engine for PHP
 dev-php/spdx-licenses 1.0.0: Tools for working with and validating SPDX licenses
 dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
-dev-php/symfony-config 2.1.0: Symfony Config Component
+dev-php/symfony-config 2.8.15: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1: Subtree split of the Symfony Console Component
-dev-php/symfony-dependency-injection 2.1.0-r1: Symfony DependencyInjection Component
+dev-php/symfony-dependency-injection 2.8.15: Symfony DependencyInjection Component
 dev-php/symfony-event-dispatcher 2.1.0-r1: Symfony EventDispatcher Component
 dev-php/symfony-filesystem 2.7.20: Symfony Filesystem Component
 dev-php/symfony-finder 2.7.20: Symfony Finder Component
