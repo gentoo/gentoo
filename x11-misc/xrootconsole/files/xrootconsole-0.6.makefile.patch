@@ -1,5 +1,5 @@
---- xrootconsole-0.6/Makefile.org	2004-02-20 22:53:28.000000000 +0100
-+++ xrootconsole-0.6/Makefile	2010-02-08 12:01:11.000000000 +0100
+--- a/Makefile.org	2004-02-20 22:53:28.000000000 +0100
++++ b/Makefile	2010-02-08 12:01:11.000000000 +0100
 @@ -43,20 +43,16 @@
              else echo Bleeding Edge Version; \
          fi;)
