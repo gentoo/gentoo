@@ -55,8 +55,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( >=media-video/ffmpeg-3.2.2:=[encode?,threads,vaapi?,vdpau?] )
-	libav? ( >=media-video/libav-12:=[encode?,threads,vaapi?,vdpau?] )
+	!libav? ( >=media-video/ffmpeg-3.2.2:0=[encode?,threads,vaapi?,vdpau?] )
+	libav? ( >=media-video/libav-12:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
