@@ -4,11 +4,6 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Alon Bar-Lev <alonbl@gentoo.org> (04 Jan 2017)
-# commited by Aaron Bauman <bman@gentoo.org> due 
-# to CI and public Git mirror being broken.
-net-libs/gnutls test-full
-
 # Jeroen Roovers <jer@gentoo.org> (28 Dec 2016)
 # "#error Unsupported architecture"
 dev-libs/libpcre2 jit
