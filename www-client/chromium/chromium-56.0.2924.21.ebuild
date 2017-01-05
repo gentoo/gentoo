@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
+	"${FILESDIR}/${PN}-glibc-2.24.patch"
 )
 
 pre_build_checks() {
