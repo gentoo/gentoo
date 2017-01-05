@@ -7017,7 +7017,7 @@ dev-php/semver 1.0.0: Semantic versioning utilities, constraint parsing, and che
 dev-php/simpletest 1.1.0: A PHP testing framework
 dev-php/smarty 3.1.30 3.1.31: A template engine for PHP
 dev-php/spdx-licenses 1.0.0: Tools for working with and validating SPDX licenses
-dev-php/stringparser_bbcode 0.3.3: A PHP class to parse BB codes
+dev-php/stringparser_bbcode 0.3.3-r1: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38-r1: Suhosin is an advanced protection system for PHP installations
 dev-php/symfony-config 2.1.0: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1: Subtree split of the Symfony Console Component
