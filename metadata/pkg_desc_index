@@ -6934,7 +6934,7 @@ dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/ffmpeg-php 0.6.0-r3 0.6.0-r4: PHP extension that provides access to movie info
-dev-php/igbinary 1.2.1-r1 2.0.0 2.0.0-r1 2.0.1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 1.2.1-r1 2.0.1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 3.0.7-r1 3.0.7-r2 4.0.2: Object-oriented graphing library for PHP
 dev-php/json-schema 2.0.0: PHP implementation of JSON schema
 dev-php/jsonlint 1.4.0: JSON Lint for PHP
