@@ -6,6 +6,6 @@
 		<name>PHP</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">tcpdf</remote-id>
+		<remote-id type="github">tecnickcom/TCPDF</remote-id>
 	</upstream>
 </pkgmetadata>
