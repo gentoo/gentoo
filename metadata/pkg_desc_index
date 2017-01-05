@@ -4711,7 +4711,7 @@ dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.15-r1 4.19 4.20 4.22 4.23: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5: Handler library for evdev events
+dev-libs/libevdev 1.4.4 1.5.2 1.5.4 1.5.5 1.5.6: Handler library for evdev events
 dev-libs/libevent 2.0.22 2.0.22-r2 2.1.5-r4 2.1.7_rc 9999: A library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
@@ -7027,7 +7027,7 @@ dev-php/symfony-filesystem 2.7.20: Symfony Filesystem Component
 dev-php/symfony-finder 2.7.20: Symfony Finder Component
 dev-php/symfony-process 2.8.12: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
-dev-php/tcpdf 6.2.13: TCPDF is a FLOSS PHP class for generating PDF documents
+dev-php/tcpdf 6.2.13-r1: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/twig 1.29.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.2.6 2.4.1 2.5.0: A PHP debugging and profiling extension
