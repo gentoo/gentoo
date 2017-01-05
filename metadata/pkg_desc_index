@@ -5576,7 +5576,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Manip 6.510.0 6.520.0 6.560.0 6.570.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
-dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.410.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0 1.280.0 1.360.0 1.420.0: A date and time object
 dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
@@ -6049,7 +6049,7 @@ dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
 dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does the rest
 dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
-dev-perl/Modern-Perl 1.201.501.270: enable all of the features of Modern Perl with one import
+dev-perl/Modern-Perl 1.201.501.270 1.201.612.290: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.420.500 0.421.600 0.421.800: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
@@ -6733,7 +6733,7 @@ dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1 1.110.0: C style enumerated types and bitmask flags in Perl
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.301.0 1.314.0 1.320.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.301.0 1.314.0 1.320.0 1.324.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.45.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
