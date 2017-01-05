@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -72,7 +72,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-2.11.1-parallel.patch \
 		"${FILESDIR}"/${PN}-2.13.1-zlib_header_fix.patch \
-		"${FILESDIR}"/${PN}-3.0.0-rmath-shared.patch
+		"${FILESDIR}"/${PN}-3.0.0-rmath-shared.patch \
+		"${FILESDIR}"/${P}-zlib-1.2.10-backport.patch
 
 	# fix packages.html for doc (gentoo bug #205103)
 	sed -i \
