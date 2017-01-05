@@ -15,13 +15,13 @@ SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${My
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="asm doc endomorphism gmp test"
+IUSE="+asm doc endomorphism gmp test"
 
 REQUIRED_USE="
 	asm? ( amd64 )
 "
 RDEPEND="
-	gmp? ( dev-libs/gmp:0 )
+	gmp? ( dev-libs/gmp:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

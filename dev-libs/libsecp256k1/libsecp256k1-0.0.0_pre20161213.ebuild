@@ -4,16 +4,17 @@
 
 EAPI=5
 
-EGIT_REPO_URI="https://github.com/bitcoin/secp256k1.git"
-inherit git-2 autotools eutils
+inherit autotools eutils
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
 HOMEPAGE="https://github.com/bitcoin/${MyPN}"
+COMMITHASH="8225239f490f79842a5a3b82ad6cc8aa11d5208e"
+SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${PN}-v${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test_openssl"
 
 REQUIRED_USE="
@@ -30,6 +31,8 @@ DEPEND="${RDEPEND}
 	java? ( virtual/jdk )
 	test_openssl? ( dev-libs/openssl:0 )
 "
+
+S="${WORKDIR}/${MyPN}-${COMMITHASH}"
 
 src_prepare() {
 	eautoreconf

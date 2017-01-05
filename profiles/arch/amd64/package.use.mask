@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
+# Assembly optimisations are supported on amd64 for all versions
+dev-libs/libsecp256k1 -asm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2016)
 # on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (14 Dec 2016)
 # Fails to build with newly unmasked ffmpeg-3, so mask this useflag
