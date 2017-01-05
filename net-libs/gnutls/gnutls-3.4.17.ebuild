@@ -18,7 +18,7 @@ IUSE="+cxx +crywrap dane doc examples guile idn nls +openssl pkcs11 static-libs 
 
 REQUIRED_USE="
 	test? ( tools )
-	test-full? ( pkcs11 openssl tools valgrind zlib )"
+	test-full? ( pkcs11 openssl tools zlib )"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
