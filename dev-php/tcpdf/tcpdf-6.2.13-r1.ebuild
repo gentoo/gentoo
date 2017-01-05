@@ -25,7 +25,7 @@ src_install() {
 	# look for it in its own source tree (not in /etc where we've put it).
 	dosym /etc/tcpdf_config.php "/usr/share/php/${PN}/config/tcpdf_config.php"
 
-	insinto "/usr/share/php/${PN}/tools"
+	exeinto "/usr/share/php/${PN}/tools"
 	doexe tools/tcpdf_addfont.php
 
 	insinto "/usr/share/php/${PN}"
