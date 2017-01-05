@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="cups gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
+IUSE="component-build cups gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -28,18 +28,16 @@ QA_FLAGS_IGNORED=".*\.nexe"
 # right tools for it, bug #469144 .
 QA_PRESTRIPPED=".*\.nexe"
 
-# Bundled:
-#	dev-libs/icu:=
-#	dev-libs/libxml2:=[icu]
-#	dev-libs/libxslt:=
-#	>=media-libs/harfbuzz-1.3.1:=[icu(+)]
 COMMON_DEPEND="
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
 	dev-libs/glib:=
+	dev-libs/icu:=
 	>=dev-libs/jsoncpp-0.5.0-r1:=
+	dev-libs/libxml2:=[icu]
+	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
 	>=dev-libs/re2-0.2016.05.01:=
@@ -48,6 +46,7 @@ COMMON_DEPEND="
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
+	>=media-libs/harfbuzz-1.3.1:=[icu(+)]
 	media-libs/libexif:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
@@ -164,13 +163,17 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
 	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-gn-r10.patch"
 )
 
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
+		local -x CPP="$(tc-getCXX) -E"
+		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
+			# bugs: #601654
+			die "At least clang 3.9.1 is required"
+		fi
 		if tc-is-gcc && ! version_is_at_least 5 "$(gcc-major-version)"; then
-			# bugs: #535730, #525374, #518668
+			# bugs: #535730, #525374, #518668, #600288
 			die "At least gcc 5 is required"
 		fi
 	fi
@@ -314,12 +317,6 @@ src_prepare() {
 		third_party/usb_ids
 		third_party/xdg-utils
 		third_party/yasm/run_yasm.py
-
-		# M57 bundled
-		third_party/harfbuzz-ng
-		third_party/icu
-		third_party/libxslt
-		third_party/libxml
 	)
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
@@ -334,6 +331,10 @@ src_configure() {
 
 	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
 	myconf_gn+=" is_debug=false"
+
+	# Component build isn't generally intended for use by end users. It's mostly useful
+	# for development and debugging.
+	myconf_gn+=" is_component_build=$(usex component-build true false)"
 
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
 	myconf_gn+=" enable_nacl=false"
@@ -350,14 +351,14 @@ src_configure() {
 	# libevent: https://bugs.gentoo.org/593458
 	local gn_system_libraries=(
 		flac
-		#harfbuzz-ng
-		#icu
+		harfbuzz-ng
+		icu
 		libjpeg
 		libpng
 		libvpx
 		libwebp
-		#libxml
-		#libxslt
+		libxml
+		libxslt
 		re2
 		snappy
 		yasm
@@ -574,9 +575,10 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	doins out/Release/*.bin
 	doins out/Release/*.pak
+	doins out/Release/*.so
 
 	# Needed by bundled icu
-	doins out/Release/icudtl.dat
+	# doins out/Release/icudtl.dat
 
 	doins -r out/Release/locales
 	doins -r out/Release/resources
