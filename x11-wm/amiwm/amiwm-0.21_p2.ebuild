@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils multilib toolchain-funcs
 
@@ -29,18 +29,24 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 	x11-proto/xextproto"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo.diff"
+	"${FILESDIR}/${P}-implicts.patch"
+	"${FILESDIR}/${P}-flex-2.6.3-fix.patch"
+)
 
 pkg_setup() {
 	tc-export CC
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.diff \
-		"${FILESDIR}"/${P}-implicts.patch \
-		"${FILESDIR}"/${P}-flex-2.6.3-fix.patch
-	sed -i -e "s:\$(exec_prefix)/lib:\$(exec_prefix)/$(get_libdir):" \
-		Makefile.in || die
+	default
+	sed -e "s:\$(exec_prefix)/lib:\$(exec_prefix)/$(get_libdir):" \
+		-e '/^STRIPFLAG/s@-s@@' \
+		-e '/$(LN_S)/s@$(DESTDIR)$(AMIWM_HOME)@../..$(AMIWM_HOME)@' \
+		-i Makefile.in || die
 	sed -i -e "s:/bin/ksh:/bin/sh:g" Xsession{,2}.in || die
 
 	cat <<- EOF > "${T}"/amiwm
@@ -50,9 +56,8 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-
-	dodoc README*
+	local DOCS=( README* )
+	default
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}"/amiwm
