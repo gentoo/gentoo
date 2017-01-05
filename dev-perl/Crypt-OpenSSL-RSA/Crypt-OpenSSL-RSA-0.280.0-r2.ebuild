@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,6 +20,10 @@ RDEPEND="dev-perl/Crypt-OpenSSL-Bignum
 	libressl? ( dev-libs/libressl )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-openssl-1.1.0.patch"
+)
 
 SRC_TEST="do"
 
