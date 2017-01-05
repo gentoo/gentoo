@@ -2935,6 +2935,7 @@ games-emulation/mupen64plus-core:osd - Overlay emulator messages using on-screen
 games-emulation/mupen64plus-video-glide64mk2:gles2 - Use GLES2 instead of OpenGL
 games-emulation/mupen64plus-video-glide64mk2:hires - Support hi-resolution textures (requires dev-libs/boost)
 games-emulation/mupen64plus-video-rice:gles2 - Use GLES2 instead of OpenGL
+games-emulation/nestopia:gui - Enable GUI
 games-emulation/pcsxr:cdio - Use libcdio for CD support
 games-emulation/pcsxr:sdl - Use SDL sound backend (other parts of SDL are used unconditionally)
 games-emulation/ppsspp:qt4 - Adds support for the Qt GUI/Application Toolkit version 4.x
