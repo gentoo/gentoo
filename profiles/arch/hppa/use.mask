@@ -165,7 +165,7 @@ pm-utils
 -hppa
 
 # Jeroen Roovers <jer@gentoo.org> (7 Jun 2008)
-# # dev-util/valgrind has not been ported to HPPA.
+# dev-util/valgrind has not been ported to HPPA.
 valgrind
 
 # Jeroen Roovers <jer@gentoo.org> (4 Jan 2008)
