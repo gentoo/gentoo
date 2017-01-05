@@ -14867,7 +14867,7 @@ net-misc/asterisk-rate_engine 0.5.4: Asterisk application for least-cost routing
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 0.4.7 9999: Automatic open port forwarder using UPnP
-net-misc/axel 2.4-r3: Light Unix download accelerator
+net-misc/axel 2.4-r3 2.12 9999: Light Unix download accelerator
 net-misc/badvpn 1.999.123-r3 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-misc/balance 3.54-r1: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
@@ -17090,7 +17090,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
 sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
-sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8 2.15: Jens Axboe's Flexible IO tester
+sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8 2.15 2.16: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
