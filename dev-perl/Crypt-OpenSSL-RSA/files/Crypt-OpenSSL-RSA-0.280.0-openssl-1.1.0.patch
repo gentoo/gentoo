@@ -1,0 +1,256 @@
+From fdbda9585f5c99670912e5c0517dbc7a9d92c74b Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+Date: Sat, 1 Oct 2016 19:52:44 +0000
+Subject: [PATCH] libcrypt-openssl-rsa-perl: get it compiled with openssl 1.1.0
+
+Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=117481
+Bug-Debian: https://bugs.debian.org/828387
+
+---
+ RSA.xs | 173 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 150 insertions(+), 23 deletions(-)
+
+diff --git a/RSA.xs b/RSA.xs
+index de512e7822d0..b384cb0e23a2 100644
+--- a/RSA.xs
++++ b/RSA.xs
+@@ -47,9 +47,119 @@ void croakSsl(char* p_file, int p_line)
+ 
+ #define THROW(p_result) if (!(p_result)) { error = 1; goto err; }
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000
++
++static void RSA_get0_key(const RSA *r,
++                         const BIGNUM **n, const BIGNUM **e, const BIGNUM **d)
++{
++    if (n != NULL)
++        *n = r->n;
++    if (e != NULL)
++        *e = r->e;
++    if (d != NULL)
++        *d = r->d;
++}
++
++static int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d)
++{
++    /* If the fields n and e in r are NULL, the corresponding input
++     * parameters MUST be non-NULL for n and e.  d may be
++     * left NULL (in case only the public key is used).
++     */
++    if ((r->n == NULL && n == NULL)
++        || (r->e == NULL && e == NULL))
++        return 0;
++
++    if (n != NULL) {
++        BN_free(r->n);
++        r->n = n;
++    }
++    if (e != NULL) {
++        BN_free(r->e);
++        r->e = e;
++    }
++    if (d != NULL) {
++        BN_free(r->d);
++        r->d = d;
++    }
++
++    return 1;
++}
++
++static int RSA_set0_factors(RSA *r, BIGNUM *p, BIGNUM *q)
++{
++    /* If the fields p and q in r are NULL, the corresponding input
++     * parameters MUST be non-NULL.
++     */
++    if ((r->p == NULL && p == NULL)
++        || (r->q == NULL && q == NULL))
++        return 0;
++
++    if (p != NULL) {
++        BN_free(r->p);
++        r->p = p;
++    }
++    if (q != NULL) {
++        BN_free(r->q);
++        r->q = q;
++    }
++
++    return 1;
++}
++
++static void RSA_get0_factors(const RSA *r, const BIGNUM **p, const BIGNUM **q)
++{
++    if (p != NULL)
++        *p = r->p;
++    if (q != NULL)
++        *q = r->q;
++}
++
++static int RSA_set0_crt_params(RSA *r, BIGNUM *dmp1, BIGNUM *dmq1, BIGNUM *iqmp)
++{
++    /* If the fields dmp1, dmq1 and iqmp in r are NULL, the corresponding input
++     * parameters MUST be non-NULL.
++     */
++    if ((r->dmp1 == NULL && dmp1 == NULL)
++        || (r->dmq1 == NULL && dmq1 == NULL)
++        || (r->iqmp == NULL && iqmp == NULL))
++        return 0;
++
++    if (dmp1 != NULL) {
++        BN_free(r->dmp1);
++        r->dmp1 = dmp1;
++    }
++    if (dmq1 != NULL) {
++        BN_free(r->dmq1);
++        r->dmq1 = dmq1;
++    }
++    if (iqmp != NULL) {
++        BN_free(r->iqmp);
++        r->iqmp = iqmp;
++    }
++
++    return 1;
++}
++
++static void RSA_get0_crt_params(const RSA *r,
++                                const BIGNUM **dmp1, const BIGNUM **dmq1,
++                                const BIGNUM **iqmp)
++{
++    if (dmp1 != NULL)
++        *dmp1 = r->dmp1;
++    if (dmq1 != NULL)
++        *dmq1 = r->dmq1;
++    if (iqmp != NULL)
++        *iqmp = r->iqmp;
++}
++#endif
++
+ char _is_private(rsaData* p_rsa)
+ {
+-    return(p_rsa->rsa->d != NULL);
++    const BIGNUM *d;
++
++    RSA_get0_key(p_rsa->rsa, NULL, NULL, &d);
++    return(d != NULL);
+ }
+ 
+ SV* make_rsa_obj(SV* p_proto, RSA* p_rsa)
+@@ -136,7 +246,7 @@ unsigned char* get_message_digest(SV* text_SV, int hash_method)
+     }
+ }
+ 
+-SV* bn2sv(BIGNUM* p_bn)
++SV* bn2sv(const BIGNUM* p_bn)
+ {
+     return p_bn != NULL
+         ? sv_2mortal(newSViv((IV) BN_dup(p_bn)))
+@@ -297,8 +407,15 @@ generate_key(proto, bitsSV, exponent = 65537)
+     unsigned long exponent;
+   PREINIT:
+     RSA* rsa;
++    BIGNUM *e;
+   CODE:
+-    CHECK_OPEN_SSL(rsa = RSA_generate_key(SvIV(bitsSV), exponent, NULL, NULL));
++    e = BN_new();
++    CHECK_OPEN_SSL(e);
++    rsa = RSA_new();
++    CHECK_OPEN_SSL(rsa);
++    BN_set_word(e, exponent);
++    CHECK_OPEN_SSL(RSA_generate_key_ex(rsa, SvIV(bitsSV), e, NULL));
++    BN_free(e);
+     RETVAL = make_rsa_obj(proto, rsa);
+   OUTPUT:
+     RETVAL
+@@ -325,10 +442,11 @@ _new_key_from_parameters(proto, n, e, d, p, q)
+         croak("At least a modulous and public key must be provided");
+     }
+     CHECK_OPEN_SSL(rsa = RSA_new());
+-    rsa->n = n;
+-    rsa->e = e;
++    CHECK_OPEN_SSL(RSA_set0_key(rsa, n, e, NULL));
+     if (p || q)
+     {
++        BIGNUM *dmp1, *dmq1, *iqmp;
++
+         error = 0;
+         THROW(ctx = BN_CTX_new());
+         if (!p)
+@@ -341,8 +459,7 @@ _new_key_from_parameters(proto, n, e, d, p, q)
+             q = BN_new();
+             THROW(BN_div(q, NULL, n, p, ctx));
+         }
+-        rsa->p = p;
+-        rsa->q = q;
++        CHECK_OPEN_SSL(RSA_set0_factors(rsa, p, q));
+         THROW(p_minus_1 = BN_new());
+         THROW(BN_sub(p_minus_1, p, BN_value_one()));
+         THROW(q_minus_1 = BN_new());
+@@ -353,13 +470,17 @@ _new_key_from_parameters(proto, n, e, d, p, q)
+             THROW(BN_mul(d, p_minus_1, q_minus_1, ctx));
+             THROW(BN_mod_inverse(d, e, d, ctx));
+         }
+-        rsa->d = d;
+-        THROW(rsa->dmp1 = BN_new());
+-        THROW(BN_mod(rsa->dmp1, d, p_minus_1, ctx));
+-        THROW(rsa->dmq1 = BN_new());
+-        THROW(BN_mod(rsa->dmq1, d, q_minus_1, ctx));
+-        THROW(rsa->iqmp = BN_new());
+-        THROW(BN_mod_inverse(rsa->iqmp, q, p, ctx));
++        CHECK_OPEN_SSL(RSA_set0_key(rsa, NULL, NULL, d));
++
++        THROW(dmp1 = BN_new());
++        THROW(dmq1 = BN_new());
++        THROW(iqmp = BN_new());
++
++        THROW(BN_mod(dmp1, d, p_minus_1, ctx));
++        THROW(BN_mod(dmq1, d, q_minus_1, ctx));
++        THROW(BN_mod_inverse(iqmp, q, p, ctx));
++
++        CHECK_OPEN_SSL(RSA_set0_crt_params(rsa, dmp1, dmq1, iqmp));
+         THROW(RSA_check_key(rsa) == 1);
+      err:
+         if (p_minus_1) BN_clear_free(p_minus_1);
+@@ -373,7 +494,7 @@ _new_key_from_parameters(proto, n, e, d, p, q)
+     }
+     else
+     {
+-        rsa->d = d;
++        CHECK_OPEN_SSL(RSA_set0_key(rsa, NULL, NULL, d));
+     }
+     RETVAL = make_rsa_obj(proto, rsa);
+ }
+@@ -386,15 +507,21 @@ _get_key_parameters(p_rsa)
+ PPCODE:
+ {
+     RSA* rsa;
++    const BIGNUM *n, *e, *d, *p, *q;
++    const BIGNUM *dmp1, *dmq1, *iqmp;
++
+     rsa = p_rsa->rsa;
+-    XPUSHs(bn2sv(rsa->n));
+-    XPUSHs(bn2sv(rsa->e));
+-    XPUSHs(bn2sv(rsa->d));
+-    XPUSHs(bn2sv(rsa->p));
+-    XPUSHs(bn2sv(rsa->q));
+-    XPUSHs(bn2sv(rsa->dmp1));
+-    XPUSHs(bn2sv(rsa->dmq1));
+-    XPUSHs(bn2sv(rsa->iqmp));
++    RSA_get0_key(rsa, &n, &e, &d);
++    RSA_get0_factors(rsa, &p, &q);
++    RSA_get0_crt_params(rsa, &dmp1, &dmq1, &iqmp);
++    XPUSHs(bn2sv(n));
++    XPUSHs(bn2sv(e));
++    XPUSHs(bn2sv(d));
++    XPUSHs(bn2sv(p));
++    XPUSHs(bn2sv(q));
++    XPUSHs(bn2sv(dmp1));
++    XPUSHs(bn2sv(dmq1));
++    XPUSHs(bn2sv(iqmp));
+ }
+ 
+ SV*
+-- 
+2.1.4
+
