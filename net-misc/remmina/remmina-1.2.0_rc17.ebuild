@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ayatana crypt freerdp gnome-keyring nls spice ssh telepathy webkit zeroconf"
+IUSE="ayatana crypt rdp gnome-keyring nls spice ssh telepathy webkit zeroconf"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -27,7 +27,7 @@ RDEPEND="
 	virtual/freedesktop-icon-theme
 	ayatana? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	freerdp? ( ~net-misc/freerdp-2.0.0_pre20161219 )
+	rdp? ( ~net-misc/freerdp-2.0.0_pre20161219 )
 	gnome-keyring? ( app-crypt/libsecret )
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh[sftp]
@@ -49,7 +49,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_APPINDICATOR=$(usex ayatana)
 		-DWITH_GCRYPT=$(usex crypt)
-		-DWITH_FREERDP=$(usex freerdp)
+		-DWITH_FREERDP=$(usex rdp freerdp)
 		-DWITH_LIBSECRET=$(usex gnome-keyring)
 		-DWITH_GETTEXT=$(usex nls)
 		-DWITH_TRANSLATIONS=$(usex nls)
