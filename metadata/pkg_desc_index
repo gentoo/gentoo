@@ -8380,6 +8380,7 @@ dev-python/safety 0.5.1: Checks your installed dependencies for known security v
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
+dev-python/schedule 0.4.2: Python job scheduling for humans
 dev-python/schema 0.5.0: Library for validating Python data structures
 dev-python/scientificpython 2.9.4: Scientific Module for Python
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
