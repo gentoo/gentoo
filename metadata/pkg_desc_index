@@ -6896,7 +6896,7 @@ dev-php/PEAR-Testing_Selenium 0.4.4-r1: PHP Client for Selenium Remote Control
 dev-php/PEAR-Text_CAPTCHA 0.5.0 1.0.2: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
 dev-php/PEAR-Text_Figlet 1.0.2: Render text using FIGlet fonts
-dev-php/PEAR-Text_Highlighter 0.7.3: A package for syntax highlighting
+dev-php/PEAR-Text_Highlighter 0.7.3-r1: A package for syntax highlighting
 dev-php/PEAR-Text_Password 1.1.1 1.2.0: Creating passwords with PHP
 dev-php/PEAR-Text_Wiki 1.2.2: Abstracts parsing and rendering rules for Wiki markup in structured plain text
 dev-php/PEAR-Text_Wiki_BBCode 0.0.4-r2: BBCode parser for Text_Wiki
