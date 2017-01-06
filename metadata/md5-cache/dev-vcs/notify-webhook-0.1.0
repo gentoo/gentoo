@@ -9,4 +9,4 @@ RDEPEND=dev-python/simplejson
 SLOT=0
 SRC_URI=https://github.com/metajack/notify-webhook/archive/v0.1.0.tar.gz -> notify-webhook-0.1.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=ba22e083a53aa8f03f4af34eacb579ef
+_md5_=1ef4cebbc6c2dab83c704371cc51839c
