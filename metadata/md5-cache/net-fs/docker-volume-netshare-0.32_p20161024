@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=dev-lang/go-1.4.2:= virtual/pkgconfig
+DESCRIPTION=Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
+EAPI=6
+HOMEPAGE=https://github.com/ContainX/docker-volume-netshare
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/ContainX/docker-volume-netshare/archive/07ecbb79beb37b05f5a292cc45c28c1b2d251c70.tar.gz -> docker-volume-netshare-0.32_p20161024.tar.gz https://github.com/Sirupsen/logrus/archive/3ec0642a7fb6488f65b06f9040adc67e3990296a.tar.gz -> Sirupsen-logrus-3ec0642a7fb6488f65b06f9040adc67e3990296a.tar.gz https://github.com/dickeyxxx/netrc/archive/3acf1b3de25d89c7688c63bb45f6b07f566555ec.tar.gz -> dickeyxxx-netrc-3acf1b3de25d89c7688c63bb45f6b07f566555ec.tar.gz https://github.com/docker/go-plugins-helpers/archive/8a0198e77ac4e4ee167222caf6894cb32386c5fc.tar.gz -> docker-go-plugins-helpers-8a0198e77ac4e4ee167222caf6894cb32386c5fc.tar.gz https://github.com/coreos/go-systemd/archive/7c9533367ef925dc1078d75e5b7141e10da2c4e8.tar.gz -> coreos-go-systemd-7c9533367ef925dc1078d75e5b7141e10da2c4e8.tar.gz https://github.com/coreos/pkg/archive/447b7ec906e523386d9c53be15b55a8ae86ea944.tar.gz -> coreos-pkg-447b7ec906e523386d9c53be15b55a8ae86ea944.tar.gz https://github.com/docker/go-connections/archive/988efe982fdecb46f01d53465878ff1f2ff411ce.tar.gz -> docker-go-connections-988efe982fdecb46f01d53465878ff1f2ff411ce.tar.gz https://github.com/opencontainers/runc/archive/1a9dd2678d2d6ad574f05cb7b9ae46ce65586725.tar.gz -> opencontainers-runc-1a9dd2678d2d6ad574f05cb7b9ae46ce65586725.tar.gz https://github.com/miekg/dns/archive/58f52c57ce9df13460ac68200cef30a008b9c468.tar.gz -> miekg-dns-58f52c57ce9df13460ac68200cef30a008b9c468.tar.gz https://github.com/spf13/cobra/archive/856b96dcb49d6427babe192998a35190a12c2230.tar.gz -> spf13-cobra-856b96dcb49d6427babe192998a35190a12c2230.tar.gz https://github.com/spf13/pflag/archive/dabebe21bf790f782ea4c7bbd2efc430de182afd.tar.gz -> spf13-pflag-dabebe21bf790f782ea4c7bbd2efc430de182afd.tar.gz https://github.com/golang/net/archive/905989bd20b7c354fd28a61074eed1c8f49ebc89.tar.gz -> golang-net-905989bd20b7c354fd28a61074eed1c8f49ebc89.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=535a3b039ac89092f8de9cc5ab80d245
