@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,22 +25,26 @@ IUSE="doc extension test"
 DEPEND="test? ( dev-php/phpunit )"
 
 src_prepare(){
-	# We need to call eapply_user ourselves, just in case the user's
+	# We need to call eapply_user ourselves, because it may be skipped
+	# if either the "extension" USE flag is not set, or if the user's
 	# PHP_TARGETS is essentially empty (does not contain "php5-6"). In
-	# that case the eclass src_prepare does nothing.
+	# the latter case, the eclass src_prepare does nothing.
 	eapply_user
-	php-ext-source-r3_src_prepare
+	use extension && php-ext-source-r3_src_prepare
 }
 
 src_install(){
-	php-ext-source-r3_src_install
+	use extension && php-ext-source-r3_src_install
 
 	cd "${S}" || die
 	# The autoloader requires the 'T' in "Twig" capitalized.
 	insinto "/usr/share/php/${MY_PN}"
 	doins -r lib/"${MY_PN}"/*
 
+	# The eclass src_install calls einstalldocs, so we may install a few
+	# files twice. Doing so should be harmless.
 	dodoc README.rst CHANGELOG
+
 	# This installs the reStructuredText source documents. There's got
 	# to be some way to turn them into HTML using Sphinx, but upstream
 	# doesn't provide for it.
