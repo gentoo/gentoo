@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc +dyn-manifest static-libs test"
 
-RDEPEND="media-libs/lv2
+RDEPEND=">=media-libs/lv2-1.14.0
 	>=media-libs/sratom-0.4.0
 	>=dev-libs/serd-0.14.0
 	>=dev-libs/sord-0.13.0"

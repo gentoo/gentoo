@@ -148,37 +148,10 @@ media-plugins/gimp-gmic
 # Mask ruby 2.0 for removal, bug 576034
 dev-lang/ruby:2.0
 
-# Johannes Huber <johu@gentoo.org> (05 Dec 2016)
-# Masked for removal in 30 days. Dead upstream.
-# Relies on deprecated dev-qt/qt3support.
-# Superseded by kde-apps/kolourpaint.
-media-gfx/kiconedit
-
-# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
-# Sandbox failure on install. No maintainer.
-# https://bugs.gentoo.org/597146
-# https://bugs.gentoo.org/597188
-# Removal in 30 days.
-dev-python/pygtkspellcheck
-
-# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
-# Duplicate package, see sci-libs/Shapely.
-# Removal in 30 days.
-dev-python/shapely
-
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Vulnerable to CVE-2015-1431 and nobody taking care of it, bug #538360.
 # Removal in a month.
 www-apps/phpBB
-
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Not compatible with mono-4, bug #596600, removal in a month.
-app-misc/tomboy
-
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Dead and obsolete lib not needed by anything in the tree (#567946).
-# Removal in a month.
-app-mobilephone/gsmlib
 
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
@@ -191,12 +164,6 @@ app-mobilephone/gsmlib
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # Depends on slotted lua
 =dev-db/redis-3.2.5-r1
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (18 Nov 2016)
-# Drupal 6 is no longer supported by upstream and is likely
-# vulnerable to DRUPAL-SA-CORE-2016-005 - bug 600124.
-# Removal at the end of the year
-=www-apps/drupal-6.38
 
 # Ian Stakenvicius (17 Nov 2016)
 # Does not honour LD_LIBRARY_PATH set in the environment, causing
