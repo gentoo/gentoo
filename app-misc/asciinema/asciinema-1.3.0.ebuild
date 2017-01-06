@@ -27,7 +27,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	# obsolete, already removed in upstream git
-	rm asciinema/requests_http_adapter.py
+	rm asciinema/requests_http_adapter.py || die
 }
 
 python_test() {
