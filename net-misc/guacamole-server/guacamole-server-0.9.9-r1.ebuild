@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="rdesktop vnc ssh pulseaudio vorbis telnet ssl multilib"
+IUSE="multilib pulseaudio rdp ssh ssl telnet vnc vorbis"
 REQUIRED_USE="multilib? ( ssl )"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/jpeg:0
 	dev-libs/ossp-uuid
-	rdesktop? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= )
+	rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= )
 	ssh? (
 		x11-libs/pango
 		net-libs/libssh2 )
@@ -51,7 +51,7 @@ src_configure() {
 
 	econf ${myconf} \
 		$(use_with ssh) \
-		$(use_with rdesktop rdp) \
+		$(use_with rdp) \
 		$(use_with vnc) \
 		$(use_with pulseaudio pulse) \
 		$(use_with vorbis) \
