@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils libtool multilib-minimal
 
@@ -23,8 +23,9 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
 src_prepare() {
+	default
 	if use apng; then
-		epatch "${WORKDIR}"/${PN}-*-apng.patch
+		eapply -p0 "${WORKDIR}"/${PN}-*-apng.patch
 		# Don't execute symbols check with apng patch wrt #378111
 		sed -i -e '/^check/s:scripts/symbols.chk::' Makefile.in || die
 	fi
@@ -38,6 +39,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	dodoc ANNOUNCE CHANGES libpng-manual.txt README TODO
+	DOCS=( ANNOUNCE CHANGES libpng-manual.txt README TODO )
+	einstalldocs
 	prune_libtool_files --all
 }
