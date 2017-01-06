@@ -14,21 +14,21 @@ DESCRIPTION="User friendly Bitcoin client"
 HOMEPAGE="https://electrum.org/"
 SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LINGUAS="ar_SA cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ky_KG lv_LV nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH vi_VN zh_CN"
+LINGUAS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR vi_VN zh_CN"
 
-IUSE="cli cosign +fiat greenaddress_it gtk3 ncurses qrcode +qt4 sync trustedcoin_com vkb"
+IUSE="cli cosign email greenaddress_it ncurses qrcode +qt4 sync trustedcoin_com vkb"
 
 for lingua in ${LINGUAS}; do
 	IUSE+=" linguas_${lingua}"
 done
 
 REQUIRED_USE="
-	|| ( cli gtk3 ncurses qt4 )
+	|| ( cli ncurses qt4 )
 	cosign? ( qt4 )
-	fiat? ( qt4 )
+	email? ( qt4 )
 	greenaddress_it? ( qt4 )
 	qrcode? ( qt4 )
 	sync? ( qt4 )
@@ -37,25 +37,21 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/ecdsa-0.9[${PYTHON_USEDEP}]
-	dev-python/slowaes[${PYTHON_USEDEP}]
+	dev-python/ecdsa[${PYTHON_USEDEP}]
+	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-	dev-python/tlslite[${PYTHON_USEDEP}]
-	dev-python/qrcode[${PYTHON_USEDEP}]
 	dev-python/PySocks[${PYTHON_USEDEP}]
-	dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	dev-python/qrcode[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/slowaes[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	gtk3? (
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		x11-libs/gtk+:3[introspection]
-	)
+	dev-python/tlslite[${PYTHON_USEDEP}]
+	dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[python,v4l,${PYTHON_USEDEP}] )
 	qt4? (
-		dev-python/PyQt4[${PYTHON_USEDEP}]
+		dev-python/PyQt4[X,${PYTHON_USEDEP}]
 	)
 	ncurses? ( dev-lang/python )
 "
@@ -65,6 +61,8 @@ S="${WORKDIR}/${MY_P}"
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
+	epatch "${FILESDIR}/${PV}-no-user-root.patch"
+
 	# Don't advise using PIP
 	sed -i "s/On Linux, try 'sudo pip install zbar'/Re-emerge Electrum with the qrcode USE flag/" lib/qrscanner.py || die
 
@@ -80,47 +78,63 @@ src_prepare() {
 	done
 
 	local wordlist=
-	# french is unfinished
 	for wordlist in  \
-		$(usex linguas_es_ES '' spanish)  \
-		$(usex linguas_pt_BR '' $(usex linguas_pt_PT '' portuguese))  \
-		french  \
-		$(usex linguas_ja_JP '' japanese)  \
+		$(usex linguas_ja_JP '' japanese) \
+		$(usex linguas_pt_BR '' $(usex linguas_pt_PT '' portuguese)) \
+		$(usex linguas_es_ES '' spanish) \
+		$(usex linguas_zh_CN '' chinese_simplified) \
 	; do
-		rm "lib/wordlist/${wordlist}.txt" || die
+		rm -f "lib/wordlist/${wordlist}.txt" || die
 		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die
 	done
 
 	# Remove unrequested GUI implementations:
-	local gui
+	local gui setup_py_gui
 	for gui in  \
 		$(usex cli      '' stdio)  \
-		$(usex gtk3     '' gtk  )  \
+		kivy \
 		$(usex qt4      '' qt   )  \
 		$(usex ncurses  '' text )  \
 	; do
 		rm gui/"${gui}"* -r || die
 	done
 
-	if ! use qt4; then
-		sed -i "s/'electrum_gui\\.qt',//;/\"qt\\/themes/d" setup.py || die
-		local bestgui=$(usex gtk3 gtk $(usex ncurses text stdio))
-		sed -i "s/\(config.get('gui', \?\)'classic'/\1'${bestgui}'/" electrum || die
+	# And install requested ones...
+	for gui in  \
+		$(usex qt4      qt   '')  \
+	; do
+		setup_py_gui="${setup_py_gui}'electrum_gui.${gui}',"
+	done
+
+	sed -i "s/'electrum_gui\\.qt',/${setup_py_gui}/" setup.py || die
+
+	local bestgui
+	if use qt4; then
+		bestgui=qt
+	elif use ncurses; then
+		bestgui=text
+	else
+		bestgui=stdio
 	fi
+	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' electrum || die
 
 	local plugin
-	# btchipwallet requires python btchip module (and dev-python/pyusb)
 	# trezor requires python trezorlib module
+	# keepkey requires trezor
 	for plugin in  \
-		$(usex cosign        '' cosigner_pool   )  \
-		$(usex fiat          '' exchange_rate   )  \
+		$(usex cosign        '' cosigner_pool   ) \
+		hw_wallet \
+		ledger \
+		$(usex email         '' email_requests  ) \
 		$(usex greenaddress_it '' greenaddress_instant)  \
+		keepkey \
 		$(usex sync          '' labels          )  \
 		trezor  \
 		$(usex trustedcoin_com '' trustedcoin   )  \
 		$(usex vkb           '' virtualkeyboard )  \
 	; do
-		rm plugins/"${plugin}"* || die
+		rm -r plugins/"${plugin}"* || die
+		sed -i "/${plugin}/d" setup.py || die
 	done
 
 	distutils-r1_src_prepare
