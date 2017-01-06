@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Remote desktop connection (RDP and VNC) client"
 HOMEPAGE="https://www.kde.org/applications/internet/krdc/"
 KEYWORDS="amd64 x86"
-IUSE="+rdesktop vnc"
+IUSE="+rdp vnc"
 
 #nx? ( >=net-misc/nxcl-0.9-r1 ) disabled upstream, last checked 2016-01-24
 
@@ -36,7 +36,7 @@ DEPEND="
 	vnc? ( >=net-libs/libvncserver-0.9 )
 "
 RDEPEND="${DEPEND}
-	rdesktop? ( >=net-misc/freerdp-1.1.0_beta1[X] )
+	rdp? ( >=net-misc/freerdp-1.1.0_beta1[X] )
 "
 
 src_configure() {
