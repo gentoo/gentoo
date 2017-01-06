@@ -154,13 +154,6 @@ dev-lang/ruby:2.0
 # Superseded by kde-apps/kolourpaint.
 media-gfx/kiconedit
 
-# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
-# Sandbox failure on install. No maintainer.
-# https://bugs.gentoo.org/597146
-# https://bugs.gentoo.org/597188
-# Removal in 30 days.
-dev-python/pygtkspellcheck
-
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Vulnerable to CVE-2015-1431 and nobody taking care of it, bug #538360.
 # Removal in a month.
