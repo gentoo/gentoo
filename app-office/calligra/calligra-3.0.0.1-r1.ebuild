@@ -6,7 +6,7 @@ EAPI=6
 
 CHECKREQS_DISK_BUILD="4G"
 KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
+KDE_TEST="forceoptional-recursive"
 inherit check-reqs kde5 versionator
 
 DESCRIPTION="KDE Office Suite"
@@ -21,9 +21,9 @@ KEYWORDS="~amd64 ~x86"
 CAL_FTS=( karbon plan sheets words )
 CAL_EXP_FTS=( braindump stage )
 
-IUSE="activities +crypt +eigen +fontconfig gsl import-filter +lcms pim marble okular
-	openexr +pdf spacenav +truetype vc +xml X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
-	$(printf 'calligra_experimental_features_%s ' ${CAL_EXP_FTS[@]})"
+IUSE="activities +crypt +eigen +fontconfig gsl import-filter jpeg2k +lcms okular openexr +pdf
+phonon pim marble spacenav +truetype vc +xml X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
+$(printf 'calligra_experimental_features_%s ' ${CAL_EXP_FTS[@]})"
 
 REQUIRED_USE="calligra_features_sheets? ( eigen )"
 
@@ -47,20 +47,18 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kitemmodels)
 	$(add_frameworks_dep kitemviews)
+	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep knotifyconfig)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kross)
-	$(add_frameworks_dep ktexteditor)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwallet)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep sonnet)
-	$(add_frameworks_dep threadweaver)
 	$(add_qt_dep designer)
-	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
@@ -71,8 +69,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-lang/perl
-	dev-libs/boost
-	media-libs/libpng:0
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
@@ -90,10 +86,14 @@ COMMON_DEPEND="
 		dev-libs/librevenge
 		media-libs/libvisio
 	)
-	lcms? ( media-libs/lcms:2 )
+	lcms? (
+		media-libs/ilmbase:=
+		media-libs/lcms:2
+	)
 	marble? ( $(add_kdeapps_dep marble) )
 	openexr? ( media-libs/openexr )
 	pdf? ( app-text/poppler:=[qt5] )
+	phonon? ( media-libs/phonon[qt5] )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (
@@ -105,12 +105,13 @@ COMMON_DEPEND="
 		$(add_qt_dep qtwebkit)
 		okular? ( $(add_kdeapps_dep okular) )
 	)
+	calligra_features_karbon? ( jpeg2k? ( media-libs/openjpeg:= ) )
 	calligra_features_plan? (
 		$(add_frameworks_dep khtml)
 		$(add_qt_dep qtcore '' '' '5=')
 		dev-libs/kdiagram:5
-		dev-libs/kproperty:5
-		dev-libs/kreport:5
+		=dev-libs/kproperty-3.0*:5
+		=dev-libs/kreport-3.0*:5
 		pim? (
 			$(add_kdeapps_dep akonadi)
 			$(add_kdeapps_dep akonadi-contacts)
@@ -124,19 +125,27 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	dev-libs/boost
 	sys-devel/gettext
 	x11-misc/shared-mime-info
+	test? ( $(add_frameworks_dep threadweaver) )
 	vc? ( >=dev-libs/vc-1.1.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	calligra_features_karbon? ( media-gfx/pstoedit[plotutils] )
 	!app-office/calligra:4
+	!app-office/calligra-l10n:4
 "
 RESTRICT+=" test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-no-arch-detection.patch"
-	"${FILESDIR}/${PN}-3.0.0-optionaldeps.patch"
+	"${FILESDIR}/${PN}"-3.0.0-no-arch-detection.patch
+	# upstream master
+	"${FILESDIR}/${P}"-nokdelibs4.patch
+	"${FILESDIR}/${P}"-relax-deps.patch
+	# pending upstream
+	"${FILESDIR}/${P}"-reenable-akonadi.patch
+	"${FILESDIR}/${P}"-deps{1,2,3}.patch
 )
 
 pkg_pretend() {
@@ -150,6 +159,11 @@ pkg_setup() {
 
 src_prepare() {
 	kde5_src_prepare
+
+	if ! use test; then
+		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
+			-i libs/pigment/CMakeLists.txt || die
+	fi
 
 	# Unconditionally disable deprecated deps (required by QtQuick1)
 	punt_bogus_dep Qt5 Declarative
@@ -190,6 +204,9 @@ src_configure() {
 		fi
 	done
 
+	use lcms && myproducts+=( PLUGIN_COLORENGINES )
+	use spacenav && myproducts+=( PLUGIN_SPACENAVIGATOR )
+
 	local mycmakeargs=( -DPRODUCTSET="${myproducts[*]}" )
 
 	if [[ ${KDE_BUILD_TYPE} == release ]] ; then
@@ -214,6 +231,8 @@ src_configure() {
 		-DWITH_LibWpd=$(usex import-filter)
 		-DWITH_LibWpg=$(usex import-filter)
 		-DWITH_LibWps=$(usex import-filter)
+		$(cmake-utils_use_find_package jpeg2k OpenJPEG)
+		$(cmake-utils_use_find_package phonon Phonon4Qt5)
 		$(cmake-utils_use_find_package pim KF5Akonadi)
 		$(cmake-utils_use_find_package pim KF5AkonadiContact)
 		$(cmake-utils_use_find_package pim KF5CalendarCore)
@@ -223,7 +242,6 @@ src_configure() {
 		-DWITH_Okular5=$(usex okular)
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Poppler=$(usex pdf)
-		$(cmake-utils_use_find_package spacenav Spnav)
 		-ENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
 		-DWITH_Vc=$(usex vc)

@@ -24,13 +24,41 @@ IUSE="doc extension test"
 
 DEPEND="test? ( dev-php/phpunit )"
 
+# We always require *some* version of PHP; the eclass (conditionally)
+# requires *specific* versions.
+RDEPEND="dev-lang/php"
+
+src_unpack() {
+	# Don't make copies of the source tree if they won't be used.
+	if use extension; then
+		php-ext-source-r3_src_unpack
+	else
+		default
+	fi
+}
+
 src_prepare(){
 	# We need to call eapply_user ourselves, because it may be skipped
 	# if either the "extension" USE flag is not set, or if the user's
 	# PHP_TARGETS is essentially empty (does not contain "php5-6"). In
-	# the latter case, the eclass src_prepare does nothing.
+	# the latter case, the eclass src_prepare does nothing. We only call
+	# the eclass phase conditionally because the correct version of
+	# e.g. "phpize" may not be there unless USE=extension is set.
 	eapply_user
 	use extension && php-ext-source-r3_src_prepare
+}
+
+src_configure() {
+	# The eclass phase will try to run the ./configure script even if it
+	# doesn't exist (in contrast to the default src_configure), so we
+	# need to skip it if the eclass src_prepare (that creates said
+	# script) is not run.
+	use extension && php-ext-source-r3_src_configure
+}
+
+src_compile() {
+	# Avoids the same problem as in src_configure.
+	use extension && php-ext-source-r3_src_compile
 }
 
 src_install(){
