@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,8 +20,14 @@ RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/boto-2.20.0[${PYTHON_USEDEP}]
 	dev-python/dicttoxml[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
-	>=dev-python/httpretty-0.6.1[${PYTHON_USEDEP}]
+	>=dev-python/httpretty-0.8.10[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	sed -e "s/httpretty==0.8.10/httpretty>=0.8.10/" -i setup.py
+
+}
