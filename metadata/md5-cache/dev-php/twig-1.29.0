@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/twigphp/Twig/archive/v1.29.0.tar.gz -> twig-1.29.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r3 src_prepare:- src_configure:php-ext-source-r3 src_compile:php-ext-source-r3 src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=ba6cd4f80385d8cf51876696ebe8058b
+_md5_=206c9e400faa2ad6667ffd3ec85ab0be
