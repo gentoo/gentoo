@@ -1933,7 +1933,6 @@ app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
 app-misc/tmux 2.1 2.2 2.3 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
-app-misc/tomboy 1.14.1: Desktop note-taking application
 app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko smartcard readers under UNIX environment
 app-misc/tpconfig 3.1.3-r1: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
@@ -1974,7 +1973,6 @@ app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31 0.6.31-r1 9999: User space driver and tools for use with mobile phones
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
-app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
@@ -5169,7 +5167,7 @@ dev-ml/ocaml-re 1.7.0 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.0 0.3.1 0.3.2 0.3.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2 2.0: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
-dev-ml/ocaml-sqlite3 4.0.6 4.1.0 4.1.1: A package for ocaml that provides access to SQLite databases
+dev-ml/ocaml-sqlite3 4.0.6 4.1.0 4.1.1 4.1.2: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1 0.5.2 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
@@ -8033,7 +8031,6 @@ dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
-dev-python/pygtkspellcheck 4.0.5: a simple but quite powerful spellchecking library for GTK written in pure Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
 dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
@@ -8407,7 +8404,6 @@ dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1 1.15.0: package to ma
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.11 1.11-r1: Python subprocess interface
-dev-python/shapely 1.5.17: Geometric objects, predicates, and operations
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
 dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shortuuid 0.4.2 0.4.3: A generator library for concise, unambiguous and URL-safe UUIDs
@@ -12524,7 +12520,6 @@ media-gfx/kfax 3.3.6-r1: A fax file viewer
 media-gfx/kflickr 0.9.1_p1: KDE flickr.com image uploading program
 media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
-media-gfx/kiconedit 4.4.0: KDE Icon Editor
 media-gfx/kphotoalbum 5.0.1 5.1: Tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/krita 3.1.1: Free digital painting application. Digital Painting, Creative Freedom!
@@ -12797,7 +12792,7 @@ media-libs/libclthreads 1.0.2 2.2.1 2.4.0 2.4.0-r1: An audio library by Fons Adr
 media-libs/libclxclient 1.0.1 3.3.2 3.6.1 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0: CUE Sheet Parser Library
 media-libs/libcuefile 477 477-r1: Cue File library from Musepack
-media-libs/libdc1394 2.1.3-r1 2.1.4 2.2.1 2.2.3 2.2.4: Library to interface with IEEE 1394 cameras following the IIDC specification
+media-libs/libdc1394 2.1.3-r1 2.1.4 2.2.1 2.2.3 2.2.4 2.2.5: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 0.9 1.0.2 9999: Open h.265 video codec implementation
 media-libs/libdiscid 0.2.2 0.3.0 0.5.0 0.6.1: Client library to create MusicBrainz enabled tagging applications
@@ -12933,7 +12928,7 @@ media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio fea
 media-libs/libyami 0.3.0 0.3.1 0.4.0 1.0.0 1.0.1 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
 media-libs/libzen 0.4.33 0.4.34: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.1 9999: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.18.0 0.20.0 0.22.0 0.24.0: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.20.0 0.24.0 0.24.2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.8.0 1.10.0 1.10.0-r1 1.12.0 1.14.0: A simple but extensible successor of LADSPA
 media-libs/lv2-ui 2.4-r1: Generic UI interface for LV2 plugins
 media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADSPA
@@ -13503,12 +13498,12 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
 media-sound/jack2 1.9.10: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
-media-sound/jalv 1.4.4 1.4.6: Simple but fully featured LV2 host for Jack
+media-sound/jalv 1.4.4 1.4.6 1.6.0: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/k4guitune 1.1.1: A program to tune a musical instrument using your computer and it's mic- or line- input
-media-sound/karlyriceditor 2.1: Application to edit and synchronize lyrics with karaoke songs in various formats
+media-sound/karlyriceditor 2.1 2.2: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3-r3: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.3.2-r1 3.4.2 3.4.3 3.4.4: Simple tag editor based on Qt
@@ -18006,7 +18001,7 @@ www-apps/davical 1.0.2-r2 1.1.0-r1 1.1.1-r2 1.1.3.1-r2: A CalDAV and CardDAV Ser
 www-apps/dokuwiki 20140505e 20140929d-r1 20150810 20150810a 20160626a: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drraw 2.0.1 2.1.3: drraw is a simple web based presentation front-end for RRDtool
-www-apps/drupal 6.38 7.53 8.2.4: PHP-based open-source platform and content management system
+www-apps/drupal 7.53 8.2.4: PHP-based open-source platform and content management system
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
