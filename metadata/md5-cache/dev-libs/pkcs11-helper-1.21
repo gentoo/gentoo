@@ -8,7 +8,7 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 LICENSE=|| ( BSD GPL-2 )
 RDEPEND=!libressl? ( >=dev-libs/openssl-0.9.7:= ) libressl? ( dev-libs/libressl ) gnutls? ( >=net-libs/gnutls-1.4.4 ) nss? ( dev-libs/nss )
 SLOT=0
-SRC_URI=https://github.com/OpenSC/pkcs11-helper/releases/download/pkcs11-helper-1.20/pkcs11-helper-1.20.tar.bz2
+SRC_URI=https://github.com/OpenSC/pkcs11-helper/releases/download/pkcs11-helper-1.21/pkcs11-helper-1.21.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b6efcbb82c40b7b1253f6408125b5b6c
+_md5_=f25c8b5271fe081337250616e79e12a1
