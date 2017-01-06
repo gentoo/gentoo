@@ -79,6 +79,11 @@ src_prepare() {
 		-e 's:ISQL :FBSQL :w /dev/stdout' \
 		src/msgs/messages2.sql | wc -l)" "6" "src/msgs/messages2.sql" # 6 lines
 
+	# Fix libfbintl SONAME which clashes with libintl
+	check_sed "$(sed -i -e \
+		's:LIB_LINK_SONAME,libintl.\$(SHRLIB_EXT):LIB_LINK_SONAME,libfbintl.\$(SHRLIB_EXT):w /dev/stdout' \
+		builds/posix/make.defaults | wc -l)" "1" "builds/posix/make.defaults" # 1 line
+
 	find "${S}" -name \*.sh -exec chmod +x {} + || die
 	rm -r "${S}"/extern/{btyacc,editline,icu} || die
 
