@@ -167,7 +167,7 @@ src_install() {
 		dosbin bin/{fbguard,fb_smp_server}
 
 		#Temp should not be necessary, need to patch/fix
-		dosym usr/$(get_libdir)/libib_util.so /usr/$(get_libdir)/${PN}/lib/libib_util.so
+		dosym ../../libib_util.so /usr/$(get_libdir)/${PN}/lib/libib_util.so
 	fi
 
 	exeinto /usr/bin/${PN}
@@ -179,12 +179,12 @@ src_install() {
 
 	exeinto /usr/$(get_libdir)/firebird/intl
 	dolib.so intl/libfbintl.so
-	dosym usr/$(get_libdir)/libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
-	dosym etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
+	dosym ../../libfbintl.so /usr/$(get_libdir)/${PN}/intl/fbintl
+	dosym /etc/firebird/fbintl.conf /usr/$(get_libdir)/${PN}/intl/fbintl.conf
 
 	exeinto /usr/$(get_libdir)/${PN}/plugins
 	dolib.so plugins/libfbtrace.so
-	dosym usr/$(get_libdir)/libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
+	dosym ../../libfbtrace.so /usr/$(get_libdir)/${PN}/plugins/libfbtrace.so
 
 	exeinto /usr/$(get_libdir)/${PN}/UDF
 	doexe UDF/*.so
