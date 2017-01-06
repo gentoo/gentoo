@@ -1,12 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
+
+inherit toolchain-funcs flag-o-matic autotools
 
 DESCRIPTION="Converts DVI files to SVG"
 HOMEPAGE="http://dvisvgm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/mgieseki/dvisvgm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +24,19 @@ RDEPEND="virtual/tex-base
 	app-text/ghostscript-gpl
 	>=media-gfx/potrace-1.10-r1
 	media-libs/freetype:2
+	dev-libs/kpathsea
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
+	app-text/xmlto
+	app-text/asciidoc
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
+
+src_prepare() {
+	eautoreconf
+}
+
+src_configure() {
+	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
+	default
+}
