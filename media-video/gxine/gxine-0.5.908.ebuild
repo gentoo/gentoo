@@ -32,6 +32,7 @@ COMMON_DEPEND=">=media-libs/xine-lib-1.1.20
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
+RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
 	# ld: cannot find -ljs
