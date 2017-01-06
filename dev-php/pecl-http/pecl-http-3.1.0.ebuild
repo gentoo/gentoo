@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,8 @@ RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-http:2[php_targets_php5-6] )"
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps )
+
+PATCHES=( "${FILESDIR}/pecl-http-gnutls.patch" )
 
 src_prepare() {
 	if use php_targets_php7-0 || use php_targets_php7-1 ; then
