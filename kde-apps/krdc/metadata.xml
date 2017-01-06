@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="rdesktop">Enable runtime dependency for <pkg>net-misc/rdesktop</pkg></flag>
+		<flag name="rdp">Enable runtime dependency for <pkg>net-misc/rdesktop</pkg></flag>
 	</use>
 </pkgmetadata>
