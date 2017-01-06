@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-cpp/gtkmm:2.4 sndfile? ( >=media-libs/libsndfile-1:= ) alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash ) virtual/pkgconfig oss? ( virtual/os-headers ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Virtual analogue synthesizer
+EAPI=6
+HOMEPAGE=https://github.com/nixxcode/amsynth/
+IUSE=alsa dssi jack lash oss sndfile
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:2.4 sndfile? ( >=media-libs/libsndfile-1:= ) alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( media-sound/jack-audio-connection-kit ) lash? ( media-sound/lash )
+SLOT=0
+SRC_URI=https://github.com/nixxcode/amsynth/archive/release-1.7.0.tar.gz -> amsynth-1.7.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=20cf64effdd977a3b276e6769bf24f5c
