@@ -171,10 +171,6 @@ dev-python/shapely
 # Removal in a month.
 www-apps/phpBB
 
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Not compatible with mono-4, bug #596600, removal in a month.
-app-misc/tomboy
-
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
 # Will likely not be unmasked until future Perls
