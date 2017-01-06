@@ -271,14 +271,19 @@ add_qt_dep() {
 	fi
 
 	local version
+	local slot=${4}
 
 	if [[ -n ${3} ]]; then
 		version=${3}
-	elif [[ -z "${version}" ]] ; then
+	elif [[ -z "${version}" ]]; then
 		version=${QT_MINIMAL}
 	fi
 
-	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${4}"
+	if [[ -z ${slot} ]]; then
+		slot="5"
+	fi
+
+	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${slot}"
 }
 
 # @FUNCTION: get_kde_version
