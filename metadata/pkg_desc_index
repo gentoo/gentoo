@@ -7044,6 +7044,7 @@ dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.9.0-r1 1.9.1: Library for rapid development of hardware-accelerated multitouch applications
+dev-python/MechanicalSoup 0.6.0: a python library for automating interaction with web sites
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
@@ -7059,6 +7060,7 @@ dev-python/PySocks 1.5.6 1.5.7 1.6.4 1.6.5: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/PythonQt 3.1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.1.2: Abtraction layer for PyQt5/PyQt4/PySide
+dev-python/ReParser 1.4.3: simple regex-based lexer/parser for inline markup
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
@@ -8312,6 +8314,7 @@ dev-python/raven 5.2.0 5.3.0 5.31.0: Raven is a client for Sentry
 dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config extension for python-novaclient
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1 0.3.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple store and parser/serializer
+dev-python/readlike 0.1.2: a python library similar to readline
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.7.2 0.8.2 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
@@ -14444,6 +14447,7 @@ net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client 
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
 net-im/gajim 0.16.5 0.16.6: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
+net-im/hangups 9999: Third Party IM Client for Google Hangouts
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.3-r2 2.3.4-r1: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
