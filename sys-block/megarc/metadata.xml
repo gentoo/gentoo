@@ -6,8 +6,4 @@
 		<email>sysadmin@gentoo.org</email>
 		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
-	</maintainer>
 </pkgmetadata>
