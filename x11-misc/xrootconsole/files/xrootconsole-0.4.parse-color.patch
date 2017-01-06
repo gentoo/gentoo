@@ -1,6 +1,6 @@
 diff -u xrootconsole-0.4/util.c xrootconsole-0.4.new/util.c
---- xrootconsole-0.4/util.c	2000-10-10 04:17:53.000000000 +0200
-+++ xrootconsole-0.4.new/util.c	2004-02-17 23:59:45.000000000 +0100
+--- a/util.c	2000-10-10 04:17:53.000000000 +0200
++++ b/util.c	2004-02-17 23:59:45.000000000 +0100
 @@ -53,16 +53,16 @@
  
  
