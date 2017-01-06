@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rpodgorny/uptimed/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ~mips ~ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="static-libs"
 
 pkg_setup() {
