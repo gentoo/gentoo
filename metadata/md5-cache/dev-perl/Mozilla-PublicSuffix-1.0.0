@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Exporter dev-perl/URI virtual/perl-IO >=dev-perl/Module-Build-0.280.0 test? ( virtual/perl-Test-Simple virtual/perl-File-Spec ) dev-lang/perl:=
+DESCRIPTION=Get a domain name's public suffix via the Mozilla Public Suffix List
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mozilla-PublicSuffix/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Exporter dev-perl/URI dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RS/RSIMOES/Mozilla-PublicSuffix-v1.0.0.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=9b9f05db2789b660c6d2185e7987bedc

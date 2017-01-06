@@ -5329,7 +5329,7 @@ dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
 dev-perl/BSON 1.2.2: BSON serialization and deserialization
-dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
+dev-perl/BZ-Client 1.72.0 4.400.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0: Regular expression-based Perl Parser for NCBI Entrez Gene
@@ -5847,6 +5847,7 @@ dev-perl/HTML-Tree 4.200.0-r1 5.30.0-r1: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
+dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
 dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
@@ -6116,6 +6117,7 @@ dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or st
 dev-perl/Mouse 0.970.0-r1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20160104 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
+dev-perl/Mozilla-PublicSuffix 1.0.0: Get a domain name's public suffix via the Mozilla Public Suffix List
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
@@ -7735,7 +7737,7 @@ dev-python/monotonic 0.3 0.4 0.5 1.0 1.1 1.2: An implementation of time.monotoni
 dev-python/montage-wrapper 0.9.8: Python wrapper for the Montage mosaicking toolkit
 dev-python/morbid 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
-dev-python/moto 0.4.22 0.4.25: Mock library for boto
+dev-python/moto 0.4.22-r1 0.4.25-r1 0.4.30: Mock library for boto
 dev-python/moviepy 0.2.2: Video editing with Python
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
@@ -9960,13 +9962,13 @@ dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0 1.62.0-
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_p1 0.9.1 9999: BuildBot build automation system
-dev-util/buildbot-console-view 0.9.0_p1 0.9.1: Buildbot console-view plugin
-dev-util/buildbot-pkg 0.9.0_p1 0.9.1: BuildBot common www build tools for packaging releases
+dev-util/buildbot 0.8.10 0.8.12-r3 0.9.0_p1 0.9.1 0.9.2 9999: BuildBot build automation system
+dev-util/buildbot-console-view 0.9.0_p1 0.9.1 0.9.2: Buildbot console-view plugin
+dev-util/buildbot-pkg 0.9.0_p1 0.9.1 0.9.2: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
-dev-util/buildbot-waterfall-view 0.9.0_p1 0.9.1: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.0_p1 0.9.1 9999: BuildBot Slave Daemon
-dev-util/buildbot-www 0.9.0_p1 0.9.1: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
+dev-util/buildbot-waterfall-view 0.9.0_p1 0.9.1 0.9.2: Buildbot waterfall-view plugin
+dev-util/buildbot-worker 0.9.0_p1 0.9.1 0.9.2 9999: BuildBot Slave Daemon
+dev-util/buildbot-www 0.9.0_p1 0.9.1 0.9.2: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
