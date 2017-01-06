@@ -10107,7 +10107,7 @@ dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.19.4 2.26 2.27 2.28 2.
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.6: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.4 5.0.3: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
-dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0 2.0.0: LL(1) parser generator used mainly by KDevelop language plugins
+dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0 2.0.0 2.0.0-r1: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 1.7.2 1.7.4 5.0.3: PHP plugin for KDevelop
 dev-util/kdevelop-php-docs 1.7.2 1.7.4: PHP documentation plugin for KDevelop 4
 dev-util/kdevelop-python 1.7.2 1.7.4 5.0.3: Python plugin for KDevelop
