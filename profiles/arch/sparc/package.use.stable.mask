@@ -38,7 +38,7 @@ sys-fs/dmraid klibc
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins devhelp markdown webkit
+dev-util/geany-plugins devhelp gtkspell markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 >=net-libs/webkit-gtk-2.4 geoloc
