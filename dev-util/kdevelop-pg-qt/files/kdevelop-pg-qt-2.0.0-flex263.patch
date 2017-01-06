@@ -1,0 +1,31 @@
+commit 7aa292e5c4b2dc2b8a420e7e8b8e32f61268fe5b
+Author: Leslie Zhai <xiangzhai83@gmail.com>
+Date:   Thu Jan 5 11:04:27 2017 +0100
+
+    Fix yymore_used_but_not_detected undefined issue
+    
+    flex-2.6.3 failed to
+    
+    ```
+      #define yymore() yymore_used_but_not_detected
+    ```
+    
+    throw yymore_used_but_not_detected undefined issue, so I simply added --yymore option for CMakeLists.txt
+    
+    REVIEW: 129766
+    BUG: 374523
+    FIXED-IN: 2.0.1
+
+diff --git a/kdev-pg/CMakeLists.txt b/kdev-pg/CMakeLists.txt
+index 5490835..19dc3a4 100644
+--- a/kdev-pg/CMakeLists.txt
++++ b/kdev-pg/CMakeLists.txt
+@@ -76,7 +76,7 @@ IF(FLEX_EXECUTABLE)
+         DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/kdev-pg-lexer.ll"
+                  ${OPTIONAL_PARSER_HEADER_DEPENDENCY}
+         COMMAND ${FLEX_EXECUTABLE}
+-        ARGS    --nounistd -o"${CMAKE_CURRENT_BINARY_DIR}/kdev-pg-lexer.cc"
++        ARGS    --yymore --nounistd -o"${CMAKE_CURRENT_BINARY_DIR}/kdev-pg-lexer.cc"
+                 "${CMAKE_CURRENT_SOURCE_DIR}/kdev-pg-lexer.ll"
+         )
+ 
