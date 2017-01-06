@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4)
+PYTHON_COMPAT=( python{3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Command line recorder for asciinema.org service"
@@ -27,7 +27,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	# obsolete, already removed in upstream git
-	rm asciinema/requests_http_adapter.py
+	rm asciinema/requests_http_adapter.py || die
 }
 
 python_test() {
