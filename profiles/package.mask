@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Mart Raudsepp <leio@gentoo.org> (06 Jan 2017)
+# No releases of this API version since March 2001, abandoned
+# in favour of glib:2 for 14 years.
+dev-libs/glib:1
+
+# Mart Raudsepp <leio@gentoo.org> (06 Jan 2017)
 # No releases of this API version since April 2001, abandoned
 # in favour of gtk+:2 for 14 years.
 # Masked for removal in 30 days. Bug 604862.
