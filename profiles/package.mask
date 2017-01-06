@@ -161,11 +161,6 @@ media-gfx/kiconedit
 # Removal in 30 days.
 dev-python/pygtkspellcheck
 
-# Mike Gilbert <floppym@gentoo.org> (03 Dec 2016)
-# Duplicate package, see sci-libs/Shapely.
-# Removal in 30 days.
-dev-python/shapely
-
 # Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
 # Vulnerable to CVE-2015-1431 and nobody taking care of it, bug #538360.
 # Removal in a month.
