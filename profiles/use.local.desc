@@ -3305,7 +3305,7 @@ kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
 kde-apps/kpimtextedit:speech - Enable text-to-speech support
-kde-apps/krdc:rdesktop - Enable runtime dependency for net-misc/rdesktop
+kde-apps/krdc:rdp - Enable runtime dependency for net-misc/rdesktop
 kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
 kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/kstars:fits - Enable support for NASA's sci-libs/cfitsio library
@@ -4931,7 +4931,6 @@ media-video/vlc:postproc - Enables image post-processing via libpostproc (part o
 media-video/vlc:projectm - Enables the projectM visualization plugin.
 media-video/vlc:qt4 - Builds a Qt4 based frontend, a graphical interface.
 media-video/vlc:qt5 - Builds a Qt5 based frontend, a graphical interface (overrides qt4).
-media-video/vlc:rdp - Enables freerdp for RDP/Remote Desktop client support
 media-video/vlc:rtsp - Enables real audio and RTSP modules.
 media-video/vlc:run-as-root - Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!
 media-video/vlc:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
@@ -6273,11 +6272,9 @@ net-misc/rancid-git:git - Enable git (version control system) support
 net-misc/rdesktop:kerberos - Enable CredSPP support + Kerberos authentication with net-libs/libgssglue
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
 net-misc/rdesktop:xrandr - Enable XRandR window extension support
-net-misc/remmina:freerdp - Add support for the net-misc/freerdp application
 net-misc/remmina:spice - Support connecting to SPICE-enabled virtual machines
 net-misc/remmina:ssh - Enable support for SSH/SFTP protocol; see also 'vte'
 net-misc/remmina:telepathy - Enable telepathy support
-net-misc/remmina:vte - Enable virtual terminal support (for SSH sessions)
 net-misc/remmina:webkit - Enable a user survey using net-libs/webkit-gtk
 net-misc/rsync:stunnel - Provide helper scripts for using rsync via >=net-misc/stunnel-4
 net-misc/rygel:tracker - Install dependencies for the tracker plugin
@@ -6377,7 +6374,6 @@ net-misc/tor:web - Build a tor2web service instead of a tor client
 net-misc/uftp:server - Install uftp server daemon
 net-misc/vde:pcap - Enable the pcap-based plugin that allows creating a switch against a real interface.
 net-misc/vde:ssl - Enable the cryptcab plugin that allows creating an encrypted virtual cable.
-net-misc/vinagre:rdp - Enable access to Windows RDP protocol using net-misc/rdesktop
 net-misc/vinagre:spice - Enable access to SPICE-enabled virtual machines
 net-misc/vinagre:ssh - Enable ssh plugin using x11-libs/vte
 net-misc/vinagre:telepathy - Enable access to remote desktop via a net-libs/telepathy-glib client

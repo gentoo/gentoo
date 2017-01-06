@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure install postinst
-DEPEND=x11-libs/cairo media-libs/libpng:0= virtual/jpeg:0 dev-libs/ossp-uuid rdesktop? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:0= ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig
+DEPEND=x11-libs/cairo media-libs/libpng:0= virtual/jpeg:0 dev-libs/ossp-uuid rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:0= ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig
 DESCRIPTION=This is the proxy-daemon used by www-apps/guacamole
 EAPI=6
 HOMEPAGE=http://guac-dev.org/
-IUSE=rdesktop vnc ssh pulseaudio vorbis telnet ssl multilib
+IUSE=multilib pulseaudio rdp ssh ssl telnet vnc vorbis
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=x11-libs/cairo media-libs/libpng:0= virtual/jpeg:0 dev-libs/ossp-uuid rdesktop? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:0= ) vorbis? ( media-libs/libvorbis )
+RDEPEND=x11-libs/cairo media-libs/libpng:0= virtual/jpeg:0 dev-libs/ossp-uuid rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20150312:= ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:0= ) vorbis? ( media-libs/libvorbis )
 REQUIRED_USE=multilib? ( ssl )
 SLOT=0
 SRC_URI=mirror://sourceforge/guacamole/guacamole-server-0.9.9.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=add20f5c0a6e4e3441b942147b7cda12
+_md5_=83fffafd7028ed59ebb32732d53dd0eb
