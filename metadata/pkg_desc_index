@@ -7006,7 +7006,7 @@ dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
 dev-php/phpdepend 2.3.2: Static code analysis for PHP
-dev-php/phpmd 1.5.0: PHP mess detector
+dev-php/phpmd 2.5.0: PHP mess detector
 dev-php/phptal 1.2.2: A templating engine for PHP5 that implements Zope Page Templates syntax
 dev-php/phpunit 3.7.20 4.3.1 4.8.19 5.0.10: A PHP Unit Testing framework
 dev-php/propel 1.6.4: Object Persistence Layer for PHP 5
