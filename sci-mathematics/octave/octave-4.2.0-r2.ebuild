@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,8 +64,8 @@ RDEPEND="
 		sci-libs/cxsparse:0=
 		sci-libs/umfpack:0= )
 	X? ( x11-libs/libX11:0= )"
-
 DEPEND="${RDEPEND}
+	gui? ( dev-qt/linguist-tools:5 )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )
 	java? ( >=virtual/jdk-1.6.0 )
