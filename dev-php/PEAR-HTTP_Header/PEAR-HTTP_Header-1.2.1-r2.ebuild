@@ -11,7 +11,7 @@ HOMEPAGE="http://pear.php.net/package/HTTP_Header"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-HTTP"
