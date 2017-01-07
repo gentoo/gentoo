@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,5 +21,6 @@ RDEPEND="
 	dev-ros/class_loader
 	dev-libs/urdfdom_headers
 	dev-libs/collada-dom
+	dev-ros/urdf
 "
 DEPEND="${RDEPEND}"
