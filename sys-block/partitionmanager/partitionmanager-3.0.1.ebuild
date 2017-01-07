@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,9 +30,9 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	sys-apps/util-linux
-	>=sys-libs/kpmcore-3.0.0:5=
+	>=sys-libs/kpmcore-3.0.2:5=
 "
 RDEPEND="${DEPEND}
-	$(add_plasma_dep kde-cli-tools kdesu 5.5.2)
+	$(add_plasma_dep kde-cli-tools kdesu)
 	!sys-block/partitionmanager:0
 "
