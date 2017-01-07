@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,14 +26,8 @@ RDEPEND="
 	dev-ros/kdl_conversions
 	dev-ros/sensor_msgs
 	dev-ros/tf
-	>=dev-ros/urdf-1.12.3-r1
+	dev-ros/urdf
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_USEDEP}]
 "
-PATCHES=( "${FILESDIR}/urdfdom1.patch" )
-
-src_configure() {
-	append-cxxflags -std=gnu++11
-	ros-catkin_src_configure
-}

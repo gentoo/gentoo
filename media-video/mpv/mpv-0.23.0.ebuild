@@ -28,7 +28,7 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl encode
+IUSE="+alsa aqua archive bluray cdda +cli coreaudio doc drm dvb dvd +egl encode
 	gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua luajit openal
 	+opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux test tools
 	+uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver +xv
@@ -41,6 +41,7 @@ REQUIRED_USE="
 	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
 	luajit? ( lua )
+	test? ( || ( opengl egl ) )
 	tools? ( cli )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
@@ -54,8 +55,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( >=media-video/ffmpeg-3.2.2:=[encode?,threads,vaapi?,vdpau?] )
-	libav? ( >=media-video/libav-12:=[encode?,threads,vaapi?,vdpau?] )
+	!libav? ( >=media-video/ffmpeg-3.2.2:0=[encode?,threads,vaapi?,vdpau?] )
+	libav? ( >=media-video/libav-12:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
@@ -117,6 +118,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	v4l? ( virtual/os-headers )
 	zsh-completion? ( dev-lang/perl )
 "
 RDEPEND="${COMMON_DEPEND}
