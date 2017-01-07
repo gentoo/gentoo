@@ -7674,7 +7674,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0 1.1 1.1.1: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0 0.12.1 0.13.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0 0.12.1 0.13.0 0.15.0: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
@@ -16377,6 +16377,7 @@ sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
 sci-mathematics/pspp 0.10.1 0.10.2: Program for statistical analysis of sampled data
 sci-mathematics/pymc 2.3.6: Markov Chain Monte Carlo sampling toolkit
+sci-mathematics/pymc3 3.0_rc6: Bayesian Modeling and Probabilistic Machine Learning in Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4: Educational tool for relational algebra
