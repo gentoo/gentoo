@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,6 @@ DEPEND="
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]

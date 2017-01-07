@@ -30,7 +30,6 @@ DEPEND="
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
