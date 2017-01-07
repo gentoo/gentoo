@@ -6870,9 +6870,9 @@ dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web bro
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR Base System
+dev-php/PEAR-PEAR 1.9.4 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
-dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.0 1.7.2: Updates an existing package.xml file with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.2: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4: Various methods to check files to update an existing package.xml file
 dev-php/PEAR-PHP_Beautifier 0.1.15-r1: Code Beautifier for PHP
@@ -6945,7 +6945,7 @@ dev-php/ming-php 0.4.5 0.4.7: PHP extension for the ming Flash movie generation 
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
-dev-php/pear 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR - PHP Extension and Application Repository
+dev-php/pear 1.9.4 1.10.1-r1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.7.1 1.8.0_beta2: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 4.0.11 5.1.5 5.1.7: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
@@ -12766,7 +12766,7 @@ media-libs/lasi 1.1.1: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.6-r1 2.7 2.8: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
-media-libs/leptonica 1.71 1.71-r1 1.74: C library for image processing and analysis
+media-libs/leptonica 1.71 1.71-r1 1.74 1.74.1: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
