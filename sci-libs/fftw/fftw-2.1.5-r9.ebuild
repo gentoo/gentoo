@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-test.patch
 	"${FILESDIR}"/${P}-cc.patch
 	"${FILESDIR}"/${P}-texinfo5.1.patch
+	"${FILESDIR}"/${P}-parallel-tests.patch
 )
 
 pkg_pretend() {
@@ -116,7 +117,7 @@ src_test() {
 }
 
 src_install () {
-	use doc && HTML_DOCS=( doc/{*.html,*.gif} )
+	use doc && HTML_DOCS=( doc/*.{html,gif} )
 	multibuild_foreach_variant run_in_build_dir default_src_install
 
 	doheader fortran/fftw_f77.i
@@ -130,4 +131,8 @@ src_install () {
 		done
 	}
 	create_fftw_symlinks $(usex float s d)
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
