@@ -31,7 +31,7 @@ REQUIRED_USE="^^ ( fdk libav-aac )"
 RDEPEND="
 	dev-libs/jansson
 	media-libs/a52dec
-	media-libs/libass
+	media-libs/libass:=
 	media-libs/libbluray
 	media-libs/libdvdnav
 	media-libs/libdvdread
