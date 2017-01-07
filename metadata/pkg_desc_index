@@ -6836,9 +6836,9 @@ dev-php/PEAR-MDB2_Driver_mysql 1.5.0_beta3 1.5.0_beta4: Database Abstraction Lay
 dev-php/PEAR-MDB2_Driver_mysqli 1.5.0_beta3 1.5.0_beta4: Database Abstraction Layer, mysqli driver
 dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta3 1.5.0_beta4: Database Abstraction Layer, oci8 driver
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta3 1.5.0_beta4: Database Abstraction Layer, pgsql driver
-dev-php/PEAR-MIME_Type 1.3.1 1.3.3: Utility class for dealing with MIME types
+dev-php/PEAR-MIME_Type 1.3.3: Utility class for dealing with MIME types
 dev-php/PEAR-Mail 1.2.0 1.3.0: Class that provides multiple interfaces for sending emails
-dev-php/PEAR-Mail_Mime 1.8.8 1.9.0 1.10.0: Create and manipulate mime messages with PHP
+dev-php/PEAR-Mail_Mime 1.9.0 1.10.0: Create and manipulate mime messages with PHP
 dev-php/PEAR-Mail_mimeDecode 1.5.5 1.5.6: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.3: Pure-PHP arbitrary precision integer arithmetic library
 dev-php/PEAR-Math_Stats 0.9.1: Classes to calculate statistical parameters
@@ -6860,7 +6860,7 @@ dev-php/PEAR-Net_POP3 1.3.8: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r1: OS independent wrapper class for executing ping calls
 dev-php/PEAR-Net_SMTP 1.6.2 1.7.2-r3: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.2-r1 1.0.3: Generic server class for PHP
-dev-php/PEAR-Net_Sieve 1.3.2 1.3.3 1.5.2-r1: An API for talking to sieve (RFC 3028) servers
+dev-php/PEAR-Net_Sieve 1.3.3 1.5.2-r1: An API for talking to sieve (RFC 3028) servers
 dev-php/PEAR-Net_SmartIRC 1.1.4 1.1.9: Net_SmartIRC is a PHP class for communication with IRC networks
 dev-php/PEAR-Net_Socket 1.0.14 1.0.14-r3: PHP class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
