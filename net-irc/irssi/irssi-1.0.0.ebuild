@@ -38,6 +38,10 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-ec.patch
+)
+
 src_configure() {
 	econf \
 		--with-perl-lib=vendor \
