@@ -1884,7 +1884,7 @@ app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line passw
 app-misc/pysmssend 1.48-r1 9999: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qlcplus 4.10.4 4.10.5: QLC+ - Q Light Controller Plus to control DMX interfaces
-app-misc/ranger 1.7.2 9999: A vim-inspired file manager for the console
+app-misc/ranger 1.7.2 1.8.0 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.19.5-r1: A personal full text search package
@@ -6821,7 +6821,7 @@ dev-php/PEAR-HTTP_Client 1.2.1: Provides functionality to perform multiple HTTP 
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
 dev-php/PEAR-HTTP_Header 1.2.1-r1 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
 dev-php/PEAR-HTTP_Request 1.4.4: Provides an easy way to perform HTTP requests
-dev-php/PEAR-HTTP_Request2 2.0.0 2.1.1 2.2.1: Provides an easy way to perform HTTP requests
+dev-php/PEAR-HTTP_Request2 2.2.1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r1: Wraps PHP's session_* functions, providing extras like db storage for session data
 dev-php/PEAR-I18Nv2 0.11.4-r3: Internationalization - basic support to localize your application
 dev-php/PEAR-Image_Color2 0.1.5: Color conversion and mixing for PHP5
@@ -6872,14 +6872,14 @@ dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals
 dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.9.4 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
-dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.2: Updates an existing package.xml file with a new filelist and changelog
+dev-php/PEAR-PEAR_PackageFileManager 1.7.2: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager2 1.0.4: Updates an existing package.xml file with a new filelist and changelog
 dev-php/PEAR-PEAR_PackageFileManager_Plugins 1.0.4: Various methods to check files to update an existing package.xml file
 dev-php/PEAR-PHP_Beautifier 0.1.15-r1: Code Beautifier for PHP
 dev-php/PEAR-PHP_CompatInfo 1.9.0: Find out the minimum version and the extensions required for a piece of code to run
 dev-php/PEAR-PHP_Debug 1.0.3-r1: Provides traces, timings, executed queries, watched variables etc.
 dev-php/PEAR-PHP_Shell 0.3.2: A shell for PHP with history and tab-completion
-dev-php/PEAR-Pager 2.4.8 2.4.9: Data paging class
+dev-php/PEAR-Pager 2.4.9: Data paging class
 dev-php/PEAR-PhpDocumentor 1.4.3-r1: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
 dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
@@ -6925,7 +6925,7 @@ dev-php/Text_Template 1.1.1: Simple template engine
 dev-php/YAML 1.0.6-r1: The Symfony YAML Component
 dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
 dev-php/adodb 5.18 5.20.9: Database abstraction layer for PHP
-dev-php/agavi 1.0.7: PHP5 MVC Application Framework
+dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0: Allows you to prompt for user input on the command line
@@ -6997,7 +6997,7 @@ dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.0 2.0.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.2.1: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/phar-utils 1.0.0: PHAR file format utilities, for when PHP phars you up
-dev-php/phing 2.10.1: PHP project build system based on Apache Ant
+dev-php/phing 2.16.0: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
 dev-php/php-redmine-api 1.5.9: A simple, object-oriented, PHP Redmine API client
