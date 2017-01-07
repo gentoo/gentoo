@@ -19,6 +19,9 @@
 	</longdescription>
 
 	<use>
+		<flag name="enable-api-libs" restrict="&gt;=app-misc/ddcutil-0.7.0">
+			Enables the C/C++ API.
+		</flag>
 		<flag name="user-permissions">
 			Adds a udev rules to allow non-root users in the i2c group to
 			access the /dev/i2c-* devices. If usb-monitor is selected, users
