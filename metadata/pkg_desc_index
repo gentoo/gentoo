@@ -1303,7 +1303,7 @@ app-emulation/flannel 0.5.5 0.6.2: An etcd backed network fabric for containers
 app-emulation/free42 1.5.7 1.5.10 1.5.12: An HP-42S Calculator Simulator
 app-emulation/fuse 1.0.0 1.1.1: Free Unix Spectrum Emulator by Philip Kendall
 app-emulation/fuse-utils 1.1.1: Utils for the Free Unix Spectrum Emulator by Philip Kendall
-app-emulation/ganeti 2.15.2-r5 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
+app-emulation/ganeti 2.15.2-r5 2.15.2-r6 2.16.0_rc1 2.17.0_beta1: Ganeti is a virtual server management software tool
 app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation problems on Ganeti 2.0 clusters
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti

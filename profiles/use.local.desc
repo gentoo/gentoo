@@ -465,6 +465,7 @@ app-emulation/e-uae:sdl-sound - Use media-libs/sdl-sound for audio output
 app-emulation/free42:alsa - Adds support for Advanced Linux Sound Architecture
 app-emulation/fuse-utils:gcrypt - Use dev-libs/libgcrypt for low-level crypto of some features, including logfiles.
 app-emulation/ganeti:drbd - Enable DRBD support
+app-emulation/ganeti:experimental - Enable experimental patches. Warning! This will break RPC within major versions if the patches applied differ!
 app-emulation/ganeti:haskell-daemons - Build haskell daemons instead of python
 app-emulation/ganeti:htools - Enable htools support
 app-emulation/ganeti:kvm - Enable KVM support
