@@ -11,7 +11,4 @@
 		<flag name="h8power">Add support for h8 based power controllers</flag>
 		<flag name="genders">Add support for selecting power control targets using genders (-g option)</flag>
 	</use>
-	<upstream>
-		<remote-id type="google-code">powerman</remote-id>
-	</upstream>
 </pkgmetadata>
