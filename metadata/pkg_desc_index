@@ -11483,7 +11483,7 @@ kde-apps/akonadi-search 16.12.0: Libraries and daemons to implement searching in
 kde-apps/akonadiconsole 4.14.11_pre20160211 16.12.0: Application for debugging Akonadi Resources
 kde-apps/akregator 4.4.2016.01 4.14.11_pre20160211 16.12.0: News feed aggregator
 kde-apps/analitza 16.08.3 16.12.0: KDE library for mathematical features
-kde-apps/ark 16.08.3 16.12.0: KDE Archiving tool
+kde-apps/ark 16.08.3 16.08.3-r1 16.12.0-r1: KDE Archiving tool
 kde-apps/artikulate 16.08.3 16.12.0: Language learning application that helps improving pronunciation skills
 kde-apps/attica 16.04.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 16.08.3 16.12.0: kioslave for accessing audio CDs
