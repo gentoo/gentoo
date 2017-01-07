@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (07 Jan 2017)
+# No releases of this API version since March 2001, abandoned
+# in favour of glib:2 for 14 years.
+# Marked for removal in 30 days. Bug 604966.
+dev-libs/glib:1
+
 # Michael Orlitzky <mjo@gentoo.org> (06 Jan 2017)
 # Dead templating projects, you should move to something
 # like dev-php/smarty or dev-php/twig instead.
@@ -63,7 +69,7 @@ dev-php/propel
 dev-php/propel-generator
 dev-php/propel-runtime
 
-# Daniel Campbell <zlg@gentoo.org> (02 Jan 2016)
+# Daniel Campbell <zlg@gentoo.org> (02 Jan 2017)
 # Google Code shutdown and change of versioning scheme
 # needs 'old' versions masked (v94 -> v1.0.0)
 # Masked for removal in 30 days.
