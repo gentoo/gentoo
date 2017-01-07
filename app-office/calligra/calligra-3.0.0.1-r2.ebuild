@@ -21,15 +21,17 @@ KEYWORDS="~amd64 ~x86"
 CAL_FTS=( karbon plan sheets words )
 CAL_EXP_FTS=( braindump stage )
 
-IUSE="activities +crypt +eigen +fontconfig gsl import-filter jpeg2k +lcms okular openexr +pdf
-phonon pim marble spacenav +truetype vc +xml X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
-$(printf 'calligra_experimental_features_%s ' ${CAL_EXP_FTS[@]})"
-
-REQUIRED_USE="calligra_features_sheets? ( eigen )"
+IUSE="activities +crypt +fontconfig gsl import-filter jpeg2k +lcms okular openexr +pdf
+	phonon pim spacenav +truetype vc X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
+	$(printf 'calligra_experimental_features_%s ' ${CAL_EXP_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
 # Required for the matlab/octave formula tool
 # drop qtcore subslot operator when QT_MINIMAL >= 5.7.0
+# FIXME: Disabled by upstream for good reason
+# Crashes plan (https://bugs.kde.org/show_bug.cgi?id=311940)
+# $(add_kdeapps_dep akonadi)
+# $(add_kdeapps_dep akonadi-contacts)
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcmutils)
@@ -73,7 +75,6 @@ COMMON_DEPEND="
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
 	crypt? ( app-crypt/qca:2[qt5] )
-	eigen? ( dev-cpp/eigen:3 )
 	fontconfig? ( media-libs/fontconfig )
 	gsl? ( sci-libs/gsl )
 	import-filter? (
@@ -90,7 +91,6 @@ COMMON_DEPEND="
 		media-libs/ilmbase:=
 		media-libs/lcms:2
 	)
-	marble? ( $(add_kdeapps_dep marble) )
 	openexr? ( media-libs/openexr )
 	pdf? ( app-text/poppler:=[qt5] )
 	phonon? ( media-libs/phonon[qt5] )
@@ -113,12 +113,11 @@ COMMON_DEPEND="
 		=dev-libs/kproperty-3.0*:5
 		=dev-libs/kreport-3.0*:5
 		pim? (
-			$(add_kdeapps_dep akonadi)
-			$(add_kdeapps_dep akonadi-contacts)
 			$(add_kdeapps_dep kcalcore)
 			$(add_kdeapps_dep kcontacts)
 		)
 	)
+	calligra_features_sheets? ( dev-cpp/eigen:3 )
 	calligra_features_words? (
 		dev-libs/libxslt
 		okular? ( $(add_kdeapps_dep okular) )
@@ -143,8 +142,6 @@ PATCHES=(
 	# upstream master
 	"${FILESDIR}/${P}"-nokdelibs4.patch
 	"${FILESDIR}/${P}"-relax-deps.patch
-	# pending upstream
-	"${FILESDIR}/${P}"-reenable-akonadi.patch
 	"${FILESDIR}/${P}"-deps{1,2,3}.patch
 )
 
@@ -216,12 +213,14 @@ src_configure() {
 		)
 	fi
 
+	use calligra_features_karbon && \
+		mycmakeargs+=( $(cmake-utils_use_find_package jpeg2k OpenJPEG) )
+
 	mycmakeargs+=(
 		-DPACKAGERS_BUILD=OFF
 		-DWITH_Iconv=ON
 		$(cmake-utils_use_find_package activities KF5Activities)
 		-DWITH_Qca-qt5=$(usex crypt)
-		-DWITH_Eigen3=$(usex eigen)
 		-DWITH_Fontconfig=$(usex fontconfig)
 		-DWITH_GSL=$(usex gsl)
 		-DWITH_LibEtonyek=$(usex import-filter)
@@ -231,17 +230,14 @@ src_configure() {
 		-DWITH_LibWpd=$(usex import-filter)
 		-DWITH_LibWpg=$(usex import-filter)
 		-DWITH_LibWps=$(usex import-filter)
-		$(cmake-utils_use_find_package jpeg2k OpenJPEG)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		$(cmake-utils_use_find_package pim KF5Akonadi)
-		$(cmake-utils_use_find_package pim KF5AkonadiContact)
 		$(cmake-utils_use_find_package pim KF5CalendarCore)
 		$(cmake-utils_use_find_package pim KF5Contacts)
 		-DWITH_LCMS2=$(usex lcms)
-		$(cmake-utils_use_find_package marble Marble)
 		-DWITH_Okular5=$(usex okular)
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Poppler=$(usex pdf)
+		-DWITH_Eigen3=$(usex calligra_features_sheets)
 		-ENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
 		-DWITH_Vc=$(usex vc)
