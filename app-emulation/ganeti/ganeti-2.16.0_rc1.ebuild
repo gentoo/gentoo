@@ -41,7 +41,7 @@ HOMEPAGE="http://www.ganeti.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="drbd haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
+IUSE="drbd experimental haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
 
 REQUIRED_USE="|| ( kvm xen lxc )
 	test? ( ipv6 )
@@ -211,6 +211,14 @@ src_prepare() {
 		# Breaks the build on 7.8
 		PATCHES+=(
 			"${WORKDIR}"/debian/patches/ghc-7.10-compatibility.patch
+		)
+	fi
+	if use experimental; then
+		ewarn "Experimental patches have been applied! RPC between daemons with different patches applied may cause breakage!"
+		PATCHES+=(
+			# QEMU Agent accepted upstream for 2.16, not yet in a tagged release
+			# backport available for 2.15, but refused upstream due to RPC breakage.
+			"${FILESDIR}"/0001-kvm-use_guest_agent-QEMU-Guest-Agent-sup.stable-2.16.patch
 		)
 	fi
 	eapply "${PATCHES[@]}"

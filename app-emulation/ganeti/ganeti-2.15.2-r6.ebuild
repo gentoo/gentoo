@@ -19,20 +19,19 @@ if [[ ${PV} =~ [9]{4,} ]] ; then
 	KEYWORDS=""
 	PATCHES=()
 else
-	DEBIAN_PV='2.16.0~rc1'
-	DEBIAN_PATCH=1
-	SRC_URI="http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz"
-	[[ -n "${DEBIAN_PATCH}" ]] && SRC_URI="${SRC_URI}
-	  mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${DEBIAN_PV}-${DEBIAN_PATCH}.debian.tar.xz
+	DEBIAN_PATCH=4
+	SRC_URI="
+	  http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz
+	  mirror://ubuntu/pool/universe/${PN:0:1}/${PN}/${PN}_${PV}-${DEBIAN_PATCH}.debian.tar.xz
 	"
 	KEYWORDS="~amd64 ~x86"
 	PATCHES=(
 	  "${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
 	  "${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8
-	  #"${WORKDIR}"/debian/patches/relax-deps # Ported manually
+	  "${WORKDIR}"/debian/patches/relax-deps
 	  "${WORKDIR}"/debian/patches/zlib-0.6-compatibility
 	  "${WORKDIR}"/debian/patches/fix_FTBFS_with_sphinx-1.3.5
-	  #"${WORKDIR}"/debian/patches/fix_ftbfs_with_sphinx_1.4 # ported manually
+	  "${WORKDIR}"/debian/patches/fix_ftbfs_with_sphinx_1.4
 	)
 fi
 
@@ -180,11 +179,9 @@ PATCHES+=(
 	"${FILESDIR}/${PN}-2.13-process_unittest.patch"
 	"${FILESDIR}/${PN}-2.15-python-mock.patch"
 	"${FILESDIR}/${PN}-2.15.2-remove-sandbox-failing-tests.patch"
-	"${FILESDIR}/${PN}-2.16-noded-must-run-as-root.patch"
-	"${FILESDIR}/${PN}-2.16-kvmd-run-as-daemon-user.patch"
+	"${FILESDIR}/${PN}-2.15-noded-must-run-as-root.patch"
+	"${FILESDIR}/${PN}-2.15-kvmd-run-as-daemon-user.patch"
 	"${FILESDIR}/${PN}-2.15-dont-invert-return-values-for-man-warnings.patch"
-	"${FILESDIR}/fix_ftbfs_with_sphinx_1.4"
-	"${FILESDIR}/${PN}-2.17-relax-deps.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -219,7 +216,7 @@ src_prepare() {
 		PATCHES+=(
 			# QEMU Agent accepted upstream for 2.16, not yet in a tagged release
 			# backport available for 2.15, but refused upstream due to RPC breakage.
-			"${FILESDIR}"/0001-kvm-use_guest_agent-QEMU-Guest-Agent-sup.stable-2.16.patch
+			"${FILESDIR}"/0001-kvm-use_guest_agent-QEMU-Guest-Agent-sup.stable-2.15.patch
 		)
 	fi
 	eapply "${PATCHES[@]}"
