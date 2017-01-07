@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,9 +9,11 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools-utils python-any-r1
 
+MY_PV="${PV//./-}"
+
 DESCRIPTION="Open source implementation of the Pragmatic General Multicast specification"
-HOMEPAGE="https://code.google.com/p/openpgm"
-SRC_URI="https://openpgm.googlecode.com/files/libpgm-${PV}~dfsg.tar.gz"
+HOMEPAGE="https://github.com/steve-o/openpgm"
+SRC_URI="https://github.com/steve-o/${PN}/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -22,7 +24,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 
-S="${WORKDIR}/libpgm-${PV}~dfsg/${PN}/pgm"
+S="${WORKDIR}/${PN}-release-${MY_PV}/${PN}/pgm"
 
 src_install() {
 	DOCS=( "${S}"/../doc/. "${S}"/README )
