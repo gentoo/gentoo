@@ -4,7 +4,7 @@ DESCRIPTION=MediaInfo libraries
 EAPI=6
 HOMEPAGE=http://mediaarea.net/mediainfo/
 IUSE=curl doc mms static-libs
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD-2
 RDEPEND=sys-libs/zlib dev-libs/tinyxml2:= >=media-libs/libzen-0.4.34[static-libs=] curl? ( net-misc/curl ) mms? ( >=media-libs/libmms-0.6.1[static-libs=] )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://mediaarea.net/download/source/libmediainfo/0.7.91/libmediainfo_0.7.91.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=a12f009e159642dd66cf869429878ac5
+_md5_=70842e8f026afd762f4e4d2aa7bde0b9

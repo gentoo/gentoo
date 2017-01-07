@@ -4,11 +4,11 @@ DESCRIPTION=MediaInfo supplies technical and tag information about media files
 EAPI=6
 HOMEPAGE=http://mediaarea.net/mediainfo/
 IUSE=curl mms wxwidgets
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD-2
 RDEPEND=sys-libs/zlib >=media-libs/libzen-0.4.34 ~media-libs/libmediainfo-0.7.91[curl=,mms=] wxwidgets? ( x11-libs/wxGTK:3.0[X] )
 SLOT=0
 SRC_URI=http://mediaarea.net/download/source/mediainfo/0.7.91/mediainfo_0.7.91.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
-_md5_=e814cf27e85dc207d62c33c0bcc38043
+_md5_=f97b5f977971702c873992c2ef37f22e
