@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/boost-1.46.0:= >=dev-libs/libebml-1.3.3:= dev-libs/pugixml me
 SLOT=0
 SRC_URI=http://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-9.6.0.tar.xz
 _eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=454f4d5ece4d0002bdb94485f5d3058b

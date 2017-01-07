@@ -9,5 +9,5 @@ RDEPEND=>=app-text/aspell-0.60
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/de-alt/aspell6-de-alt-2.1-1.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:aspell-dict src_install:-
-_eclasses_=aspell-dict	5e1fcef2869735a5ddd48c0d8fb4f48a	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=aspell-dict	5e1fcef2869735a5ddd48c0d8fb4f48a	eutils	017377e73405d964cd0137088cddb9c3	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=dfc0420eef03e8c814b02cd0dd4cdd32

@@ -10,5 +10,5 @@ RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=amd64? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.715.3-1_amd64.deb -> vivaldi-1.7.715.3_p1-amd64.deb ) x86? ( https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_1.7.715.3-1_i386.deb -> vivaldi-1.7.715.3_p1-i386.deb )
 _eclass_exported_funcs=pkg_setup:linux-info src_unpack:- src_prepare:- src_install:-
-_eclasses_=chromium-2	c30f482b868782938c772c21d9ede135	eutils	b83a2420b796f7c6eff682679d08fe25	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=chromium-2	c30f482b868782938c772c21d9ede135	eutils	017377e73405d964cd0137088cddb9c3	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5762e81af7b570aa877574084ec30373
