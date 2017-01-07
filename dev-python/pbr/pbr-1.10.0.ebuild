@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
@@ -29,7 +29,6 @@ DEPEND="
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
