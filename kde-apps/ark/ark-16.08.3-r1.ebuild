@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,9 @@ DEPEND="${RDEPEND}
 "
 
 # bug #560548, last checked with 16.04.1
-RESTRICT+=" test"
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-16.12.0-disable-executables.patch" )
 
 src_configure() {
 	local mycmakeargs=(
