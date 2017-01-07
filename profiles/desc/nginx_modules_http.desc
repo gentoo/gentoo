@@ -31,6 +31,7 @@ gzip - This module allows for on-the-fly gzip compression.
 gzip_static - Before serving a file from disk to a gzip-enabled client, this module will look for a precompressed file in the same location.
 headers_more - Set and clear input and output headers
 image_filter - This module is a filter for transforming JPEG, GIF and PNG images.
+javascript - This module is used to implement location and variable handlers in nginScript - a subset of the JavaScript language.
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
 limit_req - This module allows you to limit the number of requests for a given session.
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
