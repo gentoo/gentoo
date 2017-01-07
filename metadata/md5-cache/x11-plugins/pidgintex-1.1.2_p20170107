@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=net-im/pidgin[gtk] app-text/mathtex nls? ( virtual/libintl ) virtual/pkgconfig
+DESCRIPTION=Pidgin plugin to render LaTeX expressions in messages
+EAPI=6
+HOMEPAGE=https://github.com/Micket/pidgintex
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=net-im/pidgin[gtk] app-text/mathtex nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=https://github.com/Micket/pidgintex/archive/a8f618cf1bf92279b43c7b737010fd7e42c8e5d3.tar.gz -> pidgintex-1.1.2_p20170107.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_md5_=b8eacc33b7b4118c4b44ba76a3b8e5e7

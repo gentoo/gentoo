@@ -7764,6 +7764,7 @@ sys-fs/lvm2:lvm2create_initrd - Install lvm2create_initrd script and pull in sys
 sys-fs/lvm2:openais - Openais support for clustered lvm
 sys-fs/lvm2:thin - Support for thin volumes
 sys-fs/mtpfs:mad - Enable handling of MP3's metadata
+sys-fs/multipath-tools:rbd - Enable Rados block device support via sys-cluster/ceph
 sys-fs/ntfs3g:external-fuse - Use external FUSE library instead of internal one. Must be disabled for unprivileged mounting to work.
 sys-fs/ntfs3g:ntfsdecrypt - Build and install the ntfsdecrypt application.
 sys-fs/ntfs3g:ntfsprogs - Include internal version of ntfsprogs.

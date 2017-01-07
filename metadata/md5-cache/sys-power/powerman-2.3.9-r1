@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install
 DEPEND=sys-devel/bison httppower? ( net-misc/curl ) snmppower? ( net-analyzer/net-snmp ) !app-accessibility/speech-tools
 DESCRIPTION=RPC/PDU control and monitoring service for data center or compute cluster power management
 EAPI=6
-HOMEPAGE=https://code.google.com/p/powerman/
+HOMEPAGE=https://github.com/chaos/powerman
 IUSE=+httppower -snmppower -h8power +genders
 KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=>=sys-libs/freeipmi-0.2.3
 SLOT=0
-SRC_URI=https://powerman.googlecode.com/files/powerman-2.3.9.tar.gz
+SRC_URI=https://github.com/chaos/powerman/archive/powerman-2.3.9.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=4593f7e903b3372f7bf5fbb9f4027973
+_md5_=21d096523b0079bf446a97fc2c8cd77a
