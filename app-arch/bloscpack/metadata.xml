@@ -6,10 +6,10 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  Command line interface to and serialization format for Blosc, a high
-  performance, multi-threaded, blocking and shuffling compressor. Uses
-  python-blosc bindings to interface with blosc.
-</longdescription>
+    Command line interface to and serialization format for Blosc, a high
+    performance, multi-threaded, blocking and shuffling compressor. Uses
+    python-blosc bindings to interface with blosc.
+  </longdescription>
   <upstream>
     <remote-id type="pypi">bloscpack</remote-id>
     <remote-id type="github">Blosc/bloscpack</remote-id>
