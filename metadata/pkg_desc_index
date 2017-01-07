@@ -3129,7 +3129,7 @@ dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.7: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.6.2b 0.8.4 0.8.7: Crazy Eddie's GUI System
-dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
+dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
 dev-games/crystalspace 2.0-r1: Portable 3D Game Development Kit written in C++
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
