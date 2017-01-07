@@ -34,5 +34,6 @@
 		<flag name="restricted-commands">Enable restricted commands in the node daemon</flag>
 		<flag name="rbd">Enable rados block device support via sys-cluster/ceph</flag>
 		<flag name="xen">Enable Xen support</flag>
+		<flag name="experimental">Enable experimental patches. Warning! This will break RPC within major versions if the patches applied differ!</flag>
 	</use>
 </pkgmetadata>
