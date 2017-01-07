@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ REQUIRED_USE="introspection? ( glib )"
 RDEPEND="
 	cairo? ( x11-libs/cairo:= )
 	fontconfig? ( media-libs/fontconfig:1.0[${MULTILIB_USEDEP}] )
-	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
+	glib? ( >=dev-libs/glib-2.38:2[${MULTILIB_USEDEP}] )
 	graphite? ( >=media-gfx/graphite2-1.2.1:=[${MULTILIB_USEDEP}] )
 	icu? ( >=dev-libs/icu-51.2-r1:=[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.34:= )
