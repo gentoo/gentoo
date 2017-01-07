@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,13 +13,13 @@ SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug doc gmp +readline xml"
+IUSE="debug doc gmp +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
 	gmp? ( dev-libs/gmp:0= )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.0.6[xml(-)?]
-	"
+	>=net-libs/libnftnl-1.0.7"
+
 DEPEND="${RDEPEND}
 	>=app-text/docbook2X-0.8.8-r4
 	doc? ( >=app-text/dblatex-0.3.7 )
@@ -28,11 +28,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/v${PV}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-0.5-pdf-doc.patch"
-	"${FILESDIR}/${P}-null-payload-desc-fix.patch"
-)
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
