@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,10 +18,6 @@ dev-lang/python threads
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (20 Aug 2016)
 # Chromium GYP build is no longer supported - always use GN.
 >=www-client/chromium-54 gn
-
-# Michael Palimaka <kensington@gentoo.org> (27 Jul 2016)
-# Reverse dependencies need to be fully investigated yet
-kde-frameworks/kdelibs webkit
 
 # Lars Wendler <polynomial-c@gentoo.org> (11 Sep 2015)
 # Package fails to build with dbus USE flag being disabled (bug #560208)
