@@ -27,7 +27,7 @@ main() {
         "store")
             local tmp_save="${NFTABLES_SAVE}.tmp"
             if ! use_legacy; then
-                nft list ruleset > ${tmp_save}
+                nft ${SAVE_OPTIONS} list ruleset > ${tmp_save}
             else
                 save_legacy ${tmp_save}
             fi

@@ -173,11 +173,6 @@ media-plugins/gimp-gmic
 # Mask ruby 2.0 for removal, bug 576034
 dev-lang/ruby:2.0
 
-# Pacho Ramos <pacho@gentoo.org> (27 Nov 2016)
-# Vulnerable to CVE-2015-1431 and nobody taking care of it, bug #538360.
-# Removal in a month.
-www-apps/phpBB
-
 # Kent Fredric (19 Nov 2016)
 # virtual/perl-MathBigInt-1.999.726+ Mask Block
 # Will likely not be unmasked until future Perls

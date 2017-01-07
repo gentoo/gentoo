@@ -1,30 +1,29 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit webapp
 
-DESCRIPTION="phpBB is an open-source bulletin board package"
+DESCRIPTION="An open-source bulletin board package"
 HOMEPAGE="http://www.phpbb.com/"
 SRC_URI="http://download.phpbb.com/pub/release/${PV:0:3}/${PV}/${P}.tar.bz2"
-
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~sparc ~x86"
+IUSE="ftp gd imagemagick mssql mysqli postgres sqlite xml zlib"
 
-RDEPEND="virtual/httpd-php"
+PHPV="5*:*"
+RDEPEND="=virtual/httpd-php-${PHPV}
+	=dev-lang/php-${PHPV}[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml?,zlib?]
+	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )"
 
 need_httpd_cgi
 
-S=${WORKDIR}/${PN}3
+S="${WORKDIR}/${PN}${PV%%.*}"
 
 src_install() {
 	webapp_src_preinst
-
-	dodoc docs/*
-	rm -rf docs
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r .
@@ -38,4 +37,7 @@ src_install() {
 
 	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 	webapp_src_install
+
+	# phpBB needs docs together with the other files.
+	dosym "${MY_HTDOCSDIR}"/docs /usr/share/doc/${PF}
 }
