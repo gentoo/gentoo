@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Run a command with a new system hostname"
 HOMEPAGE="https://github.com/marineam/chname"
-SRC_URI="https://chname.googlecode.com/files/chname-1.0.tar.gz"
+SRC_URI="https://github.com/marineam/${PN}/archive/v1.0.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
