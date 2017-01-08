@@ -5,14 +5,14 @@
 EAPI=6
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
-MOZ_ESR=1
+MOZ_ESR=""
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=( ach af an ar as ast az be bg bn-BD bn-IN br bs ca cs cy da de
-el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr
-fy-NL ga-IE gd gl gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko
-lt lv mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si
-sk sl son sq sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
+MOZ_LANGS=( ach af an ar as ast az be bg bn-BD bn-IN br bs ca cak cs cy da de dsb
+el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL
+ga-IE gd gl gn gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lij lt
+lv mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl
+son sq sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
@@ -25,63 +25,53 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-45.0-patches-08"
+PATCH="${PN}-50.0-patches-02"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
-# Kill gtk3 support since gtk+-3.20 breaks it hard prior to 48.0
-#MOZCONFIG_OPTIONAL_GTK3=1
+MOZCONFIG_OPTIONAL_GTK2ONLY=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.45 pax-utils fdo-mime autotools virtualx mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.49 pax-utils fdo-mime autotools virtualx mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist hardened +hwaccel pgo selinux +gmp-autoupdate test"
+IUSE="bindist hardened +hwaccel jack pgo selinux +gmp-autoupdate test"
 RESTRICT="!bindist? ( bindist )"
 
-# More URIs appended below...
+PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
-	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCH}.tar.xz
-	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCH}.tar.xz
-	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz"
+	${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz
+	${PATCH_URIS[@]}"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-# Mesa 7.10 needed for WebGL + bugfixes
 RDEPEND="
-	>=dev-libs/nss-3.21.1
+	jack? ( virtual/jack )
+	>=dev-libs/nss-3.26.2
 	>=dev-libs/nspr-4.12
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
-	pgo? (
-		>=sys-devel/gcc-4.5 )
-	amd64? ( ${ASM_DEPEND}
-		virtual/opengl )
-	x86? ( ${ASM_DEPEND}
-		virtual/opengl )"
+	pgo? ( >=sys-devel/gcc-4.5 )
+	amd64? ( ${ASM_DEPEND} virtual/opengl )
+	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
-# No source releases for alpha|beta
-if [[ ${PV} =~ alpha ]]; then
-	CHANGESET="8a3042764de7"
-	SRC_URI="${SRC_URI}
-		https://dev.gentoo.org/~nirbheek/mozilla/firefox/firefox-${MOZ_PV}_${CHANGESET}.source.tar.xz"
-	S="${WORKDIR}/mozilla-aurora-${CHANGESET}"
-else
-	S="${WORKDIR}/firefox-${MOZ_PV}"
-	SRC_URI="${SRC_URI}
-		${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
-fi
+S="${WORKDIR}/firefox-${MOZ_PV}"
 
 QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
 
 BUILD_OBJ_DIR="${S}/ff"
+
+# dependencies newer than specified in the eclass
+RDEPEND="${RDEPEND}
+	>=media-libs/libpng-1.6.23
+	"
 
 pkg_setup() {
 	moz_pkgsetup
@@ -129,15 +119,25 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox"
-
-	# Allow user to apply any additional patches without modifing ebuild
-	eapply_user
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/mozilla_configure_regexp.patch \
+		"${FILESDIR}"/update_h2_curve.patch \
+		"${FILESDIR}"/${PN}-48.0-pgo.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
 		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \
 			"${S}"/build/unix/run-mozilla.sh || die "sed failed!"
+	fi
+
+	# Drop -Wl,--as-needed related manipulation for ia64 as it causes ld sefgaults, bug #582432
+	if use ia64 ; then
+		sed -i \
+		-e '/^OS_LIBS += no_as_needed/d' \
+		-e '/^OS_LIBS += as_needed/d' \
+		"${S}"/widget/gtk/mozgtk/gtk2/moz.build \
+		"${S}"/widget/gtk/mozgtk/gtk3/moz.build \
+		|| die "sed failed to drop --as-needed for ia64"
 	fi
 
 	# Ensure that our plugins dir is enabled as default
@@ -165,11 +165,17 @@ src_prepare() {
 	sed '/^MOZ_DEV_EDITION=1/d' \
 		-i "${S}"/browser/branding/aurora/configure.sh || die
 
-	eautoreconf
+	# Allow user to apply any additional patches without modifing ebuild
+	eapply_user
+
+	# Autotools configure is now called old-configure.in
+	# This works because there is still a configure.in that happens to be for the
+	# shell wrapper configure script
+	eautoreconf old-configure.in
 
 	# Must run autoconf in js/src
 	cd "${S}"/js/src || die
-	eautoconf
+	eautoconf old-configure.in
 
 	# Need to update jemalloc's configure
 	cd "${S}"/memory/jemalloc/src || die
@@ -192,25 +198,31 @@ src_configure() {
 	mozconfig_init
 	mozconfig_config
 
+	# enable JACK, bug 600002
+	mozconfig_use_enable jack
+
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
 	# Add full relro support for hardened
 	use hardened && append-ldflags "-Wl,-z,relro,-z,now"
 
+	# Only available on mozilla-overlay for experimentation -- Removed in Gentoo repo per bug 571180
+	#use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
+
 	# Setup api key for location services
 	echo -n "${_google_api_key}" > "${S}"/google-api-key
 	mozconfig_annotate '' --with-google-api-keyfile="${S}/google-api-key"
 
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
-	mozconfig_annotate '' --disable-mailnews
 
 	# Allow for a proper pgo build
 	if use pgo; then
-		echo "mk_add_options PROFILE_GEN_SCRIPT='\$(PYTHON) \$(OBJDIR)/_profile/pgo/profileserver.py'" >> "${S}"/.mozconfig
+		echo "mk_add_options PROFILE_GEN_SCRIPT='EXTRA_TEST_ARGS=10 \$(MAKE) -C \$(MOZ_OBJDIR) pgo-profile-run'" >> "${S}"/.mozconfig
 	fi
 
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
+	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
 
 	# Finalize and report settings
 	mozconfig_final
@@ -220,6 +232,7 @@ src_configure() {
 	fi
 
 	# workaround for funky/broken upstream configure...
+	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake -f client.mk configure
 }
 
@@ -245,11 +258,9 @@ src_compile() {
 		shopt -u nullglob
 		addpredict "${cards}"
 
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 		virtx emake -f client.mk profiledbuild || die "virtx emake failed"
 	else
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 		emake -f client.mk realbuild
 	fi

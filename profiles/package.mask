@@ -128,10 +128,6 @@ games-rpg/valyriatear
 # EAPI.
 net-libs/qtweetlib
 
-# Lars Wendler <polynomial-c@gentoo.org> (24 Dec 2016)
-# Fails with Google TLS certificates and possibly others (bug #603622).
-=dev-libs/nss-3.28
-
 # Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
 # Dead upstream, no more hosted on googlecode
 # No reverse dependencies. Masked for removal in 30 days.
