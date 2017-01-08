@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/4.4.0"
 
-KEYWORDS="alpha amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="sensord static-libs"
 
 COMMON_DEPS="
