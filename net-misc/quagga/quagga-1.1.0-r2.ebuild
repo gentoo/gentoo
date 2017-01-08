@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~s390 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~hppa ~ppc ~s390 ~sparc x86"
 
 IUSE="bgpclassless caps doc elibc_glibc ipv6 multipath ospfapi pam protobuf +readline snmp tcp-zebra"
 

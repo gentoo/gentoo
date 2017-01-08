@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE="debug"
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.18:=[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
 	>=dev-python/PyQt4-4.11.3[X,${PYTHON_USEDEP}]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
