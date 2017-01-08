@@ -93,7 +93,7 @@ fi
 
 export GCC_FILESDIR=${GCC_FILESDIR:-${FILESDIR}}
 
-PREFIX=${TOOLCHAIN_PREFIX:-/usr}
+PREFIX=${TOOLCHAIN_PREFIX:-${EPREFIX}/usr}
 
 if tc_version_is_at_least 3.4.0 ; then
 	LIBPATH=${TOOLCHAIN_LIBPATH:-${PREFIX}/lib/gcc/${CTARGET}/${GCC_CONFIG_VER}}
@@ -1267,7 +1267,7 @@ toolchain_src_configure() {
 	echo "${S}"/configure "${confgcc[@]}"
 	# Older gcc versions did not detect bash and re-exec itself, so force the
 	# use of bash.  Newer ones will auto-detect, but this is not harmeful.
-	CONFIG_SHELL="/bin/bash" \
+	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	bash "${S}"/configure "${confgcc[@]}" || die "failed to run configure"
 
 	# return to whatever directory we were in before
@@ -1703,11 +1703,11 @@ toolchain_src_install() {
 		if [[ -f ${CTARGET}-${x} ]] ; then
 			if ! is_crosscompile ; then
 				ln -sf ${CTARGET}-${x} ${x}
-				dosym ${BINPATH}/${CTARGET}-${x} \
+				dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
 					/usr/bin/${x}-${GCC_CONFIG_VER}
 			fi
 			# Create versioned symlinks
-			dosym ${BINPATH}/${CTARGET}-${x} \
+			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 
@@ -1745,11 +1745,11 @@ toolchain_src_install() {
 			fi
 		fi
 		has noinfo ${FEATURES} \
-			&& rm -r "${D}/${DATAPATH}"/info \
-			|| prepinfo "${DATAPATH}"
+			&& rm -r "${D}${DATAPATH}"/info \
+			|| prepinfo "${DATAPATH#${EPREFIX}}"
 		has noman ${FEATURES} \
-			&& rm -r "${D}/${DATAPATH}"/man \
-			|| prepman "${DATAPATH}"
+			&& rm -r "${D}${DATAPATH}"/man \
+			|| prepman "${DATAPATH#${EPREFIX}}"
 	fi
 	# prune empty dirs left behind
 	find "${D}" -depth -type d -delete 2>/dev/null
@@ -1999,7 +1999,7 @@ copy_minispecs_gcc_specs() {
 		create_gcc_env_entry hardenednossp
 	fi
 	create_gcc_env_entry vanilla
-	insinto ${LIBPATH}
+	insinto ${LIBPATH#${EPREFIX}}
 	doins "${WORKDIR}"/specs/*.specs || die "failed to install specs"
 	# Build system specs file which, if it exists, must be a complete set of
 	# specs as it completely and unconditionally overrides the builtin specs.
@@ -2014,21 +2014,21 @@ gcc_slot_java() {
 	local x
 
 	# Move Java headers to compiler-specific dir
-	for x in "${D}"${PREFIX}/include/gc*.h "${D}"${PREFIX}/include/j*.h ; do
-		[[ -f ${x} ]] && mv -f "${x}" "${D}"${LIBPATH}/include/
+	for x in "${D}${PREFIX}"/include/gc*.h "${D}${PREFIX}"/include/j*.h ; do
+		[[ -f ${x} ]] && mv -f "${x}" "${D}${LIBPATH}"/include/
 	done
 	for x in gcj gnu java javax org ; do
 		if [[ -d ${D}${PREFIX}/include/${x} ]] ; then
-			dodir /${LIBPATH}/include/${x}
-			mv -f "${D}"${PREFIX}/include/${x}/* "${D}"${LIBPATH}/include/${x}/
-			rm -rf "${D}"${PREFIX}/include/${x}
+			dodir /${LIBPATH#${EPREFIX}}/include/${x}
+			mv -f "${D}${PREFIX}"/include/${x}/* "${D}${LIBPATH}"/include/${x}/
+			rm -rf "${D}${PREFIX}"/include/${x}
 		fi
 	done
 
 	if [[ -d ${D}${PREFIX}/lib/security ]] || [[ -d ${D}${PREFIX}/$(get_libdir)/security ]] ; then
-		dodir /${LIBPATH}/security
-		mv -f "${D}"${PREFIX}/lib*/security/* "${D}"${LIBPATH}/security
-		rm -rf "${D}"${PREFIX}/lib*/security
+		dodir /${LIBPATH#${EPREFIX}}/security
+		mv -f "${D}${PREFIX}"/lib*/security/* "${D}${LIBPATH}"/security
+		rm -rf "${D}${PREFIX}"/lib*/security
 	fi
 
 	# Move random gcj files to compiler-specific directories
