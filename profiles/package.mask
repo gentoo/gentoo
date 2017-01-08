@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Chris Reffett <creffett@gentoo.org> (08 Jan 2017)
+# Superseded by projectlibre-bin, please migrate to that.
+# Masked for removal in 30 days.
+app-office/openproj-bin
+
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # Places unauthenticated HTTP data into root's SSH authorized_keys
 # file. Nope. Masked for removal in 30 days. Bug 603346.

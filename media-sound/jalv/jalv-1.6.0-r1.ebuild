@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-any-r1 qmake-utils waf-utils
@@ -16,26 +16,32 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="gtk gtk2 gtkmm portaudio qt4 qt5"
+IUSE="gtk gtk2 gtkmm portaudio qt5"
 
 RDEPEND=">=media-libs/lv2-1.6.0
-	>=media-libs/lilv-0.15.1
+	>=media-libs/lilv-0.24.0
 	>=dev-libs/serd-0.14.0
 	>=dev-libs/sord-0.12.0
 	>=media-libs/suil-0.6.0
-	>=media-libs/sratom-0.4.0
-	!portaudio? ( virtual/jack )
+	>=media-libs/sratom-0.6.0
 	gtk? ( >=x11-libs/gtk+-3.0.0:3 )
 	gtk2? ( >=x11-libs/gtk+-2.18.0:2 )
 	gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 )
 	portaudio? ( media-libs/portaudio )
-	qt5? ( dev-qt/qtwidgets:5 )
+	!portaudio? ( virtual/jack )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
-DOCS=( "AUTHORS" "NEWS" "README" )
+DOCS=( AUTHORS NEWS README )
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.7.0.patch" )
 
 src_configure() {
 	use qt5 && export PATH="$(qt5_get_bindir):${PATH}"
