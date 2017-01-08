@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-DESCRIPTION="Extremely simple personal calendar program aimed at the Unix geek who wants something minimalistic"
+DESCRIPTION="Minimalistic personal calendar program"
 HOMEPAGE="http://www.lightandmatter.com/when/when.html"
 SRC_URI="http://www.lightandmatter.com/when/when.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"
