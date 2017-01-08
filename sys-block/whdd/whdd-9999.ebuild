@@ -10,7 +10,7 @@ inherit git-r3
 DESCRIPTION="Diagnostic and recovery tool for block devices"
 HOMEPAGE="https://whdd.github.io"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
