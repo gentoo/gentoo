@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 ssl? ( !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig dev-lang/perl || ( www-client/lynx www-client/elinks ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:= >=dev-vcs/git-1.8.2.1
+DEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) virtual/pkgconfig dev-lang/perl || ( www-client/lynx www-client/elinks ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:= >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A modular textUI IRC client with IPv6 support
 EAPI=6
 HOMEPAGE=http://irssi.org/
-IUSE=+perl selinux ssl socks5 +proxy libressl
+IUSE=+perl selinux socks5 +proxy libressl
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 ssl? ( !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) selinux? ( sec-policy/selinux-irc ) perl? ( !net-im/silc-client ) dev-lang/perl:=
+RDEPEND=sys-libs/ncurses:0= >=dev-libs/glib-2.6.0 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) perl? ( dev-lang/perl:= ) socks5? ( >=net-proxy/dante-1.1.18 ) selinux? ( sec-policy/selinux-irc ) perl? ( !net-im/silc-client ) dev-lang/perl:=
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:perl-module src_test:perl-module src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=681b31637cf170aa2e8ac2180233bfe1
+_md5_=22719c6c5d405c07af04cfe9cea41b7f
