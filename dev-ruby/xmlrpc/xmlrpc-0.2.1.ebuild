@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,4 +24,7 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
+	# Avoid dependency on git
+	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
