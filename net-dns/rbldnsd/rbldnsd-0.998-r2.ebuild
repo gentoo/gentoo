@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit toolchain-funcs user python-single-r1
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
-HOMEPAGE="http://www.corpit.ru/mjt/rbldnsd.html"
-SRC_URI="http://www.corpit.ru/mjt/rbldnsd/${P}.tar.gz"
+HOMEPAGE="https://rbldnsd.io/"
+SRC_URI="https://github.com/spamhaus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/rbldnsd-0.997a-robust-ipv6-test-support.patch"
 	"${FILESDIR}/rbldnsd-0.997a-format-security-compile-fix.patch"
+	"${FILESDIR}/rbldnsd-0.998-fix-huge-zone-OOM.patch"
 )
 
 src_configure() {
