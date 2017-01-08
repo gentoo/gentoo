@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
-	dev-libs/glib:=
+	dev-libs/glib:2
 	dev-libs/icu:=
 	>=dev-libs/jsoncpp-0.5.0-r1:=
 	dev-libs/libxml2:=[icu]
@@ -59,7 +59,7 @@ COMMON_DEPEND="
 	>=sys-libs/libcap-2.22:=
 	virtual/udev
 	x11-libs/cairo:=
-	x11-libs/gdk-pixbuf:=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/libdrm
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
