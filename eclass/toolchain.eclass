@@ -1735,7 +1735,7 @@ toolchain_src_install() {
 
 	cd "${S}"
 	if is_crosscompile; then
-		rm -rf "${D}"/usr/share/{man,info}
+		rm -rf "${ED}"usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
 	else
 		if tc_version_is_at_least 3.0 ; then
@@ -1849,8 +1849,8 @@ gcc_movelibs() {
 	# that you want to link against when building tools rather than building
 	# code to run on the target.
 	if tc_version_is_at_least 5 && is_crosscompile ; then
-		dodir "${HOSTLIBPATH}"
-		mv "${D}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
+		dodir "${HOSTLIBPATH#${EPREFIX}}"
+		mv "${ED}"usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
 	fi
 
 	# For all the libs that are built for CTARGET, move them into the
@@ -1935,7 +1935,7 @@ create_gcc_env_entry() {
 	local gcc_envd_base="/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}"
 
 	local gcc_specs_file
-	local gcc_envd_file="${D}${gcc_envd_base}"
+	local gcc_envd_file="${ED}${gcc_envd_base}"
 	if [[ -z $1 ]] ; then
 		# I'm leaving the following commented out to remind me that it
 		# was an insanely -bad- idea. Stuff broke. GCC_SPECS isnt unset
@@ -2059,16 +2059,17 @@ toolchain_pkg_postinst() {
 		echo
 
 		# Clean up old paths
-		rm -f "${ROOT}"/*/rcscripts/awk/fixlafiles.awk "${ROOT}"/sbin/fix_libtool_files.sh
-		rmdir "${ROOT}"/*/rcscripts{/awk,} 2>/dev/null
+		rm -f "${EROOT}"*/rcscripts/awk/fixlafiles.awk "${EROOT}"sbin/fix_libtool_files.sh
+		rmdir "${EROOT}"*/rcscripts{/awk,} 2>/dev/null
 
-		mkdir -p "${ROOT}"/usr/{share/gcc-data,sbin,bin}
-		cp "${ROOT}/${DATAPATH}"/fixlafiles.awk "${ROOT}"/usr/share/gcc-data/ || die
-		cp "${ROOT}/${DATAPATH}"/fix_libtool_files.sh "${ROOT}"/usr/sbin/ || die
+		mkdir -p "${EROOT}"usr/{share/gcc-data,sbin,bin}
+		# DATAPATH has EPREFIX already, use ROOT with it
+		cp "${ROOT}${DATAPATH}"/fixlafiles.awk "${EROOT}"usr/share/gcc-data/ || die
+		cp "${ROOT}${DATAPATH}"/fix_libtool_files.sh "${EROOT}"usr/sbin/ || die
 
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
-		cp "${ROOT}/${DATAPATH}"/c{89,99} "${ROOT}"/usr/bin/ 2>/dev/null
+		cp "${ROOT}${DATAPATH}"/c{89,99} "${EROOT}"usr/bin/ 2>/dev/null
 	fi
 
 	if use regression-test ; then
@@ -2091,10 +2092,10 @@ toolchain_pkg_postrm() {
 
 	# clean up the cruft left behind by cross-compilers
 	if is_crosscompile ; then
-		if [[ -z $(ls "${ROOT}"/etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
-			rm -f "${ROOT}"/etc/env.d/gcc/config-${CTARGET}
-			rm -f "${ROOT}"/etc/env.d/??gcc-${CTARGET}
-			rm -f "${ROOT}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
+		if [[ -z $(ls "${EROOT}"etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
+			rm -f "${EROOT}"etc/env.d/gcc/config-${CTARGET}
+			rm -f "${EROOT}"etc/env.d/??gcc-${CTARGET}
+			rm -f "${EROOT}"usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
 		fi
 		return 0
 	fi
