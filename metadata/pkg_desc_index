@@ -5889,7 +5889,7 @@ dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
 dev-perl/IO-Socket-Multicast 1.120.0: Send and receive multicast messages
 dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
-dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0: Nearly transparent SSL encapsulation for IO::Socket::INET
+dev-perl/IO-Socket-SSL 2.24.0 2.39.0 2.40.0 2.43.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
@@ -6136,7 +6136,7 @@ dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new IC
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.90.0: Low-level HTTP connection (client)
+dev-perl/Net-HTTP 6.90.0 6.120.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
@@ -6173,7 +6173,7 @@ dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0 0.580.0-r1: Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.650.0-r1 1.720.0-r1: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.650.0-r1 1.720.0-r1 1.800.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
