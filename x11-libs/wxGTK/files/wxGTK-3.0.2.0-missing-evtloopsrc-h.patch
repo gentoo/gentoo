@@ -1,0 +1,30 @@
+diff -uriN wxPython-src-3.0.2.0.orig/Makefile.in wxPython-src-3.0.2.0/Makefile.in
+--- wxPython-src-3.0.2.0.orig/Makefile.in	2014-10-08 11:51:06.000000000 -0500
++++ wxPython-src-3.0.2.0/Makefile.in	2017-01-07 19:49:43.000000000 -0600
+@@ -383,6 +383,7 @@
+ 	wx/event.h \
+ 	wx/eventfilter.h \
+ 	wx/evtloop.h \
++	wx/evtloopsrc.h \
+ 	wx/except.h \
+ 	wx/features.h \
+ 	wx/flags.h \
+@@ -565,6 +566,7 @@
+ 	wx/event.h \
+ 	wx/eventfilter.h \
+ 	wx/evtloop.h \
++	wx/evtloopsrc.h \
+ 	wx/except.h \
+ 	wx/features.h \
+ 	wx/flags.h \
+diff -uriN wxPython-src-3.0.2.0.orig/build/bakefiles/files.bkl wxPython-src-3.0.2.0/build/bakefiles/files.bkl
+--- wxPython-src-3.0.2.0.orig/build/bakefiles/files.bkl	2014-10-08 11:51:06.000000000 -0500
++++ wxPython-src-3.0.2.0/build/bakefiles/files.bkl	2017-01-07 19:32:26.000000000 -0600
+@@ -431,6 +431,7 @@
+     wx/event.h
+     wx/eventfilter.h
+     wx/evtloop.h
++    wx/evtloopsrc.h
+     wx/except.h
+     wx/features.h
+     wx/flags.h
