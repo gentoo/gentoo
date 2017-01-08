@@ -4653,7 +4653,7 @@ dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.0-r200 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0: Lightweight user interface framework for mobile and convergent applications
-dev-libs/klibc 1.5.25 2.0.4: A minimal libc subset for use with initramfs
+dev-libs/klibc 1.5.25 2.0.4 2.0.4-r1: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r2: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kproperty 3.0.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
@@ -6871,7 +6871,7 @@ dev-php/PEAR-Net_URL2 2.0.5 2.2.1-r1: Easy parsing of URLs (PHP5 port of PEAR-Ne
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web browser, version, and platform from an HTTP user agent string
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
-dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
+dev-php/PEAR-OLE 0.6.1 1.0.0_rc2-r1: Package for reading and writing OLE containers
 dev-php/PEAR-PEAR 1.9.4 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.7.2: Updates an existing package.xml file with a new filelist and changelog
