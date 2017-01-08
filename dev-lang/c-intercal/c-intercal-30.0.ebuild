@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,14 +33,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
 
-DEPEND="emacs? ( virtual/emacs )"
-RDEPEND="${DEPEND}"
+RDEPEND="emacs? ( virtual/emacs )"
+DEPEND="${RDEPEND}
+	sys-devel/flex
+	virtual/yacc"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-version.patch
+	eapply "${FILESDIR}"/${P}-yywrap.patch
 	eapply_user
 	eautoreconf
 }
