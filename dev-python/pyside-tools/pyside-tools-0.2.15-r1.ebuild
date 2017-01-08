@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 CMAKE_IN_SOURCE_BUILD="1"
 CMAKE_MAKEFILE_GENERATOR="emake" # bug 558248
-PYTHON_COMPAT=( python{2_7,3_4} )
-VIRTUALX_COMMAND="cmake-utils_src_test"
 
-inherit eutils cmake-utils python-r1 vcs-snapshot virtualx
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+
+inherit cmake-utils python-r1 vcs-snapshot virtualx
 
 DESCRIPTION="PySide development tools (lupdate, rcc, uic)"
 HOMEPAGE="https://wiki.qt.io/Pyside"
@@ -30,17 +31,28 @@ DEPEND="${RDEPEND}
 	test? ( virtual/pkgconfig )
 "
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+PATCHES=(
+	"${FILESDIR}"/0.2.13-fix-pysideuic-test-and-install.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/0.2.13-fix-pysideuic-test-and-install.patch
+	cmake-utils_src_prepare
 
 	python_copy_sources
 
 	preparation() {
 		pushd "${BUILD_DIR}" >/dev/null || die
 		if python_is_python3; then
-			rm -fr pysideuic/port_v2
+			rm -fr pysideuic/port_v2 || die
+
+			# need to run with -py3 to generate
+			# proper python 3 interfaces
+			sed -i -e 's:${PYSIDERCC_EXECUTABLE}:"${PYSIDERCC_EXECUTABLE} -py3":' \
+				tests/rcc/CMakeLists.txt || die
 		else
-			rm -fr pysideuic/port_v3
+			rm -fr pysideuic/port_v3 || die
 		fi
 
 		sed -i -e "/pkg-config/ s:shiboken:&-${EPYTHON}:" \
@@ -55,7 +67,7 @@ src_configure() {
 		local mycmakeargs=(
 			-DPYTHON_BASENAME="-${EPYTHON}"
 			-DPYTHON_SUFFIX="-${EPYTHON}"
-			$(cmake-utils_use_build test TESTS)
+			-DBUILD_TESTS=$(usex test)
 		)
 		CMAKE_USE_DIR="${BUILD_DIR}" cmake-utils_src_configure
 	}
@@ -71,7 +83,7 @@ src_compile() {
 
 src_test() {
 	testing() {
-		CMAKE_USE_DIR="${BUILD_DIR}" virtualmake
+		CMAKE_USE_DIR="${BUILD_DIR}" virtx cmake-utils_src_test
 	}
 	python_foreach_impl testing
 }
@@ -81,6 +93,4 @@ src_install() {
 		CMAKE_USE_DIR="${BUILD_DIR}" cmake-utils_src_install DESTDIR="${D}"
 	}
 	python_foreach_impl installation
-
-	dodoc AUTHORS
 }
