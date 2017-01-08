@@ -16057,7 +16057,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 1.8.0 2.12.1-r1 2.12.2-r1 2.14.5-r1 2.18.2-r1 2.18.2-r2: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r1 2.18.2-r2: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
