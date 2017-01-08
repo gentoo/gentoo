@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (08 Jan 2017)
+# Masked pending testing and eclass/profile support.
+dev-lang/python:3.6
+
 # Chris Reffett <creffett@gentoo.org> (08 Jan 2017)
 # Superseded by projectlibre-bin, please migrate to that.
 # Masked for removal in 30 days.
