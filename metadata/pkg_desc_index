@@ -1333,7 +1333,7 @@ app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use w
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/rkt 1.21.0: rkt is an App Container runtime for Linux
+app-emulation/rkt 1.21.0 1.22.0: rkt is an App Container runtime for Linux
 app-emulation/runc 0.1.0 0.1.1 1.0.0_rc2-r1 9999: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
@@ -7842,7 +7842,7 @@ dev-python/oslo-versionedobjects 1.8.0 1.17.0: A library that provides a generic
 dev-python/oslo-vmware 2.5.0 2.14.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.12.0 2.4.0: Oslo test framework
 dev-python/osprofiler 1.2.0 1.4.0: OpenStack Profiler Library
-dev-python/ovs 2.4.0 2.6.0: OVS bindings for python.
+dev-python/ovs 2.4.0 2.6.0 2.6.1: OVS bindings for python.
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5 16.6: Core utilities for Python packages
 dev-python/pafy 0.5.1 0.5.2: Python library to retrieve YouTube content and metadata
@@ -15094,7 +15094,7 @@ net-misc/openssh 7.2_p2 7.2_p2-r1 7.3_p1-r5 7.3_p1-r6 7.3_p1-r7 7.3_p1-r8 7.4_p1
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn 2.3.12 2.3.14 2.4_rc2 2.4.0 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
-net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0 2.6.0 2.6.0-r2: Production quality, multilayer virtual switch
+net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0 2.6.0 2.6.0-r2 2.6.1: Production quality, multilayer virtual switch
 net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
 net-misc/owncloud-client 2.2.3 2.2.3-r1 2.2.4-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
