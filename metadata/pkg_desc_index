@@ -376,7 +376,7 @@ app-backup/holland-backup-sqlite 1.0.10: Holland sqlite Plugin
 app-backup/holland-lib-common 1.0.10: Holland Core Library
 app-backup/holland-lib-lvm 1.0.10: Holland LVM Library
 app-backup/holland-lib-mysql 1.0.10: Holland MySQL Library
-app-backup/kbackup 0.8-r1: KBackup is a program that lets you back up any directories or files
+app-backup/kbackup 0.8-r1 1.0: Program that lets you back up any directories or files
 app-backup/kfoldersync 3.4.0: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
@@ -12004,7 +12004,7 @@ kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager fun
 kde-plasma/milou 0.1 5.8.3 5.8.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.3 5.8.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.8.3 5.8.5: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.8.3 5.8.5 5.8.5-r1: KDE Plasma desktop
 kde-plasma/plasma-integration 5.8.3 5.8.5 5.8.5-r1: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.3 5.8.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 0.9.3.6 5.8.3 5.8.5: KDE Plasma applet for NetworkManager
