@@ -6,6 +6,9 @@ EAPI=6
 
 inherit cmake-utils cuda
 
+# change each new libdynd version, to avoid git in tree dependency
+DYND_GIT_SHA1=341d6d91931fdb04ad657d27ed740cf533fc925b
+
 DESCRIPTION="C++ dynamic multi-dimensionnal array library with Python exposure"
 HOMEPAGE="http://libdynd.org"
 SRC_URI="https://github.com/libdynd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -27,7 +30,7 @@ DEPEND="${RDEPEND}
 DOCS=( README.md )
 
 src_prepare() {
-	#use cuda && cuda_src_prepare
+	use cuda && cuda_src_prepare
 	cmake-utils_src_prepare
 	cmake_comment_add_subdirectory examples
 	# fix forced cxxflags and doc installation directory
@@ -39,6 +42,15 @@ src_prepare() {
 	sed -e 's|install(TARGETS test_libdynd||' \
 		-e 's|RUNTIME DESTINATION bin)||' \
 		-i tests/CMakeLists.txt || die
+
+	# remove the version mangling from git stuff it requires a git clone
+	# rather force set it a configure time
+	sed -e '/GetGitRev/d' \
+		-e '/get_git_/d' \
+		-e '/git_describe/d' \
+		-e '/dirty/d' \
+		-i CMakeLists.txt || die
+	sed -e s||${DYND_SHA1_VERSION}|
 	# not tested
 	if use mkl; then
 		sed -e "s|/opt/intel/.*|$(ls -1d ${EPREFIX}/opt/intel/compilers*)|" \
@@ -48,6 +60,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DDYND_GIT_SHA1="${DYND_GIT_SHA1}"
+		-DDYND_VERSION_STRING="v${PV}"
 		-DDYND_INSTALL_LIB=ON
 		-DDYND_SHARED_LIB=ON
 		-DDYND_BUILD_BENCHMARKS=OFF
@@ -56,7 +70,7 @@ src_configure() {
 		-DDYND_BUILD_TESTS="$(usex test)"
 		-DDYND_CUDA="$(usex cuda)"
 		-DDYND_FFTW="$(usex fftw)"
-		-DFFTW_PATH="${EPREFIX}/usr"
+		-DFFTW_PATH="${EPREFIX}/usr/include"
 	)
 	cmake-utils_src_configure
 }
