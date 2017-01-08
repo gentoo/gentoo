@@ -983,10 +983,10 @@ toolchain_src_configure() {
 			elif built_with_use --hidden --missing false ${CATEGORY}/${needed_libc} crosscompile_opts_headers-only ; then
 				confgcc+=(
 					"${confgcc_no_libc[@]}"
-					--with-sysroot=${PREFIX}/${CTARGET}
+					--with-sysroot="${PREFIX}"/${CTARGET}
 				)
 			else
-				confgcc+=( --with-sysroot=${PREFIX}/${CTARGET} )
+				confgcc+=( --with-sysroot="${PREFIX}"/${CTARGET} )
 			fi
 		fi
 
@@ -1812,11 +1812,11 @@ toolchain_src_install() {
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
 	# for people who are testing as non-root.
-	chown -R root:0 "${D}"${LIBPATH} 2>/dev/null
+	chown -R root:0 "${D}${LIBPATH}" 2>/dev/null
 
 	# Move pretty-printers to gdb datadir to shut ldconfig up
 	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH/\/lib\//\/$(get_libdir)\/}
-	pushd "${D}"${LIBPATH} >/dev/null
+	pushd "${D}${LIBPATH}" >/dev/null
 	for py in $(find . -name '*-gdb.py') ; do
 		local multidir=${py%/*}
 		insinto "${gdbdir}/${multidir}"
@@ -1862,16 +1862,16 @@ gcc_movelibs() {
 
 		local OS_MULTIDIR=$($(XGCC) ${multiarg} --print-multi-os-directory)
 		local MULTIDIR=$($(XGCC) ${multiarg} --print-multi-directory)
-		local TODIR=${D}${LIBPATH}/${MULTIDIR}
+		local TODIR="${D}${LIBPATH}"/${MULTIDIR}
 		local FROMDIR=
 
 		[[ -d ${TODIR} ]] || mkdir -p ${TODIR}
 
 		for FROMDIR in \
-			${LIBPATH}/${OS_MULTIDIR} \
-			${LIBPATH}/../${MULTIDIR} \
-			${PREFIX}/lib/${OS_MULTIDIR} \
-			${PREFIX}/${CTARGET}/lib/${OS_MULTIDIR}
+			"${LIBPATH}"/${OS_MULTIDIR} \
+			"${LIBPATH}"/../${MULTIDIR} \
+			"${PREFIX}"/lib/${OS_MULTIDIR} \
+			"${PREFIX}"/${CTARGET}/lib/${OS_MULTIDIR}
 		do
 			removedirs="${removedirs} ${FROMDIR}"
 			FROMDIR=${D}${FROMDIR}
@@ -2034,12 +2034,12 @@ gcc_slot_java() {
 	# Move random gcj files to compiler-specific directories
 	for x in libgcj.spec logging.properties ; do
 		x="${D}${PREFIX}/lib/${x}"
-		[[ -f ${x} ]] && mv -f "${x}" "${D}"${LIBPATH}/
+		[[ -f ${x} ]] && mv -f "${x}" "${D}${LIBPATH}"/
 	done
 
 	# Rename jar because it could clash with Kaffe's jar if this gcc is
 	# primary compiler (aka don't have the -<version> extension)
-	cd "${D}"${BINPATH}
+	cd "${D}${BINPATH}"
 	[[ -f jar ]] && mv -f jar gcj-jar
 }
 
