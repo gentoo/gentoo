@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,6 +73,7 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
+	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {
