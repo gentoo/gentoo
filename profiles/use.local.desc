@@ -3310,7 +3310,6 @@ kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
 kde-apps/kpimtextedit:speech - Enable text-to-speech support
-kde-apps/krdc:rdp - Enable runtime dependency for net-misc/rdesktop
 kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
 kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/kstars:fits - Enable support for NASA's sci-libs/cfitsio library
