@@ -70,7 +70,7 @@ initrd_path() {
 		"initrd-${kver}.img" \
 		"initrd-${kver}" \
 		"initramfs-${kver}.img" \
-		"initramfs-genkernel-${karch}-${kver}"; do
+		"initramfs-genkernel-${karch}-${kver}" \
 		"initramfs-genkernel-${gkarch}-${kver}"; do
 		if [ -e "${BOOTPART}/${x}" ]; then
 			echo "${BOOTPART}/${x}"
