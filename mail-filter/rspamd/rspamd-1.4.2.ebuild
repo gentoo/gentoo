@@ -18,16 +18,10 @@ IUSE="fann jemalloc +jit libressl pcre2"
 RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	fann? ( sci-mathematics/fann )
-	pcre2? (
-		dev-libs/libpcre2[jit=]
-	)
-	!pcre2? (
-		dev-libs/libpcre[jit=]
-	)
+	pcre2? ( dev-libs/libpcre2[jit=] )
+	!pcre2? ( dev-libs/libpcre[jit=] )
 	jit? ( dev-lang/luajit:2 )
-	jemalloc? (
-		dev-libs/jemalloc
-	)
+	jemalloc? ( dev-libs/jemalloc )
 	dev-libs/libevent
 	dev-db/sqlite:3
 	dev-libs/glib:2

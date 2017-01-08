@@ -13,30 +13,24 @@ EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="fann +gd pcre2 +jit jemalloc libressl"
+IUSE="fann +gd jemalloc +jit libressl pcre2"
 
-RDEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
-		libressl? ( dev-libs/libressl:0 )
-		fann? ( sci-mathematics/fann )
-		pcre2? (
-			dev-libs/libpcre2[jit=]
-		)
-		!pcre2? (
-			dev-libs/libpcre[jit=]
-		)
-		jit? ( dev-lang/luajit:2 )
-		jemalloc? (
-			dev-libs/jemalloc
-		)
-		dev-libs/libevent
-		dev-db/sqlite:3
-		dev-libs/glib:2
-		dev-util/ragel
-		sys-apps/file
-		virtual/libiconv
-		gd? ( media-libs/gd[jpeg] )"
+RDEPEND="!libressl? ( dev-libs/openssl:0=[-bindist] )
+	libressl? ( dev-libs/libressl:0= )
+	fann? ( sci-mathematics/fann )
+	pcre2? ( dev-libs/libpcre2[jit=] )
+	!pcre2? ( dev-libs/libpcre[jit=] )
+	jit? ( dev-lang/luajit:2 )
+	jemalloc? ( dev-libs/jemalloc )
+	dev-libs/libevent
+	dev-db/sqlite:3
+	dev-libs/glib:2
+	dev-util/ragel
+	sys-apps/file
+	virtual/libiconv
+	gd? ( media-libs/gd[jpeg] )"
 DEPEND="dev-util/ragel
-		${RDEPEND}"
+	${RDEPEND}"
 
 QA_MULTILIB_PATHS="usr/lib/rspamd/.*"
 
@@ -53,9 +47,9 @@ src_configure() {
 		-DLOGDIR=/var/log/rspamd
 		-DENABLE_LUAJIT=$(usex jit ON OFF)
 		-DENABLE_FANN=$(usex fann ON OFF)
-		-DENABLE_GD=$(usex gd ON OFF)
 		-DENABLE_PCRE2=$(usex pcre2 ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
+		-DENABLE_GD=$(usex gd ON OFF)
 	)
 	cmake-utils_src_configure
 }
