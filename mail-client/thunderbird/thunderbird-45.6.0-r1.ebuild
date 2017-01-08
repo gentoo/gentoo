@@ -130,7 +130,9 @@ src_prepare() {
 
 	# Apply our patchset from firefox to thunderbird as well
 	pushd "${S}"/mozilla &>/dev/null || die
-	eapply "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/mozilla_configure_regexp_esr.patch \
+		"${FILESDIR}"/update_h2_curve.patch
 	popd &>/dev/null || die
 
 	# Ensure that are plugins dir is enabled as default
