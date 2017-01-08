@@ -284,7 +284,6 @@ qt5 - Add support for the Qt 5 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
 raw - Add support for raw image formats
-rdesktop - Add support for the remote desktop protocol, usually used to connect to Windows servers
 rdp - Enables RDP/Remote Desktop support
 readline - Enable support for libreadline, a GNU line-editing library that almost everyone wants
 recode - Enable support for the GNU recode library
