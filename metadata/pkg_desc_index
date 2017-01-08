@@ -12005,7 +12005,7 @@ kde-plasma/milou 0.1 5.8.3 5.8.5: Dedicated search application built on top of B
 kde-plasma/oxygen 5.8.3 5.8.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.8.3 5.8.5: KDE Plasma desktop
-kde-plasma/plasma-integration 5.8.3 5.8.5: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-integration 5.8.3 5.8.5 5.8.5-r1: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.3 5.8.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 0.9.3.6 5.8.3 5.8.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.8.3 5.8.5: Plasma applet for audio volume management using PulseAudio
