@@ -2119,13 +2119,13 @@ toolchain_pkg_postrm() {
 
 do_gcc_config() {
 	if ! should_we_gcc_config ; then
-		env -i ROOT="${ROOT}" gcc-config --use-old --force
+		gcc-config --use-old --force
 		return 0
 	fi
 
 	local current_gcc_config target
 
-	current_gcc_config=$(env -i ROOT="${ROOT}" gcc-config -c ${CTARGET} 2>/dev/null)
+	current_gcc_config=$(gcc-config -c ${CTARGET} 2>/dev/null)
 	if [[ -n ${current_gcc_config} ]] ; then
 		local current_specs use_specs
 		# figure out which specs-specific config is active
@@ -2159,12 +2159,12 @@ should_we_gcc_config() {
 	# if the current config is invalid, we definitely want a new one
 	# Note: due to bash quirkiness, the following must not be 1 line
 	local curr_config
-	curr_config=$(env -i ROOT="${ROOT}" gcc-config -c ${CTARGET} 2>&1) || return 0
+	curr_config=$(gcc-config -c ${CTARGET} 2>&1) || return 0
 
 	# if the previously selected config has the same major.minor (branch) as
 	# the version we are installing, then it will probably be uninstalled
 	# for being in the same SLOT, make sure we run gcc-config.
-	local curr_config_ver=$(env -i ROOT="${ROOT}" gcc-config -S ${curr_config} | awk '{print $2}')
+	local curr_config_ver=$(gcc-config -S ${curr_config} | awk '{print $2}')
 
 	local curr_branch_ver=$(get_version_component_range 1-2 ${curr_config_ver})
 
