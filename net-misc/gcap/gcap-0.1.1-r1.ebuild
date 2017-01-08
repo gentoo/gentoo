@@ -10,7 +10,7 @@ DESCRIPTION="Command line tool for downloading Youtube closed captions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://debian/pool/main/g/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
