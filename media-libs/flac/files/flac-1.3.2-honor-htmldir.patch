@@ -1,0 +1,55 @@
+HTML files should be installed to $(htmldir), and $(docdir) should
+not be changed, as this is a user flag in the GNU conventions.
+
+--- a/doc/html/images/Makefile.am
++++ b/doc/html/images/Makefile.am
+@@ -16,9 +16,9 @@
+ #  restrictive of those mentioned above.  See the file COPYING.Xiph in this
+ #  distribution.
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)/html/images
++logosdir = $(htmldir)/images
+ 
+-doc_DATA = \
++logos_DATA = \
+ 	logo.svg \
+ 	logo130.gif
+ 
+--- a/doc/html/Makefile.am
++++ b/doc/html/Makefile.am
+@@ -18,9 +18,7 @@
+ 
+ SUBDIRS = images
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)/html
+-
+-doc_DATA = \
++html_DATA = \
+ 	changelog.html \
+ 	developers.html \
+ 	documentation.html \
+@@ -46,10 +44,10 @@
+ # The install targets don't copy whole directories so we have to
+ # handle 'api/' specially:
+ install-data-local:
+-	$(mkinstalldirs) $(DESTDIR)$(docdir)/api
+-	(cd $(builddir)/api && $(INSTALL_DATA) * $(DESTDIR)$(docdir)/api)
++	$(mkinstalldirs) $(DESTDIR)$(htmldir)/api
++	(cd $(builddir)/api && $(INSTALL_DATA) * $(DESTDIR)$(htmldir)/api)
+ uninstall-local:
+-	rm -rf $(DESTDIR)$(docdir)/api
++	rm -rf $(DESTDIR)$(htmldir)/api
+ distclean-local:
+ 	-rm -rf api
+ endif
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -31,8 +31,6 @@
+ 	mkdir -p html/api
+ endif
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
+-
+ doc_DATA = \
+ 	FLAC.tag
+ 
