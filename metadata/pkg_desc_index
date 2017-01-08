@@ -5368,7 +5368,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -5681,7 +5681,7 @@ dev-perl/Event 1.240.0 1.260.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.50.0 1.80.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250.0-r2 0.250.100: Error handling with exception class
-dev-perl/Exception-Class 1.390.0 1.410.0: A module that allows you to declare real exception classes in Perl
+dev-perl/Exception-Class 1.390.0 1.410.0 1.420.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
@@ -5944,7 +5944,7 @@ dev-perl/Lab-Measurement 3.531.0 9999: Measurement control and automation with P
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.9.0 0.10.0: Prevent leakage of lexical hints
-dev-perl/Lingua-EN-Inflect 1.899.0: Perl module to pluralize English words
+dev-perl/Lingua-EN-Inflect 1.899.0 1.901.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.190.0: Correctly case a person's name from UPERCASE or lowcase
 dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
 dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
@@ -6137,7 +6137,7 @@ dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.90.0: Low-level HTTP connection (client)
-dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0: Internationalizing Domain Names in Applications (IDNA)
+dev-perl/Net-IDN-Encode 2.300.0 2.301.0 2.302.0 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
@@ -6210,7 +6210,7 @@ dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.27.0: Facilitates the creation and modification of PDF files
-dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0: Create PDF documents in Perl
+dev-perl/PDF-Create 1.290.0 1.370.0 1.380.0 1.390.0 1.400.0 1.410.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11 2.17.0: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
@@ -6248,7 +6248,7 @@ dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validation of method/function call parameters
-dev-perl/Params-ValidationCompiler 0.200.0: Build an optimized subroutine parameter validator once, use it forever
+dev-perl/Params-ValidationCompiler 0.220.0: Build an optimized subroutine parameter validator once, use it forever
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.13: Generate Recursive-Descent Parsers
@@ -6320,7 +6320,7 @@ dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up re
 dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
-dev-perl/Ref-Util 0.101.0: Utility functions for checking references
+dev-perl/Ref-Util 0.101.0 0.111.0: Utility functions for checking references
 dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
