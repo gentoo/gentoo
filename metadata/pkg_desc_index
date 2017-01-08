@@ -9613,7 +9613,7 @@ dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.9 3.2.2 3.2.3: An xUnit family unit tes
 dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1 2.0.1-r1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
-dev-ruby/text 1.2.3-r2 1.3.1: A collection of text algorithms
+dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
 dev-ruby/textpow 1.4.0: A library to parse and process Textmate bundles
 dev-ruby/thor 0.19.1: A scripting framework that replaces rake and sake
@@ -15327,7 +15327,7 @@ net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network 
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs-bin 0.4.1 0.4.2: go-ipfs is the main implementation of IPFS.
-net-p2p/gtk-gnutella 1.1.8 1.1.10 1.1.11: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.10 1.1.11: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/i2p 0.9.26 0.9.27: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software
