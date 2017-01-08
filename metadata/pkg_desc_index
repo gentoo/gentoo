@@ -15024,7 +15024,7 @@ net-misc/lldpd 0.9.3-r1 0.9.4 0.9.5-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.97 1.9.98: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.4.33 1.4.33-r1: High-performance, distributed memory object caching system
+net-misc/memcached 1.4.33 1.4.33-r1 1.4.34: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.3.5 3.4.2 9999: Simple, powerful and moeful twitter client
@@ -17621,7 +17621,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.15 1.1.15-r2 1.1.16 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.15-r2 1.1.16 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 2.5.0 9999: Newlib is a C library intended for use on embedded systems
