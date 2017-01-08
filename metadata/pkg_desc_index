@@ -2033,6 +2033,7 @@ app-office/orage 4.12.1: A time managing application (and panel plug-in) for the
 app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
+app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
@@ -13500,7 +13501,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
 media-sound/jack2 1.9.10: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
-media-sound/jalv 1.4.4 1.4.6 1.6.0: Simple but fully featured LV2 host for Jack
+media-sound/jalv 1.4.4 1.4.6 1.6.0-r1: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
