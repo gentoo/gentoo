@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 DIST_AUTHOR=DROLSKY
-DIST_VERSION=0.20
+DIST_VERSION=0.22
 DIST_EXAMPLES=("eg/*")
 inherit perl-module
 
