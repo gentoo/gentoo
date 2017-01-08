@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://taskwarrior.org/download/task-2.5.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=04529561cf4a6d6acac52eb21a3e5876
+_md5_=f9eafcb6d3fd60ee80a3bff8cd57f157

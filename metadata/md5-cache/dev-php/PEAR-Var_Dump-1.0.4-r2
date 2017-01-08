@@ -1,0 +1,14 @@
+DEFINED_PHASES=install test
+DEPEND=test? ( dev-lang/php:* dev-php/PEAR-PEAR )
+DESCRIPTION=Dump structured information about a variable
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Var_Dump
+IUSE=examples test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Var_Dump-1.0.4.tgz
+_eclass_exported_funcs=src_test:- src_install:-
+_md5_=85076afab0008ca605ecc681f9560c4c

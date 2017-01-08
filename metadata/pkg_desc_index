@@ -1944,7 +1944,7 @@ app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.3.18 0.4.0: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4 0.4-r1: A command line timer and stopwatch
-app-misc/vcp 2.2-r1: copy files/directories in a curses interface
+app-misc/vcp 2.2-r1 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.7.2 0.8.1a 0.8.2: Console file manager with vi(m)-like keybindings
 app-misc/vit 1.2 9999: Perl/Curses front-end for Taskwarrior (app-misc/task)
 app-misc/vittk 1.3: A front end for Taskwarrior (app-misc/task)
@@ -1952,7 +1952,7 @@ app-misc/vlock 2.2.3: A console screen locker
 app-misc/vzstats 0.3.2 0.4 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 5.2.7 5.3.3 5.3.4: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
-app-misc/when 1.1.33 1.1.35 1.1.36: Extremely simple personal calendar program aimed at the Unix geek who wants something minimalistic
+app-misc/when 1.1.36: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.15: Helpful utility to attack Repetitive Strain Injury (RSI)
@@ -4478,7 +4478,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.22.3_rc4 5.24.0-r1 5.24.0-r2 5.24.1_rc4: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.28 5.6.29 7.0.14-r1 7.1.0-r3: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.10-r1 2.7.12 3.4.3-r1 3.4.5 3.5.2: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.10-r1 2.7.12 3.4.3-r1 3.4.5 3.5.2 3.6.0: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 2.4.4 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7 10.0: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.10 2016.11 2016.12 9999: A compiler for the Perl 6 programming language
@@ -6905,7 +6905,7 @@ dev-php/PEAR-Text_Wiki_BBCode 0.0.4-r2: BBCode parser for Text_Wiki
 dev-php/PEAR-Text_Wiki_Mediawiki 0.2.0-r1: Mediawiki parser for Text_Wiki
 dev-php/PEAR-Translation2 2.0.4: Class for multilingual applications management
 dev-php/PEAR-Validate 0.8.5: Validation class
-dev-php/PEAR-Var_Dump 1.0.4-r1: Provides methods for dumping structured information about a variable
+dev-php/PEAR-Var_Dump 1.0.4-r2: Dump structured information about a variable
 dev-php/PEAR-VersionControl_SVN 0.5.1 0.5.2: Simple OO wrapper interface for the Subversion command-line client
 dev-php/PEAR-XML_Beautifier 1.2.2-r1: Adds indentation and linebreaks, replace entities, formats comments and makes XML easier to read
 dev-php/PEAR-XML_Feed_Parser 1.0.5-r1: Provides an unified API for handling Atom/RSS
