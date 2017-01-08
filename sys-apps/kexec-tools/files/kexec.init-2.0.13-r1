@@ -20,6 +20,14 @@ auto_prefix_bootpath() {
 	esac
 }
 
+get_genkernel_arch() {
+	case $1 in
+	  x86_64) echo "amd64" ;;
+	  i[3456]86) echo "x86" ;;
+	  *) echo "$1" ;;
+	esac
+}
+
 image_path() {
 	# Do no sanity checking if the user has set a value.
 	if [ -n "${KNAME}" ]; then
@@ -27,13 +35,15 @@ image_path() {
 		return
 	fi
 
-	local x kver="$(uname -r)" karch="$(uname -m)"
+	local x kver="$(uname -r)" karch="$(uname -m)" 
+	local gkarch="$(get_genkernel_arch $karch)"
 	for x in \
 		"bzImage" \
 		"vmlinuz" \
 		"bzImage-${kver}" \
 		"vmlinuz-${kver}" \
 		"kernel-genkernel-${karch}-${kver}" \
+		"kernel-genkernel-${gkarch}-${kver}" \
 		"kernel-${kver}" \
 		"kernel-${karch}"; do
 		if [ -e "${BOOTPART}/${x}" ]; then
@@ -53,6 +63,7 @@ initrd_path() {
 	fi
 
 	local x kver="$(uname -r)" karch="$(uname -m)"
+	local gkarch="$(get_genkernel_arch $karch)"
 	for x in \
 		"initrd" \
 		"initrd.img-${kver}" \
@@ -60,6 +71,7 @@ initrd_path() {
 		"initrd-${kver}" \
 		"initramfs-${kver}.img" \
 		"initramfs-genkernel-${karch}-${kver}"; do
+		"initramfs-genkernel-${gkarch}-${kver}"; do
 		if [ -e "${BOOTPART}/${x}" ]; then
 			echo "${BOOTPART}/${x}"
 			return 0
