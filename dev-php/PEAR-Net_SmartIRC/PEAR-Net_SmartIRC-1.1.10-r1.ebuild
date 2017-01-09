@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples"
 
-RDEPEND="dev-lang/php:*
-	dev-php/PEAR-PEAR"
+RDEPEND="dev-lang/php:*"
 
 S="${WORKDIR}/${MY_P}"
 

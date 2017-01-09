@@ -5,7 +5,7 @@ EAPI="6"
 
 if [[ ${PV} == 9999 ]]; then
 	ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/gentoo/${PN}.git"
+	EGIT_REPO_URI="https://github.com/heroxbd/${PN}.git"
 else
 	SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
