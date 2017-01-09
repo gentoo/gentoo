@@ -11760,7 +11760,7 @@ kde-apps/plasma-runtime 16.04.3: Script engine and package tool for plasma
 kde-apps/plasma-telepathy-meta 16.08.3 16.12.0: Plasma Telepathy client
 kde-apps/poxml 16.08.3 16.12.0: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 16.08.3 16.12.0: Manage print jobs and printers in Plasma
-kde-apps/pykde4 4.14.3-r1: Python bindings for KDE SC 4
+kde-apps/pykde4 4.14.3-r1 4.14.3-r2: Python bindings for KDE SC 4
 kde-apps/renamedlg-plugins 16.04.3: KDE RenameDlg plugins
 kde-apps/rocs 16.08.3 16.12.0: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 16.08.3 16.12.0: KWallet extension for signond
