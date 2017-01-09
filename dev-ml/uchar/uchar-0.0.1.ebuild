@@ -1,8 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
+
+inherit findlib
 
 DESCRIPTION="Uchar compatibility library"
 HOMEPAGE="https://github.com/ocaml/uchar"
@@ -13,9 +15,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-lang/ocaml:="
-DEPEND="${RDEPEND}
-	dev-ml/opam"
+RDEPEND=">=dev-lang/ocaml-4.03:="
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	ocaml pkg/build.ml \
@@ -28,10 +29,9 @@ src_test() {
 }
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
+	# Can't use opam-installer here as it is an opam dep...
+	findlib_src_preinst
+	mv _build/pkg/META{.empty,} || die
+	ocamlfind install ${PN} _build/pkg/META || die
 	dodoc README.md CHANGES.md
 }
