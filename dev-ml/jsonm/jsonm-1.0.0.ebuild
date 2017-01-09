@@ -1,8 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
+
+inherit findlib
 
 DESCRIPTION="Non-blocking streaming JSON codec for OCaml"
 HOMEPAGE="http://erratique.ch/software/jsonm"
@@ -18,7 +20,6 @@ RDEPEND="dev-ml/uutf:=
 	dev-ml/uchar:="
 DEPEND="${RDEPEND}
 	dev-ml/topkg
-	dev-ml/opam
 	dev-ml/ocamlbuild
 	dev-ml/findlib"
 
@@ -29,10 +30,10 @@ src_compile() {
 }
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
+	# Can't use opam-installer here as it is an opam dep...
+	findlib_src_preinst
+	local nativelibs="$(echo _build/src/${PN}.cm{x,xa,xs,ti} _build/src/${PN}.a)"
+	ocamlfind install ${PN} _build/pkg/META _build/src/${PN}.mli _build/src/${PN}.cm{a,i} ${nativelibs} || die
+	newbin _build/test/jsontrip.native jsontrip
 	dodoc CHANGES.md TODO.md README.md
 }
