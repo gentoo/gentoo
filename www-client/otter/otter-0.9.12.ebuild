@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 WANT_CMAKE="always"
 inherit eutils cmake-utils
 
@@ -39,6 +39,7 @@ S=${WORKDIR}/${PN}-browser-${PV/_p/-dev}
 DOCS=( CHANGELOG CONTRIBUTING.md TODO )
 
 src_prepare() {
+	default
 	if [[ -n ${LINGUAS} ]]; then
 		local lingua
 		for lingua in resources/translations/*.qm; do
