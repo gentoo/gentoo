@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
@@ -51,8 +51,6 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	epatch -p1 "${FILESDIR}"/${P}-tinfo.patch
-
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet.conf.in
 
@@ -60,6 +58,7 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
+	epatch "${FILESDIR}/${P}-ruby-fixes.patch"
 	epatch_user
 	eautoreconf
 }
