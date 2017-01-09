@@ -3492,6 +3492,7 @@ mail-client/claws-mail:spamassassin - Build mail-filter/spamassassin plugin
 mail-client/claws-mail:valgrind - Add support for memory debugging using valgrind
 mail-client/evolution:bogofilter - Build mail-filter/bogofilter plugin
 mail-client/evolution:crypt - Enable GPG encryption support using app-crypt/gnupg and app-crypt/pinentry
+mail-client/evolution:geolocation - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain
 mail-client/evolution:highlight - Enable text highlighting plugin
 mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP or Active Directory server using net-nds/openldap
 mail-client/evolution:map - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain
