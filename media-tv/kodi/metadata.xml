@@ -15,8 +15,11 @@
  <flag name="fishbmc">Enable fishBMC visualization plugin</flag>
  <flag name="gles">Enable support for GLES</flag>
  <flag name="goom">Enable GOOM visualization plugin</flag>
+ <flag name="lirc">Enable support for controlling Totem with a remote control using <pkg>app-misc/lirc</pkg></flag>
  <flag name="midi">Support MIDI files</flag>
  <flag name="nfs">Enable NFS client support</flag>
+ <flag name="nonfree">Enable non-free components</flag>
+ <flag name="dvd">Enable optical (CD/DVD drive) support</flag>
  <flag name="projectm">Enable projectM visualization plugin</flag>
  <flag name="pvr">Enable MythTV support</flag>
  <flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
@@ -24,9 +27,12 @@
  <flag name="sftp">Support browsing files over SFTP</flag>
  <flag name="spectrum">Enable spectrum visualization plugin</flag>
  <flag name="texturepacker">Support packing skin textures</flag>
+ <flag name="libusb"> Use <pkg>virtual/libusb</pkg> for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use <pkg>sys-fs/udev</pkg>.</flag>
+ <flag name="udev">Use <pkg>sys-fs/udev</pkg> rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
  <flag name="waveform">Enable waveform visualization plugin</flag>
  <flag name="webserver">Enable internal webserver</flag>
  <flag name="xrandr">Support X randr extension</flag>
+ <flag name="xslt">Enable XSLT support using <pkg>dev-libs/libxslt</pkg></flag>
 </use>
 <upstream>
  <bugs-to>http://trac.kodi.tv/</bugs-to>
