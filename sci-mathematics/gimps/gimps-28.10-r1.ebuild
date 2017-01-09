@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ DOCS="license.txt readme.txt stress.txt whatsnew.txt undoc.txt"
 src_install() {
 	dodir ${I} /var/lib/gimps
 	pax-mark m mprime
-	cp mprime "${D}/${I}"
+	cp mprime "${D}/${I}" || die
 	fperms a-w "${I}/mprime"
 	fowners root:0 "${I}"
 	fowners root:0 "${I}/mprime"
