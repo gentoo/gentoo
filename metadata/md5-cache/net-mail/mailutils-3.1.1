@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/nail sys-libs/ncurses:= sys-libs/readline:= dev-libs/libltdl:0 virtual/mta berkdb? ( sys-libs/db:= ) bidi? ( dev-libs/fribidi ) gdbm? ( sys-libs/gdbm ) guile? ( dev-scheme/guile:= ) kerberos? ( virtual/krb5 ) kyotocabinet? ( dev-db/kyotocabinet ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls:= ) tcpd? ( sys-apps/tcp-wrappers ) tokyocabinet? ( dev-db/tokyocabinet ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A useful collection of mail servers, clients, and filters
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/mailutils/mailutils.html
+IUSE=berkdb bidi +clients gdbm sasl guile ipv6 kerberos kyotocabinet ldap mysql nls pam postgres python servers ssl static-libs +threads tcpd tokyocabinet python_targets_python2_7
+KEYWORDS=~amd64 ~arm64 ~hppa ~ppc ~x86 ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=!mail-client/nmh !mail-filter/libsieve !mail-client/mailx !mail-client/nail sys-libs/ncurses:= sys-libs/readline:= dev-libs/libltdl:0 virtual/mta berkdb? ( sys-libs/db:= ) bidi? ( dev-libs/fribidi ) gdbm? ( sys-libs/gdbm ) guile? ( dev-scheme/guile:= ) kerberos? ( virtual/krb5 ) kyotocabinet? ( dev-db/kyotocabinet ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) nls? ( sys-devel/gettext ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) sasl? ( virtual/gsasl ) ssl? ( net-libs/gnutls:= ) tcpd? ( sys-apps/tcp-wrappers ) tokyocabinet? ( dev-db/tokyocabinet )
+REQUIRED_USE=python? ( python_targets_python2_7 ) servers? ( tcpd )
+SLOT=0
+SRC_URI=mirror://gnu/mailutils/mailutils-3.1.1.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b990f750d60588e7c7080770fa050bf1
