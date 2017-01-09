@@ -6888,7 +6888,7 @@ dev-php/PEAR-SOAP 0.13.0: SOAP Client/Server for PHP 4
 dev-php/PEAR-Services_Amazon 0.8.0: Provides access to Amazon's retail and associate web services
 dev-php/PEAR-Services_JSON 1.0.3: PHP implementaion of json_encode/decode
 dev-php/PEAR-Services_TinyURL 0.1.2: An interface for creating TinyURLs with their API and looking up destinations of given TinyURLs
-dev-php/PEAR-Services_W3C_CSSValidator 0.2.2-r1: Provides an object oriented interface for the W3 CSS Validator
+dev-php/PEAR-Services_W3C_CSSValidator 0.2.3: Provides an object oriented interface for the W3 CSS Validator
 dev-php/PEAR-Services_W3C_HTMLValidator 1.0.0-r1: Object oriented interface to the API of validator.w3.org
 dev-php/PEAR-Services_Weather 1.4.6: This class acts as an interface to various online weather-services
 dev-php/PEAR-Spreadsheet_Excel_Writer 0.9.3: Package for generating Excel spreadsheets
@@ -10137,7 +10137,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.2 3.16.3 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.33.0 0.35.0 0.36.0: Open source build system
+dev-util/meson 0.33.0 0.35.0 0.36.0 0.37.1 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1: Free Win64 runtime and import library definitions
