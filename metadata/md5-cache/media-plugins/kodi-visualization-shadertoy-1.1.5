@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND==dev-libs/libplatform-2* media-tv/kodi virtual/opengl sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Shadertoy visualizer for Kodi
+EAPI=6
+HOMEPAGE=https://github.com/notspiff/visualization.shadertoy
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==dev-libs/libplatform-2* media-tv/kodi virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/notspiff/visualization.shadertoy/archive/v1.1.5.tar.gz -> kodi-visualization-shadertoy-1.1.5.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:kodi-addon src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	kodi-addon	ed9d0b2d79a8283ed0f06617b198a601	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=64c9ee2225d67ad96016925d0d47c3c9
