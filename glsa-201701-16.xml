@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tiff</product>
   <announced>January 09, 2017</announced>
-  <revised>January 09, 2017: 1</revised>
+  <revised>January 09, 2017: 2</revised>
   <bug>484542</bug>
   <bug>534108</bug>
   <bug>538318</bug>
@@ -102,11 +102,10 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8331">CVE-2016-8331</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9273">CVE-2016-9273</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9297">CVE-2016-9297</uri>
-    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9318">CVE-2016-9318</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9448">CVE-2016-9448</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9453">CVE-2016-9453</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9532">CVE-2016-9532</uri>
   </references>
   <metadata tag="requester" timestamp="Mon, 11 Jul 2016 05:00:13 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Mon, 09 Jan 2017 16:52:15 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 09 Jan 2017 20:05:48 +0000">b-man</metadata>
 </glsa>
