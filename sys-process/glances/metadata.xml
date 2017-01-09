@@ -8,12 +8,6 @@
 	<longdescription>
 	Glances is a cross-platform curses-based monitoring tool written in Python.
 </longdescription>
-	<use>
-		<flag name="web">Enables the web server mode</flag>
-		<flag name="hddtemp">Enables hard drive temperature monitoring</flag>
-		<flag name="snmp">Enables SNMP support</flag>
-		<flag name="chart">Enables support of graph charts via matplotlib</flag>
-	</use>
 	<upstream>
 		<remote-id type="pypi">Glances</remote-id>
 		<remote-id type="github">nicolargo/glances</remote-id>
