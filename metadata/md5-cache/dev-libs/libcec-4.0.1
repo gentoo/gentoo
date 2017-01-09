@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=virtual/udev >=dev-libs/libplatform-2.0.0 raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 ) xrandr? ( x11-libs/libXrandr ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) python? ( dev-lang/swig ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
+EAPI=6
+HOMEPAGE=http://libcec.pulse-eight.com
+IUSE=cubox exynos python raspberry-pi +xrandr python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/udev >=dev-libs/libplatform-2.0.0 raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 ) xrandr? ( x11-libs/libXrandr ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) )
+SLOT=0
+SRC_URI=https://github.com/Pulse-Eight/libcec/archive/libcec-4.0.1.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4a1241cbeedfd93187ea7ab640391ab6
