@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads"
 OPENGL_REQUIRED="always"
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -12,16 +12,18 @@ WEBKIT_REQUIRED="always"
 inherit python-r1 portability kde4-base multilib eutils
 
 DESCRIPTION="Python bindings for KDE SC 4"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="akonadi debug doc examples test"
 HOMEPAGE="https://techbase.kde.org/Development/Languages/Python"
+
+SRC_URI+=" https://dev.gentoo.org/~johu/distfiles/${P}-sip419.patch.bz2"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	<dev-python/PyQt4-4.12[${PYTHON_USEDEP},dbus,declarative,script,sql,svg,webkit,X]
-	<dev-python/sip-4.19:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt4-4.12[${PYTHON_USEDEP},dbus,declarative,script,sql,svg,webkit,X]
+	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
 	kde-frameworks/kdelibs:4[opengl]
 	akonadi? ( $(add_kdeapps_dep kdepimlibs) )
 "
@@ -30,7 +32,10 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 "
 
-PATCHES=( "${FILESDIR}/${P}-gcc-5.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-5.patch"
+	"${DISTDIR}/${P}-sip419.patch.bz2"
+)
 
 pkg_setup() {
 	kde4-base_pkg_setup
