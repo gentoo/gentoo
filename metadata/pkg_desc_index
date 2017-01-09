@@ -7173,7 +7173,7 @@ dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0 2.42.0: Amazon Web Services API
 dev-python/boto3 1.3.1 1.4.0 1.4.1: The AWS SDK for Python
 dev-python/botocore 1.4.60 1.4.62 1.4.65: Low-level, data-driven core of boto 3.
-dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.7 0.12.8 0.12.9 0.12.10 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.2.8 3.2.9: A Python 3 implementation for client-side web programming
