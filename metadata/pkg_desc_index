@@ -2107,7 +2107,7 @@ app-portage/grs 0.4 0.5 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gs-pypi 0.1 0.2 0.2.1 0.2.1-r1 9999: g-sorcery backend for pypi packages
 app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
-app-portage/java-ebuilder 0.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
+app-portage/java-ebuilder 0.1 0.2 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo4 0.90.5: Graphical Portage frontend based on KDE4/Qt4
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.1.0-r3 2.2.0-r7 2.3.0-r1 2.4.0-r1 2.4.1-r1 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 9999: metadata.xml generator for ebuilds
@@ -6863,7 +6863,7 @@ dev-php/PEAR-Net_Ping 2.4.5-r2: OS independent wrapper class for executing ping 
 dev-php/PEAR-Net_SMTP 1.7.2-r3: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.2-r1 1.0.3: Generic server class for PHP
 dev-php/PEAR-Net_Sieve 1.5.2-r1: An API for talking to sieve (RFC 3028) servers
-dev-php/PEAR-Net_SmartIRC 1.1.4 1.1.10: PHP class to communicate with IRC networks
+dev-php/PEAR-Net_SmartIRC 1.1.4 1.1.10-r1: PHP class to communicate with IRC networks
 dev-php/PEAR-Net_Socket 1.0.14-r3: PHP class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
 dev-php/PEAR-Net_URL 1.0.15: Easy parsing of URLs
