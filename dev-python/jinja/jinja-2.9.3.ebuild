@@ -9,28 +9,26 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit eutils distutils-r1
 
-MY_PN=Jinja2
-MY_P=${MY_PN}-${PV}
-
 DESCRIPTION="A full-featured template engine for Python"
 HOMEPAGE="http://jinja.pocoo.org/ https://pypi.python.org/pypi/Jinja2"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+
+# pypi tarball is missing tests
+SRC_URI="https://github.com/pallets/jinja/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
-IUSE="doc examples"
+IUSE="doc examples test"
 
 RDEPEND="
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	!dev-python/jinja:compat"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 # XXX: handle Babel better?
-
-S=${WORKDIR}/${MY_P}
 
 wrap_opts() {
 	local mydistutilsargs=()
@@ -54,7 +52,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test
+	py.test || die
 }
 
 python_install_all() {
