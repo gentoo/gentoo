@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
-NSPR_VER="4.12"
+NSPR_VER="4.13.1"
 RTM_NAME="NSS_${PV//./_}_RTM"
 # Rev of https://git.fedorahosted.org/cgit/nss-pem.git
 PEM_GIT_REV="429b0222759d8ad8e6dcd29e62875ae3efd69116"
