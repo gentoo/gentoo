@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,8 @@ COMMON_DEPEND="kernel_linux? ( sys-libs/libutempter )
 	unicode? ( x11-apps/luit )
 	Xaw3d? ( x11-libs/libXaw3d )"
 RDEPEND="${COMMON_DEPEND}
-	media-fonts/font-misc-misc"
+	media-fonts/font-misc-misc
+	x11-apps/rgb"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x11-proto/kbproto
