@@ -284,7 +284,7 @@ app-arch/makeself 2.1.5-r2 2.2.0-r1: shell script that generates a self-extracti
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.1 1.2 1.3: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
-app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09 15.09-r2 15.14 15.14.1 16.02-r1: Port of 7-Zip archiver for Unix
+app-arch/p7zip 16.02-r1: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.6.3 0.6.11 0.6.12 0.6.13: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
@@ -2208,6 +2208,7 @@ app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.37.0: A hierarchical note taking application
 app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
 app-text/clara 20031214 20031214-r1: An OCR (Optical Character Recognition) program
+app-text/cmark 0.27.1: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
@@ -12005,8 +12006,8 @@ kde-plasma/libtaskmanager 4.11.22: A library that provides basic taskmanager fun
 kde-plasma/milou 0.1 5.8.3 5.8.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.8.3 5.8.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.8.3 5.8.5 5.8.5-r1: KDE Plasma desktop
-kde-plasma/plasma-integration 5.8.3 5.8.5 5.8.5-r1: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-desktop 5.8.3 5.8.5-r1: KDE Plasma desktop
+kde-plasma/plasma-integration 5.8.3 5.8.5-r1: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.8.3 5.8.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 0.9.3.6 5.8.3 5.8.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.8.3 5.8.5: Plasma applet for audio volume management using PulseAudio
