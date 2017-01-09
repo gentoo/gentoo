@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit pax-utils systemd
+inherit pax-utils systemd readme.gentoo-r1
 
 DESCRIPTION="The Great Internet Mersenne Prime Search"
 HOMEPAGE="http://mersenne.org/"
@@ -33,12 +33,14 @@ DOCS="license.txt readme.txt stress.txt whatsnew.txt undoc.txt"
 src_install() {
 	dodir ${I} /var/lib/gimps
 	pax-mark m mprime
-	cp mprime "${D}/${I}"
+	cp mprime "${D}/${I}" || die
 	fperms a-w "${I}/mprime"
 	fowners root:0 "${I}"
 	fowners root:0 "${I}/mprime"
 
 	einstalldocs
+
+	readme.gentoo_create_doc
 
 	newinitd "${FILESDIR}/${PN}-28.9-init.d" gimps
 	newconfd "${FILESDIR}/${PN}-25.6-conf.d" gimps
@@ -48,16 +50,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
-	einfo "You can use \`/etc/init.d/gimps start\` to start a GIMPS client in the"
-	einfo "background at boot. Have a look at /etc/conf.d/gimps and check some"
-	einfo "configuration options."
-	einfo
-	einfo "If you don't want to use the init script to start gimps, remember to"
-	einfo "pass it an additional command line parameter specifying where the data"
-	einfo "files are to be stored, e.g.:"
-	einfo "   ${I}/mprime -w/var/lib/gimps"
-	echo
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
