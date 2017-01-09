@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 SCM=""
 if [[ ${PV} == "9999" ]] ; then
-	SCM="git-r3"
+	SCM="autotools git-r3"
 	EGIT_REPO_URI="https://git.kernel.org/cgit/linux/kernel/git/legion/${PN}.git"
 	EGIT_BRANCH="master"
 else
@@ -14,7 +14,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
-inherit autotools eutils ${SCM}
+inherit eutils ${SCM}
 
 DESCRIPTION="Keyboard and console utilities"
 HOMEPAGE="http://kbd-project.org/"
@@ -45,10 +45,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.0-tests.patch #485116
-	epatch "${FILESDIR}"/${P}-stdarg.patch #497200
-	epatch "${FILESDIR}"/${P}-big_endian.patch #508436
-	eautoreconf
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
