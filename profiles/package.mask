@@ -335,10 +335,6 @@ media-video/motion
 # Bug #483888
 <=dev-perl/Archive-Rar-2.20.0-r1
 
-# Alon Bar-Lev <alonbl@gentoo.org> (13 May 2016)
-# Force gnutls-3.4 testing so we can stabilize it.
->=net-libs/gnutls-3.5.0
-
 # Lars Wendler <polynomial-c@gentoo.org> (2 May 2016)
 # Broken reverse deps. At least one header file has been moved around.
 >=media-gfx/imagemagick-7.0.1.0

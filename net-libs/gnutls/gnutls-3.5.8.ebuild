@@ -14,19 +14,19 @@ LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx +crywrap dane doc examples guile idn nls +openssl pkcs11 static-libs test test-full +tls-heartbeat tools valgrind zlib ${IUSE_LINGUAS// / linguas_}"
+IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 sslv2 +sslv3 static-libs test test-full +tls-heartbeat tools valgrind zlib ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
 	test? ( tools )
-	test-full? ( pkcs11 openssl tools zlib )"
+	test-full? ( pkcs11 openssl idn tools zlib )"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
-RDEPEND=">=dev-libs/libtasn1-4.3:=[${MULTILIB_USEDEP}]
+RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
+	dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 	>=dev-libs/nettle-3.1:=[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1:=[${MULTILIB_USEDEP}]
 	tools? ( sys-devel/autogen )
-	crywrap? ( net-dns/libidn )
 	dane? ( >=net-dns/unbound-1.4.20[${MULTILIB_USEDEP}] )
 	guile? ( >=dev-scheme/guile-1.8:=[networking] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
@@ -54,12 +54,6 @@ DEPEND="${RDEPEND}
 	)
 	nls? ( sys-devel/gettext )
 	test? ( app-misc/datefudge )"
-
-DOCS=( AUTHORS ChangeLog NEWS README THANKS doc/TODO )
-
-PATCHES=(
-	"${FILESDIR}/${PN}-3.4.7-build-allow-installing-man-1-even-with-disable-doc.patch"
-)
 
 pkg_setup() {
 	# bug#520818
@@ -98,6 +92,10 @@ src_prepare() {
 multilib_src_configure() {
 	LINGUAS="${LINGUAS//en/en@boldquot en@quot}"
 
+	# remove magic of library detection
+	# bug#438222
+	libconf=($("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g'))
+
 	# TPM needs to be tested before being enabled
 	# hardware-accell is disabled on OSX because the asm files force
 	#   GNU-stack (as doesn't support that) and when that's removed ld
@@ -112,18 +110,20 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc) \
 		$(multilib_native_use_enable doc gtk-doc) \
 		$(multilib_native_use_enable guile) \
-		$(multilib_native_use_enable crywrap) \
 		$(multilib_native_use_enable test tests) \
 		$(multilib_native_use_enable valgrind valgrind-tests) \
 		$(use_enable nls) \
 		$(use_enable openssl openssl-compatibility) \
 		$(use_enable tls-heartbeat heartbeat-support) \
+		$(use_enable sslv2 ssl2-support) \
+		$(use_enable sslv3 ssl3-support) \
 		$(use_enable static-libs static) \
 		$(use_with pkcs11 p11-kit) \
 		$(use_with zlib) \
 		$(use_with idn) \
 		--without-tpm \
 		--with-unbound-root-key-file=/etc/dnssec/root-anchors.txt \
+		"${libconf[@]}" \
 		$([[ ${CHOST} == *-darwin* ]] && echo --disable-hardware-acceleration)
 }
 
