@@ -18108,7 +18108,7 @@ www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 42.0.2393.85 42.0.2393.94: A fast and secure web browser
 www-client/opera-beta 43.0.2442.7: A fast and secure web browser
 www-client/opera-developer 44.0.2463.0: A fast and secure web browser
-www-client/otter 0.9.10 0.9.11 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 0.9.11 0.9.12 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web

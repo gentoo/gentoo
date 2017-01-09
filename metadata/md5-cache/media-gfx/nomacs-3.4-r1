@@ -4,7 +4,7 @@ DESCRIPTION=Qt-based image viewer
 EAPI=6
 HOMEPAGE=http://www.nomacs.org/
 IUSE=+jpeg opencv raw tiff zip
-KEYWORDS=~amd64 ~amd64-linux
+KEYWORDS=amd64 ~amd64-linux
 LICENSE=GPL-3+
 RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 >=media-gfx/exiv2-0.25:= opencv? ( media-libs/opencv:=[-qt4(-)] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) zip? ( >=dev-libs/quazip-0.7.2[qt5] )
 REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/nomacs/nomacs/archive/3.4.tar.gz -> nomacs-3.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=1ef34d8d65bb789b9225bc81ababee4e
+_md5_=54fbc29a2782340a85458027ff3ca313
