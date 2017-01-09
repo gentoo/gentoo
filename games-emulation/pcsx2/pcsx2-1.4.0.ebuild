@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${PN}-${MY_PV}"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc5.patch )
 
 clean_locale() {
 	rm -R "${S}"/locales/"${1}" || die
