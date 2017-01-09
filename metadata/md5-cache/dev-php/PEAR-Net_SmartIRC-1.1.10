@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP class to communicate with IRC networks
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Net_SmartIRC
+IUSE=doc examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
+SLOT=0
+SRC_URI=https://github.com/pear/Net_SmartIRC/archive/v1.1.10.tar.gz -> Net_SmartIRC-1.1.10.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=9219165364466201068e493c87f3a519
