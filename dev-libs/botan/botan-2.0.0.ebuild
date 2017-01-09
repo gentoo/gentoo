@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit eutils multilib python-r1 toolchain-funcs
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://botan.randombit.net/"
 SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="0"
+SLOT="0/2"
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 
@@ -34,6 +34,10 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_pretend() {
 	# Botan 1.11 requires -std=c++11
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -45,9 +49,9 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	sed \
+	use doc || sed \
 		-e "/^install:/s/ docs//" \
-		-i src/build-data/makefile/gmake.in || die "sed failed"
+		-i src/build-data/makefile/gmake.in
 	use python && python_copy_sources
 }
 
@@ -89,6 +93,7 @@ src_configure() {
 		--cpu=${CHOSTARCH} \
 		--with-endian="$(tc-endian)" \
 		--without-sphinx \
+		$(use_with doc sphinx) \
 		$(use_with bzip2) \
 		$(use_with lzma) \
 		$(use_with sqlite sqlite3) \
@@ -102,10 +107,6 @@ src_configure() {
 
 src_compile() {
 	emake CXX="$(tc-getCXX) -pthread" AR="$(tc-getAR) crs" LIB_OPT="-c ${CXXFLAGS}"
-	if use doc; then
-		einfo "Generation of documentation"
-		sphinx-build doc doc_output
-	fi
 }
 
 src_test() {
@@ -120,17 +121,8 @@ src_install() {
 	fi
 
 	# Add compatibility symlinks.
-	[[ -e "${ED}usr/bin/botan-config" ]] && die "Compatibility code no longer needed"
 	[[ -e "${ED}usr/$(get_libdir)/pkgconfig/botan.pc" ]] && die "Compatibility code no longer needed"
-	dosym botan-config-1.11 /usr/bin/botan-config
-	dosym botan-1.11.pc /usr/$(get_libdir)/pkgconfig/botan.pc
+	dosym botan-2.pc /usr/$(get_libdir)/pkgconfig/botan.pc
 
 	use python && python_foreach_impl python_optimize
-
-	if use doc; then
-		pushd doc_output > /dev/null
-		insinto /usr/share/doc/${PF}/html
-		doins -r [a-z]* _static
-		popd > /dev/null
-	fi
 }

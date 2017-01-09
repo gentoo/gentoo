@@ -1,0 +1,26 @@
+From 0d8cbe137261b4f841a05eec5dd5659c8f510de0 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Mon, 9 Jan 2017 20:59:28 +0200
+Subject: [PATCH] build: pkg-config: fix include directory
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/build-data/botan.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/build-data/botan.pc.in b/src/build-data/botan.pc.in
+index 85943ab..753b8cd 100644
+--- a/src/build-data/botan.pc.in
++++ b/src/build-data/botan.pc.in
+@@ -1,7 +1,7 @@
+ prefix=%{prefix}
+ exec_prefix=${prefix}
+ libdir=${prefix}/%{libdir}
+-includedir=${prefix}/include/botan-%{version_major}
++includedir=${prefix}/include/botan-%{version_major}.%{version_minor}
+ 
+ Name: Botan
+ Description: Crypto and TLS for C++11
+-- 
+2.10.2
+
