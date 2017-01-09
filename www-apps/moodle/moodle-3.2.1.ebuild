@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ REQUIRED_USE="|| ( ${DB_TYPES} )"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-5.4.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	>=dev-lang/php-5.6.5[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 
