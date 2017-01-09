@@ -18,7 +18,7 @@ nobody:nobody:
 Then you can use `/etc/init.d/gimps start` to start a GIMPS client in the
 background at boot. Have a look at /etc/conf.d/gimps and check some
 configuration options.
-			        
+
 If you don't want to use the init script to start gimps, remember to
 pass it an additional command line parameter specifying where the data
 files are to be stored, e.g.:
