@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,15 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
+inherit eutils linux-info python-single-r1 cmake-utils
 
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
 LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
 CODENAME="Krypton"
+SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
+	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
+	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
@@ -21,15 +24,12 @@ case ${PV} in
 	;;
 *)
 	MY_PV=${PV/_p/_r}
-	MY_PV=${MY_PV//_alpha/a}
-	MY_PV=${MY_PV//_beta/b}
-	MY_PV=${MY_PV//_rc/rc}
+	MY_PV=${MY_PV/_alpha/a}
+	MY_PV=${MY_PV/_beta/b}
+	MY_PV=${MY_PV/_rc/rc}
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI="https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
-		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
-		https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
-		https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
-		!java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
+		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
 	KEYWORDS="~amd64 ~x86"
 
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
@@ -41,110 +41,103 @@ HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa bluetooth bluray caps cec dbus debug gles java midi mysql nfs +opengl profile pulseaudio +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
-# gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
+# use flag is called libusb so that it doesn't fool people in thinking that
+# it is _required_ for USB support. Otherwise they'll disable udev and
+# that's going to be worse.
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles java libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
-	?? ( gles vaapi )
+	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
 "
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	app-arch/bzip2
-	app-arch/unzip
-	app-arch/zip
-	app-i18n/enca
 	airplay? ( app-pda/libplist )
+	alsa? ( media-libs/alsa-lib )
+	bluetooth? ( net-wireless/bluez )
+	bluray? ( >=media-libs/libbluray-0.7.0 )
+	caps? ( sys-libs/libcap )
+	dbus? ( sys-apps/dbus )
+	dev-db/sqlite
 	dev-libs/expat
 	dev-libs/fribidi
-	dev-libs/libcdio[-minimal]
-	cec? ( >=dev-libs/libcec-3.0 )
+	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
 	dev-libs/libxml2
-	dev-libs/libxslt
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	>=dev-libs/yajl-2
-	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
+	dvd? ( dev-libs/libcdio[-minimal] )
+	gles? ( media-libs/mesa[gles2] )
+	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
 	media-fonts/noto
 	media-fonts/roboto
-	alsa? ( media-libs/alsa-lib )
-	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/jasper:=
-	media-libs/jbigkit
-	>=media-libs/libass-0.9.7
-	bluray? ( >=media-libs/libbluray-0.7.0 )
-	media-libs/libmad
-	media-libs/libmodplug
-	media-libs/libmpeg2
-	media-libs/libsamplerate
-	>=media-libs/taglib-1.9
-	media-libs/tiff:0=
-	media-sound/wavpack
-	>=media-video/ffmpeg-3.0:=[encode]
-	nfs? ( net-fs/libnfs:= )
-	webserver? ( net-libs/libmicrohttpd[messages] )
-	sftp? ( net-libs/libssh[sftp] )
-	net-misc/curl
-	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
-	bluetooth? ( net-wireless/bluez )
-	dbus? ( sys-apps/dbus )
-	caps? ( sys-libs/libcap )
-	sys-libs/zlib
-	virtual/jpeg:0=
-	usb? ( virtual/libusb:1 )
+	>=media-libs/libass-0.13.4
+	media-libs/mesa[egl]
+	>=media-libs/taglib-1.11.1
+	>=media-video/ffmpeg-3.1.6:=[encode]
 	mysql? ( virtual/mysql )
-	opengl? (
-		virtual/glu
-		virtual/opengl
-		>=media-libs/glew-1.5.6:=
+	>=net-misc/curl-7.51.0
+	nfs? ( net-fs/libnfs:= )
+	opengl? ( media-libs/glu )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.2j:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
-	gles? (
-		media-libs/mesa[gles2]
-	)
+	pulseaudio? ( media-sound/pulseaudio )
+	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
+	sftp? ( net-libs/libssh[sftp] )
+	sys-libs/zlib
+	udev? ( virtual/udev )
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
 		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
 		media-video/ffmpeg[vdpau]
 	)
+	webserver? ( >=net-libs/libmicrohttpd-0.9.50[messages] )
 	X? (
-		x11-apps/xdpyinfo
-		x11-apps/mesa-progs
-		x11-libs/libXinerama
+		x11-libs/libdrm
+		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
 	)
+	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi )
 "
 RDEPEND="${COMMON_DEPEND}
+	lirc? (
+		|| ( app-misc/lirc app-misc/inputlircd )
+	)
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
-	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )"
+	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
+"
 DEPEND="${COMMON_DEPEND}
+	app-arch/bzip2
+	app-arch/unzip
 	app-arch/xz-utils
+	app-arch/zip
 	dev-lang/swig
 	dev-libs/crossguid
-	dev-util/gperf
-	texturepacker? ( media-libs/giflib )
-	X? ( x11-proto/xineramaproto )
 	dev-util/cmake
-	x86? ( dev-lang/nasm )
+	dev-util/gperf
 	java? ( virtual/jre )
+	media-libs/giflib
+	>=media-libs/libjpeg-turbo-1.5.1:=
+	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x86? ( dev-lang/nasm )
+"
 # Force java for latest git version to avoid having to hand maintain the
 # generated addons package.  #488118
 [[ ${PV} == 9999 ]] && DEPEND+=" virtual/jre"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
-	"${FILESDIR}"/${PN}-9999-texturepacker.patch
-)
 
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
@@ -157,126 +150,69 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	[[ ${PV} == 9999 ]] && git-r3_src_unpack || default
-	cp "${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdcss/libdvdcss-master.tar.gz" || die
-	cp "${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdread/libdvdread-master.tar.gz" || die
-	cp "${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz" "${S}/tools/depends/target/libdvdnav/libdvdnav-master.tar.gz" || die
-}
-
 src_prepare() {
-	default
-
-	# some dirs ship generated autotools, some dont
-	multijob_init
-	local d dirs=(
-		tools/depends/native/TexturePacker/src/configure
-		$(printf 'f:\n\t@echo $(BOOTSTRAP_TARGETS)\ninclude bootstrap.mk\n' | emake -f - f)
-	)
-	for d in "${dirs[@]}" ; do
-		[[ -e ${d} ]] && continue
-		pushd ${d/%configure/.} >/dev/null || die
-		AT_NOELIBTOOLIZE="yes" AT_TOPLEVEL_EAUTORECONF="yes" \
-		multijob_child_init eautoreconf
-		popd >/dev/null || die
-	done
-	multijob_finish
-	elibtoolize
-
-	# Cross-compiler support
-	# We need JsonSchemaBuilder and TexturePacker binaries for the host system
-	# Later we need libsquish for the target system
-	if tc-is-cross-compiler ; then
-		mkdir "${WORKDIR}"/${CBUILD} || die
-		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
-		einfo "Building host tools"
-		cp -a "${S}"/{tools,xbmc} ./ || die
-		local tool tools=( JsonSchemaBuilder )
-		use texturepacker && tools+=( TexturePacker )
-		for tool in "${tools[@]}" ; do
-			tc-env_build emake -C tools/depends/native/$tool
-			mkdir "${S}"/tools/depends/native/$tool/bin || die
-			ln -s "${WORKDIR}"/${CBUILD}/tools/depends/native/$tool/bin/$tool \
-				"${S}"/tools/depends/native/$tool/bin/$tool || die
-		done
-		popd >/dev/null || die
-
-		emake -f codegenerator.mk
-
-		# Binary kodi.bin links against libsquish,
-		# so we need libsquish compiled for the target system
-		emake -C tools/depends/native/libsquish-native/ CXX=$(tc-getCXX)
-	elif [[ ${PV} == 9999 ]] || use java ; then #558798
-		tc-env_build emake -f codegenerator.mk
-	fi
-
-	# Disable internal func checks as our USE/DEPEND
-	# stuff handles this just fine already #408395
-	export ac_cv_lib_avcodec_ff_vdpau_vc1_decode_picture=yes
-
-	# Fix the final version string showing as "exported"
-	# instead of the SVN revision number.
-	export HAVE_GIT=no GIT_REV=${EGIT_VERSION:-exported}
+	cmake-utils_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
 		xbmc/linux/*.cpp || die
-
-	# Tweak autotool timestamps to avoid regeneration
-	find . -type f -exec touch -r configure {} + || die
 }
 
 src_configure() {
-	# Disable documentation generation
-	export ac_cv_path_LATEX=no
-	# Avoid help2man
-	export HELP2MAN=$(type -P help2man || echo true)
-	# No configure flage for this #403561
-	export ac_cv_lib_bluetooth_hci_devid=$(usex bluetooth)
-	# Requiring java is asine #434662
-	[[ ${PV} != 9999 ]] && export ac_cv_path_JAVA_EXE=$(which $(usex java java true))
+	local CMAKE_BUILD_TYPE=$(usex debug Debug RelWithDebInfo)
 
-	econf \
-		--disable-ccache \
-		--disable-optimizations \
-		--with-ffmpeg=shared \
-		$(use_enable alsa) \
-		$(use_enable airplay) \
-		$(use_enable bluray libbluray) \
-		$(use_enable caps libcap) \
-		$(use_enable cec libcec) \
-		$(use_enable dbus) \
-		$(use_enable debug) \
-		$(use_enable gles) \
-		$(use_enable midi mid) \
-		$(use_enable mysql) \
-		$(use_enable nfs) \
-		$(use_enable opengl gl) \
-		$(use_enable profile profiling) \
-		$(use_enable pulseaudio pulse) \
-		$(use_enable samba) \
-		$(use_enable sftp ssh) \
-		$(use_enable usb libusb) \
-		$(use_enable test gtest) \
-		$(use_enable texturepacker) \
-		$(use_enable upnp) \
-		$(use_enable vaapi) \
-		$(use_enable vdpau) \
-		$(use_enable webserver) \
-		$(use_enable X x11) \
-		$(use_enable zeroconf avahi)
+	local mycmakeargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_AIRTUNES=OFF
+		-DENABLE_AVAHI=$(usex zeroconf)
+		-DENABLE_BLUETOOTH=$(usex bluetooth)
+		-DENABLE_BLURAY=$(usex bluray)
+		-DENABLE_CCACHE=OFF
+		-DENABLE_CEC=$(usex cec)
+		-DENABLE_DBUS=$(usex dbus)
+		-DENABLE_DVDCSS=$(usex css)
+		-DENABLE_INTERNAL_CROSSGUID=OFF
+		-DENABLE_INTERNAL_FFMPEG=OFF
+		-DENABLE_CAP=$(usex caps)
+		-DENABLE_LIRC=$(usex lirc)
+		-DENABLE_MICROHTTPD=$(usex webserver)
+		-DENABLE_MYSQLCLIENT=$(usex mysql)
+		-DENABLE_NFS=$(usex nfs)
+		-DENABLE_NONFREE=$(usex nonfree)
+		-DENABLE_OPENGLES=$(usex gles)
+		-DENABLE_OPENGL=$(usex opengl)
+		-DENABLE_OPENSSL=$(usex ssl)
+		-DENABLE_OPTICAL=$(usex dvd)
+		-DENABLE_PLIST=$(usex airplay)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
+		-DENABLE_SMBCLIENT=$(usex samba)
+		-DENABLE_SSH=$(usex sftp)
+		-DENABLE_UDEV=$(usex udev)
+		-DENABLE_UPNP=$(usex upnp)
+		-DENABLE_VAAPI=$(usex vaapi)
+		-DENABLE_VDPAU=$(usex vdpau)
+		-DENABLE_X11=$(usex X)
+		-DENABLE_XSLT=$(usex xslt)
+		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz"
+		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
+		-Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz"
+	)
+
+	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+
+	cmake-utils_src_configure
 }
 
 src_compile() {
-	emake V=1
+	cmake-utils_src_compile all $(usev test)
 }
 
 src_install() {
-	default
+	cmake-utils_src_install
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
-	domenu tools/Linux/kodi.desktop
 	newicon media/icon48x48.png kodi.png
 
 	# Remove fontconfig settings that are used only on MacOSX.
@@ -289,17 +225,12 @@ src_install() {
 	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
 		usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf
 
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf || die
-	dosym /usr/share/fonts/noto/NotoMono-Regular.ttf \
-		usr/share/kodi/addons/skin.estuary/fonts/NotoMono-Regular.ttf
-
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf || die
-	dosym /usr/share/fonts/noto/NotoSans-Bold.ttf \
-		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Bold.ttf
-
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf || die
-	dosym /usr/share/fonts/noto/NotoSans-Regular.ttf \
-		usr/share/kodi/addons/skin.estuary/fonts/NotoSans-Regular.ttf
+	local f
+	for f in NotoMono-Regular.ttf NotoSans-Bold.ttf NotoSans-Regular.ttf ; do
+		rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/"${f}" || die
+		dosym /usr/share/fonts/noto/"${f}" \
+			usr/share/kodi/addons/skin.estuary/fonts/"${f}"
+	done
 
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
 	dosym /usr/share/fonts/roboto/Roboto-Thin.ttf \
