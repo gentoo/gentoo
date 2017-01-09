@@ -292,12 +292,6 @@ sci-libs/gdal ruby
 # Currently broken upstream. We still hope it will get fixed.
 app-office/libreoffice telepathy
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Aug 2015)
-# PDF generation fails due to missing dependencies and the general brokenness
-# of gtkdoc-pkpdf, bug #552356
-=net-libs/gnutls-2.12.23-r6 doc
-=net-libs/gnutls-3.3.15 doc
-
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
 # anything in the tree. The toolchain folks aren't keen to support it
