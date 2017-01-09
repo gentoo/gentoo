@@ -1,13 +1,14 @@
 DEFINED_PHASES=compile install test
-DEPEND=dev-lang/ocaml:= dev-ml/opam
+DEPEND=>=dev-lang/ocaml-4.03:= >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Uchar compatibility library
 EAPI=6
 HOMEPAGE=https://github.com/ocaml/uchar
 IUSE=+ocamlopt
 KEYWORDS=~amd64
 LICENSE=LGPL-2-with-linking-exception
-RDEPEND=dev-lang/ocaml:=
+RDEPEND=>=dev-lang/ocaml-4.03:=
 SLOT=0/0.0.1
 SRC_URI=https://github.com/ocaml/uchar/archive/v0.0.1.tar.gz -> uchar-0.0.1.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
-_md5_=dbfeb03bfe00bf24926d319fc6b9466e
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=c15f3206a4f7991dba93a503f79c2dae

@@ -5232,7 +5232,7 @@ dev-ml/ppx_type_conv 113.24.00 113.33.00 113.33.02: Support Library for type-dri
 dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
-dev-ml/qcheck 0.5: QuickCheck inspired property-based testing for OCaml
+dev-ml/qcheck 0.5 0.5.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 113.24.00 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2 0.2.1 9999: Functional reactive programming with incremental changes in data structures
