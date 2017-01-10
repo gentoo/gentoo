@@ -17,7 +17,7 @@ if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(get_version_component_range 1-2)/${MY_P}.tar.xz"
 	S="${WORKDIR}"/"${MY_P}"
 
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
 	LIBKT_VERSION_MIN="${PV}"
 	LIBKT_VERSION_MAX="99999999"
