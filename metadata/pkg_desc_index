@@ -242,7 +242,7 @@ app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
-app-arch/bloscpack 0.5.0 0.6.0: Command line interface for Blosc compression
+app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
 app-arch/bsdsfv 1.18-r1: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r6 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
@@ -4703,7 +4703,7 @@ dev-libs/libdivsufsort 2.0.1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
-dev-libs/libdynd 0.6.5 0.6.6: C++ dynamic multi-dimensionnal array library with Python exposure
+dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
@@ -7168,7 +7168,7 @@ dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, st
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
 dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blockdiag 1.5.3: blockdiag generates block-diagram image from text
-dev-python/blosc 1.2.8: High performance compressor optimized for binary data
+dev-python/blosc 1.2.8 1.4.4: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and disk
 dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
@@ -7267,7 +7267,7 @@ dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5 0.8.0: Cython implementation
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 0.8.1 0.10.2: Task scheduling and blocked algorithms for parallel processing
-dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1 0.5.2 0.5.3: Language defining a data description protocol
+dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1 0.5.2 0.5.3 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.0: A library to multiply test cases
@@ -7372,7 +7372,7 @@ dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
-dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
+dev-python/dynd-python 0.7.2: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2 2.3: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
@@ -7747,7 +7747,7 @@ dev-python/mpi4py 1.3.1 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 0.18 0.19 0.19-r1: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.6 0.4.7 0.4.8: MessagePack (de)serializer for Python
 dev-python/multidict 1.3.0_alpha1 2.0.1 2.1.0 2.1.2 2.1.4: multidict implementation
-dev-python/multipledispatch 0.4.6 0.4.7 0.4.8: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
+dev-python/multipledispatch 0.4.6 0.4.7 0.4.8 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munkres 1.0.5.4-r2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mwlib 0.15.15: Tools for parsing Mediawiki content to other formats
 dev-python/mwlib-ext 0.12.4-r1 0.13.2: Extension module to mwlib to pull in reportlab
@@ -7796,7 +7796,7 @@ dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style 
 dev-python/notebook 4.0.6 4.1.0 4.2.3 4.3.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
-dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0 0.27.0 0.30.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5 2.6.1: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.2-r1 9999: Fast array and numerical python library

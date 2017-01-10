@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/c-blosc:0= cuda? ( dev-util/nvidia-cuda-toolkit ) fftw? ( sci-libs/fftw:3.0 ) doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=C++ dynamic multi-dimensionnal array library with Python exposure
+EAPI=6
+HOMEPAGE=http://libdynd.org
+IUSE=cuda doc fftw mkl test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-libs/c-blosc:0= cuda? ( dev-util/nvidia-cuda-toolkit ) fftw? ( sci-libs/fftw:3.0 )
+SLOT=0/0.7.2
+SRC_URI=https://github.com/libdynd/libdynd/archive/v0.7.2.tar.gz -> libdynd-0.7.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	cuda	f150e667cc5826799d86be0fff518252	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9356d500eac6ef7652a6bd9fc700c88b
