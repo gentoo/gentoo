@@ -10,12 +10,13 @@ PATCHSET_VER="0"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
+SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz
+	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive berkdb debug doc +gmp hardened java libressl minimal odbc +readline ssl static-libs test uuid zlib X"
+IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
@@ -23,6 +24,7 @@ RDEPEND="sys-libs/ncurses:=
 	zlib? ( sys-libs/zlib )
 	odbc? ( dev-db/unixODBC )
 	readline? ( sys-libs/readline:= )
+	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
@@ -76,7 +78,6 @@ src_configure() {
 	econf \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		$(use_enable gmp) \
-		$(use_enable readline) \
 		$(use_enable static-libs static) \
 		--enable-shared \
 		--enable-custom-flags COFLAGS="${CFLAGS}"
@@ -94,7 +95,9 @@ src_configure() {
 			$(use_with berkdb bdb ) \
 			$(use_with java jpl) \
 			${jpltestconf} \
+			$(use_with libedit) \
 			$(use_with odbc) \
+			$(use_with readline) \
 			$(use_with ssl) \
 			$(use_with X xpce) \
 			$(use_with zlib) \
