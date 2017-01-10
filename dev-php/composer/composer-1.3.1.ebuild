@@ -34,6 +34,9 @@ PATCHES=(
 
 src_install() {
 	insinto "/usr/share/php/Composer/Composer"
+
+	# Composer expects the LICENSE file to be there, and the
+	# easiest thing to do is to give it what it wants.
 	doins -r src/Composer/. res LICENSE "${FILESDIR}"/autoload.php
 	dobin bin/composer
 	dodoc README.md
