@@ -6850,7 +6850,7 @@ dev-php/PEAR-Net_CheckIP 1.2.2: Check the syntax of IPv4 addresses
 dev-php/PEAR-Net_DIME 1.0.2: The PEAR::Net_DIME class implements DIME encoding
 dev-php/PEAR-Net_DNS 1.0.7: Resolver library used to communicate with a DNS server
 dev-php/PEAR-Net_DNS2 1.3.1 1.4.2: Object-oriented PHP5 resolver library used to communicate with a DNS server
-dev-php/PEAR-Net_DNSBL 1.3.7: DNSBL Checker
+dev-php/PEAR-Net_DNSBL 1.3.7 1.3.7-r1: PHP library to query DNS blacklists
 dev-php/PEAR-Net_FTP 1.3.7-r1 1.4.0_alpha3: Provides an OO interface to the PHP FTP functions
 dev-php/PEAR-Net_IDNA2 0.1.1: Punycode encoding and decoding
 dev-php/PEAR-Net_IMAP 1.1.1 1.1.3: Provides an implementation of the IMAP protocol
