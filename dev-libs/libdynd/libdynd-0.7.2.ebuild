@@ -42,7 +42,6 @@ src_prepare() {
 	sed -e 's|install(TARGETS test_libdynd||' \
 		-e 's|RUNTIME DESTINATION bin)||' \
 		-i tests/CMakeLists.txt || die
-
 	# remove the version mangling from git stuff it requires a git clone
 	# rather force set it a configure time
 	sed -e '/GetGitRev/d' \
@@ -50,7 +49,6 @@ src_prepare() {
 		-e '/git_describe/d' \
 		-e '/dirty/d' \
 		-i CMakeLists.txt || die
-	sed -e s||${DYND_SHA1_VERSION}|
 	# not tested
 	if use mkl; then
 		sed -e "s|/opt/intel/.*|$(ls -1d ${EPREFIX}/opt/intel/compilers*)|" \
