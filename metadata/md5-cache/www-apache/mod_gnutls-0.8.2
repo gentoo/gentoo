@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=net-libs/gnutls-3.4.0:= test? ( app-crypt/monkeysphere ) =www-servers/apache-2.4* =www-servers/apache-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+EAPI=5
+HOMEPAGE=https://mod.gnutls.org/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/gnutls-3.4.0:= =www-servers/apache-2.4* =www-servers/apache-2*
+RESTRICT=test
+SLOT=0
+SRC_URI=https://mod.gnutls.org/downloads/mod_gnutls-0.8.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	7aeacf4ba074b9aa0047e2ba05c1010f	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=48cf929370922fdbd360dfc50295ab93
