@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils flag-o-matic multilib systemd toolchain-funcs udev
 
 DESCRIPTION="A useful tool for running RAID systems - it can be used as a replacement for the raidtools"
 HOMEPAGE="http://neil.brown.name/blog/mdadm"
-DEB_PR=2
+DEB_PR=4
 SRC_URI="mirror://kernel/linux/utils/raid/mdadm/${P}.tar.xz
-		mirror://debian/pool/main/m/mdadm/${PN}_3.3-${DEB_PR}.debian.tar.gz"
+		mirror://debian/pool/main/m/mdadm/${PN}_3.4-${DEB_PR}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +24,12 @@ RDEPEND=">=sys-apps/util-linux-2.16"
 # Thus, they shouldn't be run on systems with active software RAID devices.
 RESTRICT="test"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-3.4-sysmacros.patch #580188
+}
+
 mdadm_emake() {
+	# We should probably make corosync & libdlm into USE flags. #573782
 	emake \
 		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		CC="$(tc-getCC)" \
@@ -32,6 +37,8 @@ mdadm_emake() {
 		CXFLAGS="${CFLAGS}" \
 		UDEVDIR="$(get_udevdir)" \
 		SYSTEMD_DIR="$(systemd_get_unitdir)" \
+		COROSYNC="-DNO_COROSYNC" \
+		DLM="-DNO_DLM" \
 		"$@"
 }
 
@@ -66,8 +73,8 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/etc-default-mdadm mdadm
 
-	insinto /etc/cron.weekly
-	newins "${FILESDIR}"/mdadm.weekly mdadm
+	exeinto /etc/cron.weekly
+	newexe "${FILESDIR}"/mdadm.weekly mdadm
 }
 
 pkg_postinst() {
