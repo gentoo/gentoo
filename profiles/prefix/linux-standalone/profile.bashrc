@@ -9,7 +9,7 @@
 if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
     einfo "Prefixifying dynamic linkers..."
-    for h in gcc/config/*/linux*.h; do
+    for h in gcc/config/*/*linux*.h; do
 	ebegin "  Updating $h"
 	sed -i -r "s,(_DYNAMIC_LINKER.*\")(/lib),\1${EPREFIX}\2," $h
 	eend $?
