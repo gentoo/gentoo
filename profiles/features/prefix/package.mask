@@ -65,13 +65,6 @@ sys-auth/pambase
 # probably use this by placing sys-fs/fuse in package.provided, bug 272210
 net-fs/curlftpfs
 
-# Jeremy Olexa <darkside@gentoo.org> (21 Apr 2009)
-# User reported that it works fine but will not install for me due to unknown
-# kernel location, etc. See bug 265276 for an example.
-net-wireless/iw
-dev-libs/libnl
-net-wireless/aircrack-ng
-
 # Jeremy Olexa <darkside@gentoo.org> (02 Dec 2008)
 # Reported to work. However, you will need to package.provide some deps. 
 # See bug 248809 for more details.
