@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/notspiff/screensavers.rsxs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/screensavers.rsxs-v${PV}"
+	S="${WORKDIR}/screensavers.rsxs-${PV}"
 	;;
 esac
 
