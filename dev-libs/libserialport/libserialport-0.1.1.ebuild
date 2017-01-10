@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Cross platform serial port access library"
