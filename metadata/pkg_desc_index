@@ -4499,7 +4499,7 @@ dev-lang/solidity 0.4.2: The Solidity Contract-Oriented Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3: Stand-alone JavaScript C library
 dev-lang/squirrel 2.2.4-r2 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.32 7.3.33: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.32 7.3.33 7.3.34: free, small, and standard compliant Prolog compiler
 dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tool Command Language
@@ -17692,7 +17692,7 @@ sys-libs/timezone-data 2016h 2016i 2016j: Timezone data (/usr/share/zoneinfo) an
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.16 1.0.17 1.0.18-r1 1.0.19 1.0.20 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
-sys-libs/zlib 1.2.8-r1 1.2.9 1.2.10: Standard (de)compression library
+sys-libs/zlib 1.2.8-r1 1.2.10: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.27 2.0.28: Daemon for Advanced Configuration and Power Interface
