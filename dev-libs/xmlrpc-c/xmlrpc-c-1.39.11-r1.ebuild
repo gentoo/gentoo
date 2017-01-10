@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,8 +27,23 @@ DEPEND="
 	libxml2? ( dev-libs/libxml2 )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.32.05-Wimplicit.patch"
+	"${FILESDIR}/${P}-cplusplus.patch"
+)
+
 pkg_setup() {
 	use curl || ewarn "Curl support disabled: No client library will be built"
+}
+
+src_prepare() {
+	sed -i \
+		-e "/CFLAGS_COMMON/s|-g -O3$||" \
+		-e "/CXXFLAGS_COMMON/s|-g$||" \
+		common.mk || die
+
+	eapply ${PATCHES[@]}
+	eapply_user
 }
 
 src_configure() {
