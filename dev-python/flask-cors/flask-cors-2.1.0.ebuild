@@ -23,7 +23,7 @@ HOMEPAGE="https://github.com/wcdolphin/flask-cors https://pypi.python.org/pypi/F
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]

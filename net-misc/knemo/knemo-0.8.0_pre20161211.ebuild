@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 IUSE="wifi"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 fi
 
