@@ -29,8 +29,8 @@ DEPEND="${RDEPEND}
 	doc? (  dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
-src_prepare() {
-	default
+
+python_prepare_all() {
 	# remove the version mangling from git stuff it requires a git clone
 	# rather force set it a configure time
 	sed -e "/--dirty/s/ver =.*/ver = 'v${PV}'/" \
@@ -41,18 +41,18 @@ src_prepare() {
 		-e 's|-g -fomit-frame-pointer||' \
 		-e 's|-Werror||g' \
 		-i CMakeLists.txt || die
+
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		emake -C docs html
+		HTML_DOCS=( docs/build/html/. )
+	fi
 }
 
 python_test() {
 	cd "${BUILD_DIR}/lib" || die
 	PYTHONPATH=${BUILD_DIR}/lib nosetests -v || die
-}
-
-src_install() {
-	use doc && HTML_DOCS=( docs/build/html/. )
-	distutils-r1_src_install
 }
