@@ -17,24 +17,6 @@ CODENAME="Krypton"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
-case ${PV} in
-9999)
-	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
-	inherit git-r3
-	;;
-*)
-	MY_PV=${PV/_p/_r}
-	MY_PV=${MY_PV/_alpha/a}
-	MY_PV=${MY_PV/_beta/b}
-	MY_PV=${MY_PV/_rc/rc}
-	MY_P="${PN}-${MY_PV}"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
-		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
-	KEYWORDS="~amd64 ~x86"
-
-	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
-	;;
-esac
 
 DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
@@ -44,7 +26,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles java libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -127,7 +109,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/crossguid
 	dev-util/cmake
 	dev-util/gperf
-	java? ( virtual/jre )
 	media-libs/giflib
 	>=media-libs/libjpeg-turbo-1.5.1:=
 	>=media-libs/libpng-1.6.26:0=
@@ -135,9 +116,33 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x86? ( dev-lang/nasm )
 "
-# Force java for latest git version to avoid having to hand maintain the
-# generated addons package.  #488118
-[[ ${PV} == 9999 ]] && DEPEND+=" virtual/jre"
+case ${PV} in
+9999)
+	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
+	inherit git-r3
+	# Force java for latest git version to avoid having to hand maintain the
+	# generated addons package.  #488118
+	DEPEND+="
+		virtual/jre
+		"
+	;;
+*)
+	MY_PV=${PV/_p/_r}
+	MY_PV=${MY_PV/_alpha/a}
+	MY_PV=${MY_PV/_beta/b}
+	MY_PV=${MY_PV/_rc/rc}
+	MY_P="${PN}-${MY_PV}"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
+		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
+	KEYWORDS="~amd64 ~x86"
+	IUSE+=" java"
+	DEPEND+="
+		java? ( virtual/jre )
+		"
+
+	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
+	;;
+esac
 
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
@@ -151,6 +156,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if in_iuse java && use !java; then
+		eapply "${FILESDIR}"/${PN}-cmake-no-java.patch
+	fi
 	cmake-utils_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
