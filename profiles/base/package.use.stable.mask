@@ -5,11 +5,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Bernard Cafarelli <voyageur@gentoo.org> (09 Jan 2017)
-# Alternative Objective-C backend, requires more testing
-# and additional unstable dependencies
-gnustep-base/gnustep-make libobjc2
-
 # Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
 # libcxx is not stable so we can't let users use it
 dev-lang/rust libcxx
