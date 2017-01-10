@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Christophe Lermytte <gentoo@lermytte.be> (10/01/2017)
+# systemtap can depend on libvirt wich is currently amd64/x86 only
+dev-util/systemtap libvirt
+
 # Ian Whyman <thev00d00@gentoo.org> (31/12/2016)
 # Handbrake needs libav-12 which is masked.
 media-video/handbrake libav
