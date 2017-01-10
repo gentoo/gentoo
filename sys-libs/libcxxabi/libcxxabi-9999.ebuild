@@ -65,7 +65,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
-		-DLLVM_INCLUDE_TESTS=$(usex test)
+		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
 
 		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
 		# upstream is omitting standard search path for this
