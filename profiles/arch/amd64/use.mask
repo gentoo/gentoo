@@ -7,6 +7,10 @@
 
 # SECTION: Unmask
 
+# Christophe Lermytte <gentoo@lermytte.be> (10 Jan 2017)
+# libvirt (the package pulled in by this flag) exists for this arch
+-libvirt
+
 # cilk has been ported to this arch.
 -cilk
 

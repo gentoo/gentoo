@@ -5,6 +5,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Christophe Lermytte <gentoo@lermytte.be> (10 Jan 2017)
+# libvirt (the package pulled in by this flag) exists for this arch
+-libvirt
+
 # 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
 # Unmask sssd USE-flag as it is tested on this arch in regards to bugs
 # 540540 and 525674
