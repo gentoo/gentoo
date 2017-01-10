@@ -2192,7 +2192,7 @@ app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1: barcode generator
 app-text/bdf2psf 1.104 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.11.4 2.17: BibTeX bibliography prettyprinter and syntax checker
-app-text/bibletime 2.9.1 2.10.1-r1: Qt Bible study application using the SWORD library
+app-text/bibletime 2.10.1-r1: Qt Bible study application using the SWORD library
 app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integrates with L/OO.o and MS Word
 app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
@@ -2425,7 +2425,7 @@ app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20160518-r1: A international dictionary supporting fuzzy and glob style matching
-app-text/sword 1.6.2 1.7.2 1.7.3 1.7.4: Library for Bible reading software
+app-text/sword 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
 app-text/tabler 2: A utility to create text art tables from delimited input
@@ -2474,7 +2474,7 @@ app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use wi
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4: A Flexible Indexing System
-app-text/xiphos 3.1.5 3.2.2 4.0.4 4.0.4-r1: A bible study frontend for Sword (formerly known as GnomeSword)
+app-text/xiphos 4.0.4 4.0.4-r1: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.6 0.7 0.7.2: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
@@ -14673,7 +14673,7 @@ net-libs/libisds 0.10 0.10.6 9999: Client library for accessing ISDS Soap servic
 net-libs/libkgapi 2.2.0 5.3.1: Library for accessing Google calendar and contact resources
 net-libs/libktorrent 1.3.1 2.0.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
-net-libs/liblockfile 1.09 1.10: Implements functions designed to lock the standard mailboxes
+net-libs/liblockfile 1.09 1.10 1.13: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrohttpd 0.9.47 0.9.49 0.9.51 0.9.52: Small C library to run an HTTP server as part of another application
@@ -17827,7 +17827,7 @@ virtual/leechcraft-wysiwyg-editor 0.6.60 0.6.65 0.6.70 9999: Virtual for LeechCr
 virtual/libc 0 1: Virtual for the C library
 virtual/libelf 0 1: Virtual for libelf.so.1 provider (dev-libs/elfutils)
 virtual/libffi 3.0.10 3.0.11 3.0.13-r1: A virtual for the Foreign Function Interface implementation
-virtual/libgudev 215-r1 215-r2 215-r3 230: Virtual for libgudev providers
+virtual/libgudev 215-r3 230: Virtual for libgudev providers
 virtual/libiconv 0 0-r1 0-r2: Virtual for the GNU conversion library
 virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libmysqlclient 18: Virtual for MySQL client libraries
