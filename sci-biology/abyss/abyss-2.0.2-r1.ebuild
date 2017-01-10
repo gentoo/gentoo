@@ -18,18 +18,27 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	misc-haskell? ( dev-libs/gmp:0=
-			virtual/libffi:0=
+	misc-haskell? (
+		dev-libs/gmp:0=
+		virtual/libffi:0=
 	)
-	mpi? ( virtual/mpi )
-"
+	mpi? ( sys-cluster/openmpi )"
 DEPEND="${RDEPEND}
-	misc-haskell? ( dev-lang/ghc
-			dev-haskell/mmap )
-"
+	misc-haskell? (
+		dev-lang/ghc
+		dev-haskell/mmap
+	)"
 
 # todo: --enable-maxk=N configure option
 # todo: fix automagic mpi toggling
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
