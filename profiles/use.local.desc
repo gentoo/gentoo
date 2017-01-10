@@ -6513,16 +6513,11 @@ net-p2p/i2p:nls - Adds Native Language Support using GNU gettext.
 net-p2p/ktorrent:bwscheduler - Schedule upload and download limits over a period of a week
 net-p2p/ktorrent:downloadorder - Specify the download order of a multi-file torrent
 net-p2p/ktorrent:infowidget - Displays general information about a torrent in several tabs
-net-p2p/ktorrent:ipfilter - Filter IP addresses through a blocklist
 net-p2p/ktorrent:logviewer - Displays the logging output
 net-p2p/ktorrent:magnetgenerator - Generates magnet URI's
 net-p2p/ktorrent:mediaplayer - Phonon-based media player
-net-p2p/ktorrent:rss - Syndication plugin for KTorrent, supporting RSS and Atom feeds
-net-p2p/ktorrent:scanfolder - Scan folders for torrent files and load them
-net-p2p/ktorrent:search - Search for torrents
 net-p2p/ktorrent:shutdown - Shutdown when done
 net-p2p/ktorrent:stats - Shows statistics about torrents in several graphs
-net-p2p/ktorrent:webinterface - Allows control of KTorrent via a web interface
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
 net-p2p/litecoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/litecoind:logrotate - Use app-admin/logrotate for rotating logs
