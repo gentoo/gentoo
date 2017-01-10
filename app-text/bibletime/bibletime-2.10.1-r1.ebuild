@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/bibletime/BibleTime%202/BibleTime%202%20so
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug qt5"
 
 # bug 313657
