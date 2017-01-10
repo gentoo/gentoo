@@ -6576,17 +6576,23 @@ net-proxy/haproxy:pcre-jit - Use JIT support for PCRE
 net-proxy/haproxy:slz - Use dev-libs/libslz compression library
 net-proxy/haproxy:tools - Install additional tools (halog, iprange)
 net-proxy/haproxy:wurfl - Device Detection using WURFL
+net-proxy/privoxy:client-tags - Enable support for client-specific tags
+net-proxy/privoxy:compression - Allow privoxy to compress buffered content before sending to the client, if it supports it
 net-proxy/privoxy:editor - Enable the web-based actions file editor
+net-proxy/privoxy:extended-host-patterns - Enable and require PCRE syntax in host patterns. You must convert action files to PCRE, see privoxy-url-pattern-translator.pl Use at your own risk!
 net-proxy/privoxy:external-filters - Allow to filter content with scripts and programs. Experimental
 net-proxy/privoxy:fast-redirects - Support fast redirects
 net-proxy/privoxy:force - Allow single-page disable (force load)
 net-proxy/privoxy:graceful-termination - Allow to shutdown Privoxy through the webinterface
+net-proxy/privoxy:ie-images - Enable a quick but not always reliable auto-detect whether requests from MS Internet Explorer are for an image or not
 net-proxy/privoxy:image-blocking - Allows the +handle-as-image action, to send "blocked" images instead of HTML
 net-proxy/privoxy:lfs - Support large files (>2GB) on 32-bit systems
 net-proxy/privoxy:png-images - Use PNG format instead of GIF for built-in images
 net-proxy/privoxy:stats - Keep statistics
 net-proxy/privoxy:toggle - Support temporary disable toggle via web interface
+net-proxy/privoxy:tools - Install log parser, regression tester and user agent generator tools
 net-proxy/privoxy:whitelists - Support trust files (white lists)
+net-proxy/privoxy:zlib - Use sys-libs/zlib to decompress data before filtering
 net-proxy/rejik:banlists - Install upstream provided simple banlists
 net-proxy/shadowsocks-libev:mbedtls - Use net-libs/mbedtls as crypto backend
 net-proxy/shadowsocks-libev:openssl - Use dev-libs/openssl as crypto backend
