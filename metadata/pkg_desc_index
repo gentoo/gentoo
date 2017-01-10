@@ -1287,7 +1287,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.5 1.13.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-compose 1.8.1 1.9.0 1.10.0_pre20161220-r1 1.10.0_rc1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.9.0 1.10.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
@@ -4703,7 +4703,7 @@ dev-libs/libdivsufsort 2.0.1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
-dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
+dev-libs/libdynd 0.6.5 0.6.6 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
@@ -7372,7 +7372,7 @@ dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
-dev-python/dynd-python 0.7.2: Python exposure of multidimensionnal array library libdynd
+dev-python/dynd-python 0.6.5 0.6.6 0.7.2: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2 2.3: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
