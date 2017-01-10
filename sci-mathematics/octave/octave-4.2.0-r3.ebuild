@@ -51,6 +51,7 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
+		dev-qt/qtopengl:5
 		>=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
 	)
 	readline? ( sys-libs/readline:0= )
