@@ -3,6 +3,7 @@ amd64
 amd64-fbsd
 arm
 arm64
+arm64-linux
 hppa
 ia64
 m68k
