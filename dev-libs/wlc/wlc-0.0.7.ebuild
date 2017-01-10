@@ -49,7 +49,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if use X && !use xwayland; then
+	if use X && ! use xwayland; then
 		elog "xwayland use flag is required for X11 applications support"
 	fi
 	ewarn "This wlc version does not support displaying"
