@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="6"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit autotools gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
@@ -24,7 +24,8 @@ RDEPEND="
 	>=dev-libs/popt-1.5
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
-	>=dev-scheme/guile-1.8.3:12[deprecated,regex]
+	>=dev-scheme/guile-1.8.3:12=[deprecated,regex]
+	<dev-scheme/guile-2:12
 	dev-scheme/guile-www
 	gnome-base/libgnomecanvas
 	>=net-libs/webkit-gtk-1.2:2
@@ -62,6 +63,14 @@ pkg_setup() {
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
+
+	# We need to run eautoreconf to prevent linking against system libs,
+	# this can be noticed, for example, when updating an old version
+	# compiled against guile-1.8 to a newer one relying on 2.0
+	# https://bugs.gentoo.org/show_bug.cgi?id=590536#c39
+	# https://bugzilla.gnome.org/show_bug.cgi?id=775634
+	eautoreconf
+
 	gnome2_src_prepare
 }
 
@@ -83,30 +92,19 @@ src_configure() {
 		$(use_enable ofx) \
 		$(use_enable hbci aqbanking) \
 		$(use_enable python) \
-		--with-guile=1.8 \
 		--disable-doxygen \
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
 		--disable-error-on-warning \
+		--with-guile=1.8 \
 		${myconf}
-}
-
-src_test() {
-	GUILE_WARN_DEPRECATED=no \
-	GNC_DOT_DIR="${T}"/.gnucash \
-	emake check
 }
 
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
-	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
+	gnome2_src_install -j1 GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
 
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
 	dodoc "${T}"/cantuseprepalldocs/*
-
-	# https://bugzilla.gnome.org/show_bug.cgi?id=766960
-	sed -i 's/exec gnucash-env [^[:space:]]*/exec gnucash-env guile/g' \
-		"${ED}/usr/libexec/gnucash/overrides/gnucash-make-guids" || die
-	rm -f "${ED}/usr/libexec/gnucash/overrides/guile" || die
 }
