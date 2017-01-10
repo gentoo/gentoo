@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,5 +31,5 @@ src_test() {
 src_install() {
 	dodoc README.md
 	insinto /usr/include
-	doins -r pegtl
+	doins -r pegtl pegtl.hh
 }
