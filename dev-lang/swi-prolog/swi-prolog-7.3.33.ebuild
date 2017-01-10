@@ -12,7 +12,7 @@ DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
 SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 
-LICENSE="BSD-2 LGPL-2.1"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="archive berkdb debug doc +gmp hardened java libressl minimal odbc +readline ssl static-libs test uuid zlib X"
