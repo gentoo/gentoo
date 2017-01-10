@@ -4,11 +4,11 @@ DESCRIPTION=Qt Bible study application using the SWORD library
 EAPI=5
 HOMEPAGE=http://www.bibletime.info/
 IUSE=debug qt5
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/sword-1.7.0 >=dev-cpp/clucene-2.3.3.4 qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/bibletime/BibleTime%202/BibleTime%202%20source%20code/bibletime-2.10.1.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c7612f5b284cddbf3ee74c836a455493
+_md5_=260493d0c63b839c76b763602b410614
