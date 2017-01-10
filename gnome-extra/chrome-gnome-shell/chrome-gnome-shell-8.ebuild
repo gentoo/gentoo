@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,4 +43,21 @@ src_install() {
 	doenvd 50"${PN}"
 
 	cmake-utils_src_install
+}
+
+pkg_postinst() {
+	elog "If you are installing ${PN} for the first time then you should"
+	elog "restart or reload dbus service before starting your browser."
+	elog
+	elog "Please note that this package provides native messaging connector only."
+	elog
+	elog "Managed policy was installed to force web extension installation"
+	elog "for Google Chrome, Chromium and Vivaldi browsers from Chrome Store"
+	elog "https://chrome.google.com/webstore/detail/gphhapmejobijbbhgpjhcjognlahblep"
+	elog
+	elog "For Mozilla Firefox you should manualy install web extension from"
+	elog "https://addons.mozilla.org/firefox/addon/gnome-shell-integration/"
+	elog
+	elog "For Opera you should manualy install web extension from"
+	elog "https://addons.opera.com/extensions/details/gnome-shell-integration/"
 }
