@@ -4,11 +4,11 @@ DESCRIPTION=OpenVZ ConTainers control utility
 EAPI=5
 HOMEPAGE=http://openvz.org/
 IUSE=+ploop +vzmigrate
-KEYWORDS=~amd64 ~ppc64 ~x86 -amd64-fbsd -sparc-fbsd -x86-fbsd
+KEYWORDS=amd64 ~ppc64 ~x86 -amd64-fbsd -sparc-fbsd -x86-fbsd
 LICENSE=GPL-2
 RDEPEND=net-firewall/iptables sys-apps/ed >=sys-apps/iproute2-3.3.0 >=sys-fs/vzquota-3.1 ploop? ( >=sys-cluster/ploop-1.13 sys-block/parted sys-fs/quota dev-libs/libxml2 ) >=dev-libs/libcgroup-0.38 vzmigrate? ( net-misc/openssh net-misc/rsync[xattr,acl] app-arch/tar[xattr,acl] net-misc/bridge-utils virtual/awk ) virtual/udev sys-apps/attr
 SLOT=0
 SRC_URI=http://download.openvz.org/utils/vzctl/4.9.4/src/vzctl-4.9.4.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	017377e73405d964cd0137088cddb9c3	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338
-_md5_=70c70eba7cf8db60af8ae162ddb743ec
+_md5_=b11535f8ffc2c810efd1a0c0db2b6d94
