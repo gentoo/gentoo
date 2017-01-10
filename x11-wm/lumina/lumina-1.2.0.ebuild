@@ -8,17 +8,12 @@ inherit qmake-utils
 DESCRIPTION="Lumina desktop environment"
 HOMEPAGE="http://lumina-desktop.org/"
 I18N="161211"
-SRC_URI="https://github.com/trueos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~grozin/${PN}-i18n-${I18N}.tar.bz2"
+SRC_URI="https://github.com/trueos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE=""
-LANGS="af ar az bg bn bs ca cs cy da de el en-GB en-ZA es et eu fa fi fr fr-CA gl he hi hr hu id is it ja ka ko lt lv mk mn ms nb ne nl pa pl pt pt-BR ro ru sa sk sl sr sv sw ta tg th tr uk uz vi zh-CN zh-HK zh-TW zu"
-for lang in ${LANGS}; do
-	IUSE="${IUSE} l10n_${lang}"
-done
 
 COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
@@ -59,18 +54,11 @@ src_prepare(){
 src_configure(){
 	eqmake5 PREFIX="${EPREFIX}/usr" L_BINDIR="${EPREFIX}/usr/bin" \
 		L_ETCDIR="${EPREFIX}/etc" L_LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}"
+		LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" CONFIG+=WITH_I18N
 }
 
 src_install(){
 	default
 	mv "${ED%/}"/etc/luminaDesktop.conf{.dist,} || die
 	rm "${ED%/}"/${PN}-* "${ED%/}"/start-${PN}-desktop || die
-	mkdir "${ED%/}"/usr/share/${PN}-desktop/i18n || die
-	for lang in ${LANGS}; do
-		make lang local
-		if use l10n_${lang}; then
-			cp ../${PN}-i18n/*_${lang}.qm "${ED%/}"/usr/share/${PN}-desktop/i18n/ || die "Language ${lang} not found"
-		fi
-	done
 }
