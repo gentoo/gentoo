@@ -4,11 +4,11 @@ DESCRIPTION=provide basic hardware drivers for logic analyzers and input/output 
 EAPI=5
 HOMEPAGE=http://sigrok.org/wiki/Libsigrok
 IUSE=ftdi serial static-libs test usb
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=!static-libs? ( >=dev-libs/glib-2.32.0 >=dev-libs/libzip-0.8 ftdi? ( >=dev-embedded/libftdi-0.16:= ) serial? ( >=dev-libs/libserialport-0.1.0 ) usb? ( virtual/libusb:1 ) ) static-libs? ( >=dev-libs/glib-2.32.0[static-libs(+)] >=dev-libs/libzip-0.8[static-libs(+)] ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] ) serial? ( >=dev-libs/libserialport-0.1.0[static-libs(+)] ) usb? ( virtual/libusb:1[static-libs(+)] ) )
 SLOT=0
 SRC_URI=http://sigrok.org/download/source/libsigrok/libsigrok-0.3.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=5ba471443ede667e0d107ac16eb4dbf1
+_md5_=b1a189df3551be532b1b939b4011f2d9
