@@ -9299,7 +9299,7 @@ dev-ruby/logging 2.1.0: Flexible logging library based on the design of Java's l
 dev-ruby/logue 1.0.2-r2 1.0.4: A module that adds logging/trace functionality
 dev-ruby/loofah 2.0.3: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
-dev-ruby/lumberjack 1.0.10: A simple, powerful, and very fast logging utility
+dev-ruby/lumberjack 1.0.10 1.0.11: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
 dev-ruby/mail 2.6.4: An email handling library
@@ -9477,7 +9477,7 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.4 1.5.5: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
-dev-ruby/roadie 3.1.1 3.2.0: Making HTML emails comfortable for the Rails rockstars
+dev-ruby/roadie 3.1.1 3.2.0 3.2.1: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.11.1-r1 2.0.6 2.0.7: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
