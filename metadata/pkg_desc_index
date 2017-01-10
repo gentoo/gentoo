@@ -1190,7 +1190,7 @@ app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.58 1.59: Emacs front-end to mpg123 audio player and OggVorbis audio player
 app-emacs/mu-cite 8.1_p200709030413 8.1_p201202272330: Message citation utilities for emacsen
-app-emacs/multi-term 1.2 1.3: Manage multiple terminal buffers in Emacs
+app-emacs/multi-term 1.3: Manage multiple terminal buffers in Emacs
 app-emacs/multiple-cursors 1.3.0: Multiple cursors for Emacs
 app-emacs/muse 3.20: Muse-mode is similar to EmacsWikiMode, but more focused on publishing to various formats
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
@@ -6823,7 +6823,7 @@ dev-php/PEAR-HTML_TreeMenu 1.2.2: Provides an API to create a HTML tree
 dev-php/PEAR-HTTP 1.4.1-r2: Miscellaneous HTTP utilities
 dev-php/PEAR-HTTP_Client 1.2.1: Provides functionality to perform multiple HTTP requests and process their results
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
-dev-php/PEAR-HTTP_Header 1.2.1-r1 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
+dev-php/PEAR-HTTP_Header 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
 dev-php/PEAR-HTTP_Request 1.4.4: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Request2 2.2.1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r1: Wraps PHP's session_* functions, providing extras like db storage for session data
