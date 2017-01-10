@@ -47,6 +47,7 @@ RDEPEND="
 	!~gnome-extra/cinnamon-1.8.8.1
 	!systemd? ( sys-auth/consolekit )
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/setproctitle[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.35
