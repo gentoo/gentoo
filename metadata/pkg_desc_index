@@ -10213,7 +10213,7 @@ dev-util/rosdep 0.11.4 0.11.5 9999: Command-line tool for installing ROS system 
 dev-util/rosinstall 0.7.6 0.7.7 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 0.1.13 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
-dev-util/rustfmt 0.5.0: Tool to find and fix Rust formatting issues
+dev-util/rustfmt 0.5.0 0.6.3: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
 dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing processes
