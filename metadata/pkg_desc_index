@@ -17322,7 +17322,7 @@ sys-cluster/swift 2.9.0 2.10.0 2.10.0-r1 2.10.1: A highly available, distributed
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
-sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
+sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/zookeeper-bin 3.4.9: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeeper
