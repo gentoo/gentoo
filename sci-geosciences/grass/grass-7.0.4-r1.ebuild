@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
+WX_GTK_VER=3.0
 
 inherit eutils gnome2 fdo-mime multilib python-single-r1 versionator wxwidgets autotools
 
@@ -19,7 +20,7 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/7.0.3"
+SLOT="0/7.0.4"
 KEYWORDS="~amd64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
@@ -51,7 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 	tiff? ( media-libs/tiff:0= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		>=dev-python/wxpython-2.8.10.1:2.8[cairo,opengl?]
+		dev-python/wxpython:3.0[cairo,opengl?]
 		x11-libs/cairo[X,opengl?]
 		x11-libs/libICE
 		x11-libs/libSM
@@ -126,7 +127,7 @@ src_prepare() {
 
 	epatch "${PATCHES[@]}"
 
-	epatch_user
+	eapply_user
 	eautoconf
 
 	ebegin "Fixing python shebangs"
@@ -137,8 +138,7 @@ src_prepare() {
 src_configure() {
 	if use X; then
 		WX_BUILD=yes
-		WX_GTK_VER=2.8
-		need-wxwidgets unicode
+		setup-wxwidgets
 	fi
 
 	addwrite "${ROOT}dev/dri/renderD128"
@@ -196,7 +196,8 @@ src_install() {
 
 	# fix docs
 	dodoc AUTHORS CHANGES
-	dohtml -r docs/html/*
+	docinto html
+	dodoc -r docs/html/*
 	rm -rf docs/ || die
 	rm -rf {AUTHORS,CHANGES,COPYING,GPL.TXT,REQUIREMENTS.html} || die
 
