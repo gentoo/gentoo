@@ -1286,7 +1286,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.5 1.13.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.6 1.13.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.9.0 1.10.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -17537,7 +17537,7 @@ sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to
 sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2 0.6.4: Device mapper target autoconfig
 sys-fs/ncdu 1.11 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
 sys-fs/owfs 2.7_p21-r4 3.1_p1 3.1_p4: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
