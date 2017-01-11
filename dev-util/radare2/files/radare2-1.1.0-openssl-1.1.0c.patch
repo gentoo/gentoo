@@ -1,0 +1,31 @@
+commit ecd8cf26c2647a1f455595209fcf2d6bfb72240f
+Author: eroen <eroen@users.noreply.github.com>
+Date:   Tue Jan 3 23:45:07 2017 +0100
+
+    Disable deprecated initialization for openssl 1.1.0 (#6423)
+    
+    Openssl 1.1.0 handles this initialization internally. Leaving the calls in
+    place causes "undefined reference" errors if openssl was built with
+    `--api=1.1.0`.
+    
+    X-Gentoo-Bug: 604576
+    X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=604576
+
+diff --git a/libr/socket/socket.c b/libr/socket/socket.c
+index 1e30120fb..1ba87e77e 100755
+--- a/libr/socket/socket.c
++++ b/libr/socket/socket.c
+@@ -116,11 +116,13 @@ R_API RSocket *r_socket_new (int is_ssl) {
+ 		s->sfd = NULL;
+ 		s->ctx = NULL;
+ 		s->bio = NULL;
++#if OPENSSL_VERSION_NUMBER < 0x1010000fL
+ 		if (!SSL_library_init ()) {
+ 			r_socket_free (s);
+ 			return NULL;
+ 		}
+ 		SSL_load_error_strings ();
++#endif
+ 	}
+ #endif
+ 	return s;
