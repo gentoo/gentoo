@@ -108,7 +108,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	[[ ${PKV} ]] && EPATCH_OPTS="-d ${KS} -p1" eapply "${DISTDIR}"/patch-${PKV}.${K_TARBALL_SUFFIX}
+	[[ ${PKV} ]] && eapply "${DISTDIR}"/patch-${PKV}.${K_TARBALL_SUFFIX}
 
 	# Symlink /usr/src/linux to ${S}/linux
 	ln -snf "${KS}" linux
@@ -262,7 +262,8 @@ src_install() {
 	# Actually I have no idea, why the includes have those weird-ass permissions
 	# on a particular system, might be due to inherited permissions from parent
 	# directory
-	find "${D}"/usr/${libdir}/klibc/include | xargs chmod o+rX
+	# NOTE: This totally violates sandbox <asturm@gentoo.org>
+	# find "${D}"/usr/${libdir}/klibc/include | xargs chmod o+rX
 	find "${D}"/usr/${libdir}/klibc/include -type f \
 		\( -name '.install' -o -name '..install.cmd' \) -delete || die
 
