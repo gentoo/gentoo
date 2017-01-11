@@ -1,21 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils confutils user systemd
+inherit confutils user systemd
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
-HOMEPAGE="http://otrs.org/"
-SRC_URI="http://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://otrs.org/"
+SRC_URI="https://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap"
 SLOT="0"
 
-DEPEND="media-libs/libpng"
+DEPEND="media-libs/libpng:0="
 
 RDEPEND="dev-perl/Apache-Reload
 		dev-perl/Archive-Zip
@@ -65,7 +65,7 @@ src_prepare() {
 	rm -fr "${S}/scripts"/{auto_*,redhat*,suse*,*.spec} || die
 	cp Kernel/Config.pm{.dist,} || die
 
-	# Fix broken png files
+	# Fix broken png file
 	pngfix -q --out=out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png"
 	mv -f out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png" || die
 
@@ -85,13 +85,15 @@ src_prepare() {
 	done
 
 	echo "CONFIG_PROTECT=\"${OTRS_HOME}/Kernel/Config.pm \
-		${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}"
+		${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}" || die
+
+	eapply_user
 }
 
 # This is too automagic, either einfo telling user or installing to /etc/cron.d/ should be preferred
 pkg_config() {
 	einfo "Installing cronjobs"
-	crontab -u otrs /usr/share/doc/${PF}/crontab
+	crontab -u otrs /usr/share/doc/${PF}/crontab || die
 }
 
 src_install() {
@@ -113,12 +115,6 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}/otrs-daemon.service"
 
-}
-
-# This is too automagic, either einfo telling user or installing to /etc/cron.d/ should be preferred
-pkg_config() {
-	einfo "Installing cronjobs"
-	crontab -u otrs /usr/share/doc/${PF}/crontab
 }
 
 pkg_postinst() {
