@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	media-libs/speex
 	media-sound/gsm
 	sys-libs/zlib
+	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	qt5? (
@@ -40,6 +41,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	utils? ( x11-libs/libXmu )
 "
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
