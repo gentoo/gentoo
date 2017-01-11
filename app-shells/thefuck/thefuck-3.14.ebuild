@@ -22,7 +22,8 @@ RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)"
 DEPEND="test? ( ${RDEPEND}
-	dev-python/pytest[${PYTHON_USEDEP}] )
+	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/pytest-mock[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
