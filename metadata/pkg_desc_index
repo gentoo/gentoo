@@ -14579,7 +14579,7 @@ net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IR
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
 net-irc/quassel 0.12.4 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
-net-irc/quassel-irssi 0_p20160412: Irssi module to connect to Quassel cores.
+net-irc/quassel-irssi 0_p20160412 0_p20160412-r1 0_p20170107: Irssi module to connect to Quassel cores.
 net-irc/rbot 0.9.15_p20160325: A ruby IRC bot
 net-irc/redirbot 0.0.5: IRCBot, telling people they should contact you on different nickname
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
@@ -14761,6 +14761,7 @@ net-libs/polarssl 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
 net-libs/ptlib 2.10.11 2.12.9 2.12.9-r1: Network focused portable C++ class library providing high level functions
 net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/qtweetlib 0.5 9999: Qt based Twitter library
+net-libs/quasselc 0_p20150406: API for accessing Quassel using C
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 0.9.3 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.19 1.0.10 1.1.1: C++ BitTorrent implementation focusing on efficiency and scalability
@@ -16066,7 +16067,7 @@ sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos 
 sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/grass 7.0.3 7.0.4 7.0.5 7.0.5-r1: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 7.0.4-r1 7.0.5-r1: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
