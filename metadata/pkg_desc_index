@@ -1078,7 +1078,7 @@ app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/anything 1.3.2: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
-app-emacs/auctex 11.87-r1 11.88 11.89: Extended support for (La)TeX, Texinfo and BibTeX files
+app-emacs/auctex 11.88 11.89 11.90: Extended support for (La)TeX, Texinfo and BibTeX files
 app-emacs/auto-complete 1.3.1: Auto-complete package
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
