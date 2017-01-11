@@ -16108,7 +16108,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r1 2.18.2-r2: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r1 2.18.2-r2 2.18.2-r3: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
@@ -16536,7 +16536,7 @@ sci-visualization/xgraph 12.1-r2 12.1-r3: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1: Tool for extracting data points from graphs
 sci-visualization/yt 3.2.3 3.3.2: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.10.1: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.10.1 2.11.0: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 9999: SELinux policy for acct
@@ -16799,8 +16799,8 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20151213 20160906 20160920: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.10.1: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.10.1: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.10.1 2.11.0: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.10.1 2.11.0: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
@@ -17629,7 +17629,7 @@ sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries fo
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.10.1-r1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.10.1-r1 2.11.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7 0.7.8: POSIX 1003.1e capabilities
