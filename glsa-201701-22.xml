@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-22">
+  <title>NGINX: Privilege escalation</title>
+  <synopsis>Gentoo's NGINX ebuilds are vulnerable to privilege escalation due
+    to the way log files are handled.
+  </synopsis>
+  <product type="ebuild">nginx</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>605008</bug>
+  <access>local</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.10.2-r3</unaffected>
+      <vulnerable range="lt">1.10.2-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s default NGINX installation applied
+      similar problematic permissions on “/var/log/nginx” as Debian
+      (DSA-3701) and is therefore vulnerable to the same attack described in
+      CVE-2016-1247.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker, who either is already NGINX’s system user or belongs
+      to NGINX’s group, could potentially escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>Ensure that no untrusted user can create files in directories which are
+      used by NGINX (or an NGINX vhost) to store log files.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All NGINX users should upgrade to the latest ebuild revision:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.10.2-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1247">CVE-2016-1247</uri>
+    <uri link="https://www.debian.org/security/2016/dsa-3701">DSA-3701</uri>
+    <uri link="https://legalhackers.com/advisories/Nginx-Exploit-Deb-Root-PrivEsc-CVE-2016-1247.html">
+      Technical analysis
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jan 2017 15:37:19 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:18:42 +0000">whissi</metadata>
+</glsa>
