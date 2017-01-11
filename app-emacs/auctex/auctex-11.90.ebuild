@@ -1,18 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit elisp latex-package
+inherit elisp
 
-DESCRIPTION="Extended support for writing, formatting and using (La)TeX, Texinfo and BibTeX files"
+DESCRIPTION="Extended support for (La)TeX, Texinfo and BibTeX files"
 HOMEPAGE="https://www.gnu.org/software/auctex/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="preview-latex"
 
 DEPEND="virtual/latex-base
@@ -22,12 +22,7 @@ DEPEND="virtual/latex-base
 	)"
 RDEPEND="${DEPEND}"
 
-ELISP_PATCHES="${P}-jit-lock.patch"
 TEXMF="/usr/share/texmf-site"
-
-src_prepare() {
-	elisp_src_prepare
-}
 
 src_configure() {
 	EMACS_NAME=emacs EMACS_FLAVOR=emacs econf --disable-build-dir-test \
@@ -47,20 +42,19 @@ src_compile() {
 
 src_install() {
 	emake -j1 DESTDIR="${D}" install
-	elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el" || die
+	elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
 	if use preview-latex; then
-		elisp-site-file-install "${FILESDIR}/60${PN}-gentoo.el" || die
+		elisp-site-file-install "${FILESDIR}/60${PN}-gentoo.el"
 	fi
-	dodoc ChangeLog CHANGES FAQ INSTALL README RELEASE TODO
+	dodoc ChangeLog* CHANGES FAQ INSTALL PROBLEMS.preview README RELEASE TODO
 }
 
 pkg_postinst() {
-	# rebuild TeX-inputfiles-database
-	use preview-latex && latex-package_pkg_postinst
+	use preview-latex && texmf-update
 	elisp-site-regen
 }
 
 pkg_postrm(){
-	use preview-latex && latex-package_pkg_postrm
+	use preview-latex && texmf-update
 	elisp-site-regen
 }
