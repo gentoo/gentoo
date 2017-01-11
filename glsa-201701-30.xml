@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-30">
+  <title>vzctl: Security bypass</title>
+  <synopsis>A vulnerability in vzctl might allow attackers to gain control over
+    ploop containers.
+  </synopsis>
+  <product type="ebuild">vzctl</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>560522</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-cluster/vzctl" auto="yes" arch="*">
+      <unaffected range="ge">4.9.4</unaffected>
+      <vulnerable range="lt">4.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>vzctl is a set of control tools for the OpenVZ server virtualization
+      solution.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that vzctl determined the virtual environment (VE)
+      layout based on the presence of root.hdd/DiskDescriptor.xml in the VE
+      private directory.  This allows local simfs container (CT) root users to
+      change the root password for arbitrary ploop containers.  This is
+      demonstrated by a symlink attack on the ploop container root.hdd file
+      which can then be used to access a control panel.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker with root privileges, in a simfs-based container, could gain
+      control over ploop-based containers.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All vzctl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/vzctl-4.9.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6927">CVE-2015-6927</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 10 Jan 2017 16:32:14 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:39:20 +0000">whissi</metadata>
+</glsa>
