@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -67,7 +67,7 @@ if [[ ${MY_PV} = *-Beta* ]] || [[ ${MY_PV} = *-RC* ]]; then
 	unset _tmp_last_index
 	unset _tmp_suffix
 else
-	KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 SRC_URI="
@@ -171,7 +171,7 @@ src_prepare() {
 		ebegin "Applying Gentoo-specific changes to ${MY_P_IPV4}"
 		ln -s ../shorewallrc.gentoo ${MY_PN_IPV4}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
 		cp "${FILESDIR}"/shorewall.confd-r1 "${S}"/${MY_PN_IPV4}/default.gentoo || die "Copying shorewall.confd-r1 failed"
-		cp "${FILESDIR}"/shorewall.initd-r1 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r1 failed"
+		cp "${FILESDIR}"/shorewall.initd-r2 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall.systemd "${S}"/${MY_PN_IPV4}/gentoo.service || die "Copying shorewall.systemd failed"
 		eend 0
 	fi
@@ -181,8 +181,8 @@ src_prepare() {
 		mv "${S}"/${MY_P_IPV6} "${S}"/${MY_PN_IPV6} || die "Failed to move '${S}/${MY_P_IPV6}' to '${S}/${MY_PN_IPV6}'"
 		ebegin "Applying Gentoo-specific changes to ${MY_P_IPV6}"
 		ln -s ../shorewallrc.gentoo ${MY_PN_IPV6}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
-		cp "${FILESDIR}"/shorewall6.confd-r1 "${S}"/${MY_PN_IPV6}/default.gentoo || die "Copying shorewall6.confd-r1 failed"
-		cp "${FILESDIR}"/shorewall6.initd-r1 "${S}"/${MY_PN_IPV6}/init.gentoo.sh || die "Copying shorewall6.initd-r1 failed"
+		cp "${FILESDIR}"/shorewall.confd-r1 "${S}"/${MY_PN_IPV6}/default.gentoo || die "Copying shorewall.confd-r1 failed"
+		cp "${FILESDIR}"/shorewall.initd-r2 "${S}"/${MY_PN_IPV6}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall6.systemd "${S}"/${MY_PN_IPV6}/gentoo.service || die "Copying shorewall6.systemd failed"
 		eend 0
 	fi
@@ -193,7 +193,7 @@ src_prepare() {
 		ebegin "Applying Gentoo-specific changes to ${MY_P_LITE4}"
 		ln -s ../shorewallrc.gentoo ${MY_PN_LITE4}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
 		cp "${FILESDIR}"/shorewall-lite.confd-r1 "${S}"/${MY_PN_LITE4}/default.gentoo || die "Copying shorewall-lite.confd-r1 failed"
-		cp "${FILESDIR}"/shorewall-lite.initd-r1 "${S}"/${MY_PN_LITE4}/init.gentoo.sh || die "Copying shorewall-lite.initd-r1 failed"
+		cp "${FILESDIR}"/shorewall-lite.initd-r2 "${S}"/${MY_PN_LITE4}/init.gentoo.sh || die "Copying shorewall-lite.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall-lite.systemd "${S}"/${MY_PN_LITE4}/gentoo.service || die "Copying shorewall-lite.systemd failed"
 		eend 0
 	fi
@@ -203,8 +203,8 @@ src_prepare() {
 		mv "${S}"/${MY_P_LITE6} "${S}"/${MY_PN_LITE6} || die "Failed to move '${S}/${MY_P_LITE6}' to '${S}/${MY_PN_LITE6}'"
 		ebegin "Applying Gentoo-specific changes to ${MY_P_LITE6}"
 		ln -s ../shorewallrc.gentoo ${MY_PN_LITE6}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
-		cp "${FILESDIR}"/shorewall6-lite.confd-r1 "${S}"/${MY_PN_LITE6}/default.gentoo || die "Copying shorewall6-lite.confd-r1 failed"
-		cp "${FILESDIR}"/shorewall6-lite.initd-r1 "${S}"/${MY_PN_LITE6}/init.gentoo.sh || die "Copying shorewall6-lite.initd-r1 failed"
+		cp "${FILESDIR}"/shorewall-lite.confd-r1 "${S}"/${MY_PN_LITE6}/default.gentoo || die "Copying shorewall-lite.confd-r1 failed"
+		cp "${FILESDIR}"/shorewall-lite.initd-r2 "${S}"/${MY_PN_LITE6}/init.gentoo.sh || die "Copying shorewall-lite.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall6-lite.systemd "${S}"/${MY_PN_LITE6}/gentoo.service || die "Copying shorewall6-lite.systemd failed"
 		eend 0
 	fi
