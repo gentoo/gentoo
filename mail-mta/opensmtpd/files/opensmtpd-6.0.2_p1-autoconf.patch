@@ -1,0 +1,46 @@
+From 9370e962bfa1032ab16c48c79977536eae665d75 Mon Sep 17 00:00:00 2001
+From: Freddy DISSAUX <dsx@pouet.bsdsx.fr>
+Date: Sat, 17 Sep 2016 08:50:14 +0200
+Subject: [PATCH] Fix expression, as explain in
+
+https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/Generic-Declarations.html#Generic-Declarations
+
+"Unlike the other `AC_CHECK_*S' macros, when a symbol is not
+declared, HAVE_DECL_symbol is defined to `0' instead of
+leaving HAVE_DECL_symbol undeclared."
+---
+ openbsd-compat/defines.h        | 2 +-
+ openbsd-compat/openbsd-compat.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/openbsd-compat/defines.h b/openbsd-compat/defines.h
+index 0a94d76..bda39e9 100644
+--- a/openbsd-compat/defines.h
++++ b/openbsd-compat/defines.h
+@@ -85,7 +85,7 @@
+ # define STDERR_FILENO   2
+ #endif
+ 
+-#if defined(HAVE_DECL_O_NONBLOCK) && HAVE_DECL_O_NONBLOCK == 0
++#if !HAVE_DECL_O_NONBLOCK
+ # define O_NONBLOCK      00004	/* Non Blocking Open */
+ #endif
+ 
+diff --git a/openbsd-compat/openbsd-compat.h b/openbsd-compat/openbsd-compat.h
+index fd931d0..1ef2925 100644
+--- a/openbsd-compat/openbsd-compat.h
++++ b/openbsd-compat/openbsd-compat.h
+@@ -212,11 +212,11 @@ void errc(int, int, const char *, ...);
+ #define pledge(promises, paths) 0
+ #endif
+ 
+-#ifndef HAVE_DECL_AF_LOCAL
++#if !HAVE_DECL_AF_LOCAL
+ #define AF_LOCAL AF_UNIX
+ #endif
+ 
+-#ifndef HAVE_DECL_WAIT_MYPGRP
++#if !HAVE_DECL_WAIT_MYPGRP
+ #define WAIT_MYPGRP 0
+ #endif
+ 
