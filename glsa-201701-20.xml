@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-20">
+  <title>D-Bus: Format string vulnerability</title>
+  <synopsis>A vulnerability has been found in D-Bus possibly resulting in a
+    local Denial of Service. 
+  </synopsis>
+  <product type="ebuild">dbus</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>596772</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/dbus" auto="yes" arch="*">
+      <unaffected range="ge">1.10.12</unaffected>
+      <vulnerable range="lt">1.10.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>D-Bus is a message bus system, a simple way for applications to talk to
+      one another.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that D-Bus incorrectly handles certain format strings.</p>
+    
+    <p>The impact of this new vulnerability is believed to not be exploitable
+      if D-Bus is patched against CVE-2015-0245. The previous vulnerability
+      (CVE-2015-0245) was addressed in GLSA-201503-02 referenced below.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause a Denial of Service condition or possibly
+      execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>The vulnerable D-Bus interface is intended only for use by systemd
+      running as root.
+    </p>
+    
+    <p>The administrator can install a policy which denies sending from 
+      org.freedesktop.systemd1.Activator” to D-Bus. This will prevent
+      non-root attackers from reaching the interface in order to exercise this
+      flaw.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All D-Bus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/dbus-1.10.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://security.gentoo.org/glsa/201503-02">GLSA-201503-02</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 08 Jan 2017 23:47:24 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:08:23 +0000">whissi</metadata>
+</glsa>
