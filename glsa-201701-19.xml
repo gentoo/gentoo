@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-19">
+  <title>NTFS-3G: Privilege escalation</title>
+  <synopsis>A vulnerability in NTFS-3G allows local users to gain root
+    privileges.
+  </synopsis>
+  <product type="ebuild">ntfs3g</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>550970</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/ntfs3g" auto="yes" arch="*">
+      <unaffected range="ge">2016.2.22</unaffected>
+      <vulnerable range="lt">2016.2.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTFS-3G is a stable, full-featured, read-write NTFS driver for various
+      operating systems.
+    </p>
+  </background>
+  <description>
+    <p>NTFS-3G is affected by the same vulnerability as reported in “GLSA
+      201603-04” when the bundled fuse-lite implementation is used.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local user could gain root privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time. However, on Gentoo when the
+      “external-fuse” USE flag is set or the “suid” USE flag is not set
+      then NTFS-3G is not affected. Both of these cases are the default
+      configuration.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All NTFS-3G users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/ntfs3g-2016.2.22"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3202">CVE-2015-3202</uri>
+    <uri link="https://security.gentoo.org/glsa/201603-04">GLSA 201603-04</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 07 Sep 2016 01:46:01 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:04:09 +0000">whissi</metadata>
+</glsa>
