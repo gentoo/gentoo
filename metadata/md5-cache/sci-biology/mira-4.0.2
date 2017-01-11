@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=dev-libs/boost[threads] dev-util/google-perftools <sys-devel/flex-2.6.0 app-editors/vim-core dev-libs/expat !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/boost[threads] dev-util/google-perftools sys-devel/flex app-editors/vim-core dev-libs/expat !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina
 EAPI=5
 HOMEPAGE=http://www.chevreux.org/projects_mira.html
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://sourceforge.net/projects/mira-assembler/files/MIRA/stable/mira-4.0.2.tar.bz2 mirror://sourceforge/mira-assembler/mira_3rdparty_06-07-2012.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1b2c4e0b3d28d376d63014314a1e52f1
+_md5_=f05a734d85c9183f99fcdbcb62290268
