@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-21">
+  <title>Expat: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Expat, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">expat</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>458742</bug>
+  <bug>555642</bug>
+  <bug>577928</bug>
+  <bug>583268</bug>
+  <bug>585510</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/expat" auto="yes" arch="*">
+      <unaffected range="ge">2.2.0-r1</unaffected>
+      <vulnerable range="lt">2.2.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Expat is a set of XML parsing libraries.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Expat. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted XML
+      file, could execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.  This attack could also be used
+      against automated systems that arbitrarily process XML files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Expat users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/expat-2.2.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6702">CVE-2012-6702</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0340">CVE-2013-0340</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1283">CVE-2015-1283</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0718">CVE-2016-0718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4472">CVE-2016-4472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5300">CVE-2016-5300</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 03:24:00 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:13:03 +0000">whissi</metadata>
+</glsa>
