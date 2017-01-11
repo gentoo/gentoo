@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_HANDBOOK="true"
-KDE_TEST="optional"
 inherit kde5
 
 DESCRIPTION="KIO Slave for Google Drive service"
