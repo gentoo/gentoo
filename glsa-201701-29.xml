@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-29">
+  <title>Vim, gVim: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability has been found in Vim and gVim concerning how
+    certain modeline options are treated.
+  </synopsis>
+  <product type="ebuild">vim, gvim</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>600650</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-editors/vim" auto="yes" arch="*">
+      <unaffected range="ge">8.0.0106</unaffected>
+      <vulnerable range="lt">8.0.0106</vulnerable>
+    </package>
+    <package name="app-editors/gvim" auto="yes" arch="*">
+      <unaffected range="ge">8.0.0106</unaffected>
+      <vulnerable range="lt">8.0.0106</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Vim is an efficient, highly configurable improved version of the classic
+      ‘vi’ text editor. gVim is the GUI version of Vim.
+    </p>
+  </background>
+  <description>
+    <p>Vim and gVim do not properly validate values for the ‘filetype’,
+      ‘syntax’, and ‘keymap’ options.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using Vim/gVim with certain modeline options enabled possibly resulting
+      in execution of arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>Disabling modeline support in .vimrc by adding “set nomodeline” will
+      prevent exploitation of this flaw. By default, modeline is enabled for
+      ordinary users but disabled for root.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All Vim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/vim-8.0.0106"
+    </code>
+    
+    <p>All gVim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/gvim-8.0.0106"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1248">CVE-2016-1248</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 17:07:43 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:33:33 +0000">whissi</metadata>
+</glsa>
