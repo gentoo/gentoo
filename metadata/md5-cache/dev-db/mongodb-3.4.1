@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst preinst prepare pretend setup test
+DEPEND=>=app-arch/snappy-1.1.3 >=dev-cpp/yaml-cpp-0.5.3 >=dev-libs/boost-1.60[threads(+)] >=dev-libs/libpcre-8.39[cxx] dev-libs/snowball-stemmer net-libs/libpcap >=sys-libs/zlib-1.2.8 mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) ) >=sys-devel/gcc-4.8.2:* sys-libs/ncurses sys-libs/readline debug? ( dev-util/valgrind ) kerberos? ( dev-libs/cyrus-sasl[kerberos] ) test? ( dev-python/pymongo dev-python/pyyaml ) >=dev-util/scons-2.3.0 virtual/pkgconfig
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=5
+HOMEPAGE=http://www.mongodb.org
+IUSE=debug kerberos libressl mms-agent ssl test +tools
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 Apache-2.0
+PDEPEND=tools? ( >=app-admin/mongo-tools-3.4.1 )
+RDEPEND=>=app-arch/snappy-1.1.3 >=dev-cpp/yaml-cpp-0.5.3 >=dev-libs/boost-1.60[threads(+)] >=dev-libs/libpcre-8.39[cxx] dev-libs/snowball-stemmer net-libs/libpcap >=sys-libs/zlib-1.2.8 mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=https://fastdl.mongodb.org/src/mongodb-src-r3.4.1.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	pax-utils	4c2654a34ebe732e85fda354f6ee642f	scons-utils	d42c1726f481bb5812cc2ce1f236db1d	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=3f656d71db92b9d85f5081bc3656fd14
