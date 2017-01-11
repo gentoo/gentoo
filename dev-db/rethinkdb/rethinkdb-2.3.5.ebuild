@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc +jemalloc tcmalloc"
 
 # TODO: rly need some webui libs ?
-DEPEND="dev-cpp/gtest
+DEPEND=">=dev-libs/re2-0.2016.05.01
+		dev-cpp/gtest
 		dev-libs/boost
 		dev-libs/protobuf-c
-		>=dev-libs/re2-0.2016.05.01
+		net-misc/curl
 		sys-libs/libunwind
 		sys-libs/ncurses:=
 		jemalloc? ( >=dev-libs/jemalloc-4.0 )
