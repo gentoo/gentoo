@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,8 +10,9 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_PV="${PV/_/-}"
 	EGIT_COMMIT="v${MY_PV}"
+	RUNC_COMMIT="c91b5be" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
@@ -20,9 +21,8 @@ HOMEPAGE="http://runc.io"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor +seccomp"
+IUSE="apparmor hardened +seccomp"
 
-DEPEND=""
 RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	seccomp? ( sys-libs/libseccomp )
@@ -30,10 +30,13 @@ RDEPEND="
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
 
+PATCHES=( "${FILESDIR}"/${P}-init-non-dumpable.patch )
+
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
 	export CGO_CFLAGS="-I${ROOT}/usr/include"
-	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
+	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')
+		-L${ROOT}/usr/$(get_libdir)"
 
 	# Setup GOPATH so things build
 	rm -rf .gopath
@@ -47,7 +50,8 @@ src_compile() {
 		$(usex seccomp 'seccomp')
 	)
 
-	emake BUILDTAGS="${options[*]}"
+	emake BUILDTAGS="${options[*]}" \
+		COMMIT="${RUNC_COMMIT}"
 }
 
 src_install() {
