@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ CDEPEND="
 	dev-libs/boost[threads]
 	dev-util/google-perftools"
 DEPEND="${CDEPEND}
-	<sys-devel/flex-2.6.0
+	sys-devel/flex
 	app-editors/vim-core
 	dev-libs/expat"
 RDEPEND="${CDEPEND}"
@@ -49,6 +49,17 @@ src_prepare() {
 		-i configure.ac || die
 
 	eautoreconf
+
+	# Remove C++ source files that were built with flex by upstream.
+	local f
+	local PREBUILT_CXX_LEXER_FILES=(
+		"$S"/src/io/exp_flexer.cc
+		"$S"/src/mira/parameters_flexer.cc
+	)
+
+	for f in "${PREBUILT_CXX_LEXER_FILES[@]}"; do
+		[[ -f $f ]] && { rm "$f" || die "Failed to remove $f"; } || die "$f not found"
+	done
 }
 
 src_configure() {
