@@ -4655,7 +4655,7 @@ dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.0-r200 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0: Lightweight user interface framework for mobile and convergent applications
-dev-libs/klibc 1.5.25 2.0.4 2.0.4-r1: A minimal libc subset for use with initramfs
+dev-libs/klibc 1.5.25 2.0.4 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r2: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kproperty 3.0.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
