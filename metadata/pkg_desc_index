@@ -7152,7 +7152,7 @@ dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed da
 dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0 3.1.1: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
-dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1 4.5.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.5.1 4.5.3: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5 1.2.5-r1: behaviour-driven development, Python style
 dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
