@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-28">
+  <title>c-ares: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in c-ares might allow remote attackers
+    to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">c-ares</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>595536</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/c-ares" auto="yes" arch="*">
+      <unaffected range="ge">1.12.0</unaffected>
+      <vulnerable range="lt">1.12.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>c-ares is a C library for asynchronous DNS requests (including name
+      resolves).
+    </p>
+  </background>
+  <description>
+    <p>A hostname with an escaped trailing dot (such as “hello\.”) would
+      have its size calculated incorrectly leading to a single byte written
+      beyond the end of a buffer on the heap.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to provide a specially crafted hostname to an
+      application using c-ares, could potentially cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All c-ares users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/c-ares-1.12.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5180">CVE-2016-5180</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 14:14:23 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:29:54 +0000">whissi</metadata>
+</glsa>
