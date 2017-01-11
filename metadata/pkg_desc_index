@@ -8118,7 +8118,7 @@ dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.11.12 0.11.13: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r1 0.45-r2: Python library to produce RTF documents
-dev-python/pysaml2 3.0.0 4.0.2: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 3.0.0 4.0.2 4.0.2-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.9.2: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
@@ -12499,7 +12499,7 @@ media-gfx/icc_examin 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls ga
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.6.2 6.9.6.6 6.9.7.0 7.0.4.0: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.6.2 6.9.6.6 6.9.7.0 6.9.7.3 7.0.4.3: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 0.9.2 1.0.0 1.2.0 1.3.0: Utility for image scaling and processing
 media-gfx/imv 2.1.3 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1 0.91-r2 0.91-r3: A SVG based generic vector-drawing program
