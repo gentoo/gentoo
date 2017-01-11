@@ -2167,7 +2167,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.17-r1 6.18.01 6.18.01-r2 6.18.01-r4 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.11-r1: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.11-r1 3.14: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.22.0 9999: Additional completion definitions for Zsh
