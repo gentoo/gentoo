@@ -5024,7 +5024,7 @@ dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
-dev-lisp/asdf 1.86-r1 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0: ASDF is Another System Definition Facility for Common Lisp
+dev-lisp/asdf 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7 3.2.0: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
