@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-27">
+  <title>7-Zip: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in 7-Zip, the worst of
+    which may allow execution of arbitrary code. 
+  </synopsis>
+  <product type="ebuild">7zip</product>
+  <announced>January 11, 2017</announced>
+  <revised>January 11, 2017: 1</revised>
+  <bug>582832</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/p7zip" auto="yes" arch="*">
+      <unaffected range="ge">16.02-r1</unaffected>
+      <vulnerable range="lt">16.02-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>7-Zip is an open-source file archiver, an application used primarily to
+      compress files. 7-Zip uses its own 7z archive format, but can read and
+      write several other archive formats.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in 7-Zip. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      archive file possibly resulting in execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All 7-Zip users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/p7zip-16.02-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2334">CVE-2016-2334</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2335">CVE-2016-2335</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 09 Jan 2017 17:11:43 +0000">whissi</metadata>
+  <metadata tag="submitter" timestamp="Wed, 11 Jan 2017 12:28:26 +0000">whissi</metadata>
+</glsa>
