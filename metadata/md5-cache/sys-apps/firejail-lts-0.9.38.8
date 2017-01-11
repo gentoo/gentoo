@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=!sys-apps/firejail
+DESCRIPTION=Security sandbox for any type of processes; LTS branch
+EAPI=5
+HOMEPAGE=https://firejail.wordpress.com/
+IUSE=+seccomp
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=!sys-apps/firejail
+SLOT=0
+SRC_URI=mirror://sourceforge/firejail/firejail-0.9.38.8.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	017377e73405d964cd0137088cddb9c3	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=61d48dced73c26d43cbf20802fb6a0cf
