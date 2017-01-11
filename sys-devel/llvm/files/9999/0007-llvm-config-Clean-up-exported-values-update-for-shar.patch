@@ -7,7 +7,6 @@ Subject: [PATCH] llvm-config: Clean up exported values, update for shared
 Gentoo-specific fixup for llvm-config, including:
 - wiping build-specific CFLAGS, CXXFLAGS,
 - updating library suffixes for shared libs,
-- wiping --system-libs for shared linking,
 - making --src-root return invalid path (/dev/null),
 - making --build-mode return "Release" rather than "Gentoo".
 
@@ -39,16 +38,6 @@ index 744fa4e44d1..593788aaef3 100644
  set(LLVM_BUILD_SYSTEM cmake)
  set(LLVM_HAS_RTTI ${LLVM_CONFIG_HAS_RTTI})
  set(LLVM_DYLIB_VERSION "${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}${LLVM_VERSION_SUFFIX}")
-@@ -46,7 +50,8 @@ endif()
- # Use the C++ link flags, since they should be a superset of C link flags.
- set(LLVM_LDFLAGS "${CMAKE_CXX_LINK_FLAGS}")
- set(LLVM_BUILDMODE ${CMAKE_BUILD_TYPE})
--set(LLVM_SYSTEM_LIBS ${SYSTEM_LIBS})
-+# We don't do static libs, so we don't need to supply any system-libs
-+set(LLVM_SYSTEM_LIBS "")
- if(BUILD_SHARED_LIBS)
-   set(LLVM_ENABLE_SHARED ON)
- else()
 diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
 index d780094861c..c61c72ff48c 100644
 --- a/tools/llvm-config/llvm-config.cpp
