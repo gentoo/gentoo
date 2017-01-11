@@ -28,7 +28,7 @@ CDEPEND="
 	dev-libs/boost[threads]
 	dev-util/google-perftools"
 DEPEND="${CDEPEND}
-	<sys-devel/flex-2.6.0
+	sys-devel/flex
 	app-editors/vim-core
 	dev-libs/expat"
 RDEPEND="${CDEPEND}"
