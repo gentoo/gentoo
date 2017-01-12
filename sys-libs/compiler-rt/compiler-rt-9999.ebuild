@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 # TODO: fix unnecessary dep on Python upstream
@@ -27,6 +29,9 @@ DEPEND="${RDEPEND}
 	~sys-devel/llvm-${PV}
 	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 test_compiler() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c - \
