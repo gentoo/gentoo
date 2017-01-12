@@ -9,8 +9,8 @@
 ;           on server           FTP.INTERNIC.NET
 ;       -OR-                    RS.INTERNIC.NET
 ;
-;       last update:    August 25, 2016
-;       related version of root zone:   2016082500
+;       last update:    October 20, 2016
+;       related version of root zone:   2016102001
 ;
 ; formerly NS.INTERNIC.NET
 ;
@@ -52,6 +52,7 @@ F.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2f::f
 ;
 .                        3600000      NS    G.ROOT-SERVERS.NET.
 G.ROOT-SERVERS.NET.      3600000      A     192.112.36.4
+G.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:12::d0d
 ;
 ; FORMERLY AOS.ARL.ARMY.MIL
 ;

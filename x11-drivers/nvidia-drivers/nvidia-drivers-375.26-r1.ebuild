@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils flag-o-matic linux-info linux-mod multilib nvidia-driver \
+EAPI=6
+inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver \
 	portability toolchain-funcs unpacker user udev
 
 NV_URI="http://us.download.nvidia.com/XFree86/"
@@ -22,7 +21,9 @@ SRC_URI="
 	arm? ( ${NV_URI}Linux-x86-ARM/${PV}/${ARM_NV_PACKAGE}.run )
 	x86-fbsd? ( ${NV_URI}FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )
 	x86? ( ${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
-	tools? ( ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2 )
+	tools? (
+		ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2
+	)
 "
 
 LICENSE="GPL-2 NVIDIA-r2"
@@ -41,19 +42,19 @@ COMMON="
 	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
-		dev-libs/atk
-		dev-libs/glib:2
-		dev-libs/jansson
-		gtk3? ( x11-libs/gtk+:3 )
-		x11-libs/cairo
-		x11-libs/gdk-pixbuf[X]
-		x11-libs/gtk+:2
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXrandr
-		x11-libs/libXv
-		x11-libs/libXxf86vm
-		x11-libs/pango[X]
+		dev-libs/atk[${MULTILIB_USEDEP}]
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		dev-libs/jansson[${MULTILIB_USEDEP}]
+		gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+		x11-libs/gdk-pixbuf[X,${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr[${MULTILIB_USEDEP}]
+		x11-libs/libXv[${MULTILIB_USEDEP}]
+		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+		x11-libs/pango[X,${MULTILIB_USEDEP}]
 	)
 	X? (
 		>=app-eselect/eselect-opengl-1.0.9
@@ -68,14 +69,13 @@ RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
-	wayland? ( dev-libs/wayland )
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
-		<x11-base/xorg-server-1.18.99:=
-		>=x11-libs/libvdpau-1.0
-		multilib? (
-			>=x11-libs/libX11-1.6.2[abi_x86_32]
-			>=x11-libs/libXext-1.3.2[abi_x86_32]
-		)
+		<x11-base/xorg-server-1.19.99:=
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libvdpau-1.0[${MULTILIB_USEDEP}]
+		sys-libs/zlib[${MULTILIB_USEDEP}]
 	)
 "
 
@@ -90,11 +90,11 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 8; then
+	if use kernel_linux && kernel_is ge 4 10; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.8"
-		ewarn "<sys-kernel/vanilla-sources-4.8"
+		ewarn "<sys-kernel/gentoo-sources-4.10"
+		ewarn "<sys-kernel/vanilla-sources-4.10"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
@@ -170,17 +170,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-367.57-profiles-rc.patch
+	eapply "${FILESDIR}"/${P}-profiles-rc.patch
 
 	if use pax_kernel; then
 		ewarn "Using PAX patches is not supported. You will be asked to"
 		ewarn "use a standard kernel should you have issues. Should you"
 		ewarn "need support with these patches, contact the PaX team."
-		epatch "${FILESDIR}"/${PN}-367.57-pax.patch
+		eapply "${FILESDIR}"/${PN}-375.20-pax.patch
 	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -317,7 +317,6 @@ src_install() {
 	fi
 
 	# Documentation
-	dohtml ${NV_DOC}/html/*
 	if use kernel_FreeBSD; then
 		dodoc "${NV_DOC}/README"
 		use X && doman "${NV_MAN}/nvidia-xconfig.1"
@@ -332,11 +331,17 @@ src_install() {
 		doman "${NV_MAN}/nvidia-cuda-mps-control.1.gz"
 	fi
 
+	docinto html
+	dodoc -r ${NV_DOC}/html/*
+
 	# Helper Apps
 	exeinto /opt/bin/
 
 	if use X; then
 		doexe ${NV_OBJ}/nvidia-xconfig
+
+		insinto /etc/vulkan/icd.d
+		doins nvidia_icd.json
 	fi
 
 	if use kernel_linux; then
@@ -393,9 +398,6 @@ src_install() {
 
 		exeinto /etc/X11/xinit/xinitrc.d
 		newexe "${FILESDIR}"/95-nvidia-settings-r1 95-nvidia-settings
-
-		insinto /etc/vulkan/icd.d
-		doins nvidia_icd.json
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
