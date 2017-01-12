@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 inherit cmake-multilib git-r3
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
@@ -22,6 +24,9 @@ RDEPEND="!sys-libs/libunwind"
 # llvm-config and cmake files needed to get proper flags
 # (3.9.0 needed because cmake file install path changed)
 DEPEND=">=sys-devel/llvm-3.9.0[${MULTILIB_USEDEP}]"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 multilib_src_configure() {
 	local libdir=$(get_libdir)
