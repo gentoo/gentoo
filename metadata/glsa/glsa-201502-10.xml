@@ -13,18 +13,9 @@
   <access>local, remote</access>
   <affected>
     <package name="media-libs/libpng" auto="yes" arch="*">
-      <unaffected range="ge">1.6.16</unaffected>
-      <unaffected range="rge">1.5.21</unaffected>
-      <unaffected range="rge">1.2.52</unaffected>
-      <unaffected range="rge">1.2.53</unaffected>
-      <unaffected range="rge">1.2.54</unaffected>
-      <unaffected range="rge">1.2.55</unaffected>
-      <unaffected range="rge">1.2.56</unaffected>
-      <unaffected range="rge">1.5.22</unaffected>
-      <unaffected range="rge">1.5.23</unaffected>
-      <unaffected range="rge">1.5.24</unaffected>
-      <unaffected range="rge">1.5.25</unaffected>
-      <unaffected range="rge">1.2.57</unaffected>
+      <unaffected range="ge" slot="1.6">1.6.16</unaffected>
+      <unaffected range="ge" slot="1.5">1.5.21</unaffected>
+      <unaffected range="ge" slot="1.2">1.2.52</unaffected>
       <vulnerable range="lt">1.6.16</vulnerable>
     </package>
   </affected>
