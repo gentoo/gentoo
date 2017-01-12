@@ -4419,7 +4419,7 @@ dev-lang/elixir 1.2.3 1.2.5 1.3.0 1.3.0-r1 1.3.1 1.3.2 1.3.4: Elixir programming
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 17.5 18.3 19.0 19.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
-dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0: a non-interactive scripting language similar to SH
+dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0 2.2.0.0: a non-interactive scripting language
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
@@ -4959,7 +4959,7 @@ dev-libs/sdformat 4.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
-dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0: skarnet.org general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0 2.4.0.2: skarnet.org general-purpose libraries
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
@@ -10068,7 +10068,7 @@ dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to 
 dev-util/flawfinder 1.31: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 100% compatible enhanced Jam implementation
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
-dev-util/fuzz 0.6: Stress-tests programs by giving them random input
+dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.2 2.50.0 2.50.1 2.50.2: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.28 1.29-r1: GTK+ based fast and lightweight IDE
@@ -14383,6 +14383,7 @@ net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
+net-dns/s6-dns 2.1.0.0: suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
@@ -15195,6 +15196,7 @@ net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
 net-misc/rygel 0.28.3 0.30.3 0.32.1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.0.1 1.5.2-r1 1.6.0 1.6.1: Command line client for Amazon S3
+net-misc/s6-networking 2.2.1.0: suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1: Graphical frontend for managing and running SSH and SCP connections
@@ -17007,11 +17009,11 @@ sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.23.1 1.36.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
-sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0: skarnet.org's small and secure supervision software suite
-sys-apps/s6-linux-init 0.0.1.4 0.1.0.0: Generates an init binary for s6-based init systems
-sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0: Set of tiny linux utilities
-sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0: Set of tiny portable unix utilities
-sys-apps/s6-rc 0.0.2.1 0.0.3.0: Service manager for the s6 supervision suite
+sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0 2.4.0.0: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-init 0.0.1.4 0.1.0.0 0.2.0.0: Generates an init binary for s6-based init systems
+sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0 2.2.0.0: set of tiny linux utilities
+sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0: set of tiny portable unix utilities
+sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0: service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.10-r3 2.11-r3 2.11-r4: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm

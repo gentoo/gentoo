@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-lang/execline-2.2.0.0[static-libs] >=dev-libs/skalibs-2.4.0.0[static-libs] ) !static? ( >=dev-lang/execline-2.2.0.0[static=] >=dev-libs/skalibs-2.4.0.0 )
+DESCRIPTION=skarnet.org's small and secure supervision software suite
+EAPI=6
+HOMEPAGE=http://www.skarnet.org/software/s6/
+IUSE=static static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=dev-lang/execline-2.2.0.0:=[!static?] !static? ( >=dev-libs/skalibs-2.4.0.0:= )
+SLOT=0/2.4
+SRC_URI=http://www.skarnet.org/software/s6/s6-2.4.0.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	017377e73405d964cd0137088cddb9c3	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=3ddde028b1022f68bbdec4805f4ddb00
