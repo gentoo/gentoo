@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,10 +63,10 @@ RDEPEND="
 	)
 	voip? (
 		qt5? (
-			<media-libs/opencv-3.0.0[-qt4]
+			media-libs/opencv[-qt4(-)]
 		)
 		qt4? (
-			<media-libs/opencv-3.0.0
+			media-libs/opencv
 			dev-qt/qt-mobility[multimedia]
 		)
 		media-libs/speex
