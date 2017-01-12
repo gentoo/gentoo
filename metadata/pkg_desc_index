@@ -699,7 +699,7 @@ app-dicts/myspell-bg 4.3: Bulgarian dictionaries for myspell/hunspell
 app-dicts/myspell-ca 2.3.0: Catalan dictionaries for myspell/hunspell
 app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
 app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
-app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
+app-dicts/myspell-da 2.1 2.3: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2013.12.06 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929 20160403: German (traditional orthography) dictionaries for myspell/hunspell
 app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
