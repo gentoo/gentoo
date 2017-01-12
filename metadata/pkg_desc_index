@@ -2860,6 +2860,7 @@ dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.5: A simple but powerful C++ interface to libpng
 dev-cpp/pstreams 0.7.0 0.8.1 1.0.0: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
+dev-cpp/random123 1.09: library of counter-based random number generators (CBRNGs)
 dev-cpp/rudiments 0.46 0.51: C++ class library for daemons, clients and servers
 dev-cpp/sparsehash 1.10 2.0.2 2.0.3: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 4.3.20150611 4.3.20150611-r1: High level abstract threading library
@@ -4432,7 +4433,7 @@ dev-lang/ghc 7.8.4 7.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnu-smalltalk 3.2.4 3.2.4-r1 3.2.5: GNU Smalltalk
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.6.3 1.7.4 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.7.4 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
@@ -11802,7 +11803,7 @@ kde-frameworks/kcrash 5.26.0 5.29.0: Framework for intercepting and handling app
 kde-frameworks/kdbusaddons 5.26.0 5.29.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.26.0 5.29.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.26.0 5.29.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.24 4.14.27: KDE libraries needed by all KDE programs
+kde-frameworks/kdelibs 4.14.24 4.14.27 4.14.28: KDE libraries needed by all KDE programs
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.26.0 5.29.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.26.0 5.29.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner

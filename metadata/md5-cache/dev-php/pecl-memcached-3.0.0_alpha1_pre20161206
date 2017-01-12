@@ -12,4 +12,4 @@ SLOT=7
 SRC_URI=https://github.com/php-memcached-dev/php-memcached/archive/e65be324557eda7167c4831b4bfb1ad23a152beb.tar.gz -> pecl-memcached-3.0.0_alpha1_pre20161206.tar.gz
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-source-r3 src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	php-ext-source-r3	a30f64f44cd0439913e37281006faaca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=861745739c0743f8338b31652c4c7b30
+_md5_=2537a808f3c4a4105e4341ca8c74f937
