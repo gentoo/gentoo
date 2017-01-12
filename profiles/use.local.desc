@@ -3279,6 +3279,7 @@ kde-apps/kdepim-common-libs:google - Google service integration via net-libs/lib
 kde-apps/kdepim-runtime:google - Google service integration via net-libs/libkgapi
 kde-apps/kdepimlibs:prison - Enable support for QRcodes in contacts
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
+kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
 kde-apps/kget:gpg - Enable signature verification by QGpgME via kde-apps/kdepimlibs
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
@@ -3341,6 +3342,7 @@ kde-apps/marble:zip - Enable support for reading and displaying .kmz files
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:mobi - Add mobipocket support
+kde-apps/okular:mobile - Enable Plasma mobile support
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
 kde-apps/pykde4:akonadi - Compile bindings for Akonadi

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=app-accessibility/speech-dispatcher >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-3.5.2 dev-util/automoc virtual/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) handbook? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets ) dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=kde-frameworks/kdelibs-4.14.22:4
+DESCRIPTION=Text to speech application
+EAPI=6
+HOMEPAGE=https://www.kde.org/applications/utilities/jovie/
+IUSE=debug +handbook aqua
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=app-accessibility/speech-dispatcher !kde-base/jovie:4 kde-frameworks/oxygen-icons handbook? ( kde-frameworks/kdelibs:4[handbook] ) dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=kde-frameworks/kdelibs-4.14.22:4
+SLOT=4/16.12
+SRC_URI=mirror://kde/stable/applications/16.12.1/src/jovie-16.12.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:kde4-base pkg_postrm:kde4-base pkg_postinst:kde4-base pkg_setup:kde4-base src_unpack:kde4-base src_prepare:kde4-base src_configure:kde4-base src_compile:kde4-base src_test:kde4-base src_install:kde4-base
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	kde4-base	958da2c50ab906e72cd6fc7c77146404	kde4-functions	1aadb525279ddf31ca3c8e6d56ebecb5	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=136ff71649710a366d6c4b4795054fca
