@@ -7,4 +7,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://www.deshawresearch.com/downloads/download_random123.cgi/Random123-1.09.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=395c0bf61181c3aed154df8dfd44c5d2
+_md5_=33b5899a8f7a377198037928f24b6a8e
