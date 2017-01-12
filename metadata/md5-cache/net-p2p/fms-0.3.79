@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=virtual/libiconv frost? ( net-libs/polarssl ) >=dev-libs/poco-1.4.3_p1 >=dev-db/sqlite-3.6.15 app-arch/unzip sys-devel/make >=dev-util/cmake-3.5.2
+DEPEND=virtual/libiconv frost? ( net-libs/mbedtls ) >=dev-libs/poco-1.4.3_p1 >=dev-db/sqlite-3.6.15 app-arch/unzip sys-devel/make >=dev-util/cmake-3.5.2
 DESCRIPTION=A spam-resistant message board application for Freenet
 EAPI=5
 HOMEPAGE=http://freenetproject.org/tools.html
 IUSE=frost
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=virtual/libiconv frost? ( net-libs/polarssl ) >=dev-libs/poco-1.4.3_p1 >=dev-db/sqlite-3.6.15
+RDEPEND=virtual/libiconv frost? ( net-libs/mbedtls ) >=dev-libs/poco-1.4.3_p1 >=dev-db/sqlite-3.6.15
 SLOT=0
-SRC_URI=mirror://gentoo/fms-src-0.3.73.zip
+SRC_URI=mirror://gentoo/fms-src-0.3.79.zip
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7c25c705ef1dbad4ece60756c53e6c97
+_md5_=f8a5d3b6d82ed72c81c2699c16e35615

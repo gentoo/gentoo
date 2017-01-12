@@ -1009,7 +1009,7 @@ app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.5.5 1.6.2: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.5.5 1.6.2 1.6.3: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.20.2 3.22.0: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.20.0 3.22.0: Official plugins for gedit
@@ -15377,7 +15377,7 @@ net-p2p/deluge 1.3.12 1.3.13-r2 1.3.9999 9999: BitTorrent client with a client/s
 net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
-net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
+net-p2p/fms 0.3.79: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1475 0.7.5_p1475-r1 0.7.5_p1475-r2: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.5.5: Official golang implementation of the Ethereum protocol
@@ -18245,7 +18245,7 @@ x11-apps/appres 1.0.4: list X application resource database
 x11-apps/bdftopcf 1.0.4 1.0.5: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
-x11-apps/copyq 2.5.0 2.8.1: Clipboard manager with advanced features
+x11-apps/copyq 2.8.1: Clipboard manager with advanced features
 x11-apps/editres 1.0.6: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5: list fonts served by X font server
