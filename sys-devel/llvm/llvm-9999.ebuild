@@ -5,8 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-# (needed due to lib32 find_library fix)
-CMAKE_MIN_VERSION=3.6.1-r1
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils flag-o-matic git-r3 \
@@ -63,6 +63,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 python_check_deps() {
 	! use test \
 		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -109,9 +112,6 @@ pkg_setup() {
 src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
-
-	# Allow custom cmake build types (like 'Gentoo')
-	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
