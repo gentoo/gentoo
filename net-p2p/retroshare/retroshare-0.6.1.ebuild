@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/openssl:0
 	gnome-base/libgnome-keyring
 	net-libs/libmicrohttpd
-	net-libs/libupnp
+	net-libs/libupnp:0
 	sys-libs/zlib
 	feedreader? (
 		dev-libs/libxml2
