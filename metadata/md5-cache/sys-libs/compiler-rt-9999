@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=!<sys-devel/llvm-4.0 ~sys-devel/llvm-9999 test? ( ~sys-devel/clang-9999 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.5.2 >=dev-vcs/git-1.8.2.1
+DEPEND=!<sys-devel/llvm-4.0 ~sys-devel/llvm-9999 test? ( ~sys-devel/clang-9999 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.7.0-r1 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Compiler runtime library for clang (built-in part)
 EAPI=6
 HOMEPAGE=http://llvm.org/
@@ -9,4 +9,4 @@ RDEPEND=!<sys-devel/llvm-4.0
 SLOT=0/9999
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:- src_install:-
 _eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c72a4622ea38876ec284fca014a22da1
+_md5_=ed4aafc23e636c68986e10483578c137
