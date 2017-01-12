@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="frost"
 
 RDEPEND="virtual/libiconv
-	frost? ( net-libs/polarssl )
+	frost? ( net-libs/mbedtls )
 	>=dev-libs/poco-1.4.3_p1
 	>=dev-db/sqlite-3.6.15"
 DEPEND="${RDEPEND}
@@ -30,8 +30,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	rm -rv  libs
 	edos2unix src/http/pages/showfilepage.cpp
-	epatch "${FILESDIR}"/${PN}-use-system-libs2.patch
+	epatch "${FILESDIR}"/${PN}-use-system-libs3.patch
 }
 
 src_configure() {
