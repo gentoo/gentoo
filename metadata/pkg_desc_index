@@ -1286,7 +1286,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.6 1.13.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.6 1.13.0_rc5 1.13.0_rc6 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.9.0 1.10.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -18199,7 +18199,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 24.0.0.186: Adobe Flash Player
+www-plugins/adobe-flash 24.0.0.186 24.0.0.194: Adobe Flash Player
 www-plugins/chrome-binary-plugins 55.0.2883.87 56.0.2924.59_beta 57.0.2970.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
