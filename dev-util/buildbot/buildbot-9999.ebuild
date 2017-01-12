@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}] )
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		|| (
 			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 			(
@@ -136,6 +136,12 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/buildmaster_at.service.conf" "buildmaster@.service"
 
 	readme.gentoo_create_doc
+}
+
+python_test() {
+	distutils_install_for_testing
+
+	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {
