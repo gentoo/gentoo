@@ -702,7 +702,7 @@ app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1 2.3: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929 20160403: German (traditional orthography) dictionaries for myspell/hunspell
-app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
+app-dicts/myspell-el 0.8 0.9: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 20160901 20170101: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0: Esperanto dictionaries for myspell/hunspell
 app-dicts/myspell-es 0.7: Spanish dictionaries for myspell/hunspell
@@ -711,7 +711,7 @@ app-dicts/myspell-fo 0.4.2: Faroese dictionaries for myspell/hunspell
 app-dicts/myspell-fr 4.5-r1: French dictionaries for myspell/hunspell
 app-dicts/myspell-ga 20060316: Irish dictionaries for myspell/hunspell
 app-dicts/myspell-gl 20060316: Galician dictionaries for myspell/hunspell
-app-dicts/myspell-he 2010.11.05: Hebrew dictionaries for myspell/hunspell
+app-dicts/myspell-he 2010.11.05 2012.08.15: Hebrew dictionaries for myspell/hunspell
 app-dicts/myspell-hr 20060316: Croatian dictionaries for myspell/hunspell
 app-dicts/myspell-hu 1.6.1: Hungarian dictionaries for myspell/hunspell
 app-dicts/myspell-ia 20060316: Interlingua dictionaries for myspell/hunspell
