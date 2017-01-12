@@ -41,7 +41,8 @@ src_prepare() {
 	find -name 'configure*' -or -name 'Makefile*' | xargs sed -i 's/flex++/flex -+/' || die
 	epatch \
 		"${FILESDIR}"/${PN}-3.4.0.2-boost-1.50.patch \
-		"${FILESDIR}"/${P}-cout.patch
+		"${FILESDIR}"/${P}-cout.patch \
+		"${FILESDIR}"/${P}-cmath.patch
 
 	sed \
 		-e "s:-O[23]::g" \
@@ -50,9 +51,10 @@ src_prepare() {
 
 	eautoreconf
 
-	# Remove C++ source files that were built with flex by upstream.
+	# Remove C++ source files that upstream built with flex.
 	local f
 	local PREBUILT_CXX_LEXER_FILES=(
+		"$S"/src/caf/caf_flexer.cc
 		"$S"/src/io/exp_flexer.cc
 		"$S"/src/mira/parameters_flexer.cc
 	)
