@@ -20,6 +20,6 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	insinto /usr/include
-	doins -r include/Random123
+	insinto /usr/include/Random123
+	doins -r include/Random123/. examples/uniform.hpp
 }
