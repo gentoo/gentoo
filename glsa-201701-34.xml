@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-34">
+  <title>runC: Privilege escalation</title>
+  <synopsis>A vulnerability in runC could lead to privilege escalation.</synopsis>
+  <product type="ebuild">runc</product>
+  <announced>January 12, 2017</announced>
+  <revised>January 12, 2017: 1</revised>
+  <bug>605378</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/runc" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0_rc2-r2</unaffected>
+      <vulnerable range="lt">1.0.0_rc2-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>RunC is a CLI tool for spawning and running containers according to the
+      OCI specification.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in runC that allows additional container
+      processes via ‘runc exec’ to be ptraced by the pid 1 of the
+      container.  This allows the main processes of the container, if running
+      as root, to gain access to file-descriptors of these new processes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, who is able to successfully escape the container or modify
+      runC’s state before process initialization, could escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All runC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/runc-1.0.0_rc2-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9962">CVE-2016-9962</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 12 Jan 2017 13:07:29 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Thu, 12 Jan 2017 22:52:16 +0000">b-man</metadata>
+</glsa>
