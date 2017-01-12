@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ USE_PHP="php5-6 php7-0 php7-1"
 
 inherit php-ext-source-r3 vcs-snapshot
 
-USE_PHP="php7-0"
+USE_PHP="php7-0 php7-1"
 
 SRC_URI="https://github.com/php-memcached-dev/php-memcached/archive/e65be324557eda7167c4831b4bfb1ad23a152beb.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://pecl.php.net/package/memcached"
