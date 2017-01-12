@@ -1,0 +1,14 @@
+--- mira-4.0.2/src/mira/ads.C.old	2017-01-12 06:10:05.132263855 -0800
++++ mira-4.0.2/src/mira/ads.C	2017-01-12 06:11:59.360549234 -0800
+@@ -31,10 +31,11 @@
+  * Routines for computing scores and some other classification number are
+  *  provided, too.
+  *
+  */
+ 
++#include <cmath>
+ 
+ #include "ads.H"
+ 
+ #include "errorhandling/errorhandling.H"
+ #include "util/dptools.H"
