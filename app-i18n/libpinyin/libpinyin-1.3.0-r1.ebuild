@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/db:4.8
+RDEPEND="sys-libs/db:*
 	dev-libs/glib:2"
 DEPEND="${RDEPEND}
 	virtual/libintl
