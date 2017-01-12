@@ -3188,6 +3188,11 @@ gnome-extra/evolution-data-server:gnome-online-accounts - Enable using net-libs/
 gnome-extra/evolution-data-server:google - Enable Google Contacts support. This will also enable the internal Google authentication support. Please note this last one relies on a deprecated (and vulnerable) net-libs/webkit-gtk slot. If you want to avoid this dependency, you can disable this support and rely on gnome-online-accounts instead
 gnome-extra/evolution-data-server:weather - Enable optional weather calendar support
 gnome-extra/gnome-boxes:usbredir - Use sys-apps/usbredir to redirect USB devices to another machine over TCP
+gnome-extra/gnome-builder:clang - Provide integration with sys-devel/clang for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support
+gnome-extra/gnome-builder:git - Provide support for the Git version control system via dev-libs/libgit2-glib (such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)
+gnome-extra/gnome-builder:sysprof - Provide an integrated profiler via dev-util/sysprof
+gnome-extra/gnome-builder:vala - Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala
+gnome-extra/gnome-builder:webkit - Enable net-libs/webkit-gtk using plugins support and the HTML/Markdown previewer plugin
 gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 gnome-extra/gnome-commander:chm - Enable metadata support for Microsoft Compiled HTML Help files
 gnome-extra/gnome-commander:gsf - Add metadata support for OLE, OLE2 and ODF
