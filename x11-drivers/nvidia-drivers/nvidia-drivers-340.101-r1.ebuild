@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
+EAPI=6
 inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver \
 	portability toolchain-funcs unpacker user udev
 
@@ -34,14 +33,14 @@ COMMON="
 	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
-		dev-libs/atk[${MULTILIB_USEDEP}]
-		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		dev-libs/jansson[${MULTILIB_USEDEP}]
-		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
-		>=x11-libs/gtk+-2.4:2[${MULTILIB_USEDEP}]
-		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/pango[X,${MULTILIB_USEDEP}]
+		dev-libs/atk[$MULTILIB_USEDEP]
+		dev-libs/glib:2[$MULTILIB_USEDEP]
+		dev-libs/jansson[$MULTILIB_USEDEP]
+		x11-libs/gdk-pixbuf[$MULTILIB_USEDEP]
+		>=x11-libs/gtk+-2.4:2[$MULTILIB_USEDEP]
+		x11-libs/libX11[$MULTILIB_USEDEP]
+		x11-libs/libXext[$MULTILIB_USEDEP]
+		x11-libs/pango[X,$MULTILIB_USEDEP]
 	)
 	X? (
 		>=app-eselect/eselect-opengl-1.0.9
@@ -57,11 +56,13 @@ RDEPEND="
 	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
 	X? (
-		<x11-base/xorg-server-1.18.99:=
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libvdpau-0.3-r1[${MULTILIB_USEDEP}]
-		sys-libs/zlib[${MULTILIB_USEDEP}]
+		<x11-base/xorg-server-1.19.99:=
+		>=x11-libs/libvdpau-0.3-r1
+		sys-libs/zlib[$MULTILIB_USEDEP]
+		multilib? (
+			>=x11-libs/libX11-1.6.2[$MULTILIB_USEDEP]
+			>=x11-libs/libXext-1.3.2[$MULTILIB_USEDEP]
+		)
 	)
 "
 
@@ -78,13 +79,13 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 4; then
+	if use kernel_linux && kernel_is ge 4 10; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.4"
-		ewarn "<sys-kernel/vanilla-sources-4.4"
+		ewarn "<sys-kernel/gentoo-sources-4.10"
+		ewarn "<sys-kernel/vanilla-sources-4.10"
 		ewarn ""
-		ewarn "You are free to utilize epatch_user to provide whatever"
+		ewarn "You are free to utilize eapply_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
 		ewarn "support as a result of those changes."
 		ewarn ""
@@ -168,12 +169,12 @@ src_prepare() {
 		ewarn "Using PAX patches is not supported. You will be asked to"
 		ewarn "use a standard kernel should you have issues. Should you"
 		ewarn "need support with these patches, contact the PaX team."
-		epatch "${FILESDIR}"/${PN}-331.13-pax-usercopy.patch
-		epatch "${FILESDIR}"/${PN}-337.12-pax-constify.patch
+		eapply "${FILESDIR}"/${PN}-331.13-pax-usercopy.patch
+		eapply "${FILESDIR}"/${PN}-337.12-pax-constify.patch
 	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -306,7 +307,6 @@ src_install() {
 	fi
 
 	# Documentation
-	dohtml ${NV_DOC}/html/*
 	if use kernel_FreeBSD; then
 		dodoc "${NV_DOC}/README"
 		use X && doman "${NV_MAN}/nvidia-xconfig.1"
@@ -320,6 +320,9 @@ src_install() {
 		use tools && doman "${NV_MAN}/nvidia-settings.1.gz"
 		doman "${NV_MAN}/nvidia-cuda-mps-control.1.gz"
 	fi
+
+	docinto html
+	dodoc -r ${NV_DOC}/html/*
 
 	# Helper Apps
 	exeinto /opt/bin/
