@@ -13838,7 +13838,7 @@ media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
 media-video/bdsup2sub 4.0.0-r1: A tool to convert and tweak bitmap based subtitle streams
 media-video/bdsup2sub++ 1.0.2: C++ port of BDSup2Sub
 media-video/binkplayer 1.99w: Bink Video! Player
-media-video/bino 1.3.0 1.6.1-r1 1.6.1-r2: Stereoscopic and multi-display media player
+media-video/bino 1.3.0 1.6.1-r2: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
