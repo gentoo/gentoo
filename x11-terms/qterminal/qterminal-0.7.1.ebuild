@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=6
-inherit cmake-utils git-r3 gnome2-utils
+inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Qt-based multitab terminal emulator"
 HOMEPAGE="https://github.com/lxde/qterminal"
-EGIT_REPO_URI="https://github.com/lxde/qterminal.git"
+SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
