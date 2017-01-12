@@ -1,13 +1,13 @@
 DEFINED_PHASES=install prepare
-DEPEND=sys-libs/db:4.8 dev-libs/glib:2 virtual/libintl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/db:* dev-libs/glib:2 virtual/libintl virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Library for Chinese pinyin input methods
 EAPI=5
 HOMEPAGE=https://github.com/libpinyin/libpinyin
 KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=sys-libs/db:4.8 dev-libs/glib:2
+RDEPEND=sys-libs/db:* dev-libs/glib:2
 SLOT=0
 SRC_URI=https://github.com/libpinyin/libpinyin/archive/1.3.0.tar.gz -> libpinyin-1.3.0.tar.gz mirror://sourceforge/libpinyin/models/model11.text.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=2a94e27a412e30aa4dba2da8e572fdb4
+_md5_=9d4506fa35050f28b7700624f3ab4973
