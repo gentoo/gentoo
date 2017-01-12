@@ -7,6 +7,10 @@
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
+		<email>samuel@sholland.org</email>
+		<name>Samuel Holland</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
