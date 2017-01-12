@@ -14,7 +14,7 @@
   <access>remote</access>
   <affected>
     <package name="media-libs/libpng" auto="yes" arch="*">
-      <unaffected range="ge" slot="1.4">1.4.3</unaffected>
+      <unaffected range="ge">1.4.3</unaffected>
       <unaffected range="ge" slot="1.2">1.2.46</unaffected>
       <vulnerable range="lt">1.4.3</vulnerable>
     </package>
