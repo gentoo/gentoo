@@ -703,7 +703,7 @@ app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2013.12.06 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929 20160403: German (traditional orthography) dictionaries for myspell/hunspell
 app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
-app-dicts/myspell-en 20160901: English dictionaries for myspell/hunspell
+app-dicts/myspell-en 20160901 20170101: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0: Esperanto dictionaries for myspell/hunspell
 app-dicts/myspell-es 0.7: Spanish dictionaries for myspell/hunspell
 app-dicts/myspell-et 20030606: Estonian dictionaries for myspell/hunspell
@@ -4611,7 +4611,7 @@ dev-libs/gecode 3.7.3 4.4.0 4.4.0-r1: An environment for developing constraint-b
 dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: A library that implements a user interface that focuses on simplicity and minimalism
+dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.2 2.50.0 2.50.1 2.50.2: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
@@ -7353,7 +7353,7 @@ dev-python/djangocms-video 0.1 1.0.0 2.0.2: Video plugin for django CMS
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301 1.15.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.9.0 1.10.6 2.0.0: Python client for Docker
+dev-python/docker-py 1.2.2 1.9.0 1.10.6 2.0.0 2.0.1: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
@@ -7934,6 +7934,7 @@ dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
 dev-python/pudb 2013.3.6 2013.5.1 2014.1 2015.1 2015.2 2015.3 2016.1 2016.2: A full-screen, console-based Python debugger
 dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using Restructured Text
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
+dev-python/pushbullet-py 0.10.0: A simple python client for pushbullet.com
 dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to prettify and colorize XML
 dev-python/py 1.4.30 1.4.31: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7 1.4.8 1.4.9: Low-level AMQP client for Python (fork of amqplib)
@@ -12703,7 +12704,7 @@ media-libs/exiftool 10.36 10.38: Read and write meta information in image, audio
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1: Fraunhofer AAC codec library
-media-libs/ffmpegsource 2.22 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
+media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.1-r1 1.3.2: free lossless audio encoder and decoder
 media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
@@ -13644,7 +13645,7 @@ media-sound/opus-tools 0.1.9: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r2 1.6-r3: Command line MP3 player
 media-sound/pamix 1.4.1 1.5 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.10: PulseAudio Preferences, configuration dialog for PulseAudio
-media-sound/pasystray 0.2.1 0.5.2: PulseAudio system tray
+media-sound/pasystray 0.2.1 0.6.0: PulseAudio system tray
 media-sound/patchage 0.5.0-r1 1.0.0: Modular patch bay for JACK-based audio and MIDI systems
 media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
@@ -13824,7 +13825,7 @@ media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e-r1: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.2.2 3.2.2_p20160518-r1 9999: Advanced subtitle editor
+media-video/aegisub 3.2.2_p20160518-r1 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.1.14 0.1.15 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1: ASFRecorder - Download Windows Media Streaming files
@@ -14527,7 +14528,7 @@ net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypeforlinux 1.14.0.5: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/slack-bin 2.1.2: Team collaboration tool
-net-im/telegram-desktop-bin 0.10.16 0.10.19 0.10.20: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 0.10.20 1.0.0: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.3 5.16.3-r1 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -15408,7 +15409,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.14.14 0.14.15: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.15 0.14.19: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.92 2.92-r1 2.92-r2 9999: A fast, easy, and free BitTorrent client
@@ -18190,10 +18191,10 @@ www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.5.1 3.8.1-r1 3.9.0: A lightweight system monitoring tool
 www-misc/multisort 1.1-r1: multisort takes any number of httpd logfiles in the Common Log Format and merges them together
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)
-www-misc/profile-sync-daemon 5.45.1 6.28 9999: Symlinks and syncs browser profile dirs to RAM.
+www-misc/profile-sync-daemon 5.45.1 6.31 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.19 2.19-r1 2.20: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
-www-misc/urlwatch 2.5: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.5 2.6: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
