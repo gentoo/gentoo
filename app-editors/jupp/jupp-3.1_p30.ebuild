@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ncurses"
 
-RDEPEND="ncurses? ( sys-libs/ncurses )
+RDEPEND="ncurses? ( sys-libs/ncurses:0= )
 	!app-editors/joe"
 DEPEND="${RDEPEND}"
 
