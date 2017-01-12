@@ -50,7 +50,7 @@ RDEPEND="dev-perl/Apache-Reload
 		!=dev-perl/SOAP-Lite-0.712 )
 	"
 
-OTRS_HOME="/var/lib/otrs"
+OTRS_HOME="${EROOT}/var/lib/otrs"
 
 pkg_setup() {
 	# The enewuser otrs will fail if apache isn't there, but it's an optional dep
