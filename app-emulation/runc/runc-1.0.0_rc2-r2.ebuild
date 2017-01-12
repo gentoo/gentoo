@@ -12,7 +12,7 @@ else
 	EGIT_COMMIT="v${MY_PV}"
 	RUNC_COMMIT="c91b5be" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
