@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,6 @@ IUSE="htmlreport pcre qt4"
 
 RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	>=dev-libs/tinyxml2-2
-	<dev-libs/tinyxml2-4
 	qt4? ( dev-qt/qtgui:4 )
 	pcre? ( dev-libs/libpcre )"
 DEPEND="${RDEPEND}
@@ -31,13 +30,13 @@ src_prepare() {
 	append-cxxflags -std=c++0x
 
 	# Drop bundled libs, patch Makefile generator and re-run it
-	rm -r externals || die
-	epatch "${FILESDIR}"/${PN}-1.72-tinyxml2.patch
+	rm -r externals/tinyxml || die
+	epatch "${FILESDIR}"/${PN}-1.75-tinyxml2.patch
 	tc-export CXX
 	emake dmake
 	./dmake || die
 
-	epatch_user
+	default
 }
 
 src_configure() {
