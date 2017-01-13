@@ -82,7 +82,7 @@
     Element:      affected
     Description:  Describe what the affected subjects are.
     
-                  If product@type = 'build', the child elements are 'package'
+                  If product@type = 'ebuild', the child elements are 'package'
                   If product@type = 'portage', the child elements are 'package'
                   If product@type = 'infrastructure', the child elements are 
                   'service'
