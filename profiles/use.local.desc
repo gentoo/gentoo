@@ -8142,7 +8142,6 @@ www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Eng
 www-plugins/gnash:cygnal - Enable building of the cygnal server
 www-plugins/gnash:dump - Enable dump output module for creating video from SWF
 www-plugins/gnash:egl - Enable EGL support for the OpenVG, OpenGL and X11 renderers
-www-plugins/gnash:gconf - Enable GConf configuration backend
 www-plugins/gnash:harden - Enable upstream recommended hardening build flags (may conflict with system ones)
 www-plugins/gnash:jemalloc - Use dev-libs/jemalloc for allocations
 www-plugins/gnash:openvg - Rendering based on the OpenVG graphics acceleration API
