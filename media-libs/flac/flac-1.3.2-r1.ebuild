@@ -22,15 +22,16 @@ DEPEND="${RDEPEND}
 	!elibc_uclibc? ( sys-devel/gettext )
 	virtual/pkgconfig"
 
-src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}"/${PN}-1.3.2-cflags.patch
-		"${FILESDIR}"/${PN}-1.3.2-asneeded.patch
-		"${FILESDIR}"/${PN}-1.3.0-dontbuild-tests.patch
-		"${FILESDIR}"/${PN}-1.3.2-dontbuild-examples.patch
-		"${FILESDIR}"/${PN}-1.3.2-honor-htmldir.patch
-	)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.2-cflags.patch
+	"${FILESDIR}"/${PN}-1.3.2-asneeded.patch
+	"${FILESDIR}"/${PN}-1.3.0-dontbuild-tests.patch
+	"${FILESDIR}"/${PN}-1.3.2-dontbuild-examples.patch
+	"${FILESDIR}"/${PN}-1.3.2-honor-htmldir.patch
+	"${FILESDIR}"/${PN}-1.3.2-fortify-sources.patch
+)
 
+src_prepare() {
 	default
 	eautoreconf
 }
