@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (13 Jan 2017)
+# No longer maintained as a separate package.
+# Use sci-mathematics/maxima with USE=emacs instead.
+# Masked for removal in 30 days. Bug #448242.
+app-emacs/imaxima
+
 # Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
 # Use x11-drivers/nvidia-drivers[tools] instead.
 media-video/nvidia-settings
