@@ -12,17 +12,9 @@ inherit toolchain-funcs distutils-r1 flag-o-matic
 DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org"
 
-if [[ ${PV} == "9999" ]] ; then
-	inherit subversion
-	ESVN_REPO_URI="http://svn.aircrack-ng.org/trunk"
-	KEYWORDS=""
-	S="${WORKDIR}/${PN}"
-else
-	MY_PV=${PV/_/-}
-	SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}-${MY_PV}"
-fi
+MY_PV=${PV/_/-}
+SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -50,6 +42,12 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 		airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-openssl.patch"
+)
+
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 pkg_setup() {
 	MAKE_COMMON=(
 		CC="$(tc-getCC)" \
@@ -62,9 +60,6 @@ pkg_setup() {
 		sqlite=$(usex sqlite true false) \
 		experimental=$(usex experimental true false)
 		prefix="${ED}/usr" \
-	)
-	[[ ${PV} == "9999" ]] && MAKE_COMMON+=(
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
 	)
 }
 
