@@ -4,8 +4,6 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-
 DESCRIPTION="fish is the Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
 SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
@@ -13,7 +11,7 @@ SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="X"
+IUSE=""
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]
@@ -71,6 +69,9 @@ pkg_postinst() {
 	elog "emerge one of the following packages:"
 	elog "  dev-python/backports-lzma"
 	elog "  >=dev-lang/python-3.3"
+	elog
+	elog "If you have issues with cut'n'paste in X-terminals, install the"
+	elog "x11-misc/xsel package."
 	elog
 	elog "Have fun!"
 }
