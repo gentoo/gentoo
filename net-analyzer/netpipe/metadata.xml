@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		NetPIPE is a protocol independent performance tool that visually
+		represents the network performance under a variety of conditions.
+		It performs simple ping-pong tests, bouncing messages of increasing
+		size between two processes, whether across a network or within an
+		SMP system. Message sizes are chosen at regular intervals, and with
+		slight perturbations, to provide a complete test of the communication
+		system. Each data point involves many ping-pong tests to provide an
+		accurate timing. Latencies are calculated by dividing the round
+		trip time in half for small messages ( less 64 Bytes ). 
+	</longdescription>
+</pkgmetadata>

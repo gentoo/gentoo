@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/gnomesword/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

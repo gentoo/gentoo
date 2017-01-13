@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib git-r3 python-any-r1
@@ -36,6 +38,9 @@ DEPEND="${RDEPEND}
 		sys-devel/llvm
 		>=sys-devel/clang-3.9.0
 	)"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"

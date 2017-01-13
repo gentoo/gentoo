@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.0-sharedlibs.patch
 	"${FILESDIR}"/${PN}-4.7.0-libxcmd-link.patch
 	"${FILESDIR}"/${PN}-4.9.0-cross-compile.patch
+	"${FILESDIR}"/${P}-underlinking.patch
 )
 
 pkg_setup() {

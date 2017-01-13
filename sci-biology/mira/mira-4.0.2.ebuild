@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MIRA_3RDPARTY_PV="06-07-2012"
 MY_PV="${PV/_}" # convert from mira-4.0_rc2 (Gentoo ebuild filename derived) to mira-4.0rc2 (upstream fromat)
@@ -28,7 +28,7 @@ CDEPEND="
 	dev-libs/boost[threads]
 	dev-util/google-perftools"
 DEPEND="${CDEPEND}
-	<sys-devel/flex-2.6.0
+	sys-devel/flex
 	app-editors/vim-core
 	dev-libs/expat"
 RDEPEND="${CDEPEND}"
@@ -37,11 +37,16 @@ RDEPEND="${CDEPEND}"
 #	THANKS doc/3rdparty/scaffolding_MIRA_BAMBUS.pdf )
 DOCS=( AUTHORS GETTING_STARTED NEWS README HELP_WANTED THANKS )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.2-boost-1.50.patch"
+	"${FILESDIR}/${PN}-4.0.2-cout.patch"
+	"${FILESDIR}/${PN}-4.0.2-cmath.patch"
+)
+
 src_prepare() {
 	find -name 'configure*' -or -name 'Makefile*' | xargs sed -i 's/flex++/flex -+/' || die
-	epatch \
-		"${FILESDIR}"/${PN}-3.4.0.2-boost-1.50.patch \
-		"${FILESDIR}"/${P}-cout.patch
+
+	default
 
 	sed \
 		-e "s:-O[23]::g" \
@@ -49,6 +54,22 @@ src_prepare() {
 		-i configure.ac || die
 
 	eautoreconf
+
+	# Remove C++ source files that upstream built with flex.
+	local f
+	local PREBUILT_CXX_LEXER_FILES=(
+		"${S}"/src/caf/caf_flexer.cc
+		"${S}"/src/io/exp_flexer.cc
+		"${S}"/src/mira/parameters_flexer.cc
+	)
+
+	for f in "${PREBUILT_CXX_LEXER_FILES[@]}"; do
+		if [[ -f ${f} ]] ; then
+			rm "${f}" || die "Failed to remove ${f}"
+		else
+			die "${f} not found"
+		fi
+	done
 }
 
 src_configure() {
@@ -66,7 +87,6 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc ${DOCS[@]}
 
 	dobin "${WORKDIR}"/3rdparty/{sff_extract,qual2ball,*.pl}
 	dodoc "${WORKDIR}"/3rdparty/{README.txt,midi_screen.fasta}

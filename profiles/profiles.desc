@@ -256,6 +256,7 @@ amd64-linux		prefix/linux-standalone/amd64/legacy		exp
 x86-linux		prefix/linux-standalone/x86			exp
 x86-linux		prefix/linux-standalone/x86/legacy		exp
 arm-linux		prefix/linux-standalone/arm/armv7a		exp
+arm64-linux		prefix/linux-standalone/arm64			exp
 
 # Mac OS X Profiles
 ppc-macos		prefix/darwin/macos/10.4/ppc			exp

@@ -18,12 +18,12 @@ Add options to control libxml2, jansson, and libyaml automagic deps.
 -		       [have_libxml=yes
 -		       AC_DEFINE(HAVE_LIBXML)],
 -		       [have_libxml=no])
-+if test "${enable_xml}" = "yes"; then
++AS_IF([test "${enable_xml}" = "yes"], [
 +	PKG_CHECK_MODULES(LIBXML, [libxml-2.0 >= 2.7.7],
 +			       [have_libxml=yes
 +			       AC_DEFINE(HAVE_LIBXML)],
 +			       [AC_MSG_ERROR([libxml2 not found])])
-+fi
++])
  AM_CONDITIONAL(HAVE_LIBXML, test "x$have_libxml" = xyes)
  
 +AC_ARG_ENABLE([json],
@@ -36,12 +36,12 @@ Add options to control libxml2, jansson, and libyaml automagic deps.
 -		       [have_jansson=yes
 -		       AC_DEFINE(HAVE_JANSSON)],
 -		       [have_jansson=no])
-+if test "${enable_json}" = "yes"; then
++AS_IF([test "${enable_json}" = "yes"], [
 +	PKG_CHECK_MODULES(JANSSON, jansson,
 +			       [have_jansson=yes
 +			       AC_DEFINE(HAVE_JANSSON)],
 +			       [AC_MSG_ERROR([jansson not found])])
-+fi
++])
  AM_CONDITIONAL(HAVE_JANSSON, test "x$have_jansson" = xyes)
  
 +AC_ARG_ENABLE([yaml],
@@ -54,12 +54,12 @@ Add options to control libxml2, jansson, and libyaml automagic deps.
 -		       [have_libyaml=yes
 -		       AC_DEFINE(HAVE_LIBYAML)],
 -		       [have_libyaml=no])
-+if test "${enable_yaml}" = "yes"; then
++AS_IF([test "${enable_yaml}" = "yes"], [ 
 +	PKG_CHECK_MODULES(LIBYAML, yaml-0.1,
 +			       [have_libyaml=yes
 +			       AC_DEFINE(HAVE_LIBYAML)],
 +			       [AC_MSG_ERROR([libyaml not found])])
-+fi
++])
  AM_CONDITIONAL(HAVE_LIBYAML, test "x$have_libyaml" = xyes)
  
  

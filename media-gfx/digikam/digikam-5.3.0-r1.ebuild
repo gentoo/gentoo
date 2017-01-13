@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble semantic-desktop mysql opengl openmp +panorama scanner video X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then

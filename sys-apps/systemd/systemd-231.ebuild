@@ -162,7 +162,8 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
-		"${FILESDIR}/232-lz4-version.patch"
+		"${FILESDIR}"/232-0001-build-sys-check-for-lz4-in-the-old-and-new-numbering.patch
+		"${FILESDIR}"/232-0002-build-sys-add-check-for-gperf-lookup-function-signat.patch
 		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 		"${FILESDIR}/228-noclean-tmp.patch"
 	)

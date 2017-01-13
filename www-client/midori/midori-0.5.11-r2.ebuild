@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.midori-browser.org/"
 SRC_URI="http://www.${PN}-browser.org/downloads/${PN}_${PV}_all_.tar.bz2"
 
-KEYWORDS="~amd64 ~arm ~mips ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~mips x86 ~x86-fbsd"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"

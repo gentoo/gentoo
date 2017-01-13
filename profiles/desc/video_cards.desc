@@ -25,6 +25,7 @@ i740 - VIDEO_CARDS setting to build driver for Intel i740 video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 ilo - VIDEO_CARDS setting to build unofficial gallium driver for Intel gen6/7 video cards
+imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 mach64 - VIDEO_CARDS setting to build driver for mach64 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards

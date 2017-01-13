@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils flag-o-matic user
 
 DESCRIPTION="Network performance benchmark"
 SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
-KEYWORDS="alpha amd64 ~arm64 hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm64 hppa ~ia64 ~ppc ppc64 sparc x86"
 
 HOMEPAGE="http://www.netperf.org/"
 LICENSE="netperf"

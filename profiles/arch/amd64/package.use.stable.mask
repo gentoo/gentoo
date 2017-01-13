@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,11 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Bernard Cafarelli <voyageur@gentoo.org> (09 Jan 2017)
+# Requires more testing
+# and additional unstable dependencies
+gnustep-base/gnustep-make libobjc2
 
 # Mikle Kolyada <zlogene@gentoo.org> (14 Jun 2015)
 # app-emulation/lxc has no stable versions

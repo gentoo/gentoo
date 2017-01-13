@@ -7,6 +7,8 @@ EAPI=6
 # Ninja provides better scalability and cleaner verbose output, and is used
 # throughout all LLVM projects.
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 EGIT_REPO_URI="http://llvm.org/git/libcxx.git
 	https://github.com/llvm-mirror/libcxx.git"
 PYTHON_COMPAT=( python2_7 )
@@ -56,6 +58,9 @@ PATCHES=(
 	# out-of-tree build.
 	"${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
 )
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"

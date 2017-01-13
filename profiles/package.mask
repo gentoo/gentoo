@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
+# Use x11-drivers/nvidia-drivers[tools] instead.
+media-video/nvidia-settings
+
 # Mike Gilbert <floppym@gentoo.org> (08 Jan 2017)
 # Masked pending testing and eclass/profile support.
 dev-lang/python:3.6

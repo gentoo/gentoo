@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
 PYTHON_COMPAT=( python2_7 )
@@ -32,6 +34,9 @@ DEPEND="${RDEPEND}
 	test? ( >=sys-devel/clang-3.9.0
 		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
@@ -65,7 +70,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXXABI_USE_LLVM_UNWINDER=$(usex libunwind)
-		-DLLVM_INCLUDE_TESTS=$(usex test)
+		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
 
 		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
 		# upstream is omitting standard search path for this

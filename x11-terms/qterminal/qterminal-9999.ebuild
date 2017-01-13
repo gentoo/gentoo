@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-no-liblxqt.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.7.1-no-liblxqt.patch" )
 
 pkg_preinst() {
 	gnome2_icon_savelist

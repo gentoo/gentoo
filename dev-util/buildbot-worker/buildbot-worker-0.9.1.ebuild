@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit readme.gentoo user distutils-r1
 
 DESCRIPTION="BuildBot Slave Daemon"
-HOMEPAGE="http://trac.buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-slave"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
 
 MY_V="0.9.1"
 MY_P="${PN}-${MY_V}"

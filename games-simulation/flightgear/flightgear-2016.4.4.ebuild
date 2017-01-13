@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 COMMON_DEPEND="
@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	media-libs/speex
 	media-sound/gsm
 	sys-libs/zlib
+	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	qt5? (
@@ -40,6 +41,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	utils? ( x11-libs/libXmu )
 "
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,13 @@ DEPEND="${RDEPEND}
 
 # https://github.com/pytest-dev/pytest-django/issues/290
 RESTRICT=test
+
+src_prepare() {
+	sed \
+		-e '/setuptools_scm/s:==1.8.0::g' \
+		-i setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	PYTEST_PLUGINS=${PN/-/_} \

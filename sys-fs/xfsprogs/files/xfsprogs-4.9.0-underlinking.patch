@@ -1,0 +1,30 @@
+ libxfs/Makefile  | 2 +-
+ libxlog/Makefile | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libxfs/Makefile b/libxfs/Makefile
+index 6499731..00447c4 100644
+--- a/libxfs/Makefile
++++ b/libxfs/Makefile
+@@ -113,7 +113,7 @@ LSRCFILES += gen_crc32table.c
+ 
+ FCFLAGS = -I.
+ 
+-LTLIBS = $(LIBPTHREAD) $(LIBRT)
++LTLIBS = $(LIBPTHREAD) $(LIBRT) $(LIBUUID)
+ 
+ # don't try linking xfs_repair with a debug libxfs.
+ DEBUG = -DNDEBUG
+diff --git a/libxlog/Makefile b/libxlog/Makefile
+index 3417eed..fda1343 100644
+--- a/libxlog/Makefile
++++ b/libxlog/Makefile
+@@ -12,6 +12,8 @@ LT_AGE = 0
+ 
+ CFILES = xfs_log_recover.c util.c
+ 
++LTLIBS = $(LIBUUID)
++
+ # don't want to link xfs_repair with a debug libxlog.
+ DEBUG = -DNDEBUG
+ 

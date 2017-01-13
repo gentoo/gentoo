@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils git-r3
@@ -26,6 +28,9 @@ DEPEND="${RDEPEND}
 
 # TODO: fix test suite to build stand-alone
 RESTRICT="test"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_unpack() {
 	if use test; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -84,7 +84,7 @@ PDEPEND=">=sys-apps/dbus-1.6.8-r1:0[systemd]
 # Newer linux-headers needed by ia64, bug #480218
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
-	dev-util/gperf
+	<dev-util/gperf-3.1
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	>=sys-devel/binutils-2.23.1

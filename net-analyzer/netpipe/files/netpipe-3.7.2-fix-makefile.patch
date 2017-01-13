@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 16f9052..3ada81f 100644
+--- a/makefile
++++ b/makefile
+@@ -21,8 +21,6 @@
+ #
+ ########################################################################
+ 
+-CC         = cc
+-CFLAGS     = -O -g
+ SRC        = ./src
+ 
+ # For MPI, mpicc will set up the proper include and library paths

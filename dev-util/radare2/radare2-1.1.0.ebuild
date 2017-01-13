@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 "
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.9.9-nogit.patch
+	epatch "${FILESDIR}"/${P}-openssl-1.1.0c.patch
 }
 
 src_configure() {

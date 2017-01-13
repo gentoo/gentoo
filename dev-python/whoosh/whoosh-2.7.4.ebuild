@@ -20,7 +20,7 @@ DEPEND="app-arch/unzip
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="doc test"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
