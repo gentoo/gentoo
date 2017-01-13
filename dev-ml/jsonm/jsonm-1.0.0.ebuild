@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-ml/uutf:=
+RDEPEND=">=dev-ml/uutf-1.0.0:=
 	dev-lang/ocaml:=
 	dev-ml/uchar:="
 DEPEND="${RDEPEND}
