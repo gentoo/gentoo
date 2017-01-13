@@ -203,7 +203,7 @@ REQUIRED_USE="
 	sdl? ( X )
 	skins? ( truetype X xml || ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
-	vdpau? ( xcb )
+	vdpau? ( X )
 	vlm? ( encode )
 	xv? ( xcb )
 "
