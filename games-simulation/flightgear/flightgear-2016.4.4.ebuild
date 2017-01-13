@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 COMMON_DEPEND="

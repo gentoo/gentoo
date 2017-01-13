@@ -1,11 +1,9 @@
- config/m4/ax_boost_regex.m4 | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ax_boost_regex.m4 |    4 ++--
+1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/config/m4/ax_boost_regex.m4 b/config/m4/ax_boost_regex.m4
-index 1ac06af..5b7be93 100644
---- a/config/m4/ax_boost_regex.m4
-+++ b/config/m4/ax_boost_regex.m4
-@@ -78,14 +78,14 @@ AC_DEFUN([AX_BOOST_REGEX],
+--- mira-4.0.2/m4/ax_boost_regex.m4
++++ mira-4.0.2/m4/ax_boost_regex.m4
+@@ -78,14 +78,14 @@
                  for libextension in `ls $BOOSTLIBDIR/libboost_regex*.so* $BOOSTLIBDIR/libboost_regex*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_regex.*\)\.so.*$;\1;' -e 's;^lib\(boost_regex.*\)\.a*$;\1;'` ; do
                       ax_lib=${libextension}
  				    AC_CHECK_LIB($ax_lib, exit,
