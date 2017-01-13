@@ -1373,6 +1373,31 @@
     </member>
   </project>
   <project>
+    <email>gentoostats@gentoo.org</email>
+    <name>Gentoostats</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Gentoostats</url>
+    <description>Gentoostats project maintains and develops the "gentoostats" statistics collection software for Gentoo machines</description>
+    <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>Moral support</role>
+    </member>
+    <member>
+      <email>dolsen@gentoo.org</email>
+      <name>Brian Dolbec</name>
+      <role>Portage API</role>
+    </member>
+    <member is-lead="1">
+      <email>gokturk@gentoo.org</email>
+      <name>Göktürk Yüksek</name>
+      <role>Lead</role>
+    </member>
+    <member>
+      <email>kensington@gentoo.org</email>
+      <name>Michael Palimaka</name>
+    </member>
+  </project>
+  <project>
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Geosciences</url>
