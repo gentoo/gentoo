@@ -15512,7 +15512,7 @@ net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepat
 net-voip/vidyodesktop 3.3.0.027-r1 3.3.0.127 3.5.4.010 3.6.3.017: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
-net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc3 1.2_rc4 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc3 1.2_rc4 1.2_rc4-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
