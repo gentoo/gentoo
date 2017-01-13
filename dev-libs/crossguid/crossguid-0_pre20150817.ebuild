@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/graeme-hill/crossguid"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 # We use libuuid from util-linux.
