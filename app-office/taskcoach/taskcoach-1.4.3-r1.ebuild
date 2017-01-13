@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,10 @@ DEPEND="
 		>=dev-python/wxpython-2.8.9.2:2.8[${PYTHON_USEDEP}]
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	)
-	>=dev-python/twisted-core-10.0
+		|| (
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-core-10.0
+		)
 "
 RDEPEND="${DEPEND}
 	x11-libs/libXScrnSaver

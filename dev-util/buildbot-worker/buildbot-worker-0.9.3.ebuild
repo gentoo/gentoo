@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ inherit readme.gentoo user distutils-r1
 DESCRIPTION="BuildBot Slave Daemon"
 HOMEPAGE="http://trac.buildbot.net/ http://code.google.com/p/buildbot/ http://pypi.python.org/pypi/buildbot-slave"
 
-MY_V="0.9.0.post1"
+MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
@@ -31,9 +31,14 @@ RDEPEND=">=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
 		>=dev-python/twisted-core-8.0.0[${PYTHON_USEDEP}]
 	)
 	dev-python/future[${PYTHON_USEDEP}]
-	!<dev-util/buildbot-0.9.0_rc1"
+	!<dev-util/buildbot-0.9.0_rc1
+"
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/setuptools_trial[${PYTHON_USEDEP}]
+	)
+"
 
 S="${WORKDIR}/${MY_P}"
 [[ ${PV} == *9999 ]] && S=${S}/slave
@@ -50,14 +55,19 @@ pkg_setup() {
 		build worker, just copy the scripts."
 }
 
+python_test() {
+	distutils_install_for_testing
+
+	esetup.py test || die "Tests failed under ${EPYTHON}"
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
 	doman docs/buildbot-worker.1
 
-	newconfd "${FILESDIR}/buildbot_worker.confd" buildbot_worker
-	newinitd "${FILESDIR}/buildbot_worker.initd" buildbot_worker
-	systemd_dounit "${FILESDIR}/buildbot_worker.service"
+	newconfd "${FILESDIR}/buildbot_worker.confd" buildslave
+	newinitd "${FILESDIR}/buildbot_worker.initd" buildslave
 
 	readme.gentoo_create_doc
 }
