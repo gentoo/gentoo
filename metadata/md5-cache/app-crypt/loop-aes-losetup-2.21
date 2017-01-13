@@ -1,6 +1,6 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=selinux? ( sys-libs/libselinux ) nls? ( sys-devel/gettext ) virtual/os-headers !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=Various useful Linux utilities
+DESCRIPTION=Loop-AES losetup utility
 EAPI=4
 HOMEPAGE=https://www.kernel.org/pub/linux/utils/util-linux/
 IUSE=nls selinux uclibc static
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://kernel/linux/utils/util-linux/v2.21/util-linux-2.21.tar.xz http://loop-aes.sourceforge.net/updates/util-linux-2.21-20120228.diff.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=aba3708027c9aa02c39d3f97cf06360b
+_md5_=3a3b85092d6beefb8367543f678cabff
