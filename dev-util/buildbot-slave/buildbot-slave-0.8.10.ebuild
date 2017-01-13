@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 readme.gentoo systemd user
 
 DESCRIPTION="BuildBot Slave Daemon"
-HOMEPAGE="http://trac.buildbot.net/ https://code.google.com/p/buildbot/ https://pypi.python.org/pypi/buildbot-slave"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-slave"
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
