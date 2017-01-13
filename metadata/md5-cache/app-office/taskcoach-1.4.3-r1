@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=|| ( >=dev-python/wxpython-2.8.9.2:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython:3.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) || ( >=dev-python/twisted-16.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/twisted-core-10.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Simple personal tasks and todo lists manager
+EAPI=5
+HOMEPAGE=http://www.taskcoach.org https://pypi.python.org/pypi/TaskCoach
+IUSE=libnotify python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=|| ( >=dev-python/wxpython-2.8.9.2:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython:3.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) || ( >=dev-python/twisted-16.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/twisted-core-10.0 ) x11-libs/libXScrnSaver libnotify? ( dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/taskcoach/TaskCoach-1.4.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	017377e73405d964cd0137088cddb9c3	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=4b28354d6762f7ec9a6b61e6caf40ec1
