@@ -1,5 +1,5 @@
---- src/errors.c
-+++ src/errors.c
+--- a/src/errors.c
++++ b/src/errors.c
 @@ -25,24 +25,24 @@
  
  void err_quit(char *errmsg)
