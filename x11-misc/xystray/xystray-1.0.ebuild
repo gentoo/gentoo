@@ -8,7 +8,7 @@ DESCRIPTION="A simple implementation of freedesktop.org notification area for X"
 HOMEPAGE="http://steelman.github.com/xystray/"
 SRC_URI="https://github.com/steelman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
