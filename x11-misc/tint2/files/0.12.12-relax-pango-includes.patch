@@ -1,0 +1,26 @@
+From c3a86e185d548e11bb12bc766a58fd3b617c1c46 Mon Sep 17 00:00:00 2001
+From: o9000 <mrovi9000@gmail.com>
+Date: Sun, 18 Sep 2016 12:53:59 +0200
+Subject: [PATCH] Fix include (fixes issue #596)
+
+---
+ src/config.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/config.c b/src/config.c
+index a831ece..13f3b7b 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -31,8 +31,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <glib/gstdio.h>
+-#include <pango/pangocairo.h>
+-#include <pango/pangoxft.h>
++#include <pango/pango-font.h>
+ #include <Imlib2.h>
+ 
+ #include "config.h"
+--
+libgit2 0.24.0
+
