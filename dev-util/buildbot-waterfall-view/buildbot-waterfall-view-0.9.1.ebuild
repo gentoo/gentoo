@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="Buildbot waterfall-view plugin"
-HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-waterfall-view"
 
 MY_V="0.9.1"
 MY_P="${PN}-${MY_V}"

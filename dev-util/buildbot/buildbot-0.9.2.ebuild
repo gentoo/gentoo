@@ -15,7 +15,7 @@ MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
 		http://dev.gentoo.org/~dolsen/distfiles/buildbot-test_templates.tar.xz"
