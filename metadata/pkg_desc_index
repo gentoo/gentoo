@@ -8121,7 +8121,7 @@ dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.11.12 0.11.13: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r1 0.45-r2: Python library to produce RTF documents
-dev-python/pysaml2 3.0.0 4.0.2 4.0.2-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.0.2-r1: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.9.2: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
@@ -8576,7 +8576,7 @@ dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.0.1: Python module for calculations with uncertainties
 dev-python/uncompyle6 2.8.3 2.9.6 2.9.7: Python cross-version byte-code deparser
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
-dev-python/unidecode 0.04.18 0.04.19: Module providing ASCII transliterations of Unicode text
+dev-python/unidecode 0.04.18 0.04.19 0.04.20: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uranium 2.1.0_beta-r2 2.3.1: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.3.2: URDF parser for Python
@@ -9988,7 +9988,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8 9999: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.10 2.16.12 2.16.13: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.12 2.16.13 2.17.0: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
@@ -11140,7 +11140,7 @@ games-rpg/gwiz 0.8 0.8-r1: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99 0.99-r1: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.6.11.5 1.6.12.24 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.6.12.24 1.7.1.7 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -11492,7 +11492,7 @@ kde-apps/akonadi-search 16.12.1: Libraries and daemons to implement searching in
 kde-apps/akonadiconsole 4.14.11_pre20160211 16.12.1: Application for debugging Akonadi Resources
 kde-apps/akregator 4.4.2016.01 4.14.11_pre20160211 16.12.1: News feed aggregator
 kde-apps/analitza 16.08.3 16.12.1: KDE library for mathematical features
-kde-apps/ark 16.08.3 16.08.3-r1 16.12.1: KDE Archiving tool
+kde-apps/ark 16.08.3-r1 16.12.1: KDE Archiving tool
 kde-apps/artikulate 16.08.3 16.12.1: Language learning application that helps improving pronunciation skills
 kde-apps/attica 16.04.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 16.08.3 16.12.1: kioslave for accessing audio CDs
@@ -12085,8 +12085,8 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.5.0 3.5.1: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0 45.6.0-r1: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.8.0 45.6.0: Thunderbird Mail Client
+mail-client/thunderbird 45.6.0-r1: Thunderbird Mail Client
+mail-client/thunderbird-bin 45.6.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
@@ -12708,7 +12708,7 @@ media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
-media-libs/flac 1.3.1-r1 1.3.2: free lossless audio encoder and decoder
+media-libs/flac 1.3.1-r1 1.3.2-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 3.75 4.38.00 4.38.02: music and sound effects library, and a sound processing system
@@ -14516,7 +14516,7 @@ net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.1.0 4.1.1: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.11.0-r1: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
-net-im/prosody 0.9.10 0.9.11: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
 net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
@@ -16275,7 +16275,7 @@ sci-libs/libticables2 1.3.3-r1 1.3.4: Library to handle different link cables fo
 sci-libs/libticalcs2 1.1.7 1.1.8: Library for communication with TI calculators
 sci-libs/libticonv 1.1.3 1.1.4: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.5 1.1.6-r1: Library for TI calculator files
-sci-libs/linux-gpib 3.2.21-r1 4.0.2 4.0.3 4.0.3-r1: Kernel module and driver library for GPIB (IEEE 488.2) hardware
+sci-libs/linux-gpib 3.2.21-r1 4.0.3-r1: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
@@ -16494,7 +16494,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/hoomd-blue 2.0.2 9999: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160216 20160301 20160310 20160314 20160321 20160407 20160730: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160216 20160301 20160310 20160314 20160321 20160407 20160730 20170109: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1 1.2a-r2: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
@@ -17587,7 +17587,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.44 3.18.45-r1 4.4.26 4.4.28 4.4.39 4.4.40 4.4.41 4.4.42 4.8.14 4.8.15 4.8.16 4.8.17 4.9.0 4.9.1 4.9.2: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.44 3.18.45-r1 4.4.26 4.4.28 4.4.39-r1 4.4.40 4.4.41 4.4.42 4.8.14 4.8.15 4.8.16 4.8.17 4.9.0 4.9.1 4.9.2 4.9.3: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.1 6.8.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
@@ -18177,7 +18177,7 @@ www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, H
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 1.6.689.46_p1 1.7.715.3_p1 1.7.721.3_p1: A new browser for our friends
+www-client/vivaldi 1.6.689.46_p1 1.7.721.3_p1 1.7.725.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18723,7 +18723,7 @@ x11-misc/redshift 1.10 1.11 1.11-r1: A screen color temperature adjusting softwa
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 1.2.0 1.3.0: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.2.0 1.3.0 1.3.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23 0.24: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
@@ -19103,7 +19103,7 @@ x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9.22 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.3.4: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.3.4 3.4.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.6-r1 0.7 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98 1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/glib-2.20:2 x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/vte:2.91 >=dev-lang/perl-5.10.1 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=sakura is a terminal emulator based on GTK and VTE
+EAPI=6
+HOMEPAGE=http://www.pleyades.net/david/projects/sakura/
+KEYWORDS=~amd64 ~x86 ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.20:2 x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/vte:2.91
+SLOT=0
+SRC_URI=https://launchpad.net/sakura/trunk/3.4.0/+download/sakura-3.4.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	66b3bf714f8cfc1b6494db5269b4666e	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=eabd5bf8f599814f9f96779433b79860
