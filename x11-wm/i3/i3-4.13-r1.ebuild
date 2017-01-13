@@ -36,6 +36,9 @@ RDEPEND="${CDEPEND}
 	dev-perl/JSON-XS"
 
 DOCS=( RELEASE-NOTES-${PV} )
+PATCHES=(
+	"${FILESDIR}/${P}-remove-git-polling.patch"
+)
 
 src_prepare() {
 	default

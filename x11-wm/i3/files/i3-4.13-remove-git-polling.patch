@@ -1,0 +1,19 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2017-01-13 13:31:25.250216293 +0100
++++ b/configure.ac	2017-01-13 13:31:55.930217956 +0100
+@@ -146,15 +146,6 @@
+ 	print_BUILD_MANS=no
+ fi
+ 
+-git_dir=`git rev-parse --git-dir 2>/dev/null`
+-if test -n "$git_dir"; then
+-	srcdir=`dirname "$git_dir"`
+-	exclude_dir=`pwd | sed "s,^$srcdir,,g"`
+-	if ! grep -q "^$exclude_dir" "$git_dir/info/exclude"; then
+-		echo "$exclude_dir" >> "$git_dir/info/exclude"
+-	fi
+-fi
+-
+ echo \
+ "--------------------------------------------------------------------------------
+ build configured:
