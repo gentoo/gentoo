@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,7 +58,8 @@ COMMON_DEPEND="dev-libs/atk:0
 	)
 	!!app-editors/mate-text-editor"
 
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	>=mate-base/mate-desktop-1.9[gtk3(-)=]"
 
 DEPEND="${COMMON_DEPEND}
 	~app-text/docbook-xml-dtd-4.1.2
