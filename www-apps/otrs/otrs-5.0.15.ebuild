@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap"
 SLOT="0"
 
-DEPEND="media-libs/libpng:0="
+DEPEND="media-libs/libpng:*"
 
 RDEPEND="dev-perl/Apache-Reload
 		dev-perl/Archive-Zip
@@ -50,7 +50,7 @@ RDEPEND="dev-perl/Apache-Reload
 		!=dev-perl/SOAP-Lite-0.712 )
 	"
 
-OTRS_HOME="${EROOT}/var/lib/otrs"
+OTRS_HOME="${EROOT%/}/var/lib/otrs"
 
 pkg_setup() {
 	# The enewuser otrs will fail if apache isn't there, but it's an optional dep
@@ -63,10 +63,16 @@ pkg_setup() {
 
 src_prepare() {
 	rm -fr "${S}/scripts"/{auto_*,redhat*,suse*,*.spec} || die
-	cp Kernel/Config.pm{.dist,} || die
+	cd Kernel/ || die
+	for i in *.dist; do
+		cp ${i} $(basename ${i} .dist) || die
+	done
 
-	# Fix broken png file
+	# Fix broken png file (and see pngfix help for exit codes)
 	pngfix -q --out=out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png"
+	if [[ $? -gt 15 ]]; then
+		die "pngfix failed"
+	fi
 	mv -f out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png" || die
 
 	sed -i -e "s:/opt/otrs:${OTRS_HOME}:g" "${S}"/Kernel/Config.pm \
@@ -79,10 +85,6 @@ src_prepare() {
 		xargs sed -i -e "s:/opt/otrs:${OTRS_HOME}:g" \
 		|| die "sed failed"
 
-	cd Kernel/ || die
-	for i in *.dist; do
-		cp ${i} $(basename ${i} .dist) || die
-	done
 
 	echo "CONFIG_PROTECT=\"${OTRS_HOME}/Kernel/Config.pm \
 		${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}" || die
