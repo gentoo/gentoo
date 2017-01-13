@@ -17,7 +17,7 @@
   <affected>
     <package name="media-libs/libpng" auto="yes" arch="*">
       <unaffected range="ge">1.5.10</unaffected>
-      <unaffected range="ge" slot="1.2">1.2.49</unaffected>
+      <unaffected range="ge">1.2.49:1.2</unaffected>
       <vulnerable range="lt">1.5.10</vulnerable>
     </package>
   </affected>
