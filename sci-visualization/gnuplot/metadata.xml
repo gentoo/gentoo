@@ -24,7 +24,6 @@
     <flag name="gd">Add support for <pkg>media-libs/gd</pkg>.
     Needed for GIF, JPEG, and PNG image output.</flag>
     <flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
-    <flag name="thin-splines">Enable thin plate splines</flag>
     <flag name="bitmap">Enable dot-matrix printers and pbm terminal</flag>
   </use>
   <upstream>
