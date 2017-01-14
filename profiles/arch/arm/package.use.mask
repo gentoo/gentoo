@@ -305,7 +305,7 @@ media-sound/rhythmbox visualizer
 dev-python/ipython nbconvert
 
 # Johannes Huber <johu@gentoo.org> (15 Sep 2013)
-# Depends on kde-misc/networkmanagement, not keyworded yet.
+# Depends on kde-plasma/plasma-nm, not keyworded yet.
 kde-apps/solid-runtime networkmanager
 
 # Sergey Popov <pinkbyte@gentoo.org> (06 Sep 2013)
