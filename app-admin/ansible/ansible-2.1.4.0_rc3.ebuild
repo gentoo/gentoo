@@ -11,7 +11,7 @@ inherit distutils-r1 eutils versionator
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
 MY_V="$(get_version_component_range 1-4)"
-MY_PV="${MY_V}-0.4.rc4"
+MY_PV="${MY_V}-0.3.rc3"
 SRC_URI="http://releases.ansible.com/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-3"
@@ -22,7 +22,7 @@ IUSE="keyczar test"
 RDEPEND="
 	keyczar? ( dev-python/keyczar[${PYTHON_USEDEP}] )
 	dev-python/paramiko[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
+	<dev-python/jinja-2.9[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
@@ -57,6 +57,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	# Documentation requires extra dependencies and building steps for release candidates so we skip it
-	#doman docs/man/man1/*.1
+	doman docs/man/man1/*.1
 }
