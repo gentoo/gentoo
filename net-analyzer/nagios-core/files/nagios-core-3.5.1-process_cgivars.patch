@@ -1,0 +1,175 @@
+commit d97e03f32741a7d851826b03ed73ff4c9612a866
+Author: Eric Stanley <estanley@nagios.com>
+Date:   Fri Dec 20 13:14:30 2013 -0600
+
+    CGIs: Fixed minor vulnerability where a custom query could crash the CGI.
+    
+    Most CGIs previously incremented the input variable counter twice when
+    it encountered a long key value. This could cause the CGI to read past
+    the end of the list of CGI variables. This commit removes the second
+    increment, removing the possibility of reading past the end of the list
+    of CGI variables.
+
+diff --git a/cgi/avail.c b/cgi/avail.c
+index 76afd86..64eaadc 100644
+--- a/cgi/avail.c
++++ b/cgi/avail.c
+@@ -1096,7 +1096,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/cmd.c b/cgi/cmd.c
+index fa6cf5a..50504eb 100644
+--- a/cgi/cmd.c
++++ b/cgi/cmd.c
+@@ -311,7 +311,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/config.c b/cgi/config.c
+index f061b0f..3360e70 100644
+--- a/cgi/config.c
++++ b/cgi/config.c
+@@ -344,7 +344,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/extinfo.c b/cgi/extinfo.c
+index 62a1b18..5113df4 100644
+--- a/cgi/extinfo.c
++++ b/cgi/extinfo.c
+@@ -591,7 +591,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/histogram.c b/cgi/histogram.c
+index 4616541..f6934d0 100644
+--- a/cgi/histogram.c
++++ b/cgi/histogram.c
+@@ -1060,7 +1060,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/notifications.c b/cgi/notifications.c
+index 8ba11c1..461ae84 100644
+--- a/cgi/notifications.c
++++ b/cgi/notifications.c
+@@ -327,7 +327,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/outages.c b/cgi/outages.c
+index 426ede6..cb58dee 100644
+--- a/cgi/outages.c
++++ b/cgi/outages.c
+@@ -225,7 +225,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/status.c b/cgi/status.c
+index 3253340..4ec1c92 100644
+--- a/cgi/status.c
++++ b/cgi/status.c
+@@ -567,7 +567,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/statusmap.c b/cgi/statusmap.c
+index ea48368..2580ae5 100644
+--- a/cgi/statusmap.c
++++ b/cgi/statusmap.c
+@@ -400,7 +400,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/statuswml.c b/cgi/statuswml.c
+index bd8cea2..d25abef 100644
+--- a/cgi/statuswml.c
++++ b/cgi/statuswml.c
+@@ -226,8 +226,13 @@ int process_cgivars(void) {
+ 
+ 	for(x = 0; variables[x] != NULL; x++) {
+ 
++		/* do some basic length checking on the variable identifier to prevent buffer overflows */
++		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
++			continue;
++			}
++
+ 		/* we found the hostgroup argument */
+-		if(!strcmp(variables[x], "hostgroup")) {
++		else if(!strcmp(variables[x], "hostgroup")) {
+ 			display_type = DISPLAY_HOSTGROUP;
+ 			x++;
+ 			if(variables[x] == NULL) {
+diff --git a/cgi/summary.c b/cgi/summary.c
+index 126ce5e..749a02c 100644
+--- a/cgi/summary.c
++++ b/cgi/summary.c
+@@ -725,7 +725,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/cgi/trends.c b/cgi/trends.c
+index b35c18e..895db01 100644
+--- a/cgi/trends.c
++++ b/cgi/trends.c
+@@ -1263,7 +1263,6 @@ int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 
+diff --git a/contrib/daemonchk.c b/contrib/daemonchk.c
+index 78716e5..9bb6c4b 100644
+--- a/contrib/daemonchk.c
++++ b/contrib/daemonchk.c
+@@ -174,7 +174,6 @@ static int process_cgivars(void) {
+ 
+ 		/* do some basic length checking on the variable identifier to prevent buffer overflows */
+ 		if(strlen(variables[x]) >= MAX_INPUT_BUFFER - 1) {
+-			x++;
+ 			continue;
+ 			}
+ 		}
