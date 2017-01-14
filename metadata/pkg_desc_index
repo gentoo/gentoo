@@ -12071,7 +12071,7 @@ mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch w
 mail-client/alpine 2.00-r5 2.00-r6 2.00-r7: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
-mail-client/claws-mail 3.13.2 3.14.0 3.14.1: An email client (and news reader) based on GTK+
+mail-client/claws-mail 3.13.2 3.14.1: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.89 0.90 0.90-r1 0.92: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
