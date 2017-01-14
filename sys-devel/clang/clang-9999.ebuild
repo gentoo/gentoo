@@ -10,7 +10,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils flag-o-matic git-r3 multilib-minimal \
-	python-single-r1 toolchain-funcs pax-utils
+	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="http://llvm.org/"
@@ -25,7 +25,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="0/${PV%.*}"
+SLOT="0/$(get_major_version)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx +doc multitarget python
 	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
