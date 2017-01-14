@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc test"
 
 CDEPEND="dev-python/pyinotify[${PYTHON_USEDEP}]"
@@ -33,8 +33,6 @@ RDEPEND="${CDEPEND}"
 
 python_compile_all() {
 	use doc && esetup.py build_sphinx
-
-	distutils-r1_python_compile_all
 }
 
 python_test() {
