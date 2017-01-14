@@ -199,7 +199,7 @@ app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log
 app-admin/sshguard 1.7.1 1.99.0: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
 app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizable) privileges in a nosuid environment
-app-admin/sudo 1.8.16 1.8.18_p1 1.8.19_p1 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.16 1.8.18_p1 1.8.19_p1 1.8.19_p2 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supernova 2.0.9 2.1.0 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.3 3.2.1 3.2.2 3.2.3 3.3.0 3.3.1 3.3.1-r1: A system for controlling process state under UNIX
@@ -5998,6 +5998,7 @@ dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
 dev-perl/MIME-Charset 1.9.3 1.12.0: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
+dev-perl/MIME-Lite-HTML 1.240.0: Provide routine to transform a HTML page in a MIME-Lite mail
 dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
 dev-perl/MIME-tools 5.507.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
@@ -9995,7 +9996,7 @@ dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that ad
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66 1.70: Count Lines of Code
-dev-util/cmake 3.5.2-r1 3.6.3 3.7.1: Cross platform Make
+dev-util/cmake 3.5.2-r1 3.6.3 3.7.1 3.7.2: Cross platform Make
 dev-util/cmake-fedora 1.3.0 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
 dev-util/cmocka 1.0.1 1.1.0: A unit testing framework for C
@@ -11581,7 +11582,7 @@ kde-apps/kdegraphics-mobipocket 16.08.3 16.12.1: Library to support mobipocket e
 kde-apps/kdemultimedia-meta 16.08.3 16.12.1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 16.08.3 16.12.1: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 16.08.3 16.12.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 16.08.1 16.08.3 16.12.1: Non-linear video editing suite by KDE
+kde-apps/kdenlive 16.08.1 16.08.3 16.12.0 16.12.1: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 16.08.3: KDE GUI for passwd
 kde-apps/kdepim-addons 16.12.1: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 16.12.1: Libraries for KDE PIM applications
@@ -11671,7 +11672,7 @@ kde-apps/konsolekalendar 4.4.2016.01 4.14.11_pre20160211 16.12.1: Command line i
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2016.01 4.14.11_pre20160211 16.12.1: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 16.12.1: Library for embedding KParts in a Kontact component
-kde-apps/kopete 16.12.1: KDE multi-protocol IM client
+kde-apps/kopete 16.12.0 16.12.1: KDE multi-protocol IM client
 kde-apps/korganizer 4.4.2016.01 4.14.11_pre20160211 16.12.1: Organizational assistant, providing calendars and other similar functionality
 kde-apps/kpasswdserver 16.04.3: KDED Password Module
 kde-apps/kpat 16.08.3 16.12.1: KDE patience game
@@ -14463,7 +14464,7 @@ net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/bareftp 0.3.12: Mono based file transfer client
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.12.0.2 3.14.1 3.22.2.2 3.23.0.2: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.12.0.2 3.14.1 3.23.0.2 3.24.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
