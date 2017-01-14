@@ -1,9 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="Dynamic DNS client with plugins for several dynamic dns services"
 HOMEPAGE="https://savannah.nongnu.org/projects/updatedd/"
@@ -14,20 +13,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
-RDEPEND=""
 DEPEND=""
+RDEPEND="dev-lang/perl"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-options.patch
-	default
-}
+PATCHES=(
+	"${FILESDIR}/${P}-options.patch"
+	"${FILESDIR}/fix-ovh-DYNDNSHOST.patch"
+	"${FILESDIR}/respect-docdir.patch"
+)
 
 src_configure() {
-	econf --disable-static
-}
-
-src_install() {
-	default
-	mv "${D}"/usr/share/doc/updatedd "${D}"/usr/share/doc/${PF}
-	prune_libtool_files
+	econf --disable-static --docdir="/usr/share/doc/${PF}"
 }
