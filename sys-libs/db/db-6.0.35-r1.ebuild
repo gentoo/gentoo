@@ -55,13 +55,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
 
 	# use the includes from the prefix
-	epatch "${FILESDIR}"/${PN}-6.2-jni-check-prefix-first.patch
+	epatch "${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
 	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x/6.x
 	# still needs to be patched in 6.0.20
-	epatch "${FILESDIR}"/${PN}-6.1.19-sqlite-configure-path.patch
+	epatch "${FILESDIR}"/${PN}-6.0.35-sqlite-configure-path.patch
 
 	# The upstream testsuite copies .lib and the binaries for each parallel test
 	# core, ~300MB each. This patch uses links instead, saves a lot of space.
@@ -141,6 +141,8 @@ multilib_src_configure() {
 
 	# sql_compat will cause a collision with sqlite3
 	# --enable-sql_compat
+	# Don't --enable-sql* because we don't want to use bundled sqlite.
+	# See Gentoo bug #605688
 	ECONF_SOURCE="${S_BASE}"/dist \
 	STRIP="true" \
 	econf \
@@ -148,8 +150,8 @@ multilib_src_configure() {
 		--enable-dbm \
 		--enable-o_direct \
 		--without-uniquename \
-		--enable-sql \
-		--enable-sql_codegen \
+		--disable-sql \
+		--disable-sql_codegen \
 		--disable-sql_compat \
 		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
