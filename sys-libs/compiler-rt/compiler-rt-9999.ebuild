@@ -50,7 +50,8 @@ src_configure() {
 		fi
 	fi
 
-	local clang_version=4.0.0
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		# used to find cmake modules
@@ -75,7 +76,8 @@ run_tests_for_abi() {
 
 src_test() {
 	# prepare a test compiler
-	local clang_version=4.0.0
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
 
 	# copy clang over since resource_dir is located relatively to binary
 	# therefore, we can put our new libraries in it
