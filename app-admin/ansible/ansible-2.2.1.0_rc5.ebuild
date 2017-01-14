@@ -11,7 +11,7 @@ inherit distutils-r1 eutils versionator
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
 MY_V="$(get_version_component_range 1-4)"
-MY_PV="${MY_V}-0.2.rc2"
+MY_PV="${MY_V}-0.5.rc5"
 SRC_URI="http://releases.ansible.com/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-3"
@@ -57,5 +57,6 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	doman docs/man/man1/*.1
+	# Documentation requires extra dependencies and building steps for release candidates so we skip it
+	#doman docs/man/man1/*.1
 }
