@@ -5123,7 +5123,7 @@ dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values 
 dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1 1.7.1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/fieldslib 113.33.03: Folding over record fields
-dev-ml/findlib 1.4 1.5.6 1.7.1: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.5.6 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
@@ -5138,8 +5138,8 @@ dev-ml/js-build-tools 113.33.03 113.33.04: Collection of tools to help building 
 dev-ml/js_of_ocaml 2.8.3 2.8.4 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1 1.0.0: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
-dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
+dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
+dev-ml/lablgtk 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.10.1-r1: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 9999: OCaml bindings for LLVM
@@ -9703,7 +9703,7 @@ dev-scheme/kawa 1.10 1.14: Kawa, the Java-based Scheme system & Language Framewo
 dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
 dev-scheme/racket 5.3.6 6.0.1 6.2.1 6.4 6.5 6.7: General purpose, multi-paradigm programming language in the Lisp-Scheme family.
 dev-scheme/scheme48 1.9.2-r1: Scheme48 is an implementation of the Scheme Programming Language
-dev-scheme/schoca 0.3.0: Schoca is a Scheme implementation in OCaml
+dev-scheme/schoca 0.3.0-r1: Schoca is a Scheme implementation in OCaml
 dev-scheme/scm 5.5.6 5.5.6-r1 5.5.6-r2: SCM is a Scheme implementation from the author of slib
 dev-scheme/scmxlate 20090410: Scmxlate is a configuration tool for software packages written in Scheme
 dev-scheme/sigscheme 0.8.5: SigScheme is an R5RS Scheme interpreter for embedded use
