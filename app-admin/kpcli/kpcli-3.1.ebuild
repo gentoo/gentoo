@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A command line interface to KeePass database files"
 HOMEPAGE="http://kpcli.sourceforge.net"
@@ -11,10 +11,11 @@ SRC_URI="http://downloads.sourceforge.net/project/kpcli/${P}.pl"
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="X"
 
 DEPEND=""
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-lang/perl
 	dev-perl/Clone
 	dev-perl/Crypt-Rijndael
 	dev-perl/TermReadKey
@@ -27,7 +28,12 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Digest-SHA
 	virtual/perl-Data-Dumper
 	virtual/perl-Term-ANSIColor
+	virtual/perl-Time-Piece
 	virtual/perl-Carp
+	X? (
+		dev-perl/Capture-Tiny
+		dev-perl/Clipboard
+	)
 "
 
 src_unpack() {
