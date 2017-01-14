@@ -39,7 +39,8 @@ case ${CATEGORY} in
 		if [[ $(get_version_component_range 2) -eq 8 && $(get_version_component_range 3) -lt 50 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=5.26.0}	# special 5.8 LTS rule to not get overwritten below
 		elif ! [[ $(get_version_component_range 2) -le 8 && $(get_version_component_range 3) -lt 50 ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.28.0}
+			: ${QT_MINIMAL:=5.7.1}
+			: ${FRAMEWORKS_MINIMAL:=5.29.0}
 		fi
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
