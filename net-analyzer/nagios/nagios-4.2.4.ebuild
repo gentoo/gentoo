@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.nagios.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="~net-analyzer/nagios-core-${PV}
