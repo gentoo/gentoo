@@ -14,20 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
-RDEPEND=""
 DEPEND=""
+RDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/${P}-options.patch"
 	"${FILESDIR}/fix-ovh-DYNDNSHOST.patch"
+	"${FILESDIR}/respect-docdir.patch"
 )
 
 src_configure() {
-	econf --disable-static
+	econf --disable-static --docdir="/usr/share/doc/${PF}"
 }
 
 src_install() {
 	default
-	mv "${D}/usr/share/doc/updatedd" "${D}/usr/share/doc/${PF}" || die
 	prune_libtool_files
 }
