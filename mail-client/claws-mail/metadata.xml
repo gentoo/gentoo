@@ -34,6 +34,7 @@
 			plugin</flag>
 		<flag name="valgrind">Add support for memory debugging
 			using valgrind</flag>
+		<flag name="webkit">Render HTML e-mails using WebKit library</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sylpheed-claws</remote-id>
