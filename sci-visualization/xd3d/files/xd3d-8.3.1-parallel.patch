@@ -1,5 +1,5 @@
---- ./src/various/Makefile.orig	2009-12-04 18:16:57.000000000 +0000
-+++ ./src/various/Makefile	2009-12-04 18:17:13.000000000 +0000
+--- a/src/various/Makefile	2009-12-04 18:16:57.000000000 +0000
++++ b/src/various/Makefile	2009-12-04 18:17:13.000000000 +0000
 @@ -1,6 +1,6 @@
  include ../../RULES
  
@@ -8,8 +8,8 @@
  
  clair : clair.f $(LIBRAIRIE) ;\
  $(LINK) $(BINDIR)/clair $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
---- ./src/X/Makefile.orig	2009-12-04 18:16:06.000000000 +0000
-+++ ./src/X/Makefile	2009-12-04 18:16:36.000000000 +0000
+--- a/src/X/Makefile	2009-12-04 18:16:06.000000000 +0000
++++ b/src/X/Makefile	2009-12-04 18:16:36.000000000 +0000
 @@ -118,7 +118,7 @@
  lib : $(LIBMARC)
  $(LIBMARC) : $(OBJETS) $(OBJETSMARC) ; $(AR) $@ $(OBJETS) $(OBJETSMARC) ; $(RANLIB) $@
@@ -19,8 +19,8 @@
  
  clean : ; /bin/rm -f $(OBJETS) $(LIB) $(LIBMARC)
  
---- ./Makefile.orig	2009-12-04 18:12:08.000000000 +0000
-+++ ./Makefile	2009-12-04 19:06:37.000000000 +0000
+--- a/Makefile	2009-12-04 18:12:08.000000000 +0000
++++ b/Makefile	2009-12-04 19:06:37.000000000 +0000
 @@ -13,22 +13,24 @@
  $(BINDIR)/xd3d$(SUFF) \
  $(BINDIR)/xgraphic$(SUFF)
