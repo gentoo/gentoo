@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,8 +32,13 @@ src_compile() {
 src_test() {
 	if use ocamlopt ; then
 		ocamlbuild -use-ocamlfind tests.otarget || die
-		cd _build/test || die
+		pushd _build/test || die
 		./test.native || die
+		#Rebuild to avoid mismatches between installed files, bug #604674
+		popd || die
+		ocaml pkg/pkg.ml build \
+			--with-cmdliner "$(usex utftrip true false)" \
+			|| die
 	else
 		ewarn "Sorry, ${PN} tests require native support (ocamlopt)"
 	fi
