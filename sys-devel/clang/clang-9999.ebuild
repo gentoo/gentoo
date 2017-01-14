@@ -131,8 +131,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# TODO: read it?
-	local clang_version=4.0.0
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
@@ -222,7 +222,9 @@ src_install() {
 	mv "${ED}usr/include/clangrt" "${ED}usr/lib/clang" || die
 
 	# Apply CHOST and version suffix to clang tools
-	local clang_version=4.0
+	# note: we use two version components here (vs 3 in runtime path)
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(get_version_component_range 1-2 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
