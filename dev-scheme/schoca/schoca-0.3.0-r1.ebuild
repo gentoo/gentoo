@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="6"
 
 inherit eutils
 
@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 
 DEPEND="dev-ml/findlib
 	dev-lang/ocaml[ocamlopt?]
-	|| ( dev-ml/camlp4[ocamlopt?] <dev-lang/ocaml-4.02.0 )"
+	dev-ml/camlp4[ocamlopt?]"
 RDEPEND="${DEPEND}"
 
 RESTRICT="installsources"
@@ -37,11 +37,11 @@ src_configure() {
 
 src_compile() {
 	#parallel fails
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {
 	use ocamlopt || export STRIP_MASK="*bin/schoca"
-	dodir "$(ocamlfind printconf destdir)" || die "dodir failed"
-	emake PREFIX="/usr" DESTDIR="${D}" DESTDIRFLAG="-destdir ${D}$(ocamlfind printconf destdir)" install || die "emake install failed"
+	dodir "$(ocamlfind printconf destdir)"
+	emake PREFIX="/usr" DESTDIR="${D}" DESTDIRFLAG="-destdir ${D}$(ocamlfind printconf destdir)" install
 }
