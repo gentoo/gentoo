@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="Dynamic DNS client with plugins for several dynamic dns services"
 HOMEPAGE="https://savannah.nongnu.org/projects/updatedd/"
@@ -25,9 +24,4 @@ PATCHES=(
 
 src_configure() {
 	econf --disable-static --docdir="/usr/share/doc/${PF}"
-}
-
-src_install() {
-	default
-	prune_libtool_files
 }
