@@ -15,7 +15,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc tools"
 
 RDEPEND="
