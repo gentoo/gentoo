@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,35 +16,12 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification valgrind webkit xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
 	smime? ( pgp )"
-
-# Plugins are all integrated or dropped since 3.9.1
-PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
-	!!mail-client/claws-mail-archive
-	!!mail-client/claws-mail-att-remover
-	!!mail-client/claws-mail-attachwarner
-	!!mail-client/claws-mail-clamd
-	!!mail-client/claws-mail-fancy
-	!!mail-client/claws-mail-fetchinfo
-	!mail-client/claws-mail-gdata
-	!!mail-client/claws-mail-geolocation
-	!!mail-client/claws-mail-gtkhtml
-	!!mail-client/claws-mail-mailmbox
-	!!mail-client/claws-mail-newmail
-	!!mail-client/claws-mail-notification
-	!!mail-client/claws-mail-perl
-	!!mail-client/claws-mail-python
-	!!mail-client/claws-mail-rssyl
-	!!mail-client/claws-mail-spam-report
-	!!mail-client/claws-mail-tnef-parse
-	!!mail-client/claws-mail-vcalendar
-	!!mail-client/claws-mail-address_keeper
-	!!mail-client/claws-mail-pdf-viewer"
 
 COMMONDEPEND="
 	archive? (
@@ -83,8 +60,7 @@ COMMONDEPEND="
 	webkit? ( >=net-libs/webkit-gtk-1.1.14:2 )
 "
 
-DEPEND="${PLUGINBLOCK}
-	${COMMONDEPEND}
+DEPEND="${COMMONDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig
 	xface? ( >=media-libs/compface-1.4 )"
