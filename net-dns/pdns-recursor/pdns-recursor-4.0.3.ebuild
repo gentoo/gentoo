@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ DEPEND="lua? ( >=dev-lang/lua-5.1:= )
 		dev-libs/protobuf
 		>=dev-libs/boost-1.42
 	)
+	systemd? ( sys-apps/systemd:0= )
 	>=dev-libs/boost-1.35"
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1"
