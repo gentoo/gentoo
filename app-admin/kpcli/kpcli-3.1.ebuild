@@ -28,6 +28,7 @@ RDEPEND="
 	virtual/perl-Digest-SHA
 	virtual/perl-Data-Dumper
 	virtual/perl-Term-ANSIColor
+	virtual/perl-Time-Piece
 	virtual/perl-Carp
 	X? (
 		dev-perl/Capture-Tiny
