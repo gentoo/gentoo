@@ -35,7 +35,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	>=app-arch/libarchive-3.1.0[bzip2?,lzma?,zlib?]
+	app-arch/libarchive:=[bzip2?,lzma?,zlib?]
 "
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 
 # bug #560548, last checked with 16.04.1
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-fix-crash.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -64,5 +66,9 @@ pkg_postinst() {
 
 	if ! has_version app-arch/p7zip ; then
 		elog "For handling 7-Zip archives, install app-arch/p7zip"
+	fi
+
+	if ! has_version app-arch/lrzip ; then
+		elog "For handling lrz archives, install app-arch/lrzip"
 	fi
 }
