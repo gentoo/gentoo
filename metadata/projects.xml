@@ -1178,6 +1178,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Freedesktop</url>
     <description>Maintains projects produced by freedesktop.org</description>
     <member>
+      <email>asturm@gentoo.org</email>
+      <name>Andreas Sturmlechner</name>
+    </member>
+    <member>
       <email>eva@gentoo.org</email>
       <name>Gilles Dartiguelongue</name>
     </member>
