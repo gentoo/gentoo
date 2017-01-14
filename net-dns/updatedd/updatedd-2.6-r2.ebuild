@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,10 +17,10 @@ IUSE=""
 RDEPEND=""
 DEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-options.patch
-	default
-}
+PATCHES=(
+	"${FILESDIR}/${P}-options.patch"
+	"${FILESDIR}/fix-ovh-DYNDNSHOST.patch"
+)
 
 src_configure() {
 	econf --disable-static
@@ -28,6 +28,6 @@ src_configure() {
 
 src_install() {
 	default
-	mv "${D}"/usr/share/doc/updatedd "${D}"/usr/share/doc/${PF}
+	mv "${D}/usr/share/doc/updatedd" "${D}/usr/share/doc/${PF}" || die
 	prune_libtool_files
 }
