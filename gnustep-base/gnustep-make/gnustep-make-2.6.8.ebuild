@@ -96,13 +96,8 @@ src_configure() {
 
 src_compile() {
 	emake
-	# Prepare doc here (needed when no gnustep-make is already installed)
 	if use doc ; then
-		# If a gnustep-1 environment is set
-		unset GNUSTEP_MAKEFILES
-		pushd Documentation &> /dev/null
-		emake -j1 all install
-		popd &> /dev/null
+		emake -C Documentation
 	fi
 }
 
@@ -118,9 +113,7 @@ src_install() {
 
 	# Copy the documentation
 	if use doc ; then
-		dodir ${GNUSTEP_SYSTEM_DOC}
-		cp -r Documentation/tmp-installation/System/Library/Documentation/* \
-			"${ED}"${GNUSTEP_SYSTEM_DOC=}
+		emake -C Documentation ${make_eval} DESTDIR="${D}" install
 	fi
 
 	dodoc FAQ README RELEASENOTES
