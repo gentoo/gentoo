@@ -5126,6 +5126,7 @@ dev-ml/findlib 1.4 1.5.6 1.7.1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
+dev-ml/gen_js_api 1.0.3: Easy OCaml bindings for Javascript libraries
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.0.1 2.2 2.3 2.4 2.5: Inline (Unit) Tests for OCaml
@@ -5255,7 +5256,7 @@ dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.19.3: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5 0.9.6: OCaml module implementing 128 bits universally unique identifiers
-dev-ml/uutf 0.9.4 1.0.0: Non-blocking streaming Unicode codec for OCaml
+dev-ml/uutf 0.9.4 1.0.0-r1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 113.24.00 113.33.03: OCaml variants as first class values
 dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.1.1 1.2.0: Ocaml XML manipulation module
@@ -9794,7 +9795,7 @@ dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2008 2008-r1 2015: Convertor written in Perl that converts LATEX documents to HTML
-dev-tex/latex2rtf 2.2.1b 2.3.8 2.3.11: LaTeX to RTF converter
+dev-tex/latex2rtf 2.3.11: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0 1.1.1 1.2.0: Compare two latex files and mark up significant differences
 dev-tex/latexmk 435 441 443a 444 445 448: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros

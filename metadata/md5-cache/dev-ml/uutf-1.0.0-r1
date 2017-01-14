@@ -11,4 +11,4 @@ SLOT=0/1.0.0
 SRC_URI=http://erratique.ch/software/uutf/releases/uutf-1.0.0.tbz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=13d24859bb7cde754bd337ff97baccc1
+_md5_=907f8af9322ac537a588dfb4570e3bc6
