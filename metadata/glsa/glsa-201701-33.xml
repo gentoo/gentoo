@@ -15,11 +15,11 @@
   <access>remote</access>
   <affected>
     <package name="dev-db/postgresql" auto="yes" arch="*">
-      <unaffected range="ge">9.5.4:9.5</unaffected>
-      <unaffected range="ge">9.4.9:9.4</unaffected>
-      <unaffected range="ge">9.3.14:9.3</unaffected>
-      <unaffected range="ge">9.2.18:9.2</unaffected>
-      <unaffected range="ge">9.1.23:9.1</unaffected>
+      <unaffected range="ge" slot="9.5">9.5.4</unaffected>
+      <unaffected range="ge" slot="9.4">9.4.9</unaffected>
+      <unaffected range="ge" slot="9.3">9.3.14</unaffected>
+      <unaffected range="ge" slot="9.2">9.2.18</unaffected>
+      <unaffected range="ge" slot="9.1">9.1.23</unaffected>
       <vulnerable range="lt">9.5.4</vulnerable>
     </package>
   </affected>
