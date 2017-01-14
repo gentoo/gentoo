@@ -1,5 +1,5 @@
---- wave.c.orig	2012-08-06 18:54:21.829756875 -0700
-+++ wave.c	2012-08-06 19:04:35.818049655 -0700
+--- a/wave.c
++++ b/wave.c
 @@ -1,11 +1,26 @@
  #include <stdio.h>
  #include <string.h>
@@ -46,8 +46,8 @@
 -	printf ("Data Length: %lu\n", header.data_length);
 +	printf ("Data Length: %lu\n", (unsigned long)header.data_length);
  }
---- wave.h.orig	2012-08-06 18:55:38.009165756 -0700
-+++ wave.h	2012-08-06 18:55:50.377232324 -0700
+--- a/wave.h
++++ b/wave.h
 @@ -22,24 +22,25 @@
  #ifndef WAVE_H
  #define WAVE_H
@@ -90,8 +90,8 @@
  
  int read_header (FILE *f, waveheaderstruct *header);
  int read_frames (FILE *f, int start, int length, char *data);
---- spectromatic.c.orig	2012-08-06 18:54:05.260668605 -0700
-+++ spectromatic.c	2012-08-06 19:28:18.637679446 -0700
+--- a/spectromatic.c
++++ b/spectromatic.c
 @@ -217,7 +217,7 @@
  		if (header.modus == 2)
  			ch2 = (double*) malloc (window_size * sizeof (double));
