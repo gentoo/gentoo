@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal versionator toolchain-funcs
+inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
@@ -25,9 +25,9 @@ for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 	export SRC_URI="${SRC_URI} http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
-LICENSE="AGPL-3"
-SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+LICENSE="Sleepycat"
+SLOT="5.3"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -41,7 +41,7 @@ RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jre-1.5 )"
 
 MULTILIB_WRAPPED_HEADERS=(
-	/usr/include/db$(get_version_component_range 1-2)/db.h
+	/usr/include/db5.3/db.h
 )
 
 src_prepare() {
@@ -59,13 +59,15 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
-	# upstreamed:5.2.36, missing in 5.3.x/6.x
-	# still needs to be patched in 6.0.20
-	epatch "${FILESDIR}"/${PN}-6.0.35-sqlite-configure-path.patch
+	# upstreamed:5.2.36, missing in 5.3.x
+	epatch "${FILESDIR}"/${PN}-5.2.28-sqlite-configure-path.patch
 
 	# The upstream testsuite copies .lib and the binaries for each parallel test
 	# core, ~300MB each. This patch uses links instead, saves a lot of space.
 	epatch "${FILESDIR}"/${PN}-6.0.20-test-link.patch
+
+	# Needed when compiling with clang
+	epatch "${FILESDIR}"/${PN}-5.1.29-rename-atomic-compare-exchange.patch
 
 	# Upstream release script grabs the dates when the script was run, so lets
 	# end-run them to keep the date the same.
@@ -141,6 +143,8 @@ multilib_src_configure() {
 
 	# sql_compat will cause a collision with sqlite3
 	# --enable-sql_compat
+	# Don't --enable-sql* because we don't want to use bundled sqlite.
+	# See Gentoo bug #605688
 	ECONF_SOURCE="${S_BASE}"/dist \
 	STRIP="true" \
 	econf \
@@ -148,8 +152,8 @@ multilib_src_configure() {
 		--enable-dbm \
 		--enable-o_direct \
 		--without-uniquename \
-		--enable-sql \
-		--enable-sql_codegen \
+		--disable-sql \
+		--disable-sql_codegen \
 		--disable-sql_compat \
 		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
