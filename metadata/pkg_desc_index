@@ -5279,6 +5279,7 @@ dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRE
 dev-perl/AnyEvent 7.120.0 7.130.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
 dev-perl/AnyEvent-I3 0.160.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0 3.250.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
@@ -6207,6 +6208,7 @@ dev-perl/OOTools 2.300.0-r1: Pragma to implement lvalue accessors with options
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schema migration
 dev-perl/Object-Enum 0.75.0: Replacement for if ($foo eq 'bar')
+dev-perl/Object-Event 1.230.0: A class that provides an event callback interface
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
 dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
@@ -17323,7 +17325,7 @@ sys-cluster/ploop 1.13.2 1.14.1: openvz tool and a library to control ploop bloc
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/resource-agents 1.0.4-r1 3.9.6: Resources pack for Heartbeat / Pacemaker
+sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/sanlock 3.4.0-r1: shared storage lock manager
@@ -18026,7 +18028,7 @@ www-apache/mod_macro 1.1.10 1.2.1: An Apache2 module providing macros for the Ap
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.12 1.0.12-r1: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
-www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601 2.0.10_rc1-r1 2.0.10: An embedded Perl interpreter for Apache2
+www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601 2.0.10: An embedded Perl interpreter for Apache2
 www-apache/mod_python 3.5.0 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6 0.6-r1: Reverse proxy add forward module
