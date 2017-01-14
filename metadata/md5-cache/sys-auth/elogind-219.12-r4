@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-libs/libcap sys-apps/util-linux virtual/libudev:= acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) pam? ( virtual/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) dev-util/gperf dev-util/intltool sys-devel/libtool virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=The systemd project's logind, extracted to a standalone package
+EAPI=6
+HOMEPAGE=https://github.com/wingo/elogind
+IUSE=acl apparmor pam policykit +seccomp selinux
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=CC0-1.0 LGPL-2.1+ public-domain
+RDEPEND=sys-libs/libcap sys-apps/util-linux virtual/libudev:= acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) pam? ( virtual/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) sys-apps/dbus policykit? ( sys-auth/polkit ) !sys-auth/systemd
+SLOT=0
+SRC_URI=https://github.com/wingo/elogind/archive/v219.12.tar.gz -> elogind-219.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	73058269b3e70e34e084fa3981282338	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=52215388d60467d8f95b74c5350339b9
