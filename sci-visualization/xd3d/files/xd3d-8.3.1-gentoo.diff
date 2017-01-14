@@ -1,6 +1,6 @@
 diff -Naur RULES.gentoo RULES.gentoo
---- RULES.gentoo	1969-12-31 19:00:00.000000000 -0500
-+++ RULES.gentoo	2008-01-21 06:41:41.000000000 -0500
+--- /dev/null		1969-12-31 19:00:00.000000000 -0500
++++ ./RULES.gentoo	2008-01-21 06:41:41.000000000 -0500
 @@ -0,0 +1,82 @@
 +#--------------------------------------------------------
 +# Configuration file for the Makefiles of xd3d          |
