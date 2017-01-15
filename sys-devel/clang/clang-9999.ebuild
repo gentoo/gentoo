@@ -133,9 +133,7 @@ src_prepare() {
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
 	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		# ensure that the correct llvm-config is used
 		-DLLVM_CONFIG="${EPREFIX}/usr/bin/${CHOST}-llvm-config"
 		# relative to bindir
