@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl apparmor pam policykit +seccomp selinux"
 
 COMMON_DEPEND="
-	sys-libs/libcap
 	sys-apps/util-linux
+	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	apparmor? ( sys-libs/libapparmor )
@@ -27,15 +27,18 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/dbus
-	policykit? ( sys-auth/polkit )
 	!sys-auth/systemd
 "
 DEPEND="${COMMON_DEPEND}
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
 	dev-util/gperf
 	dev-util/intltool
 	sys-devel/libtool
 	virtual/pkgconfig
 "
+PDEPEND="policykit? ( sys-auth/polkit )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docs.patch"
@@ -43,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-session.patch"
 	"${FILESDIR}/${P}-login1-perms.patch"
 	"${FILESDIR}/${P}-gperf.patch"
+	"${FILESDIR}/${P}-glibc.patch" # bug 605744
 )
 
 pkg_setup() {

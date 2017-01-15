@@ -6,7 +6,9 @@
 		<name>Jason A. Donenfeld</name>
 	</maintainer>
 	<use>
-		<flag name="kmod-src">Do not compile the kernel module. Instead install the kernel module source code to /usr/src/wireguard.</flag>
+		<flag name="tools">Compile the wg(8) tool and related helpers. You probably want this enabled.</flag>
+		<flag name="module">Compile the actual WireGuard kernel module. Most certainly you want this enabled, unless you're doing something strange.</flag>
+		<flag name="module-src">Install the module source code to /usr/src, in case you like building kernel modules yourself.</flag>
 		<flag name="debug">Enable verbose debug reporting in dmesg of various WireGuard peer and device information.</flag>
 	</use>
 </pkgmetadata>
