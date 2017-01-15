@@ -2384,7 +2384,7 @@ developers and volunteer mentors.</description>
     </member>
   </project>
   <project>
-    <email>gmn@gentoo.org</email>
+    <email>news@gentoo.org</email>
     <name>News Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
     <description>Presenting news as it develops, this project is intends to provide anyone interested in Gentoo a stream of information for changes in the Gentoo universe.</description>
@@ -3043,7 +3043,7 @@ developers and volunteer mentors.</description>
     <name>Gentoo Public Relations Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
     <description>The Public Relations Team improves Gentoo's visibility towards the rest of the world.</description>
-    <subproject ref="gmn@gentoo.org" inherit-members="1"/>
+    <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
     <member>
