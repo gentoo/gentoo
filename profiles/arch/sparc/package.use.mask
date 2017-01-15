@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
+# Missing keywords, bug #559770
+>=net-misc/networkmanager-1.4.4 consolekit
+
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
