@@ -19,7 +19,11 @@
                 Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
-		<flag name="openvdb-compression">
+		<flag restrict="&gt;=media-gfx/openvdb-4.0.0" name="abi3-compat">
+			Enables compatibility with the old 3.x ABI.
+			enabled by dfault.
+		</flag>
+		<flag restrict="&lt;=media-gfx/openvdb-3.2.0" name="openvdb-compression">
 			Adds enhanced compression to files through
 			<pkg>dev-libs/c-blosc</pkg>. Very useful so
 			enabled by dfault.
