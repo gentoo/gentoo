@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Circular layout visualization of genomic and other data"
 HOMEPAGE="http://mkweb.bcgsc.ca/circos/"
@@ -28,9 +28,16 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto /opt/${PN}
-	find * -maxdepth 0 -type d | xargs doins -r
+	doins -r */
+
 	exeinto /opt/${PN}/bin
 	doexe bin/circos bin/gddiag
+
 	dosym /opt/${PN}/bin/circos /usr/bin/circos
-	find * -maxdepth 0 -type f | xargs dodoc
+
+	einstalldocs
+	local d
+	while IFS="" read -d $'\0' -r d; do
+		dodoc "${d}"
+	done < <(find * -maxdepth 0 -type f -print0)
 }

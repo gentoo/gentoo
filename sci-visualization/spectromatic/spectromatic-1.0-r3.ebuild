@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${PN}_${PV}-1
 
@@ -14,16 +14,14 @@ SRC_URI="http://ieee.uow.edu.au/~daniel/software/spectromatic/dist/${MY_P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	media-libs/libpng:0
-	sci-libs/gsl"
+	media-libs/libpng:0=
+	sci-libs/gsl:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-DOCS=( README )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
@@ -31,11 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-waveheaderstruct-amd64.patch
 )
 
-pkg_setup() {
+src_configure() {
 	tc-export CC
-	export TOPLEVEL_HOME="${EROOT}/usr"
-}
-
-src_prepare() {
-	epatch ${PATCHES[@]}
+	export TOPLEVEL_HOME="${EPREFIX}/usr"
 }

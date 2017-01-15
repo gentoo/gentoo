@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DEB_PR=16
 
@@ -17,13 +17,15 @@ LICENSE="xgraph"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples"
-DEPEND="x11-libs/libSM
+RDEPEND="x11-libs/libSM
 	x11-libs/libX11"
-RDEPEND="${DEPEND}"
+DEPEND="$RDEPEND"
+
+PATCHES=( "${WORKDIR}"/debian/patches/debian-changes )
 
 src_prepare() {
-	epatch "${WORKDIR}"/debian/patches/debian-changes
-	rm configure.in Makefile.in
+	default
+	rm -f configure.in Makefile.in || die
 	eautoreconf
 }
 
@@ -31,11 +33,11 @@ src_install() {
 	default
 	dodoc "${WORKDIR}"/debian/changelog
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 	dodir /usr/share/man/man1
-	mv  "${ED}"/usr/share/man/manm/xgraph.man \
-		"${ED}"/usr/share/man/man1/xgraph.1 || die
-	rm -r "${ED}"/usr/share/man/manm || die
+	mv "${ED%/}"/usr/share/man/manm/xgraph.man \
+	   "${ED%/}"/usr/share/man/man1/xgraph.1 || die
+	rm -r "${ED%/}"/usr/share/man/manm || die
 }

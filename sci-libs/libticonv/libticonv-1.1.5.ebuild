@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit multilib
+inherit autotools
 
 DESCRIPTION="Charset conversion library for TI calculators"
 HOMEPAGE="http://lpg.ticalc.org/prj_tilp/"
@@ -21,6 +21,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS LOGO NEWS README ChangeLog docs/api.txt )
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
@@ -28,11 +33,10 @@ src_configure() {
 }
 
 src_install() {
-	default
 	if use doc; then
-		dohtml docs/html/*
-		docinto charsets
-		dohtml docs/charsets/*
+		HTML_DOCS=( docs/html/. )
+		DOCS+=( docs/charsets )
 	fi
-	use static-libs || rm -f "${D}"/usr/$(get_libdir)/${PN}.la
+	default
+	find "${D}" -name '*.la' -delete || die
 }

@@ -1,11 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-LANGS="fr"
+EAPI=6
 
-inherit eutils qt4-r2 versionator
+inherit qmake-utils versionator
 
 MY_PV=$(replace_version_separator 2 '')
 
@@ -15,25 +14,31 @@ SRC_URI="http://star.physics.yale.edu/~ullrich/${PN}DistributionPage/${MY_PV}/${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="l10n_fr"
 
-DEPEND="dev-qt/qtcore:4
+RDEPEND="dev-qt/qtcore:4
 	dev-qt/qtgui:4"
-RDEPEND="${DEPEND}"
+DEPEND="$RDEPEND"
 
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e "s:qApp->applicationDirPath() + \"/../docs\":\"${EPREFIX}/usr/share/doc/${PF}/html\":" \
 		xyscanWindow.cpp || die "Failed to fix docs path"
 }
 
+src_configure() {
+	eqmake4
+}
+
 src_install() {
 	dobin xyscan
-	dohtml -r docs/en/*
-	use linguas_fr && doins -r docs/fr
+	HTML_DOCS=( docs/en/. )
+	einstalldocs
+	use l10n_fr && dodoc -r docs/fr
 	newicon images/xyscanIcon.png xyscan.png
 	make_desktop_entry xyscan "xyscan data point extractor"
 }
