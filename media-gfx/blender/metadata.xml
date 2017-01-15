@@ -86,10 +86,6 @@
 		<flag name="openvdb" restrict="&gt;=media-gfx/blender-2.77">
 			Add GPU preview rendering. Only works with nVidia cards.
 		</flag>
-		<flag name="openvdb-compression" restrict="&gt;=media-gfx/blender-2.77">
-			Support optional compression used by OpenVDB (requires
-			<pkg>media-gfx/openvdb</pkg>).
-		</flag>
 		<flag name="player">
 			Build the Blender Player. THis requires the Game engine.
 		</flag>
