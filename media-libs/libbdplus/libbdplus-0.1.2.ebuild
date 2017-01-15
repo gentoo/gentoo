@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="git://git.videolan.org/${PN}.git"
 else
 	SRC_URI="http://ftp.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2"
-	KEYWORDS="amd64 sparc x86"
+	KEYWORDS="amd64 ppc sparc x86"
 fi
 
 DESCRIPTION="Blu-ray library for BD+ decryption"
