@@ -1,0 +1,25 @@
+--- blender-2.78a-orig/extern/ceres/include/ceres/jet.h	2016-10-25 01:13:56.000000000 +1100
++++ blender-2.78a/extern/ceres/include/ceres/jet.h	2017-01-11 13:27:24.708241265 +1100
+@@ -757,6 +757,7 @@
+   typedef ceres::Jet<T, N> Real;
+   typedef ceres::Jet<T, N> NonInteger;
+   typedef ceres::Jet<T, N> Nested;
++  typedef ceres::Jet<T, N> Literal;
+ 
+   static typename ceres::Jet<T, N> dummy_precision() {
+     return ceres::Jet<T, N>(1e-12);
+@@ -777,6 +778,14 @@
+     HasFloatingPoint = 1,
+     RequireInitialization = 1
+   };
++  
++  template<bool Vectorized>
++  struct Div {
++    enum {
++      AVX = false,
++      Cost = 1
++    };
++  };
+ };
+ 
+ }  // namespace Eigen
