@@ -19,10 +19,7 @@ IUSE=""
 RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}]
-	|| (
-		>=x11-libs/pangox-compat-0.0.2[${MULTILIB_USEDEP}]
-		<x11-libs/pango-1.31[X,${MULTILIB_USEDEP}]
-	)
+	>=x11-libs/pangox-compat-0.0.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 	>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
