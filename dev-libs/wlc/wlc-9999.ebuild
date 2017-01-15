@@ -25,7 +25,7 @@ RDEPEND="virtual/opengl
 		dev-libs/libinput
 		dev-libs/wayland
 		X? ( x11-libs/libX11
-			 x11-libs/libxcb
+			 x11-libs/libxcb[xkb]
 			 x11-libs/xcb-util-image
 			 x11-libs/xcb-util-wm
 			 x11-libs/libXfixes )
@@ -53,7 +53,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if use X && !use xwayland
+	if use X && ! use xwayland
 	then
 		elog "xwayland use flag is required for X11 applications support"
 	fi
