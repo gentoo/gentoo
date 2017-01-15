@@ -9313,7 +9313,7 @@ dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
 dev-ruby/mail 2.6.4: An email handling library
 dev-ruby/map 6.6.0: A string/symbol indifferent ordered hash that works in all rubies
-dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
+dev-ruby/maruku 0.7.2-r1 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/maxitest 2.2.0 2.3.0 2.4.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
@@ -9559,7 +9559,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.3.0 2.3.1 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.3.1 1.4.0 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
-dev-ruby/ruby_parser 3.8.2 3.8.3: A ruby parser written in pure ruby
+dev-ruby/ruby_parser 3.8.2 3.8.3 3.8.4: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.2.5-r1 2.5.2 2.6.6 2.6.7 2.6.8: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.1: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5 0.5.0 0.5.1 0.6.0: A Ruby port of the SmartyPants PHP library
@@ -14711,7 +14711,7 @@ net-libs/libnm-qt 0.9.8.4: NetworkManager bindings for Qt
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.1 1.0.3: C library implementing the OAuth secure authentication protocol
-net-libs/liboping 1.7.0 1.8.0: C library and ncurses based program to generate ICMP echo requests and ping multiple hosts at once
+net-libs/liboping 1.7.0 1.8.0 1.8.0-r1 1.9.0: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
