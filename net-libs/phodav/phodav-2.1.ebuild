@@ -5,7 +5,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit autotools gnome2 systemd udev
+inherit gnome2 systemd udev
 
 DESCRIPTION="WebDav server implementation using libsoup"
 HOMEPAGE="https://wiki.gnome.org/phodav"
