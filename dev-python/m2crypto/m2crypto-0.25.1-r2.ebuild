@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~hppa ~ppc64"
 IUSE="libressl"
 
 RDEPEND="
