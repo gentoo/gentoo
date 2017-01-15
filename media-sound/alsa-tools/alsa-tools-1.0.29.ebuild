@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils flag-o-matic
+EAPI=6
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="http://www.alsa-project.org/"
@@ -31,6 +31,10 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/envy24control-config-dir.patch
+	"${FILESDIR}"/${P}-output_tram_line-static.patch
+)
 pkg_setup() {
 	ALSA_TOOLS="seq/sbiload us428control hwmixvolume hda-verb"
 
@@ -64,9 +68,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/envy24control-config-dir.patch
-
-	epatch_user
+	default
 
 	# This block only deals with the tools that still use GTK and the
 	# AM_PATH_GTK macro.

@@ -1,0 +1,11 @@
+--- a/src/jack-ng/jack-ng.cc	2016-12-04 07:36:46.462043676 +0000
++++ b/src/jack-ng/jack-ng.cc	2016-12-04 07:37:18.375043441 +0000
+@@ -18,7 +18,7 @@
+  * implied. In no event shall the authors be liable for any damages arising from
+  * the use of this software.
+  */
+-
++#include <iterator>
+ #include <libaudcore/audstrings.h>
+ #include <libaudcore/i18n.h>
+ #include <libaudcore/interface.h>
