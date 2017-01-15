@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openipmi static"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc x86"
 LICENSE="BSD"
 
 RDEPEND="
