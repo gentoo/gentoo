@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc x86"
+KEYWORDS="amd64 ~arm ~mips ppc x86"
 IUSE="ipv6 logwatch netlink sqlite +ssl +wps +crda"
 
 DEPEND="ssl? ( dev-libs/openssl:*[-bindist] )
