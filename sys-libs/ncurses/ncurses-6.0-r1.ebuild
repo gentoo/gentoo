@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -182,7 +182,7 @@ do_configure() {
 
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
-	CONFIG_SHELL=${BASH} \
+	CONFIG_SHELL=${EPREFIX}/bin/bash \
 	ECONF_SOURCE=${S} \
 	econf "${conf[@]}" "$@"
 }
