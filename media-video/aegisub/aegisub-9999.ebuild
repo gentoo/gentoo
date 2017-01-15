@@ -40,7 +40,7 @@ RDEPEND="
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
-	spell? ( app-text/hunspell )
+	spell? ( app-text/hunspell:= )
 	uchardet? ( dev-libs/uchardet )
 "
 DEPEND="${RDEPEND}
