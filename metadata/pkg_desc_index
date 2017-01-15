@@ -15107,7 +15107,7 @@ net-misc/ndisc6 0.9.9 0.9.9-r2 1.0.2 1.0.2-r1 1.0.3: Recursive DNS Servers disco
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
-net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
+net-misc/netdate 1.2 1.2-r1: utility to synchronize the time with ntp-servers
 net-misc/netfleet 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
 net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 0.5.1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
@@ -15166,7 +15166,7 @@ net-misc/pedro 1.6: Pedro is a subscription/notification communications system
 net-misc/peervpn 0.044-r2: P2P mesh VPN
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pimpd 0.8: RFC1413-compliant identd server supporting masqueraded connections
-net-misc/pipes 1.16 1.16.1: Very versatile TCP pipes
+net-misc/pipes 1.16.1: Very versatile TCP pipes
 net-misc/plowshare 2.1.3 2.1.5 9999: Command-line downloader and uploader for file-sharing websites
 net-misc/pmsvn 1.0.5 1.0.6 1.0.7: Server's configuration management and monitoring tool
 net-misc/polly 0.93.11 0.93.12: twitter client designed for multiple columns of multiple accounts
@@ -15280,7 +15280,7 @@ net-misc/unix2tcp 0.8.2 0.8.2-r1: a connection forwarder that converts Unix sock
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.9-r2 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
-net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rate
+net-misc/valve 1.0 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2 2.3.2-r3: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.20.2-r1 3.22.0-r1: VNC client for the GNOME desktop
@@ -15308,7 +15308,7 @@ net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1 4.0.5.2-r1: The X2Go Qt clie
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
+net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2016.12.22 2017.01.10 2017.01.14 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
