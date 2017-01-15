@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,5 +24,6 @@ python_test() {
 }
 
 src_prepare() {
-	epatch "$(prefixify_ro "${FILESDIR}"/lzo2compat.patch)"
+	epatch "$(PREFIX_LINE_MATCH='/##/!' \
+		prefixify_ro "${FILESDIR}"/lzo2compat.patch)"
 }
