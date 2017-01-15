@@ -8,14 +8,14 @@ inherit eutils systemd user
 
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
-SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}.tar.gz"
+SRC_URI="https://download.elasticsearch.org/${PN}/release/org/${PN}/distribution/tar/${PN}/${PV}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
 RESTRICT="strip"
 
-RDEPEND="virtual/jre:1.8"
+RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
 pkg_preinst() {
 	if has_version '<app-misc/elasticsearch-2.3.2'; then
@@ -37,7 +37,7 @@ src_prepare() {
 
 src_install() {
 	keepdir /etc/${PN}
-	keepdir /etc/${PN}/scripts
+	dodir /etc/${PN}/scripts
 
 	insinto /etc/${PN}
 	doins config/*
@@ -59,8 +59,8 @@ src_install() {
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}/${PN}.sysctl.d" "${PN}.conf"
 
-	newinitd "${FILESDIR}/${PN}.init7" "${PN}"
-	newconfd "${FILESDIR}/${PN}.conf3" "${PN}"
+	newinitd "${FILESDIR}/${PN}.init6" "${PN}"
+	newconfd "${FILESDIR}/${PN}.conf2" "${PN}"
 	systemd_newunit "${FILESDIR}"/${PN}.service5 "${PN}.service"
 }
 
