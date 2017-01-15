@@ -12,4 +12,8 @@
 		<bugs-to>https://github.com/octo/liboping/issues</bugs-to>
 		<remote-id type="github">octo/liboping</remote-id>
 	</upstream>
+	<use>
+		<flag name="filecaps">Allow non-root users to use [n]oping utility.</flag>
+		<flag name="ncurses">Build ncurses-based version of oping utility (requires <pkg>sys-libs/ncurses</pkg>)</flag>
+	</use>
 </pkgmetadata>
