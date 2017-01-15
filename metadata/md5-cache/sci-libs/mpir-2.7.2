@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=x86? ( dev-lang/yasm ) amd64? ( dev-lang/yasm ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for arbitrary precision integer arithmetic (fork of gmp)
+EAPI=6
+HOMEPAGE=http://www.mpir.org/
+IUSE=+cxx cpudetection static-libs
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+SLOT=0/16
+SRC_URI=http://www.mpir.org/mpir-2.7.2.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b148289a90afa651356d1c4f8450dbce
