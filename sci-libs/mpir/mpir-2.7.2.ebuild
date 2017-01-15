@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Library for arbitrary precision integer arithmetic (fork of gmp)"
 HOMEPAGE="http://www.mpir.org/"
@@ -23,6 +23,7 @@ RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ABI-multilib.patch
+	"${FILESDIR}"/${P}-sed-backport.patch
 )
 
 src_prepare() {
@@ -63,6 +64,12 @@ src_configure() {
 		--with-system-yasm
 		$(use_enable cxx)
 		$(use_enable cpudetection fat)
+		$(use_enable static-libs static)
 	)
 	econf ${myeconfargs[@]}
+}
+
+src_install() {
+	default
+	rm "${ED}"/usr/$(get_libdir)/*la || die
 }
