@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
-inherit eutils java-pkg-2
+inherit eutils java-pkg-2 java-pkg-simple
 
 MY_P="GCalc-${PV/_/-}"
 DESCRIPTION="Java Mathematical Graphing System"
@@ -16,27 +16,26 @@ KEYWORDS="~amd64"
 IUSE=""
 SLOT="0"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.7
 	!!sci-mathematics/gcalc"
-DEPEND=">=virtual/jdk-1.4"
+DEPEND=">=virtual/jdk-1.7"
 
 S="${WORKDIR}/${MY_P}"
 
-java_prepare() {
-	find -name '*.jar' -exec rm -v {} + || die
+src_prepare() {
+	java-pkg_clean
+	default
 }
 
 src_compile() {
-	cd src || die
-	ejavac $(find . -name '*.java')
-
-	jar cf ${PN}.jar resources pluginlist.xml $(find . -name '*.class') || die
+	java-pkg-simple_src_compile
+	java-pkg_addres ${PN}.jar src ! -name "*.html"
 }
 
 src_install() {
-	java-pkg_dojar src/${PN}.jar
+	java-pkg-simple_src_install
 	java-pkg_dolauncher gcalc --main net.gcalc.calc.GCalc
 
-	newicon src/resources/gicon.png ${PN}.png || die
+	newicon src/resources/gicon.png ${PN}.png
 	make_desktop_entry ${PN} "GCalc Java Mathematical Graphing System"
 }
