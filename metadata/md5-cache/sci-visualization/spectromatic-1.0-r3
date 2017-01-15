@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=media-libs/libpng:0= sci-libs/gsl:= virtual/pkgconfig
+DESCRIPTION=Generates time-frequency analysis images from wav files
+EAPI=6
+HOMEPAGE=http://ieee.uow.edu.au/~daniel/software/spectromatic/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0= sci-libs/gsl:=
+SLOT=0
+SRC_URI=http://ieee.uow.edu.au/~daniel/software/spectromatic/dist/spectromatic_1.0-1.tar.gz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=30f5df87147562d38501f7610875e14e
