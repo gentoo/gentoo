@@ -10,7 +10,19 @@
 # Exports portage base functions used by ebuilds written for packages using the
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
 
-inherit eutils libtool gnome.org gnome2-utils xdg
+# @ECLASS-VARIABLE: GNOME2_EAUTORECONF
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Run eautoreconf instead of only elibtoolize
+GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
+
+if [[ ${GNOME2_EAUTORECONF} == 'yes' ]] ; then
+        AUTOTOOLS_AUTO_DEPEND=yes
+else
+        : ${AUTOTOOLS_AUTO_DEPEND:=no}
+fi
+
+inherit autotools eutils libtool gnome.org gnome2-utils xdg
 
 case "${EAPI:-0}" in
 	4|5)
@@ -113,9 +125,13 @@ gnome2_src_prepare() {
 	# Disable all deprecation warnings
 	gnome2_disable_deprecation_warning
 
-	# Run libtoolize
+	# Run libtoolize or eautoreconf, bug #591584
 	# https://bugzilla.gnome.org/show_bug.cgi?id=655517
-	elibtoolize ${ELTCONF}
+	if [[ ${GNOME2_EAUTORECONF} == 'yes' ]]; then
+		eautoreconf
+	else
+		elibtoolize ${ELTCONF}
+	fi
 }
 
 # @FUNCTION: gnome2_src_configure
