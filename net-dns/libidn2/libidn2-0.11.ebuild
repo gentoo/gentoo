@@ -13,6 +13,8 @@ LICENSE="GPL-2+ LGPL-3+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~ppc-aix ~x64-freebsd ~x86-freebsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
+DEPEND="sys-apps/help2man"
+RDEPEND=""
 
 DEPEND="
 	sys-apps/help2man
