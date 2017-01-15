@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.msweet.org/files/project3/${MY_P}.tar.gz"
 
 LICENSE="Mini-XML"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ~ppc64 x86"
 IUSE="threads static-libs"
 
 DEPEND="virtual/pkgconfig"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://lttng.org/files/urcu/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname version
-KEYWORDS="amd64 arm hppa ~ppc ppc64 x86"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86"
 IUSE="static-libs regression-test test"
 
 DEPEND="test? ( sys-process/time )"

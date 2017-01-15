@@ -24,7 +24,7 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86 ~x86-fbsd"
 IUSE="geoip ipv6"
 
 SLOT="0"

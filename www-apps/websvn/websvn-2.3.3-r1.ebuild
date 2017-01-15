@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://websvn.tigris.org/files/documents/1380/${DOWNLOAD_NUMBER}/${MY_P
 
 LICENSE="GPL-2"
 IUSE="enscript"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 DEPEND=""
 RDEPEND="dev-lang/php:*[xml]
