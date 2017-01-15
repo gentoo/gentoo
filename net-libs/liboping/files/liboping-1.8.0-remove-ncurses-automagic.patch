@@ -1,0 +1,94 @@
+configure: Make use of ncurses configurable
+
+https://github.com/octo/liboping/pull/15
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -206,27 +206,30 @@ AC_CHECK_FUNCS(nanosleep, [],
+ 		AC_MSG_ERROR(cannot find nanosleep)))
+ AM_CONDITIONAL(BUILD_WITH_LIBRT, test "x$nanosleep_needs_rt" = "xyes")
+ 
+-with_ncurses="no"
+-AC_CHECK_HEADERS(ncursesw/ncurses.h ncurses.h, [with_ncurses="yes"], [])
+-if test "x$with_ncurses" = "xyes"
+-then
+-	have_ncursesw="no"
+-	have_ncurses="no"
+-	NCURSES_LIB=""
++AC_ARG_WITH(ncurses, AS_HELP_STRING([--with-ncurses], [Build oping CLI tool with ncurses support]))
++AS_IF([test "x$with_ncurses" != "xno"], [
++	can_build_with_ncurses="no"
++	PKG_CHECK_MODULES([NCURSES], [ncursesw], [can_build_with_ncurses=yes], [
++		PKG_CHECK_MODULES([NCURSES], [ncurses], [can_build_with_ncurses=yes], [
++			AC_CHECK_LIB(ncursesw, mvwprintw, [NCURSES_LIBS="-lncursesw"; can_build_with_ncurses=yes], [
++				AC_CHECK_LIB(ncurses, mvwprintw, [NCURSES_LIBS="-lncurses"; can_build_with_ncurses=yes])
++			])
++		])
++	])
+ 
+-	AC_CHECK_LIB(ncursesw, mvwprintw, [have_ncursesw="yes"], [have_ncursesw="no"])
+-	AC_CHECK_LIB(ncurses, mvwprintw, [have_ncurses="yes"], [have_ncurses="no"])
++	AS_IF([test "x$can_build_with_ncurses" = "xyes"], [
++		AC_CHECK_HEADERS([ncursesw/curses.h ncursesw.h ncurses/curses.h ncurses.h], [can_build_with_ncurses=yes; break;], [can_build_with_ncurses=no])
++	])
+ 
+-	if test "x$have_ncursesw" = "xyes"; then
+-		NCURSES_LIB="-lncursesw"
+-	else if test "x$have_ncurses" = "xyes"; then
+-		NCURSES_LIB="-lncurses"
+-	else
+-		with_ncurses="no"
+-	fi; fi
+-	AC_SUBST(NCURSES_LIB)
+-fi
+-AM_CONDITIONAL(BUILD_WITH_LIBNCURSES, test "x$with_ncurses" = "xyes")
++	AS_IF([test "x$can_build_with_ncurses" = "xno" && test "x$with_ncurses" = "xyes"], [
++		AC_MSG_ERROR([ncurses not found but explicit enabled])
++	],
++	[test "x$can_build_with_ncurses" = "xno"], [
++		AC_MSG_WARN([Will not build oping with ncurses support -- no suiteable ncurses installation found])
++	])
++])
++
++AM_CONDITIONAL(BUILD_WITH_LIBNCURSES, test "x$with_ncurses" != "xno" && test "x$can_build_with_ncurses" = "xyes")
+ 
+ AC_FUNC_STRERROR_R
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -43,8 +43,8 @@ if BUILD_WITH_LIBNCURSES
+ bin_PROGRAMS += noping
+ 
+ noping_SOURCES = oping.c
+-noping_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_NCURSES=1
+-noping_LDADD = liboping.la -lm $(NCURSES_LIB)
++noping_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_NCURSES=1 $(NCURSES_CFLAGS)
++noping_LDADD = liboping.la -lm $(NCURSES_LIBS)
+ if BUILD_WITH_LIBRT
+ noping_LDADD += -lrt
+ endif
+--- a/src/oping.c
++++ b/src/oping.c
+@@ -82,11 +82,17 @@
+ /* http://newsgroups.derkeiler.com/Archive/Rec/rec.games.roguelike.development/2010-09/msg00050.html */
+ # define _X_OPEN_SOURCE_EXTENDED
+ 
+-# if HAVE_NCURSESW_NCURSES_H
+-#  include <ncursesw/ncurses.h>
+-# elif HAVE_NCURSES_H
++#if defined HAVE_NCURSESW_CURSES_H
++#  include <ncursesw/curses.h>
++#elif defined HAVE_NCURSESW_H
++#  include <ncursesw.h>
++#elif defined HAVE_NCURSES_CURSES_H
++#  include <ncurses/curses.h>
++#elif defined HAVE_NCURSES_H
+ #  include <ncurses.h>
+-# endif
++#else
++#  error "SysV or X/Open-compatible Curses header file required"
++#endif
+ 
+ # define OPING_GREEN 1
+ # define OPING_YELLOW 2
+-- 
