@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Virtual for Serif/Sans/Monospace font packages"
 SLOT="0"
@@ -14,7 +14,6 @@ RDEPEND="|| (
 		media-fonts/dejavu
 		media-fonts/croscorefonts
 		media-fonts/droid
-		media-fonts/ttf-bitstream-vera
 		media-fonts/freefont
 		media-fonts/corefonts
 	)"
