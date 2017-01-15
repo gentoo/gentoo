@@ -52,13 +52,22 @@ src_install() {
 pkg_postinst() {
 	if use filecaps; then
 		local _caps_str="CAP_NET_RAW"
-		fcaps "${_caps_str}" \
-			"${EROOT%/}/usr/bin/oping" \
-			"${EROOT%/}/usr/bin/noping"
+		_files=( "${EROOT%/}/usr/bin/oping")
+
+		if use ncurses; then
+			_files+=( "${EROOT%/}/usr/bin/noping")
+		fi
+
+		fcaps "${_caps_str}" "${_files[@]}"
+
 		elog "Capabilities for"
 		elog ""
-		elog "  ${EROOT%/}/usr/bin/oping"
-		elog "  ${EROOT%/}/usr/bin/oping"
+
+		local _file=
+		for _file in "${_files[@]}"; do
+			elog "  ${_file}"
+		done
+
 		elog ""
 		elog "set to ${_caps_str}+EP due to set 'filecaps' USE flag."
 		elog
