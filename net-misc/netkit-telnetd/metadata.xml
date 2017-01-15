@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>paolo.pedroni@iol.it</email>
 		<name>Paolo Pedroni</name>
-		<description>Proxied Maintainer, assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

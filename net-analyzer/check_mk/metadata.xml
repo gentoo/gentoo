@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>morlix@morlix.de</email>
 		<name>Timo Eissler</name>
-		<description>maintainer, assign bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
