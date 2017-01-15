@@ -5,6 +5,16 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
+# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
+# (bug 590244)
+=dev-libs/boost-1.62* mpi
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
+# Has no stable reverse deps requiring this useflag
+# Stable-masking it so Boost 1.62 stabilization can go ahead
+sci-libs/vtk mpi
+
 # Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
 # libcxx is not stable so we can't let users use it
 dev-lang/rust libcxx
