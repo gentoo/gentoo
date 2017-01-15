@@ -1,12 +1,14 @@
 certificate version 0.1
-pusher 0xA792A613 1484440455 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1484440455-ca278708d0db0eb8e09e
+pusher Mikle Kolyada <zlogene@gentoo.org> 1484442629 +0300
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1484442629-3318f8480e7bd5de28fe
 
-2c960767ecaabdca33c1e62dac19b09d07e8b7f2 a0f0ace9b835e07f946da81a3509e64a40715db2 refs/heads/master
+a0f0ace9b835e07f946da81a3509e64a40715db2 e9ce6344d2cad1acef9648eebc7aab9238c327cc refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iEYEABECAAYFAlh6w4cACgkQVWmRsqeSphNOWACffEfG6PMvqmSY7go/1Vm251uN
-AEoAn2kHIllxQl9BPafc5FoWZKV1URZS
-=Lx5G
+iLAEAAEIABoFAlh6zAUTHHpsb2dlbmVAZ2VudG9vLm9yZwAKCRAb3A5axC611pC7
+BACozZCvDrUVAwCev8YQatSJZ5WUtRvGVfXaUaprO1PnHxO4IZuO9Ubnv1yszIdZ
+aDU+zyLOwQuHSc365N2+VbQe1ZE6m7vGaiGe3hdYM3eN+PoSM7zWvL+f/vQ+VNGO
+lZs62XjQoiv/jKvt0WV1AMFGwzN7dd2hM2soOPLwrDWPTA==
+=GcRB
 -----END PGP SIGNATURE-----
