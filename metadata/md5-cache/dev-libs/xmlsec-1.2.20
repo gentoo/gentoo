@@ -4,7 +4,7 @@ DESCRIPTION=Command line tool for signing, verifying, encrypting and decrypting 
 EAPI=5
 HOMEPAGE=http://www.aleksey.com/xmlsec
 IUSE=doc gcrypt gnutls nss +openssl static-libs
-KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=amd64 ppc ~ppc64 ~sparc x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 ) gnutls? ( >=net-libs/gnutls-2.8.0 ) nss? ( >=dev-libs/nspr-4.4.1 >=dev-libs/nss-3.9 ) openssl? ( >=dev-libs/openssl-0.9.7:* )
 REQUIRED_USE=|| ( gcrypt gnutls nss openssl ) gnutls? ( gcrypt )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.aleksey.com/xmlsec/download/xmlsec1-1.2.20.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=04027f35faad2b43273f652449683d12
+_md5_=14511bc83ca47b5b9d86f38fb6d81a5d
