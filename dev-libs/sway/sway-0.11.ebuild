@@ -4,36 +4,36 @@
 
 EAPI=6
 
-inherit git-r3 eutils cmake-utils fcaps
+inherit eutils cmake-utils fcaps
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
 
-EGIT_REPO_URI="https://github.com/SirCmpwn/sway.git"
+SRC_URI="https://github.com/SirCmpwn/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
-RDEPEND="=dev-libs/wlc-9999[systemd=]
-		dev-libs/json-c
-		dev-libs/libpcre
-		dev-libs/libinput
-		x11-libs/libxkbcommon
-		dev-libs/wayland
-		sys-libs/libcap
-		x11-libs/pango
-		x11-libs/cairo
-		swaylock? ( virtual/pam )
-		gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
+RDEPEND=">=dev-libs/wlc-0.0.5[systemd=]
+	dev-libs/json-c
+	dev-libs/libpcre
+	dev-libs/libinput
+	x11-libs/libxkbcommon
+	dev-libs/wayland
+	sys-libs/libcap
+	x11-libs/pango
+	x11-libs/cairo
+	swaylock? ( virtual/pam )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-		app-text/asciidoc"
+	app-text/asciidoc"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	default
 
 	# remove bad CFLAGS that upstream is trying to add
 	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
@@ -53,13 +53,16 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
-		-DLD_LIBRARY_PATH="${EPREFIX}/usr/lib"
 	)
 
 	cmake-utils_src_configure
 }
 
-FILECAPS=( -M 4711 cap_sys_ptrace,cap_sys_tty_config usr/bin/sway )
+src_install() {
+	cmake-utils_src_install
+
+	use !systemd && fperms u+s /usr/bin/sway
+}
 
 FILECAPS=( cap_sys_ptrace usr/bin/sway )
 
