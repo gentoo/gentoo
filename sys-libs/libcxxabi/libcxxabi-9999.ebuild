@@ -29,8 +29,9 @@ RDEPEND="
 			>=sys-libs/llvm-libunwind-3.9.0-r1[static-libs?,${MULTILIB_USEDEP}]
 		)
 	)"
+# LLVM 4 required for llvm-config --cmakedir
 DEPEND="${RDEPEND}
-	>=sys-devel/llvm-3.9.0
+	>=sys-devel/llvm-4
 	test? ( >=sys-devel/clang-3.9.0
 		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
@@ -57,15 +58,9 @@ src_unpack() {
 	git-r3_checkout
 }
 
-src_configure() {
-	NATIVE_LIBDIR=$(get_libdir)
-	cmake-multilib_src_configure
-}
-
 multilib_src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DLLVM_LIBDIR_SUFFIX=${NATIVE_LIBDIR#lib}
 		-DLIBCXXABI_LIBDIR_SUFFIX=${libdir#lib}
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
