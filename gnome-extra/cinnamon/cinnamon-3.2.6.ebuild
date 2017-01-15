@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -95,7 +95,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils
 	x11-libs/xapps
 
-	dev-python/dbus-python[python_targets_python2_7]
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/gconf-python:2[python_targets_python2_7]
 	dev-python/lxml[python_targets_python2_7]
 	dev-python/pexpect[python_targets_python2_7]
