@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,8 @@ DOCS=( README )
 
 python_install_all() {
 	if use doc; then
-		HTML_DOCS=( docs/man/man1/*.html docs/man/man7/*.html )
+		HTML_DOCS=( docs/dist/html/*.html docs/dist/html/man{1,7}/*.html )
 	fi
 	distutils-r1_python_install_all
-	doman docs/man/man1/*.1 docs/man/man7/*.7
+	doman docs/dist/man/man1/*.1 docs/dist/man/man7/*.7
 }
