@@ -17990,7 +17990,7 @@ virtual/szip 2.1: Virtual for szip compression drop-in replacements
 virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
 virtual/texi2dvi 0: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
-virtual/ttf-fonts 1: Virtual for Serif/Sans/Monospace font packages
+virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
