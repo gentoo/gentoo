@@ -1754,7 +1754,7 @@ app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2 2.3.3 2.3.4 2.3.5 2.4.0 2.4.1 5.0.0 5.0.1 5.0.1-r1 5.1.1: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 2.4.3 5.1.1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
@@ -13832,7 +13832,7 @@ media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e-r1: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.2.2_p20160518-r1 9999: Advanced subtitle editor
+media-video/aegisub 3.2.2_p20160518-r2 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.1.14 0.1.15 9999: Library for video acquisition using Genicam cameras
 media-video/asfrecorder 1.1: ASFRecorder - Download Windows Media Streaming files
@@ -13891,7 +13891,7 @@ media-video/gpac 0.5.2 0.6.1-r1 0.6.1-r2 9999: GPAC is an implementation of the 
 media-video/griffith 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3 2.0.4: GTK+ UVC Viewer
-media-video/gxine 0.5.907-r1 0.5.908: GTK+ Front-End for libxine
+media-video/gxine 0.5.907-r1 0.5.908-r1: GTK+ Front-End for libxine
 media-video/h264enc 10.4.1 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/handbrake 0.10.5-r2 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0 0.8.1: HTTP Ardour Video Daemon
