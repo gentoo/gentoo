@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -79,6 +79,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-buildsystem.patch
 	"${FILESDIR}"/${P}-remove-C-linkage.patch
+	"${FILESDIR}"/${P}-eigen-3.3.patch
 )
 
 pkg_setup() {
