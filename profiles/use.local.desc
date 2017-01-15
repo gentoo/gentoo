@@ -7021,15 +7021,7 @@ sci-libs/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
 sci-libs/scotch:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/scotch:tools - Build and install extra exec tools
 sci-libs/shogun:R - Enable support for dev-lang/R
-sci-libs/shogun:arpack - Enable support for sci-libs/arpack
-sci-libs/shogun:eigen - Enable support for matrix package dev-cpp/eigen
-sci-libs/shogun:glpk - Enable support for sci-mathematics/glpk
-sci-libs/shogun:json - Enable support for parsing JSON format
-sci-libs/shogun:lpsolve - Enable support for Linear Programming Solver
-sci-libs/shogun:nlopt - Enable support non linear optimization from sci-libs/nlopt
 sci-libs/shogun:octave - Enable support for sci-mathematics/octave
-sci-libs/shogun:snappy - Enable support for snappy compression
-sci-libs/shogun:superlu - Enable support for sci-libs/superlu
 sci-libs/silo:silex - Build silex data browser
 sci-libs/spqr:metis - Use sci-libs/metis or sci-libs/parmetis for partitioning
 sci-libs/spqr:tbb - Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
