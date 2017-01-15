@@ -1772,7 +1772,7 @@ app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverte
 app-misc/fsniper 1.3.1-r1 1.3.1-r2: Monitors a given set of directories for new files
 app-misc/fujiplay 1.33: Utility for Fujifilm/Leica digital cameras (via serial port)
 app-misc/g15composer 3.1 3.2: A library to render text and shapes into a buffer usable by the Logitech G15 keyboard
-app-misc/g15daemon 1.9.5.3-r11 1.9.5.3-r13 1.9.5.3-r20 1.9.5.3-r21 9999: G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+app-misc/g15daemon 1.9.5.3-r13 1.9.5.3-r21 9999: G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
 app-misc/g15macro 1.0.3-r1: Macro recording plugin to G15daemon
 app-misc/g15message 1.0.0: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r1: MPD (music player daemon) plugin to G15daemon
@@ -1814,7 +1814,7 @@ app-misc/i2bits 0.0.2: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.7.3: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.20.0 2.24.2: Memorization aid based on the Leitner flashcard system
-app-misc/iguanaIR 0.93 1.0.1 1.0.1-r1: library for Irman control of Unix software
+app-misc/iguanaIR 1.0.1-r1: library for Irman control of Unix software
 app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r2 0.0.1_pre15-r1 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
@@ -1829,7 +1829,7 @@ app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.8.1 0.8.3 0.8.4: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
-app-misc/ktoblzcheck 1.39 1.45 1.48: Library to check account numbers and bank codes of German banks
+app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1 0.5.5 0.5.6-r1: Client/Server suite to drive all kinds of LCD (-like) devices
 app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when its time to leave
@@ -3059,7 +3059,7 @@ dev-embedded/jtag 0.5.1-r1: Software for working with JTAG-aware (IEEE 1149.1) d
 dev-embedded/kobs-ng 3.0.35.4.1.0: utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Library for providing basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 0.4.16-r1 1.1.12-r1: Library that allows a direct access to a USB device
-dev-embedded/libftdi 0.19 0.20 1.0 1.2 9999: Userspace access to FTDI USB interface chips
+dev-embedded/libftdi 0.19 0.20 1.2 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
@@ -4656,7 +4656,7 @@ dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.7.5 1.8.0: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
-dev-libs/keybinder 0.3.0-r200 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
+dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/kirigami 1.1.0 2.0.0: Lightweight user interface framework for mobile and convergent applications
 dev-libs/klibc 1.5.25 2.0.4 2.0.4-r2: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r2: Library implementing generic path searching, configuration, and TeX-specific file searching
@@ -7470,7 +7470,7 @@ dev-python/flower 0.8.4 0.9.1: Real-time monitor and web admin for Celery distri
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 2.4 2.5 3.0 3.3.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.8.0 0.10.1 0.11.0: RPC protocol for Twisted
-dev-python/formencode 1.2.4 1.3.0-r2: HTML form validation, generation, and conversion package
+dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
 dev-python/freezegun 0.3.6 0.3.7 0.3.8: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.12 0.13: Freezes a Flask application into a set of static files
@@ -7694,7 +7694,7 @@ dev-python/logbook 0.9.1 0.10.0 0.12.3 0.12.5 1.0.0: A logging replacement for P
 dev-python/logilab-common 0.63.2 1.2.2: Useful miscellaneous modules used by Logilab projects
 dev-python/logilab-constraint 0.5.0-r1: A finite domain constraints solver written in 100% pure Python
 dev-python/logutils 0.3.3: The logutils package provides a set of handlers for the Python standard
-dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
+dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.6.0 3.6.4-r1 3.7.0 3.7.1: A Pythonic binding for the libxml2 and libxslt libraries
@@ -7856,7 +7856,7 @@ dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5 16.6: Core utilities for Python packages
 dev-python/pafy 0.5.1 0.5.2: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
-dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
+dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 0.19.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.16.0 2.0.2 2.1.1 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
@@ -8041,7 +8041,7 @@ dev-python/pygresql 4.1.1 4.1.1-r1 4.1.1-r2 4.2: A Python interface for the Post
 dev-python/pygsl 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
-dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
+dev-python/pygtkhelpers 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
@@ -8078,7 +8078,7 @@ dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6 0.6.7 0.7.6: Pure-Python MySQL Driver
 dev-python/pynacl 1.0.1 1.0.1-r1: Python binding to the Networking and Cryptography (NaCl) library
-dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
+dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
 dev-python/pyocr 0.4.1 0.4.2 0.4.4: An optical character recognition (OCR) tool wrapper for python
@@ -8092,7 +8092,7 @@ dev-python/pyopengl 3.0.2-r1 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
 dev-python/pyopenssl 0.15.1-r1 16.1.0 16.2.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
-dev-python/pyosd 0.2.14 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
+dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
 dev-python/pyparsing 1.5.6-r2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.1.0 2.1.5 2.1.8 2.1.9 2.1.10: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.3-r1 3.10.5 3.10.7: Python bindings for sys-block/parted
@@ -8503,7 +8503,7 @@ dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.2 0.7.3 0.7.5 0.7.7: Pretty-print tabular data
-dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
+dev-python/tagpy 2013.1: Python Bindings for TagLib
 dev-python/taskflow 1.30.0 2.6.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tdaemon 0.1.6: Test Daemon
 dev-python/telarchive 1.8.3: Script for automated searches of astronomical telescope archives
@@ -9773,7 +9773,7 @@ dev-tex/culmus-latex 0.7: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
 dev-tex/curve 1.16: LaTeX style for a CV (curriculum vitae) with flavour option
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
-dev-tex/dot2tex 2.8.7 2.8.7-r1 2.9.0: A Graphviz to LaTeX converter
+dev-tex/dot2tex 2.8.7 2.9.0: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
 dev-tex/dvi2gr 0.4: DVI to Grace translator
 dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
@@ -9823,7 +9823,7 @@ dev-tex/quotchap 0.9f: LaTeX package used to add quotes to chapters
 dev-tex/rail 1.2_p1: Offers syntax/railroad diagrams
 dev-tex/rcsinfo 1.9 1.11: A LaTeX module to acces RCS/CVS version info
 dev-tex/revtex 4 4.1_p2-r1: LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics
-dev-tex/rubber 1.1_p20090819 1.4: A LaTeX wrapper for automatically building documents
+dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
@@ -10008,7 +10008,7 @@ dev-util/coccinelle 1.0.5 1.0.6: Program matching and transformation engine
 dev-util/codeblocks 16.01 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3 0.13.0.4: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
-dev-util/comparator 2.5 2.9 2.10: ESR's utility for making fast comparisons among large source trees
+dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/complexity 1.5 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 0.16.1 0.17.1: Distributed C/C++ package manager
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
@@ -10297,13 +10297,13 @@ dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.14: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/bzr 2.5.1 2.5.1-r1 2.6.0 2.7.0: Bazaar is a next generation distributed version control system
-dev-vcs/bzr-explorer 1.3.0 1.3.0-r1: A high level interface to all commonly used Bazaar features
+dev-vcs/bzr-explorer 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
-dev-vcs/bzr-git 0.6.8 0.6.8-r1: Support for Git branches in Bazaar
-dev-vcs/bzr-gtk 0.103.0 0.104.0 0.104.0-r1: A GTK+ interfaces to most Bazaar operations
+dev-vcs/bzr-git 0.6.8-r1: Support for Git branches in Bazaar
+dev-vcs/bzr-gtk 0.104.0-r1: A GTK+ interfaces to most Bazaar operations
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to the functionality in git
-dev-vcs/bzr-xmloutput 0.8.8-r1 0.8.8-r2: A Bazaar plugin that provides a option to generate XML output forbuiltin commands.
-dev-vcs/bzrtools 2.4.1 2.5: bzrtools is a useful collection of utilities for bzr
+dev-vcs/bzr-xmloutput 0.8.8-r2: A Bazaar plugin that provides a option to generate XML output forbuiltin commands.
+dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.2-r2 0.3.2-r3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
@@ -10324,8 +10324,8 @@ dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, a
 dev-vcs/giggle 0.7-r1 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.7.3-r1 2.7.4 2.8.4 2.9.3 2.10.1 2.10.2 2.11.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419 6.20160923 6.20160923-r1 6.20161031: manage files with git, without checking their contents into git
-dev-vcs/git-bz 0.12.04.26 0.12.12.15 0.2015.09.08 9999: Bugzilla subcommand for git
-dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
+dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
+dev-vcs/git-bzr-ng 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
@@ -10352,13 +10352,13 @@ dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.32 0.34: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-fast-export 160914: mercurial to git converter using git-fast-import
 dev-vcs/hg-git 0.8.5: push to and pull from a Git repository using Mercurial
-dev-vcs/hgsubversion 1.4 1.8.5 1.8.6 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
+dev-vcs/hgsubversion 1.8.5 1.8.6 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.9: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.8.4 3.9.2 4.0 4.0.1 4.0.2 9999: Scalable distributed SCM
-dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
+dev-vcs/mercurial-server 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
@@ -10367,7 +10367,7 @@ dev-vcs/qbzr 0.23.0 0.23.1: Qt frontend for Bazaar
 dev-vcs/qct 1.7-r1: PyQt based commit tool for many VCSs
 dev-vcs/qgit 2.6: Qt GUI for git repositories
 dev-vcs/qsvn 0.8.3: GUI frontend to the Subversion revision system
-dev-vcs/rabbitvcs 0.15.2 0.15.3 0.16: Integrated version control support for your desktop
+dev-vcs/rabbitvcs 0.16: Integrated version control support for your desktop
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
@@ -11834,7 +11834,7 @@ kde-frameworks/kjobwidgets 5.26.0 5.29.0 5.30.0: Framework providing assorted wi
 kde-frameworks/kjs 5.26.0 5.29.0 5.30.0: ECMAScipt compatible parser and engine
 kde-frameworks/kjsembed 5.26.0 5.29.0 5.30.0: Framework binding JavaScript objects to QObjects
 kde-frameworks/kmediaplayer 5.26.0 5.29.0 5.30.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.26.0 5.29.0 5.30.0: Framework for downloading and sharing additional application data
+kde-frameworks/knewstuff 5.26.0 5.29.0 5.30.1: Framework for downloading and sharing additional application data
 kde-frameworks/knotifications 5.26.0 5.29.0 5.30.0: Framework for notifying the user of an event
 kde-frameworks/knotifyconfig 5.26.0 5.29.0 5.30.0: Framework for configuring desktop notifications
 kde-frameworks/kpackage 5.26.0 5.29.1 5.30.0: Framework to install and load packages of non binary content
@@ -12483,7 +12483,7 @@ media-gfx/gimp 2.8.14-r2 2.8.16 2.8.16-r1 2.8.18 2.9.2 2.9.2-r1 2.9.2-r2 2.9.4 2
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gmic 1.7.8 1.7.9: GREYC's Magic Image Converter
-media-gfx/gnofract4d 3.13 3.14 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.20.2 3.22.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.20.3 3.20.4 3.22.2 3.22.3: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
@@ -17525,7 +17525,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.11.1 2.4.13.1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.13.1 2.4.14.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
