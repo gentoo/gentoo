@@ -21,7 +21,7 @@ RDEPEND="
 	misc-haskell? ( dev-libs/gmp:0=
 			virtual/libffi:0=
 	)
-	mpi? ( virtual/mpi )
+	mpi? ( sys-cluster/openmpi )
 "
 DEPEND="${RDEPEND}
 	misc-haskell? ( dev-lang/ghc
@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 
 # todo: --enable-maxk=N configure option
 # todo: fix automagic mpi toggling
+
+pkg_setup() {
+	use openmp && ! tc-has-openmp && die "Please switch to an openmp compatible compiler"
+}
 
 src_prepare() {
 	default
