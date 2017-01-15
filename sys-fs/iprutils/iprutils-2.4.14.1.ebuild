@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools bash-completion-r1 eutils toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
@@ -27,12 +27,13 @@ DEPEND="
 	${IPRUTILS_DEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+		"${FILESDIR}"/${PN}-2.4.8-tinfo.patch
+		"${FILESDIR}"/${PN}-2.4.11.1-basename.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.4.8-tinfo.patch \
-		"${FILESDIR}"/${PN}-2.4.11.1-basename.patch \
-		"${FILESDIR}"/${PN}-2.4.11.1-migrate_cand.patch
+	default
 
 	eautoreconf
 }
