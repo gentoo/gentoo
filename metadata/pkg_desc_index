@@ -10159,7 +10159,7 @@ dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve com
 dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1 8.2: Netbeans IDE
-dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
+dev-util/ninja 1.6.0 1.7.1 1.7.2 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nvidia-cuda-sdk 6.5.14 6.5.19 7.5.18 8.0.44-r1: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44: NVIDIA CUDA Toolkit (compiler and friends)
@@ -18148,7 +18148,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6.1 4.7 4.7.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 55.0.2883.75 56.0.2924.21 56.0.2924.59 57.0.2950.4 57.0.2970.0: Open-source version of Google Chrome web browser
+www-client/chromium 55.0.2883.75 56.0.2924.21 56.0.2924.59 57.0.2970.0 57.0.2979.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
