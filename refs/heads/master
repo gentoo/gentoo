@@ -1,20 +1,12 @@
 certificate version 0.1
-pusher Manuel Rüger <mrueg@gentoo.org> 1484513566 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1484513567-84b29848243129b4d992
+pusher 0xA792A613 1484513896 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1484513896-74b0ca8a1d5e5a56d150
 
-88f66579f3a2886b28fe1f6ee2c3e4aa41755d66 85fb642eef48c3d02507beae4f0a321a2b3603bd refs/heads/master
+85fb642eef48c3d02507beae4f0a321a2b3603bd 319c64de3bb9779365427fa7b15ff55b8ae063c6 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQGlBAABCgCPFiEE9NJH0U9HSNCjLMHwdNn3TurGo7EFAlh74R5fFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEY0
-RDI0N0QxNEY0NzQ4RDBBMzJDQzFGMDc0RDlGNzRFRUFDNkEzQjERHG1ydWVnQGdl
-bnRvby5vcmcACgkQdNn3TurGo7G1hAgAy9FgLZHMZzBUuz+VvE0e6Rs/FdkNxPIC
-esa/jIuZFwZ5yCvIbSmu5s8uWhg2p3pHgjXh7kcPa1nvM2ltPK9U2tKILlcG1+ix
-pyXBZIMNE+o+3Ujc5EzsOtVGdhjPMQGbsexZOKUJJYoHejg/ECEWqrp0nFdhxUpL
-17GobqPztC2fLT6/3RHa6665ObURvNNd2+l5P1d1MxwKKznNyZst4j7GZspZO2gm
-NE6e+gw4RRhxI5RFVub3tggOA9jhZmCUnm1rKzgr5QX2Bm1tGlV2lB5Kwdv8t7Ft
-UxowPZ/f1dJubEkqz4NrLiIuQSaOIlf1QP+4RQFmbM5Qb63u7cLkGg==
-=Pwik
+iEYEABECAAYFAlh74mgACgkQVWmRsqeSphM1+QCfR1icbupOxJgpiKgHX34T3gEO
+Gt0An1thxoExf5JkF+ZSfLuMFgshC6zY
+=ul+w
 -----END PGP SIGNATURE-----
