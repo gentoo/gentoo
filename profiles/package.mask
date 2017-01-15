@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (15 Jan 2017)
+# Upstream dead a while ago. Sources are nowhere to be found.
+# Masked for removal in 30 days.
+net-misc/raccess
+
 # Ulrich Müller <ulm@gentoo.org> (13 Jan 2017)
 # No longer maintained as a separate package.
 # Use sci-mathematics/maxima with USE=emacs instead.
