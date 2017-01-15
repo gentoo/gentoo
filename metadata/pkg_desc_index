@@ -12421,7 +12421,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/autotrace 0.31.1-r7: A program for converting bitmaps to vector graphics
 media-gfx/aview 1.3.0_rc1-r1 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.15.5: free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts
-media-gfx/blender 2.72b-r4 2.78 2.78a: 3D Creation/Animation/Publishing System
+media-gfx/blender 2.72b-r4 2.78-r1 2.78a-r1: 3D Creation/Animation/Publishing System
 media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
 media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
@@ -12564,7 +12564,7 @@ media-gfx/opencsg 1.4.0: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
 media-gfx/openmesh 3.2 3.3 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
 media-gfx/openscad 2015.03-r1 2015.03_p2-r1: The Programmers Solid 3D CAD Modeller
-media-gfx/openvdb 3.2.0: Libs for the efficient manipulation of volumetric data
+media-gfx/openvdb 3.2.0 4.0.0: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6: Compress PNG files without affecting image quality
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.1 0.2.2: pdf2svg is based on poppler and cairo and can convert pdf to svg files
@@ -13216,7 +13216,7 @@ media-plugins/kodi-pvr-nextpvr 9999: Kodi's NextPVR client addon
 media-plugins/kodi-pvr-njoy 9999: Kodi's Njoy N7 client addon
 media-plugins/kodi-pvr-pctv 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 9999: Kodi's Stalker client addon
-media-plugins/kodi-pvr-vbox 3.5.0 9999: Kodi's VBox Home TV Gateway PVR client addon
+media-plugins/kodi-pvr-vbox 4.0.2 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 9999: Kodi's Windows Media Center client addon
@@ -13813,7 +13813,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts nec
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r1: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 14.1 15.2 16.0 16.1 17.0_rc2 9999: Kodi is a free and open source media-player and entertainment hub
+media-tv/kodi 14.1 15.2 16.0 16.1 17.0_rc3 9999: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
 media-tv/mythtv 0.27.6_p20160318 0.28: Homebrew PVR project
@@ -13970,7 +13970,7 @@ media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subview
 media-video/subcheck 0.78.2: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
 media-video/subdownloader 2.0.18-r1: GUI application for automatic downloading/uploading of subtitles for videofiles
-media-video/subliminal 2.0.3 2.0.5 9999: Python library to search and download subtitles
+media-video/subliminal 2.0.3 2.0.5-r1 9999: Python library to search and download subtitles
 media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.5.6 0.6.4: Text-based subtitles editor
@@ -15892,7 +15892,7 @@ sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calcula
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
 sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
-sci-calculators/tilp2 1.17-r1: Communication program for Texas Instruments calculators
+sci-calculators/tilp2 1.17-r1 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
@@ -16120,7 +16120,7 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/opencpn-plugins-meta 4.0.0 4.2.0-r1: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r1 2.18.2-r2 2.18.2-r3: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0 2.14.5-r1 2.18.2-r1 2.18.2-r2 2.18.2-r3 2.18.3: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3 1.7.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
