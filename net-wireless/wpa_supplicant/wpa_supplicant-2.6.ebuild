@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ~ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 libressl p2p ps3 qt4 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="fasteap? ( !gnutls !ssl ) smartcard? ( ssl ) ?? ( qt4 qt5 )"
 
