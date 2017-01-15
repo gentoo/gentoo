@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml"
 inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1
 
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
-HOMEPAGE="http://developer.linuxmint.com/"
+HOMEPAGE="http://cinnamon.linuxmint.com/"
 
 MY_PV="${PV/_p/-UP}"
 MY_P="${PN}-${MY_PV}"
@@ -93,19 +93,18 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-accessibility/caribou-0.3
 
 	x11-misc/xdg-utils
-	x11-libs/xapps
 
-	dev-python/dbus-python[python_targets_python2_7]
-	dev-python/gconf-python:2[python_targets_python2_7]
-	dev-python/lxml[python_targets_python2_7]
-	dev-python/pexpect[python_targets_python2_7]
-	dev-python/pycairo[python_targets_python2_7]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyinotify[python_targets_python2_7]
-	dev-python/pypam[python_targets_python2_7]
-	dev-python/pillow[python_targets_python2_7]
+	$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/gconf-python:2[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pexpect[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pycairo[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pypam[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]' 'python2*')
 
-	x11-themes/gnome-themes-standard
+	x11-themes/gnome-themes-standard[gtk]
 	x11-themes/adwaita-icon-theme
 
 	>=gnome-extra/nemo-2.4
@@ -123,7 +122,7 @@ RDEPEND="${COMMON_DEPEND}
 #bluetooth? ( net-wireless/cinnamon-bluetooth )
 
 DEPEND="${COMMON_DEPEND}
-	dev-python/polib[python_targets_python2_7]
+	$(python_gen_cond_dep 'dev-python/polib[${PYTHON_USEDEP}]' 'python2*')
 	dev-util/gtk-doc
 	>=dev-util/intltool-0.4
 	>=sys-devel/gettext-0.17
@@ -191,6 +190,7 @@ src_configure() {
 
 	gnome2_src_configure \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--disable-rpath \
 		--disable-jhbuild-wrapper-script \
 		$(use_enable networkmanager) \
 		--with-ca-certificates="${EPREFIX}/etc/ssl/certs/ca-certificates.crt" \

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ REQUIRED_USE="
 	|| ( $(python_gen_useflags 'python3*') )
 "
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2
@@ -94,17 +94,17 @@ RDEPEND="${COMMON_DEPEND}
 
 	x11-misc/xdg-utils
 
-	dev-python/dbus-python[python_targets_python2_7]
-	dev-python/gconf-python:2[python_targets_python2_7]
-	dev-python/lxml[python_targets_python2_7]
-	dev-python/pexpect[python_targets_python2_7]
-	dev-python/pycairo[python_targets_python2_7]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyinotify[python_targets_python2_7]
-	dev-python/pypam[python_targets_python2_7]
-	dev-python/pillow[python_targets_python2_7]
+	$(python_gen_cond_dep 'dev-python/dbus-python[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/gconf-python:2[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pexpect[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pycairo[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pypam[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]' 'python2*')
 
-	x11-themes/gnome-themes-standard[gtk]
+	x11-themes/gnome-themes-standard
 	x11-themes/adwaita-icon-theme
 
 	>=gnome-extra/nemo-2.4
@@ -122,7 +122,7 @@ RDEPEND="${COMMON_DEPEND}
 #bluetooth? ( net-wireless/cinnamon-bluetooth )
 
 DEPEND="${COMMON_DEPEND}
-	dev-python/polib[python_targets_python2_7]
+	$(python_gen_cond_dep 'dev-python/polib[${PYTHON_USEDEP}]' 'python2*')
 	dev-util/gtk-doc
 	>=dev-util/intltool-0.4
 	>=sys-devel/gettext-0.17

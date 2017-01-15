@@ -2,30 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils eutils toolchain-funcs
+inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Library for arbitrary precision integer arithmetic (fork of gmp)"
 HOMEPAGE="http://www.mpir.org/"
-SRC_URI="http://www.mpir.org/${P}.tar.lzma"
+SRC_URI="http://www.mpir.org/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
-SLOT="0/11"
-KEYWORDS="amd64 ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+SLOT="0/16"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection static-libs"
 
-DEPEND="x86? ( dev-lang/yasm )
-	amd64? ( dev-lang/yasm )"
+DEPEND="
+	x86? ( dev-lang/yasm )
+	amd64? ( dev-lang/yasm )
+"
 RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ABI-multilib.patch
+)
 
 src_prepare() {
 	tc-export CC
-	epatch \
-		"${FILESDIR}"/${PN}-2.6.0-yasm.patch \
-		"${FILESDIR}"/${PN}-1.3.0-ABI-multilib.patch \
-		"${FILESDIR}"/${PN}-2.5.1-automake-1.12.patch \
-		"${FILESDIR}"/${PN}-2.6.0-gcc48.patch
+
+	default
 
 	# In the same way there was QA regarding executable stacks
 	# with GMP we have some here as well. We cannot apply the
@@ -57,8 +60,9 @@ src_configure() {
 	# Place mpir in profiles/arch/$arch/package.use.mask
 	# when making it available on $arch.
 	myeconfargs+=(
+		--with-system-yasm
 		$(use_enable cxx)
 		$(use_enable cpudetection fat)
 	)
-	autotools-utils_src_configure
+	econf ${myeconfargs[@]}
 }
