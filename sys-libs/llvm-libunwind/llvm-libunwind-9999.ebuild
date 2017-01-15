@@ -21,9 +21,8 @@ KEYWORDS=""
 IUSE="debug +static-libs"
 
 RDEPEND="!sys-libs/libunwind"
-# llvm-config and cmake files needed to get proper flags
-# (3.9.0 needed because cmake file install path changed)
-DEPEND=">=sys-devel/llvm-3.9.0[${MULTILIB_USEDEP}]"
+# LLVM 4 required for llvm-config --cmakedir
+DEPEND=">=sys-devel/llvm-4"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
