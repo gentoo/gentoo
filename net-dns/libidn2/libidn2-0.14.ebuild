@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
-HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2"
+HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/jas/libidn2"
 SRC_URI="
 	mirror://gnu-alpha/libidn/${P}.tar.gz
 "
