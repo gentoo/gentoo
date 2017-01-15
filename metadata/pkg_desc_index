@@ -4708,7 +4708,7 @@ dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.6.5 0.6.6 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
-dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
+dev-libs/libebml 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
@@ -17674,7 +17674,7 @@ sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries
 sys-libs/libstdc++-v3-bin 3.3.6: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
-sys-libs/libunwind 0.99-r1 1.0.1 1.0.1-r1 1.1 1.1-r1 1.2_rc1: Portable and efficient API to determine the call-chain of a program
+sys-libs/libunwind 1.1-r1 1.2_rc1: Portable and efficient API to determine the call-chain of a program
 sys-libs/libutempter 1.1.5 1.1.5-r1 1.1.6 1.1.6-r1 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info, which need root access
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
