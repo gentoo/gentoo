@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit git-r3 eutils cmake-utils fcaps
+inherit git-r3 eutils cmake-utils
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="http://swaywm.org/"
@@ -29,7 +29,7 @@ RDEPEND="=dev-libs/wlc-9999[systemd=]
 		gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
+		virtual/pkgconfig
 		app-text/asciidoc"
 
 src_prepare() {
@@ -59,10 +59,13 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-FILECAPS=( -M 4711 cap_sys_ptrace,cap_sys_tty_config usr/bin/sway )
+src_install() {
+	cmake-utils_src_install
+
+	use !systemd && fperms u+s /usr/bin/sway
+}
 
 pkg_postinst() {
-	fcaps_pkg_postinst
 	if use swaygrab
 	then
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
