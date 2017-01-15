@@ -3,6 +3,10 @@
 # $Id$
 
 # Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# unkeyworded rev deps
+dev-games/openscenegraph gdal
+
+# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
 # masked rev deps
 media-libs/libsdl2 fusionsound
 
