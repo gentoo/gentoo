@@ -6,14 +6,16 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='xml(+)'
+COMMIT_ID='dd74383d1cba82829ce720f2e439a65d13ffe7ef'
 
-inherit distutils-r1
+inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.python.org/pypi/subliminal"
 SRC_URI="
-	https://github.com/Diaoul/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-fix-tests.patch"
+	https://github.com/Diaoul/${PN}/archive/${COMMIT_ID}.tar.gz -> ${PF}.tar.gz
+	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -40,6 +42,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
+		app-arch/unzip
 		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -49,10 +52,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# Tests require network.
-RESTRICT=test
+PATCHES=( "${FILESDIR}/${P}-add-missing-comma.patch" )
 
-PATCHES=( "${DISTDIR}/${P}-fix-tests.patch" )
+S="${WORKDIR}/${PF}"
 
 python_prepare_all() {
 	# Disable code checkers as they require unavailable dependencies.
@@ -61,6 +63,11 @@ python_prepare_all() {
 
 	# Disable unconditional dependency on dev-python/pytest-runner.
 	sed -i -e "s|'pytest-runner'||g" setup.py || die
+
+	if use test; then
+		mkdir -p tests/data/mkv || die
+		ln -s "${WORKDIR}"/test*.mkv tests/data/mkv/ || die
+	fi
 
 	distutils-r1_python_prepare_all
 }

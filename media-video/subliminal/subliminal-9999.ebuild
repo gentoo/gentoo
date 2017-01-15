@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,6 +13,7 @@ DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.python.org/pypi/subliminal"
 EGIT_REPO_URI=( {https,git}://github.com/Diaoul/${PN}.git )
 EGIT_BRANCH="develop"
+SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="MIT"
 SLOT="0"
@@ -39,6 +40,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
+		app-arch/unzip
 		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -48,8 +50,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# Tests require network.
-RESTRICT=test
+src_unpack() {
+	default_src_unpack
+	git-r3_src_unpack
+}
 
 python_prepare_all() {
 	# Disable code checkers as they require unavailable dependencies.
@@ -58,6 +62,11 @@ python_prepare_all() {
 
 	# Disable unconditional dependency on dev-python/pytest-runner.
 	sed -i -e "s|'pytest-runner'||g" setup.py || die
+
+	if use test; then
+		mkdir -p tests/data/mkv || die
+		ln -s "${WORKDIR}"/test*.mkv tests/data/mkv/ || die
+	fi
 
 	distutils-r1_python_prepare_all
 }

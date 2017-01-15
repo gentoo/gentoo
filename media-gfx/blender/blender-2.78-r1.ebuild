@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+boost +bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
-	openvdb-compression player sdl sndfile test tiff valgrind"
+	player sdl sndfile test tiff valgrind"
 
 # OpenCL and nVidia performance is rubbish with Blender
 # If you have nVidia, use CUDA.
@@ -43,7 +43,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # Since not using OpenCL with nVidia, depend on ATI binary
 # blobs as Cycles with OpenCL does not work with any open
 # source drivers.
-COMMON_DEPEND="
+RDEPEND="${PYTHON_DEPS}
+	dev-libs/lzo:2
+	>=dev-python/numpy-1.10.1[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	media-libs/freetype
+	media-libs/glew:*
+	media-libs/libpng:0=
+	media-libs/libsamplerate
+	sys-libs/zlib
+	virtual/glu
+	virtual/jpeg:0=
+	virtual/libintl
+	virtual/opengl
 	boost? ( >=dev-libs/boost-1.62:=[nls?,threads(+)] )
 	collada? ( >=media-libs/opencollada-1.6.18:= )
 	colorio? ( >=media-libs/opencolorio-1.0.9-r2 )
@@ -74,41 +86,26 @@ COMMON_DEPEND="
 	)
 	opensubdiv? ( media-libs/opensubdiv[cuda=,opencl=] )
 	openvdb? (
-		media-gfx/openvdb[${PYTHON_USEDEP},openvdb-compression=]
+		media-gfx/openvdb[${PYTHON_USEDEP},abi3-compat(+),openvdb-compression(+)]
 		dev-cpp/tbb
+		>=dev-libs/c-blosc-1.5.2
 	)
-	openvdb-compression? ( >=dev-libs/c-blosc-1.5.2 )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tiff? ( media-libs/tiff:0 )
 	valgrind? ( dev-util/valgrind )"
 
-RDEPEND="${PYTHON_DEPS}
-	dev-libs/lzo:2
-	>=dev-python/numpy-1.10.1[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	media-libs/freetype
-	media-libs/glew:*
-	media-libs/libpng:0=
-	media-libs/libsamplerate
-	sys-libs/zlib
-	virtual/glu
-	virtual/jpeg:0=
-	virtual/libintl
-	virtual/opengl
-	${COMMON_DEPEND}"
-
 DEPEND="${RDEPEND}
 	>=dev-cpp/eigen-3.2.8:3
+	nls? ( sys-devel/gettext )
 	doc? (
 		app-doc/doxygen[-nodot(-),dot(+),latex]
 		dev-python/sphinx[latex]
-	)
-	nls? ( sys-devel/gettext )
-	${COMMON_DEPEND}"
+	)"
 
 PATCHES=( "${FILESDIR}"/${P}-C++11-build-fix.patch
-	  "${FILESDIR}"/${PN}-fix-install-rules.patch )
+	  "${FILESDIR}"/${PN}-fix-install-rules.patch
+	  "${FILESDIR}"/${P}-eigen-3.3.1.patch )
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -149,6 +146,7 @@ src_configure() {
 	# shadows, see bug #276338 for reference
 	append-flags -funsigned-char
 	append-lfs-flags
+	append-cppflags -DOPENVDB_3_ABI_COMPATIBLE
 
 	local mycmakeargs=(
 		-DPYTHON_VERSION="${EPYTHON/python/}"
@@ -195,7 +193,7 @@ src_configure() {
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)
-		-DWITH_OPENVDB_BLOSC=$(usex openvdb-compression)
+		-DWITH_OPENVDB_BLOSC=$(usex openvdb)
 		-DWITH_PLAYER=$(usex player)
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
