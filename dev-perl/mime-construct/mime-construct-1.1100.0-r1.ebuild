@@ -17,7 +17,10 @@ IUSE=""
 
 RDEPEND="
 	virtual/perl-MIME-Base64
+	dev-perl/Email-Date-Format
 	dev-perl/MIME-Types
 	dev-perl/Proc-WaitStat
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-add-date-header.patch" )
