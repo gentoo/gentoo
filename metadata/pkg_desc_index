@@ -1286,7 +1286,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.23.0 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.6 1.13.0_rc6 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.6 1.13.0_rc6 1.13.0_rc7 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.9.0 1.10.0_rc1 1.10.0_rc2: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
@@ -4637,7 +4637,7 @@ dev-libs/hiredis 0.11.0-r1 0.13.1 0.13.3: Minimalistic C client library for the 
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 55.1 57.1 58.1-r1 58.2: International Components for Unicode
+dev-libs/icu 58.1-r1 58.2: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
