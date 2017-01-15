@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,6 +20,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+
+DEPEND+=" =dev-util/ragel-6*"
 
 ruby_add_bdepend "dev-ruby/rake"
 
