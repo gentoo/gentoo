@@ -1,11 +1,16 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -25,6 +25,8 @@
-   AC_DEFINE(NO_CURSES, 1, [Define if you don't have the curses libraries available.])
-   CURSES_OBJ=)
- 
-+AC_SEARCH_LIBS(raw, [ncurses curses cursesX tinfo])
-+
- AC_CHECK_LIB(ncurses, use_default_colors, 
-   AC_DEFINE(HAVE_USE_DEFAULT_COLORS, 1, [Define this if your curses library has the use_default_colors() command.]))
+@@ -101,8 +101,11 @@
+   # (On Solaris 11.3, ncurses builds and links for us, but curses does not.)
+   [AC_SEARCH_LIBS(
+     [initscr], [ncurses curses],
+-    [AC_DEFINE([HAVE_CURSES], [1], [Define if a curses library available])],
+-    [with_ncurses=no])
++	AC_SEARCH_LIBS(
++		[raw], [ncurses curses cursesX tinfo],
++    	[AC_DEFINE([HAVE_CURSES], [1], [Define if a curses library available])],
++	    [with_ncurses=no]),
++	[with_ncurses=no])
+ ])
+ AM_CONDITIONAL([WITH_CURSES], [test "x$with_ncurses" = xyes])
  
