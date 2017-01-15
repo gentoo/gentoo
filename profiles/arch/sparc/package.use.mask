@@ -2,6 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# unkeyworded rev deps
+dev-games/openscenegraph gdal las
+dev-libs/boost mpi
+
+# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# masked rev deps
+media-libs/libsdl2 fusionsound
+
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
 dev-libs/hiredis test
