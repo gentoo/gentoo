@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=a connection forwarder that converts Unix sockets into TCP sockets
+EAPI=6
+HOMEPAGE=http://gnu.gds.tuwien.ac.at/directory/all/unix2tcp.html
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/unix2tcp-0.8.2.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=3804fa95fadcc2553a4e738be75beb31

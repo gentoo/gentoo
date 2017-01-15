@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Console based chess interface
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/chess/chess.html
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://gnu/chess/gnuchess-6.2.2.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=d763b8e14b5b504eca95882a5a4545af
