@@ -12,7 +12,7 @@ SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/14"
-KEYWORDS="amd64 arm hppa ~mips ~ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="ipv6 kernel_linux static-libs"
 
 RDEPEND=""
