@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils multibuild multilib qmake-utils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
-SLOT="6"
+SLOT="6/1.3"
 IUSE="designer doc examples mathml opengl qt4 qt5 static-libs svg"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
@@ -128,6 +128,7 @@ src_prepare() {
 			;;
 		esac
 		epatch "${PATCHES[@]}"
+		eapply_user
 	}
 
 	multibuild_foreach_variant run_in_build_dir preparation
@@ -144,7 +145,7 @@ src_configure() {
 				;;
 		esac
 	}
-	multibuild_parallel_foreach_variant run_in_build_dir configuration
+	multibuild_foreach_variant run_in_build_dir configuration
 }
 
 src_compile() {
@@ -178,11 +179,19 @@ src_install () {
 
 	if use mathml; then
 		sed \
-			-e "s: -L${WORKDIR}.* -lqwt6: -lqwt6:g" \
+			-e "s: -L\"${WORKDIR}\".* -lqwt6: -lqwt6:g" \
 			-i "${ED}"/usr/$(get_libdir)/pkgconfig/qwtmathml.pc || die
 	fi
 
-	use doc && dohtml -r doc/html/*
+	if use doc; then
+		dohtml -r doc/html/*
+	else
+		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
+	fi
+
+	mkdir -p "${ED}"/usr/share/man/ || die
+	mv "${ED}"/usr/share/doc/${PF}/man/man3 "${ED}"/usr/share/man/ && \
+		rmdir "${ED}"/usr/share/doc/${PF}/man || die
 
 	if use examples; then
 		# don't build examples - fix the qt files to build once installed
