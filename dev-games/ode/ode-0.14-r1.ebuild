@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://ode.org/"
 SRC_URI="https://bitbucket.org/odedevs/ode/downloads/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1+ BSD )"
-SLOT="0"
+SLOT="0/6"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
