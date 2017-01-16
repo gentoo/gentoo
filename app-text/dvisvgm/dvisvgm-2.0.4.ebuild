@@ -4,10 +4,10 @@
 
 EAPI=5
 
-inherit toolchain-funcs flag-o-matic autotools
+inherit eutils toolchain-funcs flag-o-matic autotools
 
 DESCRIPTION="Converts DVI files to SVG"
-HOMEPAGE="http://dvisvgm.sourceforge.net/"
+HOMEPAGE="http://dvisvgm.bplaced.net/"
 SRC_URI="https://github.com/mgieseki/dvisvgm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-c99-compile.patch
 	eautoreconf
 }
 
