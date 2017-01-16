@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 #IUSE="freeipmi openipmi status"
 IUSE="libressl openipmi static"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ppc x86"
+KEYWORDS="amd64 hppa ~ia64 ppc x86"
 LICENSE="BSD"
 
 RDEPEND="

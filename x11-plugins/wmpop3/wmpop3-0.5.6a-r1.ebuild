@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
+inherit eutils toolchain-funcs
 
 DESCRIPTION="dockapp for checking pop3 accounts"
 HOMEPAGE="http://www.cs.mun.ca/~scotth/"
@@ -20,7 +21,8 @@ RDEPEND="${DEPEND}"
 PATCHES=( ${FILESDIR}/${P}-list.patch )
 
 src_prepare() {
-	sed -e "s:-O2:${CFLAGS}:" \
+	sed -e "s:cc :$(tc-getCC) :" \
+		-e "s:-O2:${CFLAGS}:" \
 		-e "s:-o wmpop3:${LDFLAGS} -o wmpop3:" \
 		-i ${PN}/Makefile || die
 
