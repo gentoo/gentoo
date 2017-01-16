@@ -4839,7 +4839,7 @@ dev-libs/libsqlora8 2.3.3-r1: Simple C-library to access Oracle databases via th
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
-dev-libs/libtasn1 4.5 4.8 4.9-r1: ASN.1 library
+dev-libs/libtasn1 4.5 4.8 4.9-r1 4.10: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.17 0.18: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
@@ -15264,7 +15264,7 @@ net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2 1.7.0: Remote desktop viewer display system
-net-misc/tinc 1.0.29 1.0.30 1.1_pre14-r3: tinc is an easy to configure VPN implementation
+net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
@@ -18178,7 +18178,7 @@ www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a J
 www-client/pybugz 0.12.1 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 2.0.1 2.0.2: A cross-platform web browser using QtWebEngine
-www-client/qutebrowser 0.8.4 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
+www-client/qutebrowser 0.8.4 0.9.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.46-r1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.46: Mozilla Application Suite - web browser, email, HTML editor, IRC
@@ -19174,7 +19174,7 @@ x11-themes/golden-xcursors 0.8: A high quality set of Xfree 4.3.0 animated mouse
 x11-themes/greybird 1.2.2 1.3.4 1.5.3 3.18.0 3.20.1-r2 9999: The default theme from Xubuntu
 x11-themes/gtk-chtheme 0.3.1-r2: GTK-2.0 Theme Switcher
 x11-themes/gtk-engines 2.20.2-r1 2.20.2-r2: GTK+2 standard engines and themes
-x11-themes/gtk-engines-adwaita 3.20.2: Adwaita GTK+2 theme engine
+x11-themes/gtk-engines-adwaita 3.20.2 3.22.2: Adwaita GTK+2 theme engine
 x11-themes/gtk-engines-aurora 1.5.1: Aurora GTK+ 2.x Theme Engine
 x11-themes/gtk-engines-candido 0.9.1: Candido GTK+ 2.x Theme Engine
 x11-themes/gtk-engines-experience 0.10.4 0.10.5: GTK+ Experience Theme Engine

@@ -2013,6 +2013,7 @@ dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libsolv:rpm - Enable support for RPM files
 dev-libs/libsqlora8:orathreads - Use Oracle threads
+dev-libs/libtasn1:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
 dev-libs/libucl:regex - Enable regex checking for schema
 dev-libs/libucl:signatures - Enable signatures check
@@ -8268,6 +8269,7 @@ x11-libs/cairo:opengl - Use Mesa backend for acceleration
 x11-libs/cairo:valgrind - Built-in support to mark memory regions
 x11-libs/cairo:xlib-xcb - Use XCB renderer backend for acceleration over xlib. Enabling this may solve or introduce display corruption problems.
 x11-libs/fltk:games - Builds and installs some extra games
+x11-libs/gdk-pixbuf:X - Build and install the legacy gdk_pixbuf_xlib-2.0 library
 x11-libs/glamor:gles - Build glamor based on gles2
 x11-libs/gtk+:broadway - Enable the GDK Broadway backend.
 x11-libs/gtk+:cloudprint - Enable printing via Google Cloud Print.
