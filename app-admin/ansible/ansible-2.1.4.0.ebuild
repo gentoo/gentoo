@@ -10,9 +10,7 @@ inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-MY_V="$(get_version_component_range 1-4)"
-MY_PV="${MY_V}-0.3.rc3"
-SRC_URI="http://releases.ansible.com/${PN}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="http://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -44,8 +42,6 @@ DEPEND="
 		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
-
-S=${WORKDIR}/${PN}-${MY_V}
 
 # not included in release tarball
 RESTRICT="test"
