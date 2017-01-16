@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
+# Requires yet unavailable >=media-video/ffmpeg-3.3.
+>=media-video/mpv-0.23.0 cuda
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # x11-drivers/nvidia-drivers is available on x86.
 media-video/mpv -cuda
 
