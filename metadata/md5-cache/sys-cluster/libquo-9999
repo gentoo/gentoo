@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare setup unpack
+DEPEND=virtual/mpi[fortran?] sys-process/numactl sys-apps/hwloc[numa,xml] fortran? ( virtual/fortran ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=run-time tuning of process binding policies made easy
+EAPI=6
+HOMEPAGE=http://lanl.github.io/libquo/
+IUSE=fortran static-libs test
+LICENSE=BSD
+RDEPEND=virtual/mpi[fortran?] sys-process/numactl sys-apps/hwloc[numa,xml] fortran? ( virtual/fortran )
+SLOT=0
+_eclass_exported_funcs=pkg_setup:fortran-2 src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	git-r3	e928b84a9f6f1d9076d1d27687876dc6	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=3d0d46b488fc03850061fd7aaa2b9d17
