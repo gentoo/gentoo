@@ -1,0 +1,21 @@
+From 7cab298aa9ea095237c1ab288496d6deb05c3f67 Mon Sep 17 00:00:00 2001
+From: Dave Airlie <airlied@redhat.com>
+Date: Wed, 12 Nov 2014 14:17:35 +1000
+Subject: drop miwideline.h include
+
+
+diff --git a/src/leo_accel.c b/src/leo_accel.c
+index 2ecb759..3981f61 100644
+--- a/src/leo_accel.c
++++ b/src/leo_accel.c
+@@ -34,7 +34,6 @@
+ #include	<X11/fonts/fontstruct.h>
+ #include	"dixfontstr.h"
+ #include	"fb.h"
+-#include	"miwideline.h"
+ #include	"mi.h"
+ 
+ #include	"leo.h"
+-- 
+cgit v0.10.2
+
