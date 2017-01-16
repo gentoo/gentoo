@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
+  <maintainer type="project">
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
-</maintainer>
+  </maintainer>
+  <use>
+    <flag name="include-loaders" restrict="&gt;=x11-libs/gdk-pixbuf-2.36.0-r1">
+    Build loaders into gdk-pixbuf</flag>
+  </use>
 </pkgmetadata>
