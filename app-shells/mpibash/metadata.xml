@@ -10,6 +10,6 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">losalamos/MPI-Bash</remote-id>
+    <remote-id type="github">lanl/MPI-Bash</remote-id>
   </upstream>
 </pkgmetadata>
