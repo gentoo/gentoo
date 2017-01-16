@@ -5,4 +5,9 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
+	<use>
+		<flag name="valgrind">
+			Enable usage of <pkg>dev-util/valgrind</pkg> in debug
+		</flag>
+	</use>
 </pkgmetadata>
