@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,20 +11,18 @@ DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 else
 	QMMP_DEV_BRANCH="1.1"
-	SRC_URI=""
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
-	KEYWORDS=""
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
-IUSE="analyzer aac +alsa +dbus bs2b cdda cover crossfade cue curl enca ffmpeg flac jack game kde ladspa
-libsamplerate lyrics +mad midi mms modplug mplayer mpris musepack notifier opus oss
-projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
+IUSE="analyzer aac +alsa bs2b cdda cover crossfade cue curl enca ffmpeg flac jack game kde ladspa
+lyrics +mad midi mms modplug mplayer mpris musepack notifier opus oss projectm
+pulseaudio qsui scrobbler sndfile soxr stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
 	dev-qt/qtcore:5
@@ -38,13 +36,11 @@ RDEPEND="media-libs/taglib
 	cdda? ( dev-libs/libcdio-paranoia )
 	cue? ( media-libs/libcue )
 	curl? ( net-misc/curl )
-	dbus? ( sys-apps/dbus )
 	aac? ( media-libs/faad2 )
 	enca? ( app-i18n/enca )
 	flac? ( media-libs/flac )
 	game? ( media-libs/game-music-emu )
 	ladspa? ( media-libs/ladspa-cmt )
-	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
@@ -65,6 +61,7 @@ RDEPEND="media-libs/taglib
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
+	soxr? ( media-libs/soxr )
 	udisks? ( sys-fs/udisks:2 )"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
@@ -72,8 +69,6 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog README"
 
 CMAKE_IN_SOURCE_BUILD="1"
-
-REQUIRED_USE="kde? ( dbus ) "
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia; then
@@ -87,46 +82,45 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-DUSE_alsa="$(usex alsa)"
-		-DUSE_aac="$(usex aac)"
-		-DUSE_analyzer="$(usex analyzer)"
-		-DUSE_bs2b="$(usex bs2b)"
+		-DUSE_ALSA="$(usex alsa)"
+		-DUSE_AAC="$(usex aac)"
+		-DUSE_ANALYZER="$(usex analyzer)"
+		-DUSE_BS2B="$(usex bs2b)"
 		-DUSE_CDA="$(usex cdda)"
-		-DUSE_crossfade="$(usex crossfade)"
-		-DUSE_cover="$(usex cover)"
-		-DUSE_cue="$(usex cue)"
-		-DUSE_curl="$(usex curl)"
-		-DUSE_dbus="$(usex dbus)"
-		-DUSE_enca="$(usex enca)"
-		-DUSE_ffmpeg="$(usex ffmpeg)"
-		-DUSE_flac="$(usex flac)"
+		-DUSE_CROSSFADE="$(usex crossfade)"
+		-DUSE_COVER="$(usex cover)"
+		-DUSE_CUE="$(usex cue)"
+		-DUSE_CURL="$(usex curl)"
+		-DUSE_ENCA="$(usex enca)"
+		-DUSE_FFMPEG="$(usex ffmpeg)"
+		-DUSE_FLAC="$(usex flac)"
 		-DUSE_GME="$(usex game)"
 		-DUSE_HAL=OFF
-		-DUSE_jack="$(usex jack)"
+		-DUSE_JACK="$(usex jack)"
 		-DUSE_KDENOTIFY="$(usex kde)"
-		-DUSE_ladspa="$(usex ladspa)"
-		-DUSE_lyrics="$(usex lyrics)"
-		-DUSE_mad="$(usex mad)"
-		-DUSE_MIDI_WILDMIDI="$(usex midi)"
-		-DUSE_mplayer="$(usex mplayer)"
-		-DUSE_mms="$(usex mms)"
-		-DUSE_modplug="$(usex modplug)"
-		-DUSE_mpris="$(usex mpris)"
+		-DUSE_LADSPA="$(usex ladspa)"
+		-DUSE_LYRICS="$(usex lyrics)"
+		-DUSE_MAD="$(usex mad)"
+		-DUSE_MIDI="$(usex midi)"
+		-DUSE_MPLAYER="$(usex mplayer)"
+		-DUSE_MMS="$(usex mms)"
+		-DUSE_MODPLUG="$(usex modplug)"
+		-DUSE_MPRIS="$(usex mpris)"
 		-DUSE_MPC="$(usex musepack)"
-		-DUSE_notifier="$(usex notifier)"
-		-DUSE_opus="$(usex opus)"
-		-DUSE_oss="$(usex oss)"
-		-DUSE_projectm="$(usex projectm)"
+		-DUSE_NOTIFIER="$(usex notifier)"
+		-DUSE_OPUS="$(usex opus)"
+		-DUSE_OSS="$(usex oss)"
+		-DUSE_PROJECTM="$(usex projectm)"
 		-DUSE_PULSE="$(usex pulseaudio)"
-		-DUSE_qsui="$(usex qsui)"
-		-DUSE_scrobbler="$(usex scrobbler)"
-		-DUSE_sndfile="$(usex sndfile)"
-		-DUSE_stereo="$(usex stereo)"
+		-DUSE_QSUI="$(usex qsui)"
+		-DUSE_SCROBBLER="$(usex scrobbler)"
+		-DUSE_SNDFILE="$(usex sndfile)"
+		-DUSE_SOXR="$(usex soxr)"
+		-DUSE_STEREO="$(usex stereo)"
 		-DUSE_STATICON="$(usex tray)"
 		-DUSE_UDISKS2="$(usex udisks)"
-		-DUSE_SRC="$(usex libsamplerate)"
-		-DUSE_vorbis="$(usex vorbis)"
-		-DUSE_wavpack="$(usex wavpack)"
+		-DUSE_VORBIS="$(usex vorbis)"
+		-DUSE_WAVPACK="$(usex wavpack)"
 	)
 
 	cmake-utils_src_configure

@@ -189,7 +189,7 @@ multilib_src_configure() {
 			$(multilib_native_enable concheck) \
 			--with-crypto=$(usex nss nss gnutls) \
 			--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit no)) \
-			--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex consolekit consolekit no)) \
+			--with-suspend-resume=$(multilib_native_usex systemd systemd consolekit) \
 			$(multilib_native_use_with audit libaudit) \
 			$(multilib_native_use_enable bluetooth bluez5-dun) \
 			$(multilib_native_use_enable introspection) \
