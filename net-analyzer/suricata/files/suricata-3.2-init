@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,6 +27,7 @@ fi
 SURICATAUSER=${SURICATAUSER:-${SURICATA_USER}}
 SURICATAGROUP=${SURICATAGROUP:-${SURICATA_GROUP}}
 [ -e ${SURICATACONF} ] && SURICATAOPTS="-c ${SURICATACONF} ${SURICATAOPTS}"
+[[ -z "${SURICATA_MAX_WAIT_ON_STOP// }" ]] || SURICATA_RETRY="--retry ${SURICATA_MAX_WAIT_ON_STOP}"
 
 description="Suricata IDS/IPS"
 extra_commands="checkconfig dump"
@@ -111,37 +112,8 @@ start() {
 
 stop() {
 	ebegin "Stopping ${SVCNAME}"
-	initpidinfo
-	start-stop-daemon --stop --quiet --pidfile ${SURICATAPID} >/dev/null 2>&1
-	einfo "Waiting for ${SVCNAME} to shut down. This can take a while..."
-	# max wait: 5 minutes as it can take quite a while on some systems with heavy traffic
-	local cnt=300
-	while [ -e ${SURICATAPID} ] && [ $cnt -gt 0 ]; do
-	    cnt=$(expr $cnt - 1)
-	    sleep 1
-	    echo -ne "$cnt seconds left before we give up checking the PID file...\r"
-	done
-	# under certain conditions suricata can be pretty slow and the PID can persist long after the pidfile has been removed
-	# max wait for process to terminate: 1 minute
-	if [ ${#SUR_PID} -gt 0 ]; then
-	    cnt=60
-	    SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
-	    if [ $((SUR_PID_CHECK)) -ne 0 ]; then
-		einfo "The PID file ${SURICATAPID} is gone but the ${SVCNAME} PID ${SUR_PID} is still running."
-		einfo "Waiting for process to shut down on its own. This can take a while..."
-	    fi
-	    while [ $((SUR_PID_CHECK)) -ne 0 ]; do
-		cnt=$(expr $cnt - 1)
-		if [ $cnt -lt 1 ] ; then
-		    eend 1 "Failed. You might need to kill PID ${SUR_PID} or find out why it can't be stopped."
-		    break
-		fi
-		sleep 1
-		echo -ne "$cnt seconds left before we give up checking PID ${SUR_PID}...\r"
-		SUR_PID_CHECK="$(ps -eo pid | grep -c ${SUR_PID})"
-	    done
-	fi
-	eend 0
+	start-stop-daemon --stop ${SURICATA_RETRY} --quiet --pidfile ${SURICATAPID} >/dev/null 2>&1
+	eend $?
 }
 
 reload() {
