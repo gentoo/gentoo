@@ -4800,6 +4800,7 @@ media-video/mjpg-streamer:output_rtsp - Plugin which provides a mechanism to tak
 media-video/mjpg-streamer:output_udp - Plugin receiving content over UDP and storing to a directory
 media-video/mjpg-streamer:v4l - Uses media-libs/libv4l function mapping for input_uvc plugin
 media-video/mjpg-streamer:www - Installs WWW content
+media-video/motion:mmal - Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.
 media-video/motiontrack:multiprocess - Enables multi-process support (SMP/cluster) for motiontrack programs
 media-video/mplayer:bl - Blinkenlights video output
 media-video/mplayer:bluray - Enable playback of Blu-ray filesystems
