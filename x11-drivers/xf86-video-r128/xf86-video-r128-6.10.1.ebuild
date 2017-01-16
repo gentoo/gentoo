@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="ATI Rage128 video driver"
 
-KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="dri"
 
 RDEPEND=">=x11-base/xorg-server-1.2"
@@ -19,3 +19,8 @@ pkg_setup() {
 		$(use_enable dri)
 	)
 }
+
+PATCHES=(
+	"${FILESDIR}"/${P}-block-wakeuphandler-abi-23.patch
+	"${FILESDIR}"/${P}-xextproto-7.1-support.patch
+)

@@ -1,0 +1,50 @@
+From 3328547c840664896c12d0fd2db8f63e3a398a62 Mon Sep 17 00:00:00 2001
+From: Kevin Brace <kevinbrace@gmx.com>
+Date: Wed, 16 Mar 2016 18:59:23 -0700
+Subject: xextproto 7.1 support update to the source code
+
+While the compilation script was updated, for some reason, the source
+code did not get the update.
+
+Signed-off-by: Kevin Brace <kevinbrace@gmx.com>
+Reviewed-by: Connor Behan <connor.behan@gmail.com>
+
+diff --git a/src/r128_crtc.c b/src/r128_crtc.c
+index d62cc6a..ed77492 100644
+--- a/src/r128_crtc.c
++++ b/src/r128_crtc.c
+@@ -35,7 +35,13 @@
+ 
+ #include "xf86.h"
+ #include "xf86Modes.h"
++
++#ifdef HAVE_XEXTPROTO_71
+ #include "X11/extensions/dpmsconst.h"
++#else
++#define DPMS_SERVER
++#include "X11/extensions/dpms.h"
++#endif
+ 
+ #include "r128.h"
+ #include "r128_probe.h"
+diff --git a/src/r128_output.c b/src/r128_output.c
+index a2c754b..73b4af2 100644
+--- a/src/r128_output.c
++++ b/src/r128_output.c
+@@ -35,7 +35,13 @@
+ 
+ #include "xf86.h"
+ #include "xf86Modes.h"
++
++#ifdef HAVE_XEXTPROTO_71
+ #include "X11/extensions/dpmsconst.h"
++#else
++#define DPMS_SERVER
++#include "X11/extensions/dpms.h"
++#endif
+ 
+ #include "r128.h"
+ #include "r128_probe.h"
+-- 
+cgit v0.10.2
+
