@@ -5,6 +5,10 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
 	<use>
 		<flag name="connection-sharing">Use <pkg>net-dns/dnsmasq</pkg> and
 			<pkg>net-firewall/iptables</pkg> for connection sharing</flag>
