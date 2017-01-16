@@ -16,13 +16,8 @@
 # Run eautoreconf instead of only elibtoolize
 GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 
-if [[ ${GNOME2_EAUTORECONF} == 'yes' ]] ; then
-        AUTOTOOLS_AUTO_DEPEND=yes
-else
-        : ${AUTOTOOLS_AUTO_DEPEND:=no}
-fi
-
-inherit autotools eutils libtool gnome.org gnome2-utils xdg
+[[ ${GNOME2_EAUTORECONF} == 'yes' ]] && inherit autotools
+inherit eutils libtool gnome.org gnome2-utils xdg
 
 case "${EAPI:-0}" in
 	4|5)
