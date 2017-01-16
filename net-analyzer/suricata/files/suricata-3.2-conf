@@ -54,3 +54,9 @@ SURICATA_OPTS="-i eth0"
 # SURICATA_GROUP_q1="suricata"
 # SURICATA_USER="suricata"
 # SURICATA_GROUP="suricata"
+
+# Suricata processes can take a long time to shut down.
+# If necessary, adjust timeout in seconds to be used when calling stop from the init script.
+# Examples:
+# SURICATA_MAX_WAIT_ON_STOP="300"
+# SURICATA_MAX_WAIT_ON_STOP="SIGTERM/30"
