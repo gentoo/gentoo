@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig[${MULTILIB_USEDEP}]
 	>=media-libs/libepoxy-1.0[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.14[aqua?,glib,svg,X?,${MULTILIB_USEDEP}]
-	>=x11-libs/gdk-pixbuf-2.30:2[introspection?,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/gdk-pixbuf-2.30:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.37.3[introspection?,${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
 
