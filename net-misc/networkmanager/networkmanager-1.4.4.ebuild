@@ -122,7 +122,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if use connection-sharing; then
-		CONFIG_CHECK="~CONFIG_NF_NAT_IPV4 ~CONFIG_NF_NAT_MASQUERADE_IPV4"
+		CONFIG_CHECK="~NF_NAT_IPV4 ~NF_NAT_MASQUERADE_IPV4"
 		linux-info_pkg_setup
 	fi
 	enewgroup plugdev

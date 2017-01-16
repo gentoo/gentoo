@@ -5,4 +5,7 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="X">Build and install the legacy gdk_pixbuf_xlib-2.0 library</flag>
+</use>
 </pkgmetadata>

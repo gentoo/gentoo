@@ -29,7 +29,10 @@ PATCHES=(
 )
 
 DOCS=(
-	doc/{example.c,skid2-authentication}
+	doc/example.c
+	doc/skid2-authentication
+)
+HTML_DOCS=(
 	doc/mhash.html
 )
 

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Jeroen Roovers <jer@gentoo.org> <16 Jan 2017>
+# Incomplete support, bug #605878.
+net-misc/tor seccomp
+
 # Robin H. Johnson <robbat2@gentoo.org> (18 Nov 2016)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 dev-db/redis luajit

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,12 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug static-libs"
 
 RDEPEND="
-	~dev-libs/icu-${PV}
-	dev-libs/icu-le-hb
+	~dev-libs/icu-${PV}[${MULTILIB_USEDEP}]
+	dev-libs/icu-le-hb[${MULTILIB_USEDEP}]
 "
 
 DEPEND="
-	virtual/pkgconfig
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	${RDEPEND}
 "
 

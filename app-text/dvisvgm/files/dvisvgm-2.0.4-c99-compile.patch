@@ -1,0 +1,24 @@
+From 4aaf49080cfc84c2aa4a271b8dd12e9e9fa8b7bd Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Wed, 16 Nov 2016 18:36:09 +0100
+Subject: [PATCH] ensure compiling C files with --std=c99
+
+---
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1044096..6a317be 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,8 +17,9 @@ AH_TEMPLATE([TARGET_SYSTEM], [The machine triplet of the target system])
+ AC_DEFINE_UNQUOTED([TARGET_SYSTEM], ["$target"])
+ 
+ # Checks for programs.
+-AC_PROG_CXX
+ AC_PROG_CC
++AC_PROG_CC_C99
++AC_PROG_CXX
+ AX_CXX_COMPILE_STDCXX([11], [noext])
+ 
+ AC_PROG_RANLIB

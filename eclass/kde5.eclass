@@ -170,7 +170,7 @@ case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
-		RDEPEND+=" >=kde-frameworks/kf-env-3"
+		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then

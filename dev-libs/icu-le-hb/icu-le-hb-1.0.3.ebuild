@@ -17,13 +17,13 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/harfbuzz:=
+	media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 "
 
 DEPEND="
 	${RDEPEND}
-	>=dev-libs/icu-58.1
-	virtual/pkgconfig
+	>=dev-libs/icu-58.1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
 src_prepare() {

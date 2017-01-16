@@ -18,6 +18,7 @@ Cubes; the list goes on and on.  With royalty free open standards, your models w
 		<flag name="libeai">Build EAI C library</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="osc">Allows for OSC-based control and communication between multiple freewrl instances</flag>
+		<flag name="rbp">Enable support for Rigid Body Physics</flag>
 		<flag name="java">Build and install java EAI/SAI support library</flag>
 	</use>
 	<upstream>
