@@ -175,6 +175,9 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
+# Package doesn't provide a real test suite
+RESTRICT="test"
+
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo gzip limit_req limit_conn map memcached proxy referer
 	rewrite scgi ssi split_clients upstream_ip_hash userid uwsgi"
