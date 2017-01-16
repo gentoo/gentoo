@@ -24,7 +24,7 @@ case ${PV} in
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
 		!java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons-r1.tar.xz )"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 	;;

@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="debug doc fox gtk qt4"
 
 RDEPEND="dev-libs/libgpg-error
