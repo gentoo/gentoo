@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
+# Masked, Vulnerable due to RGW Denial of Service (bug #598206)
+# We mask it instead of removing them, due user may need them while
+# upgrade from old versions (<0.94.x)
+<sys-cluster/ceph-10.2.3-r1
+
 # Patrice Clement <monsieurp@gentoo.org> (15 Jan 2017)
 # Upstream dead a while ago. Sources are nowhere to be found.
 # Masked for removal in 30 days.
