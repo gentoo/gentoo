@@ -1,0 +1,28 @@
+From 328073e46f9b9fcc09e637c94496c90273a0a4f6 Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <wiz@NetBSD.org>
+Date: Sun, 13 Sep 2015 23:28:53 +0200
+Subject: Fix arguments for miSetPointerPosition.
+
+For the call for the API between versions 5 and 15.
+
+Reviewed-by: Connor Behan <connor.behan@gmail.com>
+
+diff --git a/src/sis_driver.c b/src/sis_driver.c
+index 854cb54..8f06164 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -9395,9 +9395,9 @@ SISMergedPointerMoved(SCRN_ARG_TYPE arg, int x, int y)
+             y = (int)dy;
+         }
+ #elif GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 13
+-	miPointerSetPosition(inputInfo.pointer, Absolute, x, y);
++	miPointerSetPosition(inputInfo.pointer, Absolute, &x, &y);
+ #elif GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 5
+-	miPointerSetPosition(inputInfo.pointer, x, y);
++	miPointerSetPosition(inputInfo.pointer, &x, &y);
+ #else
+ 	UpdateCurrentTime();
+ 	miPointerAbsoluteCursor(x, y, currentTime.milliseconds);
+-- 
+cgit v0.10.2
+
