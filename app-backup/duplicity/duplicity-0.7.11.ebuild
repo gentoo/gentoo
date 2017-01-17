@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,10 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
@@ -36,7 +39,7 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 
-	sed -i "s/'COPYING',//" setup.py || die "Couldn't remove unnecessary COPYING file."
+	sed -i "s/'COPYING',//" setup.py || die
 }
 
 python_test() {
