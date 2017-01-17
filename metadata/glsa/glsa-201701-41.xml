@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-41">
+  <title>MiniUPnPc: Buffer overflow</title>
+  <synopsis>A buffer overflow in MiniUPnPc might allow remote attackers to
+    cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">miniupnpc</product>
+  <announced>2017-01-17</announced>
+  <revised>2017-01-17: 01</revised>
+  <bug>512666</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/miniupnpc" auto="yes" arch="*">
+      <unaffected range="ge">1.9.20150427</unaffected>
+      <vulnerable range="lt">1.9.20150427</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>UPnP client library and a simple UPnP client.</p>
+  </background>
+  <description>
+    <p>An out-of-bounds read was discovered in the getHTTPResponse function in
+      miniwget.c in MiniUPnPc.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, through specially crafted headers, could cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MiniUPnPc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/miniupnpc-1.9.20150427"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3985">CVE-2014-3985</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-15T18:49:39Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-17T09:18:54Z">b-man</metadata>
+</glsa>
