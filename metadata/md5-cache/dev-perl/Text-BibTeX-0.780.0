@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!dev-libs/btparse virtual/perl-Encode virtual/perl-Scalar-List-Utils virtual/perl-Unicode-Normalize >=dev-perl/Config-AutoConf-0.160.0 >=dev-perl/ExtUtils-LibBuilder-0.20.0 >=virtual/perl-ExtUtils-CBuilder-0.270.0 >=dev-perl/Module-Build-0.360.300 test? ( >=dev-perl/Capture-Tiny-0.60.0 ) dev-lang/perl:=
+DESCRIPTION=A Perl library for reading, parsing, and processing BibTeX files
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Text-BibTeX/
+IUSE=test examples
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!dev-libs/btparse virtual/perl-Encode virtual/perl-Scalar-List-Utils virtual/perl-Unicode-Normalize dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/Text-BibTeX-0.78.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=0593a8a6efae9d58a8fc76fba7b8e19e
