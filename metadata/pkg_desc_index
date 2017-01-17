@@ -2819,7 +2819,7 @@ dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 1.6.0 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1 1.8.1-r2: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
