@@ -4872,7 +4872,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.2-r4 2.9.3 2.9.4 2.9.4-r1: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.4 2.9.4-r1: Version 2 of the library to manipulate XML files
 dev-libs/libxslt 1.1.28-r5 1.1.29 1.1.29-r1: XSLT libraries and tools
 dev-libs/libyaml 0.1.6 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
@@ -14512,7 +14512,7 @@ net-im/ejabberd 16.04 16.04-r1 16.08 16.09: Robust, scalable and extensible XMPP
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
-net-im/gajim 0.16.5 0.16.6: Jabber client written in PyGTK
+net-im/gajim 0.16.6: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/hangups 9999: Third Party IM Client for Google Hangouts
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
