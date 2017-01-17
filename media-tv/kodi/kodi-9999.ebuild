@@ -8,7 +8,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils linux-info python-single-r1 cmake-utils
+inherit eutils linux-info python-single-r1 cmake-utils autotools
 
 LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
 LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
@@ -26,7 +26,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gles libressl libusb lirc mysql nfs nonfree +opengl +ssl pulseaudio samba sftp systemd test +udev udisks upnp upower vaapi vdpau webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -52,11 +52,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml[stl]
 	>=dev-libs/yajl-2
 	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-libs/libcdio
 	dvd? ( dev-libs/libcdio[-minimal] )
 	gles? ( media-libs/mesa[gles2] )
 	libusb? ( virtual/libusb:1 )
 	media-fonts/corefonts
-	media-fonts/noto
+	>=media-fonts/noto-20160531
 	media-fonts/roboto
 	media-libs/fontconfig
 	media-libs/freetype
@@ -90,7 +91,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrender
 	)
 	xslt? ( dev-libs/libxslt )
-	zeroconf? ( net-dns/avahi )
+	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${COMMON_DEPEND}
 	lirc? (
@@ -98,7 +99,10 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
-	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
+	upower? (
+		systemd? ( sys-power/upower )
+		!systemd? ( sys-power/upower-pm-utils )
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
@@ -165,6 +169,27 @@ src_prepare() {
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
 		xbmc/linux/*.cpp || die
+
+	# Prepare tools and libs witch are configured with autotools during compile time
+	AUTOTOOLS_DIRS=(
+		"${S}"/lib/cpluff
+		"${S}"/tools/depends/native/TexturePacker/src
+		"${S}"/tools/depends/native/JsonSchemaBuilder/src
+	)
+
+	local d
+	for d in "${AUTOTOOLS_DIRS[@]}" ; do
+		pushd ${d} >/dev/null || die
+		AT_NOELIBTOOLIZE="yes" AT_TOPLEVEL_EAUTORECONF="yes" eautoreconf
+		popd >/dev/null || die
+	done
+	elibtoolize
+
+	# Prevent autoreconf rerun
+	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
+		"${S}"/project/cmake/modules/FindCpluff.cmake \
+		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
+		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh
 }
 
 src_configure() {
@@ -226,7 +251,8 @@ src_install() {
 	# Remove fontconfig settings that are used only on MacOSX.
 	# Can't be patched upstream because they just find all files and install
 	# them into same structure like they have in git.
-	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
+	# Will be fixed upstream so this deletion will be unnecesssary, see https://github.com/xbmc/xbmc/pull/11451
+	rm -rf "${ED%/}"/usr/share/kodi/system/players/VideoPlayer/etc || die
 
 	# Replace bundled fonts with system ones.
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die

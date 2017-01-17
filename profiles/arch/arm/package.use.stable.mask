@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Stable mask galera since dev-libs/asio is not stable on arm
+dev-db/mariadb galera
+
 # Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
 # Not going to be stable for now
 dev-util/geany-plugins gtkspell

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 
 DIST_A_EXT=tgz
 DIST_AUTHOR=RSAVAGE
-DIST_VERSION=2.23
+DIST_VERSION=2.24
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
@@ -28,12 +28,10 @@ RDEPEND="
 	>=dev-perl/XML-Twig-3.520.0
 	>=dev-perl/XML-XPath-1.130.0
 "
-# Note, we don't really require Test::Simple >=1.300...
-# https://rt.cpan.org/Ticket/Display.html?id=115236
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	dev-perl/File-Which
 	test? (
-		>=virtual/perl-Test-Simple-1.1.14
+		>=virtual/perl-Test-Simple-1.1.2
 	)
 "

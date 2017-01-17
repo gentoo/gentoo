@@ -18,6 +18,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Stable mask groonga on mariadb as I don't know how stable
+# the dependencies really are
+dev-db/mariadb mroonga
+
 # Bernard Cafarelli <voyageur@gentoo.org> (09 Jan 2017)
 # Requires more testing
 # and additional unstable dependencies

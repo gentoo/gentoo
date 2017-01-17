@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,7 @@ IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 
 COMMON_DEPEND="
 	net-print/cups
 	virtual/jpeg:0
-	hpijs? (
-		|| ( net-print/cups-filters[foomatic] net-print/foomatic-filters[cups] )
-	)
+	hpijs? ( net-print/cups-filters[foomatic] )
 	!minimal? (
 		${PYTHON_DEPS}
 		sys-apps/dbus
@@ -51,12 +49,11 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/dbus-python-1.2.0-r1[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/pygobject:2[${PYTHON_USEDEP}]' 'python2*')
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' 'python3*')
-		fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
+		fax? ( dev-python/reportlab[${PYTHON_USEDEP}] )
 		kernel_linux? ( virtual/udev )
 		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}] )
 		scanner? (
-			!fax? ( >=dev-python/reportlab-3.2[${PYTHON_USEDEP}] )
-			fax? ( $(python_gen_cond_dep '=dev-python/reportlab-2*[${PYTHON_USEDEP}]' 'python2*') )
+			>=dev-python/reportlab-3.2[${PYTHON_USEDEP}]
 			>=dev-python/pillow-3.1.1[${PYTHON_USEDEP}]
 			X? ( || (
 				kde? ( kde-misc/skanlite )
@@ -68,10 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 	policykit? ( sys-auth/polkit )
 "
 
-REQUIRED_USE="
-	fax? ( || ( $(python_gen_useflags 'python2*') ) )
-	!minimal? ( ${PYTHON_REQUIRED_USE} )
-"
+REQUIRED_USE="!minimal? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${WORKDIR}/patches"
