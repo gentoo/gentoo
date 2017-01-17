@@ -23,6 +23,7 @@ case ${PV} in
 	MY_PV=${MY_PV//_rc/rc}
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
+		https://dev.gentoo.org/~soap/distfiles/${PN}-${PV}-gcc-6.patch
 		!java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons-r1.tar.xz )"
 	KEYWORDS="~amd64 ~x86"
 
@@ -149,7 +150,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
 	"${FILESDIR}"/${PN}-9999-texturepacker.patch
 	"${FILESDIR}"/${PN}-16-ffmpeg3.patch
-	"${FILESDIR}"/${PN}-16.1-gcc-6.patch #592446
+	"${DISTDIR}"/${PN}-${PV}-gcc-6.patch #592446
 )
 
 CONFIG_CHECK="~IP_MULTICAST"
