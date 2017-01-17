@@ -5,7 +5,9 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4} )
 
+CMAKE_MAKEFILE_GENERATOR="emake" # bug #591386
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
+
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/doxygen/doxygen.git"
