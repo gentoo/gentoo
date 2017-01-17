@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# Set up the default build settings, and then use the naems strace expects.
+	# Set up the default build settings, and then use the names strace expects.
 	tc-export_build_env BUILD_{CC,CPP}
 	local v bv
 	for v in CC CPP {C,CPP,LD}FLAGS ; do

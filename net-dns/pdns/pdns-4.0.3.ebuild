@@ -1,18 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib user toolchain-funcs versionator
 
 DESCRIPTION="The PowerDNS Daemon"
-HOMEPAGE="http://www.powerdns.com/"
-SRC_URI="http://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
+HOMEPAGE="https://www.powerdns.com/"
+SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # other possible flags:
 # db2: we lack the dep
@@ -85,7 +85,7 @@ src_compile() {
 	use doc && emake -C codedocs codedocs
 }
 
-src_install () {
+src_install() {
 	default
 
 	mv "${D}"/etc/powerdns/pdns.conf{-dist,}
