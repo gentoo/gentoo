@@ -1963,7 +1963,7 @@ app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done
 app-misc/ytree 1.99_p1: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.6 1.0.8: User utilities for zisofs
-app-misc/zygrib 6.2.3 7.0.0: GRIB File Viewer - Weather data visualization
+app-misc/zygrib 7.0.0 8.0.1: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX4400/VX6000 and many Sanyo Sprint mobile phones
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
@@ -14117,7 +14117,7 @@ net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.73 3.76 3.77: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
-net-analyzer/linkchecker 9.3-r1 9999: Check websites for broken links
+net-analyzer/linkchecker 9.3-r1 9.3-r2 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0 1.7.0-r1: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
