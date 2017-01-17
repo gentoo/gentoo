@@ -10147,6 +10147,7 @@ dev-util/ltrace 0.5.3.1 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtim
 dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
+dev-util/lxqt-build-tools 0.2.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
@@ -18378,51 +18379,51 @@ x11-drivers/xf86-video-apm 1.2.4 1.2.5 1.2.5-r1: Alliance ProMotion video driver
 x11-drivers/xf86-video-ark 0.7.5: X.Org driver for ark cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 7.5.0 7.6.1 7.7.0 7.7.1 7.8.0: ATI video driver
-x11-drivers/xf86-video-chips 1.2.6: Chips and Technologies video driver
+x11-drivers/xf86-video-chips 1.2.6 1.2.7: Chips and Technologies video driver
 x11-drivers/xf86-video-cirrus 1.5.1 1.5.2 1.5.3: Cirrus Logic video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.4.4: video driver for framebuffer device
 x11-drivers/xf86-video-freedreno 1.0.0 1.1.0 1.3.0 1.4.0: Driver for Adreno mobile GPUs
 x11-drivers/xf86-video-geode 2.11.17 2.11.18 2.11.19: AMD Geode GX2 and LX video driver
-x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1: GLINT/Permedia video driver
+x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
-x11-drivers/xf86-video-i740 1.3.5: Intel i740 video driver
+x11-drivers/xf86-video-i740 1.3.5 1.3.6: Intel i740 video driver
 x11-drivers/xf86-video-intel 2.99.917-r2 2.99.917_p20160621-r1 2.99.917_p20161110 2.99.917_p20161118 2.99.917_p20161206: X.Org driver for Intel cards
 x11-drivers/xf86-video-ivtv 1.1.2 1.1.2-r1 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
-x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4: Matrox video driver
+x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4 1.6.5: Matrox video driver
 x11-drivers/xf86-video-modesetting 0.8.1 0.9.0: Unaccelerated generic driver for kernel modesetting
 x11-drivers/xf86-video-neomagic 1.2.9: Neomagic video driver
 x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
 x11-drivers/xf86-video-nouveau 1.0.11 1.0.12 1.0.13: Accelerated Open Source driver for nVidia cards
-x11-drivers/xf86-video-nv 2.1.20-r1: Nvidia 2D only video driver
+x11-drivers/xf86-video-nv 2.1.20-r1 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4: OMAP video driver
 x11-drivers/xf86-video-omapfb 0.1.1.1_p1: X.org driver for TI OMAP framebuffers
 x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
-x11-drivers/xf86-video-qxl 0.1.3 0.1.4 0.1.4-r1: QEMU QXL paravirt video driver
-x11-drivers/xf86-video-r128 6.9.2 6.10.0 6.10.1: ATI Rage128 video driver
+x11-drivers/xf86-video-qxl 0.1.3 0.1.4 0.1.4-r1 0.1.5: QEMU QXL paravirt video driver
+x11-drivers/xf86-video-r128 6.9.2 6.10.0 6.10.1 6.10.2: ATI Rage128 video driver
 x11-drivers/xf86-video-rendition 4.2.6: Rendition video driver
 x11-drivers/xf86-video-s3 0.6.5 0.6.5-r1: X.Org driver for s3 cards
 x11-drivers/xf86-video-s3virge 1.10.7: S3 ViRGE video driver
-x11-drivers/xf86-video-savage 2.3.8: S3 Savage video driver
-x11-drivers/xf86-video-siliconmotion 1.7.8: Silicon Motion video driver
-x11-drivers/xf86-video-sis 0.10.7 0.10.8: SiS and XGI video driver
-x11-drivers/xf86-video-sisusb 0.9.5 0.9.6 0.9.6-r1: SiS USB video driver
+x11-drivers/xf86-video-savage 2.3.8 2.3.9: S3 Savage video driver
+x11-drivers/xf86-video-siliconmotion 1.7.8 1.7.9: Silicon Motion video driver
+x11-drivers/xf86-video-sis 0.10.7 0.10.8 0.10.9: SiS and XGI video driver
+x11-drivers/xf86-video-sisusb 0.9.5 0.9.6 0.9.6-r1 0.9.7: SiS USB video driver
 x11-drivers/xf86-video-suncg14 1.1.1 1.1.2: CG14 video driver
 x11-drivers/xf86-video-suncg3 1.1.1 1.1.2: CG3 video driver
 x11-drivers/xf86-video-suncg6 1.1.1 1.1.2: GX/Turbo GX video driver
 x11-drivers/xf86-video-sunffb 1.2.1 1.2.2-r1: SUNFFB video driver
 x11-drivers/xf86-video-sunleo 1.2.0 1.2.1: Leo video driver
 x11-drivers/xf86-video-suntcx 1.1.1 1.1.2: TCX video driver
-x11-drivers/xf86-video-tdfx 1.4.6: 3Dfx video driver
+x11-drivers/xf86-video-tdfx 1.4.6 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-tga 1.2.2 1.2.2-r1: X.Org driver for tga cards
-x11-drivers/xf86-video-trident 1.3.7: Trident video driver
+x11-drivers/xf86-video-trident 1.3.7 1.3.8: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 4.3.38 4.3.40 5.0.16 5.0.30 5.1.10 5.1.12: VirtualBox X11 video driver for Gentoo guest
-x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
+x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/amd-adl-sdk 6.0-r1 8.0 10.1: API to access display driver functionality for ATI graphics cards

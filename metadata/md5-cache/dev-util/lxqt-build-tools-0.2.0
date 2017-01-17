@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtcore:5 sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=LXQt Build tools
+EAPI=6
+HOMEPAGE=http://lxqt.org/
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://downloads.lxqt.org/lxqt-build-tools/0.2.0/lxqt-build-tools-0.2.0.tar.xz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9538bedefcd2127c4b891b8744e7e41f
