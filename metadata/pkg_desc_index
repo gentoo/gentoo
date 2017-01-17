@@ -6675,7 +6675,7 @@ dev-perl/XML-Compile 1.540.0: Compilation based XML Processing
 dev-perl/XML-Compile-Cache 1.50.0: Cache compiled XML translations
 dev-perl/XML-Compile-SOAP 3.200.0 3.210.0: Soap 1.1 XML Compiler
 dev-perl/XML-Compile-Tester 0.900.0: Support XML::Compile related regression testing
-dev-perl/XML-Compile-WSDL11 3.50.0: WSDL version 1.1 XML Compiler
+dev-perl/XML-Compile-WSDL11 3.50.0 3.60.0: WSDL version 1.1 XML Compiler
 dev-perl/XML-DOM 1.450.0 1.460.0: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module

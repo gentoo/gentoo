@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Log-Report-1.50.0 >=dev-perl/XML-Compile-1.480.0 >=dev-perl/XML-Compile-Cache-1.30.0 >=dev-perl/XML-Compile-SOAP-3.160.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.540.0 ) dev-lang/perl:=
+DESCRIPTION=WSDL version 1.1 XML Compiler
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-Compile-WSDL11/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Log-Report-1.50.0 >=dev-perl/XML-Compile-1.480.0 >=dev-perl/XML-Compile-Cache-1.30.0 >=dev-perl/XML-Compile-SOAP-3.160.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.06.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=8fe4f7cecd59a3f0ca46ae6f7ae4024e
