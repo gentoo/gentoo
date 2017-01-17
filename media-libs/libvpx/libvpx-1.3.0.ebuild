@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -83,6 +83,9 @@ multilib_src_configure() {
 		# not needed for multilib and will be overwritten anyway.
 		myconf+=" --disable-examples --disable-install-docs --disable-docs"
 	fi
+
+	# https://bugs.gentoo.org/569146
+	export LC_COLLATE=C
 
 	# #498364: sse doesn't work without sse2 enabled,
 	"${S}/configure" \
