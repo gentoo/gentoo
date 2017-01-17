@@ -143,7 +143,7 @@ src_install() {
 	#todo write a plugin finder that tells you what needs to be rebuilt when kismet is updated, etc
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
-	dodoc CHANGELOG README* 
+	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd kismet
 	newconfd "${FILESDIR}"/${PN}.confd kismet
 
