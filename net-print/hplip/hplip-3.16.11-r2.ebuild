@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,7 @@ IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 
 COMMON_DEPEND="
 	net-print/cups
 	virtual/jpeg:0
-	hpijs? (
-		|| ( net-print/cups-filters[foomatic] net-print/foomatic-filters[cups] )
-	)
+	hpijs? ( net-print/cups-filters[foomatic] )
 	!minimal? (
 		${PYTHON_DEPS}
 		sys-apps/dbus
