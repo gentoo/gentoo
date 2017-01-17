@@ -14,7 +14,7 @@ SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.xz
 
 LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 ia64 x86"
 IUSE="doc graphviz nls python static-libs test"
 
 RDEPEND="dev-libs/libxml2
