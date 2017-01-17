@@ -18397,7 +18397,7 @@ x11-drivers/xf86-video-neomagic 1.2.9: Neomagic video driver
 x11-drivers/xf86-video-newport 0.2.3 0.2.4: Newport video driver
 x11-drivers/xf86-video-nouveau 1.0.11 1.0.12 1.0.13: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.20-r1 2.1.21: Nvidia 2D only video driver
-x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4: OMAP video driver
+x11-drivers/xf86-video-omap 0.4.2 0.4.3 0.4.4 0.4.5: OMAP video driver
 x11-drivers/xf86-video-omapfb 0.1.1.1_p1: X.org driver for TI OMAP framebuffers
 x11-drivers/xf86-video-openchrome 0.3.3 0.4.0 0.5.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
