@@ -8,8 +8,7 @@ inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
-SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz
-	https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> ${PN}-3.3.11-remove_Unix98_output_limits.patch"
+SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
