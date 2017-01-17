@@ -5,7 +5,14 @@
 EAPI=6
 inherit toolchain-funcs multilib-minimal
 
-LIBVPX_TESTDATA_VER=1.6.0
+# To create a new testdata tarball:
+# 1. Unpack source tarbll or checkout git tag
+# 2. export LIBVPX_TEST_DATA_PATH=libvpx-testdata
+# 3. configure --enable-unit-tests --enable-vp9-highbitdepth
+# 4. make testdata
+# 5. tar -cjf libvpx-testdata-${PV}.tar.bz2 libvpx-testdata
+
+LIBVPX_TESTDATA_VER=1.6.1
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
 HOMEPAGE="http://www.webmproject.org"
@@ -17,6 +24,15 @@ SLOT="0/4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 +highbitdepth static-libs svc test +threads"
 
+REQUIRED_USE="
+	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
+	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
+	test? ( threads )
+"
+
+# Disable test phase when USE="-test"
+RESTRICT="!test? ( test )"
+
 RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 DEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
@@ -27,11 +43,6 @@ DEPEND="abi_x86_32? ( dev-lang/yasm )
 		app-doc/doxygen
 		dev-lang/php
 	)
-"
-
-REQUIRED_USE="
-	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
-	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
 PATCHES=(
@@ -106,8 +117,9 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}" \
-		emake verbose=yes GEN_EXAMPLES=  LIBVPX_TEST_DATA_PATH="${WORKDIR}/${PN}-testdata" test
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}"
+	local -x LIBVPX_TEST_DATA_PATH="${WORKDIR}/${PN}-testdata"
+	emake verbose=yes GEN_EXAMPLES= test
 }
 
 multilib_src_install() {

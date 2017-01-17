@@ -27,6 +27,7 @@
     <remote-id type="cpan-module">Mojo::Date</remote-id>
     <remote-id type="cpan-module">Mojo::EventEmitter</remote-id>
     <remote-id type="cpan-module">Mojo::Exception</remote-id>
+    <remote-id type="cpan-module">Mojo::File</remote-id>
     <remote-id type="cpan-module">Mojo::Headers</remote-id>
     <remote-id type="cpan-module">Mojo::HelloWorld</remote-id>
     <remote-id type="cpan-module">Mojo::Home</remote-id>
@@ -36,6 +37,7 @@
     <remote-id type="cpan-module">Mojo::IOLoop::Server</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Stream</remote-id>
     <remote-id type="cpan-module">Mojo::IOLoop::Subprocess</remote-id>
+    <remote-id type="cpan-module">Mojo::IOLoop::TLS</remote-id>
     <remote-id type="cpan-module">Mojo::JSON</remote-id>
     <remote-id type="cpan-module">Mojo::JSON::Pointer</remote-id>
     <remote-id type="cpan-module">Mojo::Loader</remote-id>
