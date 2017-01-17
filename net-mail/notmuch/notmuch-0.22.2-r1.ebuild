@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -105,7 +105,8 @@ src_prepare() {
 	bindings python mv README README-python || die
 	mv contrib/notmuch-mutt/README contrib/notmuch-mutt/README-mutt || die
 
-	rm -f Makefile.config # assure that new Makefile.config will be generated
+	# assure that new Makefile.config will be generated
+	rm -f Makefile.config || die
 
 	if use test; then
 		append-cflags -g

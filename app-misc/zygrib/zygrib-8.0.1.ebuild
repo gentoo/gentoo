@@ -34,7 +34,7 @@ DEPEND="app-arch/bzip2
 	sci-libs/libnova
 	sci-libs/proj
 	sys-libs/zlib
-	x11-libs/qwt:6"
+	x11-libs/qwt:6[qt5]"
 
 RDEPEND="${DEPEND}"
 
