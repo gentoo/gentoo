@@ -6,6 +6,10 @@
 # New entries go on top.
 
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
+# Mask it globally, unmask it on supported arch
+>=sys-devel/gcc-6.2.0 pie
+
+# Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # Adding the mask so that end users and devlopers are notified of the removal and have some
 # time to migrate. There is no support for gcj in gcc-7
 >=sys-devel/gcc-6.3.0 gcj
@@ -912,8 +916,3 @@ media-video/vlc media-library
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
-
-# Magnus Granberg <zorry@gentoo.org> (21 Sep 2016)
-# pie is not ready.
->=sys-devel/gcc-6.2.0 pie
-

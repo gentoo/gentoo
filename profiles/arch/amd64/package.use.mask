@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
+# masked in base, unmask for amd64
+>=sys-devel/gcc-6.3.0 -pie
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Assembly optimisations are supported on amd64 for all versions
 dev-libs/libsecp256k1 -asm
@@ -359,7 +363,3 @@ media-sound/lame cpu_flags_x86_mmx
 # Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
 # masked in base, unmask for x86/amd64
 dev-python/kaa-base -tls
-
-# Magnus Granberg <zorry@gentoo.org> (17 Jan 2017)
-# masked in base, unmask for amd64
->=sys-devel/gcc-6.3.0 -pie
