@@ -135,7 +135,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.9.2 3.9.2-r2 3.10.0 3.11.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 2.3.4 2.4.0-r3 5.0.0-r2 5.0.1 5.0.1-r1 5.1.1-r1: Tool for managing events and logs
+app-admin/logstash-bin 2.4.0-r3 5.1.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
@@ -1723,7 +1723,7 @@ app-misc/chkcrontab 1.6: A tool to detect crontab errors
 app-misc/ckb 0.2.6-r1: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
-app-misc/cmatrix 1.2a-r1 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
+app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r1: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.13-r1 1.0.15-r1 1.0.16: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
@@ -1842,7 +1842,7 @@ app-misc/livecd-tools 2.0.4 2.1 2.2 9999: Gentoo LiveCD tools for autoconfigurat
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
-app-misc/lsx 0.1: list executables
+app-misc/lsx 0.1 0.1-r1: list executables
 app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
@@ -6335,7 +6335,7 @@ dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
 dev-perl/Ref-Util 0.101.0 0.111.0: Utility functions for checking references
-dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
+dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0 2016060801.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
@@ -14391,9 +14391,9 @@ net-dns/nsd 3.2.22 4.1.13 4.1.14: An authoritative only, high performance, open 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2 3.8.1: A framework for managing DNS information
-net-dns/pdns 4.0.1 4.0.2: The PowerDNS Daemon
+net-dns/pdns 4.0.2 4.0.3: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 4.0.3 4.0.4: The PowerDNS Recursor
+net-dns/pdns-recursor 4.0.4: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
@@ -14574,7 +14574,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17 2.18: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.20-r1 0.8.21 1.0.0 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 0.8.21 1.0.0 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
@@ -18101,7 +18101,7 @@ www-apps/jekyll-sass-converter 1.4.0 1.5.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
-www-apps/kibana-bin 4.6.3 5.1.1: Explore and visualize data
+www-apps/kibana-bin 4.6.3 4.6.4 5.1.1 5.1.2: Explore and visualize data
 www-apps/klaus 0.9.1 1.0.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making

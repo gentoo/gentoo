@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst setup unpack
+DESCRIPTION=Explore and visualize data
+EAPI=6
+HOMEPAGE=https://www.elastic.co/products/kibana
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RESTRICT=strip
+SLOT=0
+SRC_URI=amd64? ( https://download.elastic.co/kibana/kibana/kibana-4.6.4-linux-x86_64.tar.gz ) x86? ( https://download.elastic.co/kibana/kibana/kibana-4.6.4-linux-x86.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:- src_install:-
+_eclasses_=pax-utils	4c2654a34ebe732e85fda354f6ee642f	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=515b5288ad0afaee4ad260862078e529
