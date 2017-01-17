@@ -147,7 +147,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
 	tc_version_is_at_least 4.2 && IUSE_DEF+=( openmp )
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
-	tc_version_is_at_least 4.7 && IUSE+=" go"
+	tc_version_is_at_least 4.7 && IUSE+=" go ada"
 	# Note: while <=gcc-4.7 also supported graphite, it required forked ppl
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
@@ -867,8 +867,8 @@ toolchain_src_configure() {
 	is_f77 && GCC_LANG+=",f77"
 	is_f95 && GCC_LANG+=",f95"
 
-	# We do NOT want 'ADA support' in here!
-	# is_ada && GCC_LANG+=",ada"
+	# We do want 'ADA support' here!
+	is_ada && GCC_LANG+=",ada"
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
@@ -1690,7 +1690,7 @@ toolchain_src_install() {
 	cd "${D}"${BINPATH}
 	# Ugh: we really need to auto-detect this list.
 	#      It's constantly out of date.
-	for x in cpp gcc g++ c++ gcov g77 gcj gcjh gfortran gccgo ; do
+	for x in cpp gcc g++ c++ gcov g77 gcj gcjh gfortran gccgo gnatbind; do
 		# For some reason, g77 gets made instead of ${CTARGET}-g77...
 		# this should take care of that
 		if [[ -f ${x} ]] ; then
