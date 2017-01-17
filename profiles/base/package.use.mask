@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
+# Adding the mask so that end users and devlopers are notified of the removal and have some
+# time to migrate. There is no support for gcj in gcc-7
+>=sys-devel/gcc-6.3.0 gcj
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Mask assembly optimisations that are platform-specific
 dev-libs/libsecp256k1 asm
