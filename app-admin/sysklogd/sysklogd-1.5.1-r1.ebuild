@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -22,19 +22,25 @@ DEPEND=""
 RDEPEND="dev-lang/perl
 	sys-apps/debianutils"
 
-src_prepare() {
-	epatch "${WORKDIR}"/${PN}_${DEB_PV}.diff
+DOCS=( ANNOUNCE CHANGES NEWS README.1st README.linux )
 
-	epatch "${FILESDIR}"/${PN}-1.5-debian-cron.patch
-	epatch "${FILESDIR}"/${PN}-1.5-build.patch
+PATCHES=(
+	"${WORKDIR}"/${PN}_${DEB_PV}.diff
+
+	"${FILESDIR}"/${PN}-1.5-debian-cron.patch
+	"${FILESDIR}"/${PN}-1.5-build.patch
 
 	# CAEN/OWL security patches
-	epatch "${FILESDIR}"/${PN}-1.4.2-caen-owl-syslogd-bind.diff
-	epatch "${FILESDIR}"/${PN}-1.4.2-caen-owl-syslogd-drop-root.diff
-	epatch "${FILESDIR}"/${PN}-1.4.2-caen-owl-klogd-drop-root.diff
+	"${FILESDIR}"/${PN}-1.4.2-caen-owl-syslogd-bind.diff
+	"${FILESDIR}"/${PN}-1.4.2-caen-owl-syslogd-drop-root.diff
+	"${FILESDIR}"/${PN}-1.4.2-caen-owl-klogd-drop-root.diff
 
-	epatch "${FILESDIR}"/${PN}-1.5-syslog-func-collision.patch #342601
-	epatch "${FILESDIR}"/${PN}-1.5-glibc-2.24.patch #604232
+	"${FILESDIR}"/${PN}-1.5-syslog-func-collision.patch #342601
+	"${FILESDIR}"/${PN}-1.5-glibc-2.24.patch #604232
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {
@@ -56,7 +62,9 @@ src_install() {
 		exeinto /etc/cron.weekly
 		newexe debian/cron.weekly syslog
 	fi
-	dodoc ANNOUNCE CHANGES NEWS README.1st README.linux
+
+	einstalldocs
+
 	newinitd "${FILESDIR}"/sysklogd.rc7 sysklogd
 	newconfd "${FILESDIR}"/sysklogd.confd sysklogd
 }
