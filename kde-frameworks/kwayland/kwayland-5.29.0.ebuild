@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kwayland"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
