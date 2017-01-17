@@ -46,9 +46,6 @@ vdpau
 # Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
 infiniband
 
-# PHP 5.3 har reached EOL and should be removed soon
-php_targets_php5-3
-
 # Only available on x86
 fdftk
 
