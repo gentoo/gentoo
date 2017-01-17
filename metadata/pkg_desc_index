@@ -5675,7 +5675,7 @@ dev-perl/Email-Reply 1.203.0-r1 1.204.0: Reply to a Message
 dev-perl/Email-Send 2.201.0: Simply Sending Email
 dev-perl/Email-Send-Gmail 0.330.0: Send Messages using Gmail
 dev-perl/Email-Sender 1.300.16 1.300.30: A library for sending email
-dev-perl/Email-Simple 2.206.0 2.208.0 2.211.0: Simple parsing of RFC2822 message format and headers
+dev-perl/Email-Simple 2.206.0 2.208.0 2.211.0 2.213.0: Simple parsing of RFC2822 message format and headers
 dev-perl/Email-Valid 1.196.0 1.198.0 1.202.0: Check validity of Internet email addresses
 dev-perl/Encode-Detect 1.10.0-r1: Encode::Detect - An Encode::Encoding subclass that detects the encoding of data
 dev-perl/Encode-EUCJPASCII 0.30.0: An eucJP-open mapping
@@ -18238,7 +18238,7 @@ www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0 19.4.5 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
-www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 1.4.42 1.4.43 1.4.44 9999: Lightweight high-performance web server
+www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39 1.4.42 1.4.43 1.4.44 1.4.45 9999: Lightweight high-performance web server
 www-servers/mongoose 5.3 5.6: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
