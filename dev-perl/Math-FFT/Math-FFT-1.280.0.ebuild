@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=RKOBES
-MODULE_VERSION=${PV}
+DIST_AUTHOR=RKOBES
+DIST_VERSION=1.28
 inherit perl-module
 
 DESCRIPTION="Perl module to calculate Fast Fourier Transforms"
@@ -16,7 +16,5 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build
+	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )"
-
-SRC_TEST="do"
