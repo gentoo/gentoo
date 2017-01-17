@@ -244,7 +244,7 @@ app-arch/arj 3.10.22-r5 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0 0.11.0: Command line interface for Blosc compression
 app-arch/bsdsfv 1.18-r1: all-in-one SFV checksum utility
-app-arch/bzip2 1.0.6-r6 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
+app-arch/bzip2 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
@@ -1931,7 +1931,7 @@ app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
-app-misc/tmux 2.1 2.2 2.3 9999: Terminal multiplexer
+app-misc/tmux 2.2 2.3 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko smartcard readers under UNIX environment
@@ -4806,7 +4806,7 @@ dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30 0.31: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3 0.2.8-r4 0.4.2: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
-dev-libs/libpcre 8.38-r1 8.39 8.40: Perl-compatible regular expression library
+dev-libs/libpcre 8.39 8.40: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.22: Perl-compatible regular expression library
 dev-libs/libpeas 1.18.0 1.20.0: A GObject plugins library
@@ -12730,7 +12730,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4: Image library supporting many formats
-media-libs/freetype 2.5.5 2.6.3-r1 2.6.5 2.7-r2 2.7.1: A high-quality and portable font engine
+media-libs/freetype 2.6.3-r1 2.6.5 2.7.1: A high-quality and portable font engine
 media-libs/freeverb3 2.6.6 3.1.1 3.1.1-r1 3.1.2_pre20151102 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution library including Audacious/JACK plugins
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.0-r1: Video game music file emulators
@@ -12873,7 +12873,7 @@ media-libs/libmatroska 1.2.0 1.3.0 1.4.4 1.4.5: Extensible multimedia container 
 media-libs/libmediaart 0.7.0 1.9.0 1.9.0-r1: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.91: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
-media-libs/libmikmod 3.3.7 3.3.8 3.3.9 3.3.10: A library to play a wide range of module formats
+media-libs/libmikmod 3.3.8 3.3.10: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
@@ -12903,7 +12903,7 @@ media-libs/libopenshot-audio 0.0.6 0.1.2-r1: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.3-r1 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libpng 1.2.56 1.2.57 1.5.26 1.5.28 1.6.25 1.6.27 1.6.28: Portable Network Graphics library
+media-libs/libpng 1.2.57 1.5.28 1.6.27 1.6.28: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
 media-libs/libprojectm 2.0.1-r1 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
@@ -14486,7 +14486,7 @@ net-ftp/oftpd 0.3.7-r7 0.3.7-r8 0.3.7-r9 0.3.7-r10: Secure, small, anonymous onl
 net-ftp/oneclickftp 0.5.1: The somehow different FTP client
 net-ftp/proftpd 1.3.5b 1.3.5b-r1 1.3.5d: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
-net-ftp/pure-ftpd 1.0.40 1.0.42-r1 1.0.43 1.0.44: Fast, production-quality, standard-conformant FTP server
+net-ftp/pure-ftpd 1.0.42-r1 1.0.44: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
@@ -14984,7 +14984,7 @@ net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools t
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
-net-misc/dhcp 4.3.3_p1 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.3.4 4.3.5: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.10.1 6.11.1-r1 6.11.3 6.11.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
@@ -15302,7 +15302,7 @@ net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.18: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
-net-misc/whois 5.1.5 5.2.12 5.2.13 5.2.14: improved Whois Client
+net-misc/whois 5.2.12 5.2.14: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1 1.7.4-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wireguard 0.0.20170115 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
@@ -16825,7 +16825,7 @@ sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.20.1 3.22.0 3.22.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
-sys-apps/baselayout 2.2 2.2-r1 2.3: Filesystem baselayout and init scripts
+sys-apps/baselayout 2.3: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4 2.2-r5: Minimal baselayout for Gentoo Prefix installs
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
@@ -16874,7 +16874,7 @@ sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring
 sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/file 5.22 5.25 5.28 5.29 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.25 5.29 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
 sys-apps/firejail 0.9.44.4: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.8: Security sandbox for any type of processes; LTS branch
@@ -16992,7 +16992,7 @@ sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0-r1 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
-sys-apps/pciutils 3.3.1 3.4.1 3.5.1 3.5.2: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.4.1 3.5.2: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.12-r1 1.8.16-r1 1.8.20: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
@@ -17033,7 +17033,7 @@ sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0 2.1.0.0: set of tiny portable unix ut
 sys-apps/s6-rc 0.0.2.1 0.0.3.0 0.1.0.0: service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.10-r3 2.11-r3 2.11-r4: sandbox'd LD_PRELOAD hack
-sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
+sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.5 2.6 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.2 4.3: Super-useful stream editor
 sys-apps/selinux-python 9999: SELinux core utilities
@@ -17041,7 +17041,7 @@ sys-apps/semodule-utils 9999: SELinux policy module utilities
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.41 1.42: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.1.5.1-r1 4.2.1 4.2.1-r1 4.2.1-r2 4.4-r1: Utilities to deal with user accounts
+sys-apps/shadow 4.2.1-r2 4.4-r1: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.4-r1 6.5 9999: Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 sys-apps/sparc-utils 1.9-r4: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
@@ -17079,7 +17079,7 @@ sys-apps/util-linux 2.26.2 2.27.1 2.28.2 2.29 9999: Various useful Linux utiliti
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
-sys-apps/which 2.20-r1 2.21: Prints out location of specified executables that are in your path
+sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
@@ -17359,7 +17359,7 @@ sys-devel/binutils 2.25.1-r1 2.26.1 2.27 9999: Tools necessary to build programs
 sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7.2-r1 7.3 7.3.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 7.3.1
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1 2.27: binutils package for building 64bit kernels on HPPA
-sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20160926 20160926-r1 20161126 20161126-r1 20161212: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
@@ -17385,7 +17385,7 @@ sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7
 sys-devel/libtool 2.4.6 2.4.6-r2 9999: A shared library tool for developers
 sys-devel/lld 9999: The LLVM linker (link editor)
 sys-devel/llvm 3.4.2-r100 3.5.2 3.6.2 3.7.1-r3 3.8.1 3.8.1-r2 3.9.0-r1 3.9.1 9999: Low Level Virtual Machine
-sys-devel/m4 1.4.16 1.4.17 1.4.18: GNU macro processor
+sys-devel/m4 1.4.17 1.4.18: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2-r2 4.2.1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 1 2 4: Host OS native assembler as and static linker ld
@@ -17492,7 +17492,7 @@ sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.2 1.7.3: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.2 1.7.3: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99-r1 1.99.5: Similar to dd but can copy from source with errors
@@ -17675,7 +17675,7 @@ sys-libs/libselinux 2.5 2.5-r1 2.6 9999: SELinux userland library
 sys-libs/libsemanage 2.5 2.6 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.5 2.6 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.0.1 1.1.11 1.1.15 1.1.16: Provides a library for logging service-related events
-sys-libs/libsmbios 2.2.28 2.3.0-r1: Provide access to (SM)BIOS information
+sys-libs/libsmbios 2.3.0-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
@@ -17751,13 +17751,13 @@ sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use 
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r3 6.5.5-r4 6.6.1 6.6.2 6.6.2-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2 2.3-r3 2.3-r4: a periodic command scheduler
-sys-process/at 3.1.16 3.1.18-r1 3.1.20: Queues jobs for later execution
+sys-process/at 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5 2.6 2.7 2.8 2.9: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10: Collection of tools for managing UNIX services
@@ -17783,7 +17783,7 @@ sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.45 0.46: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
-sys-process/procps 3.3.10-r1 3.3.11-r3 3.3.12: standard informational utilities and process-handling tools
+sys-process/procps 3.3.12: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.21-r3: A set of tools that use the proc filesystem
 sys-process/rtirq 20150216: Modify realtime scheduling policy and priority of IRQ handlers
@@ -18254,7 +18254,7 @@ www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and 
 www-servers/thin 1.7.0 1.7.0-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.73 8.0.39 8.5.9 9.0.0_alpha15: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
-www-servers/tornado 4.2.1 4.3 4.4.2-r1: Python web framework and asynchronous networking library
+www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.9 2.0.11.2-r1 2.0.12 2.0.13.1-r1 2.0.14: uWSGI server for Python web applications
 www-servers/varnish 4.0.3 4.1.3 4.1.4: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
