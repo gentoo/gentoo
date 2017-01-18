@@ -8,7 +8,6 @@
 media-libs/x264 pic
 media-video/ffmpeg pic
 media-video/libav pic
-=media-libs/mesa-9.2.5-r1 pic
 >=media-libs/mesa-10.1.6 pic
 media-libs/libpostproc pic
 >=media-libs/xvid-1.3.3 pic

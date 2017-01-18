@@ -37,10 +37,6 @@ app-office/gnumeric libgda
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (10 Nov 2013)
-# <sys-devel/llvm-3.2 is not keyworded
-=media-libs/mesa-7.10* llvm
-
 # Pacho Ramos <pacho@gentoo.org> (31 Oct 2013)
 # Missing keywords, bug #478254
 gnome-base/gnome classic
