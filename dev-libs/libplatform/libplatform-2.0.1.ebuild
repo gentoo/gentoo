@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Pulse-Eight/${MY_PN}/archive/${MY_PN_PREFIX}-${MY_PN
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-arch-specific-libdirs.patch" )
