@@ -1,0 +1,13 @@
+diff --git a/doc/gnofract4d-manual/C/gnofract4d.xsl b/doc/gnofract4d-manual/C/gnofract4d.xsl
+index 4b0120d..f6e7f0c 100644
+--- a/doc/gnofract4d-manual/C/gnofract4d.xsl
++++ b/doc/gnofract4d-manual/C/gnofract4d.xsl
+@@ -3,7 +3,7 @@
+ 
+ 
+ <!-- Imports the DocBook HTML chunking stylesheets. --> 
+-<xsl:import href="/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/xhtml/docbook.xsl"/>
++<xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl"/>
+ <xsl:template match="guimenuitem">
+   <span class="guimenuitem"><xsl:call-template name="inline.charseq"/></span>
+ </xsl:template>
