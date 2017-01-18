@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (18 Jan 2017)
+# Dead upstream, spiritual successor is dev-ml/gsl-ocaml
+# Masked for removal in 30 days. Bug #574564, #593248, #601912.
+dev-ml/ocamlgsl
+
 # Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
 # Relies on dead gstreamer:0.10. Dead upstream.
 # Masked for removal in 30 days. Bug #603270.
