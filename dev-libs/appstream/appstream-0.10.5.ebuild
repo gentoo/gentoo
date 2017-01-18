@@ -5,7 +5,7 @@
 EAPI=6
 
 KDE_AUTODEPS="false"
-KDE_TEST="true"
+KDE_TEST="forceoptional-recursive"
 inherit kde5 xdg-utils
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -37,6 +37,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/itstool
 	sys-devel/gettext
+	test? (
+		qt5? ( dev-qt/qttest:5 )
+	)
 "
 
 src_configure() {
