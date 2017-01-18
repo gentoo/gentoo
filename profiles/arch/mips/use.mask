@@ -345,10 +345,6 @@ xemacs
 # no native mips/linux code generation, see bug 319649
 ocamlopt
 
-# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
-# mask d3d since we don't have wine
-d3d
-
 # Michael Sterrett <mr_bones_@gentoo.org> (24 Aug 2012)
 # media-sound/fluidsynth isn't keyworded
 fluidsynth

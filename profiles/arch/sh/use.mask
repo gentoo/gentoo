@@ -162,10 +162,6 @@ seamonkey
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
-# mask d3d since we don't have wine
-d3d
-
 # Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
 # libdlm and cman are not keyworded
 cman
