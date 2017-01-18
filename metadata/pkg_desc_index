@@ -9022,18 +9022,18 @@ dev-ros/test_rosmaster 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12
 dev-ros/test_rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: Unit tests for rospy
-dev-ros/test_tf2 0.5.12-r1 0.5.13 9999: TF2 unit tests
+dev-ros/test_tf2 0.5.12-r1 0.5.13 0.5.14 9999: TF2 unit tests
 dev-ros/tf 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
-dev-ros/tf2 0.5.13 9999: The second generation Transform Library in ROS
-dev-ros/tf2_bullet 0.5.12 0.5.13 9999: TF2 bullet support
-dev-ros/tf2_eigen 0.5.13 9999: TF2 eigen support
-dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 9999: The second generation Transform Library in ROS
-dev-ros/tf2_kdl 0.5.12 0.5.13 9999: KDL binding for tf2
-dev-ros/tf2_msgs 0.5.12 0.5.13 9999: TF2 messages
-dev-ros/tf2_py 0.5.12 0.5.13 9999: TF2 python bindings
-dev-ros/tf2_ros 0.5.13-r1 9999: ROS bindings for the tf2 library, for both Python and C++
-dev-ros/tf2_sensor_msgs 0.5.12 0.5.13 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
-dev-ros/tf2_tools 0.5.12 0.5.13 9999: TF2 tools
+dev-ros/tf2 0.5.13 0.5.14 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.5.12 0.5.13 0.5.14 9999: TF2 bullet support
+dev-ros/tf2_eigen 0.5.13 0.5.14 9999: TF2 eigen support
+dev-ros/tf2_geometry_msgs 0.5.12 0.5.13 0.5.14 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.5.12 0.5.13 0.5.14 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.5.12 0.5.13 0.5.14 9999: TF2 messages
+dev-ros/tf2_py 0.5.12 0.5.13 0.5.14 9999: TF2 python bindings
+dev-ros/tf2_ros 0.5.13-r1 0.5.14 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.5.12 0.5.13 0.5.14 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.5.12 0.5.13 0.5.14 9999: TF2 tools
 dev-ros/tf_conversions 1.11.7 1.11.8 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
 dev-ros/theora_image_transport 1.9.2 1.9.3 1.9.5 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
@@ -14333,7 +14333,7 @@ net-dialup/moserial 3.0.10: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/picocom 2.1 2.2: minimal dumb-terminal emulation program
-net-dialup/ppp 2.4.4-r25 2.4.5-r3 2.4.6-r3 2.4.7 2.4.7-r2 2.4.7-r3: Point-to-Point Protocol (PPP)
+net-dialup/ppp 2.4.7-r3: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.7.2-r3 1.8.0: Linux client for PPTP
@@ -15660,7 +15660,7 @@ ros-meta/executive_smach 2.0.0 9999: SMACH library and ROS SMACH integration pac
 ros-meta/gazebo_ros_pkgs 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 2.6.1 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 9999: Common geometric calculations
-ros-meta/geometry_experimental 0.5.13 9999: The second generation Transform Library in ros
+ros-meta/geometry_experimental 0.5.13 0.5.14 9999: The second generation Transform Library in ros
 ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 9999: hector_mapping and related packages
@@ -16953,7 +16953,7 @@ sys-apps/lshw 02.16b-r2 02.17b 02.17b-r1 02.17b-r2: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.7.5 2.7.6.1-r1: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.7.6.1-r1: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.08 4.09: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
