@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ inherit eutils multilib qmake-utils
 MY_P="${PN}-${PV/_/~}"
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
-HOMEPAGE="http://mumble.sourceforge.net/"
-SRC_URI="http://mumble.info/snapshot/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.mumble.info"
+SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
