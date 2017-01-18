@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools base fdo-mime gnome2-utils flag-o-matic linux-info \
+inherit autotools fdo-mime gnome2-utils flag-o-matic linux-info \
 	multilib multilib-minimal pam python-single-r1 user versionator \
 	java-pkg-opt-2 systemd toolchain-funcs
 
@@ -22,7 +22,7 @@ if [[ ${PV} == *9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
 else
-	SRC_URI="http://www.cups.org/software/${MY_PV}/${MY_P}-source.tar.bz2"
+	SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
@@ -48,7 +48,7 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
@@ -76,11 +76,7 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-cups )
 "
 
-PDEPEND="
-	app-text/ghostscript-gpl[cups]
-	app-text/poppler[utils]
-	>=net-print/cups-filters-1.0.43
-"
+PDEPEND=">=net-print/cups-filters-1.0.43"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -90,15 +86,12 @@ REQUIRED_USE="
 # upstream includes an interactive test which is a nono for gentoo
 RESTRICT="test"
 
-S="${WORKDIR}/${MY_P}"
-
 # systemd-socket.patch from Fedora
 PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
+	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
-	"${FILESDIR}/${PN}-2.0.2-systemd-socket.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 	"${FILESDIR}/${PN}-2.0.3-cross-compile.patch"
 )
@@ -152,8 +145,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	base_src_prepare
-	epatch_user
+	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
 	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
@@ -263,7 +255,7 @@ multilib_src_install_all() {
 	use zeroconf && neededservices+=" avahi-daemon"
 	use dbus && neededservices+=" dbus"
 	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
-	cp "${FILESDIR}"/cupsd.init.d-r1 "${T}"/cupsd || die
+	cp "${FILESDIR}"/cupsd.init.d-r2 "${T}"/cupsd || die
 	sed -i \
 		-e "s/@neededservices@/$neededservices/" \
 		"${T}"/cupsd || die
@@ -298,9 +290,8 @@ multilib_src_install_all() {
 	# create /etc/cups/client.conf, bug #196967 and #266678
 	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
 
-	# the following files are now provided by cups-filters:
+	# the following file is now provided by cups-filters:
 	rm -r "${ED}"/usr/share/cups/banners || die
-	rm -r "${ED}"/usr/share/cups/data/testprint || die
 
 	# the following are created by the init script
 	rm -r "${ED}"/var/cache/cups || die
