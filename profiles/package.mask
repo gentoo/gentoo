@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
+# Relies on dead gstreamer:0.10. Dead upstream.
+# Masked for removal in 30 days. Bug #603270.
+media-video/flumotion
+
+# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
 # Obsolete. Use app-admin/filebeat instead.
 app-admin/filebeat-bin
 
