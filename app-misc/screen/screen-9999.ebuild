@@ -33,10 +33,6 @@ DEPEND="${CDEPEND}
 RESTRICT="test"
 S="${WORKDIR}"/${P}/src
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-alloca.patch
-)
-
 pkg_setup() {
 	# Make sure utmp group exists, as it's used later on.
 	enewgroup utmp 406
