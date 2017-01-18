@@ -12474,7 +12474,7 @@ media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 0.9-r2: Qt4 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made with a digital camera
 media-gfx/fr0st 1.4-r2: A fractal flame editor
-media-gfx/freecad 0.15.4671 9999: QT based Computer Aided Design application
+media-gfx/freecad 0.15.4671 0.16 9999: QT based Computer Aided Design application
 media-gfx/freepv 0.3.0-r4: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 1.22.13-r4 2.3.3-r1 3.0.0 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
