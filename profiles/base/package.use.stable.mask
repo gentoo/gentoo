@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
+# www-client/weboob is horribly outdated and not stable
+app-office/kmymoney weboob
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
 # Stable-masking mpi support so Boost 1.62 stabilization can go ahead
 # (bug 590244)
