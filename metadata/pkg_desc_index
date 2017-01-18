@@ -5379,7 +5379,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0 3.0.0 3.20.0 3.40.0 3.60.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.13: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
@@ -10291,7 +10291,7 @@ dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply bec
 dev-util/wsta 0.4.1 0.5.0: A CLI development tool for WebSocket APIs
 dev-util/wstool 0.1.10 0.1.12 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
-dev-util/xdelta 1.1.4-r1 3.0.6 3.0.10 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
+dev-util/xdelta 1.1.4-r1 3.0.10 3.0.11 3.1.0: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
