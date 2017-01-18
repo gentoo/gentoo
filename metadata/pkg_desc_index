@@ -6275,7 +6275,7 @@ dev-perl/Path-Class 0.360.0: Cross-platform path specification manipulation
 dev-perl/Path-FindDev 0.5.2: Find a development path somewhere in an upper hierarchy
 dev-perl/Path-IsDev 1.1.2: Determine if a given Path resembles a development source tree
 dev-perl/Path-Tiny 0.61.0 0.84.0: File path utility
-dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
+dev-perl/Pegex 0.600.0 0.630.0: Acmeist PEG Parser Framework
 dev-perl/Perl-Critic 1.123 1.126.0: Critique Perl source code for best-practices
 dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been superseded by others
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
