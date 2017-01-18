@@ -1,0 +1,60 @@
+From 8a20fca86e9e2ce3d04b3e024b0752e19f9d8c8e Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Mon, 16 Jan 2017 20:06:00 +0100
+Subject: [PATCH] Revert "Fix warning about QOffscreenSurface thread" Caused
+ startup crash on NVidia cards CCBUG: 375094
+
+This reverts commit 6675c4a509046aa3b57c60cbc3f31435e09c2df7.
+---
+ src/monitor/glwidget.cpp | 10 +++-------
+ src/monitor/glwidget.h   |  1 -
+ 2 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/src/monitor/glwidget.cpp b/src/monitor/glwidget.cpp
+index e4089e6..cd4f56a 100644
+--- a/src/monitor/glwidget.cpp
++++ b/src/monitor/glwidget.cpp
+@@ -109,7 +109,6 @@ GLWidget::GLWidget(int id, QObject *parent)
+         mlt_properties_set_data(mlt_global_properties(), "glslManager", NULL, 0, NULL, NULL);
+         emit gpuNotSupported();
+     }
+-    connect(this, SIGNAL(sceneGraphInitialized()), SLOT(createOffscreen()));
+     connect(this, SIGNAL(sceneGraphInitialized()), SLOT(initializeGL()), Qt::DirectConnection);
+     connect(this, SIGNAL(beforeRendering()), SLOT(paintGL()), Qt::DirectConnection);
+ }
+@@ -143,17 +142,14 @@ void GLWidget::updateAudioForAnalysis()
+ 	m_frameRenderer->sendAudioForAnalysis = KdenliveSettings::monitor_audio();
+ }
+ 
+-void GLWidget::createOffscreen()
++void GLWidget::initializeGL()
+ {
++    if (m_isInitialized || !isVisible() || !openglContext()) return;
+     if (!m_offscreenSurface.isValid()) {
+         m_offscreenSurface.setFormat(openglContext()->format());
+         m_offscreenSurface.create();
++        openglContext()->makeCurrent(this);
+     }
+-}
+-
+-void GLWidget::initializeGL()
+-{
+-    if (m_isInitialized || !isVisible() || !openglContext()) return;
+     initializeOpenGLFunctions();
+     qDebug() << "OpenGL vendor: " << QString::fromUtf8((const char*) glGetString(GL_VENDOR));
+     qDebug() << "OpenGL renderer: " << QString::fromUtf8((const char*) glGetString(GL_RENDERER));
+diff --git a/src/monitor/glwidget.h b/src/monitor/glwidget.h
+index dc1e0e2..d12500a 100644
+--- a/src/monitor/glwidget.h
++++ b/src/monitor/glwidget.h
+@@ -182,7 +182,6 @@ private slots:
+     void updateTexture(GLuint yName, GLuint uName, GLuint vName);
+     void paintGL();
+     void onFrameDisplayed(const SharedFrame &frame);
+-    void createOffscreen();
+ 
+ protected:
+     void resizeEvent(QResizeEvent* event);
+-- 
+2.10.2
+
