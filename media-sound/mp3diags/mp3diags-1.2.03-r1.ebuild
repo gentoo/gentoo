@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/boost-1.37:=
+	dev-libs/boost:=[threads]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	sys-libs/zlib
