@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango:0
 	virtual/libintl:0
-	caja? ( >=mate-base/caja-1.12[gtk3(+)] )
+	caja? ( >=mate-base/caja-1.1.0 )
 	>=x11-libs/gtk+-3.14:3
 	magic? ( sys-apps/file )
 	packagekit? ( app-admin/packagekit-base )
