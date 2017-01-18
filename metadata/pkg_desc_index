@@ -13615,7 +13615,7 @@ media-sound/mp3blaster 3.2.5-r1 3.2.5-r2: Text console based program for playing
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3cat 0.4: mp3cat reads and writes MP3 files
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
-media-sound/mp3diags 1.2.02-r1 1.2.03: Qt-based MP3 diagnosis and repair tool
+media-sound/mp3diags 1.2.02-r1 1.2.03-r1: Qt-based MP3 diagnosis and repair tool
 media-sound/mp3gain 1.5.2: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3report 1.0.2: Perl script to create an HTML report of MP3 files in a directory
