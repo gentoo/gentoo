@@ -578,12 +578,12 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.20.7 0.23.2: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.2: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.3 1.4: OpenPGP key archiver
 app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.30 0.31: A PGP packet visualizer
-app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5 0.9.6-r6 0.9.7 0.9.7-r1 1.0.0: Simple passphrase entry dialogs which utilize the Assuan protocol
+app-crypt/pinentry 0.9.7-r1 1.0.0: Simple passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 2.2.1: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
@@ -4550,7 +4550,7 @@ dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Wei
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1 1.62.0-r1 1.63.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.13 1.10.14 2.0.0: A C++ crypto library
+dev-libs/botan 1.10.14 2.0.0: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -4674,7 +4674,7 @@ dev-libs/libRocket 1.2.1_p20130110-r1 1.3.0.0 9999: A HTML/CSS User Interface li
 dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libarcus 1.0.0_pre20160307 2.3.1: This library facilitates communication between Cura and its backend
-dev-libs/libassuan 2.1.1 2.1.2 2.1.3 2.2.0 2.2.1 2.3.0 2.4.1 2.4.2 2.4.3: IPC library used by GnuPG and GPGME
+dev-libs/libassuan 2.4.3: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
@@ -4740,7 +4740,7 @@ dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes 
 dev-libs/libgit2 0.22.3 0.23.4 0.24.2 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
-dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0_rc1: Library to manipulate tensors on the GPU
 dev-libs/libgudev 230 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
@@ -4778,7 +4778,7 @@ dev-libs/libmateweather 1.12.2 1.14.3 1.16.1: MATE library to access weather inf
 dev-libs/libmaxminddb 1.2.0: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
-dev-libs/libmcrypt 2.5.8-r2 2.5.8-r3: libmcrypt is a library that provides uniform interface to access several encryption algorithms
+dev-libs/libmcrypt 2.5.8-r3: libmcrypt is a library that provides uniform interface to access several encryption algorithms
 dev-libs/libmcs 0.7.2: Abstracts the storage of configuration settings away from applications
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
@@ -4906,7 +4906,7 @@ dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficien
 dev-libs/nanomsg 0.8 0.9 1.0.0: High-performance messaging interface for distributed applications
 dev-libs/nettle 3.2 3.2-r1 3.3: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
-dev-libs/npth 1.1 1.2 1.3: New GNU Portable Threads Library
+dev-libs/npth 1.2 1.3: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.3: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.12 4.13 4.13.1: Netscape Portable Runtime
 dev-libs/nss 3.22.2 3.23 3.25-r1 3.26.1 3.27.2 3.28.1: Mozilla's Network Security Services library that implements PKI support
@@ -12126,7 +12126,7 @@ mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your ma
 mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
-mail-filter/maildrop 2.6.0 2.8.3: Mail delivery agent/filter
+mail-filter/maildrop 2.6.0 2.8.3 2.8.5: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.2 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
@@ -16993,7 +16993,7 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.4.1 3.5.2: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.12-r1 1.8.16-r1 1.8.20: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.16-r1 1.8.20: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.25 1.4.26 1.4.27: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 0.9.4 9999: a framework for package management
