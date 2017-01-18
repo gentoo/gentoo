@@ -22,4 +22,7 @@
 			<pkg>app-crypt/heimdal</pkg>.</flag>
 		<flag name="winbind">Enables support for the winbind auth daemon</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:samba</remote-id>
+	</upstream>
 </pkgmetadata>
