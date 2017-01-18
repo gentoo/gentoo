@@ -1,12 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=>=sys-libs/glibc-2.3.2-r9
+DEPEND=sys-libs/glibc
 DESCRIPTION=a package for preventing processes from using exec system calls
-EAPI=0
+EAPI=6
 HOMEPAGE=http://noexec.sourceforge.net/
-KEYWORDS=~amd64 ppc x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/glibc-2.3.2-r9
 SLOT=0
 SRC_URI=mirror://sourceforge/noexec/noexec-1.1.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=38c0b362bedc52af7883558125194577
+_md5_=d93a5c743bb3f213983ce2c35bee5ecc
