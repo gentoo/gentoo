@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,11 +21,7 @@ IUSE="compat +python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	!!<sys-libs/talloc-2.0.5
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!!<sys-libs/talloc-2.0.5"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-libs/libxslt
