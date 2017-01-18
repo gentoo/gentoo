@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 # MIT license is used by included (modified) iso8601.py code.
 LICENSE="repoze MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 # Depend on an ebuild of translationstring with Python 3 support.
