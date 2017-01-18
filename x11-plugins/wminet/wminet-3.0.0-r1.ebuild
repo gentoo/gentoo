@@ -11,7 +11,7 @@ SRC_URI="http://www.swanson.ukfsn.org/wmdock/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
