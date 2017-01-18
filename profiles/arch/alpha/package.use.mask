@@ -140,10 +140,6 @@ dev-libs/libpeas lua jit
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
-# Dependency not keyworded on this arch, bug #542570.
-xfce-base/xfce4-settings libinput
-
 # Michał Górny <mgorny@gentoo.org> (22 Feb 2015)
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
