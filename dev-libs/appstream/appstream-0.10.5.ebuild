@@ -35,6 +35,7 @@ RDEPEND="
 	qt5? ( dev-qt/qtcore:5 )
 "
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.5
 	dev-util/itstool
 	sys-devel/gettext
 	test? (
