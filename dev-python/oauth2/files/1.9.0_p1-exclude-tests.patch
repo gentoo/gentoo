@@ -1,5 +1,5 @@
---- setup.py.bak	2015-09-19 14:03:27.000000000 +0200
-+++ setup.py	2015-09-19 14:03:43.000000000 +0200
+--- a/setup.py
++++ b/setup.py
 @@ -45,7 +45,7 @@
          "Natural Language :: English",
          "License :: OSI Approved :: MIT License"
