@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-PATCHES=( "${FILESDIR}/${PV}-endpoints.patch"
-		  "${FILESDIR}/${PV}-no_signatures.patch" )
+PATCHES=( "${FILESDIR}/0.18.0-endpoints.patch"
+		  "${FILESDIR}/0.18.0-no_signatures.patch" )
 RDEPEND="
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	dev-python/kitchen[${PYTHON_USEDEP}]
@@ -28,6 +28,10 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/m2crypto[${PYTHON_USEDEP}]' 'python2*')
 "
 DEPEND="${RDEPEND}"
+DOCS=(
+	"README.rst" "CHANGELOG.rst"
+	#TODO: doc/ dir full of rst files
+)
 
 python_install_all() {
 	distutils-r1_python_install_all
