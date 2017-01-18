@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install pretend
+DEPEND=sci-libs/fftw:3.0[threads,openmp?]
+DESCRIPTION=library for nonequispaced discrete Fourier transformations
+EAPI=6
+HOMEPAGE=http://www-user.tu-chemnitz.de/~potts/nfft
+IUSE=doc openmp static-libs
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=sci-libs/fftw:3.0[threads,openmp?]
+SLOT=0
+SRC_URI=https://github.com/NFFT/nfft/releases/download/3.3.2/nfft-3.3.2.tar.gz
+_eclass_exported_funcs=pkg_pretend:- src_configure:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=3a33d76cdc8b1240847137541dc032c8
