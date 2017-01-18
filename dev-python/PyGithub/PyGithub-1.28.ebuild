@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jacquev6/PyGithub/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
