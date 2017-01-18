@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -21,6 +20,10 @@ RDEPEND="acl? ( virtual/acl )
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-dfa-segv-{1,2,3}.patch
+)
+
 src_bootstrap_sed() {
 	# make sure system-sed works #40786
 	export NO_SYS_SED=""
@@ -34,6 +37,8 @@ src_bootstrap_sed() {
 }
 
 src_prepare() {
+	epatch "${PATCHES[@]}"
+
 	# don't use sed before bootstrap if we have to recover a broken host sed
 	src_bootstrap_sed
 }
