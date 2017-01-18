@@ -556,12 +556,6 @@ dev-python/south
 # disabling GLX indirect rendering protocol support on the X server.
 <x11-drivers/nvidia-drivers-304
 
-# Sergey Popov <pinkbyte@gentoo.org> (28 Aug 2014)
-# Security mask, wrt bug #519650
-# If your application is broken due to this mask,
-# please file a separate bug report
-<net-dialup/ppp-2.4.7
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1

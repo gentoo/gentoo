@@ -9,16 +9,14 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="The second generation Transform Library in ROS"
+DESCRIPTION="TF2 eigen support"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/tf2_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/console_bridge
-	dev-ros/rostime
+	dev-cpp/eigen:3
+	dev-ros/tf2
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/boost:=[threads]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND} dev-ros/cmake_modules"
