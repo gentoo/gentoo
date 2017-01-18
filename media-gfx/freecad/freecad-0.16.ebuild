@@ -56,6 +56,10 @@ DEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.3702-install-paths.patch
+)
+
 # https://bugs.gentoo.org/show_bug.cgi?id=352435
 # https://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 RESTRICT="mirror"
