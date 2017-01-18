@@ -141,8 +141,7 @@ multilib_src_configure() {
 
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
-		# TODO: get them properly conditional
-		#-DLLVM_BUILD_TESTS=$(usex test)
+		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
 		-DLLVM_ENABLE_EH=ON
