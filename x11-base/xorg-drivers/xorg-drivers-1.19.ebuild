@@ -113,7 +113,7 @@ PDEPEND="
 	video_cards_cirrus?        ( x11-drivers/xf86-video-cirrus )
 	video_cards_dummy?         ( x11-drivers/xf86-video-dummy )
 	video_cards_fbdev?         ( x11-drivers/xf86-video-fbdev )
-	video_cards_freedreno?     ( x11-drivers/xf86-video-freedreno )
+	video_cards_freedreno?     ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_geode?         ( x11-drivers/xf86-video-geode )
 	video_cards_glint?         ( x11-drivers/xf86-video-glint )
 	video_cards_i128?          ( x11-drivers/xf86-video-i128 )
