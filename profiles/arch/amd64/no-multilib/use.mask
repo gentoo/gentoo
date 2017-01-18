@@ -16,10 +16,6 @@ hvm
 # Mask 32bit since this will always require emulation packages
 32bit
 
-# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
-# mask d3d since wine is 32-bit
-d3d
-
 # Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
 # Mask the multilib flags back for non-multilib profile.
 abi_x86_32

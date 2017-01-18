@@ -208,10 +208,6 @@ mumble
 # ppc keywords were dropped for dev-libs/prelude
 prelude
 
-# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
-# mask d3d since we don't have wine
-d3d
-
 # Julian Ospald <hasufell@gentoo.org> (25 Apr 2012)
 # Masked because nvidia-texture-tools is not (tested) for PowerPC
 nvtt
