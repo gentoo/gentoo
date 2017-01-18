@@ -4,15 +4,25 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic pam toolchain-funcs user
+SCM=""
+[[ "${PV}" = 9999 ]] && SCM="git-r3"
+inherit autotools eutils flag-o-matic pam toolchain-funcs user ${SCM}
+unset SCM
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+
+if [[ "${PV}" != 9999 ]] ; then
+	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+else
+	EGIT_REPO_URI="git://git.savannah.gnu.org/screen.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
+	S="${WORKDIR}"/${P}/src
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
@@ -23,9 +33,8 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	sys-apps/texinfo"
 
-# Patches:
-# - Don't use utempter even if it is found on the system.
 PATCHES=(
+	# Don't use utempter even if it is found on the system.
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 )
 
@@ -93,18 +102,23 @@ src_compile() {
 }
 
 src_install() {
-	local tmpfiles_perms tmpfiles_group
+	local DOCS=(
+		README ChangeLog INSTALL TODO NEWS* patchlevel.h
+		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
+	)
 
-	dobin screen
+	default
+
+	local tmpfiles_perms tmpfiles_group
 
 	if use multiuser || use prefix
 	then
-		fperms 4755 /usr/bin/screen
+		fperms 4755 /usr/bin/screen-${PV}
 		tmpfiles_perms="0755"
 		tmpfiles_group="root"
 	else
-		fowners root:utmp /usr/bin/screen
-		fperms 2755 /usr/bin/screen
+		fowners root:utmp /usr/bin/screen-${PV}
+		fperms 2755 /usr/bin/screen-${PV}
 		tmpfiles_perms="0775"
 		tmpfiles_group="utmp"
 	fi
@@ -115,19 +129,11 @@ src_install() {
 
 	insinto /usr/share/screen
 	doins terminfo/{screencap,screeninfo.src}
-	insinto /usr/share/screen/utf8encodings
-	doins utf8encodings/??
+
 	insinto /etc
 	doins "${FILESDIR}"/screenrc
 
 	pamd_mimic_system screen auth
-
-	dodoc \
-		README ChangeLog INSTALL TODO NEWS* patchlevel.h \
-		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
-
-	doman doc/screen.1
-	doinfo doc/screen.info
 }
 
 pkg_postinst() {
