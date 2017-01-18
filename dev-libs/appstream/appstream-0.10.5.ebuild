@@ -6,7 +6,7 @@ EAPI=6
 
 KDE_AUTODEPS="false"
 KDE_TEST="true"
-inherit kde5
+inherit kde5 xdg-utils
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	EGIT_REPO_URI="https://github.com/ximion/${PN}"
@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	xdg_environment_reset
+
 	local mycmakeargs=(
 		-DSTEMMING=ON
 		-DL18N=ON
