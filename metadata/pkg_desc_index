@@ -15891,7 +15891,7 @@ sci-calculators/grpn 1.4.0: A reverse polish notation (RPN) calculator based on 
 sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.2.3: A universal currency converter and calculator
-sci-calculators/orpie 1.5.1 1.5.1-r1 1.5.2 1.5.2-r1: A fullscreen RPN calculator for the console
+sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 2 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calculator
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
@@ -16473,7 +16473,7 @@ sci-misc/boinc 7.2.44-r2 7.4.52-r2 7.6.33-r2: The Berkeley Open Infrastructure f
 sci-misc/cdfplayer 10.4.0: Wolfram Player for the interactive Computable Document Format (CDF)
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17 4.18: FITS file format checker
-sci-misc/flashdot 1.1.4 1.1.4-r1: Generator for psychophysical experiments
+sci-misc/flashdot 1.1.4-r1: Generator for psychophysical experiments
 sci-misc/gato 1.2.2: Graph Animation Toolbox
 sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
