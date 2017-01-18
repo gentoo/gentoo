@@ -4,11 +4,11 @@ DESCRIPTION=Interface to AT&T's GraphViz
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/GraphViz/
 IUSE=test examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=media-gfx/graphviz >=virtual/perl-Carp-1.10.0 >=virtual/perl-Getopt-Long-2.340.0 virtual/perl-IO >=dev-perl/IPC-Run-0.600.0 >=dev-perl/libwww-perl-6 >=dev-perl/Parse-RecDescent-1.965.1 >=virtual/perl-Time-HiRes-1.510.0 >=dev-perl/XML-Twig-3.520.0 >=dev-perl/XML-XPath-1.130.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RS/RSAVAGE/GraphViz-2.24.tgz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=71d8bf1b2535473c76c77441ab6f2a34
+_md5_=976beefdad4fbaf824abed098b87800e

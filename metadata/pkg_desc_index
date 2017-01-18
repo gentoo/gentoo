@@ -1287,7 +1287,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.26.1: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 1.12.6 1.13.0_rc7 9999: The core functions you need to create Docker images and run Docker containers
-app-emulation/docker-compose 1.9.0 1.10.0_rc2: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.9.0 1.10.0_rc2 1.10.0: Multi-container orchestration for Docker
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.7.0 0.8.2: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.7.0: KVM driver for docker-machine
@@ -8085,7 +8085,7 @@ dev-python/pynacl 1.0.1 1.0.1-r1: Python binding to the Networking and Cryptogra
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.4.1 0.4.2 0.4.4: An optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.4.1 0.4.2 0.4.4 0.4.5: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1 3.0.10: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
@@ -12444,7 +12444,7 @@ media-gfx/darktable 2.0.7 2.2.1 9999: A virtual lighttable and darkroom for phot
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.3.0-r1: Digital photo management application
-media-gfx/displaycal 3.1.6.0 3.2.1.0 3.2.2.0: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.1.6.0 3.2.1.0 3.2.2.0 3.2.3.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files

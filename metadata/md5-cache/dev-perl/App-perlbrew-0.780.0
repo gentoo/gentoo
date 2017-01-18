@@ -4,11 +4,11 @@ DESCRIPTION=Manage perl installations in your $HOME
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/App-perlbrew/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-perl/CPAN-Perl-Releases-2.600.0 >=dev-perl/Capture-Tiny-0.360.0 >=dev-perl/Devel-PatchPerl-1.400.0 >=virtual/perl-Pod-Parser-1.630.0 >=dev-perl/local-lib-2.0.14 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GU/GUGOD/App-perlbrew-0.78.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=496289041e2239f37bab6b55902e2f51
+_md5_=b353079bd039c6dddb701b2f28688254
