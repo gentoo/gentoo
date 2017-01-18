@@ -11589,7 +11589,7 @@ kde-apps/kdegraphics-mobipocket 16.08.3 16.12.1: Library to support mobipocket e
 kde-apps/kdemultimedia-meta 16.08.3 16.12.1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 16.08.3 16.12.1: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 16.08.3 16.12.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 16.08.1 16.08.3 16.12.0 16.12.1: Non-linear video editing suite by KDE
+kde-apps/kdenlive 16.08.3 16.12.0 16.12.1 16.12.1-r1: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 16.08.3: KDE GUI for passwd
 kde-apps/kdepim-addons 16.12.1: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 16.12.1: Libraries for KDE PIM applications
