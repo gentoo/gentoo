@@ -31,8 +31,18 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
+# Relies on dead gstreamer:0.10. Dead upstream.
+# Masked for removal in 30 days. Bug #603270.
+media-video/flumotion
+
+# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
+# Obsolete. Use app-admin/filebeat instead.
+# Masked for removal in 30 days. Bug #603292.
+app-admin/filebeat-bin
+
+# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
 # Fails to build with ffmpeg-3. Dead upstream.
-# Masked for remvoal in 30 days.
+# Masked for removal in 30 days. Bug #602946.
 app-cdr/k9copy
 
 # Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
