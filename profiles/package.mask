@@ -31,6 +31,10 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
+# Obsolete. Use app-admin/filebeat instead.
+app-admin/filebeat-bin
+
+# Michael Palimaka <kensington@gentoo.org> (18 Jan 2017)
 # Fails to build with ffmpeg-3. Dead upstream.
 # Masked for remvoal in 30 days.
 app-cdr/k9copy
