@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-configure-withval.patch
 	"${FILESDIR}"/${P}-binutils.patch
 	"${FILESDIR}"/${P}-uselib.patch #592226
+	"${FILESDIR}"/${P}-ncurses-config.patch
 )
 
 src_prepare() {
