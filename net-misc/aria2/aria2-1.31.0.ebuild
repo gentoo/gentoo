@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,12 +50,14 @@ RDEPEND="${CDEPEND}
 	nls? ( virtual/libiconv virtual/libintl )
 	scripts? ( dev-lang/ruby )"
 
-REQUIRED_USE="jemalloc? ( !tcmalloc )
-	tcmalloc? ( !jemalloc )"
+# xmlrpc has no explicit switch, it's turned out by any XML library
+# so metalink implicitly forces it on
+REQUIRED_USE="?? ( jemalloc tcmalloc )
+	metalink? ( xmlrpc )"
 RESTRICT="!test? ( test )"
 
 pkg_setup() {
-	if use scripts && use !xmlrpc && use !metalink; then
+	if use scripts && ! use xmlrpc; then
 		ewarn "Please note that you may need to enable USE=xmlrpc to run the aria2rpc"
 		ewarn "and aria2mon scripts against the local aria2."
 	fi
@@ -82,10 +84,11 @@ src_configure() {
 		$(use_enable bittorrent)
 		$(use_enable metalink)
 		$(use_enable nls)
-		$(use_with sqlite sqlite3)
 		$(use_with adns libcares)
-		$(use_with libuv)
 		$(use_with jemalloc)
+		$(use_with libuv)
+		$(use_with sqlite sqlite3)
+		$(use_with ssh libssh2)
 		$(use_with tcmalloc)
 	)
 
@@ -143,7 +146,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use xmlrpc || use metalink; then
+	if use xmlrpc; then
 		elog "If you would like to use the additional aria2mon and aria2rpc tools,"
 		elog "you need to have \033[1mdev-lang/ruby\033[0m installed."
 	fi
