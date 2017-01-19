@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,6 @@ DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="http://calamares.io"
 if [[ ${KDE_BUILD_TYPE} == live ]] ; then
 	EGIT_REPO_URI="git://github.com/${PN}/${PN}"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -38,7 +37,7 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5]
-	<sys-libs/kpmcore-3.0.0:5=
+	sys-libs/kpmcore:5=
 "
 
 RDEPEND="${DEPEND}
