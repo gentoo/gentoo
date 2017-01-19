@@ -145,6 +145,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if ! use kerberos ; then
+		PATCHES+=(
+			"${FILESDIR}/${PN}-2.2.2-no_kerberos_config.patch"
+		)
+	fi
+
 	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
