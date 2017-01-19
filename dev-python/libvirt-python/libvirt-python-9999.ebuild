@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_P="${P/_rc/-rc}"
 
@@ -27,7 +27,7 @@ DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="test"
+IUSE="examples test"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -36,4 +36,12 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	esetup.py test
+}
+
+python_install_all() {
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+	distutils-r1_python_install_all
 }
