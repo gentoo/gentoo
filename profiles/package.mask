@@ -268,12 +268,6 @@ sci-geosciences/googleearth
 # Masked for testing, see bug #588894.
 =x11-misc/light-locker-1.7.0-r1
 
-# Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
-# Breaks samba's nmbd process (bug #592502)
-# Masked the possible fixed samba version until more testing has been performed.
->=sys-libs/tevent-0.9.30
->=sys-libs/ldb-1.1.29
-
 # Ian Stakenvicius <axs@gentoo.org> (31 Aug 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
@@ -500,8 +494,10 @@ sys-fs/bedup
 =app-emulation/vmware-modules-271*
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
-# Masked for testing
->=net-fs/samba-4.3.0
+# Masked for testing and other various issues.
+=net-fs/samba-4.3*
+=net-fs/samba-4.4*
+>=net-fs/samba-4.6.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Releases are not from original upstream but from a fork.

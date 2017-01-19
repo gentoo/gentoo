@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Lars Wendler <polynomial-c@gentoo.org> (19 Jan 2017)
+# Masked until system heimdal can finally be used with AD DC
+net-fs/samba system-heimdal
+
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # Mask it globally, unmask it on supported arch
 >=sys-devel/gcc-6.2.0 pie
@@ -589,14 +593,6 @@ app-editors/gvim luajit racket
 # Doesn't work on most profiles. Easier to mask here and
 # unmask in particular profiles
 sys-apps/hwloc cuda gl opencl
-
-# Samuli Suominen <ssuominen@gentoo.org> (07 Aug 2013)
-# There is no support for recent app-pda/libimobiledevice wrt bug #471920
-# Upstream removed entire support in future release:
-# https://code.google.com/p/clementine-player/source/detail?r=3d434f1c881890dd77fea6d0e3de3afc86971196
-# Remove this entry once <=media-sound/clementine-1.1.1 has left the building
-media-sound/clementine ios
-<media-sound/clementine-1.2.0 ipod
 
 # Ben de Groot <yngwin@gentoo.org> (07 Aug 2013)
 # Newer lightdm doesn't work with current razorqt-lightdm-greeter, bug 479734

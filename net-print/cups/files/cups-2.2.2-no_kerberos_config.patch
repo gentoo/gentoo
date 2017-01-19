@@ -1,0 +1,57 @@
+Don't add kerberos policies into cupsd config when no kerberos support was
+compiled in.
+
+https://bugs.gentoo.org/606472
+
+--- cups-2.2.2/conf/cupsd.conf.in
++++ cups-2.2.2/conf/cupsd.conf.in
+@@ -134,49 +134,3 @@
+     Order deny,allow
+   </Limit>
+ </Policy>
+-
+-# Set the kerberized printer/job policies...
+-<Policy kerberos>
+-  # Job/subscription privacy...
+-  JobPrivateAccess default
+-  JobPrivateValues default
+-  SubscriptionPrivateAccess default
+-  SubscriptionPrivateValues default
+-
+-  # Job-related operations must be done by the owner or an administrator...
+-  <Limit Create-Job Print-Job Print-URI Validate-Job>
+-    AuthType Negotiate
+-    Order deny,allow
+-  </Limit>
+-
+-  <Limit Send-Document Send-URI Hold-Job Release-Job Restart-Job Purge-Jobs Set-Job-Attributes Create-Job-Subscription Renew-Subscription Cancel-Subscription Get-Notifications Reprocess-Job Cancel-Current-Job Suspend-Current-Job Resume-Job Cancel-My-Jobs Close-Job CUPS-Move-Job CUPS-Get-Document>
+-    AuthType Negotiate
+-    Require user @OWNER @SYSTEM
+-    Order deny,allow
+-  </Limit>
+-
+-  # All administration operations require an administrator to authenticate...
+-  <Limit CUPS-Add-Modify-Printer CUPS-Delete-Printer CUPS-Add-Modify-Class CUPS-Delete-Class CUPS-Set-Default>
+-    AuthType Default
+-    Require user @SYSTEM
+-    Order deny,allow
+-  </Limit>
+-
+-  # All printer operations require a printer operator to authenticate...
+-  <Limit Pause-Printer Resume-Printer Enable-Printer Disable-Printer Pause-Printer-After-Current-Job Hold-New-Jobs Release-Held-New-Jobs Deactivate-Printer Activate-Printer Restart-Printer Shutdown-Printer Startup-Printer Promote-Job Schedule-Job-After Cancel-Jobs CUPS-Accept-Jobs CUPS-Reject-Jobs>
+-    AuthType Default
+-    Require user @CUPS_DEFAULT_PRINTOPERATOR_AUTH@
+-    Order deny,allow
+-  </Limit>
+-
+-  # Only the owner or an administrator can cancel or authenticate a job...
+-  <Limit Cancel-Job CUPS-Authenticate-Job>
+-    AuthType Negotiate
+-    Require user @OWNER @CUPS_DEFAULT_PRINTOPERATOR_AUTH@
+-    Order deny,allow
+-  </Limit>
+-
+-  <Limit All>
+-    Order deny,allow
+-  </Limit>
+-</Policy>
