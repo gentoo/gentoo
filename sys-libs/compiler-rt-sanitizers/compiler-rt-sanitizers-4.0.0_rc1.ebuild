@@ -16,6 +16,8 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
+EGIT_BRANCH="release_40"
+EGIT_COMMIT="850646edf7e605354c66693c16ab69193e04a078"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
@@ -42,7 +44,8 @@ src_unpack() {
 	if use test; then
 		# needed for patched gtest
 		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
+			https://github.com/llvm-mirror/llvm.git" \
+				c329efbc3c94928fb826ed146897aada0459c983
 	fi
 	git-r3_fetch
 
