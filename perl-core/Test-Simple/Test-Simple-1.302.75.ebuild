@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 DIST_AUTHOR=EXODIST
-DIST_VERSION=1.302062
+DIST_VERSION=1.302075
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
@@ -20,6 +20,7 @@ RDEPEND="
 	!<dev-perl/Test-use-ok-0.160.0
 	!<dev-perl/Log-Dispatch-Config-TestLog-0.20.0
 	!<dev-perl/Net-BitTorrent-0.52.0
+	!<dev-perl/Moose-2.120.900
 	!<dev-perl/Test-Able-0.110.0
 	!<dev-perl/Test-Aggregate-0.373.0
 	!<dev-perl/Test-Alien-0.40.0
