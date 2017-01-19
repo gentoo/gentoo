@@ -17,6 +17,8 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
+EGIT_BRANCH="release_40"
+EGIT_COMMIT="3a631d565d41270fa80cb3d1e43a50d24cfc2f20"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -103,11 +105,13 @@ pkg_setup() {
 
 src_unpack() {
 	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
-		https://github.com/llvm-mirror/clang-tools-extra.git"
+		https://github.com/llvm-mirror/clang-tools-extra.git" \
+		fc0afbd6e7055b4d7f39998d743585683033c2d4
 	if use test; then
 		# needed for patched gtest
 		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
+			https://github.com/llvm-mirror/llvm.git" \
+			c329efbc3c94928fb826ed146897aada0459c983
 	fi
 	git-r3_fetch
 
