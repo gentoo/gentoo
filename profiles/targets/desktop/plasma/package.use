@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@
 media-sound/pulseaudio gnome
 
 # Avoid circular dependency when installing from scratch
-dev-util/cmake -qt4 -qt5
+dev-util/cmake -qt5
 
 # Not required, but makes life easier with Qt; bug 457934
 app-arch/unzip natspec
@@ -58,7 +58,6 @@ dev-qt/qtwayland:5 egl
 media-libs/phonon designer
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
-<dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/solid-runtime -bluetooth
 kde-frameworks/baloo minimal
 sys-auth/polkit-kde-agent minimal
@@ -68,26 +67,18 @@ sys-auth/polkit-kde-agent minimal
 >=app-office/texstudio-2.9.4 -qt4
 dev-db/sqlitebrowser -qt4
 >=dev-libs/quazip-0.7.1 -qt4
->=media-sound/mixxx-2.0.0-r1 -qt4
 net-misc/owncloud-client -qt4
->=net-misc/x2goclient-4.0.5.2 -qt4
-net-news/rssguard -qt4
 net-p2p/bitcoin-qt -qt4
-<net-p2p/qbittorrent-3.3.4-r1 -qt4
->=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
 x11-libs/qscintilla -qt4
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
-<app-text/qpdfview-0.4.16 -qt4
 >=dev-games/openscenegraph-3.2.1-r1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-2.4.12-r1 -qt4
->=media-sound/cantata-2.0.1 -kde
 <media-video/smplayer-16.4.0-r2 -qt4
 media-video/vlc -qt4
 net-analyzer/wireshark -qt4
 net-p2p/transmission -qt4
 >=net-print/hplip-3.16.5 -qt4
 >=net-wireless/wpa_supplicant-2.5 -qt4
-<www-client/qupzilla-2.0.0 -kde -qt4
