@@ -4840,6 +4840,7 @@ media-video/mpv:bluray - Enable playback of Blu-ray filesystems
 media-video/mpv:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
 media-video/mpv:cdio - Enable CDDA support via dev-libs/libcdio-paranoia
 media-video/mpv:cli - Build mpv CLI player
+media-video/mpv:cuda - Enable hardware video decoding via Nvidia CUDA
 media-video/mpv:doc-pdf - Build documentation in pdf format
 media-video/mpv:drm - Enable Kernel Mode Setting / Direct Rendering Manager based video output
 media-video/mpv:egl - Enable support for various EGL-based video outputs
