@@ -72,11 +72,9 @@ src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# https://lists.gnu.org/archive/html/screen-devel/2014-04/msg00095.html
-		append-cppflags -D_XOPEN_SOURCE \
-			-D_XOPEN_SOURCE_EXTENDED=1 \
-			-D__EXTENSIONS__
-		append-libs -lsocket -lnsl
+		# enable msg_header by upping the feature standard compatible
+		# with c99 mode
+		append-cppflags -D_XOPEN_SOURCE=600
 	fi
 
 	use nethack || append-cppflags "-DNONETHACK"
