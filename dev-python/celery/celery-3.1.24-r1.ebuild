@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="
 	<dev-python/kombu-3.1[${PYTHON_USEDEP}]
 	>=dev-python/kombu-3.0.33[${PYTHON_USEDEP}]
 	>=dev-python/anyjson-0.3.3[${PYTHON_USEDEP}]
-	>=dev-python/billiard-3.3.0.22[${PYTHON_USEDEP}]
+	>=dev-python/billiard-3.3.0.23[${PYTHON_USEDEP}]
 	<dev-python/billiard-3.4[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/greenlet[${PYTHON_USEDEP}]
