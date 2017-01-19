@@ -66,8 +66,8 @@ python_install_all() {
 
 	doman docs/buildbot-worker.1
 
-	newconfd "${FILESDIR}/buildbot_worker.confd" buildslave
-	newinitd "${FILESDIR}/buildbot_worker.initd" buildslave
+	newconfd "${FILESDIR}/buildbot_worker.confd" buildbot_worker
+	newinitd "${FILESDIR}/buildbot_worker.initd" buildbot_worker
 
 	readme.gentoo_create_doc
 }
