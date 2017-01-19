@@ -16,6 +16,8 @@ HOMEPAGE="http://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/lldb.git
 	https://github.com/llvm-mirror/lldb.git"
+EGIT_BRANCH="release_40"
+EGIT_COMMIT="fcd2aac9f179b968a20cf0231c3386dcef8a6659"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -46,7 +48,8 @@ src_unpack() {
 	if use test; then
 		# needed for patched gtest
 		git-r3_fetch "http://llvm.org/git/llvm.git
-			https://github.com/llvm-mirror/llvm.git"
+			https://github.com/llvm-mirror/llvm.git" \
+			c329efbc3c94928fb826ed146897aada0459c983
 	fi
 	git-r3_fetch
 
