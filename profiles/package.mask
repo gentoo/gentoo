@@ -31,9 +31,9 @@
 #--- END OF EXAMPLES ---
 
 # Johannes Huber <johu@gentoo.org> (19 Jan 2017)
-# Plasma 4 removal in 30 days.
-# Please read news item. All packages export to kde-sunset overlay.
-# Gentoo bugs #473678, #528612, #537062, #586814.S
+# Plasma 4 removal in 30 days. Please read the news item.
+# All packages exported to kde-sunset overlay.
+# Gentoo bugs #473678, #528612, #537062, #586814.
 kde-plasma/bluedevil:4
 kde-plasma/freespacenotifier
 kde-plasma/kcheckpass
