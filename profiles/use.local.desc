@@ -2418,6 +2418,7 @@ dev-python/restkit:cli - Install the restcli command line interface/tool, based 
 dev-python/scrapy:boto - Add support for Amazon S3 via dev-python/boto
 dev-python/scrapy:ibl - Use Instace Based Learning algorithm for automatic extraction
 dev-python/simplecv:shell - Enable the iPython SimpleCV shell
+dev-python/sphinx:net - enable internet capabilities
 dev-python/spyder:ipython - Add support for dev-python/ipython
 dev-python/spyder:matplotlib - Add support for dev-python/matplotlib
 dev-python/spyder:numpy - Add support for dev-python/numpy
