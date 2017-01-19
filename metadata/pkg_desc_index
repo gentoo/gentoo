@@ -12164,7 +12164,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
-mail-mta/courier 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
+mail-mta/courier 0.75.0 0.75.0-r1 0.76.4: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
 mail-mta/exim 4.87 4.87-r1 4.88: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
