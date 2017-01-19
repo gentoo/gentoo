@@ -11971,7 +11971,7 @@ kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 2.3.10 2.3.11 3.0: A collection manager for the KDE environment
 kde-misc/wacomtablet 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
-kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
+kde-misc/yakuake 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1 0.4.1-r1: Getting things done application by KDE
 kde-plasma/bluedevil 2.1.1 5.8.3 5.8.5: Bluetooth stack for KDE Plasma
