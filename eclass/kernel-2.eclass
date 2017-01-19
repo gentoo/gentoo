@@ -249,7 +249,7 @@ debug-print-kernel2-variables() {
 # @FUNCTION: handle_genpatches
 # @USAGE: [--set-unipatch-list]
 # @DESCRIPTION:
-# add genpatches to list of patches to apply uf wanted 
+# add genpatches to list of patches to apply if wanted
 
 handle_genpatches() {
 	local tarball want_unipatch_list
