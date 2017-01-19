@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-44">
+  <title>CVS: Heap-based overflow</title>
+  <synopsis>A heap-based buffer overflow in CVS might allow remote attackers to
+    execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">cvs</product>
+  <announced>2017-01-19</announced>
+  <revised>2017-01-19: 01</revised>
+  <bug>402593</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/cvs" auto="yes" arch="*">
+      <unaffected range="ge">1.12.12-r11</unaffected>
+      <vulnerable range="lt">1.12.12-r11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CVS (Concurrent Versions System) is an open-source network-transparent
+      version control system. It contains both a client utility and a server.
+    </p>
+  </background>
+  <description>
+    <p>A heap-based buffer overflow was discovered in the proxy_connect
+      function in src/client.c in CVS.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, utilizing a remote HTTP proxy server, could cause a Denial
+      of Service condition or possibly execute arbitrary code via a crafted
+      HTTP response.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CVS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/cvs-1.12.12-r11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0804">CVE-2012-0804</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T08:43:18Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-19T19:06:48Z">b-man</metadata>
+</glsa>
