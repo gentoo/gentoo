@@ -1,10 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-# Michael Haubenwallner <haubi@gentoo.org> (17 Feb 2015)
-# Ships without gnulib module faccessat, necessary for AIX.
-=sys-devel/patch-2.7.4
 
 # Michael Haubenwallner <haubi@gentoo.org> (17 Feb 2015)
 # Breaks (openssh, ...) because of PR target/65058
@@ -13,10 +9,6 @@
 =sys-devel/gcc-4.5*
 =sys-devel/gcc-4.6*
 =sys-devel/gcc-4.7*
-~sys-devel/gcc-4.8.0
-~sys-devel/gcc-4.8.1
-~sys-devel/gcc-4.8.2
-~sys-devel/gcc-4.8.3
 =sys-devel/gcc-4.9*
 
 # Michael Haubenwallner <haubi@gentoo.org> (14 Apr 2014)
