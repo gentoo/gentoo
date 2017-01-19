@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,11 +6,6 @@
 =sys-devel/gcc-4.0*
 =sys-devel/gcc-4.1*
 =sys-devel/gcc-4.2*
-
-# =sys-devel/gdb-7.0 is not hardened-ready according to xake & Zorry.
-# sys-devel/gdb-7.1 works fine
-# 2010-03-26 zorry
-=sys-devel/gdb-7.0*
 
 # Can't be used on hardened. See upstream,
 # http://developer.skype.com/jira/browse/SCL-616
@@ -31,6 +26,3 @@ app-crypt/hmaccalc
 # due to C99 struct init requirement by hardened kernels,
 # see bug 540196 comment 9.
 net-fs/openafs-kernel
-
-# Crashes immediately on start. bug 560666
-=www-client/qutebrowser-0.4.1
