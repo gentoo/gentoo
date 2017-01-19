@@ -15884,20 +15884,20 @@ sci-biology/wgs-assembler 7.0-r1: A de novo whole-genome shotgun DNA sequence as
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
-sci-calculators/calculator 1.6.43 1.7.49 1.7.54: Scientific calculator based on the FOX Toolkit
-sci-calculators/galculator 2.1.3 2.1.4: GTK+ based algebraic and RPN calculator
-sci-calculators/gonvert 0.2.32 0.2.39: Unit conversion utility written in PyGTK
+sci-calculators/calculator 1.7.54: Scientific calculator based on the FOX Toolkit
+sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
+sci-calculators/gonvert 0.2.39: Unit conversion utility written in PyGTK
 sci-calculators/grpn 1.4.0: A reverse polish notation (RPN) calculator based on GTK+ and libmath
 sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.2.3: A universal currency converter and calculator
 sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
-sci-calculators/pcalc 2 3-r1: the programmers calculator
-sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calculator
+sci-calculators/pcalc 3-r1: the programmers calculator
+sci-calculators/qalculate-gtk 0.9.9: Modern multi-purpose calculator
 sci-calculators/qalculator 0.4b-r1: A Qt4 based small calculator application
 sci-calculators/speedcrunch 0.11-r2: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
-sci-calculators/tilp2 1.17-r1 1.18: Communication program for Texas Instruments calculators
+sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
