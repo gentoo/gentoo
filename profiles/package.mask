@@ -30,6 +30,115 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (19 Jan 2017)
+# Plasma 4 removal
+# Please read news item. All packages export to kde-sunset overlay.
+# Gentoo bugs #473678, #528612, #537062, #586814.S
+kde-plasma/bluedevil:4
+kde-plasma/freespacenotifier
+kde-plasma/kcheckpass
+kde-plasma/kcminit
+kde-plasma/kdebase-cursors
+kde-plasma/kdebase-pam
+kde-plasma/kdebase-startkde
+kde-plasma/kde-gtk-config:4
+kde-plasma/kdeplasma-addons:4
+kde-plasma/kdm
+kde-plasma/kephal
+kde-plasma/khotkeys:4
+kde-plasma/kinfocenter:4
+kde-plasma/klipper
+kde-plasma/kmenuedit:4
+kde-plasma/krunner
+kde-plasma/ksmserver
+kde-plasma/kscreen:4
+kde-plasma/kscreensaver
+kde-plasma/ksplash
+kde-plasma/ksshaskpass:4
+kde-plasma/kstartupconfig
+kde-plasma/kstyles
+kde-plasma/ksysguard:4
+kde-plasma/ksystraycmd
+kde-plasma/kwin:4
+kde-plasma/kwrited:4
+kde-plasma/libkgreeter
+kde-plasma/libkscreen:4
+kde-plasma/liboxygenstyle
+kde-plasma/libplasmaclock
+kde-plasma/libplasmagenericshell
+kde-plasma/libtaskmanager
+kde-plasma/milou:4
+kde-plasma/plasma-nm:4
+kde-plasma/plasma-workspace:4
+kde-plasma/powerdevil:4
+kde-plasma/solid-actions-kcm
+kde-plasma/systemsettings:4
+kde-misc/about-distro
+kde-misc/adjustableclock
+kde-misc/baloo-kcmadv
+kde-misc/bkodama
+kde-misc/chromi
+kde-misc/commandwatch
+kde-misc/cpuload
+kde-misc/customizable-weather
+kde-misc/drop2ftp
+kde-misc/emerging-plasmoid
+kde-misc/eventlist
+kde-misc/eyesaver
+kde-misc/fancytasks
+kde-misc/geekclock
+kde-misc/gx-mail-notify
+kde-misc/hdaps_monitor
+kde-misc/homerun
+kde-misc/kbstateapplet
+kde-misc/kcm-grub2
+kde-misc/kcm-touchpad
+kde-misc/kcm-ufw
+kde-misc/kcometen4
+kde-misc/kdmthemegenerator
+kde-misc/kepas
+kde-misc/kgrubeditor
+kde-misc/kprayertime
+kde-misc/kraidmonitor
+kde-misc/krunner-googletranslate
+kde-misc/krunner-kopete-contacts
+kde-misc/ksplasher
+kde-misc/ktrafficanalyzer
+kde-misc/kvkbd
+kde-misc/miniplayer
+kde-misc/nightmode
+kde-misc/nvdevmon
+kde-misc/plasma-applet-daisy
+kde-misc/plasma-emergelog
+kde-misc/plasma-lionmail
+kde-misc/plasma-mpd-nowplaying
+kde-misc/plasma-network-status
+kde-misc/plasma-photooftheday
+kde-misc/plasma-widget-menubar
+kde-misc/plasma-widget-message-indicator
+kde-misc/plasma-wifi
+kde-misc/plasmatvgr
+kde-misc/plasma-wifi
+kde-misc/plasmoid-workflow
+kde-misc/pyrad
+kde-misc/quickaccess
+kde-misc/redshift-plasmoid
+kde-misc/serverstatuswidget
+kde-misc/smooth-tasks
+kde-misc/stdin-plasmoid
+kde-misc/steamcompanion
+kde-misc/stock-quote
+kde-misc/synaptiks
+kde-misc/wicd-client-kde
+kde-misc/yawp
+net-libs/libbluedevil
+net-libs/libmm-qt
+net-libs/libnm-qt
+x11-themes/dekorator
+x11-themes/nitrogen
+x11-themes/skulpture
+x11-themes/smaragd
+
 # David Seifert <soap@gentoo.org> (18 Jan 2017)
 # Dead upstream, spiritual successor is dev-ml/gsl-ocaml
 # Masked for removal in 30 days. Bug #574564, #593248, #601912.
