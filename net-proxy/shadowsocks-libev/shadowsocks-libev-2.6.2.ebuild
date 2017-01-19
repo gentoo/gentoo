@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,11 +37,13 @@ DEPEND="${RDEPEND}
 REQUIRED_USE=" ^^ ( openssl mbedtls )"
 
 src_configure() {
-	econf \
+	local myconf=" \
 		$(use_enable debug assert) \
-		$(use_enable doc documentation) \
 		$(use_enable system-libs system-shared-lib) \
 		--with-crypto-library=$(usex openssl openssl mbedtls)
+	"
+	use doc || myconf+="--disable-documentation"
+	econf ${myconf}
 }
 
 src_install() {
@@ -57,6 +59,8 @@ src_install() {
 	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.client
 	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.redir
 	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.tunnel
+
+	dodoc -r acl
 
 	systemd_newunit "${FILESDIR}/${PN}-local_at.service" "${PN}-local@.service"
 	systemd_newunit "${FILESDIR}/${PN}-server_at.service" "${PN}-server@.service"
