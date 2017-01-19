@@ -17,14 +17,14 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
-	SRC_URI="http://libvirt.org/sources/python/${MY_P}.tar.gz"
+	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz"
 	KEYWORDS="amd64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
-HOMEPAGE="http://www.libvirt.org"
+HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="test"
