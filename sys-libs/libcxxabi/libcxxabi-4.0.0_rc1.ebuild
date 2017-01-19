@@ -16,6 +16,8 @@ HOMEPAGE="http://libcxxabi.llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
+EGIT_BRANCH="release_40"
+EGIT_COMMIT="0e46ed1f6c22968c91337aa918cdd7dc302829cb"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
@@ -50,7 +52,8 @@ pkg_setup() {
 src_unpack() {
 	# we need the headers
 	git-r3_fetch "http://llvm.org/git/libcxx.git
-		https://github.com/llvm-mirror/libcxx.git"
+		https://github.com/llvm-mirror/libcxx.git" \
+		39c36254e55627b5f94d37a453bf97fcd907cd38
 	git-r3_fetch
 
 	git-r3_checkout http://llvm.org/git/libcxx.git \
