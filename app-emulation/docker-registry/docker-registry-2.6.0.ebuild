@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit golang-vcs-snapshot systemd user
 
 KEYWORDS="~amd64"
@@ -12,7 +12,7 @@ SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Docker Registry 2.0"
 HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
-SLOT="0/${PVR}"
+SLOT="0"
 IUSE=""
 DEPEND=">=dev-lang/go-1.5"
 SVCNAME=registry
@@ -28,7 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	golang_install_pkgs
 	exeinto /usr/libexec/${PN}
 	doexe "${S}"/bin/*
 	insinto /etc/docker/registry
@@ -40,13 +39,4 @@ src_install() {
 	fowners ${SVCNAME}:${SVCNAME} /var/{lib,log}/${SVCNAME}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${SVCNAME}.logrotated" "${SVCNAME}"
-}
-
-golang_install_pkgs() {
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")
-	rm -rf "${S}"/src/${EGO_PN%/*}/.git* \
-		"${S}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/${EGO_PN%/*}/vendor
-	doins -r "${S}"/src/${EGO_PN%/*}
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
-	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
 }
