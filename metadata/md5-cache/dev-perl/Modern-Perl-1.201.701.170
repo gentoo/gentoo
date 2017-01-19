@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-IO >=virtual/perl-autodie-2.220.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/Module-Build-0.280.0 test? ( >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl:=
+DESCRIPTION=enable all of the features of Modern Perl with one import
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Modern-Perl/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-IO >=virtual/perl-autodie-2.220.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CH/CHROMATIC/Modern-Perl-1.20170117.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=410b8ab9013f7d72da89ac6ec3be53ef

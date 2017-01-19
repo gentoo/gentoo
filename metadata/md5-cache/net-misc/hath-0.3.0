@@ -4,11 +4,11 @@ DESCRIPTION=Hath manipulates network blocks in CIDR notation
 EAPI=5
 HOMEPAGE=http://hackage.haskell.org/package/hath
 IUSE=test
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=AGPL-3
 RDEPEND=>=dev-haskell/cmdargs-0.10 >=dev-haskell/missingh-1.2 >=dev-haskell/split-0.2 >=dev-haskell/tasty-0.8 >=dev-haskell/tasty-hunit-0.8 >=dev-haskell/tasty-quickcheck-0.8.1 >=dev-lang/ghc-7.6.1
 SLOT=0
 SRC_URI=mirror://hackage/packages/archive/hath/0.3.0/hath-0.3.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:-
 _eclasses_=eutils	017377e73405d964cd0137088cddb9c3	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d08a1192df9007ac50a08a89d74ec1f1
+_md5_=e3a47535922c6341d4b207cf750bc692
