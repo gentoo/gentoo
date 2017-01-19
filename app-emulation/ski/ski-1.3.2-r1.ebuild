@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-AC_C_BIGENDIAN.patch
 	"${FILESDIR}"/${P}-configure-withval.patch
 	"${FILESDIR}"/${P}-binutils.patch
+	"${FILESDIR}"/${P}-uselib.patch #592226
 )
 
 src_prepare() {
