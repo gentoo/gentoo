@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI="6"
 
 inherit eutils flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
@@ -67,11 +66,11 @@ src_install() {
 	default
 	rm -rf "${D}"/trash
 
-	dodoc doc/nanorc.sample
+	dodoc doc/sample.nanorc
 	docinto html
 	dodoc doc/faq.html
 	insinto /etc
-	newins doc/nanorc.sample nanorc
+	newins doc/sample.nanorc nanorc
 	if ! use minimal ; then
 		# Enable colorization by default.
 		sed -i \
