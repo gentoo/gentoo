@@ -13684,7 +13684,7 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
-media-sound/pulseaudio 7.1 8.0 9.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 7.1 8.0 9.0 10.0: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -15496,7 +15496,7 @@ net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.24 3.0.24-r2 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 2.5.4 2.5.5 2.5.6: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 2.5.6 2.6.2: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/squid 3.5.19 3.5.20 3.5.21 3.5.22 3.5.23: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
