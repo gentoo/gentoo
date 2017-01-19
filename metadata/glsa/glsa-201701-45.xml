@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-45">
+  <title>irssi: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in irssi, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">irssi</product>
+  <announced>2017-01-19</announced>
+  <revised>2017-01-19: 01</revised>
+  <bug>604772</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/irssi" auto="yes" arch="*">
+      <unaffected range="ge">0.8.21</unaffected>
+      <vulnerable range="lt">0.8.21</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>irssi is a modular textUI IRC client with IPv6 support.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in irssi. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All irssi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/irssi-0.8.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5193">CVE-2017-5193</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5194">CVE-2017-5194</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5195">CVE-2017-5195</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5196">CVE-2017-5196</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T08:22:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-19T19:13:03Z">b-man</metadata>
+</glsa>
