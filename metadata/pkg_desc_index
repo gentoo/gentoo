@@ -9983,7 +9983,7 @@ dev-util/buildbot-console-view 0.9.1 0.9.2 0.9.3: Buildbot console-view plugin
 dev-util/buildbot-pkg 0.9.1 0.9.2 0.9.3: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12: BuildBot Slave Daemon
 dev-util/buildbot-waterfall-view 0.9.1 0.9.2 0.9.3: Buildbot waterfall-view plugin
-dev-util/buildbot-worker 0.9.1 0.9.2 0.9.3 9999: BuildBot Slave Daemon
+dev-util/buildbot-worker 0.9.1 0.9.2-r1 0.9.3-r1 9999: BuildBot Slave Daemon
 dev-util/buildbot-www 0.9.1 0.9.2 0.9.3: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
