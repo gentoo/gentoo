@@ -34,7 +34,7 @@ RDEPEND="
 # upstream: https://github.com/swig/swig/issues/769
 DEPEND="${RDEPEND}
 	python? ( <dev-lang/swig-3.0.9 )
-	test? ( dev-python/lit[${PYTHON_USEDEP}] )
+	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
@@ -65,6 +65,7 @@ src_configure() {
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
+		-DLLVM_BUILD_TESTS=$(usex test)
 		# compilers for lit tests
 		-DLLDB_TEST_C_COMPILER="${EPREFIX}/usr/bin/clang"
 		-DLLDB_TEST_CXX_COMPILER="${EPREFIX}/usr/bin/clang++"

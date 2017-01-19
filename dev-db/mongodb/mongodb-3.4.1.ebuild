@@ -34,7 +34,7 @@ RDEPEND=">=app-arch/snappy-1.1.3
 		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-4.8.2:*
+	>=sys-devel/gcc-5.3.0:*
 	sys-libs/ncurses
 	sys-libs/readline
 	debug? ( dev-util/valgrind )

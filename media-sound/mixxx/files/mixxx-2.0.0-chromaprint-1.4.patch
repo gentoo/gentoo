@@ -1,0 +1,40 @@
+Backported chromaprint-1.4 API changes based on the fix suggested in:
+https://github.com/mixxxdj/mixxx/pull/1073
+
+and the work done by Charlie Gehlin in:
+https://bugs.gentoo.org/604528
+
+--- mixxx-2.0.0/src/musicbrainz/chromaprinter.cpp
++++ mixxx-2.0.0/src/musicbrainz/chromaprinter.cpp
+@@ -25,6 +25,16 @@
+ 
+ QString ChromaPrinter::calcFingerPrint(const Mixxx::SoundSourcePointer& pSoundSource) {
+ 
++    // Type declarations of *fprint and *encoded pointers need to account for Chromaprint API version
++    // (void* -> uint32_t*) and (void* -> char*) changed in versions v1.4.0 or later -- alyptik 12/2016
++    #if (CHROMAPRINT_VERSION_MINOR > 3) || (CHROMAPRINT_VERSION_MAJOR > 1)
++	typedef uint32_t* uint32_p;
++	typedef char* char_p;
++    #else
++	typedef void* uint32_p;
++	typedef void* char_p;
++    #endif
++
+     // this is worth 2min of audio, multiply by 2 because we have 2 channels
+     // AcoustID only stores a fingerprint for the first two minutes of a song
+     // on their server so we need only a fingerprint of the first two minutes
+@@ -57,12 +67,12 @@
+     }
+     chromaprint_finish(ctx);
+ 
+-    void* fprint = NULL;
++    uint32_p fprint = NULL;
+     int size = 0;
+     int ret = chromaprint_get_raw_fingerprint(ctx, &fprint, &size);
+     QByteArray fingerprint;
+     if (ret == 1) {
+-        void* encoded = NULL;
++        char_p encoded = NULL;
+         int encoded_size = 0;
+         chromaprint_encode_fingerprint(fprint, size,
+                                        CHROMAPRINT_ALGORITHM_DEFAULT,

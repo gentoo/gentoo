@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="CUDPP"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug +doc +examples opencl +cuda"
 
 RDEPEND="
@@ -85,6 +85,8 @@ src_prepare() {
 #		-e "/ALL_LDFLAGS/s|:=|:= ${RAWLDFLAGS} |g" \
 	find common/inc/GL -delete || die
 	find . -type f -name "*\.a" -delete || die
+
+	eapply_user
 }
 
 src_compile() {

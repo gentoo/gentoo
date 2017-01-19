@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/llvm-4
 	test? (
 		app-portage/unsandbox
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 		~sys-devel/clang-${PV}
 		~sys-libs/compiler-rt-${PV} )
 	${PYTHON_DEPS}"

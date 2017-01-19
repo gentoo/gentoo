@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-ml/findlib
 	test? ( dev-ml/ounit
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
+		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 

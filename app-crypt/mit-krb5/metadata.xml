@@ -16,4 +16,7 @@
   <flag name="pkinit">Enable pkinit support for the initial ticket.</flag>
   <flag name="openldap">Enable support for ldap as a database backend.</flag>
 </use>
+<upstream>
+  <remote-id type="cpe">cpe:/a:mit:kerberos</remote-id>
+</upstream>
 </pkgmetadata>

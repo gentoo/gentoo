@@ -101,7 +101,9 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:0 )
 	upower? (
 		systemd? ( sys-power/upower )
-		!systemd? ( sys-power/upower-pm-utils )
+		!systemd? (
+			|| ( sys-power/upower-pm-utils sys-power/upower )
+		)
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -187,7 +189,7 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/project/cmake/modules/FindCpluff.cmake \
+		"${S}"/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh
 }
@@ -197,6 +199,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-DNABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=OFF
 		-DENABLE_AVAHI=$(usex zeroconf)

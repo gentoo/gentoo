@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Andreas Sturmlechner <asturm@gentoo.org> (14 Jan 2017)
-# Depends on dev-libs/appstream, not keyworded yet.
-kde-frameworks/frameworkintegration appstream
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (04 Jan 2017)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
 dev-libs/libsecp256k1 -asm
@@ -283,10 +279,6 @@ app-office/gnumeric libgda
 # Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (10 Nov 2013)
-# <sys-devel/llvm-3.2 is not keyworded
-=media-libs/mesa-7.10* llvm
 
 # Pacho Ramos <pacho@gentoo.org> (31 Oct 2013)
 # Missing keywords, bug #478254

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
 	"${DISTDIR}"/${P}-ffmpeg30.patch
 	"${DISTDIR}"/${P}-ffmpeg31.patch
+	"${FILESDIR}"/${P}-chromaprint-1.4.patch #604528
 )
 
 src_prepare() {

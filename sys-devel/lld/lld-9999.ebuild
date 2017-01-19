@@ -24,7 +24,7 @@ IUSE="test"
 
 RDEPEND="~sys-devel/llvm-${PV}"
 DEPEND="${RDEPEND}
-	test? ( dev-python/lit )"
+	test? ( ~dev-python/lit-${PV} )"
 
 # TODO: fix test suite to build stand-alone
 RESTRICT="test"

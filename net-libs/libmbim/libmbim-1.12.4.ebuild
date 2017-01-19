@@ -20,10 +20,10 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=dev-libs/glib-2.32:2"
+RDEPEND=">=dev-libs/glib-2.32:2
+	virtual/libgudev:="
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
-	virtual/libgudev
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" dev-util/gtk-doc" #469214
 

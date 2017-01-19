@@ -7,8 +7,6 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
-	https://github.com/llvm-mirror/libcxxabi.git"
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib git-r3 python-any-r1
@@ -16,6 +14,8 @@ inherit cmake-multilib git-r3 python-any-r1
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="http://libcxxabi.llvm.org/"
 SRC_URI=""
+EGIT_REPO_URI="http://llvm.org/git/libcxxabi.git
+	https://github.com/llvm-mirror/libcxxabi.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"

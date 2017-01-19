@@ -22,9 +22,9 @@ else
 fi
 
 VANILLA_GV="2.47"
-VANILLA_MV="4.6.3"
+VANILLA_MV="4.6.4"
 STAGING_GV="2.47"
-STAGING_MV="4.6.3"
+STAGING_MV="4.6.4"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
@@ -347,6 +347,7 @@ src_prepare() {
 		ewarn "Wine bugzilla should explicitly state that staging was used."
 
 		local STAGING_EXCLUDE=""
+		STAGING_EXCLUDE="${STAGING_EXCLUDE} -W winhlp32-Flex_Workaround" # Avoid double patching https://bugs.winehq.org/show_bug.cgi?id=42132
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
 
 		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
