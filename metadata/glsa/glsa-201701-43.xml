@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-43">
+  <title>IcedTea: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in IcedTea allowing remote
+    attackers to affect confidentiality, integrity, and availability through
+    various vectors.
+  </synopsis>
+  <product type="ebuild">icedtea, java</product>
+  <announced>2017-01-19</announced>
+  <revised>2017-01-19: 01</revised>
+  <bug>590590</bug>
+  <bug>600224</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/icedtea-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="7">7.2.6.8</unaffected>
+      <unaffected range="ge" slot="8">3.2.0</unaffected>
+      <vulnerable range="lt">7.2.6.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>IcedTea’s aim is to provide OpenJDK in a form suitable for easy
+      configuration, compilation and distribution with the primary goal of
+      allowing inclusion in GNU/Linux distributions.
+    </p>
+  </background>
+  <description>
+    <p>Various OpenJDK attack vectors in IcedTea, such as 2D, Corba, Hotspot,
+      Libraries, and JAXP, exist which allows remote attackers to affect the
+      confidentiality, integrity, and availability of vulnerable systems. Many
+      of the vulnerabilities can only be exploited through sandboxed Java Web
+      Start applications and java applets. Please review the CVE identifiers
+      referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers may execute arbitrary code, compromise information, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All IcedTea-bin 7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-7.2.6.8:7"
+    </code>
+    
+    <p>All IcedTea-bin 3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/icedtea-bin-3.2.0:8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3458">CVE-2016-3458</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3485">CVE-2016-3485</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3500">CVE-2016-3500</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3508">CVE-2016-3508</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3550">CVE-2016-3550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3587">CVE-2016-3587</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3598">CVE-2016-3598</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3606">CVE-2016-3606</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3610">CVE-2016-3610</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5542">CVE-2016-5542</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5554">CVE-2016-5554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5568">CVE-2016-5568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5573">CVE-2016-5573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5582">CVE-2016-5582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5597">CVE-2016-5597</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-04T03:38:18Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-19T18:34:11Z">b-man</metadata>
+</glsa>
