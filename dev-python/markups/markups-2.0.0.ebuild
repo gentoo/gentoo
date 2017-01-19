@@ -20,7 +20,7 @@ SRC_URI="mirror://pypi/M/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}"/${MY_P}
 

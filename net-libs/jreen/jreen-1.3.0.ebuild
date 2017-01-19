@@ -6,7 +6,7 @@ EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/euroelessar/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI=( "git://github.com/euroelessar/${PN}" )
