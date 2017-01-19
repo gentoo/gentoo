@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Lars Wendler <polynomial-c@gentoo.org> (19 Jan 2017)
+# Masked until system heimdal can finally be used with AD DC
+net-fs/samba system-heimdal
+
 # Magnus Granberg <zorry@gentoo.org> (18 Jan 2017)
 # Mask it globally, unmask it on supported arch
 >=sys-devel/gcc-6.2.0 pie
