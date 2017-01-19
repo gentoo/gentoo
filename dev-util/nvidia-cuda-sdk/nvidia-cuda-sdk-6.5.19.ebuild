@@ -85,6 +85,8 @@ src_prepare() {
 #		-e "/ALL_LDFLAGS/s|:=|:= ${RAWLDFLAGS} |g" \
 	find common/inc/GL -delete || die
 	find . -type f -name "*\.a" -delete || die
+
+	eapply_user
 }
 
 src_compile() {
