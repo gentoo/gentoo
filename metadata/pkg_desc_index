@@ -2333,7 +2333,7 @@ app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.2 9999: Import filter for old StarOffice documents
 app-text/libwpd 0.9.9 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
-app-text/libwps 0.3.1 0.4.4-r1: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.4-r1 0.4.5: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 22 22_p20160324 9999: a graphical PDF viewer which aims to superficially resemble less(1)
@@ -4737,7 +4737,7 @@ dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming i
 dev-libs/libgcrypt 1.5.6-r101 1.7.3 1.7.5-r1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5 0.17.6: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.18.0 0.18.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.22.3 0.23.4 0.24.2 0.24.6 9999: A linkable library for Git
+dev-libs/libgit2 0.22.3 0.23.4 0.24.6 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
