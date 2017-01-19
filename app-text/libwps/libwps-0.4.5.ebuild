@@ -1,23 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit base eutils
+EAPI=6
 
 DESCRIPTION="Microsoft Works file word processor format import filter library"
-HOMEPAGE="http://libwps.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/p/libwps/wiki/Home/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm x86"
-IUSE="doc debug static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~x86"
+IUSE="doc debug static-libs tools"
 
 RDEPEND="
-	app-text/libwpd:0.10
-	dev-libs/boost:=
 	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
@@ -28,13 +24,14 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 		--disable-werror \
-		$(use_enable static-libs static) \
-		--docdir=/usr/share/doc/${PF} \
+		--with-sharedptr=c++11 \
+		$(use_enable debug) \
 		$(use_with doc docs) \
-		$(use_enable debug)
+		$(use_enable static-libs static) \
+		$(use_enable tools)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
