@@ -590,14 +590,6 @@ app-editors/gvim luajit racket
 # unmask in particular profiles
 sys-apps/hwloc cuda gl opencl
 
-# Samuli Suominen <ssuominen@gentoo.org> (07 Aug 2013)
-# There is no support for recent app-pda/libimobiledevice wrt bug #471920
-# Upstream removed entire support in future release:
-# https://code.google.com/p/clementine-player/source/detail?r=3d434f1c881890dd77fea6d0e3de3afc86971196
-# Remove this entry once <=media-sound/clementine-1.1.1 has left the building
-media-sound/clementine ios
-<media-sound/clementine-1.2.0 ipod
-
 # Ben de Groot <yngwin@gentoo.org> (07 Aug 2013)
 # Newer lightdm doesn't work with current razorqt-lightdm-greeter, bug 479734
 >=x11-misc/lightdm-1.5.0 razor
