@@ -38,7 +38,7 @@
 	</use>
 	<upstream>
 		<maintainer status="active">
-			<email>tingping@fedoraproject.org</email>
+			<email>tingping@tingping.se</email>
 			<name>TingPing</name>
 		</maintainer>
 		<bugs-to>https://github.com/hexchat/hexchat/issues</bugs-to>
