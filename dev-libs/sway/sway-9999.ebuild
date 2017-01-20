@@ -53,7 +53,6 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
-		-DLD_LIBRARY_PATH="${EPREFIX}/usr/lib"
 	)
 
 	cmake-utils_src_configure
