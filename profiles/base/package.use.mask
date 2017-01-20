@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Manuel Rüger <mrueg@gentoo.org> (20 Jan 2017)
+# Fails to build docs
+dev-python/docker-py doc
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires x11-drivers/nvidia-drivers available on selected few arches.
 media-video/mpv cuda

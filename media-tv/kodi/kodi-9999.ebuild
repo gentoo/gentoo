@@ -199,7 +199,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
-		-DNABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
+		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=OFF
 		-DENABLE_AVAHI=$(usex zeroconf)
@@ -250,12 +250,6 @@ src_install() {
 	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
-
-	# Remove fontconfig settings that are used only on MacOSX.
-	# Can't be patched upstream because they just find all files and install
-	# them into same structure like they have in git.
-	# Will be fixed upstream so this deletion will be unnecesssary, see https://github.com/xbmc/xbmc/pull/11451
-	rm -rf "${ED%/}"/usr/share/kodi/system/players/VideoPlayer/etc || die
 
 	# Replace bundled fonts with system ones.
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/NotoSans-Regular.ttf || die

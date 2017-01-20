@@ -153,6 +153,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9999-texturepacker.patch
 	"${FILESDIR}"/${PN}-16-ffmpeg3.patch
 	"${DISTDIR}"/${PN}-${PV}-gcc-6.patch #592446
+	"${FILESDIR}"/${PN}-${PV}-GUIFontTTFGL-loses-precision.patch
 )
 
 CONFIG_CHECK="~IP_MULTICAST"
