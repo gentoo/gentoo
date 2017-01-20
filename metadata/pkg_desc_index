@@ -9097,8 +9097,8 @@ dev-ruby/arel 5.0.1.20140414130214 6.0.3 7.1.1 7.1.3 7.1.4: Arel is a Relational
 dev-ruby/arel-helpers 2.3.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.4 1.5.5: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
-dev-ruby/asciidoctor-diagram 1.4.0 1.5.1: A set of Asciidoctor extensions that enable you to add diagrams
-dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
+dev-ruby/asciidoctor-diagram 1.4.0 1.5.1 1.5.4: A set of Asciidoctor extensions that enable you to add diagrams
+dev-ruby/asciimath 1.0.2 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0 2.3.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
@@ -9247,7 +9247,7 @@ dev-ruby/globalid 0.3.6 0.3.6-r1 0.3.7: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0 0.7.0: Beautiful graphs for one or multiple datasets
-dev-ruby/haml 4.0.7: A ruby web page templating engine
+dev-ruby/haml 4.0.7 4.0.7-r1: A ruby web page templating engine
 dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 0.3.0 0.3.1 0.3.2: Simple Hash extension to make working with nested hashes easier
@@ -9505,6 +9505,7 @@ dev-ruby/rspec-collection_matchers 1.1.2 1.1.3: A Behaviour Driven Development (
 dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 2.99.2-r2 3.3.2 3.3.2-r1 3.4.4 3.5.3 3.5.4: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-json_expectations 2.1.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.4.2 3.5.0 3.5.1 3.5.2 3.5.2-r1: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.5.2 0.5.3: Retry intermittently failing rspec examples
@@ -15315,7 +15316,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.01.10 2017.01.14 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.01.14 2017.01.18 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
