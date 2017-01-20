@@ -18,13 +18,14 @@ SRC_URI="
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples georeferencer grass mapserver oracle postgres python"
+IUSE="examples georeferencer grass mapserver oracle postgres python webkit"
 
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	mapserver? ( python )"
+	grass? ( python )
+	mapserver? ( python )
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="
+COMMON_DEPEND="
 	app-crypt/qca:2[qt4,ssl]
 	>=dev-db/spatialite-4.1.0
 	dev-db/sqlite:3
@@ -36,8 +37,6 @@ RDEPEND="
 	dev-qt/qtscript:4
 	dev-qt/qtsvg:4
 	dev-qt/qtsql:4
-	dev-qt/qtwebkit:4
-	sci-geosciences/gpsbabel
 	>=sci-libs/gdal-1.6.1:=[geos,oracle?,python?,${PYTHON_USEDEP}]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
@@ -52,28 +51,31 @@ RDEPEND="
 	mapserver? ( dev-libs/fcgi )
 	oracle? ( dev-db/oracle-instantclient:= )
 	postgres? ( dev-db/postgresql:= )
-	python? (
-		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
-		<dev-python/sip-4.19:=[${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
+	python? ( ${PYTHON_DEPS}
 		dev-python/future[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/markupsafe[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/PyQt4[X,sql,svg,webkit?,${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		<dev-python/sip-4.19:=[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-		${PYTHON_DEPS}
 	)
+	webkit? ( dev-qt/qtwebkit:4 )
 "
-
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
-	sys-devel/flex"
+	sys-devel/flex
+"
+RDEPEND="${COMMON_DEPEND}
+	sci-geosciences/gpsbabel
+"
 
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="test"
@@ -81,7 +83,7 @@ RESTRICT="test"
 PATCHES=( "${FILESDIR}"/${P}-app-icon.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -118,6 +120,7 @@ src_configure() {
 		-DWITH_POSTGRESQL="$(usex postgres)"
 		-DWITH_PYSPATIALITE="$(usex python)"
 		-DWITH_SERVER="$(usex mapserver)"
+		-DWITH_QTWEBKIT="$(usex webkit)"
 	)
 
 	if has_version '>=x11-libs/qwtpolar-1' &&  has_version 'x11-libs/qwt:5' ; then
@@ -157,10 +160,12 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	python_optimize "${ED%/}"/usr/share/qgis/python
+	if use python; then
+		python_optimize "${ED%/}"/usr/share/qgis/python
 
-	if use grass; then
-		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		if use grass; then
+			python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		fi
 	fi
 }
 
