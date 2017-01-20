@@ -28,7 +28,6 @@ RDEPEND="
 	dev-python/twisted-core
 	dev-python/twisted-conch
 	dev-python/twisted-web
-	dev-python/PyQt4[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	debug? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
