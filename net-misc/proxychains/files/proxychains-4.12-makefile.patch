@@ -33,7 +33,7 @@
  $(LDSO_PATHNAME): $(LOBJS)
 -	$(CC) $(LDFLAGS) $(LD_SET_SONAME)$(LDSO_PATHNAME) $(USER_LDFLAGS) \
 -		-shared -o $@ $(LOBJS)
-+	$(CC) $(LDFLAGS) $(LD_SET_SONAME)$(LDSO_PATHNAME) -shared $(PIC) -o $@ $(LOBJS)
++	$(CC) $(LDFLAGS) $(LD_SET_SONAME)$(LDSO_PATHNAME) -shared $(PIC) -o $@ $(LOBJS) $(LIBS)
  
  $(ALL_TOOLS): $(OBJS)
 -	$(CC) src/main.o src/common.o $(USER_LDFLAGS) -o $(PXCHAINS)
