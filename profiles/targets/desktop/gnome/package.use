@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,6 @@ app-emulation/wine -gstreamer
 # Required for gnome-base/gnome-2.32 to be merged directly, for
 # gnome-extra/hamster-applet-2.32 and x11-misc/alacarte-0.13
 dev-lang/python sqlite
-gnome-base/gnome-menus python
 
 # REQUIRED_USE="?? ( pulseaudio gstreamer )", and we want pulse in gnome
 net-misc/spice-gtk -gstreamer
@@ -35,16 +34,8 @@ net-misc/spice-gtk -gstreamer
 app-accessibility/speech-dispatcher python
 
 # gtk3 input method plugins required for gnome3; gnome-shell wants ibus[dconf]
-app-i18n/ibus dconf gtk3
+app-i18n/ibus gtk3
 app-i18n/uim gtk3
-
-# Require gnome-panel-2, preventing upgrade to gnome-3, bug #496722
-app-i18n/im-ja -gnome
-app-dicts/verbiste -gnome
-dev-ml/lablgtk -gnome
-
-# incompatible with >=evolution-data-server-3.6, bug #449138
-<dev-vcs/giggle-0.7-r1 -eds
 
 # Pulled in by grilo-plugins which is needed for gnome-music
 media-libs/grilo playlist
@@ -57,14 +48,10 @@ media-libs/libmediaart gtk -qt4 -qt5
 
 # Pulled in by net-im/telepathy-connection-managers[msn] (via dev-python/papyon
 # and net-voip/telepathy-butterfly)
-net-libs/farsight2 python
 net-libs/libproxy python
 
 # Required by net-misc/vinagre-3
 net-libs/gtk-vnc gtk3
-
-# Required by dev-libs/folks[libsocialweb]
-net-libs/libsocialweb vala
 
 # The following are required by ekiga-3
 net-libs/opal sip

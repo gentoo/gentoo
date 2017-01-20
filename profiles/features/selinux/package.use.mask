@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ app-portage/flaggie python_targets_pypy python_targets_pypy3
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-emulation/libvirt firewalld
-gnome-base/gdm systemd wayland
+gnome-base/gdm wayland
 net-firewall/fwknop firewalld
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 x11-wm/mutter kms
