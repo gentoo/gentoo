@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,37 +9,23 @@
 # these will more than likely never work on solaris
 3dfx
 3dnow
-3dnowext
 acpi
 alsa
 apm
-cap
 caps
 cman
 clvm
 directfb
-divx4linux
 djbfft
 fbcon
-fdftk
 fmod
 ggi
 gpm
 hardened
-icc
-icc-pgo
-mmx
-mmx2
-# the following USE flag requires device-mapper
-on-the-fly-crypt
 oss
-solid
-sse
-sse2
 svga
 sybase
 sybase-ct
 rtc
 uclibc
-voodoo3
 v4l

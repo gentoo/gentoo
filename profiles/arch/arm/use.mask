@@ -54,10 +54,6 @@ openexr
 amr
 
 # Samuli Suominen <drac@gentoo.org>
-# sci-visualization/grace not tested.
-grace
-
-# Samuli Suominen <drac@gentoo.org>
 # media-gfx/gimp not tested.
 gimp
 
@@ -68,21 +64,15 @@ ipod
 
 # Stuff that doesn't make sense on this arch
 3dfx
-cpufreq
-dell
-laptop
 dmi
 
 # Stuff we don't want
-chicken
 R
 octave
 tracker
 xindy
 lyx
 lasi
-fusion
-debug-utils
 schroedinger
 hardened
 frei0r
@@ -92,47 +82,33 @@ prelude
 mssql
 
 # havent tested yet
-cupsddk
 gphoto2
-mythtv
 afs
 mono
-pike
 lirc
 lm_sensors
-netjack
-beagle
-nvtv
-mzscheme
 xemacs
 scanner
-libupnp
 zvbi
 fluidsynth
-gnomecd
-cblas
-prolog
 sid
 mms
 mtp
 ieee1394
 sctp
 pm-utils
-wicd
 darcs
 bs2b
 toolame
 ladspa
 ggi
 nut
-xanim
 fits
 tokyocabinet
 vaapi
 librtmp
 rtmp
 vpx
-iplayer
 lpsol
 upnp
 bluray
@@ -143,7 +119,6 @@ devil
 gts
 anthy
 ace
-csharp
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
@@ -159,10 +134,8 @@ csharp
 video_cards_apm
 video_cards_ark
 video_cards_ast
-video_cards_ati
 video_cards_cirrus
 video_cards_chips
-video_cards_cyrix
 video_cards_glint
 video_cards_i128
 video_cards_i740

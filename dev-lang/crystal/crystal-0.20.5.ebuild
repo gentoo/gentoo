@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-BV=0.18.7-1
+BV=0.20.4-1
 BV_AMD64=${BV}-linux-x86_64
 BV_X86=${BV}-linux-i686
 
@@ -21,7 +21,7 @@ IUSE="doc examples +xml +yaml"
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
-	>=sys-devel/llvm-3.8.0
+	>=sys-devel/llvm-3.9.0
 	dev-libs/boehm-gc[static-libs,threads]
 	dev-libs/libatomic_ops
 	dev-libs/libevent
@@ -42,7 +42,7 @@ src_compile() {
 		PATH="${WORKDIR}"/${PN}-${BV}/bin:"${PATH}" \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
-		CRYSTAL_CONFIG_PATH="libs:${EPREFIX}/usr/$(get_libdir)/crystal"
+		CRYSTAL_CONFIG_PATH="lib:${EPREFIX}/usr/$(get_libdir)/crystal"
 	use doc && emake doc
 }
 

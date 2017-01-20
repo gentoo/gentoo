@@ -5,10 +5,6 @@ mplayer
 ruby
 mono
 
-# should be ok
-jikes
-junit
-
 guile
 
 # need to test libaio
@@ -28,7 +24,6 @@ seamonkey
 # Modular X: mask for architectures on which they aren't available
 video_cards_apm
 video_cards_ark
-video_cards_cyrix
 video_cards_i128
 video_cards_i740
 video_cards_intel

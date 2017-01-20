@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
@@ -54,21 +54,15 @@ webp
 
 # Gustavo Zacarias <gustavoz@gentoo.org> 14 Feb 2007
 # Mono needs gcc4 and it's not yet stable
-beagle
-galago
 mono
 
 # Gustavo Zacarias <gustavoz@gentoo.org>
 # It doesn't even build
 d
-# Mask krb4, it's generally broken and really not secure see #116471
-krb4
 # LCDproc masks see bug #148072
 lcd_devices_g15
 lcd_devices_graphlcd
 lcd_devices_ula200
-# mzscheme seems somewhat b0rked and we want vim7
-mzscheme
 # Masking hardened, it isn't really supported, see bugs #144126 #78951
 hardened
 # AIO is b0rked for now....
@@ -89,30 +83,21 @@ pdfannotextractor
 3dfx
 acpi
 afs
-amd
 apm
 battery
-cpufreq
-dell
 dmi
 ibm
-hyperwave-api
 jfs
 libedit
-nforce2
 pm-utils
 reiser4
 reiserfs
-voodoo3
 xfs
 
 # Need testing
 musepack
-pyste
 topal
 lqr
-epos
-wicd
 indi
 chm
 ebook
@@ -146,10 +131,7 @@ zmq
 ifp
 chipcard
 hbci
-ivtv
-laptop
 lm_sensors
-njb
 pkcs11
 openct
 bluetooth
@@ -160,7 +142,6 @@ mtp
 pda
 apcupsd
 bluray
-ups
 gps
 
 # Stuff we don't want
@@ -172,52 +153,30 @@ prelude
 redis
 
 # Asterisk use flag masking
-bri
-florz
-resperl
 zaptel
-ukcid
 
 
 # USE-flags from differents origins
 brltty
-cle266
-commercial
-cpufreq
 directfb
 djbfft
 dvb
-freetts
-glitz
-i8x0
 java
-java-internal
-java-external
 lirc
-mpm-peruser
-mythtv
 netbeans
 networkmanager
-nvtv
 pbs
 pcmcia
 rar
-trusted
 uml
 valgrind
-wavelan
 wifi
-wlan
 xvmc
 zoran
 
 # Other masks
 hdf
 hdf5
-pike
-
-# requires a JDK
-mpe-sdk
 
 # This should probably never be touched
 
@@ -232,7 +191,6 @@ mpe-sdk
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_cyrix
 video_cards_nsc
 video_cards_s3
 video_cards_sis
@@ -271,38 +229,11 @@ video_cards_radeonsi
 # Unmask the Sun-specific drivers
 -alsa_cards_sun-cs4231
 # Mask ALSA drivers for ISA cards
-alsa_cards_cs4232
 alsa_cards_msnd-pinnacle
-alsa_cards_cs4231-lib
-alsa_cards_adlib
-alsa_cards_ad1816a
-alsa_cards_ad1848
-alsa_cards_als100
-alsa_cards_azt2320
-alsa_cards_cmi8330
-alsa_cards_cs4231
-alsa_cards_cs4236
-alsa_cards_dt019x
-alsa_cards_es968
-alsa_cards_es1688
-alsa_cards_es18xx
-alsa_cards_gusclassic
-alsa_cards_gusextreme
-alsa_cards_gusmax
 alsa_cards_hdsp
 alsa_cards_hdspm
-alsa_cards_interwave
-alsa_cards_interwave-stb
-alsa_cards_opl3sa2
-alsa_cards_opti92x-ad1848
-alsa_cards_opti92x-cs4231
-alsa_cards_opti93x
-alsa_cards_miro
-alsa_cards_sb8
 alsa_cards_sb16
 alsa_cards_sbawe
-alsa_cards_sb16_csp
-alsa_cards_sgalaxy
 alsa_cards_sscape
 alsa_cards_wavefront
 

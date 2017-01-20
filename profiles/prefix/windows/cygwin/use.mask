@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,9 +6,5 @@
 -elibc_Cygwin
 
 # we do not have python-3 cygwin ready yet
-python_targets_python3_0
-python_targets_python3_1
-python_targets_python3_2
-python_targets_python3_3
 python_targets_python3_4
 python_targets_python3_5

@@ -24,7 +24,6 @@ battery
 -ps3
 
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
-custom-cpuopts
 cpudetection
 
 # Michał Górny <mgorny@gentoo.org> (4 May 2013)

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,6 @@
 acpi
 alsa
 apm
-cap
 caps
 cman
 clvm
@@ -30,14 +29,10 @@ ggi
 gpm
 hardened
 
-# VV requires device-mapper 
-on-the-fly-crypt
 oss
-solid
 sybase
 sybase-ct
 rtc
-voodoo3
 v4l
 
 # introspection is far from working on OSX

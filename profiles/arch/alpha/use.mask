@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
@@ -36,46 +36,32 @@ bluetooth
 bluray
 chipcard
 dvb
-gnokii
 gps
 hbci
 ios
 ipod
-ivtv
 mtp
-mythtv
-nvtv
 lirc
 openct
 pcmcia
 pda
 sms
 upnp
-ups
 wifi
 
 # Hardware not available on alpha
 apm
 battery
-cpufreq
-dell
 dmi
-laptop
 pm-utils
 
 # Stuff that doesn't work on alpha, or not tested
-avi
 clang
 djbfft
 emboss
-freetts
-gnustep
 hardened
-howl
 mecab
-mzscheme
 netbeans
-pike
 timidity
 valgrind
 vaapi
@@ -92,7 +78,6 @@ fdk
 emf
 mono
 ocamlopt
-webm
 openexr
 
 # Stuff we don't want
@@ -124,28 +109,15 @@ networkmanager
 
 # alpha doesn't have java support
 java
-java-internal
-java-external
 pdfannotextractor
 
 # Mask vpopmail until net-mail/vpopmail goes out of package.mask
 vpopmail
 
-# Mask pyste until gccxml / elementtree work on alpha
-pyste
-
-# RDEPEND on mono
-beagle
-
-# apache segfaults when using mpm-peruser (bug 105778)
-mpm-peruser
-
 # We don't have any virtual/mpi (bug 111807)
 mpi
 
 # masks required for asterisk
-bri
-pri
 zaptel
 
 # Modular X: mask non-alpha cards
@@ -153,7 +125,6 @@ video_cards_apm
 video_cards_ark
 video_cards_ast
 video_cards_chips
-video_cards_cyrix
 video_cards_i128
 video_cards_i740
 video_cards_intel
@@ -176,10 +147,6 @@ video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
-
-# dspam and dspam-web use this one
-# We've never supported cyrus-imapd because nobody asked for
-cyrus
 
 # disable until tested
 # # bug 148402
@@ -209,10 +176,6 @@ connman
 # Matt Turner <mattst88@gentoo.org (27 May 2012)
 # sys-apps/entropy is not keyworded
 entropy
-
-# Matt Turner <mattst88@gentoo.org (29 May 2012)
-# net-libs/libsocialweb is not keyworded
-socialweb
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
 # media-libs/xine-lib is not keyworded
