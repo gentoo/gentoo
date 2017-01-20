@@ -30,7 +30,11 @@ DEPEND="${RDEPEND}
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="You need to setup /etc/${PN}/${PN}.conf before running
-${PN} for the first time.
+${PN} for the first time. You can use /etc/${PN}/${PN}-dist.conf as a
+template. Please note that the 'daemon' and 'process_id_file' settings
+are overridden by the bundled OpenRC init script and systemd unit where
+appropriate.
+
 To install ${PN} as a service, use:
 rc-update add ${PN} default # with OpenRC
 systemctl enable ${PN}.service # with systemd
@@ -64,7 +68,7 @@ src_install() {
 		examplesdir=/usr/share/doc/${PF}/examples \
 		install
 
-	newinitd "${FILESDIR}"/${PN}.initd-r2 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r3 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
@@ -74,8 +78,6 @@ src_install() {
 	keepdir /var/lib/motion
 	fowners motion:video /var/lib/motion
 	fperms 0750 /var/lib/motion
-
-	mv -vf "${D}"/etc/${PN}/${PN}{-dist,}.conf || die
 
 	readme.gentoo_create_doc
 }
