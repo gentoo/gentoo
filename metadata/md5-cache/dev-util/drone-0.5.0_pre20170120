@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/go-bindata dev-go/go-bindata-assetfs:= dev-util/drone-ui:= >=dev-lang/go-1.4.2:=
+DESCRIPTION=A Continuous Delivery platform built on Docker, written in Go
+EAPI=5
+HOMEPAGE=https://github.com/drone/drone
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/drone/drone/archive/84f1bb45289f249e484ac0a36ae886dbc3a75464.tar.gz -> drone-0.5.0_pre20170120.tar.gz https://github.com/drone/mq/archive/1a62dafd7863c0e0b256edec7db73716a8e17dde.tar.gz -> drone-mq-1a62dafd7863c0e0b256edec7db73716a8e17dde.tar.gz https://github.com/tidwall/redlog/archive/54086c8553cd23aba652513a87d2b085ea961541.tar.gz -> tidwall-redlog-54086c8553cd23aba652513a87d2b085ea961541.tar.gz https://github.com/golang/crypto/archive/b8a2a83acfe6e6770b75de42d5ff4c67596675c0.tar.gz -> golang-crypto-b8a2a83acfe6e6770b75de42d5ff4c67596675c0.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
+_md5_=46410ea81ccb6894addacc18dafb7772
