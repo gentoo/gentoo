@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (18 Apr 2016)
 # adjust MiNT specifics via USE flags
-sys-apps/coreutils hostname kill uptime
+sys-apps/coreutils hostname kill
 
 #364789
-app-arch/libarchive static static-libs
+app-arch/libarchive static-libs

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,5 +6,3 @@
 # really need them statically, as long as portage uses coreutils
 # during merge. if re-merging suacomp, utilities don't work otherwise.
 sys-apps/coreutils static
-
-sys-devel/binutils-config extwrapper
