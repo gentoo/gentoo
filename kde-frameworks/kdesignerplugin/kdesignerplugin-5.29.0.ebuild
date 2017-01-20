@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework providing plugins to use KDE frameworks widgets in QtDesigner"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="designer nls webkit"
 
 RDEPEND="
