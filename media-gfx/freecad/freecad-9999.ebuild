@@ -13,7 +13,7 @@ HOMEPAGE="http://www.freecadweb.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/mdadams/jasper.git"
+	EGIT_REPO_URI="https://github.com/FreeCAD/FreeCAD.git"
 else
 	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
