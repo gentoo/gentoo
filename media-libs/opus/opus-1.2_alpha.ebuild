@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ else
 	fi
 fi
 
-DESCRIPTION="Open versatile codec designed for interactive speech and audio transmission over the internet"
+DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
 HOMEPAGE="http://opus-codec.org/"
 
 LICENSE="BSD-2"
