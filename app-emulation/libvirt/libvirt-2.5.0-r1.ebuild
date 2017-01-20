@@ -1,12 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils user autotools-utils linux-info systemd readme.gentoo-r1
-
-BACKPORTS=""
+inherit autotools eutils user linux-info systemd readme.gentoo-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -21,9 +19,6 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	SRC_URI+=" ${BACKPORTS:+
-		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
-		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
 	KEYWORDS="~amd64 ~x86"
 	SLOT="0/${PV}"
 fi
@@ -125,6 +120,13 @@ DEPEND="${RDEPEND}
 	dev-perl/XML-XPath
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
+)
+
 pkg_setup() {
 	enewgroup qemu 77
 	enewuser qemu 77 -1 -1 "qemu,kvm"
@@ -225,17 +227,7 @@ src_prepare() {
 		) >.git-module-status
 	fi
 
-	epatch \
-		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
-		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
-		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
-		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
-
-	[[ -n ${BACKPORTS} ]] &&
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
-			EPATCH_SOURCE="${WORKDIR}/patches" epatch
-
-	epatch_user
+	default
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
@@ -245,8 +237,7 @@ src_prepare() {
 		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
-	AUTOTOOLS_AUTORECONF=true
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -316,7 +307,7 @@ src_configure() {
 		myeconfargs+=( $(use_with virtualbox vbox) )
 	fi
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 
 	if [[ ${PV} = *9999* ]]; then
 		# Restore gnulib's config.sub and config.guess
@@ -340,9 +331,8 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_compile install \
-		DESTDIR="${D}" \
-		SYSTEMD_UNIT_DIR="$(systemd_get_unitdir)"
+	emake DESTDIR="${D}" \
+		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
 
 	find "${D}" -name '*.la' -delete || die
 
