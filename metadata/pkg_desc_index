@@ -10089,8 +10089,8 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.2 2.50.0 2.50.1 2.50.2: GDBus code and documentation generator
-dev-util/geany 1.24.1 1.25 1.28 1.29-r1: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.24-r1 1.25 1.28 1.28-r1: A collection of different plugins for Geany
+dev-util/geany 1.28 1.29-r1: GTK+ based fast and lightweight IDE
+dev-util/geany-plugins 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
@@ -16847,7 +16847,7 @@ sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/cobalt-panel-utils 1.0.2: LCD and LED panel utilities for the Sun Cobalts
 sys-apps/collectl 3.7.4 4.0.5 4.1.0: light-weight performance monitoring tool capable of reporting interactively and logging to disk
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
-sys-apps/coreutils 8.23 8.25 8.26: Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
+sys-apps/coreutils 8.25 8.26: Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
 sys-apps/cpint 1.1.6 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20130610 20140123 20150606 20151017: Utility to get detailed information about the CPU(s) using the CPUID instruction
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
@@ -16895,7 +16895,7 @@ sys-apps/gentoo-functions 0.10 0.11 9999: base functions required by all Gentoo 
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.20.2 3.22.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
-sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
+sys-apps/gptfdisk 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.25 2.26 2.27-r1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
@@ -17571,7 +17571,7 @@ sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.23.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r1: Fuse module to mount uncompressed RAR archives
-sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
+sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
