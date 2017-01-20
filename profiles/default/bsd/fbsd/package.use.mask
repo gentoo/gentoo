@@ -30,12 +30,10 @@ sys-apps/openrc pam
 app-admin/gkrellm hddtemp
 
 # Somehow, check's tests are broken..
-dev-libs/confuse test
 dev-util/checkstyle test
 
-# Dillo won't run on FreeBSD
 # PDA masked until we can do some testing on it
-mail-client/claws-mail dillo pda
+mail-client/claws-mail pda
 
 # Original spell plugin uses ispell that requires
 # miscfiles.. that in turn does not work
@@ -47,9 +45,6 @@ net-irc/rbot spell
 sys-process/vixie-cron pam
 
 x11-misc/xscreensaver new-login
-
-# net-wireless/aircrack-ng - wireless capture tools not needed.
-net-wireless/aircrack-ng wifi
 
 # Gilles Dartiguelongue <eva@gentoo.org> (22 Oct 2007)
 # GNU attr isn't supported
@@ -74,7 +69,6 @@ sys-auth/pambase cracklib pam_ssh sha512
 # that we do not have (bug #257052)
 # Mask it for now
 gnome-base/nautilus tracker
-media-video/totem tracker
 
 # Naohiro Aota <naota@gentoo.org> (04 Aug 2011)
 # ads require krb5, which is maksed on FreeBSD
@@ -95,7 +89,6 @@ net-dns/bind gssapi
 # Upstream does not support FreeBSD wifi nor crashreporter;
 # net-wireless/wireless-tools useless on fbsd, keep mozilla stuff
 # from bringing it in via mozconfig-3.eclass
-mail-client/thunderbird wifi
 www-client/firefox wifi
 www-client/seamonkey wifi
 
