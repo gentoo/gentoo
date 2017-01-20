@@ -19,7 +19,8 @@ KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="doc latex net test"
 
 RDEPEND="
-	=dev-python/alabaster-0.7*[${PYTHON_USEDEP}]
+	>=dev-python/alabaster-0.7.9[${PYTHON_USEDEP}]
+	<dev-python/alabaster-0.8[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.11[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0.1-r1[${PYTHON_USEDEP}]
