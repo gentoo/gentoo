@@ -560,13 +560,58 @@ qemu_python_install() {
 	python_doscript "${S}/scripts/qmp/qemu-ga-client"
 }
 
+# Generate the /etc/init.d/qemu-binfmt script which registers the user handlers.
+generate_initd() {
+	local out="${T}/qemu-binfmt"
+	local d="${T}/binfmt.d"
+
+	einfo "Generating qemu init.d script"
+
+	# Generate the debian fragments first.
+	mkdir -p "${d}"
+	"${S}"/scripts/qemu-binfmt-conf.sh \
+		--debian \
+		--exportdir "${d}" \
+		--qemu-path "${EPREFIX}/usr/bin" \
+		|| die
+	# Then turn the fragments into a shell script we can source.
+	sed -E -i \
+		-e 's:^([^ ]+) (.*)$:\1="\2":' \
+		"${d}"/* || die
+
+	# Generate the init.d script by assembling the fragments from above.
+	local f qcpu package interpreter magic mask
+	cat "${FILESDIR}"/qemu-binfmt.initd.head >"${out}" || die
+	for f in "${d}"/qemu-* ; do
+		source "${f}"
+
+		# Normalize the cpu logic like we do in the init.d for the native cpu.
+		qcpu=${package#qemu-}
+		case ${qcpu} in
+		arm*)   qcpu="arm";;
+		mips*)  qcpu="mips";;
+		ppc*)   qcpu="ppc";;
+		s390*)  qcpu="s390";;
+		sh*)    qcpu="sh";;
+		sparc*) qcpu="sparc";;
+		esac
+
+		cat <<EOF >>"${out}"
+	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
+		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+	fi
+EOF
+	done
+	cat "${FILESDIR}"/qemu-binfmt.initd.tail >>"${out}" || die
+}
+
 src_install() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build"
 		emake DESTDIR="${ED}" install
 
-		# Install binfmt handler init script for user targets
-		newinitd "${FILESDIR}/qemu-binfmt.initd-r1" qemu-binfmt
+		# Install binfmt handler init script for user targets.
+		doinitd "${T}/qemu-binfmt"
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
