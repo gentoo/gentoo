@@ -28,8 +28,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.12-Werror.patch
 	"${FILESDIR}"/${PN}-0.12-examples.patch
-	"${FILESDIR}"/${PN}-0.12-gengetopt.patch
-	"${FILESDIR}"/${PN}-0.12-noinstall.patch
+	"${FILESDIR}"/${PN}-0.16-gengetopt.patch
 )
 
 src_prepare() {
