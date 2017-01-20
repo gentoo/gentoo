@@ -313,11 +313,6 @@ src_install() {
 		doins ${NV_X11}/10_nvidia.json
 	fi
 
-	if use wayland; then
-		insinto /usr/share/glvnd/egl_vendor.d
-		doins ${NV_X11}/10_nvidia_wayland.json
-	fi
-
 	# OpenCL ICD for NVIDIA
 	if use kernel_linux; then
 		insinto /etc/OpenCL/vendors
