@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="3"
 
 DESCRIPTION="Simple ASDF-BINARY-LOCATIONS configuration for Gentoo Common Lisp ports"
-HOMEPAGE="https://www.gentoo.org/proj/en/lisp/common-lisp/guide.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Common_Lisp/Guide"
 SRC_URI=""
 
 LICENSE="GPL-2"
