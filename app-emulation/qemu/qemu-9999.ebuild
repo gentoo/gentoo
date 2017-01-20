@@ -30,7 +30,7 @@ gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
-static-user systemtap tci test +threads usb usbredir +uuid vde +vhost-net \
+static-user systemtap tci test +threads usb usbredir vde +vhost-net \
 virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
@@ -133,7 +133,6 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
-	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
@@ -425,7 +424,6 @@ qemu_src_configure() {
 		$(conf_softmmu ssh libssh2)
 		$(conf_softmmu usb libusb)
 		$(conf_softmmu usbredir usb-redir)
-		$(conf_softmmu uuid)
 		$(conf_softmmu vde)
 		$(conf_softmmu vhost-net)
 		$(conf_softmmu virgl virglrenderer)
