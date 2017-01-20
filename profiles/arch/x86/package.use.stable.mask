@@ -49,9 +49,7 @@ app-office/libreoffice firebird
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
-dev-lang/python-exec -python_single_target_pypy
 dev-lang/python-exec -python_targets_pypy3
-dev-lang/python-exec -python_single_target_pypy3
 
 # Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
 # [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.

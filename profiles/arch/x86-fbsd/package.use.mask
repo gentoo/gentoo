@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,6 @@ net-im/gajim kde
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
 net-libs/webkit-gtk -jit
-www-client/epiphany -jit
 
 # Pacho Ramos <pacho@gentoo> (18 Mar 2011)
 # Missing keywords on deps (GNOME related packages)
@@ -41,25 +40,14 @@ net-im/gajim jingle
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Romain Perier <mrpouet@gentoo.org> (18 Oct. 2009)
-# >=networkmanager-0.7.0 is not keyworded.
-gnome-base/gnome-applets networkmanager
-
 # Java currently uses generation 1
 dev-libs/cyrus-sasl java
 
 # nvidia-driver uses acpid
 x11-drivers/nvidia-drivers acpi
 
-# Gilles Dartiguelongue <eva@gentoo.org> (19 Oct 2007)
-# afs not keyworded
->=gnome-base/gdm-2.20 afs
-
 # gavl and opencv do not build
 media-plugins/frei0r-plugins scale0tilt facedetect
-
-# needs to rework xanim's ebuild to make it bsd-friendly
-media-video/mplayer xanim
 
 # Dependencies not keyworded, bug #424571
 net-nds/openldap smbkrb5passwd

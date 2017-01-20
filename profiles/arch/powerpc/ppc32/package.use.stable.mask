@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,14 +27,12 @@
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
 net-misc/connman l2tp openconnect
-sci-libs/plplot ada ocaml
+sci-libs/plplot ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 app-misc/gramps webkit
 dev-java/swt webkit
-dev-libs/libpeas seed
-dev-util/geany-plugins devhelp markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 mail-client/balsa webkit
@@ -45,15 +43,5 @@ net-libs/libproxy webkit
 x11-libs/gksu gnome
 
 # Chí-Thanh Christopher Nguyễn (11 Jul 2016)
-# Requires media-libs/phonon[qt5], masked below
-=app-office/texstudio-2.10.2 qt5
-
-# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
 # Requires unstable dev-qt/qtx11extras:5 (bug 585228)
-<=app-office/lyx-2.1.4 qt5
-=media-libs/phonon-4.7.2 qt5
-=media-libs/phonon-gstreamer-4.7.2 qt5
-=media-libs/phonon-vlc-0.7.2 qt5
-<=media-sound/qsynth-0.3.9 qt5
-=media-video/vlc-2.2.1-r1 qt5
 =x11-themes/qtcurve-1.8.18-r1 qt5

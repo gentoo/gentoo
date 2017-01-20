@@ -42,9 +42,6 @@ www-servers/uwsgi go pypy
 # Johannes Huber <johu@gentoo.org> (12 Dec 2016)
 # No stable version available (kde-frameworks/prison).
 kde-plasma/plasma-workspace prison
-<kde-apps/akonadi-contacts-16.08.49:5 prison
-<kde-apps/kaddressbook-16.08.49:5 prison
-<kde-apps/kdepim-apps-libs-16.08.49:5 prison
 
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
@@ -78,11 +75,6 @@ app-emulation/ganeti monitoring
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask python3.5 for python-exec
 dev-lang/python-exec -python_targets_python3_5
-
-# Andreas Huettel <dilfridge@gentoo.org> (26 Sep 2015)
-# Not stable enough for stable (Debian and SuSE disable it completely)
-=app-office/libreoffice-5.0* gtk3
-=app-office/libreoffice-5.1* gtk3
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
@@ -144,10 +136,6 @@ app-crypt/tpm-tools pkcs11
 # Not yet stabilized dependencies blocking sec bug 514886
 app-office/libreoffice firebird
 
-# Agostino Sarubbo <ago@gentoo.org> (31 Aug 2013)
-# Clang is not stable
-app-portage/eix clang
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.
 sys-cluster/pacemaker cman
@@ -175,9 +163,3 @@ media-gfx/imagemagick opencl
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
 # No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
 >=kde-apps/kalzium-4.10.0 editor
-
-# Chris Reffett <creffett@gentoo.org> (23 Nov 2012)
-# CMake's PHP module can't find our install location, so
-# libkolab(xml) fails with the php flag enabled, bug #430858.
-net-libs/libkolab php
-net-libs/libkolabxml php

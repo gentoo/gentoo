@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,10 +62,6 @@ media-sound/audacity midi
 # dev-lang/luajit lack ppc64 keyword, bug #551540
 dev-libs/libpeas jit
 
-# Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
-# Needs the entire LXDE to be useful (bug #520296)
-xfce-extra/xfce4-power-manager lxpanel
-
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
@@ -74,11 +70,6 @@ app-doc/doxygen clang
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
 games-simulation/openttd openmedia
-
-# Michael Palimaka <kensington@gentoo.org> (02 Apr 2013)
-# Requires dev-lang/mono which currently has some issues
-# on ppc64.
-net-libs/libkolabxml csharp
 
 # Sergey Popov <pinkbyte@gentoo.org> (18 Feb 2013)
 # sys-cluster/ploop can not be build on ppc64, bug #447644
@@ -90,10 +81,6 @@ sys-cluster/vzctl ploop
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
 
-# Michael Weber <xmw@gentoo.org> (14 Jun 2012)
-# Mask net-misc/networkmanager[wimax] till bug 386121 is resolved
-net-misc/networkmanager wimax
-
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Mar 2012)
 # Mask media-video/ffmpeg[vpx] and media-video/mplayer[vpx]
 # on ppc64 as there is no stable version yet
@@ -103,10 +90,6 @@ media-video/ffmpeg vpx
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (03 Aug 2011)
-# sys-devel/llvm has no ppc64 keywords yet (bug #320221)
-dev-lang/ghc llvm
-
 # Kacper Kowalik <xarthisius@gentoo.org> (22 Mar 2011)
 # Mask polkit[kde] wrt #354509
 sys-auth/polkit kde
@@ -114,10 +97,6 @@ sys-auth/polkit kde
 # Alexey Shvetsov <alexxy@gentoo.org> (26 Jan 2011)
 # Mask gps for marble
 kde-apps/marble	gps
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jul 2010)
-# Needs app-mobilephone/obex-data-server keyworded, bug 305913
-gnome-base/gvfs bluetooth
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
 # These need stable kdelibs-4.
@@ -130,18 +109,6 @@ net-libs/libproxy kde
 # Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
-
-# uses games-board/ggz-gtk-client
-games-strategy/freeciv ggz
-
-# Mark Loeser <halcy0n@gentoo.org> (02 Mar 2010)
-# Mask webkit useflag since dev-python/mako and dev-python/pywebkitgtk are not
-# keyworded
-media-sound/rhythmbox webkit
-
-# Ben de Groot <yngwin@gentoo.org> (15 Jul 2009)
-# Mask dillo useflag as current version is unkeyworded (bug 253083)
-mail-client/claws-mail dillo
 
 # Brent Baude <ranger@gentoo.org> (05 May 2009)
 # Masking webkit from  libproxy due to TOC failure on webkit
