@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,8 +40,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-manpages.patch"
-	epatch "${FILESDIR}/${P}-returnvalue.patch"
+	epatch "${FILESDIR}/${PN}-manpages.patch"
+	epatch "${FILESDIR}/${PN}-returnvalue.patch"
 	eautoreconf
 }
 
