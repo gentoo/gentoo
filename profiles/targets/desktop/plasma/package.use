@@ -65,7 +65,6 @@ sys-auth/polkit-kde-agent minimal
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
 >=app-office/texmaker-4.4.1 -qt4
 >=app-office/texstudio-2.9.4 -qt4
-dev-db/sqlitebrowser -qt4
 >=dev-libs/quazip-0.7.1 -qt4
 net-misc/owncloud-client -qt4
 net-p2p/bitcoin-qt -qt4
