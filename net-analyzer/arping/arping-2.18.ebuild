@@ -3,15 +3,16 @@
 # $Id$
 
 EAPI=6
-inherit autotools fcaps git-r3
+inherit fcaps
 
-DESCRIPTION="ARP Ping"
+DESCRIPTION="A utility to see if a specific IP address is taken and what MAC address owns it"
 HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=arping"
-EGIT_REPO_URI="https://github.com/ThomasHabets/arping"
+SRC_URI="http://www.habets.pp.se/synscan/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+IUSE="test"
 
 CDEPEND="
 	net-libs/libpcap
@@ -19,7 +20,7 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	dev-libs/check
+	test? ( dev-libs/check )
 "
 RDEPEND="
 	${CDEPEND}
@@ -27,8 +28,3 @@ RDEPEND="
 "
 
 FILECAPS=( cap_net_raw /usr/sbin/arping )
-
-src_prepare() {
-	default
-	eautoreconf
-}
