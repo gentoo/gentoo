@@ -8198,7 +8198,7 @@ dev-python/python-debian 0.1.26 0.1.27 0.1.28: Python modules to work with Debia
 dev-python/python-designateclient 2.0.0 2.3.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.0 1.1.0-r1: Python bindings for libdiscid
-dev-python/python-distutils-extra 2.38: Gettext support, themed icons and scrollkeeper-based documentation in distutils
+dev-python/python-distutils-extra 2.38 2.39: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.3.9 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.10 2.7.12 3.3.5-r1 3.4.3 3.5.2: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
@@ -12981,7 +12981,7 @@ media-libs/openicc 0.1.0: Config database to store, share and manipulate colour 
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.1.1_p20160922 2.1.2: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.1.0 3.1.1: An Open-Source subdivision surface library
-media-libs/opus 1.1 1.1.3 1.2_alpha: Open versatile codec designed for interactive speech and audio transmission over the internet
+media-libs/opus 1.1 1.1.3 1.1.3-r1 1.2_alpha: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6 0.6-r1 0.7 0.8: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.5-r1 0.9.6 9999: Colour management system allowing to share settings across apps and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
