@@ -7,14 +7,16 @@
     the worst of which may allow remote execution of arbitrary code.
   </synopsis>
   <product type="ebuild">firefox</product>
-  <announced>May 31, 2016</announced>
-  <revised>May 31, 2016: 1</revised>
+  <announced>2016-05-31</announced>
+  <revised>2017-01-20: 4</revised>
   <bug>549356</bug>
+  <bug>550288</bug>
   <bug>557590</bug>
   <bug>559186</bug>
   <bug>561246</bug>
   <bug>563230</bug>
   <bug>564834</bug>
+  <bug>571086</bug>
   <bug>573074</bug>
   <bug>574596</bug>
   <bug>576862</bug>
@@ -138,6 +140,8 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2717">CVE-2015-2717</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2718">CVE-2015-2718</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2718">CVE-2015-2718</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2721">CVE-2015-2721</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4473">CVE-2015-4473</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4473">CVE-2015-4473</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4474">CVE-2015-4474</uri>
@@ -181,6 +185,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7181">CVE-2015-7181</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7182">CVE-2015-7182</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7183">CVE-2015-7183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7575">CVE-2015-7575</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1523">CVE-2016-1523</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1523">CVE-2016-1523</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1930">CVE-2016-1930</uri>
@@ -302,8 +307,6 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2802">CVE-2016-2802</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2802">CVE-2016-2802</uri>
   </references>
-  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 02:35:40 +0000">
-    BlueKnight
-  </metadata>
-  <metadata tag="submitter" timestamp="Tue, 31 May 2016 05:43:42 +0000">b-man</metadata>
+  <metadata tag="requester" timestamp="2015-12-31T02:35:40Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-01-20T18:11:38Z">b-man</metadata>
 </glsa>
