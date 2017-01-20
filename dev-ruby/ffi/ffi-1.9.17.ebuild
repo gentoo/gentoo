@@ -46,7 +46,7 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	emake -Cext/ffi_c V=1
-	cp ext/ffi_c/ffi_c.so lib/ || die
+	cp ext/ffi_c/ffi_c$(get_modname) lib/ || die
 
 	${RUBY} -S rake -f gen/Rakefile || die "types.conf generation failed"
 }
