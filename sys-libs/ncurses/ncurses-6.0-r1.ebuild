@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.0-pkg-config.patch"
 	"${FILESDIR}/${PN}-5.9-gcc-5.patch" #545114
 	"${FILESDIR}/${PN}-6.0-ticlib.patch" #557360
+	"${FILESDIR}/${PN}-6.0-cppflags-cross.patch" #601426
 )
 
 src_prepare() {
