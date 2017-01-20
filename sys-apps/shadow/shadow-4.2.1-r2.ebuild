@@ -30,7 +30,7 @@ RDEPEND="acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )"
 
