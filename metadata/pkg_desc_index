@@ -2816,12 +2816,12 @@ dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: 
 dev-ada/charles 20050913: Posix bindings for Ada
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7 2.7.7-r1 3.5.2 3.5.2-r1: The ANTLR 3 C++ Runtime
-dev-cpp/asio 1.4.5 1.4.8-r1 1.10.8: Asynchronous Network Library
+dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.5.0 1.5.6 1.5.7 1.5.8 1.6.0 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
-dev-cpp/commoncpp2 1.8.1-r1 1.8.1-r2: C++ library offering portable support for system-related services
+dev-cpp/commoncpp2 1.8.1-r2: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.2_p129 2.3: A simple but powerful template language for C++
 dev-cpp/eigen 2.0.17 3.2.8-r2 3.2.9 3.2.10 3.3.1: C++ template library for linear algebra
@@ -10694,7 +10694,7 @@ games-emulation/dboxfe 0.1.3 0.1.3-r1: Creates and manages configuration files f
 games-emulation/desmume 0.9.8 0.9.9 0.9.10 0.9.11 0.9.11-r1: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
-games-emulation/dosbox 0.74 0.74_p20160629 0.74_p20160629-r1 9999: DOS emulator
+games-emulation/dosbox 0.74_p20160629 0.74_p20160629-r1 9999: DOS emulator
 games-emulation/emutos 0.9.3 0.9.4: a single-user single-tasking operating system for 32 bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r2: portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 2.10.0 3.0.0: A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer
@@ -10759,8 +10759,8 @@ games-engines/openxcom 1.0.0 1.0.0-r1 9999: An open-source reimplementation of t
 games-engines/qtads 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.17.7 6.99.6: Visual novel engine written in python
 games-engines/residualvm 0.2.1 0.2.1-r1: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
-games-engines/scummvm 1.7.0-r2 1.8.0 1.8.1-r1 1.9.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
-games-engines/scummvm-tools 1.7.0-r1 1.8.0 1.8.0-r1: utilities for the SCUMM game engine
+games-engines/scummvm 1.8.0 1.8.1-r1 1.9.0: Reimplementation of the SCUMM game engine used in Lucasarts adventures
+games-engines/scummvm-tools 1.8.0 1.8.0-r1: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1 1.3.1-r1: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.3.0: A realtime strategy game engine
 games-engines/xzip 1.8.2-r2 1.8.2-r3: X interface to Z-code based text games
@@ -11271,7 +11271,7 @@ games-strategy/spaz 1.605: Space Pirates and Zombies
 games-strategy/tornado 1.4: Clone of a C64 game - destroy the opponent's house
 games-strategy/triplea 1.8.0.9 1.8.0.9-r1: An open source clone of the popular Axis and Allies boardgame
 games-strategy/ufo-ai 2.4: UFO: Alien Invasion - X-COM inspired strategy game
-games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
+games-strategy/uqm 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1 11.04.1-r1: A free Worms clone
@@ -11291,7 +11291,7 @@ games-util/etswitch 0.1.14 0.1.14-r1: *nix minimizer for a few games
 games-util/fteqcc 2501: QC compiler
 games-util/gamepick 0.35 0.35-r1: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
-games-util/grfcodec 6.0.4 6.0.5: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
+games-util/grfcodec 6.0.5: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
 games-util/gslist 0.8.11a 0.8.11a-r1: A GameSpy server browser
 games-util/gtkevemon 1.8-r1 1.10 9999: A standalone skill monitoring application for EVE Online
 games-util/higan-purify 03: Rom purifier for higan
@@ -13473,7 +13473,7 @@ media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/chuck 1.3.5.1 1.3.5.2: Strongly-timed, concurrent, and on-the-fly audio programming language
 media-sound/clementine 1.3.1-r5 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
-media-sound/cmus 2.7.1 2.8.0_rc0: A ncurses based music player with plugin support for many formats
+media-sound/cmus 2.8.0_rc0: A ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5 0.3.1: Last.fm scrobbler for cmus music player
 media-sound/codecgraph 20120114: Generates a graph based on the ALSA description of an HD Audio codec
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
@@ -17432,7 +17432,7 @@ sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.28 1.0.29: Advanced Linux Sound Architecture firmware
-sys-firmware/amdgpu-ucode 20160628: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
+sys-firmware/amdgpu-ucode 20160628 20161121: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
@@ -17452,7 +17452,7 @@ sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.
 sys-firmware/iwl8000-ucode 16.242414.0: Firmware for Intel (R) Wireless 8260 and 4165
 sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/radeon-ucode 20150511 20160331 20160616 20160628: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
+sys-firmware/radeon-ucode 20160628 20161005: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2 1.10.1: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 0.1.3 0.1.4 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
