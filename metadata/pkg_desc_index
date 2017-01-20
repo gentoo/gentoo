@@ -7499,7 +7499,7 @@ dev-python/gdmodule 0.56-r2: Python extensions for gd
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.2.1 1.3.0 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoalchemy2 0.3: Geospatial extension to SQLAlchemy with PostGIS support
-dev-python/geoip-python 1.3.2: Python bindings for GeoIP
+dev-python/geoip-python 1.3.2 1.3.2-r1: Python bindings for GeoIP
 dev-python/geopy 1.8.1 1.9.1 1.10.0 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0 1.0.1 1.0.2 1.1.0 1.1.1 1.1.2: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Gevent pywsgi server
@@ -14611,7 +14611,7 @@ net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.7 4.0.6: An advanced Internet Relay Chat daemon
-net-irc/weechat 1.4-r1 1.5 1.6 9999: Portable and multi-interface IRC client
+net-irc/weechat 1.4-r1 1.5 1.6 1.7 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.3-r1 1.6.4 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
