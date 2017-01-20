@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst preinst prepare
-DEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) app-arch/xz-utils nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=acl? ( sys-apps/acl ) audit? ( sys-process/audit ) cracklib? ( >=sys-libs/cracklib-2.7-r3 ) pam? ( virtual/pam ) skey? ( sys-auth/skey ) selinux? ( >=sys-libs/libselinux-1.28 sys-libs/libsemanage ) nls? ( virtual/libintl ) xattr? ( sys-apps/attr ) app-arch/xz-utils sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Utilities to deal with user accounts
 EAPI=5
 HOMEPAGE=http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://pkg-shadow.alioth.debian.org/releases/shadow-4.2.1.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	017377e73405d964cd0137088cddb9c3	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=de6dee6051ffd419795cfe5ff24d4759
+_md5_=f94629db60b191a5ac7d7939acb609d8
