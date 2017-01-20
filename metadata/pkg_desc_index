@@ -8205,7 +8205,7 @@ dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV fi
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 0.9.1 1.0.3: Python implementation of the Engine.IO realtime server.
-dev-python/python-etcd 0.3.2 0.3.3: A python client for etcd
+dev-python/python-etcd 0.3.2 0.3.3 0.4.4: A python client for etcd
 dev-python/python-ethtool 0.11: Ethernet settings python bindings
 dev-python/python-evdev 0.4.3 0.4.5 0.6.1: Python library for evdev bindings
 dev-python/python-eventlib 0.2.1: Coroutine-based networking library
@@ -12754,7 +12754,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r3 0.10.23-r4 1.4.5 1.6.3 1.8.3 1.8.3-r1: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r3 0.10.23-r4 1.4.5 1.6.3 1.8.3-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.3 1.8.3-r1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 0.10.31-r2 1.4.5 1.6.3 1.8.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.3 1.8.3: Basepack of plugins for gstreamer
@@ -13179,7 +13179,7 @@ media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.4.5 1.6.3 1.8.3: MPEG2 encoder plugin for GStreamer
 media-plugins/gst-plugins-uvch264 1.6.3 1.8.3: UVC compliant H264 encoding cameras plugin for GStreamer
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.4.5 1.6.3 1.8.3: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 0.7.0 1.8.2 1.8.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-vaapi 1.8.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
 media-plugins/gst-plugins-voaacenc 1.6.3 1.8.3: AAC encoder plugin for GStreamer
 media-plugins/gst-plugins-voamrwbenc 1.6.3 1.8.3: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
@@ -13931,7 +13931,7 @@ media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-str
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
 media-video/mkvtoolnix 8.5.2 9.6.0 9.7.1: Tools to create, alter, and inspect Matroska files
-media-video/motion 3.2.12-r2 3.2.12-r3 4.0.1: A software motion detector
+media-video/motion 3.2.12-r2 3.2.12-r3 4.0.1-r1: A software motion detector
 media-video/motiontrack 0.1.3-r1: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2 1.4.0: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
