@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ sys-apps/memtest86+ floppy
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (24 Jun 2012)
 # Disable 32-bit parts of wine, bug #351436
-app-emulation/wine mono win32
+app-emulation/wine mono
 
 # Apr 28, 2008 Sébastien Fabbro <bicatali@gentoo.org>
 # ifc masked
