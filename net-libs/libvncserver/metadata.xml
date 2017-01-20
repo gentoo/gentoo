@@ -20,9 +20,6 @@ surfing the internet.
 Now that you want to make a VNC server, that is, a server which speaks 
 the RFB protocol, you can download this library from sourceforge.
 	</longdescription>
-	<slots>
-		<subslots>Reflect major ABI of libvncserver.so.</subslots>
-	</slots>
 	<use>
 		<flag name="24bpp">enable 24bpp support</flag>
 		<flag name="gcrypt">enable support for gcrypt</flag>

@@ -15,7 +15,9 @@ KEYWORDS="amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-mac
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/when_dist
+S="${WORKDIR}/when_dist"
+
+DOCS=( README )
 
 src_prepare() {
 	default
@@ -34,7 +36,7 @@ src_test() {
 }
 
 src_install() {
-	dobin ${PN}
-	doman ${PN}.1
-	dodoc README
+	dobin "${PN}"
+	doman "${PN}.1"
+	einstalldocs
 }
