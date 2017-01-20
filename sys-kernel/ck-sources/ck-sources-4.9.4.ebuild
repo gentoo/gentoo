@@ -77,6 +77,7 @@ src_prepare() {
 
 #-- Comment out CK's EXTRAVERSION in Makefile ---------------------------------
 
+	# linux-info eclass cannot handle recursively expanded variables in Makefile #490328
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
 }
 
