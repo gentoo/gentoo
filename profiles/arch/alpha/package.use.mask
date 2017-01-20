@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -104,12 +104,6 @@ dev-python/restkit cli
 # work on alpha. Mask USE flag for layman accordingly
 app-portage/layman -g-sorcery
 
-# Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
-# Mask USE=sssd for sudo because sys-auth/sssd is relatively big and doesn't
-# compile on alpha. The version specified does not have the USE flag, but that
-# version of sudo has the optional functionality.
->=app-admin/sudo-1.8.6 sssd
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
@@ -178,7 +172,6 @@ media-video/vlc opencv
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
 # Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
-sys-apps/systemd terminal
 sys-apps/systemd xkb
 
 # Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
@@ -189,10 +182,6 @@ net-misc/spice-gtk smartcard
 # Gilles Dartiguelongue <eva@gentoo.org> (05 Oct 2014)
 # Missing keyword on app-accessibility/brltty
 app-accessibility/orca braille
-
-# Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
-# Missing keywords on dev-libs/protobuf-c (bug 519772)
->=net-libs/libgadu-1.12.0 gg11
 
 # Tobias Klausmann <klausman@gentoo.org>
 # media-libs/x265 doesn't work on alpha (bug 519046)
@@ -271,10 +260,6 @@ media-libs/phonon gstreamer vlc
 # remove mask when dev-java/fop is keyworded here
 gnome-extra/libgda reports
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
-# media-video/coherence not keyworded
-=media-video/totem-2* upnp-av
-
 # Luca Barbato <lu_zero@gentoo.org> (11 Nov 2012)
 # Libav 9 can use fdk-aac
 >=media-video/libav-9_beta2 fdk
@@ -291,17 +276,11 @@ dev-python/PyQt4 webkit
 dev-qt/assistant webkit
 dev-qt/designer webkit
 dev-qt/qtdeclarative webkit
-dev-qt/qthelp webkit
 net-irc/kvirc webkit
 
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (25 May 2012)
-# Remove mask entry when app-accessibility/at-spi2-core
-# is keyworded here, bug #411761
-net-libs/webkit-gtk webkit2
 
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # mask use numa for openmpi
@@ -333,17 +312,9 @@ sys-apps/hwloc numa
 # This mask also implies masking the numa flag on openmpi
 sys-cluster/openmpi numa
 
-# Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
-# Missing keywords on dependencies
-app-cdr/brasero dvd
-
 # Pacho Ramos <pacho@gentoo.org> (30 Jun 2011)
 # Needed plugins are not keyworded on this arch
 media-plugins/gst-plugins-meta dts libvisual
-
-# Pacho Ramos <pacho@gentoo.org> (02 Apr 2011)
-# quvi support is needed to play youtube files now
-media-video/totem flash youtube
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (17 Dec 2010)
 # needs sys-libs/libcap-ng that is masked right now
@@ -369,9 +340,6 @@ www-client/seamonkey custom-optimization
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
 
-# uses games-board/ggz-gtk-client
-games-strategy/freeciv ggz
-
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qtmultimedia is not keyworded, bug 293671
 dev-python/PyQt4 multimedia
@@ -387,7 +355,7 @@ sys-apps/iproute2 atm
 net-dialup/ppp atm
 
 # Needs nut and qstat respectively, neither is keyworded on alpha.
-net-analyzer/nagios-plugins ups nagios-game
+net-analyzer/nagios-plugins nagios-game
 
 # Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
 # No idea why. Bug 347827
