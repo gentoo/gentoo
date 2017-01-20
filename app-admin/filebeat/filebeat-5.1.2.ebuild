@@ -40,8 +40,8 @@ src_install() {
 
 	fperms 0750 /var/{lib,log}/${PN}
 
-	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 
 	insinto "/usr/share/doc/${PF}/examples"
 	doins ${PN}/{filebeat.yml,filebeat.full.yml}
