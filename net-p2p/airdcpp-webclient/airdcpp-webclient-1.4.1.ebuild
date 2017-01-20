@@ -1,10 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
 
-inherit cmake-utils user
+inherit cmake-utils user python-any-r1
 
 DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
@@ -29,16 +30,21 @@ RDEPEND="
 	tbb? ( dev-cpp/tbb )
 "
 DEPEND="
-	dev-lang/python:*
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 	${RDEPEND}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	enewgroup airdcppd
+	enewuser airdcppd -1 -1 /var/lib/airdcppd airdcppd
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_WEB_UI=OFF
-		-DLIB_INSTALL_DIR=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
@@ -49,11 +55,6 @@ src_install() {
 	keepdir /var/lib/airdcppd
 	fowners airdcppd:airdcppd /var/lib/airdcppd
 	cmake-utils_src_install
-}
-
-pkg_setup() {
-	enewgroup airdcppd
-	enewuser airdcppd -1 -1 /var/lib/airdcppd airdcppd
 }
 
 pkg_postinst() {
