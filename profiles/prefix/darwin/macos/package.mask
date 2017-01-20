@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,3 @@
 # keep old versions due to vulnerabilities.
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin
-
-# Fabian Groffen <grobian@gentoo.org> (29 Sep 2012)
-# Use Apple's provided Java6 instead!
-dev-java/soylatte-jdk-bin

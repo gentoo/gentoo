@@ -1,7 +1,3 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-# Fabian Groffen <grobian@gentoo.org> (29 Sep 2012)
-# This is the only way to get Java6 here
-dev-java/soylatte-jdk-bin
