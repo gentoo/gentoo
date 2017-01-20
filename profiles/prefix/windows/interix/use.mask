@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,13 +12,11 @@ alsa
 altivec
 apm
 bluetooth
-cap
 caps
 cdr
 coreaudio
 dga
 directfb
-divx4linux
 djbfft
 dri
 dvdr
@@ -26,7 +24,6 @@ dvdr
 emacs
 xemacs
 fbcon
-fdftk
 fmod
 ggi
 glut
@@ -35,19 +32,13 @@ gps
 hardened
 hddtemp
 ibm
-icc
-icc-pgo
 ieee1394
 ifc
 ipod
 ipv6
 java
 lm_sensors
-matrox
 netboot
-old-linux
-# requires device-mapper
-on-the-fly-crypt
 opengl
 oss
 pam
@@ -62,7 +53,6 @@ uclibc
 #  totally b0rked on interix
 unicode
 usb
-voodoo3
 v4l
 wifi
 

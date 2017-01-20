@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,9 +22,7 @@ curl_ssl_winssl
 cuda
 
 # on the way out
-ruby_targets_ruby18
 ruby_targets_jruby
-ruby_targets_ree18
 ruby_targets_ruby19
 ruby_targets_ruby20
 
@@ -46,17 +44,11 @@ vdpau
 # Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
 infiniband
 
-# Only available on x86
-fdftk
-
 # These need libieee1284 which is amd64/x86 only.
 sane_backends_canon_pp
 sane_backends_hpsj5s
 sane_backends_mustek_pp
 sane_backends_qcam
-
-# Gluon still don't have release.
-gluon
 
 # profile specific USE flags
 # Don't put hardened in here.
@@ -65,28 +57,10 @@ uclibc
 multilib
 
 # amd64/x86 arch specific USE flags
-kqemu
 3dnow
-3dnowext
 lilo
-mmx
-mmxext
 mpx
-sse
-sse2
-sse3
-sse4
-sse4a
-sse4_1
-sse4_2
-ssse3
 avx
-avx128fma
-avx2
-avx256
-fma3
-fma4
-xop
 svga
 nvram
 cpu_flags_x86_3dnow
@@ -111,15 +85,11 @@ cpu_flags_x86_xop
 
 # ppc arch specific USE flags
 altivec
-pbbuttonsd
 ppcsha1
 
 # mips arch specific USE flags
-n32
-n64
 fixed-point
 loongson2f
-mips32r2
 mipsdspr1
 mipsdspr2
 mipsfpu
@@ -130,7 +100,6 @@ ps3
 
 # sparc arch specific USE flags
 vis
-ultra1
 
 # arm arch specific USE flags
 armvfp
@@ -147,15 +116,8 @@ nvidia
 oci8-instant-client
 oracle
 
-# net-libs/osptoolkit is only available on x86 (used by asterisk, bug 115798)
-osp
-
-# yellownet is only avaible as a binary blob (bug 149970)
-yellownet
-
 # not keyworded on non-x86 systems
 video_cards_geode
-video_cards_xgi
 video_cards_voodoo
 
 # not needed on non-sparc systems
@@ -169,10 +131,8 @@ video_cards_suntcx
 
 # not needed on non-mips systems
 video_cards_newport
-video_cards_impact
 
 # not needed on non-x86, non-amd64 systems
-input_devices_virtualbox
 input_devices_vmmouse
 video_cards_nvidia
 video_cards_fglrx
@@ -195,9 +155,6 @@ video_cards_qxl
 # not needed on non-x86, non-amd64, non-ppc systems
 input_devices_synaptics
 input_devices_wacom
-
-# psyco only works on x86
-psyco
 
 # Mask ELIBC, KERNEL, and USERLAND flags that apply to specific profiles.
 userland_BSD
@@ -228,40 +185,6 @@ kernel_OpenBSD
 kernel_SunOS
 kernel_Winnt
 
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Mask specific Apple drivers
-alsa_cards_aoa
-alsa_cards_aoa-fabric-layout
-alsa_cards_aoa-onyx
-alsa_cards_aoa-soundbus
-alsa_cards_aoa-soundbus-i2s
-alsa_cards_aoa-tas
-alsa_cards_aoa-toonie
-alsa_cards_powermac
-# Mask specific Sun drivers
-alsa_cards_sun-amd7930
-alsa_cards_sun-cs4231
-alsa_cards_sun-dbri
-# Mask specific ARM drivers
-alsa_cards_pxa2xx-i2sound
-alsa_cards_pxa2xx-soc
-alsa_cards_pxa2xx-soc-corgi
-alsa_cards_pxa2xx-soc-poodle
-alsa_cards_pxa2xx-soc-spitz
-alsa_cards_pxa2xx-soc-tosa
-alsa_cards_sa11xx-uda1341ts
-alsa_cards_armaaci
-alsa_cards_at91-soc
-alsa_cards_at91-soc-eti-b1-wm8731
-# Mask specific HPPA drivers
-alsa_cards_harmony
-# Mask specific MIPS drivers
-alsa_cards_au1x00
-
-# Diego Pettenò <flameeyes@gentoo.org> (29 Dec 2006)
-# Adobe FDF toolkit is x86 only.
-fdftk
-
 # Diego Pettenò <flameeyes@gentoo.org> (30 Dec 2006)
 # These are specific of Mac OS X
 aqua
@@ -279,17 +202,6 @@ macbook
 # George Shapovalov <george@gentoo.org> (8 Apr 2007)
 # Ada is supported only on x86, amd64 and ppc at present
 ada
-
-# lvm2 clustered use flags (moved from default-linux)
-gulm
-
-# tcc is x86 only
-tcc
-
-# Diego Pettenò <flameeyes@gentoo.org> (15 Nov 2007)
-# pam_console was masked for removal for security issue.
-# mask the flag too.
-pam_console
 
 # Jeremy Olexa <darkside@gentoo.org>
 # The prefix USE flags should never be used on non prefix profiles
@@ -313,9 +225,7 @@ dxr3
 # Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
 # Unmask in arch specific profiles when jython implementaton is available.
 python_targets_jython2_7
-python_targets_jython3_1
 python_single_target_jython2_7
-python_single_target_jython3_1
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (18 Aug 2012)
 # Prelude is being masked for removal
@@ -380,13 +290,6 @@ openrc-force
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 apparmor
-
-# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
-# Masking sssd USE-flag globally and unmasking it on the tested arches
-# to stop minor arches from blocking major arches AND prevent the dropping
-# of keywords on sudo for said minor arches, in regards to ssd and sudo bugs
-# 540540 and 525674
-sssd
 
 # Brian Evans <grknight@gentoo.org> (2 Dec 2015)
 # php 5.4 is end of life, masked for removal

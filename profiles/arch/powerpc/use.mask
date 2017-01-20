@@ -38,27 +38,19 @@ klibc
 #
 3dfx
 acpi
-avi
 lm_sensors
 rar
 hdf
 fmod
-i8x0
 xvmc
 # cg is only provided by nvidia's binary only cg toolkit
 cg
 # dmi depends on PC BIOSes, we don't have those
 dmi
-# Appears to be x86 only, feel free to remove if you disagree
-nvtv
 #2006/10/11 - corsair - bug #150925
-graphlcd
 lcd_devices_graphlcd
 # Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
 vaapi
-# Doug Goldstein <cardoe@gentoo.org> (27 Apr 2007)
-# Dell does not ship or sell PPC systems
-dell
 # User Mode Linux isn't supported on ppc yet
 uml
 
@@ -70,16 +62,6 @@ afs
 
 # Masking mbrola for bug #84322, if a new version is released, remove this
 mbrola
-
-# Keep and eye on firebird and interbase as pair
-interbase
-
-# cardoe@gentoo.org
-# masking ivtv since I got the original support for it
-# but it was never stabled and it appears to have been
-# broken in later releases by an endian issue. I no longer
-# have the hardware to test
-ivtv
 
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
@@ -96,36 +78,9 @@ ivtv
 -alsa_cards_aoa-toonie
 -alsa_cards_powermac
 # Mask ALSA drivers for ISA cards
-alsa_cards_cs4232
 alsa_cards_msnd-pinnacle
-alsa_cards_cs4231-lib
-alsa_cards_adlib
-alsa_cards_ad1816a
-alsa_cards_ad1848
-alsa_cards_als100
-alsa_cards_azt2320
-alsa_cards_cmi8330
-alsa_cards_cs4231
-alsa_cards_cs4236
-alsa_cards_dt019x
-alsa_cards_es968
-alsa_cards_es1688
-alsa_cards_es18xx
-alsa_cards_gusclassic
-alsa_cards_gusextreme
-alsa_cards_gusmax
-alsa_cards_interwave
-alsa_cards_interwave-stb
-alsa_cards_opl3sa2
-alsa_cards_opti92x-ad1848
-alsa_cards_opti92x-cs4231
-alsa_cards_opti93x
-alsa_cards_miro
-alsa_cards_sb8
 alsa_cards_sb16
 alsa_cards_sbawe
-alsa_cards_sb16_csp
-alsa_cards_sgalaxy
 alsa_cards_sscape
 alsa_cards_wavefront
 
@@ -147,15 +102,11 @@ lcd_devices_stv5730
 # Both
 lcd_devices_t6963
 
-# Fixes bug #86787
-fusion
-
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
 video_cards_apm
 video_cards_ark
 video_cards_ast
-video_cards_cyrix
 video_cards_i128
 video_cards_i740
 video_cards_intel
@@ -179,10 +130,6 @@ video_cards_vmware
 # Matt Turner <mattst88@gentoo.org> (13 Nov 2015)
 # radeonsi requires glamor support
 video_cards_radeonsi
-
-# Doug Goldstein <cardoe@gentoo.org> (3 Apr 2008)
-# nvidia-drivers specific feature which don't exist for ppc
-opengl-xvmc
 
 # Intel Integrated Primitive (sci-libs/ipp) support
 ipp

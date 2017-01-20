@@ -6,7 +6,6 @@
 
 # Stuff we don't want/not tested
 pbins
-chicken
 R
 octave
 xindy
@@ -15,8 +14,6 @@ lasi
 kde
 mpi
 fuse
-prolog
-libnl
 autotrace
 lqr
 libproxy
@@ -36,7 +33,6 @@ lucene
 
 # This file contains a list of useflags that cannot be used on s390.
 bluetooth
-dell
 pcmcia
 cdr
 qt4
@@ -48,19 +44,11 @@ alsa
 apm
 directfb
 lirc
-trusted
-voodoo3
-wavelan
 java
-java-internal
-java-external
 hardened
 
 # Needs java
 pdfannotextractor
-
-# not working for now
-mzscheme
 
 # no gnome love yet
 fits
@@ -78,13 +66,10 @@ xemacs
 Xaw3d
 neXt
 motif
-glitz
 mono
-pike
 ocaml
 sdl
 lm_sensors
-wxwindows
 wxwidgets
 
 # Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)

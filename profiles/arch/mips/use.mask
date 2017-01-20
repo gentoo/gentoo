@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,7 +52,6 @@ openexr
 
 # Ryan Hill <dirtyepic@gentoo.org>
 # Various Gnome flags
-beagle
 gtkhtml
 gnome
 
@@ -65,9 +64,6 @@ mpi
 lapack
 blas
 
-# Ryan Hill <dirtyepic@gentoo.org>
-dell
-
 # Alexander Færøy <eroyf@gentoo.org>
 # ldap -- untested, masking for now.
 ldap
@@ -78,7 +74,6 @@ clamav
 
 # Untested on mips, masking for now.
 cdb
-nextaw
 
 # Until someone actually needs fuse, we'll mask it as
 # it holds up stablizing ntfsprogs
@@ -106,26 +101,14 @@ video_cards_radeon
 video_cards_sis
 input_devices_acecad
 input_devices_aiptek
-input_devices_calcomp
-input_devices_digitaledge
-input_devices_dmc
 input_devices_dynapro
 input_devices_elo2300
 input_devices_elographics
 input_devices_fpit
 input_devices_hyperpen
-input_devices_jamstudio
-input_devices_magellan
-input_devices_magictouch
-input_devices_microtouch
 input_devices_mutouch
-input_devices_palmax
 input_devices_penmount
-input_devices_spaceorb
-input_devices_summa
 input_devices_synaptics
-input_devices_tek4957
-input_devices_ur98
 input_devices_vmmouse
 input_devices_void
 input_devices_wacom
@@ -166,10 +149,8 @@ video_cards_vmware
 # Modular X: mask for architectures on which they aren't available
 video_cards_apm
 video_cards_ark
-video_cards_cyrix
 video_cards_i128
 video_cards_i740
-video_cards_imstt
 video_cards_intel
 video_cards_neomagic
 video_cards_nsc
@@ -177,7 +158,6 @@ video_cards_rendition
 video_cards_tga
 video_cards_tseng
 video_cards_vesa
-video_cards_vga
 video_cards_ast
 
 # Diego Pettenò <flameeyes@gentoo.org>
@@ -202,18 +182,9 @@ pcmcia
 # mask scanner support
 scanner
 
-# Armando Di Cianno <fafhrd@gentoo.org>
-# gnustep is currently unbuildable on mips - masking this to repair windowmaker
-#   broken mips keywording becuase of 'gnustep' USE flag
-gnustep
-
 # Hardave Riar <hardave@gentoo.org>
 # This should work, someone with a usb card and digital camera should test it
 gphoto2
-
-# Hardave Riar <hardave@gentoo.org>
-# This will probablly work, but no hardware to test with
-gnokii
 
 # Ciaran McCreesh <ciaranm@gentoo.org>
 # unresolved dep, bug #82428
@@ -243,10 +214,6 @@ mozilla
 # masked because I say so, gnome--
 pda
 
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# not even slightly reliable, bug #65216
-mzscheme
-
 # Stephen P. Becker <geoman@gentoo.org>
 # masked because gaim sucks
 evo
@@ -273,8 +240,6 @@ dvdr
 ibm
 ggi
 lirc
-trusted
-voodoo3
 smartcard
 
 #
@@ -297,10 +262,6 @@ pcsc-lite
 # Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
 # Unmask specific MIPS ALSA drivers
 -alsa_cards_au1x00
-
-#Daniel Black <dragonheart@gentoo.org> (28 Feb 2007)
-# Use mask l7-filter for iptables dependency - bug #150343 until mips tested
-l7filter
 
 # Fernando J. Pereda <ferdy@gentoo.org> (20 Mar 2007)
 # New optional dependency of >=mail-client/mutt-1.5.14

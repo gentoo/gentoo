@@ -13,10 +13,6 @@ php
 # Unmask specific MIPS ALSA drivers
 -alsa_cards_au1x00
 
-# Daniel Black <dragonheart@gentoo.org> (28 Feb 2007)
-# Use mask l7-filter for iptables dependency - bug #150343 until mips tested
-l7filter
-
 # Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
 # some programs with this useflag are useful, e.g #227631
 mpi

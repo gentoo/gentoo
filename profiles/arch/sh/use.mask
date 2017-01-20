@@ -11,8 +11,6 @@ hardened
 # There is no java in this profile (if there is it must be available). Without
 # this repoman will fail on apps like sys-libs/db
 java
-java-internal
-java-external
 pdfannotextractor
 
 # broken upstream, see libavcodec/sh4/idct_sh4.c:#error
@@ -24,7 +22,6 @@ dvd
 ios
 
 # Stuff we don't want
-chicken
 fuse
 R
 octave
@@ -33,7 +30,6 @@ xindy
 lyx
 mpi
 lasi
-fusion
 lensfun
 fits
 networkmanager
@@ -44,14 +40,11 @@ clang
 
 # Stuff that doesn't make sense on this arch
 3dfx
-dell
 dmi
-laptop
 
 # havent tested yet
 scanner
 gphoto2
-mythtv
 dvb
 qt4
 kde
@@ -62,21 +55,13 @@ mono
 lm_sensors
 qdbm
 fftw
-netjack
-mzscheme
-beagle
 eds
-pike
-nvtv
 xine
 ocaml
 gimp
 xemacs
-gnomecd
 lapack
-cblas
 webkit
-prolog
 timidity
 fluidsynth
 mms
@@ -102,10 +87,8 @@ lucene
 video_cards_apm
 video_cards_ark
 video_cards_ast
-video_cards_ati
 video_cards_cirrus
 video_cards_chips
-video_cards_cyrix
 video_cards_glint
 video_cards_i128
 video_cards_i740
