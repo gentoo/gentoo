@@ -21,6 +21,6 @@
   <use>
     <flag name="cblas-external">Link gsl with external cblas provided by
     (<pkg>virtual/cblas</pkg>) instead of shipped internal version</flag>
-   <flag name="deprecated">Enable deprecated functions</flag>
+    <flag name="deprecated">Enable deprecated functions</flag>
   </use>
 </pkgmetadata>
