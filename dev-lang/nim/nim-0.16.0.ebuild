@@ -13,7 +13,7 @@ SRC_URI="http://nim-lang.org/download/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +readline test"
 
 DEPEND="
