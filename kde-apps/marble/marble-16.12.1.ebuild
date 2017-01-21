@@ -46,7 +46,7 @@ RDEPEND="
 	)
 	phonon? ( media-libs/phonon[qt5] )
 	positioning? ( $(add_qt_dep qtpositioning) )
-	shapefile? ( sci-libs/shapelib )
+	shapefile? ( sci-libs/shapelib:= )
 	webkit? ( $(add_qt_dep qtwebkit) )
 "
 DEPEND="${RDEPEND}
