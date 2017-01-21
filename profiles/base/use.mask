@@ -57,10 +57,8 @@ uclibc
 multilib
 
 # amd64/x86 arch specific USE flags
-3dnow
 lilo
 mpx
-avx
 svga
 nvram
 cpu_flags_x86_3dnow

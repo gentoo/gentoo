@@ -130,8 +130,6 @@
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
 -mpx
--avx
--3dnow
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes

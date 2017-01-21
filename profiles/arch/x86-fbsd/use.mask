@@ -14,7 +14,6 @@ qt5
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
--3dnow
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes

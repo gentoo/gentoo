@@ -98,10 +98,8 @@
 -macbook
 
 # Unmask x86 instruction sets
--3dnow
 -lilo
 -mpx
--avx
 -svga
 -nvram
 -cpu_flags_x86_3dnow

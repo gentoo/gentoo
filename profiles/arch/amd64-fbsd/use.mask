@@ -5,7 +5,6 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64-fbsd
 
--3dnow
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
