@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python3_4 )
+EAPI=6
+PYTHON_COMPAT=( python3_{4,5} pypy3 )
 
 inherit distutils-r1
 
@@ -18,25 +18,22 @@ SLOT="3"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="examples"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-# Most if not all of the tests require network access.
-RESTRICT=test
+# Tests require network access
+RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
 python_test() {
-	# Some of the tests are broken.
-	for test in tests/{test{,2,4}.py,testsrv.py}
-	do
-		"${PYTHON}" ${test} || die
-	done
-
-	"${PYTHON}" tests/test5.py example.org || die
+	"${EPYTHON}" -m unittest || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( ./{tests,tools}/. )
+	if use examples; then
+		docinto examples
+		dodoc -r tests/. tools/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 	distutils-r1_python_install_all
 }
