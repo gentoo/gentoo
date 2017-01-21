@@ -1,5 +1,5 @@
---- contrib/php/build/rules.mk.orig	2004-12-09 13:01:04.417854240 +0000
-+++ contrib/php/build/rules.mk	2004-12-09 13:01:42.460070944 +0000
+--- a/contrib/php/build/rules.mk.orig	2004-12-09 13:01:04.417854240 +0000
++++ b/contrib/php/build/rules.mk	2004-12-09 13:01:42.460070944 +0000
 @@ -63,10 +63,10 @@
  
  install-modules:
