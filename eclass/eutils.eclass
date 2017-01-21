@@ -1620,8 +1620,6 @@ optfeature() {
 	fi
 }
 
-fi
-
 check_license() {
 	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
 }
@@ -1845,3 +1843,5 @@ in_iuse() {
 
 ;;
 esac
+
+fi
