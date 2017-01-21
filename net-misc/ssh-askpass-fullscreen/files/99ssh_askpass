@@ -1,2 +1,0 @@
-SSH_ASKPASS=/usr/bin/ssh-askpass-fullscreen
-SUDO_ASKPASS=${SSH_ASKPASS}
