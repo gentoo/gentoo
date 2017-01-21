@@ -23,6 +23,6 @@ IUSE=""
 
 DEPEND="
 	dev-util/dialog
-	sys-libs/ncurses:0[unicode]"
+	sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}
 	sys-apps/smartmontools"
