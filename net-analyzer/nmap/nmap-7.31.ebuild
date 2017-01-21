@@ -67,15 +67,17 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -r libpcap/ || die
+
 	epatch \
 		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
 		"${FILESDIR}"/${PN}-5.21-python.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
-		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
 		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
-		"${FILESDIR}"/${PN}-7.25-libpcre.patch
+		"${FILESDIR}"/${PN}-7.25-libpcre.patch \
+		"${FILESDIR}"/${PN}-7.31-libnl.patch
 
 	if use nls; then
 		local lingua=''
