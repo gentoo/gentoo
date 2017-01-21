@@ -31,7 +31,7 @@ RDEPEND="${HG_DEPEND}
 	dev-python/iniparse[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/PyQt4[svg,${PYTHON_USEDEP}]
-	dev-python/qscintilla-python[${PYTHON_USEDEP}]"
+	dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.0.3 )"
 
