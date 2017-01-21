@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,10 +23,9 @@ RDEPEND=">=sys-libs/zlib-1.2.3:=
 		sys-libs/libcap
 		gcrypt? ( dev-libs/libgcrypt:0= )
 		gpg? ( app-crypt/gpgme )
+		lzo? ( dev-libs/lzo:= )
 		xattr? ( sys-apps/attr:= )
-	)
-	lzo? ( !static? ( dev-libs/lzo:= ) )
-	nls? ( virtual/libintl )"
+	)"
 
 DEPEND="${RDEPEND}
 	static? (
@@ -43,13 +42,14 @@ DEPEND="${RDEPEND}
 		lzo? ( dev-libs/lzo[static-libs] )
 		xattr? ( sys-apps/attr[static-libs] )
 	)
-	nls? ( sys-devel/gettext )
+	nls? (
+		sys-devel/gettext
+		virtual/libintl
+	)
 	doc? ( app-doc/doxygen )"
 
 REQUIRED_USE="?? ( dar32 dar64 )
 		gpg? ( gcrypt )"
-
-DOCS="AUTHORS ChangeLog NEWS README THANKS TODO"
 
 #PATCHES=(
 #)
@@ -88,6 +88,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" pkgdatadir="${EPREFIX}"/usr/share/doc/${PF}/html install
 
+	local DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 	einstalldocs
 
 	if ! use static-libs ; then
