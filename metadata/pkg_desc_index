@@ -19283,7 +19283,7 @@ x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
 x11-wm/compiz-fusion 0.8.8 0.8.8-r1: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2: A clean, light window manager
 x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
-x11-wm/dwm 6.1: a dynamic window manager for X11
+x11-wm/dwm 6.1 6.1-r1 9999: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8-r1: Emerald Window Decorator
 x11-wm/enlightenment 0.16.9999 0.17.9999 0.20.5 0.20.6 1.0.17: Enlightenment Window Manager (e16)
