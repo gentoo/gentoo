@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/sip-4.14.3[${PYTHON_USEDEP}]
 	>=dev-python/PyQt4-4.10[${PYTHON_USEDEP},X,help,sql,svg,webkit]
-	>=dev-python/qscintilla-python-2.8[${PYTHON_USEDEP}]
+	>=dev-python/qscintilla-python-2.8[qt4(+),${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]

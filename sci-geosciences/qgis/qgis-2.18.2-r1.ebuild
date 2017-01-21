@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,7 +52,7 @@ RDEPEND="
 	python? (
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]

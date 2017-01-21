@@ -52,7 +52,7 @@ RDEPEND="
 	python? (
 		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		<dev-python/sip-4.19:=[${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
