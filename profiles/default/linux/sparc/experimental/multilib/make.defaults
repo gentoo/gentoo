@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,3 +11,5 @@ FEATURES="userpriv"
 # can't set this in the top level make.defaults as it breaks
 # sys-kernel/linux-headers for non-multilib profiles
 CFLAGS_sparc64="-m64"
+
+LIBDIR_sparc32="lib32"
