@@ -19,7 +19,7 @@ DEPEND=">=sys-libs/glibc-2.1.3
 
 src_unpack() {
 	unpack ${A}
-	#EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${PN}-176-fix-referral-tls.patch
+	#EPATCH_OPTS="-p1 -d ${S}" epatch "${FILESDIR}"/${PN}-176-fix-referral-tls.patch
 
 	cd "${S}"
 	eautoreconf

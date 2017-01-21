@@ -15,7 +15,7 @@ SLOT="0"
 
 src_unpack() {
 	unpack ${A}
-	EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${P}-stdlib.patch
+	EPATCH_OPTS="-p1 -d ${S}" epatch "${FILESDIR}"/${P}-stdlib.patch
 }
 
 src_compile() {

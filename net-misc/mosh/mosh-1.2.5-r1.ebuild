@@ -39,7 +39,7 @@ PATCHES=(
 
 src_prepare() {
 	# apply patches.
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	eautoreconf
 }

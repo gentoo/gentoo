@@ -40,12 +40,12 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	epatch ${FILESDIR}/01-fix-up-build-breaks-from-2.6.19.patch
-	epatch ${FILESDIR}/02-Use-ieee80211_generic_get_stats.patch
-	epatch ${FILESDIR}/03-fix-work_struct-build-breakage.patch
-	epatch ${FILESDIR}/04-fix-set-essid-for-WE-21.patch
-	epatch ${FILESDIR}/05-update-email-address-from-jkmaline-cc.hut.fi-to.patch
-	kernel_is ge 2 6 22 && epatch ${FILESDIR}/06-adm8211-fix-build-breakage-from-skb-mac.raw.patch
+	epatch "${FILESDIR}"/01-fix-up-build-breaks-from-2.6.19.patch
+	epatch "${FILESDIR}"/02-Use-ieee80211_generic_get_stats.patch
+	epatch "${FILESDIR}"/03-fix-work_struct-build-breakage.patch
+	epatch "${FILESDIR}"/04-fix-set-essid-for-WE-21.patch
+	epatch "${FILESDIR}"/05-update-email-address-from-jkmaline-cc.hut.fi-to.patch
+	kernel_is ge 2 6 22 && epatch "${FILESDIR}"/06-adm8211-fix-build-breakage-from-skb-mac.raw.patch
 
 	convert_to_m ${S}/Makefile
 }

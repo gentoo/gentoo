@@ -66,7 +66,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	# Fix bug #486710
 	use uclibc && epatch "${FILESDIR}/${PN}-1.3.8-uclibc.patch"

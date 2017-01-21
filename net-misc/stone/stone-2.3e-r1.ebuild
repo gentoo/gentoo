@@ -26,7 +26,7 @@ src_prepare() {
 	tc-export CC
 	append-cflags "-D_GNU_SOURCE"
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 }
 

@@ -30,7 +30,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-underlinking.patch
 
 	if has_version ">=dev-libs/libevocosm-3.3.0"; then
-		epatch ${FILESDIR}"/${P}-libevocosm.patch"
+		epatch "${FILESDIR}"/${P}-libevocosm.patch
 	fi
 
 	eautomake

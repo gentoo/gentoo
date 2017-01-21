@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86 ~x64-macos"
 PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	tc-export CC AR
 }
 
