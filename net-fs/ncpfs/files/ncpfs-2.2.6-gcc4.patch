@@ -1,6 +1,6 @@
 diff -ur ncpfs-2.2.6-orig/lib/ncplib.c ncpfs-2.2.6/lib/ncplib.c
---- ncpfs-2.2.6-orig/lib/ncplib.c	2006-01-13 16:55:05.000000000 -0500
-+++ ncpfs-2.2.6/lib/ncplib.c	2006-01-13 16:56:08.000000000 -0500
+--- a/lib/ncplib.c.orig	2006-01-13 16:55:05.000000000 -0500
++++ b/lib/ncplib.c	2006-01-13 16:56:08.000000000 -0500
 @@ -2421,7 +2421,7 @@
  	int i = 1;
  	NWCCODE nwerr;

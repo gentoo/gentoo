@@ -1,6 +1,6 @@
 diff -Naurp ncpfs-2.2.6.orig/sutil/ncplogin.c ncpfs-2.2.6/sutil/ncplogin.c
---- ncpfs-2.2.6.orig/sutil/ncplogin.c	2014-08-13 02:52:56.859067273 -0400
-+++ ncpfs-2.2.6/sutil/ncplogin.c	2014-08-13 02:53:42.699067001 -0400
+--- a/sutil/ncplogin.c.orig	2014-08-13 02:52:56.859067273 -0400
++++ b/sutil/ncplogin.c	2014-08-13 02:53:42.699067001 -0400
 @@ -111,7 +111,6 @@
  #include <stdlib.h>
  #include <stdarg.h>

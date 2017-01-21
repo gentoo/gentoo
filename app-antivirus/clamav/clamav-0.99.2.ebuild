@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -54,6 +54,7 @@ src_configure() {
 	econf \
 		--disable-experimental \
 		--disable-fanotify \
+		--disable-zlib-vcheck \
 		--enable-id-check \
 		--with-dbdir="${EPREFIX}"/var/lib/clamav \
 		--with-system-tommath \
