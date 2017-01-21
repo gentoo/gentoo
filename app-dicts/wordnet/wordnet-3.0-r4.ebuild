@@ -40,8 +40,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-src_stubs_c.patch
 )
+
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	# Don't install all the extra docs (html, pdf, ps) without doc USE flag.
 	if ! use doc; then
 		sed -i -e "s:SUBDIRS =.*:SUBDIRS = man:" doc/Makefile.am || die

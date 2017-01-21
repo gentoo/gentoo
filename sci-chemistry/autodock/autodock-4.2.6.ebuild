@@ -32,7 +32,7 @@ PATCHES=(
 src_prepare() {
 	local i
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	sed \
 		-e "s/\tcsh/\tsh/" \

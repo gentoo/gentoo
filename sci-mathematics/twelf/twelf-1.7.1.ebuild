@@ -43,10 +43,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.7.1-emacs-twelf-init.patch"
 	"${FILESDIR}/${PN}-1.7.1-Makefile.patch"
 	"${FILESDIR}/${PN}-1.7.1-mlton-mlb.patch"
-	)
+)
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	sed \
 		-e "s@/usr/bin@${ROOT}usr/bin@g" \
 		-e "s@/usr/share@${ROOT}usr/share@" \

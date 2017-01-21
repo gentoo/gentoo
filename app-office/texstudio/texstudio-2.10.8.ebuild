@@ -59,7 +59,7 @@ S="${WORKDIR}"/${P/-/}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.4-hunspell-quazip.patch
 	"${FILESDIR}"/${PN}-2.10.6-desktop.patch
-	)
+)
 
 src_prepare() {
 	find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
@@ -82,7 +82,7 @@ src_prepare() {
 	cp "${FILESDIR}"/texmakerx_my.pri ${PN}.pri || die
 	eprefixify ${PN}.pri
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {

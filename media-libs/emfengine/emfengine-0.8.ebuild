@@ -32,11 +32,11 @@ PATCHES=(
 	"${FILESDIR}/0.7-config.patch"
 	"${FILESDIR}/0.7-header.patch"
 	"${FILESDIR}"/${PV}-example.patch
-	)
+)
 
 src_prepare() {
 	edos2unix EmfEngine.pro
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	sed \
 		-e "s:/usr/local/lib/libEMF.a:-lEMF:g" \
 		-e "s:/usr/local/include:${EPREFIX}/usr/include/:g" \

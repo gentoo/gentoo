@@ -290,13 +290,13 @@ bzr_bootstrap() {
 
 		for patch in ${EBZR_PATCHES} ; do
 			if [[ -f ${patch} ]] ; then
-				epatch ${patch}
+				epatch "${patch}"
 			else
 				# This loop takes care of wildcarded patches given via
 				# EBZR_PATCHES in an ebuild
 				for lpatch in "${FILESDIR}"/${patch} ; do
 					if [[ -f ${lpatch} ]] ; then
-						epatch ${lpatch}
+						epatch "${lpatch}"
 					else
 						die "${EBZR}: ${patch} is not found"
 					fi

@@ -89,9 +89,9 @@ src_unpack() {
 
 	# gcc3 fixes, and some tweaks to get a build, also
 	# reiserfs support for the kernel (and milo).
-	cd ${WORKDIR}/linux; epatch ${FILESDIR}/linux-${kernel_version}-gcc3-milo.diff || die
-	cd ${WORKDIR}/linux; epatch ${DISTDIR}/linux-2.2.20-reiserfs-3.5.35.diff.bz2 || die
-	cd ${S}; epatch ${FILESDIR}/milo-${milo_version}-gcc3-gentoo.diff || die
+	cd ${WORKDIR}/linux; epatch "${FILESDIR}"/linux-${kernel_version}-gcc3-milo.diff || die
+	cd ${WORKDIR}/linux; epatch "${DISTDIR}"/linux-2.2.20-reiserfs-3.5.35.diff.bz2 || die
+	cd ${S}; epatch "${FILESDIR}"/milo-${milo_version}-gcc3-gentoo.diff || die
 }
 
 src_compile() {

@@ -47,7 +47,7 @@ java_prepare() {
 	java-pkg_clean
 
 	# Apply patches.
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	# Weed out comments (some contain UTF-8 chars javac cannnot deal with).
 	sed -i -e '/*/d;' \

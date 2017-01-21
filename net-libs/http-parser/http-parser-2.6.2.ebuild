@@ -26,7 +26,7 @@ PATCHES=(
 
 src_prepare() {
 	tc-export CC AR
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	multilib_copy_sources
 }
 

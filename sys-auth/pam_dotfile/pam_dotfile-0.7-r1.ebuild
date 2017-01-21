@@ -26,7 +26,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/${PV}
+	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/${PV}"
 
 	AT_M4DIR="${WORKDIR}/${PV}/m4" eautoreconf
 }

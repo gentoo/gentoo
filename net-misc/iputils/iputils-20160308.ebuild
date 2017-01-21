@@ -63,7 +63,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch
 }
 

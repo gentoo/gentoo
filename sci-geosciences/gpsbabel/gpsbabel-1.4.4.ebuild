@@ -45,7 +45,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 	rm -rf shapelib || die
 

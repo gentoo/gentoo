@@ -61,7 +61,7 @@ pkg_setup () {
 }
 
 src_prepare () {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 	eautoreconf
 }
