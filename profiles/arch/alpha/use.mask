@@ -3,7 +3,7 @@
 # $Id$
 
 # Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
-# We currently do not ave the resources to AT qt5 packages.
+# We currently do not have the resources to AT qt5 packages.
 # This may change when/if qt4 goes away.
 qt5
 
@@ -210,7 +210,3 @@ redis
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
-
-# Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
-# please remove when keyworded
-qt5
