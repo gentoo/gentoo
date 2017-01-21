@@ -17,7 +17,6 @@ ACCEPT_KEYWORDS="x86-fbsd ~x86-fbsd"
 MULTILIB_ABIS="x86_fbsd"
 DEFAULT_ABI="x86_fbsd"
 ABI="x86_fbsd"
-CHOST_x86_fbsd="${CHOST}"
 LIBDIR_x86_fbsd="lib"
 
 VIDEO_CARDS="apm ark chips cirrus cyrix dummy i128 intel mach64 mga \
