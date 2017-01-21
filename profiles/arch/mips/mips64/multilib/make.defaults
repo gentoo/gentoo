@@ -14,10 +14,10 @@ CFLAGS_o32="-mabi=32"
 CHOST_o32="${CHOST}"
 
 CFLAGS_n32="-mabi=n32"
-CHOST_n32=${CHOST}
+CHOST_n32="${CHOST}"
 
 CFLAGS_n64="-mabi=64"
-CHOST_n64=${CHOST}
+CHOST_n64="${CHOST}"
 
 SYMLINK_LIB="no"
 
