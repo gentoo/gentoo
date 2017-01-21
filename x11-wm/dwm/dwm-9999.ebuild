@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils savedconfig toolchain-funcs
+EAPI=6
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="http://dwm.suckless.org/"
-SRC_URI="http://dl.suckless.org/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="git://git.suckless.org/dwm"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE="xinerama"
 
 RDEPEND="
@@ -26,6 +26,8 @@ DEPEND="
 "
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e "s/CFLAGS = -std=c99 -pedantic -Wall -Os/CFLAGS += -std=c99 -pedantic -Wall/" \
 		-e "/^LDFLAGS/{s|=|+=|g;s|-s ||g}" \
@@ -40,9 +42,6 @@ src_prepare() {
 		-e '/@echo CC/d' \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
-
-	restore_config config.h
-	epatch_user
 }
 
 src_compile() {
@@ -63,20 +62,4 @@ src_install() {
 	doins "${FILESDIR}"/dwm.desktop
 
 	dodoc README
-
-	save_config config.h
-}
-
-pkg_postinst() {
-	einfo "This ebuild has support for user defined configs"
-	einfo "Please read this ebuild for more details and re-emerge as needed"
-	einfo "if you want to add or remove functionality for ${PN}"
-	if ! has_version x11-misc/dmenu; then
-		elog "Installing ${PN} without x11-misc/dmenu"
-		einfo "To have a menu you can install x11-misc/dmenu"
-	fi
-	einfo "You can custom status bar with a script in HOME/.dwm/dwmrc"
-	einfo "the ouput is redirected to the standard input of dwm"
-	einfo "Since dwm-5.4, status info in the bar must be set like this:"
-	einfo "xsetroot -name \"\`date\` \`uptime | sed 's/.*,//'\`\""
 }
