@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/expat sci-libs/shapelib:= sys-libs/zlib[minizip] virtual/libusb:0 qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwebchannel:5 dev-qt/qtwebengine:5[widgets] dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) doc? ( dev-lang/perl dev-libs/libxslt app-text/docbook-xml-dtd:4.1.2 ) qt5? ( dev-qt/linguist:5 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GPS waypoints, tracks and routes converter
+EAPI=6
+HOMEPAGE=http://www.gpsbabel.org/
+IUSE=doc qt5
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/expat sci-libs/shapelib:= sys-libs/zlib[minizip] virtual/libusb:0 qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwebchannel:5 dev-qt/qtwebengine:5[widgets] dev-qt/qtwidgets:5 dev-qt/qtxml:5 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~asturm/gpsbabel-1.5.4.tar.gz doc? ( http://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=1a87a517c22b2108ceee1a5903039b5a
