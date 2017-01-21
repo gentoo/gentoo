@@ -1,10 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 FEATURES="-multilib-strict"
-
-USE="-gcc64"
 
 MULTILIB_STRICT_DIRS=""
 MULTILIB_STRICT_DENY=""

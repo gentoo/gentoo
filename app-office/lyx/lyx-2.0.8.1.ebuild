@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ RDEPEND="${COMMONDEPEND}
 		app-text/ps2eps
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pictures
-		dev-texlive/texlive-science
+		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
 		dev-texlive/texlive-genericextra
 		dev-texlive/texlive-fontsrecommended
 		|| (
