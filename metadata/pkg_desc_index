@@ -597,7 +597,7 @@ app-crypt/sbsigntool 0.6-r1 0.8: Utilities for signing and verifying files for U
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.18.0 3.20.0: A GNOME application for managing encryption keys
-app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
+app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
@@ -6940,7 +6940,7 @@ dev-php/Savant3-Plugin-Form 0.2.1: The Form Plugin for Savant3
 dev-php/Text_Template 1.1.1: Simple template engine
 dev-php/YAML 1.0.6-r1: The Symfony YAML Component
 dev-php/ZendFramework 1.12.9: Zend Framework is a high quality and open source framework for developing Web Applications
-dev-php/adodb 5.18 5.20.9: Database abstraction layer for PHP
+dev-php/adodb 5.20.9: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.56: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.0.0: Find the system CA bundle or fall back to the Mozilla one
@@ -11417,7 +11417,7 @@ gnome-extra/nemo 2.8.7 3.0.6 3.2.0: A file manager for Cinnamon, forked from Nau
 gnome-extra/nm-applet 1.0.10 1.2.2 1.2.4 1.4.0 1.4.2: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
-gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
+gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.20.0 3.21.91: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.1 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.20.1 3.22.0: Help browser for GNOME
@@ -16997,7 +16997,7 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.1 1.2 1.2.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.4.1 3.5.2: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.16-r1 1.8.20: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.20: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.25 1.4.26 1.4.27: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 0.9.4 9999: a framework for package management
