@@ -96,7 +96,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 1.3.1 5.0.2 5.1.1: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.1.2: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filebeat-bin 1.3.0 1.3.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
 app-admin/fleet 0.11.5 0.11.8 1.0.0 9999: A Distributed init System
@@ -2435,8 +2435,8 @@ app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: a tool for analyzing files that contain control characters and terminal control sequences
 app-text/tesseract 3.03_rc1 3.04.00-r2 3.04.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2012 2013 2014 2015: A complete TeX distribution
-app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1: A complete TeX distribution
+app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
+app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1 2016: A complete TeX distribution
 app-text/tidy-html5 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -6443,7 +6443,7 @@ dev-perl/Sys-Mmap 0.170.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
-dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0: API for using the libvirt library from Perl
+dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2 2.4.0 2.5.0: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
@@ -8806,7 +8806,7 @@ dev-ros/gencpp 0.5.3 0.5.4 0.5.5 9999: ROS C++ message definition and serializat
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
-dev-ros/gennodejs 1.0.3 9999: Javascript ROS message and service generators
+dev-ros/gennodejs 1.0.3 2.0.0 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.6.2 0.6.3 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
@@ -9849,9 +9849,9 @@ dev-tex/tth 3.77: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2012 2013 2014 2015: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015: TeXLive ConTeXt and packages
+dev-texlive/texlive-basic 2012 2013 2014 2015 2016: TeXLive Essential programs and files
+dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015 2016: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015 2016: TeXLive ConTeXt and packages
 dev-texlive/texlive-documentation-arabic 2012: TeXLive Arabic documentation
 dev-texlive/texlive-documentation-base 2012: TeXLive TeX Live documentation
 dev-texlive/texlive-documentation-bulgarian 2012: TeXLive Bulgarian documentation
@@ -9876,65 +9876,66 @@ dev-texlive/texlive-documentation-thai 2012: TeXLive Thai documentation
 dev-texlive/texlive-documentation-turkish 2012: TeXLive Turkish documentation
 dev-texlive/texlive-documentation-ukrainian 2012: TeXLive Ukrainian documentation
 dev-texlive/texlive-documentation-vietnamese 2012: TeXLive Vietnamese documentation
-dev-texlive/texlive-fontsextra 2012 2013 2014 2015: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2012 2013 2014 2015: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2012 2013 2014 2015: TeXLive Additional formats
-dev-texlive/texlive-games 2012 2013 2014 2015: TeXLive Games typesetting
-dev-texlive/texlive-genericextra 2012 2013 2014 2015: TeXLive Generic additional packages
-dev-texlive/texlive-genericrecommended 2012 2013 2014 2015: TeXLive Generic recommended packages
+dev-texlive/texlive-fontsextra 2012 2013 2014 2015 2016: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2012 2013 2014 2015 2016: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2012 2013 2014 2015 2016: TeXLive Graphics and font utilities
+dev-texlive/texlive-formatsextra 2012 2013 2014 2015 2016: TeXLive Additional formats
+dev-texlive/texlive-games 2012 2013 2014 2015 2016: TeXLive Games typesetting
+dev-texlive/texlive-genericextra 2012 2013 2014 2015 2016: TeXLive Generic additional packages
+dev-texlive/texlive-genericrecommended 2012 2013 2014 2015 2016: TeXLive Generic recommended packages
 dev-texlive/texlive-htmlxml 2012: TeXLive HTML/SGML/XML support
-dev-texlive/texlive-humanities 2012 2013 2014 2015: TeXLive Humanities packages
-dev-texlive/texlive-langafrican 2012 2013 2014 2015: TeXLive African scripts
-dev-texlive/texlive-langarabic 2012 2013 2014 2015: TeXLive Arabic
+dev-texlive/texlive-humanities 2012 2013 2014 2015 2016: TeXLive Humanities packages
+dev-texlive/texlive-langafrican 2012 2013 2014 2015 2016: TeXLive African scripts
+dev-texlive/texlive-langarabic 2012 2013 2014 2015 2016: TeXLive Arabic
 dev-texlive/texlive-langarmenian 2012: TeXLive Armenian
-dev-texlive/texlive-langchinese 2014 2015: TeXLive Chinese
-dev-texlive/texlive-langcjk 2012 2013 2014 2015: TeXLive Chinese/Japanese/Korean (base)
+dev-texlive/texlive-langchinese 2014 2015 2016: TeXLive Chinese
+dev-texlive/texlive-langcjk 2012 2013 2014 2015 2016: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcroatian 2012: TeXLive Croatian
-dev-texlive/texlive-langcyrillic 2012 2013 2014 2015: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1: TeXLive Czech/Slovak
+dev-texlive/texlive-langcyrillic 2012 2013 2014 2015 2016: TeXLive Cyrillic
+dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1 2016: TeXLive Czech/Slovak
 dev-texlive/texlive-langdanish 2012: TeXLive Danish
 dev-texlive/texlive-langdutch 2012: TeXLive Dutch
-dev-texlive/texlive-langenglish 2012 2013 2014 2015: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2013 2014 2015: TeXLive Other European languages
+dev-texlive/texlive-langenglish 2012 2013 2014 2015 2016: TeXLive US and UK English
+dev-texlive/texlive-langeuropean 2013 2014 2015 2016: TeXLive Other European languages
 dev-texlive/texlive-langfinnish 2012: TeXLive Finnish
-dev-texlive/texlive-langfrench 2012 2013 2014 2015: TeXLive French
-dev-texlive/texlive-langgerman 2012 2013 2014 2015: TeXLive German
-dev-texlive/texlive-langgreek 2012 2013 2014 2015: TeXLive Greek
+dev-texlive/texlive-langfrench 2012 2013 2014 2015 2016: TeXLive French
+dev-texlive/texlive-langgerman 2012 2013 2014 2015 2016: TeXLive German
+dev-texlive/texlive-langgreek 2012 2013 2014 2015 2016: TeXLive Greek
 dev-texlive/texlive-langhebrew 2012: TeXLive Hebrew
 dev-texlive/texlive-langhungarian 2012: TeXLive Hungarian
-dev-texlive/texlive-langindic 2012 2013 2014 2015: TeXLive Indic scripts
-dev-texlive/texlive-langitalian 2012 2013 2014 2015: TeXLive Italian
-dev-texlive/texlive-langjapanese 2014 2015: TeXLive Japanese
-dev-texlive/texlive-langkorean 2014 2015: TeXLive Korean
+dev-texlive/texlive-langindic 2012 2013 2014 2015 2016: TeXLive Indic scripts
+dev-texlive/texlive-langitalian 2012 2013 2014 2015 2016: TeXLive Italian
+dev-texlive/texlive-langjapanese 2014 2015 2016: TeXLive Japanese
+dev-texlive/texlive-langkorean 2014 2015 2016: TeXLive Korean
 dev-texlive/texlive-langlatin 2012: TeXLive Latin
 dev-texlive/texlive-langlatvian 2012: TeXLive Latvian
 dev-texlive/texlive-langlithuanian 2012: TeXLive Lithuanian
 dev-texlive/texlive-langmongolian 2012: TeXLive Mongolian
 dev-texlive/texlive-langnorwegian 2012: TeXLive Norwegian
-dev-texlive/texlive-langother 2012 2013 2014 2015: TeXLive Other languages
-dev-texlive/texlive-langpolish 2012 2013 2014 2015: TeXLive Polish
-dev-texlive/texlive-langportuguese 2012 2013 2014 2015: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2012 2013 2014 2015: TeXLive Spanish
+dev-texlive/texlive-langother 2012 2013 2014 2015 2016: TeXLive Other languages
+dev-texlive/texlive-langpolish 2012 2013 2014 2015 2016: TeXLive Polish
+dev-texlive/texlive-langportuguese 2012 2013 2014 2015 2016: TeXLive Portuguese
+dev-texlive/texlive-langspanish 2012 2013 2014 2015 2016: TeXLive Spanish
 dev-texlive/texlive-langswedish 2012: TeXLive Swedish
 dev-texlive/texlive-langtibetan 2012: TeXLive Tibetan
 dev-texlive/texlive-langturkmen 2012: TeXLive Turkmen
 dev-texlive/texlive-langvietnamese 2012: TeXLive Vietnamese
-dev-texlive/texlive-latex 2012 2013 2014 2015: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2012 2012-r1 2013 2014 2015: TeXLive LuaTeX packages
+dev-texlive/texlive-latex 2012 2013 2014 2015 2016: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2012 2013 2014 2015 2015-r1 2016: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2012 2012-r1 2013 2014 2015-r1 2016: TeXLive LaTeX recommended packages
+dev-texlive/texlive-luatex 2012 2012-r1 2013 2014 2015 2016: TeXLive LuaTeX packages
 dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics packages
-dev-texlive/texlive-metapost 2012 2013 2014 2015: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2012 2013 2014 2015: TeXLive Music packages
-dev-texlive/texlive-omega 2012 2013 2014 2015: TeXLive Omega packages
-dev-texlive/texlive-pictures 2012 2013 2014 2015-r2: TeXLive Graphics, pictures, diagrams
-dev-texlive/texlive-plainextra 2012 2013 2014 2015: TeXLive Plain TeX packages
-dev-texlive/texlive-pstricks 2012 2013 2014 2015: TeXLive PSTricks
-dev-texlive/texlive-publishers 2012 2013 2014 2015: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-mathscience 2016: TeXLive Mathematics and science packages
+dev-texlive/texlive-metapost 2012 2013 2014 2015 2016: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2012 2013 2014 2015 2016: TeXLive Music packages
+dev-texlive/texlive-omega 2012 2013 2014 2015 2016: TeXLive Omega packages
+dev-texlive/texlive-pictures 2012 2013 2014 2015-r2 2016: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-plainextra 2012 2013 2014 2015 2016: TeXLive Plain TeX packages
+dev-texlive/texlive-pstricks 2012 2013 2014 2015 2016: TeXLive PSTricks
+dev-texlive/texlive-publishers 2012 2013 2014 2015 2016: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012 2012-r1 2013 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-texinfo 2012: TeXLive GNU Texinfo
-dev-texlive/texlive-xetex 2012 2013 2014 2015: TeXLive XeTeX and packages
+dev-texlive/texlive-xetex 2012 2013 2014 2015 2016: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
@@ -17629,7 +17630,7 @@ sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.
 sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.47 4.1.38 4.4.44 4.8.17 4.9.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
-sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
+sys-libs/argp-standalone 1.3 1.3-r1 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2 2.27: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 4.0.0_rc1 9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 4.0.0_rc1 9999: Compiler runtime libraries for clang (sanitizers & xray)
@@ -17702,6 +17703,7 @@ sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 2.5.0 9999
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
+sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
 sys-libs/openipmi 2.0.18-r1 2.0.21 2.0.22: Library interface to IPMI
 sys-libs/pam 1.2.1 1.2.1-r1 1.3.0: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database

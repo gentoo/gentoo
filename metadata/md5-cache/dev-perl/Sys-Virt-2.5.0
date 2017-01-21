@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-emulation/libvirt-2.5.0 virtual/pkgconfig test? ( dev-perl/XML-XPath virtual/perl-Time-HiRes ) dev-lang/perl:=
+DESCRIPTION=API for using the libvirt library from Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Sys-Virt/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=app-emulation/libvirt-2.5.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DANBERR/Sys-Virt-2.5.0.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:- src_test:- src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=6410c81d052bbed440a9adc290143ab5
