@@ -22,8 +22,13 @@ src_compile() {
 }
 
 src_install() {
-	cp -R "${S}/calendars" "${D}/usr/share/calendar" || die "cp failed"
 	dobin "${PN}"
 	doman "${PN}.1"
+
+	insinto "/usr/share"
+	doins -r "${PN}s"
+
+	mv "${D}/usr/share/${PN}s" "${D}/usr/share/${PN}" || die
+
 	einstalldocs
 }
