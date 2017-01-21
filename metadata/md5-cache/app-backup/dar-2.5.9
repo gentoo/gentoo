@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= app-arch/xz-utils:= sys-libs/libcap gcrypt? ( dev-libs/libgcrypt:0= ) gpg? ( app-crypt/gpgme ) lzo? ( dev-libs/lzo:= ) xattr? ( sys-apps/attr:= ) ) static? ( app-arch/bzip2[static-libs] app-arch/xz-utils[static-libs] sys-libs/libcap[static-libs] sys-libs/zlib[static-libs] gcrypt? ( dev-libs/libgcrypt:0=[static-libs] ) gpg? ( app-crypt/gpgme[static-libs] dev-libs/libassuan[static-libs] dev-libs/libgpg-error[static-libs] ) lzo? ( dev-libs/lzo[static-libs] ) xattr? ( sys-apps/attr[static-libs] ) ) nls? ( sys-devel/gettext virtual/libintl ) doc? ( app-doc/doxygen )
+DESCRIPTION=A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+EAPI=6
+HOMEPAGE=http://dar.linux.free.fr/
+IUSE=dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= app-arch/xz-utils:= sys-libs/libcap gcrypt? ( dev-libs/libgcrypt:0= ) gpg? ( app-crypt/gpgme ) lzo? ( dev-libs/lzo:= ) xattr? ( sys-apps/attr:= ) )
+REQUIRED_USE=?? ( dar32 dar64 ) gpg? ( gcrypt )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/dar/dar-2.5.9.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f4c7b5f82087748e3834a5a5c33598fd
