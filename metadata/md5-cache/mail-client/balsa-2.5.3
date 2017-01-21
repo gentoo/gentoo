@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.40.0:2 >=x11-libs/gtk+-3.10.0:3 dev-libs/gmime:2.6 >=net-libs/libesmtp-1.0.3:= net-mail/mailbase media-libs/libcanberra:=[gtk3] x11-themes/hicolor-icon-theme x11-themes/adwaita-icon-theme crypt? ( >=app-crypt/gpgme-1.2.0:= ) gnome? ( >=x11-libs/gtksourceview-3.2.0:3.0 ) gnome-keyring? ( app-crypt/libsecret ) gtkhtml? ( gnome-extra/gtkhtml:4.0 ) sqlite? ( >=dev-db/sqlite-2.8:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) rubrica? ( dev-libs/libxml2:2 ) spell? ( app-text/gspell:0= ) webkit? ( net-libs/webkit-gtk:4 ) xface? ( >=media-libs/compface-1.5.1:= ) app-text/yelp-tools dev-python/html2text dev-util/intltool virtual/pkgconfig sys-devel/gettext app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Email client for GNOME
+EAPI=6
+HOMEPAGE=http://pawsa.fedorapeople.org/balsa/
+IUSE=crypt gnome gtkhtml gnome-keyring kerberos ldap libnotify libressl rubrica spell sqlite webkit xface
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.40.0:2 >=x11-libs/gtk+-3.10.0:3 dev-libs/gmime:2.6 >=net-libs/libesmtp-1.0.3:= net-mail/mailbase media-libs/libcanberra:=[gtk3] x11-themes/hicolor-icon-theme x11-themes/adwaita-icon-theme crypt? ( >=app-crypt/gpgme-1.2.0:= ) gnome? ( >=x11-libs/gtksourceview-3.2.0:3.0 ) gnome-keyring? ( app-crypt/libsecret ) gtkhtml? ( gnome-extra/gtkhtml:4.0 ) sqlite? ( >=dev-db/sqlite-2.8:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) kerberos? ( app-crypt/mit-krb5 ) ldap? ( net-nds/openldap ) rubrica? ( dev-libs/libxml2:2 ) spell? ( app-text/gspell:0= ) webkit? ( net-libs/webkit-gtk:4 ) xface? ( >=media-libs/compface-1.5.1:= )
+REQUIRED_USE=gtkhtml? ( !webkit )
+SLOT=0
+SRC_URI=http://pawsa.fedorapeople.org/balsa/balsa-2.5.3.tar.bz2
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=907b331128b1a9b0f75bf53dc4836019
