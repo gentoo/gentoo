@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils savedconfig toolchain-funcs
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="http://dwm.suckless.org/"
@@ -15,8 +15,9 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="xinerama"
 
 RDEPEND="
+	media-libs/fontconfig
 	x11-libs/libX11
-	media-libs/freetype
+	x11-libs/libXft
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="
