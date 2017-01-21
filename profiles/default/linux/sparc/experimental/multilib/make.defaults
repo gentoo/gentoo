@@ -13,3 +13,4 @@ FEATURES="userpriv"
 CFLAGS_sparc64="-m64"
 
 LIBDIR_sparc32="lib32"
+LIBDIR_sparc64="lib64"

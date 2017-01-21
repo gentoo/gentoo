@@ -18,8 +18,10 @@ DEFAULT_ABI="amd64"
 # Do not remove this one, or all kinds of hell breaks loose.
 ABI="amd64"
 
+LIBDIR_amd64="lib64"
 # TODO: move this to a deprecated subprofile
 LIBDIR_x86="lib32"
+LIBDIR_x32="libx32"
 SYMLINK_LIB="yes"
 
 # 64bit specific settings.
