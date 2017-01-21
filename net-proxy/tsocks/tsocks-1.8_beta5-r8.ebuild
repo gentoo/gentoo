@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,8 +49,8 @@ multilib_src_configure() {
 		$(use_enable dns socksdns) \
 		$(use_enable envconf) \
 		$(use_enable server-lookups hostnames) \
-		--with-conf=/etc/socks/tsocks.conf \
-		--libdir=/$(get_libdir)
+		--with-conf="${EPREFIX}"/etc/socks/tsocks.conf \
+		--libdir="${EPREFIX}"/$(get_libdir)
 }
 
 multilib_src_compile() {
