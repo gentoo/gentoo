@@ -311,10 +311,6 @@ sys-power/powerman
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
 
-# Tim Harder <radhermit@gentoo.org> (09 Dec 2016)
-# Masked for removal, use media-gfx/gmic[gimp] instead.
-media-plugins/gimp-gmic
-
 # Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
 # Mask ruby 2.0 for removal, bug 576034
 dev-lang/ruby:2.0
