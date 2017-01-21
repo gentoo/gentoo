@@ -1019,7 +1019,7 @@ app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.769 7.4.2102 8.0.0005 8.0.0106 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
-app-editors/hteditor 2.0.22 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
+app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
 app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
@@ -4874,7 +4874,7 @@ dev-libs/libxdiff 0.23-r1 0.23-r2: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.4 2.9.4-r1: Version 2 of the library to manipulate XML files
 dev-libs/libxslt 1.1.28-r5 1.1.29 1.1.29-r1: XSLT libraries and tools
-dev-libs/libyaml 0.1.6 0.1.7: YAML 1.1 parser and emitter written in C
+dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzip 1.0.1 1.1.3: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.7 5.3.9 5.3.10 5.3.11: A Syntactic English parser
