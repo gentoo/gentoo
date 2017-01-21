@@ -1,11 +1,6 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
-
 # Unmask arm arch specific flags
 -iwmmxt
 
@@ -176,19 +171,6 @@ video_cards_i965
 video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
-
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask the ARM-specific ALSA drivers
--alsa_cards_pxa2xx-i2sound
--alsa_cards_pxa2xx-soc
--alsa_cards_pxa2xx-soc-corgi
--alsa_cards_pxa2xx-soc-poodle
--alsa_cards_pxa2xx-soc-spitz
--alsa_cards_pxa2xx-soc-tosa
--alsa_cards_sa11xx-uda1341ts
--alsa_cards_armaaci
--alsa_cards_at91-soc
--alsa_cards_at91-soc-eti-b1-wm8731
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
 # Bug #184563, 18 Sep 2007

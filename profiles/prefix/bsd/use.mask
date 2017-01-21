@@ -4,7 +4,6 @@
 
 # these will more than likely never work on bsd
 3dfx
-3dnow
 acpi
 alsa
 apm

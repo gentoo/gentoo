@@ -8,7 +8,6 @@
 
 # these will more than likely never work on HPUX
 3dfx
-3dnow
 acpi
 alsa
 apm

@@ -9,10 +9,6 @@ pcmcia
 # Mask php USE on MIPS profiles
 php
 
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask specific MIPS ALSA drivers
--alsa_cards_au1x00
-
 # Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
 # some programs with this useflag are useful, e.g #227631
 mpi

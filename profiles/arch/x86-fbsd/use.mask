@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
@@ -14,16 +14,6 @@ qt5
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
--3dnow
--3dnowext
--mmx
--mmxext
--sse
--sse2
--sse3
--sse4
--sse4a
--ssse3
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes

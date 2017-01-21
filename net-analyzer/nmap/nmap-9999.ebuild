@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit autotools eutils flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+inherit autotools flag-o-matic git-r3 python-single-r1 toolchain-funcs user
 
 MY_P=${P/_beta/BETA}
 
@@ -52,6 +52,16 @@ DEPEND="
 "
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
+	"${FILESDIR}"/${PN}-5.21-python.patch
+	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
+	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
+	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
+	"${FILESDIR}"/${PN}-7.25-libpcre.patch
+	"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
+	"${FILESDIR}"/${PN}-7.31-libnl.patch
+)
 
 pkg_setup() {
 	if use ndiff || use zenmap; then
@@ -60,15 +70,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
-		"${FILESDIR}"/${PN}-5.21-python.patch \
-		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
-		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
-		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
-		"${FILESDIR}"/${PN}-7.25-libpcre.patch \
-		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
+	rm -r libpcap/ || die
+
+	default
 
 	if use nls; then
 		local lingua=''
@@ -96,8 +100,6 @@ src_prepare() {
 		-e 's|^Categories=.*|Categories=Network;System;Security;|g' \
 		zenmap/install_scripts/unix/zenmap-root.desktop \
 		zenmap/install_scripts/unix/zenmap.desktop || die
-
-	epatch_user
 
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 	eautoreconf

@@ -5,11 +5,6 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
-
 # cilk has been ported to this arch.
 -cilk
 
@@ -83,10 +78,6 @@
 # Infiniband stuff works on x86
 -infiniband
 
-# 2010/07/27 - Matti Bickel <mabi@gentoo.org>
-# app-text/fdf is only supported on x86
--fdftk
-
 # 2010/02/14 - Samuli Suominen <ssuominen@gentoo.org>
 # Unmask amd64/x86 only SANE_BACKENDS
 -sane_backends_canon_pp
@@ -107,29 +98,9 @@
 -macbook
 
 # Unmask x86 instruction sets
--3dnow
--3dnowext
 -lilo
--mmx
--mmxext
 -mpx
--sse
--sse2
--sse3
--sse4
--sse4_1
--sse4_2
--sse4a
--ssse3
--avx
--avx128fma
--avx2
--avx256
--fma3
--fma4
--xop
 -svga
--kqemu
 -nvram
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
@@ -158,15 +129,8 @@
 -oci8-instant-client
 -oracle
 
-# Unmask osp, used by asterisk; bug 115798
--osp
-
-# Unmask yellownet, used by aqbanking (bug 149970)
--yellownet
-
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
--input_devices_virtualbox
 -input_devices_vmmouse
 -input_devices_wacom
 -video_cards_nvidia
@@ -175,7 +139,6 @@
 -video_cards_geode
 -video_cards_via
 -video_cards_virtualbox
--video_cards_xgi
 -video_cards_qxl
 
 # Modular X: mask for architectures on which they aren't available
@@ -183,12 +146,6 @@ video_cards_newport
 
 #codec support
 -x264
-
-# lvm2 cluster
--gulm
-
-# psyco works on x86
--psyco
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86
@@ -204,9 +161,6 @@ video_cards_newport
 # George Shapovalov <george@gentoo.org> (8 Apr 2007)
 # supported on x86
 -ada
-
-# tcc is x86 only
--tcc
 
 # fdk-aac is already keyworded here
 -fdk

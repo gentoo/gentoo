@@ -10,11 +10,6 @@
 # cilk has been ported to this arch.
 -cilk
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
-
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 -apparmor
@@ -98,10 +93,6 @@
 # Lilo works on amd64, so ...
 -lilo
 
-# 2007/10/09 - Steve Dibb <beandog@gentoo.org>
-# Unmask support for SSSE3 (pni) for media-video/mplayer
--ssse3
-
 # 2007/08/19 - Christoph Mende <angelos@gentoo.org>
 # Unmask support for dev-db/oracle-instantclient-basic
 -oci8-instant-client
@@ -115,10 +106,6 @@
 # nVidia XvMC support works on amd64
 -nvidia
 
-# 2005/12/01 - Daniel Gryniewicz <dang@gentoo.org>
-# There is now a kqemu that works and is stable on amd64
--kqemu
-
 # 2006/03/03 - Luca Barbato <lu_zero@gentoo.org>
 # codec support x264
 -x264
@@ -126,7 +113,6 @@
 # 2006/01/28 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
--input_devices_virtualbox
 -input_devices_vmmouse
 -input_devices_wacom
 -video_cards_nvidia
@@ -139,31 +125,11 @@
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86/amd64
 -oci8
--oracle7
--db2
 
 # Feb 16th 2007; Simon Stelling <blubb@gentoo.org>
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
--mmx
--mmxext
 -mpx
--sse
--sse2
--sse3
--sse4
--sse4a
--sse4_1
--sse4_2
--avx
--avx128fma
--avx2
--avx256
--3dnow
--3dnowext
--fma3
--fma4
--xop
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
