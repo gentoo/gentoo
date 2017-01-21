@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 # System-wide defaults for the G/FBSD Portage system
@@ -32,6 +32,7 @@ VIDEO_CARDS="apm ark chips cirrus cyrix dummy i128 intel mach64 mga \
 # distros.
 # Adjust multilib dirs for multilib-strict.
 LIBDIR_amd64_fbsd="lib"
+LIBDIR_x86_fbsd="lib32"
 MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X11R6/lib32"
 SYMLINK_LIB="no"
 
