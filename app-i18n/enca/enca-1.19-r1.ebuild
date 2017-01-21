@@ -41,7 +41,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Workaround GCC-4.8 brokenness. See Gentoo bug 501386.
-	if tc-is-gcc && [[ $(gcc-version) = '4.8' ]]; then
+	if tc-is-gcc && [[ $(gcc-version) == "4.8" ]]; then
 		replace-flags -O[3-9] -O2
 	fi
 
