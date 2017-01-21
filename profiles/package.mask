@@ -297,11 +297,6 @@ app-admin/phpsyslogng
 # No reverse dependencies. Masked for removal in 30 days.
 net-analyzer/snips
 
-# Tim Harder <radhermit@gentoo.org> (12 Dec 2016)
-# Outdated and broken in the tree.
-# Masked for removal in 30 days.
-dev-util/aap
-
 # Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
 # Dead upstream, no maintainer and it hasn't been bumped
 # since 2013. Masking for removal in 30 days (wrt bug #489878)
@@ -315,10 +310,6 @@ sys-power/powerman
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
-
-# Tim Harder <radhermit@gentoo.org> (09 Dec 2016)
-# Masked for removal, use media-gfx/gmic[gimp] instead.
-media-plugins/gimp-gmic
 
 # Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
 # Mask ruby 2.0 for removal, bug 576034
