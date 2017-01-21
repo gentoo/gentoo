@@ -2,23 +2,12 @@
 
 # Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
 # Unmask the Apple drivers
--alsa_cards_aoa
--alsa_cards_aoa-fabric-layout
--alsa_cards_aoa-onyx
--alsa_cards_aoa-soundbus
--alsa_cards_aoa-soundbus-i2s
--alsa_cards_aoa-tas
--alsa_cards_aoa-toonie
--alsa_cards_powermac
 # Mask ALSA drivers for ISA cards
 alsa_cards_msnd-pinnacle
 alsa_cards_sb16
 alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
-
-# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
-# Masked Parallel LCD devices for bug #180683
 
 # app-misc/lcd4linux
 lcd_devices_lph7508

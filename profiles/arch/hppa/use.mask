@@ -7,10 +7,6 @@
 # USE=xwidgets requires net-libs/webkit-gtk
 xwidgets
 
-# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
-# bugs 540540 and 525674
--sssd
-
 # Jeroen Roovers <jer@gentoo.org> (16 Oct 2015)
 # HPPA has no NUMA support in the kernel
 numa
@@ -313,9 +309,5 @@ bmp
 
 # Adding h323 to mask. For more information see bug #115798
 h323
-
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask specific HPPA ALSA drivers
--alsa_cards_harmony
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.

@@ -1,11 +1,6 @@
 # PPC Specific use flags
 #
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
-
 # Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
 # sci-libs/mkl is not supported on PPC
 mkl
@@ -27,7 +22,6 @@ klibc
 
 # These flags should only be used for ppc
 -ppcsha1
--pbbuttonsd
 # Unmask the Altivec instruction set
 -altivec
 
@@ -68,15 +62,6 @@ mbrola
 -input_devices_wacom
 
 # Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask the Apple drivers
--alsa_cards_aoa
--alsa_cards_aoa-fabric-layout
--alsa_cards_aoa-onyx
--alsa_cards_aoa-soundbus
--alsa_cards_aoa-soundbus-i2s
--alsa_cards_aoa-tas
--alsa_cards_aoa-toonie
--alsa_cards_powermac
 # Mask ALSA drivers for ISA cards
 alsa_cards_msnd-pinnacle
 alsa_cards_sb16

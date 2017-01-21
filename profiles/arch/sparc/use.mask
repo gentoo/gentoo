@@ -226,8 +226,6 @@ video_cards_amdgpu
 video_cards_radeonsi
 
 # Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask the Sun-specific drivers
--alsa_cards_sun-cs4231
 # Mask ALSA drivers for ISA cards
 alsa_cards_msnd-pinnacle
 alsa_cards_hdsp
@@ -241,11 +239,7 @@ alsa_cards_wavefront
 -x264
 
 # Copied over from default-linux/sparc/sparc64
--gcc64
 -vis
-
-# Unmask ultra1
--ultra1
 
 # The default on SPARC is non-multilib
 # if a sub-profile want's it, it can -use.mask it
