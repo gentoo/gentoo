@@ -1,0 +1,8 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# moved from features/64bit-native
+# TODO: figure out how to inherit this from arch profile
+SYMLINK_LIB="yes"
+LIBDIR_ppc64="lib64"
