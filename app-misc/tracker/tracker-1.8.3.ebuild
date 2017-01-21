@@ -7,7 +7,7 @@ GNOME2_EAUTORECONF="yes" # See bug #367975
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools bash-completion-r1 gnome2 linux-info python-any-r1 vala versionator virtualx
+inherit bash-completion-r1 gnome2 linux-info python-any-r1 vala versionator virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
