@@ -5,9 +5,9 @@ EAPI=6
 HOMEPAGE=http://home.gna.org/auto-qcm/
 KEYWORDS=~x86 ~amd64
 LICENSE=GPL-2+
-RDEPEND=app-text/texlive[doc,dvi2tty,dvipdfm,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,omega,publishers,l10n_fr] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv dev-lang/perl:= dev-perl/gtk2-perl dev-perl/Gtk2-Notify media-gfx/imagemagick dev-perl/XML-Writer dev-perl/Archive-Zip dev-perl/DBI dev-perl/Text-CSV dev-perl/DBD-SQLite dev-perl/Net-CUPS dev-perl/Email-Address dev-perl/Email-MIME dev-perl/Email-Sender virtual/latex-base
+RDEPEND=app-text/texlive[doc,dvi2tty,dvipdfm,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,omega,publishers,l10n_fr] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv dev-lang/perl:= dev-perl/Glib-Object-Introspection dev-perl/gtk2-perl dev-perl/Gtk2-Notify media-gfx/imagemagick dev-perl/XML-Writer dev-perl/Archive-Zip dev-perl/DBI dev-perl/Text-CSV dev-perl/DBD-SQLite dev-perl/Net-CUPS dev-perl/Email-Address dev-perl/Email-MIME dev-perl/Email-Sender virtual/latex-base
 SLOT=0
 SRC_URI=http://download.gna.org/auto-qcm/auto-multiple-choice_1.3.0_sources.tar.gz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_compile:- src_install:-
 _eclasses_=latex-package	58e25573cc86e53dddea91261009b301	multilib	165fc17c38d1b11dac2008280dab6e80	perl-functions	aac50de73be0a80ebe780e0b20850130	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=de7e4d63b68de7d2fa824b4fe0c5456d
+_md5_=759d8663a7f7b1d5ffaca63d2691e1f3
