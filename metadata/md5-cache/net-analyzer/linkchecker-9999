@@ -5,10 +5,10 @@ EAPI=5
 HOMEPAGE=https://wummel.github.com/linkchecker/ https://pypi.python.org/pypi/linkchecker/
 IUSE=gnome sqlite X python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=virtual/python-dnspython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) X? ( dev-python/PyQt4[X,help,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/qscintilla-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=virtual/python-dnspython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) X? ( dev-python/PyQt4[X,help,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/qscintilla-python[qt4(+),python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite?] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=9bf7ba28b1e34be939b7d76bd76cef7f
+_md5_=f8dcec1b3065bc8f1416b3003619bf25
