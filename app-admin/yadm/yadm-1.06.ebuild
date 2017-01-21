@@ -24,7 +24,7 @@ RDEPEND="dev-vcs/git
 	app-crypt/gnupg"
 
 src_compile() {
-	make yadm.md
+	emake yadm.md
 }
 
 src_test() {
