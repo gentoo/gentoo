@@ -61,7 +61,7 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux source"
+IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
 RESTRICT="fetch preserve-libs strip"
@@ -107,12 +107,9 @@ RDEPEND="!x64-macos? (
 	!prefix? ( sys-libs/glibc:* )
 	selinux? ( sec-policy/selinux-java )"
 
-# A PaX header isn't created by scanelf so depend on paxctl to avoid
-# fallback marking. See bug #427642.
 DEPEND="app-arch/zip
 	jce? ( app-arch/unzip )
-	examples? ( x64-macos? ( app-arch/unzip ) )
-	pax_kernel? ( sys-apps/paxctl )"
+	examples? ( x64-macos? ( app-arch/unzip ) )"
 
 S="${WORKDIR}/jdk"
 
@@ -187,7 +184,7 @@ src_prepare() {
 
 	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
 		# Mark this binary early to run it now.
-		pax-mark Cm ./bin/javap
+		pax-mark m ./bin/javap
 
 		eqawarn "Ensure that this only calls trackJavaUsage(). If not, see bug #559936."
 		eqawarn
