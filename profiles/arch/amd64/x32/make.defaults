@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,6 +6,7 @@ DEFAULT_ABI="x32"
 ABI="x32"
 MULTILIB_ABIS="amd64 x86 x32"
 
+LIBDIR_x86="lib"
 SYMLINK_LIB="no"
 
 # Michał Górny <mgorny@gentoo.org> (01 Jul 2014)

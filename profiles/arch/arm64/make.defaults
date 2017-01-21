@@ -12,5 +12,7 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
+LIBDIR_arm64="lib64"
+
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
