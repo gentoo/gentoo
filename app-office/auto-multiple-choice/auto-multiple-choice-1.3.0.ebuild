@@ -28,6 +28,7 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	dev-lang/perl:=
+	dev-perl/Glib-Object-Introspection
 	dev-perl/gtk2-perl
 	dev-perl/Gtk2-Notify
 	media-gfx/imagemagick
