@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
 
 inherit distutils-r1
 
@@ -21,5 +21,12 @@ DEPEND=""
 RDEPEND=""
 
 python_test() {
-	"${EPYTHON}" -m unittest discover || die "tests failed under ${EPYTHON}"
+	cd "${BUILD_DIR}" || die
+	if [[ ${EPYTHON} == python2* || ${EPYTHON} == pypy ]]; then
+		cp "${S}"/python2/test_typing.py . || die
+	else
+		cp "${S}"/src/test_typing.py . || die
+	fi
+
+	"${EPYTHON}" test_typing.py || die "tests failed under ${EPYTHON}"
 }
