@@ -7,7 +7,7 @@ GNOME2_EAUTORECONF="yes" # See bug #367975
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools bash-completion-r1 gnome2 linux-info python-any-r1 vala versionator virtualx
+inherit bash-completion-r1 gnome2 linux-info python-any-r1 vala versionator virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
@@ -19,9 +19,9 @@ SLOT="0/100"
 # suspend support from old upower
 IUSE="cue elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
 gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager
-pdf playlist rss stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
+pdf playlist rss +seccomp stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	?? ( gstreamer ffmpeg )
@@ -44,7 +44,6 @@ RDEPEND="
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/libmediaart-1.9:2.0
 	sys-apps/util-linux
-	>=sys-libs/libseccomp-2.0
 	>=x11-libs/pango-1:=
 
 	cue? ( media-libs/libcue )
@@ -76,8 +75,9 @@ RDEPEND="
 		>=x11-libs/cairo-1:=
 		>=app-text/poppler-0.16:=[cairo,utils]
 		>=x11-libs/gtk+-2.12:2 )
-	playlist? ( >=dev-libs/totem-pl-parser-3 )
+	playlist? ( >=dev-libs/totem-pl-parser-3:= )
 	rss? ( >=net-libs/libgrss-0.7:0 )
+	seccomp? ( >=sys-libs/libseccomp-2.0 )
 	stemmer? ( dev-libs/snowball-stemmer )
 	thunderbird? ( || (
 		>=mail-client/thunderbird-5.0
