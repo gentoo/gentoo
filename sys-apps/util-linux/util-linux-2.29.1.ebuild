@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit eutils toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	python-single-r1 multilib-minimal systemd
@@ -27,6 +26,8 @@ LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
 IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode"
 
+# Most lib deps here are related to programs rather than our libs,
+# so we rarely need to specify ${MULTILIB_USEDEP}.
 RDEPEND="caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
@@ -36,11 +37,7 @@ RDEPEND="caps? ( sys-libs/libcap-ng )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )
-	udev? ( virtual/libudev:= )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20150406-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-	)"
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -57,7 +54,7 @@ RDEPEND+="
 	!sys-block/eject
 	!<sys-libs/e2fsprogs-libs-1.41.8
 	!<sys-fs/e2fsprogs-1.41.8
-	!<app-shells/bash-completion-1.3-r2"
+	!<app-shells/bash-completion-2.3-r2"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -72,7 +69,11 @@ src_prepare() {
 		po/update-potfiles
 		eautoreconf
 	fi
-	epatch "${FILESDIR}"/${P}-sysmacros.patch
+	# Undo bad ncurses handling by upstream. #601530
+	sed -i -E \
+		-e '/NCURSES_/s:(ncursesw?)[56]-config:$PKG_CONFIG \1:' \
+		-e 's:(ncursesw?)[56]-config --version:$PKG_CONFIG --exists --print-errors \1:' \
+		configure || die
 	elibtoolize
 }
 
