@@ -1,9 +1,0 @@
-# Copyright 2004-2008 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-# $Id$
-
-# SECTION: Mask
-
-# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
-# Mask multilib, since we cannot use it.
-multilib

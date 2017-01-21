@@ -1,9 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# USE flags masked because providing packages require a 32-bit ABI
-
-# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
-# Mask multilib, since we cannot use it.
-multilib
