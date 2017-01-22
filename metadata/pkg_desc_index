@@ -13865,7 +13865,7 @@ media-video/ccextractor 0.59 0.68 0.69: Extract closed captioning subtitles from
 media-video/cclive 0.9.3-r1: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r1: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.20.2 3.22.1: A cheesy program to take pictures and videos from your webcam
-media-video/cinelerra 20120707 20140710: The most advanced non-linear video editor and compositor
+media-video/cinelerra 20140710 20150908: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
