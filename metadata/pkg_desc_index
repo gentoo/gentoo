@@ -1999,7 +1999,7 @@ app-office/calcurse 4.0.0 4.1.0 4.2.0 4.2.1: a text-based calendar and schedulin
 app-office/calligra 2.9.11 2.9.11-r1 3.0.0.1-r2: KDE Office Suite
 app-office/calligra-l10n 2.9.11 2.9.11-r1: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
-app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
+app-office/dia2code 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.9.5 0.9.6 0.9.7: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.4.0: Program for creating labels and business cards
@@ -2215,7 +2215,7 @@ app-text/cmark 0.27.1: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
-app-text/convmv 1.15 1.15-r1 2.0: convert filenames to utf8 or any other charset
+app-text/convmv 2.0: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor and for similar text processing
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
 app-text/crf++ 0.54 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
@@ -2301,7 +2301,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.3 1.5.4 1.6.0: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.63 3.68 3.70: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.63 3.68 3.70 3.74: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.4 1.5.5: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1: Java GUI for managing BibTeX and other bibliographies
@@ -4534,7 +4534,7 @@ dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.31.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.10.5: Cross-distro effort for providing metadata for software in the Linux ecosystem
-dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15 0.5.16 0.6.3 0.6.5: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.5.0 0.6.3 0.6.5 0.6.7: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -12849,7 +12849,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.8 2.5.10 2.5.11: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.8 2.5.10 2.5.11 2.5.12: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -13946,6 +13946,7 @@ media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.9.2-r1 0.18.0-r1 0.22.0-r1 0.23.0 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
+media-video/nvidia-video-codec 7.0.1: Redistributable headers to build cuvid and nvenc
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.16.2 17.0.0 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
@@ -15366,7 +15367,7 @@ net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1 16.4 17.1 18.0_pre1820: A command-line based binary newsgrabber supporting .nzb files
-net-nntp/pan 0.139-r1 0.139-r2 0.140: A newsreader for GNOME
+net-nntp/pan 0.140 0.141: A newsreader for GNOME
 net-nntp/sabnzbd 1.1.1-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
