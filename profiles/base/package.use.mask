@@ -36,8 +36,6 @@ dev-libs/libsecp256k1 asm
 # tree.
 # bug 541042 - lua 5.3
 net-proxy/haproxy lua
-# bug 564160 - DeviceAtlas
-net-proxy/haproxy device-atlas
 # bug (none) - 51Degrees
 net-proxy/haproxy 51degrees
 # bug (none) - WURFL
