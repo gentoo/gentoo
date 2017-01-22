@@ -16363,7 +16363,7 @@ sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/ssm 1.4: A macromolecular coordinate superposition library
 sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format) and CIF files
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
-sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
+sci-libs/suitesparseconfig 4.2.1 4.2.1-r1: Common configurations for all packages in suitesparse
 sci-libs/sundials 2.7.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
