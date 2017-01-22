@@ -14,7 +14,7 @@ HOMEPAGE="http://botan.randombit.net/"
 SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="0/2"
+SLOT="2/0"
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 
@@ -32,11 +32,8 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 		libressl? ( dev-libs/libressl )
 	)"
 DEPEND="${RDEPEND}
+	dev-lang/python:*
 	doc? ( dev-python/sphinx )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
 
 pkg_pretend() {
 	# Botan 1.11 requires -std=c++11
@@ -119,10 +116,6 @@ src_install() {
 	if ! use static-libs; then
 		rm "${ED}usr/$(get_libdir)/libbotan"*.a || die 'remove of static libs failed'
 	fi
-
-	# Add compatibility symlinks.
-	[[ -e "${ED}usr/$(get_libdir)/pkgconfig/botan.pc" ]] && die "Compatibility code no longer needed"
-	dosym botan-2.pc /usr/$(get_libdir)/pkgconfig/botan.pc
 
 	use python && python_foreach_impl python_optimize
 }

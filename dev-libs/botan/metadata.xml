@@ -17,4 +17,7 @@
 	<use>
 		<flag name="boost">use <pkg>dev-libs/boost</pkg></flag>
 	</use>
+	<slots>
+		<subslots>botan soname version</subslots>
+	</slots>
 </pkgmetadata>
