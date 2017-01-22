@@ -117,7 +117,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	)
 	media-libs/freetype:2
 	>=dev-libs/kpathsea-6.2.1
-	cjk? ( >=dev-libs/ptexenc-1.3.3_p20150521 )"
+	cjk? ( >=dev-libs/ptexenc-1.3.4_p20160523 )"
 
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
@@ -126,9 +126,9 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils"
 
 RDEPEND="${COMMON_DEPEND}
-	>=app-text/ps2pkm-1.7_p20150521
-	>=app-text/dvipsk-5.995_p20150521
-	>=dev-tex/bibtexu-3.71_p20150521
+	>=app-text/ps2pkm-1.8_p20160523
+	>=app-text/dvipsk-5.996_p20160523
+	>=dev-tex/bibtexu-3.71_p20160523
 	virtual/perl-Getopt-Long
 	tk? ( dev-perl/Tk )"
 
