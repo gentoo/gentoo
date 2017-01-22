@@ -9107,9 +9107,9 @@ dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/awesome_print 1.7.0: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
-dev-ruby/aws-sdk 1.66.0 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-core 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-resources 2.2.37 2.5.1 2.5.11: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk 1.66.0 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-core 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-resources 2.2.37 2.5.1 2.5.11 2.6.50: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.0: Amazon Web Services Signature Version 4 signing library
 dev-ruby/backports 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
@@ -9126,7 +9126,7 @@ dev-ruby/bones 3.8.3 3.8.4: Tool that creates new Ruby projects from a code skel
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
-dev-ruby/bson 3.2.6 4.1.1 4.2.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/bson 3.2.6 4.1.1 4.2.0 4.2.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5 1.12.6 1.13.7: An easy way to vendor gem dependencies
