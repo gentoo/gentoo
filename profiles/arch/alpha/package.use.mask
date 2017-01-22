@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (22 Jan 2016)
+# Requires guile2 which is keyworded nowhere
+media-sound/lilypond guile2
+
 # Tobias Klausmann <klausman@gentoo.org> (15 Nov 2016)
 # JITing for libpcre{,2} is not supported on Alpha
 dev-libs/libpcre jit
