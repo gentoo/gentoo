@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,6 @@ CHOST_x32="x86_64-pc-linux-gnux32"
 # 2006/10/24 - Simon Stelling <blubb@gentoo.org>
 # They are masked, but we can enable them anyway for those who have 
 # >=portage-2.1.2_pre3-r4
-USE="mmx mmxext sse sse2"
 CPU_FLAGS_X86="mmx mmxext sse sse2"
 
 # Michał Górny <mgorny@gentoo.org> (03 Sep 2013)
