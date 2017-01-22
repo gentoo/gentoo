@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
+# Use "php -a" instead. Masked for removal in 30 days.
+# Bug 606836.
+dev-php/PEAR-PHP_Shell
+
 # Johannes Huber <johu@gentoo.org> (19 Jan 2017)
 # Plasma 4 removal in 30 days. Please read the news item.
 # All packages exported to kde-sunset overlay.
