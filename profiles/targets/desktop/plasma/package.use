@@ -63,21 +63,17 @@ kde-frameworks/baloo minimal
 sys-auth/polkit-kde-agent minimal
 
 # FIXME: unnecessary REQUIRED_USE ^^ ( qt4 qt5 )
->=app-office/texmaker-4.4.1 -qt4
->=app-office/texstudio-2.9.4 -qt4
->=dev-libs/quazip-0.7.1 -qt4
-net-misc/owncloud-client -qt4
-net-p2p/bitcoin-qt -qt4
+<app-office/texmaker-4.5-r1 -qt4
+<dev-libs/quazip-0.7.2-r1 -qt4
+dev-python/qscintilla-python -qt4
 x11-libs/qscintilla -qt4
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
->=dev-games/openscenegraph-3.2.1-r1 -qt4
+<dev-games/openscenegraph-3.5.1-r1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-2.4.12-r1 -qt4
 <media-video/smplayer-16.4.0-r2 -qt4
-media-video/vlc -qt4
 net-analyzer/wireshark -qt4
-net-p2p/transmission -qt4
->=net-print/hplip-3.16.5 -qt4
->=net-wireless/wpa_supplicant-2.5 -qt4
+<net-print/hplip-3.16.11-r3 -qt4
+<net-wireless/wpa_supplicant-2.6-r1 -qt4

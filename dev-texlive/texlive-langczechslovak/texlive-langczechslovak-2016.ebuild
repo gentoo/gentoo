@@ -20,5 +20,6 @@ DEPEND=">=dev-texlive/texlive-basic-2016
 !dev-texlive/texlive-documentation-czechslovak
 >=app-text/texlive-core-2014[xetex]
 !<dev-texlive/texlive-basic-2016
+>=dev-texlive/texlive-luatex-2016
 "
 RDEPEND="${DEPEND} "
