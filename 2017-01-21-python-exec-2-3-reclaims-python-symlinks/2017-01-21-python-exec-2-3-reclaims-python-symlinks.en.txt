@@ -29,6 +29,7 @@ determining no replaced files are owned. Please disregard the warning.
 The potentially colliding files are:
 
  * /usr/bin/2to3
+ * /usr/bin/idle
  * /usr/bin/pydoc
  * /usr/bin/python
  * /usr/bin/python2
