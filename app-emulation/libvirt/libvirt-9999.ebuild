@@ -135,6 +135,8 @@ pkg_setup() {
 		enewuser qemu 77 -1 -1 "qemu,kvm"
 	fi
 
+	use policykit && enewgroup libvirt
+
 	# Check kernel configuration:
 	CONFIG_CHECK=""
 	use fuse && CONFIG_CHECK+="
@@ -356,7 +358,7 @@ src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
@@ -376,7 +378,8 @@ pkg_postinst() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
+	FORCE_PRINT_ELOG=1 # remove for next version bump
 	readme.gentoo_print_elog
 }
