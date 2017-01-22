@@ -4758,6 +4758,7 @@ media-video/libav:frei0r - Enable frei0r wrapping in libavfilter
 media-video/libav:gpl - Build all GPL licensed code. Without this flag set the package is build under LGPL license.
 media-video/libav:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
 media-video/libav:network - Enable network streaming support.
+media-video/libav:nvidia - Enable nvidia video codec hardware acceleration support.
 media-video/libav:openssl - Prefer dev-libs/openssl over net-libs/gnutls to provide SSL/TLS support (notice: the resulting binaries are unredistributable).
 media-video/libav:opus - Use the external opus library for encoding and decoding.
 media-video/libav:pic - Force shared libraries to be built as PIC (this is slower).
