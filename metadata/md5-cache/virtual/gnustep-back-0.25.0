@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for back-end component for the GNUstep GUI Library
 EAPI=6
-KEYWORDS=~alpha amd64 ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 RDEPEND=|| ( ~gnustep-base/gnustep-back-cairo-0.25.0 ~gnustep-base/gnustep-back-art-0.25.0 ~gnustep-base/gnustep-back-xlib-0.25.0 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=70d505d24227fd7124131a697f32013a
+_md5_=f8e039b79eeb05f1d165477b3c0281f3
