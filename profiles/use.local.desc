@@ -6562,7 +6562,7 @@ net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this 
 net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
 net-print/magicfilter:lprng-failsafe - Refuse options for compability with certain LPRng versions.
 net-proxy/haproxy:51degrees - Device Detection using 51 Degrees
-net-proxy/haproxy:device-atlas - Device Detection using Device Atlas
+net-proxy/haproxy:device-atlas - Use dev-libs/device-atlas-api-c library
 net-proxy/haproxy:net_ns - Enable network namespace support (CONFIG_NET_NS)
 net-proxy/haproxy:pcre-jit - Use JIT support for PCRE
 net-proxy/haproxy:slz - Use dev-libs/libslz compression library
