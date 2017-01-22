@@ -130,16 +130,12 @@ PATCHES=(
 )
 
 pkg_setup() {
-	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 "qemu,kvm"
-
-	# Some people used the masked ebuild which was not adding the qemu
-	# user to the kvm group originally. This results in VMs failing to
-	# start for some users. bug #430808
-	egetent group kvm | grep -q qemu
-	if [[ $? -ne 0 ]]; then
-		gpasswd -a qemu kvm
+	if use qemu; then
+		enewgroup qemu 77
+		enewuser qemu 77 -1 -1 "qemu,kvm"
 	fi
+
+	use policykit && enewgroup libvirt
 
 	# Check kernel configuration:
 	CONFIG_CHECK=""
@@ -362,7 +358,7 @@ src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
@@ -382,7 +378,9 @@ pkg_postinst() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
+	FORCE_PRINT_ELOG=1 # remove for next version bump
 	readme.gentoo_print_elog
 }

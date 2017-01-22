@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 # Supported lisps, number 0 is the default
 LISPS=( sbcl cmucl     gcl ecls   clisp clozurecl )
 # Version restrictions, . means no restrictions
-REST=( ">=dev-lisp/sbcl-1.3.6" . . . . . )
+REST=( ">=dev-lisp/sbcl-1.3.6:= <dev-lisp/sbcl-1.3.13" . . . . . )
 # command name: . means just ${LISP}
 COMS=(  .    lisp      .   ecl    .     ccl       )
 
