@@ -130,15 +130,9 @@ PATCHES=(
 )
 
 pkg_setup() {
-	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 "qemu,kvm"
-
-	# Some people used the masked ebuild which was not adding the qemu
-	# user to the kvm group originally. This results in VMs failing to
-	# start for some users. bug #430808
-	egetent group kvm | grep -q qemu
-	if [[ $? -ne 0 ]]; then
-		gpasswd -a qemu kvm
+	if use qemu; then
+		enewgroup qemu 77
+		enewuser qemu 77 -1 -1 "qemu,kvm"
 	fi
 
 	# Check kernel configuration:
