@@ -19,6 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+RUBY_PATCHES=( "${FILESDIR}"/${P}-fix-tests.patch )
+
 ruby_add_rdepend "dev-ruby/builder:*
 	dev-ruby/expression_parser
 	dev-ruby/htmlentities
