@@ -16,6 +16,10 @@ IUSE=""
 DEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
 	$(add_qt_dep qtcore)
+	test? (
+		$(add_qt_dep qttest)
+		app-misc/fdupes
+	)
 "
 RDEPEND=""
 
