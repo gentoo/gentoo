@@ -21,7 +21,7 @@ DEPEND=">=dev-texlive/texlive-latex-2016
 !dev-tex/listings
 !<dev-texlive/texlive-latexextra-2011
 !=app-text/texlive-core-2007*
-!<dev-texlive/texlive-xetex-2015
+!<dev-texlive/texlive-xetex-2016
 !dev-texlive/texlive-latex3
 !<dev-texlive/texlive-humanities-2014
 !dev-texlive/texlive-mathextra
