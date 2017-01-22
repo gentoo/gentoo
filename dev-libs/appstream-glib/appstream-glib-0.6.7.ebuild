@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,11 +13,9 @@ SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8" # soname version
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86"
-IUSE="+introspection nls"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="+introspection nls stemmer"
 
-# FIXME: yaml is optional with --enable-dep11 but not
-# properly handled in autofoo bug#????
 RDEPEND="
 	app-arch/gcab
 	app-arch/libarchive
@@ -33,13 +31,13 @@ RDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/pango
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
+	stemmer? ( dev-libs/snowball-stemmer )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
 	>=dev-util/gtk-doc-am-1.9
-	>=dev-util/intltool-0.40
-	>=sys-devel/gettext-0.17
+	>=sys-devel/gettext-0.19.7
 "
 # ${PN} superseeds appdata-tools, require dummy package until all ebuilds
 # are migrated to appstream-glib
@@ -57,5 +55,6 @@ src_configure() {
 		--enable-man \
 		$(use_enable nls) \
 		$(use_enable introspection) \
+		$(use_enable stemmer) \
 		--with-bashcompletiondir="$(get_bashcompdir)"
 }
