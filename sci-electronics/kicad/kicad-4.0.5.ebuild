@@ -77,9 +77,9 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.0.4-boost-context.patch"
 
 	# remove all the non unix file endings
-	for f in $(find "${S}" -type f -name "*.desktop") ; do
+	while IFS="" read -d $'\0' -r f; do
 		edos2unix "${f}"
-	done
+	done < <(find "${S}" -type f -name "*.desktop" -print0)
 
 	# Remove cvpcb desktop file while it does nothing
 	rm "${WORKDIR}/${P}/resources/linux/mime/applications/cvpcb.desktop" || die
