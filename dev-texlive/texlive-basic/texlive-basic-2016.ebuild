@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="!<dev-texlive/texlive-latex-2009
 !<dev-texlive/texlive-latexrecommended-2009
 !dev-texlive/texlive-documentation-base
+!<app-text/dvipsk-5.996_p20160523
 >=app-text/texlive-core-2015[luajittex?]
 "
 RDEPEND="${DEPEND} "
