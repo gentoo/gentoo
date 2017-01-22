@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
-	dev-libs/glib:=
+	dev-libs/glib:2
 	dev-libs/icu:=
 	>=dev-libs/jsoncpp-0.5.0-r1:=
 	dev-libs/nspr:=
@@ -56,7 +56,7 @@ COMMON_DEPEND="
 	>=sys-libs/libcap-2.22:=
 	virtual/udev
 	x11-libs/cairo:=
-	x11-libs/gdk-pixbuf:=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/libdrm
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
@@ -114,8 +114,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
 		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-python/ply[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	')
 "
@@ -125,8 +123,6 @@ python_check_deps() {
 	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
 	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
 	has_version --host-root "dev-python/html5lib[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/jinja[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/ply[${PYTHON_USEDEP}]" &&
 	has_version --host-root "dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
@@ -161,9 +157,9 @@ For other desktop environments, try one of the following:
 
 PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
-	"${FILESDIR}/${PN}-system-jinja-r14.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
 	"${FILESDIR}/${PN}-glibc-2.24.patch"
+	"${FILESDIR}/${PN}-56-gcc4.patch"
 )
 
 pre_build_checks() {
@@ -173,9 +169,9 @@ pre_build_checks() {
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
 		fi
-		if tc-is-gcc && ! version_is_at_least 5 "$(gcc-major-version)"; then
+		if tc-is-gcc && ! version_is_at_least 4.9 "$(gcc-version)"; then
 			# bugs: #535730, #525374, #518668, #600288
-			die "At least gcc 5 is required"
+			die "At least gcc 4.9 is required"
 		fi
 	fi
 
@@ -256,6 +252,7 @@ src_prepare() {
 		third_party/hunspell
 		third_party/iccjpeg
 		third_party/inspector_protocol
+		third_party/jinja2
 		third_party/jstemplate
 		third_party/khronos
 		third_party/leveldatabase
@@ -272,6 +269,7 @@ src_prepare() {
 		third_party/libyuv
 		third_party/lss
 		third_party/lzma_sdk
+		third_party/markupsafe
 		third_party/mesa
 		third_party/modp_b64
 		third_party/mt19937ar
@@ -290,6 +288,7 @@ src_prepare() {
 		third_party/pdfium/third_party/libpng16
 		third_party/pdfium/third_party/libtiff
 		third_party/pdfium/third_party/zlib_v128
+		third_party/ply
 		third_party/polymer
 		third_party/protobuf
 		third_party/protobuf/third_party/six
