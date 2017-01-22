@@ -1,23 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit autotools eutils multilib flag-o-matic
 
+CINCV_VER=2.3
+
 DESCRIPTION="The most advanced non-linear video editor and compositor"
 HOMEPAGE="http://www.cinelerra.org/"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
+SRC_URI="https://cinelerra-cv.org/releases/CinelerraCV-${CINCV_VER}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
-IUSE="cpu_flags_x86_3dnow alsa altivec css ieee1394 cpu_flags_x86_mmx opengl oss"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="cpu_flags_x86_3dnow alsa altivec css debug ieee1394 cpu_flags_x86_mmx opengl oss"
 
 RDEPEND="media-libs/a52dec:=
 	media-libs/faac:=
 	media-libs/faad2:=
 	>=media-libs/freetype-2
+	media-libs/fontconfig
 	media-libs/libdv:=
 	>=media-libs/libogg-1.2:=
 	media-libs/libpng:0=
@@ -54,17 +57,25 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( dev-lang/nasm )"
 
+S="${WORKDIR}/CinelerraCV-${CINCV_VER}"
+
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-entry.patch \
+		"${FILESDIR}"/${PN}-20140710-validate_desktop_entry.patch \
 		"${FILESDIR}"/${PN}-ffmpeg.patch \
-		"${FILESDIR}"/${PN}-underlinking.patch \
-		"${FILESDIR}"/${PN}-ffmpeg-0.11.patch \
-		"${FILESDIR}"/${PN}-std_and_str_h.patch \
-		"${FILESDIR}"/${PN}-libav9.patch
+		"${FILESDIR}"/${PN}-20140710-underlinking.patch \
+		"${FILESDIR}"/${PN}-20140710-ffmpeg-0.11.patch \
+		"${FILESDIR}"/${PN}-libav9.patch \
+		"${FILESDIR}"/${PN}-pngtoh.patch \
+		"${FILESDIR}"/${PN}-putbits-gcc52.patch \
+		"${FILESDIR}"/${PN}-implicit_decls.patch
 
 	if has_version '>=media-video/ffmpeg-2' ; then
 		epatch "${FILESDIR}"/${PN}-ffmpeg2.patch
+	fi
+
+	if has_version '>=media-video/ffmpeg-2.9' ; then
+		epatch "${FILESDIR}"/${PN}-ffmpeg29.patch
 	fi
 
 	eautoreconf
@@ -73,6 +84,9 @@ src_prepare() {
 src_configure() {
 	append-cppflags -D__STDC_CONSTANT_MACROS #321945
 	append-ldflags -Wl,-z,noexecstack #212959
+
+	local myconf
+	use debug && myconf='--enable-x-error-output'
 
 	econf \
 		$(use_enable oss) \
@@ -86,7 +100,8 @@ src_configure() {
 		$(use_enable opengl) \
 		--with-plugindir=/usr/$(get_libdir)/${PN} \
 		--with-buildinfo=cust/"Gentoo - ${PV}" \
-		--with-external-ffmpeg
+		--with-external-ffmpeg \
+		${myconf}
 }
 
 src_install() {
