@@ -4,14 +4,14 @@
 
 EAPI=5
 XORG_DRI=dri
+
 inherit xorg-2
 
-DESCRIPTION="ATI Rage128 video driver"
-
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+DESCRIPTION="3Dfx video driver"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="dri"
 
-RDEPEND=">=x11-base/xorg-server-1.2"
+RDEPEND=">=x11-base/xorg-server-1.0.99"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
@@ -22,5 +22,4 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${P}-block-wakeuphandler-abi-23.patch
-	"${FILESDIR}"/${P}-xextproto-7.1-support.patch
 )

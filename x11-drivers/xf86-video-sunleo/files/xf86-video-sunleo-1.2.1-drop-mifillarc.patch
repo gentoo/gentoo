@@ -1,0 +1,21 @@
+From e9b0b0d5765fb9b20be05642f01531c41d148335 Mon Sep 17 00:00:00 2001
+From: Dave Airlie <airlied@redhat.com>
+Date: Wed, 12 Nov 2014 11:03:08 +1000
+Subject: drop mifillarc.h include
+
+
+diff --git a/src/leo_accel.c b/src/leo_accel.c
+index 3c509ba..2ecb759 100644
+--- a/src/leo_accel.c
++++ b/src/leo_accel.c
+@@ -34,7 +34,6 @@
+ #include	<X11/fonts/fontstruct.h>
+ #include	"dixfontstr.h"
+ #include	"fb.h"
+-#include	"mifillarc.h"
+ #include	"miwideline.h"
+ #include	"mi.h"
+ 
+-- 
+cgit v0.10.2
+

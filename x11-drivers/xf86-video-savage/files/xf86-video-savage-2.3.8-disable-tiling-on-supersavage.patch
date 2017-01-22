@@ -1,0 +1,31 @@
+From de61497415e58a21fa247faf6db180ca47fb5df0 Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Wed, 27 Apr 2016 16:02:13 +0200
+Subject: Disable tiling on SuperSavage by default
+
+Xserver cannot be started with Tiling enabled on SuperSavage.
+https://bugzilla.opensuse.org/show_bug.cgi?id=805380
+
+Signed-off-by: Stefan Dirsch <sndirsch@suse.de>
+Acked-by: Hans de Goede <hdegoede@redhat.com>
+
+diff --git a/src/savage_driver.c b/src/savage_driver.c
+index d278345..58a294d 100644
+--- a/src/savage_driver.c
++++ b/src/savage_driver.c
+@@ -1668,7 +1668,11 @@ static Bool SavagePreInit(ScrnInfoPtr pScrn, int flags)
+ #endif
+ 
+     /* we can use Option "DisableTile TRUE" to disable tile mode */
+-    psav->bDisableTile = FALSE; 
++    if (psav->Chipset == S3_SUPERSAVAGE)
++        /* apparently broken with these GPUs, see https://bugzilla.opensuse.org/show_bug.cgi?id=805380 */
++	psav->bDisableTile = TRUE;
++    else
++	psav->bDisableTile = FALSE;
+     if (xf86GetOptValBool(psav->Options, OPTION_DISABLE_TILE,&psav->bDisableTile)) {
+         xf86DrvMsg(pScrn->scrnIndex, X_CONFIG,
+                    "Option: %s Tile Mode and Program it \n",(psav->bDisableTile?"Disable":"Enable"));
+-- 
+cgit v0.10.2
+
