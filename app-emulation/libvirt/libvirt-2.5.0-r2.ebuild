@@ -27,10 +27,10 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps firewalld fuse glusterfs iscsi +libvirtd lvm libssh
-	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
-	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
-	xen zeroconf zfs elibc_glibc
+	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
+	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
+	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	wireshark-plugins xen zeroconf zfs elibc_glibc
 "
 
 REQUIRED_USE="
@@ -38,6 +38,7 @@ REQUIRED_USE="
 	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
+	policykit? ( dbus )
 	qemu? ( libvirtd )
 	uml? ( libvirtd )
 	vepa? ( macvtap )
@@ -67,6 +68,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
+	dbus? ( sys-apps/dbus )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
@@ -216,6 +218,8 @@ pkg_setup() {
 src_prepare() {
 	touch "${S}/.mailmap"
 
+	default
+
 	if [[ ${PV} = *9999* ]]; then
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
@@ -226,8 +230,6 @@ src_prepare() {
 			git hash-object bootstrap.conf
 		) >.git-module-status
 	fi
-
-	default
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
@@ -246,6 +248,7 @@ src_configure() {
 		$(use_with apparmor apparmor-profiles)
 		$(use_with audit)
 		$(use_with caps capng)
+		$(use_with dbus)
 		$(use_with firewalld)
 		$(use_with fuse)
 		$(use_with glusterfs)

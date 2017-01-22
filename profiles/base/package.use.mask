@@ -309,10 +309,6 @@ www-apps/venus test
 # java wrappers fail to build (bug #548858)
 =app-admin/setools-3.3.8-r7 java
 
-# Matthias Maier <tamiko@gentoo.org> (03 May 2015)
-# mask use flag until #546126 is resolved
->=app-emulation/libvirt-1.2.14 wireshark-plugins
-
 # James Le Cuirot <chewi@gentoo.org> (05 Apr 2015)
 # dev-java/sun-j2me-bin is going away.
 dev-java/proguard j2me
