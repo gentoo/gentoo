@@ -1,10 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor documentation"
@@ -13,8 +11,11 @@ SRC_URI="http://www.abisource.com/downloads/abiword/${PV}/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=app-office/abiword-${PV}-r1"
+RDEPEND=">=app-office/abiword-${PV}"
 DEPEND="${RDEPEND}"
+
+# Upstream tarball is wrongly prepared, drop in the next version
+S="${WORKDIR}/${PN}-3.0.1"
