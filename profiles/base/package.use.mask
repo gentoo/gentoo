@@ -54,11 +54,6 @@ gnome-extra/zeitgeist-datasources mono tomboy
 app-emulation/crossover-bin capi
 net-libs/opal capi
 
-# Michał Górny <mgorny@gentoo.org> (15 Nov 2016)
-# OpenVG support in Mesa is long gone, and qtopenvg is going to p.mask.
-dev-qt/qt-meta openvg
-dev-qt/qtdemo openvg
-
 # Ettore Di Giacinto <mudler@gentoo.org> (10 Nov 2016)
 # Dependency has no stable keyword
 # and as for now we have only stable mate versions
