@@ -75,6 +75,7 @@ src_unpack() {
 src_prepare() {
 	use binary && return
 
+	epatch "${FILESDIR}"/${P}-fstack-check.patch #559980
 	epatch_user
 }
 
