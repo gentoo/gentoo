@@ -1,20 +1,12 @@
 certificate version 0.1
-pusher Manuel Rüger <mrueg@gentoo.org> 1485101899 +0100
+pusher 0x09A5A940A188FBD4 1485101918 +0100
 pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1485101903-200bac6cb6dd07a6b36d
+nonce 1485101918-af9eafafa13ff1a4199c
 
-c416884809060c0f40b5710635a5a7a82284d5a3 12ab46c609527fedc98c8830a45307d4eaccd62c refs/heads/master
+12ab46c609527fedc98c8830a45307d4eaccd62c 664f5623ad93c0e6c11c4d91e724fefbc7e76b9e refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQGlBAABCgCPFiEE9NJH0U9HSNCjLMHwdNn3TurGo7EFAliE20tfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEY0
-RDI0N0QxNEY0NzQ4RDBBMzJDQzFGMDc0RDlGNzRFRUFDNkEzQjERHG1ydWVnQGdl
-bnRvby5vcmcACgkQdNn3TurGo7FUnQf/VfkWe5v5Yh91PkmT9XaFVmxQKULQ576c
-mU6M21gtbMWnd/E+VIDQ6N39Yqru/gVBxij9KqROyQmzyIEj1tVIykMNfNo79xWN
-YPixR4Jc5mWy1l/aVQef/fSAXnDJCO7wbkcQD29nX5rEnh/rWhaqhjp0CWfxRmke
-ozc8KB2fnjRWIV4QnnLmOc0Fa8Tul/112/85XofScJrdty7xrHH8J2dVLjJvSkvV
-57toyW9RjQqCJ3Fptwx3NXDhAY4TeTeb7N8V7o3hGRvYDHaoRd/TQRhjXE07VYkc
-4hbT4SIpgjGbZBB3VCF+zzX98vSSTU5qyzx7EDjpvAgqrJ1ooQ4Hzg==
-=Xv5c
+iEYEABECAAYFAliE214ACgkQCaWpQKGI+9T23wCffxf/1nWbLfrOEqCs11+gIr0a
+K+oAoIUa0aCmdJU9VdkftJ/6uAogoPJz
+=Zzar
 -----END PGP SIGNATURE-----
