@@ -182,6 +182,7 @@ src_configure() {
 			--without-context
 			--without-coroutine
 			--without-coroutine2
+			--without-fiber
 		)
 	use threads || OPTIONS+=(
 			--without-thread
