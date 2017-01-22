@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (22 Jan 2017)
+# Potentially subject to CVE-2016-9180. Removal in 30 days.
+# Upgrade or copy to overlay if you need old versions
+# Gentoo bug: #600828
+<=dev-perl/GraphViz-2.190.0
+
 # Johannes Huber <johu@gentoo.org> (19 Jan 2017)
 # Plasma 4 removal in 30 days. Please read the news item.
 # All packages exported to kde-sunset overlay.
