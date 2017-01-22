@@ -2154,7 +2154,7 @@ app-shells/mpv-bash-completion 3.3.7 3.3.8: Bash completion for the mpv video pl
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
-app-shells/psh 1.8.1-r1 1.8.1-r2 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
+app-shells/psh 1.8.1-r3: Combines the interactive nature of a Unix shell with the power of Perl
 app-shells/push 1.6 1.8 1.11 2.0: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 2.0_p2 3.0_p2: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rc 1.7.4: A reimplementation of the Plan 9 shell
@@ -14306,7 +14306,7 @@ net-analyzer/vnstat 1.13 1.15 1.16: Console-based network traffic monitor that k
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.2 2.2.3 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.2 2.2.3 2.2.3-r1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
