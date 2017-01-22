@@ -2048,7 +2048,7 @@ app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.4.1-r1 4.5 4.5-r1: A nice LaTeX-IDE
-app-office/texstudio 2.10.8 2.11.0 2.11.2 2.11.2-r1: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.11.0 2.11.2-r1 2.12.0: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.1.134: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -3170,7 +3170,7 @@ dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
-dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
+dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/delve 0.11.0_alpha: A source-level debugger for the Go programming language
 dev-go/ed25519 0_pre20160420: ed25519 for Go
@@ -3181,7 +3181,7 @@ dev-go/go-colortext 0_pre20150720: Change the console foreground and background 
 dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-gitlab-client 0_pre20160305: A simple gitlab api client written in Go
-dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
+dev-go/go-md2man 1.0.3 1.0.6: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 0_pre20160216 9999: Go supplementary network libraries
 dev-go/go-oauth2 0_pre20150701 0_pre20160222 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 0_pre20150809 0_pre20160216 9999: Go support for Google's protocol buffers
@@ -19333,7 +19333,7 @@ x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manage
 x11-wm/wmii 3.9.2-r4 3.9.2-r5: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12: Third party extensions for xmonad
-x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4 0.17.5 0.17.6: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4 0.17.5 0.17.6 1.0.1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1 0.11.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
