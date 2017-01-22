@@ -1,0 +1,56 @@
+From b1639e3014996fbc7635870e013559c54e7e3b2f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?David=20Mart=C3=ADnez=20Moreno?= <ender@debian.org>
+Date: Thu, 13 Aug 2015 09:31:26 -0700
+Subject: [PATCH] Fix ABI demangling for the GCC 5.x case.
+
+When glog is compiled with gcc-5.2 in cxx11 ABI mode, it barfs about unmangled symbols.  This patches it getting inspiration from binutils and demangle.cc itself, although it may be totally wrong or maybe have to use ParseAbiTag in more places.  I haven't read the spec for the symbols, though.
+
+This patch makes the demangle unit test pass correctly.
+---
+ src/demangle.cc | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/demangle.cc b/src/demangle.cc
+index e858181..0f0c831 100644
+--- a/src/demangle.cc
++++ b/src/demangle.cc
+@@ -439,6 +439,7 @@ static bool ParseExprPrimary(State *state);
+ static bool ParseLocalName(State *state);
+ static bool ParseDiscriminator(State *state);
+ static bool ParseSubstitution(State *state);
++static bool ParseAbiTag(State *state);
+ 
+ // Implementation note: the following code is a straightforward
+ // translation of the Itanium C++ ABI defined in BNF with a couple of
+@@ -567,6 +568,8 @@ static bool ParseNestedName(State *state) {
+ static bool ParsePrefix(State *state) {
+   bool has_something = false;
+   while (true) {
++    if (ParseAbiTag(state))
++      continue;
+     MaybeAppendSeparator(state);
+     if (ParseTemplateParam(state) ||
+         ParseSubstitution(state) ||
+@@ -585,6 +588,22 @@ static bool ParsePrefix(State *state) {
+   return true;
+ }
+ 
++// <abi-tag>          ::= B <source-name>
++static bool ParseAbiTag(State *state) {
++  State copy = *state;
++
++  Append(state, "[", 1);
++  if (ParseOneCharToken(state, 'B') &&
++      ParseSourceName(state))
++  {
++    Append(state, "]", 1);
++    return true;
++  }
++
++  *state = copy;
++  return false;
++}
++
+ // <unqualified-name> ::= <operator-name>
+ //                    ::= <ctor-dtor-name>
+ //                    ::= <source-name>

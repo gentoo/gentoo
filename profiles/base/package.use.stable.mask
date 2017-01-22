@@ -58,10 +58,6 @@ dev-db/mariadb-galera sst-xtrabackup
 # Needs gcc-5 which is currently unstable
 dev-lang/go gccgo
 
-# Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
-# Needs unsable media-libs/opencv
-media-gfx/nomacs qt5
-
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
