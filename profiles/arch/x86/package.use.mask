@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Luca Barbato <lu_zero@gentoo.org> (22 Jan 2017)
+# cuda is not available on x86 nvidia-video-codec depends on it
+media-video/libav nvidia
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires yet unavailable >=media-video/ffmpeg-3.3.
 >=media-video/mpv-0.23.0 cuda
