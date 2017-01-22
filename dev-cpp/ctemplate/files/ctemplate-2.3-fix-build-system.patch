@@ -1,0 +1,29 @@
+* Do not override $(docdir) as userflag in the GNU conventions
+* Only build tests programs when running 'make check'
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -54,12 +54,11 @@
+ 	src/ctemplate/per_expand_data.h.in \
+ 	src/ctemplate/str_ref.h.in
+ 
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+ ## This is for HTML and other documentation you want to install.
+ ## Add your documentation files (in doc/) in addition to these
+ ## top-level boilerplate files.  Also add a TODO file if you have one.
+-dist_doc_DATA = AUTHORS COPYING ChangeLog INSTALL NEWS README README_windows.txt \
+-	doc/designstyle.css doc/index.html \
++dist_doc_DATA = AUTHORS ChangeLog NEWS README README_windows.txt
++dist_html_DATA = doc/designstyle.css doc/index.html \
+ 	doc/howto.html doc/guide.html doc/reference.html \
+ 	doc/tips.html doc/example.html doc/auto_escape.html \
+ 	doc/xss_resources.html
+@@ -452,7 +451,7 @@
+ 
+ ## This should always include $(TESTS), but may also include other
+ ## binaries that you compile but don't want automatically installed.
+-noinst_PROGRAMS = $(TESTS)
++check_PROGRAMS = $(TESTS)
+ 
+ rpm: dist-gzip packages/rpm.sh packages/rpm/rpm.spec
+ 	@cd packages && ./rpm.sh ${PACKAGE} ${VERSION}
