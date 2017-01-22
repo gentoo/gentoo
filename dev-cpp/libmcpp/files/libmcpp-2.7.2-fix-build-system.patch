@@ -1,0 +1,30 @@
+Specify and install files using idiomatic Automake
+conventions instead of manually installing with cp.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,16 +23,12 @@
+   $(top_srcdir)/test-c $(top_srcdir)/test-l $(top_srcdir)/tool  \
+   $(top_srcdir)/doc $(top_srcdir)/doc-jp
+ 
+-if ! REPLACE_CPP 
+-install-exec-hook:
+-	$(top_srcdir)/config/install-sh -d "$(DESTDIR)$(prefix)/share/doc/mcpp"
+-	cp -pf $(top_srcdir)/LICENSE $(top_srcdir)/README $(top_srcdir)/NEWS \
+-            $(DESTDIR)$(prefix)/share/doc/mcpp
+-	cp -pf $(top_srcdir)/doc/mcpp-manual.html   \
+-            $(DESTDIR)$(prefix)/share/doc/mcpp
+-	cp -pf $(top_srcdir)/doc-jp/mcpp-manual.html   \
+-            $(DESTDIR)$(prefix)/share/doc/mcpp/mcpp-manual-jp.html
+-uninstall-hook:
+-	rm -rf $(DESTDIR)$(prefix)/share/doc/mcpp
+-endif
++dist_doc_DATA = README NEWS doc/mcpp-summary.pdf
+ 
++dist_html_DATA = \
++	doc/cpp-test.html \
++	doc/mcpp-manual.html \
++	doc/mcpp-porting.html
++
++htmljadir = $(htmldir)/doc-jp
++dist_htmlja_DATA = doc-jp/mcpp-manual.html
