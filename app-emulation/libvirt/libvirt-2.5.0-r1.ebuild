@@ -216,6 +216,8 @@ pkg_setup() {
 src_prepare() {
 	touch "${S}/.mailmap"
 
+	default
+
 	if [[ ${PV} = *9999* ]]; then
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
@@ -226,8 +228,6 @@ src_prepare() {
 			git hash-object bootstrap.conf
 		) >.git-module-status
 	fi
-
-	default
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die

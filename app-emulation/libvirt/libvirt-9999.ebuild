@@ -123,7 +123,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 )
 
@@ -216,6 +216,8 @@ pkg_setup() {
 src_prepare() {
 	touch "${S}/.mailmap"
 
+	default
+
 	if [[ ${PV} = *9999* ]]; then
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
@@ -226,8 +228,6 @@ src_prepare() {
 			git hash-object bootstrap.conf
 		) >.git-module-status
 	fi
-
-	default
 
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
