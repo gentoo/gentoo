@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">texstudio</remote-id>
+		<changelog>http://texstudio.sourceforge.net/manual/current/CHANGELOG.txt</changelog>
 	</upstream>
 </pkgmetadata>
