@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+DIST_EXAMPLES=( "examples/*" )
 
 inherit perl-module
 
 DESCRIPTION="Combines the interactive nature of a Unix shell with the power of Perl"
 HOMEPAGE="https://gnp.github.io/psh/"
-SRC_URI="http://www.focusresearch.com/gregor/download/${P}.tar.gz"
+SRC_URI="https://github.com/gnp/psh/archive/${P}.tar.gz -> ${PF}.tar.gz"
+S="${WORKDIR}/${PN}-${P}" # github--
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-# Package warrants USE doc & examples
 IUSE="readline"
 
 RDEPEND="
@@ -25,14 +26,16 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 
-SRC_TEST="do parallel"
 myinst="SITEPREFIX=${D}/usr"
 
 PATCHES=(
-	"${FILESDIR}/${P}-defined-array.patch"
+	"${FILESDIR}/${PF}-defined-array.patch"
+	"${FILESDIR}/${PF}-array-ref-deprecated.patch"
 )
 
 src_install() {
 	perl-module_src_install
-	dodoc examples/complete-examples doc/*
+	docompress -x "/usr/share/doc/${PF}/pod"
+	docinto pod/
+	dodoc -r doc/*
 }

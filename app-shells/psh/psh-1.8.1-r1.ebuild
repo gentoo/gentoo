@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Combines the interactive nature of a Unix shell with the power of Perl"
-HOMEPAGE="http://www.focusresearch.com/gregor/sw/psh/"
+HOMEPAGE="https://gnp.github.io/psh/"
 SRC_URI="http://www.focusresearch.com/gregor/download/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
