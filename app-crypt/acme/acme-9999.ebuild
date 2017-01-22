@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=(python{2_7,3_4,3_5})
 
 if [[ ${PV} == 9999* ]]; then
@@ -26,13 +26,12 @@ IUSE="test"
 
 RDEPEND=">=dev-python/cryptography-0.8[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
-	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
+	>=dev-python/requests-2.4.1[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	virtual/python-dnspython"
 DEPEND="test? ( ${RDEPEND} dev-python/nose[${PYTHON_USEDEP}] )
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
 
