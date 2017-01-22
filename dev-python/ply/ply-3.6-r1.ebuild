@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,6 @@ IUSE="examples"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
-# See bug #458648 for reference
-RESTRICT="test"
-
 DOCS=( ANNOUNCE CHANGES TODO )
 PATCHES=(
 	"${FILESDIR}/3.6-lextab-None.patch"
@@ -31,6 +28,9 @@ PATCHES=(
 python_test() {
 	cp -r -l test "${BUILD_DIR}"/ || die
 	cd "${BUILD_DIR}"/test || die
+
+	# Checks for pyc/pyo files
+	local -x PYTHONDONTWRITEBYTECODE=
 
 	local t
 	for t in testlex.py testyacc.py; do
