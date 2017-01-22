@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Standard font for Android 4.0 (Ice Cream Sandwich) and later
+EAPI=6
+HOMEPAGE=https://github.com/google/roboto
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/google/roboto/releases/download/v2.136/roboto-unhinted.zip -> roboto-2.136.zip
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_install:font
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	font	cd7790315ca5b8c505e1e0513df6acce	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=71b5a4a42337b62760030eb4c1e5dfd0
