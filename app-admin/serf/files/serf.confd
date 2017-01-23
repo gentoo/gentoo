@@ -1,0 +1,7 @@
+# you can change the init script behavior by setting those parameters
+# - group (default: serf)
+# - pidfile (default: /run/serf/serf.pid)
+# - user (default: serf)
+
+# extra arguments for the serf agent
+command_args="-config-dir=/etc/serf.d"

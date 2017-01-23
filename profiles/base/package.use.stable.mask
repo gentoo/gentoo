@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
+# sys-fs/zfs isn't going to be marked stable anytime soon
+app-emulation/libvirt zfs
+
 # Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
 # www-client/weboob is horribly outdated and not stable
 app-office/kmymoney weboob
@@ -85,11 +89,6 @@ app-emulation/vice ffmpeg
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
-
-# Matthias Maier <tamiko@gentoo.org> (13 Mar 2015)
-# Masking glusterfs for the time being, see entry for app-emulation/qemu of
-# 12 Sep 2013: Waiting on glusterfs maintainers in bug #484016
-app-emulation/libvirt glusterfs
 
 # Pacho Ramos <pacho@gentoo.org>
 # sci-visualization/paraview is not ready for stabilization yet
