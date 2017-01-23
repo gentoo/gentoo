@@ -9125,7 +9125,7 @@ dev-ruby/bit-struct 0.15.0: Library for packed binary data stored in ruby String
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
-dev-ruby/bones 3.8.3 3.8.4: Tool that creates new Ruby projects from a code skeleton
+dev-ruby/bones 3.8.4 3.8.4-r1: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
