@@ -5,9 +5,6 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="bookmarks">Add dependency on bookmark package.</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">krusader</remote-id>
 	</upstream>
