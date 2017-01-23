@@ -379,3 +379,54 @@ perl_has_module_version() {
 		} ? 0 : 1 )' "$@"
 }
 
+# @FUNCTION: perl_get_module_version
+# @USAGE: MODVER=$(perl_get_module_version "Test::Simple")
+# @DESCRIPTION:
+# Query the installed system perl to report the version of the installed
+# module.
+#
+# Note this should be strictly for diagnostic purposes to the end user,
+# and may be of selective use in pkg_info to enhance
+# emerge --info reports.
+#
+# Anything that does version comparisons **must not** use the return value
+# from this function
+#
+# Also note that this **must** at least attempt load the module in
+# question as part of its operation, and is subsequently prone to SLOWness.
+#
+# Return codes return error in both compilation-failure and not-installed cases.
+
+perl_get_module_version() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
+	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	if ! perl_has_module "$@" ; then
+		echo "(Not Installed)";
+		return 1;
+	fi
+
+	# Todo: What do we do if require fails? spew to stderr
+	# or stay silent?
+
+	perl -we 'my $mn = $ARGV[0];
+		$mn =~ s{(::|\x{27})}{/}g;
+		local $@;
+		eval { require qq[${mn}.pm]; 1 } or do {
+			print q[(Compilation failed in require)];
+			exit 1;
+		};
+		my $stash = \%{ $ARGV[0] . q[::] };
+		if ( not exists $stash->{VERSION} ) {
+			print q[(No VERSION property)];
+			exit 0;
+		}
+		if ( not defined ${$stash->{VERSION}} ) {
+			print q[(undef)];
+			exit 0;
+		}
+		print ${$stash->{VERSION}};
+		exit 0; ' "$@"
+}
