@@ -61,7 +61,7 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source"
+IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
 RESTRICT="fetch preserve-libs strip"
@@ -211,6 +211,10 @@ src_install() {
 		rm -vf jre/lib/*/libjsoundalsa.* || die
 	fi
 
+	if ! use commercial; then
+		rm -vfr lib/missioncontrol jre/lib/jfr* || die
+	fi
+
 	if use headless-awt ; then
 		rm -vf {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
 		   {,jre/}bin/{javaws,policytool} \
@@ -232,6 +236,9 @@ src_install() {
 	# Even though plugins linked against multiple ffmpeg versions are
 	# provided, they generally lag behind what Gentoo has available.
 	rm -vf jre/lib/*/libavplugin* || die
+
+	# We package this as dev-util/visualvm.
+	rm -vfr lib/visualvm || die
 
 	dodoc COPYRIGHT
 	dodir "${dest}"
@@ -325,7 +332,7 @@ src_install() {
 	if use x64-macos ; then
 		# Fix miscellaneous install_name issues.
 		pushd "${ddest}"/jre/lib > /dev/null || die
-		local lib needed nlib npath
+		local lib
 		for lib in decora_sse glass prism_{common,es2,sw} ; do
 			lib=lib${lib}.dylib
 			einfo "Fixing self-reference of ${lib}"
@@ -334,18 +341,6 @@ src_install() {
 				"${lib}"
 		done
 		popd > /dev/null
-
-		# This is still jdk1{5,6}, even on Java 8, so don't change it
-		# until you know different.
-		for nlib in jdk1{5,6} ; do
-			install_name_tool -change \
-				/usr/lib/libgcc_s_ppc64.1.dylib \
-				/usr/lib/libSystem.B.dylib \
-				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
-			install_name_tool -id \
-				"${EPREFIX}${dest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib \
-				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
-		done
 	fi
 
 	java-vm_install-env "${FILESDIR}"/${PN}.env.sh
