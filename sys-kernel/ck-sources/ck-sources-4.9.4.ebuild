@@ -75,7 +75,7 @@ UNIPATCH_STRICTORDER="yes"
 
 #-- Starting with 4.8, CK patches include BFQ, so exclude genpatches experimental BFQ patches -
 
-K_EXP_GENPATCHES_LIST="5010*_*.patch*"
+K_EXP_GENPATCHES_LIST="5010_*.patch*"
 
 src_prepare() {
 
