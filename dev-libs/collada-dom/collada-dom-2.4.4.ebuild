@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -39,3 +39,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
