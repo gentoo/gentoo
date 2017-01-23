@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,10 +25,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 ruby_add_rdepend "
-	dev-ruby/builder
+	dev-ruby/builder:*
 	>=dev-ruby/loquacious-1.9.1
 	>=dev-ruby/little-plugger-1.1.3
-	>=dev-ruby/rake-10"
+	=dev-ruby/rake-12*"
 
 all_ruby_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.8.1-builder.patch
