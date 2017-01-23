@@ -1,32 +1,34 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic git-2 multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="http://mupdf.com/"
-EGIT_REPO_URI="git://git.ghostscript.com/mupdf.git"
-#EGIT_HAS_SUBMODULES=1
+SRC_URI="http://mupdf.com/downloads/${P}-source.tar.gz"
 
 LICENSE="AGPL-3"
-MY_SOVER=1.7
-SLOT="0/${MY_SOVER}"
-KEYWORDS=""
-IUSE="X vanilla curl libressl openssl static static-libs"
+SLOT="0/${PV}"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="X +curl javascript libressl opengl +openssl static static-libs vanilla"
 
 LIB_DEPEND="
 	!libressl? ( dev-libs/openssl:0[static-libs?] )
 	libressl? ( dev-libs/libressl[static-libs?] )
+	javascript? ( >=dev-lang/mujs-0_p20160504 )
 	media-libs/freetype:2[static-libs?]
+	media-libs/harfbuzz[static-libs?]
 	media-libs/jbig2dec[static-libs?]
+	media-libs/libpng:0[static-libs?]
 	media-libs/openjpeg:2[static-libs?]
 	net-misc/curl[static-libs?]
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
-		x11-libs/libXext[static-libs?] )"
+		x11-libs/libXext[static-libs?] )
+	opengl? ( >=media-libs/glfw-3 )"
 RDEPEND="${LIB_DEPEND}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -37,32 +39,40 @@ DEPEND="${RDEPEND}
 		x11-libs/libXdmcp[static-libs]
 		x11-libs/libxcb[static-libs] )"
 
+REQUIRED_USE="opengl? ( X !static !static-libs )"
+
+S=${WORKDIR}/${P}-source
+
+PATCHES=(
+		"${FILESDIR}"/${PN}-1.9a-CFLAGS.patch \
+		"${FILESDIR}"/${PN}-1.9a-debug-build.patch \
+		"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
+		"${FILESDIR}"/${PN}-1.10a-Makerules-openssl-curl.patch \
+		"${FILESDIR}"/${PN}-1.8-system-glfw.patch
+)
+
 src_prepare() {
+	default
 	use hppa && append-cflags -ffunction-sections
 
 	rm -rf thirdparty || die
 
-	epatch \
-		"${FILESDIR}"/${PN}-1.3-CFLAGS.patch \
-		"${FILESDIR}"/${PN}-1.5-old-debian-files.patch \
-		"${FILESDIR}"/${PN}-1.3-pkg-config.patch \
-		"${FILESDIR}"/${PN}-1.5-Makerules-openssl-curl.patch
-
 	if has_version ">=media-libs/openjpeg-2.1:2" ; then
-		epatch \
-			"${FILESDIR}"/${PN}-1.5-openjpeg-2.1.patch
+		# Remove a switch, which prevents using shared libraries for openjpeg2.
+		# See http://www.linuxfromscratch.org/blfs/view/cvs/pst/mupdf.html
+		sed '/OPJ_STATIC$/d' -i source/fitz/load-jpx.c
 	fi
+
+	use javascript || \
+		sed -e '/* #define FZ_ENABLE_JS/ a\#define FZ_ENABLE_JS 0' \
+			-i include/mupdf/fitz/config.h
 
 	sed -e "/^libdir=/s:/lib:/$(get_libdir):" \
 		-e "/^prefix=/s:=.*:=${EROOT}/usr:" \
 		-i platform/debian/${PN}.pc || die
 
-	use vanilla || epatch \
+	use vanilla || eapply \
 		"${FILESDIR}"/${PN}-1.3-zoom-2.patch
-
-	#http://bugs.ghostscript.com/show_bug.cgi?id=693467
-	sed -e '/^\(Actions\|MimeType\)=/s:\(.*\):\1;:' \
-		-i platform/debian/${PN}.desktop || die
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
@@ -73,9 +83,13 @@ src_prepare() {
 		-e "1iprefix = ${ED}usr" \
 		-e "1ilibdir = ${ED}usr/$(get_libdir)" \
 		-e "1idocdir = ${ED}usr/share/doc/${PF}" \
-	    -e "1iHAVE_X11 = $(usex X)" \
+		-e "1iHAVE_X11 = $(usex X)" \
 		-e "1iWANT_OPENSSL = $(usex openssl)" \
 		-e "1iWANT_CURL = $(usex curl)" \
+		-e "1iHAVE_MUJS = $(usex javascript)" \
+		-e "1iMUJS_LIBS = $(usex javascript -lmujs '')" \
+		-e "1iMUJS_CFLAGS =" \
+		-e "1iHAVE_GLFW = $(usex opengl yes no)" \
 		-i Makerules || die
 
 	if use static-libs || use static ; then
@@ -87,11 +101,11 @@ src_prepare() {
 			-i "${S}"-static/Makerules || die
 	fi
 
-	my_soname=libmupdf.so.${MY_SOVER}
-	my_soname_js_none=libmupdf-js-none.so.${MY_SOVER}
+	my_soname=libmupdf.so.${PV}
+	my_soname_js_none=libmupdf-js-none.so.${PV}
 	sed -e "\$a\$(MUPDF_LIB): \$(MUPDF_JS_NONE_LIB)" \
 		-e "\$a\\\t\$(QUIET_LINK) \$(CC) \$(LDFLAGS) --shared -Wl,-soname -Wl,${my_soname} -Wl,--no-undefined -o \$@ \$^ \$(MUPDF_JS_NONE_LIB) \$(LIBS)" \
-		-e "/^MUPDF_LIB :=/s:=.*:= \$(OUT)/${my_soname}:" \
+		-e "/^MUPDF_LIB =/s:=.*:= \$(OUT)/${my_soname}:" \
 		-e "\$a\$(MUPDF_JS_NONE_LIB):" \
 		-e "\$a\\\t\$(QUIET_LINK) \$(CC) \$(LDFLAGS) --shared -Wl,-soname -Wl,${my_soname_js_none} -Wl,--no-undefined -o \$@ \$^ \$(LIBS)" \
 		-e "/install/s: COPYING : :" \
