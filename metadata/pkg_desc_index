@@ -2350,7 +2350,7 @@ app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
-app-text/mupdf 1.5-r1 1.8 1.9a 9999: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.5-r1 1.8 1.9a 1.10a: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -17350,7 +17350,7 @@ sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.9.0 2.10.0 2.10.0-r1 2.10.1: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
-sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
+sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/zookeeper-bin 3.4.9: A high-performance coordination service for distributed applications.
