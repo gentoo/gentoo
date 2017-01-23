@@ -24,10 +24,10 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-as-needed.patch
 	"${FILESDIR}"/${P}-man.patch
-	)
+)
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	# removing -s flag as portage does the stripping part and add support
 	# for custom LDFLAGS. Plus correct for --as-needed
 	sed \

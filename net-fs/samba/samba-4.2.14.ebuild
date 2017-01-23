@@ -120,7 +120,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	# install the patches from tarball(s)
 	EPATCH_SUFFIX="patch" \

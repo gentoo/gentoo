@@ -27,7 +27,7 @@ ALSA_CARDS="aoa aoa-fabric-layout aoa-onyx aoa-soundbus aoa-soundbus-i2s aoa-tas
 ABI="ppc"
 DEFAULT_ABI="ppc"
 MULTILIB_ABIS="ppc"
-CHOST_ppc=${CHOST}
+CHOST_ppc="${CHOST}"
 LIBDIR_ppc="lib"
 
 # Michał Górny <mgorny@gentoo.org> (27 Jun 2014)

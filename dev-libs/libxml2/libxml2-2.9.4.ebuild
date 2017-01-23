@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xmlsoft.org/"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="arm64 m68k s390 sh"
+KEYWORDS="arm64 ia64 m68k s390 sh sparc"
 IUSE="debug examples icu ipv6 lzma python readline static-libs test"
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"

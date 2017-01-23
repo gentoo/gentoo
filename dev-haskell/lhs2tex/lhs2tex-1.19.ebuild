@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE=""
 # dev-texlive/texlive-mathextra contains 'stmaryrd' font used
 # for guide generation
 RDEPEND=">=dev-tex/polytable-0.8.2
-	dev-texlive/texlive-mathextra"
+	|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-mathextra )"
 
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.10

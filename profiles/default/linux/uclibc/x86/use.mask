@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
@@ -7,16 +7,6 @@
 -abi_x86_32
 
 # unmask all SIMD assembler flags
--mmx
--mmxext
--sse
--sse2
--sse3
--sse4
--sse4a
--ssse3
--3dnow
--3dnowext
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes

@@ -26,10 +26,6 @@ sys-devel/gcc gcj graphite regression-test
 >=dev-libs/DirectFB-1.7.1 timidity swfdec
 
 # Markus Meier <maekke@gentoo.org> (26 Dec 2013)
-# Unkeyworded deps, bug #493780
-=dev-ruby/rack-1.4.5 test
-
-# Markus Meier <maekke@gentoo.org> (26 Dec 2013)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
 
@@ -85,17 +81,13 @@ media-libs/phonon zeitgeist
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Markus Meier <maekke@gentoo.org> (11 May 2013)
-# unkeyworded deps for x11-wm/enlightenment
-x11-wm/enlightenment emotion
-
 # Markus Meier <maekke@gentoo.org> (10 May 2013)
 # unkeyworded deps for dev-python/ipython
 dev-python/ipython mongodb
 
 # Markus Meier <maekke@gentoo.org> (09 May 2013)
 # unkeyworded deps for x11-misc/lightdm
-x11-misc/lightdm razor kde
+x11-misc/lightdm kde
 
 # Agostino Sarubbo <ago@gentoo.org> (05 May 2013)
 # dev-util/google-perftools is not keyworded for arm
@@ -155,25 +147,16 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/krdc rdesktop
-kde-apps/kopete jingle msn
+kde-apps/kopete jingle
 kde-plasma/kdeplasma-addons fcitx oauth qwt scim
 kde-apps/okular ebook chm
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
-# media-video/coherence not keyworded
-=media-video/totem-2* upnp-av
-
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
-
-# Markus Meier <maekke@gentoo.org> (17 Oct 2012)
-# spidermonkey is broken on arm see bug #420471
-=net-libs/libproxy-0.4.10 spidermonkey
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
@@ -182,10 +165,6 @@ net-analyzer/wireshark doc-pdf
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313
 media-libs/phonon vlc
-
-# Chí-Thanh Christopher Nguyen <chithanh@gentoo.org> (02 Jun 2012)
-# Mask udis86 flag for llvm, which is of limited use outside x86/amd64.
-sys-devel/llvm udis86
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
@@ -200,7 +179,6 @@ app-admin/syslog-ng json
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
 net-libs/webkit-gtk -jit
-www-client/epiphany -jit
 
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
@@ -211,30 +189,17 @@ net-misc/tinc vde
 # mask conntrack USE flag for dnsmasq as dep is not keyworded
 net-dns/dnsmasq conntrack
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (03 Nov 2011)
-# Missing keywords in gst-plugins-{faac,lame,speex,twolame}, bug #389433
-gnome-extra/gnome-media aac mp3 speex twolame
-
 # Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
 # libpcre jit is not supported on alpha
 dev-libs/libpcre jit
 
 # Markus Meier <maekke@gentoo.org> (05 Sep 2011)
 # unkeyworded deps for bug 379657 and bug 379651
-gnome-base/gnome-control-center socialweb
 app-admin/packagekit-base entropy
 
 # Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
 # Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
 dev-libs/libmemcached sasl
-
-# Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
-# Missing keywords on dependencies
-app-cdr/brasero vcd
-
-# Pacho Ramos <pacho@gentoo.org> (02 Apr 2011)
-# quvi support is needed to play youtube files now
-media-video/totem flash youtube
 
 # Markus Meier <maekke@gentoo.org> (13 Mar 2011)
 # needs stable kde stuff
@@ -247,19 +212,6 @@ app-text/asciidoc test
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
 # kde-frameworks/kdelibs is not stable for arm
 net-libs/libproxy kde
-
-# Justin Lecher <jlec@gentoo.org> (14 Jen 2011)
-# x11-libs/fltk is not keyworded for arm
-app-misc/nut X
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox -ipc
-
-# Pacho Ramos <pacho@gentoo.org> (13 Jun 2010)
-# Needs app-mobilephone/obex-data-server keyworded, bug 305913
-gnome-base/gvfs bluetooth
 
 # Jeremy Olexa <darkside@gentoo.org> (04 Apr 2010)
 # mask net-misc/mediatomb[lastfm] as lastfmlib isn't keyworded
@@ -276,9 +228,6 @@ media-gfx/imagemagick autotrace
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
 app-admin/gkrellm ntlm
-
-# Masking this so repoman shuts up about paludis
-sys-apps/paludis ruby-bindings
 
 # missing keyword for sys-cluster/openmpi sys-cluster/mpich2
 dev-libs/boost mpi

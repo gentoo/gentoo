@@ -8,6 +8,6 @@
     <email>ultrabug@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">ryanuber/columnize</remote-id>
+    <remote-id type="github">hashicorp/consul</remote-id>
   </upstream>
 </pkgmetadata>

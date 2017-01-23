@@ -77,4 +77,3 @@ dev-libs/libpcre unicode
 # implementation that cannot, thus, be turned off.
 dev-ruby/bitescript ruby_targets_jruby
 dev-ruby/duby ruby_targets_jruby
-dev-ruby/jruby-openssl ruby_targets_jruby

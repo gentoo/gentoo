@@ -19,3 +19,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+DIST_TEST=do
+# otherwise random fails occur

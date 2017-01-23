@@ -49,7 +49,7 @@ src_prepare() {
 	export CXXFLAGS="${CXXFLAGS}"
 	export LDFLAGS="${LDFLAGS}"
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	tc-export CXX
 	rm -rf scons || die
 

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
@@ -83,6 +83,11 @@ RDEPEND="
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
+	"${FILESDIR}"/${PN}-99999999-androiddump.patch
+	"${FILESDIR}"/${PN}-99999999-sse4_2.patch
+)
 
 pkg_setup() {
 	enewgroup wireshark
@@ -93,12 +98,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
-		"${FILESDIR}"/${PN}-99999999-sse4_2.patch \
-		"${FILESDIR}"/${PN}-99999999-androiddump.patch
-
-	epatch_user
+	default
 
 	eautoreconf
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,6 @@ kde-frameworks/kcoreaddons fam
 # apparently... #558100
 # https://archives.gentoo.org/gentoo-dev/message/38503d86a1c41bccfa607745467b1be7
 net-dns/bind seccomp
-
-# Patrick Lauer <patrick@gentoo.org> (17 Mar 2014)
-# Fallout from ruby1.8 masking #505226
-=app-mobilephone/obexftp-0.23-r1 ruby
 
 # Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
 # media-libs/libomxil-bellagio keyworded on amd64/x86
@@ -78,12 +74,6 @@ app-arch/libarchive -e2fsprogs
 # Older versions also had an OSS compatibility wrapper on that USE so
 # they are excluded.
 >=media-sound/pulseaudio-0.9.16_rc5 oss
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (9 Mar 2011)
-#
-# Mask usb USE flag for newest PCSC-Lite, since on Linux we want to
-# use libudev instead.
->=sys-apps/pcsc-lite-1.7.0 usb
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
 #

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -124,15 +124,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_setup() {
-	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 "qemu,kvm"
-
-	# Some people used the masked ebuild which was not adding the qemu
-	# user to the kvm group originally. This results in VMs failing to
-	# start for some users. bug #430808
-	egetent group kvm | grep -q qemu
-	if [[ $? -ne 0 ]]; then
-		gpasswd -a qemu kvm
+	if use qemu; then
+		enewgroup qemu 77
+		enewuser qemu 77 -1 -1 "qemu,kvm"
 	fi
 
 	# Check kernel configuration:

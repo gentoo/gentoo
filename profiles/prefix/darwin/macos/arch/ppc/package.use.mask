@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,8 @@
 
 # Elias Pipping <pipping@gentoo.org> (01 Sep 2007)
 # imlib2 does not compile with USE=mmx
-media-libs/imlib2 mmx
-
-# Elias Pipping <pipping@gentoo.org> (01 Sep 2007)
-# libpng does not compile with USE=mmx
-media-libs/libpng mmx
+media-libs/imlib2 cpu_flags_x86_mmx
 
 # Elias Pipping <pipping@gentoo.org> (01 Sep 2007)
 # mpg123 does not compile with USE=mmx
-media-sound/mpg123 mmx
+media-sound/mpg123 cpu_flags_x86_mmx

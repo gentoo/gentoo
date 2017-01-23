@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ sys-devel/clang llvm_targets_BPF
 sys-devel/llvm llvm_targets_BPF
 
 # Michael Palimaka <kensington@gentoo.org> (31 Aug 2016)
-dev-python/kdevelop-python:5 python_targets_python3_5
+dev-util/kdevelop-python:5 python_targets_python3_5
 
 # Justin Lecher <jlec@gentoo.org> (08 Dec 2015)
 # Only py3 and single target supported
@@ -24,7 +24,6 @@ dev-util/devhelp python_single_target_python3_4
 # bugs #555930 and #472932
 gnome-extra/gnome-builder python_single_target_python3_4
 media-libs/lensfun python_single_target_python3_4
-media-sound/gnome-music python_single_target_python3_4
 media-video/pitivi python_single_target_python3_4
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (27 Jul 2012)
@@ -36,11 +35,6 @@ x11-base/xorg-server xorg
 # developers maintaining that particular support and is, thus, vastly
 # untested.
 app-admin/sudo -ldap
-
-# Doug Goldstein <cardoe@gentoo.org> (30 Aug 2010)
-# bug #332077 - Disable xcb backend by default for cairo-1.10. Its not
-# really prime time ready prior to cairo-1.10
-<x11-libs/cairo-1.10 -xcb
 
 # Zac Medico <zmedico@gentoo.org> (04 Dec 2009)
 # Bug #295615 - Disable cxx by default, in order to avoid a die

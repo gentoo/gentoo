@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="Binary I/O stream class library"
 HOMEPAGE="http://libbinio.sourceforge.net/"
@@ -14,11 +13,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="static-libs"
 
-DOCS=( AUTHORS NEWS README )
-
-DEPEND="
-	sys-apps/texinfo
-"
+RDEPEND=""
+DEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cstdio.patch
@@ -31,5 +27,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }

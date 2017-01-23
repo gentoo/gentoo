@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,8 +11,8 @@ PYTHON_REQ_USE="threads(+),xml"
 inherit eutils python-single-r1 kde4-base waf-utils
 
 DESCRIPTION="Mindmapping-like tool for document generation"
-HOMEPAGE="http://freehackers.org/~tnagy/semantik.html"
-SRC_URI="http://ftp.waf.io/pub/release/${P}.tar.bz2"
+HOMEPAGE="https://waf.io/semantik.html https://github.com/ita1024/semantik"
+SRC_URI="https://waf.io/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="4"

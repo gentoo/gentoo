@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-inherit ruby-fakegem
+inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
 HOMEPAGE="https://wiki.github.com/ffi/ffi"
@@ -46,7 +46,7 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	emake -Cext/ffi_c V=1
-	cp ext/ffi_c/ffi_c.so lib/ || die
+	cp ext/ffi_c/ffi_c$(get_modname) lib/ || die
 
 	${RUBY} -S rake -f gen/Rakefile || die "types.conf generation failed"
 }

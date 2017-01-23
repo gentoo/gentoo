@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic
+EAPI=6
+
+inherit flag-o-matic
 
 DESCRIPTION="Console based chess interface"
 HOMEPAGE="https://www.gnu.org/software/chess/chess.html"

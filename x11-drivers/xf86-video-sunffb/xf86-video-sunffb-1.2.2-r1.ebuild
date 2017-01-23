@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="SUNFFB video driver"
 
-KEYWORDS="-* ~sparc"
+KEYWORDS="-* sparc"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.0.99"

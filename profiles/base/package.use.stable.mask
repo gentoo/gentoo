@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
+# sys-fs/zfs isn't going to be marked stable anytime soon
+app-emulation/libvirt zfs
+
 # Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
 # www-client/weboob is horribly outdated and not stable
 app-office/kmymoney weboob
@@ -42,9 +46,6 @@ www-servers/uwsgi go pypy
 # Johannes Huber <johu@gentoo.org> (12 Dec 2016)
 # No stable version available (kde-frameworks/prison).
 kde-plasma/plasma-workspace prison
-<kde-apps/akonadi-contacts-16.08.49:5 prison
-<kde-apps/kaddressbook-16.08.49:5 prison
-<kde-apps/kdepim-apps-libs-16.08.49:5 prison
 
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
@@ -61,10 +62,6 @@ dev-db/mariadb-galera sst-xtrabackup
 # Needs gcc-5 which is currently unstable
 dev-lang/go gccgo
 
-# Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
-# Needs unsable media-libs/opencv
-media-gfx/nomacs qt5
-
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
@@ -79,11 +76,6 @@ app-emulation/ganeti monitoring
 # Unmask python3.5 for python-exec
 dev-lang/python-exec -python_targets_python3_5
 
-# Andreas Huettel <dilfridge@gentoo.org> (26 Sep 2015)
-# Not stable enough for stable (Debian and SuSE disable it completely)
-=app-office/libreoffice-5.0* gtk3
-=app-office/libreoffice-5.1* gtk3
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
@@ -97,11 +89,6 @@ app-emulation/vice ffmpeg
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
-
-# Matthias Maier <tamiko@gentoo.org> (13 Mar 2015)
-# Masking glusterfs for the time being, see entry for app-emulation/qemu of
-# 12 Sep 2013: Waiting on glusterfs maintainers in bug #484016
-app-emulation/libvirt glusterfs
 
 # Pacho Ramos <pacho@gentoo.org>
 # sci-visualization/paraview is not ready for stabilization yet
@@ -144,10 +131,6 @@ app-crypt/tpm-tools pkcs11
 # Not yet stabilized dependencies blocking sec bug 514886
 app-office/libreoffice firebird
 
-# Agostino Sarubbo <ago@gentoo.org> (31 Aug 2013)
-# Clang is not stable
-app-portage/eix clang
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.
 sys-cluster/pacemaker cman
@@ -175,9 +158,3 @@ media-gfx/imagemagick opencl
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
 # No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
 >=kde-apps/kalzium-4.10.0 editor
-
-# Chris Reffett <creffett@gentoo.org> (23 Nov 2012)
-# CMake's PHP module can't find our install location, so
-# libkolab(xml) fails with the php flag enabled, bug #430858.
-net-libs/libkolab php
-net-libs/libkolabxml php

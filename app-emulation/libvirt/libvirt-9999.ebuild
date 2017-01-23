@@ -1,12 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils user autotools-utils linux-info systemd readme.gentoo-r1
-
-BACKPORTS=""
+inherit autotools eutils user linux-info systemd readme.gentoo-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -21,9 +19,6 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	SRC_URI+=" ${BACKPORTS:+
-		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
-		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
 	KEYWORDS="~amd64 ~x86"
 	SLOT="0/${PV}"
 fi
@@ -32,10 +27,10 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps firewalld fuse glusterfs iscsi +libvirtd lvm libssh
-	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
-	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
-	xen zeroconf zfs elibc_glibc
+	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
+	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
+	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	wireshark-plugins xen zeroconf zfs elibc_glibc
 "
 
 REQUIRED_USE="
@@ -43,6 +38,7 @@ REQUIRED_USE="
 	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
+	policykit? ( dbus )
 	qemu? ( libvirtd )
 	uml? ( libvirtd )
 	vepa? ( macvtap )
@@ -72,6 +68,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
+	dbus? ( sys-apps/dbus )
 	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
@@ -125,17 +122,20 @@ DEPEND="${RDEPEND}
 	dev-perl/XML-XPath
 	virtual/pkgconfig"
 
-pkg_setup() {
-	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 "qemu,kvm"
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
+	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
+	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
+)
 
-	# Some people used the masked ebuild which was not adding the qemu
-	# user to the kvm group originally. This results in VMs failing to
-	# start for some users. bug #430808
-	egetent group kvm | grep -q qemu
-	if [[ $? -ne 0 ]]; then
-		gpasswd -a qemu kvm
+pkg_setup() {
+	if use qemu; then
+		enewgroup qemu 77
+		enewuser qemu 77 -1 -1 "qemu,kvm"
 	fi
+
+	use policykit && enewgroup libvirt
 
 	# Check kernel configuration:
 	CONFIG_CHECK=""
@@ -214,6 +214,8 @@ pkg_setup() {
 src_prepare() {
 	touch "${S}/.mailmap"
 
+	default
+
 	if [[ ${PV} = *9999* ]]; then
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
@@ -225,18 +227,6 @@ src_prepare() {
 		) >.git-module-status
 	fi
 
-	epatch \
-		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
-		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
-		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
-		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
-
-	[[ -n ${BACKPORTS} ]] &&
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
-			EPATCH_SOURCE="${WORKDIR}/patches" epatch
-
-	epatch_user
-
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -245,8 +235,7 @@ src_prepare() {
 		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
-	AUTOTOOLS_AUTORECONF=true
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -255,6 +244,7 @@ src_configure() {
 		$(use_with apparmor apparmor-profiles)
 		$(use_with audit)
 		$(use_with caps capng)
+		$(use_with dbus)
 		$(use_with firewalld)
 		$(use_with fuse)
 		$(use_with glusterfs)
@@ -316,7 +306,7 @@ src_configure() {
 		myeconfargs+=( $(use_with virtualbox vbox) )
 	fi
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 
 	if [[ ${PV} = *9999* ]]; then
 		# Restore gnulib's config.sub and config.guess
@@ -340,9 +330,8 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_compile install \
-		DESTDIR="${D}" \
-		SYSTEMD_UNIT_DIR="$(systemd_get_unitdir)"
+	emake DESTDIR="${D}" \
+		SYSTEMD_UNIT_DIR="$(systemd_get_systemunitdir)" install
 
 	find "${D}" -name '*.la' -delete || die
 
@@ -369,7 +358,7 @@ src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
 }
@@ -389,7 +378,8 @@ pkg_postinst() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
+	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
+	FORCE_PRINT_ELOG=1 # remove for next version bump
 	readme.gentoo_print_elog
 }

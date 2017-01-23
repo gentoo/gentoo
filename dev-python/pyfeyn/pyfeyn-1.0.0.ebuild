@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,6 @@ IUSE="latex"
 
 DEPEND=""
 RDEPEND=">=dev-python/pyx-0.14[${PYTHON_USEDEP}]
-	latex? ( dev-texlive/texlive-science )"
+	latex? ( || ( dev-texlive/texlive-mathscience dev-texlive/texlive-science ) )"
 
 PATCHES=( "${FILESDIR}"/${P}.patch )

@@ -36,9 +36,9 @@ USE="${USE} dri"
 # on glibc system you cannot turn it off
 USE="${USE} iconv"
 
-# 2006/06/30 - Donnie Berkholz <dberkholz@gentoo.org>
+# 2017/01/17 - Matt Turner <mattst88@gentoo.org>
 # Sane defaults for input drivers
-INPUT_DEVICES="keyboard mouse evdev"
+INPUT_DEVICES="libinput"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Lowest common denominator defaults for video drivers,

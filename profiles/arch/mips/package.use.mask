@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -91,11 +91,7 @@ dev-libs/apr-util mysql
 # Stuart Longland <redhatter@gentoo.org> (07 Sep 2007)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test
 # more functions of mplayer.
-media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca joystick live mad openal pnm pvr radio rar rtc svga tga xanim xinerama zoran
-
-# Gilles Dartiguelongue <eva@gentoo.org> (19 Oct 2007)
-# gdm depends on zenity which is not keyworded
->=gnome-base/gdm-2.20 remote
+media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca joystick live mad openal pnm pvr radio rar rtc tga xinerama zoran
 
 # Steve Dibb <beandog@gentoo.org> (01 Nov 2007)
 # needs media-libs/ladspa-sdk keyworded
@@ -112,12 +108,12 @@ app-portage/layman bazaar
 app-portage/layman darcs
 
 # deps missing keywords
-games-strategy/freeciv auth ggz
+games-strategy/freeciv auth
 
 # Mart Raudsepp <leio@gentoo.org> (27 Sept 2010)
 # Extra functionality that has external unkeyworded dependencies
 # and is not tested yet
-net-fs/samba ads cluster debug
+net-fs/samba ads cluster
 
 # Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
 # dev-db/tokyocabinet not keyworded

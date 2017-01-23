@@ -1,10 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
-
-# The appropriate dependencies are already keyworded for 32bit, just not 64bit
-gnome-base/gvfs -bluetooth

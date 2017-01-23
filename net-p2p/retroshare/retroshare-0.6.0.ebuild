@@ -101,7 +101,7 @@ src_prepare() {
 		retroshare-gui/src/retroshare-gui.pro \
 		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	eapply_user
 }
 

@@ -48,7 +48,7 @@ PATCHES=(
 
 java_prepare() {
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 }
 
 EANT_TEST_GENTOO_CLASSPATH="

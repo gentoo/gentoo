@@ -1,6 +1,6 @@
 diff -Naurp ncpfs-2.2.6.orig/lib/Makefile.in ncpfs-2.2.6/lib/Makefile.in
---- ncpfs-2.2.6.orig/lib/Makefile.in	2014-08-12 23:23:27.149141996 -0400
-+++ ncpfs-2.2.6/lib/Makefile.in	2014-08-12 23:23:55.969141824 -0400
+--- a/lib/Makefile.in.orig	2014-08-12 23:23:27.149141996 -0400
++++ b/lib/Makefile.in	2014-08-12 23:23:55.969141824 -0400
 @@ -99,9 +99,10 @@ distclean: mrproper
  install_shared: $(SHARED_NCPLIB_BIN)
  	$(INSTALL) -d $(DESTDIR)$(libsodir)

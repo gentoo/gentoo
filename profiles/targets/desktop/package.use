@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,40 +19,21 @@ x11-drivers/nvidia-drivers gtk2
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui network printsupport widgets
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (17 Sep 2014)
-# Disable glamor for xf86-video-intel since it also needs uxa, which is
-# disabled by default
-x11-drivers/xf86-video-intel -glamor
-
 # Samuli Suominen <ssuominen@gentoo.org> (24 Jul 2014)
 # Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't
 # support BlueZ 5.x, disable USE="bluetooth" by default to avoid conflicting packages:
 net-libs/libpcap -bluetooth
-
-# Rick Farina <zerochaos@gentoo.org> (31 May 2014)
-# wireshark 1.10.x has a mostly non-functional qt4 interface so keep
-# gtk3 the default until 1.11.x or higher is stabilized
-<net-analyzer/wireshark-1.11.0 -qt4
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (08 May 2014)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (04 May 2014)
-# Enable cairo LTO by default only for desktop profiles, where cairo's
-# performance really matters, bug #509552
-x11-libs/cairo lto
-
 # Julian Ospald <hasufell@gentoo.org> (19 Apr 2014)
 # Overwrite default +sdl from desktop profile, since
 # this codepath is untested and should not be exposed
 # to regular desktop users wrt #506982
 media-video/mpv -sdl
-
-# Samuli Suominen <ssuominen@gentoo.org> (15 May 2012)
-# Replaced by USE="udisks" in make.defaults for -r1 and higher
-<gnome-base/gvfs-1.14 gdu -udisks
 
 # Jeremy Olexa <darkside@gentoo.org> (07 Oct 2011)
 # Required by mesa, ultimately by xorg-server (every desktop) bug 385843
@@ -66,7 +47,6 @@ media-libs/libpng apng
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
-sys-apps/systemd gudev introspection
 sys-fs/eudev gudev introspection
 sys-fs/udev gudev introspection
 virtual/libgudev introspection

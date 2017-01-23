@@ -30,7 +30,7 @@ gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
-static-user systemtap tci test +threads usb usbredir +uuid vde +vhost-net \
+static-user systemtap tci test +threads usb usbredir vde +vhost-net \
 virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
@@ -107,7 +107,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		virtual/opengl
 		media-libs/libepoxy[static-libs(+)]
 		media-libs/mesa[static-libs(+)]
-		media-libs/mesa[egl,gles2,gbm]
+		media-libs/mesa[egl,gbm]
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -133,7 +133,6 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
-	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
@@ -425,7 +424,6 @@ qemu_src_configure() {
 		$(conf_softmmu ssh libssh2)
 		$(conf_softmmu usb libusb)
 		$(conf_softmmu usbredir usb-redir)
-		$(conf_softmmu uuid)
 		$(conf_softmmu vde)
 		$(conf_softmmu vhost-net)
 		$(conf_softmmu virgl virglrenderer)
@@ -562,13 +560,58 @@ qemu_python_install() {
 	python_doscript "${S}/scripts/qmp/qemu-ga-client"
 }
 
+# Generate the /etc/init.d/qemu-binfmt script which registers the user handlers.
+generate_initd() {
+	local out="${T}/qemu-binfmt"
+	local d="${T}/binfmt.d"
+
+	einfo "Generating qemu init.d script"
+
+	# Generate the debian fragments first.
+	mkdir -p "${d}"
+	"${S}"/scripts/qemu-binfmt-conf.sh \
+		--debian \
+		--exportdir "${d}" \
+		--qemu-path "${EPREFIX}/usr/bin" \
+		|| die
+	# Then turn the fragments into a shell script we can source.
+	sed -E -i \
+		-e 's:^([^ ]+) (.*)$:\1="\2":' \
+		"${d}"/* || die
+
+	# Generate the init.d script by assembling the fragments from above.
+	local f qcpu package interpreter magic mask
+	cat "${FILESDIR}"/qemu-binfmt.initd.head >"${out}" || die
+	for f in "${d}"/qemu-* ; do
+		source "${f}"
+
+		# Normalize the cpu logic like we do in the init.d for the native cpu.
+		qcpu=${package#qemu-}
+		case ${qcpu} in
+		arm*)   qcpu="arm";;
+		mips*)  qcpu="mips";;
+		ppc*)   qcpu="ppc";;
+		s390*)  qcpu="s390";;
+		sh*)    qcpu="sh";;
+		sparc*) qcpu="sparc";;
+		esac
+
+		cat <<EOF >>"${out}"
+	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
+		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+	fi
+EOF
+	done
+	cat "${FILESDIR}"/qemu-binfmt.initd.tail >>"${out}" || die
+}
+
 src_install() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build"
 		emake DESTDIR="${ED}" install
 
-		# Install binfmt handler init script for user targets
-		newinitd "${FILESDIR}/qemu-binfmt.initd-r1" qemu-binfmt
+		# Install binfmt handler init script for user targets.
+		doinitd "${T}/qemu-binfmt"
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then

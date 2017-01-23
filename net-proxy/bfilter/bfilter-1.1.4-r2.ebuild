@@ -36,7 +36,7 @@ PATCHES=(
 RESTRICT="test" # boost's test API has changed
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	# Some includes are missing and this breaks updates of ACE
 	sed -i \

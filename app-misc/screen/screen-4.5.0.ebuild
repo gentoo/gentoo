@@ -36,6 +36,8 @@ DEPEND="${CDEPEND}
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+	# PATH_MAX usage needs an include on Solaris
+	"${FILESDIR}"/${P}-solaris-PATH_MAX.patch
 )
 
 pkg_setup() {

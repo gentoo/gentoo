@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,18 +26,9 @@ net-analyzer/tcpdump drop-root
 # pm-utils is Linux-specific
 kde-plasma/powerdevil pm-utils
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (16 Jul 2012)
-# Allow using iconv in blender
-media-gfx/blender -iconv
-
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No dev-util/source-highlight or media-sound/lilypond here, yet (bug #356069, bug #344289)
 app-text/asciidoc test highlight
-
-app-misc/mc pam
-
-# Requires Linux-only packages
-app-accessibility/gok usb
 
 # iproute2 - linux only
 net-misc/openvpn iproute2
@@ -46,14 +37,11 @@ app-admin/sshguard -ipfilter
 media-video/ffmpeg ieee1394 iec61883
 net-libs/c-client pam
 net-proxy/squid -ipf-transparent -pf-transparent
-sys-apps/baselayout pam
 sys-apps/coreutils acl
 sys-apps/help2man nls
 
 # NetworkManager is Linux-only, Zephyr requires kerberos
 net-im/pidgin networkmanager zephyr
-
-media-video/totem bluetooth
 
 # Alexis Ballier <aballier@gentoo.org> (18 Jul 2008)
 # Requires a linux only library,  bug #226085
@@ -61,7 +49,7 @@ dev-lang/erlang sctp
 
 # Alexis Ballier <aballier@gentoo.org> (8 Aug 2008)
 # Linux only useflags for vlc
-media-video/vlc dc1394 ieee1394 fbosd
+media-video/vlc dc1394 ieee1394
 
 # Alexis Ballier <aballier@gentoo.org> (8 Aug 2008)
 # Depends on torque which is a linux only thing
@@ -82,24 +70,16 @@ app-text/texlive xindy
 # Alexis Ballier <aballier@gentoo.org> (28 Nov 2008)
 # Requires bluez-libs which is linux only
 net-libs/libpcap bluetooth
-gnome-base/gvfs bluetooth
 
 # Alexis Ballier <aballier@gentoo.org> (22 Jan 2009)
 # Requires gpm
 www-client/links livecd
-
-# Needs DirectFB which is linux only
-media-libs/xine-lib fusion
-
-# no sysfs on bsd
-media-libs/mesa sysfs
 
 # needs udev
 kde-frameworks/kdelibs udisks upower
 media-libs/mesa gbm dri3
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
-x11-drivers/xf86-video-intel glamor
 
 # connman is Linux only
 dev-qt/qtbearer connman

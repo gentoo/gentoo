@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,7 +46,7 @@ RDEPEND="
 	)
 	phonon? ( media-libs/phonon[qt5] )
 	positioning? ( $(add_qt_dep qtpositioning) )
-	shapefile? ( sci-libs/shapelib )
+	shapefile? ( sci-libs/shapelib:= )
 	webkit? ( $(add_qt_dep qtwebkit) )
 "
 DEPEND="${RDEPEND}

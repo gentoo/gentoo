@@ -65,6 +65,6 @@ src_install() {
 
 	if use doc ; then
 		docinto tutorial
-		dodoc docs/tutorial/html/*
+		dodoc -r docs/tutorial/html/
 	fi
 }

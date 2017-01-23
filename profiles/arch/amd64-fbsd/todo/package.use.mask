@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,6 @@ sys-apps/hwloc numa
 # dev-lang/mono
 net-dns/libidn mono
 media-libs/libcaca mono
-dev-java/antlr mono
 
 # dev-lang/mono
 # >=dev-dotnet/gtk-sharp-2
@@ -66,7 +65,6 @@ media-gfx/ufraw gimp
 # net-libs/libproxy
 net-libs/neon libproxy
 net-libs/glib-networking libproxy
-media-video/vlc libproxy
 
 # dev-libs/pakchois
 net-libs/neon pkcs11
@@ -100,9 +98,6 @@ gnome-base/gvfs ios
 
 # >=sys-fs/fuse-2.8.0
 gnome-base/gvfs fuse
-
-# >=gnome-base/libgdu-3.0.2
-gnome-base/gvfs gdu
 
 # >=x11-libs/libva-0.32
 media-video/ffmpeg vaapi
@@ -197,13 +192,6 @@ media-gfx/graphviz devil
 
 # sys-apps/util-linux (libuuid)
 net-misc/wget uuid
-
-# dev-util/valgrind
-dev-libs/eina valgrind
-
-# dev-util/lcov
-dev-libs/eina test
-dev-libs/eet test
 
 # net-misc/freerdp (doesnt build)
 media-video/vlc rdp

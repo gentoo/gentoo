@@ -53,7 +53,7 @@ src_configure() {
 		"${myconf[@]}" || die
 
 		# Run eqmake4 to respect toolchain, build flags, and prevent stripping
-		eqmake4
+		eqmake4 -recursive
 	}
 	python_foreach_impl run_in_build_dir configuration
 }

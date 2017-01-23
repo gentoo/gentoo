@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ sys-devel/gdb server
 
 # Fabian Groffen <grobian@gentoo.org> (16 Feb 2011)
 # De-mask of OSX-specific USE-flags that are useful for VLC
-media-video/vlc -audioqueue -ios-vout -macosx macosx-audio -macosx-dialog-provider -macosx-eyetv -macosx-quartztext -macosx-vout
+media-video/vlc -audioqueue -macosx-dialog-provider -macosx-eyetv -macosx-quartztext
 
 # Fabian Groffen <grobian@gentoo.org> (08 Jan 2011)
 # Darwin has libuuid from util-linux
@@ -37,11 +37,7 @@ x11-libs/libSM -uuid
 
 # Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
 # linux only
-media-video/mplayer dvb lirc svga jack joystick matrox
-
-# Fabian Groffen <grobian@gentoo.org> (03 Apr 2009)
-# ld: unknown option: -R/Library/Gentoo/usr/lib
-~sys-devel/gcc-4.3.3 gcj
+media-video/mplayer dvb lirc jack joystick
 
 # Elias Pipping <pipping@gentoo.org> (16 Nov 2007)
 # make fails

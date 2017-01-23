@@ -60,7 +60,7 @@ src_prepare() {
 	# http://hasso.linux.ee/doku.php/english:network:quagga
 	use bgpclassless && eapply -p0 "${DISTDIR}/${CLASSLESS_BGP_PATCH}"
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	eapply_user
 	eautoreconf
 }

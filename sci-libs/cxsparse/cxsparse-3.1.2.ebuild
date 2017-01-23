@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils
+inherit multilib-minimal
 
 DESCRIPTION="Extended sparse matrix package"
 HOMEPAGE="http://www.cise.ufl.edu/research/sparse/CXSparse/"
@@ -15,6 +15,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="static-libs"
 
-RDEPEND="sci-libs/suitesparseconfig"
+RDEPEND="sci-libs/suitesparseconfig[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" \
+		econf \
+		$(use_enable static-libs static)
+}
+
+multilib_src_install_all() {
+	if ! use static-libs; then
+		find "${ED}" -name "*.la" -delete || die
+	fi
+}

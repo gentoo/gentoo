@@ -102,10 +102,6 @@ media-libs/libbluray -bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
 
-# Andrey Grozin <grozin@gentoo.org> (23 Feb 2015)
-# Does not compile with this flag
-=dev-lisp/ecls-15.2.21 cpu_flags_x86_sse
-
 # Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
 # Unmask skype support for unstable keywords
 net-im/bitlbee -skype
@@ -125,7 +121,6 @@ media-libs/mesa -openmax
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
 # https://sourceforge.net/p/mikmod/bugs/16/#17ea
-media-libs/libmikmod sse2
 media-libs/libmikmod cpu_flags_x86_sse2
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
@@ -162,10 +157,6 @@ dev-python/pypy cpu_flags_x86_sse2
 dev-python/pypy-bin cpu_flags_x86_sse2
 dev-python/pypy3 cpu_flags_x86_sse2
 dev-python/pypy3-bin cpu_flags_x86_sse2
-
-# Jeroen Roovers <jer@gentoo.org> (11 Jun 2013)
-# The debug version of www-plugins/adobe-flash is 32-bit only
-www-plugins/adobe-flash debug
 
 # Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
 # cuda only works on x86 and amd64
@@ -210,8 +201,8 @@ sys-boot/grub -libzfs
 dev-libs/gobject-introspection -doctool
 
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
-# JIT compilation in libzpaq generates code for x86/amd64.
-app-arch/libzpaq -jit
+# JIT compilation in zpaq generates code for x86/amd64.
+app-arch/zpaq -jit
 
 # Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
@@ -228,7 +219,6 @@ gnustep-base/gnustep-make -libobjc2
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
 net-libs/webkit-gtk -jit
-www-client/epiphany -jit
 www-client/midori -jit
 
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
@@ -247,10 +237,6 @@ gnome-base/gvfs -bluray
 # Temporarily unmask in amd64/x86, bug 384647
 dev-libs/glib -systemtap
 
-# Kacper Kowalik <xarthisius@gentoo.org> (29 Jul 2011)
-# mask assembler as it currently doesn't work
-dev-lang/path64 assembler
-
 # Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
@@ -267,19 +253,9 @@ dev-lang/path64 assembler
 # doomsday doesn't work on amd64 so mask off things that pull it in.
 games-fps/doom-data doomsday
 
-# Markos Chandras <hwoarang@gentoo.org> (19 Jan 2011)
-# Masking md5sum on mail-mta/ssmtp since it is broken on
-# earlier versions
-mail-mta/ssmtp md5sum
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
 # sys-devel/llvm is keyworded on amd64
 media-libs/mesa -llvm
-
-# Nirbheek Chauhna <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox -ipc
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
 # x86 platforms works
@@ -300,7 +276,6 @@ app-backup/backup-manager s3
 # Jeremy Olexa <darkside@gentoo.org> (07 Feb 2009)
 # USE=mmx on imlib2 causes issues with other apps. See bug 218382 (comments
 # 11-12)
-media-libs/imlib2 mmx
 media-libs/imlib2 cpu_flags_x86_mmx
 
 # Jeremy Olexa <darkside@gentoo.org> (27 Dec 2008)
@@ -310,7 +285,7 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # Jeremy Olexa <darkside@gentoo.org> (24 Dec 2008)
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
-media-video/mplayer -cpudetection -custom-cpuopts -bindist
+media-video/mplayer -cpudetection
 
 # Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
 # masked in base, unmask for x86/amd64
@@ -323,37 +298,20 @@ app-text/enchant -zemberek
 
 # Oct 23th 2006; blubb@gentoo.org
 # the asm is 64bit save, but it doesn't compile anyway
-games-emulation/visualboyadvance mmx
 games-emulation/visualboyadvance cpu_flags_x86_mmx
 
 # Oct 23th 2006; blubb@gentoo.org
 # upstream forces sse2 for amd64; mmx flag does nothing
-app-crypt/johntheripper mmx
 app-crypt/johntheripper cpu_flags_x86_mmx
 
 # Oct 23th 2006; blubb@gentoo.org
 # x86 asm only:
-games-emulation/xmess mmx
-media-gfx/inkscape mmx
-media-libs/allegro mmx sse
-media-libs/libfame mmx
-media-libs/sdl-gfx mmx
-media-libs/smpeg mmx
-net-misc/asterisk mmx
-x11-terms/eterm mmx
-media-tv/xawtv mmx
-games-emulation/xmess cpu_flags_x86_mmx
-media-gfx/inkscape cpu_flags_x86_mmx
-media-libs/allegro cpu_flags_x86_mmx cpu_flags_x86_sse
 media-libs/libfame cpu_flags_x86_mmx
 media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
-net-misc/asterisk cpu_flags_x86_mmx
 x11-terms/eterm cpu_flags_x86_mmx
-media-tv/xawtv cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
-media-sound/mpg123 mmx 3dnow 3dnowext
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 
 # 8 May 2007: Alistair Bush <ali_bush@gentoo.org>
@@ -365,7 +323,6 @@ media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that
 # saves people from needlessly installing nasm
 # Refs bug #93279
-media-sound/lame mmx
 media-sound/lame cpu_flags_x86_mmx
 
 # Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)

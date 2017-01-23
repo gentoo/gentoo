@@ -28,10 +28,6 @@ dev-db/mariadb mroonga
 # and additional unstable dependencies
 gnustep-base/gnustep-make libobjc2
 
-# Mikle Kolyada <zlogene@gentoo.org> (14 Jun 2015)
-# app-emulation/lxc has no stable versions
-app-emulation/docker lxc
-
 # Yixun Lan <dlan@gentoo.org> (02 Apr 2015)
 # sys-fs/zfs is not stable.
 sys-cluster/ceph zfs
@@ -48,9 +44,7 @@ net-im/bitlbee skype
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
-dev-lang/python-exec -python_single_target_pypy
 dev-lang/python-exec -python_targets_pypy3
-dev-lang/python-exec -python_single_target_pypy3
 
 # Mike Gilbert <floppym@gentoo.org> (22 Mar 2014)
 # sys-fs/zfs is not stable.

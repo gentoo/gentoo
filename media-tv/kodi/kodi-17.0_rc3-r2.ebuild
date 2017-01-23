@@ -201,7 +201,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
-		-DNABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
+		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=OFF
 		-DENABLE_AVAHI=$(usex zeroconf)

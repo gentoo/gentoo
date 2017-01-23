@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
+# Use "php -a" instead. Masked for removal in 30 days.
+# Bug 606836.
+dev-php/PEAR-PHP_Shell
+
 # Johannes Huber <johu@gentoo.org> (19 Jan 2017)
 # Plasma 4 removal in 30 days. Please read the news item.
 # All packages exported to kde-sunset overlay.
@@ -272,11 +277,6 @@ dev-ruby/activesupport:4.1
 net-misc/termtter
 
 # David Seifert <soap@gentoo.org> (27 Dec 2016)
-# New release, masked to iron out bugs
->=dev-util/boost-build-1.63.0
->=dev-libs/boost-1.63.0
-
-# David Seifert <soap@gentoo.org> (27 Dec 2016)
 # Fails with more recent boost, dead upstream (bug #600548).
 dev-cpp/luabind
 games-rpg/valyriatear
@@ -297,11 +297,6 @@ app-admin/phpsyslogng
 # No reverse dependencies. Masked for removal in 30 days.
 net-analyzer/snips
 
-# Tim Harder <radhermit@gentoo.org> (12 Dec 2016)
-# Outdated and broken in the tree.
-# Masked for removal in 30 days.
-dev-util/aap
-
 # Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
 # Dead upstream, no maintainer and it hasn't been bumped
 # since 2013. Masking for removal in 30 days (wrt bug #489878)
@@ -315,10 +310,6 @@ sys-power/powerman
 # Markos Chandras <hwoarang@gentoo.org> (10 Dec 2016)
 # Reverse dependencies need testing, wrt bug #580760
 >=net-libs/rb_libtorrent-1.1.1
-
-# Tim Harder <radhermit@gentoo.org> (09 Dec 2016)
-# Masked for removal, use media-gfx/gmic[gimp] instead.
-media-plugins/gimp-gmic
 
 # Hans de Graaff <graaff@gentoo.org> (07 Dec 2016)
 # Mask ruby 2.0 for removal, bug 576034

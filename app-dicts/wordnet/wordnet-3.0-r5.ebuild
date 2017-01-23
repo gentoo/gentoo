@@ -44,7 +44,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	eapply_user
 
 	# Don't install all the extra docs (html, pdf, ps) without doc USE flag.

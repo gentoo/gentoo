@@ -32,7 +32,7 @@ src_prepare() {
 	# if you attempt to build gcj.
 	if use objc && ! use gcj ; then
 		epatch "${FILESDIR}"/3.4.3/libffi-without-libgcj.patch
-		#epatch ${FILESDIR}/3.4.3/libffi-nogcj-lib-path-fix.patch
+		#epatch "${FILESDIR}"/3.4.3/libffi-nogcj-lib-path-fix.patch
 	fi
 
 	# Fix cross-compiling

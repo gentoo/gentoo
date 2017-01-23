@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	config_rpath_update
 	sed -ie 's:with_iodbc/include":with_iodbc/include/iodbc":' configure.ac || die
-	epatch ${FILESDIR}/freetds-0.91-fix_field_aliases.patch
+	epatch "${FILESDIR}"/freetds-0.91-fix_field_aliases.patch
 	eautoreconf
 }
 

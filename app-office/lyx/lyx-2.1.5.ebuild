@@ -51,7 +51,7 @@ RDEPEND="${COMMONDEPEND}
 		app-text/ps2eps
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-pictures
-		dev-texlive/texlive-science
+		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
 		dev-texlive/texlive-genericextra
 		dev-texlive/texlive-fontsrecommended
 		|| (

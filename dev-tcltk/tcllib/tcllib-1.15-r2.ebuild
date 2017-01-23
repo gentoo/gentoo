@@ -33,7 +33,7 @@ PATCHES=(
 src_prepare() {
 	has_version ">=dev-lang/tcl-8.6" && \
 		PATCHES+=( "${FILESDIR}"/${P}-test.patch )
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 }
 
 src_test() {

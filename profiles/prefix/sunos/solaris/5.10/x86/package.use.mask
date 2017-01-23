@@ -1,9 +1,0 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-
-# *** This configuration is not supported in the following
-# subdirectories:
-#    target-libada gnattools target-libmudflap target-libssp
-sys-devel/gcc:4.3 mudflap

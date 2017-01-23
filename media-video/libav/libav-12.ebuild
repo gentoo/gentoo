@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,7 @@ SLOT="0/12"
 ~x64-solaris ~x86-solaris"
 IUSE="aac alsa amr bs2b +bzip2 cdio cpudetection custom-cflags debug doc +encode faac fdk
 	frei0r fontconfig +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k libressl mp3
-	+network openssl opus oss pic pulseaudio rtmp schroedinger sdl speex ssl
+	+network nvidia openssl opus oss pic pulseaudio rtmp schroedinger sdl speex ssl
 	static-libs test theora threads tools truetype twolame v4l vaapi vdpau vorbis vpx X
 	wavpack webp x264 x265 xvid +zlib"
 
@@ -79,6 +79,7 @@ RDEPEND="
 		x265? ( >=media-libs/x265-1.2:=[${MULTILIB_USEDEP}] )
 		xvid? ( >=media-libs/xvid-1.3.2-r1[${MULTILIB_USEDEP}] )
 	)
+	nvidia? ( media-video/nvidia-video-codec[${MULTILIB_USEDEP}] )
 	fdk? ( >=media-libs/fdk-aac-0.1.2[${MULTILIB_USEDEP}] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
@@ -139,7 +140,7 @@ REQUIRED_USE="
 	test? ( encode zlib )
 	fontconfig? ( truetype )
 "
-RESTRICT="faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist )"
+RESTRICT="faac? ( bindist ) fdk? ( bindist ) openssl? ( bindist ) nvidia? ( bindist )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
@@ -200,12 +201,18 @@ multilib_src_configure() {
 
 	use vaapi && myconf+=( --enable-vaapi )
 
+	NVIDIA_INCLUDES="-I/opt/nvidia-video-codec/include -I/opt/cuda/include"
+	NVIDIA_LIBS="-L/opt/cuda/lib64"
+	use nvidia && myconf+=( --enable-nonfree --enable-cuda --enable-libnpp
+						    --extra-cflags="$NVIDIA_INCLUDES" --extra-ldflags="$NVIDIA_LIBS" )
+
 	# Encoders
 	if use encode; then
 		use faac && myconf+=( --enable-nonfree )
 		use mp3 && myconf+=( --enable-libmp3lame )
 		use amr && myconf+=( --enable-libvo-amrwbenc )
 		use aac && myconf+=( --enable-libvo-aacenc )
+		use nvidia && myconf+=( --enable-nvenc )
 		uses="faac theora twolame vorbis wavpack webp x264 x265 xvid"
 		for i in ${uses}; do
 			use ${i} && myconf+=( --enable-lib${i} )

@@ -5,8 +5,8 @@ lots of fixes here:
 	- make static lib build optional
 	- link with CXX and CXXFLAGS (since this is C++ code)
 
---- Makefile.gnu
-+++ Makefile.gnu
+--- a/Makefile.gnu
++++ b/Makefile.gnu
 @@ -11,7 +11,24 @@
  # Converts cr/lf to just lf
  DOS2UNIX = dos2unix
@@ -53,8 +53,8 @@ lots of fixes here:
  	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(VERLIBNAME)
  	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)	
  #	ldconfig
---- Source/FreeImage/J2KHelper.cpp
-+++ Source/FreeImage/J2KHelper.cpp
+--- a/Source/FreeImage/J2KHelper.cpp
++++ b/Source/FreeImage/J2KHelper.cpp
 @@ -21,7 +21,7 @@
  
  #include "FreeImage.h"
@@ -64,8 +64,8 @@ lots of fixes here:
  
  /**
  Divide an integer by a power of 2 and round upwards
---- Source/FreeImage/PluginEXR.cpp
-+++ Source/FreeImage/PluginEXR.cpp
+--- a/Source/FreeImage/PluginEXR.cpp
++++ b/Source/FreeImage/PluginEXR.cpp
 @@ -22,16 +22,16 @@
  
  #include "FreeImage.h"
@@ -93,8 +93,8 @@ lots of fixes here:
  
  
  // ==========================================================
---- Source/FreeImage/PluginJ2K.cpp
-+++ Source/FreeImage/PluginJ2K.cpp
+--- a/Source/FreeImage/PluginJ2K.cpp
++++ b/Source/FreeImage/PluginJ2K.cpp
 @@ -21,7 +21,7 @@
  
  #include "FreeImage.h"
@@ -104,8 +104,8 @@ lots of fixes here:
  
  // ==========================================================
  // Plugin Interface
---- Source/FreeImage/PluginJP2.cpp
-+++ Source/FreeImage/PluginJP2.cpp
+--- a/Source/FreeImage/PluginJP2.cpp
++++ b/Source/FreeImage/PluginJP2.cpp
 @@ -21,7 +21,7 @@
  
  #include "FreeImage.h"
@@ -115,8 +115,8 @@ lots of fixes here:
  
  // ==========================================================
  // Plugin Interface
---- Source/FreeImage/PluginPNG.cpp
-+++ Source/FreeImage/PluginPNG.cpp
+--- a/Source/FreeImage/PluginPNG.cpp
++++ b/Source/FreeImage/PluginPNG.cpp
 @@ -37,8 +37,8 @@
  
  // ----------------------------------------------------------
@@ -128,8 +128,8 @@ lots of fixes here:
  
  // ----------------------------------------------------------
  
---- Source/transupp.c
-+++ Source/transupp.c
+--- a/Source/transupp.c
++++ b/Source/transupp.c
 @@ -15,8 +15,7 @@
  /* Although this file really shouldn't have access to the library internals,
   * it's helpful to let it call jround_up() and jcopy_block_row().
@@ -140,8 +140,8 @@ lots of fixes here:
  #include "jinclude.h"
  #include "jpeglib.h"
  #include "transupp.h"		/* My own external interface */
---- Source/FreeImage/ZLibInterface.cpp
-+++ Source/FreeImage/ZLibInterface.cpp
+--- a/Source/FreeImage/ZLibInterface.cpp
++++ b/Source/FreeImage/ZLibInterface.cpp
 @@ -19,10 +19,10 @@
  // Use at your own risk!
  // ==========================================================
@@ -155,8 +155,8 @@ lots of fixes here:
  
  /**
  Compresses a source buffer into a target buffer, using the ZLib library. 
---- Source/FreeImage/PluginG3.cpp
-+++ Source/FreeImage/PluginG3.cpp
+--- a/Source/FreeImage/PluginG3.cpp
++++ b/Source/FreeImage/PluginG3.cpp
 @@ -20,7 +20,7 @@
  // Use at your own risk!
  // ==========================================================
@@ -166,8 +166,8 @@ lots of fixes here:
  
  #include "FreeImage.h"
  #include "Utilities.h"
---- Source/FreeImage/PluginJPEG.cpp
-+++ Source/FreeImage/PluginJPEG.cpp
+--- a/Source/FreeImage/PluginJPEG.cpp
++++ b/Source/FreeImage/PluginJPEG.cpp
 @@ -35,11 +35,15 @@
  #undef FAR
  #include <setjmp.h>
@@ -187,8 +187,8 @@ lots of fixes here:
  #include "FreeImage.h"
  #include "Utilities.h"
  
---- Source/FreeImageToolkit/JPEGTransform.cpp
-+++ Source/FreeImageToolkit/JPEGTransform.cpp
+--- a/Source/FreeImageToolkit/JPEGTransform.cpp
++++ b/Source/FreeImageToolkit/JPEGTransform.cpp
 @@ -25,10 +25,11 @@
  #undef FAR
  #include <setjmp.h>
@@ -205,8 +205,8 @@ lots of fixes here:
  }
  
  #include "FreeImage.h"
---- Makefile.fip
-+++ Makefile.fip
+--- a/Makefile.fip
++++ b/Makefile.fip
 @@ -11,7 +11,24 @@
  # Converts cr/lf to just lf
  DOS2UNIX = dos2unix
@@ -257,8 +257,8 @@ lots of fixes here:
  
  clean:
  	rm -f core Dist/*.* u2dtmp* $(MODULES) $(STATICLIB) $(SHAREDLIB) $(LIBNAME)
---- Makefile.srcs
-+++ Makefile.srcs
+--- a/Makefile.srcs
++++ b/Makefile.srcs
 @@ -1,6 +1,14 @@
 +USE_EXR ?= yes
 +USE_JPEG ?= yes
@@ -400,8 +400,8 @@ lots of fixes here:
 +INCLUDE-$(USE_TIFF)   += -DUSE_TIFF   $(shell $(PKG_CONFIG) --cflags-only-I libtiff-4 IlmBase)
 +INCLUDE-$(USE_RAW)    += -DUSE_RAW    $(shell $(PKG_CONFIG) --cflags-only-I libraw)
 +INCLUDE = $(INCLUDE-yes)
---- fipMakefile.srcs
-+++ fipMakefile.srcs
+--- a/fipMakefile.srcs
++++ b/fipMakefile.srcs
 @@ -1,6 +1,14 @@
 +USE_EXR ?= yes
 +USE_JPEG ?= yes
@@ -529,8 +529,8 @@ lots of fixes here:
  INCLUDE = -I. \
  	-ISource \
  	-ISource/Metadata \
---- Source/FreeImage/PluginRAW.cpp
-+++ Source/FreeImage/PluginRAW.cpp
+--- a/Source/FreeImage/PluginRAW.cpp
++++ b/Source/FreeImage/PluginRAW.cpp
 @@ -19,7 +19,7 @@
  // Use at your own risk!
  // ==========================================================
@@ -540,8 +540,8 @@ lots of fixes here:
  
  #include "FreeImage.h"
  #include "Utilities.h"
---- Source/Metadata/XTIFF.cpp
-+++ Source/Metadata/XTIFF.cpp
+--- a/Source/Metadata/XTIFF.cpp
++++ b/Source/Metadata/XTIFF.cpp
 @@ -29,7 +29,7 @@
  #pragma warning (disable : 4786) // identifier was truncated to 'number' characters
  #endif
@@ -551,8 +551,8 @@ lots of fixes here:
  
  #include "FreeImage.h"
  #include "Utilities.h"
---- Source/FreeImage/PluginTIFF.cpp
-+++ Source/FreeImage/PluginTIFF.cpp
+--- a/Source/FreeImage/PluginTIFF.cpp
++++ b/Source/FreeImage/PluginTIFF.cpp
 @@ -37,9 +37,9 @@
  
  #include "FreeImage.h"
@@ -565,8 +565,8 @@ lots of fixes here:
  
  #include "FreeImageIO.h"
  #include "PSDParser.h"
---- Source/tiffiop.h
-+++ Source/tiffiop.h
+--- a/Source/tiffiop.h
++++ b/Source/tiffiop.h
 @@ -30,7 +30,9 @@
   * ``Library-private'' definitions.
   */
@@ -578,8 +578,8 @@ lots of fixes here:
  
  #ifdef HAVE_FCNTL_H
  # include <fcntl.h>
---- Source/FreeImage/Plugin.cpp
-+++ Source/FreeImage/Plugin.cpp
+--- a/Source/FreeImage/Plugin.cpp
++++ b/Source/FreeImage/Plugin.cpp
 @@ -223,23 +223,33 @@
  			*/
  			s_plugins->AddNode(InitBMP);

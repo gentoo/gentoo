@@ -33,7 +33,7 @@ PATCHES=( "${FILESDIR}"/${P}-XSS-vuln.patch )
 src_prepare() {
 	has_version ">=dev-lang/tcl-8.6" && \
 		PATCHES+=( "${FILESDIR}"/${P}-test.patch )
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	sed \
 		-e '/testsNeedTcl/s:8.5:8.6:g' \

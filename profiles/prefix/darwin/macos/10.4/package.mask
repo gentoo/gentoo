@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,3 @@ sys-process/lsof
 # These releases got a rewrite that is no longer compatible with
 # CoreAudio as available on Tiger and Leopard
 >=media-libs/mediastreamer-2.7.3
-
-# Elias Pipping <pipping@gentoo.org> (19 Dec 2007)
-# apple java6 on macosx is only released on leopard :(
-dev-java/apple-jdk-bin:1.6
-

@@ -24,7 +24,7 @@ S=${WORKDIR}
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/qmHandle-gentoo-svc.patch
+	epatch "${FILESDIR}"/qmHandle-gentoo-svc.patch
 }
 
 src_install() {

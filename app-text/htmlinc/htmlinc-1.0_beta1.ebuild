@@ -18,7 +18,7 @@ S=${WORKDIR}/htmlinc
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/htmlinc-gcc3-gentoo.patch
+	epatch "${FILESDIR}"/htmlinc-gcc3-gentoo.patch
 }
 
 src_compile() {

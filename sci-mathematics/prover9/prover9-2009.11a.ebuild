@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}/"
 
 src_prepare() {
 	MAKEOPTS+=" -j1"
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	sed \
 		-e "/^CC =/s:gcc:$(tc-getCC):g" \
 		-i */Makefile || die

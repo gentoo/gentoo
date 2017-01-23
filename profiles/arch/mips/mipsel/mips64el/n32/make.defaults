@@ -9,7 +9,7 @@ CHOST="mips64el-unknown-linux-gnu"
 DEFAULT_ABI="n32"
 ABI="${DEFAULT_ABI}"
 MULTILIB_ABIS="n32"
-CHOST_n32=${CHOST}
+CHOST_n32="${CHOST}"
 
 ABI_MIPS="n32"
 IUSE_IMPLICIT="abi_mips_n32"

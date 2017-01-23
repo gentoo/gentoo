@@ -28,6 +28,9 @@
 # }
 # @CODE
 
+if [[ -z ${_UDEV_ECLASS} ]]; then
+_UDEV_ECLASS=1
+
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
@@ -113,3 +116,5 @@ udev_reload() {
 		eend $?
 	fi
 }
+
+fi

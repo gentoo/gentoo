@@ -127,8 +127,7 @@ src_prepare() {
 					textengines/mathml/qwtmathml.prf textengines/textengines.pri || die
 			;;
 		esac
-		epatch "${PATCHES[@]}"
-		eapply_user
+		default
 	}
 
 	multibuild_foreach_variant run_in_build_dir preparation

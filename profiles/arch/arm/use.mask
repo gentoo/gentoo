@@ -1,11 +1,6 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
-
 # Unmask arm arch specific flags
 -iwmmxt
 
@@ -54,10 +49,6 @@ openexr
 amr
 
 # Samuli Suominen <drac@gentoo.org>
-# sci-visualization/grace not tested.
-grace
-
-# Samuli Suominen <drac@gentoo.org>
 # media-gfx/gimp not tested.
 gimp
 
@@ -68,21 +59,15 @@ ipod
 
 # Stuff that doesn't make sense on this arch
 3dfx
-cpufreq
-dell
-laptop
 dmi
 
 # Stuff we don't want
-chicken
 R
 octave
 tracker
 xindy
 lyx
 lasi
-fusion
-debug-utils
 schroedinger
 hardened
 frei0r
@@ -92,47 +77,33 @@ prelude
 mssql
 
 # havent tested yet
-cupsddk
 gphoto2
-mythtv
 afs
 mono
-pike
 lirc
 lm_sensors
-netjack
-beagle
-nvtv
-mzscheme
 xemacs
 scanner
-libupnp
 zvbi
 fluidsynth
-gnomecd
-cblas
-prolog
 sid
 mms
 mtp
 ieee1394
 sctp
 pm-utils
-wicd
 darcs
 bs2b
 toolame
 ladspa
 ggi
 nut
-xanim
 fits
 tokyocabinet
 vaapi
 librtmp
 rtmp
 vpx
-iplayer
 lpsol
 upnp
 bluray
@@ -143,7 +114,6 @@ devil
 gts
 anthy
 ace
-csharp
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
@@ -159,10 +129,8 @@ csharp
 video_cards_apm
 video_cards_ark
 video_cards_ast
-video_cards_ati
 video_cards_cirrus
 video_cards_chips
-video_cards_cyrix
 video_cards_glint
 video_cards_i128
 video_cards_i740
@@ -203,19 +171,6 @@ video_cards_i965
 video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
-
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
-# Unmask the ARM-specific ALSA drivers
--alsa_cards_pxa2xx-i2sound
--alsa_cards_pxa2xx-soc
--alsa_cards_pxa2xx-soc-corgi
--alsa_cards_pxa2xx-soc-poodle
--alsa_cards_pxa2xx-soc-spitz
--alsa_cards_pxa2xx-soc-tosa
--alsa_cards_sa11xx-uda1341ts
--alsa_cards_armaaci
--alsa_cards_at91-soc
--alsa_cards_at91-soc-eti-b1-wm8731
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
 # Bug #184563, 18 Sep 2007

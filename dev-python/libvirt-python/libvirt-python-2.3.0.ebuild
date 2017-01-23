@@ -24,7 +24,7 @@ fi
 S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
-HOMEPAGE="http://www.libvirt.org"
+HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="test"

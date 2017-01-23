@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
-	dev-texlive/texlive-science
+	|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
 	html? (
 		app-text/recode
 		>=dev-tex/tex4ht-20090115_p0029

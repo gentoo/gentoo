@@ -1,6 +1,6 @@
 diff -ruN ncpfs-2.2.6/contrib/pam/pam_ncp_auth.c ncpfs-2.2.6-fixed/contrib/pam/pam_ncp_auth.c
---- ncpfs-2.2.6/contrib/pam/pam_ncp_auth.c	2005-01-27 18:35:59.000000000 +0100
-+++ ncpfs-2.2.6-fixed/contrib/pam/pam_ncp_auth.c	2007-05-11 21:38:05.143474750 +0200
+--- a/contrib/pam/pam_ncp_auth.c.orig	2005-01-27 18:35:59.000000000 +0100
++++ a/contrib/pam/pam_ncp_auth.c	2007-05-11 21:38:05.143474750 +0200
 @@ -257,6 +257,7 @@
  #include <stdlib.h>
  #include <stdio.h>
