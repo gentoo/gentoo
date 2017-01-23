@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,9 +41,5 @@ pkg_nofetch() {
 
 src_install(){
 	insinto /usr/share/doc/${P}/html
-	doins index.html
-
-	for i in *; do
-		[[ -d $i ]] && doins -r $i
-	done
+	doins -r index.html */
 }
