@@ -8788,7 +8788,7 @@ dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for R
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.0 1.12.1 1.12.2 1.12.3 9999: Converts between ROS Image messages and OpenCV images
-dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Nodelets for processing depth images such as those produced by OpenNI camera
+dev-ros/depth_image_proc 1.12.19 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.9 1.8.10 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 1.8.9 1.8.10 9999: Converts diagnostics data into a series of CSV files
@@ -8835,11 +8835,11 @@ dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 9999: Launch files for launching he
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 0.3.5 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.12.3 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Single image rectification and color processing
+dev-ros/image_proc 1.12.19 9999: Single image rectification and color processing
 dev-ros/image_publisher 1.12.19 9999: Publish an image stream from single image file or avi file.
-dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
+dev-ros/image_rotate 1.12.19 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.14-r1 1.12.15 1.12.16 1.12.18 1.12.19 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.19 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
