@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,6 +33,7 @@ RDEPEND="
 	!qt4? ( x11-libs/gtk+:2 )
 	qt4? ( >=dev-qt/qtgui-4.5:4 )"
 DEPEND="${RDEPEND}
+	app-arch/p7zip
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
