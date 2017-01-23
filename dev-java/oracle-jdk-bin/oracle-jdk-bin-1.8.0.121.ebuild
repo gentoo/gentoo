@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils java-vm-2 prefix versionator
 
@@ -12,11 +12,11 @@ JCE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2
 
 # This is a list of archs supported by this update.
 # Currently arm comes and goes.
-AT_AVAILABLE=( arm arm64 )
+AT_AVAILABLE=( amd64 arm arm64 x86 x64-solaris sparc64-solaris x64-macos )
 
 # Sometimes some or all of the demos are missing, this is to not have to rewrite half
 # the ebuild when it happens.
-DEMOS_AVAILABLE=( arm arm64 )
+DEMOS_AVAILABLE=( amd64 arm arm64 x86 x64-solaris sparc64-solaris x64-macos )
 
 if [[ "$(get_version_component_range 4)" == 0 ]] ; then
 	S_PV="$(get_version_component_range 1-3)"
@@ -60,8 +60,8 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
-KEYWORDS="~arm ~arm64"
-IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux source"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
+IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
 RESTRICT="fetch preserve-libs strip"
@@ -107,12 +107,9 @@ RDEPEND="!x64-macos? (
 	!prefix? ( sys-libs/glibc:* )
 	selinux? ( sec-policy/selinux-java )"
 
-# A PaX header isn't created by scanelf so depend on paxctl to avoid
-# fallback marking. See bug #427642.
 DEPEND="app-arch/zip
 	jce? ( app-arch/unzip )
-	examples? ( x64-macos? ( app-arch/unzip ) )
-	pax_kernel? ( sys-apps/paxctl )"
+	examples? ( x64-macos? ( app-arch/unzip ) )"
 
 S="${WORKDIR}/jdk"
 
@@ -152,23 +149,21 @@ pkg_nofetch() {
 		distfiles+=( $(eval "echo \${$(echo DEMOS_${ARCH/-/_})}") )
 	fi
 	check_tarballs_available "${JDK_URI}" "${distfiles[@]}"
-
 	use jce && check_tarballs_available "${JCE_URI}" "${JCE_FILE}"
 }
 
 src_unpack() {
 	if use x64-macos ; then
-		pushd "${T}" > /dev/null
-		mkdir dmgmount
+		pushd "${T}" > /dev/null || die
+		mkdir dmgmount || die
 		hdiutil attach "${DISTDIR}"/jdk-${MY_PV}-macosx-x64.dmg \
-			-mountpoint "${T}"/dmgmount
-		local update=$(get_version_component_range 4)
-		[[ ${#update} == 1 ]] && update="0${update}"
-		xar -xf dmgmount/JDK\ $(get_version_component_range 2)\ Update\ ${update}.pkg
-		hdiutil detach "${T}"/dmgmount
-		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv
-		mv Contents/Home "${WORKDIR}"/jdk${MY_PV}
-		popd > /dev/null
+			-mountpoint "${T}"/dmgmount || die
+		printf -v update "%02d" $(get_version_component_range 4) || die
+		xar -xf dmgmount/JDK\ $(get_version_component_range 2)\ Update\ ${update}.pkg || die
+		hdiutil detach "${T}"/dmgmount || die
+		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv || die
+		mv Contents/Home "${WORKDIR}"/jdk${MY_PV} || die
+		popd > /dev/null || die
 		use jce && unpack "${JCE_FILE}"
 	else
 		default
@@ -185,9 +180,11 @@ src_prepare() {
 		mv "${WORKDIR}"/${JCE_DIR} jre/lib/security/ || die
 	fi
 
+	default
+
 	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
 		# Mark this binary early to run it now.
-		pax-mark Cm ./bin/javap
+		pax-mark m ./bin/javap
 
 		eqawarn "Ensure that this only calls trackJavaUsage(). If not, see bug #559936."
 		eqawarn
@@ -214,6 +211,10 @@ src_install() {
 		rm -vf jre/lib/*/libjsoundalsa.* || die
 	fi
 
+	if ! use commercial; then
+		rm -vfr lib/missioncontrol jre/lib/jfr* || die
+	fi
+
 	if use headless-awt ; then
 		rm -vf {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
 		   {,jre/}bin/{javaws,policytool} \
@@ -235,6 +236,9 @@ src_install() {
 	# Even though plugins linked against multiple ffmpeg versions are
 	# provided, they generally lag behind what Gentoo has available.
 	rm -vf jre/lib/*/libavplugin* || die
+
+	# We package this as dev-util/visualvm.
+	rm -vfr lib/visualvm || die
 
 	dodoc COPYRIGHT
 	dodir "${dest}"
@@ -294,7 +298,7 @@ src_install() {
 	# Prune all fontconfig files so libfontconfig will be used and only install
 	# a Gentoo specific one if fontconfig is disabled.
 	# http://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
-	rm "${ddest}"/jre/lib/fontconfig.*
+	rm "${ddest}"/jre/lib/fontconfig.* || die
 	if ! use fontconfig ; then
 		cp "${FILESDIR}"/fontconfig.Gentoo.properties "${T}"/fontconfig.properties || die
 		eprefixify "${T}"/fontconfig.properties
@@ -327,31 +331,17 @@ src_install() {
 
 	if use x64-macos ; then
 		# Fix miscellaneous install_name issues.
-		pushd "${ddest}"/jre/lib > /dev/null || die
-		local lib needed nlib npath
+		local lib
 		for lib in decora_sse glass prism_{common,es2,sw} ; do
 			lib=lib${lib}.dylib
 			einfo "Fixing self-reference of ${lib}"
 			install_name_tool \
 				-id "${EPREFIX}${dest}/jre/lib/${lib}" \
-				"${lib}"
-		done
-		popd > /dev/null
-
-		# This is still jdk1{5,6}, even on Java 8, so don't change it
-		# until you know different.
-		for nlib in jdk1{5,6} ; do
-			install_name_tool -change \
-				/usr/lib/libgcc_s_ppc64.1.dylib \
-				/usr/lib/libSystem.B.dylib \
-				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
-			install_name_tool -id \
-				"${EPREFIX}${dest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib \
-				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
+				"${ddest}"/jre/lib/${lib} || die
 		done
 	fi
 
-	set_java_env
+	java-vm_install-env "${FILESDIR}"/${PN}.env.sh
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 }
