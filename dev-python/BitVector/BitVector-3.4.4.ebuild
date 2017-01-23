@@ -14,7 +14,7 @@ SRC_URI="http://cobweb.ecn.purdue.edu/~kak/dist/${P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 python_test() {
 	"${PYTHON}" TestBitVector/Test.py || die "Tests fail with ${EPYTHON}"
