@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= net-misc/curl sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium ) dev-lang/perl:= dev-perl/DBD-SQLite dev-perl/WWW-Curl dev-perl/DBI >=sys-devel/bison-2.6 >=sys-devel/flex-2.5.35 virtual/perl-ExtUtils-ParseXS !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A purely functional package manager
+EAPI=6
+HOMEPAGE=https://nixos.org/nix
+IUSE=+etc_profile +gc doc sodium
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= net-misc/curl sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium ) dev-lang/perl:= dev-perl/DBD-SQLite dev-perl/WWW-Curl dev-perl/DBI
+SLOT=0
+SRC_URI=http://nixos.org/releases/nix/nix-1.11.6/nix-1.11.6.tar.xz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=f2947f9cc59cc5b5c63d1ec2046c63ef
