@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2015 Gentoo Foundation
+# Copyright 2015-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
 user=${user:-${SVCNAME}}
 
 command="/usr/bin/${SVCNAME}"
-command_args="agent -config-dir=/etc/consul.d ${command_args}"
+command_args="agent ${command_args:-config-dir=/etc/consul.d}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \

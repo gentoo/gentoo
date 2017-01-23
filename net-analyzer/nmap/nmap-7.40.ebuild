@@ -39,7 +39,7 @@ RDEPEND="
 		dev-python/pygtk:2[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
-	system-lua? ( >=dev-lang/lua-5.2[deprecated] )
+	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
 	ndiff? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
 	nmap-update? ( dev-libs/apr dev-vcs/subversion )
