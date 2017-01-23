@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-50">
+  <title>PPP: Buffer overflow</title>
+  <synopsis>A buffer overflow in PPP might allow remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">ppp</product>
+  <announced>2017-01-23</announced>
+  <revised>2017-01-23: 1</revised>
+  <bug>546554</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/ppp" auto="yes" arch="*">
+      <unaffected range="ge">2.4.7-r3</unaffected>
+      <vulnerable range="lt">2.4.7-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PPP is a Unix implementation of the Point-to-Point Protocol</p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in the rc_mksid function in
+      plugins/radius/util.c in PPP when the PID for pppd is greater than 65535.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PPP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/ppp-2.4.7-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3310">CVE-2015-3310</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T22:55:39Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-23T03:15:31Z">b-man</metadata>
+</glsa>
