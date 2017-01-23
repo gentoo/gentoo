@@ -448,3 +448,22 @@ perl_get_raw_vendorlib() {
 		   print $Config{$ARGV[0]};
 		   exit 0' -- "installvendorlib" || die "Can't extract installvendorlib from Perl Configuration"
 }
+
+# @FUNCTION: perl_get_vendorlib
+# @USAGE: perl_get_vendorlib
+# @DESCRIPTION:
+#
+# Convenience helper for returning Perls' vendor install root
+# without EPREFIXing.
+perl_get_vendorlib() {
+	debug-print-function $FUNCNAME "$@"
+
+	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
+
+	# Requires perl 5.14 for /r attribute of s///
+	# Just in case somebody out there is stuck in a time warp: upgrade perl first
+	perl -M5.014 -MConfig \
+		-e'exists $Config{$ARGV[0]} || die qq{No such Config key "$ARGV[0]"};
+		   print $Config{$ARGV[0]} =~ s{\A\Q$ARGV[1]\E}{}r;
+		   exit 0' -- "installvendorlib" "$EPREFIX" || die "Can't extract installvendorlib from Perl Configuration"
+}
