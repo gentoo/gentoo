@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost:= sys-libs/zlib:=[minizip] dev-libs/libxml2 dev-libs/libpcre[cxx] virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=COLLADA Document Object Model (DOM) C++ Library
+EAPI=6
+HOMEPAGE=https://github.com/rdiankov/collada-dom
+KEYWORDS=~amd64 ~arm
+LICENSE=MIT
+RDEPEND=dev-libs/boost:= sys-libs/zlib:=[minizip] dev-libs/libxml2 dev-libs/libpcre[cxx]
+SLOT=0
+SRC_URI=https://github.com/rdiankov/collada-dom/archive/v2.4.4.tar.gz -> collada-dom-2.4.4.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=17d167ae9bc9b404ea932b5d727fadbd
