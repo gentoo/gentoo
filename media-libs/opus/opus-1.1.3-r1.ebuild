@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://git.opus-codec.org/opus.git"
 else
 	SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
-	KEYWORDS="alpha amd64 ~arm hppa ~ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+	KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
 fi
 
 DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
