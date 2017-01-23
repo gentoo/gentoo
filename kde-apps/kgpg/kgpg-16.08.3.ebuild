@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,11 +20,3 @@ DEPEND="
 RDEPEND="${DEPEND}
 	app-crypt/gnupg
 "
-
-pkg_postinst() {
-	kde4-base_pkg_postinst
-
-	if ! has_version 'app-crypt/dirmngr' && ! has_version '>=app-crypt/gnupg-2.1'; then
-		elog "For improved key search functionality, install app-crypt/dirmngr."
-	fi
-}
