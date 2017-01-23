@@ -22,3 +22,12 @@ DEPEND="
 	dev-libs/cyrus-sasl
 "
 RDEPEND="${DEPEND}"
+
+src_test() {
+	# tests cannot be run in parallel #605586
+	local myctestargs=(
+		-j1
+	)
+
+	kde5_src_test
+}
