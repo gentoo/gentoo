@@ -35,7 +35,7 @@ SRC_URI="
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="1.8"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa cups +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux"
+IUSE="alsa cups +fontconfig headless-awt javafx jce nsplugin selinux"
 
 RESTRICT="fetch preserve-libs strip"
 QA_PREBUILT="*"
@@ -79,11 +79,8 @@ RDEPEND="!x64-macos? (
 	!prefix? ( sys-libs/glibc:* )
 	selinux? ( sec-policy/selinux-java )"
 
-# A PaX header isn't created by scanelf so depend on paxctl to avoid
-# fallback marking. See bug #427642.
 DEPEND="app-arch/zip
-	jce? ( app-arch/unzip )
-	pax_kernel? ( sys-apps/paxctl )"
+	jce? ( app-arch/unzip )"
 
 S="${WORKDIR}/jre"
 
