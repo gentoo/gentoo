@@ -183,7 +183,7 @@ src_install() {
 
 	# Install icons, menu items and mime-types for GRC
 	if use grc ; then
-		local fd_path="${S}/grc/freedesktop"
+		local fd_path="${S}/grc/scripts/freedesktop"
 		insinto /usr/share/mime/packages
 		doins "${fd_path}/${PN}-grc.xml"
 
