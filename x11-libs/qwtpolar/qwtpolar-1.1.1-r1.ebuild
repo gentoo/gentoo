@@ -26,8 +26,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 
-	local qtplugindir=$(qt4_get_plugindir)
-	use qt5 && qtplugindir=$(qt5_get_plugindir)
+	local qtplugindir="${EPREFIX}$(qt4_get_plugindir)"
+	use qt5 && qtplugindir="${EPREFIX}$(qt5_get_plugindir)"
 
 	sed \
 		-e "/QWT_POLAR_INSTALL_PREFIX /s:=.*$:= ${EPREFIX}/usr:g" \

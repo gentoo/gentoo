@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils multibuild multilib qmake-utils
+inherit multibuild qmake-utils
 
 MY_P="${PN}-${PV/_/-}"
 
@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
-DOCS="README"
+DOCS=( CHANGES-6.1 README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2-invalid-read.patch
@@ -93,8 +93,8 @@ src_prepare() {
 		case "${MULTIBUILD_VARIANT}" in
 			qt4-*)
 				cat >> qwtconfig.pri <<-EOF
-					QWT_INSTALL_PLUGINS   = "${EPREFIX}/usr/$(get_libdir)/qt4/plugins/designer"
-					QWT_INSTALL_FEATURES  = "${EPREFIX}/usr/share/qt4/mkspecs/features"
+					QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt4_get_plugindir)/designer"
+					QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt4_get_mkspecsdir)/features"
 				EOF
 				sed \
 					-e 's/target doc/target/' \
@@ -111,8 +111,8 @@ src_prepare() {
 			;;
 			qt5-*)
 				cat >> qwtconfig.pri <<-EOF
-					QWT_INSTALL_PLUGINS   = "${EPREFIX}/usr/$(get_libdir)/qt5/plugins/designer"
-					QWT_INSTALL_FEATURES  = "${EPREFIX}/usr/share/qt5/mkspecs/features"
+					QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt5_get_plugindir)/designer"
+					QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt5_get_mkspecsdir)/features"
 				EOF
 				sed \
 					-e 's/target doc/target/' \
@@ -183,10 +183,12 @@ src_install () {
 	fi
 
 	if use doc; then
-		dohtml -r doc/html/*
+		HTML_DOCS=( doc/html/. )
 	else
 		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
 	fi
+
+	einstalldocs
 
 	mkdir -p "${ED}"/usr/share/man/ || die
 	mv "${ED}"/usr/share/doc/${PF}/man/man3 "${ED}"/usr/share/man/ && \
