@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/boost158.patch" \
 		"${FILESDIR}/mf.patch" \
-		"${FILESDIR}/prefix.patch"
+		"${FILESDIR}/prefix.patch" \
+		"${FILESDIR}/boost163.patch"
 
 	sed -e "s/CXXFLAGS='-O3'/CXXFLAGS=''/" \
 		-e "s/CXXFLAGS=\['-Werror'\]/CXXFLAGS=[]/" \
