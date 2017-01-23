@@ -2338,7 +2338,7 @@ app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.4-r1 0.4.5: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 20_p20140818 22 22_p20160324 9999: a graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 20_p20140818 22 22_p20160324 23: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.38-r1 3.39: high-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
@@ -2494,7 +2494,7 @@ app-text/zathura 0.2.9 0.3.3 0.3.5 0.3.6 9999: A highly customizable and functio
 app-text/zathura-cb 0.1.2 0.1.5 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.3 0.2.5 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.2.8 0.3.0 9999: PDF plug-in for zathura
+app-text/zathura-pdf-mupdf 0.2.8 0.3.0 0.3.1 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.5 0.2.6 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.2 0.2.3 9999: PostScript plug-in for zathura
 app-text/zemberek-server 0.7.1 0.7.1-r1: A Turkish spell checker server based on Zemberek NLP library
@@ -4470,7 +4470,7 @@ dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425: Mono runtime and c
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
-dev-lang/mujs 0_p20150202 0_p20160504 0_p20161202: lightweight Javascript interpreter
+dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/nim 0.14.2 0.15.0-r1 0.15.2 0.16.0: compiled, garbage-collected systems programming language
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
@@ -4620,7 +4620,7 @@ dev-libs/gecode 3.7.3 4.4.0 4.4.0-r1: An environment for developing constraint-b
 dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 9999: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
 dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.2 2.50.0 2.50.1 2.50.2: The GLib library of C routines
 dev-libs/gmime 2.6.20-r3 2.6.22 2.6.23: Utilities for creating and parsing messages using MIME
