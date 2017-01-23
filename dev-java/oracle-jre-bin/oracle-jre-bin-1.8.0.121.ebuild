@@ -35,7 +35,7 @@ SRC_URI="
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="1.8"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa cups +fontconfig headless-awt javafx jce nsplugin selinux"
+IUSE="alsa commercial cups +fontconfig headless-awt javafx jce nsplugin selinux"
 
 RESTRICT="fetch preserve-libs strip"
 QA_PREBUILT="*"
@@ -139,6 +139,10 @@ src_install() {
 
 	if ! use alsa ; then
 		rm -vf lib/*/libjsoundalsa.* || die
+	fi
+
+	if ! use commercial; then
+		rm -vfr lib/jfr* || die
 	fi
 
 	if use headless-awt ; then
