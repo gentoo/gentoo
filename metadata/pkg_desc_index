@@ -18557,7 +18557,7 @@ x11-libs/qtermwidget 0.6.0-r1 0.7.0 0.7.1 9999: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r2 6.1.3: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
-x11-libs/qwtpolar 0.1.0-r1 1.0.0 1.1.0 1.1.1: Library for displaying values on a polar coordinate system
+x11-libs/qwtpolar 0.1.0-r1 1.0.0 1.1.0 1.1.1-r1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
