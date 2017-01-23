@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,8 @@ EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/prometheus/..."
-EGIT_COMMIT="253be23c00eba5592e1673845a38f4fd08efff83"
+EGIT_COMMIT="v${PV}"
+PROMETHEUS_COMMIT="d840f2c"
 ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -28,7 +29,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "s/{{.Revision}}/${EGIT_COMMIT:0:7}/" src/${EGO_PN%/*}/.promu.yml || die
+	sed -i -e "s/{{.Revision}}/${PROMETHEUS_COMMIT}/" src/${EGO_PN%/*}/.promu.yml || die
 }
 
 src_compile() {
