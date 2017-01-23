@@ -42,7 +42,7 @@ RDEPEND="
 	dev-qt/qtwebkit:4
 	x11-libs/qscintilla:=[qt4(-)]
 	|| (
-		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1 )
+		( || ( <x11-libs/qwt-6.1.2:6[svg] >=x11-libs/qwt-6.1.2:6[svg,qt4] ) >=x11-libs/qwtpolar-1[qt4(+)] )
 		( x11-libs/qwt:5[svg] <x11-libs/qwtpolar-1 )
 	)
 	georeferencer? ( sci-libs/gsl:= )
