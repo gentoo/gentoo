@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils java-vm-2 prefix versionator
 
@@ -120,6 +120,8 @@ src_prepare() {
 	if use jce ; then
 		mv "${WORKDIR}"/${JCE_DIR} lib/security/ || die
 	fi
+
+	default
 
 	# Remove the hook that calls Oracle's evil usage tracker. Not just
 	# because it's evil but because it breaks the sandbox during builds
