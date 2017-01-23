@@ -86,11 +86,6 @@ app-emulation/vice ffmpeg
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
 
-# Matthias Maier <tamiko@gentoo.org> (13 Mar 2015)
-# Masking glusterfs for the time being, see entry for app-emulation/qemu of
-# 12 Sep 2013: Waiting on glusterfs maintainers in bug #484016
-app-emulation/libvirt glusterfs
-
 # Pacho Ramos <pacho@gentoo.org>
 # sci-visualization/paraview is not ready for stabilization yet
 # See bug #541012
