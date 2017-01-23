@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 
 MY_P="${P/_/-}"
 SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-fbsd ~x86-freebsd ~x86-macos"
 
 SLOT="0"
 IUSE="bzip2 doc +gnutls ldap nls readline selinux +smartcard tofu tools usb wks-server"

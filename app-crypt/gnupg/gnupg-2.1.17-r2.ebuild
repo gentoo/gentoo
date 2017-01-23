@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 
 MY_P="${P/_/-}"
 SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-fbsd ~x86-freebsd ~x86-macos"
 
 SLOT="0"
 IUSE="bzip2 doc +gnutls ldap nls readline selinux +smartcard tofu tools usb wks-server"
@@ -33,7 +33,7 @@ COMMON_DEPEND_LIBS="
 	tofu? ( >=dev-db/sqlite-3.7 )
 	"
 COMMON_DEPEND_BINS="app-crypt/pinentry
-		   !app-crypt/dirmngr"
+	!app-crypt/dirmngr"
 
 # Existence of executables is checked during configuration.
 DEPEND="${COMMON_DEPEND_LIBS}
@@ -48,11 +48,15 @@ RDEPEND="${COMMON_DEPEND_LIBS}
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	default
-	epatch "${FILESDIR}/${PN}-2.1.16-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
-	epatch_user
-}
+DOCS=(
+	ChangeLog NEWS README THANKS TODO VERSION
+	doc/FAQ doc/DETAILS doc/HACKING doc/TRANSLATE doc/OpenPGP doc/KEYSERVER
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1.16-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
+	"${FILESDIR}/${P}-dirmngr-Strip-root-zone-suffix-from-libdns-cname-res.patch"
+)
 
 src_configure() {
 	local myconf=()
@@ -77,42 +81,36 @@ src_configure() {
 		export gl_cv_absolute_stdint_h=/usr/include/stdint.h
 
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--enable-gpg \
-		--enable-gpgsm \
-		--enable-large-secmem \
-		--without-adns \
 		"${myconf[@]}" \
 		$(use_enable bzip2) \
 		$(use_enable gnutls) \
-		$(use_with ldap) \
 		$(use_enable nls) \
-		$(use_with readline) \
 		$(use_enable tofu) \
-		--enable-tools \
 		$(use_enable wks-server wks-tools) \
+		$(use_with ldap) \
+		$(use_with readline) \
+		--enable-gpg \
+		--enable-gpgsm \
+		--enable-large-secmem \
+		--enable-tools \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 }
 
 src_compile() {
 	default
 
-	if use doc; then
-		cd doc
-		emake html
-	fi
+	use doc && emake -C doc html
 }
 
 src_install() {
 	default
 
-	use tools && dobin tools/{convert-from-106,gpg-check-pattern} \
-		tools/{gpg-zip,gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
-		tools/make-dns-cert
-	emake DESTDIR="${D}" -f doc/Makefile uninstall-nobase_dist_docDATA
-
-	dodoc ChangeLog NEWS README THANKS TODO VERSION doc/FAQ doc/DETAILS \
-		doc/HACKING doc/TRANSLATE doc/OpenPGP doc/KEYSERVER doc/help*
+	use tools &&
+		dobin \
+			tools/{convert-from-106,gpg-check-pattern} \
+			tools/{gpg-zip,gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
+			tools/make-dns-cert
+	emake DESTDIR="${ED}" -f doc/Makefile uninstall-nobase_dist_docDATA
 
 	dosym gpg2 /usr/bin/gpg
 	dosym gpgv2 /usr/bin/gpgv
@@ -122,7 +120,5 @@ src_install() {
 	dodir /etc/env.d
 	echo "CONFIG_PROTECT=/usr/share/gnupg/qualified.txt" >> "${ED}"/etc/env.d/30gnupg
 
-	if use doc; then
-		dohtml doc/gnupg.html/* doc/*.png
-	fi
+	use doc && dodoc doc/gnupg.html/* doc/*.png
 }
