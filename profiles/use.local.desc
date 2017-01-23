@@ -5856,6 +5856,9 @@ net-libs/qxmpp:opus - Enable Opus codec support via media-libs/opus
 net-libs/qxmpp:vpx - Enable VP8 codec support via media-libs/libvpx
 net-libs/rabbitmq-c:tools - Builds cli tools to interact with brokers
 net-libs/rb_libtorrent:dht - Enable DHT (distributed hash table) support
+net-libs/shairplay:alac - Add support for Apple Lossless Audio Codec files
+net-libs/shairplay:static-libs - Build static versions of dynamic libraries as well
+net-libs/shairplay:tools - Build and install a binary shairplay in /usr/bin
 net-libs/telepathy-qt:farstream - Enable support for audio/video calls via farstream
 net-libs/tox:av - Adds support for audio and video.
 net-libs/tox:daemon - Enable the DHT Bootstrap Daemon.
