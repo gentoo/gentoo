@@ -1,21 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils git-2 multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs vcs-snapshot
 
-DESCRIPTION="a graphical PDF viewer which aims to superficially resemble less(1)"
+DESCRIPTION="graphical PDF viewer which aims to superficially resemble less(1)"
 HOMEPAGE="http://repo.or.cz/w/llpp.git"
-EGIT_REPO_URI="git://repo.or.cz/llpp.git"
+SRC_URI="http://repo.or.cz/llpp.git/snapshot/b51644926dda712aebdc3f075bdc0771f35d6f7b.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+ocamlopt static"
 
-LIB_DEPEND=">=app-text/mupdf-1.9a:0=[static-libs]
+LIB_DEPEND=">=app-text/mupdf-1.10a:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]
@@ -37,19 +37,13 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!ocamlopt? ( strip )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-20-WM_CLASS.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-20-WM_CLASS.patch )
 
 src_compile() {
 	local ocaml=$(usex ocamlopt ocamlopt.opt ocamlc.opt)
 	local cmo=$(usex ocamlopt cmx cmo)
 	local cma=$(usex ocamlopt cmxa cma)
 	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG -std=c99 -Wextra -Wall -pedantic-errors -Wunused-parameter -Wsign-compare -Wshadow"
-	#if use egl ; then
-	#	ccopt+=" -DUSE_EGL $(pkg-config --cflags egl)"
-	#	local egl="egl"
-	#fi
 	if use static ; then
 		local cclib=""
 		local slib=""
@@ -88,5 +82,5 @@ src_compile() {
 
 src_install() {
 	dobin ${PN} misc/${PN}ac
-	dodoc KEYS README Thanks fixme
+	dodoc KEYS README Thanks
 }
