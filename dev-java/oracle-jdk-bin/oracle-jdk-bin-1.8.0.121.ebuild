@@ -149,23 +149,21 @@ pkg_nofetch() {
 		distfiles+=( $(eval "echo \${$(echo DEMOS_${ARCH/-/_})}") )
 	fi
 	check_tarballs_available "${JDK_URI}" "${distfiles[@]}"
-
 	use jce && check_tarballs_available "${JCE_URI}" "${JCE_FILE}"
 }
 
 src_unpack() {
 	if use x64-macos ; then
-		pushd "${T}" > /dev/null
-		mkdir dmgmount
+		pushd "${T}" > /dev/null || die
+		mkdir dmgmount || die
 		hdiutil attach "${DISTDIR}"/jdk-${MY_PV}-macosx-x64.dmg \
-			-mountpoint "${T}"/dmgmount
-		local update=$(get_version_component_range 4)
-		[[ ${#update} == 1 ]] && update="0${update}"
-		xar -xf dmgmount/JDK\ $(get_version_component_range 2)\ Update\ ${update}.pkg
-		hdiutil detach "${T}"/dmgmount
-		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv
-		mv Contents/Home "${WORKDIR}"/jdk${MY_PV}
-		popd > /dev/null
+			-mountpoint "${T}"/dmgmount || die
+		printf -v update "%02d" $(get_version_component_range 4) || die
+		xar -xf dmgmount/JDK\ $(get_version_component_range 2)\ Update\ ${update}.pkg || die
+		hdiutil detach "${T}"/dmgmount || die
+		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv || die
+		mv Contents/Home "${WORKDIR}"/jdk${MY_PV} || die
+		popd > /dev/null || die
 		use jce && unpack "${JCE_FILE}"
 	else
 		default
@@ -298,7 +296,7 @@ src_install() {
 	# Prune all fontconfig files so libfontconfig will be used and only install
 	# a Gentoo specific one if fontconfig is disabled.
 	# http://docs.oracle.com/javase/8/docs/technotes/guides/intl/fontconfig.html
-	rm "${ddest}"/jre/lib/fontconfig.*
+	rm "${ddest}"/jre/lib/fontconfig.* || die
 	if ! use fontconfig ; then
 		cp "${FILESDIR}"/fontconfig.Gentoo.properties "${T}"/fontconfig.properties || die
 		eprefixify "${T}"/fontconfig.properties
@@ -331,16 +329,14 @@ src_install() {
 
 	if use x64-macos ; then
 		# Fix miscellaneous install_name issues.
-		pushd "${ddest}"/jre/lib > /dev/null || die
 		local lib
 		for lib in decora_sse glass prism_{common,es2,sw} ; do
 			lib=lib${lib}.dylib
 			einfo "Fixing self-reference of ${lib}"
 			install_name_tool \
 				-id "${EPREFIX}${dest}/jre/lib/${lib}" \
-				"${lib}"
+				"${ddest}"/jre/lib/${lib} || die
 		done
-		popd > /dev/null
 	fi
 
 	java-vm_install-env "${FILESDIR}"/${PN}.env.sh
