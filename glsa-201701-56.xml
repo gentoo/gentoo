@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-56">
+  <title>zlib: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in zlib, the worst of
+    which could allow attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">zlib</product>
+  <announced>2017-01-23</announced>
+  <revised>2017-01-23: 1</revised>
+  <bug>601828</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/zlib" auto="yes" arch="*">
+      <unaffected range="ge">1.2.9</unaffected>
+      <vulnerable range="lt">1.2.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>zlib is a widely used free and patent unencumbered data compression
+      library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in zlib. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All zlib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/zlib-1.2.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9840">CVE-2016-9840</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9841">CVE-2016-9841</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9842">CVE-2016-9842</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9843">CVE-2016-9843</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-16T18:59:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-23T03:40:28Z">b-man</metadata>
+</glsa>
