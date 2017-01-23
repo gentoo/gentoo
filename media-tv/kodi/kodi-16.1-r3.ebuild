@@ -50,7 +50,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
 	app-i18n/enca
-	airplay? ( app-pda/libplist )
+	airplay? (
+		app-pda/libplist
+		net-libs/shairplay
+	)
 	dev-libs/boost:=
 	dev-libs/expat
 	dev-libs/fribidi
@@ -249,6 +252,7 @@ src_configure() {
 		--with-ffmpeg=shared \
 		$(use_enable alsa) \
 		$(use_enable airplay) \
+		$(use_enable airplay airtunes) \
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \

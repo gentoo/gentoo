@@ -36,7 +36,10 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	airplay? ( app-pda/libplist )
+	airplay? (
+		app-pda/libplist
+		net-libs/shairplay
+	)
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
 	bluray? ( >=media-libs/libbluray-0.7.0 )
@@ -201,7 +204,7 @@ src_configure() {
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
-		-DENABLE_AIRTUNES=OFF
+		-DENABLE_AIRTUNES=$(usex airplay)
 		-DENABLE_AVAHI=$(usex zeroconf)
 		-DENABLE_BLUETOOTH=$(usex bluetooth)
 		-DENABLE_BLURAY=$(usex bluray)
