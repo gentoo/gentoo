@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils java-vm-2 prefix versionator
 
@@ -179,6 +179,8 @@ src_prepare() {
 	if use jce ; then
 		mv "${WORKDIR}"/${JCE_DIR} jre/lib/security/ || die
 	fi
+
+	default
 
 	if [[ -n ${JAVA_PKG_STRICT} ]] ; then
 		# Mark this binary early to run it now.
