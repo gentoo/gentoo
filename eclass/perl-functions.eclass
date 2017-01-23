@@ -467,3 +467,79 @@ perl_get_vendorlib() {
 		   print $Config{$ARGV[0]} =~ s{\A\Q$ARGV[1]\E}{}r;
 		   exit 0' -- "installvendorlib" "$EPREFIX" || die "Can't extract installvendorlib from Perl Configuration"
 }
+
+# @FUNCTION: perl_domodule
+# @USAGE: perl_domodule [options] <files>
+# @DESCRIPTION:
+# Installs files in paths where they can be found in the default
+# Perl runtime.
+#
+# Note: Should only be used in src_install or pkg_preinst
+# anywhere else will do the wrong thing or die.
+#
+# The contents of the <files> list are copied into Perls Vendor library path
+# as follows:
+# @CODE
+#   # install perl/File.pm as Samba::File
+#   pushd perl/
+#   perl_domodule -C Samba File.pm
+#
+#   # install perl/ recursively under VENDORLIB/Samba/
+#   pushd perl/
+#   perl_domodule -C Samba -r .
+# @CODE
+#
+# @CODE
+#   options:
+#       -C Target/Name
+#          The subdirectory relative to the Perl VENDOR_LIB
+#          to install into.
+#
+#          defaults to ""
+#       -r
+#          Install directories recursively ( see doins )
+#          files:
+#          list of .pm files to install to VENDORLIB
+# @CODE
+
+perl_domodule() {
+	local target_prefix=""
+	local files=()
+	local doins_opts=()
+
+	local recursive="false"
+	local target
+	local file
+
+	while [[ $# -gt 0 ]] ; do
+		case $1 in
+			-C|--target-prefix)
+				[[ -z "${2}" || "${2:0:1}" == "-" ]] && die "${FUNCNAME}: -C|--target-prefix expects an argument, got \"$2\"!"
+				target_prefix="${2}";
+				shift 2;;
+			-r)
+				recursive="true"
+				shift;;
+			*)
+				[[ -z "${1}" || "${1:0:1}" == "-" ]] && die "${FUNCNAME}: Unknown argument \"${1}\"!"
+				files+=( "${1}" )
+				shift 1;;
+		esac
+	done
+
+	if [[ "true" == $recursive ]]; then
+		doins_opts+=( "-r" )
+	fi
+	for file in "${files[@]}"; do
+		[[ -e "${file}" ]] || die "$FUNCNAME: Argument \"${file}\" is not an existing file"
+		[[ "false" == ${recursive} && -d "${file}" ]] && die "$FUNCNAME: Argument \"${file}\" is a directory ( needs -r parameter )"
+	done
+
+	target="$(perl_get_vendorlib)"
+
+	# Extend target if target_prefix is set
+	[[ -z "${target_prefix}" ]] || target="${target%/}/${target_prefix#/}"
+
+	insinto "/${target#/}"
+	doins "${doins_opts[@]}" "${files[@]}"
+}
