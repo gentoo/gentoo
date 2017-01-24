@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup
+DESCRIPTION=Heavy Metal: FAKK2 - 3D third-person action shooter based on the Heavy Metal comics/movies
+EAPI=6
+HOMEPAGE=http://www.lokigames.com/products/fakk2/
+IUSE=nocd
+KEYWORDS=~x86
+LICENSE=LOKI-EULA
+PROPERTIES=interactive
+RDEPEND=virtual/opengl
+RESTRICT=strip
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
+_eclasses_=cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=204b63598f151e8a375aa3560292a470
