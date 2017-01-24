@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,6 +39,10 @@ RDEPEND=">=dev-lang/jimtcl-0.76
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-5" #549946
+
+pkg_setup() {
+	enewgroup plugdev
+}
 
 src_prepare() {
 	epatch_user
@@ -129,4 +133,8 @@ src_install() {
 	default
 	env -uRESTRICT prepstrip "${ED}"/usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
+}
+
+pkg_postinst() {
+	elog "To access openocd devices as user you must be in the plugdev group"
 }
