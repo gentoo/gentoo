@@ -7,24 +7,22 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-inherit cmake-multilib git-r3
+inherit cmake-multilib
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libunwind.git
-	https://github.com/llvm-mirror/libunwind.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="9f88e323c3d0926f52ab3d4a5379eefd92ff28c2"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/libunwind-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug +static-libs"
 
 RDEPEND="!sys-libs/libunwind"
 # LLVM 4 required for llvm-config --cmakedir
 DEPEND=">=sys-devel/llvm-4"
+
+S=${WORKDIR}/libunwind-${PV/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
