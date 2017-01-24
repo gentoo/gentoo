@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/boost media-fonts/dejavu media-libs/libsdl[sound,joystick,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-ttf virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Bomberman-like multiplayer game
+EAPI=6
+HOMEPAGE=https://savannah.nongnu.org/projects/clanbomber/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost media-fonts/dejavu media-libs/libsdl[sound,joystick,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-ttf
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/clanbomber/clanbomber-2.1.1.tar.lzma
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=ce7a16d2af300284e132db6512a2858a

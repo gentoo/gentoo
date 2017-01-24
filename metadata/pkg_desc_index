@@ -1310,6 +1310,7 @@ app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation pr
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
+app-emulation/genymotion-bin 2.8.1: Complete set of tools that provide a virtual environment for Android
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
@@ -10413,8 +10414,8 @@ games-action/btanks 0.9.8083: Fast 2D tank arcade game with multiplayer and spli
 games-action/bzflag 2.4.2-r1 2.4.4 2.4.4-r1: 3D tank combat simulator game
 games-action/chickens 0.2.4 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1: Chromium B.S.U. - an arcade game
-games-action/clanbomber 2.1.1: Bomberman-like multiplayer game
-games-action/cs2d 0127 1002: A freeware clone of Counter-Strike with some added features in gameplay
+games-action/clanbomber 2.1.1 2.1.1-r1: Bomberman-like multiplayer game
+games-action/cs2d 0127 1002 1002-r1: A freeware clone of Counter-Strike with some added features in gameplay
 games-action/d1x-rebirth 0.58.1: Descent Rebirth - enhanced Descent 1 engine
 games-action/d2x-rebirth 0.58.1: Descent Rebirth - enhanced Descent 2 engine
 games-action/deathchase3d 0.9: A remake of the Sinclair Spectrum game of the same name
