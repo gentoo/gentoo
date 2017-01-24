@@ -7791,10 +7791,7 @@ sys-kernel/bliss-initramfs:luks - Encryption support
 sys-kernel/bliss-initramfs:lvm - Logical Volume support
 sys-kernel/bliss-initramfs:raid - RAID support
 sys-kernel/bliss-initramfs:zfs - ZFS support
-sys-kernel/ck-sources:bfsonly - BFS by itself vs the full ck patchset
 sys-kernel/ck-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-kernel/ck-sources:experimental - Allow experimental code. Can break or degrade performance. (UNSUPPORTED)
-sys-kernel/ck-sources:urwlocks - Use upgradable read/write locks in place of the grq spinlock. (EXPERIMENTAL)
 sys-kernel/dracut:debug - Module installing additional tools like strace, file editor, ssh and more
 sys-kernel/genkernel:crypt - Obsolete USE flag. Use cryptsetup for LUKS support. (bug ##414523)
 sys-kernel/genkernel:cryptsetup - Enable support for Luks disk encryption using sys-fs/cryptsetup
