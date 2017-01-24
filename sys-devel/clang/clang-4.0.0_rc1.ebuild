@@ -127,6 +127,9 @@ src_unpack() {
 src_prepare() {
 	python_setup
 
+	# fix finding compiler-rt libs
+	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+
 	# fix stand-alone doc build
 	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
