@@ -1874,7 +1874,7 @@ app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows ar
 app-misc/openastro 1.1.48: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.6: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r1 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.1.6 1.1.6-r1 1.1.7 1.2.1: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 3.1.1 4.0.4 4.0.5: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
@@ -14311,7 +14311,7 @@ net-analyzer/vnstat 1.13 1.15 1.16: Console-based network traffic monitor that k
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.2.2 2.2.3 2.2.3-r1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.2.2 2.2.4 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
