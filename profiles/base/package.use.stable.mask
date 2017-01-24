@@ -43,10 +43,6 @@ www-servers/uwsgi go pypy
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
-# Johannes Huber <johu@gentoo.org> (12 Dec 2016)
-# No stable version available (kde-frameworks/prison).
-kde-plasma/plasma-workspace prison
-
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
 app-admin/packagekit-base entropy
