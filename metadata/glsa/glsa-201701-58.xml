@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-58">
+  <title>ICU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ICU, the worst of which
+    could cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">icu</product>
+  <announced>2017-01-24</announced>
+  <revised>2017-01-24: 1</revised>
+  <bug>589814</bug>
+  <bug>594494</bug>
+  <bug>601396</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">58.1</unaffected>
+      <vulnerable range="lt">58.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ICU is a mature, widely used set of C/C++ and Java libraries providing
+      Unicode and Globalization support for software applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ICU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition or possibly
+      have other unspecified impacts via a long locale string or
+      httpAcceptLanguage argument.  Additionally, A remote attacker, via a
+      specially crafted file, could cause an application using ICU to parse
+      untrusted font files resulting in a Denial of Service condition. 
+      Finally, remote attackers could affect confidentiality via unknown
+      vectors related to 2D.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ICU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-58.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2632">CVE-2015-2632</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6293">CVE-2016-6293</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7415">CVE-2016-7415</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-16T18:37:12Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-24T10:46:19Z">b-man</metadata>
+</glsa>
