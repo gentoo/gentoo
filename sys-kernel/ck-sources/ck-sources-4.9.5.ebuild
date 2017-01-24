@@ -40,8 +40,9 @@ CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
 # solves bug #606866 (Fix build for CONFIG_FREEZER disabled.x)
+FRZR_HASH="7de569950716147ed436b27936628ee3ab5b45cc"
 FRZR_FILE="${PN}-4.9-freezer-fix.patch"
-FRZR_URI="https://github.com/ckolivas/linux/commit/7de569950716147ed436b27936628ee3ab5b45cc.patch -> ${FRZR_FILE}"
+FRZR_URI="https://github.com/ckolivas/linux/commit/${FRZR_HASH}.patch -> ${FRZR_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------
 
