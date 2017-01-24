@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils fcaps flag-o-matic multilib qmake-utils user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
-HOMEPAGE="http://www.wireshark.org/"
+HOMEPAGE="https://www.wireshark.org/"
 SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -190,17 +190,18 @@ src_compile() {
 src_install() {
 	default
 
-	if use doc; then
-		dohtml -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
-		if use doc-pdf; then
-			insinto /usr/share/doc/${PF}/pdf/
-			doins docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
-		fi
-	fi
-
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README{,.bsd,.linux,.macos,.vmware} \
 		doc/{randpkt.txt,README*}
+
+	if use doc; then
+		docinto /usr/share/doc/${PF}/html
+		dodoc -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
+		if use doc-pdf; then
+			docinto /usr/share/doc/${PF}/pdf/
+			dodoc docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
+		fi
+	fi
 
 	# install headers
 	local wsheader
