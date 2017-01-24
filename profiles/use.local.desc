@@ -5726,9 +5726,6 @@ net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-libs/ldns:ecdsa - Enable ECDSA support
 net-libs/ldns:gost - Enable GOST support
-net-libs/libbitcoinconsensus:bitcoin_policy_cltv - Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions
-net-libs/libbitcoinconsensus:bitcoin_policy_dcmp - Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)
-net-libs/libbitcoinconsensus:ljr - Enable Luke Dashjr's patches
 net-libs/libbtbb:pcap - Add support for network packet capture via net-libs/libpcap
 net-libs/libbtbb:wireshark-plugins - Build the wireshark plugins for bluetooth baseband sniffing
 net-libs/libeXosip:srv - enable support for SRV records DNS queries
@@ -6454,10 +6451,6 @@ net-p2p/amule:daemon - Enable amule daemon
 net-p2p/amule:remote - Enable remote controlling of the client
 net-p2p/amule:stats - Enable statistic reporting
 net-p2p/bitcoin-cli:ljr - Enable Luke Dashjr's patches
-net-p2p/bitcoin-qt:1stclassmsg - Enable first-class Bitcoin message tools
-net-p2p/bitcoin-qt:bitcoin_policy_cltv - Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions
-net-p2p/bitcoin-qt:bitcoin_policy_cpfp - Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents
-net-p2p/bitcoin-qt:bitcoin_policy_dcmp - Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)
 net-p2p/bitcoin-qt:bitcoin_policy_rbf - Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order
 net-p2p/bitcoin-qt:bitcoin_policy_spamfilter - Enhanced spam filter policy: Notorious spammers will not be assisted by your node
 net-p2p/bitcoin-qt:http - Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)
@@ -6467,19 +6460,12 @@ net-p2p/bitcoin-qt:qrcode - Enable generation of QR Codes for receiving payments
 net-p2p/bitcoin-qt:tor - Enable automatic configuration of a Tor hidden service
 net-p2p/bitcoin-qt:upnp - Enable Universal Plug and Play
 net-p2p/bitcoin-qt:wallet - Enable wallet support
-net-p2p/bitcoin-qt:xt - Enable Mike Hearn's Bitcoin XT patches
 net-p2p/bitcoin-qt:zeromq - Report blocks and transactions via zeromq
-net-p2p/bitcoind:addrindex - Enable BtcDrak's addrindex patch
-net-p2p/bitcoind:bitcoin_policy_cltv - Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions
-net-p2p/bitcoind:bitcoin_policy_cpfp - Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents
-net-p2p/bitcoind:bitcoin_policy_dcmp - Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)
 net-p2p/bitcoind:bitcoin_policy_rbf - Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order
 net-p2p/bitcoind:bitcoin_policy_spamfilter - Enhanced spam filter policy: Notorious spammers will not be assisted by your node
 net-p2p/bitcoind:ljr - Enable Luke Dashjr's patches
-net-p2p/bitcoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
-net-p2p/bitcoind:xt - Enable Mike Hearn's Bitcoin XT patches
 net-p2p/bitcoind:zeromq - Report blocks and transactions via zeromq
 net-p2p/bitcoinxt-qt:ljr - Enable Luke Dashjr's patches
 net-p2p/bitcoinxt-qt:logrotate - Use app-admin/logrotate for rotating logs
@@ -8075,7 +8061,11 @@ www-client/netsurf:fbcon_frontend_linux - Use framebuffer frontend linux
 www-client/netsurf:fbcon_frontend_sdl - Use framebuffer frontend sdl
 www-client/netsurf:fbcon_frontend_vnc - Use framebuffer frontend vnc
 www-client/netsurf:fbcon_frontend_x - Use framebuffer frontend X
+www-client/netsurf:gtk - Build GTK GUI, defaults to GTK3
+www-client/netsurf:gtk2 - Build GTK2 GUI
+www-client/netsurf:gtk3 - Build GTK3 GUI
 www-client/netsurf:pdf-writer - PDF output support (media-libs/libharu)
+www-client/netsurf:psl - Use public suffix list via media-libs/libnspsl
 www-client/netsurf:rosprite - RISC OS Sprite bitmap image support (media-libs/librosprite)
 www-client/netsurf:svgtiny - SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
 www-client/netsurf:webp - WebP image support (media-libs/libwebp)
