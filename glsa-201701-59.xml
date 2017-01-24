@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-59">
+  <title>ADOdb: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ADOdb, all of which
+    could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">adodb</product>
+  <announced>2017-01-24</announced>
+  <revised>2017-01-24: 1</revised>
+  <bug>604714</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/adodb" auto="yes" arch="*">
+      <unaffected range="ge">5.20.9</unaffected>
+      <vulnerable range="lt">5.20.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ADOdb is an abstraction library for PHP creating a common API for a wide
+      range of database backends.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ADOdb. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, through the use of SQL injection or Cross Site
+      Scripting (XSS) attacks, could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ADOdb users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-php/adodb-5.20.9"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4855">CVE-2016-4855</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7405">CVE-2016-7405</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-21T23:56:54Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-24T10:50:50Z">b-man</metadata>
+</glsa>
