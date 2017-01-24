@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">webp</product>
   <announced>2017-01-24</announced>
-  <revised>2017-01-24: 1</revised>
+  <revised>2017-01-24: 3</revised>
   <bug>598208</bug>
   <access>remote</access>
   <affected>
@@ -25,8 +25,9 @@
     </p>
   </description>
   <impact type="normal">
-    <p>A remote attacker could possibly cause a Denial of Service condition or
-      have other unspecified impacts.
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      file using WebP’s gif2webp tool, could possibly cause a Denial of
+      Service condition or other unspecified impacts.
     </p>
   </impact>
   <workaround>
@@ -44,5 +45,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-9085">CVE-2016-9085</uri>
   </references>
   <metadata tag="requester" timestamp="2017-01-19T08:48:39Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2017-01-24T11:06:34Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-24T11:09:59Z">b-man</metadata>
 </glsa>
