@@ -17,7 +17,7 @@ HOMEPAGE="http://www.skrooge.org/"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="activities crypt designer kde ofx"
+IUSE="activities designer kde ofx"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -51,12 +51,11 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	app-crypt/qca:2[qt5]
+	dev-db/sqlcipher
 	dev-libs/grantlee:5
 	activities? ( $(add_frameworks_dep kactivities) )
-	crypt? ( dev-db/sqlcipher )
-	!crypt? ( dev-db/sqlite:3 )
 	kde? ( $(add_frameworks_dep krunner) )
-	ofx? ( >=dev-libs/libofx-0.9.1 )
+	ofx? ( dev-libs/libofx )
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kguiaddons)
@@ -79,12 +78,9 @@ REQUIRED_USE="test? ( designer )"
 # hangs + installs files
 RESTRICT+=" test"
 
-DOCS=( AUTHORS CHANGELOG README TODO )
-
 src_configure() {
 	local mycmakeargs=(
 		-DSKG_BUILD_TEST=$(usex test)
-		-DSKG_CIPHER=$(usex crypt)
 		-DSKG_DESIGNER=$(usex designer)
 		$(cmake-utils_use_find_package activities KF5Activities)
 		$(cmake-utils_use_find_package kde KF5Runner)
