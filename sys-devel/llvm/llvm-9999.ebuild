@@ -154,10 +154,7 @@ multilib_src_configure() {
 
 		-DWITH_POLLY=OFF # TODO
 
-		# 'normalize' x86 triples to i386-* since this is the name used
-		# by compiler-rt libraries.
-		# remove this when https://reviews.llvm.org/D26796 is merged
-		-DLLVM_HOST_TRIPLE="${CHOST/#i[4-9]86-/i386-}"
+		-DLLVM_HOST_TRIPLE="${CHOST}"
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
