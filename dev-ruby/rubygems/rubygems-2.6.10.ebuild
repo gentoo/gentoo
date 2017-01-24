@@ -47,7 +47,7 @@ all_ruby_prepare() {
 	sed -i -e '/test_\(load_default_gem\|default_spec_stub\)/,/^  end/ s:^:#:' test/rubygems/test_gem_specification.rb || die
 	sed -i -e '/test_uninstall_default_gem/,/^  end/ s:^:#:' test/rubygems/test_gem_uninstaller.rb || die
 	rm -f test/rubygems/test_gem_indexer.rb || die
-	sed -i -e '/test_require_when_gem_defined/,/^  end/ s:^:#:' test/rubygems/test_require.rb || die	
+	sed -i -e '/test_require_when_gem_defined/,/^  end/ s:^:#:' test/rubygems/test_require.rb || die
 
 	# Avoid tests playing tricks with ruby engine that don't seem to
 	# work for us.
