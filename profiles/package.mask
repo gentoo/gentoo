@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Tobias Klausmann <klausman@gentoo.org> (24 Jan 2017)
+# scanelf has changed its output, breaking revdep-rebuild.py
+>=app-misc/pax-utils-1.2
+
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
 # Bug 606836.
