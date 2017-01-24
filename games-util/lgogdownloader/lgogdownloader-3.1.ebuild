@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,13 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+debug"
 
-RDEPEND=">=app-crypt/rhash-1.3.3-r2:=
-	dev-cpp/htmlcxx:=
-	dev-libs/boost:=
-	>=dev-libs/jsoncpp-1.7:=
-	dev-libs/tinyxml2:=
-	net-libs/liboauth:=
-	>=net-misc/curl-7.32:=[ssl]"
+RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
+	dev-cpp/htmlcxx:0=
+	dev-libs/boost:0=
+	>=dev-libs/jsoncpp-1.7:0=
+	dev-libs/tinyxml2:0=
+	net-libs/liboauth:0=
+	>=net-misc/curl-7.32:0=[ssl]"
 
 DEPEND="${RDEPEND}
 	sys-apps/help2man
