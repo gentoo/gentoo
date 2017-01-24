@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Net-Ping
+EAPI=6
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/Net-Ping-2.430.0 ) dev-lang/perl:= !<perl-core/Net-Ping-2.430.0 !>perl-core/Net-Ping-2.430.0-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=572754414caa98a909b7b3ee3b3b6ebe
