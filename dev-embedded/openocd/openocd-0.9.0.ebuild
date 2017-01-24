@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils multilib flag-o-matic toolchain-funcs udev
+inherit eutils multilib flag-o-matic toolchain-funcs udev user
 
 # One ebuild to rule them all
 if [[ ${PV} == "9999" ]] ; then
