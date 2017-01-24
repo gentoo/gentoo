@@ -1,0 +1,67 @@
+--- netsurf-3.6/Makefile.defaults
++++ netsurf-3.6/Makefile.defaults
+@@ -96,12 +96,6 @@
+ # Valid options: YES, NO
+ NETSURF_FS_BACKING_STORE := NO
+ 
+-# Initial CFLAGS. Optimisation level etc. tend to be target specific.
+-CFLAGS :=
+-
+-# Initial CXXFLAGS. Optimisation level etc. tend to be target specific.
+-CXXFLAGS :=
+-
+ # Default installation/execution prefix
+ PREFIX ?= /usr/local
+ 
+--- netsurf-3.6/frontends/framebuffer/Makefile
++++ netsurf-3.6/frontends/framebuffer/Makefile
+@@ -20,7 +20,7 @@
+ CFLAGS += '-DNETSURF_FB_FONT_CURSIVE="$(NETSURF_FB_FONT_CURSIVE)"'
+ CFLAGS += '-DNETSURF_FB_FONT_FANTASY="$(NETSURF_FB_FONT_FANTASY)"'
+ 
+-CFLAGS += -std=c99 -g -Dsmall \
++CFLAGS += -std=c99 -Dsmall \
+ 	  -D_BSD_SOURCE \
+ 	  -D_DEFAULT_SOURCE \
+ 	  -D_XOPEN_SOURCE=600 \
+--- netsurf-3.6/frontends/framebuffer/Makefile.defaults
++++ netsurf-3.6/frontends/framebuffer/Makefile.defaults
+@@ -3,7 +3,7 @@
+ # ----------------------------------------------------------------------------
+ 
+ # Optimisation levels
+-CFLAGS += -O2
++CFLAGS += 
+ 
+ # Framebuffer default surface provider.
+ # Valid values are: x, sdl, linux, vnc, able,
+--- netsurf-3.6/frontends/gtk/Makefile
++++ netsurf-3.6/frontends/gtk/Makefile
+@@ -33,7 +33,7 @@
+ endif
+ 
+ 
+-GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk -g \
++GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk \
+ 		$(GTKDEPFLAGS) \
+ 		-D_BSD_SOURCE \
+ 		-D_DEFAULT_SOURCE \
+--- netsurf-3.6/frontends/gtk/Makefile.defaults
++++ netsurf-3.6/frontends/gtk/Makefile.defaults
+@@ -39,4 +39,4 @@
+ NETSURF_GTK_MAJOR ?= 2
+ 
+ # Optimisation levels
+-CFLAGS += -O2
++CFLAGS += 
+--- netsurf-3.6/test/Makefile
++++ netsurf-3.6/test/Makefile
+@@ -105,7 +105,7 @@
+   COMMON_WARNFLAGS += -Wno-unused-parameter
+ endif
+ 
+-TESTCFLAGS := -std=c99 -g \
++TESTCFLAGS := -std=c99 \
+ 		$(COMMON_WARNFLAGS) \
+ 		-D_BSD_SOURCE \
+ 		-D_POSIX_C_SOURCE=200809L \

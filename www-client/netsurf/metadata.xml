@@ -19,6 +19,10 @@
 	<flag name="rosprite">RISC OS Sprite bitmap image support (media-libs/librosprite)</flag>
 	<flag name="svgtiny">SVG image support via media-libs/svgatiny instead of gnome-base/librsvg</flag>
 	<flag name="webp">WebP image support (media-libs/libwebp)</flag>
+	<flag name="psl">Use public suffix list via media-libs/libnspsl</flag>
+	<flag name="gtk">Build GTK GUI, defaults to GTK3</flag>
+	<flag name="gtk2">Build GTK2 GUI</flag>
+	<flag name="gtk3">Build GTK3 GUI</flag>
 	<flag name="duktape">Use duktape.org javascript engine</flag>
 </use>
 <longdescription lang="en">
