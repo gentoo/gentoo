@@ -281,12 +281,6 @@ net-misc/termtter
 dev-cpp/luabind
 games-rpg/valyriatear
 
-# Johannes Huber <johu@gentoo.org> (25 Dec 2016)
-# Masked for removal in 30 days. Dead upstream. No reverse dependencies.
-# No maintainer. Was introduced for media-sound/tomahwak. Uses deprecated
-# EAPI.
-net-libs/qtweetlib
-
 # Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
 # Dead upstream, no more hosted on googlecode
 # No reverse dependencies. Masked for removal in 30 days.
