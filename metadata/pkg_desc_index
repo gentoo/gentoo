@@ -2177,7 +2177,7 @@ app-shells/zsh 5.0.5 5.2 5.2-r1 5.3 5.3.1 9999: UNIX Shell similar to the Korn s
 app-shells/zsh-completions 0.22.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
-app-text/a2ps 4.14-r3 4.14-r4 4.14-r5: Any to PostScript filter
+app-text/a2ps 4.14-r5 4.14-r6: Any to PostScript filter
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
 app-text/adiff 1.4: wordwise diff
