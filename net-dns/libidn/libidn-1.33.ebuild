@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal
+inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal libtool
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="https://www.gnu.org/software/libidn/"
@@ -52,6 +52,8 @@ src_prepare() {
 	rm "${S}/java/${P}.jar" || die
 
 	eapply_user
+
+	elibtoolize  # for Solaris shared objects
 }
 
 multilib_src_configure() {
