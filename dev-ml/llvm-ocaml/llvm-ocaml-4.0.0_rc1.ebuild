@@ -9,15 +9,12 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-any-r1
+inherit cmake-utils python-any-r1
 
+MY_P=llvm-${PV/_/}
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="c329efbc3c94928fb826ed146897aada0459c983"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${MY_P/_/}.src.tar.xz"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -27,7 +24,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
@@ -46,6 +43,8 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )"
+
+S=${WORKDIR}/${MY_P/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo

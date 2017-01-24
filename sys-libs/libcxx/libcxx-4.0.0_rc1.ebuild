@@ -11,19 +11,15 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 cmake-multilib python-any-r1 toolchain-funcs
+inherit cmake-multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="http://libcxx.llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/libcxx.git
-	https://github.com/llvm-mirror/libcxx.git"
-EGIT_BRANCH="release_40"
-EGIT_COMMIT="39c36254e55627b5f94d37a453bf97fcd907cd38"
+SRC_URI="http://www.llvm.org/pre-releases/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
@@ -40,6 +36,8 @@ DEPEND="${RDEPEND}
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	app-arch/xz-utils
 	>=sys-devel/llvm-4"
+
+S=${WORKDIR}/${P/_/}.src
 
 DOCS=( CREDITS.TXT )
 
