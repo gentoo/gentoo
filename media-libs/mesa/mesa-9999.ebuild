@@ -394,11 +394,6 @@ multilib_src_install_all() {
 	# Install config file for eselect mesa
 	insinto /usr/share/mesa
 	newins "${FILESDIR}/eselect-mesa.conf.9.2" eselect-mesa.conf
-
-	# Mesa should not install these
-	if use vulkan; then
-		rm "${ED}"/usr/include/vulkan/{vulkan.h,vk_platform.h} || die
-	fi
 }
 
 multilib_src_test() {
