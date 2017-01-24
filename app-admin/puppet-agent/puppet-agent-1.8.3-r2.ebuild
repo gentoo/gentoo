@@ -32,7 +32,8 @@ RDEPEND="${CDEPEND}
 	app-portage/eix
 	sys-apps/dmidecode
 	sys-libs/glibc
-	sys-libs/readline:0
+	>=sys-libs/readline-6.0
+	<sys-libs/readline-7.0
 	selinux? (
 		sys-libs/libselinux[ruby]
 		sec-policy/selinux-puppet
