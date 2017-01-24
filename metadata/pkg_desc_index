@@ -3977,6 +3977,7 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
+dev-java/gradle-bin 3.3: A project automation and build tool with a Groovy based DSL
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 13.0.1 13.0.1-r3 14.0.1 18.0 20.0: A collection of Google's core Java libraries
@@ -5217,48 +5218,48 @@ dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL datab
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.5-r1 3.0.6: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 4.0.1: A package for ocaml that provides access to PostgreSQL databases
-dev-ml/ppx_assert 113.24.00 113.33.00: Assert-like extension nodes that raise useful errors on failure
-dev-ml/ppx_bench 113.24.00 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
-dev-ml/ppx_bin_prot 113.24.00 113.24.01 113.33.00: Generation of bin_prot readers and writers from types
-dev-ml/ppx_compare 113.24.00 113.33.00: Generation of comparison functions from types
-dev-ml/ppx_core 113.24.00 113.33.00: Standard library for ppx rewriters
-dev-ml/ppx_custom_printf 113.24.00 113.33.00: Printf-style format-strings for user-defined string conversion
-dev-ml/ppx_deriving 3.3 4.0 4.1: Type-driven code generation for OCaml
+dev-ml/ppx_assert 113.33.00: Assert-like extension nodes that raise useful errors on failure
+dev-ml/ppx_bench 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
+dev-ml/ppx_bin_prot 113.33.00: Generation of bin_prot readers and writers from types
+dev-ml/ppx_compare 113.33.00: Generation of comparison functions from types
+dev-ml/ppx_core 113.33.00: Standard library for ppx rewriters
+dev-ml/ppx_custom_printf 113.33.00: Printf-style format-strings for user-defined string conversion
+dev-ml/ppx_deriving 4.1: Type-driven code generation for OCaml
 dev-ml/ppx_deriving_yojson 3.0: A Yojson codec generator for OCaml
-dev-ml/ppx_driver 113.24.00-r1 113.33.00: Feature-full driver for OCaml AST transformers
-dev-ml/ppx_enumerate 113.24.00 113.33.00: Generate a list containing all values of a finite type
-dev-ml/ppx_expect 113.24.00 113.33.00 113.33.01: Cram like framework for OCaml
-dev-ml/ppx_fail 113.24.00 113.33.00: Add location to calls to failwiths
-dev-ml/ppx_fields_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml records
-dev-ml/ppx_here 113.24.00 113.33.00: Expands [%here] into its location
+dev-ml/ppx_driver 113.33.00: Feature-full driver for OCaml AST transformers
+dev-ml/ppx_enumerate 113.33.00: Generate a list containing all values of a finite type
+dev-ml/ppx_expect 113.33.01: Cram like framework for OCaml
+dev-ml/ppx_fail 113.33.00: Add location to calls to failwiths
+dev-ml/ppx_fields_conv 113.33.00: Generation of accessor and iteration functions for ocaml records
+dev-ml/ppx_here 113.33.00: Expands [%here] into its location
 dev-ml/ppx_import 1.1: A syntax extension for importing declarations from interface files
-dev-ml/ppx_inline_test 113.24.00 113.33.00: Syntax extension for writing in-line tests in ocaml code
-dev-ml/ppx_jane 113.24.00 113.24.01 113.33.00: Standard Jane Street ppx rewriters
-dev-ml/ppx_let 113.24.00 113.33.00: Monadic let-bindings
-dev-ml/ppx_optcomp 113.24.00 113.33.00: Optional compilation for OCaml
-dev-ml/ppx_pipebang 113.24.00 113.33.00: A ppx rewriter that inlines reverse application operators |> and |!
-dev-ml/ppx_sexp_conv 113.24.00 113.33.00: Support Library for type-driven code generators
-dev-ml/ppx_sexp_message 113.24.00 113.33.00: A ppx rewriter for easy construction of s-expressions
-dev-ml/ppx_sexp_value 113.24.00 113.33.00: Standard library for ppx rewriters
-dev-ml/ppx_tools 4.02.3 5.0.4.02.0 5.0.4.03.0: Tools for authors of ppx rewriters
-dev-ml/ppx_type_conv 113.24.00 113.33.00 113.33.02: Support Library for type-driven code generators
-dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
-dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
+dev-ml/ppx_inline_test 113.33.00: Syntax extension for writing in-line tests in ocaml code
+dev-ml/ppx_jane 113.33.00: Standard Jane Street ppx rewriters
+dev-ml/ppx_let 113.33.00: Monadic let-bindings
+dev-ml/ppx_optcomp 113.33.00: Optional compilation for OCaml
+dev-ml/ppx_pipebang 113.33.00: A ppx rewriter that inlines reverse application operators |> and |!
+dev-ml/ppx_sexp_conv 113.33.00: Support Library for type-driven code generators
+dev-ml/ppx_sexp_message 113.33.00: A ppx rewriter for easy construction of s-expressions
+dev-ml/ppx_sexp_value 113.33.00: Standard library for ppx rewriters
+dev-ml/ppx_tools 5.0.4.03.0: Tools for authors of ppx rewriters
+dev-ml/ppx_type_conv 113.33.02: Support Library for type-driven code generators
+dev-ml/ppx_typerep_conv 113.33.00: Generation of runtime types from type declarations
+dev-ml/ppx_variants_conv 113.33.00: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
-dev-ml/qcheck 0.5 0.5.1 0.5.2: QuickCheck inspired property-based testing for OCaml
-dev-ml/re2 113.24.00 113.33.00: OCaml bindings for RE2
+dev-ml/qcheck 0.5.2: QuickCheck inspired property-based testing for OCaml
+dev-ml/re2 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
-dev-ml/reactiveData 0.2 0.2.1 9999: Functional reactive programming with incremental changes in data structures
-dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
+dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
+dev-ml/res 4.0.4 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9: Simple sequence (iterator) datatype and combinators
-dev-ml/sexplib 112.35.00 113.00.00 113.24.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 113.00.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
-dev-ml/textutils 112.17.00 113.24.00 113.33.00: Text output utilities
+dev-ml/textutils 113.33.00: Text output utilities
 dev-ml/topkg 0.8.1: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
-dev-ml/typerep 113.24.00 113.33.03: Library for creating runtime representation of OCaml types
-dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
+dev-ml/typerep 113.33.03: Library for creating runtime representation of OCaml types
+dev-ml/typerep_extended 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 4.0.1: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
@@ -12738,7 +12739,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
-media-libs/freetype 2.6.3-r1 2.6.5 2.7.1 2.7.1-r1: A high-quality and portable font engine
+media-libs/freetype 2.6.3-r1 2.6.5 2.7.1-r1 9999: A high-quality and portable font engine
 media-libs/freeverb3 2.6.6 3.1.1 3.1.1-r1 3.1.2_pre20151102 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution library including Audacious/JACK plugins
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.0-r1: Video game music file emulators
@@ -12770,7 +12771,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.2.7 1.3.1 1.3.4 1.4.0 1.4.1 9999: An OpenType text shaping engine
+media-libs/harfbuzz 0.9.41 1.2.7 1.3.1 1.3.4 1.4.1 1.4.2 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
