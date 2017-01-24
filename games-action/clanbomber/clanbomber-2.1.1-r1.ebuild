@@ -42,7 +42,7 @@ src_install() {
 	default
 	newicon src/pics/cup2.png ${PN}.png
 	make_desktop_entry ${PN}2 ClanBomber2
-	rm -f "${D}${GAMES_DATADIR}"/${PN}/fonts/DejaVuSans-Bold.ttf
+	rm -f "${D}/usr/share/${PN}/fonts/DejaVuSans-Bold.ttf" || die
 	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
 		/usr/share/${PN}/fonts/DejaVuSans-Bold.ttf
 }
