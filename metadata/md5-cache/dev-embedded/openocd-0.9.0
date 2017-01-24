@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=configure install postinst prepare setup
 DEPEND=>=dev-lang/jimtcl-0.76 cmsis-dap? ( dev-libs/hidapi ) usb? ( virtual/libusb:0 virtual/libusb:1 ) ftdi? ( dev-embedded/libftdi:= ) virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=OpenOCD - Open On-Chip Debugger
 EAPI=5
@@ -10,6 +10,6 @@ RDEPEND=>=dev-lang/jimtcl-0.76 cmsis-dap? ( dev-libs/hidapi ) usb? ( virtual/lib
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/project/openocd/openocd/0.9.0/openocd-0.9.0.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
-_md5_=3c0fd47425c2134a096c03abc1414ef5
+_md5_=463daf4cf252395a7bf501750ea7868f
