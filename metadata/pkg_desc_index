@@ -18426,7 +18426,7 @@ x11-drivers/xf86-video-suncg14 1.1.1 1.1.2: CG14 video driver
 x11-drivers/xf86-video-suncg3 1.1.1 1.1.2: CG3 video driver
 x11-drivers/xf86-video-suncg6 1.1.1 1.1.2: GX/Turbo GX video driver
 x11-drivers/xf86-video-sunffb 1.2.1 1.2.2-r1: SUNFFB video driver
-x11-drivers/xf86-video-sunleo 1.2.0 1.2.1: Leo video driver
+x11-drivers/xf86-video-sunleo 1.2.0 1.2.1 1.2.2: Leo video driver
 x11-drivers/xf86-video-suntcx 1.1.1 1.1.2: TCX video driver
 x11-drivers/xf86-video-tdfx 1.4.6 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-tga 1.2.2 1.2.2-r1: X.Org driver for tga cards
