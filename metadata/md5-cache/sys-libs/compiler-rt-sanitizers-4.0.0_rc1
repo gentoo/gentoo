@@ -1,12 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=!<sys-devel/llvm-4.0.0_rc1 >=sys-devel/llvm-4 test? ( app-portage/unsandbox || ( ( >=dev-lang/python-2.7.5-r2:2.7 ~dev-python/lit-4.0.0_rc1[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) ~sys-devel/clang-4.0.0_rc1 ~sys-libs/compiler-rt-4.0.0_rc1 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.7.0-r1 >=dev-vcs/git-1.8.2.1
+DEPEND=!<sys-devel/llvm-4.0.0_rc1 >=sys-devel/llvm-4 test? ( app-portage/unsandbox || ( ( >=dev-lang/python-2.7.5-r2:2.7 ~dev-python/lit-4.0.0_rc1[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) ~sys-devel/clang-4.0.0_rc1 ~sys-libs/compiler-rt-4.0.0_rc1 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/ninja >=dev-util/cmake-3.7.0-r1
 DESCRIPTION=Compiler runtime libraries for clang (sanitizers & xray)
 EAPI=6
 HOMEPAGE=http://llvm.org/
 IUSE=test
+KEYWORDS=~amd64 ~arm64 ~x86
 LICENSE=|| ( UoI-NCSA MIT )
 RDEPEND=!<sys-devel/llvm-4.0.0_rc1
 SLOT=0/4.0
+SRC_URI=http://www.llvm.org/pre-releases/4.0.0/rc1/compiler-rt-4.0.0rc1.src.tar.xz test? ( http://www.llvm.org/pre-releases/4.0.0/rc1/llvm-4.0.0rc1.src.tar.xz )
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:- src_install:cmake-utils
-_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	e928b84a9f6f1d9076d1d27687876dc6	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=411f8ed033ae98a02fe6e3cd1093ed69
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d142329ab093dd20c1dd0edb5f094108	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=748557ac0c51058800dd056012b241ec
