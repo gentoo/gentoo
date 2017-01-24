@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gconf gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
+IUSE="component-build cups gconf gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	media-libs/libexif:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/libvpx:=[svc]
+	system-libvpx? ( media-libs/libvpx:=[svc] )
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-3:= )
@@ -319,6 +319,10 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg )
 	fi
+	if ! use system-libvpx; then
+		keeplibs+=( third_party/libvpx )
+		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
+	fi
 
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
@@ -353,7 +357,6 @@ src_configure() {
 		icu
 		libjpeg
 		libpng
-		libvpx
 		libwebp
 		libxml
 		libxslt
@@ -364,6 +367,9 @@ src_configure() {
 	)
 	if use system-ffmpeg; then
 		gn_system_libraries+=( ffmpeg )
+	fi
+	if use system-libvpx; then
+		gn_system_libraries+=( libvpx )
 	fi
 	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
 
