@@ -33,6 +33,11 @@
 # Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
 # Dead. Masked for removal in 30 days.
 # Bug #606132
+x11-drivers/xf86-video-omapfb
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
 x11-drivers/xf86-video-ivtv
 
 # Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
