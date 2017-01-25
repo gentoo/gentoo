@@ -127,4 +127,6 @@ python_configure_all() {
 	# see https://www.xpra.org/trac/ticket/1080
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
+
+	export XPRA_SOCKET_DIRS="${EROOT}run/xpra"
 }
