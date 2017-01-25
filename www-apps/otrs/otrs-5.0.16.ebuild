@@ -122,6 +122,7 @@ src_install() {
 	insinto /usr/share/doc/${PF}/
 	doins crontab
 
+	local a
 	for a in article log pics/images pics/stats pics sessions spool tmp tmp/CacheFileStorable
 	do
 		keepdir "${OTRS_HOME}/var/${a}"
