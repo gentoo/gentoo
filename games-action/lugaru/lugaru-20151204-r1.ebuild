@@ -3,21 +3,20 @@
 # $Id$
 
 EAPI=6
-inherit eutils cmake-utils mercurial
+inherit eutils cmake-utils
 
-EHG_REPO_URI="https://bitbucket.org/osslugaru/lugaru/"
 DESCRIPTION="3D arcade with unique fighting system and anthropomorphic characters"
 HOMEPAGE="https://bitbucket.org/osslugaru/lugaru/wiki/Home"
-SRC_URI=""
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+ free-noncomm CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/libsdl[opengl,video]
 	media-libs/libpng:0
+	media-libs/libsdl[opengl,video]
 	media-libs/libvorbis
 	media-libs/openal
 	sys-libs/zlib
@@ -27,19 +26,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_unpack() {
-	mercurial_src_unpack
-}
-
 PATCHES=(
-    "${FILESDIR}/${P}-dir.patch"
+	"${FILESDIR}/${P}-dir.patch"
 )
 
 src_prepare() {
-    default
-    sed -i \
-        -e "s:@GENTOO_DIR@:/usr/share/${PN}:" \
-        Source/OpenGL_Windows.cpp || die
+	default
+	sed -i \
+		-e "s:@GENTOO_DIR@:/usr/share/${PN}:" \
+		Source/OpenGL_Windows.cpp || die
 }
 
 src_configure() {
