@@ -25,7 +25,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
-REQUIRED_USE="gnome? ( gtk )"
+REQUIRED_USE="gnome? ( gtk )
+	test? ( png jpeg )"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
