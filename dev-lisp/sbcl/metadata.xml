@@ -11,11 +11,6 @@
 		<name>Stelian Ionescu (fe[nl]ix)</name>
 		<description>second-maintainer</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>nvinson234@gmail.com</email>
-		<name>Nicholas Vinson</name>
-		<description>Proxied maintainer</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>common-lisp@gentoo.org</email>
 		<name>Gentoo Common Lisp Project</name>
