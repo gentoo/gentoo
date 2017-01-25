@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (25 Jan 2017)
+# Unmask python-exec support for experimental dev-lang/python:3.6
+dev-lang/python-exec -python_targets_python3_6
+
 # Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
 # xf86-video-??? masked for removal
 x11-base/xorg-drivers video_cards_v4l
