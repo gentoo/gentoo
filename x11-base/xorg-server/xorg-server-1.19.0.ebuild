@@ -74,6 +74,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
+		>=dev-libs/wayland-protocols-1.4
 		media-libs/libepoxy
 	)
 	>=x11-apps/xinit-1.3.3-r1
