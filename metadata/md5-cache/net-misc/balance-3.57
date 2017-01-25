@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=TCP Load Balancing Port Forwarder
+EAPI=6
+HOMEPAGE=http://www.inlab.de/balance.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.inlab.de/balance-3.57.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=9e3348bad830af025e40bece9b84b762
