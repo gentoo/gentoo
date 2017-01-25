@@ -42,12 +42,11 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gcrypt gles1 gles2
-	libressl +llvm +nettle +nptl opencl osmesa pax_kernel openmax openssl pic
-	selinux vaapi valgrind vdpau vulkan wayland xvmc xa kernel_FreeBSD"
+	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
+	+nptl opencl osmesa pax_kernel openmax pic selinux vaapi valgrind vdpau
+	vulkan wayland xvmc xa kernel_FreeBSD"
 
 REQUIRED_USE="
-	|| ( gcrypt libressl nettle openssl )
 	d3d9?   ( dri3 gallium )
 	llvm?   ( gallium )
 	opencl? ( gallium llvm )
@@ -102,14 +101,6 @@ RDEPEND="
 			video_cards_radeon? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		) )
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
-	)
-	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
-	!nettle? (
-		gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
-		!gcrypt? (
-			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
-			!libressl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
-		)
 	)
 	opencl? (
 				app-eselect/eselect-opencl
@@ -321,7 +312,6 @@ multilib_src_configure() {
 		--with-dri-drivers=${DRI_DRIVERS} \
 		--with-gallium-drivers=${GALLIUM_DRIVERS} \
 		--with-vulkan-drivers=${VULKAN_DRIVERS} \
-		--with-sha1=$(usex nettle libnettle $(usex gcrypt libgcrypt libcrypto)) \
 		PYTHON2="${PYTHON}" \
 		${myconf}
 }
