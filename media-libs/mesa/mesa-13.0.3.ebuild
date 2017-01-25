@@ -45,7 +45,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gcrypt gles1 gles2
 	libressl +llvm +nettle +nptl opencl osmesa pax_kernel openmax openssl pic
-	selinux vaapi valgrind vdpau vulkan wayland xvmc xa kernel_FreeBSD"
+	selinux vaapi valgrind vdpau vulkan wayland xvmc xa"
 
 REQUIRED_USE="
 	|| ( gcrypt libressl nettle openssl )
@@ -95,11 +95,11 @@ RDEPEND="
 	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
-	llvm? ( !kernel_FreeBSD? (
+	llvm? (
 		video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		!video_cards_r600? (
 			video_cards_radeon? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
-		) )
+		)
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
 	)
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
@@ -113,7 +113,7 @@ RDEPEND="
 	opencl? (
 				app-eselect/eselect-opencl
 				dev-libs/libclc
-				!kernel_FreeBSD? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
+				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 	openmax? ( >=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}] )
 	vaapi? (
