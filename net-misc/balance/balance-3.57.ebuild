@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="TCP Load Balancing Port Forwarder"
 HOMEPAGE="http://www.inlab.de/balance.html"
@@ -13,16 +13,17 @@ SRC_URI="http://www.inlab.de/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc"
+IUSE=""
 
-DEPEND="doc? ( app-text/ghostscript-gpl
-		sys-apps/groff )"
+DEPEND=""
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.patch
+	default
+
 	tc-export CC
-	use doc || touch balance.pdf
 }
 
 src_install() {
@@ -30,6 +31,4 @@ src_install() {
 
 	#autocreated on program start, if missing
 	rmdir "${D}"/var/run/${PN}
-
-	use doc && dodoc balance.pdf
 }

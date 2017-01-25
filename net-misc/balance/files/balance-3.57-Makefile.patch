@@ -1,7 +1,7 @@
---- balance-3.54/Makefile
-+++ balance-3.54/Makefile
+--- balance-3.57/Makefile
++++ balance-3.57/Makefile
 @@ -1,14 +1,14 @@
- # $Id$
+ # $Id: Makefile,v 1.14 2015/04/28 07:49:37 t Exp t $
  
  #CFLAGS=-g -I.
 -CFLAGS=-O2 -Wall -Wstrict-prototypes -Wuninitialized
@@ -23,7 +23,7 @@
  
 -CC=gcc
 +CC?=gcc
- RELEASE=3.54
+ RELEASE=3.57
  
  all: balance 
  
@@ -37,7 +37,7 @@
  	rm -f $(BALANCE) *.o balance.ps balance.pdf
  
  install:
-+	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755  -d \
++	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755 -d \
 +		$(DESTDIR)$(BINDIR) \
 +		$(DESTDIR)$(MANDIR)
  	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755  $(BALANCE) \
