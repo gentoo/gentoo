@@ -25,7 +25,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/packaging-16.8[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/appdirs-1.4.0-r1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
