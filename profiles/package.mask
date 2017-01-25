@@ -376,11 +376,6 @@ dev-lang/ruby:2.0
 # compression'.
 >=dev-util/xdelta-3.1.0
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
-# Mask until drivers are fixed or adjusted to depend on older versions #599976
-=x11-base/xorg-drivers-1.19*
-=x11-base/xorg-server-1.19*
-
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.
 >=media-gfx/shotwell-0.25
