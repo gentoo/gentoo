@@ -12966,7 +12966,7 @@ media-libs/lv2core 3.0 4.0 6.0: LV2 is a simple but extensible successor of LADS
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.3 12.0.5 12.0.6 13.0.0 13.0.1 13.0.2 13.0.3 17.0.0_rc2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.3 17.0.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2 6.4.1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -15280,7 +15280,7 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1 1.6.0-r2 1.7.0: Remote desktop viewer display system
+net-misc/tigervnc 1.4.2-r2 1.6.0-r2 1.7.0: Remote desktop viewer display system
 net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
