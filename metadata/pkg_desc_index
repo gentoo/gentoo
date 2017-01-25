@@ -10229,7 +10229,7 @@ dev-util/ragel 6.7-r1 6.8 6.9 7.0.0.9: Compiles finite state machines from regul
 dev-util/rats 2.1-r2 2.3 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6 0.7.8 0.7.9: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.6.1 2.6.2 2.6.3: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.6.1 2.6.2 2.6.3 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
