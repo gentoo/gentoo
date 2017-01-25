@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,8 +43,8 @@ pkg_postinst() {
 		ewarn "Please relogin."
 	fi
 	if ! has_version 'dev-qt/qtsvg:5'; then
-		echo
+		elog
 		elog "For SVG icon themes, please install 'dev-qt/qtsvg:5'."
-		echo
+		elog
 	fi
 }
