@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 CMAKE_REQUIRED="never"
 NO_WAF_LIBDIR="true"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+),xml"
-inherit eutils python-single-r1 kde4-base waf-utils
+inherit python-single-r1 kde4-base waf-utils
 
 DESCRIPTION="Mindmapping-like tool for document generation"
 HOMEPAGE="https://waf.io/semantik.html https://github.com/ita1024/semantik"
@@ -32,11 +32,14 @@ RDEPEND="${DEPEND}"
 
 DOCS=( ChangeLog README TODO )
 
+PATCHES=( "${FILESDIR}/${PN}-0.9.0-wscript_ldconfig.patch" )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	kde4-base_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.9.0-wscript_ldconfig.patch"
+	# no cmake build sys
+	default
 }
