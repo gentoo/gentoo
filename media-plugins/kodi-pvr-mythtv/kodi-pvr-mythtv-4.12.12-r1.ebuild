@@ -28,6 +28,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	sys-libs/zlib
 	media-tv/kodi
 	media-libs/kodi-platform
 	"
