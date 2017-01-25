@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
-HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.python.org/pypi/SIP"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
