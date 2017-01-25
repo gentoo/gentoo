@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-64">
+  <title>X.Org X Server: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org X Server, the
+    worst of which may allow authenticated attackers to read from or send
+    information to arbitrary X11 clients.
+  </synopsis>
+  <product type="ebuild">xorg-server</product>
+  <announced>2017-01-25</announced>
+  <revised>2017-01-25: 1</revised>
+  <bug>493294</bug>
+  <bug>548002</bug>
+  <bug>551680</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.18.4</unaffected>
+      <vulnerable range="lt">1.18.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org X Server. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An authenticated attacker could possibly cause a Denial of Service
+      condition or read from or send information to arbitrary X11 clients.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.18.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6424">CVE-2013-6424</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3164">CVE-2015-3164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3418">CVE-2015-3418</uri>
+    <uri link="https://lists.x.org/archives/xorg-announce/2015-June/002611.html">
+      X.Org/Wayland Security Advisory: Missing authentication in XWayland
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2015-07-16T14:04:33Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2017-01-25T12:57:10Z">whissi</metadata>
+</glsa>
