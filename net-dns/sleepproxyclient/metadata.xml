@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <longdescription>A SleepProxyClient implementation</longdescription>
+    <use>
+        <flag name='examples'>Install example scripts</flag>
+        <flag name='pm-utils'>Adds support for suspend/resume the system through sys-power/pm-utils</flag>
+    </use>
+    <maintainer type="person">
+        <email>frace@users.noreply.github.com</email>
+        <name>frace</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <upstream>
+        <bugs-to>https://github.com/awein/SleepProxyClient</bugs-to>
+        <remote-id type="github">awein/SleepProxyClient</remote-id>
+    </upstream>
+</pkgmetadata>
