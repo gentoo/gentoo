@@ -1146,7 +1146,7 @@ app-text/stardict:youdaodict - Enable youdao.com network plugin (for Chinese lan
 app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.
-app-text/tesseract:scrollview - Enable graphics support (ScrollView).
+app-text/tesseract:scrollview - Install viewer to debug recognition (ScrollView).
 app-text/tesseract:training - Install training applications to add support for new languages.
 app-text/tesseract:webp - Enable support for webp image format.
 app-text/texlive:context - Add support for the ConTeXt format (dev-texlive/texlive-context)

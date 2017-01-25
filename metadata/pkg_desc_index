@@ -2436,7 +2436,7 @@ app-text/tabler 2: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped or otherwise humorous dialect
 app-text/teckit 2.5.1 2.5.3 2.5.6: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: a tool for analyzing files that contain control characters and terminal control sequences
-app-text/tesseract 3.04.00-r2 3.04.01: An OCR Engine, orginally developed at HP, now open source.
+app-text/tesseract 3.04.00-r2 3.04.01 3.04.01-r1: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015 2016: A complete TeX distribution
 app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015 2015-r1 2016: A complete TeX distribution
@@ -15286,7 +15286,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.8.12 0.2.9.9 0.3.0.1_alpha-r1: Anonymizing overlay network for TCP
+net-misc/tor 0.2.8.12 0.2.9.9 0.3.0.2_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
@@ -16483,7 +16483,7 @@ sci-mathematics/z3 4.4.1 4.5.0: An efficient theorem prover
 sci-misc/ViSP-images 2.10.0 3.0.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.2.44-r2 7.4.52-r2 7.6.33-r2: The Berkeley Open Infrastructure for Network Computing
-sci-misc/cdfplayer 10.4.0: Wolfram Player for the interactive Computable Document Format (CDF)
+sci-misc/cdfplayer 10.4.0 11.0.1: Wolfram Player for the interactive Computable Document Format (CDF)
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17 4.18: FITS file format checker
 sci-misc/flashdot 1.1.4-r1: Generator for psychophysical experiments
