@@ -309,11 +309,6 @@ net-misc/termtter
 dev-cpp/luabind
 games-rpg/valyriatear
 
-# Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
-# Dead upstream, no more hosted on googlecode
-# No reverse dependencies. Masked for removal in 30 days.
-app-admin/phpsyslogng
-
 # David Seifert <soap@gentoo.org> (20 Dec 2016)
 # Masked for being completely broken and unusable (bug 586356).
 # No reverse dependencies. Masked for removal in 30 days.
