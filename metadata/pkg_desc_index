@@ -8349,7 +8349,7 @@ dev-python/regex 2015.07.12 2015.07.19 2016.01.10: Alternative regular expressio
 dev-python/regions 0.1: Astropy affiliated package for region handling
 dev-python/rencode 1.0.3 1.0.3-r1 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0 1.8.0: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1 3.3.0 3.3.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
@@ -18738,7 +18738,7 @@ x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/p
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
-x11-misc/qt5ct 0.27-r1: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.29: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.5.12-r1 0.7.1: A BBS client for Linux
 x11-misc/qtfm 5.5: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
