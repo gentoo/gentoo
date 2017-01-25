@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -71,7 +71,13 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
+	gnome2_icon_cache_update
+
 	if ! use alsa && ! use pulseaudio; then
 		elog
 		elog "For the audio capture features to be available,"
@@ -97,4 +103,8 @@ pkg_postinst() {
 		elog "to be installed."
 		elog
 	fi
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
