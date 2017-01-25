@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libgcrypt:0= sys-apps/util-linux sys-fs/cryptsetup gnome? ( app-crypt/libsecret ) gui? ( dev-libs/libpwquality dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 kde? ( kde-frameworks/kwallet:5 ) ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=Front end to cryptsetup
+EAPI=6
+HOMEPAGE=https://mhogomchungu.github.io/zuluCrypt/
+IUSE=gnome +gui kde udev
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/libgcrypt:0= sys-apps/util-linux sys-fs/cryptsetup gnome? ( app-crypt/libsecret ) gui? ( dev-libs/libpwquality dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 kde? ( kde-frameworks/kwallet:5 ) ) udev? ( virtual/udev )
+REQUIRED_USE=kde? ( gui )
+SLOT=0
+SRC_URI=https://github.com/mhogomchungu/zuluCrypt/releases/download/5.1.0/zuluCrypt-5.1.0.tar.bz2
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=bf4afb3013908d38cf66e6ccb2595faa
