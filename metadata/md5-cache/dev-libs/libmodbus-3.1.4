@@ -1,11 +1,12 @@
 DEFINED_PHASES=configure install
+DEPEND=doc? ( app-text/asciidoc app-text/xmlto )
 DESCRIPTION=Modbus library which supports RTU communication over a serial line or a TCP link
-EAPI=4
+EAPI=6
 HOMEPAGE=http://libmodbus.org/
-IUSE=static-libs
+IUSE=static-libs test doc
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3
 SLOT=0
-SRC_URI=http://libmodbus.org/releases/libmodbus-3.1.1.tar.gz
+SRC_URI=http://libmodbus.org/releases/libmodbus-3.1.4.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=c298fb5342ee7dac17686e3517927651
+_md5_=a2c1a94636fac9da3dda95db791ddb56
