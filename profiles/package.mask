@@ -30,6 +30,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-omapfb
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-ivtv
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Last release only supports v4l1 which required kernel support removed in
+# 2.6.38. Doesn't build with >=x11-base/xorg-server-1.17. Masked for removal in
+# 30 days.
+# Bug #606132
+x11-drivers/xf86-video-v4l
+
 # Jeroen Roovers <jer@gentoo.org> (24 Jan 2017)
 # Masked for bug #607116
 =app-misc/screen-4.5.0
@@ -57,6 +74,8 @@
 # days.
 net-misc/x11rdp
 net-misc/xrdp
+=x11-base/xorg-drivers-1.16*
+=x11-base/xorg-server-1.16*
 
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
@@ -356,11 +375,6 @@ dev-lang/ruby:2.0
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
 # compression'.
 >=dev-util/xdelta-3.1.0
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
-# Mask until drivers are fixed or adjusted to depend on older versions #599976
-=x11-base/xorg-drivers-1.19*
-=x11-base/xorg-server-1.19*
 
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.

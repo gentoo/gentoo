@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# xf86-video-??? masked for removal
+x11-base/xorg-drivers video_cards_v4l
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
 # Requires x11-drivers/nvidia-drivers available on selected few arches.
 media-video/mpv cuda
