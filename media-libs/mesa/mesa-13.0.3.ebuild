@@ -57,7 +57,8 @@ REQUIRED_USE="
 	gles2?  ( egl )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
-	vulkan? ( || ( video_cards_i965 video_cards_radeonsi ) )
+	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
+	          video_cards_radeonsi? ( llvm ) )
 	wayland? ( egl gbm )
 	xa?  ( gallium )
 	video_cards_freedreno?  ( gallium )
@@ -96,7 +97,10 @@ RDEPEND="
 	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	llvm? (
-		video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
+		video_cards_radeonsi? (
+			virtual/libelf:0=[${MULTILIB_USEDEP}]
+			vulkan? ( >=sys-devel/llvm-3.9.0:=[${MULTILIB_USEDEP}] )
+		)
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
 	)
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
