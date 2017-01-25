@@ -7095,6 +7095,10 @@ sci-mathematics/singular:boost - Compile against external boost headers (dev-lib
 sci-mathematics/spass:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/unuran:prng - Use sci-mathematics/prng library
 sci-mathematics/unuran:rngstreams - Use sci-mathematics/rngstreams library
+sci-mathematics/yacas:doc - Generate HTML documentation
+sci-mathematics/yacas:gui - Build graphical interface for the native yacas engine. Requires Qt5
+sci-mathematics/yacas:java - Build the Java yacas engine and text console for it
+sci-mathematics/yacas:jupyter - Add support for jupyter notebook
 sci-mathematics/yacas:server - Build the network server version
 sci-mathematics/yafu:sieve - Use msieve for the sieving steps of NFS
 sci-mathematics/z3:isabelle - Add integration support for the Isabelle/HOL theorem prover.
