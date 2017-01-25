@@ -57,6 +57,8 @@
 # days.
 net-misc/x11rdp
 net-misc/xrdp
+=x11-base/xorg-drivers-1.16*
+=x11-base/xorg-server-1.16*
 
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
