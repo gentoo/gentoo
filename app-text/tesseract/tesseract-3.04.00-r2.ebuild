@@ -77,7 +77,7 @@ DEPEND=">=media-libs/leptonica-1.71[zlib,tiff?,jpeg?,png?,webp?]
 "
 RDEPEND="${DEPEND}"
 
-DOCS=(AUTHORS ChangeLog NEWS README ReleaseNotes )
+DOCS=( AUTHORS ChangeLog NEWS README ReleaseNotes )
 
 PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"

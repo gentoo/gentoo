@@ -89,7 +89,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	scrollview? ( >=virtual/jre-1.7 )"
 
-DOCS=(AUTHORS ChangeLog NEWS README.md ReleaseNotes )
+DOCS=( AUTHORS ChangeLog NEWS README.md ReleaseNotes )
 
 PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
