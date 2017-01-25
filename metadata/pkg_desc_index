@@ -1370,7 +1370,7 @@ app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-r4 11.1.3.3206955-r3 11.1.3.3206955-r4 12.1.0.3272444-r2: Emulate a complete PC without the performance overhead of most emulators
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
-app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.8.5 1.8.6 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19-r1 1.9.20 1.9.21 1.9.22 1.9.23 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.8.5 1.8.6 1.9.4-r3 1.9.5-r3 1.9.6-r3 1.9.7-r3 1.9.8-r2 1.9.9-r3 1.9.10-r3 1.9.11-r3 1.9.12-r2 1.9.13-r2 1.9.14-r2 1.9.15-r1 1.9.16 1.9.17 1.9.18 1.9.19-r1 1.9.20 1.9.21 1.9.22 1.9.23 2.0 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -2123,7 +2123,7 @@ app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.56 0.60 0.61 0.62 0.63 0.64: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.18 2.1.21: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.18 2.1.21 2.1.22: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/prefix-chain-setup 0.4-r5: Chained EPREFIX bootstrapping utility
 app-portage/repo-commit 0.4.1 9999: A repository commit helper
@@ -2545,7 +2545,7 @@ app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax high
 app-vim/ebnf-syntax 1.1-r1 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/editorconfig-vim 0.3.3-r2: vim plugin: Support EditorConfig files
 app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
-app-vim/enhancedcommentify 2.3 2.3-r1: vim plugin: enhanced comment creation
+app-vim/enhancedcommentify 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r1: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
@@ -2588,7 +2588,7 @@ app-vim/nagios-syntax 20050105: vim plugin: Nagios configuration files syntax
 app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.4.0: vim plugin: easy commenting of code for many filetypes
 app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
-app-vim/nerdtree-tabs 1.4.6 1.4.7: vim plugin: NERDTree and tabs in vim
+app-vim/nerdtree-tabs 1.4.7: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
 app-vim/notes 0.33.4: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001 20031001-r1: vim plugin: ntp.conf syntax highlighting
@@ -10429,26 +10429,26 @@ games-action/formido 1.0.1 1.0.1-r1: A shooting game in the spirit of Phobia gam
 games-action/garden 1.0.8-r1 1.0.9 1.0.9-r1: Multiplatform vertical shoot-em-up with non-traditional elements
 games-action/geki2-KXL 2.0.3-r2 2.0.3-r3: 2D length scroll shooting game
 games-action/geki3-KXL 1.0.3-r2 1.0.3-r3: 2D length scroll shooting game
-games-action/gltron 0.70-r1: 3d tron, just like the movie
+games-action/gltron 0.70-r1 0.70-r2: 3d tron, just like the movie
 games-action/heretic2 1.06c-r1: Third-person classic magical action-adventure game
 games-action/heretic2-demo 1.06a: Third-person classic magical action-adventure game
-games-action/heroes 0.21-r1: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
+games-action/heroes 0.21-r1 0.21-r2: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
 games-action/hotline-miami 1.0.9a_p20140221-r1: High-octane action game overflowing with raw brutality
 games-action/intrusion2 1.024: Fast paced action sidescroller set in a sci-fi environment
-games-action/koth 0.8.0: Multiplayer, networked game of little tanks with really big weapons
-games-action/lugaru 9999 20151204: 3D arcade with unique fighting system and anthropomorphic characters
-games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
+games-action/koth 0.8.0 0.8.0-r1: Multiplayer, networked game of little tanks with really big weapons
+games-action/lugaru 9999 20151204 20151204-r1: 3D arcade with unique fighting system and anthropomorphic characters
+games-action/luola 1.3.2 1.3.2-r1: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r2 3.0.6-r3: An asteroids battle game
 games-action/minetest 0.4.13 0.4.14: An InfiniMiner/Minecraft inspired game
 games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
-games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
+games-action/mutantstorm-demo 1.33 1.33-r1: shoot through crazy psychedelic 3D environments
 games-action/nighthawk 2.2 2.2-r1: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a 0.51a-r1: Abstract Shooting Game
-games-action/openastromenace 1.3.2: Modern 3D space shooter with spaceship upgrade possibilities
+games-action/openastromenace 1.3.2 1.3.2-r1: Modern 3D space shooter with spaceship upgrade possibilities
 games-action/openclonk 7.0: A free multiplayer action game where you control clonks
 games-action/openlierox 0.58_rc3 0.58_rc3-r1: Real-time excessive Worms-clone
-games-action/orbital-eunuchs-sniper 1.30: Snipe terrorists from your orbital base
+games-action/orbital-eunuchs-sniper 1.30 1.30-r1: Snipe terrorists from your orbital base
 games-action/phobiaii 1.1: Just a moment ago, you were safe inside your ship, behind five inch armour
 games-action/postalplus 1: Ultraviolent and controversial game featuring the Postal Dude
 games-action/powermanga 0.91 0.93.1 0.93.1-r1: An arcade 2D shoot-em-up game
@@ -18611,7 +18611,7 @@ x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
 x11-misc/bbtime 0.1.5: blackbox time watcher
 x11-misc/bbweather 0.6.3-r1: blackbox weather monitor
 x11-misc/blockdpy 1: Tool to block access via the physical display while x11vnc is running
-x11-misc/bumblebee 3.2.1: Service providing elegant and stable means of managing Optimus graphics chipsets
+x11-misc/bumblebee 3.2.1 3.2.1_p20170123 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
 x11-misc/cbatticon 1.3.2 1.6.4 1.6.5: A lightweight and fast battery icon that sits in your system tray
