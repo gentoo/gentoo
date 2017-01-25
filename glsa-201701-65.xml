@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-65">
+  <title>Oracle JRE/JDK: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JRE and JDK
+    software suites, the worst of which may allow execution of arbitrary code
+  </synopsis>
+  <product type="ebuild">jre,jdk,oracle</product>
+  <announced>2017-01-25</announced>
+  <revised>2017-01-25: 1</revised>
+  <bug>606118</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.121</unaffected>
+      <vulnerable range="lt">1.8.0.121</vulnerable>
+    </package>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.8.0.121</unaffected>
+      <vulnerable range="lt">1.8.0.121</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in in Oracle’s JRE and
+      JDK. Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, gain access to information, or cause a Denial
+      of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JRE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.121"
+    </code>
+    
+    <p>All Oracle JDK users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.121"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2183">CVE-2016-2183</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5546">CVE-2016-5546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5547">CVE-2016-5547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5548">CVE-2016-5548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5549">CVE-2016-5549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5552">CVE-2016-5552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-8328">CVE-2016-8328</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3231">CVE-2017-3231</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3241">CVE-2017-3241</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3252">CVE-2017-3252</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3253">CVE-2017-3253</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3259">CVE-2017-3259</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3260">CVE-2017-3260</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3261">CVE-2017-3261</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3262">CVE-2017-3262</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3272">CVE-2017-3272</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-3289">CVE-2017-3289</uri>
+    <uri link="http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html#AppendixJAVA">
+      Oracle Critical Patch Update Advisory - January 2017
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-21T22:56:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-25T13:04:35Z">whissi</metadata>
+</glsa>
