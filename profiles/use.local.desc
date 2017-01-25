@@ -7920,10 +7920,6 @@ sys-power/nvclock:gtk - Install the GTK+ based graphical interface
 sys-power/nvclock:nvcontrol - Add NVCONTROL support for OpenGL options
 sys-power/phctool:sudo - Enable support for sudo to run gui from non-root user
 sys-power/pm-utils:ntp - Install support for net-misc/ntp
-sys-power/powerman:genders - Add support for selecting power control targets using genders (-g option)
-sys-power/powerman:h8power - Add support for h8 based power controllers
-sys-power/powerman:httppower - Add support for HTTP based power controllers
-sys-power/powerman:snmppower - Add support for SNMP based power controllers
 sys-power/powermgmt-base:pm-utils - Adds support for on_ac_power through sys-power/pm-utils
 sys-power/sispmctl:gemplug - Install gemplug (management script)
 sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
