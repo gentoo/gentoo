@@ -89,7 +89,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	scrollview? ( >=virtual/jre-1.7 )"
 
-DOCS=(AUTHORS ChangeLog NEWS README.md ReleaseNotes )
+DOCS=( AUTHORS ChangeLog NEWS README.md ReleaseNotes )
 
 PATCHES=(
 	"${FILESDIR}/${P}-use-system-piccolo2d.patch"
