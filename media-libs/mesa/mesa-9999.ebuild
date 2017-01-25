@@ -18,7 +18,6 @@ inherit autotools multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
 OPENGL_DIR="xorg-x11"
 
 MY_P="${P/_/-}"
-FOLDER="${PV/_rc*/}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
@@ -27,7 +26,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
+	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
