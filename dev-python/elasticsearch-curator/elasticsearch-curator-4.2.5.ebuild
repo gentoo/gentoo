@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_PN="curator"
-ES_VERSION="5.1.1"
+ES_VERSION="5.1.2"
 
 inherit distutils-r1
 
@@ -32,7 +32,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
-		|| ( virtual/jre:1.8 virtual/jre:1.7 )
+		virtual/jre:1.8
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
@@ -41,31 +41,29 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-curator
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
 	ES_PORT="25123"
-	ES_LOG="${ES}/logs/elasticsearch.log"
+	ES_INSTANCE="gentoo-es-curator-test"
+	ES_LOG="${ES}/logs/${ES_INSTANCE}.log"
 	PID="${ES}/elasticsearch.pid"
 
 	# run Elasticsearch instance on custom port
 	sed -i "s/#http.port: 9200/http.port: ${ES_PORT}/g; \
-		s/#cluster.name: my-application/cluster.name: gentoo-es-curator-test/g" \
+		s/#cluster.name: my-application/cluster.name: ${ES_INSTANCE}/g" \
 		"${ES}/config/elasticsearch.yml" || die
 
-	# Elasticsearch 1.6+ needs to set path.repo
-	grep -q "^path.repo" "${ES}/config/elasticsearch.yml"
-	if [[ $? -ne 0 ]]; then
-		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml" || die
-	fi
-
 	# start local instance of elasticsearch
-	"${ES}/bin/elasticsearch" -d -p "${PID}" || die
+	"${ES}/bin/elasticsearch" -d -p "${PID}" -Edefault.path.repo=/ || die
 
 	local i
-	for i in {1..10}; do
-		grep -q "started" ${ES_LOG} 2> /dev/null
+	local es_started=0
+	for i in {1..15}; do
+		grep -q "started" "${ES_LOG}" 2> /dev/null
 		if [[ $? -eq 0 ]]; then
 			einfo "Elasticsearch started"
+			es_started=1
 			eend 0
 			break
 		elif grep -q 'BindException\[Address already in use\]' "${ES_LOG}" 2>/dev/null; then
@@ -80,6 +78,8 @@ python_test() {
 		fi
 	done
 
+	[[ $es_started -eq 0 ]] && die "Elasticsearch failed to start"
+
 	export TEST_ES_SERVER="localhost:${ES_PORT}"
 	esetup.py test || die
 
@@ -90,10 +90,10 @@ python_prepare_all() {
 	# avoid downloading from net
 	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
 
-	# test test_no_config fails because by default it connects
-	# to port 9200 and we run es on custom port
-	# https://github.com/elastic/curator/issues/843
-	sed -e '39,57d' -i test/integration/test_cli.py || die
+	# remove test TestCLIFixFor687 as it is only to be run on older versions
+	# and the call to curator.get_version(global_client) sometimes
+	# fails with Connection refused
+	sed -e '122,205d' -i test/integration/test_delete_indices.py || die
 
 	distutils-r1_python_prepare_all
 }
