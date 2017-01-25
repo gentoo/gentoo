@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
 
@@ -192,6 +192,7 @@ pkg_setup() {
 
 src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
+	eapply_user
 }
 
 multilib_src_configure() {

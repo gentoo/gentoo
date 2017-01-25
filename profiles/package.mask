@@ -333,11 +333,6 @@ games-rpg/valyriatear
 # No reverse dependencies. Masked for removal in 30 days.
 net-analyzer/snips
 
-# Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
-# Dead upstream, no maintainer and it hasn't been bumped
-# since 2013. Masking for removal in 30 days (wrt bug #489878)
-sys-power/powerman
-
 # Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
