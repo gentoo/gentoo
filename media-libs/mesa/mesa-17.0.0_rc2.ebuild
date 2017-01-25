@@ -97,9 +97,6 @@ RDEPEND="
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	llvm? (
 		video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
-		!video_cards_r600? (
-			video_cards_radeon? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
-		)
 		>=sys-devel/llvm-3.6.0:=[${MULTILIB_USEDEP}]
 	)
 	opencl? (
