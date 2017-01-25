@@ -18,7 +18,7 @@ SRC_URI="http://downloads.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug kerberos libressl mms-agent ssl +tools"
 
 RDEPEND="app-arch/snappy
