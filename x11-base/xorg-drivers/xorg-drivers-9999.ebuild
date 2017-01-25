@@ -152,7 +152,7 @@ PDEPEND="
 	video_cards_sunleo?        ( x11-drivers/xf86-video-sunleo )
 	video_cards_suntcx?        ( x11-drivers/xf86-video-suntcx )
 	video_cards_tdfx?          ( x11-drivers/xf86-video-tdfx )
-	video_cards_tegra?         ( x11-drivers/xf86-video-opentegra )
+	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_tga?           ( x11-drivers/xf86-video-tga )
 	video_cards_trident?       ( x11-drivers/xf86-video-trident )
 	video_cards_tseng?         ( x11-drivers/xf86-video-tseng )
