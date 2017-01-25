@@ -13,7 +13,7 @@ SRC_URI="https://codeload.github.com/grzegorzmazur/yacas/tar.gz/v1.6.1 -> ${P}.t
 
 SLOT="0/1"
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc gui java +jupyter static-libs"
 
 DEPEND=" dev-libs/jsoncpp
