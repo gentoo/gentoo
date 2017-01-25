@@ -36,6 +36,7 @@ multilib_src_configure() {
 		-DBUILD_DEMOS=False
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
+		-DBUILD_WSI_MIR_SUPPORT=False
 	)
 	cmake-utils_src_configure
 }
