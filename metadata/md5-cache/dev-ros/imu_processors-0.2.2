@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/roscpp dev-ros/tf dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-ros/geometry_msgs[ros_messages_cxx(-)] dev-ros/nav_msgs[ros_messages_cxx(-)] sys-devel/make >=dev-util/cmake-3.5.2 dev-util/catkin dev-python/empy
+DESCRIPTION=Processors for sensor_msgs::Imu data
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/imu_processors
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/roscpp dev-ros/tf dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-ros/geometry_msgs[ros_messages_cxx(-)] dev-ros/nav_msgs[ros_messages_cxx(-)] dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-perception/imu_pipeline/archive/0.2.2.tar.gz -> imu_pipeline-0.2.2.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1d9c29e132c8c7482e2a7406311b17b9

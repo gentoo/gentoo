@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-devel/make >=dev-util/cmake-3.5.2 dev-util/catkin dev-python/empy
+DESCRIPTION=JSON API to ROS functionality for non-ROS programs
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/rosbridge_suite
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ros/rosapi dev-ros/rosbridge_library dev-ros/rosbridge_server dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/RobotWebTools/rosbridge_suite/archive/0.7.17.tar.gz -> rosbridge_suite-0.7.17.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=08fa93daf502b261a782f3703b5f8ac1

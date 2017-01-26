@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/tf2_msgs[ros_messages_cxx(-)] dev-libs/console_bridge dev-ros/rostime dev-ros/geometry_msgs[ros_messages_cxx(-)] dev-libs/boost:=[threads] sys-devel/make >=dev-util/cmake-3.5.2 dev-util/catkin dev-python/empy
+DESCRIPTION=The second generation Transform Library in ROS
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/tf2
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/tf2_msgs[ros_messages_cxx(-)] dev-libs/console_bridge dev-ros/rostime dev-ros/geometry_msgs[ros_messages_cxx(-)] dev-libs/boost:=[threads] dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros/geometry2/archive/0.5.15.tar.gz -> geometry2-0.5.15.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	fa4d8052a1ccf4fbbfa76361bffebe42	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a8b4969a42024e9524e5d297e0c0b61e
