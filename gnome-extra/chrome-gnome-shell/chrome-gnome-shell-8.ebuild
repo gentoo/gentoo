@@ -24,7 +24,7 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 "
 RDEPEND="${PYTHON_DEPS}
-	dev-python/requests
+	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	gnome-base/gnome-shell
 "
