@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Mike Gilbert <floppym@gentoo.org> (26 Jan 2017)
+# Needs >=media-video/ffmpeg-3
+www-client/chromium system-ffmpeg
+
 # Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
