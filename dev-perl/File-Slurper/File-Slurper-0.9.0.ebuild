@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A simple, sane and efficient module to slurp a file"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
