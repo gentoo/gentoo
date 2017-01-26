@@ -17,7 +17,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	>=dev-ml/findlib-1.5"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="examples"
 
 DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )
