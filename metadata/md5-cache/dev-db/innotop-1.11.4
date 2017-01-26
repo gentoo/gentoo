@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/DBI dev-perl/DBD-mysql dev-perl/TermReadKey virtual/perl-Term-ANSIColor virtual/perl-Time-HiRes dev-lang/perl:=
+DESCRIPTION=A text-mode MySQL and InnoDB monitor like mytop, but with many more features
+EAPI=6
+HOMEPAGE=https://github.com/innotop/innotop
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=https://github.com/innotop/innotop/archive/v1.11.4.tar.gz -> innotop-1.11.4.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=e81eb122423ead8c42566fcbdfa01cdc
