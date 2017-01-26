@@ -16337,7 +16337,7 @@ sci-libs/orocos_kdl 1.3.0-r1 1.3.1 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear systems
-sci-libs/pcl 1.7.2 1.8.0 9999: 2D/3D image and point cloud processing
+sci-libs/pcl 1.8.0 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.11.1-r1: Multi-language scientific plotting library
@@ -17356,7 +17356,7 @@ sys-cluster/singularity 2.2: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.9.0 2.10.0 2.10.0-r1 2.10.1: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
-sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.1.0: Resource manager and queuing system based on OpenPBS
+sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
@@ -18169,7 +18169,7 @@ www-apps/webdavcgi 0.8.3 0.8.4 1.1.1: A Perl CGI for accessing and sharing files
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 4.4.2 4.5.3 4.6.1 4.7 4.7.1: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 4.4.2 4.5.3 4.6.1 4.7 4.7.1 4.7.2: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 55.0.2883.75 56.0.2924.76 57.0.2986.0 57.0.2987.8: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
