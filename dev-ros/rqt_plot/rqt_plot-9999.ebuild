@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,7 @@ IUSE=""
 
 RDEPEND="
 	|| ( dev-python/matplotlib[${PYTHON_USEDEP}] dev-python/pyqwt:5[${PYTHON_USEDEP}] )
+	dev-python/pyqtgraph[${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-ros/qt_gui_py_common[${PYTHON_USEDEP}]
@@ -28,5 +29,6 @@ RDEPEND="
 	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
