@@ -1,0 +1,33 @@
+Adds checking if python is disabled around test if python libraries are installed.
+
+This patch is a slightly cleaned up copy of 4.2.7-nopython-lib_tevent_wscript.patch
+from below package of patches used to disable python in the samba ebuild.
+
+https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.5.0_rc1.tar.xz
+
+--- lib/tevent/wscript
++++ lib/tevent/wscript
+@@ -34,11 +34,13 @@
+
+     conf.env.standalone_tevent = conf.IN_LAUNCH_DIR()
+
++    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
++
+     if not conf.env.standalone_tevent:
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('tevent', minversion=VERSION,
+                                      onlyif='talloc', implied_deps='replace talloc'):
+             conf.define('USING_SYSTEM_TEVENT', 1)
+-            if conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytevent', 'tevent', minversion=VERSION):
++            if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytevent', 'tevent', minversion=VERSION):
+                 conf.define('USING_SYSTEM_PYTEVENT', 1)
+
+     if conf.CHECK_FUNCS('epoll_create', headers='sys/epoll.h'):
+@@ -61,8 +63,6 @@
+     if not conf.CONFIG_SET('USING_SYSTEM_TEVENT'):
+         conf.DEFINE('TEVENT_NUM_SIGNALS', tevent_num_signals)
+
+-    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
+-
+     if not conf.env.disable_python:
+         # also disable if we don't have the python libs installed
+         conf.find_program('python', var='PYTHON')
