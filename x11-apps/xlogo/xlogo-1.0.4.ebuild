@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,4 +21,4 @@ RDEPEND="x11-libs/libXrender
 	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
-CONFIGURE_OPTIONS="--with-render"
+XORG_CONFIGURE_OPTIONS="--with-render"
