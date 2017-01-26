@@ -1,7 +1,7 @@
 app-accessibility/SphinxTrain 0.9.1-r1 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.14.0-r1 3.22.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.16.0-r1 2.18.1 2.20.1 2.22.0: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.16.0 2.18.3 2.20.2 2.22.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.20.1 2.22.0: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.20.2 2.22.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.20 0.4.21: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
@@ -524,7 +524,7 @@ app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.16.0 3.18.0 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
@@ -2303,7 +2303,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3 1.3.4 1.4.2 1.5.3 1.5.4 1.6.0: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.63 3.68 3.70 3.74: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.70 3.74: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.4 1.5.5: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1: Java GUI for managing BibTeX and other bibliographies
@@ -2326,7 +2326,7 @@ app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.1.6 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
-app-text/libgxps 0.2.3.2 0.2.4: Library for handling and rendering XPS documents
+app-text/libgxps 0.2.4: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.2 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.8 0.3.9 9999: Library parsing many pre-OSX MAC text formats
@@ -2469,7 +2469,7 @@ app-text/winefish 1.3.3-r2: LaTeX editor based on Bluefish
 app-text/wklej 0.2.1-r1: A wklej.org submitter
 app-text/writerperfect 0.9.5: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
-app-text/wv 1.2.9-r1 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
+app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.22 1.2.24 1.4.1 1.4.2: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
@@ -2831,14 +2831,14 @@ dev-cpp/eigen 2.0.17 3.2.8-r2 3.2.9 3.2.10 3.3.1: C++ template library for linea
 dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
-dev-cpp/glibmm 2.44.0 2.46.4 2.48.1 2.50.0: C++ interface for glib2
+dev-cpp/glibmm 2.48.1 2.50.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4 0.3.4-r1: Google's C++ logging library
 dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0 1.7.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
-dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 2.24.5 3.18.1 3.20.1 3.22.0: C++ interface for GTK+
+dev-cpp/gtkmm 2.24.5 3.20.1 3.22.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.86: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
@@ -2859,7 +2859,7 @@ dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, ful
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 0.9.10: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.3 2.2.5: Library for parsing mathematical expressions
-dev-cpp/pangomm 2.36.0 2.38.1 2.40.0 2.40.1: C++ interface for pango
+dev-cpp/pangomm 2.40.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
@@ -4542,7 +4542,7 @@ dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
-dev-libs/atk 2.16.0-r1 2.18.0 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.20.0 2.22.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: bareos fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.46: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/beecrypt 4.2.1-r3 4.2.1-r4: General-purpose cryptography library
@@ -4623,15 +4623,15 @@ dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 9999: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.44.0 1.45.4 1.46.0: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r3 2.48.2 2.50.0 2.50.1 2.50.2: The GLib library of C routines
+dev-libs/gjs 1.45.4 1.46.0: Javascript bindings for GNOME
+dev-libs/glib 1.2.10-r6 2.44.1-r1 2.48.2 2.50.2: The GLib library of C routines
 dev-libs/gmime 2.6.20-r3 2.6.22 2.6.23: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1 6.1.2: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2016.12.21.08.39.01 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
-dev-libs/gobject-introspection 1.44.0 1.46.0 1.48.0 1.50.0: Introspection system for GObject-based libraries
-dev-libs/gobject-introspection-common 1.44.0 1.46.0 1.48.0 1.50.0: Build infrastructure for GObject Introspection
+dev-libs/gobject-introspection 1.48.0 1.50.0: Introspection system for GObject-based libraries
+dev-libs/gobject-introspection-common 1.48.0 1.50.0: Build infrastructure for GObject Introspection
 dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.1.0 0.2.1 0.2.3.1 0.3.0: A development library for elementary development
 dev-libs/grantlee 0.4.0 5.1.0: C++ string template engine based on the Django template system
@@ -4659,7 +4659,7 @@ dev-libs/jansson 2.9: C library for encoding, decoding and manipulating JSON dat
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.4.0: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
-dev-libs/json-glib 1.0.4 1.2.0 1.2.2: Library providing GLib serialization and deserialization for the JSON format
+dev-libs/json-glib 1.2.2: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 0.10.2-r1 0.10.6 1.7.5 1.8.0: C++ JSON reader and writer
 dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
@@ -4747,7 +4747,7 @@ dev-libs/libgit2-glib 0.24.4: Git library for GLib
 dev-libs/libgnome-games-support 1.2.1: Library for code commong to Gnome games
 dev-libs/libgpg-error 1.24 1.25 1.26: Contains error handling functions used by GnuPG software
 dev-libs/libgpuarray 0.6.0_rc1: Library to manipulate tensors on the GPU
-dev-libs/libgudev 230 230-r1: GObject bindings for libudev
+dev-libs/libgudev 230-r1: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.20.3 3.20.4: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
@@ -4759,7 +4759,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.1.0 1.1.5 1.3.3 1.4.2 1.5.4 1.6.0: Library to handle input devices in Wayland
+dev-libs/libinput 1.4.2 1.5.4 1.6.0: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.3.8 1.4.6: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.6: Open-source library for reading, mastering and writing optical discs
@@ -4835,7 +4835,7 @@ dev-libs/libressl 2.3.7 2.3.8 2.3.9 2.4.2 2.4.3 2.4.4 2.5.0: Free version of the
 dev-libs/librevenge 0.0.4 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 0.1.1 9999: Cross platform serial port access library
-dev-libs/libsigc++ 1.2.7 2.4.1 2.6.2 2.8.0 2.10.0: Typesafe callback system for standard C++
+dev-libs/libsigc++ 1.2.7 2.8.0 2.10.0: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10: library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.2 1.0.8 1.0.10 1.0.11: A portable fork of NaCl, a higher-level cryptographic library
@@ -5007,7 +5007,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.28.1 0.30.1 0.32.1 0.34.3: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.32.1 0.34.3: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0 1.3.0: SIMD Vector Class Library for C++
@@ -7534,7 +7534,7 @@ dev-python/graph-tool 2.2.44 2.16 2.19 9999: An efficient python module for mani
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.5 0.4.10 0.4.11: Lightweight in-process concurrent programming
-dev-python/gst-python 0.10.22-r1 1.2.1 1.4.0 1.6.2 1.8.2 1.8.3: A Python Interface to GStreamer
+dev-python/gst-python 0.10.22-r1 1.8.3: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 1.0.3-r1 2.1.1 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
@@ -8041,7 +8041,7 @@ dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.24.2 0.25.0: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.0.2-r2 2.1 2.1.1 2.1.3: Pygments is a syntax highlighting package written in Python
-dev-python/pygobject 2.28.6-r55 3.16.2 3.18.2 3.20.1 3.22.0: GLib's GObject library bindings for Python
+dev-python/pygobject 2.28.6-r55 3.20.1 3.22.0: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.0_rc1: Python bindings to libgpuarray
@@ -10094,12 +10094,12 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.2 2.50.0 2.50.1 2.50.2: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.48.2 2.50.2: GDBus code and documentation generator
 dev-util/geany 1.28 1.29-r1: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.28-r1: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/glade 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
+dev-util/glade 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a specified object in various sources
 dev-util/gnome-devel-docs 3.20.2 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
@@ -10108,10 +10108,10 @@ dev-util/gource 0.44: A software version control visualization tool
 dev-util/gperf 3.0.4 3.1: A perfect hash function generator
 dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
-dev-util/gtk-builder-convert 2.24.28 2.24.30 2.24.31 2.24.31-r1: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.24 1.25 1.25-r1: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.24 1.25 1.25-r1: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.16.7 3.18.4 3.20.9 3.22.2: GTK update icon cache
+dev-util/gtk-builder-convert 2.24.31 2.24.31-r1: Converts Glade files to GtkBuilder XML format
+dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
+dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
+dev-util/gtk-update-icon-cache 3.20.9 3.22.2: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.9: A code search tool
 dev-util/huc 0.1: HTML umlaut conversion tool
@@ -11328,7 +11328,7 @@ games-util/xgame 1.7.1 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.24.0 0.26.0 0.26.0-r1: Simple low-level configuration system
+gnome-base/dconf 0.26.0 0.26.0-r1: Simple low-level configuration system
 gnome-base/dconf-editor 3.20.3 3.22.1: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.20.1 3.22.1-r1: GNOME Display Manager for managing graphical display servers and user logins
@@ -11339,16 +11339,16 @@ gnome-base/gnome-core-apps 3.20.0 3.22.0: Sub-meta package for the core applicat
 gnome-base/gnome-core-libs 3.20.0 3.20.0-r1 3.22.0: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.20.2 3.22.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.20.0 3.22.0: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1 3.20.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.20.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.20.0 3.22.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.20.2 3.22.2: Gnome session manager
 gnome-base/gnome-settings-daemon 3.20.1 3.20.2 3.22.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.20.4 3.22.2: Provides core UI functions for the GNOME 3 desktop
-gnome-base/gnome-vfs 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1 3.20.0 3.22.0: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.3-r1 1.30.2 1.30.3: Virtual filesystem implementation for gio
+gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
+gnome-base/gsettings-desktop-schemas 3.20.0 3.22.0: Collection of GSettings schemas for GNOME desktop
+gnome-base/gvfs 1.28.3-r1 1.30.3: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -11359,10 +11359,10 @@ gnome-base/libgnomekbd 3.6.0 3.22.0.1: Gnome keyboard configuration library
 gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1 2.18.6-r2: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
-gnome-base/libgtop 2.30.0 2.34.1 2.34.2: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.15 2.40.16: Scalable Vector Graphics (SVG) rendering library
+gnome-base/libgtop 2.34.1 2.34.2: A library that provides top functionality to applications
+gnome-base/librsvg 2.40.16: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.20.3 3.20.4 3.22.1 3.22.2: A file manager for the GNOME desktop
-gnome-base/orbit 2.14.19-r4 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
+gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
@@ -11413,7 +11413,7 @@ gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0 9.0.1 9.0.2: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 9.0.0 9.0.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r1 5.2.4-r2: GNOME database access library
 gnome-extra/libgsf 1.14.34 1.14.36 1.14.40 1.14.41: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
@@ -11429,7 +11429,7 @@ gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and dec
 gnome-extra/sushi 3.20.0 3.21.91: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.1 0.2.99.2: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.20.1 3.22.0: Help browser for GNOME
-gnome-extra/yelp-xsl 3.16.1 3.18.1 3.20.1: XSL stylesheets for yelp
+gnome-extra/yelp-xsl 3.20.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
@@ -12230,7 +12230,7 @@ media-fonts/artwiz-aleczapka-en 1.3: Artwiz Aleczapko fonts
 media-fonts/artwiz-latin1 1.1: A set of improved Artwiz fonts with bold and full ISO-8859-1 support
 media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0: Cyberbit Unicode (including CJK) font
-media-fonts/cantarell 0.0.18.1 0.0.22 0.0.24 0.0.25: Default fontset for GNOME Shell
+media-fonts/cantarell 0.0.25: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
@@ -12773,7 +12773,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.3.3 0.3.3-r1: libhal stub forwarding to UDisks for Adobe Flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.2.7 1.3.1 1.3.4 1.4.1 1.4.2 9999: An OpenType text shaping engine
+media-libs/harfbuzz 1.3.1 1.3.4 1.4.1 1.4.2 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -12805,7 +12805,7 @@ media-libs/libaacs 0.7.1 0.8.0 0.8.1: Open implementation of the Advanced Access
 media-libs/libafterimage 1.20 1.20-r1 1.20-r2: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.0: The Audio Output library
 media-libs/libaom 9999: Alliance for Open Media AV1 Codec SDK
-media-libs/libart_lgpl 2.3.21-r2 2.3.21-r3: A LGPL version of libart
+media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.11.2 0.12.3 0.13.0 0.13.1 0.13.2 0.13.3 0.13.4 0.13.5 0.13.6: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 0.6.2 0.8.1 0.9.0 0.9.1 0.9.2 0.9.3 9999: Blu-ray playback libraries
@@ -13696,7 +13696,7 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.2.0: Audio tag editor
-media-sound/pulseaudio 7.1 8.0 9.0 10.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 9.0 10.0: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -14558,7 +14558,7 @@ net-im/slack-bin 2.1.2 2.3.4 2.4.2: Team collaboration tool
 net-im/telegram-desktop-bin 1.0.0 1.0.2: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
-net-im/telepathy-mission-control 5.16.3 5.16.3-r1 5.16.4: An account manager and channel dispatcher for the Telepathy framework
+net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/toxic 0.7.1: A curses-based client for Tox.
 net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
@@ -14646,18 +14646,18 @@ net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
-net-libs/farstream 0.1.2-r2 0.2.7 0.2.8 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
+net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
-net-libs/glib-networking 2.44.0 2.46.1 2.48.2 2.50.0: Network-related giomodules for glib
+net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.17 1.0.18: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.20.5 3.22.1 3.22.2 3.22.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.24-r1 3.3.25 3.3.26 3.5.8: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 0.14.14 0.14.15 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
-net-libs/gupnp 0.20.16 0.20.17 0.20.18: An object-oriented framework for creating UPnP devs and control points
+net-libs/gupnp 0.20.18: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.8 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
@@ -14712,7 +14712,7 @@ net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
-net-libs/libndp 1.6 1.6-r1: Library for Neighbor Discovery Protocol
+net-libs/libndp 1.6-r1: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.1.6 1.1.6-r1 1.2_rc3 1.2_rc3-r1: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.5 1.0.6: programming interface (API) to the in-kernel connection tracking state table
@@ -14749,7 +14749,7 @@ net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1 2.56.0: An HTTP library implementation in C
+net-libs/libsoup 2.54.1-r1 2.56.0: An HTTP library implementation in C
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1 1.5.4 2.0.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3-r1 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0 9999: Library implementing the SSH2 protocol
@@ -15115,7 +15115,7 @@ net-misc/minissdpd 1.5.20160301 1.5.20161216: MiniSSDP Daemon
 net-misc/miniupnpd 2.0: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
-net-misc/modemmanager 1.4.12 1.4.14 1.6.4: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.4 1.2.5 1.2.5-r1 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
@@ -15145,7 +15145,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.0.12-r1 1.4.0-r1 1.4.4 1.4.4-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.4.0-r1 1.4.4 1.4.4-r1: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-fortisslvpn 1.2.2: NetworkManager Fortinet SSLVPN compatible plugin
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2 1.2.4: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
@@ -16825,7 +16825,7 @@ sec-policy/selinux-xprint 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r
 sec-policy/selinux-xscreensaver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 9999: SELinux policy for xscreensaver
 sec-policy/selinux-xserver 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 9999: SELinux policy for zabbix
-sys-apps/accountsservice 0.6.40 0.6.42 0.6.43: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.42 0.6.43: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.14: ack is a tool like grep, aimed at programmers with large trees of heterogeneous source code
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
@@ -17883,7 +17883,7 @@ virtual/mta 0 1: Virtual for Message Transfer Agents
 virtual/mysql 5.5-r1 5.6-r6 5.6-r7 5.6-r8 5.6-r9: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
-virtual/opencl 0-r4: Virtual for OpenCL implementations
+virtual/opencl 0-r4 0-r5: Virtual for OpenCL implementations
 virtual/opengl 7.0 7.0-r1: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 0: Virtual for the package manager
@@ -18453,7 +18453,7 @@ x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and 
 x11-libs/fltk 1.3.3-r3 1.3.3-r5 1.3.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0 2.36.2: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.34.0 2.36.2: Image loading library for GTK+
 x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8 1.3.9: OpenGL to PostScript printing library
@@ -18461,7 +18461,7 @@ x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r2 0.10.29 0.10.31 0.10.32: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.30 2.24.31 2.24.31-r1 3.16.7 3.18.9 3.20.9 3.22.4 3.22.5: Gimp ToolKit +
+x11-libs/gtk+ 1.2.10-r13 2.24.31 2.24.31-r1 3.20.9 3.22.5: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.0 3.3.3: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0 0.9.3.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
@@ -18469,7 +18469,7 @@ x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r3 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.16.1 3.18.2 3.20.4 3.22.1 3.22.2: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.20.4 3.22.2: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tasks
@@ -18540,7 +18540,7 @@ x11-libs/libva 1.6.2 1.7.3 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 1.7.2 1.7.3 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4 9999: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
-x11-libs/libwnck 2.31.0 3.14.0 3.14.1 3.20.0 3.20.1: A window navigation construction kit
+x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1 0.7.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
@@ -18555,7 +18555,7 @@ x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.5 2.3.6 2.3.6-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
-x11-libs/pango 1.36.8-r1 1.38.1 1.40.1 1.40.2 1.40.3: Internationalized text layout and rendering library
+x11-libs/pango 1.40.3: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.9.2-r1 2.9.4: A Qt port of Neil Hodgson's Scintilla C++ editor class
@@ -18569,7 +18569,7 @@ x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
-x11-libs/vte 0.28.2-r207 0.28.2-r208 0.36.5 0.40.2 0.42.5 0.44.2 0.44.3 0.46.1: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r207 0.28.2-r208 0.36.5 0.44.2 0.44.3 0.46.1: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r3 3.0.2.0-r300 3.0.2.0-r301: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.0.2-r1: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
@@ -19144,7 +19144,7 @@ x11-terms/xterm 314 320 325 326 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
-x11-themes/adwaita-icon-theme 3.16.2.2 3.18.0 3.20 3.22.0: GNOME default icon theme
+x11-themes/adwaita-icon-theme 3.20 3.22.0: GNOME default icon theme
 x11-themes/arc-icon-theme 20160605: Vertex icon theme
 x11-themes/arc-theme 20161119: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4: Collection of XMMS themes for Audacious
@@ -19187,7 +19187,7 @@ x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gen
 x11-themes/gnome-icon-theme 3.12.0: GNOME default icon theme
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
 x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME default icon theme
-x11-themes/gnome-themes-standard 3.16.2 3.18.0 3.20.2 3.20.2-r1 3.22.2: Standard Themes for GNOME Applications
+x11-themes/gnome-themes-standard 3.20.2 3.20.2-r1 3.22.2: Standard Themes for GNOME Applications
 x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original NeXT look and feel
 x11-themes/gnustep-silver-theme 2.5 3.1: a GNUstep silver theme
 x11-themes/goddard-backgrounds 13.0.0.3: Fedora official background artwork

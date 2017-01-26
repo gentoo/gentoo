@@ -5554,7 +5554,6 @@ net-im/telepathy-connection-managers:steam - Enable Steam Chat support.
 net-im/telepathy-connection-managers:xmpp - Enable XMPP protocol handler (this is also Google Talk).
 net-im/telepathy-connection-managers:yahoo - Enable Yahoo! messaging support.
 net-im/telepathy-connection-managers:zeroconf - Enable Link-Local Messaging via the zeroconf or Bonjour protocol.
-net-im/telepathy-mission-control:systemd - Rely on systemd's logind to detect suspend and resume
 net-im/tkabber:plugins - Enables installation the extra plugins
 net-im/toxic:av - Enables audio calling and/or audio notifications
 net-im/toxic:notifications - Enables desktop notifications with libnotify
