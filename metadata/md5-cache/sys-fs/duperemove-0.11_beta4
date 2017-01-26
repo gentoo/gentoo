@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-db/sqlite:3= dev-libs/glib:2=
+DESCRIPTION=Btrfs deduplication utility
+EAPI=6
+HOMEPAGE=https://github.com/markfasheh/duperemove
+KEYWORDS=~amd64
+LICENSE=GPL-2 GPL-2+ BSD-2
+RDEPEND=dev-db/sqlite:3= dev-libs/glib:2=
+SLOT=0
+SRC_URI=https://github.com/markfasheh/duperemove/archive/v0.11.beta4.tar.gz -> duperemove-0.11.beta4.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=d9c87ddeb18c0585b4cfd9747bc9a4ac
