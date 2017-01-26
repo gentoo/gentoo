@@ -10135,7 +10135,7 @@ dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
 dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.19.1 2.19.4 2.26 2.27 2.28 2.33 2.38: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kcov 33: Kcov is a code coverage tester for compiled languages, Python and Bash
+dev-util/kcov 33 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 2.5.6 2.9.0: Graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.4 5.0.3: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0 2.0.0 2.0.0-r1: LL(1) parser generator used mainly by KDevelop language plugins
@@ -16553,7 +16553,7 @@ sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensio
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r4 4.4.4-r5: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 4.1.0-r2 5.1.2: ParaView is a powerful scientific data visualization application
+sci-visualization/paraview 4.1.0-r2 5.1.2 5.1.2-r1: ParaView is a powerful scientific data visualization application
 sci-visualization/pythonprop 0.13 0.18: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2: Gnuplot like graphing program publication-quality figures
 sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
