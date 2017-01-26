@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="qwt"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="qt4 qt5"
+IUSE="+qt4 qt5"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
