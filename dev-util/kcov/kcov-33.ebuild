@@ -14,5 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-libs/elfutils"
+RDEPEND="
+	dev-libs/elfutils
+	net-misc/curl
+	sys-devel/binutils:*
+	sys-libs/zlib"
 DEPEND="${RDEPEND}"
