@@ -19,7 +19,11 @@ net-misc/curl curl_ssl_axtls curl_ssl_polarssl metalink
 dev-libs/efl physics
 
 # Needs testing.
-sys-devel/gcc gcj graphite regression-test
+sys-devel/gcc graphite regression-test
+
+# Roy Bamford <neddyseagoon@gentoo.org> (26 Jan 2017)
+# gcj-6.3 won't bootstrap icedtea 7
+>=sys-devel/gcc-6 gcj
 
 # Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
 # no keyword for media-libs/swfdec and media-libs/libtimidity
