@@ -166,8 +166,6 @@ src_configure() {
 		$(use_enable dmx)
 		$(use_enable glamor)
 		$(use_enable kdrive)
-		$(use_enable kdrive kdrive-kbd)
-		$(use_enable kdrive kdrive-mouse)
 		$(use_enable kdrive kdrive-evdev)
 		$(use_enable suid install-setuid)
 		$(use_enable tslib)
