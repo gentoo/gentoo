@@ -11,7 +11,7 @@ inherit perl-module
 
 DESCRIPTION="Provides interoperable MD5-based crypt() functions"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
 
 DEPEND="dev-perl/Module-Build"
 
