@@ -28,8 +28,8 @@ fi
 PATCH="${PN}-45.0-patches-10"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
-MOZCONFIG_OPTIONAL_GTK3=1
-MOZCONFIG_OPTIONAL_QT5=1
+# Kill gtk3 support since gtk+-3.20 breaks it hard prior to 48.0
+#MOZCONFIG_OPTIONAL_GTK3=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 
@@ -54,9 +54,7 @@ SRC_URI="${SRC_URI}
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 # Mesa 7.10 needed for WebGL + bugfixes
-# gtk3 from 3.20 and above fails hard, limit it
 RDEPEND="
-	gtk3? ( <x11-libs/gtk+-3.20 )
 	>=dev-libs/nss-3.21.1
 	>=dev-libs/nspr-4.12
 	selinux? ( sec-policy/selinux-mozilla )"
@@ -131,8 +129,7 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox" \
-		"${FILESDIR}"/${PN}-45-qt-widget-fix.patch
+	eapply "${WORKDIR}/firefox"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
