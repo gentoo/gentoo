@@ -130,8 +130,8 @@ multilib_src_configure() {
 
 	# https://github.com/openssl/openssl/issues/2286
 	if use ia64 ; then
-		filter-flags -g3
-		filter-flags -ggdb3
+		replace-flags -g3 -g2
+		replace-flags -ggdb3 -ggdb2
 	fi
 
 	local sslout=$(./gentoo.config)
