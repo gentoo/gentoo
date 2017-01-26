@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,8 +28,8 @@ IUSE="examples ieee1394 openni2 qt5"
 
 RDEPEND="
 	media-libs/opencv:=[qt5(-)?]
-	sci-libs/pcl[openni,vtk]
-	sci-libs/vtk[qt5(-)?]
+	sci-libs/pcl:=[openni,vtk]
+	sci-libs/vtk:=[qt5(-)?]
 	sys-libs/zlib
 	sci-libs/octomap:=
 	ieee1394? ( media-libs/libdc1394 )
