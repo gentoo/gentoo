@@ -196,4 +196,5 @@ clvm
 opencl
 
 # No arm64 java support yet.
-java
+# java
+# Mask removed by Roy Bamford <neddyseagoon@gentoo.org> (26 Jan 2017)
