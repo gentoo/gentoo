@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,8 @@ LICENSE="BSD MIT"
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
+	!=media-libs/glew-1.10*:0"
 
 DEPEND="${RDEPEND}
 	x11-libs/libX11
@@ -38,20 +39,30 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+glew_system() {
+	# Set the SYSTEM variable instead of probing. #523444 #595280
+	case ${CHOST} in
+	*linux*)          echo "linux" ;;
+	*-freebsd*)       echo "freebsd" ;;
+	*-darwin*)        echo "darwin" ;;
+	*-solaris*)       echo "solaris" ;;
+	mingw*|*-mingw*)  echo "mingw" ;;
+	*) die "Unknown system ${CHOST}" ;;
+	esac
+}
+
 set_opts() {
 	myglewopts=(
 		AR="$(tc-getAR)"
 		STRIP=true
 		CC="$(tc-getCC)"
 		LD="$(tc-getCC) ${LDFLAGS}"
+		SYSTEM="$(glew_system)"
 		M_ARCH=""
 		LDFLAGS.EXTRA=""
 		LDFLAGS.GL="-lGL" # Don't need X libs!
 		POPT="${CFLAGS}"
 	)
-
-	# support MinGW targets (bug #523444)
-	[[ ${CHOST} == *-mingw* ]] && myglewopts+=( SYSTEM=mingw )
 }
 
 multilib_src_compile() {

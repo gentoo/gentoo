@@ -13,7 +13,7 @@ HOMEPAGE="http://gcmd.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="chm doc exif gsf pdf python taglib"
 
 RDEPEND="app-text/gnome-doc-utils

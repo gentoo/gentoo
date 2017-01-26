@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/openssl:0
 	gnome-base/libgnome-keyring
 	net-libs/libmicrohttpd
-	net-libs/libupnp
+	net-libs/libupnp:0
 	sys-libs/zlib
 	cli? (
 		dev-libs/protobuf
@@ -101,7 +101,7 @@ src_prepare() {
 		retroshare-gui/src/retroshare-gui.pro \
 		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	eapply_user
 }
 

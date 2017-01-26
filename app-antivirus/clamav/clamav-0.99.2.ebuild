@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,12 +46,15 @@ pkg_setup() {
 src_prepare() {
 	use ppc64 && append-flags -mminimal-toc
 	use uclibc && export ac_cv_type_error_t=yes
+
+	epatch "${FILESDIR}"/${P}-gcc-6.patch #592432
 }
 
 src_configure() {
 	econf \
 		--disable-experimental \
 		--disable-fanotify \
+		--disable-zlib-vcheck \
 		--enable-id-check \
 		--with-dbdir="${EPREFIX}"/var/lib/clamav \
 		--with-system-tommath \

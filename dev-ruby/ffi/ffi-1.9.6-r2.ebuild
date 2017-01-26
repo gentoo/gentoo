@@ -6,7 +6,7 @@ EAPI=5
 
 # jruby → unneeded, this is part of the standard JRuby distribution, and
 # would just install a dummy.
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 

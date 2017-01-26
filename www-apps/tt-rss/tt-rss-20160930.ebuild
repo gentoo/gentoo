@@ -12,16 +12,16 @@ SRC_URI="https://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~mips ~x86"
-IUSE="daemon +mysql postgres"
+IUSE="daemon +mysqli postgres"
 
 DEPEND="
-	daemon? ( dev-lang/php:*[mysql?,postgres?,pcntl,curl] )
-	!daemon? ( dev-lang/php:*[mysql?,postgres?,curl] )
+	daemon? ( dev-lang/php:*[mysqli?,postgres?,pcntl,curl] )
+	!daemon? ( dev-lang/php:*[mysqli?,postgres?,curl] )
 	virtual/httpd-php:*
 "
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="|| ( mysql postgres )"
+REQUIRED_USE="|| ( mysqli postgres )"
 
 need_httpd_cgi  # From webapp.eclass
 
@@ -38,7 +38,7 @@ src_prepare() {
 	# Customize config.php-dist so that the right 'DB_TYPE' is already set (according to the USE flag)
 	einfo "Customizing config.php-dist..."
 
-	if use mysql && ! use postgres; then
+	if use mysqli && ! use postgres; then
 			sed -i \
 				-e "/define('DB_TYPE',/{s:pgsql:mysql:}" \
 				config.php-dist || die

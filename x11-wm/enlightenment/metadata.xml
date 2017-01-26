@@ -8,7 +8,6 @@
 <use>
 	<flag name="pango">Enable pango font rendering</flag>
 	<flag name="xrandr">Enable support for the X xrandr extension</flag>
-	<flag name="udev">Use sys-fs/udev to determine available devices</flag>
 	<flag name="ukit">Use upower/udisks to automount devices</flag>
 	<flag name="enlightenment_modules_appmenu">Gadget that hold the toolbar of the foreground application</flag>
 	<flag name="enlightenment_modules_backlight">Backlight control slider gadget</flag>

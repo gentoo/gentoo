@@ -37,7 +37,7 @@ CDEPEND="
 	dev-cpp/sparsehash
 	dev-libs/boost:=
 	dev-libs/qtkeychain:=[qt5]
-	dev-libs/quazip[qt5]
+	>=dev-libs/quazip-0.7.2[qt5]
 	>=media-libs/libechonest-2.3.1:=[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
@@ -53,15 +53,12 @@ DEPEND="${CDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 RDEPEND="${CDEPEND}
-	app-crypt/qca:2[openssl]
+	app-crypt/qca:2[ssl]
 "
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-quazip-cmake.patch"
-	"${FILESDIR}/${PN}-liblastfm-cmake.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-liblastfm-cmake.patch" )
 
 src_configure() {
 	local mycmakeargs=(

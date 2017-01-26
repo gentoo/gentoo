@@ -1,7 +1,7 @@
 Index: doc/qgifer.desktop
 ===================================================================
---- doc/qgifer.desktop	(revision 91)
-+++ doc/qgifer.desktop	(working copy)
+--- a/doc/qgifer.desktop	(revision 91)
++++ b/doc/qgifer.desktop	(working copy)
 @@ -3,7 +3,7 @@
  Name=QGifer
  Icon=/usr/share/icons/qgifer.xpm

@@ -6,8 +6,8 @@
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
 	<longdescription lang="en">
-		Tracks your most used directories, based on 'frecency'. After a short
-		learning phase, z will take you to the most 'frecent' directory that
+		Tracks your most used directories, based on 'frequency'. After a short
+		learning phase, z will take you to the most 'frequent' directory that
 		matches ALL of the regexes given on the command line, in order.
 	</longdescription>
 	<upstream>

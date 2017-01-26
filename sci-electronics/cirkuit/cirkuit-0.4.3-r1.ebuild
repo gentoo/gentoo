@@ -35,6 +35,6 @@ PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
 src_install() {
 	kde4-base_src_install
 
-	# bug 496694 - this file is part of >=kde-base/katepart-4.12.0
+	# bug 496694 - this file is part of >=kde-apps/katepart-4.12.0
 	rm "${D}"/usr/share/apps/katepart/syntax/gnuplot.xml || die
 }

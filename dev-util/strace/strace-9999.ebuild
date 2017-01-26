@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit flag-o-matic eutils
+inherit flag-o-matic eutils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://strace.git.sourceforge.net/gitroot/strace/strace"
+	EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
+	EGIT_PROJECT="${PN}"
 	inherit git-2 autotools
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
@@ -47,6 +48,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# Set up the default build settings, and then use the names strace expects.
+	tc-export_build_env BUILD_{CC,CPP}
+	local v bv
+	for v in CC CPP {C,CPP,LD}FLAGS ; do
+		bv="BUILD_${v}"
+		export "${v}_FOR_BUILD=${!bv}"
+	done
+
 	econf $(use_with unwind libunwind)
 }
 

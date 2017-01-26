@@ -13,42 +13,43 @@ inherit toolchain-funcs
 
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 SRC_URI="!gccgo? (
-kernel_Darwin? (
-	x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-bootstrap.tbz )
+amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
+arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
+arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
+ppc64? (
+	${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz
+	${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap.tbz
 )
-kernel_FreeBSD? (
+s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-bootstrap.tbz )
+x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
 amd64-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-amd64-bootstrap.tbz )
 x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-bootstrap-1.tbz )
-)
-kernel_linux? (
-	amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
-	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
-	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
-	ppc64? (
-		${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz
-		${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap.tbz
-	)
-	s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-bootstrap.tbz )
-	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
-)
-kernel_SunOS? (
-	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
-)
+x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-bootstrap.tbz )
+x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
 )
 "
 
-if [[ ${PV} = 9999 ]]; then
+case ${PV}  in
+*9999*)
 	EGIT_REPO_URI="git://github.com/golang/go.git"
 	inherit git-r3
-else
+	;;
+*)
 	SRC_URI+="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
+	S="${WORKDIR}"/go
 	case ${PV} in
-		*9999*|*_rc*) ;;
-		*)
-			KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
-			;;
+	*_beta*|*_rc*) ;;
+	*)
+		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
+		# The upstream tests fail under portage but pass if the build is
+		# run according to their documentation [1].
+		# I am restricting the tests on released versions until this is
+		# solved.
+		# [1] https://golang.org/issues/18442
+		RESTRICT="test"
+		;;
 	esac
-fi
+esac
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
 HOMEPAGE="http://www.golang.org"
@@ -61,7 +62,11 @@ DEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
-QA_EXECSTACK="usr/lib/go/src/debug/elf/testdata/*.obj"
+QA_EXECSTACK="
+	usr/lib/go/src/debug/elf/testdata/*.obj
+	usr/lib/go/src/go/internal/gccgoimporter/testdata/unicode.gox
+	usr/lib/go/src/go/internal/gccgoimporter/testdata/time.gox
+	"
 
 # Do not complain about CFLAGS, etc, since Go doesn't use them.
 QA_FLAGS_IGNORED='.*'
@@ -71,16 +76,17 @@ REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 
-# The go language uses *.a files which are _NOT_ libraries and should not be
-# stripped. The test data objects should also be left alone and unstripped.
-STRIP_MASK="/usr/lib/go/pkg/*.a
-	/usr/lib/go/src/debug/elf/testdata/*
-	/usr/lib/go/src/debug/dwarf/testdata/*
-	/usr/lib/go/src/runtime/race/*.syso"
+# Do not strip this package. Stripping is unsupported upstream and may
+# fail.
+RESTRICT+="strip"
 
-if [[ ${PV} != 9999 ]]; then
-	S="${WORKDIR}"/go
-fi
+DOCS=(
+AUTHORS
+CONTRIBUTING.md
+CONTRIBUTORS
+PATENTS
+README.md
+)
 
 go_arch()
 {
@@ -190,25 +196,17 @@ src_test()
 
 	cd src
 	PATH="${GOBIN}:${PATH}" \
-		./run.bash -no-rebuild || die "tests failed"
+	./run.bash -no-rebuild || die "tests failed"
 }
 
 src_install()
 {
-	local bin_path f x
-
+	einstalldocs
 	dodir /usr/lib/go
-	insinto /usr/lib/go
+	# deliberately use cp to retain permissions
+	cp -R api bin doc lib pkg misc src test "${ED}"/usr/lib/go
 
-	# There is a known issue which requires the source tree to be installed [1].
-	# Once this is fixed, we can consider using the doc use flag to control
-	# installing the doc and src directories.
-	# [1] https://golang.org/issue/2775
-	doins -r bin doc lib pkg src
-	fperms -R +x /usr/lib/go/bin /usr/lib/go/pkg/tool
-
-	cp -a misc "${D}"/usr/lib/go/misc
-
+	local bin_path f x
 	if go_cross_compile; then
 		bin_path="bin/$(go_tuple)"
 	else
@@ -218,5 +216,4 @@ src_install()
 		f=${x##*/}
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
-	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
 }

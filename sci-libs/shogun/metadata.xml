@@ -25,16 +25,7 @@
   allowing for on-the-fly pre-processing.
 </longdescription>
   <use>
-    <flag name="arpack">Enable support for <pkg>sci-libs/arpack</pkg></flag>
-    <flag name="eigen">Enable support for matrix package <pkg>dev-cpp/eigen</pkg></flag>
-    <flag name="glpk">Enable support for <pkg>sci-mathematics/glpk</pkg></flag>
-    <flag name="json">Enable support for parsing JSON format</flag>
-    <flag name="lpsolve">Enable support for Linear Programming Solver</flag>
-    <flag name="nlopt">Enable support non linear optimization from
-  <pkg>sci-libs/nlopt</pkg></flag>
     <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
     <flag name="octave">Enable support for <pkg>sci-mathematics/octave</pkg></flag>
-    <flag name="snappy">Enable support for snappy compression</flag>
-    <flag name="superlu">Enable support for <pkg>sci-libs/superlu</pkg></flag>
   </use>
 </pkgmetadata>

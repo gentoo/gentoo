@@ -141,7 +141,13 @@ freebsd_do_patches() {
 			epatch "${x}"
 		done
 	fi
-	[[ ${#UPSTREAM_PATCHES[@]} -gt 0 ]] && epatch $(freebsd_upstream_patches -s)
+
+	# Upstream patches need to be applied on WORKDIR.
+	if [[ ${#UPSTREAM_PATCHES[@]} -gt 0 ]] ; then
+		cd "${WORKDIR}" || die
+		epatch $(freebsd_upstream_patches -s)
+		cd "${S}" || die
+	fi
 	epatch_user
 }
 

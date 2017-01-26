@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
+    <email>kensington@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
     <email>tomka@gentoo.org</email>
     <name>Thomas Kahle</name>
   </maintainer>
@@ -13,6 +16,6 @@ Tatt arch testing tool can be use to automatically generate scripts for various 
 It aims at developers. If you are a normal user you will not need tatt.
 </longdescription>
   <upstream>
-    <remote-id type="github">tom111/tatt</remote-id>
+    <remote-id type="github">kensington/tatt</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,25 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix size of MADRID array in test
+ When gfortran-6 is called with an optimization (-O1 or higher), arrays with a
+ length 1 seem to be converted to a scalar and assumed to always return the same
+ value.
+ .
+ This fails with the MADRID array, which is a placeholder for an array.
+ Specifically ftoc_commf.for fails then, which leads to a missing ftoc_comm.h.
+ .
+ The simple workaround is to use a size > 1 here.
+ .
+ Note that the MADRID array is defined with a length=1 in ~350 places all over
+ eso-midas. They are not changed yet since the verification succeeds. If we get
+ strange bugreports, this may be considered as the problem.
+--- a/system/ftoc-new/ftoc_commf.for
++++ b/system/ftoc-new/ftoc_commf.for
+@@ -34,7 +34,7 @@
+ C
+       PROGRAM F2CCOM
+ C 
+-      INTEGER    MADRID(1)
++      INTEGER    MADRID(3)
+       INTEGER    VALUE(3)
+       INTEGER    STAT,MANY,NOPIX,NOBYT
+       INTEGER*8    PNTR

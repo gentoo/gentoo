@@ -12,7 +12,7 @@ SRC_URI="http://downloads.hercules-390.eu/${P}.tar.gz"
 
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ppc sparc x86 ~x64-macos ~x86-macos"
 IUSE="bzip2 custom-cflags +suid"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
@@ -21,6 +21,11 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.09-aliasing.patch
+
+	# The local modules need local libs, so when doing a parallel install
+	# of the modules and libs breaks during relinking.  Force the libs to
+	# install first, and then the modules that use those libs.  #488126
+	echo "install-modexecLTLIBRARIES: install-libLTLIBRARIES" >> Makefile.in
 }
 
 src_configure() {

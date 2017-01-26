@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,6 +16,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="4"
 IUSE="debug"
 
-DEPEND="$(add_kdebase_dep plasma-workspace)"
+DEPEND="kde-plasma/plasma-workspace:4"
 RDEPEND="${DEPEND}
 	x11-misc/redshift"

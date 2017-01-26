@@ -1,0 +1,38 @@
+--- qp10.0/src/io_qp.h.old	2016-10-12 02:50:04.343499674 -0400
++++ qp10.0/src/io_qp.h	2016-10-12 02:50:10.605264154 -0400
+@@ -662,7 +662,7 @@
+ 
+   bool seekp(streampos pos, ios::seekdir d = ios::beg)
+     {
+-      return stream->seekp(pos, d);
++      return !stream->seekp(pos, d).fail();
+     }
+ 
+   bool put(char ch)
+@@ -736,7 +736,7 @@
+ 
+   bool seekp(streampos pos, ios::seekdir d = ios::beg)
+     {
+-      return stream.seekp(pos, d);
++      return !stream.seekp(pos, d).fail();
+     }
+ 
+   bool put(char ch)
+@@ -816,7 +816,7 @@
+ 
+   bool seekp(streampos pos, ios::seekdir d = ios::beg)
+     {
+-      return stream.seekp(pos, d);
++      return !stream.seekp(pos, d).fail();
+     }
+ 
+   bool put(char ch);
+@@ -876,7 +876,7 @@
+ 
+   bool seekp(streampos pos, ios::seekdir d = ios::beg)
+     {
+-      return stream.seekp(pos, d);
++      return !stream.seekp(pos, d).fail();
+     }
+ 
+   bool put(char ch);

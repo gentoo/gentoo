@@ -6,7 +6,6 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">pyodbc</remote-id>
 		<remote-id type="github">mkleehammer/pyodbc</remote-id>
 	</upstream>
 </pkgmetadata>

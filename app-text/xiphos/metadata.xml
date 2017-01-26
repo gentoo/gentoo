@@ -4,9 +4,6 @@
 	<maintainer type="project">
 		<email>theology@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="webkit">Use <pkg>net-libs/webkit-gtk</pkg> instead of <pkg>gnome-extra/gtkhtml</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">gnomesword</remote-id>
 	</upstream>

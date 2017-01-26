@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,29 +24,6 @@ REQUIRED_USE="libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
 	smime? ( pgp )"
-
-# Plugins are all integrated or dropped since 3.9.1
-PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
-	!!mail-client/claws-mail-archive
-	!!mail-client/claws-mail-att-remover
-	!!mail-client/claws-mail-attachwarner
-	!!mail-client/claws-mail-clamd
-	!!mail-client/claws-mail-fancy
-	!!mail-client/claws-mail-fetchinfo
-	!mail-client/claws-mail-gdata
-	!!mail-client/claws-mail-geolocation
-	!!mail-client/claws-mail-gtkhtml
-	!!mail-client/claws-mail-mailmbox
-	!!mail-client/claws-mail-newmail
-	!!mail-client/claws-mail-notification
-	!!mail-client/claws-mail-perl
-	!!mail-client/claws-mail-python
-	!!mail-client/claws-mail-rssyl
-	!!mail-client/claws-mail-spam-report
-	!!mail-client/claws-mail-tnef-parse
-	!!mail-client/claws-mail-vcalendar
-	!!mail-client/claws-mail-address_keeper
-	!!mail-client/claws-mail-pdf-viewer"
 
 COMMONDEPEND=">=sys-devel/gettext-0.12.1
 	gdata? ( >=dev-libs/libgdata-0.17.1 )
@@ -80,8 +57,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 	webkit? ( >=net-libs/webkit-gtk-1.0:2 )
 "
 
-DEPEND="${PLUGINBLOCK}
-	${COMMONDEPEND}
+DEPEND="${COMMONDEPEND}
 	app-arch/xz-utils
 	xface? ( >=media-libs/compface-1.4 )
 	virtual/pkgconfig"

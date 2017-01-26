@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ottxor@gentoo.org</email>
+		<email>junghans@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">losalamos/Byfl</remote-id>
+		<remote-id type="github">lanl/Byfl</remote-id>
 	</upstream>
 </pkgmetadata>

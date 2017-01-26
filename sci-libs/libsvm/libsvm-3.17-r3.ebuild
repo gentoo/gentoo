@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit flag-o-matic java-pkg-opt-2 python-r1 toolchain-funcs
 

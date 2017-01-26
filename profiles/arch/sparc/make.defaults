@@ -30,7 +30,7 @@ CTARGET_sparc32="sparc-unknown-linux-gnu"
 
 # Compiler flags
 CFLAGS="-O2 -mcpu=ultrasparc -pipe"
-CXXFLAGS=${CFLAGS}
+CXXFLAGS="${CFLAGS}"
 
 # These are here to override features/32bit-userland's settings. DO NOT REMOVE!
 FEATURES="-multilib-strict"

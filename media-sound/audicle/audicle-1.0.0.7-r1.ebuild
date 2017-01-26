@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	sed -i \
 		-e 's@../ftgl_lib/FTGL/include@/usr/include/FTGL@' \

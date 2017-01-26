@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 
-inherit eutils python-any-r1 readme.gentoo-r1
+inherit eutils python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
@@ -58,6 +58,8 @@ src_configure() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
 	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
 	addpredict /dev
+
+	xdg_environment_reset
 
 	local myconf="
 		$(use_enable static-libs static)

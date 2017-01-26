@@ -38,7 +38,7 @@ weka_get_max_memory() {
 	fi
 }
 
-java_prepare() {
+src_prepare() {
 	unzip -qq "${PN}-src.jar" -d . || die "Failed to unpack the source"
 	rm -v weka.jar || die
 	rm -rf doc || die

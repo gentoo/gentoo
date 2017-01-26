@@ -1,6 +1,11 @@
-diff -Naurp openssh-7.3p1.orig/configure.ac openssh-7.3p1/configure.ac
---- openssh-7.3p1.orig/configure.ac	2016-07-27 22:54:27.000000000 +0000
-+++ openssh-7.3p1/configure.ac	2016-08-17 15:58:11.531465000 +0000
+https://bugs.gentoo.org/591392
+https://bugzilla.mindrot.org/show_bug.cgi?id=2590
+
+7.3 added seccomp support to MIPS, but failed to handled the N32
+case.  This patch is temporary until upstream fixes.
+
+--- openssh-7.3p1/configure.ac
++++ openssh-7.3p1/configure.ac
 @@ -816,10 +816,10 @@ main() { if (NSVersionOfRunTimeLibrary("
  		seccomp_audit_arch=AUDIT_ARCH_MIPSEL
  		;;

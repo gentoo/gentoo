@@ -1,0 +1,4 @@
+# defaults file for /etc/default/tlsdated
+
+# Additional options; see `man tlsdated` for reference.
+DEAMON_OPTS=""

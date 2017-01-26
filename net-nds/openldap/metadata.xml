@@ -13,4 +13,7 @@
 			lanman passwords</flag>
 		<flag name="minimal">Build libraries &amp; userspace tools only. Does not install any server code.</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:openldap:openldap</remote-id>
+	</upstream>
 </pkgmetadata>

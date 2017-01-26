@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python3_4 )
 inherit base python-single-r1 systemd user
 
 MY_PV=${PV/_/-}
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://znc.in/releases/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 fi
 

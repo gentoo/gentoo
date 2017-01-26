@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
+HOMEPAGE="http://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -30,9 +30,10 @@ IUSE="crypt doc examples irc mail manhole test"
 
 RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	|| (
-		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 	)
+	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
 	crypt? (
@@ -42,32 +43,22 @@ RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
-		|| ( >=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	mail? (
-		|| ( >=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	manhole? (
-		|| ( >=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+			>=dev-python/twisted-conch-14.0.1[${PYTHON_USEDEP}]
 		)
 	)
 	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-	|| (
-		( !<dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
-			>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
-		)
-		( || ( <dev-python/twisted-16.3.0[${PYTHON_USEDEP}]
-				dev-python/twisted-core[${PYTHON_USEDEP}]
-			)
-			dev-python/autobahn[${PYTHON_USEDEP}]
-		)
-	)
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
@@ -75,14 +66,14 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}] )
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		|| (
+			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 			(
 				>=dev-python/twisted-mail-14.0.1[${PYTHON_USEDEP}]
 				>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
 				>=dev-python/twisted-words-14.0.1[${PYTHON_USEDEP}]
 			)
-			>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		)
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
@@ -145,6 +136,12 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}/buildmaster_at.service.conf" "buildmaster@.service"
 
 	readme.gentoo_create_doc
+}
+
+python_test() {
+	distutils_install_for_testing
+
+	esetup.py test || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

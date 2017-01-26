@@ -25,7 +25,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="A full office productivity suite"
@@ -57,7 +57,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/0fb1bb06d60d7708abc4797008209bcc-xmlsec1-1.2.22.tar.gz" # modifies source code
+	"${ADDONS_URI}/86b1daaa438f5a7bea9a52d7b9799ac0-xmlsec1-1.2.23.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -121,10 +121,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/graphite2
 	media-libs/fontconfig
 	media-libs/freetype:2
-	>=media-libs/glew-1.10:=
-	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
+	>=media-libs/harfbuzz-0.9.42:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
+	>=media-libs/libepoxy-1.3.1
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libpng-1.4:0=
@@ -134,12 +134,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
-	virtual/jpeg:0
 	x11-libs/cairo[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	virtual/glu
+	virtual/jpeg:0
 	virtual/opengl
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
@@ -151,7 +151,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-extra/evolution-data-server
 	)
 	firebird? ( >=dev-db/firebird-2.5 )
-	gltf? ( media-libs/libgltf )
+	gltf? ( >=media-libs/libgltf-0.1.0 )
 	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -246,22 +246,21 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 )
 
-CHECKREQS_MEMORY="512M"
-
-if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
-	CHECKREQS_DISK_BUILD="22G"
-elif [[ ${MERGE_TYPE} != binary ]] ; then
-	CHECKREQS_DISK_BUILD="6G"
-fi
-
 pkg_pretend() {
 	use java || \
 		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
+
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
 		check-reqs_pkg_pretend
 
-		if ! $(tc-is-clang) && [[ $(gcc-major-version) -lt 4 ]] || {
+		if ! $(tc-is-clang) && { [[ $(gcc-major-version) -lt 4 ]] ||
 				[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; } then
 			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
@@ -286,7 +285,15 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
-	[[ ${MERGE_TYPE} != binary ]] && check-reqs_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		CHECKREQS_MEMORY="512M"
+		if is-flagq "-g*" && ! is-flagq "-g*0" ; then
+			CHECKREQS_DISK_BUILD="22G"
+		else
+			CHECKREQS_DISK_BUILD="6G"
+		fi
+		check-reqs_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -339,6 +346,11 @@ src_prepare() {
 		-e "s#check: dev-install subsequentcheck#check: unitcheck slowcheck dev-install subsequentcheck#g" \
 		-e "s#Makefile.gbuild all slowcheck#Makefile.gbuild all#g" \
 		Makefile.in || die
+
+	sed -i \
+		-e "s,/usr/share/bash-completion/completions,$(get_bashcompdir)," \
+		-e "s,\$INSTALLDIRNAME.sh,${PN}," \
+		bin/distro-install-desktop-integration || die
 
 	if use branding; then
 		# hack...
@@ -393,10 +405,15 @@ src_configure() {
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
 	fi
 
+	if use kde; then
+		# bug 544108, bug 599076
+		export QMAKEQT4="$(qt4_get_bindir)/qmake"
+		export MOCQT4="$(qt4_get_bindir)/moc"
+	fi
+
 	# system headers/libs/...: enforce using system packages
 	# --disable-breakpad: requires not-yet-in-tree dev-utils/breakpad
 	# --enable-cairo: ensure that cairo is always required
-	# --enable-graphite: disabling causes build breakages
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
@@ -406,13 +423,12 @@ src_configure() {
 	# --without-system-sane: just sane.h header that is used for scan in writer,
 	#   not linked or anything else, worthless to depend on
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
 		--with-system-dicts \
+		--with-system-epoxy \
 		--with-system-headers \
 		--with-system-jars \
 		--with-system-libs \
 		--enable-cairo-canvas \
-		--enable-graphite \
 		--enable-largefile \
 		--enable-mergelibs \
 		--enable-neon \
@@ -519,8 +535,13 @@ src_install() {
 	# This is not Makefile so no buildserver
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
-	# Fix bash completion placement
-	newbashcomp "${ED}"usr/share/bash-completion/completions/libreoffice.sh ${PN}
+	# bug 593514
+	if use gtk3; then
+		dosym /usr/$(get_libdir)/libreoffice/program/liblibreofficekitgtk.so \
+			/usr/$(get_libdir)/liblibreofficekitgtk.so
+	fi
+
+	# bash completion aliases
 	bashcomp_alias \
 		libreoffice \
 		unopkg loimpress lobase localc lodraw lomath lowriter lofromtemplate loweb loffice

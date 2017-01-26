@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit latex-package
 
-DESCRIPTION="LaTeX class for the standard model for curricula vitae as recommended by the European Commission"
-HOMEPAGE="http://www.ctan.org/tex-archive/help/Catalogue/entries/europecv.html"
+DESCRIPTION="LaTeX class for the standard model for curricula vitae as recommended by the EC"
+HOMEPAGE="http://www.ctan.org/pkg/europecv"
 # Downloaded from:
 # ftp://cam.ctan.org/tex-archive/macros/latex/contrib/europecv.zip
 SRC_URI="mirror://gentoo/${P}.zip"

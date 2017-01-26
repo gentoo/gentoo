@@ -20,6 +20,7 @@ IUSE="debug"
 RDEPEND="
 	$(add_kdeapps_dep kdepimlibs 'akonadi(+)')
 	$(add_kdeapps_dep kdepim-common-libs)
+	$(add_kdeapps_dep ktimezoned)
 	media-libs/phonon[qt4]
 	x11-libs/libX11
 "

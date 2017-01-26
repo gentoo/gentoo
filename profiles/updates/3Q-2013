@@ -2,7 +2,6 @@ move app-emacs/gentoo-syntax app-emacs/ebuild-mode
 move app-xemacs/gentoo-syntax app-xemacs/ebuild-mode
 move dev-ml/zero dev-ml/core_kernel
 slotmove =dev-ruby/builder-3.2.2 3.1 3.2
-move dev-python/twisted dev-python/twisted-core
 slotmove =dev-ruby/minitest-5.0.6 0 5
 move sys-cluster/quantum sys-cluster/neutron
 move sci-libs/scikits_statsmodels dev-python/statsmodels

@@ -1,8 +1,0 @@
---- a/extensions/spellcheck/hunspell/glue/moz.build
-+++ b/extensions/spellcheck/hunspell/glue/moz.build
-@@ -38,4 +38,4 @@ if CONFIG['GNU_CXX']:
- 
- # This variable is referenced in configure.in.  Make sure to change that file
- # too if you need to change this variable.
--DEFINES['HUNSPELL_STATIC'] = True
-+DEFINES['HUNSPELL_STATIC'] = not CONFIG['MOZ_NATIVE_HUNSPELL']

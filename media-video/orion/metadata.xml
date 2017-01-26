@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<use>
+		<flag name="mpv">Use the <pkg>media-video/mpv</pkg> player (upstream default) instead of the <pkg>dev-qt/qtmultimedia</pkg> one</flag>
+	</use>
+</pkgmetadata>

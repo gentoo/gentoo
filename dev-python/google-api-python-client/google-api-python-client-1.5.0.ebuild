@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Google API Client for Python"
-HOMEPAGE="https://code.google.com/p/google-api-python-client/ https://github.com/google/google-api-python-client"
+HOMEPAGE="https://github.com/google/google-api-python-client"
 SRC_URI="https://github.com/google/google-api-python-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

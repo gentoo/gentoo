@@ -20,9 +20,9 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="doc static-libs test"
 
-RDEPEND=">=dev-libs/glib-2.32"
+RDEPEND=">=dev-libs/glib-2.32
+	virtual/libgudev:="
 DEPEND="${RDEPEND}
-	virtual/libgudev
 	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" dev-util/gtk-doc" #469214

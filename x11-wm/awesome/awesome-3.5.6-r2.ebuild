@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-CMAKE_MIN_VERSION="2.8"
 inherit cmake-utils eutils
 
 DESCRIPTION="A dynamic floating and tiling window manager"
@@ -12,7 +11,7 @@ SRC_URI="http://awesome.naquadah.org/download/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND="

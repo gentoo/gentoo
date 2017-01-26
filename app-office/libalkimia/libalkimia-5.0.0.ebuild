@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/gmp:0=[cxx]
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
-	kde-base/kdelibs:4
+	kde-frameworks/kdelibs:4
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

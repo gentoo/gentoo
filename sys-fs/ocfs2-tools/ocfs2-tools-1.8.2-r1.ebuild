@@ -43,9 +43,9 @@ DOCS=(
 MAKEOPTS+=" -j1"
 
 PATCHES=(
-		"${FILESDIR}/${PN}-1.6.4-asneeded.patch"
-		"${FILESDIR}/${PN}-recent-kernels.patch"
-		)
+	"${FILESDIR}/${PN}-1.6.4-asneeded.patch"
+	"${FILESDIR}/${PN}-recent-kernels.patch"
+)
 
 pkg_setup() {
 	python_set_active_version 2
@@ -58,7 +58,7 @@ src_prepare() {
 	sed -e 's:"/dlm/":"/sys/kernel/dlm":g' \
 		-i libo2dlm/o2dlm_test.c \
 		-i libocfs2/dlm.c || die "sed failed"
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	rm -f aclocal.m4
 	AT_M4DIR=. eautoreconf
 }

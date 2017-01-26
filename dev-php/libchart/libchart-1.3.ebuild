@@ -1,34 +1,32 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
-DESCRIPTION="Libchart is a chart creation PHP library that is easy to use"
-HOMEPAGE="http://naku.dohcrew.com/libchart"
-SRC_URI="https://libchart.googlecode.com/files/${P}.tar.gz"
+DESCRIPTION="Easy-to-use chart creation library for PHP"
+HOMEPAGE="http://naku.dohcrew.com/libchart https://github.com/naku/libchart"
+SRC_URI="https://github.com/naku/${PN}/releases/download/release/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3 BitstreamVera"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT=0
 IUSE="examples"
 
 DEPEND=""
-RDEPEND="dev-lang/php[truetype]
-	|| ( dev-lang/php[gd] dev-lang/php[gd-external] )"
+RDEPEND="dev-lang/php:*[gd,truetype]"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	dodoc "${PN}/ChangeLog" "${PN}/README"
-	rm -f "${PN}/ChangeLog" "${PN}/ChangeLog" "${PN}/COPYING"
+	dodoc "${PN}"/{ChangeLog,README}
 
 	if use examples ; then
-		# no point making users unzip all files individually
+		# PHP won't run a compressed example...
 		docompress -x "/usr/share/doc/${PF}/demo"
 		dodoc -r demo/
 	fi
 
 	insinto "/usr/share/php/${PN}"
-	doins -r ${PN}
+	doins -r "${PN}"/{classes,fonts,images}
 }

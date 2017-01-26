@@ -2,8 +2,8 @@ Link executables against libsqlite3.so.
 Increase timeout for fuzzcheck.
 Fix building with dlopen() not available.
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -559,6 +559,7 @@
  #
  SHELL_OPT = -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4
@@ -133,8 +133,8 @@ Fix building with dlopen() not available.
  
  loadfts$(EXE): $(TOP)/tool/loadfts.c libsqlite3.la
  	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@ $(TLIBS)
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -584,6 +584,9 @@
  if test "${use_loadextension}" = "yes" ; then
    OPT_FEATURE_FLAGS=""

@@ -12,7 +12,6 @@
 	<use>
 		<flag name="imagemagick">Create splash images compatible with GRUB2</flag>
 		<flag name="hwinfo">Used to work out supported framebuffer resolutions</flag>
-		<flag name="packagekit">Add support for packagekit integration</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">kcm-grub2</remote-id>

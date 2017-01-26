@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils user systemd
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rpodgorny/uptimed/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="static-libs"
 
 pkg_setup() {
@@ -21,6 +21,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	# respect DESTDIR
 	sed -i -e 's|-d \(/var/spool.*\)$|-d $(DESTDIR)\1|' Makefile.am || die
 	# fix configure.ac for >=automake-1.13 (bug #467582)
@@ -33,11 +34,11 @@ src_configure() {
 }
 
 src_install() {
+	local DOCS=( ChangeLog README.md TODO AUTHORS CREDITS INSTALL.cgi sample-cgi/* )
 	default
 	prune_libtool_files --all
 	keepdir /var/spool/uptimed
 	fowners uptimed:uptimed /var/spool/uptimed
-	dodoc ChangeLog README.md TODO AUTHORS CREDITS INSTALL.cgi sample-cgi/*
 	newinitd "${FILESDIR}"/${PN}.init uptimed
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }

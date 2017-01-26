@@ -15,9 +15,9 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kactivities '' 4.13)
+	kde-frameworks/kactivities:4
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT=test
 # bug 443748
+RESTRICT=test

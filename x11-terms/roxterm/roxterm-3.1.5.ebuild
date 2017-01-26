@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python3_4 )
 inherit gnome2-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="A terminal emulator designed to integrate with the ROX environment"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/roxterm/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/dbus-glib-0.100

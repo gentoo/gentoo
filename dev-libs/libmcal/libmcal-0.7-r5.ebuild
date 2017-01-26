@@ -28,10 +28,10 @@ src_unpack() {
 		sed -e 's|/var/calendar|/var/spool/calendar|g' -i ${i}
 	done
 	cd ${S}
-	epatch ${FILESDIR}/${P}-fpic.patch
-	epatch ${FILESDIR}/${P}-libdir.patch
-	epatch ${FILESDIR}/${P}-gcc4.patch
-	epatch ${FILESDIR}/${P}-flexfix.patch
+	epatch "${FILESDIR}"/${P}-fpic.patch
+	epatch "${FILESDIR}"/${P}-libdir.patch
+	epatch "${FILESDIR}"/${P}-gcc4.patch
+	epatch "${FILESDIR}"/${P}-flexfix.patch
 }
 
 src_compile() {

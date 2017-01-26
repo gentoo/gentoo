@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/deng/Doomsday%20Engine/${PV}/${PN}-stable-${PV}.ta
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated fluidsynth openal snowberry +doom demo freedoom heretic hexen resources tools"
 # we need python at build time, so
 # snowberry? ( ${PYTHON_REQUIRED_USE} )

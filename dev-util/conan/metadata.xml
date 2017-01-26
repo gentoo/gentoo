@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bicatali@gentoo.org</email>
+    <name>Sébastien Fabbro</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">conan</remote-id>
+    <remote-id type="github">conan-io/conan</remote-id>
+  </upstream>
+  <longdescription>
+    Conan is a portable package manager, intended for C and C++
+    developers, but it is able to manage builds from source,
+    dependencies, and precompiled binaries for any language.
+  </longdescription>
+</pkgmetadata>

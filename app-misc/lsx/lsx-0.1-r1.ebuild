@@ -1,0 +1,47 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+inherit toolchain-funcs
+
+DESCRIPTION="list executables"
+HOMEPAGE="http://tools.suckless.org/lsx"
+SRC_URI="http://suckless.org/download/${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+DOCS=( README )
+
+src_prepare() {
+	default
+
+	sed -i \
+		-e "s/.*strip.*//" \
+		Makefile || die "sed failed"
+
+	sed -i \
+		-e "s/CFLAGS = -Os/CFLAGS +=/" \
+		-e "s/LDFLAGS =/LDFLAGS +=/" \
+		config.mk || die "sed failed"
+}
+
+src_compile() {
+	emake CC=$(tc-getCC)
+}
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX="/usr" install
+
+	# collision with net-dialup/lrzsz
+	mv "${D}/usr/bin/${PN}" "${D}/usr/bin/${PN}-suckless" || die
+
+	einstalldocs
+}
+
+pkg_postinst() {
+	elog "Run ${PN} with ${PN}-suckless"
+}

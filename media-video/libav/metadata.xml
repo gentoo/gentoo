@@ -20,6 +20,7 @@
 	<flag name="gpl">Build all GPL licensed code. Without this flag set the package is build under LGPL license.</flag>
 	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
 	<flag name="network">Enable network streaming support.</flag>
+	<flag name="nvidia">Enable nvidia video codec hardware acceleration support.</flag>
 	<flag name="openssl">Prefer <pkg>dev-libs/openssl</pkg> over <pkg>net-libs/gnutls</pkg> to provide SSL/TLS support (notice: the resulting binaries are unredistributable).</flag>
 	<flag name="opus">Use the external opus library for encoding and decoding.</flag>
 	<flag name="pulseaudio">Enable pulseaudio input support.</flag>

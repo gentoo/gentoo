@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,8 +10,8 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20161006"
-EXTRAS_VER="1.34"
+MY_RELEASEDATE="20161014"
+EXTRAS_VER="1.35"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
 SEPOL_VER="${PV}"
@@ -24,13 +24,13 @@ HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 	S1="${WORKDIR}/${MY_P}/${PN}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz
-		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
+		https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
@@ -53,9 +53,11 @@ DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
 		sys-apps/dbus
 		dev-libs/dbus-glib:=
 	)
-	audit? ( >=sys-process/audit-1.5.1 )
+	audit? ( >=sys-process/audit-1.5.1[python] )
 	pam? ( sys-libs/pam:= )
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+	!<sec-policy/selinux-base-policy-2.20151208-r6"
+# 2.20151208-r6 and higher has support for new setfiles
 
 ### libcgroup -> seunshare
 ### dbus -> restorecond
@@ -65,6 +67,9 @@ RDEPEND="${DEPEND}
 	dev-python/sepolgen
 	app-misc/pax-utils
 	!<sys-apps/openrc-0.14"
+
+PDEPEND="sys-apps/semodule-utils
+	sys-apps/selinux-python"
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds

@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
 SRC_URI="https://dev.gentoo.org/~dolsen/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

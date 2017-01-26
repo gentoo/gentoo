@@ -2,22 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mudler@sabayonlinux.org</email>
+		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
 		<description>Assign bugs to him</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>pacho@gentoo.org</email>
-		<name>Pacho Ramos</name>
-		<description>CC on bugs, proxying Ettore</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>lxnay@gentoo.org</email>
 		<name>Fabio Erculiani</name>
 		<description>CC on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 </pkgmetadata>

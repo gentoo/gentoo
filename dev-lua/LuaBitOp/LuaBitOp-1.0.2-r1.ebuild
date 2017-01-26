@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/lua-5.1.5-r2[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-lang/lua-5.1.5-r2:*[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
@@ -34,7 +34,8 @@ multilib_src_test() {
 
 multilib_src_install()
 {
-	exeinto "$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)"
+	local instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)"
+	exeinto "${instdir#${EPREFIX}}"
 	doexe bit.so
 }
 

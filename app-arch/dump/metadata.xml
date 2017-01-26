@@ -10,6 +10,7 @@
 	</longdescription>
 	<use>
 		<flag name="ermt">encrypted rmt support</flag>
+		<flag name="uuid">Enable UUID support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dump</remote-id>

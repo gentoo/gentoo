@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -54,7 +54,7 @@ eblit-glibc-pkg_preinst() {
 
 	[[ ${ROOT} != "/" ]] && return 0
 	[[ -d ${ED}/$(get_libdir) ]] || return 0
-	glibc_sanity_check
+	[[ -z ${BOOTSTRAP_RAP} ]] && glibc_sanity_check
 
 	# For newer EAPIs, this was run in pkg_pretend.
 	if [[ ${EAPI:-0} == [0123] ]] ; then

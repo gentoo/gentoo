@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic fortran-2 multilib python-r1
 
@@ -116,6 +116,7 @@ src_prepare() {
 	# Patch python.
 	epatch "${FILESDIR}/lammps-python3-r2.patch"
 	epatch "${FILESDIR}/python-shebang.patch"
+	epatch "${FILESDIR}/gcc-6.patch"
 }
 
 src_compile() {

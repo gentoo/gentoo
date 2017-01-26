@@ -4,8 +4,6 @@
 
 EAPI=6
 
-VIM_PLUGIN_VIM_VERSION="7.2"
-
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: rich text highlighting in vim"
@@ -13,12 +11,12 @@ HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2208"
 SRC_URI="http://www.vim.org/scripts/download_script.php?src_id=13856 -> ${P}.tar.gz"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-VIM_PLUGIN_HELPFILES="txtfmt.txt"
+VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-S="${WORKDIR}"
+S=${WORKDIR}
 
 src_prepare() {
+	default
 	rm indent_patch.txt || die
 }

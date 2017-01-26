@@ -1,0 +1,37 @@
+From 5e4f2ae61dc39938c4df857854724ba1d36f3232 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Tue, 11 Oct 2016 16:16:23 +0200
+Subject: [PATCH] common.c: Use _LINUX_CAPABILITY_VERSION_3 in cap_header
+
+While check_capability() function already requires
+_LINUX_CAPABILITY_VERSION_3 via "#ifdef" since commit 448627953c we still
+set the cap_header's version to deprecated _LINUX_CAPABILITY_VERSION. This
+results in a warning like
+
+ > capability: warning: `collectd' uses 32-bit capabilities (legacy support in use)
+
+from the kernel when a plugin (like iptables) calls our check_capability()
+function.
+
+With this commit we will set cap_header to kernel's current capability
+version (_LINUX_CAPABILITY_VERSION_3), which is default since
+kernel 2.6.26.
+
+Signed-off-by: Florian Forster <octo@collectd.org>
+---
+ src/daemon/common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/daemon/common.c b/src/daemon/common.c
+index e489449..477d759 100644
+--- a/src/daemon/common.c
++++ b/src/daemon/common.c
+@@ -1698,7 +1698,7 @@ int check_capability (int capability) /* {{{ */
+ 	}
+ 
+ 	cap_header->pid = getpid();
+-	cap_header->version = _LINUX_CAPABILITY_VERSION;
++	cap_header->version = _LINUX_CAPABILITY_VERSION_3;
+ 	if (capget(cap_header, cap_data) < 0)
+ 	{
+ 		ERROR("check_capability: capget failed");

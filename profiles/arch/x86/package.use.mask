@@ -1,8 +1,38 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires >=portage-2.1.1
+
+# Luca Barbato <lu_zero@gentoo.org> (22 Jan 2017)
+# cuda is not available on x86 nvidia-video-codec depends on it
+media-video/libav nvidia
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
+# Requires yet unavailable >=media-video/ffmpeg-3.3.
+>=media-video/mpv-0.23.0 cuda
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (19 Jan 2017)
+# x11-drivers/nvidia-drivers is available on x86.
+media-video/mpv -cuda
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2016)
+# on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (14 Dec 2016)
+# Fails to build with newly unmasked ffmpeg-3, so mask this useflag
+# Workaround; leaving a real fix to the maintainers... bug 580630
+media-libs/mlt vdpau
+
+# Yixun lan <dlan@gentoo.org> (07 Dec 2016)
+# Disable zfs storage backend since sys-fs/zfs doesn't support 32bit arch
+app-emulation/libvirt zfs
+
+# Jonathan Scruggs <j.scruggs@gmail.com> (27 Oct 2016)
+# Blender needs newer versions of CUDA which no longer support x86
+media-gfx/blender cuda
+
+# Ettore Di Giacinto <mudler@gentoo.org> (18 Oct 2016)
+# Enable gambit and scm only on supported architectures
+>=dev-scheme/slib-3.2.5 -gambit -scm
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
@@ -24,10 +54,6 @@ media-video/aegisub test
 # Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
 # rspec:3 is not keyworded for x86 at this time
 =dev-ruby/bundler-audit-0.5.0 test
-
-# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
-# google-chrome dropped x86 support
-app-admin/lastpass chrome
 
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # chrome-binary-plugins dropped x86 support
@@ -63,10 +89,6 @@ media-libs/libbluray -bdplus
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
 
-# Andrey Grozin <grozin@gentoo.org> (23 Feb 2015)
-# Does not compile with this flag
-=dev-lisp/ecls-15.2.21 cpu_flags_x86_sse
-
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2015)
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
@@ -94,14 +116,13 @@ media-libs/mesa -openmax
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
 # https://sourceforge.net/p/mikmod/bugs/16/#17ea
-media-libs/libmikmod sse2
 media-libs/libmikmod cpu_flags_x86_sse2
 
 # Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <ottxor@gentoo.org> (08 Sep 2013)
+# Christoph Junghans <junghans@gentoo.org> (08 Sep 2013)
 # restrict USE=quad for x86 as there are too less registers
 sci-libs/fftw quad
 
@@ -130,14 +151,10 @@ sci-libs/cholmod -cuda
 sci-libs/flann -cuda
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/biosdevname, systemd work on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
 # chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium -tomboy
+gnome-extra/zeitgeist-datasources -chromium
 
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# Christoph Junghans <junghans@gentoo.org> (26 Dec 2012)
 # cuda/mkl works on x86/amd64 (masked in base)
 sci-chemistry/gromacs -cuda -mkl
 
@@ -167,8 +184,8 @@ app-crypt/johntheripper -cuda
 dev-libs/gobject-introspection -doctool
 
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
-# JIT compilation in libzpaq generates code for x86/amd64.
-app-arch/libzpaq -jit
+# JIT compilation in zpaq generates code for x86/amd64.
+app-arch/zpaq -jit
 
 # Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
@@ -190,7 +207,6 @@ app-emulation/qemu	spice
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
 net-libs/webkit-gtk -jit
-www-client/epiphany -jit
 www-client/midori -jit
 
 # Samuli Suominen <ssuominen@gentoo.org> (06 Dec 2011)
@@ -227,34 +243,17 @@ dev-libs/glib -systemtap
 =sys-cluster/glusterfs-3.1.2 infiniband
 =sys-cluster/corosync-1.3.0 infiniband
 
-# Luca Barbato <lu_zero@gentoo.org> (28 Feb 2011)
-# # Masked in base, unmask for amd64/x86
-media-video/mplayer2 -bluray
-
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
-
-# Thomas Kahle <tomka@gentoo.org> (15 Jan 2011)
-# we dropped stable prelude but don't want to drop stable nufw
-=net-firewall/nufw-2.2.21 prelude
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
 # sys-devel/llvm is keyworded on x86
 media-libs/mesa -llvm
 
-# Nirbheek Chauhna <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox -ipc
-
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
-# Jim Ramsay <lack@gentoo.org> (24 March 2011)
-# '64bit' '32bit' 'nspluginwrapper' are for amd64 only
-www-plugins/adobe-flash 32bit 64bit
 
 # Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
 # Masked in base, unmak for amd64/x86. Bug 267264
@@ -263,10 +262,6 @@ media-gfx/k3d -cuda
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (10 Sep 2009)
-# quakeforge has video_cards_voodoo enabled only for x86
-games-fps/quakeforge -video_cards_tdfx
 
 # Tomas Chvatal <scarabeus@gentoo.org> (24 Nov 2008)
 # masked in base, unmask for x86/amd64
@@ -279,8 +274,7 @@ dev-python/kaa-base -tls
 # Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
 app-text/enchant -zemberek
 
-x11-terms/eterm sse2
 x11-terms/eterm cpu_flags_x86_sse2
 
 # Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
-media-video/mplayer -cpudetection -custom-cpuopts -bindist
+media-video/mplayer -cpudetection

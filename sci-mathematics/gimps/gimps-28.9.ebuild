@@ -40,7 +40,7 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}-26.6-r1-init.d" gimps
+	newinitd "${FILESDIR}/${PN}-28.9-init.d" gimps
 	newconfd "${FILESDIR}/${PN}-25.6-conf.d" gimps
 
 	systemd_dounit "${FILESDIR}/${PN}.service"

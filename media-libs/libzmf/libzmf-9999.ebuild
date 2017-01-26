@@ -5,10 +5,7 @@
 EAPI=6
 
 EGIT_REPO_URI="git://gerrit.libreoffice.org/libzmf"
-
-[[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
-inherit eutils ${GITECLASS}
-unset GITECLASS
+[[ ${PV} == 9999 ]] && inherit git-r3 autotools
 
 DESCRIPTION="Library for parsing Zoner Callisto/Draw documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libzmf"
@@ -48,5 +45,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

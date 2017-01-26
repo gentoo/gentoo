@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ottxor@gentoo.org</email>
+		<email>junghans@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
 	<maintainer type="project">
@@ -14,7 +14,6 @@
 		<flag name="extras">Pull in extra applications from <pkg>sci-chemistry/votca-csgapps</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">votca</remote-id>
 		<remote-id type="github">votca/csg-tutorials</remote-id>
 	</upstream>
 </pkgmetadata>

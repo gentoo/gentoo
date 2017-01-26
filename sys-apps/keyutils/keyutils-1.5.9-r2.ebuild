@@ -27,6 +27,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.5.5-makefile-fixup.patch
+	epatch "${FILESDIR}"/${PN}-1.5.9-endian-check-{1,2}.patch #426424
+	epatch "${FILESDIR}"/${PN}-1.5.9-disable-tests.patch #519062 #522050
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die

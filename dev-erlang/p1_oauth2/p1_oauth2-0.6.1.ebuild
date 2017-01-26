@@ -29,6 +29,7 @@ DOCS=( CHANGELOG.md  README.md )
 src_prepare() {
 	rebar_src_prepare
 	rebar_remove_deps rebar.test.config
+	sed -e '/, warnings_as_errors/d' -i rebar.test.config || die
 }
 
 src_test() {

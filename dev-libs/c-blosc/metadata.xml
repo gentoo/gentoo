@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Gentoo Science Project</name>
-  </maintainer>
-  <longdescription lang="en">
-  Blosc is a compression library designed to transmit data to the
-  processor cache faster than the traditional non-compressed memory fetch. 
-  Compression ratios are not very high, but the decompression is very
-  fast. Blosc is meant not only to reduce the size of large datasets on-disk
-  or in-memory, but also to accelerate memory-bound computations.
-</longdescription>
-  <use>
-    <flag name="lz4">Enable lz4 compression</flag>
-    <flag name="snappy">Enable snappy compression</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">Blosc/c-blosc</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Blosc is a compression library designed to transmit data to the
+	processor cache faster than the traditional non-compressed memory fetch. 
+	Compression ratios are not very high, but the decompression is very
+	fast. Blosc is meant not only to reduce the size of large datasets on-disk
+	or in-memory, but also to accelerate memory-bound computations.
+	</longdescription>
+	<use>
+		<flag name="lz4">Enable lz4 compression</flag>
+		<flag name="snappy">Enable snappy compression</flag>
+		<flag name="zstd">Enable zstd compression</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Blosc/c-blosc</remote-id>
+	</upstream>
 </pkgmetadata>

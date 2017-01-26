@@ -1,0 +1,22 @@
+From: Dominik Kriegner <dominik.kriegner@gmail.com>
+Date: Tue, 26 Jan 2016 12:12:26 +0000
+Subject: [PATCH] Fix systemd unit file
+
+Project-Bug-URL: https://github.com/ioerror/tlsdate/pull/162
+Gentoo-Bug-URL: https://bugs.gentoo.org/533380
+
+--- a/systemd/tlsdated.service
++++ b/systemd/tlsdated.service
+@@ -5,6 +5,9 @@ After=network.target
+ [Service]
+ Type=simple
+ EnvironmentFile=/etc/default/tlsdated
+-ExecStart=/usr/sbin/tlsdated ${DAEMON_OPTS}
+-ExecReload=/bin/kill -HUP ${MAINPID}
+-ExecStop=/bin/kill -INT ${MAINPID}
++ExecStart=/usr/sbin/tlsdated $DAEMON_OPTS
++ExecReload=/bin/kill -HUP $MAINPID
++ExecStop=/bin/kill -INT $MAINPID
++
++[Install]
++WantedBy=multi-user.target

@@ -12,7 +12,6 @@ auth_ldap - LDAP module for nginx which supports authentication against multiple
 auth_pam - This module provides authentication via PAM.
 auth_request - Module implementing client authorization based on the result of a subrequest.
 autoindex - This module provides automatic directory listings.
-ajp - support AJP protocol proxy with nginx
 browser - This module creates variables, the values of which depend on the request header "User-agent".
 cache_purge - External module adding ability to purge content from nginx's FastCGI and proxy caches.
 charset - This module can reencode data of one encoding into another.

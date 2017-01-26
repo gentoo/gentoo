@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-python/PyQt4-4.7[${PYTHON_USEDEP}]
 	>=dev-python/pyudev-0.8[pyqt4,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(add_kdebase_dep pykde4 "${PYTHON_USEDEP}" )
+	$(add_kdeapps_dep pykde4 "${PYTHON_USEDEP}" )
 	>=x11-drivers/xf86-input-synaptics-1.3
 	>=x11-libs/libXi-1.4
 	x11-libs/libXtst

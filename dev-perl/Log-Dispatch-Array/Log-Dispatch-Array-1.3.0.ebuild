@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="log events to an array (reference)"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

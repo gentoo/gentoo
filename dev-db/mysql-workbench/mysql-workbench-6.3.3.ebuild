@@ -8,8 +8,6 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-CMAKE_MIN_VERSION="2.8.11.1"
-
 inherit gnome2 eutils flag-o-matic python-single-r1 cmake-utils
 
 MY_P="${PN}-community-${PV}-src"

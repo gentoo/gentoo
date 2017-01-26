@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-CMAKE_MIN_VERSION="3.0"
 
 PYTHON_COMPAT=( python3_4 python3_5 )
 

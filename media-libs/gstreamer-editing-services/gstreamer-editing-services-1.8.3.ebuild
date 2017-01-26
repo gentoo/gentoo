@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit bash-completion-r1 gnome2 python-r1
 

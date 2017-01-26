@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,9 +22,9 @@ else
 fi
 
 VANILLA_GV="2.47"
-VANILLA_MV="4.6.3"
+VANILLA_MV="4.6.4"
 STAGING_GV="2.47"
-STAGING_MV="4.6.3"
+STAGING_MV="4.6.4"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
@@ -338,12 +338,16 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
+
+		# https://bugs.winehq.org/show_bug.cgi?id=42132
+		"${FILESDIR}"/${PN}-2.0_rc3-flex263.patch
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
 		ewarn "Wine bugzilla should explicitly state that staging was used."
 
 		local STAGING_EXCLUDE=""
+		STAGING_EXCLUDE="${STAGING_EXCLUDE} -W winhlp32-Flex_Workaround" # Avoid double patching https://bugs.winehq.org/show_bug.cgi?id=42132
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
 
 		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
@@ -508,9 +512,12 @@ multilib_src_install_all() {
 
 	# Remove wineconsole if neither backend is installed #551124
 	if ! use X && ! use ncurses; then
-		rm	"${D}"/usr/{bin/,man/man1/}wineconsole* || die
-		use abi_x86_32 && rm "${D}"/usr/lib32/wine/{,fakedlls/}wineconsole.exe* || die
-		use abi_x86_64 && rm "${D}"/usr/lib64/wine/{,fakedlls/}wineconsole.exe* || die
+		rm "${D}"/usr/bin/wineconsole* || die
+		rm "${D}"/usr/share/man/man1/wineconsole* || die
+		rm_wineconsole() {
+			rm "${D}usr/$(get_libdir)"/wine/{,fakedlls/}wineconsole.exe* || die
+		}
+		multilib_foreach_abi rm_wineconsole
 	fi
 
 	use abi_x86_32 && pax-mark psmr "${D}"usr/bin/wine{,-preloader} #255055

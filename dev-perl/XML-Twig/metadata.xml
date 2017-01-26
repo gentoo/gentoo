@@ -11,11 +11,11 @@
     <remote-id type="cpan-module">XML::Twig::Elt</remote-id>
     <remote-id type="cpan-module">XML::Twig::Entity</remote-id>
     <remote-id type="cpan-module">XML::Twig::Entity_list</remote-id>
+    <remote-id type="cpan-module">XML::Twig::Notation</remote-id>
+    <remote-id type="cpan-module">XML::Twig::Notation_list</remote-id>
     <remote-id type="cpan-module">XML::Twig::XPath</remote-id>
     <remote-id type="cpan-module">XML::Twig::XPath::Attribute</remote-id>
     <remote-id type="cpan-module">XML::Twig::XPath::Elt</remote-id>
     <remote-id type="cpan-module">XML::Twig::XPath::Namespace</remote-id>
-    <remote-id type="cpan-module">XML::XPath::NodeSet</remote-id>
-    <remote-id type="cpan-module">XML::XPathEngine::NodeSet</remote-id>
   </upstream>
 </pkgmetadata>

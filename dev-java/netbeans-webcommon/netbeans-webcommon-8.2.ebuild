@@ -26,20 +26,19 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/1EFED55F8C442E4DB1C2338A5C35D494364F9ECD-ojetdocs-1_1_2.zip
 	http://hg.netbeans.org/binaries/CA8F6968FED0BE20E786C70CF9B603F4D7B66C68-ojetdocs-2_0_0.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/jna:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~radhermit/vim/vim-7.4.2102-gentoo-patches.tar.bz2"
+		https://dev.gentoo.org/~radhermit/vim/vim-8.0.0106-gentoo-patches.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -60,12 +60,12 @@ src_prepare() {
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
 		"${S}"/runtime/menu.vim \
-		"${S}"/src/configure.in || die 'sed failed'
+		"${S}"/src/configure.ac || die 'sed failed'
 
 	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
 	# this is NeXT, but it's actually just a file in dev-libs/9libs
 	# This fixes bug 43885 (20 Mar 2004 agriffis)
-	sed -i 's/ libc\.h / /' "${S}"/src/configure.in || die 'sed failed'
+	sed -i 's/ libc\.h / /' "${S}"/src/configure.ac || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
 	# correctly. To avoid some really entertaining error messages about stuff
@@ -106,7 +106,7 @@ src_configure() {
 	replace-flags -O3 -O2
 
 	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.in is newer than auto/configure
+	# (1) Notice configure.ac is newer than auto/configure
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,11 +19,13 @@ IUSE="doc"
 
 RDEPEND="dev-texlive/texlive-metapost"
 DEPEND="${RDEPEND}
-	dev-lang/perl"
+	dev-lang/perl
+	doc? ( dev-texlive/texlive-bibtexextra )"
 
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	rm -f phaip.bst				# use style from bibtexextra
 	epatch "${FILESDIR}/${P}.patch"
 	epatch "${FILESDIR}/${P}-tempfile.patch"
 }

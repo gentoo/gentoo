@@ -314,11 +314,11 @@ kdecommondepend="
 if [[ ${PN} != kdelibs ]]; then
 	local _kdelibsuse
 	case ${WEBKIT_REQUIRED} in
-		always) _kdelibsuse="webkit" ;;
-		optional) _kdelibsuse="webkit?" ;;
+		always) _kdelibsuse="[webkit]" ;;
+		optional) _kdelibsuse="[webkit?]" ;;
 		*) ;;
 	esac
-	kdecommondepend+=" $(add_kdebase_dep kdelibs "${_kdelibsuse}" 4.14.22)"
+	kdecommondepend+=" >=kde-frameworks/kdelibs-4.14.22:4${_kdelibsuse}"
 	unset _kdelibsuse
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then
@@ -378,7 +378,7 @@ kdehandbookdepend="
 	app-text/docbook-xsl-stylesheets
 "
 kdehandbookrdepend="
-	$(add_kdebase_dep kdelibs 'handbook')
+	kde-frameworks/kdelibs:4[handbook]
 "
 case ${KDE_HANDBOOK} in
 	always)
@@ -490,6 +490,7 @@ _calculate_src_uri() {
 			case ${KDEVELOP_VERSION} in
 				4.[123].[6-9]*) SRC_URI="mirror://kde/unstable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.xz" ;;
 				4.7.3) SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.bz2" ;;
+				4.7.4) SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/${P}.tar.xz" ;;
 				*) SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.xz" ;;
 			esac
 			;;

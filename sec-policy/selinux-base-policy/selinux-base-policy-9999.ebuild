@@ -1,9 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="5"
-
-inherit eutils
+EAPI="6"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-git://anongit.gentoo.org/proj/hardened-refpolicy.git https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
@@ -52,37 +50,11 @@ src_prepare() {
 	local modfiles
 
 	if [[ ${PV} != 9999* ]]; then
-		# Patch the source with the base patchbundle
-		cd "${S}"
-		EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-		EPATCH_SUFFIX="patch" \
-		EPATCH_SOURCE="${WORKDIR}" \
-		EPATCH_FORCE="yes" \
-		epatch
+		einfo "Applying SELinux policy updates ... "
+		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
-	# Apply the additional patches refered to by the module ebuild.
-	# But first some magic to differentiate between bash arrays and strings
-	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]];
-	then
-		cd "${S}/refpolicy/policy/modules"
-		for POLPATCH in "${POLICY_PATCH[@]}";
-		do
-			epatch "${POLPATCH}"
-		done
-	else
-		if [[ -n ${POLICY_PATCH} ]];
-		then
-			cd "${S}/refpolicy/policy/modules"
-			for POLPATCH in ${POLICY_PATCH};
-			do
-				epatch "${POLPATCH}"
-			done
-		fi
-	fi
-
-	# Calling user patches
-	epatch_user
+	eapply_user
 
 	# Collect only those files needed for this particular module
 	for i in ${MODS}; do
@@ -120,9 +92,13 @@ src_install() {
 
 pkg_postinst() {
 	# Override the command from the eclass, we need to load in base as well here
-	local COMMAND
+	local COMMAND="-i base.pp"
+	if has_version "<sys-apps/policycoreutils-2.5"; then
+		COMMAND="-b base.pp"
+	fi
+
 	for i in ${MODS}; do
-		COMMAND="-i ${i}.pp ${COMMAND}"
+		COMMAND="${COMMAND} -i ${i}.pp"
 	done
 
 	for i in ${POLICY_TYPES}; do
@@ -130,17 +106,17 @@ pkg_postinst() {
 
 		cd /usr/share/selinux/${i} || die "Could not enter /usr/share/selinux/${i}"
 
-		semodule -s ${i} -b base.pp ${COMMAND} || die "Failed to load in base and modules ${MODS} in the $i policy store"
+		semodule -s ${i} ${COMMAND} || die "Failed to load in base and modules ${MODS} in the $i policy store"
 	done
 
 	# Relabel depending packages
 	local PKGSET="";
-	if [ -x /usr/bin/qdepends ] ; then
+	if [[ -x /usr/bin/qdepends ]] ; then
 		PKGSET=$(/usr/bin/qdepends -Cq -r -Q ${CATEGORY}/${PN} | grep -v 'sec-policy/selinux-');
-	elif [ -x /usr/bin/equery ] ; then
+	elif [[ -x /usr/bin/equery ]] ; then
 		PKGSET=$(/usr/bin/equery -Cq depends ${CATEGORY}/${PN} | grep -v 'sec-policy/selinux-');
 	fi
-	if [ -n "${PKGSET}" ] ; then
+	if [[ -n "${PKGSET}" ]] ; then
 		rlpkg ${PKGSET};
 	fi
 }

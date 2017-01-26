@@ -24,6 +24,7 @@ RESTRICT='test'
 RDEPEND="
 	dev-libs/glib:2
 	sys-libs/gdbm
+	sys-libs/ncurses:0=
 	crypt? ( dev-libs/openssl:0= )
 	snmp? ( net-analyzer/net-snmp )
 	perl? ( dev-lang/perl )
@@ -90,7 +91,7 @@ src_configure() {
 	#fi
 
 	myconf+=( --without-tkinter )
-	myconf+=( --with-glib --with-swig )
+	myconf+=( --with-glib --with-glibver=2.0 --with-glib12=no --with-swig )
 	# these binaries are for root!
 	econf ${myconf[@]} --bindir=/usr/sbin
 }

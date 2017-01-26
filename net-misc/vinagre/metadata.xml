@@ -6,8 +6,6 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="rdp">Enable access to Windows RDP protocol using
-			<pkg>net-misc/rdesktop</pkg></flag>
     <flag name="ssh">Enable ssh plugin using <pkg>x11-libs/vte</pkg></flag>
     <flag name="spice">Enable access to SPICE-enabled virtual machines</flag>
     <flag name="telepathy">Enable access to remote desktop via a

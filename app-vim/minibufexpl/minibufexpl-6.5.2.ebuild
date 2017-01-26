@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit vim-plugin
 
@@ -18,6 +18,8 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 S=${WORKDIR}/${MY_PN}-${PV}
 
 src_prepare() {
+	default
+
 	# discard unwanted files
 	rm .gitignore README.md || die
 }

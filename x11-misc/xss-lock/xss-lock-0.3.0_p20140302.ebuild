@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/raymonad/xss-lock/get/1e158fb20108058dbd62bd51d8e
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+man"
 
 RDEPEND="dev-libs/glib:2

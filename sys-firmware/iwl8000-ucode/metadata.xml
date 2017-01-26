@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nicolasbock@gentoo.org</email>
+	<description>
+		Feel free to bump and add yourself to the maintainer list.
+	</description>
+  </maintainer>
+</pkgmetadata>

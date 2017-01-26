@@ -16,7 +16,6 @@
 		<name>Sergei Trofimovich</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">distorm</remote-id>
 		<remote-id type="github">gdabah/distorm</remote-id>
 	</upstream>
 </pkgmetadata>

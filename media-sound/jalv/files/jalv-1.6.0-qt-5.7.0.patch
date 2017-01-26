@@ -1,0 +1,31 @@
+From c32f3ca76a09c03fe9a022eb46e049e6fd5e2dbb Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Sat, 7 Jan 2017 19:20:55 -0500
+Subject: Fix compilation with newer versions of Qt5
+
+
+diff --git a/wscript b/wscript
+index 24f5a2b..08df946 100644
+--- a/wscript
++++ b/wscript
+@@ -5,7 +5,7 @@ from waflib.extras import autowaf as autowaf
+ import waflib.Options as Options
+ 
+ # Version of this package (even if built as a child)
+-JALV_VERSION = '1.6.0'
++JALV_VERSION = '1.6.1'
+ 
+ # Variables for 'waf dist'
+ APPNAME = 'jalv'
+@@ -231,7 +231,7 @@ def build(bld):
+                   includes     = ['.', 'src'],
+                   lib          = ['pthread'],
+                   install_path = '${BINDIR}',
+-                  cxxflags     = ['-fPIC'])
++                  cxxflags     = ['-fPIC', '-std=c++11'])
+         autowaf.use_lib(bld, obj, libs + ' QT5')
+ 
+     # Man pages
+-- 
+cgit v0.10.2
+

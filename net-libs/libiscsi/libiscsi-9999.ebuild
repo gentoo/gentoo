@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils git-r3
+inherit autotools git-r3
 
 DESCRIPTION="iscsi client library and utilities"
 HOMEPAGE="https://github.com/sahlberg/libiscsi"
@@ -33,5 +33,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

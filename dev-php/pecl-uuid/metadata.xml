@@ -5,4 +5,8 @@
     <email>dev-zero@gentoo.org</email>
     <name>Tiziano Müller</name>
   </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
 </pkgmetadata>

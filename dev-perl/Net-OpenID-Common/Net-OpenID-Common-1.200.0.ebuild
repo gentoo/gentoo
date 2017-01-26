@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

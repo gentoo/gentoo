@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Resolve conflicts with slot 5 ebuilds
-kde-base/baloo minimal
-kde-apps/kde4-l10n minimal
+kde-frameworks/baloo minimal
 
 # Required by kde-frameworks/kauth
 sys-auth/polkit-qt qt5
@@ -19,7 +18,7 @@ media-libs/phonon qt5
 media-libs/phonon-vlc qt5
 
 # Required by kde-apps/kdenlive:5
-media-libs/mlt kdenlive qt5 melt -kde -qt4
+media-libs/mlt kdenlive qt5 melt
 
 # Required by dev-qt/qtcore:5
 dev-libs/libpcre pcre16
@@ -30,10 +29,10 @@ dev-qt/qtcore icu
 # Required by kde-apps/kate[addons]
 dev-libs/libgit2 threads
 
-# Required by kde-base/pykde4
+# Required by kde-apps/pykde4
 dev-python/PyQt4 script sql webkit
 
-# Required by app-office/akonadi-server
+# Required by kde-apps/akonadi
 dev-qt/qtsql mysql
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind

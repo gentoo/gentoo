@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://code.launchpad.net/${PN}/$(get_version_component_range 1-2)-ser
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="s3 test"
 
 CDEPEND="
@@ -23,7 +23,10 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pexpect[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]

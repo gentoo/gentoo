@@ -1,0 +1,71 @@
+From 3c7f3247e443620658a5cb7b4e9cdea488c450d9 Mon Sep 17 00:00:00 2001
+From: Nicholas Yue <yue.nicholas@gmail.com>
+Date: Thu, 17 Nov 2016 03:58:58 -0800
+Subject: [PATCH] Fix the Doxygen generation problem but current solution is
+ not very elegant as there was a regeneration run of Doxygen. Committing this
+ for now so that at least it will work for the initial 4.0.0 release.
+ Introduce a CMake option variable to toggle the generation and installation
+ of doxygen
+
+---
+ CMakeLists.txt         |  1 +
+ openvdb/CMakeLists.txt | 27 +++++++++++++++------------
+ 2 files changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 739d57f..32f82d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,6 +33,7 @@ PROJECT ( OpenVDB )
+ ENABLE_TESTING()
+ 
+ OPTION ( OPENVDB_BUILD_UNITTESTS "Build the OpenVDB unit tests" ON )
++OPTION ( OPENVDB_BUILD_DOCS "Build the OpenVDB documentation" OFF )
+ OPTION ( OPENVDB_BUILD_PYTHON_MODULE "Build the pyopenvdb Python module" ON )
+ OPTION ( OPENVDB_BUILD_HOUDINI_SOPS "Build the Houdini SOPs" OFF )
+ OPTION ( OPENVDB_BUILD_MAYA_PLUGIN "Build the Maya plugin" OFF )
+diff --git a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
+index f86b306..aa1a080 100644
+--- a/openvdb/CMakeLists.txt
++++ b/openvdb/CMakeLists.txt
+@@ -97,7 +97,9 @@ FIND_PACKAGE ( ZLIB REQUIRED )
+ FIND_PACKAGE ( ILMBase REQUIRED )
+ FIND_PACKAGE ( OpenEXR REQUIRED )
+ FIND_PACKAGE ( OpenGL REQUIRED )
+-FIND_PACKAGE ( Doxygen REQUIRED )
++IF (OPENVDB_BUILD_DOCS)
++  FIND_PACKAGE ( Doxygen REQUIRED )
++ENDIF ()
+ IF (OPENVDB_BUILD_UNITTESTS)
+   FIND_PACKAGE ( CPPUnit REQUIRED )
+ ENDIF ()
+@@ -435,17 +437,18 @@ IF ( OPENVDB_BUILD_PYTHON_MODULE )
+ ENDIF ( OPENVDB_BUILD_PYTHON_MODULE )
+ 
+ # Doxygen docmentation
+-FILE ( READ ${CMAKE_CURRENT_SOURCE_DIR}/doxygen-config DOXYGEN_CONFIG_CONTENT )
+-FILE ( WRITE ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config ${DOXYGEN_CONFIG_CONTENT} )
+-FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config "OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/doc\n" )
+-
+-ADD_CUSTOM_TARGET ( doc
+-  ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config
+-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+-  COMMENT "Generating API documentation with Doxygen" VERBATIM
+-)
+-
+-IF ( EXISTS ${CMAKE_CURRENT_BINARY_DIR}/doc/html )
++IF (OPENVDB_BUILD_DOCS)
++
++  FILE ( READ ${CMAKE_CURRENT_SOURCE_DIR}/doxygen-config DOXYGEN_CONFIG_CONTENT )
++  FILE ( WRITE ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config ${DOXYGEN_CONFIG_CONTENT} )
++  FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config "OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/doc\n" )
++  
++  ADD_CUSTOM_TARGET ( doc ALL
++    ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config
++    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
++    COMMENT "Generating API documentation with Doxygen" VERBATIM
++    )
++  
+   INSTALL ( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc/html/ DESTINATION doc)
+ ENDIF ()
+ 

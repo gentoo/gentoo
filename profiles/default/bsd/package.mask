@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,6 @@
 # We want BSD versions wherever possible
 # Also mask packages that are depending on Linux kernel
 sys-apps/apmd
-sys-block/eject
 sys-apps/net-tools
 net-misc/iputils
 sys-apps/hardened-shadow

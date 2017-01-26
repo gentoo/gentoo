@@ -98,7 +98,7 @@ src_configure() {
 			--with-python
 	}
 
-	configure() {
+	configure_normal() {
 		ECONF_SOURCE="${S}" gnome2_src_configure \
 			${myconf[@]} \
 			--with-gtk=${MULTIBUILD_VARIANT} \
@@ -113,7 +113,7 @@ src_configure() {
 
 	local MULTIBUILD_VARIANTS
 	compute_variants
-	multibuild_foreach_variant run_in_build_dir configure
+	multibuild_foreach_variant run_in_build_dir configure_normal
 }
 
 src_compile() {
@@ -127,7 +127,7 @@ src_compile() {
 			gtkvnc_la_DEPENDENCIES="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la"
 	}
 
-	compile() {
+	compile_normal() {
 		gnome2_src_compile
 
 		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
@@ -138,7 +138,7 @@ src_compile() {
 
 	local MULTIBUILD_VARIANTS
 	compute_variants
-	multibuild_foreach_variant run_in_build_dir compile
+	multibuild_foreach_variant run_in_build_dir compile_normal
 }
 
 src_test() {
@@ -158,7 +158,7 @@ src_install() {
 			gtkvnc_la_DEPENDENCIES="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la"
 	}
 
-	install() {
+	install_normal() {
 		gnome2_src_install
 
 		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
@@ -169,5 +169,5 @@ src_install() {
 
 	local MULTIBUILD_VARIANTS
 	compute_variants
-	multibuild_foreach_variant run_in_build_dir install
+	multibuild_foreach_variant run_in_build_dir install_normal
 }

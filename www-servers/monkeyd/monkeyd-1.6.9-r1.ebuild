@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS="amd64 arm ppc64"
 else
 	SRC_URI="http://monkey-project.com/releases/${PV:0:3}/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~mips ~ppc ppc64 ~x86"
+	KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
 fi
 
 LICENSE="GPL-2"

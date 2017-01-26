@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -31,6 +31,9 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }

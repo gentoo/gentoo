@@ -9,5 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Skype is for doing things together, whenever you’re apart. Skype’s text, voice and video make it simple to share experiences with the people that matter to you, wherever they are.</longdescription>
+	<use>
+		<flag name="pax_kernel">Triggers a paxmarking of the main skype binary</flag>
+	</use>
+	<longdescription>Skype is for doing things together, whenever you're apart. Skype's text, voice and video make it simple to share experiences with the people that matter to you, wherever they are.</longdescription>
 </pkgmetadata>

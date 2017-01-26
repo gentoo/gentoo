@@ -12,8 +12,7 @@ SRC_URI="mirror://gentoo/${P}.c"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
+KEYWORDS="amd64 hppa ia64 mips ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
 
 S="${WORKDIR}"
 

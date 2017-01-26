@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils autotools
+inherit eutils autotools flag-o-matic
 
 DESCRIPTION="The Yate GSM base station"
 HOMEPAGE="http://www.yatebts.com/"
@@ -32,6 +32,10 @@ else
 fi
 
 src_prepare() {
+	replace-flags -ggdb -g
+	replace-flags -ggdb3 -g
+	replace-flags -ggdb2 -g
+	replace-flags -ggdb1 -g
 	#epatch "${FILESDIR}"/${PN}-4.0.0-dont-mess-with-cflags.patch
 	epatch "${FILESDIR}"/${PN}-sgsnggsn-inetutils-hostname-fix.diff
 	eautoreconf

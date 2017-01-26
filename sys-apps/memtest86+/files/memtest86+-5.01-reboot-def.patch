@@ -1,3 +1,5 @@
+http://forum.canardpc.com/threads/110952-fix-build-due-to-missing-reboot-symbol
+
 the reboot func is used elsewhere, so don't mark it inline
 
 --- a/lib.c

@@ -9,6 +9,7 @@ Environment=CONSUL_TEMPLATE_DAEMON_OPTS="-config=/etc/consul-template.d"
 ExecStart=/usr/bin/consul-template $CONSUL_TEMPLATE_DAEMON_OPTS
 Restart=on-failure
 SuccessExitStatus=12
+KillSignal=SIGINT
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

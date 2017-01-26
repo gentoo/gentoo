@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>fearedbliss@gentoo.org</email>
+        <name>Jonathan Vasquez</name>
+    </maintainer>
+    <use>
+        <flag name="luks">Encryption support</flag>
+        <flag name="raid">RAID support</flag>
+        <flag name="lvm">Logical Volume support</flag>
+        <flag name="zfs">ZFS support</flag>
+    </use>
+</pkgmetadata>

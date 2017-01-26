@@ -18,21 +18,20 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar
 	http://hg.netbeans.org/binaries/5D007C6037A8501E73A3D3FB98A1F6AE5768C3DD-nb-javac-api.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-extide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/junit:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

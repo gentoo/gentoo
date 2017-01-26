@@ -1,0 +1,194 @@
+From 3a283cfe9f8f1f127e8dc5597a5ea1d249985a54 Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Sat, 12 Nov 2016 11:20:47 +0200
+Subject: [PATCH] Fix the --add-file option.
+
+* src/common.h (name_more_files): New proto.
+(files_from_option): Remove.
+* src/names.c (name_more_files): New file.
+(names_options): Fix declaration of the
+add-file option.
+(names_parse_opt): Handle --add-file.
+* src/tar.c (struct tar_args): Remove the input_files member.
+Change all uses: use name_more_files() instead.
+* tests/Makefile.am: Add new test.
+* tests/add-file.at: New testcase.
+* tests/testsuite.at: Add new test.
+---
+ src/common.h       |  4 +---
+ src/names.c        | 24 ++++++++++++-------
+ src/tar.c          | 16 ++++---------
+ tests/Makefile.am  |  3 ++-
+ tests/add-file.at  | 67 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ tests/testsuite.at |  1 +
+ 6 files changed, 92 insertions(+), 23 deletions(-)
+ create mode 100644 tests/add-file.at
+
+diff --git a/src/common.h b/src/common.h
+index 50c34cc7c09b..6fdb6225f18b 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -414,9 +414,6 @@ GLOBAL bool show_transformed_names_option;
+    timestamps from archives with an unusual member order. It is automatically
+    set for incremental archives. */
+ GLOBAL bool delay_directory_restore_option;
+-
+-/* When set, tar will not refuse to create empty archives */
+-GLOBAL bool files_from_option;
+ 
+ /* Declarations for each module.  */
+ 
+@@ -738,6 +735,7 @@ void uid_to_uname (uid_t uid, char **uname);
+ int uname_to_uid (char const *uname, uid_t *puid);
+ 
+ void name_init (void);
++bool name_more_files (void);
+ void name_add_name (const char *name);
+ void name_term (void);
+ const char *name_next (int change_dirs);
+diff --git a/src/names.c b/src/names.c
+index 219aa77a4356..1a9465667cd3 100644
+--- a/src/names.c
++++ b/src/names.c
+@@ -32,7 +32,8 @@ static void name_add_file (const char *name);
+ 
+ enum
+   {
+-    EXCLUDE_BACKUPS_OPTION = 256,
++    ADD_FILE_OPTION = 256,
++    EXCLUDE_BACKUPS_OPTION,
+     EXCLUDE_CACHES_OPTION,
+     EXCLUDE_CACHES_UNDER_OPTION,
+     EXCLUDE_CACHES_ALL_OPTION,
+@@ -67,7 +68,7 @@ static struct argp_option names_options[] = {
+   {NULL, 0, NULL, 0,
+    N_("Local file name selection:"), GRID },
+ 
+-  {"add-file", ARGP_KEY_ARG, N_("FILE"), 0,
++  {"add-file", ADD_FILE_OPTION, N_("FILE"), 0,
+    N_("add given FILE to the archive (useful if its name starts with a dash)"), GRID+1 },
+   {"directory", 'C', N_("DIR"), 0,
+    N_("change to directory DIR"), GRID+1 },
+@@ -190,10 +191,10 @@ names_parse_opt (int key, char *arg, struct argp_state *state)
+ 
+     case 'T':
+       name_add_file (arg);
+-      /* Indicate we've been given -T option. This is for backward
+-	 compatibility only, so that `tar cfT archive /dev/null will
+-	 succeed */
+-      files_from_option = true;
++      break;
++
++    case ADD_FILE_OPTION:
++      name_add_name (arg);
+       break;
+ 
+     default:
+@@ -651,8 +652,8 @@ struct name_elt        /* A name_array element. */
+   } v;
+ };
+ 
+-static struct name_elt *name_head;  /* store a list of names */
+-size_t name_count;	 	    /* how many of the entries are names? */
++static struct name_elt *name_head;/* store a list of names */
++size_t name_count;	 	  /* how many of the entries are file names? */
+ 
+ static struct name_elt *
+ name_elt_alloc (void)
+@@ -784,6 +785,12 @@ name_list_advance (void)
+     }
+ }
+ 
++/* Return true if there are names or options in the list */
++bool
++name_more_files (void)
++{
++  return name_count > 0;
++}
+ 
+ /* Add to name_array the file NAME with fnmatch options MATFLAGS */
+ void
+@@ -823,6 +830,7 @@ name_add_file (const char *name)
+   ep->v.file.name = name;
+   ep->v.file.line = 0;
+   ep->v.file.fp = NULL;
++  name_count++;
+ }
+ 
+ /* Names from external name file.  */
+diff --git a/src/tar.c b/src/tar.c
+index 35bac38c2793..a361fc2c607f 100644
+--- a/src/tar.c
++++ b/src/tar.c
+@@ -813,7 +813,6 @@ struct tar_args        /* Variables used during option parsing */
+   bool pax_option;                 /* True if --pax-option was given */
+   char const *backup_suffix_string;   /* --suffix option argument */
+   char const *version_control_string; /* --backup option argument */
+-  bool input_files;                /* True if some input files where given */
+   int compress_autodetect;         /* True if compression autodetection should
+ 				      be attempted when creating archives */
+ };
+@@ -1322,7 +1321,6 @@ parse_opt (int key, char *arg, struct argp_state *state)
+     case ARGP_KEY_ARG:
+       /* File name or non-parsed option, because of ARGP_IN_ORDER */
+       name_add_name (arg);
+-      args->input_files = true;
+       break;
+ 
+     case 'A':
+@@ -2179,7 +2177,7 @@ more_options (int argc, char **argv, struct option_locus *loc)
+   args.loc = loc;
+   if (argp_parse (&argp, argc, argv, ARGP_IN_ORDER|ARGP_NO_EXIT, &idx, &args))
+     abort (); /* shouldn't happen */
+-  if (loc->source == OPTS_ENVIRON && args.input_files)
++  if (loc->source == OPTS_ENVIRON && name_more_files ())
+     USAGE_ERROR ((0, 0, _("non-option arguments in %s"), loc->name));
+ }
+ 
+@@ -2221,7 +2219,6 @@ decode_options (int argc, char **argv)
+   args.pax_option = false;
+   args.backup_suffix_string = getenv ("SIMPLE_BACKUP_SUFFIX");
+   args.version_control_string = 0;
+-  args.input_files = false;
+   args.compress_autodetect = false;
+ 
+   subcommand_option = UNKNOWN_SUBCOMMAND;
+@@ -2340,10 +2337,7 @@ decode_options (int argc, char **argv)
+ 
+   /* Handle operands after any "--" argument.  */
+   for (; idx < argc; idx++)
+-    {
+-      name_add_name (argv[idx]);
+-      args.input_files = true;
+-    }
++    name_add_name (argv[idx]);
+ 
+   /* Derive option values and check option consistency.  */
+ 
+@@ -2365,7 +2359,7 @@ decode_options (int argc, char **argv)
+ 
+   if (occurrence_option)
+     {
+-      if (!args.input_files)
++      if (!name_more_files ())
+ 	USAGE_ERROR ((0, 0,
+ 		      _("--occurrence is meaningless without a file list")));
+       if (!IS_SUBCOMMAND_CLASS (SUBCL_OCCUR))
+@@ -2569,7 +2563,7 @@ decode_options (int argc, char **argv)
+     {
+       /* --test-label is silent if the user has specified the label name to
+ 	 compare against. */
+-      if (!args.input_files)
++      if (!name_more_files ())
+ 	verbose_option++;
+     }
+   else if (utc_option)
+@@ -2598,7 +2592,7 @@ decode_options (int argc, char **argv)
+   switch (subcommand_option)
+     {
+     case CREATE_SUBCOMMAND:
+-      if (!args.input_files && !files_from_option)
++      if (!name_more_files ())
+ 	USAGE_ERROR ((0, 0,
+ 		      _("Cowardly refusing to create an empty archive")));
+       if (args.compress_autodetect && archive_names

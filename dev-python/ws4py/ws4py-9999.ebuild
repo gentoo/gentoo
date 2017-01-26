@@ -8,7 +8,7 @@
 # pypy is viable but better with a cutdown set of deps
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads?"
 
 inherit distutils-r1

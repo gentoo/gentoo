@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 #BACKPORTS=
 
 inherit autotools eutils gnome2-utils python-r1 systemd multilib bash-completion-r1

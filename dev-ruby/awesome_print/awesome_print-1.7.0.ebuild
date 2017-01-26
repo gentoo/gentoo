@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/awesome-print/awesome_print/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
 SLOT="0"
 IUSE=""
 

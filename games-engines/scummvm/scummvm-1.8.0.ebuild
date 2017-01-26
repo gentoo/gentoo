@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib"
 RESTRICT="test"  # it only looks like there's a test there #77507
 

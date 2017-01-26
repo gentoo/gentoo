@@ -1,0 +1,14 @@
+diff -Naur c-ares-1.12.0.orig/configure.ac c-ares-1.12.0/configure.ac
+--- c-ares-1.12.0.orig/configure.ac	2016-09-29 07:43:01.000000000 -0400
++++ c-ares-1.12.0/configure.ac	2016-10-14 03:10:36.253342032 -0400
+@@ -837,10 +837,6 @@
+ fi
+ AC_MSG_RESULT([$build_tests])
+ 
+-if test "x$build_tests" = "xyes" ; then
+-  AC_CONFIG_SUBDIRS([test])
+-fi
+-
+ AC_CONFIG_FILES([Makefile libcares.pc])
+ AC_OUTPUT
+ XC_AMEND_DISTCLEAN(['.'])

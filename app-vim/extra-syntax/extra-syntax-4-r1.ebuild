@@ -34,6 +34,8 @@ RDEPEND="
 	app-vim/xquery-syntax
 	app-vim/xsl-syntax"
 
+S=${WORKDIR}
+
 src_install() {
 	:
 }

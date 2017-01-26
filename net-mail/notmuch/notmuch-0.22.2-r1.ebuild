@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 	distutils-r1 toolchain-funcs
@@ -105,7 +105,8 @@ src_prepare() {
 	bindings python mv README README-python || die
 	mv contrib/notmuch-mutt/README contrib/notmuch-mutt/README-mutt || die
 
-	rm -f Makefile.config # assure that new Makefile.config will be generated
+	# assure that new Makefile.config will be generated
+	rm -f Makefile.config || die
 
 	if use test; then
 		append-cflags -g

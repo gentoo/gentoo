@@ -1,5 +1,5 @@
---- CMakeLists.txt.orig	2015-11-03 20:19:34.092188350 -0500
-+++ CMakeLists.txt	2015-11-03 20:20:17.176302442 -0500
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -384,7 +384,9 @@
  
  # manual pages

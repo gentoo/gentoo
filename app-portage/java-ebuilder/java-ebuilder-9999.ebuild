@@ -1,11 +1,11 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2016-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 if [[ ${PV} == 9999 ]]; then
 	ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/heroxbd/${PN}.git"
+	EGIT_REPO_URI="https://github.com/gentoo/${PN}.git"
 else
 	SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -20,7 +20,9 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=virtual/jdk-1.8"
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND=">=virtual/jre-1.8
+	sys-process/parallel
+	>=dev-java/maven-bin-3"
 
 S="${WORKDIR}/${P}"
 
@@ -39,8 +41,8 @@ Main-Class: ${MAIN_CLASS}" \
 }
 
 src_prepare() {
-	hprefixify scripts/{{tree,meta}.sh,movl}
 	eapply_user
+	hprefixify scripts/{{tree,meta}.sh,movl} java-ebuilder.conf
 }
 
 src_install() {
@@ -49,7 +51,7 @@ src_install() {
 
 	insinto /var/lib/${PN}
 	doins -r maven
-	dodir /var/lib/${PN}o/{poms,cache}
+	dodir /var/lib/${PN}/{poms,cache}
 
 	dodoc README maven.conf
 
@@ -57,4 +59,7 @@ src_install() {
 	doexe scripts/{tree,meta}.sh
 
 	dobin scripts/movl
+
+	insinto /etc
+	doins java-ebuilder.conf
 }

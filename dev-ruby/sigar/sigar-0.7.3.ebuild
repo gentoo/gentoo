@@ -19,6 +19,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+all_ruby_prepare() {
+	sed -i -e '25i$CFLAGS += " -std=gnu89"' bindings/ruby/extconf.rb || die
+}
+
 each_ruby_configure() {
 	${RUBY} -Cbindings/ruby extconf.rb || die
 }

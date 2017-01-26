@@ -23,7 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
-	>=dev-perl/extutils-pkgconfig-1.0.0
+	>=dev-perl/ExtUtils-PkgConfig-1.0.0
 	virtual/pkgconfig
 	dev-perl/Log-Agent
 "

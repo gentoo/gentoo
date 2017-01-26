@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,6 +41,6 @@ src_install() {
 pkg_postinst() {
 	chown -R logcheck:logcheck /etc/logcheck /var/lib/logcheck || die
 
-	elog "Please read the guide ad https://www.gentoo.org/doc/en/logcheck.xml"
+	elog "Please read the guide at https://wiki.gentoo.org/wiki/Logcheck"
 	elog "for installation instructions."
 }

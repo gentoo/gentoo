@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils
 
-# Switch to ^g when we switch to EAPI=6.
-MY_P="G${P:1}"
+MY_P="${P^g}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
 HOMEPAGE="http://practical-scheme.net/gauche/"
@@ -23,13 +22,18 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/openssl )"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9-rpath.patch
+	"${FILESDIR}"/${PN}-0.9-gauche.m4.patch
+	"${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
+	"${FILESDIR}"/${PN}-0.9-xz-info.patch
+	"${FILESDIR}"/${PN}-0.9-rfc.tls.patch
+	"${FILESDIR}"/${P}-gauche.threads.patch
+	"${FILESDIR}"/${P}-file.util.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-rpath.diff
-	epatch "${FILESDIR}"/${PN}-gauche.m4.diff
-	epatch "${FILESDIR}"/${PN}-ext-ldflags.diff
-	epatch "${FILESDIR}"/${PN}-xz-info.diff
-	epatch "${FILESDIR}"/${PN}-rfc.tls.diff
-	epatch "${FILESDIR}"/${P}-gauche.threads.diff
+	default
 	eautoconf
 }
 

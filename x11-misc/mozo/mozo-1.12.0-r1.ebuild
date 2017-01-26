@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml"
 inherit python-r1 mate
 
 SRC_URI="${SRC_URI} gtk3? ( https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${P}-gtk3.patch.bz2 )"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DESCRIPTION="Mozo menu editor for MATE"
 LICENSE="GPL-2"

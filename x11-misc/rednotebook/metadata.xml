@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<use>
 		<flag name="libyaml">enable libyaml support</flag>
-		<flag name="spell">enable gtk-spell support</flag>
 	</use>
 	<longdescription lang="en">
 A graphical journal with calendar, templates, tags, keyword searching, and export functionality.

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SRC_URI="
 "
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="static-libs python utils"
 
 RDEPEND="
@@ -63,8 +63,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
-	"${FILESDIR}"/${PN}-3.2.20-rtnl_tc_get_ops.patch
-	"${FILESDIR}"/${PN}-3.2.20-cache-api.patch
+	"${FILESDIR}"/${PN}-3.2.28-in6.patch
 )
 
 src_prepare() {

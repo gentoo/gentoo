@@ -12,14 +12,23 @@ HOMEPAGE="https://github.com/akopytov/sysbench"
 EGIT_REPO_URI="https://github.com/akopytov/sysbench.git"
 EGIT_BRANCH="1.0"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="aio mysql"
+IUSE="aio lua mysql postgres test"
 
-DEPEND="aio? ( dev-libs/libaio )
-	mysql? ( virtual/libmysqlclient )"
-RDEPEND="${DEPEND}"
+RDEPEND="aio? ( dev-libs/libaio )
+	lua? ( dev-lang/lua:= )
+	mysql? ( virtual/libmysqlclient )
+	postgres? ( dev-db/postgresql:= )"
+DEPEND="${RDEPEND}
+	sys-devel/libtool:=
+	dev-libs/libxslt
+	test? ( dev-util/cram )"
+
+REQUIRED_USE="
+	mysql? ( lua )
+	postgres? ( lua )"
 
 src_prepare() {
 	default
@@ -32,15 +41,17 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable aio aio)
+		$(use_with lua lua)
 		$(use_with mysql mysql)
+		$(use_with postgres pgsql)
+		--without-attachsql
+		--without-drizzle
+		--without-oracle
 	)
 
 	econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	default
-
-	insinto /usr/share/${PN}/tests/db
-	doins sysbench/tests/db/*.lua || die
+src_test() {
+	emake check test
 }

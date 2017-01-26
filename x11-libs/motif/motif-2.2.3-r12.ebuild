@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,7 @@ LICENSE="MOTIF MIT"
 SLOT="2.2"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-motif[-abi_x86_32(-)] )
-	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXp-1.0.2[${MULTILIB_USEDEP}]

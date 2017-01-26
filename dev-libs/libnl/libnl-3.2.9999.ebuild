@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,15 +31,12 @@ DEPEND="
 	sys-devel/flex
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 DOCS=(
 	ChangeLog
-)
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
-	"${FILESDIR}"/${PN}-3.2.20-rtnl_tc_get_ops.patch
-	"${FILESDIR}"/${PN}-3.2.20-cache-api.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

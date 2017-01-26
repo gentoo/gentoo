@@ -97,14 +97,14 @@ pkg_postinst() {
 		echo
 	fi
 
-	if has_version "app-office/akonadi-server[sqlite]"; then
+	if has_version "kde-apps/akonadi[sqlite]"; then
 		ewarn
 		ewarn "We strongly recommend you set your Akonadi database backend to QMYSQL in your"
 		ewarn "user configuration. This is the backend recommended by KDE upstream."
 		ewarn "Reports indicate that kde-apps/kmail-4.10 does not work properly with the sqlite"
 		ewarn "backend anymore."
-		if has_version "app-office/akonadi-server[-mysql]"; then
-			ewarn "FOR THAT, YOU WILL HAVE TO RE-BUILD app-office/akonadi-server WITH mysql USEFLAG ENABLED."
+		if has_version "kde-apps/akonadi[-mysql]"; then
+			ewarn "FOR THAT, YOU WILL HAVE TO RE-BUILD kde-apps/akonadi WITH mysql USEFLAG ENABLED."
 		fi
 		ewarn "You can select the backend in your ~/.config/akonadi/akonadiserverrc."
 		ewarn

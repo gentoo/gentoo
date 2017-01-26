@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Azoth, the modular IM client for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc astrality +acetamide +adiumstyles +autoidler +autopaste +birthdaynotifier
 		+chathistory +crypt +depester +embedmedia +herbicide +hili +isterique
 		+juick +keeso +lastseen	+metacontacts media +murm +latex +nativeemoticons

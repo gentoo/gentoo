@@ -29,7 +29,7 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	epatch ${WORKDIR}/${PN}_${PV}-3.diff
+	epatch "${WORKDIR}/${PN}_${PV}-3.diff"
 	sed -i -e 's:#include <linux/elf.h>:#include <elf.h>:' \
 	  ${S}/elftoaout*/elftoaout.c
 }

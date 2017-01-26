@@ -13,7 +13,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit autotools bash-completion-r1 linux-info multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
 
@@ -22,7 +22,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit cryptsetup curl doc elfutils +gcrypt gnuefi http
+IUSE="acl apparmor audit build cryptsetup curl doc elfutils +gcrypt gnuefi http
 	idn importd +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
@@ -53,9 +53,9 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
-	pam? ( virtual/pam:= )
+	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
 	qrcode? ( media-gfx/qrencode:0= )
-	seccomp? ( sys-libs/libseccomp:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	sysv-utils? (
 		!sys-apps/systemd-sysv-utils
@@ -68,13 +68,18 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
+	!build? ( || (
+		sys-apps/util-linux[kill(-)]
+		sys-process/procps[kill(+)]
+		sys-apps/coreutils[kill(-)]
+	) )
 	!sys-auth/nss-myhostname
 	!<sys-kernel/dracut-044
 	!sys-fs/eudev
 	!sys-fs/udev"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
-PDEPEND=">=sys-apps/dbus-1.8.8:0[systemd]
+PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 	>=sys-apps/hwids-20150417[udev]
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
@@ -86,12 +91,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	>=sys-devel/binutils-2.23.1
-	>=sys-devel/gcc-4.6
 	>=sys-kernel/linux-headers-${MINKV}
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	test? ( >=sys-apps/dbus-1.6.8-r1:0 )
+	test? ( sys-apps/dbus )
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -105,7 +108,7 @@ python_check_deps() {
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-		~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
+		~CHECKPOINT_RESTORE ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
 		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
 		~TIMERFD ~TMPFS_XATTR ~UNIX
 		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
@@ -122,16 +125,6 @@ pkg_pretend() {
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
-	fi
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(gcc-major-version) -lt 4
-			|| ( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ) ]]
-		then
-			eerror "systemd requires at least gcc 4.6 to build. Please switch the active"
-			eerror "gcc version using gcc-config."
-			die "systemd requires at least gcc 4.6"
-		fi
 	fi
 
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -157,9 +150,16 @@ src_prepare() {
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 
 	local PATCHES=(
-		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-		"${FILESDIR}/228-noclean-tmp.patch"
 	)
+
+	if ! use vanilla; then
+		PATCHES+=(
+			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
+			"${FILESDIR}/228-noclean-tmp.patch"
+			"${FILESDIR}/233-systemd-user-pam.patch"
+		)
+	fi
+
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
 	default
@@ -224,6 +224,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable elfutils)
 		$(use_enable gcrypt)
 		$(multilib_native_use_enable gnuefi)
+		--with-efi-libdir="/usr/$(get_libdir)"
 		$(multilib_native_use_enable http microhttpd)
 		$(usex http $(multilib_native_use_enable ssl gnutls) --disable-gnutls)
 		$(multilib_native_use_enable idn libidn)
@@ -234,7 +235,7 @@ multilib_src_configure() {
 		$(use_enable lz4)
 		$(use_enable lzma xz)
 		$(multilib_native_use_enable nat libiptc)
-		$(multilib_native_use_enable pam)
+		$(use_enable pam)
 		$(multilib_native_use_enable policykit polkit)
 		$(multilib_native_use_enable qrcode qrencode)
 		$(multilib_native_use_enable seccomp)
@@ -277,10 +278,14 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		emake "${mymakeopts[@]}"
 	else
-		echo 'gentoo: $(BUILT_SOURCES)' | \
-		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
-		echo 'gentoo: $(lib_LTLIBRARIES) $(pkgconfiglib_DATA)' | \
-		emake "${mymakeopts[@]}" -f Makefile -f - gentoo
+		emake built-sources
+		local targets=(
+			'$(rootlib_LTLIBRARIES)'
+			'$(lib_LTLIBRARIES)'
+			'$(pamlib_LTLIBRARIES)'
+			'$(pkgconfiglib_DATA)'
+		)
+		echo "gentoo: ${targets[*]}" | emake "${mymakeopts[@]}" -f Makefile -f - gentoo
 	fi
 }
 
@@ -304,10 +309,11 @@ multilib_src_install() {
 		emake "${mymakeopts[@]}" install
 	else
 		mymakeopts+=(
+			install-rootlibLTLIBRARIES
 			install-libLTLIBRARIES
+			install-pamlibLTLIBRARIES
 			install-pkgconfiglibDATA
 			install-includeHEADERS
-			# safe to call unconditionally, 'installs' empty list
 			install-pkgincludeHEADERS
 		)
 
@@ -318,6 +324,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	prune_libtool_files --modules
 	einstalldocs
+	dodoc "${FILESDIR}"/nsswitch.conf
 
 	if [[ ${PV} != 9999 ]]; then
 		use doc || doman "${WORKDIR}"/man/systemd.{directives,index}.7

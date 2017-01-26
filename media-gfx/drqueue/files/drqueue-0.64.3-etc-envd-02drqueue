@@ -1,5 +1,0 @@
-# environment variable for DrQueue
-DRQUEUE_MASTER="127.0.0.1"
-DRQUEUE_ROOT="/var/lib/drqueue"
-DRQUEUE_LOGS="/var/log/drqueue"
-

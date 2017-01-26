@@ -1,0 +1,437 @@
+From e434862050abe2ec48a0c506faf8e2a5f0fe99a9 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Sun, 4 Sep 2016 14:12:02 +0200
+Subject: [PATCH] Make the config of file filters and url filters separate
+
+REVIEW: 128828
+BUG: 368234
+---
+ src/EditProfileDialog.cpp | 21 ++++++++++++---
+ src/EditProfileDialog.h   |  1 +
+ src/EditProfileDialog.ui  | 14 ++++++++--
+ src/Profile.cpp           |  4 ++-
+ src/Profile.h             |  9 +++++++
+ src/SessionController.cpp | 40 +++++++++++++++++++++++++---
+ src/SessionController.h   |  6 +++++
+ src/TerminalDisplay.cpp   | 67 ++++++++++++++++++++++-------------------------
+ src/TerminalDisplay.h     | 16 -----------
+ src/ViewManager.cpp       |  1 -
+ 10 files changed, 117 insertions(+), 62 deletions(-)
+
+diff --git a/src/EditProfileDialog.cpp b/src/EditProfileDialog.cpp
+index a85cd5b..1a94193 100644
+--- a/src/EditProfileDialog.cpp
++++ b/src/EditProfileDialog.cpp
+@@ -857,6 +857,7 @@ void EditProfileDialog::removeKeyBinding()
+             _ui->keyBindingList->model()->removeRow(selected.first().row());
+     }
+ }
++
+ void EditProfileDialog::showKeyBindingEditor(bool isNewTranslator)
+ {
+     QModelIndexList selected = _ui->keyBindingList->selectionModel()->selectedIndexes();
+@@ -1010,11 +1011,16 @@ void EditProfileDialog::scrollHalfPage()
+ }
+ void EditProfileDialog::setupMousePage(const Profile::Ptr profile)
+ {
+-    BooleanOption  options[] = { {
++    BooleanOption  options[] = {
++        {
+             _ui->underlineLinksButton , Profile::UnderlineLinksEnabled,
+             SLOT(toggleUnderlineLinks(bool))
+         },
+         {
++            _ui->underlineFilesButton , Profile::UnderlineFilesEnabled,
++            SLOT(toggleUnderlineFiles(bool))
++        },
++        {
+             _ui->ctrlRequiredForDragButton, Profile::CtrlRequiredForDrag,
+             SLOT(toggleCtrlRequiredForDrag(bool))
+         },
+@@ -1057,7 +1063,7 @@ void EditProfileDialog::setupMousePage(const Profile::Ptr profile)
+ 
+     connect(_ui->tripleClickModeCombo, static_cast<void(KComboBox::*)(int)>(&KComboBox::activated), this, &Konsole::EditProfileDialog::TripleClickModeChanged);
+ 
+-    _ui->openLinksByDirectClickButton->setEnabled(_ui->underlineLinksButton->isChecked());
++    _ui->openLinksByDirectClickButton->setEnabled(_ui->underlineLinksButton->isChecked() || _ui->underlineFilesButton->isChecked());
+ 
+     _ui->enableMouseWheelZoomButton->setChecked(profile->mouseWheelZoomEnabled());
+     connect(_ui->enableMouseWheelZoomButton, &QCheckBox::toggled, this, &Konsole::EditProfileDialog::toggleMouseWheelZoom);
+@@ -1163,7 +1169,16 @@ void EditProfileDialog::toggleBlinkingCursor(bool enable)
+ void EditProfileDialog::toggleUnderlineLinks(bool enable)
+ {
+     updateTempProfileProperty(Profile::UnderlineLinksEnabled, enable);
+-    _ui->openLinksByDirectClickButton->setEnabled(enable);
++
++    bool enableClick = _ui->underlineFilesButton->isChecked() || enable;
++    _ui->openLinksByDirectClickButton->setEnabled(enableClick);
++}
++void EditProfileDialog::toggleUnderlineFiles(bool enable)
++{
++    updateTempProfileProperty(Profile::UnderlineFilesEnabled, enable);
++
++    bool enableClick = _ui->underlineLinksButton->isChecked() || enable;
++    _ui->openLinksByDirectClickButton->setEnabled(enableClick);
+ }
+ void EditProfileDialog::toggleCtrlRequiredForDrag(bool enable)
+ {
+diff --git a/src/EditProfileDialog.h b/src/EditProfileDialog.h
+index 1195c14..febed0a 100644
+--- a/src/EditProfileDialog.h
++++ b/src/EditProfileDialog.h
+@@ -156,6 +156,7 @@ private slots:
+     void removeKeyBinding();
+ 
+     // mouse page
++    void toggleUnderlineFiles(bool enable);
+     void toggleUnderlineLinks(bool);
+     void toggleOpenLinksByDirectClick(bool);
+     void toggleCtrlRequiredForDrag(bool);
+diff --git a/src/EditProfileDialog.ui b/src/EditProfileDialog.ui
+index 1acec37..45b93d3 100644
+--- a/src/EditProfileDialog.ui
++++ b/src/EditProfileDialog.ui
+@@ -984,10 +984,20 @@
+           <item>
+            <widget class="QCheckBox" name="underlineLinksButton">
+             <property name="toolTip">
+-             <string>Text recognized as a file, link or an email address will be underlined when hovered by the mouse pointer.</string>
++             <string>Text recognized as a link or an email address will be underlined when hovered by the mouse pointer.</string>
+             </property>
+             <property name="text">
+-             <string>Underline files and links</string>
++             <string>Underline links</string>
++            </property>
++           </widget>
++          </item>
++          <item>
++           <widget class="QCheckBox" name="underlineFilesButton">
++            <property name="toolTip">
++             <string>Text recognized as a file will be underlined when hovered by the mouse pointer.</string>
++            </property>
++            <property name="text">
++             <string>Underline files</string>
+             </property>
+            </widget>
+           </item>
+diff --git a/src/Profile.cpp b/src/Profile.cpp
+index 3e0eb4c..5611659 100644
+--- a/src/Profile.cpp
++++ b/src/Profile.cpp
+@@ -107,6 +107,7 @@ const Profile::PropertyInfo Profile::DefaultPropertyNames[] = {
+     , { WordCharacters , "WordCharacters" , INTERACTION_GROUP , QVariant::String }
+     , { TripleClickMode , "TripleClickMode" , INTERACTION_GROUP , QVariant::Int }
+     , { UnderlineLinksEnabled , "UnderlineLinksEnabled" , INTERACTION_GROUP , QVariant::Bool }
++    , { UnderlineFilesEnabled , "UnderlineFilesEnabled" , INTERACTION_GROUP , QVariant::Bool }
+     , { OpenLinksByDirectClickEnabled , "OpenLinksByDirectClickEnabled" , INTERACTION_GROUP , QVariant::Bool }
+     , { CtrlRequiredForDrag, "CtrlRequiredForDrag" , INTERACTION_GROUP , QVariant::Bool }
+     , { DropUrlsAsText , "DropUrlsAsText" , INTERACTION_GROUP , QVariant::Bool }
+@@ -178,7 +179,8 @@ FallbackProfile::FallbackProfile()
+     setProperty(FlowControlEnabled, true);
+     setProperty(EnableUrlHints, false);
+     setProperty(BlinkingTextEnabled, true);
+-    setProperty(UnderlineLinksEnabled, false);
++    setProperty(UnderlineLinksEnabled, true);
++    setProperty(UnderlineFilesEnabled, false);
+     setProperty(OpenLinksByDirectClickEnabled, false);
+     setProperty(CtrlRequiredForDrag, true);
+     setProperty(AutoCopySelectedText, false);
+diff --git a/src/Profile.h b/src/Profile.h
+index de74afa..8681076 100644
+--- a/src/Profile.h
++++ b/src/Profile.h
+@@ -196,6 +196,10 @@ public:
+          * underlined when hovered by the mouse pointer.
+          */
+         UnderlineLinksEnabled,
++        /** (bool) If true, text that matches a file is
++         * underlined when hovered by the mouse pointer.
++         */
++        UnderlineFilesEnabled,
+         /** (bool) If true, links can be opened by direct mouse click.*/
+         OpenLinksByDirectClickEnabled,
+         /** (bool) If true, control key must be pressed to click and drag selected text. */
+@@ -463,6 +467,11 @@ public:
+         return property<bool>(Profile::UnderlineLinksEnabled);
+     }
+ 
++    /** Convenience method for property<bool>(Profile::UnderlineFilesEnabled) */
++    bool underlineFilesEnabled() const {
++        return property<bool>(Profile::UnderlineFilesEnabled);
++    }
++
+     bool autoCopySelectedText() const {
+         return property<bool>(Profile::AutoCopySelectedText);
+     }
+diff --git a/src/SessionController.cpp b/src/SessionController.cpp
+index cacb51b..07e96b7 100644
+--- a/src/SessionController.cpp
++++ b/src/SessionController.cpp
+@@ -20,6 +20,7 @@
+ 
+ // Own
+ #include "SessionController.h"
++#include "ProfileManager.h"
+ 
+ // Qt
+ #include <QApplication>
+@@ -99,6 +100,8 @@ SessionController::SessionController(Session* session , TerminalDisplay* view, Q
+     , _profileList(0)
+     , _previousState(-1)
+     , _searchFilter(0)
++    , _urlFilter(0)
++    , _fileFilter(0)
+     , _copyInputToAllTabsAction(0)
+     , _findAction(0)
+     , _findNextAction(0)
+@@ -140,11 +143,11 @@ SessionController::SessionController(Session* session , TerminalDisplay* view, Q
+     view->installEventFilter(this);
+     view->setSessionController(this);
+ 
+-    // install filter on the view to highlight URLs
+-    _view->filterChain()->addFilter(new UrlFilter);
++    // install filter on the view to highlight URLs and files
++    updateFilterList(SessionManager::instance()->sessionProfile(_session));
+ 
+-    // install filter on the view to highlight Files
+-    _view->filterChain()->addFilter(new FileFilter(_session));
++    // listen for changes in session, we might need to change the enabled filters
++    connect(ProfileManager::instance(), &Konsole::ProfileManager::profileChanged, this, &Konsole::SessionController::updateFilterList);
+ 
+     // listen for session resize requests
+     connect(_session.data(), &Konsole::Session::resizeRequest, this, &Konsole::SessionController::sessionResizeRequest);
+@@ -744,6 +747,7 @@ void SessionController::setupExtraActions()
+ void SessionController::switchProfile(Profile::Ptr profile)
+ {
+     SessionManager::instance()->setSessionProfile(_session, profile);
++    updateFilterList(profile);
+ }
+ 
+ void SessionController::prepareSwitchProfileMenu()
+@@ -1068,6 +1072,34 @@ void SessionController::searchClosed()
+     searchHistory(false);
+ }
+ 
++void SessionController::updateFilterList(Profile::Ptr profile)
++{
++    if (profile != SessionManager::instance()->sessionProfile(_session)) {
++        return;
++    }
++
++    bool underlineFiles = profile->underlineFilesEnabled();
++
++    if (!underlineFiles && _fileFilter) {
++        _view->filterChain()->removeFilter(_fileFilter);
++        delete _fileFilter;
++        _fileFilter = nullptr;
++    } else if (underlineFiles && !_fileFilter) {
++        _fileFilter = new FileFilter(_session);
++        _view->filterChain()->addFilter(_fileFilter);
++    }
++
++    bool underlineLinks = profile->underlineLinksEnabled();
++    if (!underlineLinks && _urlFilter) {
++        _view->filterChain()->removeFilter(_urlFilter);
++        delete _urlFilter;
++        _urlFilter = nullptr;
++    } else if (underlineLinks && !_urlFilter) {
++        _urlFilter = new UrlFilter();
++        _view->filterChain()->addFilter(_urlFilter);
++    }
++}
++
+ void SessionController::setSearchStartToWindowCurrentLine()
+ {
+     setSearchStartTo(-1);
+diff --git a/src/SessionController.h b/src/SessionController.h
+index 3ac06f5..30f07e4 100644
+--- a/src/SessionController.h
++++ b/src/SessionController.h
+@@ -61,6 +61,8 @@ class TerminalDisplay;
+ class IncrementalSearchBar;
+ class ProfileList;
+ class RegExpFilter;
++class UrlFilter;
++class FileFilter;
+ class EditProfileDialog;
+ 
+ // SaveHistoryTask
+@@ -265,6 +267,8 @@ private slots:
+     void searchClosed(); // called when the user clicks on the
+     // history search bar's close button
+ 
++    void updateFilterList(Profile::Ptr profile); // Called when the profile has changed, so we might need to change the list of filters
++
+     void interactionHandler();
+     void snapshot(); // called periodically as the user types
+     // to take a snapshot of the state of the
+@@ -317,6 +321,8 @@ private:
+     int        _previousState;
+ 
+     RegExpFilter*   _searchFilter;
++    UrlFilter*     _urlFilter;
++    FileFilter*     _fileFilter;
+ 
+     QAction* _copyInputToAllTabsAction;
+ 
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index 555a991..0569d1c 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -360,7 +360,6 @@ TerminalDisplay::TerminalDisplay(QWidget* parent)
+     , _hasTextBlinker(false)
+     , _showUrlHint(false)
+     , _enableShowUrlHint(false)
+-    , _underlineLinks(true)
+     , _openLinksByDirectClick(false)
+     , _ctrlRequiredForDrag(true)
+     , _tripleClickMode(Enum::SelectWholeLine)
+@@ -1369,7 +1368,7 @@ void TerminalDisplay::paintFilters(QPainter& painter)
+         urlNumber++;
+ 
+         QRegion region;
+-        if (_underlineLinks && spot->type() == Filter::HotSpot::Link) {
++        if (spot->type() == Filter::HotSpot::Link) {
+             QRect r;
+             if (spot->startLine() == spot->endLine()) {
+                 r.setCoords(spot->startColumn()*_fontWidth + _contentRect.left(),
+@@ -1447,7 +1446,7 @@ void TerminalDisplay::paintFilters(QPainter& painter)
+                         endColumn * _fontWidth + _contentRect.left() - 1,
+                         (line + 1)*_fontHeight + _contentRect.top() - 1);
+             // Underline link hotspots
+-            if (_underlineLinks && spot->type() == Filter::HotSpot::Link) {
++            if (spot->type() == Filter::HotSpot::Link) {
+                 QFontMetrics metrics(font());
+ 
+                 // find the baseline (which is the invisible line that the characters in the font sit on,
+@@ -2043,7 +2042,7 @@ void TerminalDisplay::mousePressEvent(QMouseEvent* ev)
+                 emit mouseSignal(0, charColumn + 1, charLine + 1 + _scrollBar->value() - _scrollBar->maximum() , 0);
+             }
+ 
+-            if (_underlineLinks && (_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier))) {
++            if ((_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier))) {
+                 Filter::HotSpot* spot = _filterChain->hotSpotAt(charLine, charColumn);
+                 if (spot && spot->type() == Filter::HotSpot::Link) {
+                     QObject action;
+@@ -2083,43 +2082,41 @@ void TerminalDisplay::mouseMoveEvent(QMouseEvent* ev)
+     // change link hot-spot appearance on mouse-over
+     Filter::HotSpot* spot = _filterChain->hotSpotAt(charLine, charColumn);
+     if (spot && spot->type() == Filter::HotSpot::Link) {
+-        if (_underlineLinks) {
+-            QRegion previousHotspotArea = _mouseOverHotspotArea;
+-            _mouseOverHotspotArea = QRegion();
+-            QRect r;
+-            if (spot->startLine() == spot->endLine()) {
+-                r.setCoords(spot->startColumn()*_fontWidth + _contentRect.left(),
+-                            spot->startLine()*_fontHeight + _contentRect.top(),
+-                            (spot->endColumn())*_fontWidth + _contentRect.left() - 1,
+-                            (spot->endLine() + 1)*_fontHeight + _contentRect.top() - 1);
+-                _mouseOverHotspotArea |= r;
+-            } else {
+-                r.setCoords(spot->startColumn()*_fontWidth + _contentRect.left(),
+-                            spot->startLine()*_fontHeight + _contentRect.top(),
+-                            (_columns)*_fontWidth + _contentRect.left() - 1,
+-                            (spot->startLine() + 1)*_fontHeight + _contentRect.top() - 1);
+-                _mouseOverHotspotArea |= r;
+-                for (int line = spot->startLine() + 1 ; line < spot->endLine() ; line++) {
+-                    r.setCoords(0 * _fontWidth + _contentRect.left(),
+-                                line * _fontHeight + _contentRect.top(),
+-                                (_columns)*_fontWidth + _contentRect.left() - 1,
+-                                (line + 1)*_fontHeight + _contentRect.top() - 1);
+-                    _mouseOverHotspotArea |= r;
+-                }
++        QRegion previousHotspotArea = _mouseOverHotspotArea;
++        _mouseOverHotspotArea = QRegion();
++        QRect r;
++        if (spot->startLine() == spot->endLine()) {
++            r.setCoords(spot->startColumn()*_fontWidth + _contentRect.left(),
++                        spot->startLine()*_fontHeight + _contentRect.top(),
++                        (spot->endColumn())*_fontWidth + _contentRect.left() - 1,
++                        (spot->endLine() + 1)*_fontHeight + _contentRect.top() - 1);
++            _mouseOverHotspotArea |= r;
++        } else {
++            r.setCoords(spot->startColumn()*_fontWidth + _contentRect.left(),
++                        spot->startLine()*_fontHeight + _contentRect.top(),
++                        (_columns)*_fontWidth + _contentRect.left() - 1,
++                        (spot->startLine() + 1)*_fontHeight + _contentRect.top() - 1);
++            _mouseOverHotspotArea |= r;
++            for (int line = spot->startLine() + 1 ; line < spot->endLine() ; line++) {
+                 r.setCoords(0 * _fontWidth + _contentRect.left(),
+-                            spot->endLine()*_fontHeight + _contentRect.top(),
+-                            (spot->endColumn())*_fontWidth + _contentRect.left() - 1,
+-                            (spot->endLine() + 1)*_fontHeight + _contentRect.top() - 1);
++                            line * _fontHeight + _contentRect.top(),
++                            (_columns)*_fontWidth + _contentRect.left() - 1,
++                            (line + 1)*_fontHeight + _contentRect.top() - 1);
+                 _mouseOverHotspotArea |= r;
+             }
++            r.setCoords(0 * _fontWidth + _contentRect.left(),
++                        spot->endLine()*_fontHeight + _contentRect.top(),
++                        (spot->endColumn())*_fontWidth + _contentRect.left() - 1,
++                        (spot->endLine() + 1)*_fontHeight + _contentRect.top() - 1);
++            _mouseOverHotspotArea |= r;
++        }
+ 
+-            if ((_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier)) && (cursor().shape() != Qt::PointingHandCursor))
+-                setCursor(Qt::PointingHandCursor);
++        if ((_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier)) && (cursor().shape() != Qt::PointingHandCursor))
++            setCursor(Qt::PointingHandCursor);
+ 
+-            update(_mouseOverHotspotArea | previousHotspotArea);
+-        }
++        update(_mouseOverHotspotArea | previousHotspotArea);
+     } else if (!_mouseOverHotspotArea.isEmpty()) {
+-        if ((_underlineLinks && (_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier))) || (cursor().shape() == Qt::PointingHandCursor))
++        if ((_openLinksByDirectClick || (ev->modifiers() & Qt::ControlModifier)) || (cursor().shape() == Qt::PointingHandCursor))
+             setCursor(_mouseMarks ? Qt::IBeamCursor : Qt::ArrowCursor);
+ 
+         update(_mouseOverHotspotArea);
+diff --git a/src/TerminalDisplay.h b/src/TerminalDisplay.h
+index 93c98ab..4590cbf 100644
+--- a/src/TerminalDisplay.h
++++ b/src/TerminalDisplay.h
+@@ -180,21 +180,6 @@ public:
+     }
+ 
+     /**
+-     * Specifies whether links and email addresses should be underlined when
+-     * hovered by the mouse. Defaults to true.
+-     */
+-    void setUnderlineLinks(bool value) {
+-        _underlineLinks = value;
+-    }
+-    /**
+-     * Returns true if links and email addresses should be underlined when
+-     * hovered by the mouse.
+-     */
+-    bool getUnderlineLinks() const {
+-        return _underlineLinks;
+-    }
+-
+-    /**
+      * Specifies whether links and email addresses should be opened when
+      * clicked with the mouse. Defaults to false.
+      */
+@@ -889,7 +874,6 @@ private:
+ 
+     bool _showUrlHint;
+     bool _enableShowUrlHint;
+-    bool _underlineLinks;     // Underline URL and hosts on mouse hover
+     bool _openLinksByDirectClick;     // Open URL and hosts by single mouse click
+ 
+     bool _ctrlRequiredForDrag; // require Ctrl key for drag selected text
+diff --git a/src/ViewManager.cpp b/src/ViewManager.cpp
+index b1efc0a..21a9f9e 100644
+--- a/src/ViewManager.cpp
++++ b/src/ViewManager.cpp
+@@ -804,7 +804,6 @@ void ViewManager::applyProfileToView(TerminalDisplay* view , const Profile::Ptr
+     view->setTripleClickMode(Enum::TripleClickModeEnum(tripleClickMode));
+ 
+     view->setAutoCopySelectedText(profile->autoCopySelectedText());
+-    view->setUnderlineLinks(profile->underlineLinksEnabled());
+     view->setControlDrag(profile->property<bool>(Profile::CtrlRequiredForDrag));
+     view->setDropUrlsAsText(profile->property<bool>(Profile::DropUrlsAsText));
+     view->setBidiEnabled(profile->bidiRenderingEnabled());
+-- 
+2.7.3
+

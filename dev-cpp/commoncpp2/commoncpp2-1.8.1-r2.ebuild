@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,16 +11,20 @@ SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/commoncpp/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="debug doc examples ipv6 gnutls ssl static-libs"
-REQUIRED_USE="gnutls? ( ssl )"
 
-RDEPEND="ssl? ( gnutls? ( dev-libs/libgcrypt:0
-			net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl:0 ) )
-	sys-libs/zlib"
-DEPEND="doc? ( >=app-doc/doxygen-1.3.6 )
-	${RDEPEND}"
+RDEPEND="
+	sys-libs/zlib
+	ssl? (
+		gnutls? (
+			dev-libs/libgcrypt:0=
+			net-libs/gnutls:=
+		)
+		!gnutls? ( dev-libs/openssl:0= )
+	)"
+DEPEND="${RDEPEND}
+	doc? ( >=app-doc/doxygen-1.3.6 )"
 
 PATCHES=(
 	"${FILESDIR}/1.8.1-configure_detect_netfilter.patch"
@@ -38,19 +42,14 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	if use gnutls; then
-		myconf+="--with-gnutls"
-	else
-		use ssl && myconf+="--with-openssl"
-	fi
+	use ssl && local myconf=( $(usex gnutls '--with-gnutls' '--with-openssl') )
 
 	econf \
 		$(use_enable debug) \
 		$(use_with ipv6) \
 		$(use_enable static-libs static) \
 		$(use_with doc doxygen) \
-		${myconf}
+		"${myconf[@]}"
 }
 
 src_install () {

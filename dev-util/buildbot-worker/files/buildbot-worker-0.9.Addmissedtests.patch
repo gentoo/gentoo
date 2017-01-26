@@ -1,0 +1,27 @@
+From 017f427a7c7959c11160a41e5987669f022e42c4 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Wed, 4 Jan 2017 19:01:12 -0800
+Subject: [PATCH] worker/setup.py: Add missed tests
+
+---
+ worker/setup.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/worker/setup.py b/worker/setup.py
+index f053a6226..cf004adbd 100755
+--- a/worker/setup.py
++++ b/worker/setup.py
+@@ -87,6 +87,10 @@ setup_args = {
+         "buildbot_worker.commands",
+         "buildbot_worker.scripts",
+         "buildbot_worker.monkeypatches",
++        "buildbot_worker.test",
++        "buildbot_worker.test.fake",
++        "buildbot_worker.test.unit",
++        "buildbot_worker.test.util",
+     ],
+     # mention data_files, even if empty, so install_data is called and
+     # VERSION gets copied
+-- 
+2.11.0
+

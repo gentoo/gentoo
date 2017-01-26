@@ -76,6 +76,7 @@ src_install() {
 	if use doc; then
 		dodoc doc/*.txt
 	fi
+	keepdir /usr/lib/${PN}/scripts
 	keepdir /var/lib/${PN}
 	newinitd "${FILESDIR}"/${PN}.initd2 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}

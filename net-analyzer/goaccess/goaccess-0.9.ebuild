@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE="btree debug geoip tokyocabinet unicode"
 REQUIRED_USE="btree? ( tokyocabinet )"
 
 RDEPEND="
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:0=[unicode?]
 	geoip? ( dev-libs/geoip )
 	!tokyocabinet? ( dev-libs/glib:2 )
 	tokyocabinet? (

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 GNOME_ORG_MODULE="NetworkManager"
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd \
 	user readme.gentoo-r1 toolchain-funcs vala versionator virtualx udev multilib-minimal
@@ -28,7 +28,7 @@ REQUIRED_USE="
 	^^ ( nss gnutls )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 x86"
 
 # gobject-introspection-0.10.3 is needed due to gnome bug 642300
 # wpa_supplicant-0.7.3-r3 is needed due to bug 359271

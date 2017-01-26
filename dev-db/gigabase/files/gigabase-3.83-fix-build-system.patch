@@ -1,0 +1,63 @@
+Fix build system to respect DESTDIR and rename subsql to subsql-gdb,
+in order to avoid name clash with FastDB version of subsql.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -21,7 +21,7 @@
+ # Place where to copy Gigabase library
+ libdir = @libdir@
+ 
+-# Place where to copy Gigabase subsql utility
++# Place where to copy Gigabase subsql-gdb utility
+ bindir = @bindir@
+ 
+ VERSION = 2
+@@ -42,7 +42,7 @@
+ 
+ GB_LIB = libgigabase$(SUFF).${LIBEXT}
+ CLI_LIB = libcli$(SUFF).${LIBEXT}
+-EXES = subsql
++EXES = subsql-gdb
+ 
+ EXAMPLES = guess testdb testjoin testddl testperf testspat testperf2 testsync testiref testtrav testidx testidx2 clitest testblob testleak testsession testtimeseries testtl
+ WEB_EXAMPLES = cgistub bugdb clidb
+@@ -90,8 +90,8 @@
+ clitest: clitest.o $(CLI_LIB)
+ 	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o clitest clitest.o $(CLI_LIB) $(SOCKLIBS)
+ 
+-subsql: subsql.o $(GB_LIB)
+-	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o subsql subsql.o $(GB_LIB) $(SOCKLIBS)
++subsql-gdb: subsql.o $(GB_LIB)
++	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o subsql-gdb subsql.o $(GB_LIB) $(SOCKLIBS)
+ 
+ bugdb: bugdb.o $(GB_LIB)
+ 	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o bugdb bugdb.o $(GB_LIB) $(SOCKLIBS)
+@@ -153,18 +153,18 @@
+ testleak: testleak.o $(GB_LIB)
+ 	$(LIBTOOL) --mode=link $(LD) $(LDFLAGS) -o testleak testleak.o $(GB_LIB) $(SLHACK)
+ 
+-install: subsql $(GB_LIB) $(CLI_LIB)
+-	mkdir -p $(includedir)
+-	cp $(INCS) $(CLI_INCS) $(includedir)
+-	mkdir -p $(libdir)
+-	$(LIBTOOL) --mode=install $(INSTALL) $(GB_LIB) $(CLI_LIB) $(libdir)
+-	mkdir -p $(bindir)
+-	if test -x .libs/subsql ; then \
+-		cp .libs/subsql $(bindir); \
++install: subsql-gdb $(GB_LIB) $(CLI_LIB)
++	mkdir -p $(DESTDIR)$(includedir)
++	cp $(INCS) $(CLI_INCS) $(DESTDIR)$(includedir)
++	mkdir -p $(DESTDIR)$(libdir)
++	$(LIBTOOL) --mode=install $(INSTALL) $(GB_LIB) $(CLI_LIB) $(DESTDIR)$(libdir)
++	mkdir -p $(DESTDIR)$(bindir)
++	if test -x .libs/subsql-gdb ; then \
++		cp .libs/subsql-gdb $(DESTDIR)$(bindir); \
+ 	else \
+-		cp subsql $(bindir); \
++		cp subsql-gdb $(DESTDIR)$(bindir); \
+ 	fi
+-#	strip $(bindir)/subsql
++#	strip $(bindir)/subsql-gdb
+ 
+ clean:
+ 	rm -f *.o *.lo core *~

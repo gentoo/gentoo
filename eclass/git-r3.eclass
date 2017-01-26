@@ -253,6 +253,7 @@ _git-r3_env_setup() {
 
 	local esc_pn livevar
 	esc_pn=${PN//[-+]/_}
+	[[ ${esc_pn} == [0-9]* ]] && esc_pn=_${esc_pn}
 
 	livevar=${esc_pn}_LIVE_REPO
 	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
@@ -446,10 +447,11 @@ _git-r3_set_submodules() {
 			submodule."${subname}".update)
 		[[ ${upd} == none ]] && continue
 
-		# https://github.com/git/git/blob/master/refs.c#L39
-		# for now, we just filter /. because of #572312
-		local enc_subname=${subname//\/.//_}
-		[[ ${enc_subname} == .* ]] && enc_subname=_${enc_subname#.}
+		# https://github.com/git/git/blob/master/refs.c#L31
+		# we are more restrictive than git itself but that should not
+		# cause any issues, #572312, #606950
+		# TODO: check escaped names for collisions
+		local enc_subname=${subname//[^a-zA-Z0-9-]/_}
 
 		submodules+=(
 			"${enc_subname}"
@@ -593,13 +595,18 @@ git-r3_fetch() {
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
 
-			if [[ ${r} == https://* ]] && ! ROOT=/ has_version 'dev-vcs/git[curl]'; then
-				eerror "git-r3: fetching from https:// requested. In order to support https,"
-				eerror "dev-vcs/git needs to be built with USE=curl. Example solution:"
-				eerror
-				eerror "	echo dev-vcs/git curl >> /etc/portage/package.use"
-				eerror "	emerge -1v dev-vcs/git"
-				die "dev-vcs/git built with USE=curl required."
+			if [[ ${r} == http://* || ${r} == https://* ]] &&
+					[[ ! ${EGIT_CURL_WARNED} ]] &&
+					! ROOT=/ has_version 'dev-vcs/git[curl]'
+			then
+				ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
+				ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
+				ewarn
+				ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
+				ewarn "	emerge -1v dev-vcs/git"
+				ewarn
+				ewarn "HTTP(S) URIs will be skipped."
+				EGIT_CURL_WARNED=1
 			fi
 
 			if [[ ${clone_type} == mirror ]]; then

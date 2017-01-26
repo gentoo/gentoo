@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://github.com/IgnorantGuru/${PN}.git"
 EGIT_BRANCH="next"
 
-inherit fdo-mime git-2 gnome2-utils linux-info
+inherit fdo-mime git-r3 gnome2-utils linux-info
 
 DESCRIPTION="A multi-panel tabbed file manager"
 HOMEPAGE="https://ignorantguru.github.com/spacefm/"
@@ -16,7 +16,6 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="gtk2 +gtk3 +startup-notification +video-thumbnails"
-REQUIRED_USE="gtk2? ( !gtk3 )"
 
 RDEPEND="dev-libs/glib:2
 	dev-util/desktop-file-utils
@@ -24,7 +23,7 @@ RDEPEND="dev-libs/glib:2
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	gtk2? ( x11-libs/gtk+:2 )
+	gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
 	!gtk2? ( x11-libs/gtk+:3 )
 	x11-libs/pango
 	x11-libs/libX11

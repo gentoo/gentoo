@@ -1,0 +1,28 @@
+https://lists.gnu.org/archive/html/bug-gnulib/2015-02/msg00079.html
+
+From: Margaret Lewicka <address@hidden>
+
+---
+ lib/error.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/error.c b/lib/error.c
+index 6683197..36a3db7 100644
+--- gnulib/lib/error.c
++++ gnulib/lib/error.c
+@@ -113,9 +113,13 @@ int strerror_r ();
+ #  endif
+ # endif
+ 
++#if defined __APPLE__ && defined __MACH__
++#define program_name (((char **)*_NSGetArgv())[0])
++#else
+ /* The calling program should define program_name and set it to the
+    name of the executing program.  */
+ extern char *program_name;
++#endif
+ 
+ # if HAVE_STRERROR_R || defined strerror_r
+ #  define __strerror_r strerror_r
+-- 
+2.1.0

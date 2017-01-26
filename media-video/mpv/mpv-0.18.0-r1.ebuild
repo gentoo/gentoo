@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.8.12
@@ -16,7 +16,7 @@ HOMEPAGE="https://mpv.io/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha ~amd64 ~arm hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 ~sparc x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="git://github.com/mpv-player/mpv.git"
@@ -28,9 +28,9 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
+IUSE="+alsa aqua archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
 	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
-	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
 	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
 	+xscreensaver +xv zsh-completion"
 
@@ -43,6 +43,7 @@ REQUIRED_USE="
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
+	test? ( || ( opengl egl ) )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
@@ -95,7 +96,7 @@ COMMON_DEPEND="
 		media-libs/mesa[egl,gles2]
 	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba )
+	samba? ( net-fs/samba[smbclient(+)] )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
 	vaapi? ( >=x11-libs/libva-1.4.0[drm?,X?,wayland?] )
@@ -121,6 +122,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 	test? ( >=dev-util/cmocka-1.0.0 )
+	v4l? ( virtual/os-headers )
 "
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )

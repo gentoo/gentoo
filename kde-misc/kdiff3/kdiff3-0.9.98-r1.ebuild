@@ -36,7 +36,7 @@ CDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5 )
-	kde? ( $(add_kdebase_dep kdelibs) )
+	kde? ( kde-frameworks/kdelibs:4 )
 "
 DEPEND="${CDEPEND}
 	sys-devel/gettext

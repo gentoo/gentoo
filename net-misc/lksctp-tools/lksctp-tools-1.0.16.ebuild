@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib flag-o-matic autotools autotools-utils
+inherit eutils multilib flag-o-matic autotools autotools-utils linux-info
 
 DESCRIPTION="Tools for Linux Kernel Stream Control Transmission Protocol implementation"
 HOMEPAGE="http://lksctp.sourceforge.net/"
@@ -20,6 +20,9 @@ DEPEND=">=sys-kernel/linux-headers-2.6"
 RDEPEND=""
 
 REQUIRED_USE="kernel_linux"
+
+CONFIG_CHECK="~IP_SCTP"
+WARNING_IP_SCTP="CONFIG_IP_SCTP:\tis not set when it should be."
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.8-prefix.patch #181602

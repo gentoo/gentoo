@@ -48,16 +48,12 @@ This is really for internal use only.  Used to remove all traces of the
 \fITARGET\fR binutils from your system.
 .SH "CRUFTY OPTIONS"
 .TP
-\fB\-\-gold\fR
-Change the default linker for the specified \fIPROFILE\fR to the [newer] gold
-linker.  This only works if the binutils actually supports gold.  Note that
-not all options supported by the bfd linker are supportd by the gold linker.
-.TP
-\fB\-\-bfd\fR
-Change the default linker for the specified \fIPROFILE\fR to the [older but
-stable] bfd linker.  If unsure, stick to this one.
+\fB\-\-linker\fR \fB<linker>\fR
+Change the default linker for the specified \fIPROFILE\fR to the \fB<linker>\fR.
+Common names are \fBld.gold\fR for the newer gold linker and \fBld.bfd\fR for
+the classic linker.  Note that not all targets support the gold linker.
 .SH "REPORTING BUGS"
-Please report bugs via http://bugs.gentoo.org/
+Please report bugs via https://bugs.gentoo.org/
 .SH "SEE ALSO"
 .BR ar (1),
 .BR as (1),

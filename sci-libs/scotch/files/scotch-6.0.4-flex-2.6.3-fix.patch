@@ -1,0 +1,33 @@
+--- scotch_6.0.4/src/libscotch/parser_ll.l.old	2017-01-02 08:42:41.216249106 -0800
++++ scotch-6.0.4-r1/work/scotch_6.0.4/src/libscotch/parser_ll.l	2017-01-02 09:50:14.572579444 -0800
+@@ -84,20 +84,29 @@
+ #endif /* X_OSDOS */
+ 
+ #ifdef FLEX_SCANNER
+ #define YY_ALWAYS_INTERACTIVE       1             /* Set the parser as interactive and read one char at a time */
+ #define YY_INPUT(buf,result,max_size) { int c = stratParserInput (); result = (c == 0) ? YY_NULL : ((buf)[0] = c, 1); }
++
++# if YY_FLEX_MAJOR_VERSION > 2 ||                                                               \
++    YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION > 6 ||                                  \
++    YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION == 6 && YY_FLEX_SUBMINOR_VERSION >= 3
++ int yywrap() { return 1; }
++# else
++#  define yywrap()                  (1)           /* Always return end-of-file on end-of-string  */
++# endif
++
+ #else /* FLEX_SCANNER */
+ #undef  getc                                      /* Redirect I/O functions */
+ #define getc                        yygetc
+ #undef  yygetc
+ #define yygetc(stream)              stratParserInput ()
++#define yywrap()                    (1)           /* Always return end-of-file on end-of-string  */
+ #endif /* FLEX_SCANNER */
+ 
+ #define YY_NO_UNPUT                               /* No prototype for yyunput as not defined     */
+ #define YY_SKIP_YYWRAP                            /* No prototype for yywrap as defined as macro */
+-#define yywrap()                    (1)           /* Always return end-of-file on end-of-string  */
+ 
+ /*
+ **  The static variables.
+ */
+ 

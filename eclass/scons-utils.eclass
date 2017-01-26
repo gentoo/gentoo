@@ -98,6 +98,8 @@ case ${EAPI:-0} in
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
+inherit multiprocessing
+
 # -- ebuild variables setup --
 
 if [[ -n ${SCONS_MIN_VERSION} ]]; then
@@ -149,32 +151,6 @@ escons() {
 	return ${ret}
 }
 
-# @FUNCTION: _scons_get_default_jobs
-# @INTERNAL
-# @DESCRIPTION:
-# Output the default number of jobs, used if -j is used without
-# argument. Tries to figure out the number of logical CPUs, falling
-# back to hardcoded constant.
-_scons_get_default_jobs() {
-	local nproc
-
-	if type -P nproc &>/dev/null; then
-		# GNU
-		nproc=$(nproc)
-	elif type -P python &>/dev/null; then
-		# fallback to python2.6+
-		# note: this may fail (raise NotImplementedError)
-		nproc=$(python -c 'import multiprocessing; print(multiprocessing.cpu_count());' 2>/dev/null)
-	fi
-
-	if [[ ${nproc} ]]; then
-		echo $(( nproc + 1 ))
-	else
-		# random default
-		echo 5
-	fi
-}
-
 # @FUNCTION: _scons_clean_makeopts
 # @INTERNAL
 # @USAGE: [makeflags] [...]
@@ -217,8 +193,8 @@ _scons_clean_makeopts() {
 					new_makeopts+=( ${1} ${2} )
 					shift
 				else
-					# no value means no limit, let's pass a random int
-					new_makeopts+=( ${1}=$(_scons_get_default_jobs) )
+					# no value means no limit, let's pass a default instead
+					new_makeopts+=( ${1}=$(( $(get_nproc) + 1 )) )
 				fi
 				;;
 			# strip other long options
@@ -241,7 +217,7 @@ _scons_clean_makeopts() {
 								new_optstr+="j ${2}"
 								shift
 							else
-								new_optstr+="j $(_scons_get_default_jobs)"
+								new_optstr+="j $(( $(get_nproc) + 1 ))"
 							fi
 							;;
 						# otherwise, everything after -j is treated as an arg

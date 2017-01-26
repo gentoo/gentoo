@@ -1,0 +1,60 @@
+http://lists.gnu.org/archive/html/bug-grep/2016-12/msg00036.html
+
+From 7ad47abbcb070946000771a829b51224720b8cef Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 27 Dec 2016 11:16:32 -0800
+Subject: [PATCH] grep: fix bug with '... | grep pat >> /dev/null'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Benno Fünfstück (Bug#25283).
+* NEWS: Document this.
+* src/grep.c (drain_input) [SPLICE_F_MOVE]:
+Don't assume /dev/null is always acceptable output to splice.
+* tests/grep-dev-null-out: Test for the bug.
+---
+ NEWS                    |  7 ++++---
+ src/grep.c              | 14 +++++++++-----
+ tests/grep-dev-null-out |  2 ++
+ 3 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/src/grep.c b/src/grep.c
+index f28f3c287609..aebab2060308 100644
+--- a/src/grep.c
++++ b/src/grep.c
+@@ -1728,11 +1728,15 @@ drain_input (int fd, struct stat const *st)
+     {
+ #ifdef SPLICE_F_MOVE
+       /* Should be faster, since it need not copy data to user space.  */
+-      while ((nbytes = splice (fd, NULL, STDOUT_FILENO, NULL,
+-                               INITIAL_BUFSIZE, SPLICE_F_MOVE)))
+-        if (nbytes < 0)
+-          return false;
+-      return true;
++      nbytes = splice (fd, NULL, STDOUT_FILENO, NULL,
++                       INITIAL_BUFSIZE, SPLICE_F_MOVE);
++      if (0 <= nbytes || errno != EINVAL)
++        {
++          while (0 < nbytes)
++            nbytes = splice (fd, NULL, STDOUT_FILENO, NULL,
++                             INITIAL_BUFSIZE, SPLICE_F_MOVE);
++          return nbytes == 0;
++        }
+ #endif
+     }
+   while ((nbytes = safe_read (fd, buffer, bufalloc)))
+diff --git a/tests/grep-dev-null-out b/tests/grep-dev-null-out
+index 13a4843957a6..c8128d5cc6a4 100755
+--- a/tests/grep-dev-null-out
++++ b/tests/grep-dev-null-out
+@@ -8,4 +8,6 @@ require_timeout_
+ ${AWK-awk} 'BEGIN {while (1) print "x"}' </dev/null |
+   returns_ 124 timeout 1 grep x >/dev/null || fail=1
+ 
++echo abc | grep b >>/dev/null || fail=1
++
+ Exit $fail
+-- 
+2.11.0
+

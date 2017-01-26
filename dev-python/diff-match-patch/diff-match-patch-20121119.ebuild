@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="Diff, match and patch algorithms for plain text"
-HOMEPAGE="https://code.google.com/p/google-diff-match-patch/"
+HOMEPAGE="https://pypi.python.org/pypi/diff-match-patch/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

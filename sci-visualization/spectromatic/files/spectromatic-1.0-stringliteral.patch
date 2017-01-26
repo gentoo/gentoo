@@ -1,6 +1,6 @@
 diff -ru spectromatic-1.0/spectromatic.c spectromatic-1.0-new/spectromatic.c
---- spectromatic-1.0/spectromatic.c	2002-03-30 06:17:34.000000000 +0100
-+++ spectromatic-1.0-new/spectromatic.c	2004-07-02 21:25:49.485524639 +0200
+--- a/spectromatic.c
++++ b/spectromatic.c
 @@ -21,6 +21,7 @@
   ****************************************************************************/
  

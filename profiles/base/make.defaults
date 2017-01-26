@@ -16,7 +16,7 @@ USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_X86 CROSSCOMPILE_OPTS CURL_SSL DRACUT_MODULES DVB_CARDS ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LINGUAS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CALLIGRA_EXPERIMENTAL_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_X86 CROSSCOMPILE_OPTS CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LINGUAS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
@@ -52,10 +52,6 @@ LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 # By default build all koffice / calligra features.
 CALLIGRA_FEATURES="kexi words flow plan sheets stage tables krita karbon braindump author"
 
-# Pacho Ramos <pacho@gentoo.org> (14 Feb 2010)
-# Enable 'ptp2' by default as it is available for most cameras.
-CAMERAS="ptp2"
-
 # Ole Markus With <olemarkus@gentoo.org> (09 Oct 2010)
 # Default PHP targets (should always be latest stable version)
 PHP_TARGETS="php5-6"
@@ -66,7 +62,7 @@ COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (26 Oct 2010)
 # By default enable all protocols for average GPS user
-GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock itrax mtk3301 nmea ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf superstar2 timing tsip tripmate tnt ublox ubx"
+GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock isync itrax mtk3301 nmea ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 timing tsip tripmate tnt ublox ubx"
 
 # Benedikt Böhm <hollow@gentoo.org> (27 Nov 2007)
 # Sane defaults for built-in apache modules
@@ -103,7 +99,7 @@ USE="${USE} modules"
 
 # Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
 # Default Ruby build targets
-RUBY_TARGETS="ruby20 ruby21"
+RUBY_TARGETS="ruby21"
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2009)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx

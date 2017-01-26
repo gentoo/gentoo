@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit vim-plugin
 
 if [[ ${PV} == "9999" ]] ; then
@@ -20,6 +20,7 @@ LICENSE="WTFPL-2"
 VIM_PLUGIN_HELPFILES="${PN}"
 
 src_prepare() {
+	default
 	rm -r _assets LICENCE README.markdown || die
 }
 

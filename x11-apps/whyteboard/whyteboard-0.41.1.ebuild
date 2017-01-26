@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 multilib
 
 DESCRIPTION="A simple image, PDF and postscript file annotator"
-HOMEPAGE="https://code.google.com/p/whyteboard"
+HOMEPAGE="http://whyteboard.org/"
 SRC_URI="
-	https://whyteboard.googlecode.com/files/${P}.tar.gz
+	mirror://sourceforge/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~lxnay/${PN}/${PN}.png"
 
 LICENSE="ISC"

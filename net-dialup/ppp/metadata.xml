@@ -24,9 +24,6 @@
     by passprompt.so PPP plugin for reading the password from a X11 input
     terminal</flag>
     <flag name="ipv6">Enables support for IP version 6</flag>
-    <flag name="mppe-mppc">Enables support for MPPC (Microsoft Point-to-Point
-    Compression) - NEEDS A PATCHED KERNEL &lt;=2.6.14 (see
-    http://mppe-mppc.alphacron.de)</flag>
     <flag name="pam">Enables PAM (Pluggable Authentication Modules)
     support</flag>
     <flag name="radius">Enables RADIUS support</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE="doc examples test"
 # with ValueError: save() prohibited to prevent data loss due to
 # unsaved related object 'interval'.
 
-PY2_USEDEP=$(python_gen_usedep python2_7)
+PY2_USEDEP=$(python_gen_usedep 'python2*')
 RDEPEND=">=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
 	>dev-python/django-1.4[${PYTHON_USEDEP}]
 	<=dev-python/django-1.7.11[${PYTHON_USEDEP}]
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/python-memcached[${PY2_USEDEP}]
 	)"
 
-PY27_REQUSE="$(python_gen_useflags 'python2.7')"
+PY27_REQUSE="$(python_gen_useflags 'python2*')"
 REQUIRED_USE="
 	doc? ( ${PY27_REQUSE} )"
 

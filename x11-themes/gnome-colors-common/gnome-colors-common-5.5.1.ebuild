@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+branding"
 
-RDEPEND="x11-themes/gnome-icon-theme"
+RDEPEND="x11-themes/adwaita-icon-theme"
 DEPEND=""
 RESTRICT="binchecks strip"
 

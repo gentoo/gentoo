@@ -1,0 +1,43 @@
+From e738b8cbe64b6dd3ed9f47b6d4cd7eb2c422b38d Mon Sep 17 00:00:00 2001
+From: Rich Felker <dalias@aerifal.cx>
+Date: Tue, 30 Aug 2016 20:39:54 +0000
+Subject: restore _Noreturn to __assert_fail
+
+this reverts commit 2c1f8fd5da3306fd7c8a2267467e44eb61f12dd4. without
+the _Noreturn attribute, the compiler cannot use asserts to perform
+reachability/range analysis. this leads to missed optimizations and
+spurious warnings.
+
+the original backtrace problem that prompted the removal of _Noreturn
+was not clearly documented at the time, but it seems to happen only
+when libc was built without -g, which also breaks many other
+backtracing cases.
+---
+diff --git a/include/assert.h b/include/assert.h
+index e679adb..d14ec94 100644
+--- a/include/assert.h
++++ b/include/assert.h
+@@ -16,7 +16,7 @@
+ extern "C" {
+ #endif
+ 
+-void __assert_fail (const char *, const char *, int, const char *);
++_Noreturn void __assert_fail (const char *, const char *, int, const char *);
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/src/exit/assert.c b/src/exit/assert.c
+index e87442a..49b0dc3 100644
+--- a/src/exit/assert.c
++++ b/src/exit/assert.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-void __assert_fail(const char *expr, const char *file, int line, const char *func)
++_Noreturn void __assert_fail(const char *expr, const char *file, int line, const char *func)
+ {
+ 	fprintf(stderr, "Assertion failed: %s (%s: %s: %d)\n", expr, file, func, line);
+ 	fflush(NULL);
+--
+cgit v0.9.0.3-65-g4555

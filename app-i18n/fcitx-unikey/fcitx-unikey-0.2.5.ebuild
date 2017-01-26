@@ -1,28 +1,58 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="6"
+
 inherit cmake-utils gnome2-utils
 
-DESCRIPTION="Vietnamese Unikey module for Fcitx"
-HOMEPAGE="http://fcitx-im.org/"
-SRC_URI="http://download.fcitx-im.org/${PN}/${P}.tar.xz"
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
 
-LICENSE="GPL-3"
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx-unikey"
+fi
+
+DESCRIPTION="Vietnamese Unikey input methods for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-unikey"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://download.fcitx-im.org/${PN}/${P}.tar.xz"
+fi
+
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+qt4"
+IUSE="+macro-editor"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8[qt4?]"
+RDEPEND=">=app-i18n/fcitx-4.2.8
+	virtual/libiconv
+	virtual/libintl
+	macro-editor? (
+		>=app-i18n/fcitx-4.2.8[qt4]
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)"
 DEPEND="${RDEPEND}
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-c++11.patch"
+)
+
+DOCS=()
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable qt4 QT)
+		-DENABLE_QT=$(usex macro-editor)
 	)
+
 	cmake-utils_src_configure
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {

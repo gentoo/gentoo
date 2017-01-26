@@ -5,6 +5,10 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
 	<use>
 		<flag name="connection-sharing">Use <pkg>net-dns/dnsmasq</pkg> and
 			<pkg>net-firewall/iptables</pkg> for connection sharing</flag>
@@ -12,7 +16,6 @@
 			tracking</flag>
 		<flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for
 			getting ip</flag>
-		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting ip</flag>
 		<flag name="json">Enable JSON validation via <pkg>dev-libs/jansson</pkg>
 			in libnm.</flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices

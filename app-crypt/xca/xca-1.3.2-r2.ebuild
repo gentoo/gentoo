@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs autotools
+inherit eutils flag-o-matic toolchain-funcs autotools
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
 HOMEPAGE="http://xca.sourceforge.net"
@@ -32,6 +32,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #595440
+	use qt5 && append-cxxflags -std=c++11
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-qt-version=$(use qt5 && echo 5 || echo 4) \

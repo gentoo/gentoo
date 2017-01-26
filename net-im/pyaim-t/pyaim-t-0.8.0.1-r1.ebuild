@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,10 +6,12 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
-MY_P="${P/pyaim-t/pyaimt}"
+MY_PN="pyaimt"
+MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Python based jabber transport for AIM"
-HOMEPAGE="https://code.google.com/p/pyaimt/"
-SRC_URI="https://pyaimt.googlecode.com/files/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://debian/pool/main/p/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz -> ${P}.tar.gz
+	https://launchpad.net/ubuntu/+archive/primary/+files/${MY_PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

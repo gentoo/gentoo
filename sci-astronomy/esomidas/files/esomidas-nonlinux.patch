@@ -1,0 +1,23 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fixes for non-linux (kFreeBSD, Hurd)
+--- a/system/unix/inmidas
++++ b/system/unix/inmidas
+@@ -425,7 +425,7 @@
+ #
+ os=`uname`
+ case "$os" in
+-    "SunOS"|"Linux")
++    SunOS|Linux|GNU|GNU/*)
+ 	if [ -z "$LD_LIBRARY_PATH" ] ; then
+ 	  LD_LIBRARY_PATH=$MIDASHOME/$MIDVERS/lib
+ 	else
+--- a/test/prim/veriall.prg
++++ b/test/prim/veriall.prg
+@@ -204,6 +204,7 @@
+       write/keyw in_b MID_WORK:veriall_{out_b(1:{inputi})}.{inputc}
+    endif
+ endif
++write/keyw in_b  MID_WORK:veriall_debian.{inputc}
+ open/file {in_b} write  fc
+ if fc(1) .lt. 0 then
+    write/out Could not create file: "MID_WORK:veriall_{out_b}.{inputc} ..."

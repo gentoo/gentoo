@@ -16,7 +16,7 @@ IUSE=""
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtgui-${PV}
-	media-libs/jasper
+	media-libs/jasper:=
 	media-libs/libmng:=
 	media-libs/libwebp:=
 	media-libs/tiff:0

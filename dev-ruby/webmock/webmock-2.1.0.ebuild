@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 
@@ -35,6 +35,7 @@ all_ruby_prepare() {
 	# Remove bundler support
 	rm Gemfile || die
 	sed -i -e '/[Bb]undler/d' Rakefile || die
+	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
 
 	# There is now optional support for curb and typhoeus which we don't
 	# have in Gentoo yet. em_http_request is available in Gentoo but its

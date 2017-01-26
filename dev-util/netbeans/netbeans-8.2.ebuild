@@ -46,7 +46,7 @@ SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_zh-TW? ( ${ALL_URLS} )
 "
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE_NETBEANS_MODULES="
 	+netbeans_modules_apisupport
 	netbeans_modules_cnd
@@ -99,9 +99,10 @@ IUSE_L10N="
 IUSE="doc ${IUSE_NETBEANS_MODULES} ${IUSE_L10N}"
 S="${WORKDIR}"
 
-DEPEND=">=virtual/jdk-1.7
+CDEPEND="virtual/jdk:1.8"
+DEPEND="${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
+RDEPEND="${CDEPEND}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-nb-${PV}

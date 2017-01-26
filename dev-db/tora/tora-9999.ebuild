@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils eutils
 
 if [[ ${PV} == 9999 ]]; then
-	ESVN_REPO_URI="https://tora.svn.sourceforge.net/svnroot/tora/trunk/tora"
+	ESVN_REPO_URI="https://svn.code.sf.net/p/tora/code/trunk/tora"
 	inherit subversion
 	SRC_URI=""
 else
@@ -22,17 +22,19 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS=""
 
-DEPEND="
-	virtual/pkgconfig
+RDEPEND="
 	dev-libs/ferrisloki
-	x11-libs/qscintilla
+	x11-libs/qscintilla:=[qt4(-)]
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4[mysql?,postgres?]
 	dev-qt/qtxmlpatterns:4
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	virtual/pkgconfig
+	${RDEPEND}
+"
 
 pkg_setup() {
 	if ( use oracle || use oci8-instant-client ) && [ -z "$ORACLE_HOME" ] ; then

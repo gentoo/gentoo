@@ -1,0 +1,31 @@
+commit c23ddb86367fc43c2d15e08a452ad2dc1a62041b
+Author: Hodorgasm <nsane457@gmail.com>
+Date:   Mon Sep 19 19:11:57 2016 -0400
+
+    Fix "stdlib.h: No such file or directory" errors in GCC-6
+    
+    Including '-isystem /usr/include' breaks building with GCC-6.
+    See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+diff --git a/interval_intersection/CMakeLists.txt b/interval_intersection/CMakeLists.txt
+index 9bfd103..73bc0ac 100644
+--- a/interval_intersection/CMakeLists.txt
++++ b/interval_intersection/CMakeLists.txt
+@@ -4,7 +4,7 @@ project(interval_intersection)
+ find_package(Boost REQUIRED thread)
+ find_package(catkin REQUIRED actionlib actionlib_msgs calibration_msgs geometry_msgs rosconsole roscpp roscpp_serialization rostime std_msgs)
+ 
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS})
+ include_directories(include)
+  
+ # generate the messages
+@@ -35,7 +35,7 @@ add_executable(interval_intersection_node src/interval_intersection_node.cpp)
+ target_link_libraries(interval_intersection_node ${PROJECT_NAME})
+ add_dependencies(interval_intersection_node calibration_msgs_gencpp)
+ 
+-include_directories(SYSTEM ${BOOST_INCLUDE_DIRS})
++include_directories(${BOOST_INCLUDE_DIRS})
+ add_executable(interval_intersection_action src/interval_intersection_action.cpp)
+ target_link_libraries(interval_intersection_action ${Boost_LIBRARIES}
+                                                    ${catkin_LIBRARIES}

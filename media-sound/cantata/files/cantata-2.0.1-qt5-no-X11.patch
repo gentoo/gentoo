@@ -1,0 +1,14 @@
+diff --git a/support/CMakeLists.txt b/support/CMakeLists.txt
+index fcdaf5c..f6160f0 100644
+--- a/support/CMakeLists.txt
++++ b/support/CMakeLists.txt
+@@ -89,7 +89,7 @@ if (NOT ENABLE_UBUNTU AND NOT ENABLE_WEB)
+ 
+     add_library(support STATIC ${SUPPORT_MOC_SRCS} ${SUPPORT_SRCS} ${SUPPORT_UI_HDRS} ${SUPPORT_RC_SRCS})
+ 
+-    if (X11_FOUND)
++    if (NOT ENABLE_QT5 AND X11_FOUND)
+         target_link_libraries(support ${X11_LIBRARIES})
+-    endif (X11_FOUND)
++    endif (NOT ENABLE_QT5 AND X11_FOUND)
+ endif (NOT ENABLE_UBUNTU AND NOT ENABLE_WEB)

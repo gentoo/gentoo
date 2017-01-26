@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit eutils
+inherit toolchain-funcs eutils
 
 DESCRIPTION="Support for printing to ZjStream-based printers"
 HOMEPAGE="http://foo2zjs.rkkda.com/"
@@ -18,7 +18,7 @@ RESTRICT="bindist"
 
 RDEPEND="net-print/cups
 	net-print/foomatic-db-engine
-	|| ( >=net-print/cups-filters-1.0.43-r1[foomatic] net-print/foomatic-filters )
+	>=net-print/cups-filters-1.0.43-r1[foomatic]
 	virtual/udev"
 DEPEND="${RDEPEND}
 	app-arch/unzip
@@ -32,46 +32,46 @@ S="${WORKDIR}/${PN}"
 
 src_unpack() {
 	einfo "Fetching ${PN} tarball"
-	wget "http://foo2zjs.rkkda.com/${PN}.tar.gz"
-	tar zxf "${WORKDIR}/${PN}.tar.gz"
+	wget "http://foo2zjs.rkkda.com/${PN}.tar.gz" || die
+	tar zxf "${WORKDIR}/${PN}.tar.gz" || die
 
-	epatch "${FILESDIR}/${PN}-udev.patch"
-	epatch "${FILESDIR}/${PN}-usbbackend.patch"
+	epatch "${FILESDIR}/${PN}-udev.patch"\
+		"${FILESDIR}/${PN}-usbbackend.patch"
 
-	cd "${S}"
+	cd "${S}" || die
 
 	einfo "Fetching additional files (firmware, etc)"
 	emake getweb
 
 	# Display wget output, downloading takes some time.
-	sed -e '/^WGETOPTS/s/-q//g' -i getweb
+	sed -e '/^WGETOPTS/s/-q//g' -i getweb || die
 
-	./getweb all
+	./getweb all || die
 }
 
 src_prepare() {
 	# Prevent an access violation.
-	sed -e "s~/etc~${D}/etc~g" -i Makefile
-	sed -e "s~/etc~${D}/etc~g" -i hplj1000
+	sed -e "s~/etc~${D}/etc~g" -i Makefile || die
+	sed -e "s~/etc~${D}/etc~g" -i hplj1000 || die
 
 	# Prevent an access violation, do not create symlinks on live file system
 	# during installation.
-	sed -e 's/ install-filter / /g' -i Makefile
+	sed -e 's/ install-filter / /g' -i Makefile || die
 
 	# Prevent an access violation, do not remove files from live filesystem
 	# during make install
-	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile
-	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000
+	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile || die
+	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000 || die
 }
 
 src_compile() {
-	MAKEOPTS=-j1 default
+	MAKEOPTS=-j1 CC="$(tc-getCC)" default
 }
 
 src_install() {
 	# ppd files are installed automagically. We have to create a directory
 	# for them.
-	mkdir -p "${D}/usr/share/ppd"
+	dodir /usr/share/ppd
 
 	emake DESTDIR="${D}" -j1 install install-hotplug
 }

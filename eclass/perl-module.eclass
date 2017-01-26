@@ -131,6 +131,12 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # (EAPI=6) This variable sets the module author name for the calculation of
 # SRC_URI. Named MODULE_AUTHOR in EAPI=5.
 
+# @ECLASS-VARIABLE: DIST_SECTION
+# @DESCRIPTION:
+# (EAPI=6) This variable sets the module section for the calculation of
+# SRC_URI. Only required in rare cases for very special snowflakes.
+# Named MODULE_SECTION in EAPI=5.
+
 # @ECLASS-VARIABLE: DIST_EXAMPLES
 # @DESCRIPTION:
 # (EAPI=6) This Bash array allows passing a list of example files to be installed

@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="arch testing tool"
-HOMEPAGE="https://github.com/tom111/tatt"
-EGIT_REPO_URI="https://github.com/tom111/tatt.git \
-	git://github.com/tom111/tatt.git"
+HOMEPAGE="https://github.com/kensington/tatt"
+EGIT_REPO_URI="https://github.com/kensington/tatt.git \
+	git://github.com/kensington/tatt.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,7 +22,8 @@ RDEPEND="
 	app-portage/eix
 	app-portage/gentoolkit
 	www-client/pybugz
-	dev-python/configobj[${PYTHON_USEDEP}]"
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 

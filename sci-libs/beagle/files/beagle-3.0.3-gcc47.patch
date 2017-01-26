@@ -1,5 +1,5 @@
---- beagle/include/beagle/RouletteT.hpp
-+++ beagle/include/beagle/RouletteT.hpp
+--- a/beagle/include/beagle/RouletteT.hpp
++++ b/beagle/include/beagle/RouletteT.hpp
 @@ -87,7 +87,7 @@
      Beagle_StackTraceBeginM();
      Beagle_AssertM(inWeight>=0.0);

@@ -21,3 +21,4 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/boost162.patch" )

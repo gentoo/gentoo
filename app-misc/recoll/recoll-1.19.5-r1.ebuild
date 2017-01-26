@@ -12,7 +12,7 @@ HOMEPAGE="http://www.lesbonscomptes.com/recoll/"
 SRC_URI="http://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 INDEX_HELPERS="chm djvu dvi exif postscript ics info lyx msdoc msppt msxls pdf rtf sound tex wordperfect xml"
 IUSE="+spell inotify +qt4 +session camelcase xattr webkit fam ${INDEX_HELPERS}"

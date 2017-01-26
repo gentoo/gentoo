@@ -1,7 +1,7 @@
 Fix building with dlopen() not available.
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -89,6 +89,9 @@
    [], [enable_dynamic_extensions=yes])
  if test x"$enable_dynamic_extensions" != "xno"; then

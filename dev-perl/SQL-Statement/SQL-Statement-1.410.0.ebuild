@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Small SQL parser and engine"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~x86-fbsd"
 IUSE="test minimal"
 
 RDEPEND="

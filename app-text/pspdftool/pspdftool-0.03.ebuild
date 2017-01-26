@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
-ESVN_REPO_URI="https://pspdftool.svn.sourceforge.net/svnroot/pspdftool/trunk"
+ESVN_REPO_URI="https://svn.code.sf.net/p/pspdftool/code/trunk"
 ESVN_PROJECT="pspdftool"
 
 [[ "${PV}" == "9999" ]] && EXTRA_ECLASS="subversion"

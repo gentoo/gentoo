@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -79,7 +79,7 @@ FFMPEG_FLAG_MAP=(
 		schroedinger:libschroedinger speex:libspeex vorbis:libvorbis vpx:libvpx
 		zvbi:libzvbi
 		# libavfilter options
-		bs2b:libbs2b chromaprint ebur128:libebur128 flite:libflite frei0r
+		bs2b:libbs2b chromaprint flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass truetype:libfreetype
 		rubberband:librubberband zimg:libzimg
 		# libswresample options
@@ -162,7 +162,6 @@ RDEPEND="
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
-	ebur128? ( >=media-libs/libebur128-1.1.0[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
@@ -189,7 +188,7 @@ RDEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
-	gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
+	gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	iec61883? (
@@ -203,7 +202,7 @@ RDEPEND="
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	jpeg2k? ( >=media-libs/openjpeg-2:2[${MULTILIB_USEDEP}] )
-	libass? ( >=media-libs/libass-0.10.2[${MULTILIB_USEDEP}] )
+	libass? ( >=media-libs/libass-0.10.2:=[${MULTILIB_USEDEP}] )
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
@@ -238,7 +237,7 @@ RDEPEND="
 		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
 	)
 	xcb? ( >=x11-libs/libxcb-1.4[${MULTILIB_USEDEP}] )
-	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
+	zimg? ( >=media-libs/zimg-2.4:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
 	!media-video/qt-faststart

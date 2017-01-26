@@ -1,0 +1,29 @@
+compile fix gcc-6
+https://bugs.gentoo.org/show_bug.cgi?id=593946
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/Oct/16)
+--- mailbox-0.7.0/Makefile.old	2016-09-21 20:42:01.505376511 -0400
++++ mailbox-0.7.0/Makefile	2016-09-21 20:42:06.071280736 -0400
+@@ -149,7 +149,7 @@
+ 
+ INCLUDES +=
+ 
+-DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
++DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -D__STL_CONFIG_H
+ 
+ ### The object files (add further files here):
+ 
+--- mailbox-0.7.0/AxLib/include/Ax/Tools/Trace.h.old	2016-09-21 20:35:30.849775089 -0400
++++ mailbox-0.7.0/AxLib/include/Ax/Tools/Trace.h	2016-09-21 20:35:35.926564690 -0400
+@@ -40,9 +40,9 @@
+ //-----------------------------------------------------------------------------
+ //     define macros for users
+ //-----------------------------------------------------------------------------
+-#define wsdebugsyslog(Y...) dsyslog("mailbox: "Y)
+-#define wswarnsyslog(Y...)  isyslog("mailbox: "Y)
+-#define wserrorsyslog(Y...) esyslog("mailbox: "Y)
++#define wsdebugsyslog(Y...) dsyslog("mailbox: " Y)
++#define wswarnsyslog(Y...)  isyslog("mailbox: " Y)
++#define wserrorsyslog(Y...) esyslog("mailbox: " Y)
+ 
+ #define wsdebug(X) do { } while(0);
+ #define wsinfo(X)  do { wsdebugsyslog X ;} while(0);

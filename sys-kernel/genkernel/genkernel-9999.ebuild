@@ -7,7 +7,7 @@
 
 EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
-VERSION_BUSYBOX='1.20.2'
+VERSION_BUSYBOX='1.26.0'
 VERSION_DMRAID='1.0.0.rc16-3'
 VERSION_MDADM='3.1.5'
 VERSION_FUSE='2.8.6'
@@ -51,7 +51,7 @@ HOMEPAGE="https://www.gentoo.org"
 LICENSE="GPL-2"
 SLOT="0"
 RESTRICT=""
-IUSE="cryptsetup ibm selinux"
+IUSE="cryptsetup ibm +firmware selinux"
 
 DEPEND="sys-fs/e2fsprogs
 	selinux? ( sys-libs/libselinux )"
@@ -59,6 +59,7 @@ RDEPEND="${DEPEND}
 	cryptsetup? ( sys-fs/cryptsetup )
 	app-arch/cpio
 	>=app-misc/pax-utils-0.2.1
+	firmware? ( sys-kernel/linux-firmware )
 	!<sys-apps/openrc-0.9.9"
 # pax-utils is used for lddtree
 

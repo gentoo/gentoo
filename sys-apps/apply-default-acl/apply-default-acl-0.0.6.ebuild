@@ -5,12 +5,12 @@
 EAPI=6
 
 DESCRIPTION="Apply default POSIX ACLs to files and directories"
-HOMEPAGE="http://michael.orlitzky.com/code/apply-default-acl.php"
+HOMEPAGE="http://michael.orlitzky.com/code/apply-default-acl.xhtml"
 SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="sys-apps/acl"
 RDEPEND="${DEPEND}"

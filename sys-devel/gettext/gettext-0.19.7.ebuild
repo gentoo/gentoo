@@ -20,12 +20,15 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
+# Note: The version of libxml2 corresponds to the version bundled via gnulib.
+# If the build detects too old of a system version, it will end up falling back
+# to the bundled copy.  #596918
 # Note: expat lacks a subslot because it is dynamically loaded at runtime.  We
 # would depend on older subslots if they were available (based on the ABIs that
 # are explicitly handled), but expat doesn't currently use subslots.
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
-	dev-libs/libxml2:=
+	>=dev-libs/libxml2-2.9.3:=
 	dev-libs/expat
 	acl? ( virtual/acl )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -73,6 +76,8 @@ multilib_src_configure() {
 		--with-included-libunistring
 		# Never build libintl since it's in dev-libs/libintl now.
 		--without-included-gettext
+		# Never build bundled copy of libxml2.
+		--without-included-libxml
 
 		$(use_enable acl)
 		$(use_enable cxx c++)

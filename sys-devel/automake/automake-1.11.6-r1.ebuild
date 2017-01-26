@@ -28,6 +28,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453
 	chmod a+rx tests/*.test
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
+	export TZ="UTC"  #589138
 }
 
 src_configure() {

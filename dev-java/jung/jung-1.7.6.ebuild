@@ -32,7 +32,7 @@ PATCHES=( "${FILESDIR}/${P}-build.xml.patch" )
 S="${WORKDIR}/src"
 
 java_prepare() {
-	epatch ${PATCHES}
+	epatch "${PATCHES[@]}"
 	rm -R doc/*
 	find "${WORKDIR}" -iname '*.jar' -delete
 	find "${WORKDIR}" -iname '*.class' -delete

@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="onak is an OpenPGP keyserver"
 HOMEPAGE="http://www.earth.li/projectpurple/progs/onak.html"
@@ -18,8 +18,7 @@ DEPEND="berkdb? ( >=sys-libs/db-4 )
 	postgres? ( dev-db/postgresql[server] )"
 
 src_prepare() {
-	# Merged upstream
-	#epatch "${FILESDIR}"/${P}-berkdb-5.0.patch
+	default
 	eautoreconf
 }
 
@@ -37,7 +36,7 @@ src_install() {
 	keepdir /var/lib/onak
 	dosbin onak maxpath sixdegrees onak-mail.pl
 	dobin splitkeys stripkey
-	doman *.[1-8]
+	doman *[^0].[1-8]
 	insinto /etc
 	doins onak.conf
 	dodir /var/lib/onak/doc

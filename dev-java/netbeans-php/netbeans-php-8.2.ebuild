@@ -15,22 +15,21 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/472A52636BE09823B4E5F707071B31FB990A7375-phpsigfiles.zip
 	http://hg.netbeans.org/binaries/3D6AF75EA20D715887DAF47A3F063864EF0814C1-predefined_vars.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-extide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-webcommon-${PV}
 	~dev-java/netbeans-websvccommon-${PV}
 	dev-java/javacup:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

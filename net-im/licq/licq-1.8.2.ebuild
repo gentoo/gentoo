@@ -16,6 +16,7 @@ KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="debug doc linguas_he nls socks5 ssl xosd aosd xmpp qt4 msn"
 
 RDEPEND=">=app-crypt/gpgme-1
+	dev-libs/boost:=
 	xmpp? ( net-libs/gloox )
 	qt4? ( dev-qt/qtgui:4 )
 	socks5? ( net-proxy/dante )
@@ -24,8 +25,7 @@ RDEPEND=">=app-crypt/gpgme-1
 	aosd? ( x11-libs/libaosd )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
-	nls? ( sys-devel/gettext )
-	dev-libs/boost:="
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	local licq_plugins="auto-reply icq rms"

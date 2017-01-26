@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,18 +13,18 @@ SRC_URI="ftp://ftp.afterstep.org/stable/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+X cpu_flags_x86_mmx examples gif jpeg nls opengl png static-libs shm +shaping svg tiff truetype"
 
 RDEPEND="
 	X?		( x11-libs/libSM
 			  x11-libs/libXext
 			  x11-libs/libXrender )
-	gif?	( media-libs/giflib )
-	jpeg?	( virtual/jpeg:= )
+	gif?	( media-libs/giflib:0= )
+	jpeg?	( virtual/jpeg:0 )
 	opengl?	( virtual/opengl )
-	png?	( >=media-libs/libpng-1.4:0 )
-	svg?	( gnome-base/librsvg )
+	png?	( >=media-libs/libpng-1.4:0= )
+	svg?	( gnome-base/librsvg:2 )
 	tiff?	( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}

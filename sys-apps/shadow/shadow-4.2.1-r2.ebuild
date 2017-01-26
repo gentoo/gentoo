@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI="5"
 
-inherit eutils libtool toolchain-funcs pam multilib autotools
+inherit eutils libtool pam multilib autotools
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="http://shadow.pld.org.pl/ http://pkg-shadow.alioth.debian.org/"
@@ -12,7 +11,7 @@ SRC_URI="http://pkg-shadow.alioth.debian.org/releases/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="acl audit cracklib nls pam selinux skey xattr"
 # Taken from the man/Makefile.am file.
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
@@ -31,7 +30,7 @@ RDEPEND="acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )"
 
@@ -51,7 +50,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-is-cross-compiler && export ac_cv_func_setpgrp_void=yes
 	econf \
 		--without-group-name-max-length \
 		--without-tcb \

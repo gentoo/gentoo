@@ -1,0 +1,96 @@
+From 8b5e3cb38f46afd063a5258af0da1eb6a942dec5 Mon Sep 17 00:00:00 2001
+From: Ben Campbell <ben@scumways.com>
+Date: Wed, 16 Nov 2016 14:41:05 +1300
+Subject: [PATCH] jp2: remove use of uchar define from older jasPer
+
+fixes #41
+jasPer now defines jas_uchar instead of uchar, but it's a moot
+point since the offending code in DevIL was never executed and could
+be removed.
+---
+ DevIL/src-IL/src/il_jp2.c | 42 ++++++++++++++----------------------------
+ 1 file changed, 14 insertions(+), 28 deletions(-)
+
+diff --git a/src-IL/src/il_jp2.c b/src-IL/src/il_jp2.c
+index acc5787..3fd397b 100644
+--- a/src-IL/src/il_jp2.c
++++ b/src-IL/src/il_jp2.c
+@@ -358,7 +358,7 @@ static jas_stream_ops_t jas_stream_devilops = {
+ 
+ static jas_stream_t *jas_stream_create(void);
+ static void jas_stream_destroy(jas_stream_t *stream);
+-static void jas_stream_initbuf(jas_stream_t *stream, int bufmode, char *buf, int bufsize);
++static void jas_stream_initbuf(jas_stream_t *stream, int bufmode );
+ 
+ 
+ // Modified version of jas_stream_fopen and jas_stream_memopen from jas_stream.c of JasPer
+@@ -377,7 +377,7 @@ jas_stream_t *iJp2ReadStream()
+ 	stream->openmode_ = JAS_STREAM_READ | JAS_STREAM_BINARY;
+ 
+ 	/* We use buffering whether it is from memory or a file. */
+-	jas_stream_initbuf(stream, JAS_STREAM_FULLBUF, 0, 0);
++	jas_stream_initbuf(stream, JAS_STREAM_FULLBUF);
+ 
+ 	/* Select the operations for a memory stream. */
+ 	stream->ops_ = &jas_stream_devilops;
+@@ -432,8 +432,7 @@ jas_stream_t *iJp2ReadStream()
+ // The following functions are taken directly from jas_stream.c of JasPer,
+ //  since they are designed to be used within JasPer only.
+ 
+-static void jas_stream_initbuf(jas_stream_t *stream, int bufmode, char *buf,
+-  int bufsize)
++static void jas_stream_initbuf(jas_stream_t *stream, int bufmode )
+ {
+ 	/* If this function is being called, the buffer should not have been
+ 	  initialized yet. */
+@@ -441,31 +440,18 @@ static void jas_stream_initbuf(jas_stream_t *stream, int bufmode, char *buf,
+ 
+ 	if (bufmode != JAS_STREAM_UNBUF) {
+ 		/* The full- or line-buffered mode is being employed. */
+-		if (!buf) {
+-			/* The caller has not specified a buffer to employ, so allocate
+-			  one. */
+-			if ((stream->bufbase_ = jas_malloc(JAS_STREAM_BUFSIZE +
+-			  JAS_STREAM_MAXPUTBACK))) {
+-				stream->bufmode_ |= JAS_STREAM_FREEBUF;
+-				stream->bufsize_ = JAS_STREAM_BUFSIZE;
+-			} else {
+-				/* The buffer allocation has failed.  Resort to unbuffered
+-				  operation. */
+-				stream->bufbase_ = stream->tinybuf_;
+-				stream->bufsize_ = 1;
+-			}
+-		} else {
+-			/* The caller has specified a buffer to employ. */
+-			/* The buffer must be large enough to accommodate maximum
+-			  putback. */
+-			assert(bufsize > JAS_STREAM_MAXPUTBACK);
+-			stream->bufbase_ = JAS_CAST(uchar *, buf);
+-			stream->bufsize_ = bufsize - JAS_STREAM_MAXPUTBACK;
+-		}
++        if ((stream->bufbase_ = jas_malloc(JAS_STREAM_BUFSIZE +
++          JAS_STREAM_MAXPUTBACK))) {
++            stream->bufmode_ |= JAS_STREAM_FREEBUF;
++            stream->bufsize_ = JAS_STREAM_BUFSIZE;
++        } else {
++            /* The buffer allocation has failed.  Resort to unbuffered
++              operation. */
++            stream->bufbase_ = stream->tinybuf_;
++            stream->bufsize_ = 1;
++        }
+ 	} else {
+ 		/* The unbuffered mode is being employed. */
+-		/* A buffer should not have been supplied by the caller. */
+-		assert(!buf);
+ 		/* Use a trivial one-character buffer. */
+ 		stream->bufbase_ = stream->tinybuf_;
+ 		stream->bufsize_ = 1;
+@@ -527,7 +513,7 @@ jas_stream_t *iJp2WriteStream()
+ 	stream->openmode_ = JAS_STREAM_WRITE | JAS_STREAM_BINARY;
+ 
+ 	/* We use buffering whether it is from memory or a file. */
+-	jas_stream_initbuf(stream, JAS_STREAM_FULLBUF, 0, 0);
++	jas_stream_initbuf(stream, JAS_STREAM_FULLBUF);
+ 
+ 	/* Select the operations for a memory stream. */
+ 	stream->ops_ = &jas_stream_devilops;

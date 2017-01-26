@@ -1,0 +1,357 @@
+From f8bd08e9c2fc6365980f41b846bbae4b40f08b83 Mon Sep 17 00:00:00 2001
+From: Jeff Reback <jeff@reback.net>
+Date: Sat, 12 Nov 2016 10:58:54 -0500
+Subject: [PATCH] BUG: segfault manifesting with dateutil=2.6 w.r.t. replace
+ when timezones are present
+
+closes #14621
+
+Author: Jeff Reback <jeff@reback.net>
+
+Closes #14631 from jreback/replace and squashes the following commits:
+
+3f95042 [Jeff Reback] BUG: segfault manifesting with dateutil=2.6 w.r.t. replace when timezones are present
+---
+ ci/requirements-3.5_OSX.pip            |  2 +-
+ doc/source/whatsnew/v0.19.2.txt        |  3 ++
+ pandas/tseries/offsets.py              |  1 +
+ pandas/tseries/tests/test_offsets.py   | 20 ++++---
+ pandas/tseries/tests/test_timezones.py | 89 +++++++++++++++++++++++++++++--
+ pandas/tseries/tests/test_tslib.py     |  5 +-
+ pandas/tslib.pyx                       | 95 ++++++++++++++++++++++++++++------
+ 7 files changed, 188 insertions(+), 27 deletions(-)
+
+diff --git a/pandas/tseries/offsets.py b/pandas/tseries/offsets.py
+index 051cc8aa4..2e3852a7e 100644
+--- a/pandas/tseries/offsets.py
++++ b/pandas/tseries/offsets.py
+@@ -68,6 +68,7 @@ def apply_wraps(func):
+                 other = other.tz_localize(None)
+ 
+             result = func(self, other)
++
+             if self._adjust_dst:
+                 result = tslib._localize_pydatetime(result, tz)
+ 
+diff --git a/pandas/tseries/tests/test_offsets.py b/pandas/tseries/tests/test_offsets.py
+index 1735ac4e2..768e9212e 100644
+--- a/pandas/tseries/tests/test_offsets.py
++++ b/pandas/tseries/tests/test_offsets.py
+@@ -1,4 +1,5 @@
+ import os
++from distutils.version import LooseVersion
+ from datetime import date, datetime, timedelta
+ from dateutil.relativedelta import relativedelta
+ from pandas.compat import range, iteritems
+@@ -4851,6 +4852,7 @@ class TestDST(tm.TestCase):
+ 
+     def _test_offset(self, offset_name, offset_n, tstart, expected_utc_offset):
+         offset = DateOffset(**{offset_name: offset_n})
++
+         t = tstart + offset
+         if expected_utc_offset is not None:
+             self.assertTrue(get_utc_offset_hours(t) == expected_utc_offset)
+@@ -4890,17 +4892,23 @@ class TestDST(tm.TestCase):
+         return Timestamp(string + offset_string).tz_convert(tz)
+ 
+     def test_fallback_plural(self):
+-        """test moving from daylight savings to standard time"""
++        # test moving from daylight savings to standard time
++        import dateutil
+         for tz, utc_offsets in self.timezone_utc_offsets.items():
+             hrs_pre = utc_offsets['utc_offset_daylight']
+             hrs_post = utc_offsets['utc_offset_standard']
+-            self._test_all_offsets(
+-                n=3, tstart=self._make_timestamp(self.ts_pre_fallback,
+-                                                 hrs_pre, tz),
+-                expected_utc_offset=hrs_post)
++
++            if dateutil.__version__ != LooseVersion('2.6.0'):
++                # buggy ambiguous behavior in 2.6.0
++                # GH 14621
++                # https://github.com/dateutil/dateutil/issues/321
++                self._test_all_offsets(
++                    n=3, tstart=self._make_timestamp(self.ts_pre_fallback,
++                                                     hrs_pre, tz),
++                    expected_utc_offset=hrs_post)
+ 
+     def test_springforward_plural(self):
+-        """test moving from standard to daylight savings"""
++        # test moving from standard to daylight savings
+         for tz, utc_offsets in self.timezone_utc_offsets.items():
+             hrs_pre = utc_offsets['utc_offset_standard']
+             hrs_post = utc_offsets['utc_offset_daylight']
+diff --git a/pandas/tseries/tests/test_timezones.py b/pandas/tseries/tests/test_timezones.py
+index 00e8ee631..db8cda5c7 100644
+--- a/pandas/tseries/tests/test_timezones.py
++++ b/pandas/tseries/tests/test_timezones.py
+@@ -4,7 +4,7 @@ import nose
+ 
+ import numpy as np
+ import pytz
+-
++from distutils.version import LooseVersion
+ from pandas.types.dtypes import DatetimeTZDtype
+ from pandas import (Index, Series, DataFrame, isnull, Timestamp)
+ 
+@@ -518,8 +518,12 @@ class TestTimeZoneSupportPytz(tm.TestCase):
+ 
+         times = date_range("2013-10-26 23:00", "2013-10-27 01:00", freq="H",
+                            tz=tz, ambiguous='infer')
+-        self.assertEqual(times[0], Timestamp('2013-10-26 23:00', tz=tz))
+-        self.assertEqual(times[-1], Timestamp('2013-10-27 01:00', tz=tz))
++        self.assertEqual(times[0], Timestamp('2013-10-26 23:00', tz=tz,
++                                             freq="H"))
++        if dateutil.__version__ != LooseVersion('2.6.0'):
++            # GH 14621
++            self.assertEqual(times[-1], Timestamp('2013-10-27 01:00', tz=tz,
++                                                  freq="H"))
+ 
+     def test_ambiguous_nat(self):
+         tz = self.tz('US/Eastern')
+@@ -1163,6 +1167,85 @@ class TestTimeZones(tm.TestCase):
+     def setUp(self):
+         tm._skip_if_no_pytz()
+ 
++    def test_replace(self):
++        # GH 14621
++        # GH 7825
++        # replacing datetime components with and w/o presence of a timezone
++        dt = Timestamp('2016-01-01 09:00:00')
++        result = dt.replace(hour=0)
++        expected = Timestamp('2016-01-01 00:00:00')
++        self.assertEqual(result, expected)
++
++        for tz in self.timezones:
++            dt = Timestamp('2016-01-01 09:00:00', tz=tz)
++            result = dt.replace(hour=0)
++            expected = Timestamp('2016-01-01 00:00:00', tz=tz)
++            self.assertEqual(result, expected)
++
++        # we preserve nanoseconds
++        dt = Timestamp('2016-01-01 09:00:00.000000123', tz=tz)
++        result = dt.replace(hour=0)
++        expected = Timestamp('2016-01-01 00:00:00.000000123', tz=tz)
++        self.assertEqual(result, expected)
++
++        # test all
++        dt = Timestamp('2016-01-01 09:00:00.000000123', tz=tz)
++        result = dt.replace(year=2015, month=2, day=2, hour=0, minute=5,
++                            second=5, microsecond=5, nanosecond=5)
++        expected = Timestamp('2015-02-02 00:05:05.000005005', tz=tz)
++        self.assertEqual(result, expected)
++
++        # error
++        def f():
++            dt.replace(foo=5)
++        self.assertRaises(ValueError, f)
++
++        def f():
++            dt.replace(hour=0.1)
++        self.assertRaises(ValueError, f)
++
++        # assert conversion to naive is the same as replacing tzinfo with None
++        dt = Timestamp('2013-11-03 01:59:59.999999-0400', tz='US/Eastern')
++        self.assertEqual(dt.tz_localize(None), dt.replace(tzinfo=None))
++
++    def test_ambiguous_compat(self):
++        # validate that pytz and dateutil are compat for dst
++        # when the transition happens
++        tm._skip_if_no_dateutil()
++        tm._skip_if_no_pytz()
++
++        pytz_zone = 'Europe/London'
++        dateutil_zone = 'dateutil/Europe/London'
++        result_pytz = (Timestamp('2013-10-27 01:00:00')
++                       .tz_localize(pytz_zone, ambiguous=0))
++        result_dateutil = (Timestamp('2013-10-27 01:00:00')
++                           .tz_localize(dateutil_zone, ambiguous=0))
++        self.assertEqual(result_pytz.value, result_dateutil.value)
++        self.assertEqual(result_pytz.value, 1382835600000000000)
++
++        # dateutil 2.6 buggy w.r.t. ambiguous=0
++        if dateutil.__version__ != LooseVersion('2.6.0'):
++            # GH 14621
++            # https://github.com/dateutil/dateutil/issues/321
++            self.assertEqual(result_pytz.to_pydatetime().tzname(),
++                             result_dateutil.to_pydatetime().tzname())
++            self.assertEqual(str(result_pytz), str(result_dateutil))
++
++        # 1 hour difference
++        result_pytz = (Timestamp('2013-10-27 01:00:00')
++                       .tz_localize(pytz_zone, ambiguous=1))
++        result_dateutil = (Timestamp('2013-10-27 01:00:00')
++                           .tz_localize(dateutil_zone, ambiguous=1))
++        self.assertEqual(result_pytz.value, result_dateutil.value)
++        self.assertEqual(result_pytz.value, 1382832000000000000)
++
++        # dateutil < 2.6 is buggy w.r.t. ambiguous timezones
++        if dateutil.__version__ > LooseVersion('2.5.3'):
++            # GH 14621
++            self.assertEqual(str(result_pytz), str(result_dateutil))
++            self.assertEqual(result_pytz.to_pydatetime().tzname(),
++                             result_dateutil.to_pydatetime().tzname())
++
+     def test_index_equals_with_tz(self):
+         left = date_range('1/1/2011', periods=100, freq='H', tz='utc')
+         right = date_range('1/1/2011', periods=100, freq='H', tz='US/Eastern')
+diff --git a/pandas/tseries/tests/test_tslib.py b/pandas/tseries/tests/test_tslib.py
+index 21cfe84f1..b45f867be 100644
+--- a/pandas/tseries/tests/test_tslib.py
++++ b/pandas/tseries/tests/test_tslib.py
+@@ -327,8 +327,9 @@ class TestTimestamp(tm.TestCase):
+ 
+         # dateutil zone change (only matters for repr)
+         import dateutil
+-        if dateutil.__version__ >= LooseVersion(
+-                '2.3') and dateutil.__version__ <= LooseVersion('2.4.0'):
++        if (dateutil.__version__ >= LooseVersion('2.3') and
++            (dateutil.__version__ <= LooseVersion('2.4.0') or
++             dateutil.__version__ >= LooseVersion('2.6.0'))):
+             timezones = ['UTC', 'Asia/Tokyo', 'US/Eastern',
+                          'dateutil/US/Pacific']
+         else:
+diff --git a/pandas/tslib.pyx b/pandas/tslib.pyx
+index d4eaaa0b5..685de214c 100644
+--- a/pandas/tslib.pyx
++++ b/pandas/tslib.pyx
+@@ -98,6 +98,7 @@ except NameError: # py3
+ cdef inline object create_timestamp_from_ts(
+         int64_t value, pandas_datetimestruct dts,
+         object tz, object freq):
++    """ convenience routine to construct a Timestamp from its parts """
+     cdef _Timestamp ts_base
+     ts_base = _Timestamp.__new__(Timestamp, dts.year, dts.month,
+                                  dts.day, dts.hour, dts.min,
+@@ -112,6 +113,7 @@ cdef inline object create_timestamp_from_ts(
+ cdef inline object create_datetime_from_ts(
+         int64_t value, pandas_datetimestruct dts,
+         object tz, object freq):
++    """ convenience routine to construct a datetime.datetime from its parts """
+     return datetime(dts.year, dts.month, dts.day, dts.hour,
+                     dts.min, dts.sec, dts.us, tz)
+ 
+@@ -378,7 +380,6 @@ class Timestamp(_Timestamp):
+         # Mixing pydatetime positional and keyword arguments is forbidden!
+ 
+         cdef _TSObject ts
+-        cdef _Timestamp ts_base
+ 
+         if offset is not None:
+             # deprecate offset kwd in 0.19.0, GH13593
+@@ -412,17 +413,7 @@ class Timestamp(_Timestamp):
+             from pandas.tseries.frequencies import to_offset
+             freq = to_offset(freq)
+ 
+-        # make datetime happy
+-        ts_base = _Timestamp.__new__(cls, ts.dts.year, ts.dts.month,
+-                                     ts.dts.day, ts.dts.hour, ts.dts.min,
+-                                     ts.dts.sec, ts.dts.us, ts.tzinfo)
+-
+-        # fill out rest of data
+-        ts_base.value = ts.value
+-        ts_base.freq = freq
+-        ts_base.nanosecond = ts.dts.ps / 1000
+-
+-        return ts_base
++        return create_timestamp_from_ts(ts.value, ts.dts, ts.tzinfo, freq)
+ 
+     def _round(self, freq, rounder):
+ 
+@@ -660,8 +651,80 @@ class Timestamp(_Timestamp):
+     astimezone = tz_convert
+ 
+     def replace(self, **kwds):
+-        return Timestamp(datetime.replace(self, **kwds),
+-                         freq=self.freq)
++        """
++        implements datetime.replace, handles nanoseconds
++
++        Parameters
++        ----------
++        kwargs: key-value dict
++
++        accepted keywords are:
++        year, month, day, hour, minute, second, microsecond, nanosecond, tzinfo
++
++        values must be integer, or for tzinfo, a tz-convertible
++
++        Returns
++        -------
++        Timestamp with fields replaced
++        """
++
++        cdef:
++            pandas_datetimestruct dts
++            int64_t value
++            object tzinfo, result, k, v
++            _TSObject ts
++
++        # set to naive if needed
++        tzinfo = self.tzinfo
++        value = self.value
++        if tzinfo is not None:
++            value = tz_convert_single(value, 'UTC', tzinfo)
++
++        # setup components
++        pandas_datetime_to_datetimestruct(value, PANDAS_FR_ns, &dts)
++        dts.ps = self.nanosecond * 1000
++
++        # replace
++        def validate(k, v):
++            """ validate integers """
++            if not isinstance(v, int):
++                raise ValueError("value must be an integer, received {v} for {k}".format(v=type(v), k=k))
++            return v
++
++        for k, v in kwds.items():
++            if k == 'year':
++                dts.year = validate(k, v)
++            elif k == 'month':
++                dts.month = validate(k, v)
++            elif k == 'day':
++                dts.day = validate(k, v)
++            elif k == 'hour':
++                dts.hour = validate(k, v)
++            elif k == 'minute':
++                dts.min = validate(k, v)
++            elif k == 'second':
++                dts.sec = validate(k, v)
++            elif k == 'microsecond':
++                dts.us = validate(k, v)
++            elif k == 'nanosecond':
++                dts.ps = validate(k, v) * 1000
++            elif k == 'tzinfo':
++                tzinfo = v
++            else:
++                raise ValueError("invalid name {} passed".format(k))
++
++        # reconstruct & check bounds
++        value = pandas_datetimestruct_to_datetime(PANDAS_FR_ns, &dts)
++        if value != NPY_NAT:
++            _check_dts_bounds(&dts)
++
++        # set tz if needed
++        if tzinfo is not None:
++            value = tz_convert_single(value, tzinfo, 'UTC')
++
++        result = create_timestamp_from_ts(value, dts, tzinfo, self.freq)
++
++        return result
+ 
+     def isoformat(self, sep='T'):
+         base = super(_Timestamp, self).isoformat(sep=sep)
+@@ -5041,7 +5104,9 @@ cpdef normalize_date(object dt):
+     -------
+     normalized : datetime.datetime or Timestamp
+     """
+-    if PyDateTime_Check(dt):
++    if is_timestamp(dt):
++        return dt.replace(hour=0, minute=0, second=0, microsecond=0, nanosecond=0)
++    elif PyDateTime_Check(dt):
+         return dt.replace(hour=0, minute=0, second=0, microsecond=0)
+     elif PyDate_Check(dt):
+         return datetime(dt.year, dt.month, dt.day)
+-- 
+2.11.0
+

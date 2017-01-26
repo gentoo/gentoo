@@ -10,7 +10,7 @@ MATE_LA_PUNT="yes"
 inherit mate python-single-r1 linux-info user
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Store, Sync and Share Files Online"

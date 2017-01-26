@@ -1,0 +1,54 @@
+From 6fcb43935bab90d61858eb1bc0f150c843586c54 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Sat, 6 Jun 2015 21:48:02 +0200
+Subject: [PATCH] adapt to libwps 0.4
+
+---
+ plugin-configure.m4                           | 2 +-
+ plugins/wordperfect/plugin.m4                 | 2 +-
+ plugins/wordperfect/xp/ie_imp_WordPerfect.cpp | 4 +++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/plugin-configure.m4 b/plugin-configure.m4
+index 2757f4a..093fbcb 100644
+--- a/plugin-configure.m4
++++ b/plugin-configure.m4
+@@ -1470,7 +1470,7 @@ AC_SUBST([AIKSAURUS_LIBS])
+ 
+ 
+ wordperfect_pkgs="libwpg-0.3 libwpd-0.10 librevenge-0.0 librevenge-stream-0.0 $gsf_req"
+-wordperfect_wps_pkgs='libwps-0.3'
++wordperfect_wps_pkgs='libwps-0.4'
+ wordperfect_deps="no"
+ 
+ WORDPERFECT_CFLAGS=
+diff --git a/plugins/wordperfect/plugin.m4 b/plugins/wordperfect/plugin.m4
+index 0aadbaf..bc32d48 100644
+--- a/plugins/wordperfect/plugin.m4
++++ b/plugins/wordperfect/plugin.m4
+@@ -1,6 +1,6 @@
+ 
+ wordperfect_pkgs="libwpd-0.10 $gsf_req"
+-wordperfect_wps_pkgs='libwps-0.3'
++wordperfect_wps_pkgs='libwps-0.4'
+ wordperfect_deps="no"
+ 
+ WORDPERFECT_CFLAGS=
+diff --git a/plugins/wordperfect/xp/ie_imp_WordPerfect.cpp b/plugins/wordperfect/xp/ie_imp_WordPerfect.cpp
+index bd19971..3e69f79 100644
+--- a/plugins/wordperfect/xp/ie_imp_WordPerfect.cpp
++++ b/plugins/wordperfect/xp/ie_imp_WordPerfect.cpp
+@@ -1389,7 +1389,9 @@ UT_Confidence_t IE_Imp_MSWorks_Sniffer::recognizeContents (GsfInput * input)
+ 	AbiWordperfectInputStream gsfInput(input);
+ 
+ 	libwps::WPSKind kind;
+-	libwps::WPSConfidence confidence = libwps::WPSDocument::isFileFormatSupported(&gsfInput, kind);
++        libwps::WPSCreator creator;
++        bool needsEncoding = false;
++	libwps::WPSConfidence confidence = libwps::WPSDocument::isFileFormatSupported(&gsfInput, kind, creator, needsEncoding);
+ 	
+ 	if (kind != libwps::WPS_TEXT)
+ 		confidence = libwps::WPS_CONFIDENCE_NONE;
+-- 
+2.4.2
+

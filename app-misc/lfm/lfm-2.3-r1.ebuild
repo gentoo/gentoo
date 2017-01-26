@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,10 +10,10 @@ PYTHON_REQ_USE="ncurses"
 inherit distutils-r1 eutils
 
 DESCRIPTION="Last File Manager is a powerful file manager for the console"
-HOMEPAGE="https://code.google.com/p/lfm/"
-SRC_URI="https://lfm.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://inigo.katxi.org/devel/lfm/"
+SRC_URI="https://inigo.katxi.org/devel/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

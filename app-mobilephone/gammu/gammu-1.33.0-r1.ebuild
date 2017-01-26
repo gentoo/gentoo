@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://dl.cihar.com/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bluetooth curl dbi debug irda mysql nls postgres python usb"
 
 # TODO: figure out a way to disable gudev

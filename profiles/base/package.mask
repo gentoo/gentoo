@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,19 +6,7 @@
 # Needs sys-apps/systemd. Masked for non systemd profiles.
 app-admin/calamares
 
-# Matthew Thode <prometheanfire@gentoo.org> (12 Dec 2014)
-# Adding the mask so that end users are notified of the removal and have some
-# time to migrate.  Will fully remove app-admin/puppet-2.7 in a month or so.
-<app-admin/puppet-3.0.0
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Oct 2014)
 # Changes in vt allocation break startx on non-systemd, bugs #526762 and
 # #526802.
 =x11-apps/xinit-1.3.4
-
-# Rick Farina <zerochaos@gentoo.org> (6 Jun 2013)
-# Pm-utils based hibernate and suspend support has discontinued.
-# For continued support, use the upower-pm-utils fork or systemd.
-# Systemd users can switch to a systemd profile or unmask <sys-power/upower-0.99.0
-# Openrc users can "emerge -C upower && emerge -1 upower-pm-utils"
-<sys-power/upower-0.99.0

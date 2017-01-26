@@ -17,4 +17,7 @@
 	<upstream>
 		<remote-id type="github">dylanaraps/neofetch</remote-id>
 	</upstream>
+	<use>
+		<flag name="X">Enable support for detecting DEs, WMs, screen resolutions, and showing images from an X terminal</flag>
+	</use>
 </pkgmetadata>

@@ -8,8 +8,8 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake-utils
 
 DESCRIPTION="Simple Qt4 ID3v2 tag editor"
-HOMEPAGE="https://code.google.com/p/qtagger"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/DOOMer/qtagger"
+SRC_URI="https://github.com/DOOMer/qtagger/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

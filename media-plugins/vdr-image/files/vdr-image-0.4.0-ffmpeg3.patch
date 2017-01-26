@@ -1,0 +1,40 @@
+Index: image-0.4.0/liboutput/encode.c
+===================================================================
+--- image-0.4.0.orig/liboutput/encode.c
++++ image-0.4.0/liboutput/encode.c
+@@ -150,7 +150,7 @@ void cEncode::SetupEncodingParameters(AV
+     }
+     context->max_b_frames=1;
+     context->flags |= CODEC_FLAG_QSCALE;
+-    context->pix_fmt = PIX_FMT_YUV420P;
++    context->pix_fmt = AV_PIX_FMT_YUV420P;
+ }
+ 
+ bool cEncode::ConvertImageToFrame(AVFrame *frame)
+@@ -173,7 +173,7 @@ bool cEncode::ConvertImageToFrame(AVFram
+     // Convert RGB to YUV 
+     if(!avpicture_fill((AVPicture*)m_pImageFilled, 
+                                     m_pImageRGB, 
+-                                    PIX_FMT_RGB24, m_nWidth, m_nHeight)) 
++                                    AV_PIX_FMT_RGB24, m_nWidth, m_nHeight)) 
+     {
+         esyslog("imageplugin: failed avpicture_fill");
+         return false;
+@@ -182,13 +182,13 @@ bool cEncode::ConvertImageToFrame(AVFram
+     {
+         int result;
+ #ifndef HAVE_SWSCALER
+-        result=img_convert((AVPicture*)frame->data, PIX_FMT_YUV420P, 
+-                       (AVPicture*)m_pImageFilled, PIX_FMT_RGB24, 
++        result=img_convert((AVPicture*)frame->data, AV_PIX_FMT_YUV420P, 
++                       (AVPicture*)m_pImageFilled, AV_PIX_FMT_RGB24, 
+                        m_nWidth, m_nHeight);
+ #else
+         SwsContext* convert_ctx = sws_getContext(m_nWidth, m_nHeight, 
+-                        PIX_FMT_RGB24, m_nWidth, m_nHeight, 
+-                        PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
++                        AV_PIX_FMT_RGB24, m_nWidth, m_nHeight, 
++                        AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+ 
+ 	    if(!convert_ctx) {
+             esyslog("imageplugin: failed to initialize swscaler context");

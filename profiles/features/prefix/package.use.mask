@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Benda Xu <heroxbd@gentoo.org> (28 Jul 2016)
 # Needs root privilege.
-sys-fs/eudev hwdb kmod firmware-loader
+sys-fs/eudev hwdb kmod
 
 # Kacper Kowalik <xarthisius@gentoo.org> (14 Jan 2012)
 # sci-libs/mkl don't have prefix keywords
@@ -37,15 +37,6 @@ app-editors/emacs hesiod m17n-lib
 # NOTE to prefix devs: if it needs to not be a global mask, talk to me because
 # it currently causes failures on linux. It can be made a "less global" mask.
 dev-lang/python berkdb
-
-# Jeremy Olexa <darkside@gentoo.org> (02 Sep 2009)
-# these don't work, because they rely on the host having sufficient xorg-server
-# version.
-xfce-base/xfce4-meta session
-
-# Jeremy Olexa <darkside@gentoo.org> (13 Feb 2009)
-# Can't make USE=ssl to work, bad build system. bug #256699
-dev-lang/pike ssl
 
 # Elias Pipping <pipping@gentoo.org> (18 Nov 2007)
 # feynmf fails to build documentation

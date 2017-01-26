@@ -104,7 +104,6 @@ foomaticdb - Add support for the foomatic printing driver database
 fortran - Add support for fortran
 freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 freewnn - Add support for FreeWnn kana to kanji conversion engine
-frontbase - Add support for the frontbase sql server
 ftp - Add FTP (File Transfer Protocol) support
 gcj - Enable building with gcj (The GNU Compiler for the Javatm Programming Language)
 gd - Add support for media-libs/gd (to generate graphics on the fly)
@@ -285,7 +284,7 @@ qt5 - Add support for the Qt 5 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
 raw - Add support for raw image formats
-rdesktop - Add support for the remote desktop protocol, usually used to connect to Windows servers
+rdp - Enables RDP/Remote Desktop support
 readline - Enable support for libreadline, a GNU line-editing library that almost everyone wants
 recode - Enable support for the GNU recode library
 rss - Enable support for RSS feeds

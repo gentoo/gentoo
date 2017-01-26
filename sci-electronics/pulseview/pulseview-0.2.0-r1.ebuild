@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_4 )
 inherit eutils cmake-utils python-single-r1
 
 if [[ ${PV} == "9999" ]]; then

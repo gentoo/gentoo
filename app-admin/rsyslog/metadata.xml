@@ -29,6 +29,7 @@
 		<flag name="snmp">Build the snmp modify and output module (requires <pkg>net-analyzer/net-snmp</pkg>)</flag>
 		<flag name="ssl">Add support for encrypted client/server communication (requires <pkg>net-libs/gnutls</pkg>)</flag>
 		<flag name="systemd">Build the journal input and output module (requires <pkg>sys-apps/systemd</pkg>)</flag>
+		<flag name="uuid">Include UUIDs in messages (requires <pkg>sys-apps/util-linux</pkg>)</flag>
 		<flag name="usertools">Installs the user tools (rsgtutil, rscryutil...) corresponding to the set USE flags</flag>
 		<flag name="zeromq">Build the ZeroMQ input and output modules (requires <pkg>net-libs/czmq</pkg>)</flag>
 	</use>

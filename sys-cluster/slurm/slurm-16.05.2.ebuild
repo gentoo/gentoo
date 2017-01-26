@@ -72,7 +72,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [ ${#PATCHES[0]} -ne 0 ]; then
-		epatch ${PATCHES[@]}
+		epatch "${PATCHES[@]}"
 	fi
 	eapply_user
 	# pids should go to /var/run/slurm

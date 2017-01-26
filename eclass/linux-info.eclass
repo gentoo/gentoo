@@ -445,7 +445,6 @@ get_version() {
 	# KV_DIR will contain the full path to the sources directory we should use
 	[ -z "${get_version_warning_done}" ] && \
 	qeinfo "Determining the location of the kernel source code"
-	[ -h "${KERNEL_DIR}" ] && KV_DIR="$(readlink -f ${KERNEL_DIR})"
 	[ -d "${KERNEL_DIR}" ] && KV_DIR="${KERNEL_DIR}"
 
 	if [ -z "${KV_DIR}" ]
@@ -539,7 +538,6 @@ get_version() {
 		done
 	fi
 
-	[ -h "${OUTPUT_DIR}" ] && KV_OUT_DIR="$(readlink -f ${OUTPUT_DIR})"
 	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
 	if [ -n "${KV_OUT_DIR}" ];
 	then

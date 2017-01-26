@@ -2,8 +2,8 @@ Link executables against libsqlite3.so.
 Increase timeout for fuzzcheck.
 Fix building with dlopen() not available.
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -555,7 +555,7 @@
  # Extra compiler options for various shell tools
  #
@@ -123,8 +123,8 @@ Fix building with dlopen() not available.
  
  loadfts$(EXE): $(TOP)/tool/loadfts.c libsqlite3.la
  	$(LTLINK) $(TOP)/tool/loadfts.c libsqlite3.la -o $@ $(TLIBS)
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -570,6 +570,9 @@
  if test "${use_loadextension}" = "yes" ; then
    OPT_FEATURE_FLAGS=""

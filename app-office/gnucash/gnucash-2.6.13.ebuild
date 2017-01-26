@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
 	>=dev-scheme/guile-1.8.3:12[deprecated,regex]
+	<dev-scheme/guile-2:12
 	dev-scheme/guile-www
 	gnome-base/libgnomecanvas
 	>=net-libs/webkit-gtk-1.2:2
@@ -83,11 +84,11 @@ src_configure() {
 		$(use_enable ofx) \
 		$(use_enable hbci aqbanking) \
 		$(use_enable python) \
-		--with-guile=1.8 \
 		--disable-doxygen \
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
 		--disable-error-on-warning \
+		--with-guile=1.8 \
 		${myconf}
 }
 

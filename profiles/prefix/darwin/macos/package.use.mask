@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,11 +11,7 @@ dev-java/oracle-jre-bin -javafx
 # Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
 # X and linux only
 media-video/mplayer xvmc xv dga X xinerama xscreensaver
-media-video/mplayer dvb lirc svga jack joystick matrox
-
-# Jeremy Olexa <darkside@gentoo.org> (12 Feb 2009)
-# Doesn't work with python support, bug 257572
-gnome-extra/libgsf python
+media-video/mplayer dvb lirc jack joystick
 
 # Fabian Groffen <grobian@gentoo.org> (06 Aug 2008)
 # runtime loading is horribly broken (it uses fixed .so.0, but when

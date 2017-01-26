@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+inherit eutils
 
 DESCRIPTION="Sound card based multimode software modem for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com/Fldigi.html"
@@ -10,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="hamlib nls portaudio pulseaudio sndfile"
 
 RDEPEND="x11-libs/fltk:1[threads,xft]
@@ -28,6 +29,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+# backported from 3.23.15. Fixes bug #595220 and #599582
+src_prepare() {
+	epatch "$FILESDIR"/$P.patch
+}
 
 src_configure() {
 	econf $(use_with sndfile) \

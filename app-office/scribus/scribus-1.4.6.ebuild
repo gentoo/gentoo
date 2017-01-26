@@ -19,7 +19,7 @@ KEYWORDS="amd64 hppa ppc ppc64 ~sparc x86"
 IUSE="cairo debug examples hunspell +minimal +pdf scripts templates tk"
 
 # a=$(ls resources/translations/po/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'); echo ${a}
-IUSE_LINGUAS=" af ar bg br ca cs_CZ cy da_DK de_1901 de_CH de el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt_BR pt ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
+IUSE_LINGUAS=" af ar bg br ca cs_CZ cy da_DK de@1901 de_CH de el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt_BR pt ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
 IUSE+=" ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
@@ -76,12 +76,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local lang langs
+	local _lang lang langs
 	for lang in ${IUSE_LINGUAS}; do
+		_lang=$(translate_lang ${lang})
 		if use linguas_${lang}; then
-			langs+=",${lang}"
+			langs+=",${_lang}"
 		else
-			sed -e "/${lang}/d" -i scribus/doc/CMakeLists.txt || die
+			sed -e "/${_lang}/d" -i scribus/doc/CMakeLists.txt || die
 		fi
 	done
 
@@ -148,4 +149,11 @@ pkg_postinst() {
 pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+}
+
+translate_lang() {
+	_lang=${1}
+	[[ ${1} == "ru_RU" ]] && _lang+=_0
+	[[ ${1} == "de@1901" ]] && _lang=de_1901
+	echo ${_lang}
 }

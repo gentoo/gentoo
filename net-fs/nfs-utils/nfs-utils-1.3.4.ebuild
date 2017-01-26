@@ -29,7 +29,7 @@ DEPEND_COMMON="tcpd? ( sys-apps/tcp-wrappers )
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
-		dev-libs/libevent
+		dev-libs/libevent:=
 		>=net-libs/libnfsidmap-0.21-r1
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]

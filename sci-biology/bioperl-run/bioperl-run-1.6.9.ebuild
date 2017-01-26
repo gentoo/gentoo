@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MODULE_AUTHOR=CJFIELDS
 MODULE_VERSION=1.006900
 inherit perl-module
 
-DESCRIPTION="Perl tools for bioinformatics - Wrapper modules around key bioinformatics applications"
+DESCRIPTION="Perl wrapper modules for key bioinformatics applications"
 HOMEPAGE="http://www.bioperl.org/"
 
 SLOT="0"

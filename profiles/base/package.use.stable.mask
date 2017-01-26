@@ -1,9 +1,61 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
+
+# Mike Gilbert <floppym@gentoo.org> (26 Jan 2017)
+# Needs >=media-video/ffmpeg-3
+www-client/chromium system-ffmpeg
+
+# Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
+# Requires testing version of media-libs/opencv
+media-libs/mlt opencv
+
+# Johannes Huber <johu@gentoo.org> (25 Jan 2017)
+# Fails to build with dev-lang/ocaml-0.04.0 which
+# needs to be stabilized due to security issue.
+# Bugs: #603050, #581946
+kde-apps/kalzium solver
+
+# Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
+# sys-fs/zfs isn't going to be marked stable anytime soon
+app-emulation/libvirt zfs
+
+# Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
+# www-client/weboob is horribly outdated and not stable
+app-office/kmymoney weboob
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
+# Stable-masking mpi support so Boost 1.62 stabilization can go ahead
+# (bug 590244)
+=dev-libs/boost-1.62* mpi
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
+# Has no stable reverse deps requiring this useflag
+# Stable-masking it so Boost 1.62 stabilization can go ahead
+sci-libs/vtk mpi
+
+# Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
+# libcxx is not stable so we can't let users use it
+dev-lang/rust libcxx
+# llvm 3.8.x is not stable so we can't let users use it
+dev-lang/rust system-llvm
+
+# Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
+# Will always require unstable packages.
+net-libs/gnutls test-full
+
+# Zac Medico <zmedico@gentoo.org> (19 Dec 2016)
+# The go flag requires dev-lang/go[gccgo], and gccgo
+# is stable masked since it requires gcc-5 which is
+# currently unstable.
+www-servers/uwsgi go pypy
+
+# Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
+# Requires php:7.0 and ruby:2.2 being stable
+>=dev-libs/Ice-3.6.3 php ruby
 
 # Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
 # Not ready to be stabilized yet.
@@ -20,10 +72,6 @@ dev-db/mariadb-galera sst-xtrabackup
 # Needs gcc-5 which is currently unstable
 dev-lang/go gccgo
 
-# Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
-# Needs unsable media-libs/opencv
-media-gfx/nomacs qt5
-
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
@@ -35,13 +83,9 @@ app-emulation/ganeti monitoring
 =media-video/mpv-0.9.2-r1 libcaca
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
-# Unmask python3.5 for python-exec
+# Unmask stable-masked implementations for python-exec
 dev-lang/python-exec -python_targets_python3_5
-
-# Andreas Huettel <dilfridge@gentoo.org> (26 Sep 2015)
-# Not stable enough for stable (Debian and SuSE disable it completely)
-=app-office/libreoffice-5.0* gtk3
-=app-office/libreoffice-5.1* gtk3
+dev-lang/python-exec -python_targets_python3_6
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
@@ -56,11 +100,6 @@ app-emulation/vice ffmpeg
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
-
-# Matthias Maier <tamiko@gentoo.org> (13 Mar 2015)
-# Masking glusterfs for the time being, see entry for app-emulation/qemu of
-# 12 Sep 2013: Waiting on glusterfs maintainers in bug #484016
-app-emulation/libvirt glusterfs
 
 # Pacho Ramos <pacho@gentoo.org>
 # sci-visualization/paraview is not ready for stabilization yet
@@ -103,10 +142,6 @@ app-crypt/tpm-tools pkcs11
 # Not yet stabilized dependencies blocking sec bug 514886
 app-office/libreoffice firebird
 
-# Agostino Sarubbo <ago@gentoo.org> (31 Aug 2013)
-# Clang is not stable
-app-portage/eix clang
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
 # sys-cluster/cman is still in ~arch.
 sys-cluster/pacemaker cman
@@ -134,9 +169,3 @@ media-gfx/imagemagick opencl
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
 # No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
 >=kde-apps/kalzium-4.10.0 editor
-
-# Chris Reffett <creffett@gentoo.org> (23 Nov 2012)
-# CMake's PHP module can't find our install location, so
-# libkolab(xml) fails with the php flag enabled, bug #430858.
-net-libs/libkolab php
-net-libs/libkolabxml php

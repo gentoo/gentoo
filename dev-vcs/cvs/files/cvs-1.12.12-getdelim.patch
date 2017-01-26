@@ -8,8 +8,8 @@ http://bugs.gentoo.org/314791
 Already comitted upstream:
 http://cvs.savannah.gnu.org/viewvc/ccvs/src/myndbm.c?root=cvs&r1=1.38&r2=1.39
 
---- src/myndbm.c.orig
-+++ src/myndbm.c
+--- a/src/myndbm.c.orig
++++ b/src/myndbm.c
 @@ -213,7 +213,7 @@
  mydbm_load_file (FILE *fp, List *list, char *filename)
  {

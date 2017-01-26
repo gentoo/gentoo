@@ -6,13 +6,16 @@ EAPI=6
 inherit eutils flag-o-matic git-r3 toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-HOMEPAGE="http://www.tcpdump.org/"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	${EGIT_REPO_URI}
+"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="+drop-root libressl smi ssl samba suid test"
+KEYWORDS=""
 
 RDEPEND="
 	drop-root? ( sys-libs/libcap-ng )

@@ -1,0 +1,25 @@
+Useful documentation for running the GIMPS daemon can be found at:
+http://www.mersenne.org/gettingstarted/
+http://www.mersenneforum.org/forumdisplay.php?f=10
+
+To run the GIMPS daemon as an unprivileged user some steps are required.
+
+1. Before starting the GIMPS service run (as root) the following command:
+  # /opt/gimps/mprime -m -w/var/lib/gimps
+2. Answer 'Y' to the "Join Gimps?" question
+3. Accept default values for the following question (or tweak them as you
+deem necessary)
+4. Stop the running tests with ^C
+5. Exit the client, pressing '5'
+6. Change the owner and group of all the files in /var/lib/gimps to
+nobody:nobody:
+  # chown nobody:nobody /var/lib/gimps/*
+
+Then you can use `/etc/init.d/gimps start` to start a GIMPS client in the
+background at boot. Have a look at /etc/conf.d/gimps and check some
+configuration options.
+
+If you don't want to use the init script to start gimps, remember to
+pass it an additional command line parameter specifying where the data
+files are to be stored, e.g.:
+# /opt/gimps/mprime -w/var/lib/gimps"

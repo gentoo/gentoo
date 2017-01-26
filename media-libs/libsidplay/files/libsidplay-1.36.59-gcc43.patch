@@ -1,5 +1,5 @@
---- src/sidtune.cpp
-+++ src/sidtune.cpp
+--- a/src/sidtune.cpp
++++ b/src/sidtune.cpp
 @@ -306,11 +306,7 @@ udword sidTune::loadFile(const char* fileName, ubyte** bufferRef)
          return 0;
      }

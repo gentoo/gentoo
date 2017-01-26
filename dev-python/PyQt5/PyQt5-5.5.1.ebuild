@@ -1,16 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit eutils multibuild multilib python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
-HOMEPAGE="http://www.riverbankcomputing.com/software/pyqt/intro
-	https://pypi.python.org/pypi/PyQt5"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro"
 
 MY_PN="PyQt-gpl"
 if [[ ${PV} == *_pre* ]]; then

@@ -5,7 +5,7 @@
 EAPI="5"
 
 MY_P="${P/_/-}"
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 DISTUTILS_OPTIONAL=1
 
 inherit autotools bash-completion-r1 distutils-r1 eutils linux-info versionator flag-o-matic systemd

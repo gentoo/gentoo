@@ -1,0 +1,26 @@
+From 18dd0598b29d2158529466f1e7097bf894e584dc Mon Sep 17 00:00:00 2001
+From: Andrey Volkov <volkov.am@ekb-info.ru>
+Date: Fri, 15 Jul 2016 13:23:56 +0500
+Subject: Fix missing interface types
+
+(cherry picked from commit c8fe42141c95f5446dabf5c0b1f049151e51c2ad)
+---
+ net/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/net/Makefile b/net/Makefile
+index a03c171..ce73c1e 100644
+--- a/net/Makefile
++++ b/net/Makefile
+@@ -13,7 +13,7 @@ SRCS-Linux=	iwconfig.sh.in udhcpc.sh.in
+ INC-Linux=	adsl.sh apipa.sh arping.sh bonding.sh br2684ctl.sh bridge.sh \
+ 		ccwgroup.sh clip.sh ethtool.sh iproute2.sh ifplugd.sh ip6to4.sh \
+ 		ipppd.sh iwconfig.sh netplugd.sh pppd.sh pump.sh tuntap.sh udhcpc.sh \
+-		vlan.sh macvlan.sh ip6rd.sh firewalld.sh
++		vlan.sh macvlan.sh ip6rd.sh firewalld.sh dummy.sh hsr.sh l2tp.sh
+ 
+ SRCS-NetBSD= ifwatchd.sh.in
+ INC-NetBSD=	ifwatchd.sh
+-- 
+cgit v0.12
+

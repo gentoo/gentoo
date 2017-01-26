@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ LICENSE="GPL-2
 	openclipart? ( CC0-1.0 )
 	texturemate? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="libav openclipart texturemate"
 
 RDEPEND="
@@ -39,7 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( authors.txt )
-PATCHES=( "${FILESDIR}"/${P}-{ffmpeg-2.4,libav10}.patch )
+PATCHES=( "${FILESDIR}"/${P}-{ffmpeg-2.4,libav10,ffmpeg-3.0}.patch )
 
 S="${WORKDIR}/ffDiaporama"
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+     This package contains the Python bindings to libgpuarray which
+     are build in the top of NumPy.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Theano/libgpuarray</remote-id>
+  </upstream>
+  <use>
+    <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
+    <flag name="opencl">Enable OpenCL support</flag>
+  </use>
+</pkgmetadata>

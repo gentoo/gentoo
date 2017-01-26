@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bugs@bergstroem.nu</email>
-    <name>Johan Bergström</name>
-    <description>Proxy-Maintainer, assign bugs</description>
-  </maintainer>
-  <maintainer type="person">
     <email>ultrabug@gentoo.org</email>
   </maintainer>
   <maintainer type="person">
@@ -23,5 +18,6 @@
     <flag name="tcmalloc">
       Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
     </flag>
+    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
   </use>
 </pkgmetadata>

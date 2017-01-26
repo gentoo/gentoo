@@ -1,0 +1,22 @@
+From 916e2cc2d326575894c651947035afe06a6d936f Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Wed, 30 Nov 2016 10:53:58 -0700
+Subject: [PATCH] wrap.py: is not python3 compliant
+
+---
+ src/services/mpiwrap/wrap.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/services/mpiwrap/wrap.py b/src/services/mpiwrap/wrap.py
+index 7a3122f..86bb2f3 100755
+--- a/src/services/mpiwrap/wrap.py
++++ b/src/services/mpiwrap/wrap.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #################################################################################################
+ # Copyright (c) 2010, Lawrence Livermore National Security, LLC.
+ # Produced at the Lawrence Livermore National Laboratory
+-- 
+2.7.3
+

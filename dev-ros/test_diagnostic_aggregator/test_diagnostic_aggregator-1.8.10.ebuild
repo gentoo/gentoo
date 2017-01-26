@@ -23,3 +23,4 @@ RDEPEND="
 	dev-ros/rostest
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/gcc6.patch" )

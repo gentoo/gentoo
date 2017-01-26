@@ -1,0 +1,49 @@
+fix from upstream
+
+From 43b631223b2d0425a0970876974074934f89c450 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 22 Sep 2016 23:59:02 -0400
+Subject: [PATCH] add a flag to disable static libs
+
+---
+ lib/Makefile | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/Makefile b/lib/Makefile
+index b5352a0cb372..27b35c41b693 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -40,6 +40,8 @@
+ LIBVER_PATCH=`sed -n '/define LZ4_VERSION_RELEASE/s/.*[[:blank:]]\([0-9][0-9]*\).*/\1/p' < lz4.h`
+ LIBVER=$(LIBVER_MAJOR).$(LIBVER_MINOR).$(LIBVER_PATCH)
+ 
++BUILD_STATIC:= yes
++
+ DESTDIR?=
+ PREFIX ?= /usr/local
+ CFLAGS ?= -O3
+@@ -71,9 +72,11 @@
+ all: liblz4
+ 
+ liblz4: lz4.c lz4hc.c lz4frame.c xxhash.c
++ifeq ($(BUILD_STATIC),yes)
+ 	@echo compiling static library
+ 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $^
+ 	@$(AR) rcs liblz4.a lz4.o lz4hc.o lz4frame.o xxhash.o
++endif
+ 	@echo compiling dynamic library $(LIBVER)
+ 	@$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared $^ -fPIC $(SONAME_FLAGS) -o $@.$(SHARED_EXT_VER)
+ 	@echo creating versioned links
+@@ -104,7 +107,9 @@
+ 	@cp -a liblz4.$(SHARED_EXT_MAJOR) $(DESTDIR)$(LIBDIR)
+ 	@cp -a liblz4.$(SHARED_EXT) $(DESTDIR)$(LIBDIR)
+ 	@cp -a liblz4.pc $(DESTDIR)$(LIBDIR)/pkgconfig/
++ifeq ($(BUILD_STATIC),yes)
+ 	@install -m 644 liblz4.a $(DESTDIR)$(LIBDIR)/liblz4.a
++endif
+ 	@install -m 644 lz4.h $(DESTDIR)$(INCLUDEDIR)/lz4.h
+ 	@install -m 644 lz4hc.h $(DESTDIR)$(INCLUDEDIR)/lz4hc.h
+ 	@install -m 644 lz4frame.h $(DESTDIR)$(INCLUDEDIR)/lz4frame.h
+-- 
+2.9.0
+

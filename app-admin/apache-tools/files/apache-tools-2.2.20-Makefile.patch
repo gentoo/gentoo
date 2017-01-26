@@ -1,6 +1,6 @@
 === modified file 'support/Makefile.in'
---- support/Makefile.in	2011-09-01 06:33:22 +0000
-+++ support/Makefile.in	2011-09-01 06:43:51 +0000
+--- a/support/Makefile.in
++++ b/support/Makefile.in
 @@ -1,9 +1,10 @@
  DISTCLEAN_TARGETS = apxs apachectl dbmmanage log_server_status \
 -	logresolve.pl phf_abuse_log.cgi split-logfile envvars-std

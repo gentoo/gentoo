@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A re-usable XPath engine for DOM-like trees"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND=""

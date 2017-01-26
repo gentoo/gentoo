@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-CMAKE_MIN_VERSION=3.4.3
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib python-any-r1
@@ -18,7 +17,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libunwind +static-libs test"
+IUSE="elibc_musl libunwind +static-libs test"
 
 RDEPEND="
 	libunwind? (
@@ -78,6 +77,9 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
 		)
+	fi
+	if use elibc_musl; then
+		local -x CPPFLAGS="${CPPFLAGS} -D_LIBCPP_HAS_MUSL_LIBC=1"
 	fi
 	cmake-utils_src_configure
 }

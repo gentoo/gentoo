@@ -15,7 +15,7 @@ DEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${PN}-2.03-signed-char-fixup.patch
+	epatch "${FILESDIR}"/${PN}-2.03-signed-char-fixup.patch
 }
 
 src_compile() {

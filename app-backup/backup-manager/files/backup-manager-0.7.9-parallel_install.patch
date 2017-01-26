@@ -1,5 +1,5 @@
---- Makefile.orig	2010-09-14 17:24:31.267313414 +0200
-+++ Makefile	2010-09-14 17:24:36.395250687 +0200
+--- backup-manager-0.7.9/Makefile.orig	2010-09-14 17:24:31.267313414 +0200
++++ backup-manager-0.7.9/Makefile	2010-09-14 17:24:36.395250687 +0200
 @@ -62,7 +62,7 @@
  
  # Main build rule (we don't buid the docs as we don't know if debiandocs can be

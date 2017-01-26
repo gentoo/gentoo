@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit ruby-fakegem
@@ -15,6 +15,8 @@ LICENSE="MIT"
 SLOT="1"
 KEYWORDS="~amd64"
 IUSE=""
+
+RUBY_PATCHES=( ${PN}-accept-encoding.patch )
 
 ruby_add_bdepend "
 	dev-ruby/hoe

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 MY_PN="Whoosh"
 
@@ -20,7 +20,7 @@ DEPEND="app-arch/unzip
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="doc test"
 
 S="${WORKDIR}/${MY_PN}-${PV}"

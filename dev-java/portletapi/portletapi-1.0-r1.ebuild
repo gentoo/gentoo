@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="

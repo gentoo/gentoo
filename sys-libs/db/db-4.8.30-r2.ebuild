@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ fi
 
 S="${WORKDIR}/${MY_P}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
-HOMEPAGE="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
+HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
 SRC_URI="http://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
 for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 	export SRC_URI="${SRC_URI} http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
@@ -28,7 +28,7 @@ done
 
 LICENSE="Sleepycat"
 SLOT="4.8"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -118,7 +118,7 @@ multilib_src_configure() {
 	if use tcl || use test ; then
 		myconf+=(
 			--enable-tcl
-			--with-tcl=/usr/$(get_libdir)
+			--with-tcl="${EPREFIX}/usr/$(get_libdir)"
 		)
 	else
 		myconf+=(--disable-tcl )

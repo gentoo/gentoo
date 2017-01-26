@@ -16,7 +16,7 @@ index 2c7081f..37d83b5 100644
      } else if (amount >= 1.0) {
          return *col;
 -    } else if (isnan(amount)) {
-+    } else if (isnan(amount)) {
++    } else if (std::isnan(amount)) {
          return *base;
      }
      const QtcColor qtc_base = {base->redF(), base->greenF(), base->blueF()};
@@ -25,7 +25,7 @@ index 2c7081f..37d83b5 100644
      } else if (bias >= 1.0) {
          return *c2;
 -    } else if (isnan(bias)) {
-+    } else if (isnan(bias)) {
++    } else if (std::isnan(bias)) {
          return *c1;
      }
      const QtcColor qtc_c1 = {c1->redF(), c1->greenF(), c1->blueF()};

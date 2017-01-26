@@ -3,8 +3,8 @@ Date: Thu May  3 20:06:31 UTC 2012
 
 fix compilation for cg useflag
 
---- cmake/FindCg.cmake
-+++ cmake/FindCg.cmake
+--- a/cmake/FindCg.cmake
++++ b/cmake/FindCg.cmake
 @@ -86,6 +86,7 @@
      FIND_PROGRAM( CG_COMPILER cgc
        /usr/bin

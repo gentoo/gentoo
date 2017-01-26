@@ -1,0 +1,58 @@
+From c443b67561891ae68d688daf5f8ce37820cdba2b Mon Sep 17 00:00:00 2001
+From: Jason Evans <jasone@canonware.com>
+Date: Sat, 29 Oct 2016 22:41:04 -0700
+Subject: [PATCH] Use syscall(2) rather than {open,read,close}(2) during boot.
+
+Some applications wrap various system calls, and if they call the
+allocator in their wrappers, unexpected reentry can result.  This is not
+a general solution (many other syscalls are spread throughout the code),
+but this resolves a bootstrapping issue that is apparently common.
+
+This resolves #443.
+---
+ src/pages.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/src/pages.c b/src/pages.c
+index 05b0d69..84e2216 100644
+--- a/src/pages.c
++++ b/src/pages.c
+@@ -207,6 +207,11 @@ os_overcommits_sysctl(void)
+ #endif
+ 
+ #ifdef JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY
++/*
++ * Use syscall(2) rather than {open,read,close}(2) when possible to avoid
++ * reentry during bootstrapping if another library has interposed system call
++ * wrappers.
++ */
+ static bool
+ os_overcommits_proc(void)
+ {
+@@ -214,12 +219,26 @@ os_overcommits_proc(void)
+ 	char buf[1];
+ 	ssize_t nread;
+ 
++#ifdef SYS_open
++	fd = (int)syscall(SYS_open, "/proc/sys/vm/overcommit_memory", O_RDONLY);
++#else
+ 	fd = open("/proc/sys/vm/overcommit_memory", O_RDONLY);
++#endif
+ 	if (fd == -1)
+ 		return (false); /* Error. */
+ 
++#ifdef SYS_read
++	nread = (ssize_t)syscall(SYS_read, fd, &buf, sizeof(buf));
++#else
+ 	nread = read(fd, &buf, sizeof(buf));
++#endif
++
++#ifdef SYS_close
++	syscall(SYS_close, fd);
++#else
+ 	close(fd);
++#endif
++
+ 	if (nread < 1)
+ 		return (false); /* Error. */
+ 	/*

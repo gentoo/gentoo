@@ -1,0 +1,27 @@
+From 1d6dbb41b26a39121ec8c4f19f5da78bb0ab4af7 Mon Sep 17 00:00:00 2001
+From: Jeff Reback <jeff@reback.net>
+Date: Sat, 12 Nov 2016 12:44:06 -0500
+Subject: [PATCH] TST: skip test_gbq.test_upload_data_if_table_exists_replace
+ for now
+
+---
+ pandas/io/tests/test_gbq.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pandas/io/tests/test_gbq.py b/pandas/io/tests/test_gbq.py
+index cca1580b8..f6ff35a6d 100644
+--- a/pandas/io/tests/test_gbq.py
++++ b/pandas/io/tests/test_gbq.py
+@@ -824,6 +824,9 @@ class TestToGBQIntegration(tm.TestCase):
+                        private_key=_get_private_key_path())
+ 
+     def test_upload_data_if_table_exists_replace(self):
++
++        raise nose.SkipTest("buggy test")
++
+         destination_table = DESTINATION_TABLE + "4"
+ 
+         test_size = 10
+-- 
+2.11.0
+

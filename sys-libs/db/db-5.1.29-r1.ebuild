@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ fi
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
-HOMEPAGE="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
+HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
 SRC_URI="http://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
 for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
 	export SRC_URI="${SRC_URI} http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
@@ -125,7 +125,7 @@ src_configure() {
 	# Bug #270851: test needs TCL support
 	if use tcl || use test ; then
 		myconf="${myconf} --enable-tcl"
-		myconf="${myconf} --with-tcl=/usr/$(get_libdir)"
+		myconf="${myconf} --with-tcl=${EPREFIX}/usr/$(get_libdir)"
 	else
 		myconf="${myconf} --disable-tcl"
 	fi

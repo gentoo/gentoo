@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=dev-util/intltool-0.40
 "
-PDEPEND="x11-themes/gnome-icon-theme"
+PDEPEND="x11-themes/adwaita-icon-theme"
 
 src_prepare() {
 	if ! use test; then

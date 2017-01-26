@@ -1,0 +1,21 @@
+Index: python-dsv-1.4.1/DSV/DSV.py
+===================================================================
+--- python-dsv-1.4.1.orig/DSV/DSV.py	2010-01-26 20:35:23.000000000 -0500
++++ python-dsv-1.4.1/DSV/DSV.py	2010-01-26 20:35:23.000000000 -0500
+@@ -486,8 +486,14 @@
+       list of lists of data
+     """
+     if type(input) != type([]):
+-        raise InvalidData, "expected list of lists of strings"  
+-    if type(delimiter) != type('') or not delimiter:
++        raise InvalidData, "expected list of lists of strings"
++    # Try to convert Unicode delimiters back to ASCII (wxPython can be
++    # overenthusiastic), but ultimately support either.
++    try:
++        delimiter = delimiter.encode()
++    except:
++        pass
++    if (type(delimiter) != str and type(delimiter) != unicode) or not delimiter:
+         raise InvalidDelimiter, `delimiter`
+ 
+ ##    if textQualifier:

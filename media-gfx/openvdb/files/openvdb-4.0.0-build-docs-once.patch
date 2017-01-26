@@ -1,0 +1,32 @@
+From 5bb7bc424b09f93417a1d447f2d4f3081394f964 Mon Sep 17 00:00:00 2001
+From: Nicholas Yue <yue.nicholas@gmail.com>
+Date: Thu, 17 Nov 2016 16:59:47 -0800
+Subject: [PATCH] Refine Doxygen run so that it is done only once and only
+ during the installation phase
+
+---
+ openvdb/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
+index aa1a080..88e46ca 100644
+--- a/openvdb/CMakeLists.txt
++++ b/openvdb/CMakeLists.txt
+@@ -443,13 +443,15 @@ IF (OPENVDB_BUILD_DOCS)
+   FILE ( WRITE ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config ${DOXYGEN_CONFIG_CONTENT} )
+   FILE ( APPEND ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config "OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/doc\n" )
+   
+-  ADD_CUSTOM_TARGET ( doc ALL
++  ADD_CUSTOM_TARGET ( doc
+     ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/cmake-doxygen-config
+     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+     COMMENT "Generating API documentation with Doxygen" VERBATIM
+     )
+   
+-  INSTALL ( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc/html/ DESTINATION doc)
++  INSTALL ( CODE "EXECUTE_PROCESS(COMMAND \"${CMAKE_COMMAND}\" --build  \"${PROJECT_BINARY_DIR}\" --target doc)")
++  INSTALL ( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc/html DESTINATION docs)
++
+ ENDIF ()
+ 
+ # Installation

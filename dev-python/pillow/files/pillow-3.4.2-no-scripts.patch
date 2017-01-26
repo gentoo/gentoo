@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 5257e748..410ce788 100644
+--- a/setup.py
++++ b/setup.py
+@@ -746,7 +746,6 @@ setup(name=NAME,
+       ext_modules=[Extension("PIL._imaging", ["_imaging.c"])],
+       include_package_data=True,
+       packages=find_packages(),
+-      scripts=glob.glob("Scripts/*.py"),
+       test_suite='nose.collector',
+       keywords=["Imaging", ],
+       license='Standard PIL License',

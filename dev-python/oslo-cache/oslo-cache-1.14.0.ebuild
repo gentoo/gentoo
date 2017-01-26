@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="

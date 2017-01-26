@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,13 +25,13 @@ IUSE_INPUT_DEVICES=" dynapro elo2300 evdev joystick keyboard lirc mouse mutouch 
 IUD=${IUSE_INPUT_DEVICES// / input_devices_}
 
 DESCRIPTION="Thin library on top of the Linux framebuffer devices"
-HOMEPAGE="http://www.directfb.org/"
-SRC_URI="http://directfb.org/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
-	http://directfb.org/downloads/Old/${P}.tar.gz"
+HOMEPAGE="http://www.directfb.net/"
+SRC_URI="http://directfb.net/downloads/Core/${PN}-${PV:0:3}/${P}.tar.gz
+	http://directfb.net/downloads/Old/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 -mips ~ppc ~ppc64 ~sh -sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 -mips ppc ppc64 sh -sparc x86"
 IUSE="alsa bmp cddb debug divine drmkms +dynload doc egl fbcon fusiondale fusionsound gif gles2 gstreamer imlib2 input_hub jpeg jpeg2k mad cpu_flags_x86_mmx mng mpeg2 mpeg3 multicore opengl oss png pnm sawman sdl cpu_flags_x86_sse static-libs swfdec tiff timidity tremor truetype v4l vdpau vorbis webp X xine zlib ${IUV} ${IUD}"
 REQUIRED_USE="gles2? ( opengl )"
 
@@ -46,12 +46,12 @@ RDEPEND="
 	gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 )
 	imlib2? ( media-libs/imlib2 )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper[jpeg] )
+	jpeg2k? ( media-libs/jasper:=[jpeg] )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng )
 	mpeg3? ( media-libs/libmpeg3 )
 	opengl? ( media-libs/mesa[gbm,egl?,gles2?] x11-libs/libdrm )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
 	timidity? (
@@ -77,7 +77,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.6.3-setregion.patch \
 		"${FILESDIR}"/${PN}-1.6.3-atomic-fix-compiler-error-when-building-for-thumb2.patch \
 		"${FILESDIR}"/${PN}-1.7.6-cle266.patch \
-		"${FILESDIR}"/${PN}-1.7.6-idivine.patch
+		"${FILESDIR}"/${PN}-1.7.6-idivine.patch \
+		"${FILESDIR}"/${PN}-1.7.6-tslib.patch
 	sed -i \
 		-e '/#define RASPBERRY_PI/d' \
 		systems/egl/egl_system.c || die #497124

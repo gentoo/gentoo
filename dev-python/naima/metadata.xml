@@ -13,6 +13,7 @@
     Markov Chain Monte Carlo.
   </longdescription>
   <upstream>
+    <remote-id type="github">zblz/naima</remote-id>
     <remote-id type="pypi">naima</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_P="util-linux-${MY_PV}"
 LOOPAES_PV="${PV}-20150310"
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="Various useful Linux utilities"
+DESCRIPTION="Loop-AES losetup utility"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
 	http://loop-aes.sourceforge.net/updates/util-linux-${LOOPAES_PV}.diff.bz2"

@@ -1,0 +1,39 @@
+From 8bc5cbaa977b8de962f68ef84f6c8fadcb369c85 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 13 Nov 2016 09:12:20 +1300
+Subject: [PATCH 1/2] Adjust endpoints to be more suited to gentoo users
+
+---
+ fedmsg.d/endpoints.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/fedmsg.d/endpoints.py b/fedmsg.d/endpoints.py
+index 72c182a..c4eab16 100644
+--- a/fedmsg.d/endpoints.py
++++ b/fedmsg.d/endpoints.py
+@@ -24,15 +24,15 @@ config = dict(
+     endpoints={
+         # These are here so your local box can listen to the upstream
+         # infrastructure's bus.  Cool, right?  :)
+-        "fedora-infrastructure": [
+-            "tcp://hub.fedoraproject.org:9940",
+-            #"tcp://stg.fedoraproject.org:9940",
+-        ],
++        #"fedora-infrastructure": [
++        #    "tcp://hub.fedoraproject.org:9940",
++        #    #"tcp://stg.fedoraproject.org:9940",
++        #],
+         #"debian-infrastructure": [
+         #    "tcp://fedmsg.olasd.eu:9940",
+         #],
+-        #"anitya-public-relay": [
+-        #    "tcp://release-monitoring.org:9940",
+-        #],
++        "anitya-public-relay": [
++            "tcp://release-monitoring.org:9940",
++        ],
+     },
+ )
+-- 
+2.10.2
+

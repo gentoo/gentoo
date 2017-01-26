@@ -12,5 +12,6 @@
 	<use>
 		<flag name="systemd">Enable support for systemd-logind.</flag>
 		<flag name="X">Enable X11 backend and XWayland support.</flag>
+		<flag name="xwayland">Enable XWayland support.</flag>
 	</use>
 </pkgmetadata>

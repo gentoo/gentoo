@@ -46,7 +46,6 @@ src_install() {
 	oasis_src_install
 	if use emacs; then
 		elisp-install "${PN}" src/top/*.el src/top/*.elc || die
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
 }
 

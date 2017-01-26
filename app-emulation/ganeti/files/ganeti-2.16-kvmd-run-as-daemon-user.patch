@@ -1,0 +1,30 @@
+--- ganeti-2.16.0~rc1.orig/Makefile.am	2017-01-05 10:09:56.568213273 -0800
++++ ganeti-2.16.0~rc1/Makefile.am	2017-01-05 10:10:51.260260697 -0800
+@@ -2477,6 +2477,7 @@
+ 	  echo 's#@''PKGLIBDIR@#$(libdir)/ganeti#g'; \
+ 	  echo 's#@''GNTMASTERUSER@#$(MASTERD_USER)#g'; \
+ 	  echo 's#@''GNTRAPIUSER@#$(RAPI_USER)#g'; \
++	  echo 's#@''GNTKVMDUSER@#$(KVMD_USER)#g'; \
+ 	  echo 's#@''GNTCONFDUSER@#$(CONFD_USER)#g'; \
+ 	  echo 's#@''GNTWCONFDUSER@#$(WCONFD_USER)#g'; \
+ 	  echo 's#@''GNTLUXIDUSER@#$(LUXID_USER)#g'; \
+@@ -2484,6 +2485,7 @@
+ 	  echo 's#@''GNTMONDUSER@#$(MOND_USER)#g'; \
+ 	  echo 's#@''GNTMETADUSER@#$(METAD_USER)#g'; \
+ 	  echo 's#@''GNTRAPIGROUP@#$(RAPI_GROUP)#g'; \
++	  echo 's#@''GNTKVMDGROUP@#$(KVMD_GROUP)#g'; \
+ 	  echo 's#@''GNTADMINGROUP@#$(ADMIN_GROUP)#g'; \
+ 	  echo 's#@''GNTCONFDGROUP@#$(CONFD_GROUP)#g'; \
+ 	  echo 's#@''GNTNODEDGROUP@#$(NODED_GROUP)#g'; \
+--- ganeti-2.16.0~rc1.orig/daemons/daemon-util.in	2017-01-05 10:09:56.450211013 -0800
++++ ganeti-2.16.0~rc1/daemons/daemon-util.in	2017-01-05 10:11:17.804769059 -0800
+@@ -103,6 +103,9 @@
+     rapi)
+       echo "@GNTRAPIUSER@:@GNTRAPIGROUP@"
+       ;;
++    kvmd)
++      echo "@GNTKVMDUSER@:@GNTKVMDGROUP@"
++	;;
+     noded)
+       echo "@GNTNODEDUSER@:@GNTNODEDGROUP@"
+       ;;

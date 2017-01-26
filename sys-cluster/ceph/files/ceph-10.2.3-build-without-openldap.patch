@@ -1,0 +1,32 @@
+diff --git a/src/rgw/librgw.cc b/src/rgw/librgw.cc
+index c476129..cad54b8 100644
+--- a/src/rgw/librgw.cc
++++ b/src/rgw/librgw.cc
+@@ -470,7 +470,11 @@ namespace rgw {
+     const string& ldap_searchdn = store->ctx()->_conf->rgw_ldap_searchdn;
+     const string& ldap_dnattr =
+       store->ctx()->_conf->rgw_ldap_dnattr;
++#ifdef HAVE_OPENLDAP
+     std::string ldap_bindpw = parse_rgw_ldap_bindpw(store->ctx());
++#else
++    std::string ldap_bindpw;
++#endif /* HAVE_OPENLDAP */
+ 
+     ldh = new rgw::LDAPHelper(ldap_uri, ldap_binddn, ldap_bindpw.c_str(),
+ 			      ldap_searchdn, ldap_dnattr);
+diff --git a/src/rgw/rgw_rest_s3.cc b/src/rgw/rgw_rest_s3.cc
+index e9f24f3..7291e69 100644
+--- a/src/rgw/rgw_rest_s3.cc
++++ b/src/rgw/rgw_rest_s3.cc
+@@ -3091,7 +3091,11 @@ void RGW_Auth_S3::init_impl(RGWRados* store)
+   const string& ldap_searchdn = store->ctx()->_conf->rgw_ldap_searchdn;
+   const string& ldap_dnattr =
+     store->ctx()->_conf->rgw_ldap_dnattr;
++#ifdef HAVE_OPENLDAP
+   std::string ldap_bindpw = parse_rgw_ldap_bindpw(store->ctx());
++#else
++  std::string ldap_bindpw;
++#endif /* HAVE_OPENLDAP */
+ 
+   ldh = new rgw::LDAPHelper(ldap_uri, ldap_binddn, ldap_bindpw,
+ 			    ldap_searchdn, ldap_dnattr);

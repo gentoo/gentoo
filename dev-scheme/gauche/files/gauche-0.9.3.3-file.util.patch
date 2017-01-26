@@ -1,0 +1,21 @@
+commit 15fb279dccb83d66d7e866a0e6f4e3f9ff64fd8d
+Author: Shiro Kawai <shiro@acm.org>
+Date:   Thu Nov 29 23:17:55 2012 -1000
+
+    Fix file.util test
+
+    The current test may fail when a size of a directory happens to
+    100.  Patch from NIIBE Yutaka.
+
+--- a/ext/file/test.scm
++++ b/ext/file/test.scm
+@@ -290,7 +290,8 @@
+          (reverse
+           (directory-fold "test.out"
+                           (^[path result]
+-                            (if (= (file-size path) 100)
++                            (if (and (file-is-regular? path)
++				     (= (file-size path) 100))
+                                 (cons path result)
+                                 result))
+                           '()

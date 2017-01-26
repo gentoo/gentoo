@@ -10,9 +10,9 @@ DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for 
 HOMEPAGE="https://fedorahosted.org/elfutils/"
 SRC_URI="https://fedorahosted.org/releases/e/l/${PN}/${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-2-with-exceptions"
+LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="bzip2 lzma nls static-libs test +threads +utils"
 
 # This pkg does not actually seem to compile currently in a uClibc
@@ -26,9 +26,7 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r11
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
-# We need to require a newer glibc for its elf.h defs. #571814
 DEPEND="${RDEPEND}
-	!<sys-libs/glibc-2.22
 	nls? ( sys-devel/gettext )
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"

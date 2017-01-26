@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ PYTHON_REQ_USE="sqlite"
 inherit distutils-r1
 
 DESCRIPTION="Simple SQLite-based object store"
-HOMEPAGE="http://thp.io/2010/minidb/"
+HOMEPAGE="https://thp.io/2010/minidb/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"

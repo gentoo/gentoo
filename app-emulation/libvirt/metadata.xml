@@ -63,6 +63,10 @@
 		Builds the libvirtd daemon as well as the client utilities instead of just the client
 		utilities
 	</flag>
+	<flag name="libssh">
+		Use <pkg>net-libs/libssh</pkg> to communicate with remote libvirtd hosts,
+		for example: qemu+libssh://server/system
+	</flag>
 	<flag name="pcap">
 		Support auto learning IP addreses for routing
 	</flag>
@@ -90,6 +94,9 @@
 	</flag>
 	<flag name="glusterfs">
 		Enable GlusterFS support via <pkg>sys-cluster/glusterfs</pkg>
+	</flag>
+	<flag name="zfs">
+		Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
 	</flag>
 </use>
 </pkgmetadata>

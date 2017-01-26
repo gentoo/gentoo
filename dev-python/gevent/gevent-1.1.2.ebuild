@@ -7,7 +7,7 @@ EAPI=6
 # Note: pypy3 not supported
 # Note: py3.5 preliminary support
 # http://www.gevent.org/whatsnew_1_1.html#broader-platform-support
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 flag-o-matic

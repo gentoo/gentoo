@@ -1,0 +1,12 @@
+diff -up ./configure.in.orig ./configure.in
+--- ./configure.in.orig	2014-05-04 11:07:55.308844477 +0300
++++ ./configure.in	2014-05-04 11:08:26.884571685 +0300
+@@ -64,7 +64,7 @@ PKG_CHECK_MODULES(LIBGNOMEPRINTUI, [
+ 	gtk+-2.0	   >= 2.6.0
+ 	libgnomeprint-2.2  >= 2.12.1
+ 	libgnomecanvas-2.0 >= 1.117.0
+-	gnome-icon-theme   >= 1.1.92
++	adwaita-icon-theme >= 1.1.92
+ ])
+ AC_SUBST(LIBGNOMEPRINTUI_CFLAGS)
+ AC_SUBST(LIBGNOMEPRINTUI_LIBS)

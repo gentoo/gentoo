@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils cmake-utils gnome2-utils git-r3 games
+EAPI=6
+inherit eutils cmake-utils gnome2-utils git-r3
 
 DESCRIPTION="An open-source reimplementation of the popular UFO: Enemy Unknown"
 HOMEPAGE="http://openxcom.org/"
@@ -32,10 +32,6 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
-		"-DCMAKE_INSTALL_DATADIR=${GAMES_DATADIR}"
-	)
 	cmake-utils_src_configure
 }
 
@@ -47,36 +43,32 @@ src_compile() {
 src_install() {
 	DOCS="README.md" \
 		cmake-utils_src_install
-	use doc && dohtml -r "${CMAKE_BUILD_DIR}"/docs/html/*
+	use doc && dodoc -r "${CMAKE_BUILD_DIR}"/docs/html/*
 	doicon -s scalable res/linux/icons/openxcom.svg
 	newicon -s 48 res/linux/icons/openxcom_48x48.png openxcom.png
 	newicon -s 128 res/linux/icons/openxcom_128x128.png openxcom.png
 	domenu res/linux/openxcom.desktop
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 	echo
 	elog "In order to play you need copy GEODATA, GEOGRAPH, MAPS, ROUTES, SOUND,"
 	elog "TERRAIN, UFOGRAPH, UFOINTRO, UNITS folders from original X-COM game to"
-	elog "${GAMES_DATADIR}/${PN}/UFO"
+	elog "/usr/share/${PN}/UFO"
 	echo
 	elog "If you want to play the TFTD mod, you need to copy ANIMS, FLOP_INT,"
 	elog "GEODATA, GEOGRAPH, MAPS, ROUTES, SOUND, TERRAIN, UFOGRAPH, UNITS folders"
 	elog "from the original Terror from the Deep game to"
-	elog "${GAMES_DATADIR}/${PN}/TFTD"
+	elog "/usr/share/${PN}/TFTD"
 	echo
 	elog "If you need or want text in some language other than english, download:"
 	elog "http://openxcom.org/translations/latest.zip and uncompress it in"
-	elog "${GAMES_DATADIR}/${PN}/common/Language"
+	elog "/usr/share/${PN}/common/Language"
 }
 
 pkg_postrm() {

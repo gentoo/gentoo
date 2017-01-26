@@ -6,7 +6,7 @@ EAPI=5
 
 WX_GTK_VER="2.9"
 GITHUB_USER="wojdyr"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit autotools-utils fdo-mime python-r1 wxwidgets
 

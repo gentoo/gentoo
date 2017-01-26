@@ -1,0 +1,11 @@
+By default created symlink poins to a directory not accessible by user.
+Make a symlink the same way NixOS does symlinking.
+diff --git a/scripts/nix-profile.sh.in b/scripts/nix-profile.sh.in
+index 672d1f0..e3b0978 100644
+--- a/scripts/nix-profile.sh.in
++++ b/scripts/nix-profile.sh.in
+@@ -6,3 +6,3 @@ if [ -n "$HOME" ]; then
+         echo "creating $NIX_LINK" >&2
+-        _NIX_DEF_LINK=@localstatedir@/nix/profiles/default
++        _NIX_DEF_LINK=@localstatedir@/nix/profiles/per-user/$USER/profile
+         @coreutils@/ln -s "$_NIX_DEF_LINK" "$NIX_LINK"

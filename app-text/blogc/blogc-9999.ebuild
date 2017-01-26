@@ -24,7 +24,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="git httpd test"
+IUSE="git httpd make test"
 
 RDEPEND="
 	git? (
@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${DEPEND}
 	virtual/pkgconfig
 	test? (
+		git? ( dev-vcs/git )
 		dev-util/cmocka )"
 
 src_prepare() {
@@ -53,7 +54,9 @@ src_configure() {
 	econf \
 		$(use_enable test tests) \
 		$(use_enable git git-receiver) \
+		$(use_enable make make) \
 		$(use_enable httpd runserver) \
+		--disable-make-embedded \
 		--disable-valgrind \
 		${myconf}
 }

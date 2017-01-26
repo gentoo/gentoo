@@ -5,7 +5,11 @@
     <email>alunduil@gentoo.org</email>
     <name>Alex Brandt</name>
   </maintainer>
-  <longdescription lang="en">
+  <maintainer type="person">
+    <email>mrueg@gentoo.org</email>
+	<name>Manuel Rüger</name>
+  </maintainer>
+ <longdescription lang="en">
 	</longdescription>
   <upstream>
     <remote-id type="pypi">docker-compose</remote-id>

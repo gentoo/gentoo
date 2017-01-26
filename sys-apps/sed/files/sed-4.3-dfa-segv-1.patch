@@ -1,0 +1,175 @@
+fix from upstream gnulib (fudged to apply to sed-4.3)
+
+From 823b5cb589366f7c8742503af980803afad0978f Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Sun, 8 Jan 2017 12:44:29 -0800
+Subject: [PATCH] dfa: fix reallocation bug when matching newlines
+
+Problem reported for sed by S. Gilles (Bug#25390).
+* lib/dfa.c (realloc_trans_if_necessary): Move earlier.
+(dfastate): Reallocate before moving any newline transition ...
+(build_state): ... instead of reallocating here, where it is too late.
+---
+ ChangeLog |   8 +++++
+ lib/dfa.c | 114 ++++++++++++++++++++++++++++++--------------------------------
+ 2 files changed, 63 insertions(+), 59 deletions(-)
+
+diff --git a/lib/dfa.c b/lib/dfa.c
+index 8276db160a4b..141888a978fa 100644
+--- a/lib/dfa.c
++++ b/lib/dfa.c
+@@ -2574,6 +2574,40 @@ dfaanalyze (struct dfa *d, bool searchflag)
+   free (merged.elems);
+ }
+ 
++/* Make sure D's state arrays are large enough to hold NEW_STATE.  */
++static void
++realloc_trans_if_necessary (struct dfa *d, state_num new_state)
++{
++  state_num oldalloc = d->tralloc;
++  if (oldalloc <= new_state)
++    {
++      state_num **realtrans = d->trans ? d->trans - 2 : NULL;
++      ptrdiff_t newalloc1 = realtrans ? d->tralloc + 2 : 0;
++      realtrans = xpalloc (realtrans, &newalloc1, new_state - oldalloc + 1,
++                           -1, sizeof *realtrans);
++      realtrans[0] = realtrans[1] = NULL;
++      d->trans = realtrans + 2;
++      ptrdiff_t newalloc = d->tralloc = newalloc1 - 2;
++      d->fails = xnrealloc (d->fails, newalloc, sizeof *d->fails);
++      d->success = xnrealloc (d->success, newalloc, sizeof *d->success);
++      d->newlines = xnrealloc (d->newlines, newalloc, sizeof *d->newlines);
++      if (d->localeinfo.multibyte)
++        {
++          realtrans = d->mb_trans ? d->mb_trans - 2 : NULL;
++          realtrans = xnrealloc (realtrans, newalloc1, sizeof *realtrans);
++          if (oldalloc == 0)
++            realtrans[0] = realtrans[1] = NULL;
++          d->mb_trans = realtrans + 2;
++        }
++      for (; oldalloc < newalloc; oldalloc++)
++        {
++          d->trans[oldalloc] = NULL;
++          d->fails[oldalloc] = NULL;
++          if (d->localeinfo.multibyte)
++            d->mb_trans[oldalloc] = NULL;
++        }
++    }
++}
+ 
+ /* Return the transition out of state s of d for the input character uc,
+    updating the slots in trans accordingly.
+@@ -2810,20 +2844,25 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+     }
+ 
+   /* Set the transitions for each character in the label.  */
++  state_num maxstate = -1;
+   for (i = 0; i < NOTCHAR; i++)
+     if (tstbit (i, label))
+-      switch (d->syntax.sbit[i])
+-        {
+-        case CTX_NEWLINE:
+-          trans[i] = state_newline;
+-          break;
+-        case CTX_LETTER:
+-          trans[i] = state_letter;
+-          break;
+-        default:
+-          trans[i] = state;
+-          break;
+-        }
++      {
++        switch (d->syntax.sbit[i])
++          {
++          case CTX_NEWLINE:
++            trans[i] = state_newline;
++            break;
++          case CTX_LETTER:
++            trans[i] = state_letter;
++            break;
++          default:
++            trans[i] = state;
++            break;
++          }
++        if (maxstate < trans[i])
++          maxstate = trans[i];
++      }
+ 
+ #ifdef DEBUG
+   fprintf (stderr, "trans table %td", s);
+@@ -2840,6 +2879,9 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+   free (follows.elems);
+   free (tmp.elems);
+ 
++  /* Reallocate now, to reallocate any newline transition properly.  */
++  realloc_trans_if_necessary (d, maxstate);
++
+   /* Keep the newline transition in a special place so we can use it as
+      a sentinel.  */
+   if (tstbit (d->syntax.eolbyte, label))
+@@ -2851,42 +2893,6 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+   return trans[uc];
+ }
+ 
+-/* Make sure D's state arrays are large enough to hold NEW_STATE.  */
+-static void
+-realloc_trans_if_necessary (struct dfa *d, state_num new_state)
+-{
+-  state_num oldalloc = d->tralloc;
+-  if (oldalloc <= new_state)
+-    {
+-      state_num **realtrans = d->trans ? d->trans - 2 : NULL;
+-      ptrdiff_t newalloc, newalloc1;
+-      newalloc1 = realtrans ? d->tralloc + 2 : 0;
+-      realtrans = xpalloc (realtrans, &newalloc1, new_state - oldalloc + 1,
+-                           -1, sizeof *realtrans);
+-      realtrans[0] = realtrans[1] = NULL;
+-      d->trans = realtrans + 2;
+-      d->tralloc = newalloc = newalloc1 - 2;
+-      d->fails = xnrealloc (d->fails, newalloc, sizeof *d->fails);
+-      d->success = xnrealloc (d->success, newalloc, sizeof *d->success);
+-      d->newlines = xnrealloc (d->newlines, newalloc, sizeof *d->newlines);
+-      if (d->localeinfo.multibyte)
+-        {
+-          realtrans = d->mb_trans ? d->mb_trans - 2 : NULL;
+-          realtrans = xnrealloc (realtrans, newalloc1, sizeof *realtrans);
+-          if (oldalloc == 0)
+-            realtrans[0] = realtrans[1] = NULL;
+-          d->mb_trans = realtrans + 2;
+-        }
+-      for (; oldalloc < newalloc; oldalloc++)
+-        {
+-          d->trans[oldalloc] = NULL;
+-          d->fails[oldalloc] = NULL;
+-          if (d->localeinfo.multibyte)
+-            d->mb_trans[oldalloc] = NULL;
+-        }
+-    }
+-}
+-
+ /* Calculate the transition table for a new state derived from state s
+    for a compiled dfa d after input character uc, and return the new
+    state number.  */
+@@ -2932,18 +2939,7 @@ build_state (state_num s, struct dfa *d, unsigned char uc)
+   if (ACCEPTS_IN_CONTEXT (d->states[s].context, CTX_NONE, s, *d))
+     d->success[s] |= CTX_NONE;
+ 
+-  s = dfastate (s, d, uc, trans);
+-
+-  /* Now go through the new transition table, and make sure that the trans
+-     and fail arrays are allocated large enough to hold a pointer for the
+-     largest state mentioned in the table.  */
+-  state_num maxstate = -1;
+-  for (int i = 0; i < NOTCHAR; i++)
+-    if (maxstate < trans[i])
+-      maxstate = trans[i];
+-  realloc_trans_if_necessary (d, maxstate);
+-
+-  return s;
++  return dfastate (s, d, uc, trans);
+ }
+ 
+ /* Multibyte character handling sub-routines for dfaexec.  */
+-- 
+2.11.0
+

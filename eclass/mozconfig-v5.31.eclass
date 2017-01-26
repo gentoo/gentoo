@@ -51,7 +51,7 @@ IUSE="${IUSE} dbus debug gstreamer pulseaudio startup-notification system-cairo 
 # gtk:2 minimum is technically 2.10 but gio support (enabled by default) needs 2.14
 # media-libs/mesa needs to be 10.2 or above due to a bug with flash+vdpau
 
-RDEPEND=">=app-text/hunspell-1.2
+RDEPEND=">=app-text/hunspell-1.2:=
 	dev-libs/atk
 	dev-libs/expat
 	>=dev-libs/libevent-1.4.7

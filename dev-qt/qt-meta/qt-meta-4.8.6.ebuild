@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.qt.io/"
 LICENSE="metapackage"
 SLOT="4"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+dbus examples kde openvg +qt3support +webkit"
+IUSE="+dbus examples kde +qt3support +webkit"
 
 DEPEND=""
 RDEPEND="
@@ -29,7 +29,6 @@ RDEPEND="
 	>=dev-qt/qthelp-${PV}:4
 	>=dev-qt/qtmultimedia-${PV}:4
 	>=dev-qt/qtopengl-${PV}:4
-	openvg? ( >=dev-qt/qtopenvg-${PV}:4 )
 	kde? ( media-libs/phonon[qt4] )
 	!kde? ( || ( >=dev-qt/qtphonon-${PV}:4 media-libs/phonon[qt4] ) )
 	>=dev-qt/qtscript-${PV}:4

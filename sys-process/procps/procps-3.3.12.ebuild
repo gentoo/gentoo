@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,11 @@ inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
-SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz
-	https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> ${PN}-3.3.11-remove_Unix98_output_limits.patch"
+SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="+kill +ncurses modern-top nls selinux static-libs systemd test unicode"
 
 RDEPEND="ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
@@ -35,6 +34,10 @@ S="${WORKDIR}/${PN}-ng-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
 	"${FILESDIR}"/${PN}-3.3.11-sysctl-manpage.patch # 565304
+	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch #583036
+
+	# Upstream fixes
+	"${FILESDIR}"/${P}-strtod_nol_err.patch
 )
 
 src_prepare() {

@@ -23,8 +23,8 @@ KMEXTRA="
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	bluetooth? ( || ( net-wireless/bluedevil kde-plasma/bluedevil ) )
-	networkmanager? ( || ( kde-misc/plasma-nm kde-misc/networkmanagement kde-plasma/plasma-nm ) )
+	bluetooth? ( || ( kde-plasma/bluedevil:4 kde-plasma/bluedevil:5 ) )
+	networkmanager? ( || ( kde-plasma/plasma-nm:4 kde-plasma/plasma-nm:5 ) )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.14.3-networkmanager-1.0.6.patch" )

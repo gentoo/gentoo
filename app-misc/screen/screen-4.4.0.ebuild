@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
@@ -64,11 +64,9 @@ src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# https://lists.gnu.org/archive/html/screen-devel/2014-04/msg00095.html
-		append-cppflags -D_XOPEN_SOURCE \
-			-D_XOPEN_SOURCE_EXTENDED=1 \
-			-D__EXTENSIONS__
-		append-libs -lsocket -lnsl
+		# enable msg_header by upping the feature standard compatible
+		# with c99 mode
+		append-cppflags -D_XOPEN_SOURCE=600
 	fi
 
 	use nethack || append-cppflags "-DNONETHACK"

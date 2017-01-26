@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
 
@@ -101,7 +101,7 @@ RDEPEND="
 	openal? ( >=media-libs/openal-1.13 )
 	pulseaudio? ( media-sound/pulseaudio )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
-	samba? ( net-fs/samba )
+	samba? ( net-fs/samba[smbclient(+)] )
 	sdl? ( media-libs/libsdl2[threads] )
 	v4l? ( media-libs/libv4l )
 	wayland? (

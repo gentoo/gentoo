@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Data for the Crystallographic Object-Oriented Toolkit"
-HOMEPAGE="http://www.biop.ox.ac.uk/coot/"
+HOMEPAGE="https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/"
 SRC_URI="https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/dependencies/reference-structures.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

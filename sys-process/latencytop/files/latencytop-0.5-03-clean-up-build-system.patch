@@ -13,8 +13,8 @@ Signed-off-by: Mike Frysinger <vapier@gentoo.org>
 
 diff --git a/src/Makefile b/src/Makefile
 index de24551..9a3cc05 100644
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -3,14 +3,22 @@ HAS_GTK_GUI = 1
  
  DESTDIR =
@@ -30,7 +30,7 @@ index de24551..9a3cc05 100644
 +override CFLAGS   += -Wno-sign-compare
 +override CPPFLAGS += `$(PKG_CONFIG) --cflags glib-2.0`
 +LDFLAGS ?= -Wl,--as-needed
-+LDADD    = `$(PKG_CONFIG) --libs glib-2.0` -lncursesw
++LDADD    = `$(PKG_CONFIG) --libs glib-2.0` `$(PKG_CONFIG) --libs ncursesw`
  
  OBJS= latencytop.o text_display.o translate.o fsync.o
  

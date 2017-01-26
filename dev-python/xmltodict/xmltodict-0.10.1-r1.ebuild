@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Makes working with XML feel like you are working with JSON"

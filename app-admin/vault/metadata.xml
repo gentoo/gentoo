@@ -5,6 +5,6 @@
     <email>zmedico@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">mitchellh/iochan</remote-id>
+    <remote-id type="github">hashicorp/vault</remote-id>
   </upstream>
 </pkgmetadata>

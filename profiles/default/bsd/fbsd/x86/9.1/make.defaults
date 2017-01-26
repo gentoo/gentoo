@@ -2,4 +2,4 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
-CHOST="i486-gentoo-freebsd9.1"
+CHOST="i686-gentoo-freebsd9.1"

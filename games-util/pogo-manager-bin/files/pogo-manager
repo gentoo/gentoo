@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Config files are written to current directory, so make a config dir and pushd there
+
+if [[ ! -z "${XDG_CONFIG_DIR}" ]] ; then
+    config_dir="${XDG_CONFIG_DIR}/pogo-manager"
+elif [[ ! -z "${HOME}" ]] ; then
+    config_dir="${HOME}/.config/pogo-manager"
+else
+    config_dir="$(mktemp -d)"
+fi
+
+echo "Using ${config_dir} for configuration files"
+mkdir -p "${config_dir}"
+pushd "${config_dir}" > /dev/null
+java -Dfile.encoding=UTF-8 -jar /opt/pogo-manager/pogo-manager.jar
+

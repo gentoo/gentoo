@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,18 +11,18 @@ depend() {
 
 start() {
 	ebegin "Starting PowerDNS Recursor"
-	/usr/sbin/pdns_recursor --daemon=yes &>/dev/null
+	/usr/sbin/pdns_recursor --daemon=yes >/dev/null 2>&1
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping PowerDNS Recursor"
-	/usr/bin/rec_control quit &>/dev/null
+	/usr/bin/rec_control quit >/dev/null 2>&1
 	eend $?
 }
 
 ping() {
 	ebegin "Pinging PowerDNS Recursor"
-	/usr/bin/rec_control ping &>/dev/null
+	/usr/bin/rec_control ping >/dev/null 2>&1
 	eend $?
 }

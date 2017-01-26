@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
-	$(add_kdebase_dep kscreensaver)
+	kde-plasma/kscreensaver:4
 	media-libs/libart_lgpl
 	virtual/glu
 	virtual/opengl

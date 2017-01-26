@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,12 +9,12 @@ inherit eutils qmake-utils systemd user readme.gentoo-r1
 MY_P="mumble-${PV/_/~}"
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
-HOMEPAGE="http://mumble.sourceforge.net/"
-SRC_URI="http://mumble.info/snapshot/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.mumble.info"
+SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ~ia64 x86"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND=">=dev-libs/openssl-1.0.0b:0=
@@ -25,7 +25,7 @@ RDEPEND=">=dev-libs/openssl-1.0.0b:0=
 	|| ( dev-qt/qtsql:4[sqlite] dev-qt/qtsql:4[mysql] )
 	dev-qt/qtxmlpatterns:4
 	dbus? ( dev-qt/qtdbus:4 )
-	ice? ( dev-libs/Ice )
+	ice? ( dev-libs/Ice:= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 
 DEPEND="${RDEPEND}
@@ -35,8 +35,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.2.4-ice-3.5.0-compat.patch
-	"${FILESDIR}"/${PN}-1.2.4-ice-3.5.1-compat.patch
+	"${FILESDIR}"/${P}-ice-3.6.3-compat.patch
 )
 
 DOC_CONTENTS="

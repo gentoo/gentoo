@@ -1062,7 +1062,7 @@ _iconins() {
 #    !!! must specify to install into /usr/share/icons/... !!!
 #    size of the icon, like 48 or 48x48
 #    supported icon sizes are:
-#    16 22 24 32 36 48 64 72 96 128 192 256 scalable
+#    16 22 24 32 36 48 64 72 96 128 192 256 512 scalable
 #  -c, --context
 #    defaults to "apps"
 #  -t, --theme
@@ -1620,8 +1620,6 @@ optfeature() {
 	fi
 }
 
-fi
-
 check_license() {
 	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
 }
@@ -1845,3 +1843,5 @@ in_iuse() {
 
 ;;
 esac
+
+fi

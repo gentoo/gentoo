@@ -11,11 +11,20 @@ inherit eutils check-reqs flag-o-matic multilib pax-utils prefix \
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
 SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.gz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-3.4.src.tar.gz
+	clang? ( http://llvm.org/releases/3.4/compiler-rt-3.4.src.tar.gz
 		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.gz )
 	https://dev.gentoo.org/~mgorny/dist/${PN}-3.4-manpages.tar.bz2"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend (disabled): ARM.
+# 3. MD5 code: public-domain.
+# 4. autoconf (not installed): some undefined M.I.T. license.
+# 5. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain"
 SLOT="0/3.4"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang +libffi"
@@ -39,7 +48,7 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 
 S=${WORKDIR}/${P}.src
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !clang !debug !multitarget -O2       400
 	# !clang !debug  multitarget -O2       550
@@ -65,8 +74,12 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_unpack() {
@@ -93,7 +106,7 @@ src_prepare() {
 
 		epatch "${FILESDIR}"/3.4.2/clang/gentoo-install.patch
 		epatch "${FILESDIR}"/3.4.2/clang/darwin_build_fix.patch
-		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.9.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 
@@ -161,7 +174,7 @@ multilib_src_configure() {
 
 	if use libffi; then
 		local CPPFLAGS=${CPPFLAGS}
-		append-cppflags "$(pkg-config --cflags libffi)"
+		append-cppflags "$($(tc-getPKG_CONFIG) --cflags libffi)"
 	fi
 
 	# llvm prefers clang over gcc, so we may need to force that

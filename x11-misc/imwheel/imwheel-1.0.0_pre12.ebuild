@@ -30,7 +30,7 @@ S=${WORKDIR}/${P/_/}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	#epatch ${FILESDIR}/${P}-gentoo.diff
+	#epatch "${FILESDIR}"/${P}-gentoo.diff
 	sed -i -e "s:/etc:${D}/etc:g" Makefile.am || die
 	sed -i -e "s:/etc:${D}/etc:g" Makefile.in || die
 }

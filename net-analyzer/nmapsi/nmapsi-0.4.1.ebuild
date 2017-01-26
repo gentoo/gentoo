@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qtwebkit:4
-	kde? ( kde-base/kdelibs:4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 "
 RDEPEND="${DEPEND}
 	>=net-analyzer/nmap-6.00

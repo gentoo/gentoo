@@ -4,7 +4,7 @@
 
 MULTILIB_ABIS="s390x"
 DEFAULT_ABI="s390x"
-ABI=${DEFAULT_ABI}
+ABI="${DEFAULT_ABI}"
 
 CHOST="s390x-ibm-linux-gnu"
 

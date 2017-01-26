@@ -1,6 +1,26 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Stable mask galera since dev-libs/asio is not stable on arm
+dev-db/mariadb galera
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# Not going to be stable for now
+dev-util/geany-plugins gtkspell
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# No stable for arm
+sys-fs/dmraid dietlibc klibc
+
+# Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
+# no stable mpi on arm yet, but maybe in the future
+<=app-crypt/johntheripper-1.7.9-r6 mpi
+<=dev-libs/boost-1.56.0-r1 mpi
+<=dev-util/valgrind-3.10.1 mpi
+<=sci-chemistry/gromacs-5.0.4 mpi
+<=sci-libs/fftw-3.3.4 mpi
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2016)
 # Missing stable
@@ -36,6 +56,7 @@ net-misc/networkmanager teamd
 # Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
 # KDE is not stable on arm
 media-video/vlc kde
+virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
 # Missing stable, bug #529462
@@ -59,9 +80,9 @@ www-client/qupzilla kde
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins devhelp markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
+media-gfx/gimp webkit
 net-libs/libproxy webkit
 >=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint

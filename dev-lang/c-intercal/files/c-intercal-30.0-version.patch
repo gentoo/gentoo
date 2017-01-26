@@ -1,0 +1,11 @@
+--- intercal-0.30-orig/configure.ac
++++ intercal-0.30/configure.ac
+@@ -14,7 +14,7 @@
+ 		  subdir-objects no-texinfo.tex -Wall -Wno-override])
+ 
+ dnl Information about this version of INTERCAL.
+-PACKAGE_VERSION=0.29
++PACKAGE_VERSION=0.30
+ 
+ dnl Checks for programs.
+ AC_PROG_YACC

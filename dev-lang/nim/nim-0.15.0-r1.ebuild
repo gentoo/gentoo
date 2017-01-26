@@ -45,7 +45,7 @@ src_test() {
 
 src_install() {
 	./koch install "${D}/usr" || die "koch install failed"
-	rm -r "${D}/usr/nim/doc"
+	rm -r "${D}/usr/nim/doc" || die "failed to remove 'doc'"
 
 	dodir /usr/bin
 	dosym ../nim/bin/nim /usr/bin/nim

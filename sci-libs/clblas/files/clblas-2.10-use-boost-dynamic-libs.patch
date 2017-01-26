@@ -1,0 +1,16 @@
+Description: use Boost shared libraries instead of static
+Author: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Forwarded: no 
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -270,7 +270,7 @@
+ 
+ # Find Boost on the system, and configure the type of boost build we want
+ set( Boost_USE_MULTITHREADED ON )
+-set( Boost_USE_STATIC_LIBS   ON )
++set( Boost_USE_STATIC_LIBS   OFF )
+ set( Boost_DETAILED_FAILURE_MSG   ON )
+ set( Boost_DEBUG ON )
+ set( Boost_ADDITIONAL_VERSIONS "1.44.0" "1.44" "1.47.0" "1.47" )

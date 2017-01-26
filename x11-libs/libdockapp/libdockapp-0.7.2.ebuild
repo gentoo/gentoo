@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,13 +6,12 @@ EAPI=5
 inherit autotools font
 
 DESCRIPTION="Window Maker Dock Applet Library"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmclock"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/libdockapp"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/3"
-KEYWORDS="alpha amd64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 # Required for font eclass
 IUSE="+X"
 REQUIRED_USE="X"

@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 RUBY_OPTIONAL=yes
 
 inherit distutils-r1 ruby-ng
@@ -91,8 +91,9 @@ each_ruby_compile() {
 	sed -i "s#-I/usr/include/lorcon2#-I${WORKDIR}/${P}/ruby-lorcon -L${WORKDIR}/${P}/.libs#" ruby-lorcon/extconf.rb
 	"${RUBY}" -C ruby-lorcon extconf.rb || die
 	sed -i 's#<lorcon2/lorcon.h>#"../lorcon.h"#' ruby-lorcon/Lorcon2.h
-	sed -i "s#-L\.#-L. -L${WORKDIR}/${P}/.libs -lorcon2 #g" ruby-lorcon/Makefile || die
-	emake -C ruby-lorcon
+	sed -i -e "s#-L\.#-L. -L${WORKDIR}/${P}/.libs -lorcon2 #g" \
+		-e "s#-Wl,--no-undefined##" ruby-lorcon/Makefile || die
+	emake V=1 -C ruby-lorcon
 }
 
 each_ruby_install() {

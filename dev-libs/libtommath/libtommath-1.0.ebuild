@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools eutils multilib toolchain-funcs
 
-DESCRIPTION="highly optimized and portable routines for integer based number theoretic applications"
+DESCRIPTION="highly optimized and portable routines for integer theoretic applications"
 HOMEPAGE="http://www.libtom.org/"
 SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}.tar.xz"
 
@@ -49,7 +49,7 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 	# We only link against -lc, so drop the .la file.
 	find "${ED}" -name '*.la' -delete
 

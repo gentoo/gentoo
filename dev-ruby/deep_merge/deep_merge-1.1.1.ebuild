@@ -20,5 +20,5 @@ KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 each_ruby_test() {
-	${RUBY} -S testrb test/test_*.rb || die
+	${RUBY} -I lib:test:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }

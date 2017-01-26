@@ -1,0 +1,22 @@
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 09 Nov 2016 15:11:52 +0000
+Subject: Sync app config in sync with applets config
+X-Git-Url: http://quickgit.kde.org/?p=plasma-workspace.git&a=commitdiff&h=329f00dc90f6645ff6e531542212ea73fb8ef274
+---
+Sync app config in sync with applets config
+---
+
+
+--- a/shell/shellcorona.cpp
++++ b/shell/shellcorona.cpp
+@@ -114,6 +114,9 @@
+     m_appConfigSyncTimer.setSingleShot(true);
+     m_appConfigSyncTimer.setInterval(s_configSyncDelay);
+     connect(&m_appConfigSyncTimer, &QTimer::timeout, this, &ShellCorona::syncAppConfig);
++    //we want our application config with screen mapping to always be in sync with the applets one, so a crash at any time will still
++    //leave containments pointing to the correct screens
++    connect(this, &Corona::configSynced, this, &ShellCorona::syncAppConfig);
+ 
+     m_waitingPanelsTimer.setSingleShot(true);
+     m_waitingPanelsTimer.setInterval(250);
+

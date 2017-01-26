@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=true
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

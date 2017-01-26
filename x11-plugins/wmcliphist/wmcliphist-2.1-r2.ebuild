@@ -6,8 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Dockable clipboard history application for Window Maker"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmcliphist"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmcliphist"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"

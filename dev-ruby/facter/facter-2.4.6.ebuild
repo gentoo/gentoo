@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -18,7 +18,7 @@ HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+dmi +pciutils +virt"
-KEYWORDS="~amd64 hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 
 CDEPEND="
 	app-emulation/virt-what

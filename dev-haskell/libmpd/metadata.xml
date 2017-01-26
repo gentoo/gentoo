@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription>
 		A client library for MPD, the Music Player Daemon
-		(&lt;http://www.musicpd.org/&gt;).
+		(&lt;https://www.musicpd.org/&gt;).
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vimus/libmpd-haskell#readme</remote-id>

@@ -4,8 +4,6 @@
 
 EAPI=5
 
-CMAKE_MIN_VERSION=3.2
-
 inherit cmake-utils multilib
 
 DESCRIPTION="High Energy Physics C++ library"

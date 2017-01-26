@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.orig.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc gtk nls xforms xplanet"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="sys-libs/ncurses:0=
 	gtk? ( x11-libs/gtk+:2 )
@@ -87,10 +87,10 @@ src_compile() {
 
 	local COMPILER="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
 	einfo "Compiling predict"
-	${COMPILER} predict.c -lm -lncurses -lpthread \
+	${COMPILER} predict.c -lm $($(tc-getPKG_CONFIG) --libs ncurses) -lpthread \
 		-o predict || die "failed predict"
 	einfo "Compiling predict-g1yyh"
-	${COMPILER} predict-g1yyh.c -lm -lncurses -lpthread -lmenu \
+	${COMPILER} predict-g1yyh.c -lm $($(tc-getPKG_CONFIG) --libs ncurses) -lpthread -lmenu \
 		-o predict-g1yyh || die "failed predict-g1yyh"
 	einfo "Compiling vocalizer"
 	${COMPILER} vocalizer/vocalizer.c \

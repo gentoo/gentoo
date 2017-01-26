@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="pango">Use <pkg>x11-libs/pango</pkg> to render text in order to support fonts which have more glyphs (e.g. Kanji). See RELEASE-NOTES for more information</flag>
+		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 	</use>
 </pkgmetadata>

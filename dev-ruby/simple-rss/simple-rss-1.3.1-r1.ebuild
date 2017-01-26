@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RUBY_FAKEGEM_EXTRADOC="README.markdown"
@@ -22,7 +22,9 @@ ruby_add_bdepend "test? ( dev-ruby/rspec )"
 
 all_ruby_prepare() {
 	# Avoid dependency on bundler
-	sed -i -e '/bundler/d' Rakefile || die
+	sed -i -e '/bundler/d' \
+		-e '/rubyforgepublisher/I s:^:#:' \
+		Rakefile || die
 
 	# https://github.com/cardmagic/simple-rss/pull/14
 	sed -i -e 's/README/README.markdown/' Rakefile || die

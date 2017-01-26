@@ -33,3 +33,8 @@ DEPEND="
 "
 
 SRC_TEST="do"
+
+src_prepare() {
+	use test && perl_rm_files t/pod.t
+	perl-module_src_test
+}

@@ -16,4 +16,7 @@
 	<upstream>
 		<remote-id type="sourceforge">dosbox</remote-id>
 	</upstream>
+	<use>
+	  <flag name="glide">Enable unofficial Glide emulation via media-libs/openglide</flag>
+	</use>
 </pkgmetadata>

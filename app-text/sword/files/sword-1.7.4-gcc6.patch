@@ -1,0 +1,22 @@
+--- sword-1.7.4/configure.ac.old	2016-09-21 18:04:55.029088352 -0400
++++ sword-1.7.4/configure.ac	2016-09-21 18:05:37.870349308 -0400
+@@ -197,7 +197,7 @@
+ fi
+ 
+ 
+-AM_CXXFLAGS="$AM_CXXFLAGS -ftemplate-depth-25"
++AM_CXXFLAGS="$AM_CXXFLAGS"
+ 
+ if test x$enable_warnings = xyes; then
+   AM_CFLAGS="$AM_CFLAGS -Werror"
+--- sword-1.7.4/configure.old	2016-09-21 18:05:05.900008373 -0400
++++ sword-1.7.4/configure	2016-09-21 18:06:03.822112657 -0400
+@@ -16793,7 +16793,7 @@
+ fi
+ 
+ 
+-AM_CXXFLAGS="$AM_CXXFLAGS -ftemplate-depth-25"
++AM_CXXFLAGS="$AM_CXXFLAGS"
+ 
+ if test x$enable_warnings = xyes; then
+   AM_CFLAGS="$AM_CFLAGS -Werror"

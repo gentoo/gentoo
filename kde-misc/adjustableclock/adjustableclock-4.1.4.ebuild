@@ -19,10 +19,10 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep libplasmaclock)
+	kde-plasma/libplasmaclock:4
 "
 RDEPEND="${DEPEND}
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 
 src_prepare() {

@@ -5,7 +5,6 @@
 EAPI=6
 
 EGIT_REPO_URI="git://git.code.sf.net/p/libwpd/libodfgen"
-inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library to generate ODF documents from libwpd and libwpg"
@@ -24,13 +23,12 @@ RDEPEND="
 	dev-libs/librevenge
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
-	eapply_user
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
@@ -38,12 +36,11 @@ src_configure() {
 	econf \
 		--disable-static \
 		--disable-werror \
-		--with-sharedptr=boost \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		--with-sharedptr=c++11 \
 		$(use_with doc docs)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

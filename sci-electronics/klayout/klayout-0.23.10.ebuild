@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20"
+USE_RUBY="ruby21"
 # note: define maximally ONE implementation here
 
 RUBY_OPTIONAL=no
@@ -20,6 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
+	dev-qt/designer:4
 	dev-qt/qtgui:4[qt3support]
 	$(ruby_implementations_depend)
 "

@@ -18,7 +18,7 @@ HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
 
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="LGPL-2.1"

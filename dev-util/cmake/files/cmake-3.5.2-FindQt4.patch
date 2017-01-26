@@ -23,7 +23,7 @@ Gentoo-bug: 547222
 -    PATH_SUFFIXES bin
 -    DOC "The qmake executable for the Qt installation to use"
 -  )
-+  if(CMAKE_BUILD_TYPE STREQUAL Gentoo)
++  if(CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
 +    find_program(QT_QMAKE_EXECUTABLE NAMES ${QMAKE_NAME}
 +      PATHS
 +        $ENV{EPREFIX}/usr/${CMAKE_INSTALL_LIBDIR}/qt4/bin

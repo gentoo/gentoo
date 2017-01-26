@@ -17,25 +17,26 @@ KEYWORDS=""
 IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
 RDEPEND="=dev-libs/wlc-9999[systemd=]
-		dev-libs/json-c
-		dev-libs/libpcre
-		dev-libs/libinput
-		x11-libs/libxkbcommon
-		dev-libs/wayland
-		x11-libs/pango
-		x11-libs/cairo
-		swaylock? ( virtual/pam )
-		gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
+	dev-libs/json-c
+	dev-libs/libpcre
+	dev-libs/libinput
+	x11-libs/libxkbcommon
+	dev-libs/wayland
+	sys-libs/libcap
+	x11-libs/pango
+	x11-libs/cairo
+	swaylock? ( virtual/pam )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-		app-text/asciidoc"
+	app-text/asciidoc"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/FLAGS.*-Werror/d' -e '/FLAGS.*-g/d' CMakeLists.txt || die
+	sed -i -e '/FLAGS.*-Werror/d' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -52,6 +53,7 @@ src_configure() {
 		-Dzsh-completions=$(usex zsh-completion)
 
 		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
+		-DLD_LIBRARY_PATH="${EPREFIX}/usr/lib"
 	)
 
 	cmake-utils_src_configure
@@ -69,4 +71,5 @@ pkg_postinst() {
 		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
 		optfeature "swaygrab video capture support" virtual/ffmpeg
 	fi
+	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
 }

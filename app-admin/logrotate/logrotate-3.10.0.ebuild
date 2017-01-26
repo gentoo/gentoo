@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz -> $
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="acl +cron selinux"
 
 CDEPEND="
@@ -36,12 +36,12 @@ install_cron_file() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/"${P}"-ignore-hidden.patch \
-	"${FILESDIR}"/"${P}"-fbsd.patch \
-	"${FILESDIR}"/"${P}"-noasprintf.patch \
-	"${FILESDIR}"/"${P}"-atomic-create.patch \
-	"${FILESDIR}"/"${P}"-Werror.patch \
-	"${FILESDIR}"/"${P}"-lfs.patch
+	"${FILESDIR}/${P}-ignore-hidden.patch"
+	"${FILESDIR}/${P}-fbsd.patch"
+	"${FILESDIR}/${P}-noasprintf.patch"
+	"${FILESDIR}/${P}-atomic-create.patch"
+	"${FILESDIR}/${P}-Werror.patch"
+	"${FILESDIR}/${P}-lfs.patch"
 )
 
 src_prepare() {

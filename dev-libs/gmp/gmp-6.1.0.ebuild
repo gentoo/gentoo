@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="+asm doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
@@ -34,6 +34,8 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/gmp.h )
 
 src_prepare() {
 	[[ -d ${FILESDIR}/${PV} ]] && EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch "${FILESDIR}"/${PV}
+	epatch "${FILESDIR}"/${PN}-6.1.0-udiv.patch
+	epatch "${FILESDIR}"/${PN}-6.1.0-tune-printf.patch
 
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
@@ -47,7 +49,8 @@ src_prepare() {
 	#!/bin/sh
 	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
-	chmod a+rx configure
+	# Patches to original configure might have lost the +x bit.
+	chmod a+rx configure{,.wrapped}
 }
 
 multilib_src_configure() {

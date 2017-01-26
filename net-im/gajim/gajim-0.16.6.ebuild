@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,14 +22,14 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
-IUSE="avahi crypt dbus gnome gnome-keyring kde idle jingle libnotify networkmanager nls spell +srv test X xhtml"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
+IUSE="crypt dbus gnome gnome-keyring kde idle jingle libnotify networkmanager nls spell +srv test X xhtml zeroconf"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	libnotify? ( dbus )
-	avahi? ( dbus )
-	gnome? ( gnome-keyring )"
+	gnome? ( gnome-keyring )
+	zeroconf? ( dbus )"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -51,7 +51,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-libs/dbus-glib
 		libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )
-		avahi? ( net-dns/avahi[dbus,gtk,python,${PYTHON_USEDEP}] )
+		zeroconf? ( net-dns/avahi[dbus,gtk,python,${PYTHON_USEDEP}] )
 		)
 	gnome? (
 		dev-python/libgnome-python[${PYTHON_USEDEP}]

@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug"
 
-RDEPEND="sys-libs/readline:0"
+RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"
 
 src_configure() {

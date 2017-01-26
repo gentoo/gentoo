@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="LeechCraft Media Player, Phonon-based audio/video player"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug +fradj +graffiti +guess +mpris +mp3tunes potorchu"
 
 # depend on gstreamer:0.10 to match current Qt deps

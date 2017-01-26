@@ -18,7 +18,7 @@ RDEPEND="!app-text/multitail"
 
 src_unpack() {
 	unpack ${A}
-	EPATCH_OPTS="-p1 -d ${P}" epatch ${FILESDIR}/qlogtools-3.1-errno.patch
+	EPATCH_OPTS="-p1 -d ${P}" epatch "${FILESDIR}"/qlogtools-3.1-errno.patch
 }
 
 src_compile() {

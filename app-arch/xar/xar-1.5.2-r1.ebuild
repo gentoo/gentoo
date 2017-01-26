@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,8 @@ EAPI=4
 inherit autotools base eutils
 
 DESCRIPTION="An easily extensible archive format"
-HOMEPAGE="https://code.google.com/p/xar"
-SRC_URI="https://xar.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/mackyle/xar"
+SRC_URI="https://github.com/mackyle/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~s390 ~sh x86 ~x86-fbsd ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cjk context detex dvi2tty extra epspdf games graphics
 humanities jadetex luatex metapost music omega pdfannotextractor png pstricks publishers
 science tex4ht texi2html truetype xetex xindy xml X"
@@ -98,7 +98,7 @@ RDEPEND="${DEPEND}
 	l10n_fa?    ( >=${TEXLIVE_CAT}/texlive-langarabic-${PV} )
 	l10n_hy?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	cjk? ( >=${TEXLIVE_CAT}/texlive-langcjk-${PV}
-		   >=dev-tex/cjk-latex-4.8.3-r1 )
+		   >=dev-tex/cjk-latex-4.8.4 )
 	l10n_hr?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_bg?    ( >=${TEXLIVE_CAT}/texlive-langcyrillic-${PV} )
 	l10n_br?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )

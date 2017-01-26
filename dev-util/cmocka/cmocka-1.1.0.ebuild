@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-multilib
 
@@ -24,11 +24,12 @@ DOCS=( AUTHORS ChangeLog README )
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with static-libs STATIC_LIB)
-		$(cmake-utils_use test UNIT_TESTING)
+		-DWITH_STATIC_LIB=$(usex static-libs)
+		-DUNIT_TESTING=$(usex test)
 		$(multilib_is_native_abi && cmake-utils_use_find_package doc Doxygen \
 			|| echo -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON)
 	)
+
 	cmake-utils_src_configure
 }
 
@@ -37,10 +38,11 @@ multilib_src_install() {
 		pushd doc || die
 		doxygen Doxyfile || die
 		rm -f html/*.md5 latex/*.md5 latex/Manifest man/man3/_* || die
-		dohtml html/*
-		dodoc latex/*
+		dodoc -r html/
+		dodoc -r latex/
 		doman man/man3/*.3
 		popd || die
 	fi
+
 	cmake-utils_src_install
 }

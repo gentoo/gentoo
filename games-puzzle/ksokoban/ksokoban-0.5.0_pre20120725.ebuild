@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://sourceforge.net/projects/ksokoban/"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="kde-base/kdelibs:4"
+DEPEND="kde-frameworks/kdelibs:4"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"

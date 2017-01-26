@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( pypy3 python{3_3,3_4} )
+PYTHON_COMPAT=( pypy3 python3_4 )
 inherit eutils python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid yearly"
 
 RDEPEND=">=sys-apps/systemd-217

@@ -1,0 +1,34 @@
+From 39cc57667a93f1cf18f935fdfda4d602667c89c8 Mon Sep 17 00:00:00 2001
+From: Bertrand Jacquin <bertrand@jacquin.bzh>
+Date: Wed, 21 Aug 2013 23:00:21 +0200
+Subject: [PATCH 2/2] MINOR: test: Remove the usage of
+ Perl::Critic::Policy::Modules::ProhibitAutomaticExportation
+
+This does not exist since
+http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-perl/Perl-Critic/metadata.xml?r1=1.3&r2=1.4
+
+See: https://bugs.gentoo.org/show_bug.cgi?id=482026
+---
+ api/perl/t/perlcriticrc | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/api/perl/t/perlcriticrc b/api/perl/t/perlcriticrc
+index f7e4721..f686dca 100644
+--- a/api/perl/t/perlcriticrc
++++ b/api/perl/t/perlcriticrc
+@@ -133,8 +133,6 @@ severity   = 3
+ [Perl::Critic::Policy::Miscellanea::ProhibitTies]
+ severity   = 4
+ 
+-[-Perl::Critic::Policy::Miscellanea::RequireRcsKeywords]
+-
+ [Perl::Critic::Policy::Modules::ProhibitAutomaticExportation]
+ severity   = 4
+ 
+@@ -283,4 +281,4 @@ severity   = 5
+ severity   = 5
+ 
+ [Perl::Critic::Policy::Variables::RequireNegativeIndices]
+-severity   = 4
+\ No newline at end of file
++severity   = 4

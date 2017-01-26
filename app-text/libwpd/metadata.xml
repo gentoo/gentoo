@@ -6,7 +6,7 @@
 		<name>Gentoo Office project</name>
 	</maintainer>
 	<use>
-		<flag name="tools">Build miscellaneous tools</flag>
+		<flag name="tools">Build file conversion tools</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libwpd</remote-id>

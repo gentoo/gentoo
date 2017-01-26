@@ -1,0 +1,116 @@
+diff -dur a/Makefile b/Makefile
+--- a/Makefile	2016-09-29 13:33:24.000000000 -0500
++++ b/Makefile	2017-01-02 11:25:04.606549073 -0600
+@@ -14,8 +14,8 @@
+ etcdir = /etc
+ initddir = $(etcdir)/init.d
+ 
+-MANPAGES = doc/iscsid.8 doc/iscsiadm.8 doc/iscsi_discovery.8 iscsiuio/docs/iscsiuio.8
+-PROGRAMS = usr/iscsid usr/iscsiadm utils/iscsi_discovery utils/iscsi-iname iscsiuio/src/unix/iscsiuio
++MANPAGES = doc/iscsid.8 doc/iscsiadm.8 doc/iscsi_discovery.8 doc/iscsistart.8 doc/iscsi-iname.8
++PROGRAMS = usr/iscsid usr/iscsiadm utils/iscsi_discovery utils/iscsi-iname usr/iscsistart
+ INSTALL = install
+ ETCFILES = etc/iscsid.conf
+ IFACEFILES = etc/iface.example
+@@ -99,11 +99,11 @@
+ # ugh, auto-detection is evil
+ # Gentoo maintains their own init.d stuff
+ install_initd:
+-	if [ -f /etc/debian_version ]; then \
++	if [ -f $(DESTDIR)$(etcdir)/debian_version ]; then \
+ 		$(MAKE) install_initd_debian ; \
+-	elif [ -f /etc/redhat-release ]; then \
++	elif [ -f $(DESTDIR)$(etcdir)/redhat-release ]; then \
+ 		$(MAKE) install_initd_redhat ; \
+-	elif [ -f /etc/SuSE-release ]; then \
++	elif [ -f $(DESTDIR)$(etcdir)/SuSE-release ]; then \
+ 		$(MAKE) install_initd_suse ; \
+ 	fi
+ 
+@@ -130,7 +130,7 @@
+ 	$(INSTALL) -m 644 $^ $(DESTDIR)$(etcdir)/iscsi/ifaces
+ 
+ install_etc: $(ETCFILES)
+-	if [ ! -f $(DESTDIR)/etc/iscsi/iscsid.conf ]; then \
++	if [ ! -f $(DESTDIR)$(etcdir)/iscsi/iscsid.conf ]; then \
+ 		$(INSTALL) -d $(DESTDIR)$(etcdir)/iscsi ; \
+ 		$(INSTALL) -m 644 $^ $(DESTDIR)$(etcdir)/iscsi ; \
+ 	fi
+@@ -143,11 +143,11 @@
+ 	$(MAKE) -C kernel install_kernel
+ 
+ install_iname:
+-	if [ ! -f $(DESTDIR)/etc/iscsi/initiatorname.iscsi ]; then \
+-		echo "InitiatorName=`$(DESTDIR)/sbin/iscsi-iname`" > $(DESTDIR)/etc/iscsi/initiatorname.iscsi ; \
++	if [ ! -f $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi ]; then \
++		echo "InitiatorName=`$(DESTDIR)$(sbindir)/iscsi-iname`" > $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi ; \
+ 		echo "***************************************************" ; \
+-		echo "Setting InitiatorName to `cat $(DESTDIR)/etc/iscsi/initiatorname.iscsi`" ; \
+-		echo "To override edit $(DESTDIR)/etc/iscsi/initiatorname.iscsi" ; \
++		echo "Setting InitiatorName to `cat $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi`" ; \
++		echo "To override edit $(etcdir)/iscsi/initiatorname.iscsi" ; \
+ 		echo "***************************************************" ; \
+ 	fi
+ 
+diff -dur a/usr/Makefile b/usr/Makefile
+--- a/usr/Makefile	2016-09-29 13:33:24.000000000 -0500
++++ b/usr/Makefile	2017-01-02 11:27:55.417297639 -0600
+@@ -63,9 +63,9 @@
+ 		iscsistart.o statics.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lrt
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
++	$(RM) *.o $(PROGRAMS) .depend $(LIBSYS)
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -dur a/utils/fwparam_ibft/Makefile b/utils/fwparam_ibft/Makefile
+--- a/utils/fwparam_ibft/Makefile	2016-09-29 13:33:24.000000000 -0500
++++ b/utils/fwparam_ibft/Makefile	2017-01-02 11:30:42.358440507 -0600
+@@ -33,11 +33,11 @@
+ all: $(OBJS)
+ 
+ clean:
+-	rm -f *.o $(CLEANFILES) .depend
++	$(RM) *.o $(CLEANFILES) .depend
+ 
+ $(OBJS): prom_parse.tab.h prom_parse.h fwparam_ibft.h
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -dur a/utils/Makefile b/utils/Makefile
+--- a/utils/Makefile	2016-09-29 13:33:24.000000000 -0500
++++ b/utils/Makefile	2017-01-02 11:29:24.193611039 -0600
+@@ -10,9 +10,9 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(DBM_LIB) -o $@
+ 
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend
++	$(RM) *.o $(PROGRAMS) .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(GCC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -dur a/utils/sysdeps/Makefile b/utils/sysdeps/Makefile
+--- a/utils/sysdeps/Makefile	2016-09-29 13:33:24.000000000 -0500
++++ b/utils/sysdeps/Makefile	2017-01-02 11:31:24.219926338 -0600
+@@ -8,9 +8,9 @@
+ all: $(SYSDEPS_OBJS)
+ 
+ clean:
+-	rm -f *.o .depend
++	$(RM) *.o .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend

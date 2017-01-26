@@ -1,0 +1,65 @@
+diff --git a/gui/tkpppoe.in b/gui/tkpppoe.in
+index 148c8c8..1d952d4 100755
+--- a/gui/tkpppoe.in
++++ b/gui/tkpppoe.in
+@@ -1573,7 +1573,7 @@ proc SetButtonStates {} {
+ #***********************************************************************
+ proc GetEthernetInterfaces {} {
+     set ifs {}
+-    set fp [open "|/sbin/ifconfig" "r"]
++    set fp [open "|/bin/ifconfig" "r"]
+     while {[gets $fp line] >= 0} {
+ 	if {[regexp {^eth[0-9]+} $line eth]} {
+ 	    lappend ifs $eth
+diff --git a/scripts/pppoe-connect.in b/scripts/pppoe-connect.in
+index 2124422..e7eab32 100755
+--- a/scripts/pppoe-connect.in
++++ b/scripts/pppoe-connect.in
+@@ -28,7 +28,7 @@ exec_prefix=@exec_prefix@
+ localstatedir=/var
+
+ # Paths to programs
+-IFCONFIG=/sbin/ifconfig
++IFCONFIG=/bin/ifconfig
+ PPPD=@PPPD@
+ SETSID=@SETSID@
+ PPPOE=@sbindir@/pppoe
+diff --git a/scripts/pppoe-setup.in b/scripts/pppoe-setup.in
+index b378479..4122084 100755
+--- a/scripts/pppoe-setup.in
++++ b/scripts/pppoe-setup.in
+@@ -17,7 +17,7 @@ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+
+ # Paths to programs
+-IFCONFIG=/sbin/ifconfig
++IFCONFIG=/bin/ifconfig
+ PPPD=@PPPD@
+ PPPOE=@sbindir@/pppoe
+ ECHO=@ECHO@
+diff --git a/scripts/pppoe-start.in b/scripts/pppoe-start.in
+index 7e15804..b9dd7f0 100755
+--- a/scripts/pppoe-start.in
++++ b/scripts/pppoe-start.in
+@@ -29,7 +29,7 @@ exec_prefix=@exec_prefix@
+ # Paths to programs
+ CONNECT=@sbindir@/pppoe-connect
+ ECHO=@ECHO@
+-IFCONFIG=/sbin/ifconfig
++IFCONFIG=/bin/ifconfig
+
+ # Set to "C" locale so we can parse messages from commands
+ LANG=C
+diff --git a/scripts/pppoe-status b/scripts/pppoe-status
+index 9fe89cd..96d6ebd 100755
+--- a/scripts/pppoe-status
++++ b/scripts/pppoe-status
+@@ -73,7 +73,7 @@ for i in /etc/ppp/ppp*.pid /var/run/ppp*.pid ; do
+ 		exit 1
+ 	    fi
+ 	    echo "pppoe-status: Link is up and running on interface $IF"
+-	    /sbin/ifconfig $IF
++	    /bin/ifconfig $IF
+ 	    exit 0
+ 	fi
+     fi

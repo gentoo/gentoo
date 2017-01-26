@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
-	boost? ( dev-libs/boost )
+	boost? ( dev-libs/boost:= )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	freeimage? ( media-libs/freeimage )
 	gles2? ( >=media-libs/mesa-9.0.0[gles2] )

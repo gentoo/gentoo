@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name='non-blocking-ffi'>Execute FFI calls in the context of haskell thread.</flag>
+	</use>
 	<longdescription>
 		This package provides a pure interface for compressing and
 		decompressing streams of data represented as lazy

@@ -6,14 +6,17 @@ EAPI=6
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
-HOMEPAGE="http://www.tcpdump.org/"
+HOMEPAGE="
+	http://www.tcpdump.org/
+	https://github.com/the-tcpdump-group/libpcap
+"
 SRC_URI="
 	https://github.com/the-tcpdump-group/${PN}/archive/${P}.tar.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="bluetooth dbus netlink static-libs canusb"
 
 RDEPEND="

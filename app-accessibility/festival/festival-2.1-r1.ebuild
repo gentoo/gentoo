@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,9 @@ IUSE=""
 
 DEPEND="~app-accessibility/speech-tools-2.1
 		>=sys-libs/ncurses-5.6-r2"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	media-sound/alsa-utils
+"
 
 S=${WORKDIR}/festival
 

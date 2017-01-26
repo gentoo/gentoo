@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,11 +32,6 @@ if [[ -v KDE_GCC_MINIMAL ]]; then
 fi
 
 EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
-
-# @ECLASS-VARIABLE: QT_MINIMAL
-# @DESCRIPTION:
-# Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.6.1}
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -118,6 +113,14 @@ fi
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
 : ${KDE_SELINUX_MODULE:=none}
 
+# @ECLASS-VARIABLE: KDE_SUBSLOT
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# If set to "true", add a subslot to the package, where subslot is either
+# defined as major.minor version for kde-*/ categories or ${PV} if other.
+# For any other value, that value will be used as subslot.
+: ${KDE_SUBSLOT:=false}
+
 # @ECLASS-VARIABLE: KDE_UNRELEASED
 # @INTERNAL
 # @DESCRIPTION
@@ -138,35 +141,36 @@ fi
 
 LICENSE="GPL-2"
 
+SLOT=5
+
 if [[ ${CATEGORY} = kde-frameworks ]]; then
-	SLOT=5/$(get_version_component_range 1-2)
-else
-	SLOT=5
+	KDE_SUBSLOT=true
 fi
+
+case ${KDE_SUBSLOT} in
+	false)  ;;
+	true)
+		case ${CATEGORY} in
+			kde-frameworks | \
+			kde-plasma | \
+			kde-apps)
+				SLOT+="/$(get_version_component_range 1-2)"
+				;;
+			*)
+				SLOT+="/${PV}"
+				;;
+		esac
+		;;
+	*)
+		SLOT+="/${KDE_SUBSLOT}"
+		;;
+esac
 
 case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			case ${CATEGORY} in
-				kde-frameworks)
-					FRAMEWORKS_MINIMAL=9999
-				;;
-				kde-plasma)
-					FRAMEWORKS_MINIMAL=9999
-				;;
-				*) ;;
-			esac
-		fi
-
-		if [[ ${CATEGORY} = kde-plasma ]]; then
-			if ! [[ $(get_version_component_range 2) -le 7 && $(get_version_component_range 3) -lt 50 ]]; then
-				FRAMEWORKS_MINIMAL=5.26.0
-			fi
-		fi
-
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
-		RDEPEND+=" >=kde-frameworks/kf-env-3"
+		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
@@ -234,11 +238,6 @@ unset COMMONDEPEND
 
 if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
-fi
-
-# FIXME: Drop this when kdepim-16.08.x is no more
-if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
-	S="${S}/${PN}"
 fi
 
 if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
@@ -496,13 +495,17 @@ kde5_src_prepare() {
 			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
 		fi
 
-		# add all l10n directories to cmake
 		cat <<-EOF > CMakeLists.txt || die
-project(${PN})
-cmake_minimum_required(VERSION 2.8.12)
-$(printf "add_subdirectory( %s )\n" \
-	`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
-EOF
+		project(${PN})
+		cmake_minimum_required(VERSION 2.8.12)
+		EOF
+		# add all l10n directories to cmake
+		if [[ -n ${A} ]]; then
+			cat <<-EOF >> CMakeLists.txt || die
+			$(printf "add_subdirectory( %s )\n" \
+				`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
+			EOF
+		fi
 
 		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
 		case ${l10npart} in
@@ -545,7 +548,7 @@ EOF
 				if [[ -e CMakeLists.txt ]] ; then
 					cmake_comment_add_subdirectory ${lang}
 				fi
-			elif ! has ${lang/.po/} ${LINGUAS} ; then
+			elif [[ -f ${lang} ]] && ! has ${lang/.po/} ${LINGUAS} ; then
 				if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
 					rm ${lang} || die
 				fi
@@ -712,11 +715,11 @@ kde5_pkg_postinst() {
 			einfo "Use it at your own risk."
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 		fi
-		# for kf5-based applications tell user that he SHOULD NOT be using kde-base/plasma-workspace
+		# for kf5-based applications tell user that he SHOULD NOT be using kde-plasma/plasma-workspace:4
 		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
-				has_version 'kde-base/plasma-workspace'; then
+				has_version 'kde-plasma/plasma-workspace:4'; then
 			echo
-			ewarn "WARNING! Your system configuration still contains \"kde-base/plasma-workspace\","
+			ewarn "WARNING! Your system configuration still contains \"kde-plasma/plasma-workspace:4\","
 			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
 			ewarn "Please consider upgrading to Plasma 5."
 		fi
@@ -765,7 +768,9 @@ _l10n_variant_subdir_buster() {
 	esac
 
 	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
-		echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt
+		if [[ ${subdir##*/} != "cmake_modules" ]] ; then
+			echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt || die
+		fi
 	done
 }
 

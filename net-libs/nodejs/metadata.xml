@@ -16,5 +16,6 @@
 	<use>
 	<flag name="npm">Enable NPM package manager</flag>
 	<flag name="snapshot">Enable snapshot creation for faster startup</flag>
+	<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
 </pkgmetadata>

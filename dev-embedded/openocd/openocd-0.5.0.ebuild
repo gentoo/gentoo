@@ -8,7 +8,8 @@ inherit eutils multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-2
 	KEYWORDS=""
-	EGIT_REPO_URI="git://${PN}.git.sourceforge.net/gitroot/${PN}/${PN}"
+	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_PROJECT="${PN}"
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"

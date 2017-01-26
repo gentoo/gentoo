@@ -1,0 +1,19 @@
+Change the installation directory of the readme.txt file
+to match standard FHS conventions.
+
+--- a/user/wp/Makefile.am
++++ b/user/wp/Makefile.am
+@@ -9,10 +9,11 @@
+ EXTRA_DIST = \
+ 	$(wp_DATA)
+ 
++doc_DATA = \
++	readme.txt
++
+ wpdir = $(ABIWORD_DATADIR)
+ wp_DATA = \
+-	readme.txt \
+-	readme.abw \
+ 	system.profile \
+ 	system.profile-am-ET \
+ 	system.profile-ar \

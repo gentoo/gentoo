@@ -20,7 +20,7 @@ COMMON_DEPEND="dev-lang/mono
 RDEPEND="${COMMON_DEPEND}
 	x11-libs/cairo[X]
 	x11-libs/gdk-pixbuf[X,jpeg,tiff]
-	x11-themes/gnome-icon-theme"
+	x11-themes/adwaita-icon-theme"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	virtual/pkgconfig

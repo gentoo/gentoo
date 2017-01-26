@@ -4,7 +4,7 @@
 
 EAPI=5
 XORG_MULTILIB=yes
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit python-any-r1 xorg-2
 
@@ -19,7 +19,7 @@ else
 fi
 
 RESTRICT="test" # Tests need to run as root.
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"

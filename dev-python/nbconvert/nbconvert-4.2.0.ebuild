@@ -35,9 +35,11 @@ DEPEND="${RDEPEND}
 		app-text/pandoc
 	)
 	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
+		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	"
 
@@ -57,7 +59,7 @@ python_compile_all() {
 python_test() {
 	distutils_install_for_testing
 	cd "${TEST_DIR}"/lib || die
-	nosetests --with-coverage --cover-package=nbconvert nbconvert || die
+	py.test --cov nbconvert -v --pyargs nbconvert || die
 }
 
 python_install_all() {

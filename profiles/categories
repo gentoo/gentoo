@@ -77,7 +77,6 @@ gnustep-base
 gnustep-libs
 java-virtuals
 kde-apps
-kde-base
 kde-frameworks
 kde-misc
 kde-plasma
@@ -135,14 +134,15 @@ sys-block
 sys-boot
 sys-cluster
 sys-devel
+sys-fabric
 sys-firmware
 sys-freebsd
 sys-fs
-sys-fabric
 sys-kernel
 sys-libs
 sys-power
 sys-process
+virtual
 www-apache
 www-apps
 www-client
@@ -161,4 +161,3 @@ x11-themes
 x11-wm
 xfce-base
 xfce-extra
-virtual

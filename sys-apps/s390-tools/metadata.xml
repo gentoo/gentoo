@@ -10,9 +10,9 @@ zSeries (s390) Linux kernel and device drivers
 </longdescription>
 	<use>
 		<flag name="fuse">build cmsfs-fuse to read files stored on a z/VM CMS disk</flag>
+		<flag name="ncurses">build hyptop monitoring program</flag>
+		<flag name="pfm">build the cpacfstats tool</flag>
 		<flag name="zfcpdump">build the kernel disk dumping utility</flag>
+		<flag name="zlib">build the zgetdump utility</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">e2fsprogs</remote-id>
-	</upstream>
 </pkgmetadata>

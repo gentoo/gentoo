@@ -1,0 +1,14 @@
+https://lists.gnu.org/archive/html/bug-readline/2016-11/msg00000.html
+
+fix from upstream
+
+--- a/lib/readline/readline.h
++++ b/lib/readline/readline.h
+@@ -413,6 +413,7 @@
+ extern void rl_tty_set_default_bindings PARAMS((Keymap));
+ extern void rl_tty_unset_default_bindings PARAMS((Keymap));
+ 
++extern int rl_tty_set_echoing PARAMS((int));
+ extern int rl_reset_terminal PARAMS((const char *));
+ extern void rl_resize_terminal PARAMS((void));
+ extern void rl_set_screen_size PARAMS((int, int));

@@ -5,4 +5,8 @@
 		<email>rhill@gentoo.org</email>
 		<name>Ryan Hill</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 </pkgmetadata>

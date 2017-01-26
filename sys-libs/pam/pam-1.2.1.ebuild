@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
-	berkdb? ( >=sys-libs/db-4.8.30-r1[${MULTILIB_USEDEP}] )
+	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2
@@ -55,7 +55,7 @@ check_old_modules() {
 		eerror "not be installed."
 		eerror "Please replace pam_stack usage with proper include directive usage,"
 		eerror "following the PAM Upgrade guide at the following URL"
-		eerror "  https://www.gentoo.org/proj/en/base/pam/upgrade-0.99.xml"
+		eerror "  https://wiki.gentoo.org/wiki/Project:PAM/Upgrade_to_0.99"
 		eerror ""
 
 		retval=1
@@ -70,7 +70,7 @@ check_old_modules() {
 		eerror "of PAM through https://bugs.gentoo.org/ providing information about its"
 		eerror "use cases."
 		eerror "Please also make sure to read the PAM Upgrade guide at the following URL:"
-		eerror "  https://www.gentoo.org/proj/en/base/pam/upgrade-0.99.xml"
+		eerror "  https://wiki.gentoo.org/wiki/Project:PAM/Upgrade_to_0.99"
 		eerror ""
 
 		retval=1
@@ -121,6 +121,7 @@ multilib_src_configure() {
 		$(use_enable pie)
 		--with-db-uniquename=-$(db_findver sys-libs/db)
 		--disable-prelude
+		--disable-regenerate-docu
 	)
 
 	ECONF_SOURCE=${S} \

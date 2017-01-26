@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,12 +15,17 @@ LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-2.5 )"
 SLOT="0"
 IUSE="doc emacs vim-syntax"
 
-RDEPEND="sys-apps/sed"
+RDEPEND="sys-apps/sed
+	|| (
+		sys-apps/coreutils
+		sys-freebsd/freebsd-bin
+		app-misc/realpath
+	)"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/docutils )"
 RDEPEND="${RDEPEND}
 	sys-apps/file
-	sys-libs/ncurses"
+	sys-libs/ncurses:0"
 
 PDEPEND="emacs? ( app-emacs/eselect-mode )
 	vim-syntax? ( app-vim/eselect-syntax )"

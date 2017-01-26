@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.bitwizard.nl/mtr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="gtk ipv6"
 
 RDEPEND="
@@ -31,8 +31,8 @@ DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
 FILECAPS=( cap_net_raw /usr/sbin/mtr )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.80-impl-dec.patch
-	"${FILESDIR}"/${PN}-9999-ipv6.patch
-	"${FILESDIR}"/${PN}-9999-tinfo.patch
+	"${FILESDIR}"/${PN}-0.87-ipv6.patch
+	"${FILESDIR}"/${PN}-0.87-tinfo.patch
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,12 @@ RDEPEND="
 DEPEND="${RDEPEND} virtual/pkgconfig"
 
 src_configure() {
-	local PHP_EXT_ECONF_ARGS=( --enable-mongodb --with-libbson --with-libmongoc )
-	PHP_EXT_ECONF_ARGS+=( --with-pcre-dir=$(usex pcre yes no) --with-mongodb-sasl=$(usex sasl yes no) )
+	local PHP_EXT_ECONF_ARGS=(
+		--enable-mongodb
+		--with-libbson
+		--with-libmongoc
+		--with-pcre-dir=$(usex pcre)
+		--with-mongodb-sasl=$(usex sasl)
+	)
 	php-ext-source-r3_src_configure
 }

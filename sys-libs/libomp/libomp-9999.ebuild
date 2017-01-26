@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib git-r3 python-any-r1
@@ -15,7 +17,11 @@ SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# - MIT-licensed Intel code,
+# - LLVM Software Grant from Intel.
+
+LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
 IUSE="hwloc ompt test"
@@ -32,6 +38,9 @@ DEPEND="${RDEPEND}
 		sys-devel/llvm
 		>=sys-devel/clang-3.9.0
 	)"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"

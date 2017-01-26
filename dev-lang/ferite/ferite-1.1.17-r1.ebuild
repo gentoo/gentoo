@@ -21,7 +21,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch ${FILESDIR}/ferite-pcre.patch || die
+	epatch "${FILESDIR}"/ferite-pcre.patch
 
 	# use docsdir variable, install to DESTDIR
 	sed \

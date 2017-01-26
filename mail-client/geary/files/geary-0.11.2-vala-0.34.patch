@@ -1,0 +1,72 @@
+From 8af85ac5a836d877428a6958fbae4b36e29279b0 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Fri, 8 Jul 2016 09:56:42 +0200
+Subject: Fix compile warnings with vala git
+
+---
+ src/client/application/geary-application.vala    | 4 ++--
+ src/client/components/conversation-find-bar.vala | 2 +-
+ src/client/dialogs/attachment-dialog.vala        | 4 ++--
+ src/console/main.vala                            | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/client/application/geary-application.vala b/src/client/application/geary-application.vala
+index 3d04f96..2480aab 100644
+--- a/src/client/application/geary-application.vala
++++ b/src/client/application/geary-application.vala
+@@ -36,9 +36,9 @@ public class GearyApplication : Gtk.Application {
+         null
+     };
+     
+-    private static const string ACTION_ENTRY_COMPOSE = "compose";
++    private const string ACTION_ENTRY_COMPOSE = "compose";
+     
+-    public static const ActionEntry[] action_entries = {
++    public const ActionEntry[] action_entries = {
+         {ACTION_ENTRY_COMPOSE, activate_compose, "s"},
+     };
+     
+diff --git a/src/client/components/conversation-find-bar.vala b/src/client/components/conversation-find-bar.vala
+index 008f4d3..a625896 100644
+--- a/src/client/components/conversation-find-bar.vala
++++ b/src/client/components/conversation-find-bar.vala
+@@ -5,7 +5,7 @@
+  */
+ 
+ public class ConversationFindBar : Gtk.Layout {
+-    private static const string entry_not_found_style =
++    private const string entry_not_found_style =
+ """
+ .geary-not-found {
+     color: white;
+diff --git a/src/client/dialogs/attachment-dialog.vala b/src/client/dialogs/attachment-dialog.vala
+index 79884fa..980e67f 100644
+--- a/src/client/dialogs/attachment-dialog.vala
++++ b/src/client/dialogs/attachment-dialog.vala
+@@ -5,8 +5,8 @@
+  */
+ 
+ public class AttachmentDialog : Gtk.FileChooserDialog {
+-    private static const int PREVIEW_SIZE = 180;
+-    private static const int PREVIEW_PADDING = 3;
++    private const int PREVIEW_SIZE = 180;
++    private const int PREVIEW_PADDING = 3;
+     
+     private static string? current_folder = null;
+     
+diff --git a/src/console/main.vala b/src/console/main.vala
+index 6ae3fff..7d0ba12 100644
+--- a/src/console/main.vala
++++ b/src/console/main.vala
+@@ -15,7 +15,7 @@ errordomain CommandException {
+ class ImapConsole : Gtk.Window {
+     public const string VERSION = _VERSION;
+     
+-    private static const int KEEPALIVE_SEC = 60 * 10;
++    private const int KEEPALIVE_SEC = 60 * 10;
+     
+     private Gtk.TextView console = new Gtk.TextView();
+     private Gtk.Entry cmdline = new Gtk.Entry();
+-- 
+cgit v0.12
+

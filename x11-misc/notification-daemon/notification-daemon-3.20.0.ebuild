@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
-	>=x11-libs/gtk+-3.19.5:3
+	>=x11-libs/gtk+-3.19.5:3[X]
 	sys-apps/dbus
 	x11-libs/libX11
 	!x11-misc/notify-osd

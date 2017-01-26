@@ -1,0 +1,28 @@
+From 7f507fcb139f19501d4f706098f24abc0be2d721 Mon Sep 17 00:00:00 2001
+From: Didier Raboud <odyx@debian.org>
+Date: Thu, 1 Sep 2016 11:18:27 +0200
+Subject: Fix erroneous tabs in hpps python code, introduced in 3.16.8
+
+---
+ prnt/filters/hpps | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/prnt/filters/hpps b/prnt/filters/hpps
+index a882f85..e5f900c 100644
+--- a/prnt/filters/hpps
++++ b/prnt/filters/hpps
+@@ -191,11 +191,11 @@ if 'HPPinPrnt' in options and 'noHPPinPrnt' not in options:
+             msg("Setting Pin to default")
+     else:
+         szKeyInitials = ['HPFIDigit', 'HPSEDigit', 'HPTHDigit', 'HPFTDigit']                                 
+-	for x in szKeyInitials:
++        for x in szKeyInitials:
+            try:
+-	        secpin += opts[x]
++               secpin += opts[x]
+            except KeyError:
+-	        secpin += '0'
++               secpin += '0'
+ 
+     os.write(output_fd, to_bytes_utf8('@PJL SET HOLDKEY="%s"\x0a' % secpin))
+ 

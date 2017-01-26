@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_4 )
 
 PLOCALES="ca cs cy da de es et eu fr hu it ja pl pt pt_BR ru sk sr sr@latin uk zh_TW"
 

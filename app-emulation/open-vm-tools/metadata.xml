@@ -17,7 +17,6 @@
 	</longdescription>
 	<use>
 		<flag name="doc">Generate API documentation</flag>
-		<flag name="fuse">Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD</flag>
 		<flag name="grabbitmqproxy">Enable grabbitmqproxy</flag>
 		<flag name="pic">Force shared libraries to be built as PIC</flag>
 		<flag name="vgauth">Enable vgauth</flag>

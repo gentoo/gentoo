@@ -48,8 +48,8 @@ DEPEND="${CDEPEND}
 	sys-devel/gettext
 "
 RDEPEND="${CDEPEND}
-	$(add_kdebase_dep kdelibs 'udev,udisks(+)')
 	app-cdr/cdrdao
+	kde-frameworks/kdelibs:4[udev,udisks(+)]
 	media-sound/cdparanoia
 	virtual/cdrtools
 	dvd? (

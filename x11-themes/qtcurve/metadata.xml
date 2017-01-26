@@ -9,11 +9,6 @@
     <email>qt@gentoo.org</email>
     <name>Gentoo Qt Project</name>
   </maintainer>
-  <use>
-    <flag name="kde">Enable KDE4 support. This adds a QtCurve configuration
-      module to KDE's SystemSettings</flag>
-    <flag name="windeco">Enable window decoration for KWin</flag>
-  </use>
   <upstream>
     <remote-id type="github">QtCurve/qtcurve</remote-id>
   </upstream>

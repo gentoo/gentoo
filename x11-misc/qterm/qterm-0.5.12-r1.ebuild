@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
-	kde-base/kdelibs
+	kde-frameworks/kdelibs:4
 	dev-qt/qthelp:4
 	dev-qt/qtwebkit:4"
 

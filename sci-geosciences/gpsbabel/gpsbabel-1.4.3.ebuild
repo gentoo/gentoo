@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,8 +44,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-xmldoc.patch"
 )
 
+RESTRICT="test" # bug 421699
+
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 	rm -rf shapelib || die
 

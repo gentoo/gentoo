@@ -1,7 +1,7 @@
---- factmsieve.py	2010-12-02 13:59:20.000000000 +0800
-+++ factmsieve.py.new	2012-11-30 15:06:50.566116187 +0800
+--- a/factmsieve.py
++++ b/factmsieve.py
 @@ -1,3 +1,4 @@
-+#!/usr/bin/env python2
++#!/usr/bin/env python
  # factmsieve.py - A Python driver for GGNFS and MSIEVE
  #
  # Copyright (c) 2010, Brian Gladman

@@ -14,5 +14,6 @@
     <flag name="nfqueue">Enable NFQUEUE support for inline IDP</flag>
     <flag name="redis">Enable Redis support</flag>
     <flag name="rules">Install default ruleset</flag>
+    <flag name="logrotate">Install logrotate rule</flag>
   </use>
 </pkgmetadata>

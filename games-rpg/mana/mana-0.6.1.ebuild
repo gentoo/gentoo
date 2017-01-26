@@ -41,10 +41,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Fix-missing-virtual-destructors-and-guichan-use.patch
 	"${FILESDIR}"/${P}-Trick-gcc-into-importing-C99-stdint.h-when-C-11-is-n.patch
 	"${FILESDIR}"/${P}-Import-cstdint-for-int64_t.patch
-	)
+)
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	epatch_user
 
 	if [[ ${LINGUAS+set} ]]; then

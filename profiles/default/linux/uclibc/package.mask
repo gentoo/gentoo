@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,6 @@ games-fps/tribes2
 games-fps/ut2004
 games-fps/ut2004-action
 games-fps/ut2004-airbuccaneers
-games-fps/ut2004-alienswarm
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
 games-fps/ut2004-bonuspack-ece
@@ -54,7 +53,6 @@ games-fps/ut2004-hamsterbash
 games-fps/ut2004-muralis
 games-fps/ut2004-strikeforce
 games-fps/ut2004-troopers
-games-fps/ut2004-ultraduel
 games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
@@ -67,13 +65,11 @@ games-strategy/defcon-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
 www-plugins/adobe-flash
-=games-action/lugaru-1.0c-r1
 
 # needs boost[nls]
 games-strategy/wesnoth
 
 # missing multilib deps
-games-action/awesomenauts
 games-action/beathazardultra
 games-action/brutal-legend
 games-action/hotline-miami

@@ -1,0 +1,24 @@
+--- guacamole-server-0.9.5/src/protocols/rdp/rdp_glyph.c~	2015-02-04 05:58:22.000000000 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/rdp_glyph.c	2015-03-17 14:04:45.549617112 +0000
+@@ -126,7 +126,8 @@ void guac_rdp_glyph_free(rdpContext* con
+ }
+ 
+ void guac_rdp_glyph_begindraw(rdpContext* context,
+-        int x, int y, int width, int height, UINT32 fgcolor, UINT32 bgcolor) {
++        int x, int y, int width, int height, UINT32 fgcolor, UINT32 bgcolor,
++        BOOL fOpRedundant) {
+ 
+     guac_client* client = ((rdp_freerdp_context*) context)->client;
+     rdp_guac_client_data* guac_client_data =
+--- guacamole-server-0.9.5/src/protocols/rdp/rdp_glyph.h~	2015-02-04 05:58:22.000000000 +0000
++++ guacamole-server-0.9.5/src/protocols/rdp/rdp_glyph.h	2015-03-17 14:05:27.929142981 +0000
+@@ -53,7 +53,8 @@ void guac_rdp_glyph_new(rdpContext* cont
+ void guac_rdp_glyph_draw(rdpContext* context, rdpGlyph* glyph, int x, int y);
+ void guac_rdp_glyph_free(rdpContext* context, rdpGlyph* glyph);
+ void guac_rdp_glyph_begindraw(rdpContext* context,
+-        int x, int y, int width, int height, UINT32 fgcolor, UINT32 bgcolor);
++        int x, int y, int width, int height, UINT32 fgcolor, UINT32 bgcolor,
++        BOOL fOpRedundant);
+ void guac_rdp_glyph_enddraw(rdpContext* context,
+         int x, int y, int width, int height, UINT32 fgcolor, UINT32 bgcolor);
+ 

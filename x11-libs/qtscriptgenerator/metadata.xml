@@ -9,7 +9,4 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="google-code">qtscriptgenerator</remote-id>
-	</upstream>
 </pkgmetadata>

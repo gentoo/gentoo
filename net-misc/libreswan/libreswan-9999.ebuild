@@ -23,7 +23,7 @@ IUSE="caps curl dnssec ldap pam systemd"
 
 COMMON_DEPEND="
 	dev-libs/gmp:0=
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	dev-libs/nspr
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )

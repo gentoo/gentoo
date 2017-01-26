@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,10 +10,10 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="GPU-accelerated attack against WPA-PSK authentication"
-HOMEPAGE="https://code.google.com/p/pyrit/"
-SRC_URI="https://pyrit.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/JPaulMora/Pyrit"
+SRC_URI="https://github.com/JPaulMora/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cuda opencl test"

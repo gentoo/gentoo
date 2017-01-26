@@ -17,6 +17,7 @@ IUSE=""
 src_prepare() {
 	# https://github.com/Drive-Trust-Alliance/sedutil/pull/49
 	find -name '*.mk' -exec sed -E -i 's: -(Werror|g|O[0-9]?) : :g' {} + || die
+	# https://github.com/Drive-Trust-Alliance/sedutil/issues/52
 	if has_version '>=sys-kernel/linux-headers-4.4' ; then
 		mkdir linux/linux || die
 		cp "${FILESDIR}"/nvme.h linux/linux/ || die

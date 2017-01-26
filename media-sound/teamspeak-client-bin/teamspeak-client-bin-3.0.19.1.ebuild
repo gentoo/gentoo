@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE="alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
-	dev-libs/quazip:0/0[qt5]
+	dev-libs/quazip[-qt4,qt5]
 	>=dev-qt/qtcore-5.5:5
 	>=dev-qt/qtgui-5.5:5[accessibility]
 	>=dev-qt/qtnetwork-5.5:5

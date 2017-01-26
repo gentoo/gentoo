@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ elif [[ ${PV} == *pre* ]]; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
-	SRC_URI="https://webm.googlecode.com/files/${PN}-v${PV}.tar.bz2"
+	SRC_URI="http://storage.googleapis.com/downloads.webmproject.org/releases/webm/${PN}-v${PV}.tar.bz2"
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
@@ -83,6 +83,9 @@ multilib_src_configure() {
 		# not needed for multilib and will be overwritten anyway.
 		myconf+=" --disable-examples --disable-install-docs --disable-docs"
 	fi
+
+	# https://bugs.gentoo.org/569146
+	export LC_COLLATE=C
 
 	# #498364: sse doesn't work without sse2 enabled,
 	"${S}/configure" \

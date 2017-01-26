@@ -9,7 +9,7 @@ inherit cmake-utils
 if [[ ${PV} != 9999 ]]; then
 	COMMIT="5b2455f3147aca395a441fc65b602938600f0788"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="alpha amd64 arm ppc ppc64 x86"
 	S="${WORKDIR}/FreeRDP-${COMMIT}"
 else
 	inherit git-r3
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libav libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -47,7 +47,10 @@ RDEPEND="
 			xv? ( x11-libs/libXv )
 		)
 	)
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		libav? ( media-video/libav:0= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0

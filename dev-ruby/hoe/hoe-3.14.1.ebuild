@@ -24,7 +24,7 @@ IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.5:5 ) >=dev-ruby/rdoc-4.0"
 
-ruby_add_rdepend ">=dev-ruby/rake-0.8.7 >=dev-ruby/rdoc-4.0"
+ruby_add_rdepend ">=dev-ruby/rake-0.8.7 <dev-ruby/rake-11.0 >=dev-ruby/rdoc-4.0"
 
 all_ruby_prepare() {
 	# Skip isolation

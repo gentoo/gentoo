@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://pypi.python.org/packages/f6/33/16ad65a8973cb8bcb494af09ee1b9ab5
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"

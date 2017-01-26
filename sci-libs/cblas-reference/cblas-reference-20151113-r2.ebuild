@@ -74,7 +74,6 @@ src_install() {
 
 	rmdir "${ED}/usr/$(get_libdir)/pkgconfig" || die
 	rmdir "${ED}/usr/include" || die
-	rm -rf "${ED}"/usr/lib/ || die
 
 	eselect cblas add $(get_libdir) "${T}"/eselect.cblas.reference ${ESELECT_PROF}
 }

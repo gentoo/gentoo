@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 # System-wide defaults for the G/FBSD Portage system
@@ -20,7 +20,6 @@ ABI="amd64_fbsd"
 CFLAGS_x86_fbsd="-m32"
 LDFLAGS_x86_fbsd="-m elf_i386_fbsd -L/usr/lib32"
 
-USE="mmx mmxext sse sse2"
 CPU_FLAGS_X86="mmx mmxext sse sse2"
 
 VIDEO_CARDS="apm ark chips cirrus cyrix dummy i128 intel mach64 mga \

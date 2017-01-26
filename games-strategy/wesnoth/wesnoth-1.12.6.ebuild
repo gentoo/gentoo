@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/wesnoth/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="dbus dedicated doc fribidi nls server"
 
 RDEPEND=">=media-libs/libsdl-1.2.7:0[joystick,video,X]

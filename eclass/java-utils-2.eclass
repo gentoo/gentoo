@@ -275,7 +275,7 @@ java-pkg_addres() {
 # be it a unit test or a regular java class.
 #
 # You can use this function by either:
-# - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
+# - calling it yourself in src_prepare() and feeding java-pkg_rm_files with
 # the list of files you wish to remove.
 # - defining an array in the ebuild named JAVA_RM_FILES with the list of files
 # you wish to remove.
@@ -1867,7 +1867,14 @@ ejunit4() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	java-pkg_func-exists java_prepare && java_prepare
+	case ${EAPI:-0} in
+		[0-5])
+			java-pkg_func-exists java_prepare && java_prepare ;;
+		*)
+			java-pkg_func-exists java_prepare &&
+				eqawarn "java_prepare is no longer called, define src_prepare instead."
+			eapply_user ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
@@ -2180,10 +2187,6 @@ java-pkg_init() {
 		unset _JAVA_OPTIONS
 		# phase hooks make this run many times without this
 		I_WANT_GLOBAL_JAVA_OPTIONS="true"
-	fi
-
-	if java-pkg_func-exists ant_src_unpack; then
-		java-pkg_announce-qa-violation "Using old ant_src_unpack. Should be src_unpack"
 	fi
 
 	java-pkg_switch-vm
@@ -2885,4 +2888,30 @@ java-pkg_clean() {
 	if [[ -z "${JAVA_PKG_NO_CLEAN}" ]]; then
 		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
 	fi
+}
+
+# @FUNCTION: java-pkg_gen-cp
+# @INTERNAL
+# @DESCRIPTION:
+# Java package generate classpath will create a classpath based on
+# special variable CP_DEPEND in the ebuild.
+#
+# @CODE
+# Parameters:
+# $1 - classpath variable either EANT_GENTOO_CLASSPATH or JAVA_GENTOO_CLASSPATH
+# @CODE
+java-pkg_gen-cp() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local atom
+	for atom in ${CP_DEPEND}; do
+		if [[ ${atom} =~ /(([[:alnum:]+_-]+)-[0-9]+(\.[0-9]+)*[a-z]?(_[[:alnum:]]+)?(-r[0-9]*)?|[[:alnum:]+_-]+):([[:alnum:]+_.-]+) ]]; then
+			atom=${BASH_REMATCH[2]:-${BASH_REMATCH[1]}}
+			[[ ${BASH_REMATCH[6]} != 0 ]] && atom+=-${BASH_REMATCH[6]}
+			local regex="(^|\s|,)${atom}($|\s|,)"
+			[[ ${!1} =~ ${regex} ]] || declare -g ${1}+=${!1:+,}${atom}
+		else
+			die "Invalid CP_DEPEND atom ${atom}, ensure a SLOT is included"
+		fi
+	done
 }

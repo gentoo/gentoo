@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
 # Anthony G. Basile <blueness@gentoo.org> (01 Aug 2015)
@@ -12,7 +12,6 @@ opencl
 # this is a list of USE flags that should not be used on PPC64
 # Tom Gall <tgall@gentoo.org> manages this list
 directfb
-krb4
 
 # Agostino Sarubbo <ago@gentoo.org> (22 Dec 2012)
 # mask kde since is not anymore keyworded for ppc64
@@ -24,10 +23,7 @@ frei0r
 
 pda
 prelude
-mzscheme
-chasen
 mono
-beagle
 networkmanager
 ocamlopt
 
@@ -38,9 +34,6 @@ xmms2
 
 # dietlibc
 diet
-
-#pyste has untested/unkeyworded deps on ppc64
-pyste
 
 # we don't have hardware to test. also see bug #113398
 dvb
@@ -63,9 +56,6 @@ video_cards_radeonsi
 #until netbeans is keyworded
 netbeans
 
-#build is busted
-pike
-
 # mask pcmcia (bug #131306)
 pcmcia
 
@@ -75,15 +65,8 @@ mpd
 # app-admin/hddtemp
 hddtemp
 
-# mask pbbuttonsd - reported by Mr Bones, ok'd by dostrow
-pbbuttonsd
-
 # Unmask this here, since only ppc64 can use it
 -ibm
-
-# Masking here so sys-fs/evms quits complaining
-hb
-hb2
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
 # Bug #184563, 18 Sep 2007

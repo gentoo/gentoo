@@ -9,4 +9,9 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
-  </pkgmetadata>
+  <use>
+    <flag name="extension">
+      Build the C extension (only for php-5.6.x).
+    </flag>
+  </use>
+</pkgmetadata>

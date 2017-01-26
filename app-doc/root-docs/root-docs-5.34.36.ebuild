@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://root.cern.ch/download/${ROOT_PN}_v${PV}.source.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${ROOT_PN}"
 fi
 
@@ -42,7 +42,8 @@ VIRTUALX_REQUIRED="api"
 DEPEND="
 	app-text/pandoc
 	dev-haskell/pandoc-citeproc[bibutils]
-	dev-texlive/texlive-latex
+	dev-texlive/texlive-fontsrecommended
+	dev-texlive/texlive-latexrecommended
 	virtual/pkgconfig
 	api? (
 		media-fonts/dejavu

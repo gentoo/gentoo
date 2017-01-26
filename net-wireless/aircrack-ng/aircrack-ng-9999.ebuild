@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
@@ -18,12 +18,6 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
-	#inherit versionator
-	#MY_P=${P/\_/-}
-	#MY_PV="$(replace_version_separator 2 '-')"
-	#SRC_URI="http://download.aircrack-ng.org/${PN}-${MY_PV}.tar.gz"
-	#KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-	#S="${WORKDIR}/${MY_P}"
 	MY_PV=${PV/_/-}
 	SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
@@ -56,27 +50,31 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 		airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
 
+pkg_setup() {
+	MAKE_COMMON=(
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		AR="$(tc-getAR)" \
+		LD="$(tc-getLD)" \
+		RANLIB="$(tc-getRANLIB)" \
+		libnl=$(usex netlink true false) \
+		pcre=$(usex pcre true false) \
+		sqlite=$(usex sqlite true false) \
+		experimental=$(usex experimental true false)
+		prefix="${ED}/usr" \
+	)
+	[[ ${PV} == "9999" ]] && MAKE_COMMON+=(
+		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
+	)
+}
+
 src_compile() {
 	if [[ $($(tc-getCC) --version) == clang* ]] ; then
 		#https://bugs.gentoo.org/show_bug.cgi?id=472890
 		filter-flags -frecord-gcc-switches
 	fi
 
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake \
-	CC="$(tc-getCC)" \
-	CXX="$(tc-getCXX)" \
-	AR="$(tc-getAR)" \
-	LD="$(tc-getLD)" \
-	RANLIB="$(tc-getRANLIB)" \
-	libnl=$(usex netlink true false) \
-	pcre=$(usex pcre true false) \
-	sqlite=$(usex sqlite true false) \
-	experimental=$(usex experimental true false) \
-	${liveflags}
+	emake "${MAKE_COMMON[@]}"
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
@@ -89,31 +87,11 @@ src_compile() {
 }
 
 src_test() {
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake check \
-		libnl=$(usex netlink true false) \
-		pcre=$(usex pcre true false) \
-		sqlite=$(usex sqlite true false) \
-		experimental=$(usex experimental true false) \
-		${liveflags}
+	emake "${MAKE_COMMON[@]}" check
 }
 
 src_install() {
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake \
-		prefix="${ED}/usr" \
-		libnl=$(usex netlink true false) \
-		pcre=$(usex pcre true false) \
-		sqlite=$(usex sqlite true false) \
-		experimental=$(usex experimental true false) \
-		${liveflags} \
-		install
+	emake "${MAKE_COMMON[@]}" install
 
 	dodoc AUTHORS ChangeLog INSTALLING README
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,9 @@ DESCRIPTION="The core functions you need to create Docker images and run Docker 
 HOMEPAGE="https://dockerproject.org"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor aufs btrfs +device-mapper experimental overlay seccomp"
+IUSE="apparmor aufs btrfs +container-init +device-mapper hardened overlay pkcs11 seccomp"
 
-# https://github.com/docker/docker/blob/master/hack/PACKAGERS.md#build-dependencies
+# https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 CDEPEND="
 	>=dev-db/sqlite-3.7.9:3
 	device-mapper? (
@@ -44,12 +44,12 @@ DEPEND="
 	dev-go/go-md2man
 
 	btrfs? (
-		>=sys-fs/btrfs-progs-3.8
+		>=sys-fs/btrfs-progs-3.16.1
 	)
 "
 
-# https://github.com/docker/docker/blob/master/hack/PACKAGERS.md#runtime-dependencies
-# https://github.com/docker/docker/blob/master/hack/PACKAGERS.md#optional-dependencies
+# https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
+# https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
 RDEPEND="
 	${CDEPEND}
 
@@ -59,8 +59,10 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 
-	>app-emulation/containerd-0.2.2
+	>=app-emulation/containerd-0.2.5
 	app-emulation/runc[apparmor?,seccomp?]
+	app-emulation/docker-proxy
+	container-init? ( >=sys-process/tini-0.13.0[static] )
 "
 
 RESTRICT="installsources strip"
@@ -88,7 +90,7 @@ CONFIG_CHECK="
 	~CGROUP_HUGETLB
 	~NET_CLS_CGROUP
 	~CFS_BANDWIDTH ~FAIR_GROUP_SCHED ~RT_GROUP_SCHED
-	~IP_VS
+	~IP_VS ~IP_VS_PROTO_TCP ~IP_VS_PROTO_UDP ~IP_VS_NFCT
 
 	~VXLAN
 	~XFRM_ALGO ~XFRM_USER
@@ -111,7 +113,7 @@ pkg_setup() {
 	if kernel_is lt 3 10; then
 		ewarn ""
 		ewarn "Using Docker with kernels older than 3.10 is unstable and unsupported."
-		ewarn " - http://docs.docker.com/installation/binaries/#check-kernel-dependencies"
+		ewarn " - http://docs.docker.com/engine/installation/binaries/#check-kernel-dependencies"
 	fi
 
 	# for where these kernel versions come from, see:
@@ -199,10 +201,10 @@ src_compile() {
 	export CGO_CFLAGS="-I${ROOT}/usr/include"
 	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
 
-	# if we're building from a zip, we need the GITCOMMIT value
+	# if we're building from a tarball, we need the GITCOMMIT value
 	[ "$DOCKER_GITCOMMIT" ] && export DOCKER_GITCOMMIT
 
-	if gcc-specs-pie; then
+	if use hardened; then
 		sed -i "s/EXTLDFLAGS_STATIC='/&-fno-PIC /" hack/make.sh || die
 		grep -q -- '-fno-PIC' hack/make.sh || die 'hardened sed failed'
 
@@ -222,18 +224,11 @@ src_compile() {
 		fi
 	done
 
-	for tag in apparmor seccomp; do
+	for tag in apparmor pkcs11 seccomp; do
 		if use $tag; then
 			DOCKER_BUILDTAGS+=" $tag"
 		fi
 	done
-
-	# https://github.com/docker/docker/pull/13338
-	if use experimental; then
-		export DOCKER_EXPERIMENTAL=1
-	else
-		unset DOCKER_EXPERIMENTAL
-	fi
 
 	# time to build!
 	./hack/make.sh dynbinary || die 'dynbinary failed'
@@ -246,10 +241,10 @@ src_install() {
 	VERSION="$(cat VERSION)"
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd
-	newbin "bundles/$VERSION/dynbinary-daemon/docker-proxy-$VERSION" docker-proxy
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc
+	use container-init && dosym tini /usr/bin/docker-init
 
 	newinitd contrib/init/openrc/docker.initd docker
 	newconfd contrib/init/openrc/docker.confd docker
@@ -265,15 +260,15 @@ src_install() {
 	dobashcomp contrib/completion/bash/*
 
 	insinto /usr/share/zsh/site-functions
-	doins contrib/completion/zsh/*
+	doins contrib/completion/zsh/_*
 
 	insinto /usr/share/vim/vimfiles
 	doins -r contrib/syntax/vim/ftdetect
 	doins -r contrib/syntax/vim/syntax
 
 	# note: intentionally not using "doins" so that we preserve +x bits
-	mkdir -p "${D}/usr/share/${PN}/contrib"
-	cp -R contrib/* "${D}/usr/share/${PN}/contrib"
+	dodir /usr/share/${PN}/contrib
+	cp -R contrib/* "${ED}/usr/share/${PN}/contrib"
 }
 
 pkg_postinst() {

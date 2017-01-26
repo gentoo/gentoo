@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="htmlthumbs">Enable HTML thumbnail previews via <pkg>dev-qt/qtwebengine</pkg></flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
 	</use>

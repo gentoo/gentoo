@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils git-r3 systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS=""
-IUSE="caps +cmdmon ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns"
+IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
 "
@@ -24,7 +24,8 @@ CDEPEND="
 "
 DEPEND="
 	${CDEPEND}
-	sys-apps/texinfo
+	dev-ruby/asciidoctor
+	pps? ( net-misc/pps-tools )
 "
 RDEPEND="
 	${CDEPEND}
@@ -39,7 +40,9 @@ src_prepare() {
 	sed -i \
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
-		conf.c chrony.texi.in examples/* || die
+		conf.c doc/*.adoc examples/* || die
+
+	default
 }
 
 src_configure() {
@@ -73,7 +76,6 @@ src_configure() {
 		${EXTRA_ECONF} \
 		--docdir=/usr/share/doc/${PF} \
 		--chronysockdir=/run/chrony \
-		--infodir=/usr/share/info \
 		--mandir=/usr/share/man \
 		--prefix=/usr \
 		--sysconfdir=/etc/chrony \
@@ -94,20 +96,22 @@ src_compile() {
 src_install() {
 	default
 
-	doinfo chrony.info*
-
 	newinitd "${FILESDIR}"/chronyd.init-r1 chronyd
 	newconfd "${FILESDIR}"/chronyd.conf chronyd
 
 	insinto /etc/${PN}
 	newins examples/chrony.conf.example1 chrony.conf
 
+	docinto examples
 	dodoc examples/*.example*
+
+	docinto html
+	dodoc doc/*.html
 
 	keepdir /var/{lib,log}/chrony
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/chrony-2.2.logrotate chrony
+	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
 	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
 	systemd_enable_ntpunit 50-chrony chronyd.service

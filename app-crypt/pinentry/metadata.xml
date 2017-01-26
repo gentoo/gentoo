@@ -9,7 +9,4 @@
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
-	<use>
-		<flag name="clipboard">Enable clipboard integration</flag>
-	</use>
 </pkgmetadata>

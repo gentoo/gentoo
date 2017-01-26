@@ -1,7 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Michael Haubenwallner <haubi@gentoo.org> (14 Jul 2009)
-# Has build errors on aix5.3.
-=sys-process/lsof-4.82

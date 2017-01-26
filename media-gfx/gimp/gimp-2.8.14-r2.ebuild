@@ -44,7 +44,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	gnome? ( gnome-base/gvfs )
 	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	exif? ( >=media-libs/libexif-0.6.15 )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	mng? ( media-libs/libmng )

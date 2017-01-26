@@ -1,0 +1,21 @@
+commit b5e59a044d392ede62af23076bbf0a154d00bf60
+Author: Elvis Angelaccio <elvis.angelaccio@kde.org>
+Date:   Fri Jan 13 16:14:35 2017 +0100
+
+    Stop crashing when loading the konqueror's webengine part
+    
+    QtWebEngine requires this attribute set before the QGuiApplication
+    instance is created.
+
+diff --git a/app/main.cpp b/app/main.cpp
+index d375d79..d3a60b1 100644
+--- a/app/main.cpp
++++ b/app/main.cpp
+@@ -42,6 +42,7 @@ using Kerfuffle::AddToArchive;
+ 
+ int main(int argc, char **argv)
+ {
++    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts); // Required for the webengine part.
+     QApplication application(argc, argv);
+ 
+     /**

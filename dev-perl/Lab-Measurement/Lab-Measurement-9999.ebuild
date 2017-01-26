@@ -35,6 +35,7 @@ RDEPEND="
 	>=dev-perl/MooseX-Params-Validate-0.180.0
 	>=dev-perl/namespace-autoclean-0.200.0
 	>=dev-perl/Role-Tiny-1.3.4
+	dev-perl/Statistics-Descriptive
 	dev-perl/Term-ANSIScreen
 	>=dev-perl/TermReadKey-2.320.0
 	dev-perl/TeX-Encode
@@ -44,6 +45,7 @@ RDEPEND="
 	dev-perl/XML-Generator
 	dev-perl/XML-Twig
 	dev-perl/YAML
+	dev-perl/aliased
 	>=dev-perl/YAML-LibYAML-0.410.0
 	sci-visualization/gnuplot
 	!dev-perl/Lab-Instrument
@@ -55,7 +57,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-perl/Module-Build
-	test? ( dev-perl/Test-Files )
+	test? (
+		dev-perl/File-Slurper
+		dev-perl/Test-Files
+		>=dev-perl/Test-Fatal-0.12.0
+	)
 "
 
 pkg_postinst() {

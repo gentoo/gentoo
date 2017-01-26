@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -131,11 +131,6 @@ src_prepare() {
 			sed -i -e "/gdbus\/delayed-message-processing/d" gio/tests/gdbus-peer.c || die
 			sed -i -e "/gdbus\/nonce-tcp/d" gio/tests/gdbus-peer.c || die
 		fi
-
-		# thread test fails, upstream bug #679306
-		# FIXME: we need to check if it's still failing as upstream thinks something
-		# is wrong in our setups
-		#epatch "${FILESDIR}/${PN}-2.34.0-testsuite-skip-thread4.patch"
 
 		# This test is prone to fail, bug #504024, upstream bug #723719
 		sed -i -e '/gdbus-close-pending/d' gio/tests/Makefile.am || die

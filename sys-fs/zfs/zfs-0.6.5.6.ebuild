@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3 linux-mod
@@ -11,7 +11,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS=" ~amd64"
 fi
 
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev

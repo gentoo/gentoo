@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit git-r3
+inherit autotools git-r3
 
 MY_PN=${PN/g/G}
 
@@ -15,34 +15,27 @@ EGIT_REPO_URI="https://github.com/shimmerproject/${MY_PN}"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
 KEYWORDS=""
-# IUSE="ayatana gnome emerald"
 IUSE="ayatana gnome"
 
 RDEPEND="
 	>=x11-themes/gtk-engines-murrine-0.90
+	>=x11-libs/gtk+-3.20.0:3
+"
+DEPEND="${RDEPEND}
+	dev-ruby/sass
+	dev-libs/glib:2
 "
 
-RESTRICT="binchecks strip"
+src_prepare() {
+	eapply_user
+	eautoreconf
+}
 
 src_install() {
-	dodoc README
-	rm -f README LICENSE*
+	emake DESTDIR="${D}" install
 
-	insinto /usr/share/themes/${MY_PN}-compact/xfwm4
-	doins xfwm4-compact/*
-	rm -rf xfwm4-compact
-
-	insinto /usr/share/themes/${MY_PN}-a11y/xfwm4
-	doins xfwm4-a11y/*
-	rm -rf xfwm4-a11y
-
-	insinto /usr/share/themes/${MY_PN}-bright/xfce-notify-4.0
-	doins xfce-notify-4.0_bright/*
-	rm -rf xfce-notify-4.0_bright
-
+	pushd "${ED}"usr/share/themes/${MY_PN} > /dev/null || die
 	use ayatana || rm -rf unity
 	use gnome || rm -rf metacity-1
-
-	insinto /usr/share/themes/${MY_PN}
-	doins -r *
+	popd > /dev/null || die
 }

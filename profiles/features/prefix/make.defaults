@@ -17,7 +17,11 @@ USE="-xattr"
 #
 # If in the future, there does exist a working sandbox implementation then it
 # should be enabled on a per-profile basis only.
-FEATURES="${FEATURES} -sandbox"
+FEATURES="${FEATURES} -sandbox -usersandbox"
+
+# Prefix does not have user management and the security model does not apply.
+# Disable user* features by default.
+FEATURES="${FEATURES} -userpriv -userfetch -usersync"
 
 # this probably already is like this, but we assure that in prefix we
 # have a GNU userland

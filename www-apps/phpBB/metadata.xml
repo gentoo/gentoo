@@ -5,4 +5,9 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+		<description>Maintainer</description>
+	</maintainer>
 </pkgmetadata>

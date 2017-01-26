@@ -1,5 +1,5 @@
---- wscript.old	2013-12-23 00:56:28.623714186 +0100
-+++ wscript	2013-12-23 00:56:39.592714596 +0100
+--- a/wscript	2013-12-23 00:56:28.623714186 +0100
++++ b/wscript	2013-12-23 00:56:39.592714596 +0100
 @@ -226,14 +226,6 @@
  	opt.add_option('--noldconfig', action='store_true', default=False, help='do not run lconfig when installing')
  

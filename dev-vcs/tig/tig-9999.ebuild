@@ -10,12 +10,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/jonas/tig.git"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://jonas.nitro.dk/tig/releases/${P}.tar.gz"
+	SRC_URI="https://github.com/jonas/tig/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 fi
 
 DESCRIPTION="text mode interface for git"
-HOMEPAGE="http://jonas.nitro.dk/tig/"
+HOMEPAGE="https://jonas.github.io/tig/"
 
 LICENSE="GPL-2"
 SLOT="0"

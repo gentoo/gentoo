@@ -1,6 +1,6 @@
 diff -urN src/nlapi.c src/nlapi.c
---- src/nlapi.c	2004-12-20 08:39:14.682706517 -0500
-+++ src/nlapi.c	2004-12-20 08:39:50.185734092 -0500
+--- a/src/nlapi.c
++++ b/src/nlapi.c
 @@ -86,7 +86,7 @@
          for (; bytes > 0; p = NLMSG_NEXT(p, bytes)) {
              struct callback_info *c;

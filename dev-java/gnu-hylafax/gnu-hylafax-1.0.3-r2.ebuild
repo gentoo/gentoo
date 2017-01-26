@@ -36,9 +36,8 @@ JAVA_GENTOO_CLASSPATH="
 
 S="${WORKDIR}/${P}"
 
-# bug 546502
 PATCHES=(
-	"${FILESDIR}"/"${P}"-ClientPool.patch
+	"${FILESDIR}"/"${P}"-ClientPool.patch #546502
 )
 
 java_prepare() {
@@ -48,6 +47,5 @@ java_prepare() {
 	# tarball contains the same sources in gnu-.../sources and gnu-.../main/
 	rm -r gnu-hylafax-*/sources || die
 
-	epatch ${PATCHES[@]}
-
+	epatch "${PATCHES[@]}"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,10 +7,10 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Command line tool for downloading Youtube closed captions"
-HOMEPAGE="https://code.google.com/p/gcap/"
-SRC_URI="https://gcap.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://debian/pool/main/g/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""

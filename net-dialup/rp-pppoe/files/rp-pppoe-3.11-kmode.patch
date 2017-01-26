@@ -1,5 +1,5 @@
---- src/configure.in.old	2015-01-07 13:08:18.929959937 +0100
-+++ src/configure.in	2015-01-07 13:08:38.253406302 +0100
+--- a/src/configure.in
++++ b/src/configure.in
 @@ -26,6 +26,7 @@
  #include<net/ethernet.h>
  #include<linux/if.h>

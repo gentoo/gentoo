@@ -12,7 +12,7 @@ SRC_URI="http://stevedonovan.github.io/files/${PN}-1.3.2-core.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 COMMON_DEPEND=">=dev-lang/lua-5.1:="

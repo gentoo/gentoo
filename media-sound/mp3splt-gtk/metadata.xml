@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="audacious">Include <pkg>media-sound/audacious</pkg> support</flag>
-		<flag name="gtk3">Link against <pkg>x11-libs/gtk+</pkg>:3 instead of <pkg>x11-libs/gtk+</pkg>:2</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mp3splt</remote-id>

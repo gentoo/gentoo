@@ -141,5 +141,5 @@ pkg_postinst() {
 	postgresql-config update
 
 	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "http://postgis.net/docs/manual-${MY_PV}/postgis_installation.html#create_new_db_extensions"
+	elog "http://postgis.net/docs/manual-${PGIS}/postgis_installation.html#create_new_db_extensions"
 }

@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.kde.org/projects/extragear/libs/libkgapi"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

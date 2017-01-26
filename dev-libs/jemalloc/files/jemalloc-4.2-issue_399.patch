@@ -1,0 +1,26 @@
+From 3c8c3e9e9b59b6e34a222816a05f0a01a68919b3 Mon Sep 17 00:00:00 2001
+From: Jason Evans <jasone@canonware.com>
+Date: Mon, 26 Sep 2016 15:55:40 -0700
+Subject: [PATCH] Close file descriptor after reading
+ "/proc/sys/vm/overcommit_memory".
+
+This bug was introduced by c2f970c32b527660a33fa513a76d913c812dcf7c
+(Modify pages_map() to support mapping uncommitted virtual memory.).
+
+This resolves #399.
+---
+ src/pages.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/pages.c b/src/pages.c
+index 2a9b7e3..05b0d69 100644
+--- a/src/pages.c
++++ b/src/pages.c
+@@ -219,6 +219,7 @@ os_overcommits_proc(void)
+ 		return (false); /* Error. */
+ 
+ 	nread = read(fd, &buf, sizeof(buf));
++	close(fd);
+ 	if (nread < 1)
+ 		return (false); /* Error. */
+ 	/*

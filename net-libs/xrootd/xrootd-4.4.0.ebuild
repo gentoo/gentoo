@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://xrootd.org/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc fuse http kerberos readline ssl test"
 
 RDEPEND="
@@ -28,6 +28,11 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="http? ( kerberos ssl )"
 PATCHES=( "${FILESDIR}"/${PN}-no-werror.patch )
+
+# xrootd plugins are not intended to be linked with,
+# they are to be loaded at runtime by xrootd,
+# see https://github.com/xrootd/xrootd/issues/447
+QA_SONAME="/usr/lib.*/libXrd*-4.so"
 
 pkg_setup() {
 	enewgroup xrootd

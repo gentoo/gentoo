@@ -8,7 +8,6 @@
 	<longdescription lang="en">The Anthy engine for IBus platform. It provides Japanese input method from
 libanthy.</longdescription>
 	<upstream>
-		<remote-id type="google-code">ibus</remote-id>
 		<remote-id type="github">ibus/ibus</remote-id>
 	</upstream>
 	<use>

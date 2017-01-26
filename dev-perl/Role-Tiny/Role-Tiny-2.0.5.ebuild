@@ -1,0 +1,25 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+DIST_AUTHOR=HAARG
+DIST_VERSION=2.000005
+inherit perl-module
+
+DESCRIPTION="Roles. Like a nouvelle cuisine portion size slice of Moose"
+
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~x86 ~x86-fbsd ~ppc-macos ~x86-solaris"
+IUSE="test"
+
+RDEPEND="
+	>=virtual/perl-Exporter-5.570.0
+	!<dev-perl/Moo-0.9.14
+"
+DEPEND="${RDEPEND}
+	test? (
+		>=virtual/perl-Test-Simple-0.880.0
+	)
+"

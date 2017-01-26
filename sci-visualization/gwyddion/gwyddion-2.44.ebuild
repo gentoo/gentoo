@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc fits fftw gnome kde nls opengl perl python ruby sourceview xml X"
 
 RDEPEND="
@@ -27,7 +27,7 @@ RDEPEND="
 	fits? ( sci-libs/cfitsio )
 	fftw? ( sci-libs/fftw:3.0 )
 	gnome? ( gnome-base/gconf:2 )
-	kde? ( kde-base/kdelibs:4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 	opengl? ( virtual/opengl x11-libs/gtkglext )
 	perl? ( dev-lang/perl )
 	python? (

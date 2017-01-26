@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,8 +11,8 @@ HOMEPAGE="http://www.mpir.org/"
 SRC_URI="http://www.mpir.org/${P}.tar.lzma"
 
 LICENSE="LGPL-3"
-SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+SLOT="0/11"
+KEYWORDS="amd64 ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection static-libs"
 
 DEPEND="x86? ( dev-lang/yasm )

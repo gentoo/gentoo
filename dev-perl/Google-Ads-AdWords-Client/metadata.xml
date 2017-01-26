@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">googleads/googleads-perl-lib</remote-id>
+    <remote-id type="cpan">Google-Ads-AdWords-Client</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Client</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Constants</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Deserializer</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::FaultDetail</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Logging</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::OAuth2ApplicationsHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::OAuth2ServiceAccountsHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::DateRange</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::DateRangeType</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::DownloadFormat</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::Operator</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::OrderBy</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::Paging</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::Predicate</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::ReportDefinition</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::ReportType</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::ReportingConfiguration</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::Selector</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Reports::SortOrder</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::RequestStats</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Serializer</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Utilities::BatchJobHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Utilities::BatchJobHandlerError</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Utilities::BatchJobHandlerStatus</remote-id>
+    <remote-id type="cpan-module">Google::Ads::AdWords::Utilities::PageProcessor</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::AuthError</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::AuthHandlerInterface</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::CaptchaRequiredError</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::Constants</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::ErrorUtils</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::HTTPTransport</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::MapUtils</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::MediaUtils</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::OAuth2ApplicationsHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::OAuth2BaseHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::OAuth2ServiceAccountsHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::OAuthApplicationsHandlerInterface</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::ReportDownloadError</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::ReportDownloadHandler</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::ReportUtils</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::Utilities::AdsUtilityRegistry</remote-id>
+    <remote-id type="cpan-module">Google::Ads::Common::XPathSAXParser</remote-id>
+    <remote-id type="cpan-module">Google::Ads::SOAP::Deserializer::MessageParser</remote-id>
+    <remote-id type="cpan-module">Google::Ads::SOAP::Generator::Generator</remote-id>
+    <remote-id type="cpan-module">Google::Ads::SOAP::Generator::TypemapVisitor</remote-id>
+    <remote-id type="cpan-module">Google::Ads::SOAP::Typelib::ComplexType</remote-id>
+  </upstream>
+</pkgmetadata>

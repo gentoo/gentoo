@@ -7,7 +7,7 @@ ROS_REPO_URI="https://github.com/pr2/pr2_common"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin

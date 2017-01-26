@@ -16,7 +16,7 @@ SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/34" # Subslot consists of major + minor version number
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
 jpeg2k las lua openexr openinventor osgapps pdf png qt4 qt5 sdl sdl2 svg tiff truetype
 vnc wxwidgets xine xrandr zlib"
@@ -51,7 +51,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
@@ -60,7 +60,7 @@ RDEPEND="
 	)
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

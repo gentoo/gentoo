@@ -7,4 +7,8 @@
 </maintainer>
 <longdescription>TIFF image library and tools, mostly for scanner and fax
  support, but also used by GIS and other imaging tools.</longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:libtiff:libtiff</remote-id>
+	<remote-id type="cpe">cpe:/a:libtiff_project:libtiff</remote-id>
+</upstream>
 </pkgmetadata>

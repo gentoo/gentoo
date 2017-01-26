@@ -4,8 +4,6 @@
 
 EAPI=5
 
-CMAKE_MIN_VERSION=2.8
-
 inherit cmake-utils
 
 DESCRIPTION="A suite for man in the middle attacks"

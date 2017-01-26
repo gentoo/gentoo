@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs flag-o-matic cmake-utils games
 
 DESCRIPTION="Help a girl by name of Violet to struggle with hordes of monsters"
 HOMEPAGE="https://code.google.com/p/violetland/"
-SRC_URI="https://violetland.googlecode.com/files/${PN}-v${PV}-src.zip"
+SRC_URI="https://github.com/ooxi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 CC-BY-SA-3.0"
 SLOT="0"
@@ -21,10 +21,7 @@ RDEPEND="media-libs/libsdl[sound,video]
 	dev-libs/boost[threads(+)]
 	virtual/opengl
 	virtual/glu"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
-
-S=${WORKDIR}/${PN}-v${PV}
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i \

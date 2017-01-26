@@ -16,6 +16,11 @@
 		OpenGL apps, spreadsheets and other office apps, etc. Eigen is dedicated to
 		providing optimal speed with GCC.
 	</longdescription>
+	<use>
+		<flag name="c++11">Build using the C++11 standard</flag>
+		<flag name="cuda">Build with cuda support</flag>
+		<flag name="cpu_flags_x86_f16c">Take advantage of CPU feature f16c</flag>
+	</use>
 	<upstream>
 		<remote-id type="bitbucket">eigen/eigen</remote-id>
 	</upstream>

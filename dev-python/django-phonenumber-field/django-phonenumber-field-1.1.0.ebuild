@@ -5,7 +5,7 @@
 EAPI=5
 
 # 1.0.0 would support 3.5 and pypy too
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1
 

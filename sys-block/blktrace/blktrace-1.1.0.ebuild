@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs flag-o-matic linux-info
 
 DESCRIPTION="btrace can show detailed info about what is happening on a block device io queue"
-HOMEPAGE="https://www.kernel.org/pub/linux/kernel/people/axboe/blktrace/"
+HOMEPAGE="http://git.kernel.dk/cgit/blktrace/"
 MY_PN="blktrace"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"

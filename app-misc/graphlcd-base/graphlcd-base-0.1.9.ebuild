@@ -1,15 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils flag-o-matic multilib
+inherit flag-o-matic multilib
 
 VERSION="501" #every bump, new version
 
 DESCRIPTION="Graphical LCD Driver"
-HOMEPAGE="http://projects.vdr-developer.org/projects/show/graphlcd"
+HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 KEYWORDS="~amd64 ~ppc ~x86"
@@ -23,9 +23,14 @@ RDEPEND="g15? ( app-misc/g15daemon )
 
 src_prepare() {
 	sed -i Make.config -e "s:usr\/local:usr:" -e "s:FLAGS *=:FLAGS ?=:"
-	epatch "${FILESDIR}/${PN}-0.1.5-nostrip.patch"
+	eapply "${FILESDIR}/${PN}-0.1.5-nostrip.patch"
 
 	sed -i glcdskin/Makefile -e "s:-shared:\$(LDFLAGS) -shared:"
+
+	#gcc-6 fix
+	sed -i glcddrivers/futabaMDM166A.c -e "s:0xff7f0004:(int) 0xff7f0004:"
+
+	default
 }
 
 src_install() {
@@ -34,5 +39,7 @@ src_install() {
 	insinto /etc
 	doins graphlcd.conf
 
-	dodoc docs/*
+	local DOCS=( HISTORY README docs/* )
+
+	einstalldocs
 }

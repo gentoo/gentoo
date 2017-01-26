@@ -30,7 +30,7 @@ S="${WORKDIR}/${P}/src"
 
 src_prepare() {
 	#remove bundled libraries
-	rm -rf foreign/libffi/
+	rm -rf foreign/libffi/ || die
 }
 
 src_configure() {

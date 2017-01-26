@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ DESCRIPTION="Fast C library for the Discrete Fourier Transform"
 HOMEPAGE="http://www.fftw.org"
 SRC_URI="http://www.fftw.org/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 LICENSE="GPL-2+"
 SLOT="2.1"
@@ -27,20 +27,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-test.patch
 	"${FILESDIR}"/${P}-cc.patch
 	"${FILESDIR}"/${P}-texinfo5.1.patch
+	"${FILESDIR}"/${P}-parallel-tests.patch
 )
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		if ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected compiler"
-
-			if tc-is-clang; then
-				ewarn "OpenMP support in sys-devel/clang is provided by sys-libs/libomp,"
-				ewarn "which you will need to build ${CATEGORY}/${PN} with USE=\"openmp\""
-			fi
-
-			die "need openmp capable compiler"
-		fi
+		tc-check-openmp
 		FORTRAN_NEED_OPENMP=1
 	fi
 
@@ -121,7 +117,7 @@ src_test() {
 }
 
 src_install () {
-	use doc && HTML_DOCS=( doc/{*.html,*.gif} )
+	use doc && HTML_DOCS=( doc/*.{html,gif} )
 	multibuild_foreach_variant run_in_build_dir default_src_install
 
 	doheader fortran/fftw_f77.i
@@ -135,4 +131,8 @@ src_install () {
 		done
 	}
 	create_fftw_symlinks $(usex float s d)
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }

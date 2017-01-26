@@ -10,7 +10,6 @@
 	  <flag name="cygnal">Enable building of the cygnal server</flag>
 	  <flag name="dump">Enable dump output module for creating video from SWF</flag>
 	  <flag name="egl">Enable EGL support for the OpenVG, OpenGL and X11 renderers</flag>
-	  <flag name="gconf">Enable GConf configuration backend</flag>
 	  <flag name="harden">Enable upstream recommended hardening build flags (may conflict with system ones)</flag>
 	  <flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
 	  <flag name="openvg">Rendering based on the OpenVG graphics acceleration API</flag>

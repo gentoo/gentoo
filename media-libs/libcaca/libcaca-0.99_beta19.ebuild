@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="cxx doc imlib java mono ncurses opengl python ruby slang static-libs test truetype X"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -25,7 +25,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
-	ncurses? ( >=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}] )
+	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	opengl? (
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]

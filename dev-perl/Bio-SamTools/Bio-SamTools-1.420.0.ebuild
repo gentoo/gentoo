@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ LICENSE="|| ( Apache-2.0 Artistic-2 GPL-1+ )"
 
 RDEPEND="
 	>=sci-biology/bioperl-1.6.9
-	>=sci-biology/samtools-1
+	>=sci-biology/samtools-1:0
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-CBuilder

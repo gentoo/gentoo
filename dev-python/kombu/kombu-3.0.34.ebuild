@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 inherit distutils-r1
 
@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}
 # Req'd for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PY27_REQUSE="$(python_gen_useflags 'python2.7')"
+PY27_REQUSE="$(python_gen_useflags 'python2*')"
 REQUIRED_USE="
 	sqs? ( ${PY27_REQUSE} )
 	doc? ( ${PY27_REQUSE} amqplib sqs )"	# 2 deps in doc build are py2 capable only

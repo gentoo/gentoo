@@ -1,0 +1,25 @@
+commit 82fdfd24d46966a117fa625b68784735a40f9065
+Author: Elvis Angelaccio <elvis.angelaccio@kde.org>
+Date:   Fri Jan 6 15:35:46 2017 +0100
+
+    Stop running executables when opening urls
+    
+    This is a security risk because it's not clear when an entry in an
+    archive is an executable.
+    
+    BUG: 374572
+    FIXED-IN: 16.12.1
+
+diff --git a/part/part.cpp b/part/part.cpp
+index f1adf21..80f657b 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -988,7 +988,7 @@ void Part::slotOpenExtractedEntry(KJob *job)
+         } else {
+             KRun::runUrl(QUrl::fromUserInput(fullName, QString(), QUrl::AssumeLocalFile),
+                          QMimeDatabase().mimeTypeForFile(fullName).name(),
+-                         widget());
++                         widget(), false, false);
+         }
+     } else if (job->error() != KJob::KilledJobError) {
+         KMessageBox::error(widget(), job->errorString());

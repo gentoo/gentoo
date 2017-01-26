@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="libobjc2 native-exceptions"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
@@ -96,13 +96,8 @@ src_configure() {
 
 src_compile() {
 	emake
-	# Prepare doc here (needed when no gnustep-make is already installed)
 	if use doc ; then
-		# If a gnustep-1 environment is set
-		unset GNUSTEP_MAKEFILES
-		pushd Documentation &> /dev/null
-		emake -j1 all install
-		popd &> /dev/null
+		emake -C Documentation
 	fi
 }
 
@@ -118,9 +113,7 @@ src_install() {
 
 	# Copy the documentation
 	if use doc ; then
-		dodir ${GNUSTEP_SYSTEM_DOC}
-		cp -r Documentation/tmp-installation/System/Library/Documentation/* \
-			"${ED}"${GNUSTEP_SYSTEM_DOC=}
+		emake -C Documentation ${make_eval} DESTDIR="${D}" install
 	fi
 
 	dodoc FAQ README RELEASENOTES

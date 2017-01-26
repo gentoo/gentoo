@@ -83,11 +83,12 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/8FA16AD28B5E79A7CD52B8B72985B0AE8CCD6ADF-xmlrpc-common-3.0.jar
 	http://hg.netbeans.org/binaries/D6917BF718583002CBE44E773EE21E2DF08ADC71-xmlrpc-server-3.0.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-harness-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-platform-${PV}
 	>=dev-java/antlr-4.5:4
 	dev-java/commons-compress:0
@@ -120,15 +121,13 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 #	dev-java/jaxb:2 upstream version contains more stuff so websvccommon does not compile with ours
 #	dev-java/jzlib:0 fails with "Missing manifest tag OpenIDE-Module"
 #	dev-java/trilead-ssh2:0 in overlay
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	dev-java/commons-codec:0
-	${CDEPEND}
 	dev-java/javacc:0
 	dev-java/javahelp:0
 	dev-java/jna:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

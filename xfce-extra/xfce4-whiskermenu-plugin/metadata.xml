@@ -42,14 +42,8 @@
 			<email>graeme@gottcode.org</email>
 			<name>Graeme Gott</name>
 		</maintainer>
-		<bugs-to>
-			https://github.com/gottcode/xfce4-whiskermenu-plugin/issues?labels=bug&amp;state=open
-		</bugs-to>
-		<changelog>
-			http://gottcode.org/xfce4-whiskermenu-plugin/#releasenotes
-		</changelog>
-		<remote-id type="github">
-			gottcode/xfce4-whiskermenu-plugin
-		</remote-id>
+		<bugs-to>https://github.com/gottcode/xfce4-whiskermenu-plugin/issues?labels=bug&amp;state=open</bugs-to>
+		<changelog>https://gottcode.org/xfce4-whiskermenu-plugin/#releasenotes</changelog>
+		<remote-id type="github">gottcode/xfce4-whiskermenu-plugin</remote-id>
 	</upstream>
 </pkgmetadata>

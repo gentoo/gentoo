@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+upekbsapi"
 
-DEPEND="app-crypt/qca:2[openssl,qt4(+)]
+DEPEND="app-crypt/qca:2[qt4(+),ssl]
 	sys-auth/libfprint
 	sys-auth/polkit-qt[qt4(+)]
 	sys-libs/pam

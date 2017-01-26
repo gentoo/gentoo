@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic linux-info toolchain-funcs udev
+EAPI=6
+inherit flag-o-matic linux-info toolchain-funcs udev
 
 DEB_REV=${PV#*_p}
 MY_PV=${PV%_p*}
@@ -51,11 +51,14 @@ pkg_setup() {
 	use debug && append-cppflags -DDEBUG
 }
 
-src_prepare() {
-	epatch \
-		"${WORKDIR}"/debian/patches/no-modprobe-rules.patch \
-		"${WORKDIR}"/debian/patches/remove-libsysfs-dep.patch
+PATCHES=(
+	"${WORKDIR}"/debian/patches/no-modprobe-rules.patch
+	"${WORKDIR}"/debian/patches/remove-libsysfs-dep.patch
+	"${FILESDIR}"/${P}-flex-2.6.3-fix.patch
+)
 
+src_prepare() {
+	default
 	sed -i \
 		-e '/CFLAGS/s:-fomit-frame-pointer::' \
 		-e '/dir/s:sbin:bin:g' \

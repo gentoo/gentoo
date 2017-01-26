@@ -28,17 +28,20 @@
 		<flag name="ospfapi">
 			Enable OSPFAPI support for client applications accessing the OSPF link state database
 		</flag>
-		<flag name="tcp-zebra">
-			Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain
-			sockets are chosen otherwise
+		<flag name="pam">
+			Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Quagga Virtual Terminal Interface
+			Shell (vtysh); if the readline USE flag is disabled, this flag is ignored
+		</flag>
+		<flag name="protobuf">
+			Enable support for <pkg>dev-libs/protobuf</pkg>
 		</flag>
 		<flag name="readline">
 			Enable support for <pkg>sys-libs/readline</pkg> to provide the Quagga Virtual Terminal
 			Interface Shell (vtysh)
 		</flag>
-		<flag name="pam">
-			Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Quagga Virtual Terminal Interface
-			Shell (vtysh); if the readline USE flag is disabled, this flag is ignored
+		<flag name="tcp-zebra">
+			Enable TCP zserv interface on port 2600 for Zebra/protocol-daemon communication. Unix domain
+			sockets are chosen otherwise
 		</flag>
 	</use>
 </pkgmetadata>

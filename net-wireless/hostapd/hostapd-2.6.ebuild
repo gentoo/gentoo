@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,13 +6,15 @@ EAPI="6"
 
 inherit toolchain-funcs eutils systemd
 
+# bogus commit to force manifest regeneration #596462
+
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://hostap.epitest.fi"
 SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ~ppc x86"
+KEYWORDS="amd64 ~arm ~mips ppc x86"
 IUSE="ipv6 logwatch netlink sqlite +ssl +wps +crda"
 
 DEPEND="ssl? ( dev-libs/openssl:*[-bindist] )
@@ -28,7 +30,11 @@ RDEPEND="${DEPEND}"
 S="${S}/${PN}"
 
 src_prepare() {
+	# Allow users to apply patches to src/drivers for example,
+	# i.e. anything outside ${S}/${PN}
+	pushd ../ >/dev/null || die
 	default
+	popd >/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die

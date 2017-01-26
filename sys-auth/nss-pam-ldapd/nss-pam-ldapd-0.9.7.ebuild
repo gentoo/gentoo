@@ -13,14 +13,14 @@ SRC_URI="http://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug kerberos +pam sasl test +utils"
 
 COMMON_DEP="
 	net-nds/openldap[${MULTILIB_USEDEP}]
 	sasl? ( dev-libs/cyrus-sasl[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
-	pam? ( virtual/pam[${MULTILIB_USEDEP}] )
+	virtual/pam[${MULTILIB_USEDEP}]
 	utils? ( ${PYTHON_DEPS} )
 	!sys-auth/nss_ldap
 	!sys-auth/pam_ldap"

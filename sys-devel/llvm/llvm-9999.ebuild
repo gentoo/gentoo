@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-# (needed due to lib32 find_library fix)
-CMAKE_MIN_VERSION=3.6.1-r1
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils flag-o-matic git-r3 \
-	multilib-minimal pax-utils python-any-r1 toolchain-funcs
+	multilib-minimal pax-utils python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
@@ -20,13 +20,22 @@ EGIT_REPO_URI="http://llvm.org/git/llvm.git
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC Sparc SystemZ X86 XCore )
+	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
-LICENSE="UoI-NCSA"
-SLOT="0/${PV%.*}"
+# Additional licenses:
+# 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
+# 2. ARM backend: LLVM Software Grant by ARM.
+# 3. MD5 code: public-domain.
+# 4. Tests (not installed):
+#  a. gtest: BSD.
+#  b. YAML tests: MIT.
+
+LICENSE="UoI-NCSA rc BSD public-domain
+	llvm_targets_ARM? ( LLVM-Grant )"
+SLOT="0/$(get_major_version)"
 KEYWORDS=""
-IUSE="debug +doc gold libedit +libffi multitarget ncurses ocaml test
+IUSE="debug +doc gold libedit +libffi multitarget ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
@@ -34,10 +43,7 @@ RDEPEND="
 	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
-	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
-	ocaml? (
-		>=dev-lang/ocaml-4.00.0:0=
-		dev-ml/ocaml-ctypes:= )"
+	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	dev-lang/perl
@@ -45,13 +51,11 @@ DEPEND="${RDEPEND}
 		( >=sys-freebsd/freebsd-lib-9.1-r10 sys-libs/libcxx )
 	)
 	|| ( >=sys-devel/binutils-2.18 >=sys-devel/binutils-apple-5.1 )
-	kernel_Darwin? ( <sys-libs/libcxx-${PV%_rc*}.9999 )
+	kernel_Darwin? ( <sys-libs/libcxx-$(get_version_component_range 1-3).9999 )
 	doc? ( dev-python/sphinx )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
-	ocaml? ( dev-ml/findlib
-		test? ( dev-ml/ounit ) )
-	test? ( $(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
@@ -59,12 +63,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
 
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 python_check_deps() {
 	! use test \
 		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
-pkg_pretend() {
+check_space() {
 	# in megs
 	# !debug !multitarget -O2       400
 	# !debug  multitarget -O2       550
@@ -94,16 +101,17 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_pretend() {
+	check_space
+}
+
 pkg_setup() {
-	pkg_pretend
+	check_space
 }
 
 src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
-
-	# Allow custom cmake build types (like 'Gentoo')
-	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
@@ -125,8 +133,8 @@ src_prepare() {
 multilib_src_configure() {
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
-		ffi_cflags=$(pkg-config --cflags-only-I libffi)
-		ffi_ldflags=$(pkg-config --libs-only-L libffi)
+		ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
+		ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	fi
 
 	local libdir=$(get_libdir)
@@ -138,6 +146,7 @@ multilib_src_configure() {
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		-DLLVM_ENABLE_FFI=$(usex libffi)
+		-DLLVM_ENABLE_LIBEDIT=$(usex libedit)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 		-DLLVM_ENABLE_ASSERTIONS=$(usex debug)
 		-DLLVM_ENABLE_EH=ON
@@ -150,14 +159,10 @@ multilib_src_configure() {
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
 
-		-DHAVE_HISTEDIT_H=$(usex libedit)
+		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
+		-DOCAMLFIND=NO
 	)
 
-	if ! multilib_is_native_abi || ! use ocaml; then
-		mycmakeargs+=(
-			-DOCAMLFIND=NO
-		)
-	fi
 #	Note: go bindings have no CMake rules at the moment
 #	but let's kill the check in case they are introduced
 #	if ! multilib_is_native_abi || ! use go; then
@@ -173,11 +178,6 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DLLVM_BUILD_DOCS=$(usex doc)
-			# note: this is used only when OCaml is enabled, so we can
-			# set it to 'yes' even without OCaml around
-			# note 2: disable for now since it installs
-			# to /usr/docs/ocaml/html/html which is kinda wrong
-			# bother to fix it when somebody starts to care
 			-DLLVM_ENABLE_OCAMLDOC=OFF
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF

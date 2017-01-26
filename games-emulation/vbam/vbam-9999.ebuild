@@ -23,7 +23,7 @@ IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
 REQUIRED_USE="|| ( sdl gtk wxwidgets )"
 
 RDEPEND=">=media-libs/libpng-1.4:0=
-	media-libs/libsdl[joystick]
+	media-libs/libsdl2[joystick]
 	link? ( >=media-libs/libsfml-2.0:= )
 	sys-libs/zlib
 	virtual/glu

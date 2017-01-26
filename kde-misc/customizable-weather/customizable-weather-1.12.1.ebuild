@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep plasma-workspace)
+	kde-plasma/plasma-workspace:4
 "
 DEPEND="${RDEPEND}"
 

@@ -1,0 +1,31 @@
+commit 413c8c8a0ded5aa4b0f8d85dbc335082e809f3b2
+Author: Craig Bradney <mrb@scribus.info>
+Date:   Thu Jun 16 20:01:34 2016 +0000
+
+    Add better support for C++11/Qt 5.7.0. CMAKE minimum bumped to 3.2
+    
+    git-svn-id: svn://scribus.net/trunk/Scribus@21377 11d20701-8431-0410-a711-e3c959e3b870
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bc1ec57..9e92a38 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,8 +3,9 @@
+ 
+ #Set our CMake minimum version
+ #Require 2.8.9 for Qt5
++#Require 3.1.0 for Qt 5.7 C++ 11 easy support
+ #Require 3.2.0 for add_custom_target with byproducts
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.9 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.2.0 FATAL_ERROR)
+ 
+ #Pretty colors
+ SET(CMAKE_COLOR_MAKEFILE ON)
+@@ -382,6 +383,7 @@ ADD_DEFINITIONS("-DLIBDIR=\\\"${CMAKE_INSTALL_PREFIX}/${LIBDIR}\\\"")
+ #C++11 Support
+ IF(WANT_CPP11)
+ 	MESSAGE(STATUS "Enabling C++11 compiler features")
++	set(CMAKE_CXX_STANDARD 11)
+ 	ADD_DEFINITIONS("-std=c++11")
+ ENDIF(WANT_CPP11)
+ 

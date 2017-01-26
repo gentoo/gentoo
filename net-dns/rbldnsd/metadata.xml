@@ -23,4 +23,8 @@
     operations, but its memory usage is very efficient, especially for
     repeated TXT values which are stored only once.
   </longdescription>
+
+  <upstream>
+    <remote-id type="github">spamhaus/rbldnsd</remote-id>
+  </upstream>
 </pkgmetadata>

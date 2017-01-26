@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-if [[ "${RC_SVCNAME}" == "shorewall6-lite" ]]; then
+if [ "${RC_SVCNAME}" = "shorewall6-lite" ]; then
 	PRODUCT_NAME="Shorewall6-Lite"
 	command="/usr/sbin/shorewall6-lite"
 else
@@ -51,9 +51,11 @@ reset() {
 }
 
 restart() {
+	local _retval
 	ebegin "Restarting ${RC_SVCNAME}"
 	${command} status 1>/dev/null
-	if [ $? != 0 ] ; then
+	_retval=$?
+	if [ ${_retval} = '0' ]; then
 		svc_start
 	else
 		${command} ${OPTIONS} restart ${RESTARTOPTIONS} 1>/dev/null

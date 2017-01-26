@@ -1,0 +1,9 @@
+diff --git a/ioctl.h b/ioctl.h
+index cdfb888..ad4372c 100644
+--- a/ioctl.h
++++ b/ioctl.h
+@@ -710,3 +710,3 @@ static inline char *btrfs_err_str(enum btrfs_err_code err_code)
+ 		default:
+-			return NULL;
++			return 0;
+ 	}

@@ -1,0 +1,10 @@
+--- libgnomeprintui-2.18.6/libgnomeprintui/gpaui/Makefile.am~	2010-02-09 12:33:13.000000000 +0000
++++ libgnomeprintui-2.18.6/libgnomeprintui/gpaui/Makefile.am	2015-11-03 23:16:49.625137517 +0000
+@@ -2,7 +2,6 @@
+ 
+ INCLUDES = \
+ 	-I$(top_srcdir) \
+-	-I$(top_srcdir)/intl \
+ 	-I$(top_srcdir)/libgnomeprintui \
+ 	-DWE_ARE_LIBGNOMEPRINT_INTERNALS \
+ 	$(LIBGNOMEPRINTUI_CFLAGS)	\

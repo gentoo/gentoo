@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils fcaps git-r3
+EAPI=6
+inherit autotools fcaps git-r3
 
 DESCRIPTION="ARP Ping"
 HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=arping"
@@ -13,17 +13,22 @@ LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS=""
 
-DEPEND="
+CDEPEND="
 	net-libs/libpcap
 	net-libs/libnet:1.1
 "
+DEPEND="
+	${CDEPEND}
+	dev-libs/check
+"
 RDEPEND="
-	${DEPEND}
+	${CDEPEND}
 	!net-misc/iputils[arping(+)]
 "
 
 FILECAPS=( cap_net_raw /usr/sbin/arping )
 
 src_prepare() {
+	default
 	eautoreconf
 }

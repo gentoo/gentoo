@@ -1,0 +1,32 @@
+From 640cac8bab18cffca8258645c2b13b4defc01a8e Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Wed, 2 Dec 2015 02:38:44 +0000
+Subject: [PATCH] Explicitly use <cmath> to unbreak build with libc++
+
+src/ui/mainwindow.cpp:996:53: error: use of undeclared identifier 'ceil'
+        playlistRect.setLeft(playlistRect.right() - ceil(playlistRect.width()/7.0))
+---
+ src/ui/mainwindow.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/ui/mainwindow.cpp b/src/ui/mainwindow.cpp
+index 4f051ad..c3f5f92 100644
+--- a/src/ui/mainwindow.cpp
++++ b/src/ui/mainwindow.cpp
+@@ -1,6 +1,7 @@
+ #include "mainwindow.h"
+ #include "ui_mainwindow.h"
+ 
++#include <cmath>
+ #include <QLibraryInfo>
+ #include <QMimeData>
+ #include <QDesktopWidget>
+@@ -993,7 +994,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
+         ui->seekBar->setVisible(showPlayback || ui->outputTextEdit->isVisible());
+ 
+         QRect playlistRect = geometry();
+-        playlistRect.setLeft(playlistRect.right() - ceil(playlistRect.width()/7.0));
++        playlistRect.setLeft(playlistRect.right() - std::ceil(playlistRect.width()/7.0));
+         bool showPlaylist = playlistRect.contains(event->globalPos());
+         ShowPlaylist(showPlaylist);
+ 

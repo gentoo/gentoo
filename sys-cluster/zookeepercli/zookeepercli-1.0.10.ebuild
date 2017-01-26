@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit golang-build
+EAPI=6
 
 KEYWORDS="~amd64"
 EGO_PN="github.com/outbrain/zookeepercli/..."
@@ -14,7 +13,7 @@ https://github.com/samuel/go-zookeeper/archive/218e9c81c0dd8b3b18172b2bbfad92cc7
 DESCRIPTION="Simple, lightweight, dependable CLI for ZooKeeper"
 HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
-SLOT="0/${PVR}"
+SLOT="0"
 IUSE=""
 
 get_archive_go_package() {
@@ -51,20 +50,11 @@ src_unpack() {
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}" \
+	GOPATH="${S}" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
 }
 
 src_install() {
+	dobin bin/${PN}
 	dodoc README.md
-	golang_install_pkgs
-}
-
-golang_install_pkgs() {
-	insopts -m0644 -p # preserve timestamps for bug 551486
-	dobin "${S}/bin/zookeepercli"
-	insinto "$(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")"
-	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
-	insinto "$(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")"
-	doins -r "${S}"/src/${EGO_PN%/*}
 }

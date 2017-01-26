@@ -1,0 +1,59 @@
+Bug: https://bugs.gentoo.org/581130
+diff --git a/Programs/system_linux.c b/Programs/system_linux.c
+index c73bd39..ef7d807 100644
+--- a/Programs/system_linux.c
++++ b/Programs/system_linux.c
+@@ -25,6 +25,12 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ 
++#ifdef MAJOR_IN_MKDEV
++#include <sys/mkdev.h>
++#elif defined MAJOR_IN_SYSMACROS
++#include <sys/sysmacros.h>
++#endif
++
+ #include "log.h"
+ #include "file.h"
+ #include "device.h"
+diff --git a/configure.ac b/configure.ac
+index 96305f7..dcae1e1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -555,6 +555,8 @@ BRLTTY_ARG_DISABLE(
+ ])
+ AC_SUBST([install_messages])
+ 
++AC_HEADER_MAJOR
++
+ AC_CHECK_FUNC([wcslen], [AC_CHECK_HEADERS([wchar.h], [dnl
+    AC_CHECK_FUNCS([wcwidth])
+ ])])
+diff --git a/config.h.in b/config.h.in
+index 71341c6..ff201c2 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -457,2 +457,10 @@ extern "C" {
+ 
++/* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
++   */
++#undef MAJOR_IN_MKDEV
++
++/* Define to 1 if `major', `minor', and `makedev' are declared in
++   <sysmacros.h>. */
++#undef MAJOR_IN_SYSMACROS
++
+ /* Define this to be a string containing the path to the root of the Mikropuhe package. */
+diff --git a/Programs/brlapi_client.c b/Programs/brlapi_client.c
+index bd6497b..df63b30 100644
+--- a/Programs/brlapi_client.c
++++ b/Programs/brlapi_client.c
+@@ -32,2 +32,8 @@
+ 
++#ifdef MAJOR_IN_MKDEV
++#include <sys/mkdev.h>
++#elif defined MAJOR_IN_SYSMACROS
++#include <sys/sysmacros.h>
++#endif
++
+ #ifndef __MINGW32__

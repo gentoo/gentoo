@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="dev-perl/gtk2-perl
 DEPEND="${RDEPEND}
 	dev-perl/glib-perl
 	>=dev-perl/ExtUtils-Depends-0.300
-	>=dev-perl/extutils-pkgconfig-1.030"
+	>=dev-perl/ExtUtils-PkgConfig-1.030"
 
 #SRC_TEST=do
 #src_test(){

@@ -79,7 +79,7 @@ inherit ruby-ng
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_BINWRAP
 # @DESCRIPTION:
-# Binaries to wrap around (relative to the bin/ directory)
+# Binaries to wrap around (relative to the RUBY_FAKEGEM_BINDIR directory)
 # RUBY_FAKEGEM_BINWRAP="*"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_BINDIR

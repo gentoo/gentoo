@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ REQUIRED_USE="
 	xinerama? ( !aqua )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768663#c1
@@ -36,7 +36,6 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	!aqua? (
 		>=x11-libs/cairo-1.12.14-r4:=[aqua?,svg,X,${MULTILIB_USEDEP}]
-		>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,X,${MULTILIB_USEDEP}]
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
@@ -49,7 +48,7 @@ COMMON_DEPEND="
 		xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 	)
 "
-# docbook-4.1.2 and xsl required for man pages 
+# docbook-4.1.2 and xsl required for man pages
 # docbook-4.3 required for gtk-doc
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
@@ -83,10 +82,10 @@ RDEPEND="${COMMON_DEPEND}
 	!<x11-libs/vte-0.28.2-r201:0
 	>=x11-themes/adwaita-icon-theme-3.14
 	x11-themes/gnome-themes-standard
-	x11-themes/gtk-engines-adwaita
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
+	x11-themes/gtk-engines-adwaita
 	gnome-base/librsvg[${MULTILIB_USEDEP}]
 	vim-syntax? ( app-vim/gtk-syntax )
 "
@@ -216,7 +215,7 @@ multilib_src_install_all() {
 	# Also set more default variables in sync with gtk3 and other distributions
 	echo 'gtk-fallback-icon-theme = "gnome"' > "${T}/gtkrc"
 	echo 'gtk-theme-name = "Adwaita"' >> "${T}/gtkrc"
-	echo 'gtk-icon-theme-name = "gnome"' >> "${T}/gtkrc"
+	echo 'gtk-icon-theme-name = "Adwaita"' >> "${T}/gtkrc"
 	echo 'gtk-cursor-theme-name = "Adwaita"' >> "${T}/gtkrc"
 
 	insinto /usr/share/gtk-2.0

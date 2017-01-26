@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,3 +33,12 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
+src_test() {
+	local badfile
+	perl_rm_files t/author-* t/release-*
+	for badfile in t/000-report-versions.t META.yml; do
+		einfo "Stripping bad test dependencies from ${badfile}"
+		sed -i -r -e '/Test::(CPAN|EOL|Kwalitee|NoTabs|Pod|Port|YAML)/d' "${badfile}" || die "Can't fix bad deps in ${badfile}"
+	done
+	perl-module_src_test
+}

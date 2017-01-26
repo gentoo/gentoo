@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,17 +13,15 @@ SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
+
+# bug 594250
+QA_MULTILIB_PATHS="usr/lib/os-prober/.*"
 
 src_prepare() {
 	# use default GNU rules
 	rm Makefile || die 'rm Makefile failed'
-	# Fix references to grub-mount
-	sed -i -e 's:grub-mount:grub2-mount:g' \
-		common.sh \
-		linux-boot-probes/common/50mounted-tests \
-		os-probes/common/50mounted-tests || die
 }
 
 src_compile() {

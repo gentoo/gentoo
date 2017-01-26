@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="doc +gnutls gssapi java libproxy nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi java libproxy libressl nls smartcard static-libs stoken"
 ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
 for lang in $ILINGUAS; do
 	IUSE="${IUSE} linguas_${lang}"
@@ -27,11 +27,13 @@ done
 DEPEND="dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		>=dev-libs/openssl-1.0.1h:0[static-libs?]
+		!libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] )
+		libressl? ( dev-libs/libressl:0=[static-libs?] )
 	)
 	gnutls? (
-		>=net-libs/gnutls-3:0=[static-libs?] dev-libs/nettle
 		app-misc/ca-certificates
+		dev-libs/nettle
+		>=net-libs/gnutls-3:0=[static-libs?]
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )

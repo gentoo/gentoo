@@ -39,7 +39,7 @@ RDEPEND="X? (
 	libffi? ( virtual/libffi )
 	gtk? ( >=x11-libs/gtk+-2.4:2 )
 	gtk3? ( x11-libs/gtk+:3 )
-	kde? ( >=kde-base/kdelibs-4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 	libedit? ( dev-libs/libedit )
 	libnotify? ( >=x11-libs/libnotify-0.4 )
 	m17n-lib? ( >=dev-libs/m17n-lib-1.3.1 )

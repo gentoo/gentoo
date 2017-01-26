@@ -476,5 +476,8 @@
     <remote-id type="cpan-module">DateTime::Locale::zh_TW</remote-id>
     <remote-id type="cpan-module">DateTime::Locale::zu</remote-id>
     <remote-id type="cpan-module">DateTime::Locale::zu_ZA</remote-id>
+    <remote-id type="cpan-module">DateTime::Locale::Data</remote-id>
+    <remote-id type="cpan-module">DateTime::Locale::FromData</remote-id>
+    <remote-id type="cpan-module">DateTime::Locale::Util</remote-id>
   </upstream>
 </pkgmetadata>

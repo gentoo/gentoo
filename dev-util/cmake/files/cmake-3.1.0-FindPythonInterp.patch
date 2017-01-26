@@ -5,7 +5,7 @@
      set(_PYTHON_FIND_OTHER_VERSIONS ${_PYTHON3_VERSIONS} ${_PYTHON2_VERSIONS} ${_PYTHON1_VERSIONS})
  endif()
 +
-+if (CMAKE_BUILD_TYPE STREQUAL Gentoo)
++if (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
 +    set(_Python_NAMES python)
 +endif()
 +
@@ -17,7 +17,7 @@
  
  # Search for newest python version if python executable isn't found
 -if(NOT PYTHON_EXECUTABLE)
-+if(NOT PYTHON_EXECUTABLE AND NOT CMAKE_BUILD_TYPE STREQUAL Gentoo)
++if(NOT PYTHON_EXECUTABLE AND NOT (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo))
      foreach(_CURRENT_VERSION IN LISTS _Python_VERSIONS)
        set(_Python_NAMES python${_CURRENT_VERSION})
        if(WIN32)

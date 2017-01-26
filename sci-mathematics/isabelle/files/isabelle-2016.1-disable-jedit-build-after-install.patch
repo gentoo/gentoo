@@ -1,0 +1,128 @@
+--- Isabelle2016-1-orig/src/Tools/jEdit/lib/Tools/jedit	2016-12-13 01:03:49.000000000 +1100
++++ Isabelle2016-1/src/Tools/jEdit/lib/Tools/jedit	2017-01-01 17:24:50.107722845 +1100
+@@ -239,125 +239,6 @@
+   "$ISABELLE_JEDIT_BUILD_HOME/contrib/jsr305-2.0.0.jar"
+ )
+ 
+-
+-# target
+-
+-TARGET="dist/jars/Isabelle-jEdit.jar"
+-
+-declare -a UPDATED=()
+-
+-if [ "$BUILD_JARS" = jars_fresh ]; then
+-  OUTDATED=true
+-else
+-  OUTDATED=false
+-  if [ ! -e "$TARGET" ]; then
+-    OUTDATED=true
+-  else
+-    if [ -n "$ISABELLE_JEDIT_BUILD_HOME" ]; then
+-      declare -a DEPS=(
+-        "$JEDIT_JAR" "${JEDIT_JARS[@]}" "$PURE_JAR"
+-        "${SOURCES[@]}" "${RESOURCES[@]}"
+-      )
+-    elif [ -e "$ISABELLE_HOME/Admin/build" ]; then
+-      declare -a DEPS=("$PURE_JAR" "${SOURCES[@]}" "${RESOURCES[@]}")
+-    else
+-      declare -a DEPS=()
+-    fi
+-    for DEP in "${DEPS[@]}"
+-    do
+-      [ ! -e "$DEP" ] && fail "Missing file: $DEP"
+-      [ "$DEP" -nt "$TARGET" ] && {
+-        OUTDATED=true
+-        UPDATED["${#UPDATED[@]}"]="$DEP"
+-      }
+-    done
+-  fi
+-fi
+-
+-
+-# build
+-
+-if [ "$OUTDATED" = true ]
+-then
+-  echo "### Building Isabelle/jEdit ..."
+-
+-  [ "${#UPDATED[@]}" -gt 0 ] && {
+-    echo "Changed files:"
+-    for FILE in "${UPDATED[@]}"
+-    do
+-      echo "  $FILE"
+-    done
+-  }
+-
+-  [ -z "$ISABELLE_JEDIT_BUILD_HOME" ] && \
+-    fail "Unknown ISABELLE_JEDIT_BUILD_HOME -- missing auxiliary component"
+-
+-  rm -rf dist || failed
+-  mkdir -p dist dist/classes || failed
+-
+-  cp -p -R -f "$ISABELLE_JEDIT_BUILD_HOME/contrib/$ISABELLE_JEDIT_BUILD_VERSION/." dist/.
+-  cp -p -R -f "${RESOURCES[@]}" dist/classes/.
+-  cp src/jEdit.props dist/properties/.
+-  cp -p -R -f src/modes/. dist/modes/.
+-
+-  perl -i -e 'while (<>) {
+-    if (m/FILE="ml.xml"/ or m/FILE_NAME_GLOB="...sml,ml."/) { }
+-    elsif (m/NAME="javacc"/) {
+-      print qq!<MODE NAME="isabelle" FILE="isabelle.xml" FILE_NAME_GLOB="{*.thy,ROOT0.ML,ROOT.ML}"/>\n\n!;
+-      print qq!<MODE NAME="isabelle-ml" FILE="isabelle-ml.xml" FILE_NAME_GLOB="*.ML"/>\n\n!;
+-      print qq!<MODE NAME="isabelle-news" FILE="isabelle-news.xml"/>\n\n!;
+-      print qq!<MODE NAME="isabelle-options" FILE="isabelle-options.xml"/>\n\n!;
+-      print qq!<MODE NAME="isabelle-root" FILE="isabelle-root.xml" FILE_NAME_GLOB="ROOT"/>\n\n!;
+-      print;
+-    }
+-    elsif (m/NAME="sqr"/) {
+-      print qq!<MODE NAME="sml" FILE="sml.xml" FILE_NAME_GLOB="*.{sml,sig}"/>\n\n!;
+-      print;
+-    }
+-    else { print; }
+-  }' dist/modes/catalog
+-
+-  cd dist
+-  isabelle_jdk jar xf jedit.jar
+-  cp "$ISABELLE_HOME/lib/logo/isabelle_transparent-32.gif" \
+-    "org/gjt/sp/jedit/icons/themes/classic/32x32/apps/isabelle.gif" || failed
+-  cp "$ISABELLE_HOME/lib/logo/isabelle_transparent-32.gif" \
+-    "org/gjt/sp/jedit/icons/themes/tango/32x32/apps/isabelle.gif" || failed
+-  isabelle_jdk jar cfe jedit.jar org.gjt.sp.jedit.jEdit org || failed
+-  rm -rf META-INF org
+-  cd ..
+-
+-  cp -p -R -f "${JEDIT_JARS[@]}" dist/jars/. || failed
+-  (
+-    #FIXME workarounds for scalac 2.11.0
+-    export CYGWIN="nodosfilewarning"
+-    function stty() { :; }
+-    export -f stty
+-
+-    for JAR in "$JEDIT_JAR" "${JEDIT_JARS[@]}" "$PURE_JAR"
+-    do
+-      classpath "$JAR"
+-    done
+-    export CLASSPATH="$(platform_path "$ISABELLE_CLASSPATH")"
+-    exec "$SCALA_HOME/bin/scalac" $ISABELLE_SCALA_BUILD_OPTIONS -d dist/classes "${SOURCES[@]}"
+-  ) || fail "Failed to compile sources"
+-
+-  cd dist/classes
+-  isabelle_jdk jar cf "../jars/Isabelle-jEdit.jar" * || failed
+-  cd ../..
+-  rm -rf dist/classes
+-
+-  cp "$ISABELLE_JEDIT_BUILD_HOME/doc/jedit5.3.0manual-a4.pdf" dist/doc/jedit-manual.pdf
+-  cp dist/doc/CHANGES.txt dist/doc/jedit-changes
+-  cat > dist/doc/Contents <<EOF
+-Original jEdit Documentation
+-  jedit-manual    jEdit 5.3 User's Guide
+-  jedit-changes   jEdit 5.3 Version History
+-
+-EOF
+-
+-fi
+-
+ popd >/dev/null
+ 
+ 

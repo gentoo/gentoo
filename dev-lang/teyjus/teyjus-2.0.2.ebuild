@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit base elisp-common multilib versionator
+inherit elisp-common multilib versionator
 
 MY_PN="${PN}-source"
 MY_P=$(version_format_string '${MY_PN}-$1.$2-b$3')
@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 IUSE="emacs examples +ocamlopt"
 
-RDEPEND=">=sys-devel/binutils-2.17
-	>=sys-devel/gcc-2.95.3
+RDEPEND=">=sys-devel/binutils-2.17:*
+	>=sys-devel/gcc-2.95.3:*
 	>=dev-lang/ocaml-3.10[ocamlopt?]
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
@@ -27,12 +27,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}
 
-PATCHES=("${FILESDIR}/${PN}-2.0.2-flags.patch")
-
 SITEFILE=50${PN}-gentoo.el
 
 src_prepare() {
-	base_src_prepare
+	default
+	eapply "${FILESDIR}/${PN}-2.0.2-flags.patch"
 	local cflags=""
 	for i in ${CFLAGS}
 	do
@@ -48,6 +47,17 @@ src_prepare() {
 		-e "s@OCAMLFLAGS +=@OCAMLFLAGS +=${cflags}${lflags}@" \
 		-i "${S}/source/OMakefile" \
 		|| die "Could not set flags in ${S}/teyjus/source/OMakefile"
+	if has_version ">=dev-lang/ocaml-4.03.0"; then
+		# bug 591368
+		pushd "${S}/source" || die
+		sed -e 's@$(FNT)/ccode_stubs@$(FNT)/ccode_stubs_c@' \
+			-e 's@\(FNT_ML_TO_C\[\] =\)@\1\n    $(FNT)/ccode_stubs@' \
+			-i OMakefile || die
+		cd "${S}/source/front" || die
+		mv ccode_stubs.mli ccode_stubs.ml || die
+		mv ccode_stubs.c ccode_stubs_c.c || die
+		popd || die
+	fi
 }
 
 src_compile() {

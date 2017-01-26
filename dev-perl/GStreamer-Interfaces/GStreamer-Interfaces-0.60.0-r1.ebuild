@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RDEPEND="=media-libs/gst-plugins-base-0.10*
 	>=dev-perl/glib-perl-1.180"
 DEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-Depends-0.205
-	>=dev-perl/extutils-pkgconfig-1.07
+	>=dev-perl/ExtUtils-PkgConfig-1.07
 	virtual/pkgconfig"
 
 SRC_TEST=do

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="cli">Install command line interface as well as python library</flag>
+	</use>
+	<longdescription lang="en">
+		EditorConfig Python Core provides the same functionality as the
+		EditorConfig C Core. EditorConfig Python core can be used as a
+		command line program or as an importable library.
+	</longdescription>
+</pkgmetadata>

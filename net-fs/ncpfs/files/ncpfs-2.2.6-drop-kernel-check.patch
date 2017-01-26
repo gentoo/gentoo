@@ -2,8 +2,8 @@ Description: Drop kernel version check
 Author: Bastian Blank <waldi@debian.org>
 Bug-Debian: http://bugs.debian.org/692472
 
---- ncpfs-2.2.6.orig/sutil/ncpm_common.c
-+++ ncpfs-2.2.6/sutil/ncpm_common.c
+--- a/sutil/ncpm_common.c.orig
++++ b/sutil/ncpm_common.c
 @@ -243,23 +243,6 @@ static int load_ncpfs(void)
  #endif	/* MOUNT2 */
  

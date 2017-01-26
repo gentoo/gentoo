@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools flag-o-matic readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -45,7 +45,7 @@ RDEPEND="
 	qt4? ( >=dev-qt/qtcore-4.5:4
 		>=dev-qt/qtgui-4.5:4
 		>=dev-qt/qtsvg-4.5:4 )
-	readline? ( sys-libs/readline:0 )
+	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
 	svga? ( media-libs/svgalib )
 	wxwidgets? (
@@ -67,9 +67,10 @@ GP_VERSION="${PV%.*}"
 E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch )
+
 src_prepare() {
-	# Fix underlinking
-	epatch "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
+	default
 
 	if [[ -z ${PV%%*9999} ]]; then
 		local dir
@@ -168,7 +169,7 @@ src_compile() {
 }
 
 src_install () {
-	default
+	emake DESTDIR="${D}" install
 
 	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README*
 	newdoc term/PostScript/README README-ps
@@ -180,8 +181,8 @@ src_install () {
 		# Demo files
 		insinto /usr/share/${PN}/${GP_VERSION}
 		doins -r demo
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
+		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
+		rm -f "${ED%/}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
 	fi
 
 	if use doc; then

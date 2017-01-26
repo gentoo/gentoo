@@ -72,7 +72,6 @@ src_install() {
 	mv "${ED}/usr/$(get_libdir)"/lib* "${ED}/usr/$(get_libdir)/pkgconfig"/* \
 		"${ED}/usr/$(get_libdir)/lapack/reference" || die
 	rmdir "${ED}/usr/$(get_libdir)/pkgconfig" || die
-	rm -rf "${ED}"/usr/lib/ || die
 
 	eselect lapack add $(get_libdir) "${T}"/eselect.lapack.reference ${ESELECT_PROF}
 }

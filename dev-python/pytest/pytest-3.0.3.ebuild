@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="doc test"
 
 # When bumping, please check setup.py for the proper py version
@@ -53,7 +53,7 @@ python_prepare_all() {
 python_test() {
 	# test_nose.py not written to suit py3.2 in pypy3
 	if [[ "${EPYTHON}" == pypy3 ]]; then
-		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -x -v \
+		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -vv \
 			--ignore=testing/BUILD_nose.py \
 			|| die "tests failed with ${EPYTHON}"
 	else
@@ -63,7 +63,6 @@ python_test() {
 
 python_compile_all(){
 	use doc && emake -C doc/en html
-	distutils-r1_python_compile_all
 }
 
 python_install_all() {

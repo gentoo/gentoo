@@ -1,5 +1,5 @@
---- /tmp/a/SConstruct	2016-06-21 21:15:24.000000000 +0200
-+++ /tmp/b/SConstruct	2016-08-19 11:40:45.916695952 +0200
+--- a/SConstruct
++++ b/SConstruct
 @@ -865,7 +865,6 @@
  
      # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.

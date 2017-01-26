@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-text/recode-3.6-r1
-	app-text/scrollkeeper
+	app-text/rarian
 	dev-libs/glib:2
 	dev-python/gconf-python:2[${PYTHON_USEDEP}]
 	dev-python/gnome-vfs-python:2[${PYTHON_USEDEP}]

@@ -1,8 +1,8 @@
 Gentoo bug: 423869
 Thanks to hanno
 
---- pecl/crack/trunk/crack.c	2008/07/17 10:02:47	262854
-+++ pecl/crack/trunk/crack.c	2012/06/07 16:13:34	326013
+--- a/crack.c	2008/07/17 10:02:47	262854
++++ b/crack.c	2012/06/07 16:13:34	326013
 @@ -38,7 +38,7 @@
  
  /* {{{ crack_functions[]

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools eutils multilib-minimal
+inherit autotools eutils multilib-minimal xdg-utils
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
 HOMEPAGE="https://nice.freedesktop.org/wiki/"
@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
+	xdg_environment_reset
+
 	# https://bugs.freedesktop.org/show_bug.cgi?id=90801
 	epatch "${FILESDIR}"/${P}-gstreamer.patch
 	eautoreconf

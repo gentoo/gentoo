@@ -24,7 +24,10 @@
 # @DESCRIPTION:
 # What major version of aspell is this dictionary for?
 
-EXPORT_FUNCTIONS src_compile src_install
+case ${EAPI} in
+	0|1) EXPORT_FUNCTIONS src_compile src_install ;;
+	*) EXPORT_FUNCTIONS src_configure src_compile src_install ;;
+esac
 
 #MY_P=${PN}-${PV%.*}-${PV#*.*.}
 MY_P=${P%.*}-${PV##*.}
@@ -46,11 +49,20 @@ else
 	DEPEND="${RDEPEND}"
 fi
 
+# @FUNCTION: aspell-dict_src_configure
+# @DESCRIPTION:
+# The aspell-dict src_configure function which is exported.
+aspell-dict_src_configure() {
+	./configure || die
+}
+
 # @FUNCTION: aspell-dict_src_compile
 # @DESCRIPTION:
 # The aspell-dict src_compile function which is exported.
 aspell-dict_src_compile() {
-	./configure || die
+	case ${EAPI} in
+		0|1) aspell-dict_src_configure ;;
+	esac
 	emake || die
 }
 

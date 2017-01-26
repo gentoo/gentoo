@@ -24,7 +24,8 @@ IUSE=""
 
 DEPEND="kernel_linux? ( virtual/pkgconfig )
 	!<sys-fs/udev-172"
-RDEPEND="sys-apps/gentoo-functions"
+RDEPEND="sys-apps/gentoo-functions
+		>=sys-apps/openrc-0.12"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then

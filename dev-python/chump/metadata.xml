@@ -13,5 +13,6 @@
 		<remote-id type="pypi">chump</remote-id>
 		<remote-id type="github">karanlyons/chump</remote-id>
 		<bugs-to>https://github.com/karanlyons/chump/issues</bugs-to>
+		<changelog>https://github.com/karanlyons/chump/blob/master/HISTORY.rst</changelog>
 	</upstream>
 </pkgmetadata>

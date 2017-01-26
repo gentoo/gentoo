@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>axs@gentoo.org</email>
+	<description>Primary maintainer</description>
+</maintainer>
+<longdescription>
+This is a simple launcher script and .desktop entry to associate MS Windows *.URL (text/x-uri) 
+files on linux DEs so that they will open in the configured default web browser.</longdescription>
+</pkgmetadata>

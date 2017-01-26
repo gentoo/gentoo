@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ REQUIRED_USE="^^ ( fdk libav-aac )"
 RDEPEND="
 	dev-libs/jansson
 	media-libs/a52dec
-	media-libs/libass
+	media-libs/libass:=
 	media-libs/libbluray
 	media-libs/libdvdnav
 	media-libs/libdvdread

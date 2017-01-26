@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index bbadd7b..1578a3d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -205,7 +207,7 @@ setuptools.setup(
+     author='Scott Moser',
+     author_email='scott.moser@canonical.com',
+     url='http://launchpad.net/cloud-init/',
+-    packages=setuptools.find_packages(exclude=['tests']),
++    packages=setuptools.find_packages(exclude=['tests.*', 'tests']),
+     scripts=['tools/cloud-init-per'],
+     license='GPLv3',
+     data_files=data_files,

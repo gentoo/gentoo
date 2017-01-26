@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/alexrothenberg/ammeter"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 # Restrict tests since they now require the specific rspec version to be

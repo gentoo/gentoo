@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,14 +14,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="examples"
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
-# See bug #458648 for reference
-RESTRICT="test"
 
 DOCS=( ANNOUNCE CHANGES TODO )
 
@@ -30,6 +27,9 @@ PATCHES=( "${FILESDIR}/3.6-picklefile-IOError.patch" )
 python_test() {
 	cp -r -l test "${BUILD_DIR}"/ || die
 	cd "${BUILD_DIR}"/test || die
+
+	# Checks for pyc/pyo files
+	local -x PYTHONDONTWRITEBYTECODE=
 
 	local t
 	for t in testlex.py testyacc.py; do

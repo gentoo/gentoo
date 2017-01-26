@@ -1,0 +1,18 @@
+From 2c42a787257e0801b8454fd8960d6794831cedea Mon Sep 17 00:00:00 2001
+From: o9000 <mrovi9000@gmail.com>
+Date: Sat, 8 Oct 2016 15:02:28 +0200
+Subject: Fix compilation with ENABLE_RSVG=OFF (fixes issue #602)
+
+
+diff --git a/src/launcher/launcher.c b/src/launcher/launcher.c
+index 0b4172f..0052e90 100644
+--- a/src/launcher/launcher.c
++++ b/src/launcher/launcher.c
+@@ -30,7 +30,6 @@
+ #include <glib/gi18n.h>
+ #include <glib.h>
+ #include <glib/gstdio.h>
+-#include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <sys/types.h>
+ 
+ #include "window.h"

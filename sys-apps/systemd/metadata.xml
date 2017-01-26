@@ -19,7 +19,6 @@
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
 		<!-- TODO: drop reference to systemd-import once the oldest release in tree is >218 -->
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt; required to build systemd-import/systemd-pull</flag>
-		<flag name="gudev">enable libudev gobject interface</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
 		<flag name="kdbus">Connect to kernel dbus (KDBUS) instead of userspace dbus if available</flag>
@@ -28,7 +27,6 @@
 		<flag name="nat">Enable support for network address translation in networkd</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
-		<flag name="terminal">Enable experimental userspace virtual terminal support</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
 		<flag name="xkb">Validate XKB keymap in logind</flag>
 	</use>

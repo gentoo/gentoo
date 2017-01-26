@@ -13,7 +13,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
+IUSE="static-libs test"
 
 RDEPEND="
 	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
@@ -22,18 +22,24 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	dev-libs/check[${MULTILIB_USEDEP}]
+	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-tests-fix.patch"
+)
 
 src_prepare() {
 	default
 	eautoreconf
+	touch man/u2f-server.1 || die # do not rebuild the man page
 }
 
 multilib_src_configure() {
 	myeconfargs=(
 		--disable-h2a # tarball already contains the manpage
 		$(use_enable static-libs static)
+		$(use_enable test tests)
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

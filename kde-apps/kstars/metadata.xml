@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="indi">Enable support for Astronomical control library using libindi</flag>
 		<flag name="wcs">Enable support for World Coordinate System library using wcslib</flag>
 		<flag name="xplanet">Enable support for Xplanet</flag>

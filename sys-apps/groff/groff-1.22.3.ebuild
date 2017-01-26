@@ -74,5 +74,13 @@ src_install() {
 	dosym eqn /usr/bin/geqn
 	dosym tbl /usr/bin/gtbl
 
-	use examples || rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	if ! use examples ; then
+		# The pdf files might not be generated if ghostscript is unavailable. #602020
+		local pdf="${ED}/usr/share/doc/${PF}/examples/mom/mom-pdf.pdf"
+		if [[ -e ${pdf} ]] ; then
+			# Keep mom-pdf.pdf since it's more of a manual than an example. #454196 #516732
+			mv "${pdf}" "${ED}"/usr/share/doc/${PF}/pdf/ || die
+		fi
+		rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	fi
 }

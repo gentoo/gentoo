@@ -46,12 +46,25 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+glew_system() {
+	# Set the SYSTEM variable instead of probing. #523444 #595280
+	case ${CHOST} in
+	*linux*)          echo "linux" ;;
+	*-freebsd*)       echo "freebsd" ;;
+	*-darwin*)        echo "darwin" ;;
+	*-solaris*)       echo "solaris" ;;
+	mingw*|*-mingw*)  echo "mingw" ;;
+	*) die "Unknown system ${CHOST}" ;;
+	esac
+}
+
 set_opts() {
 	myglewopts=(
 		AR="$(tc-getAR)"
 		STRIP=true
 		CC="$(tc-getCC)"
 		LD="$(tc-getCC) ${LDFLAGS}"
+		SYSTEM="$(glew_system)"
 		M_ARCH=""
 		LDFLAGS.EXTRA=""
 		POPT="${CFLAGS}"

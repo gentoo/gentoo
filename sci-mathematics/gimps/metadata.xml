@@ -2,11 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>tomka@gentoo.org</email>
-    <name>Thomas Kahle</name>
+    <email>paolo.pedroni@iol.it</email>
+    <name>Paolo Pedroni</name>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
   </maintainer>
 </pkgmetadata>

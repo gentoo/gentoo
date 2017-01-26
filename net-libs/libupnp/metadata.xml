@@ -2,16 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>maq@maqibooy.com</email>
-    <name>Marcus Stjärnås</name>
+    <email>thev00d00@gentoo.org</email>
+    <name>Ian Whyman</name>
   </maintainer>
   <maintainer type="person">
     <email>gurligebis@gentoo.org</email>
     <name>Bjarke Istrup Pedersen</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">pupnp</remote-id>

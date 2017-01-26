@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Simple calculations with RGB colors"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test minimal"
 
 RDEPEND=">=dev-perl/Graphics-ColorNames-2.100.0

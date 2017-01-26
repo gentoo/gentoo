@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1
@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -32,9 +32,9 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	if use test; then
-		mkdir enzyme/tests/test_{parsers,mkv} || die
-		ln -s "${WORKDIR}"/test* enzyme/tests/test_parsers/ || die
-		ln -s "${WORKDIR}"/test* enzyme/tests/test_mkv/ || die
+		mkdir enzyme/tests/test_{mkv,parsers} || die
+		ln -s "${WORKDIR}"/test*.mkv enzyme/tests/test_mkv/ || die
+		ln -s "${WORKDIR}"/test*.mkv enzyme/tests/test_parsers/ || die
 	fi
 
 	distutils-r1_python_prepare_all

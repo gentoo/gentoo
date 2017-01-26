@@ -6,7 +6,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
 [[ ${PV} == 9999 ]] && SCM_ECLASS="git-r3"
-inherit eutils alternatives autotools ${SCM_ECLASS}
+inherit alternatives autotools ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="C++ client library for the CMIS interface"
@@ -56,7 +56,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--program-suffix=-${SLOT} \
 		--disable-werror \
 		$(use_with man) \
@@ -67,7 +66,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

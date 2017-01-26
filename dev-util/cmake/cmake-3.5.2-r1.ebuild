@@ -16,7 +16,7 @@ SRC_URI="http://www.cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.
 LICENSE="CMake"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs system-jsoncpp ncurses qt4 qt5"
+IUSE="doc emacs system-jsoncpp ncurses qt5"
 
 RDEPEND="
 	>=app-arch/libarchive-3.0.0:=
@@ -26,10 +26,6 @@ RDEPEND="
 	virtual/pkgconfig
 	emacs? ( virtual/emacs )
 	ncurses? ( sys-libs/ncurses:0= )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -148,7 +144,7 @@ src_configure() {
 		-DBUILD_CursesDialog="$(usex ncurses)"
 	)
 
-	if use qt4 || use qt5 ; then
+	if use qt5 ; then
 		mycmakeargs+=(
 			-DBUILD_QtDialog=ON
 			$(cmake-utils_use_find_package qt5 Qt5Widgets)

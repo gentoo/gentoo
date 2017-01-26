@@ -1,9 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 DESCRIPTION="Inputlirc daemon to utilize /dev/input/event*"
-HOMEPAGE="http://svn.sliepen.eu.org/inputlirc/trunk"
+HOMEPAGE="https://github.com/ferdinandhuebner/inputlirc"
 SRC_URI="http://gentooexperimental.org/~genstef/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"

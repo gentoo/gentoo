@@ -10,7 +10,7 @@ DESCRIPTION="vim plugin: show location marks visually"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=152"
 
 LICENSE="public-domain"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 mips ppc sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="showmarks.txt"

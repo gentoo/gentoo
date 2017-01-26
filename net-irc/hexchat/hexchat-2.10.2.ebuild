@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 inherit eutils fdo-mime gnome2-utils mono-env multilib python-single-r1
 
 DESCRIPTION="Graphical IRC client based on XChat"

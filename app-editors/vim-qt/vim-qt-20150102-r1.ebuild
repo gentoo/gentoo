@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="threads"
 
 inherit eutils fdo-mime flag-o-matic prefix python-single-r1
@@ -45,7 +45,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( dev-lang/ruby:2.0 )"
+	ruby? ( dev-lang/ruby:2.1 )"
 DEPEND="${RDEPEND}
 	dev-util/ctags
 	sys-devel/autoconf

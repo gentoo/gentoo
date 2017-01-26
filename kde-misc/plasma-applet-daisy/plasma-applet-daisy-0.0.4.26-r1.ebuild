@@ -18,5 +18,5 @@ SLOT="4"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-DEPEND="$(add_kdebase_dep libtaskmanager)"
+DEPEND="kde-plasma/libtaskmanager:4"
 RDEPEND="${DEPEND}"

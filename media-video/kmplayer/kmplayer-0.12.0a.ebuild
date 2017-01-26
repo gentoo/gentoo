@@ -5,6 +5,7 @@
 EAPI=6
 
 EGIT_BRANCH="0.12"
+KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
@@ -12,7 +13,7 @@ HOMEPAGE="https://kmplayer.kde.org"
 SRC_URI="mirror://kde/stable/${PN}/${EGIT_BRANCH}/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cairo npp"
 
 CDEPEND="
@@ -39,11 +40,11 @@ CDEPEND="
 	media-libs/phonon[qt5]
 	x11-libs/libX11
 	x11-libs/libxcb
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[xcb] )
 	npp? (
 		dev-libs/dbus-glib
 		dev-libs/glib:2
-		www-plugins/adobe-flash
+		www-plugins/adobe-flash:*
 		>=x11-libs/gtk+-2.10.14:2
 	)
 "

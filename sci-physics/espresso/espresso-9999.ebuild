@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
 inherit cmake-utils python-single-r1 savedconfig
@@ -41,7 +41,7 @@ RDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
 	dev-libs/boost:=[mpi]
-	hdf5? ( sci-libs/hdf5 )
+	hdf5? ( sci-libs/hdf5:= )
 	packages? ( dev-tcltk/tcllib )"
 
 DEPEND="${RDEPEND}

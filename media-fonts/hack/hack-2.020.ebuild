@@ -12,7 +12,7 @@ SRC_URI="https://github.com/chrissimpkins/Hack/releases/download/v${PV}/Hack-v$(
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 RESTRICT="binchecks strip"
 

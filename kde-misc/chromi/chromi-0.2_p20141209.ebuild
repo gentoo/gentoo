@@ -19,6 +19,6 @@ IUSE=""
 S="${WORKDIR}/${MY_P}"
 
 DEPEND="
-	$(add_kdebase_dep kwin)
+	kde-plasma/kwin:4
 "
 RDEPEND="${DEPEND}"

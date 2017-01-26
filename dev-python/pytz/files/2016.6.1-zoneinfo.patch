@@ -1,5 +1,5 @@
---- pytz/__init__.py.bak	2016-07-14 13:20:37.856381431 +0200
-+++ pytz/__init__.py	2016-07-14 13:21:00.464512973 +0200
+--- a/pytz/__init__.py
++++ b/pytz/__init__.py
 @@ -81,8 +81,7 @@
      for part in name_parts:
          if part == os.path.pardir or os.path.sep in part:

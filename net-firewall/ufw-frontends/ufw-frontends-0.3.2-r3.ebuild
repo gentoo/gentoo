@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Provides graphical frontend to ufw"
 HOMEPAGE="https://github.com/baudm/ufw-frontends"
-SRC_URI="https://ufw-frontends.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://github.com/baudm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 # CC-BY-NC-SA-3.0 is for a png file
 LICENSE="GPL-3 CC-BY-NC-SA-3.0"

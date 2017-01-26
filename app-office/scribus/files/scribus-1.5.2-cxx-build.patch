@@ -1,0 +1,24 @@
+commit 1a9bdbc7ab793b15e93f1ab29ce06dd69c061f58
+Author: Jean Ghali <jghali@libertysurf.fr>
+Date:   Sat Jun 18 12:49:45 2016 +0000
+
+    fix build issue when not compiling with c++11 : std::isinf is c++11 only
+    
+    git-svn-id: svn://scribus.net/trunk/Scribus@21382 11d20701-8431-0410-a711-e3c959e3b870
+
+diff --git a/scribus/third_party/fparser/fpoptimizer.cc b/scribus/third_party/fparser/fpoptimizer.cc
+index 673e1b6..0c1bad5 100644
+--- a/scribus/third_party/fparser/fpoptimizer.cc
++++ b/scribus/third_party/fparser/fpoptimizer.cc
+@@ -7296,7 +7296,11 @@ namespace FPoptimizer_CodeTree
+                             //if(imm >= 0.0)
+                             {
+                                 double new_base_immed = std::pow(base_immed, imm);
++#if __cplusplus < 201103L
++								if(isinf(new_base_immed) || new_base_immed == 0.0)
++#else
+ 								if(std::isinf(new_base_immed) || new_base_immed == 0.0)
++#endif
+                                 {
+                                     // It produced an infinity. Do not change.
+                                     break;

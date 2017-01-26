@@ -7,10 +7,7 @@
   <maintainer type="person">
     <email>ultrabug@gentoo.org</email>
   </maintainer>
-  <use>
-    <flag name="web">Build the web UI.</flag>
-  </use>
   <upstream>
-    <remote-id type="github">ryanuber/columnize</remote-id>
+    <remote-id type="github">hashicorp/consul</remote-id>
   </upstream>
 </pkgmetadata>

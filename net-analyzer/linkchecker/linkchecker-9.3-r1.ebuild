@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]
-		dev-python/qscintilla-python[${PYTHON_USEDEP}]
+		dev-python/qscintilla-python[qt4(+),${PYTHON_USEDEP}]
 		)"
 DEPEND="
 	X? (

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit cmake-utils multilib python-r1 virtualx
 
@@ -16,7 +16,7 @@ SRC_URI="http://download.qt-project.org/official_releases/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="X declarative designer help multimedia opengl phonon script scripttools sql svg test webkit xmlpatterns"
 REQUIRED_USE="

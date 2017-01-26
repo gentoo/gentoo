@@ -16,18 +16,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="dns +kmod static-libs +udev zlib"
 
 # Have the sub-libs in RDEPEND with [static-libs] since, logically,
-# our libssl.a depends on libz.a/etc... at runtime.
-LIB_DEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )"
+# our libpci.a depends on libz.a/etc... at runtime.
+LIB_DEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )
+	udev? ( >=virtual/libudev-208[static-libs(+),${MULTILIB_USEDEP}] )"
 DEPEND="kmod? ( sys-apps/kmod )
 	static-libs? ( ${LIB_DEPEND} )
-	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )
-	udev? ( >=virtual/libudev-208[${MULTILIB_USEDEP}] )"
+	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )"
 RDEPEND="${DEPEND}
-	sys-apps/hwids
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r14
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	sys-apps/hwids"
 DEPEND="${DEPEND}
 	kmod? ( virtual/pkgconfig )"
 

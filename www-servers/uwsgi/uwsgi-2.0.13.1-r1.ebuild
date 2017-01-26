@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -25,7 +25,7 @@ SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=( ping cache carbon nagios rpc rrdtool
 	http ugreen signal syslog rsyslog

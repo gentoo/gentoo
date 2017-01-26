@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-apps/texinfo
@@ -51,13 +51,13 @@ src_prepare() {
 	sed 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@' -i configure.ac || die
 	eautoreconf
 
-	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
+	sed -e "s@_LDFLAGS\.$(tc-arch)*.*=@& ${LDFLAGS}@g" \
 		-i "${S}"/Config.kmk || die #332225
 	tc-export CC RANLIB #AR does not work here
 }
 
 src_compile() {
-	kBuild/env.sh --full make -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" \
+	kBuild/env.sh --full emake -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" \
 		|| die "bootstrap failed"
 }
 

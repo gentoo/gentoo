@@ -1,0 +1,18 @@
+diff --git a/configure.in b/configure.in
+index 9660e93..f1d2350 100644
+--- a/configure.in
++++ b/configure.in
+@@ -48,8 +48,8 @@ fi
+ 
+ dnl This is context->close_fn or context close ?
+ AC_TRY_COMPILE([#include <libsmbclient.h>],
+-           [SMBCCTX *c; c->close_fn(c,0);],
+-        smbctxclosefn=yes, smbctxclosefn=no)
++           [SMBCCTX *c; c->close(c,0);],
++        smbctxclosefn=no, smbctxclosefn=yes)
+ if test "$smbctxclosefn" = yes; then
+   AC_DEFINE(HAVE_CLOSEFN,, [define if SMBCTXX->close_fn exist.])
+   AC_MSG_RESULT([You use SMBCTXX->close_fn (release >= 3.0.20). ])
+-- 
+2.7.3
+

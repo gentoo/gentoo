@@ -6,7 +6,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">sqlalchemy-migrate</remote-id>
     <remote-id type="pypi">sqlalchemy-migrate</remote-id>
   </upstream>
 </pkgmetadata>

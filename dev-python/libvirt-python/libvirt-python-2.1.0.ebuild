@@ -1,12 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-
-AUTOTOOLIZE=yes
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 MY_P="${P/_rc/-rc}"
 
@@ -20,13 +18,13 @@ if [[ ${PV} = *9999* ]]; then
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
 	SRC_URI="http://libvirt.org/sources/python/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
-HOMEPAGE="http://www.libvirt.org"
+HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="test"

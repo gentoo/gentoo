@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm hppa ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 DESCRIPTION="An implementation of Microsoft's Media Transfer Protocol (MTP)"

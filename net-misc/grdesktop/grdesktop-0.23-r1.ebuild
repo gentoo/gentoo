@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
-inherit eutils gnome2
+EAPI=6
+inherit gnome2
 
 DESCRIPTION="Gtk2 frontend for rdesktop"
 HOMEPAGE="http://www.nongnu.org/grdesktop/"
@@ -14,7 +12,6 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
-
 IUSE=""
 
 RDEPEND="
@@ -24,13 +21,16 @@ RDEPEND="
 	gnome-base/gconf:2
 "
 DEPEND="${RDEPEND}
-	app-text/scrollkeeper
+	app-text/rarian
 	virtual/pkgconfig
 "
 
 src_prepare() {
 	# Correct icon path. See bug #50295.
-	epatch "${FILESDIR}/${P}-desktop.patch"
+	eapply "${FILESDIR}/${P}-desktop.patch"
+
+	# Fix compilation with format-security, bug #517662
+	eapply "${FILESDIR}/${P}-format-security.patch"
 
 	sed -e 's/\(GETTEXT_PACKAGE = \)@GETTEXT_PACKAGE@/\1grdesktop/g' \
 		-i po/Makefile.in.in || die "sed 2 failed"

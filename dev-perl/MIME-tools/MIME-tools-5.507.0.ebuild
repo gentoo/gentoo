@@ -29,7 +29,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST="do parallel"
+SRC_TEST="do"
+# tests fail when done in parallel
 
 src_test() {
 	perl_rm_files t/02-kwalitee.t t/02-pod-coverage.t t/02-pod.t

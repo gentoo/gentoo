@@ -5,11 +5,6 @@
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Co-maintainer, CC on bugs.</description>
-	</maintainer>
 	<longdescription lang="en">Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a
     pre-fork worker model ported from Ruby's Unicorn project. The Gunicorn
     server is broadly compatible with various web frameworks, simply

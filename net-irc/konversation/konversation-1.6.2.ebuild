@@ -54,7 +54,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!net-irc/konversation:4
-	crypt? ( app-crypt/qca:2[openssl] )
+	crypt? ( app-crypt/qca:2[ssl] )
 "
 
 src_configure() {

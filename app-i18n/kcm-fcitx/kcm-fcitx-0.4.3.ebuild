@@ -30,7 +30,7 @@ RDEPEND=">=app-i18n/fcitx-4.2.8[dbus,qt4]
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
-	kde-base/kdelibs:4
+	kde-frameworks/kdelibs:4
 	virtual/libintl
 	x11-libs/libX11
 	x11-libs/libxkbfile"

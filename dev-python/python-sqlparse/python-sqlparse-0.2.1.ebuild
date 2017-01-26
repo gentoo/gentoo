@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://code.google.com/p/python-sqlparse/ https://github.com/andialbr
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD-2"
 IUSE="doc test"
 

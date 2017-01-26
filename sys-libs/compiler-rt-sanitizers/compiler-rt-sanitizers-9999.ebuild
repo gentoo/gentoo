@@ -1,14 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-CMAKE_MIN_VERSION=3.4.3
+# (needed due to CMAKE_BUILD_TYPE != Gentoo)
+CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 python-single-r1
+inherit cmake-utils flag-o-matic git-r3 python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="http://llvm.org/"
@@ -16,23 +17,26 @@ SRC_URI=""
 EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
-LICENSE="UoI-NCSA"
+LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="${PYTHON_DEPS}
-	!<sys-devel/llvm-${PV}"
+RDEPEND="!<sys-devel/llvm-${PV}"
+# llvm-4 needed for --cmakedir
 DEPEND="${RDEPEND}
-	~sys-devel/llvm-${PV}
+	>=sys-devel/llvm-4
 	test? (
 		app-portage/unsandbox
-		dev-python/lit[${PYTHON_USEDEP}]
+		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 		~sys-devel/clang-${PV}
 		~sys-libs/compiler-rt-${PV} )
 	${PYTHON_DEPS}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+# least intrusive of all
+CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_unpack() {
 	if use test; then
@@ -53,11 +57,10 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
-	local clang_version=4.0.0
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		# used to find cmake modules
-		-DLLVM_LIBDIR_SUFFIX="${libdir#lib}"
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${clang_version}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
@@ -93,13 +96,18 @@ src_configure() {
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/{bin,lib/clang/"${clang_version}"/include} || die
+		mkdir -p "${BUILD_DIR}"/{bin,$(get_libdir),lib/clang/"${clang_version}"/include} || die
 		cp "${EPREFIX}/usr/bin/clang" "${EPREFIX}/usr/bin/clang++" \
 			"${BUILD_DIR}"/bin/ || die
 		cp "${EPREFIX}/usr/lib/clang/${clang_version}/include"/*.h \
 			"${BUILD_DIR}/lib/clang/${clang_version}/include/" || die
 		cp "${sys_dir}"/*builtins*.a \
 			"${BUILD_DIR}/lib/clang/${clang_version}/lib/${sys_dir##*/}/" || die
+		# we also need LLVMgold.so for gold-based tests
+		if [[ -f ${EPREFIX}/usr/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}/usr/$(get_libdir)/LLVMgold.so" \
+				"${BUILD_DIR}/$(get_libdir)/" || die
+		fi
 	fi
 }
 
@@ -108,10 +116,4 @@ src_test() {
 	local -x LIT_PRESERVES_TMP=1
 
 	cmake-utils_src_make check-all
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	python_doscript "${S}"/lib/asan/scripts/asan_symbolize.py
 }

@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic linux-info multilib readme.gentoo systemd user
 
 DESCRIPTION="The Music Player Daemon (mpd)"
-HOMEPAGE="http://www.musicpd.org"
-SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
+HOMEPAGE="https://www.musicpd.org"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -130,6 +130,7 @@ src_prepare() {
 
 	cp -f doc/mpdconf.example doc/mpdconf.dist || die "cp failed"
 	epatch "${FILESDIR}"/${PN}-0.18.conf.patch
+	eapply_user
 }
 
 src_configure() {

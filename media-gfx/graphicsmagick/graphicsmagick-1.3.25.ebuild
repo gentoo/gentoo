@@ -24,7 +24,7 @@ RDEPEND="dev-libs/libltdl:0
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )

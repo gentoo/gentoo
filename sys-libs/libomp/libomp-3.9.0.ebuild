@@ -13,7 +13,11 @@ DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="http://openmp.llvm.org"
 SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
-LICENSE="UoI-NCSA"
+# Additional licenses:
+# - MIT-licensed Intel code,
+# - LLVM Software Grant from Intel.
+
+LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0/3.9"
 KEYWORDS="~amd64 ~x86"
 IUSE="hwloc ompt"
@@ -27,6 +31,8 @@ S="${WORKDIR}/${MY_P}.src"
 PATCHES=(
 	# backport of https://reviews.llvm.org/D24563
 	"${FILESDIR}"/${PN}-3.9.0-optional-aliases.patch
+	# backport of https://reviews.llvm.org/D25071
+	"${FILESDIR}"/${PN}-3.9.0-musl-strerror_r.patch
 )
 
 multilib_src_configure() {

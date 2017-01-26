@@ -15,20 +15,19 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar
 	http://hg.netbeans.org/binaries/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-extide-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-java-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	dev-java/ant-contrib:0
 	dev-java/asm:3
 	dev-java/bcel:0

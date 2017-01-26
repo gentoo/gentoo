@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
@@ -51,6 +51,8 @@ each_ruby_test() {
 			ruby-ng_cucumber
 			;;
 		*ruby21)
+			;;
+		*ruby22)
 			;;
 		*)
 			ruby-ng_rspec

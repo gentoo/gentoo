@@ -17,18 +17,17 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/49197106637CCA8C337AF16CC01BB5D9DEC7E179-jemmy-2.3.1.1-src.zip
 	http://hg.netbeans.org/binaries/20D826CC819A5A969CF3F7204E2E26CB6263EC43-jnlp-servlet.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-platform-${PV}
 	dev-java/javahelp:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	>=dev-java/junit-4.4:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

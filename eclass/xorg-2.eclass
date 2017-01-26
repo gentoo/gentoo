@@ -61,7 +61,7 @@ esac
 EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 
 IUSE=""
-HOMEPAGE="http://xorg.freedesktop.org/"
+HOMEPAGE="https://www.x.org/wiki/"
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
 # @DESCRIPTION:
@@ -73,7 +73,7 @@ HOMEPAGE="http://xorg.freedesktop.org/"
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
-: ${XORG_BASE_INDIVIDUAL_URI="http://xorg.freedesktop.org/releases/individual"}
+: ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
 # @ECLASS-VARIABLE: XORG_MODULE
 # @DESCRIPTION:

@@ -8,6 +8,7 @@ inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/net-tools/code"
+	EGIT_PROJECT="${PN}"
 	inherit git-2
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"

@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
 =app-editors/emacs-18*
-=games-action/lugaru-1.0c-r1
 >=app-i18n/atokx3-3.0.0
->=dev-java/sun-j2me-bin-2.5.2.01
 <games-roguelike/dwarf-fortress-0.43.0
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
@@ -19,12 +17,10 @@ app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
 app-emulation/winetricks
-app-office/lotus-notes
 app-office/ooextras
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/dmd-bin
 dev-lang/icc
 dev-lang/idb
 dev-lang/ifc
@@ -33,7 +29,6 @@ dev-python/skype4py
 dev-util/android-sdk-update-manager
 dev-util/android-studio
 dev-util/biew
-games-action/awesomenauts
 games-action/beathazardultra
 games-action/brutal-legend
 games-action/cs2d
@@ -43,7 +38,6 @@ games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
-games-action/lugaru-demo
 games-action/mutantstorm-demo
 games-action/phobiaii
 games-action/rune
@@ -76,11 +70,9 @@ games-fps/doom3-hellcampaign
 games-fps/doom3-inhell
 games-fps/doom3-lms
 games-fps/doom3-mitm
-games-fps/doom3-phantasm
 games-fps/doom3-roe
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro
-games-fps/enemy-territory-fortress
 games-fps/enemy-territory-omnibot
 games-fps/enemy-territory-truecombat
 games-fps/etqw-bin
@@ -111,7 +103,6 @@ games-fps/ut2004-demo
 games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
-games-puzzle/drod-bin
 games-puzzle/hoh-bin
 games-roguelike/adom
 games-rpg/dear-esther
@@ -125,29 +116,22 @@ games-rpg/nwn-data
 games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
-games-rpg/sacred-gold
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded
 games-server/ut2003-ded
 games-simulation/bcs-demo
-games-strategy/coldwar
-games-strategy/coldwar-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
-games-strategy/dominions2-demo
 games-strategy/heroes3
 games-strategy/heroes3-demo
 games-strategy/majesty-demo
-games-strategy/savage-bin
 games-strategy/smac
 games-strategy/spaz
 media-fonts/acroread-asianfonts
 media-sound/aucdtect
-media-sound/shoutcast-server-bin
-media-sound/shoutcast-trans-bin
 media-sound/skype-call-recorder
 media-sound/ventrilo-server-bin
 media-video/binkplayer

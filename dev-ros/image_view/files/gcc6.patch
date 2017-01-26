@@ -1,0 +1,44 @@
+commit 6c2d65452bd5fe62723988a1a570789921900d59
+Author: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+Date:   Fri Sep 30 15:39:47 2016 +0200
+
+    address gcc6 build error
+    
+    With gcc6, compiling fails with `stdlib.h: No such file or directory`,
+    as including '-isystem /usr/include' breaks with gcc6, cf.,
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129.
+    
+    This commit addresses this issue for this package in the same way
+    it was addressed in various other ROS packages. A list of related
+    commits and pull requests is at:
+    
+      https://github.com/ros/rosdistro/issues/12783
+    
+    Signed-off-by: Lukas Bulwahn <lukas.bulwahn@oss.bmw-carit.de>
+
+diff --git a/image_view/CMakeLists.txt b/image_view/CMakeLists.txt
+index 78b9eaa..93fabe7 100644
+--- a/image_view/CMakeLists.txt
++++ b/image_view/CMakeLists.txt
+@@ -8,9 +8,9 @@ catkin_package(CATKIN_DEPENDS dynamic_reconfigure)
+ find_package(Boost REQUIRED COMPONENTS signals thread)
+ find_package(OpenCV REQUIRED)
+ 
+-include_directories(SYSTEM ${Boost_INCLUDE_DIRS}
+-                           ${catkin_INCLUDE_DIRS}
+-                           ${OpenCV_INCLUDE_DIRS}
++include_directories(${Boost_INCLUDE_DIRS}
++                    ${catkin_INCLUDE_DIRS}
++                    ${OpenCV_INCLUDE_DIRS}
+ )
+ 
+ # Extra tools
+@@ -40,7 +40,7 @@ endif()
+ 
+ find_package(GTK2)
+ add_definitions(-DHAVE_GTK)
+-include_directories(SYSTEM ${GTK2_INCLUDE_DIRS})
++include_directories(${GTK2_INCLUDE_DIRS})
+ 
+ # Nodelet library
+ add_library(image_view src/nodelets/image_nodelet.cpp src/nodelets/disparity_nodelet.cpp src/nodelets/window_thread.cpp)

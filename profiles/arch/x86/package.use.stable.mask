@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,16 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Stable mask groonga on mariadb as I don't know how stable
+# the dependencies really are
+dev-db/mariadb mroonga
+
+# Bernard Cafarelli <voyageur@gentoo.org> (09 Jan 2017)
+# Requires more testing
+# and additional unstable dependencies
+gnustep-base/gnustep-make libobjc2
 
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Dependencies not yet stable
@@ -39,9 +49,7 @@ app-office/libreoffice firebird
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
-dev-lang/python-exec -python_single_target_pypy
 dev-lang/python-exec -python_targets_pypy3
-dev-lang/python-exec -python_single_target_pypy3
 
 # Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
 # [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.

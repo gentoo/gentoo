@@ -1,0 +1,62 @@
+# Config file for /etc/init.d/suricata*
+
+# Where config files are stored. Default:
+
+# SURICATA_DIR="/etc/suricata"
+
+# Pass options to each suricata service.
+#
+# You can launch more than one service at the same time with different options.
+# This can be useful in a multi-queue gateway, for example.
+# You can expand on the Suricata inline example found at:
+# http://suricata.readthedocs.io/en/latest/setting-up-ipsinline-for-linux.html
+# Instead of configuring iptables to send traffic to just one queue, you can configure it to "load balance"
+# on several queues. You can then have a Suricata instance processing traffic for each queue.
+# This should help improve performance on the gateway/firewall.
+#
+# Suppose you configured iptables to use queues 0 and 1 named q0 and q1. You can now do the following:
+# ln -s /etc/init.d/suricata /etc/init.d/suricata.q0
+# ln -s /etc/init.d/suricata /etc/init.d/suricata.q1
+# cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q0.yaml
+# cp /etc/suricata/suricata.yaml /etc/suricata/suricata-q1.yaml
+#
+# Edit both suricata-q{0,1}.yaml files and set values accordingly.
+# You can override these yaml config file names with SURICATA_CONF* below (optional).
+# This allows you to use the same yaml config file for multiple instances as long as you override
+# sensible options such as the log file paths.
+# SURICATA_CONF_q0="suricata-queues.yaml"
+# SURICATA_CONF_q1="suricata-queues.yaml"
+# SURICATA_CONF="suricata.yaml"
+
+# You can define the options here:
+# NB: avoid using -l, -c, --user, --group and setting logging.outputs.1.file.filename as the init script will try to set them for you.
+
+# SURICATA_OPTS_q0="-q 0"
+# SURICATA_OPTS_q1="-q 1"
+
+# If you want to use ${SURICATA_DIR}/suricata.yaml and start the service with /etc/init.d/suricata
+# then you can set:
+
+SURICATA_OPTS="-i eth0"
+
+# Log paths listed here will be created by the init script and will override the log path
+# set in the yaml file, if present.
+# SURICATA_LOG_FILE_q0="/var/log/suricata/q0/suricata.log"
+# SURICATA_LOG_FILE_q1="/var/log/suricata/q1/suricata.log"
+# SURICATA_LOG_FILE="/var/log/suricata/suricata.log"
+
+# Run as user/group.
+# Do not define if you want to run as root or as the user defined in the yaml config file (run-as).
+# The ebuild should have created the dedicated user/group suricata:suricata for you to specify here below.
+# SURICATA_USER_q0="suricata"
+# SURICATA_GROUP_q0="suricata"
+# SURICATA_USER_q1="suricata"
+# SURICATA_GROUP_q1="suricata"
+# SURICATA_USER="suricata"
+# SURICATA_GROUP="suricata"
+
+# Suricata processes can take a long time to shut down.
+# If necessary, adjust timeout in seconds to be used when calling stop from the init script.
+# Examples:
+# SURICATA_MAX_WAIT_ON_STOP="300"
+# SURICATA_MAX_WAIT_ON_STOP="SIGTERM/30"

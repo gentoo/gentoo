@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index df2a139..6200cae 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,8 +19,12 @@ else
+ 	GIT_PSUFFIX = .$(GIT_SUFFIX)
+ 	RPM_VERSION = $(NAME)-$(VERSION)-1$(GIT_PSUFFIX)
+ endif
+-UNITDIR = $(shell rpm --eval '%{_unitdir}' 2>/dev/null || echo /usr/lib/systemd/system)
+-TMPFILESDIR = $(shell rpm --eval '%{_tmpfilesdir}' 2>/dev/null || echo /usr/lib/tmpfiles.d)
++UNITDIR_FALLBACK = /usr/lib/systemd/system
++UNITDIR_DETECT = $(shell rpm --eval '%{_unitdir}' 2>/dev/null || echo $(UNITDIR_FALLBACK))
++UNITDIR = $(UNITDIR_DETECT:%{_unitdir}=$(UNITDIR_FALLBACK))
++TMPFILESDIR_FALLBACK = /usr/lib/tmpfiles.d
++TMPFILESDIR_DETECT = $(shell rpm --eval '%{_tmpfilesdir}' 2>/dev/null || echo $(TMPFILESDIR_FALLBACK))
++TMPFILESDIR = $(TMPFILESDIR_DETECT:%{_tmpfilesdir}=$(TMPFILESDIR_FALLBACK))
+ VERSIONED_NAME = $(NAME)-$(VERSION)$(GIT_PSUFFIX)
+ 
+ DATADIR = /usr/share

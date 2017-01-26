@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 s390 sh sparc x86"
 IUSE="libressl ssl"
 
-DEPEND="ssl? ( 
+DEPEND="ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= ) )
 "

@@ -1,0 +1,65 @@
+Fix configure.ac
+* Remove setting CFLAGS
+* Look for sqrt() in libm (bug 592414)
+
+--- a/configure.in
++++ b/configure.in
+@@ -1,26 +1,23 @@
+ AC_PREREQ(2.52)
+ 
+-AC_INIT(sirius, 0.8.0)
+-AC_CONFIG_SRCDIR(src/sirius.c)
+-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
++AC_INIT([sirius], [0.8.0])
++AC_CONFIG_SRCDIR([src/sirius.c])
++AM_INIT_AUTOMAKE
+ 
+-AM_CONFIG_HEADER(config.h)
+-
+-AM_MAINTAINER_MODE
++AC_CONFIG_HEADERS([config.h])
+ 
+ AC_PROG_INTLTOOL
+ 
+-AC_ISC_POSIX
+ AC_PROG_CC
+-AC_STDC_HEADERS
+-AM_PROG_LIBTOOL
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ pkg_modules="gtk+-2.0 >= 1.3.13 gconf-2.0 libgnomeui-2.0 libgnomecanvas-2.0 libgnomeui-2.0 gdk-pixbuf-2.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+-AC_SUBST(PACKAGE_CFLAGS)
+-AC_SUBST(PACKAGE_LIBS)
+ 
++dnl Look for sqrt() in libm
++AC_SEARCH_LIBS([sqrt], [m], [], [
++	AC_MSG_ERROR([unable to find the sqrt() function])
++])
+ 
+ GETTEXT_PACKAGE=sirius
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+@@ -29,22 +26,6 @@
+ ALL_LINGUAS="sv fr de ru"
+ AM_GLIB_GNU_GETTEXT
+ 
+-CFLAGS="-g -O3"
+-
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(LDFLAGS) 
+-
+-dnl Use -Wall if we have gcc.
+-changequote(,)dnl
+-if test "x$GCC" = "xyes"; then
+-  case " $CFLAGS " in
+-  *[\ \	]-Wall[\ \	]*) ;;
+-  *) CFLAGS="$CFLAGS -Wall" ;;
+-  esac
+-fi
+-changequote([,])dnl
+-
+ AC_OUTPUT([
+ Makefile
+ po/Makefile.in

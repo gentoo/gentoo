@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,11 +12,11 @@ SRC_URI="mirror://sourceforge/ayttm/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="crypt icq irc xmpp lj msn nls oscar smtp webcam xscreensaver yahoo"
+IUSE="crypt icq irc xmpp lj msn nls oscar smtp xscreensaver yahoo"
 
-CDEPEND="app-text/enchant
+RDEPEND="app-text/enchant
 	dev-libs/glib:2
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 	virtual/libiconv
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
@@ -24,12 +24,9 @@ CDEPEND="app-text/enchant
 	x11-libs/libXpm
 	x11-libs/pango
 	crypt? ( app-crypt/gpgme )
-	webcam? ( media-libs/jasper )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	yahoo? ( net-libs/libyahoo2 )"
-RDEPEND="${CDEPEND}
-	webcam? ( media-tv/xawtv )"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	nls? ( sys-devel/gettext )"
@@ -52,9 +49,9 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable oscar) \
 		$(use_enable smtp) \
-		$(use_enable webcam) \
 		$(use_enable xscreensaver) \
 		$(use_enable yahoo) \
+		--disable-webcam \
 		--disable-arts \
 		--enable-posix-dlopen \
 		--disable-static

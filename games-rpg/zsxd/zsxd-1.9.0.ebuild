@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="mirror bindist"
 
-RDEPEND=">=games-engines/solarus-1.3.0
-	<games-engines/solarus-1.4.0"
+RDEPEND="=games-engines/solarus-1.3.1"
 DEPEND="app-arch/zip"
 
 DOCS=( ChangeLog readme.txt )

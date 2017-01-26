@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,8 @@ EAPI="5"
 inherit eutils scons-utils toolchain-funcs
 
 DESCRIPTION="HTTP client library"
-HOMEPAGE="https://code.google.com/p/serf/"
-SRC_URI="https://serf.googlecode.com/svn/src_releases/${P}.tar.bz2"
+HOMEPAGE="https://serf.apache.org/"
+SRC_URI="mirror://apache/${PN}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1"

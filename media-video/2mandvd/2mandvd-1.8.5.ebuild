@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,6 +45,8 @@ S=${WORKDIR}/${MY_PN}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.3-libav.patch"
 	"${FILESDIR}/${PN}-1.8.5-libavformat54.patch"
+	"${FILESDIR}/${PN}-1.8.5-gcc6.patch"
+	"${FILESDIR}/${PN}-1.8.5-ffmpeg3.patch"
 )
 
 src_prepare() {

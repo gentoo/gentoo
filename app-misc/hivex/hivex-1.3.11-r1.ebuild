@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 USE_RUBY="ruby20 ruby21"
 RUBY_OPTIONAL=yes
 
-PYTHON_COMPAT=(python2_7 python3_{3,4})
+PYTHON_COMPAT=(python2_7 python3_4)
 
 inherit autotools-utils eutils perl-app ruby-ng python-single-r1
 
@@ -48,7 +48,7 @@ ruby_add_bdepend "ruby? ( dev-ruby/rake
 			dev-ruby/rdoc )"
 ruby_add_rdepend "ruby? ( virtual/rubygems )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQ_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( README )
 S="${WORKDIR}/${P}"

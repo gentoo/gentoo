@@ -1,0 +1,16 @@
+diff -purN a/source/creator/CMakeLists.txt b/source/creator/CMakeLists.txt
+--- a/source/creator/CMakeLists.txt	2016-09-28 10:26:55.000000000 +0100
++++ b/source/creator/CMakeLists.txt	2016-10-03 12:17:08.938928486 +0100
+@@ -328,12 +328,6 @@ endif()
+ # Install Targets (Generic, All Platforms)
+ 
+ 
+-# important to make a clean  install each time, else old scripts get loaded.
+-install(
+-	CODE
+-	"file(REMOVE_RECURSE ${TARGETDIR_VER})"
+-)
+-
+ if(WITH_PYTHON)
+ 	# install(CODE "message(\"copying blender scripts...\")")
+ 	

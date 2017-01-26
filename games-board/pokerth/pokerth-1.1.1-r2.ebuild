@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit flag-o-matic eutils qmake-utils
+
+inherit eutils flag-o-matic qmake-utils
 
 MY_P="PokerTH-${PV}-src"
 DESCRIPTION="Texas Hold'em poker game"
@@ -12,7 +13,7 @@ SRC_URI="mirror://sourceforge/pokerth/${MY_P}.tar.bz2"
 
 LICENSE="AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated"
 
 RDEPEND="dev-db/sqlite:3
@@ -40,12 +41,14 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}/${P}-qt5.patch"
 	"${FILESDIR}/${P}-boost-1.60.patch"
+	"${FILESDIR}/${P}-qmake-gcc-6.patch"
+	"${FILESDIR}/${P}-boost-noexcept.patch"
 )
 
 src_prepare() {
 	default
 
-	if use dedicated ; then
+	if use dedicated; then
 		sed -i -e 's/pokerth_game.pro//' pokerth.pro || die
 	fi
 
@@ -58,13 +61,16 @@ src_configure() {
 
 src_install() {
 	dobin bin/pokerth_server
-	if ! use dedicated ; then
+	if ! use dedicated; then
 		dobin ${PN}
 		insinto /usr/share/${PN}
 		doins -r data
 		domenu ${PN}.desktop
 		doicon ${PN}.png
 	fi
+
+	einstalldocs
+	dodoc docs/{gui_styling,server_setup}_howto.txt
+
 	doman docs/pokerth.1
-	dodoc ChangeLog TODO docs/{gui_styling,server_setup}_howto.txt
 }

@@ -1,5 +1,5 @@
---- src/streamtuner/st-thread.c
-+++ src/streamtuner/st-thread.c
+--- a/src/streamtuner/st-thread.c
++++ b/src/streamtuner/st-thread.c
 @@ -108,1 +108,1 @@
 -			     0x18000, /* 96k, big enough for libcurl */
 +			     0x40000, /* change from 96k to 256k */

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,10 +12,8 @@ media-libs/xvid -pic
 
 # Jeremy Olexa <darkside@gentoo.org> (29 Jul 2010)
 # Relocation issues on 32-bit OSX only, bug #329859
-media-sound/mpg123 -mmx -sse
 media-sound/mpg123 -cpu_flags_x86_mmx -cpu_flags_x86_sse
 
 # Fabian Groffen <grobian@gentoo.org> (01 Feb 2009)
 # Doesn't compile on 32-bits OSX only, bug #257225
-media-video/ffmpeg -mmx
 media-video/ffmpeg -cpu_flags_x86_mmx

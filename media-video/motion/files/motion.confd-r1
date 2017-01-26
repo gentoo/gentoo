@@ -1,0 +1,9 @@
+# Set the user and group under which motion will be run
+MOTION_USER="motion"
+MOTION_GROUP="video"
+
+# Set the the directory for storing the pidfile
+MOTION_RUN_DIR="/var/run/motion"
+
+# Set the the working directory for storing images/videos
+MOTION_LIB_DIR="/var/lib/motion"

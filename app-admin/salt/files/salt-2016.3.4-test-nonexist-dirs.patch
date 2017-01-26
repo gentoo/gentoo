@@ -1,0 +1,32 @@
+diff --git a/tests/unit/conf_test.py b/tests/unit/conf_test.py
+index cce0023423..c1324f4a61 100644
+--- a/tests/unit/conf_test.py
++++ b/tests/unit/conf_test.py
+@@ -140,6 +140,8 @@ class ConfTest(TestCase):
+         commented out. This test loops through all of the files in that directory to check
+         for any lines that are not commented or blank.
+         '''
++        if not os.path.exists(SAMPLE_CONF_DIR + 'cloud.profiles.d/'):
++            return
+         cloud_sample_files = os.listdir(SAMPLE_CONF_DIR + 'cloud.profiles.d/')
+         for conf_file in cloud_sample_files:
+             profile_conf = SAMPLE_CONF_DIR + 'cloud.profiles.d/' + conf_file
+@@ -158,6 +160,8 @@ class ConfTest(TestCase):
+         commented out. This test loops through all of the files in that directory to check
+         for any lines that are not commented or blank.
+         '''
++        if not os.path.exists(SAMPLE_CONF_DIR + 'cloud.providers.d/'):
++            return
+         cloud_sample_files = os.listdir(SAMPLE_CONF_DIR + 'cloud.providers.d/')
+         for conf_file in cloud_sample_files:
+             provider_conf = SAMPLE_CONF_DIR + 'cloud.providers.d/' + conf_file
+@@ -176,6 +180,9 @@ class ConfTest(TestCase):
+         commented out. This test loops through all of the files in that directory to check
+         for any lines that are not commented or blank.
+         '''
++        if not os.path.exists(SAMPLE_CONF_DIR + 'cloud.maps.d/'):
++            return
++
+         cloud_sample_files = os.listdir(SAMPLE_CONF_DIR + 'cloud.maps.d/')
+         for conf_file in cloud_sample_files:
+             map_conf = SAMPLE_CONF_DIR + 'cloud.maps.d/' + conf_file

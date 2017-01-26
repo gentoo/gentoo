@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ src_configure() {
 	ac_cv_prog_AWK="${prepend}awk" \
 	LC_ALL=C \
 	econf \
-		--exec-prefix=/usr \
-		--bindir=/usr/bin \
+		--exec-prefix="${EPREFIX}"/usr \
+		--bindir="${EPREFIX}"/usr/bin \
 		--program-suffix="-${PV}"
 }

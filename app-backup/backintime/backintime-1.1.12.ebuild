@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4,5} )
+PYTHON_COMPAT=( python3_{4,5} )
 
 inherit eutils python-single-r1
 
@@ -14,7 +14,7 @@ SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="qt4"
 
 DEPEND="${PYTHON_DEPS}

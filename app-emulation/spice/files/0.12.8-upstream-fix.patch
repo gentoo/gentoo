@@ -1,0 +1,36 @@
+commit 1d597f4b1a6bbeaf3dda998413a1e3cef2e40681
+Author: Marc-André Lureau <marcandre.lureau@redhat.com>
+Date:   Wed Jul 20 17:16:31 2016 +0400
+
+    Call migrate_end_complete() after falling back to switch-host
+    
+    Eventually, during a seamless migration, qemu may finish to migrate
+    before the spice client even finished to connect all channels to
+    destination and informed the server. In this case,
+    main_channel_client_migrate_src_complete() will fall back to
+    switch-host method, and reds_mig_fill_wait_disconnect() is called to
+    complete the migration (disconnecting all channels).
+    
+    reds_mig_cleanup() is called when all channels are disconnected, but
+    reds->mig_wait_connect is still TRUE, and it will call
+    migrate_connect_complete() instead of the expected
+    migrate_end_complete(). Setting reds->mig_wait_connect to FALSE when
+    reds_mig_fill_wait_disconnect() solves the issue.
+    
+    Fixes:
+    https://bugzilla.redhat.com/show_bug.cgi?id=1352836
+    
+    Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+
+diff --git a/server/reds.c b/server/reds.c
+index 61bf735..f40b65c 100644
+--- a/server/reds.c
++++ b/server/reds.c
+@@ -2816,6 +2816,7 @@ static void reds_mig_fill_wait_disconnect(void)
+         wait_client->client = client;
+         ring_add(&reds->mig_wait_disconnect_clients, &wait_client->link);
+     }
++    reds->mig_wait_connect = FALSE;
+     reds->mig_wait_disconnect = TRUE;
+     core->timer_start(reds->mig_timer, MIGRATE_TIMEOUT);
+ }

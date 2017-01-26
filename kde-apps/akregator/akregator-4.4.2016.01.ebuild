@@ -14,9 +14,9 @@ KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kdelibs '' 4.6)
 	$(add_kdeapps_dep kdepimlibs '' 4.6)
 	$(add_kdeapps_dep libkdepim '' 4.4.2015)
+	kde-frameworks/kdelibs:4
 "
 RDEPEND="${DEPEND}"
 

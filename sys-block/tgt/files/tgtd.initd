@@ -41,13 +41,13 @@ stop() {
 	ebegin "Stopping ${SVCNAME}"
 	ebegin "Stopping target framework daemon"
 	# start-stop-daemon --stop --exec /usr/sbin/tgtd --quiet
-	if [ "$RUNLEVEL" == 0 -o "$RUNLEVEL" == 6 ] ; then
+	if [ "$RUNLEVEL" = 0 -o "$RUNLEVEL" = 6 ] ; then
 	    forcedstop
 	fi
 	# Remove all targets. It only removes targets which are not in use.
-	tgt-admin --update ALL -c /dev/null &>/dev/null
+	tgt-admin --update ALL -c /dev/null >/dev/null 2>&1
 	# tgtd will exit if all targets were removed
-	tgtadm --op delete --mode system &>/dev/null
+	tgtadm --op delete --mode system >/dev/null 2>&1
 	RETVAL=$?
 	if [ "$RETVAL" -eq 107 ] ; then
 	    echo "tgtd is not running"
@@ -70,7 +70,7 @@ forcedstop() {
 	# expect the initiators to reconnect cleanly when we boot again
 	# (i.e. we don't want them to reconnect to a tgtd which is still
 	# working, but the target is gone).
-	tgtadm --op update --mode sys --name State -v offline &>/dev/null
+	tgtadm --op update --mode sys --name State -v offline >/dev/null 2>&1
 	RETVAL=$?
 	if [ "$RETVAL" -eq 107 ] ; then
 	    echo "tgtd is not running"
@@ -96,7 +96,7 @@ reload() {
 	echo "Updating target framework daemon configuration"
 	# Update configuration for targets. Only targets which
 	# are not in use will be updated.
-	tgt-admin --update ALL -c $TGTD_CONFIG &>/dev/null
+	tgt-admin --update ALL -c $TGTD_CONFIG >/dev/null 2>&1
 	RETVAL=$?
 	if [ "$RETVAL" -eq 107 ] ; then
 	    echo "tgtd is not running"
@@ -107,7 +107,7 @@ reload() {
 forcedreload() {
 	echo "Force-updating target framework daemon configuration"
 	# Update configuration for targets, even those in use.
-	tgt-admin --update ALL -f -c $TGTD_CONFIG &>/dev/null
+	tgt-admin --update ALL -f -c $TGTD_CONFIG >/dev/null 2>&1
 	RETVAL=$?
 	if [ "$RETVAL" -eq 107 ] ; then
 	    echo "tgtd is not running"

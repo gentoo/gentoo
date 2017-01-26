@@ -1,5 +1,5 @@
---- src/equip.c.orig
-+++ src/equip.c
+--- a/src/equip.c
++++ b/src/equip.c
 @@ -120,7 +120,7 @@
  	    return (i);
  
@@ -9,8 +9,8 @@
  	if (pawn->item[i].usage & USAGE_EQUIPPABLE)
  	    return (i);
      return (-1);
---- src/shop.c.orig
-+++ src/shop.c
+--- a/src/shop.c
++++ b/src/shop.c
 @@ -290,8 +290,7 @@
  
  		SDL_BlitSurface (name, NULL, area, &dest);

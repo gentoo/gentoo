@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,9 +33,9 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( >=media-libs/jasper-1.900.1 )
+	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	openexr? ( media-libs/openexr )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	raw? ( =media-libs/libopenraw-0.0.9 )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
@@ -72,6 +72,9 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${P}-g_log_domain.patch
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=605216
+	epatch "${FILESDIR}"/${P}-underlinking.patch
 	eautoreconf
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=468248

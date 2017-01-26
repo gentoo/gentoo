@@ -6,7 +6,14 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <longdescription lang="en">
-  Hypre is a set of matrix preconditioning libraries to aid in the
-  solution of large systems of linear equations.
-</longdescription>
+    Hypre is a set of matrix preconditioning libraries to aid in the
+    solution of large systems of linear equations.
+  </longdescription>
+    <upstream>
+    <remote-id type="github">LLNL/hypre</remote-id>
+  </upstream>
+  <use>
+    <flag name="int64">Build the 64 bits integer library</flag>
+    <flag name="fei">Build the internal Finite Element Interface routines</flag>
+  </use>
 </pkgmetadata>

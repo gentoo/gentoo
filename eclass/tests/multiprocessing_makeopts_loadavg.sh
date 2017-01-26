@@ -9,7 +9,7 @@ inherit multiprocessing
 
 test-makeopts_loadavg() {
 	local exp=$1; shift
-	tbegin "makeopts_loadavg($*) == ${exp}"
+	tbegin "makeopts_loadavg($1${2+; inf=${2}}) == ${exp}"
 	local act=$(makeopts_loadavg "$@")
 	[[ ${act} == "${exp}" ]]
 	tend $? "Got back: ${act}"
@@ -28,9 +28,15 @@ tests=(
 	4 "-j1 -j 2 --load-average 3 --load-average=4"
 	3 " --max-load=3 -x"
 	8 "     -l        			8     "
+	999 "-kl"
+	4 "-kl4"
+	5 "-kl 5"
 )
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_loadavg "${tests[i]}" "${tests[i+1]}"
 done
+
+# test custom inf value
+test-makeopts_loadavg 645 "-l" 645
 
 texit

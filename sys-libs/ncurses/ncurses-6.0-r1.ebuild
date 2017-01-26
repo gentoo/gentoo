@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.0-pkg-config.patch"
 	"${FILESDIR}/${PN}-5.9-gcc-5.patch" #545114
 	"${FILESDIR}/${PN}-6.0-ticlib.patch" #557360
+	"${FILESDIR}/${PN}-6.0-cppflags-cross.patch" #601426
 )
 
 src_prepare() {
@@ -182,7 +183,7 @@ do_configure() {
 
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
-	CONFIG_SHELL=${BASH} \
+	CONFIG_SHELL=${EPREFIX}/bin/bash \
 	ECONF_SOURCE=${S} \
 	econf "${conf[@]}" "$@"
 }

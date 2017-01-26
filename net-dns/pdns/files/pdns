@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,13 +32,13 @@ start() {
 
 stop() {
 	ebegin "Stopping PowerDNS (${PDNS_INSTANCE})"
-	/usr/bin/pdns_control ${PDNS_CONFIG} quit &>/dev/null
+	/usr/bin/pdns_control ${PDNS_CONFIG} quit >/dev/null 2>&1
 	eend $?
 }
 
 reload() {
 	ebegin "Reloading PowerDNS (${PDNS_INSTANCE})"
-	/usr/bin/pdns_control ${PDNS_CONFIG} cycle &>/dev/null
+	/usr/bin/pdns_control ${PDNS_CONFIG} cycle >/dev/null 2>&1
 	eend $?
 }
 

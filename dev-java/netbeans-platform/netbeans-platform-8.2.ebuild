@@ -27,7 +27,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/AF022CBCACD8CBFCF946816441D1E7568D817745-testng-6.8.1-javadoc.zip
 	http://hg.netbeans.org/binaries/CEC2829EC391CB404AD32EB2D08F879C418B745B-xhr4j-1.3.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
@@ -44,11 +44,11 @@ CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/osgi-compendium:0
 	dev-java/swing-layout:1[source]
 	dev-java/testng:0"
-DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
-	app-arch/unzip
-	${CDEPEND}"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+DEPEND="${CDEPEND}
+	dev-java/oracle-jdk-bin:1.8[javafx]
+	app-arch/unzip"
+RDEPEND="${CDEPEND}
+	virtual/jdk:1.8"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+command=/usr/sbin/bacula-dir
+command_args="${DIR_OPTIONS}"
+pidfile=/var/run/bacula-dir.9101.pid
+
+depend() {
+	need net
+	if [ "${LOCAL_DB}" -eq 1 ]; then
+		:
+	fi
+	use dns bacula-fd bacula-sd
+}
+

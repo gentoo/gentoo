@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit eutils multilib flag-o-matic toolchain-funcs udev
+inherit eutils multilib flag-o-matic toolchain-funcs udev user
 
 # One ebuild to rule them all
 if [[ ${PV} == "9999" ]] ; then
@@ -37,6 +37,10 @@ RDEPEND=">=dev-lang/jimtcl-0.75
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+pkg_setup() {
+	enewgroup plugdev
+}
 
 src_prepare() {
 	epatch_user
@@ -130,4 +134,8 @@ src_install() {
 	default
 	env -uRESTRICT prepstrip "${ED}"/usr/bin "${ED}"/usr/$(get_libdir)
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
+}
+
+pkg_postinst() {
+	elog "To access openocd devices as user you must be in the plugdev group"
 }

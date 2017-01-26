@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,13 +8,12 @@ inherit autotools
 
 IUSE=""
 DESCRIPTION="dockapp for monitoring filesystem usage"
-HOMEPAGE="http://windowmaker.org/dockapps/?name=wmfsm"
-# Grab from http://windowmaker.org/dockapps/?download=${P}.tar.gz
+HOMEPAGE="http://www.dockapps.net/wmfsm"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11

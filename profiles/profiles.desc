@@ -199,6 +199,14 @@ arm64		hardened/linux/musl/arm64 				exp
 ia64		hardened/linux/ia64					dev
 mips		hardened/linux/musl/mips				exp
 mips		hardened/linux/musl/mips/mipsel				exp
+mips		hardened/linux/mips/mipsel/multilib/n32			exp
+mips		hardened/linux/mips/mipsel/multilib/n64			exp
+mips		hardened/linux/mips/mipsel/n32				exp
+mips		hardened/linux/mips/mipsel/n64				exp
+mips		hardened/linux/mips/multilib/n32			exp
+mips		hardened/linux/mips/multilib/n64			exp
+mips		hardened/linux/mips/n32					exp
+mips		hardened/linux/mips/n64					exp
 ppc		hardened/linux/powerpc/ppc32				dev
 ppc		hardened/linux/powerpc/ppc64/32bit-userland		dev
 ppc		hardened/linux/musl/ppc					exp
@@ -256,6 +264,7 @@ amd64-linux		prefix/linux-standalone/amd64/legacy		exp
 x86-linux		prefix/linux-standalone/x86			exp
 x86-linux		prefix/linux-standalone/x86/legacy		exp
 arm-linux		prefix/linux-standalone/arm/armv7a		exp
+arm64-linux		prefix/linux-standalone/arm64			exp
 
 # Mac OS X Profiles
 ppc-macos		prefix/darwin/macos/10.4/ppc			exp
@@ -293,6 +302,7 @@ x64-solaris		prefix/sunos/solaris/5.11/x64			exp
 ppc-aix			prefix/aix/5.2.0.0/ppc				exp
 ppc-aix			prefix/aix/5.3.0.0/ppc				exp
 ppc-aix			prefix/aix/6.1.0.0/ppc				exp
+ppc-aix			prefix/aix/7.1.0.0/ppc				exp
 
 # Interix Profiles
 x86-interix		prefix/windows/interix/3.5/x86			exp

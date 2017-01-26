@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 		!dev-lisp/openmcl"
 
 S="${WORKDIR}"/${MY_PN}
-PATCHES=( "${FILESDIR}"/ccl-format.patch )
 ENVD="${T}"/50ccl
 
 src_configure() {
@@ -46,6 +45,7 @@ src_configure() {
 
 src_prepare() {
 	default
+	epatch "${FILESDIR}"/ccl-format.patch
 	cp /usr/share/common-lisp/source/asdf/build/asdf.lisp tools/ || die
 }
 

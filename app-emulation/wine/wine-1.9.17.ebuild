@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -337,6 +337,9 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
+
+		# https://bugs.winehq.org/show_bug.cgi?id=42132
+		"${FILESDIR}"/${PN}-2.0_rc3-flex263.patch
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
@@ -506,9 +509,12 @@ multilib_src_install_all() {
 
 	# Remove wineconsole if neither backend is installed #551124
 	if ! use X && ! use ncurses; then
-		rm	"${D}"/usr/{bin/,man/man1/}wineconsole* || die
-		use abi_x86_32 && rm "${D}"/usr/lib32/wine/{,fakedlls/}wineconsole.exe* || die
-		use abi_x86_64 && rm "${D}"/usr/lib64/wine/{,fakedlls/}wineconsole.exe* || die
+		rm "${D}"/usr/bin/wineconsole* || die
+		rm "${D}"/usr/share/man/man1/wineconsole* || die
+		rm_wineconsole() {
+			rm "${D}usr/$(get_libdir)"/wine/{,fakedlls/}wineconsole.exe* || die
+		}
+		multilib_foreach_abi rm_wineconsole
 	fi
 
 	use abi_x86_32 && pax-mark psmr "${D}"usr/bin/wine{,-preloader} #255055

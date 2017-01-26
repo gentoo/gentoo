@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Data-Page-Pageset</remote-id>
     <remote-id type="cpan-module">Data::Page::Pageset</remote-id>
+    <remote-id type="cpan-module">Data::Page::Pageset::Chunk</remote-id>
   </upstream>
 </pkgmetadata>

@@ -18,24 +18,23 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
 	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
 # These files are for remote development and debugging
 QA_PREBUILT="usr/share/netbeans-cnd-${SLOT}/bin/*"
 
-CDEPEND="~dev-java/netbeans-dlight-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-dlight-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
 	~dev-java/netbeans-platform-${PV}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	>=dev-java/jna-3.4.0
-	${CDEPEND}
 	dev-java/javahelp:0"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}"
+RDEPEND="${CDEPEND}"
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 

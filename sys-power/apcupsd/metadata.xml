@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>john.einar@gmail.com</email>
+		<name>John Einar Reitan</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
 	</maintainer>
@@ -23,4 +27,9 @@ determined by power consumption rates.
 <upstream>
 	<remote-id type="sourceforge">apcupsd</remote-id>
 </upstream>
+<use>
+	<flag name="modbus">
+	  enable MODBUS support over USB
+	</flag>
+</use>
 </pkgmetadata>

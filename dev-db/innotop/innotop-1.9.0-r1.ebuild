@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit perl-module
 
-DESCRIPTION="innotop - A text-mode MySQL and InnoDB monitor like mytop, but with many more features"
+DESCRIPTION="A text-mode MySQL and InnoDB monitor like mytop, but with many more features"
 HOMEPAGE="https://github.com/innotop/innotop"
 SRC_URI="https://innotop.googlecode.com/files/${P}.tar.gz"
 

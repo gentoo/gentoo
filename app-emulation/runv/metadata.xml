@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mrueg@gentoo.org</email>
+		<name>Manuel Rüger</name>
+	</maintainer>
+	<use>
+		<flag name="libvirt">Enable support for KVM via libvirt</flag>
+		<flag name="xen">Enable support for the Xen Hypervisor</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hyperhq/runv</remote-id>
+	</upstream>
+</pkgmetadata>

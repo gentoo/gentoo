@@ -5,6 +5,7 @@
 EAPI="5"
 # Does not yet support py3
 PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="sqlite"
 
 inherit python-r1
 

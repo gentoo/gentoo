@@ -1,0 +1,22 @@
+commit b0d31cc1e9a43b45d216ee7f804e901a5c0f8936
+Author: Hodorgasm <nsane457@gmail.com>
+Date:   Mon Sep 19 17:58:22 2016 -0400
+
+    Fix "stdlib.h: No such file or directory" errors in GCC-6
+    
+    Including '-isystem /usr/include' breaks building with GCC-6.
+    See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+diff --git a/tf/CMakeLists.txt b/tf/CMakeLists.txt
+index 8077561..cf72127 100644
+--- a/tf/CMakeLists.txt
++++ b/tf/CMakeLists.txt
+@@ -8,7 +8,7 @@ find_package(catkin COMPONENTS angles geometry_msgs message_filters message_gene
+ 
+ catkin_python_setup()
+ 
+-include_directories(SYSTEM ${Boost_INCLUDE_DIR}
++include_directories(${Boost_INCLUDE_DIR}
+                            ${catkin_INCLUDE_DIRS}
+ )
+ include_directories(include)

@@ -14,7 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="2"
 KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
-IUSE="botan debug doc examples gcrypt gpg libressl logger nss +openssl pkcs11 +qt4 qt5 sasl softstore test"
+IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 +qt4 qt5 sasl softstore +ssl test"
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 RDEPEND="
@@ -27,10 +27,6 @@ RDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
-	openssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
 	pkcs11? (
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
@@ -43,6 +39,10 @@ RDEPEND="
 		dev-qt/qtnetwork:5
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.1:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
@@ -76,10 +76,10 @@ src_configure() {
 			$(qca_plugin_use gpg gnupg)
 			$(qca_plugin_use logger)
 			$(qca_plugin_use nss)
-			$(qca_plugin_use openssl ossl)
 			$(qca_plugin_use pkcs11)
 			$(qca_plugin_use sasl cyrus-sasl)
 			$(qca_plugin_use softstore)
+			$(qca_plugin_use ssl ossl)
 			$(cmake-utils_use_build test TESTS)
 		)
 

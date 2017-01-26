@@ -28,7 +28,7 @@ RDEPEND="
 	>=x11-libs/libXrandr-1.3
 	libav? ( >=media-video/libav-9:0=[X,encode,truetype] )
 	!libav? ( >=media-video/ffmpeg-1.1:0=[X,encode,truetype] )
-	kde? ( kde-base/kdelibs:4 )
+	kde? ( kde-frameworks/kdelibs:4 )
 	opengl? ( >=dev-qt/qtopengl-4.7.4:4 )
 	pulseaudio? ( media-sound/pulseaudio )
 "

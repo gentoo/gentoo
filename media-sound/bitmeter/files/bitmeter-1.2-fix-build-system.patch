@@ -1,0 +1,30 @@
+Look for log10f function in libm.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=586148
+
+--- a/configure.in
++++ b/configure.in
+@@ -1,8 +1,8 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
+-AM_INIT_AUTOMAKE(bitmeter, 1.2)
+-AM_CONFIG_HEADER(config.h)
++AC_INIT([bitmeter], [1.2])
++AM_INIT_AUTOMAKE
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_ISC_POSIX
+@@ -10,6 +10,12 @@
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
++dnl Find log10f
++dnl Gentoo-bug: 586148
++AC_SEARCH_LIBS([log10f], [m], [], [
++	AC_MSG_ERROR([unable to find the log10f() function])
++])
++
+ pkg_modules="gtk+-2.0 >= 2.0.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)

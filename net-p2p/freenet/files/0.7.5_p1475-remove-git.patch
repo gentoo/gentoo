@@ -1,0 +1,24 @@
+diff -Naur a/build-clean.xml b/build-clean.xml
+--- a/build-clean.xml	2016-10-10 18:26:04.056935377 +0200
++++ b/build-clean.xml	2016-10-10 18:47:11.662036536 +0200
+@@ -59,18 +59,8 @@
+ 	<assertions><enable/></assertions>
+ 
+ 	<!-- set version string based on git-describe -->
+-	<exec executable="git" failifexecutionfails="false"
+-		errorProperty="git.errror" outputproperty="git.describe" resultproperty="git.result">
+-		<arg value="describe" />
+-		<arg value="--always" />
+-		<arg value="--abbrev=4" />
+-		<arg value="--dirty" />
+-	</exec>
+-	<condition property="git.revision" value="${git.describe}" else="@unknown@">
+-		<and>
+-			<equals arg1="${git.result}" arg2="0" />
+-			<isset property="git.describe" />
+-		</and>
++	<condition property="git.revision" value="@unknown@" else="@unknown@">
++		<isset property="git.describe" />
+ 	</condition>
+ 
+ 	<!-- =================================================================== -->

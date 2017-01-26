@@ -10,7 +10,7 @@ DESCRIPTION="vim plugin: CSS 3 omni complete function"
 HOMEPAGE="https://github.com/othree/csscomplete.vim"
 SRC_URI="https://github.com/othree/${PN}.vim/archive/${PV}.zip -> ${P}.zip"
 LICENSE="vim.org"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="app-arch/unzip"
 

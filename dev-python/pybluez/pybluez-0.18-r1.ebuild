@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ MY_P="PyBluez-${PV}"
 
 DESCRIPTION="Python bindings for Bluez Bluetooth Stack"
 HOMEPAGE="https://github.com/karulis/pybluez"
-SRC_URI="https://pybluez.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

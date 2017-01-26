@@ -15,7 +15,6 @@ java
 php
 djbfft
 qdbm
-mzscheme
 
 emacs
 xemacs
@@ -24,7 +23,6 @@ gnome-keyring
 afs
 tcl
 tk
-tcltk
 ldap
 slang
 diet
@@ -46,11 +44,8 @@ guile
 lua
 djvu
 nss
-chicken
 diet
 emf
-fusion
-pike
 R
 octave
 bluetooth

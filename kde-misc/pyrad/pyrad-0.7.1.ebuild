@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 RDEPEND="
 	kde-apps/kdialog:4
-	kde-base/pykde4:4[${PYTHON_USEDEP}]
+	kde-apps/pykde4:4[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

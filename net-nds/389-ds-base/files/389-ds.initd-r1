@@ -1,10 +1,11 @@
 #!/sbin/openrc-run
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 DIRSRV_EXEC="/usr/sbin/ns-slapd"
 PID_DIRECTORY="/var/run/dirsrv"
+LOCK_DIRECTORY="/var/lock/dirsrv"
 DIRSRV_CONF_DIR="/etc/dirsrv"
 DS_INSTANCES=${DIRSRV_CONF_DIR}/slapd-*
 F389DS_INSTANCES=""
@@ -33,9 +34,11 @@ start() {
 			continue
 		fi
 		# Create the required directories in case they got nuked
-		mkdir -p /var/lock/dirsrv/${instance}
+		mkdir -p ${PID_DIRECTORY}
+		mkdir -p ${LOCK_DIRECTORY}/${instance}
 		# This will probably break one day, we should be pulling out the suitespotuser from dse.ldif
-		chown dirsrv: /var/lock/dirsrv/${instance}
+		chown dirsrv: ${PID_DIRECTORY}
+		chown dirsrv: ${LOCK_DIRECTORY}/${instance}
 		ebegin "Starting 389 Directory Server: instance ${instance}"
 		start-stop-daemon --start --quiet -m \
 			--pidfile ${PID_DIRECTORY}/${instance}.startpid \

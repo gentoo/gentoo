@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="alpha amd64 ~hppa ia64 ppc sparc x86"
-IUSE="audacious cursors gdm icons kdm nautilus"
+IUSE="audacious cursors gdm icons nautilus"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="
@@ -134,7 +134,7 @@ src_install () {
 	# Some extra features - allows redhat-artwork to be very light:
 	###
 	if ! use gdm; then rm -r "${D}"/usr/share/gdm || die; fi
-	if ! use kdm; then rm -r "${D}"/usr/share/apps/kdm || die; fi
+	rm -r "${D}"/usr/share/apps/kdm || die
 	if ! use cursors; then rm -r "${D}"/usr/share/cursors || die; fi
 	if ! use icons; then
 		rm -r "${D}"/usr/share/icons || die

@@ -6,7 +6,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit eutils python-single-r1 ${GITECLASS}
@@ -19,7 +19,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 LICENSE="MIT"
 SLOT="0/0.11" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="python static-libs"
 
 RDEPEND="

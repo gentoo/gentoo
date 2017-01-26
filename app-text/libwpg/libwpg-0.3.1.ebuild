@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit alternatives eutils
+inherit alternatives
 
 DESCRIPTION="C++ library to read and parse graphics in WPG"
 HOMEPAGE="http://libwpg.sourceforge.net/libwpg.htm"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0.3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips x86"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -27,14 +27,13 @@ src_configure() {
 	econf \
 		--disable-werror \
 		--program-suffix=-${SLOT} \
-		--docdir="${EPREFIX%/}/usr/share/doc/${PF}" \
 		$(use_with doc docs) \
 		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

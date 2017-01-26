@@ -7,7 +7,7 @@ EAPI="5"
 WANT_LIBTOOL=latest
 WANT_AUTOMAKE=1.14
 AUTOTOOLS_IN_SOURCE_BUILD=1
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
 inherit python-single-r1 autotools-utils autotools versionator eutils \
 multilib linux-info perl-module base

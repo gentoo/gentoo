@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
-vorbis +X x264 xanim xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
+vorbis +X x264 xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
 
 VIDEO_CARDS="s3virge mga tdfx"
 for x in ${VIDEO_CARDS}; do
@@ -67,7 +67,7 @@ RDEPEND+="
 	bidi? ( dev-libs/fribidi )
 	bluray? ( >=media-libs/libbluray-0.2.1 )
 	bs2b? ( media-libs/libbs2b )
-	cdio? ( dev-libs/libcdio dev-libs/libcdio-paranoia )
+	cdio? ( dev-libs/libcdio:0= dev-libs/libcdio-paranoia )
 	cdparanoia? ( !cdio? ( media-sound/cdparanoia ) )
 	dga? ( x11-libs/libXxf86dga )
 	directfb? ( dev-libs/DirectFB )
@@ -87,7 +87,7 @@ RDEPEND+="
 	enca? ( app-i18n/enca )
 	faad? ( media-libs/faad2 )
 	ggi? ( media-libs/libggi media-libs/libggiwmh )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:0= )
 	gsm? ( media-sound/gsm )
 	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
@@ -126,7 +126,6 @@ RDEPEND+="
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? ( !tremor? ( media-libs/libvorbis ) )
 	X? ( ${X_RDEPS}	)
-	xanim? ( media-video/xanim )
 	xinerama? ( x11-libs/libXinerama )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	xv? ( x11-libs/libXv )
@@ -388,7 +387,7 @@ src_configure() {
 		use ${i} || myconf+=" --disable-lib${i}"
 	done
 
-	uses="faad gif jpeg libmpeg2 live mad mng png pnm speex tga theora tremor xanim"
+	uses="faad gif jpeg libmpeg2 live mad mng png pnm speex tga theora tremor"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done

@@ -45,3 +45,7 @@ x11-drivers/nvidia-drivers multilib
 # requires nvidia-cg-toolkit which is not available on bsd
 # see http://developer.nvidia.com/cg-toolkit-download
 media-libs/libprojectm video_cards_nvidia
+
+# x11-drivers/xf86-video-vmware works fine without KMS- and 3D support.
+# Other packages will not work. keep video_cards_vmware in use.mask.
+x11-base/xorg-drivers -video_cards_vmware

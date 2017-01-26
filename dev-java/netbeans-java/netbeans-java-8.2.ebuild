@@ -41,11 +41,12 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/3B96251214DF697E902C849EB0B4A0EFA2CD1A53-wagon-http-shared-2.10.jar
 	http://hg.netbeans.org/binaries/0CD9CDDE3F56BB5250D87C54592F04CBC24F03BF-wagon-provider-api-2.10.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-CDEPEND="~dev-java/netbeans-platform-${PV}
+CDEPEND="virtual/jdk:1.8
+	~dev-java/netbeans-platform-${PV}
 	~dev-java/netbeans-extide-${PV}
 	~dev-java/netbeans-harness-${PV}
 	~dev-java/netbeans-ide-${PV}
@@ -53,14 +54,12 @@ CDEPEND="~dev-java/netbeans-platform-${PV}
 	dev-java/beansbinding:0
 	dev-java/cglib:3
 	dev-java/jdom:0"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
 	dev-java/javahelp:0
 	dev-java/json-simple:0
 	dev-java/junit:4"
-RDEPEND="|| ( virtual/jdk:1.7 virtual/jdk:1.8 )
-	${CDEPEND}
+RDEPEND="${CDEPEND}
 	dev-java/absolutelayout:0
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/c3p0:0

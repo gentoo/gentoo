@@ -1,0 +1,11 @@
+--- ./include/libisns/util.h.orig
++++ ./include/libisns/util.h
+@@ -114,6 +114,6 @@
+ #   define ntohll(x)	__bswap_64(x)
+ #  endif
+ # else
+-#  include <sys/endian.h>
++#  include <endian.h>
+ #  define htonll(x)     htobe64(x)
+ #  define ntohll(x)     be64toh(x)
+ # endif

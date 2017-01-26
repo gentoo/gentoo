@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit toolchain-funcs versionator
+inherit toolchain-funcs vcs-snapshot versionator
 
-MY_P="$PN-$(get_version_component_range 1-2)b"
+MY_COMMIT_HASH="093800c9de4116706258982376abce01928a3f7b"
 
 DESCRIPTION="A fully automated, active web application security reconnaissance tool"
-HOMEPAGE="https://code.google.com/p/skipfish/"
-SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tgz"
+HOMEPAGE="https://github.com/spinkham/skipfish"
+SRC_URI="https://github.com/spinkham/${PN}/archive/${MY_COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 LGPL-3"
 SLOT="0"
@@ -21,8 +21,6 @@ RDEPEND="dev-libs/openssl:0
 	net-dns/libidn
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -i \

@@ -1,5 +1,5 @@
---- screen-4.3.0/configure.ac
-+++ screen-4.3.0/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -878,11 +878,6 @@
  #include <utmp.h>
  #endif

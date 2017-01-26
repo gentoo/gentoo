@@ -12,7 +12,7 @@ USE_PHP="php5-6"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="A reusable, persistent handle and resource factory API"
 LICENSE="BSD-2"

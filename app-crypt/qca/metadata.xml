@@ -19,7 +19,6 @@
 	<flag name="gpg">Enable GnuPG plugin</flag>
 	<flag name="logger">Enable logger plugin</flag>
 	<flag name="nss">Enable NSS plugin</flag>
-	<flag name="openssl">Enable OpenSSL plugin</flag>
 	<flag name="pkcs11">Enable PKCS#11 plugin</flag>
 	<flag name="sasl">Enable SASL plugin</flag>
 	<flag name="softstore">Enable softstore plugin</flag>

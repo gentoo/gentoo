@@ -1,0 +1,112 @@
+fix from upstream gnulib (fudged to apply to sed-4.3)
+
+From aff55692da81f702ccbc461ad4f896b23c398638 Mon Sep 17 00:00:00 2001
+From: Norihiro Tanaka <noritnk@kcn.ne.jp>
+Date: Mon, 9 Jan 2017 07:46:13 +0900
+Subject: [PATCH] dfa: simplify transition table allocation
+
+* src/dfa.c (realloc_trans_if_necessary): Remove second argument.
+Its value is derived from other variable.  Update callers.
+(dfastate): Remove calculation of max number of state.
+---
+ lib/dfa.c | 44 ++++++++++++++++++++------------------------
+ 1 file changed, 20 insertions(+), 24 deletions(-)
+
+diff --git a/lib/dfa.c b/lib/dfa.c
+index 141888a978fa..bda4602b1094 100644
+--- a/lib/dfa.c
++++ b/lib/dfa.c
+@@ -2576,14 +2576,14 @@ dfaanalyze (struct dfa *d, bool searchflag)
+ 
+ /* Make sure D's state arrays are large enough to hold NEW_STATE.  */
+ static void
+-realloc_trans_if_necessary (struct dfa *d, state_num new_state)
++realloc_trans_if_necessary (struct dfa *d)
+ {
+   state_num oldalloc = d->tralloc;
+-  if (oldalloc <= new_state)
++  if (oldalloc < d->sindex)
+     {
+       state_num **realtrans = d->trans ? d->trans - 2 : NULL;
+       ptrdiff_t newalloc1 = realtrans ? d->tralloc + 2 : 0;
+-      realtrans = xpalloc (realtrans, &newalloc1, new_state - oldalloc + 1,
++      realtrans = xpalloc (realtrans, &newalloc1, d->sindex - oldalloc,
+                            -1, sizeof *realtrans);
+       realtrans[0] = realtrans[1] = NULL;
+       d->trans = realtrans + 2;
+@@ -2825,6 +2825,9 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+         state_letter = state_index (d, &follows, CTX_LETTER);
+       else
+         state_letter = state;
++
++      /* Reallocate now, to reallocate any newline transition properly.  */
++      realloc_trans_if_necessary (d);
+     }
+ 
+   /* If we are a searching matcher, the default transition is to a state
+@@ -2847,22 +2850,18 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+   state_num maxstate = -1;
+   for (i = 0; i < NOTCHAR; i++)
+     if (tstbit (i, label))
+-      {
+-        switch (d->syntax.sbit[i])
+-          {
+-          case CTX_NEWLINE:
+-            trans[i] = state_newline;
+-            break;
+-          case CTX_LETTER:
+-            trans[i] = state_letter;
+-            break;
+-          default:
+-            trans[i] = state;
+-            break;
+-          }
+-        if (maxstate < trans[i])
+-          maxstate = trans[i];
+-      }
++      switch (d->syntax.sbit[i])
++        {
++        case CTX_NEWLINE:
++          trans[i] = state_newline;
++          break;
++        case CTX_LETTER:
++          trans[i] = state_letter;
++          break;
++        default:
++          trans[i] = state;
++          break;
++        }
+ 
+ #ifdef DEBUG
+   fprintf (stderr, "trans table %td", s);
+@@ -2879,9 +2878,6 @@ dfastate (state_num s, struct dfa *d, unsigned char uc, state_num trans[])
+   free (follows.elems);
+   free (tmp.elems);
+ 
+-  /* Reallocate now, to reallocate any newline transition properly.  */
+-  realloc_trans_if_necessary (d, maxstate);
+-
+   /* Keep the newline transition in a special place so we can use it as
+      a sentinel.  */
+   if (tstbit (d->syntax.eolbyte, label))
+@@ -3042,7 +3038,7 @@ transit_state (struct dfa *d, state_num s, unsigned char const **pp,
+ 
+   separate_contexts = state_separate_contexts (&d->mb_follows);
+   s2 = state_index (d, &d->mb_follows, separate_contexts ^ CTX_ANY);
+-  realloc_trans_if_necessary (d, s2);
++  realloc_trans_if_necessary (d);
+ 
+   d->mb_trans[s][d->states[s1].mb_trindex] = s2;
+ 
+@@ -3137,7 +3133,7 @@ dfaexec_main (struct dfa *d, char const *begin, char *end, bool allow_nl,
+     }
+ 
+   if (!d->tralloc)
+-    realloc_trans_if_necessary (d, 0);
++    realloc_trans_if_necessary (d);
+ 
+   s = s1 = 0;
+   p = mbp = (unsigned char const *) begin;
+-- 
+2.11.0
+

@@ -15,8 +15,8 @@ DEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${PN} ${WORKDIR}/${P}
-	epatch ${FILESDIR}/${P}-fix.diff
+	mv "${WORKDIR}/${PN}" "${WORKDIR}/${P}"
+	epatch "${FILESDIR}"/${P}-fix.diff
 }
 
 src_compile() {

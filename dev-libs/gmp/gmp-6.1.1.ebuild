@@ -33,6 +33,8 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/gmp.h )
 
 src_prepare() {
 	[[ -d ${FILESDIR}/${PV} ]] && EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch "${FILESDIR}"/${PV}
+	epatch "${FILESDIR}"/${PN}-6.1.0-udiv.patch
+	epatch "${FILESDIR}"/${PN}-6.1.0-tune-printf.patch
 
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
@@ -46,7 +48,8 @@ src_prepare() {
 	#!/bin/sh
 	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
-	chmod a+rx configure
+	# Patches to original configure might have lost the +x bit.
+	chmod a+rx configure{,.wrapped}
 }
 
 multilib_src_configure() {

@@ -1,12 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-
-AUTOTOOLIZE=yes
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 MY_P="${P/_rc/-rc}"
 
@@ -26,7 +24,7 @@ fi
 S="${WORKDIR}/${P%_rc*}"
 
 DESCRIPTION="libvirt Python bindings"
-HOMEPAGE="http://www.libvirt.org"
+HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="test"

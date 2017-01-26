@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,3 +36,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )

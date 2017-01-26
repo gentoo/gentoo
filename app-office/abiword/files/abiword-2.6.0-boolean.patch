@@ -1,0 +1,13 @@
+diff -u -r abiword-2.6.0.orig/src/text/ptbl/xp/pd_Style.h abiword-2.6.0/src/text/ptbl/xp/pd_Style.h
+--- abiword-2.6.0.orig/src/text/ptbl/xp/pd_Style.h	2008-03-18 23:16:20.000000000 +0100
++++ abiword-2.6.0/src/text/ptbl/xp/pd_Style.h	2008-03-25 17:14:23.000000000 +0100
+@@ -23,6 +23,9 @@
+ #ifndef PD_STYLE_H
+ #define PD_STYLE_H
+ 
++#ifndef FALSE
++#define FALSE 0
++#endif /* FALSE */
+ #include "ut_types.h"
+ #include "pt_Types.h"
+ #include "ut_xml.h"

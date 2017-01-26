@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE=""
 for name in ${LANGS} ; do IUSE+="linguas_$name " ; done
 unset name
 
-DEPEND="kde-base/kdelibs"
+DEPEND="kde-frameworks/kdelibs:4"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}

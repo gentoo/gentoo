@@ -1,0 +1,34 @@
+diff -purN a/regression/CMakeLists.txt b/regression/CMakeLists.txt
+--- a/regression/CMakeLists.txt	2016-03-25 22:15:29.000000000 +0000
++++ b/regression/CMakeLists.txt	2016-06-05 14:09:19.202849569 +0100
+@@ -32,30 +32,4 @@ if (NOT NO_REGRESSION)
+ 
+     add_subdirectory(far_perf)
+ 
+-    if(OPENGL_FOUND AND (GLEW_FOUND OR APPLE) AND GLFW_FOUND)
+-        add_subdirectory(osd_regression)
+-    else()
+-        set(MISSING "")
+-
+-        if (NOT OPENGL_FOUND)
+-            list(APPEND MISSING OpenGL)
+-        endif()
+-
+-        if (NOT GLEW_FOUND)
+-            list(APPEND MISSING glew)
+-        endif()
+-
+-        if (NOT GLFW_FOUND)
+-            list(APPEND MISSING glfw)
+-        endif()
+-
+-        message(WARNING
+-            "The following libraries could not be found : ${MISSING}.  "
+-            "The osd regression test will not be available.  "
+-            "If you have these libraries installed, please specify their "
+-            "path to cmake (through the GLEW_LOCATION and GLFW_LOCATION "
+-            "command line arguments or environment variables)."
+-        )
+-    endif()
+-
+ endif()

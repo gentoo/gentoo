@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils libtool
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="http://lftp.yar.ru/"
+HOMEPAGE="http://lftp.tech/"
 SRC_URI="${HOMEPAGE}ftp/${P}.tar.xz"
 
 LICENSE="GPL-3"
@@ -69,16 +69,16 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable nls) \
-		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
-		$(use_with idn libidn) \
 		$(use_enable ipv6) \
-		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
+		$(use_enable nls) \
+		$(use_with idn libidn) \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
-		--with-readline="${EPREFIX}"/usr \
+		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
+		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		--enable-packager-mode \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
+		--with-readline="${EPREFIX}"/usr \
 		--without-included-regex
 }
 

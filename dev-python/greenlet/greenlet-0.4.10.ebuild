@@ -5,7 +5,7 @@
 EAPI=5
 
 # Note: greenlet is built-in in pypy
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 -hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 -hppa ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 DEPEND="

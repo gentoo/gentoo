@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
-# Copyright 2014-2016 Nicholas Vinson
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2014-2017 Nicholas Vinson
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="clear list panic save"
@@ -83,6 +83,7 @@ save() {
     ebegin "Saving nftables state"
     checkpath -q -d "$(dirname "${NFTABLES_SAVE}")"
     checkpath -q -m 0600 -f "${NFTABLES_SAVE}"
+    export SAVE_OPTIONS
     /usr/libexec/nftables/nftables.sh store ${NFTABLES_SAVE}
     return $?
 }

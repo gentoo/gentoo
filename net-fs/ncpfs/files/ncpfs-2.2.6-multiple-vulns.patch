@@ -63,8 +63,8 @@ http://seclists.org/fulldisclosure/2010/Mar/122
 
 
 diff -ur ncpfs-2.2.6.orig/sutil/ncplogin.c ncpfs-2.2.6/sutil/ncplogin.c
---- ncpfs-2.2.6.orig/sutil/ncplogin.c	2010-03-03 16:18:59.000000000 -0500
-+++ ncpfs-2.2.6/sutil/ncplogin.c	2010-03-03 16:17:41.000000000 -0500
+--- a/sutil/ncplogin.c.orig	2010-03-03 16:18:59.000000000 -0500
++++ b/sutil/ncplogin.c	2010-03-03 16:17:41.000000000 -0500
 @@ -934,7 +934,9 @@
  	NWDSFreeContext(ctx);
  	/* ncpmap, ncplogin must write in /etc/mtab */

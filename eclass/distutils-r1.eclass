@@ -392,9 +392,6 @@ _distutils-r1_create_setup_cfg() {
 		# make the ebuild writer lives easier
 		build-scripts = %(build-base)s/scripts
 
-		[egg_info]
-		egg-base = ${BUILD_DIR}
-
 		# this is needed by distutils_install_for_testing since
 		# setuptools like to create .egg files for install --home.
 		[bdist_egg]

@@ -1,0 +1,46 @@
+From b200e636ab20d2aa93d9f71f3789db5a04af0a56 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 2 Jan 2017 10:00:33 +0100
+Subject: [PATCH] dirmngr: Strip root zone suffix from libdns cname results.
+
+* dirmngr/dns-stuff.c (resolve_name_libdns): Strip trailing dot.
+(get_dns_cname_libdns): Ditto.
+--
+
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+ dirmngr/dns-stuff.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/dirmngr/dns-stuff.c b/dirmngr/dns-stuff.c
+index a31b073..f2e1df9 100644
+--- a/dirmngr/dns-stuff.c
++++ b/dirmngr/dns-stuff.c
+@@ -732,6 +732,10 @@ resolve_name_libdns (const char *name, unsigned short port,
+               err = gpg_error_from_syserror ();
+               goto leave;
+             }
++          /* Libdns appends the root zone part which is problematic
++           * for most other functions - strip it.  */
++          if (**r_canonname && (*r_canonname)[strlen (*r_canonname)-1] == '.')
++            (*r_canonname)[strlen (*r_canonname)-1] = 0;
+         }
+ 
+       dai = xtrymalloc (sizeof *dai + ent->ai_addrlen -1);
+@@ -1899,6 +1903,13 @@ get_dns_cname_libdns (const char *name, char **r_cname)
+   *r_cname = xtrystrdup (cname.host);
+   if (!*r_cname)
+     err = gpg_error_from_syserror ();
++  else
++    {
++      /* Libdns appends the root zone part which is problematic
++       * for most other functions - strip it.  */
++      if (**r_cname && (*r_cname)[strlen (*r_cname)-1] == '.')
++        (*r_cname)[strlen (*r_cname)-1] = 0;
++    }
+ 
+  leave:
+   dns_free (ans);
+-- 
+2.8.1
+

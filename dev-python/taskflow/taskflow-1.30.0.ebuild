@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
 inherit distutils-r1
 
@@ -43,7 +43,7 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	dev-python/enum34[$(python_gen_usedep 'python2_7' 'python3_3')]
+	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/futurist-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/fasteners-0.7[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.10[${PYTHON_USEDEP}]

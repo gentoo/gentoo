@@ -1,14 +1,14 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=3
 
-SRC_URI="https://ardesia.googlecode.com/files/${P}.tar.gz"
+SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Shows a movable and resizable spotlight on the screen"
-HOMEPAGE="https://code.google.com/p/ardesia/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""

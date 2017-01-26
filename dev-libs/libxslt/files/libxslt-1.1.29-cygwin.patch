@@ -1,0 +1,29 @@
+From 2fbf5b1f440534a46b7b440a487768620cfb039c Mon Sep 17 00:00:00 2001
+From: Michael Haubenwallner <michael.haubenwallner@ssi-schaefer.com>
+Date: Wed, 13 Jul 2016 13:31:05 +0200
+Subject: Add WIN32_EXTRA_LDFLAGS to tests/plugins/Makefile.am
+
+Fixes a compilation problem with Cygwin.
+
+Fixes bug #766669:
+https://bugzilla.gnome.org/show_bug.cgi?id=766669
+---
+ tests/plugins/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/plugins/Makefile.am b/tests/plugins/Makefile.am
+index e0736ab..0f8c378 100644
+--- a/tests/plugins/Makefile.am
++++ b/tests/plugins/Makefile.am
+@@ -21,7 +21,7 @@ plugindir = $(abs_builddir)/.libs
+ xmlsoft_org_xslt_testplugin_la_CFLAGS = -DMODULE_COMPILE $(LIBXML_CFLAGS) $(LIBXSLT_CFLAGS)
+ xmlsoft_org_xslt_testplugin_la_SOURCES = testplugin.c
+ xmlsoft_org_xslt_testplugin_la_LIBADD = $(top_builddir)/libxslt/libxslt.la $(EXTRA_LIBS)
+-xmlsoft_org_xslt_testplugin_la_LDFLAGS = -module -avoid-version -rpath $(plugindir)
++xmlsoft_org_xslt_testplugin_la_LDFLAGS = $(WIN32_EXTRA_LDFLAGS) -module -avoid-version -rpath $(plugindir)
+ 
+ test-logall:
+ 	@echo '## Running plugin tests'
+-- 
+cgit v0.12
+

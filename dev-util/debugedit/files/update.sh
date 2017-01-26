@@ -1,9 +1,22 @@
 #!/bin/bash
 
-DISTDIR=/usr/portage/distfiles
+DISTDIR="$(portageq envvar DISTDIR 2>/dev/null)"
+DISTDIR="${DISTDIR:-/usr/portage/distfiles}"
+if [[ ! -d "${DISTDIR}" ]] ; then
+	echo "No DISTDIR found."
+	exit 1
+fi
+
 PN=debugedit
 
-. /etc/init.d/functions.sh
+gentoo_functions="/lib/gentoo/functions.sh"
+if [[ -f "${gentoo_functions}" ]] ; then
+	. "${gentoo_functions}"
+else
+	echo "Failed to source ${gentoo_functions} file."
+	echo "Please install sys-apps/gentoo-functions package."
+	exit 1
+fi
 
 set -e
 

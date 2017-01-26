@@ -14,7 +14,7 @@ SRC_URI="http://users.telenet.be/on4qz/qsstv/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:4[qt3support]
@@ -24,7 +24,7 @@ DEPEND="dev-qt/qtcore:4[qt3support]
 	media-libs/alsa-lib
 	media-sound/pulseaudio
 	media-libs/libv4l
-	sci-libs/fftw:3.0"
+	sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 

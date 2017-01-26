@@ -1,0 +1,301 @@
+diff -uprNEBZ --suppress-blank-empty a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp
+--- a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2016-06-09 06:46:16.000000000 -0500
++++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2016-07-25 06:06:45.000000000 -0500
+@@ -45,6 +45,7 @@ void PythonQt_init_QtXmlPatterns(PyObjec
+ void PythonQt_init_QtMultimedia(PyObject*);
+ void PythonQt_init_QtQml(PyObject*);
+ void PythonQt_init_QtQuick(PyObject*);
++void PythonQt_init_QtUiTools(PyObject*);
+ 
+ #ifdef PYTHONQT_WITH_WEBKIT
+ void PythonQt_init_QtWebKit(PyObject*);
+@@ -67,6 +68,7 @@ namespace PythonQt_QtAll
+     PythonQt_init_QtMultimedia(0);
+     PythonQt_init_QtQml(0);
+     PythonQt_init_QtQuick(0);
++    PythonQt_init_QtUiTools(0);
+   };
+ };
+ 
+diff -uprNEBZ --suppress-blank-empty a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro
+--- a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2016-06-09 07:00:18.000000000 -0500
++++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2016-07-25 06:06:45.000000000 -0500
+@@ -21,7 +21,7 @@ SOURCES +=                \
+ 
+ QT += gui svg sql network xml xmlpatterns opengl
+ QT += widgets printsupport multimedia multimediawidgets
+-QT += quick qml quickwidgets
++QT += quick qml quickwidgets uitools
+ 
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_core/com_trolltech_qt_core.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_gui/com_trolltech_qt_gui.pri)
+@@ -34,6 +34,7 @@ include ($$PYTHONQT_GENERATED_PATH/com_t
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_multimedia/com_trolltech_qt_multimedia.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_qml/com_trolltech_qt_qml.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_quick/com_trolltech_qt_quick.pri)
++include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_uitools/com_trolltech_qt_uitools.pri)
+ 
+ PythonQtWebKit {
+   QT += webkit webkitwidgets
+diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.cpp b/generator/abstractmetalang.cpp
+--- a/generator/abstractmetalang.cpp	2015-06-18 08:32:57.000000000 -0500
++++ b/generator/abstractmetalang.cpp	2016-08-03 02:16:08.000000000 -0500
+@@ -838,14 +838,24 @@ AbstractMetaFunctionList AbstractMetaCla
+     return returned;
+ }
+ 
+-bool AbstractMetaClass::hasDefaultIsNull() const 
++QString AbstractMetaClass::getDefaultNonZeroFunction() const
+ {
++  foreach(const AbstractMetaFunction* fun, queryFunctionsByName("isEmpty")) {
++    if (fun->actualMinimumArgumentCount()==0 && fun->isPublic()) {
++      return "isEmpty";
++    }
++  }
++  foreach(const AbstractMetaFunction* fun, queryFunctionsByName("isValid")) {
++    if (fun->actualMinimumArgumentCount() == 0 && fun->isPublic()) {
++      return "isValid";
++    }
++  }
+   foreach(const AbstractMetaFunction* fun, queryFunctionsByName("isNull")) {
+-    if (fun->actualMinimumArgumentCount()==0) {
+-      return true;
++    if (fun->actualMinimumArgumentCount() == 0 && fun->isPublic()) {
++      return "isNull";
+     }
+   }
+-  return false;
++  return QString();
+ }
+ 
+ /*******************************************************************************
+diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.h b/generator/abstractmetalang.h
+--- a/generator/abstractmetalang.h	2014-09-25 05:51:32.000000000 -0500
++++ b/generator/abstractmetalang.h	2016-08-01 04:12:32.000000000 -0500
+@@ -800,7 +800,8 @@ public:
+     void setHasCloneOperator(bool on) { m_has_clone_operator = on; }
+     bool hasCloneOperator() const { return m_has_clone_operator; }
+ 
+-    bool hasDefaultIsNull() const;
++    QString getDefaultNonZeroFunction() const;
++
+     void addPropertySpec(QPropertySpec *spec) { m_property_specs << spec; }
+     QList<QPropertySpec *> propertySpecs() const { return m_property_specs; }
+ 
+diff -uprNEBZ --suppress-blank-empty a/generator/merge.sh b/generator/merge.sh
+--- a/generator/merge.sh	1969-12-31 18:00:00.000000000 -0600
++++ b/generator/merge.sh	2010-03-05 16:03:37.000000000 -0600
+@@ -0,0 +1,11 @@
++#!/bin/sh
++
++xsltproc -o typesystem_core.xml --stringparam source 'typesystem_core-qtscript.xml'  merge.xsl typesystem_core-common.xml
++xsltproc -o typesystem_gui.xml --stringparam source 'typesystem_gui-qtscript.xml'  merge.xsl typesystem_gui-common.xml
++xsltproc -o typesystem_opengl.xml --stringparam source 'typesystem_opengl-qtscript.xml'  merge.xsl typesystem_opengl-common.xml
++xsltproc -o typesystem_network.xml --stringparam source 'typesystem_network-qtscript.xml'  merge.xsl typesystem_network-common.xml
++xsltproc -o typesystem_xml.xml --stringparam source 'typesystem_xml-qtscript.xml'  merge.xsl typesystem_xml-common.xml
++xsltproc -o typesystem_webkit.xml --stringparam source 'typesystem_webkit-qtscript.xml'  merge.xsl typesystem_webkit-common.xml
++xsltproc -o typesystem_sql.xml --stringparam source 'typesystem_sql-qtscript.xml'  merge.xsl typesystem_sql-common.xml
++xsltproc -o typesystem_svg.xml --stringparam source 'typesystem_svg-qtscript.xml'  merge.xsl typesystem_svg-common.xml
++xsltproc -o typesystem_xmlpatterns.xml --stringparam source 'typesystem_xmlpatterns-qtscript.xml'  merge.xsl typesystem_xmlpatterns-common.xml
+\ No newline at end of file
+diff -uprNEBZ --suppress-blank-empty a/generator/setupgenerator.cpp b/generator/setupgenerator.cpp
+--- a/generator/setupgenerator.cpp	2016-05-03 04:25:38.000000000 -0500
++++ b/generator/setupgenerator.cpp	2016-08-01 04:12:32.000000000 -0500
+@@ -105,7 +105,7 @@ static QStringList getOperatorCodes(cons
+       r.insert("PythonQt::Type_InplaceXor");
+     }
+   }
+-  if (cls->hasDefaultIsNull()) {
++  if (!cls->getDefaultNonZeroFunction().isEmpty()) {
+     r.insert("PythonQt::Type_NonZero");
+   }
+ 
+diff -uprNEBZ --suppress-blank-empty a/generator/shellheadergenerator.cpp b/generator/shellheadergenerator.cpp
+--- a/generator/shellheadergenerator.cpp	2016-05-10 10:01:30.000000000 -0500
++++ b/generator/shellheadergenerator.cpp	2016-08-09 07:20:29.000000000 -0500
+@@ -267,7 +267,11 @@ void ShellHeaderGenerator::write(QTextSt
+   QList<FlagsTypeEntry*> flags;
+   foreach(AbstractMetaEnum* enum1, enums1) {
+     // catch gadgets and enums that are not exported on QObjects...
+-    if ((enum1->wasProtected() || enum1->wasPublic()) && (!meta_class->isQObject() || !enum1->hasQEnumsDeclaration())) {
++    // since we don't parse Q_FLAG(S), we also need to generate for Q_ENUM which might
++    // have a missing Q_FLAG(S) declaration.
++    if ((enum1->wasProtected() || enum1->wasPublic()) && 
++      (!meta_class->isQObject() || !enum1->hasQEnumsDeclaration() || enum1->typeEntry()->flags()))
++    {
+       enums << enum1;
+       if (enum1->typeEntry()->flags()) {
+         flags << enum1->typeEntry()->flags();
+@@ -395,8 +399,13 @@ void ShellHeaderGenerator::write(QTextSt
+   if (meta_class->hasDefaultToStringFunction() || meta_class->hasToStringCapability()) {
+     s << "    QString py_toString(" << meta_class->qualifiedCppName() << "*);" << endl; 
+   }
+-  if (meta_class->hasDefaultIsNull()) {
+-    s << "    bool __nonzero__(" << meta_class->qualifiedCppName() << "* obj) { return !obj->isNull(); }" << endl; 
++  QString nonZeroFunc = meta_class->getDefaultNonZeroFunction();
++  if (!nonZeroFunc.isEmpty()) {
++    s << "    bool __nonzero__(" << meta_class->qualifiedCppName() << "* obj) { return ";
++    if (nonZeroFunc != "isValid") {
++      s << "!";
++    }
++    s << "obj->" << nonZeroFunc << "(); }" << endl;
+   }
+ 
+   AbstractMetaFieldList fields = meta_class->fields();
+diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_core.xml b/generator/typesystem_core.xml
+--- a/generator/typesystem_core.xml	2016-05-30 07:33:59.000000000 -0500
++++ b/generator/typesystem_core.xml	2016-06-13 04:54:38.000000000 -0500
+@@ -550,6 +550,8 @@
+   <rejection class="QObject" function-name="disconnectNotify"/>
+   <rejection class="QObject" function-name="registerUserData"/>
+   <rejection class="QProcess" function-name="pid"/>
++  <rejection class="QProcess" function-name="setInheritHandles"/>
++  <rejection class="QProcess" function-name="inheritHandles"/>
+   <rejection class="QRegion" function-name="cleanUp"/>
+   <rejection class="QSettings" function-name="registerFormat"/>
+   <rejection class="QVector" function-name="back"/>
+diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_gui.xml b/generator/typesystem_gui.xml
+--- a/generator/typesystem_gui.xml	2016-06-01 03:20:27.000000000 -0500
++++ b/generator/typesystem_gui.xml	2016-06-20 04:58:59.000000000 -0500
+@@ -1307,6 +1307,17 @@ PyObject* constScanLine(QImage* image, i
+   <object-type name="QWizard">
+     <!-- ### Requires correct class name in meta object -->
+     <modify-function signature="setDefaultProperty(const char *, const char *, const char *)" remove="all"/>
++    
++    <modify-function signature="addPage(QWizardPage*)">
++      <modify-argument index="1">
++        <define-ownership owner="c++" />
++      </modify-argument>
++    </modify-function>
++    <modify-function signature="setButton(QWizard::WizardButton, QAbstractButton*)">
++      <modify-argument index="2">
++        <define-ownership owner="c++" />
++      </modify-argument>
++    </modify-function>
+   </object-type>
+   <object-type name="QWizardPage">
+   </object-type>
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQtConversion.cpp b/src/PythonQtConversion.cpp
+--- a/src/PythonQtConversion.cpp	2016-06-02 07:30:53.000000000 -0500
++++ b/src/PythonQtConversion.cpp	2016-07-21 08:36:40.000000000 -0500
+@@ -746,9 +746,14 @@ QString PythonQtConv::PyObjGetRepresenta
+ QString PythonQtConv::PyObjGetString(PyObject* val, bool strict, bool& ok) {
+   QString r;
+   ok = true;
++#ifndef PY3K
++  // in Python 3, we don't want to convert to QString, since we don't know anything about the encoding
++  // in Python 2, we assume the default for str is latin-1
+   if (val->ob_type == &PyBytes_Type) {
+-    r = QString(PyBytes_AS_STRING(val));
+-  } else if (PyUnicode_Check(val)) {
++    r = QString::fromLatin1(PyBytes_AS_STRING(val));
++  } else
++#endif
++  if (PyUnicode_Check(val)) {
+ #ifdef PY3K
+     r = QString::fromUtf8(PyUnicode_AsUTF8(val));
+ #else
+@@ -976,8 +981,15 @@ QVariant PythonQtConv::PyObjToQVariant(P
+ #endif
+     ) {
+     // no special type requested
+-    if (PyBytes_Check(val) || PyUnicode_Check(val)) {
+-      // NOTE: for compatibility reasons between Python 2/3 we don't use ByteArray for PyBytes_Type
++    if (PyBytes_Check(val)) {
++#ifdef PY3K
++      // In Python 3, it is a ByteArray
++      type = QVariant::ByteArray;
++#else
++      // In Python 2, we need to use String, since it might be a string
++      type = QVariant::String;
++#endif
++    } else if (PyUnicode_Check(val)) {
+       type = QVariant::String;
+     } else if (val == Py_False || val == Py_True) {
+       type = QVariant::Bool;
+@@ -1117,6 +1129,14 @@ QVariant PythonQtConv::PyObjToQVariant(P
+     }
+ 
+   case QVariant::ByteArray:
++    {
++      bool ok;
++#ifdef PY3K
++      v = QVariant(PyObjGetBytes(val, false, ok));
++#else
++      v = QVariant(PyObjGetString(val, false, ok));
++#endif
++    }
+   case QVariant::String:
+     {
+       bool ok;
+@@ -1504,7 +1524,7 @@ QByteArray PythonQtConv::getCPPTypeName(
+ bool PythonQtConv::isStringType(PyTypeObject* type)
+ {
+ #ifdef PY3K
+-  return type == &PyUnicode_Type
++  return type == &PyUnicode_Type;
+ #else
+   return type == &PyUnicode_Type || type == &PyString_Type;
+ #endif
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQt.cpp b/src/PythonQt.cpp
+--- a/src/PythonQt.cpp	2016-05-23 02:31:11.000000000 -0500
++++ b/src/PythonQt.cpp	2016-06-20 03:26:33.000000000 -0500
+@@ -1977,6 +1977,7 @@ void PythonQtPrivate::buildDynamicMetaOb
+   // Now look for slots: (this is a bug in QMetaObjectBuilder, all signals need to be added first)
+   while (PyDict_Next(dict, &pos, &key, &value)) {
+     if (PythonQtProperty_Check(value)) {
++      needsMetaObject = true;
+       PythonQtProperty* prop = (PythonQtProperty*)value;
+       QMetaPropertyBuilder newProp = builder.addProperty(PyString_AsString(key), prop->data->cppType);
+       newProp.setReadable(true);
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQtSlotDecorator.cpp b/src/PythonQtSlotDecorator.cpp
+--- a/src/PythonQtSlotDecorator.cpp	2016-05-19 10:22:41.000000000 -0500
++++ b/src/PythonQtSlotDecorator.cpp	2016-07-21 08:36:40.000000000 -0500
+@@ -42,9 +42,9 @@ int PythonQtSlotDecorator_init(PyObject
+   char* argName = 0;
+   PyObject* argResult = 0;
+ 
+-  static char* kwlist[] = {"name", "result", 0};
++  static const char* kwlist[] = {"name", "result", 0};
+   static PyObject* emptyTuple = PyTuple_New(0);
+-  if (!PyArg_ParseTupleAndKeywords(emptyTuple, kw, "|sO:QtCore.Slot", kwlist, &argName, &argResult)) {
++  if (!PyArg_ParseTupleAndKeywords(emptyTuple, kw, "|sO:QtCore.Slot", (char**) kwlist, &argName, &argResult)) {
+     return 0;
+   }
+ 
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQtStdDecorators.cpp b/src/PythonQtStdDecorators.cpp
+--- a/src/PythonQtStdDecorators.cpp	2016-06-06 06:45:45.000000000 -0500
++++ b/src/PythonQtStdDecorators.cpp	2016-06-20 03:26:33.000000000 -0500
+@@ -153,12 +153,12 @@ QVariant PythonQtStdDecorators::property
+   return o->property(name);
+ }
+ 
+-QString PythonQtStdDecorators::tr(QObject* obj, const QByteArray& text, const QByteArray& ambig, int n)
++QString PythonQtStdDecorators::tr(QObject* obj, const QString& text, const QString& ambig, int n)
+ {
+ #if( QT_VERSION >= QT_VERSION_CHECK(5,0,0) )
+-  return QCoreApplication::translate(obj->metaObject()->className(), text.constData(), ambig.constData(), n);
++  return QCoreApplication::translate(obj->metaObject()->className(), text.toUtf8().constData(), ambig.toUtf8().constData(), n);
+ #else
+-  return QCoreApplication::translate(obj->metaObject()->className(), text.constData(), ambig.constData(), QCoreApplication::CodecForTr, n);
++  return QCoreApplication::translate(obj->metaObject()->className(), text.toUtf8().constData(), ambig.toUtf8().constData(), QCoreApplication::CodecForTr, n);
+ #endif
+ }
+ 
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQtStdDecorators.h b/src/PythonQtStdDecorators.h
+--- a/src/PythonQtStdDecorators.h	2016-06-06 06:45:45.000000000 -0500
++++ b/src/PythonQtStdDecorators.h	2016-06-20 03:26:33.000000000 -0500
+@@ -106,10 +106,10 @@ public Q_SLOTS:
+   int static_Qt_qrand() { return qrand(); }
+   void static_Qt_qsrand(uint a) { qsrand(a); }
+ 
+-  QString tr(QObject* obj, const QByteArray& text, const QByteArray& ambig = QByteArray(), int n = -1);
++  QString tr(QObject* obj, const QString& text, const QString& ambig = QString(), int n = -1);
+ 
+-  QByteArray static_Qt_SIGNAL(const QByteArray& s) { return QByteArray("2") + s; }
+-  QByteArray static_Qt_SLOT(const QByteArray& s) { return QByteArray("1") + s; }
++  QString static_Qt_SIGNAL(const QString& s) { return QString("2") + s; }
++  QString static_Qt_SLOT(const QString& s) { return QString("1") + s; }
+ 
+   void static_QTimer_singleShot(int msec, PyObject* callable);
+ 

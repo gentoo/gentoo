@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ottxor@gentoo.org</email>
+		<email>junghans@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
 	<maintainer type="project">
@@ -10,7 +10,6 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">votca</remote-id>
 		<remote-id type="github">votca/csgapps</remote-id>
 	</upstream>
 </pkgmetadata>

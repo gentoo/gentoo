@@ -9,7 +9,7 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-utils eutils
 
 DESCRIPTION="A fast interactive 2D plotter"
-HOMEPAGE="http://quickplot.sourceforge.net/"
+HOMEPAGE="http://quickplot.sourceforge.net/ https://github.com/lanceman2/quickplot"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"

@@ -6,6 +6,6 @@
     <name>Tim Harder</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">radhermit/gentoo-zsh-completions</remote-id>
+    <remote-id type="github">gentoo/gentoo-zsh-completions</remote-id>
   </upstream>
 </pkgmetadata>

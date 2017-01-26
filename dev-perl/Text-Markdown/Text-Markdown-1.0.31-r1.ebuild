@@ -12,7 +12,7 @@ DESCRIPTION="Convert MultiMarkdown syntax to (X)HTML"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="virtual/perl-Digest-MD5

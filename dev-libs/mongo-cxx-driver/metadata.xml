@@ -5,16 +5,6 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="github">mongodb/mongo-cxx-driver</remote-id>
 	</upstream>

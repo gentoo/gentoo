@@ -52,7 +52,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if use X && !has_version 'x11-base/xorg-server[wayland]'
+	if use X && ! has_version 'x11-base/xorg-server[wayland]'
 	then
 		elog "You have enabled wlc's X11 support. To use Xwayland, you must emerge"
 		elog "'x11-base/xorg-server[wayland]'."

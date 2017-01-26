@@ -1,6 +1,0 @@
-[PYTHON::pytevent]
-LIBRARY_REALNAME = tevent.$(SHLIBEXT)
-PRIVATE_DEPENDENCIES = LIBTEVENT PYTALLOC LIBSAMBA-UTIL LIBREPLACE
-
-pytevent_OBJ_FILES = $(libteventsrcdir)/pytevent.o
-

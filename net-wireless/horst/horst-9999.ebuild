@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs git-r3
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
-HOMEPAGE="http://br1.einfach.org/tech/horst/"
+HOMEPAGE="https://github.com/br101/horst"
 EGIT_REPO_URI="https://github.com/br101/${PN}"
 
 LICENSE="GPL-2"
@@ -31,7 +31,7 @@ src_compile() {
 src_install() {
 	dosbin ${PN}{,.sh}
 	dodoc README.md
-	doman ${PN}.1
+	doman ${PN}.8 ${PN}.conf.5
 	insinto /etc
 	doins ${PN}.conf
 }

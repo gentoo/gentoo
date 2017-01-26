@@ -5,7 +5,7 @@
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libetonyek"
-inherit autotools eutils
+inherit autotools
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
@@ -34,7 +34,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
-PATCHES=( "${FILESDIR}/${P}-mdds-1.2.patch" ) # patch taken from Debian
+PATCHES=(
+	"${FILESDIR}/${P}-mdds-1.2.patch" # patch taken from Debian
+	"${FILESDIR}/${P}-drop-test.patch" # bug 595022
+)
 
 pkg_pretend() {
 	if [[ $(gcc-major-version) -lt 4 ]] || {
@@ -53,14 +56,13 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable static-libs static) \
 		--disable-werror \
-		$(use_enable test tests) \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		$(use_enable static-libs static) \
+		$(use_enable test tests)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

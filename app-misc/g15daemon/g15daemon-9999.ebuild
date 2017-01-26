@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 GENTOO_DEPEND_ON_PERL="no"
 ESVN_PROJECT=${PN}/trunk
-ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${ESVN_PROJECT}/${PN}-wip"
+ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 
 inherit eutils linux-info perl-module python-r1 base subversion autotools
 

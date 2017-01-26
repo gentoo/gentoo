@@ -17,6 +17,7 @@ IUSE="doc static-libs"
 
 RDEPEND="media-libs/libsndfile"
 DEPEND="${RDEPEND}
+	media-libs/libsndfile[${MULTILIB_USEDEP}]
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {

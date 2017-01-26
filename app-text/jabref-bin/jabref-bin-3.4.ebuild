@@ -17,8 +17,11 @@ SRC_URI="mirror://sourceforge/jabref/JabRef-${MY_PV}.jar"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
+DEPEND="
+	app-arch/unzip
+"
 RDEPEND="
 	>=virtual/jre-1.8
 "
@@ -27,7 +30,7 @@ S="${WORKDIR}"
 
 src_unpack() {
 	cp -v "${DISTDIR}/${A}" . || die
-	jar xf  ${A} images/icons/JabRef-icon-48.png || die
+	unzip  ${A} images/icons/JabRef-icon-48.png || die
 }
 
 src_install() {

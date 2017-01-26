@@ -12,11 +12,11 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
-SRC_URI="http://www.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
+SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
 openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets
 xine xrandr zlib"
@@ -46,14 +46,14 @@ RDEPEND="
 	gdal? ( sci-libs/gdal )
 	gif? ( media-libs/giflib:= )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
+	jpeg2k? ( media-libs/jasper:= )
 	openexr? (
 		media-libs/ilmbase
 		media-libs/openexr
 	)
 	openinventor? ( media-libs/coin )
 	pdf? ( app-text/poppler[cairo] )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4

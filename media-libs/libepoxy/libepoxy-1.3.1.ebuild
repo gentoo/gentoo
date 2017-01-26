@@ -12,7 +12,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE='xml(+)'
 inherit autotools-multilib ${GIT_ECLASS} python-any-r1
 
@@ -22,7 +22,7 @@ if [[ ${PV} = 9999* ]]; then
 	KEYWORDS=""
 	SRC_URI=""
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86"
 	SRC_URI="https://github.com/anholt/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

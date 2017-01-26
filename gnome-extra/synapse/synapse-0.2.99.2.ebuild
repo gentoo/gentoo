@@ -32,7 +32,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.0.0:3
 	x11-libs/libnotify
 	x11-libs/pango
-	x11-themes/gnome-icon-theme
+	x11-themes/adwaita-icon-theme
 	plugins? ( >=net-libs/rest-0.7 )
 	zeitgeist? (
 		dev-libs/libzeitgeist

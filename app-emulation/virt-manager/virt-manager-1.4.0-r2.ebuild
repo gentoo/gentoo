@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 VM_LINGUAS=( as bg bn_IN bs ca cmn cs da de en_GB es fi fr gu hi hr hu is
@@ -45,7 +45,7 @@ RDEPEND="!app-emulation/virtinst
 		>=net-libs/gtk-vnc-0.3.8[gtk3,introspection,python,${PYTHON_USEDEP}]
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
 		net-misc/x11-ssh-askpass
-		|| ( x11-libs/vte:2.91[introspection] x11-libs/vte:2.90[introspection] )
+		x11-libs/vte:2.91[introspection]
 		gnome-keyring? ( gnome-base/libgnome-keyring )
 		policykit? ( sys-auth/polkit[introspection] )
 		x11-themes/gnome-icon-theme

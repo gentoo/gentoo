@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
 
-RDEPEND="!minimal? ( || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme ) )"
+RDEPEND="!minimal? ( || ( x11-themes/tango-icon-theme x11-themes/adwaita-icon-theme ) )"
 DEPEND=""
 
 RESTRICT="binchecks strip"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE="doc gcrypt gnutls nss +openssl static-libs"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"

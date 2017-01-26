@@ -10,7 +10,7 @@ MY_PN="phpMp"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="phpMp is a client program for Music Player Daemon (mpd)"
-HOMEPAGE="http://www.musicpd.org/"
+HOMEPAGE="https://www.musicpd.org/"
 SRC_URI="mirror://sourceforge/musicpd/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

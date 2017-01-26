@@ -9,7 +9,6 @@ EAPI="5"
 inherit eutils pax-utils
 #inherit git-2
 
-#DESCRIPTION="Racket is a general-purpose programming language with strong support for domain-specific languages"
 DESCRIPTION="General purpose, multi-paradigm programming language in the Lisp-Scheme family."
 HOMEPAGE="http://racket-lang.org/"
 SRC_URI="minimal? ( http://download.racket-lang.org/installers/${PV}/${PN}-minimal-${PV}-src-builtpkgs.tgz ) !minimal? ( http://download.racket-lang.org/installers/${PV}/${P}-src-builtpkgs.tgz )"
@@ -31,7 +30,7 @@ S="${WORKDIR}/${P}/src"
 
 src_prepare() {
 	#remove bundled libraries
-	rm -rf foreign/libffi/
+	rm -rf foreign/libffi/ || die
 }
 
 src_configure() {
