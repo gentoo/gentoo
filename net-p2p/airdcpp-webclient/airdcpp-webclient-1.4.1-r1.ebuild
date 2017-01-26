@@ -36,6 +36,12 @@ DEPEND="
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
 
+# Fix errors with zlib >= 1.2.10
+# https://bugs.launchpad.net/dcplusplus/+bug/1656050
+# https://github.com/airdcpp/airdcpp-core/commit/5b48aa785a2d6248971423fd5b7e07af32a6c289
+# https://github.com/airdcpp/airdcpp-core/commit/e80e3d2f6492b5c4f56489338bc2825583526831
+PATCHES=( "${FILESDIR}/${P}-fix-zlib-errors.patch" )
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 	enewgroup airdcppd
