@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1 >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999 sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DESCRIPTION=SELinux policy for syncthing
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
+SLOT=0
+_eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	selinux-policy-2	fdb802daf258a647a1117a1f2c043168	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=00260605438fa5e86fcfde2b38a36add
