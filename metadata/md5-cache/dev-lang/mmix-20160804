@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/tex-base doc? ( dev-texlive/texlive-genericrecommended )
+DESCRIPTION=Donald Knuth's MMIX Assembler and Simulator
+EAPI=6
+HOMEPAGE=http://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=mmix
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://mmix.cs.hm.edu/src/mmix-20160804.tgz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=7842368c58bdfe2a8915031d2d8672b0

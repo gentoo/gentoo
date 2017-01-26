@@ -4466,7 +4466,7 @@ dev-lang/maude 2.7: High-level specification language for equational and logic p
 dev-lang/mercury 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
-dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
+dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2016.10 2016.11 2016.12 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 2.10.9-r2 4.4.1.0 4.6.1.5 4.6.1.5-r1 4.8.0.425 4.8.0.459: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
@@ -10012,7 +10012,7 @@ dev-util/checkbashisms 2.16.12 2.16.13 2.17.0: Perl script to check for commonly
 dev-util/checkstyle 5.5-r1 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
-dev-util/cloc 1.64 1.66 1.70: Count Lines of Code
+dev-util/cloc 1.64 1.66 1.70 1.72: Count Lines of Code
 dev-util/cmake 3.5.2-r1 3.6.3 3.7.1 3.7.2: Cross platform Make
 dev-util/cmake-fedora 1.3.0 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
@@ -13717,7 +13717,7 @@ media-sound/qtractor 0.7.7 0.7.8 0.7.9 0.8.0: Qtractor is an Audio/MIDI multi-tr
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.5.1 3.6.2 3.7.0 3.7.1: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 3.7.1 3.8.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.15 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
@@ -18496,7 +18496,7 @@ x11-libs/libXfont 1.4.9 1.5.1 1.5.2: X.Org Xfont library
 x11-libs/libXfont2 2.0.1 9999: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
-x11-libs/libXi 1.7.4 1.7.5 1.7.6 1.7.7 1.7.8: X.Org Xi library
+x11-libs/libXi 1.7.4 1.7.5 1.7.6 1.7.7 1.7.8 1.7.9: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
