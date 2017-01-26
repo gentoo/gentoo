@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,6 +40,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/opengl
+	virtual/glu
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
@@ -47,7 +48,7 @@ RDEPEND="
 	coprocessing? (
 		plugins? (
 			dev-python/PyQt5
-			dev-qt/qtgui:5
+			dev-qt/qtgui:5[-gles2]
 		)
 	)
 	ffmpeg? ( virtual/ffmpeg )
@@ -65,9 +66,9 @@ RDEPEND="
 	)
 	qt5? (
 		dev-qt/designer:5
-		dev-qt/qtgui:5
+		dev-qt/qtgui:5[-gles2]
 		dev-qt/qthelp:5
-		dev-qt/qtopengl:5
+		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
 		dev-qt/qtwebkit:5
@@ -84,6 +85,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
 		eerror "For USE=openmp a gcc with openmp support is required"
@@ -98,10 +103,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# see patch headers for description
-	epatch "${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch \
-		"${FILESDIR}"/${PN}-4.3.1-fix-development-install.patch \
-		"${FILESDIR}"/${PN}-4.4.0-removesqlite.patch
+
+	default
+	epatch "${PATCHES[@]}"
 
 	# lib64 fixes
 	sed -i \
