@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!minimal? ( >=dev-perl/EV-4.0.0 ) >=virtual/perl-IO-Socket-IP-0.370.0 >=virtual/perl-JSON-PP-2.271.30 >=virtual/perl-Pod-Simple-3.90.0 >=virtual/perl-Time-Local-1.200.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Real-time web framework
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mojolicious/
+IUSE=test minimal examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!minimal? ( >=dev-perl/EV-4.0.0 ) >=virtual/perl-IO-Socket-IP-0.370.0 >=virtual/perl-JSON-PP-2.271.30 >=virtual/perl-Pod-Simple-3.90.0 >=virtual/perl-Time-Local-1.200.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SR/SRI/Mojolicious-7.21.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
+_md5_=1811196d63be42d52721143fed985f9d

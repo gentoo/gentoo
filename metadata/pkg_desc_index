@@ -6095,7 +6095,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
-dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0: Real-time web framework
+dev-perl/Mojolicious 6.610.0 7.110.0 7.120.0 7.140.0 7.190.0 7.200.0 7.210.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2 1.6.0 1.6.1: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
@@ -6736,7 +6736,7 @@ dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protoc
 dev-perl/YAML 0.840.0-r1 1.150.0 1.180.0 1.190.0 1.200.0 1.210.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.620.0 0.630.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.200.0-r1 1.290.0: Fast, lightweight YAML loader and dumper
-dev-perl/YAML-Tiny 1.690.0: Read/Write YAML files with as little code as possible
+dev-perl/YAML-Tiny 1.690.0 1.700.0: Read/Write YAML files with as little code as possible
 dev-perl/ZMQ-Constants 1.40.0: Constants for libzmq
 dev-perl/ZMQ-LibZMQ2 1.40.0 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
@@ -7421,7 +7421,7 @@ dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4 0.19.0: Highly concurrent networking library
+dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4 0.19.0 0.20.1: Highly concurrent networking library
 dev-python/execnet 1.2.0-r2 1.4.1: Rapid multi-Python deployment
 dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc5 0.8.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
