@@ -29,5 +29,6 @@ RDEPEND="
 	dev-ros/rqt_py_common[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
