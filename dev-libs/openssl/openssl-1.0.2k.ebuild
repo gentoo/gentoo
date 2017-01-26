@@ -128,6 +128,12 @@ multilib_src_configure() {
 	#	fi
 	#fi
 
+	# https://github.com/openssl/openssl/issues/2286
+	if use ia64 ; then
+		filter-flags -g3
+		filter-flags -ggdb3
+	fi
+
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"
 	local config="Configure"
