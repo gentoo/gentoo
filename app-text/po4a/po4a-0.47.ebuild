@@ -41,8 +41,8 @@ DIST_TEST="do"
 src_prepare() {
 	# Check against locale files in ${S}/pod/bin for mismatches
 	# with languages listed in PLOCALES
-	local locales_path="$S/po/bin"
-	l10n_find_plocales_changes "$locales_path" "" ".po"
+	local locales_path="${S}/po/bin"
+	l10n_find_plocales_changes "${locales_path}" "" ".po"
 
 	# Get rid of disabled locales
 	my_get_disabled_locales() {
@@ -51,7 +51,7 @@ src_prepare() {
 
 	l10n_for_each_disabled_locale_do my_get_disabled_locales
 
-	einfo "Your LINGUAS lists the following languages: $LINGUAS"
+	einfo "Your LINGUAS lists the following languages: ${LINGUAS}"
 
 	perl-module_src_prepare
 }
