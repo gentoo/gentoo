@@ -13159,7 +13159,7 @@ media-plugins/gst-plugins-modplug 0.10.23-r1 1.6.3 1.8.3: MOD audio decoder plug
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.6.3 1.8.3: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.6.3 1.8.3: MPEG-1/2 video encoding plugin for GStreamer
 media-plugins/gst-plugins-mpg123 1.8.3: MP3 decoder plugin for GStreamer
-media-plugins/gst-plugins-mplex 0.10.23-r1 1.6.1 1.6.2 1.6.3 1.8.3: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
+media-plugins/gst-plugins-mplex 0.10.23-r1 1.8.3: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
 media-plugins/gst-plugins-musepack 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-neon 0.10.23-r1 1.2.4-r1 1.6.3 1.8.3: HTTP client source plugin for GStreamer
 media-plugins/gst-plugins-ofa 0.10.23-r1 1.6.3 1.8.3: MusicIP audio fingerprinting plugin for GStreamer
