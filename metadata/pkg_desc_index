@@ -5106,11 +5106,11 @@ dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
-dev-ml/camlimages 4.0.1 4.2.2: An image manipulation library for ocaml
+dev-ml/camlimages 4.2.2: An image manipulation library for ocaml
 dev-ml/camlp4 4.02.1_p3 4.03_p1 4.04_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
-dev-ml/camlzip 1.05 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
+dev-ml/camlzip 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
@@ -5176,28 +5176,28 @@ dev-ml/ocaml-gettext 0.3.5-r1: Provides support for internationalization of OCam
 dev-ml/ocaml-hashcons 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.7.1: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
-dev-ml/ocaml-mysql 1.1.1 1.2.0 1.2.1: A package for ocaml that provides access to mysql databases
+dev-ml/ocaml-mysql 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 2.0: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 4.1.2: A package for ocaml that provides access to SQLite databases
-dev-ml/ocaml-ssl 0.4.6 0.5.3: OCaml bindings for OpenSSL
+dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uint 1.2.0: Unsigned ints for OCaml
 dev-ml/ocaml-uri 1.9.2: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.10.1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
-dev-ml/ocamlgraph 0.99b 1.8.7: O'Caml Graph library
+dev-ml/ocamlgraph 1.8.7: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
 dev-ml/ocamlnet 3.7.7-r1 4.1.2: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
-dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
+dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocsigen-start 0.99 9999: Eliom Base Application with users, (pre)registration, notifications, etc.
 dev-ml/ocsigen-toolkit 0.99 9999: User interface widgets for Ocsigen applications
@@ -5213,7 +5213,7 @@ dev-ml/pa_ounit 113.00.00: Syntax extension that helps writing in-line test in o
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7-r1: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
-dev-ml/pcre-ocaml 6.2.5 7.2.3: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.5-r1 3.0.6: Partially Ordered Map ADT for O'Caml
@@ -5250,7 +5250,7 @@ dev-ml/qcheck 0.5.2 0.5.3: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
-dev-ml/res 4.0.4 4.0.7: Resizable Array and Buffer modules for O'Caml
+dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 113.00.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
@@ -9774,7 +9774,7 @@ dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
 dev-tex/biber 2.4 2.5: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.3 3.4 3.4-r1: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 6.6: APA style for BibLaTeX
-dev-tex/bibtex2html 1.97 1.98: A bibtex to HTML converter
+dev-tex/bibtex2html 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521 3.71_p20160523: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
