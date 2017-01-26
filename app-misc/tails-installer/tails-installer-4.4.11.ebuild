@@ -14,7 +14,7 @@ HOMEPAGE="https://tails.boum.org http://git.tails.boum.org/liveusb-creator"
 SRC_URI="http://deb.tails.boum.org/pool/main/t/${PN}/${PN}_${PV}+dfsg.orig.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 PATCHES=( ${FILESDIR}/fix-desktop-file.patch ${FILESDIR}/sgdisk.patch )
