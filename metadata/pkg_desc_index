@@ -10681,7 +10681,7 @@ games-board/simsu 1.2.3 1.2.3-r1: A basic sudoku game
 games-board/sirius 0.8.0 0.8.0-r1: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
 games-board/spider 1.2_p4-r1: Spider Solitaire
-games-board/stockfish 7 8: Free UCI chess engine, claimed to be the strongest in the world
+games-board/stockfish 8: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tali 3.18.0 3.20.0 3.22.0: Beat the odds in a poker-style dice game
 games-board/teg 0.11.2: Gnome Risk Clone
 games-board/tetzle 2.0.3: A jigsaw puzzle game that uses tetrominoes for the pieces
@@ -13001,7 +13001,7 @@ media-libs/phonon-vlc 0.9.0 9999: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6 2.6-r1: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19_pre20140130: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19_pre20140130 19.06.00: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: A library for real time MIDI input and output
 media-libs/ptex 2.1.28: Per-Face Texture Mapping for Production Rendering
 media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
@@ -16553,7 +16553,7 @@ sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensio
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
 sci-visualization/opendx 4.4.4-r4 4.4.4-r5: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 4.1.0-r2 5.1.2 5.1.2-r1: ParaView is a powerful scientific data visualization application
+sci-visualization/paraview 4.1.0-r2 5.1.2-r1 5.2.0: ParaView is a powerful scientific data visualization application
 sci-visualization/pythonprop 0.13 0.18: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2: Gnuplot like graphing program publication-quality figures
 sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
