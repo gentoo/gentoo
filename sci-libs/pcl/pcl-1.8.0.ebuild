@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 	)
 	usb? ( virtual/libusb:1 )
-	vtk? ( >=sci-libs/vtk-5.6[imaging,rendering] )
+	vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4 )
 "
 DEPEND="${RDEPEND}
