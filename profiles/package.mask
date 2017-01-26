@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
+# Pre-release, masked for testing. Major changes since 2.0.4,
+# including dropped support for BlueZ 4.
+=net-wireless/blueman-2.1_alpha*
+
 # Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
 # Dead. Masked for removal in 30 days.
 # Bug #606132
