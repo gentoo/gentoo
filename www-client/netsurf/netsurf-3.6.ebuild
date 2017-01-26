@@ -53,6 +53,7 @@ RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
 	mng? ( >=media-libs/libmng-1.0.10-r2[${MULTILIB_USEDEP}] )
 	pdf-writer? ( media-libs/libharu[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0[${MULTILIB_USEDEP}] )
+	psl? ( media-libs/libnspsl[${MULTILIB_USEDEP}] )
 	rosprite? ( >=media-libs/librosprite-0.1.2-r1[${MULTILIB_USEDEP}] )
 	svg? ( svgtiny? ( >=media-libs/libsvgtiny-0.1.3-r1[${MULTILIB_USEDEP}] )
 		!svgtiny? ( gnome-base/librsvg:2[${MULTILIB_USEDEP}] ) )
