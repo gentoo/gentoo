@@ -22,7 +22,7 @@ RDEPEND="dev-libs/popt
 	snmp? ( net-analyzer/net-snmp )
 	net-libs/libnfnetlink"
 DEPEND="${RDEPEND}
-	>=sys-kernel/linux-headers-2.6.30"
+	>=sys-kernel/linux-headers-4.4"
 
 DOCS=( README CONTRIBUTORS INSTALL ChangeLog AUTHOR TODO
 	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt )
