@@ -24,10 +24,16 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 "
 RDEPEND="${PYTHON_DEPS}
-	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	gnome-base/gnome-shell
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}"-enabled-extensions-array.patch
+	"${FILESDIR}/${P}"-metadata-version.patch
+	"${FILESDIR}/${P}"-get_dbus_connection.patch
+)
 
 src_configure() {
 	local mycmakeargs=( -DBUILD_EXTENSION=OFF )
