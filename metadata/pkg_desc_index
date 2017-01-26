@@ -17356,7 +17356,7 @@ sys-cluster/singularity 2.2: Application containers for Linux
 sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.9.0 2.10.0 2.10.0-r1 2.10.1: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
-sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
+sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.1.0: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
@@ -17987,18 +17987,17 @@ virtual/pmake 0: Virtual for BSD-like make
 virtual/podofo-build 0.9.2 0.9.3 0.9.4: Virtual package for building against PoDoFo
 virtual/pypy 4.0.1 5.0.0 5.1.1 5.3.0 5.3.1 5.4.0-r1 5.4.1 5.6.0: A virtual for PyPy Python implementation
 virtual/pypy3 2.4.0 5.2.0_alpha1 5.5.0_alpha: A virtual for PyPy3 Python implementation
-virtual/python-asyncio 0: A virtual for the Python 3.4+ asyncio module
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-dnspython 1: A virtual for dnspython, for Python 2 & 3
 virtual/python-enum34 1: A virtual for Python enum34 module
-virtual/python-funcsigs 0-r1 1: A Virtual for Python function signatures from PEP362
+virtual/python-funcsigs 0-r1 1: A Virtual for Python function signatures from PEP362 (py3.6 variant)
 virtual/python-futures 0: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0: A virtual for Python greenlet module
 virtual/python-ipaddress 1.0-r1: A virtual for Python ipaddress module
 virtual/python-pathlib 1.0: A virtual for Python pathlib module
 virtual/python-pmw 1: A virtual for pmw, for Python 2 & 3
-virtual/python-singledispatch 0: A virtual for the Python functools.singledispatch module
+virtual/python-singledispatch 0: A virtual for the Python functools.singledispatch function
 virtual/qmail 1.03: Virtual for qmail
 virtual/ruby 1: Virtual ebuild for ruby
 virtual/ruby-ffi 3 4: Virtual ebuild for the Ruby ffi library
