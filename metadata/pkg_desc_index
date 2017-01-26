@@ -8085,7 +8085,7 @@ dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /b
 dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
-dev-python/pymysql 0.6.3 0.6.6 0.6.7 0.7.6: Pure-Python MySQL Driver
+dev-python/pymysql 0.6.3 0.6.6 0.6.7 0.7.6 0.7.9: Pure-Python MySQL Driver
 dev-python/pynacl 1.0.1 1.0.1-r1: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynag 0.9.1: Python modules for Nagios plugins and configuration
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
