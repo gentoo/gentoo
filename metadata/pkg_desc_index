@@ -4923,7 +4923,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2j 1.1.0c: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2j 1.0.2k 1.1.0d: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5 1.6.2-r6: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -17638,7 +17638,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.18.44_p48 4.1.35_p41 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.6_p5 4.8.14_p9: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.47 4.1.38 4.4.44 4.8.17 4.9.5: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.47 4.1.38 4.4.45 4.8.17 4.9.6: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1 1.3-r2: Standalone argp library for use with uclibc
@@ -19094,7 +19094,7 @@ x11-proto/fontsproto 2.1.2 2.1.3: X.Org Fonts protocol headers
 x11-proto/glproto 1.4.17-r1: X.Org GL protocol headers
 x11-proto/inputproto 2.3 2.3.1 2.3.2: X.Org Input protocol headers
 x11-proto/kbproto 1.0.6-r1 1.0.7: X.Org KB protocol headers
-x11-proto/presentproto 1.0: X.Org Present protocol specification and Xlib/Xserver headers
+x11-proto/presentproto 1.0 1.1: X.Org Present protocol specification and Xlib/Xserver headers
 x11-proto/printproto 1.0.5-r1: X.Org Print protocol headers
 x11-proto/randrproto 1.4.0-r1 1.4.1 1.5.0: X.Org Randr protocol headers
 x11-proto/recordproto 1.14.2-r1: X.Org Record protocol headers
