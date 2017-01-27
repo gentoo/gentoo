@@ -22,7 +22,7 @@ RDEPEND="${CDEPEND}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/jira[${PYTHON_USEDEP}]
+	dev-python/jira[${PYTHON_USEDEP},oauth]
 	dev-python/suds[${PYTHON_USEDEP}]
 	>=dev-python/keyring-10.0.2-r1[${PYTHON_USEDEP}]
 	dev-python/keyrings_alt[${PYTHON_USEDEP}]"
