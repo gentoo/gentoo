@@ -11,14 +11,14 @@ HOMEPAGE="http://www.opendnssec.org/"
 SRC_URI="http://www.opendnssec.org/files/source/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE="libressl +migration-tool test"
+IUSE="bindist libressl +migration-tool test"
 SLOT="2"
 LICENSE="BSD"
 
 RDEPEND="
 	sys-devel/gcc:=[cxx]
 	dev-db/sqlite:3
-	!libressl? ( dev-libs/openssl:= )
+	!libressl? ( dev-libs/openssl:=[bindist=] )
 	libressl? ( dev-libs/libressl )
 	!=dev-libs/softhsm-2.0.0:0
 "
@@ -42,6 +42,8 @@ src_configure() {
 		--disable-static \
 		--with-crypto-backend=openssl \
 		--disable-p11-kit \
+		$(use_enable bindist ecc) \
+		$(use libressl && echo --disable-ghost) \
 		$(use_with migration-tool migrate)
 }
 
