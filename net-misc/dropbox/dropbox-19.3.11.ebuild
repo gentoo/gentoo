@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
@@ -77,7 +77,6 @@ src_prepare() {
 	local target=(
 		cryptography-1.0-py2.7-*.egg
 		dropbox_sqlite_ext-0.0-py2.7.egg
-		psutil-3.1.1-py2.7-*.egg
 		setuptools-20.3-py2.7.egg
 	)
 
