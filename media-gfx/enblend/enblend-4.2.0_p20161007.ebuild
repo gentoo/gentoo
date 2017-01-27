@@ -67,7 +67,12 @@ src_configure() {
 }
 
 src_compile() {
+	# To allow icon resizing with renderers (no way to disable)
+	addpredict /dev/dri
+
+	# To compile fonts in the temp directory
 	export VARTEXFONTS="${T}/fonts"
+
 	# forcing -j1 as every parallel compilation process needs about 1 GB RAM.
 	cmake-utils_src_compile -j1
 }
