@@ -32,12 +32,12 @@ src_unpack() {
 }
 
 PATCHES=(
-    "${FILESDIR}/${P}-dir.patch"
+	"${FILESDIR}/${P}-dir.patch"
 )
 
 src_prepare() {
-    default
-    sed -i \
+	default
+	sed -i \
         -e "s:@GENTOO_DIR@:/usr/share/${PN}:" \
         Source/OpenGL_Windows.cpp || die
 }
