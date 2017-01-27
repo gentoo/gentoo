@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=qt4-fsarchiver
+Name[de_DE]=qt4-fsarchiver
+Comment=Qt GUI for fsarchiver
+Exec=kdesudo qt4-fsarchiver
+Icon=/usr/share/app-install/icons/harddrive.png
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;
+StartupNotify=false
+OnlyShowIn=KDE
+
