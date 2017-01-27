@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
+# x11-drivers/ati-drivers is masked for removal.
+media-gfx/blender opencl
+media-libs/opensubdiv opencl
+
 # Ian Stakenvicius (25 Jan 2017)
 # rust on mozilla packages is experimental
 www-client/firefox rust

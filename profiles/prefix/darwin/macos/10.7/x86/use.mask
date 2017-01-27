@@ -26,7 +26,6 @@
 -input_devices_vmmouse
 -input_devices_wacom
 -video_cards_nvidia
--video_cards_fglrx
 -video_cards_vmware
 
 # Modular X: mask for architectures on which they aren't available
