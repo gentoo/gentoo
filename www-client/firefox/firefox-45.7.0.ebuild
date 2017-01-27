@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -220,6 +220,7 @@ src_configure() {
 	fi
 
 	# workaround for funky/broken upstream configure...
+	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake -f client.mk configure
 }
 
@@ -245,11 +246,9 @@ src_compile() {
 		shopt -u nullglob
 		addpredict "${cards}"
 
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 		virtx emake -f client.mk profiledbuild || die "virtx emake failed"
 	else
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 		MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 		emake -f client.mk realbuild
 	fi
@@ -289,7 +288,7 @@ src_install() {
 			|| die
 	done
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
 	emake DESTDIR="${D}" install
 
 	# Install language packs
