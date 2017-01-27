@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	find -name Makefile.in -exec sed -i -r \
+			-e '/^\tinstall .*COPYING /d' \
 			-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
 			-e '1iCC=@CC@' {} + || die
 }
