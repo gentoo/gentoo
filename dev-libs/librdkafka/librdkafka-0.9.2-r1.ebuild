@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="6"
 
 inherit toolchain-funcs
 
@@ -26,9 +26,10 @@ LICENSE="BSD-2"
 # subslot = soname version
 SLOT="0/1"
 
-IUSE="sasl ssl static-libs"
+IUSE="lz4 sasl ssl static-libs"
 
 RDEPEND="
+	lz4? ( app-arch/lz4:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
 	ssl? ( dev-libs/openssl:0= )
 	sys-libs/zlib
@@ -39,6 +40,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-0.9.2-remove-lz4-automagic.patch )
+
 src_configure() {
 	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
 
@@ -46,6 +49,7 @@ src_configure() {
 		--no-cache
 		--no-download
 		--disable-debug-symbols
+		$(use_enable lz4)
 		$(use_enable sasl)
 		$(usex static-libs '--enable-static' '')
 		$(use_enable ssl)
