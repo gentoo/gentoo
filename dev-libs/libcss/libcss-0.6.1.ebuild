@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
 IUSE="test"
 
 RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]
-	>=dev-libs/libwapcaplet-0.2.2-r1[static-libs?,${MULTILIB_USEDEP}]"
+	>=dev-libs/libwapcaplet-0.4.0[static-libs?,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
