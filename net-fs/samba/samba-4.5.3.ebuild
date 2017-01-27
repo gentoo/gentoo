@@ -110,7 +110,7 @@ src_prepare() {
 	eapply "${WORKDIR}/patches/"
 
 	# ugly hackaround for bug #592502
-	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
+	cp "${SYSROOT}${EPREFIX}"/usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
 
 	multilib_copy_sources
 }
