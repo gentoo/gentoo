@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,4 +27,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"
-PATCHES=( "${FILESDIR}/includes.patch" "${FILESDIR}/gcc6.patch" )
+PATCHES=( "${FILESDIR}/includes.patch" "${FILESDIR}/gcc6.patch" "${FILESDIR}/eigen.patch" )
