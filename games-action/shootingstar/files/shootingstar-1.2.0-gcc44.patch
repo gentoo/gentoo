@@ -1,5 +1,5 @@
---- src/engine/dbg.cpp.old	2009-06-03 15:15:46.000000000 +0200
-+++ src/engine/dbg.cpp	2009-06-03 16:09:19.000000000 +0200
+--- a/src/engine/dbg.cpp	2009-06-03 15:15:46.000000000 +0200
++++ b/src/engine/dbg.cpp	2009-06-03 16:09:19.000000000 +0200
 @@ -28,6 +28,7 @@
  #include <vector>
  #include <map>
