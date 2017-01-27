@@ -8849,12 +8849,12 @@ dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersecti
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 9999: Tool for setting and publishing joint state values for a given URDF
-dev-ros/joint_states_settler 0.10.13 0.10.14 9999: Reports how long a subset of joints has been settled
+dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.12.6 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
-dev-ros/laser_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
+dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.3 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
