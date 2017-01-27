@@ -12795,7 +12795,7 @@ media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugi
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
-media-libs/lcms 2.6-r1 2.7 2.8: A lightweight, speed optimized color management engine
+media-libs/lcms 2.6-r1 2.7 2.8 2.8-r1: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.71 1.71-r1 1.74 1.74.1: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
@@ -15283,7 +15283,7 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.6.0-r2 1.7.0: Remote desktop viewer display system
+net-misc/tigervnc 1.6.0-r2 1.7.0 1.7.1: Remote desktop viewer display system
 net-misc/tinc 1.0.29 1.0.30 1.0.31 1.1_pre14-r3: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
