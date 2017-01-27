@@ -51,6 +51,7 @@ src_configure() {
 	econf \
 		--disable-experimental \
 		--disable-fanotify \
+		--disable-zlib-vcheck \
 		--enable-id-check \
 		--with-dbdir="${EPREFIX}"/var/lib/clamav \
 		--with-system-tommath \
