@@ -25,10 +25,13 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	find -name Makefile.in -exec sed -i -r \
+			-e '/^\tinstall .*COPYING /d' \
 			-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
 			-e '1iCC=@CC@' {} + || die
 }
 
 src_configure() {
-	econf $(use_enable seccomp)
+	econf \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
+		$(use_enable seccomp)
 }
