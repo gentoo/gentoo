@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic user systemd
+inherit autotools eutils flag-o-matic user systemd
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="http://www.clamav.net/"
@@ -45,6 +45,9 @@ pkg_setup() {
 src_prepare() {
 	use ppc64 && append-flags -mminimal-toc
 	use uclibc && export ac_cv_type_error_t=yes
+
+	epatch "${FILESDIR}"/${PN}-configure-zlib.patch # 604650, fixed in upstream HEAD
+	eautoconf
 }
 
 src_configure() {
