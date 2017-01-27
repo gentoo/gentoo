@@ -56,6 +56,11 @@ src_prepare() {
 			-e "s:portage\.db\['/'\]:portage.db['${EPREFIX}/']:g" \
 			src/ekeyword/ekeyword.py \
 			|| die "failed to set EPREFIX in ekeyword"
+		# fix repo name
+		sed -i \
+			-e "s:repo='gentoo':repo='gentoo_prefix':g" \
+			src/ekeyword/ekeyword.py \
+			|| die "failed to set correct reponame in ekeyword"
 	fi
 }
 
