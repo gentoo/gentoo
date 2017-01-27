@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Jan 2017)
+# Dead upstream since 2013.
+# Superseded by games-rpg/manaplus.
+# Masked for removal in 30 days.
+games-rpg/mana
+games-rpg/tmw
+
 # Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
 # Dead and replaced by media-libs/mesa[video_cards_radeonsi]
 # (or the proprietary amdgpu-pro, which is not in tree).
