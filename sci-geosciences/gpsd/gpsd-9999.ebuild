@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,10 +25,10 @@ LICENSE="BSD"
 SLOT="0"
 
 GPSD_PROTOCOLS=(
-	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt
-	geostar gpsclock itrax mtk3301 navcom nmea0183 nmea2000 ntrip
-	oceanserver oncore passthrough rtcm104v2 rtcm104v3 sirf superstar2
-	tnt tripmate tsip ublox
+	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
+	gpsclock isync itrax mtk3301 navcom nmea0183 nmea2000 ntrip oceanserver
+	oncore passthrough rtcm104v2 rtcm104v3 sirf skytraq superstar2 tnt
+	tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/gpsd_protocols_}
 IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth cxx debug dbus ipv6 latency_timing ncurses ntp python qt4 +shm +sockets static test udev usb X"
@@ -69,8 +69,7 @@ src_prepare() {
 		die "please sync ebuild & source"
 	fi
 
-	epatch "${FILESDIR}"/${PN}-3.8-ldflags.patch
-	epatch "${FILESDIR}"/${PN}-3.11-rpath.patch
+	epatch "${FILESDIR}"/${P}-do_not_rm_library.patch
 
 	# Avoid useless -L paths to the install dir
 	sed -i \

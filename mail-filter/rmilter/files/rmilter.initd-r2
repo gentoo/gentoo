@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 2015-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+RUNDIR=/var/run/rmilter
+PIDFILE=$RUNDIR/rmilter.pid
+
+depend() {
+	need net
+	before mta
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	checkpath -d $RUNDIR -m2750 -o rmilter:rmilter
+	rm -f $RUNDIR/$SVCNAME.sock
+	start-stop-daemon --start --quiet --pidfile $PIDFILE -u rmilter \
+						--exec /usr/sbin/rmilter -- -c /etc/rmilter/rmilter.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE
+	eend $?
+}

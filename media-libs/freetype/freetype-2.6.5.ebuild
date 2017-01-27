@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit autotools flag-o-matic multilib multilib-build multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs
 
 INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 

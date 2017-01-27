@@ -8,8 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit eutils multibuild python-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Python bindings for the Qt framework"
-HOMEPAGE="http://www.riverbankcomputing.com/software/pyqt/intro
-	https://pypi.python.org/pypi/PyQt4"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro"
 
 MY_P=PyQt-x11-gpl-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then

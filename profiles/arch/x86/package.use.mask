@@ -139,7 +139,7 @@ app-editors/gvim -luajit -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
 # Works on x86
-sys-apps/hwloc -cuda -gl -opencl
+sys-apps/hwloc -cuda -gl
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords missing, bug #478104

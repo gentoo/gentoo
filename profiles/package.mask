@@ -30,6 +30,74 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Jan 2017)
+# Dead upstream since 2013.
+# Superseded by games-rpg/manaplus.
+# Masked for removal in 30 days.
+games-rpg/mana
+games-rpg/tmw
+
+# Matt Turner <mattst88@gentoo.org> (26 Jan 2017)
+# Dead and replaced by media-libs/mesa[video_cards_radeonsi]
+# (or the proprietary amdgpu-pro, which is not in tree).
+# Masked for removal in 30 days.
+# Bug #582406
+x11-drivers/ati-drivers
+x11-libs/amd-adl-sdk
+x11-libs/xvba-video
+
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2017)
+# Pre-release, masked for testing. Major changes since 2.0.4,
+# including dropped support for BlueZ 4.
+=net-wireless/blueman-2.1_alpha*
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-omapfb
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Dead. Masked for removal in 30 days.
+# Bug #606132
+x11-drivers/xf86-video-ivtv
+
+# Matt Turner <mattst88@gentoo.org> (25 Jan 2017)
+# Last release only supports v4l1 which required kernel support removed in
+# 2.6.38. Doesn't build with >=x11-base/xorg-server-1.17. Masked for removal in
+# 30 days.
+# Bug #606132
+x11-drivers/xf86-video-v4l
+
+# Jeroen Roovers <jer@gentoo.org> (24 Jan 2017)
+# Masked for bug #607116
+=app-misc/screen-4.5.0
+
+# Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
+# Mask 4.0.0 RCs (then final) for initial testing, and updating most
+# important revdeps.
+=dev-ml/llvm-ocaml-4.0.0*
+=dev-python/lit-4.0.0*
+=dev-util/lldb-4.0.0*
+=sys-devel/clang-4.0.0*
+=sys-devel/clang-runtime-4.0.0*
+=sys-devel/lld-4.0.0*
+=sys-devel/llvm-4.0.0*
+=sys-libs/compiler-rt-4.0.0*
+=sys-libs/compiler-rt-sanitizers-4.0.0*
+=sys-libs/libcxx-4.0.0*
+=sys-libs/libcxxabi-4.0.0*
+=sys-libs/libomp-4.0.0*
+=sys-libs/llvm-libunwind-4.0.0*
+
+# Matt Turner <mattst88@gentoo.org> (24 Jan 2017)
+# Depends on xorg-server-1.16, which is going away. Unresolved security bug
+# #602764. Maintainer no longer interested in package. Masked for removal in 30
+# days.
+net-misc/x11rdp
+net-misc/xrdp
+=x11-base/xorg-drivers-1.16*
+=x11-base/xorg-server-1.16*
+
 # Michael Orlitzky <mjo@gentoo.org> (22 Jan 2017)
 # Use "php -a" instead. Masked for removal in 30 days.
 # Bug 606836.
@@ -281,26 +349,10 @@ net-misc/termtter
 dev-cpp/luabind
 games-rpg/valyriatear
 
-# Johannes Huber <johu@gentoo.org> (25 Dec 2016)
-# Masked for removal in 30 days. Dead upstream. No reverse dependencies.
-# No maintainer. Was introduced for media-sound/tomahwak. Uses deprecated
-# EAPI.
-net-libs/qtweetlib
-
-# Göktürk Yüksek <gokturk@gentoo.org> (22 Dec 2016)
-# Dead upstream, no more hosted on googlecode
-# No reverse dependencies. Masked for removal in 30 days.
-app-admin/phpsyslogng
-
 # David Seifert <soap@gentoo.org> (20 Dec 2016)
 # Masked for being completely broken and unusable (bug 586356).
 # No reverse dependencies. Masked for removal in 30 days.
 net-analyzer/snips
-
-# Markos Chandras <hwoarang@gentoo.org> (11 Dec 2016)
-# Dead upstream, no maintainer and it hasn't been bumped
-# since 2013. Masking for removal in 30 days (wrt bug #489878)
-sys-power/powerman
 
 # Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
 # Dev channel releases are only for people who are developers or want more
@@ -339,11 +391,6 @@ dev-lang/ruby:2.0
 # over 2G but it 'currently performs 3-5% slower and has 1-2% worse
 # compression'.
 >=dev-util/xdelta-3.1.0
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Nov 2016)
-# Mask until drivers are fixed or adjusted to depend on older versions #599976
-=x11-base/xorg-drivers-1.19*
-=x11-base/xorg-server-1.19*
 
 # Gilles Dartiguelongue <eva@gentoo.org> (12 Nov 2016)
 # Keep shotwell development series masked.

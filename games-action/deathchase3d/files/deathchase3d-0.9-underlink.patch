@@ -1,5 +1,5 @@
---- deathchase3d/Makefile.in.old	2011-06-13 09:22:44.140587725 +0200
-+++ deathchase3d/Makefile.in	2011-06-13 09:22:49.932942379 +0200
+--- a/deathchase3d/Makefile.in	2011-06-13 09:22:44.140587725 +0200
++++ b/deathchase3d/Makefile.in	2011-06-13 09:22:49.932942379 +0200
 @@ -248,7 +248,7 @@
  bin_PROGRAMS = deathchase3d
  

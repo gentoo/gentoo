@@ -28,3 +28,12 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# tests cannot be run in parallel #606942
+	local myctestargs=(
+		-j1
+	)
+
+	kde5_src_test
+}

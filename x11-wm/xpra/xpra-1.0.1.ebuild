@@ -15,7 +15,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server sound vpx webp x264 x265"
+IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server sound vpx webcam webp x264 x265"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -75,7 +75,9 @@ RDEPEND="${COMMON_DEPEND}
 	server? ( x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
 		x11-drivers/xf86-video-dummy
-	)"
+	)
+	webcam? ( media-libs/opencv[python]
+		dev-python/pyinotify[${PYTHON_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
@@ -115,6 +117,7 @@ python_configure_all() {
 		$(use_with webp)
 		$(use_with x264 enc_x264)
 		$(use_with x265 enc_x265)
+		$(use_with webcam)
 		--with-Xdummy
 		--with-gtk2
 		--without-gtk3
@@ -127,4 +130,6 @@ python_configure_all() {
 	# see https://www.xpra.org/trac/ticket/1080
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
+
+	export XPRA_SOCKET_DIRS="${EROOT}run/xpra"
 }

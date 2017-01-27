@@ -15,6 +15,7 @@ garmin - Garmin protocol support
 garmintxt - Garmin Simple Text protocol support
 geostar - Geostar Protocol support
 gpsclock - GPSclock protocol support
+isync - Isync protocol support
 itrax - iTrax protocol support
 mtk3301 - MTK-3301 protocol support
 navcom - Navcom protocol support
@@ -28,6 +29,7 @@ passthrough - Pass through JSON data
 rtcm104v2 - RTCM104V2 protocol support
 rtcm104v3 - RTCM104V3 protocol support
 sirf - SiRF protocol support
+skytraq - Skytraq protocol support
 superstar2 - SuperStarII protocol support
 tnt - True North protocol support
 tripmate - Tripmate protocol support

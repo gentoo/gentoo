@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Compile an Apache log format string to perl-code"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 # POSIX -> perl

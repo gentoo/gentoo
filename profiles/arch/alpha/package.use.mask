@@ -2,6 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (27 Jan 2016)
+# USE=test transitively pulls in greenlet, which is not available on alpha.
+dev-python/pyquery test
+
+# Tobias Klausmann <klausman@gentoo.org> (25 Jan 2016)
+# The tests use hypothesis which complains about too-slow tests on
+# hardware that is "too slow".
+dev-python/attrs test
+
 # Tobias Klausmann <klausman@gentoo.org> (22 Jan 2016)
 # Requires guile2 which is keyworded nowhere
 media-sound/lilypond guile2

@@ -53,6 +53,7 @@ src_configure() {
 	done
 
 	local myconf=(
+		--with-fallback-path="${EPREFIX}/usr/local/sbin:${EPREFIX}/usr/local/bin:${EPREFIX}/usr/sbin:${EPREFIX}/usr/bin:${EPREFIX}/sbin:${EPREFIX}/bin"
 		--with-python-impls="${pyimpls[*]}"
 	)
 

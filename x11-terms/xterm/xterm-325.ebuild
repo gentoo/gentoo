@@ -30,7 +30,8 @@ COMMON_DEPEND="kernel_linux? ( sys-libs/libutempter )
 	Xaw3d? ( x11-libs/libXaw3d )
 	xinerama? ( x11-libs/libXinerama )"
 RDEPEND="${COMMON_DEPEND}
-	media-fonts/font-misc-misc"
+	media-fonts/font-misc-misc
+	x11-apps/rgb"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x11-proto/kbproto

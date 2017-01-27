@@ -133,9 +133,8 @@ multilib_src_configure() {
 	# when specifying libs for samba build you must append NONE to the end to 
 	# stop it automatically including things
 	local bundled_libs="NONE"
-	if use addc && ! use system-heimdal ; then
+	if ! use system-heimdal && ! use system-mitkrb5 ; then
 		bundled_libs="heimbase,heimntlm,hdb,kdc,krb5,wind,gssapi,hcrypto,hx509,roken,asn1,com_err,NONE"
-		#bundled_libs="heimdal,NONE"
 	fi
 
 	local myconf=()
