@@ -1,0 +1,251 @@
+From ae2fea013237e227ab62b52f9855a8f9dd8dcdbb Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 27 Jan 2017 14:18:19 +0200
+Subject: [PATCH 1/2] build: add missing log dependency to test
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/lib/test/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/test/Makefile.am b/src/lib/test/Makefile.am
+index 339593e..4555ff2 100644
+--- a/src/lib/test/Makefile.am
++++ b/src/lib/test/Makefile.am
+@@ -25,6 +25,7 @@ p11test_SOURCES =		p11test.cpp \
+ 				AsymWrapUnwrapTests.cpp \
+ 				TestsBase.cpp \
+ 				TestsNoPINInitBase.cpp \
++				../common/log.cpp \
+ 				../common/osmutex.cpp
+ 
+ p11test_LDADD =			../libsofthsm2.la 
+-- 
+2.10.2
+
+From c90ba51dd944c9e842e4743cf8dd9d5f4ea7bc5d Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 27 Jan 2017 14:41:11 +0200
+Subject: [PATCH 2/2] build: tests: use pkg-config for cppunit
+
+do not execute cppunit-config over and over.
+move detection to autoconf.
+use standard pkg-config module of pkg-config instead
+of cppunit-config.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ configure.ac                          | 3 +++
+ m4/acx_cppunit.m4                     | 4 ++++
+ src/lib/crypto/test/Makefile.am       | 7 ++++---
+ src/lib/data_mgr/test/Makefile.am     | 7 ++++---
+ src/lib/handle_mgr/test/Makefile.am   | 7 ++++---
+ src/lib/object_store/test/Makefile.am | 7 ++++---
+ src/lib/session_mgr/test/Makefile.am  | 7 ++++---
+ src/lib/slot_mgr/test/Makefile.am     | 7 ++++---
+ src/lib/test/Makefile.am              | 7 ++++---
+ 9 files changed, 35 insertions(+), 21 deletions(-)
+ create mode 100644 m4/acx_cppunit.m4
+
+diff --git a/configure.ac b/configure.ac
+index 4ecabd6..7df0f73 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -117,6 +117,9 @@ ACX_VISIBILITY
+ # If we should install the p11-kit module
+ ACX_P11KIT
+ 
++# cppunit setetings
++ACX_CPPUNIT
++
+ # Set full directory paths
+ full_sysconfdir=`eval eval eval eval eval echo "${sysconfdir}" | sed "s#NONE#${prefix}#" | sed "s#NONE#${ac_default_prefix}#"`
+ full_localstatedir=`eval eval eval eval eval echo "${localstatedir}" | sed "s#NONE#${prefix}#" | sed "s#NONE#${ac_default_prefix}#"`
+diff --git a/m4/acx_cppunit.m4 b/m4/acx_cppunit.m4
+new file mode 100644
+index 0000000..ff5b90e
+--- /dev/null
++++ b/m4/acx_cppunit.m4
+@@ -0,0 +1,4 @@
++AC_DEFUN([ACX_CPPUNIT],[
++	PKG_PROG_PKG_CONFIG
++	PKG_CHECK_MODULES([CPPUNIT], [cppunit], [have_cppunit=yes], [have_cppunit=no])
++])
+diff --git a/src/lib/crypto/test/Makefile.am b/src/lib/crypto/test/Makefile.am
+index ca7e421..81c2ce6 100644
+--- a/src/lib/crypto/test/Makefile.am
++++ b/src/lib/crypto/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../object_store \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+-				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				@CRYPTO_INCLUDES@
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		cryptotest
+ 
+@@ -32,7 +33,7 @@ cryptotest_SOURCES =		cryptotest.cpp \
+ 
+ cryptotest_LDADD =		../../libsofthsm_convarch.la
+ 
+-cryptotest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++cryptotest_LDFLAGS = 		@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install
+ 
+ TESTS = 			cryptotest
+ 
+diff --git a/src/lib/data_mgr/test/Makefile.am b/src/lib/data_mgr/test/Makefile.am
+index 27b4fbd..944224c 100644
+--- a/src/lib/data_mgr/test/Makefile.am
++++ b/src/lib/data_mgr/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../object_store \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+-				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				@CRYPTO_INCLUDES@
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		datamgrtest
+ 
+@@ -20,7 +21,7 @@ datamgrtest_SOURCES =		datamgrtest.cpp \
+ 
+ datamgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-datamgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++datamgrtest_LDFLAGS = 		@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install
+ 
+ TESTS = 			datamgrtest
+ 
+diff --git a/src/lib/handle_mgr/test/Makefile.am b/src/lib/handle_mgr/test/Makefile.am
+index 4cf92e4..f439a56 100644
+--- a/src/lib/handle_mgr/test/Makefile.am
++++ b/src/lib/handle_mgr/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../object_store \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+-				-I$(srcdir)/../../data_mgr \
+-				`cppunit-config --cflags`
++				-I$(srcdir)/../../data_mgr
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		handlemgrtest
+ 
+@@ -18,7 +19,7 @@ handlemgrtest_SOURCES =		handlemgrtest.cpp \
+ 
+ handlemgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-handlemgrtest_LDFLAGS = 	@CRYPTO_LIBS@ -no-install `cppunit-config --libs`
++handlemgrtest_LDFLAGS = 	@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install
+ 
+ TESTS = 			handlemgrtest
+ 
+diff --git a/src/lib/object_store/test/Makefile.am b/src/lib/object_store/test/Makefile.am
+index ab2aa82..eec4a92 100644
+--- a/src/lib/object_store/test/Makefile.am
++++ b/src/lib/object_store/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../data_mgr \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+-				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				@CRYPTO_INCLUDES@
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		objstoretest
+ 
+@@ -32,7 +33,7 @@ endif
+ 
+ objstoretest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-objstoretest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++objstoretest_LDFLAGS = 		@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install -pthread
+ 
+ TESTS = 			objstoretest
+ 
+diff --git a/src/lib/session_mgr/test/Makefile.am b/src/lib/session_mgr/test/Makefile.am
+index 5e9a71c..385deec 100644
+--- a/src/lib/session_mgr/test/Makefile.am
++++ b/src/lib/session_mgr/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../data_mgr \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../slot_mgr \
+-				-I$(srcdir)/../../object_store \
+-				`cppunit-config --cflags`
++				-I$(srcdir)/../../object_store
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		sessionmgrtest
+ 
+@@ -18,7 +19,7 @@ sessionmgrtest_SOURCES =	sessionmgrtest.cpp \
+ 
+ sessionmgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-sessionmgrtest_LDFLAGS =	@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++sessionmgrtest_LDFLAGS =	@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install -pthread
+ 
+ TESTS = 			sessionmgrtest
+ 
+diff --git a/src/lib/slot_mgr/test/Makefile.am b/src/lib/slot_mgr/test/Makefile.am
+index e9b9ce2..ecf36f5 100644
+--- a/src/lib/slot_mgr/test/Makefile.am
++++ b/src/lib/slot_mgr/test/Makefile.am
+@@ -8,8 +8,9 @@ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../../object_store \
+ 				-I$(srcdir)/../../session_mgr \
+ 				-I$(srcdir)/../../data_mgr \
+-				@CRYPTO_INCLUDES@ \
+-				`cppunit-config --cflags`
++				@CRYPTO_INCLUDES@
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		slotmgrtest
+ 
+@@ -18,7 +19,7 @@ slotmgrtest_SOURCES =		slotmgrtest.cpp \
+ 
+ slotmgrtest_LDADD =		../../libsofthsm_convarch.la 
+ 
+-slotmgrtest_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread
++slotmgrtest_LDFLAGS = 		@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install -pthread
+ 
+ TESTS = 			slotmgrtest
+ 
+diff --git a/src/lib/test/Makefile.am b/src/lib/test/Makefile.am
+index 4555ff2..9d157a5 100644
+--- a/src/lib/test/Makefile.am
++++ b/src/lib/test/Makefile.am
+@@ -2,8 +2,9 @@ MAINTAINERCLEANFILES = 		$(srcdir)/Makefile.in
+ 
+ AM_CPPFLAGS = 			-I$(srcdir)/.. \
+ 				-I$(srcdir)/../cryptoki_compat \
+-				-I$(srcdir)/../common \
+-				`cppunit-config --cflags`
++				-I$(srcdir)/../common
++
++AM_CFLAGS =			@CPPUNIT_CFLAGS@
+ 
+ check_PROGRAMS =		p11test
+ 
+@@ -30,7 +31,7 @@ p11test_SOURCES =		p11test.cpp \
+ 
+ p11test_LDADD =			../libsofthsm2.la 
+ 
+-p11test_LDFLAGS = 		@CRYPTO_LIBS@ -no-install `cppunit-config --libs` -pthread -static
++p11test_LDFLAGS = 		@CRYPTO_LIBS@ @CPPUNIT_LIBS@ -no-install -pthread -static
+ 
+ TESTS = 			p11test
+ 
+-- 
+2.10.2
+
