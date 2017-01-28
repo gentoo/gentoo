@@ -1,0 +1,46 @@
+Index: gazebo-8.0.0/test/integration/physics_link.cc
+===================================================================
+--- gazebo-8.0.0.orig/test/integration/physics_link.cc
++++ gazebo-8.0.0/test/integration/physics_link.cc
+@@ -199,7 +199,7 @@ void PhysicsLinkTest::AddForce(const std
+   gzdbg << "World != link == inertial frames, no offset" << std::endl;
+   model->SetLinkWorldPose(ignition::math::Pose3d(
+         ignition::math::Vector3d(2, 3, 4),
+-        ignition::math::Vector3d(0, IGN_PI/2.0, 1)), link);
++        ignition::math::Quaterniond(0, IGN_PI/2.0, 1)), link);
+   EXPECT_NE(ignition::math::Pose3d::Zero, link->WorldPose());
+   EXPECT_EQ(link->WorldPose(), link->WorldInertialPose());
+   this->AddLinkForceTwoWays(world, link, ignition::math::Vector3d(-1, 10, 5));
+@@ -215,7 +215,7 @@ void PhysicsLinkTest::AddForce(const std
+   model->SetLinkWorldPose(ignition::math::Pose3d::Zero, link);
+   ignition::math::Pose3d inertialPose = ignition::math::Pose3d(
+       ignition::math::Vector3d(1, 5, 8),
+-      ignition::math::Vector3d(IGN_PI/3.0, IGN_PI*1.5, IGN_PI/4));
++      ignition::math::Quaterniond(IGN_PI/3.0, IGN_PI*1.5, IGN_PI/4));
+   link->GetInertial()->SetCoG(inertialPose);
+   EXPECT_EQ(ignition::math::Pose3d::Zero, link->WorldPose());
+   EXPECT_EQ(inertialPose, link->WorldInertialPose());
+@@ -224,9 +224,9 @@ void PhysicsLinkTest::AddForce(const std
+   gzdbg << "World != link != inertial frames, with offset" << std::endl;
+   model->SetLinkWorldPose(ignition::math::Pose3d(
+         ignition::math::Vector3d(5, 10, -4),
+-        ignition::math::Vector3d(0, IGN_PI/2.0, IGN_PI/6)), link);
++        ignition::math::Quaterniond(0, IGN_PI/2.0, IGN_PI/6)), link);
+   inertialPose = ignition::math::Pose3d(ignition::math::Vector3d(0, -5, 10),
+-      ignition::math::Vector3d(0, 2.0*IGN_PI, IGN_PI/3));
++      ignition::math::Quaterniond(0, 2.0*IGN_PI, IGN_PI/3));
+   link->GetInertial()->SetCoG(inertialPose);
+   this->AddLinkForceTwoWays(world, link, ignition::math::Vector3d(1, 2, 1),
+       ignition::math::Vector3d(-2, 0.5, 1));
+@@ -235,9 +235,9 @@ void PhysicsLinkTest::AddForce(const std
+       << std::endl;
+   model->SetLinkWorldPose(ignition::math::Pose3d(
+         ignition::math::Vector3d(-1.5, 0.8, 3),
+-        ignition::math::Vector3d(-IGN_PI/4.5, IGN_PI/3.0, IGN_PI*1.2)), link);
++        ignition::math::Quaterniond(-IGN_PI/4.5, IGN_PI/3.0, IGN_PI*1.2)), link);
+   inertialPose = ignition::math::Pose3d(ignition::math::Vector3d(1, 0, -5.6),
+-      ignition::math::Vector3d(IGN_PI/9, 0, IGN_PI*3));
++      ignition::math::Quaterniond(IGN_PI/9, 0, IGN_PI*3));
+   link->GetInertial()->SetCoG(inertialPose);
+   link->SetLinearVel(ignition::math::Vector3d(2, -0.1, 5));
+   link->SetAngularVel(ignition::math::Vector3d(-IGN_PI/10, 0, 0.0001));

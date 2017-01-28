@@ -18,7 +18,8 @@ IUSE="debug examples gcov static-libs"
 
 DEPEND="virtual/libmysqlclient:=
 	dev-libs/boost:=
-	dev-libs/openssl:0="
+	dev-libs/openssl:0=
+	!<dev-db/mysql-connector-c-6.1.8"
 RDEPEND="${DEPEND}"
 
 PATCHES=(

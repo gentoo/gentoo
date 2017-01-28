@@ -125,9 +125,6 @@ src_prepare() {
 
 	# User patches
 	eapply_user
-
-	# Native libdir is used to hold LLVMgold.so
-	NATIVE_LIBDIR=$(get_libdir)
 }
 
 multilib_src_configure() {
