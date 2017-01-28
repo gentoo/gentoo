@@ -72,9 +72,6 @@
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
-		<flag name="opencl">
-			Build cycles renderer with OpenCL GPU enhancements.
-		</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
 		<flag name="opennl" restrict="&lt;=media-gfx/blender-2.73">
 			Enable use of Open Numerical Library
