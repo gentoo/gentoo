@@ -1177,7 +1177,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.2 2.6.1 2.6.2 2.7.0 2.8.0 2.9.0 2.10.0: A Git porcelain inside Emacs
+app-emacs/magit 1.2.2 2.6.1 2.6.2 2.7.0 2.8.0 2.9.0 2.10.0 2.10.1: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0 2.1: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -5922,7 +5922,6 @@ dev-perl/IPC-ShareLite 0.170.0-r1: IPC::ShareLite module for perl
 dev-perl/IPC-Shareable 0.610.0-r1: Share Perl variables between processes
 dev-perl/IPC-Signal 1.0.0-r1: Translate signal names to/from numbers
 dev-perl/IPC-System-Simple 1.250.0: Run commands simply, with detailed diagnostics
-dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
 dev-perl/Image-Info 1.390.0: The Perl Image-Info Module
@@ -14454,7 +14453,7 @@ net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth param
 net-firewall/shorewall 5.0.15.2 5.0.15.3: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
-net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10 2.11: iptables extensions not yet accepted in the main kernel
+net-firewall/xtables-addons 1.47.1 2.8 2.12: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.1-r1 5.1.2: Kernel based automounter
 net-fs/btfs 2.11 2.12 2.13: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.4 6.5 6.6 6.6-r2: Tools for Managing Linux CIFS Client Filesystems
