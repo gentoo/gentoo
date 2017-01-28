@@ -74,7 +74,7 @@ x11-drivers/xf86-video-v4l
 
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
-# important revdeps.
+# important revdeps. Also revdeps that require 4.0.
 =dev-ml/llvm-ocaml-4.0.0*
 =dev-python/lit-4.0.0*
 =dev-util/lldb-4.0.0*
@@ -88,6 +88,7 @@ x11-drivers/xf86-video-v4l
 =sys-libs/libcxxabi-4.0.0*
 =sys-libs/libomp-4.0.0*
 =sys-libs/llvm-libunwind-4.0.0*
+>=dev-libs/libclc-0.2.0_pre20170118
 
 # Matt Turner <mattst88@gentoo.org> (24 Jan 2017)
 # Depends on xorg-server-1.16, which is going away. Unresolved security bug
