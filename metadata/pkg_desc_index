@@ -18240,7 +18240,7 @@ www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPla
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to embed file viewers into non-KDE browsers
-www-plugins/lightspark 0.7.2_p20150318: High performance flash player
+www-plugins/lightspark 0.7.2_p20150318 0.7.2_p20160107 9999: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pdfjs 1.6.210: A PDF reader in JavaScript
