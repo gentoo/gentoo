@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare pretend setup test unpack
+DEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-2017.01[clang=] ) clang? ( sys-devel/clang ) java? ( >=virtual/jdk-1.7 ) dev-lang/perl java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=Not Quite Perl, a Perl 6 bootstrapping compiler
+EAPI=5
+HOMEPAGE=http://rakudo.org/
+IUSE=doc clang java +moar test elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-2017.01[clang=] ) java? ( >=virtual/jre-1.7 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+REQUIRED_USE=|| ( java moar )
+SLOT=0
+SRC_URI=https://github.com/perl6/nqp/tarball/2017.01 -> nqp-2017.01.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_setup:java-pkg-opt-2 src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=53dc0cb7da6b2c00dd9057a1986b9cc5
