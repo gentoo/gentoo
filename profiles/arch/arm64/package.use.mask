@@ -3,6 +3,10 @@
 # $Id$
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# app-admin/hddtemp not keyworded
+app-admin/gkrellm hddtemp
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # media-libs/libcddb not keyworded yet
 dev-libs/libcdio cddb
 
