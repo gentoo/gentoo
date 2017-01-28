@@ -5,6 +5,10 @@
 		<email>chithanh@gentoo.org</email>
 		<name>Chí-Thanh Christopher Nguyễn</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<use>
 		<flag name="gles">Replace default OpenGL renderer with GLESv2</flag>
 		<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
