@@ -93,7 +93,7 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	raspberry-pi? (
 		>=media-libs/raspberrypi-userland-0_pre20160305-r1
-		media-libs/mesa[egl,gles2]
+		virtual/opengl
 	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba[smbclient(+)] )
