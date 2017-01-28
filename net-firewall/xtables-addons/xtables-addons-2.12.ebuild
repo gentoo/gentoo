@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils linux-info linux-mod multilib
 
@@ -57,7 +57,7 @@ pkg_setup()	{
 	if use modules; then
 		get_version
 		check_modules_supported
-		CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK ~CONNECTOR"
+		CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK ~CONNECTOR UNUSED_SYMBOLS"
 		ERROR_CONNECTOR="Please, enable CONFIG_CONNECTOR if you wish to receive userspace notifications from pknock through netlink/connector"
 		linux-mod_pkg_setup
 
@@ -164,6 +164,8 @@ src_prepare() {
 			-i extensions/Makefile.in || die
 
 	use xtables_addons_geoip || sed  -e '/^SUBDIRS/{s/geoip//}' -i Makefile.in
+
+	eapply_user
 }
 
 src_configure() {
