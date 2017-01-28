@@ -5,6 +5,15 @@
 doomsday
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# dev-libs/wayland not tested on arm64 yet
+wayland
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# dev-util/valgrind not tested on arm64 yet
+# Upstream seems to have architecture support, however
+valgrind
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # media-libs/portaudio not tested on arm64 yet
 portaudio
 
