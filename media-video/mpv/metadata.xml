@@ -19,6 +19,7 @@
 		<flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cdio">Enable CDDA support via <pkg>dev-libs/libcdio-paranoia</pkg></flag>
 		<flag name="cli">Build mpv CLI player</flag>
+		<flag name="cplugins">Enable C plugins support</flag>
 		<flag name="cuda">Enable hardware video decoding via Nvidia CUDA</flag>
 		<flag name="doc-pdf">Build documentation in pdf format</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
