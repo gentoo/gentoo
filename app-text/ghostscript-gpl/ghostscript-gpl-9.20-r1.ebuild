@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils multilib versionator flag-o-matic toolchain-funcs
+inherit autotools multilib versionator flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ghostscript is an interpreter for the PostScript language and for PDF"
 HOMEPAGE="http://ghostscript.com/"
@@ -27,7 +27,7 @@ PVM_S=$(replace_all_version_separators "" ${PVM})
 #	djvu? ( mirror://sourceforge/djvu/gsdjvu-${GSDJVU_PV}.tar.gz )"
 SRC_URI="
 	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-9.20-patchset-1.tar.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-9.20-patchset-2.tar.xz
 "
 
 LICENSE="AGPL-3 CPL-1.0"
@@ -105,9 +105,7 @@ src_prepare() {
 
 	# apply various patches, many borrowed from Fedora
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
-	EPATCH_SUFFIX="patch" EPATCH_FORCE="yes"
-	EPATCH_SOURCE="${WORKDIR}/patches/"
-	epatch
+	eapply "${WORKDIR}/patches/"*.patch
 
 #	if use djvu ; then
 #		unpack gsdjvu-${GSDJVU_PV}.tar.gz
