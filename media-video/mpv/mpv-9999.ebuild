@@ -298,23 +298,30 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local rv softvol_0_18_1=0
+	local rv softvol_0_18_1=0 osc_0_21_0=0
+
 	for rv in ${REPLACING_VERSIONS}; do
-		version_compare ${rv} 0.18.1-r1
+		version_compare ${rv} 0.18.1
 		[[ $? -eq 1 ]] && softvol_0_18_1=1
+		version_compare ${rv} 0.21.0
+		[[ $? -eq 1 ]] && osc_0_21_0=1
 	done
 
 	if [[ ${softvol_0_18_1} -eq 1 ]]; then
-		elog "Starting from version 0.18.1 the software volume control is"
-		elog "enabled by default, see:"
-		elog "https://github.com/mpv-player/mpv/blob/v0.18.1/DOCS/interface-changes.rst"
-		elog "https://github.com/mpv-player/mpv/issues/3322"
-		elog
+		elog "Since version 0.18.1 the software volume control is always enabled."
 		elog "This means that volume controls don't change the system volume,"
 		elog "e.g. per-application volume with PulseAudio."
-		elog "If you want to restore the old behaviour, please refer to"
+		elog "If you want to restore the previous behaviour, please refer to"
 		elog
-		elog "https://bugs.gentoo.org/show_bug.cgi?id=588492#c7"
+		elog "https://wiki.gentoo.org/wiki/Mpv#Volume_in_0.18.1"
+		elog
+	fi
+
+	if [[ ${osc_0_21_0} -eq 1 ]]; then
+		elog "In version 0.21.0 the default OSC layout was changed."
+		elog "If you want to restore the previous layout, please refer to"
+		elog
+		elog "https://wiki.gentoo.org/wiki/Mpv#OSC_in_0.21.0"
 		elog
 	fi
 
