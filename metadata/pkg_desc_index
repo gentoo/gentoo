@@ -1982,7 +1982,7 @@ app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
 app-mobilephone/obexftp 0.23-r2 0.24-r1: File transfer over OBEX for mobile phones
-app-mobilephone/past 0.0.4: A simple SMS tool
+app-mobilephone/past 0.0.4: Simple SMS tool
 app-mobilephone/pysms 0.9.4-r1: Tool for sending text messages for various Swiss providers
 app-mobilephone/qtadb 0.8.1: Android phone manager via ADB
 app-mobilephone/ringtonetools 2.26: program for creating ringtones and logos for mobile phones
