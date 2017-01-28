@@ -29,4 +29,4 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" )
+PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/c11.patch" )
