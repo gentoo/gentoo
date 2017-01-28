@@ -6,6 +6,10 @@
 # Please use the same syntax as in use.mask
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# sys-apps/dbus not marked stable yet
+dbus
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # sys-auth/skey not marked stable yet
 skey
 
