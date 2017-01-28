@@ -5,6 +5,14 @@
 doomsday
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-libs/portaudio not tested on arm64 yet
+portaudio
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-sound/pulseaudio not tested on arm64 yet
+pulseaudio
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # dev-libs/libressl not tested as an openssl alternative on arm64 yet
 libressl
 

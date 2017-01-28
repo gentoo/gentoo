@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# media-libs/libcddb not keyworded yet
+dev-libs/libcdio cddb
+
 # Steev Klimaszewski <steev@gentoo.org> (04 March 2016)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
