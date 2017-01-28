@@ -28,10 +28,10 @@ DOCS+=( README.md )
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa aqua archive bluray cdda +cli coreaudio cuda doc drm dvb dvd +egl
-	encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua luajit
-	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
-	test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
+IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
+	dvd +egl encode gbm +iconv jack jpeg lcms +libass libav libcaca libmpv +lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
+	selinux test tools +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
 	+xscreensaver +xv zsh-completion"
 
 REQUIRED_USE="
@@ -172,6 +172,7 @@ src_configure() {
 		--enable-html-build
 
 		$(use_enable doc pdf-build)
+		$(use_enable cplugins)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable zsh-completion zsh-comp)
 		$(use_enable test)
