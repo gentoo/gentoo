@@ -15458,7 +15458,7 @@ net-print/cndrvcups-lb 3.00 3.20: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.3-r1 2.1.4 2.2.1 2.2.2-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.5.0 1.8.3 1.11.6 1.12.0 1.13.2 1.13.3 9999: Cups PDF filters
-net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
+net-print/cups-pdf 2.6.1 3.0_beta1 3.0.0: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0: Dymo SDK for LabelWriter/LabelManager printers
