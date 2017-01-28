@@ -27,7 +27,7 @@ PVM_S=$(replace_all_version_separators "" ${PVM})
 #	djvu? ( mirror://sourceforge/djvu/gsdjvu-${GSDJVU_PV}.tar.gz )"
 SRC_URI="
 	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz
-	mirror://gentoo/${PN}-9.20-patchset-1.tar.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/${PN}-9.20-patchset-1.tar.xz
 "
 
 LICENSE="AGPL-3 CPL-1.0"
