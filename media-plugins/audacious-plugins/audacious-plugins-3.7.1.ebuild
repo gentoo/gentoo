@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -94,6 +94,10 @@ src_prepare() {
 
 src_configure() {
 	mp3_warning
+
+	epatch "${FILESDIR}/${P}-jack-ng.patch"
+	epatch "${FILESDIR}/${P}-gl-spectrum-include-fix.patch"
+
 	if use qt5 ;then
 		notify="--disable-notify"
 	elif use libnotify ;then

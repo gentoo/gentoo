@@ -1,0 +1,11 @@
+--- src/gl-spectrum-qt/gl-spectrum.cc.orig	2015-11-08 20:23:48.365692141 +0900
++++ src/gl-spectrum-qt/gl-spectrum.cc	2015-11-08 20:24:56.260684278 +0900
+@@ -32,6 +32,9 @@
+ #include <QGLWidget>
+ #include <QGLFunctions>
+ 
++#include <GL/glu.h>
++#include <GL/glut.h>
++
+ #define NUM_BANDS 32
+ #define DB_RANGE 40
