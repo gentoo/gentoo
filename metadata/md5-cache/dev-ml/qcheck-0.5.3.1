@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/ounit:= !<dev-ml/iTeML-2.5 dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DESCRIPTION=QuickCheck inspired property-based testing for OCaml
+EAPI=5
+HOMEPAGE=https://github.com/c-cube/qcheck/
+IUSE=+ocamlopt debug doc test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-ml/ounit:= !<dev-ml/iTeML-2.5 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/0.5.3.1
+SRC_URI=https://github.com/c-cube/qcheck/archive/0.5.3.1.tar.gz -> qcheck-0.5.3.1.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	473d7851a239e10730fd5d1f7301e7ca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=355542e012b2ffc3e1a54a56fc2c3d45

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml dev-libs/tinyxml2 dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4[freeimage] >=media-libs/freeimage-3.15.4[png] sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-5.0:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:= sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:= >=sci-libs/ignition-math-2.3:3= net-libs/ignition-transport:3= x11-libs/qwt:6=[qt5] dev-qt/qttest:5 app-text/ronn app-arch/gzip virtual/pkgconfig x11-apps/mesa-progs test? ( dev-libs/libxslt ) sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=A 3D multiple robot simulator with dynamics
+EAPI=5
+HOMEPAGE=http://gazebosim.org/
+IUSE=cpu_flags_x86_sse2 libav test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml dev-libs/tinyxml2 dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4[freeimage] >=media-libs/freeimage-3.15.4[png] sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-5.0:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:= sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:= >=sci-libs/ignition-math-2.3:3= net-libs/ignition-transport:3= x11-libs/qwt:6=[qt5]
+SLOT=0/8
+SRC_URI=https://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-8.0.0.tar.bz2
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=793fbbb66619c617838fb303f543f952

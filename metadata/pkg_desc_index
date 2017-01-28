@@ -139,7 +139,7 @@ app-admin/logstash-bin 2.4.0-r3 5.1.2: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
-app-admin/lsyncd 2.1.5 2.1.6 2.1.6-r1: Live Syncing (Mirror) Daemon
+app-admin/lsyncd 2.1.5 2.1.6 2.1.6-r1 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
@@ -4967,7 +4967,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/safestr 1.0.3: provide a standards compatible yet secure string implementation
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 4.2.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 4.2.0 5.0.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0 0.24.0 0.26.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -5247,7 +5247,7 @@ dev-ml/ppx_type_conv 113.33.02: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.33.00: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
-dev-ml/qcheck 0.5.2 0.5.3: QuickCheck inspired property-based testing for OCaml
+dev-ml/qcheck 0.5.2 0.5.3 0.5.3.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
@@ -7630,7 +7630,7 @@ dev-python/jingo 0.7 0.7.1 0.8.2 0.9.0: An adapter for using Jinja2 templates wi
 dev-python/jinja 2.7.3 2.8 2.8.1 2.9.3 2.9.4: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jira 1.0.5: Python library for interacting with the JIRA REST API
-dev-python/jmespath 0.5.0 0.7.1 0.9.0: JSON Matching Expressions
+dev-python/jmespath 0.9.0 0.9.1: JSON Matching Expressions
 dev-python/joblib 0.8.4 0.9.2 0.9.3 0.9.4 0.10.0: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.10-r1 0.11 0.12 0.13: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
@@ -8755,9 +8755,9 @@ dev-ros/actionlib_msgs 1.12.3 1.12.4 1.12.5 9999: Common messages to interact wi
 dev-ros/actionlib_tutorials 0.1.8 0.1.10 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/angles 1.9.10 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.2.12 0.3.1 9999: Transports audio from a source to a destination
+dev-ros/audio_capture 0.3.1 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.2.12 0.3.1 9999: Outputs audio to a speaker from a source node
+dev-ros/audio_play 0.3.1 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
 dev-ros/bond 1.7.16 1.7.17 1.7.18 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 1.7.17 1.7.18 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
@@ -8773,8 +8773,8 @@ dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place
 dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
-dev-ros/collada_parser 1.12.6 9999: C++ parser for the Collada robot description format
-dev-ros/collada_urdf 1.12.6 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
+dev-ros/collada_parser 1.12.6 1.12.7 9999: C++ parser for the Collada robot description format
+dev-ros/collada_urdf 1.12.6 1.12.7 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.11.0 0.11.1 0.11.2 0.11.3 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.11.0 0.11.1 0.11.2 0.11.3 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 1.9.5 9999: Plugin to image_transport for transparently sending depth images using PNG compression
@@ -8804,9 +8804,9 @@ dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 9999: Provides a set of typedef's
 dev-ros/fake_localization 1.14.0-r1 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.7.4-r1 9999: Standardized interface for processing data as a sequence of filters
 dev-ros/gazebo_msgs 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 2.6.1 9999: Message and service data structures for interacting with Gazebo from ROS
-dev-ros/gazebo_plugins 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 2.6.1 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
-dev-ros/gazebo_ros 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 2.6.1 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
-dev-ros/gazebo_ros_control 2.6.0-r1 2.6.1 9999: ROS control plugins for gazebo
+dev-ros/gazebo_plugins 2.6.1 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
+dev-ros/gazebo_ros 2.6.1 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
+dev-ros/gazebo_ros_control 2.6.1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 0.5.4 0.5.5 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
@@ -8848,11 +8848,11 @@ dev-ros/interactive_markers 1.11.1 1.11.3 9999: 3D interactive marker communicat
 dev-ros/interval_intersection 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.11.0-r1 0.11.1-r1 0.11.2 0.11.3 9999: Interface for enforcing joint limits
-dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 9999: Tool for setting and publishing joint state values for a given URDF
+dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
-dev-ros/kdl_parser 1.12.6 9999: Constructs a KDL tree from an XML robot representation in URDF
-dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser 1.12.6 1.12.7 9999: Constructs a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 1.7.4 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.3 9999: Assorted filters designed to operate on 2D planar laser scanners
@@ -8902,11 +8902,11 @@ dev-ros/pr2_description 1.11.14 1.12.0 9999: Description (mechanical, kinematic,
 dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: xxx.machine files that describe the different hosts a node can be spawned on
 dev-ros/pr2_msgs 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors
 dev-ros/python_qt_binding 0.3.1 9999: Infrastructure for an integrated graphical user interface based on Qt
-dev-ros/qt_dotgraph 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: Helpers to work with dot graphs
-dev-ros/qt_gui 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: ROS infrastructure for an integrated graphical user interface based on Qt
-dev-ros/qt_gui_app 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
-dev-ros/qt_gui_cpp 0.3.2 0.3.3 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
-dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: Common functionality for ROS RQT GUI plugins written in Python
+dev-ros/qt_dotgraph 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Helpers to work with dot graphs
+dev-ros/qt_gui 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: ROS infrastructure for an integrated graphical user interface based on Qt
+dev-ros/qt_gui_app 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
+dev-ros/qt_gui_cpp 0.3.2 0.3.3 0.3.4 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 1.9.2 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.12.2 9999: Retrieves data from url-format files
@@ -8971,9 +8971,9 @@ dev-ros/rqt_console 0.4.3 0.4.4 9999: GUI plugin for displaying and filtering RO
 dev-ros/rqt_controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3 9999: RQT control manager plugin
 dev-ros/rqt_dep 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for visualizing the ROS dependency graph
 dev-ros/rqt_graph 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for visualizing the ROS computation graph
-dev-ros/rqt_gui 0.2.14 0.3.1 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
-dev-ros/rqt_gui_cpp 0.2.14 0.3.1 9999: Enables GUI plugins to use the C++ client library for ROS
-dev-ros/rqt_gui_py 0.2.14 0.3.1 9999: Enables GUI plugins to use the Python client library for ROS
+dev-ros/rqt_gui 0.2.14 0.3.1 0.3.2 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
+dev-ros/rqt_gui_cpp 0.2.14 0.3.1 0.3.2 9999: Enables GUI plugins to use the C++ client library for ROS
+dev-ros/rqt_gui_py 0.2.14 0.3.1 0.3.2 9999: Enables GUI plugins to use the Python client library for ROS
 dev-ros/rqt_image_view 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: GUI plugin for configuring the logger level of ROS nodes
@@ -9010,7 +9010,7 @@ dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex r
 dev-ros/smach_msgs 2.0.0 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
 dev-ros/smclib 1.7.16 1.7.17 1.7.18 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
-dev-ros/sound_play 0.2.12 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
+dev-ros/sound_play 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
@@ -9053,8 +9053,8 @@ dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and lis
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 0.7.1 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
-dev-ros/urdf 1.12.6 9999: C++ parser for the Unified Robot Description Format (URDF)
-dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 1.12.5 1.12.6 9999: C++ base class for URDF parsers
+dev-ros/urdf 1.12.6 1.12.7 9999: C++ parser for the Unified Robot Description Format (URDF)
+dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 1.12.5 1.12.6 1.12.7 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
@@ -13255,7 +13255,7 @@ media-plugins/kodi-visualization-waveform 1.1.0 9999: Waveform visualizer for Ko
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.10.11 2016.10.21 2016.11.28: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.10.11 2016.10.21 2016.11.28 2017.01.26: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -13810,7 +13810,7 @@ media-sound/waheela 0.3: Amarok Fullscreen Player
 media-sound/wav2json 0.4: Generate waveformjs.org compatible json data out of wav files
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
-media-sound/wavpack 4.70.0 4.80.0 5.0.0: Hybrid lossless audio compression tools
+media-sound/wavpack 4.70.0 4.80.0 5.0.0 5.1.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r1: WavSplit is a simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a midi player using the gus patch set
@@ -15691,9 +15691,9 @@ ros-meta/nodelet_core 1.9.3 1.9.4 1.9.5 1.9.6 1.9.7 1.9.8 9999: Nodelet Core Met
 ros-meta/perception 1.2.0 1.3.0 9999: Metapackage for ROS perception stack
 ros-meta/perception_pcl 1.3.0 1.4.0 1.4.1 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: URDF description and 3D models of robot components of the PR2 robot
-ros-meta/qt_gui_core 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
+ros-meta/qt_gui_core 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 1.3.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
-ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 9999: Packages for modeling various aspects of robot information
+ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 1.12.4 1.12.5 1.12.6 1.12.7 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 1.12.5 1.13.1 1.13.2 1.13.3 1.13.4 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 1.3.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 1.12.4 1.12.5 1.12.6 9999: ROS communications-related packages
@@ -15703,7 +15703,7 @@ ros-meta/ros_tutorials 0.6.1 0.7.0 0.7.1 9999: Demonstrates various features of 
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 0.7.16 0.7.17 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 0.6.1 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 9999: Metapackage for core of rosserial
-ros-meta/rqt 0.2.14 0.3.1 9999: Qt-based framework for GUI development for ROS
+ros-meta/rqt 0.2.14 0.3.1 0.3.2 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 0.4.2 0.4.3 0.4.4 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
 ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
@@ -16042,7 +16042,7 @@ sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logi
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
-sci-electronics/gazebo 7.5.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 7.5.0 8.0.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.1 1.8.2 1.9.1 1.9.2: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow

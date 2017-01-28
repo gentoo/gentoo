@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/rqt_gui dev-ros/rqt_gui_cpp dev-ros/rqt_gui_py sys-devel/make >=dev-util/cmake-3.5.2 dev-util/catkin dev-python/empy
+DESCRIPTION=Qt-based framework for GUI development for ROS
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/rqt
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ros/rqt_gui dev-ros/rqt_gui_cpp dev-ros/rqt_gui_py dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-visualization/rqt/archive/0.3.2.tar.gz -> rqt-0.3.2.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	5d7f690679dfb6a4ac14c1bd25f098cd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=7751a7d8a7ca046d6fcd71583ebd8ec6
