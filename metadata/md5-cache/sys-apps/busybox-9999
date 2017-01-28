@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4fd0e6d9cdec647f4896e64742d0bbb2
+_md5_=cef879a2ac4a7b44dd9f47dd6ba11ca0

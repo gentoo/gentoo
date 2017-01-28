@@ -16847,7 +16847,7 @@ sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4 2.2-r5: M
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20100611-r1: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 1.12: Clean junk to free disk space and to maintain privacy
-sys-apps/busybox 1.25.1 1.26.0 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.25.1 1.26.0 1.26.2 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.03 1.09 1.09-r1 1.10 1.11: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
