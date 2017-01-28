@@ -98,6 +98,7 @@ COMMON_DEPEND="
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
 	vaapi? ( >=x11-libs/libva-1.4.0[drm?,X?,wayland?] )
+	vdpau? ( >=x11-libs/libvdpau-0.2 )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
@@ -107,7 +108,6 @@ COMMON_DEPEND="
 		x11-libs/libXext
 		>=x11-libs/libXrandr-1.2.0
 		opengl? ( x11-libs/libXdamage )
-		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
 		xv? ( x11-libs/libXv )
