@@ -2272,7 +2272,7 @@ app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/getxbook 1.0-r1: Download books from google, amazon, barnes and noble
-app-text/ghostscript-gpl 9.15-r1 9.19 9.20: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.15-r1 9.19 9.20-r1: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
@@ -18757,6 +18757,7 @@ x11-misc/rofi 1.2.0 1.3.0 1.3.1: A window switcher, run dialog and dmenu replace
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23 0.24: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
+x11-misc/sct 0.3: Set color temperature of the screen
 x11-misc/sddm 0.13.0-r3 0.14.0-r2: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
