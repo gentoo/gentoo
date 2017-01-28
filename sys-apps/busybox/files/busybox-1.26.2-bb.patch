@@ -1,0 +1,42 @@
+diff -Naur busybox-1.26.2.orig/shell/ash.c busybox-1.26.2/shell/ash.c
+--- busybox-1.26.2.orig/shell/ash.c	2017-01-10 10:55:51.000000000 -0500
++++ busybox-1.26.2/shell/ash.c	2017-01-28 17:02:08.961584737 -0500
+@@ -144,6 +144,8 @@
+ //applet:IF_ASH(APPLET(ash, BB_DIR_BIN, BB_SUID_DROP))
+ //applet:IF_SH_IS_ASH(APPLET_ODDNAME(sh, ash, BB_DIR_BIN, BB_SUID_DROP, ash))
+ //applet:IF_BASH_IS_ASH(APPLET_ODDNAME(bash, ash, BB_DIR_BIN, BB_SUID_DROP, ash))
++//applet:IF_ASH(APPLET_ODDNAME(bb, ash, BB_DIR_BIN, BB_SUID_DROP, ash))
++//applet:IF_ASH(APPLET_ODDNAME(bbsh, ash, BB_DIR_BIN, BB_SUID_DROP, ash))
+ 
+ //kbuild:lib-$(CONFIG_ASH) += ash.o ash_ptr_hack.o shell_common.o
+ //kbuild:lib-$(CONFIG_SH_IS_ASH) += ash.o ash_ptr_hack.o shell_common.o
+@@ -7572,6 +7574,8 @@
+ 		}
+ 		/* re-exec ourselves with the new arguments */
+ 		execve(bb_busybox_exec_path, argv, envp);
++		execve("/bin/busybox.static", argv, envp);
++		execve("/bin/busybox", argv, envp);
+ 		/* If they called chroot or otherwise made the binary no longer
+ 		 * executable, fall through */
+ 	}
+diff -Naur busybox-1.26.2.orig/shell/hush.c busybox-1.26.2/shell/hush.c
+--- busybox-1.26.2.orig/shell/hush.c	2017-01-10 10:55:51.000000000 -0500
++++ busybox-1.26.2/shell/hush.c	2017-01-28 17:05:13.235936850 -0500
+@@ -221,6 +221,8 @@
+ //applet:IF_MSH(APPLET_ODDNAME(msh, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
+ //applet:IF_SH_IS_HUSH(APPLET_ODDNAME(sh, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
+ //applet:IF_BASH_IS_HUSH(APPLET_ODDNAME(bash, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
++//applet:IF_HUSH(APPLET_ODDNAME(bb, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
++//applet:IF_HUSH(APPLET_ODDNAME(bbsh, hush, BB_DIR_BIN, BB_SUID_DROP, hush))
+ 
+ //kbuild:lib-$(CONFIG_HUSH) += hush.o match.o shell_common.o
+ //kbuild:lib-$(CONFIG_SH_IS_HUSH) += hush.o match.o shell_common.o
+@@ -6073,6 +6075,8 @@
+ 	if (SPECIAL_JOBSTOP_SIGS != 0)
+ 		switch_off_special_sigs(G.special_sig_mask & SPECIAL_JOBSTOP_SIGS);
+ 	execve(bb_busybox_exec_path, argv, pp);
++	execve("/bin/busybox.static", argv, envp);
++	execve("/bin/busybox", argv, envp);
+ 	/* Fallback. Useful for init=/bin/hush usage etc */
+ 	if (argv[0][0] == '/')
+ 		execve(argv[0], argv, pp);
