@@ -11,7 +11,8 @@ IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.18[udev]
 	dev-libs/libevdev
-	sys-libs/mtdev"
+	sys-libs/mtdev
+	virtual/libudev:="
 DEPEND="${RDEPEND}
 	>=x11-proto/inputproto-2.1.99.3
 	>=sys-kernel/linux-headers-2.6"
