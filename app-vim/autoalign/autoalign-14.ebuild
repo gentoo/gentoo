@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: automatically align bib, c, c++, tex and vim code"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=884"
 LICENSE="vim"
-KEYWORDS="alpha amd64 ia64 mips ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
 IUSE=""
 
 if [[ ${PV} != 9999* ]] ; then
