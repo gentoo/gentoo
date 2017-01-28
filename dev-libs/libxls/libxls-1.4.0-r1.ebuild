@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/libxls/${P}.zip"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="0/1" # libxlsreader.so.1
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=""
