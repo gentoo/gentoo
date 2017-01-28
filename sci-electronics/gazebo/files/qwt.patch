@@ -1,0 +1,64 @@
+Index: gazebo-8.0.0/cmake/SearchForStuff.cmake
+===================================================================
+--- gazebo-8.0.0.orig/cmake/SearchForStuff.cmake
++++ gazebo-8.0.0/cmake/SearchForStuff.cmake
+@@ -758,10 +758,10 @@ find_path(QWT_INCLUDE_DIR NAMES qwt.h PA
+   /usr/local/lib/qwt.framework/Headers
+   ${QWT_WIN_INCLUDE_DIR}
+ 
+-  PATH_SUFFIXES qwt qwt5
++  PATH_SUFFIXES qwt6
+ )
+ 
+-find_library(QWT_LIBRARY NAMES qwt-qt5 qwt PATHS
++find_library(QWT_LIBRARY NAMES qwt6-qt5 qwt PATHS
+   /usr/lib
+   /usr/local/lib
+   /usr/local/lib/qwt.framework
+Index: gazebo-8.0.0/gazebo/gui/plot/qwt_gazebo.h
+===================================================================
+--- gazebo-8.0.0.orig/gazebo/gui/plot/qwt_gazebo.h
++++ gazebo-8.0.0/gazebo/gui/plot/qwt_gazebo.h
+@@ -23,24 +23,24 @@
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Wfloat-equal"
+ 
+-#include <qwt/qwt_curve_fitter.h>
+-#include <qwt/qwt_legend.h>
+-#include <qwt/qwt_painter.h>
+-#include <qwt/qwt_picker_machine.h>
+-#include <qwt/qwt_plot.h>
+-#include <qwt/qwt_plot_canvas.h>
+-#include <qwt/qwt_plot_curve.h>
+-#include <qwt/qwt_plot_directpainter.h>
+-#include <qwt/qwt_plot_grid.h>
+-#include <qwt/qwt_plot_layout.h>
+-#include <qwt/qwt_plot_magnifier.h>
+-#include <qwt/qwt_plot_marker.h>
+-#include <qwt/qwt_plot_panner.h>
+-#include <qwt/qwt_plot_zoomer.h>
+-#include <qwt/qwt_scale_engine.h>
+-#include <qwt/qwt_scale_widget.h>
+-#include <qwt/qwt_symbol.h>
+-#include <qwt/qwt_plot_renderer.h>
++#include <qwt6/qwt_curve_fitter.h>
++#include <qwt6/qwt_legend.h>
++#include <qwt6/qwt_painter.h>
++#include <qwt6/qwt_picker_machine.h>
++#include <qwt6/qwt_plot.h>
++#include <qwt6/qwt_plot_canvas.h>
++#include <qwt6/qwt_plot_curve.h>
++#include <qwt6/qwt_plot_directpainter.h>
++#include <qwt6/qwt_plot_grid.h>
++#include <qwt6/qwt_plot_layout.h>
++#include <qwt6/qwt_plot_magnifier.h>
++#include <qwt6/qwt_plot_marker.h>
++#include <qwt6/qwt_plot_panner.h>
++#include <qwt6/qwt_plot_zoomer.h>
++#include <qwt6/qwt_scale_engine.h>
++#include <qwt6/qwt_scale_widget.h>
++#include <qwt6/qwt_symbol.h>
++#include <qwt6/qwt_plot_renderer.h>
+ 
+ #pragma clang diagnostic pop
+ 
