@@ -7063,7 +7063,6 @@ sci-mathematics/gretl:R - Enable support for dev-lang/R
 sci-mathematics/gsl-shell:fox - Build a x11-libs/fox GUI
 sci-mathematics/isabelle:graphbrowsing - Generate theory browsing information, including HTML documents that show a theory's definition, the theorems proved in its ML file and the relationship with its ancestors and descendants.
 sci-mathematics/isabelle:ledit - Use ledit for the isabelle tty line editor
-sci-mathematics/isabelle:proofgeneral - Add support for the app-emacs/proofgeneral proof assistant front end.
 sci-mathematics/isabelle:readline - Use readline (rlwrap) for the isabelle tty line editor
 sci-mathematics/kodkodi:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-mathematics/maxima:clisp - Compile maxima with GNU CLISP (dev-lisp/clisp)

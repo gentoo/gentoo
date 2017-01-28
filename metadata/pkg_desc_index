@@ -16435,7 +16435,7 @@ sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Intege
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
-sci-mathematics/isabelle 2015 2016.1: Isabelle is a generic proof assistant
+sci-mathematics/isabelle 2016.1: Isabelle is a generic proof assistant
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/kodkod 1.5.2 1.5.2-r1: a constraint solver for relational logic
 sci-mathematics/kodkodi 1.5.2 1.5.2-r1: A text front-end for the Kodkod Java library
