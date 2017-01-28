@@ -25,6 +25,7 @@ S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-asprintf.patch
+	"${FILESDIR}"/${P}-infinite.patch
 )
 
 src_configure() {
