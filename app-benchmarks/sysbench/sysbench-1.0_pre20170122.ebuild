@@ -1,41 +1,42 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="6"
 
-GITHUB_REV="401c5a43aa40a0b89689747b278fae2adbc302db"
-MY_PN="${PN}-${GITHUB_REV}"
+inherit vcs-snapshot
+
+GITHUB_REV="21a28231adb0645e67447b5c2169ad0cc63c829e"
 
 DESCRIPTION="System performance benchmark"
 HOMEPAGE="https://github.com/akopytov/sysbench"
 
-SRC_URI="https://github.com/akopytov/sysbench/archive/${GITHUB_REV}.tar.gz -> ${MY_PN}.tar.gz"
+SRC_URI="https://github.com/akopytov/sysbench/archive/${GITHUB_REV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aio lua mysql postgres test"
+IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
-	lua? ( dev-lang/lua:= )
 	mysql? ( virtual/libmysqlclient )
 	postgres? ( dev-db/postgresql:= )"
 DEPEND="${RDEPEND}
-	sys-devel/libtool:=
+	app-editors/vim-core
+	dev-lang/luajit:=
+	dev-libs/concurrencykit
 	dev-libs/libxslt
+	sys-devel/libtool:=
+	virtual/pkgconfig
 	test? ( dev-util/cram )"
-
-REQUIRED_USE="
-	mysql? ( lua )
-	postgres? ( lua )"
-
-S="${WORKDIR}/${MY_PN}"
 
 src_prepare() {
 	default
 
 	sed -i -e "/^htmldir =/s:=.*:=/usr/share/doc/${PF}/html:" doc/Makefile.am || die
+
+	# remove bundled libs
+	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck || die
 
 	./autogen.sh || die
 }
@@ -43,12 +44,13 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable aio aio)
-		$(use_with lua lua)
 		$(use_with mysql mysql)
 		$(use_with postgres pgsql)
 		--without-attachsql
 		--without-drizzle
 		--without-oracle
+		--with-system-luajit
+		--with-system-ck
 	)
 
 	econf "${myeconfargs[@]}"
