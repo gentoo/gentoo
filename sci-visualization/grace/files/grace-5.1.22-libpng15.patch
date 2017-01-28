@@ -1,5 +1,5 @@
---- src/rstdrv.c
-+++ src/rstdrv.c
+--- a/src/rstdrv.c
++++ b/src/rstdrv.c
 @@ -53,6 +53,7 @@
  #endif
  
