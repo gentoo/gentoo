@@ -1,0 +1,203 @@
+From 13ed52e65f6f07f2c0c2aa70604298c9f983693d Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 28 Jan 2017 21:09:05 +0200
+Subject: [PATCH] crypto: openssl: libressl support
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ m4/acx_openssl_gost.m4               | 2 +-
+ src/lib/crypto/OSSLComp.cpp          | 2 +-
+ src/lib/crypto/OSSLComp.h            | 2 +-
+ src/lib/crypto/OSSLCryptoFactory.cpp | 2 +-
+ src/lib/crypto/OSSLDHPrivateKey.cpp  | 2 +-
+ src/lib/crypto/OSSLDHPublicKey.cpp   | 2 +-
+ src/lib/crypto/OSSLDSAPrivateKey.cpp | 2 +-
+ src/lib/crypto/OSSLDSAPublicKey.cpp  | 2 +-
+ src/lib/crypto/OSSLECDH.cpp          | 2 +-
+ src/lib/crypto/OSSLECDSA.cpp         | 4 ++--
+ src/lib/crypto/OSSLRSAPrivateKey.cpp | 2 +-
+ src/lib/crypto/OSSLRSAPublicKey.cpp  | 2 +-
+ win32/Configure.py                   | 2 +-
+ 13 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/m4/acx_openssl_gost.m4 b/m4/acx_openssl_gost.m4
+index 2a949f2..dca489b 100644
+--- a/m4/acx_openssl_gost.m4
++++ b/m4/acx_openssl_gost.m4
+@@ -22,7 +22,7 @@ AC_DEFUN([ACX_OPENSSL_GOST],[
+ 				OpenSSL_add_all_algorithms();
+ 
+ 				/* Load engines */
+-			#if OPENSSL_VERSION_NUMBER < 0x10100000L
++			#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 				ENGINE_load_builtin_engines();
+ 			#else
+ 				OPENSSL_init_crypto(OPENSSL_INIT_ENGINE_ALL_BUILTIN | OPENSSL_INIT_LOAD_CONFIG, NULL);
+diff --git a/src/lib/crypto/OSSLComp.cpp b/src/lib/crypto/OSSLComp.cpp
+index 31333f6..ede710b 100644
+--- a/src/lib/crypto/OSSLComp.cpp
++++ b/src/lib/crypto/OSSLComp.cpp
+@@ -34,7 +34,7 @@
+ #include "OSSLComp.h"
+ #include <openssl/opensslv.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ /*
+  * Copyright 1995-2016 The OpenSSL Project Authors. All Rights Reserved.
+diff --git a/src/lib/crypto/OSSLComp.h b/src/lib/crypto/OSSLComp.h
+index 71d6c21..4bced32 100644
+--- a/src/lib/crypto/OSSLComp.h
++++ b/src/lib/crypto/OSSLComp.h
+@@ -36,7 +36,7 @@
+ #include "config.h"
+ #include <openssl/opensslv.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #include <openssl/evp.h>
+ #include <openssl/hmac.h>
+diff --git a/src/lib/crypto/OSSLCryptoFactory.cpp b/src/lib/crypto/OSSLCryptoFactory.cpp
+index cd7f9d3..41134df 100644
+--- a/src/lib/crypto/OSSLCryptoFactory.cpp
++++ b/src/lib/crypto/OSSLCryptoFactory.cpp
+@@ -134,7 +134,7 @@ OSSLCryptoFactory::OSSLCryptoFactory()
+ 
+ #ifdef WITH_GOST
+ 	// Load engines
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 	ENGINE_load_builtin_engines();
+ #else
+ 	OPENSSL_init_crypto(OPENSSL_INIT_ENGINE_ALL_BUILTIN |
+diff --git a/src/lib/crypto/OSSLDHPrivateKey.cpp b/src/lib/crypto/OSSLDHPrivateKey.cpp
+index 4c1b9c3..5571a88 100644
+--- a/src/lib/crypto/OSSLDHPrivateKey.cpp
++++ b/src/lib/crypto/OSSLDHPrivateKey.cpp
+@@ -210,7 +210,7 @@ void OSSLDHPrivateKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLDHPublicKey.cpp b/src/lib/crypto/OSSLDHPublicKey.cpp
+index 78820e1..e261726 100644
+--- a/src/lib/crypto/OSSLDHPublicKey.cpp
++++ b/src/lib/crypto/OSSLDHPublicKey.cpp
+@@ -151,7 +151,7 @@ void OSSLDHPublicKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLDSAPrivateKey.cpp b/src/lib/crypto/OSSLDSAPrivateKey.cpp
+index 2192fad..527e041 100644
+--- a/src/lib/crypto/OSSLDSAPrivateKey.cpp
++++ b/src/lib/crypto/OSSLDSAPrivateKey.cpp
+@@ -227,7 +227,7 @@ void OSSLDSAPrivateKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLDSAPublicKey.cpp b/src/lib/crypto/OSSLDSAPublicKey.cpp
+index 71ec3bf..38ecc79 100644
+--- a/src/lib/crypto/OSSLDSAPublicKey.cpp
++++ b/src/lib/crypto/OSSLDSAPublicKey.cpp
+@@ -168,7 +168,7 @@ void OSSLDSAPublicKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLECDH.cpp b/src/lib/crypto/OSSLECDH.cpp
+index 9afbf38..e2abaeb 100644
+--- a/src/lib/crypto/OSSLECDH.cpp
++++ b/src/lib/crypto/OSSLECDH.cpp
+@@ -187,7 +187,7 @@ bool OSSLECDH::deriveKey(SymmetricKey **ppSymmetricKey, PublicKey* publicKey, Pr
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLECDSA.cpp b/src/lib/crypto/OSSLECDSA.cpp
+index 80d2386..7387367 100644
+--- a/src/lib/crypto/OSSLECDSA.cpp
++++ b/src/lib/crypto/OSSLECDSA.cpp
+@@ -78,7 +78,7 @@ bool OSSLECDSA::sign(PrivateKey* privateKey, const ByteString& dataToSign,
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+@@ -170,7 +170,7 @@ bool OSSLECDSA::verify(PublicKey* publicKey, const ByteString& originalData,
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLRSAPrivateKey.cpp b/src/lib/crypto/OSSLRSAPrivateKey.cpp
+index 94ec432..26065cf 100644
+--- a/src/lib/crypto/OSSLRSAPrivateKey.cpp
++++ b/src/lib/crypto/OSSLRSAPrivateKey.cpp
+@@ -289,7 +289,7 @@ void OSSLRSAPrivateKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/src/lib/crypto/OSSLRSAPublicKey.cpp b/src/lib/crypto/OSSLRSAPublicKey.cpp
+index 71b1b92..2a6893b 100644
+--- a/src/lib/crypto/OSSLRSAPublicKey.cpp
++++ b/src/lib/crypto/OSSLRSAPublicKey.cpp
+@@ -133,7 +133,7 @@ void OSSLRSAPublicKey::createOSSLKey()
+ 	}
+ 
+ 	// Use the OpenSSL implementation and not any engine
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #ifdef WITH_FIPS
+ 	if (FIPS_mode())
+diff --git a/win32/Configure.py b/win32/Configure.py
+index 0a01e0c..2ad652d 100644
+--- a/win32/Configure.py
++++ b/win32/Configure.py
+@@ -789,7 +789,7 @@ int main() {\n\
+  ENGINE *eg;\n\
+  const EVP_MD* EVP_GOST_34_11;\n\
+  OpenSSL_add_all_algorithms();\n\
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L\n\
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)\n\
+  ENGINE_load_builtin_engines();\n\
+ #else\n\
+  OPENSSL_init_crypto(OPENSSL_INIT_ENGINE_ALL_BUILTIN | OPENSSL_INIT_LOAD_CONFIG, NULL);\n\
+-- 
+2.10.2
+
