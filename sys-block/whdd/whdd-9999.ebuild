@@ -5,7 +5,7 @@
 EAPI=5
 
 EGIT_REPO_URI="https://github.com/${PN}/${PN}"
-inherit eutils git-r3
+inherit git-r3
 
 DESCRIPTION="Diagnostic and recovery tool for block devices"
 HOMEPAGE="https://whdd.github.io"
