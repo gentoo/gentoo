@@ -11,9 +11,11 @@
 	</maintainer>
 	<use>
 		<flag name="gles">Replace default OpenGL renderer with GLESv2</flag>
+		<flag name="ppapi">Install the PPAPI plugin (for Chromium)</flag>
 		<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">lightspark/lightspark</remote-id>
 		<remote-id type="launchpad">lightspark</remote-id>
 		<remote-id type="sourceforge">lightspark</remote-id>
 	</upstream>
