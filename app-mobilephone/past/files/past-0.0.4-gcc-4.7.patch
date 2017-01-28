@@ -1,5 +1,5 @@
---- src/device.cpp
-+++ src/device.cpp
+--- A/src/device.cpp
++++ B/src/device.cpp
 @@ -22,6 +22,7 @@
  
  extern "C" {
