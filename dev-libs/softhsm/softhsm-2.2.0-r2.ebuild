@@ -42,8 +42,8 @@ src_configure() {
 		--disable-static \
 		--with-crypto-backend=openssl \
 		--disable-p11-kit \
-		$(use_enable bindist ecc) \
-		$(use libressl && echo --disable-ghost) \
+		$(use bindist && echo --disable-ecc || echo --enable-ecc) \
+		$(use libressl && echo --disable-gost || echo --enable-gost) \
 		$(use_with migration-tool migrate)
 }
 
