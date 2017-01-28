@@ -115,7 +115,7 @@ src_install() {
 		  || die "Could not create libz3.so soname symlink"
 
 	if use examples; then
-		insinto /usr/share/${PN}/examples
+		insinto /usr/share/${PN}
 		doins -r examples
 	fi
 

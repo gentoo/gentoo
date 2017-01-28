@@ -113,7 +113,7 @@ src_install() {
 	dobin build/z3
 
 	if use examples; then
-		insinto /usr/share/${PN}/examples
+		insinto /usr/share/${PN}
 		doins -r examples
 	fi
 
