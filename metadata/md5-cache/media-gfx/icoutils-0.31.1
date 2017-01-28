@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-lang/perl-5.6 >=dev-perl/libwww-perl-5.64 media-libs/libpng:0 sys-libs/zlib nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
+EAPI=4
+HOMEPAGE=http://www.nongnu.org/icoutils/
+IUSE=nls
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6 >=dev-perl/libwww-perl-5.64 media-libs/libpng:0 sys-libs/zlib nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://nongnu/icoutils/icoutils-0.31.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=da4549bd4047ef8dd3fd21630edfd58b
