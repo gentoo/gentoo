@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 inherit git-r3
@@ -17,6 +17,6 @@ IUSE=""
 
 DEPEND="
 	dev-util/dialog
-	sys-libs/ncurses[unicode]"
+	sys-libs/ncurses:0[unicode]"
 RDEPEND="${DEPEND}
 	sys-apps/smartmontools"
