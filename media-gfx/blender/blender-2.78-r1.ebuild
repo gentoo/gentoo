@@ -22,21 +22,20 @@ LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="~amd64 ~x86"
 IUSE="+boost +bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
-	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
+	llvm man ndof nls openal openimageio openmp opensubdiv openvdb \
 	player sdl sndfile test tiff valgrind"
 
 # OpenCL and nVidia performance is rubbish with Blender
 # If you have nVidia, use CUDA.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	player? ( game-engine !headless )
-	cuda? ( cycles !opencl )
+	cuda? ( cycles )
 	cycles? ( boost openexr tiff openimageio )
 	colorio? ( boost )
 	openvdb? ( boost )
 	opensubdiv? ( cuda )
 	nls? ( boost )
 	openal? ( boost )
-	opencl? ( cycles )
 	game-engine? ( boost )
 	?? ( ffmpeg libav )"
 
@@ -79,12 +78,11 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	openimageio? ( >=media-libs/openimageio-1.6.9 )
-	opencl? ( x11-drivers/ati-drivers:* )
 	openexr? (
 		>=media-libs/ilmbase-2.2.0:=
 		>=media-libs/openexr-2.2.0:=
 	)
-	opensubdiv? ( media-libs/opensubdiv[cuda=,opencl=] )
+	opensubdiv? ( media-libs/opensubdiv[cuda=] )
 	openvdb? (
 		media-gfx/openvdb[${PYTHON_USEDEP},abi3-compat(+),openvdb-compression(+)]
 		dev-cpp/tbb
@@ -185,8 +183,8 @@ src_configure() {
 		-DWITH_MOD_FLUID=$(usex elbeem)
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
 		-DWITH_OPENAL=$(usex openal)
-		-DWITH_OPENCL=$(usex opencl)
-		-DWITH_CYCLES_DEVICE_OPENCL=$(usex opencl TRUE FALSE)
+		-DWITH_OPENCL=OFF
+		-DWITH_CYCLES_DEVICE_OPENCL=OFF
 		-DWITH_OPENCOLORIO=$(usex colorio)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENIMAGEIO=$(usex openimageio)
@@ -211,9 +209,8 @@ src_compile() {
 
 	if use doc; then
 		# Workaround for binary drivers.
-		local card
-		local cards=( /dev/ati/card* /dev/nvidia* )
-		for card in "${cards[@]}"; do addpredict "${card}"; done
+		addpredict /dev/ati
+		addpredict /dev/nvidiactl
 
 		einfo "Generating Blender C/C++ API docs ..."
 		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
@@ -252,7 +249,7 @@ src_install() {
 		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
 	fi
 
-	emake -C "${CMAKE_BUILD_DIR}" DESTDIR="${D}" install/fast
+	cmake-utils_src_install
 
 	# fix doc installdir
 	docinto "html"
