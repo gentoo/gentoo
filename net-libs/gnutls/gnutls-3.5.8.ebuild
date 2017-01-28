@@ -37,7 +37,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	test-full? (
 		app-crypt/dieharder
 		app-misc/datefudge
-		dev-libs/softhsm:2
+		dev-libs/softhsm:2[-bindist]
 		net-dialup/ppp
 		net-misc/socat
 	)
