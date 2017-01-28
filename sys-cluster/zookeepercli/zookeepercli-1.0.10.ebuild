@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,7 @@ HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
+DEPEND=">=dev-lang/go-1.4.2:="
 
 get_archive_go_package() {
 	local archive=${1} uri x
