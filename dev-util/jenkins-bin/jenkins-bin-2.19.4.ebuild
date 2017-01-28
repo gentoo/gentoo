@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,13 +11,13 @@ HOMEPAGE="http://jenkins-ci.org/"
 LICENSE="MIT"
 SRC_URI="http://mirrors.jenkins-ci.org/war-stable/${PV}/${PN/-bin/}.war -> ${P}.war"
 RESTRICT="mirror"
-SLOT="0"
+SLOT="lts"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND="media-fonts/dejavu
 	media-libs/freetype
-	!dev-util/jenkins-bin:lts
+	!dev-util/jenkins-bin:0
 	>=virtual/jre-1.7.0"
 
 S=${WORKDIR}
