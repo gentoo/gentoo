@@ -112,7 +112,7 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 case ${EAPI} in
-	2|3|4|5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
+	2|4|5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
 	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
