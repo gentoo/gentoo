@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-EGIT_REPO_URI="git://github.com/whdd/whdd.git"
+EAPI=6
 
-inherit eutils git-2
+EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+inherit git-r3
 
 DESCRIPTION="Diagnostic and recovery tool for block devices"
 HOMEPAGE="https://whdd.github.io"
@@ -17,6 +17,6 @@ IUSE=""
 
 DEPEND="
 	dev-util/dialog
-	sys-libs/ncurses[unicode]"
+	sys-libs/ncurses:0[unicode]"
 RDEPEND="${DEPEND}
 	sys-apps/smartmontools"
