@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd 
 IUSE=""
 DEPEND=">=dev-texlive/texlive-fontsrecommended-2016
 >=dev-texlive/texlive-latex-2016
-!<dev-texlive/texlive-latexextra-2015
+!<dev-texlive/texlive-latexextra-2016
 !dev-tex/SIunits
 !dev-texlive/texlive-mathextra
 !dev-texlive/texlive-science
