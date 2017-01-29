@@ -15380,7 +15380,7 @@ net-nntp/inn 2.5.3-r1 2.5.3-r3 2.5.4-r1 2.5.5-r1: The Internet News daemon, full
 net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
-net-nntp/nzbget 14.1 16.4 17.1 18.0_pre1820: A command-line based binary newsgrabber supporting .nzb files
+net-nntp/nzbget 14.1 17.1 18.0_pre1820 18.0_pre1865: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.140 0.141: A newsreader for GNOME
 net-nntp/sabnzbd 1.1.1-r1: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
@@ -15739,7 +15739,7 @@ sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
-sci-astronomy/predict 2.2.3-r1 2.2.3-r2: Satellite tracking and orbital prediction
+sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
@@ -15755,7 +15755,7 @@ sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
 sci-astronomy/wcslib 4.25.1 5.14 5.15: Astronomical World Coordinate System transformations library
 sci-astronomy/wcstools 3.9.3 3.9.4: World Coordinate System library for astronomical FITS images
 sci-astronomy/weightwatcher 1.12: Combine weight maps and polygon for astronomical images weighting
-sci-astronomy/xephem 3.7.5 3.7.6 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
+sci-astronomy/xephem 3.7.6 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-astronomy/xfitsview 2.2-r2: Viewer for astronomical images in FITS format
 sci-biology/ApE 2.0.7-r1: A Plasmid Editor
 sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Generic Genome Browser
@@ -16502,7 +16502,7 @@ sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis
 sci-misc/mendeleydesktop 1.16.3: Research management tool for desktop and web
 sci-misc/nco 3.9.9 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files
-sci-misc/netlogo-bin 3.0.2 4.0.4 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
+sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
 sci-misc/repsnapper 2.3.2a_p3 2.4a_p0 9999: Host software for controlling the RepRap open source 3D printer
@@ -16543,14 +16543,14 @@ sci-physics/yoda 1.4.0 1.6.5: Yet more Objects for (High Energy Physics) Data An
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
-sci-visualization/fityk 1.2.1 1.2.9: General-purpose nonlinear curve fitting and data analysis
+sci-visualization/fityk 1.2.1 1.2.9 1.3.1: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.1-r1 5.0.4 5.0.5 5.0.9999 5.1.9999: Command-line driven interactive plotting program
-sci-visualization/grace 5.1.22-r2 5.1.22-r3 5.1.23 5.1.23-r1: Motif based XY-plotting tool
+sci-visualization/grace 5.1.23 5.1.23-r1 5.1.25: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
@@ -16563,7 +16563,7 @@ sci-visualization/paraview 4.1.0-r2 5.1.2-r1 5.2.0: ParaView is a powerful scien
 sci-visualization/pythonprop 0.13 0.18: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2: Gnuplot like graphing program publication-quality figures
 sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
-sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
+sci-visualization/quickplot 0.10.6 0.10.8 1.0.1_rc: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823 20150124: 2D and 3D data visualization and analysis program
 sci-visualization/veusz 1.11 1.25.1: Qt scientific plotting package with good Postscript output
@@ -16572,7 +16572,7 @@ sci-visualization/xd3d 8.3.1-r1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6-r1: X-ray diffraction/control image viewer in the context of data processing by XDS
 sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1-r1: Tool for extracting data points from graphs
-sci-visualization/yt 3.2.3 3.3.2: Astrophysical Simulation Analysis and Vizualization package
+sci-visualization/yt 3.2.3 3.3.2 3.3.3: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/apparmor-profiles 2.10.1 2.11.0: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20151208-r4 2.20151208-r6 2.20161023-r1 2.20161023-r3 2.20161023-r4 9999: SELinux policy for abrt

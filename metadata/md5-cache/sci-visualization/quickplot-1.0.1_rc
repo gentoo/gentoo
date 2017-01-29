@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3 media-gfx/imagemagick virtual/pkgconfig www-client/lynx !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A fast interactive 2D plotter
+EAPI=6
+HOMEPAGE=http://quickplot.sourceforge.net/ https://github.com/lanceman2/quickplot
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3
+SLOT=0
+SRC_URI=https://github.com/lanceman2/quickplot/archive/quickplot-1.0.1rc.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=80f094e746e4ce23fae5fdb522e56cd8
