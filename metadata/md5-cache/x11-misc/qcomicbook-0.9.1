@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=app-text/poppler[qt5] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras sys-devel/make >=dev-util/cmake-3.5.2
+DESCRIPTION=A viewer for comic book archives containing jpeg/png images
+EAPI=6
+HOMEPAGE=http://qcomicbook.org/
+IUSE=debug linguas_cs_CZ linguas_de_DE linguas_es_ES linguas_fi_FI linguas_fr_CA linguas_fr_FR linguas_it_IT linguas_ko_KR linguas_nl_NL linguas_pl_PL linguas_pt_BR linguas_ru_RU linguas_uk_UA linguas_zh_CN
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/poppler[qt5] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras
+SLOT=0
+SRC_URI=https://github.com/stolowski/QComicBook/archive/0.9.1.tar.gz -> qcomicbook-0.9.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8d0d703b605c1d554070a6d68a7665c3
