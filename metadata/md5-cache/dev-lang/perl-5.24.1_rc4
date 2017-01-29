@@ -4,7 +4,7 @@ DESCRIPTION=Larry Wall's Practical Extraction and Report Language
 EAPI=6
 HOMEPAGE=http://www.perl.org/
 IUSE=berkdb debug doc gdbm ithreads
-KEYWORDS=~alpha ~amd64 ~amd64-fbsd ~amd64-linux ~arm ~arm64 ~hppa ~hppa-hpux ~ia64 ~ia64-hpux ~ia64-linux ~m68k ~m68k-mint ~mips ~ppc ~ppc64 ~ppc-aix ~ppc-macos ~s390 ~sh ~sparc ~sparc64-solaris ~sparc-solaris ~x64-freebsd ~x64-macos ~x64-solaris ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 PDEPEND=>=app-admin/perl-cleaner-2.5 >=virtual/perl-File-Temp-0.230.400-r2 >=virtual/perl-Data-Dumper-2.154.0 virtual/perl-Test-Harness
 RDEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( >=sys-libs/gdbm-1.8.3 ) app-arch/bzip2 sys-libs/zlib
@@ -12,4 +12,4 @@ SLOT=0/5.24
 SRC_URI=mirror://cpan/src/5.0/perl-5.24.1-RC4.tar.xz mirror://cpan/authors/id/S/SH/SHAY/perl-5.24.1-RC4.tar.xz https://github.com/gentoo-perl/perl-patchset/releases/download/perl-5.24.1-RC4-patches-2/perl-5.24.1-RC4-patches-2.tar.xz mirror://gentoo/perl-5.24.1-RC4-patches-2.tar.xz https://dev.gentoo.org/~kentnl/distfiles/perl-5.24.1-RC4-patches-2.tar.xz https://github.com/arsv/perl-cross/releases/download/1.1.1/perl-cross-1.1.1.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e03c3e0f6ae791926af9f55330113265
+_md5_=d4875e30c92de8c60c462ef102266f1b

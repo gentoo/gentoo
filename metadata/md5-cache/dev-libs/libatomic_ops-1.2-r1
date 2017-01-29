@@ -3,10 +3,10 @@ DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-de
 DESCRIPTION=Implementation for atomic memory update operations
 EAPI=0
 HOMEPAGE=http://www.hpl.hp.com/research/linux/atomic_ops/
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT boehm-gc GPL-2+
 SLOT=0
 SRC_URI=http://www.hpl.hp.com/research/linux/atomic_ops/download/libatomic_ops-1.2.tar.gz
 _eclass_exported_funcs=src_unpack:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=f86b322e3c698b02b74ea385626c4cbf
+_md5_=a71577f525c02533a61eb491f958bfe3

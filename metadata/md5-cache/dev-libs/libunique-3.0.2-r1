@@ -4,11 +4,11 @@ DESCRIPTION=A library for writing single instance application
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Attic/LibUnique
 IUSE=debug +introspection test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.25.7:2 sys-apps/dbus[X] >=x11-libs/gtk+-2.90.0:3[introspection?] x11-libs/libX11 introspection? ( >=dev-libs/gobject-introspection-0.9.0:= )
 SLOT=3
 SRC_URI=mirror://gnome/sources/libunique/3.0/libunique-3.0.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:gnome2 src_configure:- src_compile:gnome2 src_test:- src_install:gnome2
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=3e23488a1c5f90e8f1d2dabefc0d86bf
+_md5_=9eb003180f40ed6e7603d36afa9e4406
