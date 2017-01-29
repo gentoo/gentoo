@@ -3,11 +3,11 @@ DEPEND=>=sys-libs/ncurses-5.2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/a
 DESCRIPTION=ncurses based hex editor
 EAPI=5
 HOMEPAGE=http://www.jewfish.net/description.php?title=HexCurse
-KEYWORDS=alpha amd64 arm hppa ppc s390 sh sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 arm hppa ppc s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2
 SLOT=0
 SRC_URI=http://www.jewfish.net/downloads/hexcurse-1.55.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4f0751137b4c52738541c82d0d358cbc
+_md5_=43577ba12374739775f9acb5280f3810

@@ -9,4 +9,4 @@ PDEPEND=!minimal? ( app-vim/gentoo-syntax )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf
-_md5_=b9fec538791e3c6d0c1d4bb85622d605
+_md5_=b977c0e26a23d55d85b9a1f78b12bc57

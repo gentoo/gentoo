@@ -4,7 +4,7 @@ DESCRIPTION=fast password cracker
 EAPI=5
 HOMEPAGE=http://www.openwall.com/john/
 IUSE=cuda custom-cflags -minimal cpu_flags_x86_mmx libressl mozilla mpi opencl openmp cpu_flags_x86_sse2
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=sys-libs/zlib !minimal? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) mpi? ( virtual/mpi ) cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit:= ) opencl? ( virtual/opencl ) mozilla? ( dev-libs/nss dev-libs/nspr )
 REQUIRED_USE=openmp? ( !minimal ) mpi? ( !minimal ) cuda? ( !minimal ) opencl? ( !minimal ) mozilla? ( !minimal )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.openwall.com/john/g/john-1.7.9.tar.bz2 !minimal? ( http://www.openwall.com/john/g/john-1.7.9-jumbo-7.diff.gz )
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=cuda	f150e667cc5826799d86be0fff518252	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=70a3b07c9c28097a470842a8f18e415c
+_md5_=6d7a5ce3328e0611164093cd9604a859

@@ -3,7 +3,7 @@ DESCRIPTION=Utility to test and create .sfv, .csv, .crc and md5sum files
 EAPI=5
 HOMEPAGE=http://cfv.sourceforge.net/
 IUSE=bittorrent python_targets_python2_7
-KEYWORDS=amd64 hppa ~ppc ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=amd64 hppa ~ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] dev-python/python-fchksum[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] bittorrent? ( || ( net-p2p/bittorrent[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] net-p2p/bittornado[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) )
 REQUIRED_USE=python_targets_python2_7
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/cfv/cfv-1.18.3.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=31ba45fd1ef61dbbe89600b99c34fe58
+_md5_=5e1023dd57b66b07dd8d20e88a8266da

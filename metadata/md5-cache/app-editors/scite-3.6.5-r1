@@ -4,11 +4,11 @@ DESCRIPTION=A very powerful editor for programmers
 EAPI=6
 HOMEPAGE=http://www.scintilla.org/SciTE.html
 IUSE=lua
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=HPND lua? ( MIT )
 RDEPEND=dev-libs/glib:= x11-libs/cairo x11-libs/gtk+:2 x11-libs/gdk-pixbuf x11-libs/pango lua? ( >=dev-lang/lua-5:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/scintilla/scite365.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=c8c6b81b492522474578202116bf93fb
+_md5_=41f2a792e9055306b6e559a3b74ee718

@@ -4,7 +4,7 @@ DESCRIPTION=Vim, an improved vi-style text editor
 EAPI=6
 HOMEPAGE=http://www.vim.org/ https://github.com/vim/vim
 IUSE=X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl vim-pager python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=vim
 RDEPEND=>=app-eselect/eselect-vi-1.1 >=sys-libs/ncurses-5.2-r2:0= nls? ( virtual/libintl ) acl? ( kernel_linux? ( sys-apps/acl ) ) cscope? ( dev-util/cscope ) gpm? ( >=sys-libs/gpm-1.19.3 ) lua? ( luajit? ( dev-lang/luajit:2= ) !luajit? ( dev-lang/lua:0[deprecated] ) ) !minimal? ( ~app-editors/vim-core-8.0.0106 dev-util/ctags ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) python_targets_python3_4? ( dev-lang/python:3.4[threads] ) python_targets_python3_5? ( dev-lang/python:3.5[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) racket? ( dev-scheme/racket ) ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) ) selinux? ( sys-libs/libselinux ) tcl? ( dev-lang/tcl:0= ) X? ( x11-libs/libXt )
 REQUIRED_USE=luajit? ( lua ) python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) ?? ( python_targets_python2_7 ) ?? ( python_targets_python3_4 python_targets_python3_5 ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/vim/vim/archive/v8.0.0106.tar.gz -> vim-8.0.0106.tar.gz https://dev.gentoo.org/~radhermit/vim/vim-8.0.0106-gentoo-patches.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf
-_md5_=d902cab44c65b74868be8cb213086602
+_md5_=7b37146b19cd134e5d3ed4c470590706

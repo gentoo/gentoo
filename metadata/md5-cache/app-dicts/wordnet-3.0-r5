@@ -4,11 +4,11 @@ DESCRIPTION=A lexical database for the English language
 EAPI=6
 HOMEPAGE=http://wordnet.princeton.edu/
 IUSE=doc
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=Princeton
 RDEPEND=dev-lang/tcl:0= dev-lang/tk:0=
 SLOT=0
 SRC_URI=http://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz mirror://gentoo/wordnet-3.0-patchset-1.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=03bd59b9110534e6c026e851e14ca694
+_md5_=e1725c6b36fde415475e5d20d453a819

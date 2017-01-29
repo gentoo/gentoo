@@ -4,7 +4,7 @@ DESCRIPTION=The GNU Privacy Guard, a GPL pgp replacement
 EAPI=5
 HOMEPAGE=http://www.gnupg.org/
 IUSE=bzip2 doc ldap nls mta readline static selinux smartcard tools usb
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3
 RDEPEND=!static? ( >=dev-libs/libassuan-2 >=dev-libs/libgcrypt-1.5:0= >=dev-libs/libgpg-error-1.11 >=dev-libs/libksba-1.0.7 >=dev-libs/pth-1.3.7 >=net-misc/curl-7.10 sys-libs/zlib bzip2? ( app-arch/bzip2 ) readline? ( sys-libs/readline ) smartcard? ( usb? ( virtual/libusb:0 ) ) ldap? ( net-nds/openldap ) ) app-crypt/pinentry mta? ( virtual/mta ) !<=app-crypt/gnupg-2.0.1 selinux? ( sec-policy/selinux-gpg ) nls? ( virtual/libintl )
 REQUIRED_USE=smartcard? ( !static )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.0.28.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=4d4fa42f5d1b8bbc6fbaad067262d6b4
+_md5_=95bc970c9024776634d157d4f0e0a6eb

@@ -4,10 +4,10 @@ DESCRIPTION=VI Like Emacs -- yet another full-featured vi clone
 EAPI=6
 HOMEPAGE=http://invisible-island.net/vile/
 IUSE=perl
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2:0= perl? ( dev-lang/perl )
 SLOT=0
 SRC_URI=ftp://invisible-island.net/vile/current/vile-9.8r.tgz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
-_md5_=1c2ee99de6409cc6e85c4d399a669d86
+_md5_=ee7dca6d12e814db56520a3d119e0e8f

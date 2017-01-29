@@ -4,11 +4,11 @@ DESCRIPTION=GNU Stow is a symlink farm manager
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/stow/
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://gnu/stow/stow-2.2.2.tar.gz
 _eclass_exported_funcs=src_configure:-
 _eclasses_=perl-functions	aac50de73be0a80ebe780e0b20850130
-_md5_=3182c1074eb907d930ccc6686197dfd8
+_md5_=4941129067803737595c0f7169510858
