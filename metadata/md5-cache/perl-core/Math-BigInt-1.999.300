@@ -3,7 +3,7 @@ DEPEND=>=virtual/perl-Scalar-List-Utils-1.140.0 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Arbitrary size floating point math package
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Math-BigInt/
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ~s390 ~sh sparc x86 ~ppc-aix ~ppc-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ~s390 ~sh sparc x86 ~ppc-aix ~ppc-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 PDEPEND=>=virtual/perl-Math-BigInt-FastCalc-0.270.0 >=virtual/perl-bignum-0.220.0 >=virtual/perl-Math-BigRat-0.260.200
 RDEPEND=>=virtual/perl-Scalar-List-Utils-1.140.0 dev-lang/perl:=[-build(-)]
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PJ/PJACKLAM/Math-BigInt-1.9993.tar.gz
 _eclass_exported_funcs=pkg_postrm:perl-module pkg_postinst:perl-module src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=66be75e87162c77f8982cdae92d07319
+_md5_=01dd56fe2f4f2cb8b102b6d3bad086e5

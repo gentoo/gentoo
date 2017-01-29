@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Math-BigRat
 EAPI=6
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/Math-BigRat-0.260.802 ) dev-lang/perl:= !<perl-core/Math-BigRat-0.260.802 !>perl-core/Math-BigRat-0.260.802-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=beeeb41c495094702f1a3cb551bcf0a5
+_md5_=46bf3ccc650f4126934b9cd910dd1826
