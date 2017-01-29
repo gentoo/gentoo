@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/GNS3/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+RESTRICT="test"
 
 #net-misc/gns3-server version should always match gns3-gui version
 
@@ -35,7 +35,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_configure() {
 	# temporary fix until upstream releases 1.4.5 with proper setup.py
-	sed -i -e 's/gns3-net-converter/gns3-converter/' setup.py || die
+	sed -i -e 's/gns3-net-converter/gns3-converter/' setup.py requirements.txt || die
 }
 
 python_install_all() {
