@@ -15122,7 +15122,7 @@ net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling s
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
 net-misc/modemmanager 1.4.14 1.6.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
-net-misc/mosh 1.2.4 1.2.5 1.2.5-r1 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
+net-misc/mosh 1.2.4 1.2.6 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/mulk 0.6.0 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
