@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,6 +28,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-hang.patch"
 	"${FILESDIR}/${P}-findblas-r6.patch"
 )
+
+# bug 433806
+RESTRICT="test"
 
 src_configure() {
 	filter-flags -ftree-vectorize

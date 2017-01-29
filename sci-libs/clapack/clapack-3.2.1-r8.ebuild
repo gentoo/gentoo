@@ -29,6 +29,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-findblas-r7.patch"
 )
 
+# bug 433806
+RESTRICT="test"
+
 src_prepare() {
 	rm INCLUDE/f2c.h F2CLIBS/libf2c/f2c.h || die
 	cmake-utils_src_prepare
