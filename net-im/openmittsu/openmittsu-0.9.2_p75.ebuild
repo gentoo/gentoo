@@ -39,5 +39,5 @@ src_prepare() {
 		s/.*/set(OPENMITTSU_GIT_VERSION_STRING \"${PV/_p/-}-00000000\")/" \
 		CMakeLists.txt || die
 
-	default
+	cmake-utils_src_prepare
 }
