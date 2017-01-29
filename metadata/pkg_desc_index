@@ -1904,7 +1904,7 @@ app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.3.1-r1 4.4.0 4.5.0 9999: screen manager with VT100/ANSI terminal emulation
+app-misc/screen 4.3.1-r1 4.4.0 4.5.0-r1 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 3.7.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
