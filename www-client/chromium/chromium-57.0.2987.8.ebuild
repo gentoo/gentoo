@@ -179,6 +179,9 @@ pre_build_checks() {
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		CHECKREQS_DISK_BUILD="25G"
+		if ! use component-build; then
+			CHECKREQS_MEMORY="16G"
+		fi
 	fi
 	eshopts_pop
 	check-reqs_pkg_setup
