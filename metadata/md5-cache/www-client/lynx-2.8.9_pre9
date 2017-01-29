@@ -4,10 +4,10 @@ DESCRIPTION=An excellent console-based web browser with ssl support
 EAPI=6
 HOMEPAGE=http://lynx.isc.org/
 IUSE=bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/zlib nls? ( virtual/libintl ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( dev-libs/libgcrypt:0= >=net-libs/gnutls-2.6.4:= ) ) bzip2? ( app-arch/bzip2 ) idn? ( net-dns/libidn )
 SLOT=0
 SRC_URI=http://invisible-mirror.net/archives/lynx/tarballs/lynx2.8.9dev.9.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_md5_=0f761d93bdaeb50603876b989cf45838
+_md5_=b841f896029a6614720932c89c39f56b

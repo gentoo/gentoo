@@ -4,11 +4,11 @@ DESCRIPTION=An excellent console-based web browser with ssl support
 EAPI=5
 HOMEPAGE=http://lynx.isc.org/
 IUSE=bzip2 cjk gnutls idn ipv6 nls ssl unicode
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=[unicode?] sys-libs/zlib nls? ( virtual/libintl ) ssl? ( !gnutls? ( >=dev-libs/openssl-0.9.8 ) gnutls? ( dev-libs/libgcrypt:0 >=net-libs/gnutls-2.6.4 ) ) bzip2? ( app-arch/bzip2 ) idn? ( net-dns/libidn )
 SLOT=0
 SRC_URI=http://lynx.isc.org/current/lynx2.8.8rel.2.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=63403eb54811c7b0047988f58e4ee94c
+_md5_=74e3b067bbb6e635b8abfd19b018786e

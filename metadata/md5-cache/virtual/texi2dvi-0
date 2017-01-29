@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for texi2dvi (and texi2pdf)
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 RDEPEND=sys-apps/texinfo virtual/latex-base || ( >=dev-texlive/texlive-plainextra-2013 dev-texlive/texlive-texinfo )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=c77b083054e433b0f4ba0c35c4f93a58
+_md5_=ddb46b3e36ea96db39bba722a8d4a032
