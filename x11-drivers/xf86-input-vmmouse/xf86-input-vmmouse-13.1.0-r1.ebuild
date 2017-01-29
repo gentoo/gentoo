@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="VMWare mouse input driver"
 IUSE=""
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
