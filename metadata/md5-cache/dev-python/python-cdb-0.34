@@ -3,11 +3,11 @@ DEPEND=|| ( dev-db/cdb dev-db/tinycdb ) =dev-lang/python-2*
 DESCRIPTION=A Python extension module for cdb
 EAPI=3
 HOMEPAGE=http://pilcrow.madison.wi.us/#pycdb
-KEYWORDS=amd64 arm ia64 ppc sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 arm ia64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=|| ( dev-db/cdb dev-db/tinycdb ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://pilcrow.madison.wi.us/python-cdb/python-cdb-0.34.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_prepare:distutils src_compile:distutils src_test:- src_install:distutils
 _eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=9539e6c548e732e88a5905028adf66fe
+_md5_=2d30af0629543ca1ecae49bcbd0b8d9b

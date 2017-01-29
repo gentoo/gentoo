@@ -1,4 +1,4 @@
-DEFINED_PHASES=unpack
+DEFINED_PHASES=compile unpack
 DEPEND=dev-util/dialog sys-libs/ncurses:0=[unicode] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Diagnostic and recovery tool for block devices
 EAPI=6
@@ -6,6 +6,6 @@ HOMEPAGE=https://whdd.github.io
 LICENSE=GPL-3
 RDEPEND=dev-util/dialog sys-libs/ncurses:0=[unicode] sys-apps/smartmontools
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3
+_eclass_exported_funcs=src_unpack:git-r3 src_compile:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=37dc1018a7a95165388d0e0c48973e18
+_md5_=4185d6f8ef0833c1c54b912fbaddd655

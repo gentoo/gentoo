@@ -4,11 +4,11 @@ DESCRIPTION=GNU Ubiquitous Intelligent Language for Extensions
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/guile/
 IUSE=debug debug-malloc +deprecated +networking +nls +regex +threads
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LGPL-3+
 RDEPEND=>=dev-libs/boehm-gc-7.0[threads?] dev-libs/gmp:= virtual/libffi dev-libs/libltdl:= dev-libs/libunistring:0= sys-devel/libtool sys-libs/ncurses:0= sys-libs/readline:0=
 SLOT=12/22
 SRC_URI=mirror://gnu/guile/guile-2.0.13.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=cf7fc71470c50581ba11bd723adaf15b
+_md5_=de68410cb8925bc3feb1858f471c3063

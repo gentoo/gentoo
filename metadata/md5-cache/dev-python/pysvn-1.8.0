@@ -4,7 +4,7 @@ DESCRIPTION=Object-oriented python bindings for subversion
 EAPI=5
 HOMEPAGE=http://pysvn.tigris.org/
 IUSE=doc examples python_targets_python2_7 python_targets_python3_4
-KEYWORDS=amd64 ~arm ppc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
+KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=Apache-1.1
 RDEPEND=>=dev-python/pycxx-6.2.6[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-vcs/subversion python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://pysvn.barrys-emacs.org/source_kits/pysvn-1.8.0.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=88a69ba165774b68f01624fbce1e5cb4
+_md5_=93fe70cded68ae2313ef8292d63506c5

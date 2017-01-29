@@ -14540,6 +14540,7 @@ net-im/mcabber 1.0.4 9999: A small Jabber console client with various features, 
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
 net-im/openfire 4.1.0 4.1.1: Openfire (formerly wildfire) real time collaboration (RTC) server
+net-im/openmittsu 0.9.2_p75: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.11.0-r1: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
@@ -17638,7 +17639,7 @@ sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 
 sys-kernel/pf-sources 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8 4.5_p4 4.8_p8: Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.44_p48 4.1.35_p41 4.4.30_p41 4.4.32_p43 4.6.7_p14 4.8.6_p5 4.8.14_p9: Full Linux 4.8 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.18.44_p48 3.18.46_p50 4.1.35_p41 4.1.37_p43 4.4.32_p43 4.4.39_p50 4.6.7_p14 4.8.14_p9 4.8.15_p10 4.9.4_p2: Full Linux 4.9 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.84 3.4.113 3.10.104 3.12.69 3.16.39 3.18.47 4.1.38 4.4.45 4.8.17 4.9.6: Full sources for the Linux kernel
@@ -18502,7 +18503,7 @@ x11-libs/libXi 1.7.4 1.7.5 1.7.6 1.7.7 1.7.8 1.7.9: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
-x11-libs/libXpm 3.5.10 3.5.10-r1 3.5.11 3.5.12: X.Org Xpm library
+x11-libs/libXpm 3.5.12: X.Org Xpm library
 x11-libs/libXrandr 1.4.2 1.5.0 1.5.1: X.Org Xrandr library
 x11-libs/libXrender 0.9.8 0.9.9 0.9.10: X.Org Xrender library
 x11-libs/libXres 1.0.7: X.Org XRes library

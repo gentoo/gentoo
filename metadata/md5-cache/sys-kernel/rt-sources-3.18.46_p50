@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 3.18 kernel sources with the CONFIG_PREEMPT_RT patch
+EAPI=5
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+IUSE=symlink build deblob
+KEYWORDS=~amd64
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.18.46_p50
+SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.18.46.xz mirror://kernel/linux/kernel/v3.x/linux-3.18.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-3.18 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.18-gnu/deblob-check -> deblob-check-3.18 ) mirror://kernel/linux/kernel/projects/rt/3.18/patch-3.18.46-rt50.patch.xz mirror://kernel/linux/kernel/projects/rt/3.18/older/patch-3.18.46-rt50.patch.xz
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	kernel-2	e8e266e84046228629e450852397a75d	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9d81ef28b3c74b052bca8daf4568b8a3
