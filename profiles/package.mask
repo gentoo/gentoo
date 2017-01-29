@@ -252,6 +252,7 @@ x11-drivers/xf86-video-v4l
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
 # important revdeps. Also revdeps that require 4.0.
+=app-vim/llvm-vim-4.0.0*
 =dev-ml/llvm-ocaml-4.0.0*
 =dev-python/lit-4.0.0*
 =dev-util/lldb-4.0.0*
