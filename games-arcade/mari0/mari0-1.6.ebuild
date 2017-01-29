@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,7 @@ MY_P=${P/-/_}
 
 DESCRIPTION="A mix from Nintendo's Super Mario Bros and Valve's Portal"
 HOMEPAGE="http://stabyourself.net/mari0/"
-SRC_URI="${P}.zip
-	mirror://gentoo/mari0.svg.gz"
+SRC_URI="${P}.zip"
 
 LICENSE="CC-BY-NC-SA-3.0"
 SLOT="0"
@@ -37,6 +36,7 @@ src_install() {
 	exeinto "${dir}"
 	doexe ${MY_P}.love
 
+	gunzip -c "${FILESDIR}"/${PN}.svg.gz > ${PN}.svg
 	doicon -s scalable ${PN}.svg
 	games_make_wrapper ${PN} "love ${MY_P}.love" "${dir}"
 	make_desktop_entry ${PN}
