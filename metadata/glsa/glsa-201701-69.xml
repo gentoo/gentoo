@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-69">
+  <title>Ark: Unintended execution of scripts and executable files</title>
+  <synopsis>A vulnerability in Ark might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">ark</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>604846</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-apps/ark" auto="yes" arch="*">
+      <unaffected range="ge">16.08.3-r1</unaffected>
+      <vulnerable range="lt">16.08.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ark is a graphical file compression/decompression utility with support
+      for multiple formats.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in how Ark handles executable files while
+      browsing a compressed archive.  A user could unintentionally execute a
+      malicious script which has the executable bit set inside of the archive. 
+      This is due to Ark not displaying what files are executable and running
+      the associated applications for the file type upon execution.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by coercing a user to browse a malicious archive file
+      within Ark and execute certain files, could execute arbitrary code with
+      the privileges of the user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ark users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-apps/ark-16.08.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-5330">CVE-2017-5330</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-20T15:24:35Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:19:07Z">b-man</metadata>
+</glsa>
