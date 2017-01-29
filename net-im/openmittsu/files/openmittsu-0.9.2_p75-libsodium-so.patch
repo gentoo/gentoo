@@ -1,0 +1,11 @@
+--- openMittsu-orig/cmake/FindLibsodium.cmake
++++ openMittsu/cmake/FindLibsodium.cmake
+@@ -31,7 +31,7 @@
+ 		ENDIF(MINGW)   
+ 	ELSE (UNIX)
+ 		SET (LIB_PREFIX "lib")
+-		SET (LIB_POSTFIX "a")
++		SET (LIB_POSTFIX "so")
+ 	ENDIF (WIN32)
+  
+ 	find_path(SODIUM_INCLUDE_DIR
