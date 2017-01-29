@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,4 +14,4 @@ IUSE=""
 RDEPEND=">=dev-libs/libinput-0.21.0:0="
 DEPEND="${RDEPEND}"
 
-DOCS=( "README.md" "conf/99-libinput.conf" )
+DOCS=( "README.md" )
