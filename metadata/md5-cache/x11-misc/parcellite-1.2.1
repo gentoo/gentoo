@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm prepare
+DEPEND=>=dev-libs/glib-2.14 >=x11-libs/gtk+-2.10:2 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A lightweight GTK+ based clipboard manager
+EAPI=5
+HOMEPAGE=http://parcellite.sourceforge.net/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.14 >=x11-libs/gtk+-2.10:2
+SLOT=0
+SRC_URI=mirror://sourceforge/parcellite/parcellite-1.2.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=b6a2e8d3f6342b3996315b042668b9b0

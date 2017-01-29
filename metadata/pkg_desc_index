@@ -7096,6 +7096,7 @@ dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aiodns 1.1.1: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.21.5 1.0.3 1.0.4 1.0.5 1.1.1 1.1.2 1.1.5 1.2.0: http client/server for asyncio
+dev-python/aiohttp-cors 0.5.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/alabaster 0.7.6 0.7.8 0.7.9: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7 1.1.2: django CMS plugins for bootstrap3 markup
@@ -15030,8 +15031,8 @@ net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.20.1 3.22.0: Crawls through your online content
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
-net-misc/gns3-gui 1.5.1-r1 1.5.2 1.5.2-r1: Graphical Network Simulator
-net-misc/gns3-server 1.5.1-r1 1.5.2 1.5.2-r1: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 1.5.2-r1 1.5.3.1: Graphical Network Simulator
+net-misc/gns3-server 1.5.2-r1 1.5.3.1: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pre20160114 0.5.1_pre20160706 0.5.1_pre20161004: An open source Linux client for Google Drive
@@ -18727,7 +18728,7 @@ x11-misc/oroborus-desklaunch 1.1.8: utility for creating desktop icons for Orobo
 x11-misc/oroborus-deskmenu 1.4.5: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9: utility for binding keys in Oroborus
 x11-misc/outwiker 1.8.0 1.9.0.790 2.0.0.794: The tree notes organizer
-x11-misc/parcellite 1.1.9: A lightweight GTK+ based clipboard manager
+x11-misc/parcellite 1.1.9 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.7.45 1.7.47 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 0.9.10 1.2.3 1.2.4 1.2.5 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.10.0 0.11.1: Fast lightweight tabbed filemanager (Qt port)

@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/setuptools[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+DESCRIPTION=Graphical Network Simulator
+EAPI=6
+HOMEPAGE=http://www.gns3.net/
+IUSE=python_targets_python3_4
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=dev-python/libcloud-0.15.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/ws4py-0.3.4[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/requests-2.6.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/paramiko-1.15.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/psutil-3.0.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=net-misc/gns3-converter-1.3.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] =net-misc/gns3-server-1.5.3.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-python/PyQt5[gui,network,svg,widgets,python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/GNS3/gns3-gui/archive/v1.5.3.1.tar.gz -> gns3-gui-1.5.3.1.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=9e7d7f4fd8deef75927d94a29a6f037c
