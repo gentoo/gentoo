@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,8 +36,6 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
-	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
-	"${FILESDIR}"/${PN}-1.7.3.1-libressl.patch
 )
 
 pkg_setup() {
