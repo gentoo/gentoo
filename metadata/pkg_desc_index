@@ -425,7 +425,7 @@ app-benchmarks/siege 3.0.6 3.1.3 3.1.4: A HTTP regression testing and benchmarki
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.1 1.0.4 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/stress-ng 0.05.12 0.06.00: A tool to load and stress a computer system
-app-benchmarks/sysbench 0.4.12-r1 1.0_pre20161017 1.0_pre20161223 9999: System performance benchmark
+app-benchmarks/sysbench 1.0_pre20161017 1.0_pre20170122 9999: System performance benchmark
 app-benchmarks/tiobench 0.3.3-r2 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2: A modern HTTP benchmarking tool
@@ -4574,6 +4574,7 @@ dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/cl 1.2.3 9999: OpenCL bindings for Erlang
 dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 2.4.4 9999: COLLADA Document Object Model (DOM) C++ Library
+dev-libs/concurrencykit 0.5.2: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
 dev-libs/console_bridge 0.2.7 0.3.1 0.3.2 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
 dev-libs/cpl-stratego 0.4: Choice library mostly used by Stratego
