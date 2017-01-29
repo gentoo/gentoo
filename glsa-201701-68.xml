@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-68">
+  <title>FreeImage: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeImage, the worst of
+    which may allow execution of arbitrary code
+  </synopsis>
+  <product type="ebuild">freeimage</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>559006</bug>
+  <bug>596350</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/freeimage" auto="yes" arch="*">
+      <unaffected range="ge">3.15.4-r1</unaffected>
+      <vulnerable range="lt">3.15.4-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeImage is an Open Source library project for developers who would
+      like to support popular graphics image formats like PNG, BMP, JPEG, TIFF
+      and others as needed by today’s multimedia applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in in FreeImage. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      image file, could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeImage users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/freeimage-3.15.4-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0852">CVE-2015-0852</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5684">CVE-2016-5684</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-23T08:24:46Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:12:52Z">b-man</metadata>
+</glsa>
