@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=">=net-irc/irssi-0.8.13
+DEPEND="<net-irc/irssi-1
 	>=net-libs/loudmouth-1.4.0[debug]"
 RDEPEND="${DEPEND}"
 
