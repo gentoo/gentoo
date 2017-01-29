@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="X Window System logo"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-interix"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXrender
