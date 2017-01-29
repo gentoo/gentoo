@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit eutils qmake-utils git-r3
+inherit cmake-utils eutils git-r3
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
@@ -58,10 +58,10 @@ pkg_pretend() {
 }
 
 src_configure() {
-	use gtk || local NO_GTK_SUPPORT="ENABLE_SYSTRAY_STATUSNOTIFIER_BACKEND=NO ENABLE_SYSTRAY_GTK_BACKEND=NO"
-	use X || local NO_X_SUPPORT="DISABLE_PLATFORM_EXT=YES"
-	eqmake5 \
-			PREFIX="${D}/usr" \
-			${NO_GTK_SUPPORT} \
-			${NO_X_SUPPORT}
+	local mycmakeargs=(
+		-DENABLE_STATUSNOTIFIER=$(usex gtk True False)
+		-DENABLE_GTK_SYSTRAY=$(usex gtk True False)
+	)
+
+	cmake-utils_src_configure
 }
