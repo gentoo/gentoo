@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DESCRIPTION=The Art of War Fortune Mod
 EAPI=5
 HOMEPAGE=http://www.de-brauwer.be/wiki/wikka.php?wakka=TheArtOfWar
-KEYWORDS=amd64 x86 ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://www.de-brauwer.be/wastebasket/fortunes-taow-1.0.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=a7af4137715dcb8dda47d5cf07a6ff6f
+_md5_=7cacfc53ffd2b3a33992691d9abdb67f

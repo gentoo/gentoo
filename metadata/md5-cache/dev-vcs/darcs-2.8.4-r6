@@ -4,11 +4,11 @@ DESCRIPTION=a distributed, interactive, smart revision control system
 EAPI=5
 HOMEPAGE=http://darcs.net/
 IUSE=doc test doc hscolour profile
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND==dev-haskell/extensible-exceptions-0.1*:=[profile?] >=dev-haskell/hashed-storage-0.5.6:=[profile?] <dev-haskell/hashed-storage-0.6:=[profile?] >=dev-haskell/haskeline-0.6.3:=[profile?] <dev-haskell/haskeline-0.8:=[profile?] =dev-haskell/html-1.0*:=[profile?] =dev-haskell/mmap-0.5*:=[profile?] >=dev-haskell/mtl-1.0:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-2.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?] =dev-haskell/random-1.0*:=[profile?] >=dev-haskell/regex-compat-0.95.1:=[profile?] >=dev-haskell/tar-0.3:=[profile?] <dev-haskell/tar-0.5:=[profile?] >=dev-haskell/terminfo-0.3:=[profile?] <dev-haskell/terminfo-0.5:=[profile?] >=dev-haskell/text-0.11.0.6:=[profile?] >=dev-haskell/utf8-string-0.3.6:=[profile?] <dev-haskell/utf8-string-0.4:=[profile?] >=dev-haskell/vector-0.7:=[profile?] >=dev-haskell/zlib-0.5.1.0:=[profile?] <dev-haskell/zlib-0.6.0.0:=[profile?] >=dev-lang/ghc-6.10.4:= net-misc/curl
 SLOT=0/2.8.4
 SRC_URI=mirror://hackage/packages/archive/darcs/2.8.4/darcs-2.8.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:- pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c3fbd922dd8c163c71f79a8f3dfe6d33
+_md5_=7024f11f088ccf53ccb3a1df9edca7e7

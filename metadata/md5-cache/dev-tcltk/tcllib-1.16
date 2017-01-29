@@ -4,11 +4,11 @@ DESCRIPTION=Tcl Standard Library
 EAPI=5
 HOMEPAGE=http://www.tcl.tk/software/tcllib/
 IUSE=examples test
-KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 SLOT=0
 SRC_URI=mirror://sourceforge//project/tcllib/tcllib/1.16/Tcllib-1.16.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=7cdc0a3f0aaec6c2f81a5191fb01f1fd
+_md5_=e0d378d5e38a43788dc64b14e15f6752

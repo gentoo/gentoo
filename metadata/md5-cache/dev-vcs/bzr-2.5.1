@@ -4,11 +4,11 @@ DESCRIPTION=Bazaar is a next generation distributed version control system
 EAPI=4
 HOMEPAGE=http://bazaar-vcs.org/
 IUSE=curl doc +sftp test
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=|| ( dev-lang/python:2.7[xml] dev-lang/python:2.6[xml] dev-python/celementtree ) curl? ( dev-python/pycurl ) sftp? ( dev-python/paramiko ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =dev-lang/python-2.7*[threads,ssl] =dev-lang/python-2.6*[threads,ssl] )
 SLOT=0
 SRC_URI=https://launchpad.net/bzr/2.5/2.5.1/+download/bzr-2.5.1.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:python src_prepare:- src_compile:distutils src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c1a7a2eea5490b2aebb09647f3633a57
+_md5_=fdcaabd9c0fe8f9f516e1306f46c6088

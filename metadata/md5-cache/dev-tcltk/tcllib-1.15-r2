@@ -4,11 +4,11 @@ DESCRIPTION=Tcl Standard Library
 EAPI=5
 HOMEPAGE=http://www.tcl.tk/software/tcllib/
 IUSE=examples test
-KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/tcllib-1.15-manpage-rename.patch.xz https://dev.gentoo.org/~jlec/distfiles/tcllib-1.15-test.patch.xz mirror://sourceforge/tcllib/tcllib-1.15.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=5d6ca2d97d29bd789bf0d884bb081832
+_md5_=41e0acce4d963635c6ef9b964d581186

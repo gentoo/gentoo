@@ -3,11 +3,11 @@ DESCRIPTION=Assorted git-related scripts
 EAPI=5
 HOMEPAGE=https://github.com/MestreLion/git-tools/
 IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=>=dev-vcs/git-2.5 >=app-shells/bash-4.0
 SLOT=0
 SRC_URI=https://github.com/MestreLion/git-tools/archive/0431b5f4c59101c1b7250d8dd2ce3f6a22318bc6.tar.gz -> git-tools-2015_p20160201.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=38a3a403f63056584fe974f4408535f8
+_md5_=84cea45e65068a996b97eea1857f3d57

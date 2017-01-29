@@ -4,11 +4,11 @@ DESCRIPTION=GTK+ Frontend for GIT
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/giggle
 IUSE=eds
-KEYWORDS=amd64 x86 ~x86-interix ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-vcs/git-1.5 >=dev-libs/glib-2.30:2 >=x11-libs/gtk+-3.3.12:3 >=x11-libs/gtksourceview-3.0:3.0 >=x11-libs/gdk-pixbuf-2.22.0 eds? ( gnome-extra/evolution-data-server:= ) >=x11-libs/vte-0.28:2.91
 SLOT=0
 SRC_URI=mirror://gnome/sources/giggle/0.7/giggle-0.7.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=05f799bbec5cebe51e70069981d3ee89
+_md5_=4e2024b5a370c5062c6aeb974b9f6f44

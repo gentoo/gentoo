@@ -4,7 +4,7 @@ DESCRIPTION=Confix: A Build Tool on Top of GNU Automake
 EAPI=5
 HOMEPAGE=http://confix.sourceforge.net
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~x86 ~ppc-aix ~hppa-hpux ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~x86 ~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=dev-util/confix-wrapper sys-devel/autoconf-archive sys-devel/automake sys-devel/libtool >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=2
 SRC_URI=mirror://sourceforge/confix/Confix-2.3.5.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=ce86cf5f92f90e39e1f0ca7db1ec7afc
+_md5_=90f6636f0375936b72546e70e0228999

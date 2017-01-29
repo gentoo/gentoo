@@ -4,7 +4,7 @@ DESCRIPTION=Converts Glade files to GtkBuilder XML format
 EAPI=6
 HOMEPAGE=http://www.gtk.org/
 IUSE=python_targets_python2_7
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] !<=x11-libs/gtk+-2.24.10:2
 REQUIRED_USE=python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnome/sources/gtk+/2.24/gtk+-2.24.31.tar.xz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=345b93b4a23e8c04ecf10629fd31b8d9
+_md5_=db822a7155a57370c31879d5ca5c1dc1
