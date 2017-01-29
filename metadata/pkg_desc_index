@@ -9141,7 +9141,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.8.1 2.9.2 2.10.1: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.8.1 2.9.2 2.10.1 2.12.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
