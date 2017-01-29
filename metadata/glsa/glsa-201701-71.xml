@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-71">
+  <title>FFmpeg: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FFmpeg, the worst of
+    which may allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">ffmpeg</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>596760</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/ffmpeg" auto="yes" arch="*">
+      <unaffected range="ge">2.8.10</unaffected>
+      <vulnerable range="lt">2.8.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FFmpeg is a complete, cross-platform solution to record, convert and
+      stream audio and video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in FFmpeg. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition via various
+      crafted media file types or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FFmpeg users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/ffmpeg-2.8.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7122">CVE-2016-7122</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7450">CVE-2016-7450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7502">CVE-2016-7502</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7555">CVE-2016-7555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7562">CVE-2016-7562</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7785">CVE-2016-7785</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-7905">CVE-2016-7905</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-19T09:23:50Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:22:37Z">b-man</metadata>
+</glsa>
