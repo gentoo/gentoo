@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.harding.motd.ca/autossh/"
 SRC_URI="http://www.harding.motd.ca/${PN}/${P}.tgz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 RDEPEND="net-misc/openssh"
