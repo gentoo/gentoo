@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-75">
+  <title>Perl: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Perl, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">perl</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>580612</bug>
+  <bug>588592</bug>
+  <bug>589680</bug>
+  <bug>606750</bug>
+  <bug>606752</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/perl" auto="yes" arch="*">
+      <unaffected range="ge">5.22.3_rc4</unaffected>
+      <vulnerable range="lt">5.22.3_rc4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Perl is a highly capable, feature-rich programming language.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Perl. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or
+      escalate privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Perl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/perl-5.22.3_rc4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8607">CVE-2015-8607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8853">CVE-2015-8853</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1238">CVE-2016-1238</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2381">CVE-2016-2381</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-6185">CVE-2016-6185</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-21T22:09:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T23:40:34Z">b-man</metadata>
+</glsa>
