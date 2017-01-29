@@ -12936,7 +12936,7 @@ media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.4 2.0.5: Simple Direct Media Layer
 media-libs/libsfml 2.3.2-r1 2.4.0 2.4.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1 2.4.1: library for connecting and sending data to icecast servers
-media-libs/libsidplay 1.36.59 1.36.59-r1 1.36.59-r2 2.1.1-r2 2.1.1-r3 2.1.1-r4: C64 SID player library
+media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.6.1 1.7.2: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
