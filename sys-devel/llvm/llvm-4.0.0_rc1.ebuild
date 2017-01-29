@@ -237,9 +237,6 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install docs.
-		#use doc && dohtml -r "${S}"/docs/_build/html/
-
 		# Symlink the gold plugin.
 		if use gold; then
 			dodir "/usr/${CHOST}/binutils-bin/lib/bfd-plugins"
