@@ -7,6 +7,8 @@ EAPI=6
 DESCRIPTION="Diagnostic and recovery tool for block devices"
 HOMEPAGE="https://whdd.github.io"
 
+inherit toolchain-funcs
+
 if [[ ${PV} == 9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
@@ -26,3 +28,8 @@ DEPEND="
 	sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}
 	sys-apps/smartmontools"
+
+src_compile() {
+	tc_export CC
+	default
+}
