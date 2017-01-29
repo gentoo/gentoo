@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit flag-o-matic cmake-utils
 
@@ -38,6 +38,6 @@ src_configure() {
 	filter-flags -ftree-vectorize
 	# causes an internal compiler error with gcc-4.6.2
 
-	local mycmakeargs=( $(cmake-utils_use_enable test TESTS) )
+	local mycmakeargs=( -DENABLE_TESTS=$(usex test) )
 	cmake-utils_src_configure
 }
