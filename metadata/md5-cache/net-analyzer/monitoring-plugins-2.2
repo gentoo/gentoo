@@ -4,7 +4,7 @@ DESCRIPTION=50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 EAPI=6
 HOMEPAGE=https://www.monitoring-plugins.org/
 IUSE=gnutls ipv6 ldap libressl mysql dns fping game postgres samba snmp ssh +ssl
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~x86
 LICENSE=GPL-3
 RDEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ssl? ( !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gnutls? ( net-libs/gnutls ) ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] ) !net-analyzer/nagios-plugins
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://www.monitoring-plugins.org/download/monitoring-plugins-2.2.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=f309f06cc8824df905082587283f46a5
+_md5_=a2286a323e33badb2d398c700f4d715c
