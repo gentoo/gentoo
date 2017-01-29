@@ -12,7 +12,7 @@ SRC_URI="http://www.netlib.org/${PN}/${P}-CMAKE.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
