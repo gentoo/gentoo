@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit cmake-multilib flag-o-matic
 
-DESCRIPTION="Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications"
+DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="http://www.fluidsynth.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
