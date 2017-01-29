@@ -31,7 +31,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="0/$(get_major_version)"
+SLOT="$(get_major_version)"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug +doc gold libedit +libffi multitarget ncurses test
 	elibc_musl kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
@@ -56,6 +56,12 @@ DEPEND="${RDEPEND}
 	test? ( $(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
+# There are no file collisions between these versions but having :0
+# installed means llvm-config there will take precedence.
+RDEPEND="${RDEPEND}
+	!sys-devel/llvm:0"
+PDEPEND="app-vim/llvm-vim
+	gold? ( sys-devel/llvmgold )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( ${ALL_LLVM_TARGETS[*]} )
@@ -136,6 +142,7 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=ON
@@ -223,32 +230,37 @@ multilib_src_test() {
 
 src_install() {
 	local MULTILIB_CHOST_TOOLS=(
-		/usr/bin/llvm-config
+		/usr/lib/llvm/${SLOT}/bin/llvm-config
 	)
 
 	local MULTILIB_WRAPPED_HEADERS=(
 		/usr/include/llvm/Config/llvm-config.h
 	)
 
+	local LLVM_LDPATHS=()
 	multilib-minimal_src_install
+
+	# move wrapped headers back
+	mv "${ED%/}"/usr/include "${ED%/}"/usr/lib/llvm/${SLOT}/include || die
 }
 
 multilib_src_install() {
 	cmake-utils_src_install
 
-	if multilib_is_native_abi; then
-		# Symlink the gold plugin.
-		if use gold; then
-			dodir "/usr/${CHOST}/binutils-bin/lib/bfd-plugins"
-			dosym "../../../../$(get_libdir)/LLVMgold.so" \
-				"/usr/${CHOST}/binutils-bin/lib/bfd-plugins/LLVMgold.so"
-		fi
-	fi
+	# move headers to /usr/include for wrapping
+	rm -rf "${ED%/}"/usr/include || die
+	mv "${ED%/}"/usr/lib/llvm/${SLOT}/include "${ED%/}"/usr/include || die
+
+	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)" )
 }
 
 multilib_src_install_all() {
-	insinto /usr/share/vim/vimfiles
-	doins -r utils/vim/*/.
-	# some users may find it useful
-	dodoc utils/vim/vimrc
+	local revord=$(( 9999 - ${SLOT} ))
+	cat <<-_EOF_ > "${T}/10llvm-${revord}" || die
+		PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
+		# we need to duplicate it in ROOTPATH for Portage to respect...
+		ROOTPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
+		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
+_EOF_
+	doenvd "${T}/10llvm-${revord}"
 }
