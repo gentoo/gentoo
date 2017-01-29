@@ -68,10 +68,6 @@ x11-drivers/xf86-video-ivtv
 # Bug #606132
 x11-drivers/xf86-video-v4l
 
-# Jeroen Roovers <jer@gentoo.org> (24 Jan 2017)
-# Masked for bug #607116
-=app-misc/screen-4.5.0
-
 # Michał Górny <mgorny@gentoo.org> (24 Jan 2017)
 # Mask 4.0.0 RCs (then final) for initial testing, and updating most
 # important revdeps. Also revdeps that require 4.0.
