@@ -9,16 +9,14 @@ inherit autotools-utils xorg-2
 DESCRIPTION="X authority file utility"
 
 KEYWORDS=""
-IUSE="ipv6"
+IUSE="ipv6 test"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXext
 	x11-libs/libXmu"
-DEPEND="${RDEPEND}"
-
-# Tests dependend on dev-util/cmdtest awaiting keywording, bug #511202.
-#	test? ( dev-util/cmdtest )
+DEPEND="${RDEPEND}
+	test? ( dev-util/cmdtest )"
 
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
