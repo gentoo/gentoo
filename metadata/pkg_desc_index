@@ -9677,7 +9677,7 @@ dev-ruby/uuidtools 2.1.4-r1 2.1.5 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.13 0.2.14 0.2.15: Ruby vcard support extracted from Vpim
 dev-ruby/vcr 1.11.3 2.9.3 3.0.1 3.0.3: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
-dev-ruby/warden 1.2.6: General Rack Authentication Framework
+dev-ruby/warden 1.2.6 1.2.7: General Rack Authentication Framework
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1 2.3.0 3.3.1 3.4.0: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 1.20.3 1.24.6 2.1.0 2.3.1 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
@@ -9692,7 +9692,7 @@ dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean
 dev-ruby/xmlrpc 0.2.1: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
 dev-ruby/xpath 0.1.4-r1 2.0.0-r1: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.1.0-r1 1.2.1 1.3.0: Ruby C bindings to the Yajl JSON stream-based parser library
-dev-ruby/yard 0.8.7.3 0.8.7.6 0.9.0 0.9.4 0.9.6: Documentation generation tool for the Ruby programming language
+dev-ruby/yard 0.8.7.3 0.8.7.6 0.9.0 0.9.4 0.9.6 0.9.8: Documentation generation tool for the Ruby programming language
 dev-ruby/zentest 4.11.0 4.11.1: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/c-wrapper 0.6.1: Foreign function interface for C and Objective-C libraries
 dev-scheme/chicken 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
@@ -12926,7 +12926,7 @@ media-libs/libquicktime 1.2.4 1.2.4-r1: An enhanced version of the quicktime4lin
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.3 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.19 0.4.20 0.4.21 0.4.21-r1 0.4.21-r2 0.9.20130903 0.9.20131104 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
 media-libs/libraw 0.17.2 0.18.0: LibRaw is a library for reading RAW files obtained from digital photo cameras
-media-libs/libreplaygain 477 477-r1: Replay Gain library from Musepack
+media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.8-r1 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
