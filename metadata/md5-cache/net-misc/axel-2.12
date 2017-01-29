@@ -4,7 +4,7 @@ DESCRIPTION=Light Unix download accelerator
 EAPI=6
 HOMEPAGE=https://github.com/eribertomota/axel
 IUSE=debug libressl nls ssl
-KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris
 LICENSE=GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) nls? ( virtual/libintl virtual/libiconv )
 REQUIRED_USE=libressl? ( ssl )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/eribertomota/axel/archive/2.12.tar.gz -> axel-2.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=bf012bc6b6f3969af5739900f71f487f
+_md5_=b911f09cf94055239e58cfcfc7796a36

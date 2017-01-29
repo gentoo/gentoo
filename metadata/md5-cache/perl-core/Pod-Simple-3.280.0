@@ -3,11 +3,11 @@ DEPEND=>=virtual/perl-Pod-Escapes-1.04 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Framework for parsing Pod
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Pod-Simple/
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Pod-Escapes-1.04 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DW/DWHEELER/Pod-Simple-3.28.tar.gz
 _eclass_exported_funcs=pkg_postrm:perl-module pkg_postinst:perl-module src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=b6aca01cad9ea683f7e1231f488e3a75
+_md5_=ccc47d58b864bfec1ff40ecfb76c5fc6

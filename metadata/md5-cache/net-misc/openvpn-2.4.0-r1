@@ -4,7 +4,7 @@ DESCRIPTION=Robust and highly flexible tunneling application compatible with man
 EAPI=6
 HOMEPAGE=http://openvpn.net/
 IUSE=down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam pkcs11 +plugins polarssl selinux +ssl static systemd test userland_BSD
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) !iproute2? ( sys-apps/net-tools ) ) pam? ( virtual/pam ) ssl? ( !mbedtls? ( !libressl? ( >=dev-libs/openssl-0.9.8:* ) libressl? ( dev-libs/libressl ) ) mbedtls? ( net-libs/mbedtls ) ) lz4? ( app-arch/lz4 ) lzo? ( >=dev-libs/lzo-1.07 ) pkcs11? ( >=dev-libs/pkcs11-helper-1.11 ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-openvpn )
 REQUIRED_USE=static? ( !plugins !pkcs11 ) lzo? ( !lz4 ) pkcs11? ( ssl ) mbedtls? ( ssl !libressl ) pkcs11? ( ssl ) !plugins? ( !pam !down-root ) inotify? ( plugins )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://swupdate.openvpn.net/community/releases/openvpn-2.4.0.tar.gz test? ( https://raw.githubusercontent.com/OpenVPN/openvpn/v2.4.0/tests/unit_tests/openvpn/mock_msg.h )
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ac3717c23295e49d8fe05ba509ae3f56
+_md5_=183aa370abc1f07f08ace835c783c8d7

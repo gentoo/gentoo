@@ -2,10 +2,10 @@ DEFINED_PHASES=install
 DESCRIPTION=IP Calculator prints broadcast/network/etc for an IP address and netmask
 EAPI=5
 HOMEPAGE=http://jodies.de/ipcalc
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=dev-lang/perl-5.6.0
 SLOT=0
 SRC_URI=http://jodies.de/ipcalc-archive/ipcalc-0.41.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=f4b5a396047fd68a0d13e75ae7f5f9e5
+_md5_=67197981a1be7c61392cf2f44c947ad6
