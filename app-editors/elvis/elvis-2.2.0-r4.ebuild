@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.cs.pdx.edu/pub/elvis/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-interix ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="X"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r7

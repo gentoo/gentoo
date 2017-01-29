@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="ftp://us.aminet.net/pub/aminet/misc/unix/${PN}.c.gz.readme"
 SLOT="0"
 LICENSE="freedist"
 IUSE=""
-KEYWORDS="alpha amd64 ~hppa ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 src_unpack() {
 	mkdir "${S}"
