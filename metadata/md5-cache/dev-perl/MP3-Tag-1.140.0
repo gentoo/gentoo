@@ -4,11 +4,11 @@ DESCRIPTION=Module for reading tags of MP3 Audio files
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/MP3-Tag/
 IUSE=examples
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Artistic
 RDEPEND=dev-perl/MP3-Info dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.14.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=948e0b0181d997208ab587f69d715145
+_md5_=fad818e74b6c9740b16e899eebab86e9

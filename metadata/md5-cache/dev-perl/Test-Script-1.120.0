@@ -3,11 +3,11 @@ DEPEND=>=virtual/perl-File-Spec-0.800.0 >=dev-perl/Probe-Perl-0.10.0 >=dev-perl/
 DESCRIPTION=Cross-platform basic tests for scripts
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test-Script/
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-File-Spec-0.800.0 >=dev-perl/Probe-Perl-0.10.0 >=dev-perl/IPC-Run3-0.34.0 >=virtual/perl-Test-Simple-0.960.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Test-Script-1.12.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=9b5f29e34175b9818d625107eff941e7
+_md5_=2856a907b96583014de5d4e9207dd9b9
