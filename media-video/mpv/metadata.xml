@@ -19,10 +19,11 @@
 		<flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cdio">Enable CDDA support via <pkg>dev-libs/libcdio-paranoia</pkg></flag>
 		<flag name="cli">Build mpv CLI player</flag>
+		<flag name="cplugins">Enable C plugins support</flag>
 		<flag name="cuda">Enable hardware video decoding via Nvidia CUDA</flag>
 		<flag name="doc-pdf">Build documentation in pdf format</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video output</flag>
-		<flag name="egl">Enable support for various EGL-based video outputs</flag>
+		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="enca">Enable subtitles charset discovery via <pkg>app-i18n/enca</pkg></flag>
 		<flag name="gbm">Enable Graphics Buffer Manager based EGL video output</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
