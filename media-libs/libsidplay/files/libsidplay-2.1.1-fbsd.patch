@@ -1,5 +1,5 @@
---- libsidutils/src/ini/ini.cpp
-+++ libsidutils/src/ini/ini.cpp
+--- a/libsidutils/src/ini/ini.cpp
++++ b/libsidutils/src/ini/ini.cpp
 @@ -100,7 +100,7 @@
  //*******************************************************************************************************************
  #include <assert.h>

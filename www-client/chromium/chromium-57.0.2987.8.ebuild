@@ -158,6 +158,7 @@ For other desktop environments, try one of the following:
 PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
+	"${FILESDIR}/${PN}-FORTIFY_SOURCE.patch"
 )
 
 pre_build_checks() {
