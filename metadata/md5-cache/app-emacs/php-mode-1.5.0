@@ -3,11 +3,11 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=GNU Emacs major mode for editing PHP code
 EAPI=5
 HOMEPAGE=http://php-mode.sourceforge.net
-KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-3+ FDL-1.2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://sourceforge/php-mode/php-mode-1.5.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1a67c21584dc6923b1773270ded79492
+_md5_=0477bf01723c98ac8be7479ececcc959

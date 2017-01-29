@@ -8,4 +8,4 @@ RDEPEND=app-admin/eselect
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7fd2e8b1959f95513ad626a272f4b69b
+_md5_=060baa46f88250d7cb3e7a8544b04978

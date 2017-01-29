@@ -3,11 +3,11 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Install color themes (includes many themes and allows you to share your own with the world)
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/color-theme/
-KEYWORDS=amd64 ~arm ppc sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~arm ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases-noredirect/color-theme/color-theme-6.6.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:-
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=6d3b7d3f314d702ed07ff7e66935c410
+_md5_=a1619b8bb6f1ac93dbb1c69e10d7ba3f

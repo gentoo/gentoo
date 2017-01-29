@@ -4,7 +4,7 @@ DESCRIPTION=A tool that allows both-side communication beetween Python and Emacs
 EAPI=5
 HOMEPAGE=http://www.emacswiki.org/emacs/PyMacs
 IUSE=doc python_targets_python2_7 python_targets_python3_4
-KEYWORDS=amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/pinard/Pymacs/tarball/v0.25 -> pymacs-0.25.tar.gz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:vcs-snapshot src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=36ab4fcfc2aba3767d87dcb6887031cd
+_md5_=2964c4cbaa69e34f3a12ec8d0fad0f53

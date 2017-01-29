@@ -4,11 +4,11 @@ DESCRIPTION=pal command-line calendar program
 EAPI=5
 HOMEPAGE=http://palcal.sourceforge.net/
 IUSE=nls
-KEYWORDS=amd64 ~hppa ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.0 nls? ( virtual/libintl ) sys-libs/ncurses sys-libs/readline
 SLOT=0
 SRC_URI=mirror://sourceforge/palcal/pal-0.4.3.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e1214ef479aaf6dc532bd9d10935ff36
+_md5_=6c365e154d6d379bce0062677b88d685
