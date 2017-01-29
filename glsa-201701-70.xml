@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-70">
+  <title>Firewalld: Improper authentication methods</title>
+  <synopsis>A vulnerability in Firewalld allows firewall configurations to be
+    modified by unauthenticated users.
+  </synopsis>
+  <product type="ebuild">firewalld</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>591458</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-firewall/firewalld" auto="yes" arch="*">
+      <unaffected range="ge">0.4.3.3</unaffected>
+      <vulnerable range="lt">0.4.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Firewalld provides a dynamically managed firewall with support for
+      network/firewall zones to define the trust level of network connections
+      or interfaces.
+    </p>
+  </background>
+  <description>
+    <p>A flaw in Firewalld allows any locally logged in user to tamper with or
+      change firewall settings.  This is due to how Firewalld handles
+      authentication via polkit which is not properly applied to 5 particular
+      functions to include: addPassthrough, removePassthrough, addEntry,
+      removeEntry, and setEntries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could tamper or change firewall settings leading to the
+      additional exposure of systems to include unauthorized remote access.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firewalld users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-firewall/firewalld-0.4.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-5410">CVE-2016-5410</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-04T03:14:04Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:21:27Z">b-man</metadata>
+</glsa>
