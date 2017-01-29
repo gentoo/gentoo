@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,6 +36,8 @@ RDEPEND="${DEPEND}
 	!kde-base/kde-gtk-config:4
 	!kde-plasma/kde-gtk-config:4
 "
+
+RESTRICT+=" test" # bug 604050
 
 PATCHES=( "${FILESDIR}/${PN}-5.4.2-gtk3-optional.patch" )
 
