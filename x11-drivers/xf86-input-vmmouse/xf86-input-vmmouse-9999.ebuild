@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit xorg-2
+inherit udev xorg-2
 
 DESCRIPTION="VMWare mouse input driver"
 IUSE=""
@@ -19,7 +19,7 @@ pkg_setup() {
 		--with-hal-bin-dir=/punt
 		--with-hal-callouts-dir=/punt
 		--with-hal-fdi-dir=/punt
-		--with-udev-rules-dir=/lib/udev/rules.d
+		--with-udev-rules-dir=$(get_udevdir)/rules.d
 	)
 
 	xorg-2_pkg_setup
