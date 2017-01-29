@@ -4,10 +4,10 @@ DESCRIPTION=Digramic Bayesian text classifier
 EAPI=5
 HOMEPAGE=http://www.lbreyer.com/gpl.html
 IUSE=interactive
-KEYWORDS=amd64 s390 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 s390 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-3
 RDEPEND=interactive? ( sys-libs/slang:= sys-libs/readline:= sys-libs/ncurses:= )
 SLOT=0
 SRC_URI=http://www.lbreyer.com/gpl/dbacl-1.14.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_md5_=b1f8e1945f8667f31eadc90e294e5159
+_md5_=567d924406eb9bebf5583c76a7d99d46

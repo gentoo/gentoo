@@ -2,11 +2,11 @@ DEFINED_PHASES=install prepare
 DESCRIPTION=Converts source files to colored HTML output
 EAPI=5
 HOMEPAGE=http://www.palfrader.org/code2html/
-KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=MIT
 RDEPEND=>=dev-lang/perl-5
 SLOT=0
 SRC_URI=http://www.palfrader.org/code2html/all/code2html-0.9.1.tar.gz mirror://gentoo/code2html-0.9.1-gentoo_patches.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=de510126774be9d583b679c25082b3d9
+_md5_=738e80df33551a16d7fab527867f50f7

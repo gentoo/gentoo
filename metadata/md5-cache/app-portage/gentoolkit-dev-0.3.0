@@ -4,7 +4,7 @@ DESCRIPTION=Collection of developer scripts for Gentoo
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Portage-Tools
 IUSE=test python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_targets_python3_4? ( dev-lang/python:3.4[xml] ) python_targets_python3_5? ( dev-lang/python:3.5[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] sys-apps/portage[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-lang/perl sys-apps/diffutils
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/gentoolkit-dev-0.3.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=61e97e5f73c43556e864805e77406e38
+_md5_=49beb144c0fee514f4cd91d03601dd78

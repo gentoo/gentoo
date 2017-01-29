@@ -4,7 +4,7 @@ DESCRIPTION=AsciiDoc is a plain text human readable/writable document format
 EAPI=5
 HOMEPAGE=http://asciidoc.org/
 IUSE=examples graphviz highlight test vim-syntax python_targets_pypy python_targets_python2_7 python_single_target_pypy python_single_target_python2_7
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=app-text/docbook-xsl-stylesheets-1.75 dev-libs/libxslt graphviz? ( media-gfx/graphviz ) app-text/docbook-xml-dtd:4.5 highlight? ( || ( dev-python/pygments[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_pypy(+)?,python_single_target_python2_7(+)?] dev-util/source-highlight ) ) python_single_target_pypy? ( virtual/pypy:0= ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_pypy(+)?,python_single_target_python2_7(+)?]
 REQUIRED_USE=^^ ( python_single_target_pypy python_single_target_python2_7 ) python_single_target_pypy? ( python_targets_pypy ) python_single_target_python2_7? ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/project/asciidoc/asciidoc/8.6.9/asciidoc-8.6.9.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=82f38bfa284d20a3b73f7826da883194
+_md5_=c5f53fcec91276ce9a83214415608455

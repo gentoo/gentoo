@@ -17235,7 +17235,7 @@ sys-block/thin-provisioning-tools 0.4.1 0.5.3 0.6.1 0.6.3: A suite of tools for 
 sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 21: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
-sys-block/whdd 2.2 9999: Diagnostic and recovery tool for block devices
+sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 2.7-r1 3.0 3.4 3.6 3.8: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
 sys-boot/arcload 0.50-r1 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems

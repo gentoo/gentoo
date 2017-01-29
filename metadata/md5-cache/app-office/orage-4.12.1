@@ -4,11 +4,11 @@ DESCRIPTION=A time managing application (and panel plug-in) for the Xfce desktop
 EAPI=5
 HOMEPAGE=http://www.xfce.org/projects/
 IUSE=berkdb dbus debug libnotify +xfce_plugins_clock
-KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libical-0.48:= dev-libs/popt:= >=x11-libs/gtk+-2.10:2= berkdb? ( >=sys-libs/db-4:= ) dbus? ( >=dev-libs/dbus-glib-0.100:= ) libnotify? ( >=x11-libs/libnotify-0.7:= ) xfce_plugins_clock? ( >=xfce-base/xfce4-panel-4.10:= )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/orage/4.12/orage-4.12.1.tar.bz2
 _eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
-_md5_=ecd7b10bb773bf700579a20c4ffec17c
+_md5_=e95e58a3ccd2f8cddfbff14f561d0750

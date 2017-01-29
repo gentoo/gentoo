@@ -4,11 +4,11 @@ DESCRIPTION=DVI-to-PostScript translator
 EAPI=4
 HOMEPAGE=http://tug.org/texlive/
 IUSE=doc source
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=!<app-text/texlive-core-2010 !<dev-texlive/texlive-basic-2009 !app-text/ptex >=dev-libs/kpathsea-6.1.0_p20120701
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20120701-source.tar.xz mirror://gentoo/texlive-module-dvips-2012.tar.xz doc? ( mirror://gentoo/texlive-module-dvips.doc-2012.tar.xz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=368b05a45f785caa547f66fcb9a9ec6a
+_md5_=ed0063483ec74523ce2bd96b007fa7c5

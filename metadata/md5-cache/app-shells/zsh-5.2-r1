@@ -4,7 +4,7 @@ DESCRIPTION=UNIX Shell similar to the Korn shell
 EAPI=6
 HOMEPAGE=http://www.zsh.org/
 IUSE=caps debug doc examples gdbm maildir pcre static unicode
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=ZSH gdbm? ( GPL-2 )
 PDEPEND=examples? ( app-doc/zsh-lovers )
 RDEPEND=>=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.zsh.org/pub/zsh-5.2.tar.xz doc? ( http://www.zsh.org/pub/zsh-5.2-doc.tar.xz )
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	prefix	99dcca42e6528d8fe3c214bf5731aaf2	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=73132b9e23e7040e453477563c999af0
+_md5_=e3cbff1357a6532ef9b01f5c6910f897

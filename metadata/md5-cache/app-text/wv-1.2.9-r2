@@ -4,11 +4,11 @@ DESCRIPTION=Tool for conversion of MSWord doc and rtf files to something readabl
 EAPI=6
 HOMEPAGE=http://wvware.sourceforge.net/
 IUSE=tools wmf
-KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2:2 >=gnome-extra/libgsf-1.13:= sys-libs/zlib media-libs/libpng:0= dev-libs/libxml2:2 tools? ( app-text/texlive-core dev-texlive/texlive-latex ) wmf? ( >=media-libs/libwmf-0.2.2 )
 SLOT=0
 SRC_URI=http://abiword.org/downloads/wv/1.2.9/wv-1.2.9.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=88655dafc8f343823afa6027292f5ec9
+_md5_=c489b3d38ea7558f59ad0a68ca348b78

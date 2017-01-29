@@ -4,11 +4,11 @@ DESCRIPTION=Tools for helping translation of documentation
 EAPI=5
 HOMEPAGE=http://po4a.alioth.debian.org
 IUSE=test linguas_af linguas_ca linguas_cs linguas_da linguas_de linguas_eo linguas_es linguas_et linguas_eu linguas_fr linguas_hr linguas_id linguas_it linguas_ja linguas_kn linguas_ko linguas_nb linguas_nl linguas_pl linguas_pt_BR linguas_pt linguas_ru linguas_sl linguas_sv linguas_uk linguas_vi linguas_zh_CN linguas_zh_HK
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=dev-perl/SGMLSpm >=sys-devel/gettext-0.13 app-text/openjade dev-libs/libxslt dev-perl/Locale-gettext dev-perl/TermReadKey dev-perl/Text-WrapI18N dev-lang/perl:=[-build(-)] dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/po4a/po4a_0.45.orig.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	l10n	e26ea0642846685782f1813642e7ff0f	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-app	11f61997f1d4923276dd72a750617c7d	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=65c580e0a6e49fcd4229b8f472fa25f9
+_md5_=c6aab51cf38845bb3d8e51cc2e015bc2

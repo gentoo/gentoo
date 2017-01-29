@@ -3,11 +3,11 @@ DEPEND=x11-libs/gtk+:2 >=app-text/enchant-1.1.6 dev-util/gtk-doc-am >=dev-util/i
 DESCRIPTION=Spell checking widget for GTK
 EAPI=4
 HOMEPAGE=http://gtkspell.sourceforge.net/
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=GPL-2+
 RDEPEND=x11-libs/gtk+:2 >=app-text/enchant-1.1.6
 SLOT=2
 SRC_URI=http://gtkspell.sourceforge.net/download/gtkspell-2.0.16.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=50bbef96580b4459cf1f2bad6ce551c8
+_md5_=4badbdb352c580adeb1f764acdde6472
