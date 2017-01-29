@@ -4,7 +4,7 @@ DESCRIPTION=An implementation of Python written in Java
 EAPI=5
 HOMEPAGE=http://www.jython.org
 IUSE=+readline test elibc_FreeBSD doc examples source elibc_FreeBSD
-KEYWORDS=amd64 x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=PSF-2
 RDEPEND=dev-java/ant-core:0 dev-java/antlr:3 dev-java/netty-transport:0 =dev-java/asm-5.0.3:4 dev-java/commons-compress:0 dev-java/guava:13 >=dev-java/java-config-2.1.11-r3 dev-java/jffi:1.2 dev-java/jline:2 dev-java/icu4j:52 dev-java/jnr-constants:0 dev-java/jnr-posix:3.0 dev-java/jnr-netdb:1.0 dev-java/stringtemplate:0 dev-java/xerces:2 java-virtuals/script-api:0 java-virtuals/servlet-api:3.0 readline? ( >=dev-java/libreadline-java-0.8.0:0 ) >=virtual/jre-1.7 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 REQUIRED_USE=test? ( readline )
@@ -13,4 +13,4 @@ SLOT=2.7
 SRC_URI=http://search.maven.org/remotecontent?filepath=org/python/jython/2.7.0/jython-2.7.0-sources.jar
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_postinst:- pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=614b2292876efae2910c72f0fe4ef574
+_md5_=423457b9ae94b9b3321d3fc32e42a618

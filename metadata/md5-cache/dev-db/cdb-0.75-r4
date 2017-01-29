@@ -3,11 +3,11 @@ DEPEND=>=sys-apps/sed-4 !dev-db/tinycdb
 DESCRIPTION=Fast, reliable, simple package for creating and reading constant databases
 EAPI=5
 HOMEPAGE=http://cr.yp.to/cdb.html
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=public-domain
 RDEPEND=>=sys-apps/sed-4 !dev-db/tinycdb
 SLOT=0
 SRC_URI=http://cr.yp.to/cdb/cdb-0.75.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=2fb978a8606cb20b754f9a4d66435b13
+_md5_=cba3fce96cdd6b21d28ca3befbf62e11

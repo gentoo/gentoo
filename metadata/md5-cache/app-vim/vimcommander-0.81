@@ -3,11 +3,11 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: Total Commander style file explorer
 EAPI=5
 HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=808
-KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/vimcommander-0.81.tar.bz2 https://dev.gentoo.org/~radhermit/vim/vimcommander-0.81.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
-_md5_=6ee78bd12b982f426b72dd43c842cd1b
+_md5_=390c37f92a781fd79c2da973ab829a14

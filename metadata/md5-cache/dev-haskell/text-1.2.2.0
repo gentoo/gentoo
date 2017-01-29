@@ -4,7 +4,7 @@ DESCRIPTION=An efficient packed Unicode text type
 EAPI=5
 HOMEPAGE=https://github.com/bos/text
 IUSE=doc hscolour profile test
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=BSD
 RDEPEND=dev-haskell/binary:=[profile?] >=dev-lang/ghc-7.4.1:=
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0/1.2.2.0
 SRC_URI=mirror://hackage/packages/archive/text/1.2.2.0/text-1.2.2.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	389be50aa900be3db733606f37b1e80d	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7380ef078666ef41d831a686fafea13c
+_md5_=6219b7029b33709458a173a26d11bbe1

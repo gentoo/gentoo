@@ -4,7 +4,7 @@ DESCRIPTION=Java library for working with XML
 EAPI=5
 HOMEPAGE=http://dom4j.sourceforge.net/
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~arm ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=dom4j
 PDEPEND=dev-java/jaxen:1.1
 RDEPEND=dev-java/xpp2:0 dev-java/xpp3:0 dev-java/xsdlib:0 dev-java/relaxng-datatype:0 >=virtual/jre-1.6 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
@@ -12,4 +12,4 @@ SLOT=1
 SRC_URI=mirror://sourceforge/dom4j/dom4j-1.6.1.tar.gz mirror://gentoo/dom4j-1.6.1-java5.patch.bz2
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:java-pkg-2 src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-2	eb1f0d7d874162c70088f5ae32c31ee7	java-utils-2	a50950a73b5d5db46f42638e2996a087	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5a2b61a3afbe2d155589496cd2b41f5f
+_md5_=2e6549d1ed9da700737e1528b5e593f4

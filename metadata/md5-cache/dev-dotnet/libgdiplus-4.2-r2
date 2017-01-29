@@ -4,11 +4,11 @@ DESCRIPTION=Library for using System.Drawing with mono
 EAPI=6
 HOMEPAGE=http://www.mono-project.com
 IUSE=cairo
-KEYWORDS=amd64 ~ppc ~ppc64 x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=MIT
 RDEPEND=>=dev-libs/glib-2.2.3:2 >=media-libs/freetype-2.3.7:2 >=media-libs/fontconfig-2.6 >=media-libs/libpng-1.4:0= x11-libs/libXrender x11-libs/libX11 x11-libs/libXt >=x11-libs/cairo-1.8.4[X] media-libs/libexif >=media-libs/giflib-5.1.2:= virtual/jpeg:0 media-libs/tiff:0 !cairo? ( >=x11-libs/pango-1.20 )
 SLOT=0
 SRC_URI=http://download.mono-project.com/sources/libgdiplus/libgdiplus-4.2.tar.gz
 _eclass_exported_funcs=pkg_setup:dotnet src_configure:- src_install:-
 _eclasses_=dotnet	b8788d81fe4ec93fda9fc56fed2981d0	eutils	ea170b525f6a38a006be05c9d9429f13	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ab93104a95a056b3919c8ef074690cf3
+_md5_=8cc7cbbfbbeddc56622941290359cd1b
