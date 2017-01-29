@@ -2120,7 +2120,7 @@ app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfi
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
 app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.56 0.60 0.61 0.62 0.63 0.64: small and fast portage helper tools written in C
+app-portage/portage-utils 0.62 0.63 0.64: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.18 2.1.21 2.1.22: A helper program for maintaining the package.keyword and package.unmask files
@@ -15346,7 +15346,7 @@ net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written 
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
 net-nds/nsscache 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory services to local cache
-net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43 2.4.43-r1 2.4.44: LDAP suite of application and development tools
+net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.44: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
 net-nds/rpcbind 0.2.3-r1 0.2.3-r2 0.2.4 9999: portmap replacement which supports RPC over various protocols
