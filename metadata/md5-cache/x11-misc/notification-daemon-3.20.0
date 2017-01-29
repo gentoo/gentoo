@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.19.5:3[X] sys-apps/dbus x11-libs
 DESCRIPTION=Notification daemon
 EAPI=6
 HOMEPAGE=https://git.gnome.org/browse/notification-daemon/
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.19.5:3[X] sys-apps/dbus x11-libs/libX11 !x11-misc/notify-osd !x11-misc/qtnotifydaemon
 SLOT=0
 SRC_URI=mirror://gnome/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
 _eclass_exported_funcs=src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6ef743fc7b087994f0e385349ed1e15a
+_md5_=0b4f28e1b3155919a91c9b5e2003b306

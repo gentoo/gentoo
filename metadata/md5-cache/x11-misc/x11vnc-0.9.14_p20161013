@@ -4,11 +4,11 @@ DESCRIPTION=A VNC server for real X displays
 EAPI=6
 HOMEPAGE=https://libvnc.github.io/
 IUSE=crypt fbcon libressl ssl xinerama zeroconf
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=net-libs/libvncserver-0.9.8[ssl?] x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr >=x11-libs/libXtst-1.1.0 ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) xinerama? ( x11-libs/libXinerama ) zeroconf? ( >=net-dns/avahi-0.6.4 )
 SLOT=0
 SRC_URI=https://github.com/LibVNC/x11vnc/archive/e191071c1f375d04ba8f955ea0a30292a485999e.tar.gz -> x11vnc-0.9.14_p20161013.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=3336054938deeec4fac0fe89b4ece7bb
+_md5_=b1cf485f6e54cc72f585431e33328731

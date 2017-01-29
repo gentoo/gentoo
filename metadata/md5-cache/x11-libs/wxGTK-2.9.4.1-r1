@@ -4,7 +4,7 @@ DESCRIPTION=GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 EAPI=5
 HOMEPAGE=http://wxwidgets.org/
 IUSE=+X aqua doc debug gnome gstreamer opengl pch sdl tiff webkit
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )
 PDEPEND=>=app-eselect/eselect-wxwidgets-1.4
 RDEPEND=dev-libs/expat sdl? ( media-libs/libsdl ) X? ( >=dev-libs/glib-2.22:2 media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0= >=x11-libs/gtk+-2.18:2 x11-libs/libSM x11-libs/libXinerama x11-libs/libXxf86vm x11-libs/pango[X] gnome? ( gnome-base/libgnomeprintui:2.2 ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 ) opengl? ( virtual/opengl ) tiff? ( media-libs/tiff:0 ) webkit? ( net-libs/webkit-gtk:2 ) ) aqua? ( x11-libs/gtk+:2[aqua=] virtual/jpeg:0= tiff? ( media-libs/tiff:0 ) )
@@ -12,4 +12,4 @@ SLOT=2.9/2.9.4
 SRC_URI=mirror://sourceforge/wxpython/wxPython-src-2.9.4.0.tar.bz2 doc? ( mirror://sourceforge/wxpython/wxPython-docs-2.9.4.0.tar.bz2 ) mirror://sourceforge/wxpython/wxPython-src-2.9.4.1.patch
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b012f233e90ccfb18da121ee65c7b812
+_md5_=47a685f0537515b1c48c689bd2d989e5
