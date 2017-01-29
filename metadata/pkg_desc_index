@@ -18710,7 +18710,7 @@ x11-misc/menulibre 2.0.7 2.1.3 13.01.4 13.01.4-r1 13.04.17: An advanced menu edi
 x11-misc/menumaker 0.99.9 0.99.10: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mgm 1.2: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0: mixer utility that has three volume controllers that can be configured to handle any sound source
-x11-misc/mozo 1.12.0-r1 1.14.1 1.16.0: Mozo menu editor for MATE
+x11-misc/mozo 1.12.0-r1 1.14.1 1.16.0-r1: Mozo menu editor for MATE
 x11-misc/netwmpager 2.05: EWMH (NetWM) compatible pager. Works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.5.2 1.6.0: A background browser and setter for X
 x11-misc/notification-daemon 0.5.0 3.14.1 3.18.2 3.20.0: Notification daemon

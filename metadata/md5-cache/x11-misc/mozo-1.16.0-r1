@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygobject-3:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=mate-base/mate-menus-1.6[introspection,python] x11-libs/gdk-pixbuf:2[introspection] x11-libs/gtk+:3[introspection] virtual/libintl:0 !!x11-misc/mate-menu-editor >=dev-util/intltool-0.40:* sys-devel/gettext:* virtual/pkgconfig:* app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=mate-base/mate-common-1.16
+DESCRIPTION=Mozo menu editor for MATE
+EAPI=6
+HOMEPAGE=http://mate-desktop.org
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygobject-3:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=mate-base/mate-menus-1.6[introspection,python] x11-libs/gdk-pixbuf:2[introspection] x11-libs/gtk+:3[introspection] virtual/libintl:0 !!x11-misc/mate-menu-editor
+SLOT=0
+SRC_URI=http://pub.mate-desktop.org/releases/1.16/mozo-1.16.0.tar.xz
+_eclass_exported_funcs=pkg_preinst:mate pkg_postrm:mate pkg_postinst:mate src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	mate	deba441b42c68cba7b817dd8b441788e	mate-desktop.org	69a0f50dcb300b04a513d60bc326029c	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=4940eed2342af29790d7ab572acb07b0
