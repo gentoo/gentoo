@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install setup unpack
-DEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.7a:= >=app-text/zathura-0.3.1 media-libs/jbig2dec:= media-libs/openjpeg:2= virtual/jpeg:0 x11-libs/cairo:= virtual/pkgconfig dev-vcs/git
+DEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.10a:= >=app-text/zathura-0.3.1 media-libs/jbig2dec:= media-libs/openjpeg:2= virtual/jpeg:0 x11-libs/cairo:= virtual/pkgconfig dev-vcs/git
 DESCRIPTION=PDF plug-in for zathura
 EAPI=5
 HOMEPAGE=http://pwmt.org/projects/zathura/
 LICENSE=ZLIB
-RDEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.7a:= >=app-text/zathura-0.3.1 media-libs/jbig2dec:= media-libs/openjpeg:2= virtual/jpeg:0 x11-libs/cairo:=
+RDEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.10a:= >=app-text/zathura-0.3.1 media-libs/jbig2dec:= media-libs/openjpeg:2= virtual/jpeg:0 x11-libs/cairo:=
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=17fc60d3e1e7b7b5f619fb412b612771
+_md5_=265f9610d41b7a9a0b8c872e1b559908
