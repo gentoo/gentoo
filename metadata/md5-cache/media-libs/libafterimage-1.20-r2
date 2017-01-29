@@ -4,7 +4,7 @@ DESCRIPTION=Afterstep's standalone generic image manipulation library
 EAPI=6
 HOMEPAGE=http://www.afterstep.org/afterimage/index.php
 IUSE=+X cpu_flags_x86_mmx examples gif jpeg nls opengl png static-libs shm +shaping svg tiff truetype
-KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=X? ( x11-libs/libSM x11-libs/libXext x11-libs/libXrender ) gif? ( media-libs/giflib:0= ) jpeg? ( virtual/jpeg:0 ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.4:0= ) svg? ( gnome-base/librsvg:2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype )
 REQUIRED_USE=opengl? ( X ) shaping? ( X ) shm? ( X )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=ftp://ftp.afterstep.org/stable/libAfterImage/libAfterImage-1.20.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=41c68112934d64466bee2889d209422a
+_md5_=57db7be7f13e7c3205c339984fa3234d

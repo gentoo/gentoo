@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=A virtual for the Foreign Function Interface implementation
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=>=dev-libs/libffi-3.0.11
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=b25b629edff1957793fcbc9eaadf7343
+_md5_=15fecded54cb7a164e2335e813d9f066

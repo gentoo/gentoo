@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Pod-Escapes
 EAPI=5
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/Pod-Escapes-1.60.0 ) dev-lang/perl:= !<perl-core/Pod-Escapes-1.60.0 !>perl-core/Pod-Escapes-1.60.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=47ad00b1001d737613fdb5c0c4c46327
+_md5_=0bc0dc611deb9febcd7f3504e48544bb

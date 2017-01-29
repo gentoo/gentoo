@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for CPAN-Meta
 EAPI=5
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/CPAN-Meta-2.150.1 ) dev-lang/perl:= >=virtual/perl-CPAN-Meta-YAML-0.11.0 >=virtual/perl-JSON-PP-2.271.30 >=virtual/perl-Parse-CPAN-Meta-1.441.400
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=b344ba38f1a47282c955fd57a882cfc6
+_md5_=b0021dab1b2f17ccea2404dd5ecad2dd
