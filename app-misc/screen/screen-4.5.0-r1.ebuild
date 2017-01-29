@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 	# PATH_MAX usage needs an include on Solaris
 	"${FILESDIR}"/${P}-solaris-PATH_MAX.patch
+	# Revert patch due to security, bug #607116
+	"${FILESDIR}"/${P}-logfile-access-revert.patch
 )
 
 pkg_setup() {
