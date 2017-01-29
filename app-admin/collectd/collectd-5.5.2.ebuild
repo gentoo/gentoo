@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -133,7 +133,8 @@ RDEPEND="${COMMON_DEPEND}
 	collectd_plugins_genericjmx?		( >=virtual/jre-1.6 )
 	collectd_plugins_java?			( >=virtual/jre-1.6 )
 	collectd_plugins_syslog?		( virtual/logger )
-	selinux?				( sec-policy/selinux-collectd )"
+	selinux?				( sec-policy/selinux-collectd )
+	!<sys-apps/openrc-0.18.2"
 
 REQUIRED_USE="
 	collectd_plugins_genericjmx?		( java )
