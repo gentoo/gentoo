@@ -260,6 +260,7 @@ x11-drivers/xf86-video-v4l
 =sys-devel/clang-runtime-4.0.0*
 =sys-devel/lld-4.0.0*
 =sys-devel/llvm-4.0.0*
+=sys-devel/llvmgold-4
 =sys-libs/compiler-rt-4.0.0*
 =sys-libs/compiler-rt-sanitizers-4.0.0*
 =sys-libs/libcxx-4.0.0*
