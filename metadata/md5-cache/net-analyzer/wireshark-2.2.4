@@ -4,7 +4,7 @@ DESCRIPTION=A network protocol analyzer formerly known as ethereal
 EAPI=6
 HOMEPAGE=https://www.wireshark.org/
 IUSE=adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk kerberos lua +netlink +pcap portaudio +qt5 sbc selinux smi libssh randpkt randpktdump sshdump ssl tfshark zlib +filecaps
-KEYWORDS=alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.14:2 netlink? ( dev-libs/libnl:3 ) adns? ( >=net-dns/c-ares-1.5 ) crypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) geoip? ( dev-libs/geoip ) gtk? ( x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango x11-misc/xdg-utils ) kerberos? ( virtual/krb5 ) libssh? ( >=net-libs/libssh-0.6 ) lua? ( >=dev-lang/lua-5.1:* ) pcap? ( net-libs/libpcap ) portaudio? ( media-libs/portaudio ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 media-libs/speex x11-misc/xdg-utils ) sbc? ( media-libs/sbc ) smi? ( net-libs/libsmi ) ssl? ( net-libs/gnutls:= ) zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 ) gtk? ( virtual/freedesktop-icon-theme ) qt5? ( virtual/freedesktop-icon-theme ) selinux? ( sec-policy/selinux-wireshark )
 REQUIRED_USE=ciscodump? ( libssh ) sshdump? ( libssh ) ssl? ( crypt )
@@ -12,4 +12,4 @@ SLOT=0/2.2.4
 SRC_URI=https://www.wireshark.org/download/src/all-versions/wireshark-2.2.4.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=8232c62cd1fe5a07c20a9edaf5e92e06
+_md5_=83aab66eb3024a2665070dca51fb8398

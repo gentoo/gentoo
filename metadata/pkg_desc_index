@@ -13743,7 +13743,7 @@ media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reportin
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
 media-sound/sidplay 2.0.9: C64 SID player
 media-sound/sidplayfp 0.3.3 1.1.0 1.4.0: A sidplay2 fork with resid-fp
-media-sound/skype-call-recorder 0.8 0.11: Records Skype calls to MP3/Ogg/WAV files
+media-sound/skype-call-recorder 0.11: Records Skype calls to MP3/Ogg/WAV files
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snd 12.8 16.3: Snd is a sound editor
 media-sound/sndfile-tools 1.03 1.03-r1: A small collection of programs that use libsndfile
@@ -15330,7 +15330,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3 4.0.1.20: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2016.12.22 2017.01.14 2017.01.18 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.12.22 2017.01.18 2017.01.28 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 3.2.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17493,10 +17493,10 @@ sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulator
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
-sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010 4.9_p20161219: User space headers for aufs3
-sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010: Utilities are always necessary for aufs
+sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010 4.1_p20170130: User space headers for aufs3
+sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116 4.1_p20161010 4.1_p20170130: Utilities are always necessary for aufs
 sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815 3_p20160822: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815 0_pre20161010 0_pre20161219 0_pre20170130: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
@@ -17617,7 +17617,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 0.6.5.8 0.6.5.8-r1 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 0.6.5.8 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.44 3.18.45-r1 3.18.47 4.4.26 4.4.28 4.4.39-r1 4.4.40 4.4.41 4.4.42 4.4.43 4.4.44 4.8.14 4.8.15 4.8.16 4.8.17 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.44 3.18.45-r1 3.18.47 4.4.26 4.4.28 4.4.39-r1 4.4.40 4.4.41 4.4.42 4.4.43 4.4.44 4.4.45 4.8.14 4.8.15 4.8.16 4.8.17 4.9.0 4.9.1 4.9.2 4.9.3 4.9.4 4.9.5 4.9.6: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/bliss-initramfs 6.8.2 6.8.3: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/ck-sources 4.9.4 4.9.5 4.9.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.9
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers

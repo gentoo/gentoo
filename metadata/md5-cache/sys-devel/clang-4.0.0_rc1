@@ -13,4 +13,4 @@ SLOT=0/4
 SRC_URI=http://www.llvm.org/pre-releases/4.0.0/rc1/cfe-4.0.0rc1.src.tar.xz http://www.llvm.org/pre-releases/4.0.0/rc1/clang-tools-extra-4.0.0rc1.src.tar.xz test? ( http://www.llvm.org/pre-releases/4.0.0/rc1/llvm-4.0.0rc1.src.tar.xz )
 _eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_unpack:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:-
 _eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	7bb10a841be2368af0c00f27dd67560b	pax-utils	4c2654a34ebe732e85fda354f6ee642f	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d6e0a98d0adcf19788ed75e3749db741
+_md5_=bd85c1a9b56ae4a218d26d6103eb7946
