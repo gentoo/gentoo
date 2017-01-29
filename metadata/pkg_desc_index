@@ -196,7 +196,7 @@ app-admin/salt 2015.5.10 2015.8.12 2016.3.4 2016.11.0 9999: Salt is a remote exe
 app-admin/serf 0.8.0: Service orchestration and management tool
 app-admin/setools 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
-app-admin/sshguard 1.7.1 1.99.0: protects hosts from brute force attacks against ssh
+app-admin/sshguard 1.7.1 1.99.0-r1: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2-r1: GNU Stow is a symlink farm manager
 app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizable) privileges in a nosuid environment
 app-admin/sudo 1.8.18_p1 1.8.19_p2 9999: Allows users or groups to run commands as other users
@@ -14523,6 +14523,7 @@ net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
 net-im/coturn 4.5.0.4 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
+net-im/discord-bin 0.0.1: All-in-one voice and text chat for gamers
 net-im/ejabberd 16.04 16.04-r1 16.08 16.09: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
