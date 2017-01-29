@@ -4,11 +4,11 @@ DESCRIPTION=A module that allows you to declare real exception classes in Perl
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Exception-Class/
 IUSE=test examples
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Data-Inheritable-0.20.0 >=dev-perl/Devel-StackTrace-2.0.0 virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Exception-Class-1.42.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=8680b77cd8f2eef182a2e822f129966c
+_md5_=409e3a7e1116deb4f4adc29a02436f48

@@ -3,11 +3,11 @@ DEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-i
 DESCRIPTION=CGI Interface for Fast CGI
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/CGI-Fast/
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/CGI-4 virtual/perl-Carp >=dev-perl/FCGI-0.670.0 virtual/perl-if dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/CGI-Fast-2.11.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=71f3cbf6fd1018616ef600ce3851334d
+_md5_=a09b985b4a008d5a3b45c2dc330f1739

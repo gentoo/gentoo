@@ -4,11 +4,11 @@ DESCRIPTION=A date and time object
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/DateTime/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~x86 ~ppc-aix ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~amd64 ~hppa ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=!<=dev-perl/DateTime-Format-Mail-0.402.0 virtual/perl-Carp >=dev-perl/DateTime-Locale-1.60.0 >=dev-perl/DateTime-TimeZone-2.20.0 >=dev-perl/Dist-CheckConflicts-0.20.0 >=dev-perl/Params-ValidationCompiler-0.130.0 virtual/perl-Scalar-List-Utils >=dev-perl/Specio-0.180.0 dev-perl/Try-Tiny virtual/perl-XSLoader >=dev-perl/namespace-autoclean-0.190.0 virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/DateTime-1.42.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=5f7b8b4fec7cfd513f622abf9653e10a
+_md5_=1138018b4ee8c928d1a3180588547b77

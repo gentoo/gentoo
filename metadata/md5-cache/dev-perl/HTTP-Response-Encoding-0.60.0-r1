@@ -4,11 +4,11 @@ DESCRIPTION=Adds encoding() to HTTP::Response
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/HTTP-Response-Encoding/
 IUSE=test
-KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/libwww-perl dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DANKOGAI/HTTP-Response-Encoding-0.06.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=f7d64357bca0b967960dcfa4bc99291b
+_md5_=9aa0e935ad7981889a7032b9d1b9138f

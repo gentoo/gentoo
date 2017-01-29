@@ -4,11 +4,11 @@ DESCRIPTION=An object representing a stack trace
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Devel-StackTrace/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=Artistic-2
 RDEPEND=virtual/perl-File-Spec virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Devel-StackTrace-2.01.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=8a5fbb6f0af6c17b9f4413ee956f86a0
+_md5_=1c5dbe202f757c423c70b36eeed6d107

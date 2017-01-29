@@ -4,11 +4,11 @@ DESCRIPTION=Run a subprocess in batch mode (a la system)
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/IPC-Run3/
 IUSE=test
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( BSD-2 Artistic GPL-1+ )
 RDEPEND=virtual/perl-Time-HiRes dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/IPC-Run3-0.048.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358
-_md5_=5c1da7f5de978452d6c6e488e4be5d13
+_md5_=3373f66cb92cf091bfba480753551d22
