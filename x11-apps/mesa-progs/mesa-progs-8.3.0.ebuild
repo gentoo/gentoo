@@ -22,7 +22,7 @@ if [[ ${PV} == 9999* ]]; then
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/${MY_PN/-//}/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2"
