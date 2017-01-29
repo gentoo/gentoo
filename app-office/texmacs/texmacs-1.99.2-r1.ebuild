@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="imlib jpeg netpbm pdf qt4 svg spell"
-KEYWORDS="alpha amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
