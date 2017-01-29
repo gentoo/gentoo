@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
 DEPEND=sys-devel/bison sys-devel/flex
 DESCRIPTION=Provides an object-oriented application interface to information in mmCIF format
-EAPI=5
+EAPI=6
 HOMEPAGE=http://sw-tools.pdb.org/apps/CIFPARSE-OBJ/index.html
-KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=PDB
 SLOT=0
-SRC_URI=http://sw-tools.pdb.org/apps/CIFPARSE-OBJ/source/cifparse-obj-v7.025-prod-src.tar.gz
+SRC_URI=http://sw-tools.pdb.org/apps/CIFPARSE-OBJ/source/cifparse-obj-v7.105-prod-src.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=3b58398472b82b60941422d6b346fe12
+_md5_=ed64abed8c2ac29a02e34e17bef8ca36
