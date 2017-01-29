@@ -4,7 +4,7 @@ DESCRIPTION=A message bus system, a simple way for applications to talk to each 
 EAPI=6
 HOMEPAGE=https://dbus.freedesktop.org/
 IUSE=debug doc selinux static-libs systemd test user-session X test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=|| ( AFL-2.1 GPL-2 )
 RDEPEND=>=dev-libs/expat-2 selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd:0= ) X? ( x11-libs/libX11 x11-libs/libXt ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) selinux? ( sec-policy/selinux-dbus )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://dbus.freedesktop.org/releases/dbus/dbus-1.10.14.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:- src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=ec9b78ef1cbe5907966e1acad38da892
+_md5_=ef06a9e7d55613d75bc4739281e9a82f

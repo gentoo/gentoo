@@ -4,11 +4,11 @@ DESCRIPTION=standard informational utilities and process-handling tools
 EAPI=5
 HOMEPAGE=http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps
 IUSE=+kill +ncurses modern-top nls selinux static-libs systemd test unicode
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] ) selinux? ( sys-libs/libselinux ) systemd? ( >=sys-apps/systemd-209 ) kill? ( !sys-apps/coreutils[kill] !sys-apps/util-linux[kill] ) !<sys-apps/sysvinit-2.88-r6
 SLOT=0/5
 SRC_URI=mirror://sourceforge/procps-ng/procps-ng-3.3.12.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=dff651f685f43302360a1ff6ce54b41c
+_md5_=88ec8fda0531a5c8770a1ffdac5c5c42

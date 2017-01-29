@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for FORTRAN 77 BLAS implementation
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
 RDEPEND=|| ( sci-libs/blas-reference >=sci-libs/mkl-9.1.023 sci-libs/acml sci-libs/blas-goto )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=a5dc571a11119f0c7c34fe7f6f574e6b
+_md5_=ef076ce994e41cdb63668e6429e57be0

@@ -7,4 +7,4 @@ LICENSE=LGPL-3
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:subversion pkg_setup:- src_unpack:subversion src_prepare:subversion src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	subversion	750f91bd0705a41b26ba01bcee93aaad	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=e283a3d385f21c2a373738337af6faed
+_md5_=a345885b6b0e4881a10e9b6d9d460479

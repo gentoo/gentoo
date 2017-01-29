@@ -4,11 +4,11 @@ DESCRIPTION=Standard tool to compile source trees
 EAPI=4
 HOMEPAGE=https://www.gnu.org/software/make/make.html
 IUSE=guile nls static
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=guile? ( >=dev-scheme/guile-1.8 ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://gnu//make/make-4.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=79dd231c01fb9b62bfef575a01fda613
+_md5_=a01d76a6e0cc24e437180ddc1c8b8bb8

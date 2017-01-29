@@ -4,11 +4,11 @@ DESCRIPTION=Password Checking Library
 EAPI=5
 HOMEPAGE=https://github.com/cracklib/cracklib/
 IUSE=nls python static-libs test zlib python_targets_python2_7 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint
 LICENSE=LGPL-2.1
 RDEPEND=zlib? ( >=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20140508-r6 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
 SLOT=0
 SRC_URI=https://github.com/cracklib/cracklib/releases/download/cracklib-2.9.6/cracklib-2.9.6.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=7bfb91c0c1d4699727486b1686708cbe
+_md5_=653cea9b4f10afa4af16ef37e35d4929

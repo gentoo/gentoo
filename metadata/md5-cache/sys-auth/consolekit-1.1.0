@@ -4,11 +4,11 @@ DESCRIPTION=Framework for defining and tracking users, login sessions and seats
 EAPI=6
 HOMEPAGE=https://github.com/ConsoleKit2/ConsoleKit2 https://www.freedesktop.org/wiki/Software/ConsoleKit
 IUSE=acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test
-KEYWORDS=alpha amd64 arm hppa ~ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm hppa ~ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.40:2=[dbus] >=sys-devel/gettext-0.19 sys-apps/dbus sys-libs/zlib:= x11-libs/libX11:= acl? ( sys-apps/acl:= >=virtual/udev-200 ) cgroups? ( app-admin/cgmanager >=sys-libs/libnih-1.0.2[dbus] ) pam? ( virtual/pam ) policykit? ( >=sys-auth/polkit-0.110 ) kernel_linux? ( sys-apps/coreutils[acl?] ) pm-utils? ( sys-power/pm-utils ) selinux? ( sec-policy/selinux-consolekit )
 SLOT=0
 SRC_URI=https://github.com/ConsoleKit2/ConsoleKit2/releases/download/1.1.0/ConsoleKit2-1.1.0.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c1086ddb98e8c77433a5a6ae2550d680
+_md5_=9a681c490f314d5fefc4139ab5135299

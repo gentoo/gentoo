@@ -4,11 +4,11 @@ DESCRIPTION=ack is a tool like grep, aimed at programmers with large trees of he
 EAPI=5
 HOMEPAGE=http://betterthangrep.com/ http://search.cpan.org/dist/ack/
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~hppa x86 ~x86-interix ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=Artistic-2
 RDEPEND=>=dev-perl/File-Next-1.100.0 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/ack-2.14.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	f6549146ea31a902e20b5f2e6f244358	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=e881192fa01ca4335e5f1d024fd9ad90
+_md5_=26e96a7d735982ecdc8f65a239ce5861

@@ -15435,7 +15435,7 @@ net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energ
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.4.3 0.4.3-r1 0.4.4 9999: P2P communications protocol
-net-p2p/qbittorrent 3.1.9.2-r1 3.1.12 3.3.4-r1 3.3.7 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.1.9.2-r1 3.1.12 3.3.4-r1 3.3.7 3.3.10 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.5.5c 0.6.0 0.6.1 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu

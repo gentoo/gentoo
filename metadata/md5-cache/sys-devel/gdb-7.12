@@ -4,7 +4,7 @@ DESCRIPTION=GNU debugger
 EAPI=5
 HOMEPAGE=https://sourceware.org/gdb/
 IUSE=+client lzma multitarget nls +python +server test vanilla xml python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
-KEYWORDS=-alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=-alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2
 RDEPEND=server? ( !dev-util/gdbserver ) client? ( >=sys-libs/ncurses-5.2-r2:0= sys-libs/readline:0= lzma? ( app-arch/xz-utils ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) xml? ( dev-libs/expat ) sys-libs/zlib )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) ) || ( client server )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnu/gdb/gdb-7.12.tar.xz ftp://sourceware.org/pub/gdb/releases/gdb-7.12.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1b75b38cb1b85006c39c4dabe0fafb1d
+_md5_=9ce501b96dfb9adf2f76ee3a0b9ff93b

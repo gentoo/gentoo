@@ -9,4 +9,4 @@ RDEPEND=!<sys-apps/pciutils-3.1.9-r2 !<sys-apps/usbutils-005-r1
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	git-r3	6efc2d7de07a77bf72c7207b48d0e123	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	udev	0498b698e76cdc94930b59a00c73dd9c
-_md5_=52182da955a53fc218b090e236d7e0fd
+_md5_=2ed3e2829af1f7b75ba7759dafc1915d
