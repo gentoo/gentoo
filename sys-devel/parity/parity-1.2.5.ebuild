@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND="dev-util/confix"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~x86-interix ~x86-winnt"
+	KEYWORDS="~x86-winnt"
 fi
 
 LICENSE="LGPL-3"
