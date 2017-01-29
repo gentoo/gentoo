@@ -4,7 +4,7 @@ DESCRIPTION=Python bindings for the Bonobo framework
 EAPI=5
 HOMEPAGE=http://pygtk.org/
 IUSE=examples python_targets_python2_7
-KEYWORDS=alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pyorbit-2.24.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=gnome-base/libbonobo-2.24.0 >=gnome-base/libbonoboui-2.24.0 >=dev-python/libgnomecanvas-python-2.28.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] !<dev-python/gnome-python-2.22.1 ~dev-python/gnome-python-base-2.28.1 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -13,4 +13,4 @@ SLOT=2
 SRC_URI=mirror://gnome/sources/gnome-python/2.28/gnome-python-2.28.1.tar.bz2
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:gnome-python-common-r1 src_configure:gnome-python-common-r1 src_compile:gnome-python-common-r1 src_test:gnome-python-common-r1 src_install:gnome-python-common-r1
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome-python-common-r1	f8451e1b2e77778df45f384242e991d1	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=deb3b840a95aca3668a20208ea112aaf
+_md5_=ad19069756b82ca4dd7b69792e43b210

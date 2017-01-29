@@ -4,7 +4,7 @@ DESCRIPTION=A full-featured template engine for Python
 EAPI=5
 HOMEPAGE=http://jinja.pocoo.org/ https://pypi.python.org/pypi/Jinja2
 IUSE=doc examples test python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
 LICENSE=BSD
 RDEPEND=dev-python/markupsafe[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-python/setuptools[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] !dev-python/jinja:compat python_targets_pypy? ( virtual/pypy:0=[threads(+)] ) python_targets_pypy3? ( virtual/pypy3:0=[threads(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=|| ( python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=https://github.com/pallets/jinja/archive/2.9.4.tar.gz -> jinja-2.9.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	f1707af2d2ad4cf700a9e690de6ed855	eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=e28490ada335d44500be61c208b9932e
+_md5_=cb17d18174a41fed4c58f2f11892577c

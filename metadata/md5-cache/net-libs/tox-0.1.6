@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig ) ntox? ( sys-libs/ncurses:0= ) >=dev-libs/libsodium-0.6.1:=[asm,urandom] || ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) || ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) || ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) test? ( dev-libs/check ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Encrypted P2P, messaging, and audio/video calling platform
+EAPI=6
+HOMEPAGE=https://tox.chat
+IUSE=+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+RDEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig ) ntox? ( sys-libs/ncurses:0= ) >=dev-libs/libsodium-0.6.1:=[asm,urandom]
+REQUIRED_USE=^^ ( no-log log-trace log-debug log-info log-warn log-error )
+SLOT=0/0.1
+SRC_URI=https://github.com/TokTok/c-toxcore/releases/download/v0.1.6/c-toxcore-v0.1.6.tar.lz -> tox-0.1.6.tar.lz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:unpacker src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	unpacker	45d07319df5f40ee6af58418b0f930be	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=a5ece5a9456033cbe4f6204272a11ae9
