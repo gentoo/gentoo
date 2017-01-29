@@ -65,7 +65,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=media-libs/freetype-2.0:2
-	media-libs/glew:=
+	media-libs/glew:0=
 	media-libs/libpng:0
 	media-libs/libsamplerate
 	sys-libs/zlib

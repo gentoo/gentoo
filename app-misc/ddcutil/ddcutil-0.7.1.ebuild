@@ -15,7 +15,9 @@ SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.
 # If a user switches drivers, they will need to set different use flags for
 # Xorg or Wayland or Mesa, so this will trigger the rebuild against
 # the different drivers.
-IUSE="enable-api-libs usb-monitor user-permissions video_cards_fglrx video_cards_nvidia"
+# Remove ATI/AMD driver since it's masked for removal.
+# Will most likely need to set this for AMDGPU when in portage.
+IUSE="enable-api-libs usb-monitor user-permissions video_cards_nvidia"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,8 +32,7 @@ RDEPEND="x11-libs/libXrandr
 		dev-libs/hidapi
 		virtual/libusb:1
 		sys-apps/usbutils )"
-DEPEND="video_cards_fglrx? ( x11-libs/amd-adl-sdk )
-	virtual/pkgconfig
+DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 pkg_pretend() {
@@ -54,11 +55,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# Python API is still very experimental. Upstream recommends not using it.
+	# Python API is still very experimental.
 	local myeconfargs=(
-		$(use_enable enable-api-libs)
+		$(use_enable enable-api-libs lib)
 		$(use_enable usb-monitor usb)
-		$(usex video_cards_fglrx "--with-adl-headers=/usr/include/ADL" "")
 		--disable-swig
 	)
 
