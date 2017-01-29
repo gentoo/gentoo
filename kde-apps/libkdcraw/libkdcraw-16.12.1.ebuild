@@ -17,3 +17,5 @@ DEPEND="
 	>=media-libs/libraw-0.16:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-ecm531.patch" )
