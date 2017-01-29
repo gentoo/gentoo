@@ -42,7 +42,6 @@ S=${WORKDIR}/${MY_P}
 DOCS="AUTHORS NEWS README"
 
 src_prepare() {
-	append-libs -lgio-2.0
 	if ! use doc ; then
 		sed -i -e '/^SUBDIRS = /s/docs//' Makefile.in || die
 	fi

@@ -26,12 +26,12 @@ DEPEND=">=dev-libs/libsodium-1.0.11:=
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=("${FILESDIR}/${P}-libsodium-so.patch")
-MYCMAKEARGS="-DOPENMITTSU_DISABLE_VERSION_UPDATE_CHECK=ON"
 
-DOCS="README.md
-	Example-client-configuration-file.ini
-	Example-contacts-file.txt"
+DOCS=(
+	"README.md"
+	"Example-client-configuration-file.ini"
+	"Example-contacts-file.txt"
+)
 
 src_prepare() {
 	# set version manually, since autodetection works only with git
@@ -39,5 +39,11 @@ src_prepare() {
 		s/.*/set(OPENMITTSU_GIT_VERSION_STRING \"${PV/_p/-}-00000000\")/" \
 		CMakeLists.txt || die
 
+	eapply "${FILESDIR}"/${P}-libsodium-so.patch
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=("-DOPENMITTSU_DISABLE_VERSION_UPDATE_CHECK=ON")
+	cmake-utils_src_configure
 }
