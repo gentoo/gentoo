@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-73">
+  <title>SQUASHFS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in SQUASHFS, the
+    worst of which may allow execution of arbitrary code
+  </synopsis>
+  <product type="ebuild">squashfs</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>552484</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-fs/squashfs-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.3-r1</unaffected>
+      <vulnerable range="lt">4.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Squashfs is a compressed read-only filesystem for Linux. Squashfs is
+      intended for general read-only filesystem use, for archival use (i.e. in
+      cases where a .tar.gz file may be used), and in constrained block
+      device/memory systems (e.g. embedded systems) where low overhead is
+      needed.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SQUASHFS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to process a specially crafted
+      SQUASHFS image, could execute arbitrary code with the privileges of the
+      process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SQUASHFS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/squashfs-tools-4.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4645">CVE-2015-4645</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4646">CVE-2015-4646</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-19T10:43:44Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:58:33Z">b-man</metadata>
+</glsa>
