@@ -13518,7 +13518,7 @@ media-sound/flack 2.0.6: flack - edit FLAC tags from command line
 media-sound/flacon 2.0.1-r1 2.1.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 1.1.6 1.1.6-r1: Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 1.1.6-r1: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15 1.0.15-r1: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
