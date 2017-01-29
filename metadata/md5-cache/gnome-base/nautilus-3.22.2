@@ -4,7 +4,7 @@ DESCRIPTION=A file manager for the GNOME desktop
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/Nautilus
 IUSE=exif gnome +introspection packagekit +previewer selinux sendto tracker xmp test
-KEYWORDS=~amd64 ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux
+KEYWORDS=~amd64 ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-2+ LGPL-2+ FDL-1.1
 PDEPEND=gnome? ( x11-themes/adwaita-icon-theme ) tracker? ( >=gnome-extra/nautilus-tracker-tags-0.12 ) previewer? ( >=gnome-extra/sushi-0.1.9 ) sendto? ( >=gnome-extra/nautilus-sendto-3.0.1 ) >=gnome-base/gvfs-1.14[gtk]
 RDEPEND=>=app-arch/gnome-autoar-0.1 >=dev-libs/glib-2.49.1:2[dbus] >=x11-libs/pango-1.28.3 >=x11-libs/gtk+-3.21.6:3[introspection?] >=dev-libs/libxml2-2.7.8:2 >=gnome-base/gnome-desktop-3:3= gnome-base/dconf >=gnome-base/gsettings-desktop-schemas-3.8.0 x11-libs/libX11 x11-libs/libXext x11-libs/libXrender exif? ( >=media-libs/libexif-0.6.20 ) introspection? ( >=dev-libs/gobject-introspection-0.6.4:= ) selinux? ( >=sys-libs/libselinux-2 ) tracker? ( >=app-misc/tracker-0.16:= ) xmp? ( >=media-libs/exempi-2.1.0 ) packagekit? ( app-admin/packagekit-base ) sendto? ( !<gnome-extra/nautilus-sendto-3.0.1 )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://gnome/sources/nautilus/3.22/nautilus-3.22.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:- src_prepare:- src_configure:- src_compile:gnome2 src_test:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=23234ec51fd5438df4158d4e874c0514
+_md5_=d433d5c06baa8a2c006f9c0b628c4209

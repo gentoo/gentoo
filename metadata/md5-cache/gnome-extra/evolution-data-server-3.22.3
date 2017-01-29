@@ -4,7 +4,7 @@ DESCRIPTION=Evolution groupware backend
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/Evolution
 IUSE=api-doc-extras berkdb +gnome-online-accounts +gtk google +introspection ipv6 ldap kerberos vala +weather test
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=|| ( LGPL-2 LGPL-3 ) BSD Sleepycat
 RDEPEND=>=app-crypt/gcr-3.4 >=app-crypt/libsecret-0.5[crypt] >=dev-db/sqlite-3.7.17:= >=dev-libs/glib-2.46:2 >=dev-libs/libgdata-0.10:= >=dev-libs/libical-0.43:= >=dev-libs/libxml2-2 >=dev-libs/nspr-4.4:= >=dev-libs/nss-3.9:= >=net-libs/libsoup-2.42:2.4 dev-libs/icu:= sys-libs/zlib:= virtual/libiconv berkdb? ( >=sys-libs/db-4:= ) gtk? ( >=app-crypt/gcr-3.4[gtk] >=x11-libs/gtk+-3.10:3 ) google? ( >=dev-libs/json-glib-1.0.4 >=dev-libs/libgdata-0.15.1:= >=net-libs/webkit-gtk-2.11.91:4 ) gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= ) introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) kerberos? ( virtual/krb5:= ) ldap? ( >=net-nds/openldap-2:= ) weather? ( >=dev-libs/libgweather-3.10:2= )
 REQUIRED_USE=vala? ( introspection )
@@ -13,4 +13,4 @@ SLOT=0/59
 SRC_URI=mirror://gnome/sources/evolution-data-server/3.22/evolution-data-server-3.22.3.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:- src_prepare:- src_configure:- src_compile:gnome2 src_test:- src_install:-
 _eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	vala	ca3f1c504058f5de407febddfae73167	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=3e78b11cdd1abf1b9f3918868ad2304a
+_md5_=75029ebe1738b9293755aace7fa91d3b

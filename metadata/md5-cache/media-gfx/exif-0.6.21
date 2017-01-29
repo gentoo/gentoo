@@ -4,10 +4,10 @@ DESCRIPTION=Small CLI util to show EXIF infos hidden in JPEG files
 EAPI=4
 HOMEPAGE=http://libexif.sourceforge.net/
 IUSE=nls
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=dev-libs/popt >=media-libs/libexif-0.6.21
 SLOT=0
 SRC_URI=mirror://sourceforge/libexif/exif-0.6.21.tar.bz2
 _eclass_exported_funcs=src_configure:-
-_md5_=84a6416e1eed506f1885cb3a812019ef
+_md5_=31cc6d2449e16934395d7302b7fcf90b
