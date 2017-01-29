@@ -1,5 +1,5 @@
---- libsidplay/include/sidplay/SmartPtr.h
-+++ libsidplay/include/sidplay/SmartPtr.h
+--- a/libsidplay/include/sidplay/SmartPtr.h
++++ b/libsidplay/include/sidplay/SmartPtr.h
 @@ -211,16 +211,16 @@
  	{
  		if ( bufferLen >= 1 )
@@ -24,8 +24,8 @@
  		}
  	}
  };
---- libsidutils/include/sidplay/utils/SidUsage.h
-+++ libsidutils/include/sidplay/utils/SidUsage.h
+--- a/libsidutils/include/sidplay/utils/SidUsage.h
++++ b/libsidutils/include/sidplay/utils/SidUsage.h
 @@ -33,7 +33,7 @@
      uint_least16_t length;  // usage scan length
  

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}2-gcc41.patch \
+		"${FILESDIR}"/${P}-gcc41.patch \
 		"${FILESDIR}"/${P}-fbsd.patch \
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-no_libtool_reference.patch
