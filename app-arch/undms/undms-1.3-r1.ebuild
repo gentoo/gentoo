@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ SRC_URI="ftp://us.aminet.net/pub/aminet/misc/unix/${P}.c.Z ftp://us.aminet.net/p
 HOMEPAGE="ftp://us.aminet.net/pub/aminet/misc/unix/"
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-interix ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 S="${WORKDIR}"
