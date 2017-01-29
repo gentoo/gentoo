@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,21 +10,24 @@ inherit cmake-utils python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="Video editing library used by OpenShot"
 HOMEPAGE="http://www.openshotvideo.com/"
-SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://github.com/OpenShot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+imagemagick libav +python test"
+# https://github.com/OpenShot/libopenshot/issues/43
+RESTRICT="test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	net-libs/cppzmq
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
 	media-libs/libopenshot-audio
-	imagemagick? ( media-gfx/imagemagick:0[cxx] )
+	imagemagick? ( media-gfx/imagemagick:0=[cxx] )
 	libav? ( media-video/libav:=[encode,x264,xvid,vpx,mp3,theora] )
 	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
 	python? ( ${PYTHON_DEPS} )
@@ -35,10 +38,8 @@ DEPEND="
 	test? ( dev-libs/unittest++ )
 "
 
-# https://github.com/OpenShot/libopenshot/pull/19
-PATCHES=( "${FILESDIR}/${PN}-0.1.0-fix-tests-exit-code.patch" )
-
-S="${WORKDIR}"
+# https://github.com/OpenShot/libopenshot/pull/45
+PATCHES=( ${FILESDIR}/${P}-fix-tests.patch )
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then
@@ -65,18 +66,20 @@ src_configure() {
 		-DENABLE_PYTHON=$(usex python)
 		-DCMAKE_DISABLE_FIND_PACKAGE_ImageMagick=$(usex !imagemagick)
 	)
-	if use python; then
-		mycmakeargs+=(
-			-DPYTHON_EXECUTABLE="${PYTHON}"
-			-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
-			-DPYTHON_LIBRARY="$(python_get_library_path)"
-		)
-	fi
+	use python && mycmakeargs+=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
+		-DPYTHON_LIBRARY="$(python_get_library_path)"
+	)
 	cmake-utils_src_configure
 }
 
 src_test() {
-	pushd "${BUILD_DIR}/tests" > /dev/null || die
-	./openshot-test || die "Tests failed"
-	popd > /dev/null || die
+	cd "${BUILD_DIR}" || die
+	emake test
+}
+
+src_install() {
+	cmake-utils_src_install
+	python_optimize
 }

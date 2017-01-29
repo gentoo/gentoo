@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/PyQt5[svg,webkit,${PYTHON_USEDEP}]
 	media-libs/libopenshot[python,${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/pyzmq[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -36,7 +37,7 @@ src_prepare() {
 	# prevent setup.py from trying to update MIME databases
 	sed -i 's/^ROOT =.*/ROOT = False/' setup.py || die
 	xdg_src_prepare
-	distutils-r1_python_prepare_all
+	distutils-r1_src_prepare
 }
 
 pkg_preinst() {

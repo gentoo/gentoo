@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-kde-styles.patch" )
+
 src_configure() {
 	eqmake5 DEFINES="$(usex systray '' QT_NO_SYSTEMTRAYICON)" ${PN}.pro
 }

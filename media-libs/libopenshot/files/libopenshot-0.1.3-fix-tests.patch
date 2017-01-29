@@ -1,0 +1,26 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 29fbe45..ff67cb5 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -24,16 +24,19 @@
+ # along with OpenShot Library. If not, see <http://www.gnu.org/licenses/>.
+ ################################################################################
+ 
++SET(TEST_MEDIA_PATH "${openshot_SOURCE_DIR}/src/examples/")
+ 
+ ################ WINDOWS ##################
+ # Set some compiler options for Windows
+ # required for libopenshot-audio headers
+ IF (WIN32)
+-	STRING(REPLACE "/" "\\\\" TEST_MEDIA_PATH "${openshot_SOURCE_DIR}/src/examples/")
+-	add_definitions( -DIGNORE_JUCE_HYPOT=1 -DTEST_MEDIA_PATH="${TEST_MEDIA_PATH}" )
++	STRING(REPLACE "/" "\\\\" TEST_MEDIA_PATH TEST_MEDIA_PATH)
++	add_definitions( -DIGNORE_JUCE_HYPOT=1 )
+ 	SET(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -include cmath -std=c++0x")
+ ENDIF(WIN32)
+ 
++add_definitions( -DTEST_MEDIA_PATH="${TEST_MEDIA_PATH}" )
++
+ ################### UNITTEST++ #####################
+ # Find UnitTest++ libraries (used for unit testing)
+ FIND_PACKAGE(UnitTest++ REQUIRED)

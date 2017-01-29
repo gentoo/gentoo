@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ CDEPEND="
 	x11-libs/pango
 	>=x11-libs/cairo-1.2.0
 	x11-libs/gdk-pixbuf
-	dev-scheme/guile
+	>=dev-scheme/guile-2.0.0
 	nls? ( virtual/libintl )
 	stroke? ( >=dev-libs/libstroke-0.5.1 )"
 
