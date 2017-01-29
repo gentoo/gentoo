@@ -4,7 +4,7 @@ DESCRIPTION=RAW Image format viewer and GIMP plugin
 EAPI=5
 HOMEPAGE=http://ufraw.sourceforge.net/
 IUSE=contrast fits gimp gnome gtk openmp timezone
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2= >=media-gfx/exiv2-0.11:0= media-libs/lcms:2= >=media-libs/lensfun-0.2.5:= media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= fits? ( sci-libs/cfitsio:0= ) gnome? ( >=gnome-base/gconf-2 ) gtk? ( >=x11-libs/gtk+-2.6:2 >=media-gfx/gtkimageview-1.5 ) gimp? ( >=media-gfx/gimp-2 )
 REQUIRED_USE=gimp? ( gtk )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/ufraw/ufraw-0.21.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=ad8e6cb6853b21ea7ffdb77c99152c06
+_md5_=615ce26a73e13c7db6ac2c0b9fe69822

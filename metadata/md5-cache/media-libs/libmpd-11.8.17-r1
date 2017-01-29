@@ -4,11 +4,11 @@ DESCRIPTION=A library handling connections to a MPD server
 EAPI=4
 HOMEPAGE=http://gmpc.wikia.com/wiki/Libmpd
 IUSE=doc static-libs
-KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-interix ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16:2
 SLOT=0
 SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/libmpd-11.8.17.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=23a64e73b04af92ba51f469b79e18bc4
+_md5_=03d001bbe2ec975e1a5a1d44cf53b336

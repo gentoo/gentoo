@@ -4,11 +4,11 @@ DESCRIPTION=Interactive image manipulation program supporting a wide variety of 
 EAPI=5
 HOMEPAGE=http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html
 IUSE=jpeg tiff png
-KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=xv
 RDEPEND=x11-libs/libXt jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0 ) png? ( >=media-libs/libpng-1.2:0= sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/png-mng/xv-3.10a-jumbo-patches-20070520.tar.gz ftp://ftp.cis.upenn.edu/pub/xv/xv-3.10a.tar.gz mirror://gentoo/xv-3.10a.png.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=125d55e768682a4b46828c63feddeb5a
+_md5_=c3e5ce91e0696776a2938aace913e4bd

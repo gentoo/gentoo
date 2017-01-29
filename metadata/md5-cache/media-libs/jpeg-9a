@@ -4,11 +4,11 @@ DESCRIPTION=Library to load, handle and manipulate images in the JPEG format
 EAPI=5
 HOMEPAGE=http://jpegclub.org/ http://www.ijg.org/
 IUSE=static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=IJG
 RDEPEND=!media-libs/libjpeg-turbo:0 abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r5 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
 SLOT=0
 SRC_URI=http://www.ijg.org/files/jpegsrc.v9a.tar.gz mirror://debian/pool/main/libj/libjpeg8/libjpeg8_8d-1.debian.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=7232efd1430207ee7b04854ee5700b27
+_md5_=625042efa21ba75cfcea59b736afbea9

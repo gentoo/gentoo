@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/glib-2.35.1:2[dbus] >=media-libs/libcanberra-0.26-r2[gtk3] x11
 DESCRIPTION=Screenshot utility for GNOME
 EAPI=6
 HOMEPAGE=https://git.gnome.org/browse/gnome-screenshot
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.35.1:2[dbus] >=media-libs/libcanberra-0.26-r2[gtk3] x11-libs/cairo x11-libs/gdk-pixbuf >=x11-libs/gtk+-3.0.3:3 x11-libs/libX11 x11-libs/libXext >=gnome-base/gsettings-desktop-schemas-0.1.0 !<gnome-extra/gnome-utils-3.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-screenshot/3.22/gnome-screenshot-3.22.0.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:- src_prepare:gnome2 src_configure:gnome2 src_compile:gnome2 src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=7d32d4e00db11ca576af407282469320
+_md5_=28d47b5fe6afafed46f815271bf1923d

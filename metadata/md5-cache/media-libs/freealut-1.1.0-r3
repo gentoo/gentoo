@@ -4,11 +4,11 @@ DESCRIPTION=The OpenAL Utility Toolkit
 EAPI=5
 HOMEPAGE=http://www.openal.org/
 IUSE=static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-2
 RDEPEND=abi_x86_32? ( !app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)] !<=app-emulation/emul-linux-x86-sdl-20140406 ) >=media-libs/openal-1.15.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=http://connect.creativelabs.com/openal/Downloads/ALUT/freealut-1.1.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=bfe93ee576681b4b4bb6dca823d76ca3
+_md5_=b796b180aa34c2513e35f611c55a7c68

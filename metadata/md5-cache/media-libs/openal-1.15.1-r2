@@ -4,11 +4,11 @@ DESCRIPTION=A software implementation of the OpenAL 3D audio API
 EAPI=5
 HOMEPAGE=http://kcat.strangesoft.net/openal.html
 IUSE=alsa coreaudio debug neon oss portaudio pulseaudio cpu_flags_x86_sse abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-2
 RDEPEND=alsa? ( >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) portaudio? ( >=media-libs/portaudio-19_pre20111121-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) abi_x86_32? ( !<app-emulation/emul-linux-x86-sdl-20131008-r1 !app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)] )
 SLOT=0
 SRC_URI=http://kcat.strangesoft.net/openal-releases/openal-soft-1.15.1.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-multilib src_test:cmake-multilib src_install:cmake-multilib
 _eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=823c2d2885f09a96c1a865a1c6ed98c2
+_md5_=030aa7b7c8dcca9a4e8d0b9a473a84a4

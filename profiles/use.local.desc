@@ -8012,6 +8012,7 @@ www-apps/wordpress:akismet - Installs Akismet comment spam plug-in
 www-apps/wordpress:themes - Installs themes (including default theme)
 www-client/chromium:component-build - Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.
 www-client/chromium:gconf - Enable support for GConf to retrieve system settings
+www-client/chromium:gn - Use GN (generate ninja) instead of GYP for building
 www-client/chromium:gtk3 - Use gtk3 instead of gtk2
 www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
 www-client/chromium:pic - Disable optimized assembly code that is not PIC friendly

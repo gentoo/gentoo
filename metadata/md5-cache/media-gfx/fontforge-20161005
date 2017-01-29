@@ -4,7 +4,7 @@ DESCRIPTION=postscript font editor and converter
 EAPI=6
 HOMEPAGE=http://fontforge.github.io/
 IUSE=cairo truetype-debugger gif gtk jpeg png +python readline tiff svg unicode X python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=BSD GPL-3+
 RDEPEND=dev-libs/libltdl:0 dev-libs/libxml2:2= >=media-libs/freetype-2.3.7:2= cairo? ( >=x11-libs/cairo-1.6:0= x11-libs/pango:0= ) gif? ( media-libs/giflib:0= ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) truetype-debugger? ( >=media-libs/freetype-2.3.8:2[fontforge,-bindist(-)] ) gtk? ( x11-libs/gtk+:2= ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) readline? ( sys-libs/readline:0= ) unicode? ( media-libs/libuninameslist:0= ) X? ( x11-libs/libX11:0= x11-libs/libXi:0= >=x11-libs/pango-1.10:0=[X] ) !media-gfx/pfaedit
 REQUIRED_USE=cairo? ( png ) python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/fontforge/fontforge/releases/download/20161005/fontforge-20161005.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	19a74c6b5c191723a997dc7e0cc6bb09	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b28bf648dadd8190767dd9b0da3da74f
+_md5_=e398c73898868d02c07aba7b94d65aef

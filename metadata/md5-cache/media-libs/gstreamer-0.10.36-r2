@@ -4,11 +4,11 @@ DESCRIPTION=Streaming media framework
 EAPI=5
 HOMEPAGE=https://gstreamer.freedesktop.org/
 IUSE=+introspection nls +orc test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.34.3:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( >=dev-libs/gobject-introspection-0.6.8 ) abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r5 !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] ) !<media-libs/gst-plugins-base-0.10.26
 SLOT=0.10
 SRC_URI=https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-0.10.36.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b2852ec4098bcddcd92a8c882b8ac590
+_md5_=534054e19fb8f1aaf1bb6b3f44f43ad4
