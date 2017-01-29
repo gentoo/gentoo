@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/adflib.zip"
 HOMEPAGE="http://lclevy.free.fr/adflib/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="hppa ppc x86 ~x86-interix ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="hppa ppc x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 DEPEND="app-arch/unzip
 		x11-misc/makedepend"
