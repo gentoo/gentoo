@@ -12,7 +12,7 @@ DESCRIPTION="A date and time object"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86 ~ppc-aix ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 
 CONFLICTS="
