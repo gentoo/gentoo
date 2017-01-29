@@ -11,7 +11,7 @@ HOMEPAGE="http://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 SLOT="0"
 IUSE="+alsa wifi"
 
