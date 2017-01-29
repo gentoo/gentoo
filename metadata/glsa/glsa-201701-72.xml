@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-72">
+  <title>libXpm: Remote execution of arbitrary code</title>
+  <synopsis>An integer overflow in libXpm might allow remote attackers to
+    execute arbitrary code or cause a Denial of Service Condition.
+  </synopsis>
+  <product type="ebuild">libxpm</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>602782</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/libXpm" auto="yes" arch="*">
+      <unaffected range="ge">3.5.12</unaffected>
+      <vulnerable range="lt">3.5.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X PixMap image format is an extension of the monochrome X BitMap
+      format specified in the X protocol, and is commonly used in traditional X
+      applications.
+    </p>
+  </background>
+  <description>
+    <p>An integer overflow was discovered in libXpm’s src/CrDatFrI.c file. 
+      On 64 bit systems, this allows an overflow to occur on 32 bit integers
+      while parsing XPM extensions in a file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted XPM
+      file, could execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libXpm users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXpm-3.5.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10164">
+      CVE-2016-10164
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-26T15:22:27Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T16:58:23Z">b-man</metadata>
+</glsa>
