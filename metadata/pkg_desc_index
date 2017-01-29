@@ -10452,7 +10452,7 @@ games-action/nighthawk 2.2 2.2-r1: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a 0.51a-r1: Abstract Shooting Game
 games-action/openastromenace 1.3.2 1.3.2-r1: Modern 3D space shooter with spaceship upgrade possibilities
 games-action/openclonk 7.0: A free multiplayer action game where you control clonks
-games-action/openlierox 0.58_rc3 0.58_rc3-r1: Real-time excessive Worms-clone
+games-action/openlierox 0.58_rc3-r1: Real-time excessive Worms-clone
 games-action/orbital-eunuchs-sniper 1.30 1.30-r1: Snipe terrorists from your orbital base
 games-action/phobiaii 1.1 1.1-r1: Just a moment ago, you were safe inside your ship, behind five inch armour
 games-action/postalplus 1 1-r1: Ultraviolent and controversial game featuring the Postal Dude
@@ -12805,7 +12805,7 @@ media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 a
 media-libs/libXcm 0.5.2-r1 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.7.1 0.8.0 0.8.1: Open implementation of the Advanced Access Content System (AACS) specification
-media-libs/libafterimage 1.20 1.20-r1 1.20-r2: Afterstep's standalone generic image manipulation library
+media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.0: The Audio Output library
 media-libs/libaom 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
@@ -13640,7 +13640,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18 0.19.19 0.19.21: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.19 0.19.21: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
@@ -13878,7 +13878,7 @@ media-video/cinelerra 20140710 20150908: The most advanced non-linear video edit
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
-media-video/devedeng 4.8.5 4.8.6: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
+media-video/devedeng 4.8.5 4.8.6 4.8.7 9999: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
 media-video/dfbsee 0.7.4-r1: an image viewer and video player based on DirectFB
 media-video/dirac 1.0.2 1.0.2-r1: Open Source video codec
 media-video/dv2sub 0.3: extract info or subtitles from DV stream
@@ -16967,7 +16967,7 @@ sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
 sys-apps/lm_sensors 3.3.4-r1 3.3.5 3.4.0 3.4.0_p20160725: Hardware Monitoring user-space utilities
 sys-apps/lmctfy 0.2.0 0.3.0 0.3.1 0.5.0 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
-sys-apps/logwatch 7.4.0_p170-r1 7.4.2 7.4.3: Analyzes and Reports on system logs
+sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
 sys-apps/lsadb 0.1.3: Prints out information on all devices attached to the ADB bus
 sys-apps/lsb-release 1.4 1.4-r1 1.4-r2 1.4-r3: LSB version query program
@@ -18176,7 +18176,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6.1 4.7 4.7.1 4.7.2: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 55.0.2883.75 56.0.2924.76 57.0.2986.0 57.0.2987.8: Open-source version of Google Chrome web browser
+www-client/chromium 55.0.2883.75 56.0.2924.76 57.0.2987.8 57.0.2987.13: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
