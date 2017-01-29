@@ -24,7 +24,6 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	sys-apps/openrc
 	virtual/logger
 "
 
