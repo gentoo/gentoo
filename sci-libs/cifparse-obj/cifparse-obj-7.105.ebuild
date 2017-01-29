@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="http://sw-tools.pdb.org/apps/CIFPARSE-OBJ/source/${MY_P}.tar.gz"
 
 LICENSE="PDB"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 RDEPEND=""
@@ -24,13 +24,13 @@ DEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${PN}-7.025-gcc5_6.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-makefile.patch \
-		"${FILESDIR}"/${P}-gcc4.3.patch \
-		"${FILESDIR}"/${P}-gcc4.7.patch \
-		"${FILESDIR}"/${P}-gcc5_6.patch \
-		"${FILESDIR}"/${PN}-7.025-strncasecmp-declaration.patch
+	default
 
 	sed \
 		-e "s:^\(CC=\).*:\1$(tc-getCC):g" \
@@ -43,7 +43,9 @@ src_prepare() {
 
 src_compile() {
 	# parallel make fails
-	emake -j1
+	emake -j1 \
+		C_OPT="${CFLAGS}" \
+		CXX_OPT="${CXXFLAGS}"
 }
 
 src_install() {

@@ -10,7 +10,7 @@ index ff0ab51..1b56ab1 100755
      Linux)
  #     Check if it is GCC version 4.x
 -      gcc_ver=`gcc --version | grep -e " 4\."`
-+      gcc_ver=`gcc --version | grep -e " [45]\."`
++      gcc_ver=`gcc --version | grep -e " [456]\."`
        if [[ -z $gcc_ver ]]
        then
  #       It is not GCC version 4.x. Check if it is GCC version 3.x
