@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=app-arch/snappy dev-libs/boost sys-devel/make >=dev-util/cmake-3.5.2
 DESCRIPTION=low-level IO storage which packs data into sorted compressed blobs
-EAPI=4
+EAPI=6
 HOMEPAGE=http://reverbrain.com/smack/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~patrick/smack-0.5.0.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=acc2c746f86ca3fa15e3cd5bd2d9e147
+_md5_=5e93651bf89e2badae7bb8094796e16b
