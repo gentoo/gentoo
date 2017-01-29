@@ -10,4 +10,7 @@ DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD), suitables
 
 The suffix NG is because it is a rewrite from scratch of the old Devede, to work with Python3 and Gtk3, and with a new internal architecture that allows to expand it and easily add new features.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rastersoft/devedeng</remote-id>
+	</upstream>
 </pkgmetadata>
