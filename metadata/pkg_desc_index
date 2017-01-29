@@ -16896,7 +16896,7 @@ sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.25 5.29 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
 sys-apps/firejail 0.9.44.4 0.9.44.8: Security sandbox for any type of processes
-sys-apps/firejail-lts 0.9.38.8 0.9.38.10: Security sandbox for any type of processes; LTS branch
+sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
@@ -18541,7 +18541,7 @@ x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send &
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
 x11-libs/libva 1.6.2 1.7.3 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 1.7.2 1.7.3 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-vdpau-driver 0.7.4-r4 9999: VDPAU Backend for Video Acceleration (VA) API
+x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.20.1: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12 1.12-r2: X C-language Bindings library
