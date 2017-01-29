@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201701-74">
+  <title>libpng: Remote execution of arbitrary code</title>
+  <synopsis>A null pointer dereference in libpng might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>2017-01-29</announced>
+  <revised>2017-01-29: 1</revised>
+  <bug>604082</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge">1.6.27</unaffected>
+      <unaffected range="ge" slot="1.5">1.5.28</unaffected>
+      <unaffected range="ge" slot="1.2">1.2.57</unaffected>
+      <vulnerable range="lt">1.6.27</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>A null pointer dereference was discovered in libpng in the
+      png_push_save_buffer function.  In order to be vulnerable, an application
+      has to load a text chunk into the PNG structure, then delete all text,
+      then add another text chunk to the same PNG structure, which seems to be
+      an unlikely sequence, but it is possible.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted PNG
+      file, could execute arbitrary code with the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng 1.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.6.27"
+    </code>
+    
+    <p>All libpng 1.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.5.28:1.5"
+    </code>
+    
+    <p>All libpng 1.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.2.57:1.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-10087">
+      CVE-2016-10087
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-01-18T08:20:53Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2017-01-29T17:07:28Z">b-man</metadata>
+</glsa>
