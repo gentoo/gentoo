@@ -14,7 +14,7 @@ SRC_URI="http://matt.immute.net/src/mtail/mtail-${PV}.tgz
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND=${PYTHON_DEPS}
