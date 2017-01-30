@@ -23,8 +23,6 @@ ppc-aix
 x86-freebsd
 x64-freebsd
 sparc64-freebsd
-hppa-hpux
-ia64-hpux
 x86-interix
 amd64-linux
 arm-linux

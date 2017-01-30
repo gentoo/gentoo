@@ -319,11 +319,6 @@ x86-winnt		prefix/windows/winnt/6.1/x86			exp
 x86-cygwin		prefix/windows/cygwin/x86			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
 
-# HP-UX Profiles
-ia64-hpux		prefix/hpux/B.11.23/ia64			exp
-hppa-hpux		prefix/hpux/B.11.31/hppa2.0			exp
-ia64-hpux		prefix/hpux/B.11.31/ia64			exp
-
 # FreeBSD Profiles
 x86-freebsd		prefix/bsd/freebsd/7.1/x86			exp
 x64-freebsd		prefix/bsd/freebsd/7.1/x64			exp
