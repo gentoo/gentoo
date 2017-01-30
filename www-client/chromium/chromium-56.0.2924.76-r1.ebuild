@@ -155,13 +155,6 @@ For other desktop environments, try one of the following:
 - x11-themes/tango-icon-theme
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-system-ffmpeg-r4.patch"
-	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-glibc-2.24.patch"
-	"${FILESDIR}/${PN}-56-gcc4.patch"
-)
-
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
@@ -201,6 +194,14 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${PN}-widevine-r1.patch"
+		"${FILESDIR}/${PN}-glibc-2.24.patch"
+		"${FILESDIR}/${PN}-56-gcc4.patch"
+	)
+
+	use system-ffmpeg && PATCHES+=( "${FILESDIR}/${PN}-system-ffmpeg-r4.patch" )
+
 	default
 
 	local keeplibs=(
