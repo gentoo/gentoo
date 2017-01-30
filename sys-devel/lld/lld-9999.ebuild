@@ -9,7 +9,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-any-r1
+inherit cmake-utils git-r3 llvm python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="http://llvm.org/"
@@ -34,6 +34,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -53,7 +54,6 @@ src_unpack() {
 }
 
 src_configure() {
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 
