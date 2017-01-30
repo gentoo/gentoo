@@ -655,9 +655,7 @@ sys-fs/bedup
 =app-emulation/vmware-modules-271*
 
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
-# Masked for testing and other various issues.
-=net-fs/samba-4.3*
-=net-fs/samba-4.4*
+# Masked for testing.
 >=net-fs/samba-4.6.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
