@@ -22,7 +22,6 @@ RDEPEND="
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
-	x86-interix? ( dev-libs/gnulib )
 	elibc_mintlib? ( virtual/libiconv )"
 
 src_unpack() {
@@ -51,11 +50,6 @@ src_compile() {
 	tc-export CC
 	use nls && use !elibc_glibc && append-libs -lintl
 	[[ ${CHOST} == *-mint* ]] && append-libs "-liconv"
-	if [[ ${CHOST} == *-irix* || ${CHOST} == *-interix[35]* ]] ; then
-		append-flags -I"${EPREFIX}"/usr/$(get_libdir)/gnulib/include
-		append-ldflags -L"${EPREFIX}"/usr/$(get_libdir)/gnulib/$(get_libdir)
-		append-libs -lgnu
-	fi
 
 	local subdir
 	for subdir in src man $(usex nls po ''); do
