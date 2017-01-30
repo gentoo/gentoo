@@ -316,12 +316,6 @@ dev-php/propel-runtime
 =x11-misc/alock-94-r1
 =x11-misc/alock-94-r2
 
-# David Seifert <soap@gentoo.org> (29 Dec 2016)
-# Ancient codebase, maintenance nightmare, dead
-# upstream, games-emulation/vbam is spiritual successor
-# Removal in 30 days, #598607
-games-emulation/visualboyadvance
-
 # Hans de Graaff <graaff@gentoo.org> (13 Dec 2016)
 # Mask Rails 4.1.x for removal.
 # This version of Rails has not been supported upstream since Rails
@@ -340,16 +334,6 @@ dev-ruby/activesupport:4.1
 # Still depends on activerecord:4.1. No newer upstream version that
 # depends on a newer version.
 net-misc/termtter
-
-# David Seifert <soap@gentoo.org> (27 Dec 2016)
-# Fails with more recent boost, dead upstream (bug #600548).
-dev-cpp/luabind
-games-rpg/valyriatear
-
-# David Seifert <soap@gentoo.org> (20 Dec 2016)
-# Masked for being completely broken and unusable (bug 586356).
-# No reverse dependencies. Masked for removal in 30 days.
-net-analyzer/snips
 
 # Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
 # Dev channel releases are only for people who are developers or want more
