@@ -1,0 +1,29 @@
+Adds checking if python is disabled around test if python libraries are installed.
+
+This patch is a slightly cleaned up copy of 4.3.3-nopython-lib_tdb_wscript.patch
+from below package of patches used to disable python in the samba ebuild.
+
+https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.5.0_rc1.tar.xz
+
+--- lib/tdb/wscript
++++ lib/tdb/wscript
+@@ -77,16 +77,16 @@
+     conf.env.standalone_tdb = conf.IN_LAUNCH_DIR()
+     conf.env.building_tdb = True
+
++    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
++
+     if not conf.env.standalone_tdb:
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('tdb', minversion=VERSION,
+                                      implied_deps='replace'):
+             conf.define('USING_SYSTEM_TDB', 1)
+             conf.env.building_tdb = False
+-            if conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
++            if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
+                 conf.define('USING_SYSTEM_PYTDB', 1)
+
+-    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
+-
+     if (conf.CONFIG_SET('HAVE_ROBUST_MUTEXES') and
+         conf.env.building_tdb and
+         not conf.env.disable_tdb_mutex_locking):

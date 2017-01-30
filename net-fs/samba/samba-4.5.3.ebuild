@@ -26,7 +26,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 IUSE="acl addc addns ads client cluster cups dmapi fam gnutls iprint
-ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind zeroconf"
+ldap pam python quota selinux syslog +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/policy.h
@@ -40,7 +40,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
-CDEPEND="${PYTHON_DEPS}
+CDEPEND="
+	python? ( ${PYTHON_DEPS} )
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
 	dev-libs/libaio[${MULTILIB_USEDEP}]
@@ -49,13 +50,13 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	sys-libs/readline:=
 	virtual/libiconv
-	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	python? ( dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}] )
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.27[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.1.27[ldap(+)?,python(+)?,${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.8[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.10[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.8[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.10[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.31-r1[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam )
@@ -81,7 +82,7 @@ RDEPEND="${CDEPEND}
 
 REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
 	ads? ( acl gnutls ldap )
-	${PYTHON_REQUIRED_USE}"
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -145,6 +146,7 @@ multilib_src_configure() {
 			$(use_enable iprint)
 			$(use_with ldap)
 			$(use_with pam)
+			$(use_enable python)
 			$(usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
 			$(use_with quota quotas)
 			$(use_with syslog)
