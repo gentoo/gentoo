@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=!dedicated? ( app-arch/bzip2 media-libs/freetype media-libs/libsdl[X,sound,opengl,video] media-libs/pnglite media-sound/wavpack virtual/glu virtual/opengl x11-libs/libX11 ) sys-libs/zlib || ( >=dev-lang/python-2.7.5-r2:2.7 ) ~dev-util/bam-0.4.0
+DESCRIPTION=Online multi-player platform 2D shooter
+EAPI=6
+HOMEPAGE=http://www.teeworlds.com/
+IUSE=debug dedicated
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+RDEPEND=!dedicated? ( app-arch/bzip2 media-libs/freetype media-libs/libsdl[X,sound,opengl,video] media-libs/pnglite media-sound/wavpack virtual/glu virtual/opengl x11-libs/libX11 ) sys-libs/zlib
+SLOT=0
+SRC_URI=https://downloads.teeworlds.com/teeworlds-0.6.3-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=465e9fd7ecc284ccc86335816e193521

@@ -10464,14 +10464,14 @@ games-action/shadowgrounds-bin 0_beta12-r1: an epic action experience combining 
 games-action/shadowgrounds-survivor-bin 0_beta11-r1: human survivors who battle against the ongoing alien onslaught
 games-action/shootingstar 1.2.0 1.2.0-r1: A topdown shooter
 games-action/slune 1.0.15-r1: A 3D action game with multiplayer mode and amazing graphics
-games-action/snipes 1.0.4: 2D scrolling shooter, resembles the old DOS game of same name
+games-action/snipes 1.0.4 1.0.4-r1: 2D scrolling shooter, resembles the old DOS game of same name
 games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstract universe
 games-action/spacearyarya-kxl 1.0.2-r1 1.0.2-r2: A 2D/3D shooting game
-games-action/spacetripper-demo 1: hardcore arcade shoot-em-up
+games-action/spacetripper-demo 1 1-r1: Hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supertuxkart 0.9.1 0.9.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
-games-action/teeworlds 0.6.3: Online multi-player platform 2D shooter
+games-action/teeworlds 0.6.3 0.6.3-r1: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3: retro-style, abstract, 2D shooter
 games-action/trine-bin 1.08: a physics-based action game where diff characters allow diff solutions to challenges

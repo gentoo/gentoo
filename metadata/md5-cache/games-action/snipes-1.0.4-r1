@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/libsdl[sound,video]
+DESCRIPTION=2D scrolling shooter, resembles the old DOS game of same name
+EAPI=6
+HOMEPAGE=https://cyp.github.com/snipes/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video]
+SLOT=0
+SRC_URI=https://cyp.github.com/snipes/snipes-1.0.4.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=f1c9f9c246a38aca077bdbe66a83089f
