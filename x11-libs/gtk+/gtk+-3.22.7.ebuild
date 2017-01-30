@@ -114,10 +114,6 @@ strip_builddir() {
 }
 
 src_prepare() {
-	# -O3 and company cause random crashes in applications. Bug #133469
-	replace-flags -O3 -O2
-	strip-flags
-
 	if ! use test ; then
 		# don't waste time building tests
 		strip_builddir SRC_SUBDIRS testsuite Makefile.{am,in}
