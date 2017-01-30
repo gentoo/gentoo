@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,29 +14,31 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc test"
 
 # When bumping, please check setup.py for the proper py version
 PY_VER="1.4.29"
-RDEPEND=">=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]"
-
-# dev-python/pluggy
-# https://github.com/hpk42/pluggy
-# See https://github.com/pytest-dev/pytest/issues/944
-# for why not now
-
-#pexpect dep based on https://bitbucket.org/hpk42/pytest/issue/386/tests-fail-with-pexpect-30
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (	dev-python/pexpect[${PYTHON_USEDEP}] )
+COMMON_DEPEND="
+	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/sphinx-1.2.3[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/regendoc[${PYTHON_USEDEP}]
-	)"
-
-PATCHES=( "${FILESDIR}"/${P}-skip-test-on-pypy.patch )
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	)
+"
+DEPEND="${COMMON_DEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/hypothesis-3.5.2[${PYTHON_USEDEP}]
+		>dev-python/pytest-xdist-1.13[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	!dev-python/logilab-common
+"
 
 python_prepare_all() {
 	chmod o-w *egg*/* || die
@@ -45,17 +47,7 @@ python_prepare_all() {
 	sed -e "s/return points/return {'py.test': target}/" -i setup.py || die "sed failed"
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
 
-	# Prevent un-needed d'loading
-	sed -e "s/'sphinx.ext.intersphinx', //" -i doc/en/conf.py || die
-
 	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	if use doc; then
-		mkdir doc/en/.build || die
-		emake -C doc/en html
-	fi
 }
 
 python_test() {
@@ -65,9 +57,12 @@ python_test() {
 			--ignore=testing/BUILD_nose.py \
 			|| die "tests failed with ${EPYTHON}"
 	else
-		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -x -v --runpytest=subprocess \
-			|| die "tests failed with ${EPYTHON}"
+		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py -v testing || die "tests failed with ${EPYTHON}"
 	fi
+}
+
+python_compile_all(){
+	use doc && emake -C doc/en html
 }
 
 python_install_all() {

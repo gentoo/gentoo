@@ -1,12 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} )
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit db-use distutils-r1 multilib
+inherit db-use distutils-r1
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="http://www.jcea.es/programacion/pybsddb.htm https://pypi.python.org/pypi/bsddb3"
@@ -14,22 +15,28 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	>=sys-libs/db-4.7
-	<sys-libs/db-6.2:=
+	<sys-libs/db-6.3:=
+	|| (
+		sys-libs/db:6.2
+		sys-libs/db:6.1
+		sys-libs/db:5.3
+		sys-libs/db:5.1
+		sys-libs/db:4.8
+		sys-libs/db:4.7
+	)
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
-src_prepare() {
+python_prepare_all() {
 	# This list should be kept in sync with setup.py.
 	if [[ -z ${DB_VER} ]]; then
-		for DB_VER in 6.1 6.0 5.3 5.2 5.1 5.0 4.8 4.7; do
+		for DB_VER in 6.2 6.1 5.3 5.1 4.8 4.7; do
 			has_version "sys-libs/db:${DB_VER}" && break
 		done
 	fi
@@ -43,7 +50,7 @@ src_prepare() {
 	sed -e "s/'lib.%s' % PLAT_SPEC/'lib'/" \
 		-i test2.py test3.py || die
 
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 src_configure() {
@@ -67,9 +74,4 @@ python_test() {
 	else
 		PYTHONPATH=Lib "${PYTHON}" test.py -v || die "Testing failed with ${EPYTHON}"
 	fi
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/html/. )
-	distutils-r1_python_install_all
 }
