@@ -25,7 +25,6 @@ RDEPEND="
 	x11-libs/libXext
 	introspection? ( >=dev-libs/gobject-introspection-0.6.14:= )
 	startup-notification? ( >=x11-libs/startup-notification-0.4 )
-	x86-interix? ( sys-libs/itx-bind )
 "
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
@@ -37,12 +36,6 @@ DEPEND="${RDEPEND}
 #	gnome-base/gnome-common
 
 src_configure() {
-	if use x86-interix; then
-		# activate the itx-bind package...
-		append-flags "-I${EPREFIX}/usr/include/bind"
-		append-ldflags "-L${EPREFIX}/usr/lib/bind"
-	fi
-
 	# Don't collide with SLOT=1
 	gnome2_src_configure \
 		--disable-static \
