@@ -3088,7 +3088,6 @@ games-rpg/nwn-data:nowin - For those people who cant grab the 1.2 gigs of data f
 games-rpg/nwn-data:sou - Installs the Shadows of Undrentide expension pack
 games-rpg/sumwars:tools - Builds editor tools
 games-rpg/to-the-moon:bundled-libs - Use bundled libraries
-games-rpg/valyriatear:editor - Compile the Qt editor along with the game
 games-simulation/flightgear:dbus - Enable screensaver DBus interaction
 games-simulation/flightgear:qt5 - Builds Qt5 launcher application
 games-simulation/flightgear:udev - Enables event-based Input devices through virtual/udev
