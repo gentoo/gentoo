@@ -7197,7 +7197,7 @@ dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-appli
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.15-r2 0.16: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.2.8 3.2.9: A Python 3 implementation for client-side web programming
-dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
+dev-python/bsddb3 6.1.1 6.2.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0 1.3.0: A cached-property for decorating methods in classes
@@ -7218,7 +7218,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20 3.1.24-r1 4.0.2: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
-dev-python/certifi 2015.11.20 2016.8.8 2016.8.31 2016.9.26: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2016.9.26 2017.1.23: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.3 1.9.1: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -8042,7 +8042,7 @@ dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.24.2 0.25.0: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.0.2-r2 2.1 2.1.1 2.1.3: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.1.1 2.1.3 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.20.1 3.22.0: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
@@ -8161,7 +8161,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2 3.3.0: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2 0.5.2-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 3.0.3 3.0.4 3.0.5 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 3.0.2 3.0.3 3.0.5 3.0.6 9999: simple powerful testing with Python
 dev-python/pytest-aiohttp 0.1.3: pytest plugin for aiohttp support
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
@@ -8310,7 +8310,7 @@ dev-python/pywavelets 0.2.2-r1 0.3.0 0.4.0: Python module for discrete, stationa
 dev-python/pywebdav 0.9.8-r1: WebDAV server written in Python
 dev-python/pywebkitgtk 1.1.8-r1: Python bindings for the WebKit GTK+ port
 dev-python/pyx 0.12.1-r1 0.13 0.14 0.14.1: Python package for the generation of encapsulated PostScript figures
-dev-python/pyxattr 0.5.3 0.5.5 9999: Python interface to xattr
+dev-python/pyxattr 0.5.5 0.6.0 9999: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
@@ -18109,7 +18109,7 @@ www-apps/icingaweb2 2.3.3 2.3.4-r1 2.3.4-r2 2.4.0 2.4.1 9999: Icinga Web 2 - Fro
 www-apps/icingaweb2-module-director 1.1.0 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
-www-apps/ikiwiki 3.20160905 3.20170111: A wiki compiler
+www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/jekyll 3.1.6-r1 3.2.1-r2: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.0.1 1.0.2: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.4.0: Liquid tag for displaying GitHub Gists in Jekyll sites
