@@ -467,7 +467,7 @@ games-emulation/ppsspp
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
-media-video/motion
+<media-video/motion-4.0.1-r1
 
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
