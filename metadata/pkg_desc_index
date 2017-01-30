@@ -10166,7 +10166,7 @@ dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make r
 dev-util/mdds 1.2.2 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.16.2 3.16.3 3.16.4: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.33.0 0.35.0 0.36.0 0.37.1 0.38.0 9999: Open source build system
+dev-util/meson 0.36.0 0.37.1 0.38.0 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6 5.0.1: Free Win64 runtime and import library definitions
@@ -18686,7 +18686,7 @@ x11-misc/kapow 1.5.1 1.5.2: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.1.2: Stopwatch application
+x11-misc/kronometer 2.1.2 2.1.3: Stopwatch application
 x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut both directly or as part of a combination
 x11-misc/ktsuss 2 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
