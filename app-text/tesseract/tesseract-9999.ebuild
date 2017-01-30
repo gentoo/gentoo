@@ -9,18 +9,18 @@ LANGPACKV="4.00"
 URI_PREFIX="https://github.com/${MY_PN}/tessdata/raw/${LANGPACKV}/"
 JAVA_PKG_OPT_USE="scrollview"
 
-inherit autotools java-pkg-opt-2 toolchain-funcs
+inherit autotools git-r3 java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
-SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz
-	${URI_PREFIX}eng.traineddata -> eng.traineddata-${LANGPACKV}
+SRC_URI="${URI_PREFIX}eng.traineddata -> eng.traineddata-${LANGPACKV}
 	math? ( ${URI_PREFIX}equ.traineddata -> equ.traineddata-${LANGPACKV} )
 	osd? ( ${URI_PREFIX}osd.traineddata -> osd.traineddata-${LANGPACKV} )"
+EGIT_REPO_URI="https://github.com/${MY_PN}/${PN}.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS=""
 IUSE="doc examples jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
 
 # List of supported Gentoo linguas and their upstream mapping
@@ -76,13 +76,8 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS ChangeLog NEWS README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.04.01-use-system-piccolo2d.patch"
-	"${FILESDIR}/${P}-isnan.patch"
-	"${FILESDIR}/${P}-openmp.patch"
-	"${FILESDIR}/${P}-no_graphics.patch"
+	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"
 )
-
-S=${WORKDIR}/${P/_}
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -93,7 +88,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${P}.tar.gz
+	git-r3_src_unpack
 	for file in ${A}; do
 		if [[ "${file}" == *traineddata* ]]; then
 			cp "${DISTDIR}/${file}" "${S}/tessdata/${file%-*}" || die
