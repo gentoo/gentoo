@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
 inherit cmake-utils multilib
 
 DESCRIPTION="A minimalistic plugin API for video effects"
@@ -24,6 +25,8 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS.txt ChangeLog.txt README.txt TODO.txt )
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	local f=CMakeLists.txt
 
 	sed -i \
@@ -38,10 +41,11 @@ src_prepare() {
 }
 
 src_configure() {
-	 local mycmakeargs=(
-		$(cmake-utils_use "!facedetect" "WITHOUT_OPENCV" )
-		$(cmake-utils_use "!scale0tilt" "WITHOUT_GAVL"   )
-	 )
+	local mycmakeargs=(
+		-DWITHOUT_OPENCV=$(usex !facedetect)
+		-DWITHOUT_GAVL=$(usex !scale0tilt)
+	)
+
 	cmake-utils_src_configure
 }
 
@@ -58,5 +62,5 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	use doc && dohtml -r doc/html
+	use doc && dodoc -r doc/html
 }
