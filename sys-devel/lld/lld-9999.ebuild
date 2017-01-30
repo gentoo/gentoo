@@ -50,8 +50,7 @@ src_unpack() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		# TODO: fix rpaths
-		#-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON
 
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		# TODO: fix detecting pthread upstream in stand-alone build
