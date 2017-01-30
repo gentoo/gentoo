@@ -1,8 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Markus Duft <mduft@gentoo.org> (28 Oct 2010)
-# really need them statically, as long as portage uses coreutils
-# during merge. if re-merging suacomp, utilities don't work otherwise.
-sys-apps/coreutils static

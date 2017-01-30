@@ -1,8 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Michael Haubenwallner <haubi@gentoo.org> (16 Jul 2009)
-# Is blocked by QA check 'implicit pointer usage warnings' on ia64-hpux.
-# Cannot recompile itself on hppa-hpux and ia64-hpux. bug 311239
->=sys-devel/gcc-4.3

@@ -6,11 +6,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">flexx</remote-id>
-    <remote-id type="github">zoofIO/flexx</remote-id>    
-    <maintainer status="unknown">
-      <email>almar.klein@gmail.com</email>
-      <name>Flexx contributors</name>
-    </maintainer>
+    <remote-id type="pypi">pytest-rerunfailures</remote-id>
   </upstream>
 </pkgmetadata>

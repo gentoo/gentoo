@@ -1,7 +1,0 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Michael Haubenwallner <haubi@gentoo.org> (30 Sep 2009)
-# *bsd do have a uuid implementation in libc (#230981).
-x11-libs/libSM -uuid

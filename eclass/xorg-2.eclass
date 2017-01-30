@@ -115,7 +115,7 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-XORG_EAUTORECONF_ARCHES="x86-interix ppc-aix x86-winnt"
+XORG_EAUTORECONF_ARCHES="ppc-aix x86-winnt"
 EAUTORECONF_DEPEND+="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4"
@@ -359,7 +359,7 @@ xorg-2_reconf_source() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	case ${CHOST} in
-		*-interix* | *-aix* | *-winnt*)
+		*-aix* | *-winnt*)
 			# some hosts need full eautoreconf
 			[[ -e "./configure.ac" || -e "./configure.in" ]] \
 				&& AUTOTOOLS_AUTORECONF=1

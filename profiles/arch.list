@@ -20,26 +20,15 @@ x86-fbsd
 
 # Prefix keywords
 ppc-aix
-x86-freebsd
-x64-freebsd
-sparc64-freebsd
-hppa-hpux
-ia64-hpux
-x86-interix
 amd64-linux
 arm-linux
 arm64-linux
-ia64-linux
 ppc64-linux
 x86-linux
 ppc-macos
 x86-macos
 x64-macos
 m68k-mint
-x86-netbsd
-ppc-openbsd
-x86-openbsd
-x64-openbsd
 sparc-solaris
 sparc64-solaris
 x64-solaris

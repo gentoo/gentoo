@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -33,7 +33,7 @@ DEPEND="
 	>=media-libs/cal3d-0.10
 	media-libs/freeglut
 	>=media-libs/freetype-2.5
-	>=media-libs/glew-1.3.3
+	>=media-libs/glew-1.3.3:*
 	>=media-libs/libsdl-1.2.8[opengl]
 	media-libs/openal
 	virtual/opengl
@@ -46,7 +46,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${P}-glu.patch"
 	"${FILESDIR}/${PN}-pillow.patch"
-	"${FILESDIR}/${P}-freetype-2.5.patch"
 )
 
 python_compile() {
