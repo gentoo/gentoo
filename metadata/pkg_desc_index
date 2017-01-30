@@ -18184,7 +18184,7 @@ www-client/firefox 45.6.0-r1 45.7.0 51.0: Firefox Web Browser
 www-client/firefox-bin 45.6.0 45.7.0 51.0: Firefox Web Browser
 www-client/google-chrome 56.0.2924.76: The web browser from Google
 www-client/google-chrome-beta 56.0.2924.76: The web browser from Google
-www-client/google-chrome-unstable 57.0.2987.8: The web browser from Google
+www-client/google-chrome-unstable 57.0.2987.13: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/links 2.12-r2 2.12-r3 2.13 2.14: A fast and lightweight web browser running in both graphics and text mode
@@ -18234,7 +18234,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.28.0 1.28.1 1.30.0: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 24.0.0.194: Adobe Flash Player
-www-plugins/chrome-binary-plugins 56.0.2924.76_beta 56.0.2924.76 57.0.2987.8_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 56.0.2924.76_beta 56.0.2924.76 57.0.2987.13_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.5-r3: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
