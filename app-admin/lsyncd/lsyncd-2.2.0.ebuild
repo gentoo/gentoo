@@ -13,7 +13,7 @@ SRC_URI="https://github.com/axkibe/lsyncd/archive/release-${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 
 CDEPEND=">=dev-lang/lua-5.1[deprecated]"
 DEPEND="${CDEPEND}
