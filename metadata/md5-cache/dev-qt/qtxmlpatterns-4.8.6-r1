@@ -10,5 +10,5 @@ RDEPEND=~dev-qt/qtcore-4.8.6[aqua=,debug=,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_
 SLOT=4
 SRC_URI=http://download.qt.io/official_releases/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz
 _eclass_exported_funcs=pkg_postrm:qt4-build-multilib pkg_postinst:qt4-build-multilib src_unpack:qt4-build-multilib src_prepare:qt4-build-multilib src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
-_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	qt4-build-multilib	3f428741e49fd1c655e2c13a883b08c7	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	qt4-build-multilib	cc5e032e0896c8cf6a24ff009af0389a	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=a73a707793f92ef809043e7778078246

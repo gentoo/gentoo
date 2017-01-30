@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=x11-apps/bdftopcf >=media-fonts/font-util-1.1.1-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 X? ( x11-apps/mkfontdir media-fonts/encodings ) x86-interix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) >=media-fonts/font-util-1.2.0 virtual/pkgconfig
+DEPEND=x11-apps/bdftopcf >=media-fonts/font-util-1.1.1-r1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 X? ( x11-apps/mkfontdir media-fonts/encodings ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) >=media-fonts/font-util-1.2.0 virtual/pkgconfig
 DESCRIPTION=X.Org JIS (japanese) fonts
 EAPI=3
 HOMEPAGE=https://www.x.org/wiki/
@@ -11,5 +11,5 @@ RDEPEND=media-fonts/encodings x11-apps/mkfontscale x11-apps/mkfontdir
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/font/font-jis-misc-1.0.3.tar.bz2
 _eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:font src_unpack:xorg-2 src_prepare:xorg-2 src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:xorg-2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	font	cd7790315ca5b8c505e1e0513df6acce	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xorg-2	1639ccc38d3b68fcb9211b7d8d96c02a
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	font	cd7790315ca5b8c505e1e0513df6acce	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xorg-2	a2d52c44b517ac6d53f4457bff25ecb4
 _md5_=a71cd14ec9b10356c99d43f0db5a779c

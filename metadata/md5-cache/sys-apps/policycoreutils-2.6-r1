@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=>=sys-libs/libselinux-2.6:=[python] >=sys-libs/glibc-2.4 >=sys-libs/libcap-1.10-r10:= >=sys-libs/libsemanage-2.6:=[python] sys-libs/libcap-ng:= >=sys-libs/libsepol-2.6:= >=app-admin/setools-4.0 sys-devel/gettext dev-python/ipy[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dbus? ( sys-apps/dbus dev-libs/dbus-glib:= ) audit? ( >=sys-process/audit-1.5.1[python] ) pam? ( sys-libs/pam:= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_targets_python3_4? ( dev-lang/python:3.4[xml] ) python_targets_python3_5? ( dev-lang/python:3.5[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] !<sec-policy/selinux-base-policy-2.20151208-r6
+DESCRIPTION=SELinux core utilities
+EAPI=6
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+IUSE=audit pam dbus python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~arm64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libselinux-2.6:=[python] >=sys-libs/glibc-2.4 >=sys-libs/libcap-1.10-r10:= >=sys-libs/libsemanage-2.6:=[python] sys-libs/libcap-ng:= >=sys-libs/libsepol-2.6:= >=app-admin/setools-4.0 sys-devel/gettext dev-python/ipy[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dbus? ( sys-apps/dbus dev-libs/dbus-glib:= ) audit? ( >=sys-process/audit-1.5.1[python] ) pam? ( sys-libs/pam:= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_targets_python3_4? ( dev-lang/python:3.4[xml] ) python_targets_python3_5? ( dev-lang/python:3.5[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] !<sec-policy/selinux-base-policy-2.20151208-r6 dev-python/sepolgen app-misc/pax-utils !<sys-apps/openrc-0.14
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/policycoreutils-2.6.tar.gz https://dev.gentoo.org/~swift/distfiles/policycoreutils-extra-1.35.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	dcd61d7a5c283f18cfe763552b09eb88	python-utils-r1	d275302cd06aedef2ba08f81f3104206	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=e185c5fc9777620b4c05347a80d8e654
