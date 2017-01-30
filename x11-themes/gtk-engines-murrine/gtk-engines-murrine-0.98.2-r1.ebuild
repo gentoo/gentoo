@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.cimitan.com/murrine/"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+themes animation-rtl"
 
 RDEPEND=">=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
