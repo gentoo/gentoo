@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm preinst
+DEPEND=>=dev-libs/glib-2.39 >=net-libs/libsoup-2.26 x11-libs/cairo x11-libs/gdk-pixbuf >=x11-libs/gtk+-3.12:3 x11-libs/pango ofx? ( >=dev-libs/libofx-0.8.3 ) >=dev-lang/perl-5.8.1 dev-perl/XML-Parser >=dev-util/intltool-0.40.5 sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Free, easy, personal accounting for everyone
+EAPI=6
+HOMEPAGE=http://homebank.free.fr/index.php
+IUSE=+ofx
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.39 >=net-libs/libsoup-2.26 x11-libs/cairo x11-libs/gdk-pixbuf >=x11-libs/gtk+-3.12:3 x11-libs/pango ofx? ( >=dev-libs/libofx-0.8.3 )
+SLOT=0
+SRC_URI=http://homebank.free.fr/public/homebank-5.1.3.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=f43368ba16091edb9e99c51e820e17dc

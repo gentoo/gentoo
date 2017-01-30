@@ -2012,7 +2012,7 @@ app-office/grisbi 1.0.0-r1: Grisbi is a personal accounting application for Linu
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.1: A small Gtk+ application for keeping track of your time
 app-office/hamster-time-tracker 9999: Time tracking for the masses
-app-office/homebank 4.6.3 5.0.9 5.1.1: Free, easy, personal accounting for everyone
+app-office/homebank 4.6.3 5.0.9 5.1.1 5.1.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations with Python
