@@ -2,15 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
-OASIS_BUILD_DOCS=1
-OASIS_BUILD_TESTS=1
+inherit oasis eutils
 
-inherit oasis
-
-DESCRIPTION="Collection of tools to help building Jane Street Packages"
-HOMEPAGE="https://github.com/janestreet/js-build-tools"
+DESCRIPTION="Feature-full driver for OCaml AST transformers"
+HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -18,8 +15,12 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-ml/ocamlbuild:="
-DEPEND="${RDEPEND} dev-ml/opam"
+DEPEND="dev-ml/ppx_tools:=
+	>=dev-ml/ppx_core-113.33.00:=
+	dev-ml/ocamlbuild:=[ocamlopt?]
+	dev-ml/ppx_optcomp:="
+RDEPEND="${DEPEND}"
+DEPEND="${DEPEND} dev-ml/opam"
 
 src_configure() {
 	emake setup.exe
@@ -36,5 +37,5 @@ src_install() {
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
 		${PN}.install || die
-	dodoc README.md
+	dodoc CHANGES.md
 }

@@ -2,15 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-OASIS_BUILD_DOCS=1
-OASIS_BUILD_TESTS=1
+EAPI="5"
 
 inherit oasis
 
-DESCRIPTION="Collection of tools to help building Jane Street Packages"
-HOMEPAGE="https://github.com/janestreet/js-build-tools"
+DESCRIPTION="Assert-like extension nodes that raise useful errors on failure"
+HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -18,8 +15,17 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-ml/ocamlbuild:="
-DEPEND="${RDEPEND} dev-ml/opam"
+DEPEND="dev-ml/ppx_tools:=
+	dev-ml/ppx_compare:=
+	dev-ml/ppx_driver:=
+	dev-ml/ppx_here:=
+	dev-ml/ppx_sexp_conv:=
+	dev-ml/ppx_type_conv
+	dev-ml/sexplib:=
+	dev-ml/ppx_core:="
+
+RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND} dev-ml/oasis"
 
 src_configure() {
 	emake setup.exe
@@ -36,5 +42,5 @@ src_install() {
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
 		${PN}.install || die
-	dodoc README.md
+	dodoc CHANGES.md
 }
