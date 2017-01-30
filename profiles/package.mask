@@ -344,7 +344,6 @@ net-misc/termtter
 # David Seifert <soap@gentoo.org> (27 Dec 2016)
 # Fails with more recent boost, dead upstream (bug #600548).
 dev-cpp/luabind
-games-rpg/valyriatear
 
 # Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
 # Dev channel releases are only for people who are developers or want more
