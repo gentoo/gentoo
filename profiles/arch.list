@@ -29,7 +29,6 @@ ppc-macos
 x86-macos
 x64-macos
 m68k-mint
-x86-netbsd
 sparc-solaris
 sparc64-solaris
 x64-solaris
