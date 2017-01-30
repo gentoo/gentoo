@@ -1,0 +1,143 @@
+diff --git a/lstm/lstmrecognizer.cpp b/lstm/lstmrecognizer.cpp
+index 1d4f0f3..7192ba7 100644
+--- a/lstm/lstmrecognizer.cpp
++++ b/lstm/lstmrecognizer.cpp
+@@ -16,6 +16,11 @@
+ // limitations under the License.
+ ///////////////////////////////////////////////////////////////////////
+ 
++// Include automatically generated configuration file if running autoconf.
++#ifdef HAVE_CONFIG_H
++#include "config_auto.h"
++#endif
++
+ #include "lstmrecognizer.h"
+ 
+ #include "allheaders.h"
+diff --git a/lstm/lstmtrainer.cpp b/lstm/lstmtrainer.cpp
+index ab66702..fd3f247 100644
+--- a/lstm/lstmtrainer.cpp
++++ b/lstm/lstmtrainer.cpp
+@@ -16,6 +16,11 @@
+ // limitations under the License.
+ ///////////////////////////////////////////////////////////////////////
+ 
++// Include automatically generated configuration file if running autoconf.
++#ifdef HAVE_CONFIG_H
++#include "config_auto.h"
++#endif
++
+ #include "lstmtrainer.h"
+ #include <string>
+ 
+diff --git a/lstm/network.cpp b/lstm/network.cpp
+index 795d4a5..791848a 100644
+--- a/lstm/network.cpp
++++ b/lstm/network.cpp
+@@ -16,6 +16,11 @@
+ // limitations under the License.
+ ///////////////////////////////////////////////////////////////////////
+ 
++// Include automatically generated configuration file if running autoconf.
++#ifdef HAVE_CONFIG_H
++#include "config_auto.h"
++#endif
++
+ #include "network.h"
+ 
+ #include <stdlib.h>
+@@ -277,27 +282,31 @@ double Network::Random(double range) {
+   return randomizer_->SignedRand(range);
+ }
+ 
+-#ifndef GRAPHICS_DISABLED
+ // === Debug image display methods. ===
+ // Displays the image of the matrix to the forward window.
+ void Network::DisplayForward(const NetworkIO& matrix) {
++#ifndef GRAPHICS_DISABLED  // do nothing if there's no graphics
+   Pix* image = matrix.ToPix();
+   ClearWindow(false, name_.string(), pixGetWidth(image),
+               pixGetHeight(image), &forward_win_);
+   DisplayImage(image, forward_win_);
+   forward_win_->Update();
++#endif  // GRAPHICS_DISABLED
+ }
+ 
+ // Displays the image of the matrix to the backward window.
+ void Network::DisplayBackward(const NetworkIO& matrix) {
++#ifndef GRAPHICS_DISABLED  // do nothing if there's no graphics
+   Pix* image = matrix.ToPix();
+   STRING window_name = name_ + "-back";
+   ClearWindow(false, window_name.string(), pixGetWidth(image),
+               pixGetHeight(image), &backward_win_);
+   DisplayImage(image, backward_win_);
+   backward_win_->Update();
++#endif  // GRAPHICS_DISABLED
+ }
+ 
++#ifndef GRAPHICS_DISABLED
+ // Creates the window if needed, otherwise clears it.
+ void Network::ClearWindow(bool tess_coords, const char* window_name,
+                           int width, int height, ScrollView** window) {
+diff --git a/viewer/svutil.cpp b/viewer/svutil.cpp
+index 34a2286..84a4b94 100644
+--- a/viewer/svutil.cpp
++++ b/viewer/svutil.cpp
+@@ -83,6 +83,27 @@ void SVMutex::Unlock() {
+ #endif
+ }
+ 
++// Create new thread.
++void SVSync::StartThread(void *(*func)(void*), void* arg) {
++#ifdef _WIN32
++  LPTHREAD_START_ROUTINE f = (LPTHREAD_START_ROUTINE) func;
++  DWORD threadid;
++  HANDLE newthread = CreateThread(
++  NULL,          // default security attributes
++  0,             // use default stack size
++  f,             // thread function
++  arg,           // argument to thread function
++  0,             // use default creation flags
++  &threadid);    // returns the thread identifier
++#else
++  pthread_t helper;
++  pthread_attr_t attr;
++  pthread_attr_init(&attr);
++  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
++  pthread_create(&helper, &attr, func, arg);
++#endif
++}
++
+ #ifndef GRAPHICS_DISABLED
+ 
+ const int kMaxMsgSize = 4096;
+@@ -186,29 +207,6 @@ void SVSemaphore::Wait() {
+ #endif
+ }
+ 
+-
+-// Create new thread.
+-
+-void SVSync::StartThread(void *(*func)(void*), void* arg) {
+-#ifdef _WIN32
+-  LPTHREAD_START_ROUTINE f = (LPTHREAD_START_ROUTINE) func;
+-  DWORD threadid;
+-  HANDLE newthread = CreateThread(
+-  NULL,          // default security attributes
+-  0,             // use default stack size
+-  f,             // thread function
+-  arg,           // argument to thread function
+-  0,             // use default creation flags
+-  &threadid);    // returns the thread identifier
+-#else
+-  pthread_t helper;
+-  pthread_attr_t attr;
+-  pthread_attr_init(&attr);
+-  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+-  pthread_create(&helper, &attr, func, arg);
+-#endif
+-}
+-
+ // Place a message in the message buffer (and flush it).
+ void SVNetwork::Send(const char* msg) {
+   mutex_send_->Lock();

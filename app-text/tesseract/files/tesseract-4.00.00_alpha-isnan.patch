@@ -1,0 +1,28 @@
+From beb564df82204078563bcbde4e569caac2f7a2ac Mon Sep 17 00:00:00 2001
+From: Stefan Weil <sw@weilnetz.de>
+Date: Tue, 22 Nov 2016 11:31:01 +0100
+Subject: [PATCH] lstm: Fix compilation (undeclared 'isnan')
+
+gcc report:
+
+lstm/lstmrecognizer.cpp:608:47: error: 'isnan' was not declared in this scope
+     ASSERT_HOST(!isnan(output.f(t)[null_char_]));
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ lstm/lstmrecognizer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lstm/lstmrecognizer.cpp b/lstm/lstmrecognizer.cpp
+index f648e16..babfe50 100644
+--- a/lstm/lstmrecognizer.cpp
++++ b/lstm/lstmrecognizer.cpp
+@@ -600,7 +600,7 @@ void LSTMRecognizer::LabelsViaThreshold(const NetworkIO& output,
+     ++t;
+   }
+   while (t < width) {
+-    ASSERT_HOST(!isnan(output.f(t)[null_char_]));
++    ASSERT_HOST(!std::isnan(output.f(t)[null_char_]));
+     int label = output.BestLabel(t, null_char_, null_char_, NULL);
+     int char_start = t++;
+     while (t < width && !NullIsBest(output, null_thr, null_char_, t) &&
