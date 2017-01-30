@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,5 +17,5 @@ IUSE="libcxx openmp"
 
 # compiler-rt is installed unconditionally
 RDEPEND="
-	libcxx? ( ~sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? ( ~sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
+	libcxx? ( >=sys-libs/libcxx-${PV}[${MULTILIB_USEDEP}] )
+	openmp? ( >=sys-libs/libomp-${PV}[${MULTILIB_USEDEP}] )"
