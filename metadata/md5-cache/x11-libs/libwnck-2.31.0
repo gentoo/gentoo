@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=>=x11-libs/gtk+-2.19.7:2[introspection?] >=dev-libs/glib-2.16:2 x11-libs/libX11 x11-libs/libXres x11-libs/libXext introspection? ( >=dev-libs/gobject-introspection-0.6.14:= ) startup-notification? ( >=x11-libs/startup-notification-0.4 ) dev-util/gtk-doc-am >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig x86-interix? ( sys-libs/itx-bind ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=x11-libs/gtk+-2.19.7:2[introspection?] >=dev-libs/glib-2.16:2 x11-libs/libX11 x11-libs/libXres x11-libs/libXext introspection? ( >=dev-libs/gobject-introspection-0.6.14:= ) startup-notification? ( >=x11-libs/startup-notification-0.4 ) dev-util/gtk-doc-am >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A window navigation construction kit
 EAPI=5
 HOMEPAGE=https://www.gnome.org/
@@ -11,4 +11,4 @@ SLOT=1
 SRC_URI=mirror://gnome/sources/libwnck/2.31/libwnck-2.31.0.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	c4ea6f9f250b5355e9e948e7007dead0	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=edda4d5e617d18f6e118fe27cdc8c13b
+_md5_=131a92e40263252c8043ac8fc60ec0c4

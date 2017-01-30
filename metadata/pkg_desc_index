@@ -17660,7 +17660,6 @@ sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 2.23-r3 2.24 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3 4.15.3-r1: A multi-platform helper library for other libraries
-sys-libs/itx-bind 0.1-r2: the bind library for interix
 sys-libs/kpmcore 2.2.1 3.0.2: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.26 1.1.27-r1 1.1.29: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
@@ -18146,7 +18145,7 @@ www-apps/phpmp 0.11.0-r1: phpMp is a client program for Music Player Daemon (mpd
 www-apps/phprojekt 6.1.2: Project management and coordination system
 www-apps/phpsysinfo 3.2.2 3.2.3: phpSysInfo is a nice package that will display your system stats via PHP
 www-apps/phpwebsite 0.10.2 1.7.2: phpWebSite Content Management System
-www-apps/piwigo 2.8.5: a photo gallery software for the web
+www-apps/piwigo 2.8.6: a photo gallery software for the web
 www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 3.0.0-r1 3.1.0: Graphical front-end analysis console for the Prelude Framework

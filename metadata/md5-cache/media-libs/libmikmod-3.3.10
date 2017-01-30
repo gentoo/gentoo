@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/mikmod/libmikmod-3.3.10.tar.gz
 _eclass_exported_funcs=src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=b8a058143cac8232c7a9216b09c1e843
+_md5_=8826e967961e1986e04ddd1252fa5997
