@@ -346,11 +346,6 @@ net-misc/termtter
 dev-cpp/luabind
 games-rpg/valyriatear
 
-# David Seifert <soap@gentoo.org> (20 Dec 2016)
-# Masked for being completely broken and unusable (bug 586356).
-# No reverse dependencies. Masked for removal in 30 days.
-net-analyzer/snips
-
 # Mike Gilbert <floppym@gentoo.org> (10 Dec 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
