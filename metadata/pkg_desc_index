@@ -11418,7 +11418,7 @@ gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utili
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 9.0.0 9.0.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r1 5.2.4-r2: GNOME database access library
-gnome-extra/libgsf 1.14.34 1.14.36 1.14.40 1.14.41: The GNOME Structured File Library
+gnome-extra/libgsf 1.14.41: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
