@@ -632,7 +632,7 @@ app-dicts/aspell-da 1.7.42: Danish language dictionary for aspell
 app-dicts/aspell-de 0.60_pre20030222: German and Swiss-German language dictionary for aspell
 app-dicts/aspell-de-alt 2.1.1-r1: German (traditional orthography) language dictionary for aspell
 app-dicts/aspell-el 0.50.3: Greek language dictionary for aspell
-app-dicts/aspell-en 7.1.0 2016.11.20.0: English (US, British, Canadian) language dictionary for aspell
+app-dicts/aspell-en 2016.11.20.0 2017.01.22.0: English (US, British, Canadian) language dictionary for aspell
 app-dicts/aspell-eo 2.1.20000225.2: Esperanto language dictionary for aspell
 app-dicts/aspell-es 1.9a: Spanish language dictionary for aspell
 app-dicts/aspell-et 0.1.21.1: Estonian language dictionary for aspell
@@ -2191,7 +2191,7 @@ app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatti
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 8.6.9-r3 9999: AsciiDoc is a plain text human readable/writable document format
-app-text/aspell 0.60.6.1-r1 0.60.6.1-r3 0.60.6.1-r4: A spell checker replacement for ispell
+app-text/aspell 0.60.6.1-r3 0.60.6.1-r4 0.60.7_rc1: A spell checker replacement for ispell
 app-text/atril 1.12.2-r3 1.14.2 1.16.1: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1: barcode generator

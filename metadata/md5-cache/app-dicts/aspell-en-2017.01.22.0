@@ -3,11 +3,11 @@ DEPEND=>=app-text/aspell-0.60
 DESCRIPTION=English (US, British, Canadian) language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://aspell.net
-KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=myspell-en_CA-KevinAtkinson public-domain Princeton Ispell
 RDEPEND=>=app-text/aspell-0.60
 SLOT=0
-SRC_URI=mirror://gnu/aspell/dict/en/aspell6-en-2016.11.20-0.tar.bz2
+SRC_URI=mirror://gnu/aspell/dict/en/aspell6-en-2017.01.22-0.tar.bz2
 _eclass_exported_funcs=src_configure:aspell-dict src_compile:aspell-dict src_install:aspell-dict
 _eclasses_=aspell-dict	5e1fcef2869735a5ddd48c0d8fb4f48a	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e01d97f58a8f240fc99a1b22709c516e
+_md5_=787add876dc8589deb76d04686290d2d
