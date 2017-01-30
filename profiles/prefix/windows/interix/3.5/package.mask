@@ -1,8 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Markus Duft <mduft@gentoo.org> 31 Jul 2009
-# Does not build on Interix 3.5 because some functions
-# conflict with system math.h header.
-dev-python/numpy

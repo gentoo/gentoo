@@ -303,12 +303,6 @@ ppc-aix			prefix/aix/5.3.0.0/ppc				exp
 ppc-aix			prefix/aix/6.1.0.0/ppc				exp
 ppc-aix			prefix/aix/7.1.0.0/ppc				exp
 
-# Interix Profiles
-x86-interix		prefix/windows/interix/3.5/x86			exp
-x86-interix		prefix/windows/interix/5.2/x86			exp
-x86-interix		prefix/windows/interix/6.0/x86			exp
-x86-interix		prefix/windows/interix/6.1/x86			exp
-
 # Windows Profiles
 x86-winnt		prefix/windows/winnt/3.5/x86			exp
 x86-winnt		prefix/windows/winnt/5.2/x86			exp
