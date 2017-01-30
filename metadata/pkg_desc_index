@@ -12973,7 +12973,7 @@ media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.3 17.0.0_rc2 9999: OpenG
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
-media-libs/mutagen 1.27 1.31 1.35.1 1.36 1.36.1: Audio metadata tag reader and writer implemented in pure Python
+media-libs/mutagen 1.27 1.31 1.35.1 1.36.1 1.36.2: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.1 1.17.2: A software implementation of the OpenAL 3D audio API
@@ -13649,9 +13649,9 @@ media-sound/mps-youtube 0.2.7.1: Terminal-based YouTube player and downloader
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.17 1.2.18 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
-media-sound/murmur 1.2.17 1.2.18: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.2.17 1.2.18 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 2.0.2-r1 2.0.3 9999: WYSIWYG Music Score Typesetter
@@ -14473,7 +14473,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
 net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20 2.21: A full-featured file system for online data storage
-net-fs/samba 4.2.11 4.2.14 4.3.12 4.4.7 4.4.9 4.5.3 4.5.4 4.6.0_rc2: Samba Suite Version 4
+net-fs/samba 4.2.11 4.2.14 4.5.4 4.5.5 4.6.0_rc2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer

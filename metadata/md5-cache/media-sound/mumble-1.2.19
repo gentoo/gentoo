@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=dev-libs/boost-1.41.0 !libressl? ( >=dev-libs/openssl-1.0.0b:0 ) libressl? ( dev-libs/libressl ) >=dev-libs/protobuf-2.2.0:= >=media-libs/libsndfile-1.0.20[-minimal] >=media-libs/opus-1.0.1 >=media-libs/speex-1.2_rc1 sys-apps/lsb-release x11-libs/libX11 x11-libs/libXi dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsql:4[sqlite] dev-qt/qtsvg:4 dev-qt/qtxmlpatterns:4 x11-proto/inputproto alsa? ( media-libs/alsa-lib ) dbus? ( dev-qt/qtdbus:4 ) g15? ( app-misc/g15daemon ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) speech? ( app-accessibility/speech-dispatcher ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) virtual/pkgconfig
+DESCRIPTION=Mumble is an open source, low-latency, high quality voice chat software
+EAPI=6
+HOMEPAGE=https://wiki.mumble.info
+IUSE=+alsa +dbus debug g15 libressl oss pch portaudio pulseaudio speech zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD MIT
+RDEPEND=>=dev-libs/boost-1.41.0 !libressl? ( >=dev-libs/openssl-1.0.0b:0 ) libressl? ( dev-libs/libressl ) >=dev-libs/protobuf-2.2.0:= >=media-libs/libsndfile-1.0.20[-minimal] >=media-libs/opus-1.0.1 >=media-libs/speex-1.2_rc1 sys-apps/lsb-release x11-libs/libX11 x11-libs/libXi dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsql:4[sqlite] dev-qt/qtsvg:4 dev-qt/qtxmlpatterns:4 x11-proto/inputproto alsa? ( media-libs/alsa-lib ) dbus? ( dev-qt/qtdbus:4 ) g15? ( app-misc/g15daemon ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) speech? ( app-accessibility/speech-dispatcher ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+SLOT=0
+SRC_URI=https://mumble.info/snapshot/mumble-1.2.19.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
+_md5_=738bbb7c6c5df964b293398a750f335a
