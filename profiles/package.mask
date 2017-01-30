@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
+# Alpha release with new features, masked for testing
+=app-text/tesseract-4.00.00_alpha*
+
 # Lars Wendler <polynomial-c@gentoo.org> (27 Jan 2017)
 # Dead upstream since 2013.
 # Superseded by games-rpg/manaplus.
