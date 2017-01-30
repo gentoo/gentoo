@@ -8165,10 +8165,8 @@ www-servers/hiawatha:ssl - Enable TLS support via net-libs/mbedtls
 www-servers/hiawatha:tomahawk - Enable Tomahawk control server
 www-servers/hiawatha:xslt - Enable XSLT support. This is also needed for directory listings
 www-servers/lighttpd:libev - Enable fdevent handler
-www-servers/lighttpd:memcache - Enable memcache support for mod_cml and mod_trigger_b4_dl
 www-servers/lighttpd:mmap - Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.
 www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool
-www-servers/lighttpd:uploadprogress - Apply experimental patch for upload progress module
 www-servers/lighttpd:webdav - Enable webdav properties
 www-servers/monkeyd:debug - Enable lots of debugging info
 www-servers/monkeyd:static-plugins - Build statically linked plugins
