@@ -4,11 +4,11 @@ DESCRIPTION=System load plug-in for Xfce panel
 EAPI=6
 HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfce4-systemload-plugin
 IUSE=upower
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=BSD-2
 RDEPEND=>=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:= upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-systemload-plugin/1.2/xfce4-systemload-plugin-1.2.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:-
 _eclasses_=eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=893e7d2a810e83707b50b1a34b5600f8
+_md5_=658f65dde64d1d14a15b0ea2b140cb86

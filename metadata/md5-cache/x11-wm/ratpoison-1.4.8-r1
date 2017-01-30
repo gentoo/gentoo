@@ -4,11 +4,11 @@ DESCRIPTION=window manager without mouse dependency
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/ratpoison/
 IUSE=debug emacs +history sloppy +xft
-KEYWORDS=amd64 hppa ppc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+KEYWORDS=amd64 hppa ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/ratpoison/ratpoison-1.4.8.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	ea170b525f6a38a006be05c9d9429f13	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=beaad46f2fe2efcbee010e8e50da4490
+_md5_=d5a20577f0bde535d0aca1f8a657942c

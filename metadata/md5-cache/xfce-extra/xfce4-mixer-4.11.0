@@ -4,11 +4,11 @@ DESCRIPTION=A volume control application (and panel plug-in) for the Xfce deskto
 EAPI=5
 HOMEPAGE=http://www.xfce.org/projects/xfce4-mixer/
 IUSE=alsa debug +keybinder oss
-KEYWORDS=amd64 arm ~hppa ~mips ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm ~hppa ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.24 dev-libs/libunique:1 media-libs/gst-plugins-base:0.10 >=x11-libs/gtk+-2.20:2 >=xfce-base/libxfce4ui-4.10 >=xfce-base/libxfce4util-4.10 >=xfce-base/xfce4-panel-4.10 >=xfce-base/xfconf-4.10 keybinder? ( dev-libs/keybinder:0 ) alsa? ( media-plugins/gst-plugins-alsa:0.10 ) oss? ( media-plugins/gst-plugins-oss:0.10 ) !alsa? ( !oss? ( media-plugins/gst-plugins-meta:0.10 ) )
 SLOT=0
 SRC_URI=mirror://xfce/src/apps/xfce4-mixer/4.11/xfce4-mixer-4.11.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
-_md5_=c8c03f2cd001fbc8dc058e5c06529a89
+_md5_=b3018a8d88861aa04d206fb8cbbd375f

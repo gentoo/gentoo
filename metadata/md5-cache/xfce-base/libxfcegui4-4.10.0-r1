@@ -4,11 +4,11 @@ DESCRIPTION=A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage http://git.xfce.org/archive/libxfcegui4/
 IUSE=startup-notification
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~x64-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=gnome-base/libglade x11-libs/libSM x11-libs/libX11 >=x11-libs/gtk+-2.10:2 >=xfce-base/libxfce4util-4.10 startup-notification? ( x11-libs/startup-notification )
 SLOT=0
 SRC_URI=mirror://xfce/src/xfce/libxfcegui4/4.10/libxfcegui4-4.10.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
-_md5_=30a299a5ce5c646421447bc13ff4b9f6
+_md5_=015bb8910a7911f3eb170b9d7006b6b7

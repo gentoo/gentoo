@@ -4,11 +4,11 @@ DESCRIPTION=Cyclically spawns the executable, captures its output and displays t
 EAPI=5
 HOMEPAGE=http://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin
 IUSE=debug
-KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=>=xfce-base/libxfce4ui-4.8 >=xfce-base/xfce4-panel-4.8
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-genmon-plugin/3.4/xfce4-genmon-plugin-3.4.0.tar.bz2
 _eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
-_md5_=4bf46c644638fe477233961b0073e965
+_md5_=547cf44e668e5170daea0d62201a0868
