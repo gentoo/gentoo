@@ -12918,7 +12918,7 @@ media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images
 media-libs/libpng 1.2.57 1.5.28 1.6.27 1.6.28: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517 10.20140517-r1 9999: Video post processing library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
-media-libs/libprojectm 2.0.1-r1 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
+media-libs/libprojectm 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
 media-libs/libprojectm-qt 2.1.0-r1: A graphical music visualization plugin similar to milkdrop
 media-libs/libptp2 1.1.10: Library and client for communicating with PTP enabled devices (e.g. digital photo cameras)
 media-libs/libquicktime 1.2.4 1.2.4-r1: An enhanced version of the quicktime4linux library
