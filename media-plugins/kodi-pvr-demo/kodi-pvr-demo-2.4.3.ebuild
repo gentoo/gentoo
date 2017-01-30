@@ -18,7 +18,7 @@ case ${PV} in
 	;;
 *)
 	CODENAME="Krypton"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/kodi-pvr/pvr.demo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.demo-${PV}-${CODENAME}"
 	;;
@@ -29,8 +29,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999*
-	=media-libs/kodi-platform-9999*
+	=media-tv/kodi-16*
+	=media-libs/kodi-platform-16*
 	dev-libs/tinyxml
 	"
 
