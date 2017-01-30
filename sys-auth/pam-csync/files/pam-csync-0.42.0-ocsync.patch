@@ -1,7 +1,7 @@
 Since 0.60.0, upstream renamed to "ocsync".
 
---- cmake/Modules/FindCSYNC.cmake
-+++ cmake/Modules/FindCSYNC.cmake
+--- a/cmake/Modules/FindCSYNC.cmake
++++ b/cmake/Modules/FindCSYNC.cmake
 @@ -20,7 +20,7 @@
  else (CSYNC_LIBRARIES AND CSYNC_INCLUDE_DIRS)
    find_path(CSYNC_INCLUDE_DIR
@@ -20,8 +20,8 @@ Since 0.60.0, upstream renamed to "ocsync".
      PATHS
        /usr/lib
        /usr/local/lib
---- src/pam_csync.c
-+++ src/pam_csync.c
+--- a/src/pam_csync.c
++++ b/src/pam_csync.c
 @@ -50,7 +50,7 @@
  #include <security/pam_modutil.h>
  #include <security/pam_ext.h>
