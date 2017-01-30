@@ -54,6 +54,7 @@ multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
+		-DLIBOMPTARGET_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 		# do not install libgomp.so & libiomp5.so aliases
