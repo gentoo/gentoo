@@ -2307,7 +2307,7 @@ app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.70 3.74: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.4 1.5.5: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
-app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref-bin 2.10 2.11 2.11.1 3.1 3.2 3.3 3.4 3.6 3.7 3.8 3.8.1 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
 app-text/jist 1.5.1 1.5.1-r1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
