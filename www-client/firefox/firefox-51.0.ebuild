@@ -127,7 +127,8 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/fix_hardened_pie_detection.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
