@@ -12971,7 +12971,7 @@ media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStre
 media-libs/mesa 11.0.6 11.0.9 11.2.2 12.0.1 12.0.6 13.0.3 17.0.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1: Open source multimedia framework for television broadcasting
-media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
+media-libs/musicbrainz 3.0.3 5.0.1 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.27 1.31 1.35.1 1.36 1.36.1: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
