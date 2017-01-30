@@ -336,12 +336,6 @@ x64-freebsd		prefix/bsd/freebsd/9.0/x64			exp
 x86-freebsd		prefix/bsd/freebsd/9.1/x86			exp
 x64-freebsd		prefix/bsd/freebsd/9.1/x64			exp
 
-
-# OpenBSD Profiles
-ppc-openbsd		prefix/bsd/openbsd/4.2/ppc			exp
-x86-openbsd		prefix/bsd/openbsd/4.2/x86			exp
-x64-openbsd		prefix/bsd/openbsd/4.2/x64			exp
-
 # NetBSD Profiles
 x86-netbsd		prefix/bsd/netbsd/4.0/x86			exp
 
