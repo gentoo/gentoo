@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=>=dev-lang/go-1.7.1 dev-go/go-crypto dev-go/go-net dev-libs/protobuf nls? ( sys-devel/gettext ) test? ( app-misc/jq dev-db/sqlite net-misc/curl sys-devel/gettext ) >=dev-lang/go-1.4.2:= virtual/pkgconfig
+DESCRIPTION=Fast, dense and secure container management
+EAPI=6
+HOMEPAGE=https://linuxcontainers.org/lxd/introduction/
+IUSE=+daemon nls test linguas_de linguas_el linguas_fr linguas_ja
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=daemon? ( app-admin/cgmanager app-arch/xz-utils app-emulation/lxc[cgmanager,seccomp] net-dns/dnsmasq[dhcp,ipv6] net-misc/rsync[xattr] sys-apps/iproute2[ipv6] sys-fs/squashfs-tools virtual/acl )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~stasibear/distfiles/lxd-2.8.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_unpack:vcs-snapshot src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	ea170b525f6a38a006be05c9d9429f13	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	l10n	e26ea0642846685782f1813642e7ff0f	linux-info	af49d8ab3be91bb1d38b7201dc9e5123	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	user	80aaa71614ced86f02ee1a513821dc87	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=061a78a8fc7e75d150cd849da9dabf8e
