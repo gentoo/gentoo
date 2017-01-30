@@ -1,7 +1,0 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Christian Faulhammer <fauli@gentoo.org> (08 Dec 2009)
-# Is currently broken
->=sys-devel/gcc-4.4

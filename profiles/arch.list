@@ -20,9 +20,6 @@ x86-fbsd
 
 # Prefix keywords
 ppc-aix
-x86-freebsd
-x64-freebsd
-sparc64-freebsd
 x86-interix
 amd64-linux
 arm-linux

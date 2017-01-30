@@ -319,23 +319,6 @@ x86-winnt		prefix/windows/winnt/6.1/x86			exp
 x86-cygwin		prefix/windows/cygwin/x86			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
 
-# FreeBSD Profiles
-x86-freebsd		prefix/bsd/freebsd/7.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/7.1/x64			exp
-x86-freebsd		prefix/bsd/freebsd/7.2/x86			exp
-x64-freebsd		prefix/bsd/freebsd/7.2/x64			exp
-x86-freebsd		prefix/bsd/freebsd/8.0/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.0/x64			exp
-x86-freebsd		prefix/bsd/freebsd/8.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.1/x64			exp
-sparc64-freebsd		prefix/bsd/freebsd/8.1/sparc64			exp
-x86-freebsd		prefix/bsd/freebsd/8.2/x86			exp
-x64-freebsd		prefix/bsd/freebsd/8.2/x64			exp
-x86-freebsd		prefix/bsd/freebsd/9.0/x86			exp
-x64-freebsd		prefix/bsd/freebsd/9.0/x64			exp
-x86-freebsd		prefix/bsd/freebsd/9.1/x86			exp
-x64-freebsd		prefix/bsd/freebsd/9.1/x64			exp
-
 # NetBSD Profiles
 x86-netbsd		prefix/bsd/netbsd/4.0/x86			exp
 
