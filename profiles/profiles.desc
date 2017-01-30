@@ -254,7 +254,6 @@ x86		hardened/linux/uclibc/x86				dev
 # Linux Profiles
 amd64-linux		prefix/linux/amd64				exp
 arm-linux		prefix/linux/arm				exp
-ia64-linux		prefix/linux/ia64				exp
 ppc64-linux		prefix/linux/ppc64				exp
 x86-linux		prefix/linux/x86				exp
 

@@ -29,7 +29,6 @@ x86-interix
 amd64-linux
 arm-linux
 arm64-linux
-ia64-linux
 ppc64-linux
 x86-linux
 ppc-macos
