@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 multilib
+inherit fortran-2
 
 DESCRIPTION="Astronomical World Coordinate System transformations library"
 HOMEPAGE="http://www.atnf.csiro.au/people/mcalabre/WCS/"
 SRC_URI="ftp://ftp.atnf.csiro.au/pub/software/${PN}/${P}.tar.bz2"
 
-SLOT="0/4"
+SLOT="0/5"
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc fortran fits pgplot static-libs"
+IUSE="doc fortran fits pgplot static-libs +tools"
 
 RDEPEND="
 	fits? ( sci-libs/cfitsio:0= )
@@ -24,15 +24,12 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/pkgconfig"
 
-src_prepare() {
-	sed -i -e 's/COPYING\*//' GNUmakefile || die
-}
-
 src_configure() {
 	local myconf=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		$(use_enable static-libs static)
+		--htmldir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable fortran)
+		$(use_enable tools utils)
 	)
 	# hacks because cfitsio and pgplot directories are hard-coded
 	if use fits; then
@@ -52,6 +49,7 @@ src_configure() {
 		myconf+=( --without-pgplot )
 	fi
 	econf ${myconf[@]}
+	sed -i -e 's/COPYING\*//' GNUmakefile || die
 }
 
 src_compile() {
@@ -65,7 +63,7 @@ src_test() {
 
 src_install () {
 	default
-	# static libs are same as shared (compiled with PIC)
+	# static libs share the same symbols as shared (i.e. compiled with PIC)
 	# so they are not compiled twice
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/lib*.a
 	use doc || rm -r \
