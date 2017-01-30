@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=conntrack? ( net-libs/libnetfilter_conntrack ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0 >=net-libs/libnftnl-1.0.5 ) pcap? ( net-libs/libpcap ) virtual/os-headers virtual/pkgconfig nftables? ( sys-devel/flex virtual/yacc ) virtual/pkgconfig
+DEPEND=conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0 >=net-libs/libnftnl-1.0.5 ) pcap? ( net-libs/libpcap ) virtual/os-headers virtual/pkgconfig nftables? ( sys-devel/flex virtual/yacc ) virtual/pkgconfig
 DESCRIPTION=Linux kernel (2.4+) firewall, NAT and packet mangling tools
 EAPI=5
 HOMEPAGE=http://www.netfilter.org/projects/iptables/
 IUSE=conntrack ipv6 netlink nftables pcap static-libs
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=conntrack? ( net-libs/libnetfilter_conntrack ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0 >=net-libs/libnftnl-1.0.5 ) pcap? ( net-libs/libpcap )
-SLOT=0/11
+RDEPEND=conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 ) netlink? ( net-libs/libnfnetlink ) nftables? ( >=net-libs/libmnl-1.0 >=net-libs/libnftnl-1.0.5 ) pcap? ( net-libs/libpcap )
+SLOT=0/12
 SRC_URI=http://www.netfilter.org/projects/iptables/files/iptables-1.6.1.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	5b6ca8b2fc1307ca593223f327342c96	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=1d345bd6606ae8db7905dfcdad7f72cc
+_md5_=91b4c1831f41e80efb6a1bc8336731a8
