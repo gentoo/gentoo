@@ -37,7 +37,7 @@ src_unpack() {
 	fi
 
 	# Do not use lazy bindings on lockfile and procmail
-	if [[ ${CHOST} != *-darwin* && ${CHOST} != *-interix* ]]; then
+	if [[ ${CHOST} != *-darwin* ]]; then
 		epatch "${FILESDIR}/${PN}-lazy-bindings.diff"
 	fi
 
@@ -56,9 +56,6 @@ src_unpack() {
 
 	# Fix for bug #270551
 	epatch "${FILESDIR}/${PN}-3.22-glibc-2.10.patch"
-
-	# Fix for x86-interix - doesn't have initgroups
-	epatch "${FILESDIR}"/${P}-interix.patch
 }
 
 src_compile() {

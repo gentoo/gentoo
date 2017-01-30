@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig
-	x86-interix? ( sys-libs/itx-bind )
 "
 # eautoreconf needs
 #	gnome-base/gnome-common
@@ -43,12 +42,6 @@ src_prepare() {
 	rm -v libwnck/wnck-marshal.{c,h} || die "rm failed"
 
 	gnome2_src_prepare
-
-	if use x86-interix; then
-		# activate the itx-bind package...
-		append-flags "-I${EPREFIX}/usr/include/bind"
-		append-ldflags "-L${EPREFIX}/usr/lib/bind"
-	fi
 }
 
 src_configure () {
