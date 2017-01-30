@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-libs/boost:=[python] dev-ros/rosconsole >=dev-cpp/yaml-cpp-0.5 virtual/pkgconfig test? ( dev-python/nose ) sys-devel/make >=dev-util/cmake-3.5.2 dev-util/catkin dev-python/empy
+DESCRIPTION=Routines for reading and writing camera calibration parameters
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/camera_calibration_parsers
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-libs/boost:=[python] dev-ros/rosconsole >=dev-cpp/yaml-cpp-0.5 dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-perception/image_common/archive/1.11.12.tar.gz -> image_common-1.11.12.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	f0c2647fb321257c91c6a967f362d053	eutils	ea170b525f6a38a006be05c9d9429f13	flag-o-matic	7366202dd55cb8f018f5d450d54e7749	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	7bb10a841be2368af0c00f27dd67560b	ros-catkin	5d7f690679dfb6a4ac14c1bd25f098cd	toolchain-funcs	1b1da0c45c555989dc5d832b54880783	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=1fd9743b74cfda78708676834de97bff

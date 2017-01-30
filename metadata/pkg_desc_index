@@ -5092,13 +5092,13 @@ dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5 0.7: Module which offers basic control of ANSI compliant terminals
 dev-ml/OCaml-ImageMagick 0.34-r1: Provide the ImageMagick methods to OCaml
-dev-ml/async 113.33.00: Jane Street Capital's asynchronous execution library
-dev-ml/async_extra 113.33.00: Jane Street Capital's asynchronous execution library (extra)
-dev-ml/async_kernel 113.33.00: Jane Street Capital's asynchronous execution library (core)
-dev-ml/async_rpc_kernel 113.33.00: Platform-independent core of Async RPC library
+dev-ml/async 113.33.00 113.33.03: Jane Street Capital's asynchronous execution library
+dev-ml/async_extra 113.33.00 113.33.03: Jane Street Capital's asynchronous execution library (extra)
+dev-ml/async_kernel 113.33.00 113.33.03: Jane Street Capital's asynchronous execution library (core)
+dev-ml/async_rpc_kernel 113.33.00 113.33.03: Platform-independent core of Async RPC library
 dev-ml/async_unix 113.33.00: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/batteries 2.5.3: The community-maintained foundation library for your OCaml projects
-dev-ml/bignum 113.33.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
+dev-ml/bignum 113.33.00 113.33.03: Core-flavoured wrapper around zarith's arbitrary-precision rationals
 dev-ml/bin-prot 113.33.00: A binary protocol generator
 dev-ml/biniou 1.0.12: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
@@ -5120,7 +5120,7 @@ dev-ml/core 113.33.02: Jane Street's alternative to the standard library
 dev-ml/core_bench 113.33.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.33.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.33.01: System-independent part of Core
-dev-ml/core_profiler 113.33.00: Jane Street's profiling library
+dev-ml/core_profiler 113.33.00 113.33.03: Jane Street's profiling library
 dev-ml/cppo 1.4.1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.5: A pure OCaml library to read and write CSV files
@@ -5141,10 +5141,10 @@ dev-ml/gen_js_api 1.0.3: Easy OCaml bindings for Javascript libraries
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.5: Inline (Unit) Tests for OCaml
-dev-ml/incremental 113.33.00: Library for incremental computations
-dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
+dev-ml/incremental 113.33.00 113.33.03: Library for incremental computations
+dev-ml/incremental_kernel 113.33.00 113.33.03: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.6.0: IO memory page library for Mirage backends
-dev-ml/js-build-tools 113.33.04: Collection of tools to help building Jane Street Packages
+dev-ml/js-build-tools 113.33.04 113.33.06: Collection of tools to help building Jane Street Packages
 dev-ml/js_of_ocaml 2.8.4 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.0: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
@@ -5166,7 +5166,7 @@ dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-containers 0.22.1: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.3.1: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.11.2 0.11.3: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5220,7 +5220,7 @@ dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL datab
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.5-r1 3.0.6: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 4.0.1: A package for ocaml that provides access to PostgreSQL databases
-dev-ml/ppx_assert 113.33.00: Assert-like extension nodes that raise useful errors on failure
+dev-ml/ppx_assert 113.33.00 113.33.03: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_bench 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 113.33.00: Generation of bin_prot readers and writers from types
 dev-ml/ppx_compare 113.33.00: Generation of comparison functions from types
@@ -5228,12 +5228,12 @@ dev-ml/ppx_core 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 113.33.00: Printf-style format-strings for user-defined string conversion
 dev-ml/ppx_deriving 4.1: Type-driven code generation for OCaml
 dev-ml/ppx_deriving_yojson 3.0: A Yojson codec generator for OCaml
-dev-ml/ppx_driver 113.33.00: Feature-full driver for OCaml AST transformers
+dev-ml/ppx_driver 113.33.00 113.33.04: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 113.33.00: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 113.33.01: Cram like framework for OCaml
 dev-ml/ppx_fail 113.33.00: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 113.33.00: Generation of accessor and iteration functions for ocaml records
-dev-ml/ppx_here 113.33.00: Expands [%here] into its location
+dev-ml/ppx_here 113.33.00 113.33.03: Expands [%here] into its location
 dev-ml/ppx_import 1.1: A syntax extension for importing declarations from interface files
 dev-ml/ppx_inline_test 113.33.00: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 113.33.00: Standard Jane Street ppx rewriters
@@ -5257,11 +5257,11 @@ dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.9: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 113.00.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
-dev-ml/textutils 113.33.00: Text output utilities
+dev-ml/textutils 113.33.00 113.33.03: Text output utilities
 dev-ml/topkg 0.8.1: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 113.33.03: Library for creating runtime representation of OCaml types
-dev-ml/typerep_extended 113.33.00: Runtime types for OCaml (Extended)
+dev-ml/typerep_extended 113.33.00 113.33.03: Runtime types for OCaml (Extended)
 dev-ml/tyxml 4.0.1: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.1: Uchar compatibility library
 dev-ml/ulex 1.1: A lexer generator for unicode
@@ -8770,8 +8770,8 @@ dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpfu
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
-dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Routines for reading and writing camera calibration parameters
-dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ interface for camera calibration information
+dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Routines for reading and writing camera calibration parameters
+dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.5 0.3.6 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.14.0-r1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
@@ -8791,7 +8791,7 @@ dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.11.3
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 0.6.1 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.12.0 1.12.1 1.12.2 1.12.3 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.12.4 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.19 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.9 1.8.10 9999: Aggregates ROS diagnostics
@@ -8838,11 +8838,11 @@ dev-ros/hector_pose_estimation_core 0.3.0-r1 9999: Extended Kalman Filter (EKF) 
 dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 0.3.5 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.14-r1 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.12.3 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_geometry 1.12.3 1.12.4 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.12.19 9999: Single image rectification and color processing
 dev-ros/image_publisher 1.12.19 9999: Publish an image stream from single image file or avi file.
 dev-ros/image_rotate 1.12.19 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
-dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Transparent support for transporting images in low-bandwidth compressed formats
+dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.12.19 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 0.2.2 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 0.2.2 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
@@ -8889,7 +8889,7 @@ dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib defini
 dev-ros/octomap_msgs 0.3.2 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
 dev-ros/opencv_apps 1.11.14 9999: OpenCV applications for ROS
-dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 9999: Tests for ROS OpenCV integration
+dev-ros/opencv_tests 1.12.1-r1 1.12.2 1.12.3 1.12.4 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.7-r1 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
@@ -8899,7 +8899,7 @@ dev-ros/pcl_ros 1.4.1-r2 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.4-r1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 0.1.10 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
-dev-ros/polled_camera 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
+dev-ros/polled_camera 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
 dev-ros/pr2_description 1.11.14 1.12.0 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
 dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 9999: xxx.machine files that describe the different hosts a node can be spawned on
@@ -15682,7 +15682,7 @@ ros-meta/geometry_experimental 0.5.13 0.5.14 0.5.15 9999: The second generation 
 ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 9999: hector_mapping and related packages
-ros-meta/image_common 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 9999: Common code for working with images in ROS
+ros-meta/image_common 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Common code for working with images in ROS
 ros-meta/image_pipeline 1.12.19 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 1.9.5 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 0.2.2 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
@@ -15711,7 +15711,7 @@ ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 0.5.4 0.5.5 0.5.6 9999: Metap
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
-ros-meta/vision_opencv 1.12.0 1.12.1 1.12.2 1.12.3 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/vision_opencv 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.9.3 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 0.10.1 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 1.3.0 9999: Metapackage for ROS visualization packages

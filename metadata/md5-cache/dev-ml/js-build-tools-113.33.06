@@ -7,8 +7,8 @@ IUSE=+ocamlopt debug doc test
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/ocamlbuild:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
-SLOT=0/113.33.04
-SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.33/files/js-build-tools-113.33.04.tar.gz
+SLOT=0/113.33.06
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.33/files/js-build-tools-113.33.06.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:oasis src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	ea170b525f6a38a006be05c9d9429f13	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	473d7851a239e10730fd5d1f7301e7ca	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
 _md5_=c8019f6891dbaa05fd404083f74dae1f
