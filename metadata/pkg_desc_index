@@ -14657,7 +14657,7 @@ net-libs/glib-networking 2.48.2 2.50.0: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.17 1.0.18: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.20.4 3.20.5 3.22.1 3.22.2 3.22.3: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.24-r1 3.3.25 3.3.26 3.5.8: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.26 3.5.8: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.39 2.8.40: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
