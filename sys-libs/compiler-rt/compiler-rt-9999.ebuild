@@ -19,16 +19,16 @@ EGIT_REPO_URI="http://llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
-SLOT="0/${PV%.*}"
+# Note: this needs to be updated to match version of clang-9999
+SLOT="5.0.0"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="
-	!<sys-devel/llvm-4"
+LLVM_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
-DEPEND="${RDEPEND}
+DEPEND="
 	>=sys-devel/llvm-4
-	test? ( ~sys-devel/clang-${PV} )
+	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_SLOT} )
 	${PYTHON_DEPS}"
 
 # least intrusive of all
@@ -51,14 +51,11 @@ src_configure() {
 		fi
 	fi
 
-	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
-	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${clang_version}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
-		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${clang_version}"
+		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${SLOT}"
 
 		# currently lit covers only sanitizer tests
 		-DCOMPILER_RT_INCLUDE_TESTS=OFF
@@ -69,22 +66,15 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-run_tests_for_abi() {
-	local ABI=${1}
-}
-
 src_test() {
 	# prepare a test compiler
-	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
-
 	# copy clang over since resource_dir is located relatively to binary
 	# therefore, we can put our new libraries in it
-	mkdir -p "${BUILD_DIR}"/{bin,$(get_libdir),lib/clang/"${clang_version}"/include} || die
-	cp "${EPREFIX}/usr/bin/clang" "${EPREFIX}/usr/bin/clang++" \
-		"${BUILD_DIR}"/bin/ || die
-	cp "${EPREFIX}/usr/lib/clang/${clang_version}/include"/*.h \
-		"${BUILD_DIR}/lib/clang/${clang_version}/include/" || die
+	mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
+	cp "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/bin/clang{,++} \
+		"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/bin/ || die
+	cp "${EPREFIX}/usr/lib/clang/${SLOT}/include"/*.h \
+		"${BUILD_DIR}/lib/clang/${SLOT}/include/" || die
 
 	# builtins are not converted to lit yet, so run them manually
 	local tests=() f
@@ -120,7 +110,7 @@ src_test() {
 		einfo "Running tests for ABI=${ABI}"
 		# use -k to run all tests even if some fail
 		emake -k \
-			CC="${BUILD_DIR}/bin/clang" \
+			CC="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang" \
 			CFLAGS="$(get_abi_CFLAGS)" \
 			CPPFLAGS='-I../../../lib/builtins' \
 			LDFLAGS='-rtlib=compiler-rt' \
