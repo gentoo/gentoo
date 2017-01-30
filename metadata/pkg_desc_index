@@ -14883,7 +14883,7 @@ net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16 0.9.18-r1: Set of tools to de
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.21 0.22.2-r1 0.23.3 0.23.4 0.23.5: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12: Powerful IMAP/Maildir synchronization and reader support
+net-mail/offlineimap 6.5.6 6.7.0.3 7.0.10 7.0.12 7.0.13: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
