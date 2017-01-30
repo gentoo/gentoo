@@ -13221,9 +13221,9 @@ media-plugins/kodi-game-libretro 1.0.1 9999: Libretro compatibility layer for th
 media-plugins/kodi-inputstream-adaptive 1.0.6 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 1.0.3 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 9999: Libretro compatibility layer for the Kodi Game API
-media-plugins/kodi-pvr-argustv 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 9999: Demo PVR for Kodi
-media-plugins/kodi-pvr-dvblink 9999: Kodi's DVBLink client addon
+media-plugins/kodi-pvr-argustv 2.5.4 9999: Kodi's ARGUS TV client addon
+media-plugins/kodi-pvr-demo 2.4.3 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-dvblink 3.3.11 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 2.4.6 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
@@ -13831,7 +13831,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts nec
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r1: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 16.1 16.1-r3 17.0_rc3-r3 9999: Kodi is a free and open source media-player and entertainment hub
+media-tv/kodi 16.1 16.1-r3 17.0_rc4 9999: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
 media-tv/mythtv 0.27.6_p20160318 0.28: Homebrew PVR project
