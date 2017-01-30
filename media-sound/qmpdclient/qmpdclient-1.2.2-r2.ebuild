@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
 inherit fdo-mime cmake-utils
 
 DESCRIPTION="QMPDClient with NBL additions, such as lyrics' display"
@@ -11,7 +12,7 @@ SRC_URI="http://dump.bitcheese.net/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug"
 
 DEPEND="dev-qt/qtdbus:4
